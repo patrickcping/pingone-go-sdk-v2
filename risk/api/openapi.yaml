@@ -1,0 +1,2738 @@
+openapi: 3.0.0
+info:
+  description: The PingOne Platform API covering the PingOne Risk service
+  title: PingOne Platform API - PingOne Risk
+  version: 1.0.0
+externalDocs:
+  description: PingOne Platform API Reference - PingOne Risk APIs
+  url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-risk
+servers:
+- description: PingOne Platform API Endpoint
+  url: "https://api.pingone.{suffix}"
+  variables:
+    suffix:
+      default: eu
+      enum:
+      - eu
+      - com
+      - asia
+      - ca
+security:
+- bearer: []
+tags:
+- name: Risk Management
+- name: Risk Policies
+- name: Risk Evaluations
+- name: Risk Advanced Predictors
+paths:
+  /v1/environments/{environmentID}/riskPolicySets:
+    get:
+      operationId: readRiskPolicySets
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ Risk Policy Sets
+      tags:
+      - Risk Policies
+    post:
+      operationId: createRiskPolicySet
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskPolicySet'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPolicySet'
+          description: Successful response
+      summary: CREATE Risk Policy Set
+      tags:
+      - Risk Policies
+  /v1/environments/{environmentID}/riskPolicySets/{riskPolicySetID}:
+    delete:
+      operationId: deleteRiskPolicySet
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskPolicySetID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: 'DELETE Risk Policy Set '
+      tags:
+      - Risk Policies
+    get:
+      operationId: readOneRiskPolicySet
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskPolicySetID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPolicySet'
+          description: Successful response
+      summary: READ One Risk Policy Set
+      tags:
+      - Risk Policies
+    put:
+      operationId: updateRiskPolicySet
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskPolicySetID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskPolicySet'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPolicySet'
+          description: Successful response
+      summary: UPDATE Risk Policy Set
+      tags:
+      - Risk Policies
+  /v1/environments/{environmentID}/riskEvaluations:
+    post:
+      operationId: createRiskEvaluation
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskEvaluation'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskEvaluation'
+          description: Successful response
+      summary: CREATE Risk Evaluation
+      tags:
+      - Risk Evaluations
+  /v1/environments/{environmentID}/riskEvaluations/{riskEvaluationID}:
+    get:
+      operationId: readOneRiskEvaluation
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskEvaluationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskEvaluation'
+          description: Successful response
+      summary: READ One Risk Evaluation
+      tags:
+      - Risk Evaluations
+  /v1/environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event:
+    put:
+      operationId: updateRiskEvaluation
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskEvaluationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskEvaluationEvent'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskEvaluation'
+          description: Successful response
+      summary: UPDATE Risk Evaluation
+      tags:
+      - Risk Evaluations
+  /v1/environments/{environmentID}/riskPredictors:
+    get:
+      operationId: readAllRiskPredictors
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Risk Predictors
+      tags:
+      - Risk Advanced Predictors
+    post:
+      operationId: createRiskPredictor
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskPredictor'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPredictor'
+          description: Successful response
+      summary: CREATE Risk Predictor
+      tags:
+      - Risk Advanced Predictors
+  /v1/environments/{environmentID}/riskPredictors/{riskPredictorID}:
+    delete:
+      operationId: deleteRiskAdvancedPredictor
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskPredictorID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Risk Advanced Predictor
+      tags:
+      - Risk Advanced Predictors
+    get:
+      operationId: readOneRiskPredictor
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskPredictorID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPredictor'
+          description: Successful response
+      summary: READ One Risk Predictor
+      tags:
+      - Risk Advanced Predictors
+    put:
+      operationId: updateRiskPredictor
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: riskPredictorID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiskPredictor'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RiskPredictor'
+          description: Successful response
+      summary: UPDATE Risk Predictor
+      tags:
+      - Risk Advanced Predictors
+components:
+  schemas:
+    P1Error:
+      properties:
+        id:
+          description: "A unique identifier that is stored in log files and always\
+            \ included in an error response. This value can be used to track the error\
+            \ received by the client, with server-side activity included for troubleshooting\
+            \ purposes."
+          type: string
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        details:
+          description: Additional details about the error. Optional information to
+            help resolve the error and to display to users.
+          items:
+            $ref: '#/components/schemas/P1Error_details_inner'
+          type: array
+      type: object
+    EntityArray:
+      example:
+        size: 3.616076749251911
+        _embedded:
+          riskPolicySets:
+          - createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            riskPolicies:
+            - result:
+                level: LOW
+                type: VALUE
+                value: value
+              createdAt: createdAt
+              condition:
+                aggregatedWeights:
+                - weight: 0
+                  value: value
+                - weight: 0
+                  value: value
+                contains: contains
+                equals: null
+                ipRange:
+                - ipRange
+                - ipRange
+                value: value
+                between:
+                  minScore: 6
+                  maxScore: 1
+              environment:
+                id: id
+              name: name
+              description: description
+              id: id
+              priority: 5
+              updatedAt: updatedAt
+            - result:
+                level: LOW
+                type: VALUE
+                value: value
+              createdAt: createdAt
+              condition:
+                aggregatedWeights:
+                - weight: 0
+                  value: value
+                - weight: 0
+                  value: value
+                contains: contains
+                equals: null
+                ipRange:
+                - ipRange
+                - ipRange
+                value: value
+                between:
+                  minScore: 6
+                  maxScore: 1
+              environment:
+                id: id
+              name: name
+              description: description
+              id: id
+              priority: 5
+              updatedAt: updatedAt
+            defaultResult:
+              level: LOW
+              type: VALUE
+              value: value
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            riskPolicies:
+            - result:
+                level: LOW
+                type: VALUE
+                value: value
+              createdAt: createdAt
+              condition:
+                aggregatedWeights:
+                - weight: 0
+                  value: value
+                - weight: 0
+                  value: value
+                contains: contains
+                equals: null
+                ipRange:
+                - ipRange
+                - ipRange
+                value: value
+                between:
+                  minScore: 6
+                  maxScore: 1
+              environment:
+                id: id
+              name: name
+              description: description
+              id: id
+              priority: 5
+              updatedAt: updatedAt
+            - result:
+                level: LOW
+                type: VALUE
+                value: value
+              createdAt: createdAt
+              condition:
+                aggregatedWeights:
+                - weight: 0
+                  value: value
+                - weight: 0
+                  value: value
+                contains: contains
+                equals: null
+                ipRange:
+                - ipRange
+                - ipRange
+                value: value
+                between:
+                  minScore: 6
+                  maxScore: 1
+              environment:
+                id: id
+              name: name
+              description: description
+              id: id
+              priority: 5
+              updatedAt: updatedAt
+            defaultResult:
+              level: LOW
+              type: VALUE
+              value: value
+            updatedAt: updatedAt
+          riskPredictors:
+          - createdAt: createdAt
+            default:
+              result:
+                level: HIGH
+                type: VALUE
+              weight: 5
+            name: name
+            description: description
+            id: id
+            type: VELOCITY
+            compactName: compactName
+            map:
+              high:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2.3021358869347655
+                  maxScore: 7.061401241503109
+              low:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2.3021358869347655
+                  maxScore: 7.061401241503109
+              medium:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2.3021358869347655
+                  maxScore: 7.061401241503109
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            default:
+              result:
+                level: HIGH
+                type: VALUE
+              weight: 5
+            name: name
+            description: description
+            id: id
+            type: VELOCITY
+            compactName: compactName
+            map:
+              high:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2.3021358869347655
+                  maxScore: 7.061401241503109
+              low:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2.3021358869347655
+                  maxScore: 7.061401241503109
+              medium:
+                contains: contains
+                ipRange:
+                - ipRange
+                - ipRange
+                list:
+                - list
+                - list
+                between:
+                  minScore: 2.3021358869347655
+                  maxScore: 7.061401241503109
+            updatedAt: updatedAt
+        count: 9.301444243932576
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/EntityArray__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      type: object
+    ObjectEnvironment:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the environment associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    RiskEvaluation:
+      example:
+        result:
+          level: HIGH
+          type: VALUE
+          value: value
+        createdAt: createdAt
+        environment:
+          id: id
+        riskPolicySet:
+          name: name
+          id: id
+        details:
+          ipAddressReputation:
+            score: 0
+            level: LOW
+          country: country
+          ipVelocityByUser:
+            reason: reason
+            level: LOW
+            threshold:
+              high: 6
+              medium: 1
+              source: MIN_NOT_REACHED
+              calculatedAt: calculatedAt
+              expiresAt: expiresAt
+            velocity:
+              distinctCount: 5
+              during: 5
+          userVelocityByIp:
+            reason: reason
+            level: LOW
+            threshold:
+              high: 2
+              medium: 7
+              source: MIN_NOT_REACHED
+              calculatedAt: calculatedAt
+              expiresAt: expiresAt
+            velocity:
+              distinctCount: 9
+              during: 3
+          city: city
+          userRiskBehavior:
+            reason: reason
+            level: LOW
+          latitude: 7.386281948385884
+          previousSuccessfulTransaction:
+            country: country
+            city: city
+            ip: ip
+            state: state
+            anonymousNetworkDetected: true
+            timestamp: timestamp
+          estimatedSpeed: 2.027123023002322
+          anonymousNetworkDetected: true
+          userBasedRiskBehavior:
+            reason: reason
+            level: LOW
+          state: state
+          impossibleTravel: true
+          longitude: 4.145608029883936
+        id: id
+        event:
+          evaluatedFactors:
+            type: type
+            status: FAILED
+          session:
+            id: id
+          browser:
+            hasLiedLanguages: true
+            webgl:
+            - webgl
+            - webgl
+            touchSupport:
+            - touchSupport
+            - touchSupport
+            timezone: timezone
+            plugins:
+            - "{}"
+            - "{}"
+            localStorage: true
+            language: language
+            hasLiedBrowser: true
+            platform: platform
+            addBehaviour: "{}"
+            availableScreenResolution:
+            - 7.457744773683766
+            - 7.457744773683766
+            timezoneOffset: 1.1730742509559433
+            fonts:
+            - fonts
+            - fonts
+            sessionStorage: true
+            audio: audio
+            screenResolution:
+            - 6.84685269835264
+            - 6.84685269835264
+            openDatabase: true
+            adBlock: true
+            webglVendorAndRenderer: webglVendorAndRenderer
+            cookie: cookie
+            cpuClass: cpuClass
+            hasLiedOs: true
+            userAgent: userAgent
+            indexedDb: true
+            deviceMemory: 1.0246457001441578
+            hasLiedResolution: true
+            hardwareConcurrency: 1.4894159098541704
+            colorDepth: 1.2315135367772556
+          ip: ip
+          origin: origin
+          targetResource:
+            name: name
+            id: id
+          completionStatus: FAILED
+          sharingType: UNSPECIFIED
+          user:
+            name: name
+            groups:
+            - name: name
+            - name: name
+            id: id
+            type: EXTERNAL
+          flow:
+            type: AUTHENTICATION
+        updatedAt: updatedAt
+      properties:
+        createdAt:
+          description: The time the resource was created (format ISO-8061).
+          readOnly: true
+          type: string
+        details:
+          $ref: '#/components/schemas/RiskEvaluationDetails'
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        event:
+          $ref: '#/components/schemas/RiskEvaluationEvent'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        riskPolicySet:
+          $ref: '#/components/schemas/RiskEvaluation_riskPolicySet'
+        result:
+          $ref: '#/components/schemas/RiskEvaluationResult'
+        updatedAt:
+          description: The time the resource was last updated (format ISO-8061).
+          readOnly: true
+          type: string
+      required:
+      - event
+      type: object
+    RiskEvaluationDetails:
+      example:
+        ipAddressReputation:
+          score: 0
+          level: LOW
+        country: country
+        ipVelocityByUser:
+          reason: reason
+          level: LOW
+          threshold:
+            high: 6
+            medium: 1
+            source: MIN_NOT_REACHED
+            calculatedAt: calculatedAt
+            expiresAt: expiresAt
+          velocity:
+            distinctCount: 5
+            during: 5
+        userVelocityByIp:
+          reason: reason
+          level: LOW
+          threshold:
+            high: 2
+            medium: 7
+            source: MIN_NOT_REACHED
+            calculatedAt: calculatedAt
+            expiresAt: expiresAt
+          velocity:
+            distinctCount: 9
+            during: 3
+        city: city
+        userRiskBehavior:
+          reason: reason
+          level: LOW
+        latitude: 7.386281948385884
+        previousSuccessfulTransaction:
+          country: country
+          city: city
+          ip: ip
+          state: state
+          anonymousNetworkDetected: true
+          timestamp: timestamp
+        estimatedSpeed: 2.027123023002322
+        anonymousNetworkDetected: true
+        userBasedRiskBehavior:
+          reason: reason
+          level: LOW
+        state: state
+        impossibleTravel: true
+        longitude: 4.145608029883936
+      properties:
+        ipAddressReputation:
+          $ref: '#/components/schemas/RiskEvaluationDetails_ipAddressReputation'
+        ipVelocityByUser:
+          $ref: '#/components/schemas/RiskEvaluationDetails_ipVelocityByUser'
+        userVelocityByIp:
+          $ref: '#/components/schemas/RiskEvaluationDetails_userVelocityByIp'
+        impossibleTravel:
+          description: "A boolean that specifies whether the distance between the\
+            \ location of the user in their previous successful authentication and\
+            \ current authentication infers that the user had to travel at a speed\
+            \ greater than 1000 kilometers per hour. This condition is marked as fulfilled,\
+            \ only if: Location data is available for the current and previous IP\
+            \ address of the user. This is not the first transaction that the user\
+            \ has performed. The user’s previous successful transaction was performed\
+            \ less than 24 hours ago. The user moved a distance of at least 100 kilometers.\
+            \ Thus, even if the user moved very fast, but moved only a distance of\
+            \ 90 kilometers, the condition is not fulfilled. The user moved at a speed\
+            \ greater than 1000 kilometers per hour."
+          type: boolean
+        estimatedSpeed:
+          description: The calculated travel speed in units of kilometers per hour.
+          type: number
+        anonymousNetworkDetected:
+          description: "A boolean that specifies whether the current authentication\
+            \ originated from an anonymous network (for example, proxy or VPN)."
+          type: boolean
+        country:
+          description: A string that specifies the country related to current transaction
+            from the IP address.
+          type: string
+        state:
+          description: A string that specifies the state related to current transaction
+            from the IP address.
+          type: string
+        city:
+          description: A string that specifies the city related to current transaction
+            from the IP address.
+          type: string
+        longitude:
+          description: A double-precision floating point that specifies the longitude
+            related to current transaction from the IP address. Values range from
+            -90 to 90.
+          type: number
+        latitude:
+          description: A double-precision floating point that specifies the latitude
+            related to current transaction from the IP address. Values range from
+            -180 to 180.
+          type: number
+        previousSuccessfulTransaction:
+          $ref: '#/components/schemas/RiskEvaluationDetails_previousSuccessfulTransaction'
+        userBasedRiskBehavior:
+          $ref: '#/components/schemas/RiskEvaluationDetails_userBasedRiskBehavior'
+        userRiskBehavior:
+          $ref: '#/components/schemas/RiskEvaluationDetails_userRiskBehavior'
+      readOnly: true
+      type: object
+    RiskEvaluationEvent:
+      example:
+        evaluatedFactors:
+          type: type
+          status: FAILED
+        session:
+          id: id
+        browser:
+          hasLiedLanguages: true
+          webgl:
+          - webgl
+          - webgl
+          touchSupport:
+          - touchSupport
+          - touchSupport
+          timezone: timezone
+          plugins:
+          - "{}"
+          - "{}"
+          localStorage: true
+          language: language
+          hasLiedBrowser: true
+          platform: platform
+          addBehaviour: "{}"
+          availableScreenResolution:
+          - 7.457744773683766
+          - 7.457744773683766
+          timezoneOffset: 1.1730742509559433
+          fonts:
+          - fonts
+          - fonts
+          sessionStorage: true
+          audio: audio
+          screenResolution:
+          - 6.84685269835264
+          - 6.84685269835264
+          openDatabase: true
+          adBlock: true
+          webglVendorAndRenderer: webglVendorAndRenderer
+          cookie: cookie
+          cpuClass: cpuClass
+          hasLiedOs: true
+          userAgent: userAgent
+          indexedDb: true
+          deviceMemory: 1.0246457001441578
+          hasLiedResolution: true
+          hardwareConcurrency: 1.4894159098541704
+          colorDepth: 1.2315135367772556
+        ip: ip
+        origin: origin
+        targetResource:
+          name: name
+          id: id
+        completionStatus: FAILED
+        sharingType: UNSPECIFIED
+        user:
+          name: name
+          groups:
+          - name: name
+          - name: name
+          id: id
+          type: EXTERNAL
+        flow:
+          type: AUTHENTICATION
+      properties:
+        browser:
+          $ref: '#/components/schemas/RiskEvaluationEvent_browser'
+        completionStatus:
+          description: "A string that specifies the state of the transaction. Options\
+            \ are FAILED, IN_PROGRESS, and SUCCESS. If a value is not provided, the\
+            \ value defaults to IN_PROGRESS. The value of this property can be changed\
+            \ only if its current state is IN_PROGRESS."
+          enum:
+          - FAILED
+          - IN_PROGRESS
+          - SUCCESS
+          type: string
+        evaluatedFactors:
+          $ref: '#/components/schemas/RiskEvaluationEvent_evaluatedFactors'
+        ip:
+          description: A string that specifies the origin IP address of the authentication
+            flow. This is a required property.
+          type: string
+        flow:
+          $ref: '#/components/schemas/RiskEvaluationEvent_flow'
+        origin:
+          description: A string that specifies the calling service.
+          type: string
+        session:
+          $ref: '#/components/schemas/RiskEvaluationEvent_session'
+        targetResource:
+          $ref: '#/components/schemas/RiskEvaluationEvent_targetResource'
+        user:
+          $ref: '#/components/schemas/RiskEvaluationEvent_user'
+        sharingType:
+          description: "A string that specifies the device sharing type. Options are\
+            \ UNSPECIFIED, SHARED, and PRIVATE."
+          enum:
+          - UNSPECIFIED
+          - SHARED
+          - PRIVATE
+          type: string
+      required:
+      - ip
+      - user
+      type: object
+    RiskEvaluationResult:
+      example:
+        level: HIGH
+        type: VALUE
+        value: value
+      properties:
+        type:
+          description: A string that specifies the risk evaluation result type. Options
+            are VALUE.
+          enum:
+          - VALUE
+          readOnly: true
+          type: string
+        level:
+          description: "A string that specifies the risk evaluation result level.\
+            \ Options are HIGH, MEDIUM, and LOW."
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          readOnly: true
+          type: string
+        value:
+          description: A string that specifies any custom attribute the administrator
+            defines.
+          readOnly: true
+          type: string
+      type: object
+    RiskPolicySet:
+      example:
+        createdAt: createdAt
+        default: true
+        environment:
+          id: id
+        name: name
+        description: description
+        id: id
+        riskPolicies:
+        - result:
+            level: LOW
+            type: VALUE
+            value: value
+          createdAt: createdAt
+          condition:
+            aggregatedWeights:
+            - weight: 0
+              value: value
+            - weight: 0
+              value: value
+            contains: contains
+            equals: null
+            ipRange:
+            - ipRange
+            - ipRange
+            value: value
+            between:
+              minScore: 6
+              maxScore: 1
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          priority: 5
+          updatedAt: updatedAt
+        - result:
+            level: LOW
+            type: VALUE
+            value: value
+          createdAt: createdAt
+          condition:
+            aggregatedWeights:
+            - weight: 0
+              value: value
+            - weight: 0
+              value: value
+            contains: contains
+            equals: null
+            ipRange:
+            - ipRange
+            - ipRange
+            value: value
+            between:
+              minScore: 6
+              maxScore: 1
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          priority: 5
+          updatedAt: updatedAt
+        defaultResult:
+          level: LOW
+          type: VALUE
+          value: value
+        updatedAt: updatedAt
+      properties:
+        createdAt:
+          description: The time the resource was created (format ISO-8061).
+          readOnly: true
+          type: string
+        default:
+          description: "A boolean that specifies whether this risk policy set is the\
+            \ environment's default risk policy set, which is used whenever an explicit\
+            \ policySet ID is not specified in the risk policy evaluation request.\
+            \ If this property is not specified, the value defaults to false, and\
+            \ this risk policy set is not regarded as the default risk policy set\
+            \ for the environment. When this property is set to true (in PUT or POST\
+            \ requests), the default property of all other risk policy sets in the\
+            \ environment is set to false."
+          type: boolean
+        defaultResult:
+          $ref: '#/components/schemas/RiskPolicyResult'
+        description:
+          description: "A string that specifies a description for this policy set.\
+            \ This is an optional property. Valid characters consist of any Unicode\
+            \ letter, mark (for example, accent, umlaut), numeric character, punctuation\
+            \ character, or space. Maximum size is 1024 characters."
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: "A string that specifies a name for this policy set. Valid\
+            \ characters consist of any Unicode letter, mark (for example, accent,\
+            \ umlaut), numeric character, forward slash, dot, apostrophe, underscore,\
+            \ space, or hyphen. Maximum size is 256 characters."
+          type: string
+        riskPolicies:
+          description: An array of policies related to this policy set.
+          items:
+            $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner'
+          type: array
+        updatedAt:
+          description: The time the resource was last updated (format ISO-8061).
+          readOnly: true
+          type: string
+      required:
+      - name
+      type: object
+    RiskPolicyResult:
+      example:
+        level: LOW
+        type: VALUE
+        value: value
+      properties:
+        level:
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          type: string
+        type:
+          enum:
+          - VALUE
+          type: string
+        value:
+          type: string
+      required:
+      - level
+      type: object
+    RiskPredictor:
+      example:
+        createdAt: createdAt
+        default:
+          result:
+            level: HIGH
+            type: VALUE
+          weight: 5
+        name: name
+        description: description
+        id: id
+        type: VELOCITY
+        compactName: compactName
+        map:
+          high:
+            contains: contains
+            ipRange:
+            - ipRange
+            - ipRange
+            list:
+            - list
+            - list
+            between:
+              minScore: 2.3021358869347655
+              maxScore: 7.061401241503109
+          low:
+            contains: contains
+            ipRange:
+            - ipRange
+            - ipRange
+            list:
+            - list
+            - list
+            between:
+              minScore: 2.3021358869347655
+              maxScore: 7.061401241503109
+          medium:
+            contains: contains
+            ipRange:
+            - ipRange
+            - ipRange
+            list:
+            - list
+            - list
+            between:
+              minScore: 2.3021358869347655
+              maxScore: 7.061401241503109
+        updatedAt: updatedAt
+      properties:
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: "A string type. A unique, friendly name for the predictor.\
+            \ This name is displayed in the Risk Policies UI, when the admin is asked\
+            \ to define the overrides and weights."
+          type: string
+        compactName:
+          description: "A string type. A unique name for the predictor. This property\
+            \ is immutable; it cannot be modified after initial creation. The value\
+            \ must be alpha-numeric, with no special characters or spaces. This name\
+            \ is used in the API both for policy configuration, and in the Risk Evaluation\
+            \ response (under details)."
+          type: string
+        type:
+          description: "An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR,\
+            \ or MAP"
+          enum:
+          - VELOCITY
+          - USER_RISK_BEHAVIOR
+          - MAP
+          type: string
+        description:
+          description: A string type. This specifies the desription of the risk predictor.
+            Maximum length is 1024 characters.
+          type: string
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was updated.
+          readOnly: true
+          type: string
+        default:
+          $ref: '#/components/schemas/RiskPredictor_default'
+        map:
+          $ref: '#/components/schemas/RiskPredictor_map'
+      required:
+      - compactName
+      - name
+      - type
+      type: object
+    RiskPredictorItemMap:
+      example:
+        contains: contains
+        ipRange:
+        - ipRange
+        - ipRange
+        list:
+        - list
+        - list
+        between:
+          minScore: 2.3021358869347655
+          maxScore: 7.061401241503109
+      properties:
+        contains:
+          type: string
+        ipRange:
+          description: List of CIDRs to include
+          items:
+            type: string
+          type: array
+        between:
+          $ref: '#/components/schemas/RiskPredictorItemMap_between'
+        list:
+          description: An array that specifies the list of entities that represent
+            the risk conditions.
+          items:
+            type: string
+          type: array
+      required:
+      - contains
+      type: object
+    P1Error_details_inner_innerError:
+      description: Additional details to help the client developer resolve the fault
+        (primarily for UI validation reasons).
+      properties:
+        rangeMinimumValue:
+          description: Errors that failed due to range violation. This attribute represents
+            the minimum value of the range.
+          type: integer
+        rangeMaximumValue:
+          description: The maximum range or value of an attribute.
+          type: integer
+        allowedPattern:
+          description: A regex pattern describing an acceptable input pattern.
+          type: string
+        allowedValues:
+          description: A list describing acceptable values.
+          items:
+            type: string
+          type: array
+        maximumValue:
+          description: The maximum value allowed for the request.
+          type: integer
+      type: object
+    P1Error_details_inner:
+      properties:
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        target:
+          description: The item that caused the error (such as a form field ID or
+            an attribute inside a JSON object).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        innerError:
+          $ref: '#/components/schemas/P1Error_details_inner_innerError'
+      type: object
+    EntityArray__embedded:
+      example:
+        riskPolicySets:
+        - createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          riskPolicies:
+          - result:
+              level: LOW
+              type: VALUE
+              value: value
+            createdAt: createdAt
+            condition:
+              aggregatedWeights:
+              - weight: 0
+                value: value
+              - weight: 0
+                value: value
+              contains: contains
+              equals: null
+              ipRange:
+              - ipRange
+              - ipRange
+              value: value
+              between:
+                minScore: 6
+                maxScore: 1
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            priority: 5
+            updatedAt: updatedAt
+          - result:
+              level: LOW
+              type: VALUE
+              value: value
+            createdAt: createdAt
+            condition:
+              aggregatedWeights:
+              - weight: 0
+                value: value
+              - weight: 0
+                value: value
+              contains: contains
+              equals: null
+              ipRange:
+              - ipRange
+              - ipRange
+              value: value
+              between:
+                minScore: 6
+                maxScore: 1
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            priority: 5
+            updatedAt: updatedAt
+          defaultResult:
+            level: LOW
+            type: VALUE
+            value: value
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          riskPolicies:
+          - result:
+              level: LOW
+              type: VALUE
+              value: value
+            createdAt: createdAt
+            condition:
+              aggregatedWeights:
+              - weight: 0
+                value: value
+              - weight: 0
+                value: value
+              contains: contains
+              equals: null
+              ipRange:
+              - ipRange
+              - ipRange
+              value: value
+              between:
+                minScore: 6
+                maxScore: 1
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            priority: 5
+            updatedAt: updatedAt
+          - result:
+              level: LOW
+              type: VALUE
+              value: value
+            createdAt: createdAt
+            condition:
+              aggregatedWeights:
+              - weight: 0
+                value: value
+              - weight: 0
+                value: value
+              contains: contains
+              equals: null
+              ipRange:
+              - ipRange
+              - ipRange
+              value: value
+              between:
+                minScore: 6
+                maxScore: 1
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            priority: 5
+            updatedAt: updatedAt
+          defaultResult:
+            level: LOW
+            type: VALUE
+            value: value
+          updatedAt: updatedAt
+        riskPredictors:
+        - createdAt: createdAt
+          default:
+            result:
+              level: HIGH
+              type: VALUE
+            weight: 5
+          name: name
+          description: description
+          id: id
+          type: VELOCITY
+          compactName: compactName
+          map:
+            high:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2.3021358869347655
+                maxScore: 7.061401241503109
+            low:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2.3021358869347655
+                maxScore: 7.061401241503109
+            medium:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2.3021358869347655
+                maxScore: 7.061401241503109
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          default:
+            result:
+              level: HIGH
+              type: VALUE
+            weight: 5
+          name: name
+          description: description
+          id: id
+          type: VELOCITY
+          compactName: compactName
+          map:
+            high:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2.3021358869347655
+                maxScore: 7.061401241503109
+            low:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2.3021358869347655
+                maxScore: 7.061401241503109
+            medium:
+              contains: contains
+              ipRange:
+              - ipRange
+              - ipRange
+              list:
+              - list
+              - list
+              between:
+                minScore: 2.3021358869347655
+                maxScore: 7.061401241503109
+          updatedAt: updatedAt
+      properties:
+        riskPolicySets:
+          items:
+            $ref: '#/components/schemas/RiskPolicySet'
+          type: array
+        riskPredictors:
+          items:
+            $ref: '#/components/schemas/RiskPredictor'
+          type: array
+      type: object
+    RiskEvaluation_riskPolicySet:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          description: "A string that specifies the risk policy set resource's unique\
+            \ identifier. If the risk policy set ID and name are both specified, the\
+            \ policy set specified by the riskPolicySet.id is used. If the risk policy\
+            \ set ID and name are not specified, the environment's default risk policy\
+            \ set is used."
+          type: string
+        name:
+          description: "A string that specifies the risk policy set name associated\
+            \ with this risk evaluation resource. If the risk policy set ID and name\
+            \ are both specified, the policy set specified by the riskPolicySet.id\
+            \ is used. If the risk policy set name and ID are not specified, the environment's\
+            \ default risk policy set is used."
+          type: string
+      type: object
+    RiskEvaluationDetails_ipAddressReputation:
+      example:
+        score: 0
+        level: LOW
+      properties:
+        level:
+          description: "A string that specifies the risk level of the evaluated IP\
+            \ address. Options are LOW, MEDIUM, and HIGH. If the score is less than\
+            \ 55, the level is LOW; if the score is greater than 77, the level is\
+            \ HIGH; if the score is between 55 and 77, the level is MEDIUM. Note that\
+            \ these guidelines could change based on data analytics and product consideration.\
+            \ If the ipAddressReputation.score is unknown, NULL is returned."
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          type: string
+        score:
+          description: "An integer that represents the calculated score of the IP\
+            \ address involved in the transaction. Scores range between 0 and 100.\
+            \ A score of 0 indicates a non-risky IP address; a score of 100 indicates\
+            \ a high-risk IP address. If the IP address reputation score is not available\
+            \ for the specific IP address, NULL is returned."
+          type: integer
+      type: object
+    RiskEvaluationDetails_ipVelocityByUser_threshold:
+      description: The information about the threshold used.
+      example:
+        high: 6
+        medium: 1
+        source: MIN_NOT_REACHED
+        calculatedAt: calculatedAt
+        expiresAt: expiresAt
+      properties:
+        high:
+          description: "An integer indicating the value calculated for the high threshold.\
+            \ If the user accessed more than the high number of IPs during the past\
+            \ hour, they're flagged as a HIGH ipVelocityByUser.level."
+          type: integer
+        medium:
+          description: "An integer indicating the value calculated for the medium\
+            \ threshold. If the user accessed more than the medium number of IPs during\
+            \ the past hour, they're flagged as a MEDIUM ipVelocityByUser.level."
+          type: integer
+        source:
+          description: "An enum indicating the source used to calculate the threshold.\
+            \ This can be MIN_NOT_REACHED. If the measure is less than every.minSample,\
+            \ the threshold isn't calculated. Instead, a value of LOW is automatically\
+            \ assigned. If less than five IPs were used by the user during the past\
+            \ hour, MIN_NOT_REACHED is set. CALCULATED. Indicates the threshold is\
+            \ guaranteed to be calculated. ENVIRONMENT_FALLBACK. Indicates a global\
+            \ threshold calculated for the entire environment is used. The global\
+            \ threshold is used when the ipVelocityByUser.threshold couldn't be calculated,\
+            \ generally due to a lack of past transactions for the risk predictor\
+            \ to use for the threshold calculation. DEFAULT_FALLBACK. Indicates the\
+            \ default threshold defined for the predictor (in threshold.medium or\
+            \ threshold.high) is used. The default threshold is used when ENVIRONMENT_FALLBACK\
+            \ (the global threshold) couldn't be calculated, generally due to a lack\
+            \ of past transactions for the risk predictor to use for the environment\
+            \ threshold calculation."
+          enum:
+          - MIN_NOT_REACHED
+          - CALCULATED
+          - ENVIRONMENT_FALLBACK
+          - DEFAULT_FALLBACK
+          type: string
+        calculatedAt:
+          description: A date-time indicating the timestamp for the calculated threshold.
+          type: string
+        expiresAt:
+          description: A date-time indicating when the threshold will be recalculated.
+            The recalculation will happen before this time.
+          type: string
+      type: object
+    RiskEvaluationDetails_ipVelocityByUser_velocity:
+      description: Integer values for the measures used to calculate velocity.
+      example:
+        distinctCount: 5
+        during: 5
+      properties:
+        distinctCount:
+          description: This is the distinct count for the previous seconds indicated
+            by the during value.
+          type: integer
+        during:
+          description: The interval (in seconds) during which the velocity is calculated.
+          type: integer
+      type: object
+    RiskEvaluationDetails_ipVelocityByUser:
+      example:
+        reason: reason
+        level: LOW
+        threshold:
+          high: 6
+          medium: 1
+          source: MIN_NOT_REACHED
+          calculatedAt: calculatedAt
+          expiresAt: expiresAt
+        velocity:
+          distinctCount: 5
+          during: 5
+      properties:
+        level:
+          description: "An enum indicating whether the number of distinct IPs for\
+            \ the user in the past hour is flagged as LOW, MEDIUM, or HIGH."
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          type: string
+        reason:
+          description: A string indicating the reason the user was flagged. For example
+            "More than 13 IPs were accessed by John during the last 1 hour."
+          type: string
+        threshold:
+          $ref: '#/components/schemas/RiskEvaluationDetails_ipVelocityByUser_threshold'
+        velocity:
+          $ref: '#/components/schemas/RiskEvaluationDetails_ipVelocityByUser_velocity'
+      type: object
+    RiskEvaluationDetails_userVelocityByIp_threshold:
+      description: The information about the calculated threshold used.
+      example:
+        high: 2
+        medium: 7
+        source: MIN_NOT_REACHED
+        calculatedAt: calculatedAt
+        expiresAt: expiresAt
+      properties:
+        high:
+          description: "An integer indicating the value calculated for the high threshold.\
+            \ If the IP was accessed by more than the high number of users during\
+            \ the past hour, the IP is flagged as a HIGH userVelocityByIp.level."
+          type: integer
+        medium:
+          description: "An integer indicating the value calculated for the medium\
+            \ threshold. If the IP was accessed by more than the medium number of\
+            \ users during the past hour, the IP is flagged as a MEDIUM userVelocityByIp.level"
+          type: integer
+        source:
+          description: "An enum indicating the source used to calculate the threshold.\
+            \ This can be: MIN_NOT_REACHED. If the measure is less than every.minSample,\
+            \ the threshold isn't calculated. Instead, a value of LOW is automatically\
+            \ assigned. CALCULATED. Indicates the threshold was calculated. ENVIRONMENT_FALLBACK.\
+            \ Indicates a global threshold calculated for the entire environment is\
+            \ used. The global threshold is used when the userVelocityByIp.threshold\
+            \ couldn't be calculated for the user, generally due to a lack of past\
+            \ transactions for the risk predictor to use for the threshold calculation.\
+            \ DEFAULT_FALLBACK. Indicates the default threshold defined for the predictor\
+            \ (in threshold.medium or threshold.high) is used. The default threshold\
+            \ is used when ENVIRONMENT_FALLBACK (the global threshold) couldn't be\
+            \ calculated, generally due to a lack of past transactions for the risk\
+            \ predictor to use for the global threshold calculation."
+          enum:
+          - MIN_NOT_REACHED
+          - CALCULATED
+          - ENVIRONMENT_FALLBACK
+          - DEFAULT_FALLBACK
+          type: string
+        calculatedAt:
+          description: A date-time indicating the timestamp for the calculated threshold.
+          type: string
+        expiresAt:
+          description: A date-time indicating when the threshold will be recalculated.
+            The recalculation will happen before this time.
+          type: string
+      type: object
+    RiskEvaluationDetails_userVelocityByIp_velocity:
+      description: Integer values for the measures used to calculate velocity.
+      example:
+        distinctCount: 9
+        during: 3
+      properties:
+        distinctCount:
+          description: Relevant only for predictors having a measure value of "DISTINCT_COUNT".
+            This is the number of users that accessed the IP in the past during seconds.
+          type: integer
+        during:
+          description: The interval (in seconds) during which the velocity is calculated.
+          type: integer
+      type: object
+    RiskEvaluationDetails_userVelocityByIp:
+      example:
+        reason: reason
+        level: LOW
+        threshold:
+          high: 2
+          medium: 7
+          source: MIN_NOT_REACHED
+          calculatedAt: calculatedAt
+          expiresAt: expiresAt
+        velocity:
+          distinctCount: 9
+          during: 3
+      properties:
+        level:
+          description: "An enum indicating whether the calculated number of users\
+            \ per IP is LOW, MEDIUM, or HIGH."
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          type: string
+        reason:
+          description: A string indicating the reason the user was flagged. For example
+            "More than 250 users accessed IP address 1.1.1.1 during the last 1 hour."
+          type: string
+        threshold:
+          $ref: '#/components/schemas/RiskEvaluationDetails_userVelocityByIp_threshold'
+        velocity:
+          $ref: '#/components/schemas/RiskEvaluationDetails_userVelocityByIp_velocity'
+      type: object
+    RiskEvaluationDetails_previousSuccessfulTransaction:
+      example:
+        country: country
+        city: city
+        ip: ip
+        state: state
+        anonymousNetworkDetected: true
+        timestamp: timestamp
+      properties:
+        anonymousNetworkDetected:
+          description: A boolean that specifies whether an anonymous network was detected.
+            Information is available twenty-four hours after the last successful transaction.
+          type: boolean
+        country:
+          description: A string that specifies the country of the IP address involved
+            in the transaction. Information is available twenty-four hours after the
+            last successful transaction.
+          type: string
+        state:
+          description: A string that specifies the state of the IP address involved
+            in the transaction. Information is available twenty-four hours after the
+            last successful transaction.
+          type: string
+        city:
+          description: A string that specifies the city of the IP address involved
+            in the transaction. Information is available twenty-four hours after the
+            last successful transaction.
+          type: string
+        ip:
+          description: A string that specifies the IP address involved in the transaction.
+            Information is available twenty-four hours after the last successful transaction.
+          type: string
+        timestamp:
+          description: A date that specifies the timestamp of the transaction. Information
+            is available twenty-four hours after the last successful transaction.
+          type: string
+      type: object
+    RiskEvaluationDetails_userBasedRiskBehavior:
+      example:
+        reason: reason
+        level: LOW
+      properties:
+        level:
+          description: "A string that specifies the risk score calculated for the\
+            \ user behavior for all transactions associated with the accessing device,\
+            \ and for the current authentication attempt. Options are LOW, MEDIUM,\
+            \ and HIGH. This information is available only if customers have agreed\
+            \ to data consent and the intelligence.allowDataConsent property in the\
+            \ PingOne license is set to true."
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          type: string
+        reason:
+          description: "A string that describes the reason (or reasons) provided for\
+            \ the user behavior risk score classification (for example, the operating\
+            \ system or browser type used by the device, and country in which the\
+            \ accessing device is located). Each reason is classified as Unusual,\
+            \ to indicate how much it deviates from normal user behavior, and its\
+            \ effect in calculating the overall user behavior risk score."
+          type: string
+      type: object
+    RiskEvaluationDetails_userRiskBehavior:
+      example:
+        reason: reason
+        level: LOW
+      properties:
+        level:
+          description: "A string that specifies the risk score calculated for the\
+            \ user behavior within the organization associated with the accessing\
+            \ device, and for the current authentication attempt. Options are LOW,\
+            \ MEDIUM, and HIGH. This information is available only if customers have\
+            \ agreed to data consent and the intelligence.allowDataConsent property\
+            \ in the PingOne license is set to true."
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          type: string
+        reason:
+          description: "A string that describes the reason (or reasons) provided for\
+            \ the user behavior risk score classification within the organization\
+            \ (for example, the operating system or browser type used by the device,\
+            \ and country in which the accessing device is located). Each reason is\
+            \ classified as Unusual or Very Unusual, to indicate how much it deviates\
+            \ from normal user behavior, and its effect in calculating the overall\
+            \ user behavior risk score."
+          type: string
+      type: object
+    RiskEvaluationEvent_browser:
+      description: "An object that specifies the browser fingerprint attributes. Browser\
+        \ data can be retrieved using browser fingerprint JS. For more information,\
+        \ see Overview of the PingOne Risk Integration Kit."
+      example:
+        hasLiedLanguages: true
+        webgl:
+        - webgl
+        - webgl
+        touchSupport:
+        - touchSupport
+        - touchSupport
+        timezone: timezone
+        plugins:
+        - "{}"
+        - "{}"
+        localStorage: true
+        language: language
+        hasLiedBrowser: true
+        platform: platform
+        addBehaviour: "{}"
+        availableScreenResolution:
+        - 7.457744773683766
+        - 7.457744773683766
+        timezoneOffset: 1.1730742509559433
+        fonts:
+        - fonts
+        - fonts
+        sessionStorage: true
+        audio: audio
+        screenResolution:
+        - 6.84685269835264
+        - 6.84685269835264
+        openDatabase: true
+        adBlock: true
+        webglVendorAndRenderer: webglVendorAndRenderer
+        cookie: cookie
+        cpuClass: cpuClass
+        hasLiedOs: true
+        userAgent: userAgent
+        indexedDb: true
+        deviceMemory: 1.0246457001441578
+        hasLiedResolution: true
+        hardwareConcurrency: 1.4894159098541704
+        colorDepth: 1.2315135367772556
+      properties:
+        userAgent:
+          type: string
+        cookie:
+          type: string
+        language:
+          type: string
+        colorDepth:
+          type: number
+        deviceMemory:
+          type: number
+        hardwareConcurrency:
+          type: number
+        screenResolution:
+          items:
+            type: number
+          type: array
+        availableScreenResolution:
+          items:
+            type: number
+          type: array
+        timezoneOffset:
+          type: number
+        timezone:
+          type: string
+        sessionStorage:
+          type: boolean
+        localStorage:
+          type: boolean
+        indexedDb:
+          type: boolean
+        addBehaviour:
+          type: object
+        openDatabase:
+          type: boolean
+        cpuClass:
+          type: string
+        platform:
+          type: string
+        plugins:
+          items:
+            type: object
+          type: array
+        webglVendorAndRenderer:
+          type: string
+        webgl:
+          items:
+            type: string
+          type: array
+        adBlock:
+          type: boolean
+        hasLiedLanguages:
+          type: boolean
+        hasLiedResolution:
+          type: boolean
+        hasLiedOs:
+          type: boolean
+        hasLiedBrowser:
+          type: boolean
+        touchSupport:
+          items:
+            type: string
+          type: array
+        fonts:
+          items:
+            type: string
+          type: array
+        audio:
+          type: string
+      type: object
+    RiskEvaluationEvent_evaluatedFactors:
+      example:
+        type: type
+        status: FAILED
+      properties:
+        status:
+          description: "A string that specifies the state of the transaction. Options\
+            \ are FAILED, IN_PROGRESS, and SUCCESS."
+          enum:
+          - FAILED
+          - IN_PROGRESS
+          - SUCCESS
+          type: string
+        type:
+          description: A string that specifies the transaction type.
+          type: string
+      type: object
+    RiskEvaluationEvent_flow:
+      example:
+        type: AUTHENTICATION
+      properties:
+        type:
+          description: A string that specifies the flow type for the event. The only
+            option (and default) is AUTHENTICATION.
+          enum:
+          - AUTHENTICATION
+          type: string
+      type: object
+    RiskEvaluationEvent_session:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies a unique session ID associated with
+            the event.
+          type: string
+      required:
+      - id
+      type: object
+    RiskEvaluationEvent_targetResource:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          description: A string that specifies the ID of the target application.
+          type: string
+        name:
+          description: A string that specifies the name of the target application.
+          type: string
+      type: object
+    RiskEvaluationEvent_user_groups_inner:
+      example:
+        name: name
+      properties:
+        name:
+          description: A string that specifies the name of the group (maximum size
+            1024 characters).
+          type: string
+      type: object
+    RiskEvaluationEvent_user:
+      example:
+        name: name
+        groups:
+        - name: name
+        - name: name
+        id: id
+        type: EXTERNAL
+      properties:
+        id:
+          description: A string that specifies the ID of the user associated with
+            the event (maximum size 1024 characters). This is a required property.
+          type: string
+        name:
+          description: A string that specifies the name of the user associated with
+            the event (maximum size 1024 characters).
+          type: string
+        type:
+          description: A string that specifies the type of user associated with the
+            event. Options are EXTERNAL. This is a required property.
+          enum:
+          - EXTERNAL
+          type: string
+        groups:
+          description: An array of group names.
+          items:
+            $ref: '#/components/schemas/RiskEvaluationEvent_user_groups_inner'
+          type: array
+      required:
+      - id
+      - type
+      type: object
+    RiskPolicySet_riskPolicies_inner_condition_equals:
+      oneOf:
+      - type: string
+      - type: boolean
+    RiskPolicySet_riskPolicies_inner_condition_aggregatedWeights_inner:
+      example:
+        weight: 0
+        value: value
+      properties:
+        value:
+          type: string
+        weight:
+          type: integer
+      required:
+      - value
+      - weight
+      type: object
+    RiskPolicySet_riskPolicies_inner_condition_between:
+      example:
+        minScore: 6
+        maxScore: 1
+      properties:
+        minScore:
+          type: integer
+        maxScore:
+          type: integer
+      required:
+      - maxScore
+      - minScore
+      type: object
+    RiskPolicySet_riskPolicies_inner_condition:
+      description: The condition logic that determines when a policy is evaluated
+        to true and when it is evaluated to false.
+      example:
+        aggregatedWeights:
+        - weight: 0
+          value: value
+        - weight: 0
+          value: value
+        contains: contains
+        equals: null
+        ipRange:
+        - ipRange
+        - ipRange
+        value: value
+        between:
+          minScore: 6
+          maxScore: 1
+      properties:
+        contains:
+          type: string
+        ipRange:
+          items:
+            type: string
+          type: array
+        value:
+          type: string
+        equals:
+          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_equals'
+        aggregatedWeights:
+          items:
+            $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_aggregatedWeights_inner'
+          type: array
+        between:
+          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_between'
+      type: object
+    RiskPolicySet_riskPolicies_inner:
+      example:
+        result:
+          level: LOW
+          type: VALUE
+          value: value
+        createdAt: createdAt
+        condition:
+          aggregatedWeights:
+          - weight: 0
+            value: value
+          - weight: 0
+            value: value
+          contains: contains
+          equals: null
+          ipRange:
+          - ipRange
+          - ipRange
+          value: value
+          between:
+            minScore: 6
+            maxScore: 1
+        environment:
+          id: id
+        name: name
+        description: description
+        id: id
+        priority: 5
+        updatedAt: updatedAt
+      properties:
+        condition:
+          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition'
+        createdAt:
+          description: The time the resource was first created (format ISO-8061).
+          readOnly: true
+          type: string
+        description:
+          description: "A string that specifies a description for this risk policy.\
+            \ This is an optional property. Valid characters consist of any Unicode\
+            \ letter, mark (for example, accent, umlaut), numeric character, punctuation\
+            \ character, or space. Maximum size is 1024 characters."
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: "A string that specifies a name for this risk policy. Valid\
+            \ characters consist of any Unicode letter, mark (for example, accent,\
+            \ umlaut), numeric character, forward slash, dot, apostrophe, underscore,\
+            \ space, or hyphen. Maximum size is 256 characters."
+          type: string
+        priority:
+          description: "An integer that specifies priority of the policy inside a\
+            \ risk policy set, designating which policy should run first. This is\
+            \ a read-only value. The priority is determined by the order in which\
+            \ policies are listed in the policy set. The first policy in the list\
+            \ is assigned priority 1 and is evaluated first. The next policy in the\
+            \ list is assigned priority 2 and so on."
+          type: integer
+        result:
+          $ref: '#/components/schemas/RiskPolicyResult'
+        updatedAt:
+          description: The time the resource was last updated (format ISO-8061).
+          readOnly: true
+          type: string
+      required:
+      - condition
+      - name
+      - result
+      type: object
+    RiskPredictor_default_result:
+      description: "This specifies the result assigned to the predictor if the predictor\
+        \ could not be calculated during the risk evaluation. If this field is not\
+        \ provided, and the predictor could not be calculated during risk evaluation,\
+        \ the following options are: If the predictor is used in an override, the\
+        \ override is skipped. In the weighted policy, the predictor will have a weight\
+        \ of 0."
+      example:
+        level: HIGH
+        type: VALUE
+      properties:
+        level:
+          description: "A string that identifies the risk level. Options are HIGH,\
+            \ MEDIUM, and LOW."
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          type: string
+        type:
+          enum:
+          - VALUE
+          type: string
+      required:
+      - level
+      type: object
+    RiskPredictor_default:
+      example:
+        result:
+          level: HIGH
+          type: VALUE
+        weight: 5
+      properties:
+        weight:
+          description: An integer type. This specifies the weight assigned to the
+            risk predictor in a new policy by default.
+          type: integer
+        result:
+          $ref: '#/components/schemas/RiskPredictor_default_result'
+      required:
+      - result
+      - weight
+      type: object
+    RiskPredictor_map:
+      description: An object that defines the mapping of risk levels for the list
+        of all results.
+      example:
+        high:
+          contains: contains
+          ipRange:
+          - ipRange
+          - ipRange
+          list:
+          - list
+          - list
+          between:
+            minScore: 2.3021358869347655
+            maxScore: 7.061401241503109
+        low:
+          contains: contains
+          ipRange:
+          - ipRange
+          - ipRange
+          list:
+          - list
+          - list
+          between:
+            minScore: 2.3021358869347655
+            maxScore: 7.061401241503109
+        medium:
+          contains: contains
+          ipRange:
+          - ipRange
+          - ipRange
+          list:
+          - list
+          - list
+          between:
+            minScore: 2.3021358869347655
+            maxScore: 7.061401241503109
+      properties:
+        high:
+          $ref: '#/components/schemas/RiskPredictorItemMap'
+        medium:
+          $ref: '#/components/schemas/RiskPredictorItemMap'
+        low:
+          $ref: '#/components/schemas/RiskPredictorItemMap'
+      type: object
+    RiskPredictorItemMap_between:
+      description: Minimum and maximum boundaries
+      example:
+        minScore: 2.3021358869347655
+        maxScore: 7.061401241503109
+      properties:
+        minScore:
+          type: number
+        maxScore:
+          type: number
+      required:
+      - maxScore
+      - minScore
+      type: object
+  securitySchemes:
+    bearer:
+      bearerFormat: JWT
+      description: OAuth bearer token (see documentation)
+      scheme: bearer
+      type: http

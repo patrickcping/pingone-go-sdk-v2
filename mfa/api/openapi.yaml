@@ -1,0 +1,1687 @@
+openapi: 3.0.0
+info:
+  description: The PingOne Platform API covering the PingOne MFA service
+  title: PingOne Platform API - PingOne MFA
+  version: 1.0.0
+externalDocs:
+  description: PingOne Platform API Reference - PingOne MFA APIs
+  url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-mfa
+servers:
+- description: PingOne Platform API Endpoint
+  url: "https://api.pingone.{suffix}"
+  variables:
+    suffix:
+      default: eu
+      enum:
+      - eu
+      - com
+      - asia
+      - ca
+security:
+- bearer: []
+tags:
+- description: "By design, PingOne requests solely comprise this collection. For complete\
+    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+  name: MFA Settings
+- description: "By design, PingOne requests solely comprise this collection. For complete\
+    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+  name: Users > MFA Devices
+- description: "By design, PingOne requests solely comprise this collection. For complete\
+    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+  name: Users > MFA Devices > FIDO2 Biometrics Devices
+- description: "By design, PingOne requests solely comprise this collection. For complete\
+    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+  name: Users > Enable Users MFA
+- description: "By design, PingOne requests solely comprise this collection. For complete\
+    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+  name: Users > MFA Pairing Keys
+paths:
+  /v1/environments/{envID}/applications/{appID}/pushCredentials:
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      operationId: readAllMFAPushCredentials
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: appID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All MFA Push Credentials
+      tags:
+      - Applications > Application MFA Push Credentials
+    post:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      operationId: createMFAPushCredential
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: appID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createMFAPushCredential_request'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createMFAPushCredential_201_response'
+          description: Successful response
+      summary: CREATE MFA Push Credential
+      tags:
+      - Applications > Application MFA Push Credentials
+  /v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID}:
+    delete:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      operationId: deleteMFAPushCredential
+      parameters:
+      - example: "Bearer {{accessToken}}"
+        explode: false
+        in: header
+        name: Authorization
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: appID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: pushCredID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE MFA Push Credential
+      tags:
+      - Applications > Application MFA Push Credentials
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      operationId: readOneMFAPushCredential
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: appID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: pushCredID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createMFAPushCredential_201_response'
+          description: Successful response
+      summary: READ One MFA Push Credential
+      tags:
+      - Applications > Application MFA Push Credentials
+    put:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      operationId: updateMFAPushCredential
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: appID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: pushCredID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateMFAPushCredential_request'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createMFAPushCredential_201_response'
+          description: Successful response
+      summary: UPDATE MFA Push Credential
+      tags:
+      - Applications > Application MFA Push Credentials
+  /v1/environments/{envID}/deviceAuthenticationPolicy:
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: READ Device Authentication Policy
+      tags:
+      - Device Authentication Policy
+  /v1/environments/{envID}/deviceAuthenticationPolicy/{deviceAuthPolicyID}:
+    put:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: deviceAuthPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                name: Environment Policy
+                sms:
+                  enabled: true
+                  otp:
+                    failure:
+                      count: 3
+                      coolDown:
+                        duration: 0
+                        timeUnit: MINUTES
+                    lifeTime:
+                      duration: 30
+                      timeUnit: MINUTES
+                email:
+                  enabled: true
+                  otp:
+                    failure:
+                      count: 3
+                      coolDown:
+                        duration: 0
+                        timeUnit: MINUTES
+                    lifeTime:
+                      duration: 30
+                      timeUnit: MINUTES
+                mobile:
+                  enabled: true
+                  otp:
+                    failure:
+                      count: 3
+                      coolDown:
+                        duration: 2
+                        timeUnit: MINUTES
+                    window:
+                      stepSize:
+                        duration: 30
+                        timeUnit: SECONDS
+                totp:
+                  enabled: true
+                  otp:
+                    failure:
+                      count: 3
+                      coolDown:
+                        duration: 2
+                        timeUnit: MINUTES
+                voice:
+                  enabled: true
+                  otp:
+                    failure:
+                      count: 3
+                      coolDown:
+                        duration: 0
+                        timeUnit: MINUTES
+                    lifeTime:
+                      duration: 30
+                      timeUnit: MINUTES
+                securityKey:
+                  enabled: true
+                forSignOnPolicy: true
+                platform:
+                  enabled: true
+                default: false
+              type: object
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: UPDATE Device Authentication Policy
+      tags:
+      - Device Authentication Policy
+  /v1/environments/{envID}/mfaSettings:
+    delete:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: RESET MFA Settings
+      tags:
+      - MFA Settings
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: READ MFA Settings
+      tags:
+      - MFA Settings
+    put:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                pairing:
+                  maxAllowedDevices: 10
+                lockout:
+                  failureCount: 8
+                  durationSeconds: 600
+                authentication:
+                  deviceSelection: DEFAULT_TO_FIRST
+              type: object
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: UPDATE MFA Settings
+      tags:
+      - MFA Settings
+  /v1/environments/{envID}/users/{userID}/devices:
+    delete:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - example: application/vnd.pingidentity.devices.order.remove+json
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Device Order
+      tags:
+      - Users > MFA Devices
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: READ All MFA User Devices
+      tags:
+      - Users > MFA Devices
+    post:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - example: application/vnd.pingidentity.devices.reorder+json
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                order:
+                - id: "{{deviceID}}"
+                - id: "{{deviceID2}}"
+                - id: "{{deviceID3}}"
+                - id: "{{deviceID4}}"
+                - id: "{{deviceID5}}"
+              type: object
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: SET Device Order
+      tags:
+      - Users > MFA Devices
+  /v1/environments/{envID}/users/{userID}/devices/{deviceID}:
+    delete:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: deviceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE MFA User Device
+      tags:
+      - Users > MFA Devices
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: deviceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: READ One MFA User Device
+      tags:
+      - Users > MFA Devices
+    post:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - example: application/vnd.pingidentity.device.activate+json
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: deviceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                otp: xxxxxx
+              type: object
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: ACTIVATE MFA User Device
+      tags:
+      - Users > MFA Devices
+  /v1/environments/{envID}/users/{userID}/devices/{deviceID}/nickname:
+    put:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: deviceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                nickname: My phone
+              type: object
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: UPDATE Device Nickname
+      tags:
+      - Users > MFA Devices
+  /v1/environments/{envID}/users/{userID}/devices/{deviceID}/logs:
+    put:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: deviceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                status: PENDING
+              type: object
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: SEND MFA Device Logs
+      tags:
+      - Users > MFA Devices
+  /v1/environments/{envID}/users/{userID}/mfaEnabled:
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: READ User MFA Enabled
+      tags:
+      - Users > Enable Users MFA
+    put:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                mfaEnabled: true
+              type: object
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: UPDATE User MFA Enabled
+      tags:
+      - Users > Enable Users MFA
+  /v1/environments/{envID}/users/{userID}/pairingKeys/{pairingKeyID}:
+    delete:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: pairingKeyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE MFA Pairing Key
+      tags:
+      - Users > MFA Pairing Keys
+    get:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: pairingKeyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: READ One MFA Pairing Key
+      tags:
+      - Users > MFA Pairing Keys
+  /v1/environments/{envID}/users/{userID}/pairingKeys:
+    post:
+      description: "By design, PingOne requests solely comprise this collection. For\
+        \ complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
+      parameters:
+      - explode: false
+        in: path
+        name: envID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                applications:
+                - id: "{{appID}}"
+              type: object
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: CREATE MFA Pairing Key
+      tags:
+      - Users > MFA Pairing Keys
+components:
+  schemas:
+    P1Error:
+      properties:
+        id:
+          description: "A unique identifier that is stored in log files and always\
+            \ included in an error response. This value can be used to track the error\
+            \ received by the client, with server-side activity included for troubleshooting\
+            \ purposes."
+          type: string
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        details:
+          description: Additional details about the error. Optional information to
+            help resolve the error and to display to users.
+          items:
+            $ref: '#/components/schemas/P1Error_details_inner'
+          type: array
+      type: object
+    EntityArray:
+      example:
+        size: 6.027456183070403
+        _embedded:
+          pushCredentials:
+          - null
+          - null
+        count: 0.8008281904610115
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/EntityArray__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      type: object
+    ObjectEnvironment:
+      properties:
+        id:
+          description: A string that specifies the environment associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    MFAPushCredential:
+      properties:
+        type:
+          description: "A string that specifies the type of the push credentials.\
+            \ Mandatory. Valid values APNS, FCM"
+          enum:
+          - APNS
+          - FCM
+          type: string
+        key:
+          description: A string that Apple uses as an identifier to identify an authentication
+            key.  Mandatory.
+          type: string
+      required:
+      - key
+      - type
+      type: object
+    MFAPushCredentialAPNS:
+      allOf:
+      - $ref: '#/components/schemas/MFAPushCredential'
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS_allOf'
+    MFAPushCredentialFCM:
+      $ref: '#/components/schemas/MFAPushCredential'
+    createMFAPushCredential_request:
+      example:
+        type: FCM
+        key: key.value
+      oneOf:
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+      - $ref: '#/components/schemas/MFAPushCredentialFCM'
+    createMFAPushCredential_201_response:
+      oneOf:
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+      - $ref: '#/components/schemas/MFAPushCredentialFCM'
+    updateMFAPushCredential_request:
+      example:
+        type: APNS
+        key: key.value.updated
+        teamId: team.id.updated
+        token: |-
+          -----BEGIN PRIVATE KEY-----
+          MIGTAgEA****7HUikGZU
+          -----END PRIVATE KEY-----
+      oneOf:
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+      - $ref: '#/components/schemas/MFAPushCredentialFCM'
+    P1Error_details_inner_innerError:
+      description: Additional details to help the client developer resolve the fault
+        (primarily for UI validation reasons).
+      properties:
+        rangeMinimumValue:
+          description: Errors that failed due to range violation. This attribute represents
+            the minimum value of the range.
+          type: integer
+        rangeMaximumValue:
+          description: The maximum range or value of an attribute.
+          type: integer
+        allowedPattern:
+          description: A regex pattern describing an acceptable input pattern.
+          type: string
+        allowedValues:
+          description: A list describing acceptable values.
+          items:
+            type: string
+          type: array
+        maximumValue:
+          description: The maximum value allowed for the request.
+          type: integer
+      type: object
+    P1Error_details_inner:
+      properties:
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        target:
+          description: The item that caused the error (such as a form field ID or
+            an attribute inside a JSON object).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        innerError:
+          $ref: '#/components/schemas/P1Error_details_inner_innerError'
+      type: object
+    EntityArray__embedded_pushCredentials_inner:
+      anyOf:
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+      - $ref: '#/components/schemas/MFAPushCredentialFCM'
+    EntityArray__embedded:
+      example:
+        pushCredentials:
+        - null
+        - null
+      properties:
+        pushCredentials:
+          items:
+            $ref: '#/components/schemas/EntityArray__embedded_pushCredentials_inner'
+          type: array
+      type: object
+    MFAPushCredentialAPNS_allOf:
+      properties:
+        teamId:
+          description: A string that Apple uses as an identifier to identify teams.
+          type: string
+        token:
+          description: A string that Apple uses as the authentication token signing
+            key to securely connect to APNS. This is a p8 file with a private key
+            format.
+          type: string
+      required:
+      - teamId
+      - token
+      type: object
+  securitySchemes:
+    bearer:
+      bearerFormat: JWT
+      description: OAuth bearer token (see documentation)
+      scheme: bearer
+      type: http
