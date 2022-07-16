@@ -62,6 +62,13 @@ jobs:
     name: Unit Test
     needs: build
     runs-on: ubuntu-latest
+    
+    env:
+      PINGONE_CLIENT_ID: ${{ secrets.EU_PINGONE_CLIENT_ID }}
+      PINGONE_CLIENT_SECRET: ${{ secrets.EU_PINGONE_CLIENT_SECRET }}
+      PINGONE_ENVIRONMENT_ID: ${{ secrets.EU_PINGONE_ENVIRONMENT_ID }}
+      PINGONE_REGION: Europe
+        
     timeout-minutes: 15
     strategy:
       fail-fast: false
