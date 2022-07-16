@@ -48,7 +48,56 @@ func TestFindRegionByName(t *testing.T) {
 		v := FindRegionByName(regionCode)
 
 		if v != regionMap {
-			t.Fatalf("regionToRegionSuffix resulted in %v, expected %v", v, regionMap)
+			t.Fatalf("TestFindRegionByName resulted in %v, expected %v", v, regionMap)
+		}
+
+	}
+}
+
+func TestFindRegionByAPICode(t *testing.T) {
+
+	codeTests := map[string]RegionMapping{
+		"EU": {
+			Region:    "Europe",
+			URLSuffix: "eu",
+			APICode:   "EU",
+		},
+		"NA": {
+			Region:    "NorthAmerica",
+			URLSuffix: "com",
+			APICode:   "NA",
+			Default:   true,
+		},
+		"CA": {
+			Region:    "Canada",
+			URLSuffix: "ca",
+			APICode:   "CA",
+		},
+		"AP": {
+			Region:    "AsiaPacific",
+			URLSuffix: "asia",
+			APICode:   "AP",
+		},
+		"DOES_NOT_EXIST": {
+			Region:    "NorthAmerica",
+			URLSuffix: "com",
+			APICode:   "NA",
+			Default:   true,
+		},
+		"": {
+			Region:    "NorthAmerica",
+			URLSuffix: "com",
+			APICode:   "NA",
+			Default:   true,
+		},
+	}
+
+	for regionCode, regionMap := range codeTests {
+
+		v := FindRegionByAPICode(regionCode)
+
+		if v != regionMap {
+			t.Fatalf("TestFindRegionByAPICode resulted in %v, expected %v", v, regionMap)
 		}
 
 	}

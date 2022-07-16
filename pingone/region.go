@@ -58,6 +58,22 @@ func FindRegionByName(region string) RegionMapping {
 
 }
 
+func FindRegionByAPICode(apiCode string) RegionMapping {
+
+	idx := slices.IndexFunc(regionMappingList, func(c RegionMapping) bool { return c.APICode == apiCode })
+
+	if idx < 0 {
+
+		idx := slices.IndexFunc(regionMappingList, func(c RegionMapping) bool { return c.Default })
+		log.Printf("[INFO] API code %s not found, defaulting to %s", apiCode, regionMappingList[idx].APICode)
+
+		return regionMappingList[idx]
+	}
+
+	return regionMappingList[idx]
+
+}
+
 func AvailableRegionsList() []string {
 
 	regionList := make([]string, 0)
