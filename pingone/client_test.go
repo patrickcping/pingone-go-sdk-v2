@@ -36,8 +36,8 @@ func TestAccAPIClient_Success(t *testing.T) {
 		t.Fatalf("Risk Client not successfully retrieved")
 	}
 
-	if client.RegionSuffix != regionToRegionSuffix(os.Getenv("PINGONE_REGION")) {
-		t.Fatalf("Unexpected region.  Expected %s, got %s", os.Getenv("PINGONE_REGION"), client.RegionSuffix)
+	if client.Region != FindRegionByName(os.Getenv("PINGONE_REGION")) {
+		t.Fatalf("Unexpected region.  Expected %s, got %v", os.Getenv("PINGONE_REGION"), client.Region)
 	}
 }
 

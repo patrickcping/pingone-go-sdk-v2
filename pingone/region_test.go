@@ -5,34 +5,58 @@ import (
 	"testing"
 )
 
-func TestRegionToRegionSuffix(t *testing.T) {
+func TestFindRegionByName(t *testing.T) {
 
-	codeTests := map[string]string{
-		"EU":             "eu",
-		"US":             "com",
-		"CA":             "ca",
-		"ASIA":           "asia",
-		"DOES_NOT_EXIST": "com",
-		"":               "com",
+	codeTests := map[string]RegionMapping{
+		"Europe": {
+			Region:    "Europe",
+			URLSuffix: "eu",
+			APICode:   "EU",
+		},
+		"NorthAmerica": {
+			Region:    "NorthAmerica",
+			URLSuffix: "com",
+			APICode:   "NA",
+			Default:   true,
+		},
+		"Canada": {
+			Region:    "Canada",
+			URLSuffix: "ca",
+			APICode:   "CA",
+		},
+		"AsiaPacific": {
+			Region:    "AsiaPacific",
+			URLSuffix: "asia",
+			APICode:   "AP",
+		},
+		"DOES_NOT_EXIST": {
+			Region:    "NorthAmerica",
+			URLSuffix: "com",
+			APICode:   "NA",
+			Default:   true,
+		},
+		"": {
+			Region:    "NorthAmerica",
+			URLSuffix: "com",
+			APICode:   "NA",
+			Default:   true,
+		},
 	}
 
-	for regionCode, suffixCode := range codeTests {
+	for regionCode, regionMap := range codeTests {
 
-		v := regionToRegionSuffix(regionCode)
-		if v == "" {
-			t.Fatalf("regionToRegionSuffix returned with blank value but expected %s", suffixCode)
-		} else {
+		v := FindRegionByName(regionCode)
 
-			if v != suffixCode {
-				t.Fatalf("regionToRegionSuffix resulted in %v, expected %s", v, suffixCode)
-			}
+		if v != regionMap {
+			t.Fatalf("regionToRegionSuffix resulted in %v, expected %v", v, regionMap)
 		}
+
 	}
 }
 
 func TestAvailableRegionsList(t *testing.T) {
 
-	expectedList := []string{"ASIA", "CA", "EU", "US"}
+	expectedList := []string{"AsiaPacific", "Canada", "Europe", "NorthAmerica"}
 
 	v := AvailableRegionsList()
 	if !reflect.DeepEqual(v, expectedList) {

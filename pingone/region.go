@@ -8,9 +8,10 @@ import (
 )
 
 type RegionMapping struct {
-	Region       string
-	RegionSuffix string
-	Default      bool
+	Region    string
+	URLSuffix string
+	APICode   string
+	Default   bool
 }
 
 var regionMappingList []RegionMapping
@@ -18,26 +19,30 @@ var regionMappingList []RegionMapping
 func init() {
 	regionMappingList = []RegionMapping{
 		{
-			Region:       "EU",
-			RegionSuffix: "eu",
+			Region:    "Europe",
+			URLSuffix: "eu",
+			APICode:   "EU",
 		},
 		{
-			Region:       "US",
-			RegionSuffix: "com",
-			Default:      true,
+			Region:    "NorthAmerica",
+			URLSuffix: "com",
+			APICode:   "NA",
+			Default:   true,
 		},
 		{
-			Region:       "ASIA",
-			RegionSuffix: "asia",
+			Region:    "AsiaPacific",
+			URLSuffix: "asia",
+			APICode:   "AP",
 		},
 		{
-			Region:       "CA",
-			RegionSuffix: "ca",
+			Region:    "Canada",
+			URLSuffix: "ca",
+			APICode:   "CA",
 		},
 	}
 }
 
-func regionToRegionSuffix(region string) string {
+func FindRegionByName(region string) RegionMapping {
 
 	idx := slices.IndexFunc(regionMappingList, func(c RegionMapping) bool { return c.Region == region })
 
@@ -46,10 +51,10 @@ func regionToRegionSuffix(region string) string {
 		idx := slices.IndexFunc(regionMappingList, func(c RegionMapping) bool { return c.Default })
 		log.Printf("[INFO] Region code %s not found, defaulting to %s", region, regionMappingList[idx].Region)
 
-		return regionMappingList[idx].RegionSuffix
+		return regionMappingList[idx]
 	}
 
-	return regionMappingList[idx].RegionSuffix
+	return regionMappingList[idx]
 
 }
 

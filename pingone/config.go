@@ -17,5 +17,5 @@ type Client struct {
 	ManagementAPIClient *management.APIClient
 	MFAAPIClient        *mfa.APIClient
 	RiskAPIClient       *risk.APIClient
-	RegionSuffix        string
+	Region              RegionMapping
 }
