@@ -69,7 +69,7 @@ jobs:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-pkg-mod-${{ hashFiles('go.sum') }}
 
-      - run: go generate -tags tools tools/tools.go
+      - run: make tools
 
       - name: lint
         run: |
