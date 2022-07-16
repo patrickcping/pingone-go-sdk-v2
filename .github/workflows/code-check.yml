@@ -40,7 +40,7 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version-file: 'go.mod'
-        cache: true
+        cache: false
       id: go
     - uses: actions/cache@v3
       continue-on-error: true
@@ -61,7 +61,7 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version-file: 'go.mod'
-          cache: true
+          cache: false
       - uses: actions/cache@v3
         continue-on-error: true
         timeout-minutes: 2
