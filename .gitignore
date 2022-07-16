@@ -45,6 +45,3 @@ bin
 ### Go Patch ###
 /vendor/
 /Godeps/
-
-### Spec ###
-pingone-*.yml
