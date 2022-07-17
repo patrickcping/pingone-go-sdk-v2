@@ -3,7 +3,6 @@ package pingone
 import (
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
 	"github.com/patrickcping/pingone-go-sdk-v2/mfa"
-	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
 	"github.com/patrickcping/pingone-go-sdk-v2/risk"
 )
 
@@ -18,5 +17,5 @@ type Client struct {
 	ManagementAPIClient *management.APIClient
 	MFAAPIClient        *mfa.APIClient
 	RiskAPIClient       *risk.APIClient
-	Region              model.RegionMapping
+	Region              RegionMapping
 }

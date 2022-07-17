@@ -4,8 +4,6 @@ import (
 	"context"
 	"os"
 	"testing"
-
-	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
 )
 
 func TestAccAPIClient_Success(t *testing.T) {
@@ -38,7 +36,7 @@ func TestAccAPIClient_Success(t *testing.T) {
 		t.Fatalf("Risk Client not successfully retrieved")
 	}
 
-	if client.Region != model.FindRegionByName(os.Getenv("PINGONE_REGION")) {
+	if client.Region != FindRegionByName(os.Getenv("PINGONE_REGION")) {
 		t.Fatalf("Unexpected region.  Expected %s, got %v", os.Getenv("PINGONE_REGION"), client.Region)
 	}
 }
