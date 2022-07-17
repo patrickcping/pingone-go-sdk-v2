@@ -1,16 +1,18 @@
-package pingone
+package model
 
 import (
 	"log"
 	"sort"
 
 	"golang.org/x/exp/slices"
+
+	"github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 type RegionMapping struct {
 	Region    string
 	URLSuffix string
-	APICode   string
+	APICode   management.EnumRegionCode
 	Default   bool
 }
 
@@ -21,23 +23,23 @@ func init() {
 		{
 			Region:    "Europe",
 			URLSuffix: "eu",
-			APICode:   "EU",
+			APICode:   management.ENUMREGIONCODE_EU,
 		},
 		{
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   "NA",
+			APICode:   management.ENUMREGIONCODE_NA,
 			Default:   true,
 		},
 		{
 			Region:    "AsiaPacific",
 			URLSuffix: "asia",
-			APICode:   "AP",
+			APICode:   management.ENUMREGIONCODE_AP,
 		},
 		{
 			Region:    "Canada",
 			URLSuffix: "ca",
-			APICode:   "CA",
+			APICode:   management.ENUMREGIONCODE_CA,
 		},
 	}
 }
@@ -58,7 +60,7 @@ func FindRegionByName(region string) RegionMapping {
 
 }
 
-func FindRegionByAPICode(apiCode string) RegionMapping {
+func FindRegionByAPICode(apiCode management.EnumRegionCode) RegionMapping {
 
 	idx := slices.IndexFunc(regionMappingList, func(c RegionMapping) bool { return c.APICode == apiCode })
 
@@ -74,7 +76,7 @@ func FindRegionByAPICode(apiCode string) RegionMapping {
 
 }
 
-func AvailableRegionsList() []string {
+func RegionsAvailableList() []string {
 
 	regionList := make([]string, 0)
 
