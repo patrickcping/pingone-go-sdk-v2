@@ -9,6 +9,20 @@
 
 * `ONE_RISK` (value: `"PING_ONE_RISK"`)
 
+* `ONE_FRAUD` (value: `"PING_ONE_FRAUD"`)
+
+* `ONE_PROVISIONING` (value: `"PING_ONE_PROVISIONING"`)
+
+* `DATA_SYNC` (value: `"PING_DATA_SYNC"`)
+
+* `DATA_GOVERNANCE` (value: `"PING_DATA_GOVERNANCE"`)
+
+* `ONE_FOR_ENTERPRISE` (value: `"PING_ONE_FOR_ENTERPRISE"`)
+
+* `ID_SDK` (value: `"PING_ID_SDK"`)
+
+* `ONE_FOR_SAAS` (value: `"PING_ONE_FOR_SAAS"`)
+
 * `ONE_VERIFY` (value: `"PING_ONE_VERIFY"`)
 
 * `ONE_CREDENTIALS` (value: `"PING_ONE_CREDENTIALS"`)
