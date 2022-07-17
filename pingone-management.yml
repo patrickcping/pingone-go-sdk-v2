@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: PingOne Platform API - SSO and Base
   description: The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
-  version: 1.0.0
+  version: '2022-07-14'
 externalDocs:
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#management-apis
   description: PingOne Platform API Reference - Management APIs

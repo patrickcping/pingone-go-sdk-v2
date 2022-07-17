@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: PingOne Platform API - PingOne MFA
   description: The PingOne Platform API covering the PingOne MFA service
-  version: 1.0.0
+  version: '2021-10-17'
 externalDocs:
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-mfa
   description: PingOne Platform API Reference - PingOne MFA APIs
