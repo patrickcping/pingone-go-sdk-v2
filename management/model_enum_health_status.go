@@ -20,9 +20,9 @@ type EnumHealthStatus string
 
 // List of EnumHealthStatus
 const (
-	HEALTHY EnumHealthStatus = "HEALTHY"
-	DEGRADED EnumHealthStatus = "DEGRADED"
-	UNHEALTHY EnumHealthStatus = "UNHEALTHY"
+	ENUMHEALTHSTATUS_HEALTHY EnumHealthStatus = "HEALTHY"
+	ENUMHEALTHSTATUS_DEGRADED EnumHealthStatus = "DEGRADED"
+	ENUMHEALTHSTATUS_UNHEALTHY EnumHealthStatus = "UNHEALTHY"
 )
 
 // All allowed values of EnumHealthStatus enum

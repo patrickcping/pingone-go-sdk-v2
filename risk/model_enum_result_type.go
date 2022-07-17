@@ -20,7 +20,7 @@ type EnumResultType string
 
 // List of EnumResultType
 const (
-	VALUE EnumResultType = "VALUE"
+	ENUMRESULTTYPE_VALUE EnumResultType = "VALUE"
 )
 
 // All allowed values of EnumResultType enum

@@ -20,9 +20,9 @@ type EnumSchemaAttributeSchemaType string
 
 // List of EnumSchemaAttributeSchemaType
 const (
-	CORE EnumSchemaAttributeSchemaType = "CORE"
-	STANDARD EnumSchemaAttributeSchemaType = "STANDARD"
-	CUSTOM EnumSchemaAttributeSchemaType = "CUSTOM"
+	ENUMSCHEMAATTRIBUTESCHEMATYPE_CORE EnumSchemaAttributeSchemaType = "CORE"
+	ENUMSCHEMAATTRIBUTESCHEMATYPE_STANDARD EnumSchemaAttributeSchemaType = "STANDARD"
+	ENUMSCHEMAATTRIBUTESCHEMATYPE_CUSTOM EnumSchemaAttributeSchemaType = "CUSTOM"
 )
 
 // All allowed values of EnumSchemaAttributeSchemaType enum

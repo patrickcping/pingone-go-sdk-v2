@@ -20,9 +20,9 @@ type EnumApplicationOIDCResponseType string
 
 // List of EnumApplicationOIDCResponseType
 const (
-	TOKEN EnumApplicationOIDCResponseType = "TOKEN"
-	ID_TOKEN EnumApplicationOIDCResponseType = "ID_TOKEN"
-	CODE EnumApplicationOIDCResponseType = "CODE"
+	ENUMAPPLICATIONOIDCRESPONSETYPE_TOKEN EnumApplicationOIDCResponseType = "TOKEN"
+	ENUMAPPLICATIONOIDCRESPONSETYPE_ID_TOKEN EnumApplicationOIDCResponseType = "ID_TOKEN"
+	ENUMAPPLICATIONOIDCRESPONSETYPE_CODE EnumApplicationOIDCResponseType = "CODE"
 )
 
 // All allowed values of EnumApplicationOIDCResponseType enum

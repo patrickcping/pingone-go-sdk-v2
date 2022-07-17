@@ -20,7 +20,7 @@ type EnumFlowType string
 
 // List of EnumFlowType
 const (
-	AUTHENTICATION EnumFlowType = "AUTHENTICATION"
+	ENUMFLOWTYPE_AUTHENTICATION EnumFlowType = "AUTHENTICATION"
 )
 
 // All allowed values of EnumFlowType enum

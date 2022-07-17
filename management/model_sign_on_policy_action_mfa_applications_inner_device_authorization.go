@@ -29,7 +29,7 @@ func NewSignOnPolicyActionMFAApplicationsInnerDeviceAuthorization() *SignOnPolic
 	this := SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization{}
 	var enabled bool = false
 	this.Enabled = &enabled
-	var extraVerification EnumSignOnPolicyExtraVerification = DISABLED
+	var extraVerification EnumSignOnPolicyExtraVerification = ENUMSIGNONPOLICYEXTRAVERIFICATION_DISABLED
 	this.ExtraVerification = &extraVerification
 	return &this
 }
@@ -41,7 +41,7 @@ func NewSignOnPolicyActionMFAApplicationsInnerDeviceAuthorizationWithDefaults() 
 	this := SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization{}
 	var enabled bool = false
 	this.Enabled = &enabled
-	var extraVerification EnumSignOnPolicyExtraVerification = DISABLED
+	var extraVerification EnumSignOnPolicyExtraVerification = ENUMSIGNONPOLICYEXTRAVERIFICATION_DISABLED
 	this.ExtraVerification = &extraVerification
 	return &this
 }

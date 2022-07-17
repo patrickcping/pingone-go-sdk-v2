@@ -20,8 +20,8 @@ type EnumSolutionType string
 
 // List of EnumSolutionType
 const (
-	WORKFORCE EnumSolutionType = "WORKFORCE"
-	CUSTOMER EnumSolutionType = "CUSTOMER"
+	ENUMSOLUTIONTYPE_WORKFORCE EnumSolutionType = "WORKFORCE"
+	ENUMSOLUTIONTYPE_CUSTOMER EnumSolutionType = "CUSTOMER"
 )
 
 // All allowed values of EnumSolutionType enum

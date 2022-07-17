@@ -20,9 +20,9 @@ type EnumResourceType string
 
 // List of EnumResourceType
 const (
-	OPENID_CONNECT EnumResourceType = "OPENID_CONNECT"
-	PING_ONE_API EnumResourceType = "PING_ONE_API"
-	CUSTOM EnumResourceType = "CUSTOM"
+	ENUMRESOURCETYPE_OPENID_CONNECT EnumResourceType = "OPENID_CONNECT"
+	ENUMRESOURCETYPE_PING_ONE_API EnumResourceType = "PING_ONE_API"
+	ENUMRESOURCETYPE_CUSTOM EnumResourceType = "CUSTOM"
 )
 
 // All allowed values of EnumResourceType enum

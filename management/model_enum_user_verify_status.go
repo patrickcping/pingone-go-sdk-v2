@@ -20,9 +20,9 @@ type EnumUserVerifyStatus string
 
 // List of EnumUserVerifyStatus
 const (
-	NOT_INITIATED EnumUserVerifyStatus = "NOT_INITIATED"
-	ENABLED EnumUserVerifyStatus = "ENABLED"
-	DISABLED EnumUserVerifyStatus = "DISABLED"
+	ENUMUSERVERIFYSTATUS_NOT_INITIATED EnumUserVerifyStatus = "NOT_INITIATED"
+	ENUMUSERVERIFYSTATUS_ENABLED EnumUserVerifyStatus = "ENABLED"
+	ENUMUSERVERIFYSTATUS_DISABLED EnumUserVerifyStatus = "DISABLED"
 )
 
 // All allowed values of EnumUserVerifyStatus enum

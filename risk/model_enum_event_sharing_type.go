@@ -20,9 +20,9 @@ type EnumEventSharingType string
 
 // List of EnumEventSharingType
 const (
-	UNSPECIFIED EnumEventSharingType = "UNSPECIFIED"
-	SHARED EnumEventSharingType = "SHARED"
-	PRIVATE EnumEventSharingType = "PRIVATE"
+	ENUMEVENTSHARINGTYPE_UNSPECIFIED EnumEventSharingType = "UNSPECIFIED"
+	ENUMEVENTSHARINGTYPE_SHARED EnumEventSharingType = "SHARED"
+	ENUMEVENTSHARINGTYPE_PRIVATE EnumEventSharingType = "PRIVATE"
 )
 
 // All allowed values of EnumEventSharingType enum

@@ -20,7 +20,7 @@ type EnumApplicationTags string
 
 // List of EnumApplicationTags
 const (
-	PING_FED_CONNECTION_INTEGRATION EnumApplicationTags = "PING_FED_CONNECTION_INTEGRATION"
+	ENUMAPPLICATIONTAGS_PING_FED_CONNECTION_INTEGRATION EnumApplicationTags = "PING_FED_CONNECTION_INTEGRATION"
 )
 
 // All allowed values of EnumApplicationTags enum

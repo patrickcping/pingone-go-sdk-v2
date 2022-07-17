@@ -20,9 +20,9 @@ type EnumSignOnPolicyExtraVerification string
 
 // List of EnumSignOnPolicyExtraVerification
 const (
-	DISABLED EnumSignOnPolicyExtraVerification = "disabled"
-	PERMISSIVE EnumSignOnPolicyExtraVerification = "permissive"
-	RESTRICTIVE EnumSignOnPolicyExtraVerification = "restrictive"
+	ENUMSIGNONPOLICYEXTRAVERIFICATION_DISABLED EnumSignOnPolicyExtraVerification = "disabled"
+	ENUMSIGNONPOLICYEXTRAVERIFICATION_PERMISSIVE EnumSignOnPolicyExtraVerification = "permissive"
+	ENUMSIGNONPOLICYEXTRAVERIFICATION_RESTRICTIVE EnumSignOnPolicyExtraVerification = "restrictive"
 )
 
 // All allowed values of EnumSignOnPolicyExtraVerification enum

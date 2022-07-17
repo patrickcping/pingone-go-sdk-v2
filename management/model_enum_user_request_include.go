@@ -20,8 +20,8 @@ type EnumUserRequestInclude string
 
 // List of EnumUserRequestInclude
 const (
-	MEMBER_OF_GROUP_IDS EnumUserRequestInclude = "memberOfGroupIDs"
-	MEMBER_OF_GROUP_NAMES EnumUserRequestInclude = "memberOfGroupNames"
+	ENUMUSERREQUESTINCLUDE_MEMBER_OF_GROUP_IDS EnumUserRequestInclude = "memberOfGroupIDs"
+	ENUMUSERREQUESTINCLUDE_MEMBER_OF_GROUP_NAMES EnumUserRequestInclude = "memberOfGroupNames"
 )
 
 // All allowed values of EnumUserRequestInclude enum

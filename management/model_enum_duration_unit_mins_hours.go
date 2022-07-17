@@ -20,8 +20,8 @@ type EnumDurationUnitMinsHours string
 
 // List of EnumDurationUnitMinsHours
 const (
-	MINUTES EnumDurationUnitMinsHours = "MINUTES"
-	HOURS EnumDurationUnitMinsHours = "HOURS"
+	ENUMDURATIONUNITMINSHOURS_MINUTES EnumDurationUnitMinsHours = "MINUTES"
+	ENUMDURATIONUNITMINSHOURS_HOURS EnumDurationUnitMinsHours = "HOURS"
 )
 
 // All allowed values of EnumDurationUnitMinsHours enum

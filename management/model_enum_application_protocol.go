@@ -20,8 +20,8 @@ type EnumApplicationProtocol string
 
 // List of EnumApplicationProtocol
 const (
-	OPENID_CONNECT EnumApplicationProtocol = "OPENID_CONNECT"
-	SAML EnumApplicationProtocol = "SAML"
+	ENUMAPPLICATIONPROTOCOL_OPENID_CONNECT EnumApplicationProtocol = "OPENID_CONNECT"
+	ENUMAPPLICATIONPROTOCOL_SAML EnumApplicationProtocol = "SAML"
 )
 
 // All allowed values of EnumApplicationProtocol enum

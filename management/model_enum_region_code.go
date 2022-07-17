@@ -20,10 +20,10 @@ type EnumRegionCode string
 
 // List of EnumRegionCode
 const (
-	AP EnumRegionCode = "AP"
-	CA EnumRegionCode = "CA"
-	EU EnumRegionCode = "EU"
-	NA EnumRegionCode = "NA"
+	ENUMREGIONCODE_AP EnumRegionCode = "AP"
+	ENUMREGIONCODE_CA EnumRegionCode = "CA"
+	ENUMREGIONCODE_EU EnumRegionCode = "EU"
+	ENUMREGIONCODE_NA EnumRegionCode = "NA"
 )
 
 // All allowed values of EnumRegionCode enum

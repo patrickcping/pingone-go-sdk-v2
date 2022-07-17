@@ -20,8 +20,8 @@ type EnumApplicationSAMLSloBinding string
 
 // List of EnumApplicationSAMLSloBinding
 const (
-	REDIRECT EnumApplicationSAMLSloBinding = "HTTP_REDIRECT"
-	POST EnumApplicationSAMLSloBinding = "HTTP_POST"
+	ENUMAPPLICATIONSAMLSLOBINDING_REDIRECT EnumApplicationSAMLSloBinding = "HTTP_REDIRECT"
+	ENUMAPPLICATIONSAMLSLOBINDING_POST EnumApplicationSAMLSloBinding = "HTTP_POST"
 )
 
 // All allowed values of EnumApplicationSAMLSloBinding enum

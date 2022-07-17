@@ -20,9 +20,9 @@ type EnumAttributeMappingType string
 
 // List of EnumAttributeMappingType
 const (
-	CORE EnumAttributeMappingType = "CORE"
-	SCOPE EnumAttributeMappingType = "SCOPE"
-	CUSTOM EnumAttributeMappingType = "CUSTOM"
+	ENUMATTRIBUTEMAPPINGTYPE_CORE EnumAttributeMappingType = "CORE"
+	ENUMATTRIBUTEMAPPINGTYPE_SCOPE EnumAttributeMappingType = "SCOPE"
+	ENUMATTRIBUTEMAPPINGTYPE_CUSTOM EnumAttributeMappingType = "CUSTOM"
 )
 
 // All allowed values of EnumAttributeMappingType enum

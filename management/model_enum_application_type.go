@@ -20,12 +20,12 @@ type EnumApplicationType string
 
 // List of EnumApplicationType
 const (
-	WEB_APP EnumApplicationType = "WEB_APP"
-	NATIVE_APP EnumApplicationType = "NATIVE_APP"
-	SINGLE_PAGE_APP EnumApplicationType = "SINGLE_PAGE_APP"
-	WORKER EnumApplicationType = "WORKER"
-	SERVICE EnumApplicationType = "SERVICE"
-	CUSTOM_APP EnumApplicationType = "CUSTOM_APP"
+	ENUMAPPLICATIONTYPE_WEB_APP EnumApplicationType = "WEB_APP"
+	ENUMAPPLICATIONTYPE_NATIVE_APP EnumApplicationType = "NATIVE_APP"
+	ENUMAPPLICATIONTYPE_SINGLE_PAGE_APP EnumApplicationType = "SINGLE_PAGE_APP"
+	ENUMAPPLICATIONTYPE_WORKER EnumApplicationType = "WORKER"
+	ENUMAPPLICATIONTYPE_SERVICE EnumApplicationType = "SERVICE"
+	ENUMAPPLICATIONTYPE_CUSTOM_APP EnumApplicationType = "CUSTOM_APP"
 )
 
 // All allowed values of EnumApplicationType enum

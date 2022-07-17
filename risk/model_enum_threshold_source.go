@@ -20,10 +20,10 @@ type EnumThresholdSource string
 
 // List of EnumThresholdSource
 const (
-	MIN_NOT_REACHED EnumThresholdSource = "MIN_NOT_REACHED"
-	CALCULATED EnumThresholdSource = "CALCULATED"
-	ENVIRONMENT_FALLBACK EnumThresholdSource = "ENVIRONMENT_FALLBACK"
-	DEFAULT_FALLBACK EnumThresholdSource = "DEFAULT_FALLBACK"
+	ENUMTHRESHOLDSOURCE_MIN_NOT_REACHED EnumThresholdSource = "MIN_NOT_REACHED"
+	ENUMTHRESHOLDSOURCE_CALCULATED EnumThresholdSource = "CALCULATED"
+	ENUMTHRESHOLDSOURCE_ENVIRONMENT_FALLBACK EnumThresholdSource = "ENVIRONMENT_FALLBACK"
+	ENUMTHRESHOLDSOURCE_DEFAULT_FALLBACK EnumThresholdSource = "DEFAULT_FALLBACK"
 )
 
 // All allowed values of EnumThresholdSource enum

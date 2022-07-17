@@ -20,17 +20,17 @@ type EnumRoleName string
 
 // List of EnumRoleName
 const (
-	ORGANIZATION_ADMIN EnumRoleName = "Organization Admin"
-	ENVIRONMENT_ADMIN EnumRoleName = "Environment Admin"
-	IDENTITY_DATA_ADMIN EnumRoleName = "Identity Data Admin"
-	CLIENT_APPLICATION_DEVELOPER EnumRoleName = "Client Application Developer"
-	IDENTITY_DATA_READ_ONLY EnumRoleName = "Identity Data Read Only"
-	CONFIGURATION_READ_ONLY EnumRoleName = "Configuration Read Only"
-	PING_FEDERATE_ADMINISTRATOR EnumRoleName = "PingFederate Administrator"
-	PING_FEDERATE_EXPRESSION_ADMINISTRATOR EnumRoleName = "PingFederate Expression Administrator"
-	PING_FEDERATE_CRYPTO_ADMINISTRATOR EnumRoleName = "PingFederate Crypto Administrator"
-	PING_FEDERATE_USER_ADMINISTRATOR EnumRoleName = "PingFederate User Administrator"
-	PING_FEDERATE_AUDITOR EnumRoleName = "PingFederate Auditor"
+	ENUMROLENAME_ORGANIZATION_ADMIN EnumRoleName = "Organization Admin"
+	ENUMROLENAME_ENVIRONMENT_ADMIN EnumRoleName = "Environment Admin"
+	ENUMROLENAME_IDENTITY_DATA_ADMIN EnumRoleName = "Identity Data Admin"
+	ENUMROLENAME_CLIENT_APPLICATION_DEVELOPER EnumRoleName = "Client Application Developer"
+	ENUMROLENAME_IDENTITY_DATA_READ_ONLY EnumRoleName = "Identity Data Read Only"
+	ENUMROLENAME_CONFIGURATION_READ_ONLY EnumRoleName = "Configuration Read Only"
+	ENUMROLENAME_PING_FEDERATE_ADMINISTRATOR EnumRoleName = "PingFederate Administrator"
+	ENUMROLENAME_PING_FEDERATE_EXPRESSION_ADMINISTRATOR EnumRoleName = "PingFederate Expression Administrator"
+	ENUMROLENAME_PING_FEDERATE_CRYPTO_ADMINISTRATOR EnumRoleName = "PingFederate Crypto Administrator"
+	ENUMROLENAME_PING_FEDERATE_USER_ADMINISTRATOR EnumRoleName = "PingFederate User Administrator"
+	ENUMROLENAME_PING_FEDERATE_AUDITOR EnumRoleName = "PingFederate Auditor"
 )
 
 // All allowed values of EnumRoleName enum

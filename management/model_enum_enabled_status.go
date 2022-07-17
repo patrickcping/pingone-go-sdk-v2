@@ -20,8 +20,8 @@ type EnumEnabledStatus string
 
 // List of EnumEnabledStatus
 const (
-	ENABLED EnumEnabledStatus = "ENABLED"
-	DISABLED EnumEnabledStatus = "DISABLED"
+	ENUMENABLEDSTATUS_ENABLED EnumEnabledStatus = "ENABLED"
+	ENUMENABLEDSTATUS_DISABLED EnumEnabledStatus = "DISABLED"
 )
 
 // All allowed values of EnumEnabledStatus enum

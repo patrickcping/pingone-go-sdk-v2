@@ -20,9 +20,9 @@ type EnumGatewayLDAPSecurity string
 
 // List of EnumGatewayLDAPSecurity
 const (
-	NONE EnumGatewayLDAPSecurity = "None"
-	TLS EnumGatewayLDAPSecurity = "TLS"
-	START_TLS EnumGatewayLDAPSecurity = "StartTLS"
+	ENUMGATEWAYLDAPSECURITY_NONE EnumGatewayLDAPSecurity = "None"
+	ENUMGATEWAYLDAPSECURITY_TLS EnumGatewayLDAPSecurity = "TLS"
+	ENUMGATEWAYLDAPSECURITY_START_TLS EnumGatewayLDAPSecurity = "StartTLS"
 )
 
 // All allowed values of EnumGatewayLDAPSecurity enum

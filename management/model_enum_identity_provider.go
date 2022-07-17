@@ -20,19 +20,19 @@ type EnumIdentityProvider string
 
 // List of EnumIdentityProvider
 const (
-	FACEBOOK EnumIdentityProvider = "FACEBOOK"
-	GOOGLE EnumIdentityProvider = "GOOGLE"
-	LINKEDIN EnumIdentityProvider = "LINKEDIN"
-	APPLE EnumIdentityProvider = "APPLE"
-	TWITTER EnumIdentityProvider = "TWITTER"
-	AMAZON EnumIdentityProvider = "AMAZON"
-	YAHOO EnumIdentityProvider = "YAHOO"
-	MICROSOFT EnumIdentityProvider = "MICROSOFT"
-	PAYPAL EnumIdentityProvider = "PAYPAL"
-	GITHUB EnumIdentityProvider = "GITHUB"
-	OPENID_CONNECT EnumIdentityProvider = "OPENID_CONNECT"
-	SAML EnumIdentityProvider = "SAML"
-	PING_ONE EnumIdentityProvider = "PING_ONE"
+	ENUMIDENTITYPROVIDER_FACEBOOK EnumIdentityProvider = "FACEBOOK"
+	ENUMIDENTITYPROVIDER_GOOGLE EnumIdentityProvider = "GOOGLE"
+	ENUMIDENTITYPROVIDER_LINKEDIN EnumIdentityProvider = "LINKEDIN"
+	ENUMIDENTITYPROVIDER_APPLE EnumIdentityProvider = "APPLE"
+	ENUMIDENTITYPROVIDER_TWITTER EnumIdentityProvider = "TWITTER"
+	ENUMIDENTITYPROVIDER_AMAZON EnumIdentityProvider = "AMAZON"
+	ENUMIDENTITYPROVIDER_YAHOO EnumIdentityProvider = "YAHOO"
+	ENUMIDENTITYPROVIDER_MICROSOFT EnumIdentityProvider = "MICROSOFT"
+	ENUMIDENTITYPROVIDER_PAYPAL EnumIdentityProvider = "PAYPAL"
+	ENUMIDENTITYPROVIDER_GITHUB EnumIdentityProvider = "GITHUB"
+	ENUMIDENTITYPROVIDER_OPENID_CONNECT EnumIdentityProvider = "OPENID_CONNECT"
+	ENUMIDENTITYPROVIDER_SAML EnumIdentityProvider = "SAML"
+	ENUMIDENTITYPROVIDER_PING_ONE EnumIdentityProvider = "PING_ONE"
 )
 
 // All allowed values of EnumIdentityProvider enum

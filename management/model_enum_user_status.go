@@ -20,8 +20,8 @@ type EnumUserStatus string
 
 // List of EnumUserStatus
 const (
-	LOCKED EnumUserStatus = "LOCKED"
-	OK EnumUserStatus = "OK"
+	ENUMUSERSTATUS_LOCKED EnumUserStatus = "LOCKED"
+	ENUMUSERSTATUS_OK EnumUserStatus = "OK"
 )
 
 // All allowed values of EnumUserStatus enum

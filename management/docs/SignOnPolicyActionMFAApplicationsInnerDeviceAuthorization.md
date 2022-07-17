@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** | A boolean that specifies the enabled/disabled state of automatic MFA for native devices paired with the user for the specified application. | [optional] [default to false]
-**ExtraVerification** | Pointer to [**EnumSignOnPolicyExtraVerification**](EnumSignOnPolicyExtraVerification.md) |  | [optional] [default to DISABLED]
+**ExtraVerification** | Pointer to [**EnumSignOnPolicyExtraVerification**](EnumSignOnPolicyExtraVerification.md) |  | [optional] [default to ENUMSIGNONPOLICYEXTRAVERIFICATION_DISABLED]
 
 ## Methods
 

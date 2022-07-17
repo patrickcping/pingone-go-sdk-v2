@@ -20,10 +20,10 @@ type EnumSchemaAttributeType string
 
 // List of EnumSchemaAttributeType
 const (
-	STRING EnumSchemaAttributeType = "STRING"
-	JSON EnumSchemaAttributeType = "JSON"
-	BOOLEAN EnumSchemaAttributeType = "BOOLEAN"
-	COMPLEX EnumSchemaAttributeType = "COMPLEX"
+	ENUMSCHEMAATTRIBUTETYPE_STRING EnumSchemaAttributeType = "STRING"
+	ENUMSCHEMAATTRIBUTETYPE_JSON EnumSchemaAttributeType = "JSON"
+	ENUMSCHEMAATTRIBUTETYPE_BOOLEAN EnumSchemaAttributeType = "BOOLEAN"
+	ENUMSCHEMAATTRIBUTETYPE_COMPLEX EnumSchemaAttributeType = "COMPLEX"
 )
 
 // All allowed values of EnumSchemaAttributeType enum

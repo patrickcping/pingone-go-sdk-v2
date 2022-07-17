@@ -20,8 +20,8 @@ type EnumSignOnPolicyNoDeviceMode string
 
 // List of EnumSignOnPolicyNoDeviceMode
 const (
-	BYPASS EnumSignOnPolicyNoDeviceMode = "BYPASS"
-	BLOCK EnumSignOnPolicyNoDeviceMode = "BLOCK"
+	ENUMSIGNONPOLICYNODEVICEMODE_BYPASS EnumSignOnPolicyNoDeviceMode = "BYPASS"
+	ENUMSIGNONPOLICYNODEVICEMODE_BLOCK EnumSignOnPolicyNoDeviceMode = "BLOCK"
 )
 
 // All allowed values of EnumSignOnPolicyNoDeviceMode enum

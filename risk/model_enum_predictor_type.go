@@ -20,9 +20,9 @@ type EnumPredictorType string
 
 // List of EnumPredictorType
 const (
-	VELOCITY EnumPredictorType = "VELOCITY"
-	USER_RISK_BEHAVIOR EnumPredictorType = "USER_RISK_BEHAVIOR"
-	MAP EnumPredictorType = "MAP"
+	ENUMPREDICTORTYPE_VELOCITY EnumPredictorType = "VELOCITY"
+	ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR EnumPredictorType = "USER_RISK_BEHAVIOR"
+	ENUMPREDICTORTYPE_MAP EnumPredictorType = "MAP"
 )
 
 // All allowed values of EnumPredictorType enum

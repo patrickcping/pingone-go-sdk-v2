@@ -20,9 +20,9 @@ type EnumRiskLevel string
 
 // List of EnumRiskLevel
 const (
-	LOW EnumRiskLevel = "LOW"
-	MEDIUM EnumRiskLevel = "MEDIUM"
-	HIGH EnumRiskLevel = "HIGH"
+	ENUMRISKLEVEL_LOW EnumRiskLevel = "LOW"
+	ENUMRISKLEVEL_MEDIUM EnumRiskLevel = "MEDIUM"
+	ENUMRISKLEVEL_HIGH EnumRiskLevel = "HIGH"
 )
 
 // All allowed values of EnumRiskLevel enum

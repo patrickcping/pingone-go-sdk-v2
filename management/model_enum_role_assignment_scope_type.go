@@ -20,9 +20,9 @@ type EnumRoleAssignmentScopeType string
 
 // List of EnumRoleAssignmentScopeType
 const (
-	ORGANIZATION EnumRoleAssignmentScopeType = "ORGANIZATION"
-	ENVIRONMENT EnumRoleAssignmentScopeType = "ENVIRONMENT"
-	POPULATION EnumRoleAssignmentScopeType = "POPULATION"
+	ENUMROLEASSIGNMENTSCOPETYPE_ORGANIZATION EnumRoleAssignmentScopeType = "ORGANIZATION"
+	ENUMROLEASSIGNMENTSCOPETYPE_ENVIRONMENT EnumRoleAssignmentScopeType = "ENVIRONMENT"
+	ENUMROLEASSIGNMENTSCOPETYPE_POPULATION EnumRoleAssignmentScopeType = "POPULATION"
 )
 
 // All allowed values of EnumRoleAssignmentScopeType enum

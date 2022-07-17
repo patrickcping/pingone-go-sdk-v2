@@ -20,7 +20,7 @@ type EnumUserType string
 
 // List of EnumUserType
 const (
-	EXTERNAL EnumUserType = "EXTERNAL"
+	ENUMUSERTYPE_EXTERNAL EnumUserType = "EXTERNAL"
 )
 
 // All allowed values of EnumUserType enum

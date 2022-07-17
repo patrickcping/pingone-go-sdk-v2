@@ -20,8 +20,8 @@ type EnumOrganizationType string
 
 // List of EnumOrganizationType
 const (
-	PAID EnumOrganizationType = "PAID"
-	TRIAL EnumOrganizationType = "TRIAL"
+	ENUMORGANIZATIONTYPE_PAID EnumOrganizationType = "PAID"
+	ENUMORGANIZATIONTYPE_TRIAL EnumOrganizationType = "TRIAL"
 )
 
 // All allowed values of EnumOrganizationType enum

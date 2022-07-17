@@ -20,8 +20,8 @@ type EnumEnvironmentType string
 
 // List of EnumEnvironmentType
 const (
-	PRODUCTION EnumEnvironmentType = "PRODUCTION"
-	SANDBOX EnumEnvironmentType = "SANDBOX"
+	ENUMENVIRONMENTTYPE_PRODUCTION EnumEnvironmentType = "PRODUCTION"
+	ENUMENVIRONMENTTYPE_SANDBOX EnumEnvironmentType = "SANDBOX"
 )
 
 // All allowed values of EnumEnvironmentType enum

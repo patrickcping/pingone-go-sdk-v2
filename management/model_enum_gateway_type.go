@@ -20,9 +20,9 @@ type EnumGatewayType string
 
 // List of EnumGatewayType
 const (
-	LDAP EnumGatewayType = "LDAP"
-	PING_FEDERATE EnumGatewayType = "PING_FEDERATE"
-	PING_INTELLIGENCE EnumGatewayType = "PING_INTELLIGENCE"
+	ENUMGATEWAYTYPE_LDAP EnumGatewayType = "LDAP"
+	ENUMGATEWAYTYPE_PING_FEDERATE EnumGatewayType = "PING_FEDERATE"
+	ENUMGATEWAYTYPE_PING_INTELLIGENCE EnumGatewayType = "PING_INTELLIGENCE"
 )
 
 // All allowed values of EnumGatewayType enum

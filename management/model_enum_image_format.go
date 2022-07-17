@@ -20,9 +20,9 @@ type EnumImageFormat string
 
 // List of EnumImageFormat
 const (
-	PNG EnumImageFormat = "PNG"
-	JPG EnumImageFormat = "JPG"
-	GIF EnumImageFormat = "GIF"
+	ENUMIMAGEFORMAT_PNG EnumImageFormat = "PNG"
+	ENUMIMAGEFORMAT_JPG EnumImageFormat = "JPG"
+	ENUMIMAGEFORMAT_GIF EnumImageFormat = "GIF"
 )
 
 // All allowed values of EnumImageFormat enum

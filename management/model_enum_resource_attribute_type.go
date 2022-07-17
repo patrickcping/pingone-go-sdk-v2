@@ -20,8 +20,8 @@ type EnumResourceAttributeType string
 
 // List of EnumResourceAttributeType
 const (
-	CORE EnumResourceAttributeType = "CORE"
-	CUSTOM EnumResourceAttributeType = "CUSTOM"
+	ENUMRESOURCEATTRIBUTETYPE_CORE EnumResourceAttributeType = "CORE"
+	ENUMRESOURCEATTRIBUTETYPE_CUSTOM EnumResourceAttributeType = "CUSTOM"
 )
 
 // All allowed values of EnumResourceAttributeType enum

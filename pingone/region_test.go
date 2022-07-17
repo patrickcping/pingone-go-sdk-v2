@@ -3,6 +3,8 @@ package pingone
 import (
 	"reflect"
 	"testing"
+
+	"github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func TestFindRegionByName(t *testing.T) {
@@ -11,34 +13,34 @@ func TestFindRegionByName(t *testing.T) {
 		"Europe": {
 			Region:    "Europe",
 			URLSuffix: "eu",
-			APICode:   "EU",
+			APICode:   management.EnumRegionCode("EU"),
 		},
 		"NorthAmerica": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   "NA",
+			APICode:   management.EnumRegionCode("NA"),
 			Default:   true,
 		},
 		"Canada": {
 			Region:    "Canada",
 			URLSuffix: "ca",
-			APICode:   "CA",
+			APICode:   management.EnumRegionCode("CA"),
 		},
 		"AsiaPacific": {
 			Region:    "AsiaPacific",
 			URLSuffix: "asia",
-			APICode:   "AP",
+			APICode:   management.EnumRegionCode("AP"),
 		},
 		"DOES_NOT_EXIST": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   "NA",
+			APICode:   management.EnumRegionCode("NA"),
 			Default:   true,
 		},
 		"": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   "NA",
+			APICode:   management.EnumRegionCode("NA"),
 			Default:   true,
 		},
 	}
@@ -60,34 +62,34 @@ func TestFindRegionByAPICode(t *testing.T) {
 		"EU": {
 			Region:    "Europe",
 			URLSuffix: "eu",
-			APICode:   "EU",
+			APICode:   management.EnumRegionCode("EU"),
 		},
 		"NA": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   "NA",
+			APICode:   management.EnumRegionCode("NA"),
 			Default:   true,
 		},
 		"CA": {
 			Region:    "Canada",
 			URLSuffix: "ca",
-			APICode:   "CA",
+			APICode:   management.EnumRegionCode("CA"),
 		},
 		"AP": {
 			Region:    "AsiaPacific",
 			URLSuffix: "asia",
-			APICode:   "AP",
+			APICode:   management.EnumRegionCode("AP"),
 		},
 		"DOES_NOT_EXIST": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   "NA",
+			APICode:   management.EnumRegionCode("NA"),
 			Default:   true,
 		},
 		"": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   "NA",
+			APICode:   management.EnumRegionCode("NA"),
 			Default:   true,
 		},
 	}

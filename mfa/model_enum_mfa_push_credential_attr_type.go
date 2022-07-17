@@ -20,8 +20,8 @@ type EnumMFAPushCredentialAttrType string
 
 // List of EnumMFAPushCredentialAttrType
 const (
-	APNS EnumMFAPushCredentialAttrType = "APNS"
-	FCM EnumMFAPushCredentialAttrType = "FCM"
+	ENUMMFAPUSHCREDENTIALATTRTYPE_APNS EnumMFAPushCredentialAttrType = "APNS"
+	ENUMMFAPUSHCREDENTIALATTRTYPE_FCM EnumMFAPushCredentialAttrType = "FCM"
 )
 
 // All allowed values of EnumMFAPushCredentialAttrType enum

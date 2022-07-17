@@ -20,9 +20,9 @@ type EnumApplicationOIDCPKCEOption string
 
 // List of EnumApplicationOIDCPKCEOption
 const (
-	OPTIONAL EnumApplicationOIDCPKCEOption = "OPTIONAL"
-	REQUIRED EnumApplicationOIDCPKCEOption = "REQUIRED"
-	S256_REQUIRED EnumApplicationOIDCPKCEOption = "S256_REQUIRED"
+	ENUMAPPLICATIONOIDCPKCEOPTION_OPTIONAL EnumApplicationOIDCPKCEOption = "OPTIONAL"
+	ENUMAPPLICATIONOIDCPKCEOPTION_REQUIRED EnumApplicationOIDCPKCEOption = "REQUIRED"
+	ENUMAPPLICATIONOIDCPKCEOPTION_S256_REQUIRED EnumApplicationOIDCPKCEOption = "S256_REQUIRED"
 )
 
 // All allowed values of EnumApplicationOIDCPKCEOption enum

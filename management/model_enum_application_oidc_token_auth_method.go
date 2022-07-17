@@ -20,9 +20,9 @@ type EnumApplicationOIDCTokenAuthMethod string
 
 // List of EnumApplicationOIDCTokenAuthMethod
 const (
-	NONE EnumApplicationOIDCTokenAuthMethod = "NONE"
-	CLIENT_SECRET_BASIC EnumApplicationOIDCTokenAuthMethod = "CLIENT_SECRET_BASIC"
-	CLIENT_SECRET_POST EnumApplicationOIDCTokenAuthMethod = "CLIENT_SECRET_POST"
+	ENUMAPPLICATIONOIDCTOKENAUTHMETHOD_NONE EnumApplicationOIDCTokenAuthMethod = "NONE"
+	ENUMAPPLICATIONOIDCTOKENAUTHMETHOD_CLIENT_SECRET_BASIC EnumApplicationOIDCTokenAuthMethod = "CLIENT_SECRET_BASIC"
+	ENUMAPPLICATIONOIDCTOKENAUTHMETHOD_CLIENT_SECRET_POST EnumApplicationOIDCTokenAuthMethod = "CLIENT_SECRET_POST"
 )
 
 // All allowed values of EnumApplicationOIDCTokenAuthMethod enum

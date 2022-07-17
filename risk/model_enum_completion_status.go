@@ -20,9 +20,9 @@ type EnumCompletionStatus string
 
 // List of EnumCompletionStatus
 const (
-	FAILED EnumCompletionStatus = "FAILED"
-	IN_PROGRESS EnumCompletionStatus = "IN_PROGRESS"
-	SUCCESS EnumCompletionStatus = "SUCCESS"
+	ENUMCOMPLETIONSTATUS_FAILED EnumCompletionStatus = "FAILED"
+	ENUMCOMPLETIONSTATUS_IN_PROGRESS EnumCompletionStatus = "IN_PROGRESS"
+	ENUMCOMPLETIONSTATUS_SUCCESS EnumCompletionStatus = "SUCCESS"
 )
 
 // All allowed values of EnumCompletionStatus enum

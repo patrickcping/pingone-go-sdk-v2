@@ -20,8 +20,8 @@ type EnumUserLifecycleStatus string
 
 // List of EnumUserLifecycleStatus
 const (
-	ACCOUNT_OK EnumUserLifecycleStatus = "ACCOUNT_OK"
-	VERIFICATION_REQUIRED EnumUserLifecycleStatus = "VERIFICATION_REQUIRED"
+	ENUMUSERLIFECYCLESTATUS_ACCOUNT_OK EnumUserLifecycleStatus = "ACCOUNT_OK"
+	ENUMUSERLIFECYCLESTATUS_VERIFICATION_REQUIRED EnumUserLifecycleStatus = "VERIFICATION_REQUIRED"
 )
 
 // All allowed values of EnumUserLifecycleStatus enum
