@@ -42,7 +42,10 @@ golangci-lint:
 lint: golangci-lint
 	@./scripts/lint-all.sh
 
+gosec:
+	@gosec -exclude-generated ./...
+
 generate:
 	@./scripts/generate-all.sh $(OWNER) $(REPO)
 	
-.PHONY: tools build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck
+.PHONY: tools build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck generate securitycheck
