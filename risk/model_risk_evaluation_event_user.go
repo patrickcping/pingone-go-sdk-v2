@@ -20,8 +20,7 @@ type RiskEvaluationEventUser struct {
 	Id string `json:"id"`
 	// A string that specifies the name of the user associated with the event (maximum size 1024 characters).
 	Name *string `json:"name,omitempty"`
-	// A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property.
-	Type string `json:"type"`
+	Type EnumUserType `json:"type"`
 	// An array of group names.
 	Groups []RiskEvaluationEventUserGroupsInner `json:"groups,omitempty"`
 }
@@ -30,7 +29,7 @@ type RiskEvaluationEventUser struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskEvaluationEventUser(id string, type_ string) *RiskEvaluationEventUser {
+func NewRiskEvaluationEventUser(id string, type_ EnumUserType) *RiskEvaluationEventUser {
 	this := RiskEvaluationEventUser{}
 	this.Id = id
 	this.Type = type_
@@ -102,9 +101,9 @@ func (o *RiskEvaluationEventUser) SetName(v string) {
 }
 
 // GetType returns the Type field value
-func (o *RiskEvaluationEventUser) GetType() string {
+func (o *RiskEvaluationEventUser) GetType() EnumUserType {
 	if o == nil {
-		var ret string
+		var ret EnumUserType
 		return ret
 	}
 
@@ -113,7 +112,7 @@ func (o *RiskEvaluationEventUser) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventUser) GetTypeOk() (*string, bool) {
+func (o *RiskEvaluationEventUser) GetTypeOk() (*EnumUserType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,7 +120,7 @@ func (o *RiskEvaluationEventUser) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *RiskEvaluationEventUser) SetType(v string) {
+func (o *RiskEvaluationEventUser) SetType(v EnumUserType) {
 	o.Type = v
 }
 

@@ -22,8 +22,7 @@ type RiskPredictor struct {
 	Name string `json:"name"`
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
 	CompactName string `json:"compactName"`
-	// An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR, or MAP
-	Type string `json:"type"`
+	Type EnumPredictorType `json:"type"`
 	// A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
@@ -38,7 +37,7 @@ type RiskPredictor struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictor(name string, compactName string, type_ string) *RiskPredictor {
+func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType) *RiskPredictor {
 	this := RiskPredictor{}
 	this.Name = name
 	this.CompactName = compactName
@@ -135,9 +134,9 @@ func (o *RiskPredictor) SetCompactName(v string) {
 }
 
 // GetType returns the Type field value
-func (o *RiskPredictor) GetType() string {
+func (o *RiskPredictor) GetType() EnumPredictorType {
 	if o == nil {
-		var ret string
+		var ret EnumPredictorType
 		return ret
 	}
 
@@ -146,7 +145,7 @@ func (o *RiskPredictor) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetTypeOk() (*string, bool) {
+func (o *RiskPredictor) GetTypeOk() (*EnumPredictorType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -154,7 +153,7 @@ func (o *RiskPredictor) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *RiskPredictor) SetType(v string) {
+func (o *RiskPredictor) SetType(v EnumPredictorType) {
 	o.Type = v
 }
 

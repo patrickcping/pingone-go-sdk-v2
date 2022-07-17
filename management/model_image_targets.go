@@ -20,8 +20,7 @@ type ImageTargets struct {
 	Href *string `json:"href,omitempty"`
 	// A string that specifies the UUID of the target image.
 	Id *string `json:"id,omitempty"`
-	// A string that specifies the type of format used for the image. Options are jpg, png, and gif.
-	Type *string `json:"type,omitempty"`
+	Type *EnumImageFormat `json:"type,omitempty"`
 	// The width of the image (in pixels).
 	Width *int32 `json:"width,omitempty"`
 	// The height of the image (in pixels).
@@ -110,9 +109,9 @@ func (o *ImageTargets) SetId(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ImageTargets) GetType() string {
+func (o *ImageTargets) GetType() EnumImageFormat {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumImageFormat
 		return ret
 	}
 	return *o.Type
@@ -120,7 +119,7 @@ func (o *ImageTargets) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImageTargets) GetTypeOk() (*string, bool) {
+func (o *ImageTargets) GetTypeOk() (*EnumImageFormat, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -136,8 +135,8 @@ func (o *ImageTargets) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ImageTargets) SetType(v string) {
+// SetType gets a reference to the given EnumImageFormat and assigns it to the Type field.
+func (o *ImageTargets) SetType(v EnumImageFormat) {
 	o.Type = &v
 }
 

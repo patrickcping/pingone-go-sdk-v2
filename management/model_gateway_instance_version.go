@@ -18,8 +18,7 @@ import (
 type GatewayInstanceVersion struct {
 	// A string that specifies the version number of the gateway running for the instance. This is a required property.
 	VersionNumber *string `json:"versionNumber,omitempty"`
-	// An enumeration that specifies one of the following values: AT_LATEST: The gateway instance's version is at or after the supported version marked latest. UPGRADE_AVAILABLE: The gateway instance's version is at the supported version that is marked recommended but there is a later supported version marked recommended. UPGRADE_RECOMMENDED: The gateway instance's version is at a known version but the version is not marked as recommended or latest. The version has greater than 30 days support. UPGRADE_REQUIRED: The gateway instance's version is at a known version but the version is not marked as recommended or latest. The version has support ending within the next month. NOT_SUPPORTED: The gateway instance's version is not known or supported.
-	UpdateStatus *string `json:"updateStatus,omitempty"`
+	UpdateStatus *EnumUpdateStatus `json:"updateStatus,omitempty"`
 }
 
 // NewGatewayInstanceVersion instantiates a new GatewayInstanceVersion object
@@ -72,9 +71,9 @@ func (o *GatewayInstanceVersion) SetVersionNumber(v string) {
 }
 
 // GetUpdateStatus returns the UpdateStatus field value if set, zero value otherwise.
-func (o *GatewayInstanceVersion) GetUpdateStatus() string {
+func (o *GatewayInstanceVersion) GetUpdateStatus() EnumUpdateStatus {
 	if o == nil || o.UpdateStatus == nil {
-		var ret string
+		var ret EnumUpdateStatus
 		return ret
 	}
 	return *o.UpdateStatus
@@ -82,7 +81,7 @@ func (o *GatewayInstanceVersion) GetUpdateStatus() string {
 
 // GetUpdateStatusOk returns a tuple with the UpdateStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayInstanceVersion) GetUpdateStatusOk() (*string, bool) {
+func (o *GatewayInstanceVersion) GetUpdateStatusOk() (*EnumUpdateStatus, bool) {
 	if o == nil || o.UpdateStatus == nil {
 		return nil, false
 	}
@@ -98,8 +97,8 @@ func (o *GatewayInstanceVersion) HasUpdateStatus() bool {
 	return false
 }
 
-// SetUpdateStatus gets a reference to the given string and assigns it to the UpdateStatus field.
-func (o *GatewayInstanceVersion) SetUpdateStatus(v string) {
+// SetUpdateStatus gets a reference to the given EnumUpdateStatus and assigns it to the UpdateStatus field.
+func (o *GatewayInstanceVersion) SetUpdateStatus(v EnumUpdateStatus) {
 	o.UpdateStatus = &v
 }
 

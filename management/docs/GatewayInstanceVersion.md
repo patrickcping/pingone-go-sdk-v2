@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VersionNumber** | Pointer to **string** | A string that specifies the version number of the gateway running for the instance. This is a required property. | [optional] 
-**UpdateStatus** | Pointer to **string** | An enumeration that specifies one of the following values: AT_LATEST: The gateway instance&#39;s version is at or after the supported version marked latest. UPGRADE_AVAILABLE: The gateway instance&#39;s version is at the supported version that is marked recommended but there is a later supported version marked recommended. UPGRADE_RECOMMENDED: The gateway instance&#39;s version is at a known version but the version is not marked as recommended or latest. The version has greater than 30 days support. UPGRADE_REQUIRED: The gateway instance&#39;s version is at a known version but the version is not marked as recommended or latest. The version has support ending within the next month. NOT_SUPPORTED: The gateway instance&#39;s version is not known or supported. | [optional] 
+**UpdateStatus** | Pointer to [**EnumUpdateStatus**](EnumUpdateStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasVersionNumber returns a boolean if a field has been set.
 
 ### GetUpdateStatus
 
-`func (o *GatewayInstanceVersion) GetUpdateStatus() string`
+`func (o *GatewayInstanceVersion) GetUpdateStatus() EnumUpdateStatus`
 
 GetUpdateStatus returns the UpdateStatus field if non-nil, zero value otherwise.
 
 ### GetUpdateStatusOk
 
-`func (o *GatewayInstanceVersion) GetUpdateStatusOk() (*string, bool)`
+`func (o *GatewayInstanceVersion) GetUpdateStatusOk() (*EnumUpdateStatus, bool)`
 
 GetUpdateStatusOk returns a tuple with the UpdateStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdateStatus
 
-`func (o *GatewayInstanceVersion) SetUpdateStatus(v string)`
+`func (o *GatewayInstanceVersion) SetUpdateStatus(v EnumUpdateStatus)`
 
 SetUpdateStatus sets UpdateStatus field to given value.
 

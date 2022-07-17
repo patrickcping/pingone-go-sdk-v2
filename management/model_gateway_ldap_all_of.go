@@ -20,8 +20,7 @@ type GatewayLDAPAllOf struct {
 	BindDN string `json:"bindDN"`
 	// A string that specifies the bind password for the LDAP database. This is a required property.
 	BindPassword string `json:"bindPassword"`
-	// (Optional) A string that specifies the connection security type. Options are None, TLS, and StartTLS. The default value is None.
-	ConnectionSecurity *string `json:"connectionSecurity,omitempty"`
+	ConnectionSecurity *EnumGatewayLDAPSecurity `json:"connectionSecurity,omitempty"`
 	// An array of strings that specifies the LDAP server host name and port number (for example, [\"ds1.example.com:389\", \"ds2.example.com:389\"]).
 	ServersHostAndPort []string `json:"serversHostAndPort,omitempty"`
 	// (Optional) An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory.
@@ -102,9 +101,9 @@ func (o *GatewayLDAPAllOf) SetBindPassword(v string) {
 }
 
 // GetConnectionSecurity returns the ConnectionSecurity field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOf) GetConnectionSecurity() string {
+func (o *GatewayLDAPAllOf) GetConnectionSecurity() EnumGatewayLDAPSecurity {
 	if o == nil || o.ConnectionSecurity == nil {
-		var ret string
+		var ret EnumGatewayLDAPSecurity
 		return ret
 	}
 	return *o.ConnectionSecurity
@@ -112,7 +111,7 @@ func (o *GatewayLDAPAllOf) GetConnectionSecurity() string {
 
 // GetConnectionSecurityOk returns a tuple with the ConnectionSecurity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetConnectionSecurityOk() (*string, bool) {
+func (o *GatewayLDAPAllOf) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, bool) {
 	if o == nil || o.ConnectionSecurity == nil {
 		return nil, false
 	}
@@ -128,8 +127,8 @@ func (o *GatewayLDAPAllOf) HasConnectionSecurity() bool {
 	return false
 }
 
-// SetConnectionSecurity gets a reference to the given string and assigns it to the ConnectionSecurity field.
-func (o *GatewayLDAPAllOf) SetConnectionSecurity(v string) {
+// SetConnectionSecurity gets a reference to the given EnumGatewayLDAPSecurity and assigns it to the ConnectionSecurity field.
+func (o *GatewayLDAPAllOf) SetConnectionSecurity(v EnumGatewayLDAPSecurity) {
 	o.ConnectionSecurity = &v
 }
 

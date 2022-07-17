@@ -24,7 +24,7 @@ type User struct {
 	Email string `json:"email"`
 	// A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created.
 	Enabled *bool `json:"enabled,omitempty"`
-	Environment *UserEnvironment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies an identifier for the user resource as defined by the provisioning client. This is optional. This may be explicitly set to null when updating a user to unset it. The externalId attribute simplifies the correlation of the user in PingOne with the user’s account in another system of record. The platform does not use this attribute directly in any way, but it is used by Ping Identity’s Data Sync product. It can have a length of no more than 1024 characters (min/max=1/1024).
 	ExternalId *string `json:"externalId,omitempty"`
 	// A string that specifies the user resource’s unique identifier.
@@ -62,8 +62,7 @@ type User struct {
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 128 characters (min/max=1/128).
 	Username string `json:"username"`
-	// Indicates whether ID verification can be done for the user. This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If the user verification status is DISABLED, a new verification status cannot be created for that user until the status is changed to ENABLED.
-	VerifyStatus *string `json:"verifyStatus,omitempty"`
+	VerifyStatus *EnumUserVerifyStatus `json:"verifyStatus,omitempty"`
 }
 
 // NewUser instantiates a new User object
@@ -238,9 +237,9 @@ func (o *User) SetEnabled(v bool) {
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *User) GetEnvironment() UserEnvironment {
+func (o *User) GetEnvironment() ObjectEnvironment {
 	if o == nil || o.Environment == nil {
-		var ret UserEnvironment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -248,7 +247,7 @@ func (o *User) GetEnvironment() UserEnvironment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetEnvironmentOk() (*UserEnvironment, bool) {
+func (o *User) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || o.Environment == nil {
 		return nil, false
 	}
@@ -264,8 +263,8 @@ func (o *User) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given UserEnvironment and assigns it to the Environment field.
-func (o *User) SetEnvironment(v UserEnvironment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *User) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
@@ -966,9 +965,9 @@ func (o *User) SetUsername(v string) {
 }
 
 // GetVerifyStatus returns the VerifyStatus field value if set, zero value otherwise.
-func (o *User) GetVerifyStatus() string {
+func (o *User) GetVerifyStatus() EnumUserVerifyStatus {
 	if o == nil || o.VerifyStatus == nil {
-		var ret string
+		var ret EnumUserVerifyStatus
 		return ret
 	}
 	return *o.VerifyStatus
@@ -976,7 +975,7 @@ func (o *User) GetVerifyStatus() string {
 
 // GetVerifyStatusOk returns a tuple with the VerifyStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetVerifyStatusOk() (*string, bool) {
+func (o *User) GetVerifyStatusOk() (*EnumUserVerifyStatus, bool) {
 	if o == nil || o.VerifyStatus == nil {
 		return nil, false
 	}
@@ -992,8 +991,8 @@ func (o *User) HasVerifyStatus() bool {
 	return false
 }
 
-// SetVerifyStatus gets a reference to the given string and assigns it to the VerifyStatus field.
-func (o *User) SetVerifyStatus(v string) {
+// SetVerifyStatus gets a reference to the given EnumUserVerifyStatus and assigns it to the VerifyStatus field.
+func (o *User) SetVerifyStatus(v EnumUserVerifyStatus) {
 	o.VerifyStatus = &v
 }
 

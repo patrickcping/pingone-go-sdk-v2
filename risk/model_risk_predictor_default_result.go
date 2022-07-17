@@ -16,16 +16,15 @@ import (
 
 // RiskPredictorDefaultResult This specifies the result assigned to the predictor if the predictor could not be calculated during the risk evaluation. If this field is not provided, and the predictor could not be calculated during risk evaluation, the following options are: If the predictor is used in an override, the override is skipped. In the weighted policy, the predictor will have a weight of 0.
 type RiskPredictorDefaultResult struct {
-	// A string that identifies the risk level. Options are HIGH, MEDIUM, and LOW.
-	Level string `json:"level"`
-	Type *string `json:"type,omitempty"`
+	Level EnumRiskLevel `json:"level"`
+	Type *EnumResultType `json:"type,omitempty"`
 }
 
 // NewRiskPredictorDefaultResult instantiates a new RiskPredictorDefaultResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorDefaultResult(level string) *RiskPredictorDefaultResult {
+func NewRiskPredictorDefaultResult(level EnumRiskLevel) *RiskPredictorDefaultResult {
 	this := RiskPredictorDefaultResult{}
 	this.Level = level
 	return &this
@@ -40,9 +39,9 @@ func NewRiskPredictorDefaultResultWithDefaults() *RiskPredictorDefaultResult {
 }
 
 // GetLevel returns the Level field value
-func (o *RiskPredictorDefaultResult) GetLevel() string {
+func (o *RiskPredictorDefaultResult) GetLevel() EnumRiskLevel {
 	if o == nil {
-		var ret string
+		var ret EnumRiskLevel
 		return ret
 	}
 
@@ -51,7 +50,7 @@ func (o *RiskPredictorDefaultResult) GetLevel() string {
 
 // GetLevelOk returns a tuple with the Level field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorDefaultResult) GetLevelOk() (*string, bool) {
+func (o *RiskPredictorDefaultResult) GetLevelOk() (*EnumRiskLevel, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,14 +58,14 @@ func (o *RiskPredictorDefaultResult) GetLevelOk() (*string, bool) {
 }
 
 // SetLevel sets field value
-func (o *RiskPredictorDefaultResult) SetLevel(v string) {
+func (o *RiskPredictorDefaultResult) SetLevel(v EnumRiskLevel) {
 	o.Level = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *RiskPredictorDefaultResult) GetType() string {
+func (o *RiskPredictorDefaultResult) GetType() EnumResultType {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumResultType
 		return ret
 	}
 	return *o.Type
@@ -74,7 +73,7 @@ func (o *RiskPredictorDefaultResult) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorDefaultResult) GetTypeOk() (*string, bool) {
+func (o *RiskPredictorDefaultResult) GetTypeOk() (*EnumResultType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -90,8 +89,8 @@ func (o *RiskPredictorDefaultResult) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *RiskPredictorDefaultResult) SetType(v string) {
+// SetType gets a reference to the given EnumResultType and assigns it to the Type field.
+func (o *RiskPredictorDefaultResult) SetType(v EnumResultType) {
 	o.Type = &v
 }
 

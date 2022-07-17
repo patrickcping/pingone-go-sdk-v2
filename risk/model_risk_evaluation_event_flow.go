@@ -16,8 +16,7 @@ import (
 
 // RiskEvaluationEventFlow struct for RiskEvaluationEventFlow
 type RiskEvaluationEventFlow struct {
-	// A string that specifies the flow type for the event. The only option (and default) is AUTHENTICATION.
-	Type *string `json:"type,omitempty"`
+	Type *EnumFlowType `json:"type,omitempty"`
 }
 
 // NewRiskEvaluationEventFlow instantiates a new RiskEvaluationEventFlow object
@@ -38,9 +37,9 @@ func NewRiskEvaluationEventFlowWithDefaults() *RiskEvaluationEventFlow {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *RiskEvaluationEventFlow) GetType() string {
+func (o *RiskEvaluationEventFlow) GetType() EnumFlowType {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumFlowType
 		return ret
 	}
 	return *o.Type
@@ -48,7 +47,7 @@ func (o *RiskEvaluationEventFlow) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventFlow) GetTypeOk() (*string, bool) {
+func (o *RiskEvaluationEventFlow) GetTypeOk() (*EnumFlowType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -64,8 +63,8 @@ func (o *RiskEvaluationEventFlow) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *RiskEvaluationEventFlow) SetType(v string) {
+// SetType gets a reference to the given EnumFlowType and assigns it to the Type field.
+func (o *RiskEvaluationEventFlow) SetType(v EnumFlowType) {
 	o.Type = &v
 }
 

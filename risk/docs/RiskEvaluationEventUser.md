@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | A string that specifies the ID of the user associated with the event (maximum size 1024 characters). This is a required property. | 
 **Name** | Pointer to **string** | A string that specifies the name of the user associated with the event (maximum size 1024 characters). | [optional] 
-**Type** | **string** | A string that specifies the type of user associated with the event. Options are EXTERNAL. This is a required property. | 
+**Type** | [**EnumUserType**](EnumUserType.md) |  | 
 **Groups** | Pointer to [**[]RiskEvaluationEventUserGroupsInner**](RiskEvaluationEventUserGroupsInner.md) | An array of group names. | [optional] 
 
 ## Methods
 
 ### NewRiskEvaluationEventUser
 
-`func NewRiskEvaluationEventUser(id string, type_ string, ) *RiskEvaluationEventUser`
+`func NewRiskEvaluationEventUser(id string, type_ EnumUserType, ) *RiskEvaluationEventUser`
 
 NewRiskEvaluationEventUser instantiates a new RiskEvaluationEventUser object
 This constructor will assign default values to properties that have it defined,
@@ -75,20 +75,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *RiskEvaluationEventUser) GetType() string`
+`func (o *RiskEvaluationEventUser) GetType() EnumUserType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RiskEvaluationEventUser) GetTypeOk() (*string, bool)`
+`func (o *RiskEvaluationEventUser) GetTypeOk() (*EnumUserType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RiskEvaluationEventUser) SetType(v string)`
+`func (o *RiskEvaluationEventUser) SetType(v EnumUserType)`
 
 SetType sets Type field to given value.
 

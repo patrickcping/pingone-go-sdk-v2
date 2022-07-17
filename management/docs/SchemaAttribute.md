@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **Name** | **string** | A string that specifies the name of the attribute. The attribute name must be provided during creation, must not be empty and must not exceed 256 characters. It must also be unique within the schema for an environment. It must start with a letter and may be followed by letters, numbers or hyphens. | 
 **Required** | Pointer to **bool** | A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided. | [optional] 
 **Schema** | Pointer to [**SchemaAttributeSchema**](SchemaAttributeSchema.md) |  | [optional] 
-**SchemaType** | Pointer to **string** | A string that specifies the schema type of the attribute. It may be one of CORE, STANDARD or CUSTOM. Core and standard attributes are present out-of-the-box. Core attributes may not be updated or deleted. Standard attributes may not be deleted, but their mutable properties may be updated. Custom attributes may be deleted, and their mutable properties may be updated. New attributes are created with a schema type of CUSTOM. | [optional] 
-**Type** | **string** | A string that specifies the the type of the attribute. It may be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided during creation, then it defaults to STRING. Complex and boolean attributes may not be created, but standard attributes of those types may be updated. JSON attributes are limited by size (total size must not exceed 16KB). | 
+**SchemaType** | Pointer to [**EnumSchemaAttributeSchemaType**](EnumSchemaAttributeSchemaType.md) |  | [optional] 
+**Type** | [**EnumSchemaAttributeType**](EnumSchemaAttributeType.md) |  | 
 **Unique** | Pointer to **bool** | A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. | [optional] 
 **MultiValued** | Pointer to **bool** | A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000. | [optional] 
 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewSchemaAttribute
 
-`func NewSchemaAttribute(enabled bool, name string, type_ string, ) *SchemaAttribute`
+`func NewSchemaAttribute(enabled bool, name string, type_ EnumSchemaAttributeType, ) *SchemaAttribute`
 
 NewSchemaAttribute instantiates a new SchemaAttribute object
 This constructor will assign default values to properties that have it defined,
@@ -254,20 +254,20 @@ HasSchema returns a boolean if a field has been set.
 
 ### GetSchemaType
 
-`func (o *SchemaAttribute) GetSchemaType() string`
+`func (o *SchemaAttribute) GetSchemaType() EnumSchemaAttributeSchemaType`
 
 GetSchemaType returns the SchemaType field if non-nil, zero value otherwise.
 
 ### GetSchemaTypeOk
 
-`func (o *SchemaAttribute) GetSchemaTypeOk() (*string, bool)`
+`func (o *SchemaAttribute) GetSchemaTypeOk() (*EnumSchemaAttributeSchemaType, bool)`
 
 GetSchemaTypeOk returns a tuple with the SchemaType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchemaType
 
-`func (o *SchemaAttribute) SetSchemaType(v string)`
+`func (o *SchemaAttribute) SetSchemaType(v EnumSchemaAttributeSchemaType)`
 
 SetSchemaType sets SchemaType field to given value.
 
@@ -279,20 +279,20 @@ HasSchemaType returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *SchemaAttribute) GetType() string`
+`func (o *SchemaAttribute) GetType() EnumSchemaAttributeType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SchemaAttribute) GetTypeOk() (*string, bool)`
+`func (o *SchemaAttribute) GetTypeOk() (*EnumSchemaAttributeType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SchemaAttribute) SetType(v string)`
+`func (o *SchemaAttribute) SetType(v EnumSchemaAttributeType)`
 
 SetType sets Type field to given value.
 

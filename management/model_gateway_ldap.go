@@ -24,8 +24,7 @@ type GatewayLDAP struct {
 	Name string `json:"name"`
 	// (Optional) A string that specifies the description of the resource.
 	Description *string `json:"description,omitempty"`
-	// A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property.
-	Type string `json:"type"`
+	Type EnumGatewayType `json:"type"`
 	// A boolean that specifies whether the gateway is enabled. This is a required property.
 	Enabled bool `json:"enabled"`
 	SupportedVersions *GatewaySupportedVersions `json:"supportedVersions,omitempty"`
@@ -33,8 +32,7 @@ type GatewayLDAP struct {
 	BindDN string `json:"bindDN"`
 	// A string that specifies the bind password for the LDAP database. This is a required property.
 	BindPassword string `json:"bindPassword"`
-	// (Optional) A string that specifies the connection security type. Options are None, TLS, and StartTLS. The default value is None.
-	ConnectionSecurity *string `json:"connectionSecurity,omitempty"`
+	ConnectionSecurity *EnumGatewayLDAPSecurity `json:"connectionSecurity,omitempty"`
 	// An array of strings that specifies the LDAP server host name and port number (for example, [\"ds1.example.com:389\", \"ds2.example.com:389\"]).
 	ServersHostAndPort []string `json:"serversHostAndPort,omitempty"`
 	// (Optional) An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory.
@@ -49,7 +47,7 @@ type GatewayLDAP struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAP(name string, type_ string, enabled bool, bindDN string, bindPassword string, userTypes []GatewayLDAPAllOfUserTypes, vendor string) *GatewayLDAP {
+func NewGatewayLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, userTypes []GatewayLDAPAllOfUserTypes, vendor string) *GatewayLDAP {
 	this := GatewayLDAP{}
 	this.Name = name
 	this.Type = type_
@@ -222,9 +220,9 @@ func (o *GatewayLDAP) SetDescription(v string) {
 }
 
 // GetType returns the Type field value
-func (o *GatewayLDAP) GetType() string {
+func (o *GatewayLDAP) GetType() EnumGatewayType {
 	if o == nil {
-		var ret string
+		var ret EnumGatewayType
 		return ret
 	}
 
@@ -233,7 +231,7 @@ func (o *GatewayLDAP) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetTypeOk() (*string, bool) {
+func (o *GatewayLDAP) GetTypeOk() (*EnumGatewayType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -241,7 +239,7 @@ func (o *GatewayLDAP) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *GatewayLDAP) SetType(v string) {
+func (o *GatewayLDAP) SetType(v EnumGatewayType) {
 	o.Type = v
 }
 
@@ -350,9 +348,9 @@ func (o *GatewayLDAP) SetBindPassword(v string) {
 }
 
 // GetConnectionSecurity returns the ConnectionSecurity field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetConnectionSecurity() string {
+func (o *GatewayLDAP) GetConnectionSecurity() EnumGatewayLDAPSecurity {
 	if o == nil || o.ConnectionSecurity == nil {
-		var ret string
+		var ret EnumGatewayLDAPSecurity
 		return ret
 	}
 	return *o.ConnectionSecurity
@@ -360,7 +358,7 @@ func (o *GatewayLDAP) GetConnectionSecurity() string {
 
 // GetConnectionSecurityOk returns a tuple with the ConnectionSecurity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetConnectionSecurityOk() (*string, bool) {
+func (o *GatewayLDAP) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, bool) {
 	if o == nil || o.ConnectionSecurity == nil {
 		return nil, false
 	}
@@ -376,8 +374,8 @@ func (o *GatewayLDAP) HasConnectionSecurity() bool {
 	return false
 }
 
-// SetConnectionSecurity gets a reference to the given string and assigns it to the ConnectionSecurity field.
-func (o *GatewayLDAP) SetConnectionSecurity(v string) {
+// SetConnectionSecurity gets a reference to the given EnumGatewayLDAPSecurity and assigns it to the ConnectionSecurity field.
+func (o *GatewayLDAP) SetConnectionSecurity(v EnumGatewayLDAPSecurity) {
 	o.ConnectionSecurity = &v
 }
 

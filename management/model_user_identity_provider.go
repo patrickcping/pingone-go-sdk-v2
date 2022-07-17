@@ -18,8 +18,7 @@ import (
 type UserIdentityProvider struct {
 	// A mutable string that identifies the external identity provider used to authenticate the user. If not provided, PingOne is the identity provider. This attribute is required if the identity provider is authoritative for just-in-time user provisioning.
 	Id *string `json:"id,omitempty"`
-	// A read-only string that identifies the type of identity provider used to authenticate the user. Possible values are `FACEBOOK`, `GOOGLE`, `LINKEDIN`, `APPLE`, `TWITTER`, `AMAZON`, `YAHOO`, `MICROSOFT`, `PAYPAL`, `GITHUB`, `OPENID_CONNECT`, `SAML`, and `PING_ONE`. The default value of `PING_ONE` is set when a value for identityProvider.id is not provided. The `PING_ONE` value is the default for all pre-existing users. There is currently no search filter support for this attribute.
-	Type *string `json:"type,omitempty"`
+	Type *EnumIdentityProvider `json:"type,omitempty"`
 }
 
 // NewUserIdentityProvider instantiates a new UserIdentityProvider object
@@ -72,9 +71,9 @@ func (o *UserIdentityProvider) SetId(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *UserIdentityProvider) GetType() string {
+func (o *UserIdentityProvider) GetType() EnumIdentityProvider {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumIdentityProvider
 		return ret
 	}
 	return *o.Type
@@ -82,7 +81,7 @@ func (o *UserIdentityProvider) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserIdentityProvider) GetTypeOk() (*string, bool) {
+func (o *UserIdentityProvider) GetTypeOk() (*EnumIdentityProvider, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -98,8 +97,8 @@ func (o *UserIdentityProvider) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *UserIdentityProvider) SetType(v string) {
+// SetType gets a reference to the given EnumIdentityProvider and assigns it to the Type field.
+func (o *UserIdentityProvider) SetType(v EnumIdentityProvider) {
 	o.Type = &v
 }
 

@@ -16,8 +16,7 @@ import (
 
 // RiskEvaluationDetailsUserBasedRiskBehavior struct for RiskEvaluationDetailsUserBasedRiskBehavior
 type RiskEvaluationDetailsUserBasedRiskBehavior struct {
-	// A string that specifies the risk score calculated for the user behavior for all transactions associated with the accessing device, and for the current authentication attempt. Options are LOW, MEDIUM, and HIGH. This information is available only if customers have agreed to data consent and the intelligence.allowDataConsent property in the PingOne license is set to true.
-	Level *string `json:"level,omitempty"`
+	Level *EnumRiskLevel `json:"level,omitempty"`
 	// A string that describes the reason (or reasons) provided for the user behavior risk score classification (for example, the operating system or browser type used by the device, and country in which the accessing device is located). Each reason is classified as Unusual, to indicate how much it deviates from normal user behavior, and its effect in calculating the overall user behavior risk score.
 	Reason *string `json:"reason,omitempty"`
 }
@@ -40,9 +39,9 @@ func NewRiskEvaluationDetailsUserBasedRiskBehaviorWithDefaults() *RiskEvaluation
 }
 
 // GetLevel returns the Level field value if set, zero value otherwise.
-func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevel() string {
+func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevel() EnumRiskLevel {
 	if o == nil || o.Level == nil {
-		var ret string
+		var ret EnumRiskLevel
 		return ret
 	}
 	return *o.Level
@@ -50,7 +49,7 @@ func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevel() string {
 
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevelOk() (*string, bool) {
+func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevelOk() (*EnumRiskLevel, bool) {
 	if o == nil || o.Level == nil {
 		return nil, false
 	}
@@ -66,8 +65,8 @@ func (o *RiskEvaluationDetailsUserBasedRiskBehavior) HasLevel() bool {
 	return false
 }
 
-// SetLevel gets a reference to the given string and assigns it to the Level field.
-func (o *RiskEvaluationDetailsUserBasedRiskBehavior) SetLevel(v string) {
+// SetLevel gets a reference to the given EnumRiskLevel and assigns it to the Level field.
+func (o *RiskEvaluationDetailsUserBasedRiskBehavior) SetLevel(v EnumRiskLevel) {
 	o.Level = &v
 }
 

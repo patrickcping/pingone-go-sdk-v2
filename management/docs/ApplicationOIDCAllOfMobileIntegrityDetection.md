@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Mode** | Pointer to **string** | A string that specifies whether device integrity detection takes place on mobile devices, for the application&#39;s enrollment and authentication events ENABLED, DISABLED | [optional] 
+**Mode** | Pointer to [**EnumEnabledStatus**](EnumEnabledStatus.md) |  | [optional] 
 **CacheDuration** | Pointer to [**ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration**](ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMode
 
-`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetMode() string`
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetMode() EnumEnabledStatus`
 
 GetMode returns the Mode field if non-nil, zero value otherwise.
 
 ### GetModeOk
 
-`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetModeOk() (*string, bool)`
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetModeOk() (*EnumEnabledStatus, bool)`
 
 GetModeOk returns a tuple with the Mode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMode
 
-`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetMode(v string)`
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetMode(v EnumEnabledStatus)`
 
 SetMode sets Mode field to given value.
 

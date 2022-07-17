@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | A string that specifies the role assignment scope ID. | 
-**Type** | **string** | A string that specifies the type of resource defining the scope of the Role assignment. Options are ORGANIZATION, ENVIRONMENT, and POPULATION. | 
+**Type** | [**EnumRoleAssignmentScopeType**](EnumRoleAssignmentScopeType.md) |  | 
 
 ## Methods
 
 ### NewRoleAssignmentScope
 
-`func NewRoleAssignmentScope(id string, type_ string, ) *RoleAssignmentScope`
+`func NewRoleAssignmentScope(id string, type_ EnumRoleAssignmentScopeType, ) *RoleAssignmentScope`
 
 NewRoleAssignmentScope instantiates a new RoleAssignmentScope object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetId sets Id field to given value.
 
 ### GetType
 
-`func (o *RoleAssignmentScope) GetType() string`
+`func (o *RoleAssignmentScope) GetType() EnumRoleAssignmentScopeType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RoleAssignmentScope) GetTypeOk() (*string, bool)`
+`func (o *RoleAssignmentScope) GetTypeOk() (*EnumRoleAssignmentScopeType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RoleAssignmentScope) SetType(v string)`
+`func (o *RoleAssignmentScope) SetType(v EnumRoleAssignmentScopeType)`
 
 SetType sets Type field to given value.
 

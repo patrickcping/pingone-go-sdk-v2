@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Resource** | Pointer to [**ResourceResource**](ResourceResource.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. | 
-**Type** | Pointer to **string** | A string that specifies the type of resource. Options are OPENID_CONNECT, PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created. OPENID_CONNECT specifies the built-in platform resource for OpenID Connect. PING_ONE_API specifies the built-in platform resource for PingOne. | [optional] 
+**Type** | Pointer to [**EnumResourceType**](EnumResourceType.md) |  | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
@@ -231,20 +231,20 @@ SetName sets Name field to given value.
 
 ### GetType
 
-`func (o *Resource) GetType() string`
+`func (o *Resource) GetType() EnumResourceType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Resource) GetTypeOk() (*string, bool)`
+`func (o *Resource) GetTypeOk() (*EnumResourceType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Resource) SetType(v string)`
+`func (o *Resource) SetType(v EnumResourceType)`
 
 SetType sets Type field to given value.
 

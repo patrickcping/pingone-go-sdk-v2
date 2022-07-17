@@ -16,8 +16,7 @@ import (
 
 // RiskEvaluationDetailsUserVelocityByIp struct for RiskEvaluationDetailsUserVelocityByIp
 type RiskEvaluationDetailsUserVelocityByIp struct {
-	// An enum indicating whether the calculated number of users per IP is LOW, MEDIUM, or HIGH.
-	Level *string `json:"level,omitempty"`
+	Level *EnumRiskLevel `json:"level,omitempty"`
 	// A string indicating the reason the user was flagged. For example \"More than 250 users accessed IP address 1.1.1.1 during the last 1 hour.\"
 	Reason *string `json:"reason,omitempty"`
 	Threshold *RiskEvaluationDetailsUserVelocityByIpThreshold `json:"threshold,omitempty"`
@@ -42,9 +41,9 @@ func NewRiskEvaluationDetailsUserVelocityByIpWithDefaults() *RiskEvaluationDetai
 }
 
 // GetLevel returns the Level field value if set, zero value otherwise.
-func (o *RiskEvaluationDetailsUserVelocityByIp) GetLevel() string {
+func (o *RiskEvaluationDetailsUserVelocityByIp) GetLevel() EnumRiskLevel {
 	if o == nil || o.Level == nil {
-		var ret string
+		var ret EnumRiskLevel
 		return ret
 	}
 	return *o.Level
@@ -52,7 +51,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) GetLevel() string {
 
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationDetailsUserVelocityByIp) GetLevelOk() (*string, bool) {
+func (o *RiskEvaluationDetailsUserVelocityByIp) GetLevelOk() (*EnumRiskLevel, bool) {
 	if o == nil || o.Level == nil {
 		return nil, false
 	}
@@ -68,8 +67,8 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) HasLevel() bool {
 	return false
 }
 
-// SetLevel gets a reference to the given string and assigns it to the Level field.
-func (o *RiskEvaluationDetailsUserVelocityByIp) SetLevel(v string) {
+// SetLevel gets a reference to the given EnumRiskLevel and assigns it to the Level field.
+func (o *RiskEvaluationDetailsUserVelocityByIp) SetLevel(v EnumRiskLevel) {
 	o.Level = &v
 }
 

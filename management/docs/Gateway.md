@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. | 
 **Description** | Pointer to **string** | (Optional) A string that specifies the description of the resource. | [optional] 
-**Type** | **string** | A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property. | 
+**Type** | [**EnumGatewayType**](EnumGatewayType.md) |  | 
 **Enabled** | **bool** | A boolean that specifies whether the gateway is enabled. This is a required property. | 
 **SupportedVersions** | Pointer to [**GatewaySupportedVersions**](GatewaySupportedVersions.md) |  | [optional] 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewGateway
 
-`func NewGateway(name string, type_ string, enabled bool, ) *Gateway`
+`func NewGateway(name string, type_ EnumGatewayType, enabled bool, ) *Gateway`
 
 NewGateway instantiates a new Gateway object
 This constructor will assign default values to properties that have it defined,
@@ -154,20 +154,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Gateway) GetType() string`
+`func (o *Gateway) GetType() EnumGatewayType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Gateway) GetTypeOk() (*string, bool)`
+`func (o *Gateway) GetTypeOk() (*EnumGatewayType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Gateway) SetType(v string)`
+`func (o *Gateway) SetType(v EnumGatewayType)`
 
 SetType sets Type field to given value.
 

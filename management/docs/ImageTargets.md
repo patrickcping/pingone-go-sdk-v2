@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | Pointer to **string** | A string that specifies the URL or fully qualified path to the image source file. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the UUID of the target image. | [optional] [readonly] 
-**Type** | Pointer to **string** | A string that specifies the type of format used for the image. Options are jpg, png, and gif. | [optional] [readonly] 
+**Type** | Pointer to [**EnumImageFormat**](EnumImageFormat.md) |  | [optional] 
 **Width** | Pointer to **int32** | The width of the image (in pixels). | [optional] [readonly] 
 **Height** | Pointer to **int32** | The height of the image (in pixels). | [optional] [readonly] 
 
@@ -81,20 +81,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *ImageTargets) GetType() string`
+`func (o *ImageTargets) GetType() EnumImageFormat`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ImageTargets) GetTypeOk() (*string, bool)`
+`func (o *ImageTargets) GetTypeOk() (*EnumImageFormat, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ImageTargets) SetType(v string)`
+`func (o *ImageTargets) SetType(v EnumImageFormat)`
 
 SetType sets Type field to given value.
 

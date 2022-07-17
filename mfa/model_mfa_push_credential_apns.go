@@ -16,8 +16,7 @@ import (
 
 // MFAPushCredentialAPNS struct for MFAPushCredentialAPNS
 type MFAPushCredentialAPNS struct {
-	// A string that specifies the type of the push credentials. Mandatory. Valid values APNS, FCM
-	Type string `json:"type"`
+	Type EnumMFAPushCredentialAttrType `json:"type"`
 	// A string that Apple uses as an identifier to identify an authentication key.  Mandatory.
 	Key string `json:"key"`
 	// A string that Apple uses as an identifier to identify teams.
@@ -30,7 +29,7 @@ type MFAPushCredentialAPNS struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFAPushCredentialAPNS(type_ string, key string, teamId string, token string) *MFAPushCredentialAPNS {
+func NewMFAPushCredentialAPNS(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string) *MFAPushCredentialAPNS {
 	this := MFAPushCredentialAPNS{}
 	this.Type = type_
 	this.Key = key
@@ -48,9 +47,9 @@ func NewMFAPushCredentialAPNSWithDefaults() *MFAPushCredentialAPNS {
 }
 
 // GetType returns the Type field value
-func (o *MFAPushCredentialAPNS) GetType() string {
+func (o *MFAPushCredentialAPNS) GetType() EnumMFAPushCredentialAttrType {
 	if o == nil {
-		var ret string
+		var ret EnumMFAPushCredentialAttrType
 		return ret
 	}
 
@@ -59,7 +58,7 @@ func (o *MFAPushCredentialAPNS) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *MFAPushCredentialAPNS) GetTypeOk() (*string, bool) {
+func (o *MFAPushCredentialAPNS) GetTypeOk() (*EnumMFAPushCredentialAttrType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +66,7 @@ func (o *MFAPushCredentialAPNS) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *MFAPushCredentialAPNS) SetType(v string) {
+func (o *MFAPushCredentialAPNS) SetType(v EnumMFAPushCredentialAttrType) {
 	o.Type = v
 }
 

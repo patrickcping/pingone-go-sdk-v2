@@ -20,8 +20,7 @@ type ApplicationAttributeMapping struct {
 	Id *string `json:"id,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
-	// A string that specifies the mapping type of the attribute. Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types are for reserved attributes managed by the API and cannot be removed. Attribute values for these mapping types can be updated. The CUSTOM mapping type is for user-defined attributes. Attributes of this type can be updated and deleted.
-	MappingType *string `json:"mappingType,omitempty"`
+	MappingType *EnumAttributeMappingType `json:"mappingType,omitempty"`
 	// A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property.
 	Name string `json:"name"`
 	// A boolean to specify whether a mapping value is required for this attribute. If true, a value must be set and a non-empty value must be available in the SAML assertion or ID token.
@@ -117,9 +116,9 @@ func (o *ApplicationAttributeMapping) SetCreatedAt(v string) {
 }
 
 // GetMappingType returns the MappingType field value if set, zero value otherwise.
-func (o *ApplicationAttributeMapping) GetMappingType() string {
+func (o *ApplicationAttributeMapping) GetMappingType() EnumAttributeMappingType {
 	if o == nil || o.MappingType == nil {
-		var ret string
+		var ret EnumAttributeMappingType
 		return ret
 	}
 	return *o.MappingType
@@ -127,7 +126,7 @@ func (o *ApplicationAttributeMapping) GetMappingType() string {
 
 // GetMappingTypeOk returns a tuple with the MappingType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationAttributeMapping) GetMappingTypeOk() (*string, bool) {
+func (o *ApplicationAttributeMapping) GetMappingTypeOk() (*EnumAttributeMappingType, bool) {
 	if o == nil || o.MappingType == nil {
 		return nil, false
 	}
@@ -143,8 +142,8 @@ func (o *ApplicationAttributeMapping) HasMappingType() bool {
 	return false
 }
 
-// SetMappingType gets a reference to the given string and assigns it to the MappingType field.
-func (o *ApplicationAttributeMapping) SetMappingType(v string) {
+// SetMappingType gets a reference to the given EnumAttributeMappingType and assigns it to the MappingType field.
+func (o *ApplicationAttributeMapping) SetMappingType(v EnumAttributeMappingType) {
 	o.MappingType = &v
 }
 

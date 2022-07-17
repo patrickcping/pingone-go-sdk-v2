@@ -747,31 +747,6 @@ paths:
       - Risk Advanced Predictors
 components:
   schemas:
-    P1Error:
-      properties:
-        id:
-          description: "A unique identifier that is stored in log files and always\
-            \ included in an error response. This value can be used to track the error\
-            \ received by the client, with server-side activity included for troubleshooting\
-            \ purposes."
-          type: string
-        code:
-          description: A general fault code which the client must handle to provide
-            all exception handling routines and to localize messages for users. This
-            code is common across all PingOne services and is human readable (such
-            as a defined constant rather than a number).
-          type: string
-        message:
-          description: A short description of the error. This message is intended
-            to assist with debugging and is returned in English only.
-          type: string
-        details:
-          description: Additional details about the error. Optional information to
-            help resolve the error and to display to users.
-          items:
-            $ref: '#/components/schemas/P1Error_details_inner'
-          type: array
-      type: object
     EntityArray:
       example:
         size: 3.616076749251911
@@ -786,8 +761,8 @@ components:
             id: id
             riskPolicies:
             - result:
-                level: LOW
-                type: VALUE
+                level: null
+                type: null
                 value: value
               createdAt: createdAt
               condition:
@@ -813,8 +788,8 @@ components:
               priority: 5
               updatedAt: updatedAt
             - result:
-                level: LOW
-                type: VALUE
+                level: null
+                type: null
                 value: value
               createdAt: createdAt
               condition:
@@ -840,8 +815,8 @@ components:
               priority: 5
               updatedAt: updatedAt
             defaultResult:
-              level: LOW
-              type: VALUE
+              level: null
+              type: null
               value: value
             updatedAt: updatedAt
           - createdAt: createdAt
@@ -853,8 +828,8 @@ components:
             id: id
             riskPolicies:
             - result:
-                level: LOW
-                type: VALUE
+                level: null
+                type: null
                 value: value
               createdAt: createdAt
               condition:
@@ -880,8 +855,8 @@ components:
               priority: 5
               updatedAt: updatedAt
             - result:
-                level: LOW
-                type: VALUE
+                level: null
+                type: null
                 value: value
               createdAt: createdAt
               condition:
@@ -907,21 +882,21 @@ components:
               priority: 5
               updatedAt: updatedAt
             defaultResult:
-              level: LOW
-              type: VALUE
+              level: null
+              type: null
               value: value
             updatedAt: updatedAt
           riskPredictors:
           - createdAt: createdAt
             default:
               result:
-                level: HIGH
-                type: VALUE
+                level: null
+                type: null
               weight: 5
             name: name
             description: description
             id: id
-            type: VELOCITY
+            type: null
             compactName: compactName
             map:
               high:
@@ -961,13 +936,13 @@ components:
           - createdAt: createdAt
             default:
               result:
-                level: HIGH
-                type: VALUE
+                level: null
+                type: null
               weight: 5
             name: name
             description: description
             id: id
-            type: VELOCITY
+            type: null
             compactName: compactName
             map:
               high:
@@ -1013,6 +988,78 @@ components:
         size:
           type: number
       type: object
+    EnumCompletionStatus:
+      description: "A string that specifies the state of the transaction. Options\
+        \ are FAILED, IN_PROGRESS, and SUCCESS. If a value is not provided, the value\
+        \ defaults to IN_PROGRESS. The value of this property can be changed only\
+        \ if its current state is IN_PROGRESS."
+      enum:
+      - FAILED
+      - IN_PROGRESS
+      - SUCCESS
+      type: string
+    EnumEventSharingType:
+      description: "A string that specifies the device sharing type. Options are UNSPECIFIED,\
+        \ SHARED, and PRIVATE."
+      enum:
+      - UNSPECIFIED
+      - SHARED
+      - PRIVATE
+      type: string
+    EnumFlowType:
+      description: A string that specifies the flow type for the event. The only option
+        (and default) is AUTHENTICATION.
+      enum:
+      - AUTHENTICATION
+      type: string
+    EnumPredictorType:
+      description: "An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR,\
+        \ or MAP"
+      enum:
+      - VELOCITY
+      - USER_RISK_BEHAVIOR
+      - MAP
+      type: string
+    EnumResultType:
+      description: A string that specifies the risk evaluation result type. Options
+        are VALUE.
+      enum:
+      - VALUE
+      type: string
+    EnumRiskLevel:
+      description: Enum string that specifies a given risk level
+      enum:
+      - LOW
+      - MEDIUM
+      - HIGH
+      type: string
+    EnumThresholdSource:
+      description: "An enum indicating the source used to calculate the threshold.\
+        \ This can be MIN_NOT_REACHED. If the measure is less than every.minSample,\
+        \ the threshold isn't calculated. Instead, a value of LOW is automatically\
+        \ assigned. If less than five IPs were used by the user during the past hour,\
+        \ MIN_NOT_REACHED is set. CALCULATED. Indicates the threshold is guaranteed\
+        \ to be calculated. ENVIRONMENT_FALLBACK. Indicates a global threshold calculated\
+        \ for the entire environment is used. The global threshold is used when the\
+        \ ipVelocityByUser.threshold couldn't be calculated, generally due to a lack\
+        \ of past transactions for the risk predictor to use for the threshold calculation.\
+        \ DEFAULT_FALLBACK. Indicates the default threshold defined for the predictor\
+        \ (in threshold.medium or threshold.high) is used. The default threshold is\
+        \ used when ENVIRONMENT_FALLBACK (the global threshold) couldn't be calculated,\
+        \ generally due to a lack of past transactions for the risk predictor to use\
+        \ for the environment threshold calculation."
+      enum:
+      - MIN_NOT_REACHED
+      - CALCULATED
+      - ENVIRONMENT_FALLBACK
+      - DEFAULT_FALLBACK
+      type: string
+    EnumUserType:
+      description: A string that specifies the type of user associated with the event.
+        Options are EXTERNAL.
+      enum:
+      - EXTERNAL
+      type: string
     ObjectEnvironment:
       example:
         id: id
@@ -1024,11 +1071,36 @@ components:
           type: string
       readOnly: true
       type: object
+    P1Error:
+      properties:
+        id:
+          description: "A unique identifier that is stored in log files and always\
+            \ included in an error response. This value can be used to track the error\
+            \ received by the client, with server-side activity included for troubleshooting\
+            \ purposes."
+          type: string
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        details:
+          description: Additional details about the error. Optional information to
+            help resolve the error and to display to users.
+          items:
+            $ref: '#/components/schemas/P1Error_details_inner'
+          type: array
+      type: object
     RiskEvaluation:
       example:
         result:
-          level: HIGH
-          type: VALUE
+          level: null
+          type: null
           value: value
         createdAt: createdAt
         environment:
@@ -1039,15 +1111,15 @@ components:
         details:
           ipAddressReputation:
             score: 0
-            level: LOW
+            level: null
           country: country
           ipVelocityByUser:
             reason: reason
-            level: LOW
+            level: null
             threshold:
               high: 6
               medium: 1
-              source: MIN_NOT_REACHED
+              source: null
               calculatedAt: calculatedAt
               expiresAt: expiresAt
             velocity:
@@ -1055,11 +1127,11 @@ components:
               during: 5
           userVelocityByIp:
             reason: reason
-            level: LOW
+            level: null
             threshold:
               high: 2
               medium: 7
-              source: MIN_NOT_REACHED
+              source: null
               calculatedAt: calculatedAt
               expiresAt: expiresAt
             velocity:
@@ -1068,7 +1140,7 @@ components:
           city: city
           userRiskBehavior:
             reason: reason
-            level: LOW
+            level: null
           latitude: 7.386281948385884
           previousSuccessfulTransaction:
             country: country
@@ -1081,7 +1153,7 @@ components:
           anonymousNetworkDetected: true
           userBasedRiskBehavior:
             reason: reason
-            level: LOW
+            level: null
           state: state
           impossibleTravel: true
           longitude: 4.145608029883936
@@ -1089,7 +1161,7 @@ components:
         event:
           evaluatedFactors:
             type: type
-            status: FAILED
+            status: null
           session:
             id: id
           browser:
@@ -1138,17 +1210,17 @@ components:
           targetResource:
             name: name
             id: id
-          completionStatus: FAILED
-          sharingType: UNSPECIFIED
+          completionStatus: null
+          sharingType: null
           user:
             name: name
             groups:
             - name: name
             - name: name
             id: id
-            type: EXTERNAL
+            type: null
           flow:
-            type: AUTHENTICATION
+            type: null
         updatedAt: updatedAt
       properties:
         createdAt:
@@ -1180,15 +1252,15 @@ components:
       example:
         ipAddressReputation:
           score: 0
-          level: LOW
+          level: null
         country: country
         ipVelocityByUser:
           reason: reason
-          level: LOW
+          level: null
           threshold:
             high: 6
             medium: 1
-            source: MIN_NOT_REACHED
+            source: null
             calculatedAt: calculatedAt
             expiresAt: expiresAt
           velocity:
@@ -1196,11 +1268,11 @@ components:
             during: 5
         userVelocityByIp:
           reason: reason
-          level: LOW
+          level: null
           threshold:
             high: 2
             medium: 7
-            source: MIN_NOT_REACHED
+            source: null
             calculatedAt: calculatedAt
             expiresAt: expiresAt
           velocity:
@@ -1209,7 +1281,7 @@ components:
         city: city
         userRiskBehavior:
           reason: reason
-          level: LOW
+          level: null
         latitude: 7.386281948385884
         previousSuccessfulTransaction:
           country: country
@@ -1222,7 +1294,7 @@ components:
         anonymousNetworkDetected: true
         userBasedRiskBehavior:
           reason: reason
-          level: LOW
+          level: null
         state: state
         impossibleTravel: true
         longitude: 4.145608029883936
@@ -1287,7 +1359,7 @@ components:
       example:
         evaluatedFactors:
           type: type
-          status: FAILED
+          status: null
         session:
           id: id
         browser:
@@ -1336,30 +1408,22 @@ components:
         targetResource:
           name: name
           id: id
-        completionStatus: FAILED
-        sharingType: UNSPECIFIED
+        completionStatus: null
+        sharingType: null
         user:
           name: name
           groups:
           - name: name
           - name: name
           id: id
-          type: EXTERNAL
+          type: null
         flow:
-          type: AUTHENTICATION
+          type: null
       properties:
         browser:
           $ref: '#/components/schemas/RiskEvaluationEvent_browser'
         completionStatus:
-          description: "A string that specifies the state of the transaction. Options\
-            \ are FAILED, IN_PROGRESS, and SUCCESS. If a value is not provided, the\
-            \ value defaults to IN_PROGRESS. The value of this property can be changed\
-            \ only if its current state is IN_PROGRESS."
-          enum:
-          - FAILED
-          - IN_PROGRESS
-          - SUCCESS
-          type: string
+          $ref: '#/components/schemas/EnumCompletionStatus'
         evaluatedFactors:
           $ref: '#/components/schemas/RiskEvaluationEvent_evaluatedFactors'
         ip:
@@ -1378,39 +1442,21 @@ components:
         user:
           $ref: '#/components/schemas/RiskEvaluationEvent_user'
         sharingType:
-          description: "A string that specifies the device sharing type. Options are\
-            \ UNSPECIFIED, SHARED, and PRIVATE."
-          enum:
-          - UNSPECIFIED
-          - SHARED
-          - PRIVATE
-          type: string
+          $ref: '#/components/schemas/EnumEventSharingType'
       required:
       - ip
       - user
       type: object
     RiskEvaluationResult:
       example:
-        level: HIGH
-        type: VALUE
+        level: null
+        type: null
         value: value
       properties:
         type:
-          description: A string that specifies the risk evaluation result type. Options
-            are VALUE.
-          enum:
-          - VALUE
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/EnumResultType'
         level:
-          description: "A string that specifies the risk evaluation result level.\
-            \ Options are HIGH, MEDIUM, and LOW."
-          enum:
-          - HIGH
-          - MEDIUM
-          - LOW
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/EnumRiskLevel'
         value:
           description: A string that specifies any custom attribute the administrator
             defines.
@@ -1428,8 +1474,8 @@ components:
         id: id
         riskPolicies:
         - result:
-            level: LOW
-            type: VALUE
+            level: null
+            type: null
             value: value
           createdAt: createdAt
           condition:
@@ -1455,8 +1501,8 @@ components:
           priority: 5
           updatedAt: updatedAt
         - result:
-            level: LOW
-            type: VALUE
+            level: null
+            type: null
             value: value
           createdAt: createdAt
           condition:
@@ -1482,8 +1528,8 @@ components:
           priority: 5
           updatedAt: updatedAt
         defaultResult:
-          level: LOW
-          type: VALUE
+          level: null
+          type: null
           value: value
         updatedAt: updatedAt
       properties:
@@ -1535,20 +1581,14 @@ components:
       type: object
     RiskPolicyResult:
       example:
-        level: LOW
-        type: VALUE
+        level: null
+        type: null
         value: value
       properties:
         level:
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          type: string
+          $ref: '#/components/schemas/EnumRiskLevel'
         type:
-          enum:
-          - VALUE
-          type: string
+          $ref: '#/components/schemas/EnumResultType'
         value:
           type: string
       required:
@@ -1559,13 +1599,13 @@ components:
         createdAt: createdAt
         default:
           result:
-            level: HIGH
-            type: VALUE
+            level: null
+            type: null
           weight: 5
         name: name
         description: description
         id: id
-        type: VELOCITY
+        type: null
         compactName: compactName
         map:
           high:
@@ -1620,13 +1660,7 @@ components:
             \ response (under details)."
           type: string
         type:
-          description: "An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR,\
-            \ or MAP"
-          enum:
-          - VELOCITY
-          - USER_RISK_BEHAVIOR
-          - MAP
-          type: string
+          $ref: '#/components/schemas/EnumPredictorType'
         description:
           description: A string type. This specifies the desription of the risk predictor.
             Maximum length is 1024 characters.
@@ -1679,48 +1713,6 @@ components:
       required:
       - contains
       type: object
-    P1Error_details_inner_innerError:
-      description: Additional details to help the client developer resolve the fault
-        (primarily for UI validation reasons).
-      properties:
-        rangeMinimumValue:
-          description: Errors that failed due to range violation. This attribute represents
-            the minimum value of the range.
-          type: integer
-        rangeMaximumValue:
-          description: The maximum range or value of an attribute.
-          type: integer
-        allowedPattern:
-          description: A regex pattern describing an acceptable input pattern.
-          type: string
-        allowedValues:
-          description: A list describing acceptable values.
-          items:
-            type: string
-          type: array
-        maximumValue:
-          description: The maximum value allowed for the request.
-          type: integer
-      type: object
-    P1Error_details_inner:
-      properties:
-        code:
-          description: A general fault code which the client must handle to provide
-            all exception handling routines and to localize messages for users. This
-            code is common across all PingOne services and is human readable (such
-            as a defined constant rather than a number).
-          type: string
-        target:
-          description: The item that caused the error (such as a form field ID or
-            an attribute inside a JSON object).
-          type: string
-        message:
-          description: A short description of the error. This message is intended
-            to assist with debugging and is returned in English only.
-          type: string
-        innerError:
-          $ref: '#/components/schemas/P1Error_details_inner_innerError'
-      type: object
     EntityArray__embedded:
       example:
         riskPolicySets:
@@ -1733,8 +1725,8 @@ components:
           id: id
           riskPolicies:
           - result:
-              level: LOW
-              type: VALUE
+              level: null
+              type: null
               value: value
             createdAt: createdAt
             condition:
@@ -1760,8 +1752,8 @@ components:
             priority: 5
             updatedAt: updatedAt
           - result:
-              level: LOW
-              type: VALUE
+              level: null
+              type: null
               value: value
             createdAt: createdAt
             condition:
@@ -1787,8 +1779,8 @@ components:
             priority: 5
             updatedAt: updatedAt
           defaultResult:
-            level: LOW
-            type: VALUE
+            level: null
+            type: null
             value: value
           updatedAt: updatedAt
         - createdAt: createdAt
@@ -1800,8 +1792,8 @@ components:
           id: id
           riskPolicies:
           - result:
-              level: LOW
-              type: VALUE
+              level: null
+              type: null
               value: value
             createdAt: createdAt
             condition:
@@ -1827,8 +1819,8 @@ components:
             priority: 5
             updatedAt: updatedAt
           - result:
-              level: LOW
-              type: VALUE
+              level: null
+              type: null
               value: value
             createdAt: createdAt
             condition:
@@ -1854,21 +1846,21 @@ components:
             priority: 5
             updatedAt: updatedAt
           defaultResult:
-            level: LOW
-            type: VALUE
+            level: null
+            type: null
             value: value
           updatedAt: updatedAt
         riskPredictors:
         - createdAt: createdAt
           default:
             result:
-              level: HIGH
-              type: VALUE
+              level: null
+              type: null
             weight: 5
           name: name
           description: description
           id: id
-          type: VELOCITY
+          type: null
           compactName: compactName
           map:
             high:
@@ -1908,13 +1900,13 @@ components:
         - createdAt: createdAt
           default:
             result:
-              level: HIGH
-              type: VALUE
+              level: null
+              type: null
             weight: 5
           name: name
           description: description
           id: id
-          type: VELOCITY
+          type: null
           compactName: compactName
           map:
             high:
@@ -1961,6 +1953,48 @@ components:
             $ref: '#/components/schemas/RiskPredictor'
           type: array
       type: object
+    P1Error_details_inner_innerError:
+      description: Additional details to help the client developer resolve the fault
+        (primarily for UI validation reasons).
+      properties:
+        rangeMinimumValue:
+          description: Errors that failed due to range violation. This attribute represents
+            the minimum value of the range.
+          type: integer
+        rangeMaximumValue:
+          description: The maximum range or value of an attribute.
+          type: integer
+        allowedPattern:
+          description: A regex pattern describing an acceptable input pattern.
+          type: string
+        allowedValues:
+          description: A list describing acceptable values.
+          items:
+            type: string
+          type: array
+        maximumValue:
+          description: The maximum value allowed for the request.
+          type: integer
+      type: object
+    P1Error_details_inner:
+      properties:
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        target:
+          description: The item that caused the error (such as a form field ID or
+            an attribute inside a JSON object).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        innerError:
+          $ref: '#/components/schemas/P1Error_details_inner_innerError'
+      type: object
     RiskEvaluation_riskPolicySet:
       example:
         name: name
@@ -1984,20 +2018,10 @@ components:
     RiskEvaluationDetails_ipAddressReputation:
       example:
         score: 0
-        level: LOW
+        level: null
       properties:
         level:
-          description: "A string that specifies the risk level of the evaluated IP\
-            \ address. Options are LOW, MEDIUM, and HIGH. If the score is less than\
-            \ 55, the level is LOW; if the score is greater than 77, the level is\
-            \ HIGH; if the score is between 55 and 77, the level is MEDIUM. Note that\
-            \ these guidelines could change based on data analytics and product consideration.\
-            \ If the ipAddressReputation.score is unknown, NULL is returned."
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          type: string
+          $ref: '#/components/schemas/EnumRiskLevel'
         score:
           description: "An integer that represents the calculated score of the IP\
             \ address involved in the transaction. Scores range between 0 and 100.\
@@ -2011,7 +2035,7 @@ components:
       example:
         high: 6
         medium: 1
-        source: MIN_NOT_REACHED
+        source: null
         calculatedAt: calculatedAt
         expiresAt: expiresAt
       properties:
@@ -2026,27 +2050,7 @@ components:
             \ the past hour, they're flagged as a MEDIUM ipVelocityByUser.level."
           type: integer
         source:
-          description: "An enum indicating the source used to calculate the threshold.\
-            \ This can be MIN_NOT_REACHED. If the measure is less than every.minSample,\
-            \ the threshold isn't calculated. Instead, a value of LOW is automatically\
-            \ assigned. If less than five IPs were used by the user during the past\
-            \ hour, MIN_NOT_REACHED is set. CALCULATED. Indicates the threshold is\
-            \ guaranteed to be calculated. ENVIRONMENT_FALLBACK. Indicates a global\
-            \ threshold calculated for the entire environment is used. The global\
-            \ threshold is used when the ipVelocityByUser.threshold couldn't be calculated,\
-            \ generally due to a lack of past transactions for the risk predictor\
-            \ to use for the threshold calculation. DEFAULT_FALLBACK. Indicates the\
-            \ default threshold defined for the predictor (in threshold.medium or\
-            \ threshold.high) is used. The default threshold is used when ENVIRONMENT_FALLBACK\
-            \ (the global threshold) couldn't be calculated, generally due to a lack\
-            \ of past transactions for the risk predictor to use for the environment\
-            \ threshold calculation."
-          enum:
-          - MIN_NOT_REACHED
-          - CALCULATED
-          - ENVIRONMENT_FALLBACK
-          - DEFAULT_FALLBACK
-          type: string
+          $ref: '#/components/schemas/EnumThresholdSource'
         calculatedAt:
           description: A date-time indicating the timestamp for the calculated threshold.
           type: string
@@ -2072,11 +2076,11 @@ components:
     RiskEvaluationDetails_ipVelocityByUser:
       example:
         reason: reason
-        level: LOW
+        level: null
         threshold:
           high: 6
           medium: 1
-          source: MIN_NOT_REACHED
+          source: null
           calculatedAt: calculatedAt
           expiresAt: expiresAt
         velocity:
@@ -2084,13 +2088,7 @@ components:
           during: 5
       properties:
         level:
-          description: "An enum indicating whether the number of distinct IPs for\
-            \ the user in the past hour is flagged as LOW, MEDIUM, or HIGH."
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          type: string
+          $ref: '#/components/schemas/EnumRiskLevel'
         reason:
           description: A string indicating the reason the user was flagged. For example
             "More than 13 IPs were accessed by John during the last 1 hour."
@@ -2105,7 +2103,7 @@ components:
       example:
         high: 2
         medium: 7
-        source: MIN_NOT_REACHED
+        source: null
         calculatedAt: calculatedAt
         expiresAt: expiresAt
       properties:
@@ -2120,25 +2118,7 @@ components:
             \ users during the past hour, the IP is flagged as a MEDIUM userVelocityByIp.level"
           type: integer
         source:
-          description: "An enum indicating the source used to calculate the threshold.\
-            \ This can be: MIN_NOT_REACHED. If the measure is less than every.minSample,\
-            \ the threshold isn't calculated. Instead, a value of LOW is automatically\
-            \ assigned. CALCULATED. Indicates the threshold was calculated. ENVIRONMENT_FALLBACK.\
-            \ Indicates a global threshold calculated for the entire environment is\
-            \ used. The global threshold is used when the userVelocityByIp.threshold\
-            \ couldn't be calculated for the user, generally due to a lack of past\
-            \ transactions for the risk predictor to use for the threshold calculation.\
-            \ DEFAULT_FALLBACK. Indicates the default threshold defined for the predictor\
-            \ (in threshold.medium or threshold.high) is used. The default threshold\
-            \ is used when ENVIRONMENT_FALLBACK (the global threshold) couldn't be\
-            \ calculated, generally due to a lack of past transactions for the risk\
-            \ predictor to use for the global threshold calculation."
-          enum:
-          - MIN_NOT_REACHED
-          - CALCULATED
-          - ENVIRONMENT_FALLBACK
-          - DEFAULT_FALLBACK
-          type: string
+          $ref: '#/components/schemas/EnumThresholdSource'
         calculatedAt:
           description: A date-time indicating the timestamp for the calculated threshold.
           type: string
@@ -2164,11 +2144,11 @@ components:
     RiskEvaluationDetails_userVelocityByIp:
       example:
         reason: reason
-        level: LOW
+        level: null
         threshold:
           high: 2
           medium: 7
-          source: MIN_NOT_REACHED
+          source: null
           calculatedAt: calculatedAt
           expiresAt: expiresAt
         velocity:
@@ -2176,13 +2156,7 @@ components:
           during: 3
       properties:
         level:
-          description: "An enum indicating whether the calculated number of users\
-            \ per IP is LOW, MEDIUM, or HIGH."
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          type: string
+          $ref: '#/components/schemas/EnumRiskLevel'
         reason:
           description: A string indicating the reason the user was flagged. For example
             "More than 250 users accessed IP address 1.1.1.1 during the last 1 hour."
@@ -2232,20 +2206,10 @@ components:
     RiskEvaluationDetails_userBasedRiskBehavior:
       example:
         reason: reason
-        level: LOW
+        level: null
       properties:
         level:
-          description: "A string that specifies the risk score calculated for the\
-            \ user behavior for all transactions associated with the accessing device,\
-            \ and for the current authentication attempt. Options are LOW, MEDIUM,\
-            \ and HIGH. This information is available only if customers have agreed\
-            \ to data consent and the intelligence.allowDataConsent property in the\
-            \ PingOne license is set to true."
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          type: string
+          $ref: '#/components/schemas/EnumRiskLevel'
         reason:
           description: "A string that describes the reason (or reasons) provided for\
             \ the user behavior risk score classification (for example, the operating\
@@ -2258,20 +2222,10 @@ components:
     RiskEvaluationDetails_userRiskBehavior:
       example:
         reason: reason
-        level: LOW
+        level: null
       properties:
         level:
-          description: "A string that specifies the risk score calculated for the\
-            \ user behavior within the organization associated with the accessing\
-            \ device, and for the current authentication attempt. Options are LOW,\
-            \ MEDIUM, and HIGH. This information is available only if customers have\
-            \ agreed to data consent and the intelligence.allowDataConsent property\
-            \ in the PingOne license is set to true."
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          type: string
+          $ref: '#/components/schemas/EnumRiskLevel'
         reason:
           description: "A string that describes the reason (or reasons) provided for\
             \ the user behavior risk score classification within the organization\
@@ -2400,30 +2354,20 @@ components:
     RiskEvaluationEvent_evaluatedFactors:
       example:
         type: type
-        status: FAILED
+        status: null
       properties:
         status:
-          description: "A string that specifies the state of the transaction. Options\
-            \ are FAILED, IN_PROGRESS, and SUCCESS."
-          enum:
-          - FAILED
-          - IN_PROGRESS
-          - SUCCESS
-          type: string
+          $ref: '#/components/schemas/EnumCompletionStatus'
         type:
           description: A string that specifies the transaction type.
           type: string
       type: object
     RiskEvaluationEvent_flow:
       example:
-        type: AUTHENTICATION
+        type: null
       properties:
         type:
-          description: A string that specifies the flow type for the event. The only
-            option (and default) is AUTHENTICATION.
-          enum:
-          - AUTHENTICATION
-          type: string
+          $ref: '#/components/schemas/EnumFlowType'
       type: object
     RiskEvaluationEvent_session:
       example:
@@ -2464,7 +2408,7 @@ components:
         - name: name
         - name: name
         id: id
-        type: EXTERNAL
+        type: null
       properties:
         id:
           description: A string that specifies the ID of the user associated with
@@ -2475,11 +2419,7 @@ components:
             the event (maximum size 1024 characters).
           type: string
         type:
-          description: A string that specifies the type of user associated with the
-            event. Options are EXTERNAL. This is a required property.
-          enum:
-          - EXTERNAL
-          type: string
+          $ref: '#/components/schemas/EnumUserType'
         groups:
           description: An array of group names.
           items:
@@ -2558,8 +2498,8 @@ components:
     RiskPolicySet_riskPolicies_inner:
       example:
         result:
-          level: LOW
-          type: VALUE
+          level: null
+          type: null
           value: value
         createdAt: createdAt
         condition:
@@ -2636,29 +2576,21 @@ components:
         \ override is skipped. In the weighted policy, the predictor will have a weight\
         \ of 0."
       example:
-        level: HIGH
-        type: VALUE
+        level: null
+        type: null
       properties:
         level:
-          description: "A string that identifies the risk level. Options are HIGH,\
-            \ MEDIUM, and LOW."
-          enum:
-          - HIGH
-          - MEDIUM
-          - LOW
-          type: string
+          $ref: '#/components/schemas/EnumRiskLevel'
         type:
-          enum:
-          - VALUE
-          type: string
+          $ref: '#/components/schemas/EnumResultType'
       required:
       - level
       type: object
     RiskPredictor_default:
       example:
         result:
-          level: HIGH
-          type: VALUE
+          level: null
+          type: null
         weight: 5
       properties:
         weight:

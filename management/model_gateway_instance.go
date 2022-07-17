@@ -25,8 +25,7 @@ type GatewayInstance struct {
 	Credential *GatewayInstanceCredential `json:"credential,omitempty"`
 	// An array of strings that lists the messages that are maintained by the gateway instance.
 	CurrentErrors []string `json:"currentErrors,omitempty"`
-	// An enumeration that specifies whether or not the gateway is in a healthy state. Options are HEALTHY, DEGRADED, UNHEALTHY. This is a required property.
-	HealthStatus *string `json:"healthStatus,omitempty"`
+	HealthStatus *EnumHealthStatus `json:"healthStatus,omitempty"`
 	// A string that specifies the hostname of the container running in the customer’s infrastructure. This is a required property.
 	Hostname *string `json:"hostname,omitempty"`
 	// A timestamp that specifies when gateway was initialized (when the first connect to PingOne was made).
@@ -252,9 +251,9 @@ func (o *GatewayInstance) SetCurrentErrors(v []string) {
 }
 
 // GetHealthStatus returns the HealthStatus field value if set, zero value otherwise.
-func (o *GatewayInstance) GetHealthStatus() string {
+func (o *GatewayInstance) GetHealthStatus() EnumHealthStatus {
 	if o == nil || o.HealthStatus == nil {
-		var ret string
+		var ret EnumHealthStatus
 		return ret
 	}
 	return *o.HealthStatus
@@ -262,7 +261,7 @@ func (o *GatewayInstance) GetHealthStatus() string {
 
 // GetHealthStatusOk returns a tuple with the HealthStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayInstance) GetHealthStatusOk() (*string, bool) {
+func (o *GatewayInstance) GetHealthStatusOk() (*EnumHealthStatus, bool) {
 	if o == nil || o.HealthStatus == nil {
 		return nil, false
 	}
@@ -278,8 +277,8 @@ func (o *GatewayInstance) HasHealthStatus() bool {
 	return false
 }
 
-// SetHealthStatus gets a reference to the given string and assigns it to the HealthStatus field.
-func (o *GatewayInstance) SetHealthStatus(v string) {
+// SetHealthStatus gets a reference to the given EnumHealthStatus and assigns it to the HealthStatus field.
+func (o *GatewayInstance) SetHealthStatus(v EnumHealthStatus) {
 	o.HealthStatus = &v
 }
 

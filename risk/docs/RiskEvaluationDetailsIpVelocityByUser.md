@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to **string** | An enum indicating whether the number of distinct IPs for the user in the past hour is flagged as LOW, MEDIUM, or HIGH. | [optional] 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
 **Reason** | Pointer to **string** | A string indicating the reason the user was flagged. For example \&quot;More than 13 IPs were accessed by John during the last 1 hour.\&quot; | [optional] 
 **Threshold** | Pointer to [**RiskEvaluationDetailsIpVelocityByUserThreshold**](RiskEvaluationDetailsIpVelocityByUserThreshold.md) |  | [optional] 
 **Velocity** | Pointer to [**RiskEvaluationDetailsIpVelocityByUserVelocity**](RiskEvaluationDetailsIpVelocityByUserVelocity.md) |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLevel
 
-`func (o *RiskEvaluationDetailsIpVelocityByUser) GetLevel() string`
+`func (o *RiskEvaluationDetailsIpVelocityByUser) GetLevel() EnumRiskLevel`
 
 GetLevel returns the Level field if non-nil, zero value otherwise.
 
 ### GetLevelOk
 
-`func (o *RiskEvaluationDetailsIpVelocityByUser) GetLevelOk() (*string, bool)`
+`func (o *RiskEvaluationDetailsIpVelocityByUser) GetLevelOk() (*EnumRiskLevel, bool)`
 
 GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLevel
 
-`func (o *RiskEvaluationDetailsIpVelocityByUser) SetLevel(v string)`
+`func (o *RiskEvaluationDetailsIpVelocityByUser) SetLevel(v EnumRiskLevel)`
 
 SetLevel sets Level field to given value.
 

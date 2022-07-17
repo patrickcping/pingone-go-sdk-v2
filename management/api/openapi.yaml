@@ -14991,10 +14991,7 @@ paths:
         name: include
         required: false
         schema:
-          enum:
-          - memberOfGroupIDs
-          - memberOfGroupNames
-          type: string
+          $ref: '#/components/schemas/EnumUserRequestInclude'
         style: form
       - explode: false
         in: path
@@ -17846,30 +17843,577 @@ paths:
       - Roles
 components:
   schemas:
-    P1Error:
+    EnumApplicationOIDCGrantType:
+      enum:
+      - AUTHORIZATION_CODE
+      - IMPLICIT
+      - REFRESH_TOKEN
+      - CLIENT_CREDENTIALS
+      type: string
+    EnumApplicationOIDCPKCEOption:
+      description: A string that specifies how PKCE request parameters are handled
+        on the authorize request. Options are OPTIONAL PKCE code_challenge is optional
+        and any code challenge method is acceptable. REQUIRED PKCE code_challenge
+        is required and any code challenge method is acceptable. S256_REQUIRED PKCE
+        code_challege is required and the code_challenge_method must be S256.
+      enum:
+      - OPTIONAL
+      - REQUIRED
+      - S256_REQUIRED
+      type: string
+    EnumApplicationOIDCResponseType:
+      enum:
+      - TOKEN
+      - ID_TOKEN
+      - CODE
+      type: string
+    EnumApplicationOIDCTokenAuthMethod:
+      description: A string that specifies the client authentication methods supported
+        by the token endpoint.
+      enum:
+      - NONE
+      - CLIENT_SECRET_BASIC
+      - CLIENT_SECRET_POST
+      type: string
+    EnumApplicationProtocol:
+      description: A string that specifies the protocol for the Application.
+      enum:
+      - OPENID_CONNECT
+      - SAML
+      type: string
+    EnumApplicationSAMLSloBinding:
+      description: A string that specifies the binding protocol to be used for the
+        logout response. Options are HTTP_REDIRECT or HTTP_POST. The default is HTTP_POST;
+        existing configurations with no data default to HTTP_POST.
+      enum:
+      - HTTP_REDIRECT
+      - HTTP_POST
+      type: string
+    EnumApplicationTags:
+      enum:
+      - PING_FED_CONNECTION_INTEGRATION
+      type: string
+    EnumApplicationType:
+      description: "A string that specifies the type associated with the application.\
+        \ This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP,\
+        \ and WORKER."
+      enum:
+      - WEB_APP
+      - NATIVE_APP
+      - SINGLE_PAGE_APP
+      - WORKER
+      - SERVICE
+      - CUSTOM_APP
+      type: string
+    EnumAttributeMappingType:
+      description: "A string that specifies the mapping type of the attribute. Options\
+        \ are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types are for reserved\
+        \ attributes managed by the API and cannot be removed. Attribute values for\
+        \ these mapping types can be updated. The CUSTOM mapping type is for user-defined\
+        \ attributes. Attributes of this type can be updated and deleted."
+      enum:
+      - CORE
+      - SCOPE
+      - CUSTOM
+      type: string
+    EnumEnvironmentType:
+      description: A string that specifies the type of environment to use.
+      enum:
+      - PRODUCTION
+      - SANDBOX
+      type: string
+    EnumGatewayLDAPSecurity:
+      description: "(Optional) A string that specifies the connection security type.\
+        \ Options are None, TLS, and StartTLS. The default value is None."
+      enum:
+      - None
+      - TLS
+      - StartTLS
+      type: string
+    EnumGatewayType:
+      description: "A string that specifies the type of gateway resource. Options\
+        \ are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property."
+      enum:
+      - LDAP
+      - PING_FEDERATE
+      - PING_INTELLIGENCE
+      type: string
+    EnumHealthStatus:
+      description: An enumeration that specifies whether or not the gateway is in
+        a healthy state.
+      enum:
+      - HEALTHY
+      - DEGRADED
+      - UNHEALTHY
+      type: string
+    EnumIdentityProvider:
+      description: A string that identifies the type of identity provider used to
+        authenticate the user. The default value of `PING_ONE` is set when a value
+        for identityProvider.id is not provided. The `PING_ONE` value is the default
+        for all pre-existing users. There is currently no search filter support for
+        this attribute.
+      enum:
+      - FACEBOOK
+      - GOOGLE
+      - LINKEDIN
+      - APPLE
+      - TWITTER
+      - AMAZON
+      - YAHOO
+      - MICROSOFT
+      - PAYPAL
+      - GITHUB
+      - OPENID_CONNECT
+      - SAML
+      - PING_ONE
+      type: string
+    EnumImageFormat:
+      description: "A string that specifies the type of format used for the image.\
+        \ Options are jpg, png, and gif."
+      enum:
+      - PNG
+      - JPG
+      - GIF
+      type: string
+    EnumOrganizationType:
+      description: "A string that specifies the organization type. If the organization\
+        \ has any paid licenses, the type property value is set to `PAID`. Otherwise,\
+        \ the property value is set to `TRIAL`."
+      enum:
+      - PAID
+      - TRIAL
+      type: string
+    EnumProductType:
+      description: "A string that specifies the Ping Identity product type. Options\
+        \ for PingOne platform products are PING_ONE_ORCHESTRATE, PING_ONE_MFA, PING_ONE_RISK,\
+        \ PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE and PING_ONE_BASE.\
+        \ The PING_ONE_BASE product represents the default set of services that an\
+        \ environment can use on the PingOne platform. Options for other Ping Identity\
+        \ products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE,\
+        \ PING_ID, PING_INTELLIGENCE, and PING_CENTRAL"
+      enum:
+      - PING_ONE_MFA
+      - PING_ONE_ORCHESTRATE
+      - PING_ONE_RISK
+      - PING_ONE_VERIFY
+      - PING_ONE_CREDENTIALS
+      - PING_ONE_AUTHORIZE
+      - PING_ONE_BASE
+      - PING_FEDERATE
+      - PING_ACCESS
+      - PING_DIRECTORY
+      - PING_AUTHORIZE
+      - PING_ID
+      - PING_INTELLIGENCE
+      - PING_CENTRAL
+      type: string
+    EnumRegionCode:
+      description: A string that specifies the region in which this environment will
+        be used. The value is set when the environment is created and cannot be updated.
+      enum:
+      - AP
+      - CA
+      - EU
+      - NA
+      type: string
+    EnumResourceAttributeType:
+      description: "A string that specifies the type of resource attribute. Options\
+        \ are CORE - The claim is required and cannot not be removed., CUSTOM - The\
+        \ claim is not a CORE attribute. All created attributes are of this type."
+      enum:
+      - CORE
+      - CUSTOM
+      type: string
+    EnumResourceType:
+      description: "A string that specifies the type of resource. Options are OPENID_CONNECT,\
+        \ PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created.\
+        \ OPENID_CONNECT specifies the built-in platform resource for OpenID Connect.\
+        \ PING_ONE_API specifies the built-in platform resource for PingOne."
+      enum:
+      - OPENID_CONNECT
+      - PING_ONE_API
+      - CUSTOM
+      type: string
+    EnumRoleName:
+      description: The name of the role
+      enum:
+      - Organization Admin
+      - Environment Admin
+      - Identity Data Admin
+      - Client Application Developer
+      - Identity Data Read Only
+      - Configuration Read Only
+      - PingFederate Administrator
+      - PingFederate Expression Administrator
+      - PingFederate Crypto Administrator
+      - PingFederate User Administrator
+      - PingFederate Auditor
+      type: string
+    EnumRoleAssignmentScopeType:
+      description: A string that specifies the type of resource defining the scope
+        of the Role assignment.
+      enum:
+      - ORGANIZATION
+      - ENVIRONMENT
+      - POPULATION
+      type: string
+    EnumSchemaAttributeSchemaType:
+      description: "A string that specifies the schema type of the attribute. It may\
+        \ be one of CORE, STANDARD or CUSTOM. Core and standard attributes are present\
+        \ out-of-the-box. Core attributes may not be updated or deleted. Standard\
+        \ attributes may not be deleted, but their mutable properties may be updated.\
+        \ Custom attributes may be deleted, and their mutable properties may be updated.\
+        \ New attributes are created with a schema type of CUSTOM."
+      enum:
+      - CORE
+      - STANDARD
+      - CUSTOM
+      type: string
+    EnumSchemaAttributeType:
+      description: "A string that specifies the the type of the attribute. It may\
+        \ be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided\
+        \ during creation, then it defaults to STRING. Complex and boolean attributes\
+        \ may not be created, but standard attributes of those types may be updated.\
+        \ JSON attributes are limited by size (total size must not exceed 16KB)."
+      enum:
+      - STRING
+      - JSON
+      - BOOLEAN
+      - COMPLEX
+      type: string
+    EnumSignOnPolicyExtraVerification:
+      default: disabled
+      description: "Specifies the level of further verification when deviceAuthorization\
+        \ is enabled. The PingOne platform performs an extra verification check by\
+        \ sending a silent push notification to the customer native application, and\
+        \ receives a confirmation in return.  `extraVerification` can be one of the\
+        \ following levels:\n`disabled` (default): The PingOne platform does not perform\
+        \ the extra verification check.\n`permissive`: The PingOne platform performs\
+        \ the extra verification check. Upon timeout or failure to get a response\
+        \ from the native app, the MFA step is treated as successfully completed.\n\
+        `restrictive`: The PingOne platform performs the extra verification check.The\
+        \ PingOne platform performs the extra verification check. Upon timeout or\
+        \ failure to get a response from the native app, the MFA step is treated as\
+        \ failed.\n"
+      enum:
+      - disabled
+      - permissive
+      - restrictive
+      type: string
+    EnumSignOnPolicyNoDeviceMode:
+      description: "A string that specifies the device mode for the MFA flow. Options\
+        \ are `BYPASS` to allow MFA without a specified device, or `BLOCK` to block\
+        \ the MFA flow if no device is specified. To use this configuration option,\
+        \ the authorize request must include a signed `login_hint_token` property.\
+        \ For more information, see Authorize (Browserless and MFA Only Flows)"
+      enum:
+      - BYPASS
+      - BLOCK
+      type: string
+    EnumSignOnPolicyType:
+      description: "A string that specifies the type of action. Options are `LOGIN`,\
+        \ `MULTI_FACTOR_AUTHENTICATION`, `IDENTIFIER_FIRST`, `IDENTITY_PROVIDER` `AGREEMENT`\
+        \ and `PROGRESSIVE_PROFILING`."
+      enum:
+      - LOGIN
+      - MULTI_FACTOR_AUTHENTICATION
+      - IDENTIFIER_FIRST
+      - IDENTITY_PROVIDER
+      - PROGRESSIVE_PROFILING
+      - AGREEMENT
+      type: string
+    EnumSolutionType:
+      description: The solution set of the environment
+      enum:
+      - WORKFORCE
+      - CUSTOMER
+      type: string
+    EnumEnabledStatus:
+      description: "A string that specifies whether device integrity detection takes\
+        \ place on mobile devices, for the application's enrollment and authentication\
+        \ events ENABLED, DISABLED"
+      enum:
+      - ENABLED
+      - DISABLED
+      type: string
+    EnumDurationUnitMinsHours:
+      enum:
+      - MINUTES
+      - HOURS
+      type: string
+    EnumUpdateStatus:
+      description: "An enumeration that specifies one of the following values: AT_LATEST:\
+        \ The gateway instance's version is at or after the supported version marked\
+        \ latest. UPGRADE_AVAILABLE: The gateway instance's version is at the supported\
+        \ version that is marked recommended but there is a later supported version\
+        \ marked recommended. UPGRADE_RECOMMENDED: The gateway instance's version\
+        \ is at a known version but the version is not marked as recommended or latest.\
+        \ The version has greater than 30 days support. UPGRADE_REQUIRED: The gateway\
+        \ instance's version is at a known version but the version is not marked as\
+        \ recommended or latest. The version has support ending within the next month.\
+        \ NOT_SUPPORTED: The gateway instance's version is not known or supported."
+      enum:
+      - AT_LATEST
+      - UPGRADE_AVAILABLE
+      - UPGRADE_RECOMMENDED
+      - UPGRADE_REQUIRED
+      - NOT_SUPPORTED
+      type: string
+    EnumUserLifecycleStatus:
+      description: "A string that specifies information about the account lifecycle.\
+        \ Options for status are `ACCOUNT_OK` and `VERIFICATION_REQUIRED`. This property\
+        \ value is only allowed to be set when importing a user to set the initial\
+        \ account status. If the initial status is set to `VERIFICATION_REQUIRED`\
+        \ and an email address is provided, a verification email is sent."
+      enum:
+      - ACCOUNT_OK
+      - VERIFICATION_REQUIRED
+      type: string
+    EnumUserRequestInclude:
+      enum:
+      - memberOfGroupIDs
+      - memberOfGroupNames
+      type: string
+    EnumUserStatus:
+      description: A string that specifies the account locked state.
+      enum:
+      - LOCKED
+      - OK
+      type: string
+    EnumUserVerifyStatus:
+      description: "Indicates whether ID verification can be done for the user. This\
+        \ value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If\
+        \ the user verification status is DISABLED, a new verification status cannot\
+        \ be created for that user until the status is changed to ENABLED."
+      enum:
+      - NOT_INITIATED
+      - ENABLED
+      - DISABLED
+      type: string
+    Application:
+      properties:
+        accessControl:
+          $ref: '#/components/schemas/Application_accessControl'
+        assignActorRoles:
+          description: A boolean that specifies whether the permissions service should
+            assign default roles to the application. This property is set only on
+            the POST request. The property is ignored when included in a PUT request.
+          type: boolean
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        description:
+          description: A string that specifies the description of the application.
+          type: string
+        enabled:
+          description: A string that specifies the current enabled state of the application.
+            Options are ENABLED or DISABLED.
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        icon:
+          $ref: '#/components/schemas/Application_icon'
+        id:
+          description: A string that specifies the application ID.
+          readOnly: true
+          type: string
+        loginPageUrl:
+          description: "A string that specifies the custom login page URL for the\
+            \ application. If you set the loginPageUrl property for applications in\
+            \ an environment that sets a custom domain, the URL should include the\
+            \ top-level domain and at least one additional domain level. Warning To\
+            \ avoid issues with third-party cookies in some browsers, a custom domain\
+            \ must be used, giving your PingOne environment the same parent domain\
+            \ as your authentication application. For more information about custom\
+            \ domains, see Custom domains."
+          type: string
+        name:
+          description: A string that specifies the name of the application. This is
+            a required property.
+          type: string
+        protocol:
+          $ref: '#/components/schemas/EnumApplicationProtocol'
+        tags:
+          description: An array that specifies the list of labels associated with
+            the application. Options are PING_FED_CONNECTION_INTEGRATION.
+          items:
+            $ref: '#/components/schemas/EnumApplicationTags'
+          type: array
+        type:
+          $ref: '#/components/schemas/EnumApplicationType'
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+        supportUnsignedRequestObject:
+          description: "A boolean that specifies whether the request query parameter\
+            \ JWT is allowed to be unsigned. If false or null (default), an unsigned\
+            \ request object is not allowed."
+          type: boolean
+      required:
+      - enabled
+      - name
+      - protocol
+      - type
+      type: object
+    ApplicationSAML:
+      allOf:
+      - $ref: '#/components/schemas/Application'
+      - $ref: '#/components/schemas/ApplicationSAML_allOf'
+    ApplicationOIDC:
+      allOf:
+      - $ref: '#/components/schemas/Application'
+      - $ref: '#/components/schemas/ApplicationOIDC_allOf'
+    ApplicationAttributeMapping:
+      example:
+        createdAt: createdAt
+        mappingType: null
+        name: name
+        id: id
+        value: value
+        required: true
+        updatedAt: updatedAt
       properties:
         id:
-          description: "A unique identifier that is stored in log files and always\
-            \ included in an error response. This value can be used to track the error\
-            \ received by the client, with server-side activity included for troubleshooting\
-            \ purposes."
+          description: A string that specifies the application ID.
+          readOnly: true
           type: string
-        code:
-          description: A general fault code which the client must handle to provide
-            all exception handling routines and to localize messages for users. This
-            code is common across all PingOne services and is human readable (such
-            as a defined constant rather than a number).
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
           type: string
-        message:
-          description: A short description of the error. This message is intended
-            to assist with debugging and is returned in English only.
+        mappingType:
+          $ref: '#/components/schemas/EnumAttributeMappingType'
+        name:
+          description: "A string that specifies the name of attribute and must be\
+            \ unique within an application. For SAML applications, the samlAssertion.subject\
+            \ name is a reserved case-insensitive name which indicates the mapping\
+            \ to be used for the subject in an assertion. For OpenID Connect applications,\
+            \ the following names are reserved and cannot be used acr, amr, at_hash,\
+            \ aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org,\
+            \ scope, sid, sub  This is a required property."
           type: string
-        details:
-          description: Additional details about the error. Optional information to
-            help resolve the error and to display to users.
+        required:
+          description: "A boolean to specify whether a mapping value is required for\
+            \ this attribute. If true, a value must be set and a non-empty value must\
+            \ be available in the SAML assertion or ID token."
+          type: boolean
+        updatedAt:
+          description: The time the resource was updated.
+          readOnly: true
+          type: string
+        value:
+          description: "A string that specifies the string constants or expression\
+            \ for mapping the attribute path against a specific source. The expression\
+            \ format is ${<source>.<attribute_path>}. The only supported source is\
+            \ user (for example, ${user.id}). This is a required property."
+          type: string
+      required:
+      - name
+      - required
+      - value
+      type: object
+    ApplicationResourceGrant:
+      example:
+        createdAt: createdAt
+        application:
+          id: id
+        resource:
+          id: id
+        id: id
+        scopes:
+        - id: id
+        - id: id
+        updatedAt: updatedAt
+      properties:
+        application:
+          $ref: '#/components/schemas/ApplicationResourceGrant_application'
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        id:
+          description: A string that specifies the application resource grant ID.
+          readOnly: true
+          type: string
+        resource:
+          $ref: '#/components/schemas/ApplicationResourceGrant_resource'
+        scopes:
           items:
-            $ref: '#/components/schemas/P1Error_details_inner'
+            $ref: '#/components/schemas/ApplicationResourceGrant_scopes_inner'
           type: array
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+      required:
+      - resource
+      - scopes
+      type: object
+    ApplicationSecret:
+      example:
+        environment:
+          id: id
+        secret: secret
+      properties:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        secret:
+          description: A string that specifies the application secret ID used to authenticate
+            to the authorization server.
+          readOnly: true
+          type: string
+      type: object
+    BillOfMaterials:
+      example:
+        createdAt: createdAt
+        solutionType: null
+        updatedAt: updatedAt
+        products:
+        - bookmarks:
+          - name: name
+            href: href
+          - name: name
+            href: href
+          console:
+            href: href
+          description: description
+          id: id
+          type: null
+          deployment:
+            id: id
+        - bookmarks:
+          - name: name
+            href: href
+          - name: name
+            href: href
+          console:
+            href: href
+          description: description
+          id: id
+          type: null
+          deployment:
+            id: id
+      properties:
+        solutionType:
+          $ref: '#/components/schemas/EnumSolutionType'
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+        products:
+          description: An array that specifies the products associated with this bill
+            of materials
+          items:
+            $ref: '#/components/schemas/BillOfMaterials_products_inner'
+          type: array
+      required:
+      - products
       type: object
     EntityArray:
       example:
@@ -17902,7 +18446,7 @@ components:
           credentials:
           - createdAt: createdAt
             authUrl: authUrl
-            gatewayType: LDAP
+            gatewayType: null
             consoleUrl: consoleUrl
             apiUrl: apiUrl
             credential: credential
@@ -17910,7 +18454,7 @@ components:
             id: id
           - createdAt: createdAt
             authUrl: authUrl
-            gatewayType: LDAP
+            gatewayType: null
             consoleUrl: consoleUrl
             apiUrl: apiUrl
             credential: credential
@@ -17947,7 +18491,7 @@ components:
               description: description
             - classifier: classifier
               description: description
-            name: name
+            name: null
             description: description
             applicableTo:
             - applicableTo
@@ -17958,7 +18502,7 @@ components:
               description: description
             - classifier: classifier
               description: description
-            name: name
+            name: null
             description: description
             applicableTo:
             - applicableTo
@@ -18004,7 +18548,7 @@ components:
             name: name
             description: description
             id: id
-            type: OPENID_CONNECT
+            type: null
             updatedAt: updatedAt
           - createdAt: createdAt
             audience: audience
@@ -18016,7 +18560,7 @@ components:
             name: name
             description: description
             id: id
-            type: OPENID_CONNECT
+            type: null
             updatedAt: updatedAt
           signOnPolicies:
           - createdAt: createdAt
@@ -18047,9 +18591,9 @@ components:
             enabled: true
             identityProvider:
               id: id
-              type: FACEBOOK
+              type: null
             lifecycle:
-              status: ACCOUNT_OK
+              status: null
             createdAt: createdAt
             password:
               external:
@@ -18061,7 +18605,7 @@ components:
                   type: type
               forceChange: true
               value: value
-            verifyStatus: NOT_INITIATED
+            verifyStatus: null
             nickname: nickname
             mfaEnabled: true
             id: id
@@ -18100,7 +18644,7 @@ components:
               lockedAt: lockedAt
               secondsUntilUnlock: 9
               unlockAt: unlockAt
-              status: LOCKED
+              status: null
             username: username
           - preferredLanguage: preferredLanguage
             timezone: timezone
@@ -18113,9 +18657,9 @@ components:
             enabled: true
             identityProvider:
               id: id
-              type: FACEBOOK
+              type: null
             lifecycle:
-              status: ACCOUNT_OK
+              status: null
             createdAt: createdAt
             password:
               external:
@@ -18127,7 +18671,7 @@ components:
                   type: type
               forceChange: true
               value: value
-            verifyStatus: NOT_INITIATED
+            verifyStatus: null
             nickname: nickname
             mfaEnabled: true
             id: id
@@ -18166,7 +18710,7 @@ components:
               lockedAt: lockedAt
               secondsUntilUnlock: 9
               unlockAt: unlockAt
-              status: LOCKED
+              status: null
             username: username
           signOnPolicyAssignments:
           - environment:
@@ -18195,14 +18739,14 @@ components:
                 id: id
               displayName: displayName
               description: description
-              type: STRING
+              type: null
               enabled: true
               required: true
               environment:
                 id: id
               unique: true
               name: name
-              schemaType: CORE
+              schemaType: null
               id: id
               ldapAttribute: ldapAttribute
               multiValued: true
@@ -18210,14 +18754,14 @@ components:
                 id: id
               displayName: displayName
               description: description
-              type: STRING
+              type: null
               enabled: true
               required: true
               environment:
                 id: id
               unique: true
               name: name
-              schemaType: CORE
+              schemaType: null
               id: id
               ldapAttribute: ldapAttribute
               multiValued: true
@@ -18231,14 +18775,14 @@ components:
                 id: id
               displayName: displayName
               description: description
-              type: STRING
+              type: null
               enabled: true
               required: true
               environment:
                 id: id
               unique: true
               name: name
-              schemaType: CORE
+              schemaType: null
               id: id
               ldapAttribute: ldapAttribute
               multiValued: true
@@ -18246,14 +18790,14 @@ components:
                 id: id
               displayName: displayName
               description: description
-              type: STRING
+              type: null
               enabled: true
               required: true
               environment:
                 id: id
               unique: true
               name: name
-              schemaType: CORE
+              schemaType: null
               id: id
               ldapAttribute: ldapAttribute
               multiValued: true
@@ -18266,7 +18810,7 @@ components:
             - id: id
             description: description
             id: id
-            type: PAID
+            type: null
             updatedAt: updatedAt
           - createdAt: createdAt
             name: name
@@ -18275,7 +18819,7 @@ components:
             - id: id
             description: description
             id: id
-            type: PAID
+            type: null
             updatedAt: updatedAt
           groupMemberships:
           - id: id
@@ -18380,7 +18924,7 @@ components:
               id: id
             scope:
               id: id
-              type: ORGANIZATION
+              type: null
             readOnly: true
             id: id
             gateway:
@@ -18391,7 +18935,7 @@ components:
               id: id
             scope:
               id: id
-              type: ORGANIZATION
+              type: null
             readOnly: true
             id: id
             gateway:
@@ -18420,7 +18964,7 @@ components:
           - lastReportedAt: lastReportedAt
             responseTimeMillis: 1.4658129805029452
             version:
-              updateStatus: AT_LATEST
+              updateStatus: null
               versionNumber: versionNumber
             connected: true
             environment:
@@ -18432,7 +18976,7 @@ components:
             operationsPerSecond: 6.027456183070403
             credential:
               id: id
-            healthStatus: HEALTHY
+            healthStatus: null
             initializedAt: initializedAt
             id: id
             busyPercentage: 0
@@ -18441,7 +18985,7 @@ components:
           - lastReportedAt: lastReportedAt
             responseTimeMillis: 1.4658129805029452
             version:
-              updateStatus: AT_LATEST
+              updateStatus: null
               versionNumber: versionNumber
             connected: true
             environment:
@@ -18453,7 +18997,7 @@ components:
             operationsPerSecond: 6.027456183070403
             credential:
               id: id
-            healthStatus: HEALTHY
+            healthStatus: null
             initializedAt: initializedAt
             id: id
             busyPercentage: 0
@@ -18470,293 +19014,6 @@ components:
           type: number
         size:
           type: number
-      type: object
-    ObjectApplication:
-      example:
-        id: id
-      properties:
-        id:
-          description: A string that specifies the application resource ID associated
-            with the object.
-          readOnly: true
-          type: string
-      readOnly: true
-      type: object
-    ObjectEnvironment:
-      example:
-        id: id
-      properties:
-        id:
-          description: A string that specifies the environment associated with the
-            object.
-          readOnly: true
-          type: string
-      readOnly: true
-      type: object
-    ObjectPopulation:
-      properties:
-        id:
-          description: A string that specifies the population associated with the
-            object.
-          readOnly: true
-          type: string
-      readOnly: true
-      type: object
-    Application:
-      properties:
-        accessControl:
-          $ref: '#/components/schemas/Application_accessControl'
-        assignActorRoles:
-          description: A boolean that specifies whether the permissions service should
-            assign default roles to the application. This property is set only on
-            the POST request. The property is ignored when included in a PUT request.
-          type: boolean
-        createdAt:
-          description: The time the resource was created.
-          readOnly: true
-          type: string
-        description:
-          description: A string that specifies the description of the application.
-          type: string
-        enabled:
-          description: A string that specifies the current enabled state of the application.
-            Options are ENABLED or DISABLED.
-          type: boolean
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        icon:
-          $ref: '#/components/schemas/Application_icon'
-        id:
-          description: A string that specifies the application ID.
-          readOnly: true
-          type: string
-        loginPageUrl:
-          description: "A string that specifies the custom login page URL for the\
-            \ application. If you set the loginPageUrl property for applications in\
-            \ an environment that sets a custom domain, the URL should include the\
-            \ top-level domain and at least one additional domain level. Warning To\
-            \ avoid issues with third-party cookies in some browsers, a custom domain\
-            \ must be used, giving your PingOne environment the same parent domain\
-            \ as your authentication application. For more information about custom\
-            \ domains, see Custom domains."
-          type: string
-        name:
-          description: A string that specifies the name of the application. This is
-            a required property.
-          type: string
-        protocol:
-          description: A string that specifies the protocol for the Application. Options
-            are OPENID_CONNECT and SAML.
-          enum:
-          - OPENID_CONNECT
-          - SAML
-          type: string
-        tags:
-          description: An array that specifies the list of labels associated with
-            the application. Options are PING_FED_CONNECTION_INTEGRATION.
-          items:
-            enum:
-            - PING_FED_CONNECTION_INTEGRATION
-            type: string
-          type: array
-        type:
-          description: "A string that specifies the type associated with the application.\
-            \ This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP,\
-            \ and WORKER."
-          enum:
-          - WEB_APP
-          - NATIVE_APP
-          - SINGLE_PAGE_APP
-          - WORKER
-          - SERVICE
-          - CUSTOM_APP
-          type: string
-        updatedAt:
-          description: The time the resource was last updated.
-          readOnly: true
-          type: string
-        supportUnsignedRequestObject:
-          description: "A boolean that specifies whether the request query parameter\
-            \ JWT is allowed to be unsigned. If false or null (default), an unsigned\
-            \ request object is not allowed."
-          type: boolean
-      required:
-      - enabled
-      - name
-      - protocol
-      - type
-      type: object
-    ApplicationSAML:
-      allOf:
-      - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationSAML_allOf'
-    ApplicationOIDC:
-      allOf:
-      - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationOIDC_allOf'
-    ApplicationAttributeMapping:
-      example:
-        createdAt: createdAt
-        mappingType: CORE
-        name: name
-        id: id
-        value: value
-        required: true
-        updatedAt: updatedAt
-      properties:
-        id:
-          description: A string that specifies the application ID.
-          readOnly: true
-          type: string
-        createdAt:
-          description: The time the resource was created.
-          readOnly: true
-          type: string
-        mappingType:
-          description: "A string that specifies the mapping type of the attribute.\
-            \ Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types\
-            \ are for reserved attributes managed by the API and cannot be removed.\
-            \ Attribute values for these mapping types can be updated. The CUSTOM\
-            \ mapping type is for user-defined attributes. Attributes of this type\
-            \ can be updated and deleted."
-          enum:
-          - CORE
-          - SCOPE
-          - CUSTOM
-          type: string
-        name:
-          description: "A string that specifies the name of attribute and must be\
-            \ unique within an application. For SAML applications, the samlAssertion.subject\
-            \ name is a reserved case-insensitive name which indicates the mapping\
-            \ to be used for the subject in an assertion. For OpenID Connect applications,\
-            \ the following names are reserved and cannot be used acr, amr, at_hash,\
-            \ aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org,\
-            \ scope, sid, sub  This is a required property."
-          type: string
-        required:
-          description: "A boolean to specify whether a mapping value is required for\
-            \ this attribute. If true, a value must be set and a non-empty value must\
-            \ be available in the SAML assertion or ID token."
-          type: boolean
-        updatedAt:
-          description: The time the resource was updated.
-          readOnly: true
-          type: string
-        value:
-          description: "A string that specifies the string constants or expression\
-            \ for mapping the attribute path against a specific source. The expression\
-            \ format is ${<source>.<attribute_path>}. The only supported source is\
-            \ user (for example, ${user.id}). This is a required property."
-          type: string
-      required:
-      - name
-      - required
-      - value
-      type: object
-    ApplicationResourceGrant:
-      example:
-        createdAt: createdAt
-        application:
-          id: id
-        resource:
-          id: id
-        id: id
-        scopes:
-        - id: id
-        - id: id
-        updatedAt: updatedAt
-      properties:
-        application:
-          $ref: '#/components/schemas/ApplicationResourceGrant_application'
-        createdAt:
-          description: The time the resource was created.
-          readOnly: true
-          type: string
-        id:
-          description: A string that specifies the application resource grant ID.
-          readOnly: true
-          type: string
-        resource:
-          $ref: '#/components/schemas/ApplicationResourceGrant_resource'
-        scopes:
-          items:
-            $ref: '#/components/schemas/ApplicationResourceGrant_scopes_inner'
-          type: array
-        updatedAt:
-          description: The time the resource was last updated.
-          readOnly: true
-          type: string
-      required:
-      - resource
-      - scopes
-      type: object
-    ApplicationSecret:
-      example:
-        environment:
-          id: id
-        secret: secret
-      properties:
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        secret:
-          description: A string that specifies the application secret ID used to authenticate
-            to the authorization server.
-          readOnly: true
-          type: string
-      type: object
-    BillOfMaterials:
-      example:
-        createdAt: createdAt
-        solutionType: WORKFORCE
-        updatedAt: updatedAt
-        products:
-        - bookmarks:
-          - name: name
-            href: href
-          - name: name
-            href: href
-          console:
-            href: href
-          description: description
-          id: id
-          type: PING_ONE_MFA
-          deployment:
-            id: id
-        - bookmarks:
-          - name: name
-            href: href
-          - name: name
-            href: href
-          console:
-            href: href
-          description: description
-          id: id
-          type: PING_ONE_MFA
-          deployment:
-            id: id
-      properties:
-        solutionType:
-          description: The solution set of the bill of materials
-          enum:
-          - WORKFORCE
-          - CUSTOMER
-          type: string
-        createdAt:
-          description: The time the resource was created.
-          readOnly: true
-          type: string
-        updatedAt:
-          description: The time the resource was last updated.
-          readOnly: true
-          type: string
-        products:
-          description: An array that specifies the products associated with this bill
-            of materials
-          items:
-            $ref: '#/components/schemas/BillOfMaterials_products_inner'
-          type: array
-      required:
-      - products
       type: object
     Environment:
       example:
@@ -18795,21 +19052,9 @@ components:
         organization:
           $ref: '#/components/schemas/Environment_organization'
         region:
-          description: "A string that specifies the region in which this environment\
-            \ will be used. The value is set when the environment is created and cannot\
-            \ be updated. Options are NA, EU, and AP."
-          enum:
-          - NA
-          - EU
-          - AP
-          type: string
+          $ref: '#/components/schemas/EnumRegionCode'
         type:
-          description: A string that specifies the type of environment to use. Options
-            are PRODUCTION and SANDBOX.
-          enum:
-          - PRODUCTION
-          - SANDBOX
-          type: string
+          $ref: '#/components/schemas/EnumEnvironmentType'
         updatedAt:
           description: The time the resource was last updated.
           readOnly: true
@@ -18843,13 +19088,7 @@ components:
           description: (Optional) A string that specifies the description of the resource.
           type: string
         type:
-          description: "A string that specifies the type of gateway resource. Options\
-            \ are LDAP, PING_FEDERATE and PING_INTELLIGENCE. This is a required property."
-          enum:
-          - LDAP
-          - PING_FEDERATE
-          - PING_INTELLIGENCE
-          type: string
+          $ref: '#/components/schemas/EnumGatewayType'
         enabled:
           description: A boolean that specifies whether the gateway is enabled. This
             is a required property.
@@ -18869,7 +19108,7 @@ components:
       example:
         createdAt: createdAt
         authUrl: authUrl
-        gatewayType: LDAP
+        gatewayType: null
         consoleUrl: consoleUrl
         apiUrl: apiUrl
         credential: credential
@@ -18887,14 +19126,7 @@ components:
           readOnly: true
           type: string
         gatewayType:
-          description: A date that specifies the date the credential was created in
-            Coordinated Universal Time (UTC). This is a required property.
-          enum:
-          - LDAP
-          - PING_FEDERATE
-          - PING_INTELLIGENCE
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/EnumGatewayType'
         lastUsedAt:
           description: A date that specifies the date the credential was last used
             in UTC. This is a required property.
@@ -18920,7 +19152,7 @@ components:
         lastReportedAt: lastReportedAt
         responseTimeMillis: 1.4658129805029452
         version:
-          updateStatus: AT_LATEST
+          updateStatus: null
           versionNumber: versionNumber
         connected: true
         environment:
@@ -18932,7 +19164,7 @@ components:
         operationsPerSecond: 6.027456183070403
         credential:
           id: id
-        healthStatus: HEALTHY
+        healthStatus: null
         initializedAt: initializedAt
         id: id
         busyPercentage: 0
@@ -18961,14 +19193,7 @@ components:
             type: string
           type: array
         healthStatus:
-          description: "An enumeration that specifies whether or not the gateway is\
-            \ in a healthy state. Options are HEALTHY, DEGRADED, UNHEALTHY. This is\
-            \ a required property."
-          enum:
-          - HEALTHY
-          - DEGRADED
-          - UNHEALTHY
-          type: string
+          $ref: '#/components/schemas/EnumHealthStatus'
         hostname:
           description: A string that specifies the hostname of the container running
             in the customer’s infrastructure. This is a required property.
@@ -19086,7 +19311,7 @@ components:
           width: 0
           href: href
           id: id
-          type: PNG
+          type: null
           height: 6
       properties:
         id:
@@ -19098,6 +19323,37 @@ components:
         targets:
           $ref: '#/components/schemas/Image_targets'
       type: object
+    ObjectApplication:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the application resource ID associated
+            with the object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    ObjectEnvironment:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the environment associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    ObjectPopulation:
+      properties:
+        id:
+          description: A string that specifies the population associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
     Organization:
       example:
         createdAt: createdAt
@@ -19107,7 +19363,7 @@ components:
         - id: id
         description: description
         id: id
-        type: PAID
+        type: null
         updatedAt: updatedAt
       properties:
         id:
@@ -19132,18 +19388,36 @@ components:
           readOnly: true
           type: string
         type:
-          description: "A string that specifies the organization type. If the organization\
-            \ has any paid licenses, the type property value is set to `PAID`. Otherwise,\
-            \ the property value is set to `TRIAL`."
-          enum:
-          - PAID
-          - TRIAL
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/EnumOrganizationType'
         billingConnections:
           items:
             $ref: '#/components/schemas/Organization_billingConnections_inner'
           readOnly: true
+          type: array
+      type: object
+    P1Error:
+      properties:
+        id:
+          description: "A unique identifier that is stored in log files and always\
+            \ included in an error response. This value can be used to track the error\
+            \ received by the client, with server-side activity included for troubleshooting\
+            \ purposes."
+          type: string
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        details:
+          description: Additional details about the error. Optional information to
+            help resolve the error and to display to users.
+          items:
+            $ref: '#/components/schemas/P1Error_details_inner'
           type: array
       type: object
     PasswordPolicy:
@@ -19338,7 +19612,7 @@ components:
         name: name
         description: description
         id: id
-        type: OPENID_CONNECT
+        type: null
         updatedAt: updatedAt
       properties:
         accessTokenValiditySeconds:
@@ -19372,16 +19646,7 @@ components:
             \ and must be unique within an environment."
           type: string
         type:
-          description: "A string that specifies the type of resource. Options are\
-            \ OPENID_CONNECT, PING_ONE_API, and CUSTOM. Only the CUSTOM resource type\
-            \ can be created. OPENID_CONNECT specifies the built-in platform resource\
-            \ for OpenID Connect. PING_ONE_API specifies the built-in platform resource\
-            \ for PingOne."
-          enum:
-          - OPENID_CONNECT
-          - PING_ONE_API
-          - CUSTOM
-          type: string
+          $ref: '#/components/schemas/EnumResourceType'
         updatedAt:
           description: The time the resource was last updated.
           readOnly: true
@@ -19397,7 +19662,7 @@ components:
           id: id
         name: name
         id: id
-        type: CORE
+        type: null
         value: value
       properties:
         id:
@@ -19409,14 +19674,7 @@ components:
             to be included in the access token
           type: string
         type:
-          description: "A string that specifies the type of resource attribute. Options\
-            \ are CORE - The claim is required and cannot not be removed., CUSTOM\
-            \ - The claim is not a CORE attribute. All created attributes are of this\
-            \ type."
-          enum:
-          - CORE
-          - CUSTOM
-          type: string
+          $ref: '#/components/schemas/EnumResourceAttributeType'
         value:
           description: "A string that specifies the value of the custom resource attribute.\
             \ This value can be a placeholder that references an attribute in the\
@@ -19489,7 +19747,7 @@ components:
           description: description
         - classifier: classifier
           description: description
-        name: name
+        name: null
         description: description
         applicableTo:
         - applicableTo
@@ -19511,8 +19769,7 @@ components:
           readOnly: true
           type: string
         name:
-          description: The name of the role
-          type: string
+          $ref: '#/components/schemas/EnumRoleName'
         permissions:
           description: A string that specifies the set of permissions assigned to
             the role.
@@ -19529,7 +19786,7 @@ components:
           id: id
         scope:
           id: id
-          type: ORGANIZATION
+          type: null
         readOnly: true
         id: id
         gateway:
@@ -19567,14 +19824,14 @@ components:
             id: id
           displayName: displayName
           description: description
-          type: STRING
+          type: null
           enabled: true
           required: true
           environment:
             id: id
           unique: true
           name: name
-          schemaType: CORE
+          schemaType: null
           id: id
           ldapAttribute: ldapAttribute
           multiValued: true
@@ -19582,14 +19839,14 @@ components:
             id: id
           displayName: displayName
           description: description
-          type: STRING
+          type: null
           enabled: true
           required: true
           environment:
             id: id
           unique: true
           name: name
-          schemaType: CORE
+          schemaType: null
           id: id
           ldapAttribute: ldapAttribute
           multiValued: true
@@ -19621,14 +19878,14 @@ components:
           id: id
         displayName: displayName
         description: description
-        type: STRING
+        type: null
         enabled: true
         required: true
         environment:
           id: id
         unique: true
         name: name
-        schemaType: CORE
+        schemaType: null
         id: id
         ldapAttribute: ldapAttribute
         multiValued: true
@@ -19677,31 +19934,9 @@ components:
         schema:
           $ref: '#/components/schemas/SchemaAttribute_schema'
         schemaType:
-          description: "A string that specifies the schema type of the attribute.\
-            \ It may be one of CORE, STANDARD or CUSTOM. Core and standard attributes\
-            \ are present out-of-the-box. Core attributes may not be updated or deleted.\
-            \ Standard attributes may not be deleted, but their mutable properties\
-            \ may be updated. Custom attributes may be deleted, and their mutable\
-            \ properties may be updated. New attributes are created with a schema\
-            \ type of CUSTOM."
-          enum:
-          - CORE
-          - STANDARD
-          - CUSTOM
-          type: string
+          $ref: '#/components/schemas/EnumSchemaAttributeSchemaType'
         type:
-          description: "A string that specifies the the type of the attribute. It\
-            \ may be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not\
-            \ provided during creation, then it defaults to STRING. Complex and boolean\
-            \ attributes may not be created, but standard attributes of those types\
-            \ may be updated. JSON attributes are limited by size (total size must\
-            \ not exceed 16KB)."
-          enum:
-          - STRING
-          - JSON
-          - BOOLEAN
-          - COMPLEX
-          type: string
+          $ref: '#/components/schemas/EnumSchemaAttributeType'
         unique:
           description: A boolean that specifies whether or not the attribute must
             have a unique value within the environment. This is a required property
@@ -19796,17 +20031,7 @@ components:
         signOnPolicy:
           $ref: '#/components/schemas/SignOnPolicyActionCommon_signOnPolicy'
         type:
-          description: "A string that specifies the type of action. Options are `LOGIN`,\
-            \ `MULTI_FACTOR_AUTHENTICATION`, `IDENTIFIER_FIRST`, `IDENTITY_PROVIDER`\
-            \ `AGREEMENT` and `PROGRESSIVE_PROFILING`."
-          enum:
-          - LOGIN
-          - MULTI_FACTOR_AUTHENTICATION
-          - IDENTIFIER_FIRST
-          - IDENTITY_PROVIDER
-          - PROGRESSIVE_PROFILING
-          - AGREEMENT
-          type: string
+          $ref: '#/components/schemas/EnumSignOnPolicyType'
       required:
       - priority
       - signOnPolicy
@@ -19861,16 +20086,7 @@ components:
             $ref: '#/components/schemas/SignOnPolicyActionMFA_applications_inner'
           type: array
         noDeviceMode:
-          description: "A string that specifies the device mode for the MFA flow.\
-            \ Options are `BYPASS` to allow MFA without a specified device, or `BLOCK`\
-            \ to block the MFA flow if no device is specified. To use this configuration\
-            \ option, the authorize request must include a signed `login_hint_token`\
-            \ property. For more information, see Authorize (Browserless and MFA Only\
-            \ Flows)"
-          enum:
-          - BYPASS
-          - BLOCK
-          type: string
+          $ref: '#/components/schemas/EnumSignOnPolicyNoDeviceMode'
       type: object
     SignOnPolicyActionIDFirst:
       properties:
@@ -20015,9 +20231,9 @@ components:
         enabled: true
         identityProvider:
           id: id
-          type: FACEBOOK
+          type: null
         lifecycle:
-          status: ACCOUNT_OK
+          status: null
         createdAt: createdAt
         password:
           external:
@@ -20029,7 +20245,7 @@ components:
               type: type
           forceChange: true
           value: value
-        verifyStatus: NOT_INITIATED
+        verifyStatus: null
         nickname: nickname
         mfaEnabled: true
         id: id
@@ -20068,7 +20284,7 @@ components:
           lockedAt: lockedAt
           secondsUntilUnlock: 9
           unlockAt: unlockAt
-          status: LOCKED
+          status: null
         username: username
       properties:
         account:
@@ -20090,7 +20306,7 @@ components:
           readOnly: true
           type: boolean
         environment:
-          $ref: '#/components/schemas/User_environment'
+          $ref: '#/components/schemas/ObjectEnvironment'
         externalId:
           description: "A string that specifies an identifier for the user resource\
             \ as defined by the provisioning client. This is optional. This may be\
@@ -20247,15 +20463,7 @@ components:
           pattern: "^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$"
           type: string
         verifyStatus:
-          description: "Indicates whether ID verification can be done for the user.\
-            \ This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED.\
-            \ If the user verification status is DISABLED, a new verification status\
-            \ cannot be created for that user until the status is changed to ENABLED."
-          enum:
-          - NOT_INITIATED
-          - ENABLED
-          - DISABLED
-          type: string
+          $ref: '#/components/schemas/EnumUserVerifyStatus'
       required:
       - email
       - username
@@ -20343,12 +20551,7 @@ components:
         type: PRODUCTION
       properties:
         type:
-          description: A string that specifies the type of environment to use. Options
-            are PRODUCTION and SANDBOX.
-          enum:
-          - PRODUCTION
-          - SANDBOX
-          type: string
+          $ref: '#/components/schemas/EnumEnvironmentType'
       type: object
     createGateway_request:
       example:
@@ -20369,736 +20572,6 @@ components:
         id:
           description: The group ID to add the user to
           type: string
-      type: object
-    P1Error_details_inner_innerError:
-      description: Additional details to help the client developer resolve the fault
-        (primarily for UI validation reasons).
-      properties:
-        rangeMinimumValue:
-          description: Errors that failed due to range violation. This attribute represents
-            the minimum value of the range.
-          type: integer
-        rangeMaximumValue:
-          description: The maximum range or value of an attribute.
-          type: integer
-        allowedPattern:
-          description: A regex pattern describing an acceptable input pattern.
-          type: string
-        allowedValues:
-          description: A list describing acceptable values.
-          items:
-            type: string
-          type: array
-        maximumValue:
-          description: The maximum value allowed for the request.
-          type: integer
-      type: object
-    P1Error_details_inner:
-      properties:
-        code:
-          description: A general fault code which the client must handle to provide
-            all exception handling routines and to localize messages for users. This
-            code is common across all PingOne services and is human readable (such
-            as a defined constant rather than a number).
-          type: string
-        target:
-          description: The item that caused the error (such as a form field ID or
-            an attribute inside a JSON object).
-          type: string
-        message:
-          description: A short description of the error. This message is intended
-            to assist with debugging and is returned in English only.
-          type: string
-        innerError:
-          $ref: '#/components/schemas/P1Error_details_inner_innerError'
-      type: object
-    EntityArray__embedded_attributes_inner:
-      oneOf:
-      - $ref: '#/components/schemas/ApplicationAttributeMapping'
-      - $ref: '#/components/schemas/SchemaAttribute'
-      - $ref: '#/components/schemas/ResourceAttribute'
-    EntityArray__embedded_applications_inner:
-      anyOf:
-      - $ref: '#/components/schemas/ApplicationSAML'
-      - $ref: '#/components/schemas/ApplicationOIDC'
-    EntityArray__embedded_gateways_inner:
-      anyOf:
-      - $ref: '#/components/schemas/Gateway'
-      - $ref: '#/components/schemas/GatewayLDAP'
-    EntityArray__embedded:
-      example:
-        grants:
-        - createdAt: createdAt
-          application:
-            id: id
-          resource:
-            id: id
-          id: id
-          scopes:
-          - id: id
-          - id: id
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          application:
-            id: id
-          resource:
-            id: id
-          id: id
-          scopes:
-          - id: id
-          - id: id
-          updatedAt: updatedAt
-        gateways:
-        - null
-        - null
-        credentials:
-        - createdAt: createdAt
-          authUrl: authUrl
-          gatewayType: LDAP
-          consoleUrl: consoleUrl
-          apiUrl: apiUrl
-          credential: credential
-          lastUsedAt: lastUsedAt
-          id: id
-        - createdAt: createdAt
-          authUrl: authUrl
-          gatewayType: LDAP
-          consoleUrl: consoleUrl
-          apiUrl: apiUrl
-          credential: credential
-          lastUsedAt: lastUsedAt
-          id: id
-        environments:
-        - name: New-Env
-          description: New environment description
-          type: SANDBOX
-          region: EU
-          billOfMaterials:
-            products:
-              type: PING_ONE_BASE
-              description: New environment product description
-              console:
-                href: https://example.com
-          license:
-            id: 34f0efac-21d9-4a17-8a35-196bb3362983
-        - name: New-Env
-          description: New environment description
-          type: SANDBOX
-          region: EU
-          billOfMaterials:
-            products:
-              type: PING_ONE_BASE
-              description: New environment product description
-              console:
-                href: https://example.com
-          license:
-            id: 34f0efac-21d9-4a17-8a35-196bb3362983
-        roles:
-        - permissions:
-          - classifier: classifier
-            description: description
-          - classifier: classifier
-            description: description
-          name: name
-          description: description
-          applicableTo:
-          - applicableTo
-          - applicableTo
-          id: id
-        - permissions:
-          - classifier: classifier
-            description: description
-          - classifier: classifier
-            description: description
-          name: name
-          description: description
-          applicableTo:
-          - applicableTo
-          - applicableTo
-          id: id
-        groups:
-        - directMemberCounts:
-            users: 5
-          environment:
-            id: id
-          name: name
-          description: description
-          externalId: externalId
-          userFilter: userFilter
-          customData: "{}"
-          id: id
-          totalMemberCounts:
-            users: 5
-          population:
-            id: id
-        - directMemberCounts:
-            users: 5
-          environment:
-            id: id
-          name: name
-          description: description
-          externalId: externalId
-          userFilter: userFilter
-          customData: "{}"
-          id: id
-          totalMemberCounts:
-            users: 5
-          population:
-            id: id
-        resources:
-        - createdAt: createdAt
-          audience: audience
-          environment:
-            id: id
-          resource:
-            id: id
-          accessTokenValiditySeconds: 6
-          name: name
-          description: description
-          id: id
-          type: OPENID_CONNECT
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          audience: audience
-          environment:
-            id: id
-          resource:
-            id: id
-          accessTokenValiditySeconds: 6
-          name: name
-          description: description
-          id: id
-          type: OPENID_CONNECT
-          updatedAt: updatedAt
-        signOnPolicies:
-        - createdAt: createdAt
-          default: false
-          environment:
-            id: id
-          name: name
-          description: description
-          id: id
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          default: false
-          environment:
-            id: id
-          name: name
-          description: description
-          id: id
-          updatedAt: updatedAt
-        users:
-        - preferredLanguage: preferredLanguage
-          timezone: timezone
-          lastSignOn:
-            at: at
-            remoteIp: remoteIp
-          locale: locale
-          title: title
-          type: type
-          enabled: true
-          identityProvider:
-            id: id
-            type: FACEBOOK
-          lifecycle:
-            status: ACCOUNT_OK
-          createdAt: createdAt
-          password:
-            external:
-              gateway:
-                id: id
-                userType:
-                  id: id
-                correlationAttributes: "{}"
-                type: type
-            forceChange: true
-            value: value
-          verifyStatus: NOT_INITIATED
-          nickname: nickname
-          mfaEnabled: true
-          id: id
-          email: email
-          updatedAt: updatedAt
-          memberOfGroupIDs:
-          - memberOfGroupIDs
-          - memberOfGroupIDs
-          address:
-            streetAddress: streetAddress
-            countryCode: countryCode
-            postalCode: postalCode
-            locality: locality
-            region: region
-          externalId: externalId
-          photo:
-            href: href
-          memberOfGroupNames:
-          - memberOfGroupNames
-          - memberOfGroupNames
-          population:
-            id: id
-          primaryPhone: primaryPhone
-          environment:
-            id: id
-          mobilePhone: mobilePhone
-          name:
-            given: given
-            honorificSuffix: honorificSuffix
-            middle: middle
-            formatted: formatted
-            honorificPrefix: honorificPrefix
-            family: family
-          account:
-            canAuthenticate: true
-            lockedAt: lockedAt
-            secondsUntilUnlock: 9
-            unlockAt: unlockAt
-            status: LOCKED
-          username: username
-        - preferredLanguage: preferredLanguage
-          timezone: timezone
-          lastSignOn:
-            at: at
-            remoteIp: remoteIp
-          locale: locale
-          title: title
-          type: type
-          enabled: true
-          identityProvider:
-            id: id
-            type: FACEBOOK
-          lifecycle:
-            status: ACCOUNT_OK
-          createdAt: createdAt
-          password:
-            external:
-              gateway:
-                id: id
-                userType:
-                  id: id
-                correlationAttributes: "{}"
-                type: type
-            forceChange: true
-            value: value
-          verifyStatus: NOT_INITIATED
-          nickname: nickname
-          mfaEnabled: true
-          id: id
-          email: email
-          updatedAt: updatedAt
-          memberOfGroupIDs:
-          - memberOfGroupIDs
-          - memberOfGroupIDs
-          address:
-            streetAddress: streetAddress
-            countryCode: countryCode
-            postalCode: postalCode
-            locality: locality
-            region: region
-          externalId: externalId
-          photo:
-            href: href
-          memberOfGroupNames:
-          - memberOfGroupNames
-          - memberOfGroupNames
-          population:
-            id: id
-          primaryPhone: primaryPhone
-          environment:
-            id: id
-          mobilePhone: mobilePhone
-          name:
-            given: given
-            honorificSuffix: honorificSuffix
-            middle: middle
-            formatted: formatted
-            honorificPrefix: honorificPrefix
-            family: family
-          account:
-            canAuthenticate: true
-            lockedAt: lockedAt
-            secondsUntilUnlock: 9
-            unlockAt: unlockAt
-            status: LOCKED
-          username: username
-        signOnPolicyAssignments:
-        - environment:
-            id: id
-          application:
-            id: id
-          signOnPolicy:
-            id: id
-          id: id
-          priority: 1
-        - environment:
-            id: id
-          application:
-            id: id
-          signOnPolicy:
-            id: id
-          id: id
-          priority: 1
-        schemas:
-        - environment:
-            id: id
-          name: name
-          description: description
-          attributes:
-          - schema:
-              id: id
-            displayName: displayName
-            description: description
-            type: STRING
-            enabled: true
-            required: true
-            environment:
-              id: id
-            unique: true
-            name: name
-            schemaType: CORE
-            id: id
-            ldapAttribute: ldapAttribute
-            multiValued: true
-          - schema:
-              id: id
-            displayName: displayName
-            description: description
-            type: STRING
-            enabled: true
-            required: true
-            environment:
-              id: id
-            unique: true
-            name: name
-            schemaType: CORE
-            id: id
-            ldapAttribute: ldapAttribute
-            multiValued: true
-          id: id
-        - environment:
-            id: id
-          name: name
-          description: description
-          attributes:
-          - schema:
-              id: id
-            displayName: displayName
-            description: description
-            type: STRING
-            enabled: true
-            required: true
-            environment:
-              id: id
-            unique: true
-            name: name
-            schemaType: CORE
-            id: id
-            ldapAttribute: ldapAttribute
-            multiValued: true
-          - schema:
-              id: id
-            displayName: displayName
-            description: description
-            type: STRING
-            enabled: true
-            required: true
-            environment:
-              id: id
-            unique: true
-            name: name
-            schemaType: CORE
-            id: id
-            ldapAttribute: ldapAttribute
-            multiValued: true
-          id: id
-        organizations:
-        - createdAt: createdAt
-          name: name
-          billingConnections:
-          - id: id
-          - id: id
-          description: description
-          id: id
-          type: PAID
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          name: name
-          billingConnections:
-          - id: id
-          - id: id
-          description: description
-          id: id
-          type: PAID
-          updatedAt: updatedAt
-        groupMemberships:
-        - id: id
-        - id: id
-        passwordPolicies:
-        - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-            "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-            abcdefghijklmnopqrstuvwxyz: 6
-          populationCount: 9
-          length:
-            min: 16
-            max: 9
-          notSimilarToCurrent: true
-          description: description
-          newPassword: newPassword
-          excludesCommonlyUsed: true
-          history:
-            retentionDays: 1
-            count: 1
-          minComplexity: 4
-          excludesProfileData: true
-          currentPassword: currentPassword
-          createdAt: createdAt
-          default: true
-          environment:
-            id: id
-          lockout:
-            durationSeconds: 1
-            failureCount: 1
-          bypassPolicy: false
-          minUniqueCharacters: 5
-          name: name
-          maxAgeDays: 1
-          id: id
-          maxRepeatedCharacters: 1
-          minAgeDays: 1
-          updatedAt: updatedAt
-        - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-            "0123456789": 7
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-            abcdefghijklmnopqrstuvwxyz: 6
-          populationCount: 9
-          length:
-            min: 16
-            max: 9
-          notSimilarToCurrent: true
-          description: description
-          newPassword: newPassword
-          excludesCommonlyUsed: true
-          history:
-            retentionDays: 1
-            count: 1
-          minComplexity: 4
-          excludesProfileData: true
-          currentPassword: currentPassword
-          createdAt: createdAt
-          default: true
-          environment:
-            id: id
-          lockout:
-            durationSeconds: 1
-            failureCount: 1
-          bypassPolicy: false
-          minUniqueCharacters: 5
-          name: name
-          maxAgeDays: 1
-          id: id
-          maxRepeatedCharacters: 1
-          minAgeDays: 1
-          updatedAt: updatedAt
-        attributes:
-        - null
-        - null
-        scopes:
-        - createdAt: createdAt
-          environment:
-            id: id
-          name: name
-          description: description
-          id: id
-          schemaAttributes:
-          - schemaAttributes
-          - schemaAttributes
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          environment:
-            id: id
-          name: name
-          description: description
-          id: id
-          schemaAttributes:
-          - schemaAttributes
-          - schemaAttributes
-          updatedAt: updatedAt
-        roleAssignments:
-        - environment:
-            id: id
-          role:
-            id: id
-          scope:
-            id: id
-            type: ORGANIZATION
-          readOnly: true
-          id: id
-          gateway:
-            id: id
-        - environment:
-            id: id
-          role:
-            id: id
-          scope:
-            id: id
-            type: ORGANIZATION
-          readOnly: true
-          id: id
-          gateway:
-            id: id
-        actions:
-        - null
-        - null
-        populations:
-        - createdAt: createdAt
-          passwordPolicy:
-            id: id
-          userCount: 9
-          name: name
-          description: description
-          id: id
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          passwordPolicy:
-            id: id
-          userCount: 9
-          name: name
-          description: description
-          id: id
-          updatedAt: updatedAt
-        gatewayInstances:
-        - lastReportedAt: lastReportedAt
-          responseTimeMillis: 1.4658129805029452
-          version:
-            updateStatus: AT_LATEST
-            versionNumber: versionNumber
-          connected: true
-          environment:
-            id: id
-          currentErrors:
-          - currentErrors
-          - currentErrors
-          hostname: hostname
-          operationsPerSecond: 6.027456183070403
-          credential:
-            id: id
-          healthStatus: HEALTHY
-          initializedAt: initializedAt
-          id: id
-          busyPercentage: 0
-          gateway:
-            id: id
-        - lastReportedAt: lastReportedAt
-          responseTimeMillis: 1.4658129805029452
-          version:
-            updateStatus: AT_LATEST
-            versionNumber: versionNumber
-          connected: true
-          environment:
-            id: id
-          currentErrors:
-          - currentErrors
-          - currentErrors
-          hostname: hostname
-          operationsPerSecond: 6.027456183070403
-          credential:
-            id: id
-          healthStatus: HEALTHY
-          initializedAt: initializedAt
-          id: id
-          busyPercentage: 0
-          gateway:
-            id: id
-        applications:
-        - null
-        - null
-      properties:
-        actions:
-          items:
-            $ref: '#/components/schemas/SignOnPolicyAction'
-          type: array
-        attributes:
-          items:
-            $ref: '#/components/schemas/EntityArray__embedded_attributes_inner'
-          type: array
-        applications:
-          items:
-            $ref: '#/components/schemas/EntityArray__embedded_applications_inner'
-          type: array
-        credentials:
-          items:
-            $ref: '#/components/schemas/GatewayCredential'
-          type: array
-        environments:
-          items:
-            $ref: '#/components/schemas/Environment'
-          type: array
-        gatewayInstances:
-          items:
-            $ref: '#/components/schemas/GatewayInstance'
-          type: array
-        gateways:
-          items:
-            $ref: '#/components/schemas/EntityArray__embedded_gateways_inner'
-          type: array
-        grants:
-          items:
-            $ref: '#/components/schemas/ApplicationResourceGrant'
-          type: array
-        groups:
-          items:
-            $ref: '#/components/schemas/Group'
-          type: array
-        groupMemberships:
-          items:
-            $ref: '#/components/schemas/GroupMembership'
-          type: array
-        organizations:
-          items:
-            $ref: '#/components/schemas/Organization'
-          type: array
-        passwordPolicies:
-          items:
-            $ref: '#/components/schemas/PasswordPolicy'
-          type: array
-        populations:
-          items:
-            $ref: '#/components/schemas/Population'
-          type: array
-        resources:
-          items:
-            $ref: '#/components/schemas/Resource'
-          type: array
-        scopes:
-          items:
-            $ref: '#/components/schemas/ResourceScope'
-          type: array
-        signOnPolicies:
-          items:
-            $ref: '#/components/schemas/SignOnPolicy'
-          type: array
-        signOnPolicyAssignments:
-          items:
-            $ref: '#/components/schemas/SignOnPolicyAssignment'
-          type: array
-        roleAssignments:
-          items:
-            $ref: '#/components/schemas/RoleAssignment'
-          type: array
-        roles:
-          items:
-            $ref: '#/components/schemas/Role'
-          type: array
-        schemas:
-          items:
-            $ref: '#/components/schemas/Schema'
-          type: array
-        users:
-          items:
-            $ref: '#/components/schemas/User'
-          type: array
       type: object
     Application_accessControl_role:
       properties:
@@ -21216,14 +20689,7 @@ components:
             itself should be signed. The default value is False.
           type: boolean
         sloBinding:
-          description: A string that specifies the binding protocol to be used for
-            the logout response. Options are HTTP_REDIRECT or HTTP_POST. The default
-            is HTTP_POST; existing configurations with no data default to HTTP_POST.
-            This is an optional property.
-          enum:
-          - HTTP_REDIRECT
-          - HTTP_POST
-          type: string
+          $ref: '#/components/schemas/EnumApplicationSAMLSloBinding'
         sloEndpoint:
           description: "A string that specifies the logout endpoint URL. This is an\
             \ optional property. However, if a sloEndpoint logout endpoint URL is\
@@ -21257,23 +20723,12 @@ components:
             \ is ENABLED, the cache duration must be set."
           type: integer
         units:
-          description: "A string that specifies the time units of the mobile.integrityDetection.cacheDuration.amount\
-            \ :MINUTES, HOURS"
-          enum:
-          - MINUTES
-          - HOURS
-          type: string
+          $ref: '#/components/schemas/EnumDurationUnitMinsHours'
       type: object
     ApplicationOIDC_allOf_mobile_integrityDetection:
       properties:
         mode:
-          description: "A string that specifies whether device integrity detection\
-            \ takes place on mobile devices, for the application's enrollment and\
-            \ authentication events ENABLED, DISABLED"
-          enum:
-          - ENABLED
-          - DISABLED
-          type: string
+          $ref: '#/components/schemas/EnumEnabledStatus'
         cacheDuration:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection_cacheDuration'
       type: object
@@ -21314,27 +20769,13 @@ components:
             \ request. This is a required property. Options are AUTHORIZATION_CODE,\
             \ IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS."
           items:
-            enum:
-            - AUTHORIZATION_CODE
-            - IMPLICIT
-            - REFRESH_TOKEN
-            - CLIENT_CREDENTIALS
-            type: string
+            $ref: '#/components/schemas/EnumApplicationOIDCGrantType'
           type: array
         homePageUrl:
           description: A string that specifies the custom home page URL for the application.
           type: string
         pkceEnforcement:
-          description: A string that specifies how PKCE request parameters are handled
-            on the authorize request. Options are OPTIONAL PKCE code_challenge is
-            optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge
-            is required and any code challenge method is acceptable. S256_REQUIRED
-            PKCE code_challege is required and the code_challenge_method must be S256.
-          enum:
-          - OPTIONAL
-          - REQUIRED
-          - S256_REQUIRED
-          type: string
+          $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
         postLogoutRedirectUris:
           description: A string that specifies the URLs that the browser can be redirected
             to after logout.
@@ -21370,21 +20811,10 @@ components:
             \ that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN\
             \ because PingOne does not currently support OIDC hybrid flows."
           items:
-            enum:
-            - TOKEN
-            - ID_TOKEN
-            - CODE
-            type: string
+            $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
           type: array
         tokenEndpointAuthMethod:
-          description: "A string that specifies the client authentication methods\
-            \ supported by the token endpoint. This is a required property. Options\
-            \ are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST."
-          enum:
-          - NONE
-          - CLIENT_SECRET_BASIC
-          - CLIENT_SECRET_POST
-          type: string
+          $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
       required:
       - grantTypes
       - tokenEndpointAuthMethod
@@ -21467,7 +20897,7 @@ components:
           href: href
         description: description
         id: id
-        type: PING_ONE_MFA
+        type: null
         deployment:
           id: id
       properties:
@@ -21476,29 +20906,7 @@ components:
           readOnly: true
           type: string
         type:
-          description: "A string that specifies the Ping Identity product type. Options\
-            \ for PingOne platform products are PING_ONE_ORCHESTRATE, PING_ONE_MFA,\
-            \ PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE\
-            \ and PING_ONE_BASE. The PING_ONE_BASE product represents the default\
-            \ set of services that an environment can use on the PingOne platform.\
-            \ Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS,\
-            \ PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, and PING_CENTRAL"
-          enum:
-          - PING_ONE_MFA
-          - PING_ONE_ORCHESTRATE
-          - PING_ONE_RISK
-          - PING_ONE_VERIFY
-          - PING_ONE_CREDENTIALS
-          - PING_ONE_AUTHORIZE
-          - PING_ONE_BASE
-          - PING_FEDERATE
-          - PING_ACCESS
-          - PING_DIRECTORY
-          - PING_AUTHORIZE
-          - PING_ID
-          - PING_INTELLIGENCE
-          - PING_CENTRAL
-          type: string
+          $ref: '#/components/schemas/EnumProductType'
         description:
           description: A string that specifies the description of the product or standalone
             service
@@ -21516,6 +20924,694 @@ components:
           type: array
       required:
       - type
+      type: object
+    EntityArray__embedded_attributes_inner:
+      oneOf:
+      - $ref: '#/components/schemas/ApplicationAttributeMapping'
+      - $ref: '#/components/schemas/SchemaAttribute'
+      - $ref: '#/components/schemas/ResourceAttribute'
+    EntityArray__embedded_applications_inner:
+      anyOf:
+      - $ref: '#/components/schemas/ApplicationSAML'
+      - $ref: '#/components/schemas/ApplicationOIDC'
+    EntityArray__embedded_gateways_inner:
+      anyOf:
+      - $ref: '#/components/schemas/Gateway'
+      - $ref: '#/components/schemas/GatewayLDAP'
+    EntityArray__embedded:
+      example:
+        grants:
+        - createdAt: createdAt
+          application:
+            id: id
+          resource:
+            id: id
+          id: id
+          scopes:
+          - id: id
+          - id: id
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          application:
+            id: id
+          resource:
+            id: id
+          id: id
+          scopes:
+          - id: id
+          - id: id
+          updatedAt: updatedAt
+        gateways:
+        - null
+        - null
+        credentials:
+        - createdAt: createdAt
+          authUrl: authUrl
+          gatewayType: null
+          consoleUrl: consoleUrl
+          apiUrl: apiUrl
+          credential: credential
+          lastUsedAt: lastUsedAt
+          id: id
+        - createdAt: createdAt
+          authUrl: authUrl
+          gatewayType: null
+          consoleUrl: consoleUrl
+          apiUrl: apiUrl
+          credential: credential
+          lastUsedAt: lastUsedAt
+          id: id
+        environments:
+        - name: New-Env
+          description: New environment description
+          type: SANDBOX
+          region: EU
+          billOfMaterials:
+            products:
+              type: PING_ONE_BASE
+              description: New environment product description
+              console:
+                href: https://example.com
+          license:
+            id: 34f0efac-21d9-4a17-8a35-196bb3362983
+        - name: New-Env
+          description: New environment description
+          type: SANDBOX
+          region: EU
+          billOfMaterials:
+            products:
+              type: PING_ONE_BASE
+              description: New environment product description
+              console:
+                href: https://example.com
+          license:
+            id: 34f0efac-21d9-4a17-8a35-196bb3362983
+        roles:
+        - permissions:
+          - classifier: classifier
+            description: description
+          - classifier: classifier
+            description: description
+          name: null
+          description: description
+          applicableTo:
+          - applicableTo
+          - applicableTo
+          id: id
+        - permissions:
+          - classifier: classifier
+            description: description
+          - classifier: classifier
+            description: description
+          name: null
+          description: description
+          applicableTo:
+          - applicableTo
+          - applicableTo
+          id: id
+        groups:
+        - directMemberCounts:
+            users: 5
+          environment:
+            id: id
+          name: name
+          description: description
+          externalId: externalId
+          userFilter: userFilter
+          customData: "{}"
+          id: id
+          totalMemberCounts:
+            users: 5
+          population:
+            id: id
+        - directMemberCounts:
+            users: 5
+          environment:
+            id: id
+          name: name
+          description: description
+          externalId: externalId
+          userFilter: userFilter
+          customData: "{}"
+          id: id
+          totalMemberCounts:
+            users: 5
+          population:
+            id: id
+        resources:
+        - createdAt: createdAt
+          audience: audience
+          environment:
+            id: id
+          resource:
+            id: id
+          accessTokenValiditySeconds: 6
+          name: name
+          description: description
+          id: id
+          type: null
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          audience: audience
+          environment:
+            id: id
+          resource:
+            id: id
+          accessTokenValiditySeconds: 6
+          name: name
+          description: description
+          id: id
+          type: null
+          updatedAt: updatedAt
+        signOnPolicies:
+        - createdAt: createdAt
+          default: false
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          default: false
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        users:
+        - preferredLanguage: preferredLanguage
+          timezone: timezone
+          lastSignOn:
+            at: at
+            remoteIp: remoteIp
+          locale: locale
+          title: title
+          type: type
+          enabled: true
+          identityProvider:
+            id: id
+            type: null
+          lifecycle:
+            status: null
+          createdAt: createdAt
+          password:
+            external:
+              gateway:
+                id: id
+                userType:
+                  id: id
+                correlationAttributes: "{}"
+                type: type
+            forceChange: true
+            value: value
+          verifyStatus: null
+          nickname: nickname
+          mfaEnabled: true
+          id: id
+          email: email
+          updatedAt: updatedAt
+          memberOfGroupIDs:
+          - memberOfGroupIDs
+          - memberOfGroupIDs
+          address:
+            streetAddress: streetAddress
+            countryCode: countryCode
+            postalCode: postalCode
+            locality: locality
+            region: region
+          externalId: externalId
+          photo:
+            href: href
+          memberOfGroupNames:
+          - memberOfGroupNames
+          - memberOfGroupNames
+          population:
+            id: id
+          primaryPhone: primaryPhone
+          environment:
+            id: id
+          mobilePhone: mobilePhone
+          name:
+            given: given
+            honorificSuffix: honorificSuffix
+            middle: middle
+            formatted: formatted
+            honorificPrefix: honorificPrefix
+            family: family
+          account:
+            canAuthenticate: true
+            lockedAt: lockedAt
+            secondsUntilUnlock: 9
+            unlockAt: unlockAt
+            status: null
+          username: username
+        - preferredLanguage: preferredLanguage
+          timezone: timezone
+          lastSignOn:
+            at: at
+            remoteIp: remoteIp
+          locale: locale
+          title: title
+          type: type
+          enabled: true
+          identityProvider:
+            id: id
+            type: null
+          lifecycle:
+            status: null
+          createdAt: createdAt
+          password:
+            external:
+              gateway:
+                id: id
+                userType:
+                  id: id
+                correlationAttributes: "{}"
+                type: type
+            forceChange: true
+            value: value
+          verifyStatus: null
+          nickname: nickname
+          mfaEnabled: true
+          id: id
+          email: email
+          updatedAt: updatedAt
+          memberOfGroupIDs:
+          - memberOfGroupIDs
+          - memberOfGroupIDs
+          address:
+            streetAddress: streetAddress
+            countryCode: countryCode
+            postalCode: postalCode
+            locality: locality
+            region: region
+          externalId: externalId
+          photo:
+            href: href
+          memberOfGroupNames:
+          - memberOfGroupNames
+          - memberOfGroupNames
+          population:
+            id: id
+          primaryPhone: primaryPhone
+          environment:
+            id: id
+          mobilePhone: mobilePhone
+          name:
+            given: given
+            honorificSuffix: honorificSuffix
+            middle: middle
+            formatted: formatted
+            honorificPrefix: honorificPrefix
+            family: family
+          account:
+            canAuthenticate: true
+            lockedAt: lockedAt
+            secondsUntilUnlock: 9
+            unlockAt: unlockAt
+            status: null
+          username: username
+        signOnPolicyAssignments:
+        - environment:
+            id: id
+          application:
+            id: id
+          signOnPolicy:
+            id: id
+          id: id
+          priority: 1
+        - environment:
+            id: id
+          application:
+            id: id
+          signOnPolicy:
+            id: id
+          id: id
+          priority: 1
+        schemas:
+        - environment:
+            id: id
+          name: name
+          description: description
+          attributes:
+          - schema:
+              id: id
+            displayName: displayName
+            description: description
+            type: null
+            enabled: true
+            required: true
+            environment:
+              id: id
+            unique: true
+            name: name
+            schemaType: null
+            id: id
+            ldapAttribute: ldapAttribute
+            multiValued: true
+          - schema:
+              id: id
+            displayName: displayName
+            description: description
+            type: null
+            enabled: true
+            required: true
+            environment:
+              id: id
+            unique: true
+            name: name
+            schemaType: null
+            id: id
+            ldapAttribute: ldapAttribute
+            multiValued: true
+          id: id
+        - environment:
+            id: id
+          name: name
+          description: description
+          attributes:
+          - schema:
+              id: id
+            displayName: displayName
+            description: description
+            type: null
+            enabled: true
+            required: true
+            environment:
+              id: id
+            unique: true
+            name: name
+            schemaType: null
+            id: id
+            ldapAttribute: ldapAttribute
+            multiValued: true
+          - schema:
+              id: id
+            displayName: displayName
+            description: description
+            type: null
+            enabled: true
+            required: true
+            environment:
+              id: id
+            unique: true
+            name: name
+            schemaType: null
+            id: id
+            ldapAttribute: ldapAttribute
+            multiValued: true
+          id: id
+        organizations:
+        - createdAt: createdAt
+          name: name
+          billingConnections:
+          - id: id
+          - id: id
+          description: description
+          id: id
+          type: null
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          name: name
+          billingConnections:
+          - id: id
+          - id: id
+          description: description
+          id: id
+          type: null
+          updatedAt: updatedAt
+        groupMemberships:
+        - id: id
+        - id: id
+        passwordPolicies:
+        - minCharacters:
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
+            "0123456789": 7
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+            abcdefghijklmnopqrstuvwxyz: 6
+          populationCount: 9
+          length:
+            min: 16
+            max: 9
+          notSimilarToCurrent: true
+          description: description
+          newPassword: newPassword
+          excludesCommonlyUsed: true
+          history:
+            retentionDays: 1
+            count: 1
+          minComplexity: 4
+          excludesProfileData: true
+          currentPassword: currentPassword
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          bypassPolicy: false
+          minUniqueCharacters: 5
+          name: name
+          maxAgeDays: 1
+          id: id
+          maxRepeatedCharacters: 1
+          minAgeDays: 1
+          updatedAt: updatedAt
+        - minCharacters:
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
+            "0123456789": 7
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+            abcdefghijklmnopqrstuvwxyz: 6
+          populationCount: 9
+          length:
+            min: 16
+            max: 9
+          notSimilarToCurrent: true
+          description: description
+          newPassword: newPassword
+          excludesCommonlyUsed: true
+          history:
+            retentionDays: 1
+            count: 1
+          minComplexity: 4
+          excludesProfileData: true
+          currentPassword: currentPassword
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          bypassPolicy: false
+          minUniqueCharacters: 5
+          name: name
+          maxAgeDays: 1
+          id: id
+          maxRepeatedCharacters: 1
+          minAgeDays: 1
+          updatedAt: updatedAt
+        attributes:
+        - null
+        - null
+        scopes:
+        - createdAt: createdAt
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          schemaAttributes:
+          - schemaAttributes
+          - schemaAttributes
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          schemaAttributes:
+          - schemaAttributes
+          - schemaAttributes
+          updatedAt: updatedAt
+        roleAssignments:
+        - environment:
+            id: id
+          role:
+            id: id
+          scope:
+            id: id
+            type: null
+          readOnly: true
+          id: id
+          gateway:
+            id: id
+        - environment:
+            id: id
+          role:
+            id: id
+          scope:
+            id: id
+            type: null
+          readOnly: true
+          id: id
+          gateway:
+            id: id
+        actions:
+        - null
+        - null
+        populations:
+        - createdAt: createdAt
+          passwordPolicy:
+            id: id
+          userCount: 9
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          passwordPolicy:
+            id: id
+          userCount: 9
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        gatewayInstances:
+        - lastReportedAt: lastReportedAt
+          responseTimeMillis: 1.4658129805029452
+          version:
+            updateStatus: null
+            versionNumber: versionNumber
+          connected: true
+          environment:
+            id: id
+          currentErrors:
+          - currentErrors
+          - currentErrors
+          hostname: hostname
+          operationsPerSecond: 6.027456183070403
+          credential:
+            id: id
+          healthStatus: null
+          initializedAt: initializedAt
+          id: id
+          busyPercentage: 0
+          gateway:
+            id: id
+        - lastReportedAt: lastReportedAt
+          responseTimeMillis: 1.4658129805029452
+          version:
+            updateStatus: null
+            versionNumber: versionNumber
+          connected: true
+          environment:
+            id: id
+          currentErrors:
+          - currentErrors
+          - currentErrors
+          hostname: hostname
+          operationsPerSecond: 6.027456183070403
+          credential:
+            id: id
+          healthStatus: null
+          initializedAt: initializedAt
+          id: id
+          busyPercentage: 0
+          gateway:
+            id: id
+        applications:
+        - null
+        - null
+      properties:
+        actions:
+          items:
+            $ref: '#/components/schemas/SignOnPolicyAction'
+          type: array
+        attributes:
+          items:
+            $ref: '#/components/schemas/EntityArray__embedded_attributes_inner'
+          type: array
+        applications:
+          items:
+            $ref: '#/components/schemas/EntityArray__embedded_applications_inner'
+          type: array
+        credentials:
+          items:
+            $ref: '#/components/schemas/GatewayCredential'
+          type: array
+        environments:
+          items:
+            $ref: '#/components/schemas/Environment'
+          type: array
+        gatewayInstances:
+          items:
+            $ref: '#/components/schemas/GatewayInstance'
+          type: array
+        gateways:
+          items:
+            $ref: '#/components/schemas/EntityArray__embedded_gateways_inner'
+          type: array
+        grants:
+          items:
+            $ref: '#/components/schemas/ApplicationResourceGrant'
+          type: array
+        groups:
+          items:
+            $ref: '#/components/schemas/Group'
+          type: array
+        groupMemberships:
+          items:
+            $ref: '#/components/schemas/GroupMembership'
+          type: array
+        organizations:
+          items:
+            $ref: '#/components/schemas/Organization'
+          type: array
+        passwordPolicies:
+          items:
+            $ref: '#/components/schemas/PasswordPolicy'
+          type: array
+        populations:
+          items:
+            $ref: '#/components/schemas/Population'
+          type: array
+        resources:
+          items:
+            $ref: '#/components/schemas/Resource'
+          type: array
+        scopes:
+          items:
+            $ref: '#/components/schemas/ResourceScope'
+          type: array
+        signOnPolicies:
+          items:
+            $ref: '#/components/schemas/SignOnPolicy'
+          type: array
+        signOnPolicyAssignments:
+          items:
+            $ref: '#/components/schemas/SignOnPolicyAssignment'
+          type: array
+        roleAssignments:
+          items:
+            $ref: '#/components/schemas/RoleAssignment'
+          type: array
+        roles:
+          items:
+            $ref: '#/components/schemas/Role'
+          type: array
+        schemas:
+          items:
+            $ref: '#/components/schemas/Schema'
+          type: array
+        users:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
       type: object
     Environment_license:
       properties:
@@ -21632,13 +21728,7 @@ components:
             This is a required property.
           type: string
         connectionSecurity:
-          description: "(Optional) A string that specifies the connection security\
-            \ type. Options are None, TLS, and StartTLS. The default value is None."
-          enum:
-          - None
-          - TLS
-          - StartTLS
-          type: string
+          $ref: '#/components/schemas/EnumGatewayLDAPSecurity'
         serversHostAndPort:
           description: "An array of strings that specifies the LDAP server host name\
             \ and port number (for example, [\"ds1.example.com:389\", \"ds2.example.com:389\"\
@@ -21696,7 +21786,7 @@ components:
       description: An object containing the version of the gateway running for the
         instance.
       example:
-        updateStatus: AT_LATEST
+        updateStatus: null
         versionNumber: versionNumber
       properties:
         versionNumber:
@@ -21704,24 +21794,7 @@ components:
             for the instance. This is a required property.
           type: string
         updateStatus:
-          description: "An enumeration that specifies one of the following values:\
-            \ AT_LATEST: The gateway instance's version is at or after the supported\
-            \ version marked latest. UPGRADE_AVAILABLE: The gateway instance's version\
-            \ is at the supported version that is marked recommended but there is\
-            \ a later supported version marked recommended. UPGRADE_RECOMMENDED: The\
-            \ gateway instance's version is at a known version but the version is\
-            \ not marked as recommended or latest. The version has greater than 30\
-            \ days support. UPGRADE_REQUIRED: The gateway instance's version is at\
-            \ a known version but the version is not marked as recommended or latest.\
-            \ The version has support ending within the next month. NOT_SUPPORTED:\
-            \ The gateway instance's version is not known or supported."
-          enum:
-          - AT_LATEST
-          - UPGRADE_AVAILABLE
-          - UPGRADE_RECOMMENDED
-          - UPGRADE_REQUIRED
-          - NOT_SUPPORTED
-          type: string
+          $ref: '#/components/schemas/EnumUpdateStatus'
       type: object
     Group_population:
       description: The population to assign the group to
@@ -21765,7 +21838,7 @@ components:
         width: 0
         href: href
         id: id
-        type: PNG
+        type: null
         height: 6
       properties:
         href:
@@ -21778,14 +21851,7 @@ components:
           readOnly: true
           type: string
         type:
-          description: "A string that specifies the type of format used for the image.\
-            \ Options are jpg, png, and gif."
-          enum:
-          - PNG
-          - JPG
-          - GIF
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/EnumImageFormat'
         width:
           description: The width of the image (in pixels).
           readOnly: true
@@ -21804,6 +21870,48 @@ components:
             IDs for the organization.
           readOnly: true
           type: string
+      type: object
+    P1Error_details_inner_innerError:
+      description: Additional details to help the client developer resolve the fault
+        (primarily for UI validation reasons).
+      properties:
+        rangeMinimumValue:
+          description: Errors that failed due to range violation. This attribute represents
+            the minimum value of the range.
+          type: integer
+        rangeMaximumValue:
+          description: The maximum range or value of an attribute.
+          type: integer
+        allowedPattern:
+          description: A regex pattern describing an acceptable input pattern.
+          type: string
+        allowedValues:
+          description: A list describing acceptable values.
+          items:
+            type: string
+          type: array
+        maximumValue:
+          description: The maximum value allowed for the request.
+          type: integer
+      type: object
+    P1Error_details_inner:
+      properties:
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        target:
+          description: The item that caused the error (such as a form field ID or
+            an attribute inside a JSON object).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        innerError:
+          $ref: '#/components/schemas/P1Error_details_inner_innerError'
       type: object
     PasswordPolicy_history:
       description: Settings to control the users password history
@@ -21941,20 +22049,13 @@ components:
     RoleAssignment_scope:
       example:
         id: id
-        type: ORGANIZATION
+        type: null
       properties:
         id:
           description: A string that specifies the role assignment scope ID.
           type: string
         type:
-          description: "A string that specifies the type of resource defining the\
-            \ scope of the Role assignment. Options are ORGANIZATION, ENVIRONMENT,\
-            \ and POPULATION."
-          enum:
-          - ORGANIZATION
-          - ENVIRONMENT
-          - POPULATION
-          type: string
+          $ref: '#/components/schemas/EnumRoleAssignmentScopeType'
       required:
       - id
       - type
@@ -22130,24 +22231,7 @@ components:
             MFA for native devices paired with the user for the specified application.
           type: boolean
         extraVerification:
-          default: disabled
-          description: "Specifies the level of further verification when deviceAuthorization\
-            \ is enabled. The PingOne platform performs an extra verification check\
-            \ by sending a silent push notification to the customer native application,\
-            \ and receives a confirmation in return.  `extraVerification` can be one\
-            \ of the following levels:\n`disabled` (default): The PingOne platform\
-            \ does not perform the extra verification check.\n`permissive`: The PingOne\
-            \ platform performs the extra verification check. Upon timeout or failure\
-            \ to get a response from the native app, the MFA step is treated as successfully\
-            \ completed.\n`restrictive`: The PingOne platform performs the extra verification\
-            \ check.The PingOne platform performs the extra verification check. Upon\
-            \ timeout or failure to get a response from the native app, the MFA step\
-            \ is treated as failed.\n"
-          enum:
-          - disabled
-          - permissive
-          - restrictive
-          type: string
+          $ref: '#/components/schemas/EnumSignOnPolicyExtraVerification'
       type: object
     SignOnPolicyActionMFA_applications_inner:
       properties:
@@ -22257,7 +22341,7 @@ components:
         lockedAt: lockedAt
         secondsUntilUnlock: 9
         unlockAt: unlockAt
-        status: LOCKED
+        status: null
       properties:
         canAuthenticate:
           description: "A boolean that specifies the whether the user can authenticate.\
@@ -22277,12 +22361,7 @@ components:
             \ by an administrator)."
           type: integer
         status:
-          description: A string that specifies the account locked state. Options are
-            LOCKED and OK.
-          enum:
-          - LOCKED
-          - OK
-          type: string
+          $ref: '#/components/schemas/EnumUserStatus'
         unlockAt:
           description: "The time the specified user account will be unlocked. This\
             \ property is absent if the account is unlocked, or if it will not automatically\
@@ -22346,19 +22425,10 @@ components:
           pattern: "^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}\\n\\r]*$"
           type: string
       type: object
-    User_environment:
-      example:
-        id: id
-      properties:
-        id:
-          description: A string that specifies the environment resource’s unique identifier
-            associated with the user.
-          type: string
-      type: object
     User_identityProvider:
       example:
         id: id
-        type: FACEBOOK
+        type: null
       properties:
         id:
           description: "A mutable string that identifies the external identity provider\
@@ -22367,29 +22437,7 @@ components:
             \ for just-in-time user provisioning."
           type: string
         type:
-          description: "A read-only string that identifies the type of identity provider\
-            \ used to authenticate the user. Possible values are `FACEBOOK`, `GOOGLE`,\
-            \ `LINKEDIN`, `APPLE`, `TWITTER`, `AMAZON`, `YAHOO`, `MICROSOFT`, `PAYPAL`,\
-            \ `GITHUB`, `OPENID_CONNECT`, `SAML`, and `PING_ONE`. The default value\
-            \ of `PING_ONE` is set when a value for identityProvider.id is not provided.\
-            \ The `PING_ONE` value is the default for all pre-existing users. There\
-            \ is currently no search filter support for this attribute."
-          enum:
-          - FACEBOOK
-          - GOOGLE
-          - LINKEDIN
-          - APPLE
-          - TWITTER
-          - AMAZON
-          - YAHOO
-          - MICROSOFT
-          - PAYPAL
-          - GITHUB
-          - OPENID_CONNECT
-          - SAML
-          - PING_ONE
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/EnumIdentityProvider'
       type: object
     User_lastSignOn:
       example:
@@ -22407,18 +22455,10 @@ components:
       type: object
     User_lifecycle:
       example:
-        status: ACCOUNT_OK
+        status: null
       properties:
         status:
-          description: "A string that specifies information about the account lifecycle.\
-            \ Options for status are `ACCOUNT_OK` and `VERIFICATION_REQUIRED`. This\
-            \ property value is only allowed to be set when importing a user to set\
-            \ the initial account status. If the initial status is set to `VERIFICATION_REQUIRED`\
-            \ and an email address is provided, a verification email is sent."
-          enum:
-          - ACCOUNT_OK
-          - VERIFICATION_REQUIRED
-          type: string
+          $ref: '#/components/schemas/EnumUserLifecycleStatus'
       type: object
     User_name:
       example:

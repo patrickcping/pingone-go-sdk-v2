@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **License** | [**EnvironmentLicense**](EnvironmentLicense.md) |  | 
 **Name** | **string** | A string that specifies the environment name, which must be provided and must be unique within an organization. | 
 **Organization** | Pointer to [**EnvironmentOrganization**](EnvironmentOrganization.md) |  | [optional] 
-**Region** | **string** | A string that specifies the region in which this environment will be used. The value is set when the environment is created and cannot be updated. Options are NA, EU, and AP. | 
-**Type** | **string** | A string that specifies the type of environment to use. Options are PRODUCTION and SANDBOX. | 
+**Region** | [**EnumRegionCode**](EnumRegionCode.md) |  | 
+**Type** | [**EnumEnvironmentType**](EnumEnvironmentType.md) |  | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
 ### NewEnvironment
 
-`func NewEnvironment(license EnvironmentLicense, name string, region string, type_ string, ) *Environment`
+`func NewEnvironment(license EnvironmentLicense, name string, region EnumRegionCode, type_ EnumEnvironmentType, ) *Environment`
 
 NewEnvironment instantiates a new Environment object
 This constructor will assign default values to properties that have it defined,
@@ -201,40 +201,40 @@ HasOrganization returns a boolean if a field has been set.
 
 ### GetRegion
 
-`func (o *Environment) GetRegion() string`
+`func (o *Environment) GetRegion() EnumRegionCode`
 
 GetRegion returns the Region field if non-nil, zero value otherwise.
 
 ### GetRegionOk
 
-`func (o *Environment) GetRegionOk() (*string, bool)`
+`func (o *Environment) GetRegionOk() (*EnumRegionCode, bool)`
 
 GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegion
 
-`func (o *Environment) SetRegion(v string)`
+`func (o *Environment) SetRegion(v EnumRegionCode)`
 
 SetRegion sets Region field to given value.
 
 
 ### GetType
 
-`func (o *Environment) GetType() string`
+`func (o *Environment) GetType() EnumEnvironmentType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Environment) GetTypeOk() (*string, bool)`
+`func (o *Environment) GetTypeOk() (*EnumEnvironmentType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Environment) SetType(v string)`
+`func (o *Environment) SetType(v EnumEnvironmentType)`
 
 SetType sets Type field to given value.
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SolutionType** | Pointer to **string** | The solution set of the bill of materials | [optional] 
+**SolutionType** | Pointer to [**EnumSolutionType**](EnumSolutionType.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **Products** | [**[]BillOfMaterialsProductsInner**](BillOfMaterialsProductsInner.md) | An array that specifies the products associated with this bill of materials | 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSolutionType
 
-`func (o *BillOfMaterials) GetSolutionType() string`
+`func (o *BillOfMaterials) GetSolutionType() EnumSolutionType`
 
 GetSolutionType returns the SolutionType field if non-nil, zero value otherwise.
 
 ### GetSolutionTypeOk
 
-`func (o *BillOfMaterials) GetSolutionTypeOk() (*string, bool)`
+`func (o *BillOfMaterials) GetSolutionTypeOk() (*EnumSolutionType, bool)`
 
 GetSolutionTypeOk returns a tuple with the SolutionType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSolutionType
 
-`func (o *BillOfMaterials) SetSolutionType(v string)`
+`func (o *BillOfMaterials) SetSolutionType(v EnumSolutionType)`
 
 SetSolutionType sets SolutionType field to given value.
 

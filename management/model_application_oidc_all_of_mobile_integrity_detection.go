@@ -16,8 +16,7 @@ import (
 
 // ApplicationOIDCAllOfMobileIntegrityDetection struct for ApplicationOIDCAllOfMobileIntegrityDetection
 type ApplicationOIDCAllOfMobileIntegrityDetection struct {
-	// A string that specifies whether device integrity detection takes place on mobile devices, for the application's enrollment and authentication events ENABLED, DISABLED
-	Mode *string `json:"mode,omitempty"`
+	Mode *EnumEnabledStatus `json:"mode,omitempty"`
 	CacheDuration *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration `json:"cacheDuration,omitempty"`
 }
 
@@ -39,9 +38,9 @@ func NewApplicationOIDCAllOfMobileIntegrityDetectionWithDefaults() *ApplicationO
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
-func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetMode() string {
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetMode() EnumEnabledStatus {
 	if o == nil || o.Mode == nil {
-		var ret string
+		var ret EnumEnabledStatus
 		return ret
 	}
 	return *o.Mode
@@ -49,7 +48,7 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetMode() string {
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetModeOk() (*string, bool) {
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetModeOk() (*EnumEnabledStatus, bool) {
 	if o == nil || o.Mode == nil {
 		return nil, false
 	}
@@ -65,8 +64,8 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) HasMode() bool {
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
-func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetMode(v string) {
+// SetMode gets a reference to the given EnumEnabledStatus and assigns it to the Mode field.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetMode(v EnumEnabledStatus) {
 	o.Mode = &v
 }
 

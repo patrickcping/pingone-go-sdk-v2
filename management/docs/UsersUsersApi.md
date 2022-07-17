@@ -251,7 +251,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
-    include := "memberOfGroupIDs" // string |  (optional)
+    include := openapiclient.EnumUserRequestInclude("memberOfGroupIDs") // EnumUserRequestInclude |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **include** | **string** |  | 
+ **include** | [**EnumUserRequestInclude**](EnumUserRequestInclude.md) |  | 
 
 ### Return type
 

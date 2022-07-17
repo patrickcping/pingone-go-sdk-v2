@@ -16,10 +16,8 @@ import (
 
 // RiskEvaluationResult struct for RiskEvaluationResult
 type RiskEvaluationResult struct {
-	// A string that specifies the risk evaluation result type. Options are VALUE.
-	Type *string `json:"type,omitempty"`
-	// A string that specifies the risk evaluation result level. Options are HIGH, MEDIUM, and LOW.
-	Level *string `json:"level,omitempty"`
+	Type *EnumResultType `json:"type,omitempty"`
+	Level *EnumRiskLevel `json:"level,omitempty"`
 	// A string that specifies any custom attribute the administrator defines.
 	Value *string `json:"value,omitempty"`
 }
@@ -42,9 +40,9 @@ func NewRiskEvaluationResultWithDefaults() *RiskEvaluationResult {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *RiskEvaluationResult) GetType() string {
+func (o *RiskEvaluationResult) GetType() EnumResultType {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumResultType
 		return ret
 	}
 	return *o.Type
@@ -52,7 +50,7 @@ func (o *RiskEvaluationResult) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationResult) GetTypeOk() (*string, bool) {
+func (o *RiskEvaluationResult) GetTypeOk() (*EnumResultType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -68,15 +66,15 @@ func (o *RiskEvaluationResult) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *RiskEvaluationResult) SetType(v string) {
+// SetType gets a reference to the given EnumResultType and assigns it to the Type field.
+func (o *RiskEvaluationResult) SetType(v EnumResultType) {
 	o.Type = &v
 }
 
 // GetLevel returns the Level field value if set, zero value otherwise.
-func (o *RiskEvaluationResult) GetLevel() string {
+func (o *RiskEvaluationResult) GetLevel() EnumRiskLevel {
 	if o == nil || o.Level == nil {
-		var ret string
+		var ret EnumRiskLevel
 		return ret
 	}
 	return *o.Level
@@ -84,7 +82,7 @@ func (o *RiskEvaluationResult) GetLevel() string {
 
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationResult) GetLevelOk() (*string, bool) {
+func (o *RiskEvaluationResult) GetLevelOk() (*EnumRiskLevel, bool) {
 	if o == nil || o.Level == nil {
 		return nil, false
 	}
@@ -100,8 +98,8 @@ func (o *RiskEvaluationResult) HasLevel() bool {
 	return false
 }
 
-// SetLevel gets a reference to the given string and assigns it to the Level field.
-func (o *RiskEvaluationResult) SetLevel(v string) {
+// SetLevel gets a reference to the given EnumRiskLevel and assigns it to the Level field.
+func (o *RiskEvaluationResult) SetLevel(v EnumRiskLevel) {
 	o.Level = &v
 }
 

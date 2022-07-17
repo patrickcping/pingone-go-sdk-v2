@@ -20,8 +20,7 @@ type RiskEvaluationDetailsUserVelocityByIpThreshold struct {
 	High *int32 `json:"high,omitempty"`
 	// An integer indicating the value calculated for the medium threshold. If the IP was accessed by more than the medium number of users during the past hour, the IP is flagged as a MEDIUM userVelocityByIp.level
 	Medium *int32 `json:"medium,omitempty"`
-	// An enum indicating the source used to calculate the threshold. This can be: MIN_NOT_REACHED. If the measure is less than every.minSample, the threshold isn't calculated. Instead, a value of LOW is automatically assigned. CALCULATED. Indicates the threshold was calculated. ENVIRONMENT_FALLBACK. Indicates a global threshold calculated for the entire environment is used. The global threshold is used when the userVelocityByIp.threshold couldn't be calculated for the user, generally due to a lack of past transactions for the risk predictor to use for the threshold calculation. DEFAULT_FALLBACK. Indicates the default threshold defined for the predictor (in threshold.medium or threshold.high) is used. The default threshold is used when ENVIRONMENT_FALLBACK (the global threshold) couldn't be calculated, generally due to a lack of past transactions for the risk predictor to use for the global threshold calculation.
-	Source *string `json:"source,omitempty"`
+	Source *EnumThresholdSource `json:"source,omitempty"`
 	// A date-time indicating the timestamp for the calculated threshold.
 	CalculatedAt *string `json:"calculatedAt,omitempty"`
 	// A date-time indicating when the threshold will be recalculated. The recalculation will happen before this time.
@@ -110,9 +109,9 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetMedium(v int32) {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSource() string {
+func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSource() EnumThresholdSource {
 	if o == nil || o.Source == nil {
-		var ret string
+		var ret EnumThresholdSource
 		return ret
 	}
 	return *o.Source
@@ -120,7 +119,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSource() string {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSourceOk() (*string, bool) {
+func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSourceOk() (*EnumThresholdSource, bool) {
 	if o == nil || o.Source == nil {
 		return nil, false
 	}
@@ -136,8 +135,8 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given string and assigns it to the Source field.
-func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetSource(v string) {
+// SetSource gets a reference to the given EnumThresholdSource and assigns it to the Source field.
+func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetSource(v EnumThresholdSource) {
 	o.Source = &v
 }
 

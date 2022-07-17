@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    createGatewayRequest := openapiclient.createGateway_request{Gateway: openapiclient.NewGateway("Name_example", "Type_example", false)} // CreateGatewayRequest |  (optional)
+    createGatewayRequest := openapiclient.createGateway_request{Gateway: openapiclient.NewGateway("Name_example", openapiclient.EnumGatewayType("LDAP"), false)} // CreateGatewayRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -311,7 +311,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     gatewayID := "gatewayID_example" // string | 
-    createGatewayRequest := openapiclient.createGateway_request{Gateway: openapiclient.NewGateway("Name_example", "Type_example", false)} // CreateGatewayRequest |  (optional)
+    createGatewayRequest := openapiclient.createGateway_request{Gateway: openapiclient.NewGateway("Name_example", openapiclient.EnumGatewayType("LDAP"), false)} // CreateGatewayRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

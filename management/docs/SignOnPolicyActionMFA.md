@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Sms** | Pointer to [**SignOnPolicyActionMFASms**](SignOnPolicyActionMFASms.md) |  | [optional] 
 **Voice** | Pointer to [**SignOnPolicyActionMFAVoice**](SignOnPolicyActionMFAVoice.md) |  | [optional] 
 **Applications** | Pointer to [**[]SignOnPolicyActionMFAApplicationsInner**](SignOnPolicyActionMFAApplicationsInner.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
-**NoDeviceMode** | Pointer to **string** | A string that specifies the device mode for the MFA flow. Options are &#x60;BYPASS&#x60; to allow MFA without a specified device, or &#x60;BLOCK&#x60; to block the MFA flow if no device is specified. To use this configuration option, the authorize request must include a signed &#x60;login_hint_token&#x60; property. For more information, see Authorize (Browserless and MFA Only Flows) | [optional] 
+**NoDeviceMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
 
 ## Methods
 
@@ -209,20 +209,20 @@ HasApplications returns a boolean if a field has been set.
 
 ### GetNoDeviceMode
 
-`func (o *SignOnPolicyActionMFA) GetNoDeviceMode() string`
+`func (o *SignOnPolicyActionMFA) GetNoDeviceMode() EnumSignOnPolicyNoDeviceMode`
 
 GetNoDeviceMode returns the NoDeviceMode field if non-nil, zero value otherwise.
 
 ### GetNoDeviceModeOk
 
-`func (o *SignOnPolicyActionMFA) GetNoDeviceModeOk() (*string, bool)`
+`func (o *SignOnPolicyActionMFA) GetNoDeviceModeOk() (*EnumSignOnPolicyNoDeviceMode, bool)`
 
 GetNoDeviceModeOk returns a tuple with the NoDeviceMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNoDeviceMode
 
-`func (o *SignOnPolicyActionMFA) SetNoDeviceMode(v string)`
+`func (o *SignOnPolicyActionMFA) SetNoDeviceMode(v EnumSignOnPolicyNoDeviceMode)`
 
 SetNoDeviceMode sets NoDeviceMode field to given value.
 

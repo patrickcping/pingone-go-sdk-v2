@@ -22,8 +22,7 @@ type UserAccount struct {
 	LockedAt *string `json:"lockedAt,omitempty"`
 	// An integer that specifies the number of seconds until the user's account is unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
 	SecondsUntilUnlock *int32 `json:"secondsUntilUnlock,omitempty"`
-	// A string that specifies the account locked state. Options are LOCKED and OK.
-	Status *string `json:"status,omitempty"`
+	Status *EnumUserStatus `json:"status,omitempty"`
 	// The time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
 	UnlockAt *string `json:"unlockAt,omitempty"`
 }
@@ -142,9 +141,9 @@ func (o *UserAccount) SetSecondsUntilUnlock(v int32) {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *UserAccount) GetStatus() string {
+func (o *UserAccount) GetStatus() EnumUserStatus {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret EnumUserStatus
 		return ret
 	}
 	return *o.Status
@@ -152,7 +151,7 @@ func (o *UserAccount) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccount) GetStatusOk() (*string, bool) {
+func (o *UserAccount) GetStatusOk() (*EnumUserStatus, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -168,8 +167,8 @@ func (o *UserAccount) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *UserAccount) SetStatus(v string) {
+// SetStatus gets a reference to the given EnumUserStatus and assigns it to the Status field.
+func (o *UserAccount) SetStatus(v EnumUserStatus) {
 	o.Status = &v
 }
 

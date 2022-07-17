@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | A string that specifies the risk evaluation result type. Options are VALUE. | [optional] [readonly] 
-**Level** | Pointer to **string** | A string that specifies the risk evaluation result level. Options are HIGH, MEDIUM, and LOW. | [optional] [readonly] 
+**Type** | Pointer to [**EnumResultType**](EnumResultType.md) |  | [optional] 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
 **Value** | Pointer to **string** | A string that specifies any custom attribute the administrator defines. | [optional] [readonly] 
 
 ## Methods
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *RiskEvaluationResult) GetType() string`
+`func (o *RiskEvaluationResult) GetType() EnumResultType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RiskEvaluationResult) GetTypeOk() (*string, bool)`
+`func (o *RiskEvaluationResult) GetTypeOk() (*EnumResultType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RiskEvaluationResult) SetType(v string)`
+`func (o *RiskEvaluationResult) SetType(v EnumResultType)`
 
 SetType sets Type field to given value.
 
@@ -54,20 +54,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetLevel
 
-`func (o *RiskEvaluationResult) GetLevel() string`
+`func (o *RiskEvaluationResult) GetLevel() EnumRiskLevel`
 
 GetLevel returns the Level field if non-nil, zero value otherwise.
 
 ### GetLevelOk
 
-`func (o *RiskEvaluationResult) GetLevelOk() (*string, bool)`
+`func (o *RiskEvaluationResult) GetLevelOk() (*EnumRiskLevel, bool)`
 
 GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLevel
 
-`func (o *RiskEvaluationResult) SetLevel(v string)`
+`func (o *RiskEvaluationResult) SetLevel(v EnumRiskLevel)`
 
 SetLevel sets Level field to given value.
 

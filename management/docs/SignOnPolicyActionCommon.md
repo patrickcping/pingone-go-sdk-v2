@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | A string that specifies the sign-on policy assignment resource’s unique identifier. | [optional] [readonly] 
 **Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
 **SignOnPolicy** | [**SignOnPolicyActionCommonSignOnPolicy**](SignOnPolicyActionCommonSignOnPolicy.md) |  | 
-**Type** | **string** | A string that specifies the type of action. Options are &#x60;LOGIN&#x60;, &#x60;MULTI_FACTOR_AUTHENTICATION&#x60;, &#x60;IDENTIFIER_FIRST&#x60;, &#x60;IDENTITY_PROVIDER&#x60; &#x60;AGREEMENT&#x60; and &#x60;PROGRESSIVE_PROFILING&#x60;. | 
+**Type** | [**EnumSignOnPolicyType**](EnumSignOnPolicyType.md) |  | 
 
 ## Methods
 
 ### NewSignOnPolicyActionCommon
 
-`func NewSignOnPolicyActionCommon(priority int32, signOnPolicy SignOnPolicyActionCommonSignOnPolicy, type_ string, ) *SignOnPolicyActionCommon`
+`func NewSignOnPolicyActionCommon(priority int32, signOnPolicy SignOnPolicyActionCommonSignOnPolicy, type_ EnumSignOnPolicyType, ) *SignOnPolicyActionCommon`
 
 NewSignOnPolicyActionCommon instantiates a new SignOnPolicyActionCommon object
 This constructor will assign default values to properties that have it defined,
@@ -147,20 +147,20 @@ SetSignOnPolicy sets SignOnPolicy field to given value.
 
 ### GetType
 
-`func (o *SignOnPolicyActionCommon) GetType() string`
+`func (o *SignOnPolicyActionCommon) GetType() EnumSignOnPolicyType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SignOnPolicyActionCommon) GetTypeOk() (*string, bool)`
+`func (o *SignOnPolicyActionCommon) GetTypeOk() (*EnumSignOnPolicyType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SignOnPolicyActionCommon) SetType(v string)`
+`func (o *SignOnPolicyActionCommon) SetType(v EnumSignOnPolicyType)`
 
 SetType sets Type field to given value.
 

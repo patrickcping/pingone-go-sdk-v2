@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **High** | Pointer to **int32** | An integer indicating the value calculated for the high threshold. If the user accessed more than the high number of IPs during the past hour, they&#39;re flagged as a HIGH ipVelocityByUser.level. | [optional] 
 **Medium** | Pointer to **int32** | An integer indicating the value calculated for the medium threshold. If the user accessed more than the medium number of IPs during the past hour, they&#39;re flagged as a MEDIUM ipVelocityByUser.level. | [optional] 
-**Source** | Pointer to **string** | An enum indicating the source used to calculate the threshold. This can be MIN_NOT_REACHED. If the measure is less than every.minSample, the threshold isn&#39;t calculated. Instead, a value of LOW is automatically assigned. If less than five IPs were used by the user during the past hour, MIN_NOT_REACHED is set. CALCULATED. Indicates the threshold is guaranteed to be calculated. ENVIRONMENT_FALLBACK. Indicates a global threshold calculated for the entire environment is used. The global threshold is used when the ipVelocityByUser.threshold couldn&#39;t be calculated, generally due to a lack of past transactions for the risk predictor to use for the threshold calculation. DEFAULT_FALLBACK. Indicates the default threshold defined for the predictor (in threshold.medium or threshold.high) is used. The default threshold is used when ENVIRONMENT_FALLBACK (the global threshold) couldn&#39;t be calculated, generally due to a lack of past transactions for the risk predictor to use for the environment threshold calculation. | [optional] 
+**Source** | Pointer to [**EnumThresholdSource**](EnumThresholdSource.md) |  | [optional] 
 **CalculatedAt** | Pointer to **string** | A date-time indicating the timestamp for the calculated threshold. | [optional] 
 **ExpiresAt** | Pointer to **string** | A date-time indicating when the threshold will be recalculated. The recalculation will happen before this time. | [optional] 
 
@@ -81,20 +81,20 @@ HasMedium returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *RiskEvaluationDetailsIpVelocityByUserThreshold) GetSource() string`
+`func (o *RiskEvaluationDetailsIpVelocityByUserThreshold) GetSource() EnumThresholdSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *RiskEvaluationDetailsIpVelocityByUserThreshold) GetSourceOk() (*string, bool)`
+`func (o *RiskEvaluationDetailsIpVelocityByUserThreshold) GetSourceOk() (*EnumThresholdSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *RiskEvaluationDetailsIpVelocityByUserThreshold) SetSource(v string)`
+`func (o *RiskEvaluationDetailsIpVelocityByUserThreshold) SetSource(v EnumThresholdSource)`
 
 SetSource sets Source field to given value.
 

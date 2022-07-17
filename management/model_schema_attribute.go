@@ -32,10 +32,8 @@ type SchemaAttribute struct {
 	// A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided.
 	Required *bool `json:"required,omitempty"`
 	Schema *SchemaAttributeSchema `json:"schema,omitempty"`
-	// A string that specifies the schema type of the attribute. It may be one of CORE, STANDARD or CUSTOM. Core and standard attributes are present out-of-the-box. Core attributes may not be updated or deleted. Standard attributes may not be deleted, but their mutable properties may be updated. Custom attributes may be deleted, and their mutable properties may be updated. New attributes are created with a schema type of CUSTOM.
-	SchemaType *string `json:"schemaType,omitempty"`
-	// A string that specifies the the type of the attribute. It may be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided during creation, then it defaults to STRING. Complex and boolean attributes may not be created, but standard attributes of those types may be updated. JSON attributes are limited by size (total size must not exceed 16KB).
-	Type string `json:"type"`
+	SchemaType *EnumSchemaAttributeSchemaType `json:"schemaType,omitempty"`
+	Type EnumSchemaAttributeType `json:"type"`
 	// A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null.
 	Unique *bool `json:"unique,omitempty"`
 	// A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000.
@@ -46,7 +44,7 @@ type SchemaAttribute struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSchemaAttribute(enabled bool, name string, type_ string) *SchemaAttribute {
+func NewSchemaAttribute(enabled bool, name string, type_ EnumSchemaAttributeType) *SchemaAttribute {
 	this := SchemaAttribute{}
 	this.Enabled = enabled
 	this.Name = name
@@ -335,9 +333,9 @@ func (o *SchemaAttribute) SetSchema(v SchemaAttributeSchema) {
 }
 
 // GetSchemaType returns the SchemaType field value if set, zero value otherwise.
-func (o *SchemaAttribute) GetSchemaType() string {
+func (o *SchemaAttribute) GetSchemaType() EnumSchemaAttributeSchemaType {
 	if o == nil || o.SchemaType == nil {
-		var ret string
+		var ret EnumSchemaAttributeSchemaType
 		return ret
 	}
 	return *o.SchemaType
@@ -345,7 +343,7 @@ func (o *SchemaAttribute) GetSchemaType() string {
 
 // GetSchemaTypeOk returns a tuple with the SchemaType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SchemaAttribute) GetSchemaTypeOk() (*string, bool) {
+func (o *SchemaAttribute) GetSchemaTypeOk() (*EnumSchemaAttributeSchemaType, bool) {
 	if o == nil || o.SchemaType == nil {
 		return nil, false
 	}
@@ -361,15 +359,15 @@ func (o *SchemaAttribute) HasSchemaType() bool {
 	return false
 }
 
-// SetSchemaType gets a reference to the given string and assigns it to the SchemaType field.
-func (o *SchemaAttribute) SetSchemaType(v string) {
+// SetSchemaType gets a reference to the given EnumSchemaAttributeSchemaType and assigns it to the SchemaType field.
+func (o *SchemaAttribute) SetSchemaType(v EnumSchemaAttributeSchemaType) {
 	o.SchemaType = &v
 }
 
 // GetType returns the Type field value
-func (o *SchemaAttribute) GetType() string {
+func (o *SchemaAttribute) GetType() EnumSchemaAttributeType {
 	if o == nil {
-		var ret string
+		var ret EnumSchemaAttributeType
 		return ret
 	}
 
@@ -378,7 +376,7 @@ func (o *SchemaAttribute) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SchemaAttribute) GetTypeOk() (*string, bool) {
+func (o *SchemaAttribute) GetTypeOk() (*EnumSchemaAttributeType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -386,7 +384,7 @@ func (o *SchemaAttribute) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *SchemaAttribute) SetType(v string) {
+func (o *SchemaAttribute) SetType(v EnumSchemaAttributeType) {
 	o.Type = v
 }
 

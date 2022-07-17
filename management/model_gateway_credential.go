@@ -20,8 +20,7 @@ type GatewayCredential struct {
 	Id *string `json:"id,omitempty"`
 	// A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property.
 	CreatedAt *string `json:"createdAt,omitempty"`
-	// A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property.
-	GatewayType *string `json:"gatewayType,omitempty"`
+	GatewayType *EnumGatewayType `json:"gatewayType,omitempty"`
 	// A date that specifies the date the credential was last used in UTC. This is a required property.
 	LastUsedAt *string `json:"lastUsedAt,omitempty"`
 	ConsoleUrl *string `json:"consoleUrl,omitempty"`
@@ -113,9 +112,9 @@ func (o *GatewayCredential) SetCreatedAt(v string) {
 }
 
 // GetGatewayType returns the GatewayType field value if set, zero value otherwise.
-func (o *GatewayCredential) GetGatewayType() string {
+func (o *GatewayCredential) GetGatewayType() EnumGatewayType {
 	if o == nil || o.GatewayType == nil {
-		var ret string
+		var ret EnumGatewayType
 		return ret
 	}
 	return *o.GatewayType
@@ -123,7 +122,7 @@ func (o *GatewayCredential) GetGatewayType() string {
 
 // GetGatewayTypeOk returns a tuple with the GatewayType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCredential) GetGatewayTypeOk() (*string, bool) {
+func (o *GatewayCredential) GetGatewayTypeOk() (*EnumGatewayType, bool) {
 	if o == nil || o.GatewayType == nil {
 		return nil, false
 	}
@@ -139,8 +138,8 @@ func (o *GatewayCredential) HasGatewayType() bool {
 	return false
 }
 
-// SetGatewayType gets a reference to the given string and assigns it to the GatewayType field.
-func (o *GatewayCredential) SetGatewayType(v string) {
+// SetGatewayType gets a reference to the given EnumGatewayType and assigns it to the GatewayType field.
+func (o *GatewayCredential) SetGatewayType(v EnumGatewayType) {
 	o.GatewayType = &v
 }
 

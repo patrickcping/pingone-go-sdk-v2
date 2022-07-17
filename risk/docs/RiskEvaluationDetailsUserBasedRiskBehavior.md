@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to **string** | A string that specifies the risk score calculated for the user behavior for all transactions associated with the accessing device, and for the current authentication attempt. Options are LOW, MEDIUM, and HIGH. This information is available only if customers have agreed to data consent and the intelligence.allowDataConsent property in the PingOne license is set to true. | [optional] 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
 **Reason** | Pointer to **string** | A string that describes the reason (or reasons) provided for the user behavior risk score classification (for example, the operating system or browser type used by the device, and country in which the accessing device is located). Each reason is classified as Unusual, to indicate how much it deviates from normal user behavior, and its effect in calculating the overall user behavior risk score. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLevel
 
-`func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevel() string`
+`func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevel() EnumRiskLevel`
 
 GetLevel returns the Level field if non-nil, zero value otherwise.
 
 ### GetLevelOk
 
-`func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevelOk() (*string, bool)`
+`func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevelOk() (*EnumRiskLevel, bool)`
 
 GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLevel
 
-`func (o *RiskEvaluationDetailsUserBasedRiskBehavior) SetLevel(v string)`
+`func (o *RiskEvaluationDetailsUserBasedRiskBehavior) SetLevel(v EnumRiskLevel)`
 
 SetLevel sets Level field to given value.
 

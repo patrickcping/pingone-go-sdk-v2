@@ -16,8 +16,7 @@ import (
 
 // RiskEvaluationEventEvaluatedFactors struct for RiskEvaluationEventEvaluatedFactors
 type RiskEvaluationEventEvaluatedFactors struct {
-	// A string that specifies the state of the transaction. Options are FAILED, IN_PROGRESS, and SUCCESS.
-	Status *string `json:"status,omitempty"`
+	Status *EnumCompletionStatus `json:"status,omitempty"`
 	// A string that specifies the transaction type.
 	Type *string `json:"type,omitempty"`
 }
@@ -40,9 +39,9 @@ func NewRiskEvaluationEventEvaluatedFactorsWithDefaults() *RiskEvaluationEventEv
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *RiskEvaluationEventEvaluatedFactors) GetStatus() string {
+func (o *RiskEvaluationEventEvaluatedFactors) GetStatus() EnumCompletionStatus {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret EnumCompletionStatus
 		return ret
 	}
 	return *o.Status
@@ -50,7 +49,7 @@ func (o *RiskEvaluationEventEvaluatedFactors) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskEvaluationEventEvaluatedFactors) GetStatusOk() (*string, bool) {
+func (o *RiskEvaluationEventEvaluatedFactors) GetStatusOk() (*EnumCompletionStatus, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -66,8 +65,8 @@ func (o *RiskEvaluationEventEvaluatedFactors) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *RiskEvaluationEventEvaluatedFactors) SetStatus(v string) {
+// SetStatus gets a reference to the given EnumCompletionStatus and assigns it to the Status field.
+func (o *RiskEvaluationEventEvaluatedFactors) SetStatus(v EnumCompletionStatus) {
 	o.Status = &v
 }
 

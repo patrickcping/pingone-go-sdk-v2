@@ -22,8 +22,7 @@ type Role struct {
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the ID of the role.
 	Id *string `json:"id,omitempty"`
-	// The name of the role
-	Name *string `json:"name,omitempty"`
+	Name *EnumRoleName `json:"name,omitempty"`
 	// A string that specifies the set of permissions assigned to the role.
 	Permissions []RolePermissionsInner `json:"permissions,omitempty"`
 }
@@ -142,9 +141,9 @@ func (o *Role) SetId(v string) {
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *Role) GetName() string {
+func (o *Role) GetName() EnumRoleName {
 	if o == nil || o.Name == nil {
-		var ret string
+		var ret EnumRoleName
 		return ret
 	}
 	return *o.Name
@@ -152,7 +151,7 @@ func (o *Role) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetNameOk() (*string, bool) {
+func (o *Role) GetNameOk() (*EnumRoleName, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -168,8 +167,8 @@ func (o *Role) HasName() bool {
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Role) SetName(v string) {
+// SetName gets a reference to the given EnumRoleName and assigns it to the Name field.
+func (o *Role) SetName(v EnumRoleName) {
 	o.Name = &v
 }
 

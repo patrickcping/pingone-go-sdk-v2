@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
 **LoginPageUrl** | Pointer to **string** | A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains. | [optional] 
 **Name** | **string** | A string that specifies the name of the application. This is a required property. | 
-**Protocol** | **string** | A string that specifies the protocol for the Application. Options are OPENID_CONNECT and SAML. | 
-**Tags** | Pointer to **[]string** | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
-**Type** | **string** | A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER. | 
+**Protocol** | [**EnumApplicationProtocol**](EnumApplicationProtocol.md) |  | 
+**Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
+**Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **IdpSigningtype** | Pointer to [**ApplicationSAMLAllOfIdpSigningtype**](ApplicationSAMLAllOfIdpSigningtype.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False. | [optional] 
-**SloBinding** | Pointer to **string** | A string that specifies the binding protocol to be used for the logout response. Options are HTTP_REDIRECT or HTTP_POST. The default is HTTP_POST; existing configurations with no data default to HTTP_POST. This is an optional property. | [optional] 
+**SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
@@ -33,21 +33,21 @@ Name | Type | Description | Notes
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
-**GrantTypes** | **[]string** | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
+**GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
 **HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
-**PkceEnforcement** | Pointer to **string** | A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256. | [optional] 
+**PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
 **RedirectUris** | Pointer to **[]string** | A string that specifies the callback URI for the authentication response. | [optional] 
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the refreshTokenRollingDuration property is specified for the application, then this property must be less than or equal to the value of refreshTokenRollingDuration. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
-**ResponseTypes** | Pointer to **[]string** | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
-**TokenEndpointAuthMethod** | **string** | A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST. | 
+**ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
+**TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
 
 ## Methods
 
 ### NewCreateApplicationRequest
 
-`func NewCreateApplicationRequest(enabled bool, name string, protocol string, type_ string, acsUrls []string, assertionDuration int32, spEntityId string, grantTypes []string, tokenEndpointAuthMethod string, ) *CreateApplicationRequest`
+`func NewCreateApplicationRequest(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, acsUrls []string, assertionDuration int32, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, ) *CreateApplicationRequest`
 
 NewCreateApplicationRequest instantiates a new CreateApplicationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -304,40 +304,40 @@ SetName sets Name field to given value.
 
 ### GetProtocol
 
-`func (o *CreateApplicationRequest) GetProtocol() string`
+`func (o *CreateApplicationRequest) GetProtocol() EnumApplicationProtocol`
 
 GetProtocol returns the Protocol field if non-nil, zero value otherwise.
 
 ### GetProtocolOk
 
-`func (o *CreateApplicationRequest) GetProtocolOk() (*string, bool)`
+`func (o *CreateApplicationRequest) GetProtocolOk() (*EnumApplicationProtocol, bool)`
 
 GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProtocol
 
-`func (o *CreateApplicationRequest) SetProtocol(v string)`
+`func (o *CreateApplicationRequest) SetProtocol(v EnumApplicationProtocol)`
 
 SetProtocol sets Protocol field to given value.
 
 
 ### GetTags
 
-`func (o *CreateApplicationRequest) GetTags() []string`
+`func (o *CreateApplicationRequest) GetTags() []EnumApplicationTags`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *CreateApplicationRequest) GetTagsOk() (*[]string, bool)`
+`func (o *CreateApplicationRequest) GetTagsOk() (*[]EnumApplicationTags, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *CreateApplicationRequest) SetTags(v []string)`
+`func (o *CreateApplicationRequest) SetTags(v []EnumApplicationTags)`
 
 SetTags sets Tags field to given value.
 
@@ -349,20 +349,20 @@ HasTags returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *CreateApplicationRequest) GetType() string`
+`func (o *CreateApplicationRequest) GetType() EnumApplicationType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateApplicationRequest) GetTypeOk() (*string, bool)`
+`func (o *CreateApplicationRequest) GetTypeOk() (*EnumApplicationType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateApplicationRequest) SetType(v string)`
+`func (o *CreateApplicationRequest) SetType(v EnumApplicationType)`
 
 SetType sets Type field to given value.
 
@@ -559,20 +559,20 @@ HasResponseSigned returns a boolean if a field has been set.
 
 ### GetSloBinding
 
-`func (o *CreateApplicationRequest) GetSloBinding() string`
+`func (o *CreateApplicationRequest) GetSloBinding() EnumApplicationSAMLSloBinding`
 
 GetSloBinding returns the SloBinding field if non-nil, zero value otherwise.
 
 ### GetSloBindingOk
 
-`func (o *CreateApplicationRequest) GetSloBindingOk() (*string, bool)`
+`func (o *CreateApplicationRequest) GetSloBindingOk() (*EnumApplicationSAMLSloBinding, bool)`
 
 GetSloBindingOk returns a tuple with the SloBinding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSloBinding
 
-`func (o *CreateApplicationRequest) SetSloBinding(v string)`
+`func (o *CreateApplicationRequest) SetSloBinding(v EnumApplicationSAMLSloBinding)`
 
 SetSloBinding sets SloBinding field to given value.
 
@@ -754,20 +754,20 @@ HasPackageName returns a boolean if a field has been set.
 
 ### GetGrantTypes
 
-`func (o *CreateApplicationRequest) GetGrantTypes() []string`
+`func (o *CreateApplicationRequest) GetGrantTypes() []EnumApplicationOIDCGrantType`
 
 GetGrantTypes returns the GrantTypes field if non-nil, zero value otherwise.
 
 ### GetGrantTypesOk
 
-`func (o *CreateApplicationRequest) GetGrantTypesOk() (*[]string, bool)`
+`func (o *CreateApplicationRequest) GetGrantTypesOk() (*[]EnumApplicationOIDCGrantType, bool)`
 
 GetGrantTypesOk returns a tuple with the GrantTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGrantTypes
 
-`func (o *CreateApplicationRequest) SetGrantTypes(v []string)`
+`func (o *CreateApplicationRequest) SetGrantTypes(v []EnumApplicationOIDCGrantType)`
 
 SetGrantTypes sets GrantTypes field to given value.
 
@@ -799,20 +799,20 @@ HasHomePageUrl returns a boolean if a field has been set.
 
 ### GetPkceEnforcement
 
-`func (o *CreateApplicationRequest) GetPkceEnforcement() string`
+`func (o *CreateApplicationRequest) GetPkceEnforcement() EnumApplicationOIDCPKCEOption`
 
 GetPkceEnforcement returns the PkceEnforcement field if non-nil, zero value otherwise.
 
 ### GetPkceEnforcementOk
 
-`func (o *CreateApplicationRequest) GetPkceEnforcementOk() (*string, bool)`
+`func (o *CreateApplicationRequest) GetPkceEnforcementOk() (*EnumApplicationOIDCPKCEOption, bool)`
 
 GetPkceEnforcementOk returns a tuple with the PkceEnforcement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPkceEnforcement
 
-`func (o *CreateApplicationRequest) SetPkceEnforcement(v string)`
+`func (o *CreateApplicationRequest) SetPkceEnforcement(v EnumApplicationOIDCPKCEOption)`
 
 SetPkceEnforcement sets PkceEnforcement field to given value.
 
@@ -924,20 +924,20 @@ HasRefreshTokenRollingDuration returns a boolean if a field has been set.
 
 ### GetResponseTypes
 
-`func (o *CreateApplicationRequest) GetResponseTypes() []string`
+`func (o *CreateApplicationRequest) GetResponseTypes() []EnumApplicationOIDCResponseType`
 
 GetResponseTypes returns the ResponseTypes field if non-nil, zero value otherwise.
 
 ### GetResponseTypesOk
 
-`func (o *CreateApplicationRequest) GetResponseTypesOk() (*[]string, bool)`
+`func (o *CreateApplicationRequest) GetResponseTypesOk() (*[]EnumApplicationOIDCResponseType, bool)`
 
 GetResponseTypesOk returns a tuple with the ResponseTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponseTypes
 
-`func (o *CreateApplicationRequest) SetResponseTypes(v []string)`
+`func (o *CreateApplicationRequest) SetResponseTypes(v []EnumApplicationOIDCResponseType)`
 
 SetResponseTypes sets ResponseTypes field to given value.
 
@@ -949,20 +949,20 @@ HasResponseTypes returns a boolean if a field has been set.
 
 ### GetTokenEndpointAuthMethod
 
-`func (o *CreateApplicationRequest) GetTokenEndpointAuthMethod() string`
+`func (o *CreateApplicationRequest) GetTokenEndpointAuthMethod() EnumApplicationOIDCTokenAuthMethod`
 
 GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field if non-nil, zero value otherwise.
 
 ### GetTokenEndpointAuthMethodOk
 
-`func (o *CreateApplicationRequest) GetTokenEndpointAuthMethodOk() (*string, bool)`
+`func (o *CreateApplicationRequest) GetTokenEndpointAuthMethodOk() (*EnumApplicationOIDCTokenAuthMethod, bool)`
 
 GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenEndpointAuthMethod
 
-`func (o *CreateApplicationRequest) SetTokenEndpointAuthMethod(v string)`
+`func (o *CreateApplicationRequest) SetTokenEndpointAuthMethod(v EnumApplicationOIDCTokenAuthMethod)`
 
 SetTokenEndpointAuthMethod sets TokenEndpointAuthMethod field to given value.
 

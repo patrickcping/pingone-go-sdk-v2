@@ -16,8 +16,7 @@ import (
 
 // UserLifecycle struct for UserLifecycle
 type UserLifecycle struct {
-	// A string that specifies information about the account lifecycle. Options for status are `ACCOUNT_OK` and `VERIFICATION_REQUIRED`. This property value is only allowed to be set when importing a user to set the initial account status. If the initial status is set to `VERIFICATION_REQUIRED` and an email address is provided, a verification email is sent.
-	Status *string `json:"status,omitempty"`
+	Status *EnumUserLifecycleStatus `json:"status,omitempty"`
 }
 
 // NewUserLifecycle instantiates a new UserLifecycle object
@@ -38,9 +37,9 @@ func NewUserLifecycleWithDefaults() *UserLifecycle {
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *UserLifecycle) GetStatus() string {
+func (o *UserLifecycle) GetStatus() EnumUserLifecycleStatus {
 	if o == nil || o.Status == nil {
-		var ret string
+		var ret EnumUserLifecycleStatus
 		return ret
 	}
 	return *o.Status
@@ -48,7 +47,7 @@ func (o *UserLifecycle) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserLifecycle) GetStatusOk() (*string, bool) {
+func (o *UserLifecycle) GetStatusOk() (*EnumUserLifecycleStatus, bool) {
 	if o == nil || o.Status == nil {
 		return nil, false
 	}
@@ -64,8 +63,8 @@ func (o *UserLifecycle) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *UserLifecycle) SetStatus(v string) {
+// SetStatus gets a reference to the given EnumUserLifecycleStatus and assigns it to the Status field.
+func (o *UserLifecycle) SetStatus(v EnumUserLifecycleStatus) {
 	o.Status = &v
 }
 

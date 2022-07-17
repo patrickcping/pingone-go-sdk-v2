@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | A string that specifies the type of the push credentials. Mandatory. Valid values APNS, FCM | 
+**Type** | [**EnumMFAPushCredentialAttrType**](EnumMFAPushCredentialAttrType.md) |  | 
 **Key** | **string** | A string that Apple uses as an identifier to identify an authentication key.  Mandatory. | 
 **TeamId** | **string** | A string that Apple uses as an identifier to identify teams. | 
 **Token** | **string** | A string that Apple uses as the authentication token signing key to securely connect to APNS. This is a p8 file with a private key format. | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewEntityArrayEmbeddedPushCredentialsInner
 
-`func NewEntityArrayEmbeddedPushCredentialsInner(type_ string, key string, teamId string, token string, ) *EntityArrayEmbeddedPushCredentialsInner`
+`func NewEntityArrayEmbeddedPushCredentialsInner(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, ) *EntityArrayEmbeddedPushCredentialsInner`
 
 NewEntityArrayEmbeddedPushCredentialsInner instantiates a new EntityArrayEmbeddedPushCredentialsInner object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *EntityArrayEmbeddedPushCredentialsInner) GetType() string`
+`func (o *EntityArrayEmbeddedPushCredentialsInner) GetType() EnumMFAPushCredentialAttrType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *EntityArrayEmbeddedPushCredentialsInner) GetTypeOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedPushCredentialsInner) GetTypeOk() (*EnumMFAPushCredentialAttrType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *EntityArrayEmbeddedPushCredentialsInner) SetType(v string)`
+`func (o *EntityArrayEmbeddedPushCredentialsInner) SetType(v EnumMFAPushCredentialAttrType)`
 
 SetType sets Type field to given value.
 

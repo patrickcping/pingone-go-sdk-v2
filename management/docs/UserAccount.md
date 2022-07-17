@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CanAuthenticate** | Pointer to **bool** | A boolean that specifies the whether the user can authenticate. If the value is set to false, the account is locked or the user is disabled, and unless specified otherwise in administrative configuration, the user will be unable to authenticate. | [optional] 
 **LockedAt** | Pointer to **string** | The time the specified user account was locked. This property might be absent if the account is unlocked or if the account was locked out automatically by failed password attempts. | [optional] 
 **SecondsUntilUnlock** | Pointer to **int32** | An integer that specifies the number of seconds until the user&#39;s account is unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator). | [optional] 
-**Status** | Pointer to **string** | A string that specifies the account locked state. Options are LOCKED and OK. | [optional] 
+**Status** | Pointer to [**EnumUserStatus**](EnumUserStatus.md) |  | [optional] 
 **UnlockAt** | Pointer to **string** | The time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator). | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasSecondsUntilUnlock returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *UserAccount) GetStatus() string`
+`func (o *UserAccount) GetStatus() EnumUserStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *UserAccount) GetStatusOk() (*string, bool)`
+`func (o *UserAccount) GetStatusOk() (*EnumUserStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *UserAccount) SetStatus(v string)`
+`func (o *UserAccount) SetStatus(v EnumUserStatus)`
 
 SetStatus sets Status field to given value.
 

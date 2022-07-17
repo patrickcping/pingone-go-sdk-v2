@@ -16,8 +16,7 @@ import (
 
 // BillOfMaterials struct for BillOfMaterials
 type BillOfMaterials struct {
-	// The solution set of the bill of materials
-	SolutionType *string `json:"solutionType,omitempty"`
+	SolutionType *EnumSolutionType `json:"solutionType,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -45,9 +44,9 @@ func NewBillOfMaterialsWithDefaults() *BillOfMaterials {
 }
 
 // GetSolutionType returns the SolutionType field value if set, zero value otherwise.
-func (o *BillOfMaterials) GetSolutionType() string {
+func (o *BillOfMaterials) GetSolutionType() EnumSolutionType {
 	if o == nil || o.SolutionType == nil {
-		var ret string
+		var ret EnumSolutionType
 		return ret
 	}
 	return *o.SolutionType
@@ -55,7 +54,7 @@ func (o *BillOfMaterials) GetSolutionType() string {
 
 // GetSolutionTypeOk returns a tuple with the SolutionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillOfMaterials) GetSolutionTypeOk() (*string, bool) {
+func (o *BillOfMaterials) GetSolutionTypeOk() (*EnumSolutionType, bool) {
 	if o == nil || o.SolutionType == nil {
 		return nil, false
 	}
@@ -71,8 +70,8 @@ func (o *BillOfMaterials) HasSolutionType() bool {
 	return false
 }
 
-// SetSolutionType gets a reference to the given string and assigns it to the SolutionType field.
-func (o *BillOfMaterials) SetSolutionType(v string) {
+// SetSolutionType gets a reference to the given EnumSolutionType and assigns it to the SolutionType field.
+func (o *BillOfMaterials) SetSolutionType(v EnumSolutionType) {
 	o.SolutionType = &v
 }
 

@@ -24,8 +24,7 @@ type SignOnPolicyActionMFA struct {
 	Voice *SignOnPolicyActionMFAVoice `json:"voice,omitempty"`
 	// The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action.
 	Applications []SignOnPolicyActionMFAApplicationsInner `json:"applications,omitempty"`
-	// A string that specifies the device mode for the MFA flow. Options are `BYPASS` to allow MFA without a specified device, or `BLOCK` to block the MFA flow if no device is specified. To use this configuration option, the authorize request must include a signed `login_hint_token` property. For more information, see Authorize (Browserless and MFA Only Flows)
-	NoDeviceMode *string `json:"noDeviceMode,omitempty"`
+	NoDeviceMode *EnumSignOnPolicyNoDeviceMode `json:"noDeviceMode,omitempty"`
 }
 
 // NewSignOnPolicyActionMFA instantiates a new SignOnPolicyActionMFA object
@@ -270,9 +269,9 @@ func (o *SignOnPolicyActionMFA) SetApplications(v []SignOnPolicyActionMFAApplica
 }
 
 // GetNoDeviceMode returns the NoDeviceMode field value if set, zero value otherwise.
-func (o *SignOnPolicyActionMFA) GetNoDeviceMode() string {
+func (o *SignOnPolicyActionMFA) GetNoDeviceMode() EnumSignOnPolicyNoDeviceMode {
 	if o == nil || o.NoDeviceMode == nil {
-		var ret string
+		var ret EnumSignOnPolicyNoDeviceMode
 		return ret
 	}
 	return *o.NoDeviceMode
@@ -280,7 +279,7 @@ func (o *SignOnPolicyActionMFA) GetNoDeviceMode() string {
 
 // GetNoDeviceModeOk returns a tuple with the NoDeviceMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionMFA) GetNoDeviceModeOk() (*string, bool) {
+func (o *SignOnPolicyActionMFA) GetNoDeviceModeOk() (*EnumSignOnPolicyNoDeviceMode, bool) {
 	if o == nil || o.NoDeviceMode == nil {
 		return nil, false
 	}
@@ -296,8 +295,8 @@ func (o *SignOnPolicyActionMFA) HasNoDeviceMode() bool {
 	return false
 }
 
-// SetNoDeviceMode gets a reference to the given string and assigns it to the NoDeviceMode field.
-func (o *SignOnPolicyActionMFA) SetNoDeviceMode(v string) {
+// SetNoDeviceMode gets a reference to the given EnumSignOnPolicyNoDeviceMode and assigns it to the NoDeviceMode field.
+func (o *SignOnPolicyActionMFA) SetNoDeviceMode(v EnumSignOnPolicyNoDeviceMode) {
 	o.NoDeviceMode = &v
 }
 

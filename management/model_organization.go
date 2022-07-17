@@ -26,8 +26,7 @@ type Organization struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
-	// A string that specifies the organization type. If the organization has any paid licenses, the type property value is set to `PAID`. Otherwise, the property value is set to `TRIAL`.
-	Type *string `json:"type,omitempty"`
+	Type *EnumOrganizationType `json:"type,omitempty"`
 	BillingConnections []OrganizationBillingConnectionsInner `json:"billingConnections,omitempty"`
 }
 
@@ -209,9 +208,9 @@ func (o *Organization) SetUpdatedAt(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Organization) GetType() string {
+func (o *Organization) GetType() EnumOrganizationType {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumOrganizationType
 		return ret
 	}
 	return *o.Type
@@ -219,7 +218,7 @@ func (o *Organization) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Organization) GetTypeOk() (*string, bool) {
+func (o *Organization) GetTypeOk() (*EnumOrganizationType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -235,8 +234,8 @@ func (o *Organization) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Organization) SetType(v string) {
+// SetType gets a reference to the given EnumOrganizationType and assigns it to the Type field.
+func (o *Organization) SetType(v EnumOrganizationType) {
 	o.Type = &v
 }
 

@@ -499,10 +499,10 @@ type ApiReadUserRequest struct {
 	ApiService *UsersUsersApiService
 	environmentID string
 	userID string
-	include *string
+	include *EnumUserRequestInclude
 }
 
-func (r ApiReadUserRequest) Include(include string) ApiReadUserRequest {
+func (r ApiReadUserRequest) Include(include EnumUserRequestInclude) ApiReadUserRequest {
 	r.include = &include
 	return r
 }

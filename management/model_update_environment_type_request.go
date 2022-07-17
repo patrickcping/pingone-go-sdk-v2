@@ -16,8 +16,7 @@ import (
 
 // UpdateEnvironmentTypeRequest struct for UpdateEnvironmentTypeRequest
 type UpdateEnvironmentTypeRequest struct {
-	// A string that specifies the type of environment to use. Options are PRODUCTION and SANDBOX.
-	Type *string `json:"type,omitempty"`
+	Type *EnumEnvironmentType `json:"type,omitempty"`
 }
 
 // NewUpdateEnvironmentTypeRequest instantiates a new UpdateEnvironmentTypeRequest object
@@ -38,9 +37,9 @@ func NewUpdateEnvironmentTypeRequestWithDefaults() *UpdateEnvironmentTypeRequest
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *UpdateEnvironmentTypeRequest) GetType() string {
+func (o *UpdateEnvironmentTypeRequest) GetType() EnumEnvironmentType {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumEnvironmentType
 		return ret
 	}
 	return *o.Type
@@ -48,7 +47,7 @@ func (o *UpdateEnvironmentTypeRequest) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateEnvironmentTypeRequest) GetTypeOk() (*string, bool) {
+func (o *UpdateEnvironmentTypeRequest) GetTypeOk() (*EnumEnvironmentType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -64,8 +63,8 @@ func (o *UpdateEnvironmentTypeRequest) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *UpdateEnvironmentTypeRequest) SetType(v string) {
+// SetType gets a reference to the given EnumEnvironmentType and assigns it to the Type field.
+func (o *UpdateEnvironmentTypeRequest) SetType(v EnumEnvironmentType) {
 	o.Type = &v
 }
 

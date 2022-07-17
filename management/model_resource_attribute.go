@@ -20,8 +20,7 @@ type ResourceAttribute struct {
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the name of the custom resource attribute to be included in the access token
 	Name string `json:"name"`
-	// A string that specifies the type of resource attribute. Options are CORE - The claim is required and cannot not be removed., CUSTOM - The claim is not a CORE attribute. All created attributes are of this type.
-	Type *string `json:"type,omitempty"`
+	Type *EnumResourceAttributeType `json:"type,omitempty"`
 	// A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as “${user.path.to.value}”, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are “${user.email}”, “${user.name.family}”, and “myClaimValueString”
 	Value string `json:"value"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -104,9 +103,9 @@ func (o *ResourceAttribute) SetName(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ResourceAttribute) GetType() string {
+func (o *ResourceAttribute) GetType() EnumResourceAttributeType {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumResourceAttributeType
 		return ret
 	}
 	return *o.Type
@@ -114,7 +113,7 @@ func (o *ResourceAttribute) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceAttribute) GetTypeOk() (*string, bool) {
+func (o *ResourceAttribute) GetTypeOk() (*EnumResourceAttributeType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -130,8 +129,8 @@ func (o *ResourceAttribute) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ResourceAttribute) SetType(v string) {
+// SetType gets a reference to the given EnumResourceAttributeType and assigns it to the Type field.
+func (o *ResourceAttribute) SetType(v EnumResourceAttributeType) {
 	o.Type = &v
 }
 

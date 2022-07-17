@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | **string** | A string that identifies the risk level. Options are HIGH, MEDIUM, and LOW. | 
-**Type** | Pointer to **string** |  | [optional] 
+**Level** | [**EnumRiskLevel**](EnumRiskLevel.md) |  | 
+**Type** | Pointer to [**EnumResultType**](EnumResultType.md) |  | [optional] 
 
 ## Methods
 
 ### NewRiskPredictorDefaultResult
 
-`func NewRiskPredictorDefaultResult(level string, ) *RiskPredictorDefaultResult`
+`func NewRiskPredictorDefaultResult(level EnumRiskLevel, ) *RiskPredictorDefaultResult`
 
 NewRiskPredictorDefaultResult instantiates a new RiskPredictorDefaultResult object
 This constructor will assign default values to properties that have it defined,
@@ -28,40 +28,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLevel
 
-`func (o *RiskPredictorDefaultResult) GetLevel() string`
+`func (o *RiskPredictorDefaultResult) GetLevel() EnumRiskLevel`
 
 GetLevel returns the Level field if non-nil, zero value otherwise.
 
 ### GetLevelOk
 
-`func (o *RiskPredictorDefaultResult) GetLevelOk() (*string, bool)`
+`func (o *RiskPredictorDefaultResult) GetLevelOk() (*EnumRiskLevel, bool)`
 
 GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLevel
 
-`func (o *RiskPredictorDefaultResult) SetLevel(v string)`
+`func (o *RiskPredictorDefaultResult) SetLevel(v EnumRiskLevel)`
 
 SetLevel sets Level field to given value.
 
 
 ### GetType
 
-`func (o *RiskPredictorDefaultResult) GetType() string`
+`func (o *RiskPredictorDefaultResult) GetType() EnumResultType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RiskPredictorDefaultResult) GetTypeOk() (*string, bool)`
+`func (o *RiskPredictorDefaultResult) GetTypeOk() (*EnumResultType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RiskPredictorDefaultResult) SetType(v string)`
+`func (o *RiskPredictorDefaultResult) SetType(v EnumResultType)`
 
 SetType sets Type field to given value.
 

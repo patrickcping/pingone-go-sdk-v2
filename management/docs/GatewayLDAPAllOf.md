@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindDN** | **string** | A string that specifies the distinguished name information to bind to the LDAP database (for example, uid&#x3D;pingone,dc&#x3D;example,dc&#x3D;com). | 
 **BindPassword** | **string** | A string that specifies the bind password for the LDAP database. This is a required property. | 
-**ConnectionSecurity** | Pointer to **string** | (Optional) A string that specifies the connection security type. Options are None, TLS, and StartTLS. The default value is None. | [optional] 
+**ConnectionSecurity** | Pointer to [**EnumGatewayLDAPSecurity**](EnumGatewayLDAPSecurity.md) |  | [optional] 
 **ServersHostAndPort** | Pointer to **[]string** | An array of strings that specifies the LDAP server host name and port number (for example, [\&quot;ds1.example.com:389\&quot;, \&quot;ds2.example.com:389\&quot;]). | [optional] 
 **UserTypes** | [**[]GatewayLDAPAllOfUserTypes**](GatewayLDAPAllOfUserTypes.md) | (Optional) An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | 
 **ValidateTlsCertificates** | Pointer to **bool** | (Optional) A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted. | [optional] 
@@ -73,20 +73,20 @@ SetBindPassword sets BindPassword field to given value.
 
 ### GetConnectionSecurity
 
-`func (o *GatewayLDAPAllOf) GetConnectionSecurity() string`
+`func (o *GatewayLDAPAllOf) GetConnectionSecurity() EnumGatewayLDAPSecurity`
 
 GetConnectionSecurity returns the ConnectionSecurity field if non-nil, zero value otherwise.
 
 ### GetConnectionSecurityOk
 
-`func (o *GatewayLDAPAllOf) GetConnectionSecurityOk() (*string, bool)`
+`func (o *GatewayLDAPAllOf) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, bool)`
 
 GetConnectionSecurityOk returns a tuple with the ConnectionSecurity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectionSecurity
 
-`func (o *GatewayLDAPAllOf) SetConnectionSecurity(v string)`
+`func (o *GatewayLDAPAllOf) SetConnectionSecurity(v EnumGatewayLDAPSecurity)`
 
 SetConnectionSecurity sets ConnectionSecurity field to given value.
 

@@ -1512,6 +1512,56 @@ paths:
       - Users > MFA Pairing Keys
 components:
   schemas:
+    EntityArray:
+      example:
+        size: 6.027456183070403
+        _embedded:
+          pushCredentials:
+          - null
+          - null
+        count: 0.8008281904610115
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/EntityArray__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      type: object
+    EnumMFAPushCredentialAttrType:
+      description: "A string that specifies the type of the push credentials. Mandatory.\
+        \ Valid values APNS, FCM"
+      enum:
+      - APNS
+      - FCM
+      type: string
+    MFAPushCredential:
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumMFAPushCredentialAttrType'
+        key:
+          description: A string that Apple uses as an identifier to identify an authentication
+            key.  Mandatory.
+          type: string
+      required:
+      - key
+      - type
+      type: object
+    MFAPushCredentialAPNS:
+      allOf:
+      - $ref: '#/components/schemas/MFAPushCredential'
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS_allOf'
+    MFAPushCredentialFCM:
+      $ref: '#/components/schemas/MFAPushCredential'
+    ObjectEnvironment:
+      properties:
+        id:
+          description: A string that specifies the environment associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
     P1Error:
       properties:
         id:
@@ -1537,54 +1587,6 @@ components:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
       type: object
-    EntityArray:
-      example:
-        size: 6.027456183070403
-        _embedded:
-          pushCredentials:
-          - null
-          - null
-        count: 0.8008281904610115
-      properties:
-        _embedded:
-          $ref: '#/components/schemas/EntityArray__embedded'
-        count:
-          type: number
-        size:
-          type: number
-      type: object
-    ObjectEnvironment:
-      properties:
-        id:
-          description: A string that specifies the environment associated with the
-            object.
-          readOnly: true
-          type: string
-      readOnly: true
-      type: object
-    MFAPushCredential:
-      properties:
-        type:
-          description: "A string that specifies the type of the push credentials.\
-            \ Mandatory. Valid values APNS, FCM"
-          enum:
-          - APNS
-          - FCM
-          type: string
-        key:
-          description: A string that Apple uses as an identifier to identify an authentication
-            key.  Mandatory.
-          type: string
-      required:
-      - key
-      - type
-      type: object
-    MFAPushCredentialAPNS:
-      allOf:
-      - $ref: '#/components/schemas/MFAPushCredential'
-      - $ref: '#/components/schemas/MFAPushCredentialAPNS_allOf'
-    MFAPushCredentialFCM:
-      $ref: '#/components/schemas/MFAPushCredential'
     createMFAPushCredential_request:
       example:
         type: FCM
@@ -1608,6 +1610,35 @@ components:
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'
+    EntityArray__embedded_pushCredentials_inner:
+      anyOf:
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+      - $ref: '#/components/schemas/MFAPushCredentialFCM'
+    EntityArray__embedded:
+      example:
+        pushCredentials:
+        - null
+        - null
+      properties:
+        pushCredentials:
+          items:
+            $ref: '#/components/schemas/EntityArray__embedded_pushCredentials_inner'
+          type: array
+      type: object
+    MFAPushCredentialAPNS_allOf:
+      properties:
+        teamId:
+          description: A string that Apple uses as an identifier to identify teams.
+          type: string
+        token:
+          description: A string that Apple uses as the authentication token signing
+            key to securely connect to APNS. This is a p8 file with a private key
+            format.
+          type: string
+      required:
+      - teamId
+      - token
+      type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
         (primarily for UI validation reasons).
@@ -1649,35 +1680,6 @@ components:
           type: string
         innerError:
           $ref: '#/components/schemas/P1Error_details_inner_innerError'
-      type: object
-    EntityArray__embedded_pushCredentials_inner:
-      anyOf:
-      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-      - $ref: '#/components/schemas/MFAPushCredentialFCM'
-    EntityArray__embedded:
-      example:
-        pushCredentials:
-        - null
-        - null
-      properties:
-        pushCredentials:
-          items:
-            $ref: '#/components/schemas/EntityArray__embedded_pushCredentials_inner'
-          type: array
-      type: object
-    MFAPushCredentialAPNS_allOf:
-      properties:
-        teamId:
-          description: A string that Apple uses as an identifier to identify teams.
-          type: string
-        token:
-          description: A string that Apple uses as the authentication token signing
-            key to securely connect to APNS. This is a p8 file with a private key
-            format.
-          type: string
-      required:
-      - teamId
-      - token
       type: object
   securitySchemes:
     bearer:

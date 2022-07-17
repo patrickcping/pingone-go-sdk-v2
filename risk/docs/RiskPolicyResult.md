@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | **string** |  | 
-**Type** | Pointer to **string** |  | [optional] 
+**Level** | [**EnumRiskLevel**](EnumRiskLevel.md) |  | 
+**Type** | Pointer to [**EnumResultType**](EnumResultType.md) |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewRiskPolicyResult
 
-`func NewRiskPolicyResult(level string, ) *RiskPolicyResult`
+`func NewRiskPolicyResult(level EnumRiskLevel, ) *RiskPolicyResult`
 
 NewRiskPolicyResult instantiates a new RiskPolicyResult object
 This constructor will assign default values to properties that have it defined,
@@ -29,40 +29,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLevel
 
-`func (o *RiskPolicyResult) GetLevel() string`
+`func (o *RiskPolicyResult) GetLevel() EnumRiskLevel`
 
 GetLevel returns the Level field if non-nil, zero value otherwise.
 
 ### GetLevelOk
 
-`func (o *RiskPolicyResult) GetLevelOk() (*string, bool)`
+`func (o *RiskPolicyResult) GetLevelOk() (*EnumRiskLevel, bool)`
 
 GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLevel
 
-`func (o *RiskPolicyResult) SetLevel(v string)`
+`func (o *RiskPolicyResult) SetLevel(v EnumRiskLevel)`
 
 SetLevel sets Level field to given value.
 
 
 ### GetType
 
-`func (o *RiskPolicyResult) GetType() string`
+`func (o *RiskPolicyResult) GetType() EnumResultType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RiskPolicyResult) GetTypeOk() (*string, bool)`
+`func (o *RiskPolicyResult) GetTypeOk() (*EnumResultType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RiskPolicyResult) SetType(v string)`
+`func (o *RiskPolicyResult) SetType(v EnumResultType)`
 
 SetType sets Type field to given value.
 

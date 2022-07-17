@@ -30,8 +30,7 @@ type Resource struct {
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment.
 	Name string `json:"name"`
-	// A string that specifies the type of resource. Options are OPENID_CONNECT, PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created. OPENID_CONNECT specifies the built-in platform resource for OpenID Connect. PING_ONE_API specifies the built-in platform resource for PingOne.
-	Type *string `json:"type,omitempty"`
+	Type *EnumResourceType `json:"type,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
@@ -303,9 +302,9 @@ func (o *Resource) SetName(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Resource) GetType() string {
+func (o *Resource) GetType() EnumResourceType {
 	if o == nil || o.Type == nil {
-		var ret string
+		var ret EnumResourceType
 		return ret
 	}
 	return *o.Type
@@ -313,7 +312,7 @@ func (o *Resource) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Resource) GetTypeOk() (*string, bool) {
+func (o *Resource) GetTypeOk() (*EnumResourceType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -329,8 +328,8 @@ func (o *Resource) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Resource) SetType(v string) {
+// SetType gets a reference to the given EnumResourceType and assigns it to the Type field.
+func (o *Resource) SetType(v EnumResourceType) {
 	o.Type = &v
 }
 

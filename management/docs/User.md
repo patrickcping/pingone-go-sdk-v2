@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] 
 **Email** | **string** | A string that specifies the user’s email address, which must be provided and valid. For more information about email address formatting, see section 3.4 of RFC 2822, Internet Message Format. | 
 **Enabled** | Pointer to **bool** | A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created. | [optional] [readonly] 
-**Environment** | Pointer to [**UserEnvironment**](UserEnvironment.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **ExternalId** | Pointer to **string** | A string that specifies an identifier for the user resource as defined by the provisioning client. This is optional. This may be explicitly set to null when updating a user to unset it. The externalId attribute simplifies the correlation of the user in PingOne with the user’s account in another system of record. The platform does not use this attribute directly in any way, but it is used by Ping Identity’s Data Sync product. It can have a length of no more than 1024 characters (min/max&#x3D;1/1024). | [optional] 
 **Id** | Pointer to **string** | A string that specifies the user resource’s unique identifier. | [optional] [readonly] 
 **IdentityProvider** | Pointer to [**UserIdentityProvider**](UserIdentityProvider.md) |  | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | A string that specifies the user’s type, which is optional. This can be explicitly set to null when updating a user to unset it. This attribute is organization-specific and has no special meaning within the PingOne platform. It could have values of \&quot;Contractor\&quot;, \&quot;Employee\&quot;, \&quot;Intern\&quot;, \&quot;Temp\&quot;, \&quot;External\&quot;, and “Unknown”. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex &#x60;^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$&#x60;). It can have a length of no more than 256 characters (min/max&#x3D;1/256). | [optional] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] 
 **Username** | **string** | A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex &#x60;^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$&#x60;). It can have a length of no more than 128 characters (min/max&#x3D;1/128). | 
-**VerifyStatus** | Pointer to **string** | Indicates whether ID verification can be done for the user. This value can be NOT_INITIATED (the initial value), ENABLED, or DISABLED. If the user verification status is DISABLED, a new verification status cannot be created for that user until the status is changed to ENABLED. | [optional] 
+**VerifyStatus** | Pointer to [**EnumUserVerifyStatus**](EnumUserVerifyStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -175,20 +175,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *User) GetEnvironment() UserEnvironment`
+`func (o *User) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *User) GetEnvironmentOk() (*UserEnvironment, bool)`
+`func (o *User) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *User) SetEnvironment(v UserEnvironment)`
+`func (o *User) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 
@@ -745,20 +745,20 @@ SetUsername sets Username field to given value.
 
 ### GetVerifyStatus
 
-`func (o *User) GetVerifyStatus() string`
+`func (o *User) GetVerifyStatus() EnumUserVerifyStatus`
 
 GetVerifyStatus returns the VerifyStatus field if non-nil, zero value otherwise.
 
 ### GetVerifyStatusOk
 
-`func (o *User) GetVerifyStatusOk() (*string, bool)`
+`func (o *User) GetVerifyStatusOk() (*EnumUserVerifyStatus, bool)`
 
 GetVerifyStatusOk returns a tuple with the VerifyStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVerifyStatus
 
-`func (o *User) SetVerifyStatus(v string)`
+`func (o *User) SetVerifyStatus(v EnumUserVerifyStatus)`
 
 SetVerifyStatus sets VerifyStatus field to given value.
 
