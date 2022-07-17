@@ -7,21 +7,21 @@ Name | Type | Description | Notes
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
-**GrantTypes** | **[]string** | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
+**GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
 **HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
-**PkceEnforcement** | Pointer to **string** | A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256. | [optional] 
+**PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
 **RedirectUris** | Pointer to **[]string** | A string that specifies the callback URI for the authentication response. | [optional] 
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the refreshTokenRollingDuration property is specified for the application, then this property must be less than or equal to the value of refreshTokenRollingDuration. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
-**ResponseTypes** | Pointer to **[]string** | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
-**TokenEndpointAuthMethod** | **string** | A string that specifies the client authentication methods supported by the token endpoint. This is a required property. Options are NONE, CLIENT_SECRET_BASIC, and CLIENT_SECRET_POST. | 
+**ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
+**TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
 
 ## Methods
 
 ### NewApplicationOIDCAllOf
 
-`func NewApplicationOIDCAllOf(grantTypes []string, tokenEndpointAuthMethod string, ) *ApplicationOIDCAllOf`
+`func NewApplicationOIDCAllOf(grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, ) *ApplicationOIDCAllOf`
 
 NewApplicationOIDCAllOf instantiates a new ApplicationOIDCAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -113,20 +113,20 @@ HasPackageName returns a boolean if a field has been set.
 
 ### GetGrantTypes
 
-`func (o *ApplicationOIDCAllOf) GetGrantTypes() []string`
+`func (o *ApplicationOIDCAllOf) GetGrantTypes() []EnumApplicationOIDCGrantType`
 
 GetGrantTypes returns the GrantTypes field if non-nil, zero value otherwise.
 
 ### GetGrantTypesOk
 
-`func (o *ApplicationOIDCAllOf) GetGrantTypesOk() (*[]string, bool)`
+`func (o *ApplicationOIDCAllOf) GetGrantTypesOk() (*[]EnumApplicationOIDCGrantType, bool)`
 
 GetGrantTypesOk returns a tuple with the GrantTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGrantTypes
 
-`func (o *ApplicationOIDCAllOf) SetGrantTypes(v []string)`
+`func (o *ApplicationOIDCAllOf) SetGrantTypes(v []EnumApplicationOIDCGrantType)`
 
 SetGrantTypes sets GrantTypes field to given value.
 
@@ -158,20 +158,20 @@ HasHomePageUrl returns a boolean if a field has been set.
 
 ### GetPkceEnforcement
 
-`func (o *ApplicationOIDCAllOf) GetPkceEnforcement() string`
+`func (o *ApplicationOIDCAllOf) GetPkceEnforcement() EnumApplicationOIDCPKCEOption`
 
 GetPkceEnforcement returns the PkceEnforcement field if non-nil, zero value otherwise.
 
 ### GetPkceEnforcementOk
 
-`func (o *ApplicationOIDCAllOf) GetPkceEnforcementOk() (*string, bool)`
+`func (o *ApplicationOIDCAllOf) GetPkceEnforcementOk() (*EnumApplicationOIDCPKCEOption, bool)`
 
 GetPkceEnforcementOk returns a tuple with the PkceEnforcement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPkceEnforcement
 
-`func (o *ApplicationOIDCAllOf) SetPkceEnforcement(v string)`
+`func (o *ApplicationOIDCAllOf) SetPkceEnforcement(v EnumApplicationOIDCPKCEOption)`
 
 SetPkceEnforcement sets PkceEnforcement field to given value.
 
@@ -283,20 +283,20 @@ HasRefreshTokenRollingDuration returns a boolean if a field has been set.
 
 ### GetResponseTypes
 
-`func (o *ApplicationOIDCAllOf) GetResponseTypes() []string`
+`func (o *ApplicationOIDCAllOf) GetResponseTypes() []EnumApplicationOIDCResponseType`
 
 GetResponseTypes returns the ResponseTypes field if non-nil, zero value otherwise.
 
 ### GetResponseTypesOk
 
-`func (o *ApplicationOIDCAllOf) GetResponseTypesOk() (*[]string, bool)`
+`func (o *ApplicationOIDCAllOf) GetResponseTypesOk() (*[]EnumApplicationOIDCResponseType, bool)`
 
 GetResponseTypesOk returns a tuple with the ResponseTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponseTypes
 
-`func (o *ApplicationOIDCAllOf) SetResponseTypes(v []string)`
+`func (o *ApplicationOIDCAllOf) SetResponseTypes(v []EnumApplicationOIDCResponseType)`
 
 SetResponseTypes sets ResponseTypes field to given value.
 
@@ -308,20 +308,20 @@ HasResponseTypes returns a boolean if a field has been set.
 
 ### GetTokenEndpointAuthMethod
 
-`func (o *ApplicationOIDCAllOf) GetTokenEndpointAuthMethod() string`
+`func (o *ApplicationOIDCAllOf) GetTokenEndpointAuthMethod() EnumApplicationOIDCTokenAuthMethod`
 
 GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field if non-nil, zero value otherwise.
 
 ### GetTokenEndpointAuthMethodOk
 
-`func (o *ApplicationOIDCAllOf) GetTokenEndpointAuthMethodOk() (*string, bool)`
+`func (o *ApplicationOIDCAllOf) GetTokenEndpointAuthMethodOk() (*EnumApplicationOIDCTokenAuthMethod, bool)`
 
 GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenEndpointAuthMethod
 
-`func (o *ApplicationOIDCAllOf) SetTokenEndpointAuthMethod(v string)`
+`func (o *ApplicationOIDCAllOf) SetTokenEndpointAuthMethod(v EnumApplicationOIDCTokenAuthMethod)`
 
 SetTokenEndpointAuthMethod sets TokenEndpointAuthMethod field to given value.
 

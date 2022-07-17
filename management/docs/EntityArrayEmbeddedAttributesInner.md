@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
-**MappingType** | Pointer to **string** | A string that specifies the mapping type of the attribute. Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types are for reserved attributes managed by the API and cannot be removed. Attribute values for these mapping types can be updated. The CUSTOM mapping type is for user-defined attributes. Attributes of this type can be updated and deleted. | [optional] 
+**MappingType** | Pointer to [**EnumAttributeMappingType**](EnumAttributeMappingType.md) |  | [optional] 
 **Name** | **string** | A string that specifies the name of the custom resource attribute to be included in the access token | 
 **Required** | **bool** | A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was updated. | [optional] [readonly] 
@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **LdapAttribute** | Pointer to **string** | A string that specifies the LDAP attribute. | [optional] [readonly] 
 **Schema** | Pointer to [**SchemaAttributeSchema**](SchemaAttributeSchema.md) |  | [optional] 
-**SchemaType** | Pointer to **string** | A string that specifies the schema type of the attribute. It may be one of CORE, STANDARD or CUSTOM. Core and standard attributes are present out-of-the-box. Core attributes may not be updated or deleted. Standard attributes may not be deleted, but their mutable properties may be updated. Custom attributes may be deleted, and their mutable properties may be updated. New attributes are created with a schema type of CUSTOM. | [optional] 
-**Type** | **string** | A string that specifies the type of resource attribute. Options are CORE - The claim is required and cannot not be removed., CUSTOM - The claim is not a CORE attribute. All created attributes are of this type. | 
+**SchemaType** | Pointer to [**EnumSchemaAttributeSchemaType**](EnumSchemaAttributeSchemaType.md) |  | [optional] 
+**Type** | [**EnumResourceAttributeType**](EnumResourceAttributeType.md) |  | 
 **Unique** | Pointer to **bool** | A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. | [optional] 
 **MultiValued** | Pointer to **bool** | A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000. | [optional] 
 **Resource** | Pointer to [**ResourceResource**](ResourceResource.md) |  | [optional] 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewEntityArrayEmbeddedAttributesInner
 
-`func NewEntityArrayEmbeddedAttributesInner(name string, required bool, value string, enabled bool, type_ string, ) *EntityArrayEmbeddedAttributesInner`
+`func NewEntityArrayEmbeddedAttributesInner(name string, required bool, value string, enabled bool, type_ EnumResourceAttributeType, ) *EntityArrayEmbeddedAttributesInner`
 
 NewEntityArrayEmbeddedAttributesInner instantiates a new EntityArrayEmbeddedAttributesInner object
 This constructor will assign default values to properties that have it defined,
@@ -94,20 +94,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetMappingType
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetMappingType() string`
+`func (o *EntityArrayEmbeddedAttributesInner) GetMappingType() EnumAttributeMappingType`
 
 GetMappingType returns the MappingType field if non-nil, zero value otherwise.
 
 ### GetMappingTypeOk
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetMappingTypeOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedAttributesInner) GetMappingTypeOk() (*EnumAttributeMappingType, bool)`
 
 GetMappingTypeOk returns a tuple with the MappingType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMappingType
 
-`func (o *EntityArrayEmbeddedAttributesInner) SetMappingType(v string)`
+`func (o *EntityArrayEmbeddedAttributesInner) SetMappingType(v EnumAttributeMappingType)`
 
 SetMappingType sets MappingType field to given value.
 
@@ -349,20 +349,20 @@ HasSchema returns a boolean if a field has been set.
 
 ### GetSchemaType
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetSchemaType() string`
+`func (o *EntityArrayEmbeddedAttributesInner) GetSchemaType() EnumSchemaAttributeSchemaType`
 
 GetSchemaType returns the SchemaType field if non-nil, zero value otherwise.
 
 ### GetSchemaTypeOk
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetSchemaTypeOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedAttributesInner) GetSchemaTypeOk() (*EnumSchemaAttributeSchemaType, bool)`
 
 GetSchemaTypeOk returns a tuple with the SchemaType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchemaType
 
-`func (o *EntityArrayEmbeddedAttributesInner) SetSchemaType(v string)`
+`func (o *EntityArrayEmbeddedAttributesInner) SetSchemaType(v EnumSchemaAttributeSchemaType)`
 
 SetSchemaType sets SchemaType field to given value.
 
@@ -374,20 +374,20 @@ HasSchemaType returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetType() string`
+`func (o *EntityArrayEmbeddedAttributesInner) GetType() EnumResourceAttributeType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetTypeOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedAttributesInner) GetTypeOk() (*EnumResourceAttributeType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *EntityArrayEmbeddedAttributesInner) SetType(v string)`
+`func (o *EntityArrayEmbeddedAttributesInner) SetType(v EnumResourceAttributeType)`
 
 SetType sets Type field to given value.
 

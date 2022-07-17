@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the auto-generated ID for this credential. This is the JWT&#39;s jti claim. This is a required property. | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property. | [optional] [readonly] 
-**GatewayType** | Pointer to **string** | A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property. | [optional] [readonly] 
+**GatewayType** | Pointer to [**EnumGatewayType**](EnumGatewayType.md) |  | [optional] 
 **LastUsedAt** | Pointer to **string** | A date that specifies the date the credential was last used in UTC. This is a required property. | [optional] [readonly] 
 **ConsoleUrl** | Pointer to **string** |  | [optional] [readonly] 
 **ApiUrl** | Pointer to **string** |  | [optional] [readonly] 
@@ -84,20 +84,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetGatewayType
 
-`func (o *GatewayCredential) GetGatewayType() string`
+`func (o *GatewayCredential) GetGatewayType() EnumGatewayType`
 
 GetGatewayType returns the GatewayType field if non-nil, zero value otherwise.
 
 ### GetGatewayTypeOk
 
-`func (o *GatewayCredential) GetGatewayTypeOk() (*string, bool)`
+`func (o *GatewayCredential) GetGatewayTypeOk() (*EnumGatewayType, bool)`
 
 GetGatewayTypeOk returns a tuple with the GatewayType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGatewayType
 
-`func (o *GatewayCredential) SetGatewayType(v string)`
+`func (o *GatewayCredential) SetGatewayType(v EnumGatewayType)`
 
 SetGatewayType sets GatewayType field to given value.
 

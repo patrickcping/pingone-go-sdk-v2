@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | Pointer to **int32** | An integer that specifies the number of minutes or hours that specify the duration between successful integrity detection calls. Every attestation request entails a certain time tradeoff. You can choose to cache successful integrity detection calls for a predefined duration, between a minimum of 1 minute and a maximum of 48 hours. If mobile.integrityDetection.mode is ENABLED, the cache duration must be set. | [optional] 
-**Units** | Pointer to **string** | A string that specifies the time units of the mobile.integrityDetection.cacheDuration.amount :MINUTES, HOURS | [optional] 
+**Units** | Pointer to [**EnumDurationUnitMinsHours**](EnumDurationUnitMinsHours.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetUnits
 
-`func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetUnits() string`
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetUnits() EnumDurationUnitMinsHours`
 
 GetUnits returns the Units field if non-nil, zero value otherwise.
 
 ### GetUnitsOk
 
-`func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetUnitsOk() (*string, bool)`
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetUnitsOk() (*EnumDurationUnitMinsHours, bool)`
 
 GetUnitsOk returns a tuple with the Units field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnits
 
-`func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) SetUnits(v string)`
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) SetUnits(v EnumDurationUnitMinsHours)`
 
 SetUnits sets Units field to given value.
 

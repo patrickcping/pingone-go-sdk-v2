@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ApplicableTo** | Pointer to **[]string** | A string that specifies the scope to which the role applies. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the role. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the ID of the role. | [optional] [readonly] 
-**Name** | Pointer to **string** | The name of the role | [optional] 
+**Name** | Pointer to [**EnumRoleName**](EnumRoleName.md) |  | [optional] 
 **Permissions** | Pointer to [**[]RolePermissionsInner**](RolePermissionsInner.md) | A string that specifies the set of permissions assigned to the role. | [optional] [readonly] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *Role) GetName() string`
+`func (o *Role) GetName() EnumRoleName`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Role) GetNameOk() (*string, bool)`
+`func (o *Role) GetNameOk() (*EnumRoleName, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Role) SetName(v string)`
+`func (o *Role) SetName(v EnumRoleName)`
 
 SetName sets Name field to given value.
 

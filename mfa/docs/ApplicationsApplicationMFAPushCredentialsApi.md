@@ -35,7 +35,7 @@ import (
 func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
-    createMFAPushCredentialRequest := openapiclient.createMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential("Type_example", "Key_example")} // CreateMFAPushCredentialRequest |  (optional)
+    createMFAPushCredentialRequest := openapiclient.createMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example")} // CreateMFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -336,7 +336,7 @@ func main() {
     envID := "envID_example" // string | 
     appID := "appID_example" // string | 
     pushCredID := "pushCredID_example" // string | 
-    updateMFAPushCredentialRequest := openapiclient.updateMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential("Type_example", "Key_example")} // UpdateMFAPushCredentialRequest |  (optional)
+    updateMFAPushCredentialRequest := openapiclient.updateMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example")} // UpdateMFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

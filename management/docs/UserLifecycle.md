@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | A string that specifies information about the account lifecycle. Options for status are &#x60;ACCOUNT_OK&#x60; and &#x60;VERIFICATION_REQUIRED&#x60;. This property value is only allowed to be set when importing a user to set the initial account status. If the initial status is set to &#x60;VERIFICATION_REQUIRED&#x60; and an email address is provided, a verification email is sent. | [optional] 
+**Status** | Pointer to [**EnumUserLifecycleStatus**](EnumUserLifecycleStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStatus
 
-`func (o *UserLifecycle) GetStatus() string`
+`func (o *UserLifecycle) GetStatus() EnumUserLifecycleStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *UserLifecycle) GetStatusOk() (*string, bool)`
+`func (o *UserLifecycle) GetStatusOk() (*EnumUserLifecycleStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *UserLifecycle) SetStatus(v string)`
+`func (o *UserLifecycle) SetStatus(v EnumUserLifecycleStatus)`
 
 SetStatus sets Status field to given value.
 

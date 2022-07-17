@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | A string that specifies the description of the organization. | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
-**Type** | Pointer to **string** | A string that specifies the organization type. If the organization has any paid licenses, the type property value is set to &#x60;PAID&#x60;. Otherwise, the property value is set to &#x60;TRIAL&#x60;. | [optional] [readonly] 
+**Type** | Pointer to [**EnumOrganizationType**](EnumOrganizationType.md) |  | [optional] 
 **BillingConnections** | Pointer to [**[]OrganizationBillingConnectionsInner**](OrganizationBillingConnectionsInner.md) |  | [optional] [readonly] 
 
 ## Methods
@@ -158,20 +158,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Organization) GetType() string`
+`func (o *Organization) GetType() EnumOrganizationType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Organization) GetTypeOk() (*string, bool)`
+`func (o *Organization) GetTypeOk() (*EnumOrganizationType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Organization) SetType(v string)`
+`func (o *Organization) SetType(v EnumOrganizationType)`
 
 SetType sets Type field to given value.
 

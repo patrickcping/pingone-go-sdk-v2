@@ -20,7 +20,7 @@ do
             version=$(head -n 1 .version)
 
             if [[ -f "../pingone-$i.yml" ]]; then \
-                openapi-generator generate -i ../pingone-$i.yml -g go --additional-properties=packageName=$i,packageVersion=$version,isGoSubmodule=true -o . --git-repo-id $2 --git-user-id $1; \
+                openapi-generator generate -i ../pingone-$i.yml -g go --additional-properties=packageName=$i,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true -o . --git-repo-id $2 --git-user-id $1; \
                 go get -u ./...
                 go mod tidy
                 go mod vendor

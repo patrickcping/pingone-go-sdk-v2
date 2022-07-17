@@ -30,7 +30,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    riskEvaluation := *openapiclient.NewRiskEvaluation(*openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", "Type_example"))) // RiskEvaluation |  (optional)
+    riskEvaluation := *openapiclient.NewRiskEvaluation(*openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", openapiclient.EnumUserType("EXTERNAL")))) // RiskEvaluation |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -172,7 +172,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     riskEvaluationID := "riskEvaluationID_example" // string | 
-    riskEvaluationEvent := *openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", "Type_example")) // RiskEvaluationEvent |  (optional)
+    riskEvaluationEvent := *openapiclient.NewRiskEvaluationEvent("Ip_example", *openapiclient.NewRiskEvaluationEventUser("Id_example", openapiclient.EnumUserType("EXTERNAL"))) // RiskEvaluationEvent |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | A string that specifies the state of the transaction. Options are FAILED, IN_PROGRESS, and SUCCESS. | [optional] 
+**Status** | Pointer to [**EnumCompletionStatus**](EnumCompletionStatus.md) |  | [optional] 
 **Type** | Pointer to **string** | A string that specifies the transaction type. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStatus
 
-`func (o *RiskEvaluationEventEvaluatedFactors) GetStatus() string`
+`func (o *RiskEvaluationEventEvaluatedFactors) GetStatus() EnumCompletionStatus`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *RiskEvaluationEventEvaluatedFactors) GetStatusOk() (*string, bool)`
+`func (o *RiskEvaluationEventEvaluatedFactors) GetStatusOk() (*EnumCompletionStatus, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *RiskEvaluationEventEvaluatedFactors) SetStatus(v string)`
+`func (o *RiskEvaluationEventEvaluatedFactors) SetStatus(v EnumCompletionStatus)`
 
 SetStatus sets Status field to given value.
 

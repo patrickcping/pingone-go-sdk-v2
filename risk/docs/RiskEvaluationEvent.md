@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Browser** | Pointer to [**RiskEvaluationEventBrowser**](RiskEvaluationEventBrowser.md) |  | [optional] 
-**CompletionStatus** | Pointer to **string** | A string that specifies the state of the transaction. Options are FAILED, IN_PROGRESS, and SUCCESS. If a value is not provided, the value defaults to IN_PROGRESS. The value of this property can be changed only if its current state is IN_PROGRESS. | [optional] 
+**CompletionStatus** | Pointer to [**EnumCompletionStatus**](EnumCompletionStatus.md) |  | [optional] 
 **EvaluatedFactors** | Pointer to [**RiskEvaluationEventEvaluatedFactors**](RiskEvaluationEventEvaluatedFactors.md) |  | [optional] 
 **Ip** | **string** | A string that specifies the origin IP address of the authentication flow. This is a required property. | 
 **Flow** | Pointer to [**RiskEvaluationEventFlow**](RiskEvaluationEventFlow.md) |  | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Session** | Pointer to [**RiskEvaluationEventSession**](RiskEvaluationEventSession.md) |  | [optional] 
 **TargetResource** | Pointer to [**RiskEvaluationEventTargetResource**](RiskEvaluationEventTargetResource.md) |  | [optional] 
 **User** | [**RiskEvaluationEventUser**](RiskEvaluationEventUser.md) |  | 
-**SharingType** | Pointer to **string** | A string that specifies the device sharing type. Options are UNSPECIFIED, SHARED, and PRIVATE. | [optional] 
+**SharingType** | Pointer to [**EnumEventSharingType**](EnumEventSharingType.md) |  | [optional] 
 
 ## Methods
 
@@ -61,20 +61,20 @@ HasBrowser returns a boolean if a field has been set.
 
 ### GetCompletionStatus
 
-`func (o *RiskEvaluationEvent) GetCompletionStatus() string`
+`func (o *RiskEvaluationEvent) GetCompletionStatus() EnumCompletionStatus`
 
 GetCompletionStatus returns the CompletionStatus field if non-nil, zero value otherwise.
 
 ### GetCompletionStatusOk
 
-`func (o *RiskEvaluationEvent) GetCompletionStatusOk() (*string, bool)`
+`func (o *RiskEvaluationEvent) GetCompletionStatusOk() (*EnumCompletionStatus, bool)`
 
 GetCompletionStatusOk returns a tuple with the CompletionStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompletionStatus
 
-`func (o *RiskEvaluationEvent) SetCompletionStatus(v string)`
+`func (o *RiskEvaluationEvent) SetCompletionStatus(v EnumCompletionStatus)`
 
 SetCompletionStatus sets CompletionStatus field to given value.
 
@@ -251,20 +251,20 @@ SetUser sets User field to given value.
 
 ### GetSharingType
 
-`func (o *RiskEvaluationEvent) GetSharingType() string`
+`func (o *RiskEvaluationEvent) GetSharingType() EnumEventSharingType`
 
 GetSharingType returns the SharingType field if non-nil, zero value otherwise.
 
 ### GetSharingTypeOk
 
-`func (o *RiskEvaluationEvent) GetSharingTypeOk() (*string, bool)`
+`func (o *RiskEvaluationEvent) GetSharingTypeOk() (*EnumEventSharingType, bool)`
 
 GetSharingTypeOk returns a tuple with the SharingType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSharingType
 
-`func (o *RiskEvaluationEvent) SetSharingType(v string)`
+`func (o *RiskEvaluationEvent) SetSharingType(v EnumEventSharingType)`
 
 SetSharingType sets SharingType field to given value.
 

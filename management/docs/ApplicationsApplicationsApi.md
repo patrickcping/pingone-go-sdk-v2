@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    createApplicationRequest := openapiclient.createApplication_request{ApplicationOIDC: openapiclient.NewApplicationOIDC(false, "Name_example", "Protocol_example", "Type_example", []string{"GrantTypes_example"}, "TokenEndpointAuthMethod_example")} // CreateApplicationRequest |  (optional)
+    createApplicationRequest := openapiclient.createApplication_request{ApplicationOIDC: openapiclient.NewApplicationOIDC(false, "Name_example", openapiclient.EnumApplicationProtocol("OPENID_CONNECT"), openapiclient.EnumApplicationType("WEB_APP"), []openapiclient.EnumApplicationOIDCGrantType{openapiclient.EnumApplicationOIDCGrantType("AUTHORIZATION_CODE")}, openapiclient.EnumApplicationOIDCTokenAuthMethod("NONE"))} // CreateApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -311,7 +311,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     applicationID := "applicationID_example" // string | 
-    updateApplicationRequest := openapiclient.updateApplication_request{ApplicationOIDC: openapiclient.NewApplicationOIDC(false, "Name_example", "Protocol_example", "Type_example", []string{"GrantTypes_example"}, "TokenEndpointAuthMethod_example")} // UpdateApplicationRequest |  (optional)
+    updateApplicationRequest := openapiclient.updateApplication_request{ApplicationOIDC: openapiclient.NewApplicationOIDC(false, "Name_example", openapiclient.EnumApplicationProtocol("OPENID_CONNECT"), openapiclient.EnumApplicationType("WEB_APP"), []openapiclient.EnumApplicationOIDCGrantType{openapiclient.EnumApplicationOIDCGrantType("AUTHORIZATION_CODE")}, openapiclient.EnumApplicationOIDCTokenAuthMethod("NONE"))} // UpdateApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -97,7 +97,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    billOfMaterials := *openapiclient.NewBillOfMaterials([]openapiclient.BillOfMaterialsProductsInner{*openapiclient.NewBillOfMaterialsProductsInner("Type_example")}) // BillOfMaterials |  (optional)
+    billOfMaterials := *openapiclient.NewBillOfMaterials([]openapiclient.BillOfMaterialsProductsInner{*openapiclient.NewBillOfMaterialsProductsInner(openapiclient.EnumProductType("PING_ONE_MFA"))}) // BillOfMaterials |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

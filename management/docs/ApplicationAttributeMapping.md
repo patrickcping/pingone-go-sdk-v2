@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
-**MappingType** | Pointer to **string** | A string that specifies the mapping type of the attribute. Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types are for reserved attributes managed by the API and cannot be removed. Attribute values for these mapping types can be updated. The CUSTOM mapping type is for user-defined attributes. Attributes of this type can be updated and deleted. | [optional] 
+**MappingType** | Pointer to [**EnumAttributeMappingType**](EnumAttributeMappingType.md) |  | [optional] 
 **Name** | **string** | A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property. | 
 **Required** | **bool** | A boolean to specify whether a mapping value is required for this attribute. If true, a value must be set and a non-empty value must be available in the SAML assertion or ID token. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was updated. | [optional] [readonly] 
@@ -83,20 +83,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetMappingType
 
-`func (o *ApplicationAttributeMapping) GetMappingType() string`
+`func (o *ApplicationAttributeMapping) GetMappingType() EnumAttributeMappingType`
 
 GetMappingType returns the MappingType field if non-nil, zero value otherwise.
 
 ### GetMappingTypeOk
 
-`func (o *ApplicationAttributeMapping) GetMappingTypeOk() (*string, bool)`
+`func (o *ApplicationAttributeMapping) GetMappingTypeOk() (*EnumAttributeMappingType, bool)`
 
 GetMappingTypeOk returns a tuple with the MappingType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMappingType
 
-`func (o *ApplicationAttributeMapping) SetMappingType(v string)`
+`func (o *ApplicationAttributeMapping) SetMappingType(v EnumAttributeMappingType)`
 
 SetMappingType sets MappingType field to given value.
 

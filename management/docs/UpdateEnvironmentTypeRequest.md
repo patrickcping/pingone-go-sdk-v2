@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | A string that specifies the type of environment to use. Options are PRODUCTION and SANDBOX. | [optional] 
+**Type** | Pointer to [**EnumEnvironmentType**](EnumEnvironmentType.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *UpdateEnvironmentTypeRequest) GetType() string`
+`func (o *UpdateEnvironmentTypeRequest) GetType() EnumEnvironmentType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *UpdateEnvironmentTypeRequest) GetTypeOk() (*string, bool)`
+`func (o *UpdateEnvironmentTypeRequest) GetTypeOk() (*EnumEnvironmentType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *UpdateEnvironmentTypeRequest) SetType(v string)`
+`func (o *UpdateEnvironmentTypeRequest) SetType(v EnumEnvironmentType)`
 
 SetType sets Type field to given value.
 

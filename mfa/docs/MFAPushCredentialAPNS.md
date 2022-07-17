@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | A string that specifies the type of the push credentials. Mandatory. Valid values APNS, FCM | 
+**Type** | [**EnumMFAPushCredentialAttrType**](EnumMFAPushCredentialAttrType.md) |  | 
 **Key** | **string** | A string that Apple uses as an identifier to identify an authentication key.  Mandatory. | 
 **TeamId** | **string** | A string that Apple uses as an identifier to identify teams. | 
 **Token** | **string** | A string that Apple uses as the authentication token signing key to securely connect to APNS. This is a p8 file with a private key format. | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewMFAPushCredentialAPNS
 
-`func NewMFAPushCredentialAPNS(type_ string, key string, teamId string, token string, ) *MFAPushCredentialAPNS`
+`func NewMFAPushCredentialAPNS(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, ) *MFAPushCredentialAPNS`
 
 NewMFAPushCredentialAPNS instantiates a new MFAPushCredentialAPNS object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *MFAPushCredentialAPNS) GetType() string`
+`func (o *MFAPushCredentialAPNS) GetType() EnumMFAPushCredentialAttrType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *MFAPushCredentialAPNS) GetTypeOk() (*string, bool)`
+`func (o *MFAPushCredentialAPNS) GetTypeOk() (*EnumMFAPushCredentialAttrType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *MFAPushCredentialAPNS) SetType(v string)`
+`func (o *MFAPushCredentialAPNS) SetType(v EnumMFAPushCredentialAttrType)`
 
 SetType sets Type field to given value.
 

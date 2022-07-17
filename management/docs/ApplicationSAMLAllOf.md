@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IdpSigningtype** | Pointer to [**ApplicationSAMLAllOfIdpSigningtype**](ApplicationSAMLAllOfIdpSigningtype.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False. | [optional] 
-**SloBinding** | Pointer to **string** | A string that specifies the binding protocol to be used for the logout response. Options are HTTP_REDIRECT or HTTP_POST. The default is HTTP_POST; existing configurations with no data default to HTTP_POST. This is an optional property. | [optional] 
+**SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
@@ -177,20 +177,20 @@ HasResponseSigned returns a boolean if a field has been set.
 
 ### GetSloBinding
 
-`func (o *ApplicationSAMLAllOf) GetSloBinding() string`
+`func (o *ApplicationSAMLAllOf) GetSloBinding() EnumApplicationSAMLSloBinding`
 
 GetSloBinding returns the SloBinding field if non-nil, zero value otherwise.
 
 ### GetSloBindingOk
 
-`func (o *ApplicationSAMLAllOf) GetSloBindingOk() (*string, bool)`
+`func (o *ApplicationSAMLAllOf) GetSloBindingOk() (*EnumApplicationSAMLSloBinding, bool)`
 
 GetSloBindingOk returns a tuple with the SloBinding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSloBinding
 
-`func (o *ApplicationSAMLAllOf) SetSloBinding(v string)`
+`func (o *ApplicationSAMLAllOf) SetSloBinding(v EnumApplicationSAMLSloBinding)`
 
 SetSloBinding sets SloBinding field to given value.
 

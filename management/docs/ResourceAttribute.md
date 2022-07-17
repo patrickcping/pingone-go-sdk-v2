@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the name of the custom resource attribute to be included in the access token | 
-**Type** | Pointer to **string** | A string that specifies the type of resource attribute. Options are CORE - The claim is required and cannot not be removed., CUSTOM - The claim is not a CORE attribute. All created attributes are of this type. | [optional] 
+**Type** | Pointer to [**EnumResourceAttributeType**](EnumResourceAttributeType.md) |  | [optional] 
 **Value** | **string** | A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as “${user.path.to.value}”, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are “${user.email}”, “${user.name.family}”, and “myClaimValueString” | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Resource** | Pointer to [**ResourceResource**](ResourceResource.md) |  | [optional] 
@@ -77,20 +77,20 @@ SetName sets Name field to given value.
 
 ### GetType
 
-`func (o *ResourceAttribute) GetType() string`
+`func (o *ResourceAttribute) GetType() EnumResourceAttributeType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ResourceAttribute) GetTypeOk() (*string, bool)`
+`func (o *ResourceAttribute) GetTypeOk() (*EnumResourceAttributeType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ResourceAttribute) SetType(v string)`
+`func (o *ResourceAttribute) SetType(v EnumResourceAttributeType)`
 
 SetType sets Type field to given value.
 

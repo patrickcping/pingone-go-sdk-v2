@@ -9,6 +9,8 @@ tools:
 	go generate -tags tools tools/tools.go
 
 build: fmtcheck
+	@go mod tidy
+	@go mod vendor
 	@go build ./...
 	@./scripts/build-all.sh
 

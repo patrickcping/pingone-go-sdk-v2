@@ -36,7 +36,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     schemaID := "schemaID_example" // string | 
-    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
+    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", openapiclient.EnumSchemaAttributeType("STRING")) // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -466,7 +466,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
+    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", openapiclient.EnumSchemaAttributeType("STRING")) // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -542,7 +542,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", "Type_example") // SchemaAttribute |  (optional)
+    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", openapiclient.EnumSchemaAttributeType("STRING")) // SchemaAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

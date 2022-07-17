@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** | A boolean that specifies the enabled/disabled state of automatic MFA for native devices paired with the user for the specified application. | [optional] [default to false]
-**ExtraVerification** | Pointer to **string** | Specifies the level of further verification when deviceAuthorization is enabled. The PingOne platform performs an extra verification check by sending a silent push notification to the customer native application, and receives a confirmation in return.  &#x60;extraVerification&#x60; can be one of the following levels: &#x60;disabled&#x60; (default): The PingOne platform does not perform the extra verification check. &#x60;permissive&#x60;: The PingOne platform performs the extra verification check. Upon timeout or failure to get a response from the native app, the MFA step is treated as successfully completed. &#x60;restrictive&#x60;: The PingOne platform performs the extra verification check.The PingOne platform performs the extra verification check. Upon timeout or failure to get a response from the native app, the MFA step is treated as failed.  | [optional] [default to "disabled"]
+**ExtraVerification** | Pointer to [**EnumSignOnPolicyExtraVerification**](EnumSignOnPolicyExtraVerification.md) |  | [optional] [default to ENUMSIGNONPOLICYEXTRAVERIFICATION_DISABLED]
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetExtraVerification
 
-`func (o *SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization) GetExtraVerification() string`
+`func (o *SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization) GetExtraVerification() EnumSignOnPolicyExtraVerification`
 
 GetExtraVerification returns the ExtraVerification field if non-nil, zero value otherwise.
 
 ### GetExtraVerificationOk
 
-`func (o *SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization) GetExtraVerificationOk() (*string, bool)`
+`func (o *SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization) GetExtraVerificationOk() (*EnumSignOnPolicyExtraVerification, bool)`
 
 GetExtraVerificationOk returns a tuple with the ExtraVerification field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtraVerification
 
-`func (o *SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization) SetExtraVerification(v string)`
+`func (o *SignOnPolicyActionMFAApplicationsInnerDeviceAuthorization) SetExtraVerification(v EnumSignOnPolicyExtraVerification)`
 
 SetExtraVerification sets ExtraVerification field to given value.
 

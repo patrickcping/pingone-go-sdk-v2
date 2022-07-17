@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | A string that specifies the flow type for the event. The only option (and default) is AUTHENTICATION. | [optional] 
+**Type** | Pointer to [**EnumFlowType**](EnumFlowType.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *RiskEvaluationEventFlow) GetType() string`
+`func (o *RiskEvaluationEventFlow) GetType() EnumFlowType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RiskEvaluationEventFlow) GetTypeOk() (*string, bool)`
+`func (o *RiskEvaluationEventFlow) GetTypeOk() (*EnumFlowType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RiskEvaluationEventFlow) SetType(v string)`
+`func (o *RiskEvaluationEventFlow) SetType(v EnumFlowType)`
 
 SetType sets Type field to given value.
 

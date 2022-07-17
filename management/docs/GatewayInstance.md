@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Gateway** | Pointer to [**GatewayInstanceGateway**](GatewayInstanceGateway.md) |  | [optional] 
 **Credential** | Pointer to [**GatewayInstanceCredential**](GatewayInstanceCredential.md) |  | [optional] 
 **CurrentErrors** | Pointer to **[]string** | An array of strings that lists the messages that are maintained by the gateway instance. | [optional] 
-**HealthStatus** | Pointer to **string** | An enumeration that specifies whether or not the gateway is in a healthy state. Options are HEALTHY, DEGRADED, UNHEALTHY. This is a required property. | [optional] 
+**HealthStatus** | Pointer to [**EnumHealthStatus**](EnumHealthStatus.md) |  | [optional] 
 **Hostname** | Pointer to **string** | A string that specifies the hostname of the container running in the customer’s infrastructure. This is a required property. | [optional] 
 **InitializedAt** | Pointer to **string** | A timestamp that specifies when gateway was initialized (when the first connect to PingOne was made). | [optional] 
 **LastReportedAt** | Pointer to **string** | A timestamp that specifies the last reported timestamp, heartbeat, or other message. | [optional] 
@@ -190,20 +190,20 @@ HasCurrentErrors returns a boolean if a field has been set.
 
 ### GetHealthStatus
 
-`func (o *GatewayInstance) GetHealthStatus() string`
+`func (o *GatewayInstance) GetHealthStatus() EnumHealthStatus`
 
 GetHealthStatus returns the HealthStatus field if non-nil, zero value otherwise.
 
 ### GetHealthStatusOk
 
-`func (o *GatewayInstance) GetHealthStatusOk() (*string, bool)`
+`func (o *GatewayInstance) GetHealthStatusOk() (*EnumHealthStatus, bool)`
 
 GetHealthStatusOk returns a tuple with the HealthStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHealthStatus
 
-`func (o *GatewayInstance) SetHealthStatus(v string)`
+`func (o *GatewayInstance) SetHealthStatus(v EnumHealthStatus)`
 
 SetHealthStatus sets HealthStatus field to given value.
 

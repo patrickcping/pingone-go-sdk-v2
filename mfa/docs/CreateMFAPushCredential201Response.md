@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | A string that specifies the type of the push credentials. Mandatory. Valid values APNS, FCM | 
+**Type** | [**EnumMFAPushCredentialAttrType**](EnumMFAPushCredentialAttrType.md) |  | 
 **Key** | **string** | A string that Apple uses as an identifier to identify an authentication key.  Mandatory. | 
 **TeamId** | **string** | A string that Apple uses as an identifier to identify teams. | 
 **Token** | **string** | A string that Apple uses as the authentication token signing key to securely connect to APNS. This is a p8 file with a private key format. | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewCreateMFAPushCredential201Response
 
-`func NewCreateMFAPushCredential201Response(type_ string, key string, teamId string, token string, ) *CreateMFAPushCredential201Response`
+`func NewCreateMFAPushCredential201Response(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, ) *CreateMFAPushCredential201Response`
 
 NewCreateMFAPushCredential201Response instantiates a new CreateMFAPushCredential201Response object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *CreateMFAPushCredential201Response) GetType() string`
+`func (o *CreateMFAPushCredential201Response) GetType() EnumMFAPushCredentialAttrType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateMFAPushCredential201Response) GetTypeOk() (*string, bool)`
+`func (o *CreateMFAPushCredential201Response) GetTypeOk() (*EnumMFAPushCredentialAttrType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateMFAPushCredential201Response) SetType(v string)`
+`func (o *CreateMFAPushCredential201Response) SetType(v EnumMFAPushCredentialAttrType)`
 
 SetType sets Type field to given value.
 

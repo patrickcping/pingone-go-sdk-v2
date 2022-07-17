@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | A string that specifies the sign-on policy assignment resource’s unique identifier. | [optional] [readonly] 
 **Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
 **SignOnPolicy** | [**SignOnPolicyActionCommonSignOnPolicy**](SignOnPolicyActionCommonSignOnPolicy.md) |  | 
-**Type** | **string** | A string that specifies the type of action. Options are &#x60;LOGIN&#x60;, &#x60;MULTI_FACTOR_AUTHENTICATION&#x60;, &#x60;IDENTIFIER_FIRST&#x60;, &#x60;IDENTITY_PROVIDER&#x60; &#x60;AGREEMENT&#x60; and &#x60;PROGRESSIVE_PROFILING&#x60;. | 
+**Type** | [**EnumSignOnPolicyType**](EnumSignOnPolicyType.md) |  | 
 **ConfirmIdentityProviderAttributes** | Pointer to **bool** | A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user&#39;s profile during account creation. This is an optional property. If omitted, the default value is set to false. | [optional] [default to false]
 **EnforceLockoutForIdentityProviders** | Pointer to **bool** | A boolean that if set to true and if the user&#39;s account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented. | [optional] 
 **Recovery** | Pointer to [**SignOnPolicyActionLoginRecovery**](SignOnPolicyActionLoginRecovery.md) |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Sms** | Pointer to [**SignOnPolicyActionMFASms**](SignOnPolicyActionMFASms.md) |  | [optional] 
 **Voice** | Pointer to [**SignOnPolicyActionMFAVoice**](SignOnPolicyActionMFAVoice.md) |  | [optional] 
 **Applications** | Pointer to [**[]SignOnPolicyActionMFAApplicationsInner**](SignOnPolicyActionMFAApplicationsInner.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
-**NoDeviceMode** | Pointer to **string** | A string that specifies the device mode for the MFA flow. Options are &#x60;BYPASS&#x60; to allow MFA without a specified device, or &#x60;BLOCK&#x60; to block the MFA flow if no device is specified. To use this configuration option, the authorize request must include a signed &#x60;login_hint_token&#x60; property. For more information, see Authorize (Browserless and MFA Only Flows) | [optional] 
+**NoDeviceMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
 **DiscoveryRules** | Pointer to [**[]SignOnPolicyActionIDFirstDiscoveryRulesInner**](SignOnPolicyActionIDFirstDiscoveryRulesInner.md) | The list of IDP discovery rules that are evaluated in order when no user is associated with the user identifier. The maximum number of rules is 100. The condition on which this identity provider is used to authenticate the user is expressed using the PingOne policy condition language | [optional] 
 **AcrValues** | Pointer to **string** | A string that designates the sign-on policies included in the authorization flow request. Options can include the PingOne predefined sign-on policies, Single_Factor and Multi_Factor, or any custom defined sign-on policy names. Sign-on policy names should be listed in order of preference, and they must be assigned to the application. This property can be configured on the identity provider action and is passed to the identity provider if the identity provider is of type &#x60;SAML&#x60; or &#x60;OPENID_CONNECT&#x60;. | [optional] 
 **IdentityProvider** | [**SignOnPolicyActionIDPIdentityProvider**](SignOnPolicyActionIDPIdentityProvider.md) |  | 
@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewSignOnPolicyAction
 
-`func NewSignOnPolicyAction(priority int32, signOnPolicy SignOnPolicyActionCommonSignOnPolicy, type_ string, identityProvider SignOnPolicyActionIDPIdentityProvider, agreement SignOnPolicyActionAgreementAgreement, attributes SignOnPolicyActionProgressiveProfilingAttributes, preventMultiplePromptsPerFlow bool, promptIntervalSeconds int32, promptText string, ) *SignOnPolicyAction`
+`func NewSignOnPolicyAction(priority int32, signOnPolicy SignOnPolicyActionCommonSignOnPolicy, type_ EnumSignOnPolicyType, identityProvider SignOnPolicyActionIDPIdentityProvider, agreement SignOnPolicyActionAgreementAgreement, attributes SignOnPolicyActionProgressiveProfilingAttributes, preventMultiplePromptsPerFlow bool, promptIntervalSeconds int32, promptText string, ) *SignOnPolicyAction`
 
 NewSignOnPolicyAction instantiates a new SignOnPolicyAction object
 This constructor will assign default values to properties that have it defined,
@@ -169,20 +169,20 @@ SetSignOnPolicy sets SignOnPolicy field to given value.
 
 ### GetType
 
-`func (o *SignOnPolicyAction) GetType() string`
+`func (o *SignOnPolicyAction) GetType() EnumSignOnPolicyType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SignOnPolicyAction) GetTypeOk() (*string, bool)`
+`func (o *SignOnPolicyAction) GetTypeOk() (*EnumSignOnPolicyType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SignOnPolicyAction) SetType(v string)`
+`func (o *SignOnPolicyAction) SetType(v EnumSignOnPolicyType)`
 
 SetType sets Type field to given value.
 
@@ -489,20 +489,20 @@ HasApplications returns a boolean if a field has been set.
 
 ### GetNoDeviceMode
 
-`func (o *SignOnPolicyAction) GetNoDeviceMode() string`
+`func (o *SignOnPolicyAction) GetNoDeviceMode() EnumSignOnPolicyNoDeviceMode`
 
 GetNoDeviceMode returns the NoDeviceMode field if non-nil, zero value otherwise.
 
 ### GetNoDeviceModeOk
 
-`func (o *SignOnPolicyAction) GetNoDeviceModeOk() (*string, bool)`
+`func (o *SignOnPolicyAction) GetNoDeviceModeOk() (*EnumSignOnPolicyNoDeviceMode, bool)`
 
 GetNoDeviceModeOk returns a tuple with the NoDeviceMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNoDeviceMode
 
-`func (o *SignOnPolicyAction) SetNoDeviceMode(v string)`
+`func (o *SignOnPolicyAction) SetNoDeviceMode(v EnumSignOnPolicyNoDeviceMode)`
 
 SetNoDeviceMode sets NoDeviceMode field to given value.
 
