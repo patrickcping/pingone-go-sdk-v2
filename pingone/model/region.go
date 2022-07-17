@@ -1,4 +1,4 @@
-package pingone
+package model
 
 import (
 	"log"
@@ -23,23 +23,23 @@ func init() {
 		{
 			Region:    "Europe",
 			URLSuffix: "eu",
-			APICode:   management.EnumRegionCode("EU"),
+			APICode:   management.ENUMREGIONCODE_EU,
 		},
 		{
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   management.EnumRegionCode("NA"),
+			APICode:   management.ENUMREGIONCODE_NA,
 			Default:   true,
 		},
 		{
 			Region:    "AsiaPacific",
 			URLSuffix: "asia",
-			APICode:   management.EnumRegionCode("AP"),
+			APICode:   management.ENUMREGIONCODE_AP,
 		},
 		{
 			Region:    "Canada",
 			URLSuffix: "ca",
-			APICode:   management.EnumRegionCode("CA"),
+			APICode:   management.ENUMREGIONCODE_CA,
 		},
 	}
 }
@@ -60,9 +60,9 @@ func FindRegionByName(region string) RegionMapping {
 
 }
 
-func FindRegionByAPICode(apiCode string) RegionMapping {
+func FindRegionByAPICode(apiCode management.EnumRegionCode) RegionMapping {
 
-	idx := slices.IndexFunc(regionMappingList, func(c RegionMapping) bool { return c.APICode == management.EnumRegionCode(apiCode) })
+	idx := slices.IndexFunc(regionMappingList, func(c RegionMapping) bool { return c.APICode == apiCode })
 
 	if idx < 0 {
 
@@ -76,7 +76,7 @@ func FindRegionByAPICode(apiCode string) RegionMapping {
 
 }
 
-func AvailableRegionsList() []string {
+func RegionsAvailableList() []string {
 
 	regionList := make([]string, 0)
 

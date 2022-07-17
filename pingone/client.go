@@ -7,6 +7,7 @@ import (
 
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
 	"github.com/patrickcping/pingone-go-sdk-v2/mfa"
+	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
 	"github.com/patrickcping/pingone-go-sdk-v2/risk"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/clientcredentials"
@@ -38,7 +39,7 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 		ManagementAPIClient: managementClient,
 		MFAAPIClient:        mfaClient,
 		RiskAPIClient:       riskClient,
-		Region:              FindRegionByName(c.Region),
+		Region:              model.FindRegionByName(c.Region),
 	}
 
 	log.Printf("[INFO] PingOne Client configured")
@@ -101,7 +102,7 @@ func RiskAPIClient(token *oauth2.Token) (*risk.APIClient, error) {
 
 func getToken(ctx context.Context, c *Config) (*oauth2.Token, error) {
 
-	regionSuffix := FindRegionByName(c.Region).URLSuffix
+	regionSuffix := model.FindRegionByName(c.Region).URLSuffix
 
 	//Get URL from SDK
 	authURL := fmt.Sprintf("https://auth.pingone.%s", regionSuffix)

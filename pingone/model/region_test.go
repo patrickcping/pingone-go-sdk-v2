@@ -1,4 +1,4 @@
-package pingone
+package model
 
 import (
 	"reflect"
@@ -13,34 +13,34 @@ func TestFindRegionByName(t *testing.T) {
 		"Europe": {
 			Region:    "Europe",
 			URLSuffix: "eu",
-			APICode:   management.EnumRegionCode("EU"),
+			APICode:   management.ENUMREGIONCODE_EU,
 		},
 		"NorthAmerica": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   management.EnumRegionCode("NA"),
+			APICode:   management.ENUMREGIONCODE_NA,
 			Default:   true,
 		},
 		"Canada": {
 			Region:    "Canada",
 			URLSuffix: "ca",
-			APICode:   management.EnumRegionCode("CA"),
+			APICode:   management.ENUMREGIONCODE_CA,
 		},
 		"AsiaPacific": {
 			Region:    "AsiaPacific",
 			URLSuffix: "asia",
-			APICode:   management.EnumRegionCode("AP"),
+			APICode:   management.ENUMREGIONCODE_AP,
 		},
 		"DOES_NOT_EXIST": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   management.EnumRegionCode("NA"),
+			APICode:   management.ENUMREGIONCODE_NA,
 			Default:   true,
 		},
 		"": {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   management.EnumRegionCode("NA"),
+			APICode:   management.ENUMREGIONCODE_NA,
 			Default:   true,
 		},
 	}
@@ -58,38 +58,32 @@ func TestFindRegionByName(t *testing.T) {
 
 func TestFindRegionByAPICode(t *testing.T) {
 
-	codeTests := map[string]RegionMapping{
-		"EU": {
+	codeTests := map[management.EnumRegionCode]RegionMapping{
+		management.ENUMREGIONCODE_EU: {
 			Region:    "Europe",
 			URLSuffix: "eu",
-			APICode:   management.EnumRegionCode("EU"),
+			APICode:   management.ENUMREGIONCODE_EU,
 		},
-		"NA": {
+		management.ENUMREGIONCODE_NA: {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   management.EnumRegionCode("NA"),
+			APICode:   management.ENUMREGIONCODE_NA,
 			Default:   true,
 		},
-		"CA": {
+		management.ENUMREGIONCODE_CA: {
 			Region:    "Canada",
 			URLSuffix: "ca",
-			APICode:   management.EnumRegionCode("CA"),
+			APICode:   management.ENUMREGIONCODE_CA,
 		},
-		"AP": {
+		management.ENUMREGIONCODE_AP: {
 			Region:    "AsiaPacific",
 			URLSuffix: "asia",
-			APICode:   management.EnumRegionCode("AP"),
+			APICode:   management.ENUMREGIONCODE_AP,
 		},
-		"DOES_NOT_EXIST": {
+		management.EnumRegionCode("DOES_NOT_EXIST"): {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
-			APICode:   management.EnumRegionCode("NA"),
-			Default:   true,
-		},
-		"": {
-			Region:    "NorthAmerica",
-			URLSuffix: "com",
-			APICode:   management.EnumRegionCode("NA"),
+			APICode:   management.ENUMREGIONCODE_NA,
 			Default:   true,
 		},
 	}
@@ -109,7 +103,7 @@ func TestAvailableRegionsList(t *testing.T) {
 
 	expectedList := []string{"AsiaPacific", "Canada", "Europe", "NorthAmerica"}
 
-	v := AvailableRegionsList()
+	v := RegionsAvailableList()
 	if !reflect.DeepEqual(v, expectedList) {
 		t.Fatalf("AvailableRegionsList resulted in %v, expected %v", v, expectedList)
 	}
