@@ -48,6 +48,6 @@ gosec:
 generate:
 	@./scripts/generate-all.sh $(OWNER) $(REPO)
 
-devcheck: generate build vet test testacc lint gosec
+devcheck: generate build vet lint gosec test testacc
 	
 .PHONY: tools build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck generate securitycheck devcheck
