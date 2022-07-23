@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Sms** | Pointer to [**SignOnPolicyActionMFASms**](SignOnPolicyActionMFASms.md) |  | [optional] 
 **Voice** | Pointer to [**SignOnPolicyActionMFAVoice**](SignOnPolicyActionMFAVoice.md) |  | [optional] 
 **Applications** | Pointer to [**[]SignOnPolicyActionMFAApplicationsInner**](SignOnPolicyActionMFAApplicationsInner.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
+**DeviceAuthenticationPolicy** | Pointer to [**SignOnPolicyActionMFADeviceAuthenticationPolicy**](SignOnPolicyActionMFADeviceAuthenticationPolicy.md) |  | [optional] 
 **NoDeviceMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
 **DiscoveryRules** | Pointer to [**[]SignOnPolicyActionIDFirstDiscoveryRulesInner**](SignOnPolicyActionIDFirstDiscoveryRulesInner.md) | The list of IDP discovery rules that are evaluated in order when no user is associated with the user identifier. The maximum number of rules is 100. The condition on which this identity provider is used to authenticate the user is expressed using the PingOne policy condition language | [optional] 
 **AcrValues** | Pointer to **string** | A string that designates the sign-on policies included in the authorization flow request. Options can include the PingOne predefined sign-on policies, Single_Factor and Multi_Factor, or any custom defined sign-on policy names. Sign-on policy names should be listed in order of preference, and they must be assigned to the application. This property can be configured on the identity provider action and is passed to the identity provider if the identity provider is of type &#x60;SAML&#x60; or &#x60;OPENID_CONNECT&#x60;. | [optional] 
@@ -486,6 +487,31 @@ SetApplications sets Applications field to given value.
 `func (o *SignOnPolicyAction) HasApplications() bool`
 
 HasApplications returns a boolean if a field has been set.
+
+### GetDeviceAuthenticationPolicy
+
+`func (o *SignOnPolicyAction) GetDeviceAuthenticationPolicy() SignOnPolicyActionMFADeviceAuthenticationPolicy`
+
+GetDeviceAuthenticationPolicy returns the DeviceAuthenticationPolicy field if non-nil, zero value otherwise.
+
+### GetDeviceAuthenticationPolicyOk
+
+`func (o *SignOnPolicyAction) GetDeviceAuthenticationPolicyOk() (*SignOnPolicyActionMFADeviceAuthenticationPolicy, bool)`
+
+GetDeviceAuthenticationPolicyOk returns a tuple with the DeviceAuthenticationPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceAuthenticationPolicy
+
+`func (o *SignOnPolicyAction) SetDeviceAuthenticationPolicy(v SignOnPolicyActionMFADeviceAuthenticationPolicy)`
+
+SetDeviceAuthenticationPolicy sets DeviceAuthenticationPolicy field to given value.
+
+### HasDeviceAuthenticationPolicy
+
+`func (o *SignOnPolicyAction) HasDeviceAuthenticationPolicy() bool`
+
+HasDeviceAuthenticationPolicy returns a boolean if a field has been set.
 
 ### GetNoDeviceMode
 
