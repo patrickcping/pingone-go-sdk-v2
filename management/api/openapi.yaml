@@ -3,7 +3,7 @@ info:
   description: The PingOne Platform API covering the base and SSO services (otherwise
     known as the Management APIs)
   title: PingOne Platform API - SSO and Base
-  version: 2022-07-14
+  version: 2022-07-18
 externalDocs:
   description: PingOne Platform API Reference - Management APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#management-apis
@@ -20085,6 +20085,7 @@ components:
         voice:
           $ref: '#/components/schemas/SignOnPolicyActionMFA_voice'
         applications:
+          deprecated: true
           description: "The applications collection specifies all the native native\
             \ applications that are allowed in the sign-on policy action.  If the\
             \ applications collection is empty, a push notification is not allowed\
@@ -20092,6 +20093,8 @@ components:
           items:
             $ref: '#/components/schemas/SignOnPolicyActionMFA_applications_inner'
           type: array
+        deviceAuthenticationPolicy:
+          $ref: '#/components/schemas/SignOnPolicyActionMFA_deviceAuthenticationPolicy'
         noDeviceMode:
           $ref: '#/components/schemas/EnumSignOnPolicyNoDeviceMode'
       type: object
@@ -22158,6 +22161,7 @@ components:
       - id
       type: object
     SignOnPolicyActionMFA_authenticator:
+      deprecated: true
       description: Specifies MFA through a Time-based One-time Password (TOTP) option
         over a third-party authenticator application.
       properties:
@@ -22170,6 +22174,7 @@ components:
           type: boolean
       type: object
     SignOnPolicyActionMFA_boundBiometrics:
+      deprecated: true
       description: Specifies MFA through a FIDO2 biometrics platform device.
       properties:
         enabled:
@@ -22179,6 +22184,7 @@ components:
           type: boolean
       type: object
     SignOnPolicyActionMFA_email:
+      deprecated: true
       description: Specifies MFA through email options.
       properties:
         enabled:
@@ -22190,6 +22196,7 @@ components:
           type: boolean
       type: object
     SignOnPolicyActionMFA_securityKey:
+      deprecated: true
       description: Specifies MFA using a FIDO2 or U2F security key device.
       properties:
         enabled:
@@ -22199,6 +22206,7 @@ components:
           type: boolean
       type: object
     SignOnPolicyActionMFA_sms:
+      deprecated: true
       description: Specifies MFA through SMS text messaging options.
       properties:
         enabled:
@@ -22210,6 +22218,7 @@ components:
           type: boolean
       type: object
     SignOnPolicyActionMFA_voice:
+      deprecated: true
       description: Specifies MFA through voice messaging options.
       properties:
         enabled:
@@ -22248,6 +22257,16 @@ components:
           $ref: '#/components/schemas/SignOnPolicyActionMFA_applications_inner_autoEnrollment'
         deviceAuthorization:
           $ref: '#/components/schemas/SignOnPolicyActionMFA_applications_inner_deviceAuthorization'
+      required:
+      - id
+      type: object
+    SignOnPolicyActionMFA_deviceAuthenticationPolicy:
+      description: "Details of the MFA policy that should be used. If it is omitted,\
+        \ the environment default MFA policy is used."
+      properties:
+        id:
+          description: The ID of the MFA policy that should be used.
+          type: string
       required:
       - id
       type: object

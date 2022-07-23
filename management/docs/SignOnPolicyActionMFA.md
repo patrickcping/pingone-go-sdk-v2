@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Sms** | Pointer to [**SignOnPolicyActionMFASms**](SignOnPolicyActionMFASms.md) |  | [optional] 
 **Voice** | Pointer to [**SignOnPolicyActionMFAVoice**](SignOnPolicyActionMFAVoice.md) |  | [optional] 
 **Applications** | Pointer to [**[]SignOnPolicyActionMFAApplicationsInner**](SignOnPolicyActionMFAApplicationsInner.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
+**DeviceAuthenticationPolicy** | Pointer to [**SignOnPolicyActionMFADeviceAuthenticationPolicy**](SignOnPolicyActionMFADeviceAuthenticationPolicy.md) |  | [optional] 
 **NoDeviceMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
 
 ## Methods
@@ -206,6 +207,31 @@ SetApplications sets Applications field to given value.
 `func (o *SignOnPolicyActionMFA) HasApplications() bool`
 
 HasApplications returns a boolean if a field has been set.
+
+### GetDeviceAuthenticationPolicy
+
+`func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicy() SignOnPolicyActionMFADeviceAuthenticationPolicy`
+
+GetDeviceAuthenticationPolicy returns the DeviceAuthenticationPolicy field if non-nil, zero value otherwise.
+
+### GetDeviceAuthenticationPolicyOk
+
+`func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicyOk() (*SignOnPolicyActionMFADeviceAuthenticationPolicy, bool)`
+
+GetDeviceAuthenticationPolicyOk returns a tuple with the DeviceAuthenticationPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceAuthenticationPolicy
+
+`func (o *SignOnPolicyActionMFA) SetDeviceAuthenticationPolicy(v SignOnPolicyActionMFADeviceAuthenticationPolicy)`
+
+SetDeviceAuthenticationPolicy sets DeviceAuthenticationPolicy field to given value.
+
+### HasDeviceAuthenticationPolicy
+
+`func (o *SignOnPolicyActionMFA) HasDeviceAuthenticationPolicy() bool`
+
+HasDeviceAuthenticationPolicy returns a boolean if a field has been set.
 
 ### GetNoDeviceMode
 
