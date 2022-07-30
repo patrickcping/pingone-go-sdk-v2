@@ -16,7 +16,16 @@ import (
 
 // SignOnPolicyActionProgressiveProfiling struct for SignOnPolicyActionProgressiveProfiling
 type SignOnPolicyActionProgressiveProfiling struct {
-	Attributes SignOnPolicyActionProgressiveProfilingAttributes `json:"attributes"`
+	Links map[string]interface{} `json:"_links,omitempty"`
+	Conditions *SignOnPolicyActionCommonConditions `json:"conditions,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// A string that specifies the sign-on policy assignment resource’s unique identifier.
+	Id *string `json:"id,omitempty"`
+	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
+	Priority int32 `json:"priority"`
+	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
+	Type EnumSignOnPolicyType `json:"type"`
+	Attributes []SignOnPolicyActionProgressiveProfilingAllOfAttributes `json:"attributes"`
 	// A boolean that specifies whether the progressive profiling action will not be executed if another progressive profiling action has already been executed during the flow. This property is required.
 	PreventMultiplePromptsPerFlow bool `json:"preventMultiplePromptsPerFlow"`
 	// An integer that specifies how often to prompt the user to provide profile data for the configured attributes for which they do not have values. This property is required.
@@ -29,8 +38,10 @@ type SignOnPolicyActionProgressiveProfiling struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSignOnPolicyActionProgressiveProfiling(attributes SignOnPolicyActionProgressiveProfilingAttributes, preventMultiplePromptsPerFlow bool, promptIntervalSeconds int32, promptText string) *SignOnPolicyActionProgressiveProfiling {
+func NewSignOnPolicyActionProgressiveProfiling(priority int32, type_ EnumSignOnPolicyType, attributes []SignOnPolicyActionProgressiveProfilingAllOfAttributes, preventMultiplePromptsPerFlow bool, promptIntervalSeconds int32, promptText string) *SignOnPolicyActionProgressiveProfiling {
 	this := SignOnPolicyActionProgressiveProfiling{}
+	this.Priority = priority
+	this.Type = type_
 	this.Attributes = attributes
 	this.PreventMultiplePromptsPerFlow = preventMultiplePromptsPerFlow
 	this.PromptIntervalSeconds = promptIntervalSeconds
@@ -46,10 +57,218 @@ func NewSignOnPolicyActionProgressiveProfilingWithDefaults() *SignOnPolicyAction
 	return &this
 }
 
-// GetAttributes returns the Attributes field value
-func (o *SignOnPolicyActionProgressiveProfiling) GetAttributes() SignOnPolicyActionProgressiveProfilingAttributes {
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *SignOnPolicyActionProgressiveProfiling) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) HasLinks() bool {
+	if o != nil && o.Links != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *SignOnPolicyActionProgressiveProfiling) SetLinks(v map[string]interface{}) {
+	o.Links = v
+}
+
+// GetConditions returns the Conditions field value if set, zero value otherwise.
+func (o *SignOnPolicyActionProgressiveProfiling) GetConditions() SignOnPolicyActionCommonConditions {
+	if o == nil || o.Conditions == nil {
+		var ret SignOnPolicyActionCommonConditions
+		return ret
+	}
+	return *o.Conditions
+}
+
+// GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool) {
+	if o == nil || o.Conditions == nil {
+		return nil, false
+	}
+	return o.Conditions, true
+}
+
+// HasConditions returns a boolean if a field has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) HasConditions() bool {
+	if o != nil && o.Conditions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConditions gets a reference to the given SignOnPolicyActionCommonConditions and assigns it to the Conditions field.
+func (o *SignOnPolicyActionProgressiveProfiling) SetConditions(v SignOnPolicyActionCommonConditions) {
+	o.Conditions = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *SignOnPolicyActionProgressiveProfiling) GetEnvironment() ObjectEnvironment {
+	if o == nil || o.Environment == nil {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || o.Environment == nil {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) HasEnvironment() bool {
+	if o != nil && o.Environment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *SignOnPolicyActionProgressiveProfiling) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *SignOnPolicyActionProgressiveProfiling) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *SignOnPolicyActionProgressiveProfiling) SetId(v string) {
+	o.Id = &v
+}
+
+// GetPriority returns the Priority field value
+func (o *SignOnPolicyActionProgressiveProfiling) GetPriority() int32 {
 	if o == nil {
-		var ret SignOnPolicyActionProgressiveProfilingAttributes
+		var ret int32
+		return ret
+	}
+
+	return o.Priority
+}
+
+// GetPriorityOk returns a tuple with the Priority field value
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) GetPriorityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Priority, true
+}
+
+// SetPriority sets field value
+func (o *SignOnPolicyActionProgressiveProfiling) SetPriority(v int32) {
+	o.Priority = v
+}
+
+// GetSignOnPolicy returns the SignOnPolicy field value if set, zero value otherwise.
+func (o *SignOnPolicyActionProgressiveProfiling) GetSignOnPolicy() SignOnPolicyActionCommonSignOnPolicy {
+	if o == nil || o.SignOnPolicy == nil {
+		var ret SignOnPolicyActionCommonSignOnPolicy
+		return ret
+	}
+	return *o.SignOnPolicy
+}
+
+// GetSignOnPolicyOk returns a tuple with the SignOnPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) GetSignOnPolicyOk() (*SignOnPolicyActionCommonSignOnPolicy, bool) {
+	if o == nil || o.SignOnPolicy == nil {
+		return nil, false
+	}
+	return o.SignOnPolicy, true
+}
+
+// HasSignOnPolicy returns a boolean if a field has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) HasSignOnPolicy() bool {
+	if o != nil && o.SignOnPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignOnPolicy gets a reference to the given SignOnPolicyActionCommonSignOnPolicy and assigns it to the SignOnPolicy field.
+func (o *SignOnPolicyActionProgressiveProfiling) SetSignOnPolicy(v SignOnPolicyActionCommonSignOnPolicy) {
+	o.SignOnPolicy = &v
+}
+
+// GetType returns the Type field value
+func (o *SignOnPolicyActionProgressiveProfiling) GetType() EnumSignOnPolicyType {
+	if o == nil {
+		var ret EnumSignOnPolicyType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) GetTypeOk() (*EnumSignOnPolicyType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *SignOnPolicyActionProgressiveProfiling) SetType(v EnumSignOnPolicyType) {
+	o.Type = v
+}
+
+// GetAttributes returns the Attributes field value
+func (o *SignOnPolicyActionProgressiveProfiling) GetAttributes() []SignOnPolicyActionProgressiveProfilingAllOfAttributes {
+	if o == nil {
+		var ret []SignOnPolicyActionProgressiveProfilingAllOfAttributes
 		return ret
 	}
 
@@ -58,15 +277,15 @@ func (o *SignOnPolicyActionProgressiveProfiling) GetAttributes() SignOnPolicyAct
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionProgressiveProfiling) GetAttributesOk() (*SignOnPolicyActionProgressiveProfilingAttributes, bool) {
+func (o *SignOnPolicyActionProgressiveProfiling) GetAttributesOk() ([]SignOnPolicyActionProgressiveProfilingAllOfAttributes, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Attributes, true
+	return o.Attributes, true
 }
 
 // SetAttributes sets field value
-func (o *SignOnPolicyActionProgressiveProfiling) SetAttributes(v SignOnPolicyActionProgressiveProfilingAttributes) {
+func (o *SignOnPolicyActionProgressiveProfiling) SetAttributes(v []SignOnPolicyActionProgressiveProfilingAllOfAttributes) {
 	o.Attributes = v
 }
 
@@ -144,6 +363,27 @@ func (o *SignOnPolicyActionProgressiveProfiling) SetPromptText(v string) {
 
 func (o SignOnPolicyActionProgressiveProfiling) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
+	if o.Conditions != nil {
+		toSerialize["conditions"] = o.Conditions
+	}
+	if o.Environment != nil {
+		toSerialize["environment"] = o.Environment
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["priority"] = o.Priority
+	}
+	if o.SignOnPolicy != nil {
+		toSerialize["signOnPolicy"] = o.SignOnPolicy
+	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
 	if true {
 		toSerialize["attributes"] = o.Attributes
 	}

@@ -1,3 +1,5 @@
+# v0.5.0 (Unreleased)
+
 # v0.4.0 (2022-08-10)
 
 * **Enhancement** Added generic `_links` to `Application` model
