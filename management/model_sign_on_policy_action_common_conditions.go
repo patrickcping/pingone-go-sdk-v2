@@ -19,7 +19,7 @@ type SignOnPolicyActionCommonConditions struct {
 	// A string that specifies the supported network IP addresses expressed as classless inter-domain routing (CIDR) strings.
 	IpRange *string `json:"ipRange,omitempty"`
 	// An integer that specifies the maximum number of minutes to wait since the last sign on before prompting for a new sign-on action.
-	SecondsSince *string `json:"secondsSince,omitempty"`
+	SecondsSince *int32 `json:"secondsSince,omitempty"`
 }
 
 // NewSignOnPolicyActionCommonConditions instantiates a new SignOnPolicyActionCommonConditions object
@@ -72,9 +72,9 @@ func (o *SignOnPolicyActionCommonConditions) SetIpRange(v string) {
 }
 
 // GetSecondsSince returns the SecondsSince field value if set, zero value otherwise.
-func (o *SignOnPolicyActionCommonConditions) GetSecondsSince() string {
+func (o *SignOnPolicyActionCommonConditions) GetSecondsSince() int32 {
 	if o == nil || o.SecondsSince == nil {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.SecondsSince
@@ -82,7 +82,7 @@ func (o *SignOnPolicyActionCommonConditions) GetSecondsSince() string {
 
 // GetSecondsSinceOk returns a tuple with the SecondsSince field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionCommonConditions) GetSecondsSinceOk() (*string, bool) {
+func (o *SignOnPolicyActionCommonConditions) GetSecondsSinceOk() (*int32, bool) {
 	if o == nil || o.SecondsSince == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *SignOnPolicyActionCommonConditions) HasSecondsSince() bool {
 	return false
 }
 
-// SetSecondsSince gets a reference to the given string and assigns it to the SecondsSince field.
-func (o *SignOnPolicyActionCommonConditions) SetSecondsSince(v string) {
+// SetSecondsSince gets a reference to the given int32 and assigns it to the SecondsSince field.
+func (o *SignOnPolicyActionCommonConditions) SetSecondsSince(v int32) {
 	o.SecondsSince = &v
 }
 

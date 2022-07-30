@@ -16,22 +16,33 @@ import (
 
 // SignOnPolicyActionLogin struct for SignOnPolicyActionLogin
 type SignOnPolicyActionLogin struct {
+	Links map[string]interface{} `json:"_links,omitempty"`
+	Conditions *SignOnPolicyActionCommonConditions `json:"conditions,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// A string that specifies the sign-on policy assignment resource’s unique identifier.
+	Id *string `json:"id,omitempty"`
+	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
+	Priority int32 `json:"priority"`
+	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
+	Type EnumSignOnPolicyType `json:"type"`
 	// A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user's profile during account creation. This is an optional property. If omitted, the default value is set to false.
 	ConfirmIdentityProviderAttributes *bool `json:"confirmIdentityProviderAttributes,omitempty"`
 	// A boolean that if set to true and if the user's account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented.
 	EnforceLockoutForIdentityProviders *bool `json:"enforceLockoutForIdentityProviders,omitempty"`
-	Recovery *SignOnPolicyActionLoginRecovery `json:"recovery,omitempty"`
-	Registration *SignOnPolicyActionLoginRegistration `json:"registration,omitempty"`
+	Recovery *SignOnPolicyActionLoginAllOfRecovery `json:"recovery,omitempty"`
+	Registration *SignOnPolicyActionLoginAllOfRegistration `json:"registration,omitempty"`
 	// An array of strings that specifies the IDs of the identity providers that can be used for the social login sign-on flow.
-	SocialProviders []SignOnPolicyActionLoginSocialProvidersInner `json:"socialProviders,omitempty"`
+	SocialProviders []SignOnPolicyActionLoginAllOfSocialProviders `json:"socialProviders,omitempty"`
 }
 
 // NewSignOnPolicyActionLogin instantiates a new SignOnPolicyActionLogin object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSignOnPolicyActionLogin() *SignOnPolicyActionLogin {
+func NewSignOnPolicyActionLogin(priority int32, type_ EnumSignOnPolicyType) *SignOnPolicyActionLogin {
 	this := SignOnPolicyActionLogin{}
+	this.Priority = priority
+	this.Type = type_
 	var confirmIdentityProviderAttributes bool = false
 	this.ConfirmIdentityProviderAttributes = &confirmIdentityProviderAttributes
 	return &this
@@ -45,6 +56,214 @@ func NewSignOnPolicyActionLoginWithDefaults() *SignOnPolicyActionLogin {
 	var confirmIdentityProviderAttributes bool = false
 	this.ConfirmIdentityProviderAttributes = &confirmIdentityProviderAttributes
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *SignOnPolicyActionLogin) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionLogin) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *SignOnPolicyActionLogin) HasLinks() bool {
+	if o != nil && o.Links != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *SignOnPolicyActionLogin) SetLinks(v map[string]interface{}) {
+	o.Links = v
+}
+
+// GetConditions returns the Conditions field value if set, zero value otherwise.
+func (o *SignOnPolicyActionLogin) GetConditions() SignOnPolicyActionCommonConditions {
+	if o == nil || o.Conditions == nil {
+		var ret SignOnPolicyActionCommonConditions
+		return ret
+	}
+	return *o.Conditions
+}
+
+// GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionLogin) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool) {
+	if o == nil || o.Conditions == nil {
+		return nil, false
+	}
+	return o.Conditions, true
+}
+
+// HasConditions returns a boolean if a field has been set.
+func (o *SignOnPolicyActionLogin) HasConditions() bool {
+	if o != nil && o.Conditions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConditions gets a reference to the given SignOnPolicyActionCommonConditions and assigns it to the Conditions field.
+func (o *SignOnPolicyActionLogin) SetConditions(v SignOnPolicyActionCommonConditions) {
+	o.Conditions = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *SignOnPolicyActionLogin) GetEnvironment() ObjectEnvironment {
+	if o == nil || o.Environment == nil {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionLogin) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || o.Environment == nil {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *SignOnPolicyActionLogin) HasEnvironment() bool {
+	if o != nil && o.Environment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *SignOnPolicyActionLogin) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *SignOnPolicyActionLogin) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionLogin) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *SignOnPolicyActionLogin) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *SignOnPolicyActionLogin) SetId(v string) {
+	o.Id = &v
+}
+
+// GetPriority returns the Priority field value
+func (o *SignOnPolicyActionLogin) GetPriority() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Priority
+}
+
+// GetPriorityOk returns a tuple with the Priority field value
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionLogin) GetPriorityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Priority, true
+}
+
+// SetPriority sets field value
+func (o *SignOnPolicyActionLogin) SetPriority(v int32) {
+	o.Priority = v
+}
+
+// GetSignOnPolicy returns the SignOnPolicy field value if set, zero value otherwise.
+func (o *SignOnPolicyActionLogin) GetSignOnPolicy() SignOnPolicyActionCommonSignOnPolicy {
+	if o == nil || o.SignOnPolicy == nil {
+		var ret SignOnPolicyActionCommonSignOnPolicy
+		return ret
+	}
+	return *o.SignOnPolicy
+}
+
+// GetSignOnPolicyOk returns a tuple with the SignOnPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionLogin) GetSignOnPolicyOk() (*SignOnPolicyActionCommonSignOnPolicy, bool) {
+	if o == nil || o.SignOnPolicy == nil {
+		return nil, false
+	}
+	return o.SignOnPolicy, true
+}
+
+// HasSignOnPolicy returns a boolean if a field has been set.
+func (o *SignOnPolicyActionLogin) HasSignOnPolicy() bool {
+	if o != nil && o.SignOnPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignOnPolicy gets a reference to the given SignOnPolicyActionCommonSignOnPolicy and assigns it to the SignOnPolicy field.
+func (o *SignOnPolicyActionLogin) SetSignOnPolicy(v SignOnPolicyActionCommonSignOnPolicy) {
+	o.SignOnPolicy = &v
+}
+
+// GetType returns the Type field value
+func (o *SignOnPolicyActionLogin) GetType() EnumSignOnPolicyType {
+	if o == nil {
+		var ret EnumSignOnPolicyType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionLogin) GetTypeOk() (*EnumSignOnPolicyType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *SignOnPolicyActionLogin) SetType(v EnumSignOnPolicyType) {
+	o.Type = v
 }
 
 // GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field value if set, zero value otherwise.
@@ -112,9 +331,9 @@ func (o *SignOnPolicyActionLogin) SetEnforceLockoutForIdentityProviders(v bool) 
 }
 
 // GetRecovery returns the Recovery field value if set, zero value otherwise.
-func (o *SignOnPolicyActionLogin) GetRecovery() SignOnPolicyActionLoginRecovery {
+func (o *SignOnPolicyActionLogin) GetRecovery() SignOnPolicyActionLoginAllOfRecovery {
 	if o == nil || o.Recovery == nil {
-		var ret SignOnPolicyActionLoginRecovery
+		var ret SignOnPolicyActionLoginAllOfRecovery
 		return ret
 	}
 	return *o.Recovery
@@ -122,7 +341,7 @@ func (o *SignOnPolicyActionLogin) GetRecovery() SignOnPolicyActionLoginRecovery 
 
 // GetRecoveryOk returns a tuple with the Recovery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionLogin) GetRecoveryOk() (*SignOnPolicyActionLoginRecovery, bool) {
+func (o *SignOnPolicyActionLogin) GetRecoveryOk() (*SignOnPolicyActionLoginAllOfRecovery, bool) {
 	if o == nil || o.Recovery == nil {
 		return nil, false
 	}
@@ -138,15 +357,15 @@ func (o *SignOnPolicyActionLogin) HasRecovery() bool {
 	return false
 }
 
-// SetRecovery gets a reference to the given SignOnPolicyActionLoginRecovery and assigns it to the Recovery field.
-func (o *SignOnPolicyActionLogin) SetRecovery(v SignOnPolicyActionLoginRecovery) {
+// SetRecovery gets a reference to the given SignOnPolicyActionLoginAllOfRecovery and assigns it to the Recovery field.
+func (o *SignOnPolicyActionLogin) SetRecovery(v SignOnPolicyActionLoginAllOfRecovery) {
 	o.Recovery = &v
 }
 
 // GetRegistration returns the Registration field value if set, zero value otherwise.
-func (o *SignOnPolicyActionLogin) GetRegistration() SignOnPolicyActionLoginRegistration {
+func (o *SignOnPolicyActionLogin) GetRegistration() SignOnPolicyActionLoginAllOfRegistration {
 	if o == nil || o.Registration == nil {
-		var ret SignOnPolicyActionLoginRegistration
+		var ret SignOnPolicyActionLoginAllOfRegistration
 		return ret
 	}
 	return *o.Registration
@@ -154,7 +373,7 @@ func (o *SignOnPolicyActionLogin) GetRegistration() SignOnPolicyActionLoginRegis
 
 // GetRegistrationOk returns a tuple with the Registration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionLogin) GetRegistrationOk() (*SignOnPolicyActionLoginRegistration, bool) {
+func (o *SignOnPolicyActionLogin) GetRegistrationOk() (*SignOnPolicyActionLoginAllOfRegistration, bool) {
 	if o == nil || o.Registration == nil {
 		return nil, false
 	}
@@ -170,15 +389,15 @@ func (o *SignOnPolicyActionLogin) HasRegistration() bool {
 	return false
 }
 
-// SetRegistration gets a reference to the given SignOnPolicyActionLoginRegistration and assigns it to the Registration field.
-func (o *SignOnPolicyActionLogin) SetRegistration(v SignOnPolicyActionLoginRegistration) {
+// SetRegistration gets a reference to the given SignOnPolicyActionLoginAllOfRegistration and assigns it to the Registration field.
+func (o *SignOnPolicyActionLogin) SetRegistration(v SignOnPolicyActionLoginAllOfRegistration) {
 	o.Registration = &v
 }
 
 // GetSocialProviders returns the SocialProviders field value if set, zero value otherwise.
-func (o *SignOnPolicyActionLogin) GetSocialProviders() []SignOnPolicyActionLoginSocialProvidersInner {
+func (o *SignOnPolicyActionLogin) GetSocialProviders() []SignOnPolicyActionLoginAllOfSocialProviders {
 	if o == nil || o.SocialProviders == nil {
-		var ret []SignOnPolicyActionLoginSocialProvidersInner
+		var ret []SignOnPolicyActionLoginAllOfSocialProviders
 		return ret
 	}
 	return o.SocialProviders
@@ -186,7 +405,7 @@ func (o *SignOnPolicyActionLogin) GetSocialProviders() []SignOnPolicyActionLogin
 
 // GetSocialProvidersOk returns a tuple with the SocialProviders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionLogin) GetSocialProvidersOk() ([]SignOnPolicyActionLoginSocialProvidersInner, bool) {
+func (o *SignOnPolicyActionLogin) GetSocialProvidersOk() ([]SignOnPolicyActionLoginAllOfSocialProviders, bool) {
 	if o == nil || o.SocialProviders == nil {
 		return nil, false
 	}
@@ -202,13 +421,34 @@ func (o *SignOnPolicyActionLogin) HasSocialProviders() bool {
 	return false
 }
 
-// SetSocialProviders gets a reference to the given []SignOnPolicyActionLoginSocialProvidersInner and assigns it to the SocialProviders field.
-func (o *SignOnPolicyActionLogin) SetSocialProviders(v []SignOnPolicyActionLoginSocialProvidersInner) {
+// SetSocialProviders gets a reference to the given []SignOnPolicyActionLoginAllOfSocialProviders and assigns it to the SocialProviders field.
+func (o *SignOnPolicyActionLogin) SetSocialProviders(v []SignOnPolicyActionLoginAllOfSocialProviders) {
 	o.SocialProviders = v
 }
 
 func (o SignOnPolicyActionLogin) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
+	if o.Conditions != nil {
+		toSerialize["conditions"] = o.Conditions
+	}
+	if o.Environment != nil {
+		toSerialize["environment"] = o.Environment
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["priority"] = o.Priority
+	}
+	if o.SignOnPolicy != nil {
+		toSerialize["signOnPolicy"] = o.SignOnPolicy
+	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
 	if o.ConfirmIdentityProviderAttributes != nil {
 		toSerialize["confirmIdentityProviderAttributes"] = o.ConfirmIdentityProviderAttributes
 	}

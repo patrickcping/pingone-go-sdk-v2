@@ -16,22 +16,31 @@ import (
 
 // SignOnPolicyActionMFA struct for SignOnPolicyActionMFA
 type SignOnPolicyActionMFA struct {
+	Links map[string]interface{} `json:"_links,omitempty"`
+	Conditions *SignOnPolicyActionCommonConditions `json:"conditions,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// A string that specifies the sign-on policy assignment resource’s unique identifier.
+	Id *string `json:"id,omitempty"`
+	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
+	Priority int32 `json:"priority"`
+	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
+	Type EnumSignOnPolicyType `json:"type"`
 	// Deprecated
-	Authenticator *SignOnPolicyActionMFAAuthenticator `json:"authenticator,omitempty"`
+	Authenticator *SignOnPolicyActionMFAAllOfAuthenticator `json:"authenticator,omitempty"`
 	// Deprecated
-	BoundBiometrics *SignOnPolicyActionMFABoundBiometrics `json:"boundBiometrics,omitempty"`
+	BoundBiometrics *SignOnPolicyActionMFAAllOfBoundBiometrics `json:"boundBiometrics,omitempty"`
 	// Deprecated
-	Email *SignOnPolicyActionMFAEmail `json:"email,omitempty"`
+	Email *SignOnPolicyActionMFAAllOfEmail `json:"email,omitempty"`
 	// Deprecated
-	SecurityKey *SignOnPolicyActionMFASecurityKey `json:"securityKey,omitempty"`
+	SecurityKey *SignOnPolicyActionMFAAllOfSecurityKey `json:"securityKey,omitempty"`
 	// Deprecated
-	Sms *SignOnPolicyActionMFASms `json:"sms,omitempty"`
+	Sms *SignOnPolicyActionMFAAllOfSms `json:"sms,omitempty"`
 	// Deprecated
-	Voice *SignOnPolicyActionMFAVoice `json:"voice,omitempty"`
+	Voice *SignOnPolicyActionMFAAllOfVoice `json:"voice,omitempty"`
 	// The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action.
 	// Deprecated
-	Applications []SignOnPolicyActionMFAApplicationsInner `json:"applications,omitempty"`
-	DeviceAuthenticationPolicy *SignOnPolicyActionMFADeviceAuthenticationPolicy `json:"deviceAuthenticationPolicy,omitempty"`
+	Applications []SignOnPolicyActionMFAAllOfApplications `json:"applications,omitempty"`
+	DeviceAuthenticationPolicy *SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy `json:"deviceAuthenticationPolicy,omitempty"`
 	NoDeviceMode *EnumSignOnPolicyNoDeviceMode `json:"noDeviceMode,omitempty"`
 }
 
@@ -39,8 +48,10 @@ type SignOnPolicyActionMFA struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSignOnPolicyActionMFA() *SignOnPolicyActionMFA {
+func NewSignOnPolicyActionMFA(priority int32, type_ EnumSignOnPolicyType) *SignOnPolicyActionMFA {
 	this := SignOnPolicyActionMFA{}
+	this.Priority = priority
+	this.Type = type_
 	return &this
 }
 
@@ -52,11 +63,219 @@ func NewSignOnPolicyActionMFAWithDefaults() *SignOnPolicyActionMFA {
 	return &this
 }
 
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *SignOnPolicyActionMFA) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionMFA) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *SignOnPolicyActionMFA) HasLinks() bool {
+	if o != nil && o.Links != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *SignOnPolicyActionMFA) SetLinks(v map[string]interface{}) {
+	o.Links = v
+}
+
+// GetConditions returns the Conditions field value if set, zero value otherwise.
+func (o *SignOnPolicyActionMFA) GetConditions() SignOnPolicyActionCommonConditions {
+	if o == nil || o.Conditions == nil {
+		var ret SignOnPolicyActionCommonConditions
+		return ret
+	}
+	return *o.Conditions
+}
+
+// GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionMFA) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool) {
+	if o == nil || o.Conditions == nil {
+		return nil, false
+	}
+	return o.Conditions, true
+}
+
+// HasConditions returns a boolean if a field has been set.
+func (o *SignOnPolicyActionMFA) HasConditions() bool {
+	if o != nil && o.Conditions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConditions gets a reference to the given SignOnPolicyActionCommonConditions and assigns it to the Conditions field.
+func (o *SignOnPolicyActionMFA) SetConditions(v SignOnPolicyActionCommonConditions) {
+	o.Conditions = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *SignOnPolicyActionMFA) GetEnvironment() ObjectEnvironment {
+	if o == nil || o.Environment == nil {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionMFA) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || o.Environment == nil {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *SignOnPolicyActionMFA) HasEnvironment() bool {
+	if o != nil && o.Environment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *SignOnPolicyActionMFA) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *SignOnPolicyActionMFA) GetId() string {
+	if o == nil || o.Id == nil {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionMFA) GetIdOk() (*string, bool) {
+	if o == nil || o.Id == nil {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *SignOnPolicyActionMFA) HasId() bool {
+	if o != nil && o.Id != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *SignOnPolicyActionMFA) SetId(v string) {
+	o.Id = &v
+}
+
+// GetPriority returns the Priority field value
+func (o *SignOnPolicyActionMFA) GetPriority() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Priority
+}
+
+// GetPriorityOk returns a tuple with the Priority field value
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionMFA) GetPriorityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Priority, true
+}
+
+// SetPriority sets field value
+func (o *SignOnPolicyActionMFA) SetPriority(v int32) {
+	o.Priority = v
+}
+
+// GetSignOnPolicy returns the SignOnPolicy field value if set, zero value otherwise.
+func (o *SignOnPolicyActionMFA) GetSignOnPolicy() SignOnPolicyActionCommonSignOnPolicy {
+	if o == nil || o.SignOnPolicy == nil {
+		var ret SignOnPolicyActionCommonSignOnPolicy
+		return ret
+	}
+	return *o.SignOnPolicy
+}
+
+// GetSignOnPolicyOk returns a tuple with the SignOnPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionMFA) GetSignOnPolicyOk() (*SignOnPolicyActionCommonSignOnPolicy, bool) {
+	if o == nil || o.SignOnPolicy == nil {
+		return nil, false
+	}
+	return o.SignOnPolicy, true
+}
+
+// HasSignOnPolicy returns a boolean if a field has been set.
+func (o *SignOnPolicyActionMFA) HasSignOnPolicy() bool {
+	if o != nil && o.SignOnPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignOnPolicy gets a reference to the given SignOnPolicyActionCommonSignOnPolicy and assigns it to the SignOnPolicy field.
+func (o *SignOnPolicyActionMFA) SetSignOnPolicy(v SignOnPolicyActionCommonSignOnPolicy) {
+	o.SignOnPolicy = &v
+}
+
+// GetType returns the Type field value
+func (o *SignOnPolicyActionMFA) GetType() EnumSignOnPolicyType {
+	if o == nil {
+		var ret EnumSignOnPolicyType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionMFA) GetTypeOk() (*EnumSignOnPolicyType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *SignOnPolicyActionMFA) SetType(v EnumSignOnPolicyType) {
+	o.Type = v
+}
+
 // GetAuthenticator returns the Authenticator field value if set, zero value otherwise.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetAuthenticator() SignOnPolicyActionMFAAuthenticator {
+func (o *SignOnPolicyActionMFA) GetAuthenticator() SignOnPolicyActionMFAAllOfAuthenticator {
 	if o == nil || o.Authenticator == nil {
-		var ret SignOnPolicyActionMFAAuthenticator
+		var ret SignOnPolicyActionMFAAllOfAuthenticator
 		return ret
 	}
 	return *o.Authenticator
@@ -65,7 +284,7 @@ func (o *SignOnPolicyActionMFA) GetAuthenticator() SignOnPolicyActionMFAAuthenti
 // GetAuthenticatorOk returns a tuple with the Authenticator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetAuthenticatorOk() (*SignOnPolicyActionMFAAuthenticator, bool) {
+func (o *SignOnPolicyActionMFA) GetAuthenticatorOk() (*SignOnPolicyActionMFAAllOfAuthenticator, bool) {
 	if o == nil || o.Authenticator == nil {
 		return nil, false
 	}
@@ -81,17 +300,17 @@ func (o *SignOnPolicyActionMFA) HasAuthenticator() bool {
 	return false
 }
 
-// SetAuthenticator gets a reference to the given SignOnPolicyActionMFAAuthenticator and assigns it to the Authenticator field.
+// SetAuthenticator gets a reference to the given SignOnPolicyActionMFAAllOfAuthenticator and assigns it to the Authenticator field.
 // Deprecated
-func (o *SignOnPolicyActionMFA) SetAuthenticator(v SignOnPolicyActionMFAAuthenticator) {
+func (o *SignOnPolicyActionMFA) SetAuthenticator(v SignOnPolicyActionMFAAllOfAuthenticator) {
 	o.Authenticator = &v
 }
 
 // GetBoundBiometrics returns the BoundBiometrics field value if set, zero value otherwise.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetBoundBiometrics() SignOnPolicyActionMFABoundBiometrics {
+func (o *SignOnPolicyActionMFA) GetBoundBiometrics() SignOnPolicyActionMFAAllOfBoundBiometrics {
 	if o == nil || o.BoundBiometrics == nil {
-		var ret SignOnPolicyActionMFABoundBiometrics
+		var ret SignOnPolicyActionMFAAllOfBoundBiometrics
 		return ret
 	}
 	return *o.BoundBiometrics
@@ -100,7 +319,7 @@ func (o *SignOnPolicyActionMFA) GetBoundBiometrics() SignOnPolicyActionMFABoundB
 // GetBoundBiometricsOk returns a tuple with the BoundBiometrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetBoundBiometricsOk() (*SignOnPolicyActionMFABoundBiometrics, bool) {
+func (o *SignOnPolicyActionMFA) GetBoundBiometricsOk() (*SignOnPolicyActionMFAAllOfBoundBiometrics, bool) {
 	if o == nil || o.BoundBiometrics == nil {
 		return nil, false
 	}
@@ -116,17 +335,17 @@ func (o *SignOnPolicyActionMFA) HasBoundBiometrics() bool {
 	return false
 }
 
-// SetBoundBiometrics gets a reference to the given SignOnPolicyActionMFABoundBiometrics and assigns it to the BoundBiometrics field.
+// SetBoundBiometrics gets a reference to the given SignOnPolicyActionMFAAllOfBoundBiometrics and assigns it to the BoundBiometrics field.
 // Deprecated
-func (o *SignOnPolicyActionMFA) SetBoundBiometrics(v SignOnPolicyActionMFABoundBiometrics) {
+func (o *SignOnPolicyActionMFA) SetBoundBiometrics(v SignOnPolicyActionMFAAllOfBoundBiometrics) {
 	o.BoundBiometrics = &v
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetEmail() SignOnPolicyActionMFAEmail {
+func (o *SignOnPolicyActionMFA) GetEmail() SignOnPolicyActionMFAAllOfEmail {
 	if o == nil || o.Email == nil {
-		var ret SignOnPolicyActionMFAEmail
+		var ret SignOnPolicyActionMFAAllOfEmail
 		return ret
 	}
 	return *o.Email
@@ -135,7 +354,7 @@ func (o *SignOnPolicyActionMFA) GetEmail() SignOnPolicyActionMFAEmail {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetEmailOk() (*SignOnPolicyActionMFAEmail, bool) {
+func (o *SignOnPolicyActionMFA) GetEmailOk() (*SignOnPolicyActionMFAAllOfEmail, bool) {
 	if o == nil || o.Email == nil {
 		return nil, false
 	}
@@ -151,17 +370,17 @@ func (o *SignOnPolicyActionMFA) HasEmail() bool {
 	return false
 }
 
-// SetEmail gets a reference to the given SignOnPolicyActionMFAEmail and assigns it to the Email field.
+// SetEmail gets a reference to the given SignOnPolicyActionMFAAllOfEmail and assigns it to the Email field.
 // Deprecated
-func (o *SignOnPolicyActionMFA) SetEmail(v SignOnPolicyActionMFAEmail) {
+func (o *SignOnPolicyActionMFA) SetEmail(v SignOnPolicyActionMFAAllOfEmail) {
 	o.Email = &v
 }
 
 // GetSecurityKey returns the SecurityKey field value if set, zero value otherwise.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetSecurityKey() SignOnPolicyActionMFASecurityKey {
+func (o *SignOnPolicyActionMFA) GetSecurityKey() SignOnPolicyActionMFAAllOfSecurityKey {
 	if o == nil || o.SecurityKey == nil {
-		var ret SignOnPolicyActionMFASecurityKey
+		var ret SignOnPolicyActionMFAAllOfSecurityKey
 		return ret
 	}
 	return *o.SecurityKey
@@ -170,7 +389,7 @@ func (o *SignOnPolicyActionMFA) GetSecurityKey() SignOnPolicyActionMFASecurityKe
 // GetSecurityKeyOk returns a tuple with the SecurityKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetSecurityKeyOk() (*SignOnPolicyActionMFASecurityKey, bool) {
+func (o *SignOnPolicyActionMFA) GetSecurityKeyOk() (*SignOnPolicyActionMFAAllOfSecurityKey, bool) {
 	if o == nil || o.SecurityKey == nil {
 		return nil, false
 	}
@@ -186,17 +405,17 @@ func (o *SignOnPolicyActionMFA) HasSecurityKey() bool {
 	return false
 }
 
-// SetSecurityKey gets a reference to the given SignOnPolicyActionMFASecurityKey and assigns it to the SecurityKey field.
+// SetSecurityKey gets a reference to the given SignOnPolicyActionMFAAllOfSecurityKey and assigns it to the SecurityKey field.
 // Deprecated
-func (o *SignOnPolicyActionMFA) SetSecurityKey(v SignOnPolicyActionMFASecurityKey) {
+func (o *SignOnPolicyActionMFA) SetSecurityKey(v SignOnPolicyActionMFAAllOfSecurityKey) {
 	o.SecurityKey = &v
 }
 
 // GetSms returns the Sms field value if set, zero value otherwise.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetSms() SignOnPolicyActionMFASms {
+func (o *SignOnPolicyActionMFA) GetSms() SignOnPolicyActionMFAAllOfSms {
 	if o == nil || o.Sms == nil {
-		var ret SignOnPolicyActionMFASms
+		var ret SignOnPolicyActionMFAAllOfSms
 		return ret
 	}
 	return *o.Sms
@@ -205,7 +424,7 @@ func (o *SignOnPolicyActionMFA) GetSms() SignOnPolicyActionMFASms {
 // GetSmsOk returns a tuple with the Sms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetSmsOk() (*SignOnPolicyActionMFASms, bool) {
+func (o *SignOnPolicyActionMFA) GetSmsOk() (*SignOnPolicyActionMFAAllOfSms, bool) {
 	if o == nil || o.Sms == nil {
 		return nil, false
 	}
@@ -221,17 +440,17 @@ func (o *SignOnPolicyActionMFA) HasSms() bool {
 	return false
 }
 
-// SetSms gets a reference to the given SignOnPolicyActionMFASms and assigns it to the Sms field.
+// SetSms gets a reference to the given SignOnPolicyActionMFAAllOfSms and assigns it to the Sms field.
 // Deprecated
-func (o *SignOnPolicyActionMFA) SetSms(v SignOnPolicyActionMFASms) {
+func (o *SignOnPolicyActionMFA) SetSms(v SignOnPolicyActionMFAAllOfSms) {
 	o.Sms = &v
 }
 
 // GetVoice returns the Voice field value if set, zero value otherwise.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetVoice() SignOnPolicyActionMFAVoice {
+func (o *SignOnPolicyActionMFA) GetVoice() SignOnPolicyActionMFAAllOfVoice {
 	if o == nil || o.Voice == nil {
-		var ret SignOnPolicyActionMFAVoice
+		var ret SignOnPolicyActionMFAAllOfVoice
 		return ret
 	}
 	return *o.Voice
@@ -240,7 +459,7 @@ func (o *SignOnPolicyActionMFA) GetVoice() SignOnPolicyActionMFAVoice {
 // GetVoiceOk returns a tuple with the Voice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetVoiceOk() (*SignOnPolicyActionMFAVoice, bool) {
+func (o *SignOnPolicyActionMFA) GetVoiceOk() (*SignOnPolicyActionMFAAllOfVoice, bool) {
 	if o == nil || o.Voice == nil {
 		return nil, false
 	}
@@ -256,17 +475,17 @@ func (o *SignOnPolicyActionMFA) HasVoice() bool {
 	return false
 }
 
-// SetVoice gets a reference to the given SignOnPolicyActionMFAVoice and assigns it to the Voice field.
+// SetVoice gets a reference to the given SignOnPolicyActionMFAAllOfVoice and assigns it to the Voice field.
 // Deprecated
-func (o *SignOnPolicyActionMFA) SetVoice(v SignOnPolicyActionMFAVoice) {
+func (o *SignOnPolicyActionMFA) SetVoice(v SignOnPolicyActionMFAAllOfVoice) {
 	o.Voice = &v
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetApplications() []SignOnPolicyActionMFAApplicationsInner {
+func (o *SignOnPolicyActionMFA) GetApplications() []SignOnPolicyActionMFAAllOfApplications {
 	if o == nil || o.Applications == nil {
-		var ret []SignOnPolicyActionMFAApplicationsInner
+		var ret []SignOnPolicyActionMFAAllOfApplications
 		return ret
 	}
 	return o.Applications
@@ -275,7 +494,7 @@ func (o *SignOnPolicyActionMFA) GetApplications() []SignOnPolicyActionMFAApplica
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *SignOnPolicyActionMFA) GetApplicationsOk() ([]SignOnPolicyActionMFAApplicationsInner, bool) {
+func (o *SignOnPolicyActionMFA) GetApplicationsOk() ([]SignOnPolicyActionMFAAllOfApplications, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -291,16 +510,16 @@ func (o *SignOnPolicyActionMFA) HasApplications() bool {
 	return false
 }
 
-// SetApplications gets a reference to the given []SignOnPolicyActionMFAApplicationsInner and assigns it to the Applications field.
+// SetApplications gets a reference to the given []SignOnPolicyActionMFAAllOfApplications and assigns it to the Applications field.
 // Deprecated
-func (o *SignOnPolicyActionMFA) SetApplications(v []SignOnPolicyActionMFAApplicationsInner) {
+func (o *SignOnPolicyActionMFA) SetApplications(v []SignOnPolicyActionMFAAllOfApplications) {
 	o.Applications = v
 }
 
 // GetDeviceAuthenticationPolicy returns the DeviceAuthenticationPolicy field value if set, zero value otherwise.
-func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicy() SignOnPolicyActionMFADeviceAuthenticationPolicy {
+func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicy() SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy {
 	if o == nil || o.DeviceAuthenticationPolicy == nil {
-		var ret SignOnPolicyActionMFADeviceAuthenticationPolicy
+		var ret SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy
 		return ret
 	}
 	return *o.DeviceAuthenticationPolicy
@@ -308,7 +527,7 @@ func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicy() SignOnPolicyActi
 
 // GetDeviceAuthenticationPolicyOk returns a tuple with the DeviceAuthenticationPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicyOk() (*SignOnPolicyActionMFADeviceAuthenticationPolicy, bool) {
+func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicyOk() (*SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy, bool) {
 	if o == nil || o.DeviceAuthenticationPolicy == nil {
 		return nil, false
 	}
@@ -324,8 +543,8 @@ func (o *SignOnPolicyActionMFA) HasDeviceAuthenticationPolicy() bool {
 	return false
 }
 
-// SetDeviceAuthenticationPolicy gets a reference to the given SignOnPolicyActionMFADeviceAuthenticationPolicy and assigns it to the DeviceAuthenticationPolicy field.
-func (o *SignOnPolicyActionMFA) SetDeviceAuthenticationPolicy(v SignOnPolicyActionMFADeviceAuthenticationPolicy) {
+// SetDeviceAuthenticationPolicy gets a reference to the given SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy and assigns it to the DeviceAuthenticationPolicy field.
+func (o *SignOnPolicyActionMFA) SetDeviceAuthenticationPolicy(v SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) {
 	o.DeviceAuthenticationPolicy = &v
 }
 
@@ -363,6 +582,27 @@ func (o *SignOnPolicyActionMFA) SetNoDeviceMode(v EnumSignOnPolicyNoDeviceMode) 
 
 func (o SignOnPolicyActionMFA) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
+	if o.Conditions != nil {
+		toSerialize["conditions"] = o.Conditions
+	}
+	if o.Environment != nil {
+		toSerialize["environment"] = o.Environment
+	}
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["priority"] = o.Priority
+	}
+	if o.SignOnPolicy != nil {
+		toSerialize["signOnPolicy"] = o.SignOnPolicy
+	}
+	if true {
+		toSerialize["type"] = o.Type
+	}
 	if o.Authenticator != nil {
 		toSerialize["authenticator"] = o.Authenticator
 	}
