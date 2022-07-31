@@ -17,7 +17,7 @@ import (
 // SignOnPolicyActionIDFirst struct for SignOnPolicyActionIDFirst
 type SignOnPolicyActionIDFirst struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonCondition `json:"condition,omitempty"`
+	Conditions *SignOnPolicyActionCommonConditions `json:"conditions,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -92,36 +92,36 @@ func (o *SignOnPolicyActionIDFirst) SetLinks(v map[string]interface{}) {
 	o.Links = v
 }
 
-// GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDFirst) GetCondition() SignOnPolicyActionCommonCondition {
-	if o == nil || o.Condition == nil {
-		var ret SignOnPolicyActionCommonCondition
+// GetConditions returns the Conditions field value if set, zero value otherwise.
+func (o *SignOnPolicyActionIDFirst) GetConditions() SignOnPolicyActionCommonConditions {
+	if o == nil || o.Conditions == nil {
+		var ret SignOnPolicyActionCommonConditions
 		return ret
 	}
-	return *o.Condition
+	return *o.Conditions
 }
 
-// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
+// GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDFirst) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool) {
-	if o == nil || o.Condition == nil {
+func (o *SignOnPolicyActionIDFirst) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool) {
+	if o == nil || o.Conditions == nil {
 		return nil, false
 	}
-	return o.Condition, true
+	return o.Conditions, true
 }
 
-// HasCondition returns a boolean if a field has been set.
-func (o *SignOnPolicyActionIDFirst) HasCondition() bool {
-	if o != nil && o.Condition != nil {
+// HasConditions returns a boolean if a field has been set.
+func (o *SignOnPolicyActionIDFirst) HasConditions() bool {
+	if o != nil && o.Conditions != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCondition gets a reference to the given SignOnPolicyActionCommonCondition and assigns it to the Condition field.
-func (o *SignOnPolicyActionIDFirst) SetCondition(v SignOnPolicyActionCommonCondition) {
-	o.Condition = &v
+// SetConditions gets a reference to the given SignOnPolicyActionCommonConditions and assigns it to the Conditions field.
+func (o *SignOnPolicyActionIDFirst) SetConditions(v SignOnPolicyActionCommonConditions) {
+	o.Conditions = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -465,8 +465,8 @@ func (o SignOnPolicyActionIDFirst) MarshalJSON() ([]byte, error) {
 	if o.Links != nil {
 		toSerialize["_links"] = o.Links
 	}
-	if o.Condition != nil {
-		toSerialize["condition"] = o.Condition
+	if o.Conditions != nil {
+		toSerialize["conditions"] = o.Conditions
 	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
