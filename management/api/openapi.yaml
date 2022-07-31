@@ -501,6 +501,7 @@ paths:
       - Active Identity Counts
   /v1/environments/{environmentID}/agreements:
     get:
+      operationId: readAllAgreements
       parameters:
       - explode: false
         in: path
@@ -536,12 +537,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Agreements
       tags:
       - Agreement Management > Agreements Resources
     post:
+      operationId: createAgreement
       parameters:
       - explode: false
         in: path
@@ -554,12 +558,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: Agreement_2
-                description: Terms of service agreement
-                reconsentPeriodDays: 180
-                enabled: false
-              type: object
+              $ref: '#/components/schemas/Agreement'
       responses:
         "400":
           content:
@@ -601,13 +600,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agreement'
           description: Successful response
       summary: CREATE Agreement
       tags:
       - Agreement Management > Agreements Resources
   /v1/environments/{environmentID}/agreements/{agreementID}:
     delete:
+      operationId: deleteAgreement
       parameters:
       - explode: false
         in: path
@@ -654,6 +656,7 @@ paths:
       tags:
       - Agreement Management > Agreements Resources
     get:
+      operationId: readOneAgreement
       parameters:
       - explode: false
         in: path
@@ -696,12 +699,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agreement'
           description: Successful response
       summary: READ One Agreement
       tags:
       - Agreement Management > Agreements Resources
     put:
+      operationId: updateAgreement
       parameters:
       - explode: false
         in: path
@@ -721,10 +727,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: "Agreement_1_UPDATED_{{$timestamp}}"
-                reconsentPeriodDays: 360
-              type: object
+              $ref: '#/components/schemas/Agreement'
       responses:
         "400":
           content:
@@ -759,13 +762,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agreement'
           description: Successful response
       summary: UPDATE Agreement
       tags:
       - Agreement Management > Agreements Resources
   /v1/environments/{environmentID}/agreements/{agreementID}/languages:
     get:
+      operationId: readAllAgreementLanguages
       parameters:
       - explode: false
         in: path
@@ -808,12 +814,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Languages
       tags:
       - Agreement Management > Agreement Languages Resources
     post:
+      operationId: createAgreementLanguage
       parameters:
       - explode: false
         in: path
@@ -833,11 +842,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                locale: en-US
-                displayName: Language_1
-                enabled: true
-              type: object
+              $ref: '#/components/schemas/AgreementLanguage'
       responses:
         "400":
           content:
@@ -879,13 +884,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgreementLanguage'
           description: Successful response
       summary: CREATE Language
       tags:
       - Agreement Management > Agreement Languages Resources
   /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}:
     delete:
+      operationId: deleteAgreementLanguage
       parameters:
       - explode: false
         in: path
@@ -939,6 +947,7 @@ paths:
       tags:
       - Agreement Management > Agreement Languages Resources
     get:
+      operationId: readOneAgreementLanguage
       parameters:
       - explode: false
         in: path
@@ -988,12 +997,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgreementLanguage'
           description: Successful response
       summary: READ One Language
       tags:
       - Agreement Management > Agreement Languages Resources
     put:
+      operationId: updateAgreementLanguage
       parameters:
       - explode: false
         in: path
@@ -1058,13 +1070,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgreementLanguage'
           description: Successful response
       summary: UPDATE Language
       tags:
       - Agreement Management > Agreement Languages Resources
   /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions:
     get:
+      operationId: readAllAgreementLanguageRevisions
       parameters:
       - explode: false
         in: path
@@ -1114,12 +1129,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Revisions
       tags:
       - Agreement Management > Agreement Revisions Resources
     post:
+      operationId: createAgreementLanguageRevision
       parameters:
       - explode: false
         in: path
@@ -1146,11 +1164,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                effectiveAt: 2099-08-01T22:45:44.497Z
-                requireReconsent: false
-                text: "So, you agree to all my terms, right?"
-              type: object
+              $ref: '#/components/schemas/AgreementLanguageRevision'
       responses:
         "400":
           content:
@@ -1192,13 +1206,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgreementLanguageRevision'
           description: Successful response
       summary: CREATE Revision
       tags:
       - Agreement Management > Agreement Revisions Resources
   /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID}:
     delete:
+      operationId: deleteAgreementLanguageRevision
       parameters:
       - explode: false
         in: path
@@ -1259,6 +1276,7 @@ paths:
       tags:
       - Agreement Management > Agreement Revisions Resources
     get:
+      operationId: readOneAgreementLanguageRevision
       parameters:
       - explode: false
         in: path
@@ -1315,7 +1333,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgreementLanguageRevision'
           description: Successful response
       summary: READ One Revision
       tags:
@@ -18197,6 +18217,166 @@ components:
       - ENABLED
       - DISABLED
       type: string
+    Agreement:
+      example:
+        consentCountsUpdatedAt: consentCountsUpdatedAt
+        environment:
+          id: id
+        expiredUserConsents: 0
+        totalUserConsents: 1
+        name: name
+        description: description
+        id: id
+        enabled: true
+        reconsentPeriodDays: 6
+      properties:
+        consentCountsUpdatedAt:
+          description: The time the consent count metric was last updated. This value
+            is typically updated once every 24 hours.
+          readOnly: true
+          type: string
+        description:
+          description: A string that specifies the description of the agreement.
+          type: string
+        enabled:
+          description: "A boolean that specifies the current enabled state of the\
+            \ agreement. This is a required property. The agreement must support the\
+            \ default language to be enabled. It cannot be disabled if it is referenced\
+            \ by a sign-on action. When an agreement is disabled, it is not used anywhere\
+            \ it is configured across PingOne."
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        expiredUserConsents:
+          description: "An integer that identifies the number of users who have consented\
+            \ to the agreement, but their consent has expired. This value is last\
+            \ calculated at the consentCountsUpdatedAt time."
+          readOnly: true
+          type: integer
+        id:
+          description: A string that specifies the agreement ID.
+          readOnly: true
+          type: string
+        name:
+          description: A string that specifies the name of the agreement resource.
+            This is a required property.
+          type: string
+        reconsentPeriodDays:
+          description: A number that represents the number of days until a consent
+            to this agreement expires.
+          type: integer
+        totalUserConsents:
+          description: An integer that identifies the total number of users who have
+            consented to the agreement. This value is last calculated at the consentCountsUpdatedAt
+            time.
+          readOnly: true
+          type: integer
+      required:
+      - enabled
+      - name
+      type: object
+    AgreementLanguage:
+      example:
+        currentRevision:
+          id: id
+        agreement:
+          id: id
+        displayName: displayName
+        userExperience:
+          acceptCheckboxText: acceptCheckboxText
+          declineButtonText: declineButtonText
+          continueButtonText: continueButtonText
+        id: id
+        locale: locale
+        enabled: true
+      properties:
+        agreement:
+          $ref: '#/components/schemas/AgreementLanguage_agreement'
+        currentRevision:
+          $ref: '#/components/schemas/AgreementLanguage_currentRevision'
+        displayName:
+          description: A string that is used as the title of the agreement for the
+            language presented to the user. This is a required property.
+          type: string
+        enabled:
+          description: A boolean that maps directly with a language being enabled
+            or displayed for the environment within the platform. This is a required
+            property.
+          type: boolean
+        id:
+          description: A string that specifies the language ID.
+          readOnly: true
+          type: string
+        locale:
+          description: "A string that specifies the tag for identifying the language\
+            \ resource associated with this agreement consent (for example, en-US).\
+            \ This is a required property. For more information about language tags,\
+            \ see Tags for Identifying Languages."
+          type: string
+        userExperience:
+          $ref: '#/components/schemas/AgreementLanguage_userExperience'
+      required:
+      - displayName
+      - enabled
+      - locale
+      type: object
+    AgreementLanguageRevision:
+      example:
+        agreement:
+          id: id
+        notValidAfter: notValidAfter
+        effectiveAt: effectiveAt
+        language:
+          id: id
+        requiresReconsent: true
+        id: id
+        text: text
+        contentType: text/html
+      properties:
+        agreement:
+          $ref: '#/components/schemas/AgreementLanguage_agreement'
+        contentType:
+          description: "An immutable string that specifies the content type of text.\
+            \ Options are text/html and text/plain, as defined by rfc-6838 and Media\
+            \ Types/text. This attribute is supported in POST requests only."
+          enum:
+          - text/html
+          - text/plain
+          type: string
+        effectiveAt:
+          description: "A date that specifies the start date that the revision is\
+            \ presented to users. This property value can be modified only if the\
+            \ current value is a date that has not already passed. The effective date\
+            \ must be unique for each language agreement, and the property value can\
+            \ be the present date or a future date only."
+          type: string
+        id:
+          description: A read-only string that specifies the revision ID.
+          readOnly: true
+          type: string
+        language:
+          $ref: '#/components/schemas/AgreementLanguageRevision_language'
+        notValidAfter:
+          description: "A date that specifies whether the revision is still valid\
+            \ in the context of all revisions for a language. This property is calculated\
+            \ dynamically at read time, taking into consideration the agreement language,\
+            \ the language enabled property, and the agreement enabled property. When\
+            \ a new revision is added, the notValidAfter property values for all other\
+            \ previous revisions might be impacted. For example, if a new revision\
+            \ becomes effective and it forces reconsent, then all older revisions\
+            \ are no longer valid."
+          readOnly: true
+          type: string
+        requiresReconsent:
+          description: A boolean that specifies whether the user is required to provide
+            consent to the language revision after it becomes effective.
+          type: boolean
+        text:
+          description: "An immutable string that specifies text or HTML for the revision.\
+            \ This attribute is supported in POST requests only. For more information,\
+            \ see contentType."
+          type: string
+      type: object
     Application:
       properties:
         accessControl:
@@ -18424,7 +18604,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 3.5571952270680973
+        size: 2.8841621266687802
         _embedded:
           grants:
           - createdAt: createdAt
@@ -18450,6 +18630,31 @@ components:
           gateways:
           - null
           - null
+          languages:
+          - currentRevision:
+              id: id
+            agreement:
+              id: id
+            displayName: displayName
+            userExperience:
+              acceptCheckboxText: acceptCheckboxText
+              declineButtonText: declineButtonText
+              continueButtonText: continueButtonText
+            id: id
+            locale: locale
+            enabled: true
+          - currentRevision:
+              id: id
+            agreement:
+              id: id
+            displayName: displayName
+            userExperience:
+              acceptCheckboxText: acceptCheckboxText
+              declineButtonText: declineButtonText
+              continueButtonText: continueButtonText
+            id: id
+            locale: locale
+            enabled: true
           credentials:
           - createdAt: createdAt
             authUrl: authUrl
@@ -18515,9 +18720,30 @@ components:
             - applicableTo
             - applicableTo
             id: id
+          agreements:
+          - consentCountsUpdatedAt: consentCountsUpdatedAt
+            environment:
+              id: id
+            expiredUserConsents: 0
+            totalUserConsents: 1
+            name: name
+            description: description
+            id: id
+            enabled: true
+            reconsentPeriodDays: 6
+          - consentCountsUpdatedAt: consentCountsUpdatedAt
+            environment:
+              id: id
+            expiredUserConsents: 0
+            totalUserConsents: 1
+            name: name
+            description: description
+            id: id
+            enabled: true
+            reconsentPeriodDays: 6
           groups:
           - directMemberCounts:
-              users: 5
+              users: 7
             environment:
               id: id
             name: name
@@ -18527,11 +18753,11 @@ components:
             customData: "{}"
             id: id
             totalMemberCounts:
-              users: 5
+              users: 9
             population:
               id: id
           - directMemberCounts:
-              users: 5
+              users: 7
             environment:
               id: id
             name: name
@@ -18541,7 +18767,7 @@ components:
             customData: "{}"
             id: id
             totalMemberCounts:
-              users: 5
+              users: 9
             population:
               id: id
           resources:
@@ -18649,7 +18875,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 9
+              secondsUntilUnlock: 6
               unlockAt: unlockAt
               status: null
             username: username
@@ -18715,7 +18941,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 9
+              secondsUntilUnlock: 6
               unlockAt: unlockAt
               status: null
             username: username
@@ -18833,14 +19059,14 @@ components:
           - id: id
           passwordPolicies:
           - minCharacters:
-              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-              "0123456789": 7
+              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+              "0123456789": 5
               ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-              abcdefghijklmnopqrstuvwxyz: 6
-            populationCount: 9
+              abcdefghijklmnopqrstuvwxyz: 4
+            populationCount: 8
             length:
-              min: 16
-              max: 9
+              min: 25
+              max: 4
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -18848,7 +19074,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 4
+            minComplexity: 9
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -18859,22 +19085,22 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 5
+            minUniqueCharacters: 6
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 1
+            maxRepeatedCharacters: 6
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-              "0123456789": 7
+              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+              "0123456789": 5
               ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-              abcdefghijklmnopqrstuvwxyz: 6
-            populationCount: 9
+              abcdefghijklmnopqrstuvwxyz: 4
+            populationCount: 8
             length:
-              min: 16
-              max: 9
+              min: 25
+              max: 4
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -18882,7 +19108,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 4
+            minComplexity: 9
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -18893,16 +19119,37 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 5
+            minUniqueCharacters: 6
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 1
+            maxRepeatedCharacters: 6
             minAgeDays: 1
             updatedAt: updatedAt
           attributes:
           - null
           - null
+          revisions:
+          - agreement:
+              id: id
+            notValidAfter: notValidAfter
+            effectiveAt: effectiveAt
+            language:
+              id: id
+            requiresReconsent: true
+            id: id
+            text: text
+            contentType: text/html
+          - agreement:
+              id: id
+            notValidAfter: notValidAfter
+            effectiveAt: effectiveAt
+            language:
+              id: id
+            requiresReconsent: true
+            id: id
+            text: text
+            contentType: text/html
           scopes:
           - createdAt: createdAt
             environment:
@@ -18969,7 +19216,7 @@ components:
             updatedAt: updatedAt
           gatewayInstances:
           - lastReportedAt: lastReportedAt
-            responseTimeMillis: 1.4658129805029452
+            responseTimeMillis: 2.3021358869347655
             version:
               updateStatus: null
               versionNumber: versionNumber
@@ -18980,17 +19227,17 @@ components:
             - currentErrors
             - currentErrors
             hostname: hostname
-            operationsPerSecond: 6.027456183070403
+            operationsPerSecond: 5.637376656633329
             credential:
               id: id
             healthStatus: null
             initializedAt: initializedAt
             id: id
-            busyPercentage: 0
+            busyPercentage: 5
             gateway:
               id: id
           - lastReportedAt: lastReportedAt
-            responseTimeMillis: 1.4658129805029452
+            responseTimeMillis: 2.3021358869347655
             version:
               updateStatus: null
               versionNumber: versionNumber
@@ -19001,19 +19248,19 @@ components:
             - currentErrors
             - currentErrors
             hostname: hostname
-            operationsPerSecond: 6.027456183070403
+            operationsPerSecond: 5.637376656633329
             credential:
               id: id
             healthStatus: null
             initializedAt: initializedAt
             id: id
-            busyPercentage: 0
+            busyPercentage: 5
             gateway:
               id: id
           applications:
           - null
           - null
-        count: 6.438423552598547
+        count: 1.284659006116532
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -19157,7 +19404,7 @@ components:
     GatewayInstance:
       example:
         lastReportedAt: lastReportedAt
-        responseTimeMillis: 1.4658129805029452
+        responseTimeMillis: 2.3021358869347655
         version:
           updateStatus: null
           versionNumber: versionNumber
@@ -19168,13 +19415,13 @@ components:
         - currentErrors
         - currentErrors
         hostname: hostname
-        operationsPerSecond: 6.027456183070403
+        operationsPerSecond: 5.637376656633329
         credential:
           id: id
         healthStatus: null
         initializedAt: initializedAt
         id: id
-        busyPercentage: 0
+        busyPercentage: 5
         gateway:
           id: id
       properties:
@@ -19231,7 +19478,7 @@ components:
     Group:
       example:
         directMemberCounts:
-          users: 5
+          users: 7
         environment:
           id: id
         name: name
@@ -19241,7 +19488,7 @@ components:
         customData: "{}"
         id: id
         totalMemberCounts:
-          users: 5
+          users: 9
         population:
           id: id
       properties:
@@ -19430,14 +19677,14 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-          "0123456789": 7
+          ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+          "0123456789": 5
           ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-          abcdefghijklmnopqrstuvwxyz: 6
-        populationCount: 9
+          abcdefghijklmnopqrstuvwxyz: 4
+        populationCount: 8
         length:
-          min: 16
-          max: 9
+          min: 25
+          max: 4
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -19445,7 +19692,7 @@ components:
         history:
           retentionDays: 1
           count: 1
-        minComplexity: 4
+        minComplexity: 9
         excludesProfileData: true
         currentPassword: currentPassword
         createdAt: createdAt
@@ -19456,11 +19703,11 @@ components:
           durationSeconds: 1
           failureCount: 1
         bypassPolicy: false
-        minUniqueCharacters: 5
+        minUniqueCharacters: 6
         name: name
         maxAgeDays: 1
         id: id
-        maxRepeatedCharacters: 1
+        maxRepeatedCharacters: 6
         minAgeDays: 1
         updatedAt: updatedAt
       properties:
@@ -20292,7 +20539,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 9
+          secondsUntilUnlock: 6
           unlockAt: unlockAt
           status: null
         username: username
@@ -20582,6 +20829,65 @@ components:
         id:
           description: The group ID to add the user to
           type: string
+      type: object
+    AgreementLanguage_agreement:
+      example:
+        id: id
+      properties:
+        id:
+          description: A read-only string of the ID for the agreement resource for
+            this revision.
+          type: string
+      readOnly: true
+      type: object
+    AgreementLanguage_currentRevision:
+      example:
+        id: id
+      properties:
+        id:
+          description: A relationship that specifies the current revision associated
+            with this language resource. The current revision is the one shown to
+            users for new consents in the language.
+          type: string
+      readOnly: true
+      type: object
+    AgreementLanguage_userExperience:
+      example:
+        acceptCheckboxText: acceptCheckboxText
+        declineButtonText: declineButtonText
+        continueButtonText: continueButtonText
+      properties:
+        acceptCheckboxText:
+          description: "A string that specifies the text next to the \"accept\" checkbox\
+            \ in the end user interface. Accepted character are unicode letters, combining\
+            \ marks, numeric characters, whitespace, and punctuation characters (regex\
+            \ ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$)."
+          pattern: "^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$"
+          type: string
+        continueButtonText:
+          description: "A string that specifies the text of the \"continue\" button\
+            \ in the end user interface. Accepted character are unicode letters, combining\
+            \ marks, numeric characters, whitespace, and punctuation characters (regex\
+            \ ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$)."
+          pattern: "^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$"
+          type: string
+        declineButtonText:
+          description: "A string that specifies the text of the \"decline\" button\
+            \ in the end user interface. Accepted character are unicode letters, combining\
+            \ marks, numeric characters, whitespace, and punctuation characters (regex\
+            \ ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$)."
+          pattern: "^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$"
+          type: string
+      type: object
+    AgreementLanguageRevision_language:
+      example:
+        id: id
+      properties:
+        id:
+          description: A relationship that specifies the language resource associated
+            with this revision.
+          type: string
+      readOnly: true
       type: object
     Application_accessControl_role:
       properties:
@@ -20974,6 +21280,31 @@ components:
         gateways:
         - null
         - null
+        languages:
+        - currentRevision:
+            id: id
+          agreement:
+            id: id
+          displayName: displayName
+          userExperience:
+            acceptCheckboxText: acceptCheckboxText
+            declineButtonText: declineButtonText
+            continueButtonText: continueButtonText
+          id: id
+          locale: locale
+          enabled: true
+        - currentRevision:
+            id: id
+          agreement:
+            id: id
+          displayName: displayName
+          userExperience:
+            acceptCheckboxText: acceptCheckboxText
+            declineButtonText: declineButtonText
+            continueButtonText: continueButtonText
+          id: id
+          locale: locale
+          enabled: true
         credentials:
         - createdAt: createdAt
           authUrl: authUrl
@@ -21039,9 +21370,30 @@ components:
           - applicableTo
           - applicableTo
           id: id
+        agreements:
+        - consentCountsUpdatedAt: consentCountsUpdatedAt
+          environment:
+            id: id
+          expiredUserConsents: 0
+          totalUserConsents: 1
+          name: name
+          description: description
+          id: id
+          enabled: true
+          reconsentPeriodDays: 6
+        - consentCountsUpdatedAt: consentCountsUpdatedAt
+          environment:
+            id: id
+          expiredUserConsents: 0
+          totalUserConsents: 1
+          name: name
+          description: description
+          id: id
+          enabled: true
+          reconsentPeriodDays: 6
         groups:
         - directMemberCounts:
-            users: 5
+            users: 7
           environment:
             id: id
           name: name
@@ -21051,11 +21403,11 @@ components:
           customData: "{}"
           id: id
           totalMemberCounts:
-            users: 5
+            users: 9
           population:
             id: id
         - directMemberCounts:
-            users: 5
+            users: 7
           environment:
             id: id
           name: name
@@ -21065,7 +21417,7 @@ components:
           customData: "{}"
           id: id
           totalMemberCounts:
-            users: 5
+            users: 9
           population:
             id: id
         resources:
@@ -21173,7 +21525,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 9
+            secondsUntilUnlock: 6
             unlockAt: unlockAt
             status: null
           username: username
@@ -21239,7 +21591,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 9
+            secondsUntilUnlock: 6
             unlockAt: unlockAt
             status: null
           username: username
@@ -21357,14 +21709,14 @@ components:
         - id: id
         passwordPolicies:
         - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-            "0123456789": 7
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+            "0123456789": 5
             ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-            abcdefghijklmnopqrstuvwxyz: 6
-          populationCount: 9
+            abcdefghijklmnopqrstuvwxyz: 4
+          populationCount: 8
           length:
-            min: 16
-            max: 9
+            min: 25
+            max: 4
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -21372,7 +21724,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 4
+          minComplexity: 9
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -21383,22 +21735,22 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 5
+          minUniqueCharacters: 6
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 1
+          maxRepeatedCharacters: 6
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-            "0123456789": 7
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+            "0123456789": 5
             ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-            abcdefghijklmnopqrstuvwxyz: 6
-          populationCount: 9
+            abcdefghijklmnopqrstuvwxyz: 4
+          populationCount: 8
           length:
-            min: 16
-            max: 9
+            min: 25
+            max: 4
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -21406,7 +21758,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 4
+          minComplexity: 9
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -21417,16 +21769,37 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 5
+          minUniqueCharacters: 6
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 1
+          maxRepeatedCharacters: 6
           minAgeDays: 1
           updatedAt: updatedAt
         attributes:
         - null
         - null
+        revisions:
+        - agreement:
+            id: id
+          notValidAfter: notValidAfter
+          effectiveAt: effectiveAt
+          language:
+            id: id
+          requiresReconsent: true
+          id: id
+          text: text
+          contentType: text/html
+        - agreement:
+            id: id
+          notValidAfter: notValidAfter
+          effectiveAt: effectiveAt
+          language:
+            id: id
+          requiresReconsent: true
+          id: id
+          text: text
+          contentType: text/html
         scopes:
         - createdAt: createdAt
           environment:
@@ -21493,7 +21866,7 @@ components:
           updatedAt: updatedAt
         gatewayInstances:
         - lastReportedAt: lastReportedAt
-          responseTimeMillis: 1.4658129805029452
+          responseTimeMillis: 2.3021358869347655
           version:
             updateStatus: null
             versionNumber: versionNumber
@@ -21504,17 +21877,17 @@ components:
           - currentErrors
           - currentErrors
           hostname: hostname
-          operationsPerSecond: 6.027456183070403
+          operationsPerSecond: 5.637376656633329
           credential:
             id: id
           healthStatus: null
           initializedAt: initializedAt
           id: id
-          busyPercentage: 0
+          busyPercentage: 5
           gateway:
             id: id
         - lastReportedAt: lastReportedAt
-          responseTimeMillis: 1.4658129805029452
+          responseTimeMillis: 2.3021358869347655
           version:
             updateStatus: null
             versionNumber: versionNumber
@@ -21525,13 +21898,13 @@ components:
           - currentErrors
           - currentErrors
           hostname: hostname
-          operationsPerSecond: 6.027456183070403
+          operationsPerSecond: 5.637376656633329
           credential:
             id: id
           healthStatus: null
           initializedAt: initializedAt
           id: id
-          busyPercentage: 0
+          busyPercentage: 5
           gateway:
             id: id
         applications:
@@ -21541,6 +21914,10 @@ components:
         actions:
           items:
             $ref: '#/components/schemas/SignOnPolicyAction'
+          type: array
+        agreements:
+          items:
+            $ref: '#/components/schemas/Agreement'
           type: array
         attributes:
           items:
@@ -21578,6 +21955,10 @@ components:
           items:
             $ref: '#/components/schemas/GroupMembership'
           type: array
+        languages:
+          items:
+            $ref: '#/components/schemas/AgreementLanguage'
+          type: array
         organizations:
           items:
             $ref: '#/components/schemas/Organization'
@@ -21593,6 +21974,10 @@ components:
         resources:
           items:
             $ref: '#/components/schemas/Resource'
+          type: array
+        revisions:
+          items:
+            $ref: '#/components/schemas/AgreementLanguageRevision'
           type: array
         scopes:
           items:
@@ -21823,7 +22208,7 @@ components:
         \ Since these members were explicitly added to the group, they can be removed\
         \ from the group with DELETE /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}."
       example:
-        users: 5
+        users: 7
       properties:
         users:
           description: Number of users with direct membership
@@ -21836,7 +22221,7 @@ components:
         \ with the include=totalMemberCounts query parameter to retrieve this property.\
         \ This property is not returned with a list of groups."
       example:
-        users: 5
+        users: 9
       properties:
         users:
           description: Number of users with direct membership
@@ -21943,8 +22328,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 16
-        max: 9
+        min: 25
+        max: 4
       properties:
         max:
           default: 255
@@ -21986,10 +22371,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 1
-        "0123456789": 7
+        ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+        "0123456789": 5
         ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-        abcdefghijklmnopqrstuvwxyz: 6
+        abcdefghijklmnopqrstuvwxyz: 4
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)
@@ -22365,7 +22750,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 9
+        secondsUntilUnlock: 6
         unlockAt: unlockAt
         status: null
       properties:

@@ -4,17 +4,87 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDAgreementsAgreementIDDelete**](AgreementManagementAgreementsResourcesApi.md#V1EnvironmentsEnvironmentIDAgreementsAgreementIDDelete) | **Delete** /v1/environments/{environmentID}/agreements/{agreementID} | DELETE Agreement
-[**V1EnvironmentsEnvironmentIDAgreementsAgreementIDGet**](AgreementManagementAgreementsResourcesApi.md#V1EnvironmentsEnvironmentIDAgreementsAgreementIDGet) | **Get** /v1/environments/{environmentID}/agreements/{agreementID} | READ One Agreement
-[**V1EnvironmentsEnvironmentIDAgreementsAgreementIDPut**](AgreementManagementAgreementsResourcesApi.md#V1EnvironmentsEnvironmentIDAgreementsAgreementIDPut) | **Put** /v1/environments/{environmentID}/agreements/{agreementID} | UPDATE Agreement
-[**V1EnvironmentsEnvironmentIDAgreementsGet**](AgreementManagementAgreementsResourcesApi.md#V1EnvironmentsEnvironmentIDAgreementsGet) | **Get** /v1/environments/{environmentID}/agreements | READ All Agreements
-[**V1EnvironmentsEnvironmentIDAgreementsPost**](AgreementManagementAgreementsResourcesApi.md#V1EnvironmentsEnvironmentIDAgreementsPost) | **Post** /v1/environments/{environmentID}/agreements | CREATE Agreement
+[**CreateAgreement**](AgreementManagementAgreementsResourcesApi.md#CreateAgreement) | **Post** /v1/environments/{environmentID}/agreements | CREATE Agreement
+[**DeleteAgreement**](AgreementManagementAgreementsResourcesApi.md#DeleteAgreement) | **Delete** /v1/environments/{environmentID}/agreements/{agreementID} | DELETE Agreement
+[**ReadAllAgreements**](AgreementManagementAgreementsResourcesApi.md#ReadAllAgreements) | **Get** /v1/environments/{environmentID}/agreements | READ All Agreements
+[**ReadOneAgreement**](AgreementManagementAgreementsResourcesApi.md#ReadOneAgreement) | **Get** /v1/environments/{environmentID}/agreements/{agreementID} | READ One Agreement
+[**UpdateAgreement**](AgreementManagementAgreementsResourcesApi.md#UpdateAgreement) | **Put** /v1/environments/{environmentID}/agreements/{agreementID} | UPDATE Agreement
 
 
 
-## V1EnvironmentsEnvironmentIDAgreementsAgreementIDDelete
+## CreateAgreement
 
-> V1EnvironmentsEnvironmentIDAgreementsAgreementIDDelete(ctx, environmentID, agreementID).Execute()
+> Agreement CreateAgreement(ctx, environmentID).Agreement(agreement).Execute()
+
+CREATE Agreement
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    agreement := *openapiclient.NewAgreement(false, "Name_example") // Agreement |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.CreateAgreement(context.Background(), environmentID).Agreement(agreement).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.CreateAgreement``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateAgreement`: Agreement
+    fmt.Fprintf(os.Stdout, "Response from `AgreementManagementAgreementsResourcesApi.CreateAgreement`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAgreementRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **agreement** | [**Agreement**](Agreement.md) |  | 
+
+### Return type
+
+[**Agreement**](Agreement.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteAgreement
+
+> DeleteAgreement(ctx, environmentID, agreementID).Execute()
 
 DELETE Agreement
 
@@ -36,9 +106,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsAgreementIDDelete(context.Background(), environmentID, agreementID).Execute()
+    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.DeleteAgreement(context.Background(), environmentID, agreementID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsAgreementIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.DeleteAgreement``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -55,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDAgreementsAgreementIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteAgreementRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +151,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDAgreementsAgreementIDGet
+## ReadAllAgreements
 
-> V1EnvironmentsEnvironmentIDAgreementsAgreementIDGet(ctx, environmentID, agreementID).Execute()
+> EntityArray ReadAllAgreements(ctx, environmentID).Execute()
+
+READ All Agreements
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.ReadAllAgreements(context.Background(), environmentID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.ReadAllAgreements``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllAgreements`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `AgreementManagementAgreementsResourcesApi.ReadAllAgreements`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllAgreementsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneAgreement
+
+> Agreement ReadOneAgreement(ctx, environmentID, agreementID).Execute()
 
 READ One Agreement
 
@@ -105,11 +243,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsAgreementIDGet(context.Background(), environmentID, agreementID).Execute()
+    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.ReadOneAgreement(context.Background(), environmentID, agreementID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsAgreementIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.ReadOneAgreement``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneAgreement`: Agreement
+    fmt.Fprintf(os.Stdout, "Response from `AgreementManagementAgreementsResourcesApi.ReadOneAgreement`: %v\n", resp)
 }
 ```
 
@@ -124,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDAgreementsAgreementIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneAgreementRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -134,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Agreement**](Agreement.md)
 
 ### Authorization
 
@@ -150,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDAgreementsAgreementIDPut
+## UpdateAgreement
 
-> V1EnvironmentsEnvironmentIDAgreementsAgreementIDPut(ctx, environmentID, agreementID).Body(body).Execute()
+> Agreement UpdateAgreement(ctx, environmentID, agreementID).Agreement(agreement).Execute()
 
 UPDATE Agreement
 
@@ -171,15 +311,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     agreementID := "agreementID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    agreement := *openapiclient.NewAgreement(false, "Name_example") // Agreement |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsAgreementIDPut(context.Background(), environmentID, agreementID).Body(body).Execute()
+    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.UpdateAgreement(context.Background(), environmentID, agreementID).Agreement(agreement).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsAgreementIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.UpdateAgreement``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateAgreement`: Agreement
+    fmt.Fprintf(os.Stdout, "Response from `AgreementManagementAgreementsResourcesApi.UpdateAgreement`: %v\n", resp)
 }
 ```
 
@@ -194,152 +336,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDAgreementsAgreementIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateAgreementRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **agreement** | [**Agreement**](Agreement.md) |  | 
 
 ### Return type
 
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDAgreementsGet
-
-> V1EnvironmentsEnvironmentIDAgreementsGet(ctx, environmentID).Execute()
-
-READ All Agreements
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsGet(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDAgreementsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDAgreementsPost
-
-> V1EnvironmentsEnvironmentIDAgreementsPost(ctx, environmentID).Body(body).Execute()
-
-CREATE Agreement
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsPost(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AgreementManagementAgreementsResourcesApi.V1EnvironmentsEnvironmentIDAgreementsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDAgreementsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
+[**Agreement**](Agreement.md)
 
 ### Authorization
 
