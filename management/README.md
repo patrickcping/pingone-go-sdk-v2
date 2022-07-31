@@ -223,16 +223,16 @@ Class | Method | HTTP request | Description
 *IdentityPropagationProvisioningPropagationStoresApi* | [**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete**](docs/IdentityPropagationProvisioningPropagationStoresApi.md#v1environmentsenvironmentidpropagationstoresstoreiddelete) | **Delete** /v1/environments/{environmentID}/propagation/stores/{storeID} | DELETE Store
 *IdentityPropagationProvisioningPropagationStoresApi* | [**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGet**](docs/IdentityPropagationProvisioningPropagationStoresApi.md#v1environmentsenvironmentidpropagationstoresstoreidget) | **Get** /v1/environments/{environmentID}/propagation/stores/{storeID} | READ One Store
 *IdentityPropagationProvisioningPropagationStoresApi* | [**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPut**](docs/IdentityPropagationProvisioningPropagationStoresApi.md#v1environmentsenvironmentidpropagationstoresstoreidput) | **Put** /v1/environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
-*IdentityProviderManagementIdentityProviderAttributesApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGet**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#v1environmentsenvironmentididentityprovidersprovideridattributesget) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes | READ All Identity Provider Attributes
-*IdentityProviderManagementIdentityProviderAttributesApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDelete**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#v1environmentsenvironmentididentityprovidersprovideridattributesidpattriddelete) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{idpAttrID} | DELETE Identity Provider Attribute
-*IdentityProviderManagementIdentityProviderAttributesApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGet**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#v1environmentsenvironmentididentityprovidersprovideridattributesidpattridget) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{idpAttrID} | READ One Identity Provider Attribute
-*IdentityProviderManagementIdentityProviderAttributesApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPut**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#v1environmentsenvironmentididentityprovidersprovideridattributesidpattridput) | **Put** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{idpAttrID} | UPDATE Identity Provider Attribute
-*IdentityProviderManagementIdentityProviderAttributesApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPost**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#v1environmentsenvironmentididentityprovidersprovideridattributespost) | **Post** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes | CREATE Identity Provider Attribute (SAML)
-*IdentityProviderManagementIdentityProvidersApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersGet**](docs/IdentityProviderManagementIdentityProvidersApi.md#v1environmentsenvironmentididentityprovidersget) | **Get** /v1/environments/{environmentID}/identityProviders | READ All Identity Providers
-*IdentityProviderManagementIdentityProvidersApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersPost**](docs/IdentityProviderManagementIdentityProvidersApi.md#v1environmentsenvironmentididentityproviderspost) | **Post** /v1/environments/{environmentID}/identityProviders | Discover OpenID Provider Metadata
-*IdentityProviderManagementIdentityProvidersApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDDelete**](docs/IdentityProviderManagementIdentityProvidersApi.md#v1environmentsenvironmentididentityprovidersprovideriddelete) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID} | DELETE Identity Provider
-*IdentityProviderManagementIdentityProvidersApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDGet**](docs/IdentityProviderManagementIdentityProvidersApi.md#v1environmentsenvironmentididentityprovidersprovideridget) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID} | READ One Identity Provider
-*IdentityProviderManagementIdentityProvidersApi* | [**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDPut**](docs/IdentityProviderManagementIdentityProvidersApi.md#v1environmentsenvironmentididentityprovidersprovideridput) | **Put** /v1/environments/{environmentID}/identityProviders/{providerID} | UPDATE Identity Provider
+*IdentityProviderManagementIdentityProviderAttributesApi* | [**CreateIdentityProviderAttribute**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#createidentityproviderattribute) | **Post** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes | CREATE Identity Provider Attribute
+*IdentityProviderManagementIdentityProviderAttributesApi* | [**DeleteIdentityProviderAttribute**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#deleteidentityproviderattribute) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | DELETE Identity Provider Attribute
+*IdentityProviderManagementIdentityProviderAttributesApi* | [**ReadAllIdentityProviderAttributes**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#readallidentityproviderattributes) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes | READ All Identity Provider Attributes
+*IdentityProviderManagementIdentityProviderAttributesApi* | [**ReadOneIdentityProviderAttribute**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#readoneidentityproviderattribute) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | READ One Identity Provider Attribute
+*IdentityProviderManagementIdentityProviderAttributesApi* | [**UpdateIdentityProviderAttribute**](docs/IdentityProviderManagementIdentityProviderAttributesApi.md#updateidentityproviderattribute) | **Put** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | UPDATE Identity Provider Attribute
+*IdentityProviderManagementIdentityProvidersApi* | [**CreateIdentityProvider**](docs/IdentityProviderManagementIdentityProvidersApi.md#createidentityprovider) | **Post** /v1/environments/{environmentID}/identityProviders | CREATE Identity Provider
+*IdentityProviderManagementIdentityProvidersApi* | [**DeleteIdentityProvider**](docs/IdentityProviderManagementIdentityProvidersApi.md#deleteidentityprovider) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID} | DELETE Identity Provider
+*IdentityProviderManagementIdentityProvidersApi* | [**ReadAllIdentityProviders**](docs/IdentityProviderManagementIdentityProvidersApi.md#readallidentityproviders) | **Get** /v1/environments/{environmentID}/identityProviders | READ All Identity Providers
+*IdentityProviderManagementIdentityProvidersApi* | [**ReadOneIdentityProvider**](docs/IdentityProviderManagementIdentityProvidersApi.md#readoneidentityprovider) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID} | READ One Identity Provider
+*IdentityProviderManagementIdentityProvidersApi* | [**UpdateIdentityProvider**](docs/IdentityProviderManagementIdentityProvidersApi.md#updateidentityprovider) | **Put** /v1/environments/{environmentID}/identityProviders/{providerID} | UPDATE Identity Provider
 *ImagesApi* | [**CreateImage**](docs/ImagesApi.md#createimage) | **Post** /v1/environments/{environmentID}/images | CREATE Image
 *ImagesApi* | [**DeleteImage**](docs/ImagesApi.md#deleteimage) | **Delete** /v1/environments/{environmentID}/images/{imgID} | DELETE Image
 *ImagesApi* | [**ReadImage**](docs/ImagesApi.md#readimage) | **Get** /v1/environments/{environmentID}/images/{imgID} | READ Image
@@ -448,6 +448,11 @@ Class | Method | HTTP request | Description
  - [EnumGatewayType](docs/EnumGatewayType.md)
  - [EnumHealthStatus](docs/EnumHealthStatus.md)
  - [EnumIdentityProvider](docs/EnumIdentityProvider.md)
+ - [EnumIdentityProviderAttributeMappingType](docs/EnumIdentityProviderAttributeMappingType.md)
+ - [EnumIdentityProviderAttributeMappingUpdate](docs/EnumIdentityProviderAttributeMappingUpdate.md)
+ - [EnumIdentityProviderExt](docs/EnumIdentityProviderExt.md)
+ - [EnumIdentityProviderOIDCTokenAuthMethod](docs/EnumIdentityProviderOIDCTokenAuthMethod.md)
+ - [EnumIdentityProviderSAMLSSOBinding](docs/EnumIdentityProviderSAMLSSOBinding.md)
  - [EnumImageFormat](docs/EnumImageFormat.md)
  - [EnumOrganizationType](docs/EnumOrganizationType.md)
  - [EnumProductType](docs/EnumProductType.md)
@@ -489,6 +494,41 @@ Class | Method | HTTP request | Description
  - [GroupNesting](docs/GroupNesting.md)
  - [GroupPopulation](docs/GroupPopulation.md)
  - [GroupTotalMemberCounts](docs/GroupTotalMemberCounts.md)
+ - [IdentityProvider](docs/IdentityProvider.md)
+ - [IdentityProviderAmazon](docs/IdentityProviderAmazon.md)
+ - [IdentityProviderAmazonAllOf](docs/IdentityProviderAmazonAllOf.md)
+ - [IdentityProviderApple](docs/IdentityProviderApple.md)
+ - [IdentityProviderAppleAllOf](docs/IdentityProviderAppleAllOf.md)
+ - [IdentityProviderAttribute](docs/IdentityProviderAttribute.md)
+ - [IdentityProviderAttributeIdentityProvider](docs/IdentityProviderAttributeIdentityProvider.md)
+ - [IdentityProviderCommon](docs/IdentityProviderCommon.md)
+ - [IdentityProviderCommonIcon](docs/IdentityProviderCommonIcon.md)
+ - [IdentityProviderCommonLoginButtonIcon](docs/IdentityProviderCommonLoginButtonIcon.md)
+ - [IdentityProviderCommonRegistration](docs/IdentityProviderCommonRegistration.md)
+ - [IdentityProviderCommonRegistrationPopulation](docs/IdentityProviderCommonRegistrationPopulation.md)
+ - [IdentityProviderFacebook](docs/IdentityProviderFacebook.md)
+ - [IdentityProviderFacebookAllOf](docs/IdentityProviderFacebookAllOf.md)
+ - [IdentityProviderGithub](docs/IdentityProviderGithub.md)
+ - [IdentityProviderGithubAllOf](docs/IdentityProviderGithubAllOf.md)
+ - [IdentityProviderGoogle](docs/IdentityProviderGoogle.md)
+ - [IdentityProviderGoogleAllOf](docs/IdentityProviderGoogleAllOf.md)
+ - [IdentityProviderLinkedIn](docs/IdentityProviderLinkedIn.md)
+ - [IdentityProviderLinkedInAllOf](docs/IdentityProviderLinkedInAllOf.md)
+ - [IdentityProviderMicrosoft](docs/IdentityProviderMicrosoft.md)
+ - [IdentityProviderMicrosoftAllOf](docs/IdentityProviderMicrosoftAllOf.md)
+ - [IdentityProviderOIDC](docs/IdentityProviderOIDC.md)
+ - [IdentityProviderOIDCAllOf](docs/IdentityProviderOIDCAllOf.md)
+ - [IdentityProviderPaypal](docs/IdentityProviderPaypal.md)
+ - [IdentityProviderPaypalAllOf](docs/IdentityProviderPaypalAllOf.md)
+ - [IdentityProviderSAML](docs/IdentityProviderSAML.md)
+ - [IdentityProviderSAMLAllOf](docs/IdentityProviderSAMLAllOf.md)
+ - [IdentityProviderSAMLAllOfIdpVerification](docs/IdentityProviderSAMLAllOfIdpVerification.md)
+ - [IdentityProviderSAMLAllOfSpSigning](docs/IdentityProviderSAMLAllOfSpSigning.md)
+ - [IdentityProviderSAMLAllOfSpSigningKey](docs/IdentityProviderSAMLAllOfSpSigningKey.md)
+ - [IdentityProviderTwitter](docs/IdentityProviderTwitter.md)
+ - [IdentityProviderTwitterAllOf](docs/IdentityProviderTwitterAllOf.md)
+ - [IdentityProviderYahoo](docs/IdentityProviderYahoo.md)
+ - [IdentityProviderYahooAllOf](docs/IdentityProviderYahooAllOf.md)
  - [Image](docs/Image.md)
  - [ImageTargets](docs/ImageTargets.md)
  - [ObjectApplication](docs/ObjectApplication.md)

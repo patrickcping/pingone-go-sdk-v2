@@ -3,6 +3,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.3.0](./management/CHANGELOG.md)
     * **Enhancement** - *API update 2022-07-18* - `SignOnPolicyAction` object includes new attribute `DeviceAuthenticationPolicy` to replace deprecated `Applications`, `Voice`, `Sms`, `SecurityKey`, `Email`, `BoundBiometrics` and `Authenticator` attributes
     * **Feature** Support for Agreements, Agreement languages and Agreement revisions
+    * **Feature** Support for Identity Provider models
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.3.0](./mfa/CHANGELOG.md)
     * **Feature** Support for `DeviceAuthenticationPolicy` models
 

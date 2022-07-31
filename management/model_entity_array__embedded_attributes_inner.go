@@ -18,6 +18,7 @@ import (
 // EntityArrayEmbeddedAttributesInner - struct for EntityArrayEmbeddedAttributesInner
 type EntityArrayEmbeddedAttributesInner struct {
 	ApplicationAttributeMapping *ApplicationAttributeMapping
+	IdentityProviderAttribute *IdentityProviderAttribute
 	ResourceAttribute *ResourceAttribute
 	SchemaAttribute *SchemaAttribute
 }
@@ -26,6 +27,13 @@ type EntityArrayEmbeddedAttributesInner struct {
 func ApplicationAttributeMappingAsEntityArrayEmbeddedAttributesInner(v *ApplicationAttributeMapping) EntityArrayEmbeddedAttributesInner {
 	return EntityArrayEmbeddedAttributesInner{
 		ApplicationAttributeMapping: v,
+	}
+}
+
+// IdentityProviderAttributeAsEntityArrayEmbeddedAttributesInner is a convenience function that returns IdentityProviderAttribute wrapped in EntityArrayEmbeddedAttributesInner
+func IdentityProviderAttributeAsEntityArrayEmbeddedAttributesInner(v *IdentityProviderAttribute) EntityArrayEmbeddedAttributesInner {
+	return EntityArrayEmbeddedAttributesInner{
+		IdentityProviderAttribute: v,
 	}
 }
 
@@ -61,6 +69,19 @@ func (dst *EntityArrayEmbeddedAttributesInner) UnmarshalJSON(data []byte) error 
 		dst.ApplicationAttributeMapping = nil
 	}
 
+	// try to unmarshal data into IdentityProviderAttribute
+	err = newStrictDecoder(data).Decode(&dst.IdentityProviderAttribute)
+	if err == nil {
+		jsonIdentityProviderAttribute, _ := json.Marshal(dst.IdentityProviderAttribute)
+		if string(jsonIdentityProviderAttribute) == "{}" { // empty struct
+			dst.IdentityProviderAttribute = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.IdentityProviderAttribute = nil
+	}
+
 	// try to unmarshal data into ResourceAttribute
 	err = newStrictDecoder(data).Decode(&dst.ResourceAttribute)
 	if err == nil {
@@ -90,6 +111,7 @@ func (dst *EntityArrayEmbeddedAttributesInner) UnmarshalJSON(data []byte) error 
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.ApplicationAttributeMapping = nil
+		dst.IdentityProviderAttribute = nil
 		dst.ResourceAttribute = nil
 		dst.SchemaAttribute = nil
 
@@ -105,6 +127,10 @@ func (dst *EntityArrayEmbeddedAttributesInner) UnmarshalJSON(data []byte) error 
 func (src EntityArrayEmbeddedAttributesInner) MarshalJSON() ([]byte, error) {
 	if src.ApplicationAttributeMapping != nil {
 		return json.Marshal(&src.ApplicationAttributeMapping)
+	}
+
+	if src.IdentityProviderAttribute != nil {
+		return json.Marshal(&src.IdentityProviderAttribute)
 	}
 
 	if src.ResourceAttribute != nil {
@@ -125,6 +151,10 @@ func (obj *EntityArrayEmbeddedAttributesInner) GetActualInstance() (interface{})
 	}
 	if obj.ApplicationAttributeMapping != nil {
 		return obj.ApplicationAttributeMapping
+	}
+
+	if obj.IdentityProviderAttribute != nil {
+		return obj.IdentityProviderAttribute
 	}
 
 	if obj.ResourceAttribute != nil {

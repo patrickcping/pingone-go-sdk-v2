@@ -2,6 +2,7 @@
 
 * **Enhancement** - *API update 2022-07-18* - `SignOnPolicyAction` object includes new attribute `DeviceAuthenticationPolicy` to replace deprecated `Applications`, `Voice`, `Sms`, `SecurityKey`, `Email`, `BoundBiometrics` and `Authenticator` attributes
 * **Feature** Support for Agreements, Agreement languages and Agreement revisions
+* **Feature** Support for Identity Provider models
 
 # v0.2.0 (2022-07-17)
 

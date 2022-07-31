@@ -23,599 +23,33 @@ import (
 // IdentityProviderManagementIdentityProviderAttributesApiService IdentityProviderManagementIdentityProviderAttributesApi service
 type IdentityProviderManagementIdentityProviderAttributesApiService service
 
-type ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGetRequest struct {
+type ApiCreateIdentityProviderAttributeRequest struct {
 	ctx context.Context
 	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
 	environmentID string
 	providerID string
+	identityProviderAttribute *IdentityProviderAttribute
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGet READ All Identity Provider Attributes
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param providerID
- @return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGetRequest
-*/
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGet(ctx context.Context, environmentID string, providerID string) ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		providerID: providerID,
-	}
-}
-
-// Execute executes the request
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGetExecute(r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterToString(r.providerID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDeleteRequest struct {
-	ctx context.Context
-	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
-	environmentID string
-	providerID string
-	idpAttrID string
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDeleteExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDelete DELETE Identity Provider Attribute
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param providerID
- @param idpAttrID
- @return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDeleteRequest
-*/
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDelete(ctx context.Context, environmentID string, providerID string, idpAttrID string) ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDeleteRequest {
-	return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		providerID: providerID,
-		idpAttrID: idpAttrID,
-	}
-}
-
-// Execute executes the request
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{idpAttrID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterToString(r.providerID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"idpAttrID"+"}", url.PathEscape(parameterToString(r.idpAttrID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGetRequest struct {
-	ctx context.Context
-	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
-	environmentID string
-	providerID string
-	idpAttrID string
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGet READ One Identity Provider Attribute
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param providerID
- @param idpAttrID
- @return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGetRequest
-*/
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGet(ctx context.Context, environmentID string, providerID string, idpAttrID string) ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		providerID: providerID,
-		idpAttrID: idpAttrID,
-	}
-}
-
-// Execute executes the request
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGetExecute(r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{idpAttrID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterToString(r.providerID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"idpAttrID"+"}", url.PathEscape(parameterToString(r.idpAttrID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest struct {
-	ctx context.Context
-	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
-	environmentID string
-	providerID string
-	idpAttrID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest {
-	r.body = &body
+func (r ApiCreateIdentityProviderAttributeRequest) IdentityProviderAttribute(identityProviderAttribute IdentityProviderAttribute) ApiCreateIdentityProviderAttributeRequest {
+	r.identityProviderAttribute = &identityProviderAttribute
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutExecute(r)
+func (r ApiCreateIdentityProviderAttributeRequest) Execute() (*IdentityProviderAttribute, *http.Response, error) {
+	return r.ApiService.CreateIdentityProviderAttributeExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPut UPDATE Identity Provider Attribute
+CreateIdentityProviderAttribute CREATE Identity Provider Attribute
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param providerID
- @param idpAttrID
- @return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest
+ @return ApiCreateIdentityProviderAttributeRequest
 */
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPut(ctx context.Context, environmentID string, providerID string, idpAttrID string) ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		providerID: providerID,
-		idpAttrID: idpAttrID,
-	}
-}
-
-// Execute executes the request
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutExecute(r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPutRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesIdpAttrIDPut")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{idpAttrID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterToString(r.providerID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"idpAttrID"+"}", url.PathEscape(parameterToString(r.idpAttrID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostRequest struct {
-	ctx context.Context
-	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
-	environmentID string
-	providerID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPost CREATE Identity Provider Attribute (SAML)
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param providerID
- @return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostRequest
-*/
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPost(ctx context.Context, environmentID string, providerID string) ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostRequest{
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) CreateIdentityProviderAttribute(ctx context.Context, environmentID string, providerID string) ApiCreateIdentityProviderAttributeRequest {
+	return ApiCreateIdentityProviderAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -624,16 +58,18 @@ func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1Envir
 }
 
 // Execute executes the request
-func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostExecute(r ApiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPostRequest) (*http.Response, error) {
+//  @return IdentityProviderAttribute
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) CreateIdentityProviderAttributeExecute(r ApiCreateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *IdentityProviderAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDAttributesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.CreateIdentityProviderAttribute")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes"
@@ -662,22 +98,22 @@ func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1Envir
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.identityProviderAttribute
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -690,36 +126,183 @@ func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1Envir
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteIdentityProviderAttributeRequest struct {
+	ctx context.Context
+	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
+	environmentID string
+	providerID string
+	providerAttributeID string
+}
+
+func (r ApiDeleteIdentityProviderAttributeRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteIdentityProviderAttributeExecute(r)
+}
+
+/*
+DeleteIdentityProviderAttribute DELETE Identity Provider Attribute
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param providerID
+ @param providerAttributeID
+ @return ApiDeleteIdentityProviderAttributeRequest
+*/
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) DeleteIdentityProviderAttribute(ctx context.Context, environmentID string, providerID string, providerAttributeID string) ApiDeleteIdentityProviderAttributeRequest {
+	return ApiDeleteIdentityProviderAttributeRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		providerID: providerID,
+		providerAttributeID: providerAttributeID,
+	}
+}
+
+// Execute executes the request
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) DeleteIdentityProviderAttributeExecute(r ApiDeleteIdentityProviderAttributeRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.DeleteIdentityProviderAttribute")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterToString(r.providerID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"providerAttributeID"+"}", url.PathEscape(parameterToString(r.providerAttributeID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
 			newErr.model = v
@@ -749,4 +332,465 @@ func (a *IdentityProviderManagementIdentityProviderAttributesApiService) V1Envir
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiReadAllIdentityProviderAttributesRequest struct {
+	ctx context.Context
+	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
+	environmentID string
+	providerID string
+}
+
+func (r ApiReadAllIdentityProviderAttributesRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllIdentityProviderAttributesExecute(r)
+}
+
+/*
+ReadAllIdentityProviderAttributes READ All Identity Provider Attributes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param providerID
+ @return ApiReadAllIdentityProviderAttributesRequest
+*/
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) ReadAllIdentityProviderAttributes(ctx context.Context, environmentID string, providerID string) ApiReadAllIdentityProviderAttributesRequest {
+	return ApiReadAllIdentityProviderAttributesRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		providerID: providerID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) ReadAllIdentityProviderAttributesExecute(r ApiReadAllIdentityProviderAttributesRequest) (*EntityArray, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.ReadAllIdentityProviderAttributes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterToString(r.providerID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneIdentityProviderAttributeRequest struct {
+	ctx context.Context
+	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
+	environmentID string
+	providerID string
+	providerAttributeID string
+}
+
+func (r ApiReadOneIdentityProviderAttributeRequest) Execute() (*IdentityProviderAttribute, *http.Response, error) {
+	return r.ApiService.ReadOneIdentityProviderAttributeExecute(r)
+}
+
+/*
+ReadOneIdentityProviderAttribute READ One Identity Provider Attribute
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param providerID
+ @param providerAttributeID
+ @return ApiReadOneIdentityProviderAttributeRequest
+*/
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) ReadOneIdentityProviderAttribute(ctx context.Context, environmentID string, providerID string, providerAttributeID string) ApiReadOneIdentityProviderAttributeRequest {
+	return ApiReadOneIdentityProviderAttributeRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		providerID: providerID,
+		providerAttributeID: providerAttributeID,
+	}
+}
+
+// Execute executes the request
+//  @return IdentityProviderAttribute
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) ReadOneIdentityProviderAttributeExecute(r ApiReadOneIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityProviderAttribute
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.ReadOneIdentityProviderAttribute")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterToString(r.providerID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"providerAttributeID"+"}", url.PathEscape(parameterToString(r.providerAttributeID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateIdentityProviderAttributeRequest struct {
+	ctx context.Context
+	ApiService *IdentityProviderManagementIdentityProviderAttributesApiService
+	environmentID string
+	providerID string
+	providerAttributeID string
+	identityProviderAttribute *IdentityProviderAttribute
+}
+
+func (r ApiUpdateIdentityProviderAttributeRequest) IdentityProviderAttribute(identityProviderAttribute IdentityProviderAttribute) ApiUpdateIdentityProviderAttributeRequest {
+	r.identityProviderAttribute = &identityProviderAttribute
+	return r
+}
+
+func (r ApiUpdateIdentityProviderAttributeRequest) Execute() (*IdentityProviderAttribute, *http.Response, error) {
+	return r.ApiService.UpdateIdentityProviderAttributeExecute(r)
+}
+
+/*
+UpdateIdentityProviderAttribute UPDATE Identity Provider Attribute
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param providerID
+ @param providerAttributeID
+ @return ApiUpdateIdentityProviderAttributeRequest
+*/
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) UpdateIdentityProviderAttribute(ctx context.Context, environmentID string, providerID string, providerAttributeID string) ApiUpdateIdentityProviderAttributeRequest {
+	return ApiUpdateIdentityProviderAttributeRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		providerID: providerID,
+		providerAttributeID: providerAttributeID,
+	}
+}
+
+// Execute executes the request
+//  @return IdentityProviderAttribute
+func (a *IdentityProviderManagementIdentityProviderAttributesApiService) UpdateIdentityProviderAttributeExecute(r ApiUpdateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityProviderAttribute
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProviderManagementIdentityProviderAttributesApiService.UpdateIdentityProviderAttribute")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"providerID"+"}", url.PathEscape(parameterToString(r.providerID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"providerAttributeID"+"}", url.PathEscape(parameterToString(r.providerAttributeID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.identityProviderAttribute
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
