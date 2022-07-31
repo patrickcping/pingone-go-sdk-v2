@@ -17,7 +17,7 @@ import (
 // SignOnPolicyActionProgressiveProfiling struct for SignOnPolicyActionProgressiveProfiling
 type SignOnPolicyActionProgressiveProfiling struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
-	Conditions *SignOnPolicyActionCommonConditions `json:"conditions,omitempty"`
+	Condition *SignOnPolicyActionCommonCondition `json:"condition,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -89,36 +89,36 @@ func (o *SignOnPolicyActionProgressiveProfiling) SetLinks(v map[string]interface
 	o.Links = v
 }
 
-// GetConditions returns the Conditions field value if set, zero value otherwise.
-func (o *SignOnPolicyActionProgressiveProfiling) GetConditions() SignOnPolicyActionCommonConditions {
-	if o == nil || o.Conditions == nil {
-		var ret SignOnPolicyActionCommonConditions
+// GetCondition returns the Condition field value if set, zero value otherwise.
+func (o *SignOnPolicyActionProgressiveProfiling) GetCondition() SignOnPolicyActionCommonCondition {
+	if o == nil || o.Condition == nil {
+		var ret SignOnPolicyActionCommonCondition
 		return ret
 	}
-	return *o.Conditions
+	return *o.Condition
 }
 
-// GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
+// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionProgressiveProfiling) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool) {
-	if o == nil || o.Conditions == nil {
+func (o *SignOnPolicyActionProgressiveProfiling) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool) {
+	if o == nil || o.Condition == nil {
 		return nil, false
 	}
-	return o.Conditions, true
+	return o.Condition, true
 }
 
-// HasConditions returns a boolean if a field has been set.
-func (o *SignOnPolicyActionProgressiveProfiling) HasConditions() bool {
-	if o != nil && o.Conditions != nil {
+// HasCondition returns a boolean if a field has been set.
+func (o *SignOnPolicyActionProgressiveProfiling) HasCondition() bool {
+	if o != nil && o.Condition != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetConditions gets a reference to the given SignOnPolicyActionCommonConditions and assigns it to the Conditions field.
-func (o *SignOnPolicyActionProgressiveProfiling) SetConditions(v SignOnPolicyActionCommonConditions) {
-	o.Conditions = &v
+// SetCondition gets a reference to the given SignOnPolicyActionCommonCondition and assigns it to the Condition field.
+func (o *SignOnPolicyActionProgressiveProfiling) SetCondition(v SignOnPolicyActionCommonCondition) {
+	o.Condition = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -366,8 +366,8 @@ func (o SignOnPolicyActionProgressiveProfiling) MarshalJSON() ([]byte, error) {
 	if o.Links != nil {
 		toSerialize["_links"] = o.Links
 	}
-	if o.Conditions != nil {
-		toSerialize["conditions"] = o.Conditions
+	if o.Condition != nil {
+		toSerialize["condition"] = o.Condition
 	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment

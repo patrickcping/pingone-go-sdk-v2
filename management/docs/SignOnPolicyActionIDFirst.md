@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to **map[string]interface{}** |  | [optional] [readonly] 
-**Conditions** | Pointer to [**SignOnPolicyActionCommonConditions**](SignOnPolicyActionCommonConditions.md) |  | [optional] 
+**Condition** | Pointer to [**SignOnPolicyActionCommonCondition**](SignOnPolicyActionCommonCondition.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the sign-on policy assignment resource’s unique identifier. | [optional] [readonly] 
 **Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
@@ -62,30 +62,30 @@ SetLinks sets Links field to given value.
 
 HasLinks returns a boolean if a field has been set.
 
-### GetConditions
+### GetCondition
 
-`func (o *SignOnPolicyActionIDFirst) GetConditions() SignOnPolicyActionCommonConditions`
+`func (o *SignOnPolicyActionIDFirst) GetCondition() SignOnPolicyActionCommonCondition`
 
-GetConditions returns the Conditions field if non-nil, zero value otherwise.
+GetCondition returns the Condition field if non-nil, zero value otherwise.
 
-### GetConditionsOk
+### GetConditionOk
 
-`func (o *SignOnPolicyActionIDFirst) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool)`
+`func (o *SignOnPolicyActionIDFirst) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool)`
 
-GetConditionsOk returns a tuple with the Conditions field if it's non-nil, zero value otherwise
+GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConditions
+### SetCondition
 
-`func (o *SignOnPolicyActionIDFirst) SetConditions(v SignOnPolicyActionCommonConditions)`
+`func (o *SignOnPolicyActionIDFirst) SetCondition(v SignOnPolicyActionCommonCondition)`
 
-SetConditions sets Conditions field to given value.
+SetCondition sets Condition field to given value.
 
-### HasConditions
+### HasCondition
 
-`func (o *SignOnPolicyActionIDFirst) HasConditions() bool`
+`func (o *SignOnPolicyActionIDFirst) HasCondition() bool`
 
-HasConditions returns a boolean if a field has been set.
+HasCondition returns a boolean if a field has been set.
 
 ### GetEnvironment
 

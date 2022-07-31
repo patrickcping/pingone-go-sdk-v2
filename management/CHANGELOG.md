@@ -1,5 +1,9 @@
 # v0.5.0 (Unreleased)
 
+* **Bug fix** - `SignOnPolicyActionProgressiveProfiling` object includes fixed `attributes` attribute, from object type to array type
+* **Bug fix** - Restructure `SignOnPolicyAction` model to properly separate policy action attributes from each other
+* **Bug fix** - Corrections to `SignOnPolicyActionCommonCondition` model
+
 # v0.4.0 (2022-08-10)
 
 * **Enhancement** Added generic `_links` to `Application` model

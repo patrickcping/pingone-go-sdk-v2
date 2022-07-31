@@ -24,6 +24,7 @@
     * **Bug** fix for `PasswordPolicyMinCharacters` special character issue [#17](https://github.com/patrickcping/pingone-go-sdk-v2/pull/17)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.3.0](./mfa/CHANGELOG.md)
     * **Feature** Mfa device authentication policies [#13](https://github.com/patrickcping/pingone-go-sdk-v2/pull/13)
+    * **Bug fix** - Corrections to `SignOnPolicyActionCommonCondition` model
 
 # Release (2022-07-17)
 
