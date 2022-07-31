@@ -23,599 +23,33 @@ import (
 // AgreementManagementAgreementLanguagesResourcesApiService AgreementManagementAgreementLanguagesResourcesApi service
 type AgreementManagementAgreementLanguagesResourcesApiService service
 
-type ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGetRequest struct {
+type ApiCreateAgreementLanguageRequest struct {
 	ctx context.Context
 	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
 	environmentID string
 	agreementID string
+	agreementLanguage *AgreementLanguage
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGet READ All Languages
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param agreementID
- @return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGetRequest
-*/
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGet(ctx context.Context, environmentID string, agreementID string) ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		agreementID: agreementID,
-	}
-}
-
-// Execute executes the request
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGetExecute(r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDeleteRequest struct {
-	ctx context.Context
-	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
-	environmentID string
-	agreementID string
-	languageID string
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDeleteExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDelete DELETE Language
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param agreementID
- @param languageID
- @return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDeleteRequest
-*/
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDelete(ctx context.Context, environmentID string, agreementID string, languageID string) ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDeleteRequest {
-	return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		agreementID: agreementID,
-		languageID: languageID,
-	}
-}
-
-// Execute executes the request
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGetRequest struct {
-	ctx context.Context
-	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
-	environmentID string
-	agreementID string
-	languageID string
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGet READ One Language
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param agreementID
- @param languageID
- @return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGetRequest
-*/
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGet(ctx context.Context, environmentID string, agreementID string, languageID string) ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		agreementID: agreementID,
-		languageID: languageID,
-	}
-}
-
-// Execute executes the request
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGetExecute(r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutRequest struct {
-	ctx context.Context
-	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
-	environmentID string
-	agreementID string
-	languageID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutRequest {
-	r.body = &body
+func (r ApiCreateAgreementLanguageRequest) AgreementLanguage(agreementLanguage AgreementLanguage) ApiCreateAgreementLanguageRequest {
+	r.agreementLanguage = &agreementLanguage
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutExecute(r)
+func (r ApiCreateAgreementLanguageRequest) Execute() (*AgreementLanguage, *http.Response, error) {
+	return r.ApiService.CreateAgreementLanguageExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPut UPDATE Language
+CreateAgreementLanguage CREATE Language
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param agreementID
- @param languageID
- @return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutRequest
+ @return ApiCreateAgreementLanguageRequest
 */
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPut(ctx context.Context, environmentID string, agreementID string, languageID string) ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		agreementID: agreementID,
-		languageID: languageID,
-	}
-}
-
-// Execute executes the request
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutExecute(r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPutRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesLanguageIDPut")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostRequest struct {
-	ctx context.Context
-	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
-	environmentID string
-	agreementID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPost CREATE Language
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param agreementID
- @return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostRequest
-*/
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPost(ctx context.Context, environmentID string, agreementID string) ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostRequest{
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) CreateAgreementLanguage(ctx context.Context, environmentID string, agreementID string) ApiCreateAgreementLanguageRequest {
+	return ApiCreateAgreementLanguageRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -624,16 +58,18 @@ func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1Environment
 }
 
 // Execute executes the request
-func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostExecute(r ApiV1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPostRequest) (*http.Response, error) {
+//  @return AgreementLanguage
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) CreateAgreementLanguageExecute(r ApiCreateAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *AgreementLanguage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.V1EnvironmentsEnvironmentIDAgreementsAgreementIDLanguagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.CreateAgreementLanguage")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages"
@@ -662,22 +98,22 @@ func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1Environment
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.agreementLanguage
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -690,36 +126,183 @@ func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1Environment
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiDeleteAgreementLanguageRequest struct {
+	ctx context.Context
+	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
+	environmentID string
+	agreementID string
+	languageID string
+}
+
+func (r ApiDeleteAgreementLanguageRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteAgreementLanguageExecute(r)
+}
+
+/*
+DeleteAgreementLanguage DELETE Language
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param agreementID
+ @param languageID
+ @return ApiDeleteAgreementLanguageRequest
+*/
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) DeleteAgreementLanguage(ctx context.Context, environmentID string, agreementID string, languageID string) ApiDeleteAgreementLanguageRequest {
+	return ApiDeleteAgreementLanguageRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		agreementID: agreementID,
+		languageID: languageID,
+	}
+}
+
+// Execute executes the request
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) DeleteAgreementLanguageExecute(r ApiDeleteAgreementLanguageRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.DeleteAgreementLanguage")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
 			newErr.model = v
@@ -749,4 +332,465 @@ func (a *AgreementManagementAgreementLanguagesResourcesApiService) V1Environment
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiReadAllAgreementLanguagesRequest struct {
+	ctx context.Context
+	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
+	environmentID string
+	agreementID string
+}
+
+func (r ApiReadAllAgreementLanguagesRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllAgreementLanguagesExecute(r)
+}
+
+/*
+ReadAllAgreementLanguages READ All Languages
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param agreementID
+ @return ApiReadAllAgreementLanguagesRequest
+*/
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) ReadAllAgreementLanguages(ctx context.Context, environmentID string, agreementID string) ApiReadAllAgreementLanguagesRequest {
+	return ApiReadAllAgreementLanguagesRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		agreementID: agreementID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) ReadAllAgreementLanguagesExecute(r ApiReadAllAgreementLanguagesRequest) (*EntityArray, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.ReadAllAgreementLanguages")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneAgreementLanguageRequest struct {
+	ctx context.Context
+	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
+	environmentID string
+	agreementID string
+	languageID string
+}
+
+func (r ApiReadOneAgreementLanguageRequest) Execute() (*AgreementLanguage, *http.Response, error) {
+	return r.ApiService.ReadOneAgreementLanguageExecute(r)
+}
+
+/*
+ReadOneAgreementLanguage READ One Language
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param agreementID
+ @param languageID
+ @return ApiReadOneAgreementLanguageRequest
+*/
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) ReadOneAgreementLanguage(ctx context.Context, environmentID string, agreementID string, languageID string) ApiReadOneAgreementLanguageRequest {
+	return ApiReadOneAgreementLanguageRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		agreementID: agreementID,
+		languageID: languageID,
+	}
+}
+
+// Execute executes the request
+//  @return AgreementLanguage
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) ReadOneAgreementLanguageExecute(r ApiReadOneAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AgreementLanguage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.ReadOneAgreementLanguage")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateAgreementLanguageRequest struct {
+	ctx context.Context
+	ApiService *AgreementManagementAgreementLanguagesResourcesApiService
+	environmentID string
+	agreementID string
+	languageID string
+	body *map[string]interface{}
+}
+
+func (r ApiUpdateAgreementLanguageRequest) Body(body map[string]interface{}) ApiUpdateAgreementLanguageRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiUpdateAgreementLanguageRequest) Execute() (*AgreementLanguage, *http.Response, error) {
+	return r.ApiService.UpdateAgreementLanguageExecute(r)
+}
+
+/*
+UpdateAgreementLanguage UPDATE Language
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param agreementID
+ @param languageID
+ @return ApiUpdateAgreementLanguageRequest
+*/
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) UpdateAgreementLanguage(ctx context.Context, environmentID string, agreementID string, languageID string) ApiUpdateAgreementLanguageRequest {
+	return ApiUpdateAgreementLanguageRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		agreementID: agreementID,
+		languageID: languageID,
+	}
+}
+
+// Execute executes the request
+//  @return AgreementLanguage
+func (a *AgreementManagementAgreementLanguagesResourcesApiService) UpdateAgreementLanguageExecute(r ApiUpdateAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AgreementLanguage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgreementManagementAgreementLanguagesResourcesApiService.UpdateAgreementLanguage")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"agreementID"+"}", url.PathEscape(parameterToString(r.agreementID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"languageID"+"}", url.PathEscape(parameterToString(r.languageID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Actions** | Pointer to [**[]SignOnPolicyAction**](SignOnPolicyAction.md) |  | [optional] 
+**Agreements** | Pointer to [**[]Agreement**](Agreement.md) |  | [optional] 
 **Attributes** | Pointer to [**[]EntityArrayEmbeddedAttributesInner**](EntityArrayEmbeddedAttributesInner.md) |  | [optional] 
 **Applications** | Pointer to [**[]EntityArrayEmbeddedApplicationsInner**](EntityArrayEmbeddedApplicationsInner.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
@@ -14,10 +15,12 @@ Name | Type | Description | Notes
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
+**Languages** | Pointer to [**[]AgreementLanguage**](AgreementLanguage.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
+**Revisions** | Pointer to [**[]AgreementLanguageRevision**](AgreementLanguageRevision.md) |  | [optional] 
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
 **SignOnPolicies** | Pointer to [**[]SignOnPolicy**](SignOnPolicy.md) |  | [optional] 
 **SignOnPolicyAssignments** | Pointer to [**[]SignOnPolicyAssignment**](SignOnPolicyAssignment.md) |  | [optional] 
@@ -69,6 +72,31 @@ SetActions sets Actions field to given value.
 `func (o *EntityArrayEmbedded) HasActions() bool`
 
 HasActions returns a boolean if a field has been set.
+
+### GetAgreements
+
+`func (o *EntityArrayEmbedded) GetAgreements() []Agreement`
+
+GetAgreements returns the Agreements field if non-nil, zero value otherwise.
+
+### GetAgreementsOk
+
+`func (o *EntityArrayEmbedded) GetAgreementsOk() (*[]Agreement, bool)`
+
+GetAgreementsOk returns a tuple with the Agreements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgreements
+
+`func (o *EntityArrayEmbedded) SetAgreements(v []Agreement)`
+
+SetAgreements sets Agreements field to given value.
+
+### HasAgreements
+
+`func (o *EntityArrayEmbedded) HasAgreements() bool`
+
+HasAgreements returns a boolean if a field has been set.
 
 ### GetAttributes
 
@@ -295,6 +323,31 @@ SetGroupMemberships sets GroupMemberships field to given value.
 
 HasGroupMemberships returns a boolean if a field has been set.
 
+### GetLanguages
+
+`func (o *EntityArrayEmbedded) GetLanguages() []AgreementLanguage`
+
+GetLanguages returns the Languages field if non-nil, zero value otherwise.
+
+### GetLanguagesOk
+
+`func (o *EntityArrayEmbedded) GetLanguagesOk() (*[]AgreementLanguage, bool)`
+
+GetLanguagesOk returns a tuple with the Languages field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLanguages
+
+`func (o *EntityArrayEmbedded) SetLanguages(v []AgreementLanguage)`
+
+SetLanguages sets Languages field to given value.
+
+### HasLanguages
+
+`func (o *EntityArrayEmbedded) HasLanguages() bool`
+
+HasLanguages returns a boolean if a field has been set.
+
 ### GetOrganizations
 
 `func (o *EntityArrayEmbedded) GetOrganizations() []Organization`
@@ -394,6 +447,31 @@ SetResources sets Resources field to given value.
 `func (o *EntityArrayEmbedded) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetRevisions
+
+`func (o *EntityArrayEmbedded) GetRevisions() []AgreementLanguageRevision`
+
+GetRevisions returns the Revisions field if non-nil, zero value otherwise.
+
+### GetRevisionsOk
+
+`func (o *EntityArrayEmbedded) GetRevisionsOk() (*[]AgreementLanguageRevision, bool)`
+
+GetRevisionsOk returns a tuple with the Revisions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRevisions
+
+`func (o *EntityArrayEmbedded) SetRevisions(v []AgreementLanguageRevision)`
+
+SetRevisions sets Revisions field to given value.
+
+### HasRevisions
+
+`func (o *EntityArrayEmbedded) HasRevisions() bool`
+
+HasRevisions returns a boolean if a field has been set.
 
 ### GetScopes
 

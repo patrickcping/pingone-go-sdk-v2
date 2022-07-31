@@ -74,6 +74,13 @@ client.go
 configuration.go
 docs/ActiveIdentityCountsApi.md
 docs/AddUserToGroupRequest.md
+docs/Agreement.md
+docs/AgreementLanguage.md
+docs/AgreementLanguageAgreement.md
+docs/AgreementLanguageCurrentRevision.md
+docs/AgreementLanguageRevision.md
+docs/AgreementLanguageRevisionLanguage.md
+docs/AgreementLanguageUserExperience.md
 docs/AgreementManagementAgreementLanguagesResourcesApi.md
 docs/AgreementManagementAgreementRevisionsResourcesApi.md
 docs/AgreementManagementAgreementsResourcesApi.md
@@ -319,6 +326,13 @@ docs/UsersUsersApi.md
 go.mod
 go.sum
 model_add_user_to_group_request.go
+model_agreement.go
+model_agreement_language.go
+model_agreement_language_agreement.go
+model_agreement_language_current_revision.go
+model_agreement_language_revision.go
+model_agreement_language_revision_language.go
+model_agreement_language_user_experience.go
 model_application.go
 model_application_access_control.go
 model_application_access_control_group.go

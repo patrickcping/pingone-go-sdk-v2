@@ -17,6 +17,7 @@ import (
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
 	Actions []SignOnPolicyAction `json:"actions,omitempty"`
+	Agreements []Agreement `json:"agreements,omitempty"`
 	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
 	Applications []EntityArrayEmbeddedApplicationsInner `json:"applications,omitempty"`
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
@@ -26,10 +27,12 @@ type EntityArrayEmbedded struct {
 	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
 	Groups []Group `json:"groups,omitempty"`
 	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
+	Languages []AgreementLanguage `json:"languages,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
 	Resources []Resource `json:"resources,omitempty"`
+	Revisions []AgreementLanguageRevision `json:"revisions,omitempty"`
 	Scopes []ResourceScope `json:"scopes,omitempty"`
 	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
 	SignOnPolicyAssignments []SignOnPolicyAssignment `json:"signOnPolicyAssignments,omitempty"`
@@ -86,6 +89,38 @@ func (o *EntityArrayEmbedded) HasActions() bool {
 // SetActions gets a reference to the given []SignOnPolicyAction and assigns it to the Actions field.
 func (o *EntityArrayEmbedded) SetActions(v []SignOnPolicyAction) {
 	o.Actions = v
+}
+
+// GetAgreements returns the Agreements field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetAgreements() []Agreement {
+	if o == nil || o.Agreements == nil {
+		var ret []Agreement
+		return ret
+	}
+	return o.Agreements
+}
+
+// GetAgreementsOk returns a tuple with the Agreements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetAgreementsOk() ([]Agreement, bool) {
+	if o == nil || o.Agreements == nil {
+		return nil, false
+	}
+	return o.Agreements, true
+}
+
+// HasAgreements returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasAgreements() bool {
+	if o != nil && o.Agreements != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAgreements gets a reference to the given []Agreement and assigns it to the Agreements field.
+func (o *EntityArrayEmbedded) SetAgreements(v []Agreement) {
+	o.Agreements = v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -376,6 +411,38 @@ func (o *EntityArrayEmbedded) SetGroupMemberships(v []GroupMembership) {
 	o.GroupMemberships = v
 }
 
+// GetLanguages returns the Languages field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetLanguages() []AgreementLanguage {
+	if o == nil || o.Languages == nil {
+		var ret []AgreementLanguage
+		return ret
+	}
+	return o.Languages
+}
+
+// GetLanguagesOk returns a tuple with the Languages field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetLanguagesOk() ([]AgreementLanguage, bool) {
+	if o == nil || o.Languages == nil {
+		return nil, false
+	}
+	return o.Languages, true
+}
+
+// HasLanguages returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasLanguages() bool {
+	if o != nil && o.Languages != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguages gets a reference to the given []AgreementLanguage and assigns it to the Languages field.
+func (o *EntityArrayEmbedded) SetLanguages(v []AgreementLanguage) {
+	o.Languages = v
+}
+
 // GetOrganizations returns the Organizations field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetOrganizations() []Organization {
 	if o == nil || o.Organizations == nil {
@@ -502,6 +569,38 @@ func (o *EntityArrayEmbedded) HasResources() bool {
 // SetResources gets a reference to the given []Resource and assigns it to the Resources field.
 func (o *EntityArrayEmbedded) SetResources(v []Resource) {
 	o.Resources = v
+}
+
+// GetRevisions returns the Revisions field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetRevisions() []AgreementLanguageRevision {
+	if o == nil || o.Revisions == nil {
+		var ret []AgreementLanguageRevision
+		return ret
+	}
+	return o.Revisions
+}
+
+// GetRevisionsOk returns a tuple with the Revisions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetRevisionsOk() ([]AgreementLanguageRevision, bool) {
+	if o == nil || o.Revisions == nil {
+		return nil, false
+	}
+	return o.Revisions, true
+}
+
+// HasRevisions returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasRevisions() bool {
+	if o != nil && o.Revisions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRevisions gets a reference to the given []AgreementLanguageRevision and assigns it to the Revisions field.
+func (o *EntityArrayEmbedded) SetRevisions(v []AgreementLanguageRevision) {
+	o.Revisions = v
 }
 
 // GetScopes returns the Scopes field value if set, zero value otherwise.
@@ -733,6 +832,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	if o.Actions != nil {
 		toSerialize["actions"] = o.Actions
 	}
+	if o.Agreements != nil {
+		toSerialize["agreements"] = o.Agreements
+	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
@@ -760,6 +862,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	if o.GroupMemberships != nil {
 		toSerialize["groupMemberships"] = o.GroupMemberships
 	}
+	if o.Languages != nil {
+		toSerialize["languages"] = o.Languages
+	}
 	if o.Organizations != nil {
 		toSerialize["organizations"] = o.Organizations
 	}
@@ -771,6 +876,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Resources != nil {
 		toSerialize["resources"] = o.Resources
+	}
+	if o.Revisions != nil {
+		toSerialize["revisions"] = o.Revisions
 	}
 	if o.Scopes != nil {
 		toSerialize["scopes"] = o.Scopes
