@@ -23,57 +23,55 @@ import (
 // UsersMFADevicesApiService UsersMFADevicesApi service
 type UsersMFADevicesApiService service
 
-type ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest struct {
 	ctx context.Context
 	ApiService *UsersMFADevicesApiService
-	envID string
+	environmentID string
 	userID string
 	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) ContentType(contentType string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeleteExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDDevicesDelete DELETE Device Order
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete DELETE Device Order
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest
 */
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDelete(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest{
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeleteExecute(r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/devices"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/devices"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -168,54 +166,52 @@ func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeleteE
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest struct {
 	ctx context.Context
 	ApiService *UsersMFADevicesApiService
-	envID string
+	environmentID string
 	userID string
 	deviceID string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete DELETE MFA User Device
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete DELETE MFA User Device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
  @param deviceID
- @return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest
 */
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(ctx context.Context, envID string, userID string, deviceID string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteRequest{
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 		deviceID: deviceID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/devices/{deviceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/devices/{deviceID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"deviceID"+"}", url.PathEscape(parameterToString(r.deviceID, "")), -1)
 
@@ -308,54 +304,52 @@ func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceI
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest struct {
 	ctx context.Context
 	ApiService *UsersMFADevicesApiService
-	envID string
+	environmentID string
 	userID string
 	deviceID string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet READ One MFA User Device
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet READ One MFA User Device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
  @param deviceID
- @return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest
 */
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(ctx context.Context, envID string, userID string, deviceID string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetRequest{
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 		deviceID: deviceID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/devices/{deviceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/devices/{deviceID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"deviceID"+"}", url.PathEscape(parameterToString(r.deviceID, "")), -1)
 
@@ -448,60 +442,58 @@ func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceI
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest struct {
 	ctx context.Context
 	ApiService *UsersMFADevicesApiService
-	envID string
+	environmentID string
 	userID string
 	deviceID string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut SEND MFA Device Logs
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut SEND MFA Device Logs
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
  @param deviceID
- @return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest
 */
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(ctx context.Context, envID string, userID string, deviceID string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest{
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 		deviceID: deviceID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/devices/{deviceID}/logs"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"deviceID"+"}", url.PathEscape(parameterToString(r.deviceID, "")), -1)
 
@@ -606,60 +598,58 @@ func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceI
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest struct {
 	ctx context.Context
 	ApiService *UsersMFADevicesApiService
-	envID string
+	environmentID string
 	userID string
 	deviceID string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut UPDATE Device Nickname
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut UPDATE Device Nickname
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
  @param deviceID
- @return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest
 */
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(ctx context.Context, envID string, userID string, deviceID string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest{
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 		deviceID: deviceID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/devices/{deviceID}/nickname"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"deviceID"+"}", url.PathEscape(parameterToString(r.deviceID, "")), -1)
 
@@ -764,66 +754,64 @@ func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceI
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest struct {
 	ctx context.Context
 	ApiService *UsersMFADevicesApiService
-	envID string
+	environmentID string
 	userID string
 	deviceID string
 	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost ACTIVATE MFA User Device
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost ACTIVATE MFA User Device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
  @param deviceID
- @return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest
 */
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(ctx context.Context, envID string, userID string, deviceID string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest{
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 		deviceID: deviceID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/devices/{deviceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/devices/{deviceID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"deviceID"+"}", url.PathEscape(parameterToString(r.deviceID, "")), -1)
 
@@ -941,51 +929,49 @@ func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesDeviceI
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDDevicesGetRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest struct {
 	ctx context.Context
 	ApiService *UsersMFADevicesApiService
-	envID string
+	environmentID string
 	userID string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDDevicesGetExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDDevicesGet READ All MFA User Devices
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet READ All MFA User Devices
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvIDUsersUserIDDevicesGetRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest
 */
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesGet(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesGetRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDDevicesGetRequest{
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvIDUsersUserIDDevicesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/devices"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/devices"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1077,63 +1063,61 @@ func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesGetExec
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest struct {
 	ctx context.Context
 	ApiService *UsersMFADevicesApiService
-	envID string
+	environmentID string
 	userID string
 	contentType *string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDDevicesPostExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDDevicesPost SET Device Order
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost SET Device Order
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest
 */
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesPost(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest{
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFADevicesApiService) V1EnvironmentsEnvIDUsersUserIDDevicesPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
+func (a *UsersMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvIDUsersUserIDDevicesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/devices"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/devices"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

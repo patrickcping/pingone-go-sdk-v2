@@ -4,21 +4,19 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#CreateMFAPushCredential) | **Post** /v1/environments/{envID}/applications/{appID}/pushCredentials | CREATE MFA Push Credential
-[**DeleteMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#DeleteMFAPushCredential) | **Delete** /v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID} | DELETE MFA Push Credential
-[**ReadAllMFAPushCredentials**](ApplicationsApplicationMFAPushCredentialsApi.md#ReadAllMFAPushCredentials) | **Get** /v1/environments/{envID}/applications/{appID}/pushCredentials | READ All MFA Push Credentials
-[**ReadOneMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#ReadOneMFAPushCredential) | **Get** /v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID} | READ One MFA Push Credential
-[**UpdateMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#UpdateMFAPushCredential) | **Put** /v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID} | UPDATE MFA Push Credential
+[**CreateMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#CreateMFAPushCredential) | **Post** /v1/environments/{environmentID}/applications/{appID}/pushCredentials | CREATE MFA Push Credential
+[**DeleteMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#DeleteMFAPushCredential) | **Delete** /v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID} | DELETE MFA Push Credential
+[**ReadAllMFAPushCredentials**](ApplicationsApplicationMFAPushCredentialsApi.md#ReadAllMFAPushCredentials) | **Get** /v1/environments/{environmentID}/applications/{appID}/pushCredentials | READ All MFA Push Credentials
+[**ReadOneMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#ReadOneMFAPushCredential) | **Get** /v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID} | READ One MFA Push Credential
+[**UpdateMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#UpdateMFAPushCredential) | **Put** /v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID} | UPDATE MFA Push Credential
 
 
 
 ## CreateMFAPushCredential
 
-> CreateMFAPushCredential201Response CreateMFAPushCredential(ctx, envID, appID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
+> CreateMFAPushCredential201Response CreateMFAPushCredential(ctx, environmentID, appID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
 
 CREATE MFA Push Credential
-
-
 
 ### Example
 
@@ -33,13 +31,13 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     appID := "appID_example" // string | 
     createMFAPushCredentialRequest := openapiclient.createMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example")} // CreateMFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential(context.Background(), envID, appID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
+    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential(context.Background(), environmentID, appID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -55,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **appID** | **string** |  | 
 
 ### Other Parameters
@@ -89,11 +87,9 @@ Name | Type | Description  | Notes
 
 ## DeleteMFAPushCredential
 
-> DeleteMFAPushCredential(ctx, envID, appID, pushCredID).Authorization(authorization).Execute()
+> DeleteMFAPushCredential(ctx, environmentID, appID, pushCredID).Authorization(authorization).Execute()
 
 DELETE MFA Push Credential
-
-
 
 ### Example
 
@@ -108,14 +104,14 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     appID := "appID_example" // string | 
     pushCredID := "pushCredID_example" // string | 
     authorization := "Bearer {{accessToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential(context.Background(), envID, appID, pushCredID).Authorization(authorization).Execute()
+    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential(context.Background(), environmentID, appID, pushCredID).Authorization(authorization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.DeleteMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -129,7 +125,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **appID** | **string** |  | 
 **pushCredID** | **string** |  | 
 
@@ -165,11 +161,9 @@ Name | Type | Description  | Notes
 
 ## ReadAllMFAPushCredentials
 
-> EntityArray ReadAllMFAPushCredentials(ctx, envID, appID).Execute()
+> EntityArray ReadAllMFAPushCredentials(ctx, environmentID, appID).Execute()
 
 READ All MFA Push Credentials
-
-
 
 ### Example
 
@@ -184,12 +178,12 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     appID := "appID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials(context.Background(), envID, appID).Execute()
+    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials(context.Background(), environmentID, appID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadAllMFAPushCredentials``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -205,7 +199,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **appID** | **string** |  | 
 
 ### Other Parameters
@@ -238,11 +232,9 @@ Name | Type | Description  | Notes
 
 ## ReadOneMFAPushCredential
 
-> CreateMFAPushCredential201Response ReadOneMFAPushCredential(ctx, envID, appID, pushCredID).Execute()
+> CreateMFAPushCredential201Response ReadOneMFAPushCredential(ctx, environmentID, appID, pushCredID).Execute()
 
 READ One MFA Push Credential
-
-
 
 ### Example
 
@@ -257,13 +249,13 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     appID := "appID_example" // string | 
     pushCredID := "pushCredID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential(context.Background(), envID, appID, pushCredID).Execute()
+    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential(context.Background(), environmentID, appID, pushCredID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,7 +271,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **appID** | **string** |  | 
 **pushCredID** | **string** |  | 
 
@@ -314,11 +306,9 @@ Name | Type | Description  | Notes
 
 ## UpdateMFAPushCredential
 
-> CreateMFAPushCredential201Response UpdateMFAPushCredential(ctx, envID, appID, pushCredID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
+> CreateMFAPushCredential201Response UpdateMFAPushCredential(ctx, environmentID, appID, pushCredID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
 
 UPDATE MFA Push Credential
-
-
 
 ### Example
 
@@ -333,14 +323,14 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     appID := "appID_example" // string | 
     pushCredID := "pushCredID_example" // string | 
     updateMFAPushCredentialRequest := openapiclient.updateMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example")} // UpdateMFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential(context.Background(), envID, appID, pushCredID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
+    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential(context.Background(), environmentID, appID, pushCredID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -356,7 +346,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **appID** | **string** |  | 
 **pushCredID** | **string** |  | 
 

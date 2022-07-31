@@ -23,48 +23,46 @@ import (
 // MFASettingsApiService MFASettingsApi service
 type MFASettingsApiService service
 
-type ApiV1EnvironmentsEnvIDMfaSettingsDeleteRequest struct {
+type ApiV1EnvironmentsEnvironmentIDMfaSettingsDeleteRequest struct {
 	ctx context.Context
 	ApiService *MFASettingsApiService
-	envID string
+	environmentID string
 }
 
-func (r ApiV1EnvironmentsEnvIDMfaSettingsDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDMfaSettingsDeleteExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDMfaSettingsDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDMfaSettingsDeleteExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDMfaSettingsDelete RESET MFA Settings
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDMfaSettingsDelete RESET MFA Settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @return ApiV1EnvironmentsEnvIDMfaSettingsDeleteRequest
+ @param environmentID
+ @return ApiV1EnvironmentsEnvironmentIDMfaSettingsDeleteRequest
 */
-func (a *MFASettingsApiService) V1EnvironmentsEnvIDMfaSettingsDelete(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDMfaSettingsDeleteRequest {
-	return ApiV1EnvironmentsEnvIDMfaSettingsDeleteRequest{
+func (a *MFASettingsApiService) V1EnvironmentsEnvironmentIDMfaSettingsDelete(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDMfaSettingsDeleteRequest {
+	return ApiV1EnvironmentsEnvironmentIDMfaSettingsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-func (a *MFASettingsApiService) V1EnvironmentsEnvIDMfaSettingsDeleteExecute(r ApiV1EnvironmentsEnvIDMfaSettingsDeleteRequest) (*http.Response, error) {
+func (a *MFASettingsApiService) V1EnvironmentsEnvironmentIDMfaSettingsDeleteExecute(r ApiV1EnvironmentsEnvironmentIDMfaSettingsDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.V1EnvironmentsEnvIDMfaSettingsDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.V1EnvironmentsEnvironmentIDMfaSettingsDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/mfaSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/mfaSettings"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -155,48 +153,46 @@ func (a *MFASettingsApiService) V1EnvironmentsEnvIDMfaSettingsDeleteExecute(r Ap
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDMfaSettingsGetRequest struct {
+type ApiV1EnvironmentsEnvironmentIDMfaSettingsGetRequest struct {
 	ctx context.Context
 	ApiService *MFASettingsApiService
-	envID string
+	environmentID string
 }
 
-func (r ApiV1EnvironmentsEnvIDMfaSettingsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDMfaSettingsGetExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDMfaSettingsGetRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDMfaSettingsGetExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDMfaSettingsGet READ MFA Settings
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDMfaSettingsGet READ MFA Settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @return ApiV1EnvironmentsEnvIDMfaSettingsGetRequest
+ @param environmentID
+ @return ApiV1EnvironmentsEnvironmentIDMfaSettingsGetRequest
 */
-func (a *MFASettingsApiService) V1EnvironmentsEnvIDMfaSettingsGet(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDMfaSettingsGetRequest {
-	return ApiV1EnvironmentsEnvIDMfaSettingsGetRequest{
+func (a *MFASettingsApiService) V1EnvironmentsEnvironmentIDMfaSettingsGet(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDMfaSettingsGetRequest {
+	return ApiV1EnvironmentsEnvironmentIDMfaSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-func (a *MFASettingsApiService) V1EnvironmentsEnvIDMfaSettingsGetExecute(r ApiV1EnvironmentsEnvIDMfaSettingsGetRequest) (*http.Response, error) {
+func (a *MFASettingsApiService) V1EnvironmentsEnvironmentIDMfaSettingsGetExecute(r ApiV1EnvironmentsEnvironmentIDMfaSettingsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.V1EnvironmentsEnvIDMfaSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.V1EnvironmentsEnvironmentIDMfaSettingsGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/mfaSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/mfaSettings"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -287,54 +283,52 @@ func (a *MFASettingsApiService) V1EnvironmentsEnvIDMfaSettingsGetExecute(r ApiV1
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDMfaSettingsPutRequest struct {
+type ApiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest struct {
 	ctx context.Context
 	ApiService *MFASettingsApiService
-	envID string
+	environmentID string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDMfaSettingsPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDMfaSettingsPutRequest {
+func (r ApiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDMfaSettingsPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDMfaSettingsPutExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDMfaSettingsPutExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDMfaSettingsPut UPDATE MFA Settings
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDMfaSettingsPut UPDATE MFA Settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
- @return ApiV1EnvironmentsEnvIDMfaSettingsPutRequest
+ @param environmentID
+ @return ApiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest
 */
-func (a *MFASettingsApiService) V1EnvironmentsEnvIDMfaSettingsPut(ctx context.Context, envID string) ApiV1EnvironmentsEnvIDMfaSettingsPutRequest {
-	return ApiV1EnvironmentsEnvIDMfaSettingsPutRequest{
+func (a *MFASettingsApiService) V1EnvironmentsEnvironmentIDMfaSettingsPut(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest {
+	return ApiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 	}
 }
 
 // Execute executes the request
-func (a *MFASettingsApiService) V1EnvironmentsEnvIDMfaSettingsPutExecute(r ApiV1EnvironmentsEnvIDMfaSettingsPutRequest) (*http.Response, error) {
+func (a *MFASettingsApiService) V1EnvironmentsEnvironmentIDMfaSettingsPutExecute(r ApiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.V1EnvironmentsEnvIDMfaSettingsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFASettingsApiService.V1EnvironmentsEnvironmentIDMfaSettingsPut")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/mfaSettings"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/mfaSettings"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

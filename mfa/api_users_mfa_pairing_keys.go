@@ -23,54 +23,52 @@ import (
 // UsersMFAPairingKeysApiService UsersMFAPairingKeysApi service
 type UsersMFAPairingKeysApiService service
 
-type ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest struct {
 	ctx context.Context
 	ApiService *UsersMFAPairingKeysApiService
-	envID string
+	environmentID string
 	userID string
 	pairingKeyID string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete DELETE MFA Pairing Key
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete DELETE MFA Pairing Key
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
  @param pairingKeyID
- @return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest
 */
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx context.Context, envID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest{
+func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx context.Context, environmentID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 		pairingKeyID: pairingKeyID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
+func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/pairingKeys/{pairingKeyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"pairingKeyID"+"}", url.PathEscape(parameterToString(r.pairingKeyID, "")), -1)
 
@@ -163,54 +161,52 @@ func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKey
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest struct {
 	ctx context.Context
 	ApiService *UsersMFAPairingKeysApiService
-	envID string
+	environmentID string
 	userID string
 	pairingKeyID string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet READ One MFA Pairing Key
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet READ One MFA Pairing Key
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
  @param pairingKeyID
- @return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest
 */
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet(ctx context.Context, envID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest{
+func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(ctx context.Context, environmentID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 		pairingKeyID: pairingKeyID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
+func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPairingKeyIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/pairingKeys/{pairingKeyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"pairingKeyID"+"}", url.PathEscape(parameterToString(r.pairingKeyID, "")), -1)
 
@@ -303,57 +299,55 @@ func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKey
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest struct {
 	ctx context.Context
 	ApiService *UsersMFAPairingKeysApiService
-	envID string
+	environmentID string
 	userID string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPostExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDPairingKeysPost CREATE MFA Pairing Key
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost CREATE MFA Pairing Key
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest
 */
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPost(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest{
+func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvIDUsersUserIDPairingKeysPostExecute(r ApiV1EnvironmentsEnvIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
+func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvIDUsersUserIDPairingKeysPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/pairingKeys"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/pairingKeys"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

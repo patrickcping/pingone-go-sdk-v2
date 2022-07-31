@@ -23,51 +23,49 @@ import (
 // UsersEnableUsersMFAApiService UsersEnableUsersMFAApi service
 type UsersEnableUsersMFAApiService service
 
-type ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledGetRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest struct {
 	ctx context.Context
 	ApiService *UsersEnableUsersMFAApiService
-	envID string
+	environmentID string
 	userID string
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDMfaEnabledGetExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet READ User MFA Enabled
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet READ User MFA Enabled
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledGetRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest
 */
-func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledGetRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledGetRequest{
+func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvIDUsersUserIDMfaEnabledGetExecute(r ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledGetRequest) (*http.Response, error) {
+func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersMFAApiService.V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersMFAApiService.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/mfaEnabled"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/mfaEnabled"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -159,57 +157,55 @@ func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvIDUsersUserIDMfaEnabled
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest struct {
+type ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest struct {
 	ctx context.Context
 	ApiService *UsersEnableUsersMFAApiService
-	envID string
+	environmentID string
 	userID string
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest {
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvIDUsersUserIDMfaEnabledPutExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutExecute(r)
 }
 
 /*
-V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut UPDATE User MFA Enabled
-
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
+V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut UPDATE User MFA Enabled
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest
+ @return ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest
 */
-func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut(ctx context.Context, envID string, userID string) ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest {
-	return ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest{
+func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest {
+	return ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		userID: userID,
 	}
 }
 
 // Execute executes the request
-func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvIDUsersUserIDMfaEnabledPutExecute(r ApiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest) (*http.Response, error) {
+func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersMFAApiService.V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersMFAApiService.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/users/{userID}/mfaEnabled"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/mfaEnabled"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"userID"+"}", url.PathEscape(parameterToString(r.userID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

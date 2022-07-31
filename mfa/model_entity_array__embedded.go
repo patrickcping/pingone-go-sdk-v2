@@ -17,6 +17,7 @@ import (
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
 	PushCredentials []EntityArrayEmbeddedPushCredentialsInner `json:"pushCredentials,omitempty"`
+	DeviceAuthenticationPolicies []DeviceAuthenticationPolicy `json:"deviceAuthenticationPolicies,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -68,10 +69,45 @@ func (o *EntityArrayEmbedded) SetPushCredentials(v []EntityArrayEmbeddedPushCred
 	o.PushCredentials = v
 }
 
+// GetDeviceAuthenticationPolicies returns the DeviceAuthenticationPolicies field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetDeviceAuthenticationPolicies() []DeviceAuthenticationPolicy {
+	if o == nil || o.DeviceAuthenticationPolicies == nil {
+		var ret []DeviceAuthenticationPolicy
+		return ret
+	}
+	return o.DeviceAuthenticationPolicies
+}
+
+// GetDeviceAuthenticationPoliciesOk returns a tuple with the DeviceAuthenticationPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetDeviceAuthenticationPoliciesOk() ([]DeviceAuthenticationPolicy, bool) {
+	if o == nil || o.DeviceAuthenticationPolicies == nil {
+		return nil, false
+	}
+	return o.DeviceAuthenticationPolicies, true
+}
+
+// HasDeviceAuthenticationPolicies returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasDeviceAuthenticationPolicies() bool {
+	if o != nil && o.DeviceAuthenticationPolicies != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceAuthenticationPolicies gets a reference to the given []DeviceAuthenticationPolicy and assigns it to the DeviceAuthenticationPolicies field.
+func (o *EntityArrayEmbedded) SetDeviceAuthenticationPolicies(v []DeviceAuthenticationPolicy) {
+	o.DeviceAuthenticationPolicies = v
+}
+
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.PushCredentials != nil {
 		toSerialize["pushCredentials"] = o.PushCredentials
+	}
+	if o.DeviceAuthenticationPolicies != nil {
+		toSerialize["deviceAuthenticationPolicies"] = o.DeviceAuthenticationPolicies
 	}
 	return json.Marshal(toSerialize)
 }

@@ -4,18 +4,16 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet**](UsersEnableUsersMFAApi.md#V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet) | **Get** /v1/environments/{envID}/users/{userID}/mfaEnabled | READ User MFA Enabled
-[**V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut**](UsersEnableUsersMFAApi.md#V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut) | **Put** /v1/environments/{envID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
+[**V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet**](UsersEnableUsersMFAApi.md#V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet) | **Get** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
+[**V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut**](UsersEnableUsersMFAApi.md#V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut) | **Put** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
 
 
 
-## V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet
+## V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet
 
-> V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet(ctx, envID, userID).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet(ctx, environmentID, userID).Execute()
 
 READ User MFA Enabled
-
-
 
 ### Example
 
@@ -30,14 +28,14 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersEnableUsersMFAApi.V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet(context.Background(), envID, userID).Execute()
+    resp, r, err := apiClient.UsersEnableUsersMFAApi.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersMFAApi.V1EnvironmentsEnvIDUsersUserIDMfaEnabledGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersMFAApi.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -49,12 +47,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDMfaEnabledGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -80,13 +78,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut
+## V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut
 
-> V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut(ctx, envID, userID).Body(body).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut(ctx, environmentID, userID).Body(body).Execute()
 
 UPDATE User MFA Enabled
-
-
 
 ### Example
 
@@ -101,15 +97,15 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersEnableUsersMFAApi.V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut(context.Background(), envID, userID).Body(body).Execute()
+    resp, r, err := apiClient.UsersEnableUsersMFAApi.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut(context.Background(), environmentID, userID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersMFAApi.V1EnvironmentsEnvIDUsersUserIDMfaEnabledPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersMFAApi.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -121,12 +117,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDMfaEnabledPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
