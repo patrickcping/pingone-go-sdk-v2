@@ -4,24 +4,22 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDUsersUserIDDevicesDelete**](UsersMFADevicesApi.md#V1EnvironmentsEnvIDUsersUserIDDevicesDelete) | **Delete** /v1/environments/{envID}/users/{userID}/devices | DELETE Device Order
-[**V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete**](UsersMFADevicesApi.md#V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete) | **Delete** /v1/environments/{envID}/users/{userID}/devices/{deviceID} | DELETE MFA User Device
-[**V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet**](UsersMFADevicesApi.md#V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet) | **Get** /v1/environments/{envID}/users/{userID}/devices/{deviceID} | READ One MFA User Device
-[**V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut**](UsersMFADevicesApi.md#V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut) | **Put** /v1/environments/{envID}/users/{userID}/devices/{deviceID}/logs | SEND MFA Device Logs
-[**V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut**](UsersMFADevicesApi.md#V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut) | **Put** /v1/environments/{envID}/users/{userID}/devices/{deviceID}/nickname | UPDATE Device Nickname
-[**V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost**](UsersMFADevicesApi.md#V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost) | **Post** /v1/environments/{envID}/users/{userID}/devices/{deviceID} | ACTIVATE MFA User Device
-[**V1EnvironmentsEnvIDUsersUserIDDevicesGet**](UsersMFADevicesApi.md#V1EnvironmentsEnvIDUsersUserIDDevicesGet) | **Get** /v1/environments/{envID}/users/{userID}/devices | READ All MFA User Devices
-[**V1EnvironmentsEnvIDUsersUserIDDevicesPost**](UsersMFADevicesApi.md#V1EnvironmentsEnvIDUsersUserIDDevicesPost) | **Post** /v1/environments/{envID}/users/{userID}/devices | SET Device Order
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete**](UsersMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices | DELETE Device Order
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete**](UsersMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | DELETE MFA User Device
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet**](UsersMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | READ One MFA User Device
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut**](UsersMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs | SEND MFA Device Logs
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut**](UsersMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname | UPDATE Device Nickname
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost**](UsersMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | ACTIVATE MFA User Device
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet**](UsersMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet) | **Get** /v1/environments/{environmentID}/users/{userID}/devices | READ All MFA User Devices
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost**](UsersMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices | SET Device Order
 
 
 
-## V1EnvironmentsEnvIDUsersUserIDDevicesDelete
+## V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDelete(ctx, envID, userID).ContentType(contentType).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(ctx, environmentID, userID).ContentType(contentType).Execute()
 
 DELETE Device Order
-
-
 
 ### Example
 
@@ -36,15 +34,15 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.devices.order.remove+json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDelete(context.Background(), envID, userID).ContentType(contentType).Execute()
+    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(context.Background(), environmentID, userID).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -56,12 +54,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDDevicesDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -88,14 +86,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete
+## V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(ctx, envID, userID, deviceID).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(ctx, environmentID, userID, deviceID).Execute()
 
 DELETE MFA User Device
 
-
-
 ### Example
 
 ```go
@@ -109,15 +105,15 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete(context.Background(), envID, userID, deviceID).Execute()
+    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(context.Background(), environmentID, userID, deviceID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -129,13 +125,13 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 **deviceID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -162,14 +158,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet
+## V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(ctx, envID, userID, deviceID).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(ctx, environmentID, userID, deviceID).Execute()
 
 READ One MFA User Device
 
-
-
 ### Example
 
 ```go
@@ -183,15 +177,15 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet(context.Background(), envID, userID, deviceID).Execute()
+    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(context.Background(), environmentID, userID, deviceID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -203,13 +197,13 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 **deviceID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -236,14 +230,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut
+## V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(ctx, envID, userID, deviceID).Body(body).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(ctx, environmentID, userID, deviceID).Body(body).Execute()
 
 SEND MFA Device Logs
 
-
-
 ### Example
 
 ```go
@@ -257,16 +249,16 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), envID, userID, deviceID).Body(body).Execute()
+    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -278,13 +270,13 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 **deviceID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDLogsPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -312,14 +304,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut
+## V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(ctx, envID, userID, deviceID).Body(body).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(ctx, environmentID, userID, deviceID).Body(body).Execute()
 
 UPDATE Device Nickname
 
-
-
 ### Example
 
 ```go
@@ -333,16 +323,16 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), envID, userID, deviceID).Body(body).Execute()
+    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -354,13 +344,13 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 **deviceID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDNicknamePutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -388,13 +378,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost
+## V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(ctx, envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(ctx, environmentID, userID, deviceID).ContentType(contentType).Body(body).Execute()
 
 ACTIVATE MFA User Device
-
-
 
 ### Example
 
@@ -409,7 +397,7 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     deviceID := "deviceID_example" // string | 
     contentType := "application/vnd.pingidentity.device.activate+json" // string |  (optional)
@@ -417,9 +405,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost(context.Background(), envID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(context.Background(), environmentID, userID, deviceID).ContentType(contentType).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -431,13 +419,13 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 **deviceID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDDevicesDeviceIDPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -466,13 +454,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDDevicesGet
+## V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesGet(ctx, envID, userID).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet(ctx, environmentID, userID).Execute()
 
 READ All MFA User Devices
-
-
 
 ### Example
 
@@ -487,14 +473,14 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesGet(context.Background(), envID, userID).Execute()
+    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -506,12 +492,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDDevicesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -537,13 +523,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDUsersUserIDDevicesPost
+## V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost
 
-> V1EnvironmentsEnvIDUsersUserIDDevicesPost(ctx, envID, userID).ContentType(contentType).Body(body).Execute()
+> V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost(ctx, environmentID, userID).ContentType(contentType).Body(body).Execute()
 
 SET Device Order
-
-
 
 ### Example
 
@@ -558,16 +542,16 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     contentType := "application/vnd.pingidentity.devices.reorder+json" // string |  (optional)
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesPost(context.Background(), envID, userID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvIDUsersUserIDDevicesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -579,12 +563,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 **userID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDUsersUserIDDevicesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

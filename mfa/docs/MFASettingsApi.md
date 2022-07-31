@@ -4,20 +4,18 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvIDMfaSettingsDelete**](MFASettingsApi.md#V1EnvironmentsEnvIDMfaSettingsDelete) | **Delete** /v1/environments/{envID}/mfaSettings | RESET MFA Settings
-[**V1EnvironmentsEnvIDMfaSettingsGet**](MFASettingsApi.md#V1EnvironmentsEnvIDMfaSettingsGet) | **Get** /v1/environments/{envID}/mfaSettings | READ MFA Settings
-[**V1EnvironmentsEnvIDMfaSettingsPut**](MFASettingsApi.md#V1EnvironmentsEnvIDMfaSettingsPut) | **Put** /v1/environments/{envID}/mfaSettings | UPDATE MFA Settings
+[**V1EnvironmentsEnvironmentIDMfaSettingsDelete**](MFASettingsApi.md#V1EnvironmentsEnvironmentIDMfaSettingsDelete) | **Delete** /v1/environments/{environmentID}/mfaSettings | RESET MFA Settings
+[**V1EnvironmentsEnvironmentIDMfaSettingsGet**](MFASettingsApi.md#V1EnvironmentsEnvironmentIDMfaSettingsGet) | **Get** /v1/environments/{environmentID}/mfaSettings | READ MFA Settings
+[**V1EnvironmentsEnvironmentIDMfaSettingsPut**](MFASettingsApi.md#V1EnvironmentsEnvironmentIDMfaSettingsPut) | **Put** /v1/environments/{environmentID}/mfaSettings | UPDATE MFA Settings
 
 
 
-## V1EnvironmentsEnvIDMfaSettingsDelete
+## V1EnvironmentsEnvironmentIDMfaSettingsDelete
 
-> V1EnvironmentsEnvIDMfaSettingsDelete(ctx, envID).Execute()
+> V1EnvironmentsEnvironmentIDMfaSettingsDelete(ctx, environmentID).Execute()
 
 RESET MFA Settings
 
-
-
 ### Example
 
 ```go
@@ -31,13 +29,13 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFASettingsApi.V1EnvironmentsEnvIDMfaSettingsDelete(context.Background(), envID).Execute()
+    resp, r, err := apiClient.MFASettingsApi.V1EnvironmentsEnvironmentIDMfaSettingsDelete(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.V1EnvironmentsEnvIDMfaSettingsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.V1EnvironmentsEnvironmentIDMfaSettingsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -49,11 +47,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDMfaSettingsDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDMfaSettingsDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,14 +76,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDMfaSettingsGet
+## V1EnvironmentsEnvironmentIDMfaSettingsGet
 
-> V1EnvironmentsEnvIDMfaSettingsGet(ctx, envID).Execute()
+> V1EnvironmentsEnvironmentIDMfaSettingsGet(ctx, environmentID).Execute()
 
 READ MFA Settings
 
-
-
 ### Example
 
 ```go
@@ -99,13 +95,13 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFASettingsApi.V1EnvironmentsEnvIDMfaSettingsGet(context.Background(), envID).Execute()
+    resp, r, err := apiClient.MFASettingsApi.V1EnvironmentsEnvironmentIDMfaSettingsGet(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.V1EnvironmentsEnvIDMfaSettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.V1EnvironmentsEnvironmentIDMfaSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -117,11 +113,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDMfaSettingsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDMfaSettingsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,13 +142,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvIDMfaSettingsPut
+## V1EnvironmentsEnvironmentIDMfaSettingsPut
 
-> V1EnvironmentsEnvIDMfaSettingsPut(ctx, envID).Body(body).Execute()
+> V1EnvironmentsEnvironmentIDMfaSettingsPut(ctx, environmentID).Body(body).Execute()
 
 UPDATE MFA Settings
-
-
 
 ### Example
 
@@ -167,14 +161,14 @@ import (
 )
 
 func main() {
-    envID := "envID_example" // string | 
+    environmentID := "environmentID_example" // string | 
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFASettingsApi.V1EnvironmentsEnvIDMfaSettingsPut(context.Background(), envID).Body(body).Execute()
+    resp, r, err := apiClient.MFASettingsApi.V1EnvironmentsEnvironmentIDMfaSettingsPut(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.V1EnvironmentsEnvIDMfaSettingsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFASettingsApi.V1EnvironmentsEnvironmentIDMfaSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -186,11 +180,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**envID** | **string** |  | 
+**environmentID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvIDMfaSettingsPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDMfaSettingsPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

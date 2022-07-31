@@ -1,3 +1,6 @@
+# v0.3.0 (Unreleased)
+* **Feature** Support for `DeviceAuthenticationPolicy` models
+
 # v0.2.0 (2022-07-17)
 
 * **Security** Bump `golang.org/x/net` for `CVE-2021-33194` : https://deps.dev/advisory/osv/GO-2021-0238

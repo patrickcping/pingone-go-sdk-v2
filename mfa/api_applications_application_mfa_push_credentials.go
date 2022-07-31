@@ -26,7 +26,7 @@ type ApplicationsApplicationMFAPushCredentialsApiService service
 type ApiCreateMFAPushCredentialRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	envID string
+	environmentID string
 	appID string
 	createMFAPushCredentialRequest *CreateMFAPushCredentialRequest
 }
@@ -43,18 +43,16 @@ func (r ApiCreateMFAPushCredentialRequest) Execute() (*CreateMFAPushCredential20
 /*
 CreateMFAPushCredential CREATE MFA Push Credential
 
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param appID
  @return ApiCreateMFAPushCredentialRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredential(ctx context.Context, envID string, appID string) ApiCreateMFAPushCredentialRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredential(ctx context.Context, environmentID string, appID string) ApiCreateMFAPushCredentialRequest {
 	return ApiCreateMFAPushCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		appID: appID,
 	}
 }
@@ -74,8 +72,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCrede
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -201,7 +199,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCrede
 type ApiDeleteMFAPushCredentialRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	envID string
+	environmentID string
 	appID string
 	pushCredID string
 	authorization *string
@@ -219,19 +217,17 @@ func (r ApiDeleteMFAPushCredentialRequest) Execute() (*http.Response, error) {
 /*
 DeleteMFAPushCredential DELETE MFA Push Credential
 
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param appID
  @param pushCredID
  @return ApiDeleteMFAPushCredentialRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredential(ctx context.Context, envID string, appID string, pushCredID string) ApiDeleteMFAPushCredentialRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredential(ctx context.Context, environmentID string, appID string, pushCredID string) ApiDeleteMFAPushCredentialRequest {
 	return ApiDeleteMFAPushCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		appID: appID,
 		pushCredID: pushCredID,
 	}
@@ -250,8 +246,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCrede
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"pushCredID"+"}", url.PathEscape(parameterToString(r.pushCredID, "")), -1)
 
@@ -350,7 +346,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCrede
 type ApiReadAllMFAPushCredentialsRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	envID string
+	environmentID string
 	appID string
 }
 
@@ -361,18 +357,16 @@ func (r ApiReadAllMFAPushCredentialsRequest) Execute() (*EntityArray, *http.Resp
 /*
 ReadAllMFAPushCredentials READ All MFA Push Credentials
 
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param appID
  @return ApiReadAllMFAPushCredentialsRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentials(ctx context.Context, envID string, appID string) ApiReadAllMFAPushCredentialsRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentials(ctx context.Context, environmentID string, appID string) ApiReadAllMFAPushCredentialsRequest {
 	return ApiReadAllMFAPushCredentialsRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		appID: appID,
 	}
 }
@@ -392,8 +386,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -497,7 +491,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 type ApiReadOneMFAPushCredentialRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	envID string
+	environmentID string
 	appID string
 	pushCredID string
 }
@@ -509,19 +503,17 @@ func (r ApiReadOneMFAPushCredentialRequest) Execute() (*CreateMFAPushCredential2
 /*
 ReadOneMFAPushCredential READ One MFA Push Credential
 
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param appID
  @param pushCredID
  @return ApiReadOneMFAPushCredentialRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredential(ctx context.Context, envID string, appID string, pushCredID string) ApiReadOneMFAPushCredentialRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredential(ctx context.Context, environmentID string, appID string, pushCredID string) ApiReadOneMFAPushCredentialRequest {
 	return ApiReadOneMFAPushCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		appID: appID,
 		pushCredID: pushCredID,
 	}
@@ -542,8 +534,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCred
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"pushCredID"+"}", url.PathEscape(parameterToString(r.pushCredID, "")), -1)
 
@@ -648,7 +640,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCred
 type ApiUpdateMFAPushCredentialRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
-	envID string
+	environmentID string
 	appID string
 	pushCredID string
 	updateMFAPushCredentialRequest *UpdateMFAPushCredentialRequest
@@ -666,19 +658,17 @@ func (r ApiUpdateMFAPushCredentialRequest) Execute() (*CreateMFAPushCredential20
 /*
 UpdateMFAPushCredential UPDATE MFA Push Credential
 
-By design, PingOne requests solely comprise this collection. For complete documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param envID
+ @param environmentID
  @param appID
  @param pushCredID
  @return ApiUpdateMFAPushCredentialRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredential(ctx context.Context, envID string, appID string, pushCredID string) ApiUpdateMFAPushCredentialRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredential(ctx context.Context, environmentID string, appID string, pushCredID string) ApiUpdateMFAPushCredentialRequest {
 	return ApiUpdateMFAPushCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
-		envID: envID,
+		environmentID: environmentID,
 		appID: appID,
 		pushCredID: pushCredID,
 	}
@@ -699,8 +689,8 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCrede
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{envID}/applications/{appID}/pushCredentials/{pushCredID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"envID"+"}", url.PathEscape(parameterToString(r.envID, "")), -1)
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID}"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"pushCredID"+"}", url.PathEscape(parameterToString(r.pushCredID, "")), -1)
 

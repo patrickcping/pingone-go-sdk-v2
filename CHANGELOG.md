@@ -5,6 +5,8 @@
     * **Bug fix** - `SignOnPolicyActionProgressiveProfiling` object includes fixed `attributes` attribute, from object type to array type
     * **Bug fix** - Restructure `SignOnPolicyAction` model to properly separate policy action attributes from each other
     * **Bug fix** - Corrections to `SignOnPolicyActionCommonConditions` model
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.3.0](./mfa/CHANGELOG.md)
+    * **Feature** Support for `DeviceAuthenticationPolicy` models
 
 # Release (2022-07-17)
 
