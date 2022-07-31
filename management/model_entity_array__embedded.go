@@ -27,6 +27,7 @@ type EntityArrayEmbedded struct {
 	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
 	Groups []Group `json:"groups,omitempty"`
 	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
+	IdentityProviders []IdentityProvider `json:"identityProviders,omitempty"`
 	Languages []AgreementLanguage `json:"languages,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
@@ -409,6 +410,38 @@ func (o *EntityArrayEmbedded) HasGroupMemberships() bool {
 // SetGroupMemberships gets a reference to the given []GroupMembership and assigns it to the GroupMemberships field.
 func (o *EntityArrayEmbedded) SetGroupMemberships(v []GroupMembership) {
 	o.GroupMemberships = v
+}
+
+// GetIdentityProviders returns the IdentityProviders field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetIdentityProviders() []IdentityProvider {
+	if o == nil || o.IdentityProviders == nil {
+		var ret []IdentityProvider
+		return ret
+	}
+	return o.IdentityProviders
+}
+
+// GetIdentityProvidersOk returns a tuple with the IdentityProviders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetIdentityProvidersOk() ([]IdentityProvider, bool) {
+	if o == nil || o.IdentityProviders == nil {
+		return nil, false
+	}
+	return o.IdentityProviders, true
+}
+
+// HasIdentityProviders returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasIdentityProviders() bool {
+	if o != nil && o.IdentityProviders != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityProviders gets a reference to the given []IdentityProvider and assigns it to the IdentityProviders field.
+func (o *EntityArrayEmbedded) SetIdentityProviders(v []IdentityProvider) {
+	o.IdentityProviders = v
 }
 
 // GetLanguages returns the Languages field value if set, zero value otherwise.
@@ -861,6 +894,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.GroupMemberships != nil {
 		toSerialize["groupMemberships"] = o.GroupMemberships
+	}
+	if o.IdentityProviders != nil {
+		toSerialize["identityProviders"] = o.IdentityProviders
 	}
 	if o.Languages != nil {
 		toSerialize["languages"] = o.Languages

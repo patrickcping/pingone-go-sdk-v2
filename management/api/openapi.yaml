@@ -8667,6 +8667,7 @@ paths:
       - Identity Propagation (Provisioning) > Propagation Mappings
   /v1/environments/{environmentID}/identityProviders:
     get:
+      operationId: readAllIdentityProviders
       parameters:
       - explode: false
         in: path
@@ -8702,21 +8703,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Identity Providers
       tags:
       - Identity Provider Management > Identity Providers
     post:
+      operationId: createIdentityProvider
       parameters:
-      - example: application/vnd.pingidentity.openid-configuration.discover+json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -8728,9 +8724,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                url: https://Identity_Provider_oidc_well_known_endpoint
-              type: object
+              $ref: '#/components/schemas/IdentityProvider'
       responses:
         "400":
           content:
@@ -8772,13 +8766,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProvider'
           description: Successful response
-      summary: Discover OpenID Provider Metadata
+      summary: CREATE Identity Provider
       tags:
       - Identity Provider Management > Identity Providers
   /v1/environments/{environmentID}/identityProviders/{providerID}:
     delete:
+      operationId: deleteIdentityProvider
       parameters:
       - explode: false
         in: path
@@ -8825,6 +8822,7 @@ paths:
       tags:
       - Identity Provider Management > Identity Providers
     get:
+      operationId: readOneIdentityProvider
       parameters:
       - explode: false
         in: path
@@ -8867,12 +8865,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProvider'
           description: Successful response
       summary: READ One Identity Provider
       tags:
       - Identity Provider Management > Identity Providers
     put:
+      operationId: updateIdentityProvider
       parameters:
       - explode: false
         in: path
@@ -8892,24 +8893,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                '#accountLinking':
-                  filter: SCIM filter for matching to a User
-                '#description': Custom ID Provider
-                enabled: false
-                icon:
-                  id: 9765e2ec-f958-4a20-a178-3ba5f54d6477
-                  href: https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Oxygen-user-identity-female.svg/128px-Oxygen-user-identity-female.svg.png
-                name: "UPDATED_{{$timestamp}}"
-                type: FACEBOOK
-                applicationID: FBID
-                appSecret: FBSecret
-                '#permissions':
-                - USER_AGE_RANGE
-                - USER_BIRTHDAY
-                - USER_GENDER
-                - EMAIL
-              type: object
+              $ref: '#/components/schemas/IdentityProvider'
       responses:
         "400":
           content:
@@ -8944,13 +8928,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProvider'
           description: Successful response
       summary: UPDATE Identity Provider
       tags:
       - Identity Provider Management > Identity Providers
   /v1/environments/{environmentID}/identityProviders/{providerID}/attributes:
     get:
+      operationId: readAllIdentityProviderAttributes
       parameters:
       - explode: false
         in: path
@@ -8993,12 +8980,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Identity Provider Attributes
       tags:
       - Identity Provider Management > Identity Provider Attributes
     post:
+      operationId: createIdentityProviderAttribute
       parameters:
       - explode: false
         in: path
@@ -9018,11 +9008,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: externalId
-                value: "${providerAttributes.externalId}"
-                update: ALWAYS
-              type: object
+              $ref: '#/components/schemas/IdentityProviderAttribute'
       responses:
         "400":
           content:
@@ -9064,13 +9050,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderAttribute'
           description: Successful response
-      summary: CREATE Identity Provider Attribute (SAML)
+      summary: CREATE Identity Provider Attribute
       tags:
       - Identity Provider Management > Identity Provider Attributes
-  /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{idpAttrID}:
+  /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID}:
     delete:
+      operationId: deleteIdentityProviderAttribute
       parameters:
       - explode: false
         in: path
@@ -9088,7 +9077,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: idpAttrID
+        name: providerAttributeID
         required: true
         schema:
           type: string
@@ -9124,6 +9113,7 @@ paths:
       tags:
       - Identity Provider Management > Identity Provider Attributes
     get:
+      operationId: readOneIdentityProviderAttribute
       parameters:
       - explode: false
         in: path
@@ -9141,7 +9131,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: idpAttrID
+        name: providerAttributeID
         required: true
         schema:
           type: string
@@ -9173,12 +9163,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderAttribute'
           description: Successful response
       summary: READ One Identity Provider Attribute
       tags:
       - Identity Provider Management > Identity Provider Attributes
     put:
+      operationId: updateIdentityProviderAttribute
       parameters:
       - explode: false
         in: path
@@ -9196,7 +9189,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: idpAttrID
+        name: providerAttributeID
         required: true
         schema:
           type: string
@@ -9205,11 +9198,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: name.given
-                value: "${providerAttributes.first_name}"
-                update: EMPTY_ONLY
-              type: object
+              $ref: '#/components/schemas/IdentityProviderAttribute'
       responses:
         "400":
           content:
@@ -9244,7 +9233,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityProviderAttribute'
           description: Successful response
       summary: UPDATE Identity Provider Attribute
       tags:
@@ -17987,6 +17978,57 @@ components:
       - SAML
       - PING_ONE
       type: string
+    EnumIdentityProviderAttributeMappingType:
+      description: The mapping type. Options are CORE (This attribute is required
+        by the schema and cannot be removed. The name and update properties cannot
+        be changed.) or CUSTOM (All user-created attributes are of this type.)
+      enum:
+      - CORE
+      - CUSTOM
+      type: string
+    EnumIdentityProviderAttributeMappingUpdate:
+      description: Indicates whether to update the user attribute in the directory
+        with the non-empty mapped value from the IdP. Options are EMPTY_ONLY (only
+        update the user attribute if it has an empty value); ALWAYS (always update
+        the user attribute value).
+      enum:
+      - EMPTY_ONLY
+      - ALWAYS
+      type: string
+    EnumIdentityProviderExt:
+      description: A string that identifies the type of identity provider used to
+        authenticate the user.
+      enum:
+      - FACEBOOK
+      - GOOGLE
+      - LINKEDIN
+      - APPLE
+      - TWITTER
+      - AMAZON
+      - YAHOO
+      - MICROSOFT
+      - PAYPAL
+      - GITHUB
+      - OPENID_CONNECT
+      - SAML
+      type: string
+    EnumIdentityProviderOIDCTokenAuthMethod:
+      default: CLIENT_SECRET_BASIC
+      description: "A string that specifies the OIDC identity provider's token endpoint\
+        \ authentication method. Options are CLIENT_SECRET_BASIC (default), CLIENT_SECRET_POST,\
+        \ and NONE. This is a required property."
+      enum:
+      - CLIENT_SECRET_BASIC
+      - CLIENT_SECRET_POST
+      - NONE
+      type: string
+    EnumIdentityProviderSAMLSSOBinding:
+      description: A string that specifies the binding for the authentication request.
+        Options are HTTP_POST and HTTP_REDIRECT.
+      enum:
+      - HTTP_POST
+      - HTTP_REDIRECT
+      type: string
     EnumImageFormat:
       description: "A string that specifies the type of format used for the image.\
         \ Options are jpg, png, and gif."
@@ -18606,55 +18648,6 @@ components:
       example:
         size: 2.8841621266687802
         _embedded:
-          grants:
-          - createdAt: createdAt
-            application:
-              id: id
-            resource:
-              id: id
-            id: id
-            scopes:
-            - id: id
-            - id: id
-            updatedAt: updatedAt
-          - createdAt: createdAt
-            application:
-              id: id
-            resource:
-              id: id
-            id: id
-            scopes:
-            - id: id
-            - id: id
-            updatedAt: updatedAt
-          gateways:
-          - null
-          - null
-          languages:
-          - currentRevision:
-              id: id
-            agreement:
-              id: id
-            displayName: displayName
-            userExperience:
-              acceptCheckboxText: acceptCheckboxText
-              declineButtonText: declineButtonText
-              continueButtonText: continueButtonText
-            id: id
-            locale: locale
-            enabled: true
-          - currentRevision:
-              id: id
-            agreement:
-              id: id
-            displayName: displayName
-            userExperience:
-              acceptCheckboxText: acceptCheckboxText
-              declineButtonText: declineButtonText
-              continueButtonText: continueButtonText
-            id: id
-            locale: locale
-            enabled: true
           credentials:
           - createdAt: createdAt
             authUrl: authUrl
@@ -18720,6 +18713,188 @@ components:
             - applicableTo
             - applicableTo
             id: id
+          signOnPolicies:
+          - createdAt: createdAt
+            default: false
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            default: false
+            environment:
+              id: id
+            name: name
+            description: description
+            id: id
+            updatedAt: updatedAt
+          passwordPolicies:
+          - minCharacters:
+              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+              "0123456789": 5
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+              abcdefghijklmnopqrstuvwxyz: 4
+            populationCount: 8
+            length:
+              min: 25
+              max: 4
+            notSimilarToCurrent: true
+            description: description
+            newPassword: newPassword
+            excludesCommonlyUsed: true
+            history:
+              retentionDays: 1
+              count: 1
+            minComplexity: 9
+            excludesProfileData: true
+            currentPassword: currentPassword
+            createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            lockout:
+              durationSeconds: 1
+              failureCount: 1
+            bypassPolicy: false
+            minUniqueCharacters: 6
+            name: name
+            maxAgeDays: 1
+            id: id
+            maxRepeatedCharacters: 6
+            minAgeDays: 1
+            updatedAt: updatedAt
+          - minCharacters:
+              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+              "0123456789": 5
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+              abcdefghijklmnopqrstuvwxyz: 4
+            populationCount: 8
+            length:
+              min: 25
+              max: 4
+            notSimilarToCurrent: true
+            description: description
+            newPassword: newPassword
+            excludesCommonlyUsed: true
+            history:
+              retentionDays: 1
+              count: 1
+            minComplexity: 9
+            excludesProfileData: true
+            currentPassword: currentPassword
+            createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            lockout:
+              durationSeconds: 1
+              failureCount: 1
+            bypassPolicy: false
+            minUniqueCharacters: 6
+            name: name
+            maxAgeDays: 1
+            id: id
+            maxRepeatedCharacters: 6
+            minAgeDays: 1
+            updatedAt: updatedAt
+          revisions:
+          - agreement:
+              id: id
+            notValidAfter: notValidAfter
+            effectiveAt: effectiveAt
+            language:
+              id: id
+            requiresReconsent: true
+            id: id
+            text: text
+            contentType: text/html
+          - agreement:
+              id: id
+            notValidAfter: notValidAfter
+            effectiveAt: effectiveAt
+            language:
+              id: id
+            requiresReconsent: true
+            id: id
+            text: text
+            contentType: text/html
+          roleAssignments:
+          - environment:
+              id: id
+            role:
+              id: id
+            scope:
+              id: id
+              type: null
+            readOnly: true
+            id: id
+            gateway:
+              id: id
+          - environment:
+              id: id
+            role:
+              id: id
+            scope:
+              id: id
+              type: null
+            readOnly: true
+            id: id
+            gateway:
+              id: id
+          grants:
+          - createdAt: createdAt
+            application:
+              id: id
+            resource:
+              id: id
+            id: id
+            scopes:
+            - id: id
+            - id: id
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            application:
+              id: id
+            resource:
+              id: id
+            id: id
+            scopes:
+            - id: id
+            - id: id
+            updatedAt: updatedAt
+          gateways:
+          - null
+          - null
+          identityProviders:
+          - null
+          - null
+          languages:
+          - currentRevision:
+              id: id
+            agreement:
+              id: id
+            displayName: displayName
+            userExperience:
+              acceptCheckboxText: acceptCheckboxText
+              declineButtonText: declineButtonText
+              continueButtonText: continueButtonText
+            id: id
+            locale: locale
+            enabled: true
+          - currentRevision:
+              id: id
+            agreement:
+              id: id
+            displayName: displayName
+            userExperience:
+              acceptCheckboxText: acceptCheckboxText
+              declineButtonText: declineButtonText
+              continueButtonText: continueButtonText
+            id: id
+            locale: locale
+            enabled: true
           agreements:
           - consentCountsUpdatedAt: consentCountsUpdatedAt
             environment:
@@ -18794,23 +18969,6 @@ components:
             description: description
             id: id
             type: null
-            updatedAt: updatedAt
-          signOnPolicies:
-          - createdAt: createdAt
-            default: false
-            environment:
-              id: id
-            name: name
-            description: description
-            id: id
-            updatedAt: updatedAt
-          - createdAt: createdAt
-            default: false
-            environment:
-              id: id
-            name: name
-            description: description
-            id: id
             updatedAt: updatedAt
           users:
           - preferredLanguage: preferredLanguage
@@ -19057,99 +19215,9 @@ components:
           groupMemberships:
           - id: id
           - id: id
-          passwordPolicies:
-          - minCharacters:
-              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-              "0123456789": 5
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-              abcdefghijklmnopqrstuvwxyz: 4
-            populationCount: 8
-            length:
-              min: 25
-              max: 4
-            notSimilarToCurrent: true
-            description: description
-            newPassword: newPassword
-            excludesCommonlyUsed: true
-            history:
-              retentionDays: 1
-              count: 1
-            minComplexity: 9
-            excludesProfileData: true
-            currentPassword: currentPassword
-            createdAt: createdAt
-            default: true
-            environment:
-              id: id
-            lockout:
-              durationSeconds: 1
-              failureCount: 1
-            bypassPolicy: false
-            minUniqueCharacters: 6
-            name: name
-            maxAgeDays: 1
-            id: id
-            maxRepeatedCharacters: 6
-            minAgeDays: 1
-            updatedAt: updatedAt
-          - minCharacters:
-              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-              "0123456789": 5
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-              abcdefghijklmnopqrstuvwxyz: 4
-            populationCount: 8
-            length:
-              min: 25
-              max: 4
-            notSimilarToCurrent: true
-            description: description
-            newPassword: newPassword
-            excludesCommonlyUsed: true
-            history:
-              retentionDays: 1
-              count: 1
-            minComplexity: 9
-            excludesProfileData: true
-            currentPassword: currentPassword
-            createdAt: createdAt
-            default: true
-            environment:
-              id: id
-            lockout:
-              durationSeconds: 1
-              failureCount: 1
-            bypassPolicy: false
-            minUniqueCharacters: 6
-            name: name
-            maxAgeDays: 1
-            id: id
-            maxRepeatedCharacters: 6
-            minAgeDays: 1
-            updatedAt: updatedAt
           attributes:
           - null
           - null
-          revisions:
-          - agreement:
-              id: id
-            notValidAfter: notValidAfter
-            effectiveAt: effectiveAt
-            language:
-              id: id
-            requiresReconsent: true
-            id: id
-            text: text
-            contentType: text/html
-          - agreement:
-              id: id
-            notValidAfter: notValidAfter
-            effectiveAt: effectiveAt
-            language:
-              id: id
-            requiresReconsent: true
-            id: id
-            text: text
-            contentType: text/html
           scopes:
           - createdAt: createdAt
             environment:
@@ -19171,29 +19239,6 @@ components:
             - schemaAttributes
             - schemaAttributes
             updatedAt: updatedAt
-          roleAssignments:
-          - environment:
-              id: id
-            role:
-              id: id
-            scope:
-              id: id
-              type: null
-            readOnly: true
-            id: id
-            gateway:
-              id: id
-          - environment:
-              id: id
-            role:
-              id: id
-            scope:
-              id: id
-              type: null
-            readOnly: true
-            id: id
-            gateway:
-              id: id
           actions:
           - null
           - null
@@ -19556,6 +19601,152 @@ components:
       required:
       - id
       type: object
+    IdentityProvider:
+      oneOf:
+      - $ref: '#/components/schemas/IdentityProviderFacebook'
+      - $ref: '#/components/schemas/IdentityProviderGoogle'
+      - $ref: '#/components/schemas/IdentityProviderLinkedIn'
+      - $ref: '#/components/schemas/IdentityProviderYahoo'
+      - $ref: '#/components/schemas/IdentityProviderOIDC'
+      - $ref: '#/components/schemas/IdentityProviderAmazon'
+      - $ref: '#/components/schemas/IdentityProviderTwitter'
+      - $ref: '#/components/schemas/IdentityProviderApple'
+      - $ref: '#/components/schemas/IdentityProviderPaypal'
+      - $ref: '#/components/schemas/IdentityProviderMicrosoft'
+      - $ref: '#/components/schemas/IdentityProviderGithub'
+      - $ref: '#/components/schemas/IdentityProviderSAML'
+    IdentityProviderAttribute:
+      example:
+        createdAt: createdAt
+        environment:
+          id: id
+        mappingType: null
+        name: name
+        update: null
+        id: id
+        value: value
+        identityProvider:
+          id: id
+        updatedAt: updatedAt
+      properties:
+        mappingType:
+          $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingType'
+        name:
+          description: "The user attribute, which is unique per provider. The attribute\
+            \ must not be defined as read only from the user schema or of type COMPLEX\
+            \ based on the user schema. Valid examples username, and name.first. The\
+            \ following attributes may not be used account, id, created, updated,\
+            \ lifecycle, mfaEnabled, and enabled."
+          type: string
+        value:
+          description: "A placeholder referring to the attribute (or attributes) from\
+            \ the provider. Placeholders must be valid for the attributes returned\
+            \ by the IdP type and use the ${} syntax (for example, username=\"${email}\"\
+            ). For SAML, any placeholder is acceptable, and it is mapped against the\
+            \ attributes available in the SAML assertion after authentication. The\
+            \ ${samlAssertion.subject} placeholder is a special reserved placeholder\
+            \ used to refer to the subject name ID in the SAML assertion response."
+          type: string
+        update:
+          $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingType'
+        id:
+          description: The unique identifier for the resource.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        identityProvider:
+          $ref: '#/components/schemas/IdentityProviderAttribute_identityProvider'
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
+      required:
+      - name
+      - update
+      - value
+      type: object
+    IdentityProviderCommon:
+      properties:
+        description:
+          description: The description of the IdP.
+          type: string
+        enabled:
+          $ref: '#/components/schemas/EnumEnabledStatus'
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        icon:
+          $ref: '#/components/schemas/IdentityProviderCommon_icon'
+        id:
+          description: The resource ID.
+          readOnly: true
+          type: string
+        loginButtonIcon:
+          $ref: '#/components/schemas/IdentityProviderCommon_loginButtonIcon'
+        name:
+          description: The name of the IdP.
+          type: string
+        registration:
+          $ref: '#/components/schemas/IdentityProviderCommon_registration'
+        type:
+          $ref: '#/components/schemas/EnumIdentityProviderExt'
+      required:
+      - enabled
+      - name
+      - type
+      type: object
+    IdentityProviderFacebook:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderFacebook_allOf'
+    IdentityProviderGoogle:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderGoogle_allOf'
+    IdentityProviderLinkedIn:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderLinkedIn_allOf'
+    IdentityProviderYahoo:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderYahoo_allOf'
+    IdentityProviderOIDC:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderOIDC_allOf'
+    IdentityProviderAmazon:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderAmazon_allOf'
+    IdentityProviderTwitter:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderTwitter_allOf'
+    IdentityProviderApple:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderApple_allOf'
+    IdentityProviderPaypal:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderPaypal_allOf'
+    IdentityProviderMicrosoft:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderMicrosoft_allOf'
+    IdentityProviderGithub:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderGithub_allOf'
+    IdentityProviderSAML:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderCommon'
+      - $ref: '#/components/schemas/IdentityProviderSAML_allOf'
     Image:
       example:
         environment:
@@ -19890,7 +20081,7 @@ components:
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         resource:
-          $ref: '#/components/schemas/Resource_resource'
+          $ref: '#/components/schemas/IdentityProviderAttribute_identityProvider'
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -19940,7 +20131,7 @@ components:
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         resource:
-          $ref: '#/components/schemas/Resource_resource'
+          $ref: '#/components/schemas/IdentityProviderAttribute_identityProvider'
       required:
       - name
       - value
@@ -21244,6 +21435,7 @@ components:
     EntityArray__embedded_attributes_inner:
       oneOf:
       - $ref: '#/components/schemas/ApplicationAttributeMapping'
+      - $ref: '#/components/schemas/IdentityProviderAttribute'
       - $ref: '#/components/schemas/SchemaAttribute'
       - $ref: '#/components/schemas/ResourceAttribute'
     EntityArray__embedded_applications_inner:
@@ -21256,55 +21448,6 @@ components:
       - $ref: '#/components/schemas/GatewayLDAP'
     EntityArray__embedded:
       example:
-        grants:
-        - createdAt: createdAt
-          application:
-            id: id
-          resource:
-            id: id
-          id: id
-          scopes:
-          - id: id
-          - id: id
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          application:
-            id: id
-          resource:
-            id: id
-          id: id
-          scopes:
-          - id: id
-          - id: id
-          updatedAt: updatedAt
-        gateways:
-        - null
-        - null
-        languages:
-        - currentRevision:
-            id: id
-          agreement:
-            id: id
-          displayName: displayName
-          userExperience:
-            acceptCheckboxText: acceptCheckboxText
-            declineButtonText: declineButtonText
-            continueButtonText: continueButtonText
-          id: id
-          locale: locale
-          enabled: true
-        - currentRevision:
-            id: id
-          agreement:
-            id: id
-          displayName: displayName
-          userExperience:
-            acceptCheckboxText: acceptCheckboxText
-            declineButtonText: declineButtonText
-            continueButtonText: continueButtonText
-          id: id
-          locale: locale
-          enabled: true
         credentials:
         - createdAt: createdAt
           authUrl: authUrl
@@ -21370,6 +21513,188 @@ components:
           - applicableTo
           - applicableTo
           id: id
+        signOnPolicies:
+        - createdAt: createdAt
+          default: false
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          default: false
+          environment:
+            id: id
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        passwordPolicies:
+        - minCharacters:
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+            "0123456789": 5
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+            abcdefghijklmnopqrstuvwxyz: 4
+          populationCount: 8
+          length:
+            min: 25
+            max: 4
+          notSimilarToCurrent: true
+          description: description
+          newPassword: newPassword
+          excludesCommonlyUsed: true
+          history:
+            retentionDays: 1
+            count: 1
+          minComplexity: 9
+          excludesProfileData: true
+          currentPassword: currentPassword
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          bypassPolicy: false
+          minUniqueCharacters: 6
+          name: name
+          maxAgeDays: 1
+          id: id
+          maxRepeatedCharacters: 6
+          minAgeDays: 1
+          updatedAt: updatedAt
+        - minCharacters:
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
+            "0123456789": 5
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
+            abcdefghijklmnopqrstuvwxyz: 4
+          populationCount: 8
+          length:
+            min: 25
+            max: 4
+          notSimilarToCurrent: true
+          description: description
+          newPassword: newPassword
+          excludesCommonlyUsed: true
+          history:
+            retentionDays: 1
+            count: 1
+          minComplexity: 9
+          excludesProfileData: true
+          currentPassword: currentPassword
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          lockout:
+            durationSeconds: 1
+            failureCount: 1
+          bypassPolicy: false
+          minUniqueCharacters: 6
+          name: name
+          maxAgeDays: 1
+          id: id
+          maxRepeatedCharacters: 6
+          minAgeDays: 1
+          updatedAt: updatedAt
+        revisions:
+        - agreement:
+            id: id
+          notValidAfter: notValidAfter
+          effectiveAt: effectiveAt
+          language:
+            id: id
+          requiresReconsent: true
+          id: id
+          text: text
+          contentType: text/html
+        - agreement:
+            id: id
+          notValidAfter: notValidAfter
+          effectiveAt: effectiveAt
+          language:
+            id: id
+          requiresReconsent: true
+          id: id
+          text: text
+          contentType: text/html
+        roleAssignments:
+        - environment:
+            id: id
+          role:
+            id: id
+          scope:
+            id: id
+            type: null
+          readOnly: true
+          id: id
+          gateway:
+            id: id
+        - environment:
+            id: id
+          role:
+            id: id
+          scope:
+            id: id
+            type: null
+          readOnly: true
+          id: id
+          gateway:
+            id: id
+        grants:
+        - createdAt: createdAt
+          application:
+            id: id
+          resource:
+            id: id
+          id: id
+          scopes:
+          - id: id
+          - id: id
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          application:
+            id: id
+          resource:
+            id: id
+          id: id
+          scopes:
+          - id: id
+          - id: id
+          updatedAt: updatedAt
+        gateways:
+        - null
+        - null
+        identityProviders:
+        - null
+        - null
+        languages:
+        - currentRevision:
+            id: id
+          agreement:
+            id: id
+          displayName: displayName
+          userExperience:
+            acceptCheckboxText: acceptCheckboxText
+            declineButtonText: declineButtonText
+            continueButtonText: continueButtonText
+          id: id
+          locale: locale
+          enabled: true
+        - currentRevision:
+            id: id
+          agreement:
+            id: id
+          displayName: displayName
+          userExperience:
+            acceptCheckboxText: acceptCheckboxText
+            declineButtonText: declineButtonText
+            continueButtonText: continueButtonText
+          id: id
+          locale: locale
+          enabled: true
         agreements:
         - consentCountsUpdatedAt: consentCountsUpdatedAt
           environment:
@@ -21444,23 +21769,6 @@ components:
           description: description
           id: id
           type: null
-          updatedAt: updatedAt
-        signOnPolicies:
-        - createdAt: createdAt
-          default: false
-          environment:
-            id: id
-          name: name
-          description: description
-          id: id
-          updatedAt: updatedAt
-        - createdAt: createdAt
-          default: false
-          environment:
-            id: id
-          name: name
-          description: description
-          id: id
           updatedAt: updatedAt
         users:
         - preferredLanguage: preferredLanguage
@@ -21707,99 +22015,9 @@ components:
         groupMemberships:
         - id: id
         - id: id
-        passwordPolicies:
-        - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-            "0123456789": 5
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-            abcdefghijklmnopqrstuvwxyz: 4
-          populationCount: 8
-          length:
-            min: 25
-            max: 4
-          notSimilarToCurrent: true
-          description: description
-          newPassword: newPassword
-          excludesCommonlyUsed: true
-          history:
-            retentionDays: 1
-            count: 1
-          minComplexity: 9
-          excludesProfileData: true
-          currentPassword: currentPassword
-          createdAt: createdAt
-          default: true
-          environment:
-            id: id
-          lockout:
-            durationSeconds: 1
-            failureCount: 1
-          bypassPolicy: false
-          minUniqueCharacters: 6
-          name: name
-          maxAgeDays: 1
-          id: id
-          maxRepeatedCharacters: 6
-          minAgeDays: 1
-          updatedAt: updatedAt
-        - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-            "0123456789": 5
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-            abcdefghijklmnopqrstuvwxyz: 4
-          populationCount: 8
-          length:
-            min: 25
-            max: 4
-          notSimilarToCurrent: true
-          description: description
-          newPassword: newPassword
-          excludesCommonlyUsed: true
-          history:
-            retentionDays: 1
-            count: 1
-          minComplexity: 9
-          excludesProfileData: true
-          currentPassword: currentPassword
-          createdAt: createdAt
-          default: true
-          environment:
-            id: id
-          lockout:
-            durationSeconds: 1
-            failureCount: 1
-          bypassPolicy: false
-          minUniqueCharacters: 6
-          name: name
-          maxAgeDays: 1
-          id: id
-          maxRepeatedCharacters: 6
-          minAgeDays: 1
-          updatedAt: updatedAt
         attributes:
         - null
         - null
-        revisions:
-        - agreement:
-            id: id
-          notValidAfter: notValidAfter
-          effectiveAt: effectiveAt
-          language:
-            id: id
-          requiresReconsent: true
-          id: id
-          text: text
-          contentType: text/html
-        - agreement:
-            id: id
-          notValidAfter: notValidAfter
-          effectiveAt: effectiveAt
-          language:
-            id: id
-          requiresReconsent: true
-          id: id
-          text: text
-          contentType: text/html
         scopes:
         - createdAt: createdAt
           environment:
@@ -21821,29 +22039,6 @@ components:
           - schemaAttributes
           - schemaAttributes
           updatedAt: updatedAt
-        roleAssignments:
-        - environment:
-            id: id
-          role:
-            id: id
-          scope:
-            id: id
-            type: null
-          readOnly: true
-          id: id
-          gateway:
-            id: id
-        - environment:
-            id: id
-          role:
-            id: id
-          scope:
-            id: id
-            type: null
-          readOnly: true
-          id: id
-          gateway:
-            id: id
         actions:
         - null
         - null
@@ -21954,6 +22149,10 @@ components:
         groupMemberships:
           items:
             $ref: '#/components/schemas/GroupMembership'
+          type: array
+        identityProviders:
+          items:
+            $ref: '#/components/schemas/IdentityProvider'
           type: array
         languages:
           items:
@@ -22228,6 +22427,315 @@ components:
           type: integer
       readOnly: true
       type: object
+    IdentityProviderAttribute_identityProvider:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      readOnly: true
+      type: object
+    IdentityProviderCommon_icon:
+      properties:
+        id:
+          description: The ID for the IdP icon.
+          type: string
+        href:
+          description: The HREF for the IdP icon.
+          type: string
+      type: object
+    IdentityProviderCommon_loginButtonIcon:
+      properties:
+        id:
+          description: "The image ID for the IdP login button icon. For Facebook,\
+            \ Google, and LinkedIn IdPs, updates to the login button are ignored to\
+            \ preserve the IdP branding rules."
+          type: string
+        href:
+          description: "The HREF for the IdP login button icon image file. For Facebook,\
+            \ Google, and LinkedIn IdPs, updates to the login button are ignored to\
+            \ preserve the IdP branding rules."
+          type: string
+      type: object
+    IdentityProviderCommon_registration_population:
+      properties:
+        id:
+          description: An external IdP to use as authoritative. Setting this attribute
+            gives management of linked users to the IdP and also triggers just-in-time
+            provisioning of new users. These users are created in the population indicated
+            with registration.population.id.
+          type: string
+      type: object
+    IdentityProviderCommon_registration:
+      properties:
+        population:
+          $ref: '#/components/schemas/IdentityProviderCommon_registration_population'
+      type: object
+    IdentityProviderFacebook_allOf:
+      properties:
+        appId:
+          description: A string that specifies the application ID from Facebook. This
+            is a required property.
+          type: string
+        appSecret:
+          description: A string that specifies the application secret from Facebook.
+            This is a required property.
+          type: string
+      required:
+      - appId
+      - appSecret
+      type: object
+    IdentityProviderGoogle_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from Google. This
+            is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from Google.
+            This is a required property.
+          type: string
+      required:
+      - clientId
+      - clientSecret
+      type: object
+    IdentityProviderLinkedIn_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from LinkedIn. This
+            is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from LinkedIn.
+            This is a required property.
+          type: string
+      required:
+      - clientId
+      - clientSecret
+      type: object
+    IdentityProviderYahoo_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from Yahoo. This
+            is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from Yahoo.
+            This is a required property.
+          type: string
+      required:
+      - clientId
+      - clientSecret
+      type: object
+    IdentityProviderOIDC_allOf:
+      properties:
+        authorizationEndpoint:
+          description: A string that specifies the the OIDC identity provider's authorization
+            endpoint. This value must be a URL that uses https. This is a required
+            property.
+          type: string
+        clientId:
+          description: A string that specifies the application ID from the OIDC identity
+            provider. This is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from the OIDC
+            identity provider. This is a required property.
+          type: string
+        discoveryEndpoint:
+          description: A string that specifies the OIDC identity provider's discovery
+            endpoint. This value must be a URL that uses https.
+          type: string
+        issuer:
+          description: A string that specifies the issuer to which the authentication
+            is sent for the OIDC identity provider. This value must be a URL that
+            uses https. This is a required property.
+          type: string
+        jwksEndpoint:
+          description: A string that specifies the OIDC identity provider's jwks endpoint.
+            This value must be a URL that uses https. This is a required property.
+          type: string
+        scopes:
+          description: An array that specifies the scopes to include in the authentication
+            request to the OIDC identity provider. This is a required property.
+          items:
+            type: string
+          type: array
+        tokenEndpoint:
+          description: A string that specifies the OIDC identity provider's token
+            endpoint. This is a required property.
+          type: string
+        tokenEndpointAuthMethod:
+          $ref: '#/components/schemas/EnumIdentityProviderOIDCTokenAuthMethod'
+        userInfoEndpoint:
+          description: A string that specifies the OIDC identity provider's userInfo
+            endpoint.
+          type: string
+      required:
+      - authorizationEndpoint
+      - clientId
+      - clientSecret
+      - issuer
+      - jwksEndpoint
+      - scopes
+      - tokenEndpoint
+      - tokenEndpointAuthMethod
+      type: object
+    IdentityProviderAmazon_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from Amazon. This
+            is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from Amazon.
+            This is a required property.
+          type: string
+      required:
+      - clientId
+      - clientSecret
+      type: object
+    IdentityProviderTwitter_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from Twitter. This
+            is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from Twitter.
+            This is a required property.
+          type: string
+      required:
+      - clientId
+      - clientSecret
+      type: object
+    IdentityProviderApple_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from Apple. This
+            is the identifier obtained after registering a services ID in the Apple
+            developer portal. This is a required property.
+          type: string
+        clientSecretSigningKey:
+          description: A string that specifies the private key that is used to generate
+            a client secret. This is a required property.
+          type: string
+        keyId:
+          description: A 10-character string that Apple uses to identify an authentication
+            key. This is a required property.
+          type: string
+        teamId:
+          description: A 10-character string that Apple uses to identify teams. This
+            is a required property.
+          type: string
+      required:
+      - clientId
+      - clientSecretSigningKey
+      - keyId
+      - teamId
+      type: object
+    IdentityProviderPaypal_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from PayPal. This
+            is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from PayPal.
+            This is a required property.
+          type: string
+        clientEnvironment:
+          description: "A string that specifies the PayPal environment. Options are\
+            \ sandbox, and live. This is a required property."
+          type: string
+      required:
+      - clientEnvironment
+      - clientId
+      - clientSecret
+      type: object
+    IdentityProviderMicrosoft_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from Microsoft.
+            This is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from Microsoft.
+            This is a required property.
+          type: string
+      required:
+      - clientId
+      - clientSecret
+      type: object
+    IdentityProviderGithub_allOf:
+      properties:
+        clientId:
+          description: A string that specifies the application ID from Github. This
+            is a required property.
+          type: string
+        clientSecret:
+          description: A string that specifies the application secret from Github.
+            This is a required property.
+          type: string
+      required:
+      - clientId
+      - clientSecret
+      type: object
+    IdentityProviderSAML_allOf_idpVerification:
+      properties:
+        certificates:
+          description: A array that specifies the identity provider's certificate
+            IDs used to verify the signature on the signed assertion from the identity
+            provider. Signing is done with a private key and verified with a public
+            key.
+          items:
+            $ref: '#/components/schemas/Application_accessControl_group_groups_inner'
+          type: array
+      type: object
+    IdentityProviderSAML_allOf_spSigning_key:
+      properties:
+        id:
+          description: A string that specifies the service provider's signing key
+            ID.
+          type: string
+      required:
+      - id
+      type: object
+    IdentityProviderSAML_allOf_spSigning:
+      properties:
+        key:
+          $ref: '#/components/schemas/IdentityProviderSAML_allOf_spSigning_key'
+      required:
+      - key
+      type: object
+    IdentityProviderSAML_allOf:
+      properties:
+        authnRequestSigned:
+          description: A boolean that specifies whether the SAML authentication request
+            will be signed when sending to the identity provider. Set this to true
+            if the external IDP is included in an authentication policy to be used
+            by applications that are accessed using a mix of default URLS and custom
+            Domains URLs.
+          type: boolean
+        idpEntityId:
+          description: A string that specifies the entity ID URI that is checked against
+            the issuerId tag in the incoming response.
+          type: string
+        idpVerification:
+          $ref: '#/components/schemas/IdentityProviderSAML_allOf_idpVerification'
+        spEntityId:
+          description: "A string that specifies the service provider's entity ID,\
+            \ used to look up the application."
+          type: string
+        spSigning:
+          $ref: '#/components/schemas/IdentityProviderSAML_allOf_spSigning'
+        ssoBinding:
+          $ref: '#/components/schemas/EnumIdentityProviderSAMLSSOBinding'
+        ssoEndpoint:
+          description: A string that specifies the SSO endpoint for the authentication
+            request.
+          type: string
+      type: object
     Image_targets:
       example:
         width: 0
@@ -22406,14 +22914,6 @@ components:
           type: string
       required:
       - id
-      type: object
-    Resource_resource:
-      example:
-        id: id
-      properties:
-        id:
-          type: string
-      readOnly: true
       type: object
     Role_permissions_inner:
       example:

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
+**IdentityProviders** | Pointer to [**[]IdentityProvider**](IdentityProvider.md) |  | [optional] 
 **Languages** | Pointer to [**[]AgreementLanguage**](AgreementLanguage.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
@@ -322,6 +323,31 @@ SetGroupMemberships sets GroupMemberships field to given value.
 `func (o *EntityArrayEmbedded) HasGroupMemberships() bool`
 
 HasGroupMemberships returns a boolean if a field has been set.
+
+### GetIdentityProviders
+
+`func (o *EntityArrayEmbedded) GetIdentityProviders() []IdentityProvider`
+
+GetIdentityProviders returns the IdentityProviders field if non-nil, zero value otherwise.
+
+### GetIdentityProvidersOk
+
+`func (o *EntityArrayEmbedded) GetIdentityProvidersOk() (*[]IdentityProvider, bool)`
+
+GetIdentityProvidersOk returns a tuple with the IdentityProviders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdentityProviders
+
+`func (o *EntityArrayEmbedded) SetIdentityProviders(v []IdentityProvider)`
+
+SetIdentityProviders sets IdentityProviders field to given value.
+
+### HasIdentityProviders
+
+`func (o *EntityArrayEmbedded) HasIdentityProviders() bool`
+
+HasIdentityProviders returns a boolean if a field has been set.
 
 ### GetLanguages
 

@@ -4,85 +4,19 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDIdentityProvidersGet**](IdentityProviderManagementIdentityProvidersApi.md#V1EnvironmentsEnvironmentIDIdentityProvidersGet) | **Get** /v1/environments/{environmentID}/identityProviders | READ All Identity Providers
-[**V1EnvironmentsEnvironmentIDIdentityProvidersPost**](IdentityProviderManagementIdentityProvidersApi.md#V1EnvironmentsEnvironmentIDIdentityProvidersPost) | **Post** /v1/environments/{environmentID}/identityProviders | Discover OpenID Provider Metadata
-[**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDDelete**](IdentityProviderManagementIdentityProvidersApi.md#V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDDelete) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID} | DELETE Identity Provider
-[**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDGet**](IdentityProviderManagementIdentityProvidersApi.md#V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDGet) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID} | READ One Identity Provider
-[**V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDPut**](IdentityProviderManagementIdentityProvidersApi.md#V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDPut) | **Put** /v1/environments/{environmentID}/identityProviders/{providerID} | UPDATE Identity Provider
+[**CreateIdentityProvider**](IdentityProviderManagementIdentityProvidersApi.md#CreateIdentityProvider) | **Post** /v1/environments/{environmentID}/identityProviders | CREATE Identity Provider
+[**DeleteIdentityProvider**](IdentityProviderManagementIdentityProvidersApi.md#DeleteIdentityProvider) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID} | DELETE Identity Provider
+[**ReadAllIdentityProviders**](IdentityProviderManagementIdentityProvidersApi.md#ReadAllIdentityProviders) | **Get** /v1/environments/{environmentID}/identityProviders | READ All Identity Providers
+[**ReadOneIdentityProvider**](IdentityProviderManagementIdentityProvidersApi.md#ReadOneIdentityProvider) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID} | READ One Identity Provider
+[**UpdateIdentityProvider**](IdentityProviderManagementIdentityProvidersApi.md#UpdateIdentityProvider) | **Put** /v1/environments/{environmentID}/identityProviders/{providerID} | UPDATE Identity Provider
 
 
 
-## V1EnvironmentsEnvironmentIDIdentityProvidersGet
+## CreateIdentityProvider
 
-> V1EnvironmentsEnvironmentIDIdentityProvidersGet(ctx, environmentID).Execute()
+> IdentityProvider CreateIdentityProvider(ctx, environmentID).IdentityProvider(identityProvider).Execute()
 
-READ All Identity Providers
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersGet(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIdentityProvidersGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDIdentityProvidersPost
-
-> V1EnvironmentsEnvironmentIDIdentityProvidersPost(ctx, environmentID).ContentType(contentType).Body(body).Execute()
-
-Discover OpenID Provider Metadata
+CREATE Identity Provider
 
 ### Example
 
@@ -98,16 +32,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    contentType := "application/vnd.pingidentity.openid-configuration.discover+json" // string |  (optional)
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    identityProvider := openapiclient.IdentityProvider{IdentityProviderAmazon: openapiclient.NewIdentityProviderAmazon(openapiclient.EnumEnabledStatus("ENABLED"), "Name_example", openapiclient.EnumIdentityProviderExt("FACEBOOK"), "ClientId_example", "ClientSecret_example")} // IdentityProvider |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersPost(context.Background(), environmentID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.CreateIdentityProvider(context.Background(), environmentID).IdentityProvider(identityProvider).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.CreateIdentityProvider``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateIdentityProvider`: IdentityProvider
+    fmt.Fprintf(os.Stdout, "Response from `IdentityProviderManagementIdentityProvidersApi.CreateIdentityProvider`: %v\n", resp)
 }
 ```
 
@@ -121,18 +56,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIdentityProvidersPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateIdentityProviderRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **identityProvider** | [**IdentityProvider**](IdentityProvider.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**IdentityProvider**](IdentityProvider.md)
 
 ### Authorization
 
@@ -148,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDDelete
+## DeleteIdentityProvider
 
-> V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDDelete(ctx, environmentID, providerID).Execute()
+> DeleteIdentityProvider(ctx, environmentID, providerID).Execute()
 
 DELETE Identity Provider
 
@@ -172,9 +106,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDDelete(context.Background(), environmentID, providerID).Execute()
+    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.DeleteIdentityProvider(context.Background(), environmentID, providerID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.DeleteIdentityProvider``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -191,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteIdentityProviderRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -217,9 +151,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDGet
+## ReadAllIdentityProviders
 
-> V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDGet(ctx, environmentID, providerID).Execute()
+> EntityArray ReadAllIdentityProviders(ctx, environmentID).Execute()
+
+READ All Identity Providers
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.ReadAllIdentityProviders(context.Background(), environmentID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.ReadAllIdentityProviders``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllIdentityProviders`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `IdentityProviderManagementIdentityProvidersApi.ReadAllIdentityProviders`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllIdentityProvidersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneIdentityProvider
+
+> IdentityProvider ReadOneIdentityProvider(ctx, environmentID, providerID).Execute()
 
 READ One Identity Provider
 
@@ -241,11 +243,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDGet(context.Background(), environmentID, providerID).Execute()
+    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.ReadOneIdentityProvider(context.Background(), environmentID, providerID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.ReadOneIdentityProvider``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneIdentityProvider`: IdentityProvider
+    fmt.Fprintf(os.Stdout, "Response from `IdentityProviderManagementIdentityProvidersApi.ReadOneIdentityProvider`: %v\n", resp)
 }
 ```
 
@@ -260,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneIdentityProviderRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -270,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**IdentityProvider**](IdentityProvider.md)
 
 ### Authorization
 
@@ -286,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDPut
+## UpdateIdentityProvider
 
-> V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDPut(ctx, environmentID, providerID).Body(body).Execute()
+> IdentityProvider UpdateIdentityProvider(ctx, environmentID, providerID).IdentityProvider(identityProvider).Execute()
 
 UPDATE Identity Provider
 
@@ -307,15 +311,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     providerID := "providerID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    identityProvider := openapiclient.IdentityProvider{IdentityProviderAmazon: openapiclient.NewIdentityProviderAmazon(openapiclient.EnumEnabledStatus("ENABLED"), "Name_example", openapiclient.EnumIdentityProviderExt("FACEBOOK"), "ClientId_example", "ClientSecret_example")} // IdentityProvider |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDPut(context.Background(), environmentID, providerID).Body(body).Execute()
+    resp, r, err := apiClient.IdentityProviderManagementIdentityProvidersApi.UpdateIdentityProvider(context.Background(), environmentID, providerID).IdentityProvider(identityProvider).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.V1EnvironmentsEnvironmentIDIdentityProvidersProviderIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProviderManagementIdentityProvidersApi.UpdateIdentityProvider``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateIdentityProvider`: IdentityProvider
+    fmt.Fprintf(os.Stdout, "Response from `IdentityProviderManagementIdentityProvidersApi.UpdateIdentityProvider`: %v\n", resp)
 }
 ```
 
@@ -330,18 +336,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIdentityProvidersProviderIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateIdentityProviderRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **identityProvider** | [**IdentityProvider**](IdentityProvider.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**IdentityProvider**](IdentityProvider.md)
 
 ### Authorization
 
