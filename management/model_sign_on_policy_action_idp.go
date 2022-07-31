@@ -16,31 +16,20 @@ import (
 
 // SignOnPolicyActionIDP struct for SignOnPolicyActionIDP
 type SignOnPolicyActionIDP struct {
-	Links map[string]interface{} `json:"_links,omitempty"`
-	Conditions *SignOnPolicyActionCommonConditions `json:"conditions,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	// A string that specifies the sign-on policy assignment resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
-	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
-	Priority int32 `json:"priority"`
-	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
-	Type EnumSignOnPolicyType `json:"type"`
 	// A string that designates the sign-on policies included in the authorization flow request. Options can include the PingOne predefined sign-on policies, Single_Factor and Multi_Factor, or any custom defined sign-on policy names. Sign-on policy names should be listed in order of preference, and they must be assigned to the application. This property can be configured on the identity provider action and is passed to the identity provider if the identity provider is of type `SAML` or `OPENID_CONNECT`.
 	AcrValues *string `json:"acrValues,omitempty"`
-	IdentityProvider SignOnPolicyActionIDPAllOfIdentityProvider `json:"identityProvider"`
+	IdentityProvider SignOnPolicyActionIDPIdentityProvider `json:"identityProvider"`
 	// A boolean that specifies whether to pass in a login hint to the identity provider on the authentication request. Based on user context, the login hint is set if (1) the user is set on the flow, and (2) the user already has an account link for the identity provider. If both of these conditions are true, then the user is sent to the identity provider with a login hint equal to their externalId for the identity provider (saved on the account link). If these conditions are not true, then the API checks see if there is an OIDC login hint on the flow. If so, that login hint is used. If none of these conditions are true, the login hint parameter is not included on the authorization request to the identity provider.
 	PassUserContext *bool `json:"passUserContext,omitempty"`
-	Registration *SignOnPolicyActionIDPAllOfRegistration `json:"registration,omitempty"`
+	Registration *SignOnPolicyActionIDPRegistration `json:"registration,omitempty"`
 }
 
 // NewSignOnPolicyActionIDP instantiates a new SignOnPolicyActionIDP object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSignOnPolicyActionIDP(priority int32, type_ EnumSignOnPolicyType, identityProvider SignOnPolicyActionIDPAllOfIdentityProvider) *SignOnPolicyActionIDP {
+func NewSignOnPolicyActionIDP(identityProvider SignOnPolicyActionIDPIdentityProvider) *SignOnPolicyActionIDP {
 	this := SignOnPolicyActionIDP{}
-	this.Priority = priority
-	this.Type = type_
 	this.IdentityProvider = identityProvider
 	return &this
 }
@@ -51,214 +40,6 @@ func NewSignOnPolicyActionIDP(priority int32, type_ EnumSignOnPolicyType, identi
 func NewSignOnPolicyActionIDPWithDefaults() *SignOnPolicyActionIDP {
 	this := SignOnPolicyActionIDP{}
 	return &this
-}
-
-// GetLinks returns the Links field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDP) GetLinks() map[string]interface{} {
-	if o == nil || o.Links == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Links
-}
-
-// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || o.Links == nil {
-		return nil, false
-	}
-	return o.Links, true
-}
-
-// HasLinks returns a boolean if a field has been set.
-func (o *SignOnPolicyActionIDP) HasLinks() bool {
-	if o != nil && o.Links != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
-func (o *SignOnPolicyActionIDP) SetLinks(v map[string]interface{}) {
-	o.Links = v
-}
-
-// GetConditions returns the Conditions field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDP) GetConditions() SignOnPolicyActionCommonConditions {
-	if o == nil || o.Conditions == nil {
-		var ret SignOnPolicyActionCommonConditions
-		return ret
-	}
-	return *o.Conditions
-}
-
-// GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool) {
-	if o == nil || o.Conditions == nil {
-		return nil, false
-	}
-	return o.Conditions, true
-}
-
-// HasConditions returns a boolean if a field has been set.
-func (o *SignOnPolicyActionIDP) HasConditions() bool {
-	if o != nil && o.Conditions != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConditions gets a reference to the given SignOnPolicyActionCommonConditions and assigns it to the Conditions field.
-func (o *SignOnPolicyActionIDP) SetConditions(v SignOnPolicyActionCommonConditions) {
-	o.Conditions = &v
-}
-
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDP) GetEnvironment() ObjectEnvironment {
-	if o == nil || o.Environment == nil {
-		var ret ObjectEnvironment
-		return ret
-	}
-	return *o.Environment
-}
-
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || o.Environment == nil {
-		return nil, false
-	}
-	return o.Environment, true
-}
-
-// HasEnvironment returns a boolean if a field has been set.
-func (o *SignOnPolicyActionIDP) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *SignOnPolicyActionIDP) SetEnvironment(v ObjectEnvironment) {
-	o.Environment = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDP) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *SignOnPolicyActionIDP) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SignOnPolicyActionIDP) SetId(v string) {
-	o.Id = &v
-}
-
-// GetPriority returns the Priority field value
-func (o *SignOnPolicyActionIDP) GetPriority() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Priority
-}
-
-// GetPriorityOk returns a tuple with the Priority field value
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetPriorityOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Priority, true
-}
-
-// SetPriority sets field value
-func (o *SignOnPolicyActionIDP) SetPriority(v int32) {
-	o.Priority = v
-}
-
-// GetSignOnPolicy returns the SignOnPolicy field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDP) GetSignOnPolicy() SignOnPolicyActionCommonSignOnPolicy {
-	if o == nil || o.SignOnPolicy == nil {
-		var ret SignOnPolicyActionCommonSignOnPolicy
-		return ret
-	}
-	return *o.SignOnPolicy
-}
-
-// GetSignOnPolicyOk returns a tuple with the SignOnPolicy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetSignOnPolicyOk() (*SignOnPolicyActionCommonSignOnPolicy, bool) {
-	if o == nil || o.SignOnPolicy == nil {
-		return nil, false
-	}
-	return o.SignOnPolicy, true
-}
-
-// HasSignOnPolicy returns a boolean if a field has been set.
-func (o *SignOnPolicyActionIDP) HasSignOnPolicy() bool {
-	if o != nil && o.SignOnPolicy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSignOnPolicy gets a reference to the given SignOnPolicyActionCommonSignOnPolicy and assigns it to the SignOnPolicy field.
-func (o *SignOnPolicyActionIDP) SetSignOnPolicy(v SignOnPolicyActionCommonSignOnPolicy) {
-	o.SignOnPolicy = &v
-}
-
-// GetType returns the Type field value
-func (o *SignOnPolicyActionIDP) GetType() EnumSignOnPolicyType {
-	if o == nil {
-		var ret EnumSignOnPolicyType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetTypeOk() (*EnumSignOnPolicyType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *SignOnPolicyActionIDP) SetType(v EnumSignOnPolicyType) {
-	o.Type = v
 }
 
 // GetAcrValues returns the AcrValues field value if set, zero value otherwise.
@@ -294,9 +75,9 @@ func (o *SignOnPolicyActionIDP) SetAcrValues(v string) {
 }
 
 // GetIdentityProvider returns the IdentityProvider field value
-func (o *SignOnPolicyActionIDP) GetIdentityProvider() SignOnPolicyActionIDPAllOfIdentityProvider {
+func (o *SignOnPolicyActionIDP) GetIdentityProvider() SignOnPolicyActionIDPIdentityProvider {
 	if o == nil {
-		var ret SignOnPolicyActionIDPAllOfIdentityProvider
+		var ret SignOnPolicyActionIDPIdentityProvider
 		return ret
 	}
 
@@ -305,7 +86,7 @@ func (o *SignOnPolicyActionIDP) GetIdentityProvider() SignOnPolicyActionIDPAllOf
 
 // GetIdentityProviderOk returns a tuple with the IdentityProvider field value
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetIdentityProviderOk() (*SignOnPolicyActionIDPAllOfIdentityProvider, bool) {
+func (o *SignOnPolicyActionIDP) GetIdentityProviderOk() (*SignOnPolicyActionIDPIdentityProvider, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -313,7 +94,7 @@ func (o *SignOnPolicyActionIDP) GetIdentityProviderOk() (*SignOnPolicyActionIDPA
 }
 
 // SetIdentityProvider sets field value
-func (o *SignOnPolicyActionIDP) SetIdentityProvider(v SignOnPolicyActionIDPAllOfIdentityProvider) {
+func (o *SignOnPolicyActionIDP) SetIdentityProvider(v SignOnPolicyActionIDPIdentityProvider) {
 	o.IdentityProvider = v
 }
 
@@ -350,9 +131,9 @@ func (o *SignOnPolicyActionIDP) SetPassUserContext(v bool) {
 }
 
 // GetRegistration returns the Registration field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDP) GetRegistration() SignOnPolicyActionIDPAllOfRegistration {
+func (o *SignOnPolicyActionIDP) GetRegistration() SignOnPolicyActionIDPRegistration {
 	if o == nil || o.Registration == nil {
-		var ret SignOnPolicyActionIDPAllOfRegistration
+		var ret SignOnPolicyActionIDPRegistration
 		return ret
 	}
 	return *o.Registration
@@ -360,7 +141,7 @@ func (o *SignOnPolicyActionIDP) GetRegistration() SignOnPolicyActionIDPAllOfRegi
 
 // GetRegistrationOk returns a tuple with the Registration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetRegistrationOk() (*SignOnPolicyActionIDPAllOfRegistration, bool) {
+func (o *SignOnPolicyActionIDP) GetRegistrationOk() (*SignOnPolicyActionIDPRegistration, bool) {
 	if o == nil || o.Registration == nil {
 		return nil, false
 	}
@@ -376,34 +157,13 @@ func (o *SignOnPolicyActionIDP) HasRegistration() bool {
 	return false
 }
 
-// SetRegistration gets a reference to the given SignOnPolicyActionIDPAllOfRegistration and assigns it to the Registration field.
-func (o *SignOnPolicyActionIDP) SetRegistration(v SignOnPolicyActionIDPAllOfRegistration) {
+// SetRegistration gets a reference to the given SignOnPolicyActionIDPRegistration and assigns it to the Registration field.
+func (o *SignOnPolicyActionIDP) SetRegistration(v SignOnPolicyActionIDPRegistration) {
 	o.Registration = &v
 }
 
 func (o SignOnPolicyActionIDP) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Links != nil {
-		toSerialize["_links"] = o.Links
-	}
-	if o.Conditions != nil {
-		toSerialize["conditions"] = o.Conditions
-	}
-	if o.Environment != nil {
-		toSerialize["environment"] = o.Environment
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["priority"] = o.Priority
-	}
-	if o.SignOnPolicy != nil {
-		toSerialize["signOnPolicy"] = o.SignOnPolicy
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
 	if o.AcrValues != nil {
 		toSerialize["acrValues"] = o.AcrValues
 	}

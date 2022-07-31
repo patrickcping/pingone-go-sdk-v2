@@ -33,7 +33,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     policyID := "policyID_example" // string | 
-    signOnPolicyAction := openapiclient.SignOnPolicyAction{SignOnPolicyActionAgreement: openapiclient.NewSignOnPolicyActionAgreement(int32(123), openapiclient.EnumSignOnPolicyType("LOGIN"), *openapiclient.NewSignOnPolicyActionAgreementAllOfAgreement("Id_example"))} // SignOnPolicyAction |  (optional)
+    signOnPolicyAction := *openapiclient.NewSignOnPolicyAction(int32(123), *openapiclient.NewSignOnPolicyActionCommonSignOnPolicy("Id_example"), openapiclient.EnumSignOnPolicyType("LOGIN"), *openapiclient.NewSignOnPolicyActionIDPIdentityProvider("Id_example"), *openapiclient.NewSignOnPolicyActionAgreementAgreement("Id_example"), *openapiclient.NewSignOnPolicyActionProgressiveProfilingAttributes("Name_example", false), false, int32(123), "PromptText_example") // SignOnPolicyAction |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -324,7 +324,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     policyID := "policyID_example" // string | 
     actionID := "actionID_example" // string | 
-    signOnPolicyAction := openapiclient.SignOnPolicyAction{SignOnPolicyActionAgreement: openapiclient.NewSignOnPolicyActionAgreement(int32(123), openapiclient.EnumSignOnPolicyType("LOGIN"), *openapiclient.NewSignOnPolicyActionAgreementAllOfAgreement("Id_example"))} // SignOnPolicyAction |  (optional)
+    signOnPolicyAction := *openapiclient.NewSignOnPolicyAction(int32(123), *openapiclient.NewSignOnPolicyActionCommonSignOnPolicy("Id_example"), openapiclient.EnumSignOnPolicyType("LOGIN"), *openapiclient.NewSignOnPolicyActionIDPIdentityProvider("Id_example"), *openapiclient.NewSignOnPolicyActionAgreementAgreement("Id_example"), *openapiclient.NewSignOnPolicyActionProgressiveProfilingAttributes("Name_example", false), false, int32(123), "PromptText_example") // SignOnPolicyAction |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

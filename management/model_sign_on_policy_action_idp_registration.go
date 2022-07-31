@@ -20,7 +20,7 @@ type SignOnPolicyActionIDPRegistration struct {
 	ConfirmIdentityProviderAttributes *bool `json:"confirmIdentityProviderAttributes,omitempty"`
 	// A boolean that specifies the enabled/disabled state of the policy action. The property is disabled by default when creating a new policy. When enabled, it allows the use of the new user registration flow. This attribute should be set to true when implementing the social login sign-on policy option.
 	Enabled bool `json:"enabled"`
-	Population *SignOnPolicyActionLoginAllOfRegistrationPopulation `json:"population,omitempty"`
+	Population *SignOnPolicyActionLoginRegistrationPopulation `json:"population,omitempty"`
 }
 
 // NewSignOnPolicyActionIDPRegistration instantiates a new SignOnPolicyActionIDPRegistration object
@@ -102,9 +102,9 @@ func (o *SignOnPolicyActionIDPRegistration) SetEnabled(v bool) {
 }
 
 // GetPopulation returns the Population field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDPRegistration) GetPopulation() SignOnPolicyActionLoginAllOfRegistrationPopulation {
+func (o *SignOnPolicyActionIDPRegistration) GetPopulation() SignOnPolicyActionLoginRegistrationPopulation {
 	if o == nil || o.Population == nil {
-		var ret SignOnPolicyActionLoginAllOfRegistrationPopulation
+		var ret SignOnPolicyActionLoginRegistrationPopulation
 		return ret
 	}
 	return *o.Population
@@ -112,7 +112,7 @@ func (o *SignOnPolicyActionIDPRegistration) GetPopulation() SignOnPolicyActionLo
 
 // GetPopulationOk returns a tuple with the Population field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDPRegistration) GetPopulationOk() (*SignOnPolicyActionLoginAllOfRegistrationPopulation, bool) {
+func (o *SignOnPolicyActionIDPRegistration) GetPopulationOk() (*SignOnPolicyActionLoginRegistrationPopulation, bool) {
 	if o == nil || o.Population == nil {
 		return nil, false
 	}
@@ -128,8 +128,8 @@ func (o *SignOnPolicyActionIDPRegistration) HasPopulation() bool {
 	return false
 }
 
-// SetPopulation gets a reference to the given SignOnPolicyActionLoginAllOfRegistrationPopulation and assigns it to the Population field.
-func (o *SignOnPolicyActionIDPRegistration) SetPopulation(v SignOnPolicyActionLoginAllOfRegistrationPopulation) {
+// SetPopulation gets a reference to the given SignOnPolicyActionLoginRegistrationPopulation and assigns it to the Population field.
+func (o *SignOnPolicyActionIDPRegistration) SetPopulation(v SignOnPolicyActionLoginRegistrationPopulation) {
 	o.Population = &v
 }
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ConfirmIdentityProviderAttributes** | Pointer to **bool** | A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user&#39;s profile during account creation. This is an optional property. If omitted, the default value is set to false. | [optional] [default to false]
 **Enabled** | **bool** | A boolean that specifies the enabled/disabled state of the policy action. The property is disabled by default when creating a new policy. When enabled, it allows the use of the new user registration flow. This attribute should be set to true when implementing the social login sign-on policy option. | 
-**Population** | Pointer to [**SignOnPolicyActionLoginAllOfRegistrationPopulation**](SignOnPolicyActionLoginAllOfRegistrationPopulation.md) |  | [optional] 
+**Population** | Pointer to [**SignOnPolicyActionLoginRegistrationPopulation**](SignOnPolicyActionLoginRegistrationPopulation.md) |  | [optional] 
 
 ## Methods
 
@@ -74,20 +74,20 @@ SetEnabled sets Enabled field to given value.
 
 ### GetPopulation
 
-`func (o *SignOnPolicyActionIDPRegistration) GetPopulation() SignOnPolicyActionLoginAllOfRegistrationPopulation`
+`func (o *SignOnPolicyActionIDPRegistration) GetPopulation() SignOnPolicyActionLoginRegistrationPopulation`
 
 GetPopulation returns the Population field if non-nil, zero value otherwise.
 
 ### GetPopulationOk
 
-`func (o *SignOnPolicyActionIDPRegistration) GetPopulationOk() (*SignOnPolicyActionLoginAllOfRegistrationPopulation, bool)`
+`func (o *SignOnPolicyActionIDPRegistration) GetPopulationOk() (*SignOnPolicyActionLoginRegistrationPopulation, bool)`
 
 GetPopulationOk returns a tuple with the Population field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPopulation
 
-`func (o *SignOnPolicyActionIDPRegistration) SetPopulation(v SignOnPolicyActionLoginAllOfRegistrationPopulation)`
+`func (o *SignOnPolicyActionIDPRegistration) SetPopulation(v SignOnPolicyActionLoginRegistrationPopulation)`
 
 SetPopulation sets Population field to given value.
 

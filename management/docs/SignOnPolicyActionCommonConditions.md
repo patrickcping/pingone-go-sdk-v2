@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IpRange** | Pointer to **string** | A string that specifies the supported network IP addresses expressed as classless inter-domain routing (CIDR) strings. | [optional] 
-**SecondsSince** | Pointer to **int32** | An integer that specifies the maximum number of minutes to wait since the last sign on before prompting for a new sign-on action. | [optional] 
+**SecondsSince** | Pointer to **string** | An integer that specifies the maximum number of minutes to wait since the last sign on before prompting for a new sign-on action. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasIpRange returns a boolean if a field has been set.
 
 ### GetSecondsSince
 
-`func (o *SignOnPolicyActionCommonConditions) GetSecondsSince() int32`
+`func (o *SignOnPolicyActionCommonConditions) GetSecondsSince() string`
 
 GetSecondsSince returns the SecondsSince field if non-nil, zero value otherwise.
 
 ### GetSecondsSinceOk
 
-`func (o *SignOnPolicyActionCommonConditions) GetSecondsSinceOk() (*int32, bool)`
+`func (o *SignOnPolicyActionCommonConditions) GetSecondsSinceOk() (*string, bool)`
 
 GetSecondsSinceOk returns a tuple with the SecondsSince field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecondsSince
 
-`func (o *SignOnPolicyActionCommonConditions) SetSecondsSince(v int32)`
+`func (o *SignOnPolicyActionCommonConditions) SetSecondsSince(v string)`
 
 SetSecondsSince sets SecondsSince field to given value.
 

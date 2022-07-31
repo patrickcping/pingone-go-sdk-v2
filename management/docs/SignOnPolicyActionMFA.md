@@ -4,28 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to **map[string]interface{}** |  | [optional] [readonly] 
-**Conditions** | Pointer to [**SignOnPolicyActionCommonConditions**](SignOnPolicyActionCommonConditions.md) |  | [optional] 
-**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Id** | Pointer to **string** | A string that specifies the sign-on policy assignment resource’s unique identifier. | [optional] [readonly] 
-**Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
-**SignOnPolicy** | Pointer to [**SignOnPolicyActionCommonSignOnPolicy**](SignOnPolicyActionCommonSignOnPolicy.md) |  | [optional] 
-**Type** | [**EnumSignOnPolicyType**](EnumSignOnPolicyType.md) |  | 
-**Authenticator** | Pointer to [**SignOnPolicyActionMFAAllOfAuthenticator**](SignOnPolicyActionMFAAllOfAuthenticator.md) |  | [optional] 
-**BoundBiometrics** | Pointer to [**SignOnPolicyActionMFAAllOfBoundBiometrics**](SignOnPolicyActionMFAAllOfBoundBiometrics.md) |  | [optional] 
-**Email** | Pointer to [**SignOnPolicyActionMFAAllOfEmail**](SignOnPolicyActionMFAAllOfEmail.md) |  | [optional] 
-**SecurityKey** | Pointer to [**SignOnPolicyActionMFAAllOfSecurityKey**](SignOnPolicyActionMFAAllOfSecurityKey.md) |  | [optional] 
-**Sms** | Pointer to [**SignOnPolicyActionMFAAllOfSms**](SignOnPolicyActionMFAAllOfSms.md) |  | [optional] 
-**Voice** | Pointer to [**SignOnPolicyActionMFAAllOfVoice**](SignOnPolicyActionMFAAllOfVoice.md) |  | [optional] 
-**Applications** | Pointer to [**[]SignOnPolicyActionMFAAllOfApplications**](SignOnPolicyActionMFAAllOfApplications.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
-**DeviceAuthenticationPolicy** | Pointer to [**SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy**](SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy.md) |  | [optional] 
+**Authenticator** | Pointer to [**SignOnPolicyActionMFAAuthenticator**](SignOnPolicyActionMFAAuthenticator.md) |  | [optional] 
+**BoundBiometrics** | Pointer to [**SignOnPolicyActionMFABoundBiometrics**](SignOnPolicyActionMFABoundBiometrics.md) |  | [optional] 
+**Email** | Pointer to [**SignOnPolicyActionMFAEmail**](SignOnPolicyActionMFAEmail.md) |  | [optional] 
+**SecurityKey** | Pointer to [**SignOnPolicyActionMFASecurityKey**](SignOnPolicyActionMFASecurityKey.md) |  | [optional] 
+**Sms** | Pointer to [**SignOnPolicyActionMFASms**](SignOnPolicyActionMFASms.md) |  | [optional] 
+**Voice** | Pointer to [**SignOnPolicyActionMFAVoice**](SignOnPolicyActionMFAVoice.md) |  | [optional] 
+**Applications** | Pointer to [**[]SignOnPolicyActionMFAApplicationsInner**](SignOnPolicyActionMFAApplicationsInner.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
+**DeviceAuthenticationPolicy** | Pointer to [**SignOnPolicyActionMFADeviceAuthenticationPolicy**](SignOnPolicyActionMFADeviceAuthenticationPolicy.md) |  | [optional] 
 **NoDeviceMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
 
 ## Methods
 
 ### NewSignOnPolicyActionMFA
 
-`func NewSignOnPolicyActionMFA(priority int32, type_ EnumSignOnPolicyType, ) *SignOnPolicyActionMFA`
+`func NewSignOnPolicyActionMFA() *SignOnPolicyActionMFA`
 
 NewSignOnPolicyActionMFA instantiates a new SignOnPolicyActionMFA object
 This constructor will assign default values to properties that have it defined,
@@ -40,187 +33,22 @@ NewSignOnPolicyActionMFAWithDefaults instantiates a new SignOnPolicyActionMFA ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetLinks
-
-`func (o *SignOnPolicyActionMFA) GetLinks() map[string]interface{}`
-
-GetLinks returns the Links field if non-nil, zero value otherwise.
-
-### GetLinksOk
-
-`func (o *SignOnPolicyActionMFA) GetLinksOk() (*map[string]interface{}, bool)`
-
-GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLinks
-
-`func (o *SignOnPolicyActionMFA) SetLinks(v map[string]interface{})`
-
-SetLinks sets Links field to given value.
-
-### HasLinks
-
-`func (o *SignOnPolicyActionMFA) HasLinks() bool`
-
-HasLinks returns a boolean if a field has been set.
-
-### GetConditions
-
-`func (o *SignOnPolicyActionMFA) GetConditions() SignOnPolicyActionCommonConditions`
-
-GetConditions returns the Conditions field if non-nil, zero value otherwise.
-
-### GetConditionsOk
-
-`func (o *SignOnPolicyActionMFA) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool)`
-
-GetConditionsOk returns a tuple with the Conditions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConditions
-
-`func (o *SignOnPolicyActionMFA) SetConditions(v SignOnPolicyActionCommonConditions)`
-
-SetConditions sets Conditions field to given value.
-
-### HasConditions
-
-`func (o *SignOnPolicyActionMFA) HasConditions() bool`
-
-HasConditions returns a boolean if a field has been set.
-
-### GetEnvironment
-
-`func (o *SignOnPolicyActionMFA) GetEnvironment() ObjectEnvironment`
-
-GetEnvironment returns the Environment field if non-nil, zero value otherwise.
-
-### GetEnvironmentOk
-
-`func (o *SignOnPolicyActionMFA) GetEnvironmentOk() (*ObjectEnvironment, bool)`
-
-GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnvironment
-
-`func (o *SignOnPolicyActionMFA) SetEnvironment(v ObjectEnvironment)`
-
-SetEnvironment sets Environment field to given value.
-
-### HasEnvironment
-
-`func (o *SignOnPolicyActionMFA) HasEnvironment() bool`
-
-HasEnvironment returns a boolean if a field has been set.
-
-### GetId
-
-`func (o *SignOnPolicyActionMFA) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *SignOnPolicyActionMFA) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *SignOnPolicyActionMFA) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *SignOnPolicyActionMFA) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetPriority
-
-`func (o *SignOnPolicyActionMFA) GetPriority() int32`
-
-GetPriority returns the Priority field if non-nil, zero value otherwise.
-
-### GetPriorityOk
-
-`func (o *SignOnPolicyActionMFA) GetPriorityOk() (*int32, bool)`
-
-GetPriorityOk returns a tuple with the Priority field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPriority
-
-`func (o *SignOnPolicyActionMFA) SetPriority(v int32)`
-
-SetPriority sets Priority field to given value.
-
-
-### GetSignOnPolicy
-
-`func (o *SignOnPolicyActionMFA) GetSignOnPolicy() SignOnPolicyActionCommonSignOnPolicy`
-
-GetSignOnPolicy returns the SignOnPolicy field if non-nil, zero value otherwise.
-
-### GetSignOnPolicyOk
-
-`func (o *SignOnPolicyActionMFA) GetSignOnPolicyOk() (*SignOnPolicyActionCommonSignOnPolicy, bool)`
-
-GetSignOnPolicyOk returns a tuple with the SignOnPolicy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSignOnPolicy
-
-`func (o *SignOnPolicyActionMFA) SetSignOnPolicy(v SignOnPolicyActionCommonSignOnPolicy)`
-
-SetSignOnPolicy sets SignOnPolicy field to given value.
-
-### HasSignOnPolicy
-
-`func (o *SignOnPolicyActionMFA) HasSignOnPolicy() bool`
-
-HasSignOnPolicy returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *SignOnPolicyActionMFA) GetType() EnumSignOnPolicyType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *SignOnPolicyActionMFA) GetTypeOk() (*EnumSignOnPolicyType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *SignOnPolicyActionMFA) SetType(v EnumSignOnPolicyType)`
-
-SetType sets Type field to given value.
-
-
 ### GetAuthenticator
 
-`func (o *SignOnPolicyActionMFA) GetAuthenticator() SignOnPolicyActionMFAAllOfAuthenticator`
+`func (o *SignOnPolicyActionMFA) GetAuthenticator() SignOnPolicyActionMFAAuthenticator`
 
 GetAuthenticator returns the Authenticator field if non-nil, zero value otherwise.
 
 ### GetAuthenticatorOk
 
-`func (o *SignOnPolicyActionMFA) GetAuthenticatorOk() (*SignOnPolicyActionMFAAllOfAuthenticator, bool)`
+`func (o *SignOnPolicyActionMFA) GetAuthenticatorOk() (*SignOnPolicyActionMFAAuthenticator, bool)`
 
 GetAuthenticatorOk returns a tuple with the Authenticator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthenticator
 
-`func (o *SignOnPolicyActionMFA) SetAuthenticator(v SignOnPolicyActionMFAAllOfAuthenticator)`
+`func (o *SignOnPolicyActionMFA) SetAuthenticator(v SignOnPolicyActionMFAAuthenticator)`
 
 SetAuthenticator sets Authenticator field to given value.
 
@@ -232,20 +60,20 @@ HasAuthenticator returns a boolean if a field has been set.
 
 ### GetBoundBiometrics
 
-`func (o *SignOnPolicyActionMFA) GetBoundBiometrics() SignOnPolicyActionMFAAllOfBoundBiometrics`
+`func (o *SignOnPolicyActionMFA) GetBoundBiometrics() SignOnPolicyActionMFABoundBiometrics`
 
 GetBoundBiometrics returns the BoundBiometrics field if non-nil, zero value otherwise.
 
 ### GetBoundBiometricsOk
 
-`func (o *SignOnPolicyActionMFA) GetBoundBiometricsOk() (*SignOnPolicyActionMFAAllOfBoundBiometrics, bool)`
+`func (o *SignOnPolicyActionMFA) GetBoundBiometricsOk() (*SignOnPolicyActionMFABoundBiometrics, bool)`
 
 GetBoundBiometricsOk returns a tuple with the BoundBiometrics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBoundBiometrics
 
-`func (o *SignOnPolicyActionMFA) SetBoundBiometrics(v SignOnPolicyActionMFAAllOfBoundBiometrics)`
+`func (o *SignOnPolicyActionMFA) SetBoundBiometrics(v SignOnPolicyActionMFABoundBiometrics)`
 
 SetBoundBiometrics sets BoundBiometrics field to given value.
 
@@ -257,20 +85,20 @@ HasBoundBiometrics returns a boolean if a field has been set.
 
 ### GetEmail
 
-`func (o *SignOnPolicyActionMFA) GetEmail() SignOnPolicyActionMFAAllOfEmail`
+`func (o *SignOnPolicyActionMFA) GetEmail() SignOnPolicyActionMFAEmail`
 
 GetEmail returns the Email field if non-nil, zero value otherwise.
 
 ### GetEmailOk
 
-`func (o *SignOnPolicyActionMFA) GetEmailOk() (*SignOnPolicyActionMFAAllOfEmail, bool)`
+`func (o *SignOnPolicyActionMFA) GetEmailOk() (*SignOnPolicyActionMFAEmail, bool)`
 
 GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEmail
 
-`func (o *SignOnPolicyActionMFA) SetEmail(v SignOnPolicyActionMFAAllOfEmail)`
+`func (o *SignOnPolicyActionMFA) SetEmail(v SignOnPolicyActionMFAEmail)`
 
 SetEmail sets Email field to given value.
 
@@ -282,20 +110,20 @@ HasEmail returns a boolean if a field has been set.
 
 ### GetSecurityKey
 
-`func (o *SignOnPolicyActionMFA) GetSecurityKey() SignOnPolicyActionMFAAllOfSecurityKey`
+`func (o *SignOnPolicyActionMFA) GetSecurityKey() SignOnPolicyActionMFASecurityKey`
 
 GetSecurityKey returns the SecurityKey field if non-nil, zero value otherwise.
 
 ### GetSecurityKeyOk
 
-`func (o *SignOnPolicyActionMFA) GetSecurityKeyOk() (*SignOnPolicyActionMFAAllOfSecurityKey, bool)`
+`func (o *SignOnPolicyActionMFA) GetSecurityKeyOk() (*SignOnPolicyActionMFASecurityKey, bool)`
 
 GetSecurityKeyOk returns a tuple with the SecurityKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecurityKey
 
-`func (o *SignOnPolicyActionMFA) SetSecurityKey(v SignOnPolicyActionMFAAllOfSecurityKey)`
+`func (o *SignOnPolicyActionMFA) SetSecurityKey(v SignOnPolicyActionMFASecurityKey)`
 
 SetSecurityKey sets SecurityKey field to given value.
 
@@ -307,20 +135,20 @@ HasSecurityKey returns a boolean if a field has been set.
 
 ### GetSms
 
-`func (o *SignOnPolicyActionMFA) GetSms() SignOnPolicyActionMFAAllOfSms`
+`func (o *SignOnPolicyActionMFA) GetSms() SignOnPolicyActionMFASms`
 
 GetSms returns the Sms field if non-nil, zero value otherwise.
 
 ### GetSmsOk
 
-`func (o *SignOnPolicyActionMFA) GetSmsOk() (*SignOnPolicyActionMFAAllOfSms, bool)`
+`func (o *SignOnPolicyActionMFA) GetSmsOk() (*SignOnPolicyActionMFASms, bool)`
 
 GetSmsOk returns a tuple with the Sms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSms
 
-`func (o *SignOnPolicyActionMFA) SetSms(v SignOnPolicyActionMFAAllOfSms)`
+`func (o *SignOnPolicyActionMFA) SetSms(v SignOnPolicyActionMFASms)`
 
 SetSms sets Sms field to given value.
 
@@ -332,20 +160,20 @@ HasSms returns a boolean if a field has been set.
 
 ### GetVoice
 
-`func (o *SignOnPolicyActionMFA) GetVoice() SignOnPolicyActionMFAAllOfVoice`
+`func (o *SignOnPolicyActionMFA) GetVoice() SignOnPolicyActionMFAVoice`
 
 GetVoice returns the Voice field if non-nil, zero value otherwise.
 
 ### GetVoiceOk
 
-`func (o *SignOnPolicyActionMFA) GetVoiceOk() (*SignOnPolicyActionMFAAllOfVoice, bool)`
+`func (o *SignOnPolicyActionMFA) GetVoiceOk() (*SignOnPolicyActionMFAVoice, bool)`
 
 GetVoiceOk returns a tuple with the Voice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVoice
 
-`func (o *SignOnPolicyActionMFA) SetVoice(v SignOnPolicyActionMFAAllOfVoice)`
+`func (o *SignOnPolicyActionMFA) SetVoice(v SignOnPolicyActionMFAVoice)`
 
 SetVoice sets Voice field to given value.
 
@@ -357,20 +185,20 @@ HasVoice returns a boolean if a field has been set.
 
 ### GetApplications
 
-`func (o *SignOnPolicyActionMFA) GetApplications() []SignOnPolicyActionMFAAllOfApplications`
+`func (o *SignOnPolicyActionMFA) GetApplications() []SignOnPolicyActionMFAApplicationsInner`
 
 GetApplications returns the Applications field if non-nil, zero value otherwise.
 
 ### GetApplicationsOk
 
-`func (o *SignOnPolicyActionMFA) GetApplicationsOk() (*[]SignOnPolicyActionMFAAllOfApplications, bool)`
+`func (o *SignOnPolicyActionMFA) GetApplicationsOk() (*[]SignOnPolicyActionMFAApplicationsInner, bool)`
 
 GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplications
 
-`func (o *SignOnPolicyActionMFA) SetApplications(v []SignOnPolicyActionMFAAllOfApplications)`
+`func (o *SignOnPolicyActionMFA) SetApplications(v []SignOnPolicyActionMFAApplicationsInner)`
 
 SetApplications sets Applications field to given value.
 
@@ -382,20 +210,20 @@ HasApplications returns a boolean if a field has been set.
 
 ### GetDeviceAuthenticationPolicy
 
-`func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicy() SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy`
+`func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicy() SignOnPolicyActionMFADeviceAuthenticationPolicy`
 
 GetDeviceAuthenticationPolicy returns the DeviceAuthenticationPolicy field if non-nil, zero value otherwise.
 
 ### GetDeviceAuthenticationPolicyOk
 
-`func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicyOk() (*SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy, bool)`
+`func (o *SignOnPolicyActionMFA) GetDeviceAuthenticationPolicyOk() (*SignOnPolicyActionMFADeviceAuthenticationPolicy, bool)`
 
 GetDeviceAuthenticationPolicyOk returns a tuple with the DeviceAuthenticationPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceAuthenticationPolicy
 
-`func (o *SignOnPolicyActionMFA) SetDeviceAuthenticationPolicy(v SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy)`
+`func (o *SignOnPolicyActionMFA) SetDeviceAuthenticationPolicy(v SignOnPolicyActionMFADeviceAuthenticationPolicy)`
 
 SetDeviceAuthenticationPolicy sets DeviceAuthenticationPolicy field to given value.
 
