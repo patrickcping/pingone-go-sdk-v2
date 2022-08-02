@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to **map[string]interface{}** |  | [optional] [readonly] 
-**Condition** | Pointer to [**SignOnPolicyActionCommonCondition**](SignOnPolicyActionCommonCondition.md) |  | [optional] 
+**Condition** | Pointer to [**SignOnPolicyActionCommonConditionOrOrInner**](SignOnPolicyActionCommonConditionOrOrInner.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the sign-on policy assignment resource’s unique identifier. | [optional] [readonly] 
 **Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
@@ -58,20 +58,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *SignOnPolicyActionCommon) GetCondition() SignOnPolicyActionCommonCondition`
+`func (o *SignOnPolicyActionCommon) GetCondition() SignOnPolicyActionCommonConditionOrOrInner`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *SignOnPolicyActionCommon) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool)`
+`func (o *SignOnPolicyActionCommon) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *SignOnPolicyActionCommon) SetCondition(v SignOnPolicyActionCommonCondition)`
+`func (o *SignOnPolicyActionCommon) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner)`
 
 SetCondition sets Condition field to given value.
 

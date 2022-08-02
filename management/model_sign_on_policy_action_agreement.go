@@ -17,7 +17,7 @@ import (
 // SignOnPolicyActionAgreement struct for SignOnPolicyActionAgreement
 type SignOnPolicyActionAgreement struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonCondition `json:"condition,omitempty"`
+	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -26,6 +26,8 @@ type SignOnPolicyActionAgreement struct {
 	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
 	Type EnumSignOnPolicyType `json:"type"`
 	Agreement SignOnPolicyActionAgreementAllOfAgreement `json:"agreement"`
+	// When enabled, the `Do Not Accept` button will terminate the Flow and display an error message to the user.
+	DisableDeclineOption *bool `json:"disableDeclineOption,omitempty"`
 }
 
 // NewSignOnPolicyActionAgreement instantiates a new SignOnPolicyActionAgreement object
@@ -81,9 +83,9 @@ func (o *SignOnPolicyActionAgreement) SetLinks(v map[string]interface{}) {
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *SignOnPolicyActionAgreement) GetCondition() SignOnPolicyActionCommonCondition {
+func (o *SignOnPolicyActionAgreement) GetCondition() SignOnPolicyActionCommonConditionOrOrInner {
 	if o == nil || o.Condition == nil {
-		var ret SignOnPolicyActionCommonCondition
+		var ret SignOnPolicyActionCommonConditionOrOrInner
 		return ret
 	}
 	return *o.Condition
@@ -91,7 +93,7 @@ func (o *SignOnPolicyActionAgreement) GetCondition() SignOnPolicyActionCommonCon
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionAgreement) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool) {
+func (o *SignOnPolicyActionAgreement) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool) {
 	if o == nil || o.Condition == nil {
 		return nil, false
 	}
@@ -107,8 +109,8 @@ func (o *SignOnPolicyActionAgreement) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given SignOnPolicyActionCommonCondition and assigns it to the Condition field.
-func (o *SignOnPolicyActionAgreement) SetCondition(v SignOnPolicyActionCommonCondition) {
+// SetCondition gets a reference to the given SignOnPolicyActionCommonConditionOrOrInner and assigns it to the Condition field.
+func (o *SignOnPolicyActionAgreement) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner) {
 	o.Condition = &v
 }
 
@@ -280,6 +282,38 @@ func (o *SignOnPolicyActionAgreement) SetAgreement(v SignOnPolicyActionAgreement
 	o.Agreement = v
 }
 
+// GetDisableDeclineOption returns the DisableDeclineOption field value if set, zero value otherwise.
+func (o *SignOnPolicyActionAgreement) GetDisableDeclineOption() bool {
+	if o == nil || o.DisableDeclineOption == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DisableDeclineOption
+}
+
+// GetDisableDeclineOptionOk returns a tuple with the DisableDeclineOption field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionAgreement) GetDisableDeclineOptionOk() (*bool, bool) {
+	if o == nil || o.DisableDeclineOption == nil {
+		return nil, false
+	}
+	return o.DisableDeclineOption, true
+}
+
+// HasDisableDeclineOption returns a boolean if a field has been set.
+func (o *SignOnPolicyActionAgreement) HasDisableDeclineOption() bool {
+	if o != nil && o.DisableDeclineOption != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisableDeclineOption gets a reference to the given bool and assigns it to the DisableDeclineOption field.
+func (o *SignOnPolicyActionAgreement) SetDisableDeclineOption(v bool) {
+	o.DisableDeclineOption = &v
+}
+
 func (o SignOnPolicyActionAgreement) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Links != nil {
@@ -305,6 +339,9 @@ func (o SignOnPolicyActionAgreement) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["agreement"] = o.Agreement
+	}
+	if o.DisableDeclineOption != nil {
+		toSerialize["disableDeclineOption"] = o.DisableDeclineOption
 	}
 	return json.Marshal(toSerialize)
 }

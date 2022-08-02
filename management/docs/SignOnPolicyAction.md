@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to **map[string]interface{}** |  | [optional] [readonly] 
-**Condition** | Pointer to [**SignOnPolicyActionCommonCondition**](SignOnPolicyActionCommonCondition.md) |  | [optional] 
+**Condition** | Pointer to [**SignOnPolicyActionCommonConditionOrOrInner**](SignOnPolicyActionCommonConditionOrOrInner.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the sign-on policy assignment resource’s unique identifier. | [optional] [readonly] 
 **Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **IdentityProvider** | [**SignOnPolicyActionIDPAllOfIdentityProvider**](SignOnPolicyActionIDPAllOfIdentityProvider.md) |  | 
 **PassUserContext** | Pointer to **bool** | A boolean that specifies whether to pass in a login hint to the identity provider on the authentication request. Based on user context, the login hint is set if (1) the user is set on the flow, and (2) the user already has an account link for the identity provider. If both of these conditions are true, then the user is sent to the identity provider with a login hint equal to their externalId for the identity provider (saved on the account link). If these conditions are not true, then the API checks see if there is an OIDC login hint on the flow. If so, that login hint is used. If none of these conditions are true, the login hint parameter is not included on the authorization request to the identity provider. | [optional] 
 **Agreement** | [**SignOnPolicyActionAgreementAllOfAgreement**](SignOnPolicyActionAgreementAllOfAgreement.md) |  | 
+**DisableDeclineOption** | Pointer to **bool** | When enabled, the &#x60;Do Not Accept&#x60; button will terminate the Flow and display an error message to the user. | [optional] 
 **Attributes** | [**[]SignOnPolicyActionProgressiveProfilingAllOfAttributes**](SignOnPolicyActionProgressiveProfilingAllOfAttributes.md) |  | 
 **PreventMultiplePromptsPerFlow** | **bool** | A boolean that specifies whether the progressive profiling action will not be executed if another progressive profiling action has already been executed during the flow. This property is required. | 
 **PromptIntervalSeconds** | **int32** | An integer that specifies how often to prompt the user to provide profile data for the configured attributes for which they do not have values. This property is required. | 
@@ -81,20 +82,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *SignOnPolicyAction) GetCondition() SignOnPolicyActionCommonCondition`
+`func (o *SignOnPolicyAction) GetCondition() SignOnPolicyActionCommonConditionOrOrInner`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *SignOnPolicyAction) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool)`
+`func (o *SignOnPolicyAction) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *SignOnPolicyAction) SetCondition(v SignOnPolicyActionCommonCondition)`
+`func (o *SignOnPolicyAction) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner)`
 
 SetCondition sets Condition field to given value.
 
@@ -683,6 +684,31 @@ and a boolean to check if the value has been set.
 
 SetAgreement sets Agreement field to given value.
 
+
+### GetDisableDeclineOption
+
+`func (o *SignOnPolicyAction) GetDisableDeclineOption() bool`
+
+GetDisableDeclineOption returns the DisableDeclineOption field if non-nil, zero value otherwise.
+
+### GetDisableDeclineOptionOk
+
+`func (o *SignOnPolicyAction) GetDisableDeclineOptionOk() (*bool, bool)`
+
+GetDisableDeclineOptionOk returns a tuple with the DisableDeclineOption field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableDeclineOption
+
+`func (o *SignOnPolicyAction) SetDisableDeclineOption(v bool)`
+
+SetDisableDeclineOption sets DisableDeclineOption field to given value.
+
+### HasDisableDeclineOption
+
+`func (o *SignOnPolicyAction) HasDisableDeclineOption() bool`
+
+HasDisableDeclineOption returns a boolean if a field has been set.
 
 ### GetAttributes
 

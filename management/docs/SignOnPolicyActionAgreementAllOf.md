@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Agreement** | [**SignOnPolicyActionAgreementAllOfAgreement**](SignOnPolicyActionAgreementAllOfAgreement.md) |  | 
+**DisableDeclineOption** | Pointer to **bool** | When enabled, the &#x60;Do Not Accept&#x60; button will terminate the Flow and display an error message to the user. | [optional] 
 
 ## Methods
 
@@ -44,6 +45,31 @@ and a boolean to check if the value has been set.
 
 SetAgreement sets Agreement field to given value.
 
+
+### GetDisableDeclineOption
+
+`func (o *SignOnPolicyActionAgreementAllOf) GetDisableDeclineOption() bool`
+
+GetDisableDeclineOption returns the DisableDeclineOption field if non-nil, zero value otherwise.
+
+### GetDisableDeclineOptionOk
+
+`func (o *SignOnPolicyActionAgreementAllOf) GetDisableDeclineOptionOk() (*bool, bool)`
+
+GetDisableDeclineOptionOk returns a tuple with the DisableDeclineOption field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableDeclineOption
+
+`func (o *SignOnPolicyActionAgreementAllOf) SetDisableDeclineOption(v bool)`
+
+SetDisableDeclineOption sets DisableDeclineOption field to given value.
+
+### HasDisableDeclineOption
+
+`func (o *SignOnPolicyActionAgreementAllOf) HasDisableDeclineOption() bool`
+
+HasDisableDeclineOption returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

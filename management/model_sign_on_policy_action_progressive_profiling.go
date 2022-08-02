@@ -17,7 +17,7 @@ import (
 // SignOnPolicyActionProgressiveProfiling struct for SignOnPolicyActionProgressiveProfiling
 type SignOnPolicyActionProgressiveProfiling struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonCondition `json:"condition,omitempty"`
+	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -90,9 +90,9 @@ func (o *SignOnPolicyActionProgressiveProfiling) SetLinks(v map[string]interface
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *SignOnPolicyActionProgressiveProfiling) GetCondition() SignOnPolicyActionCommonCondition {
+func (o *SignOnPolicyActionProgressiveProfiling) GetCondition() SignOnPolicyActionCommonConditionOrOrInner {
 	if o == nil || o.Condition == nil {
-		var ret SignOnPolicyActionCommonCondition
+		var ret SignOnPolicyActionCommonConditionOrOrInner
 		return ret
 	}
 	return *o.Condition
@@ -100,7 +100,7 @@ func (o *SignOnPolicyActionProgressiveProfiling) GetCondition() SignOnPolicyActi
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionProgressiveProfiling) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool) {
+func (o *SignOnPolicyActionProgressiveProfiling) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool) {
 	if o == nil || o.Condition == nil {
 		return nil, false
 	}
@@ -116,8 +116,8 @@ func (o *SignOnPolicyActionProgressiveProfiling) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given SignOnPolicyActionCommonCondition and assigns it to the Condition field.
-func (o *SignOnPolicyActionProgressiveProfiling) SetCondition(v SignOnPolicyActionCommonCondition) {
+// SetCondition gets a reference to the given SignOnPolicyActionCommonConditionOrOrInner and assigns it to the Condition field.
+func (o *SignOnPolicyActionProgressiveProfiling) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner) {
 	o.Condition = &v
 }
 
