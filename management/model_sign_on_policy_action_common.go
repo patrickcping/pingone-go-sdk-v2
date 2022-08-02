@@ -17,7 +17,7 @@ import (
 // SignOnPolicyActionCommon struct for SignOnPolicyActionCommon
 type SignOnPolicyActionCommon struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonCondition `json:"condition,omitempty"`
+	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -79,9 +79,9 @@ func (o *SignOnPolicyActionCommon) SetLinks(v map[string]interface{}) {
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *SignOnPolicyActionCommon) GetCondition() SignOnPolicyActionCommonCondition {
+func (o *SignOnPolicyActionCommon) GetCondition() SignOnPolicyActionCommonConditionOrOrInner {
 	if o == nil || o.Condition == nil {
-		var ret SignOnPolicyActionCommonCondition
+		var ret SignOnPolicyActionCommonConditionOrOrInner
 		return ret
 	}
 	return *o.Condition
@@ -89,7 +89,7 @@ func (o *SignOnPolicyActionCommon) GetCondition() SignOnPolicyActionCommonCondit
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionCommon) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool) {
+func (o *SignOnPolicyActionCommon) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool) {
 	if o == nil || o.Condition == nil {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *SignOnPolicyActionCommon) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given SignOnPolicyActionCommonCondition and assigns it to the Condition field.
-func (o *SignOnPolicyActionCommon) SetCondition(v SignOnPolicyActionCommonCondition) {
+// SetCondition gets a reference to the given SignOnPolicyActionCommonConditionOrOrInner and assigns it to the Condition field.
+func (o *SignOnPolicyActionCommon) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner) {
 	o.Condition = &v
 }
 

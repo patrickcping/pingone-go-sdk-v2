@@ -17,6 +17,8 @@ import (
 // SignOnPolicyActionAgreementAllOf struct for SignOnPolicyActionAgreementAllOf
 type SignOnPolicyActionAgreementAllOf struct {
 	Agreement SignOnPolicyActionAgreementAllOfAgreement `json:"agreement"`
+	// When enabled, the `Do Not Accept` button will terminate the Flow and display an error message to the user.
+	DisableDeclineOption *bool `json:"disableDeclineOption,omitempty"`
 }
 
 // NewSignOnPolicyActionAgreementAllOf instantiates a new SignOnPolicyActionAgreementAllOf object
@@ -61,10 +63,45 @@ func (o *SignOnPolicyActionAgreementAllOf) SetAgreement(v SignOnPolicyActionAgre
 	o.Agreement = v
 }
 
+// GetDisableDeclineOption returns the DisableDeclineOption field value if set, zero value otherwise.
+func (o *SignOnPolicyActionAgreementAllOf) GetDisableDeclineOption() bool {
+	if o == nil || o.DisableDeclineOption == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DisableDeclineOption
+}
+
+// GetDisableDeclineOptionOk returns a tuple with the DisableDeclineOption field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionAgreementAllOf) GetDisableDeclineOptionOk() (*bool, bool) {
+	if o == nil || o.DisableDeclineOption == nil {
+		return nil, false
+	}
+	return o.DisableDeclineOption, true
+}
+
+// HasDisableDeclineOption returns a boolean if a field has been set.
+func (o *SignOnPolicyActionAgreementAllOf) HasDisableDeclineOption() bool {
+	if o != nil && o.DisableDeclineOption != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDisableDeclineOption gets a reference to the given bool and assigns it to the DisableDeclineOption field.
+func (o *SignOnPolicyActionAgreementAllOf) SetDisableDeclineOption(v bool) {
+	o.DisableDeclineOption = &v
+}
+
 func (o SignOnPolicyActionAgreementAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["agreement"] = o.Agreement
+	}
+	if o.DisableDeclineOption != nil {
+		toSerialize["disableDeclineOption"] = o.DisableDeclineOption
 	}
 	return json.Marshal(toSerialize)
 }

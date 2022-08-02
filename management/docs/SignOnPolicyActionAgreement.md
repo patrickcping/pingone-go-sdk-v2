@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to **map[string]interface{}** |  | [optional] [readonly] 
-**Condition** | Pointer to [**SignOnPolicyActionCommonCondition**](SignOnPolicyActionCommonCondition.md) |  | [optional] 
+**Condition** | Pointer to [**SignOnPolicyActionCommonConditionOrOrInner**](SignOnPolicyActionCommonConditionOrOrInner.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the sign-on policy assignment resource’s unique identifier. | [optional] [readonly] 
 **Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
 **SignOnPolicy** | Pointer to [**SignOnPolicyActionCommonSignOnPolicy**](SignOnPolicyActionCommonSignOnPolicy.md) |  | [optional] 
 **Type** | [**EnumSignOnPolicyType**](EnumSignOnPolicyType.md) |  | 
 **Agreement** | [**SignOnPolicyActionAgreementAllOfAgreement**](SignOnPolicyActionAgreementAllOfAgreement.md) |  | 
+**DisableDeclineOption** | Pointer to **bool** | When enabled, the &#x60;Do Not Accept&#x60; button will terminate the Flow and display an error message to the user. | [optional] 
 
 ## Methods
 
@@ -59,20 +60,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *SignOnPolicyActionAgreement) GetCondition() SignOnPolicyActionCommonCondition`
+`func (o *SignOnPolicyActionAgreement) GetCondition() SignOnPolicyActionCommonConditionOrOrInner`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *SignOnPolicyActionAgreement) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool)`
+`func (o *SignOnPolicyActionAgreement) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *SignOnPolicyActionAgreement) SetCondition(v SignOnPolicyActionCommonCondition)`
+`func (o *SignOnPolicyActionAgreement) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner)`
 
 SetCondition sets Condition field to given value.
 
@@ -216,6 +217,31 @@ and a boolean to check if the value has been set.
 
 SetAgreement sets Agreement field to given value.
 
+
+### GetDisableDeclineOption
+
+`func (o *SignOnPolicyActionAgreement) GetDisableDeclineOption() bool`
+
+GetDisableDeclineOption returns the DisableDeclineOption field if non-nil, zero value otherwise.
+
+### GetDisableDeclineOptionOk
+
+`func (o *SignOnPolicyActionAgreement) GetDisableDeclineOptionOk() (*bool, bool)`
+
+GetDisableDeclineOptionOk returns a tuple with the DisableDeclineOption field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableDeclineOption
+
+`func (o *SignOnPolicyActionAgreement) SetDisableDeclineOption(v bool)`
+
+SetDisableDeclineOption sets DisableDeclineOption field to given value.
+
+### HasDisableDeclineOption
+
+`func (o *SignOnPolicyActionAgreement) HasDisableDeclineOption() bool`
+
+HasDisableDeclineOption returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

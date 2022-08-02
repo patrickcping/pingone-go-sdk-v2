@@ -17,7 +17,7 @@ import (
 // SignOnPolicyActionIDP struct for SignOnPolicyActionIDP
 type SignOnPolicyActionIDP struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
-	Condition *SignOnPolicyActionCommonCondition `json:"condition,omitempty"`
+	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -86,9 +86,9 @@ func (o *SignOnPolicyActionIDP) SetLinks(v map[string]interface{}) {
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDP) GetCondition() SignOnPolicyActionCommonCondition {
+func (o *SignOnPolicyActionIDP) GetCondition() SignOnPolicyActionCommonConditionOrOrInner {
 	if o == nil || o.Condition == nil {
-		var ret SignOnPolicyActionCommonCondition
+		var ret SignOnPolicyActionCommonConditionOrOrInner
 		return ret
 	}
 	return *o.Condition
@@ -96,7 +96,7 @@ func (o *SignOnPolicyActionIDP) GetCondition() SignOnPolicyActionCommonCondition
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetConditionOk() (*SignOnPolicyActionCommonCondition, bool) {
+func (o *SignOnPolicyActionIDP) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool) {
 	if o == nil || o.Condition == nil {
 		return nil, false
 	}
@@ -112,8 +112,8 @@ func (o *SignOnPolicyActionIDP) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given SignOnPolicyActionCommonCondition and assigns it to the Condition field.
-func (o *SignOnPolicyActionIDP) SetCondition(v SignOnPolicyActionCommonCondition) {
+// SetCondition gets a reference to the given SignOnPolicyActionCommonConditionOrOrInner and assigns it to the Condition field.
+func (o *SignOnPolicyActionIDP) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner) {
 	o.Condition = &v
 }
 

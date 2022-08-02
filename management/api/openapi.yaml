@@ -20542,24 +20542,39 @@ components:
       - value
       type: object
     SignOnPolicyActionCommonConditionOr:
-      items:
-        $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_inner'
-      type: array
+      properties:
+        or:
+          items:
+            $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_or_inner'
+          type: array
+      type: object
     SignOnPolicyActionCommonConditionAnd:
-      items:
-        $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_inner'
-      type: array
+      properties:
+        and:
+          items:
+            $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_or_inner'
+          type: array
+      type: object
     SignOnPolicyActionCommonConditionNot:
-      items:
-        $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_inner'
-      type: array
+      properties:
+        not:
+          $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAggregate'
+      type: object
+    SignOnPolicyActionCommonConditionAggregate:
+      oneOf:
+      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGreater'
+      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRisk'
+      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRange'
+      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGeovelocity'
+      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAnonymousNetwork'
+      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionEquals'
     SignOnPolicyActionCommon:
       properties:
         _links:
           readOnly: true
           type: object
         condition:
-          $ref: '#/components/schemas/SignOnPolicyActionCommon_condition'
+          $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_or_inner'
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         id:
@@ -22974,25 +22989,12 @@ components:
       - previousSuccessfulAuthenticationIp
       - previousSuccessfulAuthenticationTime
       type: object
-    SignOnPolicyActionCommonConditionOr_inner:
+    SignOnPolicyActionCommonConditionOr_or_inner:
       oneOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGreater'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRisk'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRange'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGeovelocity'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAnonymousNetwork'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionEquals'
-    SignOnPolicyActionCommon_condition:
-      oneOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr'
       - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAnd'
+      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr'
       - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionNot'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGreater'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRisk'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRange'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGeovelocity'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAnonymousNetwork'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionEquals'
+      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAggregate'
     SignOnPolicyActionCommon_signOnPolicy:
       description: The sign-on policy associated with this sign-on policy assignment
       example:
@@ -23372,6 +23374,10 @@ components:
       properties:
         agreement:
           $ref: '#/components/schemas/SignOnPolicyActionAgreement_allOf_agreement'
+        disableDeclineOption:
+          description: "When enabled, the `Do Not Accept` button will terminate the\
+            \ Flow and display an error message to the user."
+          type: boolean
       required:
       - agreement
       type: object

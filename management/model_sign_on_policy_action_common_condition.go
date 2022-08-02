@@ -17,13 +17,22 @@ import (
 
 // SignOnPolicyActionCommonCondition - struct for SignOnPolicyActionCommonCondition
 type SignOnPolicyActionCommonCondition struct {
+	SignOnPolicyActionCommonConditionAnd *SignOnPolicyActionCommonConditionAnd
 	SignOnPolicyActionCommonConditionAnonymousNetwork *SignOnPolicyActionCommonConditionAnonymousNetwork
 	SignOnPolicyActionCommonConditionEquals *SignOnPolicyActionCommonConditionEquals
 	SignOnPolicyActionCommonConditionGeovelocity *SignOnPolicyActionCommonConditionGeovelocity
 	SignOnPolicyActionCommonConditionGreater *SignOnPolicyActionCommonConditionGreater
 	SignOnPolicyActionCommonConditionIPRange *SignOnPolicyActionCommonConditionIPRange
 	SignOnPolicyActionCommonConditionIPRisk *SignOnPolicyActionCommonConditionIPRisk
-	ArrayOfSignOnPolicyActionCommonConditionOrInner *[]SignOnPolicyActionCommonConditionOrInner
+	SignOnPolicyActionCommonConditionNot *SignOnPolicyActionCommonConditionNot
+	SignOnPolicyActionCommonConditionOr *SignOnPolicyActionCommonConditionOr
+}
+
+// SignOnPolicyActionCommonConditionAndAsSignOnPolicyActionCommonCondition is a convenience function that returns SignOnPolicyActionCommonConditionAnd wrapped in SignOnPolicyActionCommonCondition
+func SignOnPolicyActionCommonConditionAndAsSignOnPolicyActionCommonCondition(v *SignOnPolicyActionCommonConditionAnd) SignOnPolicyActionCommonCondition {
+	return SignOnPolicyActionCommonCondition{
+		SignOnPolicyActionCommonConditionAnd: v,
+	}
 }
 
 // SignOnPolicyActionCommonConditionAnonymousNetworkAsSignOnPolicyActionCommonCondition is a convenience function that returns SignOnPolicyActionCommonConditionAnonymousNetwork wrapped in SignOnPolicyActionCommonCondition
@@ -68,10 +77,17 @@ func SignOnPolicyActionCommonConditionIPRiskAsSignOnPolicyActionCommonCondition(
 	}
 }
 
-// []SignOnPolicyActionCommonConditionOrInnerAsSignOnPolicyActionCommonCondition is a convenience function that returns []SignOnPolicyActionCommonConditionOrInner wrapped in SignOnPolicyActionCommonCondition
-func ArrayOfSignOnPolicyActionCommonConditionOrInnerAsSignOnPolicyActionCommonCondition(v *[]SignOnPolicyActionCommonConditionOrInner) SignOnPolicyActionCommonCondition {
+// SignOnPolicyActionCommonConditionNotAsSignOnPolicyActionCommonCondition is a convenience function that returns SignOnPolicyActionCommonConditionNot wrapped in SignOnPolicyActionCommonCondition
+func SignOnPolicyActionCommonConditionNotAsSignOnPolicyActionCommonCondition(v *SignOnPolicyActionCommonConditionNot) SignOnPolicyActionCommonCondition {
 	return SignOnPolicyActionCommonCondition{
-		ArrayOfSignOnPolicyActionCommonConditionOrInner: v,
+		SignOnPolicyActionCommonConditionNot: v,
+	}
+}
+
+// SignOnPolicyActionCommonConditionOrAsSignOnPolicyActionCommonCondition is a convenience function that returns SignOnPolicyActionCommonConditionOr wrapped in SignOnPolicyActionCommonCondition
+func SignOnPolicyActionCommonConditionOrAsSignOnPolicyActionCommonCondition(v *SignOnPolicyActionCommonConditionOr) SignOnPolicyActionCommonCondition {
+	return SignOnPolicyActionCommonCondition{
+		SignOnPolicyActionCommonConditionOr: v,
 	}
 }
 
@@ -80,6 +96,19 @@ func ArrayOfSignOnPolicyActionCommonConditionOrInnerAsSignOnPolicyActionCommonCo
 func (dst *SignOnPolicyActionCommonCondition) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into SignOnPolicyActionCommonConditionAnd
+	err = newStrictDecoder(data).Decode(&dst.SignOnPolicyActionCommonConditionAnd)
+	if err == nil {
+		jsonSignOnPolicyActionCommonConditionAnd, _ := json.Marshal(dst.SignOnPolicyActionCommonConditionAnd)
+		if string(jsonSignOnPolicyActionCommonConditionAnd) == "{}" { // empty struct
+			dst.SignOnPolicyActionCommonConditionAnd = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.SignOnPolicyActionCommonConditionAnd = nil
+	}
+
 	// try to unmarshal data into SignOnPolicyActionCommonConditionAnonymousNetwork
 	err = newStrictDecoder(data).Decode(&dst.SignOnPolicyActionCommonConditionAnonymousNetwork)
 	if err == nil {
@@ -158,28 +187,43 @@ func (dst *SignOnPolicyActionCommonCondition) UnmarshalJSON(data []byte) error {
 		dst.SignOnPolicyActionCommonConditionIPRisk = nil
 	}
 
-	// try to unmarshal data into ArrayOfSignOnPolicyActionCommonConditionOrInner
-	err = newStrictDecoder(data).Decode(&dst.ArrayOfSignOnPolicyActionCommonConditionOrInner)
+	// try to unmarshal data into SignOnPolicyActionCommonConditionNot
+	err = newStrictDecoder(data).Decode(&dst.SignOnPolicyActionCommonConditionNot)
 	if err == nil {
-		jsonArrayOfSignOnPolicyActionCommonConditionOrInner, _ := json.Marshal(dst.ArrayOfSignOnPolicyActionCommonConditionOrInner)
-		if string(jsonArrayOfSignOnPolicyActionCommonConditionOrInner) == "{}" { // empty struct
-			dst.ArrayOfSignOnPolicyActionCommonConditionOrInner = nil
+		jsonSignOnPolicyActionCommonConditionNot, _ := json.Marshal(dst.SignOnPolicyActionCommonConditionNot)
+		if string(jsonSignOnPolicyActionCommonConditionNot) == "{}" { // empty struct
+			dst.SignOnPolicyActionCommonConditionNot = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.ArrayOfSignOnPolicyActionCommonConditionOrInner = nil
+		dst.SignOnPolicyActionCommonConditionNot = nil
+	}
+
+	// try to unmarshal data into SignOnPolicyActionCommonConditionOr
+	err = newStrictDecoder(data).Decode(&dst.SignOnPolicyActionCommonConditionOr)
+	if err == nil {
+		jsonSignOnPolicyActionCommonConditionOr, _ := json.Marshal(dst.SignOnPolicyActionCommonConditionOr)
+		if string(jsonSignOnPolicyActionCommonConditionOr) == "{}" { // empty struct
+			dst.SignOnPolicyActionCommonConditionOr = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.SignOnPolicyActionCommonConditionOr = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.SignOnPolicyActionCommonConditionAnd = nil
 		dst.SignOnPolicyActionCommonConditionAnonymousNetwork = nil
 		dst.SignOnPolicyActionCommonConditionEquals = nil
 		dst.SignOnPolicyActionCommonConditionGeovelocity = nil
 		dst.SignOnPolicyActionCommonConditionGreater = nil
 		dst.SignOnPolicyActionCommonConditionIPRange = nil
 		dst.SignOnPolicyActionCommonConditionIPRisk = nil
-		dst.ArrayOfSignOnPolicyActionCommonConditionOrInner = nil
+		dst.SignOnPolicyActionCommonConditionNot = nil
+		dst.SignOnPolicyActionCommonConditionOr = nil
 
 		return fmt.Errorf("Data matches more than one schema in oneOf(SignOnPolicyActionCommonCondition)")
 	} else if match == 1 {
@@ -191,6 +235,10 @@ func (dst *SignOnPolicyActionCommonCondition) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src SignOnPolicyActionCommonCondition) MarshalJSON() ([]byte, error) {
+	if src.SignOnPolicyActionCommonConditionAnd != nil {
+		return json.Marshal(&src.SignOnPolicyActionCommonConditionAnd)
+	}
+
 	if src.SignOnPolicyActionCommonConditionAnonymousNetwork != nil {
 		return json.Marshal(&src.SignOnPolicyActionCommonConditionAnonymousNetwork)
 	}
@@ -215,8 +263,12 @@ func (src SignOnPolicyActionCommonCondition) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.SignOnPolicyActionCommonConditionIPRisk)
 	}
 
-	if src.ArrayOfSignOnPolicyActionCommonConditionOrInner != nil {
-		return json.Marshal(&src.ArrayOfSignOnPolicyActionCommonConditionOrInner)
+	if src.SignOnPolicyActionCommonConditionNot != nil {
+		return json.Marshal(&src.SignOnPolicyActionCommonConditionNot)
+	}
+
+	if src.SignOnPolicyActionCommonConditionOr != nil {
+		return json.Marshal(&src.SignOnPolicyActionCommonConditionOr)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -227,6 +279,10 @@ func (obj *SignOnPolicyActionCommonCondition) GetActualInstance() (interface{}) 
 	if obj == nil {
 		return nil
 	}
+	if obj.SignOnPolicyActionCommonConditionAnd != nil {
+		return obj.SignOnPolicyActionCommonConditionAnd
+	}
+
 	if obj.SignOnPolicyActionCommonConditionAnonymousNetwork != nil {
 		return obj.SignOnPolicyActionCommonConditionAnonymousNetwork
 	}
@@ -251,8 +307,12 @@ func (obj *SignOnPolicyActionCommonCondition) GetActualInstance() (interface{}) 
 		return obj.SignOnPolicyActionCommonConditionIPRisk
 	}
 
-	if obj.ArrayOfSignOnPolicyActionCommonConditionOrInner != nil {
-		return obj.ArrayOfSignOnPolicyActionCommonConditionOrInner
+	if obj.SignOnPolicyActionCommonConditionNot != nil {
+		return obj.SignOnPolicyActionCommonConditionNot
+	}
+
+	if obj.SignOnPolicyActionCommonConditionOr != nil {
+		return obj.SignOnPolicyActionCommonConditionOr
 	}
 
 	// all schemas are nil
