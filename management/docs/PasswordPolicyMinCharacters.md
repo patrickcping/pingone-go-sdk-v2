@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ABCDEFGHIJKLMNOPQRSTUVWXYZ** | Pointer to **int32** | Count of alphabetical uppercase characters (&#x60;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#x60;) that should feature in the user&#39;s password. | [optional] 
 **Abcdefghijklmnopqrstuvwxyz** | Pointer to **int32** | Count of alphabetical uppercase characters (&#x60;abcdefghijklmnopqrstuvwxyz&#x60;) that should feature in the user&#39;s password. | [optional] 
 **Var0123456789** | Pointer to **int32** | Count of numeric characters (&#x60;0123456789&#x60;) that should feature in the user&#39;s password. | [optional] 
-**______** | Pointer to **int32** | Count of special characters (&#x60;~!@#$%^&amp;*()-_&#x3D;+[]{}\\\\|;:,.&lt;&gt;/?&#x60;) that should feature in the user&#39;s password. | [optional] 
+**SpecialChar** | Pointer to **int32** | Count of special characters (&#x60;~!@#$%^&amp;*()-_&#x3D;+[]{}\\\\|;:,.&lt;&gt;/?&#x60;) that should feature in the user&#39;s password. | [optional] 
 
 ## Methods
 
@@ -103,30 +103,30 @@ SetVar0123456789 sets Var0123456789 field to given value.
 
 HasVar0123456789 returns a boolean if a field has been set.
 
-### Get______
+### GetSpecialChar
 
-`func (o *PasswordPolicyMinCharacters) Get______() int32`
+`func (o *PasswordPolicyMinCharacters) GetSpecialChar() int32`
 
-Get______ returns the ______ field if non-nil, zero value otherwise.
+GetSpecialChar returns the SpecialChar field if non-nil, zero value otherwise.
 
-### Get______Ok
+### GetSpecialCharOk
 
-`func (o *PasswordPolicyMinCharacters) Get______Ok() (*int32, bool)`
+`func (o *PasswordPolicyMinCharacters) GetSpecialCharOk() (*int32, bool)`
 
-Get______Ok returns a tuple with the ______ field if it's non-nil, zero value otherwise
+GetSpecialCharOk returns a tuple with the SpecialChar field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### Set______
+### SetSpecialChar
 
-`func (o *PasswordPolicyMinCharacters) Set______(v int32)`
+`func (o *PasswordPolicyMinCharacters) SetSpecialChar(v int32)`
 
-Set______ sets ______ field to given value.
+SetSpecialChar sets SpecialChar field to given value.
 
-### Has______
+### HasSpecialChar
 
-`func (o *PasswordPolicyMinCharacters) Has______() bool`
+`func (o *PasswordPolicyMinCharacters) HasSpecialChar() bool`
 
-Has______ returns a boolean if a field has been set.
+HasSpecialChar returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

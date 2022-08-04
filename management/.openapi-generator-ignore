@@ -27,5 +27,6 @@ git_push.sh
 .gitignore
 CHANGELOG.md
 model_password_policy_min_characters.go
+api_password_policies.go
 GNUmakefile
 .version

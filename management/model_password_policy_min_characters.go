@@ -22,8 +22,8 @@ type PasswordPolicyMinCharacters struct {
 	Abcdefghijklmnopqrstuvwxyz *int32 `json:"abcdefghijklmnopqrstuvwxyz,omitempty"`
 	// Count of numeric characters (`0123456789`) that should feature in the user's password.
 	Var0123456789 *int32 `json:"0123456789,omitempty"`
-	// Count of special characters (`~!@#$%^&*()-_=+[]{}\\\\|;:,.<>/?`) that should feature in the user's password.
-	______ *int32 `json:"~!@#$%^&*()-_=+[]{}|;:,.<>/?,omitempty"`
+	// Count of special characters (`~!@#$%^&*()-_=+[]{}|;:,.<>/?`) that should feature in the user's password.
+	SpecialChar *int32 `json:"specialchar,omitempty"`
 }
 
 // NewPasswordPolicyMinCharacters instantiates a new PasswordPolicyMinCharacters object
@@ -139,36 +139,36 @@ func (o *PasswordPolicyMinCharacters) SetVar0123456789(v int32) {
 	o.Var0123456789 = &v
 }
 
-// Get______ returns the ______ field value if set, zero value otherwise.
-func (o *PasswordPolicyMinCharacters) Get______() int32 {
-	if o == nil || o.______ == nil {
+// GetSpecialChar returns the SpecialChar field value if set, zero value otherwise.
+func (o *PasswordPolicyMinCharacters) GetSpecialChar() int32 {
+	if o == nil || o.SpecialChar == nil {
 		var ret int32
 		return ret
 	}
-	return *o.______
+	return *o.SpecialChar
 }
 
-// Get______Ok returns a tuple with the ______ field value if set, nil otherwise
+// GetSpecialCharOk returns a tuple with the SpecialChar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordPolicyMinCharacters) Get______Ok() (*int32, bool) {
-	if o == nil || o.______ == nil {
+func (o *PasswordPolicyMinCharacters) GetSpecialCharOk() (*int32, bool) {
+	if o == nil || o.SpecialChar == nil {
 		return nil, false
 	}
-	return o.______, true
+	return o.SpecialChar, true
 }
 
-// Has______ returns a boolean if a field has been set.
-func (o *PasswordPolicyMinCharacters) Has______() bool {
-	if o != nil && o.______ != nil {
+// HasSpecialChar returns a boolean if a field has been set.
+func (o *PasswordPolicyMinCharacters) HasSpecialChar() bool {
+	if o != nil && o.SpecialChar != nil {
 		return true
 	}
 
 	return false
 }
 
-// Set______ gets a reference to the given int32 and assigns it to the ______ field.
-func (o *PasswordPolicyMinCharacters) Set______(v int32) {
-	o.______ = &v
+// SetSpecialChar gets a reference to the given int32 and assigns it to the SpecialChar field.
+func (o *PasswordPolicyMinCharacters) SetSpecialChar(v int32) {
+	o.SpecialChar = &v
 }
 
 func (o PasswordPolicyMinCharacters) MarshalJSON() ([]byte, error) {
@@ -182,8 +182,8 @@ func (o PasswordPolicyMinCharacters) MarshalJSON() ([]byte, error) {
 	if o.Var0123456789 != nil {
 		toSerialize["0123456789"] = o.Var0123456789
 	}
-	if o.______ != nil {
-		toSerialize["~!@#$%^&*()-_=+[]{}|;:,.<>/?"] = o.______
+	if o.SpecialChar != nil {
+		toSerialize["~!@#$%^&*()-_=+[]{}|;:,.<>/?"] = o.SpecialChar
 	}
 	return json.Marshal(toSerialize)
 }
