@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2022-08-05)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.1
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.2.0 => v0.3.0
