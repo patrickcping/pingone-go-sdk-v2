@@ -1,5 +1,6 @@
-# v0.3.0 (Unreleased)
-* **Feature** Support for `DeviceAuthenticationPolicy` models
+# v0.3.0 (2022-08-05)
+
+* **Feature** Mfa device authentication policies [#13](https://github.com/patrickcping/pingone-go-sdk-v2/pull/13)
 
 # v0.2.0 (2022-07-17)
 
