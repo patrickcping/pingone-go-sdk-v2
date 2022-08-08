@@ -20,6 +20,7 @@ type ApplicationOIDCAllOfMobile struct {
 	BundleId *string `json:"bundleId,omitempty"`
 	// A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  this setting overrides the top-level packageName field.
 	PackageName *string `json:"packageName,omitempty"`
+	PasscodeRefreshDuration *ApplicationOIDCAllOfMobilePasscodeRefreshDuration `json:"passcodeRefreshDuration,omitempty"`
 	IntegrityDetection *ApplicationOIDCAllOfMobileIntegrityDetection `json:"integrityDetection,omitempty"`
 }
 
@@ -104,6 +105,38 @@ func (o *ApplicationOIDCAllOfMobile) SetPackageName(v string) {
 	o.PackageName = &v
 }
 
+// GetPasscodeRefreshDuration returns the PasscodeRefreshDuration field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDuration() ApplicationOIDCAllOfMobilePasscodeRefreshDuration {
+	if o == nil || o.PasscodeRefreshDuration == nil {
+		var ret ApplicationOIDCAllOfMobilePasscodeRefreshDuration
+		return ret
+	}
+	return *o.PasscodeRefreshDuration
+}
+
+// GetPasscodeRefreshDurationOk returns a tuple with the PasscodeRefreshDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDurationOk() (*ApplicationOIDCAllOfMobilePasscodeRefreshDuration, bool) {
+	if o == nil || o.PasscodeRefreshDuration == nil {
+		return nil, false
+	}
+	return o.PasscodeRefreshDuration, true
+}
+
+// HasPasscodeRefreshDuration returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOfMobile) HasPasscodeRefreshDuration() bool {
+	if o != nil && o.PasscodeRefreshDuration != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPasscodeRefreshDuration gets a reference to the given ApplicationOIDCAllOfMobilePasscodeRefreshDuration and assigns it to the PasscodeRefreshDuration field.
+func (o *ApplicationOIDCAllOfMobile) SetPasscodeRefreshDuration(v ApplicationOIDCAllOfMobilePasscodeRefreshDuration) {
+	o.PasscodeRefreshDuration = &v
+}
+
 // GetIntegrityDetection returns the IntegrityDetection field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetIntegrityDetection() ApplicationOIDCAllOfMobileIntegrityDetection {
 	if o == nil || o.IntegrityDetection == nil {
@@ -143,6 +176,9 @@ func (o ApplicationOIDCAllOfMobile) MarshalJSON() ([]byte, error) {
 	}
 	if o.PackageName != nil {
 		toSerialize["packageName"] = o.PackageName
+	}
+	if o.PasscodeRefreshDuration != nil {
+		toSerialize["passcodeRefreshDuration"] = o.PasscodeRefreshDuration
 	}
 	if o.IntegrityDetection != nil {
 		toSerialize["integrityDetection"] = o.IntegrityDetection

@@ -1,3 +1,8 @@
+# v0.4.0 (Unreleased)
+* **Enhancement** Added generic `_links` to `Application` model
+* **Enhancement** BREAKING CHANGE - `id` made required in `spVerification.certificates` of the `ApplicationSAML` model
+* **Enhancement** Add `mobile.passcodeRefreshDuration` to `ApplicationOIDC` model
+
 # v0.3.0 (2022-08-05)
 
 * **Enhancement** - *API update 2022-07-18* - `SignOnPolicyAction` object includes new attribute `DeviceAuthenticationPolicy` to replace deprecated `Applications`, `Voice`, `Sms`, `SecurityKey`, `Email`, `BoundBiometrics` and `Authenticator` attributes [#11](https://github.com/patrickcping/pingone-go-sdk-v2/pull/11)

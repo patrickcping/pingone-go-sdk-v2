@@ -18045,6 +18045,13 @@ components:
       - PAID
       - TRIAL
       type: string
+    EnumPasscodeRefreshTimeUnit:
+      default: SECONDS
+      description: The type of time unit for `mobile.passcodeRefreshDuration.duration`.  Must
+        be SECONDS.
+      enum:
+      - SECONDS
+      type: string
     EnumProductType:
       description: "A string that specifies the Ping Identity product type. Options\
         \ for PingOne platform products are PING_ONE_ORCHESTRATE, PING_ONE_MFA, PING_ONE_RISK,\
@@ -18421,6 +18428,8 @@ components:
       type: object
     Application:
       properties:
+        _links:
+          type: object
         accessControl:
           $ref: '#/components/schemas/Application_accessControl'
         assignActorRoles:
@@ -21158,6 +21167,8 @@ components:
           description: An array that specifies the certificate IDs used to verify
             the service provider signature.
           type: string
+      required:
+      - id
       type: object
     ApplicationSAML_allOf_spVerification:
       properties:
@@ -21219,6 +21230,21 @@ components:
       - assertionDuration
       - spEntityId
       type: object
+    ApplicationOIDC_allOf_mobile_passcodeRefreshDuration:
+      properties:
+        duration:
+          default: 30
+          description: The amount of time a passcode should be displayed before being
+            replaced with a new passcode - must be between 30 and 60.
+          maximum: 60
+          minimum: 30
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumPasscodeRefreshTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
     ApplicationOIDC_allOf_mobile_integrityDetection_cacheDuration:
       properties:
         amount:
@@ -21253,6 +21279,8 @@ components:
             \ mobile.packageName property is unique per environment, and once defined,\
             \ is immutable.  this setting overrides the top-level packageName field."
           type: string
+        passcodeRefreshDuration:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_passcodeRefreshDuration'
         integrityDetection:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection'
       type: object

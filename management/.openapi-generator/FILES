@@ -46,7 +46,6 @@ api_notifications_phone_delivery_settings.go
 api_notifications_trusted_email_addresses.go
 api_notifications_trusted_email_domains.go
 api_organizations.go
-api_password_policies.go
 api_populations.go
 api_resources_resource_attributes.go
 api_resources_resource_scopes.go
@@ -97,6 +96,7 @@ docs/ApplicationOIDCAllOf.md
 docs/ApplicationOIDCAllOfMobile.md
 docs/ApplicationOIDCAllOfMobileIntegrityDetection.md
 docs/ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration.md
+docs/ApplicationOIDCAllOfMobilePasscodeRefreshDuration.md
 docs/ApplicationResourceGrant.md
 docs/ApplicationResourceGrantApplication.md
 docs/ApplicationResourceGrantResource.md
@@ -160,6 +160,7 @@ docs/EnumIdentityProviderOIDCTokenAuthMethod.md
 docs/EnumIdentityProviderSAMLSSOBinding.md
 docs/EnumImageFormat.md
 docs/EnumOrganizationType.md
+docs/EnumPasscodeRefreshTimeUnit.md
 docs/EnumProductType.md
 docs/EnumRegionCode.md
 docs/EnumResourceAttributeType.md
@@ -385,6 +386,7 @@ model_application_oidc_all_of.go
 model_application_oidc_all_of_mobile.go
 model_application_oidc_all_of_mobile_integrity_detection.go
 model_application_oidc_all_of_mobile_integrity_detection_cache_duration.go
+model_application_oidc_all_of_mobile_passcode_refresh_duration.go
 model_application_resource_grant.go
 model_application_resource_grant_application.go
 model_application_resource_grant_resource.go
@@ -433,6 +435,7 @@ model_enum_identity_provider_oidc_token_auth_method.go
 model_enum_identity_provider_samlsso_binding.go
 model_enum_image_format.go
 model_enum_organization_type.go
+model_enum_passcode_refresh_time_unit.go
 model_enum_product_type.go
 model_enum_region_code.go
 model_enum_resource_attribute_type.go

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  this setting overrides the top-level bundleId field | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  this setting overrides the top-level packageName field. | [optional] 
+**PasscodeRefreshDuration** | Pointer to [**ApplicationOIDCAllOfMobilePasscodeRefreshDuration**](ApplicationOIDCAllOfMobilePasscodeRefreshDuration.md) |  | [optional] 
 **IntegrityDetection** | Pointer to [**ApplicationOIDCAllOfMobileIntegrityDetection**](ApplicationOIDCAllOfMobileIntegrityDetection.md) |  | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetPackageName sets PackageName field to given value.
 `func (o *ApplicationOIDCAllOfMobile) HasPackageName() bool`
 
 HasPackageName returns a boolean if a field has been set.
+
+### GetPasscodeRefreshDuration
+
+`func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDuration() ApplicationOIDCAllOfMobilePasscodeRefreshDuration`
+
+GetPasscodeRefreshDuration returns the PasscodeRefreshDuration field if non-nil, zero value otherwise.
+
+### GetPasscodeRefreshDurationOk
+
+`func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDurationOk() (*ApplicationOIDCAllOfMobilePasscodeRefreshDuration, bool)`
+
+GetPasscodeRefreshDurationOk returns a tuple with the PasscodeRefreshDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasscodeRefreshDuration
+
+`func (o *ApplicationOIDCAllOfMobile) SetPasscodeRefreshDuration(v ApplicationOIDCAllOfMobilePasscodeRefreshDuration)`
+
+SetPasscodeRefreshDuration sets PasscodeRefreshDuration field to given value.
+
+### HasPasscodeRefreshDuration
+
+`func (o *ApplicationOIDCAllOfMobile) HasPasscodeRefreshDuration() bool`
+
+HasPasscodeRefreshDuration returns a boolean if a field has been set.
 
 ### GetIntegrityDetection
 

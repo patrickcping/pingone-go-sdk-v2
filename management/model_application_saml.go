@@ -16,6 +16,7 @@ import (
 
 // ApplicationSAML struct for ApplicationSAML
 type ApplicationSAML struct {
+	Links map[string]interface{} `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
 	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
 	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
@@ -84,6 +85,38 @@ func NewApplicationSAML(enabled bool, name string, protocol EnumApplicationProto
 func NewApplicationSAMLWithDefaults() *ApplicationSAML {
 	this := ApplicationSAML{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasLinks() bool {
+	if o != nil && o.Links != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *ApplicationSAML) SetLinks(v map[string]interface{}) {
+	o.Links = v
 }
 
 // GetAccessControl returns the AccessControl field value if set, zero value otherwise.
@@ -864,6 +897,9 @@ func (o *ApplicationSAML) SetSpVerification(v ApplicationSAMLAllOfSpVerification
 
 func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
 	if o.AccessControl != nil {
 		toSerialize["accessControl"] = o.AccessControl
 	}
