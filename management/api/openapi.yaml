@@ -17854,6 +17854,14 @@ paths:
       - Roles
 components:
   schemas:
+    EnumApplicationAccessControlType:
+      description: "A string that specifies the user role required to access the application.\
+        \ Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one\
+        \ or more of the following roles Organization Admin, Environment Admin, Identity\
+        \ Data Admin, or Client Application Developer."
+      enum:
+      - ADMIN_USERS_ONLY
+      type: string
     EnumApplicationOIDCGrantType:
       enum:
       - AUTHORIZATION_CODE
@@ -21092,11 +21100,7 @@ components:
     Application_accessControl_role:
       properties:
         type:
-          description: "A string that specifies the user role required to access the\
-            \ application. Options are ADMIN_USERS_ONLY. A user is an admin user if\
-            \ the user has one or more of the following roles Organization Admin,\
-            \ Environment Admin, Identity Data Admin, or Client Application Developer."
-          type: string
+          $ref: '#/components/schemas/EnumApplicationAccessControlType'
       required:
       - type
       type: object
