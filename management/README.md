@@ -433,6 +433,7 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbeddedApplicationsInner](docs/EntityArrayEmbeddedApplicationsInner.md)
  - [EntityArrayEmbeddedAttributesInner](docs/EntityArrayEmbeddedAttributesInner.md)
  - [EntityArrayEmbeddedGatewaysInner](docs/EntityArrayEmbeddedGatewaysInner.md)
+ - [EnumApplicationAccessControlType](docs/EnumApplicationAccessControlType.md)
  - [EnumApplicationOIDCGrantType](docs/EnumApplicationOIDCGrantType.md)
  - [EnumApplicationOIDCPKCEOption](docs/EnumApplicationOIDCPKCEOption.md)
  - [EnumApplicationOIDCResponseType](docs/EnumApplicationOIDCResponseType.md)

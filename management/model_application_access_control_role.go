@@ -16,15 +16,14 @@ import (
 
 // ApplicationAccessControlRole struct for ApplicationAccessControlRole
 type ApplicationAccessControlRole struct {
-	// A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer.
-	Type string `json:"type"`
+	Type EnumApplicationAccessControlType `json:"type"`
 }
 
 // NewApplicationAccessControlRole instantiates a new ApplicationAccessControlRole object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationAccessControlRole(type_ string) *ApplicationAccessControlRole {
+func NewApplicationAccessControlRole(type_ EnumApplicationAccessControlType) *ApplicationAccessControlRole {
 	this := ApplicationAccessControlRole{}
 	this.Type = type_
 	return &this
@@ -39,9 +38,9 @@ func NewApplicationAccessControlRoleWithDefaults() *ApplicationAccessControlRole
 }
 
 // GetType returns the Type field value
-func (o *ApplicationAccessControlRole) GetType() string {
+func (o *ApplicationAccessControlRole) GetType() EnumApplicationAccessControlType {
 	if o == nil {
-		var ret string
+		var ret EnumApplicationAccessControlType
 		return ret
 	}
 
@@ -50,7 +49,7 @@ func (o *ApplicationAccessControlRole) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationAccessControlRole) GetTypeOk() (*string, bool) {
+func (o *ApplicationAccessControlRole) GetTypeOk() (*EnumApplicationAccessControlType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -58,7 +57,7 @@ func (o *ApplicationAccessControlRole) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *ApplicationAccessControlRole) SetType(v string) {
+func (o *ApplicationAccessControlRole) SetType(v EnumApplicationAccessControlType) {
 	o.Type = v
 }
 

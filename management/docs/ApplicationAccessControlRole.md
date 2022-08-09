@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer. | 
+**Type** | [**EnumApplicationAccessControlType**](EnumApplicationAccessControlType.md) |  | 
 
 ## Methods
 
 ### NewApplicationAccessControlRole
 
-`func NewApplicationAccessControlRole(type_ string, ) *ApplicationAccessControlRole`
+`func NewApplicationAccessControlRole(type_ EnumApplicationAccessControlType, ) *ApplicationAccessControlRole`
 
 NewApplicationAccessControlRole instantiates a new ApplicationAccessControlRole object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ApplicationAccessControlRole) GetType() string`
+`func (o *ApplicationAccessControlRole) GetType() EnumApplicationAccessControlType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ApplicationAccessControlRole) GetTypeOk() (*string, bool)`
+`func (o *ApplicationAccessControlRole) GetTypeOk() (*EnumApplicationAccessControlType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ApplicationAccessControlRole) SetType(v string)`
+`func (o *ApplicationAccessControlRole) SetType(v EnumApplicationAccessControlType)`
 
 SetType sets Type field to given value.
 

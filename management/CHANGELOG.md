@@ -2,6 +2,7 @@
 * **Enhancement** Added generic `_links` to `Application` model
 * **Enhancement** BREAKING CHANGE - `id` made required in `spVerification.certificates` of the `ApplicationSAML` model
 * **Enhancement** Add `mobile.passcodeRefreshDuration` to `ApplicationOIDC` model
+* **Enhancement** BREAKING CHANGE - `accessControl.role.type` made an enum in the `Application` model
 
 # v0.3.0 (2022-08-05)
 

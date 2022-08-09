@@ -137,6 +137,7 @@ docs/EntityArrayEmbedded.md
 docs/EntityArrayEmbeddedApplicationsInner.md
 docs/EntityArrayEmbeddedAttributesInner.md
 docs/EntityArrayEmbeddedGatewaysInner.md
+docs/EnumApplicationAccessControlType.md
 docs/EnumApplicationOIDCGrantType.md
 docs/EnumApplicationOIDCPKCEOption.md
 docs/EnumApplicationOIDCResponseType.md
@@ -412,6 +413,7 @@ model_entity_array__embedded.go
 model_entity_array__embedded_applications_inner.go
 model_entity_array__embedded_attributes_inner.go
 model_entity_array__embedded_gateways_inner.go
+model_enum_application_access_control_type.go
 model_enum_application_oidc_grant_type.go
 model_enum_application_oidc_response_type.go
 model_enum_application_oidc_token_auth_method.go
