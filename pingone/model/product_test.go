@@ -21,7 +21,7 @@ func TestFindProductByName_Success(t *testing.T) {
 			ProductCode: "Provisioning",
 		},
 		"DaVinci": {
-			APICode:     management.ENUMPRODUCTTYPE_ONE_ORCHESTRATE,
+			APICode:     management.ENUMPRODUCTTYPE_ONE_DAVINCI,
 			ProductCode: "DaVinci",
 			Selectable:  true,
 		},
@@ -72,8 +72,8 @@ func TestFindProductByAPICode_Success(t *testing.T) {
 			APICode:     management.ENUMPRODUCTTYPE_ONE_PROVISIONING,
 			ProductCode: "Provisioning",
 		},
-		management.ENUMPRODUCTTYPE_ONE_ORCHESTRATE: {
-			APICode:     management.ENUMPRODUCTTYPE_ONE_ORCHESTRATE,
+		management.ENUMPRODUCTTYPE_ONE_DAVINCI: {
+			APICode:     management.ENUMPRODUCTTYPE_ONE_DAVINCI,
 			ProductCode: "DaVinci",
 			Selectable:  true,
 		},
