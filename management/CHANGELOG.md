@@ -1,4 +1,5 @@
 # v0.4.0 (2022-08-10)
+
 * **Enhancement** Added generic `_links` to `Application` model
 * **Breaking change** `id` made required in `spVerification.certificates` of the `ApplicationSAML` model
 * **Enhancement** Add `mobile.passcodeRefreshDuration` to `ApplicationOIDC` model
