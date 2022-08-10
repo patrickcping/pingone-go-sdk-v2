@@ -1,8 +1,14 @@
-# Release (Unreleased)
+# Release (2022-08-10)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.2
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.3.0 => v0.4.0
     * **Enhancement** Retarget the `DaVinci` product code to `PING_ONE_DAVINCI` instead of the deprecated `PING_ONE_ORCHESTRATE`
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.4.0](./management/CHANGELOG.md)
+    * **Enhancement** Added generic `_links` to `Application` model
+    * **Breaking change** `id` made required in `spVerification.certificates` of the `ApplicationSAML` model
+    * **Enhancement** Add `mobile.passcodeRefreshDuration` to `ApplicationOIDC` model
+    * **Breaking change** `accessControl.role.type` made an enum in the `Application` model
+    * **Enhancement** Added `PING_ONE_DAVINCI` product type
 
 # Release (2022-08-05)
 
