@@ -32,9 +32,14 @@ func init() {
 			ProductCode: "Provisioning",
 		},
 		{
-			APICode:     management.ENUMPRODUCTTYPE_ONE_ORCHESTRATE,
+			APICode:     management.ENUMPRODUCTTYPE_ONE_DAVINCI,
 			ProductCode: "DaVinci",
 			Selectable:  true,
+		},
+		{
+			APICode:     management.ENUMPRODUCTTYPE_ONE_ORCHESTRATE,
+			ProductCode: "DaVinciLegacy",
+			Selectable:  false,
 		},
 		{
 			APICode:     management.ENUMPRODUCTTYPE_ONE_MFA,

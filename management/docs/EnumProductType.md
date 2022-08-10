@@ -5,6 +5,8 @@
 
 * `ONE_MFA` (value: `"PING_ONE_MFA"`)
 
+* `ONE_DAVINCI` (value: `"PING_ONE_DAVINCI"`)
+
 * `ONE_ORCHESTRATE` (value: `"PING_ONE_ORCHESTRATE"`)
 
 * `ONE_RISK` (value: `"PING_ONE_RISK"`)
