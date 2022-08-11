@@ -1,5 +1,10 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.4.0](./management/CHANGELOG.md)
+    * **Bug fix** - `SignOnPolicyActionProgressiveProfiling` object includes fixed `attributes` attribute, from object type to array type
+    * **Bug fix** - Restructure `SignOnPolicyAction` model to properly separate policy action attributes from each other
+    * **Bug fix** - Corrections to `SignOnPolicyActionCommonConditions` model
+
 # Release (2022-08-10)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.2
@@ -24,7 +29,6 @@
     * **Bug** fix for `PasswordPolicyMinCharacters` special character issue [#17](https://github.com/patrickcping/pingone-go-sdk-v2/pull/17)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.3.0](./mfa/CHANGELOG.md)
     * **Feature** Mfa device authentication policies [#13](https://github.com/patrickcping/pingone-go-sdk-v2/pull/13)
-    * **Bug fix** - Corrections to `SignOnPolicyActionCommonConditions` model
 
 # Release (2022-07-17)
 
