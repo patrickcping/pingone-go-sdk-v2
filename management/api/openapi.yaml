@@ -8849,7 +8849,7 @@ paths:
           content:
             application/json:
               schema:
-             ,   $ref: '#/components/schemas/P1Error'
+                $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
         "429":
           content:
@@ -20472,12 +20472,6 @@ components:
       - $ref: '#/components/schemas/SignOnPolicyActionAgreement'
       - $ref: '#/components/schemas/SignOnPolicyActionProgressiveProfiling'
     SignOnPolicyActionCommonConditionGreater:
-<<<<<<< HEAD
-      properties:
-        greater:
-          description: An integer that specifies the maximum number of seconds to
-            wait since the last sign on before prompting for a new sign-on action.
-=======
       properties:
         greater:
           description: An integer that specifies the maximum number of seconds to
@@ -20562,158 +20556,6 @@ components:
           type: array
       type: object
     SignOnPolicyActionCommonConditionNot:
-      properties:
-        not:
-          $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAggregate'
-      type: object
-    SignOnPolicyActionCommonConditionAggregate:
-      oneOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGreater'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRisk'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRange'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGeovelocity'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAnonymousNetwork'
-      - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionEquals'
-    SignOnPolicyActionCommon:
-      properties:
-        _links:
-          readOnly: true
-          type: object
-        condition:
-          $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_or_inner'
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
-        id:
-          description: A string that specifies the sign-on policy assignment resource’s
-            unique identifier.
-          readOnly: true
-          type: string
-        priority:
-          description: An integer that specifies the order in which the policy referenced
-            by this assignment is evaluated during an authentication flow relative
-            to other policies. An assignment with a lower priority will be evaluated
-            first. This is a required property.
->>>>>>> 6b2ff5e828614c0c9a17e78cbf5407437e2e349d
-          minimum: 1
-          type: integer
-        secondsSince:
-          description: "A string representing a condition variable.  For more information,\
-            \ see documenation at https://apidocs.pingidentity.com/pingone/platform/v1/api/#sign-on-policy-actions\
-            \ ."
-          type: string
-      required:
-<<<<<<< HEAD
-      - greater
-      - secondsSince
-      type: object
-    SignOnPolicyActionCommonConditionIPRange:
-      properties:
-        contains:
-          type: string
-        ipRange:
-          items:
-            type: string
-          type: array
-      required:
-      - contains
-      - ipRange
-      type: object
-    SignOnPolicyActionCommonConditionIPRisk:
-      properties:
-        ipRisk:
-          $ref: '#/components/schemas/SignOnPolicyActionCommonConditionIPRisk_ipRisk'
-        valid:
-          type: string
-      required:
-      - ipRisk
-      - valid
-      type: object
-    SignOnPolicyActionCommonConditionGeovelocity:
-      properties:
-        geoVelocity:
-          type: string
-        valid:
-          $ref: '#/components/schemas/SignOnPolicyActionCommonConditionGeovelocity_valid'
-      required:
-      - geoVelocity
-      - valid
-      type: object
-    SignOnPolicyActionCommonConditionAnonymousNetwork:
-      properties:
-        anonymousNetwork:
-          items:
-            type: string
-          type: array
-        valid:
-          type: string
-      required:
-      - anonymousNetwork
-      - valid
-      type: object
-    SignOnPolicyActionCommonConditionEquals:
-      properties:
-        value:
-          type: string
-        equals:
-          type: string
-      required:
-      - equals
-      - value
-      type: object
-    SignOnPolicyActionCommonConditionOr:
-      properties:
-        or:
-          items:
-            $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_or_inner'
-          type: array
-      type: object
-    SignOnPolicyActionCommonConditionAnd:
-      properties:
-        and:
-          items:
-            $ref: '#/components/schemas/SignOnPolicyActionCommonConditionOr_or_inner'
-          type: array
-      type: object
-    SignOnPolicyActionCommonConditionNot:
-=======
-      - priority
-      - type
-      type: object
-    SignOnPolicyActionLogin:
-      allOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf'
-    SignOnPolicyActionMFA:
-      allOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf'
-    SignOnPolicyActionIDFirst:
-      allOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionIDFirst_allOf'
-    SignOnPolicyActionIDP:
-      allOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionIDP_allOf'
-    SignOnPolicyActionAgreement:
-      allOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionAgreement_allOf'
-    SignOnPolicyActionProgressiveProfiling:
-      allOf:
-      - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionProgressiveProfiling_allOf'
-    SignOnPolicyAssignment:
-      example:
-        environment:
-          id: id
-        application:
-          id: id
-        signOnPolicy:
-          id: id
-        id: id
-        priority: 1
->>>>>>> 6b2ff5e828614c0c9a17e78cbf5407437e2e349d
       properties:
         not:
           $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAggregate'
