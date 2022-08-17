@@ -1,3 +1,11 @@
+# v0.5.0 (2022-08-17)
+
+* **Bug fix** - `SignOnPolicyActionProgressiveProfiling` object includes fixed `attributes` attribute, from object type to array type
+* **Bug fix** - Restructure `SignOnPolicyAction` model to properly separate policy action attributes from each other
+* **Bug fix** - Restructure `SignOnPolicyActionMFA` model to correct `noDevicesMode` attribute (fixed incorrect `noDeviceMode`)
+* **Bug fix** - Corrections to `SignOnPolicyActionCommonConditions` model
+* **Bug fix** - Moved `confirmIdentityProviderAttributes` boolean to the registration sub model of `SignOnPolicyAction` 
+
 # v0.4.0 (2022-08-10)
 
 * **Enhancement** Added generic `_links` to `Application` model

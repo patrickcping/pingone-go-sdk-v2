@@ -1,3 +1,14 @@
+# Release (2022-08-17)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.3
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.4.0 => v0.5.0
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.5.0](./management/CHANGELOG.md)
+    * **Bug fix** - `SignOnPolicyActionProgressiveProfiling` object includes fixed `attributes` attribute, from object type to array type
+    * **Bug fix** - Restructure `SignOnPolicyAction` model to properly separate policy action attributes from each other
+    * **Bug fix** - Restructure `SignOnPolicyActionMFA` model to correct `noDevicesMode` attribute (fixed incorrect `noDeviceMode`)
+    * **Bug fix** - Corrections to `SignOnPolicyActionCommonConditions` model
+    * **Bug fix** - Moved `confirmIdentityProviderAttributes` boolean to the registration sub model of `SignOnPolicyAction` 
+
 # Release (2022-08-10)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.2

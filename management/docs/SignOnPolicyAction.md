@@ -4,32 +4,33 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Conditions** | Pointer to [**SignOnPolicyActionCommonConditions**](SignOnPolicyActionCommonConditions.md) |  | [optional] 
+**Links** | Pointer to **map[string]interface{}** |  | [optional] [readonly] 
+**Condition** | Pointer to [**SignOnPolicyActionCommonConditionOrOrInner**](SignOnPolicyActionCommonConditionOrOrInner.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the sign-on policy assignment resource’s unique identifier. | [optional] [readonly] 
 **Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
-**SignOnPolicy** | [**SignOnPolicyActionCommonSignOnPolicy**](SignOnPolicyActionCommonSignOnPolicy.md) |  | 
+**SignOnPolicy** | Pointer to [**SignOnPolicyActionCommonSignOnPolicy**](SignOnPolicyActionCommonSignOnPolicy.md) |  | [optional] 
 **Type** | [**EnumSignOnPolicyType**](EnumSignOnPolicyType.md) |  | 
-**ConfirmIdentityProviderAttributes** | Pointer to **bool** | A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user&#39;s profile during account creation. This is an optional property. If omitted, the default value is set to false. | [optional] [default to false]
 **EnforceLockoutForIdentityProviders** | Pointer to **bool** | A boolean that if set to true and if the user&#39;s account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented. | [optional] 
-**Recovery** | Pointer to [**SignOnPolicyActionLoginRecovery**](SignOnPolicyActionLoginRecovery.md) |  | [optional] 
-**Registration** | Pointer to [**SignOnPolicyActionIDPRegistration**](SignOnPolicyActionIDPRegistration.md) |  | [optional] 
-**SocialProviders** | Pointer to [**[]SignOnPolicyActionLoginSocialProvidersInner**](SignOnPolicyActionLoginSocialProvidersInner.md) | An array of strings that specifies the IDs of the identity providers that can be used for the social login sign-on flow. | [optional] 
-**Authenticator** | Pointer to [**SignOnPolicyActionMFAAuthenticator**](SignOnPolicyActionMFAAuthenticator.md) |  | [optional] 
-**BoundBiometrics** | Pointer to [**SignOnPolicyActionMFABoundBiometrics**](SignOnPolicyActionMFABoundBiometrics.md) |  | [optional] 
-**Email** | Pointer to [**SignOnPolicyActionMFAEmail**](SignOnPolicyActionMFAEmail.md) |  | [optional] 
-**SecurityKey** | Pointer to [**SignOnPolicyActionMFASecurityKey**](SignOnPolicyActionMFASecurityKey.md) |  | [optional] 
-**Sms** | Pointer to [**SignOnPolicyActionMFASms**](SignOnPolicyActionMFASms.md) |  | [optional] 
-**Voice** | Pointer to [**SignOnPolicyActionMFAVoice**](SignOnPolicyActionMFAVoice.md) |  | [optional] 
-**Applications** | Pointer to [**[]SignOnPolicyActionMFAApplicationsInner**](SignOnPolicyActionMFAApplicationsInner.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
-**DeviceAuthenticationPolicy** | Pointer to [**SignOnPolicyActionMFADeviceAuthenticationPolicy**](SignOnPolicyActionMFADeviceAuthenticationPolicy.md) |  | [optional] 
-**NoDeviceMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
-**DiscoveryRules** | Pointer to [**[]SignOnPolicyActionIDFirstDiscoveryRulesInner**](SignOnPolicyActionIDFirstDiscoveryRulesInner.md) | The list of IDP discovery rules that are evaluated in order when no user is associated with the user identifier. The maximum number of rules is 100. The condition on which this identity provider is used to authenticate the user is expressed using the PingOne policy condition language | [optional] 
+**Recovery** | Pointer to [**SignOnPolicyActionLoginAllOfRecovery**](SignOnPolicyActionLoginAllOfRecovery.md) |  | [optional] 
+**Registration** | Pointer to [**SignOnPolicyActionIDPAllOfRegistration**](SignOnPolicyActionIDPAllOfRegistration.md) |  | [optional] 
+**SocialProviders** | Pointer to [**[]SignOnPolicyActionLoginAllOfSocialProviders**](SignOnPolicyActionLoginAllOfSocialProviders.md) | An array of strings that specifies the IDs of the identity providers that can be used for the social login sign-on flow. | [optional] 
+**Authenticator** | Pointer to [**SignOnPolicyActionMFAAllOfAuthenticator**](SignOnPolicyActionMFAAllOfAuthenticator.md) |  | [optional] 
+**BoundBiometrics** | Pointer to [**SignOnPolicyActionMFAAllOfBoundBiometrics**](SignOnPolicyActionMFAAllOfBoundBiometrics.md) |  | [optional] 
+**Email** | Pointer to [**SignOnPolicyActionMFAAllOfEmail**](SignOnPolicyActionMFAAllOfEmail.md) |  | [optional] 
+**SecurityKey** | Pointer to [**SignOnPolicyActionMFAAllOfSecurityKey**](SignOnPolicyActionMFAAllOfSecurityKey.md) |  | [optional] 
+**Sms** | Pointer to [**SignOnPolicyActionMFAAllOfSms**](SignOnPolicyActionMFAAllOfSms.md) |  | [optional] 
+**Voice** | Pointer to [**SignOnPolicyActionMFAAllOfVoice**](SignOnPolicyActionMFAAllOfVoice.md) |  | [optional] 
+**Applications** | Pointer to [**[]SignOnPolicyActionMFAAllOfApplications**](SignOnPolicyActionMFAAllOfApplications.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
+**DeviceAuthenticationPolicy** | Pointer to [**SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy**](SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy.md) |  | [optional] 
+**NoDevicesMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
+**DiscoveryRules** | Pointer to [**[]SignOnPolicyActionIDFirstAllOfDiscoveryRules**](SignOnPolicyActionIDFirstAllOfDiscoveryRules.md) | The list of IDP discovery rules that are evaluated in order when no user is associated with the user identifier. The maximum number of rules is 100. The condition on which this identity provider is used to authenticate the user is expressed using the PingOne policy condition language | [optional] 
 **AcrValues** | Pointer to **string** | A string that designates the sign-on policies included in the authorization flow request. Options can include the PingOne predefined sign-on policies, Single_Factor and Multi_Factor, or any custom defined sign-on policy names. Sign-on policy names should be listed in order of preference, and they must be assigned to the application. This property can be configured on the identity provider action and is passed to the identity provider if the identity provider is of type &#x60;SAML&#x60; or &#x60;OPENID_CONNECT&#x60;. | [optional] 
-**IdentityProvider** | [**SignOnPolicyActionIDPIdentityProvider**](SignOnPolicyActionIDPIdentityProvider.md) |  | 
+**IdentityProvider** | [**SignOnPolicyActionIDPAllOfIdentityProvider**](SignOnPolicyActionIDPAllOfIdentityProvider.md) |  | 
 **PassUserContext** | Pointer to **bool** | A boolean that specifies whether to pass in a login hint to the identity provider on the authentication request. Based on user context, the login hint is set if (1) the user is set on the flow, and (2) the user already has an account link for the identity provider. If both of these conditions are true, then the user is sent to the identity provider with a login hint equal to their externalId for the identity provider (saved on the account link). If these conditions are not true, then the API checks see if there is an OIDC login hint on the flow. If so, that login hint is used. If none of these conditions are true, the login hint parameter is not included on the authorization request to the identity provider. | [optional] 
-**Agreement** | [**SignOnPolicyActionAgreementAgreement**](SignOnPolicyActionAgreementAgreement.md) |  | 
-**Attributes** | [**SignOnPolicyActionProgressiveProfilingAttributes**](SignOnPolicyActionProgressiveProfilingAttributes.md) |  | 
+**Agreement** | [**SignOnPolicyActionAgreementAllOfAgreement**](SignOnPolicyActionAgreementAllOfAgreement.md) |  | 
+**DisableDeclineOption** | Pointer to **bool** | When enabled, the &#x60;Do Not Accept&#x60; button will terminate the Flow and display an error message to the user. | [optional] 
+**Attributes** | [**[]SignOnPolicyActionProgressiveProfilingAllOfAttributes**](SignOnPolicyActionProgressiveProfilingAllOfAttributes.md) |  | 
 **PreventMultiplePromptsPerFlow** | **bool** | A boolean that specifies whether the progressive profiling action will not be executed if another progressive profiling action has already been executed during the flow. This property is required. | 
 **PromptIntervalSeconds** | **int32** | An integer that specifies how often to prompt the user to provide profile data for the configured attributes for which they do not have values. This property is required. | 
 **PromptText** | **string** | A string that specifies text to display to the user when prompting for attribute values. This property is required. | 
@@ -38,7 +39,7 @@ Name | Type | Description | Notes
 
 ### NewSignOnPolicyAction
 
-`func NewSignOnPolicyAction(priority int32, signOnPolicy SignOnPolicyActionCommonSignOnPolicy, type_ EnumSignOnPolicyType, identityProvider SignOnPolicyActionIDPIdentityProvider, agreement SignOnPolicyActionAgreementAgreement, attributes SignOnPolicyActionProgressiveProfilingAttributes, preventMultiplePromptsPerFlow bool, promptIntervalSeconds int32, promptText string, ) *SignOnPolicyAction`
+`func NewSignOnPolicyAction(priority int32, type_ EnumSignOnPolicyType, identityProvider SignOnPolicyActionIDPAllOfIdentityProvider, agreement SignOnPolicyActionAgreementAllOfAgreement, attributes []SignOnPolicyActionProgressiveProfilingAllOfAttributes, preventMultiplePromptsPerFlow bool, promptIntervalSeconds int32, promptText string, ) *SignOnPolicyAction`
 
 NewSignOnPolicyAction instantiates a new SignOnPolicyAction object
 This constructor will assign default values to properties that have it defined,
@@ -53,30 +54,55 @@ NewSignOnPolicyActionWithDefaults instantiates a new SignOnPolicyAction object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetConditions
+### GetLinks
 
-`func (o *SignOnPolicyAction) GetConditions() SignOnPolicyActionCommonConditions`
+`func (o *SignOnPolicyAction) GetLinks() map[string]interface{}`
 
-GetConditions returns the Conditions field if non-nil, zero value otherwise.
+GetLinks returns the Links field if non-nil, zero value otherwise.
 
-### GetConditionsOk
+### GetLinksOk
 
-`func (o *SignOnPolicyAction) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool)`
+`func (o *SignOnPolicyAction) GetLinksOk() (*map[string]interface{}, bool)`
 
-GetConditionsOk returns a tuple with the Conditions field if it's non-nil, zero value otherwise
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConditions
+### SetLinks
 
-`func (o *SignOnPolicyAction) SetConditions(v SignOnPolicyActionCommonConditions)`
+`func (o *SignOnPolicyAction) SetLinks(v map[string]interface{})`
 
-SetConditions sets Conditions field to given value.
+SetLinks sets Links field to given value.
 
-### HasConditions
+### HasLinks
 
-`func (o *SignOnPolicyAction) HasConditions() bool`
+`func (o *SignOnPolicyAction) HasLinks() bool`
 
-HasConditions returns a boolean if a field has been set.
+HasLinks returns a boolean if a field has been set.
+
+### GetCondition
+
+`func (o *SignOnPolicyAction) GetCondition() SignOnPolicyActionCommonConditionOrOrInner`
+
+GetCondition returns the Condition field if non-nil, zero value otherwise.
+
+### GetConditionOk
+
+`func (o *SignOnPolicyAction) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool)`
+
+GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCondition
+
+`func (o *SignOnPolicyAction) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner)`
+
+SetCondition sets Condition field to given value.
+
+### HasCondition
+
+`func (o *SignOnPolicyAction) HasCondition() bool`
+
+HasCondition returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -167,6 +193,11 @@ and a boolean to check if the value has been set.
 
 SetSignOnPolicy sets SignOnPolicy field to given value.
 
+### HasSignOnPolicy
+
+`func (o *SignOnPolicyAction) HasSignOnPolicy() bool`
+
+HasSignOnPolicy returns a boolean if a field has been set.
 
 ### GetType
 
@@ -187,31 +218,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
-### GetConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyAction) GetConfirmIdentityProviderAttributes() bool`
-
-GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field if non-nil, zero value otherwise.
-
-### GetConfirmIdentityProviderAttributesOk
-
-`func (o *SignOnPolicyAction) GetConfirmIdentityProviderAttributesOk() (*bool, bool)`
-
-GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyAction) SetConfirmIdentityProviderAttributes(v bool)`
-
-SetConfirmIdentityProviderAttributes sets ConfirmIdentityProviderAttributes field to given value.
-
-### HasConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyAction) HasConfirmIdentityProviderAttributes() bool`
-
-HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
 
 ### GetEnforceLockoutForIdentityProviders
 
@@ -240,20 +246,20 @@ HasEnforceLockoutForIdentityProviders returns a boolean if a field has been set.
 
 ### GetRecovery
 
-`func (o *SignOnPolicyAction) GetRecovery() SignOnPolicyActionLoginRecovery`
+`func (o *SignOnPolicyAction) GetRecovery() SignOnPolicyActionLoginAllOfRecovery`
 
 GetRecovery returns the Recovery field if non-nil, zero value otherwise.
 
 ### GetRecoveryOk
 
-`func (o *SignOnPolicyAction) GetRecoveryOk() (*SignOnPolicyActionLoginRecovery, bool)`
+`func (o *SignOnPolicyAction) GetRecoveryOk() (*SignOnPolicyActionLoginAllOfRecovery, bool)`
 
 GetRecoveryOk returns a tuple with the Recovery field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecovery
 
-`func (o *SignOnPolicyAction) SetRecovery(v SignOnPolicyActionLoginRecovery)`
+`func (o *SignOnPolicyAction) SetRecovery(v SignOnPolicyActionLoginAllOfRecovery)`
 
 SetRecovery sets Recovery field to given value.
 
@@ -265,20 +271,20 @@ HasRecovery returns a boolean if a field has been set.
 
 ### GetRegistration
 
-`func (o *SignOnPolicyAction) GetRegistration() SignOnPolicyActionIDPRegistration`
+`func (o *SignOnPolicyAction) GetRegistration() SignOnPolicyActionIDPAllOfRegistration`
 
 GetRegistration returns the Registration field if non-nil, zero value otherwise.
 
 ### GetRegistrationOk
 
-`func (o *SignOnPolicyAction) GetRegistrationOk() (*SignOnPolicyActionIDPRegistration, bool)`
+`func (o *SignOnPolicyAction) GetRegistrationOk() (*SignOnPolicyActionIDPAllOfRegistration, bool)`
 
 GetRegistrationOk returns a tuple with the Registration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegistration
 
-`func (o *SignOnPolicyAction) SetRegistration(v SignOnPolicyActionIDPRegistration)`
+`func (o *SignOnPolicyAction) SetRegistration(v SignOnPolicyActionIDPAllOfRegistration)`
 
 SetRegistration sets Registration field to given value.
 
@@ -290,20 +296,20 @@ HasRegistration returns a boolean if a field has been set.
 
 ### GetSocialProviders
 
-`func (o *SignOnPolicyAction) GetSocialProviders() []SignOnPolicyActionLoginSocialProvidersInner`
+`func (o *SignOnPolicyAction) GetSocialProviders() []SignOnPolicyActionLoginAllOfSocialProviders`
 
 GetSocialProviders returns the SocialProviders field if non-nil, zero value otherwise.
 
 ### GetSocialProvidersOk
 
-`func (o *SignOnPolicyAction) GetSocialProvidersOk() (*[]SignOnPolicyActionLoginSocialProvidersInner, bool)`
+`func (o *SignOnPolicyAction) GetSocialProvidersOk() (*[]SignOnPolicyActionLoginAllOfSocialProviders, bool)`
 
 GetSocialProvidersOk returns a tuple with the SocialProviders field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSocialProviders
 
-`func (o *SignOnPolicyAction) SetSocialProviders(v []SignOnPolicyActionLoginSocialProvidersInner)`
+`func (o *SignOnPolicyAction) SetSocialProviders(v []SignOnPolicyActionLoginAllOfSocialProviders)`
 
 SetSocialProviders sets SocialProviders field to given value.
 
@@ -315,20 +321,20 @@ HasSocialProviders returns a boolean if a field has been set.
 
 ### GetAuthenticator
 
-`func (o *SignOnPolicyAction) GetAuthenticator() SignOnPolicyActionMFAAuthenticator`
+`func (o *SignOnPolicyAction) GetAuthenticator() SignOnPolicyActionMFAAllOfAuthenticator`
 
 GetAuthenticator returns the Authenticator field if non-nil, zero value otherwise.
 
 ### GetAuthenticatorOk
 
-`func (o *SignOnPolicyAction) GetAuthenticatorOk() (*SignOnPolicyActionMFAAuthenticator, bool)`
+`func (o *SignOnPolicyAction) GetAuthenticatorOk() (*SignOnPolicyActionMFAAllOfAuthenticator, bool)`
 
 GetAuthenticatorOk returns a tuple with the Authenticator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthenticator
 
-`func (o *SignOnPolicyAction) SetAuthenticator(v SignOnPolicyActionMFAAuthenticator)`
+`func (o *SignOnPolicyAction) SetAuthenticator(v SignOnPolicyActionMFAAllOfAuthenticator)`
 
 SetAuthenticator sets Authenticator field to given value.
 
@@ -340,20 +346,20 @@ HasAuthenticator returns a boolean if a field has been set.
 
 ### GetBoundBiometrics
 
-`func (o *SignOnPolicyAction) GetBoundBiometrics() SignOnPolicyActionMFABoundBiometrics`
+`func (o *SignOnPolicyAction) GetBoundBiometrics() SignOnPolicyActionMFAAllOfBoundBiometrics`
 
 GetBoundBiometrics returns the BoundBiometrics field if non-nil, zero value otherwise.
 
 ### GetBoundBiometricsOk
 
-`func (o *SignOnPolicyAction) GetBoundBiometricsOk() (*SignOnPolicyActionMFABoundBiometrics, bool)`
+`func (o *SignOnPolicyAction) GetBoundBiometricsOk() (*SignOnPolicyActionMFAAllOfBoundBiometrics, bool)`
 
 GetBoundBiometricsOk returns a tuple with the BoundBiometrics field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBoundBiometrics
 
-`func (o *SignOnPolicyAction) SetBoundBiometrics(v SignOnPolicyActionMFABoundBiometrics)`
+`func (o *SignOnPolicyAction) SetBoundBiometrics(v SignOnPolicyActionMFAAllOfBoundBiometrics)`
 
 SetBoundBiometrics sets BoundBiometrics field to given value.
 
@@ -365,20 +371,20 @@ HasBoundBiometrics returns a boolean if a field has been set.
 
 ### GetEmail
 
-`func (o *SignOnPolicyAction) GetEmail() SignOnPolicyActionMFAEmail`
+`func (o *SignOnPolicyAction) GetEmail() SignOnPolicyActionMFAAllOfEmail`
 
 GetEmail returns the Email field if non-nil, zero value otherwise.
 
 ### GetEmailOk
 
-`func (o *SignOnPolicyAction) GetEmailOk() (*SignOnPolicyActionMFAEmail, bool)`
+`func (o *SignOnPolicyAction) GetEmailOk() (*SignOnPolicyActionMFAAllOfEmail, bool)`
 
 GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEmail
 
-`func (o *SignOnPolicyAction) SetEmail(v SignOnPolicyActionMFAEmail)`
+`func (o *SignOnPolicyAction) SetEmail(v SignOnPolicyActionMFAAllOfEmail)`
 
 SetEmail sets Email field to given value.
 
@@ -390,20 +396,20 @@ HasEmail returns a boolean if a field has been set.
 
 ### GetSecurityKey
 
-`func (o *SignOnPolicyAction) GetSecurityKey() SignOnPolicyActionMFASecurityKey`
+`func (o *SignOnPolicyAction) GetSecurityKey() SignOnPolicyActionMFAAllOfSecurityKey`
 
 GetSecurityKey returns the SecurityKey field if non-nil, zero value otherwise.
 
 ### GetSecurityKeyOk
 
-`func (o *SignOnPolicyAction) GetSecurityKeyOk() (*SignOnPolicyActionMFASecurityKey, bool)`
+`func (o *SignOnPolicyAction) GetSecurityKeyOk() (*SignOnPolicyActionMFAAllOfSecurityKey, bool)`
 
 GetSecurityKeyOk returns a tuple with the SecurityKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecurityKey
 
-`func (o *SignOnPolicyAction) SetSecurityKey(v SignOnPolicyActionMFASecurityKey)`
+`func (o *SignOnPolicyAction) SetSecurityKey(v SignOnPolicyActionMFAAllOfSecurityKey)`
 
 SetSecurityKey sets SecurityKey field to given value.
 
@@ -415,20 +421,20 @@ HasSecurityKey returns a boolean if a field has been set.
 
 ### GetSms
 
-`func (o *SignOnPolicyAction) GetSms() SignOnPolicyActionMFASms`
+`func (o *SignOnPolicyAction) GetSms() SignOnPolicyActionMFAAllOfSms`
 
 GetSms returns the Sms field if non-nil, zero value otherwise.
 
 ### GetSmsOk
 
-`func (o *SignOnPolicyAction) GetSmsOk() (*SignOnPolicyActionMFASms, bool)`
+`func (o *SignOnPolicyAction) GetSmsOk() (*SignOnPolicyActionMFAAllOfSms, bool)`
 
 GetSmsOk returns a tuple with the Sms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSms
 
-`func (o *SignOnPolicyAction) SetSms(v SignOnPolicyActionMFASms)`
+`func (o *SignOnPolicyAction) SetSms(v SignOnPolicyActionMFAAllOfSms)`
 
 SetSms sets Sms field to given value.
 
@@ -440,20 +446,20 @@ HasSms returns a boolean if a field has been set.
 
 ### GetVoice
 
-`func (o *SignOnPolicyAction) GetVoice() SignOnPolicyActionMFAVoice`
+`func (o *SignOnPolicyAction) GetVoice() SignOnPolicyActionMFAAllOfVoice`
 
 GetVoice returns the Voice field if non-nil, zero value otherwise.
 
 ### GetVoiceOk
 
-`func (o *SignOnPolicyAction) GetVoiceOk() (*SignOnPolicyActionMFAVoice, bool)`
+`func (o *SignOnPolicyAction) GetVoiceOk() (*SignOnPolicyActionMFAAllOfVoice, bool)`
 
 GetVoiceOk returns a tuple with the Voice field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVoice
 
-`func (o *SignOnPolicyAction) SetVoice(v SignOnPolicyActionMFAVoice)`
+`func (o *SignOnPolicyAction) SetVoice(v SignOnPolicyActionMFAAllOfVoice)`
 
 SetVoice sets Voice field to given value.
 
@@ -465,20 +471,20 @@ HasVoice returns a boolean if a field has been set.
 
 ### GetApplications
 
-`func (o *SignOnPolicyAction) GetApplications() []SignOnPolicyActionMFAApplicationsInner`
+`func (o *SignOnPolicyAction) GetApplications() []SignOnPolicyActionMFAAllOfApplications`
 
 GetApplications returns the Applications field if non-nil, zero value otherwise.
 
 ### GetApplicationsOk
 
-`func (o *SignOnPolicyAction) GetApplicationsOk() (*[]SignOnPolicyActionMFAApplicationsInner, bool)`
+`func (o *SignOnPolicyAction) GetApplicationsOk() (*[]SignOnPolicyActionMFAAllOfApplications, bool)`
 
 GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplications
 
-`func (o *SignOnPolicyAction) SetApplications(v []SignOnPolicyActionMFAApplicationsInner)`
+`func (o *SignOnPolicyAction) SetApplications(v []SignOnPolicyActionMFAAllOfApplications)`
 
 SetApplications sets Applications field to given value.
 
@@ -490,20 +496,20 @@ HasApplications returns a boolean if a field has been set.
 
 ### GetDeviceAuthenticationPolicy
 
-`func (o *SignOnPolicyAction) GetDeviceAuthenticationPolicy() SignOnPolicyActionMFADeviceAuthenticationPolicy`
+`func (o *SignOnPolicyAction) GetDeviceAuthenticationPolicy() SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy`
 
 GetDeviceAuthenticationPolicy returns the DeviceAuthenticationPolicy field if non-nil, zero value otherwise.
 
 ### GetDeviceAuthenticationPolicyOk
 
-`func (o *SignOnPolicyAction) GetDeviceAuthenticationPolicyOk() (*SignOnPolicyActionMFADeviceAuthenticationPolicy, bool)`
+`func (o *SignOnPolicyAction) GetDeviceAuthenticationPolicyOk() (*SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy, bool)`
 
 GetDeviceAuthenticationPolicyOk returns a tuple with the DeviceAuthenticationPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceAuthenticationPolicy
 
-`func (o *SignOnPolicyAction) SetDeviceAuthenticationPolicy(v SignOnPolicyActionMFADeviceAuthenticationPolicy)`
+`func (o *SignOnPolicyAction) SetDeviceAuthenticationPolicy(v SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy)`
 
 SetDeviceAuthenticationPolicy sets DeviceAuthenticationPolicy field to given value.
 
@@ -513,47 +519,47 @@ SetDeviceAuthenticationPolicy sets DeviceAuthenticationPolicy field to given val
 
 HasDeviceAuthenticationPolicy returns a boolean if a field has been set.
 
-### GetNoDeviceMode
+### GetNoDevicesMode
 
-`func (o *SignOnPolicyAction) GetNoDeviceMode() EnumSignOnPolicyNoDeviceMode`
+`func (o *SignOnPolicyAction) GetNoDevicesMode() EnumSignOnPolicyNoDeviceMode`
 
-GetNoDeviceMode returns the NoDeviceMode field if non-nil, zero value otherwise.
+GetNoDevicesMode returns the NoDevicesMode field if non-nil, zero value otherwise.
 
-### GetNoDeviceModeOk
+### GetNoDevicesModeOk
 
-`func (o *SignOnPolicyAction) GetNoDeviceModeOk() (*EnumSignOnPolicyNoDeviceMode, bool)`
+`func (o *SignOnPolicyAction) GetNoDevicesModeOk() (*EnumSignOnPolicyNoDeviceMode, bool)`
 
-GetNoDeviceModeOk returns a tuple with the NoDeviceMode field if it's non-nil, zero value otherwise
+GetNoDevicesModeOk returns a tuple with the NoDevicesMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNoDeviceMode
+### SetNoDevicesMode
 
-`func (o *SignOnPolicyAction) SetNoDeviceMode(v EnumSignOnPolicyNoDeviceMode)`
+`func (o *SignOnPolicyAction) SetNoDevicesMode(v EnumSignOnPolicyNoDeviceMode)`
 
-SetNoDeviceMode sets NoDeviceMode field to given value.
+SetNoDevicesMode sets NoDevicesMode field to given value.
 
-### HasNoDeviceMode
+### HasNoDevicesMode
 
-`func (o *SignOnPolicyAction) HasNoDeviceMode() bool`
+`func (o *SignOnPolicyAction) HasNoDevicesMode() bool`
 
-HasNoDeviceMode returns a boolean if a field has been set.
+HasNoDevicesMode returns a boolean if a field has been set.
 
 ### GetDiscoveryRules
 
-`func (o *SignOnPolicyAction) GetDiscoveryRules() []SignOnPolicyActionIDFirstDiscoveryRulesInner`
+`func (o *SignOnPolicyAction) GetDiscoveryRules() []SignOnPolicyActionIDFirstAllOfDiscoveryRules`
 
 GetDiscoveryRules returns the DiscoveryRules field if non-nil, zero value otherwise.
 
 ### GetDiscoveryRulesOk
 
-`func (o *SignOnPolicyAction) GetDiscoveryRulesOk() (*[]SignOnPolicyActionIDFirstDiscoveryRulesInner, bool)`
+`func (o *SignOnPolicyAction) GetDiscoveryRulesOk() (*[]SignOnPolicyActionIDFirstAllOfDiscoveryRules, bool)`
 
 GetDiscoveryRulesOk returns a tuple with the DiscoveryRules field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDiscoveryRules
 
-`func (o *SignOnPolicyAction) SetDiscoveryRules(v []SignOnPolicyActionIDFirstDiscoveryRulesInner)`
+`func (o *SignOnPolicyAction) SetDiscoveryRules(v []SignOnPolicyActionIDFirstAllOfDiscoveryRules)`
 
 SetDiscoveryRules sets DiscoveryRules field to given value.
 
@@ -590,20 +596,20 @@ HasAcrValues returns a boolean if a field has been set.
 
 ### GetIdentityProvider
 
-`func (o *SignOnPolicyAction) GetIdentityProvider() SignOnPolicyActionIDPIdentityProvider`
+`func (o *SignOnPolicyAction) GetIdentityProvider() SignOnPolicyActionIDPAllOfIdentityProvider`
 
 GetIdentityProvider returns the IdentityProvider field if non-nil, zero value otherwise.
 
 ### GetIdentityProviderOk
 
-`func (o *SignOnPolicyAction) GetIdentityProviderOk() (*SignOnPolicyActionIDPIdentityProvider, bool)`
+`func (o *SignOnPolicyAction) GetIdentityProviderOk() (*SignOnPolicyActionIDPAllOfIdentityProvider, bool)`
 
 GetIdentityProviderOk returns a tuple with the IdentityProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentityProvider
 
-`func (o *SignOnPolicyAction) SetIdentityProvider(v SignOnPolicyActionIDPIdentityProvider)`
+`func (o *SignOnPolicyAction) SetIdentityProvider(v SignOnPolicyActionIDPAllOfIdentityProvider)`
 
 SetIdentityProvider sets IdentityProvider field to given value.
 
@@ -635,40 +641,65 @@ HasPassUserContext returns a boolean if a field has been set.
 
 ### GetAgreement
 
-`func (o *SignOnPolicyAction) GetAgreement() SignOnPolicyActionAgreementAgreement`
+`func (o *SignOnPolicyAction) GetAgreement() SignOnPolicyActionAgreementAllOfAgreement`
 
 GetAgreement returns the Agreement field if non-nil, zero value otherwise.
 
 ### GetAgreementOk
 
-`func (o *SignOnPolicyAction) GetAgreementOk() (*SignOnPolicyActionAgreementAgreement, bool)`
+`func (o *SignOnPolicyAction) GetAgreementOk() (*SignOnPolicyActionAgreementAllOfAgreement, bool)`
 
 GetAgreementOk returns a tuple with the Agreement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAgreement
 
-`func (o *SignOnPolicyAction) SetAgreement(v SignOnPolicyActionAgreementAgreement)`
+`func (o *SignOnPolicyAction) SetAgreement(v SignOnPolicyActionAgreementAllOfAgreement)`
 
 SetAgreement sets Agreement field to given value.
 
 
+### GetDisableDeclineOption
+
+`func (o *SignOnPolicyAction) GetDisableDeclineOption() bool`
+
+GetDisableDeclineOption returns the DisableDeclineOption field if non-nil, zero value otherwise.
+
+### GetDisableDeclineOptionOk
+
+`func (o *SignOnPolicyAction) GetDisableDeclineOptionOk() (*bool, bool)`
+
+GetDisableDeclineOptionOk returns a tuple with the DisableDeclineOption field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableDeclineOption
+
+`func (o *SignOnPolicyAction) SetDisableDeclineOption(v bool)`
+
+SetDisableDeclineOption sets DisableDeclineOption field to given value.
+
+### HasDisableDeclineOption
+
+`func (o *SignOnPolicyAction) HasDisableDeclineOption() bool`
+
+HasDisableDeclineOption returns a boolean if a field has been set.
+
 ### GetAttributes
 
-`func (o *SignOnPolicyAction) GetAttributes() SignOnPolicyActionProgressiveProfilingAttributes`
+`func (o *SignOnPolicyAction) GetAttributes() []SignOnPolicyActionProgressiveProfilingAllOfAttributes`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *SignOnPolicyAction) GetAttributesOk() (*SignOnPolicyActionProgressiveProfilingAttributes, bool)`
+`func (o *SignOnPolicyAction) GetAttributesOk() (*[]SignOnPolicyActionProgressiveProfilingAllOfAttributes, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *SignOnPolicyAction) SetAttributes(v SignOnPolicyActionProgressiveProfilingAttributes)`
+`func (o *SignOnPolicyAction) SetAttributes(v []SignOnPolicyActionProgressiveProfilingAllOfAttributes)`
 
 SetAttributes sets Attributes field to given value.
 

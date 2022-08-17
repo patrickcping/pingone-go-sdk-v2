@@ -16,13 +16,14 @@ import (
 
 // SignOnPolicyActionCommon struct for SignOnPolicyActionCommon
 type SignOnPolicyActionCommon struct {
-	Conditions *SignOnPolicyActionCommonConditions `json:"conditions,omitempty"`
+	Links map[string]interface{} `json:"_links,omitempty"`
+	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property.
 	Priority int32 `json:"priority"`
-	SignOnPolicy SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy"`
+	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
 	Type EnumSignOnPolicyType `json:"type"`
 }
 
@@ -30,10 +31,9 @@ type SignOnPolicyActionCommon struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSignOnPolicyActionCommon(priority int32, signOnPolicy SignOnPolicyActionCommonSignOnPolicy, type_ EnumSignOnPolicyType) *SignOnPolicyActionCommon {
+func NewSignOnPolicyActionCommon(priority int32, type_ EnumSignOnPolicyType) *SignOnPolicyActionCommon {
 	this := SignOnPolicyActionCommon{}
 	this.Priority = priority
-	this.SignOnPolicy = signOnPolicy
 	this.Type = type_
 	return &this
 }
@@ -46,36 +46,68 @@ func NewSignOnPolicyActionCommonWithDefaults() *SignOnPolicyActionCommon {
 	return &this
 }
 
-// GetConditions returns the Conditions field value if set, zero value otherwise.
-func (o *SignOnPolicyActionCommon) GetConditions() SignOnPolicyActionCommonConditions {
-	if o == nil || o.Conditions == nil {
-		var ret SignOnPolicyActionCommonConditions
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *SignOnPolicyActionCommon) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Conditions
+	return o.Links
 }
 
-// GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionCommon) GetConditionsOk() (*SignOnPolicyActionCommonConditions, bool) {
-	if o == nil || o.Conditions == nil {
+func (o *SignOnPolicyActionCommon) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
 		return nil, false
 	}
-	return o.Conditions, true
+	return o.Links, true
 }
 
-// HasConditions returns a boolean if a field has been set.
-func (o *SignOnPolicyActionCommon) HasConditions() bool {
-	if o != nil && o.Conditions != nil {
+// HasLinks returns a boolean if a field has been set.
+func (o *SignOnPolicyActionCommon) HasLinks() bool {
+	if o != nil && o.Links != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetConditions gets a reference to the given SignOnPolicyActionCommonConditions and assigns it to the Conditions field.
-func (o *SignOnPolicyActionCommon) SetConditions(v SignOnPolicyActionCommonConditions) {
-	o.Conditions = &v
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *SignOnPolicyActionCommon) SetLinks(v map[string]interface{}) {
+	o.Links = v
+}
+
+// GetCondition returns the Condition field value if set, zero value otherwise.
+func (o *SignOnPolicyActionCommon) GetCondition() SignOnPolicyActionCommonConditionOrOrInner {
+	if o == nil || o.Condition == nil {
+		var ret SignOnPolicyActionCommonConditionOrOrInner
+		return ret
+	}
+	return *o.Condition
+}
+
+// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionCommon) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool) {
+	if o == nil || o.Condition == nil {
+		return nil, false
+	}
+	return o.Condition, true
+}
+
+// HasCondition returns a boolean if a field has been set.
+func (o *SignOnPolicyActionCommon) HasCondition() bool {
+	if o != nil && o.Condition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCondition gets a reference to the given SignOnPolicyActionCommonConditionOrOrInner and assigns it to the Condition field.
+func (o *SignOnPolicyActionCommon) SetCondition(v SignOnPolicyActionCommonConditionOrOrInner) {
+	o.Condition = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -166,28 +198,36 @@ func (o *SignOnPolicyActionCommon) SetPriority(v int32) {
 	o.Priority = v
 }
 
-// GetSignOnPolicy returns the SignOnPolicy field value
+// GetSignOnPolicy returns the SignOnPolicy field value if set, zero value otherwise.
 func (o *SignOnPolicyActionCommon) GetSignOnPolicy() SignOnPolicyActionCommonSignOnPolicy {
-	if o == nil {
+	if o == nil || o.SignOnPolicy == nil {
 		var ret SignOnPolicyActionCommonSignOnPolicy
 		return ret
 	}
-
-	return o.SignOnPolicy
+	return *o.SignOnPolicy
 }
 
-// GetSignOnPolicyOk returns a tuple with the SignOnPolicy field value
+// GetSignOnPolicyOk returns a tuple with the SignOnPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommon) GetSignOnPolicyOk() (*SignOnPolicyActionCommonSignOnPolicy, bool) {
-	if o == nil {
+	if o == nil || o.SignOnPolicy == nil {
 		return nil, false
 	}
-	return &o.SignOnPolicy, true
+	return o.SignOnPolicy, true
 }
 
-// SetSignOnPolicy sets field value
+// HasSignOnPolicy returns a boolean if a field has been set.
+func (o *SignOnPolicyActionCommon) HasSignOnPolicy() bool {
+	if o != nil && o.SignOnPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSignOnPolicy gets a reference to the given SignOnPolicyActionCommonSignOnPolicy and assigns it to the SignOnPolicy field.
 func (o *SignOnPolicyActionCommon) SetSignOnPolicy(v SignOnPolicyActionCommonSignOnPolicy) {
-	o.SignOnPolicy = v
+	o.SignOnPolicy = &v
 }
 
 // GetType returns the Type field value
@@ -216,8 +256,11 @@ func (o *SignOnPolicyActionCommon) SetType(v EnumSignOnPolicyType) {
 
 func (o SignOnPolicyActionCommon) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Conditions != nil {
-		toSerialize["conditions"] = o.Conditions
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
+	if o.Condition != nil {
+		toSerialize["condition"] = o.Condition
 	}
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
@@ -228,7 +271,7 @@ func (o SignOnPolicyActionCommon) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["priority"] = o.Priority
 	}
-	if true {
+	if o.SignOnPolicy != nil {
 		toSerialize["signOnPolicy"] = o.SignOnPolicy
 	}
 	if true {
