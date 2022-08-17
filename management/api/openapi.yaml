@@ -23052,6 +23052,14 @@ components:
           $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_registration_external'
         population:
           $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_registration_population'
+        confirmIdentityProviderAttributes:
+          default: false
+          description: "A boolean that specifies whether users must confirm data returned\
+            \ from an identity provider prior to registration. Users can modify the\
+            \ data and omit non-required attributes. Modified attributes are added\
+            \ to the user's profile during account creation. This is an optional property.\
+            \ If omitted, the default value is set to false."
+          type: boolean
       required:
       - enabled
       type: object
@@ -23066,14 +23074,6 @@ components:
       type: object
     SignOnPolicyActionLogin_allOf:
       properties:
-        confirmIdentityProviderAttributes:
-          default: false
-          description: "A boolean that specifies whether users must confirm data returned\
-            \ from an identity provider prior to registration. Users can modify the\
-            \ data and omit non-required attributes. Modified attributes are added\
-            \ to the user's profile during account creation. This is an optional property.\
-            \ If omitted, the default value is set to false."
-          type: boolean
         enforceLockoutForIdentityProviders:
           description: "A boolean that if set to true and if the user's account is\
             \ locked (the account.canAuthenticate attribute is set to false), then\
@@ -23259,14 +23259,6 @@ components:
       type: object
     SignOnPolicyActionIDFirst_allOf:
       properties:
-        confirmIdentityProviderAttributes:
-          default: false
-          description: "A boolean that specifies whether users must confirm data returned\
-            \ from an identity provider prior to registration. Users can modify the\
-            \ data and omit non-required attributes. Modified attributes are added\
-            \ to the user's profile during account creation. This is an optional property.\
-            \ If omitted, the default value is set to false."
-          type: boolean
         discoveryRules:
           description: The list of IDP discovery rules that are evaluated in order
             when no user is associated with the user identifier. The maximum number

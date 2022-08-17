@@ -16,8 +16,6 @@ import (
 
 // SignOnPolicyActionLoginAllOf struct for SignOnPolicyActionLoginAllOf
 type SignOnPolicyActionLoginAllOf struct {
-	// A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user's profile during account creation. This is an optional property. If omitted, the default value is set to false.
-	ConfirmIdentityProviderAttributes *bool `json:"confirmIdentityProviderAttributes,omitempty"`
 	// A boolean that if set to true and if the user's account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented.
 	EnforceLockoutForIdentityProviders *bool `json:"enforceLockoutForIdentityProviders,omitempty"`
 	Recovery *SignOnPolicyActionLoginAllOfRecovery `json:"recovery,omitempty"`
@@ -32,8 +30,6 @@ type SignOnPolicyActionLoginAllOf struct {
 // will change when the set of required properties is changed
 func NewSignOnPolicyActionLoginAllOf() *SignOnPolicyActionLoginAllOf {
 	this := SignOnPolicyActionLoginAllOf{}
-	var confirmIdentityProviderAttributes bool = false
-	this.ConfirmIdentityProviderAttributes = &confirmIdentityProviderAttributes
 	return &this
 }
 
@@ -42,41 +38,7 @@ func NewSignOnPolicyActionLoginAllOf() *SignOnPolicyActionLoginAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewSignOnPolicyActionLoginAllOfWithDefaults() *SignOnPolicyActionLoginAllOf {
 	this := SignOnPolicyActionLoginAllOf{}
-	var confirmIdentityProviderAttributes bool = false
-	this.ConfirmIdentityProviderAttributes = &confirmIdentityProviderAttributes
 	return &this
-}
-
-// GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field value if set, zero value otherwise.
-func (o *SignOnPolicyActionLoginAllOf) GetConfirmIdentityProviderAttributes() bool {
-	if o == nil || o.ConfirmIdentityProviderAttributes == nil {
-		var ret bool
-		return ret
-	}
-	return *o.ConfirmIdentityProviderAttributes
-}
-
-// GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionLoginAllOf) GetConfirmIdentityProviderAttributesOk() (*bool, bool) {
-	if o == nil || o.ConfirmIdentityProviderAttributes == nil {
-		return nil, false
-	}
-	return o.ConfirmIdentityProviderAttributes, true
-}
-
-// HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
-func (o *SignOnPolicyActionLoginAllOf) HasConfirmIdentityProviderAttributes() bool {
-	if o != nil && o.ConfirmIdentityProviderAttributes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConfirmIdentityProviderAttributes gets a reference to the given bool and assigns it to the ConfirmIdentityProviderAttributes field.
-func (o *SignOnPolicyActionLoginAllOf) SetConfirmIdentityProviderAttributes(v bool) {
-	o.ConfirmIdentityProviderAttributes = &v
 }
 
 // GetEnforceLockoutForIdentityProviders returns the EnforceLockoutForIdentityProviders field value if set, zero value otherwise.
@@ -209,9 +171,6 @@ func (o *SignOnPolicyActionLoginAllOf) SetSocialProviders(v []SignOnPolicyAction
 
 func (o SignOnPolicyActionLoginAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ConfirmIdentityProviderAttributes != nil {
-		toSerialize["confirmIdentityProviderAttributes"] = o.ConfirmIdentityProviderAttributes
-	}
 	if o.EnforceLockoutForIdentityProviders != nil {
 		toSerialize["enforceLockoutForIdentityProviders"] = o.EnforceLockoutForIdentityProviders
 	}

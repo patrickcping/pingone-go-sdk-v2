@@ -1,4 +1,4 @@
-# SignOnPolicyActionLoginAllOfRegistration
+# SignOnPolicyActionIDFirstAllOfRegistration
 
 ## Properties
 
@@ -11,115 +11,115 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSignOnPolicyActionLoginAllOfRegistration
+### NewSignOnPolicyActionIDFirstAllOfRegistration
 
-`func NewSignOnPolicyActionLoginAllOfRegistration(enabled bool, ) *SignOnPolicyActionLoginAllOfRegistration`
+`func NewSignOnPolicyActionIDFirstAllOfRegistration(enabled bool, ) *SignOnPolicyActionIDFirstAllOfRegistration`
 
-NewSignOnPolicyActionLoginAllOfRegistration instantiates a new SignOnPolicyActionLoginAllOfRegistration object
+NewSignOnPolicyActionIDFirstAllOfRegistration instantiates a new SignOnPolicyActionIDFirstAllOfRegistration object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSignOnPolicyActionLoginAllOfRegistrationWithDefaults
+### NewSignOnPolicyActionIDFirstAllOfRegistrationWithDefaults
 
-`func NewSignOnPolicyActionLoginAllOfRegistrationWithDefaults() *SignOnPolicyActionLoginAllOfRegistration`
+`func NewSignOnPolicyActionIDFirstAllOfRegistrationWithDefaults() *SignOnPolicyActionIDFirstAllOfRegistration`
 
-NewSignOnPolicyActionLoginAllOfRegistrationWithDefaults instantiates a new SignOnPolicyActionLoginAllOfRegistration object
+NewSignOnPolicyActionIDFirstAllOfRegistrationWithDefaults instantiates a new SignOnPolicyActionIDFirstAllOfRegistration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetEnabled
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) GetEnabled() bool`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) GetEnabledOk() (*bool, bool)`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) SetEnabled(v bool)`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
 
 ### GetExternal
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternal() SignOnPolicyActionLoginAllOfRegistrationExternal`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetExternal() SignOnPolicyActionLoginAllOfRegistrationExternal`
 
 GetExternal returns the External field if non-nil, zero value otherwise.
 
 ### GetExternalOk
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternalOk() (*SignOnPolicyActionLoginAllOfRegistrationExternal, bool)`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetExternalOk() (*SignOnPolicyActionLoginAllOfRegistrationExternal, bool)`
 
 GetExternalOk returns a tuple with the External field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternal
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) SetExternal(v SignOnPolicyActionLoginAllOfRegistrationExternal)`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) SetExternal(v SignOnPolicyActionLoginAllOfRegistrationExternal)`
 
 SetExternal sets External field to given value.
 
 ### HasExternal
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) HasExternal() bool`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) HasExternal() bool`
 
 HasExternal returns a boolean if a field has been set.
 
 ### GetPopulation
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulation() SignOnPolicyActionLoginAllOfRegistrationPopulation`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetPopulation() SignOnPolicyActionLoginAllOfRegistrationPopulation`
 
 GetPopulation returns the Population field if non-nil, zero value otherwise.
 
 ### GetPopulationOk
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulationOk() (*SignOnPolicyActionLoginAllOfRegistrationPopulation, bool)`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetPopulationOk() (*SignOnPolicyActionLoginAllOfRegistrationPopulation, bool)`
 
 GetPopulationOk returns a tuple with the Population field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPopulation
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) SetPopulation(v SignOnPolicyActionLoginAllOfRegistrationPopulation)`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) SetPopulation(v SignOnPolicyActionLoginAllOfRegistrationPopulation)`
 
 SetPopulation sets Population field to given value.
 
 ### HasPopulation
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) HasPopulation() bool`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) HasPopulation() bool`
 
 HasPopulation returns a boolean if a field has been set.
 
 ### GetConfirmIdentityProviderAttributes
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAttributes() bool`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetConfirmIdentityProviderAttributes() bool`
 
 GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field if non-nil, zero value otherwise.
 
 ### GetConfirmIdentityProviderAttributesOk
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAttributesOk() (*bool, bool)`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetConfirmIdentityProviderAttributesOk() (*bool, bool)`
 
 GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfirmIdentityProviderAttributes
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) SetConfirmIdentityProviderAttributes(v bool)`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) SetConfirmIdentityProviderAttributes(v bool)`
 
 SetConfirmIdentityProviderAttributes sets ConfirmIdentityProviderAttributes field to given value.
 
 ### HasConfirmIdentityProviderAttributes
 
-`func (o *SignOnPolicyActionLoginAllOfRegistration) HasConfirmIdentityProviderAttributes() bool`
+`func (o *SignOnPolicyActionIDFirstAllOfRegistration) HasConfirmIdentityProviderAttributes() bool`
 
 HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
 

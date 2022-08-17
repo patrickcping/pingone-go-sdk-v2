@@ -25,8 +25,6 @@ type SignOnPolicyActionIDFirst struct {
 	Priority int32 `json:"priority"`
 	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
 	Type EnumSignOnPolicyType `json:"type"`
-	// A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user's profile during account creation. This is an optional property. If omitted, the default value is set to false.
-	ConfirmIdentityProviderAttributes *bool `json:"confirmIdentityProviderAttributes,omitempty"`
 	// The list of IDP discovery rules that are evaluated in order when no user is associated with the user identifier. The maximum number of rules is 100. The condition on which this identity provider is used to authenticate the user is expressed using the PingOne policy condition language
 	DiscoveryRules []SignOnPolicyActionIDFirstAllOfDiscoveryRules `json:"discoveryRules,omitempty"`
 	// A boolean that if set to true and if the user's account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented.
@@ -45,8 +43,6 @@ func NewSignOnPolicyActionIDFirst(priority int32, type_ EnumSignOnPolicyType) *S
 	this := SignOnPolicyActionIDFirst{}
 	this.Priority = priority
 	this.Type = type_
-	var confirmIdentityProviderAttributes bool = false
-	this.ConfirmIdentityProviderAttributes = &confirmIdentityProviderAttributes
 	return &this
 }
 
@@ -55,8 +51,6 @@ func NewSignOnPolicyActionIDFirst(priority int32, type_ EnumSignOnPolicyType) *S
 // but it doesn't guarantee that properties required by API are set
 func NewSignOnPolicyActionIDFirstWithDefaults() *SignOnPolicyActionIDFirst {
 	this := SignOnPolicyActionIDFirst{}
-	var confirmIdentityProviderAttributes bool = false
-	this.ConfirmIdentityProviderAttributes = &confirmIdentityProviderAttributes
 	return &this
 }
 
@@ -268,38 +262,6 @@ func (o *SignOnPolicyActionIDFirst) SetType(v EnumSignOnPolicyType) {
 	o.Type = v
 }
 
-// GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDFirst) GetConfirmIdentityProviderAttributes() bool {
-	if o == nil || o.ConfirmIdentityProviderAttributes == nil {
-		var ret bool
-		return ret
-	}
-	return *o.ConfirmIdentityProviderAttributes
-}
-
-// GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDFirst) GetConfirmIdentityProviderAttributesOk() (*bool, bool) {
-	if o == nil || o.ConfirmIdentityProviderAttributes == nil {
-		return nil, false
-	}
-	return o.ConfirmIdentityProviderAttributes, true
-}
-
-// HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
-func (o *SignOnPolicyActionIDFirst) HasConfirmIdentityProviderAttributes() bool {
-	if o != nil && o.ConfirmIdentityProviderAttributes != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConfirmIdentityProviderAttributes gets a reference to the given bool and assigns it to the ConfirmIdentityProviderAttributes field.
-func (o *SignOnPolicyActionIDFirst) SetConfirmIdentityProviderAttributes(v bool) {
-	o.ConfirmIdentityProviderAttributes = &v
-}
-
 // GetDiscoveryRules returns the DiscoveryRules field value if set, zero value otherwise.
 func (o *SignOnPolicyActionIDFirst) GetDiscoveryRules() []SignOnPolicyActionIDFirstAllOfDiscoveryRules {
 	if o == nil || o.DiscoveryRules == nil {
@@ -482,9 +444,6 @@ func (o SignOnPolicyActionIDFirst) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["type"] = o.Type
-	}
-	if o.ConfirmIdentityProviderAttributes != nil {
-		toSerialize["confirmIdentityProviderAttributes"] = o.ConfirmIdentityProviderAttributes
 	}
 	if o.DiscoveryRules != nil {
 		toSerialize["discoveryRules"] = o.DiscoveryRules

@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **Priority** | **int32** | An integer that specifies the order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. This is a required property. | 
 **SignOnPolicy** | Pointer to [**SignOnPolicyActionCommonSignOnPolicy**](SignOnPolicyActionCommonSignOnPolicy.md) |  | [optional] 
 **Type** | [**EnumSignOnPolicyType**](EnumSignOnPolicyType.md) |  | 
-**ConfirmIdentityProviderAttributes** | Pointer to **bool** | A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user&#39;s profile during account creation. This is an optional property. If omitted, the default value is set to false. | [optional] [default to false]
 **EnforceLockoutForIdentityProviders** | Pointer to **bool** | A boolean that if set to true and if the user&#39;s account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented. | [optional] 
 **Recovery** | Pointer to [**SignOnPolicyActionLoginAllOfRecovery**](SignOnPolicyActionLoginAllOfRecovery.md) |  | [optional] 
 **Registration** | Pointer to [**SignOnPolicyActionLoginAllOfRegistration**](SignOnPolicyActionLoginAllOfRegistration.md) |  | [optional] 
@@ -200,31 +199,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
-### GetConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyActionLogin) GetConfirmIdentityProviderAttributes() bool`
-
-GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field if non-nil, zero value otherwise.
-
-### GetConfirmIdentityProviderAttributesOk
-
-`func (o *SignOnPolicyActionLogin) GetConfirmIdentityProviderAttributesOk() (*bool, bool)`
-
-GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyActionLogin) SetConfirmIdentityProviderAttributes(v bool)`
-
-SetConfirmIdentityProviderAttributes sets ConfirmIdentityProviderAttributes field to given value.
-
-### HasConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyActionLogin) HasConfirmIdentityProviderAttributes() bool`
-
-HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
 
 ### GetEnforceLockoutForIdentityProviders
 

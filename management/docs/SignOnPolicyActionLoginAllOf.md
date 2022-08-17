@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConfirmIdentityProviderAttributes** | Pointer to **bool** | A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user&#39;s profile during account creation. This is an optional property. If omitted, the default value is set to false. | [optional] [default to false]
 **EnforceLockoutForIdentityProviders** | Pointer to **bool** | A boolean that if set to true and if the user&#39;s account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented. | [optional] 
 **Recovery** | Pointer to [**SignOnPolicyActionLoginAllOfRecovery**](SignOnPolicyActionLoginAllOfRecovery.md) |  | [optional] 
 **Registration** | Pointer to [**SignOnPolicyActionLoginAllOfRegistration**](SignOnPolicyActionLoginAllOfRegistration.md) |  | [optional] 
@@ -28,31 +27,6 @@ will change when the set of required properties is changed
 NewSignOnPolicyActionLoginAllOfWithDefaults instantiates a new SignOnPolicyActionLoginAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyActionLoginAllOf) GetConfirmIdentityProviderAttributes() bool`
-
-GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field if non-nil, zero value otherwise.
-
-### GetConfirmIdentityProviderAttributesOk
-
-`func (o *SignOnPolicyActionLoginAllOf) GetConfirmIdentityProviderAttributesOk() (*bool, bool)`
-
-GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyActionLoginAllOf) SetConfirmIdentityProviderAttributes(v bool)`
-
-SetConfirmIdentityProviderAttributes sets ConfirmIdentityProviderAttributes field to given value.
-
-### HasConfirmIdentityProviderAttributes
-
-`func (o *SignOnPolicyActionLoginAllOf) HasConfirmIdentityProviderAttributes() bool`
-
-HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
 
 ### GetEnforceLockoutForIdentityProviders
 

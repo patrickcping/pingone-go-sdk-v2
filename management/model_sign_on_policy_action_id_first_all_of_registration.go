@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// SignOnPolicyActionLoginAllOfRegistration Specifies the account registration options.
-type SignOnPolicyActionLoginAllOfRegistration struct {
+// SignOnPolicyActionIDFirstAllOfRegistration Specifies the account registration options.
+type SignOnPolicyActionIDFirstAllOfRegistration struct {
 	// A boolean that specifies the enabled/disabled state of the policy action. The default is disabled when creating a new policy. When enabled, it allows the use of the new user registration flow. This attribute should be set to true when implementing the social login sign-on policy option.
 	Enabled bool `json:"enabled"`
 	External *SignOnPolicyActionLoginAllOfRegistrationExternal `json:"external,omitempty"`
@@ -24,30 +24,30 @@ type SignOnPolicyActionLoginAllOfRegistration struct {
 	ConfirmIdentityProviderAttributes *bool `json:"confirmIdentityProviderAttributes,omitempty"`
 }
 
-// NewSignOnPolicyActionLoginAllOfRegistration instantiates a new SignOnPolicyActionLoginAllOfRegistration object
+// NewSignOnPolicyActionIDFirstAllOfRegistration instantiates a new SignOnPolicyActionIDFirstAllOfRegistration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSignOnPolicyActionLoginAllOfRegistration(enabled bool) *SignOnPolicyActionLoginAllOfRegistration {
-	this := SignOnPolicyActionLoginAllOfRegistration{}
+func NewSignOnPolicyActionIDFirstAllOfRegistration(enabled bool) *SignOnPolicyActionIDFirstAllOfRegistration {
+	this := SignOnPolicyActionIDFirstAllOfRegistration{}
 	this.Enabled = enabled
 	var confirmIdentityProviderAttributes bool = false
 	this.ConfirmIdentityProviderAttributes = &confirmIdentityProviderAttributes
 	return &this
 }
 
-// NewSignOnPolicyActionLoginAllOfRegistrationWithDefaults instantiates a new SignOnPolicyActionLoginAllOfRegistration object
+// NewSignOnPolicyActionIDFirstAllOfRegistrationWithDefaults instantiates a new SignOnPolicyActionIDFirstAllOfRegistration object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSignOnPolicyActionLoginAllOfRegistrationWithDefaults() *SignOnPolicyActionLoginAllOfRegistration {
-	this := SignOnPolicyActionLoginAllOfRegistration{}
+func NewSignOnPolicyActionIDFirstAllOfRegistrationWithDefaults() *SignOnPolicyActionIDFirstAllOfRegistration {
+	this := SignOnPolicyActionIDFirstAllOfRegistration{}
 	var confirmIdentityProviderAttributes bool = false
 	this.ConfirmIdentityProviderAttributes = &confirmIdentityProviderAttributes
 	return &this
 }
 
 // GetEnabled returns the Enabled field value
-func (o *SignOnPolicyActionLoginAllOfRegistration) GetEnabled() bool {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetEnabled() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -58,7 +58,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionLoginAllOfRegistration) GetEnabledOk() (*bool, bool) {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,12 +66,12 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetEnabledOk() (*bool, bool) 
 }
 
 // SetEnabled sets field value
-func (o *SignOnPolicyActionLoginAllOfRegistration) SetEnabled(v bool) {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
 // GetExternal returns the External field value if set, zero value otherwise.
-func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternal() SignOnPolicyActionLoginAllOfRegistrationExternal {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetExternal() SignOnPolicyActionLoginAllOfRegistrationExternal {
 	if o == nil || o.External == nil {
 		var ret SignOnPolicyActionLoginAllOfRegistrationExternal
 		return ret
@@ -81,7 +81,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternal() SignOnPolicyAct
 
 // GetExternalOk returns a tuple with the External field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternalOk() (*SignOnPolicyActionLoginAllOfRegistrationExternal, bool) {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetExternalOk() (*SignOnPolicyActionLoginAllOfRegistrationExternal, bool) {
 	if o == nil || o.External == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternalOk() (*SignOnPolic
 }
 
 // HasExternal returns a boolean if a field has been set.
-func (o *SignOnPolicyActionLoginAllOfRegistration) HasExternal() bool {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) HasExternal() bool {
 	if o != nil && o.External != nil {
 		return true
 	}
@@ -98,12 +98,12 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) HasExternal() bool {
 }
 
 // SetExternal gets a reference to the given SignOnPolicyActionLoginAllOfRegistrationExternal and assigns it to the External field.
-func (o *SignOnPolicyActionLoginAllOfRegistration) SetExternal(v SignOnPolicyActionLoginAllOfRegistrationExternal) {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) SetExternal(v SignOnPolicyActionLoginAllOfRegistrationExternal) {
 	o.External = &v
 }
 
 // GetPopulation returns the Population field value if set, zero value otherwise.
-func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulation() SignOnPolicyActionLoginAllOfRegistrationPopulation {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetPopulation() SignOnPolicyActionLoginAllOfRegistrationPopulation {
 	if o == nil || o.Population == nil {
 		var ret SignOnPolicyActionLoginAllOfRegistrationPopulation
 		return ret
@@ -113,7 +113,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulation() SignOnPolicyA
 
 // GetPopulationOk returns a tuple with the Population field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulationOk() (*SignOnPolicyActionLoginAllOfRegistrationPopulation, bool) {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetPopulationOk() (*SignOnPolicyActionLoginAllOfRegistrationPopulation, bool) {
 	if o == nil || o.Population == nil {
 		return nil, false
 	}
@@ -121,7 +121,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulationOk() (*SignOnPol
 }
 
 // HasPopulation returns a boolean if a field has been set.
-func (o *SignOnPolicyActionLoginAllOfRegistration) HasPopulation() bool {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) HasPopulation() bool {
 	if o != nil && o.Population != nil {
 		return true
 	}
@@ -130,12 +130,12 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) HasPopulation() bool {
 }
 
 // SetPopulation gets a reference to the given SignOnPolicyActionLoginAllOfRegistrationPopulation and assigns it to the Population field.
-func (o *SignOnPolicyActionLoginAllOfRegistration) SetPopulation(v SignOnPolicyActionLoginAllOfRegistrationPopulation) {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) SetPopulation(v SignOnPolicyActionLoginAllOfRegistrationPopulation) {
 	o.Population = &v
 }
 
 // GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field value if set, zero value otherwise.
-func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAttributes() bool {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetConfirmIdentityProviderAttributes() bool {
 	if o == nil || o.ConfirmIdentityProviderAttributes == nil {
 		var ret bool
 		return ret
@@ -145,7 +145,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAtt
 
 // GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAttributesOk() (*bool, bool) {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) GetConfirmIdentityProviderAttributesOk() (*bool, bool) {
 	if o == nil || o.ConfirmIdentityProviderAttributes == nil {
 		return nil, false
 	}
@@ -153,7 +153,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAtt
 }
 
 // HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
-func (o *SignOnPolicyActionLoginAllOfRegistration) HasConfirmIdentityProviderAttributes() bool {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) HasConfirmIdentityProviderAttributes() bool {
 	if o != nil && o.ConfirmIdentityProviderAttributes != nil {
 		return true
 	}
@@ -162,11 +162,11 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) HasConfirmIdentityProviderAtt
 }
 
 // SetConfirmIdentityProviderAttributes gets a reference to the given bool and assigns it to the ConfirmIdentityProviderAttributes field.
-func (o *SignOnPolicyActionLoginAllOfRegistration) SetConfirmIdentityProviderAttributes(v bool) {
+func (o *SignOnPolicyActionIDFirstAllOfRegistration) SetConfirmIdentityProviderAttributes(v bool) {
 	o.ConfirmIdentityProviderAttributes = &v
 }
 
-func (o SignOnPolicyActionLoginAllOfRegistration) MarshalJSON() ([]byte, error) {
+func (o SignOnPolicyActionIDFirstAllOfRegistration) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["enabled"] = o.Enabled
@@ -183,38 +183,38 @@ func (o SignOnPolicyActionLoginAllOfRegistration) MarshalJSON() ([]byte, error) 
 	return json.Marshal(toSerialize)
 }
 
-type NullableSignOnPolicyActionLoginAllOfRegistration struct {
-	value *SignOnPolicyActionLoginAllOfRegistration
+type NullableSignOnPolicyActionIDFirstAllOfRegistration struct {
+	value *SignOnPolicyActionIDFirstAllOfRegistration
 	isSet bool
 }
 
-func (v NullableSignOnPolicyActionLoginAllOfRegistration) Get() *SignOnPolicyActionLoginAllOfRegistration {
+func (v NullableSignOnPolicyActionIDFirstAllOfRegistration) Get() *SignOnPolicyActionIDFirstAllOfRegistration {
 	return v.value
 }
 
-func (v *NullableSignOnPolicyActionLoginAllOfRegistration) Set(val *SignOnPolicyActionLoginAllOfRegistration) {
+func (v *NullableSignOnPolicyActionIDFirstAllOfRegistration) Set(val *SignOnPolicyActionIDFirstAllOfRegistration) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSignOnPolicyActionLoginAllOfRegistration) IsSet() bool {
+func (v NullableSignOnPolicyActionIDFirstAllOfRegistration) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSignOnPolicyActionLoginAllOfRegistration) Unset() {
+func (v *NullableSignOnPolicyActionIDFirstAllOfRegistration) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSignOnPolicyActionLoginAllOfRegistration(val *SignOnPolicyActionLoginAllOfRegistration) *NullableSignOnPolicyActionLoginAllOfRegistration {
-	return &NullableSignOnPolicyActionLoginAllOfRegistration{value: val, isSet: true}
+func NewNullableSignOnPolicyActionIDFirstAllOfRegistration(val *SignOnPolicyActionIDFirstAllOfRegistration) *NullableSignOnPolicyActionIDFirstAllOfRegistration {
+	return &NullableSignOnPolicyActionIDFirstAllOfRegistration{value: val, isSet: true}
 }
 
-func (v NullableSignOnPolicyActionLoginAllOfRegistration) MarshalJSON() ([]byte, error) {
+func (v NullableSignOnPolicyActionIDFirstAllOfRegistration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSignOnPolicyActionLoginAllOfRegistration) UnmarshalJSON(src []byte) error {
+func (v *NullableSignOnPolicyActionIDFirstAllOfRegistration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
