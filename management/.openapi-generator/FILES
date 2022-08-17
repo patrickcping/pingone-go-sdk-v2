@@ -283,7 +283,6 @@ docs/PopulationPasswordPolicy.md
 docs/PopulationsApi.md
 docs/Resource.md
 docs/ResourceAttribute.md
-docs/ResourceResource.md
 docs/ResourceScope.md
 docs/ResourcesResourceAttributesApi.md
 docs/ResourcesResourceScopesApi.md
@@ -548,7 +547,6 @@ model_population.go
 model_population_password_policy.go
 model_resource.go
 model_resource_attribute.go
-model_resource_resource.go
 model_resource_scope.go
 model_role.go
 model_role_assignment.go

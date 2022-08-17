@@ -23225,7 +23225,7 @@ components:
           type: array
         deviceAuthenticationPolicy:
           $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_deviceAuthenticationPolicy'
-        noDeviceMode:
+        noDevicesMode:
           $ref: '#/components/schemas/EnumSignOnPolicyNoDeviceMode'
       type: object
     SignOnPolicyActionIDFirst_allOf_condition:

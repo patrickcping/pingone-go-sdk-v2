@@ -2406,7 +2406,7 @@ components:
                   description: The ID of the MFA policy that should be used.
               required:
                 - id
-            noDeviceMode:
+            noDevicesMode:
               $ref: '#/components/schemas/EnumSignOnPolicyNoDeviceMode'
     SignOnPolicyActionIDFirst:
       allOf:

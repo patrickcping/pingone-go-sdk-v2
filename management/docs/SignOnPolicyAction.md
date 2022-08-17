@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **Voice** | Pointer to [**SignOnPolicyActionMFAAllOfVoice**](SignOnPolicyActionMFAAllOfVoice.md) |  | [optional] 
 **Applications** | Pointer to [**[]SignOnPolicyActionMFAAllOfApplications**](SignOnPolicyActionMFAAllOfApplications.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
 **DeviceAuthenticationPolicy** | Pointer to [**SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy**](SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy.md) |  | [optional] 
-**NoDeviceMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
+**NoDevicesMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
 **DiscoveryRules** | Pointer to [**[]SignOnPolicyActionIDFirstAllOfDiscoveryRules**](SignOnPolicyActionIDFirstAllOfDiscoveryRules.md) | The list of IDP discovery rules that are evaluated in order when no user is associated with the user identifier. The maximum number of rules is 100. The condition on which this identity provider is used to authenticate the user is expressed using the PingOne policy condition language | [optional] 
 **AcrValues** | Pointer to **string** | A string that designates the sign-on policies included in the authorization flow request. Options can include the PingOne predefined sign-on policies, Single_Factor and Multi_Factor, or any custom defined sign-on policy names. Sign-on policy names should be listed in order of preference, and they must be assigned to the application. This property can be configured on the identity provider action and is passed to the identity provider if the identity provider is of type &#x60;SAML&#x60; or &#x60;OPENID_CONNECT&#x60;. | [optional] 
 **IdentityProvider** | [**SignOnPolicyActionIDPAllOfIdentityProvider**](SignOnPolicyActionIDPAllOfIdentityProvider.md) |  | 
@@ -545,30 +545,30 @@ SetDeviceAuthenticationPolicy sets DeviceAuthenticationPolicy field to given val
 
 HasDeviceAuthenticationPolicy returns a boolean if a field has been set.
 
-### GetNoDeviceMode
+### GetNoDevicesMode
 
-`func (o *SignOnPolicyAction) GetNoDeviceMode() EnumSignOnPolicyNoDeviceMode`
+`func (o *SignOnPolicyAction) GetNoDevicesMode() EnumSignOnPolicyNoDeviceMode`
 
-GetNoDeviceMode returns the NoDeviceMode field if non-nil, zero value otherwise.
+GetNoDevicesMode returns the NoDevicesMode field if non-nil, zero value otherwise.
 
-### GetNoDeviceModeOk
+### GetNoDevicesModeOk
 
-`func (o *SignOnPolicyAction) GetNoDeviceModeOk() (*EnumSignOnPolicyNoDeviceMode, bool)`
+`func (o *SignOnPolicyAction) GetNoDevicesModeOk() (*EnumSignOnPolicyNoDeviceMode, bool)`
 
-GetNoDeviceModeOk returns a tuple with the NoDeviceMode field if it's non-nil, zero value otherwise
+GetNoDevicesModeOk returns a tuple with the NoDevicesMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNoDeviceMode
+### SetNoDevicesMode
 
-`func (o *SignOnPolicyAction) SetNoDeviceMode(v EnumSignOnPolicyNoDeviceMode)`
+`func (o *SignOnPolicyAction) SetNoDevicesMode(v EnumSignOnPolicyNoDeviceMode)`
 
-SetNoDeviceMode sets NoDeviceMode field to given value.
+SetNoDevicesMode sets NoDevicesMode field to given value.
 
-### HasNoDeviceMode
+### HasNoDevicesMode
 
-`func (o *SignOnPolicyAction) HasNoDeviceMode() bool`
+`func (o *SignOnPolicyAction) HasNoDevicesMode() bool`
 
-HasNoDeviceMode returns a boolean if a field has been set.
+HasNoDevicesMode returns a boolean if a field has been set.
 
 ### GetDiscoveryRules
 

@@ -41,7 +41,7 @@ type SignOnPolicyActionMFA struct {
 	// Deprecated
 	Applications []SignOnPolicyActionMFAAllOfApplications `json:"applications,omitempty"`
 	DeviceAuthenticationPolicy *SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy `json:"deviceAuthenticationPolicy,omitempty"`
-	NoDeviceMode *EnumSignOnPolicyNoDeviceMode `json:"noDeviceMode,omitempty"`
+	NoDevicesMode *EnumSignOnPolicyNoDeviceMode `json:"noDevicesMode,omitempty"`
 }
 
 // NewSignOnPolicyActionMFA instantiates a new SignOnPolicyActionMFA object
@@ -548,36 +548,36 @@ func (o *SignOnPolicyActionMFA) SetDeviceAuthenticationPolicy(v SignOnPolicyActi
 	o.DeviceAuthenticationPolicy = &v
 }
 
-// GetNoDeviceMode returns the NoDeviceMode field value if set, zero value otherwise.
-func (o *SignOnPolicyActionMFA) GetNoDeviceMode() EnumSignOnPolicyNoDeviceMode {
-	if o == nil || o.NoDeviceMode == nil {
+// GetNoDevicesMode returns the NoDevicesMode field value if set, zero value otherwise.
+func (o *SignOnPolicyActionMFA) GetNoDevicesMode() EnumSignOnPolicyNoDeviceMode {
+	if o == nil || o.NoDevicesMode == nil {
 		var ret EnumSignOnPolicyNoDeviceMode
 		return ret
 	}
-	return *o.NoDeviceMode
+	return *o.NoDevicesMode
 }
 
-// GetNoDeviceModeOk returns a tuple with the NoDeviceMode field value if set, nil otherwise
+// GetNoDevicesModeOk returns a tuple with the NoDevicesMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionMFA) GetNoDeviceModeOk() (*EnumSignOnPolicyNoDeviceMode, bool) {
-	if o == nil || o.NoDeviceMode == nil {
+func (o *SignOnPolicyActionMFA) GetNoDevicesModeOk() (*EnumSignOnPolicyNoDeviceMode, bool) {
+	if o == nil || o.NoDevicesMode == nil {
 		return nil, false
 	}
-	return o.NoDeviceMode, true
+	return o.NoDevicesMode, true
 }
 
-// HasNoDeviceMode returns a boolean if a field has been set.
-func (o *SignOnPolicyActionMFA) HasNoDeviceMode() bool {
-	if o != nil && o.NoDeviceMode != nil {
+// HasNoDevicesMode returns a boolean if a field has been set.
+func (o *SignOnPolicyActionMFA) HasNoDevicesMode() bool {
+	if o != nil && o.NoDevicesMode != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetNoDeviceMode gets a reference to the given EnumSignOnPolicyNoDeviceMode and assigns it to the NoDeviceMode field.
-func (o *SignOnPolicyActionMFA) SetNoDeviceMode(v EnumSignOnPolicyNoDeviceMode) {
-	o.NoDeviceMode = &v
+// SetNoDevicesMode gets a reference to the given EnumSignOnPolicyNoDeviceMode and assigns it to the NoDevicesMode field.
+func (o *SignOnPolicyActionMFA) SetNoDevicesMode(v EnumSignOnPolicyNoDeviceMode) {
+	o.NoDevicesMode = &v
 }
 
 func (o SignOnPolicyActionMFA) MarshalJSON() ([]byte, error) {
@@ -627,8 +627,8 @@ func (o SignOnPolicyActionMFA) MarshalJSON() ([]byte, error) {
 	if o.DeviceAuthenticationPolicy != nil {
 		toSerialize["deviceAuthenticationPolicy"] = o.DeviceAuthenticationPolicy
 	}
-	if o.NoDeviceMode != nil {
-		toSerialize["noDeviceMode"] = o.NoDeviceMode
+	if o.NoDevicesMode != nil {
+		toSerialize["noDevicesMode"] = o.NoDevicesMode
 	}
 	return json.Marshal(toSerialize)
 }

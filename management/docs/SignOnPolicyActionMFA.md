@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Voice** | Pointer to [**SignOnPolicyActionMFAAllOfVoice**](SignOnPolicyActionMFAAllOfVoice.md) |  | [optional] 
 **Applications** | Pointer to [**[]SignOnPolicyActionMFAAllOfApplications**](SignOnPolicyActionMFAAllOfApplications.md) | The applications collection specifies all the native native applications that are allowed in the sign-on policy action.  If the applications collection is empty, a push notification is not allowed for the action. | [optional] 
 **DeviceAuthenticationPolicy** | Pointer to [**SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy**](SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy.md) |  | [optional] 
-**NoDeviceMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
+**NoDevicesMode** | Pointer to [**EnumSignOnPolicyNoDeviceMode**](EnumSignOnPolicyNoDeviceMode.md) |  | [optional] 
 
 ## Methods
 
@@ -405,30 +405,30 @@ SetDeviceAuthenticationPolicy sets DeviceAuthenticationPolicy field to given val
 
 HasDeviceAuthenticationPolicy returns a boolean if a field has been set.
 
-### GetNoDeviceMode
+### GetNoDevicesMode
 
-`func (o *SignOnPolicyActionMFA) GetNoDeviceMode() EnumSignOnPolicyNoDeviceMode`
+`func (o *SignOnPolicyActionMFA) GetNoDevicesMode() EnumSignOnPolicyNoDeviceMode`
 
-GetNoDeviceMode returns the NoDeviceMode field if non-nil, zero value otherwise.
+GetNoDevicesMode returns the NoDevicesMode field if non-nil, zero value otherwise.
 
-### GetNoDeviceModeOk
+### GetNoDevicesModeOk
 
-`func (o *SignOnPolicyActionMFA) GetNoDeviceModeOk() (*EnumSignOnPolicyNoDeviceMode, bool)`
+`func (o *SignOnPolicyActionMFA) GetNoDevicesModeOk() (*EnumSignOnPolicyNoDeviceMode, bool)`
 
-GetNoDeviceModeOk returns a tuple with the NoDeviceMode field if it's non-nil, zero value otherwise
+GetNoDevicesModeOk returns a tuple with the NoDevicesMode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNoDeviceMode
+### SetNoDevicesMode
 
-`func (o *SignOnPolicyActionMFA) SetNoDeviceMode(v EnumSignOnPolicyNoDeviceMode)`
+`func (o *SignOnPolicyActionMFA) SetNoDevicesMode(v EnumSignOnPolicyNoDeviceMode)`
 
-SetNoDeviceMode sets NoDeviceMode field to given value.
+SetNoDevicesMode sets NoDevicesMode field to given value.
 
-### HasNoDeviceMode
+### HasNoDevicesMode
 
-`func (o *SignOnPolicyActionMFA) HasNoDeviceMode() bool`
+`func (o *SignOnPolicyActionMFA) HasNoDevicesMode() bool`
 
-HasNoDeviceMode returns a boolean if a field has been set.
+HasNoDevicesMode returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
