@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/golangci/golangci-lint v1.47.2
-	github.com/patrickcping/pingone-go-sdk-v2/management v0.4.0
+	github.com/patrickcping/pingone-go-sdk-v2/management v0.5.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.3.0
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.2.0
 	github.com/pavius/impi v0.0.3
@@ -164,7 +164,7 @@ require (
 	go.uber.org/zap v1.17.0 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20220613132600-b0d781184e0d // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
-	golang.org/x/net v0.0.0-20220809012201-f428fae20770 // indirect
+	golang.org/x/net v0.0.0-20220812174116-3211cb980234 // indirect
 	golang.org/x/sync v0.0.0-20220601150217-0de741cfad7f // indirect
 	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 // indirect
 	golang.org/x/text v0.3.7 // indirect
