@@ -15,20 +15,20 @@ import (
 	"fmt"
 )
 
-// EnumResourceType A string that specifies the type of resource. Options are OPENID_CONNECT, PING_ONE_API, and CUSTOM. Only the CUSTOM resource type can be created. OPENID_CONNECT specifies the built-in platform resource for OpenID Connect. PING_ONE_API specifies the built-in platform resource for PingOne.
+// EnumResourceType A string that specifies the type of resource. Options are OPENID_CONNECT, PINGONE_API, and CUSTOM. Only the CUSTOM resource type can be created. OPENID_CONNECT specifies the built-in platform resource for OpenID Connect. PINGONE_API specifies the built-in platform resource for PingOne.
 type EnumResourceType string
 
 // List of EnumResourceType
 const (
 	ENUMRESOURCETYPE_OPENID_CONNECT EnumResourceType = "OPENID_CONNECT"
-	ENUMRESOURCETYPE_PING_ONE_API EnumResourceType = "PING_ONE_API"
+	ENUMRESOURCETYPE_PINGONE_API EnumResourceType = "PINGONE_API"
 	ENUMRESOURCETYPE_CUSTOM EnumResourceType = "CUSTOM"
 )
 
 // All allowed values of EnumResourceType enum
 var AllowedEnumResourceTypeEnumValues = []EnumResourceType{
 	"OPENID_CONNECT",
-	"PING_ONE_API",
+	"PINGONE_API",
 	"CUSTOM",
 }
 

@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.6.0](./management/CHANGELOG.md)
+    * **Bug fix** - Correct `PINGONE_API` from incorrect `PING_ONE_API` in `EnumResourceType` enum
+
 # Release (2022-08-17)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.3
