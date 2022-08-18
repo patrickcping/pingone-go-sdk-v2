@@ -5,7 +5,7 @@
 
 * `OPENID_CONNECT` (value: `"OPENID_CONNECT"`)
 
-* `PING_ONE_API` (value: `"PING_ONE_API"`)
+* `PINGONE_API` (value: `"PINGONE_API"`)
 
 * `CUSTOM` (value: `"CUSTOM"`)
 

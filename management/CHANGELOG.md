@@ -1,3 +1,7 @@
+# v0.6.0 (Unreleased)
+
+* **Bug fix** - Correct `PINGONE_API` from incorrect `PING_ONE_API` in `EnumResourceType` enum
+
 # v0.5.0 (2022-08-17)
 
 * **Bug fix** - `SignOnPolicyActionProgressiveProfiling` object includes fixed `attributes` attribute, from object type to array type
