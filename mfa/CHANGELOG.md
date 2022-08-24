@@ -1,3 +1,7 @@
+# v0.4.0 (Unreleased)
+
+* **Enhancement** Add 404 response processing for all requests [#28](https://github.com/patrickcping/pingone-go-sdk-v2/pull/28)
+
 # v0.3.0 (2022-08-05)
 
 * **Feature** Mfa device authentication policies [#13](https://github.com/patrickcping/pingone-go-sdk-v2/pull/13)

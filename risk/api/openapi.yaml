@@ -49,6 +49,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -105,6 +111,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "405":
           content:
             application/json:
@@ -164,6 +176,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -211,6 +229,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -274,6 +298,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -331,6 +361,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "405":
           content:
             application/json:
@@ -390,6 +426,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -454,6 +496,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -499,6 +547,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -555,6 +609,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "405":
           content:
             application/json:
@@ -614,6 +674,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -661,6 +727,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
@@ -724,6 +796,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
         "429":
           content:
             application/json:
