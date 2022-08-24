@@ -628,7 +628,6 @@ Class | Method | HTTP request | Description
  - [SignOnPolicyAssignment](docs/SignOnPolicyAssignment.md)
  - [UpdateApplicationRequest](docs/UpdateApplicationRequest.md)
  - [UpdateDomain200Response](docs/UpdateDomain200Response.md)
- - [UpdateDomainRequest](docs/UpdateDomainRequest.md)
  - [UpdateEnvironmentTypeRequest](docs/UpdateEnvironmentTypeRequest.md)
  - [User](docs/User.md)
  - [UserAccount](docs/UserAccount.md)

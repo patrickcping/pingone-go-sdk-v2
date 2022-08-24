@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDomain
 
-> UpdateDomain200Response UpdateDomain(ctx, environmentID, customDomainID).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
+> UpdateDomain200Response UpdateDomain(ctx, environmentID, customDomainID).ContentType(contentType).CustomDomainCertificate(customDomainCertificate).Execute()
 
 Update Domain
 
@@ -310,11 +310,11 @@ func main() {
     environmentID := "environmentID_example" // string | 
     customDomainID := "customDomainID_example" // string | 
     contentType := openapiclient.EnumCustomDomainPostHeader("application/vnd.pingidentity.certificate.import+json") // EnumCustomDomainPostHeader |  (optional)
-    updateDomainRequest := openapiclient.updateDomain_request{CustomDomainCertificate: openapiclient.NewCustomDomainCertificate()} // UpdateDomainRequest |  (optional)
+    customDomainCertificate := *openapiclient.NewCustomDomainCertificate() // CustomDomainCertificate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomDomainsApi.UpdateDomain(context.Background(), environmentID, customDomainID).ContentType(contentType).UpdateDomainRequest(updateDomainRequest).Execute()
+    resp, r, err := apiClient.CustomDomainsApi.UpdateDomain(context.Background(), environmentID, customDomainID).ContentType(contentType).CustomDomainCertificate(customDomainCertificate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainsApi.UpdateDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 
 
  **contentType** | [**EnumCustomDomainPostHeader**](EnumCustomDomainPostHeader.md) |  | 
- **updateDomainRequest** | [**UpdateDomainRequest**](UpdateDomainRequest.md) |  | 
+ **customDomainCertificate** | [**CustomDomainCertificate**](CustomDomainCertificate.md) |  | 
 
 ### Return type
 

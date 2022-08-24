@@ -5324,7 +5324,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateDomain_request'
+              $ref: '#/components/schemas/CustomDomainCertificate'
+        required: false
       responses:
         "400":
           content:
@@ -18881,6 +18882,10 @@ components:
       - domainName
       type: object
     CustomDomainCertificate:
+      example:
+        privateKey: privateKey
+        intermediateCertificates: intermediateCertificates
+        certificate: certificate
       properties:
         certificate:
           description: "A string that specifies the PEM-encoded certificate to import.\
@@ -21319,10 +21324,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
-    updateDomain_request:
-      oneOf:
-      - $ref: '#/components/schemas/CustomDomainCertificate'
-      - {}
     updateDomain_200_response:
       oneOf:
       - $ref: '#/components/schemas/CustomDomainCertificate'

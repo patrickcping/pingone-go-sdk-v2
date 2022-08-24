@@ -291,7 +291,6 @@ docs/PasswordPolicy.md
 docs/PasswordPolicyHistory.md
 docs/PasswordPolicyLength.md
 docs/PasswordPolicyLockout.md
-docs/PasswordPolicyMinCharacters.md
 docs/Population.md
 docs/PopulationPasswordPolicy.md
 docs/PopulationsApi.md
@@ -369,7 +368,6 @@ docs/SubscriptionsWebhooksApi.md
 docs/TotalIdentitiesApi.md
 docs/UpdateApplicationRequest.md
 docs/UpdateDomain200Response.md
-docs/UpdateDomainRequest.md
 docs/UpdateEnvironmentTypeRequest.md
 docs/User.md
 docs/UserAccount.md
@@ -639,7 +637,6 @@ model_sign_on_policy_action_progressive_profiling_all_of_attributes.go
 model_sign_on_policy_assignment.go
 model_update_application_request.go
 model_update_domain_200_response.go
-model_update_domain_request.go
 model_update_environment_type_request.go
 model_user.go
 model_user_account.go
