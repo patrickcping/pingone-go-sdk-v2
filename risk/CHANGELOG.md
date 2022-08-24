@@ -1,3 +1,7 @@
+# v0.3.0 (Unreleased)
+
+* **Enhancement** Add 404 response processing for all requests [#28](https://github.com/patrickcping/pingone-go-sdk-v2/pull/28)
+
 # v0.2.0 (2022-07-17)
 
 * **Security** Bump `golang.org/x/net` for `CVE-2021-33194` : https://deps.dev/advisory/osv/GO-2021-0238

@@ -8,6 +8,11 @@
     * **Feature** Support for Custom Domains [#26](https://github.com/patrickcping/pingone-go-sdk-v2/pull/26)
     * **Feature** Support for Keypairs [#26](https://github.com/patrickcping/pingone-go-sdk-v2/pull/26)
     * **Feature** Support for Certificates [#26](https://github.com/patrickcping/pingone-go-sdk-v2/pull/26)
+    * **Enhancement** Add 404 response processing for all requests [#28](https://github.com/patrickcping/pingone-go-sdk-v2/pull/28)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.4.0](./management/CHANGELOG.md)
+    * **Enhancement** Add 404 response processing for all requests [#28](https://github.com/patrickcping/pingone-go-sdk-v2/pull/28)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.3.0](./management/CHANGELOG.md)
+    * **Enhancement** Add 404 response processing for all requests [#28](https://github.com/patrickcping/pingone-go-sdk-v2/pull/28)
 
 # Release (2022-08-17)
 
