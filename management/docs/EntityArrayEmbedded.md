@@ -8,7 +8,9 @@ Name | Type | Description | Notes
 **Agreements** | Pointer to [**[]Agreement**](Agreement.md) |  | [optional] 
 **Attributes** | Pointer to [**[]EntityArrayEmbeddedAttributesInner**](EntityArrayEmbeddedAttributesInner.md) |  | [optional] 
 **Applications** | Pointer to [**[]EntityArrayEmbeddedApplicationsInner**](EntityArrayEmbeddedApplicationsInner.md) |  | [optional] 
+**Certificates** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
+**CustomDomains** | Pointer to [**[]CustomDomain**](CustomDomain.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
 **GatewayInstances** | Pointer to [**[]GatewayInstance**](GatewayInstance.md) |  | [optional] 
 **Gateways** | Pointer to [**[]EntityArrayEmbeddedGatewaysInner**](EntityArrayEmbeddedGatewaysInner.md) |  | [optional] 
@@ -16,6 +18,7 @@ Name | Type | Description | Notes
 **Groups** | Pointer to [**[]Group**](Group.md) |  | [optional] 
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **IdentityProviders** | Pointer to [**[]IdentityProvider**](IdentityProvider.md) |  | [optional] 
+**Keys** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
 **Languages** | Pointer to [**[]AgreementLanguage**](AgreementLanguage.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
@@ -149,6 +152,31 @@ SetApplications sets Applications field to given value.
 
 HasApplications returns a boolean if a field has been set.
 
+### GetCertificates
+
+`func (o *EntityArrayEmbedded) GetCertificates() []Certificate`
+
+GetCertificates returns the Certificates field if non-nil, zero value otherwise.
+
+### GetCertificatesOk
+
+`func (o *EntityArrayEmbedded) GetCertificatesOk() (*[]Certificate, bool)`
+
+GetCertificatesOk returns a tuple with the Certificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificates
+
+`func (o *EntityArrayEmbedded) SetCertificates(v []Certificate)`
+
+SetCertificates sets Certificates field to given value.
+
+### HasCertificates
+
+`func (o *EntityArrayEmbedded) HasCertificates() bool`
+
+HasCertificates returns a boolean if a field has been set.
+
 ### GetCredentials
 
 `func (o *EntityArrayEmbedded) GetCredentials() []GatewayCredential`
@@ -173,6 +201,31 @@ SetCredentials sets Credentials field to given value.
 `func (o *EntityArrayEmbedded) HasCredentials() bool`
 
 HasCredentials returns a boolean if a field has been set.
+
+### GetCustomDomains
+
+`func (o *EntityArrayEmbedded) GetCustomDomains() []CustomDomain`
+
+GetCustomDomains returns the CustomDomains field if non-nil, zero value otherwise.
+
+### GetCustomDomainsOk
+
+`func (o *EntityArrayEmbedded) GetCustomDomainsOk() (*[]CustomDomain, bool)`
+
+GetCustomDomainsOk returns a tuple with the CustomDomains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomDomains
+
+`func (o *EntityArrayEmbedded) SetCustomDomains(v []CustomDomain)`
+
+SetCustomDomains sets CustomDomains field to given value.
+
+### HasCustomDomains
+
+`func (o *EntityArrayEmbedded) HasCustomDomains() bool`
+
+HasCustomDomains returns a boolean if a field has been set.
 
 ### GetEnvironments
 
@@ -348,6 +401,31 @@ SetIdentityProviders sets IdentityProviders field to given value.
 `func (o *EntityArrayEmbedded) HasIdentityProviders() bool`
 
 HasIdentityProviders returns a boolean if a field has been set.
+
+### GetKeys
+
+`func (o *EntityArrayEmbedded) GetKeys() []Certificate`
+
+GetKeys returns the Keys field if non-nil, zero value otherwise.
+
+### GetKeysOk
+
+`func (o *EntityArrayEmbedded) GetKeysOk() (*[]Certificate, bool)`
+
+GetKeysOk returns a tuple with the Keys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeys
+
+`func (o *EntityArrayEmbedded) SetKeys(v []Certificate)`
+
+SetKeys sets Keys field to given value.
+
+### HasKeys
+
+`func (o *EntityArrayEmbedded) HasKeys() bool`
+
+HasKeys returns a boolean if a field has been set.
 
 ### GetLanguages
 

@@ -142,28 +142,28 @@ Class | Method | HTTP request | Description
 *BrandingBrandingThemesApi* | [**V1EnvironmentsEnvironmentIDThemesThemeIDPut**](docs/BrandingBrandingThemesApi.md#v1environmentsenvironmentidthemesthemeidput) | **Put** /v1/environments/{environmentID}/themes/{themeID} | UPDATE Branding Theme
 *CapabilitiesApi* | [**V1EnvironmentsEnvironmentIDCapabilitiesGet**](docs/CapabilitiesApi.md#v1environmentsenvironmentidcapabilitiesget) | **Get** /v1/environments/{environmentID}/capabilities | READ Environment Capabilities
 *CapabilitiesApi* | [**V1OrganizationsOrganizationIDCapabilitiesGet**](docs/CapabilitiesApi.md#v1organizationsorganizationidcapabilitiesget) | **Get** /v1/organizations/{organizationID}/capabilities | READ Organization Capabilities
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDCertificatesCertIDApplicationsGet**](docs/CertificateManagementApi.md#v1environmentsenvironmentidcertificatescertidapplicationsget) | **Get** /v1/environments/{environmentID}/certificates/{certID}/applications | GET Certificate Applications
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDCertificatesCertIDDelete**](docs/CertificateManagementApi.md#v1environmentsenvironmentidcertificatescertiddelete) | **Delete** /v1/environments/{environmentID}/certificates/{certID} | DELETE Certificate
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDCertificatesCertIDGet**](docs/CertificateManagementApi.md#v1environmentsenvironmentidcertificatescertidget) | **Get** /v1/environments/{environmentID}/certificates/{certID} | GET Certificate
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDCertificatesGet**](docs/CertificateManagementApi.md#v1environmentsenvironmentidcertificatesget) | **Get** /v1/environments/{environmentID}/certificates | GET Certificates
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDCertificatesPost**](docs/CertificateManagementApi.md#v1environmentsenvironmentidcertificatespost) | **Post** /v1/environments/{environmentID}/certificates | CREATE Certificate with PKCS7 or PEM File
+*CertificateManagementApi* | [**CreateCertificateFromFile**](docs/CertificateManagementApi.md#createcertificatefromfile) | **Post** /v1/environments/{environmentID}/certificates | CREATE Certificate with PKCS7 or PEM File
+*CertificateManagementApi* | [**CreateKey**](docs/CertificateManagementApi.md#createkey) | **Post** /v1/environments/{environmentID}/keys | CREATE Key
+*CertificateManagementApi* | [**DeleteCertificate**](docs/CertificateManagementApi.md#deletecertificate) | **Delete** /v1/environments/{environmentID}/certificates/{certID} | DELETE Certificate
+*CertificateManagementApi* | [**DeleteKey**](docs/CertificateManagementApi.md#deletekey) | **Delete** /v1/environments/{environmentID}/keys/{keyID} | DELETE Key
+*CertificateManagementApi* | [**ExportCSR**](docs/CertificateManagementApi.md#exportcsr) | **Get** /v1/environments/{environmentID}/keys/{keyID}/csr | Export a certificate signing request (CSR)
+*CertificateManagementApi* | [**GetCertificate**](docs/CertificateManagementApi.md#getcertificate) | **Get** /v1/environments/{environmentID}/certificates/{certID} | GET Certificate
+*CertificateManagementApi* | [**GetCertificateApplications**](docs/CertificateManagementApi.md#getcertificateapplications) | **Get** /v1/environments/{environmentID}/certificates/{certID}/applications | GET Certificate Applications
+*CertificateManagementApi* | [**GetCertificates**](docs/CertificateManagementApi.md#getcertificates) | **Get** /v1/environments/{environmentID}/certificates | GET Certificates
+*CertificateManagementApi* | [**GetKey**](docs/CertificateManagementApi.md#getkey) | **Get** /v1/environments/{environmentID}/keys/{keyID} | GET Key
+*CertificateManagementApi* | [**GetKeyApplications**](docs/CertificateManagementApi.md#getkeyapplications) | **Get** /v1/environments/{environmentID}/keys/{keyID}/applications | GET Key Applications
+*CertificateManagementApi* | [**GetKeys**](docs/CertificateManagementApi.md#getkeys) | **Get** /v1/environments/{environmentID}/keys | GET Keys
+*CertificateManagementApi* | [**ImportCSRResponse**](docs/CertificateManagementApi.md#importcsrresponse) | **Put** /v1/environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
+*CertificateManagementApi* | [**UpdateKey**](docs/CertificateManagementApi.md#updatekey) | **Put** /v1/environments/{environmentID}/keys/{keyID} | UPDATE Key
 *CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDDecryptionsPost**](docs/CertificateManagementApi.md#v1environmentsenvironmentiddecryptionspost) | **Post** /v1/environments/{environmentID}/decryptions | DECRYPT Data
 *CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDEncryptionsPost**](docs/CertificateManagementApi.md#v1environmentsenvironmentidencryptionspost) | **Post** /v1/environments/{environmentID}/encryptions | ENCRYPT Data
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDKeysGet**](docs/CertificateManagementApi.md#v1environmentsenvironmentidkeysget) | **Get** /v1/environments/{environmentID}/keys | GET Keys
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDKeysKeyIDApplicationsGet**](docs/CertificateManagementApi.md#v1environmentsenvironmentidkeyskeyidapplicationsget) | **Get** /v1/environments/{environmentID}/keys/{keyID}/applications | GET Key Applications
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDKeysKeyIDCsrGet**](docs/CertificateManagementApi.md#v1environmentsenvironmentidkeyskeyidcsrget) | **Get** /v1/environments/{environmentID}/keys/{keyID}/csr | Export a certificate signing request (CSR)
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDKeysKeyIDCsrPut**](docs/CertificateManagementApi.md#v1environmentsenvironmentidkeyskeyidcsrput) | **Put** /v1/environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDKeysKeyIDDelete**](docs/CertificateManagementApi.md#v1environmentsenvironmentidkeyskeyiddelete) | **Delete** /v1/environments/{environmentID}/keys/{keyID} | DELETE Key
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDKeysKeyIDGet**](docs/CertificateManagementApi.md#v1environmentsenvironmentidkeyskeyidget) | **Get** /v1/environments/{environmentID}/keys/{keyID} | EXPORT Public Key (X509 PEM)
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDKeysKeyIDPut**](docs/CertificateManagementApi.md#v1environmentsenvironmentidkeyskeyidput) | **Put** /v1/environments/{environmentID}/keys/{keyID} | UPDATE Key
-*CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDKeysPost**](docs/CertificateManagementApi.md#v1environmentsenvironmentidkeyspost) | **Post** /v1/environments/{environmentID}/keys | CREATE Key with PKCS12 File
 *CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDSigningsPost**](docs/CertificateManagementApi.md#v1environmentsenvironmentidsigningspost) | **Post** /v1/environments/{environmentID}/signings | SIGN Data
 *CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDVerificationsPost**](docs/CertificateManagementApi.md#v1environmentsenvironmentidverificationspost) | **Post** /v1/environments/{environmentID}/verifications | VERIFY Signed Data
-*CustomDomainsApi* | [**V1EnvironmentsEnvironmentIDCustomDomainsCustomDomainIDDelete**](docs/CustomDomainsApi.md#v1environmentsenvironmentidcustomdomainscustomdomainiddelete) | **Delete** /v1/environments/{environmentID}/customDomains/{customDomainID} | DELETE Domain
-*CustomDomainsApi* | [**V1EnvironmentsEnvironmentIDCustomDomainsCustomDomainIDGet**](docs/CustomDomainsApi.md#v1environmentsenvironmentidcustomdomainscustomdomainidget) | **Get** /v1/environments/{environmentID}/customDomains/{customDomainID} | READ One Domain
-*CustomDomainsApi* | [**V1EnvironmentsEnvironmentIDCustomDomainsCustomDomainIDPost**](docs/CustomDomainsApi.md#v1environmentsenvironmentidcustomdomainscustomdomainidpost) | **Post** /v1/environments/{environmentID}/customDomains/{customDomainID} | Import Certificate
-*CustomDomainsApi* | [**V1EnvironmentsEnvironmentIDCustomDomainsGet**](docs/CustomDomainsApi.md#v1environmentsenvironmentidcustomdomainsget) | **Get** /v1/environments/{environmentID}/customDomains | READ All Domains
-*CustomDomainsApi* | [**V1EnvironmentsEnvironmentIDCustomDomainsPost**](docs/CustomDomainsApi.md#v1environmentsenvironmentidcustomdomainspost) | **Post** /v1/environments/{environmentID}/customDomains | CREATE Domain
+*CustomDomainsApi* | [**CreateDomain**](docs/CustomDomainsApi.md#createdomain) | **Post** /v1/environments/{environmentID}/customDomains | CREATE Domain
+*CustomDomainsApi* | [**DeleteDomain**](docs/CustomDomainsApi.md#deletedomain) | **Delete** /v1/environments/{environmentID}/customDomains/{customDomainID} | DELETE Domain
+*CustomDomainsApi* | [**ReadAllDomains**](docs/CustomDomainsApi.md#readalldomains) | **Get** /v1/environments/{environmentID}/customDomains | READ All Domains
+*CustomDomainsApi* | [**ReadOneDomain**](docs/CustomDomainsApi.md#readonedomain) | **Get** /v1/environments/{environmentID}/customDomains/{customDomainID} | READ One Domain
+*CustomDomainsApi* | [**UpdateDomain**](docs/CustomDomainsApi.md#updatedomain) | **Post** /v1/environments/{environmentID}/customDomains/{customDomainID} | Update Domain
 *DeviceAuthenticationPolicyApi* | [**V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut**](docs/DeviceAuthenticationPolicyApi.md#v1environmentsenvironmentiddeviceauthenticationpolicydeviceauthpolicyidput) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthPolicyID} | UPDATE Device Authentication Policy
 *DeviceAuthenticationPolicyApi* | [**V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyGet**](docs/DeviceAuthenticationPolicyApi.md#v1environmentsenvironmentiddeviceauthenticationpolicyget) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicy | READ Device Authentication Policy
 *EnvironmentsApi* | [**CreateEnvironmentActiveLicense**](docs/EnvironmentsApi.md#createenvironmentactivelicense) | **Post** /v1/environments | CREATE Environment (Active License)
@@ -424,10 +424,13 @@ Class | Method | HTTP request | Description
  - [BillOfMaterialsProductsInnerBookmarksInner](docs/BillOfMaterialsProductsInnerBookmarksInner.md)
  - [BillOfMaterialsProductsInnerConsole](docs/BillOfMaterialsProductsInnerConsole.md)
  - [BillOfMaterialsProductsInnerDeployment](docs/BillOfMaterialsProductsInnerDeployment.md)
+ - [Certificate](docs/Certificate.md)
  - [CreateApplication201Response](docs/CreateApplication201Response.md)
  - [CreateApplicationRequest](docs/CreateApplicationRequest.md)
  - [CreateGateway201Response](docs/CreateGateway201Response.md)
  - [CreateGatewayRequest](docs/CreateGatewayRequest.md)
+ - [CustomDomain](docs/CustomDomain.md)
+ - [CustomDomainCertificate](docs/CustomDomainCertificate.md)
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedApplicationsInner](docs/EntityArrayEmbeddedApplicationsInner.md)
@@ -443,11 +446,21 @@ Class | Method | HTTP request | Description
  - [EnumApplicationTags](docs/EnumApplicationTags.md)
  - [EnumApplicationType](docs/EnumApplicationType.md)
  - [EnumAttributeMappingType](docs/EnumAttributeMappingType.md)
+ - [EnumCSRExportHeader](docs/EnumCSRExportHeader.md)
+ - [EnumCSRResponseImportHeader](docs/EnumCSRResponseImportHeader.md)
+ - [EnumCertificateKeyAlgorithm](docs/EnumCertificateKeyAlgorithm.md)
+ - [EnumCertificateKeySignagureAlgorithm](docs/EnumCertificateKeySignagureAlgorithm.md)
+ - [EnumCertificateKeyStatus](docs/EnumCertificateKeyStatus.md)
+ - [EnumCertificateKeyUsageType](docs/EnumCertificateKeyUsageType.md)
+ - [EnumCreateCertificateAcceptHeader](docs/EnumCreateCertificateAcceptHeader.md)
+ - [EnumCustomDomainPostHeader](docs/EnumCustomDomainPostHeader.md)
+ - [EnumCustomDomainStatus](docs/EnumCustomDomainStatus.md)
  - [EnumDurationUnitMinsHours](docs/EnumDurationUnitMinsHours.md)
  - [EnumEnabledStatus](docs/EnumEnabledStatus.md)
  - [EnumEnvironmentType](docs/EnumEnvironmentType.md)
  - [EnumGatewayLDAPSecurity](docs/EnumGatewayLDAPSecurity.md)
  - [EnumGatewayType](docs/EnumGatewayType.md)
+ - [EnumGetKeyAcceptHeader](docs/EnumGetKeyAcceptHeader.md)
  - [EnumHealthStatus](docs/EnumHealthStatus.md)
  - [EnumIdentityProvider](docs/EnumIdentityProvider.md)
  - [EnumIdentityProviderAttributeMappingType](docs/EnumIdentityProviderAttributeMappingType.md)
@@ -536,6 +549,7 @@ Class | Method | HTTP request | Description
  - [ImageTargets](docs/ImageTargets.md)
  - [ObjectApplication](docs/ObjectApplication.md)
  - [ObjectEnvironment](docs/ObjectEnvironment.md)
+ - [ObjectOrganization](docs/ObjectOrganization.md)
  - [ObjectPopulation](docs/ObjectPopulation.md)
  - [Organization](docs/Organization.md)
  - [OrganizationBillingConnectionsInner](docs/OrganizationBillingConnectionsInner.md)
@@ -613,6 +627,7 @@ Class | Method | HTTP request | Description
  - [SignOnPolicyActionProgressiveProfilingAllOfAttributes](docs/SignOnPolicyActionProgressiveProfilingAllOfAttributes.md)
  - [SignOnPolicyAssignment](docs/SignOnPolicyAssignment.md)
  - [UpdateApplicationRequest](docs/UpdateApplicationRequest.md)
+ - [UpdateDomain200Response](docs/UpdateDomain200Response.md)
  - [UpdateEnvironmentTypeRequest](docs/UpdateEnvironmentTypeRequest.md)
  - [User](docs/User.md)
  - [UserAccount](docs/UserAccount.md)

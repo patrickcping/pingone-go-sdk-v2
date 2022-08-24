@@ -20,7 +20,9 @@ type EntityArrayEmbedded struct {
 	Agreements []Agreement `json:"agreements,omitempty"`
 	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
 	Applications []EntityArrayEmbeddedApplicationsInner `json:"applications,omitempty"`
+	Certificates []Certificate `json:"certificates,omitempty"`
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
+	CustomDomains []CustomDomain `json:"customDomains,omitempty"`
 	Environments []Environment `json:"environments,omitempty"`
 	GatewayInstances []GatewayInstance `json:"gatewayInstances,omitempty"`
 	Gateways []EntityArrayEmbeddedGatewaysInner `json:"gateways,omitempty"`
@@ -28,6 +30,7 @@ type EntityArrayEmbedded struct {
 	Groups []Group `json:"groups,omitempty"`
 	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
 	IdentityProviders []IdentityProvider `json:"identityProviders,omitempty"`
+	Keys []Certificate `json:"keys,omitempty"`
 	Languages []AgreementLanguage `json:"languages,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
@@ -188,6 +191,38 @@ func (o *EntityArrayEmbedded) SetApplications(v []EntityArrayEmbeddedApplication
 	o.Applications = v
 }
 
+// GetCertificates returns the Certificates field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetCertificates() []Certificate {
+	if o == nil || o.Certificates == nil {
+		var ret []Certificate
+		return ret
+	}
+	return o.Certificates
+}
+
+// GetCertificatesOk returns a tuple with the Certificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetCertificatesOk() ([]Certificate, bool) {
+	if o == nil || o.Certificates == nil {
+		return nil, false
+	}
+	return o.Certificates, true
+}
+
+// HasCertificates returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasCertificates() bool {
+	if o != nil && o.Certificates != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificates gets a reference to the given []Certificate and assigns it to the Certificates field.
+func (o *EntityArrayEmbedded) SetCertificates(v []Certificate) {
+	o.Certificates = v
+}
+
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetCredentials() []GatewayCredential {
 	if o == nil || o.Credentials == nil {
@@ -218,6 +253,38 @@ func (o *EntityArrayEmbedded) HasCredentials() bool {
 // SetCredentials gets a reference to the given []GatewayCredential and assigns it to the Credentials field.
 func (o *EntityArrayEmbedded) SetCredentials(v []GatewayCredential) {
 	o.Credentials = v
+}
+
+// GetCustomDomains returns the CustomDomains field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetCustomDomains() []CustomDomain {
+	if o == nil || o.CustomDomains == nil {
+		var ret []CustomDomain
+		return ret
+	}
+	return o.CustomDomains
+}
+
+// GetCustomDomainsOk returns a tuple with the CustomDomains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetCustomDomainsOk() ([]CustomDomain, bool) {
+	if o == nil || o.CustomDomains == nil {
+		return nil, false
+	}
+	return o.CustomDomains, true
+}
+
+// HasCustomDomains returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasCustomDomains() bool {
+	if o != nil && o.CustomDomains != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomDomains gets a reference to the given []CustomDomain and assigns it to the CustomDomains field.
+func (o *EntityArrayEmbedded) SetCustomDomains(v []CustomDomain) {
+	o.CustomDomains = v
 }
 
 // GetEnvironments returns the Environments field value if set, zero value otherwise.
@@ -442,6 +509,38 @@ func (o *EntityArrayEmbedded) HasIdentityProviders() bool {
 // SetIdentityProviders gets a reference to the given []IdentityProvider and assigns it to the IdentityProviders field.
 func (o *EntityArrayEmbedded) SetIdentityProviders(v []IdentityProvider) {
 	o.IdentityProviders = v
+}
+
+// GetKeys returns the Keys field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetKeys() []Certificate {
+	if o == nil || o.Keys == nil {
+		var ret []Certificate
+		return ret
+	}
+	return o.Keys
+}
+
+// GetKeysOk returns a tuple with the Keys field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetKeysOk() ([]Certificate, bool) {
+	if o == nil || o.Keys == nil {
+		return nil, false
+	}
+	return o.Keys, true
+}
+
+// HasKeys returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasKeys() bool {
+	if o != nil && o.Keys != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKeys gets a reference to the given []Certificate and assigns it to the Keys field.
+func (o *EntityArrayEmbedded) SetKeys(v []Certificate) {
+	o.Keys = v
 }
 
 // GetLanguages returns the Languages field value if set, zero value otherwise.
@@ -874,8 +973,14 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	if o.Applications != nil {
 		toSerialize["applications"] = o.Applications
 	}
+	if o.Certificates != nil {
+		toSerialize["certificates"] = o.Certificates
+	}
 	if o.Credentials != nil {
 		toSerialize["credentials"] = o.Credentials
+	}
+	if o.CustomDomains != nil {
+		toSerialize["customDomains"] = o.CustomDomains
 	}
 	if o.Environments != nil {
 		toSerialize["environments"] = o.Environments
@@ -897,6 +1002,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.IdentityProviders != nil {
 		toSerialize["identityProviders"] = o.IdentityProviders
+	}
+	if o.Keys != nil {
+		toSerialize["keys"] = o.Keys
 	}
 	if o.Languages != nil {
 		toSerialize["languages"] = o.Languages
