@@ -4087,6 +4087,7 @@ paths:
       - Capabilities
   /v1/environments/{environmentID}/keys:
     get:
+      operationId: getKeys
       parameters:
       - explode: false
         in: path
@@ -4122,12 +4123,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: GET Keys
       tags:
       - Certificate Management
     post:
+      operationId: createKey
       parameters:
       - example: application/x-pkcs12-certificates
         explode: false
@@ -4146,9 +4150,12 @@ paths:
         style: simple
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Certificate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/_v1_environments__environmentID__keys_get_request'
+              $ref: '#/components/schemas/PKIFileUpload'
       responses:
         "400":
           content:
@@ -4190,13 +4197,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
           description: Successful response
-      summary: CREATE Key with PKCS12 File
+      summary: CREATE Key
       tags:
       - Certificate Management
   /v1/environments/{environmentID}/keys/{keyID}:
     delete:
+      operationId: deleteKey
       parameters:
       - explode: false
         in: path
@@ -4243,14 +4253,14 @@ paths:
       tags:
       - Certificate Management
     get:
+      operationId: getKey
       parameters:
-      - example: application/x-pkcs7-certificates
-        explode: false
+      - explode: false
         in: header
-        name: Content-Type
+        name: Accept
         required: false
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumGetKeyAcceptHeader'
         style: simple
       - explode: false
         in: path
@@ -4293,12 +4303,23 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/x-x509-ca-cert:
+              schema:
+                format: byte
+                type: string
+            application/x-pkcs7-certificates:
+              schema:
+                format: binary
+                type: string
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
           description: Successful response
-      summary: EXPORT Public Key (X509 PEM)
+      summary: GET Key
       tags:
       - Certificate Management
     put:
+      operationId: updateKey
       parameters:
       - explode: false
         in: path
@@ -4318,9 +4339,186 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                default: true
-              type: object
+              $ref: '#/components/schemas/Certificate'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
+          description: Successful response
+      summary: UPDATE Key
+      tags:
+      - Certificate Management
+  /v1/environments/{environmentID}/keys/{keyID}/applications:
+    get:
+      operationId: getKeyApplications
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: keyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: GET Key Applications
+      tags:
+      - Certificate Management
+  /v1/environments/{environmentID}/keys/{keyID}/csr:
+    get:
+      operationId: exportCSR
+      parameters:
+      - example: application/pkcs10
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          $ref: '#/components/schemas/EnumCSRExportHeader'
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: keyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/pkcs10:
+              schema:
+                format: byte
+                type: string
+          description: Successful response
+      summary: Export a certificate signing request (CSR)
+      tags:
+      - Certificate Management
+    put:
+      operationId: importCSRResponse
+      parameters:
+      - example: application/x-pem-file
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          $ref: '#/components/schemas/EnumCSRResponseImportHeader'
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: keyID
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "400":
           content:
@@ -4357,60 +4555,12 @@ paths:
           content:
             application/json: {}
           description: Successful response
-      summary: UPDATE Key
-      tags:
-      - Certificate Management
-  /v1/environments/{environmentID}/keys/{keyID}/applications:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: keyID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: GET Key Applications
+      summary: Import Certificate Authority (CA) Response to a CSR
       tags:
       - Certificate Management
   /v1/environments/{environmentID}/certificates:
     get:
+      operationId: getCertificates
       parameters:
       - explode: false
         in: path
@@ -4446,12 +4596,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: GET Certificates
       tags:
       - Certificate Management
     post:
+      operationId: createCertificateFromFile
       parameters:
       - example: application/x-pkcs7-certificates
         explode: false
@@ -4459,7 +4612,7 @@ paths:
         name: Content-Type
         required: false
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumCreateCertificateAcceptHeader'
         style: simple
       - explode: false
         in: path
@@ -4472,7 +4625,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/_v1_environments__environmentID__certificates_get_request'
+              $ref: '#/components/schemas/PKIFileUpload'
       responses:
         "400":
           content:
@@ -4512,15 +4665,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Uncaught error occurred.  Platform outage
-        "201":
+        "202":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
           description: Successful response
       summary: CREATE Certificate with PKCS7 or PEM File
       tags:
       - Certificate Management
   /v1/environments/{environmentID}/certificates/{certID}:
     delete:
+      operationId: deleteCertificate
       parameters:
       - explode: false
         in: path
@@ -4567,6 +4723,7 @@ paths:
       tags:
       - Certificate Management
     get:
+      operationId: getCertificate
       parameters:
       - explode: false
         in: path
@@ -4609,13 +4766,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
           description: Successful response
       summary: GET Certificate
       tags:
       - Certificate Management
   /v1/environments/{environmentID}/certificates/{certID}/applications:
     get:
+      operationId: getCertificateApplications
       parameters:
       - explode: false
         in: path
@@ -4658,7 +4818,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: GET Certificate Applications
       tags:
@@ -4929,128 +5091,9 @@ paths:
       summary: VERIFY Signed Data
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/keys/{keyID}/csr:
-    get:
-      parameters:
-      - example: application/pkcs10
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: keyID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Export a certificate signing request (CSR)
-      tags:
-      - Certificate Management
-    put:
-      parameters:
-      - example: application/x-pem-file
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: keyID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Import Certificate Authority (CA) Response to a CSR
-      tags:
-      - Certificate Management
   /v1/environments/{environmentID}/customDomains:
     get:
+      operationId: readAllDomains
       parameters:
       - explode: false
         in: path
@@ -5086,12 +5129,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Domains
       tags:
       - Custom Domains
     post:
+      operationId: createDomain
       parameters:
       - explode: false
         in: path
@@ -5104,9 +5150,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                domainName: custom-domain.example.com
-              type: object
+              $ref: '#/components/schemas/CustomDomain'
       responses:
         "400":
           content:
@@ -5155,6 +5199,7 @@ paths:
       - Custom Domains
   /v1/environments/{environmentID}/customDomains/{customDomainID}:
     delete:
+      operationId: deleteDomain
       parameters:
       - explode: false
         in: path
@@ -5201,6 +5246,7 @@ paths:
       tags:
       - Custom Domains
     get:
+      operationId: readOneDomain
       parameters:
       - explode: false
         in: path
@@ -5243,20 +5289,22 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomain'
           description: Successful response
       summary: READ One Domain
       tags:
       - Custom Domains
     post:
+      operationId: updateDomain
       parameters:
-      - example: application/vnd.pingidentity.certificate.import+json
-        explode: false
+      - explode: false
         in: header
         name: Content-Type
         required: false
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumCustomDomainPostHeader'
         style: simple
       - explode: false
         in: path
@@ -5276,23 +5324,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                certificate: |-
-                  -----BEGIN CERTIFICATE-----
-                  ...
-                  -----END CERTIFICATE-----
-                intermediateCertificates: |-
-                  -----BEGIN CERTIFICATE-----
-                  ...
-                  -----END CERTIFICATE-----
-                  -----BEGIN CERTIFICATE-----
-                  ...
-                  -----END CERTIFICATE-----
-                privateKey: |-
-                  -----BEGIN RSA PRIVATE KEY-----
-                  ...
-                  -----END RSA PRIVATE KEY-----
-              type: object
+              $ref: '#/components/schemas/updateDomain_request'
       responses:
         "400":
           content:
@@ -5334,9 +5366,11 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateDomain_200_response'
           description: Successful response
-      summary: Import Certificate
+      summary: Update Domain
       tags:
       - Custom Domains
   /v1/environments/{environmentID}/deviceAuthenticationPolicy:
@@ -17935,6 +17969,61 @@ components:
       - SCOPE
       - CUSTOM
       type: string
+    EnumCertificateKeyAlgorithm:
+      description: "Specifies the key algorithm. Options are RSA, EC, and UNKNOWN."
+      enum:
+      - RSA
+      - EC
+      - UNKNOWN
+      type: string
+    EnumCertificateKeySignagureAlgorithm:
+      description: Specifies the signature algorithm of the key. Options are SHA256withRSA
+        and SHA512withRSA.
+      enum:
+      - SHA256withRSA
+      - SHA512withRSA
+      type: string
+    EnumCertificateKeyStatus:
+      description: "Specifies the status of the key. Options are VALID, EXPIRED, NOT_YET_VALID,\
+        \ and REVOKED."
+      enum:
+      - VALID
+      - EXPIRED
+      - NOT_YET_VALID
+      - REVOKED
+      type: string
+    EnumCertificateKeyUsageType:
+      description: Specifies how the certificate is used. Options are ENCRYPTION and
+        SIGNING.
+      enum:
+      - ENCRYPTION
+      - SIGNING
+      type: string
+    EnumCreateCertificateAcceptHeader:
+      enum:
+      - application/x-pkcs7-certificates
+      type: string
+    EnumCSRExportHeader:
+      enum:
+      - application/pkcs10
+      type: string
+    EnumCSRResponseImportHeader:
+      enum:
+      - application/x-pem-file
+      type: string
+    EnumCustomDomainPostHeader:
+      enum:
+      - application/vnd.pingidentity.certificate.import+json
+      - application/vnd.pingidentity.domainName.verify+json
+      type: string
+    EnumCustomDomainStatus:
+      description: "A string that specifies the status of the custom domain. Options\
+        \ are ACTIVE, VERIFICATION_REQUIRED, and SSL_CERTIFICATE_REQUIRED."
+      enum:
+      - ACTIVE
+      - VERIFICATION_REQUIRED
+      - SSL_CERTIFICATE_REQUIRED
+      type: string
     EnumEnvironmentType:
       description: A string that specifies the type of environment to use.
       enum:
@@ -17956,6 +18045,12 @@ components:
       - LDAP
       - PING_FEDERATE
       - PING_INTELLIGENCE
+      type: string
+    EnumGetKeyAcceptHeader:
+      enum:
+      - application/json
+      - application/x-pkcs7-certificates
+      - application/x-x509-ca-cert
       type: string
     EnumHealthStatus:
       description: An enumeration that specifies whether or not the gateway is in
@@ -18662,9 +18757,152 @@ components:
       required:
       - products
       type: object
+    Certificate:
+      example:
+        serialNumber: 5
+        issuerDN: issuerDN
+        expiresAt: 2000-01-23T04:56:07.000+00:00
+        signatureAlgorithm: null
+        validityPeriod: 1
+        createdAt: createdAt
+        default: true
+        environment:
+          id: id
+        keyLength: 5
+        organization:
+          id: id
+        name: name
+        startsAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        algorithm: null
+        status: null
+        subjectDN: subjectDN
+        usageType: null
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/EnumCertificateKeyAlgorithm'
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        default:
+          description: Specifies whether this is the default key for the specified
+            environment.
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        expiresAt:
+          description: The time the resource was created.
+          format: date-time
+          readOnly: true
+          type: string
+        id:
+          description: Specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        issuerDN:
+          description: Specifies the distinguished name of the certificate issuer.
+          type: string
+        keyLength:
+          description: "Specifies the key length. For RSA keys, options are 2048,\
+            \ 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256,\
+            \ and 384."
+          type: integer
+        name:
+          description: Specifies the resource name.
+          type: string
+        organization:
+          $ref: '#/components/schemas/ObjectOrganization'
+        serialNumber:
+          description: Specifies the serial number of the key or certificate.
+          type: integer
+        signatureAlgorithm:
+          $ref: '#/components/schemas/EnumCertificateKeySignagureAlgorithm'
+        startsAt:
+          description: The time the validity period starts.
+          format: date-time
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumCertificateKeyStatus'
+        subjectDN:
+          description: Specifies the distinguished name of the subject being secured.
+          type: string
+        usageType:
+          $ref: '#/components/schemas/EnumCertificateKeyUsageType'
+        validityPeriod:
+          description: Specifies the number of days the key is valid.
+          minimum: 1
+          type: integer
+      required:
+      - algorithm
+      - default
+      - issuerDN
+      - keyLength
+      - serialNumber
+      - signatureAlgorithm
+      - startsAt
+      - status
+      - subjectDN
+      - usageType
+      - validityPeriod
+      type: object
+    CustomDomain:
+      example:
+        environment:
+          id: id
+        domainName: domainName
+        certificate:
+          expiresAt: expiresAt
+        id: id
+        canonicalName: canonicalName
+        status: null
+      properties:
+        certificate:
+          $ref: '#/components/schemas/CustomDomain_certificate'
+        canonicalName:
+          description: A string that specifies the domain name that should be used
+            as the value of the CNAME record in the customer’s DNS.
+          readOnly: true
+          type: string
+        domainName:
+          description: "A string that specifies the resource name, which must be provided\
+            \ and must be unique within an environment (for example, auth.shopco.com).\
+            \ This is a required property."
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumCustomDomainStatus'
+      required:
+      - domainName
+      type: object
+    CustomDomainCertificate:
+      properties:
+        certificate:
+          description: "A string that specifies the PEM-encoded certificate to import.\
+            \ This is a required property. The following validation is performed on\
+            \ the certificate: \\\nIt must not be expired. \\\nIt MUST not be self\
+            \ signed. \\\nThe custom domain name MUST match one of the subject alternative\
+            \ name (SAN) values on the certificate.\n"
+          type: string
+        intermediateCertificates:
+          description: A string that specifies the PEM-encoded certificate chain.
+          type: string
+        privateKey:
+          description: "A string that specifies the PEM-encoded, unencrypted private\
+            \ key that matches the certificate's public key. This is a required property."
+          type: string
+      required:
+      - certificate
+      - privateKey
+      type: object
     EntityArray:
       example:
-        size: 2.8841621266687802
+        size: 5.944895607614016
         _embedded:
           credentials:
           - createdAt: createdAt
@@ -18708,6 +18946,45 @@ components:
                   href: https://example.com
             license:
               id: 34f0efac-21d9-4a17-8a35-196bb3362983
+          keys:
+          - serialNumber: 5
+            issuerDN: issuerDN
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            signatureAlgorithm: null
+            validityPeriod: 1
+            createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            keyLength: 5
+            organization:
+              id: id
+            name: name
+            startsAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            algorithm: null
+            status: null
+            subjectDN: subjectDN
+            usageType: null
+          - serialNumber: 5
+            issuerDN: issuerDN
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            signatureAlgorithm: null
+            validityPeriod: 1
+            createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            keyLength: 5
+            organization:
+              id: id
+            name: name
+            startsAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            algorithm: null
+            status: null
+            subjectDN: subjectDN
+            usageType: null
           roles:
           - permissions:
             - classifier: classifier
@@ -18748,16 +19025,33 @@ components:
             description: description
             id: id
             updatedAt: updatedAt
+          customDomains:
+          - environment:
+              id: id
+            domainName: domainName
+            certificate:
+              expiresAt: expiresAt
+            id: id
+            canonicalName: canonicalName
+            status: null
+          - environment:
+              id: id
+            domainName: domainName
+            certificate:
+              expiresAt: expiresAt
+            id: id
+            canonicalName: canonicalName
+            status: null
           passwordPolicies:
           - minCharacters:
-              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-              "0123456789": 5
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-              abcdefghijklmnopqrstuvwxyz: 4
-            populationCount: 8
+              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+              "0123456789": 6
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
+              abcdefghijklmnopqrstuvwxyz: 9
+            populationCount: 3
             length:
-              min: 25
-              max: 4
+              min: 11
+              max: 1
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -18780,18 +19074,18 @@ components:
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 6
+            maxRepeatedCharacters: 4
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-              "0123456789": 5
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-              abcdefghijklmnopqrstuvwxyz: 4
-            populationCount: 8
+              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+              "0123456789": 6
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
+              abcdefghijklmnopqrstuvwxyz: 9
+            populationCount: 3
             length:
-              min: 25
-              max: 4
+              min: 11
+              max: 1
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -18814,7 +19108,7 @@ components:
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 6
+            maxRepeatedCharacters: 4
             minAgeDays: 1
             updatedAt: updatedAt
           revisions:
@@ -18936,7 +19230,7 @@ components:
             reconsentPeriodDays: 6
           groups:
           - directMemberCounts:
-              users: 7
+              users: 2
             environment:
               id: id
             name: name
@@ -18946,11 +19240,11 @@ components:
             customData: "{}"
             id: id
             totalMemberCounts:
-              users: 9
+              users: 4
             population:
               id: id
           - directMemberCounts:
-              users: 7
+              users: 2
             environment:
               id: id
             name: name
@@ -18960,7 +19254,7 @@ components:
             customData: "{}"
             id: id
             totalMemberCounts:
-              users: 9
+              users: 4
             population:
               id: id
           resources:
@@ -18970,7 +19264,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 6
+            accessTokenValiditySeconds: 1
             name: name
             description: description
             id: id
@@ -18982,7 +19276,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 6
+            accessTokenValiditySeconds: 1
             name: name
             description: description
             id: id
@@ -19138,6 +19432,45 @@ components:
               id: id
             id: id
             priority: 1
+          certificates:
+          - serialNumber: 5
+            issuerDN: issuerDN
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            signatureAlgorithm: null
+            validityPeriod: 1
+            createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            keyLength: 5
+            organization:
+              id: id
+            name: name
+            startsAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            algorithm: null
+            status: null
+            subjectDN: subjectDN
+            usageType: null
+          - serialNumber: 5
+            issuerDN: issuerDN
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+            signatureAlgorithm: null
+            validityPeriod: 1
+            createdAt: createdAt
+            default: true
+            environment:
+              id: id
+            keyLength: 5
+            organization:
+              id: id
+            name: name
+            startsAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            algorithm: null
+            status: null
+            subjectDN: subjectDN
+            usageType: null
           schemas:
           - environment:
               id: id
@@ -19264,7 +19597,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 9
+            userCount: 6
             name: name
             description: description
             id: id
@@ -19272,14 +19605,14 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 9
+            userCount: 6
             name: name
             description: description
             id: id
             updatedAt: updatedAt
           gatewayInstances:
           - lastReportedAt: lastReportedAt
-            responseTimeMillis: 2.3021358869347655
+            responseTimeMillis: 3.616076749251911
             version:
               updateStatus: null
               versionNumber: versionNumber
@@ -19290,17 +19623,17 @@ components:
             - currentErrors
             - currentErrors
             hostname: hostname
-            operationsPerSecond: 5.637376656633329
+            operationsPerSecond: 9.301444243932576
             credential:
               id: id
             healthStatus: null
             initializedAt: initializedAt
             id: id
-            busyPercentage: 5
+            busyPercentage: 7
             gateway:
               id: id
           - lastReportedAt: lastReportedAt
-            responseTimeMillis: 2.3021358869347655
+            responseTimeMillis: 3.616076749251911
             version:
               updateStatus: null
               versionNumber: versionNumber
@@ -19311,19 +19644,19 @@ components:
             - currentErrors
             - currentErrors
             hostname: hostname
-            operationsPerSecond: 5.637376656633329
+            operationsPerSecond: 9.301444243932576
             credential:
               id: id
             healthStatus: null
             initializedAt: initializedAt
             id: id
-            busyPercentage: 5
+            busyPercentage: 7
             gateway:
               id: id
           applications:
           - null
           - null
-        count: 1.284659006116532
+        count: 6.878052220127876
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -19467,7 +19800,7 @@ components:
     GatewayInstance:
       example:
         lastReportedAt: lastReportedAt
-        responseTimeMillis: 2.3021358869347655
+        responseTimeMillis: 3.616076749251911
         version:
           updateStatus: null
           versionNumber: versionNumber
@@ -19478,13 +19811,13 @@ components:
         - currentErrors
         - currentErrors
         hostname: hostname
-        operationsPerSecond: 5.637376656633329
+        operationsPerSecond: 9.301444243932576
         credential:
           id: id
         healthStatus: null
         initializedAt: initializedAt
         id: id
-        busyPercentage: 5
+        busyPercentage: 7
         gateway:
           id: id
       properties:
@@ -19541,7 +19874,7 @@ components:
     Group:
       example:
         directMemberCounts:
-          users: 7
+          users: 2
         environment:
           id: id
         name: name
@@ -19551,7 +19884,7 @@ components:
         customData: "{}"
         id: id
         totalMemberCounts:
-          users: 9
+          users: 4
         population:
           id: id
       properties:
@@ -19786,6 +20119,18 @@ components:
         targets:
           $ref: '#/components/schemas/Image_targets'
       type: object
+    PKIFileUpload:
+      properties:
+        usageType:
+          example: ENCRYPTION
+          type: string
+        file:
+          format: binary
+          type: string
+      required:
+      - file
+      - usageType
+      type: object
     ObjectApplication:
       example:
         id: id
@@ -19803,6 +20148,17 @@ components:
       properties:
         id:
           description: A string that specifies the environment associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    ObjectOrganization:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the organization associated with the
             object.
           readOnly: true
           type: string
@@ -19886,14 +20242,14 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-          "0123456789": 5
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-          abcdefghijklmnopqrstuvwxyz: 4
-        populationCount: 8
+          ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+          "0123456789": 6
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
+          abcdefghijklmnopqrstuvwxyz: 9
+        populationCount: 3
         length:
-          min: 25
-          max: 4
+          min: 11
+          max: 1
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -19916,7 +20272,7 @@ components:
         name: name
         maxAgeDays: 1
         id: id
-        maxRepeatedCharacters: 6
+        maxRepeatedCharacters: 4
         minAgeDays: 1
         updatedAt: updatedAt
       properties:
@@ -20029,7 +20385,7 @@ components:
         createdAt: createdAt
         passwordPolicy:
           id: id
-        userCount: 9
+        userCount: 6
         name: name
         description: description
         id: id
@@ -20071,7 +20427,7 @@ components:
           id: id
         resource:
           id: id
-        accessTokenValiditySeconds: 6
+        accessTokenValiditySeconds: 1
         name: name
         description: description
         id: id
@@ -20963,24 +21319,14 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
-    _v1_environments__environmentID__keys_get_request:
-      properties:
-        usageType:
-          example: ENCRYPTION
-          type: string
-        file:
-          format: binary
-          type: string
-      type: object
-    _v1_environments__environmentID__certificates_get_request:
-      properties:
-        usageType:
-          example: SIGNING
-          type: string
-        file:
-          format: binary
-          type: string
-      type: object
+    updateDomain_request:
+      oneOf:
+      - $ref: '#/components/schemas/CustomDomainCertificate'
+      - {}
+    updateDomain_200_response:
+      oneOf:
+      - $ref: '#/components/schemas/CustomDomainCertificate'
+      - $ref: '#/components/schemas/CustomDomain'
     updateEnvironmentType_request:
       example:
         type: PRODUCTION
@@ -21434,6 +21780,19 @@ components:
       required:
       - type
       type: object
+    CustomDomain_certificate:
+      description: "An object that specifies information about the SSL certificate\
+        \ used by this custom domain. If this property is not present, it indicates\
+        \ that an SSL certificate has not been setup for this custom domain."
+      example:
+        expiresAt: expiresAt
+      properties:
+        expiresAt:
+          description: The time when the certificate expires.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
     EntityArray__embedded_attributes_inner:
       oneOf:
       - $ref: '#/components/schemas/ApplicationAttributeMapping'
@@ -21492,6 +21851,45 @@ components:
                 href: https://example.com
           license:
             id: 34f0efac-21d9-4a17-8a35-196bb3362983
+        keys:
+        - serialNumber: 5
+          issuerDN: issuerDN
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          signatureAlgorithm: null
+          validityPeriod: 1
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          keyLength: 5
+          organization:
+            id: id
+          name: name
+          startsAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          algorithm: null
+          status: null
+          subjectDN: subjectDN
+          usageType: null
+        - serialNumber: 5
+          issuerDN: issuerDN
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          signatureAlgorithm: null
+          validityPeriod: 1
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          keyLength: 5
+          organization:
+            id: id
+          name: name
+          startsAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          algorithm: null
+          status: null
+          subjectDN: subjectDN
+          usageType: null
         roles:
         - permissions:
           - classifier: classifier
@@ -21532,16 +21930,33 @@ components:
           description: description
           id: id
           updatedAt: updatedAt
+        customDomains:
+        - environment:
+            id: id
+          domainName: domainName
+          certificate:
+            expiresAt: expiresAt
+          id: id
+          canonicalName: canonicalName
+          status: null
+        - environment:
+            id: id
+          domainName: domainName
+          certificate:
+            expiresAt: expiresAt
+          id: id
+          canonicalName: canonicalName
+          status: null
         passwordPolicies:
         - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-            "0123456789": 5
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-            abcdefghijklmnopqrstuvwxyz: 4
-          populationCount: 8
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+            "0123456789": 6
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
+            abcdefghijklmnopqrstuvwxyz: 9
+          populationCount: 3
           length:
-            min: 25
-            max: 4
+            min: 11
+            max: 1
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -21564,18 +21979,18 @@ components:
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 6
+          maxRepeatedCharacters: 4
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-            "0123456789": 5
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-            abcdefghijklmnopqrstuvwxyz: 4
-          populationCount: 8
+            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+            "0123456789": 6
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
+            abcdefghijklmnopqrstuvwxyz: 9
+          populationCount: 3
           length:
-            min: 25
-            max: 4
+            min: 11
+            max: 1
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -21598,7 +22013,7 @@ components:
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 6
+          maxRepeatedCharacters: 4
           minAgeDays: 1
           updatedAt: updatedAt
         revisions:
@@ -21720,7 +22135,7 @@ components:
           reconsentPeriodDays: 6
         groups:
         - directMemberCounts:
-            users: 7
+            users: 2
           environment:
             id: id
           name: name
@@ -21730,11 +22145,11 @@ components:
           customData: "{}"
           id: id
           totalMemberCounts:
-            users: 9
+            users: 4
           population:
             id: id
         - directMemberCounts:
-            users: 7
+            users: 2
           environment:
             id: id
           name: name
@@ -21744,7 +22159,7 @@ components:
           customData: "{}"
           id: id
           totalMemberCounts:
-            users: 9
+            users: 4
           population:
             id: id
         resources:
@@ -21754,7 +22169,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 6
+          accessTokenValiditySeconds: 1
           name: name
           description: description
           id: id
@@ -21766,7 +22181,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 6
+          accessTokenValiditySeconds: 1
           name: name
           description: description
           id: id
@@ -21922,6 +22337,45 @@ components:
             id: id
           id: id
           priority: 1
+        certificates:
+        - serialNumber: 5
+          issuerDN: issuerDN
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          signatureAlgorithm: null
+          validityPeriod: 1
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          keyLength: 5
+          organization:
+            id: id
+          name: name
+          startsAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          algorithm: null
+          status: null
+          subjectDN: subjectDN
+          usageType: null
+        - serialNumber: 5
+          issuerDN: issuerDN
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+          signatureAlgorithm: null
+          validityPeriod: 1
+          createdAt: createdAt
+          default: true
+          environment:
+            id: id
+          keyLength: 5
+          organization:
+            id: id
+          name: name
+          startsAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          algorithm: null
+          status: null
+          subjectDN: subjectDN
+          usageType: null
         schemas:
         - environment:
             id: id
@@ -22048,7 +22502,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 9
+          userCount: 6
           name: name
           description: description
           id: id
@@ -22056,14 +22510,14 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 9
+          userCount: 6
           name: name
           description: description
           id: id
           updatedAt: updatedAt
         gatewayInstances:
         - lastReportedAt: lastReportedAt
-          responseTimeMillis: 2.3021358869347655
+          responseTimeMillis: 3.616076749251911
           version:
             updateStatus: null
             versionNumber: versionNumber
@@ -22074,17 +22528,17 @@ components:
           - currentErrors
           - currentErrors
           hostname: hostname
-          operationsPerSecond: 5.637376656633329
+          operationsPerSecond: 9.301444243932576
           credential:
             id: id
           healthStatus: null
           initializedAt: initializedAt
           id: id
-          busyPercentage: 5
+          busyPercentage: 7
           gateway:
             id: id
         - lastReportedAt: lastReportedAt
-          responseTimeMillis: 2.3021358869347655
+          responseTimeMillis: 3.616076749251911
           version:
             updateStatus: null
             versionNumber: versionNumber
@@ -22095,13 +22549,13 @@ components:
           - currentErrors
           - currentErrors
           hostname: hostname
-          operationsPerSecond: 5.637376656633329
+          operationsPerSecond: 9.301444243932576
           credential:
             id: id
           healthStatus: null
           initializedAt: initializedAt
           id: id
-          busyPercentage: 5
+          busyPercentage: 7
           gateway:
             id: id
         applications:
@@ -22124,9 +22578,17 @@ components:
           items:
             $ref: '#/components/schemas/EntityArray__embedded_applications_inner'
           type: array
+        certificates:
+          items:
+            $ref: '#/components/schemas/Certificate'
+          type: array
         credentials:
           items:
             $ref: '#/components/schemas/GatewayCredential'
+          type: array
+        customDomains:
+          items:
+            $ref: '#/components/schemas/CustomDomain'
           type: array
         environments:
           items:
@@ -22155,6 +22617,10 @@ components:
         identityProviders:
           items:
             $ref: '#/components/schemas/IdentityProvider'
+          type: array
+        keys:
+          items:
+            $ref: '#/components/schemas/Certificate'
           type: array
         languages:
           items:
@@ -22409,7 +22875,7 @@ components:
         \ Since these members were explicitly added to the group, they can be removed\
         \ from the group with DELETE /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}."
       example:
-        users: 7
+        users: 2
       properties:
         users:
           description: Number of users with direct membership
@@ -22422,7 +22888,7 @@ components:
         \ with the include=totalMemberCounts query parameter to retrieve this property.\
         \ This property is not returned with a list of groups."
       example:
-        users: 9
+        users: 4
       properties:
         users:
           description: Number of users with direct membership
@@ -22838,8 +23304,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 25
-        max: 4
+        min: 11
+        max: 1
       properties:
         max:
           default: 255
@@ -22881,10 +23347,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 9
-        "0123456789": 5
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 1
-        abcdefghijklmnopqrstuvwxyz: 4
+        ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+        "0123456789": 6
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
+        abcdefghijklmnopqrstuvwxyz: 9
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)

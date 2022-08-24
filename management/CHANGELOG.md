@@ -1,6 +1,9 @@
 # v0.6.0 (Unreleased)
 
 * **Bug fix** - Correct `PINGONE_API` from incorrect `PING_ONE_API` in `EnumResourceType` enum
+* **Feature** Support for Custom Domains
+* **Feature** Support for Keypairs
+* **Feature** Support for Certificates
 
 # v0.5.0 (2022-08-17)
 

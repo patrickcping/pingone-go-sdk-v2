@@ -29,5 +29,6 @@ CHANGELOG.md
 model_password_policy_min_characters.go
 api_password_policies.go
 model_sign_on_policy_action.go
+PasswordPolicyMinCharacters.md
 GNUmakefile
 .version
