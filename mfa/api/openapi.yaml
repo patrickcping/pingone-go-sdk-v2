@@ -55,6 +55,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -204,6 +211,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -264,6 +278,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -391,6 +412,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -518,6 +546,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -571,6 +606,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -748,6 +790,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -793,6 +842,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -923,6 +979,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -975,6 +1038,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1125,6 +1195,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1184,6 +1261,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1481,6 +1565,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1611,6 +1702,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
@@ -1670,6 +1768,13 @@ paths:
           type: string
         style: simple
       responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
         "401":
           content:
             application/json:
