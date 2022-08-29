@@ -51,25 +51,25 @@ type APIClient struct {
 
 	ActiveIdentityCountsApi *ActiveIdentityCountsApiService
 
-	AgreementManagementAgreementLanguagesResourcesApi *AgreementManagementAgreementLanguagesResourcesApiService
+	AgreementLanguagesResourcesApi *AgreementLanguagesResourcesApiService
 
-	AgreementManagementAgreementRevisionsResourcesApi *AgreementManagementAgreementRevisionsResourcesApiService
+	AgreementRevisionsResourcesApi *AgreementRevisionsResourcesApiService
 
-	AgreementManagementAgreementsResourcesApi *AgreementManagementAgreementsResourcesApiService
+	AgreementsResourcesApi *AgreementsResourcesApiService
 
 	AlertingApi *AlertingApiService
 
-	ApplicationsApplicationAttributeMappingApi *ApplicationsApplicationAttributeMappingApiService
+	ApplicationAttributeMappingApi *ApplicationAttributeMappingApiService
 
-	ApplicationsApplicationResourceGrantsApi *ApplicationsApplicationResourceGrantsApiService
+	ApplicationResourceGrantsApi *ApplicationResourceGrantsApiService
 
-	ApplicationsApplicationRoleAssignmentsApi *ApplicationsApplicationRoleAssignmentsApiService
+	ApplicationRoleAssignmentsApi *ApplicationRoleAssignmentsApiService
 
-	ApplicationsApplicationSecretApi *ApplicationsApplicationSecretApiService
+	ApplicationSecretApi *ApplicationSecretApiService
 
-	ApplicationsApplicationSignOnPolicyAssignmentsApi *ApplicationsApplicationSignOnPolicyAssignmentsApiService
+	ApplicationSignOnPolicyAssignmentsApi *ApplicationSignOnPolicyAssignmentsApiService
 
-	ApplicationsApplicationsApi *ApplicationsApplicationsApiService
+	ApplicationsApi *ApplicationsApiService
 
 	AuditActivitiesApi *AuditActivitiesApiService
 
@@ -77,9 +77,9 @@ type APIClient struct {
 
 	BillOfMaterialsBOMApi *BillOfMaterialsBOMApiService
 
-	BrandingBrandingSettingsApi *BrandingBrandingSettingsApiService
+	BrandingSettingsApi *BrandingSettingsApiService
 
-	BrandingBrandingThemesApi *BrandingBrandingThemesApiService
+	BrandingThemesApi *BrandingThemesApiService
 
 	CapabilitiesApi *CapabilitiesApiService
 
@@ -89,105 +89,105 @@ type APIClient struct {
 
 	DeviceAuthenticationPolicyApi *DeviceAuthenticationPolicyApiService
 
+	EnableUsersApi *EnableUsersApiService
+
 	EnvironmentsApi *EnvironmentsApiService
 
-	GatewayManagementGatewayCredentialsApi *GatewayManagementGatewayCredentialsApiService
+	GatewayCredentialsApi *GatewayCredentialsApiService
 
-	GatewayManagementGatewayInstancesApi *GatewayManagementGatewayInstancesApiService
+	GatewayInstancesApi *GatewayInstancesApiService
 
-	GatewayManagementGatewayRoleAssignmentsApi *GatewayManagementGatewayRoleAssignmentsApiService
+	GatewayRoleAssignmentsApi *GatewayRoleAssignmentsApiService
 
-	GatewayManagementGatewaysApi *GatewayManagementGatewaysApiService
+	GatewaysApi *GatewaysApiService
+
+	GroupMembershipApi *GroupMembershipApiService
 
 	GroupsApi *GroupsApiService
 
-	IdentityPropagationProvisioningPropagationMappingsApi *IdentityPropagationProvisioningPropagationMappingsApiService
+	IdentityProviderAttributesApi *IdentityProviderAttributesApiService
 
-	IdentityPropagationProvisioningPropagationPlansApi *IdentityPropagationProvisioningPropagationPlansApiService
-
-	IdentityPropagationProvisioningPropagationRevisionsApi *IdentityPropagationProvisioningPropagationRevisionsApiService
-
-	IdentityPropagationProvisioningPropagationRulesApi *IdentityPropagationProvisioningPropagationRulesApiService
-
-	IdentityPropagationProvisioningPropagationStoreMetadataApi *IdentityPropagationProvisioningPropagationStoreMetadataApiService
-
-	IdentityPropagationProvisioningPropagationStoresApi *IdentityPropagationProvisioningPropagationStoresApiService
-
-	IdentityProviderManagementIdentityProviderAttributesApi *IdentityProviderManagementIdentityProviderAttributesApiService
-
-	IdentityProviderManagementIdentityProvidersApi *IdentityProviderManagementIdentityProvidersApiService
+	IdentityProvidersApi *IdentityProvidersApiService
 
 	ImagesApi *ImagesApiService
 
 	IntegrationCatalogApi *IntegrationCatalogApiService
 
-	LanguageManagementLanguageLocalizationStatusApi *LanguageManagementLanguageLocalizationStatusApiService
+	LanguageLocalizationStatusApi *LanguageLocalizationStatusApiService
 
-	LanguageManagementLanguagesApi *LanguageManagementLanguagesApiService
+	LanguagesApi *LanguagesApiService
 
 	LicensesApi *LicensesApiService
 
-	NotificationsNotificationsSettingsApi *NotificationsNotificationsSettingsApiService
+	LinkedAccountsApi *LinkedAccountsApiService
 
-	NotificationsNotificationsSettingsSMTPApi *NotificationsNotificationsSettingsSMTPApiService
+	MFAPairingKeysApi *MFAPairingKeysApiService
 
-	NotificationsNotificationsTemplatesApi *NotificationsNotificationsTemplatesApiService
+	NotificationsSettingsApi *NotificationsSettingsApiService
 
-	NotificationsPhoneDeliverySettingsApi *NotificationsPhoneDeliverySettingsApiService
+	NotificationsSettingsSMTPApi *NotificationsSettingsSMTPApiService
 
-	NotificationsTrustedEmailAddressesApi *NotificationsTrustedEmailAddressesApiService
-
-	NotificationsTrustedEmailDomainsApi *NotificationsTrustedEmailDomainsApiService
+	NotificationsTemplatesApi *NotificationsTemplatesApiService
 
 	OrganizationsApi *OrganizationsApiService
 
 	PasswordPoliciesApi *PasswordPoliciesApiService
 
+	PhoneDeliverySettingsApi *PhoneDeliverySettingsApiService
+
 	PopulationsApi *PopulationsApiService
 
-	ResourcesResourceAttributesApi *ResourcesResourceAttributesApiService
+	PropagationMappingsApi *PropagationMappingsApiService
 
-	ResourcesResourceScopesApi *ResourcesResourceScopesApiService
+	PropagationPlansApi *PropagationPlansApiService
 
-	ResourcesResourcesApi *ResourcesResourcesApiService
+	PropagationRevisionsApi *PropagationRevisionsApiService
+
+	PropagationRulesApi *PropagationRulesApiService
+
+	PropagationStoreMetadataApi *PropagationStoreMetadataApiService
+
+	PropagationStoresApi *PropagationStoresApiService
+
+	ResourceAttributesApi *ResourceAttributesApiService
+
+	ResourceScopesApi *ResourceScopesApiService
+
+	ResourcesApi *ResourcesApiService
 
 	RolesApi *RolesApiService
 
 	SchemasApi *SchemasApiService
 
-	SignOnPoliciesSignOnPoliciesApi *SignOnPoliciesSignOnPoliciesApiService
+	SessionsApi *SessionsApiService
 
-	SignOnPoliciesSignOnPolicyActionsApi *SignOnPoliciesSignOnPolicyActionsApiService
+	SignOnPoliciesApi *SignOnPoliciesApiService
+
+	SignOnPolicyActionsApi *SignOnPolicyActionsApiService
 
 	SubscriptionsWebhooksApi *SubscriptionsWebhooksApiService
 
 	TotalIdentitiesApi *TotalIdentitiesApiService
 
+	TrustedEmailAddressesApi *TrustedEmailAddressesApiService
+
+	TrustedEmailDomainsApi *TrustedEmailDomainsApiService
+
+	UserAccountsApi *UserAccountsApiService
+
 	UserActivitiesApi *UserActivitiesApiService
 
-	UsersEnableUsersApi *UsersEnableUsersApiService
+	UserAgreementConsentsApi *UserAgreementConsentsApiService
 
-	UsersGroupMembershipApi *UsersGroupMembershipApiService
+	UserIDVerificationApi *UserIDVerificationApiService
 
-	UsersLinkedAccountsApi *UsersLinkedAccountsApiService
+	UserPasswordsApi *UserPasswordsApiService
 
-	UsersMFAPairingKeysApi *UsersMFAPairingKeysApiService
+	UserPopulationsApi *UserPopulationsApiService
 
-	UsersSessionsApi *UsersSessionsApiService
+	UserRoleAssignmentsApi *UserRoleAssignmentsApiService
 
-	UsersUserAccountsApi *UsersUserAccountsApiService
-
-	UsersUserAgreementConsentsApi *UsersUserAgreementConsentsApiService
-
-	UsersUserIDVerificationApi *UsersUserIDVerificationApiService
-
-	UsersUserPasswordsApi *UsersUserPasswordsApiService
-
-	UsersUserPopulationsApi *UsersUserPopulationsApiService
-
-	UsersUserRoleAssignmentsApi *UsersUserRoleAssignmentsApiService
-
-	UsersUsersApi *UsersUsersApiService
+	UsersApi *UsersApiService
 }
 
 type service struct {
@@ -207,75 +207,75 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.ActiveIdentityCountsApi = (*ActiveIdentityCountsApiService)(&c.common)
-	c.AgreementManagementAgreementLanguagesResourcesApi = (*AgreementManagementAgreementLanguagesResourcesApiService)(&c.common)
-	c.AgreementManagementAgreementRevisionsResourcesApi = (*AgreementManagementAgreementRevisionsResourcesApiService)(&c.common)
-	c.AgreementManagementAgreementsResourcesApi = (*AgreementManagementAgreementsResourcesApiService)(&c.common)
+	c.AgreementLanguagesResourcesApi = (*AgreementLanguagesResourcesApiService)(&c.common)
+	c.AgreementRevisionsResourcesApi = (*AgreementRevisionsResourcesApiService)(&c.common)
+	c.AgreementsResourcesApi = (*AgreementsResourcesApiService)(&c.common)
 	c.AlertingApi = (*AlertingApiService)(&c.common)
-	c.ApplicationsApplicationAttributeMappingApi = (*ApplicationsApplicationAttributeMappingApiService)(&c.common)
-	c.ApplicationsApplicationResourceGrantsApi = (*ApplicationsApplicationResourceGrantsApiService)(&c.common)
-	c.ApplicationsApplicationRoleAssignmentsApi = (*ApplicationsApplicationRoleAssignmentsApiService)(&c.common)
-	c.ApplicationsApplicationSecretApi = (*ApplicationsApplicationSecretApiService)(&c.common)
-	c.ApplicationsApplicationSignOnPolicyAssignmentsApi = (*ApplicationsApplicationSignOnPolicyAssignmentsApiService)(&c.common)
-	c.ApplicationsApplicationsApi = (*ApplicationsApplicationsApiService)(&c.common)
+	c.ApplicationAttributeMappingApi = (*ApplicationAttributeMappingApiService)(&c.common)
+	c.ApplicationResourceGrantsApi = (*ApplicationResourceGrantsApiService)(&c.common)
+	c.ApplicationRoleAssignmentsApi = (*ApplicationRoleAssignmentsApiService)(&c.common)
+	c.ApplicationSecretApi = (*ApplicationSecretApiService)(&c.common)
+	c.ApplicationSignOnPolicyAssignmentsApi = (*ApplicationSignOnPolicyAssignmentsApiService)(&c.common)
+	c.ApplicationsApi = (*ApplicationsApiService)(&c.common)
 	c.AuditActivitiesApi = (*AuditActivitiesApiService)(&c.common)
 	c.AuthenticationsPerApplicationApi = (*AuthenticationsPerApplicationApiService)(&c.common)
 	c.BillOfMaterialsBOMApi = (*BillOfMaterialsBOMApiService)(&c.common)
-	c.BrandingBrandingSettingsApi = (*BrandingBrandingSettingsApiService)(&c.common)
-	c.BrandingBrandingThemesApi = (*BrandingBrandingThemesApiService)(&c.common)
+	c.BrandingSettingsApi = (*BrandingSettingsApiService)(&c.common)
+	c.BrandingThemesApi = (*BrandingThemesApiService)(&c.common)
 	c.CapabilitiesApi = (*CapabilitiesApiService)(&c.common)
 	c.CertificateManagementApi = (*CertificateManagementApiService)(&c.common)
 	c.CustomDomainsApi = (*CustomDomainsApiService)(&c.common)
 	c.DeviceAuthenticationPolicyApi = (*DeviceAuthenticationPolicyApiService)(&c.common)
+	c.EnableUsersApi = (*EnableUsersApiService)(&c.common)
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
-	c.GatewayManagementGatewayCredentialsApi = (*GatewayManagementGatewayCredentialsApiService)(&c.common)
-	c.GatewayManagementGatewayInstancesApi = (*GatewayManagementGatewayInstancesApiService)(&c.common)
-	c.GatewayManagementGatewayRoleAssignmentsApi = (*GatewayManagementGatewayRoleAssignmentsApiService)(&c.common)
-	c.GatewayManagementGatewaysApi = (*GatewayManagementGatewaysApiService)(&c.common)
+	c.GatewayCredentialsApi = (*GatewayCredentialsApiService)(&c.common)
+	c.GatewayInstancesApi = (*GatewayInstancesApiService)(&c.common)
+	c.GatewayRoleAssignmentsApi = (*GatewayRoleAssignmentsApiService)(&c.common)
+	c.GatewaysApi = (*GatewaysApiService)(&c.common)
+	c.GroupMembershipApi = (*GroupMembershipApiService)(&c.common)
 	c.GroupsApi = (*GroupsApiService)(&c.common)
-	c.IdentityPropagationProvisioningPropagationMappingsApi = (*IdentityPropagationProvisioningPropagationMappingsApiService)(&c.common)
-	c.IdentityPropagationProvisioningPropagationPlansApi = (*IdentityPropagationProvisioningPropagationPlansApiService)(&c.common)
-	c.IdentityPropagationProvisioningPropagationRevisionsApi = (*IdentityPropagationProvisioningPropagationRevisionsApiService)(&c.common)
-	c.IdentityPropagationProvisioningPropagationRulesApi = (*IdentityPropagationProvisioningPropagationRulesApiService)(&c.common)
-	c.IdentityPropagationProvisioningPropagationStoreMetadataApi = (*IdentityPropagationProvisioningPropagationStoreMetadataApiService)(&c.common)
-	c.IdentityPropagationProvisioningPropagationStoresApi = (*IdentityPropagationProvisioningPropagationStoresApiService)(&c.common)
-	c.IdentityProviderManagementIdentityProviderAttributesApi = (*IdentityProviderManagementIdentityProviderAttributesApiService)(&c.common)
-	c.IdentityProviderManagementIdentityProvidersApi = (*IdentityProviderManagementIdentityProvidersApiService)(&c.common)
+	c.IdentityProviderAttributesApi = (*IdentityProviderAttributesApiService)(&c.common)
+	c.IdentityProvidersApi = (*IdentityProvidersApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
 	c.IntegrationCatalogApi = (*IntegrationCatalogApiService)(&c.common)
-	c.LanguageManagementLanguageLocalizationStatusApi = (*LanguageManagementLanguageLocalizationStatusApiService)(&c.common)
-	c.LanguageManagementLanguagesApi = (*LanguageManagementLanguagesApiService)(&c.common)
+	c.LanguageLocalizationStatusApi = (*LanguageLocalizationStatusApiService)(&c.common)
+	c.LanguagesApi = (*LanguagesApiService)(&c.common)
 	c.LicensesApi = (*LicensesApiService)(&c.common)
-	c.NotificationsNotificationsSettingsApi = (*NotificationsNotificationsSettingsApiService)(&c.common)
-	c.NotificationsNotificationsSettingsSMTPApi = (*NotificationsNotificationsSettingsSMTPApiService)(&c.common)
-	c.NotificationsNotificationsTemplatesApi = (*NotificationsNotificationsTemplatesApiService)(&c.common)
-	c.NotificationsPhoneDeliverySettingsApi = (*NotificationsPhoneDeliverySettingsApiService)(&c.common)
-	c.NotificationsTrustedEmailAddressesApi = (*NotificationsTrustedEmailAddressesApiService)(&c.common)
-	c.NotificationsTrustedEmailDomainsApi = (*NotificationsTrustedEmailDomainsApiService)(&c.common)
+	c.LinkedAccountsApi = (*LinkedAccountsApiService)(&c.common)
+	c.MFAPairingKeysApi = (*MFAPairingKeysApiService)(&c.common)
+	c.NotificationsSettingsApi = (*NotificationsSettingsApiService)(&c.common)
+	c.NotificationsSettingsSMTPApi = (*NotificationsSettingsSMTPApiService)(&c.common)
+	c.NotificationsTemplatesApi = (*NotificationsTemplatesApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PasswordPoliciesApi = (*PasswordPoliciesApiService)(&c.common)
+	c.PhoneDeliverySettingsApi = (*PhoneDeliverySettingsApiService)(&c.common)
 	c.PopulationsApi = (*PopulationsApiService)(&c.common)
-	c.ResourcesResourceAttributesApi = (*ResourcesResourceAttributesApiService)(&c.common)
-	c.ResourcesResourceScopesApi = (*ResourcesResourceScopesApiService)(&c.common)
-	c.ResourcesResourcesApi = (*ResourcesResourcesApiService)(&c.common)
+	c.PropagationMappingsApi = (*PropagationMappingsApiService)(&c.common)
+	c.PropagationPlansApi = (*PropagationPlansApiService)(&c.common)
+	c.PropagationRevisionsApi = (*PropagationRevisionsApiService)(&c.common)
+	c.PropagationRulesApi = (*PropagationRulesApiService)(&c.common)
+	c.PropagationStoreMetadataApi = (*PropagationStoreMetadataApiService)(&c.common)
+	c.PropagationStoresApi = (*PropagationStoresApiService)(&c.common)
+	c.ResourceAttributesApi = (*ResourceAttributesApiService)(&c.common)
+	c.ResourceScopesApi = (*ResourceScopesApiService)(&c.common)
+	c.ResourcesApi = (*ResourcesApiService)(&c.common)
 	c.RolesApi = (*RolesApiService)(&c.common)
 	c.SchemasApi = (*SchemasApiService)(&c.common)
-	c.SignOnPoliciesSignOnPoliciesApi = (*SignOnPoliciesSignOnPoliciesApiService)(&c.common)
-	c.SignOnPoliciesSignOnPolicyActionsApi = (*SignOnPoliciesSignOnPolicyActionsApiService)(&c.common)
+	c.SessionsApi = (*SessionsApiService)(&c.common)
+	c.SignOnPoliciesApi = (*SignOnPoliciesApiService)(&c.common)
+	c.SignOnPolicyActionsApi = (*SignOnPolicyActionsApiService)(&c.common)
 	c.SubscriptionsWebhooksApi = (*SubscriptionsWebhooksApiService)(&c.common)
 	c.TotalIdentitiesApi = (*TotalIdentitiesApiService)(&c.common)
+	c.TrustedEmailAddressesApi = (*TrustedEmailAddressesApiService)(&c.common)
+	c.TrustedEmailDomainsApi = (*TrustedEmailDomainsApiService)(&c.common)
+	c.UserAccountsApi = (*UserAccountsApiService)(&c.common)
 	c.UserActivitiesApi = (*UserActivitiesApiService)(&c.common)
-	c.UsersEnableUsersApi = (*UsersEnableUsersApiService)(&c.common)
-	c.UsersGroupMembershipApi = (*UsersGroupMembershipApiService)(&c.common)
-	c.UsersLinkedAccountsApi = (*UsersLinkedAccountsApiService)(&c.common)
-	c.UsersMFAPairingKeysApi = (*UsersMFAPairingKeysApiService)(&c.common)
-	c.UsersSessionsApi = (*UsersSessionsApiService)(&c.common)
-	c.UsersUserAccountsApi = (*UsersUserAccountsApiService)(&c.common)
-	c.UsersUserAgreementConsentsApi = (*UsersUserAgreementConsentsApiService)(&c.common)
-	c.UsersUserIDVerificationApi = (*UsersUserIDVerificationApiService)(&c.common)
-	c.UsersUserPasswordsApi = (*UsersUserPasswordsApiService)(&c.common)
-	c.UsersUserPopulationsApi = (*UsersUserPopulationsApiService)(&c.common)
-	c.UsersUserRoleAssignmentsApi = (*UsersUserRoleAssignmentsApiService)(&c.common)
-	c.UsersUsersApi = (*UsersUsersApiService)(&c.common)
+	c.UserAgreementConsentsApi = (*UserAgreementConsentsApiService)(&c.common)
+	c.UserIDVerificationApi = (*UserIDVerificationApiService)(&c.common)
+	c.UserPasswordsApi = (*UserPasswordsApiService)(&c.common)
+	c.UserPopulationsApi = (*UserPopulationsApiService)(&c.common)
+	c.UserRoleAssignmentsApi = (*UserRoleAssignmentsApiService)(&c.common)
+	c.UsersApi = (*UsersApiService)(&c.common)
 
 	return c
 }

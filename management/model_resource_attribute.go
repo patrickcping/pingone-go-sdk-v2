@@ -24,7 +24,7 @@ type ResourceAttribute struct {
 	// A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as “${user.path.to.value}”, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are “${user.email}”, “${user.name.family}”, and “myClaimValueString”
 	Value string `json:"value"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Resource *ResourceResource `json:"resource,omitempty"`
+	Resource *IdentityProviderAttributeIdentityProvider `json:"resource,omitempty"`
 }
 
 // NewResourceAttribute instantiates a new ResourceAttribute object
@@ -191,9 +191,9 @@ func (o *ResourceAttribute) SetEnvironment(v ObjectEnvironment) {
 }
 
 // GetResource returns the Resource field value if set, zero value otherwise.
-func (o *ResourceAttribute) GetResource() ResourceResource {
+func (o *ResourceAttribute) GetResource() IdentityProviderAttributeIdentityProvider {
 	if o == nil || o.Resource == nil {
-		var ret ResourceResource
+		var ret IdentityProviderAttributeIdentityProvider
 		return ret
 	}
 	return *o.Resource
@@ -201,7 +201,7 @@ func (o *ResourceAttribute) GetResource() ResourceResource {
 
 // GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceAttribute) GetResourceOk() (*ResourceResource, bool) {
+func (o *ResourceAttribute) GetResourceOk() (*IdentityProviderAttributeIdentityProvider, bool) {
 	if o == nil || o.Resource == nil {
 		return nil, false
 	}
@@ -217,8 +217,8 @@ func (o *ResourceAttribute) HasResource() bool {
 	return false
 }
 
-// SetResource gets a reference to the given ResourceResource and assigns it to the Resource field.
-func (o *ResourceAttribute) SetResource(v ResourceResource) {
+// SetResource gets a reference to the given IdentityProviderAttributeIdentityProvider and assigns it to the Resource field.
+func (o *ResourceAttribute) SetResource(v IdentityProviderAttributeIdentityProvider) {
 	o.Resource = &v
 }
 

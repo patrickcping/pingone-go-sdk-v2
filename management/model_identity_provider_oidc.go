@@ -16,9 +16,11 @@ import (
 
 // IdentityProviderOIDC struct for IdentityProviderOIDC
 type IdentityProviderOIDC struct {
+	Links map[string]interface{} `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
-	Enabled EnumEnabledStatus `json:"enabled"`
+	// The current enabled state of the IdP.
+	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *IdentityProviderCommonIcon `json:"icon,omitempty"`
 	// The resource ID.
@@ -28,6 +30,10 @@ type IdentityProviderOIDC struct {
 	Name string `json:"name"`
 	Registration *IdentityProviderCommonRegistration `json:"registration,omitempty"`
 	Type EnumIdentityProviderExt `json:"type"`
+	// The time the resource was created.
+	CreatedAt *string `json:"createdAt,omitempty"`
+	// The time the resource was last updated.
+	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// A string that specifies the the OIDC identity provider's authorization endpoint. This value must be a URL that uses https. This is a required property.
 	AuthorizationEndpoint string `json:"authorizationEndpoint"`
 	// A string that specifies the application ID from the OIDC identity provider. This is a required property.
@@ -53,7 +59,7 @@ type IdentityProviderOIDC struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityProviderOIDC(enabled EnumEnabledStatus, name string, type_ EnumIdentityProviderExt, authorizationEndpoint string, clientId string, clientSecret string, issuer string, jwksEndpoint string, scopes []string, tokenEndpoint string, tokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod) *IdentityProviderOIDC {
+func NewIdentityProviderOIDC(enabled bool, name string, type_ EnumIdentityProviderExt, authorizationEndpoint string, clientId string, clientSecret string, issuer string, jwksEndpoint string, scopes []string, tokenEndpoint string, tokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod) *IdentityProviderOIDC {
 	this := IdentityProviderOIDC{}
 	this.Enabled = enabled
 	this.Name = name
@@ -77,6 +83,38 @@ func NewIdentityProviderOIDCWithDefaults() *IdentityProviderOIDC {
 	var tokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod = ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_CLIENT_SECRET_BASIC
 	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *IdentityProviderOIDC) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderOIDC) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *IdentityProviderOIDC) HasLinks() bool {
+	if o != nil && o.Links != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *IdentityProviderOIDC) SetLinks(v map[string]interface{}) {
+	o.Links = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -112,9 +150,9 @@ func (o *IdentityProviderOIDC) SetDescription(v string) {
 }
 
 // GetEnabled returns the Enabled field value
-func (o *IdentityProviderOIDC) GetEnabled() EnumEnabledStatus {
+func (o *IdentityProviderOIDC) GetEnabled() bool {
 	if o == nil {
-		var ret EnumEnabledStatus
+		var ret bool
 		return ret
 	}
 
@@ -123,7 +161,7 @@ func (o *IdentityProviderOIDC) GetEnabled() EnumEnabledStatus {
 
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderOIDC) GetEnabledOk() (*EnumEnabledStatus, bool) {
+func (o *IdentityProviderOIDC) GetEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -131,7 +169,7 @@ func (o *IdentityProviderOIDC) GetEnabledOk() (*EnumEnabledStatus, bool) {
 }
 
 // SetEnabled sets field value
-func (o *IdentityProviderOIDC) SetEnabled(v EnumEnabledStatus) {
+func (o *IdentityProviderOIDC) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
@@ -341,6 +379,70 @@ func (o *IdentityProviderOIDC) GetTypeOk() (*EnumIdentityProviderExt, bool) {
 // SetType sets field value
 func (o *IdentityProviderOIDC) SetType(v EnumIdentityProviderExt) {
 	o.Type = v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *IdentityProviderOIDC) GetCreatedAt() string {
+	if o == nil || o.CreatedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderOIDC) GetCreatedAtOk() (*string, bool) {
+	if o == nil || o.CreatedAt == nil {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *IdentityProviderOIDC) HasCreatedAt() bool {
+	if o != nil && o.CreatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+func (o *IdentityProviderOIDC) SetCreatedAt(v string) {
+	o.CreatedAt = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *IdentityProviderOIDC) GetUpdatedAt() string {
+	if o == nil || o.UpdatedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderOIDC) GetUpdatedAtOk() (*string, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *IdentityProviderOIDC) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
+func (o *IdentityProviderOIDC) SetUpdatedAt(v string) {
+	o.UpdatedAt = &v
 }
 
 // GetAuthorizationEndpoint returns the AuthorizationEndpoint field value
@@ -601,6 +703,9 @@ func (o *IdentityProviderOIDC) SetUserInfoEndpoint(v string) {
 
 func (o IdentityProviderOIDC) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
@@ -627,6 +732,12 @@ func (o IdentityProviderOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["type"] = o.Type
+	}
+	if o.CreatedAt != nil {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	if true {
 		toSerialize["authorizationEndpoint"] = o.AuthorizationEndpoint

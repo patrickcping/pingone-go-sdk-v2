@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to **map[string]interface{}** |  | [optional] 
 **Description** | Pointer to **string** | The description of the IdP. | [optional] 
-**Enabled** | [**EnumEnabledStatus**](EnumEnabledStatus.md) |  | 
+**Enabled** | **bool** | The current enabled state of the IdP. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Icon** | Pointer to [**IdentityProviderCommonIcon**](IdentityProviderCommonIcon.md) |  | [optional] 
 **Id** | Pointer to **string** | The resource ID. | [optional] [readonly] 
@@ -13,6 +14,8 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the IdP. | 
 **Registration** | Pointer to [**IdentityProviderCommonRegistration**](IdentityProviderCommonRegistration.md) |  | [optional] 
 **Type** | [**EnumIdentityProviderExt**](EnumIdentityProviderExt.md) |  | 
+**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **ClientId** | **string** | A string that specifies the application ID from Apple. This is the identifier obtained after registering a services ID in the Apple developer portal. This is a required property. | 
 **ClientSecretSigningKey** | **string** | A string that specifies the private key that is used to generate a client secret. This is a required property. | 
 **KeyId** | **string** | A 10-character string that Apple uses to identify an authentication key. This is a required property. | 
@@ -22,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewIdentityProviderApple
 
-`func NewIdentityProviderApple(enabled EnumEnabledStatus, name string, type_ EnumIdentityProviderExt, clientId string, clientSecretSigningKey string, keyId string, teamId string, ) *IdentityProviderApple`
+`func NewIdentityProviderApple(enabled bool, name string, type_ EnumIdentityProviderExt, clientId string, clientSecretSigningKey string, keyId string, teamId string, ) *IdentityProviderApple`
 
 NewIdentityProviderApple instantiates a new IdentityProviderApple object
 This constructor will assign default values to properties that have it defined,
@@ -36,6 +39,31 @@ will change when the set of required properties is changed
 NewIdentityProviderAppleWithDefaults instantiates a new IdentityProviderApple object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *IdentityProviderApple) GetLinks() map[string]interface{}`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *IdentityProviderApple) GetLinksOk() (*map[string]interface{}, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *IdentityProviderApple) SetLinks(v map[string]interface{})`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *IdentityProviderApple) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -64,20 +92,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *IdentityProviderApple) GetEnabled() EnumEnabledStatus`
+`func (o *IdentityProviderApple) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *IdentityProviderApple) GetEnabledOk() (*EnumEnabledStatus, bool)`
+`func (o *IdentityProviderApple) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *IdentityProviderApple) SetEnabled(v EnumEnabledStatus)`
+`func (o *IdentityProviderApple) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
@@ -246,6 +274,56 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+
+### GetCreatedAt
+
+`func (o *IdentityProviderApple) GetCreatedAt() string`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *IdentityProviderApple) GetCreatedAtOk() (*string, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *IdentityProviderApple) SetCreatedAt(v string)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *IdentityProviderApple) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *IdentityProviderApple) GetUpdatedAt() string`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *IdentityProviderApple) GetUpdatedAtOk() (*string, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *IdentityProviderApple) SetUpdatedAt(v string)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *IdentityProviderApple) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetClientId
 

@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to **map[string]interface{}** |  | [optional] 
 **Description** | Pointer to **string** | The description of the IdP. | [optional] 
-**Enabled** | [**EnumEnabledStatus**](EnumEnabledStatus.md) |  | 
+**Enabled** | **bool** | The current enabled state of the IdP. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Icon** | Pointer to [**IdentityProviderCommonIcon**](IdentityProviderCommonIcon.md) |  | [optional] 
 **Id** | Pointer to **string** | The resource ID. | [optional] [readonly] 
@@ -13,6 +14,8 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the IdP. | 
 **Registration** | Pointer to [**IdentityProviderCommonRegistration**](IdentityProviderCommonRegistration.md) |  | [optional] 
 **Type** | [**EnumIdentityProviderExt**](EnumIdentityProviderExt.md) |  | 
+**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **ClientId** | **string** | A string that specifies the application ID from PayPal. This is a required property. | 
 **ClientSecret** | **string** | A string that specifies the application secret from PayPal. This is a required property. | 
 **ClientEnvironment** | **string** | A string that specifies the PayPal environment. Options are sandbox, and live. This is a required property. | 
@@ -21,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewIdentityProviderPaypal
 
-`func NewIdentityProviderPaypal(enabled EnumEnabledStatus, name string, type_ EnumIdentityProviderExt, clientId string, clientSecret string, clientEnvironment string, ) *IdentityProviderPaypal`
+`func NewIdentityProviderPaypal(enabled bool, name string, type_ EnumIdentityProviderExt, clientId string, clientSecret string, clientEnvironment string, ) *IdentityProviderPaypal`
 
 NewIdentityProviderPaypal instantiates a new IdentityProviderPaypal object
 This constructor will assign default values to properties that have it defined,
@@ -35,6 +38,31 @@ will change when the set of required properties is changed
 NewIdentityProviderPaypalWithDefaults instantiates a new IdentityProviderPaypal object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *IdentityProviderPaypal) GetLinks() map[string]interface{}`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *IdentityProviderPaypal) GetLinksOk() (*map[string]interface{}, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *IdentityProviderPaypal) SetLinks(v map[string]interface{})`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *IdentityProviderPaypal) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -63,20 +91,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *IdentityProviderPaypal) GetEnabled() EnumEnabledStatus`
+`func (o *IdentityProviderPaypal) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *IdentityProviderPaypal) GetEnabledOk() (*EnumEnabledStatus, bool)`
+`func (o *IdentityProviderPaypal) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *IdentityProviderPaypal) SetEnabled(v EnumEnabledStatus)`
+`func (o *IdentityProviderPaypal) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
@@ -245,6 +273,56 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+
+### GetCreatedAt
+
+`func (o *IdentityProviderPaypal) GetCreatedAt() string`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *IdentityProviderPaypal) GetCreatedAtOk() (*string, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *IdentityProviderPaypal) SetCreatedAt(v string)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *IdentityProviderPaypal) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *IdentityProviderPaypal) GetUpdatedAt() string`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *IdentityProviderPaypal) GetUpdatedAtOk() (*string, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *IdentityProviderPaypal) SetUpdatedAt(v string)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *IdentityProviderPaypal) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetClientId
 

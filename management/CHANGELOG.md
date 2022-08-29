@@ -6,6 +6,53 @@
 * **Feature** Support for Certificates [#26](https://github.com/patrickcping/pingone-go-sdk-v2/pull/26)
 * **Enhancement** Add 404 response processing for all requests [#28](https://github.com/patrickcping/pingone-go-sdk-v2/pull/28)
 * **Enhancement** Add missing 400 response processing [#29](https://github.com/patrickcping/pingone-go-sdk-v2/pull/29)
+* **Breaking change** API name change for Agreement Languages
+* **Breaking change** API name change for Agreement Revisions
+* **Breaking change** API name change for Agreements
+* **Breaking change** API name change for Application Attribute Mapping
+* **Breaking change** API name change for Application Role Assignment
+* **Breaking change** API name change for Application Secret
+* **Breaking change** API name change for Application Sign on Policy Assignment
+* **Breaking change** API name change for Applications
+* **Breaking change** API name change for Branding Settings
+* **Breaking change** API name change for Branding Themes
+* **Breaking change** API name change for Enable Users
+* **Breaking change** API name change for Gateway Credentials
+* **Breaking change** API name change for Gateway Instances
+* **Breaking change** API name change for Gateway role assignments
+* **Breaking change** API name change for Gateways
+* **Breaking change** API name change for Group Memberships
+* **Breaking change** API name change for Identity Provider Attributes
+* **Breaking change** API name change for Identity Providers
+* **Breaking change** API name change for Language localization
+* **Breaking change** API name change for Languages
+* **Breaking change** API name change for Linked Accounts
+* **Breaking change** API name change for MFA Pairing Keys
+* **Breaking change** API name change for Notification Settings SMTP
+* **Breaking change** API name change for Notification Settings
+* **Breaking change** API name change for Notification Templates
+* **Breaking change** API name change for Phone Delivery Settings
+* **Breaking change** API name change for Propagation Mappings
+* **Breaking change** API name change for Propagation Plans
+* **Breaking change** API name change for Propagation Revisions
+* **Breaking change** API name change for Propagation Rules
+* **Breaking change** API name change for Propagation Store Metadata
+* **Breaking change** API name change for Propagation Stores
+* **Breaking change** API name change for Resource Attributes
+* **Breaking change** API name change for Resource Scopes
+* **Breaking change** API name change for Resources
+* **Breaking change** API name change for Sessions
+* **Breaking change** API name change for Sign On Policies
+* **Breaking change** API name change for Sign On Policy Actions
+* **Breaking change** API name change for Trusted Email Addresses
+* **Breaking change** API name change for Trusted Email Domains
+* **Breaking change** API name change for User Accounts
+* **Breaking change** API name change for User Agreement Consents
+* **Breaking change** API name change for User ID Verification
+* **Breaking change** API name change for User Passwords
+* **Breaking change** API name change for User Populations
+* **Breaking change** API name change for User Role Assignments
+* **Breaking change** API name change for Users
 
 # v0.5.0 (2022-08-17)
 
