@@ -33,7 +33,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     providerID := "providerID_example" // string | 
-    identityProviderAttribute := *openapiclient.NewIdentityProviderAttribute("Name_example", "Value_example", openapiclient.EnumIdentityProviderAttributeMappingType("CORE")) // IdentityProviderAttribute |  (optional)
+    identityProviderAttribute := *openapiclient.NewIdentityProviderAttribute("Name_example", "Value_example", openapiclient.EnumIdentityProviderAttributeMappingUpdate("EMPTY_ONLY")) // IdentityProviderAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -324,7 +324,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     providerID := "providerID_example" // string | 
     providerAttributeID := "providerAttributeID_example" // string | 
-    identityProviderAttribute := *openapiclient.NewIdentityProviderAttribute("Name_example", "Value_example", openapiclient.EnumIdentityProviderAttributeMappingType("CORE")) // IdentityProviderAttribute |  (optional)
+    identityProviderAttribute := *openapiclient.NewIdentityProviderAttribute("Name_example", "Value_example", openapiclient.EnumIdentityProviderAttributeMappingUpdate("EMPTY_ONLY")) // IdentityProviderAttribute |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

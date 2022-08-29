@@ -509,7 +509,6 @@ model_group_membership.go
 model_group_nesting.go
 model_group_population.go
 model_group_total_member_counts.go
-model_identity_provider.go
 model_identity_provider_apple.go
 model_identity_provider_apple_all_of.go
 model_identity_provider_attribute.go

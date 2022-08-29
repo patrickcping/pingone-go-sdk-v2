@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Required** | **bool** | A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **Value** | **string** | A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as “${user.path.to.value}”, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are “${user.email}”, “${user.name.family}”, and “myClaimValueString” | 
-**Update** | [**EnumIdentityProviderAttributeMappingType**](EnumIdentityProviderAttributeMappingType.md) |  | 
+**Update** | [**EnumIdentityProviderAttributeMappingUpdate**](EnumIdentityProviderAttributeMappingUpdate.md) |  | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **IdentityProvider** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
 **Description** | Pointer to **string** | A string that specifies an optional property that specifies the description of the attribute. If provided, it must not be an empty string. Valid characters consists of any Unicode letter, mark (for example, accent or umlaut), numeric character, punctuation character, or space. | [optional] 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewEntityArrayEmbeddedAttributesInner
 
-`func NewEntityArrayEmbeddedAttributesInner(name string, required bool, value string, update EnumIdentityProviderAttributeMappingType, enabled bool, type_ EnumResourceAttributeType, ) *EntityArrayEmbeddedAttributesInner`
+`func NewEntityArrayEmbeddedAttributesInner(name string, required bool, value string, update EnumIdentityProviderAttributeMappingUpdate, enabled bool, type_ EnumResourceAttributeType, ) *EntityArrayEmbeddedAttributesInner`
 
 NewEntityArrayEmbeddedAttributesInner instantiates a new EntityArrayEmbeddedAttributesInner object
 This constructor will assign default values to properties that have it defined,
@@ -206,20 +206,20 @@ SetValue sets Value field to given value.
 
 ### GetUpdate
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetUpdate() EnumIdentityProviderAttributeMappingType`
+`func (o *EntityArrayEmbeddedAttributesInner) GetUpdate() EnumIdentityProviderAttributeMappingUpdate`
 
 GetUpdate returns the Update field if non-nil, zero value otherwise.
 
 ### GetUpdateOk
 
-`func (o *EntityArrayEmbeddedAttributesInner) GetUpdateOk() (*EnumIdentityProviderAttributeMappingType, bool)`
+`func (o *EntityArrayEmbeddedAttributesInner) GetUpdateOk() (*EnumIdentityProviderAttributeMappingUpdate, bool)`
 
 GetUpdateOk returns a tuple with the Update field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdate
 
-`func (o *EntityArrayEmbeddedAttributesInner) SetUpdate(v EnumIdentityProviderAttributeMappingType)`
+`func (o *EntityArrayEmbeddedAttributesInner) SetUpdate(v EnumIdentityProviderAttributeMappingUpdate)`
 
 SetUpdate sets Update field to given value.
 

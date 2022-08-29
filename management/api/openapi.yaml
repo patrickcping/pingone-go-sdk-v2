@@ -23160,7 +23160,7 @@ components:
             \ used to refer to the subject name ID in the SAML assertion response."
           type: string
         update:
-          $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingType'
+          $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingUpdate'
         id:
           description: The unique identifier for the resource.
           readOnly: true

@@ -1357,7 +1357,7 @@ components:
           type: string
           description: A placeholder referring to the attribute (or attributes) from the provider. Placeholders must be valid for the attributes returned by the IdP type and use the ${} syntax (for example, username="${email}"). For SAML, any placeholder is acceptable, and it is mapped against the attributes available in the SAML assertion after authentication. The ${samlAssertion.subject} placeholder is a special reserved placeholder used to refer to the subject name ID in the SAML assertion response.
         update:
-          $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingType'
+          $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingUpdate'
         id:
           type: string
           readOnly: true
