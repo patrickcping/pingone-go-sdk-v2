@@ -118,7 +118,11 @@ func (dst *IdentityProvider) UnmarshalJSON(data []byte) error {
 		if string(jsonIdentityProviderOIDC) == "{}" { // empty struct
 			dst.IdentityProviderOIDC = nil
 		} else {
-			match++
+			if dst.IdentityProviderOIDC.TokenEndpoint == "" {
+				dst.IdentityProviderOIDC = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdentityProviderOIDC = nil
@@ -131,7 +135,11 @@ func (dst *IdentityProvider) UnmarshalJSON(data []byte) error {
 		if string(jsonIdentityProviderPaypal) == "{}" { // empty struct
 			dst.IdentityProviderPaypal = nil
 		} else {
-			match++
+			if dst.IdentityProviderPaypal.ClientEnvironment == "" {
+				dst.IdentityProviderPaypal = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.IdentityProviderPaypal = nil
