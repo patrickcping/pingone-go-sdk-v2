@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **MappingType** | Pointer to [**EnumIdentityProviderAttributeMappingType**](EnumIdentityProviderAttributeMappingType.md) |  | [optional] 
 **Name** | **string** | The user attribute, which is unique per provider. The attribute must not be defined as read only from the user schema or of type COMPLEX based on the user schema. Valid examples username, and name.first. The following attributes may not be used account, id, created, updated, lifecycle, mfaEnabled, and enabled. | 
 **Value** | **string** | A placeholder referring to the attribute (or attributes) from the provider. Placeholders must be valid for the attributes returned by the IdP type and use the ${} syntax (for example, username&#x3D;\&quot;${email}\&quot;). For SAML, any placeholder is acceptable, and it is mapped against the attributes available in the SAML assertion after authentication. The ${samlAssertion.subject} placeholder is a special reserved placeholder used to refer to the subject name ID in the SAML assertion response. | 
-**Update** | [**EnumIdentityProviderAttributeMappingType**](EnumIdentityProviderAttributeMappingType.md) |  | 
+**Update** | [**EnumIdentityProviderAttributeMappingUpdate**](EnumIdentityProviderAttributeMappingUpdate.md) |  | 
 **Id** | Pointer to **string** | The unique identifier for the resource. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **IdentityProvider** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewIdentityProviderAttribute
 
-`func NewIdentityProviderAttribute(name string, value string, update EnumIdentityProviderAttributeMappingType, ) *IdentityProviderAttribute`
+`func NewIdentityProviderAttribute(name string, value string, update EnumIdentityProviderAttributeMappingUpdate, ) *IdentityProviderAttribute`
 
 NewIdentityProviderAttribute instantiates a new IdentityProviderAttribute object
 This constructor will assign default values to properties that have it defined,
@@ -100,20 +100,20 @@ SetValue sets Value field to given value.
 
 ### GetUpdate
 
-`func (o *IdentityProviderAttribute) GetUpdate() EnumIdentityProviderAttributeMappingType`
+`func (o *IdentityProviderAttribute) GetUpdate() EnumIdentityProviderAttributeMappingUpdate`
 
 GetUpdate returns the Update field if non-nil, zero value otherwise.
 
 ### GetUpdateOk
 
-`func (o *IdentityProviderAttribute) GetUpdateOk() (*EnumIdentityProviderAttributeMappingType, bool)`
+`func (o *IdentityProviderAttribute) GetUpdateOk() (*EnumIdentityProviderAttributeMappingUpdate, bool)`
 
 GetUpdateOk returns a tuple with the Update field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdate
 
-`func (o *IdentityProviderAttribute) SetUpdate(v EnumIdentityProviderAttributeMappingType)`
+`func (o *IdentityProviderAttribute) SetUpdate(v EnumIdentityProviderAttributeMappingUpdate)`
 
 SetUpdate sets Update field to given value.
 

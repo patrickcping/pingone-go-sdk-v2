@@ -16,9 +16,11 @@ import (
 
 // IdentityProviderSAML struct for IdentityProviderSAML
 type IdentityProviderSAML struct {
+	Links map[string]interface{} `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
-	Enabled EnumEnabledStatus `json:"enabled"`
+	// The current enabled state of the IdP.
+	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *IdentityProviderCommonIcon `json:"icon,omitempty"`
 	// The resource ID.
@@ -28,6 +30,10 @@ type IdentityProviderSAML struct {
 	Name string `json:"name"`
 	Registration *IdentityProviderCommonRegistration `json:"registration,omitempty"`
 	Type EnumIdentityProviderExt `json:"type"`
+	// The time the resource was created.
+	CreatedAt *string `json:"createdAt,omitempty"`
+	// The time the resource was last updated.
+	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether the SAML authentication request will be signed when sending to the identity provider. Set this to true if the external IDP is included in an authentication policy to be used by applications that are accessed using a mix of default URLS and custom Domains URLs.
 	AuthnRequestSigned *bool `json:"authnRequestSigned,omitempty"`
 	// A string that specifies the entity ID URI that is checked against the issuerId tag in the incoming response.
@@ -45,7 +51,7 @@ type IdentityProviderSAML struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityProviderSAML(enabled EnumEnabledStatus, name string, type_ EnumIdentityProviderExt) *IdentityProviderSAML {
+func NewIdentityProviderSAML(enabled bool, name string, type_ EnumIdentityProviderExt) *IdentityProviderSAML {
 	this := IdentityProviderSAML{}
 	this.Enabled = enabled
 	this.Name = name
@@ -59,6 +65,38 @@ func NewIdentityProviderSAML(enabled EnumEnabledStatus, name string, type_ EnumI
 func NewIdentityProviderSAMLWithDefaults() *IdentityProviderSAML {
 	this := IdentityProviderSAML{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *IdentityProviderSAML) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderSAML) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *IdentityProviderSAML) HasLinks() bool {
+	if o != nil && o.Links != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *IdentityProviderSAML) SetLinks(v map[string]interface{}) {
+	o.Links = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -94,9 +132,9 @@ func (o *IdentityProviderSAML) SetDescription(v string) {
 }
 
 // GetEnabled returns the Enabled field value
-func (o *IdentityProviderSAML) GetEnabled() EnumEnabledStatus {
+func (o *IdentityProviderSAML) GetEnabled() bool {
 	if o == nil {
-		var ret EnumEnabledStatus
+		var ret bool
 		return ret
 	}
 
@@ -105,7 +143,7 @@ func (o *IdentityProviderSAML) GetEnabled() EnumEnabledStatus {
 
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderSAML) GetEnabledOk() (*EnumEnabledStatus, bool) {
+func (o *IdentityProviderSAML) GetEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -113,7 +151,7 @@ func (o *IdentityProviderSAML) GetEnabledOk() (*EnumEnabledStatus, bool) {
 }
 
 // SetEnabled sets field value
-func (o *IdentityProviderSAML) SetEnabled(v EnumEnabledStatus) {
+func (o *IdentityProviderSAML) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
@@ -323,6 +361,70 @@ func (o *IdentityProviderSAML) GetTypeOk() (*EnumIdentityProviderExt, bool) {
 // SetType sets field value
 func (o *IdentityProviderSAML) SetType(v EnumIdentityProviderExt) {
 	o.Type = v
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *IdentityProviderSAML) GetCreatedAt() string {
+	if o == nil || o.CreatedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderSAML) GetCreatedAtOk() (*string, bool) {
+	if o == nil || o.CreatedAt == nil {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *IdentityProviderSAML) HasCreatedAt() bool {
+	if o != nil && o.CreatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+func (o *IdentityProviderSAML) SetCreatedAt(v string) {
+	o.CreatedAt = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *IdentityProviderSAML) GetUpdatedAt() string {
+	if o == nil || o.UpdatedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderSAML) GetUpdatedAtOk() (*string, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *IdentityProviderSAML) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
+func (o *IdentityProviderSAML) SetUpdatedAt(v string) {
+	o.UpdatedAt = &v
 }
 
 // GetAuthnRequestSigned returns the AuthnRequestSigned field value if set, zero value otherwise.
@@ -551,6 +653,9 @@ func (o *IdentityProviderSAML) SetSsoEndpoint(v string) {
 
 func (o IdentityProviderSAML) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
@@ -577,6 +682,12 @@ func (o IdentityProviderSAML) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["type"] = o.Type
+	}
+	if o.CreatedAt != nil {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	if o.AuthnRequestSigned != nil {
 		toSerialize["authnRequestSigned"] = o.AuthnRequestSigned

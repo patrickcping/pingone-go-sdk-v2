@@ -16,9 +16,11 @@ import (
 
 // IdentityProviderCommon struct for IdentityProviderCommon
 type IdentityProviderCommon struct {
+	Links map[string]interface{} `json:"_links,omitempty"`
 	// The description of the IdP.
 	Description *string `json:"description,omitempty"`
-	Enabled EnumEnabledStatus `json:"enabled"`
+	// The current enabled state of the IdP.
+	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Icon *IdentityProviderCommonIcon `json:"icon,omitempty"`
 	// The resource ID.
@@ -28,13 +30,17 @@ type IdentityProviderCommon struct {
 	Name string `json:"name"`
 	Registration *IdentityProviderCommonRegistration `json:"registration,omitempty"`
 	Type EnumIdentityProviderExt `json:"type"`
+	// The time the resource was created.
+	CreatedAt *string `json:"createdAt,omitempty"`
+	// The time the resource was last updated.
+	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
 
 // NewIdentityProviderCommon instantiates a new IdentityProviderCommon object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityProviderCommon(enabled EnumEnabledStatus, name string, type_ EnumIdentityProviderExt) *IdentityProviderCommon {
+func NewIdentityProviderCommon(enabled bool, name string, type_ EnumIdentityProviderExt) *IdentityProviderCommon {
 	this := IdentityProviderCommon{}
 	this.Enabled = enabled
 	this.Name = name
@@ -48,6 +54,38 @@ func NewIdentityProviderCommon(enabled EnumEnabledStatus, name string, type_ Enu
 func NewIdentityProviderCommonWithDefaults() *IdentityProviderCommon {
 	this := IdentityProviderCommon{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *IdentityProviderCommon) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderCommon) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *IdentityProviderCommon) HasLinks() bool {
+	if o != nil && o.Links != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *IdentityProviderCommon) SetLinks(v map[string]interface{}) {
+	o.Links = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -83,9 +121,9 @@ func (o *IdentityProviderCommon) SetDescription(v string) {
 }
 
 // GetEnabled returns the Enabled field value
-func (o *IdentityProviderCommon) GetEnabled() EnumEnabledStatus {
+func (o *IdentityProviderCommon) GetEnabled() bool {
 	if o == nil {
-		var ret EnumEnabledStatus
+		var ret bool
 		return ret
 	}
 
@@ -94,7 +132,7 @@ func (o *IdentityProviderCommon) GetEnabled() EnumEnabledStatus {
 
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderCommon) GetEnabledOk() (*EnumEnabledStatus, bool) {
+func (o *IdentityProviderCommon) GetEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,7 +140,7 @@ func (o *IdentityProviderCommon) GetEnabledOk() (*EnumEnabledStatus, bool) {
 }
 
 // SetEnabled sets field value
-func (o *IdentityProviderCommon) SetEnabled(v EnumEnabledStatus) {
+func (o *IdentityProviderCommon) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
@@ -314,8 +352,75 @@ func (o *IdentityProviderCommon) SetType(v EnumIdentityProviderExt) {
 	o.Type = v
 }
 
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+func (o *IdentityProviderCommon) GetCreatedAt() string {
+	if o == nil || o.CreatedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderCommon) GetCreatedAtOk() (*string, bool) {
+	if o == nil || o.CreatedAt == nil {
+		return nil, false
+	}
+	return o.CreatedAt, true
+}
+
+// HasCreatedAt returns a boolean if a field has been set.
+func (o *IdentityProviderCommon) HasCreatedAt() bool {
+	if o != nil && o.CreatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+func (o *IdentityProviderCommon) SetCreatedAt(v string) {
+	o.CreatedAt = &v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *IdentityProviderCommon) GetUpdatedAt() string {
+	if o == nil || o.UpdatedAt == nil {
+		var ret string
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderCommon) GetUpdatedAtOk() (*string, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *IdentityProviderCommon) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
+func (o *IdentityProviderCommon) SetUpdatedAt(v string) {
+	o.UpdatedAt = &v
+}
+
 func (o IdentityProviderCommon) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
@@ -342,6 +447,12 @@ func (o IdentityProviderCommon) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["type"] = o.Type
+	}
+	if o.CreatedAt != nil {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	return json.Marshal(toSerialize)
 }

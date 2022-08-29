@@ -21,7 +21,7 @@ type IdentityProviderAttribute struct {
 	Name string `json:"name"`
 	// A placeholder referring to the attribute (or attributes) from the provider. Placeholders must be valid for the attributes returned by the IdP type and use the ${} syntax (for example, username=\"${email}\"). For SAML, any placeholder is acceptable, and it is mapped against the attributes available in the SAML assertion after authentication. The ${samlAssertion.subject} placeholder is a special reserved placeholder used to refer to the subject name ID in the SAML assertion response.
 	Value string `json:"value"`
-	Update EnumIdentityProviderAttributeMappingType `json:"update"`
+	Update EnumIdentityProviderAttributeMappingUpdate `json:"update"`
 	// The unique identifier for the resource.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -36,7 +36,7 @@ type IdentityProviderAttribute struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityProviderAttribute(name string, value string, update EnumIdentityProviderAttributeMappingType) *IdentityProviderAttribute {
+func NewIdentityProviderAttribute(name string, value string, update EnumIdentityProviderAttributeMappingUpdate) *IdentityProviderAttribute {
 	this := IdentityProviderAttribute{}
 	this.Name = name
 	this.Value = value
@@ -133,9 +133,9 @@ func (o *IdentityProviderAttribute) SetValue(v string) {
 }
 
 // GetUpdate returns the Update field value
-func (o *IdentityProviderAttribute) GetUpdate() EnumIdentityProviderAttributeMappingType {
+func (o *IdentityProviderAttribute) GetUpdate() EnumIdentityProviderAttributeMappingUpdate {
 	if o == nil {
-		var ret EnumIdentityProviderAttributeMappingType
+		var ret EnumIdentityProviderAttributeMappingUpdate
 		return ret
 	}
 
@@ -144,7 +144,7 @@ func (o *IdentityProviderAttribute) GetUpdate() EnumIdentityProviderAttributeMap
 
 // GetUpdateOk returns a tuple with the Update field value
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderAttribute) GetUpdateOk() (*EnumIdentityProviderAttributeMappingType, bool) {
+func (o *IdentityProviderAttribute) GetUpdateOk() (*EnumIdentityProviderAttributeMappingUpdate, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *IdentityProviderAttribute) GetUpdateOk() (*EnumIdentityProviderAttribut
 }
 
 // SetUpdate sets field value
-func (o *IdentityProviderAttribute) SetUpdate(v EnumIdentityProviderAttributeMappingType) {
+func (o *IdentityProviderAttribute) SetUpdate(v EnumIdentityProviderAttributeMappingUpdate) {
 	o.Update = v
 }
 

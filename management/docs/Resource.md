@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the resource. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Resource** | Pointer to [**ResourceResource**](ResourceResource.md) |  | [optional] 
+**Resource** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. | 
 **Type** | Pointer to [**EnumResourceType**](EnumResourceType.md) |  | [optional] 
@@ -161,20 +161,20 @@ HasEnvironment returns a boolean if a field has been set.
 
 ### GetResource
 
-`func (o *Resource) GetResource() ResourceResource`
+`func (o *Resource) GetResource() IdentityProviderAttributeIdentityProvider`
 
 GetResource returns the Resource field if non-nil, zero value otherwise.
 
 ### GetResourceOk
 
-`func (o *Resource) GetResourceOk() (*ResourceResource, bool)`
+`func (o *Resource) GetResourceOk() (*IdentityProviderAttributeIdentityProvider, bool)`
 
 GetResourceOk returns a tuple with the Resource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResource
 
-`func (o *Resource) SetResource(v ResourceResource)`
+`func (o *Resource) SetResource(v IdentityProviderAttributeIdentityProvider)`
 
 SetResource sets Resource field to given value.
 

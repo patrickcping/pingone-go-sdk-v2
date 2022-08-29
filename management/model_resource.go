@@ -25,7 +25,7 @@ type Resource struct {
 	// A string that specifies the description of the resource.
 	Description *string `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Resource *ResourceResource `json:"resource,omitempty"`
+	Resource *IdentityProviderAttributeIdentityProvider `json:"resource,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment.
@@ -214,9 +214,9 @@ func (o *Resource) SetEnvironment(v ObjectEnvironment) {
 }
 
 // GetResource returns the Resource field value if set, zero value otherwise.
-func (o *Resource) GetResource() ResourceResource {
+func (o *Resource) GetResource() IdentityProviderAttributeIdentityProvider {
 	if o == nil || o.Resource == nil {
-		var ret ResourceResource
+		var ret IdentityProviderAttributeIdentityProvider
 		return ret
 	}
 	return *o.Resource
@@ -224,7 +224,7 @@ func (o *Resource) GetResource() ResourceResource {
 
 // GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Resource) GetResourceOk() (*ResourceResource, bool) {
+func (o *Resource) GetResourceOk() (*IdentityProviderAttributeIdentityProvider, bool) {
 	if o == nil || o.Resource == nil {
 		return nil, false
 	}
@@ -240,8 +240,8 @@ func (o *Resource) HasResource() bool {
 	return false
 }
 
-// SetResource gets a reference to the given ResourceResource and assigns it to the Resource field.
-func (o *Resource) SetResource(v ResourceResource) {
+// SetResource gets a reference to the given IdentityProviderAttributeIdentityProvider and assigns it to the Resource field.
+func (o *Resource) SetResource(v IdentityProviderAttributeIdentityProvider) {
 	o.Resource = &v
 }
 

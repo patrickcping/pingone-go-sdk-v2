@@ -25,85 +25,80 @@ tags:
 - name: Accounting for Latency
 - name: Active Identity Counts
 - name: Agreement Management
-- name: Agreement Management > Agreements Resources
-- name: Agreement Management > Agreement Languages Resources
-- name: Agreement Management > Agreement Revisions Resources
+- name: Agreements Resources
+- name: Agreement Languages Resources
+- name: Agreement Revisions Resources
 - name: Alerting
 - name: Applications
-- name: Applications > Applications
-- name: Applications > Application Secret
-- name: Applications > Application Resource Grants
-- name: Applications > Application Sign-On Policy Assignments
-- name: Applications > Application Role Assignments
-- name: Applications > Application Attribute Mapping
-- name: Applications > Application MFA Push Credentials
+- name: Application Secret
+- name: Application Resource Grants
+- name: Application Sign-On Policy Assignments
+- name: Application Role Assignments
+- name: Application Attribute Mapping
+- name: Application MFA Push Credentials
 - name: Audit Activities
 - name: Authentications per Application
 - name: Bill of Materials (BOM)
-- name: Branding
-- name: Branding > Branding Settings
-- name: Branding > Branding Themes
+- name: Branding Settings
+- name: Branding Themes
 - name: Capabilities
 - name: Certificate Management
 - name: Custom Domains
 - name: Device Authentication Policy
 - name: Environments
 - name: Gateway Management
-- name: Gateway Management > Gateways
-- name: Gateway Management > Gateway Credentials
-- name: Gateway Management > Gateway Instances
-- name: Gateway Management > Gateway Role Assignments
+- name: Gateways
+- name: Gateway Credentials
+- name: Gateway Instances
+- name: Gateway Role Assignments
 - name: Groups
 - name: Identity Propagation (Provisioning)
-- name: Identity Propagation (Provisioning) > Propagation Revisions
-- name: Identity Propagation (Provisioning) > Propagation Plans
-- name: Identity Propagation (Provisioning) > Propagation Stores
-- name: Identity Propagation (Provisioning) > Propagation Store Metadata
-- name: Identity Propagation (Provisioning) > Propagation Rules
-- name: Identity Propagation (Provisioning) > Propagation Mappings
+- name: Propagation Revisions
+- name: Propagation Plans
+- name: Propagation Stores
+- name: Propagation Store Metadata
+- name: Propagation Rules
+- name: Propagation Mappings
 - name: Identity Provider Management
-- name: Identity Provider Management > Identity Providers
-- name: Identity Provider Management > Identity Provider Attributes
+- name: Identity Providers
+- name: Identity Provider Attributes
 - name: Images
 - name: Integration Catalog
 - name: Language Management
-- name: Language Management > Languages
-- name: Language Management > Language Localization Status
+- name: Languages
+- name: Language Localization Status
 - name: Licenses
 - name: Notifications
-- name: Notifications > Notifications Templates
-- name: Notifications > Notifications Settings
-- name: Notifications > Notifications Settings (SMTP)
-- name: Notifications > Phone Delivery Settings
-- name: Notifications > Trusted Email Domains
-- name: Notifications > Trusted Email Addresses
+- name: Notifications Templates
+- name: Notifications Settings
+- name: Notifications Settings (SMTP)
+- name: Phone Delivery Settings
+- name: Trusted Email Domains
+- name: Trusted Email Addresses
 - name: Organizations
 - name: Password Policies
 - name: Populations
 - name: Resources
-- name: Resources > Resources
-- name: Resources > Resource Scopes
-- name: Resources > Resource Attributes
+- name: Resource Scopes
+- name: Resource Attributes
 - name: Roles
 - name: Schemas
 - name: Sign-On Policies
-- name: Sign-On Policies > Sign-On Policies
-- name: Sign-On Policies > Sign-On Policy Actions
+- name: Sign-On Policy Actions
 - name: Subscriptions (webhooks)
 - name: Total Identities
 - name: User Activities
 - name: Users
-- name: Users > Users
-- name: Users > Group Membership
-- name: Users > Enable Users
-- name: Users > Linked Accounts
-- name: Users > User Populations
-- name: Users > User Passwords
-- name: Users > User Role Assignments
-- name: Users > User ID Verification
-- name: Users > User Agreement Consents
-- name: Users > User Accounts
-- name: Users > Sessions
+- name: Group Membership
+- name: Enable Users
+- name: Linked Accounts
+- name: User Populations
+- name: User Passwords
+- name: User Role Assignments
+- name: User ID Verification
+- name: User Agreement Consents
+- name: User Accounts
+- name: Sessions
 paths:
   /v1/environments:
     get:
@@ -633,7 +628,7 @@ paths:
           description: Successful response
       summary: READ All Agreements
       tags:
-      - Agreement Management > Agreements Resources
+      - Agreements Resources
     post:
       operationId: createAgreement
       parameters:
@@ -702,7 +697,7 @@ paths:
           description: Successful response
       summary: CREATE Agreement
       tags:
-      - Agreement Management > Agreements Resources
+      - Agreements Resources
   /v1/environments/{environmentID}/agreements/{agreementID}:
     delete:
       operationId: deleteAgreement
@@ -763,7 +758,7 @@ paths:
           description: Successful response
       summary: DELETE Agreement
       tags:
-      - Agreement Management > Agreements Resources
+      - Agreements Resources
     get:
       operationId: readOneAgreement
       parameters:
@@ -827,7 +822,7 @@ paths:
           description: Successful response
       summary: READ One Agreement
       tags:
-      - Agreement Management > Agreements Resources
+      - Agreements Resources
     put:
       operationId: updateAgreement
       parameters:
@@ -896,7 +891,7 @@ paths:
           description: Successful response
       summary: UPDATE Agreement
       tags:
-      - Agreement Management > Agreements Resources
+      - Agreements Resources
   /v1/environments/{environmentID}/agreements/{agreementID}/languages:
     get:
       operationId: readAllAgreementLanguages
@@ -961,7 +956,7 @@ paths:
           description: Successful response
       summary: READ All Languages
       tags:
-      - Agreement Management > Agreement Languages Resources
+      - Agreement Languages Resources
     post:
       operationId: createAgreementLanguage
       parameters:
@@ -1037,7 +1032,7 @@ paths:
           description: Successful response
       summary: CREATE Language
       tags:
-      - Agreement Management > Agreement Languages Resources
+      - Agreement Languages Resources
   /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}:
     delete:
       operationId: deleteAgreementLanguage
@@ -1105,7 +1100,7 @@ paths:
           description: Successful response
       summary: DELETE Language
       tags:
-      - Agreement Management > Agreement Languages Resources
+      - Agreement Languages Resources
     get:
       operationId: readOneAgreementLanguage
       parameters:
@@ -1176,7 +1171,7 @@ paths:
           description: Successful response
       summary: READ One Language
       tags:
-      - Agreement Management > Agreement Languages Resources
+      - Agreement Languages Resources
     put:
       operationId: updateAgreementLanguage
       parameters:
@@ -1255,7 +1250,7 @@ paths:
           description: Successful response
       summary: UPDATE Language
       tags:
-      - Agreement Management > Agreement Languages Resources
+      - Agreement Languages Resources
   /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions:
     get:
       operationId: readAllAgreementLanguageRevisions
@@ -1327,7 +1322,7 @@ paths:
           description: Successful response
       summary: READ All Revisions
       tags:
-      - Agreement Management > Agreement Revisions Resources
+      - Agreement Revisions Resources
     post:
       operationId: createAgreementLanguageRevision
       parameters:
@@ -1410,7 +1405,7 @@ paths:
           description: Successful response
       summary: CREATE Revision
       tags:
-      - Agreement Management > Agreement Revisions Resources
+      - Agreement Revisions Resources
   /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID}:
     delete:
       operationId: deleteAgreementLanguageRevision
@@ -1485,7 +1480,7 @@ paths:
           description: Successful response
       summary: DELETE Revision
       tags:
-      - Agreement Management > Agreement Revisions Resources
+      - Agreement Revisions Resources
     get:
       operationId: readOneAgreementLanguageRevision
       parameters:
@@ -1563,7 +1558,7 @@ paths:
           description: Successful response
       summary: READ One Revision
       tags:
-      - Agreement Management > Agreement Revisions Resources
+      - Agreement Revisions Resources
   /v1/environments/{environmentID}/alertChannels:
     get:
       parameters:
@@ -1886,7 +1881,7 @@ paths:
           description: Successful response
       summary: READ All Applications
       tags:
-      - Applications > Applications
+      - Applications
     post:
       operationId: createApplication
       parameters:
@@ -1955,7 +1950,7 @@ paths:
           description: Successful response
       summary: CREATE Application
       tags:
-      - Applications > Applications
+      - Applications
   /v1/environments/{environmentID}/applications/{applicationID}:
     delete:
       operationId: deleteApplication
@@ -2016,7 +2011,7 @@ paths:
           description: Successful response
       summary: DELETE Application
       tags:
-      - Applications > Applications
+      - Applications
     get:
       operationId: readOneApplication
       parameters:
@@ -2080,7 +2075,7 @@ paths:
           description: Successful response
       summary: READ One Application
       tags:
-      - Applications > Applications
+      - Applications
     put:
       operationId: updateApplication
       parameters:
@@ -2149,7 +2144,7 @@ paths:
           description: Successful response
       summary: UPDATE Application
       tags:
-      - Applications > Applications
+      - Applications
   /v1/environments/{environmentID}/applications/{applicationID}/secret:
     get:
       operationId: readApplicationSecret
@@ -2214,7 +2209,7 @@ paths:
           description: Successful response
       summary: READ Application Secret
       tags:
-      - Applications > Application Secret
+      - Application Secret
     post:
       operationId: updateApplicationSecret
       parameters:
@@ -2283,7 +2278,7 @@ paths:
           description: Successful response
       summary: UPDATE Application Secret
       tags:
-      - Applications > Application Secret
+      - Application Secret
   /v1/environments/{environmentID}/applications/{applicationID}/grants:
     get:
       operationId: readAllApplicationGrants
@@ -2348,7 +2343,7 @@ paths:
           description: Successful response
       summary: READ All Grants for an Application
       tags:
-      - Applications > Application Resource Grants
+      - Application Resource Grants
     post:
       operationId: createApplicationGrant
       parameters:
@@ -2424,7 +2419,7 @@ paths:
           description: Successful response
       summary: CREATE Grant
       tags:
-      - Applications > Application Resource Grants
+      - Application Resource Grants
   /v1/environments/{environmentID}/applications/{applicationID}/grants/{grantID}:
     delete:
       operationId: deleteApplicationGrant
@@ -2492,7 +2487,7 @@ paths:
           description: Successful response
       summary: DELETE Grant
       tags:
-      - Applications > Application Resource Grants
+      - Application Resource Grants
     get:
       operationId: readOneApplicationGrant
       parameters:
@@ -2563,7 +2558,7 @@ paths:
           description: Successful response
       summary: READ One Grant for an Application
       tags:
-      - Applications > Application Resource Grants
+      - Application Resource Grants
     put:
       operationId: updateApplicationGrant
       parameters:
@@ -2639,7 +2634,7 @@ paths:
           description: Successful response
       summary: UPDATE Grant
       tags:
-      - Applications > Application Resource Grants
+      - Application Resource Grants
   /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments:
     get:
       operationId: readAllSignOnPolicyAssignments
@@ -2704,7 +2699,7 @@ paths:
           description: Successful response
       summary: READ All SOP Assignments
       tags:
-      - Applications > Application Sign-On Policy Assignments
+      - Application Sign-On Policy Assignments
     post:
       operationId: createSignOnPolicyAssignment
       parameters:
@@ -2780,7 +2775,7 @@ paths:
           description: Successful response
       summary: CREATE SOP Assignment
       tags:
-      - Applications > Application Sign-On Policy Assignments
+      - Application Sign-On Policy Assignments
   /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}:
     delete:
       operationId: deleteSignOnPolicyAssignment
@@ -2848,7 +2843,7 @@ paths:
           description: Successful response
       summary: DELETE SOP Assignment
       tags:
-      - Applications > Application Sign-On Policy Assignments
+      - Application Sign-On Policy Assignments
     get:
       operationId: readOneSignOnPolicyAssignment
       parameters:
@@ -2919,7 +2914,7 @@ paths:
           description: Successful response
       summary: READ One SOP Assignment
       tags:
-      - Applications > Application Sign-On Policy Assignments
+      - Application Sign-On Policy Assignments
     put:
       operationId: updateSignOnPolicyAssignment
       parameters:
@@ -2995,7 +2990,7 @@ paths:
           description: Successful response
       summary: UPDATE SOP Assignment
       tags:
-      - Applications > Application Sign-On Policy Assignments
+      - Application Sign-On Policy Assignments
   /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments:
     get:
       operationId: readApplicationRoleAssignments
@@ -3060,7 +3055,7 @@ paths:
           description: Successful response
       summary: READ Application Role Assignments
       tags:
-      - Applications > Application Role Assignments
+      - Application Role Assignments
     post:
       operationId: createApplicationRoleAssignment
       parameters:
@@ -3136,7 +3131,7 @@ paths:
           description: Successful response
       summary: CREATE Application Role Assignments
       tags:
-      - Applications > Application Role Assignments
+      - Application Role Assignments
   /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID}:
     delete:
       operationId: deleteApplicationRoleAssignment
@@ -3204,7 +3199,7 @@ paths:
           description: Successful response
       summary: DELETE Application Role Assignment
       tags:
-      - Applications > Application Role Assignments
+      - Application Role Assignments
     get:
       operationId: readOneApplicationRoleAssignment
       parameters:
@@ -3275,7 +3270,7 @@ paths:
           description: Successful response
       summary: READ One Application Role Assignment
       tags:
-      - Applications > Application Role Assignments
+      - Application Role Assignments
   /v1/environments/{environmentID}/applications/{applicationID}/attributes:
     get:
       operationId: readAllApplicationAttributeMappings
@@ -3340,7 +3335,7 @@ paths:
           description: Successful response
       summary: READ All Application Attribute Mappings
       tags:
-      - Applications > Application Attribute Mapping
+      - Application Attribute Mapping
     post:
       operationId: createApplicationAttributeMapping
       parameters:
@@ -3416,7 +3411,7 @@ paths:
           description: Successful response
       summary: CREATE Application Attribute Mapping
       tags:
-      - Applications > Application Attribute Mapping
+      - Application Attribute Mapping
   /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID}:
     delete:
       operationId: deleteApplicationAttributeMapping
@@ -3484,7 +3479,7 @@ paths:
           description: Successful response
       summary: DELETE Application Attribute Mapping
       tags:
-      - Applications > Application Attribute Mapping
+      - Application Attribute Mapping
     get:
       operationId: readOneApplicationAttributeMapping
       parameters:
@@ -3555,7 +3550,7 @@ paths:
           description: Successful response
       summary: READ One Application Attribute Mapping
       tags:
-      - Applications > Application Attribute Mapping
+      - Application Attribute Mapping
     put:
       operationId: updateApplicationAttributeMapping
       parameters:
@@ -3631,7 +3626,7 @@ paths:
           description: Successful response
       summary: UPDATE Application Attribute Mapping
       tags:
-      - Applications > Application Attribute Mapping
+      - Application Attribute Mapping
   /v1/environments/{environmentID}/activities:
     get:
       parameters:
@@ -4095,7 +4090,7 @@ paths:
           description: Successful response
       summary: READ Branding Settings
       tags:
-      - Branding > Branding Settings
+      - Branding Settings
     put:
       parameters:
       - example: "{{jwtToken}}"
@@ -4167,7 +4162,7 @@ paths:
           description: Successful response
       summary: UPDATE Branding Settings
       tags:
-      - Branding > Branding Settings
+      - Branding Settings
   /v1/environments/{environmentID}/themes:
     get:
       parameters:
@@ -4230,7 +4225,7 @@ paths:
           description: Successful response
       summary: READ Branding Themes
       tags:
-      - Branding > Branding Themes
+      - Branding Themes
     post:
       parameters:
       - example: "{{jwtToken}}"
@@ -4332,7 +4327,7 @@ paths:
           description: Successful response
       summary: CREATE Branding Theme
       tags:
-      - Branding > Branding Themes
+      - Branding Themes
   /v1/environments/{environmentID}/themes/{themeID}:
     delete:
       parameters:
@@ -4400,7 +4395,7 @@ paths:
           description: Successful response
       summary: DELETE Branding Theme
       tags:
-      - Branding > Branding Themes
+      - Branding Themes
     get:
       parameters:
       - example: "{{jwtToken}}"
@@ -4469,7 +4464,7 @@ paths:
           description: Successful response
       summary: READ One Branding Theme
       tags:
-      - Branding > Branding Themes
+      - Branding Themes
     put:
       parameters:
       - example: "{{jwtToken}}"
@@ -4571,7 +4566,7 @@ paths:
           description: Successful response
       summary: UPDATE Branding Theme
       tags:
-      - Branding > Branding Themes
+      - Branding Themes
   /v1/environments/{environmentID}/themes/{themeID}/default:
     get:
       parameters:
@@ -4641,7 +4636,7 @@ paths:
           description: Successful response
       summary: READ Branding Theme Default
       tags:
-      - Branding > Branding Themes
+      - Branding Themes
     put:
       parameters:
       - example: "{{jwtToken}}"
@@ -4725,7 +4720,7 @@ paths:
           description: Successful response
       summary: UPDATE Branding Theme Default
       tags:
-      - Branding > Branding Themes
+      - Branding Themes
   /v1/environments/{environmentID}/capabilities:
     get:
       parameters:
@@ -6589,7 +6584,7 @@ paths:
           description: Successful response
       summary: READ All Gateways
       tags:
-      - Gateway Management > Gateways
+      - Gateways
     post:
       operationId: createGateway
       parameters:
@@ -6658,7 +6653,7 @@ paths:
           description: Successful response
       summary: CREATE Gateway
       tags:
-      - Gateway Management > Gateways
+      - Gateways
   /v1/environments/{environmentID}/gateways/{gatewayID}:
     delete:
       operationId: deleteGateway
@@ -6719,7 +6714,7 @@ paths:
           description: Successful response
       summary: DELETE Gateway
       tags:
-      - Gateway Management > Gateways
+      - Gateways
     get:
       operationId: readOneGateway
       parameters:
@@ -6783,7 +6778,7 @@ paths:
           description: Successful response
       summary: READ One Gateway
       tags:
-      - Gateway Management > Gateways
+      - Gateways
     put:
       operationId: updateGateway
       parameters:
@@ -6852,7 +6847,7 @@ paths:
           description: Successful response
       summary: UPDATE Gateway
       tags:
-      - Gateway Management > Gateways
+      - Gateways
   /v1/environments/{environmentID}/gateways/{gatewayID}/credentials:
     post:
       operationId: createGatewayCredential
@@ -6924,7 +6919,7 @@ paths:
           description: Successful response
       summary: CREATE Gateway Credentials
       tags:
-      - Gateway Management > Gateway Credentials
+      - Gateway Credentials
   /v1/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID}:
     delete:
       operationId: deleteGatewayCredential
@@ -6992,7 +6987,7 @@ paths:
           description: Successful response
       summary: DELETE Gateway Credentials
       tags:
-      - Gateway Management > Gateway Credentials
+      - Gateway Credentials
   /v1/environments/{environmentID}/gateways/{gatewayID}/instances:
     get:
       operationId: readAllGatewayInstances
@@ -7057,7 +7052,7 @@ paths:
           description: Successful response
       summary: READ All Gateway Instances
       tags:
-      - Gateway Management > Gateway Instances
+      - Gateway Instances
   /v1/environments/{environmentID}/gateways/{gatewayID}/instances/{instanceID}:
     get:
       operationId: readOneGatewayInstance
@@ -7129,7 +7124,7 @@ paths:
           description: Successful response
       summary: READ One Gateway Instance
       tags:
-      - Gateway Management > Gateway Instances
+      - Gateway Instances
   /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments:
     get:
       operationId: readGatewayRoleAssignments
@@ -7194,7 +7189,7 @@ paths:
           description: Successful response
       summary: READ Gateway Role Assignments
       tags:
-      - Gateway Management > Gateway Role Assignments
+      - Gateway Role Assignments
     post:
       operationId: createGatewayRoleAssignment
       parameters:
@@ -7270,7 +7265,7 @@ paths:
           description: Successful response
       summary: CREATE Gateway Role Assignments
       tags:
-      - Gateway Management > Gateway Role Assignments
+      - Gateway Role Assignments
   /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}:
     delete:
       operationId: deleteGatewayRoleAssignment
@@ -7338,7 +7333,7 @@ paths:
           description: Successful response
       summary: DELETE Gateway Role Assignment
       tags:
-      - Gateway Management > Gateway Role Assignments
+      - Gateway Role Assignments
     get:
       operationId: readOneGatewayRoleAssignment
       parameters:
@@ -7409,7 +7404,7 @@ paths:
           description: Successful response
       summary: READ One Gateway Role Assignment
       tags:
-      - Gateway Management > Gateway Role Assignments
+      - Gateway Role Assignments
     put:
       operationId: updateGatewayRoleAssignment
       parameters:
@@ -7491,7 +7486,7 @@ paths:
           description: Successful response
       summary: UPDATE Gateway Role Assignments
       tags:
-      - Gateway Management > Gateway Role Assignments
+      - Gateway Role Assignments
   /v1/environments/{environmentID}/groups:
     get:
       operationId: readAllGroups
@@ -8107,7 +8102,7 @@ paths:
           description: Successful response
       summary: CREATE Revision
       tags:
-      - Identity Propagation (Provisioning) > Propagation Revisions
+      - Propagation Revisions
   /v1/environments/{environmentID}/propagation/revisions/id:latest:
     get:
       parameters:
@@ -8170,7 +8165,7 @@ paths:
           description: Successful response
       summary: READ Latest Revision
       tags:
-      - Identity Propagation (Provisioning) > Propagation Revisions
+      - Propagation Revisions
   /v1/environments/{environmentID}/propagation/revisions/{previousRevisionID}:
     get:
       parameters:
@@ -8240,7 +8235,7 @@ paths:
           description: Successful response
       summary: READ Previous Revision
       tags:
-      - Identity Propagation (Provisioning) > Propagation Revisions
+      - Propagation Revisions
   /v1/environments/{environmentID}/propagation/plans:
     get:
       parameters:
@@ -8303,7 +8298,7 @@ paths:
           description: Successful response
       summary: READ All Plans
       tags:
-      - Identity Propagation (Provisioning) > Propagation Plans
+      - Propagation Plans
     post:
       parameters:
       - explode: false
@@ -8371,7 +8366,7 @@ paths:
           description: Successful response
       summary: CREATE Plan
       tags:
-      - Identity Propagation (Provisioning) > Propagation Plans
+      - Propagation Plans
   /v1/environments/{environmentID}/propagation/plans/{planID}:
     delete:
       parameters:
@@ -8439,7 +8434,7 @@ paths:
           description: Successful response
       summary: DELETE Plan
       tags:
-      - Identity Propagation (Provisioning) > Propagation Plans
+      - Propagation Plans
     get:
       parameters:
       - example: application/json
@@ -8508,7 +8503,7 @@ paths:
           description: Successful response
       summary: READ One Plan
       tags:
-      - Identity Propagation (Provisioning) > Propagation Plans
+      - Propagation Plans
     put:
       parameters:
       - explode: false
@@ -8576,7 +8571,7 @@ paths:
           description: Successful response
       summary: UPDATE Plan
       tags:
-      - Identity Propagation (Provisioning) > Propagation Plans
+      - Propagation Plans
   /v1/environments/{environmentID}/propagation/stores:
     get:
       parameters:
@@ -8639,7 +8634,7 @@ paths:
           description: Successful response
       summary: READ All Stores
       tags:
-      - Identity Propagation (Provisioning) > Propagation Stores
+      - Propagation Stores
     post:
       parameters:
       - explode: false
@@ -8724,7 +8719,7 @@ paths:
           description: Successful response
       summary: CREATE Store (Aquera)
       tags:
-      - Identity Propagation (Provisioning) > Propagation Stores
+      - Propagation Stores
   /v1/environments/{environmentID}/propagation/stores/{storeID}:
     delete:
       parameters:
@@ -8792,7 +8787,7 @@ paths:
           description: Successful response
       summary: DELETE Store
       tags:
-      - Identity Propagation (Provisioning) > Propagation Stores
+      - Propagation Stores
     get:
       parameters:
       - example: application/json
@@ -8861,7 +8856,7 @@ paths:
           description: Successful response
       summary: READ One Store
       tags:
-      - Identity Propagation (Provisioning) > Propagation Stores
+      - Propagation Stores
     put:
       parameters:
       - explode: false
@@ -8941,7 +8936,7 @@ paths:
           description: Successful response
       summary: UPDATE Store
       tags:
-      - Identity Propagation (Provisioning) > Propagation Stores
+      - Propagation Stores
   /v1/environments/{environmentID}/propagation/stores/connection/status:
     post:
       parameters:
@@ -9029,7 +9024,7 @@ paths:
           description: Successful response
       summary: TEST Connection Configuration
       tags:
-      - Identity Propagation (Provisioning) > Propagation Stores
+      - Propagation Stores
   /v1/environments/{environmentID}/propagation/storeMetadata/scim:
     post:
       parameters:
@@ -9109,7 +9104,7 @@ paths:
           description: Successful response
       summary: Identity Propagation Store Metadata (SCIM)
       tags:
-      - Identity Propagation (Provisioning) > Propagation Store Metadata
+      - Propagation Store Metadata
   /v1/environments/{environmentID}/propagation/storeMetadata/Salesforce:
     post:
       parameters:
@@ -9184,7 +9179,7 @@ paths:
           description: Successful response
       summary: Identity Propagation Store Metadata (Salesforce)
       tags:
-      - Identity Propagation (Provisioning) > Propagation Store Metadata
+      - Propagation Store Metadata
   /v1/environments/{environmentID}/propagation/storeMetadata/SalesforceContacts:
     post:
       parameters:
@@ -9259,7 +9254,7 @@ paths:
           description: Successful response
       summary: Identity Propagation Store Metadata (SalesforceContacts)
       tags:
-      - Identity Propagation (Provisioning) > Propagation Store Metadata
+      - Propagation Store Metadata
   /v1/environments/{environmentID}/propagation/storeMetadata/Aquera:
     post:
       parameters:
@@ -9339,7 +9334,7 @@ paths:
           description: Successful response
       summary: Identity Propagation Store Metadata (Aquera)
       tags:
-      - Identity Propagation (Provisioning) > Propagation Store Metadata
+      - Propagation Store Metadata
   /v1/environments/{environmentID}/propagation/rules:
     get:
       parameters:
@@ -9409,7 +9404,7 @@ paths:
           description: Successful response
       summary: READ All Rules
       tags:
-      - Identity Propagation (Provisioning) > Propagation Rules
+      - Propagation Rules
     post:
       parameters:
       - explode: false
@@ -9487,7 +9482,7 @@ paths:
           description: Successful response
       summary: CREATE Rule
       tags:
-      - Identity Propagation (Provisioning) > Propagation Rules
+      - Propagation Rules
   /v1/environments/{environmentID}/propagation/rules/{ruleID}:
     delete:
       parameters:
@@ -9555,7 +9550,7 @@ paths:
           description: Successful response
       summary: DELETE Rule
       tags:
-      - Identity Propagation (Provisioning) > Propagation Rules
+      - Propagation Rules
     get:
       parameters:
       - example: application/json
@@ -9624,7 +9619,7 @@ paths:
           description: Successful response
       summary: READ One Rule
       tags:
-      - Identity Propagation (Provisioning) > Propagation Rules
+      - Propagation Rules
   /v1/environments/{environmentID}/propagation/plans/{planID}/rules:
     get:
       parameters:
@@ -9702,7 +9697,7 @@ paths:
           description: Successful response
       summary: READ One Plan's Rules
       tags:
-      - Identity Propagation (Provisioning) > Propagation Rules
+      - Propagation Rules
   /v1/environments/{environmentID}/propagation/rules/{storeID}:
     put:
       parameters:
@@ -9782,7 +9777,7 @@ paths:
           description: Successful response
       summary: UPDATE Rule
       tags:
-      - Identity Propagation (Provisioning) > Propagation Rules
+      - Propagation Rules
   /v1/environments/{environmentID}/propagation/mappings/{mappingID}:
     get:
       parameters:
@@ -9852,7 +9847,7 @@ paths:
           description: Successful response
       summary: READ One Mapping
       tags:
-      - Identity Propagation (Provisioning) > Propagation Mappings
+      - Propagation Mappings
     put:
       parameters:
       - explode: false
@@ -9923,7 +9918,7 @@ paths:
           description: Successful response
       summary: UPDATE Mapping
       tags:
-      - Identity Propagation (Provisioning) > Propagation Mappings
+      - Propagation Mappings
   /v1/environments/{environmentID}/propagation/rules/{ruleID}/mappings:
     get:
       parameters:
@@ -10001,7 +9996,7 @@ paths:
           description: Successful response
       summary: READ One Rule  Mapping
       tags:
-      - Identity Propagation (Provisioning) > Propagation Mappings
+      - Propagation Mappings
     post:
       parameters:
       - explode: false
@@ -10077,7 +10072,7 @@ paths:
           description: Successful response
       summary: CREATE Rule Mapping
       tags:
-      - Identity Propagation (Provisioning) > Propagation Mappings
+      - Propagation Mappings
   /v1/environments/{environmentID}/propagation/mapping/{mappingID}:
     delete:
       parameters:
@@ -10145,7 +10140,7 @@ paths:
           description: Successful response
       summary: DELETE Mapping
       tags:
-      - Identity Propagation (Provisioning) > Propagation Mappings
+      - Propagation Mappings
   /v1/environments/{environmentID}/identityProviders:
     get:
       operationId: readAllIdentityProviders
@@ -10203,7 +10198,7 @@ paths:
           description: Successful response
       summary: READ All Identity Providers
       tags:
-      - Identity Provider Management > Identity Providers
+      - Identity Providers
     post:
       operationId: createIdentityProvider
       parameters:
@@ -10272,7 +10267,7 @@ paths:
           description: Successful response
       summary: CREATE Identity Provider
       tags:
-      - Identity Provider Management > Identity Providers
+      - Identity Providers
   /v1/environments/{environmentID}/identityProviders/{providerID}:
     delete:
       operationId: deleteIdentityProvider
@@ -10333,7 +10328,7 @@ paths:
           description: Successful response
       summary: DELETE Identity Provider
       tags:
-      - Identity Provider Management > Identity Providers
+      - Identity Providers
     get:
       operationId: readOneIdentityProvider
       parameters:
@@ -10397,7 +10392,7 @@ paths:
           description: Successful response
       summary: READ One Identity Provider
       tags:
-      - Identity Provider Management > Identity Providers
+      - Identity Providers
     put:
       operationId: updateIdentityProvider
       parameters:
@@ -10466,7 +10461,7 @@ paths:
           description: Successful response
       summary: UPDATE Identity Provider
       tags:
-      - Identity Provider Management > Identity Providers
+      - Identity Providers
   /v1/environments/{environmentID}/identityProviders/{providerID}/attributes:
     get:
       operationId: readAllIdentityProviderAttributes
@@ -10531,7 +10526,7 @@ paths:
           description: Successful response
       summary: READ All Identity Provider Attributes
       tags:
-      - Identity Provider Management > Identity Provider Attributes
+      - Identity Provider Attributes
     post:
       operationId: createIdentityProviderAttribute
       parameters:
@@ -10607,7 +10602,7 @@ paths:
           description: Successful response
       summary: CREATE Identity Provider Attribute
       tags:
-      - Identity Provider Management > Identity Provider Attributes
+      - Identity Provider Attributes
   /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID}:
     delete:
       operationId: deleteIdentityProviderAttribute
@@ -10675,7 +10670,7 @@ paths:
           description: Successful response
       summary: DELETE Identity Provider Attribute
       tags:
-      - Identity Provider Management > Identity Provider Attributes
+      - Identity Provider Attributes
     get:
       operationId: readOneIdentityProviderAttribute
       parameters:
@@ -10746,7 +10741,7 @@ paths:
           description: Successful response
       summary: READ One Identity Provider Attribute
       tags:
-      - Identity Provider Management > Identity Provider Attributes
+      - Identity Provider Attributes
     put:
       operationId: updateIdentityProviderAttribute
       parameters:
@@ -10822,7 +10817,7 @@ paths:
           description: Successful response
       summary: UPDATE Identity Provider Attribute
       tags:
-      - Identity Provider Management > Identity Provider Attributes
+      - Identity Provider Attributes
   /v1/environments/{environmentID}/images:
     post:
       operationId: createImage
@@ -11406,7 +11401,7 @@ paths:
           description: Successful response
       summary: READ Languages
       tags:
-      - Language Management > Languages
+      - Languages
   /v1/environments/{environmentID}/languages/{languageID}:
     delete:
       parameters:
@@ -11466,7 +11461,7 @@ paths:
           description: Successful response
       summary: DELETE Language
       tags:
-      - Language Management > Languages
+      - Languages
     get:
       parameters:
       - explode: false
@@ -11527,7 +11522,7 @@ paths:
           description: Successful response
       summary: READ One Language
       tags:
-      - Language Management > Languages
+      - Languages
     put:
       parameters:
       - explode: false
@@ -11595,7 +11590,7 @@ paths:
           description: Successful response
       summary: 'UPDATE Language '
       tags:
-      - Language Management > Languages
+      - Languages
   /v1/environments/{environmentID}/languages/:
     post:
       parameters:
@@ -11664,7 +11659,7 @@ paths:
           description: Successful response
       summary: CREATE Language
       tags:
-      - Language Management > Languages
+      - Languages
   /v1/environments/{environmentID}/languages/{languageID}/status:
     get:
       parameters:
@@ -11726,7 +11721,7 @@ paths:
           description: Successful response
       summary: READ Language Localization Status
       tags:
-      - Language Management > Language Localization Status
+      - Language Localization Status
     post:
       parameters:
       - explode: false
@@ -11803,7 +11798,7 @@ paths:
           description: Successful response
       summary: CREATE Language Localization Status
       tags:
-      - Language Management > Language Localization Status
+      - Language Localization Status
   /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID}:
     delete:
       parameters:
@@ -11870,7 +11865,7 @@ paths:
           description: Successful response
       summary: DELETE Language Localization Status
       tags:
-      - Language Management > Language Localization Status
+      - Language Localization Status
     get:
       parameters:
       - explode: false
@@ -11938,7 +11933,7 @@ paths:
           description: Successful response
       summary: READ One Language Localization Status
       tags:
-      - Language Management > Language Localization Status
+      - Language Localization Status
     put:
       parameters:
       - explode: false
@@ -12015,7 +12010,7 @@ paths:
           description: Successful response
       summary: CREATE Language Localization Status
       tags:
-      - Language Management > Language Localization Status
+      - Language Localization Status
   /v1/environments/{environmentID}/templates:
     get:
       parameters:
@@ -12070,7 +12065,7 @@ paths:
           description: Successful response
       summary: READ All Templates
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
   /v1/environments/{environmentID}/templates/{templateName}:
     get:
       parameters:
@@ -12132,7 +12127,7 @@ paths:
           description: Successful response
       summary: READ One Template
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
   /v1/environments/{environmentID}/templates/{templateName}/contents:
     delete:
       parameters:
@@ -12200,7 +12195,7 @@ paths:
           description: Successful response
       summary: DELETE Bulk Variant Contents
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
     get:
       parameters:
       - explode: false
@@ -12261,7 +12256,7 @@ paths:
           description: Successful response
       summary: READ All Contents
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
     patch:
       parameters:
       - example: "variant eq {{variantName}}"
@@ -12337,7 +12332,7 @@ paths:
           description: Successful response
       summary: PATCH Bulk Variant Contents
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
     post:
       parameters:
       - explode: false
@@ -12416,7 +12411,7 @@ paths:
           description: Successful response
       summary: CREATE Push Content
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
   /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID}:
     delete:
       parameters:
@@ -12483,7 +12478,7 @@ paths:
           description: Successful response
       summary: DELETE Content
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
     get:
       parameters:
       - explode: false
@@ -12551,7 +12546,7 @@ paths:
           description: Successful response
       summary: READ One Content
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
     put:
       parameters:
       - explode: false
@@ -12629,7 +12624,7 @@ paths:
           description: Successful response
       summary: UPDATE Push Content
       tags:
-      - Notifications > Notifications Templates
+      - Notifications Templates
   /v1/environments/{environmentID}/notificationsSettings:
     delete:
       parameters:
@@ -12682,7 +12677,7 @@ paths:
           description: Successful response
       summary: DELETE Notifications Settings
       tags:
-      - Notifications > Notifications Settings
+      - Notifications Settings
     get:
       parameters:
       - explode: false
@@ -12736,7 +12731,7 @@ paths:
           description: Successful response
       summary: READ Notifications Settings
       tags:
-      - Notifications > Notifications Settings
+      - Notifications Settings
     put:
       parameters:
       - explode: false
@@ -12790,7 +12785,7 @@ paths:
           description: Successful response
       summary: UPDATE Notifications Settings
       tags:
-      - Notifications > Notifications Settings
+      - Notifications Settings
   /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings:
     delete:
       parameters:
@@ -12843,7 +12838,7 @@ paths:
           description: Successful response
       summary: DELETE Phone Delivery Settings
       tags:
-      - Notifications > Phone Delivery Settings
+      - Phone Delivery Settings
     get:
       parameters:
       - explode: false
@@ -12897,7 +12892,7 @@ paths:
           description: Successful response
       summary: READ Notifications Settings (SMTP)
       tags:
-      - Notifications > Notifications Settings (SMTP)
+      - Notifications Settings (SMTP)
     put:
       parameters:
       - explode: false
@@ -12967,7 +12962,7 @@ paths:
           description: Successful response
       summary: UPDATE Notifications Settings (SMTP)
       tags:
-      - Notifications > Notifications Settings (SMTP)
+      - Notifications Settings (SMTP)
   /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings:
     get:
       parameters:
@@ -13022,7 +13017,7 @@ paths:
           description: Successful response
       summary: READ All Phone Delivery Settings
       tags:
-      - Notifications > Phone Delivery Settings
+      - Phone Delivery Settings
     post:
       parameters:
       - explode: false
@@ -13091,7 +13086,7 @@ paths:
           description: Successful response
       summary: CREATE Phone Delivery Settings (Syniverse)
       tags:
-      - Notifications > Phone Delivery Settings
+      - Phone Delivery Settings
   /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsId}:
     get:
       parameters:
@@ -13153,7 +13148,7 @@ paths:
           description: Successful response
       summary: READ One Phone Delivery Settings
       tags:
-      - Notifications > Phone Delivery Settings
+      - Phone Delivery Settings
     put:
       parameters:
       - explode: false
@@ -13262,7 +13257,7 @@ paths:
           description: Successful response
       summary: UPDATE Phone Delivery Settings
       tags:
-      - Notifications > Phone Delivery Settings
+      - Phone Delivery Settings
   /v1/environments/{environmentID}/emailDomains:
     get:
       parameters:
@@ -13317,7 +13312,7 @@ paths:
           description: Successful response
       summary: READ All Trusted Email Domains
       tags:
-      - Notifications > Trusted Email Domains
+      - Trusted Email Domains
     post:
       parameters:
       - explode: false
@@ -13385,7 +13380,7 @@ paths:
           description: Successful response
       summary: CREATE Trusted Email Domain
       tags:
-      - Notifications > Trusted Email Domains
+      - Trusted Email Domains
   /v1/environments/{environmentID}/emailDomains/{emailDomainID}:
     delete:
       parameters:
@@ -13445,7 +13440,7 @@ paths:
           description: Successful response
       summary: DELETE Trusted Email Domain
       tags:
-      - Notifications > Trusted Email Domains
+      - Trusted Email Domains
     get:
       parameters:
       - explode: false
@@ -13506,7 +13501,7 @@ paths:
           description: Successful response
       summary: READ One Trusted Email Domain
       tags:
-      - Notifications > Trusted Email Domains
+      - Trusted Email Domains
   /v1/environments/{environmentID}/emailDomains/{emailDomainID}/ownership:
     get:
       parameters:
@@ -13568,7 +13563,7 @@ paths:
           description: Successful response
       summary: READ Trusted Email Domain Ownership Status
       tags:
-      - Notifications > Trusted Email Domains
+      - Trusted Email Domains
   /v1/environments/{environmentID}/emailDomains/{emailDomainID}/dkim:
     get:
       parameters:
@@ -13630,7 +13625,7 @@ paths:
           description: Successful response
       summary: READ Trusted Email Domain DKIM Status
       tags:
-      - Notifications > Trusted Email Domains
+      - Trusted Email Domains
   /v1/environments/{environmentID}/emailDomains/{emailDomainID}/spf:
     get:
       parameters:
@@ -13692,7 +13687,7 @@ paths:
           description: Successful response
       summary: READ Trusted Email Domain SPF Status
       tags:
-      - Notifications > Trusted Email Domains
+      - Trusted Email Domains
   /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}:
     delete:
       parameters:
@@ -13759,7 +13754,7 @@ paths:
           description: Successful response
       summary: DELETE Trusted Email Address
       tags:
-      - Notifications > Trusted Email Addresses
+      - Trusted Email Addresses
     get:
       parameters:
       - explode: false
@@ -13827,7 +13822,7 @@ paths:
           description: Successful response
       summary: READ One Trusted Email Address
       tags:
-      - Notifications > Trusted Email Addresses
+      - Trusted Email Addresses
     post:
       parameters:
       - example: application/vnd.pingidentity.trustedEmail.sendVerificationCode+json
@@ -13910,7 +13905,7 @@ paths:
           description: Successful response
       summary: Resend Verification Code To Email
       tags:
-      - Notifications > Trusted Email Addresses
+      - Trusted Email Addresses
   /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails:
     get:
       parameters:
@@ -13972,7 +13967,7 @@ paths:
           description: Successful response
       summary: READ All Trusted Email Addresses
       tags:
-      - Notifications > Trusted Email Addresses
+      - Trusted Email Addresses
     post:
       parameters:
       - explode: false
@@ -14047,7 +14042,7 @@ paths:
           description: Successful response
       summary: CREATE Trusted Email Address
       tags:
-      - Notifications > Trusted Email Addresses
+      - Trusted Email Addresses
   /v1/environments/{environmentID}/passwordPolicies:
     get:
       operationId: readAllPasswordPolicies
@@ -14769,7 +14764,7 @@ paths:
           description: Successful response
       summary: READ All Resources
       tags:
-      - Resources > Resources
+      - Resources
     post:
       operationId: createResource
       parameters:
@@ -14838,7 +14833,7 @@ paths:
           description: Successful response
       summary: CREATE Resource
       tags:
-      - Resources > Resources
+      - Resources
   /v1/environments/{environmentID}/resources/{resourceID}:
     delete:
       operationId: deleteResource
@@ -14899,7 +14894,7 @@ paths:
           description: Successful response
       summary: DELETE Resource
       tags:
-      - Resources > Resources
+      - Resources
     get:
       operationId: readOneResource
       parameters:
@@ -14963,7 +14958,7 @@ paths:
           description: Successful response
       summary: READ One Resource
       tags:
-      - Resources > Resources
+      - Resources
     put:
       operationId: updateResource
       parameters:
@@ -15032,7 +15027,7 @@ paths:
           description: Successful response
       summary: UPDATE Resource
       tags:
-      - Resources > Resources
+      - Resources
   /v1/environments/{environmentID}/resources/{resourceID}/scopes:
     get:
       operationId: readAllResourceScopes
@@ -15097,7 +15092,7 @@ paths:
           description: Successful response
       summary: READ All Scopes (Resource)
       tags:
-      - Resources > Resource Scopes
+      - Resource Scopes
     post:
       operationId: createResourceScope
       parameters:
@@ -15173,7 +15168,7 @@ paths:
           description: Successful response
       summary: CREATE PingOne access control scope
       tags:
-      - Resources > Resource Scopes
+      - Resource Scopes
   /v1/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID}:
     delete:
       operationId: deleteResourceScope
@@ -15241,7 +15236,7 @@ paths:
           description: Successful response
       summary: DELETE Scope
       tags:
-      - Resources > Resource Scopes
+      - Resource Scopes
     get:
       operationId: readOneResourceScope
       parameters:
@@ -15312,7 +15307,7 @@ paths:
           description: Successful response
       summary: READ One Scope
       tags:
-      - Resources > Resource Scopes
+      - Resource Scopes
     put:
       operationId: updateResourceScope
       parameters:
@@ -15388,7 +15383,7 @@ paths:
           description: Successful response
       summary: UPDATE PingOne access control scope
       tags:
-      - Resources > Resource Scopes
+      - Resource Scopes
   /v1/environments/{environmentID}/resources/{resourceID}/attributes:
     get:
       operationId: readAllResourceAttributes
@@ -15453,7 +15448,7 @@ paths:
           description: Successful response
       summary: READ All Resource Attributes
       tags:
-      - Resources > Resource Attributes
+      - Resource Attributes
     post:
       operationId: createResourceAttribute
       parameters:
@@ -15529,7 +15524,7 @@ paths:
           description: Successful response
       summary: CREATE Resource Attribute
       tags:
-      - Resources > Resource Attributes
+      - Resource Attributes
   /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID}:
     delete:
       operationId: deleteResourceAttribute
@@ -15597,7 +15592,7 @@ paths:
           description: Successful response
       summary: DELETE Resource Attribute
       tags:
-      - Resources > Resource Attributes
+      - Resource Attributes
     get:
       operationId: readOneResourceAttribute
       parameters:
@@ -15668,7 +15663,7 @@ paths:
           description: Successful response
       summary: READ One Resource Attribute
       tags:
-      - Resources > Resource Attributes
+      - Resource Attributes
     put:
       operationId: updateResourceAttribute
       parameters:
@@ -15744,7 +15739,7 @@ paths:
           description: Successful response
       summary: UPDATE Resource Attribute
       tags:
-      - Resources > Resource Attributes
+      - Resource Attributes
   /v1/environments/{environmentID}/schemas:
     get:
       operationId: readAllSchemas
@@ -16357,7 +16352,7 @@ paths:
           description: Successful response
       summary: READ All Sign On Policies
       tags:
-      - Sign-On Policies > Sign-On Policies
+      - Sign-On Policies
     post:
       operationId: createSignOnPolicy
       parameters:
@@ -16426,7 +16421,7 @@ paths:
           description: Successful response
       summary: CREATE Sign On Policy
       tags:
-      - Sign-On Policies > Sign-On Policies
+      - Sign-On Policies
   /v1/environments/{environmentID}/signOnPolicies/{policyID}:
     delete:
       operationId: deleteSignOnPolicy
@@ -16487,7 +16482,7 @@ paths:
           description: Successful response
       summary: DELETE Sign On Policy
       tags:
-      - Sign-On Policies > Sign-On Policies
+      - Sign-On Policies
     get:
       operationId: readOneSignOnPolicy
       parameters:
@@ -16551,7 +16546,7 @@ paths:
           description: Successful response
       summary: READ One Sign On Policy
       tags:
-      - Sign-On Policies > Sign-On Policies
+      - Sign-On Policies
     put:
       operationId: updateSignOnPolicy
       parameters:
@@ -16620,7 +16615,7 @@ paths:
           description: Successful response
       summary: UPDATE Sign On Policy
       tags:
-      - Sign-On Policies > Sign-On Policies
+      - Sign-On Policies
   /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions:
     get:
       operationId: readAllSignOnPolicyActions
@@ -16685,7 +16680,7 @@ paths:
           description: Successful response
       summary: READ All Sign-On Policy Actions
       tags:
-      - Sign-On Policies > Sign-On Policy Actions
+      - Sign-On Policy Actions
     post:
       operationId: createSignOnPolicyAction
       parameters:
@@ -16761,7 +16756,7 @@ paths:
           description: Successful response
       summary: CREATE Sign-On Policy Action
       tags:
-      - Sign-On Policies > Sign-On Policy Actions
+      - Sign-On Policy Actions
   /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID}:
     delete:
       operationId: deleteSignOnPolicyAction
@@ -16829,7 +16824,7 @@ paths:
           description: Successful response
       summary: DELETE Sign-On Policy Action
       tags:
-      - Sign-On Policies > Sign-On Policy Actions
+      - Sign-On Policy Actions
     get:
       operationId: readOneSignOnPolicyAction
       parameters:
@@ -16900,7 +16895,7 @@ paths:
           description: Successful response
       summary: READ One Sign-On Policy Action
       tags:
-      - Sign-On Policies > Sign-On Policy Actions
+      - Sign-On Policy Actions
     put:
       operationId: updateSignOnPolicyAction
       parameters:
@@ -16976,7 +16971,7 @@ paths:
           description: Successful response
       summary: UPDATE Sign-On Policy Action
       tags:
-      - Sign-On Policies > Sign-On Policy Actions
+      - Sign-On Policy Actions
   /v1/environments/{environmentID}/subscriptions:
     get:
       parameters:
@@ -17518,7 +17513,7 @@ paths:
           description: Successful response
       summary: READ All Users
       tags:
-      - Users > Users
+      - Users
     post:
       operationId: createUser
       parameters:
@@ -17595,7 +17590,7 @@ paths:
           description: Successful response
       summary: CREATE User
       tags:
-      - Users > Users
+      - Users
   /v1/environments/{environmentID}/users/{userID}:
     delete:
       operationId: deleteUser
@@ -17656,7 +17651,7 @@ paths:
           description: Successful response
       summary: DELETE User
       tags:
-      - Users > Users
+      - Users
     get:
       operationId: readUser
       parameters:
@@ -17728,7 +17723,7 @@ paths:
           description: Successful response
       summary: READ User
       tags:
-      - Users > Users
+      - Users
     patch:
       operationId: updateUserPatch
       parameters:
@@ -17797,7 +17792,7 @@ paths:
           description: Successful response
       summary: UPDATE User (Patch)
       tags:
-      - Users > Users
+      - Users
     post:
       parameters:
       - example: application/vnd.pingidentity.account.unlock+json
@@ -17875,7 +17870,7 @@ paths:
           description: Successful response
       summary: User Account Unlock
       tags:
-      - Users > User Accounts
+      - User Accounts
     put:
       operationId: updateUserPut
       parameters:
@@ -17944,7 +17939,7 @@ paths:
           description: Successful response
       summary: UPDATE User (Put)
       tags:
-      - Users > Users
+      - Users
   /v1/environments/{environmentID}/users/{userID}/identityProvider:
     get:
       parameters:
@@ -18006,7 +18001,7 @@ paths:
           description: Successful response
       summary: READ User Identity Provider
       tags:
-      - Users > Users
+      - Users
     put:
       parameters:
       - explode: false
@@ -18075,7 +18070,7 @@ paths:
           description: Successful response
       summary: UPDATE User Identity Provider
       tags:
-      - Users > Users
+      - Users
   /v1/environments/{environmentID}/users/{userID}/verifyStatus:
     get:
       parameters:
@@ -18137,7 +18132,7 @@ paths:
           description: Successful response
       summary: READ user verification status
       tags:
-      - Users > Users
+      - Users
     put:
       parameters:
       - explode: false
@@ -18205,7 +18200,7 @@ paths:
           description: Successful response
       summary: UPDATE user verification status
       tags:
-      - Users > Users
+      - Users
   /v1/environments/{environmentID}/users/{userID}/memberOfGroups:
     get:
       operationId: readAllGroupMembershipsForUser
@@ -18294,7 +18289,7 @@ paths:
           description: Successful response
       summary: READ All Group Memberships for User
       tags:
-      - Users > Group Membership
+      - Group Membership
     post:
       operationId: addUserToGroup
       parameters:
@@ -18370,7 +18365,7 @@ paths:
           description: Successful response
       summary: ADD User to Group
       tags:
-      - Users > Group Membership
+      - Group Membership
   /v1/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}:
     delete:
       operationId: removeUserFromGroup
@@ -18438,7 +18433,7 @@ paths:
           description: Successful response
       summary: REMOVE User from Group
       tags:
-      - Users > Group Membership
+      - Group Membership
     get:
       operationId: readOneGroupMembershipForUser
       parameters:
@@ -18517,7 +18512,7 @@ paths:
           description: Successful response
       summary: READ One Group Membership for User
       tags:
-      - Users > Group Membership
+      - Group Membership
   /v1/environments/{environmentID}/users/{userID}/enabled:
     get:
       operationId: readUserEnabled
@@ -18582,7 +18577,7 @@ paths:
           description: Successful response
       summary: READ User Enabled
       tags:
-      - Users > Enable Users
+      - Enable Users
     put:
       operationId: updateUserEnabled
       parameters:
@@ -18651,7 +18646,7 @@ paths:
           description: Successful response
       summary: UPDATE User Enabled
       tags:
-      - Users > Enable Users
+      - Enable Users
   /v1/environments/{environmentID}/users/{userID}/linkedAccounts:
     get:
       parameters:
@@ -18713,7 +18708,7 @@ paths:
           description: Successful response
       summary: READ Linked Accounts
       tags:
-      - Users > Linked Accounts
+      - Linked Accounts
   /v1/environments/{environmentID}/users/{userID}/linkedAccounts/{linkedAccountID}:
     delete:
       parameters:
@@ -18780,7 +18775,7 @@ paths:
           description: Successful response
       summary: DELETE Linked Account
       tags:
-      - Users > Linked Accounts
+      - Linked Accounts
     get:
       parameters:
       - explode: false
@@ -18848,7 +18843,7 @@ paths:
           description: Successful response
       summary: READ One Linked Account
       tags:
-      - Users > Linked Accounts
+      - Linked Accounts
   /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID}:
     delete:
       parameters:
@@ -18915,7 +18910,7 @@ paths:
           description: Successful response
       summary: DELETE MFA Pairing Key
       tags:
-      - Users > MFA Pairing Keys
+      - MFA Pairing Keys
     get:
       parameters:
       - explode: false
@@ -18983,7 +18978,7 @@ paths:
           description: Successful response
       summary: READ One MFA Pairing Key
       tags:
-      - Users > MFA Pairing Keys
+      - MFA Pairing Keys
   /v1/environments/{environmentID}/users/{userID}/pairingKeys:
     post:
       parameters:
@@ -19060,7 +19055,7 @@ paths:
           description: Successful response
       summary: CREATE MFA Pairing Key
       tags:
-      - Users > MFA Pairing Keys
+      - MFA Pairing Keys
   /v1/environments/{environmentID}/users/{userID}/population:
     get:
       operationId: readUserPopulation
@@ -19125,7 +19120,7 @@ paths:
           description: Successful response
       summary: READ User Population
       tags:
-      - Users > User Populations
+      - User Populations
     put:
       operationId: updateUserPopulation
       parameters:
@@ -19194,7 +19189,7 @@ paths:
           description: Successful response
       summary: UPDATE User Population
       tags:
-      - Users > User Populations
+      - User Populations
   /v1/environments/{environmentID}/users/{userID}/password:
     get:
       parameters:
@@ -19256,7 +19251,7 @@ paths:
           description: Successful response
       summary: READ Password State
       tags:
-      - Users > User Passwords
+      - User Passwords
     post:
       parameters:
       - example: application/vnd.pingidentity.password.recover+json
@@ -19340,7 +19335,7 @@ paths:
           description: Successful response
       summary: Password Locked Out
       tags:
-      - Users > User Passwords
+      - User Passwords
     put:
       parameters:
       - example: application/vnd.pingidentity.password.set+json
@@ -19417,7 +19412,7 @@ paths:
           description: Successful response
       summary: UPDATE Password (Set)
       tags:
-      - Users > User Passwords
+      - User Passwords
   /v1/environments/{environmentID}/users/{userID}/roleAssignments:
     get:
       operationId: readUserRoleAssignments
@@ -19482,7 +19477,7 @@ paths:
           description: Successful response
       summary: READ Role Assignments
       tags:
-      - Users > User Role Assignments
+      - User Role Assignments
     post:
       operationId: createUserRoleAssignment
       parameters:
@@ -19558,7 +19553,7 @@ paths:
           description: Successful response
       summary: CREATE User Role Assignment
       tags:
-      - Users > User Role Assignments
+      - User Role Assignments
   /v1/environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID}:
     delete:
       operationId: deleteUserRoleAssignment
@@ -19626,7 +19621,7 @@ paths:
           description: Successful response
       summary: DELETE User's Role Assignment
       tags:
-      - Users > User Role Assignments
+      - User Role Assignments
     get:
       operationId: readOneUserRoleAssignment
       parameters:
@@ -19697,7 +19692,7 @@ paths:
           description: Successful response
       summary: READ One Role Assignment
       tags:
-      - Users > User Role Assignments
+      - User Role Assignments
   /v1/environments/{environmentID}/users/{userID}/verifyTransactions:
     get:
       parameters:
@@ -19759,7 +19754,7 @@ paths:
           description: Successful response
       summary: READ All ID Verification Transaction Records for a User
       tags:
-      - Users > User ID Verification
+      - User ID Verification
     post:
       parameters:
       - explode: false
@@ -19827,7 +19822,7 @@ paths:
           description: Successful response
       summary: CREATE ID Verification Transaction Record for a User
       tags:
-      - Users > User ID Verification
+      - User ID Verification
   /v1/environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID}:
     delete:
       parameters:
@@ -19894,7 +19889,7 @@ paths:
           description: Successful response
       summary: DELETE ID Verification Transaction Record for a User
       tags:
-      - Users > User ID Verification
+      - User ID Verification
     get:
       parameters:
       - explode: false
@@ -19962,7 +19957,7 @@ paths:
           description: Successful response
       summary: READ ID Verification Transaction Record for a User
       tags:
-      - Users > User ID Verification
+      - User ID Verification
     put:
       parameters:
       - explode: false
@@ -20038,7 +20033,7 @@ paths:
           description: Successful response
       summary: UPDATE ID Verification Transaction Record for a User
       tags:
-      - Users > User ID Verification
+      - User ID Verification
   /v1/environments/{environmentID}/users/{userID}/agreementConsents:
     get:
       parameters:
@@ -20100,7 +20095,7 @@ paths:
           description: Successful response
       summary: READ All User Agreement Consents
       tags:
-      - Users > User Agreement Consents
+      - User Agreement Consents
   /v1/environments/{environmentID}/users/{userID}/agreementConsents/{agreementID}:
     get:
       parameters:
@@ -20169,7 +20164,7 @@ paths:
           description: Successful response
       summary: READ One User Agreement Consent
       tags:
-      - Users > User Agreement Consents
+      - User Agreement Consents
     post:
       parameters:
       - example: application/vnd.pingidentity.consent.revoke+json
@@ -20252,7 +20247,7 @@ paths:
           description: Successful response
       summary: Revoke Agreement
       tags:
-      - Users > User Agreement Consents
+      - User Agreement Consents
   /v1/environments/{environmentID}/users/{userID}/sessions:
     get:
       parameters:
@@ -20314,7 +20309,7 @@ paths:
           description: Successful response
       summary: READ All Sessions
       tags:
-      - Users > Sessions
+      - Sessions
   /v1/environments/{environmentID}/users/{userID}/sessions/{sessionID}:
     delete:
       parameters:
@@ -20381,7 +20376,7 @@ paths:
           description: Successful response
       summary: DELETE Session
       tags:
-      - Users > Sessions
+      - Sessions
     get:
       parameters:
       - explode: false
@@ -20449,7 +20444,7 @@ paths:
           description: Successful response
       summary: READ One Session
       tags:
-      - Users > Sessions
+      - Sessions
   /v1/organizations:
     get:
       operationId: readAllOrganizations
@@ -23127,16 +23122,10 @@ components:
     IdentityProvider:
       oneOf:
       - $ref: '#/components/schemas/IdentityProviderFacebook'
-      - $ref: '#/components/schemas/IdentityProviderGoogle'
-      - $ref: '#/components/schemas/IdentityProviderLinkedIn'
-      - $ref: '#/components/schemas/IdentityProviderYahoo'
+      - $ref: '#/components/schemas/IdentityProviderClientIDClientSecret'
       - $ref: '#/components/schemas/IdentityProviderOIDC'
-      - $ref: '#/components/schemas/IdentityProviderAmazon'
-      - $ref: '#/components/schemas/IdentityProviderTwitter'
       - $ref: '#/components/schemas/IdentityProviderApple'
       - $ref: '#/components/schemas/IdentityProviderPaypal'
-      - $ref: '#/components/schemas/IdentityProviderMicrosoft'
-      - $ref: '#/components/schemas/IdentityProviderGithub'
       - $ref: '#/components/schemas/IdentityProviderSAML'
     IdentityProviderAttribute:
       example:
@@ -23171,7 +23160,7 @@ components:
             \ used to refer to the subject name ID in the SAML assertion response."
           type: string
         update:
-          $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingType'
+          $ref: '#/components/schemas/EnumIdentityProviderAttributeMappingUpdate'
         id:
           description: The unique identifier for the resource.
           readOnly: true
@@ -23195,11 +23184,14 @@ components:
       type: object
     IdentityProviderCommon:
       properties:
+        _links:
+          type: object
         description:
           description: The description of the IdP.
           type: string
         enabled:
-          $ref: '#/components/schemas/EnumEnabledStatus'
+          description: The current enabled state of the IdP.
+          type: boolean
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         icon:
@@ -23217,6 +23209,14 @@ components:
           $ref: '#/components/schemas/IdentityProviderCommon_registration'
         type:
           $ref: '#/components/schemas/EnumIdentityProviderExt'
+        createdAt:
+          description: The time the resource was created.
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          readOnly: true
+          type: string
       required:
       - enabled
       - name
@@ -23226,30 +23226,14 @@ components:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
       - $ref: '#/components/schemas/IdentityProviderFacebook_allOf'
-    IdentityProviderGoogle:
+    IdentityProviderClientIDClientSecret:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderGoogle_allOf'
-    IdentityProviderLinkedIn:
-      allOf:
-      - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderLinkedIn_allOf'
-    IdentityProviderYahoo:
-      allOf:
-      - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderYahoo_allOf'
+      - $ref: '#/components/schemas/IdentityProviderClientIDClientSecret_allOf'
     IdentityProviderOIDC:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
       - $ref: '#/components/schemas/IdentityProviderOIDC_allOf'
-    IdentityProviderAmazon:
-      allOf:
-      - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderAmazon_allOf'
-    IdentityProviderTwitter:
-      allOf:
-      - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderTwitter_allOf'
     IdentityProviderApple:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
@@ -23258,14 +23242,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
       - $ref: '#/components/schemas/IdentityProviderPaypal_allOf'
-    IdentityProviderMicrosoft:
-      allOf:
-      - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderMicrosoft_allOf'
-    IdentityProviderGithub:
-      allOf:
-      - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderGithub_allOf'
     IdentityProviderSAML:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
@@ -26121,42 +26097,14 @@ components:
       - appId
       - appSecret
       type: object
-    IdentityProviderGoogle_allOf:
+    IdentityProviderClientIDClientSecret_allOf:
       properties:
         clientId:
-          description: A string that specifies the application ID from Google. This
-            is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from Google.
+          description: A string that specifies the application ID from the provider.
             This is a required property.
           type: string
-      required:
-      - clientId
-      - clientSecret
-      type: object
-    IdentityProviderLinkedIn_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from LinkedIn. This
-            is a required property.
-          type: string
         clientSecret:
-          description: A string that specifies the application secret from LinkedIn.
-            This is a required property.
-          type: string
-      required:
-      - clientId
-      - clientSecret
-      type: object
-    IdentityProviderYahoo_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from Yahoo. This
-            is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from Yahoo.
+          description: A string that specifies the application secret from the provider.
             This is a required property.
           type: string
       required:
@@ -26217,34 +26165,6 @@ components:
       - tokenEndpoint
       - tokenEndpointAuthMethod
       type: object
-    IdentityProviderAmazon_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from Amazon. This
-            is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from Amazon.
-            This is a required property.
-          type: string
-      required:
-      - clientId
-      - clientSecret
-      type: object
-    IdentityProviderTwitter_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from Twitter. This
-            is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from Twitter.
-            This is a required property.
-          type: string
-      required:
-      - clientId
-      - clientSecret
-      type: object
     IdentityProviderApple_allOf:
       properties:
         clientId:
@@ -26286,34 +26206,6 @@ components:
           type: string
       required:
       - clientEnvironment
-      - clientId
-      - clientSecret
-      type: object
-    IdentityProviderMicrosoft_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from Microsoft.
-            This is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from Microsoft.
-            This is a required property.
-          type: string
-      required:
-      - clientId
-      - clientSecret
-      type: object
-    IdentityProviderGithub_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from Github. This
-            is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from Github.
-            This is a required property.
-          type: string
-      required:
       - clientId
       - clientSecret
       type: object

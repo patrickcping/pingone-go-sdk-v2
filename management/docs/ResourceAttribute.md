@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**EnumResourceAttributeType**](EnumResourceAttributeType.md) |  | [optional] 
 **Value** | **string** | A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as “${user.path.to.value}”, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are “${user.email}”, “${user.name.family}”, and “myClaimValueString” | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Resource** | Pointer to [**ResourceResource**](ResourceResource.md) |  | [optional] 
+**Resource** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
 
 ## Methods
 
@@ -147,20 +147,20 @@ HasEnvironment returns a boolean if a field has been set.
 
 ### GetResource
 
-`func (o *ResourceAttribute) GetResource() ResourceResource`
+`func (o *ResourceAttribute) GetResource() IdentityProviderAttributeIdentityProvider`
 
 GetResource returns the Resource field if non-nil, zero value otherwise.
 
 ### GetResourceOk
 
-`func (o *ResourceAttribute) GetResourceOk() (*ResourceResource, bool)`
+`func (o *ResourceAttribute) GetResourceOk() (*IdentityProviderAttributeIdentityProvider, bool)`
 
 GetResourceOk returns a tuple with the Resource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResource
 
-`func (o *ResourceAttribute) SetResource(v ResourceResource)`
+`func (o *ResourceAttribute) SetResource(v IdentityProviderAttributeIdentityProvider)`
 
 SetResource sets Resource field to given value.
 

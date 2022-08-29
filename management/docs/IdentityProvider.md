@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to **map[string]interface{}** |  | [optional] 
 **Description** | Pointer to **string** | The description of the IdP. | [optional] 
-**Enabled** | [**EnumEnabledStatus**](EnumEnabledStatus.md) |  | 
+**Enabled** | **bool** | The current enabled state of the IdP. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Icon** | Pointer to [**IdentityProviderCommonIcon**](IdentityProviderCommonIcon.md) |  | [optional] 
 **Id** | Pointer to **string** | The resource ID. | [optional] [readonly] 
@@ -13,10 +14,12 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the IdP. | 
 **Registration** | Pointer to [**IdentityProviderCommonRegistration**](IdentityProviderCommonRegistration.md) |  | [optional] 
 **Type** | [**EnumIdentityProviderExt**](EnumIdentityProviderExt.md) |  | 
+**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **AppId** | **string** | A string that specifies the application ID from Facebook. This is a required property. | 
 **AppSecret** | **string** | A string that specifies the application secret from Facebook. This is a required property. | 
-**ClientId** | **string** | A string that specifies the application ID from Github. This is a required property. | 
-**ClientSecret** | **string** | A string that specifies the application secret from Github. This is a required property. | 
+**ClientId** | **string** | A string that specifies the application ID from PayPal. This is a required property. | 
+**ClientSecret** | **string** | A string that specifies the application secret from PayPal. This is a required property. | 
 **AuthorizationEndpoint** | **string** | A string that specifies the the OIDC identity provider&#39;s authorization endpoint. This value must be a URL that uses https. This is a required property. | 
 **DiscoveryEndpoint** | Pointer to **string** | A string that specifies the OIDC identity provider&#39;s discovery endpoint. This value must be a URL that uses https. | [optional] 
 **Issuer** | **string** | A string that specifies the issuer to which the authentication is sent for the OIDC identity provider. This value must be a URL that uses https. This is a required property. | 
@@ -41,7 +44,7 @@ Name | Type | Description | Notes
 
 ### NewIdentityProvider
 
-`func NewIdentityProvider(enabled EnumEnabledStatus, name string, type_ EnumIdentityProviderExt, appId string, appSecret string, clientId string, clientSecret string, authorizationEndpoint string, issuer string, jwksEndpoint string, scopes []string, tokenEndpoint string, tokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod, clientSecretSigningKey string, keyId string, teamId string, clientEnvironment string, ) *IdentityProvider`
+`func NewIdentityProvider(enabled bool, name string, type_ EnumIdentityProviderExt, appId string, appSecret string, clientId string, clientSecret string, authorizationEndpoint string, issuer string, jwksEndpoint string, scopes []string, tokenEndpoint string, tokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod, clientSecretSigningKey string, keyId string, teamId string, clientEnvironment string, ) *IdentityProvider`
 
 NewIdentityProvider instantiates a new IdentityProvider object
 This constructor will assign default values to properties that have it defined,
@@ -55,6 +58,31 @@ will change when the set of required properties is changed
 NewIdentityProviderWithDefaults instantiates a new IdentityProvider object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *IdentityProvider) GetLinks() map[string]interface{}`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *IdentityProvider) GetLinksOk() (*map[string]interface{}, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *IdentityProvider) SetLinks(v map[string]interface{})`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *IdentityProvider) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -83,20 +111,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *IdentityProvider) GetEnabled() EnumEnabledStatus`
+`func (o *IdentityProvider) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *IdentityProvider) GetEnabledOk() (*EnumEnabledStatus, bool)`
+`func (o *IdentityProvider) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *IdentityProvider) SetEnabled(v EnumEnabledStatus)`
+`func (o *IdentityProvider) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
@@ -265,6 +293,56 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+
+### GetCreatedAt
+
+`func (o *IdentityProvider) GetCreatedAt() string`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *IdentityProvider) GetCreatedAtOk() (*string, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *IdentityProvider) SetCreatedAt(v string)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+### HasCreatedAt
+
+`func (o *IdentityProvider) HasCreatedAt() bool`
+
+HasCreatedAt returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *IdentityProvider) GetUpdatedAt() string`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *IdentityProvider) GetUpdatedAtOk() (*string, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *IdentityProvider) SetUpdatedAt(v string)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *IdentityProvider) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetAppId
 
