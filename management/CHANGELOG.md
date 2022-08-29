@@ -1,4 +1,4 @@
-# v0.6.0 (Unreleased)
+# v0.6.0 (2022-08-29)
 
 * **Bug fix** - Correct `PINGONE_API` from incorrect `PING_ONE_API` in `EnumResourceType` enum [#24](https://github.com/patrickcping/pingone-go-sdk-v2/pull/24)
 * **Bug fix** - Correct `EnumIdentityProviderAttributeMappingUpdate` values [#30](https://github.com/patrickcping/pingone-go-sdk-v2/pull/30)

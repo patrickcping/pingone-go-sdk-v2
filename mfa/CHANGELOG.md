@@ -1,4 +1,4 @@
-# v0.4.0 (Unreleased)
+# v0.4.0 (2022-08-29)
 
 * **Enhancement** Add 404 response processing for all requests [#28](https://github.com/patrickcping/pingone-go-sdk-v2/pull/28)
 * **Enhancement** Add missing 400 response processing [#29](https://github.com/patrickcping/pingone-go-sdk-v2/pull/29)
