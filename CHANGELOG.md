@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.7.0](./management/CHANGELOG.md)
+    * **Breaking change** Identity Provider (SAML) added required fields [#31](https://github.com/patrickcping/pingone-go-sdk-v2/pull/31)
+
 # Release (2022-08-29)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.4
