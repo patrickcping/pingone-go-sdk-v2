@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ForceChange** | Pointer to **bool** | (Optional) A boolean that specifies whether the user is forced to change the password on the next log in. If not provided, the property is set to false. | [optional] 
+**ForceChange** | Pointer to **bool** | A boolean that specifies whether the user is forced to change the password on the next log in. If not provided, the property is set to false. | [optional] 
 **Value** | Pointer to **string** | A string that specifies the user&#39;s password value. The string is either in cleartext or pre-encoded format. | [optional] 
 **External** | Pointer to [**UserPasswordExternal**](UserPasswordExternal.md) |  | [optional] 
 

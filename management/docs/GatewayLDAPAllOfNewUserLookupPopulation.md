@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | (Optional) The ID of the population to use to create user entries during lookup. | 
+**Id** | **string** | The ID of the population to use to create user entries during lookup. | 
 
 ## Methods
 

@@ -164,7 +164,9 @@ docs/EnumDurationUnitMinsHours.md
 docs/EnumEnabledStatus.md
 docs/EnumEnvironmentType.md
 docs/EnumGatewayLDAPSecurity.md
+docs/EnumGatewayPasswordAuthority.md
 docs/EnumGatewayType.md
+docs/EnumGatewayVendor.md
 docs/EnumGetKeyAcceptHeader.md
 docs/EnumHealthStatus.md
 docs/EnumIdentityProvider.md
@@ -207,6 +209,7 @@ docs/GatewayInstanceVersion.md
 docs/GatewayInstancesApi.md
 docs/GatewayLDAP.md
 docs/GatewayLDAPAllOf.md
+docs/GatewayLDAPAllOfKerberos.md
 docs/GatewayLDAPAllOfNewUserLookup.md
 docs/GatewayLDAPAllOfNewUserLookupAttributeMappings.md
 docs/GatewayLDAPAllOfNewUserLookupPopulation.md
@@ -458,7 +461,9 @@ model_enum_duration_unit_mins_hours.go
 model_enum_enabled_status.go
 model_enum_environment_type.go
 model_enum_gateway_ldap_security.go
+model_enum_gateway_password_authority.go
 model_enum_gateway_type.go
+model_enum_gateway_vendor.go
 model_enum_get_key_accept_header.go
 model_enum_health_status.go
 model_enum_identity_provider.go
@@ -498,6 +503,7 @@ model_gateway_instance_gateway.go
 model_gateway_instance_version.go
 model_gateway_ldap.go
 model_gateway_ldap_all_of.go
+model_gateway_ldap_all_of_kerberos.go
 model_gateway_ldap_all_of_new_user_lookup.go
 model_gateway_ldap_all_of_new_user_lookup_attribute_mappings.go
 model_gateway_ldap_all_of_new_user_lookup_population.go

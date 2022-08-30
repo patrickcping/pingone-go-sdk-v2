@@ -6,11 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the auto-generated ID for this credential. This is the JWT&#39;s jti claim. This is a required property. | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property. | [optional] [readonly] 
-**GatewayType** | Pointer to [**EnumGatewayType**](EnumGatewayType.md) |  | [optional] 
 **LastUsedAt** | Pointer to **string** | A date that specifies the date the credential was last used in UTC. This is a required property. | [optional] [readonly] 
-**ConsoleUrl** | Pointer to **string** |  | [optional] [readonly] 
-**ApiUrl** | Pointer to **string** |  | [optional] [readonly] 
-**AuthUrl** | Pointer to **string** |  | [optional] [readonly] 
 **Credential** | Pointer to **string** | A string that specifies the signed JWT for the gateway credential. This property is present only when the gateway credential is created. | [optional] [readonly] 
 
 ## Methods
@@ -82,31 +78,6 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
-### GetGatewayType
-
-`func (o *GatewayCredential) GetGatewayType() EnumGatewayType`
-
-GetGatewayType returns the GatewayType field if non-nil, zero value otherwise.
-
-### GetGatewayTypeOk
-
-`func (o *GatewayCredential) GetGatewayTypeOk() (*EnumGatewayType, bool)`
-
-GetGatewayTypeOk returns a tuple with the GatewayType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGatewayType
-
-`func (o *GatewayCredential) SetGatewayType(v EnumGatewayType)`
-
-SetGatewayType sets GatewayType field to given value.
-
-### HasGatewayType
-
-`func (o *GatewayCredential) HasGatewayType() bool`
-
-HasGatewayType returns a boolean if a field has been set.
-
 ### GetLastUsedAt
 
 `func (o *GatewayCredential) GetLastUsedAt() string`
@@ -131,81 +102,6 @@ SetLastUsedAt sets LastUsedAt field to given value.
 `func (o *GatewayCredential) HasLastUsedAt() bool`
 
 HasLastUsedAt returns a boolean if a field has been set.
-
-### GetConsoleUrl
-
-`func (o *GatewayCredential) GetConsoleUrl() string`
-
-GetConsoleUrl returns the ConsoleUrl field if non-nil, zero value otherwise.
-
-### GetConsoleUrlOk
-
-`func (o *GatewayCredential) GetConsoleUrlOk() (*string, bool)`
-
-GetConsoleUrlOk returns a tuple with the ConsoleUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConsoleUrl
-
-`func (o *GatewayCredential) SetConsoleUrl(v string)`
-
-SetConsoleUrl sets ConsoleUrl field to given value.
-
-### HasConsoleUrl
-
-`func (o *GatewayCredential) HasConsoleUrl() bool`
-
-HasConsoleUrl returns a boolean if a field has been set.
-
-### GetApiUrl
-
-`func (o *GatewayCredential) GetApiUrl() string`
-
-GetApiUrl returns the ApiUrl field if non-nil, zero value otherwise.
-
-### GetApiUrlOk
-
-`func (o *GatewayCredential) GetApiUrlOk() (*string, bool)`
-
-GetApiUrlOk returns a tuple with the ApiUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApiUrl
-
-`func (o *GatewayCredential) SetApiUrl(v string)`
-
-SetApiUrl sets ApiUrl field to given value.
-
-### HasApiUrl
-
-`func (o *GatewayCredential) HasApiUrl() bool`
-
-HasApiUrl returns a boolean if a field has been set.
-
-### GetAuthUrl
-
-`func (o *GatewayCredential) GetAuthUrl() string`
-
-GetAuthUrl returns the AuthUrl field if non-nil, zero value otherwise.
-
-### GetAuthUrlOk
-
-`func (o *GatewayCredential) GetAuthUrlOk() (*string, bool)`
-
-GetAuthUrlOk returns a tuple with the AuthUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthUrl
-
-`func (o *GatewayCredential) SetAuthUrl(v string)`
-
-SetAuthUrl sets AuthUrl field to given value.
-
-### HasAuthUrl
-
-`func (o *GatewayCredential) HasAuthUrl() bool`
-
-HasAuthUrl returns a boolean if a field has been set.
 
 ### GetCredential
 

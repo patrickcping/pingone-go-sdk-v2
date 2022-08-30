@@ -8,23 +8,24 @@ Name | Type | Description | Notes
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. | 
-**Description** | Pointer to **string** | (Optional) A string that specifies the description of the resource. | [optional] 
+**Description** | Pointer to **string** | A string that specifies the description of the resource. | [optional] 
 **Type** | [**EnumGatewayType**](EnumGatewayType.md) |  | 
 **Enabled** | **bool** | A boolean that specifies whether the gateway is enabled. This is a required property. | 
 **SupportedVersions** | Pointer to [**GatewaySupportedVersions**](GatewaySupportedVersions.md) |  | [optional] 
 **BindDN** | **string** | A string that specifies the distinguished name information to bind to the LDAP database (for example, uid&#x3D;pingone,dc&#x3D;example,dc&#x3D;com). | 
 **BindPassword** | **string** | A string that specifies the bind password for the LDAP database. This is a required property. | 
 **ConnectionSecurity** | Pointer to [**EnumGatewayLDAPSecurity**](EnumGatewayLDAPSecurity.md) |  | [optional] 
-**ServersHostAndPort** | Pointer to **[]string** | An array of strings that specifies the LDAP server host name and port number (for example, [\&quot;ds1.example.com:389\&quot;, \&quot;ds2.example.com:389\&quot;]). | [optional] 
-**UserTypes** | [**[]GatewayLDAPAllOfUserTypes**](GatewayLDAPAllOfUserTypes.md) | (Optional) An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | 
-**ValidateTlsCertificates** | Pointer to **bool** | (Optional) A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted. | [optional] 
-**Vendor** | **string** | A string that specifies the LDAP vendor. Options are PingDirectory, Microsoft Active Directory, Oracle Directory Server Enterprise Edition, Oracle Unified Directory, CA Directory, OpenDJ Directory, IBM (Tivoli) Security Directory Server, and LDAP v3 compliant Directory Server. | 
+**Kerberos** | Pointer to [**GatewayLDAPAllOfKerberos**](GatewayLDAPAllOfKerberos.md) |  | [optional] 
+**ServersHostAndPort** | Pointer to **[]string** | An array of strings that specifies the LDAP server host name and port number (for example, [&#x60;ds1.example.com:389&#x60;, &#x60;ds2.example.com:389&#x60;]). | [optional] 
+**UserTypes** | [**[]GatewayLDAPAllOfUserTypes**](GatewayLDAPAllOfUserTypes.md) | An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | 
+**ValidateTlsCertificates** | Pointer to **bool** | A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted. | [optional] 
+**Vendor** | [**EnumGatewayVendor**](EnumGatewayVendor.md) |  | 
 
 ## Methods
 
 ### NewCreateGateway201Response
 
-`func NewCreateGateway201Response(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, userTypes []GatewayLDAPAllOfUserTypes, vendor string, ) *CreateGateway201Response`
+`func NewCreateGateway201Response(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, userTypes []GatewayLDAPAllOfUserTypes, vendor EnumGatewayVendor, ) *CreateGateway201Response`
 
 NewCreateGateway201Response instantiates a new CreateGateway201Response object
 This constructor will assign default values to properties that have it defined,
@@ -289,6 +290,31 @@ SetConnectionSecurity sets ConnectionSecurity field to given value.
 
 HasConnectionSecurity returns a boolean if a field has been set.
 
+### GetKerberos
+
+`func (o *CreateGateway201Response) GetKerberos() GatewayLDAPAllOfKerberos`
+
+GetKerberos returns the Kerberos field if non-nil, zero value otherwise.
+
+### GetKerberosOk
+
+`func (o *CreateGateway201Response) GetKerberosOk() (*GatewayLDAPAllOfKerberos, bool)`
+
+GetKerberosOk returns a tuple with the Kerberos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberos
+
+`func (o *CreateGateway201Response) SetKerberos(v GatewayLDAPAllOfKerberos)`
+
+SetKerberos sets Kerberos field to given value.
+
+### HasKerberos
+
+`func (o *CreateGateway201Response) HasKerberos() bool`
+
+HasKerberos returns a boolean if a field has been set.
+
 ### GetServersHostAndPort
 
 `func (o *CreateGateway201Response) GetServersHostAndPort() []string`
@@ -361,20 +387,20 @@ HasValidateTlsCertificates returns a boolean if a field has been set.
 
 ### GetVendor
 
-`func (o *CreateGateway201Response) GetVendor() string`
+`func (o *CreateGateway201Response) GetVendor() EnumGatewayVendor`
 
 GetVendor returns the Vendor field if non-nil, zero value otherwise.
 
 ### GetVendorOk
 
-`func (o *CreateGateway201Response) GetVendorOk() (*string, bool)`
+`func (o *CreateGateway201Response) GetVendorOk() (*EnumGatewayVendor, bool)`
 
 GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVendor
 
-`func (o *CreateGateway201Response) SetVendor(v string)`
+`func (o *CreateGateway201Response) SetVendor(v EnumGatewayVendor)`
 
 SetVendor sets Vendor field to given value.
 
