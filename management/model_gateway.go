@@ -22,7 +22,7 @@ type Gateway struct {
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
 	Name string `json:"name"`
-	// (Optional) A string that specifies the description of the resource.
+	// A string that specifies the description of the resource.
 	Description *string `json:"description,omitempty"`
 	Type EnumGatewayType `json:"type"`
 	// A boolean that specifies whether the gateway is enabled. This is a required property.

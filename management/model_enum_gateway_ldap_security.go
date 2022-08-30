@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumGatewayLDAPSecurity (Optional) A string that specifies the connection security type. Options are None, TLS, and StartTLS. The default value is None.
+// EnumGatewayLDAPSecurity A string that specifies the connection security type. Options are None, TLS, and StartTLS. The default value is None.
 type EnumGatewayLDAPSecurity string
 
 // List of EnumGatewayLDAPSecurity

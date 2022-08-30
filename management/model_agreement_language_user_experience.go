@@ -16,11 +16,11 @@ import (
 
 // AgreementLanguageUserExperience struct for AgreementLanguageUserExperience
 type AgreementLanguageUserExperience struct {
-	// A string that specifies the text next to the \"accept\" checkbox in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$).
+	// A string that specifies the text next to the \"accept\" checkbox in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex `^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$`).
 	AcceptCheckboxText *string `json:"acceptCheckboxText,omitempty"`
-	// A string that specifies the text of the \"continue\" button in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$).
+	// A string that specifies the text of the \"continue\" button in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex `^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$`).
 	ContinueButtonText *string `json:"continueButtonText,omitempty"`
-	// A string that specifies the text of the \"decline\" button in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$).
+	// A string that specifies the text of the \"decline\" button in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex `^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$`).
 	DeclineButtonText *string `json:"declineButtonText,omitempty"`
 }
 

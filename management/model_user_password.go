@@ -16,7 +16,7 @@ import (
 
 // UserPassword An object that specifies the user's password. This property is never returned in the response.
 type UserPassword struct {
-	// (Optional) A boolean that specifies whether the user is forced to change the password on the next log in. If not provided, the property is set to false.
+	// A boolean that specifies whether the user is forced to change the password on the next log in. If not provided, the property is set to false.
 	ForceChange *bool `json:"forceChange,omitempty"`
 	// A string that specifies the user's password value. The string is either in cleartext or pre-encoded format.
 	Value *string `json:"value,omitempty"`

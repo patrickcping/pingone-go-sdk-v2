@@ -21,7 +21,7 @@ type ResourceAttribute struct {
 	// A string that specifies the name of the custom resource attribute to be included in the access token
 	Name string `json:"name"`
 	Type *EnumResourceAttributeType `json:"type,omitempty"`
-	// A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as “${user.path.to.value}”, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are “${user.email}”, “${user.name.family}”, and “myClaimValueString”
+	// A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as `${user.path.to.value}`, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are `${user.email}`, `${user.name.family}`, and `myClaimValueString`
 	Value string `json:"value"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Resource *IdentityProviderAttributeIdentityProvider `json:"resource,omitempty"`

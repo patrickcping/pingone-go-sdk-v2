@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// UserPasswordExternal (Optional) An object that maps the information relevant to the user’s password, and its association to external directories.
+// UserPasswordExternal An object that maps the information relevant to the user’s password, and its association to external directories.
 type UserPasswordExternal struct {
 	Gateway *UserPasswordExternalGateway `json:"gateway,omitempty"`
 }

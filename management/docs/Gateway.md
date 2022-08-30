@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. Valid characters are any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. | 
-**Description** | Pointer to **string** | (Optional) A string that specifies the description of the resource. | [optional] 
+**Description** | Pointer to **string** | A string that specifies the description of the resource. | [optional] 
 **Type** | [**EnumGatewayType**](EnumGatewayType.md) |  | 
 **Enabled** | **bool** | A boolean that specifies whether the gateway is enabled. This is a required property. | 
 **SupportedVersions** | Pointer to [**GatewaySupportedVersions**](GatewaySupportedVersions.md) |  | [optional] 

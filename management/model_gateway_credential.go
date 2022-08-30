@@ -20,12 +20,8 @@ type GatewayCredential struct {
 	Id *string `json:"id,omitempty"`
 	// A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property.
 	CreatedAt *string `json:"createdAt,omitempty"`
-	GatewayType *EnumGatewayType `json:"gatewayType,omitempty"`
 	// A date that specifies the date the credential was last used in UTC. This is a required property.
 	LastUsedAt *string `json:"lastUsedAt,omitempty"`
-	ConsoleUrl *string `json:"consoleUrl,omitempty"`
-	ApiUrl *string `json:"apiUrl,omitempty"`
-	AuthUrl *string `json:"authUrl,omitempty"`
 	// A string that specifies the signed JWT for the gateway credential. This property is present only when the gateway credential is created.
 	Credential *string `json:"credential,omitempty"`
 }
@@ -111,38 +107,6 @@ func (o *GatewayCredential) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
-// GetGatewayType returns the GatewayType field value if set, zero value otherwise.
-func (o *GatewayCredential) GetGatewayType() EnumGatewayType {
-	if o == nil || o.GatewayType == nil {
-		var ret EnumGatewayType
-		return ret
-	}
-	return *o.GatewayType
-}
-
-// GetGatewayTypeOk returns a tuple with the GatewayType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCredential) GetGatewayTypeOk() (*EnumGatewayType, bool) {
-	if o == nil || o.GatewayType == nil {
-		return nil, false
-	}
-	return o.GatewayType, true
-}
-
-// HasGatewayType returns a boolean if a field has been set.
-func (o *GatewayCredential) HasGatewayType() bool {
-	if o != nil && o.GatewayType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetGatewayType gets a reference to the given EnumGatewayType and assigns it to the GatewayType field.
-func (o *GatewayCredential) SetGatewayType(v EnumGatewayType) {
-	o.GatewayType = &v
-}
-
 // GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise.
 func (o *GatewayCredential) GetLastUsedAt() string {
 	if o == nil || o.LastUsedAt == nil {
@@ -173,102 +137,6 @@ func (o *GatewayCredential) HasLastUsedAt() bool {
 // SetLastUsedAt gets a reference to the given string and assigns it to the LastUsedAt field.
 func (o *GatewayCredential) SetLastUsedAt(v string) {
 	o.LastUsedAt = &v
-}
-
-// GetConsoleUrl returns the ConsoleUrl field value if set, zero value otherwise.
-func (o *GatewayCredential) GetConsoleUrl() string {
-	if o == nil || o.ConsoleUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.ConsoleUrl
-}
-
-// GetConsoleUrlOk returns a tuple with the ConsoleUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCredential) GetConsoleUrlOk() (*string, bool) {
-	if o == nil || o.ConsoleUrl == nil {
-		return nil, false
-	}
-	return o.ConsoleUrl, true
-}
-
-// HasConsoleUrl returns a boolean if a field has been set.
-func (o *GatewayCredential) HasConsoleUrl() bool {
-	if o != nil && o.ConsoleUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConsoleUrl gets a reference to the given string and assigns it to the ConsoleUrl field.
-func (o *GatewayCredential) SetConsoleUrl(v string) {
-	o.ConsoleUrl = &v
-}
-
-// GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
-func (o *GatewayCredential) GetApiUrl() string {
-	if o == nil || o.ApiUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.ApiUrl
-}
-
-// GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCredential) GetApiUrlOk() (*string, bool) {
-	if o == nil || o.ApiUrl == nil {
-		return nil, false
-	}
-	return o.ApiUrl, true
-}
-
-// HasApiUrl returns a boolean if a field has been set.
-func (o *GatewayCredential) HasApiUrl() bool {
-	if o != nil && o.ApiUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetApiUrl gets a reference to the given string and assigns it to the ApiUrl field.
-func (o *GatewayCredential) SetApiUrl(v string) {
-	o.ApiUrl = &v
-}
-
-// GetAuthUrl returns the AuthUrl field value if set, zero value otherwise.
-func (o *GatewayCredential) GetAuthUrl() string {
-	if o == nil || o.AuthUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.AuthUrl
-}
-
-// GetAuthUrlOk returns a tuple with the AuthUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCredential) GetAuthUrlOk() (*string, bool) {
-	if o == nil || o.AuthUrl == nil {
-		return nil, false
-	}
-	return o.AuthUrl, true
-}
-
-// HasAuthUrl returns a boolean if a field has been set.
-func (o *GatewayCredential) HasAuthUrl() bool {
-	if o != nil && o.AuthUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthUrl gets a reference to the given string and assigns it to the AuthUrl field.
-func (o *GatewayCredential) SetAuthUrl(v string) {
-	o.AuthUrl = &v
 }
 
 // GetCredential returns the Credential field value if set, zero value otherwise.
@@ -311,20 +179,8 @@ func (o GatewayCredential) MarshalJSON() ([]byte, error) {
 	if o.CreatedAt != nil {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.GatewayType != nil {
-		toSerialize["gatewayType"] = o.GatewayType
-	}
 	if o.LastUsedAt != nil {
 		toSerialize["lastUsedAt"] = o.LastUsedAt
-	}
-	if o.ConsoleUrl != nil {
-		toSerialize["consoleUrl"] = o.ConsoleUrl
-	}
-	if o.ApiUrl != nil {
-		toSerialize["apiUrl"] = o.ApiUrl
-	}
-	if o.AuthUrl != nil {
-		toSerialize["authUrl"] = o.AuthUrl
 	}
 	if o.Credential != nil {
 		toSerialize["credential"] = o.Credential

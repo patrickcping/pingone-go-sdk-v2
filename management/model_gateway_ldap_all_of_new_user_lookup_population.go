@@ -14,9 +14,9 @@ import (
 	"encoding/json"
 )
 
-// GatewayLDAPAllOfNewUserLookupPopulation (Optional) The PingOne population to use to create user entries during lookup.
+// GatewayLDAPAllOfNewUserLookupPopulation The PingOne population to use to create user entries during lookup.
 type GatewayLDAPAllOfNewUserLookupPopulation struct {
-	// (Optional) The ID of the population to use to create user entries during lookup.
+	// The ID of the population to use to create user entries during lookup.
 	Id string `json:"id"`
 }
 

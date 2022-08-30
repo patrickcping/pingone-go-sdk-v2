@@ -16,10 +16,12 @@ import (
 
 // GatewayLDAPAllOfUserTypes struct for GatewayLDAPAllOfUserTypes
 type GatewayLDAPAllOfUserTypes struct {
-	// (Optional) Defaults to false if this property isn't specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway.
+	// Defaults to false if this property isn't specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway.
 	AllowPasswordChanges *bool `json:"allowPasswordChanges,omitempty"`
-	// (Optional) The UUID of the user type. This correlates to the password.external.gateway.userType.id User property.
-	Id *string `json:"id,omitempty"`
+	// The UUID of the user type. This correlates to the password.external.gateway.userType.id User property.
+	Id string `json:"id"`
+	// The name of the user type.
+	Name string `json:"name"`
 	NewUserLookup GatewayLDAPAllOfNewUserLookup `json:"newUserLookup"`
 }
 
@@ -27,8 +29,10 @@ type GatewayLDAPAllOfUserTypes struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAPAllOfUserTypes(newUserLookup GatewayLDAPAllOfNewUserLookup) *GatewayLDAPAllOfUserTypes {
+func NewGatewayLDAPAllOfUserTypes(id string, name string, newUserLookup GatewayLDAPAllOfNewUserLookup) *GatewayLDAPAllOfUserTypes {
 	this := GatewayLDAPAllOfUserTypes{}
+	this.Id = id
+	this.Name = name
 	this.NewUserLookup = newUserLookup
 	return &this
 }
@@ -73,36 +77,52 @@ func (o *GatewayLDAPAllOfUserTypes) SetAllowPasswordChanges(v bool) {
 	o.AllowPasswordChanges = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *GatewayLDAPAllOfUserTypes) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAPAllOfUserTypes) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOfUserTypes) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
+// SetId sets field value
+func (o *GatewayLDAPAllOfUserTypes) SetId(v string) {
+	o.Id = v
+}
+
+// GetName returns the Name field value
+func (o *GatewayLDAPAllOfUserTypes) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return o.Name
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *GatewayLDAPAllOfUserTypes) SetId(v string) {
-	o.Id = &v
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *GatewayLDAPAllOfUserTypes) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *GatewayLDAPAllOfUserTypes) SetName(v string) {
+	o.Name = v
 }
 
 // GetNewUserLookup returns the NewUserLookup field value
@@ -134,8 +154,11 @@ func (o GatewayLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
 	if o.AllowPasswordChanges != nil {
 		toSerialize["allowPasswordChanges"] = o.AllowPasswordChanges
 	}
-	if o.Id != nil {
+	if true {
 		toSerialize["id"] = o.Id
+	}
+	if true {
+		toSerialize["name"] = o.Name
 	}
 	if true {
 		toSerialize["newUserLookup"] = o.NewUserLookup

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AcceptCheckboxText** | Pointer to **string** | A string that specifies the text next to the \&quot;accept\&quot; checkbox in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$). | [optional] 
-**ContinueButtonText** | Pointer to **string** | A string that specifies the text of the \&quot;continue\&quot; button in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$). | [optional] 
-**DeclineButtonText** | Pointer to **string** | A string that specifies the text of the \&quot;decline\&quot; button in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex ^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$). | [optional] 
+**AcceptCheckboxText** | Pointer to **string** | A string that specifies the text next to the \&quot;accept\&quot; checkbox in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex &#x60;^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$&#x60;). | [optional] 
+**ContinueButtonText** | Pointer to **string** | A string that specifies the text of the \&quot;continue\&quot; button in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex &#x60;^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$&#x60;). | [optional] 
+**DeclineButtonText** | Pointer to **string** | A string that specifies the text of the \&quot;decline\&quot; button in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex &#x60;^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$&#x60;). | [optional] 
 
 ## Methods
 

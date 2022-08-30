@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// UserPasswordExternalGateway (Optional) An object containing the gateway properties. When this is value is specified, the user’s password is managed in an external directory. You can set the user password using Create User (Import) or Update Password (Set).
+// UserPasswordExternalGateway An object containing the gateway properties. When this is value is specified, the user’s password is managed in an external directory. You can set the user password using Create User (Import) or Update Password (Set).
 type UserPasswordExternalGateway struct {
 	// The UUID of the linked gateway that references the remote directory.
 	Id *string `json:"id,omitempty"`

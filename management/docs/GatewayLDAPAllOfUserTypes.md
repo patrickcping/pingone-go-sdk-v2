@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllowPasswordChanges** | Pointer to **bool** | (Optional) Defaults to false if this property isn&#39;t specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway. | [optional] 
-**Id** | Pointer to **string** | (Optional) The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | [optional] 
+**AllowPasswordChanges** | Pointer to **bool** | Defaults to false if this property isn&#39;t specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway. | [optional] 
+**Id** | **string** | The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | 
+**Name** | **string** | The name of the user type. | 
 **NewUserLookup** | [**GatewayLDAPAllOfNewUserLookup**](GatewayLDAPAllOfNewUserLookup.md) |  | 
 
 ## Methods
 
 ### NewGatewayLDAPAllOfUserTypes
 
-`func NewGatewayLDAPAllOfUserTypes(newUserLookup GatewayLDAPAllOfNewUserLookup, ) *GatewayLDAPAllOfUserTypes`
+`func NewGatewayLDAPAllOfUserTypes(id string, name string, newUserLookup GatewayLDAPAllOfNewUserLookup, ) *GatewayLDAPAllOfUserTypes`
 
 NewGatewayLDAPAllOfUserTypes instantiates a new GatewayLDAPAllOfUserTypes object
 This constructor will assign default values to properties that have it defined,
@@ -71,11 +72,26 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
 
-`func (o *GatewayLDAPAllOfUserTypes) HasId() bool`
+### GetName
 
-HasId returns a boolean if a field has been set.
+`func (o *GatewayLDAPAllOfUserTypes) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *GatewayLDAPAllOfUserTypes) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *GatewayLDAPAllOfUserTypes) SetName(v string)`
+
+SetName sets Name field to given value.
+
 
 ### GetNewUserLookup
 
