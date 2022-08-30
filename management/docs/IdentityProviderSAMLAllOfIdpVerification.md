@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Certificates** | Pointer to [**[]ApplicationAccessControlGroupGroupsInner**](ApplicationAccessControlGroupGroupsInner.md) | A array that specifies the identity provider&#39;s certificate IDs used to verify the signature on the signed assertion from the identity provider. Signing is done with a private key and verified with a public key. | [optional] 
+**Certificates** | [**[]ApplicationAccessControlGroupGroupsInner**](ApplicationAccessControlGroupGroupsInner.md) | A array that specifies the identity provider&#39;s certificate IDs used to verify the signature on the signed assertion from the identity provider. Signing is done with a private key and verified with a public key. | 
 
 ## Methods
 
 ### NewIdentityProviderSAMLAllOfIdpVerification
 
-`func NewIdentityProviderSAMLAllOfIdpVerification() *IdentityProviderSAMLAllOfIdpVerification`
+`func NewIdentityProviderSAMLAllOfIdpVerification(certificates []ApplicationAccessControlGroupGroupsInner, ) *IdentityProviderSAMLAllOfIdpVerification`
 
 NewIdentityProviderSAMLAllOfIdpVerification instantiates a new IdentityProviderSAMLAllOfIdpVerification object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetCertificates sets Certificates field to given value.
 
-### HasCertificates
-
-`func (o *IdentityProviderSAMLAllOfIdpVerification) HasCertificates() bool`
-
-HasCertificates returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -37,25 +37,30 @@ type IdentityProviderSAML struct {
 	// A boolean that specifies whether the SAML authentication request will be signed when sending to the identity provider. Set this to true if the external IDP is included in an authentication policy to be used by applications that are accessed using a mix of default URLS and custom Domains URLs.
 	AuthnRequestSigned *bool `json:"authnRequestSigned,omitempty"`
 	// A string that specifies the entity ID URI that is checked against the issuerId tag in the incoming response.
-	IdpEntityId *string `json:"idpEntityId,omitempty"`
-	IdpVerification *IdentityProviderSAMLAllOfIdpVerification `json:"idpVerification,omitempty"`
+	IdpEntityId string `json:"idpEntityId"`
+	IdpVerification IdentityProviderSAMLAllOfIdpVerification `json:"idpVerification"`
 	// A string that specifies the service provider's entity ID, used to look up the application.
-	SpEntityId *string `json:"spEntityId,omitempty"`
+	SpEntityId string `json:"spEntityId"`
 	SpSigning *IdentityProviderSAMLAllOfSpSigning `json:"spSigning,omitempty"`
-	SsoBinding *EnumIdentityProviderSAMLSSOBinding `json:"ssoBinding,omitempty"`
+	SsoBinding EnumIdentityProviderSAMLSSOBinding `json:"ssoBinding"`
 	// A string that specifies the SSO endpoint for the authentication request.
-	SsoEndpoint *string `json:"ssoEndpoint,omitempty"`
+	SsoEndpoint string `json:"ssoEndpoint"`
 }
 
 // NewIdentityProviderSAML instantiates a new IdentityProviderSAML object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityProviderSAML(enabled bool, name string, type_ EnumIdentityProviderExt) *IdentityProviderSAML {
+func NewIdentityProviderSAML(enabled bool, name string, type_ EnumIdentityProviderExt, idpEntityId string, idpVerification IdentityProviderSAMLAllOfIdpVerification, spEntityId string, ssoBinding EnumIdentityProviderSAMLSSOBinding, ssoEndpoint string) *IdentityProviderSAML {
 	this := IdentityProviderSAML{}
 	this.Enabled = enabled
 	this.Name = name
 	this.Type = type_
+	this.IdpEntityId = idpEntityId
+	this.IdpVerification = idpVerification
+	this.SpEntityId = spEntityId
+	this.SsoBinding = ssoBinding
+	this.SsoEndpoint = ssoEndpoint
 	return &this
 }
 
@@ -459,100 +464,76 @@ func (o *IdentityProviderSAML) SetAuthnRequestSigned(v bool) {
 	o.AuthnRequestSigned = &v
 }
 
-// GetIdpEntityId returns the IdpEntityId field value if set, zero value otherwise.
+// GetIdpEntityId returns the IdpEntityId field value
 func (o *IdentityProviderSAML) GetIdpEntityId() string {
-	if o == nil || o.IdpEntityId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.IdpEntityId
+
+	return o.IdpEntityId
 }
 
-// GetIdpEntityIdOk returns a tuple with the IdpEntityId field value if set, nil otherwise
+// GetIdpEntityIdOk returns a tuple with the IdpEntityId field value
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetIdpEntityIdOk() (*string, bool) {
-	if o == nil || o.IdpEntityId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.IdpEntityId, true
+	return &o.IdpEntityId, true
 }
 
-// HasIdpEntityId returns a boolean if a field has been set.
-func (o *IdentityProviderSAML) HasIdpEntityId() bool {
-	if o != nil && o.IdpEntityId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIdpEntityId gets a reference to the given string and assigns it to the IdpEntityId field.
+// SetIdpEntityId sets field value
 func (o *IdentityProviderSAML) SetIdpEntityId(v string) {
-	o.IdpEntityId = &v
+	o.IdpEntityId = v
 }
 
-// GetIdpVerification returns the IdpVerification field value if set, zero value otherwise.
+// GetIdpVerification returns the IdpVerification field value
 func (o *IdentityProviderSAML) GetIdpVerification() IdentityProviderSAMLAllOfIdpVerification {
-	if o == nil || o.IdpVerification == nil {
+	if o == nil {
 		var ret IdentityProviderSAMLAllOfIdpVerification
 		return ret
 	}
-	return *o.IdpVerification
+
+	return o.IdpVerification
 }
 
-// GetIdpVerificationOk returns a tuple with the IdpVerification field value if set, nil otherwise
+// GetIdpVerificationOk returns a tuple with the IdpVerification field value
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetIdpVerificationOk() (*IdentityProviderSAMLAllOfIdpVerification, bool) {
-	if o == nil || o.IdpVerification == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.IdpVerification, true
+	return &o.IdpVerification, true
 }
 
-// HasIdpVerification returns a boolean if a field has been set.
-func (o *IdentityProviderSAML) HasIdpVerification() bool {
-	if o != nil && o.IdpVerification != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIdpVerification gets a reference to the given IdentityProviderSAMLAllOfIdpVerification and assigns it to the IdpVerification field.
+// SetIdpVerification sets field value
 func (o *IdentityProviderSAML) SetIdpVerification(v IdentityProviderSAMLAllOfIdpVerification) {
-	o.IdpVerification = &v
+	o.IdpVerification = v
 }
 
-// GetSpEntityId returns the SpEntityId field value if set, zero value otherwise.
+// GetSpEntityId returns the SpEntityId field value
 func (o *IdentityProviderSAML) GetSpEntityId() string {
-	if o == nil || o.SpEntityId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SpEntityId
+
+	return o.SpEntityId
 }
 
-// GetSpEntityIdOk returns a tuple with the SpEntityId field value if set, nil otherwise
+// GetSpEntityIdOk returns a tuple with the SpEntityId field value
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetSpEntityIdOk() (*string, bool) {
-	if o == nil || o.SpEntityId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SpEntityId, true
+	return &o.SpEntityId, true
 }
 
-// HasSpEntityId returns a boolean if a field has been set.
-func (o *IdentityProviderSAML) HasSpEntityId() bool {
-	if o != nil && o.SpEntityId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSpEntityId gets a reference to the given string and assigns it to the SpEntityId field.
+// SetSpEntityId sets field value
 func (o *IdentityProviderSAML) SetSpEntityId(v string) {
-	o.SpEntityId = &v
+	o.SpEntityId = v
 }
 
 // GetSpSigning returns the SpSigning field value if set, zero value otherwise.
@@ -587,68 +568,52 @@ func (o *IdentityProviderSAML) SetSpSigning(v IdentityProviderSAMLAllOfSpSigning
 	o.SpSigning = &v
 }
 
-// GetSsoBinding returns the SsoBinding field value if set, zero value otherwise.
+// GetSsoBinding returns the SsoBinding field value
 func (o *IdentityProviderSAML) GetSsoBinding() EnumIdentityProviderSAMLSSOBinding {
-	if o == nil || o.SsoBinding == nil {
+	if o == nil {
 		var ret EnumIdentityProviderSAMLSSOBinding
 		return ret
 	}
-	return *o.SsoBinding
+
+	return o.SsoBinding
 }
 
-// GetSsoBindingOk returns a tuple with the SsoBinding field value if set, nil otherwise
+// GetSsoBindingOk returns a tuple with the SsoBinding field value
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetSsoBindingOk() (*EnumIdentityProviderSAMLSSOBinding, bool) {
-	if o == nil || o.SsoBinding == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SsoBinding, true
+	return &o.SsoBinding, true
 }
 
-// HasSsoBinding returns a boolean if a field has been set.
-func (o *IdentityProviderSAML) HasSsoBinding() bool {
-	if o != nil && o.SsoBinding != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSsoBinding gets a reference to the given EnumIdentityProviderSAMLSSOBinding and assigns it to the SsoBinding field.
+// SetSsoBinding sets field value
 func (o *IdentityProviderSAML) SetSsoBinding(v EnumIdentityProviderSAMLSSOBinding) {
-	o.SsoBinding = &v
+	o.SsoBinding = v
 }
 
-// GetSsoEndpoint returns the SsoEndpoint field value if set, zero value otherwise.
+// GetSsoEndpoint returns the SsoEndpoint field value
 func (o *IdentityProviderSAML) GetSsoEndpoint() string {
-	if o == nil || o.SsoEndpoint == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SsoEndpoint
+
+	return o.SsoEndpoint
 }
 
-// GetSsoEndpointOk returns a tuple with the SsoEndpoint field value if set, nil otherwise
+// GetSsoEndpointOk returns a tuple with the SsoEndpoint field value
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetSsoEndpointOk() (*string, bool) {
-	if o == nil || o.SsoEndpoint == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SsoEndpoint, true
+	return &o.SsoEndpoint, true
 }
 
-// HasSsoEndpoint returns a boolean if a field has been set.
-func (o *IdentityProviderSAML) HasSsoEndpoint() bool {
-	if o != nil && o.SsoEndpoint != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSsoEndpoint gets a reference to the given string and assigns it to the SsoEndpoint field.
+// SetSsoEndpoint sets field value
 func (o *IdentityProviderSAML) SetSsoEndpoint(v string) {
-	o.SsoEndpoint = &v
+	o.SsoEndpoint = v
 }
 
 func (o IdentityProviderSAML) MarshalJSON() ([]byte, error) {
@@ -692,22 +657,22 @@ func (o IdentityProviderSAML) MarshalJSON() ([]byte, error) {
 	if o.AuthnRequestSigned != nil {
 		toSerialize["authnRequestSigned"] = o.AuthnRequestSigned
 	}
-	if o.IdpEntityId != nil {
+	if true {
 		toSerialize["idpEntityId"] = o.IdpEntityId
 	}
-	if o.IdpVerification != nil {
+	if true {
 		toSerialize["idpVerification"] = o.IdpVerification
 	}
-	if o.SpEntityId != nil {
+	if true {
 		toSerialize["spEntityId"] = o.SpEntityId
 	}
 	if o.SpSigning != nil {
 		toSerialize["spSigning"] = o.SpSigning
 	}
-	if o.SsoBinding != nil {
+	if true {
 		toSerialize["ssoBinding"] = o.SsoBinding
 	}
-	if o.SsoEndpoint != nil {
+	if true {
 		toSerialize["ssoEndpoint"] = o.SsoEndpoint
 	}
 	return json.Marshal(toSerialize)

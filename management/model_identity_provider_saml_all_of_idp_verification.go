@@ -17,15 +17,16 @@ import (
 // IdentityProviderSAMLAllOfIdpVerification struct for IdentityProviderSAMLAllOfIdpVerification
 type IdentityProviderSAMLAllOfIdpVerification struct {
 	// A array that specifies the identity provider's certificate IDs used to verify the signature on the signed assertion from the identity provider. Signing is done with a private key and verified with a public key.
-	Certificates []ApplicationAccessControlGroupGroupsInner `json:"certificates,omitempty"`
+	Certificates []ApplicationAccessControlGroupGroupsInner `json:"certificates"`
 }
 
 // NewIdentityProviderSAMLAllOfIdpVerification instantiates a new IdentityProviderSAMLAllOfIdpVerification object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityProviderSAMLAllOfIdpVerification() *IdentityProviderSAMLAllOfIdpVerification {
+func NewIdentityProviderSAMLAllOfIdpVerification(certificates []ApplicationAccessControlGroupGroupsInner) *IdentityProviderSAMLAllOfIdpVerification {
 	this := IdentityProviderSAMLAllOfIdpVerification{}
+	this.Certificates = certificates
 	return &this
 }
 
@@ -37,41 +38,33 @@ func NewIdentityProviderSAMLAllOfIdpVerificationWithDefaults() *IdentityProvider
 	return &this
 }
 
-// GetCertificates returns the Certificates field value if set, zero value otherwise.
+// GetCertificates returns the Certificates field value
 func (o *IdentityProviderSAMLAllOfIdpVerification) GetCertificates() []ApplicationAccessControlGroupGroupsInner {
-	if o == nil || o.Certificates == nil {
+	if o == nil {
 		var ret []ApplicationAccessControlGroupGroupsInner
 		return ret
 	}
+
 	return o.Certificates
 }
 
-// GetCertificatesOk returns a tuple with the Certificates field value if set, nil otherwise
+// GetCertificatesOk returns a tuple with the Certificates field value
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAMLAllOfIdpVerification) GetCertificatesOk() ([]ApplicationAccessControlGroupGroupsInner, bool) {
-	if o == nil || o.Certificates == nil {
+	if o == nil {
 		return nil, false
 	}
 	return o.Certificates, true
 }
 
-// HasCertificates returns a boolean if a field has been set.
-func (o *IdentityProviderSAMLAllOfIdpVerification) HasCertificates() bool {
-	if o != nil && o.Certificates != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCertificates gets a reference to the given []ApplicationAccessControlGroupGroupsInner and assigns it to the Certificates field.
+// SetCertificates sets field value
 func (o *IdentityProviderSAMLAllOfIdpVerification) SetCertificates(v []ApplicationAccessControlGroupGroupsInner) {
 	o.Certificates = v
 }
 
 func (o IdentityProviderSAMLAllOfIdpVerification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Certificates != nil {
+	if true {
 		toSerialize["certificates"] = o.Certificates
 	}
 	return json.Marshal(toSerialize)
