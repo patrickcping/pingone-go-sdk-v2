@@ -1,6 +1,6 @@
 # v0.7.0 (Unreleased)
 
-* **Breaking change** Identity Provider (SAML) added required fields [#31](https://github.com/patrickcping/pingone-go-sdk-v2/pull/31)
+* **Breaking change** Added required fields to the SAML Identity Provider constructor [#31](https://github.com/patrickcping/pingone-go-sdk-v2/pull/31)
 
 # v0.6.0 (2022-08-29)
 
