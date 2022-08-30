@@ -26219,6 +26219,8 @@ components:
           items:
             $ref: '#/components/schemas/Application_accessControl_group_groups_inner'
           type: array
+      required:
+      - certificates
       type: object
     IdentityProviderSAML_allOf_spSigning_key:
       properties:
@@ -26263,6 +26265,12 @@ components:
           description: A string that specifies the SSO endpoint for the authentication
             request.
           type: string
+      required:
+      - idpEntityId
+      - idpVerification
+      - spEntityId
+      - ssoBinding
+      - ssoEndpoint
       type: object
     Image_targets:
       example:

@@ -5,18 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthnRequestSigned** | Pointer to **bool** | A boolean that specifies whether the SAML authentication request will be signed when sending to the identity provider. Set this to true if the external IDP is included in an authentication policy to be used by applications that are accessed using a mix of default URLS and custom Domains URLs. | [optional] 
-**IdpEntityId** | Pointer to **string** | A string that specifies the entity ID URI that is checked against the issuerId tag in the incoming response. | [optional] 
-**IdpVerification** | Pointer to [**IdentityProviderSAMLAllOfIdpVerification**](IdentityProviderSAMLAllOfIdpVerification.md) |  | [optional] 
-**SpEntityId** | Pointer to **string** | A string that specifies the service provider&#39;s entity ID, used to look up the application. | [optional] 
+**IdpEntityId** | **string** | A string that specifies the entity ID URI that is checked against the issuerId tag in the incoming response. | 
+**IdpVerification** | [**IdentityProviderSAMLAllOfIdpVerification**](IdentityProviderSAMLAllOfIdpVerification.md) |  | 
+**SpEntityId** | **string** | A string that specifies the service provider&#39;s entity ID, used to look up the application. | 
 **SpSigning** | Pointer to [**IdentityProviderSAMLAllOfSpSigning**](IdentityProviderSAMLAllOfSpSigning.md) |  | [optional] 
-**SsoBinding** | Pointer to [**EnumIdentityProviderSAMLSSOBinding**](EnumIdentityProviderSAMLSSOBinding.md) |  | [optional] 
-**SsoEndpoint** | Pointer to **string** | A string that specifies the SSO endpoint for the authentication request. | [optional] 
+**SsoBinding** | [**EnumIdentityProviderSAMLSSOBinding**](EnumIdentityProviderSAMLSSOBinding.md) |  | 
+**SsoEndpoint** | **string** | A string that specifies the SSO endpoint for the authentication request. | 
 
 ## Methods
 
 ### NewIdentityProviderSAMLAllOf
 
-`func NewIdentityProviderSAMLAllOf() *IdentityProviderSAMLAllOf`
+`func NewIdentityProviderSAMLAllOf(idpEntityId string, idpVerification IdentityProviderSAMLAllOfIdpVerification, spEntityId string, ssoBinding EnumIdentityProviderSAMLSSOBinding, ssoEndpoint string, ) *IdentityProviderSAMLAllOf`
 
 NewIdentityProviderSAMLAllOf instantiates a new IdentityProviderSAMLAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -75,11 +75,6 @@ and a boolean to check if the value has been set.
 
 SetIdpEntityId sets IdpEntityId field to given value.
 
-### HasIdpEntityId
-
-`func (o *IdentityProviderSAMLAllOf) HasIdpEntityId() bool`
-
-HasIdpEntityId returns a boolean if a field has been set.
 
 ### GetIdpVerification
 
@@ -100,11 +95,6 @@ and a boolean to check if the value has been set.
 
 SetIdpVerification sets IdpVerification field to given value.
 
-### HasIdpVerification
-
-`func (o *IdentityProviderSAMLAllOf) HasIdpVerification() bool`
-
-HasIdpVerification returns a boolean if a field has been set.
 
 ### GetSpEntityId
 
@@ -125,11 +115,6 @@ and a boolean to check if the value has been set.
 
 SetSpEntityId sets SpEntityId field to given value.
 
-### HasSpEntityId
-
-`func (o *IdentityProviderSAMLAllOf) HasSpEntityId() bool`
-
-HasSpEntityId returns a boolean if a field has been set.
 
 ### GetSpSigning
 
@@ -175,11 +160,6 @@ and a boolean to check if the value has been set.
 
 SetSsoBinding sets SsoBinding field to given value.
 
-### HasSsoBinding
-
-`func (o *IdentityProviderSAMLAllOf) HasSsoBinding() bool`
-
-HasSsoBinding returns a boolean if a field has been set.
 
 ### GetSsoEndpoint
 
@@ -200,11 +180,6 @@ and a boolean to check if the value has been set.
 
 SetSsoEndpoint sets SsoEndpoint field to given value.
 
-### HasSsoEndpoint
-
-`func (o *IdentityProviderSAMLAllOf) HasSsoEndpoint() bool`
-
-HasSsoEndpoint returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
