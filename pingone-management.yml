@@ -830,6 +830,17 @@ components:
         - subjectDN
         - usageType
         - validityPeriod
+    CertificateKeyUpdate:
+      type: object
+      properties:
+        default:
+          type: boolean
+          description: Specifies whether this is the default key for the specified environment.
+        usageType:
+          $ref: '#/components/schemas/EnumCertificateKeyUsageType'
+      required:
+        - default
+        - usageType
     CustomDomain:
       type: object
       properties:
@@ -7668,7 +7679,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Certificate'
+              $ref: '#/components/schemas/CertificateKeyUpdate'
               example:
                 default: true
       parameters:

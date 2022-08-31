@@ -877,7 +877,7 @@ Name | Type | Description  | Notes
 
 ## UpdateKey
 
-> Certificate UpdateKey(ctx, environmentID, keyID).Certificate(certificate).Execute()
+> Certificate UpdateKey(ctx, environmentID, keyID).CertificateKeyUpdate(certificateKeyUpdate).Execute()
 
 UPDATE Key
 
@@ -890,18 +890,17 @@ import (
     "context"
     "fmt"
     "os"
-    "time"
     openapiclient "./openapi"
 )
 
 func main() {
     environmentID := "environmentID_example" // string | 
     keyID := "keyID_example" // string | 
-    certificate := *openapiclient.NewCertificate(openapiclient.EnumCertificateKeyAlgorithm("RSA"), false, "IssuerDN_example", int32(123), int32(123), openapiclient.EnumCertificateKeySignagureAlgorithm("SHA224withRSA"), time.Now(), openapiclient.EnumCertificateKeyStatus("VALID"), "SubjectDN_example", openapiclient.EnumCertificateKeyUsageType("ENCRYPTION"), int32(123)) // Certificate |  (optional)
+    certificateKeyUpdate := *openapiclient.NewCertificateKeyUpdate(false, openapiclient.EnumCertificateKeyUsageType("ENCRYPTION")) // CertificateKeyUpdate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateManagementApi.UpdateKey(context.Background(), environmentID, keyID).Certificate(certificate).Execute()
+    resp, r, err := apiClient.CertificateManagementApi.UpdateKey(context.Background(), environmentID, keyID).CertificateKeyUpdate(certificateKeyUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.UpdateKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -929,7 +928,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **certificate** | [**Certificate**](Certificate.md) |  | 
+ **certificateKeyUpdate** | [**CertificateKeyUpdate**](CertificateKeyUpdate.md) |  | 
 
 ### Return type
 

@@ -425,6 +425,7 @@ Class | Method | HTTP request | Description
  - [BillOfMaterialsProductsInnerConsole](docs/BillOfMaterialsProductsInnerConsole.md)
  - [BillOfMaterialsProductsInnerDeployment](docs/BillOfMaterialsProductsInnerDeployment.md)
  - [Certificate](docs/Certificate.md)
+ - [CertificateKeyUpdate](docs/CertificateKeyUpdate.md)
  - [CreateApplication201Response](docs/CreateApplication201Response.md)
  - [CreateApplicationRequest](docs/CreateApplicationRequest.md)
  - [CreateGateway201Response](docs/CreateGateway201Response.md)
