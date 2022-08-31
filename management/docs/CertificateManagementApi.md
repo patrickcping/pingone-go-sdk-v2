@@ -120,7 +120,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     contentType := "application/x-pkcs12-certificates" // string |  (optional)
-    certificate := *openapiclient.NewCertificate(openapiclient.EnumCertificateKeyAlgorithm("RSA"), false, "IssuerDN_example", int32(123), int32(123), openapiclient.EnumCertificateKeySignagureAlgorithm("SHA256withRSA"), time.Now(), openapiclient.EnumCertificateKeyStatus("VALID"), "SubjectDN_example", openapiclient.EnumCertificateKeyUsageType("ENCRYPTION"), int32(123)) // Certificate |  (optional)
+    certificate := *openapiclient.NewCertificate(openapiclient.EnumCertificateKeyAlgorithm("RSA"), false, "IssuerDN_example", int32(123), int32(123), openapiclient.EnumCertificateKeySignagureAlgorithm("SHA224withRSA"), time.Now(), openapiclient.EnumCertificateKeyStatus("VALID"), "SubjectDN_example", openapiclient.EnumCertificateKeyUsageType("ENCRYPTION"), int32(123)) // Certificate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -897,7 +897,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyID := "keyID_example" // string | 
-    certificate := *openapiclient.NewCertificate(openapiclient.EnumCertificateKeyAlgorithm("RSA"), false, "IssuerDN_example", int32(123), int32(123), openapiclient.EnumCertificateKeySignagureAlgorithm("SHA256withRSA"), time.Now(), openapiclient.EnumCertificateKeyStatus("VALID"), "SubjectDN_example", openapiclient.EnumCertificateKeyUsageType("ENCRYPTION"), int32(123)) // Certificate |  (optional)
+    certificate := *openapiclient.NewCertificate(openapiclient.EnumCertificateKeyAlgorithm("RSA"), false, "IssuerDN_example", int32(123), int32(123), openapiclient.EnumCertificateKeySignagureAlgorithm("SHA224withRSA"), time.Now(), openapiclient.EnumCertificateKeyStatus("VALID"), "SubjectDN_example", openapiclient.EnumCertificateKeyUsageType("ENCRYPTION"), int32(123)) // Certificate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

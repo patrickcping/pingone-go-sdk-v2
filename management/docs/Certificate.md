@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Default** | **bool** | Specifies whether this is the default key for the specified environment. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**ExpiresAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
+**ExpiresAt** | Pointer to **time.Time** | The time the key resource expires. | [optional] [readonly] 
 **Id** | Pointer to **string** | Specifies the resource’s unique identifier. | [optional] [readonly] 
 **IssuerDN** | **string** | Specifies the distinguished name of the certificate issuer. | 
 **KeyLength** | **int32** | Specifies the key length. For RSA keys, options are 2048, 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256, and 384. | 

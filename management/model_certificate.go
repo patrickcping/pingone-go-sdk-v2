@@ -23,7 +23,7 @@ type Certificate struct {
 	// Specifies whether this is the default key for the specified environment.
 	Default bool `json:"default"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	// The time the resource was created.
+	// The time the key resource expires.
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	// Specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`

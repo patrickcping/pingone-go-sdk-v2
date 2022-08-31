@@ -15,18 +15,22 @@ import (
 	"fmt"
 )
 
-// EnumCertificateKeySignagureAlgorithm Specifies the signature algorithm of the key. Options are SHA256withRSA and SHA512withRSA.
+// EnumCertificateKeySignagureAlgorithm Specifies the signature algorithm of the key. Options are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`.
 type EnumCertificateKeySignagureAlgorithm string
 
 // List of EnumCertificateKeySignagureAlgorithm
 const (
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA224WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA224withRSA"
 	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA256WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA256withRSA"
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA384WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA384withRSA"
 	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA512WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA512withRSA"
 )
 
 // All allowed values of EnumCertificateKeySignagureAlgorithm enum
 var AllowedEnumCertificateKeySignagureAlgorithmEnumValues = []EnumCertificateKeySignagureAlgorithm{
+	"SHA224withRSA",
 	"SHA256withRSA",
+	"SHA384withRSA",
 	"SHA512withRSA",
 }
 

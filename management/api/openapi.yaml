@@ -21133,22 +21133,24 @@ components:
       - CUSTOM
       type: string
     EnumCertificateKeyAlgorithm:
-      description: "Specifies the key algorithm. Options are RSA, EC, and UNKNOWN."
+      description: "Specifies the key algorithm. Options are `RSA`, `EC`, and `UNKNOWN`."
       enum:
       - RSA
       - EC
       - UNKNOWN
       type: string
     EnumCertificateKeySignagureAlgorithm:
-      description: Specifies the signature algorithm of the key. Options are SHA256withRSA
-        and SHA512withRSA.
+      description: "Specifies the signature algorithm of the key. Options are `SHA224withRSA`,\
+        \ `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`."
       enum:
+      - SHA224withRSA
       - SHA256withRSA
+      - SHA384withRSA
       - SHA512withRSA
       type: string
     EnumCertificateKeyStatus:
-      description: "Specifies the status of the key. Options are VALID, EXPIRED, NOT_YET_VALID,\
-        \ and REVOKED."
+      description: "Specifies the status of the key. Options are `VALID`, `EXPIRED`,\
+        \ `NOT_YET_VALID`, and `REVOKED`."
       enum:
       - VALID
       - EXPIRED
@@ -21156,11 +21158,13 @@ components:
       - REVOKED
       type: string
     EnumCertificateKeyUsageType:
-      description: Specifies how the certificate is used. Options are ENCRYPTION and
-        SIGNING.
+      description: "Specifies how the certificate is used. Options are `ENCRYPTION`,\
+        \ `SIGNING`, `SSL/TLS`, `ISSUANCE`."
       enum:
       - ENCRYPTION
       - SIGNING
+      - SSL/TLS
+      - ISSUANCE
       type: string
     EnumCreateCertificateAcceptHeader:
       enum:
@@ -21980,7 +21984,7 @@ components:
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         expiresAt:
-          description: The time the resource was created.
+          description: The time the key resource expires.
           format: date-time
           readOnly: true
           type: string
