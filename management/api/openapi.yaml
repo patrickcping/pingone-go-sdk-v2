@@ -5075,7 +5075,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Certificate'
+              $ref: '#/components/schemas/CertificateKeyUpdate'
       responses:
         "400":
           content:
@@ -22037,6 +22037,21 @@ components:
       - subjectDN
       - usageType
       - validityPeriod
+      type: object
+    CertificateKeyUpdate:
+      example:
+        default: true
+        usageType: null
+      properties:
+        default:
+          description: Specifies whether this is the default key for the specified
+            environment.
+          type: boolean
+        usageType:
+          $ref: '#/components/schemas/EnumCertificateKeyUsageType'
+      required:
+      - default
+      - usageType
       type: object
     CustomDomain:
       example:

@@ -2066,11 +2066,11 @@ type ApiUpdateKeyRequest struct {
 	ApiService *CertificateManagementApiService
 	environmentID string
 	keyID string
-	certificate *Certificate
+	certificateKeyUpdate *CertificateKeyUpdate
 }
 
-func (r ApiUpdateKeyRequest) Certificate(certificate Certificate) ApiUpdateKeyRequest {
-	r.certificate = &certificate
+func (r ApiUpdateKeyRequest) CertificateKeyUpdate(certificateKeyUpdate CertificateKeyUpdate) ApiUpdateKeyRequest {
+	r.certificateKeyUpdate = &certificateKeyUpdate
 	return r
 }
 
@@ -2136,7 +2136,7 @@ func (a *CertificateManagementApiService) UpdateKeyExecute(r ApiUpdateKeyRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.certificate
+	localVarPostBody = r.certificateKeyUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
