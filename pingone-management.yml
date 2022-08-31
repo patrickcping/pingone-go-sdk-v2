@@ -68,8 +68,8 @@ components:
       description: Specifies the key algorithm. Options are `RSA`, `EC`, and `UNKNOWN`.
     EnumCertificateKeySignagureAlgorithm:
       type: string
-      description: Specifies the signature algorithm of the key. Options are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`.
-      enum: [SHA224withRSA, SHA256withRSA, SHA384withRSA, SHA512withRSA]
+      description: Specifies the signature algorithm of the key. For RSA keys, options are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`. For elliptical curve (EC) keys, options are `SHA224with_ECDSA`, `SHA256with_ECDSA`, `SHA384with_ECDSA`, and `SHA512with_ECDSA`
+      enum: [SHA224withRSA, SHA256withRSA, SHA384withRSA, SHA512withRSA, SHA224with_ECDSA, SHA256with_ECDSA, SHA384with_ECDSA, SHA512with_ECDSA]
     EnumCertificateKeyStatus:
       type: string
       description: Specifies the status of the key. Options are `VALID`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
