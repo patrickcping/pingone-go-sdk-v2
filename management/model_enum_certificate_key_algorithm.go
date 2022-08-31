@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumCertificateKeyAlgorithm Specifies the key algorithm. Options are RSA, EC, and UNKNOWN.
+// EnumCertificateKeyAlgorithm Specifies the key algorithm. Options are `RSA`, `EC`, and `UNKNOWN`.
 type EnumCertificateKeyAlgorithm string
 
 // List of EnumCertificateKeyAlgorithm

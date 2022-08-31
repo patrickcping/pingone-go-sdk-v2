@@ -65,19 +65,19 @@ components:
     EnumCertificateKeyAlgorithm:
       type: string
       enum: [RSA, EC, UNKNOWN]
-      description: Specifies the key algorithm. Options are RSA, EC, and UNKNOWN.
+      description: Specifies the key algorithm. Options are `RSA`, `EC`, and `UNKNOWN`.
     EnumCertificateKeySignagureAlgorithm:
       type: string
-      description: Specifies the signature algorithm of the key. Options are SHA256withRSA and SHA512withRSA.
-      enum: [SHA256withRSA, SHA512withRSA]
+      description: Specifies the signature algorithm of the key. Options are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`.
+      enum: [SHA224withRSA, SHA256withRSA, SHA384withRSA, SHA512withRSA]
     EnumCertificateKeyStatus:
       type: string
-      description: Specifies the status of the key. Options are VALID, EXPIRED, NOT_YET_VALID, and REVOKED.
+      description: Specifies the status of the key. Options are `VALID`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
       enum: [VALID, EXPIRED, NOT_YET_VALID, REVOKED]
     EnumCertificateKeyUsageType:
       type: string
-      description: Specifies how the certificate is used. Options are ENCRYPTION and SIGNING.
-      enum: [ENCRYPTION, SIGNING]
+      description: Specifies how the certificate is used. Options are `ENCRYPTION`, `SIGNING`, `SSL/TLS`, `ISSUANCE`.
+      enum: [ENCRYPTION, SIGNING, SSL/TLS, ISSUANCE]
     EnumCreateCertificateAcceptHeader:
       type: string
       enum: [application/x-pkcs7-certificates]
@@ -782,7 +782,7 @@ components:
           type: string
           format: date-time
           readOnly: true
-          description: The time the resource was created.
+          description: The time the key resource expires.
         id:
           type: string
           readOnly: true

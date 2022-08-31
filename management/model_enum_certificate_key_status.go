@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumCertificateKeyStatus Specifies the status of the key. Options are VALID, EXPIRED, NOT_YET_VALID, and REVOKED.
+// EnumCertificateKeyStatus Specifies the status of the key. Options are `VALID`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
 type EnumCertificateKeyStatus string
 
 // List of EnumCertificateKeyStatus

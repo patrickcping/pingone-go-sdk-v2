@@ -15,19 +15,23 @@ import (
 	"fmt"
 )
 
-// EnumCertificateKeyUsageType Specifies how the certificate is used. Options are ENCRYPTION and SIGNING.
+// EnumCertificateKeyUsageType Specifies how the certificate is used. Options are `ENCRYPTION`, `SIGNING`, `SSL/TLS`, `ISSUANCE`.
 type EnumCertificateKeyUsageType string
 
 // List of EnumCertificateKeyUsageType
 const (
 	ENUMCERTIFICATEKEYUSAGETYPE_ENCRYPTION EnumCertificateKeyUsageType = "ENCRYPTION"
 	ENUMCERTIFICATEKEYUSAGETYPE_SIGNING EnumCertificateKeyUsageType = "SIGNING"
+	ENUMCERTIFICATEKEYUSAGETYPE_SSL_TLS EnumCertificateKeyUsageType = "SSL/TLS"
+	ENUMCERTIFICATEKEYUSAGETYPE_ISSUANCE EnumCertificateKeyUsageType = "ISSUANCE"
 )
 
 // All allowed values of EnumCertificateKeyUsageType enum
 var AllowedEnumCertificateKeyUsageTypeEnumValues = []EnumCertificateKeyUsageType{
 	"ENCRYPTION",
 	"SIGNING",
+	"SSL/TLS",
+	"ISSUANCE",
 }
 
 func (v *EnumCertificateKeyUsageType) UnmarshalJSON(src []byte) error {
