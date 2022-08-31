@@ -21156,6 +21156,7 @@ components:
       - EXPIRED
       - NOT_YET_VALID
       - REVOKED
+      readOnly: true
       type: string
     EnumCertificateKeyUsageType:
       description: "Specifies how the certificate is used. Options are `ENCRYPTION`,\
@@ -22013,6 +22014,7 @@ components:
         startsAt:
           description: The time the validity period starts.
           format: date-time
+          readOnly: true
           type: string
         status:
           $ref: '#/components/schemas/EnumCertificateKeyStatus'
@@ -22027,13 +22029,9 @@ components:
           type: integer
       required:
       - algorithm
-      - default
-      - issuerDN
       - keyLength
-      - serialNumber
+      - name
       - signatureAlgorithm
-      - startsAt
-      - status
       - subjectDN
       - usageType
       - validityPeriod

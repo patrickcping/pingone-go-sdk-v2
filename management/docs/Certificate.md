@@ -6,18 +6,18 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Algorithm** | [**EnumCertificateKeyAlgorithm**](EnumCertificateKeyAlgorithm.md) |  | 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
-**Default** | **bool** | Specifies whether this is the default key for the specified environment. | 
+**Default** | Pointer to **bool** | Specifies whether this is the default key for the specified environment. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **ExpiresAt** | Pointer to **time.Time** | The time the key resource expires. | [optional] [readonly] 
 **Id** | Pointer to **string** | Specifies the resource’s unique identifier. | [optional] [readonly] 
-**IssuerDN** | **string** | Specifies the distinguished name of the certificate issuer. | 
+**IssuerDN** | Pointer to **string** | Specifies the distinguished name of the certificate issuer. | [optional] 
 **KeyLength** | **int32** | Specifies the key length. For RSA keys, options are 2048, 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256, and 384. | 
-**Name** | Pointer to **string** | Specifies the resource name. | [optional] 
+**Name** | **string** | Specifies the resource name. | 
 **Organization** | Pointer to [**ObjectOrganization**](ObjectOrganization.md) |  | [optional] 
-**SerialNumber** | **int32** | Specifies the serial number of the key or certificate. | 
+**SerialNumber** | Pointer to **int32** | Specifies the serial number of the key or certificate. | [optional] 
 **SignatureAlgorithm** | [**EnumCertificateKeySignagureAlgorithm**](EnumCertificateKeySignagureAlgorithm.md) |  | 
-**StartsAt** | **time.Time** | The time the validity period starts. | 
-**Status** | [**EnumCertificateKeyStatus**](EnumCertificateKeyStatus.md) |  | 
+**StartsAt** | Pointer to **time.Time** | The time the validity period starts. | [optional] [readonly] 
+**Status** | Pointer to [**EnumCertificateKeyStatus**](EnumCertificateKeyStatus.md) |  | [optional] 
 **SubjectDN** | **string** | Specifies the distinguished name of the subject being secured. | 
 **UsageType** | [**EnumCertificateKeyUsageType**](EnumCertificateKeyUsageType.md) |  | 
 **ValidityPeriod** | **int32** | Specifies the number of days the key is valid. | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewCertificate
 
-`func NewCertificate(algorithm EnumCertificateKeyAlgorithm, default_ bool, issuerDN string, keyLength int32, serialNumber int32, signatureAlgorithm EnumCertificateKeySignagureAlgorithm, startsAt time.Time, status EnumCertificateKeyStatus, subjectDN string, usageType EnumCertificateKeyUsageType, validityPeriod int32, ) *Certificate`
+`func NewCertificate(algorithm EnumCertificateKeyAlgorithm, keyLength int32, name string, signatureAlgorithm EnumCertificateKeySignagureAlgorithm, subjectDN string, usageType EnumCertificateKeyUsageType, validityPeriod int32, ) *Certificate`
 
 NewCertificate instantiates a new Certificate object
 This constructor will assign default values to properties that have it defined,
@@ -105,6 +105,11 @@ and a boolean to check if the value has been set.
 
 SetDefault sets Default field to given value.
 
+### HasDefault
+
+`func (o *Certificate) HasDefault() bool`
+
+HasDefault returns a boolean if a field has been set.
 
 ### GetEnvironment
 
@@ -200,6 +205,11 @@ and a boolean to check if the value has been set.
 
 SetIssuerDN sets IssuerDN field to given value.
 
+### HasIssuerDN
+
+`func (o *Certificate) HasIssuerDN() bool`
+
+HasIssuerDN returns a boolean if a field has been set.
 
 ### GetKeyLength
 
@@ -240,11 +250,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *Certificate) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetOrganization
 
@@ -290,6 +295,11 @@ and a boolean to check if the value has been set.
 
 SetSerialNumber sets SerialNumber field to given value.
 
+### HasSerialNumber
+
+`func (o *Certificate) HasSerialNumber() bool`
+
+HasSerialNumber returns a boolean if a field has been set.
 
 ### GetSignatureAlgorithm
 
@@ -330,6 +340,11 @@ and a boolean to check if the value has been set.
 
 SetStartsAt sets StartsAt field to given value.
 
+### HasStartsAt
+
+`func (o *Certificate) HasStartsAt() bool`
+
+HasStartsAt returns a boolean if a field has been set.
 
 ### GetStatus
 
@@ -350,6 +365,11 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+### HasStatus
+
+`func (o *Certificate) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 ### GetSubjectDN
 

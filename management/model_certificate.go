@@ -21,25 +21,25 @@ type Certificate struct {
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// Specifies whether this is the default key for the specified environment.
-	Default bool `json:"default"`
+	Default *bool `json:"default,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The time the key resource expires.
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	// Specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// Specifies the distinguished name of the certificate issuer.
-	IssuerDN string `json:"issuerDN"`
+	IssuerDN *string `json:"issuerDN,omitempty"`
 	// Specifies the key length. For RSA keys, options are 2048, 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256, and 384.
 	KeyLength int32 `json:"keyLength"`
 	// Specifies the resource name.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	Organization *ObjectOrganization `json:"organization,omitempty"`
 	// Specifies the serial number of the key or certificate.
-	SerialNumber int32 `json:"serialNumber"`
+	SerialNumber *int32 `json:"serialNumber,omitempty"`
 	SignatureAlgorithm EnumCertificateKeySignagureAlgorithm `json:"signatureAlgorithm"`
 	// The time the validity period starts.
-	StartsAt time.Time `json:"startsAt"`
-	Status EnumCertificateKeyStatus `json:"status"`
+	StartsAt *time.Time `json:"startsAt,omitempty"`
+	Status *EnumCertificateKeyStatus `json:"status,omitempty"`
 	// Specifies the distinguished name of the subject being secured.
 	SubjectDN string `json:"subjectDN"`
 	UsageType EnumCertificateKeyUsageType `json:"usageType"`
@@ -51,16 +51,12 @@ type Certificate struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificate(algorithm EnumCertificateKeyAlgorithm, default_ bool, issuerDN string, keyLength int32, serialNumber int32, signatureAlgorithm EnumCertificateKeySignagureAlgorithm, startsAt time.Time, status EnumCertificateKeyStatus, subjectDN string, usageType EnumCertificateKeyUsageType, validityPeriod int32) *Certificate {
+func NewCertificate(algorithm EnumCertificateKeyAlgorithm, keyLength int32, name string, signatureAlgorithm EnumCertificateKeySignagureAlgorithm, subjectDN string, usageType EnumCertificateKeyUsageType, validityPeriod int32) *Certificate {
 	this := Certificate{}
 	this.Algorithm = algorithm
-	this.Default = default_
-	this.IssuerDN = issuerDN
 	this.KeyLength = keyLength
-	this.SerialNumber = serialNumber
+	this.Name = name
 	this.SignatureAlgorithm = signatureAlgorithm
-	this.StartsAt = startsAt
-	this.Status = status
 	this.SubjectDN = subjectDN
 	this.UsageType = usageType
 	this.ValidityPeriod = validityPeriod
@@ -131,28 +127,36 @@ func (o *Certificate) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
-// GetDefault returns the Default field value
+// GetDefault returns the Default field value if set, zero value otherwise.
 func (o *Certificate) GetDefault() bool {
-	if o == nil {
+	if o == nil || o.Default == nil {
 		var ret bool
 		return ret
 	}
-
-	return o.Default
+	return *o.Default
 }
 
-// GetDefaultOk returns a tuple with the Default field value
+// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Certificate) GetDefaultOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || o.Default == nil {
 		return nil, false
 	}
-	return &o.Default, true
+	return o.Default, true
 }
 
-// SetDefault sets field value
+// HasDefault returns a boolean if a field has been set.
+func (o *Certificate) HasDefault() bool {
+	if o != nil && o.Default != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefault gets a reference to the given bool and assigns it to the Default field.
 func (o *Certificate) SetDefault(v bool) {
-	o.Default = v
+	o.Default = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -251,28 +255,36 @@ func (o *Certificate) SetId(v string) {
 	o.Id = &v
 }
 
-// GetIssuerDN returns the IssuerDN field value
+// GetIssuerDN returns the IssuerDN field value if set, zero value otherwise.
 func (o *Certificate) GetIssuerDN() string {
-	if o == nil {
+	if o == nil || o.IssuerDN == nil {
 		var ret string
 		return ret
 	}
-
-	return o.IssuerDN
+	return *o.IssuerDN
 }
 
-// GetIssuerDNOk returns a tuple with the IssuerDN field value
+// GetIssuerDNOk returns a tuple with the IssuerDN field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Certificate) GetIssuerDNOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.IssuerDN == nil {
 		return nil, false
 	}
-	return &o.IssuerDN, true
+	return o.IssuerDN, true
 }
 
-// SetIssuerDN sets field value
+// HasIssuerDN returns a boolean if a field has been set.
+func (o *Certificate) HasIssuerDN() bool {
+	if o != nil && o.IssuerDN != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuerDN gets a reference to the given string and assigns it to the IssuerDN field.
 func (o *Certificate) SetIssuerDN(v string) {
-	o.IssuerDN = v
+	o.IssuerDN = &v
 }
 
 // GetKeyLength returns the KeyLength field value
@@ -299,36 +311,28 @@ func (o *Certificate) SetKeyLength(v int32) {
 	o.KeyLength = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *Certificate) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Certificate) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Certificate) HasName() bool {
-	if o != nil && o.Name != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *Certificate) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetOrganization returns the Organization field value if set, zero value otherwise.
@@ -363,28 +367,36 @@ func (o *Certificate) SetOrganization(v ObjectOrganization) {
 	o.Organization = &v
 }
 
-// GetSerialNumber returns the SerialNumber field value
+// GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *Certificate) GetSerialNumber() int32 {
-	if o == nil {
+	if o == nil || o.SerialNumber == nil {
 		var ret int32
 		return ret
 	}
-
-	return o.SerialNumber
+	return *o.SerialNumber
 }
 
-// GetSerialNumberOk returns a tuple with the SerialNumber field value
+// GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Certificate) GetSerialNumberOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || o.SerialNumber == nil {
 		return nil, false
 	}
-	return &o.SerialNumber, true
+	return o.SerialNumber, true
 }
 
-// SetSerialNumber sets field value
+// HasSerialNumber returns a boolean if a field has been set.
+func (o *Certificate) HasSerialNumber() bool {
+	if o != nil && o.SerialNumber != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSerialNumber gets a reference to the given int32 and assigns it to the SerialNumber field.
 func (o *Certificate) SetSerialNumber(v int32) {
-	o.SerialNumber = v
+	o.SerialNumber = &v
 }
 
 // GetSignatureAlgorithm returns the SignatureAlgorithm field value
@@ -411,52 +423,68 @@ func (o *Certificate) SetSignatureAlgorithm(v EnumCertificateKeySignagureAlgorit
 	o.SignatureAlgorithm = v
 }
 
-// GetStartsAt returns the StartsAt field value
+// GetStartsAt returns the StartsAt field value if set, zero value otherwise.
 func (o *Certificate) GetStartsAt() time.Time {
-	if o == nil {
+	if o == nil || o.StartsAt == nil {
 		var ret time.Time
 		return ret
 	}
-
-	return o.StartsAt
+	return *o.StartsAt
 }
 
-// GetStartsAtOk returns a tuple with the StartsAt field value
+// GetStartsAtOk returns a tuple with the StartsAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Certificate) GetStartsAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || o.StartsAt == nil {
 		return nil, false
 	}
-	return &o.StartsAt, true
+	return o.StartsAt, true
 }
 
-// SetStartsAt sets field value
+// HasStartsAt returns a boolean if a field has been set.
+func (o *Certificate) HasStartsAt() bool {
+	if o != nil && o.StartsAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStartsAt gets a reference to the given time.Time and assigns it to the StartsAt field.
 func (o *Certificate) SetStartsAt(v time.Time) {
-	o.StartsAt = v
+	o.StartsAt = &v
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *Certificate) GetStatus() EnumCertificateKeyStatus {
-	if o == nil {
+	if o == nil || o.Status == nil {
 		var ret EnumCertificateKeyStatus
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Certificate) GetStatusOk() (*EnumCertificateKeyStatus, bool) {
-	if o == nil {
+	if o == nil || o.Status == nil {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *Certificate) HasStatus() bool {
+	if o != nil && o.Status != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given EnumCertificateKeyStatus and assigns it to the Status field.
 func (o *Certificate) SetStatus(v EnumCertificateKeyStatus) {
-	o.Status = v
+	o.Status = &v
 }
 
 // GetSubjectDN returns the SubjectDN field value
@@ -539,7 +567,7 @@ func (o Certificate) MarshalJSON() ([]byte, error) {
 	if o.CreatedAt != nil {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if true {
+	if o.Default != nil {
 		toSerialize["default"] = o.Default
 	}
 	if o.Environment != nil {
@@ -551,28 +579,28 @@ func (o Certificate) MarshalJSON() ([]byte, error) {
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}
-	if true {
+	if o.IssuerDN != nil {
 		toSerialize["issuerDN"] = o.IssuerDN
 	}
 	if true {
 		toSerialize["keyLength"] = o.KeyLength
 	}
-	if o.Name != nil {
+	if true {
 		toSerialize["name"] = o.Name
 	}
 	if o.Organization != nil {
 		toSerialize["organization"] = o.Organization
 	}
-	if true {
+	if o.SerialNumber != nil {
 		toSerialize["serialNumber"] = o.SerialNumber
 	}
 	if true {
 		toSerialize["signatureAlgorithm"] = o.SignatureAlgorithm
 	}
-	if true {
+	if o.StartsAt != nil {
 		toSerialize["startsAt"] = o.StartsAt
 	}
-	if true {
+	if o.Status != nil {
 		toSerialize["status"] = o.Status
 	}
 	if true {

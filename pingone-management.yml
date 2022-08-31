@@ -74,6 +74,7 @@ components:
       type: string
       description: Specifies the status of the key. Options are `VALID`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
       enum: [VALID, EXPIRED, NOT_YET_VALID, REVOKED]
+      readOnly: true
     EnumCertificateKeyUsageType:
       type: string
       description: Specifies how the certificate is used. Options are `ENCRYPTION`, `SIGNING`, `SSL/TLS`, `ISSUANCE`.
@@ -807,6 +808,7 @@ components:
           type: string
           description: The time the validity period starts.
           format: date-time
+          readOnly: true
         status:
           $ref: '#/components/schemas/EnumCertificateKeyStatus'
         subjectDN:
@@ -819,14 +821,10 @@ components:
           minimum: 1
           description: Specifies the number of days the key is valid.
       required:
+        - name
         - algorithm
-        - default
-        - issuerDN
         - keyLength
-        - serialNumber
         - signatureAlgorithm
-        - startsAt
-        - status
         - subjectDN
         - usageType
         - validityPeriod
