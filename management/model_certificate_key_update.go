@@ -19,6 +19,8 @@ type CertificateKeyUpdate struct {
 	// Specifies whether this is the default key for the specified environment.
 	Default bool `json:"default"`
 	UsageType EnumCertificateKeyUsageType `json:"usageType"`
+	// Specifies the distinguished name of the certificate issuer.
+	IssuerDN *string `json:"issuerDN,omitempty"`
 }
 
 // NewCertificateKeyUpdate instantiates a new CertificateKeyUpdate object
@@ -88,6 +90,38 @@ func (o *CertificateKeyUpdate) SetUsageType(v EnumCertificateKeyUsageType) {
 	o.UsageType = v
 }
 
+// GetIssuerDN returns the IssuerDN field value if set, zero value otherwise.
+func (o *CertificateKeyUpdate) GetIssuerDN() string {
+	if o == nil || o.IssuerDN == nil {
+		var ret string
+		return ret
+	}
+	return *o.IssuerDN
+}
+
+// GetIssuerDNOk returns a tuple with the IssuerDN field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateKeyUpdate) GetIssuerDNOk() (*string, bool) {
+	if o == nil || o.IssuerDN == nil {
+		return nil, false
+	}
+	return o.IssuerDN, true
+}
+
+// HasIssuerDN returns a boolean if a field has been set.
+func (o *CertificateKeyUpdate) HasIssuerDN() bool {
+	if o != nil && o.IssuerDN != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuerDN gets a reference to the given string and assigns it to the IssuerDN field.
+func (o *CertificateKeyUpdate) SetIssuerDN(v string) {
+	o.IssuerDN = &v
+}
+
 func (o CertificateKeyUpdate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -95,6 +129,9 @@ func (o CertificateKeyUpdate) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["usageType"] = o.UsageType
+	}
+	if o.IssuerDN != nil {
+		toSerialize["issuerDN"] = o.IssuerDN
 	}
 	return json.Marshal(toSerialize)
 }

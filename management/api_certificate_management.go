@@ -16,10 +16,9 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"os"
+	"strings"
 )
-
 
 // CertificateManagementApiService CertificateManagementApi service
 type CertificateManagementApiService service
@@ -243,6 +242,8 @@ type ApiCreateKeyRequest struct {
 	environmentID string
 	contentType *string
 	certificate *Certificate
+	file **[]byte
+	usageType *string
 }
 
 func (r ApiCreateKeyRequest) ContentType(contentType string) ApiCreateKeyRequest {
@@ -252,6 +253,16 @@ func (r ApiCreateKeyRequest) ContentType(contentType string) ApiCreateKeyRequest
 
 func (r ApiCreateKeyRequest) Certificate(certificate Certificate) ApiCreateKeyRequest {
 	r.certificate = &certificate
+	return r
+}
+
+func (r ApiCreateKeyRequest) UsageType(usageType string) ApiCreateKeyRequest {
+	r.usageType = &usageType
+	return r
+}
+
+func (r ApiCreateKeyRequest) File(file *[]byte) ApiCreateKeyRequest {
+	r.file = &file
 	return r
 }
 
@@ -316,9 +327,42 @@ func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest
 	if r.contentType != nil {
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
+
+	if localVarHeaderParams["Content-Type"] == "multipart/form-data" {
+		if r.usageType == nil {
+			return localVarReturnValue, nil, reportError("usageType is required and must be specified")
+		}
+		if r.file == nil {
+			return localVarReturnValue, nil, reportError("file is required and must be specified")
+		}
+	}
+
+	if localVarHeaderParams["Content-Type"] == "application/json" {
+		if r.certificate == nil {
+			return localVarReturnValue, nil, reportError("certificate is required and must be specified")
+		}
+	}
+
 	// body params
-	localVarPostBody = r.certificate
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	var req *http.Request
+	if localVarHeaderParams["Content-Type"] == "multipart/form-data" {
+
+		localVarFormParams.Add("usageType", parameterToString(*r.usageType, ""))
+		var fileLocalVarFormFileName string
+		var fileLocalVarFileBytes    *[]byte
+
+		fileLocalVarFormFileName = "file"
+
+		fileLocalVarFileBytes = *r.file
+
+		formFiles = append(formFiles, formFile{fileBytes: *fileLocalVarFileBytes, fileName: fileLocalVarFormFileName, formFileName: fileLocalVarFormFileName})
+	}
+
+	if localVarHeaderParams["Content-Type"] == "application/json" {
+		localVarPostBody = r.certificate
+	}
+
+	req, err = a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -1411,7 +1455,7 @@ func (r ApiGetKeyRequest) Accept(accept EnumGetKeyAcceptHeader) ApiGetKeyRequest
 	return r
 }
 
-func (r ApiGetKeyRequest) Execute() (string, *http.Response, error) {
+func (r ApiGetKeyRequest) Execute() (*Certificate, *http.Response, error) {
 	return r.ApiService.GetKeyExecute(r)
 }
 
@@ -1433,13 +1477,13 @@ func (a *CertificateManagementApiService) GetKey(ctx context.Context, environmen
 }
 
 // Execute executes the request
-//  @return string
-func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (string, *http.Response, error) {
+//  @return Certificate
+func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  string
+		localVarReturnValue  *Certificate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.GetKey")

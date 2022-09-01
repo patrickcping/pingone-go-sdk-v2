@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **KeyLength** | **int32** | Specifies the key length. For RSA keys, options are 2048, 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256, and 384. | 
 **Name** | **string** | Specifies the resource name. | 
 **Organization** | Pointer to [**ObjectOrganization**](ObjectOrganization.md) |  | [optional] 
-**SerialNumber** | Pointer to **int32** | Specifies the serial number of the key or certificate. | [optional] 
+**SerialNumber** | Pointer to **big.Int** | Specifies the serial number of the key or certificate. | [optional] 
 **SignatureAlgorithm** | [**EnumCertificateKeySignagureAlgorithm**](EnumCertificateKeySignagureAlgorithm.md) |  | 
 **StartsAt** | Pointer to **time.Time** | The time the validity period starts. | [optional] [readonly] 
 **Status** | Pointer to [**EnumCertificateKeyStatus**](EnumCertificateKeyStatus.md) |  | [optional] 
@@ -278,20 +278,20 @@ HasOrganization returns a boolean if a field has been set.
 
 ### GetSerialNumber
 
-`func (o *Certificate) GetSerialNumber() int32`
+`func (o *Certificate) GetSerialNumber() big.Int`
 
 GetSerialNumber returns the SerialNumber field if non-nil, zero value otherwise.
 
 ### GetSerialNumberOk
 
-`func (o *Certificate) GetSerialNumberOk() (*int32, bool)`
+`func (o *Certificate) GetSerialNumberOk() (*big.Int, bool)`
 
 GetSerialNumberOk returns a tuple with the SerialNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSerialNumber
 
-`func (o *Certificate) SetSerialNumber(v int32)`
+`func (o *Certificate) SetSerialNumber(v big.Int)`
 
 SetSerialNumber sets SerialNumber field to given value.
 
