@@ -68,12 +68,12 @@ components:
       description: Specifies the key algorithm. Options are `RSA`, `EC`, and `UNKNOWN`.
     EnumCertificateKeySignagureAlgorithm:
       type: string
-      description: Specifies the signature algorithm of the key. For RSA keys, options are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`. For elliptical curve (EC) keys, options are `SHA224with_ECDSA`, `SHA256with_ECDSA`, `SHA384with_ECDSA`, and `SHA512with_ECDSA`
-      enum: [SHA224withRSA, SHA256withRSA, SHA384withRSA, SHA512withRSA, SHA224with_ECDSA, SHA256with_ECDSA, SHA384with_ECDSA, SHA512with_ECDSA]
+      description: Specifies the signature algorithm of the key. For RSA keys, options are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`. For elliptical curve (EC) keys, options are `SHA224withECDSA`, `SHA256withECDSA`, `SHA384withECDSA`, and `SHA512withECDSA`
+      enum: [SHA224withRSA, SHA256withRSA, SHA384withRSA, SHA512withRSA, SHA224withECDSA, SHA256withECDSA, SHA384withECDSA, SHA512withECDSA]
     EnumCertificateKeyStatus:
       type: string
-      description: Specifies the status of the key. Options are `VALID`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
-      enum: [VALID, EXPIRED, NOT_YET_VALID, REVOKED]
+      description: Specifies the status of the key. Options are `VALID`, `EXPIRING`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
+      enum: [VALID, EXPIRING, EXPIRED, NOT_YET_VALID, REVOKED]
       readOnly: true
     EnumCertificateKeyUsageType:
       type: string
@@ -802,6 +802,7 @@ components:
         serialNumber:
           type: integer
           description: Specifies the serial number of the key or certificate.
+          format: int64
         signatureAlgorithm:
           $ref: '#/components/schemas/EnumCertificateKeySignagureAlgorithm'
         startsAt:
@@ -836,6 +837,9 @@ components:
           description: Specifies whether this is the default key for the specified environment.
         usageType:
           $ref: '#/components/schemas/EnumCertificateKeyUsageType'
+        issuerDN:
+          type: string
+          description: Specifies the distinguished name of the certificate issuer.
       required:
         - default
         - usageType
@@ -7657,6 +7661,9 @@ paths:
         '200':
           description: Successful response
           content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
             application/x-x509-ca-cert:
               schema:
                 type: string
@@ -7665,9 +7672,6 @@ paths:
               schema:
                 type: string
                 format: binary
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Certificate'
     put:
       tags:
         - Certificate Management

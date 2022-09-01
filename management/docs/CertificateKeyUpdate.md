@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Default** | **bool** | Specifies whether this is the default key for the specified environment. | 
 **UsageType** | [**EnumCertificateKeyUsageType**](EnumCertificateKeyUsageType.md) |  | 
+**IssuerDN** | Pointer to **string** | Specifies the distinguished name of the certificate issuer. | [optional] 
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetUsageType sets UsageType field to given value.
 
+
+### GetIssuerDN
+
+`func (o *CertificateKeyUpdate) GetIssuerDN() string`
+
+GetIssuerDN returns the IssuerDN field if non-nil, zero value otherwise.
+
+### GetIssuerDNOk
+
+`func (o *CertificateKeyUpdate) GetIssuerDNOk() (*string, bool)`
+
+GetIssuerDNOk returns a tuple with the IssuerDN field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuerDN
+
+`func (o *CertificateKeyUpdate) SetIssuerDN(v string)`
+
+SetIssuerDN sets IssuerDN field to given value.
+
+### HasIssuerDN
+
+`func (o *CertificateKeyUpdate) HasIssuerDN() bool`
+
+HasIssuerDN returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5039,6 +5039,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
             application/x-x509-ca-cert:
               schema:
                 format: byte
@@ -5047,9 +5050,6 @@ paths:
               schema:
                 format: binary
                 type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Certificate'
           description: Successful response
       summary: GET Key
       tags:
@@ -21142,23 +21142,24 @@ components:
     EnumCertificateKeySignagureAlgorithm:
       description: "Specifies the signature algorithm of the key. For RSA keys, options\
         \ are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`.\
-        \ For elliptical curve (EC) keys, options are `SHA224with_ECDSA`, `SHA256with_ECDSA`,\
-        \ `SHA384with_ECDSA`, and `SHA512with_ECDSA`"
+        \ For elliptical curve (EC) keys, options are `SHA224withECDSA`, `SHA256withECDSA`,\
+        \ `SHA384withECDSA`, and `SHA512withECDSA`"
       enum:
       - SHA224withRSA
       - SHA256withRSA
       - SHA384withRSA
       - SHA512withRSA
-      - SHA224with_ECDSA
-      - SHA256with_ECDSA
-      - SHA384with_ECDSA
-      - SHA512with_ECDSA
+      - SHA224withECDSA
+      - SHA256withECDSA
+      - SHA384withECDSA
+      - SHA512withECDSA
       type: string
     EnumCertificateKeyStatus:
-      description: "Specifies the status of the key. Options are `VALID`, `EXPIRED`,\
-        \ `NOT_YET_VALID`, and `REVOKED`."
+      description: "Specifies the status of the key. Options are `VALID`, `EXPIRING`,\
+        \ `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`."
       enum:
       - VALID
+      - EXPIRING
       - EXPIRED
       - NOT_YET_VALID
       - REVOKED
@@ -22014,6 +22015,7 @@ components:
           $ref: '#/components/schemas/ObjectOrganization'
         serialNumber:
           description: Specifies the serial number of the key or certificate.
+          format: int64
           type: integer
         signatureAlgorithm:
           $ref: '#/components/schemas/EnumCertificateKeySignagureAlgorithm'
@@ -22045,6 +22047,7 @@ components:
     CertificateKeyUpdate:
       example:
         default: true
+        issuerDN: issuerDN
         usageType: null
       properties:
         default:
@@ -22053,6 +22056,9 @@ components:
           type: boolean
         usageType:
           $ref: '#/components/schemas/EnumCertificateKeyUsageType'
+        issuerDN:
+          description: Specifies the distinguished name of the certificate issuer.
+          type: string
       required:
       - default
       - usageType

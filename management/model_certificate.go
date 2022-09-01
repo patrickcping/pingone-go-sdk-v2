@@ -13,6 +13,7 @@ package management
 import (
 	"encoding/json"
 	"time"
+	"math/big"
 )
 
 // Certificate struct for Certificate
@@ -35,7 +36,7 @@ type Certificate struct {
 	Name string `json:"name"`
 	Organization *ObjectOrganization `json:"organization,omitempty"`
 	// Specifies the serial number of the key or certificate.
-	SerialNumber *int32 `json:"serialNumber,omitempty"`
+	SerialNumber *big.Int `json:"serialNumber,omitempty"`
 	SignatureAlgorithm EnumCertificateKeySignagureAlgorithm `json:"signatureAlgorithm"`
 	// The time the validity period starts.
 	StartsAt *time.Time `json:"startsAt,omitempty"`
@@ -368,9 +369,9 @@ func (o *Certificate) SetOrganization(v ObjectOrganization) {
 }
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
-func (o *Certificate) GetSerialNumber() int32 {
+func (o *Certificate) GetSerialNumber() big.Int {
 	if o == nil || o.SerialNumber == nil {
-		var ret int32
+		var ret big.Int
 		return ret
 	}
 	return *o.SerialNumber
@@ -378,7 +379,7 @@ func (o *Certificate) GetSerialNumber() int32 {
 
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Certificate) GetSerialNumberOk() (*int32, bool) {
+func (o *Certificate) GetSerialNumberOk() (*big.Int, bool) {
 	if o == nil || o.SerialNumber == nil {
 		return nil, false
 	}
@@ -394,8 +395,8 @@ func (o *Certificate) HasSerialNumber() bool {
 	return false
 }
 
-// SetSerialNumber gets a reference to the given int32 and assigns it to the SerialNumber field.
-func (o *Certificate) SetSerialNumber(v int32) {
+// SetSerialNumber gets a reference to the given big.Int and assigns it to the SerialNumber field.
+func (o *Certificate) SetSerialNumber(v big.Int) {
 	o.SerialNumber = &v
 }
 

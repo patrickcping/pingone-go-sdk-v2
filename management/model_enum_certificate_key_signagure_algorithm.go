@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumCertificateKeySignagureAlgorithm Specifies the signature algorithm of the key. For RSA keys, options are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`. For elliptical curve (EC) keys, options are `SHA224with_ECDSA`, `SHA256with_ECDSA`, `SHA384with_ECDSA`, and `SHA512with_ECDSA`
+// EnumCertificateKeySignagureAlgorithm Specifies the signature algorithm of the key. For RSA keys, options are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`. For elliptical curve (EC) keys, options are `SHA224withECDSA`, `SHA256withECDSA`, `SHA384withECDSA`, and `SHA512withECDSA`
 type EnumCertificateKeySignagureAlgorithm string
 
 // List of EnumCertificateKeySignagureAlgorithm
@@ -24,10 +24,10 @@ const (
 	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA256WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA256withRSA"
 	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA384WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA384withRSA"
 	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA512WITH_RSA EnumCertificateKeySignagureAlgorithm = "SHA512withRSA"
-	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA224WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA224with_ECDSA"
-	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA256WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA256with_ECDSA"
-	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA384WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA384with_ECDSA"
-	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA512WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA512with_ECDSA"
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA224WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA224withECDSA"
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA256WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA256withECDSA"
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA384WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA384withECDSA"
+	ENUMCERTIFICATEKEYSIGNAGUREALGORITHM_SHA512WITH_ECDSA EnumCertificateKeySignagureAlgorithm = "SHA512withECDSA"
 )
 
 // All allowed values of EnumCertificateKeySignagureAlgorithm enum
@@ -36,10 +36,10 @@ var AllowedEnumCertificateKeySignagureAlgorithmEnumValues = []EnumCertificateKey
 	"SHA256withRSA",
 	"SHA384withRSA",
 	"SHA512withRSA",
-	"SHA224with_ECDSA",
-	"SHA256with_ECDSA",
-	"SHA384with_ECDSA",
-	"SHA512with_ECDSA",
+	"SHA224withECDSA",
+	"SHA256withECDSA",
+	"SHA384withECDSA",
+	"SHA512withECDSA",
 }
 
 func (v *EnumCertificateKeySignagureAlgorithm) UnmarshalJSON(src []byte) error {

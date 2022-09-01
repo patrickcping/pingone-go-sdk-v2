@@ -593,7 +593,7 @@ Name | Type | Description  | Notes
 
 ## GetKey
 
-> string GetKey(ctx, environmentID, keyID).Accept(accept).Execute()
+> Certificate GetKey(ctx, environmentID, keyID).Accept(accept).Execute()
 
 GET Key
 
@@ -621,7 +621,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.GetKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetKey`: string
+    // response from `GetKey`: Certificate
     fmt.Fprintf(os.Stdout, "Response from `CertificateManagementApi.GetKey`: %v\n", resp)
 }
 ```
@@ -648,7 +648,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**Certificate**](Certificate.md)
 
 ### Authorization
 
