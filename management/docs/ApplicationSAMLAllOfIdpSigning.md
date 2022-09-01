@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | [**ApplicationSAMLAllOfIdpSigningKey**](ApplicationSAMLAllOfIdpSigningKey.md) |  | 
+**Algorithm** | Pointer to **string** | A string that specifies the IdP Signing key algorithm. | [optional] [readonly] 
 
 ## Methods
 
@@ -44,6 +45,31 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
+
+### GetAlgorithm
+
+`func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithm() string`
+
+GetAlgorithm returns the Algorithm field if non-nil, zero value otherwise.
+
+### GetAlgorithmOk
+
+`func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithmOk() (*string, bool)`
+
+GetAlgorithmOk returns a tuple with the Algorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlgorithm
+
+`func (o *ApplicationSAMLAllOfIdpSigning) SetAlgorithm(v string)`
+
+SetAlgorithm sets Algorithm field to given value.
+
+### HasAlgorithm
+
+`func (o *ApplicationSAMLAllOfIdpSigning) HasAlgorithm() bool`
+
+HasAlgorithm returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

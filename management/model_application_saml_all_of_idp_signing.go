@@ -17,6 +17,8 @@ import (
 // ApplicationSAMLAllOfIdpSigning struct for ApplicationSAMLAllOfIdpSigning
 type ApplicationSAMLAllOfIdpSigning struct {
 	Key ApplicationSAMLAllOfIdpSigningKey `json:"key"`
+	// A string that specifies the IdP Signing key algorithm.
+	Algorithm *string `json:"algorithm,omitempty"`
 }
 
 // NewApplicationSAMLAllOfIdpSigning instantiates a new ApplicationSAMLAllOfIdpSigning object
@@ -61,10 +63,45 @@ func (o *ApplicationSAMLAllOfIdpSigning) SetKey(v ApplicationSAMLAllOfIdpSigning
 	o.Key = v
 }
 
+// GetAlgorithm returns the Algorithm field value if set, zero value otherwise.
+func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithm() string {
+	if o == nil || o.Algorithm == nil {
+		var ret string
+		return ret
+	}
+	return *o.Algorithm
+}
+
+// GetAlgorithmOk returns a tuple with the Algorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithmOk() (*string, bool) {
+	if o == nil || o.Algorithm == nil {
+		return nil, false
+	}
+	return o.Algorithm, true
+}
+
+// HasAlgorithm returns a boolean if a field has been set.
+func (o *ApplicationSAMLAllOfIdpSigning) HasAlgorithm() bool {
+	if o != nil && o.Algorithm != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAlgorithm gets a reference to the given string and assigns it to the Algorithm field.
+func (o *ApplicationSAMLAllOfIdpSigning) SetAlgorithm(v string) {
+	o.Algorithm = &v
+}
+
 func (o ApplicationSAMLAllOfIdpSigning) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["key"] = o.Key
+	}
+	if o.Algorithm != nil {
+		toSerialize["algorithm"] = o.Algorithm
 	}
 	return json.Marshal(toSerialize)
 }
