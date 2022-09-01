@@ -1,5 +1,7 @@
-# Release (Unreleased)
+# Release (2022-09-01)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.5
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.6.0 => v0.7.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.7.0](./management/CHANGELOG.md)
     * **Bug fix** - Correct `ApplicationSAML` model `IdpSigning` attribute [#38](https://github.com/patrickcping/pingone-go-sdk-v2/pull/38)
     * **Bug fix** - Correct `ApplicationSAML` model to include read only `Algorithm` attribute [#38](https://github.com/patrickcping/pingone-go-sdk-v2/pull/38)
