@@ -1,5 +1,7 @@
 # v0.8.0 (Unreleased)
 
+* **Enhancement** - Add `Links` to `Gateway` model [#40](https://github.com/patrickcping/pingone-go-sdk-v2/pull/40)
+
 # v0.7.0 (2022-09-01)
 
 * **Bug fix** - Correct `ApplicationSAML` model `IdpSigning` attribute [#38](https://github.com/patrickcping/pingone-go-sdk-v2/pull/38)

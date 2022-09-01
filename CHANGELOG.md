@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.8.0](./management/CHANGELOG.md)
+    * **Enhancement** - Add `Links` to `Gateway` model [#40](https://github.com/patrickcping/pingone-go-sdk-v2/pull/40)
+
 # Release (2022-09-01)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.5
