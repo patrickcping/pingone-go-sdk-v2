@@ -1,3 +1,5 @@
+# v0.8.0 (Unreleased)
+
 # v0.7.0 (2022-09-01)
 
 * **Bug fix** - Correct `ApplicationSAML` model `IdpSigning` attribute [#38](https://github.com/patrickcping/pingone-go-sdk-v2/pull/38)
