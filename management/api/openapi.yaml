@@ -24639,7 +24639,7 @@ components:
       - href
       - id
       type: object
-    ApplicationSAML_allOf_idpSigningtype_key:
+    ApplicationSAML_allOf_idpSigning_key:
       properties:
         id:
           description: "A string that specifies the certificate to be used by the\
@@ -24649,10 +24649,10 @@ components:
       required:
       - id
       type: object
-    ApplicationSAML_allOf_idpSigningtype:
+    ApplicationSAML_allOf_idpSigning:
       properties:
         key:
-          $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigningtype_key'
+          $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigning_key'
       required:
       - key
       type: object
@@ -24691,8 +24691,8 @@ components:
           description: A boolean that specifies whether the SAML assertion itself
             should be signed. The default value is true.
           type: boolean
-        idpSigningtype:
-          $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigningtype'
+        idpSigning:
+          $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigning'
         nameIdFormat:
           description: A string that specifies the format of the Subject NameID attibute
             in the SAML assertion

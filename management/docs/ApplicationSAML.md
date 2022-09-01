@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
 **AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
-**IdpSigningtype** | Pointer to [**ApplicationSAMLAllOfIdpSigningtype**](ApplicationSAMLAllOfIdpSigningtype.md) |  | [optional] 
+**IdpSigning** | Pointer to [**ApplicationSAMLAllOfIdpSigning**](ApplicationSAMLAllOfIdpSigning.md) |  | [optional] 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False. | [optional] 
 **SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
@@ -496,30 +496,30 @@ SetAssertionSigned sets AssertionSigned field to given value.
 
 HasAssertionSigned returns a boolean if a field has been set.
 
-### GetIdpSigningtype
+### GetIdpSigning
 
-`func (o *ApplicationSAML) GetIdpSigningtype() ApplicationSAMLAllOfIdpSigningtype`
+`func (o *ApplicationSAML) GetIdpSigning() ApplicationSAMLAllOfIdpSigning`
 
-GetIdpSigningtype returns the IdpSigningtype field if non-nil, zero value otherwise.
+GetIdpSigning returns the IdpSigning field if non-nil, zero value otherwise.
 
-### GetIdpSigningtypeOk
+### GetIdpSigningOk
 
-`func (o *ApplicationSAML) GetIdpSigningtypeOk() (*ApplicationSAMLAllOfIdpSigningtype, bool)`
+`func (o *ApplicationSAML) GetIdpSigningOk() (*ApplicationSAMLAllOfIdpSigning, bool)`
 
-GetIdpSigningtypeOk returns a tuple with the IdpSigningtype field if it's non-nil, zero value otherwise
+GetIdpSigningOk returns a tuple with the IdpSigning field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIdpSigningtype
+### SetIdpSigning
 
-`func (o *ApplicationSAML) SetIdpSigningtype(v ApplicationSAMLAllOfIdpSigningtype)`
+`func (o *ApplicationSAML) SetIdpSigning(v ApplicationSAMLAllOfIdpSigning)`
 
-SetIdpSigningtype sets IdpSigningtype field to given value.
+SetIdpSigning sets IdpSigning field to given value.
 
-### HasIdpSigningtype
+### HasIdpSigning
 
-`func (o *ApplicationSAML) HasIdpSigningtype() bool`
+`func (o *ApplicationSAML) HasIdpSigning() bool`
 
-HasIdpSigningtype returns a boolean if a field has been set.
+HasIdpSigning returns a boolean if a field has been set.
 
 ### GetNameIdFormat
 

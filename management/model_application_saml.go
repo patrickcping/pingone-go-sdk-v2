@@ -48,7 +48,7 @@ type ApplicationSAML struct {
 	AssertionDuration int32 `json:"assertionDuration"`
 	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
 	AssertionSigned *bool `json:"assertionSigned,omitempty"`
-	IdpSigningtype *ApplicationSAMLAllOfIdpSigningtype `json:"idpSigningtype,omitempty"`
+	IdpSigning *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
 	// A string that specifies the format of the Subject NameID attibute in the SAML assertion
 	NameIdFormat *string `json:"nameIdFormat,omitempty"`
 	// A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False.
@@ -647,36 +647,36 @@ func (o *ApplicationSAML) SetAssertionSigned(v bool) {
 	o.AssertionSigned = &v
 }
 
-// GetIdpSigningtype returns the IdpSigningtype field value if set, zero value otherwise.
-func (o *ApplicationSAML) GetIdpSigningtype() ApplicationSAMLAllOfIdpSigningtype {
-	if o == nil || o.IdpSigningtype == nil {
-		var ret ApplicationSAMLAllOfIdpSigningtype
+// GetIdpSigning returns the IdpSigning field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetIdpSigning() ApplicationSAMLAllOfIdpSigning {
+	if o == nil || o.IdpSigning == nil {
+		var ret ApplicationSAMLAllOfIdpSigning
 		return ret
 	}
-	return *o.IdpSigningtype
+	return *o.IdpSigning
 }
 
-// GetIdpSigningtypeOk returns a tuple with the IdpSigningtype field value if set, nil otherwise
+// GetIdpSigningOk returns a tuple with the IdpSigning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationSAML) GetIdpSigningtypeOk() (*ApplicationSAMLAllOfIdpSigningtype, bool) {
-	if o == nil || o.IdpSigningtype == nil {
+func (o *ApplicationSAML) GetIdpSigningOk() (*ApplicationSAMLAllOfIdpSigning, bool) {
+	if o == nil || o.IdpSigning == nil {
 		return nil, false
 	}
-	return o.IdpSigningtype, true
+	return o.IdpSigning, true
 }
 
-// HasIdpSigningtype returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasIdpSigningtype() bool {
-	if o != nil && o.IdpSigningtype != nil {
+// HasIdpSigning returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasIdpSigning() bool {
+	if o != nil && o.IdpSigning != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIdpSigningtype gets a reference to the given ApplicationSAMLAllOfIdpSigningtype and assigns it to the IdpSigningtype field.
-func (o *ApplicationSAML) SetIdpSigningtype(v ApplicationSAMLAllOfIdpSigningtype) {
-	o.IdpSigningtype = &v
+// SetIdpSigning gets a reference to the given ApplicationSAMLAllOfIdpSigning and assigns it to the IdpSigning field.
+func (o *ApplicationSAML) SetIdpSigning(v ApplicationSAMLAllOfIdpSigning) {
+	o.IdpSigning = &v
 }
 
 // GetNameIdFormat returns the NameIdFormat field value if set, zero value otherwise.
@@ -954,8 +954,8 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	if o.AssertionSigned != nil {
 		toSerialize["assertionSigned"] = o.AssertionSigned
 	}
-	if o.IdpSigningtype != nil {
-		toSerialize["idpSigningtype"] = o.IdpSigningtype
+	if o.IdpSigning != nil {
+		toSerialize["idpSigning"] = o.IdpSigning
 	}
 	if o.NameIdFormat != nil {
 		toSerialize["nameIdFormat"] = o.NameIdFormat

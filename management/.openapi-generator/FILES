@@ -105,8 +105,8 @@ docs/ApplicationResourceGrantsApi.md
 docs/ApplicationRoleAssignmentsApi.md
 docs/ApplicationSAML.md
 docs/ApplicationSAMLAllOf.md
-docs/ApplicationSAMLAllOfIdpSigningtype.md
-docs/ApplicationSAMLAllOfIdpSigningtypeKey.md
+docs/ApplicationSAMLAllOfIdpSigning.md
+docs/ApplicationSAMLAllOfIdpSigningKey.md
 docs/ApplicationSAMLAllOfSpVerification.md
 docs/ApplicationSAMLAllOfSpVerificationCertificates.md
 docs/ApplicationSecret.md
@@ -415,8 +415,8 @@ model_application_resource_grant_resource.go
 model_application_resource_grant_scopes_inner.go
 model_application_saml.go
 model_application_saml_all_of.go
-model_application_saml_all_of_idp_signingtype.go
-model_application_saml_all_of_idp_signingtype_key.go
+model_application_saml_all_of_idp_signing.go
+model_application_saml_all_of_idp_signing_key.go
 model_application_saml_all_of_sp_verification.go
 model_application_saml_all_of_sp_verification_certificates.go
 model_application_secret.go
