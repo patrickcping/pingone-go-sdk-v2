@@ -428,7 +428,6 @@ model_bill_of_materials_products_inner_deployment.go
 model_certificate_key_update.go
 model_create_application_201_response.go
 model_create_application_request.go
-model_create_gateway_201_response.go
 model_create_gateway_request.go
 model_custom_domain.go
 model_custom_domain_certificate.go

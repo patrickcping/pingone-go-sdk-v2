@@ -16,6 +16,7 @@ import (
 
 // Gateway struct for Gateway
 type Gateway struct {
+	Links map[string]interface{} `json:"_links,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -48,6 +49,38 @@ func NewGateway(name string, type_ EnumGatewayType, enabled bool) *Gateway {
 func NewGatewayWithDefaults() *Gateway {
 	this := Gateway{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *Gateway) GetLinks() map[string]interface{} {
+	if o == nil || o.Links == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Gateway) GetLinksOk() (map[string]interface{}, bool) {
+	if o == nil || o.Links == nil {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *Gateway) HasLinks() bool {
+	if o != nil && o.Links != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
+func (o *Gateway) SetLinks(v map[string]interface{}) {
+	o.Links = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -284,6 +317,9 @@ func (o *Gateway) SetSupportedVersions(v GatewaySupportedVersions) {
 
 func (o Gateway) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Links != nil {
+		toSerialize["_links"] = o.Links
+	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
 	}

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to **map[string]interface{}** |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
@@ -39,6 +40,31 @@ will change when the set of required properties is changed
 NewGatewayLDAPWithDefaults instantiates a new GatewayLDAP object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *GatewayLDAP) GetLinks() map[string]interface{}`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *GatewayLDAP) GetLinksOk() (*map[string]interface{}, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *GatewayLDAP) SetLinks(v map[string]interface{})`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *GatewayLDAP) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetId
 
