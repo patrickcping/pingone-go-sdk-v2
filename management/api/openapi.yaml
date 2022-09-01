@@ -21155,10 +21155,11 @@ components:
       - SHA512withECDSA
       type: string
     EnumCertificateKeyStatus:
-      description: "Specifies the status of the key. Options are `VALID`, `EXPIRED`,\
-        \ `NOT_YET_VALID`, and `REVOKED`."
+      description: "Specifies the status of the key. Options are `VALID`, `EXPIRING`,\
+        \ `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`."
       enum:
       - VALID
+      - EXPIRING
       - EXPIRED
       - NOT_YET_VALID
       - REVOKED

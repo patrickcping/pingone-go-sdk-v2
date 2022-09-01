@@ -72,8 +72,8 @@ components:
       enum: [SHA224withRSA, SHA256withRSA, SHA384withRSA, SHA512withRSA, SHA224withECDSA, SHA256withECDSA, SHA384withECDSA, SHA512withECDSA]
     EnumCertificateKeyStatus:
       type: string
-      description: Specifies the status of the key. Options are `VALID`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
-      enum: [VALID, EXPIRED, NOT_YET_VALID, REVOKED]
+      description: Specifies the status of the key. Options are `VALID`, `EXPIRING`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
+      enum: [VALID, EXPIRING, EXPIRED, NOT_YET_VALID, REVOKED]
       readOnly: true
     EnumCertificateKeyUsageType:
       type: string

@@ -15,12 +15,13 @@ import (
 	"fmt"
 )
 
-// EnumCertificateKeyStatus Specifies the status of the key. Options are `VALID`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
+// EnumCertificateKeyStatus Specifies the status of the key. Options are `VALID`, `EXPIRING`, `EXPIRED`, `NOT_YET_VALID`, and `REVOKED`.
 type EnumCertificateKeyStatus string
 
 // List of EnumCertificateKeyStatus
 const (
 	ENUMCERTIFICATEKEYSTATUS_VALID EnumCertificateKeyStatus = "VALID"
+	ENUMCERTIFICATEKEYSTATUS_EXPIRING EnumCertificateKeyStatus = "EXPIRING"
 	ENUMCERTIFICATEKEYSTATUS_EXPIRED EnumCertificateKeyStatus = "EXPIRED"
 	ENUMCERTIFICATEKEYSTATUS_NOT_YET_VALID EnumCertificateKeyStatus = "NOT_YET_VALID"
 	ENUMCERTIFICATEKEYSTATUS_REVOKED EnumCertificateKeyStatus = "REVOKED"
@@ -29,6 +30,7 @@ const (
 // All allowed values of EnumCertificateKeyStatus enum
 var AllowedEnumCertificateKeyStatusEnumValues = []EnumCertificateKeyStatus{
 	"VALID",
+	"EXPIRING",
 	"EXPIRED",
 	"NOT_YET_VALID",
 	"REVOKED",
