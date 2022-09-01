@@ -1,5 +1,6 @@
 # v0.8.0 (Unreleased)
 
+* **Bug fix** - Fix `Gateway` response dereferencing for non-`LDAP` types [#40](https://github.com/patrickcping/pingone-go-sdk-v2/pull/40)
 * **Enhancement** - Add `Links` to `Gateway` model [#40](https://github.com/patrickcping/pingone-go-sdk-v2/pull/40)
 
 # v0.7.0 (2022-09-01)

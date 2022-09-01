@@ -60,7 +60,11 @@ func (dst *CreateGateway201Response) UnmarshalJSON(data []byte) error {
 		if string(jsonGatewayLDAP) == "{}" { // empty struct
 			dst.GatewayLDAP = nil
 		} else {
-			match++
+			if dst.GatewayLDAP.Type == "LDAP" {
+				match++
+			} else {
+				dst.GatewayLDAP = nil
+			}
 		}
 	} else {
 		dst.GatewayLDAP = nil

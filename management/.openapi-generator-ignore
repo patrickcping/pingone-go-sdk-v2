@@ -34,5 +34,6 @@ model_identity_provider.go
 model_certificate.go
 api_certificate_management.go
 docs/Certificate.md
+model_create_gateway_201_response.go
 GNUmakefile
 .version
