@@ -22930,6 +22930,8 @@ components:
       type: object
     Gateway:
       properties:
+        _links:
+          type: object
         id:
           description: A string that specifies the instance ID of the gateway. The
             gateway instance ID is created by the gateway when it starts up.

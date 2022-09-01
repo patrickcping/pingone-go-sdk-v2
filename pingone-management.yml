@@ -1087,6 +1087,8 @@ components:
     Gateway:
       type: object
       properties:
+        _links:
+          type: object
         id:
           type: string
           readOnly: true
