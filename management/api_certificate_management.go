@@ -16,10 +16,9 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 	"os"
+	"strings"
 )
-
 
 // CertificateManagementApiService CertificateManagementApi service
 type CertificateManagementApiService service
@@ -1456,7 +1455,7 @@ func (r ApiGetKeyRequest) Accept(accept EnumGetKeyAcceptHeader) ApiGetKeyRequest
 	return r
 }
 
-func (r ApiGetKeyRequest) Execute() (*Certificate, *http.Response, error) {
+func (r ApiGetKeyRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.GetKeyExecute(r)
 }
 
@@ -1479,7 +1478,7 @@ func (a *CertificateManagementApiService) GetKey(ctx context.Context, environmen
 
 // Execute executes the request
 //  @return Certificate
-func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (*Certificate, *http.Response, error) {
+func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1603,6 +1602,14 @@ func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (*Ce
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	if localVarHTTPResponse.Header.Get("Content-Type") == "application/x-x509-ca-cert" {
+		return string(localVarBody), localVarHTTPResponse, nil
+	}
+
+	if localVarHTTPResponse.Header.Get("Content-Type") == "application/x-pkcs7-certificates" {
+		return localVarBody, localVarHTTPResponse, nil
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1948,10 +1955,10 @@ type ApiImportCSRResponseRequest struct {
 	ApiService *CertificateManagementApiService
 	environmentID string
 	keyID string
-	file *string
+	file **[]byte
 }
 
-func (r ApiImportCSRResponseRequest) File(file string) ApiImportCSRResponseRequest {
+func (r ApiImportCSRResponseRequest) File(file *[]byte) ApiImportCSRResponseRequest {
 	r.file = &file
 	return r
 }
@@ -2020,7 +2027,14 @@ func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarFormParams.Add("file", parameterToString(*r.file, ""))
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileBytes    *[]byte
+
+	fileLocalVarFormFileName = "file"
+
+	fileLocalVarFileBytes = *r.file
+
+	formFiles = append(formFiles, formFile{fileBytes: *fileLocalVarFileBytes, fileName: fileLocalVarFormFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

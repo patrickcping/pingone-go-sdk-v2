@@ -23442,7 +23442,7 @@ components:
     PKICAResponseFileUpload:
       properties:
         file:
-          format: byte
+          format: binary
           type: string
       required:
       - file

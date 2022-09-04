@@ -824,7 +824,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyID := "keyID_example" // string | 
-    file := string(BYTE_ARRAY_DATA_HERE) // string | 
+    file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -856,7 +856,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **file** | **string** |  | 
+ **file** | ***os.File** |  | 
 
 ### Return type
 
