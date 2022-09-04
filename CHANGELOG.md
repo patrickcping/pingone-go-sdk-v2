@@ -1,5 +1,7 @@
-# Release (Unreleased)
+# Release (2022-09-04)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.6
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.7.0 => v0.8.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.8.0](./management/CHANGELOG.md)
     * **Bug fix** - Fix `Gateway` response dereferencing for non-`LDAP` types [#40](https://github.com/patrickcping/pingone-go-sdk-v2/pull/40)
     * **Bug fix** - Fix `ExportCSR` headers, to determine the response type of the CSR [#41](https://github.com/patrickcping/pingone-go-sdk-v2/pull/41)
