@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**GetKey**](CertificateManagementApi.md#GetKey) | **Get** /v1/environments/{environmentID}/keys/{keyID} | GET Key
 [**GetKeyApplications**](CertificateManagementApi.md#GetKeyApplications) | **Get** /v1/environments/{environmentID}/keys/{keyID}/applications | GET Key Applications
 [**GetKeys**](CertificateManagementApi.md#GetKeys) | **Get** /v1/environments/{environmentID}/keys | GET Keys
-[**ImportCSRResponse**](CertificateManagementApi.md#ImportCSRResponse) | **Put** /v1/environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
+[**ImportCSRResponse**](CertificateManagementApi.md#ImportCSRResponse) | **Post** /v1/environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
 [**UpdateKey**](CertificateManagementApi.md#UpdateKey) | **Put** /v1/environments/{environmentID}/keys/{keyID} | UPDATE Key
 [**V1EnvironmentsEnvironmentIDDecryptionsPost**](CertificateManagementApi.md#V1EnvironmentsEnvironmentIDDecryptionsPost) | **Post** /v1/environments/{environmentID}/decryptions | DECRYPT Data
 [**V1EnvironmentsEnvironmentIDEncryptionsPost**](CertificateManagementApi.md#V1EnvironmentsEnvironmentIDEncryptionsPost) | **Post** /v1/environments/{environmentID}/encryptions | ENCRYPT Data
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 ## ExportCSR
 
-> string ExportCSR(ctx, environmentID, keyID).ContentType(contentType).Execute()
+> string ExportCSR(ctx, environmentID, keyID).Accept(accept).Execute()
 
 Export a certificate signing request (CSR)
 
@@ -329,11 +329,11 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyID := "keyID_example" // string | 
-    contentType := openapiclient.EnumCSRExportHeader("application/pkcs10") // EnumCSRExportHeader |  (optional)
+    accept := openapiclient.EnumCSRExportHeader("application/pkcs10") // EnumCSRExportHeader |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateManagementApi.ExportCSR(context.Background(), environmentID, keyID).ContentType(contentType).Execute()
+    resp, r, err := apiClient.CertificateManagementApi.ExportCSR(context.Background(), environmentID, keyID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.ExportCSR``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | [**EnumCSRExportHeader**](EnumCSRExportHeader.md) |  | 
+ **accept** | [**EnumCSRExportHeader**](EnumCSRExportHeader.md) |  | 
 
 ### Return type
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, application/pkcs10
+- **Accept**: application/json, application/pkcs10, application/x-pem-file
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -805,7 +805,7 @@ Name | Type | Description  | Notes
 
 ## ImportCSRResponse
 
-> ImportCSRResponse(ctx, environmentID, keyID).ContentType(contentType).Execute()
+> Certificate ImportCSRResponse(ctx, environmentID, keyID).File(file).Execute()
 
 Import Certificate Authority (CA) Response to a CSR
 
@@ -824,15 +824,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyID := "keyID_example" // string | 
-    contentType := openapiclient.EnumCSRResponseImportHeader("application/x-pem-file") // EnumCSRResponseImportHeader |  (optional)
+    file := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateManagementApi.ImportCSRResponse(context.Background(), environmentID, keyID).ContentType(contentType).Execute()
+    resp, r, err := apiClient.CertificateManagementApi.ImportCSRResponse(context.Background(), environmentID, keyID).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.ImportCSRResponse``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ImportCSRResponse`: Certificate
+    fmt.Fprintf(os.Stdout, "Response from `CertificateManagementApi.ImportCSRResponse`: %v\n", resp)
 }
 ```
 
@@ -854,11 +856,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | [**EnumCSRResponseImportHeader**](EnumCSRResponseImportHeader.md) |  | 
+ **file** | ***os.File** |  | 
 
 ### Return type
 
- (empty response body)
+[**Certificate**](Certificate.md)
 
 ### Authorization
 
@@ -866,7 +868,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

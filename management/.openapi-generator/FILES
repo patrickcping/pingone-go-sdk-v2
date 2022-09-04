@@ -17,6 +17,7 @@ api_bill_of_materials_bom.go
 api_branding_settings.go
 api_branding_themes.go
 api_capabilities.go
+api_certificate_management.go
 api_custom_domains.go
 api_device_authentication_policy.go
 api_enable_users.go

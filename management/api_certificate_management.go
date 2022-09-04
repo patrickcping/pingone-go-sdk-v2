@@ -16,7 +16,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
 )
 
@@ -28,7 +27,7 @@ type ApiCreateCertificateFromFileRequest struct {
 	ApiService *CertificateManagementApiService
 	environmentID string
 	usageType *string
-	file **os.File
+	file **[]byte
 	contentType *EnumCreateCertificateAcceptHeader
 }
 
@@ -37,7 +36,7 @@ func (r ApiCreateCertificateFromFileRequest) UsageType(usageType string) ApiCrea
 	return r
 }
 
-func (r ApiCreateCertificateFromFileRequest) File(file *os.File) ApiCreateCertificateFromFileRequest {
+func (r ApiCreateCertificateFromFileRequest) File(file *[]byte) ApiCreateCertificateFromFileRequest {
 	r.file = &file
 	return r
 }
@@ -116,19 +115,14 @@ func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r Api
 	}
 	localVarFormParams.Add("usageType", parameterToString(*r.usageType, ""))
 	var fileLocalVarFormFileName string
-	var fileLocalVarFileName     string
-	var fileLocalVarFileBytes    []byte
+	var fileLocalVarFileBytes    *[]byte
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := *r.file
-	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
-		fileLocalVarFileBytes = fbs
-		fileLocalVarFileName = fileLocalVarFile.Name()
-		fileLocalVarFile.Close()
-	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	fileLocalVarFileBytes = *r.file
+
+	formFiles = append(formFiles, formFile{fileBytes: *fileLocalVarFileBytes, fileName: fileLocalVarFormFileName, formFileName: fileLocalVarFormFileName})
+	
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -782,11 +776,11 @@ type ApiExportCSRRequest struct {
 	ApiService *CertificateManagementApiService
 	environmentID string
 	keyID string
-	contentType *EnumCSRExportHeader
+	accept *EnumCSRExportHeader
 }
 
-func (r ApiExportCSRRequest) ContentType(contentType EnumCSRExportHeader) ApiExportCSRRequest {
-	r.contentType = &contentType
+func (r ApiExportCSRRequest) Accept(accept EnumCSRExportHeader) ApiExportCSRRequest {
+	r.accept = &accept
 	return r
 }
 
@@ -844,15 +838,15 @@ func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/pkcs10"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/pkcs10", "application/x-pem-file"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+	if r.accept != nil {
+		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1455,7 +1449,7 @@ func (r ApiGetKeyRequest) Accept(accept EnumGetKeyAcceptHeader) ApiGetKeyRequest
 	return r
 }
 
-func (r ApiGetKeyRequest) Execute() (*Certificate, *http.Response, error) {
+func (r ApiGetKeyRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.GetKeyExecute(r)
 }
 
@@ -1478,7 +1472,7 @@ func (a *CertificateManagementApiService) GetKey(ctx context.Context, environmen
 
 // Execute executes the request
 //  @return Certificate
-func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (*Certificate, *http.Response, error) {
+func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1602,6 +1596,14 @@ func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (*Ce
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	if localVarHTTPResponse.Header.Get("Content-Type") == "application/x-x509-ca-cert" {
+		return string(localVarBody), localVarHTTPResponse, nil
+	}
+
+	if localVarHTTPResponse.Header.Get("Content-Type") == "application/x-pkcs7-certificates" {
+		return localVarBody, localVarHTTPResponse, nil
 	}
 
 	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1947,15 +1949,15 @@ type ApiImportCSRResponseRequest struct {
 	ApiService *CertificateManagementApiService
 	environmentID string
 	keyID string
-	contentType *EnumCSRResponseImportHeader
+	file **[]byte
 }
 
-func (r ApiImportCSRResponseRequest) ContentType(contentType EnumCSRResponseImportHeader) ApiImportCSRResponseRequest {
-	r.contentType = &contentType
+func (r ApiImportCSRResponseRequest) File(file *[]byte) ApiImportCSRResponseRequest {
+	r.file = &file
 	return r
 }
 
-func (r ApiImportCSRResponseRequest) Execute() (*http.Response, error) {
+func (r ApiImportCSRResponseRequest) Execute() (*Certificate, *http.Response, error) {
 	return r.ApiService.ImportCSRResponseExecute(r)
 }
 
@@ -1977,16 +1979,18 @@ func (a *CertificateManagementApiService) ImportCSRResponse(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*http.Response, error) {
+//  @return Certificate
+func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *Certificate
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.ImportCSRResponse")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}/csr"
@@ -1996,9 +2000,12 @@ func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.file == nil {
+		return localVarReturnValue, nil, reportError("file is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2014,24 +2021,29 @@ func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileBytes    *[]byte
+
+	fileLocalVarFormFileName = "file"
+
+	fileLocalVarFileBytes = *r.file
+
+	formFiles = append(formFiles, formFile{fileBytes: *fileLocalVarFileBytes, fileName: fileLocalVarFormFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -2044,65 +2056,74 @@ func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCS
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUpdateKeyRequest struct {

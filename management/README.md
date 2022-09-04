@@ -153,7 +153,7 @@ Class | Method | HTTP request | Description
 *CertificateManagementApi* | [**GetKey**](docs/CertificateManagementApi.md#getkey) | **Get** /v1/environments/{environmentID}/keys/{keyID} | GET Key
 *CertificateManagementApi* | [**GetKeyApplications**](docs/CertificateManagementApi.md#getkeyapplications) | **Get** /v1/environments/{environmentID}/keys/{keyID}/applications | GET Key Applications
 *CertificateManagementApi* | [**GetKeys**](docs/CertificateManagementApi.md#getkeys) | **Get** /v1/environments/{environmentID}/keys | GET Keys
-*CertificateManagementApi* | [**ImportCSRResponse**](docs/CertificateManagementApi.md#importcsrresponse) | **Put** /v1/environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
+*CertificateManagementApi* | [**ImportCSRResponse**](docs/CertificateManagementApi.md#importcsrresponse) | **Post** /v1/environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
 *CertificateManagementApi* | [**UpdateKey**](docs/CertificateManagementApi.md#updatekey) | **Put** /v1/environments/{environmentID}/keys/{keyID} | UPDATE Key
 *CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDDecryptionsPost**](docs/CertificateManagementApi.md#v1environmentsenvironmentiddecryptionspost) | **Post** /v1/environments/{environmentID}/decryptions | DECRYPT Data
 *CertificateManagementApi* | [**V1EnvironmentsEnvironmentIDEncryptionsPost**](docs/CertificateManagementApi.md#v1environmentsenvironmentidencryptionspost) | **Post** /v1/environments/{environmentID}/encryptions | ENCRYPT Data

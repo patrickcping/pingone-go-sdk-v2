@@ -5195,7 +5195,7 @@ paths:
       - example: application/pkcs10
         explode: false
         in: header
-        name: Content-Type
+        name: Accept
         required: false
         schema:
           $ref: '#/components/schemas/EnumCSRExportHeader'
@@ -5258,21 +5258,17 @@ paths:
               schema:
                 format: byte
                 type: string
+            application/x-pem-file:
+              schema:
+                format: byte
+                type: string
           description: Successful response
       summary: Export a certificate signing request (CSR)
       tags:
       - Certificate Management
-    put:
+    post:
       operationId: importCSRResponse
       parameters:
-      - example: application/x-pem-file
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          $ref: '#/components/schemas/EnumCSRResponseImportHeader'
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -5287,6 +5283,11 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PKICAResponseFileUpload'
       responses:
         "400":
           content:
@@ -5327,7 +5328,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Certificate'
           description: Successful response
       summary: Import Certificate Authority (CA) Response to a CSR
       tags:
@@ -21316,6 +21319,7 @@ components:
     EnumCSRExportHeader:
       enum:
       - application/pkcs10
+      - application/x-pem-file
       type: string
     EnumCSRResponseImportHeader:
       enum:
@@ -23434,6 +23438,14 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         targets:
           $ref: '#/components/schemas/Image_targets'
+      type: object
+    PKICAResponseFileUpload:
+      properties:
+        file:
+          format: binary
+          type: string
+      required:
+      - file
       type: object
     PKIFileUpload:
       properties:
