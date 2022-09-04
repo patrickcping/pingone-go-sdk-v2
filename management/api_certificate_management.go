@@ -16,7 +16,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
 )
 
@@ -28,7 +27,7 @@ type ApiCreateCertificateFromFileRequest struct {
 	ApiService *CertificateManagementApiService
 	environmentID string
 	usageType *string
-	file **os.File
+	file **[]byte
 	contentType *EnumCreateCertificateAcceptHeader
 }
 
@@ -37,7 +36,7 @@ func (r ApiCreateCertificateFromFileRequest) UsageType(usageType string) ApiCrea
 	return r
 }
 
-func (r ApiCreateCertificateFromFileRequest) File(file *os.File) ApiCreateCertificateFromFileRequest {
+func (r ApiCreateCertificateFromFileRequest) File(file *[]byte) ApiCreateCertificateFromFileRequest {
 	r.file = &file
 	return r
 }
@@ -116,19 +115,14 @@ func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r Api
 	}
 	localVarFormParams.Add("usageType", parameterToString(*r.usageType, ""))
 	var fileLocalVarFormFileName string
-	var fileLocalVarFileName     string
-	var fileLocalVarFileBytes    []byte
+	var fileLocalVarFileBytes    *[]byte
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := *r.file
-	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
-		fileLocalVarFileBytes = fbs
-		fileLocalVarFileName = fileLocalVarFile.Name()
-		fileLocalVarFile.Close()
-	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	fileLocalVarFileBytes = *r.file
+
+	formFiles = append(formFiles, formFile{fileBytes: *fileLocalVarFileBytes, fileName: fileLocalVarFormFileName, formFileName: fileLocalVarFormFileName})
+	
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
