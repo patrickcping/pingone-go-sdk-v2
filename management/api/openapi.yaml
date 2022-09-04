@@ -5258,6 +5258,10 @@ paths:
               schema:
                 format: byte
                 type: string
+            application/x-pem-file:
+              schema:
+                format: byte
+                type: string
           description: Successful response
       summary: Export a certificate signing request (CSR)
       tags:
@@ -21316,6 +21320,7 @@ components:
     EnumCSRExportHeader:
       enum:
       - application/pkcs10
+      - application/x-pem-file
       type: string
     EnumCSRResponseImportHeader:
       enum:

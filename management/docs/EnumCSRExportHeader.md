@@ -3,7 +3,9 @@
 ## Enum
 
 
-* `APPLICATION_PKCS10` (value: `"application/pkcs10"`)
+* `PKCS10` (value: `"application/pkcs10"`)
+
+* `X_PEM_FILE` (value: `"application/x-pem-file"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
