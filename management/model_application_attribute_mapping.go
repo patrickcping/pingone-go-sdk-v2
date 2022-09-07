@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // ApplicationAttributeMapping struct for ApplicationAttributeMapping
@@ -19,14 +20,14 @@ type ApplicationAttributeMapping struct {
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
 	// The time the resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	MappingType *EnumAttributeMappingType `json:"mappingType,omitempty"`
 	// A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property.
 	Name string `json:"name"`
 	// A boolean to specify whether a mapping value is required for this attribute. If true, a value must be set and a non-empty value must be available in the SAML assertion or ID token.
 	Required bool `json:"required"`
 	// The time the resource was updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A string that specifies the string constants or expression for mapping the attribute path against a specific source. The expression format is ${<source>.<attribute_path>}. The only supported source is user (for example, ${user.id}). This is a required property.
 	Value string `json:"value"`
 }
@@ -84,9 +85,9 @@ func (o *ApplicationAttributeMapping) SetId(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ApplicationAttributeMapping) GetCreatedAt() string {
+func (o *ApplicationAttributeMapping) GetCreatedAt() time.Time {
 	if o == nil || o.CreatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -94,7 +95,7 @@ func (o *ApplicationAttributeMapping) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationAttributeMapping) GetCreatedAtOk() (*string, bool) {
+func (o *ApplicationAttributeMapping) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -110,8 +111,8 @@ func (o *ApplicationAttributeMapping) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *ApplicationAttributeMapping) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *ApplicationAttributeMapping) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -196,9 +197,9 @@ func (o *ApplicationAttributeMapping) SetRequired(v bool) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ApplicationAttributeMapping) GetUpdatedAt() string {
+func (o *ApplicationAttributeMapping) GetUpdatedAt() time.Time {
 	if o == nil || o.UpdatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -206,7 +207,7 @@ func (o *ApplicationAttributeMapping) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationAttributeMapping) GetUpdatedAtOk() (*string, bool) {
+func (o *ApplicationAttributeMapping) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -222,8 +223,8 @@ func (o *ApplicationAttributeMapping) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *ApplicationAttributeMapping) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *ApplicationAttributeMapping) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 

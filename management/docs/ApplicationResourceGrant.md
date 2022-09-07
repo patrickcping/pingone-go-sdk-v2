@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Application** | Pointer to [**ApplicationResourceGrantApplication**](ApplicationResourceGrantApplication.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the application resource grant ID. | [optional] [readonly] 
 **Resource** | [**ApplicationResourceGrantResource**](ApplicationResourceGrantResource.md) |  | 
 **Scopes** | [**[]ApplicationResourceGrantScopesInner**](ApplicationResourceGrantScopesInner.md) |  | 
-**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
@@ -57,20 +57,20 @@ HasApplication returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *ApplicationResourceGrant) GetCreatedAt() string`
+`func (o *ApplicationResourceGrant) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *ApplicationResourceGrant) GetCreatedAtOk() (*string, bool)`
+`func (o *ApplicationResourceGrant) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *ApplicationResourceGrant) SetCreatedAt(v string)`
+`func (o *ApplicationResourceGrant) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -147,20 +147,20 @@ SetScopes sets Scopes field to given value.
 
 ### GetUpdatedAt
 
-`func (o *ApplicationResourceGrant) GetUpdatedAt() string`
+`func (o *ApplicationResourceGrant) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ApplicationResourceGrant) GetUpdatedAtOk() (*string, bool)`
+`func (o *ApplicationResourceGrant) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ApplicationResourceGrant) SetUpdatedAt(v string)`
+`func (o *ApplicationResourceGrant) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

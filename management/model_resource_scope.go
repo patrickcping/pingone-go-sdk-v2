@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // ResourceScope struct for ResourceScope
@@ -26,9 +27,9 @@ type ResourceScope struct {
 	// An array that specifies the user schema attributes that can be read or updated for the specified PingOne access control scope. The value is an array of schema attribute paths (such as username, name.given, shirtSize) that the scope controls. This property is supported only for the p1:read:user, p1:update:user and p1:read:user:{suffix} and p1:update:user:{suffix} scopes. No other PingOne platform scopes allow this behavior. Any attributes not listed in the attribute array are excluded from the read or update action. The wildcard path (*) in the array includes all attributes and cannot be used in conjunction with any other user schema attribute paths
 	SchemaAttributes []string `json:"schemaAttributes,omitempty"`
 	// The time the resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewResourceScope instantiates a new ResourceScope object
@@ -202,9 +203,9 @@ func (o *ResourceScope) SetSchemaAttributes(v []string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ResourceScope) GetCreatedAt() string {
+func (o *ResourceScope) GetCreatedAt() time.Time {
 	if o == nil || o.CreatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -212,7 +213,7 @@ func (o *ResourceScope) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceScope) GetCreatedAtOk() (*string, bool) {
+func (o *ResourceScope) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -228,15 +229,15 @@ func (o *ResourceScope) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *ResourceScope) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *ResourceScope) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ResourceScope) GetUpdatedAt() string {
+func (o *ResourceScope) GetUpdatedAt() time.Time {
 	if o == nil || o.UpdatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -244,7 +245,7 @@ func (o *ResourceScope) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceScope) GetUpdatedAtOk() (*string, bool) {
+func (o *ResourceScope) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -260,8 +261,8 @@ func (o *ResourceScope) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *ResourceScope) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *ResourceScope) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 

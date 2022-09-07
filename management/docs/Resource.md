@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessTokenValiditySeconds** | Pointer to **int32** | An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days). | [optional] 
 **Audience** | Pointer to **string** | A string that specifies a URL without a fragment or &#x60;@ObjectName&#x60; and must not contain &#x60;pingone&#x60; or &#x60;pingidentity&#x60; (for example, https://api.myresource.com). If a URL is not specified, the resource name is used. | [optional] 
-**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the resource. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Resource** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. | 
 **Type** | Pointer to [**EnumResourceType**](EnumResourceType.md) |  | [optional] 
-**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
@@ -86,20 +86,20 @@ HasAudience returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *Resource) GetCreatedAt() string`
+`func (o *Resource) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Resource) GetCreatedAtOk() (*string, bool)`
+`func (o *Resource) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Resource) SetCreatedAt(v string)`
+`func (o *Resource) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -256,20 +256,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *Resource) GetUpdatedAt() string`
+`func (o *Resource) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Resource) GetUpdatedAtOk() (*string, bool)`
+`func (o *Resource) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Resource) SetUpdatedAt(v string)`
+`func (o *Resource) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

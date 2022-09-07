@@ -17,7 +17,6 @@ api_bill_of_materials_bom.go
 api_branding_settings.go
 api_branding_themes.go
 api_capabilities.go
-api_certificate_management.go
 api_custom_domains.go
 api_device_authentication_policy.go
 api_enable_users.go
@@ -190,6 +189,8 @@ docs/EnumSignOnPolicyExtraVerification.md
 docs/EnumSignOnPolicyNoDeviceMode.md
 docs/EnumSignOnPolicyType.md
 docs/EnumSolutionType.md
+docs/EnumSubscriptionFilterIncludedTags.md
+docs/EnumSubscriptionFormat.md
 docs/EnumUpdateStatus.md
 docs/EnumUserLifecycleStatus.md
 docs/EnumUserRequestInclude.md
@@ -358,6 +359,10 @@ docs/SignOnPolicyActionProgressiveProfilingAllOf.md
 docs/SignOnPolicyActionProgressiveProfilingAllOfAttributes.md
 docs/SignOnPolicyActionsApi.md
 docs/SignOnPolicyAssignment.md
+docs/Subscription.md
+docs/SubscriptionFilterOptions.md
+docs/SubscriptionFilterOptionsIncludedApplicationsInner.md
+docs/SubscriptionHttpEndpoint.md
 docs/SubscriptionsWebhooksApi.md
 docs/TotalIdentitiesApi.md
 docs/TrustedEmailAddressesApi.md
@@ -486,6 +491,8 @@ model_enum_sign_on_policy_extra_verification.go
 model_enum_sign_on_policy_no_device_mode.go
 model_enum_sign_on_policy_type.go
 model_enum_solution_type.go
+model_enum_subscription_filter_included_tags.go
+model_enum_subscription_format.go
 model_enum_update_status.go
 model_enum_user_lifecycle_status.go
 model_enum_user_request_include.go
@@ -615,6 +622,10 @@ model_sign_on_policy_action_progressive_profiling.go
 model_sign_on_policy_action_progressive_profiling_all_of.go
 model_sign_on_policy_action_progressive_profiling_all_of_attributes.go
 model_sign_on_policy_assignment.go
+model_subscription.go
+model_subscription_filter_options.go
+model_subscription_filter_options_included_applications_inner.go
+model_subscription_http_endpoint.go
 model_update_application_request.go
 model_update_domain_200_response.go
 model_update_environment_type_request.go
