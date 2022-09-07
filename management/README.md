@@ -344,18 +344,18 @@ Class | Method | HTTP request | Description
 *SubscriptionsWebhooksApi* | [**ReadOneSubscription**](docs/SubscriptionsWebhooksApi.md#readonesubscription) | **Get** /v1/environments/{environmentID}/subscriptions/{subscriptionID} | READ One Subscription
 *SubscriptionsWebhooksApi* | [**UpdateSubscription**](docs/SubscriptionsWebhooksApi.md#updatesubscription) | **Put** /v1/environments/{environmentID}/subscriptions/{subscriptionID} | UPDATE Subscription
 *TotalIdentitiesApi* | [**V1EnvironmentsEnvironmentIDTotalIdentitiesGet**](docs/TotalIdentitiesApi.md#v1environmentsenvironmentidtotalidentitiesget) | **Get** /v1/environments/{environmentID}/totalIdentities | READ Total Identity Counts
-*TrustedEmailAddressesApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet**](docs/TrustedEmailAddressesApi.md#v1environmentsenvironmentidemaildomainsemaildomainidtrustedemailsget) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | READ All Trusted Email Addresses
-*TrustedEmailAddressesApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost**](docs/TrustedEmailAddressesApi.md#v1environmentsenvironmentidemaildomainsemaildomainidtrustedemailspost) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | CREATE Trusted Email Address
-*TrustedEmailAddressesApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete**](docs/TrustedEmailAddressesApi.md#v1environmentsenvironmentidemaildomainsemaildomainidtrustedemailstrustedemailiddelete) | **Delete** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | DELETE Trusted Email Address
-*TrustedEmailAddressesApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet**](docs/TrustedEmailAddressesApi.md#v1environmentsenvironmentidemaildomainsemaildomainidtrustedemailstrustedemailidget) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | READ One Trusted Email Address
-*TrustedEmailAddressesApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost**](docs/TrustedEmailAddressesApi.md#v1environmentsenvironmentidemaildomainsemaildomainidtrustedemailstrustedemailidpost) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | Resend Verification Code To Email
-*TrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDDelete**](docs/TrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainsemaildomainiddelete) | **Delete** /v1/environments/{environmentID}/emailDomains/{emailDomainID} | DELETE Trusted Email Domain
-*TrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDDkimGet**](docs/TrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainsemaildomainiddkimget) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/dkim | READ Trusted Email Domain DKIM Status
-*TrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDGet**](docs/TrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainsemaildomainidget) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID} | READ One Trusted Email Domain
-*TrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDOwnershipGet**](docs/TrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainsemaildomainidownershipget) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/ownership | READ Trusted Email Domain Ownership Status
-*TrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDSpfGet**](docs/TrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainsemaildomainidspfget) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/spf | READ Trusted Email Domain SPF Status
-*TrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsGet**](docs/TrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainsget) | **Get** /v1/environments/{environmentID}/emailDomains | READ All Trusted Email Domains
-*TrustedEmailDomainsApi* | [**V1EnvironmentsEnvironmentIDEmailDomainsPost**](docs/TrustedEmailDomainsApi.md#v1environmentsenvironmentidemaildomainspost) | **Post** /v1/environments/{environmentID}/emailDomains | CREATE Trusted Email Domain
+*TrustedEmailAddressesApi* | [**CreateTrustedEmailAddress**](docs/TrustedEmailAddressesApi.md#createtrustedemailaddress) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | CREATE Trusted Email Address
+*TrustedEmailAddressesApi* | [**DeleteTrustedEmailAddress**](docs/TrustedEmailAddressesApi.md#deletetrustedemailaddress) | **Delete** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | DELETE Trusted Email Address
+*TrustedEmailAddressesApi* | [**ReadAllTrustedEmailAddresses**](docs/TrustedEmailAddressesApi.md#readalltrustedemailaddresses) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | READ All Trusted Email Addresses
+*TrustedEmailAddressesApi* | [**ReadOneTrustedEmailAddress**](docs/TrustedEmailAddressesApi.md#readonetrustedemailaddress) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | READ One Trusted Email Address
+*TrustedEmailAddressesApi* | [**ResendVerificationCodeToEmail**](docs/TrustedEmailAddressesApi.md#resendverificationcodetoemail) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | Resend Verification Code To Email
+*TrustedEmailDomainsApi* | [**CreateTrustedEmailDomain**](docs/TrustedEmailDomainsApi.md#createtrustedemaildomain) | **Post** /v1/environments/{environmentID}/emailDomains | CREATE Trusted Email Domain
+*TrustedEmailDomainsApi* | [**DeleteTrustedEmailDomain**](docs/TrustedEmailDomainsApi.md#deletetrustedemaildomain) | **Delete** /v1/environments/{environmentID}/emailDomains/{emailDomainID} | DELETE Trusted Email Domain
+*TrustedEmailDomainsApi* | [**ReadAllTrustedEmailDomains**](docs/TrustedEmailDomainsApi.md#readalltrustedemaildomains) | **Get** /v1/environments/{environmentID}/emailDomains | READ All Trusted Email Domains
+*TrustedEmailDomainsApi* | [**ReadOneTrustedEmailDomain**](docs/TrustedEmailDomainsApi.md#readonetrustedemaildomain) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID} | READ One Trusted Email Domain
+*TrustedEmailDomainsApi* | [**ReadTrustedEmailDomainDKIMStatus**](docs/TrustedEmailDomainsApi.md#readtrustedemaildomaindkimstatus) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/dkim | READ Trusted Email Domain DKIM Status
+*TrustedEmailDomainsApi* | [**ReadTrustedEmailDomainOwnershipStatus**](docs/TrustedEmailDomainsApi.md#readtrustedemaildomainownershipstatus) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/ownership | READ Trusted Email Domain Ownership Status
+*TrustedEmailDomainsApi* | [**ReadTrustedEmailDomainSPFStatus**](docs/TrustedEmailDomainsApi.md#readtrustedemaildomainspfstatus) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/spf | READ Trusted Email Domain SPF Status
 *UserAccountsApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPost**](docs/UserAccountsApi.md#v1environmentsenvironmentidusersuseridpost) | **Post** /v1/environments/{environmentID}/users/{userID} | User Account Unlock
 *UserActivitiesApi* | [**V1EnvironmentsEnvironmentIDUserActivitiesGet**](docs/UserActivitiesApi.md#v1environmentsenvironmentiduseractivitiesget) | **Get** /v1/environments/{environmentID}/userActivities | READ User Activities
 *UserAgreementConsentsApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet**](docs/UserAgreementConsentsApi.md#v1environmentsenvironmentidusersuseridagreementconsentsagreementidget) | **Get** /v1/environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | READ One User Agreement Consent
@@ -434,6 +434,15 @@ Class | Method | HTTP request | Description
  - [CreateGatewayRequest](docs/CreateGatewayRequest.md)
  - [CustomDomain](docs/CustomDomain.md)
  - [CustomDomainCertificate](docs/CustomDomainCertificate.md)
+ - [EmailDomain](docs/EmailDomain.md)
+ - [EmailDomainDKIMStatus](docs/EmailDomainDKIMStatus.md)
+ - [EmailDomainDKIMStatusRegionsInner](docs/EmailDomainDKIMStatusRegionsInner.md)
+ - [EmailDomainDKIMStatusRegionsInnerTokensInner](docs/EmailDomainDKIMStatusRegionsInnerTokensInner.md)
+ - [EmailDomainOwnershipStatus](docs/EmailDomainOwnershipStatus.md)
+ - [EmailDomainOwnershipStatusRegionsInner](docs/EmailDomainOwnershipStatusRegionsInner.md)
+ - [EmailDomainSPFStatus](docs/EmailDomainSPFStatus.md)
+ - [EmailDomainTrustedEmail](docs/EmailDomainTrustedEmail.md)
+ - [EmailDomainTrustedEmailEmailDomain](docs/EmailDomainTrustedEmailEmailDomain.md)
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedApplicationsInner](docs/EntityArrayEmbeddedApplicationsInner.md)
@@ -459,6 +468,7 @@ Class | Method | HTTP request | Description
  - [EnumCustomDomainPostHeader](docs/EnumCustomDomainPostHeader.md)
  - [EnumCustomDomainStatus](docs/EnumCustomDomainStatus.md)
  - [EnumDurationUnitMinsHours](docs/EnumDurationUnitMinsHours.md)
+ - [EnumEmailDomainStatus](docs/EnumEmailDomainStatus.md)
  - [EnumEnabledStatus](docs/EnumEnabledStatus.md)
  - [EnumEnvironmentType](docs/EnumEnvironmentType.md)
  - [EnumGatewayLDAPSecurity](docs/EnumGatewayLDAPSecurity.md)
@@ -490,6 +500,7 @@ Class | Method | HTTP request | Description
  - [EnumSolutionType](docs/EnumSolutionType.md)
  - [EnumSubscriptionFilterIncludedTags](docs/EnumSubscriptionFilterIncludedTags.md)
  - [EnumSubscriptionFormat](docs/EnumSubscriptionFormat.md)
+ - [EnumTrustedEmailStatus](docs/EnumTrustedEmailStatus.md)
  - [EnumUpdateStatus](docs/EnumUpdateStatus.md)
  - [EnumUserLifecycleStatus](docs/EnumUserLifecycleStatus.md)
  - [EnumUserRequestInclude](docs/EnumUserRequestInclude.md)

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the auto-generated ID for this credential. This is the JWT&#39;s jti claim. This is a required property. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property. | [optional] [readonly] 
-**LastUsedAt** | Pointer to **string** | A date that specifies the date the credential was last used in UTC. This is a required property. | [optional] [readonly] 
+**LastUsedAt** | Pointer to **time.Time** | A date that specifies the date the credential was last used in UTC. This is a required property. | [optional] [readonly] 
 **Credential** | Pointer to **string** | A string that specifies the signed JWT for the gateway credential. This property is present only when the gateway credential is created. | [optional] [readonly] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetLastUsedAt
 
-`func (o *GatewayCredential) GetLastUsedAt() string`
+`func (o *GatewayCredential) GetLastUsedAt() time.Time`
 
 GetLastUsedAt returns the LastUsedAt field if non-nil, zero value otherwise.
 
 ### GetLastUsedAtOk
 
-`func (o *GatewayCredential) GetLastUsedAtOk() (*string, bool)`
+`func (o *GatewayCredential) GetLastUsedAtOk() (*time.Time, bool)`
 
 GetLastUsedAtOk returns a tuple with the LastUsedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastUsedAt
 
-`func (o *GatewayCredential) SetLastUsedAt(v string)`
+`func (o *GatewayCredential) SetLastUsedAt(v time.Time)`
 
 SetLastUsedAt sets LastUsedAt field to given value.
 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Certificates** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **CustomDomains** | Pointer to [**[]CustomDomain**](CustomDomain.md) |  | [optional] 
+**EmailDomains** | Pointer to [**[]EmailDomain**](EmailDomain.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
 **GatewayInstances** | Pointer to [**[]GatewayInstance**](GatewayInstance.md) |  | [optional] 
 **Gateways** | Pointer to [**[]EntityArrayEmbeddedGatewaysInner**](EntityArrayEmbeddedGatewaysInner.md) |  | [optional] 
@@ -29,6 +30,7 @@ Name | Type | Description | Notes
 **SignOnPolicies** | Pointer to [**[]SignOnPolicy**](SignOnPolicy.md) |  | [optional] 
 **SignOnPolicyAssignments** | Pointer to [**[]SignOnPolicyAssignment**](SignOnPolicyAssignment.md) |  | [optional] 
 **Subscriptions** | Pointer to [**[]Subscription**](Subscription.md) |  | [optional] 
+**TrustedEmails** | Pointer to [**[]EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
 **Schemas** | Pointer to [**[]Schema**](Schema.md) |  | [optional] 
@@ -227,6 +229,31 @@ SetCustomDomains sets CustomDomains field to given value.
 `func (o *EntityArrayEmbedded) HasCustomDomains() bool`
 
 HasCustomDomains returns a boolean if a field has been set.
+
+### GetEmailDomains
+
+`func (o *EntityArrayEmbedded) GetEmailDomains() []EmailDomain`
+
+GetEmailDomains returns the EmailDomains field if non-nil, zero value otherwise.
+
+### GetEmailDomainsOk
+
+`func (o *EntityArrayEmbedded) GetEmailDomainsOk() (*[]EmailDomain, bool)`
+
+GetEmailDomainsOk returns a tuple with the EmailDomains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmailDomains
+
+`func (o *EntityArrayEmbedded) SetEmailDomains(v []EmailDomain)`
+
+SetEmailDomains sets EmailDomains field to given value.
+
+### HasEmailDomains
+
+`func (o *EntityArrayEmbedded) HasEmailDomains() bool`
+
+HasEmailDomains returns a boolean if a field has been set.
 
 ### GetEnvironments
 
@@ -677,6 +704,31 @@ SetSubscriptions sets Subscriptions field to given value.
 `func (o *EntityArrayEmbedded) HasSubscriptions() bool`
 
 HasSubscriptions returns a boolean if a field has been set.
+
+### GetTrustedEmails
+
+`func (o *EntityArrayEmbedded) GetTrustedEmails() []EmailDomainTrustedEmail`
+
+GetTrustedEmails returns the TrustedEmails field if non-nil, zero value otherwise.
+
+### GetTrustedEmailsOk
+
+`func (o *EntityArrayEmbedded) GetTrustedEmailsOk() (*[]EmailDomainTrustedEmail, bool)`
+
+GetTrustedEmailsOk returns a tuple with the TrustedEmails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrustedEmails
+
+`func (o *EntityArrayEmbedded) SetTrustedEmails(v []EmailDomainTrustedEmail)`
+
+SetTrustedEmails sets TrustedEmails field to given value.
+
+### HasTrustedEmails
+
+`func (o *EntityArrayEmbedded) HasTrustedEmails() bool`
+
+HasTrustedEmails returns a boolean if a field has been set.
 
 ### GetRoleAssignments
 

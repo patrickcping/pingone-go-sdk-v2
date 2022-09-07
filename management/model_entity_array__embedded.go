@@ -23,6 +23,7 @@ type EntityArrayEmbedded struct {
 	Certificates []Certificate `json:"certificates,omitempty"`
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
 	CustomDomains []CustomDomain `json:"customDomains,omitempty"`
+	EmailDomains []EmailDomain `json:"emailDomains,omitempty"`
 	Environments []Environment `json:"environments,omitempty"`
 	GatewayInstances []GatewayInstance `json:"gatewayInstances,omitempty"`
 	Gateways []EntityArrayEmbeddedGatewaysInner `json:"gateways,omitempty"`
@@ -41,6 +42,7 @@ type EntityArrayEmbedded struct {
 	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
 	SignOnPolicyAssignments []SignOnPolicyAssignment `json:"signOnPolicyAssignments,omitempty"`
 	Subscriptions []Subscription `json:"subscriptions,omitempty"`
+	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
 	Roles []Role `json:"roles,omitempty"`
 	Schemas []Schema `json:"schemas,omitempty"`
@@ -286,6 +288,38 @@ func (o *EntityArrayEmbedded) HasCustomDomains() bool {
 // SetCustomDomains gets a reference to the given []CustomDomain and assigns it to the CustomDomains field.
 func (o *EntityArrayEmbedded) SetCustomDomains(v []CustomDomain) {
 	o.CustomDomains = v
+}
+
+// GetEmailDomains returns the EmailDomains field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetEmailDomains() []EmailDomain {
+	if o == nil || o.EmailDomains == nil {
+		var ret []EmailDomain
+		return ret
+	}
+	return o.EmailDomains
+}
+
+// GetEmailDomainsOk returns a tuple with the EmailDomains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetEmailDomainsOk() ([]EmailDomain, bool) {
+	if o == nil || o.EmailDomains == nil {
+		return nil, false
+	}
+	return o.EmailDomains, true
+}
+
+// HasEmailDomains returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasEmailDomains() bool {
+	if o != nil && o.EmailDomains != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEmailDomains gets a reference to the given []EmailDomain and assigns it to the EmailDomains field.
+func (o *EntityArrayEmbedded) SetEmailDomains(v []EmailDomain) {
+	o.EmailDomains = v
 }
 
 // GetEnvironments returns the Environments field value if set, zero value otherwise.
@@ -864,6 +898,38 @@ func (o *EntityArrayEmbedded) SetSubscriptions(v []Subscription) {
 	o.Subscriptions = v
 }
 
+// GetTrustedEmails returns the TrustedEmails field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetTrustedEmails() []EmailDomainTrustedEmail {
+	if o == nil || o.TrustedEmails == nil {
+		var ret []EmailDomainTrustedEmail
+		return ret
+	}
+	return o.TrustedEmails
+}
+
+// GetTrustedEmailsOk returns a tuple with the TrustedEmails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetTrustedEmailsOk() ([]EmailDomainTrustedEmail, bool) {
+	if o == nil || o.TrustedEmails == nil {
+		return nil, false
+	}
+	return o.TrustedEmails, true
+}
+
+// HasTrustedEmails returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasTrustedEmails() bool {
+	if o != nil && o.TrustedEmails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTrustedEmails gets a reference to the given []EmailDomainTrustedEmail and assigns it to the TrustedEmails field.
+func (o *EntityArrayEmbedded) SetTrustedEmails(v []EmailDomainTrustedEmail) {
+	o.TrustedEmails = v
+}
+
 // GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRoleAssignments() []RoleAssignment {
 	if o == nil || o.RoleAssignments == nil {
@@ -1015,6 +1081,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	if o.CustomDomains != nil {
 		toSerialize["customDomains"] = o.CustomDomains
 	}
+	if o.EmailDomains != nil {
+		toSerialize["emailDomains"] = o.EmailDomains
+	}
 	if o.Environments != nil {
 		toSerialize["environments"] = o.Environments
 	}
@@ -1068,6 +1137,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Subscriptions != nil {
 		toSerialize["subscriptions"] = o.Subscriptions
+	}
+	if o.TrustedEmails != nil {
+		toSerialize["trustedEmails"] = o.TrustedEmails
 	}
 	if o.RoleAssignments != nil {
 		toSerialize["roleAssignments"] = o.RoleAssignments

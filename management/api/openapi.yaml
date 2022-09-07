@@ -6467,6 +6467,819 @@ paths:
       summary: UPDATE Device Authentication Policy
       tags:
       - Device Authentication Policy
+  /v1/environments/{environmentID}/emailDomains:
+    get:
+      operationId: readAllTrustedEmailDomains
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Trusted Email Domains
+      tags:
+      - Trusted Email Domains
+    post:
+      operationId: createTrustedEmailDomain
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailDomain'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDomain'
+          description: Successful response
+      summary: CREATE Trusted Email Domain
+      tags:
+      - Trusted Email Domains
+  /v1/environments/{environmentID}/emailDomains/{emailDomainID}:
+    delete:
+      operationId: deleteTrustedEmailDomain
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Trusted Email Domain
+      tags:
+      - Trusted Email Domains
+    get:
+      operationId: readOneTrustedEmailDomain
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDomain'
+          description: Successful response
+      summary: READ One Trusted Email Domain
+      tags:
+      - Trusted Email Domains
+  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/ownership:
+    get:
+      operationId: readTrustedEmailDomainOwnershipStatus
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDomainOwnershipStatus'
+          description: Successful response
+      summary: READ Trusted Email Domain Ownership Status
+      tags:
+      - Trusted Email Domains
+  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/dkim:
+    get:
+      operationId: readTrustedEmailDomainDKIMStatus
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDomainDKIMStatus'
+          description: Successful response
+      summary: READ Trusted Email Domain DKIM Status
+      tags:
+      - Trusted Email Domains
+  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/spf:
+    get:
+      operationId: readTrustedEmailDomainSPFStatus
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDomainSPFStatus'
+          description: Successful response
+      summary: READ Trusted Email Domain SPF Status
+      tags:
+      - Trusted Email Domains
+  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}:
+    delete:
+      operationId: deleteTrustedEmailAddress
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: trustedEmailId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Trusted Email Address
+      tags:
+      - Trusted Email Addresses
+    get:
+      operationId: readOneTrustedEmailAddress
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: trustedEmailId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDomainTrustedEmail'
+          description: Successful response
+      summary: READ One Trusted Email Address
+      tags:
+      - Trusted Email Addresses
+    post:
+      operationId: resendVerificationCodeToEmail
+      parameters:
+      - example: application/vnd.pingidentity.trustedEmail.sendVerificationCode+json
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: trustedEmailId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDomainTrustedEmail'
+          description: Successful response
+      summary: Resend Verification Code To Email
+      tags:
+      - Trusted Email Addresses
+  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails:
+    get:
+      operationId: readAllTrustedEmailAddresses
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Trusted Email Addresses
+      tags:
+      - Trusted Email Addresses
+    post:
+      operationId: createTrustedEmailAddress
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: emailDomainID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailDomainTrustedEmail'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailDomainTrustedEmail'
+          description: Successful response
+      summary: CREATE Trusted Email Address
+      tags:
+      - Trusted Email Addresses
   /v1/environments/{environmentID}/type:
     put:
       operationId: updateEnvironmentType
@@ -13396,791 +14209,6 @@ paths:
       summary: UPDATE Phone Delivery Settings
       tags:
       - Phone Delivery Settings
-  /v1/environments/{environmentID}/emailDomains:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: READ All Trusted Email Domains
-      tags:
-      - Trusted Email Domains
-    post:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              example:
-                domainName: auth.shopco.com
-              type: object
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "201":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: CREATE Trusted Email Domain
-      tags:
-      - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}:
-    delete:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "204":
-          description: Successful response
-      summary: DELETE Trusted Email Domain
-      tags:
-      - Trusted Email Domains
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: READ One Trusted Email Domain
-      tags:
-      - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/ownership:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: READ Trusted Email Domain Ownership Status
-      tags:
-      - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/dkim:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: READ Trusted Email Domain DKIM Status
-      tags:
-      - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/spf:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: READ Trusted Email Domain SPF Status
-      tags:
-      - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}:
-    delete:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: trustedEmailId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "204":
-          description: Successful response
-      summary: DELETE Trusted Email Address
-      tags:
-      - Trusted Email Addresses
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: trustedEmailId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: READ One Trusted Email Address
-      tags:
-      - Trusted Email Addresses
-    post:
-      parameters:
-      - example: application/vnd.pingidentity.trustedEmail.sendVerificationCode+json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: trustedEmailId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Resend Verification Code To Email
-      tags:
-      - Trusted Email Addresses
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: READ All Trusted Email Addresses
-      tags:
-      - Trusted Email Addresses
-    post:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: emailDomainID
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              example:
-                emailAddress: noreply1@auth.shopco.com
-              type: object
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "201":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: CREATE Trusted Email Address
-      tags:
-      - Trusted Email Addresses
   /v1/environments/{environmentID}/passwordPolicies:
     get:
       operationId: readAllPasswordPolicies
@@ -21317,6 +21345,12 @@ components:
       - VERIFICATION_REQUIRED
       - SSL_CERTIFICATE_REQUIRED
       type: string
+    EnumEmailDomainStatus:
+      description: The status of the email domain ownership.
+      enum:
+      - ACTIVE
+      - VERIFICATION_REQUIRED
+      type: string
     EnumEnvironmentType:
       description: A string that specifies the type of environment to use.
       enum:
@@ -21640,6 +21674,12 @@ components:
       - ACTIVITY
       - SPLUNK
       - NEWRELIC
+      type: string
+    EnumTrustedEmailStatus:
+      description: A string that specifies the status of the trusted email address.
+      enum:
+      - ACTIVE
+      - VERIFICATION_REQUIRED
       type: string
     EnumEnabledStatus:
       description: "A string that specifies whether device integrity detection takes\
@@ -22261,6 +22301,139 @@ components:
       - certificate
       - privateKey
       type: object
+    EmailDomain:
+      example:
+        environment:
+          id: id
+        domainName: domainName
+        id: id
+      properties:
+        id:
+          description: A string that specifies the auto-generated ID of the email
+            domain.
+          readOnly: true
+          type: string
+        domainName:
+          description: "A string that specifies the resource name, which must be provided\
+            \ and must be unique within an environment (for example, auth.shopco.com).\
+            \ This is a required property. Wildcards are NOT supported."
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+      required:
+      - domainName
+      type: object
+    EmailDomainDKIMStatus:
+      example:
+        regions:
+        - name: name
+          tokens:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          status: null
+        - name: name
+          tokens:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          status: null
+        type: type
+      properties:
+        type:
+          description: "A string that specifies the type of DNS record, with the value\
+            \ \"CNAME\"."
+          readOnly: true
+          type: string
+        regions:
+          description: "The regions collection specifies the properties for the 4\
+            \ AWS SES regions that are used for sending email for the environment.\
+            \ The regions are determined by the geography where this environment was\
+            \ provisioned (North America, Canada, Europe & Asia-Pacific)."
+          items:
+            $ref: '#/components/schemas/EmailDomainDKIMStatus_regions_inner'
+          readOnly: true
+          type: array
+      type: object
+    EmailDomainOwnershipStatus:
+      example:
+        regions:
+        - name: name
+          value: value
+          key: key
+          status: null
+        - name: name
+          value: value
+          key: key
+          status: null
+        type: type
+      properties:
+        type:
+          description: "A string that specifies the type of DNS record, with the value\
+            \ \"TXT\"."
+          readOnly: true
+          type: string
+        regions:
+          description: "The regions collection specifies the properties for the 4\
+            \ AWS SES regions that are used for sending email for the environment.\
+            \ The regions are determined by the geography where this environment was\
+            \ provisioned (North America, Canada, Europe & Asia-Pacific)."
+          items:
+            $ref: '#/components/schemas/EmailDomainOwnershipStatus_regions_inner'
+          readOnly: true
+          type: array
+      type: object
+    EmailDomainSPFStatus:
+      example:
+        type: type
+        value: value
+        key: key
+        status: null
+      properties:
+        type:
+          description: "A string that specifies the type of DNS record, with the value\
+            \ \"TXT\"."
+          readOnly: true
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumEmailDomainStatus'
+        key:
+          description: Record name.
+          type: string
+        value:
+          description: Record value.
+          type: string
+      type: object
+    EmailDomainTrustedEmail:
+      example:
+        environment:
+          id: id
+        emailDomain:
+          id: id
+        emailAddress: emailAddress
+        id: id
+        status: null
+      properties:
+        id:
+          description: A string that specifies the auto generated ID of the trusted
+            email address.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        emailDomain:
+          $ref: '#/components/schemas/EmailDomainTrustedEmail_emailDomain'
+        emailAddress:
+          description: "A string that specifies the trusted email address, for example\
+            \ john.smith@shopco.com."
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumTrustedEmailStatus'
+      required:
+      - emailAddress
+      type: object
     EntityArray:
       example:
         size: 5.944895607614016
@@ -22323,11 +22496,11 @@ components:
           credentials:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             credential: credential
-            lastUsedAt: lastUsedAt
+            lastUsedAt: 2000-01-23T04:56:07.000+00:00
             id: id
           - createdAt: 2000-01-23T04:56:07.000+00:00
             credential: credential
-            lastUsedAt: lastUsedAt
+            lastUsedAt: 2000-01-23T04:56:07.000+00:00
             id: id
           environments:
           - name: New-Env
@@ -22563,6 +22736,21 @@ components:
             id: id
             gateway:
               id: id
+          trustedEmails:
+          - environment:
+              id: id
+            emailDomain:
+              id: id
+            emailAddress: emailAddress
+            id: id
+            status: null
+          - environment:
+              id: id
+            emailDomain:
+              id: id
+            emailAddress: emailAddress
+            id: id
+            status: null
           grants:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             application:
@@ -22636,6 +22824,15 @@ components:
             id: id
             enabled: true
             reconsentPeriodDays: 6
+          emailDomains:
+          - environment:
+              id: id
+            domainName: domainName
+            id: id
+          - environment:
+              id: id
+            domainName: domainName
+            id: id
           groups:
           - directMemberCounts:
               users: 2
@@ -23168,7 +23365,7 @@ components:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         credential: credential
-        lastUsedAt: lastUsedAt
+        lastUsedAt: 2000-01-23T04:56:07.000+00:00
         id: id
       properties:
         id:
@@ -23185,6 +23382,7 @@ components:
         lastUsedAt:
           description: A date that specifies the date the credential was last used
             in UTC. This is a required property.
+          format: date-time
           readOnly: true
           type: string
         credential:
@@ -25264,6 +25462,67 @@ components:
           type: string
       readOnly: true
       type: object
+    EmailDomainDKIMStatus_regions_inner_tokens_inner:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          description: Record name.
+          type: string
+        value:
+          description: Record value.
+          type: string
+      type: object
+    EmailDomainDKIMStatus_regions_inner:
+      example:
+        name: name
+        tokens:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        status: null
+      properties:
+        name:
+          description: The name of the region.
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumEmailDomainStatus'
+        tokens:
+          description: A collection of key and value pairs.
+          items:
+            $ref: '#/components/schemas/EmailDomainDKIMStatus_regions_inner_tokens_inner'
+          type: array
+      type: object
+    EmailDomainOwnershipStatus_regions_inner:
+      example:
+        name: name
+        value: value
+        key: key
+        status: null
+      properties:
+        name:
+          description: The name of the region.
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumEmailDomainStatus'
+        key:
+          description: Record name.
+          type: string
+        value:
+          description: Record value.
+          type: string
+      type: object
+    EmailDomainTrustedEmail_emailDomain:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the trusted email domain resource’s
+            unique identifier associated with the resource.
+          type: string
+      type: object
     EntityArray__embedded_attributes_inner:
       oneOf:
       - $ref: '#/components/schemas/ApplicationAttributeMapping'
@@ -25338,11 +25597,11 @@ components:
         credentials:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           credential: credential
-          lastUsedAt: lastUsedAt
+          lastUsedAt: 2000-01-23T04:56:07.000+00:00
           id: id
         - createdAt: 2000-01-23T04:56:07.000+00:00
           credential: credential
-          lastUsedAt: lastUsedAt
+          lastUsedAt: 2000-01-23T04:56:07.000+00:00
           id: id
         environments:
         - name: New-Env
@@ -25578,6 +25837,21 @@ components:
           id: id
           gateway:
             id: id
+        trustedEmails:
+        - environment:
+            id: id
+          emailDomain:
+            id: id
+          emailAddress: emailAddress
+          id: id
+          status: null
+        - environment:
+            id: id
+          emailDomain:
+            id: id
+          emailAddress: emailAddress
+          id: id
+          status: null
         grants:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           application:
@@ -25651,6 +25925,15 @@ components:
           id: id
           enabled: true
           reconsentPeriodDays: 6
+        emailDomains:
+        - environment:
+            id: id
+          domainName: domainName
+          id: id
+        - environment:
+            id: id
+          domainName: domainName
+          id: id
         groups:
         - directMemberCounts:
             users: 2
@@ -26108,6 +26391,10 @@ components:
           items:
             $ref: '#/components/schemas/CustomDomain'
           type: array
+        emailDomains:
+          items:
+            $ref: '#/components/schemas/EmailDomain'
+          type: array
         environments:
           items:
             $ref: '#/components/schemas/Environment'
@@ -26179,6 +26466,10 @@ components:
         subscriptions:
           items:
             $ref: '#/components/schemas/Subscription'
+          type: array
+        trustedEmails:
+          items:
+            $ref: '#/components/schemas/EmailDomainTrustedEmail'
           type: array
         roleAssignments:
           items:
