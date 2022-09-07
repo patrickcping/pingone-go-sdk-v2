@@ -23,187 +23,33 @@ import (
 // TrustedEmailAddressesApiService TrustedEmailAddressesApi service
 type TrustedEmailAddressesApiService service
 
-type ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest struct {
+type ApiCreateTrustedEmailAddressRequest struct {
 	ctx context.Context
 	ApiService *TrustedEmailAddressesApiService
 	environmentID string
 	emailDomainID string
+	emailDomainTrustedEmail *EmailDomainTrustedEmail
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet READ All Trusted Email Addresses
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param emailDomainID
- @return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest
-*/
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet(ctx context.Context, environmentID string, emailDomainID string) ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		emailDomainID: emailDomainID,
-	}
-}
-
-// Execute executes the request
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetExecute(r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterToString(r.emailDomainID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest struct {
-	ctx context.Context
-	ApiService *TrustedEmailAddressesApiService
-	environmentID string
-	emailDomainID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest {
-	r.body = &body
+func (r ApiCreateTrustedEmailAddressRequest) EmailDomainTrustedEmail(emailDomainTrustedEmail EmailDomainTrustedEmail) ApiCreateTrustedEmailAddressRequest {
+	r.emailDomainTrustedEmail = &emailDomainTrustedEmail
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostExecute(r)
+func (r ApiCreateTrustedEmailAddressRequest) Execute() (*EmailDomainTrustedEmail, *http.Response, error) {
+	return r.ApiService.CreateTrustedEmailAddressExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost CREATE Trusted Email Address
+CreateTrustedEmailAddress CREATE Trusted Email Address
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param emailDomainID
- @return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest
+ @return ApiCreateTrustedEmailAddressRequest
 */
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost(ctx context.Context, environmentID string, emailDomainID string) ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest{
+func (a *TrustedEmailAddressesApiService) CreateTrustedEmailAddress(ctx context.Context, environmentID string, emailDomainID string) ApiCreateTrustedEmailAddressRequest {
+	return ApiCreateTrustedEmailAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -212,16 +58,18 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 }
 
 // Execute executes the request
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostExecute(r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest) (*http.Response, error) {
+//  @return EmailDomainTrustedEmail
+func (a *TrustedEmailAddressesApiService) CreateTrustedEmailAddressExecute(r ApiCreateTrustedEmailAddressRequest) (*EmailDomainTrustedEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EmailDomainTrustedEmail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.CreateTrustedEmailAddress")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails"
@@ -250,22 +98,22 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.emailDomainTrustedEmail
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -278,78 +126,87 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteRequest struct {
+type ApiDeleteTrustedEmailAddressRequest struct {
 	ctx context.Context
 	ApiService *TrustedEmailAddressesApiService
 	environmentID string
@@ -357,21 +214,21 @@ type ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrusted
 	trustedEmailId string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteExecute(r)
+func (r ApiDeleteTrustedEmailAddressRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteTrustedEmailAddressExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete DELETE Trusted Email Address
+DeleteTrustedEmailAddress DELETE Trusted Email Address
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param emailDomainID
  @param trustedEmailId
- @return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteRequest
+ @return ApiDeleteTrustedEmailAddressRequest
 */
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete(ctx context.Context, environmentID string, emailDomainID string, trustedEmailId string) ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteRequest {
-	return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteRequest{
+func (a *TrustedEmailAddressesApiService) DeleteTrustedEmailAddress(ctx context.Context, environmentID string, emailDomainID string, trustedEmailId string) ApiDeleteTrustedEmailAddressRequest {
+	return ApiDeleteTrustedEmailAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -381,14 +238,14 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 }
 
 // Execute executes the request
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteExecute(r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteRequest) (*http.Response, error) {
+func (a *TrustedEmailAddressesApiService) DeleteTrustedEmailAddressExecute(r ApiDeleteTrustedEmailAddressRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.DeleteTrustedEmailAddress")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -507,7 +364,172 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetRequest struct {
+type ApiReadAllTrustedEmailAddressesRequest struct {
+	ctx context.Context
+	ApiService *TrustedEmailAddressesApiService
+	environmentID string
+	emailDomainID string
+}
+
+func (r ApiReadAllTrustedEmailAddressesRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllTrustedEmailAddressesExecute(r)
+}
+
+/*
+ReadAllTrustedEmailAddresses READ All Trusted Email Addresses
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param emailDomainID
+ @return ApiReadAllTrustedEmailAddressesRequest
+*/
+func (a *TrustedEmailAddressesApiService) ReadAllTrustedEmailAddresses(ctx context.Context, environmentID string, emailDomainID string) ApiReadAllTrustedEmailAddressesRequest {
+	return ApiReadAllTrustedEmailAddressesRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		emailDomainID: emailDomainID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *TrustedEmailAddressesApiService) ReadAllTrustedEmailAddressesExecute(r ApiReadAllTrustedEmailAddressesRequest) (*EntityArray, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.ReadAllTrustedEmailAddresses")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"emailDomainID"+"}", url.PathEscape(parameterToString(r.emailDomainID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneTrustedEmailAddressRequest struct {
 	ctx context.Context
 	ApiService *TrustedEmailAddressesApiService
 	environmentID string
@@ -515,21 +537,21 @@ type ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrusted
 	trustedEmailId string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetExecute(r)
+func (r ApiReadOneTrustedEmailAddressRequest) Execute() (*EmailDomainTrustedEmail, *http.Response, error) {
+	return r.ApiService.ReadOneTrustedEmailAddressExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet READ One Trusted Email Address
+ReadOneTrustedEmailAddress READ One Trusted Email Address
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param emailDomainID
  @param trustedEmailId
- @return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetRequest
+ @return ApiReadOneTrustedEmailAddressRequest
 */
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet(ctx context.Context, environmentID string, emailDomainID string, trustedEmailId string) ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetRequest{
+func (a *TrustedEmailAddressesApiService) ReadOneTrustedEmailAddress(ctx context.Context, environmentID string, emailDomainID string, trustedEmailId string) ApiReadOneTrustedEmailAddressRequest {
+	return ApiReadOneTrustedEmailAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -539,16 +561,18 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 }
 
 // Execute executes the request
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetExecute(r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetRequest) (*http.Response, error) {
+//  @return EmailDomainTrustedEmail
+func (a *TrustedEmailAddressesApiService) ReadOneTrustedEmailAddressExecute(r ApiReadOneTrustedEmailAddressRequest) (*EmailDomainTrustedEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EmailDomainTrustedEmail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.ReadOneTrustedEmailAddress")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}"
@@ -579,19 +603,19 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -604,68 +628,77 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest struct {
+type ApiResendVerificationCodeToEmailRequest struct {
 	ctx context.Context
 	ApiService *TrustedEmailAddressesApiService
 	environmentID string
@@ -674,26 +707,26 @@ type ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrusted
 	contentType *string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest {
+func (r ApiResendVerificationCodeToEmailRequest) ContentType(contentType string) ApiResendVerificationCodeToEmailRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostExecute(r)
+func (r ApiResendVerificationCodeToEmailRequest) Execute() (*EmailDomainTrustedEmail, *http.Response, error) {
+	return r.ApiService.ResendVerificationCodeToEmailExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost Resend Verification Code To Email
+ResendVerificationCodeToEmail Resend Verification Code To Email
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param emailDomainID
  @param trustedEmailId
- @return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest
+ @return ApiResendVerificationCodeToEmailRequest
 */
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost(ctx context.Context, environmentID string, emailDomainID string, trustedEmailId string) ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest{
+func (a *TrustedEmailAddressesApiService) ResendVerificationCodeToEmail(ctx context.Context, environmentID string, emailDomainID string, trustedEmailId string) ApiResendVerificationCodeToEmailRequest {
+	return ApiResendVerificationCodeToEmailRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -703,16 +736,18 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 }
 
 // Execute executes the request
-func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostExecute(r ApiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest) (*http.Response, error) {
+//  @return EmailDomainTrustedEmail
+func (a *TrustedEmailAddressesApiService) ResendVerificationCodeToEmailExecute(r ApiResendVerificationCodeToEmailRequest) (*EmailDomainTrustedEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EmailDomainTrustedEmail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TrustedEmailAddressesApiService.ResendVerificationCodeToEmail")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}"
@@ -746,19 +781,19 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -771,73 +806,82 @@ func (a *TrustedEmailAddressesApiService) V1EnvironmentsEnvironmentIDEmailDomain
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

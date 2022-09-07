@@ -4,86 +4,17 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet**](TrustedEmailAddressesApi.md#V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | READ All Trusted Email Addresses
-[**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost**](TrustedEmailAddressesApi.md#V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | CREATE Trusted Email Address
-[**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete**](TrustedEmailAddressesApi.md#V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete) | **Delete** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | DELETE Trusted Email Address
-[**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet**](TrustedEmailAddressesApi.md#V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | READ One Trusted Email Address
-[**V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost**](TrustedEmailAddressesApi.md#V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | Resend Verification Code To Email
+[**CreateTrustedEmailAddress**](TrustedEmailAddressesApi.md#CreateTrustedEmailAddress) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | CREATE Trusted Email Address
+[**DeleteTrustedEmailAddress**](TrustedEmailAddressesApi.md#DeleteTrustedEmailAddress) | **Delete** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | DELETE Trusted Email Address
+[**ReadAllTrustedEmailAddresses**](TrustedEmailAddressesApi.md#ReadAllTrustedEmailAddresses) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | READ All Trusted Email Addresses
+[**ReadOneTrustedEmailAddress**](TrustedEmailAddressesApi.md#ReadOneTrustedEmailAddress) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | READ One Trusted Email Address
+[**ResendVerificationCodeToEmail**](TrustedEmailAddressesApi.md#ResendVerificationCodeToEmail) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | Resend Verification Code To Email
 
 
 
-## V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet
+## CreateTrustedEmailAddress
 
-> V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet(ctx, environmentID, emailDomainID).Execute()
-
-READ All Trusted Email Addresses
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    emailDomainID := "emailDomainID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet(context.Background(), environmentID, emailDomainID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**emailDomainID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost
-
-> V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost(ctx, environmentID, emailDomainID).Body(body).Execute()
+> EmailDomainTrustedEmail CreateTrustedEmailAddress(ctx, environmentID, emailDomainID).EmailDomainTrustedEmail(emailDomainTrustedEmail).Execute()
 
 CREATE Trusted Email Address
 
@@ -102,15 +33,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     emailDomainID := "emailDomainID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    emailDomainTrustedEmail := *openapiclient.NewEmailDomainTrustedEmail("EmailAddress_example") // EmailDomainTrustedEmail |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost(context.Background(), environmentID, emailDomainID).Body(body).Execute()
+    resp, r, err := apiClient.TrustedEmailAddressesApi.CreateTrustedEmailAddress(context.Background(), environmentID, emailDomainID).EmailDomainTrustedEmail(emailDomainTrustedEmail).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.CreateTrustedEmailAddress``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateTrustedEmailAddress`: EmailDomainTrustedEmail
+    fmt.Fprintf(os.Stdout, "Response from `TrustedEmailAddressesApi.CreateTrustedEmailAddress`: %v\n", resp)
 }
 ```
 
@@ -125,18 +58,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateTrustedEmailAddressRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **emailDomainTrustedEmail** | [**EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md)
 
 ### Authorization
 
@@ -152,9 +85,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete
+## DeleteTrustedEmailAddress
 
-> V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete(ctx, environmentID, emailDomainID, trustedEmailId).Execute()
+> DeleteTrustedEmailAddress(ctx, environmentID, emailDomainID, trustedEmailId).Execute()
 
 DELETE Trusted Email Address
 
@@ -177,9 +110,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete(context.Background(), environmentID, emailDomainID, trustedEmailId).Execute()
+    resp, r, err := apiClient.TrustedEmailAddressesApi.DeleteTrustedEmailAddress(context.Background(), environmentID, emailDomainID, trustedEmailId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.DeleteTrustedEmailAddress``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -197,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteTrustedEmailAddressRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -224,9 +157,80 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet
+## ReadAllTrustedEmailAddresses
 
-> V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet(ctx, environmentID, emailDomainID, trustedEmailId).Execute()
+> EntityArray ReadAllTrustedEmailAddresses(ctx, environmentID, emailDomainID).Execute()
+
+READ All Trusted Email Addresses
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    emailDomainID := "emailDomainID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TrustedEmailAddressesApi.ReadAllTrustedEmailAddresses(context.Background(), environmentID, emailDomainID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.ReadAllTrustedEmailAddresses``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllTrustedEmailAddresses`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `TrustedEmailAddressesApi.ReadAllTrustedEmailAddresses`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**emailDomainID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllTrustedEmailAddressesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneTrustedEmailAddress
+
+> EmailDomainTrustedEmail ReadOneTrustedEmailAddress(ctx, environmentID, emailDomainID, trustedEmailId).Execute()
 
 READ One Trusted Email Address
 
@@ -249,11 +253,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet(context.Background(), environmentID, emailDomainID, trustedEmailId).Execute()
+    resp, r, err := apiClient.TrustedEmailAddressesApi.ReadOneTrustedEmailAddress(context.Background(), environmentID, emailDomainID, trustedEmailId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.ReadOneTrustedEmailAddress``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneTrustedEmailAddress`: EmailDomainTrustedEmail
+    fmt.Fprintf(os.Stdout, "Response from `TrustedEmailAddressesApi.ReadOneTrustedEmailAddress`: %v\n", resp)
 }
 ```
 
@@ -269,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneTrustedEmailAddressRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -280,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md)
 
 ### Authorization
 
@@ -296,9 +302,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost
+## ResendVerificationCodeToEmail
 
-> V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost(ctx, environmentID, emailDomainID, trustedEmailId).ContentType(contentType).Execute()
+> EmailDomainTrustedEmail ResendVerificationCodeToEmail(ctx, environmentID, emailDomainID, trustedEmailId).ContentType(contentType).Execute()
 
 Resend Verification Code To Email
 
@@ -322,11 +328,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost(context.Background(), environmentID, emailDomainID, trustedEmailId).ContentType(contentType).Execute()
+    resp, r, err := apiClient.TrustedEmailAddressesApi.ResendVerificationCodeToEmail(context.Background(), environmentID, emailDomainID, trustedEmailId).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.V1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TrustedEmailAddressesApi.ResendVerificationCodeToEmail``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ResendVerificationCodeToEmail`: EmailDomainTrustedEmail
+    fmt.Fprintf(os.Stdout, "Response from `TrustedEmailAddressesApi.ResendVerificationCodeToEmail`: %v\n", resp)
 }
 ```
 
@@ -342,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDEmailDomainsEmailDomainIDTrustedEmailsTrustedEmailIdPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiResendVerificationCodeToEmailRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -354,7 +362,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md)
 
 ### Authorization
 

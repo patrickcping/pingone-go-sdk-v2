@@ -134,6 +134,15 @@ docs/CustomDomain.md
 docs/CustomDomainCertificate.md
 docs/CustomDomainsApi.md
 docs/DeviceAuthenticationPolicyApi.md
+docs/EmailDomain.md
+docs/EmailDomainDKIMStatus.md
+docs/EmailDomainDKIMStatusRegionsInner.md
+docs/EmailDomainDKIMStatusRegionsInnerTokensInner.md
+docs/EmailDomainOwnershipStatus.md
+docs/EmailDomainOwnershipStatusRegionsInner.md
+docs/EmailDomainSPFStatus.md
+docs/EmailDomainTrustedEmail.md
+docs/EmailDomainTrustedEmailEmailDomain.md
 docs/EnableUsersApi.md
 docs/EntityArray.md
 docs/EntityArrayEmbedded.md
@@ -160,6 +169,7 @@ docs/EnumCreateCertificateAcceptHeader.md
 docs/EnumCustomDomainPostHeader.md
 docs/EnumCustomDomainStatus.md
 docs/EnumDurationUnitMinsHours.md
+docs/EnumEmailDomainStatus.md
 docs/EnumEnabledStatus.md
 docs/EnumEnvironmentType.md
 docs/EnumGatewayLDAPSecurity.md
@@ -191,6 +201,7 @@ docs/EnumSignOnPolicyType.md
 docs/EnumSolutionType.md
 docs/EnumSubscriptionFilterIncludedTags.md
 docs/EnumSubscriptionFormat.md
+docs/EnumTrustedEmailStatus.md
 docs/EnumUpdateStatus.md
 docs/EnumUserLifecycleStatus.md
 docs/EnumUserRequestInclude.md
@@ -437,6 +448,15 @@ model_create_application_request.go
 model_create_gateway_request.go
 model_custom_domain.go
 model_custom_domain_certificate.go
+model_email_domain.go
+model_email_domain_dkim_status.go
+model_email_domain_dkim_status_regions_inner.go
+model_email_domain_dkim_status_regions_inner_tokens_inner.go
+model_email_domain_ownership_status.go
+model_email_domain_ownership_status_regions_inner.go
+model_email_domain_spf_status.go
+model_email_domain_trusted_email.go
+model_email_domain_trusted_email_email_domain.go
 model_entity_array.go
 model_entity_array__embedded.go
 model_entity_array__embedded_applications_inner.go
@@ -462,6 +482,7 @@ model_enum_csr_response_import_header.go
 model_enum_custom_domain_post_header.go
 model_enum_custom_domain_status.go
 model_enum_duration_unit_mins_hours.go
+model_enum_email_domain_status.go
 model_enum_enabled_status.go
 model_enum_environment_type.go
 model_enum_gateway_ldap_security.go
@@ -493,6 +514,7 @@ model_enum_sign_on_policy_type.go
 model_enum_solution_type.go
 model_enum_subscription_filter_included_tags.go
 model_enum_subscription_format.go
+model_enum_trusted_email_status.go
 model_enum_update_status.go
 model_enum_user_lifecycle_status.go
 model_enum_user_request_include.go

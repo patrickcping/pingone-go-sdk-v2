@@ -1,0 +1,82 @@
+# EmailDomainDKIMStatus
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Type** | Pointer to **string** | A string that specifies the type of DNS record, with the value \&quot;CNAME\&quot;. | [optional] [readonly] 
+**Regions** | Pointer to [**[]EmailDomainDKIMStatusRegionsInner**](EmailDomainDKIMStatusRegionsInner.md) | The regions collection specifies the properties for the 4 AWS SES regions that are used for sending email for the environment. The regions are determined by the geography where this environment was provisioned (North America, Canada, Europe &amp; Asia-Pacific). | [optional] [readonly] 
+
+## Methods
+
+### NewEmailDomainDKIMStatus
+
+`func NewEmailDomainDKIMStatus() *EmailDomainDKIMStatus`
+
+NewEmailDomainDKIMStatus instantiates a new EmailDomainDKIMStatus object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewEmailDomainDKIMStatusWithDefaults
+
+`func NewEmailDomainDKIMStatusWithDefaults() *EmailDomainDKIMStatus`
+
+NewEmailDomainDKIMStatusWithDefaults instantiates a new EmailDomainDKIMStatus object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *EmailDomainDKIMStatus) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *EmailDomainDKIMStatus) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *EmailDomainDKIMStatus) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *EmailDomainDKIMStatus) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetRegions
+
+`func (o *EmailDomainDKIMStatus) GetRegions() []EmailDomainDKIMStatusRegionsInner`
+
+GetRegions returns the Regions field if non-nil, zero value otherwise.
+
+### GetRegionsOk
+
+`func (o *EmailDomainDKIMStatus) GetRegionsOk() (*[]EmailDomainDKIMStatusRegionsInner, bool)`
+
+GetRegionsOk returns a tuple with the Regions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegions
+
+`func (o *EmailDomainDKIMStatus) SetRegions(v []EmailDomainDKIMStatusRegionsInner)`
+
+SetRegions sets Regions field to given value.
+
+### HasRegions
+
+`func (o *EmailDomainDKIMStatus) HasRegions() bool`
+
+HasRegions returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

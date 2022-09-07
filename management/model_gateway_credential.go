@@ -22,7 +22,7 @@ type GatewayCredential struct {
 	// A date that specifies the date the credential was created in Coordinated Universal Time (UTC). This is a required property.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A date that specifies the date the credential was last used in UTC. This is a required property.
-	LastUsedAt *string `json:"lastUsedAt,omitempty"`
+	LastUsedAt *time.Time `json:"lastUsedAt,omitempty"`
 	// A string that specifies the signed JWT for the gateway credential. This property is present only when the gateway credential is created.
 	Credential *string `json:"credential,omitempty"`
 }
@@ -109,9 +109,9 @@ func (o *GatewayCredential) SetCreatedAt(v time.Time) {
 }
 
 // GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise.
-func (o *GatewayCredential) GetLastUsedAt() string {
+func (o *GatewayCredential) GetLastUsedAt() time.Time {
 	if o == nil || o.LastUsedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.LastUsedAt
@@ -119,7 +119,7 @@ func (o *GatewayCredential) GetLastUsedAt() string {
 
 // GetLastUsedAtOk returns a tuple with the LastUsedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCredential) GetLastUsedAtOk() (*string, bool) {
+func (o *GatewayCredential) GetLastUsedAtOk() (*time.Time, bool) {
 	if o == nil || o.LastUsedAt == nil {
 		return nil, false
 	}
@@ -135,8 +135,8 @@ func (o *GatewayCredential) HasLastUsedAt() bool {
 	return false
 }
 
-// SetLastUsedAt gets a reference to the given string and assigns it to the LastUsedAt field.
-func (o *GatewayCredential) SetLastUsedAt(v string) {
+// SetLastUsedAt gets a reference to the given time.Time and assigns it to the LastUsedAt field.
+func (o *GatewayCredential) SetLastUsedAt(v time.Time) {
 	o.LastUsedAt = &v
 }
 
