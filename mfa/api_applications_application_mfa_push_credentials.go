@@ -27,7 +27,7 @@ type ApiCreateMFAPushCredentialRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
 	environmentID string
-	appID string
+	applicationID string
 	createMFAPushCredentialRequest *CreateMFAPushCredentialRequest
 }
 
@@ -45,15 +45,15 @@ CreateMFAPushCredential CREATE MFA Push Credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param appID
+ @param applicationID
  @return ApiCreateMFAPushCredentialRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredential(ctx context.Context, environmentID string, appID string) ApiCreateMFAPushCredentialRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredential(ctx context.Context, environmentID string, applicationID string) ApiCreateMFAPushCredentialRequest {
 	return ApiCreateMFAPushCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		appID: appID,
+		applicationID: applicationID,
 	}
 }
 
@@ -72,9 +72,9 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCrede
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/pushCredentials"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterToString(r.applicationID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -210,8 +210,8 @@ type ApiDeleteMFAPushCredentialRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
 	environmentID string
-	appID string
-	pushCredID string
+	applicationID string
+	pushCredentialID string
 	authorization *string
 }
 
@@ -229,17 +229,17 @@ DeleteMFAPushCredential DELETE MFA Push Credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param appID
- @param pushCredID
+ @param applicationID
+ @param pushCredentialID
  @return ApiDeleteMFAPushCredentialRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredential(ctx context.Context, environmentID string, appID string, pushCredID string) ApiDeleteMFAPushCredentialRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredential(ctx context.Context, environmentID string, applicationID string, pushCredentialID string) ApiDeleteMFAPushCredentialRequest {
 	return ApiDeleteMFAPushCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		appID: appID,
-		pushCredID: pushCredID,
+		applicationID: applicationID,
+		pushCredentialID: pushCredentialID,
 	}
 }
 
@@ -256,10 +256,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCrede
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pushCredID"+"}", url.PathEscape(parameterToString(r.pushCredID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterToString(r.applicationID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pushCredentialID"+"}", url.PathEscape(parameterToString(r.pushCredentialID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -377,7 +377,7 @@ type ApiReadAllMFAPushCredentialsRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
 	environmentID string
-	appID string
+	applicationID string
 }
 
 func (r ApiReadAllMFAPushCredentialsRequest) Execute() (*EntityArray, *http.Response, error) {
@@ -389,15 +389,15 @@ ReadAllMFAPushCredentials READ All MFA Push Credentials
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param appID
+ @param applicationID
  @return ApiReadAllMFAPushCredentialsRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentials(ctx context.Context, environmentID string, appID string) ApiReadAllMFAPushCredentialsRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentials(ctx context.Context, environmentID string, applicationID string) ApiReadAllMFAPushCredentialsRequest {
 	return ApiReadAllMFAPushCredentialsRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		appID: appID,
+		applicationID: applicationID,
 	}
 }
 
@@ -416,9 +416,9 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/pushCredentials"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterToString(r.applicationID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -542,8 +542,8 @@ type ApiReadOneMFAPushCredentialRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
 	environmentID string
-	appID string
-	pushCredID string
+	applicationID string
+	pushCredentialID string
 }
 
 func (r ApiReadOneMFAPushCredentialRequest) Execute() (*CreateMFAPushCredential201Response, *http.Response, error) {
@@ -555,17 +555,17 @@ ReadOneMFAPushCredential READ One MFA Push Credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param appID
- @param pushCredID
+ @param applicationID
+ @param pushCredentialID
  @return ApiReadOneMFAPushCredentialRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredential(ctx context.Context, environmentID string, appID string, pushCredID string) ApiReadOneMFAPushCredentialRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredential(ctx context.Context, environmentID string, applicationID string, pushCredentialID string) ApiReadOneMFAPushCredentialRequest {
 	return ApiReadOneMFAPushCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		appID: appID,
-		pushCredID: pushCredID,
+		applicationID: applicationID,
+		pushCredentialID: pushCredentialID,
 	}
 }
 
@@ -584,10 +584,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCred
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pushCredID"+"}", url.PathEscape(parameterToString(r.pushCredID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterToString(r.applicationID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pushCredentialID"+"}", url.PathEscape(parameterToString(r.pushCredentialID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -711,8 +711,8 @@ type ApiUpdateMFAPushCredentialRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
 	environmentID string
-	appID string
-	pushCredID string
+	applicationID string
+	pushCredentialID string
 	updateMFAPushCredentialRequest *UpdateMFAPushCredentialRequest
 }
 
@@ -730,17 +730,17 @@ UpdateMFAPushCredential UPDATE MFA Push Credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param appID
- @param pushCredID
+ @param applicationID
+ @param pushCredentialID
  @return ApiUpdateMFAPushCredentialRequest
 */
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredential(ctx context.Context, environmentID string, appID string, pushCredID string) ApiUpdateMFAPushCredentialRequest {
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredential(ctx context.Context, environmentID string, applicationID string, pushCredentialID string) ApiUpdateMFAPushCredentialRequest {
 	return ApiUpdateMFAPushCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		appID: appID,
-		pushCredID: pushCredID,
+		applicationID: applicationID,
+		pushCredentialID: pushCredentialID,
 	}
 }
 
@@ -759,10 +759,10 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCrede
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"appID"+"}", url.PathEscape(parameterToString(r.appID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"pushCredID"+"}", url.PathEscape(parameterToString(r.pushCredID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"applicationID"+"}", url.PathEscape(parameterToString(r.applicationID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pushCredentialID"+"}", url.PathEscape(parameterToString(r.pushCredentialID, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

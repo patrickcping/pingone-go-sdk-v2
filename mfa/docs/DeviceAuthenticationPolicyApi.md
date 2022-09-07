@@ -5,10 +5,10 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateDeviceAuthenticationPolicies**](DeviceAuthenticationPolicyApi.md#CreateDeviceAuthenticationPolicies) | **Post** /v1/environments/{environmentID}/deviceAuthenticationPolicies | CREATE Device Authentication Policy
-[**DeleteDeviceAuthenticationPolicy**](DeviceAuthenticationPolicyApi.md#DeleteDeviceAuthenticationPolicy) | **Delete** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthPolicyID} | DELETE Device Authentication Policy
+[**DeleteDeviceAuthenticationPolicy**](DeviceAuthenticationPolicyApi.md#DeleteDeviceAuthenticationPolicy) | **Delete** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID} | DELETE Device Authentication Policy
 [**ReadDeviceAuthenticationPolicies**](DeviceAuthenticationPolicyApi.md#ReadDeviceAuthenticationPolicies) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicies | READ Device Authentication Policies
-[**ReadOneDeviceAuthenticationPolicy**](DeviceAuthenticationPolicyApi.md#ReadOneDeviceAuthenticationPolicy) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthPolicyID} | READ One Device Authentication Policy
-[**V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut**](DeviceAuthenticationPolicyApi.md#V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthPolicyID} | UPDATE Device Authentication Policy
+[**ReadOneDeviceAuthenticationPolicy**](DeviceAuthenticationPolicyApi.md#ReadOneDeviceAuthenticationPolicy) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID} | READ One Device Authentication Policy
+[**V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut**](DeviceAuthenticationPolicyApi.md#V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID} | UPDATE Device Authentication Policy
 
 
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDeviceAuthenticationPolicy
 
-> DeleteDeviceAuthenticationPolicy(ctx, environmentID, deviceAuthPolicyID).Execute()
+> DeleteDeviceAuthenticationPolicy(ctx, environmentID, deviceAuthenticationPolicyID).Execute()
 
 DELETE Device Authentication Policy
 
@@ -102,11 +102,11 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    deviceAuthPolicyID := "deviceAuthPolicyID_example" // string | 
+    deviceAuthenticationPolicyID := "deviceAuthenticationPolicyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.DeleteDeviceAuthenticationPolicy(context.Background(), environmentID, deviceAuthPolicyID).Execute()
+    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.DeleteDeviceAuthenticationPolicy(context.Background(), environmentID, deviceAuthenticationPolicyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeviceAuthenticationPolicyApi.DeleteDeviceAuthenticationPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**deviceAuthPolicyID** | **string** |  | 
+**deviceAuthenticationPolicyID** | **string** |  | 
 
 ### Other Parameters
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ReadOneDeviceAuthenticationPolicy
 
-> DeviceAuthenticationPolicy ReadOneDeviceAuthenticationPolicy(ctx, environmentID, deviceAuthPolicyID).Execute()
+> DeviceAuthenticationPolicy ReadOneDeviceAuthenticationPolicy(ctx, environmentID, deviceAuthenticationPolicyID).Execute()
 
 READ One Device Authentication Policy
 
@@ -239,11 +239,11 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    deviceAuthPolicyID := "deviceAuthPolicyID_example" // string | 
+    deviceAuthenticationPolicyID := "deviceAuthenticationPolicyID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.ReadOneDeviceAuthenticationPolicy(context.Background(), environmentID, deviceAuthPolicyID).Execute()
+    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.ReadOneDeviceAuthenticationPolicy(context.Background(), environmentID, deviceAuthenticationPolicyID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeviceAuthenticationPolicyApi.ReadOneDeviceAuthenticationPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**deviceAuthPolicyID** | **string** |  | 
+**deviceAuthenticationPolicyID** | **string** |  | 
 
 ### Other Parameters
 
@@ -290,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut
+## V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut
 
-> V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(ctx, environmentID, deviceAuthPolicyID).Body(body).Execute()
+> V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut(ctx, environmentID, deviceAuthenticationPolicyID).Body(body).Execute()
 
 UPDATE Device Authentication Policy
 
@@ -310,14 +310,14 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    deviceAuthPolicyID := "deviceAuthPolicyID_example" // string | 
+    deviceAuthenticationPolicyID := "deviceAuthenticationPolicyID_example" // string | 
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut(context.Background(), environmentID, deviceAuthPolicyID).Body(body).Execute()
+    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut(context.Background(), environmentID, deviceAuthenticationPolicyID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceAuthenticationPolicyApi.V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceAuthenticationPolicyApi.V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -330,11 +330,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**deviceAuthPolicyID** | **string** |  | 
+**deviceAuthenticationPolicyID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

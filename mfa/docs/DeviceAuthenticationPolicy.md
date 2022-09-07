@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Platform** | Pointer to [**DeviceAuthenticationPolicyPlatform**](DeviceAuthenticationPolicyPlatform.md) |  | [optional] 
 **Default** | Pointer to **bool** | The default policy for Flow Manager. | [optional] 
 **ForSignOnPolicy** | Pointer to **bool** |  | [optional] 
-**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
@@ -339,20 +339,20 @@ HasForSignOnPolicy returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *DeviceAuthenticationPolicy) GetUpdatedAt() string`
+`func (o *DeviceAuthenticationPolicy) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *DeviceAuthenticationPolicy) GetUpdatedAtOk() (*string, bool)`
+`func (o *DeviceAuthenticationPolicy) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *DeviceAuthenticationPolicy) SetUpdatedAt(v string)`
+`func (o *DeviceAuthenticationPolicy) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

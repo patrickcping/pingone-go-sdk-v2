@@ -12,6 +12,7 @@ package mfa
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // DeviceAuthenticationPolicy struct for DeviceAuthenticationPolicy
@@ -33,7 +34,7 @@ type DeviceAuthenticationPolicy struct {
 	// Deprecated
 	ForSignOnPolicy *bool `json:"forSignOnPolicy,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicy instantiates a new DeviceAuthenticationPolicy object
@@ -441,9 +442,9 @@ func (o *DeviceAuthenticationPolicy) SetForSignOnPolicy(v bool) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicy) GetUpdatedAt() string {
+func (o *DeviceAuthenticationPolicy) GetUpdatedAt() time.Time {
 	if o == nil || o.UpdatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -451,7 +452,7 @@ func (o *DeviceAuthenticationPolicy) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicy) GetUpdatedAtOk() (*string, bool) {
+func (o *DeviceAuthenticationPolicy) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -467,8 +468,8 @@ func (o *DeviceAuthenticationPolicy) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *DeviceAuthenticationPolicy) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *DeviceAuthenticationPolicy) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
