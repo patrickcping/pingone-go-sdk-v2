@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to **map[string]interface{}** |  | [optional] 
 **AccessControl** | Pointer to [**ApplicationAccessControl**](ApplicationAccessControl.md) |  | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
-**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
 **Enabled** | **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Protocol** | [**EnumApplicationProtocol**](EnumApplicationProtocol.md) |  | 
 **Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
-**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
@@ -129,20 +129,20 @@ HasAssignActorRoles returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *ApplicationOIDC) GetCreatedAt() string`
+`func (o *ApplicationOIDC) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *ApplicationOIDC) GetCreatedAtOk() (*string, bool)`
+`func (o *ApplicationOIDC) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *ApplicationOIDC) SetCreatedAt(v string)`
+`func (o *ApplicationOIDC) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -384,20 +384,20 @@ SetType sets Type field to given value.
 
 ### GetUpdatedAt
 
-`func (o *ApplicationOIDC) GetUpdatedAt() string`
+`func (o *ApplicationOIDC) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ApplicationOIDC) GetUpdatedAtOk() (*string, bool)`
+`func (o *ApplicationOIDC) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ApplicationOIDC) SetUpdatedAt(v string)`
+`func (o *ApplicationOIDC) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

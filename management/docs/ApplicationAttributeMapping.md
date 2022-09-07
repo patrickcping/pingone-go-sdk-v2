@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
-**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **MappingType** | Pointer to [**EnumAttributeMappingType**](EnumAttributeMappingType.md) |  | [optional] 
 **Name** | **string** | A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property. | 
 **Required** | **bool** | A boolean to specify whether a mapping value is required for this attribute. If true, a value must be set and a non-empty value must be available in the SAML assertion or ID token. | 
-**UpdatedAt** | Pointer to **string** | The time the resource was updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the resource was updated. | [optional] [readonly] 
 **Value** | **string** | A string that specifies the string constants or expression for mapping the attribute path against a specific source. The expression format is ${&lt;source&gt;.&lt;attribute_path&gt;}. The only supported source is user (for example, ${user.id}). This is a required property. | 
 
 ## Methods
@@ -58,20 +58,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *ApplicationAttributeMapping) GetCreatedAt() string`
+`func (o *ApplicationAttributeMapping) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *ApplicationAttributeMapping) GetCreatedAtOk() (*string, bool)`
+`func (o *ApplicationAttributeMapping) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *ApplicationAttributeMapping) SetCreatedAt(v string)`
+`func (o *ApplicationAttributeMapping) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -148,20 +148,20 @@ SetRequired sets Required field to given value.
 
 ### GetUpdatedAt
 
-`func (o *ApplicationAttributeMapping) GetUpdatedAt() string`
+`func (o *ApplicationAttributeMapping) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *ApplicationAttributeMapping) GetUpdatedAtOk() (*string, bool)`
+`func (o *ApplicationAttributeMapping) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *ApplicationAttributeMapping) SetUpdatedAt(v string)`
+`func (o *ApplicationAttributeMapping) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

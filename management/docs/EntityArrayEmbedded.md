@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **Scopes** | Pointer to [**[]ResourceScope**](ResourceScope.md) |  | [optional] 
 **SignOnPolicies** | Pointer to [**[]SignOnPolicy**](SignOnPolicy.md) |  | [optional] 
 **SignOnPolicyAssignments** | Pointer to [**[]SignOnPolicyAssignment**](SignOnPolicyAssignment.md) |  | [optional] 
+**Subscriptions** | Pointer to [**[]Subscription**](Subscription.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
 **Schemas** | Pointer to [**[]Schema**](Schema.md) |  | [optional] 
@@ -651,6 +652,31 @@ SetSignOnPolicyAssignments sets SignOnPolicyAssignments field to given value.
 `func (o *EntityArrayEmbedded) HasSignOnPolicyAssignments() bool`
 
 HasSignOnPolicyAssignments returns a boolean if a field has been set.
+
+### GetSubscriptions
+
+`func (o *EntityArrayEmbedded) GetSubscriptions() []Subscription`
+
+GetSubscriptions returns the Subscriptions field if non-nil, zero value otherwise.
+
+### GetSubscriptionsOk
+
+`func (o *EntityArrayEmbedded) GetSubscriptionsOk() (*[]Subscription, bool)`
+
+GetSubscriptionsOk returns a tuple with the Subscriptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubscriptions
+
+`func (o *EntityArrayEmbedded) SetSubscriptions(v []Subscription)`
+
+SetSubscriptions sets Subscriptions field to given value.
+
+### HasSubscriptions
+
+`func (o *EntityArrayEmbedded) HasSubscriptions() bool`
+
+HasSubscriptions returns a boolean if a field has been set.
 
 ### GetRoleAssignments
 

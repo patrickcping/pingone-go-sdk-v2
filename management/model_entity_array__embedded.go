@@ -40,6 +40,7 @@ type EntityArrayEmbedded struct {
 	Scopes []ResourceScope `json:"scopes,omitempty"`
 	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
 	SignOnPolicyAssignments []SignOnPolicyAssignment `json:"signOnPolicyAssignments,omitempty"`
+	Subscriptions []Subscription `json:"subscriptions,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
 	Roles []Role `json:"roles,omitempty"`
 	Schemas []Schema `json:"schemas,omitempty"`
@@ -831,6 +832,38 @@ func (o *EntityArrayEmbedded) SetSignOnPolicyAssignments(v []SignOnPolicyAssignm
 	o.SignOnPolicyAssignments = v
 }
 
+// GetSubscriptions returns the Subscriptions field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetSubscriptions() []Subscription {
+	if o == nil || o.Subscriptions == nil {
+		var ret []Subscription
+		return ret
+	}
+	return o.Subscriptions
+}
+
+// GetSubscriptionsOk returns a tuple with the Subscriptions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetSubscriptionsOk() ([]Subscription, bool) {
+	if o == nil || o.Subscriptions == nil {
+		return nil, false
+	}
+	return o.Subscriptions, true
+}
+
+// HasSubscriptions returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasSubscriptions() bool {
+	if o != nil && o.Subscriptions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubscriptions gets a reference to the given []Subscription and assigns it to the Subscriptions field.
+func (o *EntityArrayEmbedded) SetSubscriptions(v []Subscription) {
+	o.Subscriptions = v
+}
+
 // GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRoleAssignments() []RoleAssignment {
 	if o == nil || o.RoleAssignments == nil {
@@ -1032,6 +1065,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.SignOnPolicyAssignments != nil {
 		toSerialize["signOnPolicyAssignments"] = o.SignOnPolicyAssignments
+	}
+	if o.Subscriptions != nil {
+		toSerialize["subscriptions"] = o.Subscriptions
 	}
 	if o.RoleAssignments != nil {
 		toSerialize["roleAssignments"] = o.RoleAssignments

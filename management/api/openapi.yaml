@@ -17112,6 +17112,7 @@ paths:
       - Sign-On Policy Actions
   /v1/environments/{environmentID}/subscriptions:
     get:
+      operationId: readAllSubscriptions
       parameters:
       - explode: false
         in: path
@@ -17160,12 +17161,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Subscriptions
       tags:
       - Subscriptions (webhooks)
     post:
+      operationId: createSubscription
       parameters:
       - explode: false
         in: path
@@ -17178,24 +17182,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: SubscriptionName1
-                filterOptions:
-                  includedActionTypes:
-                  - USER.CREATED
-                  - USER.UPDATED
-                  includedPopulations:
-                  - id: "{{populationID}}"
-                  includedApplications:
-                  - id: "{{applicationID}}"
-                httpEndpoint:
-                  url: https://subscriptionendpoint.com
-                  headers:
-                    some-header: some-value
-                format: ACTIVITY
-                verifyTlsCertificates: false
-                enabled: true
-              type: object
+              $ref: '#/components/schemas/Subscription'
       responses:
         "400":
           content:
@@ -17243,13 +17230,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
           description: Successful response
-      summary: CREATE Subscriptions
+      summary: CREATE Subscription
       tags:
       - Subscriptions (webhooks)
   /v1/environments/{environmentID}/subscriptions/{subscriptionID}:
     delete:
+      operationId: deleteSubscription
       parameters:
       - explode: false
         in: path
@@ -17309,6 +17299,7 @@ paths:
       tags:
       - Subscriptions (webhooks)
     get:
+      operationId: readOneSubscription
       parameters:
       - explode: false
         in: path
@@ -17364,12 +17355,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
           description: Successful response
       summary: READ One Subscription
       tags:
       - Subscriptions (webhooks)
     put:
+      operationId: updateSubscription
       parameters:
       - explode: false
         in: path
@@ -17389,24 +17383,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: UpdatedSubscription
-                filterOptions:
-                  includedActionTypes:
-                  - USER.CREATED
-                  - USER.MODIFIED
-                  includedPopulations:
-                  - id: "{populationID}"
-                  includedApplications:
-                  - id: "{applicationID}"
-                httpEndpoint:
-                  url: https://subscriptionendpoint.com
-                  headers:
-                    some-header: some-value
-                format: ACTIVITY
-                enabled: true
-                verifyTlsCertificates: true
-              type: object
+              $ref: '#/components/schemas/Subscription'
       responses:
         "400":
           content:
@@ -17447,7 +17424,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
           description: Successful response
       summary: UPDATE Subscription
       tags:
@@ -21647,6 +21626,21 @@ components:
       - WORKFORCE
       - CUSTOMER
       type: string
+    EnumSubscriptionFilterIncludedTags:
+      description: "A tags that events must have to be monitored by a subscription.\
+        \ Currently, the available tags are `adminIdentityEvent`. Identifies the event\
+        \ as the action of an administrator on other administrators."
+      enum:
+      - adminIdentityEvent
+      type: string
+    EnumSubscriptionFormat:
+      description: "A string that specifies one of the supported subscription formats.\
+        \ Options are ACTIVITY, SPLUNK, and NEWRELIC. This is a required property."
+      enum:
+      - ACTIVITY
+      - SPLUNK
+      - NEWRELIC
+      type: string
     EnumEnabledStatus:
       description: "A string that specifies whether device integrity detection takes\
         \ place on mobile devices, for the application's enrollment and authentication\
@@ -21882,6 +21876,7 @@ components:
           type: boolean
         createdAt:
           description: The time the resource was created.
+          format: date-time
           readOnly: true
           type: string
         description:
@@ -21925,6 +21920,7 @@ components:
           $ref: '#/components/schemas/EnumApplicationType'
         updatedAt:
           description: The time the resource was last updated.
+          format: date-time
           readOnly: true
           type: string
         supportUnsignedRequestObject:
@@ -21948,13 +21944,13 @@ components:
       - $ref: '#/components/schemas/ApplicationOIDC_allOf'
     ApplicationAttributeMapping:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         mappingType: null
         name: name
         id: id
         value: value
         required: true
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           description: A string that specifies the application ID.
@@ -21962,6 +21958,7 @@ components:
           type: string
         createdAt:
           description: The time the resource was created.
+          format: date-time
           readOnly: true
           type: string
         mappingType:
@@ -21982,6 +21979,7 @@ components:
           type: boolean
         updatedAt:
           description: The time the resource was updated.
+          format: date-time
           readOnly: true
           type: string
         value:
@@ -21997,7 +21995,7 @@ components:
       type: object
     ApplicationResourceGrant:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         application:
           id: id
         resource:
@@ -22006,12 +22004,13 @@ components:
         scopes:
         - id: id
         - id: id
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         application:
           $ref: '#/components/schemas/ApplicationResourceGrant_application'
         createdAt:
           description: The time the resource was created.
+          format: date-time
           readOnly: true
           type: string
         id:
@@ -22026,6 +22025,7 @@ components:
           type: array
         updatedAt:
           description: The time the resource was last updated.
+          format: date-time
           readOnly: true
           type: string
       required:
@@ -22103,7 +22103,7 @@ components:
         expiresAt: 2000-01-23T04:56:07.000+00:00
         signatureAlgorithm: null
         validityPeriod: 1
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         default: true
         environment:
           id: id
@@ -22122,6 +22122,7 @@ components:
           $ref: '#/components/schemas/EnumCertificateKeyAlgorithm'
         createdAt:
           description: The time the resource was created.
+          format: date-time
           readOnly: true
           type: string
         default:
@@ -22264,12 +22265,67 @@ components:
       example:
         size: 5.944895607614016
         _embedded:
+          subscriptions:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            format: null
+            httpEndpoint:
+              headers:
+              - key: ""
+              - key: ""
+              url: url
+            name: name
+            id: id
+            enabled: true
+            filterOptions:
+              includedActionTypes:
+              - includedActionTypes
+              - includedActionTypes
+              includedTags:
+              - null
+              - null
+              includedPopulations:
+              - id: id
+              - id: id
+              includedApplications:
+              - id: id
+              - id: id
+            verifyTlsCertificates: true
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            format: null
+            httpEndpoint:
+              headers:
+              - key: ""
+              - key: ""
+              url: url
+            name: name
+            id: id
+            enabled: true
+            filterOptions:
+              includedActionTypes:
+              - includedActionTypes
+              - includedActionTypes
+              includedTags:
+              - null
+              - null
+              includedPopulations:
+              - id: id
+              - id: id
+              includedApplications:
+              - id: id
+              - id: id
+            verifyTlsCertificates: true
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           credentials:
-          - createdAt: createdAt
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             credential: credential
             lastUsedAt: lastUsedAt
             id: id
-          - createdAt: createdAt
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             credential: credential
             lastUsedAt: lastUsedAt
             id: id
@@ -22304,7 +22360,7 @@ components:
             expiresAt: 2000-01-23T04:56:07.000+00:00
             signatureAlgorithm: null
             validityPeriod: 1
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             default: true
             environment:
               id: id
@@ -22323,7 +22379,7 @@ components:
             expiresAt: 2000-01-23T04:56:07.000+00:00
             signatureAlgorithm: null
             validityPeriod: 1
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             default: true
             environment:
               id: id
@@ -22508,7 +22564,7 @@ components:
             gateway:
               id: id
           grants:
-          - createdAt: createdAt
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             application:
               id: id
             resource:
@@ -22517,8 +22573,8 @@ components:
             scopes:
             - id: id
             - id: id
-            updatedAt: updatedAt
-          - createdAt: createdAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             application:
               id: id
             resource:
@@ -22527,7 +22583,7 @@ components:
             scopes:
             - id: id
             - id: id
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           gateways:
           - null
           - null
@@ -22610,7 +22666,7 @@ components:
             population:
               id: id
           resources:
-          - createdAt: createdAt
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             audience: audience
             environment:
               id: id
@@ -22621,8 +22677,8 @@ components:
             description: description
             id: id
             type: null
-            updatedAt: updatedAt
-          - createdAt: createdAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             audience: audience
             environment:
               id: id
@@ -22633,7 +22689,7 @@ components:
             description: description
             id: id
             type: null
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           users:
           - preferredLanguage: preferredLanguage
             timezone: timezone
@@ -22790,7 +22846,7 @@ components:
             expiresAt: 2000-01-23T04:56:07.000+00:00
             signatureAlgorithm: null
             validityPeriod: 1
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             default: true
             environment:
               id: id
@@ -22809,7 +22865,7 @@ components:
             expiresAt: 2000-01-23T04:56:07.000+00:00
             signatureAlgorithm: null
             validityPeriod: 1
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             default: true
             environment:
               id: id
@@ -22922,7 +22978,7 @@ components:
           - null
           - null
           scopes:
-          - createdAt: createdAt
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
             name: name
@@ -22931,8 +22987,8 @@ components:
             schemaAttributes:
             - schemaAttributes
             - schemaAttributes
-            updatedAt: updatedAt
-          - createdAt: createdAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
             name: name
@@ -22941,7 +22997,7 @@ components:
             schemaAttributes:
             - schemaAttributes
             - schemaAttributes
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           actions:
           - null
           - null
@@ -23110,7 +23166,7 @@ components:
       - $ref: '#/components/schemas/GatewayLDAP_allOf'
     GatewayCredential:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         credential: credential
         lastUsedAt: lastUsedAt
         id: id
@@ -23123,6 +23179,7 @@ components:
         createdAt:
           description: A date that specifies the date the credential was created in
             Coordinated Universal Time (UTC). This is a required property.
+          format: date-time
           readOnly: true
           type: string
         lastUsedAt:
@@ -23749,7 +23806,7 @@ components:
       type: object
     Resource:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         audience: audience
         environment:
           id: id
@@ -23760,7 +23817,7 @@ components:
         description: description
         id: id
         type: null
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         accessTokenValiditySeconds:
           description: "An integer that specifies the number of seconds that the access\
@@ -23775,6 +23832,7 @@ components:
           type: string
         createdAt:
           description: The time the resource was created.
+          format: date-time
           readOnly: true
           type: string
         description:
@@ -23796,6 +23854,7 @@ components:
           $ref: '#/components/schemas/EnumResourceType'
         updatedAt:
           description: The time the resource was last updated.
+          format: date-time
           readOnly: true
           type: string
       required:
@@ -23840,7 +23899,7 @@ components:
       type: object
     ResourceScope:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
         name: name
@@ -23849,7 +23908,7 @@ components:
         schemaAttributes:
         - schemaAttributes
         - schemaAttributes
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           description: A string that specifies the resource’s unique identifier.
@@ -23878,10 +23937,12 @@ components:
           type: array
         createdAt:
           description: The time the resource was created.
+          format: date-time
           readOnly: true
           type: string
         updatedAt:
           description: The time the resource was last updated.
+          format: date-time
           readOnly: true
           type: string
       required:
@@ -24336,6 +24397,88 @@ components:
       required:
       - priority
       - signOnPolicy
+      type: object
+    Subscription:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
+        format: null
+        httpEndpoint:
+          headers:
+          - key: ""
+          - key: ""
+          url: url
+        name: name
+        id: id
+        enabled: true
+        filterOptions:
+          includedActionTypes:
+          - includedActionTypes
+          - includedActionTypes
+          includedTags:
+          - null
+          - null
+          includedPopulations:
+          - id: id
+          - id: id
+          includedApplications:
+          - id: id
+          - id: id
+        verifyTlsCertificates: true
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        createdAt:
+          description: The time the key resource expires.The date and time at which
+            the subscription resource was created (ISO 8601 format).
+          format: date-time
+          readOnly: true
+          type: string
+        enabled:
+          description: "A boolean that specifies whether a created or updated subscription\
+            \ should be active or suspended. A suspended state (`\"enabled\":false`)\
+            \ accumulates all matched events, but these events are not delivered until\
+            \ the subscription becomes active again (`\"enabled\":true`). For suspended\
+            \ subscriptions, events accumulate for a maximum of two weeks. Events\
+            \ older than two weeks are deleted. Restarted subscriptions receive the\
+            \ saved events (up to two weeks from the restart date). This is a required\
+            \ property."
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        filterOptions:
+          $ref: '#/components/schemas/Subscription_filterOptions'
+        format:
+          $ref: '#/components/schemas/EnumSubscriptionFormat'
+        id:
+          description: A string that specifies the user resource’s unique identifier.
+          readOnly: true
+          type: string
+        httpEndpoint:
+          $ref: '#/components/schemas/Subscription_httpEndpoint'
+        name:
+          description: A string that specifies the subscription name. This is a required
+            property.
+          type: string
+        updatedAt:
+          description: The date and time at which the subscription resource was last
+            updated (ISO 8601 format).
+          format: date-time
+          readOnly: true
+          type: string
+        verifyTlsCertificates:
+          description: "A boolean that specifies whether a certificates should be\
+            \ verified. If this property's value is set to false, then all certificates\
+            \ are trusted. (Setting this property's value to false introduces a security\
+            \ risk.) This is a required property."
+          type: boolean
+      required:
+      - enabled
+      - filterOptions
+      - format
+      - httpEndpoint
+      - name
+      - verifyTlsCertificates
       type: object
     User:
       example:
@@ -25137,12 +25280,67 @@ components:
       - $ref: '#/components/schemas/GatewayLDAP'
     EntityArray__embedded:
       example:
+        subscriptions:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          format: null
+          httpEndpoint:
+            headers:
+            - key: ""
+            - key: ""
+            url: url
+          name: name
+          id: id
+          enabled: true
+          filterOptions:
+            includedActionTypes:
+            - includedActionTypes
+            - includedActionTypes
+            includedTags:
+            - null
+            - null
+            includedPopulations:
+            - id: id
+            - id: id
+            includedApplications:
+            - id: id
+            - id: id
+          verifyTlsCertificates: true
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          format: null
+          httpEndpoint:
+            headers:
+            - key: ""
+            - key: ""
+            url: url
+          name: name
+          id: id
+          enabled: true
+          filterOptions:
+            includedActionTypes:
+            - includedActionTypes
+            - includedActionTypes
+            includedTags:
+            - null
+            - null
+            includedPopulations:
+            - id: id
+            - id: id
+            includedApplications:
+            - id: id
+            - id: id
+          verifyTlsCertificates: true
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         credentials:
-        - createdAt: createdAt
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           credential: credential
           lastUsedAt: lastUsedAt
           id: id
-        - createdAt: createdAt
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           credential: credential
           lastUsedAt: lastUsedAt
           id: id
@@ -25177,7 +25375,7 @@ components:
           expiresAt: 2000-01-23T04:56:07.000+00:00
           signatureAlgorithm: null
           validityPeriod: 1
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           default: true
           environment:
             id: id
@@ -25196,7 +25394,7 @@ components:
           expiresAt: 2000-01-23T04:56:07.000+00:00
           signatureAlgorithm: null
           validityPeriod: 1
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           default: true
           environment:
             id: id
@@ -25381,7 +25579,7 @@ components:
           gateway:
             id: id
         grants:
-        - createdAt: createdAt
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           application:
             id: id
           resource:
@@ -25390,8 +25588,8 @@ components:
           scopes:
           - id: id
           - id: id
-          updatedAt: updatedAt
-        - createdAt: createdAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           application:
             id: id
           resource:
@@ -25400,7 +25598,7 @@ components:
           scopes:
           - id: id
           - id: id
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         gateways:
         - null
         - null
@@ -25483,7 +25681,7 @@ components:
           population:
             id: id
         resources:
-        - createdAt: createdAt
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           audience: audience
           environment:
             id: id
@@ -25494,8 +25692,8 @@ components:
           description: description
           id: id
           type: null
-          updatedAt: updatedAt
-        - createdAt: createdAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           audience: audience
           environment:
             id: id
@@ -25506,7 +25704,7 @@ components:
           description: description
           id: id
           type: null
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         users:
         - preferredLanguage: preferredLanguage
           timezone: timezone
@@ -25663,7 +25861,7 @@ components:
           expiresAt: 2000-01-23T04:56:07.000+00:00
           signatureAlgorithm: null
           validityPeriod: 1
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           default: true
           environment:
             id: id
@@ -25682,7 +25880,7 @@ components:
           expiresAt: 2000-01-23T04:56:07.000+00:00
           signatureAlgorithm: null
           validityPeriod: 1
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           default: true
           environment:
             id: id
@@ -25795,7 +25993,7 @@ components:
         - null
         - null
         scopes:
-        - createdAt: createdAt
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
           name: name
@@ -25804,8 +26002,8 @@ components:
           schemaAttributes:
           - schemaAttributes
           - schemaAttributes
-          updatedAt: updatedAt
-        - createdAt: createdAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
           name: name
@@ -25814,7 +26012,7 @@ components:
           schemaAttributes:
           - schemaAttributes
           - schemaAttributes
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         actions:
         - null
         - null
@@ -25977,6 +26175,10 @@ components:
         signOnPolicyAssignments:
           items:
             $ref: '#/components/schemas/SignOnPolicyAssignment'
+          type: array
+        subscriptions:
+          items:
+            $ref: '#/components/schemas/Subscription'
           type: array
         roleAssignments:
           items:
@@ -27154,6 +27356,89 @@ components:
       - preventMultiplePromptsPerFlow
       - promptIntervalSeconds
       - promptText
+      type: object
+    Subscription_filterOptions_includedApplications_inner:
+      example:
+        id: id
+      maxItems: 10
+      properties:
+        id:
+          type: string
+      required:
+      - id
+      type: object
+    Subscription_filterOptions:
+      example:
+        includedActionTypes:
+        - includedActionTypes
+        - includedActionTypes
+        includedTags:
+        - null
+        - null
+        includedPopulations:
+        - id: id
+        - id: id
+        includedApplications:
+        - id: id
+        - id: id
+      properties:
+        includedActionTypes:
+          description: A non-empty array that specifies the list of action types that
+            should be matched for the subscription. This is a required property.
+          items:
+            type: string
+          type: array
+        includedApplications:
+          description: "An array that specifies the list of applications (by ID) whose\
+            \ events are monitored by the subscription (maximum of 10 IDs in the array).\
+            \ This is an optional property. If a list of applications is not provided,\
+            \ events are monitored for all applications in the environment."
+          items:
+            $ref: '#/components/schemas/Subscription_filterOptions_includedApplications_inner'
+          type: array
+        includedPopulations:
+          description: "An array that specifies the list of populations (by ID) whose\
+            \ events are monitored by the subscription (maximum of 10 IDs in the array).\
+            \ This property matches events for users in the specified populations,\
+            \ as opposed to events generated in which the user in one of the populations\
+            \ is the actor. This is an optional property."
+          items:
+            $ref: '#/components/schemas/Subscription_filterOptions_includedApplications_inner'
+          type: array
+        includedTags:
+          description: "An array of tags that events must have to be monitored by\
+            \ the subscription. If tags are not specified, all events are monitored.\
+            \ Currently, the available tags are `adminIdentityEvent`. Identifies the\
+            \ event as the action of an administrator on other administrators."
+          items:
+            $ref: '#/components/schemas/EnumSubscriptionFilterIncludedTags'
+          type: array
+      required:
+      - includedActionTypes
+      type: object
+    Subscription_httpEndpoint:
+      example:
+        headers:
+        - key: ""
+        - key: ""
+        url: url
+      properties:
+        url:
+          description: A string that specifies a valid HTTPS URL to which event messages
+            are sent. This is a required property.
+          type: string
+        headers:
+          description: "An array that specifies the headers applied to the outbound\
+            \ request (for example, `Authorization` `Basic usernamepassword`. The\
+            \ purpose of these headers is for the HTTPS endpoint to authenticate the\
+            \ PingOne service, ensuring that the information from PingOne is from\
+            \ a trusted source."
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+      required:
+      - url
       type: object
     User_account:
       example:

@@ -12,19 +12,20 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // ApplicationResourceGrant struct for ApplicationResourceGrant
 type ApplicationResourceGrant struct {
 	Application *ApplicationResourceGrantApplication `json:"application,omitempty"`
 	// The time the resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the application resource grant ID.
 	Id *string `json:"id,omitempty"`
 	Resource ApplicationResourceGrantResource `json:"resource"`
 	Scopes []ApplicationResourceGrantScopesInner `json:"scopes"`
 	// The time the resource was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewApplicationResourceGrant instantiates a new ApplicationResourceGrant object
@@ -79,9 +80,9 @@ func (o *ApplicationResourceGrant) SetApplication(v ApplicationResourceGrantAppl
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ApplicationResourceGrant) GetCreatedAt() string {
+func (o *ApplicationResourceGrant) GetCreatedAt() time.Time {
 	if o == nil || o.CreatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -89,7 +90,7 @@ func (o *ApplicationResourceGrant) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResourceGrant) GetCreatedAtOk() (*string, bool) {
+func (o *ApplicationResourceGrant) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -105,8 +106,8 @@ func (o *ApplicationResourceGrant) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *ApplicationResourceGrant) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *ApplicationResourceGrant) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -191,9 +192,9 @@ func (o *ApplicationResourceGrant) SetScopes(v []ApplicationResourceGrantScopesI
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ApplicationResourceGrant) GetUpdatedAt() string {
+func (o *ApplicationResourceGrant) GetUpdatedAt() time.Time {
 	if o == nil || o.UpdatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -201,7 +202,7 @@ func (o *ApplicationResourceGrant) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationResourceGrant) GetUpdatedAtOk() (*string, bool) {
+func (o *ApplicationResourceGrant) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -217,8 +218,8 @@ func (o *ApplicationResourceGrant) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *ApplicationResourceGrant) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *ApplicationResourceGrant) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to **map[string]interface{}** |  | [optional] 
 **AccessControl** | Pointer to [**ApplicationAccessControl**](ApplicationAccessControl.md) |  | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
-**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
 **Enabled** | **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Protocol** | [**EnumApplicationProtocol**](EnumApplicationProtocol.md) |  | 
 **Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
-**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
@@ -140,20 +140,20 @@ HasAssignActorRoles returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetCreatedAt() string`
+`func (o *EntityArrayEmbeddedApplicationsInner) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetCreatedAtOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedApplicationsInner) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetCreatedAt(v string)`
+`func (o *EntityArrayEmbeddedApplicationsInner) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -395,20 +395,20 @@ SetType sets Type field to given value.
 
 ### GetUpdatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetUpdatedAt() string`
+`func (o *EntityArrayEmbeddedApplicationsInner) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetUpdatedAtOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedApplicationsInner) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetUpdatedAt(v string)`
+`func (o *EntityArrayEmbeddedApplicationsInner) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

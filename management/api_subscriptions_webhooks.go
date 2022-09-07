@@ -23,181 +23,31 @@ import (
 // SubscriptionsWebhooksApiService SubscriptionsWebhooksApi service
 type SubscriptionsWebhooksApiService service
 
-type ApiV1EnvironmentsEnvironmentIDSubscriptionsGetRequest struct {
+type ApiCreateSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionsWebhooksApiService
 	environmentID string
+	subscription *Subscription
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDSubscriptionsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDSubscriptionsGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDSubscriptionsGet READ All Subscriptions
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDSubscriptionsGetRequest
-*/
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsGet(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDSubscriptionsGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDSubscriptionsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-	}
-}
-
-// Execute executes the request
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsGetExecute(r ApiV1EnvironmentsEnvironmentIDSubscriptionsGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.V1EnvironmentsEnvironmentIDSubscriptionsGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/subscriptions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDSubscriptionsPostRequest struct {
-	ctx context.Context
-	ApiService *SubscriptionsWebhooksApiService
-	environmentID string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDSubscriptionsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDSubscriptionsPostRequest {
-	r.body = &body
+func (r ApiCreateSubscriptionRequest) Subscription(subscription Subscription) ApiCreateSubscriptionRequest {
+	r.subscription = &subscription
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDSubscriptionsPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDSubscriptionsPostExecute(r)
+func (r ApiCreateSubscriptionRequest) Execute() (*Subscription, *http.Response, error) {
+	return r.ApiService.CreateSubscriptionExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDSubscriptionsPost CREATE Subscriptions
+CreateSubscription CREATE Subscription
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDSubscriptionsPostRequest
+ @return ApiCreateSubscriptionRequest
 */
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDSubscriptionsPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDSubscriptionsPostRequest{
+func (a *SubscriptionsWebhooksApiService) CreateSubscription(ctx context.Context, environmentID string) ApiCreateSubscriptionRequest {
+	return ApiCreateSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -205,16 +55,18 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 }
 
 // Execute executes the request
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsPostExecute(r ApiV1EnvironmentsEnvironmentIDSubscriptionsPostRequest) (*http.Response, error) {
+//  @return Subscription
+func (a *SubscriptionsWebhooksApiService) CreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *Subscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.V1EnvironmentsEnvironmentIDSubscriptionsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.CreateSubscription")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/subscriptions"
@@ -242,22 +94,22 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.subscription
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -270,98 +122,107 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDeleteRequest struct {
+type ApiDeleteSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionsWebhooksApiService
 	environmentID string
 	subscriptionID string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDeleteExecute(r)
+func (r ApiDeleteSubscriptionRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteSubscriptionExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDelete DELETE Subscription
+DeleteSubscription DELETE Subscription
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param subscriptionID
- @return ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDeleteRequest
+ @return ApiDeleteSubscriptionRequest
 */
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDelete(ctx context.Context, environmentID string, subscriptionID string) ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDeleteRequest {
-	return ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDeleteRequest{
+func (a *SubscriptionsWebhooksApiService) DeleteSubscription(ctx context.Context, environmentID string, subscriptionID string) ApiDeleteSubscriptionRequest {
+	return ApiDeleteSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -370,14 +231,14 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 }
 
 // Execute executes the request
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDeleteRequest) (*http.Response, error) {
+func (a *SubscriptionsWebhooksApiService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.DeleteSubscription")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -495,45 +356,208 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGetRequest struct {
+type ApiReadAllSubscriptionsRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionsWebhooksApiService
 	environmentID string
-	subscriptionID string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGetExecute(r)
+func (r ApiReadAllSubscriptionsRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllSubscriptionsExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGet READ One Subscription
+ReadAllSubscriptions READ All Subscriptions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param subscriptionID
- @return ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGetRequest
+ @return ApiReadAllSubscriptionsRequest
 */
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGet(ctx context.Context, environmentID string, subscriptionID string) ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGetRequest{
+func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptions(ctx context.Context, environmentID string) ApiReadAllSubscriptionsRequest {
+	return ApiReadAllSubscriptionsRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		subscriptionID: subscriptionID,
 	}
 }
 
 // Execute executes the request
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGetRequest) (*http.Response, error) {
+//  @return EntityArray
+func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptionsExecute(r ApiReadAllSubscriptionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.ReadAllSubscriptions")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/subscriptions"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneSubscriptionRequest struct {
+	ctx context.Context
+	ApiService *SubscriptionsWebhooksApiService
+	environmentID string
+	subscriptionID string
+}
+
+func (r ApiReadOneSubscriptionRequest) Execute() (*Subscription, *http.Response, error) {
+	return r.ApiService.ReadOneSubscriptionExecute(r)
+}
+
+/*
+ReadOneSubscription READ One Subscription
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param subscriptionID
+ @return ApiReadOneSubscriptionRequest
+*/
+func (a *SubscriptionsWebhooksApiService) ReadOneSubscription(ctx context.Context, environmentID string, subscriptionID string) ApiReadOneSubscriptionRequest {
+	return ApiReadOneSubscriptionRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		subscriptionID: subscriptionID,
+	}
+}
+
+// Execute executes the request
+//  @return Subscription
+func (a *SubscriptionsWebhooksApiService) ReadOneSubscriptionExecute(r ApiReadOneSubscriptionRequest) (*Subscription, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Subscription
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.ReadOneSubscription")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/subscriptions/{subscriptionID}"
@@ -563,19 +587,19 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -588,94 +612,103 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutRequest struct {
+type ApiUpdateSubscriptionRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionsWebhooksApiService
 	environmentID string
 	subscriptionID string
-	body *map[string]interface{}
+	subscription *Subscription
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutRequest {
-	r.body = &body
+func (r ApiUpdateSubscriptionRequest) Subscription(subscription Subscription) ApiUpdateSubscriptionRequest {
+	r.subscription = &subscription
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutExecute(r)
+func (r ApiUpdateSubscriptionRequest) Execute() (*Subscription, *http.Response, error) {
+	return r.ApiService.UpdateSubscriptionExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPut UPDATE Subscription
+UpdateSubscription UPDATE Subscription
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param subscriptionID
- @return ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutRequest
+ @return ApiUpdateSubscriptionRequest
 */
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPut(ctx context.Context, environmentID string, subscriptionID string) ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutRequest{
+func (a *SubscriptionsWebhooksApiService) UpdateSubscription(ctx context.Context, environmentID string, subscriptionID string) ApiUpdateSubscriptionRequest {
+	return ApiUpdateSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -684,16 +717,18 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 }
 
 // Execute executes the request
-func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutExecute(r ApiV1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPutRequest) (*http.Response, error) {
+//  @return Subscription
+func (a *SubscriptionsWebhooksApiService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *Subscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.V1EnvironmentsEnvironmentIDSubscriptionsSubscriptionIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsWebhooksApiService.UpdateSubscription")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/subscriptions/{subscriptionID}"
@@ -722,22 +757,22 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.subscription
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -750,63 +785,72 @@ func (a *SubscriptionsWebhooksApiService) V1EnvironmentsEnvironmentIDSubscriptio
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

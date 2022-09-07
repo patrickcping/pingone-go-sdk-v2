@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Resource struct for Resource
@@ -21,7 +22,7 @@ type Resource struct {
 	// A string that specifies a URL without a fragment or `@ObjectName` and must not contain `pingone` or `pingidentity` (for example, https://api.myresource.com). If a URL is not specified, the resource name is used.
 	Audience *string `json:"audience,omitempty"`
 	// The time the resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the resource.
 	Description *string `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -32,7 +33,7 @@ type Resource struct {
 	Name string `json:"name"`
 	Type *EnumResourceType `json:"type,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewResource instantiates a new Resource object
@@ -118,9 +119,9 @@ func (o *Resource) SetAudience(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Resource) GetCreatedAt() string {
+func (o *Resource) GetCreatedAt() time.Time {
 	if o == nil || o.CreatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -128,7 +129,7 @@ func (o *Resource) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Resource) GetCreatedAtOk() (*string, bool) {
+func (o *Resource) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -144,8 +145,8 @@ func (o *Resource) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *Resource) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *Resource) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -334,9 +335,9 @@ func (o *Resource) SetType(v EnumResourceType) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *Resource) GetUpdatedAt() string {
+func (o *Resource) GetUpdatedAt() time.Time {
 	if o == nil || o.UpdatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -344,7 +345,7 @@ func (o *Resource) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Resource) GetUpdatedAtOk() (*string, bool) {
+func (o *Resource) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -360,8 +361,8 @@ func (o *Resource) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *Resource) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *Resource) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
