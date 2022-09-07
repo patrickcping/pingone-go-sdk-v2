@@ -164,8 +164,6 @@ Class | Method | HTTP request | Description
 *CustomDomainsApi* | [**ReadAllDomains**](docs/CustomDomainsApi.md#readalldomains) | **Get** /v1/environments/{environmentID}/customDomains | READ All Domains
 *CustomDomainsApi* | [**ReadOneDomain**](docs/CustomDomainsApi.md#readonedomain) | **Get** /v1/environments/{environmentID}/customDomains/{customDomainID} | READ One Domain
 *CustomDomainsApi* | [**UpdateDomain**](docs/CustomDomainsApi.md#updatedomain) | **Post** /v1/environments/{environmentID}/customDomains/{customDomainID} | Update Domain
-*DeviceAuthenticationPolicyApi* | [**V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthPolicyIDPut**](docs/DeviceAuthenticationPolicyApi.md#v1environmentsenvironmentiddeviceauthenticationpolicydeviceauthpolicyidput) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthPolicyID} | UPDATE Device Authentication Policy
-*DeviceAuthenticationPolicyApi* | [**V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyGet**](docs/DeviceAuthenticationPolicyApi.md#v1environmentsenvironmentiddeviceauthenticationpolicyget) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicy | READ Device Authentication Policy
 *EnableUsersApi* | [**ReadUserEnabled**](docs/EnableUsersApi.md#readuserenabled) | **Get** /v1/environments/{environmentID}/users/{userID}/enabled | READ User Enabled
 *EnableUsersApi* | [**UpdateUserEnabled**](docs/EnableUsersApi.md#updateuserenabled) | **Put** /v1/environments/{environmentID}/users/{userID}/enabled | UPDATE User Enabled
 *EnvironmentsApi* | [**CreateEnvironmentActiveLicense**](docs/EnvironmentsApi.md#createenvironmentactivelicense) | **Post** /v1/environments | CREATE Environment (Active License)

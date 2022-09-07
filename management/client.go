@@ -87,8 +87,6 @@ type APIClient struct {
 
 	CustomDomainsApi *CustomDomainsApiService
 
-	DeviceAuthenticationPolicyApi *DeviceAuthenticationPolicyApiService
-
 	EnableUsersApi *EnableUsersApiService
 
 	EnvironmentsApi *EnvironmentsApiService
@@ -225,7 +223,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CapabilitiesApi = (*CapabilitiesApiService)(&c.common)
 	c.CertificateManagementApi = (*CertificateManagementApiService)(&c.common)
 	c.CustomDomainsApi = (*CustomDomainsApiService)(&c.common)
-	c.DeviceAuthenticationPolicyApi = (*DeviceAuthenticationPolicyApiService)(&c.common)
 	c.EnableUsersApi = (*EnableUsersApiService)(&c.common)
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
 	c.GatewayCredentialsApi = (*GatewayCredentialsApiService)(&c.common)

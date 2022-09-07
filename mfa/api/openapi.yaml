@@ -20,23 +20,13 @@ servers:
 security:
 - bearer: []
 tags:
-- description: "By design, PingOne requests solely comprise this collection. For complete\
-    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
-  name: MFA Settings
-- description: "By design, PingOne requests solely comprise this collection. For complete\
-    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
-  name: Users > MFA Devices
-- description: "By design, PingOne requests solely comprise this collection. For complete\
-    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
-  name: Users > MFA Devices > FIDO2 Biometrics Devices
-- description: "By design, PingOne requests solely comprise this collection. For complete\
-    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
-  name: Users > Enable Users MFA
-- description: "By design, PingOne requests solely comprise this collection. For complete\
-    \ documentation, direct a browser to <a href='https://apidocs.pingidentity.com/pingone/platform/v1/api/'>apidocs.pingidentity.com</a>."
-  name: Users > MFA Pairing Keys
+- name: MFA Settings
+- name: Users > MFA Devices
+- name: Users > MFA Devices > FIDO2 Biometrics Devices
+- name: Users > Enable Users MFA
+- name: Users > MFA Pairing Keys
 paths:
-  /v1/environments/{environmentID}/applications/{appID}/pushCredentials:
+  /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials:
     get:
       operationId: readAllMFAPushCredentials
       parameters:
@@ -49,7 +39,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: appID
+        name: applicationID
         required: true
         schema:
           type: string
@@ -113,7 +103,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: appID
+        name: applicationID
         required: true
         schema:
           type: string
@@ -177,7 +167,7 @@ paths:
       summary: CREATE MFA Push Credential
       tags:
       - Applications > Application MFA Push Credentials
-  /v1/environments/{environmentID}/applications/{appID}/pushCredentials/{pushCredID}:
+  /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID}:
     delete:
       operationId: deleteMFAPushCredential
       parameters:
@@ -198,14 +188,14 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: appID
+        name: applicationID
         required: true
         schema:
           type: string
         style: simple
       - explode: false
         in: path
-        name: pushCredID
+        name: pushCredentialID
         required: true
         schema:
           type: string
@@ -265,14 +255,14 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: appID
+        name: applicationID
         required: true
         schema:
           type: string
         style: simple
       - explode: false
         in: path
-        name: pushCredID
+        name: pushCredentialID
         required: true
         schema:
           type: string
@@ -336,14 +326,14 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: appID
+        name: applicationID
         required: true
         schema:
           type: string
         style: simple
       - explode: false
         in: path
-        name: pushCredID
+        name: pushCredentialID
         required: true
         schema:
           type: string
@@ -527,7 +517,7 @@ paths:
       summary: CREATE Device Authentication Policy
       tags:
       - Device Authentication Policy
-  /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthPolicyID}:
+  /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID}:
     delete:
       operationId: deleteDeviceAuthenticationPolicy
       parameters:
@@ -540,7 +530,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: deviceAuthPolicyID
+        name: deviceAuthenticationPolicyID
         required: true
         schema:
           type: string
@@ -600,7 +590,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: deviceAuthPolicyID
+        name: deviceAuthenticationPolicyID
         required: true
         schema:
           type: string
@@ -663,7 +653,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: deviceAuthPolicyID
+        name: deviceAuthenticationPolicyID
         required: true
         schema:
           type: string
@@ -781,6 +771,7 @@ paths:
       - Device Authentication Policy
   /v1/environments/{environmentID}/mfaSettings:
     delete:
+      operationId: resetMFASettings
       parameters:
       - explode: false
         in: path
@@ -828,11 +819,16 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: Uncaught error occurred.  Platform outage
         "204":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFASettings'
           description: Successful response
       summary: RESET MFA Settings
       tags:
       - MFA Settings
     get:
+      operationId: readMFASettings
       parameters:
       - explode: false
         in: path
@@ -881,12 +877,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFASettings'
           description: Successful response
       summary: READ MFA Settings
       tags:
       - MFA Settings
     put:
+      operationId: updateMFASettings
       parameters:
       - explode: false
         in: path
@@ -899,15 +898,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                pairing:
-                  maxAllowedDevices: 10
-                lockout:
-                  failureCount: 8
-                  durationSeconds: 600
-                authentication:
-                  deviceSelection: DEFAULT_TO_FIRST
-              type: object
+              $ref: '#/components/schemas/MFASettings'
       responses:
         "400":
           content:
@@ -948,7 +939,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MFASettings'
           description: Successful response
       summary: UPDATE MFA Settings
       tags:
@@ -1835,7 +1828,7 @@ paths:
             schema:
               example:
                 applications:
-                - id: "{{appID}}"
+                - id: "{{applicationID}}"
               type: object
       responses:
         "400":
@@ -1993,7 +1986,7 @@ components:
               duration: 0
               timeUnit: null
           enabled: true
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
@@ -2026,6 +2019,7 @@ components:
           type: boolean
         updatedAt:
           description: The time the resource was last updated.
+          format: date-time
           readOnly: true
           type: string
       type: object
@@ -2118,7 +2112,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           - voice:
               otp:
                 failure:
@@ -2200,7 +2194,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
         count: 5.962133916683182
       properties:
         _embedded:
@@ -2216,6 +2210,21 @@ components:
       enum:
       - APNS
       - FCM
+      type: string
+    EnumMFASettingsDeviceSelection:
+      description: A string that defines the device selection method. Options are
+        DEFAULT_TO_FIRST (this is the default setting) and PROMPT_TO_SELECT.
+      enum:
+      - DEFAULT_TO_FIRST
+      - PROMPT_TO_SELECT
+      type: string
+    EnumMFASettingsPairingKeyFormat:
+      description: String that controls the type of pairing key issued. The valid
+        values are NUMERIC (12-digit key) and ALPHANUMERIC (16-character alphanumeric
+        key).
+      enum:
+      - NUMERIC
+      - ALPHANUMERIC
       type: string
     EnumTimeUnit:
       description: The type of time unit
@@ -2241,6 +2250,30 @@ components:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS_allOf'
     MFAPushCredentialFCM:
       $ref: '#/components/schemas/MFAPushCredential'
+    MFASettings:
+      example:
+        lockout:
+          durationSeconds: 6
+          failureCount: 0
+        pairing:
+          pairingKeyFormat: null
+          maxAllowedDevices: 2
+        authentication:
+          deviceSelection: null
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        authentication:
+          $ref: '#/components/schemas/MFASettings_authentication'
+        lockout:
+          $ref: '#/components/schemas/MFASettings_lockout'
+        pairing:
+          $ref: '#/components/schemas/MFASettings_pairing'
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
     ObjectEnvironment:
       example:
         id: id
@@ -2620,7 +2653,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         - voice:
             otp:
               failure:
@@ -2702,7 +2735,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         pushCredentials:
           items:
@@ -2726,6 +2759,44 @@ components:
       required:
       - teamId
       - token
+      type: object
+    MFASettings_authentication:
+      description: An object that contains the device selection settings.
+      example:
+        deviceSelection: null
+      properties:
+        deviceSelection:
+          $ref: '#/components/schemas/EnumMFASettingsDeviceSelection'
+      type: object
+    MFASettings_lockout:
+      description: An object that contains lockout settings.
+      example:
+        durationSeconds: 6
+        failureCount: 0
+      properties:
+        failureCount:
+          description: An integer that defines the maximum number of incorrect authentication
+            attempts before the account is locked.
+          type: integer
+        durationSeconds:
+          description: An integer that defines the number of seconds to keep the account
+            in a locked state.
+          type: integer
+      type: object
+    MFASettings_pairing:
+      description: An object that contains pairing settings.
+      example:
+        pairingKeyFormat: null
+        maxAllowedDevices: 2
+      properties:
+        maxAllowedDevices:
+          default: 5
+          description: An integer that defines the maximum number of MFA devices each
+            user can have. This can be any number up to 15. The default value is 5.
+          maximum: 15
+          type: integer
+        pairingKeyFormat:
+          $ref: '#/components/schemas/EnumMFASettingsPairingKeyFormat'
       type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
