@@ -18,7 +18,6 @@ api_branding_settings.go
 api_branding_themes.go
 api_capabilities.go
 api_custom_domains.go
-api_device_authentication_policy.go
 api_enable_users.go
 api_environments.go
 api_gateway_credentials.go
@@ -133,7 +132,6 @@ docs/CreateGatewayRequest.md
 docs/CustomDomain.md
 docs/CustomDomainCertificate.md
 docs/CustomDomainsApi.md
-docs/DeviceAuthenticationPolicyApi.md
 docs/EmailDomain.md
 docs/EmailDomainDKIMStatus.md
 docs/EmailDomainDKIMStatusRegionsInner.md
