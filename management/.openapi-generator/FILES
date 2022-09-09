@@ -377,7 +377,6 @@ docs/TotalIdentitiesApi.md
 docs/TrustedEmailAddressesApi.md
 docs/TrustedEmailDomainsApi.md
 docs/UpdateApplicationRequest.md
-docs/UpdateDomain200Response.md
 docs/UpdateEnvironmentTypeRequest.md
 docs/User.md
 docs/UserAccount.md
@@ -647,7 +646,6 @@ model_subscription_filter_options.go
 model_subscription_filter_options_included_applications_inner.go
 model_subscription_http_endpoint.go
 model_update_application_request.go
-model_update_domain_200_response.go
 model_update_environment_type_request.go
 model_user.go
 model_user_account.go

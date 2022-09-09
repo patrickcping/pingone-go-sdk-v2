@@ -6070,7 +6070,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomain'
           description: Successful response
       summary: CREATE Domain
       tags:
@@ -6279,7 +6281,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/updateDomain_200_response'
+                $ref: '#/components/schemas/CustomDomain'
           description: Successful response
       summary: Update Domain
       tags:
@@ -24805,10 +24807,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
-    updateDomain_200_response:
-      oneOf:
-      - $ref: '#/components/schemas/CustomDomainCertificate'
-      - $ref: '#/components/schemas/CustomDomain'
     updateEnvironmentType_request:
       example:
         type: PRODUCTION

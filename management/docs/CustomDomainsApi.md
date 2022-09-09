@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateDomain
 
-> CreateDomain(ctx, environmentID).CustomDomain(customDomain).Execute()
+> CustomDomain CreateDomain(ctx, environmentID).CustomDomain(customDomain).Execute()
 
 CREATE Domain
 
@@ -41,6 +41,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainsApi.CreateDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateDomain`: CustomDomain
+    fmt.Fprintf(os.Stdout, "Response from `CustomDomainsApi.CreateDomain`: %v\n", resp)
 }
 ```
 
@@ -64,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**CustomDomain**](CustomDomain.md)
 
 ### Authorization
 
@@ -290,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDomain
 
-> UpdateDomain200Response UpdateDomain(ctx, environmentID, customDomainID).ContentType(contentType).CustomDomainCertificate(customDomainCertificate).Execute()
+> CustomDomain UpdateDomain(ctx, environmentID, customDomainID).ContentType(contentType).CustomDomainCertificate(customDomainCertificate).Execute()
 
 Update Domain
 
@@ -319,7 +321,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainsApi.UpdateDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateDomain`: UpdateDomain200Response
+    // response from `UpdateDomain`: CustomDomain
     fmt.Fprintf(os.Stdout, "Response from `CustomDomainsApi.UpdateDomain`: %v\n", resp)
 }
 ```
@@ -347,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateDomain200Response**](UpdateDomain200Response.md)
+[**CustomDomain**](CustomDomain.md)
 
 ### Authorization
 

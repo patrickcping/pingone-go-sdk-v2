@@ -636,7 +636,6 @@ Class | Method | HTTP request | Description
  - [SubscriptionFilterOptionsIncludedApplicationsInner](docs/SubscriptionFilterOptionsIncludedApplicationsInner.md)
  - [SubscriptionHttpEndpoint](docs/SubscriptionHttpEndpoint.md)
  - [UpdateApplicationRequest](docs/UpdateApplicationRequest.md)
- - [UpdateDomain200Response](docs/UpdateDomain200Response.md)
  - [UpdateEnvironmentTypeRequest](docs/UpdateEnvironmentTypeRequest.md)
  - [User](docs/User.md)
  - [UserAccount](docs/UserAccount.md)

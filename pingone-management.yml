@@ -8931,7 +8931,9 @@ paths:
         '201':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomain'
   /v1/environments/{environmentID}/customDomains/{customDomainID}:
     get:
       tags:
@@ -9067,9 +9069,7 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                  - $ref: '#/components/schemas/CustomDomainCertificate'
-                  - $ref: '#/components/schemas/CustomDomain'
+                $ref: '#/components/schemas/CustomDomain'
     delete:
       tags:
         - Custom Domains
