@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExpiresAt** | Pointer to **string** | The time when the certificate expires. | [optional] [readonly] 
+**ExpiresAt** | Pointer to **time.Time** | The time when the certificate expires. | [optional] [readonly] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetExpiresAt
 
-`func (o *CustomDomainCertificate) GetExpiresAt() string`
+`func (o *CustomDomainCertificate) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *CustomDomainCertificate) GetExpiresAtOk() (*string, bool)`
+`func (o *CustomDomainCertificate) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *CustomDomainCertificate) SetExpiresAt(v string)`
+`func (o *CustomDomainCertificate) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 

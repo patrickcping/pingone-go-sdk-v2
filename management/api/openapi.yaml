@@ -22068,7 +22068,7 @@ components:
           id: id
         domainName: domainName
         certificate:
-          expiresAt: expiresAt
+          expiresAt: 2000-01-23T04:56:07.000+00:00
         id: id
         canonicalName: canonicalName
         status: null
@@ -22430,7 +22430,7 @@ components:
               id: id
             domainName: domainName
             certificate:
-              expiresAt: expiresAt
+              expiresAt: 2000-01-23T04:56:07.000+00:00
             id: id
             canonicalName: canonicalName
             status: null
@@ -22438,7 +22438,7 @@ components:
               id: id
             domainName: domainName
             certificate:
-              expiresAt: expiresAt
+              expiresAt: 2000-01-23T04:56:07.000+00:00
             id: id
             canonicalName: canonicalName
             status: null
@@ -25269,10 +25269,11 @@ components:
         \ used by this custom domain. If this property is not present, it indicates\
         \ that an SSL certificate has not been setup for this custom domain."
       example:
-        expiresAt: expiresAt
+        expiresAt: 2000-01-23T04:56:07.000+00:00
       properties:
         expiresAt:
           description: The time when the certificate expires.
+          format: date-time
           readOnly: true
           type: string
       readOnly: true
@@ -25527,7 +25528,7 @@ components:
             id: id
           domainName: domainName
           certificate:
-            expiresAt: expiresAt
+            expiresAt: 2000-01-23T04:56:07.000+00:00
           id: id
           canonicalName: canonicalName
           status: null
@@ -25535,7 +25536,7 @@ components:
             id: id
           domainName: domainName
           certificate:
-            expiresAt: expiresAt
+            expiresAt: 2000-01-23T04:56:07.000+00:00
           id: id
           canonicalName: canonicalName
           status: null
