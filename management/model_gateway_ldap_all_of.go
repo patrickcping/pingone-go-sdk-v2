@@ -29,6 +29,7 @@ type GatewayLDAPAllOf struct {
 	// A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted.
 	ValidateTlsCertificates *bool `json:"validateTlsCertificates,omitempty"`
 	Vendor EnumGatewayVendor `json:"vendor"`
+	FollowReferrals *bool `json:"followReferrals,omitempty"`
 }
 
 // NewGatewayLDAPAllOf instantiates a new GatewayLDAPAllOf object
@@ -276,6 +277,38 @@ func (o *GatewayLDAPAllOf) SetVendor(v EnumGatewayVendor) {
 	o.Vendor = v
 }
 
+// GetFollowReferrals returns the FollowReferrals field value if set, zero value otherwise.
+func (o *GatewayLDAPAllOf) GetFollowReferrals() bool {
+	if o == nil || o.FollowReferrals == nil {
+		var ret bool
+		return ret
+	}
+	return *o.FollowReferrals
+}
+
+// GetFollowReferralsOk returns a tuple with the FollowReferrals field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayLDAPAllOf) GetFollowReferralsOk() (*bool, bool) {
+	if o == nil || o.FollowReferrals == nil {
+		return nil, false
+	}
+	return o.FollowReferrals, true
+}
+
+// HasFollowReferrals returns a boolean if a field has been set.
+func (o *GatewayLDAPAllOf) HasFollowReferrals() bool {
+	if o != nil && o.FollowReferrals != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFollowReferrals gets a reference to the given bool and assigns it to the FollowReferrals field.
+func (o *GatewayLDAPAllOf) SetFollowReferrals(v bool) {
+	o.FollowReferrals = &v
+}
+
 func (o GatewayLDAPAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -301,6 +334,9 @@ func (o GatewayLDAPAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["vendor"] = o.Vendor
+	}
+	if o.FollowReferrals != nil {
+		toSerialize["followReferrals"] = o.FollowReferrals
 	}
 	return json.Marshal(toSerialize)
 }

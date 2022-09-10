@@ -23153,6 +23153,7 @@ components:
         credentials:
           items:
             $ref: '#/components/schemas/GatewayCredential'
+          readOnly: true
           type: array
         name:
           description: "A string that specifies the resource name, which must be provided\
@@ -23170,7 +23171,20 @@ components:
             is a required property.
           type: boolean
         supportedVersions:
-          $ref: '#/components/schemas/Gateway_supportedVersions'
+          description: "An array that lists the LDAP gateway versions associated with\
+            \ this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways\
+            \ request, and it is used to trigger alerts if the gateway tries to connect\
+            \ with an unsupported version (or a version that is not the latest or\
+            \ recommended version)."
+          items:
+            $ref: '#/components/schemas/Gateway_supportedVersions_inner'
+          readOnly: true
+          type: array
+        currentAlerts:
+          items:
+            type: object
+          readOnly: true
+          type: array
       required:
       - enabled
       - name
@@ -26321,12 +26335,7 @@ components:
             identifier associated with the environment.
           type: string
       type: object
-    Gateway_supportedVersions:
-      description: "An array that lists the LDAP gateway versions associated with\
-        \ this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways\
-        \ request, and it is used to trigger alerts if the gateway tries to connect\
-        \ with an unsupported version (or a version that is not the latest or recommended\
-        \ version)."
+    Gateway_supportedVersions_inner:
       properties:
         version:
           description: A string that specifies the gateway version number.
@@ -26342,6 +26351,11 @@ components:
           description: A boolean that specifies whether this is the latest LDAP gateway
             version.
           type: boolean
+        supportEndsOn:
+          format: date-time
+          type: string
+        daysUntilSupportEnds:
+          type: integer
       type: object
     GatewayLDAP_allOf_kerberos:
       description: Contains the Kerberos authentication settings. Set this to null
@@ -26479,6 +26493,9 @@ components:
           type: boolean
         vendor:
           $ref: '#/components/schemas/EnumGatewayVendor'
+        followReferrals:
+          readOnly: true
+          type: boolean
       required:
       - bindDN
       - bindPassword

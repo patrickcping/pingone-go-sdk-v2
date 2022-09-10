@@ -521,7 +521,7 @@ Class | Method | HTTP request | Description
  - [GatewayLDAPAllOfNewUserLookupAttributeMappings](docs/GatewayLDAPAllOfNewUserLookupAttributeMappings.md)
  - [GatewayLDAPAllOfNewUserLookupPopulation](docs/GatewayLDAPAllOfNewUserLookupPopulation.md)
  - [GatewayLDAPAllOfUserTypes](docs/GatewayLDAPAllOfUserTypes.md)
- - [GatewaySupportedVersions](docs/GatewaySupportedVersions.md)
+ - [GatewaySupportedVersionsInner](docs/GatewaySupportedVersionsInner.md)
  - [Group](docs/Group.md)
  - [GroupDirectMemberCounts](docs/GroupDirectMemberCounts.md)
  - [GroupMembership](docs/GroupMembership.md)

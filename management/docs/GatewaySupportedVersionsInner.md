@@ -1,4 +1,4 @@
-# GatewaySupportedVersions
+# GatewaySupportedVersionsInner
 
 ## Properties
 
@@ -13,170 +13,170 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGatewaySupportedVersions
+### NewGatewaySupportedVersionsInner
 
-`func NewGatewaySupportedVersions() *GatewaySupportedVersions`
+`func NewGatewaySupportedVersionsInner() *GatewaySupportedVersionsInner`
 
-NewGatewaySupportedVersions instantiates a new GatewaySupportedVersions object
+NewGatewaySupportedVersionsInner instantiates a new GatewaySupportedVersionsInner object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGatewaySupportedVersionsWithDefaults
+### NewGatewaySupportedVersionsInnerWithDefaults
 
-`func NewGatewaySupportedVersionsWithDefaults() *GatewaySupportedVersions`
+`func NewGatewaySupportedVersionsInnerWithDefaults() *GatewaySupportedVersionsInner`
 
-NewGatewaySupportedVersionsWithDefaults instantiates a new GatewaySupportedVersions object
+NewGatewaySupportedVersionsInnerWithDefaults instantiates a new GatewaySupportedVersionsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetVersion
 
-`func (o *GatewaySupportedVersions) GetVersion() string`
+`func (o *GatewaySupportedVersionsInner) GetVersion() string`
 
 GetVersion returns the Version field if non-nil, zero value otherwise.
 
 ### GetVersionOk
 
-`func (o *GatewaySupportedVersions) GetVersionOk() (*string, bool)`
+`func (o *GatewaySupportedVersionsInner) GetVersionOk() (*string, bool)`
 
 GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersion
 
-`func (o *GatewaySupportedVersions) SetVersion(v string)`
+`func (o *GatewaySupportedVersionsInner) SetVersion(v string)`
 
 SetVersion sets Version field to given value.
 
 ### HasVersion
 
-`func (o *GatewaySupportedVersions) HasVersion() bool`
+`func (o *GatewaySupportedVersionsInner) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
 
 ### GetImage
 
-`func (o *GatewaySupportedVersions) GetImage() string`
+`func (o *GatewaySupportedVersionsInner) GetImage() string`
 
 GetImage returns the Image field if non-nil, zero value otherwise.
 
 ### GetImageOk
 
-`func (o *GatewaySupportedVersions) GetImageOk() (*string, bool)`
+`func (o *GatewaySupportedVersionsInner) GetImageOk() (*string, bool)`
 
 GetImageOk returns a tuple with the Image field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImage
 
-`func (o *GatewaySupportedVersions) SetImage(v string)`
+`func (o *GatewaySupportedVersionsInner) SetImage(v string)`
 
 SetImage sets Image field to given value.
 
 ### HasImage
 
-`func (o *GatewaySupportedVersions) HasImage() bool`
+`func (o *GatewaySupportedVersionsInner) HasImage() bool`
 
 HasImage returns a boolean if a field has been set.
 
 ### GetRecommended
 
-`func (o *GatewaySupportedVersions) GetRecommended() bool`
+`func (o *GatewaySupportedVersionsInner) GetRecommended() bool`
 
 GetRecommended returns the Recommended field if non-nil, zero value otherwise.
 
 ### GetRecommendedOk
 
-`func (o *GatewaySupportedVersions) GetRecommendedOk() (*bool, bool)`
+`func (o *GatewaySupportedVersionsInner) GetRecommendedOk() (*bool, bool)`
 
 GetRecommendedOk returns a tuple with the Recommended field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecommended
 
-`func (o *GatewaySupportedVersions) SetRecommended(v bool)`
+`func (o *GatewaySupportedVersionsInner) SetRecommended(v bool)`
 
 SetRecommended sets Recommended field to given value.
 
 ### HasRecommended
 
-`func (o *GatewaySupportedVersions) HasRecommended() bool`
+`func (o *GatewaySupportedVersionsInner) HasRecommended() bool`
 
 HasRecommended returns a boolean if a field has been set.
 
 ### GetLatest
 
-`func (o *GatewaySupportedVersions) GetLatest() bool`
+`func (o *GatewaySupportedVersionsInner) GetLatest() bool`
 
 GetLatest returns the Latest field if non-nil, zero value otherwise.
 
 ### GetLatestOk
 
-`func (o *GatewaySupportedVersions) GetLatestOk() (*bool, bool)`
+`func (o *GatewaySupportedVersionsInner) GetLatestOk() (*bool, bool)`
 
 GetLatestOk returns a tuple with the Latest field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLatest
 
-`func (o *GatewaySupportedVersions) SetLatest(v bool)`
+`func (o *GatewaySupportedVersionsInner) SetLatest(v bool)`
 
 SetLatest sets Latest field to given value.
 
 ### HasLatest
 
-`func (o *GatewaySupportedVersions) HasLatest() bool`
+`func (o *GatewaySupportedVersionsInner) HasLatest() bool`
 
 HasLatest returns a boolean if a field has been set.
 
 ### GetSupportEndsOn
 
-`func (o *GatewaySupportedVersions) GetSupportEndsOn() time.Time`
+`func (o *GatewaySupportedVersionsInner) GetSupportEndsOn() time.Time`
 
 GetSupportEndsOn returns the SupportEndsOn field if non-nil, zero value otherwise.
 
 ### GetSupportEndsOnOk
 
-`func (o *GatewaySupportedVersions) GetSupportEndsOnOk() (*time.Time, bool)`
+`func (o *GatewaySupportedVersionsInner) GetSupportEndsOnOk() (*time.Time, bool)`
 
 GetSupportEndsOnOk returns a tuple with the SupportEndsOn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportEndsOn
 
-`func (o *GatewaySupportedVersions) SetSupportEndsOn(v time.Time)`
+`func (o *GatewaySupportedVersionsInner) SetSupportEndsOn(v time.Time)`
 
 SetSupportEndsOn sets SupportEndsOn field to given value.
 
 ### HasSupportEndsOn
 
-`func (o *GatewaySupportedVersions) HasSupportEndsOn() bool`
+`func (o *GatewaySupportedVersionsInner) HasSupportEndsOn() bool`
 
 HasSupportEndsOn returns a boolean if a field has been set.
 
 ### GetDaysUntilSupportEnds
 
-`func (o *GatewaySupportedVersions) GetDaysUntilSupportEnds() int32`
+`func (o *GatewaySupportedVersionsInner) GetDaysUntilSupportEnds() int32`
 
 GetDaysUntilSupportEnds returns the DaysUntilSupportEnds field if non-nil, zero value otherwise.
 
 ### GetDaysUntilSupportEndsOk
 
-`func (o *GatewaySupportedVersions) GetDaysUntilSupportEndsOk() (*int32, bool)`
+`func (o *GatewaySupportedVersionsInner) GetDaysUntilSupportEndsOk() (*int32, bool)`
 
 GetDaysUntilSupportEndsOk returns a tuple with the DaysUntilSupportEnds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDaysUntilSupportEnds
 
-`func (o *GatewaySupportedVersions) SetDaysUntilSupportEnds(v int32)`
+`func (o *GatewaySupportedVersionsInner) SetDaysUntilSupportEnds(v int32)`
 
 SetDaysUntilSupportEnds sets DaysUntilSupportEnds field to given value.
 
 ### HasDaysUntilSupportEnds
 
-`func (o *GatewaySupportedVersions) HasDaysUntilSupportEnds() bool`
+`func (o *GatewaySupportedVersionsInner) HasDaysUntilSupportEnds() bool`
 
 HasDaysUntilSupportEnds returns a boolean if a field has been set.
 

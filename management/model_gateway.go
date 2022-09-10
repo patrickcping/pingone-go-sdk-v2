@@ -28,7 +28,9 @@ type Gateway struct {
 	Type EnumGatewayType `json:"type"`
 	// A boolean that specifies whether the gateway is enabled. This is a required property.
 	Enabled bool `json:"enabled"`
-	SupportedVersions *GatewaySupportedVersions `json:"supportedVersions,omitempty"`
+	// An array that lists the LDAP gateway versions associated with this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways request, and it is used to trigger alerts if the gateway tries to connect with an unsupported version (or a version that is not the latest or recommended version).
+	SupportedVersions []GatewaySupportedVersionsInner `json:"supportedVersions,omitempty"`
+	CurrentAlerts []map[string]interface{} `json:"currentAlerts,omitempty"`
 }
 
 // NewGateway instantiates a new Gateway object
@@ -284,17 +286,17 @@ func (o *Gateway) SetEnabled(v bool) {
 }
 
 // GetSupportedVersions returns the SupportedVersions field value if set, zero value otherwise.
-func (o *Gateway) GetSupportedVersions() GatewaySupportedVersions {
+func (o *Gateway) GetSupportedVersions() []GatewaySupportedVersionsInner {
 	if o == nil || o.SupportedVersions == nil {
-		var ret GatewaySupportedVersions
+		var ret []GatewaySupportedVersionsInner
 		return ret
 	}
-	return *o.SupportedVersions
+	return o.SupportedVersions
 }
 
 // GetSupportedVersionsOk returns a tuple with the SupportedVersions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Gateway) GetSupportedVersionsOk() (*GatewaySupportedVersions, bool) {
+func (o *Gateway) GetSupportedVersionsOk() ([]GatewaySupportedVersionsInner, bool) {
 	if o == nil || o.SupportedVersions == nil {
 		return nil, false
 	}
@@ -310,9 +312,41 @@ func (o *Gateway) HasSupportedVersions() bool {
 	return false
 }
 
-// SetSupportedVersions gets a reference to the given GatewaySupportedVersions and assigns it to the SupportedVersions field.
-func (o *Gateway) SetSupportedVersions(v GatewaySupportedVersions) {
-	o.SupportedVersions = &v
+// SetSupportedVersions gets a reference to the given []GatewaySupportedVersionsInner and assigns it to the SupportedVersions field.
+func (o *Gateway) SetSupportedVersions(v []GatewaySupportedVersionsInner) {
+	o.SupportedVersions = v
+}
+
+// GetCurrentAlerts returns the CurrentAlerts field value if set, zero value otherwise.
+func (o *Gateway) GetCurrentAlerts() []map[string]interface{} {
+	if o == nil || o.CurrentAlerts == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return o.CurrentAlerts
+}
+
+// GetCurrentAlertsOk returns a tuple with the CurrentAlerts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Gateway) GetCurrentAlertsOk() ([]map[string]interface{}, bool) {
+	if o == nil || o.CurrentAlerts == nil {
+		return nil, false
+	}
+	return o.CurrentAlerts, true
+}
+
+// HasCurrentAlerts returns a boolean if a field has been set.
+func (o *Gateway) HasCurrentAlerts() bool {
+	if o != nil && o.CurrentAlerts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentAlerts gets a reference to the given []map[string]interface{} and assigns it to the CurrentAlerts field.
+func (o *Gateway) SetCurrentAlerts(v []map[string]interface{}) {
+	o.CurrentAlerts = v
 }
 
 func (o Gateway) MarshalJSON() ([]byte, error) {
@@ -343,6 +377,9 @@ func (o Gateway) MarshalJSON() ([]byte, error) {
 	}
 	if o.SupportedVersions != nil {
 		toSerialize["supportedVersions"] = o.SupportedVersions
+	}
+	if o.CurrentAlerts != nil {
+		toSerialize["currentAlerts"] = o.CurrentAlerts
 	}
 	return json.Marshal(toSerialize)
 }

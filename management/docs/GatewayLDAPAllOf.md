@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **UserTypes** | [**[]GatewayLDAPAllOfUserTypes**](GatewayLDAPAllOfUserTypes.md) | An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | 
 **ValidateTlsCertificates** | Pointer to **bool** | A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted. | [optional] 
 **Vendor** | [**EnumGatewayVendor**](EnumGatewayVendor.md) |  | 
+**FollowReferrals** | Pointer to **bool** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -211,6 +212,31 @@ and a boolean to check if the value has been set.
 
 SetVendor sets Vendor field to given value.
 
+
+### GetFollowReferrals
+
+`func (o *GatewayLDAPAllOf) GetFollowReferrals() bool`
+
+GetFollowReferrals returns the FollowReferrals field if non-nil, zero value otherwise.
+
+### GetFollowReferralsOk
+
+`func (o *GatewayLDAPAllOf) GetFollowReferralsOk() (*bool, bool)`
+
+GetFollowReferralsOk returns a tuple with the FollowReferrals field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFollowReferrals
+
+`func (o *GatewayLDAPAllOf) SetFollowReferrals(v bool)`
+
+SetFollowReferrals sets FollowReferrals field to given value.
+
+### HasFollowReferrals
+
+`func (o *GatewayLDAPAllOf) HasFollowReferrals() bool`
+
+HasFollowReferrals returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
