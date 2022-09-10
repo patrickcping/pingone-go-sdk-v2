@@ -6230,7 +6230,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomDomainCertificate'
+              $ref: '#/components/schemas/CustomDomainCertificateRequest'
         required: false
       responses:
         "400":
@@ -22096,7 +22096,7 @@ components:
       required:
       - domainName
       type: object
-    CustomDomainCertificate:
+    CustomDomainCertificateRequest:
       example:
         privateKey: privateKey
         intermediateCertificates: intermediateCertificates

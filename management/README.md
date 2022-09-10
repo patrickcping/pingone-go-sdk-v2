@@ -432,6 +432,7 @@ Class | Method | HTTP request | Description
  - [CreateGatewayRequest](docs/CreateGatewayRequest.md)
  - [CustomDomain](docs/CustomDomain.md)
  - [CustomDomainCertificate](docs/CustomDomainCertificate.md)
+ - [CustomDomainCertificateRequest](docs/CustomDomainCertificateRequest.md)
  - [EmailDomain](docs/EmailDomain.md)
  - [EmailDomainDKIMStatus](docs/EmailDomainDKIMStatus.md)
  - [EmailDomainDKIMStatusRegionsInner](docs/EmailDomainDKIMStatusRegionsInner.md)

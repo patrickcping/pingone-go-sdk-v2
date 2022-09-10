@@ -688,7 +688,7 @@ type ApiUpdateDomainRequest struct {
 	environmentID string
 	customDomainID string
 	contentType *EnumCustomDomainPostHeader
-	customDomainCertificate *CustomDomainCertificate
+	customDomainCertificateRequest *CustomDomainCertificateRequest
 }
 
 func (r ApiUpdateDomainRequest) ContentType(contentType EnumCustomDomainPostHeader) ApiUpdateDomainRequest {
@@ -696,8 +696,8 @@ func (r ApiUpdateDomainRequest) ContentType(contentType EnumCustomDomainPostHead
 	return r
 }
 
-func (r ApiUpdateDomainRequest) CustomDomainCertificate(customDomainCertificate CustomDomainCertificate) ApiUpdateDomainRequest {
-	r.customDomainCertificate = &customDomainCertificate
+func (r ApiUpdateDomainRequest) CustomDomainCertificateRequest(customDomainCertificateRequest CustomDomainCertificateRequest) ApiUpdateDomainRequest {
+	r.customDomainCertificateRequest = &customDomainCertificateRequest
 	return r
 }
 
@@ -766,7 +766,7 @@ func (a *CustomDomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) 
 		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.customDomainCertificate
+	localVarPostBody = r.customDomainCertificateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

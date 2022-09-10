@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDomain
 
-> CustomDomain UpdateDomain(ctx, environmentID, customDomainID).ContentType(contentType).CustomDomainCertificate(customDomainCertificate).Execute()
+> CustomDomain UpdateDomain(ctx, environmentID, customDomainID).ContentType(contentType).CustomDomainCertificateRequest(customDomainCertificateRequest).Execute()
 
 Update Domain
 
@@ -312,11 +312,11 @@ func main() {
     environmentID := "environmentID_example" // string | 
     customDomainID := "customDomainID_example" // string | 
     contentType := openapiclient.EnumCustomDomainPostHeader("application/vnd.pingidentity.certificate.import+json") // EnumCustomDomainPostHeader |  (optional)
-    customDomainCertificate := *openapiclient.NewCustomDomainCertificate() // CustomDomainCertificate |  (optional)
+    customDomainCertificateRequest := *openapiclient.NewCustomDomainCertificateRequest("Certificate_example", "PrivateKey_example") // CustomDomainCertificateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomDomainsApi.UpdateDomain(context.Background(), environmentID, customDomainID).ContentType(contentType).CustomDomainCertificate(customDomainCertificate).Execute()
+    resp, r, err := apiClient.CustomDomainsApi.UpdateDomain(context.Background(), environmentID, customDomainID).ContentType(contentType).CustomDomainCertificateRequest(customDomainCertificateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainsApi.UpdateDomain``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 
  **contentType** | [**EnumCustomDomainPostHeader**](EnumCustomDomainPostHeader.md) |  | 
- **customDomainCertificate** | [**CustomDomainCertificate**](CustomDomainCertificate.md) |  | 
+ **customDomainCertificateRequest** | [**CustomDomainCertificateRequest**](CustomDomainCertificateRequest.md) |  | 
 
 ### Return type
 
