@@ -8,12 +8,15 @@ Name | Type | Description | Notes
 **Id** | **string** | The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | 
 **Name** | **string** | The name of the user type. | 
 **NewUserLookup** | [**GatewayLDAPAllOfNewUserLookup**](GatewayLDAPAllOfNewUserLookup.md) |  | 
+**OrderedCorrelationAttributes** | Pointer to **[]string** | A map of key/value entries used to persist the external LDAP directory attributes. | [optional] 
+**PasswordAuthority** | [**EnumGatewayPasswordAuthority**](EnumGatewayPasswordAuthority.md) |  | 
+**SearchBaseDn** | Pointer to **string** | The LDAP base domain name (DN) for this user type. | [optional] 
 
 ## Methods
 
 ### NewGatewayLDAPAllOfUserTypes
 
-`func NewGatewayLDAPAllOfUserTypes(id string, name string, newUserLookup GatewayLDAPAllOfNewUserLookup, ) *GatewayLDAPAllOfUserTypes`
+`func NewGatewayLDAPAllOfUserTypes(id string, name string, newUserLookup GatewayLDAPAllOfNewUserLookup, passwordAuthority EnumGatewayPasswordAuthority, ) *GatewayLDAPAllOfUserTypes`
 
 NewGatewayLDAPAllOfUserTypes instantiates a new GatewayLDAPAllOfUserTypes object
 This constructor will assign default values to properties that have it defined,
@@ -112,6 +115,76 @@ and a boolean to check if the value has been set.
 
 SetNewUserLookup sets NewUserLookup field to given value.
 
+
+### GetOrderedCorrelationAttributes
+
+`func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []string`
+
+GetOrderedCorrelationAttributes returns the OrderedCorrelationAttributes field if non-nil, zero value otherwise.
+
+### GetOrderedCorrelationAttributesOk
+
+`func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() (*[]string, bool)`
+
+GetOrderedCorrelationAttributesOk returns a tuple with the OrderedCorrelationAttributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderedCorrelationAttributes
+
+`func (o *GatewayLDAPAllOfUserTypes) SetOrderedCorrelationAttributes(v []string)`
+
+SetOrderedCorrelationAttributes sets OrderedCorrelationAttributes field to given value.
+
+### HasOrderedCorrelationAttributes
+
+`func (o *GatewayLDAPAllOfUserTypes) HasOrderedCorrelationAttributes() bool`
+
+HasOrderedCorrelationAttributes returns a boolean if a field has been set.
+
+### GetPasswordAuthority
+
+`func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswordAuthority`
+
+GetPasswordAuthority returns the PasswordAuthority field if non-nil, zero value otherwise.
+
+### GetPasswordAuthorityOk
+
+`func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswordAuthority, bool)`
+
+GetPasswordAuthorityOk returns a tuple with the PasswordAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordAuthority
+
+`func (o *GatewayLDAPAllOfUserTypes) SetPasswordAuthority(v EnumGatewayPasswordAuthority)`
+
+SetPasswordAuthority sets PasswordAuthority field to given value.
+
+
+### GetSearchBaseDn
+
+`func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDn() string`
+
+GetSearchBaseDn returns the SearchBaseDn field if non-nil, zero value otherwise.
+
+### GetSearchBaseDnOk
+
+`func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool)`
+
+GetSearchBaseDnOk returns a tuple with the SearchBaseDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchBaseDn
+
+`func (o *GatewayLDAPAllOfUserTypes) SetSearchBaseDn(v string)`
+
+SetSearchBaseDn sets SearchBaseDn field to given value.
+
+### HasSearchBaseDn
+
+`func (o *GatewayLDAPAllOfUserTypes) HasSearchBaseDn() bool`
+
+HasSearchBaseDn returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

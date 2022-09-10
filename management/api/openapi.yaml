@@ -26404,17 +26404,6 @@ components:
           type: string
         population:
           $ref: '#/components/schemas/GatewayLDAP_allOf_newUserLookup_population'
-        orderedCorrelationAttributes:
-          description: A map of key/value entries used to persist the external LDAP
-            directory attributes.
-          items:
-            type: object
-          type: array
-        passwordAuthority:
-          $ref: '#/components/schemas/EnumGatewayPasswordAuthority'
-        searchBaseDn:
-          description: The LDAP base domain name (DN) for this user type.
-          type: string
       required:
       - attributeMappings
       type: object
@@ -26436,6 +26425,17 @@ components:
           type: string
         newUserLookup:
           $ref: '#/components/schemas/GatewayLDAP_allOf_newUserLookup'
+        orderedCorrelationAttributes:
+          description: A map of key/value entries used to persist the external LDAP
+            directory attributes.
+          items:
+            type: string
+          type: array
+        passwordAuthority:
+          $ref: '#/components/schemas/EnumGatewayPasswordAuthority'
+        searchBaseDn:
+          description: The LDAP base domain name (DN) for this user type.
+          type: string
       required:
       - id
       - name

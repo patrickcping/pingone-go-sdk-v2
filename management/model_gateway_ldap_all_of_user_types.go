@@ -23,17 +23,23 @@ type GatewayLDAPAllOfUserTypes struct {
 	// The name of the user type.
 	Name string `json:"name"`
 	NewUserLookup GatewayLDAPAllOfNewUserLookup `json:"newUserLookup"`
+	// A map of key/value entries used to persist the external LDAP directory attributes.
+	OrderedCorrelationAttributes []string `json:"orderedCorrelationAttributes,omitempty"`
+	PasswordAuthority EnumGatewayPasswordAuthority `json:"passwordAuthority"`
+	// The LDAP base domain name (DN) for this user type.
+	SearchBaseDn *string `json:"searchBaseDn,omitempty"`
 }
 
 // NewGatewayLDAPAllOfUserTypes instantiates a new GatewayLDAPAllOfUserTypes object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAPAllOfUserTypes(id string, name string, newUserLookup GatewayLDAPAllOfNewUserLookup) *GatewayLDAPAllOfUserTypes {
+func NewGatewayLDAPAllOfUserTypes(id string, name string, newUserLookup GatewayLDAPAllOfNewUserLookup, passwordAuthority EnumGatewayPasswordAuthority) *GatewayLDAPAllOfUserTypes {
 	this := GatewayLDAPAllOfUserTypes{}
 	this.Id = id
 	this.Name = name
 	this.NewUserLookup = newUserLookup
+	this.PasswordAuthority = passwordAuthority
 	return &this
 }
 
@@ -149,6 +155,94 @@ func (o *GatewayLDAPAllOfUserTypes) SetNewUserLookup(v GatewayLDAPAllOfNewUserLo
 	o.NewUserLookup = v
 }
 
+// GetOrderedCorrelationAttributes returns the OrderedCorrelationAttributes field value if set, zero value otherwise.
+func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []string {
+	if o == nil || o.OrderedCorrelationAttributes == nil {
+		var ret []string
+		return ret
+	}
+	return o.OrderedCorrelationAttributes
+}
+
+// GetOrderedCorrelationAttributesOk returns a tuple with the OrderedCorrelationAttributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() ([]string, bool) {
+	if o == nil || o.OrderedCorrelationAttributes == nil {
+		return nil, false
+	}
+	return o.OrderedCorrelationAttributes, true
+}
+
+// HasOrderedCorrelationAttributes returns a boolean if a field has been set.
+func (o *GatewayLDAPAllOfUserTypes) HasOrderedCorrelationAttributes() bool {
+	if o != nil && o.OrderedCorrelationAttributes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderedCorrelationAttributes gets a reference to the given []string and assigns it to the OrderedCorrelationAttributes field.
+func (o *GatewayLDAPAllOfUserTypes) SetOrderedCorrelationAttributes(v []string) {
+	o.OrderedCorrelationAttributes = v
+}
+
+// GetPasswordAuthority returns the PasswordAuthority field value
+func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswordAuthority {
+	if o == nil {
+		var ret EnumGatewayPasswordAuthority
+		return ret
+	}
+
+	return o.PasswordAuthority
+}
+
+// GetPasswordAuthorityOk returns a tuple with the PasswordAuthority field value
+// and a boolean to check if the value has been set.
+func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswordAuthority, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PasswordAuthority, true
+}
+
+// SetPasswordAuthority sets field value
+func (o *GatewayLDAPAllOfUserTypes) SetPasswordAuthority(v EnumGatewayPasswordAuthority) {
+	o.PasswordAuthority = v
+}
+
+// GetSearchBaseDn returns the SearchBaseDn field value if set, zero value otherwise.
+func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDn() string {
+	if o == nil || o.SearchBaseDn == nil {
+		var ret string
+		return ret
+	}
+	return *o.SearchBaseDn
+}
+
+// GetSearchBaseDnOk returns a tuple with the SearchBaseDn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool) {
+	if o == nil || o.SearchBaseDn == nil {
+		return nil, false
+	}
+	return o.SearchBaseDn, true
+}
+
+// HasSearchBaseDn returns a boolean if a field has been set.
+func (o *GatewayLDAPAllOfUserTypes) HasSearchBaseDn() bool {
+	if o != nil && o.SearchBaseDn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchBaseDn gets a reference to the given string and assigns it to the SearchBaseDn field.
+func (o *GatewayLDAPAllOfUserTypes) SetSearchBaseDn(v string) {
+	o.SearchBaseDn = &v
+}
+
 func (o GatewayLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AllowPasswordChanges != nil {
@@ -162,6 +256,15 @@ func (o GatewayLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["newUserLookup"] = o.NewUserLookup
+	}
+	if o.OrderedCorrelationAttributes != nil {
+		toSerialize["orderedCorrelationAttributes"] = o.OrderedCorrelationAttributes
+	}
+	if true {
+		toSerialize["passwordAuthority"] = o.PasswordAuthority
+	}
+	if o.SearchBaseDn != nil {
+		toSerialize["searchBaseDn"] = o.SearchBaseDn
 	}
 	return json.Marshal(toSerialize)
 }

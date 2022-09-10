@@ -1352,18 +1352,18 @@ components:
                             description: The ID of the population to use to create user entries during lookup.
                         required:
                           - id
-                      orderedCorrelationAttributes:
-                        type: array
-                        description: A map of key/value entries used to persist the external LDAP directory attributes.
-                        items:
-                          type: object
-                      passwordAuthority:
-                        $ref: '#/components/schemas/EnumGatewayPasswordAuthority'
-                      searchBaseDn:
-                        type: string
-                        description: The LDAP base domain name (DN) for this user type.
                     required:
                       - attributeMappings
+                  orderedCorrelationAttributes:
+                    type: array
+                    description: A map of key/value entries used to persist the external LDAP directory attributes.
+                    items:
+                      type: string
+                  passwordAuthority:
+                    $ref: '#/components/schemas/EnumGatewayPasswordAuthority'
+                  searchBaseDn:
+                    type: string
+                    description: The LDAP base domain name (DN) for this user type.
                 required:
                   - newUserLookup
                   - id
