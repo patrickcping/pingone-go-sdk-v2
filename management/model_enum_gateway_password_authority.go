@@ -15,18 +15,18 @@ import (
 	"fmt"
 )
 
-// EnumGatewayPasswordAuthority This can be either `PINGONE` or `LDAP`. If set to `PINGONE`, PingOne authenticates with the external directory initially, then PingOne authenticates all subsequent sign-ons.
+// EnumGatewayPasswordAuthority This can be either `PING_ONE` or `LDAP`. If set to `PING_ONE`, PingOne authenticates with the external directory initially, then PingOne authenticates all subsequent sign-ons.
 type EnumGatewayPasswordAuthority string
 
 // List of EnumGatewayPasswordAuthority
 const (
-	ENUMGATEWAYPASSWORDAUTHORITY_PINGONE EnumGatewayPasswordAuthority = "PINGONE"
+	ENUMGATEWAYPASSWORDAUTHORITY_PING_ONE EnumGatewayPasswordAuthority = "PING_ONE"
 	ENUMGATEWAYPASSWORDAUTHORITY_LDAP EnumGatewayPasswordAuthority = "LDAP"
 )
 
 // All allowed values of EnumGatewayPasswordAuthority enum
 var AllowedEnumGatewayPasswordAuthorityEnumValues = []EnumGatewayPasswordAuthority{
-	"PINGONE",
+	"PING_ONE",
 	"LDAP",
 }
 

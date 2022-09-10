@@ -21195,11 +21195,11 @@ components:
       - API_GATEWAY_INTEGRATION
       type: string
     EnumGatewayPasswordAuthority:
-      description: "This can be either `PINGONE` or `LDAP`. If set to `PINGONE`, PingOne\
-        \ authenticates with the external directory initially, then PingOne authenticates\
-        \ all subsequent sign-ons."
+      description: "This can be either `PING_ONE` or `LDAP`. If set to `PING_ONE`,\
+        \ PingOne authenticates with the external directory initially, then PingOne\
+        \ authenticates all subsequent sign-ons."
       enum:
-      - PINGONE
+      - PING_ONE
       - LDAP
       type: string
     EnumGatewayVendor:

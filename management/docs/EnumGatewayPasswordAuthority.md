@@ -3,7 +3,7 @@
 ## Enum
 
 
-* `PINGONE` (value: `"PINGONE"`)
+* `PING_ONE` (value: `"PING_ONE"`)
 
 * `LDAP` (value: `"LDAP"`)
 
