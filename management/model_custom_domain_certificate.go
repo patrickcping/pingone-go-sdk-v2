@@ -12,12 +12,13 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // CustomDomainCertificate An object that specifies information about the SSL certificate used by this custom domain. If this property is not present, it indicates that an SSL certificate has not been setup for this custom domain.
 type CustomDomainCertificate struct {
 	// The time when the certificate expires.
-	ExpiresAt *string `json:"expiresAt,omitempty"`
+	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 }
 
 // NewCustomDomainCertificate instantiates a new CustomDomainCertificate object
@@ -38,9 +39,9 @@ func NewCustomDomainCertificateWithDefaults() *CustomDomainCertificate {
 }
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
-func (o *CustomDomainCertificate) GetExpiresAt() string {
+func (o *CustomDomainCertificate) GetExpiresAt() time.Time {
 	if o == nil || o.ExpiresAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.ExpiresAt
@@ -48,7 +49,7 @@ func (o *CustomDomainCertificate) GetExpiresAt() string {
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CustomDomainCertificate) GetExpiresAtOk() (*string, bool) {
+func (o *CustomDomainCertificate) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || o.ExpiresAt == nil {
 		return nil, false
 	}
@@ -64,8 +65,8 @@ func (o *CustomDomainCertificate) HasExpiresAt() bool {
 	return false
 }
 
-// SetExpiresAt gets a reference to the given string and assigns it to the ExpiresAt field.
-func (o *CustomDomainCertificate) SetExpiresAt(v string) {
+// SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
+func (o *CustomDomainCertificate) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 

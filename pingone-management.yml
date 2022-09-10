@@ -880,6 +880,7 @@ components:
           properties:
             expiresAt:
               type: string
+              format: date-time
               description: The time when the certificate expires.
               readOnly: true
         canonicalName:
@@ -899,7 +900,7 @@ components:
           $ref: '#/components/schemas/EnumCustomDomainStatus'
       required:
         - domainName
-    CustomDomainCertificate:
+    CustomDomainCertificateRequest:
       type: object
       properties:
         certificate:
@@ -8931,7 +8932,9 @@ paths:
         '201':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomain'
   /v1/environments/{environmentID}/customDomains/{customDomainID}:
     get:
       tags:
@@ -9002,7 +9005,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomDomainCertificate'
+              $ref: '#/components/schemas/CustomDomainCertificateRequest'
       parameters:
         - name: Content-Type
           in: header
@@ -9067,9 +9070,7 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                  - $ref: '#/components/schemas/CustomDomainCertificate'
-                  - $ref: '#/components/schemas/CustomDomain'
+                $ref: '#/components/schemas/CustomDomain'
     delete:
       tags:
         - Custom Domains
