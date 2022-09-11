@@ -1,5 +1,8 @@
-# Release (Unreleased)
+# Release (2022-09-11)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.7
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.8.0 => v0.9.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.4.0 => v0.5.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.9.0](./management/CHANGELOG.md)
     * **Bug fix** - Correct the `CreateDomain` API response object [#45](https://github.com/patrickcping/pingone-go-sdk-v2/pull/45)
     * **Bug fix** - Correct the `UpdateDomain` API response object [#45](https://github.com/patrickcping/pingone-go-sdk-v2/pull/45)
