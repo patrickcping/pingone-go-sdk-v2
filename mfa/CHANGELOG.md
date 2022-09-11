@@ -1,4 +1,4 @@
-# v0.5.0 (Unreleased)
+# v0.5.0 (2022-09-11)
 
 * **Feature** Added MFA Settings model [#44](https://github.com/patrickcping/pingone-go-sdk-v2/pull/44)
 * **Breaking change** `updatedAt` attributes changed to date/time data type [#44](https://github.com/patrickcping/pingone-go-sdk-v2/pull/44)

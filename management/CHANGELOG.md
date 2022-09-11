@@ -1,4 +1,4 @@
-# v0.9.0 (Unreleased)
+# v0.9.0 (2022-09-11)
 
 * **Bug fix** - Correct the `CreateDomain` API response object [#45](https://github.com/patrickcping/pingone-go-sdk-v2/pull/45)
 * **Bug fix** - Correct the `UpdateDomain` API response object [#45](https://github.com/patrickcping/pingone-go-sdk-v2/pull/45)
