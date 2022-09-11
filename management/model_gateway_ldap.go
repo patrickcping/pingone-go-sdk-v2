@@ -28,7 +28,9 @@ type GatewayLDAP struct {
 	Type EnumGatewayType `json:"type"`
 	// A boolean that specifies whether the gateway is enabled. This is a required property.
 	Enabled bool `json:"enabled"`
-	SupportedVersions *GatewaySupportedVersions `json:"supportedVersions,omitempty"`
+	// An array that lists the LDAP gateway versions associated with this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways request, and it is used to trigger alerts if the gateway tries to connect with an unsupported version (or a version that is not the latest or recommended version).
+	SupportedVersions []GatewaySupportedVersionsInner `json:"supportedVersions,omitempty"`
+	CurrentAlerts []map[string]interface{} `json:"currentAlerts,omitempty"`
 	// A string that specifies the distinguished name information to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com).
 	BindDN string `json:"bindDN"`
 	// A string that specifies the bind password for the LDAP database. This is a required property.
@@ -36,26 +38,27 @@ type GatewayLDAP struct {
 	ConnectionSecurity *EnumGatewayLDAPSecurity `json:"connectionSecurity,omitempty"`
 	Kerberos *GatewayLDAPAllOfKerberos `json:"kerberos,omitempty"`
 	// An array of strings that specifies the LDAP server host name and port number (for example, [`ds1.example.com:389`, `ds2.example.com:389`]).
-	ServersHostAndPort []string `json:"serversHostAndPort,omitempty"`
+	ServersHostAndPort []string `json:"serversHostAndPort"`
 	// An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory.
-	UserTypes []GatewayLDAPAllOfUserTypes `json:"userTypes"`
+	UserTypes []GatewayLDAPAllOfUserTypes `json:"userTypes,omitempty"`
 	// A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted.
 	ValidateTlsCertificates *bool `json:"validateTlsCertificates,omitempty"`
 	Vendor EnumGatewayVendor `json:"vendor"`
+	FollowReferrals *bool `json:"followReferrals,omitempty"`
 }
 
 // NewGatewayLDAP instantiates a new GatewayLDAP object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, userTypes []GatewayLDAPAllOfUserTypes, vendor EnumGatewayVendor) *GatewayLDAP {
+func NewGatewayLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor) *GatewayLDAP {
 	this := GatewayLDAP{}
 	this.Name = name
 	this.Type = type_
 	this.Enabled = enabled
 	this.BindDN = bindDN
 	this.BindPassword = bindPassword
-	this.UserTypes = userTypes
+	this.ServersHostAndPort = serversHostAndPort
 	this.Vendor = vendor
 	return &this
 }
@@ -301,17 +304,17 @@ func (o *GatewayLDAP) SetEnabled(v bool) {
 }
 
 // GetSupportedVersions returns the SupportedVersions field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetSupportedVersions() GatewaySupportedVersions {
+func (o *GatewayLDAP) GetSupportedVersions() []GatewaySupportedVersionsInner {
 	if o == nil || o.SupportedVersions == nil {
-		var ret GatewaySupportedVersions
+		var ret []GatewaySupportedVersionsInner
 		return ret
 	}
-	return *o.SupportedVersions
+	return o.SupportedVersions
 }
 
 // GetSupportedVersionsOk returns a tuple with the SupportedVersions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetSupportedVersionsOk() (*GatewaySupportedVersions, bool) {
+func (o *GatewayLDAP) GetSupportedVersionsOk() ([]GatewaySupportedVersionsInner, bool) {
 	if o == nil || o.SupportedVersions == nil {
 		return nil, false
 	}
@@ -327,9 +330,41 @@ func (o *GatewayLDAP) HasSupportedVersions() bool {
 	return false
 }
 
-// SetSupportedVersions gets a reference to the given GatewaySupportedVersions and assigns it to the SupportedVersions field.
-func (o *GatewayLDAP) SetSupportedVersions(v GatewaySupportedVersions) {
-	o.SupportedVersions = &v
+// SetSupportedVersions gets a reference to the given []GatewaySupportedVersionsInner and assigns it to the SupportedVersions field.
+func (o *GatewayLDAP) SetSupportedVersions(v []GatewaySupportedVersionsInner) {
+	o.SupportedVersions = v
+}
+
+// GetCurrentAlerts returns the CurrentAlerts field value if set, zero value otherwise.
+func (o *GatewayLDAP) GetCurrentAlerts() []map[string]interface{} {
+	if o == nil || o.CurrentAlerts == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return o.CurrentAlerts
+}
+
+// GetCurrentAlertsOk returns a tuple with the CurrentAlerts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayLDAP) GetCurrentAlertsOk() ([]map[string]interface{}, bool) {
+	if o == nil || o.CurrentAlerts == nil {
+		return nil, false
+	}
+	return o.CurrentAlerts, true
+}
+
+// HasCurrentAlerts returns a boolean if a field has been set.
+func (o *GatewayLDAP) HasCurrentAlerts() bool {
+	if o != nil && o.CurrentAlerts != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentAlerts gets a reference to the given []map[string]interface{} and assigns it to the CurrentAlerts field.
+func (o *GatewayLDAP) SetCurrentAlerts(v []map[string]interface{}) {
+	o.CurrentAlerts = v
 }
 
 // GetBindDN returns the BindDN field value
@@ -444,58 +479,58 @@ func (o *GatewayLDAP) SetKerberos(v GatewayLDAPAllOfKerberos) {
 	o.Kerberos = &v
 }
 
-// GetServersHostAndPort returns the ServersHostAndPort field value if set, zero value otherwise.
+// GetServersHostAndPort returns the ServersHostAndPort field value
 func (o *GatewayLDAP) GetServersHostAndPort() []string {
-	if o == nil || o.ServersHostAndPort == nil {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.ServersHostAndPort
 }
 
-// GetServersHostAndPortOk returns a tuple with the ServersHostAndPort field value if set, nil otherwise
+// GetServersHostAndPortOk returns a tuple with the ServersHostAndPort field value
 // and a boolean to check if the value has been set.
 func (o *GatewayLDAP) GetServersHostAndPortOk() ([]string, bool) {
-	if o == nil || o.ServersHostAndPort == nil {
+	if o == nil {
 		return nil, false
 	}
 	return o.ServersHostAndPort, true
 }
 
-// HasServersHostAndPort returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasServersHostAndPort() bool {
-	if o != nil && o.ServersHostAndPort != nil {
+// SetServersHostAndPort sets field value
+func (o *GatewayLDAP) SetServersHostAndPort(v []string) {
+	o.ServersHostAndPort = v
+}
+
+// GetUserTypes returns the UserTypes field value if set, zero value otherwise.
+func (o *GatewayLDAP) GetUserTypes() []GatewayLDAPAllOfUserTypes {
+	if o == nil || o.UserTypes == nil {
+		var ret []GatewayLDAPAllOfUserTypes
+		return ret
+	}
+	return o.UserTypes
+}
+
+// GetUserTypesOk returns a tuple with the UserTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayLDAP) GetUserTypesOk() ([]GatewayLDAPAllOfUserTypes, bool) {
+	if o == nil || o.UserTypes == nil {
+		return nil, false
+	}
+	return o.UserTypes, true
+}
+
+// HasUserTypes returns a boolean if a field has been set.
+func (o *GatewayLDAP) HasUserTypes() bool {
+	if o != nil && o.UserTypes != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetServersHostAndPort gets a reference to the given []string and assigns it to the ServersHostAndPort field.
-func (o *GatewayLDAP) SetServersHostAndPort(v []string) {
-	o.ServersHostAndPort = v
-}
-
-// GetUserTypes returns the UserTypes field value
-func (o *GatewayLDAP) GetUserTypes() []GatewayLDAPAllOfUserTypes {
-	if o == nil {
-		var ret []GatewayLDAPAllOfUserTypes
-		return ret
-	}
-
-	return o.UserTypes
-}
-
-// GetUserTypesOk returns a tuple with the UserTypes field value
-// and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetUserTypesOk() ([]GatewayLDAPAllOfUserTypes, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.UserTypes, true
-}
-
-// SetUserTypes sets field value
+// SetUserTypes gets a reference to the given []GatewayLDAPAllOfUserTypes and assigns it to the UserTypes field.
 func (o *GatewayLDAP) SetUserTypes(v []GatewayLDAPAllOfUserTypes) {
 	o.UserTypes = v
 }
@@ -556,6 +591,38 @@ func (o *GatewayLDAP) SetVendor(v EnumGatewayVendor) {
 	o.Vendor = v
 }
 
+// GetFollowReferrals returns the FollowReferrals field value if set, zero value otherwise.
+func (o *GatewayLDAP) GetFollowReferrals() bool {
+	if o == nil || o.FollowReferrals == nil {
+		var ret bool
+		return ret
+	}
+	return *o.FollowReferrals
+}
+
+// GetFollowReferralsOk returns a tuple with the FollowReferrals field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayLDAP) GetFollowReferralsOk() (*bool, bool) {
+	if o == nil || o.FollowReferrals == nil {
+		return nil, false
+	}
+	return o.FollowReferrals, true
+}
+
+// HasFollowReferrals returns a boolean if a field has been set.
+func (o *GatewayLDAP) HasFollowReferrals() bool {
+	if o != nil && o.FollowReferrals != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFollowReferrals gets a reference to the given bool and assigns it to the FollowReferrals field.
+func (o *GatewayLDAP) SetFollowReferrals(v bool) {
+	o.FollowReferrals = &v
+}
+
 func (o GatewayLDAP) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Links != nil {
@@ -585,6 +652,9 @@ func (o GatewayLDAP) MarshalJSON() ([]byte, error) {
 	if o.SupportedVersions != nil {
 		toSerialize["supportedVersions"] = o.SupportedVersions
 	}
+	if o.CurrentAlerts != nil {
+		toSerialize["currentAlerts"] = o.CurrentAlerts
+	}
 	if true {
 		toSerialize["bindDN"] = o.BindDN
 	}
@@ -597,10 +667,10 @@ func (o GatewayLDAP) MarshalJSON() ([]byte, error) {
 	if o.Kerberos != nil {
 		toSerialize["kerberos"] = o.Kerberos
 	}
-	if o.ServersHostAndPort != nil {
+	if true {
 		toSerialize["serversHostAndPort"] = o.ServersHostAndPort
 	}
-	if true {
+	if o.UserTypes != nil {
 		toSerialize["userTypes"] = o.UserTypes
 	}
 	if o.ValidateTlsCertificates != nil {
@@ -608,6 +678,9 @@ func (o GatewayLDAP) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["vendor"] = o.Vendor
+	}
+	if o.FollowReferrals != nil {
+		toSerialize["followReferrals"] = o.FollowReferrals
 	}
 	return json.Marshal(toSerialize)
 }

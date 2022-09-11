@@ -5,15 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowPasswordChanges** | Pointer to **bool** | Defaults to false if this property isn&#39;t specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway. | [optional] 
-**Id** | **string** | The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | 
+**Id** | Pointer to **string** | The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | [optional] 
 **Name** | **string** | The name of the user type. | 
-**NewUserLookup** | [**GatewayLDAPAllOfNewUserLookup**](GatewayLDAPAllOfNewUserLookup.md) |  | 
+**NewUserLookup** | Pointer to [**GatewayLDAPAllOfNewUserLookup**](GatewayLDAPAllOfNewUserLookup.md) |  | [optional] 
+**OrderedCorrelationAttributes** | **[]string** | A map of key/value entries used to persist the external LDAP directory attributes. | 
+**PasswordAuthority** | [**EnumGatewayPasswordAuthority**](EnumGatewayPasswordAuthority.md) |  | 
+**SearchBaseDn** | **string** | The LDAP base domain name (DN) for this user type. | 
 
 ## Methods
 
 ### NewGatewayLDAPAllOfUserTypes
 
-`func NewGatewayLDAPAllOfUserTypes(id string, name string, newUserLookup GatewayLDAPAllOfNewUserLookup, ) *GatewayLDAPAllOfUserTypes`
+`func NewGatewayLDAPAllOfUserTypes(name string, orderedCorrelationAttributes []string, passwordAuthority EnumGatewayPasswordAuthority, searchBaseDn string, ) *GatewayLDAPAllOfUserTypes`
 
 NewGatewayLDAPAllOfUserTypes instantiates a new GatewayLDAPAllOfUserTypes object
 This constructor will assign default values to properties that have it defined,
@@ -72,6 +75,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *GatewayLDAPAllOfUserTypes) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -111,6 +119,71 @@ and a boolean to check if the value has been set.
 `func (o *GatewayLDAPAllOfUserTypes) SetNewUserLookup(v GatewayLDAPAllOfNewUserLookup)`
 
 SetNewUserLookup sets NewUserLookup field to given value.
+
+### HasNewUserLookup
+
+`func (o *GatewayLDAPAllOfUserTypes) HasNewUserLookup() bool`
+
+HasNewUserLookup returns a boolean if a field has been set.
+
+### GetOrderedCorrelationAttributes
+
+`func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []string`
+
+GetOrderedCorrelationAttributes returns the OrderedCorrelationAttributes field if non-nil, zero value otherwise.
+
+### GetOrderedCorrelationAttributesOk
+
+`func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() (*[]string, bool)`
+
+GetOrderedCorrelationAttributesOk returns a tuple with the OrderedCorrelationAttributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderedCorrelationAttributes
+
+`func (o *GatewayLDAPAllOfUserTypes) SetOrderedCorrelationAttributes(v []string)`
+
+SetOrderedCorrelationAttributes sets OrderedCorrelationAttributes field to given value.
+
+
+### GetPasswordAuthority
+
+`func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswordAuthority`
+
+GetPasswordAuthority returns the PasswordAuthority field if non-nil, zero value otherwise.
+
+### GetPasswordAuthorityOk
+
+`func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswordAuthority, bool)`
+
+GetPasswordAuthorityOk returns a tuple with the PasswordAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordAuthority
+
+`func (o *GatewayLDAPAllOfUserTypes) SetPasswordAuthority(v EnumGatewayPasswordAuthority)`
+
+SetPasswordAuthority sets PasswordAuthority field to given value.
+
+
+### GetSearchBaseDn
+
+`func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDn() string`
+
+GetSearchBaseDn returns the SearchBaseDn field if non-nil, zero value otherwise.
+
+### GetSearchBaseDnOk
+
+`func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool)`
+
+GetSearchBaseDnOk returns a tuple with the SearchBaseDn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchBaseDn
+
+`func (o *GatewayLDAPAllOfUserTypes) SetSearchBaseDn(v string)`
+
+SetSearchBaseDn sets SearchBaseDn field to given value.
 
 
 

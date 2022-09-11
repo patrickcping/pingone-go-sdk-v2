@@ -226,7 +226,7 @@ docs/GatewayLDAPAllOfNewUserLookupAttributeMappings.md
 docs/GatewayLDAPAllOfNewUserLookupPopulation.md
 docs/GatewayLDAPAllOfUserTypes.md
 docs/GatewayRoleAssignmentsApi.md
-docs/GatewaySupportedVersions.md
+docs/GatewaySupportedVersionsInner.md
 docs/GatewaysApi.md
 docs/Group.md
 docs/GroupDirectMemberCounts.md
@@ -535,7 +535,7 @@ model_gateway_ldap_all_of_new_user_lookup.go
 model_gateway_ldap_all_of_new_user_lookup_attribute_mappings.go
 model_gateway_ldap_all_of_new_user_lookup_population.go
 model_gateway_ldap_all_of_user_types.go
-model_gateway_supported_versions.go
+model_gateway_supported_versions_inner.go
 model_group.go
 model_group_direct_member_counts.go
 model_group_membership.go

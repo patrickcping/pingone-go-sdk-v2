@@ -21195,11 +21195,11 @@ components:
       - API_GATEWAY_INTEGRATION
       type: string
     EnumGatewayPasswordAuthority:
-      description: "This can be either `PINGONE` or `LDAP`. If set to `PINGONE`, PingOne\
-        \ authenticates with the external directory initially, then PingOne authenticates\
-        \ all subsequent sign-ons."
+      description: "This can be either `PING_ONE` or `LDAP`. If set to `PING_ONE`,\
+        \ PingOne authenticates with the external directory initially, then PingOne\
+        \ authenticates all subsequent sign-ons."
       enum:
-      - PINGONE
+      - PING_ONE
       - LDAP
       type: string
     EnumGatewayVendor:
@@ -23153,6 +23153,7 @@ components:
         credentials:
           items:
             $ref: '#/components/schemas/GatewayCredential'
+          readOnly: true
           type: array
         name:
           description: "A string that specifies the resource name, which must be provided\
@@ -23170,7 +23171,20 @@ components:
             is a required property.
           type: boolean
         supportedVersions:
-          $ref: '#/components/schemas/Gateway_supportedVersions'
+          description: "An array that lists the LDAP gateway versions associated with\
+            \ this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways\
+            \ request, and it is used to trigger alerts if the gateway tries to connect\
+            \ with an unsupported version (or a version that is not the latest or\
+            \ recommended version)."
+          items:
+            $ref: '#/components/schemas/Gateway_supportedVersions_inner'
+          readOnly: true
+          type: array
+        currentAlerts:
+          items:
+            type: object
+          readOnly: true
+          type: array
       required:
       - enabled
       - name
@@ -26321,12 +26335,7 @@ components:
             identifier associated with the environment.
           type: string
       type: object
-    Gateway_supportedVersions:
-      description: "An array that lists the LDAP gateway versions associated with\
-        \ this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways\
-        \ request, and it is used to trigger alerts if the gateway tries to connect\
-        \ with an unsupported version (or a version that is not the latest or recommended\
-        \ version)."
+    Gateway_supportedVersions_inner:
       properties:
         version:
           description: A string that specifies the gateway version number.
@@ -26342,6 +26351,11 @@ components:
           description: A boolean that specifies whether this is the latest LDAP gateway
             version.
           type: boolean
+        supportEndsOn:
+          format: date-time
+          type: string
+        daysUntilSupportEnds:
+          type: integer
       type: object
     GatewayLDAP_allOf_kerberos:
       description: Contains the Kerberos authentication settings. Set this to null
@@ -26404,19 +26418,10 @@ components:
           type: string
         population:
           $ref: '#/components/schemas/GatewayLDAP_allOf_newUserLookup_population'
-        orderedCorrelationAttributes:
-          description: A map of key/value entries used to persist the external LDAP
-            directory attributes.
-          items:
-            type: object
-          type: array
-        passwordAuthority:
-          $ref: '#/components/schemas/EnumGatewayPasswordAuthority'
-        searchBaseDn:
-          description: The LDAP base domain name (DN) for this user type.
-          type: string
       required:
       - attributeMappings
+      - ldapFilterPattern
+      - population
       type: object
     GatewayLDAP_allOf_userTypes:
       properties:
@@ -26436,11 +26441,22 @@ components:
           type: string
         newUserLookup:
           $ref: '#/components/schemas/GatewayLDAP_allOf_newUserLookup'
+        orderedCorrelationAttributes:
+          description: A map of key/value entries used to persist the external LDAP
+            directory attributes.
+          items:
+            type: string
+          type: array
+        passwordAuthority:
+          $ref: '#/components/schemas/EnumGatewayPasswordAuthority'
+        searchBaseDn:
+          description: The LDAP base domain name (DN) for this user type.
+          type: string
       required:
-      - id
       - name
-      - newUserLookup
+      - orderedCorrelationAttributes
       - passwordAuthority
+      - searchBaseDn
       type: object
     GatewayLDAP_allOf:
       properties:
@@ -26479,10 +26495,13 @@ components:
           type: boolean
         vendor:
           $ref: '#/components/schemas/EnumGatewayVendor'
+        followReferrals:
+          readOnly: true
+          type: boolean
       required:
       - bindDN
       - bindPassword
-      - userTypes
+      - serversHostAndPort
       - vendor
       type: object
     GatewayInstance_gateway:

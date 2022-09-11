@@ -15,8 +15,8 @@ import (
 	"time"
 )
 
-// GatewaySupportedVersions An array that lists the LDAP gateway versions associated with this gateway resource. This information is returned on a GET {{apiPath}}/environments/{{environmentID}}/gateways request, and it is used to trigger alerts if the gateway tries to connect with an unsupported version (or a version that is not the latest or recommended version).
-type GatewaySupportedVersions struct {
+// GatewaySupportedVersionsInner struct for GatewaySupportedVersionsInner
+type GatewaySupportedVersionsInner struct {
 	// A string that specifies the gateway version number.
 	Version *string `json:"version,omitempty"`
 	// A string that identifies the gateway image path.
@@ -29,25 +29,25 @@ type GatewaySupportedVersions struct {
 	DaysUntilSupportEnds *int32 `json:"daysUntilSupportEnds,omitempty"`
 }
 
-// NewGatewaySupportedVersions instantiates a new GatewaySupportedVersions object
+// NewGatewaySupportedVersionsInner instantiates a new GatewaySupportedVersionsInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewaySupportedVersions() *GatewaySupportedVersions {
-	this := GatewaySupportedVersions{}
+func NewGatewaySupportedVersionsInner() *GatewaySupportedVersionsInner {
+	this := GatewaySupportedVersionsInner{}
 	return &this
 }
 
-// NewGatewaySupportedVersionsWithDefaults instantiates a new GatewaySupportedVersions object
+// NewGatewaySupportedVersionsInnerWithDefaults instantiates a new GatewaySupportedVersionsInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGatewaySupportedVersionsWithDefaults() *GatewaySupportedVersions {
-	this := GatewaySupportedVersions{}
+func NewGatewaySupportedVersionsInnerWithDefaults() *GatewaySupportedVersionsInner {
+	this := GatewaySupportedVersionsInner{}
 	return &this
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
-func (o *GatewaySupportedVersions) GetVersion() string {
+func (o *GatewaySupportedVersionsInner) GetVersion() string {
 	if o == nil || o.Version == nil {
 		var ret string
 		return ret
@@ -57,7 +57,7 @@ func (o *GatewaySupportedVersions) GetVersion() string {
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewaySupportedVersions) GetVersionOk() (*string, bool) {
+func (o *GatewaySupportedVersionsInner) GetVersionOk() (*string, bool) {
 	if o == nil || o.Version == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *GatewaySupportedVersions) GetVersionOk() (*string, bool) {
 }
 
 // HasVersion returns a boolean if a field has been set.
-func (o *GatewaySupportedVersions) HasVersion() bool {
+func (o *GatewaySupportedVersionsInner) HasVersion() bool {
 	if o != nil && o.Version != nil {
 		return true
 	}
@@ -74,12 +74,12 @@ func (o *GatewaySupportedVersions) HasVersion() bool {
 }
 
 // SetVersion gets a reference to the given string and assigns it to the Version field.
-func (o *GatewaySupportedVersions) SetVersion(v string) {
+func (o *GatewaySupportedVersionsInner) SetVersion(v string) {
 	o.Version = &v
 }
 
 // GetImage returns the Image field value if set, zero value otherwise.
-func (o *GatewaySupportedVersions) GetImage() string {
+func (o *GatewaySupportedVersionsInner) GetImage() string {
 	if o == nil || o.Image == nil {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *GatewaySupportedVersions) GetImage() string {
 
 // GetImageOk returns a tuple with the Image field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewaySupportedVersions) GetImageOk() (*string, bool) {
+func (o *GatewaySupportedVersionsInner) GetImageOk() (*string, bool) {
 	if o == nil || o.Image == nil {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *GatewaySupportedVersions) GetImageOk() (*string, bool) {
 }
 
 // HasImage returns a boolean if a field has been set.
-func (o *GatewaySupportedVersions) HasImage() bool {
+func (o *GatewaySupportedVersionsInner) HasImage() bool {
 	if o != nil && o.Image != nil {
 		return true
 	}
@@ -106,12 +106,12 @@ func (o *GatewaySupportedVersions) HasImage() bool {
 }
 
 // SetImage gets a reference to the given string and assigns it to the Image field.
-func (o *GatewaySupportedVersions) SetImage(v string) {
+func (o *GatewaySupportedVersionsInner) SetImage(v string) {
 	o.Image = &v
 }
 
 // GetRecommended returns the Recommended field value if set, zero value otherwise.
-func (o *GatewaySupportedVersions) GetRecommended() bool {
+func (o *GatewaySupportedVersionsInner) GetRecommended() bool {
 	if o == nil || o.Recommended == nil {
 		var ret bool
 		return ret
@@ -121,7 +121,7 @@ func (o *GatewaySupportedVersions) GetRecommended() bool {
 
 // GetRecommendedOk returns a tuple with the Recommended field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewaySupportedVersions) GetRecommendedOk() (*bool, bool) {
+func (o *GatewaySupportedVersionsInner) GetRecommendedOk() (*bool, bool) {
 	if o == nil || o.Recommended == nil {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *GatewaySupportedVersions) GetRecommendedOk() (*bool, bool) {
 }
 
 // HasRecommended returns a boolean if a field has been set.
-func (o *GatewaySupportedVersions) HasRecommended() bool {
+func (o *GatewaySupportedVersionsInner) HasRecommended() bool {
 	if o != nil && o.Recommended != nil {
 		return true
 	}
@@ -138,12 +138,12 @@ func (o *GatewaySupportedVersions) HasRecommended() bool {
 }
 
 // SetRecommended gets a reference to the given bool and assigns it to the Recommended field.
-func (o *GatewaySupportedVersions) SetRecommended(v bool) {
+func (o *GatewaySupportedVersionsInner) SetRecommended(v bool) {
 	o.Recommended = &v
 }
 
 // GetLatest returns the Latest field value if set, zero value otherwise.
-func (o *GatewaySupportedVersions) GetLatest() bool {
+func (o *GatewaySupportedVersionsInner) GetLatest() bool {
 	if o == nil || o.Latest == nil {
 		var ret bool
 		return ret
@@ -153,7 +153,7 @@ func (o *GatewaySupportedVersions) GetLatest() bool {
 
 // GetLatestOk returns a tuple with the Latest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewaySupportedVersions) GetLatestOk() (*bool, bool) {
+func (o *GatewaySupportedVersionsInner) GetLatestOk() (*bool, bool) {
 	if o == nil || o.Latest == nil {
 		return nil, false
 	}
@@ -161,7 +161,7 @@ func (o *GatewaySupportedVersions) GetLatestOk() (*bool, bool) {
 }
 
 // HasLatest returns a boolean if a field has been set.
-func (o *GatewaySupportedVersions) HasLatest() bool {
+func (o *GatewaySupportedVersionsInner) HasLatest() bool {
 	if o != nil && o.Latest != nil {
 		return true
 	}
@@ -170,12 +170,12 @@ func (o *GatewaySupportedVersions) HasLatest() bool {
 }
 
 // SetLatest gets a reference to the given bool and assigns it to the Latest field.
-func (o *GatewaySupportedVersions) SetLatest(v bool) {
+func (o *GatewaySupportedVersionsInner) SetLatest(v bool) {
 	o.Latest = &v
 }
 
 // GetSupportEndsOn returns the SupportEndsOn field value if set, zero value otherwise.
-func (o *GatewaySupportedVersions) GetSupportEndsOn() time.Time {
+func (o *GatewaySupportedVersionsInner) GetSupportEndsOn() time.Time {
 	if o == nil || o.SupportEndsOn == nil {
 		var ret time.Time
 		return ret
@@ -185,7 +185,7 @@ func (o *GatewaySupportedVersions) GetSupportEndsOn() time.Time {
 
 // GetSupportEndsOnOk returns a tuple with the SupportEndsOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewaySupportedVersions) GetSupportEndsOnOk() (*time.Time, bool) {
+func (o *GatewaySupportedVersionsInner) GetSupportEndsOnOk() (*time.Time, bool) {
 	if o == nil || o.SupportEndsOn == nil {
 		return nil, false
 	}
@@ -193,7 +193,7 @@ func (o *GatewaySupportedVersions) GetSupportEndsOnOk() (*time.Time, bool) {
 }
 
 // HasSupportEndsOn returns a boolean if a field has been set.
-func (o *GatewaySupportedVersions) HasSupportEndsOn() bool {
+func (o *GatewaySupportedVersionsInner) HasSupportEndsOn() bool {
 	if o != nil && o.SupportEndsOn != nil {
 		return true
 	}
@@ -202,12 +202,12 @@ func (o *GatewaySupportedVersions) HasSupportEndsOn() bool {
 }
 
 // SetSupportEndsOn gets a reference to the given time.Time and assigns it to the SupportEndsOn field.
-func (o *GatewaySupportedVersions) SetSupportEndsOn(v time.Time) {
+func (o *GatewaySupportedVersionsInner) SetSupportEndsOn(v time.Time) {
 	o.SupportEndsOn = &v
 }
 
 // GetDaysUntilSupportEnds returns the DaysUntilSupportEnds field value if set, zero value otherwise.
-func (o *GatewaySupportedVersions) GetDaysUntilSupportEnds() int32 {
+func (o *GatewaySupportedVersionsInner) GetDaysUntilSupportEnds() int32 {
 	if o == nil || o.DaysUntilSupportEnds == nil {
 		var ret int32
 		return ret
@@ -217,7 +217,7 @@ func (o *GatewaySupportedVersions) GetDaysUntilSupportEnds() int32 {
 
 // GetDaysUntilSupportEndsOk returns a tuple with the DaysUntilSupportEnds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewaySupportedVersions) GetDaysUntilSupportEndsOk() (*int32, bool) {
+func (o *GatewaySupportedVersionsInner) GetDaysUntilSupportEndsOk() (*int32, bool) {
 	if o == nil || o.DaysUntilSupportEnds == nil {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *GatewaySupportedVersions) GetDaysUntilSupportEndsOk() (*int32, bool) {
 }
 
 // HasDaysUntilSupportEnds returns a boolean if a field has been set.
-func (o *GatewaySupportedVersions) HasDaysUntilSupportEnds() bool {
+func (o *GatewaySupportedVersionsInner) HasDaysUntilSupportEnds() bool {
 	if o != nil && o.DaysUntilSupportEnds != nil {
 		return true
 	}
@@ -234,11 +234,11 @@ func (o *GatewaySupportedVersions) HasDaysUntilSupportEnds() bool {
 }
 
 // SetDaysUntilSupportEnds gets a reference to the given int32 and assigns it to the DaysUntilSupportEnds field.
-func (o *GatewaySupportedVersions) SetDaysUntilSupportEnds(v int32) {
+func (o *GatewaySupportedVersionsInner) SetDaysUntilSupportEnds(v int32) {
 	o.DaysUntilSupportEnds = &v
 }
 
-func (o GatewaySupportedVersions) MarshalJSON() ([]byte, error) {
+func (o GatewaySupportedVersionsInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Version != nil {
 		toSerialize["version"] = o.Version
@@ -261,38 +261,38 @@ func (o GatewaySupportedVersions) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGatewaySupportedVersions struct {
-	value *GatewaySupportedVersions
+type NullableGatewaySupportedVersionsInner struct {
+	value *GatewaySupportedVersionsInner
 	isSet bool
 }
 
-func (v NullableGatewaySupportedVersions) Get() *GatewaySupportedVersions {
+func (v NullableGatewaySupportedVersionsInner) Get() *GatewaySupportedVersionsInner {
 	return v.value
 }
 
-func (v *NullableGatewaySupportedVersions) Set(val *GatewaySupportedVersions) {
+func (v *NullableGatewaySupportedVersionsInner) Set(val *GatewaySupportedVersionsInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGatewaySupportedVersions) IsSet() bool {
+func (v NullableGatewaySupportedVersionsInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGatewaySupportedVersions) Unset() {
+func (v *NullableGatewaySupportedVersionsInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGatewaySupportedVersions(val *GatewaySupportedVersions) *NullableGatewaySupportedVersions {
-	return &NullableGatewaySupportedVersions{value: val, isSet: true}
+func NewNullableGatewaySupportedVersionsInner(val *GatewaySupportedVersionsInner) *NullableGatewaySupportedVersionsInner {
+	return &NullableGatewaySupportedVersionsInner{value: val, isSet: true}
 }
 
-func (v NullableGatewaySupportedVersions) MarshalJSON() ([]byte, error) {
+func (v NullableGatewaySupportedVersionsInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGatewaySupportedVersions) UnmarshalJSON(src []byte) error {
+func (v *NullableGatewaySupportedVersionsInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
