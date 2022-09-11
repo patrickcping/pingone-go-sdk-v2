@@ -5,18 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowPasswordChanges** | Pointer to **bool** | Defaults to false if this property isn&#39;t specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway. | [optional] 
-**Id** | **string** | The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | 
+**Id** | Pointer to **string** | The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | [optional] 
 **Name** | **string** | The name of the user type. | 
-**NewUserLookup** | [**GatewayLDAPAllOfNewUserLookup**](GatewayLDAPAllOfNewUserLookup.md) |  | 
-**OrderedCorrelationAttributes** | Pointer to **[]string** | A map of key/value entries used to persist the external LDAP directory attributes. | [optional] 
+**NewUserLookup** | Pointer to [**GatewayLDAPAllOfNewUserLookup**](GatewayLDAPAllOfNewUserLookup.md) |  | [optional] 
+**OrderedCorrelationAttributes** | **[]string** | A map of key/value entries used to persist the external LDAP directory attributes. | 
 **PasswordAuthority** | [**EnumGatewayPasswordAuthority**](EnumGatewayPasswordAuthority.md) |  | 
-**SearchBaseDn** | Pointer to **string** | The LDAP base domain name (DN) for this user type. | [optional] 
+**SearchBaseDn** | **string** | The LDAP base domain name (DN) for this user type. | 
 
 ## Methods
 
 ### NewGatewayLDAPAllOfUserTypes
 
-`func NewGatewayLDAPAllOfUserTypes(id string, name string, newUserLookup GatewayLDAPAllOfNewUserLookup, passwordAuthority EnumGatewayPasswordAuthority, ) *GatewayLDAPAllOfUserTypes`
+`func NewGatewayLDAPAllOfUserTypes(name string, orderedCorrelationAttributes []string, passwordAuthority EnumGatewayPasswordAuthority, searchBaseDn string, ) *GatewayLDAPAllOfUserTypes`
 
 NewGatewayLDAPAllOfUserTypes instantiates a new GatewayLDAPAllOfUserTypes object
 This constructor will assign default values to properties that have it defined,
@@ -75,6 +75,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *GatewayLDAPAllOfUserTypes) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -115,6 +120,11 @@ and a boolean to check if the value has been set.
 
 SetNewUserLookup sets NewUserLookup field to given value.
 
+### HasNewUserLookup
+
+`func (o *GatewayLDAPAllOfUserTypes) HasNewUserLookup() bool`
+
+HasNewUserLookup returns a boolean if a field has been set.
 
 ### GetOrderedCorrelationAttributes
 
@@ -135,11 +145,6 @@ and a boolean to check if the value has been set.
 
 SetOrderedCorrelationAttributes sets OrderedCorrelationAttributes field to given value.
 
-### HasOrderedCorrelationAttributes
-
-`func (o *GatewayLDAPAllOfUserTypes) HasOrderedCorrelationAttributes() bool`
-
-HasOrderedCorrelationAttributes returns a boolean if a field has been set.
 
 ### GetPasswordAuthority
 
@@ -180,11 +185,6 @@ and a boolean to check if the value has been set.
 
 SetSearchBaseDn sets SearchBaseDn field to given value.
 
-### HasSearchBaseDn
-
-`func (o *GatewayLDAPAllOfUserTypes) HasSearchBaseDn() bool`
-
-HasSearchBaseDn returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

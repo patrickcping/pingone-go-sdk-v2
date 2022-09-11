@@ -26420,6 +26420,8 @@ components:
           $ref: '#/components/schemas/GatewayLDAP_allOf_newUserLookup_population'
       required:
       - attributeMappings
+      - ldapFilterPattern
+      - population
       type: object
     GatewayLDAP_allOf_userTypes:
       properties:
@@ -26451,10 +26453,10 @@ components:
           description: The LDAP base domain name (DN) for this user type.
           type: string
       required:
-      - id
       - name
-      - newUserLookup
+      - orderedCorrelationAttributes
       - passwordAuthority
+      - searchBaseDn
       type: object
     GatewayLDAP_allOf:
       properties:
@@ -26499,7 +26501,7 @@ components:
       required:
       - bindDN
       - bindPassword
-      - userTypes
+      - serversHostAndPort
       - vendor
       type: object
     GatewayInstance_gateway:

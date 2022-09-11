@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **BindPassword** | **string** | A string that specifies the bind password for the LDAP database. This is a required property. | 
 **ConnectionSecurity** | Pointer to [**EnumGatewayLDAPSecurity**](EnumGatewayLDAPSecurity.md) |  | [optional] 
 **Kerberos** | Pointer to [**GatewayLDAPAllOfKerberos**](GatewayLDAPAllOfKerberos.md) |  | [optional] 
-**ServersHostAndPort** | Pointer to **[]string** | An array of strings that specifies the LDAP server host name and port number (for example, [&#x60;ds1.example.com:389&#x60;, &#x60;ds2.example.com:389&#x60;]). | [optional] 
-**UserTypes** | [**[]GatewayLDAPAllOfUserTypes**](GatewayLDAPAllOfUserTypes.md) | An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | 
+**ServersHostAndPort** | **[]string** | An array of strings that specifies the LDAP server host name and port number (for example, [&#x60;ds1.example.com:389&#x60;, &#x60;ds2.example.com:389&#x60;]). | 
+**UserTypes** | Pointer to [**[]GatewayLDAPAllOfUserTypes**](GatewayLDAPAllOfUserTypes.md) | An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | [optional] 
 **ValidateTlsCertificates** | Pointer to **bool** | A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted. | [optional] 
 **Vendor** | [**EnumGatewayVendor**](EnumGatewayVendor.md) |  | 
 **FollowReferrals** | Pointer to **bool** |  | [optional] [readonly] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewGatewayLDAPAllOf
 
-`func NewGatewayLDAPAllOf(bindDN string, bindPassword string, userTypes []GatewayLDAPAllOfUserTypes, vendor EnumGatewayVendor, ) *GatewayLDAPAllOf`
+`func NewGatewayLDAPAllOf(bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor, ) *GatewayLDAPAllOf`
 
 NewGatewayLDAPAllOf instantiates a new GatewayLDAPAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -142,11 +142,6 @@ and a boolean to check if the value has been set.
 
 SetServersHostAndPort sets ServersHostAndPort field to given value.
 
-### HasServersHostAndPort
-
-`func (o *GatewayLDAPAllOf) HasServersHostAndPort() bool`
-
-HasServersHostAndPort returns a boolean if a field has been set.
 
 ### GetUserTypes
 
@@ -167,6 +162,11 @@ and a boolean to check if the value has been set.
 
 SetUserTypes sets UserTypes field to given value.
 
+### HasUserTypes
+
+`func (o *GatewayLDAPAllOf) HasUserTypes() bool`
+
+HasUserTypes returns a boolean if a field has been set.
 
 ### GetValidateTlsCertificates
 

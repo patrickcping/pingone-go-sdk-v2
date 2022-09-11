@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AttributeMappings** | [**[]GatewayLDAPAllOfNewUserLookupAttributeMappings**](GatewayLDAPAllOfNewUserLookupAttributeMappings.md) | A list of objects supplying a mapping of PingOne attributes to external LDAP attributes. One of the entries must be a mapping for \&quot;username&#x60;. This is required for the PingOne user schema. | 
-**LdapFilterPattern** | Pointer to **string** | The LDAP user search filter to use to match users against the entered user identifier at login. For example, (((uid&#x3D;${identifier})(mail&#x3D;${identifier})). Alternatively, this can be a search against the user directory. | [optional] 
-**Population** | Pointer to [**GatewayLDAPAllOfNewUserLookupPopulation**](GatewayLDAPAllOfNewUserLookupPopulation.md) |  | [optional] 
+**LdapFilterPattern** | **string** | The LDAP user search filter to use to match users against the entered user identifier at login. For example, (((uid&#x3D;${identifier})(mail&#x3D;${identifier})). Alternatively, this can be a search against the user directory. | 
+**Population** | [**GatewayLDAPAllOfNewUserLookupPopulation**](GatewayLDAPAllOfNewUserLookupPopulation.md) |  | 
 
 ## Methods
 
 ### NewGatewayLDAPAllOfNewUserLookup
 
-`func NewGatewayLDAPAllOfNewUserLookup(attributeMappings []GatewayLDAPAllOfNewUserLookupAttributeMappings, ) *GatewayLDAPAllOfNewUserLookup`
+`func NewGatewayLDAPAllOfNewUserLookup(attributeMappings []GatewayLDAPAllOfNewUserLookupAttributeMappings, ldapFilterPattern string, population GatewayLDAPAllOfNewUserLookupPopulation, ) *GatewayLDAPAllOfNewUserLookup`
 
 NewGatewayLDAPAllOfNewUserLookup instantiates a new GatewayLDAPAllOfNewUserLookup object
 This constructor will assign default values to properties that have it defined,
@@ -66,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetLdapFilterPattern sets LdapFilterPattern field to given value.
 
-### HasLdapFilterPattern
-
-`func (o *GatewayLDAPAllOfNewUserLookup) HasLdapFilterPattern() bool`
-
-HasLdapFilterPattern returns a boolean if a field has been set.
 
 ### GetPopulation
 
@@ -91,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetPopulation sets Population field to given value.
 
-### HasPopulation
-
-`func (o *GatewayLDAPAllOfNewUserLookup) HasPopulation() bool`
-
-HasPopulation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
