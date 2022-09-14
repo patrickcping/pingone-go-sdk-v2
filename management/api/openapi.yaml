@@ -24400,6 +24400,12 @@ components:
       allOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommon'
       - $ref: '#/components/schemas/SignOnPolicyActionProgressiveProfiling_allOf'
+    SignOnPolicyActionPingID:
+      $ref: '#/components/schemas/SignOnPolicyActionCommon'
+    SignOnPolicyActionPingIDWinLoginPasswordless:
+      allOf:
+      - $ref: '#/components/schemas/SignOnPolicyActionCommon'
+      - $ref: '#/components/schemas/SignOnPolicyActionPingIDWinLoginPasswordless_allOf'
     SignOnPolicyAssignment:
       example:
         environment:
@@ -27485,6 +27491,35 @@ components:
       - preventMultiplePromptsPerFlow
       - promptIntervalSeconds
       - promptText
+      type: object
+    SignOnPolicyActionPingIDWinLoginPasswordless_allOf_uniqueUserAttribute:
+      properties:
+        name:
+          description: Schema attributes to match against the provided identifier
+            when searching for a user in the directory. Only unique attributes may
+            be included.
+          type: string
+      required:
+      - name
+      type: object
+    SignOnPolicyActionPingIDWinLoginPasswordless_allOf_offlineMode:
+      properties:
+        enabled:
+          description: Select this option to allow users to log in when PingOne and
+            or PingID are not available.
+          type: boolean
+      required:
+      - enabled
+      type: object
+    SignOnPolicyActionPingIDWinLoginPasswordless_allOf:
+      properties:
+        uniqueUserAttribute:
+          $ref: '#/components/schemas/SignOnPolicyActionPingIDWinLoginPasswordless_allOf_uniqueUserAttribute'
+        offlineMode:
+          $ref: '#/components/schemas/SignOnPolicyActionPingIDWinLoginPasswordless_allOf_offlineMode'
+      required:
+      - offlineMode
+      - uniqueUserAttribute
       type: object
     Subscription_filterOptions_includedApplications_inner:
       example:

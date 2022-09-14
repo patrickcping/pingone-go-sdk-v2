@@ -2919,6 +2919,32 @@ components:
             - preventMultiplePromptsPerFlow
             - promptIntervalSeconds
             - promptText
+    SignOnPolicyActionPingID:
+      $ref: '#/components/schemas/SignOnPolicyActionCommon'
+    SignOnPolicyActionPingIDWinLoginPasswordless:
+      allOf:
+        - $ref: '#/components/schemas/SignOnPolicyActionCommon'
+        - type: object
+          properties:
+            uniqueUserAttribute:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Schema attributes to match against the provided identifier when searching for a user in the directory. Only unique attributes may be included.
+              required:
+                - name
+            offlineMode:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: Select this option to allow users to log in when PingOne and or PingID are not available.
+              required:
+                - enabled
+          required:
+            - uniqueUserAttribute
+            - offlineMode
     SignOnPolicyAssignment:
       type: object
       properties:
