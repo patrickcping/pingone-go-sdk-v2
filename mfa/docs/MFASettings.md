@@ -4,16 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Authentication** | Pointer to [**MFASettingsAuthentication**](MFASettingsAuthentication.md) |  | [optional] 
-**Lockout** | Pointer to [**MFASettingsLockout**](MFASettingsLockout.md) |  | [optional] 
-**Pairing** | Pointer to [**MFASettingsPairing**](MFASettingsPairing.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**Authentication** | [**MFASettingsAuthentication**](MFASettingsAuthentication.md) |  | 
+**Lockout** | [**MFASettingsLockout**](MFASettingsLockout.md) |  | 
+**Pairing** | [**MFASettingsPairing**](MFASettingsPairing.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
 ### NewMFASettings
 
-`func NewMFASettings() *MFASettings`
+`func NewMFASettings(authentication MFASettingsAuthentication, lockout MFASettingsLockout, pairing MFASettingsPairing, ) *MFASettings`
 
 NewMFASettings instantiates a new MFASettings object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewMFASettingsWithDefaults instantiates a new MFASettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEnvironment
+
+`func (o *MFASettings) GetEnvironment() ObjectEnvironment`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *MFASettings) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *MFASettings) SetEnvironment(v ObjectEnvironment)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *MFASettings) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetAuthentication
 
@@ -47,11 +73,6 @@ and a boolean to check if the value has been set.
 
 SetAuthentication sets Authentication field to given value.
 
-### HasAuthentication
-
-`func (o *MFASettings) HasAuthentication() bool`
-
-HasAuthentication returns a boolean if a field has been set.
 
 ### GetLockout
 
@@ -72,11 +93,6 @@ and a boolean to check if the value has been set.
 
 SetLockout sets Lockout field to given value.
 
-### HasLockout
-
-`func (o *MFASettings) HasLockout() bool`
-
-HasLockout returns a boolean if a field has been set.
 
 ### GetPairing
 
@@ -97,11 +113,6 @@ and a boolean to check if the value has been set.
 
 SetPairing sets Pairing field to given value.
 
-### HasPairing
-
-`func (o *MFASettings) HasPairing() bool`
-
-HasPairing returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

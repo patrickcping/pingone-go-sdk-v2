@@ -16,15 +16,16 @@ import (
 
 // MFASettingsAuthentication An object that contains the device selection settings.
 type MFASettingsAuthentication struct {
-	DeviceSelection *EnumMFASettingsDeviceSelection `json:"deviceSelection,omitempty"`
+	DeviceSelection EnumMFASettingsDeviceSelection `json:"deviceSelection"`
 }
 
 // NewMFASettingsAuthentication instantiates a new MFASettingsAuthentication object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFASettingsAuthentication() *MFASettingsAuthentication {
+func NewMFASettingsAuthentication(deviceSelection EnumMFASettingsDeviceSelection) *MFASettingsAuthentication {
 	this := MFASettingsAuthentication{}
+	this.DeviceSelection = deviceSelection
 	return &this
 }
 
@@ -36,41 +37,33 @@ func NewMFASettingsAuthenticationWithDefaults() *MFASettingsAuthentication {
 	return &this
 }
 
-// GetDeviceSelection returns the DeviceSelection field value if set, zero value otherwise.
+// GetDeviceSelection returns the DeviceSelection field value
 func (o *MFASettingsAuthentication) GetDeviceSelection() EnumMFASettingsDeviceSelection {
-	if o == nil || o.DeviceSelection == nil {
+	if o == nil {
 		var ret EnumMFASettingsDeviceSelection
 		return ret
 	}
-	return *o.DeviceSelection
+
+	return o.DeviceSelection
 }
 
-// GetDeviceSelectionOk returns a tuple with the DeviceSelection field value if set, nil otherwise
+// GetDeviceSelectionOk returns a tuple with the DeviceSelection field value
 // and a boolean to check if the value has been set.
 func (o *MFASettingsAuthentication) GetDeviceSelectionOk() (*EnumMFASettingsDeviceSelection, bool) {
-	if o == nil || o.DeviceSelection == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeviceSelection, true
+	return &o.DeviceSelection, true
 }
 
-// HasDeviceSelection returns a boolean if a field has been set.
-func (o *MFASettingsAuthentication) HasDeviceSelection() bool {
-	if o != nil && o.DeviceSelection != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDeviceSelection gets a reference to the given EnumMFASettingsDeviceSelection and assigns it to the DeviceSelection field.
+// SetDeviceSelection sets field value
 func (o *MFASettingsAuthentication) SetDeviceSelection(v EnumMFASettingsDeviceSelection) {
-	o.DeviceSelection = &v
+	o.DeviceSelection = v
 }
 
 func (o MFASettingsAuthentication) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeviceSelection != nil {
+	if true {
 		toSerialize["deviceSelection"] = o.DeviceSelection
 	}
 	return json.Marshal(toSerialize)
