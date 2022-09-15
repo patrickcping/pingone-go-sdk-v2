@@ -2277,6 +2277,10 @@ components:
           format: date-time
           readOnly: true
           type: string
+      required:
+      - authentication
+      - lockout
+      - pairing
       type: object
     ObjectEnvironment:
       example:
@@ -2771,6 +2775,8 @@ components:
       properties:
         deviceSelection:
           $ref: '#/components/schemas/EnumMFASettingsDeviceSelection'
+      required:
+      - deviceSelection
       type: object
     MFASettings_lockout:
       description: An object that contains lockout settings.
@@ -2786,6 +2792,9 @@ components:
           description: An integer that defines the number of seconds to keep the account
             in a locked state.
           type: integer
+      required:
+      - durationSeconds
+      - failureCount
       type: object
     MFASettings_pairing:
       description: An object that contains pairing settings.
@@ -2801,6 +2810,9 @@ components:
           type: integer
         pairingKeyFormat:
           $ref: '#/components/schemas/EnumMFASettingsPairingKeyFormat'
+      required:
+      - maxAllowedDevices
+      - pairingKeyFormat
       type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault

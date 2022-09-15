@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Authentication** | Pointer to [**MFASettingsAuthentication**](MFASettingsAuthentication.md) |  | [optional] 
-**Lockout** | Pointer to [**MFASettingsLockout**](MFASettingsLockout.md) |  | [optional] 
-**Pairing** | Pointer to [**MFASettingsPairing**](MFASettingsPairing.md) |  | [optional] 
+**Authentication** | [**MFASettingsAuthentication**](MFASettingsAuthentication.md) |  | 
+**Lockout** | [**MFASettingsLockout**](MFASettingsLockout.md) |  | 
+**Pairing** | [**MFASettingsPairing**](MFASettingsPairing.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
 ### NewMFASettings
 
-`func NewMFASettings() *MFASettings`
+`func NewMFASettings(authentication MFASettingsAuthentication, lockout MFASettingsLockout, pairing MFASettingsPairing, ) *MFASettings`
 
 NewMFASettings instantiates a new MFASettings object
 This constructor will assign default values to properties that have it defined,
@@ -73,11 +73,6 @@ and a boolean to check if the value has been set.
 
 SetAuthentication sets Authentication field to given value.
 
-### HasAuthentication
-
-`func (o *MFASettings) HasAuthentication() bool`
-
-HasAuthentication returns a boolean if a field has been set.
 
 ### GetLockout
 
@@ -98,11 +93,6 @@ and a boolean to check if the value has been set.
 
 SetLockout sets Lockout field to given value.
 
-### HasLockout
-
-`func (o *MFASettings) HasLockout() bool`
-
-HasLockout returns a boolean if a field has been set.
 
 ### GetPairing
 
@@ -123,11 +113,6 @@ and a boolean to check if the value has been set.
 
 SetPairing sets Pairing field to given value.
 
-### HasPairing
-
-`func (o *MFASettings) HasPairing() bool`
-
-HasPairing returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

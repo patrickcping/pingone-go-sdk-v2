@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeviceSelection** | Pointer to [**EnumMFASettingsDeviceSelection**](EnumMFASettingsDeviceSelection.md) |  | [optional] 
+**DeviceSelection** | [**EnumMFASettingsDeviceSelection**](EnumMFASettingsDeviceSelection.md) |  | 
 
 ## Methods
 
 ### NewMFASettingsAuthentication
 
-`func NewMFASettingsAuthentication() *MFASettingsAuthentication`
+`func NewMFASettingsAuthentication(deviceSelection EnumMFASettingsDeviceSelection, ) *MFASettingsAuthentication`
 
 NewMFASettingsAuthentication instantiates a new MFASettingsAuthentication object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetDeviceSelection sets DeviceSelection field to given value.
 
-### HasDeviceSelection
-
-`func (o *MFASettingsAuthentication) HasDeviceSelection() bool`
-
-HasDeviceSelection returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

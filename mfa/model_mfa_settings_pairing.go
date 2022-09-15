@@ -17,18 +17,18 @@ import (
 // MFASettingsPairing An object that contains pairing settings.
 type MFASettingsPairing struct {
 	// An integer that defines the maximum number of MFA devices each user can have. This can be any number up to 15. The default value is 5.
-	MaxAllowedDevices *int32 `json:"maxAllowedDevices,omitempty"`
-	PairingKeyFormat *EnumMFASettingsPairingKeyFormat `json:"pairingKeyFormat,omitempty"`
+	MaxAllowedDevices int32 `json:"maxAllowedDevices"`
+	PairingKeyFormat EnumMFASettingsPairingKeyFormat `json:"pairingKeyFormat"`
 }
 
 // NewMFASettingsPairing instantiates a new MFASettingsPairing object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFASettingsPairing() *MFASettingsPairing {
+func NewMFASettingsPairing(maxAllowedDevices int32, pairingKeyFormat EnumMFASettingsPairingKeyFormat) *MFASettingsPairing {
 	this := MFASettingsPairing{}
-	var maxAllowedDevices int32 = 5
-	this.MaxAllowedDevices = &maxAllowedDevices
+	this.MaxAllowedDevices = maxAllowedDevices
+	this.PairingKeyFormat = pairingKeyFormat
 	return &this
 }
 
@@ -38,80 +38,64 @@ func NewMFASettingsPairing() *MFASettingsPairing {
 func NewMFASettingsPairingWithDefaults() *MFASettingsPairing {
 	this := MFASettingsPairing{}
 	var maxAllowedDevices int32 = 5
-	this.MaxAllowedDevices = &maxAllowedDevices
+	this.MaxAllowedDevices = maxAllowedDevices
 	return &this
 }
 
-// GetMaxAllowedDevices returns the MaxAllowedDevices field value if set, zero value otherwise.
+// GetMaxAllowedDevices returns the MaxAllowedDevices field value
 func (o *MFASettingsPairing) GetMaxAllowedDevices() int32 {
-	if o == nil || o.MaxAllowedDevices == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaxAllowedDevices
+
+	return o.MaxAllowedDevices
 }
 
-// GetMaxAllowedDevicesOk returns a tuple with the MaxAllowedDevices field value if set, nil otherwise
+// GetMaxAllowedDevicesOk returns a tuple with the MaxAllowedDevices field value
 // and a boolean to check if the value has been set.
 func (o *MFASettingsPairing) GetMaxAllowedDevicesOk() (*int32, bool) {
-	if o == nil || o.MaxAllowedDevices == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaxAllowedDevices, true
+	return &o.MaxAllowedDevices, true
 }
 
-// HasMaxAllowedDevices returns a boolean if a field has been set.
-func (o *MFASettingsPairing) HasMaxAllowedDevices() bool {
-	if o != nil && o.MaxAllowedDevices != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxAllowedDevices gets a reference to the given int32 and assigns it to the MaxAllowedDevices field.
+// SetMaxAllowedDevices sets field value
 func (o *MFASettingsPairing) SetMaxAllowedDevices(v int32) {
-	o.MaxAllowedDevices = &v
+	o.MaxAllowedDevices = v
 }
 
-// GetPairingKeyFormat returns the PairingKeyFormat field value if set, zero value otherwise.
+// GetPairingKeyFormat returns the PairingKeyFormat field value
 func (o *MFASettingsPairing) GetPairingKeyFormat() EnumMFASettingsPairingKeyFormat {
-	if o == nil || o.PairingKeyFormat == nil {
+	if o == nil {
 		var ret EnumMFASettingsPairingKeyFormat
 		return ret
 	}
-	return *o.PairingKeyFormat
+
+	return o.PairingKeyFormat
 }
 
-// GetPairingKeyFormatOk returns a tuple with the PairingKeyFormat field value if set, nil otherwise
+// GetPairingKeyFormatOk returns a tuple with the PairingKeyFormat field value
 // and a boolean to check if the value has been set.
 func (o *MFASettingsPairing) GetPairingKeyFormatOk() (*EnumMFASettingsPairingKeyFormat, bool) {
-	if o == nil || o.PairingKeyFormat == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.PairingKeyFormat, true
+	return &o.PairingKeyFormat, true
 }
 
-// HasPairingKeyFormat returns a boolean if a field has been set.
-func (o *MFASettingsPairing) HasPairingKeyFormat() bool {
-	if o != nil && o.PairingKeyFormat != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPairingKeyFormat gets a reference to the given EnumMFASettingsPairingKeyFormat and assigns it to the PairingKeyFormat field.
+// SetPairingKeyFormat sets field value
 func (o *MFASettingsPairing) SetPairingKeyFormat(v EnumMFASettingsPairingKeyFormat) {
-	o.PairingKeyFormat = &v
+	o.PairingKeyFormat = v
 }
 
 func (o MFASettingsPairing) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MaxAllowedDevices != nil {
+	if true {
 		toSerialize["maxAllowedDevices"] = o.MaxAllowedDevices
 	}
-	if o.PairingKeyFormat != nil {
+	if true {
 		toSerialize["pairingKeyFormat"] = o.PairingKeyFormat
 	}
 	return json.Marshal(toSerialize)

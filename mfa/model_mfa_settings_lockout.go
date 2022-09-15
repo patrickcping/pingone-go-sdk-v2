@@ -17,17 +17,19 @@ import (
 // MFASettingsLockout An object that contains lockout settings.
 type MFASettingsLockout struct {
 	// An integer that defines the maximum number of incorrect authentication attempts before the account is locked.
-	FailureCount *int32 `json:"failureCount,omitempty"`
+	FailureCount int32 `json:"failureCount"`
 	// An integer that defines the number of seconds to keep the account in a locked state.
-	DurationSeconds *int32 `json:"durationSeconds,omitempty"`
+	DurationSeconds int32 `json:"durationSeconds"`
 }
 
 // NewMFASettingsLockout instantiates a new MFASettingsLockout object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFASettingsLockout() *MFASettingsLockout {
+func NewMFASettingsLockout(failureCount int32, durationSeconds int32) *MFASettingsLockout {
 	this := MFASettingsLockout{}
+	this.FailureCount = failureCount
+	this.DurationSeconds = durationSeconds
 	return &this
 }
 
@@ -39,76 +41,60 @@ func NewMFASettingsLockoutWithDefaults() *MFASettingsLockout {
 	return &this
 }
 
-// GetFailureCount returns the FailureCount field value if set, zero value otherwise.
+// GetFailureCount returns the FailureCount field value
 func (o *MFASettingsLockout) GetFailureCount() int32 {
-	if o == nil || o.FailureCount == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.FailureCount
+
+	return o.FailureCount
 }
 
-// GetFailureCountOk returns a tuple with the FailureCount field value if set, nil otherwise
+// GetFailureCountOk returns a tuple with the FailureCount field value
 // and a boolean to check if the value has been set.
 func (o *MFASettingsLockout) GetFailureCountOk() (*int32, bool) {
-	if o == nil || o.FailureCount == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.FailureCount, true
+	return &o.FailureCount, true
 }
 
-// HasFailureCount returns a boolean if a field has been set.
-func (o *MFASettingsLockout) HasFailureCount() bool {
-	if o != nil && o.FailureCount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFailureCount gets a reference to the given int32 and assigns it to the FailureCount field.
+// SetFailureCount sets field value
 func (o *MFASettingsLockout) SetFailureCount(v int32) {
-	o.FailureCount = &v
+	o.FailureCount = v
 }
 
-// GetDurationSeconds returns the DurationSeconds field value if set, zero value otherwise.
+// GetDurationSeconds returns the DurationSeconds field value
 func (o *MFASettingsLockout) GetDurationSeconds() int32 {
-	if o == nil || o.DurationSeconds == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.DurationSeconds
+
+	return o.DurationSeconds
 }
 
-// GetDurationSecondsOk returns a tuple with the DurationSeconds field value if set, nil otherwise
+// GetDurationSecondsOk returns a tuple with the DurationSeconds field value
 // and a boolean to check if the value has been set.
 func (o *MFASettingsLockout) GetDurationSecondsOk() (*int32, bool) {
-	if o == nil || o.DurationSeconds == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.DurationSeconds, true
+	return &o.DurationSeconds, true
 }
 
-// HasDurationSeconds returns a boolean if a field has been set.
-func (o *MFASettingsLockout) HasDurationSeconds() bool {
-	if o != nil && o.DurationSeconds != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDurationSeconds gets a reference to the given int32 and assigns it to the DurationSeconds field.
+// SetDurationSeconds sets field value
 func (o *MFASettingsLockout) SetDurationSeconds(v int32) {
-	o.DurationSeconds = &v
+	o.DurationSeconds = v
 }
 
 func (o MFASettingsLockout) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.FailureCount != nil {
+	if true {
 		toSerialize["failureCount"] = o.FailureCount
 	}
-	if o.DurationSeconds != nil {
+	if true {
 		toSerialize["durationSeconds"] = o.DurationSeconds
 	}
 	return json.Marshal(toSerialize)

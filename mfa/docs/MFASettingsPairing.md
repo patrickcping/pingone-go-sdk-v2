@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MaxAllowedDevices** | Pointer to **int32** | An integer that defines the maximum number of MFA devices each user can have. This can be any number up to 15. The default value is 5. | [optional] [default to 5]
-**PairingKeyFormat** | Pointer to [**EnumMFASettingsPairingKeyFormat**](EnumMFASettingsPairingKeyFormat.md) |  | [optional] 
+**MaxAllowedDevices** | **int32** | An integer that defines the maximum number of MFA devices each user can have. This can be any number up to 15. The default value is 5. | [default to 5]
+**PairingKeyFormat** | [**EnumMFASettingsPairingKeyFormat**](EnumMFASettingsPairingKeyFormat.md) |  | 
 
 ## Methods
 
 ### NewMFASettingsPairing
 
-`func NewMFASettingsPairing() *MFASettingsPairing`
+`func NewMFASettingsPairing(maxAllowedDevices int32, pairingKeyFormat EnumMFASettingsPairingKeyFormat, ) *MFASettingsPairing`
 
 NewMFASettingsPairing instantiates a new MFASettingsPairing object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetMaxAllowedDevices sets MaxAllowedDevices field to given value.
 
-### HasMaxAllowedDevices
-
-`func (o *MFASettingsPairing) HasMaxAllowedDevices() bool`
-
-HasMaxAllowedDevices returns a boolean if a field has been set.
 
 ### GetPairingKeyFormat
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetPairingKeyFormat sets PairingKeyFormat field to given value.
 
-### HasPairingKeyFormat
-
-`func (o *MFASettingsPairing) HasPairingKeyFormat() bool`
-
-HasPairingKeyFormat returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -18,9 +18,9 @@ import (
 // MFASettings struct for MFASettings
 type MFASettings struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Authentication *MFASettingsAuthentication `json:"authentication,omitempty"`
-	Lockout *MFASettingsLockout `json:"lockout,omitempty"`
-	Pairing *MFASettingsPairing `json:"pairing,omitempty"`
+	Authentication MFASettingsAuthentication `json:"authentication"`
+	Lockout MFASettingsLockout `json:"lockout"`
+	Pairing MFASettingsPairing `json:"pairing"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -29,8 +29,11 @@ type MFASettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFASettings() *MFASettings {
+func NewMFASettings(authentication MFASettingsAuthentication, lockout MFASettingsLockout, pairing MFASettingsPairing) *MFASettings {
 	this := MFASettings{}
+	this.Authentication = authentication
+	this.Lockout = lockout
+	this.Pairing = pairing
 	return &this
 }
 
@@ -74,100 +77,76 @@ func (o *MFASettings) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
-// GetAuthentication returns the Authentication field value if set, zero value otherwise.
+// GetAuthentication returns the Authentication field value
 func (o *MFASettings) GetAuthentication() MFASettingsAuthentication {
-	if o == nil || o.Authentication == nil {
+	if o == nil {
 		var ret MFASettingsAuthentication
 		return ret
 	}
-	return *o.Authentication
+
+	return o.Authentication
 }
 
-// GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
+// GetAuthenticationOk returns a tuple with the Authentication field value
 // and a boolean to check if the value has been set.
 func (o *MFASettings) GetAuthenticationOk() (*MFASettingsAuthentication, bool) {
-	if o == nil || o.Authentication == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Authentication, true
+	return &o.Authentication, true
 }
 
-// HasAuthentication returns a boolean if a field has been set.
-func (o *MFASettings) HasAuthentication() bool {
-	if o != nil && o.Authentication != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthentication gets a reference to the given MFASettingsAuthentication and assigns it to the Authentication field.
+// SetAuthentication sets field value
 func (o *MFASettings) SetAuthentication(v MFASettingsAuthentication) {
-	o.Authentication = &v
+	o.Authentication = v
 }
 
-// GetLockout returns the Lockout field value if set, zero value otherwise.
+// GetLockout returns the Lockout field value
 func (o *MFASettings) GetLockout() MFASettingsLockout {
-	if o == nil || o.Lockout == nil {
+	if o == nil {
 		var ret MFASettingsLockout
 		return ret
 	}
-	return *o.Lockout
+
+	return o.Lockout
 }
 
-// GetLockoutOk returns a tuple with the Lockout field value if set, nil otherwise
+// GetLockoutOk returns a tuple with the Lockout field value
 // and a boolean to check if the value has been set.
 func (o *MFASettings) GetLockoutOk() (*MFASettingsLockout, bool) {
-	if o == nil || o.Lockout == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Lockout, true
+	return &o.Lockout, true
 }
 
-// HasLockout returns a boolean if a field has been set.
-func (o *MFASettings) HasLockout() bool {
-	if o != nil && o.Lockout != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLockout gets a reference to the given MFASettingsLockout and assigns it to the Lockout field.
+// SetLockout sets field value
 func (o *MFASettings) SetLockout(v MFASettingsLockout) {
-	o.Lockout = &v
+	o.Lockout = v
 }
 
-// GetPairing returns the Pairing field value if set, zero value otherwise.
+// GetPairing returns the Pairing field value
 func (o *MFASettings) GetPairing() MFASettingsPairing {
-	if o == nil || o.Pairing == nil {
+	if o == nil {
 		var ret MFASettingsPairing
 		return ret
 	}
-	return *o.Pairing
+
+	return o.Pairing
 }
 
-// GetPairingOk returns a tuple with the Pairing field value if set, nil otherwise
+// GetPairingOk returns a tuple with the Pairing field value
 // and a boolean to check if the value has been set.
 func (o *MFASettings) GetPairingOk() (*MFASettingsPairing, bool) {
-	if o == nil || o.Pairing == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Pairing, true
+	return &o.Pairing, true
 }
 
-// HasPairing returns a boolean if a field has been set.
-func (o *MFASettings) HasPairing() bool {
-	if o != nil && o.Pairing != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPairing gets a reference to the given MFASettingsPairing and assigns it to the Pairing field.
+// SetPairing sets field value
 func (o *MFASettings) SetPairing(v MFASettingsPairing) {
-	o.Pairing = &v
+	o.Pairing = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -207,13 +186,13 @@ func (o MFASettings) MarshalJSON() ([]byte, error) {
 	if o.Environment != nil {
 		toSerialize["environment"] = o.Environment
 	}
-	if o.Authentication != nil {
+	if true {
 		toSerialize["authentication"] = o.Authentication
 	}
-	if o.Lockout != nil {
+	if true {
 		toSerialize["lockout"] = o.Lockout
 	}
-	if o.Pairing != nil {
+	if true {
 		toSerialize["pairing"] = o.Pairing
 	}
 	if o.UpdatedAt != nil {
