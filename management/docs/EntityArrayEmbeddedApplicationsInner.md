@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
+**Kerberos** | Pointer to [**ApplicationOIDCAllOfKerberos**](ApplicationOIDCAllOfKerberos.md) |  | [optional] 
 **GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
 **HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
 **PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
@@ -777,6 +778,31 @@ SetPackageName sets PackageName field to given value.
 `func (o *EntityArrayEmbeddedApplicationsInner) HasPackageName() bool`
 
 HasPackageName returns a boolean if a field has been set.
+
+### GetKerberos
+
+`func (o *EntityArrayEmbeddedApplicationsInner) GetKerberos() ApplicationOIDCAllOfKerberos`
+
+GetKerberos returns the Kerberos field if non-nil, zero value otherwise.
+
+### GetKerberosOk
+
+`func (o *EntityArrayEmbeddedApplicationsInner) GetKerberosOk() (*ApplicationOIDCAllOfKerberos, bool)`
+
+GetKerberosOk returns a tuple with the Kerberos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberos
+
+`func (o *EntityArrayEmbeddedApplicationsInner) SetKerberos(v ApplicationOIDCAllOfKerberos)`
+
+SetKerberos sets Kerberos field to given value.
+
+### HasKerberos
+
+`func (o *EntityArrayEmbeddedApplicationsInner) HasKerberos() bool`
+
+HasKerberos returns a boolean if a field has been set.
 
 ### GetGrantTypes
 

@@ -13,8 +13,8 @@ import (
 	"fmt"
 )
 
-// UpdateApplicationRequest - struct for UpdateApplicationRequest
-type UpdateApplicationRequest struct {
+// ReadOneApplication200Response - struct for ReadOneApplication200Response
+type ReadOneApplication200Response struct {
 	ApplicationExternalLink       *ApplicationExternalLink
 	ApplicationOIDC               *ApplicationOIDC
 	ApplicationPingOnePortal      *ApplicationPingOnePortal
@@ -22,44 +22,43 @@ type UpdateApplicationRequest struct {
 	ApplicationSAML               *ApplicationSAML
 }
 
-// ApplicationExternalLinkAsUpdateApplicationRequest is a convenience function that returns ApplicationExternalLink wrapped in UpdateApplicationRequest
-func ApplicationExternalLinkAsUpdateApplicationRequest(v *ApplicationExternalLink) UpdateApplicationRequest {
-	return UpdateApplicationRequest{
+// ApplicationExternalLinkAsReadOneApplication200Response is a convenience function that returns ApplicationExternalLink wrapped in ReadOneApplication200Response
+func ApplicationExternalLinkAsReadOneApplication200Response(v *ApplicationExternalLink) ReadOneApplication200Response {
+	return ReadOneApplication200Response{
 		ApplicationExternalLink: v,
 	}
 }
 
-// ApplicationOIDCAsUpdateApplicationRequest is a convenience function that returns ApplicationOIDC wrapped in UpdateApplicationRequest
-func ApplicationOIDCAsUpdateApplicationRequest(v *ApplicationOIDC) UpdateApplicationRequest {
-	return UpdateApplicationRequest{
+// ApplicationOIDCAsReadOneApplication200Response is a convenience function that returns ApplicationOIDC wrapped in ReadOneApplication200Response
+func ApplicationOIDCAsReadOneApplication200Response(v *ApplicationOIDC) ReadOneApplication200Response {
+	return ReadOneApplication200Response{
 		ApplicationOIDC: v,
 	}
 }
 
-// ApplicationPingOnePortalAsUpdateApplicationRequest is a convenience function that returns ApplicationPingOnePortal wrapped in UpdateApplicationRequest
-func ApplicationPingOnePortalAsUpdateApplicationRequest(v *ApplicationPingOnePortal) UpdateApplicationRequest {
-	return UpdateApplicationRequest{
+// ApplicationPingOnePortalAsReadOneApplication200Response is a convenience function that returns ApplicationPingOnePortal wrapped in ReadOneApplication200Response
+func ApplicationPingOnePortalAsReadOneApplication200Response(v *ApplicationPingOnePortal) ReadOneApplication200Response {
+	return ReadOneApplication200Response{
 		ApplicationPingOnePortal: v,
 	}
 }
 
-// ApplicationPingOneSelfServiceAsUpdateApplicationRequest is a convenience function that returns ApplicationPingOneSelfService wrapped in UpdateApplicationRequest
-func ApplicationPingOneSelfServiceAsUpdateApplicationRequest(v *ApplicationPingOneSelfService) UpdateApplicationRequest {
-	return UpdateApplicationRequest{
+// ApplicationPingOneSelfServiceAsReadOneApplication200Response is a convenience function that returns ApplicationPingOneSelfService wrapped in ReadOneApplication200Response
+func ApplicationPingOneSelfServiceAsReadOneApplication200Response(v *ApplicationPingOneSelfService) ReadOneApplication200Response {
+	return ReadOneApplication200Response{
 		ApplicationPingOneSelfService: v,
 	}
 }
 
-// ApplicationSAMLAsUpdateApplicationRequest is a convenience function that returns ApplicationSAML wrapped in UpdateApplicationRequest
-func ApplicationSAMLAsUpdateApplicationRequest(v *ApplicationSAML) UpdateApplicationRequest {
-	return UpdateApplicationRequest{
+// ApplicationSAMLAsReadOneApplication200Response is a convenience function that returns ApplicationSAML wrapped in ReadOneApplication200Response
+func ApplicationSAMLAsReadOneApplication200Response(v *ApplicationSAML) ReadOneApplication200Response {
+	return ReadOneApplication200Response{
 		ApplicationSAML: v,
 	}
 }
 
 // Unmarshal JSON data into one of the pointers in the struct
-func (dst *UpdateApplicationRequest) UnmarshalJSON(data []byte) error {
-
+func (dst *ReadOneApplication200Response) UnmarshalJSON(data []byte) error {
 	var common Application
 
 	if err := json.Unmarshal(data, &common); err != nil { // simple model
@@ -74,6 +73,7 @@ func (dst *UpdateApplicationRequest) UnmarshalJSON(data []byte) error {
 
 	switch common.GetProtocol() {
 	case ENUMAPPLICATIONPROTOCOL_OPENID_CONNECT:
+
 		switch common.GetType() {
 		case ENUMAPPLICATIONTYPE_PING_ONE_PORTAL:
 			if err := json.Unmarshal(data, &dst.ApplicationPingOnePortal); err != nil { // simple model
@@ -94,14 +94,18 @@ func (dst *UpdateApplicationRequest) UnmarshalJSON(data []byte) error {
 		if err := json.Unmarshal(data, &dst.ApplicationSAML); err != nil { // simple model
 			return err
 		}
+	case ENUMAPPLICATIONPROTOCOL_EXTERNAL_LINK:
+		if err := json.Unmarshal(data, &dst.ApplicationExternalLink); err != nil { // simple model
+			return err
+		}
 	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(UpdateApplicationRequest)")
+		return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedApplicationsInner)")
 	}
 	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src UpdateApplicationRequest) MarshalJSON() ([]byte, error) {
+func (src ReadOneApplication200Response) MarshalJSON() ([]byte, error) {
 	if src.ApplicationExternalLink != nil {
 		return json.Marshal(&src.ApplicationExternalLink)
 	}
@@ -126,7 +130,7 @@ func (src UpdateApplicationRequest) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *UpdateApplicationRequest) GetActualInstance() interface{} {
+func (obj *ReadOneApplication200Response) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -154,38 +158,38 @@ func (obj *UpdateApplicationRequest) GetActualInstance() interface{} {
 	return nil
 }
 
-type NullableUpdateApplicationRequest struct {
-	value *UpdateApplicationRequest
+type NullableReadOneApplication200Response struct {
+	value *ReadOneApplication200Response
 	isSet bool
 }
 
-func (v NullableUpdateApplicationRequest) Get() *UpdateApplicationRequest {
+func (v NullableReadOneApplication200Response) Get() *ReadOneApplication200Response {
 	return v.value
 }
 
-func (v *NullableUpdateApplicationRequest) Set(val *UpdateApplicationRequest) {
+func (v *NullableReadOneApplication200Response) Set(val *ReadOneApplication200Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUpdateApplicationRequest) IsSet() bool {
+func (v NullableReadOneApplication200Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUpdateApplicationRequest) Unset() {
+func (v *NullableReadOneApplication200Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUpdateApplicationRequest(val *UpdateApplicationRequest) *NullableUpdateApplicationRequest {
-	return &NullableUpdateApplicationRequest{value: val, isSet: true}
+func NewNullableReadOneApplication200Response(val *ReadOneApplication200Response) *NullableReadOneApplication200Response {
+	return &NullableReadOneApplication200Response{value: val, isSet: true}
 }
 
-func (v NullableUpdateApplicationRequest) MarshalJSON() ([]byte, error) {
+func (v NullableReadOneApplication200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUpdateApplicationRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableReadOneApplication200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

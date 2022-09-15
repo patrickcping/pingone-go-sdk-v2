@@ -2071,7 +2071,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createApplication_201_response'
+                $ref: '#/components/schemas/readOneApplication_200_response'
           description: Successful response
       summary: READ One Application
       tags:
@@ -2140,7 +2140,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createApplication_201_response'
+                $ref: '#/components/schemas/readOneApplication_200_response'
           description: Successful response
       summary: UPDATE Application
       tags:
@@ -21060,6 +21060,7 @@ components:
       enum:
       - OPENID_CONNECT
       - SAML
+      - EXTERNAL_LINK
       type: string
     EnumApplicationSAMLSloBinding:
       description: A string that specifies the binding protocol to be used for the
@@ -21074,9 +21075,8 @@ components:
       - PING_FED_CONNECTION_INTEGRATION
       type: string
     EnumApplicationType:
-      description: "A string that specifies the type associated with the application.\
-        \ This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP,\
-        \ and WORKER."
+      description: A string that specifies the type associated with the application.
+        This is a required property.
       enum:
       - WEB_APP
       - NATIVE_APP
@@ -21084,6 +21084,11 @@ components:
       - WORKER
       - SERVICE
       - CUSTOM_APP
+      - PING_ONE_SELF_SERVICE
+      - PING_ONE_ADMIN_CONSOLE
+      - PING_ONE_PORTAL
+      - TEMPLATE_APP
+      - PORTAL_LINK_APP
       type: string
     EnumAttributeMappingType:
       description: "A string that specifies the mapping type of the attribute. Options\
@@ -21796,6 +21801,10 @@ components:
       - protocol
       - type
       type: object
+    ApplicationExternalLink:
+      allOf:
+      - $ref: '#/components/schemas/Application'
+      - $ref: '#/components/schemas/ApplicationExternalLink_allOf'
     ApplicationSAML:
       allOf:
       - $ref: '#/components/schemas/Application'
@@ -21804,6 +21813,18 @@ components:
       allOf:
       - $ref: '#/components/schemas/Application'
       - $ref: '#/components/schemas/ApplicationOIDC_allOf'
+    ApplicationOIDCInternal:
+      allOf:
+      - $ref: '#/components/schemas/Application'
+      - $ref: '#/components/schemas/ApplicationOIDCInternal_allOf'
+    ApplicationPingOnePortal:
+      allOf:
+      - $ref: '#/components/schemas/ApplicationOIDCInternal'
+      - $ref: '#/components/schemas/ApplicationPingOnePortal_allOf'
+    ApplicationPingOneSelfService:
+      allOf:
+      - $ref: '#/components/schemas/ApplicationOIDCInternal'
+      - $ref: '#/components/schemas/ApplicationPingOneSelfService_allOf'
     ApplicationAttributeMapping:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -24815,10 +24836,19 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
+      - $ref: '#/components/schemas/ApplicationExternalLink'
     createApplication_201_response:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
+      - $ref: '#/components/schemas/ApplicationExternalLink'
+    readOneApplication_200_response:
+      oneOf:
+      - $ref: '#/components/schemas/ApplicationSAML'
+      - $ref: '#/components/schemas/ApplicationOIDC'
+      - $ref: '#/components/schemas/ApplicationExternalLink'
+      - $ref: '#/components/schemas/ApplicationPingOnePortal'
+      - $ref: '#/components/schemas/ApplicationPingOneSelfService'
     updateApplication_request:
       example:
         name: "UPDATED_{{$timestamp}}"
@@ -24834,6 +24864,9 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
+      - $ref: '#/components/schemas/ApplicationExternalLink'
+      - $ref: '#/components/schemas/ApplicationPingOnePortal'
+      - $ref: '#/components/schemas/ApplicationPingOneSelfService'
     updateEnvironmentType_request:
       example:
         type: PRODUCTION
@@ -24970,6 +25003,14 @@ components:
       required:
       - href
       - id
+      type: object
+    ApplicationExternalLink_allOf:
+      properties:
+        homePageUrl:
+          description: A string that specifies the custom home page URL for the application.
+          type: string
+      required:
+      - homePageUrl
       type: object
     ApplicationSAML_allOf_idpSigning_key:
       properties:
@@ -25115,6 +25156,23 @@ components:
         integrityDetection:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection'
       type: object
+    ApplicationOIDC_allOf_kerberos_key:
+      description: A Relationship object containing the certificate issuer (root CA).
+      properties:
+        id:
+          description: The unique identifier for the Kerberos key.
+          type: string
+      required:
+      - id
+      type: object
+    ApplicationOIDC_allOf_kerberos:
+      description: Object containing Kerberos settings
+      properties:
+        key:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos_key'
+      required:
+      - key
+      type: object
     ApplicationOIDC_allOf:
       properties:
         mobile:
@@ -25130,6 +25188,8 @@ components:
             \ mobile.packageName property is unique per environment, and once defined,\
             \ is immutable."
           type: string
+        kerberos:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos'
         grantTypes:
           description: "A string that specifies the grant type for the authorization\
             \ request. This is a required property. Options are AUTHORIZATION_CODE,\
@@ -25184,6 +25244,35 @@ components:
       required:
       - grantTypes
       - tokenEndpointAuthMethod
+      type: object
+    ApplicationOIDCInternal_allOf:
+      properties:
+        pkceEnforcement:
+          $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
+        tokenEndpointAuthMethod:
+          $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
+      required:
+      - tokenEndpointAuthMethod
+      type: object
+    ApplicationPingOnePortal_allOf:
+      properties:
+        applyDefaultTheme:
+          description: "If `true`, applies the default theme to the app portal application."
+          type: boolean
+      required:
+      - applyDefaultTheme
+      type: object
+    ApplicationPingOneSelfService_allOf:
+      properties:
+        enableDefaultThemeFooter:
+          description: "If `true`, shows the default theme footer on the self service\
+            \ application. Applies only if `applyDefaultTheme` is also `true`."
+          type: boolean
+        applyDefaultTheme:
+          description: "If `true`, applies the default theme to the self service application."
+          type: boolean
+      required:
+      - applyDefaultTheme
       type: object
     ApplicationAttributeMapping_application:
       example:
@@ -25382,10 +25471,6 @@ components:
       - $ref: '#/components/schemas/IdentityProviderAttribute'
       - $ref: '#/components/schemas/SchemaAttribute'
       - $ref: '#/components/schemas/ResourceAttribute'
-    EntityArray__embedded_applications_inner:
-      anyOf:
-      - $ref: '#/components/schemas/ApplicationSAML'
-      - $ref: '#/components/schemas/ApplicationOIDC'
     EntityArray__embedded_gateways_inner:
       anyOf:
       - $ref: '#/components/schemas/Gateway'
@@ -26230,7 +26315,7 @@ components:
           type: array
         applications:
           items:
-            $ref: '#/components/schemas/EntityArray__embedded_applications_inner'
+            $ref: '#/components/schemas/readOneApplication_200_response'
           type: array
         certificates:
           items:

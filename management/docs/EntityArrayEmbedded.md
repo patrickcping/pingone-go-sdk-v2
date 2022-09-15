@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Actions** | Pointer to [**[]SignOnPolicyAction**](SignOnPolicyAction.md) |  | [optional] 
 **Agreements** | Pointer to [**[]Agreement**](Agreement.md) |  | [optional] 
 **Attributes** | Pointer to [**[]EntityArrayEmbeddedAttributesInner**](EntityArrayEmbeddedAttributesInner.md) |  | [optional] 
-**Applications** | Pointer to [**[]EntityArrayEmbeddedApplicationsInner**](EntityArrayEmbeddedApplicationsInner.md) |  | [optional] 
+**Applications** | Pointer to [**[]ReadOneApplication200Response**](ReadOneApplication200Response.md) |  | [optional] 
 **Certificates** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **CustomDomains** | Pointer to [**[]CustomDomain**](CustomDomain.md) |  | [optional] 
@@ -132,20 +132,20 @@ HasAttributes returns a boolean if a field has been set.
 
 ### GetApplications
 
-`func (o *EntityArrayEmbedded) GetApplications() []EntityArrayEmbeddedApplicationsInner`
+`func (o *EntityArrayEmbedded) GetApplications() []ReadOneApplication200Response`
 
 GetApplications returns the Applications field if non-nil, zero value otherwise.
 
 ### GetApplicationsOk
 
-`func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]EntityArrayEmbeddedApplicationsInner, bool)`
+`func (o *EntityArrayEmbedded) GetApplicationsOk() (*[]ReadOneApplication200Response, bool)`
 
 GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplications
 
-`func (o *EntityArrayEmbedded) SetApplications(v []EntityArrayEmbeddedApplicationsInner)`
+`func (o *EntityArrayEmbedded) SetApplications(v []ReadOneApplication200Response)`
 
 SetApplications sets Applications field to given value.
 

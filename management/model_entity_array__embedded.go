@@ -19,7 +19,7 @@ type EntityArrayEmbedded struct {
 	Actions []SignOnPolicyAction `json:"actions,omitempty"`
 	Agreements []Agreement `json:"agreements,omitempty"`
 	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
-	Applications []EntityArrayEmbeddedApplicationsInner `json:"applications,omitempty"`
+	Applications []ReadOneApplication200Response `json:"applications,omitempty"`
 	Certificates []Certificate `json:"certificates,omitempty"`
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
 	CustomDomains []CustomDomain `json:"customDomains,omitempty"`
@@ -163,9 +163,9 @@ func (o *EntityArrayEmbedded) SetAttributes(v []EntityArrayEmbeddedAttributesInn
 }
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetApplications() []EntityArrayEmbeddedApplicationsInner {
+func (o *EntityArrayEmbedded) GetApplications() []ReadOneApplication200Response {
 	if o == nil || o.Applications == nil {
-		var ret []EntityArrayEmbeddedApplicationsInner
+		var ret []ReadOneApplication200Response
 		return ret
 	}
 	return o.Applications
@@ -173,7 +173,7 @@ func (o *EntityArrayEmbedded) GetApplications() []EntityArrayEmbeddedApplication
 
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetApplicationsOk() ([]EntityArrayEmbeddedApplicationsInner, bool) {
+func (o *EntityArrayEmbedded) GetApplicationsOk() ([]ReadOneApplication200Response, bool) {
 	if o == nil || o.Applications == nil {
 		return nil, false
 	}
@@ -189,8 +189,8 @@ func (o *EntityArrayEmbedded) HasApplications() bool {
 	return false
 }
 
-// SetApplications gets a reference to the given []EntityArrayEmbeddedApplicationsInner and assigns it to the Applications field.
-func (o *EntityArrayEmbedded) SetApplications(v []EntityArrayEmbeddedApplicationsInner) {
+// SetApplications gets a reference to the given []ReadOneApplication200Response and assigns it to the Applications field.
+func (o *EntityArrayEmbedded) SetApplications(v []ReadOneApplication200Response) {
 	o.Applications = v
 }
 

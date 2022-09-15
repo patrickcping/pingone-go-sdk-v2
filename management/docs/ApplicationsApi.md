@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    createApplicationRequest := openapiclient.createApplication_request{ApplicationOIDC: openapiclient.NewApplicationOIDC(false, "Name_example", openapiclient.EnumApplicationProtocol("OPENID_CONNECT"), openapiclient.EnumApplicationType("WEB_APP"), []openapiclient.EnumApplicationOIDCGrantType{openapiclient.EnumApplicationOIDCGrantType("AUTHORIZATION_CODE")}, openapiclient.EnumApplicationOIDCTokenAuthMethod("NONE"))} // CreateApplicationRequest |  (optional)
+    createApplicationRequest := openapiclient.createApplication_request{ApplicationExternalLink: openapiclient.NewApplicationExternalLink(false, "Name_example", openapiclient.EnumApplicationProtocol("OPENID_CONNECT"), openapiclient.EnumApplicationType("WEB_APP"), "HomePageUrl_example")} // CreateApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ReadOneApplication
 
-> CreateApplication201Response ReadOneApplication(ctx, environmentID, applicationID).Execute()
+> ReadOneApplication200Response ReadOneApplication(ctx, environmentID, applicationID).Execute()
 
 READ One Application
 
@@ -248,7 +248,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.ReadOneApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneApplication`: CreateApplication201Response
+    // response from `ReadOneApplication`: ReadOneApplication200Response
     fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.ReadOneApplication`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateApplication201Response**](CreateApplication201Response.md)
+[**ReadOneApplication200Response**](ReadOneApplication200Response.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApplication
 
-> CreateApplication201Response UpdateApplication(ctx, environmentID, applicationID).UpdateApplicationRequest(updateApplicationRequest).Execute()
+> ReadOneApplication200Response UpdateApplication(ctx, environmentID, applicationID).UpdateApplicationRequest(updateApplicationRequest).Execute()
 
 UPDATE Application
 
@@ -311,7 +311,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     applicationID := "applicationID_example" // string | 
-    updateApplicationRequest := openapiclient.updateApplication_request{ApplicationOIDC: openapiclient.NewApplicationOIDC(false, "Name_example", openapiclient.EnumApplicationProtocol("OPENID_CONNECT"), openapiclient.EnumApplicationType("WEB_APP"), []openapiclient.EnumApplicationOIDCGrantType{openapiclient.EnumApplicationOIDCGrantType("AUTHORIZATION_CODE")}, openapiclient.EnumApplicationOIDCTokenAuthMethod("NONE"))} // UpdateApplicationRequest |  (optional)
+    updateApplicationRequest := openapiclient.updateApplication_request{ApplicationExternalLink: openapiclient.NewApplicationExternalLink(false, "Name_example", openapiclient.EnumApplicationProtocol("OPENID_CONNECT"), openapiclient.EnumApplicationType("WEB_APP"), "HomePageUrl_example")} // UpdateApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -320,7 +320,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.UpdateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateApplication`: CreateApplication201Response
+    // response from `UpdateApplication`: ReadOneApplication200Response
     fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.UpdateApplication`: %v\n", resp)
 }
 ```
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateApplication201Response**](CreateApplication201Response.md)
+[**ReadOneApplication200Response**](ReadOneApplication200Response.md)
 
 ### Authorization
 
