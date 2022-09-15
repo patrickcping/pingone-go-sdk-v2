@@ -467,8 +467,6 @@ model_bill_of_materials_products_inner_bookmarks_inner.go
 model_bill_of_materials_products_inner_console.go
 model_bill_of_materials_products_inner_deployment.go
 model_certificate_key_update.go
-model_create_application_201_response.go
-model_create_application_request.go
 model_custom_domain.go
 model_custom_domain_certificate.go
 model_custom_domain_certificate_request.go
@@ -603,7 +601,6 @@ model_password_policy_length.go
 model_password_policy_lockout.go
 model_population.go
 model_population_password_policy.go
-model_read_one_application_200_response.go
 model_resource.go
 model_resource_attribute.go
 model_resource_scope.go
@@ -673,7 +670,6 @@ model_subscription.go
 model_subscription_filter_options.go
 model_subscription_filter_options_included_applications_inner.go
 model_subscription_http_endpoint.go
-model_update_application_request.go
 model_update_environment_type_request.go
 model_user.go
 model_user_account.go
