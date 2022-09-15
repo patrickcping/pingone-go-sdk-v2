@@ -17,6 +17,7 @@ import (
 
 // MFASettings struct for MFASettings
 type MFASettings struct {
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Authentication *MFASettingsAuthentication `json:"authentication,omitempty"`
 	Lockout *MFASettingsLockout `json:"lockout,omitempty"`
 	Pairing *MFASettingsPairing `json:"pairing,omitempty"`
@@ -39,6 +40,38 @@ func NewMFASettings() *MFASettings {
 func NewMFASettingsWithDefaults() *MFASettings {
 	this := MFASettings{}
 	return &this
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *MFASettings) GetEnvironment() ObjectEnvironment {
+	if o == nil || o.Environment == nil {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MFASettings) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || o.Environment == nil {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *MFASettings) HasEnvironment() bool {
+	if o != nil && o.Environment != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *MFASettings) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
 }
 
 // GetAuthentication returns the Authentication field value if set, zero value otherwise.
@@ -171,6 +204,9 @@ func (o *MFASettings) SetUpdatedAt(v time.Time) {
 
 func (o MFASettings) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Environment != nil {
+		toSerialize["environment"] = o.Environment
+	}
 	if o.Authentication != nil {
 		toSerialize["authentication"] = o.Authentication
 	}

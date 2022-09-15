@@ -252,6 +252,8 @@ components:
     MFASettings:
       type: object
       properties:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         authentication:
           type: object
           description: An object that contains the device selection settings.

@@ -2252,6 +2252,8 @@ components:
       $ref: '#/components/schemas/MFAPushCredential'
     MFASettings:
       example:
+        environment:
+          id: id
         lockout:
           durationSeconds: 6
           failureCount: 0
@@ -2262,6 +2264,8 @@ components:
           deviceSelection: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         authentication:
           $ref: '#/components/schemas/MFASettings_authentication'
         lockout:
