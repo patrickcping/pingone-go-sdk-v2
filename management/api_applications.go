@@ -524,7 +524,7 @@ type ApiReadOneApplicationRequest struct {
 	applicationID string
 }
 
-func (r ApiReadOneApplicationRequest) Execute() (*CreateApplication201Response, *http.Response, error) {
+func (r ApiReadOneApplicationRequest) Execute() (*ReadOneApplication200Response, *http.Response, error) {
 	return r.ApiService.ReadOneApplicationExecute(r)
 }
 
@@ -546,13 +546,13 @@ func (a *ApplicationsApiService) ReadOneApplication(ctx context.Context, environ
 }
 
 // Execute executes the request
-//  @return CreateApplication201Response
-func (a *ApplicationsApiService) ReadOneApplicationExecute(r ApiReadOneApplicationRequest) (*CreateApplication201Response, *http.Response, error) {
+//  @return ReadOneApplication200Response
+func (a *ApplicationsApiService) ReadOneApplicationExecute(r ApiReadOneApplicationRequest) (*ReadOneApplication200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateApplication201Response
+		localVarReturnValue  *ReadOneApplication200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.ReadOneApplication")
@@ -695,7 +695,7 @@ func (r ApiUpdateApplicationRequest) UpdateApplicationRequest(updateApplicationR
 	return r
 }
 
-func (r ApiUpdateApplicationRequest) Execute() (*CreateApplication201Response, *http.Response, error) {
+func (r ApiUpdateApplicationRequest) Execute() (*ReadOneApplication200Response, *http.Response, error) {
 	return r.ApiService.UpdateApplicationExecute(r)
 }
 
@@ -717,13 +717,13 @@ func (a *ApplicationsApiService) UpdateApplication(ctx context.Context, environm
 }
 
 // Execute executes the request
-//  @return CreateApplication201Response
-func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (*CreateApplication201Response, *http.Response, error) {
+//  @return ReadOneApplication200Response
+func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (*ReadOneApplication200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateApplication201Response
+		localVarReturnValue  *ReadOneApplication200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.UpdateApplication")

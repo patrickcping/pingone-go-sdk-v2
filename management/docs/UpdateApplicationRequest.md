@@ -34,8 +34,9 @@ Name | Type | Description | Notes
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
+**Kerberos** | Pointer to [**ApplicationOIDCAllOfKerberos**](ApplicationOIDCAllOfKerberos.md) |  | [optional] 
 **GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
-**HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
+**HomePageUrl** | **string** | A string that specifies the custom home page URL for the application. | 
 **PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
 **RedirectUris** | Pointer to **[]string** | A string that specifies the callback URI for the authentication response. | [optional] 
@@ -43,12 +44,14 @@ Name | Type | Description | Notes
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
 **TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
+**ApplyDefaultTheme** | **bool** | If &#x60;true&#x60;, applies the default theme to the self service application. | 
+**EnableDefaultThemeFooter** | Pointer to **bool** | If &#x60;true&#x60;, shows the default theme footer on the self service application. Applies only if &#x60;applyDefaultTheme&#x60; is also &#x60;true&#x60;. | [optional] 
 
 ## Methods
 
 ### NewUpdateApplicationRequest
 
-`func NewUpdateApplicationRequest(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, acsUrls []string, assertionDuration int32, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, ) *UpdateApplicationRequest`
+`func NewUpdateApplicationRequest(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, acsUrls []string, assertionDuration int32, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, homePageUrl string, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, applyDefaultTheme bool, ) *UpdateApplicationRequest`
 
 NewUpdateApplicationRequest instantiates a new UpdateApplicationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -778,6 +781,31 @@ SetPackageName sets PackageName field to given value.
 
 HasPackageName returns a boolean if a field has been set.
 
+### GetKerberos
+
+`func (o *UpdateApplicationRequest) GetKerberos() ApplicationOIDCAllOfKerberos`
+
+GetKerberos returns the Kerberos field if non-nil, zero value otherwise.
+
+### GetKerberosOk
+
+`func (o *UpdateApplicationRequest) GetKerberosOk() (*ApplicationOIDCAllOfKerberos, bool)`
+
+GetKerberosOk returns a tuple with the Kerberos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberos
+
+`func (o *UpdateApplicationRequest) SetKerberos(v ApplicationOIDCAllOfKerberos)`
+
+SetKerberos sets Kerberos field to given value.
+
+### HasKerberos
+
+`func (o *UpdateApplicationRequest) HasKerberos() bool`
+
+HasKerberos returns a boolean if a field has been set.
+
 ### GetGrantTypes
 
 `func (o *UpdateApplicationRequest) GetGrantTypes() []EnumApplicationOIDCGrantType`
@@ -817,11 +845,6 @@ and a boolean to check if the value has been set.
 
 SetHomePageUrl sets HomePageUrl field to given value.
 
-### HasHomePageUrl
-
-`func (o *UpdateApplicationRequest) HasHomePageUrl() bool`
-
-HasHomePageUrl returns a boolean if a field has been set.
 
 ### GetPkceEnforcement
 
@@ -992,6 +1015,51 @@ and a boolean to check if the value has been set.
 
 SetTokenEndpointAuthMethod sets TokenEndpointAuthMethod field to given value.
 
+
+### GetApplyDefaultTheme
+
+`func (o *UpdateApplicationRequest) GetApplyDefaultTheme() bool`
+
+GetApplyDefaultTheme returns the ApplyDefaultTheme field if non-nil, zero value otherwise.
+
+### GetApplyDefaultThemeOk
+
+`func (o *UpdateApplicationRequest) GetApplyDefaultThemeOk() (*bool, bool)`
+
+GetApplyDefaultThemeOk returns a tuple with the ApplyDefaultTheme field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplyDefaultTheme
+
+`func (o *UpdateApplicationRequest) SetApplyDefaultTheme(v bool)`
+
+SetApplyDefaultTheme sets ApplyDefaultTheme field to given value.
+
+
+### GetEnableDefaultThemeFooter
+
+`func (o *UpdateApplicationRequest) GetEnableDefaultThemeFooter() bool`
+
+GetEnableDefaultThemeFooter returns the EnableDefaultThemeFooter field if non-nil, zero value otherwise.
+
+### GetEnableDefaultThemeFooterOk
+
+`func (o *UpdateApplicationRequest) GetEnableDefaultThemeFooterOk() (*bool, bool)`
+
+GetEnableDefaultThemeFooterOk returns a tuple with the EnableDefaultThemeFooter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDefaultThemeFooter
+
+`func (o *UpdateApplicationRequest) SetEnableDefaultThemeFooter(v bool)`
+
+SetEnableDefaultThemeFooter sets EnableDefaultThemeFooter field to given value.
+
+### HasEnableDefaultThemeFooter
+
+`func (o *UpdateApplicationRequest) HasEnableDefaultThemeFooter() bool`
+
+HasEnableDefaultThemeFooter returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

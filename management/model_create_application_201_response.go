@@ -15,8 +15,16 @@ import (
 
 // CreateApplication201Response - struct for CreateApplication201Response
 type CreateApplication201Response struct {
-	ApplicationOIDC *ApplicationOIDC
-	ApplicationSAML *ApplicationSAML
+	ApplicationExternalLink *ApplicationExternalLink
+	ApplicationOIDC         *ApplicationOIDC
+	ApplicationSAML         *ApplicationSAML
+}
+
+// ApplicationExternalLinkAsCreateApplication201Response is a convenience function that returns ApplicationExternalLink wrapped in CreateApplication201Response
+func ApplicationExternalLinkAsCreateApplication201Response(v *ApplicationExternalLink) CreateApplication201Response {
+	return CreateApplication201Response{
+		ApplicationExternalLink: v,
+	}
 }
 
 // ApplicationOIDCAsCreateApplication201Response is a convenience function that returns ApplicationOIDC wrapped in CreateApplication201Response
@@ -44,6 +52,7 @@ func (dst *CreateApplication201Response) UnmarshalJSON(data []byte) error {
 
 	dst.ApplicationOIDC = nil
 	dst.ApplicationSAML = nil
+	dst.ApplicationExternalLink = nil
 
 	switch common.GetProtocol() {
 	case ENUMAPPLICATIONPROTOCOL_OPENID_CONNECT:
@@ -54,6 +63,10 @@ func (dst *CreateApplication201Response) UnmarshalJSON(data []byte) error {
 		if err := json.Unmarshal(data, &dst.ApplicationSAML); err != nil { // simple model
 			return err
 		}
+	case ENUMAPPLICATIONPROTOCOL_EXTERNAL_LINK:
+		if err := json.Unmarshal(data, &dst.ApplicationExternalLink); err != nil { // simple model
+			return err
+		}
 	default:
 		return fmt.Errorf("Data failed to match schemas in oneOf(CreateApplication201Response)")
 	}
@@ -62,6 +75,10 @@ func (dst *CreateApplication201Response) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CreateApplication201Response) MarshalJSON() ([]byte, error) {
+	if src.ApplicationExternalLink != nil {
+		return json.Marshal(&src.ApplicationExternalLink)
+	}
+
 	if src.ApplicationOIDC != nil {
 		return json.Marshal(&src.ApplicationOIDC)
 	}
@@ -78,6 +95,10 @@ func (obj *CreateApplication201Response) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
+	if obj.ApplicationExternalLink != nil {
+		return obj.ApplicationExternalLink
+	}
+
 	if obj.ApplicationOIDC != nil {
 		return obj.ApplicationOIDC
 	}

@@ -21,6 +21,7 @@ type ApplicationOIDCAllOf struct {
 	BundleId *string `json:"bundleId,omitempty"`
 	// A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
 	PackageName *string `json:"packageName,omitempty"`
+	Kerberos *ApplicationOIDCAllOfKerberos `json:"kerberos,omitempty"`
 	// A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
 	GrantTypes []EnumApplicationOIDCGrantType `json:"grantTypes"`
 	// A string that specifies the custom home page URL for the application.
@@ -152,6 +153,38 @@ func (o *ApplicationOIDCAllOf) HasPackageName() bool {
 // SetPackageName gets a reference to the given string and assigns it to the PackageName field.
 func (o *ApplicationOIDCAllOf) SetPackageName(v string) {
 	o.PackageName = &v
+}
+
+// GetKerberos returns the Kerberos field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOf) GetKerberos() ApplicationOIDCAllOfKerberos {
+	if o == nil || o.Kerberos == nil {
+		var ret ApplicationOIDCAllOfKerberos
+		return ret
+	}
+	return *o.Kerberos
+}
+
+// GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOf) GetKerberosOk() (*ApplicationOIDCAllOfKerberos, bool) {
+	if o == nil || o.Kerberos == nil {
+		return nil, false
+	}
+	return o.Kerberos, true
+}
+
+// HasKerberos returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOf) HasKerberos() bool {
+	if o != nil && o.Kerberos != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetKerberos gets a reference to the given ApplicationOIDCAllOfKerberos and assigns it to the Kerberos field.
+func (o *ApplicationOIDCAllOf) SetKerberos(v ApplicationOIDCAllOfKerberos) {
+	o.Kerberos = &v
 }
 
 // GetGrantTypes returns the GrantTypes field value
@@ -436,6 +469,9 @@ func (o ApplicationOIDCAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if o.PackageName != nil {
 		toSerialize["packageName"] = o.PackageName
+	}
+	if o.Kerberos != nil {
+		toSerialize["kerberos"] = o.Kerberos
 	}
 	if true {
 		toSerialize["grantTypes"] = o.GrantTypes

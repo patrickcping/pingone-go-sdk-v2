@@ -22,12 +22,14 @@ type EnumApplicationProtocol string
 const (
 	ENUMAPPLICATIONPROTOCOL_OPENID_CONNECT EnumApplicationProtocol = "OPENID_CONNECT"
 	ENUMAPPLICATIONPROTOCOL_SAML EnumApplicationProtocol = "SAML"
+	ENUMAPPLICATIONPROTOCOL_EXTERNAL_LINK EnumApplicationProtocol = "EXTERNAL_LINK"
 )
 
 // All allowed values of EnumApplicationProtocol enum
 var AllowedEnumApplicationProtocolEnumValues = []EnumApplicationProtocol{
 	"OPENID_CONNECT",
 	"SAML",
+	"EXTERNAL_LINK",
 }
 
 func (v *EnumApplicationProtocol) UnmarshalJSON(src []byte) error {

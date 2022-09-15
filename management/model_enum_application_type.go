@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumApplicationType A string that specifies the type associated with the application. This is a required property. Options are WEB_APP, NATIVE_APP, SINGLE_PAGE_APP, and WORKER.
+// EnumApplicationType A string that specifies the type associated with the application. This is a required property.
 type EnumApplicationType string
 
 // List of EnumApplicationType
@@ -26,6 +26,11 @@ const (
 	ENUMAPPLICATIONTYPE_WORKER EnumApplicationType = "WORKER"
 	ENUMAPPLICATIONTYPE_SERVICE EnumApplicationType = "SERVICE"
 	ENUMAPPLICATIONTYPE_CUSTOM_APP EnumApplicationType = "CUSTOM_APP"
+	ENUMAPPLICATIONTYPE_PING_ONE_SELF_SERVICE EnumApplicationType = "PING_ONE_SELF_SERVICE"
+	ENUMAPPLICATIONTYPE_PING_ONE_ADMIN_CONSOLE EnumApplicationType = "PING_ONE_ADMIN_CONSOLE"
+	ENUMAPPLICATIONTYPE_PING_ONE_PORTAL EnumApplicationType = "PING_ONE_PORTAL"
+	ENUMAPPLICATIONTYPE_TEMPLATE_APP EnumApplicationType = "TEMPLATE_APP"
+	ENUMAPPLICATIONTYPE_PORTAL_LINK_APP EnumApplicationType = "PORTAL_LINK_APP"
 )
 
 // All allowed values of EnumApplicationType enum
@@ -36,6 +41,11 @@ var AllowedEnumApplicationTypeEnumValues = []EnumApplicationType{
 	"WORKER",
 	"SERVICE",
 	"CUSTOM_APP",
+	"PING_ONE_SELF_SERVICE",
+	"PING_ONE_ADMIN_CONSOLE",
+	"PING_ONE_PORTAL",
+	"TEMPLATE_APP",
+	"PORTAL_LINK_APP",
 }
 
 func (v *EnumApplicationType) UnmarshalJSON(src []byte) error {

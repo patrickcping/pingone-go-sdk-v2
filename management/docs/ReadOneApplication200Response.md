@@ -1,4 +1,4 @@
-# EntityArrayEmbeddedApplicationsInner
+# ReadOneApplication200Response
 
 ## Properties
 
@@ -34,8 +34,9 @@ Name | Type | Description | Notes
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
+**Kerberos** | Pointer to [**ApplicationOIDCAllOfKerberos**](ApplicationOIDCAllOfKerberos.md) |  | [optional] 
 **GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
-**HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
+**HomePageUrl** | **string** | A string that specifies the custom home page URL for the application. | 
 **PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
 **RedirectUris** | Pointer to **[]string** | A string that specifies the callback URI for the authentication response. | [optional] 
@@ -43,955 +44,1022 @@ Name | Type | Description | Notes
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
 **TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
+**ApplyDefaultTheme** | **bool** | If &#x60;true&#x60;, applies the default theme to the self service application. | 
+**EnableDefaultThemeFooter** | Pointer to **bool** | If &#x60;true&#x60;, shows the default theme footer on the self service application. Applies only if &#x60;applyDefaultTheme&#x60; is also &#x60;true&#x60;. | [optional] 
 
 ## Methods
 
-### NewEntityArrayEmbeddedApplicationsInner
+### NewReadOneApplication200Response
 
-`func NewEntityArrayEmbeddedApplicationsInner(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, acsUrls []string, assertionDuration int32, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, ) *EntityArrayEmbeddedApplicationsInner`
+`func NewReadOneApplication200Response(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, acsUrls []string, assertionDuration int32, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, homePageUrl string, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, applyDefaultTheme bool, ) *ReadOneApplication200Response`
 
-NewEntityArrayEmbeddedApplicationsInner instantiates a new EntityArrayEmbeddedApplicationsInner object
+NewReadOneApplication200Response instantiates a new ReadOneApplication200Response object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewEntityArrayEmbeddedApplicationsInnerWithDefaults
+### NewReadOneApplication200ResponseWithDefaults
 
-`func NewEntityArrayEmbeddedApplicationsInnerWithDefaults() *EntityArrayEmbeddedApplicationsInner`
+`func NewReadOneApplication200ResponseWithDefaults() *ReadOneApplication200Response`
 
-NewEntityArrayEmbeddedApplicationsInnerWithDefaults instantiates a new EntityArrayEmbeddedApplicationsInner object
+NewReadOneApplication200ResponseWithDefaults instantiates a new ReadOneApplication200Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetLinks() map[string]interface{}`
+`func (o *ReadOneApplication200Response) GetLinks() map[string]interface{}`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetLinksOk() (*map[string]interface{}, bool)`
+`func (o *ReadOneApplication200Response) GetLinksOk() (*map[string]interface{}, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetLinks(v map[string]interface{})`
+`func (o *ReadOneApplication200Response) SetLinks(v map[string]interface{})`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasLinks() bool`
+`func (o *ReadOneApplication200Response) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 
 ### GetAccessControl
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAccessControl() ApplicationAccessControl`
+`func (o *ReadOneApplication200Response) GetAccessControl() ApplicationAccessControl`
 
 GetAccessControl returns the AccessControl field if non-nil, zero value otherwise.
 
 ### GetAccessControlOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAccessControlOk() (*ApplicationAccessControl, bool)`
+`func (o *ReadOneApplication200Response) GetAccessControlOk() (*ApplicationAccessControl, bool)`
 
 GetAccessControlOk returns a tuple with the AccessControl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessControl
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetAccessControl(v ApplicationAccessControl)`
+`func (o *ReadOneApplication200Response) SetAccessControl(v ApplicationAccessControl)`
 
 SetAccessControl sets AccessControl field to given value.
 
 ### HasAccessControl
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasAccessControl() bool`
+`func (o *ReadOneApplication200Response) HasAccessControl() bool`
 
 HasAccessControl returns a boolean if a field has been set.
 
 ### GetAssignActorRoles
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAssignActorRoles() bool`
+`func (o *ReadOneApplication200Response) GetAssignActorRoles() bool`
 
 GetAssignActorRoles returns the AssignActorRoles field if non-nil, zero value otherwise.
 
 ### GetAssignActorRolesOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAssignActorRolesOk() (*bool, bool)`
+`func (o *ReadOneApplication200Response) GetAssignActorRolesOk() (*bool, bool)`
 
 GetAssignActorRolesOk returns a tuple with the AssignActorRoles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignActorRoles
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetAssignActorRoles(v bool)`
+`func (o *ReadOneApplication200Response) SetAssignActorRoles(v bool)`
 
 SetAssignActorRoles sets AssignActorRoles field to given value.
 
 ### HasAssignActorRoles
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasAssignActorRoles() bool`
+`func (o *ReadOneApplication200Response) HasAssignActorRoles() bool`
 
 HasAssignActorRoles returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetCreatedAt() time.Time`
+`func (o *ReadOneApplication200Response) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *ReadOneApplication200Response) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetCreatedAt(v time.Time)`
+`func (o *ReadOneApplication200Response) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 ### HasCreatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasCreatedAt() bool`
+`func (o *ReadOneApplication200Response) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDescription
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetDescription() string`
+`func (o *ReadOneApplication200Response) GetDescription() string`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetDescriptionOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetDescription(v string)`
+`func (o *ReadOneApplication200Response) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
 
 ### HasDescription
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasDescription() bool`
+`func (o *ReadOneApplication200Response) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
 
 ### GetEnabled
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetEnabled() bool`
+`func (o *ReadOneApplication200Response) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetEnabledOk() (*bool, bool)`
+`func (o *ReadOneApplication200Response) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetEnabled(v bool)`
+`func (o *ReadOneApplication200Response) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
 
 ### GetEnvironment
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetEnvironment() ObjectEnvironment`
+`func (o *ReadOneApplication200Response) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+`func (o *ReadOneApplication200Response) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetEnvironment(v ObjectEnvironment)`
+`func (o *ReadOneApplication200Response) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 
 ### HasEnvironment
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasEnvironment() bool`
+`func (o *ReadOneApplication200Response) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
 
 ### GetIcon
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetIcon() ApplicationIcon`
+`func (o *ReadOneApplication200Response) GetIcon() ApplicationIcon`
 
 GetIcon returns the Icon field if non-nil, zero value otherwise.
 
 ### GetIconOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetIconOk() (*ApplicationIcon, bool)`
+`func (o *ReadOneApplication200Response) GetIconOk() (*ApplicationIcon, bool)`
 
 GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIcon
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetIcon(v ApplicationIcon)`
+`func (o *ReadOneApplication200Response) SetIcon(v ApplicationIcon)`
 
 SetIcon sets Icon field to given value.
 
 ### HasIcon
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasIcon() bool`
+`func (o *ReadOneApplication200Response) HasIcon() bool`
 
 HasIcon returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetId() string`
+`func (o *ReadOneApplication200Response) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetIdOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetId(v string)`
+`func (o *ReadOneApplication200Response) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasId() bool`
+`func (o *ReadOneApplication200Response) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetLoginPageUrl
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetLoginPageUrl() string`
+`func (o *ReadOneApplication200Response) GetLoginPageUrl() string`
 
 GetLoginPageUrl returns the LoginPageUrl field if non-nil, zero value otherwise.
 
 ### GetLoginPageUrlOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetLoginPageUrlOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetLoginPageUrlOk() (*string, bool)`
 
 GetLoginPageUrlOk returns a tuple with the LoginPageUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLoginPageUrl
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetLoginPageUrl(v string)`
+`func (o *ReadOneApplication200Response) SetLoginPageUrl(v string)`
 
 SetLoginPageUrl sets LoginPageUrl field to given value.
 
 ### HasLoginPageUrl
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasLoginPageUrl() bool`
+`func (o *ReadOneApplication200Response) HasLoginPageUrl() bool`
 
 HasLoginPageUrl returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetName() string`
+`func (o *ReadOneApplication200Response) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetNameOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetName(v string)`
+`func (o *ReadOneApplication200Response) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetProtocol
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetProtocol() EnumApplicationProtocol`
+`func (o *ReadOneApplication200Response) GetProtocol() EnumApplicationProtocol`
 
 GetProtocol returns the Protocol field if non-nil, zero value otherwise.
 
 ### GetProtocolOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetProtocolOk() (*EnumApplicationProtocol, bool)`
+`func (o *ReadOneApplication200Response) GetProtocolOk() (*EnumApplicationProtocol, bool)`
 
 GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProtocol
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetProtocol(v EnumApplicationProtocol)`
+`func (o *ReadOneApplication200Response) SetProtocol(v EnumApplicationProtocol)`
 
 SetProtocol sets Protocol field to given value.
 
 
 ### GetTags
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetTags() []EnumApplicationTags`
+`func (o *ReadOneApplication200Response) GetTags() []EnumApplicationTags`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetTagsOk() (*[]EnumApplicationTags, bool)`
+`func (o *ReadOneApplication200Response) GetTagsOk() (*[]EnumApplicationTags, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetTags(v []EnumApplicationTags)`
+`func (o *ReadOneApplication200Response) SetTags(v []EnumApplicationTags)`
 
 SetTags sets Tags field to given value.
 
 ### HasTags
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasTags() bool`
+`func (o *ReadOneApplication200Response) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetType() EnumApplicationType`
+`func (o *ReadOneApplication200Response) GetType() EnumApplicationType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetTypeOk() (*EnumApplicationType, bool)`
+`func (o *ReadOneApplication200Response) GetTypeOk() (*EnumApplicationType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetType(v EnumApplicationType)`
+`func (o *ReadOneApplication200Response) SetType(v EnumApplicationType)`
 
 SetType sets Type field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetUpdatedAt() time.Time`
+`func (o *ReadOneApplication200Response) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *ReadOneApplication200Response) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetUpdatedAt(v time.Time)`
+`func (o *ReadOneApplication200Response) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 ### HasUpdatedAt
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasUpdatedAt() bool`
+`func (o *ReadOneApplication200Response) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetSupportUnsignedRequestObject
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSupportUnsignedRequestObject() bool`
+`func (o *ReadOneApplication200Response) GetSupportUnsignedRequestObject() bool`
 
 GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field if non-nil, zero value otherwise.
 
 ### GetSupportUnsignedRequestObjectOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSupportUnsignedRequestObjectOk() (*bool, bool)`
+`func (o *ReadOneApplication200Response) GetSupportUnsignedRequestObjectOk() (*bool, bool)`
 
 GetSupportUnsignedRequestObjectOk returns a tuple with the SupportUnsignedRequestObject field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportUnsignedRequestObject
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetSupportUnsignedRequestObject(v bool)`
+`func (o *ReadOneApplication200Response) SetSupportUnsignedRequestObject(v bool)`
 
 SetSupportUnsignedRequestObject sets SupportUnsignedRequestObject field to given value.
 
 ### HasSupportUnsignedRequestObject
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasSupportUnsignedRequestObject() bool`
+`func (o *ReadOneApplication200Response) HasSupportUnsignedRequestObject() bool`
 
 HasSupportUnsignedRequestObject returns a boolean if a field has been set.
 
 ### GetAcsUrls
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAcsUrls() []string`
+`func (o *ReadOneApplication200Response) GetAcsUrls() []string`
 
 GetAcsUrls returns the AcsUrls field if non-nil, zero value otherwise.
 
 ### GetAcsUrlsOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAcsUrlsOk() (*[]string, bool)`
+`func (o *ReadOneApplication200Response) GetAcsUrlsOk() (*[]string, bool)`
 
 GetAcsUrlsOk returns a tuple with the AcsUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAcsUrls
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetAcsUrls(v []string)`
+`func (o *ReadOneApplication200Response) SetAcsUrls(v []string)`
 
 SetAcsUrls sets AcsUrls field to given value.
 
 
 ### GetAssertionDuration
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAssertionDuration() int32`
+`func (o *ReadOneApplication200Response) GetAssertionDuration() int32`
 
 GetAssertionDuration returns the AssertionDuration field if non-nil, zero value otherwise.
 
 ### GetAssertionDurationOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAssertionDurationOk() (*int32, bool)`
+`func (o *ReadOneApplication200Response) GetAssertionDurationOk() (*int32, bool)`
 
 GetAssertionDurationOk returns a tuple with the AssertionDuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssertionDuration
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetAssertionDuration(v int32)`
+`func (o *ReadOneApplication200Response) SetAssertionDuration(v int32)`
 
 SetAssertionDuration sets AssertionDuration field to given value.
 
 
 ### GetAssertionSigned
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAssertionSigned() bool`
+`func (o *ReadOneApplication200Response) GetAssertionSigned() bool`
 
 GetAssertionSigned returns the AssertionSigned field if non-nil, zero value otherwise.
 
 ### GetAssertionSignedOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetAssertionSignedOk() (*bool, bool)`
+`func (o *ReadOneApplication200Response) GetAssertionSignedOk() (*bool, bool)`
 
 GetAssertionSignedOk returns a tuple with the AssertionSigned field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssertionSigned
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetAssertionSigned(v bool)`
+`func (o *ReadOneApplication200Response) SetAssertionSigned(v bool)`
 
 SetAssertionSigned sets AssertionSigned field to given value.
 
 ### HasAssertionSigned
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasAssertionSigned() bool`
+`func (o *ReadOneApplication200Response) HasAssertionSigned() bool`
 
 HasAssertionSigned returns a boolean if a field has been set.
 
 ### GetIdpSigning
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetIdpSigning() ApplicationSAMLAllOfIdpSigning`
+`func (o *ReadOneApplication200Response) GetIdpSigning() ApplicationSAMLAllOfIdpSigning`
 
 GetIdpSigning returns the IdpSigning field if non-nil, zero value otherwise.
 
 ### GetIdpSigningOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetIdpSigningOk() (*ApplicationSAMLAllOfIdpSigning, bool)`
+`func (o *ReadOneApplication200Response) GetIdpSigningOk() (*ApplicationSAMLAllOfIdpSigning, bool)`
 
 GetIdpSigningOk returns a tuple with the IdpSigning field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdpSigning
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetIdpSigning(v ApplicationSAMLAllOfIdpSigning)`
+`func (o *ReadOneApplication200Response) SetIdpSigning(v ApplicationSAMLAllOfIdpSigning)`
 
 SetIdpSigning sets IdpSigning field to given value.
 
 ### HasIdpSigning
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasIdpSigning() bool`
+`func (o *ReadOneApplication200Response) HasIdpSigning() bool`
 
 HasIdpSigning returns a boolean if a field has been set.
 
 ### GetNameIdFormat
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetNameIdFormat() string`
+`func (o *ReadOneApplication200Response) GetNameIdFormat() string`
 
 GetNameIdFormat returns the NameIdFormat field if non-nil, zero value otherwise.
 
 ### GetNameIdFormatOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetNameIdFormatOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetNameIdFormatOk() (*string, bool)`
 
 GetNameIdFormatOk returns a tuple with the NameIdFormat field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNameIdFormat
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetNameIdFormat(v string)`
+`func (o *ReadOneApplication200Response) SetNameIdFormat(v string)`
 
 SetNameIdFormat sets NameIdFormat field to given value.
 
 ### HasNameIdFormat
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasNameIdFormat() bool`
+`func (o *ReadOneApplication200Response) HasNameIdFormat() bool`
 
 HasNameIdFormat returns a boolean if a field has been set.
 
 ### GetResponseSigned
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetResponseSigned() bool`
+`func (o *ReadOneApplication200Response) GetResponseSigned() bool`
 
 GetResponseSigned returns the ResponseSigned field if non-nil, zero value otherwise.
 
 ### GetResponseSignedOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetResponseSignedOk() (*bool, bool)`
+`func (o *ReadOneApplication200Response) GetResponseSignedOk() (*bool, bool)`
 
 GetResponseSignedOk returns a tuple with the ResponseSigned field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponseSigned
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetResponseSigned(v bool)`
+`func (o *ReadOneApplication200Response) SetResponseSigned(v bool)`
 
 SetResponseSigned sets ResponseSigned field to given value.
 
 ### HasResponseSigned
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasResponseSigned() bool`
+`func (o *ReadOneApplication200Response) HasResponseSigned() bool`
 
 HasResponseSigned returns a boolean if a field has been set.
 
 ### GetSloBinding
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSloBinding() EnumApplicationSAMLSloBinding`
+`func (o *ReadOneApplication200Response) GetSloBinding() EnumApplicationSAMLSloBinding`
 
 GetSloBinding returns the SloBinding field if non-nil, zero value otherwise.
 
 ### GetSloBindingOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSloBindingOk() (*EnumApplicationSAMLSloBinding, bool)`
+`func (o *ReadOneApplication200Response) GetSloBindingOk() (*EnumApplicationSAMLSloBinding, bool)`
 
 GetSloBindingOk returns a tuple with the SloBinding field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSloBinding
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetSloBinding(v EnumApplicationSAMLSloBinding)`
+`func (o *ReadOneApplication200Response) SetSloBinding(v EnumApplicationSAMLSloBinding)`
 
 SetSloBinding sets SloBinding field to given value.
 
 ### HasSloBinding
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasSloBinding() bool`
+`func (o *ReadOneApplication200Response) HasSloBinding() bool`
 
 HasSloBinding returns a boolean if a field has been set.
 
 ### GetSloEndpoint
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSloEndpoint() string`
+`func (o *ReadOneApplication200Response) GetSloEndpoint() string`
 
 GetSloEndpoint returns the SloEndpoint field if non-nil, zero value otherwise.
 
 ### GetSloEndpointOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSloEndpointOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetSloEndpointOk() (*string, bool)`
 
 GetSloEndpointOk returns a tuple with the SloEndpoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSloEndpoint
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetSloEndpoint(v string)`
+`func (o *ReadOneApplication200Response) SetSloEndpoint(v string)`
 
 SetSloEndpoint sets SloEndpoint field to given value.
 
 ### HasSloEndpoint
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasSloEndpoint() bool`
+`func (o *ReadOneApplication200Response) HasSloEndpoint() bool`
 
 HasSloEndpoint returns a boolean if a field has been set.
 
 ### GetSloResponseEndpoint
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSloResponseEndpoint() string`
+`func (o *ReadOneApplication200Response) GetSloResponseEndpoint() string`
 
 GetSloResponseEndpoint returns the SloResponseEndpoint field if non-nil, zero value otherwise.
 
 ### GetSloResponseEndpointOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSloResponseEndpointOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetSloResponseEndpointOk() (*string, bool)`
 
 GetSloResponseEndpointOk returns a tuple with the SloResponseEndpoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSloResponseEndpoint
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetSloResponseEndpoint(v string)`
+`func (o *ReadOneApplication200Response) SetSloResponseEndpoint(v string)`
 
 SetSloResponseEndpoint sets SloResponseEndpoint field to given value.
 
 ### HasSloResponseEndpoint
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasSloResponseEndpoint() bool`
+`func (o *ReadOneApplication200Response) HasSloResponseEndpoint() bool`
 
 HasSloResponseEndpoint returns a boolean if a field has been set.
 
 ### GetSpEntityId
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSpEntityId() string`
+`func (o *ReadOneApplication200Response) GetSpEntityId() string`
 
 GetSpEntityId returns the SpEntityId field if non-nil, zero value otherwise.
 
 ### GetSpEntityIdOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSpEntityIdOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetSpEntityIdOk() (*string, bool)`
 
 GetSpEntityIdOk returns a tuple with the SpEntityId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpEntityId
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetSpEntityId(v string)`
+`func (o *ReadOneApplication200Response) SetSpEntityId(v string)`
 
 SetSpEntityId sets SpEntityId field to given value.
 
 
 ### GetSpVerification
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSpVerification() ApplicationSAMLAllOfSpVerification`
+`func (o *ReadOneApplication200Response) GetSpVerification() ApplicationSAMLAllOfSpVerification`
 
 GetSpVerification returns the SpVerification field if non-nil, zero value otherwise.
 
 ### GetSpVerificationOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetSpVerificationOk() (*ApplicationSAMLAllOfSpVerification, bool)`
+`func (o *ReadOneApplication200Response) GetSpVerificationOk() (*ApplicationSAMLAllOfSpVerification, bool)`
 
 GetSpVerificationOk returns a tuple with the SpVerification field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpVerification
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetSpVerification(v ApplicationSAMLAllOfSpVerification)`
+`func (o *ReadOneApplication200Response) SetSpVerification(v ApplicationSAMLAllOfSpVerification)`
 
 SetSpVerification sets SpVerification field to given value.
 
 ### HasSpVerification
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasSpVerification() bool`
+`func (o *ReadOneApplication200Response) HasSpVerification() bool`
 
 HasSpVerification returns a boolean if a field has been set.
 
 ### GetMobile
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetMobile() ApplicationOIDCAllOfMobile`
+`func (o *ReadOneApplication200Response) GetMobile() ApplicationOIDCAllOfMobile`
 
 GetMobile returns the Mobile field if non-nil, zero value otherwise.
 
 ### GetMobileOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetMobileOk() (*ApplicationOIDCAllOfMobile, bool)`
+`func (o *ReadOneApplication200Response) GetMobileOk() (*ApplicationOIDCAllOfMobile, bool)`
 
 GetMobileOk returns a tuple with the Mobile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMobile
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetMobile(v ApplicationOIDCAllOfMobile)`
+`func (o *ReadOneApplication200Response) SetMobile(v ApplicationOIDCAllOfMobile)`
 
 SetMobile sets Mobile field to given value.
 
 ### HasMobile
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasMobile() bool`
+`func (o *ReadOneApplication200Response) HasMobile() bool`
 
 HasMobile returns a boolean if a field has been set.
 
 ### GetBundleId
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetBundleId() string`
+`func (o *ReadOneApplication200Response) GetBundleId() string`
 
 GetBundleId returns the BundleId field if non-nil, zero value otherwise.
 
 ### GetBundleIdOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetBundleIdOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetBundleIdOk() (*string, bool)`
 
 GetBundleIdOk returns a tuple with the BundleId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBundleId
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetBundleId(v string)`
+`func (o *ReadOneApplication200Response) SetBundleId(v string)`
 
 SetBundleId sets BundleId field to given value.
 
 ### HasBundleId
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasBundleId() bool`
+`func (o *ReadOneApplication200Response) HasBundleId() bool`
 
 HasBundleId returns a boolean if a field has been set.
 
 ### GetPackageName
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetPackageName() string`
+`func (o *ReadOneApplication200Response) GetPackageName() string`
 
 GetPackageName returns the PackageName field if non-nil, zero value otherwise.
 
 ### GetPackageNameOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetPackageNameOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetPackageNameOk() (*string, bool)`
 
 GetPackageNameOk returns a tuple with the PackageName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPackageName
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetPackageName(v string)`
+`func (o *ReadOneApplication200Response) SetPackageName(v string)`
 
 SetPackageName sets PackageName field to given value.
 
 ### HasPackageName
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasPackageName() bool`
+`func (o *ReadOneApplication200Response) HasPackageName() bool`
 
 HasPackageName returns a boolean if a field has been set.
 
+### GetKerberos
+
+`func (o *ReadOneApplication200Response) GetKerberos() ApplicationOIDCAllOfKerberos`
+
+GetKerberos returns the Kerberos field if non-nil, zero value otherwise.
+
+### GetKerberosOk
+
+`func (o *ReadOneApplication200Response) GetKerberosOk() (*ApplicationOIDCAllOfKerberos, bool)`
+
+GetKerberosOk returns a tuple with the Kerberos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberos
+
+`func (o *ReadOneApplication200Response) SetKerberos(v ApplicationOIDCAllOfKerberos)`
+
+SetKerberos sets Kerberos field to given value.
+
+### HasKerberos
+
+`func (o *ReadOneApplication200Response) HasKerberos() bool`
+
+HasKerberos returns a boolean if a field has been set.
+
 ### GetGrantTypes
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetGrantTypes() []EnumApplicationOIDCGrantType`
+`func (o *ReadOneApplication200Response) GetGrantTypes() []EnumApplicationOIDCGrantType`
 
 GetGrantTypes returns the GrantTypes field if non-nil, zero value otherwise.
 
 ### GetGrantTypesOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetGrantTypesOk() (*[]EnumApplicationOIDCGrantType, bool)`
+`func (o *ReadOneApplication200Response) GetGrantTypesOk() (*[]EnumApplicationOIDCGrantType, bool)`
 
 GetGrantTypesOk returns a tuple with the GrantTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGrantTypes
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetGrantTypes(v []EnumApplicationOIDCGrantType)`
+`func (o *ReadOneApplication200Response) SetGrantTypes(v []EnumApplicationOIDCGrantType)`
 
 SetGrantTypes sets GrantTypes field to given value.
 
 
 ### GetHomePageUrl
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetHomePageUrl() string`
+`func (o *ReadOneApplication200Response) GetHomePageUrl() string`
 
 GetHomePageUrl returns the HomePageUrl field if non-nil, zero value otherwise.
 
 ### GetHomePageUrlOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetHomePageUrlOk() (*string, bool)`
+`func (o *ReadOneApplication200Response) GetHomePageUrlOk() (*string, bool)`
 
 GetHomePageUrlOk returns a tuple with the HomePageUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHomePageUrl
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetHomePageUrl(v string)`
+`func (o *ReadOneApplication200Response) SetHomePageUrl(v string)`
 
 SetHomePageUrl sets HomePageUrl field to given value.
 
-### HasHomePageUrl
-
-`func (o *EntityArrayEmbeddedApplicationsInner) HasHomePageUrl() bool`
-
-HasHomePageUrl returns a boolean if a field has been set.
 
 ### GetPkceEnforcement
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetPkceEnforcement() EnumApplicationOIDCPKCEOption`
+`func (o *ReadOneApplication200Response) GetPkceEnforcement() EnumApplicationOIDCPKCEOption`
 
 GetPkceEnforcement returns the PkceEnforcement field if non-nil, zero value otherwise.
 
 ### GetPkceEnforcementOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetPkceEnforcementOk() (*EnumApplicationOIDCPKCEOption, bool)`
+`func (o *ReadOneApplication200Response) GetPkceEnforcementOk() (*EnumApplicationOIDCPKCEOption, bool)`
 
 GetPkceEnforcementOk returns a tuple with the PkceEnforcement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPkceEnforcement
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetPkceEnforcement(v EnumApplicationOIDCPKCEOption)`
+`func (o *ReadOneApplication200Response) SetPkceEnforcement(v EnumApplicationOIDCPKCEOption)`
 
 SetPkceEnforcement sets PkceEnforcement field to given value.
 
 ### HasPkceEnforcement
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasPkceEnforcement() bool`
+`func (o *ReadOneApplication200Response) HasPkceEnforcement() bool`
 
 HasPkceEnforcement returns a boolean if a field has been set.
 
 ### GetPostLogoutRedirectUris
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetPostLogoutRedirectUris() []string`
+`func (o *ReadOneApplication200Response) GetPostLogoutRedirectUris() []string`
 
 GetPostLogoutRedirectUris returns the PostLogoutRedirectUris field if non-nil, zero value otherwise.
 
 ### GetPostLogoutRedirectUrisOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetPostLogoutRedirectUrisOk() (*[]string, bool)`
+`func (o *ReadOneApplication200Response) GetPostLogoutRedirectUrisOk() (*[]string, bool)`
 
 GetPostLogoutRedirectUrisOk returns a tuple with the PostLogoutRedirectUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPostLogoutRedirectUris
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetPostLogoutRedirectUris(v []string)`
+`func (o *ReadOneApplication200Response) SetPostLogoutRedirectUris(v []string)`
 
 SetPostLogoutRedirectUris sets PostLogoutRedirectUris field to given value.
 
 ### HasPostLogoutRedirectUris
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasPostLogoutRedirectUris() bool`
+`func (o *ReadOneApplication200Response) HasPostLogoutRedirectUris() bool`
 
 HasPostLogoutRedirectUris returns a boolean if a field has been set.
 
 ### GetRedirectUris
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetRedirectUris() []string`
+`func (o *ReadOneApplication200Response) GetRedirectUris() []string`
 
 GetRedirectUris returns the RedirectUris field if non-nil, zero value otherwise.
 
 ### GetRedirectUrisOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetRedirectUrisOk() (*[]string, bool)`
+`func (o *ReadOneApplication200Response) GetRedirectUrisOk() (*[]string, bool)`
 
 GetRedirectUrisOk returns a tuple with the RedirectUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRedirectUris
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetRedirectUris(v []string)`
+`func (o *ReadOneApplication200Response) SetRedirectUris(v []string)`
 
 SetRedirectUris sets RedirectUris field to given value.
 
 ### HasRedirectUris
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasRedirectUris() bool`
+`func (o *ReadOneApplication200Response) HasRedirectUris() bool`
 
 HasRedirectUris returns a boolean if a field has been set.
 
 ### GetRefreshTokenDuration
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetRefreshTokenDuration() int32`
+`func (o *ReadOneApplication200Response) GetRefreshTokenDuration() int32`
 
 GetRefreshTokenDuration returns the RefreshTokenDuration field if non-nil, zero value otherwise.
 
 ### GetRefreshTokenDurationOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetRefreshTokenDurationOk() (*int32, bool)`
+`func (o *ReadOneApplication200Response) GetRefreshTokenDurationOk() (*int32, bool)`
 
 GetRefreshTokenDurationOk returns a tuple with the RefreshTokenDuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefreshTokenDuration
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetRefreshTokenDuration(v int32)`
+`func (o *ReadOneApplication200Response) SetRefreshTokenDuration(v int32)`
 
 SetRefreshTokenDuration sets RefreshTokenDuration field to given value.
 
 ### HasRefreshTokenDuration
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasRefreshTokenDuration() bool`
+`func (o *ReadOneApplication200Response) HasRefreshTokenDuration() bool`
 
 HasRefreshTokenDuration returns a boolean if a field has been set.
 
 ### GetRefreshTokenRollingDuration
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetRefreshTokenRollingDuration() int32`
+`func (o *ReadOneApplication200Response) GetRefreshTokenRollingDuration() int32`
 
 GetRefreshTokenRollingDuration returns the RefreshTokenRollingDuration field if non-nil, zero value otherwise.
 
 ### GetRefreshTokenRollingDurationOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetRefreshTokenRollingDurationOk() (*int32, bool)`
+`func (o *ReadOneApplication200Response) GetRefreshTokenRollingDurationOk() (*int32, bool)`
 
 GetRefreshTokenRollingDurationOk returns a tuple with the RefreshTokenRollingDuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefreshTokenRollingDuration
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetRefreshTokenRollingDuration(v int32)`
+`func (o *ReadOneApplication200Response) SetRefreshTokenRollingDuration(v int32)`
 
 SetRefreshTokenRollingDuration sets RefreshTokenRollingDuration field to given value.
 
 ### HasRefreshTokenRollingDuration
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasRefreshTokenRollingDuration() bool`
+`func (o *ReadOneApplication200Response) HasRefreshTokenRollingDuration() bool`
 
 HasRefreshTokenRollingDuration returns a boolean if a field has been set.
 
 ### GetResponseTypes
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetResponseTypes() []EnumApplicationOIDCResponseType`
+`func (o *ReadOneApplication200Response) GetResponseTypes() []EnumApplicationOIDCResponseType`
 
 GetResponseTypes returns the ResponseTypes field if non-nil, zero value otherwise.
 
 ### GetResponseTypesOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetResponseTypesOk() (*[]EnumApplicationOIDCResponseType, bool)`
+`func (o *ReadOneApplication200Response) GetResponseTypesOk() (*[]EnumApplicationOIDCResponseType, bool)`
 
 GetResponseTypesOk returns a tuple with the ResponseTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResponseTypes
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetResponseTypes(v []EnumApplicationOIDCResponseType)`
+`func (o *ReadOneApplication200Response) SetResponseTypes(v []EnumApplicationOIDCResponseType)`
 
 SetResponseTypes sets ResponseTypes field to given value.
 
 ### HasResponseTypes
 
-`func (o *EntityArrayEmbeddedApplicationsInner) HasResponseTypes() bool`
+`func (o *ReadOneApplication200Response) HasResponseTypes() bool`
 
 HasResponseTypes returns a boolean if a field has been set.
 
 ### GetTokenEndpointAuthMethod
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetTokenEndpointAuthMethod() EnumApplicationOIDCTokenAuthMethod`
+`func (o *ReadOneApplication200Response) GetTokenEndpointAuthMethod() EnumApplicationOIDCTokenAuthMethod`
 
 GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field if non-nil, zero value otherwise.
 
 ### GetTokenEndpointAuthMethodOk
 
-`func (o *EntityArrayEmbeddedApplicationsInner) GetTokenEndpointAuthMethodOk() (*EnumApplicationOIDCTokenAuthMethod, bool)`
+`func (o *ReadOneApplication200Response) GetTokenEndpointAuthMethodOk() (*EnumApplicationOIDCTokenAuthMethod, bool)`
 
 GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokenEndpointAuthMethod
 
-`func (o *EntityArrayEmbeddedApplicationsInner) SetTokenEndpointAuthMethod(v EnumApplicationOIDCTokenAuthMethod)`
+`func (o *ReadOneApplication200Response) SetTokenEndpointAuthMethod(v EnumApplicationOIDCTokenAuthMethod)`
 
 SetTokenEndpointAuthMethod sets TokenEndpointAuthMethod field to given value.
 
+
+### GetApplyDefaultTheme
+
+`func (o *ReadOneApplication200Response) GetApplyDefaultTheme() bool`
+
+GetApplyDefaultTheme returns the ApplyDefaultTheme field if non-nil, zero value otherwise.
+
+### GetApplyDefaultThemeOk
+
+`func (o *ReadOneApplication200Response) GetApplyDefaultThemeOk() (*bool, bool)`
+
+GetApplyDefaultThemeOk returns a tuple with the ApplyDefaultTheme field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplyDefaultTheme
+
+`func (o *ReadOneApplication200Response) SetApplyDefaultTheme(v bool)`
+
+SetApplyDefaultTheme sets ApplyDefaultTheme field to given value.
+
+
+### GetEnableDefaultThemeFooter
+
+`func (o *ReadOneApplication200Response) GetEnableDefaultThemeFooter() bool`
+
+GetEnableDefaultThemeFooter returns the EnableDefaultThemeFooter field if non-nil, zero value otherwise.
+
+### GetEnableDefaultThemeFooterOk
+
+`func (o *ReadOneApplication200Response) GetEnableDefaultThemeFooterOk() (*bool, bool)`
+
+GetEnableDefaultThemeFooterOk returns a tuple with the EnableDefaultThemeFooter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableDefaultThemeFooter
+
+`func (o *ReadOneApplication200Response) SetEnableDefaultThemeFooter(v bool)`
+
+SetEnableDefaultThemeFooter sets EnableDefaultThemeFooter field to given value.
+
+### HasEnableDefaultThemeFooter
+
+`func (o *ReadOneApplication200Response) HasEnableDefaultThemeFooter() bool`
+
+HasEnableDefaultThemeFooter returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
