@@ -401,6 +401,7 @@ Class | Method | HTTP request | Description
  - [ApplicationAccessControlGroupGroupsInner](docs/ApplicationAccessControlGroupGroupsInner.md)
  - [ApplicationAccessControlRole](docs/ApplicationAccessControlRole.md)
  - [ApplicationAttributeMapping](docs/ApplicationAttributeMapping.md)
+ - [ApplicationAttributeMappingApplication](docs/ApplicationAttributeMappingApplication.md)
  - [ApplicationIcon](docs/ApplicationIcon.md)
  - [ApplicationOIDC](docs/ApplicationOIDC.md)
  - [ApplicationOIDCAllOf](docs/ApplicationOIDCAllOf.md)

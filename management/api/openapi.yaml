@@ -21807,6 +21807,8 @@ components:
     ApplicationAttributeMapping:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
+        application:
+          id: id
         mappingType: null
         name: name
         id: id
@@ -21818,6 +21820,8 @@ components:
           description: A string that specifies the application ID.
           readOnly: true
           type: string
+        application:
+          $ref: '#/components/schemas/ApplicationAttributeMapping_application'
         createdAt:
           description: The time the resource was created.
           format: date-time
@@ -25180,6 +25184,16 @@ components:
       required:
       - grantTypes
       - tokenEndpointAuthMethod
+      type: object
+    ApplicationAttributeMapping_application:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the application associated with the
+            application mapping resource.
+          type: string
+      readOnly: true
       type: object
     ApplicationResourceGrant_application:
       example:
