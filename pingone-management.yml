@@ -648,6 +648,13 @@ components:
           type: string
           readOnly: true
           description: A string that specifies the application ID.
+        application:
+          type: object
+          readOnly: true
+          properties:
+            id:
+              type: string
+              description: A string that specifies the application associated with the application mapping resource.
         createdAt:
           type: string
           format: date-time

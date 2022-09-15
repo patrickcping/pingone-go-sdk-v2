@@ -54,8 +54,6 @@ docs/UsersMFADevicesApi.md
 docs/UsersMFAPairingKeysApi.md
 go.mod
 go.sum
-model_create_mfa_push_credential_201_response.go
-model_create_mfa_push_credential_request.go
 model_device_authentication_policy.go
 model_device_authentication_policy_mobile.go
 model_device_authentication_policy_mobile_applications_inner.go
@@ -75,7 +73,6 @@ model_device_authentication_policy_security_key.go
 model_device_authentication_policy_totp.go
 model_entity_array.go
 model_entity_array__embedded.go
-model_entity_array__embedded_push_credentials_inner.go
 model_enum_mfa_push_credential_attr_type.go
 model_enum_mfa_settings_device_selection.go
 model_enum_mfa_settings_pairing_key_format.go
@@ -91,6 +88,5 @@ model_object_environment.go
 model_p1_error.go
 model_p1_error_details_inner.go
 model_p1_error_details_inner_inner_error.go
-model_update_mfa_push_credential_request.go
 response.go
 utils.go

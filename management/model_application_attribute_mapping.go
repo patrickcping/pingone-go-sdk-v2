@@ -19,6 +19,7 @@ import (
 type ApplicationAttributeMapping struct {
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
+	Application *ApplicationAttributeMappingApplication `json:"application,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	MappingType *EnumAttributeMappingType `json:"mappingType,omitempty"`
@@ -82,6 +83,38 @@ func (o *ApplicationAttributeMapping) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApplicationAttributeMapping) SetId(v string) {
 	o.Id = &v
+}
+
+// GetApplication returns the Application field value if set, zero value otherwise.
+func (o *ApplicationAttributeMapping) GetApplication() ApplicationAttributeMappingApplication {
+	if o == nil || o.Application == nil {
+		var ret ApplicationAttributeMappingApplication
+		return ret
+	}
+	return *o.Application
+}
+
+// GetApplicationOk returns a tuple with the Application field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAttributeMapping) GetApplicationOk() (*ApplicationAttributeMappingApplication, bool) {
+	if o == nil || o.Application == nil {
+		return nil, false
+	}
+	return o.Application, true
+}
+
+// HasApplication returns a boolean if a field has been set.
+func (o *ApplicationAttributeMapping) HasApplication() bool {
+	if o != nil && o.Application != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetApplication gets a reference to the given ApplicationAttributeMappingApplication and assigns it to the Application field.
+func (o *ApplicationAttributeMapping) SetApplication(v ApplicationAttributeMappingApplication) {
+	o.Application = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -256,6 +289,9 @@ func (o ApplicationAttributeMapping) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
+	}
+	if o.Application != nil {
+		toSerialize["application"] = o.Application
 	}
 	if o.CreatedAt != nil {
 		toSerialize["createdAt"] = o.CreatedAt

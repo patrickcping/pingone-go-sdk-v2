@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
+**Application** | Pointer to [**ApplicationAttributeMappingApplication**](ApplicationAttributeMappingApplication.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **MappingType** | Pointer to [**EnumIdentityProviderAttributeMappingType**](EnumIdentityProviderAttributeMappingType.md) |  | [optional] 
 **Name** | **string** | A string that specifies the name of the custom resource attribute to be included in the access token | 
@@ -68,6 +69,31 @@ SetId sets Id field to given value.
 `func (o *EntityArrayEmbeddedAttributesInner) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetApplication
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetApplication() ApplicationAttributeMappingApplication`
+
+GetApplication returns the Application field if non-nil, zero value otherwise.
+
+### GetApplicationOk
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetApplicationOk() (*ApplicationAttributeMappingApplication, bool)`
+
+GetApplicationOk returns a tuple with the Application field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplication
+
+`func (o *EntityArrayEmbeddedAttributesInner) SetApplication(v ApplicationAttributeMappingApplication)`
+
+SetApplication sets Application field to given value.
+
+### HasApplication
+
+`func (o *EntityArrayEmbeddedAttributesInner) HasApplication() bool`
+
+HasApplication returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

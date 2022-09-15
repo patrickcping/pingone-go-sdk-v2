@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
+**Application** | Pointer to [**ApplicationAttributeMappingApplication**](ApplicationAttributeMappingApplication.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **MappingType** | Pointer to [**EnumAttributeMappingType**](EnumAttributeMappingType.md) |  | [optional] 
 **Name** | **string** | A string that specifies the name of attribute and must be unique within an application. For SAML applications, the samlAssertion.subject name is a reserved case-insensitive name which indicates the mapping to be used for the subject in an assertion. For OpenID Connect applications, the following names are reserved and cannot be used acr, amr, at_hash, aud, auth_time, azp, client_id, exp, iat, iss, jti, nbf, nonce, org, scope, sid, sub  This is a required property. | 
@@ -55,6 +56,31 @@ SetId sets Id field to given value.
 `func (o *ApplicationAttributeMapping) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetApplication
+
+`func (o *ApplicationAttributeMapping) GetApplication() ApplicationAttributeMappingApplication`
+
+GetApplication returns the Application field if non-nil, zero value otherwise.
+
+### GetApplicationOk
+
+`func (o *ApplicationAttributeMapping) GetApplicationOk() (*ApplicationAttributeMappingApplication, bool)`
+
+GetApplicationOk returns a tuple with the Application field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplication
+
+`func (o *ApplicationAttributeMapping) SetApplication(v ApplicationAttributeMappingApplication)`
+
+SetApplication sets Application field to given value.
+
+### HasApplication
+
+`func (o *ApplicationAttributeMapping) HasApplication() bool`
+
+HasApplication returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
