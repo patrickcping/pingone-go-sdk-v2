@@ -18,6 +18,7 @@ import (
 type EntityArrayEmbedded struct {
 	Actions []SignOnPolicyAction `json:"actions,omitempty"`
 	Agreements []Agreement `json:"agreements,omitempty"`
+	AlertChannels []AlertChannel `json:"alertChannels,omitempty"`
 	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
 	Applications []ReadOneApplication200Response `json:"applications,omitempty"`
 	Certificates []Certificate `json:"certificates,omitempty"`
@@ -128,6 +129,38 @@ func (o *EntityArrayEmbedded) HasAgreements() bool {
 // SetAgreements gets a reference to the given []Agreement and assigns it to the Agreements field.
 func (o *EntityArrayEmbedded) SetAgreements(v []Agreement) {
 	o.Agreements = v
+}
+
+// GetAlertChannels returns the AlertChannels field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetAlertChannels() []AlertChannel {
+	if o == nil || o.AlertChannels == nil {
+		var ret []AlertChannel
+		return ret
+	}
+	return o.AlertChannels
+}
+
+// GetAlertChannelsOk returns a tuple with the AlertChannels field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetAlertChannelsOk() ([]AlertChannel, bool) {
+	if o == nil || o.AlertChannels == nil {
+		return nil, false
+	}
+	return o.AlertChannels, true
+}
+
+// HasAlertChannels returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasAlertChannels() bool {
+	if o != nil && o.AlertChannels != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertChannels gets a reference to the given []AlertChannel and assigns it to the AlertChannels field.
+func (o *EntityArrayEmbedded) SetAlertChannels(v []AlertChannel) {
+	o.AlertChannels = v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -1065,6 +1098,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Agreements != nil {
 		toSerialize["agreements"] = o.Agreements
+	}
+	if o.AlertChannels != nil {
+		toSerialize["alertChannels"] = o.AlertChannels
 	}
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes

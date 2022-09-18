@@ -81,6 +81,7 @@ docs/AgreementLanguageUserExperience.md
 docs/AgreementLanguagesResourcesApi.md
 docs/AgreementRevisionsResourcesApi.md
 docs/AgreementsResourcesApi.md
+docs/AlertChannel.md
 docs/AlertingApi.md
 docs/Application.md
 docs/ApplicationAccessControl.md
@@ -158,6 +159,9 @@ docs/EntityArray.md
 docs/EntityArrayEmbedded.md
 docs/EntityArrayEmbeddedAttributesInner.md
 docs/EntityArrayEmbeddedGatewaysInner.md
+docs/EnumAlertChannelAlertType.md
+docs/EnumAlertChannelSeverity.md
+docs/EnumAlertChannelType.md
 docs/EnumApplicationAccessControlType.md
 docs/EnumApplicationOIDCGrantType.md
 docs/EnumApplicationOIDCPKCEOption.md
@@ -426,6 +430,7 @@ model_agreement_language_current_revision.go
 model_agreement_language_revision.go
 model_agreement_language_revision_language.go
 model_agreement_language_user_experience.go
+model_alert_channel.go
 model_application.go
 model_application_access_control.go
 model_application_access_control_group.go
@@ -481,6 +486,9 @@ model_email_domain_trusted_email.go
 model_email_domain_trusted_email_email_domain.go
 model_entity_array.go
 model_entity_array__embedded.go
+model_enum_alert_channel_alert_type.go
+model_enum_alert_channel_severity.go
+model_enum_alert_channel_type.go
 model_enum_application_access_control_type.go
 model_enum_application_oidc_grant_type.go
 model_enum_application_oidc_response_type.go
