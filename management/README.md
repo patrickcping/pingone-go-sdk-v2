@@ -95,10 +95,11 @@ Class | Method | HTTP request | Description
 *AgreementsResourcesApi* | [**ReadAllAgreements**](docs/AgreementsResourcesApi.md#readallagreements) | **Get** /v1/environments/{environmentID}/agreements | READ All Agreements
 *AgreementsResourcesApi* | [**ReadOneAgreement**](docs/AgreementsResourcesApi.md#readoneagreement) | **Get** /v1/environments/{environmentID}/agreements/{agreementID} | READ One Agreement
 *AgreementsResourcesApi* | [**UpdateAgreement**](docs/AgreementsResourcesApi.md#updateagreement) | **Put** /v1/environments/{environmentID}/agreements/{agreementID} | UPDATE Agreement
-*AlertingApi* | [**V1EnvironmentsEnvironmentIDAlertChannelsAlertChannelIDDelete**](docs/AlertingApi.md#v1environmentsenvironmentidalertchannelsalertchanneliddelete) | **Delete** /v1/environments/{environmentID}/alertChannels/{alertChannelID} | DELETE Alert Channel
-*AlertingApi* | [**V1EnvironmentsEnvironmentIDAlertChannelsAlertChannelIDPut**](docs/AlertingApi.md#v1environmentsenvironmentidalertchannelsalertchannelidput) | **Put** /v1/environments/{environmentID}/alertChannels/{alertChannelID} | UPDATE Alert Channel
-*AlertingApi* | [**V1EnvironmentsEnvironmentIDAlertChannelsGet**](docs/AlertingApi.md#v1environmentsenvironmentidalertchannelsget) | **Get** /v1/environments/{environmentID}/alertChannels | READ All Alert Channels per Environment
-*AlertingApi* | [**V1EnvironmentsEnvironmentIDAlertChannelsPost**](docs/AlertingApi.md#v1environmentsenvironmentidalertchannelspost) | **Post** /v1/environments/{environmentID}/alertChannels | CREATE Alert Channel (Email)
+*AlertingApi* | [**CreateAlertChannel**](docs/AlertingApi.md#createalertchannel) | **Post** /v1/environments/{environmentID}/alertChannels | CREATE Alert Channel
+*AlertingApi* | [**DeleteAlertChannel**](docs/AlertingApi.md#deletealertchannel) | **Delete** /v1/environments/{environmentID}/alertChannels/{alertChannelID} | DELETE Alert Channel
+*AlertingApi* | [**ReadAllAlertChannels**](docs/AlertingApi.md#readallalertchannels) | **Get** /v1/environments/{environmentID}/alertChannels | READ All Alert Channels
+*AlertingApi* | [**ReadOneAlertChannel**](docs/AlertingApi.md#readonealertchannel) | **Get** /v1/environments/{environmentID}/alertChannels/{alertChannelID} | READ One Alert Channel
+*AlertingApi* | [**UpdateAlertChannel**](docs/AlertingApi.md#updatealertchannel) | **Put** /v1/environments/{environmentID}/alertChannels/{alertChannelID} | UPDATE Alert Channel
 *ApplicationAttributeMappingApi* | [**CreateApplicationAttributeMapping**](docs/ApplicationAttributeMappingApi.md#createapplicationattributemapping) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/attributes | CREATE Application Attribute Mapping
 *ApplicationAttributeMappingApi* | [**DeleteApplicationAttributeMapping**](docs/ApplicationAttributeMappingApi.md#deleteapplicationattributemapping) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | DELETE Application Attribute Mapping
 *ApplicationAttributeMappingApi* | [**ReadAllApplicationAttributeMappings**](docs/ApplicationAttributeMappingApi.md#readallapplicationattributemappings) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/attributes | READ All Application Attribute Mappings
@@ -396,6 +397,7 @@ Class | Method | HTTP request | Description
  - [AgreementLanguageRevision](docs/AgreementLanguageRevision.md)
  - [AgreementLanguageRevisionLanguage](docs/AgreementLanguageRevisionLanguage.md)
  - [AgreementLanguageUserExperience](docs/AgreementLanguageUserExperience.md)
+ - [AlertChannel](docs/AlertChannel.md)
  - [Application](docs/Application.md)
  - [ApplicationAccessControl](docs/ApplicationAccessControl.md)
  - [ApplicationAccessControlGroup](docs/ApplicationAccessControlGroup.md)
@@ -458,6 +460,9 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedAttributesInner](docs/EntityArrayEmbeddedAttributesInner.md)
  - [EntityArrayEmbeddedGatewaysInner](docs/EntityArrayEmbeddedGatewaysInner.md)
+ - [EnumAlertChannelAlertType](docs/EnumAlertChannelAlertType.md)
+ - [EnumAlertChannelSeverity](docs/EnumAlertChannelSeverity.md)
+ - [EnumAlertChannelType](docs/EnumAlertChannelType.md)
  - [EnumApplicationAccessControlType](docs/EnumApplicationAccessControlType.md)
  - [EnumApplicationOIDCGrantType](docs/EnumApplicationOIDCGrantType.md)
  - [EnumApplicationOIDCPKCEOption](docs/EnumApplicationOIDCPKCEOption.md)

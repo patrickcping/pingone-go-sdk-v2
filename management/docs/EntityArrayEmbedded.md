@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Actions** | Pointer to [**[]SignOnPolicyAction**](SignOnPolicyAction.md) |  | [optional] 
 **Agreements** | Pointer to [**[]Agreement**](Agreement.md) |  | [optional] 
+**AlertChannels** | Pointer to [**[]AlertChannel**](AlertChannel.md) |  | [optional] 
 **Attributes** | Pointer to [**[]EntityArrayEmbeddedAttributesInner**](EntityArrayEmbeddedAttributesInner.md) |  | [optional] 
 **Applications** | Pointer to [**[]ReadOneApplication200Response**](ReadOneApplication200Response.md) |  | [optional] 
 **Certificates** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
@@ -104,6 +105,31 @@ SetAgreements sets Agreements field to given value.
 `func (o *EntityArrayEmbedded) HasAgreements() bool`
 
 HasAgreements returns a boolean if a field has been set.
+
+### GetAlertChannels
+
+`func (o *EntityArrayEmbedded) GetAlertChannels() []AlertChannel`
+
+GetAlertChannels returns the AlertChannels field if non-nil, zero value otherwise.
+
+### GetAlertChannelsOk
+
+`func (o *EntityArrayEmbedded) GetAlertChannelsOk() (*[]AlertChannel, bool)`
+
+GetAlertChannelsOk returns a tuple with the AlertChannels field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlertChannels
+
+`func (o *EntityArrayEmbedded) SetAlertChannels(v []AlertChannel)`
+
+SetAlertChannels sets AlertChannels field to given value.
+
+### HasAlertChannels
+
+`func (o *EntityArrayEmbedded) HasAlertChannels() bool`
+
+HasAlertChannels returns a boolean if a field has been set.
 
 ### GetAttributes
 
