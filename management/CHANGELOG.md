@@ -1,4 +1,4 @@
-# v0.10.0 (Unreleased)
+# v0.10.0 (2022-09-18)
 
 * **Bug fix** - Correct the http endpoint headers object in the `Subscription` model [#52](https://github.com/patrickcping/pingone-go-sdk-v2/pull/52)
 * **Bug fix** - Correct the `createGroupNesting` response object [#53](https://github.com/patrickcping/pingone-go-sdk-v2/pull/53)
