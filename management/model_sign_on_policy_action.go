@@ -89,8 +89,6 @@ func (dst *SignOnPolicyAction) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	fmt.Printf("\n\n\nHERE1!!! %+v", common)
-
 	dst.SignOnPolicyActionAgreement = nil
 	dst.SignOnPolicyActionIDFirst = nil
 	dst.SignOnPolicyActionIDP = nil
