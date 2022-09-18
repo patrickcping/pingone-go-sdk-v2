@@ -199,6 +199,7 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**ReadAllGroups**](docs/GroupsApi.md#readallgroups) | **Get** /v1/environments/{environmentID}/groups | READ All Groups
 *GroupsApi* | [**ReadGroupNesting**](docs/GroupsApi.md#readgroupnesting) | **Get** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups | READ Group Nesting
 *GroupsApi* | [**ReadOneGroup**](docs/GroupsApi.md#readonegroup) | **Get** /v1/environments/{environmentID}/groups/{groupID} | READ One Group
+*GroupsApi* | [**ReadOneGroupNesting**](docs/GroupsApi.md#readonegroupnesting) | **Get** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | READ One Group Nesting
 *GroupsApi* | [**UpdateGroup**](docs/GroupsApi.md#updategroup) | **Put** /v1/environments/{environmentID}/groups/{groupID} | UPDATE Group
 *IdentityProviderAttributesApi* | [**CreateIdentityProviderAttribute**](docs/IdentityProviderAttributesApi.md#createidentityproviderattribute) | **Post** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes | CREATE Identity Provider Attribute
 *IdentityProviderAttributesApi* | [**DeleteIdentityProviderAttribute**](docs/IdentityProviderAttributesApi.md#deleteidentityproviderattribute) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | DELETE Identity Provider Attribute

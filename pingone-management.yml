@@ -1613,6 +1613,10 @@ components:
         id:
           type: string
           description: ID of the group to nest
+        type:
+          type: string
+          description: The type of the group nesting
+          readOnly: true
       required:
        - id
     IdentityProvider:
@@ -11548,8 +11552,72 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupNesting'
   /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID}:
+    get:
+      tags:
+        - Groups
+      summary: READ One Group Nesting
+      operationId: readOneGroupNesting
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: groupID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: nestedGroupID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupNesting'
     delete:
       tags:
         - Groups

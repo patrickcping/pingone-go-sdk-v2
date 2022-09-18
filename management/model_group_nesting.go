@@ -18,6 +18,8 @@ import (
 type GroupNesting struct {
 	// ID of the group to nest
 	Id string `json:"id"`
+	// The type of the group nesting
+	Type *string `json:"type,omitempty"`
 }
 
 // NewGroupNesting instantiates a new GroupNesting object
@@ -62,10 +64,45 @@ func (o *GroupNesting) SetId(v string) {
 	o.Id = v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *GroupNesting) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupNesting) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *GroupNesting) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *GroupNesting) SetType(v string) {
+	o.Type = &v
+}
+
 func (o GroupNesting) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["id"] = o.Id
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }
