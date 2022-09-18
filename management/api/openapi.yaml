@@ -8738,7 +8738,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupNesting'
           description: Successful response
       summary: CREATE Group Nesting
       tags:
@@ -8809,6 +8809,77 @@ paths:
         "204":
           description: Successful response
       summary: DELETE Group Nesting
+      tags:
+      - Groups
+    get:
+      operationId: readOneGroupNesting
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: groupID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: nestedGroupID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupNesting'
+          description: Successful response
+      summary: READ One Group Nesting
       tags:
       - Groups
   /v1/environments/{environmentID}/propagation/revisions:
@@ -23398,9 +23469,14 @@ components:
     GroupNesting:
       example:
         id: id
+        type: type
       properties:
         id:
           description: ID of the group to nest
+          type: string
+        type:
+          description: The type of the group nesting
+          readOnly: true
           type: string
       required:
       - id

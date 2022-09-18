@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**ReadAllGroups**](GroupsApi.md#ReadAllGroups) | **Get** /v1/environments/{environmentID}/groups | READ All Groups
 [**ReadGroupNesting**](GroupsApi.md#ReadGroupNesting) | **Get** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups | READ Group Nesting
 [**ReadOneGroup**](GroupsApi.md#ReadOneGroup) | **Get** /v1/environments/{environmentID}/groups/{groupID} | READ One Group
+[**ReadOneGroupNesting**](GroupsApi.md#ReadOneGroupNesting) | **Get** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | READ One Group Nesting
 [**UpdateGroup**](GroupsApi.md#UpdateGroup) | **Put** /v1/environments/{environmentID}/groups/{groupID} | UPDATE Group
 
 
@@ -87,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## CreateGroupNesting
 
-> Group CreateGroupNesting(ctx, environmentID, groupID).GroupNesting(groupNesting).Execute()
+> GroupNesting CreateGroupNesting(ctx, environmentID, groupID).GroupNesting(groupNesting).Execute()
 
 CREATE Group Nesting
 
@@ -115,7 +116,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupsApi.CreateGroupNesting``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateGroupNesting`: Group
+    // response from `CreateGroupNesting`: GroupNesting
     fmt.Fprintf(os.Stdout, "Response from `GroupsApi.CreateGroupNesting`: %v\n", resp)
 }
 ```
@@ -142,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Group**](Group.md)
+[**GroupNesting**](GroupNesting.md)
 
 ### Authorization
 
@@ -500,6 +501,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Group**](Group.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneGroupNesting
+
+> GroupNesting ReadOneGroupNesting(ctx, environmentID, groupID, nestedGroupID).Execute()
+
+READ One Group Nesting
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    groupID := "groupID_example" // string | 
+    nestedGroupID := "nestedGroupID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.GroupsApi.ReadOneGroupNesting(context.Background(), environmentID, groupID, nestedGroupID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GroupsApi.ReadOneGroupNesting``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadOneGroupNesting`: GroupNesting
+    fmt.Fprintf(os.Stdout, "Response from `GroupsApi.ReadOneGroupNesting`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**groupID** | **string** |  | 
+**nestedGroupID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadOneGroupNestingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**GroupNesting**](GroupNesting.md)
 
 ### Authorization
 
