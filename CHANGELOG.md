@@ -1,5 +1,8 @@
-# Release (Unreleased)
+# Release (2022-09-18)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.8
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.9.0 => v0.10.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.5.0 => v0.5.1
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.10.0](./management/CHANGELOG.md)
     * **Bug fix** - Correct the http endpoint headers object in the `Subscription` model [#52](https://github.com/patrickcping/pingone-go-sdk-v2/pull/52)
     * **Bug fix** - Correct the `createGroupNesting` response object [#53](https://github.com/patrickcping/pingone-go-sdk-v2/pull/53)
