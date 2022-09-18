@@ -22292,8 +22292,7 @@ components:
             format: null
             httpEndpoint:
               headers:
-              - key: ""
-              - key: ""
+                key: ""
               url: url
             name: name
             id: id
@@ -22319,8 +22318,7 @@ components:
             format: null
             httpEndpoint:
               headers:
-              - key: ""
-              - key: ""
+                key: ""
               url: url
             name: name
             id: id
@@ -24473,8 +24471,7 @@ components:
         format: null
         httpEndpoint:
           headers:
-          - key: ""
-          - key: ""
+            key: ""
           url: url
         name: name
         id: id
@@ -25486,8 +25483,7 @@ components:
           format: null
           httpEndpoint:
             headers:
-            - key: ""
-            - key: ""
+              key: ""
             url: url
           name: name
           id: id
@@ -25513,8 +25509,7 @@ components:
           format: null
           httpEndpoint:
             headers:
-            - key: ""
-            - key: ""
+              key: ""
             url: url
           name: name
           id: id
@@ -27684,8 +27679,7 @@ components:
     Subscription_httpEndpoint:
       example:
         headers:
-        - key: ""
-        - key: ""
+          key: ""
         url: url
       properties:
         url:
@@ -27693,15 +27687,13 @@ components:
             are sent. This is a required property.
           type: string
         headers:
-          description: "An array that specifies the headers applied to the outbound\
+          additionalProperties: true
+          description: "An object map that specifies the headers applied to the outbound\
             \ request (for example, `Authorization` `Basic usernamepassword`. The\
             \ purpose of these headers is for the HTTPS endpoint to authenticate the\
             \ PingOne service, ensuring that the information from PingOne is from\
             \ a trusted source."
-          items:
-            additionalProperties: true
-            type: object
-          type: array
+          type: object
       required:
       - url
       type: object

@@ -3106,11 +3106,9 @@ components:
               type: string
               description: A string that specifies a valid HTTPS URL to which event messages are sent. This is a required property.
             headers:
-              type: array
-              description: An array that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
-              items:
-                type: object
-                additionalProperties: true
+              type: object
+              description: An object map that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
+              additionalProperties: true
           required:
             - url
         name:

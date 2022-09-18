@@ -1,5 +1,6 @@
 # v0.10.0 (Unreleased)
 
+* **Bug fix** - Correct the http endpoint headers object in the `Subscription` model
 * **Breaking change** `CreateApplication201Response` changes to `ReadOneApplication200Response` model [#49](https://github.com/patrickcping/pingone-go-sdk-v2/pull/49)
 * **Feature** Support for External Link applications [#49](https://github.com/patrickcping/pingone-go-sdk-v2/pull/49)
 * **Feature** Support for the PingOne Portal application [#49](https://github.com/patrickcping/pingone-go-sdk-v2/pull/49)
