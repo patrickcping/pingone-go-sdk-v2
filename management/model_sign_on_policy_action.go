@@ -3,7 +3,7 @@ PingOne Platform API - SSO and Base
 
 The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
 
-API version: 2022-07-18
+API version: 2022-08-02
 */
 
 package management
@@ -16,19 +16,26 @@ import (
 // SignOnPolicyAction - struct for SignOnPolicyAction
 type SignOnPolicyAction struct {
 	SignOnPolicyActionAgreement                  *SignOnPolicyActionAgreement
+	SignOnPolicyActionCommon                     *SignOnPolicyActionCommon
 	SignOnPolicyActionIDFirst                    *SignOnPolicyActionIDFirst
 	SignOnPolicyActionIDP                        *SignOnPolicyActionIDP
 	SignOnPolicyActionLogin                      *SignOnPolicyActionLogin
 	SignOnPolicyActionMFA                        *SignOnPolicyActionMFA
-	SignOnPolicyActionProgressiveProfiling       *SignOnPolicyActionProgressiveProfiling
 	SignOnPolicyActionPingIDWinLoginPasswordless *SignOnPolicyActionPingIDWinLoginPasswordless
-	SignOnPolicyActionCommon                     *SignOnPolicyActionCommon
+	SignOnPolicyActionProgressiveProfiling       *SignOnPolicyActionProgressiveProfiling
 }
 
 // SignOnPolicyActionAgreementAsSignOnPolicyAction is a convenience function that returns SignOnPolicyActionAgreement wrapped in SignOnPolicyAction
 func SignOnPolicyActionAgreementAsSignOnPolicyAction(v *SignOnPolicyActionAgreement) SignOnPolicyAction {
 	return SignOnPolicyAction{
 		SignOnPolicyActionAgreement: v,
+	}
+}
+
+// SignOnPolicyActionCommonAsSignOnPolicyAction is a convenience function that returns SignOnPolicyActionCommon wrapped in SignOnPolicyAction
+func SignOnPolicyActionCommonAsSignOnPolicyAction(v *SignOnPolicyActionCommon) SignOnPolicyAction {
+	return SignOnPolicyAction{
+		SignOnPolicyActionCommon: v,
 	}
 }
 
@@ -60,13 +67,6 @@ func SignOnPolicyActionMFAAsSignOnPolicyAction(v *SignOnPolicyActionMFA) SignOnP
 	}
 }
 
-// SignOnPolicyActionProgressiveProfilingAsSignOnPolicyAction is a convenience function that returns SignOnPolicyActionProgressiveProfiling wrapped in SignOnPolicyAction
-func SignOnPolicyActionProgressiveProfilingAsSignOnPolicyAction(v *SignOnPolicyActionProgressiveProfiling) SignOnPolicyAction {
-	return SignOnPolicyAction{
-		SignOnPolicyActionProgressiveProfiling: v,
-	}
-}
-
 // SignOnPolicyActionPingIDWinLoginPasswordlessAsSignOnPolicyAction is a convenience function that returns SignOnPolicyActionPingIDWinLoginPasswordless wrapped in SignOnPolicyAction
 func SignOnPolicyActionPingIDWinLoginPasswordlessAsSignOnPolicyAction(v *SignOnPolicyActionPingIDWinLoginPasswordless) SignOnPolicyAction {
 	return SignOnPolicyAction{
@@ -74,10 +74,10 @@ func SignOnPolicyActionPingIDWinLoginPasswordlessAsSignOnPolicyAction(v *SignOnP
 	}
 }
 
-// SignOnPolicyActionCommonAsSignOnPolicyAction is a convenience function that returns SignOnPolicyActionCommon wrapped in SignOnPolicyAction
-func SignOnPolicyActionSignOnPolicyActionCommonAsSignOnPolicyAction(v *SignOnPolicyActionCommon) SignOnPolicyAction {
+// SignOnPolicyActionProgressiveProfilingAsSignOnPolicyAction is a convenience function that returns SignOnPolicyActionProgressiveProfiling wrapped in SignOnPolicyAction
+func SignOnPolicyActionProgressiveProfilingAsSignOnPolicyAction(v *SignOnPolicyActionProgressiveProfiling) SignOnPolicyAction {
 	return SignOnPolicyAction{
-		SignOnPolicyActionCommon: v,
+		SignOnPolicyActionProgressiveProfiling: v,
 	}
 }
 
@@ -143,6 +143,10 @@ func (src SignOnPolicyAction) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.SignOnPolicyActionAgreement)
 	}
 
+	if src.SignOnPolicyActionCommon != nil {
+		return json.Marshal(&src.SignOnPolicyActionCommon)
+	}
+
 	if src.SignOnPolicyActionIDFirst != nil {
 		return json.Marshal(&src.SignOnPolicyActionIDFirst)
 	}
@@ -159,16 +163,12 @@ func (src SignOnPolicyAction) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.SignOnPolicyActionMFA)
 	}
 
-	if src.SignOnPolicyActionProgressiveProfiling != nil {
-		return json.Marshal(&src.SignOnPolicyActionProgressiveProfiling)
-	}
-
 	if src.SignOnPolicyActionPingIDWinLoginPasswordless != nil {
 		return json.Marshal(&src.SignOnPolicyActionPingIDWinLoginPasswordless)
 	}
 
-	if src.SignOnPolicyActionCommon != nil {
-		return json.Marshal(&src.SignOnPolicyActionCommon)
+	if src.SignOnPolicyActionProgressiveProfiling != nil {
+		return json.Marshal(&src.SignOnPolicyActionProgressiveProfiling)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -181,6 +181,10 @@ func (obj *SignOnPolicyAction) GetActualInstance() interface{} {
 	}
 	if obj.SignOnPolicyActionAgreement != nil {
 		return obj.SignOnPolicyActionAgreement
+	}
+
+	if obj.SignOnPolicyActionCommon != nil {
+		return obj.SignOnPolicyActionCommon
 	}
 
 	if obj.SignOnPolicyActionIDFirst != nil {
@@ -199,16 +203,12 @@ func (obj *SignOnPolicyAction) GetActualInstance() interface{} {
 		return obj.SignOnPolicyActionMFA
 	}
 
-	if obj.SignOnPolicyActionProgressiveProfiling != nil {
-		return obj.SignOnPolicyActionProgressiveProfiling
-	}
-
 	if obj.SignOnPolicyActionPingIDWinLoginPasswordless != nil {
 		return obj.SignOnPolicyActionPingIDWinLoginPasswordless
 	}
 
-	if obj.SignOnPolicyActionCommon != nil {
-		return obj.SignOnPolicyActionCommon
+	if obj.SignOnPolicyActionProgressiveProfiling != nil {
+		return obj.SignOnPolicyActionProgressiveProfiling
 	}
 
 	// all schemas are nil

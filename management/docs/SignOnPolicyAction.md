@@ -34,12 +34,14 @@ Name | Type | Description | Notes
 **PreventMultiplePromptsPerFlow** | **bool** | A boolean that specifies whether the progressive profiling action will not be executed if another progressive profiling action has already been executed during the flow. This property is required. | 
 **PromptIntervalSeconds** | **int32** | An integer that specifies how often to prompt the user to provide profile data for the configured attributes for which they do not have values. This property is required. | 
 **PromptText** | **string** | A string that specifies text to display to the user when prompting for attribute values. This property is required. | 
+**UniqueUserAttribute** | [**SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute**](SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute.md) |  | 
+**OfflineMode** | [**SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode**](SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode.md) |  | 
 
 ## Methods
 
 ### NewSignOnPolicyAction
 
-`func NewSignOnPolicyAction(priority int32, type_ EnumSignOnPolicyType, identityProvider SignOnPolicyActionIDPAllOfIdentityProvider, agreement SignOnPolicyActionAgreementAllOfAgreement, attributes []SignOnPolicyActionProgressiveProfilingAllOfAttributes, preventMultiplePromptsPerFlow bool, promptIntervalSeconds int32, promptText string, ) *SignOnPolicyAction`
+`func NewSignOnPolicyAction(priority int32, type_ EnumSignOnPolicyType, identityProvider SignOnPolicyActionIDPAllOfIdentityProvider, agreement SignOnPolicyActionAgreementAllOfAgreement, attributes []SignOnPolicyActionProgressiveProfilingAllOfAttributes, preventMultiplePromptsPerFlow bool, promptIntervalSeconds int32, promptText string, uniqueUserAttribute SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute, offlineMode SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode, ) *SignOnPolicyAction`
 
 NewSignOnPolicyAction instantiates a new SignOnPolicyAction object
 This constructor will assign default values to properties that have it defined,
@@ -762,6 +764,46 @@ and a boolean to check if the value has been set.
 `func (o *SignOnPolicyAction) SetPromptText(v string)`
 
 SetPromptText sets PromptText field to given value.
+
+
+### GetUniqueUserAttribute
+
+`func (o *SignOnPolicyAction) GetUniqueUserAttribute() SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute`
+
+GetUniqueUserAttribute returns the UniqueUserAttribute field if non-nil, zero value otherwise.
+
+### GetUniqueUserAttributeOk
+
+`func (o *SignOnPolicyAction) GetUniqueUserAttributeOk() (*SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute, bool)`
+
+GetUniqueUserAttributeOk returns a tuple with the UniqueUserAttribute field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueUserAttribute
+
+`func (o *SignOnPolicyAction) SetUniqueUserAttribute(v SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute)`
+
+SetUniqueUserAttribute sets UniqueUserAttribute field to given value.
+
+
+### GetOfflineMode
+
+`func (o *SignOnPolicyAction) GetOfflineMode() SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode`
+
+GetOfflineMode returns the OfflineMode field if non-nil, zero value otherwise.
+
+### GetOfflineModeOk
+
+`func (o *SignOnPolicyAction) GetOfflineModeOk() (*SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode, bool)`
+
+GetOfflineModeOk returns a tuple with the OfflineMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOfflineMode
+
+`func (o *SignOnPolicyAction) SetOfflineMode(v SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode)`
+
+SetOfflineMode sets OfflineMode field to given value.
 
 
 
