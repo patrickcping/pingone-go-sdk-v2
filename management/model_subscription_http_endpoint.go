@@ -18,8 +18,8 @@ import (
 type SubscriptionHttpEndpoint struct {
 	// A string that specifies a valid HTTPS URL to which event messages are sent. This is a required property.
 	Url string `json:"url"`
-	// An array that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
-	Headers []map[string]interface{} `json:"headers,omitempty"`
+	// An object map that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
+	Headers map[string]interface{} `json:"headers,omitempty"`
 }
 
 // NewSubscriptionHttpEndpoint instantiates a new SubscriptionHttpEndpoint object
@@ -65,9 +65,9 @@ func (o *SubscriptionHttpEndpoint) SetUrl(v string) {
 }
 
 // GetHeaders returns the Headers field value if set, zero value otherwise.
-func (o *SubscriptionHttpEndpoint) GetHeaders() []map[string]interface{} {
+func (o *SubscriptionHttpEndpoint) GetHeaders() map[string]interface{} {
 	if o == nil || o.Headers == nil {
-		var ret []map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Headers
@@ -75,7 +75,7 @@ func (o *SubscriptionHttpEndpoint) GetHeaders() []map[string]interface{} {
 
 // GetHeadersOk returns a tuple with the Headers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionHttpEndpoint) GetHeadersOk() ([]map[string]interface{}, bool) {
+func (o *SubscriptionHttpEndpoint) GetHeadersOk() (map[string]interface{}, bool) {
 	if o == nil || o.Headers == nil {
 		return nil, false
 	}
@@ -91,8 +91,8 @@ func (o *SubscriptionHttpEndpoint) HasHeaders() bool {
 	return false
 }
 
-// SetHeaders gets a reference to the given []map[string]interface{} and assigns it to the Headers field.
-func (o *SubscriptionHttpEndpoint) SetHeaders(v []map[string]interface{}) {
+// SetHeaders gets a reference to the given map[string]interface{} and assigns it to the Headers field.
+func (o *SubscriptionHttpEndpoint) SetHeaders(v map[string]interface{}) {
 	o.Headers = v
 }
 
