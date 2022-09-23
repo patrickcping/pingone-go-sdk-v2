@@ -1,0 +1,1339 @@
+openapi: 3.0.0
+info:
+  description: The PingOne Platform API covering the PingOne Authorize service
+  title: PingOne Platform API - Authorize
+  version: 2022-09-23
+externalDocs:
+  description: PingOne Platform API Reference - Authorize APIs
+  url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-authorize
+servers:
+- description: PingOne Platform API Endpoint
+  url: "https://api.pingone.{suffix}"
+  variables:
+    suffix:
+      default: eu
+      enum:
+      - eu
+      - com
+      - asia
+      - ca
+security:
+- bearer: []
+tags:
+- name: Policy Decision Management
+- name: Policy Decision Authorization
+- name: API Servers
+paths:
+  /v1/environments/{environmentID}/decisionEndpoints:
+    get:
+      operationId: readAllDecisionEndpoints
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Decision Endpoints
+      tags:
+      - Policy Decision Management
+    post:
+      operationId: createDecisionEndpoint
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecisionEndpoint'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionEndpoint'
+          description: Successful response
+      summary: CREATE Decision Endpoint
+      tags:
+      - Policy Decision Management
+  /v1/environments/{environmentID}/decisionEndpoints/{decisionEndpointID}:
+    delete:
+      operationId: deleteDecisionEndpoint
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: decisionEndpointID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Decision Endpoint
+      tags:
+      - Policy Decision Management
+    get:
+      operationId: readOneDecisionEndpoint
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: decisionEndpointID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionEndpoint'
+          description: Successful response
+      summary: READ One Decision Endpoint
+      tags:
+      - Policy Decision Management
+    put:
+      operationId: updateDecisionEndpoint
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: decisionEndpointID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecisionEndpoint'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionEndpoint'
+          description: Successful response
+      summary: UPDATE Decision Endpoint
+      tags:
+      - Policy Decision Management
+  /v1/environments/{environmentID}/apiServers:
+    get:
+      operationId: readAllAPIServers
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All API Servers
+      tags:
+      - API Servers
+    post:
+      operationId: createAPIServer
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIServer'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServer'
+          description: Successful response
+      summary: CREATE API Server
+      tags:
+      - API Servers
+  /v1/environments/{environmentID}/apiServers/{apiServerID}:
+    delete:
+      operationId: deleteAPIServer
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE API Server
+      tags:
+      - API Servers
+    get:
+      operationId: readOneAPIServer
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServer'
+          description: Successful response
+      summary: READ One API Server
+      tags:
+      - API Servers
+    put:
+      operationId: updateAPIServer
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIServer'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServer'
+          description: Successful response
+      summary: UPDATE API Server
+      tags:
+      - API Servers
+components:
+  schemas:
+    APIServer:
+      example:
+        baseURLs:
+        - baseURLs
+        - baseURLs
+        operations:
+          value:
+            accessControl:
+              group:
+                groups:
+                - id: id
+                - id: id
+            methods:
+            - methods
+            - methods
+            paths:
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+          key: key
+        authorizationServer:
+          resource:
+            id: id
+        name: name
+        id: id
+      properties:
+        authorizationServer:
+          $ref: '#/components/schemas/APIServer_authorizationServer'
+        baseURLs:
+          description: "An array of string that specifies the possible base URLs that\
+            \ an end-user will use to access the APIs hosted on the customer's API\
+            \ server. Multiple base URLs may be specified to support cases where the\
+            \ same API may be available from multiple URLs (for example, from a user-friendly\
+            \ domain URL and an internal domain URL). Base URLs must be valid absolute\
+            \ URLs with the https or http scheme. If the path component is non-empty,\
+            \ it must not end in a trailing slash. The path must not contain empty\
+            \ backslash, dot, or double-dot segments. It must not have a query or\
+            \ fragment present, and the host portion of the authority must be a DNS\
+            \ hostname or valid IP (IPv4 or IPv6). The length must be less than or\
+            \ equal to 256 characters."
+          items:
+            type: string
+          type: array
+        id:
+          description: A string that specifies the resource's unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: "A string that specifies the API server resource name. The\
+            \ name value must be unique among all API servers, and it must be a valid\
+            \ resource name."
+          type: string
+        operations:
+          $ref: '#/components/schemas/APIServer_operations'
+      required:
+      - authorizationServer
+      - baseURLs
+      - name
+      type: object
+    EnumAPIServerPatternType:
+      description: "A string that specifies the type of the pattern. Options are `EXACT`\
+        \ ( the verbatim pattern is compared against the path from the request using\
+        \ a case-sensitive comparison) and `PARAMETER` (the pattern is compared against\
+        \ the path from the request using a case-sensitive comparison, using the syntax\
+        \ below to encode wildcards and path segment captures.)"
+      enum:
+      - EXACT
+      - PARAMETER
+      type: string
+    DecisionEndpoint:
+      example:
+        alternateId: alternateId
+        provenance: provenance
+        policyId: policyId
+        owned: true
+        name: name
+        authorizationVersion:
+          id: id
+          href: href
+          title: title
+          type: type
+        description: description
+        recordRecentRequests: true
+        id: id
+        recentDecisionsEnabled: true
+        recentDecisions:
+          href: href
+          title: title
+          type: type
+      properties:
+        alternateId:
+          description: "A string that specifies alternative unique identifier for\
+            \ the endpoint, which provides a method for locating the resource by a\
+            \ known, fixed identifier."
+          type: string
+        authorizationVersion:
+          $ref: '#/components/schemas/DecisionEndpoint_authorizationVersion'
+        description:
+          description: A string that specifies the description of the policy decision
+            resource.
+          type: string
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: A string that specifies the policy decision resource name.
+          type: string
+        owned:
+          description: A boolean that when true restricts modifications of the endpoint
+            to PingOne-owned clients.
+          type: boolean
+        policyId:
+          description: "A string that specifies the ID of the root policy configured\
+            \ for this endpoint. If omitted, the policy editor service decides on\
+            \ a suitable default."
+          type: string
+        provenance:
+          description: A string that specifies a machine-readable identifier indicating
+            the provenance of the current configuration. It has no meaning to the
+            Policy Decision Service itself but exists to support integration with
+            other services.
+          type: string
+        recentDecisionsEnabled:
+          description: A boolean that specifies whether to show recent decisions.
+          type: boolean
+        recentDecisions:
+          $ref: '#/components/schemas/DecisionEndpoint_recentDecisions'
+        recordRecentRequests:
+          description: "A boolean that specifies whether to record a limited history\
+            \ of recent decision requests and responses, which can be queried through\
+            \ a separate API."
+          type: boolean
+      required:
+      - description
+      - name
+      - recordRecentRequests
+      type: object
+    EntityArray:
+      example:
+        size: 6.027456183070403
+        _embedded:
+          decisionEndpoints:
+          - alternateId: alternateId
+            provenance: provenance
+            policyId: policyId
+            owned: true
+            name: name
+            authorizationVersion:
+              id: id
+              href: href
+              title: title
+              type: type
+            description: description
+            recordRecentRequests: true
+            id: id
+            recentDecisionsEnabled: true
+            recentDecisions:
+              href: href
+              title: title
+              type: type
+          - alternateId: alternateId
+            provenance: provenance
+            policyId: policyId
+            owned: true
+            name: name
+            authorizationVersion:
+              id: id
+              href: href
+              title: title
+              type: type
+            description: description
+            recordRecentRequests: true
+            id: id
+            recentDecisionsEnabled: true
+            recentDecisions:
+              href: href
+              title: title
+              type: type
+          apiServers:
+          - baseURLs:
+            - baseURLs
+            - baseURLs
+            operations:
+              value:
+                accessControl:
+                  group:
+                    groups:
+                    - id: id
+                    - id: id
+                methods:
+                - methods
+                - methods
+                paths:
+                - pattern: pattern
+                  type: null
+                - pattern: pattern
+                  type: null
+              key: key
+            authorizationServer:
+              resource:
+                id: id
+            name: name
+            id: id
+          - baseURLs:
+            - baseURLs
+            - baseURLs
+            operations:
+              value:
+                accessControl:
+                  group:
+                    groups:
+                    - id: id
+                    - id: id
+                methods:
+                - methods
+                - methods
+                paths:
+                - pattern: pattern
+                  type: null
+                - pattern: pattern
+                  type: null
+              key: key
+            authorizationServer:
+              resource:
+                id: id
+            name: name
+            id: id
+        count: 0.8008281904610115
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/EntityArray__embedded'
+        count:
+          type: number
+        size:
+          type: number
+      type: object
+    ObjectApplication:
+      properties:
+        id:
+          description: A string that specifies the application resource ID associated
+            with the object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    ObjectEnvironment:
+      properties:
+        id:
+          description: A string that specifies the environment associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    ObjectOrganization:
+      properties:
+        id:
+          description: A string that specifies the organization associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    ObjectPopulation:
+      properties:
+        id:
+          description: A string that specifies the population associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    P1Error:
+      properties:
+        id:
+          description: "A unique identifier that is stored in log files and always\
+            \ included in an error response. This value can be used to track the error\
+            \ received by the client, with server-side activity included for troubleshooting\
+            \ purposes."
+          type: string
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        details:
+          description: Additional details about the error. Optional information to
+            help resolve the error and to display to users.
+          items:
+            $ref: '#/components/schemas/P1Error_details_inner'
+          type: array
+      type: object
+    APIServer_authorizationServer_resource:
+      description: The resource defines the characteristics of the OAuth 2.0 access
+        tokens used to get access to the APIs on the API server such as the audience
+        and scopes.
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the UUID of the custom PingOne resource.
+            This property must identify a PingOne resource with a type property value
+            of CUSTOM.
+          type: string
+      required:
+      - id
+      type: object
+    APIServer_authorizationServer:
+      description: A container object for properties related to the authorization
+        server that will issue access tokens used to access the APIs.
+      example:
+        resource:
+          id: id
+      properties:
+        resource:
+          $ref: '#/components/schemas/APIServer_authorizationServer_resource'
+      required:
+      - resource
+      type: object
+    APIServer_operations_value_paths_inner:
+      description: An object that defines a pattern that identifies the parent operation.
+      example:
+        pattern: pattern
+        type: null
+      properties:
+        pattern:
+          description: "A string that specifies the pattern used to identify the path\
+            \ or paths for the operation. The semantics of the pattern are determined\
+            \ by the type. For any type, the pattern can contain characters that are\
+            \ otherwise invalid in a URL path. Invalid characters are handled by performing\
+            \ matching against a percent-decoded HTTP request target path. This allows\
+            \ an administrator to configure patterns without worrying about percent\
+            \ encoding special characters. When the type is PARAMETER, the syntax\
+            \ outlined in the table below is enforced. Additionally, the pattern must\
+            \ contain a wildcard, double wildcard or parameter capture. When the type\
+            \ is EXACT, the pattern can be any byte sequence except for ASCII control\
+            \ characters such as line feeds or carriage returns. The length of the\
+            \ pattern cannot exceed 2048 characters. The path pattern must not contain\
+            \ empty path segments such as /../, //, and /./."
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumAPIServerPatternType'
+      required:
+      - pattern
+      - type
+      type: object
+    APIServer_operations_value_accessControl_group_groups_inner:
+      description: "A Relationship that specifies the ID of the group, wrapped in\
+        \ an object, for future extensibility. This is a required property if operations.value.accessControl.group\
+        \ is set."
+      example:
+        id: id
+      properties:
+        id:
+          description: A UUID that specifies the group ID. This is a required property
+            if operations.value.accessControl.group is set.
+          type: string
+      required:
+      - id
+      type: object
+    APIServer_operations_value_accessControl_group:
+      description: An object that specifies the group membership requirements for
+        the operation. The groups array must be non-empty when the group object is
+        included. The groups array must not contain more than 25 elements.
+      example:
+        groups:
+        - id: id
+        - id: id
+      properties:
+        groups:
+          description: "An array that specifies the list of groups that define the\
+            \ access requirements for the operation. The end user must be a member\
+            \ of one or more of these groups to gain access to the operation. This\
+            \ is a required property if operations.value.accessControl.group is set.\
+            \ The ID must reference a group that exists at the time the data is persisted.\
+            \ There is no referential integrity between a group and this configuration.\
+            \ If a group is subsequently deleted, the access control configuration\
+            \ will continue to reference that group."
+          items:
+            $ref: '#/components/schemas/APIServer_operations_value_accessControl_group_groups_inner'
+          type: array
+      required:
+      - groups
+      type: object
+    APIServer_operations_value_accessControl:
+      description: An object that specifies the access control configuration for the
+        operation.
+      example:
+        group:
+          groups:
+          - id: id
+          - id: id
+      properties:
+        group:
+          $ref: '#/components/schemas/APIServer_operations_value_accessControl_group'
+      type: object
+    APIServer_operations_value:
+      description: An object that specifies attributes of the operation.
+      example:
+        accessControl:
+          group:
+            groups:
+            - id: id
+            - id: id
+        methods:
+        - methods
+        - methods
+        paths:
+        - pattern: pattern
+          type: null
+        - pattern: pattern
+          type: null
+      properties:
+        methods:
+          description: "An array that specifies the methods that define the operation.\
+            \ No duplicates are allowed. Each element must be a valid HTTP token,\
+            \ according to RFC 7230, and cannot exceed 64 characters. An empty array\
+            \ is not valid. To indicate that an operation is defined for every method,\
+            \ the methods array should be set to null. The methods array is limited\
+            \ to 10 entries."
+          items:
+            description: A string that specifies the name of the HTTP method. This
+              value is case-sensitive.
+            type: string
+          type: array
+        paths:
+          description: "An array that specifies the paths that define the operation.\
+            \ This is a required property when an operations object is specified.\
+            \ The same literal pattern is not allowed within the same operation (the\
+            \ pattern of a paths element must be unique as compared to all other patterns\
+            \ in the same paths array). However, the same literal pattern is allowed\
+            \ in different operations (for example, OperationA, /path1, OperationB,\
+            \ /path1 is valid). The paths array is limited to 10 entries."
+          items:
+            $ref: '#/components/schemas/APIServer_operations_value_paths_inner'
+          type: array
+        accessControl:
+          $ref: '#/components/schemas/APIServer_operations_value_accessControl'
+      required:
+      - paths
+      type: object
+    APIServer_operations:
+      description: "A map from the operation name to the operation object. Each key\
+        \ must be valid ObjectName, and each value must be a valid operation. Each\
+        \ key must be unique within the operations object, which means the operation\
+        \ key is unique within an API server. No duplicate operation values are allowed;\
+        \ operations with the same paths and methods members are not allowed. The\
+        \ operations object is limited to 25 keys (25 individual operations)."
+      example:
+        value:
+          accessControl:
+            group:
+              groups:
+              - id: id
+              - id: id
+          methods:
+          - methods
+          - methods
+          paths:
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+        key: key
+      properties:
+        key:
+          description: A string that specifies the name of the operation.
+          type: string
+        value:
+          $ref: '#/components/schemas/APIServer_operations_value'
+      type: object
+    DecisionEndpoint_authorizationVersion:
+      example:
+        id: id
+        href: href
+        title: title
+        type: type
+      properties:
+        id:
+          description: "A string that specifies the ID of the Authorization Version\
+            \ deployed to this endpoint. Versioning allows independent development\
+            \ and deployment of policies. If omitted, the endpoint always uses the\
+            \ latest policy version available from the policy editor service."
+          type: string
+        href:
+          description: A string that specifies the request URL for the authorization
+            version endpoint.
+          type: string
+        title:
+          description: A string that specifies the title for the authorization version
+            response.
+          type: string
+        type:
+          description: A string that specifies the content type for the authorization
+            version response.
+          type: string
+      type: object
+    DecisionEndpoint_recentDecisions:
+      example:
+        href: href
+        title: title
+        type: type
+      properties:
+        href:
+          description: A string that specifies the request URL for the recent decisions
+            endpoint.
+          type: string
+        title:
+          description: A string that specifies the title for the recent decisions
+            response.
+          type: string
+        type:
+          description: A string that specifies the content type for the recent decisions
+            response.
+          type: string
+      type: object
+    EntityArray__embedded:
+      example:
+        decisionEndpoints:
+        - alternateId: alternateId
+          provenance: provenance
+          policyId: policyId
+          owned: true
+          name: name
+          authorizationVersion:
+            id: id
+            href: href
+            title: title
+            type: type
+          description: description
+          recordRecentRequests: true
+          id: id
+          recentDecisionsEnabled: true
+          recentDecisions:
+            href: href
+            title: title
+            type: type
+        - alternateId: alternateId
+          provenance: provenance
+          policyId: policyId
+          owned: true
+          name: name
+          authorizationVersion:
+            id: id
+            href: href
+            title: title
+            type: type
+          description: description
+          recordRecentRequests: true
+          id: id
+          recentDecisionsEnabled: true
+          recentDecisions:
+            href: href
+            title: title
+            type: type
+        apiServers:
+        - baseURLs:
+          - baseURLs
+          - baseURLs
+          operations:
+            value:
+              accessControl:
+                group:
+                  groups:
+                  - id: id
+                  - id: id
+              methods:
+              - methods
+              - methods
+              paths:
+              - pattern: pattern
+                type: null
+              - pattern: pattern
+                type: null
+            key: key
+          authorizationServer:
+            resource:
+              id: id
+          name: name
+          id: id
+        - baseURLs:
+          - baseURLs
+          - baseURLs
+          operations:
+            value:
+              accessControl:
+                group:
+                  groups:
+                  - id: id
+                  - id: id
+              methods:
+              - methods
+              - methods
+              paths:
+              - pattern: pattern
+                type: null
+              - pattern: pattern
+                type: null
+            key: key
+          authorizationServer:
+            resource:
+              id: id
+          name: name
+          id: id
+      properties:
+        decisionEndpoints:
+          items:
+            $ref: '#/components/schemas/DecisionEndpoint'
+          type: array
+        apiServers:
+          items:
+            $ref: '#/components/schemas/APIServer'
+          type: array
+      type: object
+    P1Error_details_inner_innerError:
+      description: Additional details to help the client developer resolve the fault
+        (primarily for UI validation reasons).
+      properties:
+        rangeMinimumValue:
+          description: Errors that failed due to range violation. This attribute represents
+            the minimum value of the range.
+          type: integer
+        rangeMaximumValue:
+          description: The maximum range or value of an attribute.
+          type: integer
+        allowedPattern:
+          description: A regex pattern describing an acceptable input pattern.
+          type: string
+        allowedValues:
+          description: A list describing acceptable values.
+          items:
+            type: string
+          type: array
+        maximumValue:
+          description: The maximum value allowed for the request.
+          type: integer
+      type: object
+    P1Error_details_inner:
+      properties:
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        target:
+          description: The item that caused the error (such as a form field ID or
+            an attribute inside a JSON object).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        innerError:
+          $ref: '#/components/schemas/P1Error_details_inner_innerError'
+      type: object
+  securitySchemes:
+    bearer:
+      bearerFormat: JWT
+      description: OAuth bearer token (see documentation)
+      scheme: bearer
+      type: http
