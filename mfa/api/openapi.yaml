@@ -517,7 +517,7 @@ paths:
       summary: CREATE Device Authentication Policy
       tags:
       - Device Authentication Policy
-  /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID}:
+  /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}:
     delete:
       operationId: deleteDeviceAuthenticationPolicy
       parameters:
@@ -1939,6 +1939,7 @@ components:
             deviceAuthorization:
               extraVerification: disabled
               enabled: true
+            integrityDetection: null
             otp:
               enabled: true
             id: id
@@ -1949,6 +1950,7 @@ components:
             deviceAuthorization:
               extraVerification: disabled
               enabled: true
+            integrityDetection: null
             otp:
               enabled: true
             id: id
@@ -1956,6 +1958,7 @@ components:
               enabled: true
         platform:
           enabled: true
+          fidoPolicyId: fidoPolicyId
         forSignOnPolicy: true
         environment:
           id: id
@@ -1975,6 +1978,7 @@ components:
         id: id
         securityKey:
           enabled: true
+          fidoPolicyId: fidoPolicyId
         email:
           otp:
             failure:
@@ -2065,6 +2069,7 @@ components:
                 deviceAuthorization:
                   extraVerification: disabled
                   enabled: true
+                integrityDetection: null
                 otp:
                   enabled: true
                 id: id
@@ -2075,6 +2080,7 @@ components:
                 deviceAuthorization:
                   extraVerification: disabled
                   enabled: true
+                integrityDetection: null
                 otp:
                   enabled: true
                 id: id
@@ -2082,6 +2088,7 @@ components:
                   enabled: true
             platform:
               enabled: true
+              fidoPolicyId: fidoPolicyId
             forSignOnPolicy: true
             environment:
               id: id
@@ -2101,6 +2108,7 @@ components:
             id: id
             securityKey:
               enabled: true
+              fidoPolicyId: fidoPolicyId
             email:
               otp:
                 failure:
@@ -2147,6 +2155,7 @@ components:
                 deviceAuthorization:
                   extraVerification: disabled
                   enabled: true
+                integrityDetection: null
                 otp:
                   enabled: true
                 id: id
@@ -2157,6 +2166,7 @@ components:
                 deviceAuthorization:
                   extraVerification: disabled
                   enabled: true
+                integrityDetection: null
                 otp:
                   enabled: true
                 id: id
@@ -2164,6 +2174,7 @@ components:
                   enabled: true
             platform:
               enabled: true
+              fidoPolicyId: fidoPolicyId
             forSignOnPolicy: true
             environment:
               id: id
@@ -2183,6 +2194,7 @@ components:
             id: id
             securityKey:
               enabled: true
+              fidoPolicyId: fidoPolicyId
             email:
               otp:
                 failure:
@@ -2204,6 +2216,15 @@ components:
         size:
           type: number
       type: object
+    EnumMFADevicePolicyMobileIntegrityDetection:
+      description: Controls how authentication or registration attempts should proceed
+        if a device integrity check does not receive a response. Set the value to
+        `permissive` if you want to allow the process to continue. Set the value to
+        `restrictive` if you want to block the user in such situations.
+      enum:
+      - permissive
+      - restrictive
+      type: string
     EnumMFAPushCredentialAttrType:
       description: "A string that specifies the type of the push credentials. Mandatory.\
         \ Valid values APNS, FCM"
@@ -2474,6 +2495,7 @@ components:
         deviceAuthorization:
           extraVerification: disabled
           enabled: true
+        integrityDetection: null
         otp:
           enabled: true
         id: id
@@ -2491,6 +2513,8 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_deviceAuthorization'
         autoEnrollment:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_autoEnrollment'
+        integrityDetection:
+          $ref: '#/components/schemas/EnumMFADevicePolicyMobileIntegrityDetection'
       type: object
     DeviceAuthenticationPolicy_mobile:
       description: Mobile device authentication policy settings.
@@ -2509,6 +2533,7 @@ components:
           deviceAuthorization:
             extraVerification: disabled
             enabled: true
+          integrityDetection: null
           otp:
             enabled: true
           id: id
@@ -2519,6 +2544,7 @@ components:
           deviceAuthorization:
             extraVerification: disabled
             enabled: true
+          integrityDetection: null
           otp:
             enabled: true
           id: id
@@ -2556,19 +2582,29 @@ components:
       description: Security Key
       example:
         enabled: true
+        fidoPolicyId: fidoPolicyId
       properties:
         enabled:
           description: Enabled or disabled in the policy.
           type: boolean
+        fidoPolicyId:
+          description: "Specifies the FIDO policy UUID. This property can be null.\
+            \ When null, the environment's default FIDO Policy is used."
+          type: string
       type: object
     DeviceAuthenticationPolicy_platform:
       description: FIDO2 biometrics
       example:
         enabled: true
+        fidoPolicyId: fidoPolicyId
       properties:
         enabled:
           description: Enabled or disabled in the policy.
           type: boolean
+        fidoPolicyId:
+          description: "Specifies the FIDO policy UUID. This property can be null.\
+            \ When null, the environment's default FIDO Policy is used."
+          type: string
       type: object
     EntityArray__embedded_pushCredentials_inner:
       anyOf:
@@ -2614,6 +2650,7 @@ components:
               deviceAuthorization:
                 extraVerification: disabled
                 enabled: true
+              integrityDetection: null
               otp:
                 enabled: true
               id: id
@@ -2624,6 +2661,7 @@ components:
               deviceAuthorization:
                 extraVerification: disabled
                 enabled: true
+              integrityDetection: null
               otp:
                 enabled: true
               id: id
@@ -2631,6 +2669,7 @@ components:
                 enabled: true
           platform:
             enabled: true
+            fidoPolicyId: fidoPolicyId
           forSignOnPolicy: true
           environment:
             id: id
@@ -2650,6 +2689,7 @@ components:
           id: id
           securityKey:
             enabled: true
+            fidoPolicyId: fidoPolicyId
           email:
             otp:
               failure:
@@ -2696,6 +2736,7 @@ components:
               deviceAuthorization:
                 extraVerification: disabled
                 enabled: true
+              integrityDetection: null
               otp:
                 enabled: true
               id: id
@@ -2706,6 +2747,7 @@ components:
               deviceAuthorization:
                 extraVerification: disabled
                 enabled: true
+              integrityDetection: null
               otp:
                 enabled: true
               id: id
@@ -2713,6 +2755,7 @@ components:
                 enabled: true
           platform:
             enabled: true
+            fidoPolicyId: fidoPolicyId
           forSignOnPolicy: true
           environment:
             id: id
@@ -2732,6 +2775,7 @@ components:
           id: id
           securityKey:
             enabled: true
+            fidoPolicyId: fidoPolicyId
           email:
             otp:
               failure:
@@ -2768,6 +2812,7 @@ components:
       - teamId
       - token
       type: object
+      example: null
     MFASettings_authentication:
       description: An object that contains the device selection settings.
       example:

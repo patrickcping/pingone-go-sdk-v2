@@ -22,6 +22,7 @@ type DeviceAuthenticationPolicyMobileApplicationsInner struct {
 	Otp *DeviceAuthenticationPolicyMobileApplicationsInnerOtp `json:"otp,omitempty"`
 	DeviceAuthorization *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization `json:"deviceAuthorization,omitempty"`
 	AutoEnrollment *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment `json:"autoEnrollment,omitempty"`
+	IntegrityDetection *EnumMFADevicePolicyMobileIntegrityDetection `json:"integrityDetection,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyMobileApplicationsInner instantiates a new DeviceAuthenticationPolicyMobileApplicationsInner object
@@ -201,6 +202,38 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetAutoEnrollment(v 
 	o.AutoEnrollment = &v
 }
 
+// GetIntegrityDetection returns the IntegrityDetection field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetIntegrityDetection() EnumMFADevicePolicyMobileIntegrityDetection {
+	if o == nil || o.IntegrityDetection == nil {
+		var ret EnumMFADevicePolicyMobileIntegrityDetection
+		return ret
+	}
+	return *o.IntegrityDetection
+}
+
+// GetIntegrityDetectionOk returns a tuple with the IntegrityDetection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetIntegrityDetectionOk() (*EnumMFADevicePolicyMobileIntegrityDetection, bool) {
+	if o == nil || o.IntegrityDetection == nil {
+		return nil, false
+	}
+	return o.IntegrityDetection, true
+}
+
+// HasIntegrityDetection returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasIntegrityDetection() bool {
+	if o != nil && o.IntegrityDetection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntegrityDetection gets a reference to the given EnumMFADevicePolicyMobileIntegrityDetection and assigns it to the IntegrityDetection field.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetIntegrityDetection(v EnumMFADevicePolicyMobileIntegrityDetection) {
+	o.IntegrityDetection = &v
+}
+
 func (o DeviceAuthenticationPolicyMobileApplicationsInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -217,6 +250,9 @@ func (o DeviceAuthenticationPolicyMobileApplicationsInner) MarshalJSON() ([]byte
 	}
 	if o.AutoEnrollment != nil {
 		toSerialize["autoEnrollment"] = o.AutoEnrollment
+	}
+	if o.IntegrityDetection != nil {
+		toSerialize["integrityDetection"] = o.IntegrityDetection
 	}
 	return json.Marshal(toSerialize)
 }
