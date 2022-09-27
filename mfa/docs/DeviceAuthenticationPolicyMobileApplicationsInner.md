@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Otp** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerOtp**](DeviceAuthenticationPolicyMobileApplicationsInnerOtp.md) |  | [optional] 
 **DeviceAuthorization** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization**](DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization.md) |  | [optional] 
 **AutoEnrollment** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment**](DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment.md) |  | [optional] 
+**IntegrityDetection** | Pointer to [**EnumMFADevicePolicyMobileIntegrityDetection**](EnumMFADevicePolicyMobileIntegrityDetection.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetAutoEnrollment sets AutoEnrollment field to given value.
 `func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasAutoEnrollment() bool`
 
 HasAutoEnrollment returns a boolean if a field has been set.
+
+### GetIntegrityDetection
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetIntegrityDetection() EnumMFADevicePolicyMobileIntegrityDetection`
+
+GetIntegrityDetection returns the IntegrityDetection field if non-nil, zero value otherwise.
+
+### GetIntegrityDetectionOk
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetIntegrityDetectionOk() (*EnumMFADevicePolicyMobileIntegrityDetection, bool)`
+
+GetIntegrityDetectionOk returns a tuple with the IntegrityDetection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntegrityDetection
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetIntegrityDetection(v EnumMFADevicePolicyMobileIntegrityDetection)`
+
+SetIntegrityDetection sets IntegrityDetection field to given value.
+
+### HasIntegrityDetection
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasIntegrityDetection() bool`
+
+HasIntegrityDetection returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

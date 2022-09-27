@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** | Enabled or disabled in the policy. | [optional] 
+**FidoPolicyId** | Pointer to **string** | Specifies the FIDO policy UUID. This property can be null. When null, the environment&#39;s default FIDO Policy is used. | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetEnabled sets Enabled field to given value.
 `func (o *DeviceAuthenticationPolicyPlatform) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### GetFidoPolicyId
+
+`func (o *DeviceAuthenticationPolicyPlatform) GetFidoPolicyId() string`
+
+GetFidoPolicyId returns the FidoPolicyId field if non-nil, zero value otherwise.
+
+### GetFidoPolicyIdOk
+
+`func (o *DeviceAuthenticationPolicyPlatform) GetFidoPolicyIdOk() (*string, bool)`
+
+GetFidoPolicyIdOk returns a tuple with the FidoPolicyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFidoPolicyId
+
+`func (o *DeviceAuthenticationPolicyPlatform) SetFidoPolicyId(v string)`
+
+SetFidoPolicyId sets FidoPolicyId field to given value.
+
+### HasFidoPolicyId
+
+`func (o *DeviceAuthenticationPolicyPlatform) HasFidoPolicyId() bool`
+
+HasFidoPolicyId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

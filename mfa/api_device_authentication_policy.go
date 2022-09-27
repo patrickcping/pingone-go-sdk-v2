@@ -243,7 +243,7 @@ func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicyE
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterToString(r.deviceAuthenticationPolicyID, "")), -1)
 
@@ -560,7 +560,7 @@ func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterToString(r.deviceAuthenticationPolicyID, "")), -1)
 
@@ -682,7 +682,7 @@ func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest struct {
+type ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest struct {
 	ctx context.Context
 	ApiService *DeviceAuthenticationPolicyApiService
 	environmentID string
@@ -690,25 +690,25 @@ type ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticatio
 	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest {
+func (r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutExecute(r)
+func (r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut UPDATE Device Authentication Policy
+V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut UPDATE Device Authentication Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param deviceAuthenticationPolicyID
- @return ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest
+ @return ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest
 */
-func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut(ctx context.Context, environmentID string, deviceAuthenticationPolicyID string) ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest{
+func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut(ctx context.Context, environmentID string, deviceAuthenticationPolicyID string) ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest {
+	return ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -717,19 +717,19 @@ func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDevice
 }
 
 // Execute executes the request
-func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutExecute(r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest) (*http.Response, error) {
+func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutExecute(r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"deviceAuthenticationPolicyID"+"}", url.PathEscape(parameterToString(r.deviceAuthenticationPolicyID, "")), -1)
 

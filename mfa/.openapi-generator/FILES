@@ -32,6 +32,7 @@ docs/DeviceAuthenticationPolicyTotp.md
 docs/EntityArray.md
 docs/EntityArrayEmbedded.md
 docs/EntityArrayEmbeddedPushCredentialsInner.md
+docs/EnumMFADevicePolicyMobileIntegrityDetection.md
 docs/EnumMFAPushCredentialAttrType.md
 docs/EnumMFASettingsDeviceSelection.md
 docs/EnumMFASettingsPairingKeyFormat.md
@@ -73,6 +74,7 @@ model_device_authentication_policy_security_key.go
 model_device_authentication_policy_totp.go
 model_entity_array.go
 model_entity_array__embedded.go
+model_enum_mfa_device_policy_mobile_integrity_detection.go
 model_enum_mfa_push_credential_attr_type.go
 model_enum_mfa_settings_device_selection.go
 model_enum_mfa_settings_pairing_key_format.go

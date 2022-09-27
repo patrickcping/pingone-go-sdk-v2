@@ -5,10 +5,10 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateDeviceAuthenticationPolicies**](DeviceAuthenticationPolicyApi.md#CreateDeviceAuthenticationPolicies) | **Post** /v1/environments/{environmentID}/deviceAuthenticationPolicies | CREATE Device Authentication Policy
-[**DeleteDeviceAuthenticationPolicy**](DeviceAuthenticationPolicyApi.md#DeleteDeviceAuthenticationPolicy) | **Delete** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID} | DELETE Device Authentication Policy
+[**DeleteDeviceAuthenticationPolicy**](DeviceAuthenticationPolicyApi.md#DeleteDeviceAuthenticationPolicy) | **Delete** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | DELETE Device Authentication Policy
 [**ReadDeviceAuthenticationPolicies**](DeviceAuthenticationPolicyApi.md#ReadDeviceAuthenticationPolicies) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicies | READ Device Authentication Policies
-[**ReadOneDeviceAuthenticationPolicy**](DeviceAuthenticationPolicyApi.md#ReadOneDeviceAuthenticationPolicy) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID} | READ One Device Authentication Policy
-[**V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut**](DeviceAuthenticationPolicyApi.md#V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicy/{deviceAuthenticationPolicyID} | UPDATE Device Authentication Policy
+[**ReadOneDeviceAuthenticationPolicy**](DeviceAuthenticationPolicyApi.md#ReadOneDeviceAuthenticationPolicy) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | READ One Device Authentication Policy
+[**V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut**](DeviceAuthenticationPolicyApi.md#V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | UPDATE Device Authentication Policy
 
 
 
@@ -290,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut
+## V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut
 
-> V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut(ctx, environmentID, deviceAuthenticationPolicyID).Body(body).Execute()
+> V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut(ctx, environmentID, deviceAuthenticationPolicyID).Body(body).Execute()
 
 UPDATE Device Authentication Policy
 
@@ -315,9 +315,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut(context.Background(), environmentID, deviceAuthenticationPolicyID).Body(body).Execute()
+    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut(context.Background(), environmentID, deviceAuthenticationPolicyID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceAuthenticationPolicyApi.V1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceAuthenticationPolicyApi.V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDDeviceAuthenticationPolicyDeviceAuthenticationPolicyIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

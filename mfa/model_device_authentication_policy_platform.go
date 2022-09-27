@@ -18,6 +18,8 @@ import (
 type DeviceAuthenticationPolicyPlatform struct {
 	// Enabled or disabled in the policy.
 	Enabled *bool `json:"enabled,omitempty"`
+	// Specifies the FIDO policy UUID. This property can be null. When null, the environment's default FIDO Policy is used.
+	FidoPolicyId *string `json:"fidoPolicyId,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyPlatform instantiates a new DeviceAuthenticationPolicyPlatform object
@@ -69,10 +71,45 @@ func (o *DeviceAuthenticationPolicyPlatform) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
+// GetFidoPolicyId returns the FidoPolicyId field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyPlatform) GetFidoPolicyId() string {
+	if o == nil || o.FidoPolicyId == nil {
+		var ret string
+		return ret
+	}
+	return *o.FidoPolicyId
+}
+
+// GetFidoPolicyIdOk returns a tuple with the FidoPolicyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyPlatform) GetFidoPolicyIdOk() (*string, bool) {
+	if o == nil || o.FidoPolicyId == nil {
+		return nil, false
+	}
+	return o.FidoPolicyId, true
+}
+
+// HasFidoPolicyId returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyPlatform) HasFidoPolicyId() bool {
+	if o != nil && o.FidoPolicyId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFidoPolicyId gets a reference to the given string and assigns it to the FidoPolicyId field.
+func (o *DeviceAuthenticationPolicyPlatform) SetFidoPolicyId(v string) {
+	o.FidoPolicyId = &v
+}
+
 func (o DeviceAuthenticationPolicyPlatform) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Enabled != nil {
 		toSerialize["enabled"] = o.Enabled
+	}
+	if o.FidoPolicyId != nil {
+		toSerialize["fidoPolicyId"] = o.FidoPolicyId
 	}
 	return json.Marshal(toSerialize)
 }
