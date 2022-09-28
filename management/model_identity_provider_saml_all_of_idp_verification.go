@@ -17,14 +17,14 @@ import (
 // IdentityProviderSAMLAllOfIdpVerification struct for IdentityProviderSAMLAllOfIdpVerification
 type IdentityProviderSAMLAllOfIdpVerification struct {
 	// A array that specifies the identity provider's certificate IDs used to verify the signature on the signed assertion from the identity provider. Signing is done with a private key and verified with a public key.
-	Certificates []ApplicationAccessControlGroupGroupsInner `json:"certificates"`
+	Certificates []IdentityProviderSAMLAllOfIdpVerificationCertificates `json:"certificates"`
 }
 
 // NewIdentityProviderSAMLAllOfIdpVerification instantiates a new IdentityProviderSAMLAllOfIdpVerification object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityProviderSAMLAllOfIdpVerification(certificates []ApplicationAccessControlGroupGroupsInner) *IdentityProviderSAMLAllOfIdpVerification {
+func NewIdentityProviderSAMLAllOfIdpVerification(certificates []IdentityProviderSAMLAllOfIdpVerificationCertificates) *IdentityProviderSAMLAllOfIdpVerification {
 	this := IdentityProviderSAMLAllOfIdpVerification{}
 	this.Certificates = certificates
 	return &this
@@ -39,9 +39,9 @@ func NewIdentityProviderSAMLAllOfIdpVerificationWithDefaults() *IdentityProvider
 }
 
 // GetCertificates returns the Certificates field value
-func (o *IdentityProviderSAMLAllOfIdpVerification) GetCertificates() []ApplicationAccessControlGroupGroupsInner {
+func (o *IdentityProviderSAMLAllOfIdpVerification) GetCertificates() []IdentityProviderSAMLAllOfIdpVerificationCertificates {
 	if o == nil {
-		var ret []ApplicationAccessControlGroupGroupsInner
+		var ret []IdentityProviderSAMLAllOfIdpVerificationCertificates
 		return ret
 	}
 
@@ -50,7 +50,7 @@ func (o *IdentityProviderSAMLAllOfIdpVerification) GetCertificates() []Applicati
 
 // GetCertificatesOk returns a tuple with the Certificates field value
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderSAMLAllOfIdpVerification) GetCertificatesOk() ([]ApplicationAccessControlGroupGroupsInner, bool) {
+func (o *IdentityProviderSAMLAllOfIdpVerification) GetCertificatesOk() ([]IdentityProviderSAMLAllOfIdpVerificationCertificates, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *IdentityProviderSAMLAllOfIdpVerification) GetCertificatesOk() ([]Applic
 }
 
 // SetCertificates sets field value
-func (o *IdentityProviderSAMLAllOfIdpVerification) SetCertificates(v []ApplicationAccessControlGroupGroupsInner) {
+func (o *IdentityProviderSAMLAllOfIdpVerification) SetCertificates(v []IdentityProviderSAMLAllOfIdpVerificationCertificates) {
 	o.Certificates = v
 }
 

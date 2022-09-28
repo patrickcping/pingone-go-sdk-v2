@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumRegionCode A string that specifies the region in which this environment will be used. The value is set when the environment is created and cannot be updated.
+// EnumRegionCode A string that specifies the environment region code. The value is set when the environment is created and cannot be updated.
 type EnumRegionCode string
 
 // List of EnumRegionCode

@@ -18,7 +18,7 @@ import (
 type Certificate struct {
 	Algorithm EnumCertificateKeyAlgorithm `json:"algorithm"`
 	// The time the resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Specifies whether this is the default key for the specified environment.
 	Default     *bool              `json:"default,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -95,9 +95,9 @@ func (o *Certificate) SetAlgorithm(v EnumCertificateKeyAlgorithm) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Certificate) GetCreatedAt() string {
+func (o *Certificate) GetCreatedAt() time.Time {
 	if o == nil || o.CreatedAt == nil {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -105,7 +105,7 @@ func (o *Certificate) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Certificate) GetCreatedAtOk() (*string, bool) {
+func (o *Certificate) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -121,8 +121,8 @@ func (o *Certificate) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *Certificate) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *Certificate) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 

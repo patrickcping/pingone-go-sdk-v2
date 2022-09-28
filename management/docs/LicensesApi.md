@@ -4,16 +4,16 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1OrganizationsOrganizationIDLicensesGet**](LicensesApi.md#V1OrganizationsOrganizationIDLicensesGet) | **Get** /v1/organizations/{organizationID}/licenses | READ All Licenses
-[**V1OrganizationsOrganizationIDLicensesLicenseIDGet**](LicensesApi.md#V1OrganizationsOrganizationIDLicensesLicenseIDGet) | **Get** /v1/organizations/{organizationID}/licenses/{licenseID} | READ One License
-[**V1OrganizationsOrganizationIDLicensesLicenseIDNameGet**](LicensesApi.md#V1OrganizationsOrganizationIDLicensesLicenseIDNameGet) | **Get** /v1/organizations/{organizationID}/licenses/{licenseID}/name | READ One License Name
-[**V1OrganizationsOrganizationIDLicensesLicenseIDNamePut**](LicensesApi.md#V1OrganizationsOrganizationIDLicensesLicenseIDNamePut) | **Put** /v1/organizations/{organizationID}/licenses/{licenseID}/name | Update One License Name
+[**ReadAllLicenses**](LicensesApi.md#ReadAllLicenses) | **Get** /v1/organizations/{organizationID}/licenses | READ All Licenses
+[**ReadOneLicense**](LicensesApi.md#ReadOneLicense) | **Get** /v1/organizations/{organizationID}/licenses/{licenseID} | READ One License
+[**ReadOneLicenseName**](LicensesApi.md#ReadOneLicenseName) | **Get** /v1/organizations/{organizationID}/licenses/{licenseID}/name | READ One License Name
+[**UpdateOneLicenseName**](LicensesApi.md#UpdateOneLicenseName) | **Put** /v1/organizations/{organizationID}/licenses/{licenseID}/name | Update One License Name
 
 
 
-## V1OrganizationsOrganizationIDLicensesGet
+## ReadAllLicenses
 
-> V1OrganizationsOrganizationIDLicensesGet(ctx, organizationID).Execute()
+> EntityArray ReadAllLicenses(ctx, organizationID).Filter(filter).Order(order).Execute()
 
 READ All Licenses
 
@@ -31,14 +31,18 @@ import (
 
 func main() {
     organizationID := "organizationID_example" // string | 
+    filter := "filter=beginsAt lt "{{now}}"" // string | For organizations with more than one license, you can use a filter to return the list of licenses in descending order. (optional)
+    order := "order=-beginsAt" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LicensesApi.V1OrganizationsOrganizationIDLicensesGet(context.Background(), organizationID).Execute()
+    resp, r, err := apiClient.LicensesApi.ReadAllLicenses(context.Background(), organizationID).Filter(filter).Order(order).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.V1OrganizationsOrganizationIDLicensesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.ReadAllLicenses``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadAllLicenses`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `LicensesApi.ReadAllLicenses`: %v\n", resp)
 }
 ```
 
@@ -52,16 +56,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1OrganizationsOrganizationIDLicensesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllLicensesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **filter** | **string** | For organizations with more than one license, you can use a filter to return the list of licenses in descending order. | 
+ **order** | **string** |  | 
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -77,9 +83,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1OrganizationsOrganizationIDLicensesLicenseIDGet
+## ReadOneLicense
 
-> V1OrganizationsOrganizationIDLicensesLicenseIDGet(ctx, organizationID, licenseID).Execute()
+> License ReadOneLicense(ctx, organizationID, licenseID).Execute()
 
 READ One License
 
@@ -101,11 +107,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LicensesApi.V1OrganizationsOrganizationIDLicensesLicenseIDGet(context.Background(), organizationID, licenseID).Execute()
+    resp, r, err := apiClient.LicensesApi.ReadOneLicense(context.Background(), organizationID, licenseID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.V1OrganizationsOrganizationIDLicensesLicenseIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.ReadOneLicense``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneLicense`: License
+    fmt.Fprintf(os.Stdout, "Response from `LicensesApi.ReadOneLicense`: %v\n", resp)
 }
 ```
 
@@ -120,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1OrganizationsOrganizationIDLicensesLicenseIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneLicenseRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -130,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**License**](License.md)
 
 ### Authorization
 
@@ -146,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1OrganizationsOrganizationIDLicensesLicenseIDNameGet
+## ReadOneLicenseName
 
-> V1OrganizationsOrganizationIDLicensesLicenseIDNameGet(ctx, organizationID, licenseID).Execute()
+> LicenseName ReadOneLicenseName(ctx, organizationID, licenseID).Execute()
 
 READ One License Name
 
@@ -170,11 +178,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LicensesApi.V1OrganizationsOrganizationIDLicensesLicenseIDNameGet(context.Background(), organizationID, licenseID).Execute()
+    resp, r, err := apiClient.LicensesApi.ReadOneLicenseName(context.Background(), organizationID, licenseID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.V1OrganizationsOrganizationIDLicensesLicenseIDNameGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.ReadOneLicenseName``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneLicenseName`: LicenseName
+    fmt.Fprintf(os.Stdout, "Response from `LicensesApi.ReadOneLicenseName`: %v\n", resp)
 }
 ```
 
@@ -189,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1OrganizationsOrganizationIDLicensesLicenseIDNameGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneLicenseNameRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -199,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**LicenseName**](LicenseName.md)
 
 ### Authorization
 
@@ -215,9 +225,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1OrganizationsOrganizationIDLicensesLicenseIDNamePut
+## UpdateOneLicenseName
 
-> V1OrganizationsOrganizationIDLicensesLicenseIDNamePut(ctx, organizationID, licenseID).Body(body).Execute()
+> LicenseName UpdateOneLicenseName(ctx, organizationID, licenseID).LicenseName(licenseName).Execute()
 
 Update One License Name
 
@@ -236,15 +246,17 @@ import (
 func main() {
     organizationID := "organizationID_example" // string | 
     licenseID := "licenseID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    licenseName := *openapiclient.NewLicenseName("Name_example") // LicenseName |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LicensesApi.V1OrganizationsOrganizationIDLicensesLicenseIDNamePut(context.Background(), organizationID, licenseID).Body(body).Execute()
+    resp, r, err := apiClient.LicensesApi.UpdateOneLicenseName(context.Background(), organizationID, licenseID).LicenseName(licenseName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.V1OrganizationsOrganizationIDLicensesLicenseIDNamePut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LicensesApi.UpdateOneLicenseName``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateOneLicenseName`: LicenseName
+    fmt.Fprintf(os.Stdout, "Response from `LicensesApi.UpdateOneLicenseName`: %v\n", resp)
 }
 ```
 
@@ -259,18 +271,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1OrganizationsOrganizationIDLicensesLicenseIDNamePutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateOneLicenseNameRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **licenseName** | [**LicenseName**](LicenseName.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**LicenseName**](LicenseName.md)
 
 ### Authorization
 

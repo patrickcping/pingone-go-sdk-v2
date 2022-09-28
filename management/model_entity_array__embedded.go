@@ -34,6 +34,7 @@ type EntityArrayEmbedded struct {
 	IdentityProviders []IdentityProvider `json:"identityProviders,omitempty"`
 	Keys []Certificate `json:"keys,omitempty"`
 	Languages []AgreementLanguage `json:"languages,omitempty"`
+	Licenses []License `json:"licenses,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
@@ -643,6 +644,38 @@ func (o *EntityArrayEmbedded) SetLanguages(v []AgreementLanguage) {
 	o.Languages = v
 }
 
+// GetLicenses returns the Licenses field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetLicenses() []License {
+	if o == nil || o.Licenses == nil {
+		var ret []License
+		return ret
+	}
+	return o.Licenses
+}
+
+// GetLicensesOk returns a tuple with the Licenses field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetLicensesOk() ([]License, bool) {
+	if o == nil || o.Licenses == nil {
+		return nil, false
+	}
+	return o.Licenses, true
+}
+
+// HasLicenses returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasLicenses() bool {
+	if o != nil && o.Licenses != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLicenses gets a reference to the given []License and assigns it to the Licenses field.
+func (o *EntityArrayEmbedded) SetLicenses(v []License) {
+	o.Licenses = v
+}
+
 // GetOrganizations returns the Organizations field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetOrganizations() []Organization {
 	if o == nil || o.Organizations == nil {
@@ -1146,6 +1179,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Languages != nil {
 		toSerialize["languages"] = o.Languages
+	}
+	if o.Licenses != nil {
+		toSerialize["licenses"] = o.Licenses
 	}
 	if o.Organizations != nil {
 		toSerialize["organizations"] = o.Organizations
