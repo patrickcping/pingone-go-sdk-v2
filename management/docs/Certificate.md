@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Algorithm** | [**EnumCertificateKeyAlgorithm**](EnumCertificateKeyAlgorithm.md) |  | 
-**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Default** | Pointer to **bool** | Specifies whether this is the default key for the specified environment. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **ExpiresAt** | Pointer to **time.Time** | The time the key resource expires. | [optional] [readonly] 
@@ -63,20 +63,20 @@ SetAlgorithm sets Algorithm field to given value.
 
 ### GetCreatedAt
 
-`func (o *Certificate) GetCreatedAt() string`
+`func (o *Certificate) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Certificate) GetCreatedAtOk() (*string, bool)`
+`func (o *Certificate) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Certificate) SetCreatedAt(v string)`
+`func (o *Certificate) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
