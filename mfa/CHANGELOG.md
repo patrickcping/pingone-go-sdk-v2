@@ -1,3 +1,7 @@
+# v0.6.0 (Unreleased)
+
+* **Enhancement** Updated the Device policy API [#58](https://github.com/patrickcping/pingone-go-sdk-v2/pull/58)
+
 # v0.5.1 (2022-09-18)
 
 * **Enhancement** - Changed model dereferencing strategy for the `CreateMFAPushCredential201Response` model [#48](https://github.com/patrickcping/pingone-go-sdk-v2/pull/48)
