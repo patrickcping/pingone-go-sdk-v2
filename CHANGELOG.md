@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.6.0](./management/CHANGELOG.md)
+    * **Enhancement** Updated the Device policy API [#58](https://github.com/patrickcping/pingone-go-sdk-v2/pull/58)
+
 # Release (2022-09-18)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.3.8
