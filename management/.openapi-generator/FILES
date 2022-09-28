@@ -17,7 +17,6 @@ api_bill_of_materials_bom.go
 api_branding_settings.go
 api_branding_themes.go
 api_capabilities.go
-api_certificate_management.go
 api_custom_domains.go
 api_enable_users.go
 api_environments.go
@@ -40,7 +39,6 @@ api_notifications_settings.go
 api_notifications_settings_smtp.go
 api_notifications_templates.go
 api_organizations.go
-api_password_policies.go
 api_phone_delivery_settings.go
 api_populations.go
 api_propagation_mappings.go
@@ -137,7 +135,6 @@ docs/BillOfMaterialsProductsInnerDeployment.md
 docs/BrandingSettingsApi.md
 docs/BrandingThemesApi.md
 docs/CapabilitiesApi.md
-docs/Certificate.md
 docs/CertificateKeyUpdate.md
 docs/CertificateManagementApi.md
 docs/CreateApplication201Response.md
@@ -318,7 +315,6 @@ docs/PasswordPolicy.md
 docs/PasswordPolicyHistory.md
 docs/PasswordPolicyLength.md
 docs/PasswordPolicyLockout.md
-docs/PasswordPolicyMinCharacters.md
 docs/PhoneDeliverySettingsApi.md
 docs/Population.md
 docs/PopulationPasswordPolicy.md
@@ -488,12 +484,7 @@ model_bill_of_materials_products_inner.go
 model_bill_of_materials_products_inner_bookmarks_inner.go
 model_bill_of_materials_products_inner_console.go
 model_bill_of_materials_products_inner_deployment.go
-model_certificate.go
 model_certificate_key_update.go
-model_create_application_201_response.go
-model_create_application_request.go
-model_create_gateway_201_response.go
-model_create_gateway_request.go
 model_custom_domain.go
 model_custom_domain_certificate.go
 model_custom_domain_certificate_request.go
@@ -508,8 +499,6 @@ model_email_domain_trusted_email.go
 model_email_domain_trusted_email_email_domain.go
 model_entity_array.go
 model_entity_array__embedded.go
-model_entity_array__embedded_attributes_inner.go
-model_entity_array__embedded_gateways_inner.go
 model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
 model_enum_alert_channel_type.go
@@ -596,7 +585,6 @@ model_group_membership.go
 model_group_nesting.go
 model_group_population.go
 model_group_total_member_counts.go
-model_identity_provider.go
 model_identity_provider_apple.go
 model_identity_provider_apple_all_of.go
 model_identity_provider_attribute.go
@@ -645,10 +633,8 @@ model_password_policy.go
 model_password_policy_history.go
 model_password_policy_length.go
 model_password_policy_lockout.go
-model_password_policy_min_characters.go
 model_population.go
 model_population_password_policy.go
-model_read_one_application_200_response.go
 model_resource.go
 model_resource_attribute.go
 model_resource_scope.go
@@ -661,7 +647,6 @@ model_schema.go
 model_schema_attribute.go
 model_schema_attribute_schema.go
 model_sign_on_policy.go
-model_sign_on_policy_action.go
 model_sign_on_policy_action_agreement.go
 model_sign_on_policy_action_agreement_all_of.go
 model_sign_on_policy_action_agreement_all_of_agreement.go
@@ -678,7 +663,6 @@ model_sign_on_policy_action_common_condition_ip_risk.go
 model_sign_on_policy_action_common_condition_ip_risk_ip_risk.go
 model_sign_on_policy_action_common_condition_not.go
 model_sign_on_policy_action_common_condition_or.go
-model_sign_on_policy_action_common_condition_or_or_inner.go
 model_sign_on_policy_action_common_sign_on_policy.go
 model_sign_on_policy_action_id_first.go
 model_sign_on_policy_action_id_first_all_of.go
@@ -720,7 +704,6 @@ model_subscription.go
 model_subscription_filter_options.go
 model_subscription_filter_options_included_applications_inner.go
 model_subscription_http_endpoint.go
-model_update_application_request.go
 model_update_environment_type_request.go
 model_user.go
 model_user_account.go
