@@ -1,3 +1,7 @@
+# v0.11.0 (Unreleased)
+
+* **Feature** Support for Licenses [#60](https://github.com/patrickcping/pingone-go-sdk-v2/pull/60)
+
 # v0.10.0 (2022-09-18)
 
 * **Bug fix** - Correct the http endpoint headers object in the `Subscription` model [#52](https://github.com/patrickcping/pingone-go-sdk-v2/pull/52)

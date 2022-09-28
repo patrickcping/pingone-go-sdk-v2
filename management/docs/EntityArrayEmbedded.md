@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **IdentityProviders** | Pointer to [**[]IdentityProvider**](IdentityProvider.md) |  | [optional] 
 **Keys** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
 **Languages** | Pointer to [**[]AgreementLanguage**](AgreementLanguage.md) |  | [optional] 
+**Licenses** | Pointer to [**[]License**](License.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
@@ -505,6 +506,31 @@ SetLanguages sets Languages field to given value.
 `func (o *EntityArrayEmbedded) HasLanguages() bool`
 
 HasLanguages returns a boolean if a field has been set.
+
+### GetLicenses
+
+`func (o *EntityArrayEmbedded) GetLicenses() []License`
+
+GetLicenses returns the Licenses field if non-nil, zero value otherwise.
+
+### GetLicensesOk
+
+`func (o *EntityArrayEmbedded) GetLicensesOk() (*[]License, bool)`
+
+GetLicensesOk returns a tuple with the Licenses field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLicenses
+
+`func (o *EntityArrayEmbedded) SetLicenses(v []License)`
+
+SetLicenses sets Licenses field to given value.
+
+### HasLicenses
+
+`func (o *EntityArrayEmbedded) HasLicenses() bool`
+
+HasLicenses returns a boolean if a field has been set.
 
 ### GetOrganizations
 

@@ -20701,6 +20701,7 @@ paths:
       - Capabilities
   /v1/organizations/{organizationID}/licenses:
     get:
+      operationId: readAllLicenses
       parameters:
       - explode: false
         in: path
@@ -20709,6 +20710,24 @@ paths:
         schema:
           type: string
         style: simple
+      - description: "For organizations with more than one license, you can use a\
+          \ filter to return the list of licenses in descending order."
+        example: "filter=beginsAt lt \"{{now}}\""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - example: order=-beginsAt
+        explode: true
+        in: query
+        name: order
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "400":
           content:
@@ -20749,13 +20768,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Licenses
       tags:
       - Licenses
   /v1/organizations/{organizationID}/licenses/{licenseID}:
     get:
+      operationId: readOneLicense
       parameters:
       - explode: false
         in: path
@@ -20811,13 +20833,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/License'
           description: Successful response
       summary: READ One License
       tags:
       - Licenses
   /v1/organizations/{organizationID}/licenses/{licenseID}/name:
     get:
+      operationId: readOneLicenseName
       parameters:
       - explode: false
         in: path
@@ -20873,12 +20898,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseName'
           description: Successful response
       summary: READ One License Name
       tags:
       - Licenses
     put:
+      operationId: updateOneLicenseName
       parameters:
       - explode: false
         in: path
@@ -20898,9 +20926,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: Internal Test License
-              type: object
+              $ref: '#/components/schemas/LicenseName'
       responses:
         "400":
           content:
@@ -20941,13 +20967,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseName'
           description: Successful response
       summary: Update One License Name
       tags:
       - Licenses
   /v1/organizations/{organizationID}/licenses/{licenseID}/metrics/activeIdentityCounts:
     get:
+      operationId: readActiveIdentityCount
       parameters:
       - example: calendarMonth
         explode: true
@@ -21468,6 +21497,27 @@ components:
       - JPG
       - GIF
       type: string
+    EnumLicensePackage:
+      description: "A string that specifies the license template on which this license\
+        \ is based. This is a required property. Options are `TRIAL`, `STANDARD`,\
+        \ `PREMIUM`, `MFA`, `RISK`, `MFARISK`, and `GLOBAL`."
+      enum:
+      - TRIAL
+      - STANDARD
+      - PREMIUM
+      - MFA
+      - RISK
+      - MFARISK
+      - GLOBAL
+      type: string
+    EnumLicenseStatus:
+      description: "A string that specifies the status of the license. Options are\
+        \ `ACTIVE`, `EXPIRED`, and `FUTURE`."
+      enum:
+      - ACTIVE
+      - EXPIRED
+      - FUTURE
+      type: string
     EnumOrganizationType:
       description: "A string that specifies the organization type. If the organization\
         \ has any paid licenses, the type property value is set to `PAID`. Otherwise,\
@@ -21516,8 +21566,8 @@ components:
       - PING_CENTRAL
       type: string
     EnumRegionCode:
-      description: A string that specifies the region in which this environment will
-        be used. The value is set when the environment is created and cannot be updated.
+      description: A string that specifies the environment region code. The value
+        is set when the environment is created and cannot be updated.
       enum:
       - AP
       - CA
@@ -21591,18 +21641,11 @@ components:
       type: string
     EnumSignOnPolicyExtraVerification:
       default: disabled
-      description: "Specifies the level of further verification when deviceAuthorization\
-        \ is enabled. The PingOne platform performs an extra verification check by\
-        \ sending a silent push notification to the customer native application, and\
-        \ receives a confirmation in return.  `extraVerification` can be one of the\
-        \ following levels:\n`disabled` (default): The PingOne platform does not perform\
-        \ the extra verification check.\n`permissive`: The PingOne platform performs\
-        \ the extra verification check. Upon timeout or failure to get a response\
-        \ from the native app, the MFA step is treated as successfully completed.\n\
-        `restrictive`: The PingOne platform performs the extra verification check.The\
-        \ PingOne platform performs the extra verification check. Upon timeout or\
-        \ failure to get a response from the native app, the MFA step is treated as\
-        \ failed.\n"
+      description: |
+        Specifies the level of further verification when deviceAuthorization is enabled. The PingOne platform performs an extra verification check by sending a silent push notification to the customer native application, and receives a confirmation in return.  `extraVerification` can be one of the following levels:
+        `disabled` (default): The PingOne platform does not perform the extra verification check.
+        `permissive`: The PingOne platform performs the extra verification check. Upon timeout or failure to get a response from the native app, the MFA step is treated as successfully completed.
+        `restrictive`: The PingOne platform performs the extra verification check.The PingOne platform performs the extra verification check. Upon timeout or failure to get a response from the native app, the MFA step is treated as failed.
       enum:
       - disabled
       - permissive
@@ -22342,11 +22385,11 @@ components:
         certificate: certificate
       properties:
         certificate:
-          description: "A string that specifies the PEM-encoded certificate to import.\
-            \ This is a required property. The following validation is performed on\
-            \ the certificate: \\\nIt must not be expired. \\\nIt MUST not be self\
-            \ signed. \\\nThe custom domain name MUST match one of the subject alternative\
-            \ name (SAN) values on the certificate.\n"
+          description: |
+            A string that specifies the PEM-encoded certificate to import. This is a required property. The following validation is performed on the certificate: \
+            It must not be expired. \
+            It MUST not be self signed. \
+            The custom domain name MUST match one of the subject alternative name (SAN) values on the certificate.
           type: string
         intermediateCertificates:
           description: A string that specifies the PEM-encoded certificate chain.
@@ -22494,7 +22537,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 5.944895607614016
+        size: 0.8851374739011653
         _embedded:
           subscriptions:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -22714,14 +22757,14 @@ components:
             status: null
           passwordPolicies:
           - minCharacters:
-              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
               "0123456789": 6
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
-              abcdefghijklmnopqrstuvwxyz: 9
-            populationCount: 3
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+              abcdefghijklmnopqrstuvwxyz: 3
+            populationCount: 6
             length:
-              min: 11
-              max: 1
+              min: 20
+              max: 4
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -22729,7 +22772,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 9
+            minComplexity: 2
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -22744,18 +22787,18 @@ components:
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 4
+            maxRepeatedCharacters: 8
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
               "0123456789": 6
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
-              abcdefghijklmnopqrstuvwxyz: 9
-            populationCount: 3
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+              abcdefghijklmnopqrstuvwxyz: 3
+            populationCount: 6
             length:
-              min: 11
-              max: 1
+              min: 20
+              max: 4
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -22763,7 +22806,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 9
+            minComplexity: 2
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -22778,7 +22821,7 @@ components:
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 4
+            maxRepeatedCharacters: 8
             minAgeDays: 1
             updatedAt: updatedAt
           revisions:
@@ -22958,7 +23001,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 1
+            accessTokenValiditySeconds: 6
             name: name
             description: description
             id: id
@@ -22970,7 +23013,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 1
+            accessTokenValiditySeconds: 6
             name: name
             description: description
             id: id
@@ -23039,7 +23082,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 6
+              secondsUntilUnlock: 3
               unlockAt: unlockAt
               status: null
             username: username
@@ -23105,7 +23148,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 6
+              secondsUntilUnlock: 3
               unlockAt: unlockAt
               status: null
             username: username
@@ -23126,6 +23169,115 @@ components:
               id: id
             id: id
             priority: 1
+          licenses:
+          - package: null
+            environments:
+              allowConnections: true
+              regions: null
+              max: 1
+              allowCustomSchema: true
+              allowProduction: true
+              allowCustomDomain: true
+            mfa:
+              allowFido2Devices: true
+              allowPushNotification: true
+              allowMfaNotificationsOutsideWhitelist: true
+            expiresAt: expiresAt
+            users:
+              allowUpdateSelf: true
+              allowPasswordPolicy: true
+              max: 1
+              allowMyAccount: true
+              allowPasswordOnlyAuthentication: true
+              allowRoleAssignment: true
+              entitledToSupport: true
+              annualActiveIncluded: 1
+              allowPasswordManagement: true
+              allowIdentityProviders: true
+              allowVerificationFlow: true
+              monthlyActiveIncluded: 6
+              allowProvisioning: true
+              allowPasswordManagementNotifications: true
+            intelligence:
+              allowReputation: true
+              allowRisk: true
+              allowDataConsent: true
+              allowGeoVelocity: true
+              allowAnonymousNetworkDetection: true
+            organization:
+              id: id
+            terminatesAt: terminatesAt
+            name: name
+            verify:
+              allowDocumentMatch: true
+              allowManualIdInspection: true
+              allowFaceMatch: true
+              allowPushNotifications: true
+            assignedEnvironmentsCount: 7
+            beginsAt: beginsAt
+            replacedByLicense:
+              id: id
+            id: id
+            replacesLicense:
+              id: id
+            authorize:
+              allowApiAccessManagement: true
+              allowDynamicAuthorization: true
+            status: null
+          - package: null
+            environments:
+              allowConnections: true
+              regions: null
+              max: 1
+              allowCustomSchema: true
+              allowProduction: true
+              allowCustomDomain: true
+            mfa:
+              allowFido2Devices: true
+              allowPushNotification: true
+              allowMfaNotificationsOutsideWhitelist: true
+            expiresAt: expiresAt
+            users:
+              allowUpdateSelf: true
+              allowPasswordPolicy: true
+              max: 1
+              allowMyAccount: true
+              allowPasswordOnlyAuthentication: true
+              allowRoleAssignment: true
+              entitledToSupport: true
+              annualActiveIncluded: 1
+              allowPasswordManagement: true
+              allowIdentityProviders: true
+              allowVerificationFlow: true
+              monthlyActiveIncluded: 6
+              allowProvisioning: true
+              allowPasswordManagementNotifications: true
+            intelligence:
+              allowReputation: true
+              allowRisk: true
+              allowDataConsent: true
+              allowGeoVelocity: true
+              allowAnonymousNetworkDetection: true
+            organization:
+              id: id
+            terminatesAt: terminatesAt
+            name: name
+            verify:
+              allowDocumentMatch: true
+              allowManualIdInspection: true
+              allowFaceMatch: true
+              allowPushNotifications: true
+            assignedEnvironmentsCount: 7
+            beginsAt: beginsAt
+            replacedByLicense:
+              id: id
+            id: id
+            replacesLicense:
+              id: id
+            authorize:
+              allowApiAccessManagement: true
+              allowDynamicAuthorization: true
+            status: null
           certificates:
           - serialNumber: 5
             issuerDN: issuerDN
@@ -23291,7 +23443,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 6
+            userCount: 5
             name: name
             description: description
             id: id
@@ -23299,7 +23451,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 6
+            userCount: 5
             name: name
             description: description
             id: id
@@ -23350,7 +23502,7 @@ components:
           applications:
           - null
           - null
-        count: 6.878052220127876
+        count: 7.143538047012306
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -23802,6 +23954,134 @@ components:
         targets:
           $ref: '#/components/schemas/Image_targets'
       type: object
+    License:
+      example:
+        package: null
+        environments:
+          allowConnections: true
+          regions: null
+          max: 1
+          allowCustomSchema: true
+          allowProduction: true
+          allowCustomDomain: true
+        mfa:
+          allowFido2Devices: true
+          allowPushNotification: true
+          allowMfaNotificationsOutsideWhitelist: true
+        expiresAt: expiresAt
+        users:
+          allowUpdateSelf: true
+          allowPasswordPolicy: true
+          max: 1
+          allowMyAccount: true
+          allowPasswordOnlyAuthentication: true
+          allowRoleAssignment: true
+          entitledToSupport: true
+          annualActiveIncluded: 1
+          allowPasswordManagement: true
+          allowIdentityProviders: true
+          allowVerificationFlow: true
+          monthlyActiveIncluded: 6
+          allowProvisioning: true
+          allowPasswordManagementNotifications: true
+        intelligence:
+          allowReputation: true
+          allowRisk: true
+          allowDataConsent: true
+          allowGeoVelocity: true
+          allowAnonymousNetworkDetection: true
+        organization:
+          id: id
+        terminatesAt: terminatesAt
+        name: name
+        verify:
+          allowDocumentMatch: true
+          allowManualIdInspection: true
+          allowFaceMatch: true
+          allowPushNotifications: true
+        assignedEnvironmentsCount: 7
+        beginsAt: beginsAt
+        replacedByLicense:
+          id: id
+        id: id
+        replacesLicense:
+          id: id
+        authorize:
+          allowApiAccessManagement: true
+          allowDynamicAuthorization: true
+        status: null
+      properties:
+        assignedEnvironmentsCount:
+          description: A read-only integer that specifies the total number of environments
+            associated with this license.
+          readOnly: true
+          type: integer
+        authorize:
+          $ref: '#/components/schemas/License_authorize'
+        beginsAt:
+          description: The date and time this license begins.
+          format: datetime
+          readOnly: true
+          type: string
+        environments:
+          $ref: '#/components/schemas/License_environments'
+        expiresAt:
+          description: The date and time this license expires. TRIAL licenses stop
+            access to PingOne services at expiration. All other licenses trigger an
+            event to send a notification when the license expires but do not block
+            services.
+          format: datetime
+          readOnly: true
+          type: string
+        id:
+          description: A read-only string that specifies the license resource’s unique
+            identifier.
+          readOnly: true
+          type: string
+        intelligence:
+          $ref: '#/components/schemas/License_intelligence'
+        mfa:
+          $ref: '#/components/schemas/License_mfa'
+        name:
+          description: "A string that specifies a descriptive name for the license.\
+            \ This is a required property in a license name update request. Valid\
+            \ characters consists of any Unicode letter, mark, numeric character,\
+            \ forward slash, dot, apostrophe, underscore, space, or hyphen. The maximum\
+            \ length of a name is 255 characters."
+          type: string
+        organization:
+          $ref: '#/components/schemas/ObjectOrganization'
+        package:
+          $ref: '#/components/schemas/EnumLicensePackage'
+        replacesLicense:
+          $ref: '#/components/schemas/License_replacesLicense'
+        replacedByLicense:
+          $ref: '#/components/schemas/License_replacedByLicense'
+        status:
+          $ref: '#/components/schemas/EnumLicenseStatus'
+        terminatesAt:
+          description: An optional attribute that designates the exact date and time
+            when this license terminates access to PingOne services. This attribute
+            can be added to any licensing package.
+          format: datetime
+          type: string
+        users:
+          $ref: '#/components/schemas/License_users'
+        verify:
+          $ref: '#/components/schemas/License_verify'
+      required:
+      - name
+      type: object
+    LicenseName:
+      example:
+        name: name
+      properties:
+        name:
+          description: The license name
+          type: string
+      required:
+      - name
+      type: object
     PKICAResponseFileUpload:
       properties:
         file:
@@ -23933,14 +24213,14 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
           "0123456789": 6
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
-          abcdefghijklmnopqrstuvwxyz: 9
-        populationCount: 3
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+          abcdefghijklmnopqrstuvwxyz: 3
+        populationCount: 6
         length:
-          min: 11
-          max: 1
+          min: 20
+          max: 4
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -23948,7 +24228,7 @@ components:
         history:
           retentionDays: 1
           count: 1
-        minComplexity: 9
+        minComplexity: 2
         excludesProfileData: true
         currentPassword: currentPassword
         createdAt: createdAt
@@ -23963,7 +24243,7 @@ components:
         name: name
         maxAgeDays: 1
         id: id
-        maxRepeatedCharacters: 4
+        maxRepeatedCharacters: 8
         minAgeDays: 1
         updatedAt: updatedAt
       properties:
@@ -24076,7 +24356,7 @@ components:
         createdAt: createdAt
         passwordPolicy:
           id: id
-        userCount: 6
+        userCount: 5
         name: name
         description: description
         id: id
@@ -24118,7 +24398,7 @@ components:
           id: id
         resource:
           id: id
-        accessTokenValiditySeconds: 1
+        accessTokenValiditySeconds: 6
         name: name
         description: description
         id: id
@@ -24857,7 +25137,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 6
+          secondsUntilUnlock: 3
           unlockAt: unlockAt
           status: null
         username: username
@@ -25260,6 +25540,7 @@ components:
       required:
       - homePageUrl
       type: object
+      example: null
     ApplicationSAML_allOf_idpSigning_key:
       properties:
         id:
@@ -25270,6 +25551,7 @@ components:
       required:
       - id
       type: object
+      example: null
     ApplicationSAML_allOf_idpSigning:
       properties:
         key:
@@ -25281,6 +25563,7 @@ components:
       required:
       - key
       type: object
+      example: null
     ApplicationSAML_allOf_spVerification_certificates:
       properties:
         id:
@@ -25290,6 +25573,7 @@ components:
       required:
       - id
       type: object
+      example: null
     ApplicationSAML_allOf_spVerification:
       properties:
         certificates:
@@ -25299,6 +25583,7 @@ components:
       required:
       - certificates
       type: object
+      example: null
     ApplicationSAML_allOf:
       properties:
         acsUrls:
@@ -25350,6 +25635,7 @@ components:
       - assertionDuration
       - spEntityId
       type: object
+      example: null
     ApplicationOIDC_allOf_mobile_passcodeRefreshDuration:
       properties:
         duration:
@@ -25365,6 +25651,7 @@ components:
       - duration
       - timeUnit
       type: object
+      example: null
     ApplicationOIDC_allOf_mobile_integrityDetection_cacheDuration:
       properties:
         amount:
@@ -25378,6 +25665,7 @@ components:
         units:
           $ref: '#/components/schemas/EnumDurationUnitMinsHours'
       type: object
+      example: null
     ApplicationOIDC_allOf_mobile_integrityDetection:
       properties:
         mode:
@@ -25385,6 +25673,7 @@ components:
         cacheDuration:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection_cacheDuration'
       type: object
+      example: null
     ApplicationOIDC_allOf_mobile:
       properties:
         bundleId:
@@ -25404,6 +25693,7 @@ components:
         integrityDetection:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection'
       type: object
+      example: null
     ApplicationOIDC_allOf_kerberos_key:
       description: A Relationship object containing the certificate issuer (root CA).
       properties:
@@ -25413,6 +25703,7 @@ components:
       required:
       - id
       type: object
+      example: null
     ApplicationOIDC_allOf_kerberos:
       description: Object containing Kerberos settings
       properties:
@@ -25421,6 +25712,7 @@ components:
       required:
       - key
       type: object
+      example: null
     ApplicationOIDC_allOf:
       properties:
         mobile:
@@ -25493,6 +25785,7 @@ components:
       - grantTypes
       - tokenEndpointAuthMethod
       type: object
+      example: null
     ApplicationOIDCInternal_allOf:
       properties:
         pkceEnforcement:
@@ -25502,6 +25795,7 @@ components:
       required:
       - tokenEndpointAuthMethod
       type: object
+      example: null
     ApplicationPingOnePortal_allOf:
       properties:
         applyDefaultTheme:
@@ -25510,6 +25804,7 @@ components:
       required:
       - applyDefaultTheme
       type: object
+      example: null
     ApplicationPingOneSelfService_allOf:
       properties:
         enableDefaultThemeFooter:
@@ -25522,6 +25817,7 @@ components:
       required:
       - applyDefaultTheme
       type: object
+      example: null
     ApplicationAttributeMapping_application:
       example:
         id: id
@@ -25943,14 +26239,14 @@ components:
           status: null
         passwordPolicies:
         - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
             "0123456789": 6
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
-            abcdefghijklmnopqrstuvwxyz: 9
-          populationCount: 3
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+            abcdefghijklmnopqrstuvwxyz: 3
+          populationCount: 6
           length:
-            min: 11
-            max: 1
+            min: 20
+            max: 4
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -25958,7 +26254,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 9
+          minComplexity: 2
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -25973,18 +26269,18 @@ components:
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 4
+          maxRepeatedCharacters: 8
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
             "0123456789": 6
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
-            abcdefghijklmnopqrstuvwxyz: 9
-          populationCount: 3
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+            abcdefghijklmnopqrstuvwxyz: 3
+          populationCount: 6
           length:
-            min: 11
-            max: 1
+            min: 20
+            max: 4
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -25992,7 +26288,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 9
+          minComplexity: 2
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -26007,7 +26303,7 @@ components:
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 4
+          maxRepeatedCharacters: 8
           minAgeDays: 1
           updatedAt: updatedAt
         revisions:
@@ -26187,7 +26483,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 1
+          accessTokenValiditySeconds: 6
           name: name
           description: description
           id: id
@@ -26199,7 +26495,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 1
+          accessTokenValiditySeconds: 6
           name: name
           description: description
           id: id
@@ -26268,7 +26564,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 6
+            secondsUntilUnlock: 3
             unlockAt: unlockAt
             status: null
           username: username
@@ -26334,7 +26630,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 6
+            secondsUntilUnlock: 3
             unlockAt: unlockAt
             status: null
           username: username
@@ -26355,6 +26651,115 @@ components:
             id: id
           id: id
           priority: 1
+        licenses:
+        - package: null
+          environments:
+            allowConnections: true
+            regions: null
+            max: 1
+            allowCustomSchema: true
+            allowProduction: true
+            allowCustomDomain: true
+          mfa:
+            allowFido2Devices: true
+            allowPushNotification: true
+            allowMfaNotificationsOutsideWhitelist: true
+          expiresAt: expiresAt
+          users:
+            allowUpdateSelf: true
+            allowPasswordPolicy: true
+            max: 1
+            allowMyAccount: true
+            allowPasswordOnlyAuthentication: true
+            allowRoleAssignment: true
+            entitledToSupport: true
+            annualActiveIncluded: 1
+            allowPasswordManagement: true
+            allowIdentityProviders: true
+            allowVerificationFlow: true
+            monthlyActiveIncluded: 6
+            allowProvisioning: true
+            allowPasswordManagementNotifications: true
+          intelligence:
+            allowReputation: true
+            allowRisk: true
+            allowDataConsent: true
+            allowGeoVelocity: true
+            allowAnonymousNetworkDetection: true
+          organization:
+            id: id
+          terminatesAt: terminatesAt
+          name: name
+          verify:
+            allowDocumentMatch: true
+            allowManualIdInspection: true
+            allowFaceMatch: true
+            allowPushNotifications: true
+          assignedEnvironmentsCount: 7
+          beginsAt: beginsAt
+          replacedByLicense:
+            id: id
+          id: id
+          replacesLicense:
+            id: id
+          authorize:
+            allowApiAccessManagement: true
+            allowDynamicAuthorization: true
+          status: null
+        - package: null
+          environments:
+            allowConnections: true
+            regions: null
+            max: 1
+            allowCustomSchema: true
+            allowProduction: true
+            allowCustomDomain: true
+          mfa:
+            allowFido2Devices: true
+            allowPushNotification: true
+            allowMfaNotificationsOutsideWhitelist: true
+          expiresAt: expiresAt
+          users:
+            allowUpdateSelf: true
+            allowPasswordPolicy: true
+            max: 1
+            allowMyAccount: true
+            allowPasswordOnlyAuthentication: true
+            allowRoleAssignment: true
+            entitledToSupport: true
+            annualActiveIncluded: 1
+            allowPasswordManagement: true
+            allowIdentityProviders: true
+            allowVerificationFlow: true
+            monthlyActiveIncluded: 6
+            allowProvisioning: true
+            allowPasswordManagementNotifications: true
+          intelligence:
+            allowReputation: true
+            allowRisk: true
+            allowDataConsent: true
+            allowGeoVelocity: true
+            allowAnonymousNetworkDetection: true
+          organization:
+            id: id
+          terminatesAt: terminatesAt
+          name: name
+          verify:
+            allowDocumentMatch: true
+            allowManualIdInspection: true
+            allowFaceMatch: true
+            allowPushNotifications: true
+          assignedEnvironmentsCount: 7
+          beginsAt: beginsAt
+          replacedByLicense:
+            id: id
+          id: id
+          replacesLicense:
+            id: id
+          authorize:
+            allowApiAccessManagement: true
+            allowDynamicAuthorization: true
+          status: null
         certificates:
         - serialNumber: 5
           issuerDN: issuerDN
@@ -26520,7 +26925,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 6
+          userCount: 5
           name: name
           description: description
           id: id
@@ -26528,7 +26933,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 6
+          userCount: 5
           name: name
           description: description
           id: id
@@ -26652,6 +27057,10 @@ components:
           items:
             $ref: '#/components/schemas/AgreementLanguage'
           type: array
+        licenses:
+          items:
+            $ref: '#/components/schemas/License'
+          type: array
         organizations:
           items:
             $ref: '#/components/schemas/Organization'
@@ -26766,6 +27175,7 @@ components:
       required:
       - serviceAccountUserPrincipalName
       type: object
+      example: null
     GatewayLDAP_allOf_newUserLookup_attributeMappings:
       properties:
         name:
@@ -26780,6 +27190,7 @@ components:
       - name
       - value
       type: object
+      example: null
     GatewayLDAP_allOf_newUserLookup_population:
       description: The PingOne population to use to create user entries during lookup.
       properties:
@@ -26790,6 +27201,7 @@ components:
       required:
       - id
       type: object
+      example: null
     GatewayLDAP_allOf_newUserLookup:
       description: "The configurations for initially authenticating new users who\
         \ will be migrated to PingOne. Note If there are multiple users having the\
@@ -26814,6 +27226,7 @@ components:
       - ldapFilterPattern
       - population
       type: object
+      example: null
     GatewayLDAP_allOf_userTypes:
       properties:
         allowPasswordChanges:
@@ -26849,6 +27262,7 @@ components:
       - passwordAuthority
       - searchBaseDn
       type: object
+      example: null
     GatewayLDAP_allOf:
       properties:
         bindDN:
@@ -26895,6 +27309,7 @@ components:
       - serversHostAndPort
       - vendor
       type: object
+      example: null
     GatewayInstance_gateway:
       example:
         id: id
@@ -27022,6 +27437,7 @@ components:
       - appId
       - appSecret
       type: object
+      example: null
     IdentityProviderClientIDClientSecret_allOf:
       properties:
         clientId:
@@ -27036,6 +27452,7 @@ components:
       - clientId
       - clientSecret
       type: object
+      example: null
     IdentityProviderOIDC_allOf:
       properties:
         authorizationEndpoint:
@@ -27090,6 +27507,7 @@ components:
       - tokenEndpoint
       - tokenEndpointAuthMethod
       type: object
+      example: null
     IdentityProviderApple_allOf:
       properties:
         clientId:
@@ -27115,6 +27533,7 @@ components:
       - keyId
       - teamId
       type: object
+      example: null
     IdentityProviderPaypal_allOf:
       properties:
         clientId:
@@ -27134,6 +27553,15 @@ components:
       - clientId
       - clientSecret
       type: object
+      example: null
+    IdentityProviderSAML_allOf_idpVerification_certificates:
+      properties:
+        id:
+          type: string
+      required:
+      - id
+      type: object
+      example: null
     IdentityProviderSAML_allOf_idpVerification:
       properties:
         certificates:
@@ -27142,11 +27570,12 @@ components:
             provider. Signing is done with a private key and verified with a public
             key.
           items:
-            $ref: '#/components/schemas/Application_accessControl_group_groups_inner'
+            $ref: '#/components/schemas/IdentityProviderSAML_allOf_idpVerification_certificates'
           type: array
       required:
       - certificates
       type: object
+      example: null
     IdentityProviderSAML_allOf_spSigning_key:
       properties:
         id:
@@ -27156,6 +27585,7 @@ components:
       required:
       - id
       type: object
+      example: null
     IdentityProviderSAML_allOf_spSigning:
       properties:
         key:
@@ -27163,6 +27593,7 @@ components:
       required:
       - key
       type: object
+      example: null
     IdentityProviderSAML_allOf:
       properties:
         authnRequestSigned:
@@ -27197,6 +27628,7 @@ components:
       - ssoBinding
       - ssoEndpoint
       type: object
+      example: null
     Image_targets:
       example:
         width: 0
@@ -27224,6 +27656,249 @@ components:
           description: The height of the image (in pixels).
           readOnly: true
           type: integer
+      type: object
+    License_authorize:
+      example:
+        allowApiAccessManagement: true
+        allowDynamicAuthorization: true
+      properties:
+        allowApiAccessManagement:
+          description: A read-only boolean that specifies whether to enable the PingOne
+            Authorize API access management feature.
+          type: boolean
+        allowDynamicAuthorization:
+          description: A read-only boolean that specifies whether to enable the PingOne
+            Authorize dynamic authorization feature.
+          type: boolean
+      readOnly: true
+      type: object
+    License_environments:
+      example:
+        allowConnections: true
+        regions: null
+        max: 1
+        allowCustomSchema: true
+        allowProduction: true
+        allowCustomDomain: true
+      properties:
+        allowConnections:
+          description: A boolean that specifies whether the license supports creation
+            of application connections in the specified environment.
+          type: boolean
+        allowCustomDomain:
+          description: A read-only boolean that specifies whether the license supports
+            creation of a custom domain in the specified environment.
+          type: boolean
+        allowCustomSchema:
+          description: A read-only boolean that specifies whether the license supports
+            using custom schema attributes in the specified environment.
+          type: boolean
+        allowProduction:
+          description: A read-only boolean that specifies whether production environments
+            are allowed.
+          type: boolean
+        max:
+          description: A read-only integer that specifies the maximum number of environments
+            allowed.
+          type: integer
+        regions:
+          $ref: '#/components/schemas/EnumRegionCode'
+      readOnly: true
+      type: object
+    License_intelligence:
+      example:
+        allowReputation: true
+        allowRisk: true
+        allowDataConsent: true
+        allowGeoVelocity: true
+        allowAnonymousNetworkDetection: true
+      properties:
+        allowGeoVelocity:
+          description: "A read-only boolean that specifies whether to use the intelligence\
+            \ geo-velocity feature. For `TRIAL` (unpaid) licenses, the default value\
+            \ is true. For `ADMIN`, `GLOBAL`, `RISK`, and `MFARISK`, the default value\
+            \ is true."
+          type: boolean
+        allowAnonymousNetworkDetection:
+          description: "A read-only boolean that specifies whether to use the intelligence\
+            \ anonymous network detection feature. For `TRIAL` (unpaid) licenses,\
+            \ the default value is true. For `ADMIN`, `GLOBAL`, `RISK`, and `MFARISK`,\
+            \ the default value is true."
+          type: boolean
+        allowReputation:
+          description: "A read-only boolean that specifies whether to use the intelligence\
+            \ IP reputation feature. For `TRIAL` (unpaid) licenses, the default value\
+            \ is true. For `ADMIN`, `GLOBAL`, `RISK`, and `MFARISK`, the default value\
+            \ is true."
+          type: boolean
+        allowDataConsent:
+          description: A read-only boolean that specifies whether the customer has
+            opted in to allow user and event behavior analytics (UEBA) data collection.
+          type: boolean
+        allowRisk:
+          description: "A read-only boolean that specifies whether your license permits\
+            \ you to configure risk features such as sign-on policies that include\
+            \ rules to detect anomalous changes to your locations (such as impossible\
+            \ travel). This capability is supported for TRIAL, RISK, and MFARISK license\
+            \ packages. Note, The sharing of user data to enable our machine-learning\
+            \ engine, which is integral to PingOne Risk, is captured in the license\
+            \ property license.intelligence.allowDataConsent, but it is not set to\
+            \ true by default in any license package. This license capability always\
+            \ requires active consent by the customer before it can be enabled, and\
+            \ if consent is given, then it allows the full scope of intelligence features\
+            \ included in PingOne Risk (and PingOne Risk plus MFA)."
+          type: boolean
+      readOnly: true
+      type: object
+    License_mfa:
+      example:
+        allowFido2Devices: true
+        allowPushNotification: true
+        allowMfaNotificationsOutsideWhitelist: true
+      properties:
+        allowPushNotification:
+          description: "A read-only boolean that specifies whether push notifications\
+            \ are allowed. For TRIAL (unpaid) licenses, the default value is true.\
+            \ For other license package types, adoption of the feature determines\
+            \ the default value."
+          type: boolean
+        allowMfaNotificationsOutsideWhitelist:
+          description: A read-only boolean that specifies whether the license supports
+            sending notifications outside of the environment's whitelist.
+          type: boolean
+        allowFido2Devices:
+          description: "A read-only boolean that specifies whether FIDO2 devices are\
+            \ allowed. For TRIAL (unpaid) licenses, the default value is true. For\
+            \ other license package types, adoption of the feature determines the\
+            \ default value."
+          type: boolean
+      readOnly: true
+      type: object
+    License_replacesLicense:
+      description: A read-only object that specifies the license ID of the license
+        that is replaced by this license.
+      example:
+        id: id
+      properties:
+        id:
+          description: A read-only string that specifies the license ID of the license
+            that is replaced by this license.
+          type: string
+      type: object
+    License_replacedByLicense:
+      description: A read-only object that specifies the license ID of the license
+        that replaces this license.
+      example:
+        id: id
+      properties:
+        id:
+          description: A read-only string that specifies the license ID of the license
+            that replaces this license.
+          type: string
+      type: object
+    License_users:
+      example:
+        allowUpdateSelf: true
+        allowPasswordPolicy: true
+        max: 1
+        allowMyAccount: true
+        allowPasswordOnlyAuthentication: true
+        allowRoleAssignment: true
+        entitledToSupport: true
+        annualActiveIncluded: 1
+        allowPasswordManagement: true
+        allowIdentityProviders: true
+        allowVerificationFlow: true
+        monthlyActiveIncluded: 6
+        allowProvisioning: true
+        allowPasswordManagementNotifications: true
+      properties:
+        allowPasswordManagementNotifications:
+          description: A read-only boolean that specifies whether the license supports
+            sending password management notifications.
+          type: boolean
+        allowIdentityProviders:
+          description: A read-only boolean that specifies whether the license supports
+            using external identity providers in the specified environment.
+          type: boolean
+        allowMyAccount:
+          description: A read-only boolean that specifies whether the license supports
+            using My Account capabilities in the specified environment.
+          type: boolean
+        allowPasswordManagement:
+          description: A read-only boolean that specifies whether the license supports
+            using password management capabilities in the specified environment.
+          type: boolean
+        allowPasswordOnlyAuthentication:
+          description: A read-only boolean that specifies whether the license supports
+            using password only login capabilities in the specified environment.
+          type: boolean
+        allowPasswordPolicy:
+          description: A read-only boolean that specifies whether the license supports
+            using password policies in the specified environment.
+          type: boolean
+        allowProvisioning:
+          description: A read-only boolean that specifies whether the license supports
+            using provisioning capabilities in the specified environment.
+          type: boolean
+        allowRoleAssignment:
+          description: A read-only boolean that specifies whether the license supports
+            role assignments in the specified environment.
+          type: boolean
+        allowVerificationFlow:
+          description: A read-only boolean that specifies whether the license supports
+            using verification flows in the specified environment.
+          type: boolean
+        allowUpdateSelf:
+          description: A read-only boolean that specifies whether the license supports
+            allowing users to update their own profile.
+          type: boolean
+        entitledToSupport:
+          description: A read-only boolean that specifies whether the license allows
+            PingOne support.
+          type: boolean
+        max:
+          description: An read-only integer that specifies the maximum number of users
+            allowed per environment.
+          type: integer
+        annualActiveIncluded:
+          description: A read-only integer that specifies a soft limit on the number
+            of active identities across all environments on the license per year.
+            This property is not visible if a value is not provided at the time the
+            license is created.
+          type: integer
+        monthlyActiveIncluded:
+          description: A read-only integer that specifies a soft limit on the number
+            of active identities across all environments on the license per month.
+            This property is not visible if a value is not provided at the time the
+            license is created.
+          type: integer
+      readOnly: true
+      type: object
+    License_verify:
+      example:
+        allowDocumentMatch: true
+        allowManualIdInspection: true
+        allowFaceMatch: true
+        allowPushNotifications: true
+      properties:
+        allowPushNotifications:
+          description: A read-only boolean that specifies whether to enable the PingOne
+            Verify push notifications feature.
+          type: boolean
+        allowDocumentMatch:
+          description: A read-only boolean that specifies whether to enable the PingOne
+            Verify document matching feature.
+          type: boolean
+        allowFaceMatch:
+          description: A read-only boolean that specifies whether to enable the PingOne
+            Verify face matching feature.
+          type: boolean
+        allowManualIdInspection:
+          description: A read-only boolean that specifies whether to enable the PingOne
+            Verify manual ID inspection feature.
+          type: boolean
+      readOnly: true
       type: object
     Organization_billingConnections_inner:
       example:
@@ -27297,8 +27972,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 11
-        max: 1
+        min: 20
+        max: 4
       properties:
         max:
           default: 255
@@ -27340,10 +28015,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        ~!@#$%^&*()-_=+[]{}|;:,.<>/?: 8
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
         "0123456789": 6
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 9
-        abcdefghijklmnopqrstuvwxyz: 9
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+        abcdefghijklmnopqrstuvwxyz: 3
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)
@@ -27357,7 +28032,7 @@ components:
           description: Count of numeric characters (`0123456789`) that should feature
             in the user's password.
           type: integer
-        ~!@#$%^&*()-_=+[]{}|;:,.<>/?:
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?":
           description: "Count of special characters (`~!@#$%^&*()-_=+[]{}\\\\|;:,.<>/?`)\
             \ that should feature in the user's password."
           type: integer
@@ -27477,6 +28152,7 @@ components:
       required:
       - enabled
       type: object
+      example: null
     SignOnPolicyActionLogin_allOf_registration_external:
       properties:
         href:
@@ -27488,6 +28164,7 @@ components:
       required:
       - href
       type: object
+      example: null
     SignOnPolicyActionLogin_allOf_registration_population:
       properties:
         id:
@@ -27497,6 +28174,7 @@ components:
       required:
       - id
       type: object
+      example: null
     SignOnPolicyActionLogin_allOf_registration:
       description: Specifies the account registration options.
       properties:
@@ -27522,6 +28200,7 @@ components:
       required:
       - enabled
       type: object
+      example: null
     SignOnPolicyActionLogin_allOf_socialProviders:
       properties:
         id:
@@ -27531,6 +28210,7 @@ components:
       required:
       - id
       type: object
+      example: null
     SignOnPolicyActionLogin_allOf:
       properties:
         enforceLockoutForIdentityProviders:
@@ -27549,6 +28229,7 @@ components:
             $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_socialProviders'
           type: array
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_authenticator:
       deprecated: true
       description: Specifies MFA through a Time-based One-time Password (TOTP) option
@@ -27562,6 +28243,7 @@ components:
             \ to authenticate using a TOTP authenticator application."
           type: boolean
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_boundBiometrics:
       deprecated: true
       description: Specifies MFA through a FIDO2 biometrics platform device.
@@ -27572,6 +28254,7 @@ components:
             with a FIDO2 biometrics platform device.
           type: boolean
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_email:
       deprecated: true
       description: Specifies MFA through email options.
@@ -27584,6 +28267,7 @@ components:
             \ and authenticate through email."
           type: boolean
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_securityKey:
       deprecated: true
       description: Specifies MFA using a FIDO2 or U2F security key device.
@@ -27594,6 +28278,7 @@ components:
             with a security key device.
           type: boolean
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_sms:
       deprecated: true
       description: Specifies MFA through SMS text messaging options.
@@ -27606,6 +28291,7 @@ components:
             \ and authenticate through SMS text message."
           type: boolean
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_voice:
       deprecated: true
       description: Specifies MFA through voice messaging options.
@@ -27618,6 +28304,7 @@ components:
             \ password and authenticate through a voice message."
           type: boolean
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_autoEnrollment:
       properties:
         enabled:
@@ -27628,6 +28315,7 @@ components:
             \ flow."
           type: boolean
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_deviceAuthorization:
       properties:
         enabled:
@@ -27638,6 +28326,7 @@ components:
         extraVerification:
           $ref: '#/components/schemas/EnumSignOnPolicyExtraVerification'
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_applications:
       properties:
         id:
@@ -27649,6 +28338,7 @@ components:
       required:
       - id
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf_deviceAuthenticationPolicy:
       description: "Details of the MFA policy that should be used. If it is omitted,\
         \ the environment default MFA policy is used."
@@ -27659,6 +28349,7 @@ components:
       required:
       - id
       type: object
+      example: null
     SignOnPolicyActionMFA_allOf:
       properties:
         authenticator:
@@ -27687,6 +28378,7 @@ components:
         noDevicesMode:
           $ref: '#/components/schemas/EnumSignOnPolicyNoDeviceMode'
       type: object
+      example: null
     SignOnPolicyActionIDFirst_allOf_condition:
       properties:
         contains:
@@ -27697,6 +28389,7 @@ components:
       - contains
       - value
       type: object
+      example: null
     SignOnPolicyActionIDFirst_allOf_identityProvider:
       properties:
         id:
@@ -27706,6 +28399,7 @@ components:
       required:
       - id
       type: object
+      example: null
     SignOnPolicyActionIDFirst_allOf_discoveryRules:
       properties:
         condition:
@@ -27716,6 +28410,7 @@ components:
       - condition
       - identityProvider
       type: object
+      example: null
     SignOnPolicyActionIDFirst_allOf:
       properties:
         discoveryRules:
@@ -27743,6 +28438,7 @@ components:
             $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_socialProviders'
           type: array
       type: object
+      example: null
     SignOnPolicyActionIDP_allOf_identityProvider:
       description: A reference to the external identity provider that is used to authenticate
         the user. This property is required.
@@ -27754,6 +28450,7 @@ components:
       required:
       - id
       type: object
+      example: null
     SignOnPolicyActionIDP_allOf_registration:
       description: Specifies the account registration options.
       properties:
@@ -27777,6 +28474,7 @@ components:
       required:
       - enabled
       type: object
+      example: null
     SignOnPolicyActionIDP_allOf:
       properties:
         acrValues:
@@ -27808,6 +28506,7 @@ components:
       required:
       - identityProvider
       type: object
+      example: null
     SignOnPolicyActionAgreement_allOf_agreement:
       description: The relationship to the agreement to which the user must consent.
         The agreement must exist and be enabled. An agreement cannot be disabed if
@@ -27821,6 +28520,7 @@ components:
       required:
       - id
       type: object
+      example: null
     SignOnPolicyActionAgreement_allOf:
       properties:
         agreement:
@@ -27832,6 +28532,7 @@ components:
       required:
       - agreement
       type: object
+      example: null
     SignOnPolicyActionProgressiveProfiling_allOf_attributes:
       properties:
         name:
@@ -27847,6 +28548,7 @@ components:
       - name
       - required
       type: object
+      example: null
     SignOnPolicyActionProgressiveProfiling_allOf:
       properties:
         attributes:
@@ -27874,6 +28576,7 @@ components:
       - promptIntervalSeconds
       - promptText
       type: object
+      example: null
     SignOnPolicyActionPingIDWinLoginPasswordless_allOf_uniqueUserAttribute:
       properties:
         name:
@@ -27884,6 +28587,7 @@ components:
       required:
       - name
       type: object
+      example: null
     SignOnPolicyActionPingIDWinLoginPasswordless_allOf_offlineMode:
       properties:
         enabled:
@@ -27893,6 +28597,7 @@ components:
       required:
       - enabled
       type: object
+      example: null
     SignOnPolicyActionPingIDWinLoginPasswordless_allOf:
       properties:
         uniqueUserAttribute:
@@ -27903,6 +28608,7 @@ components:
       - offlineMode
       - uniqueUserAttribute
       type: object
+      example: null
     Subscription_filterOptions_includedApplications_inner:
       example:
         id: id
@@ -27987,7 +28693,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 6
+        secondsUntilUnlock: 3
         unlockAt: unlockAt
         status: null
       properties:
