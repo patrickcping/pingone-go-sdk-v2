@@ -23,7 +23,8 @@ type APIServer struct {
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the API server resource name. The name value must be unique among all API servers, and it must be a valid resource name.
 	Name string `json:"name"`
-	Operations *APIServerOperations `json:"operations,omitempty"`
+	// A map from the operation name to the operation object. Each key must be valid ObjectName, and each value must be a valid operation. Each key must be unique within the operations object, which means the operation key is unique within an API server. No duplicate operation values are allowed; operations with the same paths and methods members are not allowed. The operations object is limited to 25 keys (25 individual operations).
+	Operations map[string]interface{} `json:"operations,omitempty"`
 }
 
 // NewAPIServer instantiates a new APIServer object
@@ -151,17 +152,17 @@ func (o *APIServer) SetName(v string) {
 }
 
 // GetOperations returns the Operations field value if set, zero value otherwise.
-func (o *APIServer) GetOperations() APIServerOperations {
+func (o *APIServer) GetOperations() map[string]interface{} {
 	if o == nil || o.Operations == nil {
-		var ret APIServerOperations
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Operations
+	return o.Operations
 }
 
 // GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *APIServer) GetOperationsOk() (*APIServerOperations, bool) {
+func (o *APIServer) GetOperationsOk() (map[string]interface{}, bool) {
 	if o == nil || o.Operations == nil {
 		return nil, false
 	}
@@ -177,9 +178,9 @@ func (o *APIServer) HasOperations() bool {
 	return false
 }
 
-// SetOperations gets a reference to the given APIServerOperations and assigns it to the Operations field.
-func (o *APIServer) SetOperations(v APIServerOperations) {
-	o.Operations = &v
+// SetOperations gets a reference to the given map[string]interface{} and assigns it to the Operations field.
+func (o *APIServer) SetOperations(v map[string]interface{}) {
+	o.Operations = v
 }
 
 func (o APIServer) MarshalJSON() ([]byte, error) {

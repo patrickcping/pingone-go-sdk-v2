@@ -61,7 +61,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
-```
+```golang
 ctx := context.WithValue(context.Background(), authorize.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -95,12 +95,6 @@ Class | Method | HTTP request | Description
  - [APIServer](docs/APIServer.md)
  - [APIServerAuthorizationServer](docs/APIServerAuthorizationServer.md)
  - [APIServerAuthorizationServerResource](docs/APIServerAuthorizationServerResource.md)
- - [APIServerOperations](docs/APIServerOperations.md)
- - [APIServerOperationsValue](docs/APIServerOperationsValue.md)
- - [APIServerOperationsValueAccessControl](docs/APIServerOperationsValueAccessControl.md)
- - [APIServerOperationsValueAccessControlGroup](docs/APIServerOperationsValueAccessControlGroup.md)
- - [APIServerOperationsValueAccessControlGroupGroupsInner](docs/APIServerOperationsValueAccessControlGroupGroupsInner.md)
- - [APIServerOperationsValuePathsInner](docs/APIServerOperationsValuePathsInner.md)
  - [DecisionEndpoint](docs/DecisionEndpoint.md)
  - [DecisionEndpointAuthorizationVersion](docs/DecisionEndpointAuthorizationVersion.md)
  - [DecisionEndpointRecentDecisions](docs/DecisionEndpointRecentDecisions.md)
