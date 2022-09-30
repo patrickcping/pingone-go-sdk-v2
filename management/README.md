@@ -220,16 +220,16 @@ Class | Method | HTTP request | Description
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions | READ Integration Version Metadata
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsintegrationversionidassetget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | READ Integration Version Asset Download
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsintegrationversionidget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
-*LanguageLocalizationStatusApi* | [**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusGet**](docs/LanguageLocalizationStatusApi.md#v1environmentsenvironmentidlanguageslanguageidstatusget) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status | READ Language Localization Status
-*LanguageLocalizationStatusApi* | [**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDDelete**](docs/LanguageLocalizationStatusApi.md#v1environmentsenvironmentidlanguageslanguageidstatusl10nstatusiddelete) | **Delete** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | DELETE Language Localization Status
-*LanguageLocalizationStatusApi* | [**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDGet**](docs/LanguageLocalizationStatusApi.md#v1environmentsenvironmentidlanguageslanguageidstatusl10nstatusidget) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | READ One Language Localization Status
-*LanguageLocalizationStatusApi* | [**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDPut**](docs/LanguageLocalizationStatusApi.md#v1environmentsenvironmentidlanguageslanguageidstatusl10nstatusidput) | **Put** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | CREATE Language Localization Status
-*LanguageLocalizationStatusApi* | [**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusPost**](docs/LanguageLocalizationStatusApi.md#v1environmentsenvironmentidlanguageslanguageidstatuspost) | **Post** /v1/environments/{environmentID}/languages/{languageID}/status | CREATE Language Localization Status
-*LanguagesApi* | [**V1EnvironmentsEnvironmentIDLanguagesGet**](docs/LanguagesApi.md#v1environmentsenvironmentidlanguagesget) | **Get** /v1/environments/{environmentID}/languages | READ Languages
-*LanguagesApi* | [**V1EnvironmentsEnvironmentIDLanguagesLanguageIDDelete**](docs/LanguagesApi.md#v1environmentsenvironmentidlanguageslanguageiddelete) | **Delete** /v1/environments/{environmentID}/languages/{languageID} | DELETE Language
-*LanguagesApi* | [**V1EnvironmentsEnvironmentIDLanguagesLanguageIDGet**](docs/LanguagesApi.md#v1environmentsenvironmentidlanguageslanguageidget) | **Get** /v1/environments/{environmentID}/languages/{languageID} | READ One Language
-*LanguagesApi* | [**V1EnvironmentsEnvironmentIDLanguagesLanguageIDPut**](docs/LanguagesApi.md#v1environmentsenvironmentidlanguageslanguageidput) | **Put** /v1/environments/{environmentID}/languages/{languageID} | UPDATE Language 
-*LanguagesApi* | [**V1EnvironmentsEnvironmentIDLanguagesPost**](docs/LanguagesApi.md#v1environmentsenvironmentidlanguagespost) | **Post** /v1/environments/{environmentID}/languages/ | CREATE Language
+*LanguageLocalizationStatusApi* | [**CreateLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#createlanguagelocalizationstatus) | **Post** /v1/environments/{environmentID}/languages/{languageID}/status | CREATE Language Localization Status
+*LanguageLocalizationStatusApi* | [**DeleteLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#deletelanguagelocalizationstatus) | **Delete** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | DELETE Language Localization Status
+*LanguageLocalizationStatusApi* | [**ReadLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#readlanguagelocalizationstatus) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status | READ Language Localization Status
+*LanguageLocalizationStatusApi* | [**ReadOneLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#readonelanguagelocalizationstatus) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | READ One Language Localization Status
+*LanguageLocalizationStatusApi* | [**UpdateLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#updatelanguagelocalizationstatus) | **Put** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | UPDATE Language Localization Status
+*LanguagesApi* | [**CreateLanguage**](docs/LanguagesApi.md#createlanguage) | **Post** /v1/environments/{environmentID}/languages | CREATE Language
+*LanguagesApi* | [**DeleteLanguage**](docs/LanguagesApi.md#deletelanguage) | **Delete** /v1/environments/{environmentID}/languages/{languageID} | DELETE Language
+*LanguagesApi* | [**ReadLanguages**](docs/LanguagesApi.md#readlanguages) | **Get** /v1/environments/{environmentID}/languages | READ Languages
+*LanguagesApi* | [**ReadOneLanguage**](docs/LanguagesApi.md#readonelanguage) | **Get** /v1/environments/{environmentID}/languages/{languageID} | READ One Language
+*LanguagesApi* | [**UpdateLanguage**](docs/LanguagesApi.md#updatelanguage) | **Put** /v1/environments/{environmentID}/languages/{languageID} | UPDATE Language
 *LicensesApi* | [**ReadAllLicenses**](docs/LicensesApi.md#readalllicenses) | **Get** /v1/organizations/{organizationID}/licenses | READ All Licenses
 *LicensesApi* | [**ReadOneLicense**](docs/LicensesApi.md#readonelicense) | **Get** /v1/organizations/{organizationID}/licenses/{licenseID} | READ One License
 *LicensesApi* | [**ReadOneLicenseName**](docs/LicensesApi.md#readonelicensename) | **Get** /v1/organizations/{organizationID}/licenses/{licenseID}/name | READ One License Name
@@ -572,6 +572,9 @@ Class | Method | HTTP request | Description
  - [IdentityProviderSAMLAllOfSpSigningKey](docs/IdentityProviderSAMLAllOfSpSigningKey.md)
  - [Image](docs/Image.md)
  - [ImageTargets](docs/ImageTargets.md)
+ - [Language](docs/Language.md)
+ - [LanguageLocalizationStatus](docs/LanguageLocalizationStatus.md)
+ - [LanguageLocalizationStatusLocale](docs/LanguageLocalizationStatusLocale.md)
  - [License](docs/License.md)
  - [LicenseAuthorize](docs/LicenseAuthorize.md)
  - [LicenseEnvironments](docs/LicenseEnvironments.md)
