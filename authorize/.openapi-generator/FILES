@@ -7,12 +7,6 @@ configuration.go
 docs/APIServer.md
 docs/APIServerAuthorizationServer.md
 docs/APIServerAuthorizationServerResource.md
-docs/APIServerOperations.md
-docs/APIServerOperationsValue.md
-docs/APIServerOperationsValueAccessControl.md
-docs/APIServerOperationsValueAccessControlGroup.md
-docs/APIServerOperationsValueAccessControlGroupGroupsInner.md
-docs/APIServerOperationsValuePathsInner.md
 docs/APIServersApi.md
 docs/DecisionEndpoint.md
 docs/DecisionEndpointAuthorizationVersion.md
@@ -33,12 +27,6 @@ go.sum
 model_api_server.go
 model_api_server_authorization_server.go
 model_api_server_authorization_server_resource.go
-model_api_server_operations.go
-model_api_server_operations_value.go
-model_api_server_operations_value_access_control.go
-model_api_server_operations_value_access_control_group.go
-model_api_server_operations_value_access_control_group_groups_inner.go
-model_api_server_operations_value_paths_inner.go
 model_decision_endpoint.go
 model_decision_endpoint_authorization_version.go
 model_decision_endpoint_recent_decisions.go
