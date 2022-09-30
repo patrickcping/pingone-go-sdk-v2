@@ -12246,6 +12246,7 @@ paths:
       - Integration Catalog
   /v1/environments/{environmentID}/languages:
     get:
+      operationId: readLanguages
       parameters:
       - explode: false
         in: path
@@ -12294,13 +12295,85 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ Languages
       tags:
       - Languages
+    post:
+      operationId: createLanguage
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+          description: Successful response
+      summary: CREATE Language
+      tags:
+      - Languages
   /v1/environments/{environmentID}/languages/{languageID}:
     delete:
+      operationId: deleteLanguage
       parameters:
       - explode: false
         in: path
@@ -12360,6 +12433,7 @@ paths:
       tags:
       - Languages
     get:
+      operationId: readOneLanguage
       parameters:
       - explode: false
         in: path
@@ -12415,12 +12489,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
           description: Successful response
       summary: READ One Language
       tags:
       - Languages
     put:
+      operationId: updateLanguage
       parameters:
       - explode: false
         in: path
@@ -12440,9 +12517,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                enabled: true
-              type: object
+              $ref: '#/components/schemas/Language'
       responses:
         "400":
           content:
@@ -12483,82 +12558,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
           description: Successful response
-      summary: 'UPDATE Language '
-      tags:
-      - Languages
-  /v1/environments/{environmentID}/languages/:
-    post:
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              example:
-                locale: fr
-              type: object
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "201":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: CREATE Language
+      summary: UPDATE Language
       tags:
       - Languages
   /v1/environments/{environmentID}/languages/{languageID}/status:
     get:
+      operationId: readLanguageLocalizationStatus
       parameters:
       - explode: false
         in: path
@@ -12614,12 +12623,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LanguageLocalizationStatus'
           description: Successful response
       summary: READ Language Localization Status
       tags:
       - Language Localization Status
     post:
+      operationId: createLanguageLocalizationStatus
       parameters:
       - explode: false
         in: path
@@ -12639,11 +12651,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                service: Service_Name2
-                localizationComplete: true
-                statusDetails: Status details here
-              type: object
+              $ref: '#/components/schemas/LanguageLocalizationStatus'
       responses:
         "400":
           content:
@@ -12691,13 +12699,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LanguageLocalizationStatus'
           description: Successful response
       summary: CREATE Language Localization Status
       tags:
       - Language Localization Status
   /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID}:
     delete:
+      operationId: deleteLanguageLocalizationStatus
       parameters:
       - explode: false
         in: path
@@ -12764,6 +12775,7 @@ paths:
       tags:
       - Language Localization Status
     get:
+      operationId: readOneLanguageLocalizationStatus
       parameters:
       - explode: false
         in: path
@@ -12826,12 +12838,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LanguageLocalizationStatus'
           description: Successful response
       summary: READ One Language Localization Status
       tags:
       - Language Localization Status
     put:
+      operationId: updateLanguageLocalizationStatus
       parameters:
       - explode: false
         in: path
@@ -12858,11 +12873,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                service: Service_Name1
-                localizationComplete: true
-                statusDetails: Status Details - add updated status details here
-              type: object
+              $ref: '#/components/schemas/LanguageLocalizationStatus'
       responses:
         "400":
           content:
@@ -12903,9 +12914,11 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LanguageLocalizationStatus'
           description: Successful response
-      summary: CREATE Language Localization Status
+      summary: UPDATE Language Localization Status
       tags:
       - Language Localization Status
   /v1/environments/{environmentID}/templates:
@@ -23954,6 +23967,104 @@ components:
         targets:
           $ref: '#/components/schemas/Image_targets'
       type: object
+    Language:
+      example:
+        createdAt: createdAt
+        default: true
+        environment:
+          id: id
+        name: name
+        id: id
+        locale: locale
+        enabled: true
+        customerAdded: true
+        updatedAt: updatedAt
+      properties:
+        default:
+          description: Specifies whether this language is the default for the environment.
+            This property value must be set to false when creating a language resource.
+            It can be set to true only after the language is enabled and after the
+            localization of an agreement resource is complete when agreements are
+            used for the environment.
+          type: boolean
+        enabled:
+          description: Specifies whether this language is enabled for the environment.
+            This property value must be set to false when creating a language.
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: The resource’s unique identifier.
+          readOnly: true
+          type: string
+        locale:
+          description: "An ISO standard language code. For more information about\
+            \ standard language codes, see ISO Language Code Table."
+          type: string
+        name:
+          description: "The language name. If omitted, the ISO standard name is used."
+          type: string
+        createdAt:
+          description: The time the language resource was created.
+          format: datetime
+          readOnly: true
+          type: string
+        customerAdded:
+          description: Specifies whether this language was added by a customer administrator.
+          readOnly: true
+          type: boolean
+        updatedAt:
+          description: The time the language resource was last updated.
+          format: datetime
+          readOnly: true
+          type: string
+      required:
+      - default
+      - enabled
+      - locale
+      type: object
+    LanguageLocalizationStatus:
+      example:
+        createdAt: createdAt
+        environment:
+          id: id
+        service: service
+        statusDetails: statusDetails
+        id: id
+        localizationComplete: true
+        locale:
+          id: id
+        updatedAt: updatedAt
+      properties:
+        createdAt:
+          description: The time the language localization status resource was created.
+          format: datetime
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: The resource’s unique identifier.
+          readOnly: true
+          type: string
+        locale:
+          $ref: '#/components/schemas/LanguageLocalizationStatus_locale'
+        service:
+          description: The name of the service associated with this resource.
+          type: string
+        localizationComplete:
+          type: boolean
+        statusDetails:
+          type: string
+        updatedAt:
+          description: The time the language localization status resource was last
+            updated.
+          format: datetime
+          readOnly: true
+          type: string
+      required:
+      - service
+      type: object
     License:
       example:
         package: null
@@ -27656,6 +27767,15 @@ components:
           description: The height of the image (in pixels).
           readOnly: true
           type: integer
+      type: object
+    LanguageLocalizationStatus_locale:
+      example:
+        id: id
+      properties:
+        id:
+          description: The locale ID.
+          type: string
+      readOnly: true
       type: object
     License_authorize:
       example:

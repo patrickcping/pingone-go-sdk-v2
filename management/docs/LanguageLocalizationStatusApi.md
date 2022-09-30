@@ -4,19 +4,19 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusGet**](LanguageLocalizationStatusApi.md#V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusGet) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status | READ Language Localization Status
-[**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDDelete**](LanguageLocalizationStatusApi.md#V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDDelete) | **Delete** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | DELETE Language Localization Status
-[**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDGet**](LanguageLocalizationStatusApi.md#V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDGet) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | READ One Language Localization Status
-[**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDPut**](LanguageLocalizationStatusApi.md#V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDPut) | **Put** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | CREATE Language Localization Status
-[**V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusPost**](LanguageLocalizationStatusApi.md#V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusPost) | **Post** /v1/environments/{environmentID}/languages/{languageID}/status | CREATE Language Localization Status
+[**CreateLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#CreateLanguageLocalizationStatus) | **Post** /v1/environments/{environmentID}/languages/{languageID}/status | CREATE Language Localization Status
+[**DeleteLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#DeleteLanguageLocalizationStatus) | **Delete** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | DELETE Language Localization Status
+[**ReadLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#ReadLanguageLocalizationStatus) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status | READ Language Localization Status
+[**ReadOneLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#ReadOneLanguageLocalizationStatus) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | READ One Language Localization Status
+[**UpdateLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#UpdateLanguageLocalizationStatus) | **Put** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | UPDATE Language Localization Status
 
 
 
-## V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusGet
+## CreateLanguageLocalizationStatus
 
-> V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusGet(ctx, environmentID, languageID).Execute()
+> LanguageLocalizationStatus CreateLanguageLocalizationStatus(ctx, environmentID, languageID).LanguageLocalizationStatus(languageLocalizationStatus).Execute()
 
-READ Language Localization Status
+CREATE Language Localization Status
 
 ### Example
 
@@ -33,14 +33,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     languageID := "languageID_example" // string | 
+    languageLocalizationStatus := *openapiclient.NewLanguageLocalizationStatus("Service_example") // LanguageLocalizationStatus |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusGet(context.Background(), environmentID, languageID).Execute()
+    resp, r, err := apiClient.LanguageLocalizationStatusApi.CreateLanguageLocalizationStatus(context.Background(), environmentID, languageID).LanguageLocalizationStatus(languageLocalizationStatus).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.CreateLanguageLocalizationStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateLanguageLocalizationStatus`: LanguageLocalizationStatus
+    fmt.Fprintf(os.Stdout, "Response from `LanguageLocalizationStatusApi.CreateLanguageLocalizationStatus`: %v\n", resp)
 }
 ```
 
@@ -55,17 +58,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateLanguageLocalizationStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **languageLocalizationStatus** | [**LanguageLocalizationStatus**](LanguageLocalizationStatus.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**LanguageLocalizationStatus**](LanguageLocalizationStatus.md)
 
 ### Authorization
 
@@ -73,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -81,9 +85,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDDelete
+## DeleteLanguageLocalizationStatus
 
-> V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDDelete(ctx, environmentID, languageID, l10nStatusID).Execute()
+> DeleteLanguageLocalizationStatus(ctx, environmentID, languageID, l10nStatusID).Execute()
 
 DELETE Language Localization Status
 
@@ -106,9 +110,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDDelete(context.Background(), environmentID, languageID, l10nStatusID).Execute()
+    resp, r, err := apiClient.LanguageLocalizationStatusApi.DeleteLanguageLocalizationStatus(context.Background(), environmentID, languageID, l10nStatusID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.DeleteLanguageLocalizationStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -126,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteLanguageLocalizationStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +157,80 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDGet
+## ReadLanguageLocalizationStatus
 
-> V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDGet(ctx, environmentID, languageID, l10nStatusID).Execute()
+> LanguageLocalizationStatus ReadLanguageLocalizationStatus(ctx, environmentID, languageID).Execute()
+
+READ Language Localization Status
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    languageID := "languageID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.LanguageLocalizationStatusApi.ReadLanguageLocalizationStatus(context.Background(), environmentID, languageID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.ReadLanguageLocalizationStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadLanguageLocalizationStatus`: LanguageLocalizationStatus
+    fmt.Fprintf(os.Stdout, "Response from `LanguageLocalizationStatusApi.ReadLanguageLocalizationStatus`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**languageID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadLanguageLocalizationStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**LanguageLocalizationStatus**](LanguageLocalizationStatus.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneLanguageLocalizationStatus
+
+> LanguageLocalizationStatus ReadOneLanguageLocalizationStatus(ctx, environmentID, languageID, l10nStatusID).Execute()
 
 READ One Language Localization Status
 
@@ -178,11 +253,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDGet(context.Background(), environmentID, languageID, l10nStatusID).Execute()
+    resp, r, err := apiClient.LanguageLocalizationStatusApi.ReadOneLanguageLocalizationStatus(context.Background(), environmentID, languageID, l10nStatusID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.ReadOneLanguageLocalizationStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneLanguageLocalizationStatus`: LanguageLocalizationStatus
+    fmt.Fprintf(os.Stdout, "Response from `LanguageLocalizationStatusApi.ReadOneLanguageLocalizationStatus`: %v\n", resp)
 }
 ```
 
@@ -198,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneLanguageLocalizationStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -209,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**LanguageLocalizationStatus**](LanguageLocalizationStatus.md)
 
 ### Authorization
 
@@ -225,11 +302,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDPut
+## UpdateLanguageLocalizationStatus
 
-> V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDPut(ctx, environmentID, languageID, l10nStatusID).Body(body).Execute()
+> LanguageLocalizationStatus UpdateLanguageLocalizationStatus(ctx, environmentID, languageID, l10nStatusID).LanguageLocalizationStatus(languageLocalizationStatus).Execute()
 
-CREATE Language Localization Status
+UPDATE Language Localization Status
 
 ### Example
 
@@ -247,15 +324,17 @@ func main() {
     environmentID := "environmentID_example" // string | 
     languageID := "languageID_example" // string | 
     l10nStatusID := "l10nStatusID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    languageLocalizationStatus := *openapiclient.NewLanguageLocalizationStatus("Service_example") // LanguageLocalizationStatus |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDPut(context.Background(), environmentID, languageID, l10nStatusID).Body(body).Execute()
+    resp, r, err := apiClient.LanguageLocalizationStatusApi.UpdateLanguageLocalizationStatus(context.Background(), environmentID, languageID, l10nStatusID).LanguageLocalizationStatus(languageLocalizationStatus).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.UpdateLanguageLocalizationStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateLanguageLocalizationStatus`: LanguageLocalizationStatus
+    fmt.Fprintf(os.Stdout, "Response from `LanguageLocalizationStatusApi.UpdateLanguageLocalizationStatus`: %v\n", resp)
 }
 ```
 
@@ -271,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusL10nStatusIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateLanguageLocalizationStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -279,82 +358,11 @@ Name | Type | Description  | Notes
 
 
 
- **body** | **map[string]interface{}** |  | 
+ **languageLocalizationStatus** | [**LanguageLocalizationStatus**](LanguageLocalizationStatus.md) |  | 
 
 ### Return type
 
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusPost
-
-> V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusPost(ctx, environmentID, languageID).Body(body).Execute()
-
-CREATE Language Localization Status
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    languageID := "languageID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusPost(context.Background(), environmentID, languageID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LanguageLocalizationStatusApi.V1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**languageID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDLanguagesLanguageIDStatusPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
+[**LanguageLocalizationStatus**](LanguageLocalizationStatus.md)
 
 ### Authorization
 

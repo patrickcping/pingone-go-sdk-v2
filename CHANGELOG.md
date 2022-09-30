@@ -2,6 +2,7 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.11.0](./management/CHANGELOG.md)
     * **Feature** Support for Licenses [#60](https://github.com/patrickcping/pingone-go-sdk-v2/pull/60)
+    * **Feature** Support for Languages [#62](https://github.com/patrickcping/pingone-go-sdk-v2/pull/62)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.6.0](./management/CHANGELOG.md)
     * **Enhancement** Updated the Device policy API [#58](https://github.com/patrickcping/pingone-go-sdk-v2/pull/58)
 

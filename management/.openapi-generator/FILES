@@ -282,7 +282,10 @@ docs/Image.md
 docs/ImageTargets.md
 docs/ImagesApi.md
 docs/IntegrationCatalogApi.md
+docs/Language.md
+docs/LanguageLocalizationStatus.md
 docs/LanguageLocalizationStatusApi.md
+docs/LanguageLocalizationStatusLocale.md
 docs/LanguagesApi.md
 docs/License.md
 docs/LicenseAuthorize.md
@@ -610,6 +613,9 @@ model_identity_provider_saml_all_of_sp_signing.go
 model_identity_provider_saml_all_of_sp_signing_key.go
 model_image.go
 model_image_targets.go
+model_language.go
+model_language_localization_status.go
+model_language_localization_status_locale.go
 model_license.go
 model_license_authorize.go
 model_license_environments.go
