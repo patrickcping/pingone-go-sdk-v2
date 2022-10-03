@@ -3,6 +3,10 @@
 ## Enum
 
 
+* `ADMIN` (value: `"ADMIN"`)
+
+* `INTERNAL` (value: `"INTERNAL"`)
+
 * `TRIAL` (value: `"TRIAL"`)
 
 * `STANDARD` (value: `"STANDARD"`)

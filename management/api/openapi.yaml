@@ -21515,6 +21515,8 @@ components:
         \ is based. This is a required property. Options are `TRIAL`, `STANDARD`,\
         \ `PREMIUM`, `MFA`, `RISK`, `MFARISK`, and `GLOBAL`."
       enum:
+      - ADMIN
+      - INTERNAL
       - TRIAL
       - STANDARD
       - PREMIUM
@@ -21586,6 +21588,13 @@ components:
       - CA
       - EU
       - NA
+      type: string
+    EnumRegionCodeLicense:
+      enum:
+      - AP
+      - CA
+      - EU
+      - NORTH_AMERICA
       type: string
     EnumResourceAttributeType:
       description: "A string that specifies the type of resource attribute. Options\
@@ -22550,7 +22559,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 0.8851374739011653
+        size: 7.058770351582356
         _embedded:
           subscriptions:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -22770,14 +22779,14 @@ components:
             status: null
           passwordPolicies:
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
-              "0123456789": 6
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
-              abcdefghijklmnopqrstuvwxyz: 3
-            populationCount: 6
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
+              "0123456789": 1
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+              abcdefghijklmnopqrstuvwxyz: 6
+            populationCount: 5
             length:
-              min: 20
-              max: 4
+              min: 31
+              max: 5
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -22785,7 +22794,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 2
+            minComplexity: 6
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -22800,18 +22809,18 @@ components:
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 8
+            maxRepeatedCharacters: 9
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
-              "0123456789": 6
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
-              abcdefghijklmnopqrstuvwxyz: 3
-            populationCount: 6
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
+              "0123456789": 1
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+              abcdefghijklmnopqrstuvwxyz: 6
+            populationCount: 5
             length:
-              min: 20
-              max: 4
+              min: 31
+              max: 5
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -22819,7 +22828,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 2
+            minComplexity: 6
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -22834,7 +22843,7 @@ components:
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 8
+            maxRepeatedCharacters: 9
             minAgeDays: 1
             updatedAt: updatedAt
           revisions:
@@ -22992,7 +23001,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 6
+            accessTokenValiditySeconds: 3
             name: name
             description: description
             id: id
@@ -23004,7 +23013,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 6
+            accessTokenValiditySeconds: 3
             name: name
             description: description
             id: id
@@ -23073,7 +23082,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 3
+              secondsUntilUnlock: 7
               unlockAt: unlockAt
               status: null
             username: username
@@ -23139,7 +23148,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 3
+              secondsUntilUnlock: 7
               unlockAt: unlockAt
               status: null
             username: username
@@ -23161,18 +23170,37 @@ components:
             id: id
             priority: 1
           licenses:
-          - package: null
+          - gateways:
+              allowLdapGateway: true
+              allowRadiusGateway: true
+              allowKerberosGateway: true
+            package: null
+            advancedServices:
+              pingId:
+                type: type
+                included: true
+            credentials:
+              allowCredentials: true
             environments:
               allowConnections: true
-              regions: null
+              regions:
+              - null
+              - null
+              allowAddResources: true
               max: 1
               allowCustomSchema: true
               allowProduction: true
               allowCustomDomain: true
+            orchestrate:
+              allowOrchestration: true
             mfa:
               allowFido2Devices: true
+              allowVoiceOtp: true
+              allowSmsOtp: true
+              allowEmailOtp: true
               allowPushNotification: true
-              allowMfaNotificationsOutsideWhitelist: true
+              allowTotp: true
+              allowNotificationOutsideWhitelist: true
             expiresAt: expiresAt
             users:
               allowUpdateSelf: true
@@ -23182,12 +23210,14 @@ components:
               allowPasswordOnlyAuthentication: true
               allowRoleAssignment: true
               entitledToSupport: true
-              annualActiveIncluded: 1
+              annualActiveIncluded: 6
               allowPasswordManagement: true
               allowIdentityProviders: true
+              allowInboundProvisioning: true
               allowVerificationFlow: true
-              monthlyActiveIncluded: 6
+              monthlyActiveIncluded: 7
               allowProvisioning: true
+              hardLimitMax: 1
               allowPasswordManagementNotifications: true
             intelligence:
               allowReputation: true
@@ -23195,6 +23225,10 @@ components:
               allowDataConsent: true
               allowGeoVelocity: true
               allowAnonymousNetworkDetection: true
+              allowAdvancedPredictors: true
+            fraud:
+              allowBotMaliciousDeviceDetection: true
+              allowAccountProtection: true
             organization:
               id: id
             terminatesAt: terminatesAt
@@ -23215,18 +23249,37 @@ components:
               allowApiAccessManagement: true
               allowDynamicAuthorization: true
             status: null
-          - package: null
+          - gateways:
+              allowLdapGateway: true
+              allowRadiusGateway: true
+              allowKerberosGateway: true
+            package: null
+            advancedServices:
+              pingId:
+                type: type
+                included: true
+            credentials:
+              allowCredentials: true
             environments:
               allowConnections: true
-              regions: null
+              regions:
+              - null
+              - null
+              allowAddResources: true
               max: 1
               allowCustomSchema: true
               allowProduction: true
               allowCustomDomain: true
+            orchestrate:
+              allowOrchestration: true
             mfa:
               allowFido2Devices: true
+              allowVoiceOtp: true
+              allowSmsOtp: true
+              allowEmailOtp: true
               allowPushNotification: true
-              allowMfaNotificationsOutsideWhitelist: true
+              allowTotp: true
+              allowNotificationOutsideWhitelist: true
             expiresAt: expiresAt
             users:
               allowUpdateSelf: true
@@ -23236,12 +23289,14 @@ components:
               allowPasswordOnlyAuthentication: true
               allowRoleAssignment: true
               entitledToSupport: true
-              annualActiveIncluded: 1
+              annualActiveIncluded: 6
               allowPasswordManagement: true
               allowIdentityProviders: true
+              allowInboundProvisioning: true
               allowVerificationFlow: true
-              monthlyActiveIncluded: 6
+              monthlyActiveIncluded: 7
               allowProvisioning: true
+              hardLimitMax: 1
               allowPasswordManagementNotifications: true
             intelligence:
               allowReputation: true
@@ -23249,6 +23304,10 @@ components:
               allowDataConsent: true
               allowGeoVelocity: true
               allowAnonymousNetworkDetection: true
+              allowAdvancedPredictors: true
+            fraud:
+              allowBotMaliciousDeviceDetection: true
+              allowAccountProtection: true
             organization:
               id: id
             terminatesAt: terminatesAt
@@ -23434,7 +23493,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 5
+            userCount: 6
             name: name
             description: description
             id: id
@@ -23442,7 +23501,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 5
+            userCount: 6
             name: name
             description: description
             id: id
@@ -23493,7 +23552,7 @@ components:
           applications:
           - null
           - null
-        count: 7.143538047012306
+        count: 0.8851374739011653
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -24045,18 +24104,37 @@ components:
       type: object
     License:
       example:
+        gateways:
+          allowLdapGateway: true
+          allowRadiusGateway: true
+          allowKerberosGateway: true
         package: null
+        advancedServices:
+          pingId:
+            type: type
+            included: true
+        credentials:
+          allowCredentials: true
         environments:
           allowConnections: true
-          regions: null
+          regions:
+          - null
+          - null
+          allowAddResources: true
           max: 1
           allowCustomSchema: true
           allowProduction: true
           allowCustomDomain: true
+        orchestrate:
+          allowOrchestration: true
         mfa:
           allowFido2Devices: true
+          allowVoiceOtp: true
+          allowSmsOtp: true
+          allowEmailOtp: true
           allowPushNotification: true
-          allowMfaNotificationsOutsideWhitelist: true
+          allowTotp: true
+          allowNotificationOutsideWhitelist: true
         expiresAt: expiresAt
         users:
           allowUpdateSelf: true
@@ -24066,12 +24144,14 @@ components:
           allowPasswordOnlyAuthentication: true
           allowRoleAssignment: true
           entitledToSupport: true
-          annualActiveIncluded: 1
+          annualActiveIncluded: 6
           allowPasswordManagement: true
           allowIdentityProviders: true
+          allowInboundProvisioning: true
           allowVerificationFlow: true
-          monthlyActiveIncluded: 6
+          monthlyActiveIncluded: 7
           allowProvisioning: true
+          hardLimitMax: 1
           allowPasswordManagementNotifications: true
         intelligence:
           allowReputation: true
@@ -24079,6 +24159,10 @@ components:
           allowDataConsent: true
           allowGeoVelocity: true
           allowAnonymousNetworkDetection: true
+          allowAdvancedPredictors: true
+        fraud:
+          allowBotMaliciousDeviceDetection: true
+          allowAccountProtection: true
         organization:
           id: id
         terminatesAt: terminatesAt
@@ -24100,6 +24184,8 @@ components:
           allowDynamicAuthorization: true
         status: null
       properties:
+        advancedServices:
+          $ref: '#/components/schemas/License_advancedServices'
         assignedEnvironmentsCount:
           description: A read-only integer that specifies the total number of environments
             associated with this license.
@@ -24112,6 +24198,8 @@ components:
           format: datetime
           readOnly: true
           type: string
+        credentials:
+          $ref: '#/components/schemas/License_credentials'
         environments:
           $ref: '#/components/schemas/License_environments'
         expiresAt:
@@ -24122,6 +24210,10 @@ components:
           format: datetime
           readOnly: true
           type: string
+        fraud:
+          $ref: '#/components/schemas/License_fraud'
+        gateways:
+          $ref: '#/components/schemas/License_gateways'
         id:
           description: A read-only string that specifies the license resource’s unique
             identifier.
@@ -24138,6 +24230,8 @@ components:
             \ forward slash, dot, apostrophe, underscore, space, or hyphen. The maximum\
             \ length of a name is 255 characters."
           type: string
+        orchestrate:
+          $ref: '#/components/schemas/License_orchestrate'
         organization:
           $ref: '#/components/schemas/ObjectOrganization'
         package:
@@ -24302,14 +24396,14 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
-          "0123456789": 6
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
-          abcdefghijklmnopqrstuvwxyz: 3
-        populationCount: 6
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
+          "0123456789": 1
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+          abcdefghijklmnopqrstuvwxyz: 6
+        populationCount: 5
         length:
-          min: 20
-          max: 4
+          min: 31
+          max: 5
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -24317,7 +24411,7 @@ components:
         history:
           retentionDays: 1
           count: 1
-        minComplexity: 2
+        minComplexity: 6
         excludesProfileData: true
         currentPassword: currentPassword
         createdAt: createdAt
@@ -24332,7 +24426,7 @@ components:
         name: name
         maxAgeDays: 1
         id: id
-        maxRepeatedCharacters: 8
+        maxRepeatedCharacters: 9
         minAgeDays: 1
         updatedAt: updatedAt
       properties:
@@ -24445,7 +24539,7 @@ components:
         createdAt: createdAt
         passwordPolicy:
           id: id
-        userCount: 5
+        userCount: 6
         name: name
         description: description
         id: id
@@ -24487,7 +24581,7 @@ components:
           id: id
         resource:
           id: id
-        accessTokenValiditySeconds: 6
+        accessTokenValiditySeconds: 3
         name: name
         description: description
         id: id
@@ -25226,7 +25320,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 3
+          secondsUntilUnlock: 7
           unlockAt: unlockAt
           status: null
         username: username
@@ -26332,14 +26426,14 @@ components:
           status: null
         passwordPolicies:
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
-            "0123456789": 6
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
-            abcdefghijklmnopqrstuvwxyz: 3
-          populationCount: 6
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
+            "0123456789": 1
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+            abcdefghijklmnopqrstuvwxyz: 6
+          populationCount: 5
           length:
-            min: 20
-            max: 4
+            min: 31
+            max: 5
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -26347,7 +26441,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 2
+          minComplexity: 6
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -26362,18 +26456,18 @@ components:
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 8
+          maxRepeatedCharacters: 9
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
-            "0123456789": 6
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
-            abcdefghijklmnopqrstuvwxyz: 3
-          populationCount: 6
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
+            "0123456789": 1
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+            abcdefghijklmnopqrstuvwxyz: 6
+          populationCount: 5
           length:
-            min: 20
-            max: 4
+            min: 31
+            max: 5
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -26381,7 +26475,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 2
+          minComplexity: 6
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -26396,7 +26490,7 @@ components:
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 8
+          maxRepeatedCharacters: 9
           minAgeDays: 1
           updatedAt: updatedAt
         revisions:
@@ -26554,7 +26648,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 6
+          accessTokenValiditySeconds: 3
           name: name
           description: description
           id: id
@@ -26566,7 +26660,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 6
+          accessTokenValiditySeconds: 3
           name: name
           description: description
           id: id
@@ -26635,7 +26729,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 3
+            secondsUntilUnlock: 7
             unlockAt: unlockAt
             status: null
           username: username
@@ -26701,7 +26795,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 3
+            secondsUntilUnlock: 7
             unlockAt: unlockAt
             status: null
           username: username
@@ -26723,18 +26817,37 @@ components:
           id: id
           priority: 1
         licenses:
-        - package: null
+        - gateways:
+            allowLdapGateway: true
+            allowRadiusGateway: true
+            allowKerberosGateway: true
+          package: null
+          advancedServices:
+            pingId:
+              type: type
+              included: true
+          credentials:
+            allowCredentials: true
           environments:
             allowConnections: true
-            regions: null
+            regions:
+            - null
+            - null
+            allowAddResources: true
             max: 1
             allowCustomSchema: true
             allowProduction: true
             allowCustomDomain: true
+          orchestrate:
+            allowOrchestration: true
           mfa:
             allowFido2Devices: true
+            allowVoiceOtp: true
+            allowSmsOtp: true
+            allowEmailOtp: true
             allowPushNotification: true
-            allowMfaNotificationsOutsideWhitelist: true
+            allowTotp: true
+            allowNotificationOutsideWhitelist: true
           expiresAt: expiresAt
           users:
             allowUpdateSelf: true
@@ -26744,12 +26857,14 @@ components:
             allowPasswordOnlyAuthentication: true
             allowRoleAssignment: true
             entitledToSupport: true
-            annualActiveIncluded: 1
+            annualActiveIncluded: 6
             allowPasswordManagement: true
             allowIdentityProviders: true
+            allowInboundProvisioning: true
             allowVerificationFlow: true
-            monthlyActiveIncluded: 6
+            monthlyActiveIncluded: 7
             allowProvisioning: true
+            hardLimitMax: 1
             allowPasswordManagementNotifications: true
           intelligence:
             allowReputation: true
@@ -26757,6 +26872,10 @@ components:
             allowDataConsent: true
             allowGeoVelocity: true
             allowAnonymousNetworkDetection: true
+            allowAdvancedPredictors: true
+          fraud:
+            allowBotMaliciousDeviceDetection: true
+            allowAccountProtection: true
           organization:
             id: id
           terminatesAt: terminatesAt
@@ -26777,18 +26896,37 @@ components:
             allowApiAccessManagement: true
             allowDynamicAuthorization: true
           status: null
-        - package: null
+        - gateways:
+            allowLdapGateway: true
+            allowRadiusGateway: true
+            allowKerberosGateway: true
+          package: null
+          advancedServices:
+            pingId:
+              type: type
+              included: true
+          credentials:
+            allowCredentials: true
           environments:
             allowConnections: true
-            regions: null
+            regions:
+            - null
+            - null
+            allowAddResources: true
             max: 1
             allowCustomSchema: true
             allowProduction: true
             allowCustomDomain: true
+          orchestrate:
+            allowOrchestration: true
           mfa:
             allowFido2Devices: true
+            allowVoiceOtp: true
+            allowSmsOtp: true
+            allowEmailOtp: true
             allowPushNotification: true
-            allowMfaNotificationsOutsideWhitelist: true
+            allowTotp: true
+            allowNotificationOutsideWhitelist: true
           expiresAt: expiresAt
           users:
             allowUpdateSelf: true
@@ -26798,12 +26936,14 @@ components:
             allowPasswordOnlyAuthentication: true
             allowRoleAssignment: true
             entitledToSupport: true
-            annualActiveIncluded: 1
+            annualActiveIncluded: 6
             allowPasswordManagement: true
             allowIdentityProviders: true
+            allowInboundProvisioning: true
             allowVerificationFlow: true
-            monthlyActiveIncluded: 6
+            monthlyActiveIncluded: 7
             allowProvisioning: true
+            hardLimitMax: 1
             allowPasswordManagementNotifications: true
           intelligence:
             allowReputation: true
@@ -26811,6 +26951,10 @@ components:
             allowDataConsent: true
             allowGeoVelocity: true
             allowAnonymousNetworkDetection: true
+            allowAdvancedPredictors: true
+          fraud:
+            allowBotMaliciousDeviceDetection: true
+            allowAccountProtection: true
           organization:
             id: id
           terminatesAt: terminatesAt
@@ -26996,7 +27140,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 5
+          userCount: 6
           name: name
           description: description
           id: id
@@ -27004,7 +27148,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 5
+          userCount: 6
           name: name
           description: description
           id: id
@@ -27737,6 +27881,26 @@ components:
           type: string
       readOnly: true
       type: object
+    License_advancedServices_pingId:
+      example:
+        type: type
+        included: true
+      properties:
+        included:
+          type: boolean
+        type:
+          type: string
+      type: object
+    License_advancedServices:
+      example:
+        pingId:
+          type: type
+          included: true
+      properties:
+        pingId:
+          $ref: '#/components/schemas/License_advancedServices_pingId'
+      readOnly: true
+      type: object
     License_authorize:
       example:
         allowApiAccessManagement: true
@@ -27752,15 +27916,28 @@ components:
           type: boolean
       readOnly: true
       type: object
+    License_credentials:
+      example:
+        allowCredentials: true
+      properties:
+        allowCredentials:
+          type: boolean
+      readOnly: true
+      type: object
     License_environments:
       example:
         allowConnections: true
-        regions: null
+        regions:
+        - null
+        - null
+        allowAddResources: true
         max: 1
         allowCustomSchema: true
         allowProduction: true
         allowCustomDomain: true
       properties:
+        allowAddResources:
+          type: boolean
         allowConnections:
           description: A boolean that specifies whether the license supports creation
             of application connections in the specified environment.
@@ -27782,7 +27959,34 @@ components:
             allowed.
           type: integer
         regions:
-          $ref: '#/components/schemas/EnumRegionCode'
+          items:
+            $ref: '#/components/schemas/EnumRegionCodeLicense'
+          type: array
+      readOnly: true
+      type: object
+    License_fraud:
+      example:
+        allowBotMaliciousDeviceDetection: true
+        allowAccountProtection: true
+      properties:
+        allowBotMaliciousDeviceDetection:
+          type: boolean
+        allowAccountProtection:
+          type: boolean
+      readOnly: true
+      type: object
+    License_gateways:
+      example:
+        allowLdapGateway: true
+        allowRadiusGateway: true
+        allowKerberosGateway: true
+      properties:
+        allowLdapGateway:
+          type: boolean
+        allowKerberosGateway:
+          type: boolean
+        allowRadiusGateway:
+          type: boolean
       readOnly: true
       type: object
     License_intelligence:
@@ -27792,6 +27996,7 @@ components:
         allowDataConsent: true
         allowGeoVelocity: true
         allowAnonymousNetworkDetection: true
+        allowAdvancedPredictors: true
       properties:
         allowGeoVelocity:
           description: "A read-only boolean that specifies whether to use the intelligence\
@@ -27828,13 +28033,19 @@ components:
             \ if consent is given, then it allows the full scope of intelligence features\
             \ included in PingOne Risk (and PingOne Risk plus MFA)."
           type: boolean
+        allowAdvancedPredictors:
+          type: boolean
       readOnly: true
       type: object
     License_mfa:
       example:
         allowFido2Devices: true
+        allowVoiceOtp: true
+        allowSmsOtp: true
+        allowEmailOtp: true
         allowPushNotification: true
-        allowMfaNotificationsOutsideWhitelist: true
+        allowTotp: true
+        allowNotificationOutsideWhitelist: true
       properties:
         allowPushNotification:
           description: "A read-only boolean that specifies whether push notifications\
@@ -27842,7 +28053,7 @@ components:
             \ For other license package types, adoption of the feature determines\
             \ the default value."
           type: boolean
-        allowMfaNotificationsOutsideWhitelist:
+        allowNotificationOutsideWhitelist:
           description: A read-only boolean that specifies whether the license supports
             sending notifications outside of the environment's whitelist.
           type: boolean
@@ -27852,7 +28063,22 @@ components:
             \ other license package types, adoption of the feature determines the\
             \ default value."
           type: boolean
+        allowVoiceOtp:
+          type: boolean
+        allowEmailOtp:
+          type: boolean
+        allowSmsOtp:
+          type: boolean
+        allowTotp:
+          type: boolean
       readOnly: true
+      type: object
+    License_orchestrate:
+      example:
+        allowOrchestration: true
+      properties:
+        allowOrchestration:
+          type: boolean
       type: object
     License_replacesLicense:
       description: A read-only object that specifies the license ID of the license
@@ -27885,12 +28111,14 @@ components:
         allowPasswordOnlyAuthentication: true
         allowRoleAssignment: true
         entitledToSupport: true
-        annualActiveIncluded: 1
+        annualActiveIncluded: 6
         allowPasswordManagement: true
         allowIdentityProviders: true
+        allowInboundProvisioning: true
         allowVerificationFlow: true
-        monthlyActiveIncluded: 6
+        monthlyActiveIncluded: 7
         allowProvisioning: true
+        hardLimitMax: 1
         allowPasswordManagementNotifications: true
       properties:
         allowPasswordManagementNotifications:
@@ -27921,6 +28149,8 @@ components:
           description: A read-only boolean that specifies whether the license supports
             using provisioning capabilities in the specified environment.
           type: boolean
+        allowInboundProvisioning:
+          type: boolean
         allowRoleAssignment:
           description: A read-only boolean that specifies whether the license supports
             role assignments in the specified environment.
@@ -27940,6 +28170,8 @@ components:
         max:
           description: An read-only integer that specifies the maximum number of users
             allowed per environment.
+          type: integer
+        hardLimitMax:
           type: integer
         annualActiveIncluded:
           description: A read-only integer that specifies a soft limit on the number
@@ -28052,8 +28284,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 20
-        max: 4
+        min: 31
+        max: 5
       properties:
         max:
           default: 255
@@ -28095,10 +28327,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 1
-        "0123456789": 6
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
-        abcdefghijklmnopqrstuvwxyz: 3
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
+        "0123456789": 1
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+        abcdefghijklmnopqrstuvwxyz: 6
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)
@@ -28773,7 +29005,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 3
+        secondsUntilUnlock: 7
         unlockAt: unlockAt
         status: null
       properties:

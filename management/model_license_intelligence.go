@@ -26,6 +26,7 @@ type LicenseIntelligence struct {
 	AllowDataConsent *bool `json:"allowDataConsent,omitempty"`
 	// A read-only boolean that specifies whether your license permits you to configure risk features such as sign-on policies that include rules to detect anomalous changes to your locations (such as impossible travel). This capability is supported for TRIAL, RISK, and MFARISK license packages. Note, The sharing of user data to enable our machine-learning engine, which is integral to PingOne Risk, is captured in the license property license.intelligence.allowDataConsent, but it is not set to true by default in any license package. This license capability always requires active consent by the customer before it can be enabled, and if consent is given, then it allows the full scope of intelligence features included in PingOne Risk (and PingOne Risk plus MFA).
 	AllowRisk *bool `json:"allowRisk,omitempty"`
+	AllowAdvancedPredictors *bool `json:"allowAdvancedPredictors,omitempty"`
 }
 
 // NewLicenseIntelligence instantiates a new LicenseIntelligence object
@@ -205,6 +206,38 @@ func (o *LicenseIntelligence) SetAllowRisk(v bool) {
 	o.AllowRisk = &v
 }
 
+// GetAllowAdvancedPredictors returns the AllowAdvancedPredictors field value if set, zero value otherwise.
+func (o *LicenseIntelligence) GetAllowAdvancedPredictors() bool {
+	if o == nil || o.AllowAdvancedPredictors == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowAdvancedPredictors
+}
+
+// GetAllowAdvancedPredictorsOk returns a tuple with the AllowAdvancedPredictors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LicenseIntelligence) GetAllowAdvancedPredictorsOk() (*bool, bool) {
+	if o == nil || o.AllowAdvancedPredictors == nil {
+		return nil, false
+	}
+	return o.AllowAdvancedPredictors, true
+}
+
+// HasAllowAdvancedPredictors returns a boolean if a field has been set.
+func (o *LicenseIntelligence) HasAllowAdvancedPredictors() bool {
+	if o != nil && o.AllowAdvancedPredictors != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowAdvancedPredictors gets a reference to the given bool and assigns it to the AllowAdvancedPredictors field.
+func (o *LicenseIntelligence) SetAllowAdvancedPredictors(v bool) {
+	o.AllowAdvancedPredictors = &v
+}
+
 func (o LicenseIntelligence) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AllowGeoVelocity != nil {
@@ -221,6 +254,9 @@ func (o LicenseIntelligence) MarshalJSON() ([]byte, error) {
 	}
 	if o.AllowRisk != nil {
 		toSerialize["allowRisk"] = o.AllowRisk
+	}
+	if o.AllowAdvancedPredictors != nil {
+		toSerialize["allowAdvancedPredictors"] = o.AllowAdvancedPredictors
 	}
 	return json.Marshal(toSerialize)
 }

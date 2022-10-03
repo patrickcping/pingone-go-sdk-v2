@@ -16,20 +16,25 @@ import (
 
 // License struct for License
 type License struct {
+	AdvancedServices *LicenseAdvancedServices `json:"advancedServices,omitempty"`
 	// A read-only integer that specifies the total number of environments associated with this license.
 	AssignedEnvironmentsCount *int32 `json:"assignedEnvironmentsCount,omitempty"`
 	Authorize *LicenseAuthorize `json:"authorize,omitempty"`
 	// The date and time this license begins.
 	BeginsAt *string `json:"beginsAt,omitempty"`
+	Credentials *LicenseCredentials `json:"credentials,omitempty"`
 	Environments *LicenseEnvironments `json:"environments,omitempty"`
 	// The date and time this license expires. TRIAL licenses stop access to PingOne services at expiration. All other licenses trigger an event to send a notification when the license expires but do not block services.
 	ExpiresAt *string `json:"expiresAt,omitempty"`
+	Fraud *LicenseFraud `json:"fraud,omitempty"`
+	Gateways *LicenseGateways `json:"gateways,omitempty"`
 	// A read-only string that specifies the license resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	Intelligence *LicenseIntelligence `json:"intelligence,omitempty"`
 	Mfa *LicenseMfa `json:"mfa,omitempty"`
 	// A string that specifies a descriptive name for the license. This is a required property in a license name update request. Valid characters consists of any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. The maximum length of a name is 255 characters.
 	Name string `json:"name"`
+	Orchestrate *LicenseOrchestrate `json:"orchestrate,omitempty"`
 	Organization *ObjectOrganization `json:"organization,omitempty"`
 	Package *EnumLicensePackage `json:"package,omitempty"`
 	ReplacesLicense *LicenseReplacesLicense `json:"replacesLicense,omitempty"`
@@ -57,6 +62,38 @@ func NewLicense(name string) *License {
 func NewLicenseWithDefaults() *License {
 	this := License{}
 	return &this
+}
+
+// GetAdvancedServices returns the AdvancedServices field value if set, zero value otherwise.
+func (o *License) GetAdvancedServices() LicenseAdvancedServices {
+	if o == nil || o.AdvancedServices == nil {
+		var ret LicenseAdvancedServices
+		return ret
+	}
+	return *o.AdvancedServices
+}
+
+// GetAdvancedServicesOk returns a tuple with the AdvancedServices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *License) GetAdvancedServicesOk() (*LicenseAdvancedServices, bool) {
+	if o == nil || o.AdvancedServices == nil {
+		return nil, false
+	}
+	return o.AdvancedServices, true
+}
+
+// HasAdvancedServices returns a boolean if a field has been set.
+func (o *License) HasAdvancedServices() bool {
+	if o != nil && o.AdvancedServices != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAdvancedServices gets a reference to the given LicenseAdvancedServices and assigns it to the AdvancedServices field.
+func (o *License) SetAdvancedServices(v LicenseAdvancedServices) {
+	o.AdvancedServices = &v
 }
 
 // GetAssignedEnvironmentsCount returns the AssignedEnvironmentsCount field value if set, zero value otherwise.
@@ -155,6 +192,38 @@ func (o *License) SetBeginsAt(v string) {
 	o.BeginsAt = &v
 }
 
+// GetCredentials returns the Credentials field value if set, zero value otherwise.
+func (o *License) GetCredentials() LicenseCredentials {
+	if o == nil || o.Credentials == nil {
+		var ret LicenseCredentials
+		return ret
+	}
+	return *o.Credentials
+}
+
+// GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *License) GetCredentialsOk() (*LicenseCredentials, bool) {
+	if o == nil || o.Credentials == nil {
+		return nil, false
+	}
+	return o.Credentials, true
+}
+
+// HasCredentials returns a boolean if a field has been set.
+func (o *License) HasCredentials() bool {
+	if o != nil && o.Credentials != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCredentials gets a reference to the given LicenseCredentials and assigns it to the Credentials field.
+func (o *License) SetCredentials(v LicenseCredentials) {
+	o.Credentials = &v
+}
+
 // GetEnvironments returns the Environments field value if set, zero value otherwise.
 func (o *License) GetEnvironments() LicenseEnvironments {
 	if o == nil || o.Environments == nil {
@@ -217,6 +286,70 @@ func (o *License) HasExpiresAt() bool {
 // SetExpiresAt gets a reference to the given string and assigns it to the ExpiresAt field.
 func (o *License) SetExpiresAt(v string) {
 	o.ExpiresAt = &v
+}
+
+// GetFraud returns the Fraud field value if set, zero value otherwise.
+func (o *License) GetFraud() LicenseFraud {
+	if o == nil || o.Fraud == nil {
+		var ret LicenseFraud
+		return ret
+	}
+	return *o.Fraud
+}
+
+// GetFraudOk returns a tuple with the Fraud field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *License) GetFraudOk() (*LicenseFraud, bool) {
+	if o == nil || o.Fraud == nil {
+		return nil, false
+	}
+	return o.Fraud, true
+}
+
+// HasFraud returns a boolean if a field has been set.
+func (o *License) HasFraud() bool {
+	if o != nil && o.Fraud != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFraud gets a reference to the given LicenseFraud and assigns it to the Fraud field.
+func (o *License) SetFraud(v LicenseFraud) {
+	o.Fraud = &v
+}
+
+// GetGateways returns the Gateways field value if set, zero value otherwise.
+func (o *License) GetGateways() LicenseGateways {
+	if o == nil || o.Gateways == nil {
+		var ret LicenseGateways
+		return ret
+	}
+	return *o.Gateways
+}
+
+// GetGatewaysOk returns a tuple with the Gateways field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *License) GetGatewaysOk() (*LicenseGateways, bool) {
+	if o == nil || o.Gateways == nil {
+		return nil, false
+	}
+	return o.Gateways, true
+}
+
+// HasGateways returns a boolean if a field has been set.
+func (o *License) HasGateways() bool {
+	if o != nil && o.Gateways != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetGateways gets a reference to the given LicenseGateways and assigns it to the Gateways field.
+func (o *License) SetGateways(v LicenseGateways) {
+	o.Gateways = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -337,6 +470,38 @@ func (o *License) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *License) SetName(v string) {
 	o.Name = v
+}
+
+// GetOrchestrate returns the Orchestrate field value if set, zero value otherwise.
+func (o *License) GetOrchestrate() LicenseOrchestrate {
+	if o == nil || o.Orchestrate == nil {
+		var ret LicenseOrchestrate
+		return ret
+	}
+	return *o.Orchestrate
+}
+
+// GetOrchestrateOk returns a tuple with the Orchestrate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *License) GetOrchestrateOk() (*LicenseOrchestrate, bool) {
+	if o == nil || o.Orchestrate == nil {
+		return nil, false
+	}
+	return o.Orchestrate, true
+}
+
+// HasOrchestrate returns a boolean if a field has been set.
+func (o *License) HasOrchestrate() bool {
+	if o != nil && o.Orchestrate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOrchestrate gets a reference to the given LicenseOrchestrate and assigns it to the Orchestrate field.
+func (o *License) SetOrchestrate(v LicenseOrchestrate) {
+	o.Orchestrate = &v
 }
 
 // GetOrganization returns the Organization field value if set, zero value otherwise.
@@ -597,6 +762,9 @@ func (o *License) SetVerify(v LicenseVerify) {
 
 func (o License) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AdvancedServices != nil {
+		toSerialize["advancedServices"] = o.AdvancedServices
+	}
 	if o.AssignedEnvironmentsCount != nil {
 		toSerialize["assignedEnvironmentsCount"] = o.AssignedEnvironmentsCount
 	}
@@ -606,11 +774,20 @@ func (o License) MarshalJSON() ([]byte, error) {
 	if o.BeginsAt != nil {
 		toSerialize["beginsAt"] = o.BeginsAt
 	}
+	if o.Credentials != nil {
+		toSerialize["credentials"] = o.Credentials
+	}
 	if o.Environments != nil {
 		toSerialize["environments"] = o.Environments
 	}
 	if o.ExpiresAt != nil {
 		toSerialize["expiresAt"] = o.ExpiresAt
+	}
+	if o.Fraud != nil {
+		toSerialize["fraud"] = o.Fraud
+	}
+	if o.Gateways != nil {
+		toSerialize["gateways"] = o.Gateways
 	}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
@@ -623,6 +800,9 @@ func (o License) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.Orchestrate != nil {
+		toSerialize["orchestrate"] = o.Orchestrate
 	}
 	if o.Organization != nil {
 		toSerialize["organization"] = o.Organization

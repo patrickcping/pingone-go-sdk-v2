@@ -20,6 +20,8 @@ type EnumLicensePackage string
 
 // List of EnumLicensePackage
 const (
+	ENUMLICENSEPACKAGE_ADMIN EnumLicensePackage = "ADMIN"
+	ENUMLICENSEPACKAGE_INTERNAL EnumLicensePackage = "INTERNAL"
 	ENUMLICENSEPACKAGE_TRIAL EnumLicensePackage = "TRIAL"
 	ENUMLICENSEPACKAGE_STANDARD EnumLicensePackage = "STANDARD"
 	ENUMLICENSEPACKAGE_PREMIUM EnumLicensePackage = "PREMIUM"
@@ -31,6 +33,8 @@ const (
 
 // All allowed values of EnumLicensePackage enum
 var AllowedEnumLicensePackageEnumValues = []EnumLicensePackage{
+	"ADMIN",
+	"INTERNAL",
 	"TRIAL",
 	"STANDARD",
 	"PREMIUM",

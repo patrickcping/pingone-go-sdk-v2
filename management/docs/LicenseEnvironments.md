@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowAddResources** | Pointer to **bool** |  | [optional] 
 **AllowConnections** | Pointer to **bool** | A boolean that specifies whether the license supports creation of application connections in the specified environment. | [optional] 
 **AllowCustomDomain** | Pointer to **bool** | A read-only boolean that specifies whether the license supports creation of a custom domain in the specified environment. | [optional] 
 **AllowCustomSchema** | Pointer to **bool** | A read-only boolean that specifies whether the license supports using custom schema attributes in the specified environment. | [optional] 
 **AllowProduction** | Pointer to **bool** | A read-only boolean that specifies whether production environments are allowed. | [optional] 
 **Max** | Pointer to **int32** | A read-only integer that specifies the maximum number of environments allowed. | [optional] 
-**Regions** | Pointer to [**EnumRegionCode**](EnumRegionCode.md) |  | [optional] 
+**Regions** | Pointer to [**[]EnumRegionCodeLicense**](EnumRegionCodeLicense.md) |  | [optional] 
 
 ## Methods
 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewLicenseEnvironmentsWithDefaults instantiates a new LicenseEnvironments object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowAddResources
+
+`func (o *LicenseEnvironments) GetAllowAddResources() bool`
+
+GetAllowAddResources returns the AllowAddResources field if non-nil, zero value otherwise.
+
+### GetAllowAddResourcesOk
+
+`func (o *LicenseEnvironments) GetAllowAddResourcesOk() (*bool, bool)`
+
+GetAllowAddResourcesOk returns a tuple with the AllowAddResources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowAddResources
+
+`func (o *LicenseEnvironments) SetAllowAddResources(v bool)`
+
+SetAllowAddResources sets AllowAddResources field to given value.
+
+### HasAllowAddResources
+
+`func (o *LicenseEnvironments) HasAllowAddResources() bool`
+
+HasAllowAddResources returns a boolean if a field has been set.
 
 ### GetAllowConnections
 
@@ -157,20 +183,20 @@ HasMax returns a boolean if a field has been set.
 
 ### GetRegions
 
-`func (o *LicenseEnvironments) GetRegions() EnumRegionCode`
+`func (o *LicenseEnvironments) GetRegions() []EnumRegionCodeLicense`
 
 GetRegions returns the Regions field if non-nil, zero value otherwise.
 
 ### GetRegionsOk
 
-`func (o *LicenseEnvironments) GetRegionsOk() (*EnumRegionCode, bool)`
+`func (o *LicenseEnvironments) GetRegionsOk() (*[]EnumRegionCodeLicense, bool)`
 
 GetRegionsOk returns a tuple with the Regions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegions
 
-`func (o *LicenseEnvironments) SetRegions(v EnumRegionCode)`
+`func (o *LicenseEnvironments) SetRegions(v []EnumRegionCodeLicense)`
 
 SetRegions sets Regions field to given value.
 

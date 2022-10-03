@@ -19,9 +19,13 @@ type LicenseMfa struct {
 	// A read-only boolean that specifies whether push notifications are allowed. For TRIAL (unpaid) licenses, the default value is true. For other license package types, adoption of the feature determines the default value.
 	AllowPushNotification *bool `json:"allowPushNotification,omitempty"`
 	// A read-only boolean that specifies whether the license supports sending notifications outside of the environment's whitelist.
-	AllowMfaNotificationsOutsideWhitelist *bool `json:"allowMfaNotificationsOutsideWhitelist,omitempty"`
+	AllowNotificationOutsideWhitelist *bool `json:"allowNotificationOutsideWhitelist,omitempty"`
 	// A read-only boolean that specifies whether FIDO2 devices are allowed. For TRIAL (unpaid) licenses, the default value is true. For other license package types, adoption of the feature determines the default value.
 	AllowFido2Devices *bool `json:"allowFido2Devices,omitempty"`
+	AllowVoiceOtp *bool `json:"allowVoiceOtp,omitempty"`
+	AllowEmailOtp *bool `json:"allowEmailOtp,omitempty"`
+	AllowSmsOtp *bool `json:"allowSmsOtp,omitempty"`
+	AllowTotp *bool `json:"allowTotp,omitempty"`
 }
 
 // NewLicenseMfa instantiates a new LicenseMfa object
@@ -73,36 +77,36 @@ func (o *LicenseMfa) SetAllowPushNotification(v bool) {
 	o.AllowPushNotification = &v
 }
 
-// GetAllowMfaNotificationsOutsideWhitelist returns the AllowMfaNotificationsOutsideWhitelist field value if set, zero value otherwise.
-func (o *LicenseMfa) GetAllowMfaNotificationsOutsideWhitelist() bool {
-	if o == nil || o.AllowMfaNotificationsOutsideWhitelist == nil {
+// GetAllowNotificationOutsideWhitelist returns the AllowNotificationOutsideWhitelist field value if set, zero value otherwise.
+func (o *LicenseMfa) GetAllowNotificationOutsideWhitelist() bool {
+	if o == nil || o.AllowNotificationOutsideWhitelist == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AllowMfaNotificationsOutsideWhitelist
+	return *o.AllowNotificationOutsideWhitelist
 }
 
-// GetAllowMfaNotificationsOutsideWhitelistOk returns a tuple with the AllowMfaNotificationsOutsideWhitelist field value if set, nil otherwise
+// GetAllowNotificationOutsideWhitelistOk returns a tuple with the AllowNotificationOutsideWhitelist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LicenseMfa) GetAllowMfaNotificationsOutsideWhitelistOk() (*bool, bool) {
-	if o == nil || o.AllowMfaNotificationsOutsideWhitelist == nil {
+func (o *LicenseMfa) GetAllowNotificationOutsideWhitelistOk() (*bool, bool) {
+	if o == nil || o.AllowNotificationOutsideWhitelist == nil {
 		return nil, false
 	}
-	return o.AllowMfaNotificationsOutsideWhitelist, true
+	return o.AllowNotificationOutsideWhitelist, true
 }
 
-// HasAllowMfaNotificationsOutsideWhitelist returns a boolean if a field has been set.
-func (o *LicenseMfa) HasAllowMfaNotificationsOutsideWhitelist() bool {
-	if o != nil && o.AllowMfaNotificationsOutsideWhitelist != nil {
+// HasAllowNotificationOutsideWhitelist returns a boolean if a field has been set.
+func (o *LicenseMfa) HasAllowNotificationOutsideWhitelist() bool {
+	if o != nil && o.AllowNotificationOutsideWhitelist != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAllowMfaNotificationsOutsideWhitelist gets a reference to the given bool and assigns it to the AllowMfaNotificationsOutsideWhitelist field.
-func (o *LicenseMfa) SetAllowMfaNotificationsOutsideWhitelist(v bool) {
-	o.AllowMfaNotificationsOutsideWhitelist = &v
+// SetAllowNotificationOutsideWhitelist gets a reference to the given bool and assigns it to the AllowNotificationOutsideWhitelist field.
+func (o *LicenseMfa) SetAllowNotificationOutsideWhitelist(v bool) {
+	o.AllowNotificationOutsideWhitelist = &v
 }
 
 // GetAllowFido2Devices returns the AllowFido2Devices field value if set, zero value otherwise.
@@ -137,16 +141,156 @@ func (o *LicenseMfa) SetAllowFido2Devices(v bool) {
 	o.AllowFido2Devices = &v
 }
 
+// GetAllowVoiceOtp returns the AllowVoiceOtp field value if set, zero value otherwise.
+func (o *LicenseMfa) GetAllowVoiceOtp() bool {
+	if o == nil || o.AllowVoiceOtp == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowVoiceOtp
+}
+
+// GetAllowVoiceOtpOk returns a tuple with the AllowVoiceOtp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LicenseMfa) GetAllowVoiceOtpOk() (*bool, bool) {
+	if o == nil || o.AllowVoiceOtp == nil {
+		return nil, false
+	}
+	return o.AllowVoiceOtp, true
+}
+
+// HasAllowVoiceOtp returns a boolean if a field has been set.
+func (o *LicenseMfa) HasAllowVoiceOtp() bool {
+	if o != nil && o.AllowVoiceOtp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowVoiceOtp gets a reference to the given bool and assigns it to the AllowVoiceOtp field.
+func (o *LicenseMfa) SetAllowVoiceOtp(v bool) {
+	o.AllowVoiceOtp = &v
+}
+
+// GetAllowEmailOtp returns the AllowEmailOtp field value if set, zero value otherwise.
+func (o *LicenseMfa) GetAllowEmailOtp() bool {
+	if o == nil || o.AllowEmailOtp == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowEmailOtp
+}
+
+// GetAllowEmailOtpOk returns a tuple with the AllowEmailOtp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LicenseMfa) GetAllowEmailOtpOk() (*bool, bool) {
+	if o == nil || o.AllowEmailOtp == nil {
+		return nil, false
+	}
+	return o.AllowEmailOtp, true
+}
+
+// HasAllowEmailOtp returns a boolean if a field has been set.
+func (o *LicenseMfa) HasAllowEmailOtp() bool {
+	if o != nil && o.AllowEmailOtp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowEmailOtp gets a reference to the given bool and assigns it to the AllowEmailOtp field.
+func (o *LicenseMfa) SetAllowEmailOtp(v bool) {
+	o.AllowEmailOtp = &v
+}
+
+// GetAllowSmsOtp returns the AllowSmsOtp field value if set, zero value otherwise.
+func (o *LicenseMfa) GetAllowSmsOtp() bool {
+	if o == nil || o.AllowSmsOtp == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowSmsOtp
+}
+
+// GetAllowSmsOtpOk returns a tuple with the AllowSmsOtp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LicenseMfa) GetAllowSmsOtpOk() (*bool, bool) {
+	if o == nil || o.AllowSmsOtp == nil {
+		return nil, false
+	}
+	return o.AllowSmsOtp, true
+}
+
+// HasAllowSmsOtp returns a boolean if a field has been set.
+func (o *LicenseMfa) HasAllowSmsOtp() bool {
+	if o != nil && o.AllowSmsOtp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowSmsOtp gets a reference to the given bool and assigns it to the AllowSmsOtp field.
+func (o *LicenseMfa) SetAllowSmsOtp(v bool) {
+	o.AllowSmsOtp = &v
+}
+
+// GetAllowTotp returns the AllowTotp field value if set, zero value otherwise.
+func (o *LicenseMfa) GetAllowTotp() bool {
+	if o == nil || o.AllowTotp == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowTotp
+}
+
+// GetAllowTotpOk returns a tuple with the AllowTotp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LicenseMfa) GetAllowTotpOk() (*bool, bool) {
+	if o == nil || o.AllowTotp == nil {
+		return nil, false
+	}
+	return o.AllowTotp, true
+}
+
+// HasAllowTotp returns a boolean if a field has been set.
+func (o *LicenseMfa) HasAllowTotp() bool {
+	if o != nil && o.AllowTotp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowTotp gets a reference to the given bool and assigns it to the AllowTotp field.
+func (o *LicenseMfa) SetAllowTotp(v bool) {
+	o.AllowTotp = &v
+}
+
 func (o LicenseMfa) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AllowPushNotification != nil {
 		toSerialize["allowPushNotification"] = o.AllowPushNotification
 	}
-	if o.AllowMfaNotificationsOutsideWhitelist != nil {
-		toSerialize["allowMfaNotificationsOutsideWhitelist"] = o.AllowMfaNotificationsOutsideWhitelist
+	if o.AllowNotificationOutsideWhitelist != nil {
+		toSerialize["allowNotificationOutsideWhitelist"] = o.AllowNotificationOutsideWhitelist
 	}
 	if o.AllowFido2Devices != nil {
 		toSerialize["allowFido2Devices"] = o.AllowFido2Devices
+	}
+	if o.AllowVoiceOtp != nil {
+		toSerialize["allowVoiceOtp"] = o.AllowVoiceOtp
+	}
+	if o.AllowEmailOtp != nil {
+		toSerialize["allowEmailOtp"] = o.AllowEmailOtp
+	}
+	if o.AllowSmsOtp != nil {
+		toSerialize["allowSmsOtp"] = o.AllowSmsOtp
+	}
+	if o.AllowTotp != nil {
+		toSerialize["allowTotp"] = o.AllowTotp
 	}
 	return json.Marshal(toSerialize)
 }

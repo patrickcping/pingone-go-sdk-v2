@@ -30,6 +30,7 @@ type LicenseUsers struct {
 	AllowPasswordPolicy *bool `json:"allowPasswordPolicy,omitempty"`
 	// A read-only boolean that specifies whether the license supports using provisioning capabilities in the specified environment.
 	AllowProvisioning *bool `json:"allowProvisioning,omitempty"`
+	AllowInboundProvisioning *bool `json:"allowInboundProvisioning,omitempty"`
 	// A read-only boolean that specifies whether the license supports role assignments in the specified environment.
 	AllowRoleAssignment *bool `json:"allowRoleAssignment,omitempty"`
 	// A read-only boolean that specifies whether the license supports using verification flows in the specified environment.
@@ -40,6 +41,7 @@ type LicenseUsers struct {
 	EntitledToSupport *bool `json:"entitledToSupport,omitempty"`
 	// An read-only integer that specifies the maximum number of users allowed per environment.
 	Max *int32 `json:"max,omitempty"`
+	HardLimitMax *int32 `json:"hardLimitMax,omitempty"`
 	// A read-only integer that specifies a soft limit on the number of active identities across all environments on the license per year. This property is not visible if a value is not provided at the time the license is created.
 	AnnualActiveIncluded *int32 `json:"annualActiveIncluded,omitempty"`
 	// A read-only integer that specifies a soft limit on the number of active identities across all environments on the license per month. This property is not visible if a value is not provided at the time the license is created.
@@ -287,6 +289,38 @@ func (o *LicenseUsers) SetAllowProvisioning(v bool) {
 	o.AllowProvisioning = &v
 }
 
+// GetAllowInboundProvisioning returns the AllowInboundProvisioning field value if set, zero value otherwise.
+func (o *LicenseUsers) GetAllowInboundProvisioning() bool {
+	if o == nil || o.AllowInboundProvisioning == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowInboundProvisioning
+}
+
+// GetAllowInboundProvisioningOk returns a tuple with the AllowInboundProvisioning field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LicenseUsers) GetAllowInboundProvisioningOk() (*bool, bool) {
+	if o == nil || o.AllowInboundProvisioning == nil {
+		return nil, false
+	}
+	return o.AllowInboundProvisioning, true
+}
+
+// HasAllowInboundProvisioning returns a boolean if a field has been set.
+func (o *LicenseUsers) HasAllowInboundProvisioning() bool {
+	if o != nil && o.AllowInboundProvisioning != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowInboundProvisioning gets a reference to the given bool and assigns it to the AllowInboundProvisioning field.
+func (o *LicenseUsers) SetAllowInboundProvisioning(v bool) {
+	o.AllowInboundProvisioning = &v
+}
+
 // GetAllowRoleAssignment returns the AllowRoleAssignment field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowRoleAssignment() bool {
 	if o == nil || o.AllowRoleAssignment == nil {
@@ -447,6 +481,38 @@ func (o *LicenseUsers) SetMax(v int32) {
 	o.Max = &v
 }
 
+// GetHardLimitMax returns the HardLimitMax field value if set, zero value otherwise.
+func (o *LicenseUsers) GetHardLimitMax() int32 {
+	if o == nil || o.HardLimitMax == nil {
+		var ret int32
+		return ret
+	}
+	return *o.HardLimitMax
+}
+
+// GetHardLimitMaxOk returns a tuple with the HardLimitMax field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LicenseUsers) GetHardLimitMaxOk() (*int32, bool) {
+	if o == nil || o.HardLimitMax == nil {
+		return nil, false
+	}
+	return o.HardLimitMax, true
+}
+
+// HasHardLimitMax returns a boolean if a field has been set.
+func (o *LicenseUsers) HasHardLimitMax() bool {
+	if o != nil && o.HardLimitMax != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHardLimitMax gets a reference to the given int32 and assigns it to the HardLimitMax field.
+func (o *LicenseUsers) SetHardLimitMax(v int32) {
+	o.HardLimitMax = &v
+}
+
 // GetAnnualActiveIncluded returns the AnnualActiveIncluded field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAnnualActiveIncluded() int32 {
 	if o == nil || o.AnnualActiveIncluded == nil {
@@ -534,6 +600,9 @@ func (o LicenseUsers) MarshalJSON() ([]byte, error) {
 	if o.AllowProvisioning != nil {
 		toSerialize["allowProvisioning"] = o.AllowProvisioning
 	}
+	if o.AllowInboundProvisioning != nil {
+		toSerialize["allowInboundProvisioning"] = o.AllowInboundProvisioning
+	}
 	if o.AllowRoleAssignment != nil {
 		toSerialize["allowRoleAssignment"] = o.AllowRoleAssignment
 	}
@@ -548,6 +617,9 @@ func (o LicenseUsers) MarshalJSON() ([]byte, error) {
 	}
 	if o.Max != nil {
 		toSerialize["max"] = o.Max
+	}
+	if o.HardLimitMax != nil {
+		toSerialize["hardLimitMax"] = o.HardLimitMax
 	}
 	if o.AnnualActiveIncluded != nil {
 		toSerialize["annualActiveIncluded"] = o.AnnualActiveIncluded

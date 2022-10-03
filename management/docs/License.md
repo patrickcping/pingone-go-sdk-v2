@@ -4,15 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AdvancedServices** | Pointer to [**LicenseAdvancedServices**](LicenseAdvancedServices.md) |  | [optional] 
 **AssignedEnvironmentsCount** | Pointer to **int32** | A read-only integer that specifies the total number of environments associated with this license. | [optional] [readonly] 
 **Authorize** | Pointer to [**LicenseAuthorize**](LicenseAuthorize.md) |  | [optional] 
 **BeginsAt** | Pointer to **string** | The date and time this license begins. | [optional] [readonly] 
+**Credentials** | Pointer to [**LicenseCredentials**](LicenseCredentials.md) |  | [optional] 
 **Environments** | Pointer to [**LicenseEnvironments**](LicenseEnvironments.md) |  | [optional] 
 **ExpiresAt** | Pointer to **string** | The date and time this license expires. TRIAL licenses stop access to PingOne services at expiration. All other licenses trigger an event to send a notification when the license expires but do not block services. | [optional] [readonly] 
+**Fraud** | Pointer to [**LicenseFraud**](LicenseFraud.md) |  | [optional] 
+**Gateways** | Pointer to [**LicenseGateways**](LicenseGateways.md) |  | [optional] 
 **Id** | Pointer to **string** | A read-only string that specifies the license resource’s unique identifier. | [optional] [readonly] 
 **Intelligence** | Pointer to [**LicenseIntelligence**](LicenseIntelligence.md) |  | [optional] 
 **Mfa** | Pointer to [**LicenseMfa**](LicenseMfa.md) |  | [optional] 
 **Name** | **string** | A string that specifies a descriptive name for the license. This is a required property in a license name update request. Valid characters consists of any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. The maximum length of a name is 255 characters. | 
+**Orchestrate** | Pointer to [**LicenseOrchestrate**](LicenseOrchestrate.md) |  | [optional] 
 **Organization** | Pointer to [**ObjectOrganization**](ObjectOrganization.md) |  | [optional] 
 **Package** | Pointer to [**EnumLicensePackage**](EnumLicensePackage.md) |  | [optional] 
 **ReplacesLicense** | Pointer to [**LicenseReplacesLicense**](LicenseReplacesLicense.md) |  | [optional] 
@@ -40,6 +45,31 @@ will change when the set of required properties is changed
 NewLicenseWithDefaults instantiates a new License object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAdvancedServices
+
+`func (o *License) GetAdvancedServices() LicenseAdvancedServices`
+
+GetAdvancedServices returns the AdvancedServices field if non-nil, zero value otherwise.
+
+### GetAdvancedServicesOk
+
+`func (o *License) GetAdvancedServicesOk() (*LicenseAdvancedServices, bool)`
+
+GetAdvancedServicesOk returns a tuple with the AdvancedServices field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdvancedServices
+
+`func (o *License) SetAdvancedServices(v LicenseAdvancedServices)`
+
+SetAdvancedServices sets AdvancedServices field to given value.
+
+### HasAdvancedServices
+
+`func (o *License) HasAdvancedServices() bool`
+
+HasAdvancedServices returns a boolean if a field has been set.
 
 ### GetAssignedEnvironmentsCount
 
@@ -116,6 +146,31 @@ SetBeginsAt sets BeginsAt field to given value.
 
 HasBeginsAt returns a boolean if a field has been set.
 
+### GetCredentials
+
+`func (o *License) GetCredentials() LicenseCredentials`
+
+GetCredentials returns the Credentials field if non-nil, zero value otherwise.
+
+### GetCredentialsOk
+
+`func (o *License) GetCredentialsOk() (*LicenseCredentials, bool)`
+
+GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCredentials
+
+`func (o *License) SetCredentials(v LicenseCredentials)`
+
+SetCredentials sets Credentials field to given value.
+
+### HasCredentials
+
+`func (o *License) HasCredentials() bool`
+
+HasCredentials returns a boolean if a field has been set.
+
 ### GetEnvironments
 
 `func (o *License) GetEnvironments() LicenseEnvironments`
@@ -165,6 +220,56 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *License) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+
+### GetFraud
+
+`func (o *License) GetFraud() LicenseFraud`
+
+GetFraud returns the Fraud field if non-nil, zero value otherwise.
+
+### GetFraudOk
+
+`func (o *License) GetFraudOk() (*LicenseFraud, bool)`
+
+GetFraudOk returns a tuple with the Fraud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFraud
+
+`func (o *License) SetFraud(v LicenseFraud)`
+
+SetFraud sets Fraud field to given value.
+
+### HasFraud
+
+`func (o *License) HasFraud() bool`
+
+HasFraud returns a boolean if a field has been set.
+
+### GetGateways
+
+`func (o *License) GetGateways() LicenseGateways`
+
+GetGateways returns the Gateways field if non-nil, zero value otherwise.
+
+### GetGatewaysOk
+
+`func (o *License) GetGatewaysOk() (*LicenseGateways, bool)`
+
+GetGatewaysOk returns a tuple with the Gateways field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGateways
+
+`func (o *License) SetGateways(v LicenseGateways)`
+
+SetGateways sets Gateways field to given value.
+
+### HasGateways
+
+`func (o *License) HasGateways() bool`
+
+HasGateways returns a boolean if a field has been set.
 
 ### GetId
 
@@ -260,6 +365,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOrchestrate
+
+`func (o *License) GetOrchestrate() LicenseOrchestrate`
+
+GetOrchestrate returns the Orchestrate field if non-nil, zero value otherwise.
+
+### GetOrchestrateOk
+
+`func (o *License) GetOrchestrateOk() (*LicenseOrchestrate, bool)`
+
+GetOrchestrateOk returns a tuple with the Orchestrate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrchestrate
+
+`func (o *License) SetOrchestrate(v LicenseOrchestrate)`
+
+SetOrchestrate sets Orchestrate field to given value.
+
+### HasOrchestrate
+
+`func (o *License) HasOrchestrate() bool`
+
+HasOrchestrate returns a boolean if a field has been set.
 
 ### GetOrganization
 
