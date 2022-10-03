@@ -1235,7 +1235,9 @@ components:
             languages:
               type: array
               items:
-                $ref: '#/components/schemas/AgreementLanguage'
+                oneOf:
+                  - $ref: '#/components/schemas/AgreementLanguage'
+                  - $ref: '#/components/schemas/Language'
             licenses:
               type: array
               items:

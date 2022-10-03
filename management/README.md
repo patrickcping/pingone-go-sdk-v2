@@ -460,6 +460,7 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedAttributesInner](docs/EntityArrayEmbeddedAttributesInner.md)
  - [EntityArrayEmbeddedGatewaysInner](docs/EntityArrayEmbeddedGatewaysInner.md)
+ - [EntityArrayEmbeddedLanguagesInner](docs/EntityArrayEmbeddedLanguagesInner.md)
  - [EnumAlertChannelAlertType](docs/EnumAlertChannelAlertType.md)
  - [EnumAlertChannelSeverity](docs/EnumAlertChannelSeverity.md)
  - [EnumAlertChannelType](docs/EnumAlertChannelType.md)

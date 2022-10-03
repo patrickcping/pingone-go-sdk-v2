@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **IdentityProviders** | Pointer to [**[]IdentityProvider**](IdentityProvider.md) |  | [optional] 
 **Keys** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
-**Languages** | Pointer to [**[]AgreementLanguage**](AgreementLanguage.md) |  | [optional] 
+**Languages** | Pointer to [**[]EntityArrayEmbeddedLanguagesInner**](EntityArrayEmbeddedLanguagesInner.md) |  | [optional] 
 **Licenses** | Pointer to [**[]License**](License.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
@@ -484,20 +484,20 @@ HasKeys returns a boolean if a field has been set.
 
 ### GetLanguages
 
-`func (o *EntityArrayEmbedded) GetLanguages() []AgreementLanguage`
+`func (o *EntityArrayEmbedded) GetLanguages() []EntityArrayEmbeddedLanguagesInner`
 
 GetLanguages returns the Languages field if non-nil, zero value otherwise.
 
 ### GetLanguagesOk
 
-`func (o *EntityArrayEmbedded) GetLanguagesOk() (*[]AgreementLanguage, bool)`
+`func (o *EntityArrayEmbedded) GetLanguagesOk() (*[]EntityArrayEmbeddedLanguagesInner, bool)`
 
 GetLanguagesOk returns a tuple with the Languages field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLanguages
 
-`func (o *EntityArrayEmbedded) SetLanguages(v []AgreementLanguage)`
+`func (o *EntityArrayEmbedded) SetLanguages(v []EntityArrayEmbeddedLanguagesInner)`
 
 SetLanguages sets Languages field to given value.
 
