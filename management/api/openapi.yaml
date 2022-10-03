@@ -22924,30 +22924,8 @@ components:
           - null
           - null
           languages:
-          - currentRevision:
-              id: id
-            agreement:
-              id: id
-            displayName: displayName
-            userExperience:
-              acceptCheckboxText: acceptCheckboxText
-              declineButtonText: declineButtonText
-              continueButtonText: continueButtonText
-            id: id
-            locale: locale
-            enabled: true
-          - currentRevision:
-              id: id
-            agreement:
-              id: id
-            displayName: displayName
-            userExperience:
-              acceptCheckboxText: acceptCheckboxText
-              declineButtonText: declineButtonText
-              continueButtonText: continueButtonText
-            id: id
-            locale: locale
-            enabled: true
+          - null
+          - null
           agreements:
           - consentCountsUpdatedAt: consentCountsUpdatedAt
             environment:
@@ -26130,6 +26108,10 @@ components:
       anyOf:
       - $ref: '#/components/schemas/Gateway'
       - $ref: '#/components/schemas/GatewayLDAP'
+    EntityArray__embedded_languages_inner:
+      oneOf:
+      - $ref: '#/components/schemas/AgreementLanguage'
+      - $ref: '#/components/schemas/Language'
     EntityArray__embedded:
       example:
         subscriptions:
@@ -26504,30 +26486,8 @@ components:
         - null
         - null
         languages:
-        - currentRevision:
-            id: id
-          agreement:
-            id: id
-          displayName: displayName
-          userExperience:
-            acceptCheckboxText: acceptCheckboxText
-            declineButtonText: declineButtonText
-            continueButtonText: continueButtonText
-          id: id
-          locale: locale
-          enabled: true
-        - currentRevision:
-            id: id
-          agreement:
-            id: id
-          displayName: displayName
-          userExperience:
-            acceptCheckboxText: acceptCheckboxText
-            declineButtonText: declineButtonText
-            continueButtonText: continueButtonText
-          id: id
-          locale: locale
-          enabled: true
+        - null
+        - null
         agreements:
         - consentCountsUpdatedAt: consentCountsUpdatedAt
           environment:
@@ -27166,7 +27126,7 @@ components:
           type: array
         languages:
           items:
-            $ref: '#/components/schemas/AgreementLanguage'
+            $ref: '#/components/schemas/EntityArray__embedded_languages_inner'
           type: array
         licenses:
           items:

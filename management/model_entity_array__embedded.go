@@ -33,7 +33,7 @@ type EntityArrayEmbedded struct {
 	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
 	IdentityProviders []IdentityProvider `json:"identityProviders,omitempty"`
 	Keys []Certificate `json:"keys,omitempty"`
-	Languages []AgreementLanguage `json:"languages,omitempty"`
+	Languages []EntityArrayEmbeddedLanguagesInner `json:"languages,omitempty"`
 	Licenses []License `json:"licenses,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
@@ -613,9 +613,9 @@ func (o *EntityArrayEmbedded) SetKeys(v []Certificate) {
 }
 
 // GetLanguages returns the Languages field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetLanguages() []AgreementLanguage {
+func (o *EntityArrayEmbedded) GetLanguages() []EntityArrayEmbeddedLanguagesInner {
 	if o == nil || o.Languages == nil {
-		var ret []AgreementLanguage
+		var ret []EntityArrayEmbeddedLanguagesInner
 		return ret
 	}
 	return o.Languages
@@ -623,7 +623,7 @@ func (o *EntityArrayEmbedded) GetLanguages() []AgreementLanguage {
 
 // GetLanguagesOk returns a tuple with the Languages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetLanguagesOk() ([]AgreementLanguage, bool) {
+func (o *EntityArrayEmbedded) GetLanguagesOk() ([]EntityArrayEmbeddedLanguagesInner, bool) {
 	if o == nil || o.Languages == nil {
 		return nil, false
 	}
@@ -639,8 +639,8 @@ func (o *EntityArrayEmbedded) HasLanguages() bool {
 	return false
 }
 
-// SetLanguages gets a reference to the given []AgreementLanguage and assigns it to the Languages field.
-func (o *EntityArrayEmbedded) SetLanguages(v []AgreementLanguage) {
+// SetLanguages gets a reference to the given []EntityArrayEmbeddedLanguagesInner and assigns it to the Languages field.
+func (o *EntityArrayEmbedded) SetLanguages(v []EntityArrayEmbeddedLanguagesInner) {
 	o.Languages = v
 }
 
