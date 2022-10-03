@@ -21515,6 +21515,7 @@ components:
         \ is based. This is a required property. Options are `TRIAL`, `STANDARD`,\
         \ `PREMIUM`, `MFA`, `RISK`, `MFARISK`, and `GLOBAL`."
       enum:
+      - ADMIN
       - INTERNAL
       - TRIAL
       - STANDARD
