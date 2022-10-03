@@ -16,6 +16,7 @@ import (
 
 // LicenseEnvironments struct for LicenseEnvironments
 type LicenseEnvironments struct {
+	AllowAddResources *bool `json:"allowAddResources,omitempty"`
 	// A boolean that specifies whether the license supports creation of application connections in the specified environment.
 	AllowConnections *bool `json:"allowConnections,omitempty"`
 	// A read-only boolean that specifies whether the license supports creation of a custom domain in the specified environment.
@@ -26,7 +27,7 @@ type LicenseEnvironments struct {
 	AllowProduction *bool `json:"allowProduction,omitempty"`
 	// A read-only integer that specifies the maximum number of environments allowed.
 	Max *int32 `json:"max,omitempty"`
-	Regions *EnumRegionCode `json:"regions,omitempty"`
+	Regions []EnumRegionCodeLicense `json:"regions,omitempty"`
 }
 
 // NewLicenseEnvironments instantiates a new LicenseEnvironments object
@@ -44,6 +45,38 @@ func NewLicenseEnvironments() *LicenseEnvironments {
 func NewLicenseEnvironmentsWithDefaults() *LicenseEnvironments {
 	this := LicenseEnvironments{}
 	return &this
+}
+
+// GetAllowAddResources returns the AllowAddResources field value if set, zero value otherwise.
+func (o *LicenseEnvironments) GetAllowAddResources() bool {
+	if o == nil || o.AllowAddResources == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowAddResources
+}
+
+// GetAllowAddResourcesOk returns a tuple with the AllowAddResources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LicenseEnvironments) GetAllowAddResourcesOk() (*bool, bool) {
+	if o == nil || o.AllowAddResources == nil {
+		return nil, false
+	}
+	return o.AllowAddResources, true
+}
+
+// HasAllowAddResources returns a boolean if a field has been set.
+func (o *LicenseEnvironments) HasAllowAddResources() bool {
+	if o != nil && o.AllowAddResources != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowAddResources gets a reference to the given bool and assigns it to the AllowAddResources field.
+func (o *LicenseEnvironments) SetAllowAddResources(v bool) {
+	o.AllowAddResources = &v
 }
 
 // GetAllowConnections returns the AllowConnections field value if set, zero value otherwise.
@@ -207,17 +240,17 @@ func (o *LicenseEnvironments) SetMax(v int32) {
 }
 
 // GetRegions returns the Regions field value if set, zero value otherwise.
-func (o *LicenseEnvironments) GetRegions() EnumRegionCode {
+func (o *LicenseEnvironments) GetRegions() []EnumRegionCodeLicense {
 	if o == nil || o.Regions == nil {
-		var ret EnumRegionCode
+		var ret []EnumRegionCodeLicense
 		return ret
 	}
-	return *o.Regions
+	return o.Regions
 }
 
 // GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LicenseEnvironments) GetRegionsOk() (*EnumRegionCode, bool) {
+func (o *LicenseEnvironments) GetRegionsOk() ([]EnumRegionCodeLicense, bool) {
 	if o == nil || o.Regions == nil {
 		return nil, false
 	}
@@ -233,13 +266,16 @@ func (o *LicenseEnvironments) HasRegions() bool {
 	return false
 }
 
-// SetRegions gets a reference to the given EnumRegionCode and assigns it to the Regions field.
-func (o *LicenseEnvironments) SetRegions(v EnumRegionCode) {
-	o.Regions = &v
+// SetRegions gets a reference to the given []EnumRegionCodeLicense and assigns it to the Regions field.
+func (o *LicenseEnvironments) SetRegions(v []EnumRegionCodeLicense) {
+	o.Regions = v
 }
 
 func (o LicenseEnvironments) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AllowAddResources != nil {
+		toSerialize["allowAddResources"] = o.AllowAddResources
+	}
 	if o.AllowConnections != nil {
 		toSerialize["allowConnections"] = o.AllowConnections
 	}

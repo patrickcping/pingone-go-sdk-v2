@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `INTERNAL` (value: `"INTERNAL"`)
+
 * `TRIAL` (value: `"TRIAL"`)
 
 * `STANDARD` (value: `"STANDARD"`)

@@ -5,8 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowPushNotification** | Pointer to **bool** | A read-only boolean that specifies whether push notifications are allowed. For TRIAL (unpaid) licenses, the default value is true. For other license package types, adoption of the feature determines the default value. | [optional] 
-**AllowMfaNotificationsOutsideWhitelist** | Pointer to **bool** | A read-only boolean that specifies whether the license supports sending notifications outside of the environment&#39;s whitelist. | [optional] 
+**AllowNotificationOutsideWhitelist** | Pointer to **bool** | A read-only boolean that specifies whether the license supports sending notifications outside of the environment&#39;s whitelist. | [optional] 
 **AllowFido2Devices** | Pointer to **bool** | A read-only boolean that specifies whether FIDO2 devices are allowed. For TRIAL (unpaid) licenses, the default value is true. For other license package types, adoption of the feature determines the default value. | [optional] 
+**AllowVoiceOtp** | Pointer to **bool** |  | [optional] 
+**AllowEmailOtp** | Pointer to **bool** |  | [optional] 
+**AllowSmsOtp** | Pointer to **bool** |  | [optional] 
+**AllowTotp** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -52,30 +56,30 @@ SetAllowPushNotification sets AllowPushNotification field to given value.
 
 HasAllowPushNotification returns a boolean if a field has been set.
 
-### GetAllowMfaNotificationsOutsideWhitelist
+### GetAllowNotificationOutsideWhitelist
 
-`func (o *LicenseMfa) GetAllowMfaNotificationsOutsideWhitelist() bool`
+`func (o *LicenseMfa) GetAllowNotificationOutsideWhitelist() bool`
 
-GetAllowMfaNotificationsOutsideWhitelist returns the AllowMfaNotificationsOutsideWhitelist field if non-nil, zero value otherwise.
+GetAllowNotificationOutsideWhitelist returns the AllowNotificationOutsideWhitelist field if non-nil, zero value otherwise.
 
-### GetAllowMfaNotificationsOutsideWhitelistOk
+### GetAllowNotificationOutsideWhitelistOk
 
-`func (o *LicenseMfa) GetAllowMfaNotificationsOutsideWhitelistOk() (*bool, bool)`
+`func (o *LicenseMfa) GetAllowNotificationOutsideWhitelistOk() (*bool, bool)`
 
-GetAllowMfaNotificationsOutsideWhitelistOk returns a tuple with the AllowMfaNotificationsOutsideWhitelist field if it's non-nil, zero value otherwise
+GetAllowNotificationOutsideWhitelistOk returns a tuple with the AllowNotificationOutsideWhitelist field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllowMfaNotificationsOutsideWhitelist
+### SetAllowNotificationOutsideWhitelist
 
-`func (o *LicenseMfa) SetAllowMfaNotificationsOutsideWhitelist(v bool)`
+`func (o *LicenseMfa) SetAllowNotificationOutsideWhitelist(v bool)`
 
-SetAllowMfaNotificationsOutsideWhitelist sets AllowMfaNotificationsOutsideWhitelist field to given value.
+SetAllowNotificationOutsideWhitelist sets AllowNotificationOutsideWhitelist field to given value.
 
-### HasAllowMfaNotificationsOutsideWhitelist
+### HasAllowNotificationOutsideWhitelist
 
-`func (o *LicenseMfa) HasAllowMfaNotificationsOutsideWhitelist() bool`
+`func (o *LicenseMfa) HasAllowNotificationOutsideWhitelist() bool`
 
-HasAllowMfaNotificationsOutsideWhitelist returns a boolean if a field has been set.
+HasAllowNotificationOutsideWhitelist returns a boolean if a field has been set.
 
 ### GetAllowFido2Devices
 
@@ -101,6 +105,106 @@ SetAllowFido2Devices sets AllowFido2Devices field to given value.
 `func (o *LicenseMfa) HasAllowFido2Devices() bool`
 
 HasAllowFido2Devices returns a boolean if a field has been set.
+
+### GetAllowVoiceOtp
+
+`func (o *LicenseMfa) GetAllowVoiceOtp() bool`
+
+GetAllowVoiceOtp returns the AllowVoiceOtp field if non-nil, zero value otherwise.
+
+### GetAllowVoiceOtpOk
+
+`func (o *LicenseMfa) GetAllowVoiceOtpOk() (*bool, bool)`
+
+GetAllowVoiceOtpOk returns a tuple with the AllowVoiceOtp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowVoiceOtp
+
+`func (o *LicenseMfa) SetAllowVoiceOtp(v bool)`
+
+SetAllowVoiceOtp sets AllowVoiceOtp field to given value.
+
+### HasAllowVoiceOtp
+
+`func (o *LicenseMfa) HasAllowVoiceOtp() bool`
+
+HasAllowVoiceOtp returns a boolean if a field has been set.
+
+### GetAllowEmailOtp
+
+`func (o *LicenseMfa) GetAllowEmailOtp() bool`
+
+GetAllowEmailOtp returns the AllowEmailOtp field if non-nil, zero value otherwise.
+
+### GetAllowEmailOtpOk
+
+`func (o *LicenseMfa) GetAllowEmailOtpOk() (*bool, bool)`
+
+GetAllowEmailOtpOk returns a tuple with the AllowEmailOtp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowEmailOtp
+
+`func (o *LicenseMfa) SetAllowEmailOtp(v bool)`
+
+SetAllowEmailOtp sets AllowEmailOtp field to given value.
+
+### HasAllowEmailOtp
+
+`func (o *LicenseMfa) HasAllowEmailOtp() bool`
+
+HasAllowEmailOtp returns a boolean if a field has been set.
+
+### GetAllowSmsOtp
+
+`func (o *LicenseMfa) GetAllowSmsOtp() bool`
+
+GetAllowSmsOtp returns the AllowSmsOtp field if non-nil, zero value otherwise.
+
+### GetAllowSmsOtpOk
+
+`func (o *LicenseMfa) GetAllowSmsOtpOk() (*bool, bool)`
+
+GetAllowSmsOtpOk returns a tuple with the AllowSmsOtp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowSmsOtp
+
+`func (o *LicenseMfa) SetAllowSmsOtp(v bool)`
+
+SetAllowSmsOtp sets AllowSmsOtp field to given value.
+
+### HasAllowSmsOtp
+
+`func (o *LicenseMfa) HasAllowSmsOtp() bool`
+
+HasAllowSmsOtp returns a boolean if a field has been set.
+
+### GetAllowTotp
+
+`func (o *LicenseMfa) GetAllowTotp() bool`
+
+GetAllowTotp returns the AllowTotp field if non-nil, zero value otherwise.
+
+### GetAllowTotpOk
+
+`func (o *LicenseMfa) GetAllowTotpOk() (*bool, bool)`
+
+GetAllowTotpOk returns a tuple with the AllowTotp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowTotp
+
+`func (o *LicenseMfa) SetAllowTotp(v bool)`
+
+SetAllowTotp sets AllowTotp field to given value.
+
+### HasAllowTotp
+
+`func (o *LicenseMfa) HasAllowTotp() bool`
+
+HasAllowTotp returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

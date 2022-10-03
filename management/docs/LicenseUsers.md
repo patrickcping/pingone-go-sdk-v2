@@ -11,11 +11,13 @@ Name | Type | Description | Notes
 **AllowPasswordOnlyAuthentication** | Pointer to **bool** | A read-only boolean that specifies whether the license supports using password only login capabilities in the specified environment. | [optional] 
 **AllowPasswordPolicy** | Pointer to **bool** | A read-only boolean that specifies whether the license supports using password policies in the specified environment. | [optional] 
 **AllowProvisioning** | Pointer to **bool** | A read-only boolean that specifies whether the license supports using provisioning capabilities in the specified environment. | [optional] 
+**AllowInboundProvisioning** | Pointer to **bool** |  | [optional] 
 **AllowRoleAssignment** | Pointer to **bool** | A read-only boolean that specifies whether the license supports role assignments in the specified environment. | [optional] 
 **AllowVerificationFlow** | Pointer to **bool** | A read-only boolean that specifies whether the license supports using verification flows in the specified environment. | [optional] 
 **AllowUpdateSelf** | Pointer to **bool** | A read-only boolean that specifies whether the license supports allowing users to update their own profile. | [optional] 
 **EntitledToSupport** | Pointer to **bool** | A read-only boolean that specifies whether the license allows PingOne support. | [optional] 
 **Max** | Pointer to **int32** | An read-only integer that specifies the maximum number of users allowed per environment. | [optional] 
+**HardLimitMax** | Pointer to **int32** |  | [optional] 
 **AnnualActiveIncluded** | Pointer to **int32** | A read-only integer that specifies a soft limit on the number of active identities across all environments on the license per year. This property is not visible if a value is not provided at the time the license is created. | [optional] 
 **MonthlyActiveIncluded** | Pointer to **int32** | A read-only integer that specifies a soft limit on the number of active identities across all environments on the license per month. This property is not visible if a value is not provided at the time the license is created. | [optional] 
 
@@ -213,6 +215,31 @@ SetAllowProvisioning sets AllowProvisioning field to given value.
 
 HasAllowProvisioning returns a boolean if a field has been set.
 
+### GetAllowInboundProvisioning
+
+`func (o *LicenseUsers) GetAllowInboundProvisioning() bool`
+
+GetAllowInboundProvisioning returns the AllowInboundProvisioning field if non-nil, zero value otherwise.
+
+### GetAllowInboundProvisioningOk
+
+`func (o *LicenseUsers) GetAllowInboundProvisioningOk() (*bool, bool)`
+
+GetAllowInboundProvisioningOk returns a tuple with the AllowInboundProvisioning field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowInboundProvisioning
+
+`func (o *LicenseUsers) SetAllowInboundProvisioning(v bool)`
+
+SetAllowInboundProvisioning sets AllowInboundProvisioning field to given value.
+
+### HasAllowInboundProvisioning
+
+`func (o *LicenseUsers) HasAllowInboundProvisioning() bool`
+
+HasAllowInboundProvisioning returns a boolean if a field has been set.
+
 ### GetAllowRoleAssignment
 
 `func (o *LicenseUsers) GetAllowRoleAssignment() bool`
@@ -337,6 +364,31 @@ SetMax sets Max field to given value.
 `func (o *LicenseUsers) HasMax() bool`
 
 HasMax returns a boolean if a field has been set.
+
+### GetHardLimitMax
+
+`func (o *LicenseUsers) GetHardLimitMax() int32`
+
+GetHardLimitMax returns the HardLimitMax field if non-nil, zero value otherwise.
+
+### GetHardLimitMaxOk
+
+`func (o *LicenseUsers) GetHardLimitMaxOk() (*int32, bool)`
+
+GetHardLimitMaxOk returns a tuple with the HardLimitMax field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHardLimitMax
+
+`func (o *LicenseUsers) SetHardLimitMax(v int32)`
+
+SetHardLimitMax sets HardLimitMax field to given value.
+
+### HasHardLimitMax
+
+`func (o *LicenseUsers) HasHardLimitMax() bool`
+
+HasHardLimitMax returns a boolean if a field has been set.
 
 ### GetAnnualActiveIncluded
 
