@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Failure** | Pointer to [**DeviceAuthenticationPolicyOfflineDeviceOtpFailure**](DeviceAuthenticationPolicyOfflineDeviceOtpFailure.md) |  | [optional] 
+**StepSize** | Pointer to [**DeviceAuthenticationPolicyMobileOtpWindowStepSize**](DeviceAuthenticationPolicyMobileOtpWindowStepSize.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewDeviceAuthenticationPolicyMobileOtpWindowWithDefaults instantiates a new Devi
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetFailure
+### GetStepSize
 
-`func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetFailure() DeviceAuthenticationPolicyOfflineDeviceOtpFailure`
+`func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetStepSize() DeviceAuthenticationPolicyMobileOtpWindowStepSize`
 
-GetFailure returns the Failure field if non-nil, zero value otherwise.
+GetStepSize returns the StepSize field if non-nil, zero value otherwise.
 
-### GetFailureOk
+### GetStepSizeOk
 
-`func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetFailureOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpFailure, bool)`
+`func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetStepSizeOk() (*DeviceAuthenticationPolicyMobileOtpWindowStepSize, bool)`
 
-GetFailureOk returns a tuple with the Failure field if it's non-nil, zero value otherwise
+GetStepSizeOk returns a tuple with the StepSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFailure
+### SetStepSize
 
-`func (o *DeviceAuthenticationPolicyMobileOtpWindow) SetFailure(v DeviceAuthenticationPolicyOfflineDeviceOtpFailure)`
+`func (o *DeviceAuthenticationPolicyMobileOtpWindow) SetStepSize(v DeviceAuthenticationPolicyMobileOtpWindowStepSize)`
 
-SetFailure sets Failure field to given value.
+SetStepSize sets StepSize field to given value.
 
-### HasFailure
+### HasStepSize
 
-`func (o *DeviceAuthenticationPolicyMobileOtpWindow) HasFailure() bool`
+`func (o *DeviceAuthenticationPolicyMobileOtpWindow) HasStepSize() bool`
 
-HasFailure returns a boolean if a field has been set.
+HasStepSize returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

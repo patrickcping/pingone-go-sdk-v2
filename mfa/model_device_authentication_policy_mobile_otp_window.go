@@ -16,7 +16,7 @@ import (
 
 // DeviceAuthenticationPolicyMobileOtpWindow struct for DeviceAuthenticationPolicyMobileOtpWindow
 type DeviceAuthenticationPolicyMobileOtpWindow struct {
-	Failure *DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure,omitempty"`
+	StepSize *DeviceAuthenticationPolicyMobileOtpWindowStepSize `json:"stepSize,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyMobileOtpWindow instantiates a new DeviceAuthenticationPolicyMobileOtpWindow object
@@ -36,42 +36,42 @@ func NewDeviceAuthenticationPolicyMobileOtpWindowWithDefaults() *DeviceAuthentic
 	return &this
 }
 
-// GetFailure returns the Failure field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetFailure() DeviceAuthenticationPolicyOfflineDeviceOtpFailure {
-	if o == nil || o.Failure == nil {
-		var ret DeviceAuthenticationPolicyOfflineDeviceOtpFailure
+// GetStepSize returns the StepSize field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetStepSize() DeviceAuthenticationPolicyMobileOtpWindowStepSize {
+	if o == nil || o.StepSize == nil {
+		var ret DeviceAuthenticationPolicyMobileOtpWindowStepSize
 		return ret
 	}
-	return *o.Failure
+	return *o.StepSize
 }
 
-// GetFailureOk returns a tuple with the Failure field value if set, nil otherwise
+// GetStepSizeOk returns a tuple with the StepSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetFailureOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpFailure, bool) {
-	if o == nil || o.Failure == nil {
+func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetStepSizeOk() (*DeviceAuthenticationPolicyMobileOtpWindowStepSize, bool) {
+	if o == nil || o.StepSize == nil {
 		return nil, false
 	}
-	return o.Failure, true
+	return o.StepSize, true
 }
 
-// HasFailure returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyMobileOtpWindow) HasFailure() bool {
-	if o != nil && o.Failure != nil {
+// HasStepSize returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyMobileOtpWindow) HasStepSize() bool {
+	if o != nil && o.StepSize != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetFailure gets a reference to the given DeviceAuthenticationPolicyOfflineDeviceOtpFailure and assigns it to the Failure field.
-func (o *DeviceAuthenticationPolicyMobileOtpWindow) SetFailure(v DeviceAuthenticationPolicyOfflineDeviceOtpFailure) {
-	o.Failure = &v
+// SetStepSize gets a reference to the given DeviceAuthenticationPolicyMobileOtpWindowStepSize and assigns it to the StepSize field.
+func (o *DeviceAuthenticationPolicyMobileOtpWindow) SetStepSize(v DeviceAuthenticationPolicyMobileOtpWindowStepSize) {
+	o.StepSize = &v
 }
 
 func (o DeviceAuthenticationPolicyMobileOtpWindow) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Failure != nil {
-		toSerialize["failure"] = o.Failure
+	if o.StepSize != nil {
+		toSerialize["stepSize"] = o.StepSize
 	}
 	return json.Marshal(toSerialize)
 }

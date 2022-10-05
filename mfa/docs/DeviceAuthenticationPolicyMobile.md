@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Enabled or disabled in the policy. | [optional] 
-**Otp** | Pointer to [**DeviceAuthenticationPolicyMobileOtp**](DeviceAuthenticationPolicyMobileOtp.md) |  | [optional] 
+**Enabled** | **bool** | Enabled or disabled in the policy. | 
+**Otp** | [**DeviceAuthenticationPolicyMobileOtp**](DeviceAuthenticationPolicyMobileOtp.md) |  | 
 **Applications** | Pointer to [**[]DeviceAuthenticationPolicyMobileApplicationsInner**](DeviceAuthenticationPolicyMobileApplicationsInner.md) |  | [optional] 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyMobile
 
-`func NewDeviceAuthenticationPolicyMobile() *DeviceAuthenticationPolicyMobile`
+`func NewDeviceAuthenticationPolicyMobile(enabled bool, otp DeviceAuthenticationPolicyMobileOtp, ) *DeviceAuthenticationPolicyMobile`
 
 NewDeviceAuthenticationPolicyMobile instantiates a new DeviceAuthenticationPolicyMobile object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *DeviceAuthenticationPolicyMobile) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetOtp
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetOtp sets Otp field to given value.
 
-### HasOtp
-
-`func (o *DeviceAuthenticationPolicyMobile) HasOtp() bool`
-
-HasOtp returns a boolean if a field has been set.
 
 ### GetApplications
 

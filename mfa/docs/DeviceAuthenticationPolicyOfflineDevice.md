@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Enabled or disabled in the policy. | [optional] 
-**Otp** | Pointer to [**DeviceAuthenticationPolicyOfflineDeviceOtp**](DeviceAuthenticationPolicyOfflineDeviceOtp.md) |  | [optional] 
+**Enabled** | **bool** | Enabled or disabled in the policy. | 
+**Otp** | [**DeviceAuthenticationPolicyOfflineDeviceOtp**](DeviceAuthenticationPolicyOfflineDeviceOtp.md) |  | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyOfflineDevice
 
-`func NewDeviceAuthenticationPolicyOfflineDevice() *DeviceAuthenticationPolicyOfflineDevice`
+`func NewDeviceAuthenticationPolicyOfflineDevice(enabled bool, otp DeviceAuthenticationPolicyOfflineDeviceOtp, ) *DeviceAuthenticationPolicyOfflineDevice`
 
 NewDeviceAuthenticationPolicyOfflineDevice instantiates a new DeviceAuthenticationPolicyOfflineDevice object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *DeviceAuthenticationPolicyOfflineDevice) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetOtp
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetOtp sets Otp field to given value.
 
-### HasOtp
-
-`func (o *DeviceAuthenticationPolicyOfflineDevice) HasOtp() bool`
-
-HasOtp returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

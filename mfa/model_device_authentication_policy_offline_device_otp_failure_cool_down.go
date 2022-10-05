@@ -17,16 +17,18 @@ import (
 // DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown struct for DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown
 type DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown struct {
 	// The duration (number of time units) the user is blocked after reaching the maximum number of passcode failures.
-	Duration *int32 `json:"duration,omitempty"`
-	TimeUnit *EnumTimeUnit `json:"timeUnit,omitempty"`
+	Duration int32 `json:"duration"`
+	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
 // NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown instantiates a new DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown() *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown {
+func NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown(duration int32, timeUnit EnumTimeUnit) *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown {
 	this := DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown{}
+	this.Duration = duration
+	this.TimeUnit = timeUnit
 	return &this
 }
 
@@ -38,76 +40,60 @@ func NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDownWithDefaults() 
 	return &this
 }
 
-// GetDuration returns the Duration field value if set, zero value otherwise.
+// GetDuration returns the Duration field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) GetDuration() int32 {
-	if o == nil || o.Duration == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Duration
+
+	return o.Duration
 }
 
-// GetDurationOk returns a tuple with the Duration field value if set, nil otherwise
+// GetDurationOk returns a tuple with the Duration field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) GetDurationOk() (*int32, bool) {
-	if o == nil || o.Duration == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Duration, true
+	return &o.Duration, true
 }
 
-// HasDuration returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) HasDuration() bool {
-	if o != nil && o.Duration != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDuration gets a reference to the given int32 and assigns it to the Duration field.
+// SetDuration sets field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) SetDuration(v int32) {
-	o.Duration = &v
+	o.Duration = v
 }
 
-// GetTimeUnit returns the TimeUnit field value if set, zero value otherwise.
+// GetTimeUnit returns the TimeUnit field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) GetTimeUnit() EnumTimeUnit {
-	if o == nil || o.TimeUnit == nil {
+	if o == nil {
 		var ret EnumTimeUnit
 		return ret
 	}
-	return *o.TimeUnit
+
+	return o.TimeUnit
 }
 
-// GetTimeUnitOk returns a tuple with the TimeUnit field value if set, nil otherwise
+// GetTimeUnitOk returns a tuple with the TimeUnit field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) GetTimeUnitOk() (*EnumTimeUnit, bool) {
-	if o == nil || o.TimeUnit == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.TimeUnit, true
+	return &o.TimeUnit, true
 }
 
-// HasTimeUnit returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) HasTimeUnit() bool {
-	if o != nil && o.TimeUnit != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTimeUnit gets a reference to the given EnumTimeUnit and assigns it to the TimeUnit field.
+// SetTimeUnit sets field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) SetTimeUnit(v EnumTimeUnit) {
-	o.TimeUnit = &v
+	o.TimeUnit = v
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Duration != nil {
+	if true {
 		toSerialize["duration"] = o.Duration
 	}
-	if o.TimeUnit != nil {
+	if true {
 		toSerialize["timeUnit"] = o.TimeUnit
 	}
 	return json.Marshal(toSerialize)

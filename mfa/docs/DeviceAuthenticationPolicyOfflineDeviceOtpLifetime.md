@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Duration** | Pointer to **int32** | The duration (number of time units) that the passcode is valid before it expires. | [optional] 
-**TimeUnit** | Pointer to [**EnumTimeUnit**](EnumTimeUnit.md) |  | [optional] 
+**Duration** | **int32** | The duration (number of time units) that the passcode is valid before it expires. | 
+**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) |  | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyOfflineDeviceOtpLifetime
 
-`func NewDeviceAuthenticationPolicyOfflineDeviceOtpLifetime() *DeviceAuthenticationPolicyOfflineDeviceOtpLifetime`
+`func NewDeviceAuthenticationPolicyOfflineDeviceOtpLifetime(duration int32, timeUnit EnumTimeUnit, ) *DeviceAuthenticationPolicyOfflineDeviceOtpLifetime`
 
 NewDeviceAuthenticationPolicyOfflineDeviceOtpLifetime instantiates a new DeviceAuthenticationPolicyOfflineDeviceOtpLifetime object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetDuration sets Duration field to given value.
 
-### HasDuration
-
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifetime) HasDuration() bool`
-
-HasDuration returns a boolean if a field has been set.
 
 ### GetTimeUnit
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetTimeUnit sets TimeUnit field to given value.
 
-### HasTimeUnit
-
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifetime) HasTimeUnit() bool`
-
-HasTimeUnit returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

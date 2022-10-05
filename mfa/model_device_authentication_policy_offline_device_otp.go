@@ -16,16 +16,18 @@ import (
 
 // DeviceAuthenticationPolicyOfflineDeviceOtp struct for DeviceAuthenticationPolicyOfflineDeviceOtp
 type DeviceAuthenticationPolicyOfflineDeviceOtp struct {
-	Lifetime *DeviceAuthenticationPolicyOfflineDeviceOtpLifetime `json:"lifetime,omitempty"`
-	Failure *DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure,omitempty"`
+	Lifetime DeviceAuthenticationPolicyOfflineDeviceOtpLifetime `json:"lifetime"`
+	Failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure"`
 }
 
 // NewDeviceAuthenticationPolicyOfflineDeviceOtp instantiates a new DeviceAuthenticationPolicyOfflineDeviceOtp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyOfflineDeviceOtp() *DeviceAuthenticationPolicyOfflineDeviceOtp {
+func NewDeviceAuthenticationPolicyOfflineDeviceOtp(lifetime DeviceAuthenticationPolicyOfflineDeviceOtpLifetime, failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure) *DeviceAuthenticationPolicyOfflineDeviceOtp {
 	this := DeviceAuthenticationPolicyOfflineDeviceOtp{}
+	this.Lifetime = lifetime
+	this.Failure = failure
 	return &this
 }
 
@@ -37,76 +39,60 @@ func NewDeviceAuthenticationPolicyOfflineDeviceOtpWithDefaults() *DeviceAuthenti
 	return &this
 }
 
-// GetLifetime returns the Lifetime field value if set, zero value otherwise.
+// GetLifetime returns the Lifetime field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifetime() DeviceAuthenticationPolicyOfflineDeviceOtpLifetime {
-	if o == nil || o.Lifetime == nil {
+	if o == nil {
 		var ret DeviceAuthenticationPolicyOfflineDeviceOtpLifetime
 		return ret
 	}
-	return *o.Lifetime
+
+	return o.Lifetime
 }
 
-// GetLifetimeOk returns a tuple with the Lifetime field value if set, nil otherwise
+// GetLifetimeOk returns a tuple with the Lifetime field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifetimeOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpLifetime, bool) {
-	if o == nil || o.Lifetime == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Lifetime, true
+	return &o.Lifetime, true
 }
 
-// HasLifetime returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) HasLifetime() bool {
-	if o != nil && o.Lifetime != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLifetime gets a reference to the given DeviceAuthenticationPolicyOfflineDeviceOtpLifetime and assigns it to the Lifetime field.
+// SetLifetime sets field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetLifetime(v DeviceAuthenticationPolicyOfflineDeviceOtpLifetime) {
-	o.Lifetime = &v
+	o.Lifetime = v
 }
 
-// GetFailure returns the Failure field value if set, zero value otherwise.
+// GetFailure returns the Failure field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetFailure() DeviceAuthenticationPolicyOfflineDeviceOtpFailure {
-	if o == nil || o.Failure == nil {
+	if o == nil {
 		var ret DeviceAuthenticationPolicyOfflineDeviceOtpFailure
 		return ret
 	}
-	return *o.Failure
+
+	return o.Failure
 }
 
-// GetFailureOk returns a tuple with the Failure field value if set, nil otherwise
+// GetFailureOk returns a tuple with the Failure field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetFailureOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpFailure, bool) {
-	if o == nil || o.Failure == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Failure, true
+	return &o.Failure, true
 }
 
-// HasFailure returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) HasFailure() bool {
-	if o != nil && o.Failure != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetFailure gets a reference to the given DeviceAuthenticationPolicyOfflineDeviceOtpFailure and assigns it to the Failure field.
+// SetFailure sets field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetFailure(v DeviceAuthenticationPolicyOfflineDeviceOtpFailure) {
-	o.Failure = &v
+	o.Failure = v
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Lifetime != nil {
+	if true {
 		toSerialize["lifetime"] = o.Lifetime
 	}
-	if o.Failure != nil {
+	if true {
 		toSerialize["failure"] = o.Failure
 	}
 	return json.Marshal(toSerialize)

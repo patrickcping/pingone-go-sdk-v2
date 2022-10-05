@@ -17,16 +17,18 @@ import (
 // DeviceAuthenticationPolicyOfflineDeviceOtpFailure struct for DeviceAuthenticationPolicyOfflineDeviceOtpFailure
 type DeviceAuthenticationPolicyOfflineDeviceOtpFailure struct {
 	// The maximum number of times that the OTP entry can fail for a user, before they are blocked.
-	Count *int32 `json:"count,omitempty"`
-	CoolDown *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown `json:"coolDown,omitempty"`
+	Count int32 `json:"count"`
+	CoolDown DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown `json:"coolDown"`
 }
 
 // NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure instantiates a new DeviceAuthenticationPolicyOfflineDeviceOtpFailure object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure() *DeviceAuthenticationPolicyOfflineDeviceOtpFailure {
+func NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure(count int32, coolDown DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) *DeviceAuthenticationPolicyOfflineDeviceOtpFailure {
 	this := DeviceAuthenticationPolicyOfflineDeviceOtpFailure{}
+	this.Count = count
+	this.CoolDown = coolDown
 	return &this
 }
 
@@ -38,76 +40,60 @@ func NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureWithDefaults() *DeviceA
 	return &this
 }
 
-// GetCount returns the Count field value if set, zero value otherwise.
+// GetCount returns the Count field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) GetCount() int32 {
-	if o == nil || o.Count == nil {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Count
+
+	return o.Count
 }
 
-// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// GetCountOk returns a tuple with the Count field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) GetCountOk() (*int32, bool) {
-	if o == nil || o.Count == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Count, true
+	return &o.Count, true
 }
 
-// HasCount returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) HasCount() bool {
-	if o != nil && o.Count != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCount gets a reference to the given int32 and assigns it to the Count field.
+// SetCount sets field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) SetCount(v int32) {
-	o.Count = &v
+	o.Count = v
 }
 
-// GetCoolDown returns the CoolDown field value if set, zero value otherwise.
+// GetCoolDown returns the CoolDown field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) GetCoolDown() DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown {
-	if o == nil || o.CoolDown == nil {
+	if o == nil {
 		var ret DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown
 		return ret
 	}
-	return *o.CoolDown
+
+	return o.CoolDown
 }
 
-// GetCoolDownOk returns a tuple with the CoolDown field value if set, nil otherwise
+// GetCoolDownOk returns a tuple with the CoolDown field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) GetCoolDownOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown, bool) {
-	if o == nil || o.CoolDown == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.CoolDown, true
+	return &o.CoolDown, true
 }
 
-// HasCoolDown returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) HasCoolDown() bool {
-	if o != nil && o.CoolDown != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCoolDown gets a reference to the given DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown and assigns it to the CoolDown field.
+// SetCoolDown sets field value
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) SetCoolDown(v DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) {
-	o.CoolDown = &v
+	o.CoolDown = v
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpFailure) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Count != nil {
+	if true {
 		toSerialize["count"] = o.Count
 	}
-	if o.CoolDown != nil {
+	if true {
 		toSerialize["coolDown"] = o.CoolDown
 	}
 	return json.Marshal(toSerialize)

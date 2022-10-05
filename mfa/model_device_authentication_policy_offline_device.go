@@ -17,16 +17,18 @@ import (
 // DeviceAuthenticationPolicyOfflineDevice struct for DeviceAuthenticationPolicyOfflineDevice
 type DeviceAuthenticationPolicyOfflineDevice struct {
 	// Enabled or disabled in the policy.
-	Enabled *bool `json:"enabled,omitempty"`
-	Otp *DeviceAuthenticationPolicyOfflineDeviceOtp `json:"otp,omitempty"`
+	Enabled bool `json:"enabled"`
+	Otp DeviceAuthenticationPolicyOfflineDeviceOtp `json:"otp"`
 }
 
 // NewDeviceAuthenticationPolicyOfflineDevice instantiates a new DeviceAuthenticationPolicyOfflineDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyOfflineDevice() *DeviceAuthenticationPolicyOfflineDevice {
+func NewDeviceAuthenticationPolicyOfflineDevice(enabled bool, otp DeviceAuthenticationPolicyOfflineDeviceOtp) *DeviceAuthenticationPolicyOfflineDevice {
 	this := DeviceAuthenticationPolicyOfflineDevice{}
+	this.Enabled = enabled
+	this.Otp = otp
 	return &this
 }
 
@@ -38,76 +40,60 @@ func NewDeviceAuthenticationPolicyOfflineDeviceWithDefaults() *DeviceAuthenticat
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *DeviceAuthenticationPolicyOfflineDevice) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDevice) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyOfflineDevice) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *DeviceAuthenticationPolicyOfflineDevice) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
-// GetOtp returns the Otp field value if set, zero value otherwise.
+// GetOtp returns the Otp field value
 func (o *DeviceAuthenticationPolicyOfflineDevice) GetOtp() DeviceAuthenticationPolicyOfflineDeviceOtp {
-	if o == nil || o.Otp == nil {
+	if o == nil {
 		var ret DeviceAuthenticationPolicyOfflineDeviceOtp
 		return ret
 	}
-	return *o.Otp
+
+	return o.Otp
 }
 
-// GetOtpOk returns a tuple with the Otp field value if set, nil otherwise
+// GetOtpOk returns a tuple with the Otp field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDevice) GetOtpOk() (*DeviceAuthenticationPolicyOfflineDeviceOtp, bool) {
-	if o == nil || o.Otp == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Otp, true
+	return &o.Otp, true
 }
 
-// HasOtp returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyOfflineDevice) HasOtp() bool {
-	if o != nil && o.Otp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOtp gets a reference to the given DeviceAuthenticationPolicyOfflineDeviceOtp and assigns it to the Otp field.
+// SetOtp sets field value
 func (o *DeviceAuthenticationPolicyOfflineDevice) SetOtp(v DeviceAuthenticationPolicyOfflineDeviceOtp) {
-	o.Otp = &v
+	o.Otp = v
 }
 
 func (o DeviceAuthenticationPolicyOfflineDevice) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Otp != nil {
+	if true {
 		toSerialize["otp"] = o.Otp
 	}
 	return json.Marshal(toSerialize)

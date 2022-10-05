@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Lifetime** | Pointer to [**DeviceAuthenticationPolicyOfflineDeviceOtpLifetime**](DeviceAuthenticationPolicyOfflineDeviceOtpLifetime.md) |  | [optional] 
-**Failure** | Pointer to [**DeviceAuthenticationPolicyOfflineDeviceOtpFailure**](DeviceAuthenticationPolicyOfflineDeviceOtpFailure.md) |  | [optional] 
+**Lifetime** | [**DeviceAuthenticationPolicyOfflineDeviceOtpLifetime**](DeviceAuthenticationPolicyOfflineDeviceOtpLifetime.md) |  | 
+**Failure** | [**DeviceAuthenticationPolicyOfflineDeviceOtpFailure**](DeviceAuthenticationPolicyOfflineDeviceOtpFailure.md) |  | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyOfflineDeviceOtp
 
-`func NewDeviceAuthenticationPolicyOfflineDeviceOtp() *DeviceAuthenticationPolicyOfflineDeviceOtp`
+`func NewDeviceAuthenticationPolicyOfflineDeviceOtp(lifetime DeviceAuthenticationPolicyOfflineDeviceOtpLifetime, failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure, ) *DeviceAuthenticationPolicyOfflineDeviceOtp`
 
 NewDeviceAuthenticationPolicyOfflineDeviceOtp instantiates a new DeviceAuthenticationPolicyOfflineDeviceOtp object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetLifetime sets Lifetime field to given value.
 
-### HasLifetime
-
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) HasLifetime() bool`
-
-HasLifetime returns a boolean if a field has been set.
 
 ### GetFailure
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetFailure sets Failure field to given value.
 
-### HasFailure
-
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) HasFailure() bool`
-
-HasFailure returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

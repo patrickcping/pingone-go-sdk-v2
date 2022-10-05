@@ -4,7 +4,7 @@
     * **Feature** Support for Licenses [#60](https://github.com/patrickcping/pingone-go-sdk-v2/pull/60)
     * **Feature** Support for Languages [#62](https://github.com/patrickcping/pingone-go-sdk-v2/pull/62)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.6.0](./management/CHANGELOG.md)
-    * **Enhancement** Updated the Device policy API [#58](https://github.com/patrickcping/pingone-go-sdk-v2/pull/58)
+    * **Bug fix** Corrected the Device policy API [#58](https://github.com/patrickcping/pingone-go-sdk-v2/pull/58)
 
 # Release (2022-09-18)
 
