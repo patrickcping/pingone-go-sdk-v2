@@ -16,15 +16,16 @@ import (
 
 // DeviceAuthenticationPolicyMobileOtpWindow struct for DeviceAuthenticationPolicyMobileOtpWindow
 type DeviceAuthenticationPolicyMobileOtpWindow struct {
-	StepSize *DeviceAuthenticationPolicyMobileOtpWindowStepSize `json:"stepSize,omitempty"`
+	StepSize DeviceAuthenticationPolicyMobileOtpWindowStepSize `json:"stepSize"`
 }
 
 // NewDeviceAuthenticationPolicyMobileOtpWindow instantiates a new DeviceAuthenticationPolicyMobileOtpWindow object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyMobileOtpWindow() *DeviceAuthenticationPolicyMobileOtpWindow {
+func NewDeviceAuthenticationPolicyMobileOtpWindow(stepSize DeviceAuthenticationPolicyMobileOtpWindowStepSize) *DeviceAuthenticationPolicyMobileOtpWindow {
 	this := DeviceAuthenticationPolicyMobileOtpWindow{}
+	this.StepSize = stepSize
 	return &this
 }
 
@@ -36,41 +37,33 @@ func NewDeviceAuthenticationPolicyMobileOtpWindowWithDefaults() *DeviceAuthentic
 	return &this
 }
 
-// GetStepSize returns the StepSize field value if set, zero value otherwise.
+// GetStepSize returns the StepSize field value
 func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetStepSize() DeviceAuthenticationPolicyMobileOtpWindowStepSize {
-	if o == nil || o.StepSize == nil {
+	if o == nil {
 		var ret DeviceAuthenticationPolicyMobileOtpWindowStepSize
 		return ret
 	}
-	return *o.StepSize
+
+	return o.StepSize
 }
 
-// GetStepSizeOk returns a tuple with the StepSize field value if set, nil otherwise
+// GetStepSizeOk returns a tuple with the StepSize field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetStepSizeOk() (*DeviceAuthenticationPolicyMobileOtpWindowStepSize, bool) {
-	if o == nil || o.StepSize == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.StepSize, true
+	return &o.StepSize, true
 }
 
-// HasStepSize returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyMobileOtpWindow) HasStepSize() bool {
-	if o != nil && o.StepSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStepSize gets a reference to the given DeviceAuthenticationPolicyMobileOtpWindowStepSize and assigns it to the StepSize field.
+// SetStepSize sets field value
 func (o *DeviceAuthenticationPolicyMobileOtpWindow) SetStepSize(v DeviceAuthenticationPolicyMobileOtpWindowStepSize) {
-	o.StepSize = &v
+	o.StepSize = v
 }
 
 func (o DeviceAuthenticationPolicyMobileOtpWindow) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.StepSize != nil {
+	if true {
 		toSerialize["stepSize"] = o.StepSize
 	}
 	return json.Marshal(toSerialize)

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StepSize** | Pointer to [**DeviceAuthenticationPolicyMobileOtpWindowStepSize**](DeviceAuthenticationPolicyMobileOtpWindowStepSize.md) |  | [optional] 
+**StepSize** | [**DeviceAuthenticationPolicyMobileOtpWindowStepSize**](DeviceAuthenticationPolicyMobileOtpWindowStepSize.md) |  | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyMobileOtpWindow
 
-`func NewDeviceAuthenticationPolicyMobileOtpWindow() *DeviceAuthenticationPolicyMobileOtpWindow`
+`func NewDeviceAuthenticationPolicyMobileOtpWindow(stepSize DeviceAuthenticationPolicyMobileOtpWindowStepSize, ) *DeviceAuthenticationPolicyMobileOtpWindow`
 
 NewDeviceAuthenticationPolicyMobileOtpWindow instantiates a new DeviceAuthenticationPolicyMobileOtpWindow object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetStepSize sets StepSize field to given value.
 
-### HasStepSize
-
-`func (o *DeviceAuthenticationPolicyMobileOtpWindow) HasStepSize() bool`
-
-HasStepSize returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

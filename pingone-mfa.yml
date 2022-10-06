@@ -140,6 +140,11 @@ components:
                           type: integer
                         timeUnit:
                           $ref: '#/components/schemas/EnumTimeUnit'
+                      required:
+                        - duration
+                        - timeUnit
+                  required:
+                    - stepSize
               required:
                 - failure
                 - window

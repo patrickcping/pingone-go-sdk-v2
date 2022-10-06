@@ -2417,6 +2417,9 @@ components:
           type: integer
         timeUnit:
           $ref: '#/components/schemas/EnumTimeUnit'
+      required:
+      - duration
+      - timeUnit
       type: object
     DeviceAuthenticationPolicy_mobile_otp_window:
       example:
@@ -2426,6 +2429,8 @@ components:
       properties:
         stepSize:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_otp_window_stepSize'
+      required:
+      - stepSize
       type: object
     DeviceAuthenticationPolicy_mobile_otp:
       example:
