@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.0
+    * **Feature** Added error models and marshal helpers to `model` package
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.11.0](./management/CHANGELOG.md)
     * **Feature** Support for Licenses [#60](https://github.com/patrickcping/pingone-go-sdk-v2/pull/60)
     * **Feature** Support for Languages [#62](https://github.com/patrickcping/pingone-go-sdk-v2/pull/62)
