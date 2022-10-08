@@ -6,23 +6,23 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | Device authentication policy&#39;s UUID. | [optional] [readonly] 
-**Name** | Pointer to **string** | Device authentication policy&#39;s name. | [optional] 
-**Sms** | Pointer to [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | [optional] 
-**Voice** | Pointer to [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | [optional] 
-**Email** | Pointer to [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | [optional] 
-**Mobile** | Pointer to [**DeviceAuthenticationPolicyMobile**](DeviceAuthenticationPolicyMobile.md) |  | [optional] 
-**Totp** | Pointer to [**DeviceAuthenticationPolicyTotp**](DeviceAuthenticationPolicyTotp.md) |  | [optional] 
-**SecurityKey** | Pointer to [**DeviceAuthenticationPolicySecurityKey**](DeviceAuthenticationPolicySecurityKey.md) |  | [optional] 
-**Platform** | Pointer to [**DeviceAuthenticationPolicyPlatform**](DeviceAuthenticationPolicyPlatform.md) |  | [optional] 
-**Default** | Pointer to **bool** | The default policy for Flow Manager. | [optional] 
-**ForSignOnPolicy** | Pointer to **bool** |  | [optional] 
+**Name** | **string** | Device authentication policy&#39;s name. | 
+**Sms** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
+**Voice** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
+**Email** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
+**Mobile** | [**DeviceAuthenticationPolicyMobile**](DeviceAuthenticationPolicyMobile.md) |  | 
+**Totp** | [**DeviceAuthenticationPolicyTotp**](DeviceAuthenticationPolicyTotp.md) |  | 
+**SecurityKey** | [**DeviceAuthenticationPolicyFIDODevice**](DeviceAuthenticationPolicyFIDODevice.md) |  | 
+**Platform** | [**DeviceAuthenticationPolicyFIDODevice**](DeviceAuthenticationPolicyFIDODevice.md) |  | 
+**Default** | **bool** | The default policy for Flow Manager. | 
+**ForSignOnPolicy** | **bool** |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicy
 
-`func NewDeviceAuthenticationPolicy() *DeviceAuthenticationPolicy`
+`func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyMobile, totp DeviceAuthenticationPolicyTotp, securityKey DeviceAuthenticationPolicyFIDODevice, platform DeviceAuthenticationPolicyFIDODevice, default_ bool, forSignOnPolicy bool, ) *DeviceAuthenticationPolicy`
 
 NewDeviceAuthenticationPolicy instantiates a new DeviceAuthenticationPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -106,11 +106,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *DeviceAuthenticationPolicy) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetSms
 
@@ -131,11 +126,6 @@ and a boolean to check if the value has been set.
 
 SetSms sets Sms field to given value.
 
-### HasSms
-
-`func (o *DeviceAuthenticationPolicy) HasSms() bool`
-
-HasSms returns a boolean if a field has been set.
 
 ### GetVoice
 
@@ -156,11 +146,6 @@ and a boolean to check if the value has been set.
 
 SetVoice sets Voice field to given value.
 
-### HasVoice
-
-`func (o *DeviceAuthenticationPolicy) HasVoice() bool`
-
-HasVoice returns a boolean if a field has been set.
 
 ### GetEmail
 
@@ -181,11 +166,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-### HasEmail
-
-`func (o *DeviceAuthenticationPolicy) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
 
 ### GetMobile
 
@@ -206,11 +186,6 @@ and a boolean to check if the value has been set.
 
 SetMobile sets Mobile field to given value.
 
-### HasMobile
-
-`func (o *DeviceAuthenticationPolicy) HasMobile() bool`
-
-HasMobile returns a boolean if a field has been set.
 
 ### GetTotp
 
@@ -231,61 +206,46 @@ and a boolean to check if the value has been set.
 
 SetTotp sets Totp field to given value.
 
-### HasTotp
-
-`func (o *DeviceAuthenticationPolicy) HasTotp() bool`
-
-HasTotp returns a boolean if a field has been set.
 
 ### GetSecurityKey
 
-`func (o *DeviceAuthenticationPolicy) GetSecurityKey() DeviceAuthenticationPolicySecurityKey`
+`func (o *DeviceAuthenticationPolicy) GetSecurityKey() DeviceAuthenticationPolicyFIDODevice`
 
 GetSecurityKey returns the SecurityKey field if non-nil, zero value otherwise.
 
 ### GetSecurityKeyOk
 
-`func (o *DeviceAuthenticationPolicy) GetSecurityKeyOk() (*DeviceAuthenticationPolicySecurityKey, bool)`
+`func (o *DeviceAuthenticationPolicy) GetSecurityKeyOk() (*DeviceAuthenticationPolicyFIDODevice, bool)`
 
 GetSecurityKeyOk returns a tuple with the SecurityKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecurityKey
 
-`func (o *DeviceAuthenticationPolicy) SetSecurityKey(v DeviceAuthenticationPolicySecurityKey)`
+`func (o *DeviceAuthenticationPolicy) SetSecurityKey(v DeviceAuthenticationPolicyFIDODevice)`
 
 SetSecurityKey sets SecurityKey field to given value.
 
-### HasSecurityKey
-
-`func (o *DeviceAuthenticationPolicy) HasSecurityKey() bool`
-
-HasSecurityKey returns a boolean if a field has been set.
 
 ### GetPlatform
 
-`func (o *DeviceAuthenticationPolicy) GetPlatform() DeviceAuthenticationPolicyPlatform`
+`func (o *DeviceAuthenticationPolicy) GetPlatform() DeviceAuthenticationPolicyFIDODevice`
 
 GetPlatform returns the Platform field if non-nil, zero value otherwise.
 
 ### GetPlatformOk
 
-`func (o *DeviceAuthenticationPolicy) GetPlatformOk() (*DeviceAuthenticationPolicyPlatform, bool)`
+`func (o *DeviceAuthenticationPolicy) GetPlatformOk() (*DeviceAuthenticationPolicyFIDODevice, bool)`
 
 GetPlatformOk returns a tuple with the Platform field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlatform
 
-`func (o *DeviceAuthenticationPolicy) SetPlatform(v DeviceAuthenticationPolicyPlatform)`
+`func (o *DeviceAuthenticationPolicy) SetPlatform(v DeviceAuthenticationPolicyFIDODevice)`
 
 SetPlatform sets Platform field to given value.
 
-### HasPlatform
-
-`func (o *DeviceAuthenticationPolicy) HasPlatform() bool`
-
-HasPlatform returns a boolean if a field has been set.
 
 ### GetDefault
 
@@ -306,11 +266,6 @@ and a boolean to check if the value has been set.
 
 SetDefault sets Default field to given value.
 
-### HasDefault
-
-`func (o *DeviceAuthenticationPolicy) HasDefault() bool`
-
-HasDefault returns a boolean if a field has been set.
 
 ### GetForSignOnPolicy
 
@@ -331,11 +286,6 @@ and a boolean to check if the value has been set.
 
 SetForSignOnPolicy sets ForSignOnPolicy field to given value.
 
-### HasForSignOnPolicy
-
-`func (o *DeviceAuthenticationPolicy) HasForSignOnPolicy() bool`
-
-HasForSignOnPolicy returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

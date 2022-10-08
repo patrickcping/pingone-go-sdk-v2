@@ -17,16 +17,18 @@ import (
 // DeviceAuthenticationPolicyTotp TOTP device authentication policy settings.
 type DeviceAuthenticationPolicyTotp struct {
 	// Enabled or disabled in the policy.
-	Enabled *bool `json:"enabled,omitempty"`
-	Otp *DeviceAuthenticationPolicyMobileOtpWindow `json:"otp,omitempty"`
+	Enabled bool `json:"enabled"`
+	Otp DeviceAuthenticationPolicyTotpOtp `json:"otp"`
 }
 
 // NewDeviceAuthenticationPolicyTotp instantiates a new DeviceAuthenticationPolicyTotp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyTotp() *DeviceAuthenticationPolicyTotp {
+func NewDeviceAuthenticationPolicyTotp(enabled bool, otp DeviceAuthenticationPolicyTotpOtp) *DeviceAuthenticationPolicyTotp {
 	this := DeviceAuthenticationPolicyTotp{}
+	this.Enabled = enabled
+	this.Otp = otp
 	return &this
 }
 
@@ -38,76 +40,60 @@ func NewDeviceAuthenticationPolicyTotpWithDefaults() *DeviceAuthenticationPolicy
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *DeviceAuthenticationPolicyTotp) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyTotp) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyTotp) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *DeviceAuthenticationPolicyTotp) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
-// GetOtp returns the Otp field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyTotp) GetOtp() DeviceAuthenticationPolicyMobileOtpWindow {
-	if o == nil || o.Otp == nil {
-		var ret DeviceAuthenticationPolicyMobileOtpWindow
+// GetOtp returns the Otp field value
+func (o *DeviceAuthenticationPolicyTotp) GetOtp() DeviceAuthenticationPolicyTotpOtp {
+	if o == nil {
+		var ret DeviceAuthenticationPolicyTotpOtp
 		return ret
 	}
-	return *o.Otp
+
+	return o.Otp
 }
 
-// GetOtpOk returns a tuple with the Otp field value if set, nil otherwise
+// GetOtpOk returns a tuple with the Otp field value
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyTotp) GetOtpOk() (*DeviceAuthenticationPolicyMobileOtpWindow, bool) {
-	if o == nil || o.Otp == nil {
+func (o *DeviceAuthenticationPolicyTotp) GetOtpOk() (*DeviceAuthenticationPolicyTotpOtp, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Otp, true
+	return &o.Otp, true
 }
 
-// HasOtp returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyTotp) HasOtp() bool {
-	if o != nil && o.Otp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOtp gets a reference to the given DeviceAuthenticationPolicyMobileOtpWindow and assigns it to the Otp field.
-func (o *DeviceAuthenticationPolicyTotp) SetOtp(v DeviceAuthenticationPolicyMobileOtpWindow) {
-	o.Otp = &v
+// SetOtp sets field value
+func (o *DeviceAuthenticationPolicyTotp) SetOtp(v DeviceAuthenticationPolicyTotpOtp) {
+	o.Otp = v
 }
 
 func (o DeviceAuthenticationPolicyTotp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Otp != nil {
+	if true {
 		toSerialize["otp"] = o.Otp
 	}
 	return json.Marshal(toSerialize)

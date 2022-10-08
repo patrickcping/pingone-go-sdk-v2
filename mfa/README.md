@@ -87,7 +87,7 @@ Class | Method | HTTP request | Description
 *DeviceAuthenticationPolicyApi* | [**DeleteDeviceAuthenticationPolicy**](docs/DeviceAuthenticationPolicyApi.md#deletedeviceauthenticationpolicy) | **Delete** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | DELETE Device Authentication Policy
 *DeviceAuthenticationPolicyApi* | [**ReadDeviceAuthenticationPolicies**](docs/DeviceAuthenticationPolicyApi.md#readdeviceauthenticationpolicies) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicies | READ Device Authentication Policies
 *DeviceAuthenticationPolicyApi* | [**ReadOneDeviceAuthenticationPolicy**](docs/DeviceAuthenticationPolicyApi.md#readonedeviceauthenticationpolicy) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | READ One Device Authentication Policy
-*DeviceAuthenticationPolicyApi* | [**V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut**](docs/DeviceAuthenticationPolicyApi.md#v1environmentsenvironmentiddeviceauthenticationpoliciesdeviceauthenticationpolicyidput) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | UPDATE Device Authentication Policy
+*DeviceAuthenticationPolicyApi* | [**UpdateDeviceAuthenticationPolicy**](docs/DeviceAuthenticationPolicyApi.md#updatedeviceauthenticationpolicy) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | UPDATE Device Authentication Policy
 *MFASettingsApi* | [**ReadMFASettings**](docs/MFASettingsApi.md#readmfasettings) | **Get** /v1/environments/{environmentID}/mfaSettings | READ MFA Settings
 *MFASettingsApi* | [**ResetMFASettings**](docs/MFASettingsApi.md#resetmfasettings) | **Delete** /v1/environments/{environmentID}/mfaSettings | RESET MFA Settings
 *MFASettingsApi* | [**UpdateMFASettings**](docs/MFASettingsApi.md#updatemfasettings) | **Put** /v1/environments/{environmentID}/mfaSettings | UPDATE MFA Settings
@@ -111,6 +111,7 @@ Class | Method | HTTP request | Description
  - [CreateMFAPushCredential201Response](docs/CreateMFAPushCredential201Response.md)
  - [CreateMFAPushCredentialRequest](docs/CreateMFAPushCredentialRequest.md)
  - [DeviceAuthenticationPolicy](docs/DeviceAuthenticationPolicy.md)
+ - [DeviceAuthenticationPolicyFIDODevice](docs/DeviceAuthenticationPolicyFIDODevice.md)
  - [DeviceAuthenticationPolicyMobile](docs/DeviceAuthenticationPolicyMobile.md)
  - [DeviceAuthenticationPolicyMobileApplicationsInner](docs/DeviceAuthenticationPolicyMobileApplicationsInner.md)
  - [DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment](docs/DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment.md)
@@ -119,17 +120,18 @@ Class | Method | HTTP request | Description
  - [DeviceAuthenticationPolicyMobileApplicationsInnerPush](docs/DeviceAuthenticationPolicyMobileApplicationsInnerPush.md)
  - [DeviceAuthenticationPolicyMobileOtp](docs/DeviceAuthenticationPolicyMobileOtp.md)
  - [DeviceAuthenticationPolicyMobileOtpWindow](docs/DeviceAuthenticationPolicyMobileOtpWindow.md)
+ - [DeviceAuthenticationPolicyMobileOtpWindowStepSize](docs/DeviceAuthenticationPolicyMobileOtpWindowStepSize.md)
  - [DeviceAuthenticationPolicyOfflineDevice](docs/DeviceAuthenticationPolicyOfflineDevice.md)
  - [DeviceAuthenticationPolicyOfflineDeviceOtp](docs/DeviceAuthenticationPolicyOfflineDeviceOtp.md)
  - [DeviceAuthenticationPolicyOfflineDeviceOtpFailure](docs/DeviceAuthenticationPolicyOfflineDeviceOtpFailure.md)
  - [DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown](docs/DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown.md)
- - [DeviceAuthenticationPolicyOfflineDeviceOtpLifetime](docs/DeviceAuthenticationPolicyOfflineDeviceOtpLifetime.md)
- - [DeviceAuthenticationPolicyPlatform](docs/DeviceAuthenticationPolicyPlatform.md)
- - [DeviceAuthenticationPolicySecurityKey](docs/DeviceAuthenticationPolicySecurityKey.md)
+ - [DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime](docs/DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime.md)
  - [DeviceAuthenticationPolicyTotp](docs/DeviceAuthenticationPolicyTotp.md)
+ - [DeviceAuthenticationPolicyTotpOtp](docs/DeviceAuthenticationPolicyTotpOtp.md)
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedPushCredentialsInner](docs/EntityArrayEmbeddedPushCredentialsInner.md)
+ - [EnumMFADevicePolicyMobileExtraVerification](docs/EnumMFADevicePolicyMobileExtraVerification.md)
  - [EnumMFADevicePolicyMobileIntegrityDetection](docs/EnumMFADevicePolicyMobileIntegrityDetection.md)
  - [EnumMFAPushCredentialAttrType](docs/EnumMFAPushCredentialAttrType.md)
  - [EnumMFASettingsDeviceSelection](docs/EnumMFASettingsDeviceSelection.md)

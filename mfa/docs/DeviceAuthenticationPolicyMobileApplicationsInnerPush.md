@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Specifies whether push notification is enabled or disabled for the policy. | [optional] 
+**Enabled** | **bool** | Specifies whether push notification is enabled or disabled for the policy. | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyMobileApplicationsInnerPush
 
-`func NewDeviceAuthenticationPolicyMobileApplicationsInnerPush() *DeviceAuthenticationPolicyMobileApplicationsInnerPush`
+`func NewDeviceAuthenticationPolicyMobileApplicationsInnerPush(enabled bool, ) *DeviceAuthenticationPolicyMobileApplicationsInnerPush`
 
 NewDeviceAuthenticationPolicyMobileApplicationsInnerPush instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerPush object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

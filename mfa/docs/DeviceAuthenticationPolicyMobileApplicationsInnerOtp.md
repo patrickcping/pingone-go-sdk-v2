@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Specifies whether OTP authentication is enabled or disabled for the policy. | [optional] 
+**Enabled** | **bool** | Specifies whether OTP authentication is enabled or disabled for the policy. | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyMobileApplicationsInnerOtp
 
-`func NewDeviceAuthenticationPolicyMobileApplicationsInnerOtp() *DeviceAuthenticationPolicyMobileApplicationsInnerOtp`
+`func NewDeviceAuthenticationPolicyMobileApplicationsInnerOtp(enabled bool, ) *DeviceAuthenticationPolicyMobileApplicationsInnerOtp`
 
 NewDeviceAuthenticationPolicyMobileApplicationsInnerOtp instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerOtp object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerOtp) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

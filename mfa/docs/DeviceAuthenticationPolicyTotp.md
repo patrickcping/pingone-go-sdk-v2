@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Enabled or disabled in the policy. | [optional] 
-**Otp** | Pointer to [**DeviceAuthenticationPolicyMobileOtpWindow**](DeviceAuthenticationPolicyMobileOtpWindow.md) |  | [optional] 
+**Enabled** | **bool** | Enabled or disabled in the policy. | 
+**Otp** | [**DeviceAuthenticationPolicyTotpOtp**](DeviceAuthenticationPolicyTotpOtp.md) |  | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyTotp
 
-`func NewDeviceAuthenticationPolicyTotp() *DeviceAuthenticationPolicyTotp`
+`func NewDeviceAuthenticationPolicyTotp(enabled bool, otp DeviceAuthenticationPolicyTotpOtp, ) *DeviceAuthenticationPolicyTotp`
 
 NewDeviceAuthenticationPolicyTotp instantiates a new DeviceAuthenticationPolicyTotp object
 This constructor will assign default values to properties that have it defined,
@@ -45,36 +45,26 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *DeviceAuthenticationPolicyTotp) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetOtp
 
-`func (o *DeviceAuthenticationPolicyTotp) GetOtp() DeviceAuthenticationPolicyMobileOtpWindow`
+`func (o *DeviceAuthenticationPolicyTotp) GetOtp() DeviceAuthenticationPolicyTotpOtp`
 
 GetOtp returns the Otp field if non-nil, zero value otherwise.
 
 ### GetOtpOk
 
-`func (o *DeviceAuthenticationPolicyTotp) GetOtpOk() (*DeviceAuthenticationPolicyMobileOtpWindow, bool)`
+`func (o *DeviceAuthenticationPolicyTotp) GetOtpOk() (*DeviceAuthenticationPolicyTotpOtp, bool)`
 
 GetOtpOk returns a tuple with the Otp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOtp
 
-`func (o *DeviceAuthenticationPolicyTotp) SetOtp(v DeviceAuthenticationPolicyMobileOtpWindow)`
+`func (o *DeviceAuthenticationPolicyTotp) SetOtp(v DeviceAuthenticationPolicyTotpOtp)`
 
 SetOtp sets Otp field to given value.
 
-### HasOtp
-
-`func (o *DeviceAuthenticationPolicyTotp) HasOtp() bool`
-
-HasOtp returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

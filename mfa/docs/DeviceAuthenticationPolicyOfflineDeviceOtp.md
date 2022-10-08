@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Lifetime** | Pointer to [**DeviceAuthenticationPolicyOfflineDeviceOtpLifetime**](DeviceAuthenticationPolicyOfflineDeviceOtpLifetime.md) |  | [optional] 
-**Failure** | Pointer to [**DeviceAuthenticationPolicyOfflineDeviceOtpFailure**](DeviceAuthenticationPolicyOfflineDeviceOtpFailure.md) |  | [optional] 
+**LifeTime** | [**DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime**](DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime.md) |  | 
+**Failure** | [**DeviceAuthenticationPolicyOfflineDeviceOtpFailure**](DeviceAuthenticationPolicyOfflineDeviceOtpFailure.md) |  | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyOfflineDeviceOtp
 
-`func NewDeviceAuthenticationPolicyOfflineDeviceOtp() *DeviceAuthenticationPolicyOfflineDeviceOtp`
+`func NewDeviceAuthenticationPolicyOfflineDeviceOtp(lifeTime DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime, failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure, ) *DeviceAuthenticationPolicyOfflineDeviceOtp`
 
 NewDeviceAuthenticationPolicyOfflineDeviceOtp instantiates a new DeviceAuthenticationPolicyOfflineDeviceOtp object
 This constructor will assign default values to properties that have it defined,
@@ -26,30 +26,25 @@ NewDeviceAuthenticationPolicyOfflineDeviceOtpWithDefaults instantiates a new Dev
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetLifetime
+### GetLifeTime
 
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifetime() DeviceAuthenticationPolicyOfflineDeviceOtpLifetime`
+`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifeTime() DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime`
 
-GetLifetime returns the Lifetime field if non-nil, zero value otherwise.
+GetLifeTime returns the LifeTime field if non-nil, zero value otherwise.
 
-### GetLifetimeOk
+### GetLifeTimeOk
 
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifetimeOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpLifetime, bool)`
+`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifeTimeOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime, bool)`
 
-GetLifetimeOk returns a tuple with the Lifetime field if it's non-nil, zero value otherwise
+GetLifeTimeOk returns a tuple with the LifeTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLifetime
+### SetLifeTime
 
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetLifetime(v DeviceAuthenticationPolicyOfflineDeviceOtpLifetime)`
+`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetLifeTime(v DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime)`
 
-SetLifetime sets Lifetime field to given value.
+SetLifeTime sets LifeTime field to given value.
 
-### HasLifetime
-
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) HasLifetime() bool`
-
-HasLifetime returns a boolean if a field has been set.
 
 ### GetFailure
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetFailure sets Failure field to given value.
 
-### HasFailure
-
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) HasFailure() bool`
-
-HasFailure returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

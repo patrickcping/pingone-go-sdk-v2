@@ -16,15 +16,18 @@ import (
 
 // DeviceAuthenticationPolicyMobileOtp struct for DeviceAuthenticationPolicyMobileOtp
 type DeviceAuthenticationPolicyMobileOtp struct {
-	Window *DeviceAuthenticationPolicyMobileOtpWindow `json:"window,omitempty"`
+	Failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure"`
+	Window DeviceAuthenticationPolicyMobileOtpWindow `json:"window"`
 }
 
 // NewDeviceAuthenticationPolicyMobileOtp instantiates a new DeviceAuthenticationPolicyMobileOtp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyMobileOtp() *DeviceAuthenticationPolicyMobileOtp {
+func NewDeviceAuthenticationPolicyMobileOtp(failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure, window DeviceAuthenticationPolicyMobileOtpWindow) *DeviceAuthenticationPolicyMobileOtp {
 	this := DeviceAuthenticationPolicyMobileOtp{}
+	this.Failure = failure
+	this.Window = window
 	return &this
 }
 
@@ -36,41 +39,60 @@ func NewDeviceAuthenticationPolicyMobileOtpWithDefaults() *DeviceAuthenticationP
 	return &this
 }
 
-// GetWindow returns the Window field value if set, zero value otherwise.
+// GetFailure returns the Failure field value
+func (o *DeviceAuthenticationPolicyMobileOtp) GetFailure() DeviceAuthenticationPolicyOfflineDeviceOtpFailure {
+	if o == nil {
+		var ret DeviceAuthenticationPolicyOfflineDeviceOtpFailure
+		return ret
+	}
+
+	return o.Failure
+}
+
+// GetFailureOk returns a tuple with the Failure field value
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyMobileOtp) GetFailureOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpFailure, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Failure, true
+}
+
+// SetFailure sets field value
+func (o *DeviceAuthenticationPolicyMobileOtp) SetFailure(v DeviceAuthenticationPolicyOfflineDeviceOtpFailure) {
+	o.Failure = v
+}
+
+// GetWindow returns the Window field value
 func (o *DeviceAuthenticationPolicyMobileOtp) GetWindow() DeviceAuthenticationPolicyMobileOtpWindow {
-	if o == nil || o.Window == nil {
+	if o == nil {
 		var ret DeviceAuthenticationPolicyMobileOtpWindow
 		return ret
 	}
-	return *o.Window
+
+	return o.Window
 }
 
-// GetWindowOk returns a tuple with the Window field value if set, nil otherwise
+// GetWindowOk returns a tuple with the Window field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileOtp) GetWindowOk() (*DeviceAuthenticationPolicyMobileOtpWindow, bool) {
-	if o == nil || o.Window == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Window, true
+	return &o.Window, true
 }
 
-// HasWindow returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyMobileOtp) HasWindow() bool {
-	if o != nil && o.Window != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWindow gets a reference to the given DeviceAuthenticationPolicyMobileOtpWindow and assigns it to the Window field.
+// SetWindow sets field value
 func (o *DeviceAuthenticationPolicyMobileOtp) SetWindow(v DeviceAuthenticationPolicyMobileOtpWindow) {
-	o.Window = &v
+	o.Window = v
 }
 
 func (o DeviceAuthenticationPolicyMobileOtp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Window != nil {
+	if true {
+		toSerialize["failure"] = o.Failure
+	}
+	if true {
 		toSerialize["window"] = o.Window
 	}
 	return json.Marshal(toSerialize)

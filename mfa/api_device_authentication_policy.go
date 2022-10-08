@@ -682,33 +682,33 @@ func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest struct {
+type ApiUpdateDeviceAuthenticationPolicyRequest struct {
 	ctx context.Context
 	ApiService *DeviceAuthenticationPolicyApiService
 	environmentID string
 	deviceAuthenticationPolicyID string
-	body *map[string]interface{}
+	deviceAuthenticationPolicy *DeviceAuthenticationPolicy
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest {
-	r.body = &body
+func (r ApiUpdateDeviceAuthenticationPolicyRequest) DeviceAuthenticationPolicy(deviceAuthenticationPolicy DeviceAuthenticationPolicy) ApiUpdateDeviceAuthenticationPolicyRequest {
+	r.deviceAuthenticationPolicy = &deviceAuthenticationPolicy
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutExecute(r)
+func (r ApiUpdateDeviceAuthenticationPolicyRequest) Execute() (*DeviceAuthenticationPolicy, *http.Response, error) {
+	return r.ApiService.UpdateDeviceAuthenticationPolicyExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut UPDATE Device Authentication Policy
+UpdateDeviceAuthenticationPolicy UPDATE Device Authentication Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param deviceAuthenticationPolicyID
- @return ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest
+ @return ApiUpdateDeviceAuthenticationPolicyRequest
 */
-func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut(ctx context.Context, environmentID string, deviceAuthenticationPolicyID string) ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest{
+func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicy(ctx context.Context, environmentID string, deviceAuthenticationPolicyID string) ApiUpdateDeviceAuthenticationPolicyRequest {
+	return ApiUpdateDeviceAuthenticationPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -717,16 +717,18 @@ func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDevice
 }
 
 // Execute executes the request
-func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutExecute(r ApiV1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPutRequest) (*http.Response, error) {
+//  @return DeviceAuthenticationPolicy
+func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *DeviceAuthenticationPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.V1EnvironmentsEnvironmentIDDeviceAuthenticationPoliciesDeviceAuthenticationPolicyIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.UpdateDeviceAuthenticationPolicy")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}"
@@ -755,22 +757,22 @@ func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDevice
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.deviceAuthenticationPolicy
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -783,63 +785,72 @@ func (a *DeviceAuthenticationPolicyApiService) V1EnvironmentsEnvironmentIDDevice
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

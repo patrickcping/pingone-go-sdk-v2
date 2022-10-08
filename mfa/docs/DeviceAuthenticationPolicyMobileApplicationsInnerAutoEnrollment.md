@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Set to true if you want the application to allow Auto Enrollment. Auto Enrollment means that the user can authenticate for the first time from an unpaired device, and the successful authentication will result in the pairing of the device for MFA. | [optional] 
+**Enabled** | **bool** | Set to true if you want the application to allow Auto Enrollment. Auto Enrollment means that the user can authenticate for the first time from an unpaired device, and the successful authentication will result in the pairing of the device for MFA. | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment
 
-`func NewDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment() *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment`
+`func NewDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment(enabled bool, ) *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment`
 
 NewDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -17,15 +17,16 @@ import (
 // DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment struct for DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment
 type DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment struct {
 	// Set to true if you want the application to allow Auto Enrollment. Auto Enrollment means that the user can authenticate for the first time from an unpaired device, and the successful authentication will result in the pairing of the device for MFA.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 }
 
 // NewDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment() *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment {
+func NewDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment(enabled bool) *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment {
 	this := DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment{}
+	this.Enabled = enabled
 	return &this
 }
 
@@ -37,41 +38,33 @@ func NewDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollmentWithDefau
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
 	return json.Marshal(toSerialize)

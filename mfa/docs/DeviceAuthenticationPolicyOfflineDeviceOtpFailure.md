@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int32** | The maximum number of times that the OTP entry can fail for a user, before they are blocked. | [optional] 
-**CoolDown** | Pointer to [**DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown**](DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown.md) |  | [optional] 
+**Count** | **int32** | The maximum number of times that the OTP entry can fail for a user, before they are blocked. | 
+**CoolDown** | [**DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown**](DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown.md) |  | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure
 
-`func NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure() *DeviceAuthenticationPolicyOfflineDeviceOtpFailure`
+`func NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure(count int32, coolDown DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown, ) *DeviceAuthenticationPolicyOfflineDeviceOtpFailure`
 
 NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure instantiates a new DeviceAuthenticationPolicyOfflineDeviceOtpFailure object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetCount sets Count field to given value.
 
-### HasCount
-
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) HasCount() bool`
-
-HasCount returns a boolean if a field has been set.
 
 ### GetCoolDown
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetCoolDown sets CoolDown field to given value.
 
-### HasCoolDown
-
-`func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) HasCoolDown() bool`
-
-HasCoolDown returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
