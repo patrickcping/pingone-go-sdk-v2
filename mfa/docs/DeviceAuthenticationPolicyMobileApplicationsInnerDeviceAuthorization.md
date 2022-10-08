@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | Specifies the enabled or disabled state of automatic MFA for native devices paired with the user, for the specified application. | [optional] 
-**ExtraVerification** | Pointer to **string** | Specifies the level of further verification when deviceAuthorization is enabled. The PingOne platform performs an extra verification check by sending a “silent” push notification to the customer native application, and receives a confirmation in return. | [optional] 
+**Enabled** | **bool** | Specifies the enabled or disabled state of automatic MFA for native devices paired with the user, for the specified application. | 
+**ExtraVerification** | Pointer to [**EnumMFADevicePolicyMobileExtraVerification**](EnumMFADevicePolicyMobileExtraVerification.md) |  | [optional] 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization
 
-`func NewDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization() *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization`
+`func NewDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization(enabled bool, ) *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization`
 
 NewDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization object
 This constructor will assign default values to properties that have it defined,
@@ -45,28 +45,23 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetExtraVerification
 
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetExtraVerification() string`
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetExtraVerification() EnumMFADevicePolicyMobileExtraVerification`
 
 GetExtraVerification returns the ExtraVerification field if non-nil, zero value otherwise.
 
 ### GetExtraVerificationOk
 
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetExtraVerificationOk() (*string, bool)`
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetExtraVerificationOk() (*EnumMFADevicePolicyMobileExtraVerification, bool)`
 
 GetExtraVerificationOk returns a tuple with the ExtraVerification field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtraVerification
 
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) SetExtraVerification(v string)`
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) SetExtraVerification(v EnumMFADevicePolicyMobileExtraVerification)`
 
 SetExtraVerification sets ExtraVerification field to given value.
 

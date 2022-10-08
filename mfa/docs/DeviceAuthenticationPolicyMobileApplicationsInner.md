@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The application&#39;s ID. | [optional] 
+**Id** | **string** | The application&#39;s ID. | 
 **Push** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerPush**](DeviceAuthenticationPolicyMobileApplicationsInnerPush.md) |  | [optional] 
 **Otp** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerOtp**](DeviceAuthenticationPolicyMobileApplicationsInnerOtp.md) |  | [optional] 
 **DeviceAuthorization** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization**](DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization.md) |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewDeviceAuthenticationPolicyMobileApplicationsInner
 
-`func NewDeviceAuthenticationPolicyMobileApplicationsInner() *DeviceAuthenticationPolicyMobileApplicationsInner`
+`func NewDeviceAuthenticationPolicyMobileApplicationsInner(id string, ) *DeviceAuthenticationPolicyMobileApplicationsInner`
 
 NewDeviceAuthenticationPolicyMobileApplicationsInner instantiates a new DeviceAuthenticationPolicyMobileApplicationsInner object
 This constructor will assign default values to properties that have it defined,
@@ -49,11 +49,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetPush
 

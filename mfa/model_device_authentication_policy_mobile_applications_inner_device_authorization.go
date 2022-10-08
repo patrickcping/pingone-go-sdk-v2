@@ -17,17 +17,17 @@ import (
 // DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization struct for DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization
 type DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization struct {
 	// Specifies the enabled or disabled state of automatic MFA for native devices paired with the user, for the specified application.
-	Enabled *bool `json:"enabled,omitempty"`
-	// Specifies the level of further verification when deviceAuthorization is enabled. The PingOne platform performs an extra verification check by sending a “silent” push notification to the customer native application, and receives a confirmation in return.
-	ExtraVerification *string `json:"extraVerification,omitempty"`
+	Enabled bool `json:"enabled"`
+	ExtraVerification *EnumMFADevicePolicyMobileExtraVerification `json:"extraVerification,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization() *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization {
+func NewDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization(enabled bool) *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization {
 	this := DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization{}
+	this.Enabled = enabled
 	return &this
 }
 
@@ -39,42 +39,34 @@ func NewDeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorizationWith
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
 // GetExtraVerification returns the ExtraVerification field value if set, zero value otherwise.
-func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetExtraVerification() string {
+func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetExtraVerification() EnumMFADevicePolicyMobileExtraVerification {
 	if o == nil || o.ExtraVerification == nil {
-		var ret string
+		var ret EnumMFADevicePolicyMobileExtraVerification
 		return ret
 	}
 	return *o.ExtraVerification
@@ -82,7 +74,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) G
 
 // GetExtraVerificationOk returns a tuple with the ExtraVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetExtraVerificationOk() (*string, bool) {
+func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) GetExtraVerificationOk() (*EnumMFADevicePolicyMobileExtraVerification, bool) {
 	if o == nil || o.ExtraVerification == nil {
 		return nil, false
 	}
@@ -98,14 +90,14 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) H
 	return false
 }
 
-// SetExtraVerification gets a reference to the given string and assigns it to the ExtraVerification field.
-func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) SetExtraVerification(v string) {
+// SetExtraVerification gets a reference to the given EnumMFADevicePolicyMobileExtraVerification and assigns it to the ExtraVerification field.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) SetExtraVerification(v EnumMFADevicePolicyMobileExtraVerification) {
 	o.ExtraVerification = &v
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
 	if o.ExtraVerification != nil {

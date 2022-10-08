@@ -16,7 +16,7 @@ import (
 
 // DeviceAuthenticationPolicyOfflineDeviceOtp struct for DeviceAuthenticationPolicyOfflineDeviceOtp
 type DeviceAuthenticationPolicyOfflineDeviceOtp struct {
-	Lifetime DeviceAuthenticationPolicyOfflineDeviceOtpLifetime `json:"lifetime"`
+	LifeTime DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime `json:"lifeTime"`
 	Failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure"`
 }
 
@@ -24,9 +24,9 @@ type DeviceAuthenticationPolicyOfflineDeviceOtp struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyOfflineDeviceOtp(lifetime DeviceAuthenticationPolicyOfflineDeviceOtpLifetime, failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure) *DeviceAuthenticationPolicyOfflineDeviceOtp {
+func NewDeviceAuthenticationPolicyOfflineDeviceOtp(lifeTime DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime, failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure) *DeviceAuthenticationPolicyOfflineDeviceOtp {
 	this := DeviceAuthenticationPolicyOfflineDeviceOtp{}
-	this.Lifetime = lifetime
+	this.LifeTime = lifeTime
 	this.Failure = failure
 	return &this
 }
@@ -39,28 +39,28 @@ func NewDeviceAuthenticationPolicyOfflineDeviceOtpWithDefaults() *DeviceAuthenti
 	return &this
 }
 
-// GetLifetime returns the Lifetime field value
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifetime() DeviceAuthenticationPolicyOfflineDeviceOtpLifetime {
+// GetLifeTime returns the LifeTime field value
+func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifeTime() DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime {
 	if o == nil {
-		var ret DeviceAuthenticationPolicyOfflineDeviceOtpLifetime
+		var ret DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime
 		return ret
 	}
 
-	return o.Lifetime
+	return o.LifeTime
 }
 
-// GetLifetimeOk returns a tuple with the Lifetime field value
+// GetLifeTimeOk returns a tuple with the LifeTime field value
 // and a boolean to check if the value has been set.
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifetimeOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpLifetime, bool) {
+func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifeTimeOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Lifetime, true
+	return &o.LifeTime, true
 }
 
-// SetLifetime sets field value
-func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetLifetime(v DeviceAuthenticationPolicyOfflineDeviceOtpLifetime) {
-	o.Lifetime = v
+// SetLifeTime sets field value
+func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetLifeTime(v DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) {
+	o.LifeTime = v
 }
 
 // GetFailure returns the Failure field value
@@ -90,7 +90,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetFailure(v DeviceAuthenti
 func (o DeviceAuthenticationPolicyOfflineDeviceOtp) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["lifetime"] = o.Lifetime
+		toSerialize["lifeTime"] = o.LifeTime
 	}
 	if true {
 		toSerialize["failure"] = o.Failure

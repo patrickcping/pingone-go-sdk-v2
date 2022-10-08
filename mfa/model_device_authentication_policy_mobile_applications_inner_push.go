@@ -17,15 +17,16 @@ import (
 // DeviceAuthenticationPolicyMobileApplicationsInnerPush struct for DeviceAuthenticationPolicyMobileApplicationsInnerPush
 type DeviceAuthenticationPolicyMobileApplicationsInnerPush struct {
 	// Specifies whether push notification is enabled or disabled for the policy.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 }
 
 // NewDeviceAuthenticationPolicyMobileApplicationsInnerPush instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerPush object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicyMobileApplicationsInnerPush() *DeviceAuthenticationPolicyMobileApplicationsInnerPush {
+func NewDeviceAuthenticationPolicyMobileApplicationsInnerPush(enabled bool) *DeviceAuthenticationPolicyMobileApplicationsInnerPush {
 	this := DeviceAuthenticationPolicyMobileApplicationsInnerPush{}
+	this.Enabled = enabled
 	return &this
 }
 
@@ -37,41 +38,33 @@ func NewDeviceAuthenticationPolicyMobileApplicationsInnerPushWithDefaults() *Dev
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Enabled
+
+	return o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Enabled, true
+	return &o.Enabled, true
 }
 
-// HasEnabled returns a boolean if a field has been set.
-func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+// SetEnabled sets field value
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) SetEnabled(v bool) {
-	o.Enabled = &v
+	o.Enabled = v
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPush) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Enabled != nil {
+	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
 	return json.Marshal(toSerialize)
