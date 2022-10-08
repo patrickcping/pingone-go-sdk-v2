@@ -10,7 +10,7 @@ import (
 func TestRemarshalGenericOpenAPIErrorObj_Success(t *testing.T) {
 
 	errorName := "418 I'm a teapot"
-	p1ErrorId := "77705cfb-e8da-4bba-b890-46349b1ecfc3"
+	p1ErrorId := "dummyerrorid"
 	p1ErrorCode := "ACCESS_FAILED"
 	p1ErrorMessage := "The request could not be completed. You do not have access to this resource."
 	p1ErrorDetailsCode := "INSUFFICIENT_PERMISSIONS"
@@ -70,7 +70,7 @@ func TestRemarshalGenericOpenAPIErrorObj_Success(t *testing.T) {
 
 func TestRemarshalErrorObj_Success(t *testing.T) {
 
-	p1ErrorId := "77705cfb-e8da-4bba-b890-46349b1ecfc3"
+	p1ErrorId := "dummyerrorid"
 	p1ErrorCode := "ACCESS_FAILED"
 	p1ErrorMessage := "The request could not be completed. You do not have access to this resource."
 	p1ErrorDetailsCode := "INSUFFICIENT_PERMISSIONS"
