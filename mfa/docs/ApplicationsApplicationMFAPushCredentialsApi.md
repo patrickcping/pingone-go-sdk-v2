@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateMFAPushCredential
 
-> CreateMFAPushCredential201Response CreateMFAPushCredential(ctx, environmentID, applicationID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
+> MFAPushCredentialResponse CreateMFAPushCredential(ctx, environmentID, applicationID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
 
 CREATE MFA Push Credential
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateMFAPushCredential`: CreateMFAPushCredential201Response
+    // response from `CreateMFAPushCredential`: MFAPushCredentialResponse
     fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateMFAPushCredential201Response**](CreateMFAPushCredential201Response.md)
+[**MFAPushCredentialResponse**](MFAPushCredentialResponse.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## ReadOneMFAPushCredential
 
-> CreateMFAPushCredential201Response ReadOneMFAPushCredential(ctx, environmentID, applicationID, pushCredentialID).Execute()
+> MFAPushCredentialResponse ReadOneMFAPushCredential(ctx, environmentID, applicationID, pushCredentialID).Execute()
 
 READ One MFA Push Credential
 
@@ -260,7 +260,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneMFAPushCredential`: CreateMFAPushCredential201Response
+    // response from `ReadOneMFAPushCredential`: MFAPushCredentialResponse
     fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.ReadOneMFAPushCredential`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateMFAPushCredential201Response**](CreateMFAPushCredential201Response.md)
+[**MFAPushCredentialResponse**](MFAPushCredentialResponse.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMFAPushCredential
 
-> CreateMFAPushCredential201Response UpdateMFAPushCredential(ctx, environmentID, applicationID, pushCredentialID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
+> MFAPushCredentialResponse UpdateMFAPushCredential(ctx, environmentID, applicationID, pushCredentialID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
 
 UPDATE MFA Push Credential
 
@@ -335,7 +335,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateMFAPushCredential`: CreateMFAPushCredential201Response
+    // response from `UpdateMFAPushCredential`: MFAPushCredentialResponse
     fmt.Fprintf(os.Stdout, "Response from `ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential`: %v\n", resp)
 }
 ```
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateMFAPushCredential201Response**](CreateMFAPushCredential201Response.md)
+[**MFAPushCredentialResponse**](MFAPushCredentialResponse.md)
 
 ### Authorization
 

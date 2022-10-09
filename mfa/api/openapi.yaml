@@ -162,7 +162,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createMFAPushCredential_201_response'
+                $ref: '#/components/schemas/MFAPushCredentialResponse'
           description: Successful response
       summary: CREATE MFA Push Credential
       tags:
@@ -309,7 +309,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createMFAPushCredential_201_response'
+                $ref: '#/components/schemas/MFAPushCredentialResponse'
           description: Successful response
       summary: READ One MFA Push Credential
       tags:
@@ -385,7 +385,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/createMFAPushCredential_201_response'
+                $ref: '#/components/schemas/MFAPushCredentialResponse'
           description: Successful response
       summary: UPDATE MFA Push Credential
       tags:
@@ -2260,6 +2260,30 @@ components:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS_allOf'
     MFAPushCredentialFCM:
       $ref: '#/components/schemas/MFAPushCredential'
+    MFAPushCredentialResponse:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        type: null
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: A string that specifies the push credential ID.
+          readOnly: true
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumMFAPushCredentialAttrType'
+        createdAt:
+          description: The time the resource was created.
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
+      type: object
     MFASettings:
       example:
         environment:
@@ -2332,10 +2356,6 @@ components:
       example:
         type: FCM
         key: key.value
-      oneOf:
-      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-      - $ref: '#/components/schemas/MFAPushCredentialFCM'
-    createMFAPushCredential_201_response:
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'

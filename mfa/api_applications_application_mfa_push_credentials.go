@@ -36,7 +36,7 @@ func (r ApiCreateMFAPushCredentialRequest) CreateMFAPushCredentialRequest(create
 	return r
 }
 
-func (r ApiCreateMFAPushCredentialRequest) Execute() (*CreateMFAPushCredential201Response, *http.Response, error) {
+func (r ApiCreateMFAPushCredentialRequest) Execute() (*MFAPushCredentialResponse, *http.Response, error) {
 	return r.ApiService.CreateMFAPushCredentialExecute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCrede
 }
 
 // Execute executes the request
-//  @return CreateMFAPushCredential201Response
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (*CreateMFAPushCredential201Response, *http.Response, error) {
+//  @return MFAPushCredentialResponse
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateMFAPushCredential201Response
+		localVarReturnValue  *MFAPushCredentialResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.CreateMFAPushCredential")
@@ -546,7 +546,7 @@ type ApiReadOneMFAPushCredentialRequest struct {
 	pushCredentialID string
 }
 
-func (r ApiReadOneMFAPushCredentialRequest) Execute() (*CreateMFAPushCredential201Response, *http.Response, error) {
+func (r ApiReadOneMFAPushCredentialRequest) Execute() (*MFAPushCredentialResponse, *http.Response, error) {
 	return r.ApiService.ReadOneMFAPushCredentialExecute(r)
 }
 
@@ -570,13 +570,13 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCred
 }
 
 // Execute executes the request
-//  @return CreateMFAPushCredential201Response
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (*CreateMFAPushCredential201Response, *http.Response, error) {
+//  @return MFAPushCredentialResponse
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateMFAPushCredential201Response
+		localVarReturnValue  *MFAPushCredentialResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.ReadOneMFAPushCredential")
@@ -721,7 +721,7 @@ func (r ApiUpdateMFAPushCredentialRequest) UpdateMFAPushCredentialRequest(update
 	return r
 }
 
-func (r ApiUpdateMFAPushCredentialRequest) Execute() (*CreateMFAPushCredential201Response, *http.Response, error) {
+func (r ApiUpdateMFAPushCredentialRequest) Execute() (*MFAPushCredentialResponse, *http.Response, error) {
 	return r.ApiService.UpdateMFAPushCredentialExecute(r)
 }
 
@@ -745,13 +745,13 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCrede
 }
 
 // Execute executes the request
-//  @return CreateMFAPushCredential201Response
-func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (*CreateMFAPushCredential201Response, *http.Response, error) {
+//  @return MFAPushCredentialResponse
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CreateMFAPushCredential201Response
+		localVarReturnValue  *MFAPushCredentialResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApplicationMFAPushCredentialsApiService.UpdateMFAPushCredential")

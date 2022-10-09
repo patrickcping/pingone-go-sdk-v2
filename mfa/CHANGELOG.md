@@ -1,6 +1,7 @@
 # v0.6.0 (Unreleased)
 
 * **Bug fix** Corrected the Device policy API [#58](https://github.com/patrickcping/pingone-go-sdk-v2/pull/58)
+* **Bug fix** Corrected the Application push credentials API model [#58](https://github.com/patrickcping/pingone-go-sdk-v2/pull/58)
 
 # v0.5.1 (2022-09-18)
 
