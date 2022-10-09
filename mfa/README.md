@@ -108,7 +108,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [CreateMFAPushCredential201Response](docs/CreateMFAPushCredential201Response.md)
  - [CreateMFAPushCredentialRequest](docs/CreateMFAPushCredentialRequest.md)
  - [DeviceAuthenticationPolicy](docs/DeviceAuthenticationPolicy.md)
  - [DeviceAuthenticationPolicyFIDODevice](docs/DeviceAuthenticationPolicyFIDODevice.md)
@@ -140,6 +139,7 @@ Class | Method | HTTP request | Description
  - [MFAPushCredential](docs/MFAPushCredential.md)
  - [MFAPushCredentialAPNS](docs/MFAPushCredentialAPNS.md)
  - [MFAPushCredentialAPNSAllOf](docs/MFAPushCredentialAPNSAllOf.md)
+ - [MFAPushCredentialResponse](docs/MFAPushCredentialResponse.md)
  - [MFASettings](docs/MFASettings.md)
  - [MFASettingsAuthentication](docs/MFASettingsAuthentication.md)
  - [MFASettingsLockout](docs/MFASettingsLockout.md)
