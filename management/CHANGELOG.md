@@ -1,7 +1,7 @@
-# v0.11.0 (Unreleased)
+# v0.11.0 (2022-10-09)
 
-* **Feature** Support for Licenses [#60](https://github.com/patrickcping/pingone-go-sdk-v2/pull/60)
-* **Feature** Support for Languages [#62](https://github.com/patrickcping/pingone-go-sdk-v2/pull/62)
+* **Feature** Support for Licenses [#64](https://github.com/patrickcping/pingone-go-sdk-v2/pull/64)
+* **Feature** Support for Languages [#63](https://github.com/patrickcping/pingone-go-sdk-v2/pull/63)
 
 # v0.10.0 (2022-09-18)
 
