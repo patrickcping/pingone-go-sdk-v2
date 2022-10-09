@@ -26,6 +26,10 @@ func TestAccAPIClient_Success(t *testing.T) {
 		t.Fatalf("Client not successfully retrieved")
 	}
 
+	if client.AuthorizeAPIClient == nil {
+		t.Fatalf("Authorize Client not successfully retrieved")
+	}
+
 	if client.ManagementAPIClient == nil {
 		t.Fatalf("Management Client not successfully retrieved")
 	}

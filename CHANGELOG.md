@@ -1,6 +1,9 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.0
+    * **Note** Add `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.10.0 => v0.11.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.5.1 => v0.6.0
     * **Feature** Added error models and marshal helpers to `model` package [#66](https://github.com/patrickcping/pingone-go-sdk-v2/pull/66)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.0](./authorize/CHANGELOG.md)
     * **Feature** Initial release [#55](https://github.com/patrickcping/pingone-go-sdk-v2/pull/55)
