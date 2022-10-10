@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  this setting overrides the top-level packageName field. | [optional] 
 **PasscodeRefreshDuration** | Pointer to [**ApplicationOIDCAllOfMobilePasscodeRefreshDuration**](ApplicationOIDCAllOfMobilePasscodeRefreshDuration.md) |  | [optional] 
 **IntegrityDetection** | Pointer to [**ApplicationOIDCAllOfMobileIntegrityDetection**](ApplicationOIDCAllOfMobileIntegrityDetection.md) |  | [optional] 
+**UriPrefix** | Pointer to **string** | A string that specifies a URI prefix that enables direct triggering of the mobile application when scanning a QR code. The URI prefix can be set to a universal link with a valid value (which can be a URL address that starts with &#x60;HTTP://&#x60; or &#x60;HTTPS://&#x60;, such as &#x60;https://www.acme.com&#x60;), or an app schema, which is just a string and requires no special validation. | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetIntegrityDetection sets IntegrityDetection field to given value.
 `func (o *ApplicationOIDCAllOfMobile) HasIntegrityDetection() bool`
 
 HasIntegrityDetection returns a boolean if a field has been set.
+
+### GetUriPrefix
+
+`func (o *ApplicationOIDCAllOfMobile) GetUriPrefix() string`
+
+GetUriPrefix returns the UriPrefix field if non-nil, zero value otherwise.
+
+### GetUriPrefixOk
+
+`func (o *ApplicationOIDCAllOfMobile) GetUriPrefixOk() (*string, bool)`
+
+GetUriPrefixOk returns a tuple with the UriPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUriPrefix
+
+`func (o *ApplicationOIDCAllOfMobile) SetUriPrefix(v string)`
+
+SetUriPrefix sets UriPrefix field to given value.
+
+### HasUriPrefix
+
+`func (o *ApplicationOIDCAllOfMobile) HasUriPrefix() bool`
+
+HasUriPrefix returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

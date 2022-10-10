@@ -21533,6 +21533,11 @@ components:
       - EXPIRED
       - FUTURE
       type: string
+    EnumMobileIntegrityDetectionPlatform:
+      enum:
+      - IOS
+      - GOOGLE
+      type: string
     EnumOrganizationType:
       description: "A string that specifies the organization type. If the organization\
         \ has any paid licenses, the type property value is set to `PAID`. Otherwise,\
@@ -25851,6 +25856,17 @@ components:
       example: null
     ApplicationOIDC_allOf_mobile_integrityDetection:
       properties:
+        excludedPlatforms:
+          description: You can enable device integrity checking separately for Android
+            and iOS by setting `mobile.integrityDetection.mode` to `ENABLED` and then
+            using `mobile.integrityDetection.excludedPlatforms` to specify the OS
+            where you do not want to use device integrity checking. The values to
+            use are `GOOGLE` and `IOS` (all upper case). Note that this is implemented
+            as an array even though currently you can only include a single value.
+          items:
+            $ref: '#/components/schemas/EnumMobileIntegrityDetectionPlatform'
+          maxItems: 1
+          type: array
         mode:
           $ref: '#/components/schemas/EnumEnabledStatus'
         cacheDuration:
@@ -25875,6 +25891,13 @@ components:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_passcodeRefreshDuration'
         integrityDetection:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection'
+        uriPrefix:
+          description: "A string that specifies a URI prefix that enables direct triggering\
+            \ of the mobile application when scanning a QR code. The URI prefix can\
+            \ be set to a universal link with a valid value (which can be a URL address\
+            \ that starts with `HTTP://` or `HTTPS://`, such as `https://www.acme.com`),\
+            \ or an app schema, which is just a string and requires no special validation."
+          type: string
       type: object
       example: null
     ApplicationOIDC_allOf_kerberos_key:

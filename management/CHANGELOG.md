@@ -1,3 +1,7 @@
+# v0.11.1 (Unreleased)
+
+* **Enhancement** Add `uriPrefix` (mobile) and `excludedPlatforms` (mobile device integrity check) to the `ApplicationOIDC` data model [#71](https://github.com/patrickcping/pingone-go-sdk-v2/pull/71)
+
 # v0.11.0 (2022-10-09)
 
 * **Feature** Support for Licenses [#64](https://github.com/patrickcping/pingone-go-sdk-v2/pull/64)

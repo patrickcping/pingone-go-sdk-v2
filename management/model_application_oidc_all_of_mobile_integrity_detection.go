@@ -16,6 +16,8 @@ import (
 
 // ApplicationOIDCAllOfMobileIntegrityDetection struct for ApplicationOIDCAllOfMobileIntegrityDetection
 type ApplicationOIDCAllOfMobileIntegrityDetection struct {
+	// You can enable device integrity checking separately for Android and iOS by setting `mobile.integrityDetection.mode` to `ENABLED` and then using `mobile.integrityDetection.excludedPlatforms` to specify the OS where you do not want to use device integrity checking. The values to use are `GOOGLE` and `IOS` (all upper case). Note that this is implemented as an array even though currently you can only include a single value.
+	ExcludedPlatforms []EnumMobileIntegrityDetectionPlatform `json:"excludedPlatforms,omitempty"`
 	Mode *EnumEnabledStatus `json:"mode,omitempty"`
 	CacheDuration *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration `json:"cacheDuration,omitempty"`
 }
@@ -35,6 +37,38 @@ func NewApplicationOIDCAllOfMobileIntegrityDetection() *ApplicationOIDCAllOfMobi
 func NewApplicationOIDCAllOfMobileIntegrityDetectionWithDefaults() *ApplicationOIDCAllOfMobileIntegrityDetection {
 	this := ApplicationOIDCAllOfMobileIntegrityDetection{}
 	return &this
+}
+
+// GetExcludedPlatforms returns the ExcludedPlatforms field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetExcludedPlatforms() []EnumMobileIntegrityDetectionPlatform {
+	if o == nil || o.ExcludedPlatforms == nil {
+		var ret []EnumMobileIntegrityDetectionPlatform
+		return ret
+	}
+	return o.ExcludedPlatforms
+}
+
+// GetExcludedPlatformsOk returns a tuple with the ExcludedPlatforms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetExcludedPlatformsOk() ([]EnumMobileIntegrityDetectionPlatform, bool) {
+	if o == nil || o.ExcludedPlatforms == nil {
+		return nil, false
+	}
+	return o.ExcludedPlatforms, true
+}
+
+// HasExcludedPlatforms returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) HasExcludedPlatforms() bool {
+	if o != nil && o.ExcludedPlatforms != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExcludedPlatforms gets a reference to the given []EnumMobileIntegrityDetectionPlatform and assigns it to the ExcludedPlatforms field.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetExcludedPlatforms(v []EnumMobileIntegrityDetectionPlatform) {
+	o.ExcludedPlatforms = v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
@@ -103,6 +137,9 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetCacheDuration(v Applic
 
 func (o ApplicationOIDCAllOfMobileIntegrityDetection) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ExcludedPlatforms != nil {
+		toSerialize["excludedPlatforms"] = o.ExcludedPlatforms
+	}
 	if o.Mode != nil {
 		toSerialize["mode"] = o.Mode
 	}

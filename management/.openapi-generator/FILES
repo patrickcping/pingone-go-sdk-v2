@@ -201,6 +201,7 @@ docs/EnumIdentityProviderSAMLSSOBinding.md
 docs/EnumImageFormat.md
 docs/EnumLicensePackage.md
 docs/EnumLicenseStatus.md
+docs/EnumMobileIntegrityDetectionPlatform.md
 docs/EnumOrganizationType.md
 docs/EnumPasscodeRefreshTimeUnit.md
 docs/EnumProductType.md
@@ -551,6 +552,7 @@ model_enum_identity_provider_samlsso_binding.go
 model_enum_image_format.go
 model_enum_license_package.go
 model_enum_license_status.go
+model_enum_mobile_integrity_detection_platform.go
 model_enum_organization_type.go
 model_enum_passcode_refresh_time_unit.go
 model_enum_product_type.go

@@ -22,6 +22,8 @@ type ApplicationOIDCAllOfMobile struct {
 	PackageName *string `json:"packageName,omitempty"`
 	PasscodeRefreshDuration *ApplicationOIDCAllOfMobilePasscodeRefreshDuration `json:"passcodeRefreshDuration,omitempty"`
 	IntegrityDetection *ApplicationOIDCAllOfMobileIntegrityDetection `json:"integrityDetection,omitempty"`
+	// A string that specifies a URI prefix that enables direct triggering of the mobile application when scanning a QR code. The URI prefix can be set to a universal link with a valid value (which can be a URL address that starts with `HTTP://` or `HTTPS://`, such as `https://www.acme.com`), or an app schema, which is just a string and requires no special validation.
+	UriPrefix *string `json:"uriPrefix,omitempty"`
 }
 
 // NewApplicationOIDCAllOfMobile instantiates a new ApplicationOIDCAllOfMobile object
@@ -169,6 +171,38 @@ func (o *ApplicationOIDCAllOfMobile) SetIntegrityDetection(v ApplicationOIDCAllO
 	o.IntegrityDetection = &v
 }
 
+// GetUriPrefix returns the UriPrefix field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOfMobile) GetUriPrefix() string {
+	if o == nil || o.UriPrefix == nil {
+		var ret string
+		return ret
+	}
+	return *o.UriPrefix
+}
+
+// GetUriPrefixOk returns a tuple with the UriPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOfMobile) GetUriPrefixOk() (*string, bool) {
+	if o == nil || o.UriPrefix == nil {
+		return nil, false
+	}
+	return o.UriPrefix, true
+}
+
+// HasUriPrefix returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOfMobile) HasUriPrefix() bool {
+	if o != nil && o.UriPrefix != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUriPrefix gets a reference to the given string and assigns it to the UriPrefix field.
+func (o *ApplicationOIDCAllOfMobile) SetUriPrefix(v string) {
+	o.UriPrefix = &v
+}
+
 func (o ApplicationOIDCAllOfMobile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BundleId != nil {
@@ -182,6 +216,9 @@ func (o ApplicationOIDCAllOfMobile) MarshalJSON() ([]byte, error) {
 	}
 	if o.IntegrityDetection != nil {
 		toSerialize["integrityDetection"] = o.IntegrityDetection
+	}
+	if o.UriPrefix != nil {
+		toSerialize["uriPrefix"] = o.UriPrefix
 	}
 	return json.Marshal(toSerialize)
 }
