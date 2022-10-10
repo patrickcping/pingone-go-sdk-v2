@@ -2313,7 +2313,6 @@ components:
           type: string
       required:
       - authentication
-      - lockout
       - pairing
       type: object
     ObjectEnvironment:
@@ -2882,7 +2881,6 @@ components:
             in a locked state.
           type: integer
       required:
-      - durationSeconds
       - failureCount
       type: object
     MFASettings_pairing:

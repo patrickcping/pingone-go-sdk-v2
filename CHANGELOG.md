@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.6.1](./mfa/CHANGELOG.md)
+    * **Bug fix** `lockout` made optional in the `MFASettings` model [#70](https://github.com/patrickcping/pingone-go-sdk-v2/pull/70)
+
 # Release (2022-10-09)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.0
@@ -10,7 +15,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.11.0](./management/CHANGELOG.md)
     * **Feature** Support for Licenses [#64](https://github.com/patrickcping/pingone-go-sdk-v2/pull/64)
     * **Feature** Support for Languages [#63](https://github.com/patrickcping/pingone-go-sdk-v2/pull/63)
-* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.6.0](./management/CHANGELOG.md)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.6.0](./mfa/CHANGELOG.md)
     * **Bug fix** Corrected the Device policy API [#65](https://github.com/patrickcping/pingone-go-sdk-v2/pull/65)
     * **Bug fix** Corrected the Application push credentials API model [#67](https://github.com/patrickcping/pingone-go-sdk-v2/pull/67)
 

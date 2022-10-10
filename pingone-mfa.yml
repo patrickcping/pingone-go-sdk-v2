@@ -373,7 +373,6 @@ components:
               description: An integer that defines the number of seconds to keep the account in a locked state.
           required:
             - failureCount
-            - durationSeconds
         pairing:
           type: object
           description: An object that contains pairing settings.
@@ -395,7 +394,6 @@ components:
           description: The time the resource was last updated.
       required:
         - authentication
-        - lockout
         - pairing
     ObjectEnvironment:
       type: object
