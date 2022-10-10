@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FailureCount** | **int32** | An integer that defines the maximum number of incorrect authentication attempts before the account is locked. | 
-**DurationSeconds** | **int32** | An integer that defines the number of seconds to keep the account in a locked state. | 
+**DurationSeconds** | Pointer to **int32** | An integer that defines the number of seconds to keep the account in a locked state. | [optional] 
 
 ## Methods
 
 ### NewMFASettingsLockout
 
-`func NewMFASettingsLockout(failureCount int32, durationSeconds int32, ) *MFASettingsLockout`
+`func NewMFASettingsLockout(failureCount int32, ) *MFASettingsLockout`
 
 NewMFASettingsLockout instantiates a new MFASettingsLockout object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +65,11 @@ and a boolean to check if the value has been set.
 
 SetDurationSeconds sets DurationSeconds field to given value.
 
+### HasDurationSeconds
+
+`func (o *MFASettingsLockout) HasDurationSeconds() bool`
+
+HasDurationSeconds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

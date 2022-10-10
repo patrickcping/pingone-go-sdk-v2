@@ -19,7 +19,7 @@ import (
 type MFASettings struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Authentication MFASettingsAuthentication `json:"authentication"`
-	Lockout MFASettingsLockout `json:"lockout"`
+	Lockout *MFASettingsLockout `json:"lockout,omitempty"`
 	Pairing MFASettingsPairing `json:"pairing"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
@@ -29,10 +29,9 @@ type MFASettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFASettings(authentication MFASettingsAuthentication, lockout MFASettingsLockout, pairing MFASettingsPairing) *MFASettings {
+func NewMFASettings(authentication MFASettingsAuthentication, pairing MFASettingsPairing) *MFASettings {
 	this := MFASettings{}
 	this.Authentication = authentication
-	this.Lockout = lockout
 	this.Pairing = pairing
 	return &this
 }
@@ -101,28 +100,36 @@ func (o *MFASettings) SetAuthentication(v MFASettingsAuthentication) {
 	o.Authentication = v
 }
 
-// GetLockout returns the Lockout field value
+// GetLockout returns the Lockout field value if set, zero value otherwise.
 func (o *MFASettings) GetLockout() MFASettingsLockout {
-	if o == nil {
+	if o == nil || o.Lockout == nil {
 		var ret MFASettingsLockout
 		return ret
 	}
-
-	return o.Lockout
+	return *o.Lockout
 }
 
-// GetLockoutOk returns a tuple with the Lockout field value
+// GetLockoutOk returns a tuple with the Lockout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MFASettings) GetLockoutOk() (*MFASettingsLockout, bool) {
-	if o == nil {
+	if o == nil || o.Lockout == nil {
 		return nil, false
 	}
-	return &o.Lockout, true
+	return o.Lockout, true
 }
 
-// SetLockout sets field value
+// HasLockout returns a boolean if a field has been set.
+func (o *MFASettings) HasLockout() bool {
+	if o != nil && o.Lockout != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLockout gets a reference to the given MFASettingsLockout and assigns it to the Lockout field.
 func (o *MFASettings) SetLockout(v MFASettingsLockout) {
-	o.Lockout = v
+	o.Lockout = &v
 }
 
 // GetPairing returns the Pairing field value
@@ -189,7 +196,7 @@ func (o MFASettings) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["authentication"] = o.Authentication
 	}
-	if true {
+	if o.Lockout != nil {
 		toSerialize["lockout"] = o.Lockout
 	}
 	if true {
