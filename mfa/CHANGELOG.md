@@ -1,4 +1,4 @@
-# v0.6.1 (Unreleased)
+# v0.6.1 (2022-10-10)
 
 * **Bug fix** `lockout` made optional in the `MFASettings` model [#70](https://github.com/patrickcping/pingone-go-sdk-v2/pull/70)
 
