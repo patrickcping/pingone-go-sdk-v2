@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.11.1](./management/CHANGELOG.md)
+    * **Enhancement** Add `uriPrefix` (mobile) and `excludedPlatforms` (mobile device integrity check) to the `ApplicationOIDC` data model [#71](https://github.com/patrickcping/pingone-go-sdk-v2/pull/71)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.6.1](./mfa/CHANGELOG.md)
     * **Bug fix** `lockout` made optional in the `MFASettings` model [#70](https://github.com/patrickcping/pingone-go-sdk-v2/pull/70)
 
