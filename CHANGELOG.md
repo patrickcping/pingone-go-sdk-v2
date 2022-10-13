@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.2
-    * **Bug fix** Fix error conversion where the model doesn't exist
+    * **Bug fix** Fix error conversion where the model doesn't exist [#72](https://github.com/patrickcping/pingone-go-sdk-v2/pull/72)
 
 # Release (2022-10-10)
 
