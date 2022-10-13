@@ -1,3 +1,8 @@
+# v0.11.2 (Unreleased)
+
+* **Bug fix** - Correct the list of license types [#73](https://github.com/patrickcping/pingone-go-sdk-v2/pull/73)
+* **Bug fix** - Correct the list of license statuses [#73](https://github.com/patrickcping/pingone-go-sdk-v2/pull/73)
+
 # v0.11.1 (2022-10-10)
 
 * **Enhancement** Add `uriPrefix` (mobile) and `excludedPlatforms` (mobile device integrity check) to the `ApplicationOIDC` data model [#71](https://github.com/patrickcping/pingone-go-sdk-v2/pull/71)
