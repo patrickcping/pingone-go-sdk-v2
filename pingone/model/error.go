@@ -71,14 +71,17 @@ func RemarshalGenericOpenAPIErrorObj(errorInf interface{}) (*GenericOpenAPIError
 		return nil, fmt.Errorf("Cannot Marshal OpenAPI error interface for Remarshal - %s", err)
 	}
 
-	var model *P1Error
+	if errorJSON != nil {
 
-	err = json.Unmarshal(errorJSON, &model)
-	if err != nil {
-		return nil, fmt.Errorf("Cannot Unmarshal OpenAPI error interface for Remarshal - %s", err)
+		var model P1Error
+
+		err = json.Unmarshal(errorJSON, &model)
+		if err != nil {
+			return nil, fmt.Errorf("Cannot Unmarshal OpenAPI error interface for Remarshal - %s", err)
+		}
+
+		errorObj.model = model
 	}
-
-	errorObj.model = model
 
 	return errorObj, nil
 }
