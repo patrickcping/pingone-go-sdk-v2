@@ -169,11 +169,11 @@ components:
       description: A string that specifies the type of format used for the image. Options are jpg, png, and gif.
     EnumLicensePackage:
       type: string
-      enum: [ADMIN, INTERNAL, TRIAL, STANDARD, PREMIUM, MFA, RISK, MFARISK, GLOBAL]
+      enum: [ADMIN, INTERNAL, TRIAL, STANDARD, PREMIUM, MFA, RISK, MFARISK, GLOBAL, MFA TRIAL, RISKTRIAL]
       description: A string that specifies the license template on which this license is based. This is a required property. Options are `TRIAL`, `STANDARD`, `PREMIUM`, `MFA`, `RISK`, `MFARISK`, and `GLOBAL`.
     EnumLicenseStatus:
       type: string
-      enum: [ACTIVE, EXPIRED, FUTURE]
+      enum: [ACTIVE, EXPIRED, FUTURE, TERMINATED]
       description: A string that specifies the status of the license. Options are `ACTIVE`, `EXPIRED`, and `FUTURE`.
     EnumMobileIntegrityDetectionPlatform:
       type: string

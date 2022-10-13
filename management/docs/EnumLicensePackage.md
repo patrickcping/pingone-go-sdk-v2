@@ -21,6 +21,10 @@
 
 * `GLOBAL` (value: `"GLOBAL"`)
 
+* `MFA_TRIAL` (value: `"MFA TRIAL"`)
+
+* `RISKTRIAL` (value: `"RISKTRIAL"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

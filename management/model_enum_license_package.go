@@ -29,6 +29,8 @@ const (
 	ENUMLICENSEPACKAGE_RISK EnumLicensePackage = "RISK"
 	ENUMLICENSEPACKAGE_MFARISK EnumLicensePackage = "MFARISK"
 	ENUMLICENSEPACKAGE_GLOBAL EnumLicensePackage = "GLOBAL"
+	ENUMLICENSEPACKAGE_MFA_TRIAL EnumLicensePackage = "MFA TRIAL"
+	ENUMLICENSEPACKAGE_RISKTRIAL EnumLicensePackage = "RISKTRIAL"
 )
 
 // All allowed values of EnumLicensePackage enum
@@ -42,6 +44,8 @@ var AllowedEnumLicensePackageEnumValues = []EnumLicensePackage{
 	"RISK",
 	"MFARISK",
 	"GLOBAL",
+	"MFA TRIAL",
+	"RISKTRIAL",
 }
 
 func (v *EnumLicensePackage) UnmarshalJSON(src []byte) error {

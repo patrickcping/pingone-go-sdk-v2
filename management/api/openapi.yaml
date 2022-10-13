@@ -21524,6 +21524,8 @@ components:
       - RISK
       - MFARISK
       - GLOBAL
+      - MFA TRIAL
+      - RISKTRIAL
       type: string
     EnumLicenseStatus:
       description: "A string that specifies the status of the license. Options are\
@@ -21532,6 +21534,7 @@ components:
       - ACTIVE
       - EXPIRED
       - FUTURE
+      - TERMINATED
       type: string
     EnumMobileIntegrityDetectionPlatform:
       enum:
