@@ -42,19 +42,19 @@ func TestRemarshalGenericOpenAPIErrorObj_Success(t *testing.T) {
 		t.Fatalf("TestRemarshalGenericOpenAPIErrorObj resulted in %s, expected %v", v.error, errorName)
 	}
 
-	if c, ok := v.Model().(*P1Error).GetIdOk(); !ok || *c != p1ErrorId {
+	if c := v.Model().(P1Error).Id; *c != p1ErrorId {
 		t.Fatalf("TestRemarshalGenericOpenAPIErrorObj resulted in %s, expected %v", *c, p1ErrorId)
 	}
 
-	if c, ok := v.Model().(*P1Error).GetCodeOk(); !ok || *c != p1ErrorCode {
+	if c := v.Model().(P1Error).Code; *c != p1ErrorCode {
 		t.Fatalf("TestRemarshalGenericOpenAPIErrorObj resulted in %s, expected %v", *c, p1ErrorCode)
 	}
 
-	if c, ok := v.Model().(*P1Error).GetMessageOk(); !ok || *c != p1ErrorMessage {
+	if c := v.Model().(P1Error).Message; *c != p1ErrorMessage {
 		t.Fatalf("TestRemarshalGenericOpenAPIErrorObj resulted in %s, expected %v", *c, p1ErrorMessage)
 	}
 
-	if c, ok := v.Model().(*P1Error).GetDetailsOk(); ok {
+	if c := v.Model().(P1Error).Details; len(c) > 0 {
 
 		if c, ok := c[0].GetCodeOk(); !ok || *c != p1ErrorDetailsCode {
 			t.Fatalf("TestRemarshalGenericOpenAPIErrorObj resulted in %s, expected %v", *c, p1ErrorDetailsCode)
