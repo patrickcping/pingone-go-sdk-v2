@@ -1,3 +1,9 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.7.0](./mfa/CHANGELOG.md)
+    * **Feature** Added FIDO Policy API and model [#75](https://github.com/patrickcping/pingone-go-sdk-v2/pull/75)
+    * **Feature** Added FIDO Custom Device Metadata API and model [#75](https://github.com/patrickcping/pingone-go-sdk-v2/pull/75)
+
 # Release (2022-10-15)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.2
