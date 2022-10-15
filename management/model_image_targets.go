@@ -16,15 +16,7 @@ import (
 
 // ImageTargets struct for ImageTargets
 type ImageTargets struct {
-	// A string that specifies the URL or fully qualified path to the image source file.
-	Href *string `json:"href,omitempty"`
-	// A string that specifies the UUID of the target image.
-	Id *string `json:"id,omitempty"`
-	Type *EnumImageFormat `json:"type,omitempty"`
-	// The width of the image (in pixels).
-	Width *int32 `json:"width,omitempty"`
-	// The height of the image (in pixels).
-	Height *int32 `json:"height,omitempty"`
+	Original *ImageTargetsOriginal `json:"original,omitempty"`
 }
 
 // NewImageTargets instantiates a new ImageTargets object
@@ -44,182 +36,42 @@ func NewImageTargetsWithDefaults() *ImageTargets {
 	return &this
 }
 
-// GetHref returns the Href field value if set, zero value otherwise.
-func (o *ImageTargets) GetHref() string {
-	if o == nil || o.Href == nil {
-		var ret string
+// GetOriginal returns the Original field value if set, zero value otherwise.
+func (o *ImageTargets) GetOriginal() ImageTargetsOriginal {
+	if o == nil || o.Original == nil {
+		var ret ImageTargetsOriginal
 		return ret
 	}
-	return *o.Href
+	return *o.Original
 }
 
-// GetHrefOk returns a tuple with the Href field value if set, nil otherwise
+// GetOriginalOk returns a tuple with the Original field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImageTargets) GetHrefOk() (*string, bool) {
-	if o == nil || o.Href == nil {
+func (o *ImageTargets) GetOriginalOk() (*ImageTargetsOriginal, bool) {
+	if o == nil || o.Original == nil {
 		return nil, false
 	}
-	return o.Href, true
+	return o.Original, true
 }
 
-// HasHref returns a boolean if a field has been set.
-func (o *ImageTargets) HasHref() bool {
-	if o != nil && o.Href != nil {
+// HasOriginal returns a boolean if a field has been set.
+func (o *ImageTargets) HasOriginal() bool {
+	if o != nil && o.Original != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetHref gets a reference to the given string and assigns it to the Href field.
-func (o *ImageTargets) SetHref(v string) {
-	o.Href = &v
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *ImageTargets) GetId() string {
-	if o == nil || o.Id == nil {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ImageTargets) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *ImageTargets) HasId() bool {
-	if o != nil && o.Id != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ImageTargets) SetId(v string) {
-	o.Id = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ImageTargets) GetType() EnumImageFormat {
-	if o == nil || o.Type == nil {
-		var ret EnumImageFormat
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ImageTargets) GetTypeOk() (*EnumImageFormat, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *ImageTargets) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given EnumImageFormat and assigns it to the Type field.
-func (o *ImageTargets) SetType(v EnumImageFormat) {
-	o.Type = &v
-}
-
-// GetWidth returns the Width field value if set, zero value otherwise.
-func (o *ImageTargets) GetWidth() int32 {
-	if o == nil || o.Width == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Width
-}
-
-// GetWidthOk returns a tuple with the Width field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ImageTargets) GetWidthOk() (*int32, bool) {
-	if o == nil || o.Width == nil {
-		return nil, false
-	}
-	return o.Width, true
-}
-
-// HasWidth returns a boolean if a field has been set.
-func (o *ImageTargets) HasWidth() bool {
-	if o != nil && o.Width != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWidth gets a reference to the given int32 and assigns it to the Width field.
-func (o *ImageTargets) SetWidth(v int32) {
-	o.Width = &v
-}
-
-// GetHeight returns the Height field value if set, zero value otherwise.
-func (o *ImageTargets) GetHeight() int32 {
-	if o == nil || o.Height == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Height
-}
-
-// GetHeightOk returns a tuple with the Height field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ImageTargets) GetHeightOk() (*int32, bool) {
-	if o == nil || o.Height == nil {
-		return nil, false
-	}
-	return o.Height, true
-}
-
-// HasHeight returns a boolean if a field has been set.
-func (o *ImageTargets) HasHeight() bool {
-	if o != nil && o.Height != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHeight gets a reference to the given int32 and assigns it to the Height field.
-func (o *ImageTargets) SetHeight(v int32) {
-	o.Height = &v
+// SetOriginal gets a reference to the given ImageTargetsOriginal and assigns it to the Original field.
+func (o *ImageTargets) SetOriginal(v ImageTargetsOriginal) {
+	o.Original = &v
 }
 
 func (o ImageTargets) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Href != nil {
-		toSerialize["href"] = o.Href
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Width != nil {
-		toSerialize["width"] = o.Width
-	}
-	if o.Height != nil {
-		toSerialize["height"] = o.Height
+	if o.Original != nil {
+		toSerialize["original"] = o.Original
 	}
 	return json.Marshal(toSerialize)
 }
