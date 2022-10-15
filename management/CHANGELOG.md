@@ -1,3 +1,8 @@
+# v0.12.0 (Unreleased)
+
+* **Feature** Support for Branding Settings [#76](https://github.com/patrickcping/pingone-go-sdk-v2/pull/76)
+* **Feature** Support for Branding Themes [#76](https://github.com/patrickcping/pingone-go-sdk-v2/pull/76)
+
 # v0.11.2 (2022-10-15)
 
 * **Bug fix** - Correct the `Image` API model [#74](https://github.com/patrickcping/pingone-go-sdk-v2/pull/74)
