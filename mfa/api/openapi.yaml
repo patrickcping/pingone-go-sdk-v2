@@ -20,7 +20,7 @@ servers:
 security:
 - bearer: []
 tags:
-- name: Custom FIDO Device
+- name: FIDO Device
 - name: Device Authentication Policy
 - name: FIDO Policy
 - name: MFA Settings
@@ -769,9 +769,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/EntityArray'
           description: Successful response
-      summary: READ All Custom FIDO Devices
+      summary: READ All FIDO Devices
       tags:
-      - Custom FIDO Device
+      - FIDO Device
     post:
       operationId: createFidoDevice
       parameters:
@@ -786,7 +786,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FIDOCustomDevice'
+              $ref: '#/components/schemas/FIDOCustomDeviceMetadata'
       responses:
         "400":
           content:
@@ -836,11 +836,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FIDOCustomDevice'
+                $ref: '#/components/schemas/FIDODevice'
           description: Successful response
-      summary: CREATE Custom FIDO Device
+      summary: CREATE FIDO Device
       tags:
-      - Custom FIDO Device
+      - FIDO Device
   /v1/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID}:
     delete:
       operationId: deleteFidoDevice
@@ -899,9 +899,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "204":
           description: Successful response
-      summary: DELETE Custom FIDO Device
+      summary: DELETE FIDO Device
       tags:
-      - Custom FIDO Device
+      - FIDO Device
     get:
       operationId: readOneFidoDevice
       parameters:
@@ -961,80 +961,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FIDOCustomDevice'
+                $ref: '#/components/schemas/FIDODevice'
           description: Successful response
-      summary: READ One Custom FIDO Device
+      summary: READ One FIDO Device
       tags:
-      - Custom FIDO Device
-    put:
-      operationId: updateFIDODevice
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: fidoDeviceID
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FIDOCustomDevice'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FIDOCustomDevice'
-          description: Successful response
-      summary: UPDATE Custom FIDO Device
-      tags:
-      - Custom FIDO Device
+      - FIDO Device
   /v1/environments/{environmentID}/fidoPolicies:
     get:
       operationId: readFidoPolicies
@@ -2942,7 +2873,9 @@ components:
       - MINUTES
       - SECONDS
       type: string
-    FIDOCustomDevice:
+    FIDOCustomDeviceMetadata:
+      type: object
+    FIDODevice:
       type: object
     FIDOPolicy:
       example:
@@ -3646,7 +3579,7 @@ components:
           type: array
         fidoDevicesMetadata:
           items:
-            $ref: '#/components/schemas/FIDOCustomDevice'
+            $ref: '#/components/schemas/FIDODevice'
           type: array
         fidoPolicies:
           items:

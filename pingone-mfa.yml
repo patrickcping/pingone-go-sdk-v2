@@ -277,7 +277,7 @@ components:
             fidoDevicesMetadata:
               type: array
               items:
-                $ref: '#/components/schemas/FIDOCustomDevice'
+                $ref: '#/components/schemas/FIDODevice'
             fidoPolicies:
               type: array
               items:
@@ -324,7 +324,9 @@ components:
       type: string
       enum: [MINUTES, SECONDS]
       description: The type of time unit
-    FIDOCustomDevice:
+    FIDOCustomDeviceMetadata:
+      type: object
+    FIDODevice:
       type: object
     FIDOPolicy:
       type: object
@@ -531,7 +533,7 @@ components:
 security:
   - bearer: []
 tags:
-  - name: Custom FIDO Device
+  - name: FIDO Device
   - name: Device Authentication Policy
   - name: FIDO Policy
   - name: MFA Settings
@@ -1186,8 +1188,8 @@ paths:
   /v1/environments/{environmentID}/fidoDevicesMetadata:
     get:
       tags:
-        - Custom FIDO Device
-      summary: READ All Custom FIDO Devices
+        - FIDO Device
+      summary: READ All FIDO Devices
       operationId: readFidoDevices
       parameters:
         - name: environmentID
@@ -1240,14 +1242,14 @@ paths:
                 $ref: '#/components/schemas/EntityArray'
     post:
       tags:
-        - Custom FIDO Device
-      summary: CREATE Custom FIDO Device
+        - FIDO Device
+      summary: CREATE FIDO Device
       operationId: createFidoDevice
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FIDOCustomDevice'
+              $ref: '#/components/schemas/FIDOCustomDeviceMetadata'
       parameters:
         - name: environmentID
           in: path
@@ -1302,12 +1304,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FIDOCustomDevice'
+                $ref: '#/components/schemas/FIDODevice'
   /v1/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID}:
     get:
       tags:
-        - Custom FIDO Device
-      summary: READ One Custom FIDO Device
+        - FIDO Device
+      summary: READ One FIDO Device
       operationId: readOneFidoDevice
       parameters:
         - name: environmentID
@@ -1362,75 +1364,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FIDOCustomDevice'
-    put:
-      tags:
-        - Custom FIDO Device
-      summary: UPDATE Custom FIDO Device
-      operationId: updateFIDODevice
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FIDOCustomDevice'
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: fidoDeviceID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '401':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '403':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '429':
-          description: Request was rate limited
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '500':
-          description: Uncaught error occurred.  Platform outage
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FIDOCustomDevice'
+                $ref: '#/components/schemas/FIDODevice'
     delete:
       tags:
-        - Custom FIDO Device
-      summary: DELETE Custom FIDO Device
+        - FIDO Device
+      summary: DELETE FIDO Device
       operationId: deleteFidoDevice
       parameters:
         - name: environmentID

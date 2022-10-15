@@ -20,12 +20,12 @@ import (
 )
 
 
-// CustomFIDODeviceApiService CustomFIDODeviceApi service
-type CustomFIDODeviceApiService service
+// FIDODeviceApiService FIDODeviceApi service
+type FIDODeviceApiService service
 
 type ApiCreateFidoDeviceRequest struct {
 	ctx context.Context
-	ApiService *CustomFIDODeviceApiService
+	ApiService *FIDODeviceApiService
 	environmentID string
 	body *map[string]interface{}
 }
@@ -40,13 +40,13 @@ func (r ApiCreateFidoDeviceRequest) Execute() (map[string]interface{}, *http.Res
 }
 
 /*
-CreateFidoDevice CREATE Custom FIDO Device
+CreateFidoDevice CREATE FIDO Device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @return ApiCreateFidoDeviceRequest
 */
-func (a *CustomFIDODeviceApiService) CreateFidoDevice(ctx context.Context, environmentID string) ApiCreateFidoDeviceRequest {
+func (a *FIDODeviceApiService) CreateFidoDevice(ctx context.Context, environmentID string) ApiCreateFidoDeviceRequest {
 	return ApiCreateFidoDeviceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,7 +56,7 @@ func (a *CustomFIDODeviceApiService) CreateFidoDevice(ctx context.Context, envir
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomFIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
+func (a *FIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +64,7 @@ func (a *CustomFIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDevi
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFIDODeviceApiService.CreateFidoDevice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.CreateFidoDevice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -204,7 +204,7 @@ func (a *CustomFIDODeviceApiService) CreateFidoDeviceExecute(r ApiCreateFidoDevi
 
 type ApiDeleteFidoDeviceRequest struct {
 	ctx context.Context
-	ApiService *CustomFIDODeviceApiService
+	ApiService *FIDODeviceApiService
 	environmentID string
 	fidoDeviceID string
 }
@@ -214,14 +214,14 @@ func (r ApiDeleteFidoDeviceRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteFidoDevice DELETE Custom FIDO Device
+DeleteFidoDevice DELETE FIDO Device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param fidoDeviceID
  @return ApiDeleteFidoDeviceRequest
 */
-func (a *CustomFIDODeviceApiService) DeleteFidoDevice(ctx context.Context, environmentID string, fidoDeviceID string) ApiDeleteFidoDeviceRequest {
+func (a *FIDODeviceApiService) DeleteFidoDevice(ctx context.Context, environmentID string, fidoDeviceID string) ApiDeleteFidoDeviceRequest {
 	return ApiDeleteFidoDeviceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -231,14 +231,14 @@ func (a *CustomFIDODeviceApiService) DeleteFidoDevice(ctx context.Context, envir
 }
 
 // Execute executes the request
-func (a *CustomFIDODeviceApiService) DeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequest) (*http.Response, error) {
+func (a *FIDODeviceApiService) DeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFIDODeviceApiService.DeleteFidoDevice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.DeleteFidoDevice")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -358,7 +358,7 @@ func (a *CustomFIDODeviceApiService) DeleteFidoDeviceExecute(r ApiDeleteFidoDevi
 
 type ApiReadFidoDevicesRequest struct {
 	ctx context.Context
-	ApiService *CustomFIDODeviceApiService
+	ApiService *FIDODeviceApiService
 	environmentID string
 }
 
@@ -367,13 +367,13 @@ func (r ApiReadFidoDevicesRequest) Execute() (*EntityArray, *http.Response, erro
 }
 
 /*
-ReadFidoDevices READ All Custom FIDO Devices
+ReadFidoDevices READ All FIDO Devices
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @return ApiReadFidoDevicesRequest
 */
-func (a *CustomFIDODeviceApiService) ReadFidoDevices(ctx context.Context, environmentID string) ApiReadFidoDevicesRequest {
+func (a *FIDODeviceApiService) ReadFidoDevices(ctx context.Context, environmentID string) ApiReadFidoDevicesRequest {
 	return ApiReadFidoDevicesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -383,7 +383,7 @@ func (a *CustomFIDODeviceApiService) ReadFidoDevices(ctx context.Context, enviro
 
 // Execute executes the request
 //  @return EntityArray
-func (a *CustomFIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {
+func (a *FIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -391,7 +391,7 @@ func (a *CustomFIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevices
 		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFIDODeviceApiService.ReadFidoDevices")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.ReadFidoDevices")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -519,7 +519,7 @@ func (a *CustomFIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevices
 
 type ApiReadOneFidoDeviceRequest struct {
 	ctx context.Context
-	ApiService *CustomFIDODeviceApiService
+	ApiService *FIDODeviceApiService
 	environmentID string
 	fidoDeviceID string
 }
@@ -529,14 +529,14 @@ func (r ApiReadOneFidoDeviceRequest) Execute() (map[string]interface{}, *http.Re
 }
 
 /*
-ReadOneFidoDevice READ One Custom FIDO Device
+ReadOneFidoDevice READ One FIDO Device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param fidoDeviceID
  @return ApiReadOneFidoDeviceRequest
 */
-func (a *CustomFIDODeviceApiService) ReadOneFidoDevice(ctx context.Context, environmentID string, fidoDeviceID string) ApiReadOneFidoDeviceRequest {
+func (a *FIDODeviceApiService) ReadOneFidoDevice(ctx context.Context, environmentID string, fidoDeviceID string) ApiReadOneFidoDeviceRequest {
 	return ApiReadOneFidoDeviceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -547,7 +547,7 @@ func (a *CustomFIDODeviceApiService) ReadOneFidoDevice(ctx context.Context, envi
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CustomFIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
+func (a *FIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDeviceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -555,7 +555,7 @@ func (a *CustomFIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDe
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFIDODeviceApiService.ReadOneFidoDevice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDODeviceApiService.ReadOneFidoDevice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -585,179 +585,6 @@ func (a *CustomFIDODeviceApiService) ReadOneFidoDeviceExecute(r ApiReadOneFidoDe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiUpdateFIDODeviceRequest struct {
-	ctx context.Context
-	ApiService *CustomFIDODeviceApiService
-	environmentID string
-	fidoDeviceID string
-	body *map[string]interface{}
-}
-
-func (r ApiUpdateFIDODeviceRequest) Body(body map[string]interface{}) ApiUpdateFIDODeviceRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiUpdateFIDODeviceRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.UpdateFIDODeviceExecute(r)
-}
-
-/*
-UpdateFIDODevice UPDATE Custom FIDO Device
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param fidoDeviceID
- @return ApiUpdateFIDODeviceRequest
-*/
-func (a *CustomFIDODeviceApiService) UpdateFIDODevice(ctx context.Context, environmentID string, fidoDeviceID string) ApiUpdateFIDODeviceRequest {
-	return ApiUpdateFIDODeviceRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		fidoDeviceID: fidoDeviceID,
-	}
-}
-
-// Execute executes the request
-//  @return map[string]interface{}
-func (a *CustomFIDODeviceApiService) UpdateFIDODeviceExecute(r ApiUpdateFIDODeviceRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomFIDODeviceApiService.UpdateFIDODevice")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fidoDeviceID"+"}", url.PathEscape(parameterToString(r.fidoDeviceID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
