@@ -4,87 +4,19 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDThemesGet**](BrandingThemesApi.md#V1EnvironmentsEnvironmentIDThemesGet) | **Get** /v1/environments/{environmentID}/themes | READ Branding Themes
-[**V1EnvironmentsEnvironmentIDThemesPost**](BrandingThemesApi.md#V1EnvironmentsEnvironmentIDThemesPost) | **Post** /v1/environments/{environmentID}/themes | CREATE Branding Theme
-[**V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet**](BrandingThemesApi.md#V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet) | **Get** /v1/environments/{environmentID}/themes/{themeID}/default | READ Branding Theme Default
-[**V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut**](BrandingThemesApi.md#V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut) | **Put** /v1/environments/{environmentID}/themes/{themeID}/default | UPDATE Branding Theme Default
-[**V1EnvironmentsEnvironmentIDThemesThemeIDDelete**](BrandingThemesApi.md#V1EnvironmentsEnvironmentIDThemesThemeIDDelete) | **Delete** /v1/environments/{environmentID}/themes/{themeID} | DELETE Branding Theme
-[**V1EnvironmentsEnvironmentIDThemesThemeIDGet**](BrandingThemesApi.md#V1EnvironmentsEnvironmentIDThemesThemeIDGet) | **Get** /v1/environments/{environmentID}/themes/{themeID} | READ One Branding Theme
-[**V1EnvironmentsEnvironmentIDThemesThemeIDPut**](BrandingThemesApi.md#V1EnvironmentsEnvironmentIDThemesThemeIDPut) | **Put** /v1/environments/{environmentID}/themes/{themeID} | UPDATE Branding Theme
+[**CreateBrandingTheme**](BrandingThemesApi.md#CreateBrandingTheme) | **Post** /v1/environments/{environmentID}/themes | CREATE Branding Theme
+[**DeleteBrandingTheme**](BrandingThemesApi.md#DeleteBrandingTheme) | **Delete** /v1/environments/{environmentID}/themes/{themeID} | DELETE Branding Theme
+[**ReadBrandingThemeDefault**](BrandingThemesApi.md#ReadBrandingThemeDefault) | **Get** /v1/environments/{environmentID}/themes/{themeID}/default | READ Branding Theme Default
+[**ReadBrandingThemes**](BrandingThemesApi.md#ReadBrandingThemes) | **Get** /v1/environments/{environmentID}/themes | READ Branding Themes
+[**ReadOneBrandingTheme**](BrandingThemesApi.md#ReadOneBrandingTheme) | **Get** /v1/environments/{environmentID}/themes/{themeID} | READ One Branding Theme
+[**UpdateBrandingTheme**](BrandingThemesApi.md#UpdateBrandingTheme) | **Put** /v1/environments/{environmentID}/themes/{themeID} | UPDATE Branding Theme
+[**UpdateBrandingThemeDefault**](BrandingThemesApi.md#UpdateBrandingThemeDefault) | **Put** /v1/environments/{environmentID}/themes/{themeID}/default | UPDATE Branding Theme Default
 
 
 
-## V1EnvironmentsEnvironmentIDThemesGet
+## CreateBrandingTheme
 
-> V1EnvironmentsEnvironmentIDThemesGet(ctx, environmentID).Authorization(authorization).Execute()
-
-READ Branding Themes
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesGet(context.Background(), environmentID).Authorization(authorization).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDThemesGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **authorization** | **string** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDThemesPost
-
-> V1EnvironmentsEnvironmentIDThemesPost(ctx, environmentID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+> BrandingTheme CreateBrandingTheme(ctx, environmentID).BrandingTheme(brandingTheme).Execute()
 
 CREATE Branding Theme
 
@@ -102,17 +34,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
-    contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    brandingTheme := *openapiclient.NewBrandingTheme(*openapiclient.NewBrandingThemeConfiguration("BackgroundColor_example", openapiclient.EnumBrandingThemeBackgroundType("NONE"), openapiclient.EnumBrandingLogoType("IMAGE")), false, openapiclient.EnumBrandingThemeTemplate("default")) // BrandingTheme |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesPost(context.Background(), environmentID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.BrandingThemesApi.CreateBrandingTheme(context.Background(), environmentID).BrandingTheme(brandingTheme).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.CreateBrandingTheme``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateBrandingTheme`: BrandingTheme
+    fmt.Fprintf(os.Stdout, "Response from `BrandingThemesApi.CreateBrandingTheme`: %v\n", resp)
 }
 ```
 
@@ -126,19 +58,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDThemesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateBrandingThemeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **brandingTheme** | [**BrandingTheme**](BrandingTheme.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**BrandingTheme**](BrandingTheme.md)
 
 ### Authorization
 
@@ -154,155 +84,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet
+## DeleteBrandingTheme
 
-> V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet(ctx, environmentID, themeID).Authorization(authorization).Execute()
-
-READ Branding Theme Default
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    themeID := "themeID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet(context.Background(), environmentID, themeID).Authorization(authorization).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**themeID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **authorization** | **string** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut
-
-> V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut(ctx, environmentID, themeID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
-
-UPDATE Branding Theme Default
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    themeID := "themeID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
-    contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut(context.Background(), environmentID, themeID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**themeID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **authorization** | **string** |  | 
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDThemesThemeIDDelete
-
-> V1EnvironmentsEnvironmentIDThemesThemeIDDelete(ctx, environmentID, themeID).Authorization(authorization).Execute()
+> DeleteBrandingTheme(ctx, environmentID, themeID).Execute()
 
 DELETE Branding Theme
 
@@ -321,13 +105,12 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     themeID := "themeID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDDelete(context.Background(), environmentID, themeID).Authorization(authorization).Execute()
+    resp, r, err := apiClient.BrandingThemesApi.DeleteBrandingTheme(context.Background(), environmentID, themeID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.DeleteBrandingTheme``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -344,14 +127,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteBrandingThemeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
@@ -371,9 +153,148 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDThemesThemeIDGet
+## ReadBrandingThemeDefault
 
-> V1EnvironmentsEnvironmentIDThemesThemeIDGet(ctx, environmentID, themeID).Authorization(authorization).Execute()
+> BrandingThemeDefault ReadBrandingThemeDefault(ctx, environmentID, themeID).Execute()
+
+READ Branding Theme Default
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    themeID := "themeID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BrandingThemesApi.ReadBrandingThemeDefault(context.Background(), environmentID, themeID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.ReadBrandingThemeDefault``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadBrandingThemeDefault`: BrandingThemeDefault
+    fmt.Fprintf(os.Stdout, "Response from `BrandingThemesApi.ReadBrandingThemeDefault`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**themeID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadBrandingThemeDefaultRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**BrandingThemeDefault**](BrandingThemeDefault.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadBrandingThemes
+
+> EntityArray ReadBrandingThemes(ctx, environmentID).Execute()
+
+READ Branding Themes
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BrandingThemesApi.ReadBrandingThemes(context.Background(), environmentID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.ReadBrandingThemes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadBrandingThemes`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `BrandingThemesApi.ReadBrandingThemes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadBrandingThemesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneBrandingTheme
+
+> BrandingTheme ReadOneBrandingTheme(ctx, environmentID, themeID).Execute()
 
 READ One Branding Theme
 
@@ -392,15 +313,16 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     themeID := "themeID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDGet(context.Background(), environmentID, themeID).Authorization(authorization).Execute()
+    resp, r, err := apiClient.BrandingThemesApi.ReadOneBrandingTheme(context.Background(), environmentID, themeID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.ReadOneBrandingTheme``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneBrandingTheme`: BrandingTheme
+    fmt.Fprintf(os.Stdout, "Response from `BrandingThemesApi.ReadOneBrandingTheme`: %v\n", resp)
 }
 ```
 
@@ -415,18 +337,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneBrandingThemeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
 
 ### Return type
 
- (empty response body)
+[**BrandingTheme**](BrandingTheme.md)
 
 ### Authorization
 
@@ -442,9 +363,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDThemesThemeIDPut
+## UpdateBrandingTheme
 
-> V1EnvironmentsEnvironmentIDThemesThemeIDPut(ctx, environmentID, themeID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+> BrandingTheme UpdateBrandingTheme(ctx, environmentID, themeID).BrandingTheme(brandingTheme).Execute()
 
 UPDATE Branding Theme
 
@@ -463,17 +384,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     themeID := "themeID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
-    contentType := "application/json" // string |  (optional)
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    brandingTheme := *openapiclient.NewBrandingTheme(*openapiclient.NewBrandingThemeConfiguration("BackgroundColor_example", openapiclient.EnumBrandingThemeBackgroundType("NONE"), openapiclient.EnumBrandingLogoType("IMAGE")), false, openapiclient.EnumBrandingThemeTemplate("default")) // BrandingTheme |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDPut(context.Background(), environmentID, themeID).Authorization(authorization).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.BrandingThemesApi.UpdateBrandingTheme(context.Background(), environmentID, themeID).BrandingTheme(brandingTheme).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.V1EnvironmentsEnvironmentIDThemesThemeIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.UpdateBrandingTheme``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateBrandingTheme`: BrandingTheme
+    fmt.Fprintf(os.Stdout, "Response from `BrandingThemesApi.UpdateBrandingTheme`: %v\n", resp)
 }
 ```
 
@@ -488,20 +409,91 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateBrandingThemeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **authorization** | **string** |  | 
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **brandingTheme** | [**BrandingTheme**](BrandingTheme.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**BrandingTheme**](BrandingTheme.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateBrandingThemeDefault
+
+> BrandingThemeDefault UpdateBrandingThemeDefault(ctx, environmentID, themeID).BrandingThemeDefault(brandingThemeDefault).Execute()
+
+UPDATE Branding Theme Default
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    themeID := "themeID_example" // string | 
+    brandingThemeDefault := *openapiclient.NewBrandingThemeDefault(false) // BrandingThemeDefault |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BrandingThemesApi.UpdateBrandingThemeDefault(context.Background(), environmentID, themeID).BrandingThemeDefault(brandingThemeDefault).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingThemesApi.UpdateBrandingThemeDefault``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateBrandingThemeDefault`: BrandingThemeDefault
+    fmt.Fprintf(os.Stdout, "Response from `BrandingThemesApi.UpdateBrandingThemeDefault`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**themeID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateBrandingThemeDefaultRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **brandingThemeDefault** | [**BrandingThemeDefault**](BrandingThemeDefault.md) |  | 
+
+### Return type
+
+[**BrandingThemeDefault**](BrandingThemeDefault.md)
 
 ### Authorization
 

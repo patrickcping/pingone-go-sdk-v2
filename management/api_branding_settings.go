@@ -23,31 +23,25 @@ import (
 // BrandingSettingsApiService BrandingSettingsApi service
 type BrandingSettingsApiService service
 
-type ApiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest struct {
+type ApiReadBrandingSettingsRequest struct {
 	ctx context.Context
 	ApiService *BrandingSettingsApiService
 	environmentID string
-	authorization *string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDBrandingSettingsGetExecute(r)
+func (r ApiReadBrandingSettingsRequest) Execute() (*BrandingSettings, *http.Response, error) {
+	return r.ApiService.ReadBrandingSettingsExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDBrandingSettingsGet READ Branding Settings
+ReadBrandingSettings READ Branding Settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest
+ @return ApiReadBrandingSettingsRequest
 */
-func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettingsGet(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest{
+func (a *BrandingSettingsApiService) ReadBrandingSettings(ctx context.Context, environmentID string) ApiReadBrandingSettingsRequest {
+	return ApiReadBrandingSettingsRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -55,16 +49,18 @@ func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettings
 }
 
 // Execute executes the request
-func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettingsGetExecute(r ApiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest) (*http.Response, error) {
+//  @return BrandingSettings
+func (a *BrandingSettingsApiService) ReadBrandingSettingsExecute(r ApiReadBrandingSettingsRequest) (*BrandingSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *BrandingSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingSettingsApiService.V1EnvironmentsEnvironmentIDBrandingSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingSettingsApiService.ReadBrandingSettings")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/brandingSettings"
@@ -91,24 +87,21 @@ func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettings
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -121,98 +114,101 @@ func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettings
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest struct {
+type ApiUpdateBrandingSettingsRequest struct {
 	ctx context.Context
 	ApiService *BrandingSettingsApiService
 	environmentID string
-	authorization *string
-	body *map[string]interface{}
+	brandingSettings *BrandingSettings
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest {
-	r.authorization = &authorization
+func (r ApiUpdateBrandingSettingsRequest) BrandingSettings(brandingSettings BrandingSettings) ApiUpdateBrandingSettingsRequest {
+	r.brandingSettings = &brandingSettings
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDBrandingSettingsPutExecute(r)
+func (r ApiUpdateBrandingSettingsRequest) Execute() (*BrandingSettings, *http.Response, error) {
+	return r.ApiService.UpdateBrandingSettingsExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDBrandingSettingsPut UPDATE Branding Settings
+UpdateBrandingSettings UPDATE Branding Settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest
+ @return ApiUpdateBrandingSettingsRequest
 */
-func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettingsPut(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest{
+func (a *BrandingSettingsApiService) UpdateBrandingSettings(ctx context.Context, environmentID string) ApiUpdateBrandingSettingsRequest {
+	return ApiUpdateBrandingSettingsRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -220,16 +216,18 @@ func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettings
 }
 
 // Execute executes the request
-func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettingsPutExecute(r ApiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest) (*http.Response, error) {
+//  @return BrandingSettings
+func (a *BrandingSettingsApiService) UpdateBrandingSettingsExecute(r ApiUpdateBrandingSettingsRequest) (*BrandingSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *BrandingSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingSettingsApiService.V1EnvironmentsEnvironmentIDBrandingSettingsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingSettingsApiService.UpdateBrandingSettings")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/brandingSettings"
@@ -256,26 +254,23 @@ func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettings
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.brandingSettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -288,63 +283,72 @@ func (a *BrandingSettingsApiService) V1EnvironmentsEnvironmentIDBrandingSettings
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

@@ -1,3 +1,9 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.12.0](./management/CHANGELOG.md)
+    * **Feature** Support for Branding Settings [#76](https://github.com/patrickcping/pingone-go-sdk-v2/pull/76)
+    * **Feature** Support for Branding Themes [#76](https://github.com/patrickcping/pingone-go-sdk-v2/pull/76)
+
 # Release (2022-10-15)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.2

@@ -4086,15 +4086,8 @@ paths:
       - Bill of Materials (BOM)
   /v1/environments/{environmentID}/brandingSettings:
     get:
+      operationId: readBrandingSettings
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4142,21 +4135,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingSettings'
           description: Successful response
       summary: READ Branding Settings
       tags:
       - Branding Settings
     put:
+      operationId: updateBrandingSettings
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4168,12 +4156,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                companyName: Ping
-                logo:
-                  href: "{{imageURL}}"
-                  id: "{{imageID}}"
-              type: object
+              $ref: '#/components/schemas/BrandingSettings'
       responses:
         "400":
           content:
@@ -4214,22 +4197,17 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingSettings'
           description: Successful response
       summary: UPDATE Branding Settings
       tags:
       - Branding Settings
   /v1/environments/{environmentID}/themes:
     get:
+      operationId: readBrandingThemes
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4277,29 +4255,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ Branding Themes
       tags:
       - Branding Themes
     post:
+      operationId: createBrandingTheme
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4311,27 +4276,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                template: default
-                configuration:
-                  logoType: IMAGE
-                  logo:
-                    href: https://logo.com
-                    id: "{{logoID}}"
-                  backgroundColor: '#333333'
-                  backgroundType: COLOR
-                  backgroundImage:
-                    href: https://bg.com
-                    id: "{{imageID}}"
-                  cardColor: '#333333'
-                  headingTextColor: '#333333'
-                  linkTextColor: '#333333'
-                  bodyTextColor: '#444444'
-                  buttonTextColor: '#333333'
-                  buttonColor: '#333333'
-                  name: ACME test theme
-                  footer: some footer
-              type: object
+              $ref: '#/components/schemas/BrandingTheme'
       responses:
         "400":
           content:
@@ -4379,22 +4324,17 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingTheme'
           description: Successful response
       summary: CREATE Branding Theme
       tags:
       - Branding Themes
   /v1/environments/{environmentID}/themes/{themeID}:
     delete:
+      operationId: deleteBrandingTheme
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4453,15 +4393,8 @@ paths:
       tags:
       - Branding Themes
     get:
+      operationId: readOneBrandingTheme
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4516,29 +4449,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingTheme'
           description: Successful response
       summary: READ One Branding Theme
       tags:
       - Branding Themes
     put:
+      operationId: updateBrandingTheme
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4557,27 +4477,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                template: default
-                configuration:
-                  logoType: IMAGE
-                  logo:
-                    href: https://logo.com
-                    id: "{{logoID}}"
-                  backgroundColor: '#333333'
-                  backgroundType: COLOR
-                  backgroundImage:
-                    href: https://bg.com
-                    id: "{{imageID}}"
-                  cardColor: '#333333'
-                  headingTextColor: '#333333'
-                  linkTextColor: '#333333'
-                  bodyTextColor: '#444444'
-                  buttonTextColor: '#333333'
-                  buttonColor: '#333333'
-                  name: test theme
-                  footer: Good for Copyright information.
-              type: object
+              $ref: '#/components/schemas/BrandingTheme'
       responses:
         "400":
           content:
@@ -4618,22 +4518,17 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingTheme'
           description: Successful response
       summary: UPDATE Branding Theme
       tags:
       - Branding Themes
   /v1/environments/{environmentID}/themes/{themeID}/default:
     get:
+      operationId: readBrandingThemeDefault
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4688,29 +4583,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingThemeDefault'
           description: Successful response
       summary: READ Branding Theme Default
       tags:
       - Branding Themes
     put:
+      operationId: updateBrandingThemeDefault
       parameters:
-      - example: "{{jwtToken}}"
-        explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
       - explode: false
         in: path
         name: environmentID
@@ -4729,9 +4611,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                default: true
-              type: object
+              $ref: '#/components/schemas/BrandingThemeDefault'
       responses:
         "400":
           content:
@@ -4772,7 +4652,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingThemeDefault'
           description: Successful response
       summary: UPDATE Branding Theme Default
       tags:
@@ -21295,6 +21177,31 @@ components:
       - SCOPE
       - CUSTOM
       type: string
+    EnumBrandingLogoType:
+      description: The type of format used for the image. Options are IMAGE and NONE.
+      enum:
+      - IMAGE
+      - NONE
+      type: string
+    EnumBrandingThemeBackgroundType:
+      description: "The background type for the theme. Options are `NONE`, `COLOR`,\
+        \ `IMAGE`, `DEFAULT`."
+      enum:
+      - NONE
+      - COLOR
+      - IMAGE
+      - DEFAULT
+      type: string
+    EnumBrandingThemeTemplate:
+      description: "The template name of the branding theme associated with the environment.\
+        \ Options are default, focus, mural, slate, and split."
+      enum:
+      - default
+      - focus
+      - mural
+      - slate
+      - split
+      type: string
     EnumCertificateKeyAlgorithm:
       description: "Specifies the key algorithm. Options are `RSA`, `EC`, and `UNKNOWN`."
       enum:
@@ -22264,6 +22171,84 @@ components:
       required:
       - products
       type: object
+    BrandingSettings:
+      example:
+        environment:
+          id: id
+        companyName: companyName
+        logo:
+          href: href
+          id: id
+        id: id
+      properties:
+        id:
+          description: Specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        companyName:
+          description: The company name associated with the specified environment.
+          type: string
+        logo:
+          $ref: '#/components/schemas/BrandingSettings_logo'
+      type: object
+    BrandingTheme:
+      example:
+        template: null
+        default: true
+        environment:
+          id: id
+        configuration:
+          backgroundColor: backgroundColor
+          buttonColor: buttonColor
+          footer: footer
+          backgroundImage:
+            href: href
+            id: id
+          cardColor: cardColor
+          headingTextColor: headingTextColor
+          name: name
+          logo:
+            href: href
+            id: id
+          buttonTextColor: buttonTextColor
+          linkTextColor: linkTextColor
+          bodyTextColor: bodyTextColor
+          logoType: null
+          backgroundType: null
+        id: id
+      properties:
+        configuration:
+          $ref: '#/components/schemas/BrandingTheme_configuration'
+        default:
+          description: Specifies whether this theme is the environment's default branding
+            configuration.
+          type: boolean
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: Specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        template:
+          $ref: '#/components/schemas/EnumBrandingThemeTemplate'
+      required:
+      - configuration
+      - default
+      - template
+      type: object
+    BrandingThemeDefault:
+      example:
+        default: true
+      properties:
+        default:
+          description: A boolean to specify whether the theme is the default in the
+            environment
+          type: boolean
+      required:
+      - default
+      type: object
     Certificate:
       example:
         serialNumber: 5
@@ -22765,6 +22750,53 @@ components:
             description: description
             id: id
             updatedAt: updatedAt
+          themes:
+          - template: null
+            default: true
+            environment:
+              id: id
+            configuration:
+              backgroundColor: backgroundColor
+              buttonColor: buttonColor
+              footer: footer
+              backgroundImage:
+                href: href
+                id: id
+              cardColor: cardColor
+              headingTextColor: headingTextColor
+              name: name
+              logo:
+                href: href
+                id: id
+              buttonTextColor: buttonTextColor
+              linkTextColor: linkTextColor
+              bodyTextColor: bodyTextColor
+              logoType: null
+              backgroundType: null
+            id: id
+          - template: null
+            default: true
+            environment:
+              id: id
+            configuration:
+              backgroundColor: backgroundColor
+              buttonColor: buttonColor
+              footer: footer
+              backgroundImage:
+                href: href
+                id: id
+              cardColor: cardColor
+              headingTextColor: headingTextColor
+              name: name
+              logo:
+                href: href
+                id: id
+              buttonTextColor: buttonTextColor
+              linkTextColor: linkTextColor
+              bodyTextColor: bodyTextColor
+              logoType: null
+              backgroundType: null
+            id: id
           customDomains:
           - environment:
               id: id
@@ -26147,6 +26179,122 @@ components:
       required:
       - type
       type: object
+    BrandingSettings_logo:
+      example:
+        href: href
+        id: id
+      properties:
+        href:
+          description: The URL or fully qualified path to the logo file used for branding.
+          type: string
+        id:
+          description: The ID of the logo image.
+          type: string
+      required:
+      - href
+      - id
+      type: object
+    BrandingTheme_configuration_backgroundImage:
+      example:
+        href: href
+        id: id
+      properties:
+        href:
+          description: The URL or fully qualified path to the background image file
+            used for branding. This is a required property when configuration.backgroundType
+            is set to IMAGE.
+          type: string
+        id:
+          description: The ID of the background image.
+          type: string
+      required:
+      - href
+      - id
+      type: object
+    BrandingTheme_configuration_logo:
+      example:
+        href: href
+        id: id
+      properties:
+        href:
+          description: The URL or fully qualified path to the logo file used for branding.
+            This is a required property when configuration.logoType is set to IMAGE.
+          type: string
+        id:
+          description: The ID of the logo image.
+          type: string
+      required:
+      - href
+      - id
+      type: object
+    BrandingTheme_configuration:
+      example:
+        backgroundColor: backgroundColor
+        buttonColor: buttonColor
+        footer: footer
+        backgroundImage:
+          href: href
+          id: id
+        cardColor: cardColor
+        headingTextColor: headingTextColor
+        name: name
+        logo:
+          href: href
+          id: id
+        buttonTextColor: buttonTextColor
+        linkTextColor: linkTextColor
+        bodyTextColor: bodyTextColor
+        logoType: null
+        backgroundType: null
+      properties:
+        backgroundColor:
+          description: "The background color for the theme. It must be a valid hexadecimal\
+            \ color code, and it is a required property when configuration.backgroundType\
+            \ is set to COLOR."
+          type: string
+        backgroundType:
+          $ref: '#/components/schemas/EnumBrandingThemeBackgroundType'
+        backgroundImage:
+          $ref: '#/components/schemas/BrandingTheme_configuration_backgroundImage'
+        bodyTextColor:
+          description: The body text color for the theme. It must be a valid hexadecimal
+            color code.
+          type: string
+        buttonColor:
+          description: The button color for the theme. It must be a valid hexadecimal
+            color code.
+          type: string
+        buttonTextColor:
+          description: The button text color for the branding theme. It must be a
+            valid hexadecimal color code.
+          type: string
+        cardColor:
+          description: The card color for the branding theme. It must be a valid hexadecimal
+            color code.
+          type: string
+        footer:
+          description: The footer of the branding theme.
+          type: string
+        headingTextColor:
+          description: The heading text color for the branding theme. It must be a
+            valid hexadecimal color code.
+          type: string
+        linkTextColor:
+          description: The hyperlink text color for the branding theme. It must be
+            a valid hexadecimal color code.
+          type: string
+        logo:
+          $ref: '#/components/schemas/BrandingTheme_configuration_logo'
+        logoType:
+          $ref: '#/components/schemas/EnumBrandingLogoType'
+        name:
+          description: The name of the branding theme.
+          type: string
+      required:
+      - backgroundColor
+      - backgroundType
+      - logoType
+      type: object
     CustomDomain_certificate:
       description: "An object that specifies information about the SSL certificate\
         \ used by this custom domain. If this property is not present, it indicates\
@@ -26437,6 +26585,53 @@ components:
           description: description
           id: id
           updatedAt: updatedAt
+        themes:
+        - template: null
+          default: true
+          environment:
+            id: id
+          configuration:
+            backgroundColor: backgroundColor
+            buttonColor: buttonColor
+            footer: footer
+            backgroundImage:
+              href: href
+              id: id
+            cardColor: cardColor
+            headingTextColor: headingTextColor
+            name: name
+            logo:
+              href: href
+              id: id
+            buttonTextColor: buttonTextColor
+            linkTextColor: linkTextColor
+            bodyTextColor: bodyTextColor
+            logoType: null
+            backgroundType: null
+          id: id
+        - template: null
+          default: true
+          environment:
+            id: id
+          configuration:
+            backgroundColor: backgroundColor
+            buttonColor: buttonColor
+            footer: footer
+            backgroundImage:
+              href: href
+              id: id
+            cardColor: cardColor
+            headingTextColor: headingTextColor
+            name: name
+            logo:
+              href: href
+              id: id
+            buttonTextColor: buttonTextColor
+            linkTextColor: linkTextColor
+            bodyTextColor: bodyTextColor
+            logoType: null
+            backgroundType: null
+          id: id
         customDomains:
         - environment:
             id: id
@@ -27341,6 +27536,10 @@ components:
         subscriptions:
           items:
             $ref: '#/components/schemas/Subscription'
+          type: array
+        themes:
+          items:
+            $ref: '#/components/schemas/BrandingTheme'
           type: array
         trustedEmails:
           items:
