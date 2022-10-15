@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **SignOnPolicies** | Pointer to [**[]SignOnPolicy**](SignOnPolicy.md) |  | [optional] 
 **SignOnPolicyAssignments** | Pointer to [**[]SignOnPolicyAssignment**](SignOnPolicyAssignment.md) |  | [optional] 
 **Subscriptions** | Pointer to [**[]Subscription**](Subscription.md) |  | [optional] 
+**Themes** | Pointer to [**[]BrandingTheme**](BrandingTheme.md) |  | [optional] 
 **TrustedEmails** | Pointer to [**[]EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
 **Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
@@ -756,6 +757,31 @@ SetSubscriptions sets Subscriptions field to given value.
 `func (o *EntityArrayEmbedded) HasSubscriptions() bool`
 
 HasSubscriptions returns a boolean if a field has been set.
+
+### GetThemes
+
+`func (o *EntityArrayEmbedded) GetThemes() []BrandingTheme`
+
+GetThemes returns the Themes field if non-nil, zero value otherwise.
+
+### GetThemesOk
+
+`func (o *EntityArrayEmbedded) GetThemesOk() (*[]BrandingTheme, bool)`
+
+GetThemesOk returns a tuple with the Themes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetThemes
+
+`func (o *EntityArrayEmbedded) SetThemes(v []BrandingTheme)`
+
+SetThemes sets Themes field to given value.
+
+### HasThemes
+
+`func (o *EntityArrayEmbedded) HasThemes() bool`
+
+HasThemes returns a boolean if a field has been set.
 
 ### GetTrustedEmails
 

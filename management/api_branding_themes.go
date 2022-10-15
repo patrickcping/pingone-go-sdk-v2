@@ -23,31 +23,31 @@ import (
 // BrandingThemesApiService BrandingThemesApi service
 type BrandingThemesApiService service
 
-type ApiV1EnvironmentsEnvironmentIDThemesGetRequest struct {
+type ApiCreateBrandingThemeRequest struct {
 	ctx context.Context
 	ApiService *BrandingThemesApiService
 	environmentID string
-	authorization *string
+	brandingTheme *BrandingTheme
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDThemesGetRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDThemesGetRequest {
-	r.authorization = &authorization
+func (r ApiCreateBrandingThemeRequest) BrandingTheme(brandingTheme BrandingTheme) ApiCreateBrandingThemeRequest {
+	r.brandingTheme = &brandingTheme
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDThemesGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDThemesGetExecute(r)
+func (r ApiCreateBrandingThemeRequest) Execute() (*BrandingTheme, *http.Response, error) {
+	return r.ApiService.CreateBrandingThemeExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDThemesGet READ Branding Themes
+CreateBrandingTheme CREATE Branding Theme
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDThemesGetRequest
+ @return ApiCreateBrandingThemeRequest
 */
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesGet(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDThemesGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDThemesGetRequest{
+func (a *BrandingThemesApiService) CreateBrandingTheme(ctx context.Context, environmentID string) ApiCreateBrandingThemeRequest {
+	return ApiCreateBrandingThemeRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -55,187 +55,18 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesGet(ctx cont
 }
 
 // Execute executes the request
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesGetExecute(r ApiV1EnvironmentsEnvironmentIDThemesGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.V1EnvironmentsEnvironmentIDThemesGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDThemesPostRequest struct {
-	ctx context.Context
-	ApiService *BrandingThemesApiService
-	environmentID string
-	authorization *string
-	contentType *string
-	body *map[string]interface{}
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesPostRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDThemesPostRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesPostRequest) ContentType(contentType string) ApiV1EnvironmentsEnvironmentIDThemesPostRequest {
-	r.contentType = &contentType
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDThemesPostRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDThemesPostExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDThemesPost CREATE Branding Theme
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDThemesPostRequest
-*/
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDThemesPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDThemesPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-	}
-}
-
-// Execute executes the request
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesPostExecute(r ApiV1EnvironmentsEnvironmentIDThemesPostRequest) (*http.Response, error) {
+//  @return BrandingTheme
+func (a *BrandingThemesApiService) CreateBrandingThemeExecute(r ApiCreateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *BrandingTheme
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.V1EnvironmentsEnvironmentIDThemesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.CreateBrandingTheme")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes"
@@ -262,29 +93,23 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesPostExecute(
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.brandingTheme
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -297,279 +122,107 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesPostExecute(
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest struct {
-	ctx context.Context
-	ApiService *BrandingThemesApiService
-	environmentID string
-	themeID string
-	authorization *string
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet READ Branding Theme Default
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param themeID
- @return ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest
-*/
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet(ctx context.Context, environmentID string, themeID string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		themeID: themeID,
-	}
-}
-
-// Execute executes the request
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetExecute(r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.V1EnvironmentsEnvironmentIDThemesThemeIDDefaultGet")
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes/{themeID}/default"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterToString(r.themeID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
+			error: err.Error(),
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest struct {
+type ApiDeleteBrandingThemeRequest struct {
 	ctx context.Context
 	ApiService *BrandingThemesApiService
 	environmentID string
 	themeID string
-	authorization *string
-	contentType *string
-	body *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest {
-	r.contentType = &contentType
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutExecute(r)
+func (r ApiDeleteBrandingThemeRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteBrandingThemeExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut UPDATE Branding Theme Default
+DeleteBrandingTheme DELETE Branding Theme
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param themeID
- @return ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest
+ @return ApiDeleteBrandingThemeRequest
 */
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut(ctx context.Context, environmentID string, themeID string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest{
+func (a *BrandingThemesApiService) DeleteBrandingTheme(ctx context.Context, environmentID string, themeID string) ApiDeleteBrandingThemeRequest {
+	return ApiDeleteBrandingThemeRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -578,182 +231,14 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDefau
 }
 
 // Execute executes the request
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutExecute(r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDefaultPutRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.V1EnvironmentsEnvironmentIDThemesThemeIDDefaultPut")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes/{themeID}/default"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterToString(r.themeID, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v P1Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest struct {
-	ctx context.Context
-	ApiService *BrandingThemesApiService
-	environmentID string
-	themeID string
-	authorization *string
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDThemesThemeIDDeleteExecute(r)
-}
-
-/*
-V1EnvironmentsEnvironmentIDThemesThemeIDDelete DELETE Branding Theme
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param themeID
- @return ApiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest
-*/
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDelete(ctx context.Context, environmentID string, themeID string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest {
-	return ApiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		environmentID: environmentID,
-		themeID: themeID,
-	}
-}
-
-// Execute executes the request
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDThemesThemeIDDeleteRequest) (*http.Response, error) {
+func (a *BrandingThemesApiService) DeleteBrandingThemeExecute(r ApiDeleteBrandingThemeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.V1EnvironmentsEnvironmentIDThemesThemeIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.DeleteBrandingTheme")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -782,9 +267,6 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDelet
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -874,33 +356,27 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDDelet
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest struct {
+type ApiReadBrandingThemeDefaultRequest struct {
 	ctx context.Context
 	ApiService *BrandingThemesApiService
 	environmentID string
 	themeID string
-	authorization *string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest {
-	r.authorization = &authorization
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDThemesThemeIDGetExecute(r)
+func (r ApiReadBrandingThemeDefaultRequest) Execute() (*BrandingThemeDefault, *http.Response, error) {
+	return r.ApiService.ReadBrandingThemeDefaultExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDThemesThemeIDGet READ One Branding Theme
+ReadBrandingThemeDefault READ Branding Theme Default
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param themeID
- @return ApiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest
+ @return ApiReadBrandingThemeDefaultRequest
 */
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDGet(ctx context.Context, environmentID string, themeID string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest{
+func (a *BrandingThemesApiService) ReadBrandingThemeDefault(ctx context.Context, environmentID string, themeID string) ApiReadBrandingThemeDefaultRequest {
+	return ApiReadBrandingThemeDefaultRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -909,16 +385,344 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDGet(c
 }
 
 // Execute executes the request
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDGetExecute(r ApiV1EnvironmentsEnvironmentIDThemesThemeIDGetRequest) (*http.Response, error) {
+//  @return BrandingThemeDefault
+func (a *BrandingThemesApiService) ReadBrandingThemeDefaultExecute(r ApiReadBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *BrandingThemeDefault
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.V1EnvironmentsEnvironmentIDThemesThemeIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.ReadBrandingThemeDefault")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes/{themeID}/default"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterToString(r.themeID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadBrandingThemesRequest struct {
+	ctx context.Context
+	ApiService *BrandingThemesApiService
+	environmentID string
+}
+
+func (r ApiReadBrandingThemesRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadBrandingThemesExecute(r)
+}
+
+/*
+ReadBrandingThemes READ Branding Themes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @return ApiReadBrandingThemesRequest
+*/
+func (a *BrandingThemesApiService) ReadBrandingThemes(ctx context.Context, environmentID string) ApiReadBrandingThemesRequest {
+	return ApiReadBrandingThemesRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+	}
+}
+
+// Execute executes the request
+//  @return EntityArray
+func (a *BrandingThemesApiService) ReadBrandingThemesExecute(r ApiReadBrandingThemesRequest) (*EntityArray, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EntityArray
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.ReadBrandingThemes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiReadOneBrandingThemeRequest struct {
+	ctx context.Context
+	ApiService *BrandingThemesApiService
+	environmentID string
+	themeID string
+}
+
+func (r ApiReadOneBrandingThemeRequest) Execute() (*BrandingTheme, *http.Response, error) {
+	return r.ApiService.ReadOneBrandingThemeExecute(r)
+}
+
+/*
+ReadOneBrandingTheme READ One Branding Theme
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param themeID
+ @return ApiReadOneBrandingThemeRequest
+*/
+func (a *BrandingThemesApiService) ReadOneBrandingTheme(ctx context.Context, environmentID string, themeID string) ApiReadOneBrandingThemeRequest {
+	return ApiReadOneBrandingThemeRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		themeID: themeID,
+	}
+}
+
+// Execute executes the request
+//  @return BrandingTheme
+func (a *BrandingThemesApiService) ReadOneBrandingThemeExecute(r ApiReadOneBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BrandingTheme
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.ReadOneBrandingTheme")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes/{themeID}"
@@ -946,24 +750,21 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDGetEx
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -976,106 +777,103 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDGetEx
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest struct {
+type ApiUpdateBrandingThemeRequest struct {
 	ctx context.Context
 	ApiService *BrandingThemesApiService
 	environmentID string
 	themeID string
-	authorization *string
-	contentType *string
-	body *map[string]interface{}
+	brandingTheme *BrandingTheme
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest) Authorization(authorization string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest {
-	r.authorization = &authorization
+func (r ApiUpdateBrandingThemeRequest) BrandingTheme(brandingTheme BrandingTheme) ApiUpdateBrandingThemeRequest {
+	r.brandingTheme = &brandingTheme
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest) ContentType(contentType string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest {
-	r.contentType = &contentType
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDThemesThemeIDPutExecute(r)
+func (r ApiUpdateBrandingThemeRequest) Execute() (*BrandingTheme, *http.Response, error) {
+	return r.ApiService.UpdateBrandingThemeExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDThemesThemeIDPut UPDATE Branding Theme
+UpdateBrandingTheme UPDATE Branding Theme
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param themeID
- @return ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest
+ @return ApiUpdateBrandingThemeRequest
 */
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDPut(ctx context.Context, environmentID string, themeID string) ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest{
+func (a *BrandingThemesApiService) UpdateBrandingTheme(ctx context.Context, environmentID string, themeID string) ApiUpdateBrandingThemeRequest {
+	return ApiUpdateBrandingThemeRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -1084,16 +882,18 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDPut(c
 }
 
 // Execute executes the request
-func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDPutExecute(r ApiV1EnvironmentsEnvironmentIDThemesThemeIDPutRequest) (*http.Response, error) {
+//  @return BrandingTheme
+func (a *BrandingThemesApiService) UpdateBrandingThemeExecute(r ApiUpdateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *BrandingTheme
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.V1EnvironmentsEnvironmentIDThemesThemeIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.UpdateBrandingTheme")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes/{themeID}"
@@ -1121,29 +921,23 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDPutEx
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.authorization != nil {
-		localVarHeaderParams["Authorization"] = parameterToString(*r.authorization, "")
-	}
-	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
-	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.brandingTheme
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1156,63 +950,245 @@ func (a *BrandingThemesApiService) V1EnvironmentsEnvironmentIDThemesThemeIDPutEx
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateBrandingThemeDefaultRequest struct {
+	ctx context.Context
+	ApiService *BrandingThemesApiService
+	environmentID string
+	themeID string
+	brandingThemeDefault *BrandingThemeDefault
+}
+
+func (r ApiUpdateBrandingThemeDefaultRequest) BrandingThemeDefault(brandingThemeDefault BrandingThemeDefault) ApiUpdateBrandingThemeDefaultRequest {
+	r.brandingThemeDefault = &brandingThemeDefault
+	return r
+}
+
+func (r ApiUpdateBrandingThemeDefaultRequest) Execute() (*BrandingThemeDefault, *http.Response, error) {
+	return r.ApiService.UpdateBrandingThemeDefaultExecute(r)
+}
+
+/*
+UpdateBrandingThemeDefault UPDATE Branding Theme Default
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentID
+ @param themeID
+ @return ApiUpdateBrandingThemeDefaultRequest
+*/
+func (a *BrandingThemesApiService) UpdateBrandingThemeDefault(ctx context.Context, environmentID string, themeID string) ApiUpdateBrandingThemeDefaultRequest {
+	return ApiUpdateBrandingThemeDefaultRequest{
+		ApiService: a,
+		ctx: ctx,
+		environmentID: environmentID,
+		themeID: themeID,
+	}
+}
+
+// Execute executes the request
+//  @return BrandingThemeDefault
+func (a *BrandingThemesApiService) UpdateBrandingThemeDefaultExecute(r ApiUpdateBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BrandingThemeDefault
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BrandingThemesApiService.UpdateBrandingThemeDefault")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/themes/{themeID}/default"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"themeID"+"}", url.PathEscape(parameterToString(r.themeID, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.brandingThemeDefault
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

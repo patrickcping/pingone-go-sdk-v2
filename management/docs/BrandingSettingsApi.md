@@ -4,14 +4,14 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDBrandingSettingsGet**](BrandingSettingsApi.md#V1EnvironmentsEnvironmentIDBrandingSettingsGet) | **Get** /v1/environments/{environmentID}/brandingSettings | READ Branding Settings
-[**V1EnvironmentsEnvironmentIDBrandingSettingsPut**](BrandingSettingsApi.md#V1EnvironmentsEnvironmentIDBrandingSettingsPut) | **Put** /v1/environments/{environmentID}/brandingSettings | UPDATE Branding Settings
+[**ReadBrandingSettings**](BrandingSettingsApi.md#ReadBrandingSettings) | **Get** /v1/environments/{environmentID}/brandingSettings | READ Branding Settings
+[**UpdateBrandingSettings**](BrandingSettingsApi.md#UpdateBrandingSettings) | **Put** /v1/environments/{environmentID}/brandingSettings | UPDATE Branding Settings
 
 
 
-## V1EnvironmentsEnvironmentIDBrandingSettingsGet
+## ReadBrandingSettings
 
-> V1EnvironmentsEnvironmentIDBrandingSettingsGet(ctx, environmentID).Authorization(authorization).Execute()
+> BrandingSettings ReadBrandingSettings(ctx, environmentID).Execute()
 
 READ Branding Settings
 
@@ -29,15 +29,16 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingSettingsApi.V1EnvironmentsEnvironmentIDBrandingSettingsGet(context.Background(), environmentID).Authorization(authorization).Execute()
+    resp, r, err := apiClient.BrandingSettingsApi.ReadBrandingSettings(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingSettingsApi.V1EnvironmentsEnvironmentIDBrandingSettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingSettingsApi.ReadBrandingSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadBrandingSettings`: BrandingSettings
+    fmt.Fprintf(os.Stdout, "Response from `BrandingSettingsApi.ReadBrandingSettings`: %v\n", resp)
 }
 ```
 
@@ -51,17 +52,16 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDBrandingSettingsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadBrandingSettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
 
 ### Return type
 
- (empty response body)
+[**BrandingSettings**](BrandingSettings.md)
 
 ### Authorization
 
@@ -77,9 +77,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDBrandingSettingsPut
+## UpdateBrandingSettings
 
-> V1EnvironmentsEnvironmentIDBrandingSettingsPut(ctx, environmentID).Authorization(authorization).Body(body).Execute()
+> BrandingSettings UpdateBrandingSettings(ctx, environmentID).BrandingSettings(brandingSettings).Execute()
 
 UPDATE Branding Settings
 
@@ -97,16 +97,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    authorization := "{{jwtToken}}" // string |  (optional)
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    brandingSettings := *openapiclient.NewBrandingSettings() // BrandingSettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingSettingsApi.V1EnvironmentsEnvironmentIDBrandingSettingsPut(context.Background(), environmentID).Authorization(authorization).Body(body).Execute()
+    resp, r, err := apiClient.BrandingSettingsApi.UpdateBrandingSettings(context.Background(), environmentID).BrandingSettings(brandingSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingSettingsApi.V1EnvironmentsEnvironmentIDBrandingSettingsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingSettingsApi.UpdateBrandingSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateBrandingSettings`: BrandingSettings
+    fmt.Fprintf(os.Stdout, "Response from `BrandingSettingsApi.UpdateBrandingSettings`: %v\n", resp)
 }
 ```
 
@@ -120,18 +121,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDBrandingSettingsPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateBrandingSettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authorization** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **brandingSettings** | [**BrandingSettings**](BrandingSettings.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**BrandingSettings**](BrandingSettings.md)
 
 ### Authorization
 
