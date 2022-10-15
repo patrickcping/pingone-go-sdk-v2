@@ -1,4 +1,4 @@
-# v0.11.2 (Unreleased)
+# v0.11.2 (2022-10-15)
 
 * **Bug fix** - Correct the `Image` API model [#74](https://github.com/patrickcping/pingone-go-sdk-v2/pull/74)
 
