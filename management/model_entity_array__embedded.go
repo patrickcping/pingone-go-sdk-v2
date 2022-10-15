@@ -44,6 +44,7 @@ type EntityArrayEmbedded struct {
 	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
 	SignOnPolicyAssignments []SignOnPolicyAssignment `json:"signOnPolicyAssignments,omitempty"`
 	Subscriptions []Subscription `json:"subscriptions,omitempty"`
+	Themes []BrandingTheme `json:"themes,omitempty"`
 	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
 	Roles []Role `json:"roles,omitempty"`
@@ -964,6 +965,38 @@ func (o *EntityArrayEmbedded) SetSubscriptions(v []Subscription) {
 	o.Subscriptions = v
 }
 
+// GetThemes returns the Themes field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetThemes() []BrandingTheme {
+	if o == nil || o.Themes == nil {
+		var ret []BrandingTheme
+		return ret
+	}
+	return o.Themes
+}
+
+// GetThemesOk returns a tuple with the Themes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetThemesOk() ([]BrandingTheme, bool) {
+	if o == nil || o.Themes == nil {
+		return nil, false
+	}
+	return o.Themes, true
+}
+
+// HasThemes returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasThemes() bool {
+	if o != nil && o.Themes != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetThemes gets a reference to the given []BrandingTheme and assigns it to the Themes field.
+func (o *EntityArrayEmbedded) SetThemes(v []BrandingTheme) {
+	o.Themes = v
+}
+
 // GetTrustedEmails returns the TrustedEmails field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetTrustedEmails() []EmailDomainTrustedEmail {
 	if o == nil || o.TrustedEmails == nil {
@@ -1209,6 +1242,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.Subscriptions != nil {
 		toSerialize["subscriptions"] = o.Subscriptions
+	}
+	if o.Themes != nil {
+		toSerialize["themes"] = o.Themes
 	}
 	if o.TrustedEmails != nil {
 		toSerialize["trustedEmails"] = o.TrustedEmails
