@@ -21506,9 +21506,9 @@ components:
       description: "A string that specifies the type of format used for the image.\
         \ Options are jpg, png, and gif."
       enum:
-      - PNG
-      - JPG
-      - GIF
+      - png
+      - jpg
+      - gif
       type: string
     EnumLicensePackage:
       description: "A string that specifies the license template on which this license\
@@ -23990,15 +23990,17 @@ components:
       - $ref: '#/components/schemas/IdentityProviderSAML_allOf'
     Image:
       example:
+        createdAt: createdAt
         environment:
           id: id
         id: id
         targets:
-          width: 0
-          href: href
-          id: id
-          type: null
-          height: 6
+          original:
+            width: 0
+            href: href
+            id: id
+            type: null
+            height: 6
       properties:
         id:
           description: A string that specifies the resource’s unique identifier.
@@ -24006,6 +24008,11 @@ components:
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        createdAt:
+          description: The time the resource was created.
+          format: datetime
+          readOnly: true
+          type: string
         targets:
           $ref: '#/components/schemas/Image_targets'
       type: object
@@ -27867,7 +27874,7 @@ components:
       - ssoEndpoint
       type: object
       example: null
-    Image_targets:
+    Image_targets_original:
       example:
         width: 0
         href: href
@@ -27894,6 +27901,20 @@ components:
           description: The height of the image (in pixels).
           readOnly: true
           type: integer
+      readOnly: true
+      type: object
+    Image_targets:
+      example:
+        original:
+          width: 0
+          href: href
+          id: id
+          type: null
+          height: 6
+      properties:
+        original:
+          $ref: '#/components/schemas/Image_targets_original'
+      readOnly: true
       type: object
     LanguageLocalizationStatus_locale:
       example:

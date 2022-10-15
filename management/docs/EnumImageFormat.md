@@ -3,11 +3,11 @@
 ## Enum
 
 
-* `PNG` (value: `"PNG"`)
+* `PNG` (value: `"png"`)
 
-* `JPG` (value: `"JPG"`)
+* `JPG` (value: `"jpg"`)
 
-* `GIF` (value: `"GIF"`)
+* `GIF` (value: `"gif"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

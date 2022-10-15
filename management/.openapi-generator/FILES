@@ -28,7 +28,6 @@ api_group_membership.go
 api_groups.go
 api_identity_provider_attributes.go
 api_identity_providers.go
-api_images.go
 api_integration_catalog.go
 api_language_localization_status.go
 api_languages.go
@@ -283,6 +282,7 @@ docs/IdentityProviderSAMLAllOfSpSigningKey.md
 docs/IdentityProvidersApi.md
 docs/Image.md
 docs/ImageTargets.md
+docs/ImageTargetsOriginal.md
 docs/ImagesApi.md
 docs/IntegrationCatalogApi.md
 docs/Language.md
@@ -624,6 +624,7 @@ model_identity_provider_saml_all_of_sp_signing.go
 model_identity_provider_saml_all_of_sp_signing_key.go
 model_image.go
 model_image_targets.go
+model_image_targets_original.go
 model_language.go
 model_language_localization_status.go
 model_language_localization_status_locale.go

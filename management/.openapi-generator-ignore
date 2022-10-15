@@ -33,6 +33,7 @@ docs/Certificate.md
 docs/PasswordPolicyMinCharacters.md
 
 api_certificate_management.go
+api_images.go
 api_password_policies.go
 
 model_certificate.go

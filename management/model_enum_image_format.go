@@ -20,16 +20,16 @@ type EnumImageFormat string
 
 // List of EnumImageFormat
 const (
-	ENUMIMAGEFORMAT_PNG EnumImageFormat = "PNG"
-	ENUMIMAGEFORMAT_JPG EnumImageFormat = "JPG"
-	ENUMIMAGEFORMAT_GIF EnumImageFormat = "GIF"
+	ENUMIMAGEFORMAT_PNG EnumImageFormat = "png"
+	ENUMIMAGEFORMAT_JPG EnumImageFormat = "jpg"
+	ENUMIMAGEFORMAT_GIF EnumImageFormat = "gif"
 )
 
 // All allowed values of EnumImageFormat enum
 var AllowedEnumImageFormatEnumValues = []EnumImageFormat{
-	"PNG",
-	"JPG",
-	"GIF",
+	"png",
+	"jpg",
+	"gif",
 }
 
 func (v *EnumImageFormat) UnmarshalJSON(src []byte) error {

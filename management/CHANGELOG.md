@@ -1,3 +1,7 @@
+# v0.11.2 (Unreleased)
+
+* **Bug fix** - Correct the `Image` API model [#74](https://github.com/patrickcping/pingone-go-sdk-v2/pull/74)
+
 # v0.11.1 (2022-10-10)
 
 * **Enhancement** Add `uriPrefix` (mobile) and `excludedPlatforms` (mobile device integrity check) to the `ApplicationOIDC` data model [#71](https://github.com/patrickcping/pingone-go-sdk-v2/pull/71)

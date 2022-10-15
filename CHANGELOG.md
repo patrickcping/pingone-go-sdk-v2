@@ -2,6 +2,8 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.2
     * **Bug fix** Fix error conversion where the model doesn't exist [#72](https://github.com/patrickcping/pingone-go-sdk-v2/pull/72)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.11.2](./management/CHANGELOG.md)
+    * **Bug fix** - Correct the `Image` API model [#74](https://github.com/patrickcping/pingone-go-sdk-v2/pull/74)
 
 # Release (2022-10-10)
 
