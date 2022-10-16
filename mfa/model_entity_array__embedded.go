@@ -18,6 +18,8 @@ import (
 type EntityArrayEmbedded struct {
 	PushCredentials []EntityArrayEmbeddedPushCredentialsInner `json:"pushCredentials,omitempty"`
 	DeviceAuthenticationPolicies []DeviceAuthenticationPolicy `json:"deviceAuthenticationPolicies,omitempty"`
+	FidoDevicesMetadata []map[string]interface{} `json:"fidoDevicesMetadata,omitempty"`
+	FidoPolicies []FIDOPolicy `json:"fidoPolicies,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -101,6 +103,70 @@ func (o *EntityArrayEmbedded) SetDeviceAuthenticationPolicies(v []DeviceAuthenti
 	o.DeviceAuthenticationPolicies = v
 }
 
+// GetFidoDevicesMetadata returns the FidoDevicesMetadata field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetFidoDevicesMetadata() []map[string]interface{} {
+	if o == nil || o.FidoDevicesMetadata == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return o.FidoDevicesMetadata
+}
+
+// GetFidoDevicesMetadataOk returns a tuple with the FidoDevicesMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetFidoDevicesMetadataOk() ([]map[string]interface{}, bool) {
+	if o == nil || o.FidoDevicesMetadata == nil {
+		return nil, false
+	}
+	return o.FidoDevicesMetadata, true
+}
+
+// HasFidoDevicesMetadata returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasFidoDevicesMetadata() bool {
+	if o != nil && o.FidoDevicesMetadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFidoDevicesMetadata gets a reference to the given []map[string]interface{} and assigns it to the FidoDevicesMetadata field.
+func (o *EntityArrayEmbedded) SetFidoDevicesMetadata(v []map[string]interface{}) {
+	o.FidoDevicesMetadata = v
+}
+
+// GetFidoPolicies returns the FidoPolicies field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetFidoPolicies() []FIDOPolicy {
+	if o == nil || o.FidoPolicies == nil {
+		var ret []FIDOPolicy
+		return ret
+	}
+	return o.FidoPolicies
+}
+
+// GetFidoPoliciesOk returns a tuple with the FidoPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetFidoPoliciesOk() ([]FIDOPolicy, bool) {
+	if o == nil || o.FidoPolicies == nil {
+		return nil, false
+	}
+	return o.FidoPolicies, true
+}
+
+// HasFidoPolicies returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasFidoPolicies() bool {
+	if o != nil && o.FidoPolicies != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFidoPolicies gets a reference to the given []FIDOPolicy and assigns it to the FidoPolicies field.
+func (o *EntityArrayEmbedded) SetFidoPolicies(v []FIDOPolicy) {
+	o.FidoPolicies = v
+}
+
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.PushCredentials != nil {
@@ -108,6 +174,12 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if o.DeviceAuthenticationPolicies != nil {
 		toSerialize["deviceAuthenticationPolicies"] = o.DeviceAuthenticationPolicies
+	}
+	if o.FidoDevicesMetadata != nil {
+		toSerialize["fidoDevicesMetadata"] = o.FidoDevicesMetadata
+	}
+	if o.FidoPolicies != nil {
+		toSerialize["fidoPolicies"] = o.FidoPolicies
 	}
 	return json.Marshal(toSerialize)
 }

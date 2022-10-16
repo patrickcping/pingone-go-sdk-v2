@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PushCredentials** | Pointer to [**[]EntityArrayEmbeddedPushCredentialsInner**](EntityArrayEmbeddedPushCredentialsInner.md) |  | [optional] 
 **DeviceAuthenticationPolicies** | Pointer to [**[]DeviceAuthenticationPolicy**](DeviceAuthenticationPolicy.md) |  | [optional] 
+**FidoDevicesMetadata** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**FidoPolicies** | Pointer to [**[]FIDOPolicy**](FIDOPolicy.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +77,56 @@ SetDeviceAuthenticationPolicies sets DeviceAuthenticationPolicies field to given
 `func (o *EntityArrayEmbedded) HasDeviceAuthenticationPolicies() bool`
 
 HasDeviceAuthenticationPolicies returns a boolean if a field has been set.
+
+### GetFidoDevicesMetadata
+
+`func (o *EntityArrayEmbedded) GetFidoDevicesMetadata() []map[string]interface{}`
+
+GetFidoDevicesMetadata returns the FidoDevicesMetadata field if non-nil, zero value otherwise.
+
+### GetFidoDevicesMetadataOk
+
+`func (o *EntityArrayEmbedded) GetFidoDevicesMetadataOk() (*[]map[string]interface{}, bool)`
+
+GetFidoDevicesMetadataOk returns a tuple with the FidoDevicesMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFidoDevicesMetadata
+
+`func (o *EntityArrayEmbedded) SetFidoDevicesMetadata(v []map[string]interface{})`
+
+SetFidoDevicesMetadata sets FidoDevicesMetadata field to given value.
+
+### HasFidoDevicesMetadata
+
+`func (o *EntityArrayEmbedded) HasFidoDevicesMetadata() bool`
+
+HasFidoDevicesMetadata returns a boolean if a field has been set.
+
+### GetFidoPolicies
+
+`func (o *EntityArrayEmbedded) GetFidoPolicies() []FIDOPolicy`
+
+GetFidoPolicies returns the FidoPolicies field if non-nil, zero value otherwise.
+
+### GetFidoPoliciesOk
+
+`func (o *EntityArrayEmbedded) GetFidoPoliciesOk() (*[]FIDOPolicy, bool)`
+
+GetFidoPoliciesOk returns a tuple with the FidoPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFidoPolicies
+
+`func (o *EntityArrayEmbedded) SetFidoPolicies(v []FIDOPolicy)`
+
+SetFidoPolicies sets FidoPolicies field to given value.
+
+### HasFidoPolicies
+
+`func (o *EntityArrayEmbedded) HasFidoPolicies() bool`
+
+HasFidoPolicies returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
