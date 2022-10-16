@@ -26291,8 +26291,13 @@ components:
           description: The name of the branding theme.
           type: string
       required:
-      - backgroundColor
       - backgroundType
+      - bodyTextColor
+      - buttonColor
+      - buttonTextColor
+      - cardColor
+      - headingTextColor
+      - linkTextColor
       - logoType
       type: object
     CustomDomain_certificate:
