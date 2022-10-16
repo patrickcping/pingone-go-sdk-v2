@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BackgroundColor** | **string** | The background color for the theme. It must be a valid hexadecimal color code, and it is a required property when configuration.backgroundType is set to COLOR. | 
+**BackgroundColor** | Pointer to **string** | The background color for the theme. It must be a valid hexadecimal color code, and it is a required property when configuration.backgroundType is set to COLOR. | [optional] 
 **BackgroundType** | [**EnumBrandingThemeBackgroundType**](EnumBrandingThemeBackgroundType.md) |  | 
 **BackgroundImage** | Pointer to [**BrandingThemeConfigurationBackgroundImage**](BrandingThemeConfigurationBackgroundImage.md) |  | [optional] 
-**BodyTextColor** | Pointer to **string** | The body text color for the theme. It must be a valid hexadecimal color code. | [optional] 
-**ButtonColor** | Pointer to **string** | The button color for the theme. It must be a valid hexadecimal color code. | [optional] 
-**ButtonTextColor** | Pointer to **string** | The button text color for the branding theme. It must be a valid hexadecimal color code. | [optional] 
-**CardColor** | Pointer to **string** | The card color for the branding theme. It must be a valid hexadecimal color code. | [optional] 
+**BodyTextColor** | **string** | The body text color for the theme. It must be a valid hexadecimal color code. | 
+**ButtonColor** | **string** | The button color for the theme. It must be a valid hexadecimal color code. | 
+**ButtonTextColor** | **string** | The button text color for the branding theme. It must be a valid hexadecimal color code. | 
+**CardColor** | **string** | The card color for the branding theme. It must be a valid hexadecimal color code. | 
 **Footer** | Pointer to **string** | The footer of the branding theme. | [optional] 
-**HeadingTextColor** | Pointer to **string** | The heading text color for the branding theme. It must be a valid hexadecimal color code. | [optional] 
-**LinkTextColor** | Pointer to **string** | The hyperlink text color for the branding theme. It must be a valid hexadecimal color code. | [optional] 
+**HeadingTextColor** | **string** | The heading text color for the branding theme. It must be a valid hexadecimal color code. | 
+**LinkTextColor** | **string** | The hyperlink text color for the branding theme. It must be a valid hexadecimal color code. | 
 **Logo** | Pointer to [**BrandingThemeConfigurationLogo**](BrandingThemeConfigurationLogo.md) |  | [optional] 
 **LogoType** | [**EnumBrandingLogoType**](EnumBrandingLogoType.md) |  | 
 **Name** | Pointer to **string** | The name of the branding theme. | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewBrandingThemeConfiguration
 
-`func NewBrandingThemeConfiguration(backgroundColor string, backgroundType EnumBrandingThemeBackgroundType, logoType EnumBrandingLogoType, ) *BrandingThemeConfiguration`
+`func NewBrandingThemeConfiguration(backgroundType EnumBrandingThemeBackgroundType, bodyTextColor string, buttonColor string, buttonTextColor string, cardColor string, headingTextColor string, linkTextColor string, logoType EnumBrandingLogoType, ) *BrandingThemeConfiguration`
 
 NewBrandingThemeConfiguration instantiates a new BrandingThemeConfiguration object
 This constructor will assign default values to properties that have it defined,
@@ -56,6 +56,11 @@ and a boolean to check if the value has been set.
 
 SetBackgroundColor sets BackgroundColor field to given value.
 
+### HasBackgroundColor
+
+`func (o *BrandingThemeConfiguration) HasBackgroundColor() bool`
+
+HasBackgroundColor returns a boolean if a field has been set.
 
 ### GetBackgroundType
 
@@ -121,11 +126,6 @@ and a boolean to check if the value has been set.
 
 SetBodyTextColor sets BodyTextColor field to given value.
 
-### HasBodyTextColor
-
-`func (o *BrandingThemeConfiguration) HasBodyTextColor() bool`
-
-HasBodyTextColor returns a boolean if a field has been set.
 
 ### GetButtonColor
 
@@ -146,11 +146,6 @@ and a boolean to check if the value has been set.
 
 SetButtonColor sets ButtonColor field to given value.
 
-### HasButtonColor
-
-`func (o *BrandingThemeConfiguration) HasButtonColor() bool`
-
-HasButtonColor returns a boolean if a field has been set.
 
 ### GetButtonTextColor
 
@@ -171,11 +166,6 @@ and a boolean to check if the value has been set.
 
 SetButtonTextColor sets ButtonTextColor field to given value.
 
-### HasButtonTextColor
-
-`func (o *BrandingThemeConfiguration) HasButtonTextColor() bool`
-
-HasButtonTextColor returns a boolean if a field has been set.
 
 ### GetCardColor
 
@@ -196,11 +186,6 @@ and a boolean to check if the value has been set.
 
 SetCardColor sets CardColor field to given value.
 
-### HasCardColor
-
-`func (o *BrandingThemeConfiguration) HasCardColor() bool`
-
-HasCardColor returns a boolean if a field has been set.
 
 ### GetFooter
 
@@ -246,11 +231,6 @@ and a boolean to check if the value has been set.
 
 SetHeadingTextColor sets HeadingTextColor field to given value.
 
-### HasHeadingTextColor
-
-`func (o *BrandingThemeConfiguration) HasHeadingTextColor() bool`
-
-HasHeadingTextColor returns a boolean if a field has been set.
 
 ### GetLinkTextColor
 
@@ -271,11 +251,6 @@ and a boolean to check if the value has been set.
 
 SetLinkTextColor sets LinkTextColor field to given value.
 
-### HasLinkTextColor
-
-`func (o *BrandingThemeConfiguration) HasLinkTextColor() bool`
-
-HasLinkTextColor returns a boolean if a field has been set.
 
 ### GetLogo
 

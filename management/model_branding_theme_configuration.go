@@ -17,23 +17,23 @@ import (
 // BrandingThemeConfiguration struct for BrandingThemeConfiguration
 type BrandingThemeConfiguration struct {
 	// The background color for the theme. It must be a valid hexadecimal color code, and it is a required property when configuration.backgroundType is set to COLOR.
-	BackgroundColor string `json:"backgroundColor"`
+	BackgroundColor *string `json:"backgroundColor,omitempty"`
 	BackgroundType EnumBrandingThemeBackgroundType `json:"backgroundType"`
 	BackgroundImage *BrandingThemeConfigurationBackgroundImage `json:"backgroundImage,omitempty"`
 	// The body text color for the theme. It must be a valid hexadecimal color code.
-	BodyTextColor *string `json:"bodyTextColor,omitempty"`
+	BodyTextColor string `json:"bodyTextColor"`
 	// The button color for the theme. It must be a valid hexadecimal color code.
-	ButtonColor *string `json:"buttonColor,omitempty"`
+	ButtonColor string `json:"buttonColor"`
 	// The button text color for the branding theme. It must be a valid hexadecimal color code.
-	ButtonTextColor *string `json:"buttonTextColor,omitempty"`
+	ButtonTextColor string `json:"buttonTextColor"`
 	// The card color for the branding theme. It must be a valid hexadecimal color code.
-	CardColor *string `json:"cardColor,omitempty"`
+	CardColor string `json:"cardColor"`
 	// The footer of the branding theme.
 	Footer *string `json:"footer,omitempty"`
 	// The heading text color for the branding theme. It must be a valid hexadecimal color code.
-	HeadingTextColor *string `json:"headingTextColor,omitempty"`
+	HeadingTextColor string `json:"headingTextColor"`
 	// The hyperlink text color for the branding theme. It must be a valid hexadecimal color code.
-	LinkTextColor *string `json:"linkTextColor,omitempty"`
+	LinkTextColor string `json:"linkTextColor"`
 	Logo *BrandingThemeConfigurationLogo `json:"logo,omitempty"`
 	LogoType EnumBrandingLogoType `json:"logoType"`
 	// The name of the branding theme.
@@ -44,10 +44,15 @@ type BrandingThemeConfiguration struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBrandingThemeConfiguration(backgroundColor string, backgroundType EnumBrandingThemeBackgroundType, logoType EnumBrandingLogoType) *BrandingThemeConfiguration {
+func NewBrandingThemeConfiguration(backgroundType EnumBrandingThemeBackgroundType, bodyTextColor string, buttonColor string, buttonTextColor string, cardColor string, headingTextColor string, linkTextColor string, logoType EnumBrandingLogoType) *BrandingThemeConfiguration {
 	this := BrandingThemeConfiguration{}
-	this.BackgroundColor = backgroundColor
 	this.BackgroundType = backgroundType
+	this.BodyTextColor = bodyTextColor
+	this.ButtonColor = buttonColor
+	this.ButtonTextColor = buttonTextColor
+	this.CardColor = cardColor
+	this.HeadingTextColor = headingTextColor
+	this.LinkTextColor = linkTextColor
 	this.LogoType = logoType
 	return &this
 }
@@ -60,28 +65,36 @@ func NewBrandingThemeConfigurationWithDefaults() *BrandingThemeConfiguration {
 	return &this
 }
 
-// GetBackgroundColor returns the BackgroundColor field value
+// GetBackgroundColor returns the BackgroundColor field value if set, zero value otherwise.
 func (o *BrandingThemeConfiguration) GetBackgroundColor() string {
-	if o == nil {
+	if o == nil || o.BackgroundColor == nil {
 		var ret string
 		return ret
 	}
-
-	return o.BackgroundColor
+	return *o.BackgroundColor
 }
 
-// GetBackgroundColorOk returns a tuple with the BackgroundColor field value
+// GetBackgroundColorOk returns a tuple with the BackgroundColor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetBackgroundColorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || o.BackgroundColor == nil {
 		return nil, false
 	}
-	return &o.BackgroundColor, true
+	return o.BackgroundColor, true
 }
 
-// SetBackgroundColor sets field value
+// HasBackgroundColor returns a boolean if a field has been set.
+func (o *BrandingThemeConfiguration) HasBackgroundColor() bool {
+	if o != nil && o.BackgroundColor != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBackgroundColor gets a reference to the given string and assigns it to the BackgroundColor field.
 func (o *BrandingThemeConfiguration) SetBackgroundColor(v string) {
-	o.BackgroundColor = v
+	o.BackgroundColor = &v
 }
 
 // GetBackgroundType returns the BackgroundType field value
@@ -140,132 +153,100 @@ func (o *BrandingThemeConfiguration) SetBackgroundImage(v BrandingThemeConfigura
 	o.BackgroundImage = &v
 }
 
-// GetBodyTextColor returns the BodyTextColor field value if set, zero value otherwise.
+// GetBodyTextColor returns the BodyTextColor field value
 func (o *BrandingThemeConfiguration) GetBodyTextColor() string {
-	if o == nil || o.BodyTextColor == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.BodyTextColor
+
+	return o.BodyTextColor
 }
 
-// GetBodyTextColorOk returns a tuple with the BodyTextColor field value if set, nil otherwise
+// GetBodyTextColorOk returns a tuple with the BodyTextColor field value
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetBodyTextColorOk() (*string, bool) {
-	if o == nil || o.BodyTextColor == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.BodyTextColor, true
+	return &o.BodyTextColor, true
 }
 
-// HasBodyTextColor returns a boolean if a field has been set.
-func (o *BrandingThemeConfiguration) HasBodyTextColor() bool {
-	if o != nil && o.BodyTextColor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBodyTextColor gets a reference to the given string and assigns it to the BodyTextColor field.
+// SetBodyTextColor sets field value
 func (o *BrandingThemeConfiguration) SetBodyTextColor(v string) {
-	o.BodyTextColor = &v
+	o.BodyTextColor = v
 }
 
-// GetButtonColor returns the ButtonColor field value if set, zero value otherwise.
+// GetButtonColor returns the ButtonColor field value
 func (o *BrandingThemeConfiguration) GetButtonColor() string {
-	if o == nil || o.ButtonColor == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ButtonColor
+
+	return o.ButtonColor
 }
 
-// GetButtonColorOk returns a tuple with the ButtonColor field value if set, nil otherwise
+// GetButtonColorOk returns a tuple with the ButtonColor field value
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetButtonColorOk() (*string, bool) {
-	if o == nil || o.ButtonColor == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ButtonColor, true
+	return &o.ButtonColor, true
 }
 
-// HasButtonColor returns a boolean if a field has been set.
-func (o *BrandingThemeConfiguration) HasButtonColor() bool {
-	if o != nil && o.ButtonColor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetButtonColor gets a reference to the given string and assigns it to the ButtonColor field.
+// SetButtonColor sets field value
 func (o *BrandingThemeConfiguration) SetButtonColor(v string) {
-	o.ButtonColor = &v
+	o.ButtonColor = v
 }
 
-// GetButtonTextColor returns the ButtonTextColor field value if set, zero value otherwise.
+// GetButtonTextColor returns the ButtonTextColor field value
 func (o *BrandingThemeConfiguration) GetButtonTextColor() string {
-	if o == nil || o.ButtonTextColor == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ButtonTextColor
+
+	return o.ButtonTextColor
 }
 
-// GetButtonTextColorOk returns a tuple with the ButtonTextColor field value if set, nil otherwise
+// GetButtonTextColorOk returns a tuple with the ButtonTextColor field value
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetButtonTextColorOk() (*string, bool) {
-	if o == nil || o.ButtonTextColor == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ButtonTextColor, true
+	return &o.ButtonTextColor, true
 }
 
-// HasButtonTextColor returns a boolean if a field has been set.
-func (o *BrandingThemeConfiguration) HasButtonTextColor() bool {
-	if o != nil && o.ButtonTextColor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetButtonTextColor gets a reference to the given string and assigns it to the ButtonTextColor field.
+// SetButtonTextColor sets field value
 func (o *BrandingThemeConfiguration) SetButtonTextColor(v string) {
-	o.ButtonTextColor = &v
+	o.ButtonTextColor = v
 }
 
-// GetCardColor returns the CardColor field value if set, zero value otherwise.
+// GetCardColor returns the CardColor field value
 func (o *BrandingThemeConfiguration) GetCardColor() string {
-	if o == nil || o.CardColor == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CardColor
+
+	return o.CardColor
 }
 
-// GetCardColorOk returns a tuple with the CardColor field value if set, nil otherwise
+// GetCardColorOk returns a tuple with the CardColor field value
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetCardColorOk() (*string, bool) {
-	if o == nil || o.CardColor == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.CardColor, true
+	return &o.CardColor, true
 }
 
-// HasCardColor returns a boolean if a field has been set.
-func (o *BrandingThemeConfiguration) HasCardColor() bool {
-	if o != nil && o.CardColor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCardColor gets a reference to the given string and assigns it to the CardColor field.
+// SetCardColor sets field value
 func (o *BrandingThemeConfiguration) SetCardColor(v string) {
-	o.CardColor = &v
+	o.CardColor = v
 }
 
 // GetFooter returns the Footer field value if set, zero value otherwise.
@@ -300,68 +281,52 @@ func (o *BrandingThemeConfiguration) SetFooter(v string) {
 	o.Footer = &v
 }
 
-// GetHeadingTextColor returns the HeadingTextColor field value if set, zero value otherwise.
+// GetHeadingTextColor returns the HeadingTextColor field value
 func (o *BrandingThemeConfiguration) GetHeadingTextColor() string {
-	if o == nil || o.HeadingTextColor == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.HeadingTextColor
+
+	return o.HeadingTextColor
 }
 
-// GetHeadingTextColorOk returns a tuple with the HeadingTextColor field value if set, nil otherwise
+// GetHeadingTextColorOk returns a tuple with the HeadingTextColor field value
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetHeadingTextColorOk() (*string, bool) {
-	if o == nil || o.HeadingTextColor == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.HeadingTextColor, true
+	return &o.HeadingTextColor, true
 }
 
-// HasHeadingTextColor returns a boolean if a field has been set.
-func (o *BrandingThemeConfiguration) HasHeadingTextColor() bool {
-	if o != nil && o.HeadingTextColor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHeadingTextColor gets a reference to the given string and assigns it to the HeadingTextColor field.
+// SetHeadingTextColor sets field value
 func (o *BrandingThemeConfiguration) SetHeadingTextColor(v string) {
-	o.HeadingTextColor = &v
+	o.HeadingTextColor = v
 }
 
-// GetLinkTextColor returns the LinkTextColor field value if set, zero value otherwise.
+// GetLinkTextColor returns the LinkTextColor field value
 func (o *BrandingThemeConfiguration) GetLinkTextColor() string {
-	if o == nil || o.LinkTextColor == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.LinkTextColor
+
+	return o.LinkTextColor
 }
 
-// GetLinkTextColorOk returns a tuple with the LinkTextColor field value if set, nil otherwise
+// GetLinkTextColorOk returns a tuple with the LinkTextColor field value
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetLinkTextColorOk() (*string, bool) {
-	if o == nil || o.LinkTextColor == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.LinkTextColor, true
+	return &o.LinkTextColor, true
 }
 
-// HasLinkTextColor returns a boolean if a field has been set.
-func (o *BrandingThemeConfiguration) HasLinkTextColor() bool {
-	if o != nil && o.LinkTextColor != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLinkTextColor gets a reference to the given string and assigns it to the LinkTextColor field.
+// SetLinkTextColor sets field value
 func (o *BrandingThemeConfiguration) SetLinkTextColor(v string) {
-	o.LinkTextColor = &v
+	o.LinkTextColor = v
 }
 
 // GetLogo returns the Logo field value if set, zero value otherwise.
@@ -454,7 +419,7 @@ func (o *BrandingThemeConfiguration) SetName(v string) {
 
 func (o BrandingThemeConfiguration) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if o.BackgroundColor != nil {
 		toSerialize["backgroundColor"] = o.BackgroundColor
 	}
 	if true {
@@ -463,25 +428,25 @@ func (o BrandingThemeConfiguration) MarshalJSON() ([]byte, error) {
 	if o.BackgroundImage != nil {
 		toSerialize["backgroundImage"] = o.BackgroundImage
 	}
-	if o.BodyTextColor != nil {
+	if true {
 		toSerialize["bodyTextColor"] = o.BodyTextColor
 	}
-	if o.ButtonColor != nil {
+	if true {
 		toSerialize["buttonColor"] = o.ButtonColor
 	}
-	if o.ButtonTextColor != nil {
+	if true {
 		toSerialize["buttonTextColor"] = o.ButtonTextColor
 	}
-	if o.CardColor != nil {
+	if true {
 		toSerialize["cardColor"] = o.CardColor
 	}
 	if o.Footer != nil {
 		toSerialize["footer"] = o.Footer
 	}
-	if o.HeadingTextColor != nil {
+	if true {
 		toSerialize["headingTextColor"] = o.HeadingTextColor
 	}
-	if o.LinkTextColor != nil {
+	if true {
 		toSerialize["linkTextColor"] = o.LinkTextColor
 	}
 	if o.Logo != nil {

@@ -34,7 +34,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    brandingTheme := *openapiclient.NewBrandingTheme(*openapiclient.NewBrandingThemeConfiguration("BackgroundColor_example", openapiclient.EnumBrandingThemeBackgroundType("NONE"), openapiclient.EnumBrandingLogoType("IMAGE")), false, openapiclient.EnumBrandingThemeTemplate("default")) // BrandingTheme |  (optional)
+    brandingTheme := *openapiclient.NewBrandingTheme(*openapiclient.NewBrandingThemeConfiguration(openapiclient.EnumBrandingThemeBackgroundType("NONE"), "BodyTextColor_example", "ButtonColor_example", "ButtonTextColor_example", "CardColor_example", "HeadingTextColor_example", "LinkTextColor_example", openapiclient.EnumBrandingLogoType("IMAGE")), false, openapiclient.EnumBrandingThemeTemplate("default")) // BrandingTheme |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -384,7 +384,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     themeID := "themeID_example" // string | 
-    brandingTheme := *openapiclient.NewBrandingTheme(*openapiclient.NewBrandingThemeConfiguration("BackgroundColor_example", openapiclient.EnumBrandingThemeBackgroundType("NONE"), openapiclient.EnumBrandingLogoType("IMAGE")), false, openapiclient.EnumBrandingThemeTemplate("default")) // BrandingTheme |  (optional)
+    brandingTheme := *openapiclient.NewBrandingTheme(*openapiclient.NewBrandingThemeConfiguration(openapiclient.EnumBrandingThemeBackgroundType("NONE"), "BodyTextColor_example", "ButtonColor_example", "ButtonTextColor_example", "CardColor_example", "HeadingTextColor_example", "LinkTextColor_example", openapiclient.EnumBrandingLogoType("IMAGE")), false, openapiclient.EnumBrandingThemeTemplate("default")) // BrandingTheme |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
