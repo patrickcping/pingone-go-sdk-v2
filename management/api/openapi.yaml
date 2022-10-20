@@ -21509,12 +21509,15 @@ components:
       - NORTH_AMERICA
       type: string
     EnumResourceAttributeType:
-      description: "A string that specifies the type of resource attribute. Options\
-        \ are CORE - The claim is required and cannot not be removed., CUSTOM - The\
-        \ claim is not a CORE attribute. All created attributes are of this type."
+      description: |
+        A string that specifies the type of resource attribute. Options are:
+        CORE: The claim is required and cannot not be removed.
+        CUSTOM: The claim is not a CORE attribute. All created attributes are of this type.
+        PREDEFINED: A designation for predefined OIDC resource attributes such as given_name. These attributes cannot be removed; however, they can be modified.
       enum:
       - CORE
       - CUSTOM
+      - PREDEFINED
       type: string
     EnumResourceType:
       description: "A string that specifies the type of resource. Options are OPENID_CONNECT,\
@@ -24675,11 +24678,13 @@ components:
       type: object
     ResourceAttribute:
       example:
+        userInfo: true
         environment:
           id: id
         resource:
           id: id
         name: name
+        idToken: true
         id: id
         type: null
         value: value
@@ -24689,8 +24694,23 @@ components:
           readOnly: true
           type: string
         name:
-          description: A string that specifies the name of the custom resource attribute
-            to be included in the access token
+          description: |
+            A string that specifies the name of the custom resource attribute to be included in the access token. The following are reserved names and cannot be used. Thesese reserved names are applicable only when the resource's type property is `OPENID_CONNECT`:
+            - `acr`
+            - `amr`
+            - `aud`
+            - `auth_time`
+            - `client_id`
+            - `env`
+            - `exp`
+            - `iat`
+            - `iss`
+            - `jti`
+            - `org`
+            - `p1.*` (any name starting with the p1. prefix)
+            - `scope`
+            - `sid`
+            - `sub`
           type: string
         type:
           $ref: '#/components/schemas/EnumResourceAttributeType'
@@ -24706,6 +24726,22 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         resource:
           $ref: '#/components/schemas/IdentityProviderAttribute_identityProvider'
+        idToken:
+          description: "A boolean that specifies whether the attribute mapping should\
+            \ be available in the ID Token. This property is applicable only when\
+            \ the application's protocol property is `OPENID_CONNECT`. If omitted,\
+            \ the default is `true`. Note that the `idToken` and `userInfo` properties\
+            \ cannot both be set to `false`. At least one of these properties must\
+            \ have a value of `true`."
+          type: boolean
+        userInfo:
+          description: "A boolean that specifies whether the attribute mapping should\
+            \ be available through the `/as/userinfo` endpoint. This property is applicable\
+            \ only when the application's protocol property is `OPENID_CONNECT`. If\
+            \ omitted, the default is `true`. Note that the `idToken` and `userInfo`\
+            \ properties cannot both be set to `false`. At least one of these properties\
+            \ must have a value of `true`."
+          type: boolean
       required:
       - name
       - value

@@ -15,19 +15,21 @@ import (
 	"fmt"
 )
 
-// EnumResourceAttributeType A string that specifies the type of resource attribute. Options are CORE - The claim is required and cannot not be removed., CUSTOM - The claim is not a CORE attribute. All created attributes are of this type.
+// EnumResourceAttributeType A string that specifies the type of resource attribute. Options are: CORE: The claim is required and cannot not be removed. CUSTOM: The claim is not a CORE attribute. All created attributes are of this type. PREDEFINED: A designation for predefined OIDC resource attributes such as given_name. These attributes cannot be removed; however, they can be modified. 
 type EnumResourceAttributeType string
 
 // List of EnumResourceAttributeType
 const (
 	ENUMRESOURCEATTRIBUTETYPE_CORE EnumResourceAttributeType = "CORE"
 	ENUMRESOURCEATTRIBUTETYPE_CUSTOM EnumResourceAttributeType = "CUSTOM"
+	ENUMRESOURCEATTRIBUTETYPE_PREDEFINED EnumResourceAttributeType = "PREDEFINED"
 )
 
 // All allowed values of EnumResourceAttributeType enum
 var AllowedEnumResourceAttributeTypeEnumValues = []EnumResourceAttributeType{
 	"CORE",
 	"CUSTOM",
+	"PREDEFINED",
 }
 
 func (v *EnumResourceAttributeType) UnmarshalJSON(src []byte) error {

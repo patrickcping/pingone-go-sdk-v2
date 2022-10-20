@@ -5,11 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
-**Name** | **string** | A string that specifies the name of the custom resource attribute to be included in the access token | 
+**Name** | **string** | A string that specifies the name of the custom resource attribute to be included in the access token. The following are reserved names and cannot be used. Thesese reserved names are applicable only when the resource&#39;s type property is &#x60;OPENID_CONNECT&#x60;: - &#x60;acr&#x60; - &#x60;amr&#x60; - &#x60;aud&#x60; - &#x60;auth_time&#x60; - &#x60;client_id&#x60; - &#x60;env&#x60; - &#x60;exp&#x60; - &#x60;iat&#x60; - &#x60;iss&#x60; - &#x60;jti&#x60; - &#x60;org&#x60; - &#x60;p1.*&#x60; (any name starting with the p1. prefix) - &#x60;scope&#x60; - &#x60;sid&#x60; - &#x60;sub&#x60;  | 
 **Type** | Pointer to [**EnumResourceAttributeType**](EnumResourceAttributeType.md) |  | [optional] 
 **Value** | **string** | A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as &#x60;${user.path.to.value}&#x60;, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are &#x60;${user.email}&#x60;, &#x60;${user.name.family}&#x60;, and &#x60;myClaimValueString&#x60; | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Resource** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
+**IdToken** | Pointer to **bool** | A boolean that specifies whether the attribute mapping should be available in the ID Token. This property is applicable only when the application&#39;s protocol property is &#x60;OPENID_CONNECT&#x60;. If omitted, the default is &#x60;true&#x60;. Note that the &#x60;idToken&#x60; and &#x60;userInfo&#x60; properties cannot both be set to &#x60;false&#x60;. At least one of these properties must have a value of &#x60;true&#x60;. | [optional] 
+**UserInfo** | Pointer to **bool** | A boolean that specifies whether the attribute mapping should be available through the &#x60;/as/userinfo&#x60; endpoint. This property is applicable only when the application&#39;s protocol property is &#x60;OPENID_CONNECT&#x60;. If omitted, the default is &#x60;true&#x60;. Note that the &#x60;idToken&#x60; and &#x60;userInfo&#x60; properties cannot both be set to &#x60;false&#x60;. At least one of these properties must have a value of &#x60;true&#x60;. | [optional] 
 
 ## Methods
 
@@ -169,6 +171,56 @@ SetResource sets Resource field to given value.
 `func (o *ResourceAttribute) HasResource() bool`
 
 HasResource returns a boolean if a field has been set.
+
+### GetIdToken
+
+`func (o *ResourceAttribute) GetIdToken() bool`
+
+GetIdToken returns the IdToken field if non-nil, zero value otherwise.
+
+### GetIdTokenOk
+
+`func (o *ResourceAttribute) GetIdTokenOk() (*bool, bool)`
+
+GetIdTokenOk returns a tuple with the IdToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdToken
+
+`func (o *ResourceAttribute) SetIdToken(v bool)`
+
+SetIdToken sets IdToken field to given value.
+
+### HasIdToken
+
+`func (o *ResourceAttribute) HasIdToken() bool`
+
+HasIdToken returns a boolean if a field has been set.
+
+### GetUserInfo
+
+`func (o *ResourceAttribute) GetUserInfo() bool`
+
+GetUserInfo returns the UserInfo field if non-nil, zero value otherwise.
+
+### GetUserInfoOk
+
+`func (o *ResourceAttribute) GetUserInfoOk() (*bool, bool)`
+
+GetUserInfoOk returns a tuple with the UserInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserInfo
+
+`func (o *ResourceAttribute) SetUserInfo(v bool)`
+
+SetUserInfo sets UserInfo field to given value.
+
+### HasUserInfo
+
+`func (o *ResourceAttribute) HasUserInfo() bool`
+
+HasUserInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
