@@ -19,7 +19,7 @@ import (
 type Resource struct {
 	// An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days).
 	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
-	// A string that specifies a URL without a fragment or `@ObjectName` and must not contain `pingone` or `pingidentity` (for example, https://api.myresource.com). If a URL is not specified, the resource name is used.
+	// A string that specifies a URL without a fragment or `@ObjectName` and must not contain `pingone` or `pingidentity` (for example, `https://api.bxretail.org`). If a URL is not specified, the resource name is used.
 	Audience *string `json:"audience,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -31,6 +31,8 @@ type Resource struct {
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment.
 	Name string `json:"name"`
+	// The client authentication methods supported by the token endpoint. Options are `NONE`, `CLIENT_SECRET_BASIC`, and `CLIENT_SECRET_POST`.
+	IntrospectEndpointAuthMethod *string `json:"introspectEndpointAuthMethod,omitempty"`
 	Type *EnumResourceType `json:"type,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
@@ -302,6 +304,38 @@ func (o *Resource) SetName(v string) {
 	o.Name = v
 }
 
+// GetIntrospectEndpointAuthMethod returns the IntrospectEndpointAuthMethod field value if set, zero value otherwise.
+func (o *Resource) GetIntrospectEndpointAuthMethod() string {
+	if o == nil || o.IntrospectEndpointAuthMethod == nil {
+		var ret string
+		return ret
+	}
+	return *o.IntrospectEndpointAuthMethod
+}
+
+// GetIntrospectEndpointAuthMethodOk returns a tuple with the IntrospectEndpointAuthMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Resource) GetIntrospectEndpointAuthMethodOk() (*string, bool) {
+	if o == nil || o.IntrospectEndpointAuthMethod == nil {
+		return nil, false
+	}
+	return o.IntrospectEndpointAuthMethod, true
+}
+
+// HasIntrospectEndpointAuthMethod returns a boolean if a field has been set.
+func (o *Resource) HasIntrospectEndpointAuthMethod() bool {
+	if o != nil && o.IntrospectEndpointAuthMethod != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIntrospectEndpointAuthMethod gets a reference to the given string and assigns it to the IntrospectEndpointAuthMethod field.
+func (o *Resource) SetIntrospectEndpointAuthMethod(v string) {
+	o.IntrospectEndpointAuthMethod = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Resource) GetType() EnumResourceType {
 	if o == nil || o.Type == nil {
@@ -391,6 +425,9 @@ func (o Resource) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if o.IntrospectEndpointAuthMethod != nil {
+		toSerialize["introspectEndpointAuthMethod"] = o.IntrospectEndpointAuthMethod
 	}
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
