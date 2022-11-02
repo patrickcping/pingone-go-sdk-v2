@@ -47,6 +47,7 @@ api_propagation_rules.go
 api_propagation_store_metadata.go
 api_propagation_stores.go
 api_resource_attributes.go
+api_resource_client_secret.go
 api_resource_scopes.go
 api_resources.go
 api_roles.go
@@ -352,8 +353,10 @@ docs/ReadOneApplication200Response.md
 docs/Resource.md
 docs/ResourceAttribute.md
 docs/ResourceAttributesApi.md
+docs/ResourceClientSecretApi.md
 docs/ResourceScope.md
 docs/ResourceScopesApi.md
+docs/ResourceSecret.md
 docs/ResourcesApi.md
 docs/Role.md
 docs/RoleAssignment.md
@@ -684,6 +687,7 @@ model_population_password_policy.go
 model_resource.go
 model_resource_attribute.go
 model_resource_scope.go
+model_resource_secret.go
 model_role.go
 model_role_assignment.go
 model_role_assignment_role.go

@@ -3,6 +3,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.12.0](./management/CHANGELOG.md)
     * **Feature** Support for Branding Settings [#76](https://github.com/patrickcping/pingone-go-sdk-v2/pull/76)
     * **Feature** Support for Branding Themes [#76](https://github.com/patrickcping/pingone-go-sdk-v2/pull/76)
+    * **Feature** Support for Resource Client Secrets [#76](https://github.com/patrickcping/pingone-go-sdk-v2/pull/76)
     * **Enhancement** Add `idToken` and `userInfo` attributes to the `ResourceAttribute` data model [#78](https://github.com/patrickcping/pingone-go-sdk-v2/pull/78)
     * **Enhancement** Add `mappedClaims` attributes to the `ResourceScope` data model [#78](https://github.com/patrickcping/pingone-go-sdk-v2/pull/78)
     * **Enhancement** Add `introspectEndpointAuthMethod` attributes to the `Resource` data model [#78](https://github.com/patrickcping/pingone-go-sdk-v2/pull/78)

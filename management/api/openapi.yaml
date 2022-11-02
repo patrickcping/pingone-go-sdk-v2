@@ -15035,362 +15035,6 @@ paths:
       summary: UPDATE Resource
       tags:
       - Resources
-  /v1/environments/{environmentID}/resources/{resourceID}/scopes:
-    get:
-      operationId: readAllResourceScopes
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: resourceID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityArray'
-          description: Successful response
-      summary: READ All Scopes (Resource)
-      tags:
-      - Resource Scopes
-    post:
-      operationId: createResourceScope
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: resourceID
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ResourceScope'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "405":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceScope'
-          description: Successful response
-      summary: CREATE PingOne access control scope
-      tags:
-      - Resource Scopes
-  /v1/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID}:
-    delete:
-      operationId: deleteResourceScope
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: resourceID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: scopeID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "204":
-          description: Successful response
-      summary: DELETE Scope
-      tags:
-      - Resource Scopes
-    get:
-      operationId: readOneResourceScope
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: resourceID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: scopeID
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceScope'
-          description: Successful response
-      summary: READ One Scope
-      tags:
-      - Resource Scopes
-    put:
-      operationId: updateResourceScope
-      parameters:
-      - explode: false
-        in: path
-        name: environmentID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: resourceID
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: scopeID
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ResourceScope'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: "Invalid request received.  Malformed JSON, malformed HTTP\
-            \ request."
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request failed due to authorization issue.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Not found.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Request was rate limited
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-          description: Uncaught error occurred.  Platform outage
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResourceScope'
-          description: Successful response
-      summary: UPDATE PingOne access control scope
-      tags:
-      - Resource Scopes
   /v1/environments/{environmentID}/resources/{resourceID}/attributes:
     get:
       operationId: readAllResourceAttributes
@@ -15747,6 +15391,498 @@ paths:
       summary: UPDATE Resource Attribute
       tags:
       - Resource Attributes
+  /v1/environments/{environmentID}/resources/{resourceID}/secret:
+    get:
+      operationId: readResourceSecret
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceSecret'
+          description: Successful response
+      summary: READ Resource Client Secret
+      tags:
+      - Resource Client Secret
+    post:
+      operationId: createResourceSecret
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceSecret'
+          description: Successful response
+      summary: CREATE Resource Client Secret
+      tags:
+      - Resource Client Secret
+  /v1/environments/{environmentID}/resources/{resourceID}/scopes:
+    get:
+      operationId: readAllResourceScopes
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Scopes (Resource)
+      tags:
+      - Resource Scopes
+    post:
+      operationId: createResourceScope
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceScope'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceScope'
+          description: Successful response
+      summary: CREATE PingOne access control scope
+      tags:
+      - Resource Scopes
+  /v1/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID}:
+    delete:
+      operationId: deleteResourceScope
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: scopeID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Scope
+      tags:
+      - Resource Scopes
+    get:
+      operationId: readOneResourceScope
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: scopeID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceScope'
+          description: Successful response
+      summary: READ One Scope
+      tags:
+      - Resource Scopes
+    put:
+      operationId: updateResourceScope
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: scopeID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceScope'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceScope'
+          description: Successful response
+      summary: UPDATE PingOne access control scope
+      tags:
+      - Resource Scopes
   /v1/environments/{environmentID}/schemas:
     get:
       operationId: readAllSchemas
@@ -24764,6 +24900,22 @@ components:
       required:
       - name
       - value
+      type: object
+    ResourceSecret:
+      example:
+        environment:
+          id: id
+        secret: secret
+      properties:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        secret:
+          description: "An auto-generated resource client secret. Possible characters\
+            \ are a-z, A-Z, 0-9, -, ., _, ~. The secret has a minimum length of 64\
+            \ characters per SHA-512 requirements when using the HS512 algorithm to\
+            \ sign ID tokens using the secret as the key."
+          readOnly: true
+          type: string
       type: object
     ResourceScope:
       example:
