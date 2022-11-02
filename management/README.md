@@ -519,6 +519,7 @@ Class | Method | HTTP request | Description
  - [EnumRegionCode](docs/EnumRegionCode.md)
  - [EnumRegionCodeLicense](docs/EnumRegionCodeLicense.md)
  - [EnumResourceAttributeType](docs/EnumResourceAttributeType.md)
+ - [EnumResourceIntrospectEndpointAuthMethod](docs/EnumResourceIntrospectEndpointAuthMethod.md)
  - [EnumResourceType](docs/EnumResourceType.md)
  - [EnumRoleAssignmentScopeType](docs/EnumRoleAssignmentScopeType.md)
  - [EnumRoleName](docs/EnumRoleName.md)

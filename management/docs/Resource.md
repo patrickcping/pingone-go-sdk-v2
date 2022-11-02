@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Resource** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. | 
-**IntrospectEndpointAuthMethod** | Pointer to **string** | The client authentication methods supported by the token endpoint. Options are &#x60;NONE&#x60;, &#x60;CLIENT_SECRET_BASIC&#x60;, and &#x60;CLIENT_SECRET_POST&#x60;. | [optional] 
+**IntrospectEndpointAuthMethod** | Pointer to [**EnumResourceIntrospectEndpointAuthMethod**](EnumResourceIntrospectEndpointAuthMethod.md) |  | [optional] 
 **Type** | Pointer to [**EnumResourceType**](EnumResourceType.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
@@ -232,20 +232,20 @@ SetName sets Name field to given value.
 
 ### GetIntrospectEndpointAuthMethod
 
-`func (o *Resource) GetIntrospectEndpointAuthMethod() string`
+`func (o *Resource) GetIntrospectEndpointAuthMethod() EnumResourceIntrospectEndpointAuthMethod`
 
 GetIntrospectEndpointAuthMethod returns the IntrospectEndpointAuthMethod field if non-nil, zero value otherwise.
 
 ### GetIntrospectEndpointAuthMethodOk
 
-`func (o *Resource) GetIntrospectEndpointAuthMethodOk() (*string, bool)`
+`func (o *Resource) GetIntrospectEndpointAuthMethodOk() (*EnumResourceIntrospectEndpointAuthMethod, bool)`
 
 GetIntrospectEndpointAuthMethodOk returns a tuple with the IntrospectEndpointAuthMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIntrospectEndpointAuthMethod
 
-`func (o *Resource) SetIntrospectEndpointAuthMethod(v string)`
+`func (o *Resource) SetIntrospectEndpointAuthMethod(v EnumResourceIntrospectEndpointAuthMethod)`
 
 SetIntrospectEndpointAuthMethod sets IntrospectEndpointAuthMethod field to given value.
 

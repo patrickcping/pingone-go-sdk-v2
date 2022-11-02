@@ -31,8 +31,7 @@ type Resource struct {
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment.
 	Name string `json:"name"`
-	// The client authentication methods supported by the token endpoint. Options are `NONE`, `CLIENT_SECRET_BASIC`, and `CLIENT_SECRET_POST`.
-	IntrospectEndpointAuthMethod *string `json:"introspectEndpointAuthMethod,omitempty"`
+	IntrospectEndpointAuthMethod *EnumResourceIntrospectEndpointAuthMethod `json:"introspectEndpointAuthMethod,omitempty"`
 	Type *EnumResourceType `json:"type,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
@@ -305,9 +304,9 @@ func (o *Resource) SetName(v string) {
 }
 
 // GetIntrospectEndpointAuthMethod returns the IntrospectEndpointAuthMethod field value if set, zero value otherwise.
-func (o *Resource) GetIntrospectEndpointAuthMethod() string {
+func (o *Resource) GetIntrospectEndpointAuthMethod() EnumResourceIntrospectEndpointAuthMethod {
 	if o == nil || o.IntrospectEndpointAuthMethod == nil {
-		var ret string
+		var ret EnumResourceIntrospectEndpointAuthMethod
 		return ret
 	}
 	return *o.IntrospectEndpointAuthMethod
@@ -315,7 +314,7 @@ func (o *Resource) GetIntrospectEndpointAuthMethod() string {
 
 // GetIntrospectEndpointAuthMethodOk returns a tuple with the IntrospectEndpointAuthMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Resource) GetIntrospectEndpointAuthMethodOk() (*string, bool) {
+func (o *Resource) GetIntrospectEndpointAuthMethodOk() (*EnumResourceIntrospectEndpointAuthMethod, bool) {
 	if o == nil || o.IntrospectEndpointAuthMethod == nil {
 		return nil, false
 	}
@@ -331,8 +330,8 @@ func (o *Resource) HasIntrospectEndpointAuthMethod() bool {
 	return false
 }
 
-// SetIntrospectEndpointAuthMethod gets a reference to the given string and assigns it to the IntrospectEndpointAuthMethod field.
-func (o *Resource) SetIntrospectEndpointAuthMethod(v string) {
+// SetIntrospectEndpointAuthMethod gets a reference to the given EnumResourceIntrospectEndpointAuthMethod and assigns it to the IntrospectEndpointAuthMethod field.
+func (o *Resource) SetIntrospectEndpointAuthMethod(v EnumResourceIntrospectEndpointAuthMethod) {
 	o.IntrospectEndpointAuthMethod = &v
 }
 

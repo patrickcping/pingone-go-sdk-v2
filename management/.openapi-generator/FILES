@@ -217,6 +217,7 @@ docs/EnumProductType.md
 docs/EnumRegionCode.md
 docs/EnumRegionCodeLicense.md
 docs/EnumResourceAttributeType.md
+docs/EnumResourceIntrospectEndpointAuthMethod.md
 docs/EnumResourceType.md
 docs/EnumRoleAssignmentScopeType.md
 docs/EnumRoleName.md
@@ -579,6 +580,7 @@ model_enum_product_type.go
 model_enum_region_code.go
 model_enum_region_code_license.go
 model_enum_resource_attribute_type.go
+model_enum_resource_introspect_endpoint_auth_method.go
 model_enum_resource_type.go
 model_enum_role_assignment_scope_type.go
 model_enum_role_name.go

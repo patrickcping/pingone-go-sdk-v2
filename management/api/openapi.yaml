@@ -21519,6 +21519,14 @@ components:
       - CUSTOM
       - PREDEFINED
       type: string
+    EnumResourceIntrospectEndpointAuthMethod:
+      description: "The client authentication methods supported by the token endpoint.\
+        \ Options are `NONE`, `CLIENT_SECRET_BASIC`, and `CLIENT_SECRET_POST`."
+      enum:
+      - NONE
+      - CLIENT_SECRET_BASIC
+      - CLIENT_SECRET_POST
+      type: string
     EnumResourceType:
       description: "A string that specifies the type of resource. Options are `OPENID_CONNECT`,\
         \ `PINGONE_API`, and `CUSTOM`. Only the `CUSTOM` resource type can be created.\
@@ -23046,7 +23054,7 @@ components:
             description: description
             id: id
             type: null
-            introspectEndpointAuthMethod: introspectEndpointAuthMethod
+            introspectEndpointAuthMethod: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - createdAt: 2000-01-23T04:56:07.000+00:00
             audience: audience
@@ -23059,7 +23067,7 @@ components:
             description: description
             id: id
             type: null
-            introspectEndpointAuthMethod: introspectEndpointAuthMethod
+            introspectEndpointAuthMethod: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           users:
           - preferredLanguage: preferredLanguage
@@ -24641,7 +24649,7 @@ components:
         description: description
         id: id
         type: null
-        introspectEndpointAuthMethod: introspectEndpointAuthMethod
+        introspectEndpointAuthMethod: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         accessTokenValiditySeconds:
@@ -24676,9 +24684,7 @@ components:
             \ and must be unique within an environment."
           type: string
         introspectEndpointAuthMethod:
-          description: "The client authentication methods supported by the token endpoint.\
-            \ Options are `NONE`, `CLIENT_SECRET_BASIC`, and `CLIENT_SECRET_POST`."
-          type: string
+          $ref: '#/components/schemas/EnumResourceIntrospectEndpointAuthMethod'
         type:
           $ref: '#/components/schemas/EnumResourceType'
         updatedAt:
@@ -26947,7 +26953,7 @@ components:
           description: description
           id: id
           type: null
-          introspectEndpointAuthMethod: introspectEndpointAuthMethod
+          introspectEndpointAuthMethod: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - createdAt: 2000-01-23T04:56:07.000+00:00
           audience: audience
@@ -26960,7 +26966,7 @@ components:
           description: description
           id: id
           type: null
-          introspectEndpointAuthMethod: introspectEndpointAuthMethod
+          introspectEndpointAuthMethod: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         users:
         - preferredLanguage: preferredLanguage
