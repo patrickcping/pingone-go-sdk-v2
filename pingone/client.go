@@ -127,25 +127,39 @@ func RiskAPIClient(token *oauth2.Token) (*risk.APIClient, error) {
 
 func getToken(ctx context.Context, c *Config) (*oauth2.Token, error) {
 
-	regionSuffix := model.FindRegionByName(c.Region).URLSuffix
+	if c.AccessToken == "" {
 
-	//Get URL from SDK
-	authURL := fmt.Sprintf("https://auth.pingone.%s", regionSuffix)
-	log.Printf("[INFO] Getting token from %s", authURL)
+		if c.ClientID == "" || c.ClientSecret == "" || c.EnvironmentID == "" || c.Region == "" {
+			return nil, fmt.Errorf("Required parameter missing.  Must provide ClientID, ClientSecret, EnvironmentID and Region.")
+		}
 
-	//OAuth 2.0 config for client creds
-	config := clientcredentials.Config{
-		ClientID:     c.ClientID,
-		ClientSecret: c.ClientSecret,
-		TokenURL:     fmt.Sprintf("%s/%s/as/token", authURL, c.EnvironmentID),
-		AuthStyle:    oauth2.AuthStyleAutoDetect,
+		regionSuffix := model.FindRegionByName(c.Region).URLSuffix
+
+		//Get URL from SDK
+		authURL := fmt.Sprintf("https://auth.pingone.%s", regionSuffix)
+		log.Printf("[INFO] Getting token from %s", authURL)
+
+		//OAuth 2.0 config for client creds
+		config := clientcredentials.Config{
+			ClientID:     c.ClientID,
+			ClientSecret: c.ClientSecret,
+			TokenURL:     fmt.Sprintf("%s/%s/as/token", authURL, c.EnvironmentID),
+			AuthStyle:    oauth2.AuthStyleAutoDetect,
+		}
+
+		token, err := config.Token(ctx)
+		if err != nil {
+			return nil, err
+		}
+		log.Printf("[INFO] Token retrieved")
+
+		return token, nil
+
+	} else {
+		token := oauth2.Token{
+			AccessToken: c.AccessToken,
+			TokenType:   "Bearer",
+		}
+		return &token, nil
 	}
-
-	token, err := config.Token(ctx)
-	if err != nil {
-		return nil, err
-	}
-	log.Printf("[INFO] Token retrieved")
-
-	return token, nil
 }
