@@ -1,3 +1,8 @@
+# Release (2022-11-06-2)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.0
+    * **Enhancement** Add support for initialising the client with an access token [#82](https://github.com/patrickcping/pingone-go-sdk-v2/pull/82)
+
 # Release (2022-11-06)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.3
