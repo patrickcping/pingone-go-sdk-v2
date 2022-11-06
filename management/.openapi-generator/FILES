@@ -47,6 +47,7 @@ api_propagation_rules.go
 api_propagation_store_metadata.go
 api_propagation_stores.go
 api_resource_attributes.go
+api_resource_client_secret.go
 api_resource_scopes.go
 api_resources.go
 api_roles.go
@@ -217,6 +218,7 @@ docs/EnumProductType.md
 docs/EnumRegionCode.md
 docs/EnumRegionCodeLicense.md
 docs/EnumResourceAttributeType.md
+docs/EnumResourceIntrospectEndpointAuthMethod.md
 docs/EnumResourceType.md
 docs/EnumRoleAssignmentScopeType.md
 docs/EnumRoleName.md
@@ -351,8 +353,10 @@ docs/ReadOneApplication200Response.md
 docs/Resource.md
 docs/ResourceAttribute.md
 docs/ResourceAttributesApi.md
+docs/ResourceClientSecretApi.md
 docs/ResourceScope.md
 docs/ResourceScopesApi.md
+docs/ResourceSecret.md
 docs/ResourcesApi.md
 docs/Role.md
 docs/RoleAssignment.md
@@ -579,6 +583,7 @@ model_enum_product_type.go
 model_enum_region_code.go
 model_enum_region_code_license.go
 model_enum_resource_attribute_type.go
+model_enum_resource_introspect_endpoint_auth_method.go
 model_enum_resource_type.go
 model_enum_role_assignment_scope_type.go
 model_enum_role_name.go
@@ -682,6 +687,7 @@ model_population_password_policy.go
 model_resource.go
 model_resource_attribute.go
 model_resource_scope.go
+model_resource_secret.go
 model_role.go
 model_role_assignment.go
 model_role_assignment_role.go

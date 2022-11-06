@@ -18,13 +18,17 @@ import (
 type ResourceAttribute struct {
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
-	// A string that specifies the name of the custom resource attribute to be included in the access token
+	// A string that specifies the name of the custom resource attribute to be included in the access token. The following are reserved names and cannot be used. Thesese reserved names are applicable only when the resource's type property is `OPENID_CONNECT`: - `acr` - `amr` - `aud` - `auth_time` - `client_id` - `env` - `exp` - `iat` - `iss` - `jti` - `org` - `p1.*` (any name starting with the p1. prefix) - `scope` - `sid` - `sub` 
 	Name string `json:"name"`
 	Type *EnumResourceAttributeType `json:"type,omitempty"`
 	// A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as `${user.path.to.value}`, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are `${user.email}`, `${user.name.family}`, and `myClaimValueString`
 	Value string `json:"value"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Resource *IdentityProviderAttributeIdentityProvider `json:"resource,omitempty"`
+	// A boolean that specifies whether the attribute mapping should be available in the ID Token. This property is applicable only when the application's protocol property is `OPENID_CONNECT`. If omitted, the default is `true`. Note that the `idToken` and `userInfo` properties cannot both be set to `false`. At least one of these properties must have a value of `true`.
+	IdToken *bool `json:"idToken,omitempty"`
+	// A boolean that specifies whether the attribute mapping should be available through the `/as/userinfo` endpoint. This property is applicable only when the application's protocol property is `OPENID_CONNECT`. If omitted, the default is `true`. Note that the `idToken` and `userInfo` properties cannot both be set to `false`. At least one of these properties must have a value of `true`.
+	UserInfo *bool `json:"userInfo,omitempty"`
 }
 
 // NewResourceAttribute instantiates a new ResourceAttribute object
@@ -222,6 +226,70 @@ func (o *ResourceAttribute) SetResource(v IdentityProviderAttributeIdentityProvi
 	o.Resource = &v
 }
 
+// GetIdToken returns the IdToken field value if set, zero value otherwise.
+func (o *ResourceAttribute) GetIdToken() bool {
+	if o == nil || o.IdToken == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IdToken
+}
+
+// GetIdTokenOk returns a tuple with the IdToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceAttribute) GetIdTokenOk() (*bool, bool) {
+	if o == nil || o.IdToken == nil {
+		return nil, false
+	}
+	return o.IdToken, true
+}
+
+// HasIdToken returns a boolean if a field has been set.
+func (o *ResourceAttribute) HasIdToken() bool {
+	if o != nil && o.IdToken != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIdToken gets a reference to the given bool and assigns it to the IdToken field.
+func (o *ResourceAttribute) SetIdToken(v bool) {
+	o.IdToken = &v
+}
+
+// GetUserInfo returns the UserInfo field value if set, zero value otherwise.
+func (o *ResourceAttribute) GetUserInfo() bool {
+	if o == nil || o.UserInfo == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UserInfo
+}
+
+// GetUserInfoOk returns a tuple with the UserInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceAttribute) GetUserInfoOk() (*bool, bool) {
+	if o == nil || o.UserInfo == nil {
+		return nil, false
+	}
+	return o.UserInfo, true
+}
+
+// HasUserInfo returns a boolean if a field has been set.
+func (o *ResourceAttribute) HasUserInfo() bool {
+	if o != nil && o.UserInfo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUserInfo gets a reference to the given bool and assigns it to the UserInfo field.
+func (o *ResourceAttribute) SetUserInfo(v bool) {
+	o.UserInfo = &v
+}
+
 func (o ResourceAttribute) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
@@ -241,6 +309,12 @@ func (o ResourceAttribute) MarshalJSON() ([]byte, error) {
 	}
 	if o.Resource != nil {
 		toSerialize["resource"] = o.Resource
+	}
+	if o.IdToken != nil {
+		toSerialize["idToken"] = o.IdToken
+	}
+	if o.UserInfo != nil {
+		toSerialize["userInfo"] = o.UserInfo
 	}
 	return json.Marshal(toSerialize)
 }
