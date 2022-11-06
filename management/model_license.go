@@ -36,7 +36,8 @@ type License struct {
 	Name string `json:"name"`
 	Orchestrate *LicenseOrchestrate `json:"orchestrate,omitempty"`
 	Organization *ObjectOrganization `json:"organization,omitempty"`
-	Package *EnumLicensePackage `json:"package,omitempty"`
+	// A string that specifies the license template on which this license is based.
+	Package *string `json:"package,omitempty"`
 	ReplacesLicense *LicenseReplacesLicense `json:"replacesLicense,omitempty"`
 	ReplacedByLicense *LicenseReplacedByLicense `json:"replacedByLicense,omitempty"`
 	Status *EnumLicenseStatus `json:"status,omitempty"`
@@ -537,9 +538,9 @@ func (o *License) SetOrganization(v ObjectOrganization) {
 }
 
 // GetPackage returns the Package field value if set, zero value otherwise.
-func (o *License) GetPackage() EnumLicensePackage {
+func (o *License) GetPackage() string {
 	if o == nil || o.Package == nil {
-		var ret EnumLicensePackage
+		var ret string
 		return ret
 	}
 	return *o.Package
@@ -547,7 +548,7 @@ func (o *License) GetPackage() EnumLicensePackage {
 
 // GetPackageOk returns a tuple with the Package field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *License) GetPackageOk() (*EnumLicensePackage, bool) {
+func (o *License) GetPackageOk() (*string, bool) {
 	if o == nil || o.Package == nil {
 		return nil, false
 	}
@@ -563,8 +564,8 @@ func (o *License) HasPackage() bool {
 	return false
 }
 
-// SetPackage gets a reference to the given EnumLicensePackage and assigns it to the Package field.
-func (o *License) SetPackage(v EnumLicensePackage) {
+// SetPackage gets a reference to the given string and assigns it to the Package field.
+func (o *License) SetPackage(v string) {
 	o.Package = &v
 }
 

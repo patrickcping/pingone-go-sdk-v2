@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumLicenseStatus A string that specifies the status of the license. Options are `ACTIVE`, `EXPIRED`, and `FUTURE`.
+// EnumLicenseStatus A string that specifies the status of the license. Options are `ACTIVE`, `EXPIRED`, `FUTURE` and `TERMINATED`.
 type EnumLicenseStatus string
 
 // List of EnumLicenseStatus
@@ -23,6 +23,7 @@ const (
 	ENUMLICENSESTATUS_ACTIVE EnumLicenseStatus = "ACTIVE"
 	ENUMLICENSESTATUS_EXPIRED EnumLicenseStatus = "EXPIRED"
 	ENUMLICENSESTATUS_FUTURE EnumLicenseStatus = "FUTURE"
+	ENUMLICENSESTATUS_TERMINATED EnumLicenseStatus = "TERMINATED"
 )
 
 // All allowed values of EnumLicenseStatus enum
@@ -30,6 +31,7 @@ var AllowedEnumLicenseStatusEnumValues = []EnumLicenseStatus{
 	"ACTIVE",
 	"EXPIRED",
 	"FUTURE",
+	"TERMINATED",
 }
 
 func (v *EnumLicenseStatus) UnmarshalJSON(src []byte) error {

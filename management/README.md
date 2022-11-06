@@ -512,7 +512,6 @@ Class | Method | HTTP request | Description
  - [EnumIdentityProviderOIDCTokenAuthMethod](docs/EnumIdentityProviderOIDCTokenAuthMethod.md)
  - [EnumIdentityProviderSAMLSSOBinding](docs/EnumIdentityProviderSAMLSSOBinding.md)
  - [EnumImageFormat](docs/EnumImageFormat.md)
- - [EnumLicensePackage](docs/EnumLicensePackage.md)
  - [EnumLicenseStatus](docs/EnumLicenseStatus.md)
  - [EnumMobileIntegrityDetectionPlatform](docs/EnumMobileIntegrityDetectionPlatform.md)
  - [EnumOrganizationType](docs/EnumOrganizationType.md)
