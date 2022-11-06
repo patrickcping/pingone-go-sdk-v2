@@ -21553,28 +21553,14 @@ components:
       - jpg
       - gif
       type: string
-    EnumLicensePackage:
-      description: "A string that specifies the license template on which this license\
-        \ is based. This is a required property. Options are `TRIAL`, `STANDARD`,\
-        \ `PREMIUM`, `MFA`, `RISK`, `MFARISK`, and `GLOBAL`."
-      enum:
-      - ADMIN
-      - INTERNAL
-      - TRIAL
-      - STANDARD
-      - PREMIUM
-      - MFA
-      - RISK
-      - MFARISK
-      - GLOBAL
-      type: string
     EnumLicenseStatus:
       description: "A string that specifies the status of the license. Options are\
-        \ `ACTIVE`, `EXPIRED`, and `FUTURE`."
+        \ `ACTIVE`, `EXPIRED`, `FUTURE` and `TERMINATED`."
       enum:
       - ACTIVE
       - EXPIRED
       - FUTURE
+      - TERMINATED
       type: string
     EnumMobileIntegrityDetectionPlatform:
       enum:
@@ -23360,7 +23346,7 @@ components:
               allowLdapGateway: true
               allowRadiusGateway: true
               allowKerberosGateway: true
-            package: null
+            package: package
             advancedServices:
               pingId:
                 type: type
@@ -23439,7 +23425,7 @@ components:
               allowLdapGateway: true
               allowRadiusGateway: true
               allowKerberosGateway: true
-            package: null
+            package: package
             advancedServices:
               pingId:
                 type: type
@@ -24307,7 +24293,7 @@ components:
           allowLdapGateway: true
           allowRadiusGateway: true
           allowKerberosGateway: true
-        package: null
+        package: package
         advancedServices:
           pingId:
             type: type
@@ -24434,7 +24420,9 @@ components:
         organization:
           $ref: '#/components/schemas/ObjectOrganization'
         package:
-          $ref: '#/components/schemas/EnumLicensePackage'
+          description: A string that specifies the license template on which this
+            license is based.
+          type: string
         replacesLicense:
           $ref: '#/components/schemas/License_replacesLicense'
         replacedByLicense:
@@ -27275,7 +27263,7 @@ components:
             allowLdapGateway: true
             allowRadiusGateway: true
             allowKerberosGateway: true
-          package: null
+          package: package
           advancedServices:
             pingId:
               type: type
@@ -27354,7 +27342,7 @@ components:
             allowLdapGateway: true
             allowRadiusGateway: true
             allowKerberosGateway: true
-          package: null
+          package: package
           advancedServices:
             pingId:
               type: type
