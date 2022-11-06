@@ -11,7 +11,7 @@ package management
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -51,9 +51,9 @@ func (r ApiCreateCertificateFromFileRequest) Execute() (*Certificate, *http.Resp
 /*
 CreateCertificateFromFile CREATE Certificate with PKCS7 or PEM File
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateCertificateFromFileRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateCertificateFromFileRequest
 */
 func (a *CertificateManagementApiService) CreateCertificateFromFile(ctx context.Context, environmentID string) ApiCreateCertificateFromFileRequest {
 	return ApiCreateCertificateFromFileRequest{
@@ -64,7 +64,8 @@ func (a *CertificateManagementApiService) CreateCertificateFromFile(ctx context.
 }
 
 // Execute executes the request
-//  @return Certificate
+//
+//	@return Certificate
 func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r ApiCreateCertificateFromFileRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -131,9 +132,9 @@ func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -265,9 +266,9 @@ func (r ApiCreateKeyRequest) Execute() (*Certificate, *http.Response, error) {
 /*
 CreateKey CREATE Key
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreateKeyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreateKeyRequest
 */
 func (a *CertificateManagementApiService) CreateKey(ctx context.Context, environmentID string) ApiCreateKeyRequest {
 	return ApiCreateKeyRequest{
@@ -278,7 +279,8 @@ func (a *CertificateManagementApiService) CreateKey(ctx context.Context, environ
 }
 
 // Execute executes the request
-//  @return Certificate
+//
+//	@return Certificate
 func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -364,9 +366,9 @@ func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -475,10 +477,10 @@ func (r ApiDeleteCertificateRequest) Execute() (*http.Response, error) {
 /*
 DeleteCertificate DELETE Certificate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param certID
- @return ApiDeleteCertificateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param certID
+	@return ApiDeleteCertificateRequest
 */
 func (a *CertificateManagementApiService) DeleteCertificate(ctx context.Context, environmentID string, certID string) ApiDeleteCertificateRequest {
 	return ApiDeleteCertificateRequest{
@@ -537,9 +539,9 @@ func (a *CertificateManagementApiService) DeleteCertificateExecute(r ApiDeleteCe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -629,10 +631,10 @@ func (r ApiDeleteKeyRequest) Execute() (*http.Response, error) {
 /*
 DeleteKey DELETE Key
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param keyID
- @return ApiDeleteKeyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param keyID
+	@return ApiDeleteKeyRequest
 */
 func (a *CertificateManagementApiService) DeleteKey(ctx context.Context, environmentID string, keyID string) ApiDeleteKeyRequest {
 	return ApiDeleteKeyRequest{
@@ -691,9 +693,9 @@ func (a *CertificateManagementApiService) DeleteKeyExecute(r ApiDeleteKeyRequest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -789,10 +791,10 @@ func (r ApiExportCSRRequest) Execute() (string, *http.Response, error) {
 /*
 ExportCSR Export a certificate signing request (CSR)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param keyID
- @return ApiExportCSRRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param keyID
+	@return ApiExportCSRRequest
 */
 func (a *CertificateManagementApiService) ExportCSR(ctx context.Context, environmentID string, keyID string) ApiExportCSRRequest {
 	return ApiExportCSRRequest{
@@ -804,7 +806,8 @@ func (a *CertificateManagementApiService) ExportCSR(ctx context.Context, environ
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -856,9 +859,9 @@ func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -957,10 +960,10 @@ func (r ApiGetCertificateRequest) Execute() (*Certificate, *http.Response, error
 /*
 GetCertificate GET Certificate
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param certID
- @return ApiGetCertificateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param certID
+	@return ApiGetCertificateRequest
 */
 func (a *CertificateManagementApiService) GetCertificate(ctx context.Context, environmentID string, certID string) ApiGetCertificateRequest {
 	return ApiGetCertificateRequest{
@@ -972,7 +975,8 @@ func (a *CertificateManagementApiService) GetCertificate(ctx context.Context, en
 }
 
 // Execute executes the request
-//  @return Certificate
+//
+//	@return Certificate
 func (a *CertificateManagementApiService) GetCertificateExecute(r ApiGetCertificateRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1021,9 +1025,9 @@ func (a *CertificateManagementApiService) GetCertificateExecute(r ApiGetCertific
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1122,10 +1126,10 @@ func (r ApiGetCertificateApplicationsRequest) Execute() (*EntityArray, *http.Res
 /*
 GetCertificateApplications GET Certificate Applications
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param certID
- @return ApiGetCertificateApplicationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param certID
+	@return ApiGetCertificateApplicationsRequest
 */
 func (a *CertificateManagementApiService) GetCertificateApplications(ctx context.Context, environmentID string, certID string) ApiGetCertificateApplicationsRequest {
 	return ApiGetCertificateApplicationsRequest{
@@ -1137,7 +1141,8 @@ func (a *CertificateManagementApiService) GetCertificateApplications(ctx context
 }
 
 // Execute executes the request
-//  @return EntityArray
+//
+//	@return EntityArray
 func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1186,9 +1191,9 @@ func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1286,9 +1291,9 @@ func (r ApiGetCertificatesRequest) Execute() (*EntityArray, *http.Response, erro
 /*
 GetCertificates GET Certificates
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiGetCertificatesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiGetCertificatesRequest
 */
 func (a *CertificateManagementApiService) GetCertificates(ctx context.Context, environmentID string) ApiGetCertificatesRequest {
 	return ApiGetCertificatesRequest{
@@ -1299,7 +1304,8 @@ func (a *CertificateManagementApiService) GetCertificates(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return EntityArray
+//
+//	@return EntityArray
 func (a *CertificateManagementApiService) GetCertificatesExecute(r ApiGetCertificatesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1347,9 +1353,9 @@ func (a *CertificateManagementApiService) GetCertificatesExecute(r ApiGetCertifi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1454,10 +1460,10 @@ func (r ApiGetKeyRequest) Execute() (interface{}, *http.Response, error) {
 /*
 GetKey GET Key
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param keyID
- @return ApiGetKeyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param keyID
+	@return ApiGetKeyRequest
 */
 func (a *CertificateManagementApiService) GetKey(ctx context.Context, environmentID string, keyID string) ApiGetKeyRequest {
 	return ApiGetKeyRequest{
@@ -1469,7 +1475,8 @@ func (a *CertificateManagementApiService) GetKey(ctx context.Context, environmen
 }
 
 // Execute executes the request
-//  @return Certificate
+//
+//	@return Certificate
 func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1521,9 +1528,9 @@ func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (int
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1630,10 +1637,10 @@ func (r ApiGetKeyApplicationsRequest) Execute() (*EntityArray, *http.Response, e
 /*
 GetKeyApplications GET Key Applications
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param keyID
- @return ApiGetKeyApplicationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param keyID
+	@return ApiGetKeyApplicationsRequest
 */
 func (a *CertificateManagementApiService) GetKeyApplications(ctx context.Context, environmentID string, keyID string) ApiGetKeyApplicationsRequest {
 	return ApiGetKeyApplicationsRequest{
@@ -1645,7 +1652,8 @@ func (a *CertificateManagementApiService) GetKeyApplications(ctx context.Context
 }
 
 // Execute executes the request
-//  @return EntityArray
+//
+//	@return EntityArray
 func (a *CertificateManagementApiService) GetKeyApplicationsExecute(r ApiGetKeyApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1694,9 +1702,9 @@ func (a *CertificateManagementApiService) GetKeyApplicationsExecute(r ApiGetKeyA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1794,9 +1802,9 @@ func (r ApiGetKeysRequest) Execute() (*EntityArray, *http.Response, error) {
 /*
 GetKeys GET Keys
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiGetKeysRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiGetKeysRequest
 */
 func (a *CertificateManagementApiService) GetKeys(ctx context.Context, environmentID string) ApiGetKeysRequest {
 	return ApiGetKeysRequest{
@@ -1807,7 +1815,8 @@ func (a *CertificateManagementApiService) GetKeys(ctx context.Context, environme
 }
 
 // Execute executes the request
-//  @return EntityArray
+//
+//	@return EntityArray
 func (a *CertificateManagementApiService) GetKeysExecute(r ApiGetKeysRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1855,9 +1864,9 @@ func (a *CertificateManagementApiService) GetKeysExecute(r ApiGetKeysRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1962,10 +1971,10 @@ func (r ApiImportCSRResponseRequest) Execute() (*Certificate, *http.Response, er
 /*
 ImportCSRResponse Import Certificate Authority (CA) Response to a CSR
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param keyID
- @return ApiImportCSRResponseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param keyID
+	@return ApiImportCSRResponseRequest
 */
 func (a *CertificateManagementApiService) ImportCSRResponse(ctx context.Context, environmentID string, keyID string) ApiImportCSRResponseRequest {
 	return ApiImportCSRResponseRequest{
@@ -1977,7 +1986,8 @@ func (a *CertificateManagementApiService) ImportCSRResponse(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Certificate
+//
+//	@return Certificate
 func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2037,9 +2047,9 @@ func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2144,10 +2154,10 @@ func (r ApiUpdateKeyRequest) Execute() (*Certificate, *http.Response, error) {
 /*
 UpdateKey UPDATE Key
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param keyID
- @return ApiUpdateKeyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param keyID
+	@return ApiUpdateKeyRequest
 */
 func (a *CertificateManagementApiService) UpdateKey(ctx context.Context, environmentID string, keyID string) ApiUpdateKeyRequest {
 	return ApiUpdateKeyRequest{
@@ -2159,7 +2169,8 @@ func (a *CertificateManagementApiService) UpdateKey(ctx context.Context, environ
 }
 
 // Execute executes the request
-//  @return Certificate
+//
+//	@return Certificate
 func (a *CertificateManagementApiService) UpdateKeyExecute(r ApiUpdateKeyRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2210,9 +2221,9 @@ func (a *CertificateManagementApiService) UpdateKeyExecute(r ApiUpdateKeyRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2316,9 +2327,9 @@ func (r ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest) Execute() (*http.R
 /*
 V1EnvironmentsEnvironmentIDDecryptionsPost DECRYPT Data
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest
 */
 func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptionsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest {
 	return ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest{
@@ -2377,9 +2388,9 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptions
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2484,9 +2495,9 @@ func (r ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest) Execute() (*http.R
 /*
 V1EnvironmentsEnvironmentIDEncryptionsPost ENCRYPT Data
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest
 */
 func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptionsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest {
 	return ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest{
@@ -2545,9 +2556,9 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptions
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2652,9 +2663,9 @@ func (r ApiV1EnvironmentsEnvironmentIDSigningsPostRequest) Execute() (*http.Resp
 /*
 V1EnvironmentsEnvironmentIDSigningsPost SIGN Data
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDSigningsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiV1EnvironmentsEnvironmentIDSigningsPostRequest
 */
 func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDSigningsPostRequest {
 	return ApiV1EnvironmentsEnvironmentIDSigningsPostRequest{
@@ -2713,9 +2724,9 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPos
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2820,9 +2831,9 @@ func (r ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest) Execute() (*http
 /*
 V1EnvironmentsEnvironmentIDVerificationsPost VERIFY Signed Data
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest
 */
 func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDVerificationsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest {
 	return ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest{
@@ -2881,9 +2892,9 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDVerificatio
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

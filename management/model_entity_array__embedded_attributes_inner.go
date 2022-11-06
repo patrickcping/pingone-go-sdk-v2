@@ -134,7 +134,6 @@ func (dst *EntityArrayEmbeddedAttributesInner) UnmarshalJSON(data []byte) error 
 	} else { // no match
 		return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedAttributesInner)")
 	}
-	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
