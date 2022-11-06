@@ -1,4 +1,4 @@
-# v0.12.0 (Unreleased)
+# v0.12.0 (2022-11-06)
 
 * **Breaking change** Removed the `EnumLicensePackage` enum model [#81](https://github.com/patrickcping/pingone-go-sdk-v2/pull/81)
 * **Feature** Support for Branding Settings [#76](https://github.com/patrickcping/pingone-go-sdk-v2/pull/76)

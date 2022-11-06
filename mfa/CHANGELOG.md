@@ -1,4 +1,4 @@
-# v0.7.0 (Unreleased)
+# v0.7.0 (2022-11-06)
 
 * **Feature** Added FIDO Policy API and model [#75](https://github.com/patrickcping/pingone-go-sdk-v2/pull/75)
 * **Feature** Added FIDO Custom Device Metadata API and model [#75](https://github.com/patrickcping/pingone-go-sdk-v2/pull/75)
