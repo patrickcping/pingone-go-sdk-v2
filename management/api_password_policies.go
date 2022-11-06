@@ -13,7 +13,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -41,9 +41,9 @@ func (r ApiCreatePasswordPolicyRequest) Execute() (*PasswordPolicy, *http.Respon
 /*
 CreatePasswordPolicy CREATE Password Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiCreatePasswordPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiCreatePasswordPolicyRequest
 */
 func (a *PasswordPoliciesApiService) CreatePasswordPolicy(ctx context.Context, environmentID string) ApiCreatePasswordPolicyRequest {
 	return ApiCreatePasswordPolicyRequest{
@@ -54,7 +54,8 @@ func (a *PasswordPoliciesApiService) CreatePasswordPolicy(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return PasswordPolicy
+//
+//	@return PasswordPolicy
 func (a *PasswordPoliciesApiService) CreatePasswordPolicyExecute(r ApiCreatePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -107,9 +108,9 @@ func (a *PasswordPoliciesApiService) CreatePasswordPolicyExecute(r ApiCreatePass
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -233,10 +234,10 @@ func (r ApiDeletePasswordPolicyRequest) Execute() (*http.Response, error) {
 /*
 DeletePasswordPolicy DELETE Password Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param passwordPolicyID
- @return ApiDeletePasswordPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param passwordPolicyID
+	@return ApiDeletePasswordPolicyRequest
 */
 func (a *PasswordPoliciesApiService) DeletePasswordPolicy(ctx context.Context, environmentID string, passwordPolicyID string) ApiDeletePasswordPolicyRequest {
 	return ApiDeletePasswordPolicyRequest{
@@ -295,9 +296,9 @@ func (a *PasswordPoliciesApiService) DeletePasswordPolicyExecute(r ApiDeletePass
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -386,9 +387,9 @@ func (r ApiReadAllPasswordPoliciesRequest) Execute() (*EntityArray, *http.Respon
 /*
 ReadAllPasswordPolicies READ All Password Policies
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @return ApiReadAllPasswordPoliciesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@return ApiReadAllPasswordPoliciesRequest
 */
 func (a *PasswordPoliciesApiService) ReadAllPasswordPolicies(ctx context.Context, environmentID string) ApiReadAllPasswordPoliciesRequest {
 	return ApiReadAllPasswordPoliciesRequest{
@@ -399,7 +400,8 @@ func (a *PasswordPoliciesApiService) ReadAllPasswordPolicies(ctx context.Context
 }
 
 // Execute executes the request
-//  @return EntityArray
+//
+//	@return EntityArray
 func (a *PasswordPoliciesApiService) ReadAllPasswordPoliciesExecute(r ApiReadAllPasswordPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -447,9 +449,9 @@ func (a *PasswordPoliciesApiService) ReadAllPasswordPoliciesExecute(r ApiReadAll
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -548,10 +550,10 @@ func (r ApiReadOnePasswordPolicyRequest) Execute() (*PasswordPolicy, *http.Respo
 /*
 ReadOnePasswordPolicy READ One Password Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param passwordPolicyID
- @return ApiReadOnePasswordPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param passwordPolicyID
+	@return ApiReadOnePasswordPolicyRequest
 */
 func (a *PasswordPoliciesApiService) ReadOnePasswordPolicy(ctx context.Context, environmentID string, passwordPolicyID string) ApiReadOnePasswordPolicyRequest {
 	return ApiReadOnePasswordPolicyRequest{
@@ -563,7 +565,8 @@ func (a *PasswordPoliciesApiService) ReadOnePasswordPolicy(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return PasswordPolicy
+//
+//	@return PasswordPolicy
 func (a *PasswordPoliciesApiService) ReadOnePasswordPolicyExecute(r ApiReadOnePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -612,9 +615,9 @@ func (a *PasswordPoliciesApiService) ReadOnePasswordPolicyExecute(r ApiReadOnePa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -719,10 +722,10 @@ func (r ApiUpdatePasswordPolicyRequest) Execute() (*PasswordPolicy, *http.Respon
 /*
 UpdatePasswordPolicy UPDATE Password Policy
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentID
- @param passwordPolicyID
- @return ApiUpdatePasswordPolicyRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentID
+	@param passwordPolicyID
+	@return ApiUpdatePasswordPolicyRequest
 */
 func (a *PasswordPoliciesApiService) UpdatePasswordPolicy(ctx context.Context, environmentID string, passwordPolicyID string) ApiUpdatePasswordPolicyRequest {
 	return ApiUpdatePasswordPolicyRequest{
@@ -734,7 +737,8 @@ func (a *PasswordPoliciesApiService) UpdatePasswordPolicy(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return PasswordPolicy
+//
+//	@return PasswordPolicy
 func (a *PasswordPoliciesApiService) UpdatePasswordPolicyExecute(r ApiUpdatePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -785,9 +789,9 @@ func (a *PasswordPoliciesApiService) UpdatePasswordPolicyExecute(r ApiUpdatePass
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
