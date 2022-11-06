@@ -149,6 +149,8 @@ type APIClient struct {
 
 	ResourceAttributesApi *ResourceAttributesApiService
 
+	ResourceClientSecretApi *ResourceClientSecretApiService
+
 	ResourceScopesApi *ResourceScopesApiService
 
 	ResourcesApi *ResourcesApiService
@@ -254,6 +256,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PropagationStoreMetadataApi = (*PropagationStoreMetadataApiService)(&c.common)
 	c.PropagationStoresApi = (*PropagationStoresApiService)(&c.common)
 	c.ResourceAttributesApi = (*ResourceAttributesApiService)(&c.common)
+	c.ResourceClientSecretApi = (*ResourceClientSecretApiService)(&c.common)
 	c.ResourceScopesApi = (*ResourceScopesApiService)(&c.common)
 	c.ResourcesApi = (*ResourcesApiService)(&c.common)
 	c.RolesApi = (*RolesApiService)(&c.common)

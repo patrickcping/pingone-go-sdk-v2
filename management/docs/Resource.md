@@ -5,13 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessTokenValiditySeconds** | Pointer to **int32** | An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days). | [optional] 
-**Audience** | Pointer to **string** | A string that specifies a URL without a fragment or &#x60;@ObjectName&#x60; and must not contain &#x60;pingone&#x60; or &#x60;pingidentity&#x60; (for example, https://api.myresource.com). If a URL is not specified, the resource name is used. | [optional] 
+**Audience** | Pointer to **string** | A string that specifies a URL without a fragment or &#x60;@ObjectName&#x60; and must not contain &#x60;pingone&#x60; or &#x60;pingidentity&#x60; (for example, &#x60;https://api.bxretail.org&#x60;). If a URL is not specified, the resource name is used. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the resource. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Resource** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment. | 
+**IntrospectEndpointAuthMethod** | Pointer to [**EnumResourceIntrospectEndpointAuthMethod**](EnumResourceIntrospectEndpointAuthMethod.md) |  | [optional] 
 **Type** | Pointer to [**EnumResourceType**](EnumResourceType.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
@@ -228,6 +229,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetIntrospectEndpointAuthMethod
+
+`func (o *Resource) GetIntrospectEndpointAuthMethod() EnumResourceIntrospectEndpointAuthMethod`
+
+GetIntrospectEndpointAuthMethod returns the IntrospectEndpointAuthMethod field if non-nil, zero value otherwise.
+
+### GetIntrospectEndpointAuthMethodOk
+
+`func (o *Resource) GetIntrospectEndpointAuthMethodOk() (*EnumResourceIntrospectEndpointAuthMethod, bool)`
+
+GetIntrospectEndpointAuthMethodOk returns a tuple with the IntrospectEndpointAuthMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIntrospectEndpointAuthMethod
+
+`func (o *Resource) SetIntrospectEndpointAuthMethod(v EnumResourceIntrospectEndpointAuthMethod)`
+
+SetIntrospectEndpointAuthMethod sets IntrospectEndpointAuthMethod field to given value.
+
+### HasIntrospectEndpointAuthMethod
+
+`func (o *Resource) HasIntrospectEndpointAuthMethod() bool`
+
+HasIntrospectEndpointAuthMethod returns a boolean if a field has been set.
 
 ### GetType
 

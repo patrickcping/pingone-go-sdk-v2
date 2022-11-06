@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Name** | **string** | A string that specifies a descriptive name for the license. This is a required property in a license name update request. Valid characters consists of any Unicode letter, mark, numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. The maximum length of a name is 255 characters. | 
 **Orchestrate** | Pointer to [**LicenseOrchestrate**](LicenseOrchestrate.md) |  | [optional] 
 **Organization** | Pointer to [**ObjectOrganization**](ObjectOrganization.md) |  | [optional] 
-**Package** | Pointer to [**EnumLicensePackage**](EnumLicensePackage.md) |  | [optional] 
+**Package** | Pointer to **string** | A string that specifies the license template on which this license is based. | [optional] 
 **ReplacesLicense** | Pointer to [**LicenseReplacesLicense**](LicenseReplacesLicense.md) |  | [optional] 
 **ReplacedByLicense** | Pointer to [**LicenseReplacedByLicense**](LicenseReplacedByLicense.md) |  | [optional] 
 **Status** | Pointer to [**EnumLicenseStatus**](EnumLicenseStatus.md) |  | [optional] 
@@ -418,20 +418,20 @@ HasOrganization returns a boolean if a field has been set.
 
 ### GetPackage
 
-`func (o *License) GetPackage() EnumLicensePackage`
+`func (o *License) GetPackage() string`
 
 GetPackage returns the Package field if non-nil, zero value otherwise.
 
 ### GetPackageOk
 
-`func (o *License) GetPackageOk() (*EnumLicensePackage, bool)`
+`func (o *License) GetPackageOk() (*string, bool)`
 
 GetPackageOk returns a tuple with the Package field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPackage
 
-`func (o *License) SetPackage(v EnumLicensePackage)`
+`func (o *License) SetPackage(v string)`
 
 SetPackage sets Package field to given value.
 

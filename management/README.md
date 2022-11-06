@@ -305,6 +305,8 @@ Class | Method | HTTP request | Description
 *ResourceAttributesApi* | [**ReadAllResourceAttributes**](docs/ResourceAttributesApi.md#readallresourceattributes) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/attributes | READ All Resource Attributes
 *ResourceAttributesApi* | [**ReadOneResourceAttribute**](docs/ResourceAttributesApi.md#readoneresourceattribute) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | READ One Resource Attribute
 *ResourceAttributesApi* | [**UpdateResourceAttribute**](docs/ResourceAttributesApi.md#updateresourceattribute) | **Put** /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | UPDATE Resource Attribute
+*ResourceClientSecretApi* | [**CreateResourceSecret**](docs/ResourceClientSecretApi.md#createresourcesecret) | **Post** /v1/environments/{environmentID}/resources/{resourceID}/secret | CREATE Resource Client Secret
+*ResourceClientSecretApi* | [**ReadResourceSecret**](docs/ResourceClientSecretApi.md#readresourcesecret) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/secret | READ Resource Client Secret
 *ResourceScopesApi* | [**CreateResourceScope**](docs/ResourceScopesApi.md#createresourcescope) | **Post** /v1/environments/{environmentID}/resources/{resourceID}/scopes | CREATE PingOne access control scope
 *ResourceScopesApi* | [**DeleteResourceScope**](docs/ResourceScopesApi.md#deleteresourcescope) | **Delete** /v1/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID} | DELETE Scope
 *ResourceScopesApi* | [**ReadAllResourceScopes**](docs/ResourceScopesApi.md#readallresourcescopes) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/scopes | READ All Scopes (Resource)
@@ -510,7 +512,6 @@ Class | Method | HTTP request | Description
  - [EnumIdentityProviderOIDCTokenAuthMethod](docs/EnumIdentityProviderOIDCTokenAuthMethod.md)
  - [EnumIdentityProviderSAMLSSOBinding](docs/EnumIdentityProviderSAMLSSOBinding.md)
  - [EnumImageFormat](docs/EnumImageFormat.md)
- - [EnumLicensePackage](docs/EnumLicensePackage.md)
  - [EnumLicenseStatus](docs/EnumLicenseStatus.md)
  - [EnumMobileIntegrityDetectionPlatform](docs/EnumMobileIntegrityDetectionPlatform.md)
  - [EnumOrganizationType](docs/EnumOrganizationType.md)
@@ -519,6 +520,7 @@ Class | Method | HTTP request | Description
  - [EnumRegionCode](docs/EnumRegionCode.md)
  - [EnumRegionCodeLicense](docs/EnumRegionCodeLicense.md)
  - [EnumResourceAttributeType](docs/EnumResourceAttributeType.md)
+ - [EnumResourceIntrospectEndpointAuthMethod](docs/EnumResourceIntrospectEndpointAuthMethod.md)
  - [EnumResourceType](docs/EnumResourceType.md)
  - [EnumRoleAssignmentScopeType](docs/EnumRoleAssignmentScopeType.md)
  - [EnumRoleName](docs/EnumRoleName.md)
@@ -625,6 +627,7 @@ Class | Method | HTTP request | Description
  - [Resource](docs/Resource.md)
  - [ResourceAttribute](docs/ResourceAttribute.md)
  - [ResourceScope](docs/ResourceScope.md)
+ - [ResourceSecret](docs/ResourceSecret.md)
  - [Role](docs/Role.md)
  - [RoleAssignment](docs/RoleAssignment.md)
  - [RoleAssignmentRole](docs/RoleAssignmentRole.md)
