@@ -1,6 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.4.3
+    * **Note** bump `github.com/golangci/golangci-lint` v1.49.0 => v1.50.1
     * **Note** bump `github.com/securego/gosec/v2` v2.13.1 => v2.14.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.12.0](./management/CHANGELOG.md)
     * **Breaking change** Removed the `EnumLicensePackage` enum model [#81](https://github.com/patrickcping/pingone-go-sdk-v2/pull/81)
