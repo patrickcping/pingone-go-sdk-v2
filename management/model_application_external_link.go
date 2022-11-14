@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // ApplicationExternalLink struct for ApplicationExternalLink
@@ -71,7 +70,7 @@ func NewApplicationExternalLinkWithDefaults() *ApplicationExternalLink {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetLinks() map[string]interface{} {
-	if o == nil || o.Links == nil {
+	if o == nil || isNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -81,15 +80,15 @@ func (o *ApplicationExternalLink) GetLinks() map[string]interface{} {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || o.Links == nil {
-		return nil, false
+	if o == nil || isNil(o.Links) {
+    return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasLinks() bool {
-	if o != nil && o.Links != nil {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -103,7 +102,7 @@ func (o *ApplicationExternalLink) SetLinks(v map[string]interface{}) {
 
 // GetAccessControl returns the AccessControl field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetAccessControl() ApplicationAccessControl {
-	if o == nil || o.AccessControl == nil {
+	if o == nil || isNil(o.AccessControl) {
 		var ret ApplicationAccessControl
 		return ret
 	}
@@ -113,15 +112,15 @@ func (o *ApplicationExternalLink) GetAccessControl() ApplicationAccessControl {
 // GetAccessControlOk returns a tuple with the AccessControl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetAccessControlOk() (*ApplicationAccessControl, bool) {
-	if o == nil || o.AccessControl == nil {
-		return nil, false
+	if o == nil || isNil(o.AccessControl) {
+    return nil, false
 	}
 	return o.AccessControl, true
 }
 
 // HasAccessControl returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasAccessControl() bool {
-	if o != nil && o.AccessControl != nil {
+	if o != nil && !isNil(o.AccessControl) {
 		return true
 	}
 
@@ -135,7 +134,7 @@ func (o *ApplicationExternalLink) SetAccessControl(v ApplicationAccessControl) {
 
 // GetAssignActorRoles returns the AssignActorRoles field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetAssignActorRoles() bool {
-	if o == nil || o.AssignActorRoles == nil {
+	if o == nil || isNil(o.AssignActorRoles) {
 		var ret bool
 		return ret
 	}
@@ -145,15 +144,15 @@ func (o *ApplicationExternalLink) GetAssignActorRoles() bool {
 // GetAssignActorRolesOk returns a tuple with the AssignActorRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetAssignActorRolesOk() (*bool, bool) {
-	if o == nil || o.AssignActorRoles == nil {
-		return nil, false
+	if o == nil || isNil(o.AssignActorRoles) {
+    return nil, false
 	}
 	return o.AssignActorRoles, true
 }
 
 // HasAssignActorRoles returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasAssignActorRoles() bool {
-	if o != nil && o.AssignActorRoles != nil {
+	if o != nil && !isNil(o.AssignActorRoles) {
 		return true
 	}
 
@@ -167,7 +166,7 @@ func (o *ApplicationExternalLink) SetAssignActorRoles(v bool) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetCreatedAt() time.Time {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -177,15 +176,15 @@ func (o *ApplicationExternalLink) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -199,7 +198,7 @@ func (o *ApplicationExternalLink) SetCreatedAt(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -209,15 +208,15 @@ func (o *ApplicationExternalLink) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -243,7 +242,7 @@ func (o *ApplicationExternalLink) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -255,7 +254,7 @@ func (o *ApplicationExternalLink) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetEnvironment() ObjectEnvironment {
-	if o == nil || o.Environment == nil {
+	if o == nil || isNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -265,15 +264,15 @@ func (o *ApplicationExternalLink) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || o.Environment == nil {
-		return nil, false
+	if o == nil || isNil(o.Environment) {
+    return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
+	if o != nil && !isNil(o.Environment) {
 		return true
 	}
 
@@ -287,7 +286,7 @@ func (o *ApplicationExternalLink) SetEnvironment(v ObjectEnvironment) {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetIcon() ApplicationIcon {
-	if o == nil || o.Icon == nil {
+	if o == nil || isNil(o.Icon) {
 		var ret ApplicationIcon
 		return ret
 	}
@@ -297,15 +296,15 @@ func (o *ApplicationExternalLink) GetIcon() ApplicationIcon {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetIconOk() (*ApplicationIcon, bool) {
-	if o == nil || o.Icon == nil {
-		return nil, false
+	if o == nil || isNil(o.Icon) {
+    return nil, false
 	}
 	return o.Icon, true
 }
 
 // HasIcon returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasIcon() bool {
-	if o != nil && o.Icon != nil {
+	if o != nil && !isNil(o.Icon) {
 		return true
 	}
 
@@ -319,7 +318,7 @@ func (o *ApplicationExternalLink) SetIcon(v ApplicationIcon) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -329,15 +328,15 @@ func (o *ApplicationExternalLink) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -351,7 +350,7 @@ func (o *ApplicationExternalLink) SetId(v string) {
 
 // GetLoginPageUrl returns the LoginPageUrl field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetLoginPageUrl() string {
-	if o == nil || o.LoginPageUrl == nil {
+	if o == nil || isNil(o.LoginPageUrl) {
 		var ret string
 		return ret
 	}
@@ -361,15 +360,15 @@ func (o *ApplicationExternalLink) GetLoginPageUrl() string {
 // GetLoginPageUrlOk returns a tuple with the LoginPageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetLoginPageUrlOk() (*string, bool) {
-	if o == nil || o.LoginPageUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.LoginPageUrl) {
+    return nil, false
 	}
 	return o.LoginPageUrl, true
 }
 
 // HasLoginPageUrl returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasLoginPageUrl() bool {
-	if o != nil && o.LoginPageUrl != nil {
+	if o != nil && !isNil(o.LoginPageUrl) {
 		return true
 	}
 
@@ -395,7 +394,7 @@ func (o *ApplicationExternalLink) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -419,7 +418,7 @@ func (o *ApplicationExternalLink) GetProtocol() EnumApplicationProtocol {
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetProtocolOk() (*EnumApplicationProtocol, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Protocol, true
 }
@@ -431,7 +430,7 @@ func (o *ApplicationExternalLink) SetProtocol(v EnumApplicationProtocol) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetTags() []EnumApplicationTags {
-	if o == nil || o.Tags == nil {
+	if o == nil || isNil(o.Tags) {
 		var ret []EnumApplicationTags
 		return ret
 	}
@@ -441,15 +440,15 @@ func (o *ApplicationExternalLink) GetTags() []EnumApplicationTags {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetTagsOk() ([]EnumApplicationTags, bool) {
-	if o == nil || o.Tags == nil {
-		return nil, false
+	if o == nil || isNil(o.Tags) {
+    return nil, false
 	}
 	return o.Tags, true
 }
 
 // HasTags returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !isNil(o.Tags) {
 		return true
 	}
 
@@ -475,7 +474,7 @@ func (o *ApplicationExternalLink) GetType() EnumApplicationType {
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetTypeOk() (*EnumApplicationType, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Type, true
 }
@@ -487,7 +486,7 @@ func (o *ApplicationExternalLink) SetType(v EnumApplicationType) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -497,15 +496,15 @@ func (o *ApplicationExternalLink) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -519,7 +518,7 @@ func (o *ApplicationExternalLink) SetUpdatedAt(v time.Time) {
 
 // GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
 func (o *ApplicationExternalLink) GetSupportUnsignedRequestObject() bool {
-	if o == nil || o.SupportUnsignedRequestObject == nil {
+	if o == nil || isNil(o.SupportUnsignedRequestObject) {
 		var ret bool
 		return ret
 	}
@@ -529,15 +528,15 @@ func (o *ApplicationExternalLink) GetSupportUnsignedRequestObject() bool {
 // GetSupportUnsignedRequestObjectOk returns a tuple with the SupportUnsignedRequestObject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetSupportUnsignedRequestObjectOk() (*bool, bool) {
-	if o == nil || o.SupportUnsignedRequestObject == nil {
-		return nil, false
+	if o == nil || isNil(o.SupportUnsignedRequestObject) {
+    return nil, false
 	}
 	return o.SupportUnsignedRequestObject, true
 }
 
 // HasSupportUnsignedRequestObject returns a boolean if a field has been set.
 func (o *ApplicationExternalLink) HasSupportUnsignedRequestObject() bool {
-	if o != nil && o.SupportUnsignedRequestObject != nil {
+	if o != nil && !isNil(o.SupportUnsignedRequestObject) {
 		return true
 	}
 
@@ -563,7 +562,7 @@ func (o *ApplicationExternalLink) GetHomePageUrl() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLink) GetHomePageUrlOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.HomePageUrl, true
 }
@@ -575,34 +574,34 @@ func (o *ApplicationExternalLink) SetHomePageUrl(v string) {
 
 func (o ApplicationExternalLink) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Links != nil {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if o.AccessControl != nil {
+	if !isNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	if o.AssignActorRoles != nil {
+	if !isNil(o.AssignActorRoles) {
 		toSerialize["assignActorRoles"] = o.AssignActorRoles
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Environment != nil {
+	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if o.Icon != nil {
+	if !isNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.LoginPageUrl != nil {
+	if !isNil(o.LoginPageUrl) {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
 	if true {
@@ -611,16 +610,16 @@ func (o ApplicationExternalLink) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if o.Tags != nil {
+	if !isNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.SupportUnsignedRequestObject != nil {
+	if !isNil(o.SupportUnsignedRequestObject) {
 		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
 	}
 	if true {

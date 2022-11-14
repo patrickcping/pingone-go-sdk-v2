@@ -53,7 +53,7 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) GetValue
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) GetValueOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Value, true
 }
@@ -77,7 +77,7 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) GetWeigh
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) GetWeightOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Weight, true
 }

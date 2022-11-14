@@ -1,3 +1,7 @@
+# v0.3.1 (Unreleased)
+
+* **Note** bump codegen v6.2.0 => v6.2.1
+
 # v0.3.0 (2022-08-29)
 
 * **Enhancement** Add 404 response processing for all requests [#28](https://github.com/patrickcping/pingone-go-sdk-v2/pull/28)

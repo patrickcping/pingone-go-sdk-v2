@@ -71,11 +71,11 @@ func (dst *RiskPolicySetRiskPoliciesInnerConditionEquals) UnmarshalJSON(data []b
 		dst.Bool = nil
 		dst.String = nil
 
-		return fmt.Errorf("Data matches more than one schema in oneOf(RiskPolicySetRiskPoliciesInnerConditionEquals)")
+		return fmt.Errorf("data matches more than one schema in oneOf(RiskPolicySetRiskPoliciesInnerConditionEquals)")
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("Data failed to match schemas in oneOf(RiskPolicySetRiskPoliciesInnerConditionEquals)")
+		return fmt.Errorf("data failed to match schemas in oneOf(RiskPolicySetRiskPoliciesInnerConditionEquals)")
 	}
 }
 

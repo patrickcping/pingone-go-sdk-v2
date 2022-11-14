@@ -38,7 +38,7 @@ func NewRiskEvaluationEventFlowWithDefaults() *RiskEvaluationEventFlow {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RiskEvaluationEventFlow) GetType() EnumFlowType {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret EnumFlowType
 		return ret
 	}
@@ -48,15 +48,15 @@ func (o *RiskEvaluationEventFlow) GetType() EnumFlowType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventFlow) GetTypeOk() (*EnumFlowType, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *RiskEvaluationEventFlow) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -70,7 +70,7 @@ func (o *RiskEvaluationEventFlow) SetType(v EnumFlowType) {
 
 func (o RiskEvaluationEventFlow) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)

@@ -1,3 +1,7 @@
+# v0.12.1 (Unreleased)
+
+* **Note** bump codegen v6.2.0 => v6.2.1
+
 # v0.12.0 (2022-11-06)
 
 * **Breaking change** Removed the `EnumLicensePackage` enum model [#81](https://github.com/patrickcping/pingone-go-sdk-v2/pull/81)

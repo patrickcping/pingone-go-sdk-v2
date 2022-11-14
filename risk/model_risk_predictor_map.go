@@ -40,7 +40,7 @@ func NewRiskPredictorMapWithDefaults() *RiskPredictorMap {
 
 // GetHigh returns the High field value if set, zero value otherwise.
 func (o *RiskPredictorMap) GetHigh() RiskPredictorItemMap {
-	if o == nil || o.High == nil {
+	if o == nil || isNil(o.High) {
 		var ret RiskPredictorItemMap
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *RiskPredictorMap) GetHigh() RiskPredictorItemMap {
 // GetHighOk returns a tuple with the High field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorMap) GetHighOk() (*RiskPredictorItemMap, bool) {
-	if o == nil || o.High == nil {
-		return nil, false
+	if o == nil || isNil(o.High) {
+    return nil, false
 	}
 	return o.High, true
 }
 
 // HasHigh returns a boolean if a field has been set.
 func (o *RiskPredictorMap) HasHigh() bool {
-	if o != nil && o.High != nil {
+	if o != nil && !isNil(o.High) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *RiskPredictorMap) SetHigh(v RiskPredictorItemMap) {
 
 // GetMedium returns the Medium field value if set, zero value otherwise.
 func (o *RiskPredictorMap) GetMedium() RiskPredictorItemMap {
-	if o == nil || o.Medium == nil {
+	if o == nil || isNil(o.Medium) {
 		var ret RiskPredictorItemMap
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *RiskPredictorMap) GetMedium() RiskPredictorItemMap {
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorMap) GetMediumOk() (*RiskPredictorItemMap, bool) {
-	if o == nil || o.Medium == nil {
-		return nil, false
+	if o == nil || isNil(o.Medium) {
+    return nil, false
 	}
 	return o.Medium, true
 }
 
 // HasMedium returns a boolean if a field has been set.
 func (o *RiskPredictorMap) HasMedium() bool {
-	if o != nil && o.Medium != nil {
+	if o != nil && !isNil(o.Medium) {
 		return true
 	}
 
@@ -104,7 +104,7 @@ func (o *RiskPredictorMap) SetMedium(v RiskPredictorItemMap) {
 
 // GetLow returns the Low field value if set, zero value otherwise.
 func (o *RiskPredictorMap) GetLow() RiskPredictorItemMap {
-	if o == nil || o.Low == nil {
+	if o == nil || isNil(o.Low) {
 		var ret RiskPredictorItemMap
 		return ret
 	}
@@ -114,15 +114,15 @@ func (o *RiskPredictorMap) GetLow() RiskPredictorItemMap {
 // GetLowOk returns a tuple with the Low field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorMap) GetLowOk() (*RiskPredictorItemMap, bool) {
-	if o == nil || o.Low == nil {
-		return nil, false
+	if o == nil || isNil(o.Low) {
+    return nil, false
 	}
 	return o.Low, true
 }
 
 // HasLow returns a boolean if a field has been set.
 func (o *RiskPredictorMap) HasLow() bool {
-	if o != nil && o.Low != nil {
+	if o != nil && !isNil(o.Low) {
 		return true
 	}
 
@@ -136,13 +136,13 @@ func (o *RiskPredictorMap) SetLow(v RiskPredictorItemMap) {
 
 func (o RiskPredictorMap) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.High != nil {
+	if !isNil(o.High) {
 		toSerialize["high"] = o.High
 	}
-	if o.Medium != nil {
+	if !isNil(o.Medium) {
 		toSerialize["medium"] = o.Medium
 	}
-	if o.Low != nil {
+	if !isNil(o.Low) {
 		toSerialize["low"] = o.Low
 	}
 	return json.Marshal(toSerialize)

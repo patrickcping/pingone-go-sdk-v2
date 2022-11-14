@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // ApplicationOIDC struct for ApplicationOIDC
@@ -92,7 +91,7 @@ func NewApplicationOIDCWithDefaults() *ApplicationOIDC {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetLinks() map[string]interface{} {
-	if o == nil || o.Links == nil {
+	if o == nil || isNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -102,15 +101,15 @@ func (o *ApplicationOIDC) GetLinks() map[string]interface{} {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || o.Links == nil {
-		return nil, false
+	if o == nil || isNil(o.Links) {
+    return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasLinks() bool {
-	if o != nil && o.Links != nil {
+	if o != nil && !isNil(o.Links) {
 		return true
 	}
 
@@ -124,7 +123,7 @@ func (o *ApplicationOIDC) SetLinks(v map[string]interface{}) {
 
 // GetAccessControl returns the AccessControl field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetAccessControl() ApplicationAccessControl {
-	if o == nil || o.AccessControl == nil {
+	if o == nil || isNil(o.AccessControl) {
 		var ret ApplicationAccessControl
 		return ret
 	}
@@ -134,15 +133,15 @@ func (o *ApplicationOIDC) GetAccessControl() ApplicationAccessControl {
 // GetAccessControlOk returns a tuple with the AccessControl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetAccessControlOk() (*ApplicationAccessControl, bool) {
-	if o == nil || o.AccessControl == nil {
-		return nil, false
+	if o == nil || isNil(o.AccessControl) {
+    return nil, false
 	}
 	return o.AccessControl, true
 }
 
 // HasAccessControl returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasAccessControl() bool {
-	if o != nil && o.AccessControl != nil {
+	if o != nil && !isNil(o.AccessControl) {
 		return true
 	}
 
@@ -156,7 +155,7 @@ func (o *ApplicationOIDC) SetAccessControl(v ApplicationAccessControl) {
 
 // GetAssignActorRoles returns the AssignActorRoles field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetAssignActorRoles() bool {
-	if o == nil || o.AssignActorRoles == nil {
+	if o == nil || isNil(o.AssignActorRoles) {
 		var ret bool
 		return ret
 	}
@@ -166,15 +165,15 @@ func (o *ApplicationOIDC) GetAssignActorRoles() bool {
 // GetAssignActorRolesOk returns a tuple with the AssignActorRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetAssignActorRolesOk() (*bool, bool) {
-	if o == nil || o.AssignActorRoles == nil {
-		return nil, false
+	if o == nil || isNil(o.AssignActorRoles) {
+    return nil, false
 	}
 	return o.AssignActorRoles, true
 }
 
 // HasAssignActorRoles returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasAssignActorRoles() bool {
-	if o != nil && o.AssignActorRoles != nil {
+	if o != nil && !isNil(o.AssignActorRoles) {
 		return true
 	}
 
@@ -188,7 +187,7 @@ func (o *ApplicationOIDC) SetAssignActorRoles(v bool) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetCreatedAt() time.Time {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -198,15 +197,15 @@ func (o *ApplicationOIDC) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -220,7 +219,7 @@ func (o *ApplicationOIDC) SetCreatedAt(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -230,15 +229,15 @@ func (o *ApplicationOIDC) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -264,7 +263,7 @@ func (o *ApplicationOIDC) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -276,7 +275,7 @@ func (o *ApplicationOIDC) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetEnvironment() ObjectEnvironment {
-	if o == nil || o.Environment == nil {
+	if o == nil || isNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -286,15 +285,15 @@ func (o *ApplicationOIDC) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || o.Environment == nil {
-		return nil, false
+	if o == nil || isNil(o.Environment) {
+    return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasEnvironment() bool {
-	if o != nil && o.Environment != nil {
+	if o != nil && !isNil(o.Environment) {
 		return true
 	}
 
@@ -308,7 +307,7 @@ func (o *ApplicationOIDC) SetEnvironment(v ObjectEnvironment) {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetIcon() ApplicationIcon {
-	if o == nil || o.Icon == nil {
+	if o == nil || isNil(o.Icon) {
 		var ret ApplicationIcon
 		return ret
 	}
@@ -318,15 +317,15 @@ func (o *ApplicationOIDC) GetIcon() ApplicationIcon {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetIconOk() (*ApplicationIcon, bool) {
-	if o == nil || o.Icon == nil {
-		return nil, false
+	if o == nil || isNil(o.Icon) {
+    return nil, false
 	}
 	return o.Icon, true
 }
 
 // HasIcon returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasIcon() bool {
-	if o != nil && o.Icon != nil {
+	if o != nil && !isNil(o.Icon) {
 		return true
 	}
 
@@ -340,7 +339,7 @@ func (o *ApplicationOIDC) SetIcon(v ApplicationIcon) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -350,15 +349,15 @@ func (o *ApplicationOIDC) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -372,7 +371,7 @@ func (o *ApplicationOIDC) SetId(v string) {
 
 // GetLoginPageUrl returns the LoginPageUrl field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetLoginPageUrl() string {
-	if o == nil || o.LoginPageUrl == nil {
+	if o == nil || isNil(o.LoginPageUrl) {
 		var ret string
 		return ret
 	}
@@ -382,15 +381,15 @@ func (o *ApplicationOIDC) GetLoginPageUrl() string {
 // GetLoginPageUrlOk returns a tuple with the LoginPageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetLoginPageUrlOk() (*string, bool) {
-	if o == nil || o.LoginPageUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.LoginPageUrl) {
+    return nil, false
 	}
 	return o.LoginPageUrl, true
 }
 
 // HasLoginPageUrl returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasLoginPageUrl() bool {
-	if o != nil && o.LoginPageUrl != nil {
+	if o != nil && !isNil(o.LoginPageUrl) {
 		return true
 	}
 
@@ -416,7 +415,7 @@ func (o *ApplicationOIDC) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -440,7 +439,7 @@ func (o *ApplicationOIDC) GetProtocol() EnumApplicationProtocol {
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetProtocolOk() (*EnumApplicationProtocol, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Protocol, true
 }
@@ -452,7 +451,7 @@ func (o *ApplicationOIDC) SetProtocol(v EnumApplicationProtocol) {
 
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetTags() []EnumApplicationTags {
-	if o == nil || o.Tags == nil {
+	if o == nil || isNil(o.Tags) {
 		var ret []EnumApplicationTags
 		return ret
 	}
@@ -462,15 +461,15 @@ func (o *ApplicationOIDC) GetTags() []EnumApplicationTags {
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetTagsOk() ([]EnumApplicationTags, bool) {
-	if o == nil || o.Tags == nil {
-		return nil, false
+	if o == nil || isNil(o.Tags) {
+    return nil, false
 	}
 	return o.Tags, true
 }
 
 // HasTags returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasTags() bool {
-	if o != nil && o.Tags != nil {
+	if o != nil && !isNil(o.Tags) {
 		return true
 	}
 
@@ -496,7 +495,7 @@ func (o *ApplicationOIDC) GetType() EnumApplicationType {
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetTypeOk() (*EnumApplicationType, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Type, true
 }
@@ -508,7 +507,7 @@ func (o *ApplicationOIDC) SetType(v EnumApplicationType) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetUpdatedAt() time.Time {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -518,15 +517,15 @@ func (o *ApplicationOIDC) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -540,7 +539,7 @@ func (o *ApplicationOIDC) SetUpdatedAt(v time.Time) {
 
 // GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetSupportUnsignedRequestObject() bool {
-	if o == nil || o.SupportUnsignedRequestObject == nil {
+	if o == nil || isNil(o.SupportUnsignedRequestObject) {
 		var ret bool
 		return ret
 	}
@@ -550,15 +549,15 @@ func (o *ApplicationOIDC) GetSupportUnsignedRequestObject() bool {
 // GetSupportUnsignedRequestObjectOk returns a tuple with the SupportUnsignedRequestObject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetSupportUnsignedRequestObjectOk() (*bool, bool) {
-	if o == nil || o.SupportUnsignedRequestObject == nil {
-		return nil, false
+	if o == nil || isNil(o.SupportUnsignedRequestObject) {
+    return nil, false
 	}
 	return o.SupportUnsignedRequestObject, true
 }
 
 // HasSupportUnsignedRequestObject returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasSupportUnsignedRequestObject() bool {
-	if o != nil && o.SupportUnsignedRequestObject != nil {
+	if o != nil && !isNil(o.SupportUnsignedRequestObject) {
 		return true
 	}
 
@@ -572,7 +571,7 @@ func (o *ApplicationOIDC) SetSupportUnsignedRequestObject(v bool) {
 
 // GetMobile returns the Mobile field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetMobile() ApplicationOIDCAllOfMobile {
-	if o == nil || o.Mobile == nil {
+	if o == nil || isNil(o.Mobile) {
 		var ret ApplicationOIDCAllOfMobile
 		return ret
 	}
@@ -582,15 +581,15 @@ func (o *ApplicationOIDC) GetMobile() ApplicationOIDCAllOfMobile {
 // GetMobileOk returns a tuple with the Mobile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetMobileOk() (*ApplicationOIDCAllOfMobile, bool) {
-	if o == nil || o.Mobile == nil {
-		return nil, false
+	if o == nil || isNil(o.Mobile) {
+    return nil, false
 	}
 	return o.Mobile, true
 }
 
 // HasMobile returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasMobile() bool {
-	if o != nil && o.Mobile != nil {
+	if o != nil && !isNil(o.Mobile) {
 		return true
 	}
 
@@ -604,7 +603,7 @@ func (o *ApplicationOIDC) SetMobile(v ApplicationOIDCAllOfMobile) {
 
 // GetBundleId returns the BundleId field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetBundleId() string {
-	if o == nil || o.BundleId == nil {
+	if o == nil || isNil(o.BundleId) {
 		var ret string
 		return ret
 	}
@@ -614,15 +613,15 @@ func (o *ApplicationOIDC) GetBundleId() string {
 // GetBundleIdOk returns a tuple with the BundleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetBundleIdOk() (*string, bool) {
-	if o == nil || o.BundleId == nil {
-		return nil, false
+	if o == nil || isNil(o.BundleId) {
+    return nil, false
 	}
 	return o.BundleId, true
 }
 
 // HasBundleId returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasBundleId() bool {
-	if o != nil && o.BundleId != nil {
+	if o != nil && !isNil(o.BundleId) {
 		return true
 	}
 
@@ -636,7 +635,7 @@ func (o *ApplicationOIDC) SetBundleId(v string) {
 
 // GetPackageName returns the PackageName field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetPackageName() string {
-	if o == nil || o.PackageName == nil {
+	if o == nil || isNil(o.PackageName) {
 		var ret string
 		return ret
 	}
@@ -646,15 +645,15 @@ func (o *ApplicationOIDC) GetPackageName() string {
 // GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetPackageNameOk() (*string, bool) {
-	if o == nil || o.PackageName == nil {
-		return nil, false
+	if o == nil || isNil(o.PackageName) {
+    return nil, false
 	}
 	return o.PackageName, true
 }
 
 // HasPackageName returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasPackageName() bool {
-	if o != nil && o.PackageName != nil {
+	if o != nil && !isNil(o.PackageName) {
 		return true
 	}
 
@@ -668,7 +667,7 @@ func (o *ApplicationOIDC) SetPackageName(v string) {
 
 // GetKerberos returns the Kerberos field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetKerberos() ApplicationOIDCAllOfKerberos {
-	if o == nil || o.Kerberos == nil {
+	if o == nil || isNil(o.Kerberos) {
 		var ret ApplicationOIDCAllOfKerberos
 		return ret
 	}
@@ -678,15 +677,15 @@ func (o *ApplicationOIDC) GetKerberos() ApplicationOIDCAllOfKerberos {
 // GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetKerberosOk() (*ApplicationOIDCAllOfKerberos, bool) {
-	if o == nil || o.Kerberos == nil {
-		return nil, false
+	if o == nil || isNil(o.Kerberos) {
+    return nil, false
 	}
 	return o.Kerberos, true
 }
 
 // HasKerberos returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasKerberos() bool {
-	if o != nil && o.Kerberos != nil {
+	if o != nil && !isNil(o.Kerberos) {
 		return true
 	}
 
@@ -712,7 +711,7 @@ func (o *ApplicationOIDC) GetGrantTypes() []EnumApplicationOIDCGrantType {
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetGrantTypesOk() ([]EnumApplicationOIDCGrantType, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return o.GrantTypes, true
 }
@@ -724,7 +723,7 @@ func (o *ApplicationOIDC) SetGrantTypes(v []EnumApplicationOIDCGrantType) {
 
 // GetHomePageUrl returns the HomePageUrl field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetHomePageUrl() string {
-	if o == nil || o.HomePageUrl == nil {
+	if o == nil || isNil(o.HomePageUrl) {
 		var ret string
 		return ret
 	}
@@ -734,15 +733,15 @@ func (o *ApplicationOIDC) GetHomePageUrl() string {
 // GetHomePageUrlOk returns a tuple with the HomePageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetHomePageUrlOk() (*string, bool) {
-	if o == nil || o.HomePageUrl == nil {
-		return nil, false
+	if o == nil || isNil(o.HomePageUrl) {
+    return nil, false
 	}
 	return o.HomePageUrl, true
 }
 
 // HasHomePageUrl returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasHomePageUrl() bool {
-	if o != nil && o.HomePageUrl != nil {
+	if o != nil && !isNil(o.HomePageUrl) {
 		return true
 	}
 
@@ -756,7 +755,7 @@ func (o *ApplicationOIDC) SetHomePageUrl(v string) {
 
 // GetPkceEnforcement returns the PkceEnforcement field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetPkceEnforcement() EnumApplicationOIDCPKCEOption {
-	if o == nil || o.PkceEnforcement == nil {
+	if o == nil || isNil(o.PkceEnforcement) {
 		var ret EnumApplicationOIDCPKCEOption
 		return ret
 	}
@@ -766,15 +765,15 @@ func (o *ApplicationOIDC) GetPkceEnforcement() EnumApplicationOIDCPKCEOption {
 // GetPkceEnforcementOk returns a tuple with the PkceEnforcement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetPkceEnforcementOk() (*EnumApplicationOIDCPKCEOption, bool) {
-	if o == nil || o.PkceEnforcement == nil {
-		return nil, false
+	if o == nil || isNil(o.PkceEnforcement) {
+    return nil, false
 	}
 	return o.PkceEnforcement, true
 }
 
 // HasPkceEnforcement returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasPkceEnforcement() bool {
-	if o != nil && o.PkceEnforcement != nil {
+	if o != nil && !isNil(o.PkceEnforcement) {
 		return true
 	}
 
@@ -788,7 +787,7 @@ func (o *ApplicationOIDC) SetPkceEnforcement(v EnumApplicationOIDCPKCEOption) {
 
 // GetPostLogoutRedirectUris returns the PostLogoutRedirectUris field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetPostLogoutRedirectUris() []string {
-	if o == nil || o.PostLogoutRedirectUris == nil {
+	if o == nil || isNil(o.PostLogoutRedirectUris) {
 		var ret []string
 		return ret
 	}
@@ -798,15 +797,15 @@ func (o *ApplicationOIDC) GetPostLogoutRedirectUris() []string {
 // GetPostLogoutRedirectUrisOk returns a tuple with the PostLogoutRedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetPostLogoutRedirectUrisOk() ([]string, bool) {
-	if o == nil || o.PostLogoutRedirectUris == nil {
-		return nil, false
+	if o == nil || isNil(o.PostLogoutRedirectUris) {
+    return nil, false
 	}
 	return o.PostLogoutRedirectUris, true
 }
 
 // HasPostLogoutRedirectUris returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasPostLogoutRedirectUris() bool {
-	if o != nil && o.PostLogoutRedirectUris != nil {
+	if o != nil && !isNil(o.PostLogoutRedirectUris) {
 		return true
 	}
 
@@ -820,7 +819,7 @@ func (o *ApplicationOIDC) SetPostLogoutRedirectUris(v []string) {
 
 // GetRedirectUris returns the RedirectUris field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetRedirectUris() []string {
-	if o == nil || o.RedirectUris == nil {
+	if o == nil || isNil(o.RedirectUris) {
 		var ret []string
 		return ret
 	}
@@ -830,15 +829,15 @@ func (o *ApplicationOIDC) GetRedirectUris() []string {
 // GetRedirectUrisOk returns a tuple with the RedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetRedirectUrisOk() ([]string, bool) {
-	if o == nil || o.RedirectUris == nil {
-		return nil, false
+	if o == nil || isNil(o.RedirectUris) {
+    return nil, false
 	}
 	return o.RedirectUris, true
 }
 
 // HasRedirectUris returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasRedirectUris() bool {
-	if o != nil && o.RedirectUris != nil {
+	if o != nil && !isNil(o.RedirectUris) {
 		return true
 	}
 
@@ -852,7 +851,7 @@ func (o *ApplicationOIDC) SetRedirectUris(v []string) {
 
 // GetRefreshTokenDuration returns the RefreshTokenDuration field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetRefreshTokenDuration() int32 {
-	if o == nil || o.RefreshTokenDuration == nil {
+	if o == nil || isNil(o.RefreshTokenDuration) {
 		var ret int32
 		return ret
 	}
@@ -862,15 +861,15 @@ func (o *ApplicationOIDC) GetRefreshTokenDuration() int32 {
 // GetRefreshTokenDurationOk returns a tuple with the RefreshTokenDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetRefreshTokenDurationOk() (*int32, bool) {
-	if o == nil || o.RefreshTokenDuration == nil {
-		return nil, false
+	if o == nil || isNil(o.RefreshTokenDuration) {
+    return nil, false
 	}
 	return o.RefreshTokenDuration, true
 }
 
 // HasRefreshTokenDuration returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasRefreshTokenDuration() bool {
-	if o != nil && o.RefreshTokenDuration != nil {
+	if o != nil && !isNil(o.RefreshTokenDuration) {
 		return true
 	}
 
@@ -884,7 +883,7 @@ func (o *ApplicationOIDC) SetRefreshTokenDuration(v int32) {
 
 // GetRefreshTokenRollingDuration returns the RefreshTokenRollingDuration field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetRefreshTokenRollingDuration() int32 {
-	if o == nil || o.RefreshTokenRollingDuration == nil {
+	if o == nil || isNil(o.RefreshTokenRollingDuration) {
 		var ret int32
 		return ret
 	}
@@ -894,15 +893,15 @@ func (o *ApplicationOIDC) GetRefreshTokenRollingDuration() int32 {
 // GetRefreshTokenRollingDurationOk returns a tuple with the RefreshTokenRollingDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetRefreshTokenRollingDurationOk() (*int32, bool) {
-	if o == nil || o.RefreshTokenRollingDuration == nil {
-		return nil, false
+	if o == nil || isNil(o.RefreshTokenRollingDuration) {
+    return nil, false
 	}
 	return o.RefreshTokenRollingDuration, true
 }
 
 // HasRefreshTokenRollingDuration returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasRefreshTokenRollingDuration() bool {
-	if o != nil && o.RefreshTokenRollingDuration != nil {
+	if o != nil && !isNil(o.RefreshTokenRollingDuration) {
 		return true
 	}
 
@@ -916,7 +915,7 @@ func (o *ApplicationOIDC) SetRefreshTokenRollingDuration(v int32) {
 
 // GetResponseTypes returns the ResponseTypes field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetResponseTypes() []EnumApplicationOIDCResponseType {
-	if o == nil || o.ResponseTypes == nil {
+	if o == nil || isNil(o.ResponseTypes) {
 		var ret []EnumApplicationOIDCResponseType
 		return ret
 	}
@@ -926,15 +925,15 @@ func (o *ApplicationOIDC) GetResponseTypes() []EnumApplicationOIDCResponseType {
 // GetResponseTypesOk returns a tuple with the ResponseTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetResponseTypesOk() ([]EnumApplicationOIDCResponseType, bool) {
-	if o == nil || o.ResponseTypes == nil {
-		return nil, false
+	if o == nil || isNil(o.ResponseTypes) {
+    return nil, false
 	}
 	return o.ResponseTypes, true
 }
 
 // HasResponseTypes returns a boolean if a field has been set.
 func (o *ApplicationOIDC) HasResponseTypes() bool {
-	if o != nil && o.ResponseTypes != nil {
+	if o != nil && !isNil(o.ResponseTypes) {
 		return true
 	}
 
@@ -960,7 +959,7 @@ func (o *ApplicationOIDC) GetTokenEndpointAuthMethod() EnumApplicationOIDCTokenA
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDC) GetTokenEndpointAuthMethodOk() (*EnumApplicationOIDCTokenAuthMethod, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.TokenEndpointAuthMethod, true
 }
@@ -972,34 +971,34 @@ func (o *ApplicationOIDC) SetTokenEndpointAuthMethod(v EnumApplicationOIDCTokenA
 
 func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Links != nil {
+	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	if o.AccessControl != nil {
+	if !isNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	if o.AssignActorRoles != nil {
+	if !isNil(o.AssignActorRoles) {
 		toSerialize["assignActorRoles"] = o.AssignActorRoles
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if true {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.Environment != nil {
+	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if o.Icon != nil {
+	if !isNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.LoginPageUrl != nil {
+	if !isNil(o.LoginPageUrl) {
 		toSerialize["loginPageUrl"] = o.LoginPageUrl
 	}
 	if true {
@@ -1008,52 +1007,52 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if o.Tags != nil {
+	if !isNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.SupportUnsignedRequestObject != nil {
+	if !isNil(o.SupportUnsignedRequestObject) {
 		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
 	}
-	if o.Mobile != nil {
+	if !isNil(o.Mobile) {
 		toSerialize["mobile"] = o.Mobile
 	}
-	if o.BundleId != nil {
+	if !isNil(o.BundleId) {
 		toSerialize["bundleId"] = o.BundleId
 	}
-	if o.PackageName != nil {
+	if !isNil(o.PackageName) {
 		toSerialize["packageName"] = o.PackageName
 	}
-	if o.Kerberos != nil {
+	if !isNil(o.Kerberos) {
 		toSerialize["kerberos"] = o.Kerberos
 	}
 	if true {
 		toSerialize["grantTypes"] = o.GrantTypes
 	}
-	if o.HomePageUrl != nil {
+	if !isNil(o.HomePageUrl) {
 		toSerialize["homePageUrl"] = o.HomePageUrl
 	}
-	if o.PkceEnforcement != nil {
+	if !isNil(o.PkceEnforcement) {
 		toSerialize["pkceEnforcement"] = o.PkceEnforcement
 	}
-	if o.PostLogoutRedirectUris != nil {
+	if !isNil(o.PostLogoutRedirectUris) {
 		toSerialize["postLogoutRedirectUris"] = o.PostLogoutRedirectUris
 	}
-	if o.RedirectUris != nil {
+	if !isNil(o.RedirectUris) {
 		toSerialize["redirectUris"] = o.RedirectUris
 	}
-	if o.RefreshTokenDuration != nil {
+	if !isNil(o.RefreshTokenDuration) {
 		toSerialize["refreshTokenDuration"] = o.RefreshTokenDuration
 	}
-	if o.RefreshTokenRollingDuration != nil {
+	if !isNil(o.RefreshTokenRollingDuration) {
 		toSerialize["refreshTokenRollingDuration"] = o.RefreshTokenRollingDuration
 	}
-	if o.ResponseTypes != nil {
+	if !isNil(o.ResponseTypes) {
 		toSerialize["responseTypes"] = o.ResponseTypes
 	}
 	if true {
