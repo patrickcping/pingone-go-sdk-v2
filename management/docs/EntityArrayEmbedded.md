@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **Keys** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
 **Languages** | Pointer to [**[]EntityArrayEmbeddedLanguagesInner**](EntityArrayEmbeddedLanguagesInner.md) |  | [optional] 
 **Licenses** | Pointer to [**[]License**](License.md) |  | [optional] 
+**NotificationsPolicies** | Pointer to [**[]NotificationsPolicy**](NotificationsPolicy.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
@@ -532,6 +533,31 @@ SetLicenses sets Licenses field to given value.
 `func (o *EntityArrayEmbedded) HasLicenses() bool`
 
 HasLicenses returns a boolean if a field has been set.
+
+### GetNotificationsPolicies
+
+`func (o *EntityArrayEmbedded) GetNotificationsPolicies() []NotificationsPolicy`
+
+GetNotificationsPolicies returns the NotificationsPolicies field if non-nil, zero value otherwise.
+
+### GetNotificationsPoliciesOk
+
+`func (o *EntityArrayEmbedded) GetNotificationsPoliciesOk() (*[]NotificationsPolicy, bool)`
+
+GetNotificationsPoliciesOk returns a tuple with the NotificationsPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotificationsPolicies
+
+`func (o *EntityArrayEmbedded) SetNotificationsPolicies(v []NotificationsPolicy)`
+
+SetNotificationsPolicies sets NotificationsPolicies field to given value.
+
+### HasNotificationsPolicies
+
+`func (o *EntityArrayEmbedded) HasNotificationsPolicies() bool`
+
+HasNotificationsPolicies returns a boolean if a field has been set.
 
 ### GetOrganizations
 

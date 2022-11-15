@@ -4,15 +4,15 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsDelete**](NotificationsSettingsApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsDelete) | **Delete** /v1/environments/{environmentID}/notificationsSettings | DELETE Notifications Settings
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsGet**](NotificationsSettingsApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsGet) | **Get** /v1/environments/{environmentID}/notificationsSettings | READ Notifications Settings
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsPut**](NotificationsSettingsApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsPut) | **Put** /v1/environments/{environmentID}/notificationsSettings | UPDATE Notifications Settings
+[**DeleteNotificationsSettings**](NotificationsSettingsApi.md#DeleteNotificationsSettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings | DELETE Notifications Settings
+[**ReadNotificationsSettings**](NotificationsSettingsApi.md#ReadNotificationsSettings) | **Get** /v1/environments/{environmentID}/notificationsSettings | READ Notifications Settings
+[**UpdateNotificationsSettings**](NotificationsSettingsApi.md#UpdateNotificationsSettings) | **Put** /v1/environments/{environmentID}/notificationsSettings | UPDATE Notifications Settings
 
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsDelete
+## DeleteNotificationsSettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsDelete(ctx, environmentID).Execute()
+> DeleteNotificationsSettings(ctx, environmentID).Execute()
 
 DELETE Notifications Settings
 
@@ -33,9 +33,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsSettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsDelete(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.NotificationsSettingsApi.DeleteNotificationsSettings(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsApi.DeleteNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteNotificationsSettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -76,9 +76,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsGet
+## ReadNotificationsSettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsGet(ctx, environmentID).Execute()
+> NotificationsSettings ReadNotificationsSettings(ctx, environmentID).Execute()
 
 READ Notifications Settings
 
@@ -99,11 +99,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsSettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsGet(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.NotificationsSettingsApi.ReadNotificationsSettings(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsApi.ReadNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadNotificationsSettings`: NotificationsSettings
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsSettingsApi.ReadNotificationsSettings`: %v\n", resp)
 }
 ```
 
@@ -117,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadNotificationsSettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -126,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**NotificationsSettings**](NotificationsSettings.md)
 
 ### Authorization
 
@@ -142,9 +144,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsPut
+## UpdateNotificationsSettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsPut(ctx, environmentID).Execute()
+> NotificationsSettings UpdateNotificationsSettings(ctx, environmentID).Execute()
 
 UPDATE Notifications Settings
 
@@ -165,11 +167,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsSettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPut(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.NotificationsSettingsApi.UpdateNotificationsSettings(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsApi.UpdateNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateNotificationsSettings`: NotificationsSettings
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsSettingsApi.UpdateNotificationsSettings`: %v\n", resp)
 }
 ```
 
@@ -183,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateNotificationsSettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -192,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**NotificationsSettings**](NotificationsSettings.md)
 
 ### Authorization
 

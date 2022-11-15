@@ -121,6 +121,8 @@ type APIClient struct {
 
 	MFAPairingKeysApi *MFAPairingKeysApiService
 
+	NotificationsPoliciesApi *NotificationsPoliciesApiService
+
 	NotificationsSettingsApi *NotificationsSettingsApiService
 
 	NotificationsSettingsSMTPApi *NotificationsSettingsSMTPApiService
@@ -242,6 +244,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LicensesApi = (*LicensesApiService)(&c.common)
 	c.LinkedAccountsApi = (*LinkedAccountsApiService)(&c.common)
 	c.MFAPairingKeysApi = (*MFAPairingKeysApiService)(&c.common)
+	c.NotificationsPoliciesApi = (*NotificationsPoliciesApiService)(&c.common)
 	c.NotificationsSettingsApi = (*NotificationsSettingsApiService)(&c.common)
 	c.NotificationsSettingsSMTPApi = (*NotificationsSettingsSMTPApiService)(&c.common)
 	c.NotificationsTemplatesApi = (*NotificationsTemplatesApiService)(&c.common)

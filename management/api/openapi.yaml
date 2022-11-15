@@ -13419,6 +13419,7 @@ paths:
       - Notifications Templates
   /v1/environments/{environmentID}/notificationsSettings:
     delete:
+      operationId: deleteNotificationsSettings
       parameters:
       - explode: false
         in: path
@@ -13471,6 +13472,7 @@ paths:
       tags:
       - Notifications Settings
     get:
+      operationId: readNotificationsSettings
       parameters:
       - explode: false
         in: path
@@ -13519,12 +13521,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettings'
           description: Successful response
       summary: READ Notifications Settings
       tags:
       - Notifications Settings
     put:
+      operationId: updateNotificationsSettings
       parameters:
       - explode: false
         in: path
@@ -13573,13 +13578,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettings'
           description: Successful response
       summary: UPDATE Notifications Settings
       tags:
       - Notifications Settings
   /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings:
     delete:
+      operationId: deleteEmailDeliverySettings
       parameters:
       - explode: false
         in: path
@@ -13628,10 +13636,11 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "204":
           description: Successful response
-      summary: DELETE Phone Delivery Settings
+      summary: DELETE Email Delivery Settings
       tags:
       - Phone Delivery Settings
     get:
+      operationId: readEmailNotificationsSettings
       parameters:
       - explode: false
         in: path
@@ -13680,12 +13689,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings'
           description: Successful response
-      summary: READ Notifications Settings (SMTP)
+      summary: READ Email Notifications Settings
       tags:
       - Notifications Settings (SMTP)
     put:
+      operationId: updateEmailNotificationsSettings
       parameters:
       - explode: false
         in: path
@@ -13750,13 +13762,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings'
           description: Successful response
-      summary: UPDATE Notifications Settings (SMTP)
+      summary: UPDATE Email Notifications Settings
       tags:
       - Notifications Settings (SMTP)
   /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings:
     get:
+      operationId: readAllPhoneDeliverySettings
       parameters:
       - explode: false
         in: path
@@ -13805,12 +13820,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Phone Delivery Settings
       tags:
       - Phone Delivery Settings
     post:
+      operationId: createPhoneDeliverySettings
       parameters:
       - explode: false
         in: path
@@ -13874,13 +13892,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
           description: Successful response
-      summary: CREATE Phone Delivery Settings (Syniverse)
+      summary: CREATE Phone Delivery Settings
       tags:
       - Phone Delivery Settings
-  /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsId}:
-    get:
+  /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID}:
+    delete:
+      operationId: deletePhoneDeliverySettings
       parameters:
       - explode: false
         in: path
@@ -13891,7 +13912,67 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: phoneDeliverySettingsId
+        name: phoneDeliverySettingsID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Phone Delivery Settings
+      tags:
+      - Phone Delivery Settings
+    get:
+      operationId: readOnePhoneDeliverySettings
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: phoneDeliverySettingsID
         required: true
         schema:
           type: string
@@ -13936,12 +14017,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
           description: Successful response
       summary: READ One Phone Delivery Settings
       tags:
       - Phone Delivery Settings
     put:
+      operationId: updatePhoneDeliverySettings
       parameters:
       - explode: false
         in: path
@@ -13952,7 +14036,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: phoneDeliverySettingsId
+        name: phoneDeliverySettingsID
         required: true
         schema:
           type: string
@@ -13962,7 +14046,7 @@ paths:
           application/json:
             schema:
               example:
-                id: someTwilioPhoneDeliverySettingsId
+                id: someTwiliophoneDeliverySettingsID
                 sid: someSid
                 provider: CUSTOM_TWILIO
                 numbers:
@@ -14045,11 +14129,326 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
           description: Successful response
       summary: UPDATE Phone Delivery Settings
       tags:
       - Phone Delivery Settings
+  /v1/environments/{environmentID}/notificationsPolicies:
+    get:
+      operationId: readAllNotificationsPolicies
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Notifications Policies
+      tags:
+      - Notifications Policies
+    post:
+      operationId: createNotificationsPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationsPolicy'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsPolicy'
+          description: Successful response
+      summary: CREATE Notifications Policy
+      tags:
+      - Notifications Policies
+  /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID}:
+    delete:
+      operationId: deleteNotificationsPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: notificationsPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Notifications Policy
+      tags:
+      - Notifications Policies
+    get:
+      operationId: readOneNotificationsPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: notificationsPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsPolicy'
+          description: Successful response
+      summary: READ One Notifications Policy
+      tags:
+      - Notifications Policies
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: notificationsPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationsPolicy'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsPolicy'
+          description: Successful response
+      summary: UPDATE Notifications Policy
+      tags:
+      - Notifications Policies
   /v1/environments/{environmentID}/passwordPolicies:
     get:
       operationId: readAllPasswordPolicies
@@ -21567,6 +21966,83 @@ components:
       - IOS
       - GOOGLE
       type: string
+    EnumNotificationsPolicyQuotaDeliveryMethods:
+      enum:
+      - SMS
+      - Voice
+      type: string
+    EnumNotificationsPolicyQuotaItemType:
+      description: Specifies whether the limit defined is per-user or per environment.
+        Value must be either `USER` or `ENVIRONMENT`.
+      enum:
+      - USER
+      - ENVIRONMENT
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod:
+      description: |
+        The notification's delivery method. Possible values:
+        `SMS`
+        `VOICE`
+      enum:
+      - SMS
+      - VOICE
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod:
+      description: The type of HTTP request method. Possible values are `GET` and
+        `POST`.
+      enum:
+      - GET
+      - POST
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat:
+      default: FULL
+      description: |
+        The phone number format. Possible values:
+        `FULL` (default)
+        The phone number format with a leading `+` sign, in the E.164 standard format.
+        For example: `+14155552671`
+        `NUMBER_ONLY`
+        The phone number format without a leading `+` sign, in the E.164 standard format.
+        For example: `14155552671`
+      enum:
+      - FULL
+      - NUMBER_ONLY
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod:
+      description: |
+        The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`
+      enum:
+      - BASIC
+      - BEARER
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType:
+      description: |
+        The type of phone number. Possible values: `SHORT_CODE`, `TOLL_FREE`, `PHONE_NUMBER`
+      enum:
+      - SHORT_CODE
+      - TOLL_FREE
+      - PHONE_NUMBER
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability:
+      description: |
+        The type of phone delivery service capability. Possible values: `VOICE`, `SMS`
+      enum:
+      - VOICE
+      - SMS
+      type: string
+    EnumNotificationsSettingsPhoneDeliverySettingsProvider:
+      description: |
+        The ID of the provider of phone delivery service. Possible values:
+        `PINGONE_TWILIO`: Specifies that Ping Identity's Twilio account is the SMS/voice provider.
+        `CUSTOM_TWILIO`: Specifies that your Twilio account is the SMS/voice provider.
+        `CUSTOM_SYNIVERSE`: Specifies that your Syniverse account is the SMS/voice provider.
+        `CUSTOM_PROVIDER`: Specifies a custom-defined SMS provider (excluding Twilio and Syniverse).
+      enum:
+      - PINGONE_TWILIO
+      - CUSTOM_TWILIO
+      - CUSTOM_SYNIVERSE
+      - CUSTOM_PROVIDER
+      type: string
     EnumOrganizationType:
       description: "A string that specifies the organization type. If the organization\
         \ has any paid licenses, the type property value is set to `PAID`. Otherwise,\
@@ -22682,7 +23158,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 7.058770351582356
+        size: 4.652396432933246
         _embedded:
           subscriptions:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -22949,14 +23425,14 @@ components:
             status: null
           passwordPolicies:
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
-              "0123456789": 1
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 5
+              "0123456789": 6
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 2
               abcdefghijklmnopqrstuvwxyz: 6
-            populationCount: 5
+            populationCount: 3
             length:
-              min: 31
-              max: 5
+              min: 29
+              max: 6
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -22975,22 +23451,22 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 6
+            minUniqueCharacters: 3
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 9
+            maxRepeatedCharacters: 6
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
-              "0123456789": 1
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 5
+              "0123456789": 6
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 2
               abcdefghijklmnopqrstuvwxyz: 6
-            populationCount: 5
+            populationCount: 3
             length:
-              min: 31
-              max: 5
+              min: 29
+              max: 6
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -23009,11 +23485,11 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 6
+            minUniqueCharacters: 3
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 9
+            maxRepeatedCharacters: 6
             minAgeDays: 1
             updatedAt: updatedAt
           revisions:
@@ -23102,6 +23578,47 @@ components:
           identityProviders:
           - null
           - null
+          notificationsPolicies:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            default: false
+            quotas:
+            - total: 1
+              unclaimed: 5
+              claimed: 4
+              type: null
+              deliveryMethods:
+              - null
+              - null
+            - total: 1
+              unclaimed: 5
+              claimed: 4
+              type: null
+              deliveryMethods:
+              - null
+              - null
+            name: name
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            default: false
+            quotas:
+            - total: 1
+              unclaimed: 5
+              claimed: 4
+              type: null
+              deliveryMethods:
+              - null
+              - null
+            - total: 1
+              unclaimed: 5
+              claimed: 4
+              type: null
+              deliveryMethods:
+              - null
+              - null
+            name: name
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           languages:
           - null
           - null
@@ -23171,7 +23688,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 3
+            accessTokenValiditySeconds: 0
             name: name
             description: description
             id: id
@@ -23184,7 +23701,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 3
+            accessTokenValiditySeconds: 0
             name: name
             description: description
             id: id
@@ -23254,7 +23771,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 7
+              secondsUntilUnlock: 6
               unlockAt: unlockAt
               status: null
             username: username
@@ -23320,7 +23837,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 7
+              secondsUntilUnlock: 6
               unlockAt: unlockAt
               status: null
             username: username
@@ -23671,7 +24188,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 6
+            userCount: 7
             name: name
             description: description
             id: id
@@ -23679,7 +24196,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 6
+            userCount: 7
             name: name
             description: description
             id: id
@@ -23730,7 +24247,7 @@ components:
           applications:
           - null
           - null
-        count: 0.8851374739011653
+        count: 0.10263654006109402
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -24452,26 +24969,188 @@ components:
       required:
       - name
       type: object
-    PKICAResponseFileUpload:
+    NotificationsPolicy:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        default: false
+        quotas:
+        - total: 1
+          unclaimed: 5
+          claimed: 4
+          type: null
+          deliveryMethods:
+          - null
+          - null
+        - total: 1
+          unclaimed: 5
+          claimed: 4
+          type: null
+          deliveryMethods:
+          - null
+          - null
+        name: name
+        id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
-        file:
-          format: binary
+        createdAt:
+          description: The time the resource was created.
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The name to use for the notification policy. Must be unique
+            among the notification policies in the environment.
+          type: string
+        default:
+          default: false
+          description: "Indication of whether this policy is the default notification\
+            \ policy for the environment. If the parameter is not provided, the value\
+            \ used is `false`"
+          type: boolean
+        quotas:
+          description: "Collection of objects that define the SMS/Voice limits. Each\
+            \ object contain the following elements- `type`, `deliveryMethods`, `total`.\
+            \ Currently, a policy can contain ony one such object. Note that instead\
+            \ of `total`, you can use the pair of fields- `claimed` and `unclaimed`."
+          items:
+            $ref: '#/components/schemas/NotificationsPolicy_quotas_inner'
+          type: array
+      required:
+      - name
+      - quotas
+      type: object
+    NotificationsSettings:
+      example:
+        smsProvidersFallbackChain:
+        - smsProvidersFallbackChain
+        - smsProvidersFallbackChain
+        replyTo:
+          address: address
+          name: name
+        restrictions:
+          smsVoiceQuota:
+            daily: 0
+        from:
+          address: address
+          name: name
+        id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
+          type: string
+        restrictions:
+          $ref: '#/components/schemas/NotificationsSettings_restrictions'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        smsProvidersFallbackChain:
+          description: "A list which represents the execution order of different SMS/Voice\
+            \ providers configured for the environment. The providers and their accounts’\
+            \ configurations are represented in the list by the ID of the corresponding\
+            \ `PhoneDeliverySettings` resource. The only provider which is not represented\
+            \ by a `phoneDeliverySettingsID` is the PingOne Twilio provider. The PingOne\
+            \ Twilio provider is represented by the `PINGONE_TWILIO` string. If the\
+            \ `smsProvidersFallbackChain` list is empty, an SMS or voice message will\
+            \ be sent using the default Ping Twilio account. Otherwise, an SMS or\
+            \ voice message will be sent using the first provider in the list. If\
+            \ the server fails to queue the message using that provider, it will use\
+            \ the next provider in the list to try to send the message. This process\
+            \ will go on until there are no more providers in the list. If the server\
+            \ failed to send the message using all providers, the notification status\
+            \ is set to `FAILED`."
+          items:
+            type: string
+          type: array
+        from:
+          $ref: '#/components/schemas/NotificationsSettings_from'
+        replyTo:
+          $ref: '#/components/schemas/NotificationsSettings_replyTo'
+      type: object
+    NotificationsSettingsEmailDeliverySettings:
+      example:
+        environment:
+          id: id
+        port: 0
+        host: host
+        replyTo:
+          address: address
+          name: name
+        from:
+          address: address
+          name: name
+        username: username
+      properties:
+        host:
+          description: A string that specifies the organization's SMTP server.
+          type: string
+        port:
+          default: 465
+          description: "An integer that specifies the port used by the organization's\
+            \ SMTP server to send emails (default `465`). Note that the protocol used\
+            \ depends upon the port specified. If you specify port `25`, `587`, or\
+            \ `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used."
+          type: integer
+        username:
+          description: A string that specifies the organization's SMTP server's username.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        from:
+          $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings_from'
+        replyTo:
+          $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings_replyTo'
+      type: object
+    NotificationsSettingsPhoneDeliverySettings:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
+        provider: null
+        id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        provider:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsProvider'
+        createdAt:
+          description: The time the resource was created.
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
           type: string
       required:
-      - file
+      - provider
       type: object
-    PKIFileUpload:
-      properties:
-        usageType:
-          example: ENCRYPTION
-          type: string
-        file:
-          format: binary
-          type: string
-      required:
-      - file
-      - usageType
-      type: object
+    NotificationsSettingsPhoneDeliverySettingsCustom:
+      allOf:
+      - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+      - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom_allOf'
+    NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse:
+      allOf:
+      - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+      - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf'
     ObjectApplication:
       example:
         id: id
@@ -24583,14 +25262,14 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
-          "0123456789": 1
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 5
+          "0123456789": 6
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 2
           abcdefghijklmnopqrstuvwxyz: 6
-        populationCount: 5
+        populationCount: 3
         length:
-          min: 31
-          max: 5
+          min: 29
+          max: 6
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -24609,11 +25288,11 @@ components:
           durationSeconds: 1
           failureCount: 1
         bypassPolicy: false
-        minUniqueCharacters: 6
+        minUniqueCharacters: 3
         name: name
         maxAgeDays: 1
         id: id
-        maxRepeatedCharacters: 9
+        maxRepeatedCharacters: 6
         minAgeDays: 1
         updatedAt: updatedAt
       properties:
@@ -24721,12 +25400,32 @@ components:
       - name
       - notSimilarToCurrent
       type: object
+    PKICAResponseFileUpload:
+      properties:
+        file:
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
+    PKIFileUpload:
+      properties:
+        usageType:
+          example: ENCRYPTION
+          type: string
+        file:
+          format: binary
+          type: string
+      required:
+      - file
+      - usageType
+      type: object
     Population:
       example:
         createdAt: createdAt
         passwordPolicy:
           id: id
-        userCount: 6
+        userCount: 7
         name: name
         description: description
         id: id
@@ -24768,7 +25467,7 @@ components:
           id: id
         resource:
           id: id
-        accessTokenValiditySeconds: 3
+        accessTokenValiditySeconds: 0
         name: name
         description: description
         id: id
@@ -25574,7 +26273,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 7
+          secondsUntilUnlock: 6
           unlockAt: unlockAt
           status: null
         username: username
@@ -26866,14 +27565,14 @@ components:
           status: null
         passwordPolicies:
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
-            "0123456789": 1
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 5
+            "0123456789": 6
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 2
             abcdefghijklmnopqrstuvwxyz: 6
-          populationCount: 5
+          populationCount: 3
           length:
-            min: 31
-            max: 5
+            min: 29
+            max: 6
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -26892,22 +27591,22 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 6
+          minUniqueCharacters: 3
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 9
+          maxRepeatedCharacters: 6
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
-            "0123456789": 1
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 5
+            "0123456789": 6
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 2
             abcdefghijklmnopqrstuvwxyz: 6
-          populationCount: 5
+          populationCount: 3
           length:
-            min: 31
-            max: 5
+            min: 29
+            max: 6
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -26926,11 +27625,11 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 6
+          minUniqueCharacters: 3
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 9
+          maxRepeatedCharacters: 6
           minAgeDays: 1
           updatedAt: updatedAt
         revisions:
@@ -27019,6 +27718,47 @@ components:
         identityProviders:
         - null
         - null
+        notificationsPolicies:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          default: false
+          quotas:
+          - total: 1
+            unclaimed: 5
+            claimed: 4
+            type: null
+            deliveryMethods:
+            - null
+            - null
+          - total: 1
+            unclaimed: 5
+            claimed: 4
+            type: null
+            deliveryMethods:
+            - null
+            - null
+          name: name
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          default: false
+          quotas:
+          - total: 1
+            unclaimed: 5
+            claimed: 4
+            type: null
+            deliveryMethods:
+            - null
+            - null
+          - total: 1
+            unclaimed: 5
+            claimed: 4
+            type: null
+            deliveryMethods:
+            - null
+            - null
+          name: name
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         languages:
         - null
         - null
@@ -27088,7 +27828,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 3
+          accessTokenValiditySeconds: 0
           name: name
           description: description
           id: id
@@ -27101,7 +27841,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 3
+          accessTokenValiditySeconds: 0
           name: name
           description: description
           id: id
@@ -27171,7 +27911,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 7
+            secondsUntilUnlock: 6
             unlockAt: unlockAt
             status: null
           username: username
@@ -27237,7 +27977,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 7
+            secondsUntilUnlock: 6
             unlockAt: unlockAt
             status: null
           username: username
@@ -27588,7 +28328,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 6
+          userCount: 7
           name: name
           description: description
           id: id
@@ -27596,7 +28336,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 6
+          userCount: 7
           name: name
           description: description
           id: id
@@ -27723,6 +28463,10 @@ components:
         licenses:
           items:
             $ref: '#/components/schemas/License'
+          type: array
+        notificationsPolicies:
+          items:
+            $ref: '#/components/schemas/NotificationsPolicy'
           type: array
         organizations:
           items:
@@ -28678,6 +29422,286 @@ components:
           type: boolean
       readOnly: true
       type: object
+    NotificationsPolicy_quotas_inner:
+      example:
+        total: 1
+        unclaimed: 5
+        claimed: 4
+        type: null
+        deliveryMethods:
+        - null
+        - null
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumNotificationsPolicyQuotaItemType'
+        deliveryMethods:
+          description: "The delivery methods for which the limit is being defined.\
+            \ Currently, the content of the array must be `SMS`, `Voice`. This means\
+            \ that the combined total of SMS and Voice notifications must be below\
+            \ the limit defined."
+          items:
+            $ref: '#/components/schemas/EnumNotificationsPolicyQuotaDeliveryMethods'
+          type: array
+        total:
+          description: The maximum number of notifications allowed per day.
+          type: integer
+        claimed:
+          description: The maximum number of notifications that can be received and
+            responded to each day. Used in conjunction with unclaimed in place of
+            the single field total.
+          type: integer
+        unclaimed:
+          description: The maximum number of notifications that can be received and
+            not responded to each day. Used in conjunction with claimed in place of
+            the single field total.
+          type: integer
+      required:
+      - deliveryMethods
+      - type
+      type: object
+    NotificationsSettings_restrictions_smsVoiceQuota:
+      example:
+        daily: 0
+      properties:
+        daily:
+          description: |
+            The maximum number of SMS and voice notifications that can be sent per user per day.
+            - `restrictions.smsVoiceQuota.daily` can be set to any value between 0 and 50.
+            - Trial accounts have a default value of 30.
+            - The daily counters are reset every night at midnight UTC.
+          type: integer
+      required:
+      - daily
+      type: object
+    NotificationsSettings_restrictions:
+      example:
+        smsVoiceQuota:
+          daily: 0
+      properties:
+        smsVoiceQuota:
+          $ref: '#/components/schemas/NotificationsSettings_restrictions_smsVoiceQuota'
+      required:
+      - smsVoiceQuota
+      type: object
+    NotificationsSettings_from:
+      example:
+        address: address
+        name: name
+      properties:
+        name:
+          description: "A string that specifies the email's \"from\" name (relevant\
+            \ when the `deliveryMethod` is `Email`).  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note)\
+            \ for details."
+          type: string
+        address:
+          description: "A string that specifies the email's \"from\" address (relevant\
+            \ when the `deliveryMethod` is `Email`). This value must be a trusted\
+            \ email address.  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note)\
+            \ for details."
+          type: string
+      type: object
+    NotificationsSettings_replyTo:
+      example:
+        address: address
+        name: name
+      properties:
+        name:
+          description: "A string that specifies the email's \"reply to\" name (relevant\
+            \ when `deliveryMethod` is `Email`).  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note)\
+            \ for details."
+          type: string
+        address:
+          description: "A string that specifies the email's \"reply to\" address (relevant\
+            \ when `deliveryMethod` is `Email`). This value must be a trusted email\
+            \ address.  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note)\
+            \ for details."
+          type: string
+      type: object
+    NotificationsSettingsEmailDeliverySettings_from:
+      example:
+        address: address
+        name: name
+      properties:
+        name:
+          description: A string that specifies the email's "from" name.
+          type: string
+        address:
+          description: A string that specifies the email's "from" address.
+          type: string
+      type: object
+    NotificationsSettingsEmailDeliverySettings_replyTo:
+      example:
+        address: address
+        name: name
+      properties:
+        name:
+          description: A string that specifies the email's "reply to" name.
+          type: string
+        address:
+          description: A string that specifies the email's "reply to" address.
+          type: string
+      type: object
+    NotificationsSettingsPhoneDeliverySettingsCustom_allOf_requests:
+      properties:
+        deliveryMethod:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod'
+        url:
+          description: |
+            The provider's remote gateway or customer gateway URL.
+            For requests using the POST method, use the provider's remote gateway URL.
+            For requests using the GET method, use the provider's remote gateway URL, including the `${to}` and `${message}` mandatory variables, and the optional `${from}` variable, for example:
+            `https://api.transmitsms.com/send-sms.json?to=${to}&from=${from}&message=${message}`
+          type: string
+        body:
+          description: |
+            The notification's request body. The body should include the ${to} and ${message} mandatory variables. For some vendors, the optional ${from} variable may also be required. For example:
+            `messageType=ARN&message=${message}&phoneNumber=${to}&sender=${from}`
+            In addition, you can use the following optional variables:
+            `${voice}` - the type of voice configured for notifications
+            `${locale}` - locale
+            `${otp}` - OTP
+            `${user.user.name}` - user's username
+            `${user.name.given}` - user's given name
+            `${user.name.family}` - user's family name
+            You can also use dynamic variables in the body. For more information, see [Dynamic variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-dynamic-variables).
+          type: string
+        headers:
+          description: |
+            The notification's request header, matching the format of the request body. The header can be one of:
+            Form
+            `(content-type=application/x-www-form-urlencoded)`
+            JSON
+            `(content-type=application/json)`
+          type: string
+        method:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod'
+        phoneNumberFormat:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat'
+        beforeTag:
+          description: |
+            For voice OTP notifications only.
+            An opening tag which is commonly used by custom providers for defining a pause between each number in the OTP number string.
+            Possible value: `<Say>`
+          type: string
+        afterTag:
+          description: |
+            For voice OTP notifications only.
+            A closing tag which is commonly used by custom providers for defining a pause between each number in the OTP number string.
+            Possible value: `</Say> <Pause length="1"/>`
+          type: string
+      required:
+      - body
+      - deliveryMethod
+      - headers
+      - method
+      - phoneNumberFormat
+      - url
+      type: object
+      example: null
+    NotificationsSettingsPhoneDeliverySettingsCustom_allOf_authentication:
+      properties:
+        method:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod'
+        username:
+          description: The username for the custom provider account. Required when
+            `authentication.method=BASIC`
+          type: string
+        password:
+          description: The password for the custom provider account. Required when
+            `authentication.method=BASIC`
+          type: string
+        token:
+          description: The authentication token for the custom provider account.  Required
+            when `authentication.method=BEARER`
+          type: string
+      required:
+      - method
+      type: object
+      example: null
+    NotificationsSettingsPhoneDeliverySettingsCustom_allOf:
+      properties:
+        name:
+          description: The customer provider's name.
+          type: string
+        requests:
+          $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom_allOf_requests'
+        authentication:
+          $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom_allOf_authentication'
+      required:
+      - authentication
+      - requests
+      type: object
+      example: null
+    NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf_numbers:
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType'
+        selected:
+          description: Specifies whether the number is selected by the admin for sending
+            messages.
+          type: boolean
+        createdAt:
+          description: The time the resource was created.
+          format: date-time
+          readOnly: true
+          type: string
+        number:
+          description: "The phone number, toll-free number or short code."
+          type: string
+        available:
+          description: Specifies whether the number is currently available in the
+            provider account.
+          type: boolean
+        capabilities:
+          description: A collection of the phone delivery service capabilities.
+          items:
+            $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability'
+          type: array
+        supportedCountries:
+          description: |
+            Specifies the number's supported countries for notification recipients, depending on the phone number `type`:
+            - `SHORT_CODE`: A collection containing a single 2-character ISO country code, for example, `US`, `GB`, `CA`.
+            If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null.
+            For other custom provider types, if supportedCountries is null (empty is not supported), the specified short code number can only be used to dispatch notifications to United States recipient numbers.
+            - `TOLL_FREE`: A collection of valid 2-character country ISO codes, for example, `US`, `GB`, `CA`.
+            If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null.
+            For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified toll-free number can only be used to dispatch notifications to United States recipient numbers.
+            - `PHONE_NUMBER`: `supportedCountries` can not be specified.
+            If an SMS template has an alphanumeric sender ID and also has short code, the sender ID will be used for destination countries that support both alphanumeric senders and short codes. For Unites States and Canada that don't support alphanumeric sender IDs, a short code will be used if both an alphanumeric sender and a short code are specified.
+          items:
+            type: string
+          type: array
+      required:
+      - available
+      - capabilities
+      - number
+      - selected
+      - supportedCountries
+      - type
+      type: object
+      example: null
+    NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf:
+      properties:
+        sid:
+          description: |
+            The public ID of the Twilio account.
+            Relevant to Twilio only.
+          type: string
+        authToken:
+          description: The secret key of the Twilio or Syniverse account.
+          type: string
+        numbers:
+          description: A collection of Twilio or Syniverse numbers to use when sending
+            a notification.
+          items:
+            $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf_numbers'
+          type: array
+      required:
+      - authToken
+      - numbers
+      - sid
+      type: object
+      example: null
     Organization_billingConnections_inner:
       example:
         id: id
@@ -28750,8 +29774,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 31
-        max: 5
+        min: 29
+        max: 6
       properties:
         max:
           default: 255
@@ -28793,9 +29817,9 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 2
-        "0123456789": 1
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 5
+        "0123456789": 6
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 2
         abcdefghijklmnopqrstuvwxyz: 6
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
@@ -29471,7 +30495,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 7
+        secondsUntilUnlock: 6
         unlockAt: unlockAt
         status: null
       properties:

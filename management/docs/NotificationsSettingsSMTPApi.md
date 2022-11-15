@@ -4,16 +4,16 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsGet**](NotificationsSettingsSMTPApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsGet) | **Get** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | READ Notifications Settings (SMTP)
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsPut**](NotificationsSettingsSMTPApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsPut) | **Put** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | UPDATE Notifications Settings (SMTP)
+[**ReadEmailNotificationsSettings**](NotificationsSettingsSMTPApi.md#ReadEmailNotificationsSettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | READ Email Notifications Settings
+[**UpdateEmailNotificationsSettings**](NotificationsSettingsSMTPApi.md#UpdateEmailNotificationsSettings) | **Put** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | UPDATE Email Notifications Settings
 
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsGet
+## ReadEmailNotificationsSettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsGet(ctx, environmentID).Execute()
+> NotificationsSettingsEmailDeliverySettings ReadEmailNotificationsSettings(ctx, environmentID).Execute()
 
-READ Notifications Settings (SMTP)
+READ Email Notifications Settings
 
 ### Example
 
@@ -32,11 +32,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsSettingsSMTPApi.V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsGet(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.NotificationsSettingsSMTPApi.ReadEmailNotificationsSettings(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsSMTPApi.V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsSMTPApi.ReadEmailNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadEmailNotificationsSettings`: NotificationsSettingsEmailDeliverySettings
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsSettingsSMTPApi.ReadEmailNotificationsSettings`: %v\n", resp)
 }
 ```
 
@@ -50,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadEmailNotificationsSettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -59,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**NotificationsSettingsEmailDeliverySettings**](NotificationsSettingsEmailDeliverySettings.md)
 
 ### Authorization
 
@@ -75,11 +77,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsPut
+## UpdateEmailNotificationsSettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsPut(ctx, environmentID).Body(body).Execute()
+> NotificationsSettingsEmailDeliverySettings UpdateEmailNotificationsSettings(ctx, environmentID).Body(body).Execute()
 
-UPDATE Notifications Settings (SMTP)
+UPDATE Email Notifications Settings
 
 ### Example
 
@@ -99,11 +101,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsSettingsSMTPApi.V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsPut(context.Background(), environmentID).Body(body).Execute()
+    resp, r, err := apiClient.NotificationsSettingsSMTPApi.UpdateEmailNotificationsSettings(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsSMTPApi.V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsSMTPApi.UpdateEmailNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateEmailNotificationsSettings`: NotificationsSettingsEmailDeliverySettings
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsSettingsSMTPApi.UpdateEmailNotificationsSettings`: %v\n", resp)
 }
 ```
 
@@ -117,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateEmailNotificationsSettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -127,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**NotificationsSettingsEmailDeliverySettings**](NotificationsSettingsEmailDeliverySettings.md)
 
 ### Authorization
 

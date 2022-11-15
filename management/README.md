@@ -240,11 +240,16 @@ Class | Method | HTTP request | Description
 *MFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete**](docs/MFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspairingkeyiddelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | DELETE MFA Pairing Key
 *MFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet**](docs/MFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspairingkeyidget) | **Get** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | READ One MFA Pairing Key
 *MFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost**](docs/MFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspost) | **Post** /v1/environments/{environmentID}/users/{userID}/pairingKeys | CREATE MFA Pairing Key
-*NotificationsSettingsApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsDelete**](docs/NotificationsSettingsApi.md#v1environmentsenvironmentidnotificationssettingsdelete) | **Delete** /v1/environments/{environmentID}/notificationsSettings | DELETE Notifications Settings
-*NotificationsSettingsApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsGet**](docs/NotificationsSettingsApi.md#v1environmentsenvironmentidnotificationssettingsget) | **Get** /v1/environments/{environmentID}/notificationsSettings | READ Notifications Settings
-*NotificationsSettingsApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsPut**](docs/NotificationsSettingsApi.md#v1environmentsenvironmentidnotificationssettingsput) | **Put** /v1/environments/{environmentID}/notificationsSettings | UPDATE Notifications Settings
-*NotificationsSettingsSMTPApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsGet**](docs/NotificationsSettingsSMTPApi.md#v1environmentsenvironmentidnotificationssettingsemaildeliverysettingsget) | **Get** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | READ Notifications Settings (SMTP)
-*NotificationsSettingsSMTPApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsPut**](docs/NotificationsSettingsSMTPApi.md#v1environmentsenvironmentidnotificationssettingsemaildeliverysettingsput) | **Put** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | UPDATE Notifications Settings (SMTP)
+*NotificationsPoliciesApi* | [**CreateNotificationsPolicy**](docs/NotificationsPoliciesApi.md#createnotificationspolicy) | **Post** /v1/environments/{environmentID}/notificationsPolicies | CREATE Notifications Policy
+*NotificationsPoliciesApi* | [**DeleteNotificationsPolicy**](docs/NotificationsPoliciesApi.md#deletenotificationspolicy) | **Delete** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | DELETE Notifications Policy
+*NotificationsPoliciesApi* | [**ReadAllNotificationsPolicies**](docs/NotificationsPoliciesApi.md#readallnotificationspolicies) | **Get** /v1/environments/{environmentID}/notificationsPolicies | READ All Notifications Policies
+*NotificationsPoliciesApi* | [**ReadOneNotificationsPolicy**](docs/NotificationsPoliciesApi.md#readonenotificationspolicy) | **Get** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | READ One Notifications Policy
+*NotificationsPoliciesApi* | [**V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut**](docs/NotificationsPoliciesApi.md#v1environmentsenvironmentidnotificationspoliciesnotificationspolicyidput) | **Put** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | UPDATE Notifications Policy
+*NotificationsSettingsApi* | [**DeleteNotificationsSettings**](docs/NotificationsSettingsApi.md#deletenotificationssettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings | DELETE Notifications Settings
+*NotificationsSettingsApi* | [**ReadNotificationsSettings**](docs/NotificationsSettingsApi.md#readnotificationssettings) | **Get** /v1/environments/{environmentID}/notificationsSettings | READ Notifications Settings
+*NotificationsSettingsApi* | [**UpdateNotificationsSettings**](docs/NotificationsSettingsApi.md#updatenotificationssettings) | **Put** /v1/environments/{environmentID}/notificationsSettings | UPDATE Notifications Settings
+*NotificationsSettingsSMTPApi* | [**ReadEmailNotificationsSettings**](docs/NotificationsSettingsSMTPApi.md#reademailnotificationssettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | READ Email Notifications Settings
+*NotificationsSettingsSMTPApi* | [**UpdateEmailNotificationsSettings**](docs/NotificationsSettingsSMTPApi.md#updateemailnotificationssettings) | **Put** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | UPDATE Email Notifications Settings
 *NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesGet**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatesget) | **Get** /v1/environments/{environmentID}/templates | READ All Templates
 *NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDelete**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentscontentiddelete) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | DELETE Content
 *NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGet**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentscontentidget) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | READ One Content
@@ -261,11 +266,12 @@ Class | Method | HTTP request | Description
 *PasswordPoliciesApi* | [**ReadAllPasswordPolicies**](docs/PasswordPoliciesApi.md#readallpasswordpolicies) | **Get** /v1/environments/{environmentID}/passwordPolicies | READ All Password Policies
 *PasswordPoliciesApi* | [**ReadOnePasswordPolicy**](docs/PasswordPoliciesApi.md#readonepasswordpolicy) | **Get** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
 *PasswordPoliciesApi* | [**UpdatePasswordPolicy**](docs/PasswordPoliciesApi.md#updatepasswordpolicy) | **Put** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
-*PhoneDeliverySettingsApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsDelete**](docs/PhoneDeliverySettingsApi.md#v1environmentsenvironmentidnotificationssettingsemaildeliverysettingsdelete) | **Delete** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | DELETE Phone Delivery Settings
-*PhoneDeliverySettingsApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsGet**](docs/PhoneDeliverySettingsApi.md#v1environmentsenvironmentidnotificationssettingsphonedeliverysettingsget) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | READ All Phone Delivery Settings
-*PhoneDeliverySettingsApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdGet**](docs/PhoneDeliverySettingsApi.md#v1environmentsenvironmentidnotificationssettingsphonedeliverysettingsphonedeliverysettingsidget) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsId} | READ One Phone Delivery Settings
-*PhoneDeliverySettingsApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut**](docs/PhoneDeliverySettingsApi.md#v1environmentsenvironmentidnotificationssettingsphonedeliverysettingsphonedeliverysettingsidput) | **Put** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsId} | UPDATE Phone Delivery Settings
-*PhoneDeliverySettingsApi* | [**V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPost**](docs/PhoneDeliverySettingsApi.md#v1environmentsenvironmentidnotificationssettingsphonedeliverysettingspost) | **Post** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | CREATE Phone Delivery Settings (Syniverse)
+*PhoneDeliverySettingsApi* | [**CreatePhoneDeliverySettings**](docs/PhoneDeliverySettingsApi.md#createphonedeliverysettings) | **Post** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | CREATE Phone Delivery Settings
+*PhoneDeliverySettingsApi* | [**DeleteEmailDeliverySettings**](docs/PhoneDeliverySettingsApi.md#deleteemaildeliverysettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | DELETE Email Delivery Settings
+*PhoneDeliverySettingsApi* | [**DeletePhoneDeliverySettings**](docs/PhoneDeliverySettingsApi.md#deletephonedeliverysettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID} | DELETE Phone Delivery Settings
+*PhoneDeliverySettingsApi* | [**ReadAllPhoneDeliverySettings**](docs/PhoneDeliverySettingsApi.md#readallphonedeliverysettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | READ All Phone Delivery Settings
+*PhoneDeliverySettingsApi* | [**ReadOnePhoneDeliverySettings**](docs/PhoneDeliverySettingsApi.md#readonephonedeliverysettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID} | READ One Phone Delivery Settings
+*PhoneDeliverySettingsApi* | [**UpdatePhoneDeliverySettings**](docs/PhoneDeliverySettingsApi.md#updatephonedeliverysettings) | **Put** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID} | UPDATE Phone Delivery Settings
 *PopulationsApi* | [**CreatePopulation**](docs/PopulationsApi.md#createpopulation) | **Post** /v1/environments/{environmentID}/populations | CREATE Population
 *PopulationsApi* | [**DeletePopulation**](docs/PopulationsApi.md#deletepopulation) | **Delete** /v1/environments/{environmentID}/populations/{populationID} | DELETE Population
 *PopulationsApi* | [**ReadAllPopulations**](docs/PopulationsApi.md#readallpopulations) | **Get** /v1/environments/{environmentID}/populations | READ All Populations
@@ -514,6 +520,15 @@ Class | Method | HTTP request | Description
  - [EnumImageFormat](docs/EnumImageFormat.md)
  - [EnumLicenseStatus](docs/EnumLicenseStatus.md)
  - [EnumMobileIntegrityDetectionPlatform](docs/EnumMobileIntegrityDetectionPlatform.md)
+ - [EnumNotificationsPolicyQuotaDeliveryMethods](docs/EnumNotificationsPolicyQuotaDeliveryMethods.md)
+ - [EnumNotificationsPolicyQuotaItemType](docs/EnumNotificationsPolicyQuotaItemType.md)
+ - [EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod](docs/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod.md)
+ - [EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod](docs/EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod.md)
+ - [EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat](docs/EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat.md)
+ - [EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod](docs/EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod.md)
+ - [EnumNotificationsSettingsPhoneDeliverySettingsProvider](docs/EnumNotificationsSettingsPhoneDeliverySettingsProvider.md)
+ - [EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability](docs/EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability.md)
+ - [EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType](docs/EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType.md)
  - [EnumOrganizationType](docs/EnumOrganizationType.md)
  - [EnumPasscodeRefreshTimeUnit](docs/EnumPasscodeRefreshTimeUnit.md)
  - [EnumProductType](docs/EnumProductType.md)
@@ -607,6 +622,24 @@ Class | Method | HTTP request | Description
  - [LicenseReplacesLicense](docs/LicenseReplacesLicense.md)
  - [LicenseUsers](docs/LicenseUsers.md)
  - [LicenseVerify](docs/LicenseVerify.md)
+ - [NotificationsPolicy](docs/NotificationsPolicy.md)
+ - [NotificationsPolicyQuotasInner](docs/NotificationsPolicyQuotasInner.md)
+ - [NotificationsSettings](docs/NotificationsSettings.md)
+ - [NotificationsSettingsEmailDeliverySettings](docs/NotificationsSettingsEmailDeliverySettings.md)
+ - [NotificationsSettingsEmailDeliverySettingsFrom](docs/NotificationsSettingsEmailDeliverySettingsFrom.md)
+ - [NotificationsSettingsEmailDeliverySettingsReplyTo](docs/NotificationsSettingsEmailDeliverySettingsReplyTo.md)
+ - [NotificationsSettingsFrom](docs/NotificationsSettingsFrom.md)
+ - [NotificationsSettingsPhoneDeliverySettings](docs/NotificationsSettingsPhoneDeliverySettings.md)
+ - [NotificationsSettingsPhoneDeliverySettingsCustom](docs/NotificationsSettingsPhoneDeliverySettingsCustom.md)
+ - [NotificationsSettingsPhoneDeliverySettingsCustomAllOf](docs/NotificationsSettingsPhoneDeliverySettingsCustomAllOf.md)
+ - [NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication](docs/NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication.md)
+ - [NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests](docs/NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests.md)
+ - [NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse](docs/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse.md)
+ - [NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf](docs/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf.md)
+ - [NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers](docs/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers.md)
+ - [NotificationsSettingsReplyTo](docs/NotificationsSettingsReplyTo.md)
+ - [NotificationsSettingsRestrictions](docs/NotificationsSettingsRestrictions.md)
+ - [NotificationsSettingsRestrictionsSmsVoiceQuota](docs/NotificationsSettingsRestrictionsSmsVoiceQuota.md)
  - [ObjectApplication](docs/ObjectApplication.md)
  - [ObjectEnvironment](docs/ObjectEnvironment.md)
  - [ObjectOrganization](docs/ObjectOrganization.md)

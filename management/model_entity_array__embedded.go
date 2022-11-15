@@ -35,6 +35,7 @@ type EntityArrayEmbedded struct {
 	Keys []Certificate `json:"keys,omitempty"`
 	Languages []EntityArrayEmbeddedLanguagesInner `json:"languages,omitempty"`
 	Licenses []License `json:"licenses,omitempty"`
+	NotificationsPolicies []NotificationsPolicy `json:"notificationsPolicies,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
@@ -677,6 +678,38 @@ func (o *EntityArrayEmbedded) SetLicenses(v []License) {
 	o.Licenses = v
 }
 
+// GetNotificationsPolicies returns the NotificationsPolicies field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetNotificationsPolicies() []NotificationsPolicy {
+	if o == nil || isNil(o.NotificationsPolicies) {
+		var ret []NotificationsPolicy
+		return ret
+	}
+	return o.NotificationsPolicies
+}
+
+// GetNotificationsPoliciesOk returns a tuple with the NotificationsPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetNotificationsPoliciesOk() ([]NotificationsPolicy, bool) {
+	if o == nil || isNil(o.NotificationsPolicies) {
+    return nil, false
+	}
+	return o.NotificationsPolicies, true
+}
+
+// HasNotificationsPolicies returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasNotificationsPolicies() bool {
+	if o != nil && !isNil(o.NotificationsPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotificationsPolicies gets a reference to the given []NotificationsPolicy and assigns it to the NotificationsPolicies field.
+func (o *EntityArrayEmbedded) SetNotificationsPolicies(v []NotificationsPolicy) {
+	o.NotificationsPolicies = v
+}
+
 // GetOrganizations returns the Organizations field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetOrganizations() []Organization {
 	if o == nil || isNil(o.Organizations) {
@@ -1215,6 +1248,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Licenses) {
 		toSerialize["licenses"] = o.Licenses
+	}
+	if !isNil(o.NotificationsPolicies) {
+		toSerialize["notificationsPolicies"] = o.NotificationsPolicies
 	}
 	if !isNil(o.Organizations) {
 		toSerialize["organizations"] = o.Organizations
