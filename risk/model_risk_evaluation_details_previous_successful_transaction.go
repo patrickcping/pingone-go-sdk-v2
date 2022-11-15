@@ -49,7 +49,7 @@ func NewRiskEvaluationDetailsPreviousSuccessfulTransactionWithDefaults() *RiskEv
 
 // GetAnonymousNetworkDetected returns the AnonymousNetworkDetected field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetAnonymousNetworkDetected() bool {
-	if o == nil || o.AnonymousNetworkDetected == nil {
+	if o == nil || isNil(o.AnonymousNetworkDetected) {
 		var ret bool
 		return ret
 	}
@@ -59,15 +59,15 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetAnonymousNetwork
 // GetAnonymousNetworkDetectedOk returns a tuple with the AnonymousNetworkDetected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetAnonymousNetworkDetectedOk() (*bool, bool) {
-	if o == nil || o.AnonymousNetworkDetected == nil {
-		return nil, false
+	if o == nil || isNil(o.AnonymousNetworkDetected) {
+    return nil, false
 	}
 	return o.AnonymousNetworkDetected, true
 }
 
 // HasAnonymousNetworkDetected returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) HasAnonymousNetworkDetected() bool {
-	if o != nil && o.AnonymousNetworkDetected != nil {
+	if o != nil && !isNil(o.AnonymousNetworkDetected) {
 		return true
 	}
 
@@ -81,7 +81,7 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) SetAnonymousNetwork
 
 // GetCountry returns the Country field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetCountry() string {
-	if o == nil || o.Country == nil {
+	if o == nil || isNil(o.Country) {
 		var ret string
 		return ret
 	}
@@ -91,15 +91,15 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetCountry() string
 // GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetCountryOk() (*string, bool) {
-	if o == nil || o.Country == nil {
-		return nil, false
+	if o == nil || isNil(o.Country) {
+    return nil, false
 	}
 	return o.Country, true
 }
 
 // HasCountry returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) HasCountry() bool {
-	if o != nil && o.Country != nil {
+	if o != nil && !isNil(o.Country) {
 		return true
 	}
 
@@ -113,7 +113,7 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) SetCountry(v string
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetState() string {
-	if o == nil || o.State == nil {
+	if o == nil || isNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -123,15 +123,15 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetStateOk() (*string, bool) {
-	if o == nil || o.State == nil {
-		return nil, false
+	if o == nil || isNil(o.State) {
+    return nil, false
 	}
 	return o.State, true
 }
 
 // HasState returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) HasState() bool {
-	if o != nil && o.State != nil {
+	if o != nil && !isNil(o.State) {
 		return true
 	}
 
@@ -145,7 +145,7 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) SetState(v string) 
 
 // GetCity returns the City field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetCity() string {
-	if o == nil || o.City == nil {
+	if o == nil || isNil(o.City) {
 		var ret string
 		return ret
 	}
@@ -155,15 +155,15 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetCity() string {
 // GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetCityOk() (*string, bool) {
-	if o == nil || o.City == nil {
-		return nil, false
+	if o == nil || isNil(o.City) {
+    return nil, false
 	}
 	return o.City, true
 }
 
 // HasCity returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) HasCity() bool {
-	if o != nil && o.City != nil {
+	if o != nil && !isNil(o.City) {
 		return true
 	}
 
@@ -177,7 +177,7 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) SetCity(v string) {
 
 // GetIp returns the Ip field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetIp() string {
-	if o == nil || o.Ip == nil {
+	if o == nil || isNil(o.Ip) {
 		var ret string
 		return ret
 	}
@@ -187,15 +187,15 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetIp() string {
 // GetIpOk returns a tuple with the Ip field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetIpOk() (*string, bool) {
-	if o == nil || o.Ip == nil {
-		return nil, false
+	if o == nil || isNil(o.Ip) {
+    return nil, false
 	}
 	return o.Ip, true
 }
 
 // HasIp returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) HasIp() bool {
-	if o != nil && o.Ip != nil {
+	if o != nil && !isNil(o.Ip) {
 		return true
 	}
 
@@ -209,7 +209,7 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) SetIp(v string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetTimestamp() string {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || isNil(o.Timestamp) {
 		var ret string
 		return ret
 	}
@@ -219,15 +219,15 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetTimestamp() stri
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) GetTimestampOk() (*string, bool) {
-	if o == nil || o.Timestamp == nil {
-		return nil, false
+	if o == nil || isNil(o.Timestamp) {
+    return nil, false
 	}
 	return o.Timestamp, true
 }
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !isNil(o.Timestamp) {
 		return true
 	}
 
@@ -241,22 +241,22 @@ func (o *RiskEvaluationDetailsPreviousSuccessfulTransaction) SetTimestamp(v stri
 
 func (o RiskEvaluationDetailsPreviousSuccessfulTransaction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AnonymousNetworkDetected != nil {
+	if !isNil(o.AnonymousNetworkDetected) {
 		toSerialize["anonymousNetworkDetected"] = o.AnonymousNetworkDetected
 	}
-	if o.Country != nil {
+	if !isNil(o.Country) {
 		toSerialize["country"] = o.Country
 	}
-	if o.State != nil {
+	if !isNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if o.City != nil {
+	if !isNil(o.City) {
 		toSerialize["city"] = o.City
 	}
-	if o.Ip != nil {
+	if !isNil(o.Ip) {
 		toSerialize["ip"] = o.Ip
 	}
-	if o.Timestamp != nil {
+	if !isNil(o.Timestamp) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
 	return json.Marshal(toSerialize)

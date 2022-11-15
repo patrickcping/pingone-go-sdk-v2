@@ -53,7 +53,7 @@ func (o *RiskPolicyResult) GetLevel() EnumRiskLevel {
 // and a boolean to check if the value has been set.
 func (o *RiskPolicyResult) GetLevelOk() (*EnumRiskLevel, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Level, true
 }
@@ -65,7 +65,7 @@ func (o *RiskPolicyResult) SetLevel(v EnumRiskLevel) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RiskPolicyResult) GetType() EnumResultType {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret EnumResultType
 		return ret
 	}
@@ -75,15 +75,15 @@ func (o *RiskPolicyResult) GetType() EnumResultType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicyResult) GetTypeOk() (*EnumResultType, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *RiskPolicyResult) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -97,7 +97,7 @@ func (o *RiskPolicyResult) SetType(v EnumResultType) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *RiskPolicyResult) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -107,15 +107,15 @@ func (o *RiskPolicyResult) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicyResult) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
-		return nil, false
+	if o == nil || isNil(o.Value) {
+    return nil, false
 	}
 	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *RiskPolicyResult) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
@@ -132,10 +132,10 @@ func (o RiskPolicyResult) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["level"] = o.Level
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Value != nil {
+	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
 	return json.Marshal(toSerialize)

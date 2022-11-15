@@ -53,7 +53,7 @@ func (o *SignOnPolicyActionCommonConditionEquals) GetValue() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionEquals) GetValueOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Value, true
 }
@@ -77,7 +77,7 @@ func (o *SignOnPolicyActionCommonConditionEquals) GetEquals() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionEquals) GetEqualsOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Equals, true
 }

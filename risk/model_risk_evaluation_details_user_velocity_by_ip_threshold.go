@@ -46,7 +46,7 @@ func NewRiskEvaluationDetailsUserVelocityByIpThresholdWithDefaults() *RiskEvalua
 
 // GetHigh returns the High field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetHigh() int32 {
-	if o == nil || o.High == nil {
+	if o == nil || isNil(o.High) {
 		var ret int32
 		return ret
 	}
@@ -56,15 +56,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetHigh() int32 {
 // GetHighOk returns a tuple with the High field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetHighOk() (*int32, bool) {
-	if o == nil || o.High == nil {
-		return nil, false
+	if o == nil || isNil(o.High) {
+    return nil, false
 	}
 	return o.High, true
 }
 
 // HasHigh returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasHigh() bool {
-	if o != nil && o.High != nil {
+	if o != nil && !isNil(o.High) {
 		return true
 	}
 
@@ -78,7 +78,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetHigh(v int32) {
 
 // GetMedium returns the Medium field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetMedium() int32 {
-	if o == nil || o.Medium == nil {
+	if o == nil || isNil(o.Medium) {
 		var ret int32
 		return ret
 	}
@@ -88,15 +88,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetMedium() int32 {
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetMediumOk() (*int32, bool) {
-	if o == nil || o.Medium == nil {
-		return nil, false
+	if o == nil || isNil(o.Medium) {
+    return nil, false
 	}
 	return o.Medium, true
 }
 
 // HasMedium returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasMedium() bool {
-	if o != nil && o.Medium != nil {
+	if o != nil && !isNil(o.Medium) {
 		return true
 	}
 
@@ -110,7 +110,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetMedium(v int32) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSource() EnumThresholdSource {
-	if o == nil || o.Source == nil {
+	if o == nil || isNil(o.Source) {
 		var ret EnumThresholdSource
 		return ret
 	}
@@ -120,15 +120,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSource() EnumThresho
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSourceOk() (*EnumThresholdSource, bool) {
-	if o == nil || o.Source == nil {
-		return nil, false
+	if o == nil || isNil(o.Source) {
+    return nil, false
 	}
 	return o.Source, true
 }
 
 // HasSource returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasSource() bool {
-	if o != nil && o.Source != nil {
+	if o != nil && !isNil(o.Source) {
 		return true
 	}
 
@@ -142,7 +142,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetSource(v EnumThresho
 
 // GetCalculatedAt returns the CalculatedAt field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetCalculatedAt() string {
-	if o == nil || o.CalculatedAt == nil {
+	if o == nil || isNil(o.CalculatedAt) {
 		var ret string
 		return ret
 	}
@@ -152,15 +152,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetCalculatedAt() strin
 // GetCalculatedAtOk returns a tuple with the CalculatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetCalculatedAtOk() (*string, bool) {
-	if o == nil || o.CalculatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CalculatedAt) {
+    return nil, false
 	}
 	return o.CalculatedAt, true
 }
 
 // HasCalculatedAt returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasCalculatedAt() bool {
-	if o != nil && o.CalculatedAt != nil {
+	if o != nil && !isNil(o.CalculatedAt) {
 		return true
 	}
 
@@ -174,7 +174,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetCalculatedAt(v strin
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetExpiresAt() string {
-	if o == nil || o.ExpiresAt == nil {
+	if o == nil || isNil(o.ExpiresAt) {
 		var ret string
 		return ret
 	}
@@ -184,15 +184,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetExpiresAt() string {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetExpiresAtOk() (*string, bool) {
-	if o == nil || o.ExpiresAt == nil {
-		return nil, false
+	if o == nil || isNil(o.ExpiresAt) {
+    return nil, false
 	}
 	return o.ExpiresAt, true
 }
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasExpiresAt() bool {
-	if o != nil && o.ExpiresAt != nil {
+	if o != nil && !isNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -206,19 +206,19 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetExpiresAt(v string) 
 
 func (o RiskEvaluationDetailsUserVelocityByIpThreshold) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.High != nil {
+	if !isNil(o.High) {
 		toSerialize["high"] = o.High
 	}
-	if o.Medium != nil {
+	if !isNil(o.Medium) {
 		toSerialize["medium"] = o.Medium
 	}
-	if o.Source != nil {
+	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if o.CalculatedAt != nil {
+	if !isNil(o.CalculatedAt) {
 		toSerialize["calculatedAt"] = o.CalculatedAt
 	}
-	if o.ExpiresAt != nil {
+	if !isNil(o.ExpiresAt) {
 		toSerialize["expiresAt"] = o.ExpiresAt
 	}
 	return json.Marshal(toSerialize)

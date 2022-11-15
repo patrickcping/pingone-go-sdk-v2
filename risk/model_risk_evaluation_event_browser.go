@@ -65,7 +65,7 @@ func NewRiskEvaluationEventBrowserWithDefaults() *RiskEvaluationEventBrowser {
 
 // GetUserAgent returns the UserAgent field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetUserAgent() string {
-	if o == nil || o.UserAgent == nil {
+	if o == nil || isNil(o.UserAgent) {
 		var ret string
 		return ret
 	}
@@ -75,15 +75,15 @@ func (o *RiskEvaluationEventBrowser) GetUserAgent() string {
 // GetUserAgentOk returns a tuple with the UserAgent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetUserAgentOk() (*string, bool) {
-	if o == nil || o.UserAgent == nil {
-		return nil, false
+	if o == nil || isNil(o.UserAgent) {
+    return nil, false
 	}
 	return o.UserAgent, true
 }
 
 // HasUserAgent returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasUserAgent() bool {
-	if o != nil && o.UserAgent != nil {
+	if o != nil && !isNil(o.UserAgent) {
 		return true
 	}
 
@@ -97,7 +97,7 @@ func (o *RiskEvaluationEventBrowser) SetUserAgent(v string) {
 
 // GetCookie returns the Cookie field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetCookie() string {
-	if o == nil || o.Cookie == nil {
+	if o == nil || isNil(o.Cookie) {
 		var ret string
 		return ret
 	}
@@ -107,15 +107,15 @@ func (o *RiskEvaluationEventBrowser) GetCookie() string {
 // GetCookieOk returns a tuple with the Cookie field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetCookieOk() (*string, bool) {
-	if o == nil || o.Cookie == nil {
-		return nil, false
+	if o == nil || isNil(o.Cookie) {
+    return nil, false
 	}
 	return o.Cookie, true
 }
 
 // HasCookie returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasCookie() bool {
-	if o != nil && o.Cookie != nil {
+	if o != nil && !isNil(o.Cookie) {
 		return true
 	}
 
@@ -129,7 +129,7 @@ func (o *RiskEvaluationEventBrowser) SetCookie(v string) {
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetLanguage() string {
-	if o == nil || o.Language == nil {
+	if o == nil || isNil(o.Language) {
 		var ret string
 		return ret
 	}
@@ -139,15 +139,15 @@ func (o *RiskEvaluationEventBrowser) GetLanguage() string {
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetLanguageOk() (*string, bool) {
-	if o == nil || o.Language == nil {
-		return nil, false
+	if o == nil || isNil(o.Language) {
+    return nil, false
 	}
 	return o.Language, true
 }
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasLanguage() bool {
-	if o != nil && o.Language != nil {
+	if o != nil && !isNil(o.Language) {
 		return true
 	}
 
@@ -161,7 +161,7 @@ func (o *RiskEvaluationEventBrowser) SetLanguage(v string) {
 
 // GetColorDepth returns the ColorDepth field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetColorDepth() float32 {
-	if o == nil || o.ColorDepth == nil {
+	if o == nil || isNil(o.ColorDepth) {
 		var ret float32
 		return ret
 	}
@@ -171,15 +171,15 @@ func (o *RiskEvaluationEventBrowser) GetColorDepth() float32 {
 // GetColorDepthOk returns a tuple with the ColorDepth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetColorDepthOk() (*float32, bool) {
-	if o == nil || o.ColorDepth == nil {
-		return nil, false
+	if o == nil || isNil(o.ColorDepth) {
+    return nil, false
 	}
 	return o.ColorDepth, true
 }
 
 // HasColorDepth returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasColorDepth() bool {
-	if o != nil && o.ColorDepth != nil {
+	if o != nil && !isNil(o.ColorDepth) {
 		return true
 	}
 
@@ -193,7 +193,7 @@ func (o *RiskEvaluationEventBrowser) SetColorDepth(v float32) {
 
 // GetDeviceMemory returns the DeviceMemory field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetDeviceMemory() float32 {
-	if o == nil || o.DeviceMemory == nil {
+	if o == nil || isNil(o.DeviceMemory) {
 		var ret float32
 		return ret
 	}
@@ -203,15 +203,15 @@ func (o *RiskEvaluationEventBrowser) GetDeviceMemory() float32 {
 // GetDeviceMemoryOk returns a tuple with the DeviceMemory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetDeviceMemoryOk() (*float32, bool) {
-	if o == nil || o.DeviceMemory == nil {
-		return nil, false
+	if o == nil || isNil(o.DeviceMemory) {
+    return nil, false
 	}
 	return o.DeviceMemory, true
 }
 
 // HasDeviceMemory returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasDeviceMemory() bool {
-	if o != nil && o.DeviceMemory != nil {
+	if o != nil && !isNil(o.DeviceMemory) {
 		return true
 	}
 
@@ -225,7 +225,7 @@ func (o *RiskEvaluationEventBrowser) SetDeviceMemory(v float32) {
 
 // GetHardwareConcurrency returns the HardwareConcurrency field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetHardwareConcurrency() float32 {
-	if o == nil || o.HardwareConcurrency == nil {
+	if o == nil || isNil(o.HardwareConcurrency) {
 		var ret float32
 		return ret
 	}
@@ -235,15 +235,15 @@ func (o *RiskEvaluationEventBrowser) GetHardwareConcurrency() float32 {
 // GetHardwareConcurrencyOk returns a tuple with the HardwareConcurrency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetHardwareConcurrencyOk() (*float32, bool) {
-	if o == nil || o.HardwareConcurrency == nil {
-		return nil, false
+	if o == nil || isNil(o.HardwareConcurrency) {
+    return nil, false
 	}
 	return o.HardwareConcurrency, true
 }
 
 // HasHardwareConcurrency returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasHardwareConcurrency() bool {
-	if o != nil && o.HardwareConcurrency != nil {
+	if o != nil && !isNil(o.HardwareConcurrency) {
 		return true
 	}
 
@@ -257,7 +257,7 @@ func (o *RiskEvaluationEventBrowser) SetHardwareConcurrency(v float32) {
 
 // GetScreenResolution returns the ScreenResolution field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetScreenResolution() []float32 {
-	if o == nil || o.ScreenResolution == nil {
+	if o == nil || isNil(o.ScreenResolution) {
 		var ret []float32
 		return ret
 	}
@@ -267,15 +267,15 @@ func (o *RiskEvaluationEventBrowser) GetScreenResolution() []float32 {
 // GetScreenResolutionOk returns a tuple with the ScreenResolution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetScreenResolutionOk() ([]float32, bool) {
-	if o == nil || o.ScreenResolution == nil {
-		return nil, false
+	if o == nil || isNil(o.ScreenResolution) {
+    return nil, false
 	}
 	return o.ScreenResolution, true
 }
 
 // HasScreenResolution returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasScreenResolution() bool {
-	if o != nil && o.ScreenResolution != nil {
+	if o != nil && !isNil(o.ScreenResolution) {
 		return true
 	}
 
@@ -289,7 +289,7 @@ func (o *RiskEvaluationEventBrowser) SetScreenResolution(v []float32) {
 
 // GetAvailableScreenResolution returns the AvailableScreenResolution field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetAvailableScreenResolution() []float32 {
-	if o == nil || o.AvailableScreenResolution == nil {
+	if o == nil || isNil(o.AvailableScreenResolution) {
 		var ret []float32
 		return ret
 	}
@@ -299,15 +299,15 @@ func (o *RiskEvaluationEventBrowser) GetAvailableScreenResolution() []float32 {
 // GetAvailableScreenResolutionOk returns a tuple with the AvailableScreenResolution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetAvailableScreenResolutionOk() ([]float32, bool) {
-	if o == nil || o.AvailableScreenResolution == nil {
-		return nil, false
+	if o == nil || isNil(o.AvailableScreenResolution) {
+    return nil, false
 	}
 	return o.AvailableScreenResolution, true
 }
 
 // HasAvailableScreenResolution returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasAvailableScreenResolution() bool {
-	if o != nil && o.AvailableScreenResolution != nil {
+	if o != nil && !isNil(o.AvailableScreenResolution) {
 		return true
 	}
 
@@ -321,7 +321,7 @@ func (o *RiskEvaluationEventBrowser) SetAvailableScreenResolution(v []float32) {
 
 // GetTimezoneOffset returns the TimezoneOffset field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetTimezoneOffset() float32 {
-	if o == nil || o.TimezoneOffset == nil {
+	if o == nil || isNil(o.TimezoneOffset) {
 		var ret float32
 		return ret
 	}
@@ -331,15 +331,15 @@ func (o *RiskEvaluationEventBrowser) GetTimezoneOffset() float32 {
 // GetTimezoneOffsetOk returns a tuple with the TimezoneOffset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetTimezoneOffsetOk() (*float32, bool) {
-	if o == nil || o.TimezoneOffset == nil {
-		return nil, false
+	if o == nil || isNil(o.TimezoneOffset) {
+    return nil, false
 	}
 	return o.TimezoneOffset, true
 }
 
 // HasTimezoneOffset returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasTimezoneOffset() bool {
-	if o != nil && o.TimezoneOffset != nil {
+	if o != nil && !isNil(o.TimezoneOffset) {
 		return true
 	}
 
@@ -353,7 +353,7 @@ func (o *RiskEvaluationEventBrowser) SetTimezoneOffset(v float32) {
 
 // GetTimezone returns the Timezone field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetTimezone() string {
-	if o == nil || o.Timezone == nil {
+	if o == nil || isNil(o.Timezone) {
 		var ret string
 		return ret
 	}
@@ -363,15 +363,15 @@ func (o *RiskEvaluationEventBrowser) GetTimezone() string {
 // GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetTimezoneOk() (*string, bool) {
-	if o == nil || o.Timezone == nil {
-		return nil, false
+	if o == nil || isNil(o.Timezone) {
+    return nil, false
 	}
 	return o.Timezone, true
 }
 
 // HasTimezone returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasTimezone() bool {
-	if o != nil && o.Timezone != nil {
+	if o != nil && !isNil(o.Timezone) {
 		return true
 	}
 
@@ -385,7 +385,7 @@ func (o *RiskEvaluationEventBrowser) SetTimezone(v string) {
 
 // GetSessionStorage returns the SessionStorage field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetSessionStorage() bool {
-	if o == nil || o.SessionStorage == nil {
+	if o == nil || isNil(o.SessionStorage) {
 		var ret bool
 		return ret
 	}
@@ -395,15 +395,15 @@ func (o *RiskEvaluationEventBrowser) GetSessionStorage() bool {
 // GetSessionStorageOk returns a tuple with the SessionStorage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetSessionStorageOk() (*bool, bool) {
-	if o == nil || o.SessionStorage == nil {
-		return nil, false
+	if o == nil || isNil(o.SessionStorage) {
+    return nil, false
 	}
 	return o.SessionStorage, true
 }
 
 // HasSessionStorage returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasSessionStorage() bool {
-	if o != nil && o.SessionStorage != nil {
+	if o != nil && !isNil(o.SessionStorage) {
 		return true
 	}
 
@@ -417,7 +417,7 @@ func (o *RiskEvaluationEventBrowser) SetSessionStorage(v bool) {
 
 // GetLocalStorage returns the LocalStorage field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetLocalStorage() bool {
-	if o == nil || o.LocalStorage == nil {
+	if o == nil || isNil(o.LocalStorage) {
 		var ret bool
 		return ret
 	}
@@ -427,15 +427,15 @@ func (o *RiskEvaluationEventBrowser) GetLocalStorage() bool {
 // GetLocalStorageOk returns a tuple with the LocalStorage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetLocalStorageOk() (*bool, bool) {
-	if o == nil || o.LocalStorage == nil {
-		return nil, false
+	if o == nil || isNil(o.LocalStorage) {
+    return nil, false
 	}
 	return o.LocalStorage, true
 }
 
 // HasLocalStorage returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasLocalStorage() bool {
-	if o != nil && o.LocalStorage != nil {
+	if o != nil && !isNil(o.LocalStorage) {
 		return true
 	}
 
@@ -449,7 +449,7 @@ func (o *RiskEvaluationEventBrowser) SetLocalStorage(v bool) {
 
 // GetIndexedDb returns the IndexedDb field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetIndexedDb() bool {
-	if o == nil || o.IndexedDb == nil {
+	if o == nil || isNil(o.IndexedDb) {
 		var ret bool
 		return ret
 	}
@@ -459,15 +459,15 @@ func (o *RiskEvaluationEventBrowser) GetIndexedDb() bool {
 // GetIndexedDbOk returns a tuple with the IndexedDb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetIndexedDbOk() (*bool, bool) {
-	if o == nil || o.IndexedDb == nil {
-		return nil, false
+	if o == nil || isNil(o.IndexedDb) {
+    return nil, false
 	}
 	return o.IndexedDb, true
 }
 
 // HasIndexedDb returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasIndexedDb() bool {
-	if o != nil && o.IndexedDb != nil {
+	if o != nil && !isNil(o.IndexedDb) {
 		return true
 	}
 
@@ -481,7 +481,7 @@ func (o *RiskEvaluationEventBrowser) SetIndexedDb(v bool) {
 
 // GetAddBehaviour returns the AddBehaviour field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetAddBehaviour() map[string]interface{} {
-	if o == nil || o.AddBehaviour == nil {
+	if o == nil || isNil(o.AddBehaviour) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -491,15 +491,15 @@ func (o *RiskEvaluationEventBrowser) GetAddBehaviour() map[string]interface{} {
 // GetAddBehaviourOk returns a tuple with the AddBehaviour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetAddBehaviourOk() (map[string]interface{}, bool) {
-	if o == nil || o.AddBehaviour == nil {
-		return nil, false
+	if o == nil || isNil(o.AddBehaviour) {
+    return map[string]interface{}{}, false
 	}
 	return o.AddBehaviour, true
 }
 
 // HasAddBehaviour returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasAddBehaviour() bool {
-	if o != nil && o.AddBehaviour != nil {
+	if o != nil && !isNil(o.AddBehaviour) {
 		return true
 	}
 
@@ -513,7 +513,7 @@ func (o *RiskEvaluationEventBrowser) SetAddBehaviour(v map[string]interface{}) {
 
 // GetOpenDatabase returns the OpenDatabase field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetOpenDatabase() bool {
-	if o == nil || o.OpenDatabase == nil {
+	if o == nil || isNil(o.OpenDatabase) {
 		var ret bool
 		return ret
 	}
@@ -523,15 +523,15 @@ func (o *RiskEvaluationEventBrowser) GetOpenDatabase() bool {
 // GetOpenDatabaseOk returns a tuple with the OpenDatabase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetOpenDatabaseOk() (*bool, bool) {
-	if o == nil || o.OpenDatabase == nil {
-		return nil, false
+	if o == nil || isNil(o.OpenDatabase) {
+    return nil, false
 	}
 	return o.OpenDatabase, true
 }
 
 // HasOpenDatabase returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasOpenDatabase() bool {
-	if o != nil && o.OpenDatabase != nil {
+	if o != nil && !isNil(o.OpenDatabase) {
 		return true
 	}
 
@@ -545,7 +545,7 @@ func (o *RiskEvaluationEventBrowser) SetOpenDatabase(v bool) {
 
 // GetCpuClass returns the CpuClass field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetCpuClass() string {
-	if o == nil || o.CpuClass == nil {
+	if o == nil || isNil(o.CpuClass) {
 		var ret string
 		return ret
 	}
@@ -555,15 +555,15 @@ func (o *RiskEvaluationEventBrowser) GetCpuClass() string {
 // GetCpuClassOk returns a tuple with the CpuClass field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetCpuClassOk() (*string, bool) {
-	if o == nil || o.CpuClass == nil {
-		return nil, false
+	if o == nil || isNil(o.CpuClass) {
+    return nil, false
 	}
 	return o.CpuClass, true
 }
 
 // HasCpuClass returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasCpuClass() bool {
-	if o != nil && o.CpuClass != nil {
+	if o != nil && !isNil(o.CpuClass) {
 		return true
 	}
 
@@ -577,7 +577,7 @@ func (o *RiskEvaluationEventBrowser) SetCpuClass(v string) {
 
 // GetPlatform returns the Platform field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetPlatform() string {
-	if o == nil || o.Platform == nil {
+	if o == nil || isNil(o.Platform) {
 		var ret string
 		return ret
 	}
@@ -587,15 +587,15 @@ func (o *RiskEvaluationEventBrowser) GetPlatform() string {
 // GetPlatformOk returns a tuple with the Platform field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetPlatformOk() (*string, bool) {
-	if o == nil || o.Platform == nil {
-		return nil, false
+	if o == nil || isNil(o.Platform) {
+    return nil, false
 	}
 	return o.Platform, true
 }
 
 // HasPlatform returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasPlatform() bool {
-	if o != nil && o.Platform != nil {
+	if o != nil && !isNil(o.Platform) {
 		return true
 	}
 
@@ -609,7 +609,7 @@ func (o *RiskEvaluationEventBrowser) SetPlatform(v string) {
 
 // GetPlugins returns the Plugins field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetPlugins() []map[string]interface{} {
-	if o == nil || o.Plugins == nil {
+	if o == nil || isNil(o.Plugins) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -619,15 +619,15 @@ func (o *RiskEvaluationEventBrowser) GetPlugins() []map[string]interface{} {
 // GetPluginsOk returns a tuple with the Plugins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetPluginsOk() ([]map[string]interface{}, bool) {
-	if o == nil || o.Plugins == nil {
-		return nil, false
+	if o == nil || isNil(o.Plugins) {
+    return nil, false
 	}
 	return o.Plugins, true
 }
 
 // HasPlugins returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasPlugins() bool {
-	if o != nil && o.Plugins != nil {
+	if o != nil && !isNil(o.Plugins) {
 		return true
 	}
 
@@ -641,7 +641,7 @@ func (o *RiskEvaluationEventBrowser) SetPlugins(v []map[string]interface{}) {
 
 // GetWebglVendorAndRenderer returns the WebglVendorAndRenderer field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetWebglVendorAndRenderer() string {
-	if o == nil || o.WebglVendorAndRenderer == nil {
+	if o == nil || isNil(o.WebglVendorAndRenderer) {
 		var ret string
 		return ret
 	}
@@ -651,15 +651,15 @@ func (o *RiskEvaluationEventBrowser) GetWebglVendorAndRenderer() string {
 // GetWebglVendorAndRendererOk returns a tuple with the WebglVendorAndRenderer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetWebglVendorAndRendererOk() (*string, bool) {
-	if o == nil || o.WebglVendorAndRenderer == nil {
-		return nil, false
+	if o == nil || isNil(o.WebglVendorAndRenderer) {
+    return nil, false
 	}
 	return o.WebglVendorAndRenderer, true
 }
 
 // HasWebglVendorAndRenderer returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasWebglVendorAndRenderer() bool {
-	if o != nil && o.WebglVendorAndRenderer != nil {
+	if o != nil && !isNil(o.WebglVendorAndRenderer) {
 		return true
 	}
 
@@ -673,7 +673,7 @@ func (o *RiskEvaluationEventBrowser) SetWebglVendorAndRenderer(v string) {
 
 // GetWebgl returns the Webgl field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetWebgl() []string {
-	if o == nil || o.Webgl == nil {
+	if o == nil || isNil(o.Webgl) {
 		var ret []string
 		return ret
 	}
@@ -683,15 +683,15 @@ func (o *RiskEvaluationEventBrowser) GetWebgl() []string {
 // GetWebglOk returns a tuple with the Webgl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetWebglOk() ([]string, bool) {
-	if o == nil || o.Webgl == nil {
-		return nil, false
+	if o == nil || isNil(o.Webgl) {
+    return nil, false
 	}
 	return o.Webgl, true
 }
 
 // HasWebgl returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasWebgl() bool {
-	if o != nil && o.Webgl != nil {
+	if o != nil && !isNil(o.Webgl) {
 		return true
 	}
 
@@ -705,7 +705,7 @@ func (o *RiskEvaluationEventBrowser) SetWebgl(v []string) {
 
 // GetAdBlock returns the AdBlock field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetAdBlock() bool {
-	if o == nil || o.AdBlock == nil {
+	if o == nil || isNil(o.AdBlock) {
 		var ret bool
 		return ret
 	}
@@ -715,15 +715,15 @@ func (o *RiskEvaluationEventBrowser) GetAdBlock() bool {
 // GetAdBlockOk returns a tuple with the AdBlock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetAdBlockOk() (*bool, bool) {
-	if o == nil || o.AdBlock == nil {
-		return nil, false
+	if o == nil || isNil(o.AdBlock) {
+    return nil, false
 	}
 	return o.AdBlock, true
 }
 
 // HasAdBlock returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasAdBlock() bool {
-	if o != nil && o.AdBlock != nil {
+	if o != nil && !isNil(o.AdBlock) {
 		return true
 	}
 
@@ -737,7 +737,7 @@ func (o *RiskEvaluationEventBrowser) SetAdBlock(v bool) {
 
 // GetHasLiedLanguages returns the HasLiedLanguages field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetHasLiedLanguages() bool {
-	if o == nil || o.HasLiedLanguages == nil {
+	if o == nil || isNil(o.HasLiedLanguages) {
 		var ret bool
 		return ret
 	}
@@ -747,15 +747,15 @@ func (o *RiskEvaluationEventBrowser) GetHasLiedLanguages() bool {
 // GetHasLiedLanguagesOk returns a tuple with the HasLiedLanguages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetHasLiedLanguagesOk() (*bool, bool) {
-	if o == nil || o.HasLiedLanguages == nil {
-		return nil, false
+	if o == nil || isNil(o.HasLiedLanguages) {
+    return nil, false
 	}
 	return o.HasLiedLanguages, true
 }
 
 // HasHasLiedLanguages returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasHasLiedLanguages() bool {
-	if o != nil && o.HasLiedLanguages != nil {
+	if o != nil && !isNil(o.HasLiedLanguages) {
 		return true
 	}
 
@@ -769,7 +769,7 @@ func (o *RiskEvaluationEventBrowser) SetHasLiedLanguages(v bool) {
 
 // GetHasLiedResolution returns the HasLiedResolution field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetHasLiedResolution() bool {
-	if o == nil || o.HasLiedResolution == nil {
+	if o == nil || isNil(o.HasLiedResolution) {
 		var ret bool
 		return ret
 	}
@@ -779,15 +779,15 @@ func (o *RiskEvaluationEventBrowser) GetHasLiedResolution() bool {
 // GetHasLiedResolutionOk returns a tuple with the HasLiedResolution field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetHasLiedResolutionOk() (*bool, bool) {
-	if o == nil || o.HasLiedResolution == nil {
-		return nil, false
+	if o == nil || isNil(o.HasLiedResolution) {
+    return nil, false
 	}
 	return o.HasLiedResolution, true
 }
 
 // HasHasLiedResolution returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasHasLiedResolution() bool {
-	if o != nil && o.HasLiedResolution != nil {
+	if o != nil && !isNil(o.HasLiedResolution) {
 		return true
 	}
 
@@ -801,7 +801,7 @@ func (o *RiskEvaluationEventBrowser) SetHasLiedResolution(v bool) {
 
 // GetHasLiedOs returns the HasLiedOs field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetHasLiedOs() bool {
-	if o == nil || o.HasLiedOs == nil {
+	if o == nil || isNil(o.HasLiedOs) {
 		var ret bool
 		return ret
 	}
@@ -811,15 +811,15 @@ func (o *RiskEvaluationEventBrowser) GetHasLiedOs() bool {
 // GetHasLiedOsOk returns a tuple with the HasLiedOs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetHasLiedOsOk() (*bool, bool) {
-	if o == nil || o.HasLiedOs == nil {
-		return nil, false
+	if o == nil || isNil(o.HasLiedOs) {
+    return nil, false
 	}
 	return o.HasLiedOs, true
 }
 
 // HasHasLiedOs returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasHasLiedOs() bool {
-	if o != nil && o.HasLiedOs != nil {
+	if o != nil && !isNil(o.HasLiedOs) {
 		return true
 	}
 
@@ -833,7 +833,7 @@ func (o *RiskEvaluationEventBrowser) SetHasLiedOs(v bool) {
 
 // GetHasLiedBrowser returns the HasLiedBrowser field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetHasLiedBrowser() bool {
-	if o == nil || o.HasLiedBrowser == nil {
+	if o == nil || isNil(o.HasLiedBrowser) {
 		var ret bool
 		return ret
 	}
@@ -843,15 +843,15 @@ func (o *RiskEvaluationEventBrowser) GetHasLiedBrowser() bool {
 // GetHasLiedBrowserOk returns a tuple with the HasLiedBrowser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetHasLiedBrowserOk() (*bool, bool) {
-	if o == nil || o.HasLiedBrowser == nil {
-		return nil, false
+	if o == nil || isNil(o.HasLiedBrowser) {
+    return nil, false
 	}
 	return o.HasLiedBrowser, true
 }
 
 // HasHasLiedBrowser returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasHasLiedBrowser() bool {
-	if o != nil && o.HasLiedBrowser != nil {
+	if o != nil && !isNil(o.HasLiedBrowser) {
 		return true
 	}
 
@@ -865,7 +865,7 @@ func (o *RiskEvaluationEventBrowser) SetHasLiedBrowser(v bool) {
 
 // GetTouchSupport returns the TouchSupport field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetTouchSupport() []string {
-	if o == nil || o.TouchSupport == nil {
+	if o == nil || isNil(o.TouchSupport) {
 		var ret []string
 		return ret
 	}
@@ -875,15 +875,15 @@ func (o *RiskEvaluationEventBrowser) GetTouchSupport() []string {
 // GetTouchSupportOk returns a tuple with the TouchSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetTouchSupportOk() ([]string, bool) {
-	if o == nil || o.TouchSupport == nil {
-		return nil, false
+	if o == nil || isNil(o.TouchSupport) {
+    return nil, false
 	}
 	return o.TouchSupport, true
 }
 
 // HasTouchSupport returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasTouchSupport() bool {
-	if o != nil && o.TouchSupport != nil {
+	if o != nil && !isNil(o.TouchSupport) {
 		return true
 	}
 
@@ -897,7 +897,7 @@ func (o *RiskEvaluationEventBrowser) SetTouchSupport(v []string) {
 
 // GetFonts returns the Fonts field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetFonts() []string {
-	if o == nil || o.Fonts == nil {
+	if o == nil || isNil(o.Fonts) {
 		var ret []string
 		return ret
 	}
@@ -907,15 +907,15 @@ func (o *RiskEvaluationEventBrowser) GetFonts() []string {
 // GetFontsOk returns a tuple with the Fonts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetFontsOk() ([]string, bool) {
-	if o == nil || o.Fonts == nil {
-		return nil, false
+	if o == nil || isNil(o.Fonts) {
+    return nil, false
 	}
 	return o.Fonts, true
 }
 
 // HasFonts returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasFonts() bool {
-	if o != nil && o.Fonts != nil {
+	if o != nil && !isNil(o.Fonts) {
 		return true
 	}
 
@@ -929,7 +929,7 @@ func (o *RiskEvaluationEventBrowser) SetFonts(v []string) {
 
 // GetAudio returns the Audio field value if set, zero value otherwise.
 func (o *RiskEvaluationEventBrowser) GetAudio() string {
-	if o == nil || o.Audio == nil {
+	if o == nil || isNil(o.Audio) {
 		var ret string
 		return ret
 	}
@@ -939,15 +939,15 @@ func (o *RiskEvaluationEventBrowser) GetAudio() string {
 // GetAudioOk returns a tuple with the Audio field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventBrowser) GetAudioOk() (*string, bool) {
-	if o == nil || o.Audio == nil {
-		return nil, false
+	if o == nil || isNil(o.Audio) {
+    return nil, false
 	}
 	return o.Audio, true
 }
 
 // HasAudio returns a boolean if a field has been set.
 func (o *RiskEvaluationEventBrowser) HasAudio() bool {
-	if o != nil && o.Audio != nil {
+	if o != nil && !isNil(o.Audio) {
 		return true
 	}
 
@@ -961,88 +961,88 @@ func (o *RiskEvaluationEventBrowser) SetAudio(v string) {
 
 func (o RiskEvaluationEventBrowser) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.UserAgent != nil {
+	if !isNil(o.UserAgent) {
 		toSerialize["userAgent"] = o.UserAgent
 	}
-	if o.Cookie != nil {
+	if !isNil(o.Cookie) {
 		toSerialize["cookie"] = o.Cookie
 	}
-	if o.Language != nil {
+	if !isNil(o.Language) {
 		toSerialize["language"] = o.Language
 	}
-	if o.ColorDepth != nil {
+	if !isNil(o.ColorDepth) {
 		toSerialize["colorDepth"] = o.ColorDepth
 	}
-	if o.DeviceMemory != nil {
+	if !isNil(o.DeviceMemory) {
 		toSerialize["deviceMemory"] = o.DeviceMemory
 	}
-	if o.HardwareConcurrency != nil {
+	if !isNil(o.HardwareConcurrency) {
 		toSerialize["hardwareConcurrency"] = o.HardwareConcurrency
 	}
-	if o.ScreenResolution != nil {
+	if !isNil(o.ScreenResolution) {
 		toSerialize["screenResolution"] = o.ScreenResolution
 	}
-	if o.AvailableScreenResolution != nil {
+	if !isNil(o.AvailableScreenResolution) {
 		toSerialize["availableScreenResolution"] = o.AvailableScreenResolution
 	}
-	if o.TimezoneOffset != nil {
+	if !isNil(o.TimezoneOffset) {
 		toSerialize["timezoneOffset"] = o.TimezoneOffset
 	}
-	if o.Timezone != nil {
+	if !isNil(o.Timezone) {
 		toSerialize["timezone"] = o.Timezone
 	}
-	if o.SessionStorage != nil {
+	if !isNil(o.SessionStorage) {
 		toSerialize["sessionStorage"] = o.SessionStorage
 	}
-	if o.LocalStorage != nil {
+	if !isNil(o.LocalStorage) {
 		toSerialize["localStorage"] = o.LocalStorage
 	}
-	if o.IndexedDb != nil {
+	if !isNil(o.IndexedDb) {
 		toSerialize["indexedDb"] = o.IndexedDb
 	}
-	if o.AddBehaviour != nil {
+	if !isNil(o.AddBehaviour) {
 		toSerialize["addBehaviour"] = o.AddBehaviour
 	}
-	if o.OpenDatabase != nil {
+	if !isNil(o.OpenDatabase) {
 		toSerialize["openDatabase"] = o.OpenDatabase
 	}
-	if o.CpuClass != nil {
+	if !isNil(o.CpuClass) {
 		toSerialize["cpuClass"] = o.CpuClass
 	}
-	if o.Platform != nil {
+	if !isNil(o.Platform) {
 		toSerialize["platform"] = o.Platform
 	}
-	if o.Plugins != nil {
+	if !isNil(o.Plugins) {
 		toSerialize["plugins"] = o.Plugins
 	}
-	if o.WebglVendorAndRenderer != nil {
+	if !isNil(o.WebglVendorAndRenderer) {
 		toSerialize["webglVendorAndRenderer"] = o.WebglVendorAndRenderer
 	}
-	if o.Webgl != nil {
+	if !isNil(o.Webgl) {
 		toSerialize["webgl"] = o.Webgl
 	}
-	if o.AdBlock != nil {
+	if !isNil(o.AdBlock) {
 		toSerialize["adBlock"] = o.AdBlock
 	}
-	if o.HasLiedLanguages != nil {
+	if !isNil(o.HasLiedLanguages) {
 		toSerialize["hasLiedLanguages"] = o.HasLiedLanguages
 	}
-	if o.HasLiedResolution != nil {
+	if !isNil(o.HasLiedResolution) {
 		toSerialize["hasLiedResolution"] = o.HasLiedResolution
 	}
-	if o.HasLiedOs != nil {
+	if !isNil(o.HasLiedOs) {
 		toSerialize["hasLiedOs"] = o.HasLiedOs
 	}
-	if o.HasLiedBrowser != nil {
+	if !isNil(o.HasLiedBrowser) {
 		toSerialize["hasLiedBrowser"] = o.HasLiedBrowser
 	}
-	if o.TouchSupport != nil {
+	if !isNil(o.TouchSupport) {
 		toSerialize["touchSupport"] = o.TouchSupport
 	}
-	if o.Fonts != nil {
+	if !isNil(o.Fonts) {
 		toSerialize["fonts"] = o.Fonts
 	}
-	if o.Audio != nil {
+	if !isNil(o.Audio) {
 		toSerialize["audio"] = o.Audio
 	}
 	return json.Marshal(toSerialize)

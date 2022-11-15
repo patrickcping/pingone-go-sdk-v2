@@ -55,7 +55,7 @@ func NewRiskPredictorWithDefaults() *RiskPredictor {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RiskPredictor) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -65,15 +65,15 @@ func (o *RiskPredictor) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
-		return nil, false
+	if o == nil || isNil(o.Id) {
+    return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *RiskPredictor) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o *RiskPredictor) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Name, true
 }
@@ -123,7 +123,7 @@ func (o *RiskPredictor) GetCompactName() string {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetCompactNameOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.CompactName, true
 }
@@ -147,7 +147,7 @@ func (o *RiskPredictor) GetType() EnumPredictorType {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetTypeOk() (*EnumPredictorType, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Type, true
 }
@@ -159,7 +159,7 @@ func (o *RiskPredictor) SetType(v EnumPredictorType) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *RiskPredictor) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -169,15 +169,15 @@ func (o *RiskPredictor) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
-		return nil, false
+	if o == nil || isNil(o.Description) {
+    return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *RiskPredictor) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
@@ -191,7 +191,7 @@ func (o *RiskPredictor) SetDescription(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *RiskPredictor) GetCreatedAt() string {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -201,15 +201,15 @@ func (o *RiskPredictor) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetCreatedAtOk() (*string, bool) {
-	if o == nil || o.CreatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.CreatedAt) {
+    return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *RiskPredictor) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
 
@@ -223,7 +223,7 @@ func (o *RiskPredictor) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *RiskPredictor) GetUpdatedAt() string {
-	if o == nil || o.UpdatedAt == nil {
+	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -233,15 +233,15 @@ func (o *RiskPredictor) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || o.UpdatedAt == nil {
-		return nil, false
+	if o == nil || isNil(o.UpdatedAt) {
+    return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *RiskPredictor) HasUpdatedAt() bool {
-	if o != nil && o.UpdatedAt != nil {
+	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -255,7 +255,7 @@ func (o *RiskPredictor) SetUpdatedAt(v string) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *RiskPredictor) GetDefault() RiskPredictorDefault {
-	if o == nil || o.Default == nil {
+	if o == nil || isNil(o.Default) {
 		var ret RiskPredictorDefault
 		return ret
 	}
@@ -265,15 +265,15 @@ func (o *RiskPredictor) GetDefault() RiskPredictorDefault {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetDefaultOk() (*RiskPredictorDefault, bool) {
-	if o == nil || o.Default == nil {
-		return nil, false
+	if o == nil || isNil(o.Default) {
+    return nil, false
 	}
 	return o.Default, true
 }
 
 // HasDefault returns a boolean if a field has been set.
 func (o *RiskPredictor) HasDefault() bool {
-	if o != nil && o.Default != nil {
+	if o != nil && !isNil(o.Default) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func (o *RiskPredictor) SetDefault(v RiskPredictorDefault) {
 
 // GetMap returns the Map field value if set, zero value otherwise.
 func (o *RiskPredictor) GetMap() RiskPredictorMap {
-	if o == nil || o.Map == nil {
+	if o == nil || isNil(o.Map) {
 		var ret RiskPredictorMap
 		return ret
 	}
@@ -297,15 +297,15 @@ func (o *RiskPredictor) GetMap() RiskPredictorMap {
 // GetMapOk returns a tuple with the Map field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictor) GetMapOk() (*RiskPredictorMap, bool) {
-	if o == nil || o.Map == nil {
-		return nil, false
+	if o == nil || isNil(o.Map) {
+    return nil, false
 	}
 	return o.Map, true
 }
 
 // HasMap returns a boolean if a field has been set.
 func (o *RiskPredictor) HasMap() bool {
-	if o != nil && o.Map != nil {
+	if o != nil && !isNil(o.Map) {
 		return true
 	}
 
@@ -319,7 +319,7 @@ func (o *RiskPredictor) SetMap(v RiskPredictorMap) {
 
 func (o RiskPredictor) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if true {
@@ -331,19 +331,19 @@ func (o RiskPredictor) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["type"] = o.Type
 	}
-	if o.Description != nil {
+	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if o.CreatedAt != nil {
+	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.UpdatedAt != nil {
+	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if o.Default != nil {
+	if !isNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
-	if o.Map != nil {
+	if !isNil(o.Map) {
 		toSerialize["map"] = o.Map
 	}
 	return json.Marshal(toSerialize)

@@ -56,7 +56,7 @@ func (o *RiskPredictorItemMap) GetContains() string {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetContainsOk() (*string, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Contains, true
 }
@@ -68,7 +68,7 @@ func (o *RiskPredictorItemMap) SetContains(v string) {
 
 // GetIpRange returns the IpRange field value if set, zero value otherwise.
 func (o *RiskPredictorItemMap) GetIpRange() []string {
-	if o == nil || o.IpRange == nil {
+	if o == nil || isNil(o.IpRange) {
 		var ret []string
 		return ret
 	}
@@ -78,15 +78,15 @@ func (o *RiskPredictorItemMap) GetIpRange() []string {
 // GetIpRangeOk returns a tuple with the IpRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetIpRangeOk() ([]string, bool) {
-	if o == nil || o.IpRange == nil {
-		return nil, false
+	if o == nil || isNil(o.IpRange) {
+    return nil, false
 	}
 	return o.IpRange, true
 }
 
 // HasIpRange returns a boolean if a field has been set.
 func (o *RiskPredictorItemMap) HasIpRange() bool {
-	if o != nil && o.IpRange != nil {
+	if o != nil && !isNil(o.IpRange) {
 		return true
 	}
 
@@ -100,7 +100,7 @@ func (o *RiskPredictorItemMap) SetIpRange(v []string) {
 
 // GetBetween returns the Between field value if set, zero value otherwise.
 func (o *RiskPredictorItemMap) GetBetween() RiskPredictorItemMapBetween {
-	if o == nil || o.Between == nil {
+	if o == nil || isNil(o.Between) {
 		var ret RiskPredictorItemMapBetween
 		return ret
 	}
@@ -110,15 +110,15 @@ func (o *RiskPredictorItemMap) GetBetween() RiskPredictorItemMapBetween {
 // GetBetweenOk returns a tuple with the Between field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetBetweenOk() (*RiskPredictorItemMapBetween, bool) {
-	if o == nil || o.Between == nil {
-		return nil, false
+	if o == nil || isNil(o.Between) {
+    return nil, false
 	}
 	return o.Between, true
 }
 
 // HasBetween returns a boolean if a field has been set.
 func (o *RiskPredictorItemMap) HasBetween() bool {
-	if o != nil && o.Between != nil {
+	if o != nil && !isNil(o.Between) {
 		return true
 	}
 
@@ -132,7 +132,7 @@ func (o *RiskPredictorItemMap) SetBetween(v RiskPredictorItemMapBetween) {
 
 // GetList returns the List field value if set, zero value otherwise.
 func (o *RiskPredictorItemMap) GetList() []string {
-	if o == nil || o.List == nil {
+	if o == nil || isNil(o.List) {
 		var ret []string
 		return ret
 	}
@@ -142,15 +142,15 @@ func (o *RiskPredictorItemMap) GetList() []string {
 // GetListOk returns a tuple with the List field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetListOk() ([]string, bool) {
-	if o == nil || o.List == nil {
-		return nil, false
+	if o == nil || isNil(o.List) {
+    return nil, false
 	}
 	return o.List, true
 }
 
 // HasList returns a boolean if a field has been set.
 func (o *RiskPredictorItemMap) HasList() bool {
-	if o != nil && o.List != nil {
+	if o != nil && !isNil(o.List) {
 		return true
 	}
 
@@ -167,13 +167,13 @@ func (o RiskPredictorItemMap) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["contains"] = o.Contains
 	}
-	if o.IpRange != nil {
+	if !isNil(o.IpRange) {
 		toSerialize["ipRange"] = o.IpRange
 	}
-	if o.Between != nil {
+	if !isNil(o.Between) {
 		toSerialize["between"] = o.Between
 	}
-	if o.List != nil {
+	if !isNil(o.List) {
 		toSerialize["list"] = o.List
 	}
 	return json.Marshal(toSerialize)

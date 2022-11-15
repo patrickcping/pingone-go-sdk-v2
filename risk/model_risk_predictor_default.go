@@ -54,7 +54,7 @@ func (o *RiskPredictorDefault) GetWeight() int32 {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefault) GetWeightOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Weight, true
 }
@@ -78,7 +78,7 @@ func (o *RiskPredictorDefault) GetResult() RiskPredictorDefaultResult {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefault) GetResultOk() (*RiskPredictorDefaultResult, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Result, true
 }

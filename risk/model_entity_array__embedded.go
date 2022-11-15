@@ -39,7 +39,7 @@ func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 
 // GetRiskPolicySets returns the RiskPolicySets field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRiskPolicySets() []RiskPolicySet {
-	if o == nil || o.RiskPolicySets == nil {
+	if o == nil || isNil(o.RiskPolicySets) {
 		var ret []RiskPolicySet
 		return ret
 	}
@@ -49,15 +49,15 @@ func (o *EntityArrayEmbedded) GetRiskPolicySets() []RiskPolicySet {
 // GetRiskPolicySetsOk returns a tuple with the RiskPolicySets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArrayEmbedded) GetRiskPolicySetsOk() ([]RiskPolicySet, bool) {
-	if o == nil || o.RiskPolicySets == nil {
-		return nil, false
+	if o == nil || isNil(o.RiskPolicySets) {
+    return nil, false
 	}
 	return o.RiskPolicySets, true
 }
 
 // HasRiskPolicySets returns a boolean if a field has been set.
 func (o *EntityArrayEmbedded) HasRiskPolicySets() bool {
-	if o != nil && o.RiskPolicySets != nil {
+	if o != nil && !isNil(o.RiskPolicySets) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *EntityArrayEmbedded) SetRiskPolicySets(v []RiskPolicySet) {
 
 // GetRiskPredictors returns the RiskPredictors field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor {
-	if o == nil || o.RiskPredictors == nil {
+	if o == nil || isNil(o.RiskPredictors) {
 		var ret []RiskPredictor
 		return ret
 	}
@@ -81,15 +81,15 @@ func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor {
 // GetRiskPredictorsOk returns a tuple with the RiskPredictors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArrayEmbedded) GetRiskPredictorsOk() ([]RiskPredictor, bool) {
-	if o == nil || o.RiskPredictors == nil {
-		return nil, false
+	if o == nil || isNil(o.RiskPredictors) {
+    return nil, false
 	}
 	return o.RiskPredictors, true
 }
 
 // HasRiskPredictors returns a boolean if a field has been set.
 func (o *EntityArrayEmbedded) HasRiskPredictors() bool {
-	if o != nil && o.RiskPredictors != nil {
+	if o != nil && !isNil(o.RiskPredictors) {
 		return true
 	}
 
@@ -103,10 +103,10 @@ func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictor) {
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RiskPolicySets != nil {
+	if !isNil(o.RiskPolicySets) {
 		toSerialize["riskPolicySets"] = o.RiskPolicySets
 	}
-	if o.RiskPredictors != nil {
+	if !isNil(o.RiskPredictors) {
 		toSerialize["riskPredictors"] = o.RiskPredictors
 	}
 	return json.Marshal(toSerialize)

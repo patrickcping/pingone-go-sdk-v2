@@ -43,7 +43,7 @@ func NewRiskPolicySetRiskPoliciesInnerConditionWithDefaults() *RiskPolicySetRisk
 
 // GetContains returns the Contains field value if set, zero value otherwise.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetContains() string {
-	if o == nil || o.Contains == nil {
+	if o == nil || isNil(o.Contains) {
 		var ret string
 		return ret
 	}
@@ -53,15 +53,15 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) GetContains() string {
 // GetContainsOk returns a tuple with the Contains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetContainsOk() (*string, bool) {
-	if o == nil || o.Contains == nil {
-		return nil, false
+	if o == nil || isNil(o.Contains) {
+    return nil, false
 	}
 	return o.Contains, true
 }
 
 // HasContains returns a boolean if a field has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) HasContains() bool {
-	if o != nil && o.Contains != nil {
+	if o != nil && !isNil(o.Contains) {
 		return true
 	}
 
@@ -75,7 +75,7 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) SetContains(v string) {
 
 // GetIpRange returns the IpRange field value if set, zero value otherwise.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetIpRange() []string {
-	if o == nil || o.IpRange == nil {
+	if o == nil || isNil(o.IpRange) {
 		var ret []string
 		return ret
 	}
@@ -85,15 +85,15 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) GetIpRange() []string {
 // GetIpRangeOk returns a tuple with the IpRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetIpRangeOk() ([]string, bool) {
-	if o == nil || o.IpRange == nil {
-		return nil, false
+	if o == nil || isNil(o.IpRange) {
+    return nil, false
 	}
 	return o.IpRange, true
 }
 
 // HasIpRange returns a boolean if a field has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) HasIpRange() bool {
-	if o != nil && o.IpRange != nil {
+	if o != nil && !isNil(o.IpRange) {
 		return true
 	}
 
@@ -107,7 +107,7 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) SetIpRange(v []string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -117,15 +117,15 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
-		return nil, false
+	if o == nil || isNil(o.Value) {
+    return nil, false
 	}
 	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
@@ -139,7 +139,7 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) SetValue(v string) {
 
 // GetEquals returns the Equals field value if set, zero value otherwise.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetEquals() RiskPolicySetRiskPoliciesInnerConditionEquals {
-	if o == nil || o.Equals == nil {
+	if o == nil || isNil(o.Equals) {
 		var ret RiskPolicySetRiskPoliciesInnerConditionEquals
 		return ret
 	}
@@ -149,15 +149,15 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) GetEquals() RiskPolicySetRiskP
 // GetEqualsOk returns a tuple with the Equals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetEqualsOk() (*RiskPolicySetRiskPoliciesInnerConditionEquals, bool) {
-	if o == nil || o.Equals == nil {
-		return nil, false
+	if o == nil || isNil(o.Equals) {
+    return nil, false
 	}
 	return o.Equals, true
 }
 
 // HasEquals returns a boolean if a field has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) HasEquals() bool {
-	if o != nil && o.Equals != nil {
+	if o != nil && !isNil(o.Equals) {
 		return true
 	}
 
@@ -171,7 +171,7 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) SetEquals(v RiskPolicySetRiskP
 
 // GetAggregatedWeights returns the AggregatedWeights field value if set, zero value otherwise.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetAggregatedWeights() []RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner {
-	if o == nil || o.AggregatedWeights == nil {
+	if o == nil || isNil(o.AggregatedWeights) {
 		var ret []RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner
 		return ret
 	}
@@ -181,15 +181,15 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) GetAggregatedWeights() []RiskP
 // GetAggregatedWeightsOk returns a tuple with the AggregatedWeights field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetAggregatedWeightsOk() ([]RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner, bool) {
-	if o == nil || o.AggregatedWeights == nil {
-		return nil, false
+	if o == nil || isNil(o.AggregatedWeights) {
+    return nil, false
 	}
 	return o.AggregatedWeights, true
 }
 
 // HasAggregatedWeights returns a boolean if a field has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) HasAggregatedWeights() bool {
-	if o != nil && o.AggregatedWeights != nil {
+	if o != nil && !isNil(o.AggregatedWeights) {
 		return true
 	}
 
@@ -203,7 +203,7 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) SetAggregatedWeights(v []RiskP
 
 // GetBetween returns the Between field value if set, zero value otherwise.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetBetween() RiskPolicySetRiskPoliciesInnerConditionBetween {
-	if o == nil || o.Between == nil {
+	if o == nil || isNil(o.Between) {
 		var ret RiskPolicySetRiskPoliciesInnerConditionBetween
 		return ret
 	}
@@ -213,15 +213,15 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) GetBetween() RiskPolicySetRisk
 // GetBetweenOk returns a tuple with the Between field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) GetBetweenOk() (*RiskPolicySetRiskPoliciesInnerConditionBetween, bool) {
-	if o == nil || o.Between == nil {
-		return nil, false
+	if o == nil || isNil(o.Between) {
+    return nil, false
 	}
 	return o.Between, true
 }
 
 // HasBetween returns a boolean if a field has been set.
 func (o *RiskPolicySetRiskPoliciesInnerCondition) HasBetween() bool {
-	if o != nil && o.Between != nil {
+	if o != nil && !isNil(o.Between) {
 		return true
 	}
 
@@ -235,22 +235,22 @@ func (o *RiskPolicySetRiskPoliciesInnerCondition) SetBetween(v RiskPolicySetRisk
 
 func (o RiskPolicySetRiskPoliciesInnerCondition) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Contains != nil {
+	if !isNil(o.Contains) {
 		toSerialize["contains"] = o.Contains
 	}
-	if o.IpRange != nil {
+	if !isNil(o.IpRange) {
 		toSerialize["ipRange"] = o.IpRange
 	}
-	if o.Value != nil {
+	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if o.Equals != nil {
+	if !isNil(o.Equals) {
 		toSerialize["equals"] = o.Equals
 	}
-	if o.AggregatedWeights != nil {
+	if !isNil(o.AggregatedWeights) {
 		toSerialize["aggregatedWeights"] = o.AggregatedWeights
 	}
-	if o.Between != nil {
+	if !isNil(o.Between) {
 		toSerialize["between"] = o.Between
 	}
 	return json.Marshal(toSerialize)

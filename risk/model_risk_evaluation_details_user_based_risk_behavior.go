@@ -40,7 +40,7 @@ func NewRiskEvaluationDetailsUserBasedRiskBehaviorWithDefaults() *RiskEvaluation
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevel() EnumRiskLevel {
-	if o == nil || o.Level == nil {
+	if o == nil || isNil(o.Level) {
 		var ret EnumRiskLevel
 		return ret
 	}
@@ -50,15 +50,15 @@ func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevel() EnumRiskLevel {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetLevelOk() (*EnumRiskLevel, bool) {
-	if o == nil || o.Level == nil {
-		return nil, false
+	if o == nil || isNil(o.Level) {
+    return nil, false
 	}
 	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserBasedRiskBehavior) HasLevel() bool {
-	if o != nil && o.Level != nil {
+	if o != nil && !isNil(o.Level) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *RiskEvaluationDetailsUserBasedRiskBehavior) SetLevel(v EnumRiskLevel) {
 
 // GetReason returns the Reason field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetReason() string {
-	if o == nil || o.Reason == nil {
+	if o == nil || isNil(o.Reason) {
 		var ret string
 		return ret
 	}
@@ -82,15 +82,15 @@ func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetReason() string {
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserBasedRiskBehavior) GetReasonOk() (*string, bool) {
-	if o == nil || o.Reason == nil {
-		return nil, false
+	if o == nil || isNil(o.Reason) {
+    return nil, false
 	}
 	return o.Reason, true
 }
 
 // HasReason returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserBasedRiskBehavior) HasReason() bool {
-	if o != nil && o.Reason != nil {
+	if o != nil && !isNil(o.Reason) {
 		return true
 	}
 
@@ -104,10 +104,10 @@ func (o *RiskEvaluationDetailsUserBasedRiskBehavior) SetReason(v string) {
 
 func (o RiskEvaluationDetailsUserBasedRiskBehavior) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Level != nil {
+	if !isNil(o.Level) {
 		toSerialize["level"] = o.Level
 	}
-	if o.Reason != nil {
+	if !isNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
 	return json.Marshal(toSerialize)

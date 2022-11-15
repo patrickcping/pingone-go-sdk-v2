@@ -52,7 +52,7 @@ func (o *RiskPredictorDefaultResult) GetLevel() EnumRiskLevel {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefaultResult) GetLevelOk() (*EnumRiskLevel, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.Level, true
 }
@@ -64,7 +64,7 @@ func (o *RiskPredictorDefaultResult) SetLevel(v EnumRiskLevel) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RiskPredictorDefaultResult) GetType() EnumResultType {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret EnumResultType
 		return ret
 	}
@@ -74,15 +74,15 @@ func (o *RiskPredictorDefaultResult) GetType() EnumResultType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefaultResult) GetTypeOk() (*EnumResultType, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
+	if o == nil || isNil(o.Type) {
+    return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *RiskPredictorDefaultResult) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -99,7 +99,7 @@ func (o RiskPredictorDefaultResult) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["level"] = o.Level
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)

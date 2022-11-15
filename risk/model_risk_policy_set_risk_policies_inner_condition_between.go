@@ -53,7 +53,7 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) GetMinScore() int32 {
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) GetMinScoreOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.MinScore, true
 }
@@ -77,7 +77,7 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) GetMaxScore() int32 {
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) GetMaxScoreOk() (*int32, bool) {
 	if o == nil {
-		return nil, false
+    return nil, false
 	}
 	return &o.MaxScore, true
 }
