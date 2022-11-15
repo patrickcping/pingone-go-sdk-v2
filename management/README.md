@@ -250,15 +250,15 @@ Class | Method | HTTP request | Description
 *NotificationsSettingsApi* | [**UpdateNotificationsSettings**](docs/NotificationsSettingsApi.md#updatenotificationssettings) | **Put** /v1/environments/{environmentID}/notificationsSettings | UPDATE Notifications Settings
 *NotificationsSettingsSMTPApi* | [**ReadEmailNotificationsSettings**](docs/NotificationsSettingsSMTPApi.md#reademailnotificationssettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | READ Email Notifications Settings
 *NotificationsSettingsSMTPApi* | [**UpdateEmailNotificationsSettings**](docs/NotificationsSettingsSMTPApi.md#updateemailnotificationssettings) | **Put** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | UPDATE Email Notifications Settings
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesGet**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatesget) | **Get** /v1/environments/{environmentID}/templates | READ All Templates
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDelete**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentscontentiddelete) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | DELETE Content
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGet**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentscontentidget) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | READ One Content
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDPut**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentscontentidput) | **Put** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | UPDATE Push Content
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsDelete**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentsdelete) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents | DELETE Bulk Variant Contents
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsGet**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentsget) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents | READ All Contents
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPatch**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentspatch) | **Patch** /v1/environments/{environmentID}/templates/{templateName}/contents | PATCH Bulk Variant Contents
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPost**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenamecontentspost) | **Post** /v1/environments/{environmentID}/templates/{templateName}/contents | CREATE Push Content
-*NotificationsTemplatesApi* | [**V1EnvironmentsEnvironmentIDTemplatesTemplateNameGet**](docs/NotificationsTemplatesApi.md#v1environmentsenvironmentidtemplatestemplatenameget) | **Get** /v1/environments/{environmentID}/templates/{templateName} | READ One Template
+*NotificationsTemplatesApi* | [**CreateContent**](docs/NotificationsTemplatesApi.md#createcontent) | **Post** /v1/environments/{environmentID}/templates/{templateName}/contents | CREATE Content
+*NotificationsTemplatesApi* | [**DeleteBulkVariantContents**](docs/NotificationsTemplatesApi.md#deletebulkvariantcontents) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents | DELETE Bulk Variant Contents
+*NotificationsTemplatesApi* | [**DeleteContent**](docs/NotificationsTemplatesApi.md#deletecontent) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | DELETE Content
+*NotificationsTemplatesApi* | [**PatchBulkVariantContents**](docs/NotificationsTemplatesApi.md#patchbulkvariantcontents) | **Patch** /v1/environments/{environmentID}/templates/{templateName}/contents | PATCH Bulk Variant Contents
+*NotificationsTemplatesApi* | [**ReadAllTemplateContents**](docs/NotificationsTemplatesApi.md#readalltemplatecontents) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents | READ All Contents
+*NotificationsTemplatesApi* | [**ReadAllTemplates**](docs/NotificationsTemplatesApi.md#readalltemplates) | **Get** /v1/environments/{environmentID}/templates | READ All Templates
+*NotificationsTemplatesApi* | [**ReadOneContent**](docs/NotificationsTemplatesApi.md#readonecontent) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | READ One Content
+*NotificationsTemplatesApi* | [**ReadOneTemplate**](docs/NotificationsTemplatesApi.md#readonetemplate) | **Get** /v1/environments/{environmentID}/templates/{templateName} | READ One Template
+*NotificationsTemplatesApi* | [**UpdateContent**](docs/NotificationsTemplatesApi.md#updatecontent) | **Put** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | UPDATE Content
 *OrganizationsApi* | [**ReadAllOrganizations**](docs/OrganizationsApi.md#readallorganizations) | **Get** /v1/organizations | READ All Organizations
 *OrganizationsApi* | [**ReadOneOrganizations**](docs/OrganizationsApi.md#readoneorganizations) | **Get** /v1/organizations/{organizationID} | READ One Organization
 *PasswordPoliciesApi* | [**CreatePasswordPolicy**](docs/PasswordPoliciesApi.md#createpasswordpolicy) | **Post** /v1/environments/{environmentID}/passwordPolicies | CREATE Password Policy
@@ -729,6 +729,20 @@ Class | Method | HTTP request | Description
  - [SubscriptionFilterOptions](docs/SubscriptionFilterOptions.md)
  - [SubscriptionFilterOptionsIncludedApplicationsInner](docs/SubscriptionFilterOptionsIncludedApplicationsInner.md)
  - [SubscriptionHttpEndpoint](docs/SubscriptionHttpEndpoint.md)
+ - [Template](docs/Template.md)
+ - [TemplateContent](docs/TemplateContent.md)
+ - [TemplateContentEmail](docs/TemplateContentEmail.md)
+ - [TemplateContentEmailAllOf](docs/TemplateContentEmailAllOf.md)
+ - [TemplateContentEmailAllOfFrom](docs/TemplateContentEmailAllOfFrom.md)
+ - [TemplateContentEmailAllOfReplyTo](docs/TemplateContentEmailAllOfReplyTo.md)
+ - [TemplateContentEmailPush](docs/TemplateContentEmailPush.md)
+ - [TemplateContentEmailPushAllOf](docs/TemplateContentEmailPushAllOf.md)
+ - [TemplateContentPush](docs/TemplateContentPush.md)
+ - [TemplateContentPushAllOf](docs/TemplateContentPushAllOf.md)
+ - [TemplateContentSMS](docs/TemplateContentSMS.md)
+ - [TemplateContentSMSAllOf](docs/TemplateContentSMSAllOf.md)
+ - [TemplateContentSMSVoice](docs/TemplateContentSMSVoice.md)
+ - [TemplateContentSMSVoiceAllOf](docs/TemplateContentSMSVoiceAllOf.md)
  - [UpdateApplicationRequest](docs/UpdateApplicationRequest.md)
  - [UpdateEnvironmentTypeRequest](docs/UpdateEnvironmentTypeRequest.md)
  - [User](docs/User.md)

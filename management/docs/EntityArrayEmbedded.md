@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Attributes** | Pointer to [**[]EntityArrayEmbeddedAttributesInner**](EntityArrayEmbeddedAttributesInner.md) |  | [optional] 
 **Applications** | Pointer to [**[]ReadOneApplication200Response**](ReadOneApplication200Response.md) |  | [optional] 
 **Certificates** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
+**Contents** | Pointer to [**[]TemplateContent**](TemplateContent.md) |  | [optional] 
 **Credentials** | Pointer to [**[]GatewayCredential**](GatewayCredential.md) |  | [optional] 
 **CustomDomains** | Pointer to [**[]CustomDomain**](CustomDomain.md) |  | [optional] 
 **EmailDomains** | Pointer to [**[]EmailDomain**](EmailDomain.md) |  | [optional] 
@@ -33,6 +34,7 @@ Name | Type | Description | Notes
 **SignOnPolicies** | Pointer to [**[]SignOnPolicy**](SignOnPolicy.md) |  | [optional] 
 **SignOnPolicyAssignments** | Pointer to [**[]SignOnPolicyAssignment**](SignOnPolicyAssignment.md) |  | [optional] 
 **Subscriptions** | Pointer to [**[]Subscription**](Subscription.md) |  | [optional] 
+**Templates** | Pointer to [**[]Template**](Template.md) |  | [optional] 
 **Themes** | Pointer to [**[]BrandingTheme**](BrandingTheme.md) |  | [optional] 
 **TrustedEmails** | Pointer to [**[]EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
@@ -208,6 +210,31 @@ SetCertificates sets Certificates field to given value.
 `func (o *EntityArrayEmbedded) HasCertificates() bool`
 
 HasCertificates returns a boolean if a field has been set.
+
+### GetContents
+
+`func (o *EntityArrayEmbedded) GetContents() []TemplateContent`
+
+GetContents returns the Contents field if non-nil, zero value otherwise.
+
+### GetContentsOk
+
+`func (o *EntityArrayEmbedded) GetContentsOk() (*[]TemplateContent, bool)`
+
+GetContentsOk returns a tuple with the Contents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContents
+
+`func (o *EntityArrayEmbedded) SetContents(v []TemplateContent)`
+
+SetContents sets Contents field to given value.
+
+### HasContents
+
+`func (o *EntityArrayEmbedded) HasContents() bool`
+
+HasContents returns a boolean if a field has been set.
 
 ### GetCredentials
 
@@ -783,6 +810,31 @@ SetSubscriptions sets Subscriptions field to given value.
 `func (o *EntityArrayEmbedded) HasSubscriptions() bool`
 
 HasSubscriptions returns a boolean if a field has been set.
+
+### GetTemplates
+
+`func (o *EntityArrayEmbedded) GetTemplates() []Template`
+
+GetTemplates returns the Templates field if non-nil, zero value otherwise.
+
+### GetTemplatesOk
+
+`func (o *EntityArrayEmbedded) GetTemplatesOk() (*[]Template, bool)`
+
+GetTemplatesOk returns a tuple with the Templates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplates
+
+`func (o *EntityArrayEmbedded) SetTemplates(v []Template)`
+
+SetTemplates sets Templates field to given value.
+
+### HasTemplates
+
+`func (o *EntityArrayEmbedded) HasTemplates() bool`
+
+HasTemplates returns a boolean if a field has been set.
 
 ### GetThemes
 
