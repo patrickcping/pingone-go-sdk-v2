@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // ApplicationOIDCInternal struct for ApplicationOIDCInternal

@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // ApplicationPingOnePortal struct for ApplicationPingOnePortal
