@@ -1,6 +1,8 @@
-# v0.12.1 (Unreleased)
+# v0.13.0 (Unreleased)
 
 * **Note** bump codegen v6.2.0 => v6.2.1 [#84](https://github.com/patrickcping/pingone-go-sdk-v2/pull/84)
+* **Feature** Support for Notifications Settings [#85](https://github.com/patrickcping/pingone-go-sdk-v2/pull/85)
+* **Feature** Support for Notifications Policies [#85](https://github.com/patrickcping/pingone-go-sdk-v2/pull/85)
 
 # v0.12.0 (2022-11-06)
 
