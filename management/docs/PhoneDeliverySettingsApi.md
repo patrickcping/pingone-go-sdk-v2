@@ -4,19 +4,90 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsDelete**](PhoneDeliverySettingsApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsDelete) | **Delete** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | DELETE Phone Delivery Settings
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsGet**](PhoneDeliverySettingsApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsGet) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | READ All Phone Delivery Settings
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdGet**](PhoneDeliverySettingsApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdGet) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsId} | READ One Phone Delivery Settings
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut**](PhoneDeliverySettingsApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut) | **Put** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsId} | UPDATE Phone Delivery Settings
-[**V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPost**](PhoneDeliverySettingsApi.md#V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPost) | **Post** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | CREATE Phone Delivery Settings (Syniverse)
+[**CreatePhoneDeliverySettings**](PhoneDeliverySettingsApi.md#CreatePhoneDeliverySettings) | **Post** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | CREATE Phone Delivery Settings
+[**DeleteEmailDeliverySettings**](PhoneDeliverySettingsApi.md#DeleteEmailDeliverySettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | DELETE Email Delivery Settings
+[**DeletePhoneDeliverySettings**](PhoneDeliverySettingsApi.md#DeletePhoneDeliverySettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID} | DELETE Phone Delivery Settings
+[**ReadAllPhoneDeliverySettings**](PhoneDeliverySettingsApi.md#ReadAllPhoneDeliverySettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | READ All Phone Delivery Settings
+[**ReadOnePhoneDeliverySettings**](PhoneDeliverySettingsApi.md#ReadOnePhoneDeliverySettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID} | READ One Phone Delivery Settings
+[**UpdatePhoneDeliverySettings**](PhoneDeliverySettingsApi.md#UpdatePhoneDeliverySettings) | **Put** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID} | UPDATE Phone Delivery Settings
 
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsDelete
+## CreatePhoneDeliverySettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsDelete(ctx, environmentID).Execute()
+> NotificationsSettingsPhoneDeliverySettings CreatePhoneDeliverySettings(ctx, environmentID).Body(body).Execute()
 
-DELETE Phone Delivery Settings
+CREATE Phone Delivery Settings
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PhoneDeliverySettingsApi.CreatePhoneDeliverySettings(context.Background(), environmentID).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.CreatePhoneDeliverySettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreatePhoneDeliverySettings`: NotificationsSettingsPhoneDeliverySettings
+    fmt.Fprintf(os.Stdout, "Response from `PhoneDeliverySettingsApi.CreatePhoneDeliverySettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePhoneDeliverySettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+[**NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteEmailDeliverySettings
+
+> DeleteEmailDeliverySettings(ctx, environmentID).Execute()
+
+DELETE Email Delivery Settings
 
 ### Example
 
@@ -35,9 +106,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsDelete(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.PhoneDeliverySettingsApi.DeleteEmailDeliverySettings(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.DeleteEmailDeliverySettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -53,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsEmailDeliverySettingsDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteEmailDeliverySettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +149,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsGet
+## DeletePhoneDeliverySettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsGet(ctx, environmentID).Execute()
+> DeletePhoneDeliverySettings(ctx, environmentID, phoneDeliverySettingsID).Execute()
+
+DELETE Phone Delivery Settings
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    phoneDeliverySettingsID := "phoneDeliverySettingsID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PhoneDeliverySettingsApi.DeletePhoneDeliverySettings(context.Background(), environmentID, phoneDeliverySettingsID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.DeletePhoneDeliverySettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**phoneDeliverySettingsID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePhoneDeliverySettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadAllPhoneDeliverySettings
+
+> EntityArray ReadAllPhoneDeliverySettings(ctx, environmentID).Execute()
 
 READ All Phone Delivery Settings
 
@@ -101,11 +241,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsGet(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.PhoneDeliverySettingsApi.ReadAllPhoneDeliverySettings(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.ReadAllPhoneDeliverySettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadAllPhoneDeliverySettings`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `PhoneDeliverySettingsApi.ReadAllPhoneDeliverySettings`: %v\n", resp)
 }
 ```
 
@@ -119,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllPhoneDeliverySettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -128,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -144,9 +286,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdGet
+## ReadOnePhoneDeliverySettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdGet(ctx, environmentID, phoneDeliverySettingsId).Execute()
+> NotificationsSettingsPhoneDeliverySettings ReadOnePhoneDeliverySettings(ctx, environmentID, phoneDeliverySettingsID).Execute()
 
 READ One Phone Delivery Settings
 
@@ -164,15 +306,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    phoneDeliverySettingsId := "phoneDeliverySettingsId_example" // string | 
+    phoneDeliverySettingsID := "phoneDeliverySettingsID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdGet(context.Background(), environmentID, phoneDeliverySettingsId).Execute()
+    resp, r, err := apiClient.PhoneDeliverySettingsApi.ReadOnePhoneDeliverySettings(context.Background(), environmentID, phoneDeliverySettingsID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.ReadOnePhoneDeliverySettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOnePhoneDeliverySettings`: NotificationsSettingsPhoneDeliverySettings
+    fmt.Fprintf(os.Stdout, "Response from `PhoneDeliverySettingsApi.ReadOnePhoneDeliverySettings`: %v\n", resp)
 }
 ```
 
@@ -183,11 +327,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**phoneDeliverySettingsId** | **string** |  | 
+**phoneDeliverySettingsID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOnePhoneDeliverySettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -197,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md)
 
 ### Authorization
 
@@ -213,9 +357,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut
+## UpdatePhoneDeliverySettings
 
-> V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut(ctx, environmentID, phoneDeliverySettingsId).Body(body).Execute()
+> NotificationsSettingsPhoneDeliverySettings UpdatePhoneDeliverySettings(ctx, environmentID, phoneDeliverySettingsID).Body(body).Execute()
 
 UPDATE Phone Delivery Settings
 
@@ -233,16 +377,18 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    phoneDeliverySettingsId := "phoneDeliverySettingsId_example" // string | 
+    phoneDeliverySettingsID := "phoneDeliverySettingsID_example" // string | 
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut(context.Background(), environmentID, phoneDeliverySettingsId).Body(body).Execute()
+    resp, r, err := apiClient.PhoneDeliverySettingsApi.UpdatePhoneDeliverySettings(context.Background(), environmentID, phoneDeliverySettingsID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.UpdatePhoneDeliverySettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdatePhoneDeliverySettings`: NotificationsSettingsPhoneDeliverySettings
+    fmt.Fprintf(os.Stdout, "Response from `PhoneDeliverySettingsApi.UpdatePhoneDeliverySettings`: %v\n", resp)
 }
 ```
 
@@ -253,11 +399,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**phoneDeliverySettingsId** | **string** |  | 
+**phoneDeliverySettingsID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPhoneDeliverySettingsIdPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdatePhoneDeliverySettingsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -268,75 +414,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPost
-
-> V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPost(ctx, environmentID).Body(body).Execute()
-
-CREATE Phone Delivery Settings (Syniverse)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPost(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.V1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsSettingsPhoneDeliverySettingsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
+[**NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md)
 
 ### Authorization
 

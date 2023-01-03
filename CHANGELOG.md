@@ -2,8 +2,11 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.1](./authorize/CHANGELOG.md)
     * **Note** bump codegen v6.2.0 => v6.2.1 [#84](https://github.com/patrickcping/pingone-go-sdk-v2/pull/84)
-* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.12.1](./management/CHANGELOG.md)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.13.0](./management/CHANGELOG.md)
     * **Note** bump codegen v6.2.0 => v6.2.1 [#84](https://github.com/patrickcping/pingone-go-sdk-v2/pull/84)
+    * **Feature** Support for Notifications Settings [#85](https://github.com/patrickcping/pingone-go-sdk-v2/pull/85)
+    * **Feature** Support for Notifications Policies [#85](https://github.com/patrickcping/pingone-go-sdk-v2/pull/85)
+    * **Feature** Support for Notifications Templates and Contents [#85](https://github.com/patrickcping/pingone-go-sdk-v2/pull/85)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.7.1](./mfa/CHANGELOG.md)
     * **Note** bump codegen v6.2.0 => v6.2.1 [#84](https://github.com/patrickcping/pingone-go-sdk-v2/pull/84)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.3.1](./risk/CHANGELOG.md)

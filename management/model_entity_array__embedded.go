@@ -22,6 +22,7 @@ type EntityArrayEmbedded struct {
 	Attributes []EntityArrayEmbeddedAttributesInner `json:"attributes,omitempty"`
 	Applications []ReadOneApplication200Response `json:"applications,omitempty"`
 	Certificates []Certificate `json:"certificates,omitempty"`
+	Contents []TemplateContent `json:"contents,omitempty"`
 	Credentials []GatewayCredential `json:"credentials,omitempty"`
 	CustomDomains []CustomDomain `json:"customDomains,omitempty"`
 	EmailDomains []EmailDomain `json:"emailDomains,omitempty"`
@@ -35,6 +36,7 @@ type EntityArrayEmbedded struct {
 	Keys []Certificate `json:"keys,omitempty"`
 	Languages []EntityArrayEmbeddedLanguagesInner `json:"languages,omitempty"`
 	Licenses []License `json:"licenses,omitempty"`
+	NotificationsPolicies []NotificationsPolicy `json:"notificationsPolicies,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
@@ -44,6 +46,7 @@ type EntityArrayEmbedded struct {
 	SignOnPolicies []SignOnPolicy `json:"signOnPolicies,omitempty"`
 	SignOnPolicyAssignments []SignOnPolicyAssignment `json:"signOnPolicyAssignments,omitempty"`
 	Subscriptions []Subscription `json:"subscriptions,omitempty"`
+	Templates []Template `json:"templates,omitempty"`
 	Themes []BrandingTheme `json:"themes,omitempty"`
 	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
@@ -259,6 +262,38 @@ func (o *EntityArrayEmbedded) HasCertificates() bool {
 // SetCertificates gets a reference to the given []Certificate and assigns it to the Certificates field.
 func (o *EntityArrayEmbedded) SetCertificates(v []Certificate) {
 	o.Certificates = v
+}
+
+// GetContents returns the Contents field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetContents() []TemplateContent {
+	if o == nil || isNil(o.Contents) {
+		var ret []TemplateContent
+		return ret
+	}
+	return o.Contents
+}
+
+// GetContentsOk returns a tuple with the Contents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetContentsOk() ([]TemplateContent, bool) {
+	if o == nil || isNil(o.Contents) {
+    return nil, false
+	}
+	return o.Contents, true
+}
+
+// HasContents returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasContents() bool {
+	if o != nil && !isNil(o.Contents) {
+		return true
+	}
+
+	return false
+}
+
+// SetContents gets a reference to the given []TemplateContent and assigns it to the Contents field.
+func (o *EntityArrayEmbedded) SetContents(v []TemplateContent) {
+	o.Contents = v
 }
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
@@ -677,6 +712,38 @@ func (o *EntityArrayEmbedded) SetLicenses(v []License) {
 	o.Licenses = v
 }
 
+// GetNotificationsPolicies returns the NotificationsPolicies field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetNotificationsPolicies() []NotificationsPolicy {
+	if o == nil || isNil(o.NotificationsPolicies) {
+		var ret []NotificationsPolicy
+		return ret
+	}
+	return o.NotificationsPolicies
+}
+
+// GetNotificationsPoliciesOk returns a tuple with the NotificationsPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetNotificationsPoliciesOk() ([]NotificationsPolicy, bool) {
+	if o == nil || isNil(o.NotificationsPolicies) {
+    return nil, false
+	}
+	return o.NotificationsPolicies, true
+}
+
+// HasNotificationsPolicies returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasNotificationsPolicies() bool {
+	if o != nil && !isNil(o.NotificationsPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotificationsPolicies gets a reference to the given []NotificationsPolicy and assigns it to the NotificationsPolicies field.
+func (o *EntityArrayEmbedded) SetNotificationsPolicies(v []NotificationsPolicy) {
+	o.NotificationsPolicies = v
+}
+
 // GetOrganizations returns the Organizations field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetOrganizations() []Organization {
 	if o == nil || isNil(o.Organizations) {
@@ -965,6 +1032,38 @@ func (o *EntityArrayEmbedded) SetSubscriptions(v []Subscription) {
 	o.Subscriptions = v
 }
 
+// GetTemplates returns the Templates field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetTemplates() []Template {
+	if o == nil || isNil(o.Templates) {
+		var ret []Template
+		return ret
+	}
+	return o.Templates
+}
+
+// GetTemplatesOk returns a tuple with the Templates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetTemplatesOk() ([]Template, bool) {
+	if o == nil || isNil(o.Templates) {
+    return nil, false
+	}
+	return o.Templates, true
+}
+
+// HasTemplates returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasTemplates() bool {
+	if o != nil && !isNil(o.Templates) {
+		return true
+	}
+
+	return false
+}
+
+// SetTemplates gets a reference to the given []Template and assigns it to the Templates field.
+func (o *EntityArrayEmbedded) SetTemplates(v []Template) {
+	o.Templates = v
+}
+
 // GetThemes returns the Themes field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetThemes() []BrandingTheme {
 	if o == nil || isNil(o.Themes) {
@@ -1177,6 +1276,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Certificates) {
 		toSerialize["certificates"] = o.Certificates
 	}
+	if !isNil(o.Contents) {
+		toSerialize["contents"] = o.Contents
+	}
 	if !isNil(o.Credentials) {
 		toSerialize["credentials"] = o.Credentials
 	}
@@ -1216,6 +1318,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Licenses) {
 		toSerialize["licenses"] = o.Licenses
 	}
+	if !isNil(o.NotificationsPolicies) {
+		toSerialize["notificationsPolicies"] = o.NotificationsPolicies
+	}
 	if !isNil(o.Organizations) {
 		toSerialize["organizations"] = o.Organizations
 	}
@@ -1242,6 +1347,9 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Subscriptions) {
 		toSerialize["subscriptions"] = o.Subscriptions
+	}
+	if !isNil(o.Templates) {
+		toSerialize["templates"] = o.Templates
 	}
 	if !isNil(o.Themes) {
 		toSerialize["themes"] = o.Themes

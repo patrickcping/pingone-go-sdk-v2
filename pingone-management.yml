@@ -186,6 +186,60 @@ components:
     EnumMobileIntegrityDetectionPlatform:
       type: string
       enum: [IOS, GOOGLE]
+    EnumNotificationsPolicyQuotaDeliveryMethods:
+      type: string
+      enum: [SMS, Voice]
+    EnumNotificationsPolicyQuotaItemType:
+      type: string
+      enum: [USER, ENVIRONMENT]
+      description: Specifies whether the limit defined is per-user or per environment. Value must be either `USER` or `ENVIRONMENT`.
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod:
+      type: string
+      enum: [SMS, VOICE]
+      description: |
+        The notification's delivery method. Possible values:
+        `SMS`
+        `VOICE`
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod:
+      type: string
+      enum: [GET, POST]
+      description: The type of HTTP request method. Possible values are `GET` and `POST`.
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat:
+      type: string
+      enum: [FULL, NUMBER_ONLY]
+      default: FULL
+      description: |
+        The phone number format. Possible values:
+        `FULL` (default)
+        The phone number format with a leading `+` sign, in the E.164 standard format.
+        For example: `+14155552671`
+        `NUMBER_ONLY`
+        The phone number format without a leading `+` sign, in the E.164 standard format.
+        For example: `14155552671`
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod:
+      type: string
+      enum: [BASIC, BEARER]
+      description: |
+        The custom provider account's authentication method. Possible values: `BASIC`, `BEARER`
+    EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType:
+      type: string
+      enum: [SHORT_CODE, TOLL_FREE, PHONE_NUMBER]
+      description: |
+        The type of phone number. Possible values: `SHORT_CODE`, `TOLL_FREE`, `PHONE_NUMBER`
+    EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability:
+      type: string
+      enum: [VOICE, SMS]
+      description: |
+        The type of phone delivery service capability. Possible values: `VOICE`, `SMS`
+    EnumNotificationsSettingsPhoneDeliverySettingsProvider:
+      type: string
+      enum: [PINGONE_TWILIO, CUSTOM_TWILIO, CUSTOM_SYNIVERSE, CUSTOM_PROVIDER]
+      description: |
+        The ID of the provider of phone delivery service. Possible values:
+        `PINGONE_TWILIO`: Specifies that Ping Identity's Twilio account is the SMS/voice provider.
+        `CUSTOM_TWILIO`: Specifies that your Twilio account is the SMS/voice provider.
+        `CUSTOM_SYNIVERSE`: Specifies that your Syniverse account is the SMS/voice provider.
+        `CUSTOM_PROVIDER`: Specifies a custom-defined SMS provider (excluding Twilio and Syniverse).
     EnumOrganizationType:
       type: string
       enum: [PAID, TRIAL]
@@ -1334,6 +1388,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Certificate'
+            contents:
+              type: array
+              items:
+                $ref: '#/components/schemas/TemplateContent'
             credentials:
               type: array
               items:
@@ -1390,6 +1448,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/License'
+            notificationsPolicies:
+              type: array
+              items:
+                $ref: '#/components/schemas/NotificationsPolicy'
             organizations:
               type: array
               items:
@@ -1426,6 +1488,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Subscription'
+            templates:
+              type: array
+              items:
+                $ref: '#/components/schemas/Template'
             themes:
               type: array
               items:
@@ -2465,26 +2531,314 @@ components:
           description: The license name
       required:
         - name
-    PKICAResponseFileUpload:
+    NotificationsPolicy:
       type: object
       properties:
-        file:
+        createdAt:
           type: string
-          format: binary
+          format: date-time
+          readOnly: true
+          description: The time the resource was created.
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was last updated.
+        id:
+          type: string
+          readOnly: true
+          description: A string that specifies the resource’s unique identifier.
+        name:
+          type: string
+          description: The name to use for the notification policy. Must be unique among the notification policies in the environment.
+        default:
+          type: boolean
+          description: Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is `false`
+          default: false
+        quotas:
+          type: array
+          description: Collection of objects that define the SMS/Voice limits. Each object contain the following elements- `type`, `deliveryMethods`, `total`. Currently, a policy can contain ony one such object. Note that instead of `total`, you can use the pair of fields- `claimed` and `unclaimed`.
+          items:
+            type: object
+            properties:
+              type:
+                $ref: '#/components/schemas/EnumNotificationsPolicyQuotaItemType'
+              deliveryMethods:
+                type: array
+                description: The delivery methods for which the limit is being defined. Currently, the content of the array must be `SMS`, `Voice`. This means that the combined total of SMS and Voice notifications must be below the limit defined.
+                items:
+                  $ref: '#/components/schemas/EnumNotificationsPolicyQuotaDeliveryMethods'
+              total:
+                type: integer
+                description: The maximum number of notifications allowed per day.
+              claimed:
+                type: integer
+                description: The maximum number of notifications that can be received and responded to each day. Used in conjunction with unclaimed in place of the single field total.
+              unclaimed:
+                type: integer
+                description: The maximum number of notifications that can be received and not responded to each day. Used in conjunction with claimed in place of the single field total.
+            required:
+              - type
+              - deliveryMethods
       required:
-        - file
-    PKIFileUpload:
+        - name
+        - quotas
+    NotificationsSettings:
       type: object
       properties:
-        usageType:
+        updatedAt:
           type: string
-          example: ENCRYPTION
-        file:
+          format: date-time
+          readOnly: true
+          description: The time the resource was last updated.
+        restrictions:
+          type: object
+          properties:
+            smsVoiceQuota:
+              type: object
+              properties:
+                daily:
+                  type: integer
+                  description: |
+                    The maximum number of SMS and voice notifications that can be sent per user per day.
+                    - `restrictions.smsVoiceQuota.daily` can be set to any value between 0 and 50.
+                    - Trial accounts have a default value of 30.
+                    - The daily counters are reset every night at midnight UTC.
+              required:
+                - daily
+          required:
+            - smsVoiceQuota
+        id:
           type: string
-          format: binary
+          readOnly: true
+          description: A string that specifies the resource’s unique identifier.
+        smsProvidersFallbackChain:
+          type: array
+          description: A list which represents the execution order of different SMS/Voice providers configured for the environment. The providers and their accounts’ configurations are represented in the list by the ID of the corresponding `PhoneDeliverySettings` resource. The only provider which is not represented by a `phoneDeliverySettingsID` is the PingOne Twilio provider. The PingOne Twilio provider is represented by the `PINGONE_TWILIO` string. If the `smsProvidersFallbackChain` list is empty, an SMS or voice message will be sent using the default Ping Twilio account. Otherwise, an SMS or voice message will be sent using the first provider in the list. If the server fails to queue the message using that provider, it will use the next provider in the list to try to send the message. This process will go on until there are no more providers in the list. If the server failed to send the message using all providers, the notification status is set to `FAILED`.
+          items:
+            type: string
+        from:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A string that specifies the email's "from" name (relevant when the `deliveryMethod` is `Email`).  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note) for details.
+            address:
+              type: string
+              description: A string that specifies the email's "from" address (relevant when the `deliveryMethod` is `Email`). This value must be a trusted email address.  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note) for details.
+        replyTo:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A string that specifies the email's "reply to" name (relevant when `deliveryMethod` is `Email`).  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note) for details.
+            address:
+              type: string
+              description: A string that specifies the email's "reply to" address (relevant when `deliveryMethod` is `Email`). This value must be a trusted email address.  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note) for details.
+    NotificationsSettingsEmailDeliverySettings:
+      type: object
+      properties:
+        host:
+          type: string
+          description: A string that specifies the organization's SMTP server.
+        port:
+          type: integer
+          description: An integer that specifies the port used by the organization's SMTP server to send emails (default `465`). Note that the protocol used depends upon the port specified. If you specify port `25`, `587`, or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used.
+          default: 465
+        username:
+          type: string
+          description: A string that specifies the organization's SMTP server's username.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        from:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A string that specifies the email's "from" name.
+            address:
+              type: string
+              description: A string that specifies the email's "from" address.
+        replyTo:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A string that specifies the email's "reply to" name.
+            address:
+              type: string
+              description: A string that specifies the email's "reply to" address.
+    NotificationsSettingsPhoneDeliverySettings:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: A string that specifies the resource’s unique identifier.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        provider:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsProvider'
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was created.
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was last updated.
       required:
-        - file
-        - usageType
+        - provider
+    NotificationsSettingsPhoneDeliverySettingsCustom:
+      allOf:
+        - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+        - type: object
+          properties:
+            name:
+              type: string
+              description: The customer provider's name.
+            requests:
+              type: object
+              properties:
+                deliveryMethod:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod'
+                url:
+                  type: string
+                  description: |
+                    The provider's remote gateway or customer gateway URL.
+                    For requests using the POST method, use the provider's remote gateway URL.
+                    For requests using the GET method, use the provider's remote gateway URL, including the `${to}` and `${message}` mandatory variables, and the optional `${from}` variable, for example:
+                    `https://api.transmitsms.com/send-sms.json?to=${to}&from=${from}&message=${message}`
+                body:
+                  type: string
+                  description: |
+                    The notification's request body. The body should include the ${to} and ${message} mandatory variables. For some vendors, the optional ${from} variable may also be required. For example:
+                    `messageType=ARN&message=${message}&phoneNumber=${to}&sender=${from}`
+                    In addition, you can use the following optional variables:
+                    `${voice}` - the type of voice configured for notifications
+                    `${locale}` - locale
+                    `${otp}` - OTP
+                    `${user.user.name}` - user's username
+                    `${user.name.given}` - user's given name
+                    `${user.name.family}` - user's family name
+                    You can also use dynamic variables in the body. For more information, see [Dynamic variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-dynamic-variables).
+                headers:
+                  type: string
+                  description: |
+                    The notification's request header, matching the format of the request body. The header can be one of:
+                    Form
+                    `(content-type=application/x-www-form-urlencoded)`
+                    JSON
+                    `(content-type=application/json)`
+                method:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod'
+                phoneNumberFormat:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat'
+                beforeTag:
+                  type: string
+                  description: |
+                    For voice OTP notifications only.
+                    An opening tag which is commonly used by custom providers for defining a pause between each number in the OTP number string.
+                    Possible value: `<Say>`
+                afterTag:
+                  type: string
+                  description: |
+                    For voice OTP notifications only.
+                    A closing tag which is commonly used by custom providers for defining a pause between each number in the OTP number string.
+                    Possible value: `</Say> <Pause length="1"/>`
+              required:
+                - deliveryMethod
+                - url
+                - body
+                - headers
+                - method
+                - phoneNumberFormat
+            authentication:
+              type: object
+              properties:
+                method:
+                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod'
+                username:
+                  type: string
+                  description: The username for the custom provider account. Required when `authentication.method=BASIC`
+                password:
+                  type: string
+                  description: The password for the custom provider account. Required when `authentication.method=BASIC`
+                token:
+                  type: string
+                  description: The authentication token for the custom provider account.  Required when `authentication.method=BEARER`
+              required:
+                - method
+          required:
+            - requests
+            - authentication
+    NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse:
+      allOf:
+        - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+        - type: object
+          properties:
+            sid:
+              type: string
+              description: |
+                The public ID of the Twilio account.
+                Relevant to Twilio only.
+            authToken:
+              type: string
+              description: The secret key of the Twilio or Syniverse account.
+            numbers:
+              type: array
+              description: A collection of Twilio or Syniverse numbers to use when sending a notification.
+              items:
+                type: object
+                properties:
+                  type:
+                    $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType'
+                  selected:
+                    type: boolean
+                    description: Specifies whether the number is selected by the admin for sending messages.
+                  createdAt:
+                    type: string
+                    format: date-time
+                    readOnly: true
+                    description: The time the resource was created.
+                  number:
+                    type: string
+                    description: The phone number, toll-free number or short code.
+                  available:
+                    type: boolean
+                    description: Specifies whether the number is currently available in the provider account.
+                  capabilities:
+                    type: array
+                    description: A collection of the phone delivery service capabilities.
+                    items:
+                      $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability'
+                  supportedCountries:
+                    type: array
+                    description: |
+                      Specifies the number's supported countries for notification recipients, depending on the phone number `type`:
+                      - `SHORT_CODE`: A collection containing a single 2-character ISO country code, for example, `US`, `GB`, `CA`.
+                      If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null.
+                      For other custom provider types, if supportedCountries is null (empty is not supported), the specified short code number can only be used to dispatch notifications to United States recipient numbers.
+                      - `TOLL_FREE`: A collection of valid 2-character country ISO codes, for example, `US`, `GB`, `CA`.
+                      If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null.
+                      For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified toll-free number can only be used to dispatch notifications to United States recipient numbers.
+                      - `PHONE_NUMBER`: `supportedCountries` can not be specified.
+                      If an SMS template has an alphanumeric sender ID and also has short code, the sender ID will be used for destination countries that support both alphanumeric senders and short codes. For Unites States and Canada that don't support alphanumeric sender IDs, a short code will be used if both an alphanumeric sender and a short code are specified.
+                    items:
+                      type: string
+                required:
+                  - type
+                  - selected
+                  - number
+                  - available
+                  - capabilities
+                  - supportedCountries
+          required:
+            - sid
+            - authToken
+            - numbers
     ObjectApplication:
       type: object
       readOnly: true
@@ -2726,6 +3080,26 @@ components:
         - notSimilarToCurrent
         - excludesProfileData
         - excludesCommonlyUsed
+    PKICAResponseFileUpload:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+      required:
+        - file
+    PKIFileUpload:
+      type: object
+      properties:
+        usageType:
+          type: string
+          example: ENCRYPTION
+        file:
+          type: string
+          format: binary
+      required:
+        - file
+        - usageType
     Population:
       type: object
       properties:
@@ -3714,6 +4088,215 @@ components:
         - httpEndpoint
         - name
         - verifyTlsCertificates
+    Template:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The template id
+          readOnly: true
+        displayName:
+          type: string
+          description: The template’s display name.
+        deliveryMethods:
+          type: array
+          description: The delivery methods supported for this template. Valid values are `SMS`, `Voice`, `Email` and `Push`.
+          items:
+            type: string
+            enum: [SMS, Voice, Email, Push]
+        createdAt:
+          type: string
+          description: The time the resource was created.
+          readOnly: true
+        updatedAt:
+          type: string
+          description: The time the resource was last updated.
+          readOnly: true
+        description:
+          type: string
+          description: The description of the template.
+        variables:
+          type: object
+          description: Lists the variables you can use in each template content. The `required` property indicates whether the variable is required in template content. If `required` is `true`, the `requiredForDeliveryMethods` property lists the `deliveryMethods` types that require the variable. Note that if `required` is `true`, but `requiredForDeliveryMethods` is not returned, all `deliveryMethods` types are required. For more information, see [Variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-variables).
+        allowDynamicVariables:
+          type: boolean
+          description: Specifies whether dynamic variables can be used in the template's contents. For more information, see [Dynamic variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-dynamic-variables).
+      required:
+        - displayName
+        - deliveryMethods
+        - variables
+    TemplateContent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The template id.
+          readOnly: true
+        createdAt:
+          type: string
+          description: The time the resource was created.
+          readOnly: true
+        updatedAt:
+          type: string
+          description: The time the resource was last updated.
+          readOnly: true
+        default:
+          type: boolean
+          description: Specifies whether the template is a predefined default template.
+        locale:
+          type: string
+          description: |
+            A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards:
+            Two-character language code, for example, "en".
+            Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: "en_GB", "en-GB".
+            Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`.
+        deliveryMethod:
+          type: string
+          description: The content's delivery method. Possible values are `Email`, `SMS`, `Voice` or `Push`. Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`.
+        variant:
+          type: string
+          description: Holds the unique user-defined name for each content variant that uses the same template + `deliveryMethod` + `locale` combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents).
+      required:
+        - locale
+        - deliveryMethod
+    TemplateContentSMSVoice:
+      allOf:
+        - $ref: '#/components/schemas/TemplateContent'
+        - type: object
+          properties:
+            content:
+              type: string
+              description: |
+                The SMS or voice text.
+                * **SMS**: UC-2 encoding is used for text that contains non GSM-7 characters. UC-2 encoded text cannot exceed 67 characters. GSM-7 encoded text cannot exceed 153 characters. If supported, it can include variables.
+                * **Voice**: Limited to 1Kb characters.
+                  The following substitution place holders can be embedded in the message:
+                  * `<pause1sec>`: Pauses the message narration for 1 second.
+                    The pause interval <pause1sec> cannot be modified. To pause the message narration for more than one second, repeat multiple `<pause1sec>` occurrences in succession, according to the desired pause interval duration. For example, `<pause1sec><pause1sec><pause1sec>` pauses the message narration for three seconds.
+                  * `<sayCharValue> .. </sayCharValue>`: Reads the character name of each character of the enclosed string separately.
+                  * `<repeatMessage val=x> .. </repeatMessage>`: Narrates the enclosed text `<val>` number of times.
+                  
+                  In the following message example, `${otp}` is assigned the value `"123456"`, and `${email}` is assigned the value `"joe@bxz.com"`:
+                  ```
+                  Hello <pause1sec> your authentication code is 
+                  <sayCharValue>${otp}</​sayCharValue> 
+                  <repeatMessage val=2> I repeat your code is 
+                  <sayCharValue>${otp}</​sayCharValue>
+                  </​repeatMessage> <pause1sec> 
+                  Mail <sayCharValue>${email}</​sayCharValue> for help
+                  ```
+                  The narrated message on the voice call sounds like:
+                  ```
+                  HELLO <1 second silence> YOUR AUTHENTICATION CODE IS 
+                  ONE TWO THREE FOUR FIVE SIX 
+                  I REPEAT YOUR CODE IS ONE TWO THREE FOUR FIVE SIX 
+                  I REPEAT YOUR CODE IS ONE TWO THREE FOUR FIVE SIX <1 second silence> 
+                  MAIL JAY OH EE AT BEE EX ZEE DOT SEE OH EM FOR HELP
+                  ```
+
+                  Voice OTP supports vendor-specific voices.
+                  * Supported Twilio voices:
+                    * Man, Woman
+                      Supported locales (default: en):
+                      en, en_GB, es, fr, de
+                    * Alice (Twilio only)
+                      Supported locales (default: en US):
+                      da_DK, de_DE, en_AU, en_CA, en_GB, en_US, ca_ES, es_ES, es_MX, fi_FI, fr_CA, fr_FR, it_IT, ja_JP, ko_KR, nb_NO, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, sv_SE, zh_CN, zh_HK, zh_TW
+                    * Amazon Polly
+                      cy_GB, ro_RO, is_IS, hi_IN tr_TR
+                  * Supported Syniverse voices:
+                    * Man, Woman
+                      Supported locales:
+                      en_US, en_GB, es_ES, es_US, fr_FR, de_DE, it_IT, en_AU, da_DK, is_IS, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, ja_JP
+                    * Woman only
+                      Supported locales:
+                      cmn_CN, cy_GB, en_IN, fr_CA, hi_IN, nb_NO, ro_RO, sv_SE, tr_TR, ko_KR, ar
+          required:
+            - content
+    TemplateContentEmailPush:
+      allOf:
+        - $ref: '#/components/schemas/TemplateContent'
+        - type: object
+          properties:
+            body:
+              type: string
+              description: The email or push text (maximum 400 characters for push text). Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables.
+          required:
+            - body
+    TemplateContentEmail:
+      allOf:
+        - $ref: '#/components/schemas/TemplateContentEmailPush'
+        - type: object
+          properties:
+            from:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: |
+                    The email's sender name.
+                    If the environment uses the Ping Identity email sender, the name "PingOne" is used.
+                    You can configure other email sender names per environment.
+                    See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
+                  default: PingOne
+                address:
+                  type: string
+                  description: |
+                    The sender email address.
+                    If the environment uses the Ping Identity email sender, or if the address field is empty, the address "noreply@pingidentity.com" is used.
+                    You can configure other email sender addresses per environment.
+                    See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
+                  default: noreply@pingidentity.com
+            subject:
+              type: string
+              description: The email's subject line. Cannot exceed 256 characters. If supported, can include variables.
+              maxLength: 256
+            replyTo:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: |
+                    The email's "reply to" name.
+                    If the environment uses the Ping Identity email sender, the name "PingOne" is used.
+                    You can configure other email "reply to" names per environment.
+                    See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
+                  default: PingOne
+                address:
+                  type: string
+                  description: |
+                    The "reply to" email address.
+                    If the environment uses the Ping Identity email sender, or if the address field is empty, the address "noreply@pingidentity.com" is used.
+                    You can configure other email "reply to" addresses per environment.
+                    See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
+                  default: noreply@pingidentity.com
+            charset:
+              type: string
+              description: If not specified, `UTF-8` is the default value.
+              default: UTF-8
+            emailContentType:
+              type: string
+              description: If not specified, `text/html` is the default value.
+              default: text/html
+    TemplateContentSMS:
+      allOf:
+        - $ref: '#/components/schemas/TemplateContentSMSVoice'
+        - type: object
+          properties:
+            sender:
+              type: string
+              description: The SMS sender ID. This property can contain only alphanumeric characters and spaces, and its length cannot exceed 11 characters. In some countries, it is impossible to send an SMS with an alphanumeric sender ID. For those countries, the sender ID must be empty. For SMS recipients in specific countries, refer to Twilio's documentation on [International support for Alphanumeric Sender ID](https://support.twilio.com/hc/en-us/articles/223133767-International-support-for-Alphanumeric-Sender-ID).
+    TemplateContentPush:
+      allOf:
+        - $ref: '#/components/schemas/TemplateContentEmailPush'
+        - type: object
+          properties:
+            title:
+              type: string
+              description: The push title (maximum 200 characters). If supported, this can include variables.
+              maxLength: 200
+    TemplateContentBulkVariant:
+      type: object
     User:
       type: object
       properties:
@@ -7945,429 +8528,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BrandingSettings'
-  /v1/environments/{environmentID}/themes:
-    get:
-      tags:
-        - Branding Themes
-      summary: READ Branding Themes
-      operationId: readBrandingThemes
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '401':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '403':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '429':
-          description: Request was rate limited
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '500':
-          description: Uncaught error occurred.  Platform outage
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntityArray'
-    post:
-      tags:
-        - Branding Themes
-      summary: CREATE Branding Theme
-      operationId: createBrandingTheme
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BrandingTheme'
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '401':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '403':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '405':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '429':
-          description: Request was rate limited
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '500':
-          description: Uncaught error occurred.  Platform outage
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '201':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrandingTheme'
-  /v1/environments/{environmentID}/themes/{themeID}:
-    get:
-      tags:
-        - Branding Themes
-      summary: READ One Branding Theme
-      operationId: readOneBrandingTheme
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: themeID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '401':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '403':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '429':
-          description: Request was rate limited
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '500':
-          description: Uncaught error occurred.  Platform outage
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrandingTheme'
-    put:
-      tags:
-        - Branding Themes
-      summary: UPDATE Branding Theme
-      operationId: updateBrandingTheme
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BrandingTheme'
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: themeID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '401':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '403':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '429':
-          description: Request was rate limited
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '500':
-          description: Uncaught error occurred.  Platform outage
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrandingTheme'
-    delete:
-      tags:
-        - Branding Themes
-      summary: DELETE Branding Theme
-      operationId: deleteBrandingTheme
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: themeID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '401':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '403':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '429':
-          description: Request was rate limited
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '500':
-          description: Uncaught error occurred.  Platform outage
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '204':
-          description: Successful response
-  /v1/environments/{environmentID}/themes/{themeID}/default:
-    get:
-      tags:
-        - Branding Themes
-      summary: READ Branding Theme Default
-      operationId: readBrandingThemeDefault
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: themeID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '401':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '403':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '429':
-          description: Request was rate limited
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '500':
-          description: Uncaught error occurred.  Platform outage
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrandingThemeDefault'
-    put:
-      tags:
-        - Branding Themes
-      summary: UPDATE Branding Theme Default
-      operationId: updateBrandingThemeDefault
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BrandingThemeDefault'
-      parameters:
-        - name: environmentID
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: themeID
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '400':
-          description: Invalid request received.  Malformed JSON, malformed HTTP request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '401':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '403':
-          description: Request failed due to authorization issue.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '404':
-          description: Not found.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '429':
-          description: Request was rate limited
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '500':
-          description: Uncaught error occurred.  Platform outage
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/P1Error'
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BrandingThemeDefault'
   /v1/environments/{environmentID}/capabilities:
     get:
       tags:
@@ -15990,7 +16150,18 @@ paths:
       tags:
         - Notifications Templates
       summary: READ All Templates
+      operationId: readAllTemplates
       parameters:
+        - name: filter
+          in: query
+          schema:
+            type: string
+          example: (createdAt lt "2018-08-30") and (updatedAt gt "2018-07-30")
+        - name: order
+          in: query
+          schema:
+            type: string
+          example: -createdAt
         - name: environmentID
           in: path
           schema:
@@ -16036,12 +16207,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
   /v1/environments/{environmentID}/templates/{templateName}:
     get:
       tags:
         - Notifications Templates
       summary: READ One Template
+      operationId: readOneTemplate
       parameters:
         - name: environmentID
           in: path
@@ -16093,12 +16267,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
   /v1/environments/{environmentID}/templates/{templateName}/contents:
     get:
       tags:
         - Notifications Templates
       summary: READ All Contents
+      operationId: readAllTemplateContents
       parameters:
         - name: environmentID
           in: path
@@ -16150,22 +16327,19 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
     post:
       tags:
         - Notifications Templates
-      summary: CREATE Push Content
+      summary: CREATE Content
+      operationId: createContent
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                locale: en
-                title: Test
-                variant: variant_C
-                body: ' Your OTP is ${otp}'
-                deliveryMethod: Push
+              $ref: '#/components/schemas/TemplateContent'
       parameters:
         - name: environmentID
           in: path
@@ -16223,18 +16397,19 @@ paths:
         '201':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateContent'
     patch:
       tags:
         - Notifications Templates
       summary: PATCH Bulk Variant Contents
+      operationId: patchBulkVariantContents
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                variant: variant_D
+              $ref: '#/components/schemas/TemplateContentBulkVariant'
       parameters:
         - name: filter
           in: query
@@ -16291,11 +16466,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
     delete:
       tags:
         - Notifications Templates
       summary: DELETE Bulk Variant Contents
+      operationId: deleteBulkVariantContents
       parameters:
         - name: filter
           in: query
@@ -16356,6 +16534,7 @@ paths:
       tags:
         - Notifications Templates
       summary: READ One Content
+      operationId: readOneContent
       parameters:
         - name: environmentID
           in: path
@@ -16412,21 +16591,19 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateContent'
     put:
       tags:
         - Notifications Templates
-      summary: UPDATE Push Content
+      summary: UPDATE Content
+      operationId: updateContent
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                locale: en-gb
-                title: Push Message
-                body: ${user.username}, you have a new authentication request.
-                deliveryMethod: Push
+              $ref: '#/components/schemas/TemplateContent'
       parameters:
         - name: environmentID
           in: path
@@ -16483,11 +16660,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateContent'
     delete:
       tags:
         - Notifications Templates
       summary: DELETE Content
+      operationId: deleteContent
       parameters:
         - name: environmentID
           in: path
@@ -16548,6 +16728,7 @@ paths:
       tags:
         - Notifications Settings
       summary: READ Notifications Settings
+      operationId: readNotificationsSettings
       parameters:
         - name: environmentID
           in: path
@@ -16594,11 +16775,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettings'
     put:
       tags:
         - Notifications Settings
       summary: UPDATE Notifications Settings
+      operationId: updateNotificationsSettings
       parameters:
         - name: environmentID
           in: path
@@ -16645,11 +16829,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettings'
     delete:
       tags:
         - Notifications Settings
       summary: DELETE Notifications Settings
+      operationId: deleteNotificationsSettings
       parameters:
         - name: environmentID
           in: path
@@ -16699,7 +16886,8 @@ paths:
     get:
       tags:
         - Notifications Settings (SMTP)
-      summary: READ Notifications Settings (SMTP)
+      summary: READ Email Notifications Settings
+      operationId: readEmailNotificationsSettings
       parameters:
         - name: environmentID
           in: path
@@ -16746,11 +16934,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings'
     put:
       tags:
         - Notifications Settings (SMTP)
-      summary: UPDATE Notifications Settings (SMTP)
+      summary: UPDATE Email Notifications Settings
+      operationId: updateEmailNotificationsSettings
       requestBody:
         content:
           application/json:
@@ -16813,11 +17004,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings'
     delete:
       tags:
         - Phone Delivery Settings
-      summary: DELETE Phone Delivery Settings
+      summary: DELETE Email Delivery Settings
+      operationId: deleteEmailDeliverySettings
       parameters:
         - name: environmentID
           in: path
@@ -16868,6 +17062,7 @@ paths:
       tags:
         - Phone Delivery Settings
       summary: READ All Phone Delivery Settings
+      operationId: readAllPhoneDeliverySettings
       parameters:
         - name: environmentID
           in: path
@@ -16914,11 +17109,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
     post:
       tags:
         - Phone Delivery Settings
-      summary: CREATE Phone Delivery Settings (Syniverse)
+      summary: CREATE Phone Delivery Settings
+      operationId: createPhoneDeliverySettings
       requestBody:
         content:
           application/json:
@@ -16979,19 +17177,22 @@ paths:
         '201':
           description: Successful response
           content:
-            application/json: {}
-  /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsId}:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+  /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID}:
     get:
       tags:
         - Phone Delivery Settings
       summary: READ One Phone Delivery Settings
+      operationId: readOnePhoneDeliverySettings
       parameters:
         - name: environmentID
           in: path
           schema:
             type: string
           required: true
-        - name: phoneDeliverySettingsId
+        - name: phoneDeliverySettingsID
           in: path
           schema:
             type: string
@@ -17036,18 +17237,21 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
     put:
       tags:
         - Phone Delivery Settings
       summary: UPDATE Phone Delivery Settings
+      operationId: updatePhoneDeliverySettings
       requestBody:
         content:
           application/json:
             schema:
               type: object
               example:
-                id: someTwilioPhoneDeliverySettingsId
+                id: someTwiliophoneDeliverySettingsID
                 sid: someSid
                 provider: CUSTOM_TWILIO
                 numbers:
@@ -17095,7 +17299,7 @@ paths:
           schema:
             type: string
           required: true
-        - name: phoneDeliverySettingsId
+        - name: phoneDeliverySettingsID
           in: path
           schema:
             type: string
@@ -17140,7 +17344,356 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+    delete:
+      tags:
+        - Phone Delivery Settings
+      summary: DELETE Phone Delivery Settings
+      operationId: deletePhoneDeliverySettings
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: phoneDeliverySettingsID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '204':
+          description: Successful response
+  /v1/environments/{environmentID}/notificationsPolicies:
+    get:
+      tags:
+        - Notifications Policies
+      summary: READ All Notifications Policies
+      operationId: readAllNotificationsPolicies
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+    post:
+      tags:
+        - Notifications Policies
+      summary: CREATE Notifications Policy
+      operationId: createNotificationsPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationsPolicy'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsPolicy'
+  /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID}:
+    get:
+      tags:
+        - Notifications Policies
+      summary: READ One Notifications Policy
+      operationId: readOneNotificationsPolicy
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: notificationsPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsPolicy'
+    put:
+      tags:
+        - Notifications Policies
+      summary: UPDATE Notifications Policy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationsPolicy'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: notificationsPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsPolicy'
+    delete:
+      tags:
+        - Notifications Policies
+      summary: DELETE Notifications Policy
+      operationId: deleteNotificationsPolicy
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: notificationsPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '204':
+          description: Successful response
   /v1/environments/{environmentID}/passwordPolicies:
     get:
       tags:
@@ -20307,6 +20860,429 @@ paths:
                 $ref: '#/components/schemas/P1Error'
         '204':
           description: Successful response
+  /v1/environments/{environmentID}/themes:
+    get:
+      tags:
+        - Branding Themes
+      summary: READ Branding Themes
+      operationId: readBrandingThemes
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+    post:
+      tags:
+        - Branding Themes
+      summary: CREATE Branding Theme
+      operationId: createBrandingTheme
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandingTheme'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '405':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingTheme'
+  /v1/environments/{environmentID}/themes/{themeID}:
+    get:
+      tags:
+        - Branding Themes
+      summary: READ One Branding Theme
+      operationId: readOneBrandingTheme
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: themeID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingTheme'
+    put:
+      tags:
+        - Branding Themes
+      summary: UPDATE Branding Theme
+      operationId: updateBrandingTheme
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandingTheme'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: themeID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingTheme'
+    delete:
+      tags:
+        - Branding Themes
+      summary: DELETE Branding Theme
+      operationId: deleteBrandingTheme
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: themeID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '204':
+          description: Successful response
+  /v1/environments/{environmentID}/themes/{themeID}/default:
+    get:
+      tags:
+        - Branding Themes
+      summary: READ Branding Theme Default
+      operationId: readBrandingThemeDefault
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: themeID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingThemeDefault'
+    put:
+      tags:
+        - Branding Themes
+      summary: UPDATE Branding Theme Default
+      operationId: updateBrandingThemeDefault
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandingThemeDefault'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: themeID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingThemeDefault'
   /v1/environments/{environmentID}/totalIdentities:
     get:
       tags:

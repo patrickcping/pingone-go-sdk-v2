@@ -4,89 +4,23 @@ All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDTemplatesGet**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesGet) | **Get** /v1/environments/{environmentID}/templates | READ All Templates
-[**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDelete**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDelete) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | DELETE Content
-[**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGet**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGet) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | READ One Content
-[**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDPut**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDPut) | **Put** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | UPDATE Push Content
-[**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsDelete**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsDelete) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents | DELETE Bulk Variant Contents
-[**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsGet**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsGet) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents | READ All Contents
-[**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPatch**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPatch) | **Patch** /v1/environments/{environmentID}/templates/{templateName}/contents | PATCH Bulk Variant Contents
-[**V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPost**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPost) | **Post** /v1/environments/{environmentID}/templates/{templateName}/contents | CREATE Push Content
-[**V1EnvironmentsEnvironmentIDTemplatesTemplateNameGet**](NotificationsTemplatesApi.md#V1EnvironmentsEnvironmentIDTemplatesTemplateNameGet) | **Get** /v1/environments/{environmentID}/templates/{templateName} | READ One Template
+[**CreateContent**](NotificationsTemplatesApi.md#CreateContent) | **Post** /v1/environments/{environmentID}/templates/{templateName}/contents | CREATE Content
+[**DeleteBulkVariantContents**](NotificationsTemplatesApi.md#DeleteBulkVariantContents) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents | DELETE Bulk Variant Contents
+[**DeleteContent**](NotificationsTemplatesApi.md#DeleteContent) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | DELETE Content
+[**PatchBulkVariantContents**](NotificationsTemplatesApi.md#PatchBulkVariantContents) | **Patch** /v1/environments/{environmentID}/templates/{templateName}/contents | PATCH Bulk Variant Contents
+[**ReadAllTemplateContents**](NotificationsTemplatesApi.md#ReadAllTemplateContents) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents | READ All Contents
+[**ReadAllTemplates**](NotificationsTemplatesApi.md#ReadAllTemplates) | **Get** /v1/environments/{environmentID}/templates | READ All Templates
+[**ReadOneContent**](NotificationsTemplatesApi.md#ReadOneContent) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | READ One Content
+[**ReadOneTemplate**](NotificationsTemplatesApi.md#ReadOneTemplate) | **Get** /v1/environments/{environmentID}/templates/{templateName} | READ One Template
+[**UpdateContent**](NotificationsTemplatesApi.md#UpdateContent) | **Put** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | UPDATE Content
 
 
 
-## V1EnvironmentsEnvironmentIDTemplatesGet
+## CreateContent
 
-> V1EnvironmentsEnvironmentIDTemplatesGet(ctx, environmentID).Execute()
+> TemplateContent CreateContent(ctx, environmentID, templateName).TemplateContent(templateContent).Execute()
 
-READ All Templates
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesGet(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDelete
-
-> V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDelete(ctx, environmentID, templateName, contentID).Execute()
-
-DELETE Content
+CREATE Content
 
 ### Example
 
@@ -103,15 +37,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     templateName := "templateName_example" // string | 
-    contentID := "contentID_example" // string | 
+    templateContent := *openapiclient.NewTemplateContent("Locale_example", "DeliveryMethod_example") // TemplateContent |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDelete(context.Background(), environmentID, templateName, contentID).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.CreateContent(context.Background(), environmentID, templateName).TemplateContent(templateContent).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.CreateContent``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateContent`: TemplateContent
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.CreateContent`: %v\n", resp)
 }
 ```
 
@@ -123,168 +59,21 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
 **templateName** | **string** |  | 
-**contentID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateContentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
-
+ **templateContent** | [**TemplateContent**](TemplateContent.md) |  | 
 
 ### Return type
 
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGet
-
-> V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGet(ctx, environmentID, templateName, contentID).Execute()
-
-READ One Content
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
-    contentID := "contentID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGet(context.Background(), environmentID, templateName, contentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**templateName** | **string** |  | 
-**contentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDPut
-
-> V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDPut(ctx, environmentID, templateName, contentID).Body(body).Execute()
-
-UPDATE Push Content
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
-    contentID := "contentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDPut(context.Background(), environmentID, templateName, contentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**templateName** | **string** |  | 
-**contentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsContentIDPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
+[**TemplateContent**](TemplateContent.md)
 
 ### Authorization
 
@@ -300,9 +89,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsDelete
+## DeleteBulkVariantContents
 
-> V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsDelete(ctx, environmentID, templateName).Filter(filter).Execute()
+> DeleteBulkVariantContents(ctx, environmentID, templateName).Filter(filter).Execute()
 
 DELETE Bulk Variant Contents
 
@@ -325,9 +114,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsDelete(context.Background(), environmentID, templateName).Filter(filter).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.DeleteBulkVariantContents(context.Background(), environmentID, templateName).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.DeleteBulkVariantContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -344,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteBulkVariantContentsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -371,11 +160,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsGet
+## DeleteContent
 
-> V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsGet(ctx, environmentID, templateName).Execute()
+> DeleteContent(ctx, environmentID, templateName, contentID).Execute()
 
-READ All Contents
+DELETE Content
 
 ### Example
 
@@ -392,12 +181,13 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     templateName := "templateName_example" // string | 
+    contentID := "contentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsGet(context.Background(), environmentID, templateName).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.DeleteContent(context.Background(), environmentID, templateName, contentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.DeleteContent``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -411,14 +201,16 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
 **templateName** | **string** |  | 
+**contentID** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteContentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 
@@ -440,9 +232,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPatch
+## PatchBulkVariantContents
 
-> V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPatch(ctx, environmentID, templateName).Filter(filter).Body(body).Execute()
+> EntityArray PatchBulkVariantContents(ctx, environmentID, templateName).Filter(filter).Body(body).Execute()
 
 PATCH Bulk Variant Contents
 
@@ -466,11 +258,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPatch(context.Background(), environmentID, templateName).Filter(filter).Body(body).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.PatchBulkVariantContents(context.Background(), environmentID, templateName).Filter(filter).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.PatchBulkVariantContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `PatchBulkVariantContents`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.PatchBulkVariantContents`: %v\n", resp)
 }
 ```
 
@@ -485,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPatchRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPatchBulkVariantContentsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -497,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -513,11 +307,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPost
+## ReadAllTemplateContents
 
-> V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPost(ctx, environmentID, templateName).Body(body).Execute()
+> EntityArray ReadAllTemplateContents(ctx, environmentID, templateName).Execute()
 
-CREATE Push Content
+READ All Contents
 
 ### Example
 
@@ -534,15 +328,16 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     templateName := "templateName_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPost(context.Background(), environmentID, templateName).Body(body).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplateContents(context.Background(), environmentID, templateName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadAllTemplateContents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadAllTemplateContents`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.ReadAllTemplateContents`: %v\n", resp)
 }
 ```
 
@@ -557,18 +352,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesTemplateNameContentsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadAllTemplateContentsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
- (empty response body)
+[**EntityArray**](EntityArray.md)
 
 ### Authorization
 
@@ -576,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -584,9 +378,155 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDTemplatesTemplateNameGet
+## ReadAllTemplates
 
-> V1EnvironmentsEnvironmentIDTemplatesTemplateNameGet(ctx, environmentID, templateName).Execute()
+> EntityArray ReadAllTemplates(ctx, environmentID).Filter(filter).Order(order).Execute()
+
+READ All Templates
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    filter := "(createdAt lt "2018-08-30") and (updatedAt gt "2018-07-30")" // string |  (optional)
+    order := "-createdAt" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsTemplatesApi.ReadAllTemplates(context.Background(), environmentID).Filter(filter).Order(order).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadAllTemplates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllTemplates`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.ReadAllTemplates`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllTemplatesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **filter** | **string** |  | 
+ **order** | **string** |  | 
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneContent
+
+> TemplateContent ReadOneContent(ctx, environmentID, templateName, contentID).Execute()
+
+READ One Content
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    templateName := "templateName_example" // string | 
+    contentID := "contentID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsTemplatesApi.ReadOneContent(context.Background(), environmentID, templateName, contentID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadOneContent``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadOneContent`: TemplateContent
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.ReadOneContent`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**templateName** | **string** |  | 
+**contentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadOneContentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**TemplateContent**](TemplateContent.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOneTemplate
+
+> Template ReadOneTemplate(ctx, environmentID, templateName).Execute()
 
 READ One Template
 
@@ -608,11 +548,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameGet(context.Background(), environmentID, templateName).Execute()
+    resp, r, err := apiClient.NotificationsTemplatesApi.ReadOneTemplate(context.Background(), environmentID, templateName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.V1EnvironmentsEnvironmentIDTemplatesTemplateNameGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.ReadOneTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOneTemplate`: Template
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.ReadOneTemplate`: %v\n", resp)
 }
 ```
 
@@ -627,7 +569,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTemplatesTemplateNameGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneTemplateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -637,7 +579,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Template**](Template.md)
 
 ### Authorization
 
@@ -646,6 +588,82 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateContent
+
+> TemplateContent UpdateContent(ctx, environmentID, templateName, contentID).TemplateContent(templateContent).Execute()
+
+UPDATE Content
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    templateName := "templateName_example" // string | 
+    contentID := "contentID_example" // string | 
+    templateContent := *openapiclient.NewTemplateContent("Locale_example", "DeliveryMethod_example") // TemplateContent |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsTemplatesApi.UpdateContent(context.Background(), environmentID, templateName, contentID).TemplateContent(templateContent).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsTemplatesApi.UpdateContent``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateContent`: TemplateContent
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsTemplatesApi.UpdateContent`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**templateName** | **string** |  | 
+**contentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateContentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **templateContent** | [**TemplateContent**](TemplateContent.md) |  | 
+
+### Return type
+
+[**TemplateContent**](TemplateContent.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
