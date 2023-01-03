@@ -26069,7 +26069,7 @@ components:
         value:
           type: string
         equals:
-          type: string
+          $ref: '#/components/schemas/SignOnPolicyActionCommonConditionEquals_equals'
       required:
       - equals
       - value
@@ -30301,6 +30301,11 @@ components:
       - previousSuccessfulAuthenticationIp
       - previousSuccessfulAuthenticationTime
       type: object
+    SignOnPolicyActionCommonConditionEquals_equals:
+      oneOf:
+      - type: string
+      - type: boolean
+      - type: integer
     SignOnPolicyActionCommonConditionOr_or_inner:
       oneOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAnd'

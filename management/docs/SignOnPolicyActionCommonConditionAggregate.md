@@ -13,13 +13,13 @@ Name | Type | Description | Notes
 **GeoVelocity** | **string** |  | 
 **AnonymousNetwork** | **[]string** |  | 
 **Value** | **string** |  | 
-**Equals** | **string** |  | 
+**Equals** | [**SignOnPolicyActionCommonConditionEqualsEquals**](SignOnPolicyActionCommonConditionEqualsEquals.md) |  | 
 
 ## Methods
 
 ### NewSignOnPolicyActionCommonConditionAggregate
 
-`func NewSignOnPolicyActionCommonConditionAggregate(greater int32, secondsSince string, ipRisk SignOnPolicyActionCommonConditionIPRiskIpRisk, valid string, contains string, ipRange []string, geoVelocity string, anonymousNetwork []string, value string, equals string, ) *SignOnPolicyActionCommonConditionAggregate`
+`func NewSignOnPolicyActionCommonConditionAggregate(greater int32, secondsSince string, ipRisk SignOnPolicyActionCommonConditionIPRiskIpRisk, valid string, contains string, ipRange []string, geoVelocity string, anonymousNetwork []string, value string, equals SignOnPolicyActionCommonConditionEqualsEquals, ) *SignOnPolicyActionCommonConditionAggregate`
 
 NewSignOnPolicyActionCommonConditionAggregate instantiates a new SignOnPolicyActionCommonConditionAggregate object
 This constructor will assign default values to properties that have it defined,
@@ -216,20 +216,20 @@ SetValue sets Value field to given value.
 
 ### GetEquals
 
-`func (o *SignOnPolicyActionCommonConditionAggregate) GetEquals() string`
+`func (o *SignOnPolicyActionCommonConditionAggregate) GetEquals() SignOnPolicyActionCommonConditionEqualsEquals`
 
 GetEquals returns the Equals field if non-nil, zero value otherwise.
 
 ### GetEqualsOk
 
-`func (o *SignOnPolicyActionCommonConditionAggregate) GetEqualsOk() (*string, bool)`
+`func (o *SignOnPolicyActionCommonConditionAggregate) GetEqualsOk() (*SignOnPolicyActionCommonConditionEqualsEquals, bool)`
 
 GetEqualsOk returns a tuple with the Equals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEquals
 
-`func (o *SignOnPolicyActionCommonConditionAggregate) SetEquals(v string)`
+`func (o *SignOnPolicyActionCommonConditionAggregate) SetEquals(v SignOnPolicyActionCommonConditionEqualsEquals)`
 
 SetEquals sets Equals field to given value.
 

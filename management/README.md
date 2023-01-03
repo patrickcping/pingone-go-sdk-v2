@@ -687,6 +687,7 @@ Class | Method | HTTP request | Description
  - [SignOnPolicyActionCommonConditionAnd](docs/SignOnPolicyActionCommonConditionAnd.md)
  - [SignOnPolicyActionCommonConditionAnonymousNetwork](docs/SignOnPolicyActionCommonConditionAnonymousNetwork.md)
  - [SignOnPolicyActionCommonConditionEquals](docs/SignOnPolicyActionCommonConditionEquals.md)
+ - [SignOnPolicyActionCommonConditionEqualsEquals](docs/SignOnPolicyActionCommonConditionEqualsEquals.md)
  - [SignOnPolicyActionCommonConditionGeovelocity](docs/SignOnPolicyActionCommonConditionGeovelocity.md)
  - [SignOnPolicyActionCommonConditionGeovelocityValid](docs/SignOnPolicyActionCommonConditionGeovelocityValid.md)
  - [SignOnPolicyActionCommonConditionGreater](docs/SignOnPolicyActionCommonConditionGreater.md)
