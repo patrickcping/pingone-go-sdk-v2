@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.1
+    * **Breaking change** PingOne Fraud is now a non-selectable capability [#92](https://github.com/patrickcping/pingone-go-sdk-v2/pull/92)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.1](./authorize/CHANGELOG.md)
     * **Note** bump codegen v6.2.0 => v6.2.1 [#84](https://github.com/patrickcping/pingone-go-sdk-v2/pull/84)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.13.0](./management/CHANGELOG.md)
