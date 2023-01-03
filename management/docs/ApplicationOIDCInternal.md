@@ -6,20 +6,18 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to **map[string]interface{}** |  | [optional] 
 **AccessControl** | Pointer to [**ApplicationAccessControl**](ApplicationAccessControl.md) |  | [optional] 
-**AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
 **Enabled** | **bool** | A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
+**HiddenFromAppPortal** | Pointer to **bool** | A boolean to specify whether the application is hidden in the application portal despite the configured group access policy. | [optional] 
 **Icon** | Pointer to [**ApplicationIcon**](ApplicationIcon.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the application ID. | [optional] [readonly] 
 **LoginPageUrl** | Pointer to **string** | A string that specifies the custom login page URL for the application. If you set the loginPageUrl property for applications in an environment that sets a custom domain, the URL should include the top-level domain and at least one additional domain level. Warning To avoid issues with third-party cookies in some browsers, a custom domain must be used, giving your PingOne environment the same parent domain as your authentication application. For more information about custom domains, see Custom domains. | [optional] 
 **Name** | **string** | A string that specifies the name of the application. This is a required property. | 
 **Protocol** | [**EnumApplicationProtocol**](EnumApplicationProtocol.md) |  | 
-**Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION. | [optional] 
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
-**SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
 **TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
 
@@ -91,31 +89,6 @@ SetAccessControl sets AccessControl field to given value.
 `func (o *ApplicationOIDCInternal) HasAccessControl() bool`
 
 HasAccessControl returns a boolean if a field has been set.
-
-### GetAssignActorRoles
-
-`func (o *ApplicationOIDCInternal) GetAssignActorRoles() bool`
-
-GetAssignActorRoles returns the AssignActorRoles field if non-nil, zero value otherwise.
-
-### GetAssignActorRolesOk
-
-`func (o *ApplicationOIDCInternal) GetAssignActorRolesOk() (*bool, bool)`
-
-GetAssignActorRolesOk returns a tuple with the AssignActorRoles field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAssignActorRoles
-
-`func (o *ApplicationOIDCInternal) SetAssignActorRoles(v bool)`
-
-SetAssignActorRoles sets AssignActorRoles field to given value.
-
-### HasAssignActorRoles
-
-`func (o *ApplicationOIDCInternal) HasAssignActorRoles() bool`
-
-HasAssignActorRoles returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -211,6 +184,31 @@ SetEnvironment sets Environment field to given value.
 `func (o *ApplicationOIDCInternal) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
+
+### GetHiddenFromAppPortal
+
+`func (o *ApplicationOIDCInternal) GetHiddenFromAppPortal() bool`
+
+GetHiddenFromAppPortal returns the HiddenFromAppPortal field if non-nil, zero value otherwise.
+
+### GetHiddenFromAppPortalOk
+
+`func (o *ApplicationOIDCInternal) GetHiddenFromAppPortalOk() (*bool, bool)`
+
+GetHiddenFromAppPortalOk returns a tuple with the HiddenFromAppPortal field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHiddenFromAppPortal
+
+`func (o *ApplicationOIDCInternal) SetHiddenFromAppPortal(v bool)`
+
+SetHiddenFromAppPortal sets HiddenFromAppPortal field to given value.
+
+### HasHiddenFromAppPortal
+
+`func (o *ApplicationOIDCInternal) HasHiddenFromAppPortal() bool`
+
+HasHiddenFromAppPortal returns a boolean if a field has been set.
 
 ### GetIcon
 
@@ -327,31 +325,6 @@ and a boolean to check if the value has been set.
 SetProtocol sets Protocol field to given value.
 
 
-### GetTags
-
-`func (o *ApplicationOIDCInternal) GetTags() []EnumApplicationTags`
-
-GetTags returns the Tags field if non-nil, zero value otherwise.
-
-### GetTagsOk
-
-`func (o *ApplicationOIDCInternal) GetTagsOk() (*[]EnumApplicationTags, bool)`
-
-GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTags
-
-`func (o *ApplicationOIDCInternal) SetTags(v []EnumApplicationTags)`
-
-SetTags sets Tags field to given value.
-
-### HasTags
-
-`func (o *ApplicationOIDCInternal) HasTags() bool`
-
-HasTags returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *ApplicationOIDCInternal) GetType() EnumApplicationType`
@@ -396,31 +369,6 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *ApplicationOIDCInternal) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
-
-### GetSupportUnsignedRequestObject
-
-`func (o *ApplicationOIDCInternal) GetSupportUnsignedRequestObject() bool`
-
-GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field if non-nil, zero value otherwise.
-
-### GetSupportUnsignedRequestObjectOk
-
-`func (o *ApplicationOIDCInternal) GetSupportUnsignedRequestObjectOk() (*bool, bool)`
-
-GetSupportUnsignedRequestObjectOk returns a tuple with the SupportUnsignedRequestObject field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSupportUnsignedRequestObject
-
-`func (o *ApplicationOIDCInternal) SetSupportUnsignedRequestObject(v bool)`
-
-SetSupportUnsignedRequestObject sets SupportUnsignedRequestObject field to given value.
-
-### HasSupportUnsignedRequestObject
-
-`func (o *ApplicationOIDCInternal) HasSupportUnsignedRequestObject() bool`
-
-HasSupportUnsignedRequestObject returns a boolean if a field has been set.
 
 ### GetPkceEnforcement
 

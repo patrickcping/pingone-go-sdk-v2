@@ -15,8 +15,8 @@ import (
 	"time"
 )
 
-// ApplicationExternalLink struct for ApplicationExternalLink
-type ApplicationExternalLink struct {
+// ApplicationWSFED struct for ApplicationWSFED
+type ApplicationWSFED struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
 	// The time the resource was created.
@@ -39,34 +39,48 @@ type ApplicationExternalLink struct {
 	Type EnumApplicationType `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	// A string that specifies the custom home page URL for the application.
-	HomePageUrl string `json:"homePageUrl"`
+	// The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
+	AudienceRestriction *string `json:"audienceRestriction,omitempty"`
+	// The federated domain name (for example, the Azure custom domain).
+	DomainName string `json:"domainName"`
+	IdpSigning ApplicationWSFEDAllOfIdpSigning `json:"idpSigning"`
+	Kerberos *ApplicationWSFEDAllOfKerberos `json:"kerberos,omitempty"`
+	// The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests.
+	ReplyUrl string `json:"replyUrl"`
+	// The single logout endpoint URL.
+	SloEndpoint *string `json:"sloEndpoint,omitempty"`
 }
 
-// NewApplicationExternalLink instantiates a new ApplicationExternalLink object
+// NewApplicationWSFED instantiates a new ApplicationWSFED object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationExternalLink(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, homePageUrl string) *ApplicationExternalLink {
-	this := ApplicationExternalLink{}
+func NewApplicationWSFED(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, domainName string, idpSigning ApplicationWSFEDAllOfIdpSigning, replyUrl string) *ApplicationWSFED {
+	this := ApplicationWSFED{}
 	this.Enabled = enabled
 	this.Name = name
 	this.Protocol = protocol
 	this.Type = type_
-	this.HomePageUrl = homePageUrl
+	var audienceRestriction string = "urn:federation:MicrosoftOnline"
+	this.AudienceRestriction = &audienceRestriction
+	this.DomainName = domainName
+	this.IdpSigning = idpSigning
+	this.ReplyUrl = replyUrl
 	return &this
 }
 
-// NewApplicationExternalLinkWithDefaults instantiates a new ApplicationExternalLink object
+// NewApplicationWSFEDWithDefaults instantiates a new ApplicationWSFED object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewApplicationExternalLinkWithDefaults() *ApplicationExternalLink {
-	this := ApplicationExternalLink{}
+func NewApplicationWSFEDWithDefaults() *ApplicationWSFED {
+	this := ApplicationWSFED{}
+	var audienceRestriction string = "urn:federation:MicrosoftOnline"
+	this.AudienceRestriction = &audienceRestriction
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetLinks() map[string]interface{} {
+func (o *ApplicationWSFED) GetLinks() map[string]interface{} {
 	if o == nil || isNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
@@ -76,7 +90,7 @@ func (o *ApplicationExternalLink) GetLinks() map[string]interface{} {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetLinksOk() (map[string]interface{}, bool) {
+func (o *ApplicationWSFED) GetLinksOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Links) {
     return map[string]interface{}{}, false
 	}
@@ -84,7 +98,7 @@ func (o *ApplicationExternalLink) GetLinksOk() (map[string]interface{}, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasLinks() bool {
+func (o *ApplicationWSFED) HasLinks() bool {
 	if o != nil && !isNil(o.Links) {
 		return true
 	}
@@ -93,12 +107,12 @@ func (o *ApplicationExternalLink) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
-func (o *ApplicationExternalLink) SetLinks(v map[string]interface{}) {
+func (o *ApplicationWSFED) SetLinks(v map[string]interface{}) {
 	o.Links = v
 }
 
 // GetAccessControl returns the AccessControl field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetAccessControl() ApplicationAccessControl {
+func (o *ApplicationWSFED) GetAccessControl() ApplicationAccessControl {
 	if o == nil || isNil(o.AccessControl) {
 		var ret ApplicationAccessControl
 		return ret
@@ -108,7 +122,7 @@ func (o *ApplicationExternalLink) GetAccessControl() ApplicationAccessControl {
 
 // GetAccessControlOk returns a tuple with the AccessControl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetAccessControlOk() (*ApplicationAccessControl, bool) {
+func (o *ApplicationWSFED) GetAccessControlOk() (*ApplicationAccessControl, bool) {
 	if o == nil || isNil(o.AccessControl) {
     return nil, false
 	}
@@ -116,7 +130,7 @@ func (o *ApplicationExternalLink) GetAccessControlOk() (*ApplicationAccessContro
 }
 
 // HasAccessControl returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasAccessControl() bool {
+func (o *ApplicationWSFED) HasAccessControl() bool {
 	if o != nil && !isNil(o.AccessControl) {
 		return true
 	}
@@ -125,12 +139,12 @@ func (o *ApplicationExternalLink) HasAccessControl() bool {
 }
 
 // SetAccessControl gets a reference to the given ApplicationAccessControl and assigns it to the AccessControl field.
-func (o *ApplicationExternalLink) SetAccessControl(v ApplicationAccessControl) {
+func (o *ApplicationWSFED) SetAccessControl(v ApplicationAccessControl) {
 	o.AccessControl = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetCreatedAt() time.Time {
+func (o *ApplicationWSFED) GetCreatedAt() time.Time {
 	if o == nil || isNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
@@ -140,7 +154,7 @@ func (o *ApplicationExternalLink) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetCreatedAtOk() (*time.Time, bool) {
+func (o *ApplicationWSFED) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.CreatedAt) {
     return nil, false
 	}
@@ -148,7 +162,7 @@ func (o *ApplicationExternalLink) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasCreatedAt() bool {
+func (o *ApplicationWSFED) HasCreatedAt() bool {
 	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
@@ -157,12 +171,12 @@ func (o *ApplicationExternalLink) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *ApplicationExternalLink) SetCreatedAt(v time.Time) {
+func (o *ApplicationWSFED) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetDescription() string {
+func (o *ApplicationWSFED) GetDescription() string {
 	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
@@ -172,7 +186,7 @@ func (o *ApplicationExternalLink) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetDescriptionOk() (*string, bool) {
+func (o *ApplicationWSFED) GetDescriptionOk() (*string, bool) {
 	if o == nil || isNil(o.Description) {
     return nil, false
 	}
@@ -180,7 +194,7 @@ func (o *ApplicationExternalLink) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasDescription() bool {
+func (o *ApplicationWSFED) HasDescription() bool {
 	if o != nil && !isNil(o.Description) {
 		return true
 	}
@@ -189,12 +203,12 @@ func (o *ApplicationExternalLink) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *ApplicationExternalLink) SetDescription(v string) {
+func (o *ApplicationWSFED) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetEnabled returns the Enabled field value
-func (o *ApplicationExternalLink) GetEnabled() bool {
+func (o *ApplicationWSFED) GetEnabled() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -205,7 +219,7 @@ func (o *ApplicationExternalLink) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetEnabledOk() (*bool, bool) {
+func (o *ApplicationWSFED) GetEnabledOk() (*bool, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -213,12 +227,12 @@ func (o *ApplicationExternalLink) GetEnabledOk() (*bool, bool) {
 }
 
 // SetEnabled sets field value
-func (o *ApplicationExternalLink) SetEnabled(v bool) {
+func (o *ApplicationWSFED) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetEnvironment() ObjectEnvironment {
+func (o *ApplicationWSFED) GetEnvironment() ObjectEnvironment {
 	if o == nil || isNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
@@ -228,7 +242,7 @@ func (o *ApplicationExternalLink) GetEnvironment() ObjectEnvironment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+func (o *ApplicationWSFED) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || isNil(o.Environment) {
     return nil, false
 	}
@@ -236,7 +250,7 @@ func (o *ApplicationExternalLink) GetEnvironmentOk() (*ObjectEnvironment, bool) 
 }
 
 // HasEnvironment returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasEnvironment() bool {
+func (o *ApplicationWSFED) HasEnvironment() bool {
 	if o != nil && !isNil(o.Environment) {
 		return true
 	}
@@ -245,12 +259,12 @@ func (o *ApplicationExternalLink) HasEnvironment() bool {
 }
 
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *ApplicationExternalLink) SetEnvironment(v ObjectEnvironment) {
+func (o *ApplicationWSFED) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
 // GetHiddenFromAppPortal returns the HiddenFromAppPortal field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetHiddenFromAppPortal() bool {
+func (o *ApplicationWSFED) GetHiddenFromAppPortal() bool {
 	if o == nil || isNil(o.HiddenFromAppPortal) {
 		var ret bool
 		return ret
@@ -260,7 +274,7 @@ func (o *ApplicationExternalLink) GetHiddenFromAppPortal() bool {
 
 // GetHiddenFromAppPortalOk returns a tuple with the HiddenFromAppPortal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetHiddenFromAppPortalOk() (*bool, bool) {
+func (o *ApplicationWSFED) GetHiddenFromAppPortalOk() (*bool, bool) {
 	if o == nil || isNil(o.HiddenFromAppPortal) {
     return nil, false
 	}
@@ -268,7 +282,7 @@ func (o *ApplicationExternalLink) GetHiddenFromAppPortalOk() (*bool, bool) {
 }
 
 // HasHiddenFromAppPortal returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasHiddenFromAppPortal() bool {
+func (o *ApplicationWSFED) HasHiddenFromAppPortal() bool {
 	if o != nil && !isNil(o.HiddenFromAppPortal) {
 		return true
 	}
@@ -277,12 +291,12 @@ func (o *ApplicationExternalLink) HasHiddenFromAppPortal() bool {
 }
 
 // SetHiddenFromAppPortal gets a reference to the given bool and assigns it to the HiddenFromAppPortal field.
-func (o *ApplicationExternalLink) SetHiddenFromAppPortal(v bool) {
+func (o *ApplicationWSFED) SetHiddenFromAppPortal(v bool) {
 	o.HiddenFromAppPortal = &v
 }
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetIcon() ApplicationIcon {
+func (o *ApplicationWSFED) GetIcon() ApplicationIcon {
 	if o == nil || isNil(o.Icon) {
 		var ret ApplicationIcon
 		return ret
@@ -292,7 +306,7 @@ func (o *ApplicationExternalLink) GetIcon() ApplicationIcon {
 
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetIconOk() (*ApplicationIcon, bool) {
+func (o *ApplicationWSFED) GetIconOk() (*ApplicationIcon, bool) {
 	if o == nil || isNil(o.Icon) {
     return nil, false
 	}
@@ -300,7 +314,7 @@ func (o *ApplicationExternalLink) GetIconOk() (*ApplicationIcon, bool) {
 }
 
 // HasIcon returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasIcon() bool {
+func (o *ApplicationWSFED) HasIcon() bool {
 	if o != nil && !isNil(o.Icon) {
 		return true
 	}
@@ -309,12 +323,12 @@ func (o *ApplicationExternalLink) HasIcon() bool {
 }
 
 // SetIcon gets a reference to the given ApplicationIcon and assigns it to the Icon field.
-func (o *ApplicationExternalLink) SetIcon(v ApplicationIcon) {
+func (o *ApplicationWSFED) SetIcon(v ApplicationIcon) {
 	o.Icon = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetId() string {
+func (o *ApplicationWSFED) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -324,7 +338,7 @@ func (o *ApplicationExternalLink) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetIdOk() (*string, bool) {
+func (o *ApplicationWSFED) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
     return nil, false
 	}
@@ -332,7 +346,7 @@ func (o *ApplicationExternalLink) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasId() bool {
+func (o *ApplicationWSFED) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -341,12 +355,12 @@ func (o *ApplicationExternalLink) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ApplicationExternalLink) SetId(v string) {
+func (o *ApplicationWSFED) SetId(v string) {
 	o.Id = &v
 }
 
 // GetLoginPageUrl returns the LoginPageUrl field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetLoginPageUrl() string {
+func (o *ApplicationWSFED) GetLoginPageUrl() string {
 	if o == nil || isNil(o.LoginPageUrl) {
 		var ret string
 		return ret
@@ -356,7 +370,7 @@ func (o *ApplicationExternalLink) GetLoginPageUrl() string {
 
 // GetLoginPageUrlOk returns a tuple with the LoginPageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetLoginPageUrlOk() (*string, bool) {
+func (o *ApplicationWSFED) GetLoginPageUrlOk() (*string, bool) {
 	if o == nil || isNil(o.LoginPageUrl) {
     return nil, false
 	}
@@ -364,7 +378,7 @@ func (o *ApplicationExternalLink) GetLoginPageUrlOk() (*string, bool) {
 }
 
 // HasLoginPageUrl returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasLoginPageUrl() bool {
+func (o *ApplicationWSFED) HasLoginPageUrl() bool {
 	if o != nil && !isNil(o.LoginPageUrl) {
 		return true
 	}
@@ -373,12 +387,12 @@ func (o *ApplicationExternalLink) HasLoginPageUrl() bool {
 }
 
 // SetLoginPageUrl gets a reference to the given string and assigns it to the LoginPageUrl field.
-func (o *ApplicationExternalLink) SetLoginPageUrl(v string) {
+func (o *ApplicationWSFED) SetLoginPageUrl(v string) {
 	o.LoginPageUrl = &v
 }
 
 // GetName returns the Name field value
-func (o *ApplicationExternalLink) GetName() string {
+func (o *ApplicationWSFED) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -389,7 +403,7 @@ func (o *ApplicationExternalLink) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetNameOk() (*string, bool) {
+func (o *ApplicationWSFED) GetNameOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -397,12 +411,12 @@ func (o *ApplicationExternalLink) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *ApplicationExternalLink) SetName(v string) {
+func (o *ApplicationWSFED) SetName(v string) {
 	o.Name = v
 }
 
 // GetProtocol returns the Protocol field value
-func (o *ApplicationExternalLink) GetProtocol() EnumApplicationProtocol {
+func (o *ApplicationWSFED) GetProtocol() EnumApplicationProtocol {
 	if o == nil {
 		var ret EnumApplicationProtocol
 		return ret
@@ -413,7 +427,7 @@ func (o *ApplicationExternalLink) GetProtocol() EnumApplicationProtocol {
 
 // GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetProtocolOk() (*EnumApplicationProtocol, bool) {
+func (o *ApplicationWSFED) GetProtocolOk() (*EnumApplicationProtocol, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -421,12 +435,12 @@ func (o *ApplicationExternalLink) GetProtocolOk() (*EnumApplicationProtocol, boo
 }
 
 // SetProtocol sets field value
-func (o *ApplicationExternalLink) SetProtocol(v EnumApplicationProtocol) {
+func (o *ApplicationWSFED) SetProtocol(v EnumApplicationProtocol) {
 	o.Protocol = v
 }
 
 // GetType returns the Type field value
-func (o *ApplicationExternalLink) GetType() EnumApplicationType {
+func (o *ApplicationWSFED) GetType() EnumApplicationType {
 	if o == nil {
 		var ret EnumApplicationType
 		return ret
@@ -437,7 +451,7 @@ func (o *ApplicationExternalLink) GetType() EnumApplicationType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetTypeOk() (*EnumApplicationType, bool) {
+func (o *ApplicationWSFED) GetTypeOk() (*EnumApplicationType, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -445,12 +459,12 @@ func (o *ApplicationExternalLink) GetTypeOk() (*EnumApplicationType, bool) {
 }
 
 // SetType sets field value
-func (o *ApplicationExternalLink) SetType(v EnumApplicationType) {
+func (o *ApplicationWSFED) SetType(v EnumApplicationType) {
 	o.Type = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ApplicationExternalLink) GetUpdatedAt() time.Time {
+func (o *ApplicationWSFED) GetUpdatedAt() time.Time {
 	if o == nil || isNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
@@ -460,7 +474,7 @@ func (o *ApplicationExternalLink) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *ApplicationWSFED) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.UpdatedAt) {
     return nil, false
 	}
@@ -468,7 +482,7 @@ func (o *ApplicationExternalLink) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *ApplicationExternalLink) HasUpdatedAt() bool {
+func (o *ApplicationWSFED) HasUpdatedAt() bool {
 	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
@@ -477,35 +491,179 @@ func (o *ApplicationExternalLink) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *ApplicationExternalLink) SetUpdatedAt(v time.Time) {
+func (o *ApplicationWSFED) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetHomePageUrl returns the HomePageUrl field value
-func (o *ApplicationExternalLink) GetHomePageUrl() string {
+// GetAudienceRestriction returns the AudienceRestriction field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetAudienceRestriction() string {
+	if o == nil || isNil(o.AudienceRestriction) {
+		var ret string
+		return ret
+	}
+	return *o.AudienceRestriction
+}
+
+// GetAudienceRestrictionOk returns a tuple with the AudienceRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetAudienceRestrictionOk() (*string, bool) {
+	if o == nil || isNil(o.AudienceRestriction) {
+    return nil, false
+	}
+	return o.AudienceRestriction, true
+}
+
+// HasAudienceRestriction returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasAudienceRestriction() bool {
+	if o != nil && !isNil(o.AudienceRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetAudienceRestriction gets a reference to the given string and assigns it to the AudienceRestriction field.
+func (o *ApplicationWSFED) SetAudienceRestriction(v string) {
+	o.AudienceRestriction = &v
+}
+
+// GetDomainName returns the DomainName field value
+func (o *ApplicationWSFED) GetDomainName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.HomePageUrl
+	return o.DomainName
 }
 
-// GetHomePageUrlOk returns a tuple with the HomePageUrl field value
+// GetDomainNameOk returns a tuple with the DomainName field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationExternalLink) GetHomePageUrlOk() (*string, bool) {
+func (o *ApplicationWSFED) GetDomainNameOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
-	return &o.HomePageUrl, true
+	return &o.DomainName, true
 }
 
-// SetHomePageUrl sets field value
-func (o *ApplicationExternalLink) SetHomePageUrl(v string) {
-	o.HomePageUrl = v
+// SetDomainName sets field value
+func (o *ApplicationWSFED) SetDomainName(v string) {
+	o.DomainName = v
 }
 
-func (o ApplicationExternalLink) MarshalJSON() ([]byte, error) {
+// GetIdpSigning returns the IdpSigning field value
+func (o *ApplicationWSFED) GetIdpSigning() ApplicationWSFEDAllOfIdpSigning {
+	if o == nil {
+		var ret ApplicationWSFEDAllOfIdpSigning
+		return ret
+	}
+
+	return o.IdpSigning
+}
+
+// GetIdpSigningOk returns a tuple with the IdpSigning field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetIdpSigningOk() (*ApplicationWSFEDAllOfIdpSigning, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.IdpSigning, true
+}
+
+// SetIdpSigning sets field value
+func (o *ApplicationWSFED) SetIdpSigning(v ApplicationWSFEDAllOfIdpSigning) {
+	o.IdpSigning = v
+}
+
+// GetKerberos returns the Kerberos field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetKerberos() ApplicationWSFEDAllOfKerberos {
+	if o == nil || isNil(o.Kerberos) {
+		var ret ApplicationWSFEDAllOfKerberos
+		return ret
+	}
+	return *o.Kerberos
+}
+
+// GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetKerberosOk() (*ApplicationWSFEDAllOfKerberos, bool) {
+	if o == nil || isNil(o.Kerberos) {
+    return nil, false
+	}
+	return o.Kerberos, true
+}
+
+// HasKerberos returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasKerberos() bool {
+	if o != nil && !isNil(o.Kerberos) {
+		return true
+	}
+
+	return false
+}
+
+// SetKerberos gets a reference to the given ApplicationWSFEDAllOfKerberos and assigns it to the Kerberos field.
+func (o *ApplicationWSFED) SetKerberos(v ApplicationWSFEDAllOfKerberos) {
+	o.Kerberos = &v
+}
+
+// GetReplyUrl returns the ReplyUrl field value
+func (o *ApplicationWSFED) GetReplyUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ReplyUrl
+}
+
+// GetReplyUrlOk returns a tuple with the ReplyUrl field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetReplyUrlOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.ReplyUrl, true
+}
+
+// SetReplyUrl sets field value
+func (o *ApplicationWSFED) SetReplyUrl(v string) {
+	o.ReplyUrl = v
+}
+
+// GetSloEndpoint returns the SloEndpoint field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetSloEndpoint() string {
+	if o == nil || isNil(o.SloEndpoint) {
+		var ret string
+		return ret
+	}
+	return *o.SloEndpoint
+}
+
+// GetSloEndpointOk returns a tuple with the SloEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetSloEndpointOk() (*string, bool) {
+	if o == nil || isNil(o.SloEndpoint) {
+    return nil, false
+	}
+	return o.SloEndpoint, true
+}
+
+// HasSloEndpoint returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasSloEndpoint() bool {
+	if o != nil && !isNil(o.SloEndpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetSloEndpoint gets a reference to the given string and assigns it to the SloEndpoint field.
+func (o *ApplicationWSFED) SetSloEndpoint(v string) {
+	o.SloEndpoint = &v
+}
+
+func (o ApplicationWSFED) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
@@ -549,44 +707,59 @@ func (o ApplicationExternalLink) MarshalJSON() ([]byte, error) {
 	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
+	if !isNil(o.AudienceRestriction) {
+		toSerialize["audienceRestriction"] = o.AudienceRestriction
+	}
 	if true {
-		toSerialize["homePageUrl"] = o.HomePageUrl
+		toSerialize["domainName"] = o.DomainName
+	}
+	if true {
+		toSerialize["idpSigning"] = o.IdpSigning
+	}
+	if !isNil(o.Kerberos) {
+		toSerialize["kerberos"] = o.Kerberos
+	}
+	if true {
+		toSerialize["replyUrl"] = o.ReplyUrl
+	}
+	if !isNil(o.SloEndpoint) {
+		toSerialize["sloEndpoint"] = o.SloEndpoint
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableApplicationExternalLink struct {
-	value *ApplicationExternalLink
+type NullableApplicationWSFED struct {
+	value *ApplicationWSFED
 	isSet bool
 }
 
-func (v NullableApplicationExternalLink) Get() *ApplicationExternalLink {
+func (v NullableApplicationWSFED) Get() *ApplicationWSFED {
 	return v.value
 }
 
-func (v *NullableApplicationExternalLink) Set(val *ApplicationExternalLink) {
+func (v *NullableApplicationWSFED) Set(val *ApplicationWSFED) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableApplicationExternalLink) IsSet() bool {
+func (v NullableApplicationWSFED) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableApplicationExternalLink) Unset() {
+func (v *NullableApplicationWSFED) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableApplicationExternalLink(val *ApplicationExternalLink) *NullableApplicationExternalLink {
-	return &NullableApplicationExternalLink{value: val, isSet: true}
+func NewNullableApplicationWSFED(val *ApplicationWSFED) *NullableApplicationWSFED {
+	return &NullableApplicationWSFED{value: val, isSet: true}
 }
 
-func (v NullableApplicationExternalLink) MarshalJSON() ([]byte, error) {
+func (v NullableApplicationWSFED) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableApplicationExternalLink) UnmarshalJSON(src []byte) error {
+func (v *NullableApplicationWSFED) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

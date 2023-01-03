@@ -19,8 +19,6 @@ import (
 type ApplicationOIDC struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
-	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
-	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the application.
@@ -28,6 +26,8 @@ type ApplicationOIDC struct {
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
 	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// A boolean to specify whether the application is hidden in the application portal despite the configured group access policy.
+	HiddenFromAppPortal *bool `json:"hiddenFromAppPortal,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
@@ -36,13 +36,13 @@ type ApplicationOIDC struct {
 	// A string that specifies the name of the application. This is a required property.
 	Name string `json:"name"`
 	Protocol EnumApplicationProtocol `json:"protocol"`
-	// An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
-	Tags []EnumApplicationTags `json:"tags,omitempty"`
 	Type EnumApplicationType `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
-	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
+	// A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri).
+	AllowWildcardInRedirectUri *bool `json:"allowWildcardInRedirectUri,omitempty"`
+	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
+	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
 	Mobile *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
 	// A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
 	BundleId *string `json:"bundleId,omitempty"`
@@ -53,17 +53,27 @@ type ApplicationOIDC struct {
 	GrantTypes []EnumApplicationOIDCGrantType `json:"grantTypes"`
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl *string `json:"homePageUrl,omitempty"`
+	// A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information.
+	InitiateLoginUri *string `json:"initiateLoginUri,omitempty"`
 	PkceEnforcement *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
 	// A string that specifies the URLs that the browser can be redirected to after logout.
 	PostLogoutRedirectUris []string `json:"postLogoutRedirectUris,omitempty"`
 	// A string that specifies the callback URI for the authentication response.
 	RedirectUris []string `json:"redirectUris,omitempty"`
-	// An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the refreshTokenRollingDuration property is specified for the application, then this property must be less than or equal to the value of refreshTokenRollingDuration. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token.
+	// An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the `refreshTokenRollingDuration` property is specified for the application, then this property must be less than or equal to the value of `refreshTokenRollingDuration`. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token.
 	RefreshTokenDuration *int32 `json:"refreshTokenDuration,omitempty"`
 	// An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token.
 	RefreshTokenRollingDuration *int32 `json:"refreshTokenRollingDuration,omitempty"`
+	// The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0.
+	RefreshTokenRollingGracePeriodDuration *int32 `json:"refreshTokenRollingGracePeriodDuration,omitempty"`
 	// A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
 	ResponseTypes []EnumApplicationOIDCResponseType `json:"responseTypes,omitempty"`
+	// A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
+	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
+	// An array that specifies the list of labels associated with the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only applicable for creating worker applications.
+	Tags []EnumApplicationTags `json:"tags,omitempty"`
+	// The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
+	TargetLinkUri *string `json:"targetLinkUri,omitempty"`
 	TokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
 }
 
@@ -78,6 +88,8 @@ func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProto
 	this.Protocol = protocol
 	this.Type = type_
 	this.GrantTypes = grantTypes
+	var refreshTokenDuration int32 = 2592000
+	this.RefreshTokenDuration = &refreshTokenDuration
 	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
 	return &this
 }
@@ -87,6 +99,8 @@ func NewApplicationOIDC(enabled bool, name string, protocol EnumApplicationProto
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationOIDCWithDefaults() *ApplicationOIDC {
 	this := ApplicationOIDC{}
+	var refreshTokenDuration int32 = 2592000
+	this.RefreshTokenDuration = &refreshTokenDuration
 	return &this
 }
 
@@ -152,38 +166,6 @@ func (o *ApplicationOIDC) HasAccessControl() bool {
 // SetAccessControl gets a reference to the given ApplicationAccessControl and assigns it to the AccessControl field.
 func (o *ApplicationOIDC) SetAccessControl(v ApplicationAccessControl) {
 	o.AccessControl = &v
-}
-
-// GetAssignActorRoles returns the AssignActorRoles field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetAssignActorRoles() bool {
-	if o == nil || isNil(o.AssignActorRoles) {
-		var ret bool
-		return ret
-	}
-	return *o.AssignActorRoles
-}
-
-// GetAssignActorRolesOk returns a tuple with the AssignActorRoles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetAssignActorRolesOk() (*bool, bool) {
-	if o == nil || isNil(o.AssignActorRoles) {
-    return nil, false
-	}
-	return o.AssignActorRoles, true
-}
-
-// HasAssignActorRoles returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasAssignActorRoles() bool {
-	if o != nil && !isNil(o.AssignActorRoles) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssignActorRoles gets a reference to the given bool and assigns it to the AssignActorRoles field.
-func (o *ApplicationOIDC) SetAssignActorRoles(v bool) {
-	o.AssignActorRoles = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -304,6 +286,38 @@ func (o *ApplicationOIDC) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *ApplicationOIDC) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetHiddenFromAppPortal returns the HiddenFromAppPortal field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetHiddenFromAppPortal() bool {
+	if o == nil || isNil(o.HiddenFromAppPortal) {
+		var ret bool
+		return ret
+	}
+	return *o.HiddenFromAppPortal
+}
+
+// GetHiddenFromAppPortalOk returns a tuple with the HiddenFromAppPortal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetHiddenFromAppPortalOk() (*bool, bool) {
+	if o == nil || isNil(o.HiddenFromAppPortal) {
+    return nil, false
+	}
+	return o.HiddenFromAppPortal, true
+}
+
+// HasHiddenFromAppPortal returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasHiddenFromAppPortal() bool {
+	if o != nil && !isNil(o.HiddenFromAppPortal) {
+		return true
+	}
+
+	return false
+}
+
+// SetHiddenFromAppPortal gets a reference to the given bool and assigns it to the HiddenFromAppPortal field.
+func (o *ApplicationOIDC) SetHiddenFromAppPortal(v bool) {
+	o.HiddenFromAppPortal = &v
 }
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
@@ -450,38 +464,6 @@ func (o *ApplicationOIDC) SetProtocol(v EnumApplicationProtocol) {
 	o.Protocol = v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetTags() []EnumApplicationTags {
-	if o == nil || isNil(o.Tags) {
-		var ret []EnumApplicationTags
-		return ret
-	}
-	return o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetTagsOk() ([]EnumApplicationTags, bool) {
-	if o == nil || isNil(o.Tags) {
-    return nil, false
-	}
-	return o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given []EnumApplicationTags and assigns it to the Tags field.
-func (o *ApplicationOIDC) SetTags(v []EnumApplicationTags) {
-	o.Tags = v
-}
-
 // GetType returns the Type field value
 func (o *ApplicationOIDC) GetType() EnumApplicationType {
 	if o == nil {
@@ -538,36 +520,68 @@ func (o *ApplicationOIDC) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
-func (o *ApplicationOIDC) GetSupportUnsignedRequestObject() bool {
-	if o == nil || isNil(o.SupportUnsignedRequestObject) {
+// GetAllowWildcardInRedirectUri returns the AllowWildcardInRedirectUri field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetAllowWildcardInRedirectUri() bool {
+	if o == nil || isNil(o.AllowWildcardInRedirectUri) {
 		var ret bool
 		return ret
 	}
-	return *o.SupportUnsignedRequestObject
+	return *o.AllowWildcardInRedirectUri
 }
 
-// GetSupportUnsignedRequestObjectOk returns a tuple with the SupportUnsignedRequestObject field value if set, nil otherwise
+// GetAllowWildcardInRedirectUriOk returns a tuple with the AllowWildcardInRedirectUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDC) GetSupportUnsignedRequestObjectOk() (*bool, bool) {
-	if o == nil || isNil(o.SupportUnsignedRequestObject) {
+func (o *ApplicationOIDC) GetAllowWildcardInRedirectUriOk() (*bool, bool) {
+	if o == nil || isNil(o.AllowWildcardInRedirectUri) {
     return nil, false
 	}
-	return o.SupportUnsignedRequestObject, true
+	return o.AllowWildcardInRedirectUri, true
 }
 
-// HasSupportUnsignedRequestObject returns a boolean if a field has been set.
-func (o *ApplicationOIDC) HasSupportUnsignedRequestObject() bool {
-	if o != nil && !isNil(o.SupportUnsignedRequestObject) {
+// HasAllowWildcardInRedirectUri returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasAllowWildcardInRedirectUri() bool {
+	if o != nil && !isNil(o.AllowWildcardInRedirectUri) {
 		return true
 	}
 
 	return false
 }
 
-// SetSupportUnsignedRequestObject gets a reference to the given bool and assigns it to the SupportUnsignedRequestObject field.
-func (o *ApplicationOIDC) SetSupportUnsignedRequestObject(v bool) {
-	o.SupportUnsignedRequestObject = &v
+// SetAllowWildcardInRedirectUri gets a reference to the given bool and assigns it to the AllowWildcardInRedirectUri field.
+func (o *ApplicationOIDC) SetAllowWildcardInRedirectUri(v bool) {
+	o.AllowWildcardInRedirectUri = &v
+}
+
+// GetAssignActorRoles returns the AssignActorRoles field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetAssignActorRoles() bool {
+	if o == nil || isNil(o.AssignActorRoles) {
+		var ret bool
+		return ret
+	}
+	return *o.AssignActorRoles
+}
+
+// GetAssignActorRolesOk returns a tuple with the AssignActorRoles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetAssignActorRolesOk() (*bool, bool) {
+	if o == nil || isNil(o.AssignActorRoles) {
+    return nil, false
+	}
+	return o.AssignActorRoles, true
+}
+
+// HasAssignActorRoles returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasAssignActorRoles() bool {
+	if o != nil && !isNil(o.AssignActorRoles) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssignActorRoles gets a reference to the given bool and assigns it to the AssignActorRoles field.
+func (o *ApplicationOIDC) SetAssignActorRoles(v bool) {
+	o.AssignActorRoles = &v
 }
 
 // GetMobile returns the Mobile field value if set, zero value otherwise.
@@ -754,6 +768,38 @@ func (o *ApplicationOIDC) SetHomePageUrl(v string) {
 	o.HomePageUrl = &v
 }
 
+// GetInitiateLoginUri returns the InitiateLoginUri field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetInitiateLoginUri() string {
+	if o == nil || isNil(o.InitiateLoginUri) {
+		var ret string
+		return ret
+	}
+	return *o.InitiateLoginUri
+}
+
+// GetInitiateLoginUriOk returns a tuple with the InitiateLoginUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetInitiateLoginUriOk() (*string, bool) {
+	if o == nil || isNil(o.InitiateLoginUri) {
+    return nil, false
+	}
+	return o.InitiateLoginUri, true
+}
+
+// HasInitiateLoginUri returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasInitiateLoginUri() bool {
+	if o != nil && !isNil(o.InitiateLoginUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetInitiateLoginUri gets a reference to the given string and assigns it to the InitiateLoginUri field.
+func (o *ApplicationOIDC) SetInitiateLoginUri(v string) {
+	o.InitiateLoginUri = &v
+}
+
 // GetPkceEnforcement returns the PkceEnforcement field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetPkceEnforcement() EnumApplicationOIDCPKCEOption {
 	if o == nil || isNil(o.PkceEnforcement) {
@@ -914,6 +960,38 @@ func (o *ApplicationOIDC) SetRefreshTokenRollingDuration(v int32) {
 	o.RefreshTokenRollingDuration = &v
 }
 
+// GetRefreshTokenRollingGracePeriodDuration returns the RefreshTokenRollingGracePeriodDuration field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetRefreshTokenRollingGracePeriodDuration() int32 {
+	if o == nil || isNil(o.RefreshTokenRollingGracePeriodDuration) {
+		var ret int32
+		return ret
+	}
+	return *o.RefreshTokenRollingGracePeriodDuration
+}
+
+// GetRefreshTokenRollingGracePeriodDurationOk returns a tuple with the RefreshTokenRollingGracePeriodDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetRefreshTokenRollingGracePeriodDurationOk() (*int32, bool) {
+	if o == nil || isNil(o.RefreshTokenRollingGracePeriodDuration) {
+    return nil, false
+	}
+	return o.RefreshTokenRollingGracePeriodDuration, true
+}
+
+// HasRefreshTokenRollingGracePeriodDuration returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasRefreshTokenRollingGracePeriodDuration() bool {
+	if o != nil && !isNil(o.RefreshTokenRollingGracePeriodDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetRefreshTokenRollingGracePeriodDuration gets a reference to the given int32 and assigns it to the RefreshTokenRollingGracePeriodDuration field.
+func (o *ApplicationOIDC) SetRefreshTokenRollingGracePeriodDuration(v int32) {
+	o.RefreshTokenRollingGracePeriodDuration = &v
+}
+
 // GetResponseTypes returns the ResponseTypes field value if set, zero value otherwise.
 func (o *ApplicationOIDC) GetResponseTypes() []EnumApplicationOIDCResponseType {
 	if o == nil || isNil(o.ResponseTypes) {
@@ -944,6 +1022,102 @@ func (o *ApplicationOIDC) HasResponseTypes() bool {
 // SetResponseTypes gets a reference to the given []EnumApplicationOIDCResponseType and assigns it to the ResponseTypes field.
 func (o *ApplicationOIDC) SetResponseTypes(v []EnumApplicationOIDCResponseType) {
 	o.ResponseTypes = v
+}
+
+// GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetSupportUnsignedRequestObject() bool {
+	if o == nil || isNil(o.SupportUnsignedRequestObject) {
+		var ret bool
+		return ret
+	}
+	return *o.SupportUnsignedRequestObject
+}
+
+// GetSupportUnsignedRequestObjectOk returns a tuple with the SupportUnsignedRequestObject field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetSupportUnsignedRequestObjectOk() (*bool, bool) {
+	if o == nil || isNil(o.SupportUnsignedRequestObject) {
+    return nil, false
+	}
+	return o.SupportUnsignedRequestObject, true
+}
+
+// HasSupportUnsignedRequestObject returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasSupportUnsignedRequestObject() bool {
+	if o != nil && !isNil(o.SupportUnsignedRequestObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportUnsignedRequestObject gets a reference to the given bool and assigns it to the SupportUnsignedRequestObject field.
+func (o *ApplicationOIDC) SetSupportUnsignedRequestObject(v bool) {
+	o.SupportUnsignedRequestObject = &v
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetTags() []EnumApplicationTags {
+	if o == nil || isNil(o.Tags) {
+		var ret []EnumApplicationTags
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetTagsOk() ([]EnumApplicationTags, bool) {
+	if o == nil || isNil(o.Tags) {
+    return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasTags() bool {
+	if o != nil && !isNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []EnumApplicationTags and assigns it to the Tags field.
+func (o *ApplicationOIDC) SetTags(v []EnumApplicationTags) {
+	o.Tags = v
+}
+
+// GetTargetLinkUri returns the TargetLinkUri field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetTargetLinkUri() string {
+	if o == nil || isNil(o.TargetLinkUri) {
+		var ret string
+		return ret
+	}
+	return *o.TargetLinkUri
+}
+
+// GetTargetLinkUriOk returns a tuple with the TargetLinkUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetTargetLinkUriOk() (*string, bool) {
+	if o == nil || isNil(o.TargetLinkUri) {
+    return nil, false
+	}
+	return o.TargetLinkUri, true
+}
+
+// HasTargetLinkUri returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasTargetLinkUri() bool {
+	if o != nil && !isNil(o.TargetLinkUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetLinkUri gets a reference to the given string and assigns it to the TargetLinkUri field.
+func (o *ApplicationOIDC) SetTargetLinkUri(v string) {
+	o.TargetLinkUri = &v
 }
 
 // GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field value
@@ -978,9 +1152,6 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if !isNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	if !isNil(o.AssignActorRoles) {
-		toSerialize["assignActorRoles"] = o.AssignActorRoles
-	}
 	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
@@ -992,6 +1163,9 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
+	}
+	if !isNil(o.HiddenFromAppPortal) {
+		toSerialize["hiddenFromAppPortal"] = o.HiddenFromAppPortal
 	}
 	if !isNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
@@ -1008,17 +1182,17 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if !isNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
 	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
-	if !isNil(o.SupportUnsignedRequestObject) {
-		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
+	if !isNil(o.AllowWildcardInRedirectUri) {
+		toSerialize["allowWildcardInRedirectUri"] = o.AllowWildcardInRedirectUri
+	}
+	if !isNil(o.AssignActorRoles) {
+		toSerialize["assignActorRoles"] = o.AssignActorRoles
 	}
 	if !isNil(o.Mobile) {
 		toSerialize["mobile"] = o.Mobile
@@ -1038,6 +1212,9 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if !isNil(o.HomePageUrl) {
 		toSerialize["homePageUrl"] = o.HomePageUrl
 	}
+	if !isNil(o.InitiateLoginUri) {
+		toSerialize["initiateLoginUri"] = o.InitiateLoginUri
+	}
 	if !isNil(o.PkceEnforcement) {
 		toSerialize["pkceEnforcement"] = o.PkceEnforcement
 	}
@@ -1053,8 +1230,20 @@ func (o ApplicationOIDC) MarshalJSON() ([]byte, error) {
 	if !isNil(o.RefreshTokenRollingDuration) {
 		toSerialize["refreshTokenRollingDuration"] = o.RefreshTokenRollingDuration
 	}
+	if !isNil(o.RefreshTokenRollingGracePeriodDuration) {
+		toSerialize["refreshTokenRollingGracePeriodDuration"] = o.RefreshTokenRollingGracePeriodDuration
+	}
 	if !isNil(o.ResponseTypes) {
 		toSerialize["responseTypes"] = o.ResponseTypes
+	}
+	if !isNil(o.SupportUnsignedRequestObject) {
+		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
+	}
+	if !isNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
+	}
+	if !isNil(o.TargetLinkUri) {
+		toSerialize["targetLinkUri"] = o.TargetLinkUri
 	}
 	if true {
 		toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
