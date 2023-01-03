@@ -8,7 +8,8 @@ import (
 	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
 )
 
-func TestAccAPIClient_Success(t *testing.T) {
+// Credentials
+func TestAccAPIClient_Creds_Success(t *testing.T) {
 	t.Parallel()
 
 	var ctx = context.Background()
@@ -47,7 +48,7 @@ func TestAccAPIClient_Success(t *testing.T) {
 	}
 }
 
-func TestAccAPIClient_MissingClientID(t *testing.T) {
+func TestAccAPIClient_Creds_MissingClientID(t *testing.T) {
 	t.Parallel()
 
 	var ctx = context.Background()
@@ -66,7 +67,7 @@ func TestAccAPIClient_MissingClientID(t *testing.T) {
 	}
 }
 
-func TestAccAPIClient_MissingClientSecret(t *testing.T) {
+func TestAccAPIClient_Creds_MissingClientSecret(t *testing.T) {
 	t.Parallel()
 
 	var ctx = context.Background()
@@ -85,7 +86,7 @@ func TestAccAPIClient_MissingClientSecret(t *testing.T) {
 	}
 }
 
-func TestAccAPIClient_MissingClientEnvironment(t *testing.T) {
+func TestAccAPIClient_Creds_MissingClientEnvironment(t *testing.T) {
 	t.Parallel()
 
 	var ctx = context.Background()
@@ -104,7 +105,7 @@ func TestAccAPIClient_MissingClientEnvironment(t *testing.T) {
 	}
 }
 
-func TestAccAPIClient_MissingClientRegion(t *testing.T) {
+func TestAccAPIClient_Creds_MissingClientRegion(t *testing.T) {
 	t.Parallel()
 
 	var ctx = context.Background()
@@ -123,7 +124,7 @@ func TestAccAPIClient_MissingClientRegion(t *testing.T) {
 	}
 }
 
-func TestAccAPIClient_FailedAuth(t *testing.T) {
+func TestAccAPIClient_Creds_FailedAuth(t *testing.T) {
 	t.Parallel()
 
 	var ctx = context.Background()
@@ -142,7 +143,7 @@ func TestAccAPIClient_FailedAuth(t *testing.T) {
 	}
 }
 
-func TestAccAPIClient_BadRegion(t *testing.T) {
+func TestAccAPIClient_Creds_BadRegion(t *testing.T) {
 	t.Parallel()
 
 	var ctx = context.Background()
@@ -158,5 +159,43 @@ func TestAccAPIClient_BadRegion(t *testing.T) {
 
 	if err == nil || client != nil {
 		t.Fatalf("Client not expected to be successfully retrieved")
+	}
+}
+
+// Access token
+func TestAccAPIClient_AT_Success(t *testing.T) {
+	t.Parallel()
+
+	var ctx = context.Background()
+
+	config := &Config{
+		AccessToken: "DummyToken",
+		Region:      os.Getenv("PINGONE_REGION"),
+	}
+
+	client, err := config.APIClient(ctx)
+
+	if err != nil {
+		t.Fatalf("Client not successfully retrieved")
+	}
+
+	if client.AuthorizeAPIClient == nil {
+		t.Fatalf("Authorize Client not successfully retrieved")
+	}
+
+	if client.ManagementAPIClient == nil {
+		t.Fatalf("Management Client not successfully retrieved")
+	}
+
+	if client.MFAAPIClient == nil {
+		t.Fatalf("MFA Client not successfully retrieved")
+	}
+
+	if client.RiskAPIClient == nil {
+		t.Fatalf("Risk Client not successfully retrieved")
+	}
+
+	if client.Region != model.FindRegionByName(os.Getenv("PINGONE_REGION")) {
+		t.Fatalf("Unexpected region.  Expected %s, got %v", os.Getenv("PINGONE_REGION"), client.Region)
 	}
 }

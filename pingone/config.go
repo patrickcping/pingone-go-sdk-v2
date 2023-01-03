@@ -9,11 +9,16 @@ import (
 )
 
 type Config struct {
-	ClientID      string
-	ClientSecret  string
-	EnvironmentID string
-	AccessToken   string
-	Region        string
+	ClientID                   string
+	ClientSecret               string
+	EnvironmentID              string
+	AccessToken                string
+	Region                     string
+	AuthEndpoint               string
+	ApiEndpoint                string
+	UseDefaultProfile          bool
+	Profile                    string
+	ProfileCredentialsFilePath string
 }
 
 type Client struct {
@@ -22,4 +27,13 @@ type Client struct {
 	MFAAPIClient        *mfa.APIClient
 	RiskAPIClient       *risk.APIClient
 	Region              model.RegionMapping
+}
+
+type ProfileConfig struct {
+	ClientID      string
+	ClientSecret  string
+	EnvironmentID string
+	Region        string
+	AuthEndpoint  string
+	ApiEndpoint   string
 }
