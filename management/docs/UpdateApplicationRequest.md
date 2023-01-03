@@ -21,11 +21,11 @@ Name | Type | Description | Notes
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
 **AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
-**IdpSigning** | Pointer to [**ApplicationSAMLAllOfIdpSigning**](ApplicationSAMLAllOfIdpSigning.md) |  | [optional] 
+**IdpSigning** | [**ApplicationWSFEDAllOfIdpSigning**](ApplicationWSFEDAllOfIdpSigning.md) |  | 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False. | [optional] 
 **SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
-**SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
+**SloEndpoint** | Pointer to **string** | The single logout endpoint URL. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
-**Kerberos** | Pointer to [**ApplicationOIDCAllOfKerberos**](ApplicationOIDCAllOfKerberos.md) |  | [optional] 
+**Kerberos** | Pointer to [**ApplicationWSFEDAllOfKerberos**](ApplicationWSFEDAllOfKerberos.md) |  | [optional] 
 **GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
 **HomePageUrl** | **string** | A string that specifies the custom home page URL for the application. | 
 **InitiateLoginUri** | Pointer to **string** | A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information. | [optional] 
@@ -49,6 +49,9 @@ Name | Type | Description | Notes
 **Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are &#x60;PING_FED_CONNECTION_INTEGRATION&#x60;.  Only applicable for creating worker applications. | [optional] 
 **TargetLinkUri** | Pointer to **string** | The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the &#x60;target_link_uri&#x60; parameter used for the Initiate Single Sign-On URL field. | [optional] 
 **TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
+**AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
+**DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
+**ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
 **ApplyDefaultTheme** | **bool** | If &#x60;true&#x60;, applies the default theme to the self service application. | 
 **EnableDefaultThemeFooter** | Pointer to **bool** | If &#x60;true&#x60;, shows the default theme footer on the self service application. Applies only if &#x60;applyDefaultTheme&#x60; is also &#x60;true&#x60;. | [optional] 
 
@@ -56,7 +59,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateApplicationRequest
 
-`func NewUpdateApplicationRequest(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, acsUrls []string, assertionDuration int32, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, homePageUrl string, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, applyDefaultTheme bool, ) *UpdateApplicationRequest`
+`func NewUpdateApplicationRequest(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, acsUrls []string, assertionDuration int32, idpSigning ApplicationWSFEDAllOfIdpSigning, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, homePageUrl string, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, domainName string, replyUrl string, applyDefaultTheme bool, ) *UpdateApplicationRequest`
 
 NewUpdateApplicationRequest instantiates a new UpdateApplicationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -468,28 +471,23 @@ HasAssertionSigned returns a boolean if a field has been set.
 
 ### GetIdpSigning
 
-`func (o *UpdateApplicationRequest) GetIdpSigning() ApplicationSAMLAllOfIdpSigning`
+`func (o *UpdateApplicationRequest) GetIdpSigning() ApplicationWSFEDAllOfIdpSigning`
 
 GetIdpSigning returns the IdpSigning field if non-nil, zero value otherwise.
 
 ### GetIdpSigningOk
 
-`func (o *UpdateApplicationRequest) GetIdpSigningOk() (*ApplicationSAMLAllOfIdpSigning, bool)`
+`func (o *UpdateApplicationRequest) GetIdpSigningOk() (*ApplicationWSFEDAllOfIdpSigning, bool)`
 
 GetIdpSigningOk returns a tuple with the IdpSigning field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdpSigning
 
-`func (o *UpdateApplicationRequest) SetIdpSigning(v ApplicationSAMLAllOfIdpSigning)`
+`func (o *UpdateApplicationRequest) SetIdpSigning(v ApplicationWSFEDAllOfIdpSigning)`
 
 SetIdpSigning sets IdpSigning field to given value.
 
-### HasIdpSigning
-
-`func (o *UpdateApplicationRequest) HasIdpSigning() bool`
-
-HasIdpSigning returns a boolean if a field has been set.
 
 ### GetNameIdFormat
 
@@ -788,20 +786,20 @@ HasPackageName returns a boolean if a field has been set.
 
 ### GetKerberos
 
-`func (o *UpdateApplicationRequest) GetKerberos() ApplicationOIDCAllOfKerberos`
+`func (o *UpdateApplicationRequest) GetKerberos() ApplicationWSFEDAllOfKerberos`
 
 GetKerberos returns the Kerberos field if non-nil, zero value otherwise.
 
 ### GetKerberosOk
 
-`func (o *UpdateApplicationRequest) GetKerberosOk() (*ApplicationOIDCAllOfKerberos, bool)`
+`func (o *UpdateApplicationRequest) GetKerberosOk() (*ApplicationWSFEDAllOfKerberos, bool)`
 
 GetKerberosOk returns a tuple with the Kerberos field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKerberos
 
-`func (o *UpdateApplicationRequest) SetKerberos(v ApplicationOIDCAllOfKerberos)`
+`func (o *UpdateApplicationRequest) SetKerberos(v ApplicationWSFEDAllOfKerberos)`
 
 SetKerberos sets Kerberos field to given value.
 
@@ -1144,6 +1142,71 @@ and a boolean to check if the value has been set.
 `func (o *UpdateApplicationRequest) SetTokenEndpointAuthMethod(v EnumApplicationOIDCTokenAuthMethod)`
 
 SetTokenEndpointAuthMethod sets TokenEndpointAuthMethod field to given value.
+
+
+### GetAudienceRestriction
+
+`func (o *UpdateApplicationRequest) GetAudienceRestriction() string`
+
+GetAudienceRestriction returns the AudienceRestriction field if non-nil, zero value otherwise.
+
+### GetAudienceRestrictionOk
+
+`func (o *UpdateApplicationRequest) GetAudienceRestrictionOk() (*string, bool)`
+
+GetAudienceRestrictionOk returns a tuple with the AudienceRestriction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudienceRestriction
+
+`func (o *UpdateApplicationRequest) SetAudienceRestriction(v string)`
+
+SetAudienceRestriction sets AudienceRestriction field to given value.
+
+### HasAudienceRestriction
+
+`func (o *UpdateApplicationRequest) HasAudienceRestriction() bool`
+
+HasAudienceRestriction returns a boolean if a field has been set.
+
+### GetDomainName
+
+`func (o *UpdateApplicationRequest) GetDomainName() string`
+
+GetDomainName returns the DomainName field if non-nil, zero value otherwise.
+
+### GetDomainNameOk
+
+`func (o *UpdateApplicationRequest) GetDomainNameOk() (*string, bool)`
+
+GetDomainNameOk returns a tuple with the DomainName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainName
+
+`func (o *UpdateApplicationRequest) SetDomainName(v string)`
+
+SetDomainName sets DomainName field to given value.
+
+
+### GetReplyUrl
+
+`func (o *UpdateApplicationRequest) GetReplyUrl() string`
+
+GetReplyUrl returns the ReplyUrl field if non-nil, zero value otherwise.
+
+### GetReplyUrlOk
+
+`func (o *UpdateApplicationRequest) GetReplyUrlOk() (*string, bool)`
+
+GetReplyUrlOk returns a tuple with the ReplyUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReplyUrl
+
+`func (o *UpdateApplicationRequest) SetReplyUrl(v string)`
+
+SetReplyUrl sets ReplyUrl field to given value.
 
 
 ### GetApplyDefaultTheme

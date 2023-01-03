@@ -26693,16 +26693,19 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
+      - $ref: '#/components/schemas/ApplicationWSFED'
       - $ref: '#/components/schemas/ApplicationExternalLink'
     createApplication_201_response:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
+      - $ref: '#/components/schemas/ApplicationWSFED'
       - $ref: '#/components/schemas/ApplicationExternalLink'
     readOneApplication_200_response:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
+      - $ref: '#/components/schemas/ApplicationWSFED'
       - $ref: '#/components/schemas/ApplicationExternalLink'
       - $ref: '#/components/schemas/ApplicationPingOnePortal'
       - $ref: '#/components/schemas/ApplicationPingOneSelfService'
@@ -26721,6 +26724,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ApplicationSAML'
       - $ref: '#/components/schemas/ApplicationOIDC'
+      - $ref: '#/components/schemas/ApplicationWSFED'
       - $ref: '#/components/schemas/ApplicationExternalLink'
       - $ref: '#/components/schemas/ApplicationPingOnePortal'
       - $ref: '#/components/schemas/ApplicationPingOneSelfService'
