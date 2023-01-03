@@ -124,6 +124,13 @@ docs/ApplicationSAMLAllOfSpVerificationCertificates.md
 docs/ApplicationSecret.md
 docs/ApplicationSecretApi.md
 docs/ApplicationSignOnPolicyAssignmentsApi.md
+docs/ApplicationWSFED.md
+docs/ApplicationWSFEDAllOf.md
+docs/ApplicationWSFEDAllOfIdpSigning.md
+docs/ApplicationWSFEDAllOfIdpSigningKey.md
+docs/ApplicationWSFEDAllOfKerberos.md
+docs/ApplicationWSFEDAllOfKerberosGateways.md
+docs/ApplicationWSFEDAllOfKerberosUserType.md
 docs/ApplicationsApi.md
 docs/AuditActivitiesApi.md
 docs/AuthenticationsPerApplicationApi.md
@@ -180,6 +187,7 @@ docs/EnumApplicationProtocol.md
 docs/EnumApplicationSAMLSloBinding.md
 docs/EnumApplicationTags.md
 docs/EnumApplicationType.md
+docs/EnumApplicationWSFEDKerberosGatewayType.md
 docs/EnumAttributeMappingType.md
 docs/EnumBrandingLogoType.md
 docs/EnumBrandingThemeBackgroundType.md
@@ -547,6 +555,13 @@ model_application_saml_all_of_idp_signing_key.go
 model_application_saml_all_of_sp_verification.go
 model_application_saml_all_of_sp_verification_certificates.go
 model_application_secret.go
+model_application_wsfed.go
+model_application_wsfed_all_of.go
+model_application_wsfed_all_of_idp_signing.go
+model_application_wsfed_all_of_idp_signing_key.go
+model_application_wsfed_all_of_kerberos.go
+model_application_wsfed_all_of_kerberos_gateways.go
+model_application_wsfed_all_of_kerberos_user_type.go
 model_bill_of_materials.go
 model_bill_of_materials_products_inner.go
 model_bill_of_materials_products_inner_bookmarks_inner.go
@@ -560,6 +575,8 @@ model_branding_theme_configuration_background_image.go
 model_branding_theme_configuration_logo.go
 model_branding_theme_default.go
 model_certificate_key_update.go
+model_create_application_201_response.go
+model_create_application_request.go
 model_custom_domain.go
 model_custom_domain_certificate.go
 model_custom_domain_certificate_request.go
@@ -586,6 +603,7 @@ model_enum_application_protocol.go
 model_enum_application_saml_slo_binding.go
 model_enum_application_tags.go
 model_enum_application_type.go
+model_enum_application_wsfed_kerberos_gateway_type.go
 model_enum_attribute_mapping_type.go
 model_enum_branding_logo_type.go
 model_enum_branding_theme_background_type.go

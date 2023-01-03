@@ -19,8 +19,6 @@ import (
 type ApplicationSAML struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
-	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
-	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the application.
@@ -28,6 +26,8 @@ type ApplicationSAML struct {
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
 	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// A boolean to specify whether the application is hidden in the application portal despite the configured group access policy.
+	HiddenFromAppPortal *bool `json:"hiddenFromAppPortal,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
@@ -36,13 +36,9 @@ type ApplicationSAML struct {
 	// A string that specifies the name of the application. This is a required property.
 	Name string `json:"name"`
 	Protocol EnumApplicationProtocol `json:"protocol"`
-	// An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
-	Tags []EnumApplicationTags `json:"tags,omitempty"`
 	Type EnumApplicationType `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
-	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
 	// A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property.
 	AcsUrls []string `json:"acsUrls"`
 	// An integer that specifies the assertion validity duration in seconds. This is a required property.
@@ -150,38 +146,6 @@ func (o *ApplicationSAML) HasAccessControl() bool {
 // SetAccessControl gets a reference to the given ApplicationAccessControl and assigns it to the AccessControl field.
 func (o *ApplicationSAML) SetAccessControl(v ApplicationAccessControl) {
 	o.AccessControl = &v
-}
-
-// GetAssignActorRoles returns the AssignActorRoles field value if set, zero value otherwise.
-func (o *ApplicationSAML) GetAssignActorRoles() bool {
-	if o == nil || isNil(o.AssignActorRoles) {
-		var ret bool
-		return ret
-	}
-	return *o.AssignActorRoles
-}
-
-// GetAssignActorRolesOk returns a tuple with the AssignActorRoles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationSAML) GetAssignActorRolesOk() (*bool, bool) {
-	if o == nil || isNil(o.AssignActorRoles) {
-    return nil, false
-	}
-	return o.AssignActorRoles, true
-}
-
-// HasAssignActorRoles returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasAssignActorRoles() bool {
-	if o != nil && !isNil(o.AssignActorRoles) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssignActorRoles gets a reference to the given bool and assigns it to the AssignActorRoles field.
-func (o *ApplicationSAML) SetAssignActorRoles(v bool) {
-	o.AssignActorRoles = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -302,6 +266,38 @@ func (o *ApplicationSAML) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *ApplicationSAML) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetHiddenFromAppPortal returns the HiddenFromAppPortal field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetHiddenFromAppPortal() bool {
+	if o == nil || isNil(o.HiddenFromAppPortal) {
+		var ret bool
+		return ret
+	}
+	return *o.HiddenFromAppPortal
+}
+
+// GetHiddenFromAppPortalOk returns a tuple with the HiddenFromAppPortal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetHiddenFromAppPortalOk() (*bool, bool) {
+	if o == nil || isNil(o.HiddenFromAppPortal) {
+    return nil, false
+	}
+	return o.HiddenFromAppPortal, true
+}
+
+// HasHiddenFromAppPortal returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasHiddenFromAppPortal() bool {
+	if o != nil && !isNil(o.HiddenFromAppPortal) {
+		return true
+	}
+
+	return false
+}
+
+// SetHiddenFromAppPortal gets a reference to the given bool and assigns it to the HiddenFromAppPortal field.
+func (o *ApplicationSAML) SetHiddenFromAppPortal(v bool) {
+	o.HiddenFromAppPortal = &v
 }
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
@@ -448,38 +444,6 @@ func (o *ApplicationSAML) SetProtocol(v EnumApplicationProtocol) {
 	o.Protocol = v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
-func (o *ApplicationSAML) GetTags() []EnumApplicationTags {
-	if o == nil || isNil(o.Tags) {
-		var ret []EnumApplicationTags
-		return ret
-	}
-	return o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationSAML) GetTagsOk() ([]EnumApplicationTags, bool) {
-	if o == nil || isNil(o.Tags) {
-    return nil, false
-	}
-	return o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given []EnumApplicationTags and assigns it to the Tags field.
-func (o *ApplicationSAML) SetTags(v []EnumApplicationTags) {
-	o.Tags = v
-}
-
 // GetType returns the Type field value
 func (o *ApplicationSAML) GetType() EnumApplicationType {
 	if o == nil {
@@ -534,38 +498,6 @@ func (o *ApplicationSAML) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *ApplicationSAML) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
-}
-
-// GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
-func (o *ApplicationSAML) GetSupportUnsignedRequestObject() bool {
-	if o == nil || isNil(o.SupportUnsignedRequestObject) {
-		var ret bool
-		return ret
-	}
-	return *o.SupportUnsignedRequestObject
-}
-
-// GetSupportUnsignedRequestObjectOk returns a tuple with the SupportUnsignedRequestObject field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationSAML) GetSupportUnsignedRequestObjectOk() (*bool, bool) {
-	if o == nil || isNil(o.SupportUnsignedRequestObject) {
-    return nil, false
-	}
-	return o.SupportUnsignedRequestObject, true
-}
-
-// HasSupportUnsignedRequestObject returns a boolean if a field has been set.
-func (o *ApplicationSAML) HasSupportUnsignedRequestObject() bool {
-	if o != nil && !isNil(o.SupportUnsignedRequestObject) {
-		return true
-	}
-
-	return false
-}
-
-// SetSupportUnsignedRequestObject gets a reference to the given bool and assigns it to the SupportUnsignedRequestObject field.
-func (o *ApplicationSAML) SetSupportUnsignedRequestObject(v bool) {
-	o.SupportUnsignedRequestObject = &v
 }
 
 // GetAcsUrls returns the AcsUrls field value
@@ -904,9 +836,6 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	if !isNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	if !isNil(o.AssignActorRoles) {
-		toSerialize["assignActorRoles"] = o.AssignActorRoles
-	}
 	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
@@ -918,6 +847,9 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
+	}
+	if !isNil(o.HiddenFromAppPortal) {
+		toSerialize["hiddenFromAppPortal"] = o.HiddenFromAppPortal
 	}
 	if !isNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
@@ -934,17 +866,11 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if !isNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
 	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.SupportUnsignedRequestObject) {
-		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
 	}
 	if true {
 		toSerialize["acsUrls"] = o.AcsUrls

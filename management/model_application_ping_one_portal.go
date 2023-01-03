@@ -19,8 +19,6 @@ import (
 type ApplicationPingOnePortal struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
 	AccessControl *ApplicationAccessControl `json:"accessControl,omitempty"`
-	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
-	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the application.
@@ -28,6 +26,8 @@ type ApplicationPingOnePortal struct {
 	// A string that specifies the current enabled state of the application. Options are ENABLED or DISABLED.
 	Enabled bool `json:"enabled"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// A boolean to specify whether the application is hidden in the application portal despite the configured group access policy.
+	HiddenFromAppPortal *bool `json:"hiddenFromAppPortal,omitempty"`
 	Icon *ApplicationIcon `json:"icon,omitempty"`
 	// A string that specifies the application ID.
 	Id *string `json:"id,omitempty"`
@@ -36,13 +36,9 @@ type ApplicationPingOnePortal struct {
 	// A string that specifies the name of the application. This is a required property.
 	Name string `json:"name"`
 	Protocol EnumApplicationProtocol `json:"protocol"`
-	// An array that specifies the list of labels associated with the application. Options are PING_FED_CONNECTION_INTEGRATION.
-	Tags []EnumApplicationTags `json:"tags,omitempty"`
 	Type EnumApplicationType `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	// A boolean that specifies whether the request query parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
-	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
 	PkceEnforcement *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
 	TokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
 	// If `true`, applies the default theme to the app portal application.
@@ -134,38 +130,6 @@ func (o *ApplicationPingOnePortal) HasAccessControl() bool {
 // SetAccessControl gets a reference to the given ApplicationAccessControl and assigns it to the AccessControl field.
 func (o *ApplicationPingOnePortal) SetAccessControl(v ApplicationAccessControl) {
 	o.AccessControl = &v
-}
-
-// GetAssignActorRoles returns the AssignActorRoles field value if set, zero value otherwise.
-func (o *ApplicationPingOnePortal) GetAssignActorRoles() bool {
-	if o == nil || isNil(o.AssignActorRoles) {
-		var ret bool
-		return ret
-	}
-	return *o.AssignActorRoles
-}
-
-// GetAssignActorRolesOk returns a tuple with the AssignActorRoles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationPingOnePortal) GetAssignActorRolesOk() (*bool, bool) {
-	if o == nil || isNil(o.AssignActorRoles) {
-    return nil, false
-	}
-	return o.AssignActorRoles, true
-}
-
-// HasAssignActorRoles returns a boolean if a field has been set.
-func (o *ApplicationPingOnePortal) HasAssignActorRoles() bool {
-	if o != nil && !isNil(o.AssignActorRoles) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssignActorRoles gets a reference to the given bool and assigns it to the AssignActorRoles field.
-func (o *ApplicationPingOnePortal) SetAssignActorRoles(v bool) {
-	o.AssignActorRoles = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -286,6 +250,38 @@ func (o *ApplicationPingOnePortal) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *ApplicationPingOnePortal) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetHiddenFromAppPortal returns the HiddenFromAppPortal field value if set, zero value otherwise.
+func (o *ApplicationPingOnePortal) GetHiddenFromAppPortal() bool {
+	if o == nil || isNil(o.HiddenFromAppPortal) {
+		var ret bool
+		return ret
+	}
+	return *o.HiddenFromAppPortal
+}
+
+// GetHiddenFromAppPortalOk returns a tuple with the HiddenFromAppPortal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationPingOnePortal) GetHiddenFromAppPortalOk() (*bool, bool) {
+	if o == nil || isNil(o.HiddenFromAppPortal) {
+    return nil, false
+	}
+	return o.HiddenFromAppPortal, true
+}
+
+// HasHiddenFromAppPortal returns a boolean if a field has been set.
+func (o *ApplicationPingOnePortal) HasHiddenFromAppPortal() bool {
+	if o != nil && !isNil(o.HiddenFromAppPortal) {
+		return true
+	}
+
+	return false
+}
+
+// SetHiddenFromAppPortal gets a reference to the given bool and assigns it to the HiddenFromAppPortal field.
+func (o *ApplicationPingOnePortal) SetHiddenFromAppPortal(v bool) {
+	o.HiddenFromAppPortal = &v
 }
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
@@ -432,38 +428,6 @@ func (o *ApplicationPingOnePortal) SetProtocol(v EnumApplicationProtocol) {
 	o.Protocol = v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
-func (o *ApplicationPingOnePortal) GetTags() []EnumApplicationTags {
-	if o == nil || isNil(o.Tags) {
-		var ret []EnumApplicationTags
-		return ret
-	}
-	return o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationPingOnePortal) GetTagsOk() ([]EnumApplicationTags, bool) {
-	if o == nil || isNil(o.Tags) {
-    return nil, false
-	}
-	return o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *ApplicationPingOnePortal) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given []EnumApplicationTags and assigns it to the Tags field.
-func (o *ApplicationPingOnePortal) SetTags(v []EnumApplicationTags) {
-	o.Tags = v
-}
-
 // GetType returns the Type field value
 func (o *ApplicationPingOnePortal) GetType() EnumApplicationType {
 	if o == nil {
@@ -518,38 +482,6 @@ func (o *ApplicationPingOnePortal) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *ApplicationPingOnePortal) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
-}
-
-// GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
-func (o *ApplicationPingOnePortal) GetSupportUnsignedRequestObject() bool {
-	if o == nil || isNil(o.SupportUnsignedRequestObject) {
-		var ret bool
-		return ret
-	}
-	return *o.SupportUnsignedRequestObject
-}
-
-// GetSupportUnsignedRequestObjectOk returns a tuple with the SupportUnsignedRequestObject field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApplicationPingOnePortal) GetSupportUnsignedRequestObjectOk() (*bool, bool) {
-	if o == nil || isNil(o.SupportUnsignedRequestObject) {
-    return nil, false
-	}
-	return o.SupportUnsignedRequestObject, true
-}
-
-// HasSupportUnsignedRequestObject returns a boolean if a field has been set.
-func (o *ApplicationPingOnePortal) HasSupportUnsignedRequestObject() bool {
-	if o != nil && !isNil(o.SupportUnsignedRequestObject) {
-		return true
-	}
-
-	return false
-}
-
-// SetSupportUnsignedRequestObject gets a reference to the given bool and assigns it to the SupportUnsignedRequestObject field.
-func (o *ApplicationPingOnePortal) SetSupportUnsignedRequestObject(v bool) {
-	o.SupportUnsignedRequestObject = &v
 }
 
 // GetPkceEnforcement returns the PkceEnforcement field value if set, zero value otherwise.
@@ -640,9 +572,6 @@ func (o ApplicationPingOnePortal) MarshalJSON() ([]byte, error) {
 	if !isNil(o.AccessControl) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
-	if !isNil(o.AssignActorRoles) {
-		toSerialize["assignActorRoles"] = o.AssignActorRoles
-	}
 	if !isNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
@@ -654,6 +583,9 @@ func (o ApplicationPingOnePortal) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
+	}
+	if !isNil(o.HiddenFromAppPortal) {
+		toSerialize["hiddenFromAppPortal"] = o.HiddenFromAppPortal
 	}
 	if !isNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
@@ -670,17 +602,11 @@ func (o ApplicationPingOnePortal) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if !isNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
-	}
 	if true {
 		toSerialize["type"] = o.Type
 	}
 	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.SupportUnsignedRequestObject) {
-		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
 	}
 	if !isNil(o.PkceEnforcement) {
 		toSerialize["pkceEnforcement"] = o.PkceEnforcement
