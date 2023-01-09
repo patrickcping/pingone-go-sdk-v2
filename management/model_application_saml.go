@@ -39,6 +39,8 @@ type ApplicationSAML struct {
 	Type EnumApplicationType `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// A string that specifies the custom home page URL for the application.
+	HomePageUrl *string `json:"homePageUrl,omitempty"`
 	// A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property.
 	AcsUrls []string `json:"acsUrls"`
 	// An integer that specifies the assertion validity duration in seconds. This is a required property.
@@ -500,6 +502,38 @@ func (o *ApplicationSAML) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetHomePageUrl returns the HomePageUrl field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetHomePageUrl() string {
+	if o == nil || isNil(o.HomePageUrl) {
+		var ret string
+		return ret
+	}
+	return *o.HomePageUrl
+}
+
+// GetHomePageUrlOk returns a tuple with the HomePageUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetHomePageUrlOk() (*string, bool) {
+	if o == nil || isNil(o.HomePageUrl) {
+    return nil, false
+	}
+	return o.HomePageUrl, true
+}
+
+// HasHomePageUrl returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasHomePageUrl() bool {
+	if o != nil && !isNil(o.HomePageUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetHomePageUrl gets a reference to the given string and assigns it to the HomePageUrl field.
+func (o *ApplicationSAML) SetHomePageUrl(v string) {
+	o.HomePageUrl = &v
+}
+
 // GetAcsUrls returns the AcsUrls field value
 func (o *ApplicationSAML) GetAcsUrls() []string {
 	if o == nil {
@@ -871,6 +905,9 @@ func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !isNil(o.HomePageUrl) {
+		toSerialize["homePageUrl"] = o.HomePageUrl
 	}
 	if true {
 		toSerialize["acsUrls"] = o.AcsUrls

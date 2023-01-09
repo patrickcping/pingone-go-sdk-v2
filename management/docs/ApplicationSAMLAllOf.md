@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**HomePageUrl** | Pointer to **string** | A string that specifies the custom home page URL for the application. | [optional] 
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
 **AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
@@ -34,6 +35,31 @@ will change when the set of required properties is changed
 NewApplicationSAMLAllOfWithDefaults instantiates a new ApplicationSAMLAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetHomePageUrl
+
+`func (o *ApplicationSAMLAllOf) GetHomePageUrl() string`
+
+GetHomePageUrl returns the HomePageUrl field if non-nil, zero value otherwise.
+
+### GetHomePageUrlOk
+
+`func (o *ApplicationSAMLAllOf) GetHomePageUrlOk() (*string, bool)`
+
+GetHomePageUrlOk returns a tuple with the HomePageUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHomePageUrl
+
+`func (o *ApplicationSAMLAllOf) SetHomePageUrl(v string)`
+
+SetHomePageUrl sets HomePageUrl field to given value.
+
+### HasHomePageUrl
+
+`func (o *ApplicationSAMLAllOf) HasHomePageUrl() bool`
+
+HasHomePageUrl returns a boolean if a field has been set.
 
 ### GetAcsUrls
 

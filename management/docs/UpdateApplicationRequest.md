@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Protocol** | [**EnumApplicationProtocol**](EnumApplicationProtocol.md) |  | 
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
+**HomePageUrl** | **string** | A string that specifies the custom home page URL for the application. | 
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
 **AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
@@ -29,14 +30,13 @@ Name | Type | Description | Notes
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
-**AllowWildcardInRedirectUri** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
+**AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
 **PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
 **Kerberos** | Pointer to [**ApplicationWSFEDAllOfKerberos**](ApplicationWSFEDAllOfKerberos.md) |  | [optional] 
 **GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
-**HomePageUrl** | **string** | A string that specifies the custom home page URL for the application. | 
 **InitiateLoginUri** | Pointer to **string** | A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information. | [optional] 
 **PkceEnforcement** | Pointer to [**EnumApplicationOIDCPKCEOption**](EnumApplicationOIDCPKCEOption.md) |  | [optional] 
 **PostLogoutRedirectUris** | Pointer to **[]string** | A string that specifies the URLs that the browser can be redirected to after logout. | [optional] 
@@ -59,7 +59,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateApplicationRequest
 
-`func NewUpdateApplicationRequest(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, acsUrls []string, assertionDuration int32, idpSigning ApplicationWSFEDAllOfIdpSigning, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, homePageUrl string, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, domainName string, replyUrl string, applyDefaultTheme bool, ) *UpdateApplicationRequest`
+`func NewUpdateApplicationRequest(enabled bool, name string, protocol EnumApplicationProtocol, type_ EnumApplicationType, homePageUrl string, acsUrls []string, assertionDuration int32, idpSigning ApplicationWSFEDAllOfIdpSigning, spEntityId string, grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod, domainName string, replyUrl string, applyDefaultTheme bool, ) *UpdateApplicationRequest`
 
 NewUpdateApplicationRequest instantiates a new UpdateApplicationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -404,6 +404,26 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
+### GetHomePageUrl
+
+`func (o *UpdateApplicationRequest) GetHomePageUrl() string`
+
+GetHomePageUrl returns the HomePageUrl field if non-nil, zero value otherwise.
+
+### GetHomePageUrlOk
+
+`func (o *UpdateApplicationRequest) GetHomePageUrlOk() (*string, bool)`
+
+GetHomePageUrlOk returns a tuple with the HomePageUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHomePageUrl
+
+`func (o *UpdateApplicationRequest) SetHomePageUrl(v string)`
+
+SetHomePageUrl sets HomePageUrl field to given value.
+
+
 ### GetAcsUrls
 
 `func (o *UpdateApplicationRequest) GetAcsUrls() []string`
@@ -659,30 +679,30 @@ SetSpVerification sets SpVerification field to given value.
 
 HasSpVerification returns a boolean if a field has been set.
 
-### GetAllowWildcardInRedirectUri
+### GetAllowWildcardInRedirectUris
 
-`func (o *UpdateApplicationRequest) GetAllowWildcardInRedirectUri() bool`
+`func (o *UpdateApplicationRequest) GetAllowWildcardInRedirectUris() bool`
 
-GetAllowWildcardInRedirectUri returns the AllowWildcardInRedirectUri field if non-nil, zero value otherwise.
+GetAllowWildcardInRedirectUris returns the AllowWildcardInRedirectUris field if non-nil, zero value otherwise.
 
-### GetAllowWildcardInRedirectUriOk
+### GetAllowWildcardInRedirectUrisOk
 
-`func (o *UpdateApplicationRequest) GetAllowWildcardInRedirectUriOk() (*bool, bool)`
+`func (o *UpdateApplicationRequest) GetAllowWildcardInRedirectUrisOk() (*bool, bool)`
 
-GetAllowWildcardInRedirectUriOk returns a tuple with the AllowWildcardInRedirectUri field if it's non-nil, zero value otherwise
+GetAllowWildcardInRedirectUrisOk returns a tuple with the AllowWildcardInRedirectUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllowWildcardInRedirectUri
+### SetAllowWildcardInRedirectUris
 
-`func (o *UpdateApplicationRequest) SetAllowWildcardInRedirectUri(v bool)`
+`func (o *UpdateApplicationRequest) SetAllowWildcardInRedirectUris(v bool)`
 
-SetAllowWildcardInRedirectUri sets AllowWildcardInRedirectUri field to given value.
+SetAllowWildcardInRedirectUris sets AllowWildcardInRedirectUris field to given value.
 
-### HasAllowWildcardInRedirectUri
+### HasAllowWildcardInRedirectUris
 
-`func (o *UpdateApplicationRequest) HasAllowWildcardInRedirectUri() bool`
+`func (o *UpdateApplicationRequest) HasAllowWildcardInRedirectUris() bool`
 
-HasAllowWildcardInRedirectUri returns a boolean if a field has been set.
+HasAllowWildcardInRedirectUris returns a boolean if a field has been set.
 
 ### GetAssignActorRoles
 
@@ -827,26 +847,6 @@ and a boolean to check if the value has been set.
 `func (o *UpdateApplicationRequest) SetGrantTypes(v []EnumApplicationOIDCGrantType)`
 
 SetGrantTypes sets GrantTypes field to given value.
-
-
-### GetHomePageUrl
-
-`func (o *UpdateApplicationRequest) GetHomePageUrl() string`
-
-GetHomePageUrl returns the HomePageUrl field if non-nil, zero value otherwise.
-
-### GetHomePageUrlOk
-
-`func (o *UpdateApplicationRequest) GetHomePageUrlOk() (*string, bool)`
-
-GetHomePageUrlOk returns a tuple with the HomePageUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHomePageUrl
-
-`func (o *UpdateApplicationRequest) SetHomePageUrl(v string)`
-
-SetHomePageUrl sets HomePageUrl field to given value.
 
 
 ### GetInitiateLoginUri
