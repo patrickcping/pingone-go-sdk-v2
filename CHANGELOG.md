@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2023-01-09)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.1
     * **Breaking change** PingOne Fraud is now a non-selectable capability [#92](https://github.com/patrickcping/pingone-go-sdk-v2/pull/92)
