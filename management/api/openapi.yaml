@@ -26919,6 +26919,9 @@ components:
       example: null
     ApplicationSAML_allOf:
       properties:
+        homePageUrl:
+          description: A string that specifies the custom home page URL for the application.
+          type: string
         acsUrls:
           description: A string that specifies the Assertion Consumer Service URLs.
             The first URL in the list is used as default (there must be at least one
@@ -27066,7 +27069,7 @@ components:
       example: null
     ApplicationOIDC_allOf:
       properties:
-        allowWildcardInRedirectUri:
+        allowWildcardInRedirectUris:
           description: "A boolean to specify whether wildcards are allowed in redirect\
             \ URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri)."
           type: boolean

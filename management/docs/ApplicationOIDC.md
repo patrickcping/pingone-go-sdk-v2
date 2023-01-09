@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Protocol** | [**EnumApplicationProtocol**](EnumApplicationProtocol.md) |  | 
 **Type** | [**EnumApplicationType**](EnumApplicationType.md) |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
-**AllowWildcardInRedirectUri** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
+**AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
@@ -388,30 +388,30 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
-### GetAllowWildcardInRedirectUri
+### GetAllowWildcardInRedirectUris
 
-`func (o *ApplicationOIDC) GetAllowWildcardInRedirectUri() bool`
+`func (o *ApplicationOIDC) GetAllowWildcardInRedirectUris() bool`
 
-GetAllowWildcardInRedirectUri returns the AllowWildcardInRedirectUri field if non-nil, zero value otherwise.
+GetAllowWildcardInRedirectUris returns the AllowWildcardInRedirectUris field if non-nil, zero value otherwise.
 
-### GetAllowWildcardInRedirectUriOk
+### GetAllowWildcardInRedirectUrisOk
 
-`func (o *ApplicationOIDC) GetAllowWildcardInRedirectUriOk() (*bool, bool)`
+`func (o *ApplicationOIDC) GetAllowWildcardInRedirectUrisOk() (*bool, bool)`
 
-GetAllowWildcardInRedirectUriOk returns a tuple with the AllowWildcardInRedirectUri field if it's non-nil, zero value otherwise
+GetAllowWildcardInRedirectUrisOk returns a tuple with the AllowWildcardInRedirectUris field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllowWildcardInRedirectUri
+### SetAllowWildcardInRedirectUris
 
-`func (o *ApplicationOIDC) SetAllowWildcardInRedirectUri(v bool)`
+`func (o *ApplicationOIDC) SetAllowWildcardInRedirectUris(v bool)`
 
-SetAllowWildcardInRedirectUri sets AllowWildcardInRedirectUri field to given value.
+SetAllowWildcardInRedirectUris sets AllowWildcardInRedirectUris field to given value.
 
-### HasAllowWildcardInRedirectUri
+### HasAllowWildcardInRedirectUris
 
-`func (o *ApplicationOIDC) HasAllowWildcardInRedirectUri() bool`
+`func (o *ApplicationOIDC) HasAllowWildcardInRedirectUris() bool`
 
-HasAllowWildcardInRedirectUri returns a boolean if a field has been set.
+HasAllowWildcardInRedirectUris returns a boolean if a field has been set.
 
 ### GetAssignActorRoles
 

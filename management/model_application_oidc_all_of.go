@@ -17,7 +17,7 @@ import (
 // ApplicationOIDCAllOf struct for ApplicationOIDCAllOf
 type ApplicationOIDCAllOf struct {
 	// A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri).
-	AllowWildcardInRedirectUri *bool `json:"allowWildcardInRedirectUri,omitempty"`
+	AllowWildcardInRedirectUris *bool `json:"allowWildcardInRedirectUris,omitempty"`
 	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
 	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
 	Mobile *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
@@ -77,36 +77,36 @@ func NewApplicationOIDCAllOfWithDefaults() *ApplicationOIDCAllOf {
 	return &this
 }
 
-// GetAllowWildcardInRedirectUri returns the AllowWildcardInRedirectUri field value if set, zero value otherwise.
-func (o *ApplicationOIDCAllOf) GetAllowWildcardInRedirectUri() bool {
-	if o == nil || isNil(o.AllowWildcardInRedirectUri) {
+// GetAllowWildcardInRedirectUris returns the AllowWildcardInRedirectUris field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOf) GetAllowWildcardInRedirectUris() bool {
+	if o == nil || isNil(o.AllowWildcardInRedirectUris) {
 		var ret bool
 		return ret
 	}
-	return *o.AllowWildcardInRedirectUri
+	return *o.AllowWildcardInRedirectUris
 }
 
-// GetAllowWildcardInRedirectUriOk returns a tuple with the AllowWildcardInRedirectUri field value if set, nil otherwise
+// GetAllowWildcardInRedirectUrisOk returns a tuple with the AllowWildcardInRedirectUris field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationOIDCAllOf) GetAllowWildcardInRedirectUriOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowWildcardInRedirectUri) {
+func (o *ApplicationOIDCAllOf) GetAllowWildcardInRedirectUrisOk() (*bool, bool) {
+	if o == nil || isNil(o.AllowWildcardInRedirectUris) {
     return nil, false
 	}
-	return o.AllowWildcardInRedirectUri, true
+	return o.AllowWildcardInRedirectUris, true
 }
 
-// HasAllowWildcardInRedirectUri returns a boolean if a field has been set.
-func (o *ApplicationOIDCAllOf) HasAllowWildcardInRedirectUri() bool {
-	if o != nil && !isNil(o.AllowWildcardInRedirectUri) {
+// HasAllowWildcardInRedirectUris returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOf) HasAllowWildcardInRedirectUris() bool {
+	if o != nil && !isNil(o.AllowWildcardInRedirectUris) {
 		return true
 	}
 
 	return false
 }
 
-// SetAllowWildcardInRedirectUri gets a reference to the given bool and assigns it to the AllowWildcardInRedirectUri field.
-func (o *ApplicationOIDCAllOf) SetAllowWildcardInRedirectUri(v bool) {
-	o.AllowWildcardInRedirectUri = &v
+// SetAllowWildcardInRedirectUris gets a reference to the given bool and assigns it to the AllowWildcardInRedirectUris field.
+func (o *ApplicationOIDCAllOf) SetAllowWildcardInRedirectUris(v bool) {
+	o.AllowWildcardInRedirectUris = &v
 }
 
 // GetAssignActorRoles returns the AssignActorRoles field value if set, zero value otherwise.
@@ -703,8 +703,8 @@ func (o *ApplicationOIDCAllOf) SetTokenEndpointAuthMethod(v EnumApplicationOIDCT
 
 func (o ApplicationOIDCAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowWildcardInRedirectUri) {
-		toSerialize["allowWildcardInRedirectUri"] = o.AllowWildcardInRedirectUri
+	if !isNil(o.AllowWildcardInRedirectUris) {
+		toSerialize["allowWildcardInRedirectUris"] = o.AllowWildcardInRedirectUris
 	}
 	if !isNil(o.AssignActorRoles) {
 		toSerialize["assignActorRoles"] = o.AssignActorRoles
