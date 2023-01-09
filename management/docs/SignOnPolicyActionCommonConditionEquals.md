@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Value** | **string** |  | 
-**Equals** | **string** |  | 
+**Equals** | [**SignOnPolicyActionCommonConditionEqualsEquals**](SignOnPolicyActionCommonConditionEqualsEquals.md) |  | 
 
 ## Methods
 
 ### NewSignOnPolicyActionCommonConditionEquals
 
-`func NewSignOnPolicyActionCommonConditionEquals(value string, equals string, ) *SignOnPolicyActionCommonConditionEquals`
+`func NewSignOnPolicyActionCommonConditionEquals(value string, equals SignOnPolicyActionCommonConditionEqualsEquals, ) *SignOnPolicyActionCommonConditionEquals`
 
 NewSignOnPolicyActionCommonConditionEquals instantiates a new SignOnPolicyActionCommonConditionEquals object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetValue sets Value field to given value.
 
 ### GetEquals
 
-`func (o *SignOnPolicyActionCommonConditionEquals) GetEquals() string`
+`func (o *SignOnPolicyActionCommonConditionEquals) GetEquals() SignOnPolicyActionCommonConditionEqualsEquals`
 
 GetEquals returns the Equals field if non-nil, zero value otherwise.
 
 ### GetEqualsOk
 
-`func (o *SignOnPolicyActionCommonConditionEquals) GetEqualsOk() (*string, bool)`
+`func (o *SignOnPolicyActionCommonConditionEquals) GetEqualsOk() (*SignOnPolicyActionCommonConditionEqualsEquals, bool)`
 
 GetEqualsOk returns a tuple with the Equals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEquals
 
-`func (o *SignOnPolicyActionCommonConditionEquals) SetEquals(v string)`
+`func (o *SignOnPolicyActionCommonConditionEquals) SetEquals(v SignOnPolicyActionCommonConditionEqualsEquals)`
 
 SetEquals sets Equals field to given value.
 

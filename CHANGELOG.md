@@ -18,6 +18,7 @@
     * **Enhancement** Add support for `initiateLoginUri` property on the `ApplicationOIDC` model [#91](https://github.com/patrickcping/pingone-go-sdk-v2/pull/91)
     * **Enhancement** Add support for `refreshTokenRollingGracePeriodDuration` property on the `ApplicationOIDC` model [#91](https://github.com/patrickcping/pingone-go-sdk-v2/pull/91)
     * **Enhancement** Add support for `targetLinkUri` property on the `ApplicationOIDC` model [#91](https://github.com/patrickcping/pingone-go-sdk-v2/pull/91)
+    * **Enhancement** Add boolean data type support to the Sign On Policy `Equals` Condition [#93](https://github.com/patrickcping/pingone-go-sdk-v2/pull/93)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.7.1](./mfa/CHANGELOG.md)
     * **Note** bump codegen v6.2.0 => v6.2.1 [#84](https://github.com/patrickcping/pingone-go-sdk-v2/pull/84)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.3.1](./risk/CHANGELOG.md)
