@@ -18,7 +18,6 @@ import (
 // SignOnPolicyActionCommonConditionEqualsEquals - struct for SignOnPolicyActionCommonConditionEqualsEquals
 type SignOnPolicyActionCommonConditionEqualsEquals struct {
 	Bool *bool
-	Int32 *int32
 	String *string
 }
 
@@ -26,13 +25,6 @@ type SignOnPolicyActionCommonConditionEqualsEquals struct {
 func BoolAsSignOnPolicyActionCommonConditionEqualsEquals(v *bool) SignOnPolicyActionCommonConditionEqualsEquals {
 	return SignOnPolicyActionCommonConditionEqualsEquals{
 		Bool: v,
-	}
-}
-
-// int32AsSignOnPolicyActionCommonConditionEqualsEquals is a convenience function that returns int32 wrapped in SignOnPolicyActionCommonConditionEqualsEquals
-func Int32AsSignOnPolicyActionCommonConditionEqualsEquals(v *int32) SignOnPolicyActionCommonConditionEqualsEquals {
-	return SignOnPolicyActionCommonConditionEqualsEquals{
-		Int32: v,
 	}
 }
 
@@ -61,19 +53,6 @@ func (dst *SignOnPolicyActionCommonConditionEqualsEquals) UnmarshalJSON(data []b
 		dst.Bool = nil
 	}
 
-	// try to unmarshal data into Int32
-	err = newStrictDecoder(data).Decode(&dst.Int32)
-	if err == nil {
-		jsonInt32, _ := json.Marshal(dst.Int32)
-		if string(jsonInt32) == "{}" { // empty struct
-			dst.Int32 = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.Int32 = nil
-	}
-
 	// try to unmarshal data into String
 	err = newStrictDecoder(data).Decode(&dst.String)
 	if err == nil {
@@ -90,7 +69,6 @@ func (dst *SignOnPolicyActionCommonConditionEqualsEquals) UnmarshalJSON(data []b
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.Bool = nil
-		dst.Int32 = nil
 		dst.String = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(SignOnPolicyActionCommonConditionEqualsEquals)")
@@ -107,10 +85,6 @@ func (src SignOnPolicyActionCommonConditionEqualsEquals) MarshalJSON() ([]byte, 
 		return json.Marshal(&src.Bool)
 	}
 
-	if src.Int32 != nil {
-		return json.Marshal(&src.Int32)
-	}
-
 	if src.String != nil {
 		return json.Marshal(&src.String)
 	}
@@ -125,10 +99,6 @@ func (obj *SignOnPolicyActionCommonConditionEqualsEquals) GetActualInstance() (i
 	}
 	if obj.Bool != nil {
 		return obj.Bool
-	}
-
-	if obj.Int32 != nil {
-		return obj.Int32
 	}
 
 	if obj.String != nil {

@@ -30305,7 +30305,6 @@ components:
       oneOf:
       - type: string
       - type: boolean
-      - type: integer
     SignOnPolicyActionCommonConditionOr_or_inner:
       oneOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommonConditionAnd'
