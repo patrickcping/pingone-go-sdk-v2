@@ -1,3 +1,7 @@
+# v0.14.0 (Unreleased)
+
+* **Bug fix** - Correct the `TemplateContent` API model [#97](https://github.com/patrickcping/pingone-go-sdk-v2/pull/97)
+
 # v0.13.0 (2023-01-09)
 
 * **Breaking change** Moved `AssignActorRoles` from all `Application` models to just `ApplicationOIDC` model [#91](https://github.com/patrickcping/pingone-go-sdk-v2/pull/91)
