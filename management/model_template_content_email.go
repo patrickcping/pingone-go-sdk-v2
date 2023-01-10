@@ -26,11 +26,10 @@ type TemplateContentEmail struct {
 	Default *bool `json:"default,omitempty"`
 	// A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \"en\". Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \"en_GB\", \"en-GB\". Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`. 
 	Locale string `json:"locale"`
-	// The content's delivery method. Possible values are `Email`, `SMS`, `Voice` or `Push`. Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`.
-	DeliveryMethod string `json:"deliveryMethod"`
+	DeliveryMethod EnumTemplateContentDeliveryMethod `json:"deliveryMethod"`
 	// Holds the unique user-defined name for each content variant that uses the same template + `deliveryMethod` + `locale` combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents).
 	Variant *string `json:"variant,omitempty"`
-	// The email or push text (maximum 400 characters for push text). Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables.
+	// The email text. Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables.
 	Body string `json:"body"`
 	From *TemplateContentEmailAllOfFrom `json:"from,omitempty"`
 	// The email's subject line. Cannot exceed 256 characters. If supported, can include variables.
@@ -46,7 +45,7 @@ type TemplateContentEmail struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplateContentEmail(locale string, deliveryMethod string, body string) *TemplateContentEmail {
+func NewTemplateContentEmail(locale string, deliveryMethod EnumTemplateContentDeliveryMethod, body string) *TemplateContentEmail {
 	this := TemplateContentEmail{}
 	this.Locale = locale
 	this.DeliveryMethod = deliveryMethod
@@ -223,9 +222,9 @@ func (o *TemplateContentEmail) SetLocale(v string) {
 }
 
 // GetDeliveryMethod returns the DeliveryMethod field value
-func (o *TemplateContentEmail) GetDeliveryMethod() string {
+func (o *TemplateContentEmail) GetDeliveryMethod() EnumTemplateContentDeliveryMethod {
 	if o == nil {
-		var ret string
+		var ret EnumTemplateContentDeliveryMethod
 		return ret
 	}
 
@@ -234,7 +233,7 @@ func (o *TemplateContentEmail) GetDeliveryMethod() string {
 
 // GetDeliveryMethodOk returns a tuple with the DeliveryMethod field value
 // and a boolean to check if the value has been set.
-func (o *TemplateContentEmail) GetDeliveryMethodOk() (*string, bool) {
+func (o *TemplateContentEmail) GetDeliveryMethodOk() (*EnumTemplateContentDeliveryMethod, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -242,7 +241,7 @@ func (o *TemplateContentEmail) GetDeliveryMethodOk() (*string, bool) {
 }
 
 // SetDeliveryMethod sets field value
-func (o *TemplateContentEmail) SetDeliveryMethod(v string) {
+func (o *TemplateContentEmail) SetDeliveryMethod(v EnumTemplateContentDeliveryMethod) {
 	o.DeliveryMethod = v
 }
 

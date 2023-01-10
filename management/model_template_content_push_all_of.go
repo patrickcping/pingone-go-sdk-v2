@@ -18,14 +18,18 @@ import (
 type TemplateContentPushAllOf struct {
 	// The push title (maximum 200 characters). If supported, this can include variables.
 	Title *string `json:"title,omitempty"`
+	// The push text (maximum 400 characters for push text). If supported, this can include variables.
+	Body string `json:"body"`
+	PushCategory *EnumTemplateContentPushCategory `json:"pushCategory,omitempty"`
 }
 
 // NewTemplateContentPushAllOf instantiates a new TemplateContentPushAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplateContentPushAllOf() *TemplateContentPushAllOf {
+func NewTemplateContentPushAllOf(body string) *TemplateContentPushAllOf {
 	this := TemplateContentPushAllOf{}
+	this.Body = body
 	return &this
 }
 
@@ -69,10 +73,72 @@ func (o *TemplateContentPushAllOf) SetTitle(v string) {
 	o.Title = &v
 }
 
+// GetBody returns the Body field value
+func (o *TemplateContentPushAllOf) GetBody() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Body
+}
+
+// GetBodyOk returns a tuple with the Body field value
+// and a boolean to check if the value has been set.
+func (o *TemplateContentPushAllOf) GetBodyOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.Body, true
+}
+
+// SetBody sets field value
+func (o *TemplateContentPushAllOf) SetBody(v string) {
+	o.Body = v
+}
+
+// GetPushCategory returns the PushCategory field value if set, zero value otherwise.
+func (o *TemplateContentPushAllOf) GetPushCategory() EnumTemplateContentPushCategory {
+	if o == nil || isNil(o.PushCategory) {
+		var ret EnumTemplateContentPushCategory
+		return ret
+	}
+	return *o.PushCategory
+}
+
+// GetPushCategoryOk returns a tuple with the PushCategory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateContentPushAllOf) GetPushCategoryOk() (*EnumTemplateContentPushCategory, bool) {
+	if o == nil || isNil(o.PushCategory) {
+    return nil, false
+	}
+	return o.PushCategory, true
+}
+
+// HasPushCategory returns a boolean if a field has been set.
+func (o *TemplateContentPushAllOf) HasPushCategory() bool {
+	if o != nil && !isNil(o.PushCategory) {
+		return true
+	}
+
+	return false
+}
+
+// SetPushCategory gets a reference to the given EnumTemplateContentPushCategory and assigns it to the PushCategory field.
+func (o *TemplateContentPushAllOf) SetPushCategory(v EnumTemplateContentPushCategory) {
+	o.PushCategory = &v
+}
+
 func (o TemplateContentPushAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Title) {
 		toSerialize["title"] = o.Title
+	}
+	if true {
+		toSerialize["body"] = o.Body
+	}
+	if !isNil(o.PushCategory) {
+		toSerialize["pushCategory"] = o.PushCategory
 	}
 	return json.Marshal(toSerialize)
 }

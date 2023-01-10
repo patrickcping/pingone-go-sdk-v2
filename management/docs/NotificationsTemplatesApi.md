@@ -37,7 +37,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     templateName := "templateName_example" // string | 
-    templateContent := *openapiclient.NewTemplateContent("Locale_example", "DeliveryMethod_example") // TemplateContent |  (optional)
+    templateContent := openapiclient.TemplateContent{TemplateContentEmail: openapiclient.NewTemplateContentEmail("Locale_example", openapiclient.EnumTemplateContentDeliveryMethod("Email"), "Body_example")} // TemplateContent |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -617,7 +617,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     templateName := "templateName_example" // string | 
     contentID := "contentID_example" // string | 
-    templateContent := *openapiclient.NewTemplateContent("Locale_example", "DeliveryMethod_example") // TemplateContent |  (optional)
+    templateContent := openapiclient.TemplateContent{TemplateContentEmail: openapiclient.NewTemplateContentEmail("Locale_example", openapiclient.EnumTemplateContentDeliveryMethod("Email"), "Body_example")} // TemplateContent |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

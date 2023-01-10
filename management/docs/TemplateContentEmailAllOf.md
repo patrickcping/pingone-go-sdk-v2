@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Body** | **string** | The email text. Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables. | 
 **From** | Pointer to [**TemplateContentEmailAllOfFrom**](TemplateContentEmailAllOfFrom.md) |  | [optional] 
 **Subject** | Pointer to **string** | The email&#39;s subject line. Cannot exceed 256 characters. If supported, can include variables. | [optional] 
 **ReplyTo** | Pointer to [**TemplateContentEmailAllOfReplyTo**](TemplateContentEmailAllOfReplyTo.md) |  | [optional] 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewTemplateContentEmailAllOf
 
-`func NewTemplateContentEmailAllOf() *TemplateContentEmailAllOf`
+`func NewTemplateContentEmailAllOf(body string, ) *TemplateContentEmailAllOf`
 
 NewTemplateContentEmailAllOf instantiates a new TemplateContentEmailAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +29,26 @@ will change when the set of required properties is changed
 NewTemplateContentEmailAllOfWithDefaults instantiates a new TemplateContentEmailAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBody
+
+`func (o *TemplateContentEmailAllOf) GetBody() string`
+
+GetBody returns the Body field if non-nil, zero value otherwise.
+
+### GetBodyOk
+
+`func (o *TemplateContentEmailAllOf) GetBodyOk() (*string, bool)`
+
+GetBodyOk returns a tuple with the Body field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBody
+
+`func (o *TemplateContentEmailAllOf) SetBody(v string)`
+
+SetBody sets Body field to given value.
+
 
 ### GetFrom
 
