@@ -1,3 +1,10 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.2
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.13.0 => v0.14.0
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.14.0](./management/CHANGELOG.md)
+    * **Bug fix** - Correct the `TemplateContent` API model [#97](https://github.com/patrickcping/pingone-go-sdk-v2/pull/97)
+
 # Release (2023-01-09)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.1

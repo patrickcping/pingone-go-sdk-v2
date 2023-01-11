@@ -26,24 +26,25 @@ type TemplateContentPush struct {
 	Default *bool `json:"default,omitempty"`
 	// A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \"en\". Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \"en_GB\", \"en-GB\". Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`. 
 	Locale string `json:"locale"`
-	// The content's delivery method. Possible values are `Email`, `SMS`, `Voice` or `Push`. Cannot be changed after it is initially set in `POST /environments/{{envID}}/templates/{{templateName}}/contents`.
-	DeliveryMethod string `json:"deliveryMethod"`
+	DeliveryMethod EnumTemplateContentDeliveryMethod `json:"deliveryMethod"`
 	// Holds the unique user-defined name for each content variant that uses the same template + `deliveryMethod` + `locale` combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents).
 	Variant *string `json:"variant,omitempty"`
-	// The email or push text (maximum 400 characters for push text). Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables.
-	Body string `json:"body"`
 	// The push title (maximum 200 characters). If supported, this can include variables.
-	Title *string `json:"title,omitempty"`
+	Title string `json:"title"`
+	// The push text (maximum 400 characters for push text). If supported, this can include variables.
+	Body string `json:"body"`
+	PushCategory *EnumTemplateContentPushCategory `json:"pushCategory,omitempty"`
 }
 
 // NewTemplateContentPush instantiates a new TemplateContentPush object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplateContentPush(locale string, deliveryMethod string, body string) *TemplateContentPush {
+func NewTemplateContentPush(locale string, deliveryMethod EnumTemplateContentDeliveryMethod, title string, body string) *TemplateContentPush {
 	this := TemplateContentPush{}
 	this.Locale = locale
 	this.DeliveryMethod = deliveryMethod
+	this.Title = title
 	this.Body = body
 	return &this
 }
@@ -209,9 +210,9 @@ func (o *TemplateContentPush) SetLocale(v string) {
 }
 
 // GetDeliveryMethod returns the DeliveryMethod field value
-func (o *TemplateContentPush) GetDeliveryMethod() string {
+func (o *TemplateContentPush) GetDeliveryMethod() EnumTemplateContentDeliveryMethod {
 	if o == nil {
-		var ret string
+		var ret EnumTemplateContentDeliveryMethod
 		return ret
 	}
 
@@ -220,7 +221,7 @@ func (o *TemplateContentPush) GetDeliveryMethod() string {
 
 // GetDeliveryMethodOk returns a tuple with the DeliveryMethod field value
 // and a boolean to check if the value has been set.
-func (o *TemplateContentPush) GetDeliveryMethodOk() (*string, bool) {
+func (o *TemplateContentPush) GetDeliveryMethodOk() (*EnumTemplateContentDeliveryMethod, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -228,7 +229,7 @@ func (o *TemplateContentPush) GetDeliveryMethodOk() (*string, bool) {
 }
 
 // SetDeliveryMethod sets field value
-func (o *TemplateContentPush) SetDeliveryMethod(v string) {
+func (o *TemplateContentPush) SetDeliveryMethod(v EnumTemplateContentDeliveryMethod) {
 	o.DeliveryMethod = v
 }
 
@@ -264,6 +265,30 @@ func (o *TemplateContentPush) SetVariant(v string) {
 	o.Variant = &v
 }
 
+// GetTitle returns the Title field value
+func (o *TemplateContentPush) GetTitle() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Title
+}
+
+// GetTitleOk returns a tuple with the Title field value
+// and a boolean to check if the value has been set.
+func (o *TemplateContentPush) GetTitleOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.Title, true
+}
+
+// SetTitle sets field value
+func (o *TemplateContentPush) SetTitle(v string) {
+	o.Title = v
+}
+
 // GetBody returns the Body field value
 func (o *TemplateContentPush) GetBody() string {
 	if o == nil {
@@ -288,36 +313,36 @@ func (o *TemplateContentPush) SetBody(v string) {
 	o.Body = v
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
-func (o *TemplateContentPush) GetTitle() string {
-	if o == nil || isNil(o.Title) {
-		var ret string
+// GetPushCategory returns the PushCategory field value if set, zero value otherwise.
+func (o *TemplateContentPush) GetPushCategory() EnumTemplateContentPushCategory {
+	if o == nil || isNil(o.PushCategory) {
+		var ret EnumTemplateContentPushCategory
 		return ret
 	}
-	return *o.Title
+	return *o.PushCategory
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetPushCategoryOk returns a tuple with the PushCategory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateContentPush) GetTitleOk() (*string, bool) {
-	if o == nil || isNil(o.Title) {
+func (o *TemplateContentPush) GetPushCategoryOk() (*EnumTemplateContentPushCategory, bool) {
+	if o == nil || isNil(o.PushCategory) {
     return nil, false
 	}
-	return o.Title, true
+	return o.PushCategory, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *TemplateContentPush) HasTitle() bool {
-	if o != nil && !isNil(o.Title) {
+// HasPushCategory returns a boolean if a field has been set.
+func (o *TemplateContentPush) HasPushCategory() bool {
+	if o != nil && !isNil(o.PushCategory) {
 		return true
 	}
 
 	return false
 }
 
-// SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *TemplateContentPush) SetTitle(v string) {
-	o.Title = &v
+// SetPushCategory gets a reference to the given EnumTemplateContentPushCategory and assigns it to the PushCategory field.
+func (o *TemplateContentPush) SetPushCategory(v EnumTemplateContentPushCategory) {
+	o.PushCategory = &v
 }
 
 func (o TemplateContentPush) MarshalJSON() ([]byte, error) {
@@ -344,10 +369,13 @@ func (o TemplateContentPush) MarshalJSON() ([]byte, error) {
 		toSerialize["variant"] = o.Variant
 	}
 	if true {
+		toSerialize["title"] = o.Title
+	}
+	if true {
 		toSerialize["body"] = o.Body
 	}
-	if !isNil(o.Title) {
-		toSerialize["title"] = o.Title
+	if !isNil(o.PushCategory) {
+		toSerialize["pushCategory"] = o.PushCategory
 	}
 	return json.Marshal(toSerialize)
 }

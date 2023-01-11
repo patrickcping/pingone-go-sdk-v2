@@ -16,6 +16,8 @@ import (
 
 // TemplateContentSMSAllOf struct for TemplateContentSMSAllOf
 type TemplateContentSMSAllOf struct {
+	// The SMS text. UC-2 encoding is used for text that contains non GSM-7 characters. UC-2 encoded text cannot exceed 67 characters. GSM-7 encoded text cannot exceed 153 characters. If supported, it can include variables. 
+	Content string `json:"content"`
 	// The SMS sender ID. This property can contain only alphanumeric characters and spaces, and its length cannot exceed 11 characters. In some countries, it is impossible to send an SMS with an alphanumeric sender ID. For those countries, the sender ID must be empty. For SMS recipients in specific countries, refer to Twilio's documentation on [International support for Alphanumeric Sender ID](https://support.twilio.com/hc/en-us/articles/223133767-International-support-for-Alphanumeric-Sender-ID).
 	Sender *string `json:"sender,omitempty"`
 }
@@ -24,8 +26,9 @@ type TemplateContentSMSAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplateContentSMSAllOf() *TemplateContentSMSAllOf {
+func NewTemplateContentSMSAllOf(content string) *TemplateContentSMSAllOf {
 	this := TemplateContentSMSAllOf{}
+	this.Content = content
 	return &this
 }
 
@@ -35,6 +38,30 @@ func NewTemplateContentSMSAllOf() *TemplateContentSMSAllOf {
 func NewTemplateContentSMSAllOfWithDefaults() *TemplateContentSMSAllOf {
 	this := TemplateContentSMSAllOf{}
 	return &this
+}
+
+// GetContent returns the Content field value
+func (o *TemplateContentSMSAllOf) GetContent() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Content
+}
+
+// GetContentOk returns a tuple with the Content field value
+// and a boolean to check if the value has been set.
+func (o *TemplateContentSMSAllOf) GetContentOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.Content, true
+}
+
+// SetContent sets field value
+func (o *TemplateContentSMSAllOf) SetContent(v string) {
+	o.Content = v
 }
 
 // GetSender returns the Sender field value if set, zero value otherwise.
@@ -71,6 +98,9 @@ func (o *TemplateContentSMSAllOf) SetSender(v string) {
 
 func (o TemplateContentSMSAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["content"] = o.Content
+	}
 	if !isNil(o.Sender) {
 		toSerialize["sender"] = o.Sender
 	}

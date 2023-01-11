@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// TemplateContentSMS struct for TemplateContentSMS
-type TemplateContentSMS struct {
+// TemplateContentCommon struct for TemplateContentCommon
+type TemplateContentCommon struct {
 	// The template id.
 	Id *string `json:"id,omitempty"`
 	// The time the resource was created.
@@ -29,34 +29,29 @@ type TemplateContentSMS struct {
 	DeliveryMethod EnumTemplateContentDeliveryMethod `json:"deliveryMethod"`
 	// Holds the unique user-defined name for each content variant that uses the same template + `deliveryMethod` + `locale` combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents).
 	Variant *string `json:"variant,omitempty"`
-	// The SMS text. UC-2 encoding is used for text that contains non GSM-7 characters. UC-2 encoded text cannot exceed 67 characters. GSM-7 encoded text cannot exceed 153 characters. If supported, it can include variables. 
-	Content string `json:"content"`
-	// The SMS sender ID. This property can contain only alphanumeric characters and spaces, and its length cannot exceed 11 characters. In some countries, it is impossible to send an SMS with an alphanumeric sender ID. For those countries, the sender ID must be empty. For SMS recipients in specific countries, refer to Twilio's documentation on [International support for Alphanumeric Sender ID](https://support.twilio.com/hc/en-us/articles/223133767-International-support-for-Alphanumeric-Sender-ID).
-	Sender *string `json:"sender,omitempty"`
 }
 
-// NewTemplateContentSMS instantiates a new TemplateContentSMS object
+// NewTemplateContentCommon instantiates a new TemplateContentCommon object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplateContentSMS(locale string, deliveryMethod EnumTemplateContentDeliveryMethod, content string) *TemplateContentSMS {
-	this := TemplateContentSMS{}
+func NewTemplateContentCommon(locale string, deliveryMethod EnumTemplateContentDeliveryMethod) *TemplateContentCommon {
+	this := TemplateContentCommon{}
 	this.Locale = locale
 	this.DeliveryMethod = deliveryMethod
-	this.Content = content
 	return &this
 }
 
-// NewTemplateContentSMSWithDefaults instantiates a new TemplateContentSMS object
+// NewTemplateContentCommonWithDefaults instantiates a new TemplateContentCommon object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTemplateContentSMSWithDefaults() *TemplateContentSMS {
-	this := TemplateContentSMS{}
+func NewTemplateContentCommonWithDefaults() *TemplateContentCommon {
+	this := TemplateContentCommon{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *TemplateContentSMS) GetId() string {
+func (o *TemplateContentCommon) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -66,7 +61,7 @@ func (o *TemplateContentSMS) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetIdOk() (*string, bool) {
+func (o *TemplateContentCommon) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
     return nil, false
 	}
@@ -74,7 +69,7 @@ func (o *TemplateContentSMS) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *TemplateContentSMS) HasId() bool {
+func (o *TemplateContentCommon) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -83,12 +78,12 @@ func (o *TemplateContentSMS) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *TemplateContentSMS) SetId(v string) {
+func (o *TemplateContentCommon) SetId(v string) {
 	o.Id = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *TemplateContentSMS) GetCreatedAt() string {
+func (o *TemplateContentCommon) GetCreatedAt() string {
 	if o == nil || isNil(o.CreatedAt) {
 		var ret string
 		return ret
@@ -98,7 +93,7 @@ func (o *TemplateContentSMS) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetCreatedAtOk() (*string, bool) {
+func (o *TemplateContentCommon) GetCreatedAtOk() (*string, bool) {
 	if o == nil || isNil(o.CreatedAt) {
     return nil, false
 	}
@@ -106,7 +101,7 @@ func (o *TemplateContentSMS) GetCreatedAtOk() (*string, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *TemplateContentSMS) HasCreatedAt() bool {
+func (o *TemplateContentCommon) HasCreatedAt() bool {
 	if o != nil && !isNil(o.CreatedAt) {
 		return true
 	}
@@ -115,12 +110,12 @@ func (o *TemplateContentSMS) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *TemplateContentSMS) SetCreatedAt(v string) {
+func (o *TemplateContentCommon) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *TemplateContentSMS) GetUpdatedAt() string {
+func (o *TemplateContentCommon) GetUpdatedAt() string {
 	if o == nil || isNil(o.UpdatedAt) {
 		var ret string
 		return ret
@@ -130,7 +125,7 @@ func (o *TemplateContentSMS) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetUpdatedAtOk() (*string, bool) {
+func (o *TemplateContentCommon) GetUpdatedAtOk() (*string, bool) {
 	if o == nil || isNil(o.UpdatedAt) {
     return nil, false
 	}
@@ -138,7 +133,7 @@ func (o *TemplateContentSMS) GetUpdatedAtOk() (*string, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *TemplateContentSMS) HasUpdatedAt() bool {
+func (o *TemplateContentCommon) HasUpdatedAt() bool {
 	if o != nil && !isNil(o.UpdatedAt) {
 		return true
 	}
@@ -147,12 +142,12 @@ func (o *TemplateContentSMS) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *TemplateContentSMS) SetUpdatedAt(v string) {
+func (o *TemplateContentCommon) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *TemplateContentSMS) GetDefault() bool {
+func (o *TemplateContentCommon) GetDefault() bool {
 	if o == nil || isNil(o.Default) {
 		var ret bool
 		return ret
@@ -162,7 +157,7 @@ func (o *TemplateContentSMS) GetDefault() bool {
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetDefaultOk() (*bool, bool) {
+func (o *TemplateContentCommon) GetDefaultOk() (*bool, bool) {
 	if o == nil || isNil(o.Default) {
     return nil, false
 	}
@@ -170,7 +165,7 @@ func (o *TemplateContentSMS) GetDefaultOk() (*bool, bool) {
 }
 
 // HasDefault returns a boolean if a field has been set.
-func (o *TemplateContentSMS) HasDefault() bool {
+func (o *TemplateContentCommon) HasDefault() bool {
 	if o != nil && !isNil(o.Default) {
 		return true
 	}
@@ -179,12 +174,12 @@ func (o *TemplateContentSMS) HasDefault() bool {
 }
 
 // SetDefault gets a reference to the given bool and assigns it to the Default field.
-func (o *TemplateContentSMS) SetDefault(v bool) {
+func (o *TemplateContentCommon) SetDefault(v bool) {
 	o.Default = &v
 }
 
 // GetLocale returns the Locale field value
-func (o *TemplateContentSMS) GetLocale() string {
+func (o *TemplateContentCommon) GetLocale() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -195,7 +190,7 @@ func (o *TemplateContentSMS) GetLocale() string {
 
 // GetLocaleOk returns a tuple with the Locale field value
 // and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetLocaleOk() (*string, bool) {
+func (o *TemplateContentCommon) GetLocaleOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -203,12 +198,12 @@ func (o *TemplateContentSMS) GetLocaleOk() (*string, bool) {
 }
 
 // SetLocale sets field value
-func (o *TemplateContentSMS) SetLocale(v string) {
+func (o *TemplateContentCommon) SetLocale(v string) {
 	o.Locale = v
 }
 
 // GetDeliveryMethod returns the DeliveryMethod field value
-func (o *TemplateContentSMS) GetDeliveryMethod() EnumTemplateContentDeliveryMethod {
+func (o *TemplateContentCommon) GetDeliveryMethod() EnumTemplateContentDeliveryMethod {
 	if o == nil {
 		var ret EnumTemplateContentDeliveryMethod
 		return ret
@@ -219,7 +214,7 @@ func (o *TemplateContentSMS) GetDeliveryMethod() EnumTemplateContentDeliveryMeth
 
 // GetDeliveryMethodOk returns a tuple with the DeliveryMethod field value
 // and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetDeliveryMethodOk() (*EnumTemplateContentDeliveryMethod, bool) {
+func (o *TemplateContentCommon) GetDeliveryMethodOk() (*EnumTemplateContentDeliveryMethod, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -227,12 +222,12 @@ func (o *TemplateContentSMS) GetDeliveryMethodOk() (*EnumTemplateContentDelivery
 }
 
 // SetDeliveryMethod sets field value
-func (o *TemplateContentSMS) SetDeliveryMethod(v EnumTemplateContentDeliveryMethod) {
+func (o *TemplateContentCommon) SetDeliveryMethod(v EnumTemplateContentDeliveryMethod) {
 	o.DeliveryMethod = v
 }
 
 // GetVariant returns the Variant field value if set, zero value otherwise.
-func (o *TemplateContentSMS) GetVariant() string {
+func (o *TemplateContentCommon) GetVariant() string {
 	if o == nil || isNil(o.Variant) {
 		var ret string
 		return ret
@@ -242,7 +237,7 @@ func (o *TemplateContentSMS) GetVariant() string {
 
 // GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetVariantOk() (*string, bool) {
+func (o *TemplateContentCommon) GetVariantOk() (*string, bool) {
 	if o == nil || isNil(o.Variant) {
     return nil, false
 	}
@@ -250,7 +245,7 @@ func (o *TemplateContentSMS) GetVariantOk() (*string, bool) {
 }
 
 // HasVariant returns a boolean if a field has been set.
-func (o *TemplateContentSMS) HasVariant() bool {
+func (o *TemplateContentCommon) HasVariant() bool {
 	if o != nil && !isNil(o.Variant) {
 		return true
 	}
@@ -259,67 +254,11 @@ func (o *TemplateContentSMS) HasVariant() bool {
 }
 
 // SetVariant gets a reference to the given string and assigns it to the Variant field.
-func (o *TemplateContentSMS) SetVariant(v string) {
+func (o *TemplateContentCommon) SetVariant(v string) {
 	o.Variant = &v
 }
 
-// GetContent returns the Content field value
-func (o *TemplateContentSMS) GetContent() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Content
-}
-
-// GetContentOk returns a tuple with the Content field value
-// and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetContentOk() (*string, bool) {
-	if o == nil {
-    return nil, false
-	}
-	return &o.Content, true
-}
-
-// SetContent sets field value
-func (o *TemplateContentSMS) SetContent(v string) {
-	o.Content = v
-}
-
-// GetSender returns the Sender field value if set, zero value otherwise.
-func (o *TemplateContentSMS) GetSender() string {
-	if o == nil || isNil(o.Sender) {
-		var ret string
-		return ret
-	}
-	return *o.Sender
-}
-
-// GetSenderOk returns a tuple with the Sender field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TemplateContentSMS) GetSenderOk() (*string, bool) {
-	if o == nil || isNil(o.Sender) {
-    return nil, false
-	}
-	return o.Sender, true
-}
-
-// HasSender returns a boolean if a field has been set.
-func (o *TemplateContentSMS) HasSender() bool {
-	if o != nil && !isNil(o.Sender) {
-		return true
-	}
-
-	return false
-}
-
-// SetSender gets a reference to the given string and assigns it to the Sender field.
-func (o *TemplateContentSMS) SetSender(v string) {
-	o.Sender = &v
-}
-
-func (o TemplateContentSMS) MarshalJSON() ([]byte, error) {
+func (o TemplateContentCommon) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -342,47 +281,41 @@ func (o TemplateContentSMS) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Variant) {
 		toSerialize["variant"] = o.Variant
 	}
-	if true {
-		toSerialize["content"] = o.Content
-	}
-	if !isNil(o.Sender) {
-		toSerialize["sender"] = o.Sender
-	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableTemplateContentSMS struct {
-	value *TemplateContentSMS
+type NullableTemplateContentCommon struct {
+	value *TemplateContentCommon
 	isSet bool
 }
 
-func (v NullableTemplateContentSMS) Get() *TemplateContentSMS {
+func (v NullableTemplateContentCommon) Get() *TemplateContentCommon {
 	return v.value
 }
 
-func (v *NullableTemplateContentSMS) Set(val *TemplateContentSMS) {
+func (v *NullableTemplateContentCommon) Set(val *TemplateContentCommon) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTemplateContentSMS) IsSet() bool {
+func (v NullableTemplateContentCommon) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTemplateContentSMS) Unset() {
+func (v *NullableTemplateContentCommon) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTemplateContentSMS(val *TemplateContentSMS) *NullableTemplateContentSMS {
-	return &NullableTemplateContentSMS{value: val, isSet: true}
+func NewNullableTemplateContentCommon(val *TemplateContentCommon) *NullableTemplateContentCommon {
+	return &NullableTemplateContentCommon{value: val, isSet: true}
 }
 
-func (v NullableTemplateContentSMS) MarshalJSON() ([]byte, error) {
+func (v NullableTemplateContentCommon) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTemplateContentSMS) UnmarshalJSON(src []byte) error {
+func (v *NullableTemplateContentCommon) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

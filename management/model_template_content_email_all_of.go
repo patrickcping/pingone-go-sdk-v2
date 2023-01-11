@@ -16,6 +16,8 @@ import (
 
 // TemplateContentEmailAllOf struct for TemplateContentEmailAllOf
 type TemplateContentEmailAllOf struct {
+	// The email text. Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables.
+	Body string `json:"body"`
 	From *TemplateContentEmailAllOfFrom `json:"from,omitempty"`
 	// The email's subject line. Cannot exceed 256 characters. If supported, can include variables.
 	Subject *string `json:"subject,omitempty"`
@@ -30,8 +32,9 @@ type TemplateContentEmailAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplateContentEmailAllOf() *TemplateContentEmailAllOf {
+func NewTemplateContentEmailAllOf(body string) *TemplateContentEmailAllOf {
 	this := TemplateContentEmailAllOf{}
+	this.Body = body
 	var charset string = "UTF-8"
 	this.Charset = &charset
 	var emailContentType string = "text/html"
@@ -49,6 +52,30 @@ func NewTemplateContentEmailAllOfWithDefaults() *TemplateContentEmailAllOf {
 	var emailContentType string = "text/html"
 	this.EmailContentType = &emailContentType
 	return &this
+}
+
+// GetBody returns the Body field value
+func (o *TemplateContentEmailAllOf) GetBody() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Body
+}
+
+// GetBodyOk returns a tuple with the Body field value
+// and a boolean to check if the value has been set.
+func (o *TemplateContentEmailAllOf) GetBodyOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.Body, true
+}
+
+// SetBody sets field value
+func (o *TemplateContentEmailAllOf) SetBody(v string) {
+	o.Body = v
 }
 
 // GetFrom returns the From field value if set, zero value otherwise.
@@ -213,6 +240,9 @@ func (o *TemplateContentEmailAllOf) SetEmailContentType(v string) {
 
 func (o TemplateContentEmailAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["body"] = o.Body
+	}
 	if !isNil(o.From) {
 		toSerialize["from"] = o.From
 	}

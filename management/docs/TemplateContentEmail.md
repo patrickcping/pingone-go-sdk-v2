@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **Default** | Pointer to **bool** | Specifies whether the template is a predefined default template. | [optional] 
 **Locale** | **string** | A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \&quot;en\&quot;. Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \&quot;en_GB\&quot;, \&quot;en-GB\&quot;. Cannot be changed after it is initially set in &#x60;POST /environments/{{envID}}/templates/{{templateName}}/contents&#x60;.  | 
-**DeliveryMethod** | **string** | The content&#39;s delivery method. Possible values are &#x60;Email&#x60;, &#x60;SMS&#x60;, &#x60;Voice&#x60; or &#x60;Push&#x60;. Cannot be changed after it is initially set in &#x60;POST /environments/{{envID}}/templates/{{templateName}}/contents&#x60;. | 
+**DeliveryMethod** | [**EnumTemplateContentDeliveryMethod**](EnumTemplateContentDeliveryMethod.md) |  | 
 **Variant** | Pointer to **string** | Holds the unique user-defined name for each content variant that uses the same template + &#x60;deliveryMethod&#x60; + &#x60;locale&#x60; combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents). | [optional] 
-**Body** | **string** | The email or push text (maximum 400 characters for push text). Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables. | 
+**Body** | **string** | The email text. Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables. | 
 **From** | Pointer to [**TemplateContentEmailAllOfFrom**](TemplateContentEmailAllOfFrom.md) |  | [optional] 
 **Subject** | Pointer to **string** | The email&#39;s subject line. Cannot exceed 256 characters. If supported, can include variables. | [optional] 
 **ReplyTo** | Pointer to [**TemplateContentEmailAllOfReplyTo**](TemplateContentEmailAllOfReplyTo.md) |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewTemplateContentEmail
 
-`func NewTemplateContentEmail(locale string, deliveryMethod string, body string, ) *TemplateContentEmail`
+`func NewTemplateContentEmail(locale string, deliveryMethod EnumTemplateContentDeliveryMethod, body string, ) *TemplateContentEmail`
 
 NewTemplateContentEmail instantiates a new TemplateContentEmail object
 This constructor will assign default values to properties that have it defined,
@@ -159,20 +159,20 @@ SetLocale sets Locale field to given value.
 
 ### GetDeliveryMethod
 
-`func (o *TemplateContentEmail) GetDeliveryMethod() string`
+`func (o *TemplateContentEmail) GetDeliveryMethod() EnumTemplateContentDeliveryMethod`
 
 GetDeliveryMethod returns the DeliveryMethod field if non-nil, zero value otherwise.
 
 ### GetDeliveryMethodOk
 
-`func (o *TemplateContentEmail) GetDeliveryMethodOk() (*string, bool)`
+`func (o *TemplateContentEmail) GetDeliveryMethodOk() (*EnumTemplateContentDeliveryMethod, bool)`
 
 GetDeliveryMethodOk returns a tuple with the DeliveryMethod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeliveryMethod
 
-`func (o *TemplateContentEmail) SetDeliveryMethod(v string)`
+`func (o *TemplateContentEmail) SetDeliveryMethod(v EnumTemplateContentDeliveryMethod)`
 
 SetDeliveryMethod sets DeliveryMethod field to given value.
 
