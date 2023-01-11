@@ -4,6 +4,11 @@
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.13.0 => v0.14.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.14.0](./management/CHANGELOG.md)
     * **Bug fix** - Correct the `TemplateContent` API model [#97](https://github.com/patrickcping/pingone-go-sdk-v2/pull/97)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.7.2](./mfa/CHANGELOG.md)
+    * **Breaking change** Device selection `Authentication` model no longer required for the `MFASettings` model [#98](https://github.com/patrickcping/pingone-go-sdk-v2/pull/98)
+    * **Note** Deprecated device selection from the `MFASettings` model [#98](https://github.com/patrickcping/pingone-go-sdk-v2/pull/98)
+    * **Enhancement** - Added device selection parameters to the `DeviceAuthenticationPolicy` model [#98](https://github.com/patrickcping/pingone-go-sdk-v2/pull/98)
+    * **Enhancement** - Added push timeout to the `DeviceAuthenticationPolicy` model [#98](https://github.com/patrickcping/pingone-go-sdk-v2/pull/98)
 
 # Release (2023-01-09)
 

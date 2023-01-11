@@ -166,7 +166,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    mFASettings := *openapiclient.NewMFASettings(*openapiclient.NewMFASettingsAuthentication(openapiclient.EnumMFASettingsDeviceSelection("DEFAULT_TO_FIRST")), *openapiclient.NewMFASettingsPairing(int32(123), openapiclient.EnumMFASettingsPairingKeyFormat("NUMERIC"))) // MFASettings |  (optional)
+    mFASettings := *openapiclient.NewMFASettings(*openapiclient.NewMFASettingsPairing(int32(123), openapiclient.EnumMFASettingsPairingKeyFormat("NUMERIC"))) // MFASettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

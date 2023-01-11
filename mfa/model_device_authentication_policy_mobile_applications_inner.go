@@ -19,6 +19,7 @@ type DeviceAuthenticationPolicyMobileApplicationsInner struct {
 	// The application's ID.
 	Id string `json:"id"`
 	Push *DeviceAuthenticationPolicyMobileApplicationsInnerPush `json:"push,omitempty"`
+	PushTimeout *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout `json:"pushTimeout,omitempty"`
 	Otp *DeviceAuthenticationPolicyMobileApplicationsInnerOtp `json:"otp,omitempty"`
 	DeviceAuthorization *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization `json:"deviceAuthorization,omitempty"`
 	AutoEnrollment *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment `json:"autoEnrollment,omitempty"`
@@ -97,6 +98,38 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPush() bool {
 // SetPush gets a reference to the given DeviceAuthenticationPolicyMobileApplicationsInnerPush and assigns it to the Push field.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPush(v DeviceAuthenticationPolicyMobileApplicationsInnerPush) {
 	o.Push = &v
+}
+
+// GetPushTimeout returns the PushTimeout field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPushTimeout() DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout {
+	if o == nil || isNil(o.PushTimeout) {
+		var ret DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout
+		return ret
+	}
+	return *o.PushTimeout
+}
+
+// GetPushTimeoutOk returns a tuple with the PushTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPushTimeoutOk() (*DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout, bool) {
+	if o == nil || isNil(o.PushTimeout) {
+    return nil, false
+	}
+	return o.PushTimeout, true
+}
+
+// HasPushTimeout returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPushTimeout() bool {
+	if o != nil && !isNil(o.PushTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetPushTimeout gets a reference to the given DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout and assigns it to the PushTimeout field.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPushTimeout(v DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) {
+	o.PushTimeout = &v
 }
 
 // GetOtp returns the Otp field value if set, zero value otherwise.
@@ -234,6 +267,9 @@ func (o DeviceAuthenticationPolicyMobileApplicationsInner) MarshalJSON() ([]byte
 	}
 	if !isNil(o.Push) {
 		toSerialize["push"] = o.Push
+	}
+	if !isNil(o.PushTimeout) {
+		toSerialize["pushTimeout"] = o.PushTimeout
 	}
 	if !isNil(o.Otp) {
 		toSerialize["otp"] = o.Otp
