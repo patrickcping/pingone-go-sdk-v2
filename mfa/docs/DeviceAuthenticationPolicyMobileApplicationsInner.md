@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The application&#39;s ID. | 
 **Push** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerPush**](DeviceAuthenticationPolicyMobileApplicationsInnerPush.md) |  | [optional] 
+**PushTimeout** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout**](DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout.md) |  | [optional] 
 **Otp** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerOtp**](DeviceAuthenticationPolicyMobileApplicationsInnerOtp.md) |  | [optional] 
 **DeviceAuthorization** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization**](DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization.md) |  | [optional] 
 **AutoEnrollment** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment**](DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment.md) |  | [optional] 
@@ -74,6 +75,31 @@ SetPush sets Push field to given value.
 `func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPush() bool`
 
 HasPush returns a boolean if a field has been set.
+
+### GetPushTimeout
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPushTimeout() DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout`
+
+GetPushTimeout returns the PushTimeout field if non-nil, zero value otherwise.
+
+### GetPushTimeoutOk
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPushTimeoutOk() (*DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout, bool)`
+
+GetPushTimeoutOk returns a tuple with the PushTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPushTimeout
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPushTimeout(v DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout)`
+
+SetPushTimeout sets PushTimeout field to given value.
+
+### HasPushTimeout
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPushTimeout() bool`
+
+HasPushTimeout returns a boolean if a field has been set.
 
 ### GetOtp
 

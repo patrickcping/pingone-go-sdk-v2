@@ -22,6 +22,7 @@ type DeviceAuthenticationPolicy struct {
 	Id *string `json:"id,omitempty"`
 	// Device authentication policy's name.
 	Name string `json:"name"`
+	Authentication *DeviceAuthenticationPolicyAuthentication `json:"authentication,omitempty"`
 	Sms DeviceAuthenticationPolicyOfflineDevice `json:"sms"`
 	Voice DeviceAuthenticationPolicyOfflineDevice `json:"voice"`
 	Email DeviceAuthenticationPolicyOfflineDevice `json:"email"`
@@ -150,6 +151,38 @@ func (o *DeviceAuthenticationPolicy) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DeviceAuthenticationPolicy) SetName(v string) {
 	o.Name = v
+}
+
+// GetAuthentication returns the Authentication field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetAuthentication() DeviceAuthenticationPolicyAuthentication {
+	if o == nil || isNil(o.Authentication) {
+		var ret DeviceAuthenticationPolicyAuthentication
+		return ret
+	}
+	return *o.Authentication
+}
+
+// GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetAuthenticationOk() (*DeviceAuthenticationPolicyAuthentication, bool) {
+	if o == nil || isNil(o.Authentication) {
+    return nil, false
+	}
+	return o.Authentication, true
+}
+
+// HasAuthentication returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasAuthentication() bool {
+	if o != nil && !isNil(o.Authentication) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthentication gets a reference to the given DeviceAuthenticationPolicyAuthentication and assigns it to the Authentication field.
+func (o *DeviceAuthenticationPolicy) SetAuthentication(v DeviceAuthenticationPolicyAuthentication) {
+	o.Authentication = &v
 }
 
 // GetSms returns the Sms field value
@@ -413,6 +446,9 @@ func (o DeviceAuthenticationPolicy) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.Authentication) {
+		toSerialize["authentication"] = o.Authentication
 	}
 	if true {
 		toSerialize["sms"] = o.Sms

@@ -18,7 +18,8 @@ import (
 // MFASettings struct for MFASettings
 type MFASettings struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Authentication MFASettingsAuthentication `json:"authentication"`
+	// Deprecated
+	Authentication *MFASettingsAuthentication `json:"authentication,omitempty"`
 	Lockout *MFASettingsLockout `json:"lockout,omitempty"`
 	Pairing MFASettingsPairing `json:"pairing"`
 	// The time the resource was last updated.
@@ -29,9 +30,8 @@ type MFASettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFASettings(authentication MFASettingsAuthentication, pairing MFASettingsPairing) *MFASettings {
+func NewMFASettings(pairing MFASettingsPairing) *MFASettings {
 	this := MFASettings{}
-	this.Authentication = authentication
 	this.Pairing = pairing
 	return &this
 }
@@ -76,28 +76,39 @@ func (o *MFASettings) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
-// GetAuthentication returns the Authentication field value
+// GetAuthentication returns the Authentication field value if set, zero value otherwise.
+// Deprecated
 func (o *MFASettings) GetAuthentication() MFASettingsAuthentication {
-	if o == nil {
+	if o == nil || isNil(o.Authentication) {
 		var ret MFASettingsAuthentication
 		return ret
 	}
-
-	return o.Authentication
+	return *o.Authentication
 }
 
-// GetAuthenticationOk returns a tuple with the Authentication field value
+// GetAuthenticationOk returns a tuple with the Authentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *MFASettings) GetAuthenticationOk() (*MFASettingsAuthentication, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Authentication) {
     return nil, false
 	}
-	return &o.Authentication, true
+	return o.Authentication, true
 }
 
-// SetAuthentication sets field value
+// HasAuthentication returns a boolean if a field has been set.
+func (o *MFASettings) HasAuthentication() bool {
+	if o != nil && !isNil(o.Authentication) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthentication gets a reference to the given MFASettingsAuthentication and assigns it to the Authentication field.
+// Deprecated
 func (o *MFASettings) SetAuthentication(v MFASettingsAuthentication) {
-	o.Authentication = v
+	o.Authentication = &v
 }
 
 // GetLockout returns the Lockout field value if set, zero value otherwise.
@@ -193,7 +204,7 @@ func (o MFASettings) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if true {
+	if !isNil(o.Authentication) {
 		toSerialize["authentication"] = o.Authentication
 	}
 	if !isNil(o.Lockout) {

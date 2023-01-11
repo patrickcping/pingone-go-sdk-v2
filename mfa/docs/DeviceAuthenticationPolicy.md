@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | Device authentication policy&#39;s UUID. | [optional] [readonly] 
 **Name** | **string** | Device authentication policy&#39;s name. | 
+**Authentication** | Pointer to [**DeviceAuthenticationPolicyAuthentication**](DeviceAuthenticationPolicyAuthentication.md) |  | [optional] 
 **Sms** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Voice** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Email** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
@@ -106,6 +107,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetAuthentication
+
+`func (o *DeviceAuthenticationPolicy) GetAuthentication() DeviceAuthenticationPolicyAuthentication`
+
+GetAuthentication returns the Authentication field if non-nil, zero value otherwise.
+
+### GetAuthenticationOk
+
+`func (o *DeviceAuthenticationPolicy) GetAuthenticationOk() (*DeviceAuthenticationPolicyAuthentication, bool)`
+
+GetAuthenticationOk returns a tuple with the Authentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthentication
+
+`func (o *DeviceAuthenticationPolicy) SetAuthentication(v DeviceAuthenticationPolicyAuthentication)`
+
+SetAuthentication sets Authentication field to given value.
+
+### HasAuthentication
+
+`func (o *DeviceAuthenticationPolicy) HasAuthentication() bool`
+
+HasAuthentication returns a boolean if a field has been set.
 
 ### GetSms
 
