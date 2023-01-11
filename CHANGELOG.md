@@ -2,6 +2,7 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.2
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.13.0 => v0.14.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.7.1 => v0.7.2
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.14.0](./management/CHANGELOG.md)
     * **Bug fix** - Correct the `TemplateContent` API model [#97](https://github.com/patrickcping/pingone-go-sdk-v2/pull/97)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.7.2](./mfa/CHANGELOG.md)
