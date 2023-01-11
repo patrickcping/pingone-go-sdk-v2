@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Locale** | **string** | A valid case-insensitive locale, complying with the ISO-639 language code and ISO-3166 country code standards: Two-character language code, for example, \&quot;en\&quot;. Two-character language code followed by a two-character country code, separated by an underscore or dash, for example: \&quot;en_GB\&quot;, \&quot;en-GB\&quot;. Cannot be changed after it is initially set in &#x60;POST /environments/{{envID}}/templates/{{templateName}}/contents&#x60;.  | 
 **DeliveryMethod** | [**EnumTemplateContentDeliveryMethod**](EnumTemplateContentDeliveryMethod.md) |  | 
 **Variant** | Pointer to **string** | Holds the unique user-defined name for each content variant that uses the same template + &#x60;deliveryMethod&#x60; + &#x60;locale&#x60; combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents). | [optional] 
-**Title** | Pointer to **string** | The push title (maximum 200 characters). If supported, this can include variables. | [optional] 
+**Title** | **string** | The push title (maximum 200 characters). If supported, this can include variables. | 
 **Body** | **string** | The push text (maximum 400 characters for push text). If supported, this can include variables. | 
 **PushCategory** | Pointer to [**EnumTemplateContentPushCategory**](EnumTemplateContentPushCategory.md) |  | [optional] 
 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewTemplateContentPush
 
-`func NewTemplateContentPush(locale string, deliveryMethod EnumTemplateContentDeliveryMethod, body string, ) *TemplateContentPush`
+`func NewTemplateContentPush(locale string, deliveryMethod EnumTemplateContentDeliveryMethod, title string, body string, ) *TemplateContentPush`
 
 NewTemplateContentPush instantiates a new TemplateContentPush object
 This constructor will assign default values to properties that have it defined,
@@ -218,11 +218,6 @@ and a boolean to check if the value has been set.
 
 SetTitle sets Title field to given value.
 
-### HasTitle
-
-`func (o *TemplateContentPush) HasTitle() bool`
-
-HasTitle returns a boolean if a field has been set.
 
 ### GetBody
 

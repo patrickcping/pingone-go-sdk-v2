@@ -54,73 +54,39 @@ func TemplateContentVoiceAsTemplateContent(v *TemplateContentVoice) TemplateCont
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *TemplateContent) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into TemplateContentEmail
-	err = newStrictDecoder(data).Decode(&dst.TemplateContentEmail)
-	if err == nil {
-		jsonTemplateContentEmail, _ := json.Marshal(dst.TemplateContentEmail)
-		if string(jsonTemplateContentEmail) == "{}" { // empty struct
-			dst.TemplateContentEmail = nil
-		} else {
-			match++
+
+	var common TemplateContentCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.TemplateContentEmail = nil
+	dst.TemplateContentPush = nil
+	dst.TemplateContentSMS = nil
+	dst.TemplateContentVoice = nil
+
+	switch common.GetDeliveryMethod() {
+	case ENUMTEMPLATECONTENTDELIVERYMETHOD_EMAIL:
+		if err := json.Unmarshal(data, &dst.TemplateContentEmail); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.TemplateContentEmail = nil
-	}
-
-	// try to unmarshal data into TemplateContentPush
-	err = newStrictDecoder(data).Decode(&dst.TemplateContentPush)
-	if err == nil {
-		jsonTemplateContentPush, _ := json.Marshal(dst.TemplateContentPush)
-		if string(jsonTemplateContentPush) == "{}" { // empty struct
-			dst.TemplateContentPush = nil
-		} else {
-			match++
+	case ENUMTEMPLATECONTENTDELIVERYMETHOD_PUSH:
+		if err := json.Unmarshal(data, &dst.TemplateContentPush); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.TemplateContentPush = nil
-	}
-
-	// try to unmarshal data into TemplateContentSMS
-	err = newStrictDecoder(data).Decode(&dst.TemplateContentSMS)
-	if err == nil {
-		jsonTemplateContentSMS, _ := json.Marshal(dst.TemplateContentSMS)
-		if string(jsonTemplateContentSMS) == "{}" { // empty struct
-			dst.TemplateContentSMS = nil
-		} else {
-			match++
+	case ENUMTEMPLATECONTENTDELIVERYMETHOD_SMS:
+		if err := json.Unmarshal(data, &dst.TemplateContentSMS); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.TemplateContentSMS = nil
-	}
-
-	// try to unmarshal data into TemplateContentVoice
-	err = newStrictDecoder(data).Decode(&dst.TemplateContentVoice)
-	if err == nil {
-		jsonTemplateContentVoice, _ := json.Marshal(dst.TemplateContentVoice)
-		if string(jsonTemplateContentVoice) == "{}" { // empty struct
-			dst.TemplateContentVoice = nil
-		} else {
-			match++
+	case ENUMTEMPLATECONTENTDELIVERYMETHOD_VOICE:
+		if err := json.Unmarshal(data, &dst.TemplateContentVoice); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.TemplateContentVoice = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(TemplateContent)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.TemplateContentEmail = nil
-		dst.TemplateContentPush = nil
-		dst.TemplateContentSMS = nil
-		dst.TemplateContentVoice = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(TemplateContent)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(TemplateContent)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

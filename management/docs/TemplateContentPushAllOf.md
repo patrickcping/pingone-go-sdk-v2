@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Title** | Pointer to **string** | The push title (maximum 200 characters). If supported, this can include variables. | [optional] 
+**Title** | **string** | The push title (maximum 200 characters). If supported, this can include variables. | 
 **Body** | **string** | The push text (maximum 400 characters for push text). If supported, this can include variables. | 
 **PushCategory** | Pointer to [**EnumTemplateContentPushCategory**](EnumTemplateContentPushCategory.md) |  | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewTemplateContentPushAllOf
 
-`func NewTemplateContentPushAllOf(body string, ) *TemplateContentPushAllOf`
+`func NewTemplateContentPushAllOf(title string, body string, ) *TemplateContentPushAllOf`
 
 NewTemplateContentPushAllOf instantiates a new TemplateContentPushAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetTitle sets Title field to given value.
 
-### HasTitle
-
-`func (o *TemplateContentPushAllOf) HasTitle() bool`
-
-HasTitle returns a boolean if a field has been set.
 
 ### GetBody
 

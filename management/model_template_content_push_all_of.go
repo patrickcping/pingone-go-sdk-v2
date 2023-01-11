@@ -17,7 +17,7 @@ import (
 // TemplateContentPushAllOf struct for TemplateContentPushAllOf
 type TemplateContentPushAllOf struct {
 	// The push title (maximum 200 characters). If supported, this can include variables.
-	Title *string `json:"title,omitempty"`
+	Title string `json:"title"`
 	// The push text (maximum 400 characters for push text). If supported, this can include variables.
 	Body string `json:"body"`
 	PushCategory *EnumTemplateContentPushCategory `json:"pushCategory,omitempty"`
@@ -27,8 +27,9 @@ type TemplateContentPushAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTemplateContentPushAllOf(body string) *TemplateContentPushAllOf {
+func NewTemplateContentPushAllOf(title string, body string) *TemplateContentPushAllOf {
 	this := TemplateContentPushAllOf{}
+	this.Title = title
 	this.Body = body
 	return &this
 }
@@ -41,36 +42,28 @@ func NewTemplateContentPushAllOfWithDefaults() *TemplateContentPushAllOf {
 	return &this
 }
 
-// GetTitle returns the Title field value if set, zero value otherwise.
+// GetTitle returns the Title field value
 func (o *TemplateContentPushAllOf) GetTitle() string {
-	if o == nil || isNil(o.Title) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Title
+
+	return o.Title
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetTitleOk returns a tuple with the Title field value
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPushAllOf) GetTitleOk() (*string, bool) {
-	if o == nil || isNil(o.Title) {
+	if o == nil {
     return nil, false
 	}
-	return o.Title, true
+	return &o.Title, true
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *TemplateContentPushAllOf) HasTitle() bool {
-	if o != nil && !isNil(o.Title) {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given string and assigns it to the Title field.
+// SetTitle sets field value
 func (o *TemplateContentPushAllOf) SetTitle(v string) {
-	o.Title = &v
+	o.Title = v
 }
 
 // GetBody returns the Body field value
@@ -131,7 +124,7 @@ func (o *TemplateContentPushAllOf) SetPushCategory(v EnumTemplateContentPushCate
 
 func (o TemplateContentPushAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Title) {
+	if true {
 		toSerialize["title"] = o.Title
 	}
 	if true {

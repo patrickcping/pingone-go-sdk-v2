@@ -30968,6 +30968,7 @@ components:
           $ref: '#/components/schemas/EnumTemplateContentPushCategory'
       required:
       - body
+      - title
       type: object
       example: null
     TemplateContentVoice_allOf:
