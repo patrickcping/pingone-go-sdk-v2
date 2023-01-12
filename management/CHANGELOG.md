@@ -1,4 +1,4 @@
-# v0.14.0 (Unreleased)
+# v0.14.0 (2023-01-12)
 
 * **Bug fix** - Correct the `TemplateContent` API model [#97](https://github.com/patrickcping/pingone-go-sdk-v2/pull/97)
 

@@ -1,4 +1,4 @@
-# v0.7.2 (Unreleased)
+# v0.7.2 (2023-01-12)
 
 * **Breaking change** Device selection `Authentication` model no longer required for the `MFASettings` model [#98](https://github.com/patrickcping/pingone-go-sdk-v2/pull/98)
 * **Note** Deprecated device selection from the `MFASettings` model [#98](https://github.com/patrickcping/pingone-go-sdk-v2/pull/98)
