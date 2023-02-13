@@ -1,3 +1,8 @@
+# v0.15.0 (Unreleased)
+
+* **Breaking change** `OrganizationsApi.ReadOneOrganizations` changed to `OrganizationsApi.ReadOneOrganization`
+* **Enhancement** Add `limit` parameter to `OrganizationsApi.ReadAllOrganizations`
+
 # v0.14.0 (2023-01-12)
 
 * **Bug fix** - Correct the `TemplateContent` API model [#97](https://github.com/patrickcping/pingone-go-sdk-v2/pull/97)

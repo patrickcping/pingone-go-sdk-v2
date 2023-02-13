@@ -26,6 +26,12 @@ type OrganizationsApiService service
 type ApiReadAllOrganizationsRequest struct {
 	ctx context.Context
 	ApiService *OrganizationsApiService
+	limit *int32
+}
+
+func (r ApiReadAllOrganizationsRequest) Limit(limit int32) ApiReadAllOrganizationsRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiReadAllOrganizationsRequest) Execute() (*EntityArray, *http.Response, error) {
@@ -66,6 +72,9 @@ func (a *OrganizationsApiService) ReadAllOrganizationsExecute(r ApiReadAllOrgani
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -186,25 +195,25 @@ func (a *OrganizationsApiService) ReadAllOrganizationsExecute(r ApiReadAllOrgani
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiReadOneOrganizationsRequest struct {
+type ApiReadOneOrganizationRequest struct {
 	ctx context.Context
 	ApiService *OrganizationsApiService
 	organizationID string
 }
 
-func (r ApiReadOneOrganizationsRequest) Execute() (*Organization, *http.Response, error) {
-	return r.ApiService.ReadOneOrganizationsExecute(r)
+func (r ApiReadOneOrganizationRequest) Execute() (*Organization, *http.Response, error) {
+	return r.ApiService.ReadOneOrganizationExecute(r)
 }
 
 /*
-ReadOneOrganizations READ One Organization
+ReadOneOrganization READ One Organization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationID
- @return ApiReadOneOrganizationsRequest
+ @return ApiReadOneOrganizationRequest
 */
-func (a *OrganizationsApiService) ReadOneOrganizations(ctx context.Context, organizationID string) ApiReadOneOrganizationsRequest {
-	return ApiReadOneOrganizationsRequest{
+func (a *OrganizationsApiService) ReadOneOrganization(ctx context.Context, organizationID string) ApiReadOneOrganizationRequest {
+	return ApiReadOneOrganizationRequest{
 		ApiService: a,
 		ctx: ctx,
 		organizationID: organizationID,
@@ -213,7 +222,7 @@ func (a *OrganizationsApiService) ReadOneOrganizations(ctx context.Context, orga
 
 // Execute executes the request
 //  @return Organization
-func (a *OrganizationsApiService) ReadOneOrganizationsExecute(r ApiReadOneOrganizationsRequest) (*Organization, *http.Response, error) {
+func (a *OrganizationsApiService) ReadOneOrganizationExecute(r ApiReadOneOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -221,7 +230,7 @@ func (a *OrganizationsApiService) ReadOneOrganizationsExecute(r ApiReadOneOrgani
 		localVarReturnValue  *Organization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ReadOneOrganizations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ReadOneOrganization")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

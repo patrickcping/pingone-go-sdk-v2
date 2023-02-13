@@ -20995,6 +20995,15 @@ paths:
   /v1/organizations:
     get:
       operationId: readAllOrganizations
+      parameters:
+      - example: "1"
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
       responses:
         "400":
           content:
@@ -21044,7 +21053,7 @@ paths:
       - Organizations
   /v1/organizations/{organizationID}:
     get:
-      operationId: readOneOrganizations
+      operationId: readOneOrganization
       parameters:
       - explode: false
         in: path

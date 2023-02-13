@@ -5,13 +5,13 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ReadAllOrganizations**](OrganizationsApi.md#ReadAllOrganizations) | **Get** /v1/organizations | READ All Organizations
-[**ReadOneOrganizations**](OrganizationsApi.md#ReadOneOrganizations) | **Get** /v1/organizations/{organizationID} | READ One Organization
+[**ReadOneOrganization**](OrganizationsApi.md#ReadOneOrganization) | **Get** /v1/organizations/{organizationID} | READ One Organization
 
 
 
 ## ReadAllOrganizations
 
-> EntityArray ReadAllOrganizations(ctx).Execute()
+> EntityArray ReadAllOrganizations(ctx).Limit(limit).Execute()
 
 READ All Organizations
 
@@ -28,10 +28,11 @@ import (
 )
 
 func main() {
+    limit := int32(1) // int32 |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationsApi.ReadAllOrganizations(context.Background()).Execute()
+    resp, r, err := apiClient.OrganizationsApi.ReadAllOrganizations(context.Background()).Limit(limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ReadAllOrganizations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -43,12 +44,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiReadAllOrganizationsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** |  | 
 
 ### Return type
 
@@ -68,9 +73,9 @@ Other parameters are passed through a pointer to a apiReadAllOrganizationsReques
 [[Back to README]](../README.md)
 
 
-## ReadOneOrganizations
+## ReadOneOrganization
 
-> Organization ReadOneOrganizations(ctx, organizationID).Execute()
+> Organization ReadOneOrganization(ctx, organizationID).Execute()
 
 READ One Organization
 
@@ -91,13 +96,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationsApi.ReadOneOrganizations(context.Background(), organizationID).Execute()
+    resp, r, err := apiClient.OrganizationsApi.ReadOneOrganization(context.Background(), organizationID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ReadOneOrganizations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.ReadOneOrganization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneOrganizations`: Organization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ReadOneOrganizations`: %v\n", resp)
+    // response from `ReadOneOrganization`: Organization
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.ReadOneOrganization`: %v\n", resp)
 }
 ```
 
@@ -111,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadOneOrganizationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneOrganizationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
