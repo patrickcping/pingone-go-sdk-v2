@@ -844,7 +844,6 @@ model_subscription_filter_options.go
 model_subscription_filter_options_included_applications_inner.go
 model_subscription_http_endpoint.go
 model_template.go
-model_template_content.go
 model_template_content_common.go
 model_template_content_email.go
 model_template_content_email_all_of.go
