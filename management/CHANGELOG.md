@@ -1,7 +1,7 @@
 # v0.15.0 (Unreleased)
 
-* **Breaking change** `OrganizationsApi.ReadOneOrganizations` changed to `OrganizationsApi.ReadOneOrganization`
-* **Enhancement** Add `limit` parameter to `OrganizationsApi.ReadAllOrganizations`
+* **Breaking change** `OrganizationsApi.ReadOneOrganizations` changed to `OrganizationsApi.ReadOneOrganization` [#102](https://github.com/patrickcping/pingone-go-sdk-v2/pull/102)
+* **Enhancement** Add `limit` parameter to `OrganizationsApi.ReadAllOrganizations` [#102](https://github.com/patrickcping/pingone-go-sdk-v2/pull/102)
 
 # v0.14.0 (2023-01-12)
 
