@@ -22313,6 +22313,7 @@ components:
       enum:
       - ACTIVE
       - VERIFICATION_REQUIRED
+      readOnly: true
       type: string
     EnumEnabledStatus:
       description: "A string that specifies whether device integrity detection takes\
@@ -23192,10 +23193,11 @@ components:
       example:
         environment:
           id: id
-        emailDomain:
-          id: id
         emailAddress: emailAddress
+        domain:
+          id: id
         id: id
+        domainId: domainId
         status: null
       properties:
         id:
@@ -23205,14 +23207,19 @@ components:
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
-        emailDomain:
-          $ref: '#/components/schemas/EmailDomainTrustedEmail_emailDomain'
+        domain:
+          $ref: '#/components/schemas/EmailDomainTrustedEmail_domain'
         emailAddress:
           description: "A string that specifies the trusted email address, for example\
             \ john.smith@shopco.com."
           type: string
         status:
           $ref: '#/components/schemas/EnumTrustedEmailStatus'
+        domainId:
+          description: A string that specifies the trusted email domain resource’s
+            unique identifier associated with the resource.
+          readOnly: true
+          type: string
       required:
       - emailAddress
       type: object
@@ -23599,17 +23606,19 @@ components:
           trustedEmails:
           - environment:
               id: id
-            emailDomain:
-              id: id
             emailAddress: emailAddress
+            domain:
+              id: id
             id: id
+            domainId: domainId
             status: null
           - environment:
               id: id
-            emailDomain:
-              id: id
             emailAddress: emailAddress
+            domain:
+              id: id
             id: id
+            domainId: domainId
             status: null
           grants:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -27621,7 +27630,7 @@ components:
           description: Record value.
           type: string
       type: object
-    EmailDomainTrustedEmail_emailDomain:
+    EmailDomainTrustedEmail_domain:
       example:
         id: id
       properties:
@@ -27629,6 +27638,7 @@ components:
           description: A string that specifies the trusted email domain resource’s
             unique identifier associated with the resource.
           type: string
+      readOnly: true
       type: object
     EntityArray__embedded_attributes_inner:
       oneOf:
@@ -28025,17 +28035,19 @@ components:
         trustedEmails:
         - environment:
             id: id
-          emailDomain:
-            id: id
           emailAddress: emailAddress
+          domain:
+            id: id
           id: id
+          domainId: domainId
           status: null
         - environment:
             id: id
-          emailDomain:
-            id: id
           emailAddress: emailAddress
+          domain:
+            id: id
           id: id
+          domainId: domainId
           status: null
         grants:
         - createdAt: 2000-01-23T04:56:07.000+00:00

@@ -477,7 +477,7 @@ Class | Method | HTTP request | Description
  - [EmailDomainOwnershipStatusRegionsInner](docs/EmailDomainOwnershipStatusRegionsInner.md)
  - [EmailDomainSPFStatus](docs/EmailDomainSPFStatus.md)
  - [EmailDomainTrustedEmail](docs/EmailDomainTrustedEmail.md)
- - [EmailDomainTrustedEmailEmailDomain](docs/EmailDomainTrustedEmailEmailDomain.md)
+ - [EmailDomainTrustedEmailDomain](docs/EmailDomainTrustedEmailDomain.md)
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedAttributesInner](docs/EntityArrayEmbeddedAttributesInner.md)

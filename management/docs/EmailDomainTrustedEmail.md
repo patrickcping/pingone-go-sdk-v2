@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the auto generated ID of the trusted email address. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**EmailDomain** | Pointer to [**EmailDomainTrustedEmailEmailDomain**](EmailDomainTrustedEmailEmailDomain.md) |  | [optional] 
+**Domain** | Pointer to [**EmailDomainTrustedEmailDomain**](EmailDomainTrustedEmailDomain.md) |  | [optional] 
 **EmailAddress** | **string** | A string that specifies the trusted email address, for example john.smith@shopco.com. | 
 **Status** | Pointer to [**EnumTrustedEmailStatus**](EnumTrustedEmailStatus.md) |  | [optional] 
+**DomainId** | Pointer to **string** | A string that specifies the trusted email domain resource’s unique identifier associated with the resource. | [optional] [readonly] 
 
 ## Methods
 
@@ -79,30 +80,30 @@ SetEnvironment sets Environment field to given value.
 
 HasEnvironment returns a boolean if a field has been set.
 
-### GetEmailDomain
+### GetDomain
 
-`func (o *EmailDomainTrustedEmail) GetEmailDomain() EmailDomainTrustedEmailEmailDomain`
+`func (o *EmailDomainTrustedEmail) GetDomain() EmailDomainTrustedEmailDomain`
 
-GetEmailDomain returns the EmailDomain field if non-nil, zero value otherwise.
+GetDomain returns the Domain field if non-nil, zero value otherwise.
 
-### GetEmailDomainOk
+### GetDomainOk
 
-`func (o *EmailDomainTrustedEmail) GetEmailDomainOk() (*EmailDomainTrustedEmailEmailDomain, bool)`
+`func (o *EmailDomainTrustedEmail) GetDomainOk() (*EmailDomainTrustedEmailDomain, bool)`
 
-GetEmailDomainOk returns a tuple with the EmailDomain field if it's non-nil, zero value otherwise
+GetDomainOk returns a tuple with the Domain field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEmailDomain
+### SetDomain
 
-`func (o *EmailDomainTrustedEmail) SetEmailDomain(v EmailDomainTrustedEmailEmailDomain)`
+`func (o *EmailDomainTrustedEmail) SetDomain(v EmailDomainTrustedEmailDomain)`
 
-SetEmailDomain sets EmailDomain field to given value.
+SetDomain sets Domain field to given value.
 
-### HasEmailDomain
+### HasDomain
 
-`func (o *EmailDomainTrustedEmail) HasEmailDomain() bool`
+`func (o *EmailDomainTrustedEmail) HasDomain() bool`
 
-HasEmailDomain returns a boolean if a field has been set.
+HasDomain returns a boolean if a field has been set.
 
 ### GetEmailAddress
 
@@ -148,6 +149,31 @@ SetStatus sets Status field to given value.
 `func (o *EmailDomainTrustedEmail) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetDomainId
+
+`func (o *EmailDomainTrustedEmail) GetDomainId() string`
+
+GetDomainId returns the DomainId field if non-nil, zero value otherwise.
+
+### GetDomainIdOk
+
+`func (o *EmailDomainTrustedEmail) GetDomainIdOk() (*string, bool)`
+
+GetDomainIdOk returns a tuple with the DomainId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainId
+
+`func (o *EmailDomainTrustedEmail) SetDomainId(v string)`
+
+SetDomainId sets DomainId field to given value.
+
+### HasDomainId
+
+`func (o *EmailDomainTrustedEmail) HasDomainId() bool`
+
+HasDomainId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
