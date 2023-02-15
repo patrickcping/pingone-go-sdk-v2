@@ -3,6 +3,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.15.0](./management/CHANGELOG.md)
     * **Breaking change** `OrganizationsApi.ReadOneOrganizations` changed to `OrganizationsApi.ReadOneOrganization` [#102](https://github.com/patrickcping/pingone-go-sdk-v2/pull/102)
     * **Enhancement** Add `limit` parameter to `OrganizationsApi.ReadAllOrganizations` [#102](https://github.com/patrickcping/pingone-go-sdk-v2/pull/102)
+    * **Bug fix** - Correct the `EmailDomainTrustedEmail` API model [#103](https://github.com/patrickcping/pingone-go-sdk-v2/pull/103)
 
 # Release (2023-01-12)
 
