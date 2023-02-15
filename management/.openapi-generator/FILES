@@ -168,7 +168,7 @@ docs/EmailDomainOwnershipStatus.md
 docs/EmailDomainOwnershipStatusRegionsInner.md
 docs/EmailDomainSPFStatus.md
 docs/EmailDomainTrustedEmail.md
-docs/EmailDomainTrustedEmailEmailDomain.md
+docs/EmailDomainTrustedEmailDomain.md
 docs/EnableUsersApi.md
 docs/EntityArray.md
 docs/EntityArrayEmbedded.md
@@ -588,7 +588,7 @@ model_email_domain_ownership_status.go
 model_email_domain_ownership_status_regions_inner.go
 model_email_domain_spf_status.go
 model_email_domain_trusted_email.go
-model_email_domain_trusted_email_email_domain.go
+model_email_domain_trusted_email_domain.go
 model_entity_array.go
 model_entity_array__embedded.go
 model_enum_alert_channel_alert_type.go

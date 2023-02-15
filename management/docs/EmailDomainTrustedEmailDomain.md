@@ -1,4 +1,4 @@
-# EmailDomainTrustedEmailEmailDomain
+# EmailDomainTrustedEmailDomain
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewEmailDomainTrustedEmailEmailDomain
+### NewEmailDomainTrustedEmailDomain
 
-`func NewEmailDomainTrustedEmailEmailDomain() *EmailDomainTrustedEmailEmailDomain`
+`func NewEmailDomainTrustedEmailDomain() *EmailDomainTrustedEmailDomain`
 
-NewEmailDomainTrustedEmailEmailDomain instantiates a new EmailDomainTrustedEmailEmailDomain object
+NewEmailDomainTrustedEmailDomain instantiates a new EmailDomainTrustedEmailDomain object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewEmailDomainTrustedEmailEmailDomainWithDefaults
+### NewEmailDomainTrustedEmailDomainWithDefaults
 
-`func NewEmailDomainTrustedEmailEmailDomainWithDefaults() *EmailDomainTrustedEmailEmailDomain`
+`func NewEmailDomainTrustedEmailDomainWithDefaults() *EmailDomainTrustedEmailDomain`
 
-NewEmailDomainTrustedEmailEmailDomainWithDefaults instantiates a new EmailDomainTrustedEmailEmailDomain object
+NewEmailDomainTrustedEmailDomainWithDefaults instantiates a new EmailDomainTrustedEmailDomain object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *EmailDomainTrustedEmailEmailDomain) GetId() string`
+`func (o *EmailDomainTrustedEmailDomain) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *EmailDomainTrustedEmailEmailDomain) GetIdOk() (*string, bool)`
+`func (o *EmailDomainTrustedEmailDomain) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *EmailDomainTrustedEmailEmailDomain) SetId(v string)`
+`func (o *EmailDomainTrustedEmailDomain) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *EmailDomainTrustedEmailEmailDomain) HasId() bool`
+`func (o *EmailDomainTrustedEmailDomain) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
