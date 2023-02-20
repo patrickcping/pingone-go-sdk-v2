@@ -1,4 +1,4 @@
-# GatewayLDAPAllOfNewUserLookupAttributeMappings
+# GatewayTypeLDAPAllOfNewUserLookupAttributeMappings
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGatewayLDAPAllOfNewUserLookupAttributeMappings
+### NewGatewayTypeLDAPAllOfNewUserLookupAttributeMappings
 
-`func NewGatewayLDAPAllOfNewUserLookupAttributeMappings(name string, value string, ) *GatewayLDAPAllOfNewUserLookupAttributeMappings`
+`func NewGatewayTypeLDAPAllOfNewUserLookupAttributeMappings(name string, value string, ) *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings`
 
-NewGatewayLDAPAllOfNewUserLookupAttributeMappings instantiates a new GatewayLDAPAllOfNewUserLookupAttributeMappings object
+NewGatewayTypeLDAPAllOfNewUserLookupAttributeMappings instantiates a new GatewayTypeLDAPAllOfNewUserLookupAttributeMappings object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGatewayLDAPAllOfNewUserLookupAttributeMappingsWithDefaults
+### NewGatewayTypeLDAPAllOfNewUserLookupAttributeMappingsWithDefaults
 
-`func NewGatewayLDAPAllOfNewUserLookupAttributeMappingsWithDefaults() *GatewayLDAPAllOfNewUserLookupAttributeMappings`
+`func NewGatewayTypeLDAPAllOfNewUserLookupAttributeMappingsWithDefaults() *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings`
 
-NewGatewayLDAPAllOfNewUserLookupAttributeMappingsWithDefaults instantiates a new GatewayLDAPAllOfNewUserLookupAttributeMappings object
+NewGatewayTypeLDAPAllOfNewUserLookupAttributeMappingsWithDefaults instantiates a new GatewayTypeLDAPAllOfNewUserLookupAttributeMappings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *GatewayLDAPAllOfNewUserLookupAttributeMappings) GetName() string`
+`func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GatewayLDAPAllOfNewUserLookupAttributeMappings) GetNameOk() (*string, bool)`
+`func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GatewayLDAPAllOfNewUserLookupAttributeMappings) SetName(v string)`
+`func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetValue
 
-`func (o *GatewayLDAPAllOfNewUserLookupAttributeMappings) GetValue() string`
+`func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) GetValue() string`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *GatewayLDAPAllOfNewUserLookupAttributeMappings) GetValueOk() (*string, bool)`
+`func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) GetValueOk() (*string, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *GatewayLDAPAllOfNewUserLookupAttributeMappings) SetValue(v string)`
+`func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) SetValue(v string)`
 
 SetValue sets Value field to given value.
 

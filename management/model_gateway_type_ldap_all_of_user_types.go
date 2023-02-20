@@ -14,15 +14,15 @@ import (
 	"encoding/json"
 )
 
-// GatewayLDAPAllOfUserTypes struct for GatewayLDAPAllOfUserTypes
-type GatewayLDAPAllOfUserTypes struct {
+// GatewayTypeLDAPAllOfUserTypes struct for GatewayTypeLDAPAllOfUserTypes
+type GatewayTypeLDAPAllOfUserTypes struct {
 	// Defaults to false if this property isn't specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway.
 	AllowPasswordChanges *bool `json:"allowPasswordChanges,omitempty"`
 	// The UUID of the user type. This correlates to the password.external.gateway.userType.id User property.
 	Id *string `json:"id,omitempty"`
 	// The name of the user type.
 	Name string `json:"name"`
-	NewUserLookup *GatewayLDAPAllOfNewUserLookup `json:"newUserLookup,omitempty"`
+	NewUserLookup *GatewayTypeLDAPAllOfNewUserLookup `json:"newUserLookup,omitempty"`
 	// A map of key/value entries used to persist the external LDAP directory attributes.
 	OrderedCorrelationAttributes []string `json:"orderedCorrelationAttributes"`
 	PasswordAuthority EnumGatewayPasswordAuthority `json:"passwordAuthority"`
@@ -30,12 +30,12 @@ type GatewayLDAPAllOfUserTypes struct {
 	SearchBaseDn string `json:"searchBaseDn"`
 }
 
-// NewGatewayLDAPAllOfUserTypes instantiates a new GatewayLDAPAllOfUserTypes object
+// NewGatewayTypeLDAPAllOfUserTypes instantiates a new GatewayTypeLDAPAllOfUserTypes object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAPAllOfUserTypes(name string, orderedCorrelationAttributes []string, passwordAuthority EnumGatewayPasswordAuthority, searchBaseDn string) *GatewayLDAPAllOfUserTypes {
-	this := GatewayLDAPAllOfUserTypes{}
+func NewGatewayTypeLDAPAllOfUserTypes(name string, orderedCorrelationAttributes []string, passwordAuthority EnumGatewayPasswordAuthority, searchBaseDn string) *GatewayTypeLDAPAllOfUserTypes {
+	this := GatewayTypeLDAPAllOfUserTypes{}
 	this.Name = name
 	this.OrderedCorrelationAttributes = orderedCorrelationAttributes
 	this.PasswordAuthority = passwordAuthority
@@ -43,16 +43,16 @@ func NewGatewayLDAPAllOfUserTypes(name string, orderedCorrelationAttributes []st
 	return &this
 }
 
-// NewGatewayLDAPAllOfUserTypesWithDefaults instantiates a new GatewayLDAPAllOfUserTypes object
+// NewGatewayTypeLDAPAllOfUserTypesWithDefaults instantiates a new GatewayTypeLDAPAllOfUserTypes object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGatewayLDAPAllOfUserTypesWithDefaults() *GatewayLDAPAllOfUserTypes {
-	this := GatewayLDAPAllOfUserTypes{}
+func NewGatewayTypeLDAPAllOfUserTypesWithDefaults() *GatewayTypeLDAPAllOfUserTypes {
+	this := GatewayTypeLDAPAllOfUserTypes{}
 	return &this
 }
 
 // GetAllowPasswordChanges returns the AllowPasswordChanges field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOfUserTypes) GetAllowPasswordChanges() bool {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetAllowPasswordChanges() bool {
 	if o == nil || isNil(o.AllowPasswordChanges) {
 		var ret bool
 		return ret
@@ -62,7 +62,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetAllowPasswordChanges() bool {
 
 // GetAllowPasswordChangesOk returns a tuple with the AllowPasswordChanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfUserTypes) GetAllowPasswordChangesOk() (*bool, bool) {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetAllowPasswordChangesOk() (*bool, bool) {
 	if o == nil || isNil(o.AllowPasswordChanges) {
     return nil, false
 	}
@@ -70,7 +70,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetAllowPasswordChangesOk() (*bool, bool) {
 }
 
 // HasAllowPasswordChanges returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOfUserTypes) HasAllowPasswordChanges() bool {
+func (o *GatewayTypeLDAPAllOfUserTypes) HasAllowPasswordChanges() bool {
 	if o != nil && !isNil(o.AllowPasswordChanges) {
 		return true
 	}
@@ -79,12 +79,12 @@ func (o *GatewayLDAPAllOfUserTypes) HasAllowPasswordChanges() bool {
 }
 
 // SetAllowPasswordChanges gets a reference to the given bool and assigns it to the AllowPasswordChanges field.
-func (o *GatewayLDAPAllOfUserTypes) SetAllowPasswordChanges(v bool) {
+func (o *GatewayTypeLDAPAllOfUserTypes) SetAllowPasswordChanges(v bool) {
 	o.AllowPasswordChanges = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOfUserTypes) GetId() string {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -94,7 +94,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfUserTypes) GetIdOk() (*string, bool) {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
     return nil, false
 	}
@@ -102,7 +102,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOfUserTypes) HasId() bool {
+func (o *GatewayTypeLDAPAllOfUserTypes) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -111,12 +111,12 @@ func (o *GatewayLDAPAllOfUserTypes) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *GatewayLDAPAllOfUserTypes) SetId(v string) {
+func (o *GatewayTypeLDAPAllOfUserTypes) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value
-func (o *GatewayLDAPAllOfUserTypes) GetName() string {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -127,7 +127,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfUserTypes) GetNameOk() (*string, bool) {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetNameOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -135,14 +135,14 @@ func (o *GatewayLDAPAllOfUserTypes) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *GatewayLDAPAllOfUserTypes) SetName(v string) {
+func (o *GatewayTypeLDAPAllOfUserTypes) SetName(v string) {
 	o.Name = v
 }
 
 // GetNewUserLookup returns the NewUserLookup field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOfUserTypes) GetNewUserLookup() GatewayLDAPAllOfNewUserLookup {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetNewUserLookup() GatewayTypeLDAPAllOfNewUserLookup {
 	if o == nil || isNil(o.NewUserLookup) {
-		var ret GatewayLDAPAllOfNewUserLookup
+		var ret GatewayTypeLDAPAllOfNewUserLookup
 		return ret
 	}
 	return *o.NewUserLookup
@@ -150,7 +150,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetNewUserLookup() GatewayLDAPAllOfNewUserLo
 
 // GetNewUserLookupOk returns a tuple with the NewUserLookup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfUserTypes) GetNewUserLookupOk() (*GatewayLDAPAllOfNewUserLookup, bool) {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetNewUserLookupOk() (*GatewayTypeLDAPAllOfNewUserLookup, bool) {
 	if o == nil || isNil(o.NewUserLookup) {
     return nil, false
 	}
@@ -158,7 +158,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetNewUserLookupOk() (*GatewayLDAPAllOfNewUs
 }
 
 // HasNewUserLookup returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOfUserTypes) HasNewUserLookup() bool {
+func (o *GatewayTypeLDAPAllOfUserTypes) HasNewUserLookup() bool {
 	if o != nil && !isNil(o.NewUserLookup) {
 		return true
 	}
@@ -166,13 +166,13 @@ func (o *GatewayLDAPAllOfUserTypes) HasNewUserLookup() bool {
 	return false
 }
 
-// SetNewUserLookup gets a reference to the given GatewayLDAPAllOfNewUserLookup and assigns it to the NewUserLookup field.
-func (o *GatewayLDAPAllOfUserTypes) SetNewUserLookup(v GatewayLDAPAllOfNewUserLookup) {
+// SetNewUserLookup gets a reference to the given GatewayTypeLDAPAllOfNewUserLookup and assigns it to the NewUserLookup field.
+func (o *GatewayTypeLDAPAllOfUserTypes) SetNewUserLookup(v GatewayTypeLDAPAllOfNewUserLookup) {
 	o.NewUserLookup = &v
 }
 
 // GetOrderedCorrelationAttributes returns the OrderedCorrelationAttributes field value
-func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []string {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -183,7 +183,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []string {
 
 // GetOrderedCorrelationAttributesOk returns a tuple with the OrderedCorrelationAttributes field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() ([]string, bool) {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() ([]string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -191,12 +191,12 @@ func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() ([]strin
 }
 
 // SetOrderedCorrelationAttributes sets field value
-func (o *GatewayLDAPAllOfUserTypes) SetOrderedCorrelationAttributes(v []string) {
+func (o *GatewayTypeLDAPAllOfUserTypes) SetOrderedCorrelationAttributes(v []string) {
 	o.OrderedCorrelationAttributes = v
 }
 
 // GetPasswordAuthority returns the PasswordAuthority field value
-func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswordAuthority {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswordAuthority {
 	if o == nil {
 		var ret EnumGatewayPasswordAuthority
 		return ret
@@ -207,7 +207,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswordAu
 
 // GetPasswordAuthorityOk returns a tuple with the PasswordAuthority field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswordAuthority, bool) {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswordAuthority, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -215,12 +215,12 @@ func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswo
 }
 
 // SetPasswordAuthority sets field value
-func (o *GatewayLDAPAllOfUserTypes) SetPasswordAuthority(v EnumGatewayPasswordAuthority) {
+func (o *GatewayTypeLDAPAllOfUserTypes) SetPasswordAuthority(v EnumGatewayPasswordAuthority) {
 	o.PasswordAuthority = v
 }
 
 // GetSearchBaseDn returns the SearchBaseDn field value
-func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDn() string {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetSearchBaseDn() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -231,7 +231,7 @@ func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDn() string {
 
 // GetSearchBaseDnOk returns a tuple with the SearchBaseDn field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool) {
+func (o *GatewayTypeLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -239,11 +239,11 @@ func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool) {
 }
 
 // SetSearchBaseDn sets field value
-func (o *GatewayLDAPAllOfUserTypes) SetSearchBaseDn(v string) {
+func (o *GatewayTypeLDAPAllOfUserTypes) SetSearchBaseDn(v string) {
 	o.SearchBaseDn = v
 }
 
-func (o GatewayLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
+func (o GatewayTypeLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AllowPasswordChanges) {
 		toSerialize["allowPasswordChanges"] = o.AllowPasswordChanges
@@ -269,38 +269,38 @@ func (o GatewayLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGatewayLDAPAllOfUserTypes struct {
-	value *GatewayLDAPAllOfUserTypes
+type NullableGatewayTypeLDAPAllOfUserTypes struct {
+	value *GatewayTypeLDAPAllOfUserTypes
 	isSet bool
 }
 
-func (v NullableGatewayLDAPAllOfUserTypes) Get() *GatewayLDAPAllOfUserTypes {
+func (v NullableGatewayTypeLDAPAllOfUserTypes) Get() *GatewayTypeLDAPAllOfUserTypes {
 	return v.value
 }
 
-func (v *NullableGatewayLDAPAllOfUserTypes) Set(val *GatewayLDAPAllOfUserTypes) {
+func (v *NullableGatewayTypeLDAPAllOfUserTypes) Set(val *GatewayTypeLDAPAllOfUserTypes) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGatewayLDAPAllOfUserTypes) IsSet() bool {
+func (v NullableGatewayTypeLDAPAllOfUserTypes) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGatewayLDAPAllOfUserTypes) Unset() {
+func (v *NullableGatewayTypeLDAPAllOfUserTypes) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGatewayLDAPAllOfUserTypes(val *GatewayLDAPAllOfUserTypes) *NullableGatewayLDAPAllOfUserTypes {
-	return &NullableGatewayLDAPAllOfUserTypes{value: val, isSet: true}
+func NewNullableGatewayTypeLDAPAllOfUserTypes(val *GatewayTypeLDAPAllOfUserTypes) *NullableGatewayTypeLDAPAllOfUserTypes {
+	return &NullableGatewayTypeLDAPAllOfUserTypes{value: val, isSet: true}
 }
 
-func (v NullableGatewayLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
+func (v NullableGatewayTypeLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGatewayLDAPAllOfUserTypes) UnmarshalJSON(src []byte) error {
+func (v *NullableGatewayTypeLDAPAllOfUserTypes) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

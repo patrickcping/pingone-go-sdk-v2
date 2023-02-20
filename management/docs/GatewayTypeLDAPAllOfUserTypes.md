@@ -1,4 +1,4 @@
-# GatewayLDAPAllOfUserTypes
+# GatewayTypeLDAPAllOfUserTypes
 
 ## Properties
 
@@ -7,181 +7,181 @@ Name | Type | Description | Notes
 **AllowPasswordChanges** | Pointer to **bool** | Defaults to false if this property isn&#39;t specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway. | [optional] 
 **Id** | Pointer to **string** | The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | [optional] 
 **Name** | **string** | The name of the user type. | 
-**NewUserLookup** | Pointer to [**GatewayLDAPAllOfNewUserLookup**](GatewayLDAPAllOfNewUserLookup.md) |  | [optional] 
+**NewUserLookup** | Pointer to [**GatewayTypeLDAPAllOfNewUserLookup**](GatewayTypeLDAPAllOfNewUserLookup.md) |  | [optional] 
 **OrderedCorrelationAttributes** | **[]string** | A map of key/value entries used to persist the external LDAP directory attributes. | 
 **PasswordAuthority** | [**EnumGatewayPasswordAuthority**](EnumGatewayPasswordAuthority.md) |  | 
 **SearchBaseDn** | **string** | The LDAP base domain name (DN) for this user type. | 
 
 ## Methods
 
-### NewGatewayLDAPAllOfUserTypes
+### NewGatewayTypeLDAPAllOfUserTypes
 
-`func NewGatewayLDAPAllOfUserTypes(name string, orderedCorrelationAttributes []string, passwordAuthority EnumGatewayPasswordAuthority, searchBaseDn string, ) *GatewayLDAPAllOfUserTypes`
+`func NewGatewayTypeLDAPAllOfUserTypes(name string, orderedCorrelationAttributes []string, passwordAuthority EnumGatewayPasswordAuthority, searchBaseDn string, ) *GatewayTypeLDAPAllOfUserTypes`
 
-NewGatewayLDAPAllOfUserTypes instantiates a new GatewayLDAPAllOfUserTypes object
+NewGatewayTypeLDAPAllOfUserTypes instantiates a new GatewayTypeLDAPAllOfUserTypes object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGatewayLDAPAllOfUserTypesWithDefaults
+### NewGatewayTypeLDAPAllOfUserTypesWithDefaults
 
-`func NewGatewayLDAPAllOfUserTypesWithDefaults() *GatewayLDAPAllOfUserTypes`
+`func NewGatewayTypeLDAPAllOfUserTypesWithDefaults() *GatewayTypeLDAPAllOfUserTypes`
 
-NewGatewayLDAPAllOfUserTypesWithDefaults instantiates a new GatewayLDAPAllOfUserTypes object
+NewGatewayTypeLDAPAllOfUserTypesWithDefaults instantiates a new GatewayTypeLDAPAllOfUserTypes object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAllowPasswordChanges
 
-`func (o *GatewayLDAPAllOfUserTypes) GetAllowPasswordChanges() bool`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetAllowPasswordChanges() bool`
 
 GetAllowPasswordChanges returns the AllowPasswordChanges field if non-nil, zero value otherwise.
 
 ### GetAllowPasswordChangesOk
 
-`func (o *GatewayLDAPAllOfUserTypes) GetAllowPasswordChangesOk() (*bool, bool)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetAllowPasswordChangesOk() (*bool, bool)`
 
 GetAllowPasswordChangesOk returns a tuple with the AllowPasswordChanges field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllowPasswordChanges
 
-`func (o *GatewayLDAPAllOfUserTypes) SetAllowPasswordChanges(v bool)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) SetAllowPasswordChanges(v bool)`
 
 SetAllowPasswordChanges sets AllowPasswordChanges field to given value.
 
 ### HasAllowPasswordChanges
 
-`func (o *GatewayLDAPAllOfUserTypes) HasAllowPasswordChanges() bool`
+`func (o *GatewayTypeLDAPAllOfUserTypes) HasAllowPasswordChanges() bool`
 
 HasAllowPasswordChanges returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *GatewayLDAPAllOfUserTypes) GetId() string`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GatewayLDAPAllOfUserTypes) GetIdOk() (*string, bool)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GatewayLDAPAllOfUserTypes) SetId(v string)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *GatewayLDAPAllOfUserTypes) HasId() bool`
+`func (o *GatewayTypeLDAPAllOfUserTypes) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *GatewayLDAPAllOfUserTypes) GetName() string`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GatewayLDAPAllOfUserTypes) GetNameOk() (*string, bool)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GatewayLDAPAllOfUserTypes) SetName(v string)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetNewUserLookup
 
-`func (o *GatewayLDAPAllOfUserTypes) GetNewUserLookup() GatewayLDAPAllOfNewUserLookup`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetNewUserLookup() GatewayTypeLDAPAllOfNewUserLookup`
 
 GetNewUserLookup returns the NewUserLookup field if non-nil, zero value otherwise.
 
 ### GetNewUserLookupOk
 
-`func (o *GatewayLDAPAllOfUserTypes) GetNewUserLookupOk() (*GatewayLDAPAllOfNewUserLookup, bool)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetNewUserLookupOk() (*GatewayTypeLDAPAllOfNewUserLookup, bool)`
 
 GetNewUserLookupOk returns a tuple with the NewUserLookup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNewUserLookup
 
-`func (o *GatewayLDAPAllOfUserTypes) SetNewUserLookup(v GatewayLDAPAllOfNewUserLookup)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) SetNewUserLookup(v GatewayTypeLDAPAllOfNewUserLookup)`
 
 SetNewUserLookup sets NewUserLookup field to given value.
 
 ### HasNewUserLookup
 
-`func (o *GatewayLDAPAllOfUserTypes) HasNewUserLookup() bool`
+`func (o *GatewayTypeLDAPAllOfUserTypes) HasNewUserLookup() bool`
 
 HasNewUserLookup returns a boolean if a field has been set.
 
 ### GetOrderedCorrelationAttributes
 
-`func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []string`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []string`
 
 GetOrderedCorrelationAttributes returns the OrderedCorrelationAttributes field if non-nil, zero value otherwise.
 
 ### GetOrderedCorrelationAttributesOk
 
-`func (o *GatewayLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() (*[]string, bool)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() (*[]string, bool)`
 
 GetOrderedCorrelationAttributesOk returns a tuple with the OrderedCorrelationAttributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrderedCorrelationAttributes
 
-`func (o *GatewayLDAPAllOfUserTypes) SetOrderedCorrelationAttributes(v []string)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) SetOrderedCorrelationAttributes(v []string)`
 
 SetOrderedCorrelationAttributes sets OrderedCorrelationAttributes field to given value.
 
 
 ### GetPasswordAuthority
 
-`func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswordAuthority`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswordAuthority`
 
 GetPasswordAuthority returns the PasswordAuthority field if non-nil, zero value otherwise.
 
 ### GetPasswordAuthorityOk
 
-`func (o *GatewayLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswordAuthority, bool)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswordAuthority, bool)`
 
 GetPasswordAuthorityOk returns a tuple with the PasswordAuthority field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordAuthority
 
-`func (o *GatewayLDAPAllOfUserTypes) SetPasswordAuthority(v EnumGatewayPasswordAuthority)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) SetPasswordAuthority(v EnumGatewayPasswordAuthority)`
 
 SetPasswordAuthority sets PasswordAuthority field to given value.
 
 
 ### GetSearchBaseDn
 
-`func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDn() string`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetSearchBaseDn() string`
 
 GetSearchBaseDn returns the SearchBaseDn field if non-nil, zero value otherwise.
 
 ### GetSearchBaseDnOk
 
-`func (o *GatewayLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool)`
 
 GetSearchBaseDnOk returns a tuple with the SearchBaseDn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSearchBaseDn
 
-`func (o *GatewayLDAPAllOfUserTypes) SetSearchBaseDn(v string)`
+`func (o *GatewayTypeLDAPAllOfUserTypes) SetSearchBaseDn(v string)`
 
 SetSearchBaseDn sets SearchBaseDn field to given value.
 

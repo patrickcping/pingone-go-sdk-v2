@@ -16,19 +16,22 @@ Name | Type | Description | Notes
 **CurrentAlerts** | Pointer to **[]map[string]interface{}** |  | [optional] [readonly] 
 **BindDN** | **string** | A string that specifies the distinguished name information to bind to the LDAP database (for example, uid&#x3D;pingone,dc&#x3D;example,dc&#x3D;com). | 
 **BindPassword** | **string** | A string that specifies the bind password for the LDAP database. This is a required property. | 
-**ConnectionSecurity** | Pointer to [**EnumGatewayLDAPSecurity**](EnumGatewayLDAPSecurity.md) |  | [optional] 
-**Kerberos** | Pointer to [**GatewayLDAPAllOfKerberos**](GatewayLDAPAllOfKerberos.md) |  | [optional] 
+**ConnectionSecurity** | Pointer to [**EnumGatewayTypeLDAPSecurity**](EnumGatewayTypeLDAPSecurity.md) |  | [optional] 
+**Kerberos** | Pointer to [**GatewayTypeLDAPAllOfKerberos**](GatewayTypeLDAPAllOfKerberos.md) |  | [optional] 
 **ServersHostAndPort** | **[]string** | An array of strings that specifies the LDAP server host name and port number (for example, [&#x60;ds1.example.com:389&#x60;, &#x60;ds2.example.com:389&#x60;]). | 
-**UserTypes** | Pointer to [**[]GatewayLDAPAllOfUserTypes**](GatewayLDAPAllOfUserTypes.md) | An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | [optional] 
+**UserTypes** | Pointer to [**[]GatewayTypeLDAPAllOfUserTypes**](GatewayTypeLDAPAllOfUserTypes.md) | An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | [optional] 
 **ValidateTlsCertificates** | Pointer to **bool** | A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted. | [optional] 
 **Vendor** | [**EnumGatewayVendor**](EnumGatewayVendor.md) |  | 
 **FollowReferrals** | Pointer to **bool** |  | [optional] [readonly] 
+**Davinci** | [**GatewayTypeRADIUSAllOfDavinci**](GatewayTypeRADIUSAllOfDavinci.md) |  | 
+**DefaultSharedSecret** | Pointer to **string** | Value to use for the shared secret if the shared secret is not provided for one or more of the RADIUS clients specified. | [optional] 
+**RadiusClients** | [**[]GatewayTypeRADIUSAllOfRadiusClients**](GatewayTypeRADIUSAllOfRadiusClients.md) | Collection of RADIUS clients. | 
 
 ## Methods
 
 ### NewCreateGateway201Response
 
-`func NewCreateGateway201Response(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor, ) *CreateGateway201Response`
+`func NewCreateGateway201Response(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor, davinci GatewayTypeRADIUSAllOfDavinci, radiusClients []GatewayTypeRADIUSAllOfRadiusClients, ) *CreateGateway201Response`
 
 NewCreateGateway201Response instantiates a new CreateGateway201Response object
 This constructor will assign default values to properties that have it defined,
@@ -320,20 +323,20 @@ SetBindPassword sets BindPassword field to given value.
 
 ### GetConnectionSecurity
 
-`func (o *CreateGateway201Response) GetConnectionSecurity() EnumGatewayLDAPSecurity`
+`func (o *CreateGateway201Response) GetConnectionSecurity() EnumGatewayTypeLDAPSecurity`
 
 GetConnectionSecurity returns the ConnectionSecurity field if non-nil, zero value otherwise.
 
 ### GetConnectionSecurityOk
 
-`func (o *CreateGateway201Response) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, bool)`
+`func (o *CreateGateway201Response) GetConnectionSecurityOk() (*EnumGatewayTypeLDAPSecurity, bool)`
 
 GetConnectionSecurityOk returns a tuple with the ConnectionSecurity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectionSecurity
 
-`func (o *CreateGateway201Response) SetConnectionSecurity(v EnumGatewayLDAPSecurity)`
+`func (o *CreateGateway201Response) SetConnectionSecurity(v EnumGatewayTypeLDAPSecurity)`
 
 SetConnectionSecurity sets ConnectionSecurity field to given value.
 
@@ -345,20 +348,20 @@ HasConnectionSecurity returns a boolean if a field has been set.
 
 ### GetKerberos
 
-`func (o *CreateGateway201Response) GetKerberos() GatewayLDAPAllOfKerberos`
+`func (o *CreateGateway201Response) GetKerberos() GatewayTypeLDAPAllOfKerberos`
 
 GetKerberos returns the Kerberos field if non-nil, zero value otherwise.
 
 ### GetKerberosOk
 
-`func (o *CreateGateway201Response) GetKerberosOk() (*GatewayLDAPAllOfKerberos, bool)`
+`func (o *CreateGateway201Response) GetKerberosOk() (*GatewayTypeLDAPAllOfKerberos, bool)`
 
 GetKerberosOk returns a tuple with the Kerberos field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKerberos
 
-`func (o *CreateGateway201Response) SetKerberos(v GatewayLDAPAllOfKerberos)`
+`func (o *CreateGateway201Response) SetKerberos(v GatewayTypeLDAPAllOfKerberos)`
 
 SetKerberos sets Kerberos field to given value.
 
@@ -390,20 +393,20 @@ SetServersHostAndPort sets ServersHostAndPort field to given value.
 
 ### GetUserTypes
 
-`func (o *CreateGateway201Response) GetUserTypes() []GatewayLDAPAllOfUserTypes`
+`func (o *CreateGateway201Response) GetUserTypes() []GatewayTypeLDAPAllOfUserTypes`
 
 GetUserTypes returns the UserTypes field if non-nil, zero value otherwise.
 
 ### GetUserTypesOk
 
-`func (o *CreateGateway201Response) GetUserTypesOk() (*[]GatewayLDAPAllOfUserTypes, bool)`
+`func (o *CreateGateway201Response) GetUserTypesOk() (*[]GatewayTypeLDAPAllOfUserTypes, bool)`
 
 GetUserTypesOk returns a tuple with the UserTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserTypes
 
-`func (o *CreateGateway201Response) SetUserTypes(v []GatewayLDAPAllOfUserTypes)`
+`func (o *CreateGateway201Response) SetUserTypes(v []GatewayTypeLDAPAllOfUserTypes)`
 
 SetUserTypes sets UserTypes field to given value.
 
@@ -482,6 +485,71 @@ SetFollowReferrals sets FollowReferrals field to given value.
 `func (o *CreateGateway201Response) HasFollowReferrals() bool`
 
 HasFollowReferrals returns a boolean if a field has been set.
+
+### GetDavinci
+
+`func (o *CreateGateway201Response) GetDavinci() GatewayTypeRADIUSAllOfDavinci`
+
+GetDavinci returns the Davinci field if non-nil, zero value otherwise.
+
+### GetDavinciOk
+
+`func (o *CreateGateway201Response) GetDavinciOk() (*GatewayTypeRADIUSAllOfDavinci, bool)`
+
+GetDavinciOk returns a tuple with the Davinci field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDavinci
+
+`func (o *CreateGateway201Response) SetDavinci(v GatewayTypeRADIUSAllOfDavinci)`
+
+SetDavinci sets Davinci field to given value.
+
+
+### GetDefaultSharedSecret
+
+`func (o *CreateGateway201Response) GetDefaultSharedSecret() string`
+
+GetDefaultSharedSecret returns the DefaultSharedSecret field if non-nil, zero value otherwise.
+
+### GetDefaultSharedSecretOk
+
+`func (o *CreateGateway201Response) GetDefaultSharedSecretOk() (*string, bool)`
+
+GetDefaultSharedSecretOk returns a tuple with the DefaultSharedSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultSharedSecret
+
+`func (o *CreateGateway201Response) SetDefaultSharedSecret(v string)`
+
+SetDefaultSharedSecret sets DefaultSharedSecret field to given value.
+
+### HasDefaultSharedSecret
+
+`func (o *CreateGateway201Response) HasDefaultSharedSecret() bool`
+
+HasDefaultSharedSecret returns a boolean if a field has been set.
+
+### GetRadiusClients
+
+`func (o *CreateGateway201Response) GetRadiusClients() []GatewayTypeRADIUSAllOfRadiusClients`
+
+GetRadiusClients returns the RadiusClients field if non-nil, zero value otherwise.
+
+### GetRadiusClientsOk
+
+`func (o *CreateGateway201Response) GetRadiusClientsOk() (*[]GatewayTypeRADIUSAllOfRadiusClients, bool)`
+
+GetRadiusClientsOk returns a tuple with the RadiusClients field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRadiusClients
+
+`func (o *CreateGateway201Response) SetRadiusClients(v []GatewayTypeRADIUSAllOfRadiusClients)`
+
+SetRadiusClients sets RadiusClients field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

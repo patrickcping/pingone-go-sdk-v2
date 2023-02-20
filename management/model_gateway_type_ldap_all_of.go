@@ -14,30 +14,30 @@ import (
 	"encoding/json"
 )
 
-// GatewayLDAPAllOf struct for GatewayLDAPAllOf
-type GatewayLDAPAllOf struct {
+// GatewayTypeLDAPAllOf struct for GatewayTypeLDAPAllOf
+type GatewayTypeLDAPAllOf struct {
 	// A string that specifies the distinguished name information to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com).
 	BindDN string `json:"bindDN"`
 	// A string that specifies the bind password for the LDAP database. This is a required property.
 	BindPassword string `json:"bindPassword"`
-	ConnectionSecurity *EnumGatewayLDAPSecurity `json:"connectionSecurity,omitempty"`
-	Kerberos *GatewayLDAPAllOfKerberos `json:"kerberos,omitempty"`
+	ConnectionSecurity *EnumGatewayTypeLDAPSecurity `json:"connectionSecurity,omitempty"`
+	Kerberos *GatewayTypeLDAPAllOfKerberos `json:"kerberos,omitempty"`
 	// An array of strings that specifies the LDAP server host name and port number (for example, [`ds1.example.com:389`, `ds2.example.com:389`]).
 	ServersHostAndPort []string `json:"serversHostAndPort"`
 	// An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory.
-	UserTypes []GatewayLDAPAllOfUserTypes `json:"userTypes,omitempty"`
+	UserTypes []GatewayTypeLDAPAllOfUserTypes `json:"userTypes,omitempty"`
 	// A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted.
 	ValidateTlsCertificates *bool `json:"validateTlsCertificates,omitempty"`
 	Vendor EnumGatewayVendor `json:"vendor"`
 	FollowReferrals *bool `json:"followReferrals,omitempty"`
 }
 
-// NewGatewayLDAPAllOf instantiates a new GatewayLDAPAllOf object
+// NewGatewayTypeLDAPAllOf instantiates a new GatewayTypeLDAPAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAPAllOf(bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor) *GatewayLDAPAllOf {
-	this := GatewayLDAPAllOf{}
+func NewGatewayTypeLDAPAllOf(bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor) *GatewayTypeLDAPAllOf {
+	this := GatewayTypeLDAPAllOf{}
 	this.BindDN = bindDN
 	this.BindPassword = bindPassword
 	this.ServersHostAndPort = serversHostAndPort
@@ -45,16 +45,16 @@ func NewGatewayLDAPAllOf(bindDN string, bindPassword string, serversHostAndPort 
 	return &this
 }
 
-// NewGatewayLDAPAllOfWithDefaults instantiates a new GatewayLDAPAllOf object
+// NewGatewayTypeLDAPAllOfWithDefaults instantiates a new GatewayTypeLDAPAllOf object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGatewayLDAPAllOfWithDefaults() *GatewayLDAPAllOf {
-	this := GatewayLDAPAllOf{}
+func NewGatewayTypeLDAPAllOfWithDefaults() *GatewayTypeLDAPAllOf {
+	this := GatewayTypeLDAPAllOf{}
 	return &this
 }
 
 // GetBindDN returns the BindDN field value
-func (o *GatewayLDAPAllOf) GetBindDN() string {
+func (o *GatewayTypeLDAPAllOf) GetBindDN() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -65,7 +65,7 @@ func (o *GatewayLDAPAllOf) GetBindDN() string {
 
 // GetBindDNOk returns a tuple with the BindDN field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetBindDNOk() (*string, bool) {
+func (o *GatewayTypeLDAPAllOf) GetBindDNOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -73,12 +73,12 @@ func (o *GatewayLDAPAllOf) GetBindDNOk() (*string, bool) {
 }
 
 // SetBindDN sets field value
-func (o *GatewayLDAPAllOf) SetBindDN(v string) {
+func (o *GatewayTypeLDAPAllOf) SetBindDN(v string) {
 	o.BindDN = v
 }
 
 // GetBindPassword returns the BindPassword field value
-func (o *GatewayLDAPAllOf) GetBindPassword() string {
+func (o *GatewayTypeLDAPAllOf) GetBindPassword() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *GatewayLDAPAllOf) GetBindPassword() string {
 
 // GetBindPasswordOk returns a tuple with the BindPassword field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetBindPasswordOk() (*string, bool) {
+func (o *GatewayTypeLDAPAllOf) GetBindPasswordOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -97,14 +97,14 @@ func (o *GatewayLDAPAllOf) GetBindPasswordOk() (*string, bool) {
 }
 
 // SetBindPassword sets field value
-func (o *GatewayLDAPAllOf) SetBindPassword(v string) {
+func (o *GatewayTypeLDAPAllOf) SetBindPassword(v string) {
 	o.BindPassword = v
 }
 
 // GetConnectionSecurity returns the ConnectionSecurity field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOf) GetConnectionSecurity() EnumGatewayLDAPSecurity {
+func (o *GatewayTypeLDAPAllOf) GetConnectionSecurity() EnumGatewayTypeLDAPSecurity {
 	if o == nil || isNil(o.ConnectionSecurity) {
-		var ret EnumGatewayLDAPSecurity
+		var ret EnumGatewayTypeLDAPSecurity
 		return ret
 	}
 	return *o.ConnectionSecurity
@@ -112,7 +112,7 @@ func (o *GatewayLDAPAllOf) GetConnectionSecurity() EnumGatewayLDAPSecurity {
 
 // GetConnectionSecurityOk returns a tuple with the ConnectionSecurity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, bool) {
+func (o *GatewayTypeLDAPAllOf) GetConnectionSecurityOk() (*EnumGatewayTypeLDAPSecurity, bool) {
 	if o == nil || isNil(o.ConnectionSecurity) {
     return nil, false
 	}
@@ -120,7 +120,7 @@ func (o *GatewayLDAPAllOf) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, 
 }
 
 // HasConnectionSecurity returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOf) HasConnectionSecurity() bool {
+func (o *GatewayTypeLDAPAllOf) HasConnectionSecurity() bool {
 	if o != nil && !isNil(o.ConnectionSecurity) {
 		return true
 	}
@@ -128,15 +128,15 @@ func (o *GatewayLDAPAllOf) HasConnectionSecurity() bool {
 	return false
 }
 
-// SetConnectionSecurity gets a reference to the given EnumGatewayLDAPSecurity and assigns it to the ConnectionSecurity field.
-func (o *GatewayLDAPAllOf) SetConnectionSecurity(v EnumGatewayLDAPSecurity) {
+// SetConnectionSecurity gets a reference to the given EnumGatewayTypeLDAPSecurity and assigns it to the ConnectionSecurity field.
+func (o *GatewayTypeLDAPAllOf) SetConnectionSecurity(v EnumGatewayTypeLDAPSecurity) {
 	o.ConnectionSecurity = &v
 }
 
 // GetKerberos returns the Kerberos field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOf) GetKerberos() GatewayLDAPAllOfKerberos {
+func (o *GatewayTypeLDAPAllOf) GetKerberos() GatewayTypeLDAPAllOfKerberos {
 	if o == nil || isNil(o.Kerberos) {
-		var ret GatewayLDAPAllOfKerberos
+		var ret GatewayTypeLDAPAllOfKerberos
 		return ret
 	}
 	return *o.Kerberos
@@ -144,7 +144,7 @@ func (o *GatewayLDAPAllOf) GetKerberos() GatewayLDAPAllOfKerberos {
 
 // GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetKerberosOk() (*GatewayLDAPAllOfKerberos, bool) {
+func (o *GatewayTypeLDAPAllOf) GetKerberosOk() (*GatewayTypeLDAPAllOfKerberos, bool) {
 	if o == nil || isNil(o.Kerberos) {
     return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *GatewayLDAPAllOf) GetKerberosOk() (*GatewayLDAPAllOfKerberos, bool) {
 }
 
 // HasKerberos returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOf) HasKerberos() bool {
+func (o *GatewayTypeLDAPAllOf) HasKerberos() bool {
 	if o != nil && !isNil(o.Kerberos) {
 		return true
 	}
@@ -160,13 +160,13 @@ func (o *GatewayLDAPAllOf) HasKerberos() bool {
 	return false
 }
 
-// SetKerberos gets a reference to the given GatewayLDAPAllOfKerberos and assigns it to the Kerberos field.
-func (o *GatewayLDAPAllOf) SetKerberos(v GatewayLDAPAllOfKerberos) {
+// SetKerberos gets a reference to the given GatewayTypeLDAPAllOfKerberos and assigns it to the Kerberos field.
+func (o *GatewayTypeLDAPAllOf) SetKerberos(v GatewayTypeLDAPAllOfKerberos) {
 	o.Kerberos = &v
 }
 
 // GetServersHostAndPort returns the ServersHostAndPort field value
-func (o *GatewayLDAPAllOf) GetServersHostAndPort() []string {
+func (o *GatewayTypeLDAPAllOf) GetServersHostAndPort() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -177,7 +177,7 @@ func (o *GatewayLDAPAllOf) GetServersHostAndPort() []string {
 
 // GetServersHostAndPortOk returns a tuple with the ServersHostAndPort field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetServersHostAndPortOk() ([]string, bool) {
+func (o *GatewayTypeLDAPAllOf) GetServersHostAndPortOk() ([]string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -185,14 +185,14 @@ func (o *GatewayLDAPAllOf) GetServersHostAndPortOk() ([]string, bool) {
 }
 
 // SetServersHostAndPort sets field value
-func (o *GatewayLDAPAllOf) SetServersHostAndPort(v []string) {
+func (o *GatewayTypeLDAPAllOf) SetServersHostAndPort(v []string) {
 	o.ServersHostAndPort = v
 }
 
 // GetUserTypes returns the UserTypes field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOf) GetUserTypes() []GatewayLDAPAllOfUserTypes {
+func (o *GatewayTypeLDAPAllOf) GetUserTypes() []GatewayTypeLDAPAllOfUserTypes {
 	if o == nil || isNil(o.UserTypes) {
-		var ret []GatewayLDAPAllOfUserTypes
+		var ret []GatewayTypeLDAPAllOfUserTypes
 		return ret
 	}
 	return o.UserTypes
@@ -200,7 +200,7 @@ func (o *GatewayLDAPAllOf) GetUserTypes() []GatewayLDAPAllOfUserTypes {
 
 // GetUserTypesOk returns a tuple with the UserTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetUserTypesOk() ([]GatewayLDAPAllOfUserTypes, bool) {
+func (o *GatewayTypeLDAPAllOf) GetUserTypesOk() ([]GatewayTypeLDAPAllOfUserTypes, bool) {
 	if o == nil || isNil(o.UserTypes) {
     return nil, false
 	}
@@ -208,7 +208,7 @@ func (o *GatewayLDAPAllOf) GetUserTypesOk() ([]GatewayLDAPAllOfUserTypes, bool) 
 }
 
 // HasUserTypes returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOf) HasUserTypes() bool {
+func (o *GatewayTypeLDAPAllOf) HasUserTypes() bool {
 	if o != nil && !isNil(o.UserTypes) {
 		return true
 	}
@@ -216,13 +216,13 @@ func (o *GatewayLDAPAllOf) HasUserTypes() bool {
 	return false
 }
 
-// SetUserTypes gets a reference to the given []GatewayLDAPAllOfUserTypes and assigns it to the UserTypes field.
-func (o *GatewayLDAPAllOf) SetUserTypes(v []GatewayLDAPAllOfUserTypes) {
+// SetUserTypes gets a reference to the given []GatewayTypeLDAPAllOfUserTypes and assigns it to the UserTypes field.
+func (o *GatewayTypeLDAPAllOf) SetUserTypes(v []GatewayTypeLDAPAllOfUserTypes) {
 	o.UserTypes = v
 }
 
 // GetValidateTlsCertificates returns the ValidateTlsCertificates field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOf) GetValidateTlsCertificates() bool {
+func (o *GatewayTypeLDAPAllOf) GetValidateTlsCertificates() bool {
 	if o == nil || isNil(o.ValidateTlsCertificates) {
 		var ret bool
 		return ret
@@ -232,7 +232,7 @@ func (o *GatewayLDAPAllOf) GetValidateTlsCertificates() bool {
 
 // GetValidateTlsCertificatesOk returns a tuple with the ValidateTlsCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetValidateTlsCertificatesOk() (*bool, bool) {
+func (o *GatewayTypeLDAPAllOf) GetValidateTlsCertificatesOk() (*bool, bool) {
 	if o == nil || isNil(o.ValidateTlsCertificates) {
     return nil, false
 	}
@@ -240,7 +240,7 @@ func (o *GatewayLDAPAllOf) GetValidateTlsCertificatesOk() (*bool, bool) {
 }
 
 // HasValidateTlsCertificates returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOf) HasValidateTlsCertificates() bool {
+func (o *GatewayTypeLDAPAllOf) HasValidateTlsCertificates() bool {
 	if o != nil && !isNil(o.ValidateTlsCertificates) {
 		return true
 	}
@@ -249,12 +249,12 @@ func (o *GatewayLDAPAllOf) HasValidateTlsCertificates() bool {
 }
 
 // SetValidateTlsCertificates gets a reference to the given bool and assigns it to the ValidateTlsCertificates field.
-func (o *GatewayLDAPAllOf) SetValidateTlsCertificates(v bool) {
+func (o *GatewayTypeLDAPAllOf) SetValidateTlsCertificates(v bool) {
 	o.ValidateTlsCertificates = &v
 }
 
 // GetVendor returns the Vendor field value
-func (o *GatewayLDAPAllOf) GetVendor() EnumGatewayVendor {
+func (o *GatewayTypeLDAPAllOf) GetVendor() EnumGatewayVendor {
 	if o == nil {
 		var ret EnumGatewayVendor
 		return ret
@@ -265,7 +265,7 @@ func (o *GatewayLDAPAllOf) GetVendor() EnumGatewayVendor {
 
 // GetVendorOk returns a tuple with the Vendor field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetVendorOk() (*EnumGatewayVendor, bool) {
+func (o *GatewayTypeLDAPAllOf) GetVendorOk() (*EnumGatewayVendor, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -273,12 +273,12 @@ func (o *GatewayLDAPAllOf) GetVendorOk() (*EnumGatewayVendor, bool) {
 }
 
 // SetVendor sets field value
-func (o *GatewayLDAPAllOf) SetVendor(v EnumGatewayVendor) {
+func (o *GatewayTypeLDAPAllOf) SetVendor(v EnumGatewayVendor) {
 	o.Vendor = v
 }
 
 // GetFollowReferrals returns the FollowReferrals field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOf) GetFollowReferrals() bool {
+func (o *GatewayTypeLDAPAllOf) GetFollowReferrals() bool {
 	if o == nil || isNil(o.FollowReferrals) {
 		var ret bool
 		return ret
@@ -288,7 +288,7 @@ func (o *GatewayLDAPAllOf) GetFollowReferrals() bool {
 
 // GetFollowReferralsOk returns a tuple with the FollowReferrals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOf) GetFollowReferralsOk() (*bool, bool) {
+func (o *GatewayTypeLDAPAllOf) GetFollowReferralsOk() (*bool, bool) {
 	if o == nil || isNil(o.FollowReferrals) {
     return nil, false
 	}
@@ -296,7 +296,7 @@ func (o *GatewayLDAPAllOf) GetFollowReferralsOk() (*bool, bool) {
 }
 
 // HasFollowReferrals returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOf) HasFollowReferrals() bool {
+func (o *GatewayTypeLDAPAllOf) HasFollowReferrals() bool {
 	if o != nil && !isNil(o.FollowReferrals) {
 		return true
 	}
@@ -305,11 +305,11 @@ func (o *GatewayLDAPAllOf) HasFollowReferrals() bool {
 }
 
 // SetFollowReferrals gets a reference to the given bool and assigns it to the FollowReferrals field.
-func (o *GatewayLDAPAllOf) SetFollowReferrals(v bool) {
+func (o *GatewayTypeLDAPAllOf) SetFollowReferrals(v bool) {
 	o.FollowReferrals = &v
 }
 
-func (o GatewayLDAPAllOf) MarshalJSON() ([]byte, error) {
+func (o GatewayTypeLDAPAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["bindDN"] = o.BindDN
@@ -341,38 +341,38 @@ func (o GatewayLDAPAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGatewayLDAPAllOf struct {
-	value *GatewayLDAPAllOf
+type NullableGatewayTypeLDAPAllOf struct {
+	value *GatewayTypeLDAPAllOf
 	isSet bool
 }
 
-func (v NullableGatewayLDAPAllOf) Get() *GatewayLDAPAllOf {
+func (v NullableGatewayTypeLDAPAllOf) Get() *GatewayTypeLDAPAllOf {
 	return v.value
 }
 
-func (v *NullableGatewayLDAPAllOf) Set(val *GatewayLDAPAllOf) {
+func (v *NullableGatewayTypeLDAPAllOf) Set(val *GatewayTypeLDAPAllOf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGatewayLDAPAllOf) IsSet() bool {
+func (v NullableGatewayTypeLDAPAllOf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGatewayLDAPAllOf) Unset() {
+func (v *NullableGatewayTypeLDAPAllOf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGatewayLDAPAllOf(val *GatewayLDAPAllOf) *NullableGatewayLDAPAllOf {
-	return &NullableGatewayLDAPAllOf{value: val, isSet: true}
+func NewNullableGatewayTypeLDAPAllOf(val *GatewayTypeLDAPAllOf) *NullableGatewayTypeLDAPAllOf {
+	return &NullableGatewayTypeLDAPAllOf{value: val, isSet: true}
 }
 
-func (v NullableGatewayLDAPAllOf) MarshalJSON() ([]byte, error) {
+func (v NullableGatewayTypeLDAPAllOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGatewayLDAPAllOf) UnmarshalJSON(src []byte) error {
+func (v *NullableGatewayTypeLDAPAllOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

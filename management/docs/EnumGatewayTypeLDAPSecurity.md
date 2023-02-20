@@ -1,4 +1,4 @@
-# EnumGatewayLDAPSecurity
+# EnumGatewayTypeLDAPSecurity
 
 ## Enum
 
