@@ -16,15 +16,16 @@ import (
 
 // GatewayTypeRADIUSAllOfDavinci struct for GatewayTypeRADIUSAllOfDavinci
 type GatewayTypeRADIUSAllOfDavinci struct {
-	Policy *GatewayTypeRADIUSAllOfDavinciPolicy `json:"policy,omitempty"`
+	Policy GatewayTypeRADIUSAllOfDavinciPolicy `json:"policy"`
 }
 
 // NewGatewayTypeRADIUSAllOfDavinci instantiates a new GatewayTypeRADIUSAllOfDavinci object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayTypeRADIUSAllOfDavinci() *GatewayTypeRADIUSAllOfDavinci {
+func NewGatewayTypeRADIUSAllOfDavinci(policy GatewayTypeRADIUSAllOfDavinciPolicy) *GatewayTypeRADIUSAllOfDavinci {
 	this := GatewayTypeRADIUSAllOfDavinci{}
+	this.Policy = policy
 	return &this
 }
 
@@ -36,41 +37,33 @@ func NewGatewayTypeRADIUSAllOfDavinciWithDefaults() *GatewayTypeRADIUSAllOfDavin
 	return &this
 }
 
-// GetPolicy returns the Policy field value if set, zero value otherwise.
+// GetPolicy returns the Policy field value
 func (o *GatewayTypeRADIUSAllOfDavinci) GetPolicy() GatewayTypeRADIUSAllOfDavinciPolicy {
-	if o == nil || isNil(o.Policy) {
+	if o == nil {
 		var ret GatewayTypeRADIUSAllOfDavinciPolicy
 		return ret
 	}
-	return *o.Policy
+
+	return o.Policy
 }
 
-// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
+// GetPolicyOk returns a tuple with the Policy field value
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeRADIUSAllOfDavinci) GetPolicyOk() (*GatewayTypeRADIUSAllOfDavinciPolicy, bool) {
-	if o == nil || isNil(o.Policy) {
+	if o == nil {
     return nil, false
 	}
-	return o.Policy, true
+	return &o.Policy, true
 }
 
-// HasPolicy returns a boolean if a field has been set.
-func (o *GatewayTypeRADIUSAllOfDavinci) HasPolicy() bool {
-	if o != nil && !isNil(o.Policy) {
-		return true
-	}
-
-	return false
-}
-
-// SetPolicy gets a reference to the given GatewayTypeRADIUSAllOfDavinciPolicy and assigns it to the Policy field.
+// SetPolicy sets field value
 func (o *GatewayTypeRADIUSAllOfDavinci) SetPolicy(v GatewayTypeRADIUSAllOfDavinciPolicy) {
-	o.Policy = &v
+	o.Policy = v
 }
 
 func (o GatewayTypeRADIUSAllOfDavinci) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Policy) {
+	if true {
 		toSerialize["policy"] = o.Policy
 	}
 	return json.Marshal(toSerialize)

@@ -1884,7 +1884,7 @@ components:
                   required:
                     - id
               required:
-                - id
+                - policy
             defaultSharedSecret:
               type: string
               description: Value to use for the shared secret if the shared secret is not provided for one or more of the RADIUS clients specified.

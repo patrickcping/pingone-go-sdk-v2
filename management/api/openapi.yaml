@@ -29133,7 +29133,7 @@ components:
         policy:
           $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_davinci_policy'
       required:
-      - id
+      - policy
       type: object
       example: null
     GatewayTypeRADIUS_allOf_radiusClients:
