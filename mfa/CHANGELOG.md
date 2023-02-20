@@ -1,7 +1,7 @@
 # v0.8.0 (Unreleased)
 
-* **Breaking change** `Key` property removed from the `MFAPushCredential` model object and assigned to `MFAPushCredentialFCM` and `MFAPushCredentialAPNS` individually
-* **Enhancement** Add support for Huawei HMS Push service
+* **Breaking change** `Key` property removed from the `MFAPushCredential` model object and assigned to `MFAPushCredentialFCM` and `MFAPushCredentialAPNS` individually [#105](https://github.com/patrickcping/pingone-go-sdk-v2/pull/105)
+* **Enhancement** Add support for Huawei HMS Push service [#105](https://github.com/patrickcping/pingone-go-sdk-v2/pull/105)
 
 # v0.7.2 (2023-01-12)
 
