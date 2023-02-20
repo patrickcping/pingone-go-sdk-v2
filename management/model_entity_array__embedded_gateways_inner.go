@@ -41,21 +41,38 @@ func (dst *EntityArrayEmbeddedGatewaysInner) UnmarshalJSON(data []byte) error {
 		dst.Gateway = nil
 	}
 
-	// try to unmarshal JSON data into GatewayLDAP
-	err = json.Unmarshal(data, &dst.GatewayLDAP)
+	// try to unmarshal JSON data into GatewayTypeLDAP
+	err = json.Unmarshal(data, &dst.GatewayTypeLDAP)
 	if err == nil {
-		jsonGatewayLDAP, _ := json.Marshal(dst.GatewayLDAP)
+		jsonGatewayLDAP, _ := json.Marshal(dst.GatewayTypeLDAP)
 		if string(jsonGatewayLDAP) == "{}" { // empty struct
-			dst.GatewayLDAP = nil
+			dst.GatewayTypeLDAP = nil
 		} else {
-			if dst.GatewayLDAP.Type == ENUMGATEWAYTYPE_LDAP {
+			if dst.GatewayTypeLDAP.Type == ENUMGATEWAYTYPE_LDAP {
 				return nil // data stored in dst.GatewayLDAP, return on the first match
 			} else {
-				dst.GatewayLDAP = nil
+				dst.GatewayTypeLDAP = nil
 			}
 		}
 	} else {
-		dst.GatewayLDAP = nil
+		dst.GatewayTypeLDAP = nil
+	}
+
+	// try to unmarshal JSON data into GatewayTypeRADIUS
+	err = json.Unmarshal(data, &dst.GatewayTypeRADIUS)
+	if err == nil {
+		jsonGatewayRADIUS, _ := json.Marshal(dst.GatewayTypeRADIUS)
+		if string(jsonGatewayRADIUS) == "{}" { // empty struct
+			dst.GatewayTypeRADIUS = nil
+		} else {
+			if dst.GatewayTypeRADIUS.Type == ENUMGATEWAYTYPE_RADIUS {
+				return nil // data stored in dst.GatewayTypeRADIUS, return on the first match
+			} else {
+				dst.GatewayTypeRADIUS = nil
+			}
+		}
+	} else {
+		dst.GatewayTypeRADIUS = nil
 	}
 
 	return fmt.Errorf("Data failed to match schemas in anyOf(EntityArrayEmbeddedGatewaysInner)")
