@@ -1,3 +1,8 @@
+# v0.8.0 (Unreleased)
+
+* **Breaking change** `Key` property removed from the `MFAPushCredential` model object and assigned to `MFAPushCredentialFCM` and `MFAPushCredentialAPNS` individually
+* **Enhancement** Add support for Huawei HMS Push service
+
 # v0.7.2 (2023-01-12)
 
 * **Breaking change** Device selection `Authentication` model no longer required for the `MFASettings` model [#98](https://github.com/patrickcping/pingone-go-sdk-v2/pull/98)

@@ -16,6 +16,8 @@ import (
 
 // MFAPushCredentialAPNSAllOf struct for MFAPushCredentialAPNSAllOf
 type MFAPushCredentialAPNSAllOf struct {
+	// A string that Apple uses as an identifier to identify an authentication key.  Mandatory.
+	Key string `json:"key"`
 	// A string that Apple uses as an identifier to identify teams.
 	TeamId string `json:"teamId"`
 	// A string that Apple uses as the authentication token signing key to securely connect to APNS. This is a p8 file with a private key format.
@@ -26,8 +28,9 @@ type MFAPushCredentialAPNSAllOf struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFAPushCredentialAPNSAllOf(teamId string, token string) *MFAPushCredentialAPNSAllOf {
+func NewMFAPushCredentialAPNSAllOf(key string, teamId string, token string) *MFAPushCredentialAPNSAllOf {
 	this := MFAPushCredentialAPNSAllOf{}
+	this.Key = key
 	this.TeamId = teamId
 	this.Token = token
 	return &this
@@ -39,6 +42,30 @@ func NewMFAPushCredentialAPNSAllOf(teamId string, token string) *MFAPushCredenti
 func NewMFAPushCredentialAPNSAllOfWithDefaults() *MFAPushCredentialAPNSAllOf {
 	this := MFAPushCredentialAPNSAllOf{}
 	return &this
+}
+
+// GetKey returns the Key field value
+func (o *MFAPushCredentialAPNSAllOf) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *MFAPushCredentialAPNSAllOf) GetKeyOk() (*string, bool) {
+	if o == nil {
+    return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *MFAPushCredentialAPNSAllOf) SetKey(v string) {
+	o.Key = v
 }
 
 // GetTeamId returns the TeamId field value
@@ -91,6 +118,9 @@ func (o *MFAPushCredentialAPNSAllOf) SetToken(v string) {
 
 func (o MFAPushCredentialAPNSAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if true {
+		toSerialize["key"] = o.Key
+	}
 	if true {
 		toSerialize["teamId"] = o.TeamId
 	}

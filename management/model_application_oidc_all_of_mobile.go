@@ -20,6 +20,10 @@ type ApplicationOIDCAllOfMobile struct {
 	BundleId *string `json:"bundleId,omitempty"`
 	// A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  this setting overrides the top-level packageName field.
 	PackageName *string `json:"packageName,omitempty"`
+	// The unique identifier for the app on the device and in the Huawei Mobile Service AppGallery. The value of the `huaweiAppId` property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem.
+	HuaweiAppId *string `json:"huaweiAppId,omitempty"`
+	// The package name associated with the application, for push notifications in native apps. The value of the `huaweiPackageName` property is unique per environment, and once defined, is immutable. Used only for applications for the Huawei ecosystem.
+	HuaweiPackageName *string `json:"huaweiPackageName,omitempty"`
 	PasscodeRefreshDuration *ApplicationOIDCAllOfMobilePasscodeRefreshDuration `json:"passcodeRefreshDuration,omitempty"`
 	IntegrityDetection *ApplicationOIDCAllOfMobileIntegrityDetection `json:"integrityDetection,omitempty"`
 	// A string that specifies a URI prefix that enables direct triggering of the mobile application when scanning a QR code. The URI prefix can be set to a universal link with a valid value (which can be a URL address that starts with `HTTP://` or `HTTPS://`, such as `https://www.acme.com`), or an app schema, which is just a string and requires no special validation.
@@ -105,6 +109,70 @@ func (o *ApplicationOIDCAllOfMobile) HasPackageName() bool {
 // SetPackageName gets a reference to the given string and assigns it to the PackageName field.
 func (o *ApplicationOIDCAllOfMobile) SetPackageName(v string) {
 	o.PackageName = &v
+}
+
+// GetHuaweiAppId returns the HuaweiAppId field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOfMobile) GetHuaweiAppId() string {
+	if o == nil || isNil(o.HuaweiAppId) {
+		var ret string
+		return ret
+	}
+	return *o.HuaweiAppId
+}
+
+// GetHuaweiAppIdOk returns a tuple with the HuaweiAppId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOfMobile) GetHuaweiAppIdOk() (*string, bool) {
+	if o == nil || isNil(o.HuaweiAppId) {
+    return nil, false
+	}
+	return o.HuaweiAppId, true
+}
+
+// HasHuaweiAppId returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOfMobile) HasHuaweiAppId() bool {
+	if o != nil && !isNil(o.HuaweiAppId) {
+		return true
+	}
+
+	return false
+}
+
+// SetHuaweiAppId gets a reference to the given string and assigns it to the HuaweiAppId field.
+func (o *ApplicationOIDCAllOfMobile) SetHuaweiAppId(v string) {
+	o.HuaweiAppId = &v
+}
+
+// GetHuaweiPackageName returns the HuaweiPackageName field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOfMobile) GetHuaweiPackageName() string {
+	if o == nil || isNil(o.HuaweiPackageName) {
+		var ret string
+		return ret
+	}
+	return *o.HuaweiPackageName
+}
+
+// GetHuaweiPackageNameOk returns a tuple with the HuaweiPackageName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOfMobile) GetHuaweiPackageNameOk() (*string, bool) {
+	if o == nil || isNil(o.HuaweiPackageName) {
+    return nil, false
+	}
+	return o.HuaweiPackageName, true
+}
+
+// HasHuaweiPackageName returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOfMobile) HasHuaweiPackageName() bool {
+	if o != nil && !isNil(o.HuaweiPackageName) {
+		return true
+	}
+
+	return false
+}
+
+// SetHuaweiPackageName gets a reference to the given string and assigns it to the HuaweiPackageName field.
+func (o *ApplicationOIDCAllOfMobile) SetHuaweiPackageName(v string) {
+	o.HuaweiPackageName = &v
 }
 
 // GetPasscodeRefreshDuration returns the PasscodeRefreshDuration field value if set, zero value otherwise.
@@ -210,6 +278,12 @@ func (o ApplicationOIDCAllOfMobile) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.PackageName) {
 		toSerialize["packageName"] = o.PackageName
+	}
+	if !isNil(o.HuaweiAppId) {
+		toSerialize["huaweiAppId"] = o.HuaweiAppId
+	}
+	if !isNil(o.HuaweiPackageName) {
+		toSerialize["huaweiPackageName"] = o.HuaweiPackageName
 	}
 	if !isNil(o.PasscodeRefreshDuration) {
 		toSerialize["passcodeRefreshDuration"] = o.PasscodeRefreshDuration

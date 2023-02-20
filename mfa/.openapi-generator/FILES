@@ -53,6 +53,10 @@ docs/FIDOPolicyApi.md
 docs/MFAPushCredential.md
 docs/MFAPushCredentialAPNS.md
 docs/MFAPushCredentialAPNSAllOf.md
+docs/MFAPushCredentialFCM.md
+docs/MFAPushCredentialFCMAllOf.md
+docs/MFAPushCredentialHMS.md
+docs/MFAPushCredentialHMSAllOf.md
 docs/MFAPushCredentialResponse.md
 docs/MFASettings.md
 docs/MFASettingsApi.md
@@ -106,6 +110,10 @@ model_fido_policy_allowed_authenticators_inner.go
 model_mfa_push_credential.go
 model_mfa_push_credential_apns.go
 model_mfa_push_credential_apns_all_of.go
+model_mfa_push_credential_fcm.go
+model_mfa_push_credential_fcm_all_of.go
+model_mfa_push_credential_hms.go
+model_mfa_push_credential_hms_all_of.go
 model_mfa_push_credential_response.go
 model_mfa_settings.go
 model_mfa_settings_authentication.go

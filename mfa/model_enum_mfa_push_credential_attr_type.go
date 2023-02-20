@@ -15,19 +15,21 @@ import (
 	"fmt"
 )
 
-// EnumMFAPushCredentialAttrType A string that specifies the type of the push credentials. Mandatory. Valid values APNS, FCM
+// EnumMFAPushCredentialAttrType Specifies the push credential type. Valid values: * APNS (for Apple) * FCM (for Google) * HMS (for Huawei) 
 type EnumMFAPushCredentialAttrType string
 
 // List of EnumMFAPushCredentialAttrType
 const (
 	ENUMMFAPUSHCREDENTIALATTRTYPE_APNS EnumMFAPushCredentialAttrType = "APNS"
 	ENUMMFAPUSHCREDENTIALATTRTYPE_FCM EnumMFAPushCredentialAttrType = "FCM"
+	ENUMMFAPUSHCREDENTIALATTRTYPE_HMS EnumMFAPushCredentialAttrType = "HMS"
 )
 
 // All allowed values of EnumMFAPushCredentialAttrType enum
 var AllowedEnumMFAPushCredentialAttrTypeEnumValues = []EnumMFAPushCredentialAttrType{
 	"APNS",
 	"FCM",
+	"HMS",
 }
 
 func (v *EnumMFAPushCredentialAttrType) UnmarshalJSON(src []byte) error {

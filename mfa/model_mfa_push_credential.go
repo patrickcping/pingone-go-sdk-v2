@@ -17,18 +17,15 @@ import (
 // MFAPushCredential struct for MFAPushCredential
 type MFAPushCredential struct {
 	Type EnumMFAPushCredentialAttrType `json:"type"`
-	// A string that Apple uses as an identifier to identify an authentication key.  Mandatory.
-	Key string `json:"key"`
 }
 
 // NewMFAPushCredential instantiates a new MFAPushCredential object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMFAPushCredential(type_ EnumMFAPushCredentialAttrType, key string) *MFAPushCredential {
+func NewMFAPushCredential(type_ EnumMFAPushCredentialAttrType) *MFAPushCredential {
 	this := MFAPushCredential{}
 	this.Type = type_
-	this.Key = key
 	return &this
 }
 
@@ -64,37 +61,10 @@ func (o *MFAPushCredential) SetType(v EnumMFAPushCredentialAttrType) {
 	o.Type = v
 }
 
-// GetKey returns the Key field value
-func (o *MFAPushCredential) GetKey() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value
-// and a boolean to check if the value has been set.
-func (o *MFAPushCredential) GetKeyOk() (*string, bool) {
-	if o == nil {
-    return nil, false
-	}
-	return &o.Key, true
-}
-
-// SetKey sets field value
-func (o *MFAPushCredential) SetKey(v string) {
-	o.Key = v
-}
-
 func (o MFAPushCredential) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["key"] = o.Key
 	}
 	return json.Marshal(toSerialize)
 }
