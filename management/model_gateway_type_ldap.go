@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// GatewayLDAP struct for GatewayLDAP
-type GatewayLDAP struct {
+// GatewayTypeLDAP struct for GatewayTypeLDAP
+type GatewayTypeLDAP struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
 	Id *string `json:"id,omitempty"`
@@ -35,24 +35,24 @@ type GatewayLDAP struct {
 	BindDN string `json:"bindDN"`
 	// A string that specifies the bind password for the LDAP database. This is a required property.
 	BindPassword string `json:"bindPassword"`
-	ConnectionSecurity *EnumGatewayLDAPSecurity `json:"connectionSecurity,omitempty"`
-	Kerberos *GatewayLDAPAllOfKerberos `json:"kerberos,omitempty"`
+	ConnectionSecurity *EnumGatewayTypeLDAPSecurity `json:"connectionSecurity,omitempty"`
+	Kerberos *GatewayTypeLDAPAllOfKerberos `json:"kerberos,omitempty"`
 	// An array of strings that specifies the LDAP server host name and port number (for example, [`ds1.example.com:389`, `ds2.example.com:389`]).
 	ServersHostAndPort []string `json:"serversHostAndPort"`
 	// An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory.
-	UserTypes []GatewayLDAPAllOfUserTypes `json:"userTypes,omitempty"`
+	UserTypes []GatewayTypeLDAPAllOfUserTypes `json:"userTypes,omitempty"`
 	// A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted.
 	ValidateTlsCertificates *bool `json:"validateTlsCertificates,omitempty"`
 	Vendor EnumGatewayVendor `json:"vendor"`
 	FollowReferrals *bool `json:"followReferrals,omitempty"`
 }
 
-// NewGatewayLDAP instantiates a new GatewayLDAP object
+// NewGatewayTypeLDAP instantiates a new GatewayTypeLDAP object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor) *GatewayLDAP {
-	this := GatewayLDAP{}
+func NewGatewayTypeLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor) *GatewayTypeLDAP {
+	this := GatewayTypeLDAP{}
 	this.Name = name
 	this.Type = type_
 	this.Enabled = enabled
@@ -63,16 +63,16 @@ func NewGatewayLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN str
 	return &this
 }
 
-// NewGatewayLDAPWithDefaults instantiates a new GatewayLDAP object
+// NewGatewayTypeLDAPWithDefaults instantiates a new GatewayTypeLDAP object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGatewayLDAPWithDefaults() *GatewayLDAP {
-	this := GatewayLDAP{}
+func NewGatewayTypeLDAPWithDefaults() *GatewayTypeLDAP {
+	this := GatewayTypeLDAP{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetLinks() map[string]interface{} {
+func (o *GatewayTypeLDAP) GetLinks() map[string]interface{} {
 	if o == nil || isNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
@@ -82,7 +82,7 @@ func (o *GatewayLDAP) GetLinks() map[string]interface{} {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetLinksOk() (map[string]interface{}, bool) {
+func (o *GatewayTypeLDAP) GetLinksOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Links) {
     return map[string]interface{}{}, false
 	}
@@ -90,7 +90,7 @@ func (o *GatewayLDAP) GetLinksOk() (map[string]interface{}, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasLinks() bool {
+func (o *GatewayTypeLDAP) HasLinks() bool {
 	if o != nil && !isNil(o.Links) {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *GatewayLDAP) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
-func (o *GatewayLDAP) SetLinks(v map[string]interface{}) {
+func (o *GatewayTypeLDAP) SetLinks(v map[string]interface{}) {
 	o.Links = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetId() string {
+func (o *GatewayTypeLDAP) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -114,7 +114,7 @@ func (o *GatewayLDAP) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetIdOk() (*string, bool) {
+func (o *GatewayTypeLDAP) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
     return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *GatewayLDAP) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasId() bool {
+func (o *GatewayTypeLDAP) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -131,12 +131,12 @@ func (o *GatewayLDAP) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *GatewayLDAP) SetId(v string) {
+func (o *GatewayTypeLDAP) SetId(v string) {
 	o.Id = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetEnvironment() ObjectEnvironment {
+func (o *GatewayTypeLDAP) GetEnvironment() ObjectEnvironment {
 	if o == nil || isNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
@@ -146,7 +146,7 @@ func (o *GatewayLDAP) GetEnvironment() ObjectEnvironment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+func (o *GatewayTypeLDAP) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || isNil(o.Environment) {
     return nil, false
 	}
@@ -154,7 +154,7 @@ func (o *GatewayLDAP) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 }
 
 // HasEnvironment returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasEnvironment() bool {
+func (o *GatewayTypeLDAP) HasEnvironment() bool {
 	if o != nil && !isNil(o.Environment) {
 		return true
 	}
@@ -163,12 +163,12 @@ func (o *GatewayLDAP) HasEnvironment() bool {
 }
 
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *GatewayLDAP) SetEnvironment(v ObjectEnvironment) {
+func (o *GatewayTypeLDAP) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetCredentials() []GatewayCredential {
+func (o *GatewayTypeLDAP) GetCredentials() []GatewayCredential {
 	if o == nil || isNil(o.Credentials) {
 		var ret []GatewayCredential
 		return ret
@@ -178,7 +178,7 @@ func (o *GatewayLDAP) GetCredentials() []GatewayCredential {
 
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetCredentialsOk() ([]GatewayCredential, bool) {
+func (o *GatewayTypeLDAP) GetCredentialsOk() ([]GatewayCredential, bool) {
 	if o == nil || isNil(o.Credentials) {
     return nil, false
 	}
@@ -186,7 +186,7 @@ func (o *GatewayLDAP) GetCredentialsOk() ([]GatewayCredential, bool) {
 }
 
 // HasCredentials returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasCredentials() bool {
+func (o *GatewayTypeLDAP) HasCredentials() bool {
 	if o != nil && !isNil(o.Credentials) {
 		return true
 	}
@@ -195,12 +195,12 @@ func (o *GatewayLDAP) HasCredentials() bool {
 }
 
 // SetCredentials gets a reference to the given []GatewayCredential and assigns it to the Credentials field.
-func (o *GatewayLDAP) SetCredentials(v []GatewayCredential) {
+func (o *GatewayTypeLDAP) SetCredentials(v []GatewayCredential) {
 	o.Credentials = v
 }
 
 // GetName returns the Name field value
-func (o *GatewayLDAP) GetName() string {
+func (o *GatewayTypeLDAP) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -211,7 +211,7 @@ func (o *GatewayLDAP) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetNameOk() (*string, bool) {
+func (o *GatewayTypeLDAP) GetNameOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -219,12 +219,12 @@ func (o *GatewayLDAP) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *GatewayLDAP) SetName(v string) {
+func (o *GatewayTypeLDAP) SetName(v string) {
 	o.Name = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetDescription() string {
+func (o *GatewayTypeLDAP) GetDescription() string {
 	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
@@ -234,7 +234,7 @@ func (o *GatewayLDAP) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetDescriptionOk() (*string, bool) {
+func (o *GatewayTypeLDAP) GetDescriptionOk() (*string, bool) {
 	if o == nil || isNil(o.Description) {
     return nil, false
 	}
@@ -242,7 +242,7 @@ func (o *GatewayLDAP) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasDescription() bool {
+func (o *GatewayTypeLDAP) HasDescription() bool {
 	if o != nil && !isNil(o.Description) {
 		return true
 	}
@@ -251,12 +251,12 @@ func (o *GatewayLDAP) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *GatewayLDAP) SetDescription(v string) {
+func (o *GatewayTypeLDAP) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetType returns the Type field value
-func (o *GatewayLDAP) GetType() EnumGatewayType {
+func (o *GatewayTypeLDAP) GetType() EnumGatewayType {
 	if o == nil {
 		var ret EnumGatewayType
 		return ret
@@ -267,7 +267,7 @@ func (o *GatewayLDAP) GetType() EnumGatewayType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetTypeOk() (*EnumGatewayType, bool) {
+func (o *GatewayTypeLDAP) GetTypeOk() (*EnumGatewayType, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -275,12 +275,12 @@ func (o *GatewayLDAP) GetTypeOk() (*EnumGatewayType, bool) {
 }
 
 // SetType sets field value
-func (o *GatewayLDAP) SetType(v EnumGatewayType) {
+func (o *GatewayTypeLDAP) SetType(v EnumGatewayType) {
 	o.Type = v
 }
 
 // GetEnabled returns the Enabled field value
-func (o *GatewayLDAP) GetEnabled() bool {
+func (o *GatewayTypeLDAP) GetEnabled() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -291,7 +291,7 @@ func (o *GatewayLDAP) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetEnabledOk() (*bool, bool) {
+func (o *GatewayTypeLDAP) GetEnabledOk() (*bool, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -299,12 +299,12 @@ func (o *GatewayLDAP) GetEnabledOk() (*bool, bool) {
 }
 
 // SetEnabled sets field value
-func (o *GatewayLDAP) SetEnabled(v bool) {
+func (o *GatewayTypeLDAP) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
 // GetSupportedVersions returns the SupportedVersions field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetSupportedVersions() []GatewaySupportedVersionsInner {
+func (o *GatewayTypeLDAP) GetSupportedVersions() []GatewaySupportedVersionsInner {
 	if o == nil || isNil(o.SupportedVersions) {
 		var ret []GatewaySupportedVersionsInner
 		return ret
@@ -314,7 +314,7 @@ func (o *GatewayLDAP) GetSupportedVersions() []GatewaySupportedVersionsInner {
 
 // GetSupportedVersionsOk returns a tuple with the SupportedVersions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetSupportedVersionsOk() ([]GatewaySupportedVersionsInner, bool) {
+func (o *GatewayTypeLDAP) GetSupportedVersionsOk() ([]GatewaySupportedVersionsInner, bool) {
 	if o == nil || isNil(o.SupportedVersions) {
     return nil, false
 	}
@@ -322,7 +322,7 @@ func (o *GatewayLDAP) GetSupportedVersionsOk() ([]GatewaySupportedVersionsInner,
 }
 
 // HasSupportedVersions returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasSupportedVersions() bool {
+func (o *GatewayTypeLDAP) HasSupportedVersions() bool {
 	if o != nil && !isNil(o.SupportedVersions) {
 		return true
 	}
@@ -331,12 +331,12 @@ func (o *GatewayLDAP) HasSupportedVersions() bool {
 }
 
 // SetSupportedVersions gets a reference to the given []GatewaySupportedVersionsInner and assigns it to the SupportedVersions field.
-func (o *GatewayLDAP) SetSupportedVersions(v []GatewaySupportedVersionsInner) {
+func (o *GatewayTypeLDAP) SetSupportedVersions(v []GatewaySupportedVersionsInner) {
 	o.SupportedVersions = v
 }
 
 // GetCurrentAlerts returns the CurrentAlerts field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetCurrentAlerts() []map[string]interface{} {
+func (o *GatewayTypeLDAP) GetCurrentAlerts() []map[string]interface{} {
 	if o == nil || isNil(o.CurrentAlerts) {
 		var ret []map[string]interface{}
 		return ret
@@ -346,7 +346,7 @@ func (o *GatewayLDAP) GetCurrentAlerts() []map[string]interface{} {
 
 // GetCurrentAlertsOk returns a tuple with the CurrentAlerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetCurrentAlertsOk() ([]map[string]interface{}, bool) {
+func (o *GatewayTypeLDAP) GetCurrentAlertsOk() ([]map[string]interface{}, bool) {
 	if o == nil || isNil(o.CurrentAlerts) {
     return nil, false
 	}
@@ -354,7 +354,7 @@ func (o *GatewayLDAP) GetCurrentAlertsOk() ([]map[string]interface{}, bool) {
 }
 
 // HasCurrentAlerts returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasCurrentAlerts() bool {
+func (o *GatewayTypeLDAP) HasCurrentAlerts() bool {
 	if o != nil && !isNil(o.CurrentAlerts) {
 		return true
 	}
@@ -363,12 +363,12 @@ func (o *GatewayLDAP) HasCurrentAlerts() bool {
 }
 
 // SetCurrentAlerts gets a reference to the given []map[string]interface{} and assigns it to the CurrentAlerts field.
-func (o *GatewayLDAP) SetCurrentAlerts(v []map[string]interface{}) {
+func (o *GatewayTypeLDAP) SetCurrentAlerts(v []map[string]interface{}) {
 	o.CurrentAlerts = v
 }
 
 // GetBindDN returns the BindDN field value
-func (o *GatewayLDAP) GetBindDN() string {
+func (o *GatewayTypeLDAP) GetBindDN() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -379,7 +379,7 @@ func (o *GatewayLDAP) GetBindDN() string {
 
 // GetBindDNOk returns a tuple with the BindDN field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetBindDNOk() (*string, bool) {
+func (o *GatewayTypeLDAP) GetBindDNOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -387,12 +387,12 @@ func (o *GatewayLDAP) GetBindDNOk() (*string, bool) {
 }
 
 // SetBindDN sets field value
-func (o *GatewayLDAP) SetBindDN(v string) {
+func (o *GatewayTypeLDAP) SetBindDN(v string) {
 	o.BindDN = v
 }
 
 // GetBindPassword returns the BindPassword field value
-func (o *GatewayLDAP) GetBindPassword() string {
+func (o *GatewayTypeLDAP) GetBindPassword() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -403,7 +403,7 @@ func (o *GatewayLDAP) GetBindPassword() string {
 
 // GetBindPasswordOk returns a tuple with the BindPassword field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetBindPasswordOk() (*string, bool) {
+func (o *GatewayTypeLDAP) GetBindPasswordOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -411,14 +411,14 @@ func (o *GatewayLDAP) GetBindPasswordOk() (*string, bool) {
 }
 
 // SetBindPassword sets field value
-func (o *GatewayLDAP) SetBindPassword(v string) {
+func (o *GatewayTypeLDAP) SetBindPassword(v string) {
 	o.BindPassword = v
 }
 
 // GetConnectionSecurity returns the ConnectionSecurity field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetConnectionSecurity() EnumGatewayLDAPSecurity {
+func (o *GatewayTypeLDAP) GetConnectionSecurity() EnumGatewayTypeLDAPSecurity {
 	if o == nil || isNil(o.ConnectionSecurity) {
-		var ret EnumGatewayLDAPSecurity
+		var ret EnumGatewayTypeLDAPSecurity
 		return ret
 	}
 	return *o.ConnectionSecurity
@@ -426,7 +426,7 @@ func (o *GatewayLDAP) GetConnectionSecurity() EnumGatewayLDAPSecurity {
 
 // GetConnectionSecurityOk returns a tuple with the ConnectionSecurity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, bool) {
+func (o *GatewayTypeLDAP) GetConnectionSecurityOk() (*EnumGatewayTypeLDAPSecurity, bool) {
 	if o == nil || isNil(o.ConnectionSecurity) {
     return nil, false
 	}
@@ -434,7 +434,7 @@ func (o *GatewayLDAP) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, bool)
 }
 
 // HasConnectionSecurity returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasConnectionSecurity() bool {
+func (o *GatewayTypeLDAP) HasConnectionSecurity() bool {
 	if o != nil && !isNil(o.ConnectionSecurity) {
 		return true
 	}
@@ -442,15 +442,15 @@ func (o *GatewayLDAP) HasConnectionSecurity() bool {
 	return false
 }
 
-// SetConnectionSecurity gets a reference to the given EnumGatewayLDAPSecurity and assigns it to the ConnectionSecurity field.
-func (o *GatewayLDAP) SetConnectionSecurity(v EnumGatewayLDAPSecurity) {
+// SetConnectionSecurity gets a reference to the given EnumGatewayTypeLDAPSecurity and assigns it to the ConnectionSecurity field.
+func (o *GatewayTypeLDAP) SetConnectionSecurity(v EnumGatewayTypeLDAPSecurity) {
 	o.ConnectionSecurity = &v
 }
 
 // GetKerberos returns the Kerberos field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetKerberos() GatewayLDAPAllOfKerberos {
+func (o *GatewayTypeLDAP) GetKerberos() GatewayTypeLDAPAllOfKerberos {
 	if o == nil || isNil(o.Kerberos) {
-		var ret GatewayLDAPAllOfKerberos
+		var ret GatewayTypeLDAPAllOfKerberos
 		return ret
 	}
 	return *o.Kerberos
@@ -458,7 +458,7 @@ func (o *GatewayLDAP) GetKerberos() GatewayLDAPAllOfKerberos {
 
 // GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetKerberosOk() (*GatewayLDAPAllOfKerberos, bool) {
+func (o *GatewayTypeLDAP) GetKerberosOk() (*GatewayTypeLDAPAllOfKerberos, bool) {
 	if o == nil || isNil(o.Kerberos) {
     return nil, false
 	}
@@ -466,7 +466,7 @@ func (o *GatewayLDAP) GetKerberosOk() (*GatewayLDAPAllOfKerberos, bool) {
 }
 
 // HasKerberos returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasKerberos() bool {
+func (o *GatewayTypeLDAP) HasKerberos() bool {
 	if o != nil && !isNil(o.Kerberos) {
 		return true
 	}
@@ -474,13 +474,13 @@ func (o *GatewayLDAP) HasKerberos() bool {
 	return false
 }
 
-// SetKerberos gets a reference to the given GatewayLDAPAllOfKerberos and assigns it to the Kerberos field.
-func (o *GatewayLDAP) SetKerberos(v GatewayLDAPAllOfKerberos) {
+// SetKerberos gets a reference to the given GatewayTypeLDAPAllOfKerberos and assigns it to the Kerberos field.
+func (o *GatewayTypeLDAP) SetKerberos(v GatewayTypeLDAPAllOfKerberos) {
 	o.Kerberos = &v
 }
 
 // GetServersHostAndPort returns the ServersHostAndPort field value
-func (o *GatewayLDAP) GetServersHostAndPort() []string {
+func (o *GatewayTypeLDAP) GetServersHostAndPort() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -491,7 +491,7 @@ func (o *GatewayLDAP) GetServersHostAndPort() []string {
 
 // GetServersHostAndPortOk returns a tuple with the ServersHostAndPort field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetServersHostAndPortOk() ([]string, bool) {
+func (o *GatewayTypeLDAP) GetServersHostAndPortOk() ([]string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -499,14 +499,14 @@ func (o *GatewayLDAP) GetServersHostAndPortOk() ([]string, bool) {
 }
 
 // SetServersHostAndPort sets field value
-func (o *GatewayLDAP) SetServersHostAndPort(v []string) {
+func (o *GatewayTypeLDAP) SetServersHostAndPort(v []string) {
 	o.ServersHostAndPort = v
 }
 
 // GetUserTypes returns the UserTypes field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetUserTypes() []GatewayLDAPAllOfUserTypes {
+func (o *GatewayTypeLDAP) GetUserTypes() []GatewayTypeLDAPAllOfUserTypes {
 	if o == nil || isNil(o.UserTypes) {
-		var ret []GatewayLDAPAllOfUserTypes
+		var ret []GatewayTypeLDAPAllOfUserTypes
 		return ret
 	}
 	return o.UserTypes
@@ -514,7 +514,7 @@ func (o *GatewayLDAP) GetUserTypes() []GatewayLDAPAllOfUserTypes {
 
 // GetUserTypesOk returns a tuple with the UserTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetUserTypesOk() ([]GatewayLDAPAllOfUserTypes, bool) {
+func (o *GatewayTypeLDAP) GetUserTypesOk() ([]GatewayTypeLDAPAllOfUserTypes, bool) {
 	if o == nil || isNil(o.UserTypes) {
     return nil, false
 	}
@@ -522,7 +522,7 @@ func (o *GatewayLDAP) GetUserTypesOk() ([]GatewayLDAPAllOfUserTypes, bool) {
 }
 
 // HasUserTypes returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasUserTypes() bool {
+func (o *GatewayTypeLDAP) HasUserTypes() bool {
 	if o != nil && !isNil(o.UserTypes) {
 		return true
 	}
@@ -530,13 +530,13 @@ func (o *GatewayLDAP) HasUserTypes() bool {
 	return false
 }
 
-// SetUserTypes gets a reference to the given []GatewayLDAPAllOfUserTypes and assigns it to the UserTypes field.
-func (o *GatewayLDAP) SetUserTypes(v []GatewayLDAPAllOfUserTypes) {
+// SetUserTypes gets a reference to the given []GatewayTypeLDAPAllOfUserTypes and assigns it to the UserTypes field.
+func (o *GatewayTypeLDAP) SetUserTypes(v []GatewayTypeLDAPAllOfUserTypes) {
 	o.UserTypes = v
 }
 
 // GetValidateTlsCertificates returns the ValidateTlsCertificates field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetValidateTlsCertificates() bool {
+func (o *GatewayTypeLDAP) GetValidateTlsCertificates() bool {
 	if o == nil || isNil(o.ValidateTlsCertificates) {
 		var ret bool
 		return ret
@@ -546,7 +546,7 @@ func (o *GatewayLDAP) GetValidateTlsCertificates() bool {
 
 // GetValidateTlsCertificatesOk returns a tuple with the ValidateTlsCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetValidateTlsCertificatesOk() (*bool, bool) {
+func (o *GatewayTypeLDAP) GetValidateTlsCertificatesOk() (*bool, bool) {
 	if o == nil || isNil(o.ValidateTlsCertificates) {
     return nil, false
 	}
@@ -554,7 +554,7 @@ func (o *GatewayLDAP) GetValidateTlsCertificatesOk() (*bool, bool) {
 }
 
 // HasValidateTlsCertificates returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasValidateTlsCertificates() bool {
+func (o *GatewayTypeLDAP) HasValidateTlsCertificates() bool {
 	if o != nil && !isNil(o.ValidateTlsCertificates) {
 		return true
 	}
@@ -563,12 +563,12 @@ func (o *GatewayLDAP) HasValidateTlsCertificates() bool {
 }
 
 // SetValidateTlsCertificates gets a reference to the given bool and assigns it to the ValidateTlsCertificates field.
-func (o *GatewayLDAP) SetValidateTlsCertificates(v bool) {
+func (o *GatewayTypeLDAP) SetValidateTlsCertificates(v bool) {
 	o.ValidateTlsCertificates = &v
 }
 
 // GetVendor returns the Vendor field value
-func (o *GatewayLDAP) GetVendor() EnumGatewayVendor {
+func (o *GatewayTypeLDAP) GetVendor() EnumGatewayVendor {
 	if o == nil {
 		var ret EnumGatewayVendor
 		return ret
@@ -579,7 +579,7 @@ func (o *GatewayLDAP) GetVendor() EnumGatewayVendor {
 
 // GetVendorOk returns a tuple with the Vendor field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetVendorOk() (*EnumGatewayVendor, bool) {
+func (o *GatewayTypeLDAP) GetVendorOk() (*EnumGatewayVendor, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -587,12 +587,12 @@ func (o *GatewayLDAP) GetVendorOk() (*EnumGatewayVendor, bool) {
 }
 
 // SetVendor sets field value
-func (o *GatewayLDAP) SetVendor(v EnumGatewayVendor) {
+func (o *GatewayTypeLDAP) SetVendor(v EnumGatewayVendor) {
 	o.Vendor = v
 }
 
 // GetFollowReferrals returns the FollowReferrals field value if set, zero value otherwise.
-func (o *GatewayLDAP) GetFollowReferrals() bool {
+func (o *GatewayTypeLDAP) GetFollowReferrals() bool {
 	if o == nil || isNil(o.FollowReferrals) {
 		var ret bool
 		return ret
@@ -602,7 +602,7 @@ func (o *GatewayLDAP) GetFollowReferrals() bool {
 
 // GetFollowReferralsOk returns a tuple with the FollowReferrals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAP) GetFollowReferralsOk() (*bool, bool) {
+func (o *GatewayTypeLDAP) GetFollowReferralsOk() (*bool, bool) {
 	if o == nil || isNil(o.FollowReferrals) {
     return nil, false
 	}
@@ -610,7 +610,7 @@ func (o *GatewayLDAP) GetFollowReferralsOk() (*bool, bool) {
 }
 
 // HasFollowReferrals returns a boolean if a field has been set.
-func (o *GatewayLDAP) HasFollowReferrals() bool {
+func (o *GatewayTypeLDAP) HasFollowReferrals() bool {
 	if o != nil && !isNil(o.FollowReferrals) {
 		return true
 	}
@@ -619,11 +619,11 @@ func (o *GatewayLDAP) HasFollowReferrals() bool {
 }
 
 // SetFollowReferrals gets a reference to the given bool and assigns it to the FollowReferrals field.
-func (o *GatewayLDAP) SetFollowReferrals(v bool) {
+func (o *GatewayTypeLDAP) SetFollowReferrals(v bool) {
 	o.FollowReferrals = &v
 }
 
-func (o GatewayLDAP) MarshalJSON() ([]byte, error) {
+func (o GatewayTypeLDAP) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Links) {
 		toSerialize["_links"] = o.Links
@@ -685,38 +685,38 @@ func (o GatewayLDAP) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGatewayLDAP struct {
-	value *GatewayLDAP
+type NullableGatewayTypeLDAP struct {
+	value *GatewayTypeLDAP
 	isSet bool
 }
 
-func (v NullableGatewayLDAP) Get() *GatewayLDAP {
+func (v NullableGatewayTypeLDAP) Get() *GatewayTypeLDAP {
 	return v.value
 }
 
-func (v *NullableGatewayLDAP) Set(val *GatewayLDAP) {
+func (v *NullableGatewayTypeLDAP) Set(val *GatewayTypeLDAP) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGatewayLDAP) IsSet() bool {
+func (v NullableGatewayTypeLDAP) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGatewayLDAP) Unset() {
+func (v *NullableGatewayTypeLDAP) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGatewayLDAP(val *GatewayLDAP) *NullableGatewayLDAP {
-	return &NullableGatewayLDAP{value: val, isSet: true}
+func NewNullableGatewayTypeLDAP(val *GatewayTypeLDAP) *NullableGatewayTypeLDAP {
+	return &NullableGatewayTypeLDAP{value: val, isSet: true}
 }
 
-func (v NullableGatewayLDAP) MarshalJSON() ([]byte, error) {
+func (v NullableGatewayTypeLDAP) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGatewayLDAP) UnmarshalJSON(src []byte) error {
+func (v *NullableGatewayTypeLDAP) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

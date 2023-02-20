@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// GatewayLDAPAllOfKerberos Contains the Kerberos authentication settings. Set this to null to disable Kerberos authentication.
-type GatewayLDAPAllOfKerberos struct {
+// GatewayTypeLDAPAllOfKerberos Contains the Kerberos authentication settings. Set this to null to disable Kerberos authentication.
+type GatewayTypeLDAPAllOfKerberos struct {
 	// The password for the Kerberos service account.
 	ServiceAccountPassword *string `json:"serviceAccountPassword,omitempty"`
 	// The Kerberos service account user principal name (for example, `username@domain.com`).
@@ -24,26 +24,26 @@ type GatewayLDAPAllOfKerberos struct {
 	MinutesToRetainPreviousCredentials *int32 `json:"minutesToRetainPreviousCredentials,omitempty"`
 }
 
-// NewGatewayLDAPAllOfKerberos instantiates a new GatewayLDAPAllOfKerberos object
+// NewGatewayTypeLDAPAllOfKerberos instantiates a new GatewayTypeLDAPAllOfKerberos object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayLDAPAllOfKerberos(serviceAccountUserPrincipalName string) *GatewayLDAPAllOfKerberos {
-	this := GatewayLDAPAllOfKerberos{}
+func NewGatewayTypeLDAPAllOfKerberos(serviceAccountUserPrincipalName string) *GatewayTypeLDAPAllOfKerberos {
+	this := GatewayTypeLDAPAllOfKerberos{}
 	this.ServiceAccountUserPrincipalName = serviceAccountUserPrincipalName
 	return &this
 }
 
-// NewGatewayLDAPAllOfKerberosWithDefaults instantiates a new GatewayLDAPAllOfKerberos object
+// NewGatewayTypeLDAPAllOfKerberosWithDefaults instantiates a new GatewayTypeLDAPAllOfKerberos object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGatewayLDAPAllOfKerberosWithDefaults() *GatewayLDAPAllOfKerberos {
-	this := GatewayLDAPAllOfKerberos{}
+func NewGatewayTypeLDAPAllOfKerberosWithDefaults() *GatewayTypeLDAPAllOfKerberos {
+	this := GatewayTypeLDAPAllOfKerberos{}
 	return &this
 }
 
 // GetServiceAccountPassword returns the ServiceAccountPassword field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOfKerberos) GetServiceAccountPassword() string {
+func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountPassword() string {
 	if o == nil || isNil(o.ServiceAccountPassword) {
 		var ret string
 		return ret
@@ -53,7 +53,7 @@ func (o *GatewayLDAPAllOfKerberos) GetServiceAccountPassword() string {
 
 // GetServiceAccountPasswordOk returns a tuple with the ServiceAccountPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfKerberos) GetServiceAccountPasswordOk() (*string, bool) {
+func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountPasswordOk() (*string, bool) {
 	if o == nil || isNil(o.ServiceAccountPassword) {
     return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *GatewayLDAPAllOfKerberos) GetServiceAccountPasswordOk() (*string, bool)
 }
 
 // HasServiceAccountPassword returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOfKerberos) HasServiceAccountPassword() bool {
+func (o *GatewayTypeLDAPAllOfKerberos) HasServiceAccountPassword() bool {
 	if o != nil && !isNil(o.ServiceAccountPassword) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *GatewayLDAPAllOfKerberos) HasServiceAccountPassword() bool {
 }
 
 // SetServiceAccountPassword gets a reference to the given string and assigns it to the ServiceAccountPassword field.
-func (o *GatewayLDAPAllOfKerberos) SetServiceAccountPassword(v string) {
+func (o *GatewayTypeLDAPAllOfKerberos) SetServiceAccountPassword(v string) {
 	o.ServiceAccountPassword = &v
 }
 
 // GetServiceAccountUserPrincipalName returns the ServiceAccountUserPrincipalName field value
-func (o *GatewayLDAPAllOfKerberos) GetServiceAccountUserPrincipalName() string {
+func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountUserPrincipalName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -86,7 +86,7 @@ func (o *GatewayLDAPAllOfKerberos) GetServiceAccountUserPrincipalName() string {
 
 // GetServiceAccountUserPrincipalNameOk returns a tuple with the ServiceAccountUserPrincipalName field value
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfKerberos) GetServiceAccountUserPrincipalNameOk() (*string, bool) {
+func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountUserPrincipalNameOk() (*string, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -94,12 +94,12 @@ func (o *GatewayLDAPAllOfKerberos) GetServiceAccountUserPrincipalNameOk() (*stri
 }
 
 // SetServiceAccountUserPrincipalName sets field value
-func (o *GatewayLDAPAllOfKerberos) SetServiceAccountUserPrincipalName(v string) {
+func (o *GatewayTypeLDAPAllOfKerberos) SetServiceAccountUserPrincipalName(v string) {
 	o.ServiceAccountUserPrincipalName = v
 }
 
 // GetMinutesToRetainPreviousCredentials returns the MinutesToRetainPreviousCredentials field value if set, zero value otherwise.
-func (o *GatewayLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentials() int32 {
+func (o *GatewayTypeLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentials() int32 {
 	if o == nil || isNil(o.MinutesToRetainPreviousCredentials) {
 		var ret int32
 		return ret
@@ -109,7 +109,7 @@ func (o *GatewayLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentials() int32
 
 // GetMinutesToRetainPreviousCredentialsOk returns a tuple with the MinutesToRetainPreviousCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentialsOk() (*int32, bool) {
+func (o *GatewayTypeLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentialsOk() (*int32, bool) {
 	if o == nil || isNil(o.MinutesToRetainPreviousCredentials) {
     return nil, false
 	}
@@ -117,7 +117,7 @@ func (o *GatewayLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentialsOk() (*i
 }
 
 // HasMinutesToRetainPreviousCredentials returns a boolean if a field has been set.
-func (o *GatewayLDAPAllOfKerberos) HasMinutesToRetainPreviousCredentials() bool {
+func (o *GatewayTypeLDAPAllOfKerberos) HasMinutesToRetainPreviousCredentials() bool {
 	if o != nil && !isNil(o.MinutesToRetainPreviousCredentials) {
 		return true
 	}
@@ -126,11 +126,11 @@ func (o *GatewayLDAPAllOfKerberos) HasMinutesToRetainPreviousCredentials() bool 
 }
 
 // SetMinutesToRetainPreviousCredentials gets a reference to the given int32 and assigns it to the MinutesToRetainPreviousCredentials field.
-func (o *GatewayLDAPAllOfKerberos) SetMinutesToRetainPreviousCredentials(v int32) {
+func (o *GatewayTypeLDAPAllOfKerberos) SetMinutesToRetainPreviousCredentials(v int32) {
 	o.MinutesToRetainPreviousCredentials = &v
 }
 
-func (o GatewayLDAPAllOfKerberos) MarshalJSON() ([]byte, error) {
+func (o GatewayTypeLDAPAllOfKerberos) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ServiceAccountPassword) {
 		toSerialize["serviceAccountPassword"] = o.ServiceAccountPassword
@@ -144,38 +144,38 @@ func (o GatewayLDAPAllOfKerberos) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGatewayLDAPAllOfKerberos struct {
-	value *GatewayLDAPAllOfKerberos
+type NullableGatewayTypeLDAPAllOfKerberos struct {
+	value *GatewayTypeLDAPAllOfKerberos
 	isSet bool
 }
 
-func (v NullableGatewayLDAPAllOfKerberos) Get() *GatewayLDAPAllOfKerberos {
+func (v NullableGatewayTypeLDAPAllOfKerberos) Get() *GatewayTypeLDAPAllOfKerberos {
 	return v.value
 }
 
-func (v *NullableGatewayLDAPAllOfKerberos) Set(val *GatewayLDAPAllOfKerberos) {
+func (v *NullableGatewayTypeLDAPAllOfKerberos) Set(val *GatewayTypeLDAPAllOfKerberos) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGatewayLDAPAllOfKerberos) IsSet() bool {
+func (v NullableGatewayTypeLDAPAllOfKerberos) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGatewayLDAPAllOfKerberos) Unset() {
+func (v *NullableGatewayTypeLDAPAllOfKerberos) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGatewayLDAPAllOfKerberos(val *GatewayLDAPAllOfKerberos) *NullableGatewayLDAPAllOfKerberos {
-	return &NullableGatewayLDAPAllOfKerberos{value: val, isSet: true}
+func NewNullableGatewayTypeLDAPAllOfKerberos(val *GatewayTypeLDAPAllOfKerberos) *NullableGatewayTypeLDAPAllOfKerberos {
+	return &NullableGatewayTypeLDAPAllOfKerberos{value: val, isSet: true}
 }
 
-func (v NullableGatewayLDAPAllOfKerberos) MarshalJSON() ([]byte, error) {
+func (v NullableGatewayTypeLDAPAllOfKerberos) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGatewayLDAPAllOfKerberos) UnmarshalJSON(src []byte) error {
+func (v *NullableGatewayTypeLDAPAllOfKerberos) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

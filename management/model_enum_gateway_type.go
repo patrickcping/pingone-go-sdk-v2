@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumGatewayType A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE, API_GATEWAY_INTEGRATION and PING_INTELLIGENCE. This is a required property.
+// EnumGatewayType A string that specifies the type of gateway resource. Options are LDAP, PING_FEDERATE, API_GATEWAY_INTEGRATION, RADIUS and PING_INTELLIGENCE. This is a required property.
 type EnumGatewayType string
 
 // List of EnumGatewayType
@@ -24,6 +24,7 @@ const (
 	ENUMGATEWAYTYPE_PING_FEDERATE EnumGatewayType = "PING_FEDERATE"
 	ENUMGATEWAYTYPE_PING_INTELLIGENCE EnumGatewayType = "PING_INTELLIGENCE"
 	ENUMGATEWAYTYPE_API_GATEWAY_INTEGRATION EnumGatewayType = "API_GATEWAY_INTEGRATION"
+	ENUMGATEWAYTYPE_RADIUS EnumGatewayType = "RADIUS"
 )
 
 // All allowed values of EnumGatewayType enum
@@ -32,6 +33,7 @@ var AllowedEnumGatewayTypeEnumValues = []EnumGatewayType{
 	"PING_FEDERATE",
 	"PING_INTELLIGENCE",
 	"API_GATEWAY_INTEGRATION",
+	"RADIUS",
 }
 
 func (v *EnumGatewayType) UnmarshalJSON(src []byte) error {

@@ -21862,7 +21862,7 @@ components:
       - PRODUCTION
       - SANDBOX
       type: string
-    EnumGatewayLDAPSecurity:
+    EnumGatewayTypeLDAPSecurity:
       description: "A string that specifies the connection security type. Options\
         \ are None, TLS, and StartTLS. The default value is None."
       enum:
@@ -21872,13 +21872,14 @@ components:
       type: string
     EnumGatewayType:
       description: "A string that specifies the type of gateway resource. Options\
-        \ are LDAP, PING_FEDERATE, API_GATEWAY_INTEGRATION and PING_INTELLIGENCE.\
+        \ are LDAP, PING_FEDERATE, API_GATEWAY_INTEGRATION, RADIUS and PING_INTELLIGENCE.\
         \ This is a required property."
       enum:
       - LDAP
       - PING_FEDERATE
       - PING_INTELLIGENCE
       - API_GATEWAY_INTEGRATION
+      - RADIUS
       type: string
     EnumGatewayPasswordAuthority:
       description: "This can be either `PING_ONE` or `LDAP`. If set to `PING_ONE`,\
@@ -24450,10 +24451,14 @@ components:
       - name
       - type
       type: object
-    GatewayLDAP:
+    GatewayTypeLDAP:
       allOf:
       - $ref: '#/components/schemas/Gateway'
-      - $ref: '#/components/schemas/GatewayLDAP_allOf'
+      - $ref: '#/components/schemas/GatewayTypeLDAP_allOf'
+    GatewayTypeRADIUS:
+      allOf:
+      - $ref: '#/components/schemas/Gateway'
+      - $ref: '#/components/schemas/GatewayTypeRADIUS_allOf'
     GatewayCredential:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -26762,11 +26767,13 @@ components:
         type: PING_FEDERATE
       oneOf:
       - $ref: '#/components/schemas/Gateway'
-      - $ref: '#/components/schemas/GatewayLDAP'
+      - $ref: '#/components/schemas/GatewayTypeLDAP'
+      - $ref: '#/components/schemas/GatewayTypeRADIUS'
     createGateway_201_response:
       oneOf:
       - $ref: '#/components/schemas/Gateway'
-      - $ref: '#/components/schemas/GatewayLDAP'
+      - $ref: '#/components/schemas/GatewayTypeLDAP'
+      - $ref: '#/components/schemas/GatewayTypeRADIUS'
     addUserToGroup_request:
       example:
         id: e947cec5-62c5-4d80-af16-497b29e8a685
@@ -27649,7 +27656,8 @@ components:
     EntityArray__embedded_gateways_inner:
       anyOf:
       - $ref: '#/components/schemas/Gateway'
-      - $ref: '#/components/schemas/GatewayLDAP'
+      - $ref: '#/components/schemas/GatewayTypeLDAP'
+      - $ref: '#/components/schemas/GatewayTypeRADIUS'
     EntityArray__embedded_languages_inner:
       oneOf:
       - $ref: '#/components/schemas/AgreementLanguage'
@@ -28958,7 +28966,7 @@ components:
         daysUntilSupportEnds:
           type: integer
       type: object
-    GatewayLDAP_allOf_kerberos:
+    GatewayTypeLDAP_allOf_kerberos:
       description: Contains the Kerberos authentication settings. Set this to null
         to disable Kerberos authentication.
       properties:
@@ -28977,7 +28985,7 @@ components:
       - serviceAccountUserPrincipalName
       type: object
       example: null
-    GatewayLDAP_allOf_newUserLookup_attributeMappings:
+    GatewayTypeLDAP_allOf_newUserLookup_attributeMappings:
       properties:
         name:
           description: The PingOne username attribute. See Users properties for the
@@ -28992,7 +29000,7 @@ components:
       - value
       type: object
       example: null
-    GatewayLDAP_allOf_newUserLookup_population:
+    GatewayTypeLDAP_allOf_newUserLookup_population:
       description: The PingOne population to use to create user entries during lookup.
       properties:
         id:
@@ -29003,7 +29011,7 @@ components:
       - id
       type: object
       example: null
-    GatewayLDAP_allOf_newUserLookup:
+    GatewayTypeLDAP_allOf_newUserLookup:
       description: "The configurations for initially authenticating new users who\
         \ will be migrated to PingOne. Note If there are multiple users having the\
         \ same user name, only the first user processed is provisioned."
@@ -29013,7 +29021,7 @@ components:
             to external LDAP attributes. One of the entries must be a mapping for
             "username`. This is required for the PingOne user schema.
           items:
-            $ref: '#/components/schemas/GatewayLDAP_allOf_newUserLookup_attributeMappings'
+            $ref: '#/components/schemas/GatewayTypeLDAP_allOf_newUserLookup_attributeMappings'
           type: array
         ldapFilterPattern:
           description: "The LDAP user search filter to use to match users against\
@@ -29021,14 +29029,14 @@ components:
             \ Alternatively, this can be a search against the user directory."
           type: string
         population:
-          $ref: '#/components/schemas/GatewayLDAP_allOf_newUserLookup_population'
+          $ref: '#/components/schemas/GatewayTypeLDAP_allOf_newUserLookup_population'
       required:
       - attributeMappings
       - ldapFilterPattern
       - population
       type: object
       example: null
-    GatewayLDAP_allOf_userTypes:
+    GatewayTypeLDAP_allOf_userTypes:
       properties:
         allowPasswordChanges:
           description: "Defaults to false if this property isn't specified in the\
@@ -29045,7 +29053,7 @@ components:
           description: The name of the user type.
           type: string
         newUserLookup:
-          $ref: '#/components/schemas/GatewayLDAP_allOf_newUserLookup'
+          $ref: '#/components/schemas/GatewayTypeLDAP_allOf_newUserLookup'
         orderedCorrelationAttributes:
           description: A map of key/value entries used to persist the external LDAP
             directory attributes.
@@ -29064,7 +29072,7 @@ components:
       - searchBaseDn
       type: object
       example: null
-    GatewayLDAP_allOf:
+    GatewayTypeLDAP_allOf:
       properties:
         bindDN:
           description: "A string that specifies the distinguished name information\
@@ -29075,9 +29083,9 @@ components:
             This is a required property.
           type: string
         connectionSecurity:
-          $ref: '#/components/schemas/EnumGatewayLDAPSecurity'
+          $ref: '#/components/schemas/EnumGatewayTypeLDAPSecurity'
         kerberos:
-          $ref: '#/components/schemas/GatewayLDAP_allOf_kerberos'
+          $ref: '#/components/schemas/GatewayTypeLDAP_allOf_kerberos'
         serversHostAndPort:
           description: "An array of strings that specifies the LDAP server host name\
             \ and port number (for example, [`ds1.example.com:389`, `ds2.example.com:389`])."
@@ -29090,7 +29098,7 @@ components:
             to the user properties in an external LDAP directory. You can use an LDAP
             browser to view the user properties in the external LDAP directory.
           items:
-            $ref: '#/components/schemas/GatewayLDAP_allOf_userTypes'
+            $ref: '#/components/schemas/GatewayTypeLDAP_allOf_userTypes'
           type: array
         validateTlsCertificates:
           description: "A boolean that specifies whether or not to trust all SSL certificates\
@@ -29109,6 +29117,56 @@ components:
       - bindPassword
       - serversHostAndPort
       - vendor
+      type: object
+      example: null
+    GatewayTypeRADIUS_allOf_davinci_policy:
+      properties:
+        id:
+          description: The ID of the Davinci flow policy to use.
+          type: string
+      required:
+      - id
+      type: object
+      example: null
+    GatewayTypeRADIUS_allOf_davinci:
+      properties:
+        policy:
+          $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_davinci_policy'
+      required:
+      - id
+      type: object
+      example: null
+    GatewayTypeRADIUS_allOf_radiusClients:
+      properties:
+        ip:
+          description: The IP of the RADIUS client.
+          type: string
+        sharedSecret:
+          description: "The shared secret for the RADIUS client. If this value is\
+            \ not provided, the shared secret specified with `defaultSharedSecret`\
+            \ is used. If you are not providing a shared secret for the client, leave\
+            \ out `sharedSecret` or set it to null."
+          type: string
+      required:
+      - ip
+      type: object
+      example: null
+    GatewayTypeRADIUS_allOf:
+      properties:
+        davinci:
+          $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_davinci'
+        defaultSharedSecret:
+          description: Value to use for the shared secret if the shared secret is
+            not provided for one or more of the RADIUS clients specified.
+          type: string
+        radiusClients:
+          description: Collection of RADIUS clients.
+          items:
+            $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_radiusClients'
+          type: array
+      required:
+      - davinci
+      - radiusClients
       type: object
       example: null
     GatewayInstance_gateway:

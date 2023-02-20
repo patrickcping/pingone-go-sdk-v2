@@ -1,46 +1,46 @@
-# GatewayLDAPAllOfNewUserLookupPopulation
+# GatewayTypeRADIUSAllOfDavinciPolicy
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The ID of the population to use to create user entries during lookup. | 
+**Id** | **string** | The ID of the Davinci flow policy to use. | 
 
 ## Methods
 
-### NewGatewayLDAPAllOfNewUserLookupPopulation
+### NewGatewayTypeRADIUSAllOfDavinciPolicy
 
-`func NewGatewayLDAPAllOfNewUserLookupPopulation(id string, ) *GatewayLDAPAllOfNewUserLookupPopulation`
+`func NewGatewayTypeRADIUSAllOfDavinciPolicy(id string, ) *GatewayTypeRADIUSAllOfDavinciPolicy`
 
-NewGatewayLDAPAllOfNewUserLookupPopulation instantiates a new GatewayLDAPAllOfNewUserLookupPopulation object
+NewGatewayTypeRADIUSAllOfDavinciPolicy instantiates a new GatewayTypeRADIUSAllOfDavinciPolicy object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGatewayLDAPAllOfNewUserLookupPopulationWithDefaults
+### NewGatewayTypeRADIUSAllOfDavinciPolicyWithDefaults
 
-`func NewGatewayLDAPAllOfNewUserLookupPopulationWithDefaults() *GatewayLDAPAllOfNewUserLookupPopulation`
+`func NewGatewayTypeRADIUSAllOfDavinciPolicyWithDefaults() *GatewayTypeRADIUSAllOfDavinciPolicy`
 
-NewGatewayLDAPAllOfNewUserLookupPopulationWithDefaults instantiates a new GatewayLDAPAllOfNewUserLookupPopulation object
+NewGatewayTypeRADIUSAllOfDavinciPolicyWithDefaults instantiates a new GatewayTypeRADIUSAllOfDavinciPolicy object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GatewayLDAPAllOfNewUserLookupPopulation) GetId() string`
+`func (o *GatewayTypeRADIUSAllOfDavinciPolicy) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GatewayLDAPAllOfNewUserLookupPopulation) GetIdOk() (*string, bool)`
+`func (o *GatewayTypeRADIUSAllOfDavinciPolicy) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GatewayLDAPAllOfNewUserLookupPopulation) SetId(v string)`
+`func (o *GatewayTypeRADIUSAllOfDavinciPolicy) SetId(v string)`
 
 SetId sets Id field to given value.
 

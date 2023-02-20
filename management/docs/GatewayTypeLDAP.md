@@ -1,4 +1,4 @@
-# GatewayLDAP
+# GatewayTypeLDAP
 
 ## Properties
 
@@ -16,470 +16,470 @@ Name | Type | Description | Notes
 **CurrentAlerts** | Pointer to **[]map[string]interface{}** |  | [optional] [readonly] 
 **BindDN** | **string** | A string that specifies the distinguished name information to bind to the LDAP database (for example, uid&#x3D;pingone,dc&#x3D;example,dc&#x3D;com). | 
 **BindPassword** | **string** | A string that specifies the bind password for the LDAP database. This is a required property. | 
-**ConnectionSecurity** | Pointer to [**EnumGatewayLDAPSecurity**](EnumGatewayLDAPSecurity.md) |  | [optional] 
-**Kerberos** | Pointer to [**GatewayLDAPAllOfKerberos**](GatewayLDAPAllOfKerberos.md) |  | [optional] 
+**ConnectionSecurity** | Pointer to [**EnumGatewayTypeLDAPSecurity**](EnumGatewayTypeLDAPSecurity.md) |  | [optional] 
+**Kerberos** | Pointer to [**GatewayTypeLDAPAllOfKerberos**](GatewayTypeLDAPAllOfKerberos.md) |  | [optional] 
 **ServersHostAndPort** | **[]string** | An array of strings that specifies the LDAP server host name and port number (for example, [&#x60;ds1.example.com:389&#x60;, &#x60;ds2.example.com:389&#x60;]). | 
-**UserTypes** | Pointer to [**[]GatewayLDAPAllOfUserTypes**](GatewayLDAPAllOfUserTypes.md) | An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | [optional] 
+**UserTypes** | Pointer to [**[]GatewayTypeLDAPAllOfUserTypes**](GatewayTypeLDAPAllOfUserTypes.md) | An array of the userTypes properties for the users to be provisioned in PingOne. userTypes specifies which user properties in PingOne correspond to the user properties in an external LDAP directory. You can use an LDAP browser to view the user properties in the external LDAP directory. | [optional] 
 **ValidateTlsCertificates** | Pointer to **bool** | A boolean that specifies whether or not to trust all SSL certificates (defaults to true). If this value is false, TLS certificates are not validated. When the value is set to true, only certificates that are signed by the default JVM CAs, or the CA certs that the customer has uploaded to the certificate service are trusted. | [optional] 
 **Vendor** | [**EnumGatewayVendor**](EnumGatewayVendor.md) |  | 
 **FollowReferrals** | Pointer to **bool** |  | [optional] [readonly] 
 
 ## Methods
 
-### NewGatewayLDAP
+### NewGatewayTypeLDAP
 
-`func NewGatewayLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor, ) *GatewayLDAP`
+`func NewGatewayTypeLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN string, bindPassword string, serversHostAndPort []string, vendor EnumGatewayVendor, ) *GatewayTypeLDAP`
 
-NewGatewayLDAP instantiates a new GatewayLDAP object
+NewGatewayTypeLDAP instantiates a new GatewayTypeLDAP object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGatewayLDAPWithDefaults
+### NewGatewayTypeLDAPWithDefaults
 
-`func NewGatewayLDAPWithDefaults() *GatewayLDAP`
+`func NewGatewayTypeLDAPWithDefaults() *GatewayTypeLDAP`
 
-NewGatewayLDAPWithDefaults instantiates a new GatewayLDAP object
+NewGatewayTypeLDAPWithDefaults instantiates a new GatewayTypeLDAP object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *GatewayLDAP) GetLinks() map[string]interface{}`
+`func (o *GatewayTypeLDAP) GetLinks() map[string]interface{}`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *GatewayLDAP) GetLinksOk() (*map[string]interface{}, bool)`
+`func (o *GatewayTypeLDAP) GetLinksOk() (*map[string]interface{}, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *GatewayLDAP) SetLinks(v map[string]interface{})`
+`func (o *GatewayTypeLDAP) SetLinks(v map[string]interface{})`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *GatewayLDAP) HasLinks() bool`
+`func (o *GatewayTypeLDAP) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *GatewayLDAP) GetId() string`
+`func (o *GatewayTypeLDAP) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GatewayLDAP) GetIdOk() (*string, bool)`
+`func (o *GatewayTypeLDAP) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GatewayLDAP) SetId(v string)`
+`func (o *GatewayTypeLDAP) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *GatewayLDAP) HasId() bool`
+`func (o *GatewayTypeLDAP) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *GatewayLDAP) GetEnvironment() ObjectEnvironment`
+`func (o *GatewayTypeLDAP) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *GatewayLDAP) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+`func (o *GatewayTypeLDAP) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *GatewayLDAP) SetEnvironment(v ObjectEnvironment)`
+`func (o *GatewayTypeLDAP) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 
 ### HasEnvironment
 
-`func (o *GatewayLDAP) HasEnvironment() bool`
+`func (o *GatewayTypeLDAP) HasEnvironment() bool`
 
 HasEnvironment returns a boolean if a field has been set.
 
 ### GetCredentials
 
-`func (o *GatewayLDAP) GetCredentials() []GatewayCredential`
+`func (o *GatewayTypeLDAP) GetCredentials() []GatewayCredential`
 
 GetCredentials returns the Credentials field if non-nil, zero value otherwise.
 
 ### GetCredentialsOk
 
-`func (o *GatewayLDAP) GetCredentialsOk() (*[]GatewayCredential, bool)`
+`func (o *GatewayTypeLDAP) GetCredentialsOk() (*[]GatewayCredential, bool)`
 
 GetCredentialsOk returns a tuple with the Credentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentials
 
-`func (o *GatewayLDAP) SetCredentials(v []GatewayCredential)`
+`func (o *GatewayTypeLDAP) SetCredentials(v []GatewayCredential)`
 
 SetCredentials sets Credentials field to given value.
 
 ### HasCredentials
 
-`func (o *GatewayLDAP) HasCredentials() bool`
+`func (o *GatewayTypeLDAP) HasCredentials() bool`
 
 HasCredentials returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *GatewayLDAP) GetName() string`
+`func (o *GatewayTypeLDAP) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GatewayLDAP) GetNameOk() (*string, bool)`
+`func (o *GatewayTypeLDAP) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GatewayLDAP) SetName(v string)`
+`func (o *GatewayTypeLDAP) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetDescription
 
-`func (o *GatewayLDAP) GetDescription() string`
+`func (o *GatewayTypeLDAP) GetDescription() string`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *GatewayLDAP) GetDescriptionOk() (*string, bool)`
+`func (o *GatewayTypeLDAP) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *GatewayLDAP) SetDescription(v string)`
+`func (o *GatewayTypeLDAP) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
 
 ### HasDescription
 
-`func (o *GatewayLDAP) HasDescription() bool`
+`func (o *GatewayTypeLDAP) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *GatewayLDAP) GetType() EnumGatewayType`
+`func (o *GatewayTypeLDAP) GetType() EnumGatewayType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *GatewayLDAP) GetTypeOk() (*EnumGatewayType, bool)`
+`func (o *GatewayTypeLDAP) GetTypeOk() (*EnumGatewayType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *GatewayLDAP) SetType(v EnumGatewayType)`
+`func (o *GatewayTypeLDAP) SetType(v EnumGatewayType)`
 
 SetType sets Type field to given value.
 
 
 ### GetEnabled
 
-`func (o *GatewayLDAP) GetEnabled() bool`
+`func (o *GatewayTypeLDAP) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *GatewayLDAP) GetEnabledOk() (*bool, bool)`
+`func (o *GatewayTypeLDAP) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *GatewayLDAP) SetEnabled(v bool)`
+`func (o *GatewayTypeLDAP) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
 
 ### GetSupportedVersions
 
-`func (o *GatewayLDAP) GetSupportedVersions() []GatewaySupportedVersionsInner`
+`func (o *GatewayTypeLDAP) GetSupportedVersions() []GatewaySupportedVersionsInner`
 
 GetSupportedVersions returns the SupportedVersions field if non-nil, zero value otherwise.
 
 ### GetSupportedVersionsOk
 
-`func (o *GatewayLDAP) GetSupportedVersionsOk() (*[]GatewaySupportedVersionsInner, bool)`
+`func (o *GatewayTypeLDAP) GetSupportedVersionsOk() (*[]GatewaySupportedVersionsInner, bool)`
 
 GetSupportedVersionsOk returns a tuple with the SupportedVersions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSupportedVersions
 
-`func (o *GatewayLDAP) SetSupportedVersions(v []GatewaySupportedVersionsInner)`
+`func (o *GatewayTypeLDAP) SetSupportedVersions(v []GatewaySupportedVersionsInner)`
 
 SetSupportedVersions sets SupportedVersions field to given value.
 
 ### HasSupportedVersions
 
-`func (o *GatewayLDAP) HasSupportedVersions() bool`
+`func (o *GatewayTypeLDAP) HasSupportedVersions() bool`
 
 HasSupportedVersions returns a boolean if a field has been set.
 
 ### GetCurrentAlerts
 
-`func (o *GatewayLDAP) GetCurrentAlerts() []map[string]interface{}`
+`func (o *GatewayTypeLDAP) GetCurrentAlerts() []map[string]interface{}`
 
 GetCurrentAlerts returns the CurrentAlerts field if non-nil, zero value otherwise.
 
 ### GetCurrentAlertsOk
 
-`func (o *GatewayLDAP) GetCurrentAlertsOk() (*[]map[string]interface{}, bool)`
+`func (o *GatewayTypeLDAP) GetCurrentAlertsOk() (*[]map[string]interface{}, bool)`
 
 GetCurrentAlertsOk returns a tuple with the CurrentAlerts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentAlerts
 
-`func (o *GatewayLDAP) SetCurrentAlerts(v []map[string]interface{})`
+`func (o *GatewayTypeLDAP) SetCurrentAlerts(v []map[string]interface{})`
 
 SetCurrentAlerts sets CurrentAlerts field to given value.
 
 ### HasCurrentAlerts
 
-`func (o *GatewayLDAP) HasCurrentAlerts() bool`
+`func (o *GatewayTypeLDAP) HasCurrentAlerts() bool`
 
 HasCurrentAlerts returns a boolean if a field has been set.
 
 ### GetBindDN
 
-`func (o *GatewayLDAP) GetBindDN() string`
+`func (o *GatewayTypeLDAP) GetBindDN() string`
 
 GetBindDN returns the BindDN field if non-nil, zero value otherwise.
 
 ### GetBindDNOk
 
-`func (o *GatewayLDAP) GetBindDNOk() (*string, bool)`
+`func (o *GatewayTypeLDAP) GetBindDNOk() (*string, bool)`
 
 GetBindDNOk returns a tuple with the BindDN field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBindDN
 
-`func (o *GatewayLDAP) SetBindDN(v string)`
+`func (o *GatewayTypeLDAP) SetBindDN(v string)`
 
 SetBindDN sets BindDN field to given value.
 
 
 ### GetBindPassword
 
-`func (o *GatewayLDAP) GetBindPassword() string`
+`func (o *GatewayTypeLDAP) GetBindPassword() string`
 
 GetBindPassword returns the BindPassword field if non-nil, zero value otherwise.
 
 ### GetBindPasswordOk
 
-`func (o *GatewayLDAP) GetBindPasswordOk() (*string, bool)`
+`func (o *GatewayTypeLDAP) GetBindPasswordOk() (*string, bool)`
 
 GetBindPasswordOk returns a tuple with the BindPassword field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBindPassword
 
-`func (o *GatewayLDAP) SetBindPassword(v string)`
+`func (o *GatewayTypeLDAP) SetBindPassword(v string)`
 
 SetBindPassword sets BindPassword field to given value.
 
 
 ### GetConnectionSecurity
 
-`func (o *GatewayLDAP) GetConnectionSecurity() EnumGatewayLDAPSecurity`
+`func (o *GatewayTypeLDAP) GetConnectionSecurity() EnumGatewayTypeLDAPSecurity`
 
 GetConnectionSecurity returns the ConnectionSecurity field if non-nil, zero value otherwise.
 
 ### GetConnectionSecurityOk
 
-`func (o *GatewayLDAP) GetConnectionSecurityOk() (*EnumGatewayLDAPSecurity, bool)`
+`func (o *GatewayTypeLDAP) GetConnectionSecurityOk() (*EnumGatewayTypeLDAPSecurity, bool)`
 
 GetConnectionSecurityOk returns a tuple with the ConnectionSecurity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectionSecurity
 
-`func (o *GatewayLDAP) SetConnectionSecurity(v EnumGatewayLDAPSecurity)`
+`func (o *GatewayTypeLDAP) SetConnectionSecurity(v EnumGatewayTypeLDAPSecurity)`
 
 SetConnectionSecurity sets ConnectionSecurity field to given value.
 
 ### HasConnectionSecurity
 
-`func (o *GatewayLDAP) HasConnectionSecurity() bool`
+`func (o *GatewayTypeLDAP) HasConnectionSecurity() bool`
 
 HasConnectionSecurity returns a boolean if a field has been set.
 
 ### GetKerberos
 
-`func (o *GatewayLDAP) GetKerberos() GatewayLDAPAllOfKerberos`
+`func (o *GatewayTypeLDAP) GetKerberos() GatewayTypeLDAPAllOfKerberos`
 
 GetKerberos returns the Kerberos field if non-nil, zero value otherwise.
 
 ### GetKerberosOk
 
-`func (o *GatewayLDAP) GetKerberosOk() (*GatewayLDAPAllOfKerberos, bool)`
+`func (o *GatewayTypeLDAP) GetKerberosOk() (*GatewayTypeLDAPAllOfKerberos, bool)`
 
 GetKerberosOk returns a tuple with the Kerberos field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKerberos
 
-`func (o *GatewayLDAP) SetKerberos(v GatewayLDAPAllOfKerberos)`
+`func (o *GatewayTypeLDAP) SetKerberos(v GatewayTypeLDAPAllOfKerberos)`
 
 SetKerberos sets Kerberos field to given value.
 
 ### HasKerberos
 
-`func (o *GatewayLDAP) HasKerberos() bool`
+`func (o *GatewayTypeLDAP) HasKerberos() bool`
 
 HasKerberos returns a boolean if a field has been set.
 
 ### GetServersHostAndPort
 
-`func (o *GatewayLDAP) GetServersHostAndPort() []string`
+`func (o *GatewayTypeLDAP) GetServersHostAndPort() []string`
 
 GetServersHostAndPort returns the ServersHostAndPort field if non-nil, zero value otherwise.
 
 ### GetServersHostAndPortOk
 
-`func (o *GatewayLDAP) GetServersHostAndPortOk() (*[]string, bool)`
+`func (o *GatewayTypeLDAP) GetServersHostAndPortOk() (*[]string, bool)`
 
 GetServersHostAndPortOk returns a tuple with the ServersHostAndPort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServersHostAndPort
 
-`func (o *GatewayLDAP) SetServersHostAndPort(v []string)`
+`func (o *GatewayTypeLDAP) SetServersHostAndPort(v []string)`
 
 SetServersHostAndPort sets ServersHostAndPort field to given value.
 
 
 ### GetUserTypes
 
-`func (o *GatewayLDAP) GetUserTypes() []GatewayLDAPAllOfUserTypes`
+`func (o *GatewayTypeLDAP) GetUserTypes() []GatewayTypeLDAPAllOfUserTypes`
 
 GetUserTypes returns the UserTypes field if non-nil, zero value otherwise.
 
 ### GetUserTypesOk
 
-`func (o *GatewayLDAP) GetUserTypesOk() (*[]GatewayLDAPAllOfUserTypes, bool)`
+`func (o *GatewayTypeLDAP) GetUserTypesOk() (*[]GatewayTypeLDAPAllOfUserTypes, bool)`
 
 GetUserTypesOk returns a tuple with the UserTypes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserTypes
 
-`func (o *GatewayLDAP) SetUserTypes(v []GatewayLDAPAllOfUserTypes)`
+`func (o *GatewayTypeLDAP) SetUserTypes(v []GatewayTypeLDAPAllOfUserTypes)`
 
 SetUserTypes sets UserTypes field to given value.
 
 ### HasUserTypes
 
-`func (o *GatewayLDAP) HasUserTypes() bool`
+`func (o *GatewayTypeLDAP) HasUserTypes() bool`
 
 HasUserTypes returns a boolean if a field has been set.
 
 ### GetValidateTlsCertificates
 
-`func (o *GatewayLDAP) GetValidateTlsCertificates() bool`
+`func (o *GatewayTypeLDAP) GetValidateTlsCertificates() bool`
 
 GetValidateTlsCertificates returns the ValidateTlsCertificates field if non-nil, zero value otherwise.
 
 ### GetValidateTlsCertificatesOk
 
-`func (o *GatewayLDAP) GetValidateTlsCertificatesOk() (*bool, bool)`
+`func (o *GatewayTypeLDAP) GetValidateTlsCertificatesOk() (*bool, bool)`
 
 GetValidateTlsCertificatesOk returns a tuple with the ValidateTlsCertificates field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValidateTlsCertificates
 
-`func (o *GatewayLDAP) SetValidateTlsCertificates(v bool)`
+`func (o *GatewayTypeLDAP) SetValidateTlsCertificates(v bool)`
 
 SetValidateTlsCertificates sets ValidateTlsCertificates field to given value.
 
 ### HasValidateTlsCertificates
 
-`func (o *GatewayLDAP) HasValidateTlsCertificates() bool`
+`func (o *GatewayTypeLDAP) HasValidateTlsCertificates() bool`
 
 HasValidateTlsCertificates returns a boolean if a field has been set.
 
 ### GetVendor
 
-`func (o *GatewayLDAP) GetVendor() EnumGatewayVendor`
+`func (o *GatewayTypeLDAP) GetVendor() EnumGatewayVendor`
 
 GetVendor returns the Vendor field if non-nil, zero value otherwise.
 
 ### GetVendorOk
 
-`func (o *GatewayLDAP) GetVendorOk() (*EnumGatewayVendor, bool)`
+`func (o *GatewayTypeLDAP) GetVendorOk() (*EnumGatewayVendor, bool)`
 
 GetVendorOk returns a tuple with the Vendor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVendor
 
-`func (o *GatewayLDAP) SetVendor(v EnumGatewayVendor)`
+`func (o *GatewayTypeLDAP) SetVendor(v EnumGatewayVendor)`
 
 SetVendor sets Vendor field to given value.
 
 
 ### GetFollowReferrals
 
-`func (o *GatewayLDAP) GetFollowReferrals() bool`
+`func (o *GatewayTypeLDAP) GetFollowReferrals() bool`
 
 GetFollowReferrals returns the FollowReferrals field if non-nil, zero value otherwise.
 
 ### GetFollowReferralsOk
 
-`func (o *GatewayLDAP) GetFollowReferralsOk() (*bool, bool)`
+`func (o *GatewayTypeLDAP) GetFollowReferralsOk() (*bool, bool)`
 
 GetFollowReferralsOk returns a tuple with the FollowReferrals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFollowReferrals
 
-`func (o *GatewayLDAP) SetFollowReferrals(v bool)`
+`func (o *GatewayTypeLDAP) SetFollowReferrals(v bool)`
 
 SetFollowReferrals sets FollowReferrals field to given value.
 
 ### HasFollowReferrals
 
-`func (o *GatewayLDAP) HasFollowReferrals() bool`
+`func (o *GatewayTypeLDAP) HasFollowReferrals() bool`
 
 HasFollowReferrals returns a boolean if a field has been set.
 
