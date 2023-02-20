@@ -8,12 +8,14 @@ Name | Type | Description | Notes
 **Key** | **string** | A string that Apple uses as an identifier to identify an authentication key.  Mandatory. | 
 **TeamId** | **string** | A string that Apple uses as an identifier to identify teams. | 
 **Token** | **string** | A string that Apple uses as the authentication token signing key to securely connect to APNS. This is a p8 file with a private key format. | 
+**ClientId** | **string** | Used only if type is set to HMS. OAuth 2.0 Client ID from the Huawei Developers API console. | 
+**ClientSecret** | **string** | Used only if type is set to HMS. The client secret associated with the OAuth 2.0 Client ID. | 
 
 ## Methods
 
 ### NewCreateMFAPushCredentialRequest
 
-`func NewCreateMFAPushCredentialRequest(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, ) *CreateMFAPushCredentialRequest`
+`func NewCreateMFAPushCredentialRequest(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, clientId string, clientSecret string, ) *CreateMFAPushCredentialRequest`
 
 NewCreateMFAPushCredentialRequest instantiates a new CreateMFAPushCredentialRequest object
 This constructor will assign default values to properties that have it defined,
@@ -106,6 +108,46 @@ and a boolean to check if the value has been set.
 `func (o *CreateMFAPushCredentialRequest) SetToken(v string)`
 
 SetToken sets Token field to given value.
+
+
+### GetClientId
+
+`func (o *CreateMFAPushCredentialRequest) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *CreateMFAPushCredentialRequest) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *CreateMFAPushCredentialRequest) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+
+### GetClientSecret
+
+`func (o *CreateMFAPushCredentialRequest) GetClientSecret() string`
+
+GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
+
+### GetClientSecretOk
+
+`func (o *CreateMFAPushCredentialRequest) GetClientSecretOk() (*string, bool)`
+
+GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientSecret
+
+`func (o *CreateMFAPushCredentialRequest) SetClientSecret(v string)`
+
+SetClientSecret sets ClientSecret field to given value.
 
 
 

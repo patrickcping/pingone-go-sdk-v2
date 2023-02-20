@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Key** | **string** | A string that Apple uses as an identifier to identify an authentication key.  Mandatory. | 
 **TeamId** | **string** | A string that Apple uses as an identifier to identify teams. | 
 **Token** | **string** | A string that Apple uses as the authentication token signing key to securely connect to APNS. This is a p8 file with a private key format. | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewMFAPushCredentialAPNSAllOf
 
-`func NewMFAPushCredentialAPNSAllOf(teamId string, token string, ) *MFAPushCredentialAPNSAllOf`
+`func NewMFAPushCredentialAPNSAllOf(key string, teamId string, token string, ) *MFAPushCredentialAPNSAllOf`
 
 NewMFAPushCredentialAPNSAllOf instantiates a new MFAPushCredentialAPNSAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewMFAPushCredentialAPNSAllOfWithDefaults instantiates a new MFAPushCredentialAPNSAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetKey
+
+`func (o *MFAPushCredentialAPNSAllOf) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *MFAPushCredentialAPNSAllOf) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *MFAPushCredentialAPNSAllOf) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetTeamId
 

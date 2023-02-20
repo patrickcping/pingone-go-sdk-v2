@@ -5,13 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumMFAPushCredentialAttrType**](EnumMFAPushCredentialAttrType.md) |  | 
-**Key** | **string** | A string that Apple uses as an identifier to identify an authentication key.  Mandatory. | 
 
 ## Methods
 
 ### NewMFAPushCredential
 
-`func NewMFAPushCredential(type_ EnumMFAPushCredentialAttrType, key string, ) *MFAPushCredential`
+`func NewMFAPushCredential(type_ EnumMFAPushCredentialAttrType, ) *MFAPushCredential`
 
 NewMFAPushCredential instantiates a new MFAPushCredential object
 This constructor will assign default values to properties that have it defined,
@@ -44,26 +43,6 @@ and a boolean to check if the value has been set.
 `func (o *MFAPushCredential) SetType(v EnumMFAPushCredentialAttrType)`
 
 SetType sets Type field to given value.
-
-
-### GetKey
-
-`func (o *MFAPushCredential) GetKey() string`
-
-GetKey returns the Key field if non-nil, zero value otherwise.
-
-### GetKeyOk
-
-`func (o *MFAPushCredential) GetKeyOk() (*string, bool)`
-
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKey
-
-`func (o *MFAPushCredential) SetKey(v string)`
-
-SetKey sets Key field to given value.
 
 
 
