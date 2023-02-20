@@ -15,21 +15,29 @@ import (
 
 // UpdateMFAPushCredentialRequest - struct for UpdateMFAPushCredentialRequest
 type UpdateMFAPushCredentialRequest struct {
-	MFAPushCredential     *MFAPushCredential
 	MFAPushCredentialAPNS *MFAPushCredentialAPNS
-}
-
-// MFAPushCredentialAsUpdateMFAPushCredentialRequest is a convenience function that returns MFAPushCredential wrapped in UpdateMFAPushCredentialRequest
-func MFAPushCredentialAsUpdateMFAPushCredentialRequest(v *MFAPushCredential) UpdateMFAPushCredentialRequest {
-	return UpdateMFAPushCredentialRequest{
-		MFAPushCredential: v,
-	}
+	MFAPushCredentialFCM  *MFAPushCredentialFCM
+	MFAPushCredentialHMS  *MFAPushCredentialHMS
 }
 
 // MFAPushCredentialAPNSAsUpdateMFAPushCredentialRequest is a convenience function that returns MFAPushCredentialAPNS wrapped in UpdateMFAPushCredentialRequest
 func MFAPushCredentialAPNSAsUpdateMFAPushCredentialRequest(v *MFAPushCredentialAPNS) UpdateMFAPushCredentialRequest {
 	return UpdateMFAPushCredentialRequest{
 		MFAPushCredentialAPNS: v,
+	}
+}
+
+// MFAPushCredentialFCMAsUpdateMFAPushCredentialRequest is a convenience function that returns MFAPushCredentialFCM wrapped in UpdateMFAPushCredentialRequest
+func MFAPushCredentialFCMAsUpdateMFAPushCredentialRequest(v *MFAPushCredentialFCM) UpdateMFAPushCredentialRequest {
+	return UpdateMFAPushCredentialRequest{
+		MFAPushCredentialFCM: v,
+	}
+}
+
+// MFAPushCredentialHMSAsUpdateMFAPushCredentialRequest is a convenience function that returns MFAPushCredentialHMS wrapped in UpdateMFAPushCredentialRequest
+func MFAPushCredentialHMSAsUpdateMFAPushCredentialRequest(v *MFAPushCredentialHMS) UpdateMFAPushCredentialRequest {
+	return UpdateMFAPushCredentialRequest{
+		MFAPushCredentialHMS: v,
 	}
 }
 
@@ -42,16 +50,21 @@ func (dst *UpdateMFAPushCredentialRequest) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	dst.MFAPushCredential = nil
+	dst.MFAPushCredentialFCM = nil
 	dst.MFAPushCredentialAPNS = nil
+	dst.MFAPushCredentialHMS = nil
 
 	switch common.GetType() {
 	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM:
-		if err := json.Unmarshal(data, &dst.MFAPushCredential); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCM); err != nil { // simple model
 			return err
 		}
 	case ENUMMFAPUSHCREDENTIALATTRTYPE_APNS:
 		if err := json.Unmarshal(data, &dst.MFAPushCredentialAPNS); err != nil { // simple model
+			return err
+		}
+	case ENUMMFAPUSHCREDENTIALATTRTYPE_HMS:
+		if err := json.Unmarshal(data, &dst.MFAPushCredentialHMS); err != nil { // simple model
 			return err
 		}
 	default:
@@ -62,12 +75,16 @@ func (dst *UpdateMFAPushCredentialRequest) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src UpdateMFAPushCredentialRequest) MarshalJSON() ([]byte, error) {
-	if src.MFAPushCredential != nil {
-		return json.Marshal(&src.MFAPushCredential)
-	}
-
 	if src.MFAPushCredentialAPNS != nil {
 		return json.Marshal(&src.MFAPushCredentialAPNS)
+	}
+
+	if src.MFAPushCredentialFCM != nil {
+		return json.Marshal(&src.MFAPushCredentialFCM)
+	}
+
+	if src.MFAPushCredentialHMS != nil {
+		return json.Marshal(&src.MFAPushCredentialHMS)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -78,12 +95,16 @@ func (obj *UpdateMFAPushCredentialRequest) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
-	if obj.MFAPushCredential != nil {
-		return obj.MFAPushCredential
-	}
-
 	if obj.MFAPushCredentialAPNS != nil {
 		return obj.MFAPushCredentialAPNS
+	}
+
+	if obj.MFAPushCredentialFCM != nil {
+		return obj.MFAPushCredentialFCM
+	}
+
+	if obj.MFAPushCredentialHMS != nil {
+		return obj.MFAPushCredentialHMS
 	}
 
 	// all schemas are nil
