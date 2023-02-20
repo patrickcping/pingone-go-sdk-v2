@@ -15,8 +15,9 @@ import (
 
 // EntityArrayEmbeddedPushCredentialsInner struct for EntityArrayEmbeddedPushCredentialsInner
 type EntityArrayEmbeddedPushCredentialsInner struct {
-	MFAPushCredential     *MFAPushCredential
 	MFAPushCredentialAPNS *MFAPushCredentialAPNS
+	MFAPushCredentialFCM  *MFAPushCredentialFCM
+	MFAPushCredentialHMS  *MFAPushCredentialHMS
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -28,16 +29,21 @@ func (dst *EntityArrayEmbeddedPushCredentialsInner) UnmarshalJSON(data []byte) e
 		return err
 	}
 
-	dst.MFAPushCredential = nil
+	dst.MFAPushCredentialFCM = nil
 	dst.MFAPushCredentialAPNS = nil
+	dst.MFAPushCredentialHMS = nil
 
 	switch common.GetType() {
 	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM:
-		if err := json.Unmarshal(data, &dst.MFAPushCredential); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCM); err != nil { // simple model
 			return err
 		}
 	case ENUMMFAPUSHCREDENTIALATTRTYPE_APNS:
 		if err := json.Unmarshal(data, &dst.MFAPushCredentialAPNS); err != nil { // simple model
+			return err
+		}
+	case ENUMMFAPUSHCREDENTIALATTRTYPE_HMS:
+		if err := json.Unmarshal(data, &dst.MFAPushCredentialHMS); err != nil { // simple model
 			return err
 		}
 	default:
@@ -48,12 +54,16 @@ func (dst *EntityArrayEmbeddedPushCredentialsInner) UnmarshalJSON(data []byte) e
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *EntityArrayEmbeddedPushCredentialsInner) MarshalJSON() ([]byte, error) {
-	if src.MFAPushCredential != nil {
-		return json.Marshal(&src.MFAPushCredential)
-	}
-
 	if src.MFAPushCredentialAPNS != nil {
 		return json.Marshal(&src.MFAPushCredentialAPNS)
+	}
+
+	if src.MFAPushCredentialFCM != nil {
+		return json.Marshal(&src.MFAPushCredentialFCM)
+	}
+
+	if src.MFAPushCredentialHMS != nil {
+		return json.Marshal(&src.MFAPushCredentialHMS)
 	}
 
 	return nil, nil // no data in anyOf schemas

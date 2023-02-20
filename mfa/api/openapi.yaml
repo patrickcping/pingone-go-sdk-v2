@@ -2884,11 +2884,16 @@ components:
       - ALWAYS_PROMPT_TO_SELECT
       type: string
     EnumMFAPushCredentialAttrType:
-      description: "A string that specifies the type of the push credentials. Mandatory.\
-        \ Valid values APNS, FCM"
+      description: |
+        Specifies the push credential type.
+        Valid values:
+        * APNS (for Apple)
+        * FCM (for Google)
+        * HMS (for Huawei)
       enum:
       - APNS
       - FCM
+      - HMS
       type: string
     EnumMFASettingsDeviceSelection:
       deprecated: true
@@ -2994,12 +2999,7 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/EnumMFAPushCredentialAttrType'
-        key:
-          description: A string that Apple uses as an identifier to identify an authentication
-            key.  Mandatory.
-          type: string
       required:
-      - key
       - type
       type: object
     MFAPushCredentialAPNS:
@@ -3007,7 +3007,13 @@ components:
       - $ref: '#/components/schemas/MFAPushCredential'
       - $ref: '#/components/schemas/MFAPushCredentialAPNS_allOf'
     MFAPushCredentialFCM:
-      $ref: '#/components/schemas/MFAPushCredential'
+      allOf:
+      - $ref: '#/components/schemas/MFAPushCredential'
+      - $ref: '#/components/schemas/MFAPushCredentialFCM_allOf'
+    MFAPushCredentialHMS:
+      allOf:
+      - $ref: '#/components/schemas/MFAPushCredential'
+      - $ref: '#/components/schemas/MFAPushCredentialHMS_allOf'
     MFAPushCredentialResponse:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -3105,6 +3111,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'
+      - $ref: '#/components/schemas/MFAPushCredentialHMS'
     updateMFAPushCredential_request:
       example:
         type: APNS
@@ -3117,6 +3124,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'
+      - $ref: '#/components/schemas/MFAPushCredentialHMS'
     DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime:
       example:
         duration: 0
@@ -3434,6 +3442,7 @@ components:
       anyOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'
+      - $ref: '#/components/schemas/MFAPushCredentialHMS'
     EntityArray__embedded:
       example:
         fidoDevicesMetadata:
@@ -3698,6 +3707,10 @@ components:
       type: object
     MFAPushCredentialAPNS_allOf:
       properties:
+        key:
+          description: A string that Apple uses as an identifier to identify an authentication
+            key.  Mandatory.
+          type: string
         teamId:
           description: A string that Apple uses as an identifier to identify teams.
           type: string
@@ -3707,8 +3720,34 @@ components:
             format.
           type: string
       required:
+      - key
       - teamId
       - token
+      type: object
+      example: null
+    MFAPushCredentialFCM_allOf:
+      properties:
+        key:
+          description: A string that Apple uses as an identifier to identify an authentication
+            key.  Mandatory.
+          type: string
+      required:
+      - key
+      type: object
+      example: null
+    MFAPushCredentialHMS_allOf:
+      properties:
+        clientId:
+          description: Used only if type is set to HMS. OAuth 2.0 Client ID from the
+            Huawei Developers API console.
+          type: string
+        clientSecret:
+          description: Used only if type is set to HMS. The client secret associated
+            with the OAuth 2.0 Client ID.
+          type: string
+      required:
+      - clientId
+      - clientSecret
       type: object
       example: null
     MFASettings_authentication:

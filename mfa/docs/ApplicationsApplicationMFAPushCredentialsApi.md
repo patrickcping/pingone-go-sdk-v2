@@ -33,7 +33,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     applicationID := "applicationID_example" // string | 
-    createMFAPushCredentialRequest := openapiclient.createMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example")} // CreateMFAPushCredentialRequest |  (optional)
+    createMFAPushCredentialRequest := openapiclient.createMFAPushCredential_request{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // CreateMFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -326,7 +326,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     applicationID := "applicationID_example" // string | 
     pushCredentialID := "pushCredentialID_example" // string | 
-    updateMFAPushCredentialRequest := openapiclient.updateMFAPushCredential_request{MFAPushCredential: openapiclient.NewMFAPushCredential(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example")} // UpdateMFAPushCredentialRequest |  (optional)
+    updateMFAPushCredentialRequest := openapiclient.updateMFAPushCredential_request{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // UpdateMFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
