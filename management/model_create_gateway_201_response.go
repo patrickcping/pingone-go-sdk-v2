@@ -15,8 +15,9 @@ import (
 
 // CreateGateway201Response - struct for CreateGateway201Response
 type CreateGateway201Response struct {
-	Gateway     *Gateway
-	GatewayLDAP *GatewayLDAP
+	Gateway           *Gateway
+	GatewayTypeLDAP   *GatewayTypeLDAP
+	GatewayTypeRADIUS *GatewayTypeRADIUS
 }
 
 // GatewayAsCreateGateway201Response is a convenience function that returns Gateway wrapped in CreateGateway201Response
@@ -26,10 +27,17 @@ func GatewayAsCreateGateway201Response(v *Gateway) CreateGateway201Response {
 	}
 }
 
-// GatewayLDAPAsCreateGateway201Response is a convenience function that returns GatewayLDAP wrapped in CreateGateway201Response
-func GatewayLDAPAsCreateGateway201Response(v *GatewayLDAP) CreateGateway201Response {
+// GatewayTypeLDAPAsCreateGateway201Response is a convenience function that returns GatewayTypeLDAP wrapped in CreateGateway201Response
+func GatewayTypeLDAPAsCreateGateway201Response(v *GatewayTypeLDAP) CreateGateway201Response {
 	return CreateGateway201Response{
-		GatewayLDAP: v,
+		GatewayTypeLDAP: v,
+	}
+}
+
+// GatewayTypeRADIUSAsCreateGateway201Response is a convenience function that returns GatewayTypeRADIUS wrapped in CreateGateway201Response
+func GatewayTypeRADIUSAsCreateGateway201Response(v *GatewayTypeRADIUS) CreateGateway201Response {
+	return CreateGateway201Response{
+		GatewayTypeRADIUS: v,
 	}
 }
 
@@ -43,11 +51,16 @@ func (dst *CreateGateway201Response) UnmarshalJSON(data []byte) error {
 	}
 
 	dst.Gateway = nil
-	dst.GatewayLDAP = nil
+	dst.GatewayTypeLDAP = nil
+	dst.GatewayTypeRADIUS = nil
 
 	switch common.GetType() {
 	case ENUMGATEWAYTYPE_LDAP:
-		if err := json.Unmarshal(data, &dst.GatewayLDAP); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.GatewayTypeLDAP); err != nil { // simple model
+			return err
+		}
+	case ENUMGATEWAYTYPE_RADIUS:
+		if err := json.Unmarshal(data, &dst.GatewayTypeRADIUS); err != nil { // simple model
 			return err
 		}
 	case ENUMGATEWAYTYPE_PING_FEDERATE:
@@ -74,8 +87,12 @@ func (src CreateGateway201Response) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.Gateway)
 	}
 
-	if src.GatewayLDAP != nil {
-		return json.Marshal(&src.GatewayLDAP)
+	if src.GatewayTypeLDAP != nil {
+		return json.Marshal(&src.GatewayTypeLDAP)
+	}
+
+	if src.GatewayTypeRADIUS != nil {
+		return json.Marshal(&src.GatewayTypeRADIUS)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -90,8 +107,12 @@ func (obj *CreateGateway201Response) GetActualInstance() interface{} {
 		return obj.Gateway
 	}
 
-	if obj.GatewayLDAP != nil {
-		return obj.GatewayLDAP
+	if obj.GatewayTypeLDAP != nil {
+		return obj.GatewayTypeLDAP
+	}
+
+	if obj.GatewayTypeRADIUS != nil {
+		return obj.GatewayTypeRADIUS
 	}
 
 	// all schemas are nil

@@ -15,8 +15,9 @@ import (
 
 // EntityArrayEmbeddedGatewaysInner struct for EntityArrayEmbeddedGatewaysInner
 type EntityArrayEmbeddedGatewaysInner struct {
-	Gateway     *Gateway
-	GatewayLDAP *GatewayLDAP
+	Gateway           *Gateway
+	GatewayTypeLDAP   *GatewayTypeLDAP
+	GatewayTypeRADIUS *GatewayTypeRADIUS
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
@@ -66,8 +67,12 @@ func (src *EntityArrayEmbeddedGatewaysInner) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.Gateway)
 	}
 
-	if src.GatewayLDAP != nil {
-		return json.Marshal(&src.GatewayLDAP)
+	if src.GatewayTypeLDAP != nil {
+		return json.Marshal(&src.GatewayTypeLDAP)
+	}
+
+	if src.GatewayTypeRADIUS != nil {
+		return json.Marshal(&src.GatewayTypeRADIUS)
 	}
 
 	return nil, nil // no data in anyOf schemas
