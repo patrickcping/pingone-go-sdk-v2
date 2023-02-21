@@ -13953,6 +13953,7 @@ paths:
       tags:
       - Notifications Policies
     put:
+      operationId: updateNotificationsPolicy
       parameters:
       - explode: false
         in: path

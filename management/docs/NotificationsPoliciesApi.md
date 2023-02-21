@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**DeleteNotificationsPolicy**](NotificationsPoliciesApi.md#DeleteNotificationsPolicy) | **Delete** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | DELETE Notifications Policy
 [**ReadAllNotificationsPolicies**](NotificationsPoliciesApi.md#ReadAllNotificationsPolicies) | **Get** /v1/environments/{environmentID}/notificationsPolicies | READ All Notifications Policies
 [**ReadOneNotificationsPolicy**](NotificationsPoliciesApi.md#ReadOneNotificationsPolicy) | **Get** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | READ One Notifications Policy
-[**V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut**](NotificationsPoliciesApi.md#V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut) | **Put** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | UPDATE Notifications Policy
+[**UpdateNotificationsPolicy**](NotificationsPoliciesApi.md#UpdateNotificationsPolicy) | **Put** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | UPDATE Notifications Policy
 
 
 
@@ -290,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut
+## UpdateNotificationsPolicy
 
-> NotificationsPolicy V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut(ctx, environmentID, notificationsPolicyID).NotificationsPolicy(notificationsPolicy).Execute()
+> NotificationsPolicy UpdateNotificationsPolicy(ctx, environmentID, notificationsPolicyID).NotificationsPolicy(notificationsPolicy).Execute()
 
 UPDATE Notifications Policy
 
@@ -315,13 +315,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsPoliciesApi.V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut(context.Background(), environmentID, notificationsPolicyID).NotificationsPolicy(notificationsPolicy).Execute()
+    resp, r, err := apiClient.NotificationsPoliciesApi.UpdateNotificationsPolicy(context.Background(), environmentID, notificationsPolicyID).NotificationsPolicy(notificationsPolicy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsPoliciesApi.V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsPoliciesApi.UpdateNotificationsPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut`: NotificationsPolicy
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsPoliciesApi.V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut`: %v\n", resp)
+    // response from `UpdateNotificationsPolicy`: NotificationsPolicy
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsPoliciesApi.UpdateNotificationsPolicy`: %v\n", resp)
 }
 ```
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateNotificationsPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
