@@ -7,6 +7,7 @@
 * **Enhancement** Add support for Huawei HMS Push service [#105](https://github.com/patrickcping/pingone-go-sdk-v2/pull/105)
 * **Enhancement** Add support for RADIUS gateways [#107](https://github.com/patrickcping/pingone-go-sdk-v2/pull/107)
 * **Bug fix** - Correct the `EmailDomainTrustedEmail` API model [#103](https://github.com/patrickcping/pingone-go-sdk-v2/pull/103)
+* **Bug fix** - Correct the "UPDATE Notifications Policy" function name (fix the operation ID) [#108](https://github.com/patrickcping/pingone-go-sdk-v2/pull/108)
 
 # v0.14.0 (2023-01-12)
 

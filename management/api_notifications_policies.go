@@ -696,7 +696,7 @@ func (a *NotificationsPoliciesApiService) ReadOneNotificationsPolicyExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest struct {
+type ApiUpdateNotificationsPolicyRequest struct {
 	ctx context.Context
 	ApiService *NotificationsPoliciesApiService
 	environmentID string
@@ -704,25 +704,25 @@ type ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut
 	notificationsPolicy *NotificationsPolicy
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest) NotificationsPolicy(notificationsPolicy NotificationsPolicy) ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest {
+func (r ApiUpdateNotificationsPolicyRequest) NotificationsPolicy(notificationsPolicy NotificationsPolicy) ApiUpdateNotificationsPolicyRequest {
 	r.notificationsPolicy = &notificationsPolicy
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest) Execute() (*NotificationsPolicy, *http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutExecute(r)
+func (r ApiUpdateNotificationsPolicyRequest) Execute() (*NotificationsPolicy, *http.Response, error) {
+	return r.ApiService.UpdateNotificationsPolicyExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut UPDATE Notifications Policy
+UpdateNotificationsPolicy UPDATE Notifications Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param notificationsPolicyID
- @return ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest
+ @return ApiUpdateNotificationsPolicyRequest
 */
-func (a *NotificationsPoliciesApiService) V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut(ctx context.Context, environmentID string, notificationsPolicyID string) ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest{
+func (a *NotificationsPoliciesApiService) UpdateNotificationsPolicy(ctx context.Context, environmentID string, notificationsPolicyID string) ApiUpdateNotificationsPolicyRequest {
+	return ApiUpdateNotificationsPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -732,7 +732,7 @@ func (a *NotificationsPoliciesApiService) V1EnvironmentsEnvironmentIDNotificatio
 
 // Execute executes the request
 //  @return NotificationsPolicy
-func (a *NotificationsPoliciesApiService) V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutExecute(r ApiV1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPutRequest) (*NotificationsPolicy, *http.Response, error) {
+func (a *NotificationsPoliciesApiService) UpdateNotificationsPolicyExecute(r ApiUpdateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -740,7 +740,7 @@ func (a *NotificationsPoliciesApiService) V1EnvironmentsEnvironmentIDNotificatio
 		localVarReturnValue  *NotificationsPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsPoliciesApiService.V1EnvironmentsEnvironmentIDNotificationsPoliciesNotificationsPolicyIDPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsPoliciesApiService.UpdateNotificationsPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
