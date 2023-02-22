@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Host** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server. | [optional] 
 **Port** | Pointer to **int32** | An integer that specifies the port used by the organization&#39;s SMTP server to send emails (default &#x60;465&#x60;). Note that the protocol used depends upon the port specified. If you specify port &#x60;25&#x60;, &#x60;587&#x60;, or &#x60;2525&#x60;, SMTP with &#x60;STARTTLS&#x60; is used. Otherwise, &#x60;SMTPS&#x60; is used. | [optional] [default to 465]
+**Protocol** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server&#39;s protocol. | [optional] [readonly] 
 **Username** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server&#39;s username. | [optional] 
+**Password** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server&#39;s password. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **From** | Pointer to [**NotificationsSettingsEmailDeliverySettingsFrom**](NotificationsSettingsEmailDeliverySettingsFrom.md) |  | [optional] 
 **ReplyTo** | Pointer to [**NotificationsSettingsEmailDeliverySettingsReplyTo**](NotificationsSettingsEmailDeliverySettingsReplyTo.md) |  | [optional] 
@@ -80,6 +82,31 @@ SetPort sets Port field to given value.
 
 HasPort returns a boolean if a field has been set.
 
+### GetProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettings) GetProtocol() string`
+
+GetProtocol returns the Protocol field if non-nil, zero value otherwise.
+
+### GetProtocolOk
+
+`func (o *NotificationsSettingsEmailDeliverySettings) GetProtocolOk() (*string, bool)`
+
+GetProtocolOk returns a tuple with the Protocol field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettings) SetProtocol(v string)`
+
+SetProtocol sets Protocol field to given value.
+
+### HasProtocol
+
+`func (o *NotificationsSettingsEmailDeliverySettings) HasProtocol() bool`
+
+HasProtocol returns a boolean if a field has been set.
+
 ### GetUsername
 
 `func (o *NotificationsSettingsEmailDeliverySettings) GetUsername() string`
@@ -104,6 +131,31 @@ SetUsername sets Username field to given value.
 `func (o *NotificationsSettingsEmailDeliverySettings) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### GetPassword
+
+`func (o *NotificationsSettingsEmailDeliverySettings) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *NotificationsSettingsEmailDeliverySettings) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *NotificationsSettingsEmailDeliverySettings) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *NotificationsSettingsEmailDeliverySettings) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
 
 ### GetEnvironment
 

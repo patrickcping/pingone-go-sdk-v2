@@ -5,7 +5,6 @@ All URIs are relative to *https://api.pingone.eu*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreatePhoneDeliverySettings**](PhoneDeliverySettingsApi.md#CreatePhoneDeliverySettings) | **Post** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | CREATE Phone Delivery Settings
-[**DeleteEmailDeliverySettings**](PhoneDeliverySettingsApi.md#DeleteEmailDeliverySettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | DELETE Email Delivery Settings
 [**DeletePhoneDeliverySettings**](PhoneDeliverySettingsApi.md#DeletePhoneDeliverySettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID} | DELETE Phone Delivery Settings
 [**ReadAllPhoneDeliverySettings**](PhoneDeliverySettingsApi.md#ReadAllPhoneDeliverySettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings | READ All Phone Delivery Settings
 [**ReadOnePhoneDeliverySettings**](PhoneDeliverySettingsApi.md#ReadOnePhoneDeliverySettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID} | READ One Phone Delivery Settings
@@ -76,72 +75,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## DeleteEmailDeliverySettings
-
-> DeleteEmailDeliverySettings(ctx, environmentID).Execute()
-
-DELETE Email Delivery Settings
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PhoneDeliverySettingsApi.DeleteEmailDeliverySettings(context.Background(), environmentID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.DeleteEmailDeliverySettings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteEmailDeliverySettingsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -20,8 +20,12 @@ type NotificationsSettingsEmailDeliverySettings struct {
 	Host *string `json:"host,omitempty"`
 	// An integer that specifies the port used by the organization's SMTP server to send emails (default `465`). Note that the protocol used depends upon the port specified. If you specify port `25`, `587`, or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used.
 	Port *int32 `json:"port,omitempty"`
+	// A string that specifies the organization's SMTP server's protocol.
+	Protocol *string `json:"protocol,omitempty"`
 	// A string that specifies the organization's SMTP server's username.
 	Username *string `json:"username,omitempty"`
+	// A string that specifies the organization's SMTP server's password.
+	Password *string `json:"password,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	From *NotificationsSettingsEmailDeliverySettingsFrom `json:"from,omitempty"`
 	ReplyTo *NotificationsSettingsEmailDeliverySettingsReplyTo `json:"replyTo,omitempty"`
@@ -112,6 +116,38 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetPort(v int32) {
 	o.Port = &v
 }
 
+// GetProtocol returns the Protocol field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettings) GetProtocol() string {
+	if o == nil || isNil(o.Protocol) {
+		var ret string
+		return ret
+	}
+	return *o.Protocol
+}
+
+// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettings) GetProtocolOk() (*string, bool) {
+	if o == nil || isNil(o.Protocol) {
+    return nil, false
+	}
+	return o.Protocol, true
+}
+
+// HasProtocol returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettings) HasProtocol() bool {
+	if o != nil && !isNil(o.Protocol) {
+		return true
+	}
+
+	return false
+}
+
+// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
+func (o *NotificationsSettingsEmailDeliverySettings) SetProtocol(v string) {
+	o.Protocol = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetUsername() string {
 	if o == nil || isNil(o.Username) {
@@ -142,6 +178,38 @@ func (o *NotificationsSettingsEmailDeliverySettings) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *NotificationsSettingsEmailDeliverySettings) SetUsername(v string) {
 	o.Username = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettings) GetPassword() string {
+	if o == nil || isNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettings) GetPasswordOk() (*string, bool) {
+	if o == nil || isNil(o.Password) {
+    return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettings) HasPassword() bool {
+	if o != nil && !isNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *NotificationsSettingsEmailDeliverySettings) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -248,8 +316,14 @@ func (o NotificationsSettingsEmailDeliverySettings) MarshalJSON() ([]byte, error
 	if !isNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
+	if !isNil(o.Protocol) {
+		toSerialize["protocol"] = o.Protocol
+	}
 	if !isNil(o.Username) {
 		toSerialize["username"] = o.Username
+	}
+	if !isNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
 	if !isNil(o.Environment) {
 		toSerialize["environment"] = o.Environment

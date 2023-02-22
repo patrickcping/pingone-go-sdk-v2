@@ -13209,7 +13209,7 @@ paths:
           description: Successful response
       summary: DELETE Email Delivery Settings
       tags:
-      - Phone Delivery Settings
+      - Notifications Settings (SMTP)
     get:
       operationId: readEmailNotificationsSettings
       parameters:
@@ -13281,18 +13281,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                host: email-smtp.server.com
-                port: 465
-                username: smtp_username
-                password: smtp_password
-                from:
-                  name: from_name
-                  address: from@pingidentity.com
-                replyTo:
-                  name: reply_name
-                  address: reply@pingidentity.com
-              type: object
+              $ref: '#/components/schemas/NotificationsSettingsEmailDeliverySettings'
       responses:
         "400":
           content:
@@ -25180,6 +25169,8 @@ components:
       type: object
     NotificationsSettingsEmailDeliverySettings:
       example:
+        protocol: protocol
+        password: password
         environment:
           id: id
         port: 0
@@ -25202,8 +25193,15 @@ components:
             \ depends upon the port specified. If you specify port `25`, `587`, or\
             \ `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used."
           type: integer
+        protocol:
+          description: A string that specifies the organization's SMTP server's protocol.
+          readOnly: true
+          type: string
         username:
           description: A string that specifies the organization's SMTP server's username.
+          type: string
+        password:
+          description: A string that specifies the organization's SMTP server's password.
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
@@ -29989,6 +29987,8 @@ components:
         address:
           description: A string that specifies the email's "from" address.
           type: string
+      required:
+      - address
       type: object
     NotificationsSettingsEmailDeliverySettings_replyTo:
       example:

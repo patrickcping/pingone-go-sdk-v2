@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | A string that specifies the email&#39;s \&quot;from\&quot; name. | [optional] 
-**Address** | Pointer to **string** | A string that specifies the email&#39;s \&quot;from\&quot; address. | [optional] 
+**Address** | **string** | A string that specifies the email&#39;s \&quot;from\&quot; address. | 
 
 ## Methods
 
 ### NewNotificationsSettingsEmailDeliverySettingsFrom
 
-`func NewNotificationsSettingsEmailDeliverySettingsFrom() *NotificationsSettingsEmailDeliverySettingsFrom`
+`func NewNotificationsSettingsEmailDeliverySettingsFrom(address string, ) *NotificationsSettingsEmailDeliverySettingsFrom`
 
 NewNotificationsSettingsEmailDeliverySettingsFrom instantiates a new NotificationsSettingsEmailDeliverySettingsFrom object
 This constructor will assign default values to properties that have it defined,
@@ -70,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
-### HasAddress
-
-`func (o *NotificationsSettingsEmailDeliverySettingsFrom) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
