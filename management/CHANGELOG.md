@@ -3,11 +3,14 @@
 * **Breaking change** `OrganizationsApi.ReadOneOrganizations` changed to `OrganizationsApi.ReadOneOrganization` [#102](https://github.com/patrickcping/pingone-go-sdk-v2/pull/102)
 * **Breaking change** `EnumGatewayLDAPSecurity` changed to `EnumGatewayTypeLDAPSecurity` [#107](https://github.com/patrickcping/pingone-go-sdk-v2/pull/107)
 * **Breaking change** `GatewayLDAP` changed to `GatewayTypeLDAP` [#107](https://github.com/patrickcping/pingone-go-sdk-v2/pull/107)
+* **Breaking change** Make `Address` a required attribute on the `NotificationsSettingsEmailDeliverySettingsFrom` model [#109](https://github.com/patrickcping/pingone-go-sdk-v2/pull/109)
 * **Enhancement** Add `limit` parameter to `OrganizationsApi.ReadAllOrganizations` [#102](https://github.com/patrickcping/pingone-go-sdk-v2/pull/102)
 * **Enhancement** Add support for Huawei HMS Push service [#105](https://github.com/patrickcping/pingone-go-sdk-v2/pull/105)
 * **Enhancement** Add support for RADIUS gateways [#107](https://github.com/patrickcping/pingone-go-sdk-v2/pull/107)
+* **Enhancement** Add `Protocol` and `Password` attributes to the `NotificationsSettingsEmailDeliverySettings` model [#109](https://github.com/patrickcping/pingone-go-sdk-v2/pull/109)
 * **Bug fix** - Correct the `EmailDomainTrustedEmail` API model [#103](https://github.com/patrickcping/pingone-go-sdk-v2/pull/103)
 * **Bug fix** - Correct the "UPDATE Notifications Policy" function name (fix the operation ID) [#108](https://github.com/patrickcping/pingone-go-sdk-v2/pull/108)
+* **Bug fix** - Add the `DeleteEmailDeliverySettings` API call back in to the `NotificationsSettingsSMTPApi` API [#109](https://github.com/patrickcping/pingone-go-sdk-v2/pull/109)
 
 # v0.14.0 (2023-01-12)
 

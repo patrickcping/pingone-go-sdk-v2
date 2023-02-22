@@ -19,15 +19,16 @@ type NotificationsSettingsEmailDeliverySettingsFrom struct {
 	// A string that specifies the email's \"from\" name.
 	Name *string `json:"name,omitempty"`
 	// A string that specifies the email's \"from\" address.
-	Address *string `json:"address,omitempty"`
+	Address string `json:"address"`
 }
 
 // NewNotificationsSettingsEmailDeliverySettingsFrom instantiates a new NotificationsSettingsEmailDeliverySettingsFrom object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationsSettingsEmailDeliverySettingsFrom() *NotificationsSettingsEmailDeliverySettingsFrom {
+func NewNotificationsSettingsEmailDeliverySettingsFrom(address string) *NotificationsSettingsEmailDeliverySettingsFrom {
 	this := NotificationsSettingsEmailDeliverySettingsFrom{}
+	this.Address = address
 	return &this
 }
 
@@ -71,36 +72,28 @@ func (o *NotificationsSettingsEmailDeliverySettingsFrom) SetName(v string) {
 	o.Name = &v
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
+// GetAddress returns the Address field value
 func (o *NotificationsSettingsEmailDeliverySettingsFrom) GetAddress() string {
-	if o == nil || isNil(o.Address) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Address
+
+	return o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettingsFrom) GetAddressOk() (*string, bool) {
-	if o == nil || isNil(o.Address) {
+	if o == nil {
     return nil, false
 	}
-	return o.Address, true
+	return &o.Address, true
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *NotificationsSettingsEmailDeliverySettingsFrom) HasAddress() bool {
-	if o != nil && !isNil(o.Address) {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given string and assigns it to the Address field.
+// SetAddress sets field value
 func (o *NotificationsSettingsEmailDeliverySettingsFrom) SetAddress(v string) {
-	o.Address = &v
+	o.Address = v
 }
 
 func (o NotificationsSettingsEmailDeliverySettingsFrom) MarshalJSON() ([]byte, error) {
@@ -108,7 +101,7 @@ func (o NotificationsSettingsEmailDeliverySettingsFrom) MarshalJSON() ([]byte, e
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Address) {
+	if true {
 		toSerialize["address"] = o.Address
 	}
 	return json.Marshal(toSerialize)
