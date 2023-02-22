@@ -45,3 +45,5 @@ bin
 ### Go Patch ###
 /vendor/
 /Godeps/
+
+env*.sh
