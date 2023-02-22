@@ -4,10 +4,10 @@ go 1.18
 
 require (
 	github.com/golangci/golangci-lint v1.51.2
-	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.1
-	github.com/patrickcping/pingone-go-sdk-v2/management v0.14.0
-	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.7.2
-	github.com/patrickcping/pingone-go-sdk-v2/risk v0.3.1
+	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.2
+	github.com/patrickcping/pingone-go-sdk-v2/management v0.15.0
+	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.8.0
+	github.com/patrickcping/pingone-go-sdk-v2/risk v0.3.2
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.15.0
 	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e
