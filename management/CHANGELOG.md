@@ -1,4 +1,4 @@
-# v0.15.0 (Unreleased)
+# v0.15.0 (2023-02-22)
 
 * **Note** bump `golang.org/x/net` v0.6.0 => v0.7.0 [#103](https://github.com/patrickcping/pingone-go-sdk-v2/pull/105)
 * **Note** bump `golang.org/x/oauth2` v0.4.0 => v0.5.0 [#102](https://github.com/patrickcping/pingone-go-sdk-v2/pull/102)
