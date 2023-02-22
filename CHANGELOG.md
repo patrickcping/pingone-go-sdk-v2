@@ -1,14 +1,14 @@
 # Release (2023-02-22)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.3
-    * **Note** bump `golang.org/x/net` v0.5.0 => v0.7.0
-    * **Note** bump `github.com/golangci/golangci-lint` v1.50.1 => v1.51.2
-    * **Note** bump `golang.org/x/oauth2` v0.4.0 => v0.5.0
-    * **Note** bump `github.com/securego/gosec/v2` v2.14.0 => v2.15.0
-    * **Note** `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.1 => v0.1.2
-    * **Note** `github.com/patrickcping/pingone-go-sdk-v2/management` v0.14.0 => v0.15.0
-    * **Note** `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.7.2 => v0.8.0
-    * **Note** `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.3.1 => v0.3.2
+    * **Note** bump `golang.org/x/net` v0.5.0 => v0.7.0 [#110](https://github.com/patrickcping/pingone-go-sdk-v2/pull/110)
+    * **Note** bump `github.com/golangci/golangci-lint` v1.50.1 => v1.51.2 [#110](https://github.com/patrickcping/pingone-go-sdk-v2/pull/110)
+    * **Note** bump `golang.org/x/oauth2` v0.4.0 => v0.5.0 [#110](https://github.com/patrickcping/pingone-go-sdk-v2/pull/110)
+    * **Note** bump `github.com/securego/gosec/v2` v2.14.0 => v2.15.0 [#110](https://github.com/patrickcping/pingone-go-sdk-v2/pull/110)
+    * **Note** `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.1 => v0.1.2 [#112](https://github.com/patrickcping/pingone-go-sdk-v2/pull/112)
+    * **Note** `github.com/patrickcping/pingone-go-sdk-v2/management` v0.14.0 => v0.15.0 [#112](https://github.com/patrickcping/pingone-go-sdk-v2/pull/112)
+    * **Note** `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.7.2 => v0.8.0 [#112](https://github.com/patrickcping/pingone-go-sdk-v2/pull/112)
+    * **Note** `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.3.1 => v0.3.2 [#112](https://github.com/patrickcping/pingone-go-sdk-v2/pull/112)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.2](./authorize/CHANGELOG.md)
     * **Note** bump `golang.org/x/net` v0.2.0 => v0.7.0 [#109](https://github.com/patrickcping/pingone-go-sdk-v2/pull/109)
     * **Note** bump `golang.org/x/oauth2` v0.2.0 => v0.5.0 [#109](https://github.com/patrickcping/pingone-go-sdk-v2/pull/109)
