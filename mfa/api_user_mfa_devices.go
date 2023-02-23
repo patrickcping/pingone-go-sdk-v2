@@ -20,12 +20,12 @@ import (
 )
 
 
-// MFADevicesApiService MFADevicesApi service
-type MFADevicesApiService service
+// UserMFADevicesApiService UserMFADevicesApi service
+type UserMFADevicesApiService service
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest struct {
 	ctx context.Context
-	ApiService *MFADevicesApiService
+	ApiService *UserMFADevicesApiService
 	environmentID string
 	userID string
 	contentType *string
@@ -48,7 +48,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete DELETE Device Order
  @param userID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest
 */
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,14 +58,14 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDele
 }
 
 // Execute executes the request
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -194,7 +194,7 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDele
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest struct {
 	ctx context.Context
-	ApiService *MFADevicesApiService
+	ApiService *UserMFADevicesApiService
 	environmentID string
 	userID string
 	deviceID string
@@ -213,7 +213,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete DELETE MFA User Devi
  @param deviceID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest
 */
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -224,14 +224,14 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 }
 
 // Execute executes the request
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -358,7 +358,7 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest struct {
 	ctx context.Context
-	ApiService *MFADevicesApiService
+	ApiService *UserMFADevicesApiService
 	environmentID string
 	userID string
 	deviceID string
@@ -377,7 +377,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet READ One MFA User Devic
  @param deviceID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest
 */
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -388,14 +388,14 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 }
 
 // Execute executes the request
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -522,7 +522,7 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest struct {
 	ctx context.Context
-	ApiService *MFADevicesApiService
+	ApiService *UserMFADevicesApiService
 	environmentID string
 	userID string
 	deviceID string
@@ -547,7 +547,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut SEND MFA Device Log
  @param deviceID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest
 */
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -558,14 +558,14 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 }
 
 // Execute executes the request
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -694,7 +694,7 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest struct {
 	ctx context.Context
-	ApiService *MFADevicesApiService
+	ApiService *UserMFADevicesApiService
 	environmentID string
 	userID string
 	deviceID string
@@ -719,7 +719,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut UPDATE Device N
  @param deviceID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest
 */
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -730,14 +730,14 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 }
 
 // Execute executes the request
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -866,7 +866,7 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest struct {
 	ctx context.Context
-	ApiService *MFADevicesApiService
+	ApiService *UserMFADevicesApiService
 	environmentID string
 	userID string
 	deviceID string
@@ -897,7 +897,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost ACTIVATE MFA User Devi
  @param deviceID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest
 */
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(ctx context.Context, environmentID string, userID string, deviceID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -908,14 +908,14 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 }
 
 // Execute executes the request
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1058,7 +1058,7 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDevi
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest struct {
 	ctx context.Context
-	ApiService *MFADevicesApiService
+	ApiService *UserMFADevicesApiService
 	environmentID string
 	userID string
 }
@@ -1075,7 +1075,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet READ All MFA User Devices
  @param userID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest
 */
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1085,14 +1085,14 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet(
 }
 
 // Execute executes the request
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1218,7 +1218,7 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGetE
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest struct {
 	ctx context.Context
-	ApiService *MFADevicesApiService
+	ApiService *UserMFADevicesApiService
 	environmentID string
 	userID string
 	contentType *string
@@ -1247,7 +1247,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost SET Device Order
  @param userID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest
 */
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1257,14 +1257,14 @@ func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost
 }
 
 // Execute executes the request
-func (a *MFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
+func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFADevicesApiService.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

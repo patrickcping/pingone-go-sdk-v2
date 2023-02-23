@@ -1,17 +1,17 @@
-# \MFADevicesApi
+# \UserMFADevicesApi
 
 All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete**](MFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices | DELETE Device Order
-[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete**](MFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | DELETE MFA User Device
-[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet**](MFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | READ One MFA User Device
-[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut**](MFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs | SEND MFA Device Logs
-[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut**](MFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname | UPDATE Device Nickname
-[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost**](MFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | ACTIVATE MFA User Device
-[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet**](MFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet) | **Get** /v1/environments/{environmentID}/users/{userID}/devices | READ All MFA User Devices
-[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost**](MFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices | SET Device Order
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete**](UserMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices | DELETE Device Order
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete**](UserMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | DELETE MFA User Device
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet**](UserMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | READ One MFA User Device
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut**](UserMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs | SEND MFA Device Logs
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut**](UserMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname | UPDATE Device Nickname
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost**](UserMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | ACTIVATE MFA User Device
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet**](UserMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet) | **Get** /v1/environments/{environmentID}/users/{userID}/devices | READ All MFA User Devices
+[**V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost**](UserMFADevicesApi.md#V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices | SET Device Order
 
 
 
@@ -40,9 +40,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(context.Background(), environmentID, userID).ContentType(contentType).Execute()
+    resp, r, err := apiClient.UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete(context.Background(), environmentID, userID).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -111,9 +111,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(context.Background(), environmentID, userID, deviceID).Execute()
+    resp, r, err := apiClient.UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete(context.Background(), environmentID, userID, deviceID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -183,9 +183,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(context.Background(), environmentID, userID, deviceID).Execute()
+    resp, r, err := apiClient.UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet(context.Background(), environmentID, userID, deviceID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -256,9 +256,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
+    resp, r, err := apiClient.UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -330,9 +330,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
+    resp, r, err := apiClient.UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut(context.Background(), environmentID, userID, deviceID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -405,9 +405,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(context.Background(), environmentID, userID, deviceID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost(context.Background(), environmentID, userID, deviceID).ContentType(contentType).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -478,9 +478,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet(context.Background(), environmentID, userID).Execute()
+    resp, r, err := apiClient.UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -549,9 +549,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFADevicesApi.V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

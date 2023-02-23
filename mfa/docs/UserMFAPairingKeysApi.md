@@ -1,12 +1,12 @@
-# \MFAPairingKeysApi
+# \UserMFAPairingKeysApi
 
 All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete**](MFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | DELETE MFA Pairing Key
-[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet**](MFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | READ One MFA Pairing Key
-[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost**](MFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost) | **Post** /v1/environments/{environmentID}/users/{userID}/pairingKeys | CREATE MFA Pairing Key
+[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete**](UserMFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | DELETE MFA Pairing Key
+[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet**](UserMFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | READ One MFA Pairing Key
+[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost**](UserMFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost) | **Post** /v1/environments/{environmentID}/users/{userID}/pairingKeys | CREATE MFA Pairing Key
 
 
 
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), environmentID, userID, pairingKeyID).Execute()
+    resp, r, err := apiClient.UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), environmentID, userID, pairingKeyID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -107,9 +107,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), environmentID, userID, pairingKeyID).Execute()
+    resp, r, err := apiClient.UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), environmentID, userID, pairingKeyID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -179,9 +179,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(context.Background(), environmentID, userID).Body(body).Execute()
+    resp, r, err := apiClient.UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(context.Background(), environmentID, userID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
