@@ -20,30 +20,30 @@ import (
 )
 
 
-// UsersEnableUsersMFAApiService UsersEnableUsersMFAApi service
-type UsersEnableUsersMFAApiService service
+// EnableUsersMFAApiService EnableUsersMFAApi service
+type EnableUsersMFAApiService service
 
-type ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest struct {
+type ApiReadUserMFAEnabledRequest struct {
 	ctx context.Context
-	ApiService *UsersEnableUsersMFAApiService
+	ApiService *EnableUsersMFAApiService
 	environmentID string
 	userID string
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetExecute(r)
+func (r ApiReadUserMFAEnabledRequest) Execute() (*UserMFAEnabled, *http.Response, error) {
+	return r.ApiService.ReadUserMFAEnabledExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet READ User MFA Enabled
+ReadUserMFAEnabled READ User MFA Enabled
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest
+ @return ApiReadUserMFAEnabledRequest
 */
-func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest {
-	return ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest{
+func (a *EnableUsersMFAApiService) ReadUserMFAEnabled(ctx context.Context, environmentID string, userID string) ApiReadUserMFAEnabledRequest {
+	return ApiReadUserMFAEnabledRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -52,16 +52,18 @@ func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMf
 }
 
 // Execute executes the request
-func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest) (*http.Response, error) {
+//  @return UserMFAEnabled
+func (a *EnableUsersMFAApiService) ReadUserMFAEnabledExecute(r ApiReadUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *UserMFAEnabled
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersMFAApiService.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnableUsersMFAApiService.ReadUserMFAEnabled")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/mfaEnabled"
@@ -91,19 +93,19 @@ func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMf
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -116,100 +118,109 @@ func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMf
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest struct {
+type ApiUpdateUserMFAEnabledRequest struct {
 	ctx context.Context
-	ApiService *UsersEnableUsersMFAApiService
+	ApiService *EnableUsersMFAApiService
 	environmentID string
 	userID string
-	body *map[string]interface{}
+	userMFAEnabled *UserMFAEnabled
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest {
-	r.body = &body
+func (r ApiUpdateUserMFAEnabledRequest) UserMFAEnabled(userMFAEnabled UserMFAEnabled) ApiUpdateUserMFAEnabledRequest {
+	r.userMFAEnabled = &userMFAEnabled
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutExecute(r)
+func (r ApiUpdateUserMFAEnabledRequest) Execute() (*UserMFAEnabled, *http.Response, error) {
+	return r.ApiService.UpdateUserMFAEnabledExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut UPDATE User MFA Enabled
+UpdateUserMFAEnabled UPDATE User MFA Enabled
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param userID
- @return ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest
+ @return ApiUpdateUserMFAEnabledRequest
 */
-func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest {
-	return ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest{
+func (a *EnableUsersMFAApiService) UpdateUserMFAEnabled(ctx context.Context, environmentID string, userID string) ApiUpdateUserMFAEnabledRequest {
+	return ApiUpdateUserMFAEnabledRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -218,16 +229,18 @@ func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMf
 }
 
 // Execute executes the request
-func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest) (*http.Response, error) {
+//  @return UserMFAEnabled
+func (a *EnableUsersMFAApiService) UpdateUserMFAEnabledExecute(r ApiUpdateUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *UserMFAEnabled
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersEnableUsersMFAApiService.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnableUsersMFAApiService.UpdateUserMFAEnabled")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/users/{userID}/mfaEnabled"
@@ -256,22 +269,22 @@ func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMf
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.userMFAEnabled
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -284,69 +297,78 @@ func (a *UsersEnableUsersMFAApiService) V1EnvironmentsEnvironmentIDUsersUserIDMf
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
             		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
             		newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

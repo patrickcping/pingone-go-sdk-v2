@@ -24,10 +24,10 @@ tags:
 - name: Device Authentication Policy
 - name: FIDO Policy
 - name: MFA Settings
-- name: Users > MFA Devices
-- name: Users > MFA Devices > FIDO2 Biometrics Devices
-- name: Users > Enable Users MFA
-- name: Users > MFA Pairing Keys
+- name: User MFA Devices
+- name: User MFA Devices > FIDO2 Biometrics Devices
+- name: Enable Users MFA
+- name: User MFA Pairing Keys
 paths:
   /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials:
     get:
@@ -1531,7 +1531,7 @@ paths:
           description: Successful response
       summary: DELETE Device Order
       tags:
-      - Users > MFA Devices
+      - User MFA Devices
     get:
       parameters:
       - explode: false
@@ -1592,7 +1592,7 @@ paths:
           description: Successful response
       summary: READ All MFA User Devices
       tags:
-      - Users > MFA Devices
+      - User MFA Devices
     post:
       parameters:
       - example: application/vnd.pingidentity.devices.reorder+json
@@ -1680,7 +1680,7 @@ paths:
           description: Successful response
       summary: SET Device Order
       tags:
-      - Users > MFA Devices
+      - User MFA Devices
   /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}:
     delete:
       parameters:
@@ -1747,7 +1747,7 @@ paths:
           description: Successful response
       summary: DELETE MFA User Device
       tags:
-      - Users > MFA Devices
+      - User MFA Devices
     get:
       parameters:
       - explode: false
@@ -1815,7 +1815,7 @@ paths:
           description: Successful response
       summary: READ One MFA User Device
       tags:
-      - Users > MFA Devices
+      - User MFA Devices
     post:
       parameters:
       - example: application/vnd.pingidentity.device.activate+json
@@ -1905,7 +1905,7 @@ paths:
           description: Successful response
       summary: ACTIVATE MFA User Device
       tags:
-      - Users > MFA Devices
+      - User MFA Devices
   /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname:
     put:
       parameters:
@@ -1981,7 +1981,7 @@ paths:
           description: Successful response
       summary: UPDATE Device Nickname
       tags:
-      - Users > MFA Devices
+      - User MFA Devices
   /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs:
     put:
       parameters:
@@ -2057,9 +2057,10 @@ paths:
           description: Successful response
       summary: SEND MFA Device Logs
       tags:
-      - Users > MFA Devices
+      - User MFA Devices
   /v1/environments/{environmentID}/users/{userID}/mfaEnabled:
     get:
+      operationId: readUserMFAEnabled
       parameters:
       - explode: false
         in: path
@@ -2115,12 +2116,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMFAEnabled'
           description: Successful response
       summary: READ User MFA Enabled
       tags:
-      - Users > Enable Users MFA
+      - Enable Users MFA
     put:
+      operationId: updateUserMFAEnabled
       parameters:
       - explode: false
         in: path
@@ -2140,9 +2144,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                mfaEnabled: true
-              type: object
+              $ref: '#/components/schemas/UserMFAEnabled'
       responses:
         "400":
           content:
@@ -2183,11 +2185,13 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMFAEnabled'
           description: Successful response
       summary: UPDATE User MFA Enabled
       tags:
-      - Users > Enable Users MFA
+      - Enable Users MFA
   /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID}:
     delete:
       parameters:
@@ -2254,7 +2258,7 @@ paths:
           description: Successful response
       summary: DELETE MFA Pairing Key
       tags:
-      - Users > MFA Pairing Keys
+      - User MFA Pairing Keys
     get:
       parameters:
       - explode: false
@@ -2322,7 +2326,7 @@ paths:
           description: Successful response
       summary: READ One MFA Pairing Key
       tags:
-      - Users > MFA Pairing Keys
+      - User MFA Pairing Keys
   /v1/environments/{environmentID}/users/{userID}/pairingKeys:
     post:
       parameters:
@@ -2399,7 +2403,7 @@ paths:
           description: Successful response
       summary: CREATE MFA Pairing Key
       tags:
-      - Users > MFA Pairing Keys
+      - User MFA Pairing Keys
 components:
   schemas:
     DeviceAuthenticationPolicyFIDODevice:
@@ -3103,6 +3107,17 @@ components:
           items:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
+      type: object
+    UserMFAEnabled:
+      example:
+        mfaEnabled: true
+      properties:
+        mfaEnabled:
+          description: Whether multi-factor authentication is enabled. This attribute
+            is set to `false` by default when the user is created.
+          type: boolean
+      required:
+      - mfaEnabled
       type: object
     createMFAPushCredential_request:
       example:

@@ -53,17 +53,17 @@ type APIClient struct {
 
 	DeviceAuthenticationPolicyApi *DeviceAuthenticationPolicyApiService
 
+	EnableUsersMFAApi *EnableUsersMFAApiService
+
 	FIDODeviceApi *FIDODeviceApiService
 
 	FIDOPolicyApi *FIDOPolicyApiService
 
 	MFASettingsApi *MFASettingsApiService
 
-	UsersEnableUsersMFAApi *UsersEnableUsersMFAApiService
+	UserMFADevicesApi *UserMFADevicesApiService
 
-	UsersMFADevicesApi *UsersMFADevicesApiService
-
-	UsersMFAPairingKeysApi *UsersMFAPairingKeysApiService
+	UserMFAPairingKeysApi *UserMFAPairingKeysApiService
 }
 
 type service struct {
@@ -84,12 +84,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.ApplicationsApplicationMFAPushCredentialsApi = (*ApplicationsApplicationMFAPushCredentialsApiService)(&c.common)
 	c.DeviceAuthenticationPolicyApi = (*DeviceAuthenticationPolicyApiService)(&c.common)
+	c.EnableUsersMFAApi = (*EnableUsersMFAApiService)(&c.common)
 	c.FIDODeviceApi = (*FIDODeviceApiService)(&c.common)
 	c.FIDOPolicyApi = (*FIDOPolicyApiService)(&c.common)
 	c.MFASettingsApi = (*MFASettingsApiService)(&c.common)
-	c.UsersEnableUsersMFAApi = (*UsersEnableUsersMFAApiService)(&c.common)
-	c.UsersMFADevicesApi = (*UsersMFADevicesApiService)(&c.common)
-	c.UsersMFAPairingKeysApi = (*UsersMFAPairingKeysApiService)(&c.common)
+	c.UserMFADevicesApi = (*UserMFADevicesApiService)(&c.common)
+	c.UserMFAPairingKeysApi = (*UserMFAPairingKeysApiService)(&c.common)
 
 	return c
 }

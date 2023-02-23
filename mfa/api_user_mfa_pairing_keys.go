@@ -20,12 +20,12 @@ import (
 )
 
 
-// UsersMFAPairingKeysApiService UsersMFAPairingKeysApi service
-type UsersMFAPairingKeysApiService service
+// UserMFAPairingKeysApiService UserMFAPairingKeysApi service
+type UserMFAPairingKeysApiService service
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest struct {
 	ctx context.Context
-	ApiService *UsersMFAPairingKeysApiService
+	ApiService *UserMFAPairingKeysApiService
 	environmentID string
 	userID string
 	pairingKeyID string
@@ -44,7 +44,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete DELETE MFA P
  @param pairingKeyID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest
 */
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx context.Context, environmentID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest {
+func (a *UserMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx context.Context, environmentID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,14 +55,14 @@ func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPa
 }
 
 // Execute executes the request
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
+func (a *UserMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -189,7 +189,7 @@ func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPa
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest struct {
 	ctx context.Context
-	ApiService *UsersMFAPairingKeysApiService
+	ApiService *UserMFAPairingKeysApiService
 	environmentID string
 	userID string
 	pairingKeyID string
@@ -208,7 +208,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet READ One MFA Pa
  @param pairingKeyID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest
 */
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(ctx context.Context, environmentID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest {
+func (a *UserMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(ctx context.Context, environmentID string, userID string, pairingKeyID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -219,14 +219,14 @@ func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPa
 }
 
 // Execute executes the request
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
+func (a *UserMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -353,7 +353,7 @@ func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPa
 
 type ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest struct {
 	ctx context.Context
-	ApiService *UsersMFAPairingKeysApiService
+	ApiService *UserMFAPairingKeysApiService
 	environmentID string
 	userID string
 	body *map[string]interface{}
@@ -376,7 +376,7 @@ V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost CREATE MFA Pairing Key
  @param userID
  @return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest
 */
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest {
+func (a *UserMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(ctx context.Context, environmentID string, userID string) ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest {
 	return ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -386,14 +386,14 @@ func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPa
 }
 
 // Execute executes the request
-func (a *UsersMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
+func (a *UserMFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserMFAPairingKeysApiService.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
