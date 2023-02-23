@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.9.0](./mfa/CHANGELOG.md)
+    * **Feature** Support for "User MFA Enabled" API and data model
+
 # Release (2023-02-22)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.3
