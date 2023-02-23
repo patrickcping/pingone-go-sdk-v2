@@ -24,10 +24,10 @@ tags:
 - name: Device Authentication Policy
 - name: FIDO Policy
 - name: MFA Settings
-- name: MFA Devices
-- name: MFA Devices > FIDO2 Biometrics Devices
+- name: User MFA Devices
+- name: User MFA Devices > FIDO2 Biometrics Devices
 - name: Enable Users MFA
-- name: MFA Pairing Keys
+- name: User MFA Pairing Keys
 paths:
   /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials:
     get:
@@ -1531,7 +1531,7 @@ paths:
           description: Successful response
       summary: DELETE Device Order
       tags:
-      - MFA Devices
+      - User MFA Devices
     get:
       parameters:
       - explode: false
@@ -1592,7 +1592,7 @@ paths:
           description: Successful response
       summary: READ All MFA User Devices
       tags:
-      - MFA Devices
+      - User MFA Devices
     post:
       parameters:
       - example: application/vnd.pingidentity.devices.reorder+json
@@ -1680,7 +1680,7 @@ paths:
           description: Successful response
       summary: SET Device Order
       tags:
-      - MFA Devices
+      - User MFA Devices
   /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}:
     delete:
       parameters:
@@ -1747,7 +1747,7 @@ paths:
           description: Successful response
       summary: DELETE MFA User Device
       tags:
-      - MFA Devices
+      - User MFA Devices
     get:
       parameters:
       - explode: false
@@ -1815,7 +1815,7 @@ paths:
           description: Successful response
       summary: READ One MFA User Device
       tags:
-      - MFA Devices
+      - User MFA Devices
     post:
       parameters:
       - example: application/vnd.pingidentity.device.activate+json
@@ -1905,7 +1905,7 @@ paths:
           description: Successful response
       summary: ACTIVATE MFA User Device
       tags:
-      - MFA Devices
+      - User MFA Devices
   /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname:
     put:
       parameters:
@@ -1981,7 +1981,7 @@ paths:
           description: Successful response
       summary: UPDATE Device Nickname
       tags:
-      - MFA Devices
+      - User MFA Devices
   /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs:
     put:
       parameters:
@@ -2057,7 +2057,7 @@ paths:
           description: Successful response
       summary: SEND MFA Device Logs
       tags:
-      - MFA Devices
+      - User MFA Devices
   /v1/environments/{environmentID}/users/{userID}/mfaEnabled:
     get:
       operationId: readUserMFAEnabled
@@ -2258,7 +2258,7 @@ paths:
           description: Successful response
       summary: DELETE MFA Pairing Key
       tags:
-      - MFA Pairing Keys
+      - User MFA Pairing Keys
     get:
       parameters:
       - explode: false
@@ -2326,7 +2326,7 @@ paths:
           description: Successful response
       summary: READ One MFA Pairing Key
       tags:
-      - MFA Pairing Keys
+      - User MFA Pairing Keys
   /v1/environments/{environmentID}/users/{userID}/pairingKeys:
     post:
       parameters:
@@ -2403,7 +2403,7 @@ paths:
           description: Successful response
       summary: CREATE MFA Pairing Key
       tags:
-      - MFA Pairing Keys
+      - User MFA Pairing Keys
 components:
   schemas:
     DeviceAuthenticationPolicyFIDODevice:
