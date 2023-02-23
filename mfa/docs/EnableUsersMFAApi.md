@@ -1,17 +1,17 @@
-# \UsersEnableUsersMFAApi
+# \EnableUsersMFAApi
 
 All URIs are relative to *https://api.pingone.eu*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet**](UsersEnableUsersMFAApi.md#V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet) | **Get** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
-[**V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut**](UsersEnableUsersMFAApi.md#V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut) | **Put** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
+[**ReadUserMFAEnabled**](EnableUsersMFAApi.md#ReadUserMFAEnabled) | **Get** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
+[**UpdateUserMFAEnabled**](EnableUsersMFAApi.md#UpdateUserMFAEnabled) | **Put** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet
+## ReadUserMFAEnabled
 
-> V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet(ctx, environmentID, userID).Execute()
+> UserMFAEnabled ReadUserMFAEnabled(ctx, environmentID, userID).Execute()
 
 READ User MFA Enabled
 
@@ -33,11 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersEnableUsersMFAApi.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet(context.Background(), environmentID, userID).Execute()
+    resp, r, err := apiClient.EnableUsersMFAApi.ReadUserMFAEnabled(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersMFAApi.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnableUsersMFAApi.ReadUserMFAEnabled``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadUserMFAEnabled`: UserMFAEnabled
+    fmt.Fprintf(os.Stdout, "Response from `EnableUsersMFAApi.ReadUserMFAEnabled`: %v\n", resp)
 }
 ```
 
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadUserMFAEnabledRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -62,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**UserMFAEnabled**](UserMFAEnabled.md)
 
 ### Authorization
 
@@ -78,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut
+## UpdateUserMFAEnabled
 
-> V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut(ctx, environmentID, userID).Body(body).Execute()
+> UserMFAEnabled UpdateUserMFAEnabled(ctx, environmentID, userID).UserMFAEnabled(userMFAEnabled).Execute()
 
 UPDATE User MFA Enabled
 
@@ -99,15 +101,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    userMFAEnabled := *openapiclient.NewUserMFAEnabled(false) // UserMFAEnabled |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersEnableUsersMFAApi.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut(context.Background(), environmentID, userID).Body(body).Execute()
+    resp, r, err := apiClient.EnableUsersMFAApi.UpdateUserMFAEnabled(context.Background(), environmentID, userID).UserMFAEnabled(userMFAEnabled).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersEnableUsersMFAApi.V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnableUsersMFAApi.UpdateUserMFAEnabled``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateUserMFAEnabled`: UserMFAEnabled
+    fmt.Fprintf(os.Stdout, "Response from `EnableUsersMFAApi.UpdateUserMFAEnabled`: %v\n", resp)
 }
 ```
 
@@ -122,18 +126,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateUserMFAEnabledRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **userMFAEnabled** | [**UserMFAEnabled**](UserMFAEnabled.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**UserMFAEnabled**](UserMFAEnabled.md)
 
 ### Authorization
 

@@ -88,6 +88,8 @@ Class | Method | HTTP request | Description
 *DeviceAuthenticationPolicyApi* | [**ReadDeviceAuthenticationPolicies**](docs/DeviceAuthenticationPolicyApi.md#readdeviceauthenticationpolicies) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicies | READ Device Authentication Policies
 *DeviceAuthenticationPolicyApi* | [**ReadOneDeviceAuthenticationPolicy**](docs/DeviceAuthenticationPolicyApi.md#readonedeviceauthenticationpolicy) | **Get** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | READ One Device Authentication Policy
 *DeviceAuthenticationPolicyApi* | [**UpdateDeviceAuthenticationPolicy**](docs/DeviceAuthenticationPolicyApi.md#updatedeviceauthenticationpolicy) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | UPDATE Device Authentication Policy
+*EnableUsersMFAApi* | [**ReadUserMFAEnabled**](docs/EnableUsersMFAApi.md#readusermfaenabled) | **Get** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
+*EnableUsersMFAApi* | [**UpdateUserMFAEnabled**](docs/EnableUsersMFAApi.md#updateusermfaenabled) | **Put** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
 *FIDODeviceApi* | [**CreateFidoDevice**](docs/FIDODeviceApi.md#createfidodevice) | **Post** /v1/environments/{environmentID}/fidoDevicesMetadata | CREATE FIDO Device
 *FIDODeviceApi* | [**DeleteFidoDevice**](docs/FIDODeviceApi.md#deletefidodevice) | **Delete** /v1/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID} | DELETE FIDO Device
 *FIDODeviceApi* | [**ReadFidoDevices**](docs/FIDODeviceApi.md#readfidodevices) | **Get** /v1/environments/{environmentID}/fidoDevicesMetadata | READ All FIDO Devices
@@ -97,22 +99,20 @@ Class | Method | HTTP request | Description
 *FIDOPolicyApi* | [**ReadFidoPolicies**](docs/FIDOPolicyApi.md#readfidopolicies) | **Get** /v1/environments/{environmentID}/fidoPolicies | READ FIDO Policies
 *FIDOPolicyApi* | [**ReadOneFidoPolicy**](docs/FIDOPolicyApi.md#readonefidopolicy) | **Get** /v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID} | READ One FIDO Policy
 *FIDOPolicyApi* | [**UpdateFIDOPolicy**](docs/FIDOPolicyApi.md#updatefidopolicy) | **Put** /v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID} | UPDATE FIDO Policy
+*MFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete**](docs/MFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices | DELETE Device Order
+*MFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete**](docs/MFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceiddelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | DELETE MFA User Device
+*MFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet**](docs/MFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceidget) | **Get** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | READ One MFA User Device
+*MFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut**](docs/MFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceidlogsput) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs | SEND MFA Device Logs
+*MFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut**](docs/MFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceidnicknameput) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname | UPDATE Device Nickname
+*MFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost**](docs/MFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceidpost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | ACTIVATE MFA User Device
+*MFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet**](docs/MFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesget) | **Get** /v1/environments/{environmentID}/users/{userID}/devices | READ All MFA User Devices
+*MFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost**](docs/MFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicespost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices | SET Device Order
+*MFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete**](docs/MFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspairingkeyiddelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | DELETE MFA Pairing Key
+*MFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet**](docs/MFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspairingkeyidget) | **Get** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | READ One MFA Pairing Key
+*MFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost**](docs/MFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspost) | **Post** /v1/environments/{environmentID}/users/{userID}/pairingKeys | CREATE MFA Pairing Key
 *MFASettingsApi* | [**ReadMFASettings**](docs/MFASettingsApi.md#readmfasettings) | **Get** /v1/environments/{environmentID}/mfaSettings | READ MFA Settings
 *MFASettingsApi* | [**ResetMFASettings**](docs/MFASettingsApi.md#resetmfasettings) | **Delete** /v1/environments/{environmentID}/mfaSettings | RESET MFA Settings
 *MFASettingsApi* | [**UpdateMFASettings**](docs/MFASettingsApi.md#updatemfasettings) | **Put** /v1/environments/{environmentID}/mfaSettings | UPDATE MFA Settings
-*UsersEnableUsersMFAApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledGet**](docs/UsersEnableUsersMFAApi.md#v1environmentsenvironmentidusersuseridmfaenabledget) | **Get** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
-*UsersEnableUsersMFAApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDMfaEnabledPut**](docs/UsersEnableUsersMFAApi.md#v1environmentsenvironmentidusersuseridmfaenabledput) | **Put** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
-*UsersMFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDelete**](docs/UsersMFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices | DELETE Device Order
-*UsersMFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDelete**](docs/UsersMFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceiddelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | DELETE MFA User Device
-*UsersMFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGet**](docs/UsersMFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceidget) | **Get** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | READ One MFA User Device
-*UsersMFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPut**](docs/UsersMFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceidlogsput) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs | SEND MFA Device Logs
-*UsersMFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePut**](docs/UsersMFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceidnicknameput) | **Put** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname | UPDATE Device Nickname
-*UsersMFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPost**](docs/UsersMFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesdeviceidpost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices/{deviceID} | ACTIVATE MFA User Device
-*UsersMFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesGet**](docs/UsersMFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicesget) | **Get** /v1/environments/{environmentID}/users/{userID}/devices | READ All MFA User Devices
-*UsersMFADevicesApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDDevicesPost**](docs/UsersMFADevicesApi.md#v1environmentsenvironmentidusersuseriddevicespost) | **Post** /v1/environments/{environmentID}/users/{userID}/devices | SET Device Order
-*UsersMFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete**](docs/UsersMFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspairingkeyiddelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | DELETE MFA Pairing Key
-*UsersMFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet**](docs/UsersMFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspairingkeyidget) | **Get** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | READ One MFA Pairing Key
-*UsersMFAPairingKeysApi* | [**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost**](docs/UsersMFAPairingKeysApi.md#v1environmentsenvironmentidusersuseridpairingkeyspost) | **Post** /v1/environments/{environmentID}/users/{userID}/pairingKeys | CREATE MFA Pairing Key
 
 
 ## Documentation For Models
@@ -170,6 +170,7 @@ Class | Method | HTTP request | Description
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
  - [UpdateMFAPushCredentialRequest](docs/UpdateMFAPushCredentialRequest.md)
+ - [UserMFAEnabled](docs/UserMFAEnabled.md)
 
 
 ## Documentation For Authorization
