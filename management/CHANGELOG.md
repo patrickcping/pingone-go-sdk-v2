@@ -1,3 +1,7 @@
+# v0.16.0 (Unreleased)
+
+* **Enhancement** Add support for `ApplicationPingOneAdminConsole` model for applications [#114](https://github.com/patrickcping/pingone-go-sdk-v2/pull/114)
+
 # v0.15.0 (2023-02-22)
 
 * **Note** bump `golang.org/x/net` v0.6.0 => v0.7.0 [#103](https://github.com/patrickcping/pingone-go-sdk-v2/pull/105)
