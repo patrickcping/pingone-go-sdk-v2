@@ -426,6 +426,7 @@ Class | Method | HTTP request | Description
  - [ApplicationOIDCAllOfMobilePasscodeRefreshDuration](docs/ApplicationOIDCAllOfMobilePasscodeRefreshDuration.md)
  - [ApplicationOIDCInternal](docs/ApplicationOIDCInternal.md)
  - [ApplicationOIDCInternalAllOf](docs/ApplicationOIDCInternalAllOf.md)
+ - [ApplicationPingOneAdminConsole](docs/ApplicationPingOneAdminConsole.md)
  - [ApplicationPingOnePortal](docs/ApplicationPingOnePortal.md)
  - [ApplicationPingOnePortalAllOf](docs/ApplicationPingOnePortalAllOf.md)
  - [ApplicationPingOneSelfService](docs/ApplicationPingOneSelfService.md)

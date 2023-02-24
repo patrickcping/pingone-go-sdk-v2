@@ -15,12 +15,13 @@ import (
 
 // ReadOneApplication200Response - struct for ReadOneApplication200Response
 type ReadOneApplication200Response struct {
-	ApplicationExternalLink       *ApplicationExternalLink
-	ApplicationOIDC               *ApplicationOIDC
-	ApplicationPingOnePortal      *ApplicationPingOnePortal
-	ApplicationPingOneSelfService *ApplicationPingOneSelfService
-	ApplicationSAML               *ApplicationSAML
-	ApplicationWSFED              *ApplicationWSFED
+	ApplicationExternalLink        *ApplicationExternalLink
+	ApplicationOIDC                *ApplicationOIDC
+	ApplicationPingOneAdminConsole *ApplicationPingOneAdminConsole
+	ApplicationPingOnePortal       *ApplicationPingOnePortal
+	ApplicationPingOneSelfService  *ApplicationPingOneSelfService
+	ApplicationSAML                *ApplicationSAML
+	ApplicationWSFED               *ApplicationWSFED
 }
 
 // ApplicationExternalLinkAsReadOneApplication200Response is a convenience function that returns ApplicationExternalLink wrapped in ReadOneApplication200Response
@@ -34,6 +35,13 @@ func ApplicationExternalLinkAsReadOneApplication200Response(v *ApplicationExtern
 func ApplicationOIDCAsReadOneApplication200Response(v *ApplicationOIDC) ReadOneApplication200Response {
 	return ReadOneApplication200Response{
 		ApplicationOIDC: v,
+	}
+}
+
+// ApplicationPingOneAdminConsoleAsReadOneApplication200Response is a convenience function that returns ApplicationPingOneAdminConsole wrapped in ReadOneApplication200Response
+func ApplicationPingOneAdminConsoleAsReadOneApplication200Response(v *ApplicationPingOneAdminConsole) ReadOneApplication200Response {
+	return ReadOneApplication200Response{
+		ApplicationPingOneAdminConsole: v,
 	}
 }
 
@@ -79,6 +87,7 @@ func (dst *ReadOneApplication200Response) UnmarshalJSON(data []byte) error {
 	dst.ApplicationExternalLink = nil
 	dst.ApplicationPingOnePortal = nil
 	dst.ApplicationPingOneSelfService = nil
+	dst.ApplicationPingOneAdminConsole = nil
 
 	switch common.GetProtocol() {
 	case ENUMAPPLICATIONPROTOCOL_OPENID_CONNECT:
@@ -93,7 +102,9 @@ func (dst *ReadOneApplication200Response) UnmarshalJSON(data []byte) error {
 				return err
 			}
 		case ENUMAPPLICATIONTYPE_PING_ONE_ADMIN_CONSOLE:
-			return fmt.Errorf("PingOne admin console not yet supported in oneOf(EntityArrayEmbeddedApplicationsInner)")
+			if err := json.Unmarshal(data, &dst.ApplicationPingOneAdminConsole); err != nil { // simple model
+				return err
+			}
 		default:
 			if err := json.Unmarshal(data, &dst.ApplicationOIDC); err != nil { // simple model
 				return err
@@ -127,6 +138,10 @@ func (src ReadOneApplication200Response) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ApplicationOIDC)
 	}
 
+	if src.ApplicationPingOneAdminConsole != nil {
+		return json.Marshal(&src.ApplicationPingOneAdminConsole)
+	}
+
 	if src.ApplicationPingOnePortal != nil {
 		return json.Marshal(&src.ApplicationPingOnePortal)
 	}
@@ -157,6 +172,10 @@ func (obj *ReadOneApplication200Response) GetActualInstance() interface{} {
 
 	if obj.ApplicationOIDC != nil {
 		return obj.ApplicationOIDC
+	}
+
+	if obj.ApplicationPingOneAdminConsole != nil {
+		return obj.ApplicationPingOneAdminConsole
 	}
 
 	if obj.ApplicationPingOnePortal != nil {

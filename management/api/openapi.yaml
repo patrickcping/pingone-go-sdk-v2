@@ -22662,6 +22662,13 @@ components:
       allOf:
       - $ref: '#/components/schemas/Application'
       - $ref: '#/components/schemas/ApplicationOIDCInternal_allOf'
+    ApplicationPingOneAdminConsole:
+      properties:
+        pkceEnforcement:
+          $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
+        tokenEndpointAuthMethod:
+          $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
+      type: object
     ApplicationPingOnePortal:
       allOf:
       - $ref: '#/components/schemas/ApplicationOIDCInternal'
@@ -26733,6 +26740,7 @@ components:
       - $ref: '#/components/schemas/ApplicationExternalLink'
       - $ref: '#/components/schemas/ApplicationPingOnePortal'
       - $ref: '#/components/schemas/ApplicationPingOneSelfService'
+      - $ref: '#/components/schemas/ApplicationPingOneAdminConsole'
     updateApplication_request:
       example:
         name: "UPDATED_{{$timestamp}}"
