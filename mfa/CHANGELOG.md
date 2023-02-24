@@ -1,6 +1,6 @@
 # v0.9.0 (Unreleased)
 
-* **Feature** Support for "User MFA Enabled" API and data model
+* **Feature** Support for "User MFA Enabled" API and data model [#113](https://github.com/patrickcping/pingone-go-sdk-v2/pull/113)
 
 # v0.8.0 (2023-02-22)
 
