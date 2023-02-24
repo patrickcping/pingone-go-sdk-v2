@@ -27,6 +27,8 @@ type EntityArrayEmbedded struct {
 	CustomDomains []CustomDomain `json:"customDomains,omitempty"`
 	EmailDomains []EmailDomain `json:"emailDomains,omitempty"`
 	Environments []Environment `json:"environments,omitempty"`
+	FlowPolicies []FlowPolicy `json:"flowPolicies,omitempty"`
+	FlowPolicyAssignments []FlowPolicyAssignment `json:"flowPolicyAssignments,omitempty"`
 	GatewayInstances []GatewayInstance `json:"gatewayInstances,omitempty"`
 	Gateways []EntityArrayEmbeddedGatewaysInner `json:"gateways,omitempty"`
 	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
@@ -422,6 +424,70 @@ func (o *EntityArrayEmbedded) HasEnvironments() bool {
 // SetEnvironments gets a reference to the given []Environment and assigns it to the Environments field.
 func (o *EntityArrayEmbedded) SetEnvironments(v []Environment) {
 	o.Environments = v
+}
+
+// GetFlowPolicies returns the FlowPolicies field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetFlowPolicies() []FlowPolicy {
+	if o == nil || isNil(o.FlowPolicies) {
+		var ret []FlowPolicy
+		return ret
+	}
+	return o.FlowPolicies
+}
+
+// GetFlowPoliciesOk returns a tuple with the FlowPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetFlowPoliciesOk() ([]FlowPolicy, bool) {
+	if o == nil || isNil(o.FlowPolicies) {
+    return nil, false
+	}
+	return o.FlowPolicies, true
+}
+
+// HasFlowPolicies returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasFlowPolicies() bool {
+	if o != nil && !isNil(o.FlowPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowPolicies gets a reference to the given []FlowPolicy and assigns it to the FlowPolicies field.
+func (o *EntityArrayEmbedded) SetFlowPolicies(v []FlowPolicy) {
+	o.FlowPolicies = v
+}
+
+// GetFlowPolicyAssignments returns the FlowPolicyAssignments field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetFlowPolicyAssignments() []FlowPolicyAssignment {
+	if o == nil || isNil(o.FlowPolicyAssignments) {
+		var ret []FlowPolicyAssignment
+		return ret
+	}
+	return o.FlowPolicyAssignments
+}
+
+// GetFlowPolicyAssignmentsOk returns a tuple with the FlowPolicyAssignments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetFlowPolicyAssignmentsOk() ([]FlowPolicyAssignment, bool) {
+	if o == nil || isNil(o.FlowPolicyAssignments) {
+    return nil, false
+	}
+	return o.FlowPolicyAssignments, true
+}
+
+// HasFlowPolicyAssignments returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasFlowPolicyAssignments() bool {
+	if o != nil && !isNil(o.FlowPolicyAssignments) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlowPolicyAssignments gets a reference to the given []FlowPolicyAssignment and assigns it to the FlowPolicyAssignments field.
+func (o *EntityArrayEmbedded) SetFlowPolicyAssignments(v []FlowPolicyAssignment) {
+	o.FlowPolicyAssignments = v
 }
 
 // GetGatewayInstances returns the GatewayInstances field value if set, zero value otherwise.
@@ -1290,6 +1356,12 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Environments) {
 		toSerialize["environments"] = o.Environments
+	}
+	if !isNil(o.FlowPolicies) {
+		toSerialize["flowPolicies"] = o.FlowPolicies
+	}
+	if !isNil(o.FlowPolicyAssignments) {
+		toSerialize["flowPolicyAssignments"] = o.FlowPolicyAssignments
 	}
 	if !isNil(o.GatewayInstances) {
 		toSerialize["gatewayInstances"] = o.GatewayInstances

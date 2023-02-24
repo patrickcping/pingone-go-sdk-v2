@@ -1,6 +1,7 @@
 # v0.16.0 (Unreleased)
 
 * **Enhancement** Add support for `ApplicationPingOneAdminConsole` model for applications [#114](https://github.com/patrickcping/pingone-go-sdk-v2/pull/114)
+* **Enhancement** Add support for Flow policies and application flow policy assignments
 
 # v0.15.0 (2023-02-22)
 

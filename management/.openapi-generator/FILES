@@ -6,6 +6,7 @@ api_agreement_revisions_resources.go
 api_agreements_resources.go
 api_alerting.go
 api_application_attribute_mapping.go
+api_application_flow_policy_assignments.go
 api_application_resource_grants.go
 api_application_role_assignments.go
 api_application_secret.go
@@ -20,6 +21,7 @@ api_capabilities.go
 api_custom_domains.go
 api_enable_users.go
 api_environments.go
+api_flow_policies.go
 api_gateway_credentials.go
 api_gateway_instances.go
 api_gateway_role_assignments.go
@@ -94,6 +96,7 @@ docs/ApplicationAttributeMappingApi.md
 docs/ApplicationAttributeMappingApplication.md
 docs/ApplicationExternalLink.md
 docs/ApplicationExternalLinkAllOf.md
+docs/ApplicationFlowPolicyAssignmentsApi.md
 docs/ApplicationIcon.md
 docs/ApplicationOIDC.md
 docs/ApplicationOIDCAllOf.md
@@ -206,6 +209,7 @@ docs/EnumDurationUnitMinsHours.md
 docs/EnumEmailDomainStatus.md
 docs/EnumEnabledStatus.md
 docs/EnumEnvironmentType.md
+docs/EnumFlowPolicyTriggerType.md
 docs/EnumGatewayPasswordAuthority.md
 docs/EnumGatewayType.md
 docs/EnumGatewayTypeLDAPSecurity.md
@@ -260,6 +264,11 @@ docs/Environment.md
 docs/EnvironmentLicense.md
 docs/EnvironmentOrganization.md
 docs/EnvironmentsApi.md
+docs/FlowPoliciesApi.md
+docs/FlowPolicy.md
+docs/FlowPolicyApplication.md
+docs/FlowPolicyAssignment.md
+docs/FlowPolicyTrigger.md
 docs/Gateway.md
 docs/GatewayCredential.md
 docs/GatewayCredentialsApi.md
@@ -628,6 +637,7 @@ model_enum_duration_unit_mins_hours.go
 model_enum_email_domain_status.go
 model_enum_enabled_status.go
 model_enum_environment_type.go
+model_enum_flow_policy_trigger_type.go
 model_enum_gateway_password_authority.go
 model_enum_gateway_type.go
 model_enum_gateway_type_ldap_security.go
@@ -681,6 +691,10 @@ model_enum_user_verify_status.go
 model_environment.go
 model_environment_license.go
 model_environment_organization.go
+model_flow_policy.go
+model_flow_policy_application.go
+model_flow_policy_assignment.go
+model_flow_policy_trigger.go
 model_gateway.go
 model_gateway_credential.go
 model_gateway_instance.go

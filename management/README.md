@@ -105,6 +105,11 @@ Class | Method | HTTP request | Description
 *ApplicationAttributeMappingApi* | [**ReadAllApplicationAttributeMappings**](docs/ApplicationAttributeMappingApi.md#readallapplicationattributemappings) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/attributes | READ All Application Attribute Mappings
 *ApplicationAttributeMappingApi* | [**ReadOneApplicationAttributeMapping**](docs/ApplicationAttributeMappingApi.md#readoneapplicationattributemapping) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | READ One Application Attribute Mapping
 *ApplicationAttributeMappingApi* | [**UpdateApplicationAttributeMapping**](docs/ApplicationAttributeMappingApi.md#updateapplicationattributemapping) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | UPDATE Application Attribute Mapping
+*ApplicationFlowPolicyAssignmentsApi* | [**CreateFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#createflowpolicyassignment) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | CREATE Flow Assignment
+*ApplicationFlowPolicyAssignmentsApi* | [**DeleteFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#deleteflowpolicyassignment) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | DELETE Flow Policy Assignment
+*ApplicationFlowPolicyAssignmentsApi* | [**ReadAllFlowPolicyAssignments**](docs/ApplicationFlowPolicyAssignmentsApi.md#readallflowpolicyassignments) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | READ All Flow Policy Assignments
+*ApplicationFlowPolicyAssignmentsApi* | [**ReadOneFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#readoneflowpolicyassignment) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | READ One Flow Policy Assignment
+*ApplicationFlowPolicyAssignmentsApi* | [**UpdateFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#updateflowpolicyassignment) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | UPDATE Flow Policy Assignment
 *ApplicationResourceGrantsApi* | [**CreateApplicationGrant**](docs/ApplicationResourceGrantsApi.md#createapplicationgrant) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/grants | CREATE Grant
 *ApplicationResourceGrantsApi* | [**DeleteApplicationGrant**](docs/ApplicationResourceGrantsApi.md#deleteapplicationgrant) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/grants/{grantID} | DELETE Grant
 *ApplicationResourceGrantsApi* | [**ReadAllApplicationGrants**](docs/ApplicationResourceGrantsApi.md#readallapplicationgrants) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/grants | READ All Grants for an Application
@@ -173,6 +178,8 @@ Class | Method | HTTP request | Description
 *EnvironmentsApi* | [**ReadOneEnvironment**](docs/EnvironmentsApi.md#readoneenvironment) | **Get** /v1/environments/{environmentID} | READ One Environment
 *EnvironmentsApi* | [**UpdateEnvironment**](docs/EnvironmentsApi.md#updateenvironment) | **Put** /v1/environments/{environmentID} | UPDATE Environment
 *EnvironmentsApi* | [**UpdateEnvironmentType**](docs/EnvironmentsApi.md#updateenvironmenttype) | **Put** /v1/environments/{environmentID}/type | UPDATE Environment Type
+*FlowPoliciesApi* | [**ReadAllFlowPolicies**](docs/FlowPoliciesApi.md#readallflowpolicies) | **Get** /v1/environments/{environmentID}/flowPolicies | READ All Flow Policies
+*FlowPoliciesApi* | [**ReadOneFlowPolicy**](docs/FlowPoliciesApi.md#readoneflowpolicy) | **Get** /v1/environments/{environmentID}/flowPolicies/{flowPolicyID} | READ ONE Flow Policy
 *GatewayCredentialsApi* | [**CreateGatewayCredential**](docs/GatewayCredentialsApi.md#creategatewaycredential) | **Post** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials | CREATE Gateway Credentials
 *GatewayCredentialsApi* | [**DeleteGatewayCredential**](docs/GatewayCredentialsApi.md#deletegatewaycredential) | **Delete** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID} | DELETE Gateway Credentials
 *GatewayCredentialsApi* | [**ReadAllGatewayCredentials**](docs/GatewayCredentialsApi.md#readallgatewaycredentials) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials | READ All Gateway Credentials
@@ -514,6 +521,7 @@ Class | Method | HTTP request | Description
  - [EnumEmailDomainStatus](docs/EnumEmailDomainStatus.md)
  - [EnumEnabledStatus](docs/EnumEnabledStatus.md)
  - [EnumEnvironmentType](docs/EnumEnvironmentType.md)
+ - [EnumFlowPolicyTriggerType](docs/EnumFlowPolicyTriggerType.md)
  - [EnumGatewayPasswordAuthority](docs/EnumGatewayPasswordAuthority.md)
  - [EnumGatewayType](docs/EnumGatewayType.md)
  - [EnumGatewayTypeLDAPSecurity](docs/EnumGatewayTypeLDAPSecurity.md)
@@ -567,6 +575,10 @@ Class | Method | HTTP request | Description
  - [Environment](docs/Environment.md)
  - [EnvironmentLicense](docs/EnvironmentLicense.md)
  - [EnvironmentOrganization](docs/EnvironmentOrganization.md)
+ - [FlowPolicy](docs/FlowPolicy.md)
+ - [FlowPolicyApplication](docs/FlowPolicyApplication.md)
+ - [FlowPolicyAssignment](docs/FlowPolicyAssignment.md)
+ - [FlowPolicyTrigger](docs/FlowPolicyTrigger.md)
  - [Gateway](docs/Gateway.md)
  - [GatewayCredential](docs/GatewayCredential.md)
  - [GatewayInstance](docs/GatewayInstance.md)

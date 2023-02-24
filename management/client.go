@@ -61,6 +61,8 @@ type APIClient struct {
 
 	ApplicationAttributeMappingApi *ApplicationAttributeMappingApiService
 
+	ApplicationFlowPolicyAssignmentsApi *ApplicationFlowPolicyAssignmentsApiService
+
 	ApplicationResourceGrantsApi *ApplicationResourceGrantsApiService
 
 	ApplicationRoleAssignmentsApi *ApplicationRoleAssignmentsApiService
@@ -90,6 +92,8 @@ type APIClient struct {
 	EnableUsersApi *EnableUsersApiService
 
 	EnvironmentsApi *EnvironmentsApiService
+
+	FlowPoliciesApi *FlowPoliciesApiService
 
 	GatewayCredentialsApi *GatewayCredentialsApiService
 
@@ -214,6 +218,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AgreementsResourcesApi = (*AgreementsResourcesApiService)(&c.common)
 	c.AlertingApi = (*AlertingApiService)(&c.common)
 	c.ApplicationAttributeMappingApi = (*ApplicationAttributeMappingApiService)(&c.common)
+	c.ApplicationFlowPolicyAssignmentsApi = (*ApplicationFlowPolicyAssignmentsApiService)(&c.common)
 	c.ApplicationResourceGrantsApi = (*ApplicationResourceGrantsApiService)(&c.common)
 	c.ApplicationRoleAssignmentsApi = (*ApplicationRoleAssignmentsApiService)(&c.common)
 	c.ApplicationSecretApi = (*ApplicationSecretApiService)(&c.common)
@@ -229,6 +234,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CustomDomainsApi = (*CustomDomainsApiService)(&c.common)
 	c.EnableUsersApi = (*EnableUsersApiService)(&c.common)
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
+	c.FlowPoliciesApi = (*FlowPoliciesApiService)(&c.common)
 	c.GatewayCredentialsApi = (*GatewayCredentialsApiService)(&c.common)
 	c.GatewayInstancesApi = (*GatewayInstancesApiService)(&c.common)
 	c.GatewayRoleAssignmentsApi = (*GatewayRoleAssignmentsApiService)(&c.common)
