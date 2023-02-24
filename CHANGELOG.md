@@ -1,8 +1,8 @@
 # Release (Unreleased)
 
-* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.15.0](./management/CHANGELOG.md)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.16.0](./management/CHANGELOG.md)
     * **Enhancement** Add support for `ApplicationPingOneAdminConsole` model for applications [#114](https://github.com/patrickcping/pingone-go-sdk-v2/pull/114)
-    * **Enhancement** Add support for Flow policies and application flow policy assignments
+    * **Enhancement** Add support for Flow policies and application flow policy assignments [#115](https://github.com/patrickcping/pingone-go-sdk-v2/pull/115)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.9.0](./mfa/CHANGELOG.md)
     * **Feature** Support for "User MFA Enabled" API and data model [#113](https://github.com/patrickcping/pingone-go-sdk-v2/pull/113)
 
