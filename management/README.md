@@ -484,6 +484,7 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbeddedAttributesInner](docs/EntityArrayEmbeddedAttributesInner.md)
  - [EntityArrayEmbeddedGatewaysInner](docs/EntityArrayEmbeddedGatewaysInner.md)
  - [EntityArrayEmbeddedLanguagesInner](docs/EntityArrayEmbeddedLanguagesInner.md)
+ - [EnumAgreementRevisionContentType](docs/EnumAgreementRevisionContentType.md)
  - [EnumAlertChannelAlertType](docs/EnumAlertChannelAlertType.md)
  - [EnumAlertChannelSeverity](docs/EnumAlertChannelSeverity.md)
  - [EnumAlertChannelType](docs/EnumAlertChannelType.md)
