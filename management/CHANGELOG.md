@@ -1,6 +1,11 @@
 # v0.16.0 (Unreleased)
 
+* **Breaking change** Agreement revision content type changed to an enum `EnumAgreementRevisionContentType`. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
+* **Breaking change** Required attributes now added to the `AgreementLanguageRevision` data model [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
+* **Bug fix** `reconsentPeriodDays` attribute in the `Agreement` data model corrected to be a floating point number, as in the API. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
+* **Bug fix** `requireReconsent` attribute corrected in `AgreementLanguageRevision` data model. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
 * **Enhancement** Add support for `ApplicationPingOneAdminConsole` model for applications [#114](https://github.com/patrickcping/pingone-go-sdk-v2/pull/114)
+* **Enhancement** `effectiveAt` and `notValidAfter` attributes on the `AgreementLanguageRevision` changed to be date/time format. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
 
 # v0.15.0 (2023-02-22)
 
