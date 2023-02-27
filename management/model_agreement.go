@@ -30,7 +30,7 @@ type Agreement struct {
 	// A string that specifies the name of the agreement resource. This is a required property.
 	Name string `json:"name"`
 	// A number that represents the number of days until a consent to this agreement expires.
-	ReconsentPeriodDays *int32 `json:"reconsentPeriodDays,omitempty"`
+	ReconsentPeriodDays *float32 `json:"reconsentPeriodDays,omitempty"`
 	// An integer that identifies the total number of users who have consented to the agreement. This value is last calculated at the consentCountsUpdatedAt time.
 	TotalUserConsents *int32 `json:"totalUserConsents,omitempty"`
 }
@@ -263,9 +263,9 @@ func (o *Agreement) SetName(v string) {
 }
 
 // GetReconsentPeriodDays returns the ReconsentPeriodDays field value if set, zero value otherwise.
-func (o *Agreement) GetReconsentPeriodDays() int32 {
+func (o *Agreement) GetReconsentPeriodDays() float32 {
 	if o == nil || isNil(o.ReconsentPeriodDays) {
-		var ret int32
+		var ret float32
 		return ret
 	}
 	return *o.ReconsentPeriodDays
@@ -273,7 +273,7 @@ func (o *Agreement) GetReconsentPeriodDays() int32 {
 
 // GetReconsentPeriodDaysOk returns a tuple with the ReconsentPeriodDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Agreement) GetReconsentPeriodDaysOk() (*int32, bool) {
+func (o *Agreement) GetReconsentPeriodDaysOk() (*float32, bool) {
 	if o == nil || isNil(o.ReconsentPeriodDays) {
     return nil, false
 	}
@@ -289,8 +289,8 @@ func (o *Agreement) HasReconsentPeriodDays() bool {
 	return false
 }
 
-// SetReconsentPeriodDays gets a reference to the given int32 and assigns it to the ReconsentPeriodDays field.
-func (o *Agreement) SetReconsentPeriodDays(v int32) {
+// SetReconsentPeriodDays gets a reference to the given float32 and assigns it to the ReconsentPeriodDays field.
+func (o *Agreement) SetReconsentPeriodDays(v float32) {
 	o.ReconsentPeriodDays = &v
 }
 

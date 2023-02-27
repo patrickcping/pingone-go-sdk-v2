@@ -21626,6 +21626,15 @@ paths:
       - Roles
 components:
   schemas:
+    EnumAgreementRevisionContentType:
+      description: "An immutable string that specifies the content type of text. Options\
+        \ are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1)\
+        \ and [Media Types/text](https://www.iana.org/assignments/media-types/media-types.xhtml#text).\
+        \ This attribute is supported in POST requests only."
+      enum:
+      - text/html
+      - text/plain
+      type: string
     EnumAlertChannelAlertType:
       description: "Alert channel alerting types. Possible values are `CERTIFICATE_EXPIRED`,\
         \ `CERTIFICATE_EXPIRING`, `KEY_PAIR_EXPIRED`, `GATEWAY_VERSION_DEPRECATED`,\
@@ -22379,7 +22388,7 @@ components:
         description: description
         id: id
         enabled: true
-        reconsentPeriodDays: 6
+        reconsentPeriodDays: 6.0274563
       properties:
         consentCountsUpdatedAt:
           description: The time the consent count metric was last updated. This value
@@ -22415,7 +22424,8 @@ components:
         reconsentPeriodDays:
           description: A number that represents the number of days until a consent
             to this agreement expires.
-          type: integer
+          format: float
+          type: number
         totalUserConsents:
           description: An integer that identifies the total number of users who have
             consented to the agreement. This value is last calculated at the consentCountsUpdatedAt
@@ -22475,31 +22485,26 @@ components:
       example:
         agreement:
           id: id
-        notValidAfter: notValidAfter
-        effectiveAt: effectiveAt
+        requireReconsent: true
+        notValidAfter: 2000-01-23T04:56:07.000+00:00
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
         language:
           id: id
-        requiresReconsent: true
         id: id
         text: text
-        contentType: text/html
+        contentType: null
       properties:
         agreement:
           $ref: '#/components/schemas/AgreementLanguage_agreement'
         contentType:
-          description: "An immutable string that specifies the content type of text.\
-            \ Options are text/html and text/plain, as defined by rfc-6838 and Media\
-            \ Types/text. This attribute is supported in POST requests only."
-          enum:
-          - text/html
-          - text/plain
-          type: string
+          $ref: '#/components/schemas/EnumAgreementRevisionContentType'
         effectiveAt:
           description: "A date that specifies the start date that the revision is\
             \ presented to users. This property value can be modified only if the\
             \ current value is a date that has not already passed. The effective date\
             \ must be unique for each language agreement, and the property value can\
             \ be the present date or a future date only."
+          format: date-time
           type: string
         id:
           description: A read-only string that specifies the revision ID.
@@ -22516,9 +22521,10 @@ components:
             \ previous revisions might be impacted. For example, if a new revision\
             \ becomes effective and it forces reconsent, then all older revisions\
             \ are no longer valid."
+          format: date-time
           readOnly: true
           type: string
-        requiresReconsent:
+        requireReconsent:
           description: A boolean that specifies whether the user is required to provide
             consent to the language revision after it becomes effective.
           type: boolean
@@ -22527,6 +22533,11 @@ components:
             \ This attribute is supported in POST requests only. For more information,\
             \ see contentType."
           type: string
+      required:
+      - contentType
+      - effectiveAt
+      - requireReconsent
+      - text
       type: object
     AlertChannel:
       example:
@@ -23560,24 +23571,24 @@ components:
           revisions:
           - agreement:
               id: id
-            notValidAfter: notValidAfter
-            effectiveAt: effectiveAt
+            requireReconsent: true
+            notValidAfter: 2000-01-23T04:56:07.000+00:00
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
             language:
               id: id
-            requiresReconsent: true
             id: id
             text: text
-            contentType: text/html
+            contentType: null
           - agreement:
               id: id
-            notValidAfter: notValidAfter
-            effectiveAt: effectiveAt
+            requireReconsent: true
+            notValidAfter: 2000-01-23T04:56:07.000+00:00
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
             language:
               id: id
-            requiresReconsent: true
             id: id
             text: text
-            contentType: text/html
+            contentType: null
           roleAssignments:
           - environment:
               id: id
@@ -23720,7 +23731,7 @@ components:
             description: description
             id: id
             enabled: true
-            reconsentPeriodDays: 6
+            reconsentPeriodDays: 6.0274563
           - consentCountsUpdatedAt: consentCountsUpdatedAt
             environment:
               id: id
@@ -23730,7 +23741,7 @@ components:
             description: description
             id: id
             enabled: true
-            reconsentPeriodDays: 6
+            reconsentPeriodDays: 6.0274563
           emailDomains:
           - environment:
               id: id
@@ -28018,24 +28029,24 @@ components:
         revisions:
         - agreement:
             id: id
-          notValidAfter: notValidAfter
-          effectiveAt: effectiveAt
+          requireReconsent: true
+          notValidAfter: 2000-01-23T04:56:07.000+00:00
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
           language:
             id: id
-          requiresReconsent: true
           id: id
           text: text
-          contentType: text/html
+          contentType: null
         - agreement:
             id: id
-          notValidAfter: notValidAfter
-          effectiveAt: effectiveAt
+          requireReconsent: true
+          notValidAfter: 2000-01-23T04:56:07.000+00:00
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
           language:
             id: id
-          requiresReconsent: true
           id: id
           text: text
-          contentType: text/html
+          contentType: null
         roleAssignments:
         - environment:
             id: id
@@ -28178,7 +28189,7 @@ components:
           description: description
           id: id
           enabled: true
-          reconsentPeriodDays: 6
+          reconsentPeriodDays: 6.0274563
         - consentCountsUpdatedAt: consentCountsUpdatedAt
           environment:
             id: id
@@ -28188,7 +28199,7 @@ components:
           description: description
           id: id
           enabled: true
-          reconsentPeriodDays: 6
+          reconsentPeriodDays: 6.0274563
         emailDomains:
         - environment:
             id: id

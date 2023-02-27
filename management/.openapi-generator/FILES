@@ -176,6 +176,7 @@ docs/EntityArrayEmbedded.md
 docs/EntityArrayEmbeddedAttributesInner.md
 docs/EntityArrayEmbeddedGatewaysInner.md
 docs/EntityArrayEmbeddedLanguagesInner.md
+docs/EnumAgreementRevisionContentType.md
 docs/EnumAlertChannelAlertType.md
 docs/EnumAlertChannelSeverity.md
 docs/EnumAlertChannelType.md
@@ -598,6 +599,7 @@ model_email_domain_trusted_email.go
 model_email_domain_trusted_email_domain.go
 model_entity_array.go
 model_entity_array__embedded.go
+model_enum_agreement_revision_content_type.go
 model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
 model_enum_alert_channel_type.go

@@ -26,6 +26,7 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "./openapi"
 )
 
@@ -33,7 +34,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     agreementID := "agreementID_example" // string | 
     languageID := "languageID_example" // string | 
-    agreementLanguageRevision := *openapiclient.NewAgreementLanguageRevision() // AgreementLanguageRevision |  (optional)
+    agreementLanguageRevision := *openapiclient.NewAgreementLanguageRevision(openapiclient.EnumAgreementRevisionContentType("text/html"), time.Now(), false, "Text_example") // AgreementLanguageRevision |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

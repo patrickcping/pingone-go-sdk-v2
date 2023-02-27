@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ExpiredUserConsents** | Pointer to **int32** | An integer that identifies the number of users who have consented to the agreement, but their consent has expired. This value is last calculated at the consentCountsUpdatedAt time. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the agreement ID. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the name of the agreement resource. This is a required property. | 
-**ReconsentPeriodDays** | Pointer to **int32** | A number that represents the number of days until a consent to this agreement expires. | [optional] 
+**ReconsentPeriodDays** | Pointer to **float32** | A number that represents the number of days until a consent to this agreement expires. | [optional] 
 **TotalUserConsents** | Pointer to **int32** | An integer that identifies the total number of users who have consented to the agreement. This value is last calculated at the consentCountsUpdatedAt time. | [optional] [readonly] 
 
 ## Methods
@@ -200,20 +200,20 @@ SetName sets Name field to given value.
 
 ### GetReconsentPeriodDays
 
-`func (o *Agreement) GetReconsentPeriodDays() int32`
+`func (o *Agreement) GetReconsentPeriodDays() float32`
 
 GetReconsentPeriodDays returns the ReconsentPeriodDays field if non-nil, zero value otherwise.
 
 ### GetReconsentPeriodDaysOk
 
-`func (o *Agreement) GetReconsentPeriodDaysOk() (*int32, bool)`
+`func (o *Agreement) GetReconsentPeriodDaysOk() (*float32, bool)`
 
 GetReconsentPeriodDaysOk returns a tuple with the ReconsentPeriodDays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReconsentPeriodDays
 
-`func (o *Agreement) SetReconsentPeriodDays(v int32)`
+`func (o *Agreement) SetReconsentPeriodDays(v float32)`
 
 SetReconsentPeriodDays sets ReconsentPeriodDays field to given value.
 

@@ -12,32 +12,36 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // AgreementLanguageRevision struct for AgreementLanguageRevision
 type AgreementLanguageRevision struct {
 	Agreement *AgreementLanguageAgreement `json:"agreement,omitempty"`
-	// An immutable string that specifies the content type of text. Options are text/html and text/plain, as defined by rfc-6838 and Media Types/text. This attribute is supported in POST requests only.
-	ContentType *string `json:"contentType,omitempty"`
+	ContentType EnumAgreementRevisionContentType `json:"contentType"`
 	// A date that specifies the start date that the revision is presented to users. This property value can be modified only if the current value is a date that has not already passed. The effective date must be unique for each language agreement, and the property value can be the present date or a future date only.
-	EffectiveAt *string `json:"effectiveAt,omitempty"`
+	EffectiveAt time.Time `json:"effectiveAt"`
 	// A read-only string that specifies the revision ID.
 	Id *string `json:"id,omitempty"`
 	Language *AgreementLanguageRevisionLanguage `json:"language,omitempty"`
 	// A date that specifies whether the revision is still valid in the context of all revisions for a language. This property is calculated dynamically at read time, taking into consideration the agreement language, the language enabled property, and the agreement enabled property. When a new revision is added, the notValidAfter property values for all other previous revisions might be impacted. For example, if a new revision becomes effective and it forces reconsent, then all older revisions are no longer valid.
-	NotValidAfter *string `json:"notValidAfter,omitempty"`
+	NotValidAfter *time.Time `json:"notValidAfter,omitempty"`
 	// A boolean that specifies whether the user is required to provide consent to the language revision after it becomes effective.
-	RequiresReconsent *bool `json:"requiresReconsent,omitempty"`
+	RequireReconsent bool `json:"requireReconsent"`
 	// An immutable string that specifies text or HTML for the revision. This attribute is supported in POST requests only. For more information, see contentType.
-	Text *string `json:"text,omitempty"`
+	Text string `json:"text"`
 }
 
 // NewAgreementLanguageRevision instantiates a new AgreementLanguageRevision object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgreementLanguageRevision() *AgreementLanguageRevision {
+func NewAgreementLanguageRevision(contentType EnumAgreementRevisionContentType, effectiveAt time.Time, requireReconsent bool, text string) *AgreementLanguageRevision {
 	this := AgreementLanguageRevision{}
+	this.ContentType = contentType
+	this.EffectiveAt = effectiveAt
+	this.RequireReconsent = requireReconsent
+	this.Text = text
 	return &this
 }
 
@@ -81,68 +85,52 @@ func (o *AgreementLanguageRevision) SetAgreement(v AgreementLanguageAgreement) {
 	o.Agreement = &v
 }
 
-// GetContentType returns the ContentType field value if set, zero value otherwise.
-func (o *AgreementLanguageRevision) GetContentType() string {
-	if o == nil || isNil(o.ContentType) {
-		var ret string
+// GetContentType returns the ContentType field value
+func (o *AgreementLanguageRevision) GetContentType() EnumAgreementRevisionContentType {
+	if o == nil {
+		var ret EnumAgreementRevisionContentType
 		return ret
 	}
-	return *o.ContentType
+
+	return o.ContentType
 }
 
-// GetContentTypeOk returns a tuple with the ContentType field value if set, nil otherwise
+// GetContentTypeOk returns a tuple with the ContentType field value
 // and a boolean to check if the value has been set.
-func (o *AgreementLanguageRevision) GetContentTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ContentType) {
+func (o *AgreementLanguageRevision) GetContentTypeOk() (*EnumAgreementRevisionContentType, bool) {
+	if o == nil {
     return nil, false
 	}
-	return o.ContentType, true
+	return &o.ContentType, true
 }
 
-// HasContentType returns a boolean if a field has been set.
-func (o *AgreementLanguageRevision) HasContentType() bool {
-	if o != nil && !isNil(o.ContentType) {
-		return true
-	}
-
-	return false
+// SetContentType sets field value
+func (o *AgreementLanguageRevision) SetContentType(v EnumAgreementRevisionContentType) {
+	o.ContentType = v
 }
 
-// SetContentType gets a reference to the given string and assigns it to the ContentType field.
-func (o *AgreementLanguageRevision) SetContentType(v string) {
-	o.ContentType = &v
-}
-
-// GetEffectiveAt returns the EffectiveAt field value if set, zero value otherwise.
-func (o *AgreementLanguageRevision) GetEffectiveAt() string {
-	if o == nil || isNil(o.EffectiveAt) {
-		var ret string
+// GetEffectiveAt returns the EffectiveAt field value
+func (o *AgreementLanguageRevision) GetEffectiveAt() time.Time {
+	if o == nil {
+		var ret time.Time
 		return ret
 	}
-	return *o.EffectiveAt
+
+	return o.EffectiveAt
 }
 
-// GetEffectiveAtOk returns a tuple with the EffectiveAt field value if set, nil otherwise
+// GetEffectiveAtOk returns a tuple with the EffectiveAt field value
 // and a boolean to check if the value has been set.
-func (o *AgreementLanguageRevision) GetEffectiveAtOk() (*string, bool) {
-	if o == nil || isNil(o.EffectiveAt) {
+func (o *AgreementLanguageRevision) GetEffectiveAtOk() (*time.Time, bool) {
+	if o == nil {
     return nil, false
 	}
-	return o.EffectiveAt, true
+	return &o.EffectiveAt, true
 }
 
-// HasEffectiveAt returns a boolean if a field has been set.
-func (o *AgreementLanguageRevision) HasEffectiveAt() bool {
-	if o != nil && !isNil(o.EffectiveAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetEffectiveAt gets a reference to the given string and assigns it to the EffectiveAt field.
-func (o *AgreementLanguageRevision) SetEffectiveAt(v string) {
-	o.EffectiveAt = &v
+// SetEffectiveAt sets field value
+func (o *AgreementLanguageRevision) SetEffectiveAt(v time.Time) {
+	o.EffectiveAt = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -210,9 +198,9 @@ func (o *AgreementLanguageRevision) SetLanguage(v AgreementLanguageRevisionLangu
 }
 
 // GetNotValidAfter returns the NotValidAfter field value if set, zero value otherwise.
-func (o *AgreementLanguageRevision) GetNotValidAfter() string {
+func (o *AgreementLanguageRevision) GetNotValidAfter() time.Time {
 	if o == nil || isNil(o.NotValidAfter) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.NotValidAfter
@@ -220,7 +208,7 @@ func (o *AgreementLanguageRevision) GetNotValidAfter() string {
 
 // GetNotValidAfterOk returns a tuple with the NotValidAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AgreementLanguageRevision) GetNotValidAfterOk() (*string, bool) {
+func (o *AgreementLanguageRevision) GetNotValidAfterOk() (*time.Time, bool) {
 	if o == nil || isNil(o.NotValidAfter) {
     return nil, false
 	}
@@ -236,73 +224,57 @@ func (o *AgreementLanguageRevision) HasNotValidAfter() bool {
 	return false
 }
 
-// SetNotValidAfter gets a reference to the given string and assigns it to the NotValidAfter field.
-func (o *AgreementLanguageRevision) SetNotValidAfter(v string) {
+// SetNotValidAfter gets a reference to the given time.Time and assigns it to the NotValidAfter field.
+func (o *AgreementLanguageRevision) SetNotValidAfter(v time.Time) {
 	o.NotValidAfter = &v
 }
 
-// GetRequiresReconsent returns the RequiresReconsent field value if set, zero value otherwise.
-func (o *AgreementLanguageRevision) GetRequiresReconsent() bool {
-	if o == nil || isNil(o.RequiresReconsent) {
+// GetRequireReconsent returns the RequireReconsent field value
+func (o *AgreementLanguageRevision) GetRequireReconsent() bool {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.RequiresReconsent
+
+	return o.RequireReconsent
 }
 
-// GetRequiresReconsentOk returns a tuple with the RequiresReconsent field value if set, nil otherwise
+// GetRequireReconsentOk returns a tuple with the RequireReconsent field value
 // and a boolean to check if the value has been set.
-func (o *AgreementLanguageRevision) GetRequiresReconsentOk() (*bool, bool) {
-	if o == nil || isNil(o.RequiresReconsent) {
+func (o *AgreementLanguageRevision) GetRequireReconsentOk() (*bool, bool) {
+	if o == nil {
     return nil, false
 	}
-	return o.RequiresReconsent, true
+	return &o.RequireReconsent, true
 }
 
-// HasRequiresReconsent returns a boolean if a field has been set.
-func (o *AgreementLanguageRevision) HasRequiresReconsent() bool {
-	if o != nil && !isNil(o.RequiresReconsent) {
-		return true
-	}
-
-	return false
+// SetRequireReconsent sets field value
+func (o *AgreementLanguageRevision) SetRequireReconsent(v bool) {
+	o.RequireReconsent = v
 }
 
-// SetRequiresReconsent gets a reference to the given bool and assigns it to the RequiresReconsent field.
-func (o *AgreementLanguageRevision) SetRequiresReconsent(v bool) {
-	o.RequiresReconsent = &v
-}
-
-// GetText returns the Text field value if set, zero value otherwise.
+// GetText returns the Text field value
 func (o *AgreementLanguageRevision) GetText() string {
-	if o == nil || isNil(o.Text) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Text
+
+	return o.Text
 }
 
-// GetTextOk returns a tuple with the Text field value if set, nil otherwise
+// GetTextOk returns a tuple with the Text field value
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetTextOk() (*string, bool) {
-	if o == nil || isNil(o.Text) {
+	if o == nil {
     return nil, false
 	}
-	return o.Text, true
+	return &o.Text, true
 }
 
-// HasText returns a boolean if a field has been set.
-func (o *AgreementLanguageRevision) HasText() bool {
-	if o != nil && !isNil(o.Text) {
-		return true
-	}
-
-	return false
-}
-
-// SetText gets a reference to the given string and assigns it to the Text field.
+// SetText sets field value
 func (o *AgreementLanguageRevision) SetText(v string) {
-	o.Text = &v
+	o.Text = v
 }
 
 func (o AgreementLanguageRevision) MarshalJSON() ([]byte, error) {
@@ -310,10 +282,10 @@ func (o AgreementLanguageRevision) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Agreement) {
 		toSerialize["agreement"] = o.Agreement
 	}
-	if !isNil(o.ContentType) {
+	if true {
 		toSerialize["contentType"] = o.ContentType
 	}
-	if !isNil(o.EffectiveAt) {
+	if true {
 		toSerialize["effectiveAt"] = o.EffectiveAt
 	}
 	if !isNil(o.Id) {
@@ -325,10 +297,10 @@ func (o AgreementLanguageRevision) MarshalJSON() ([]byte, error) {
 	if !isNil(o.NotValidAfter) {
 		toSerialize["notValidAfter"] = o.NotValidAfter
 	}
-	if !isNil(o.RequiresReconsent) {
-		toSerialize["requiresReconsent"] = o.RequiresReconsent
+	if true {
+		toSerialize["requireReconsent"] = o.RequireReconsent
 	}
-	if !isNil(o.Text) {
+	if true {
 		toSerialize["text"] = o.Text
 	}
 	return json.Marshal(toSerialize)
