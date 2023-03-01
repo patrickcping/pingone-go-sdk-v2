@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/golangci/golangci-lint v1.51.2
+	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.0
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.2
 	github.com/patrickcping/pingone-go-sdk-v2/management v0.15.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.8.0
