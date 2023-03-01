@@ -2,6 +2,8 @@ module github.com/patrickcping/pingone-go-sdk-v2
 
 go 1.18
 
+replace github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement => ./agreementmanagement
+
 require (
 	github.com/golangci/golangci-lint v1.51.2
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.0
