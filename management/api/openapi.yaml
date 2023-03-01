@@ -1200,10 +1200,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                locale: en-CH
-                displayName: "Language_{{$timestamp}}"
-              type: object
+              $ref: '#/components/schemas/AgreementLanguage'
       responses:
         "400":
           content:

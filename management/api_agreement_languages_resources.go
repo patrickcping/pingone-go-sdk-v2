@@ -729,11 +729,11 @@ type ApiUpdateAgreementLanguageRequest struct {
 	environmentID string
 	agreementID string
 	languageID string
-	body *map[string]interface{}
+	agreementLanguage *AgreementLanguage
 }
 
-func (r ApiUpdateAgreementLanguageRequest) Body(body map[string]interface{}) ApiUpdateAgreementLanguageRequest {
-	r.body = &body
+func (r ApiUpdateAgreementLanguageRequest) AgreementLanguage(agreementLanguage AgreementLanguage) ApiUpdateAgreementLanguageRequest {
+	r.agreementLanguage = &agreementLanguage
 	return r
 }
 
@@ -802,7 +802,7 @@ func (a *AgreementLanguagesResourcesApiService) UpdateAgreementLanguageExecute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.agreementLanguage
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
