@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement"
 	"github.com/patrickcping/pingone-go-sdk-v2/authorize"
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
 	"github.com/patrickcping/pingone-go-sdk-v2/mfa"
@@ -17,6 +18,11 @@ import (
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
 	token, err := getToken(ctx, c)
+	if err != nil {
+		return nil, err
+	}
+
+	agreementManagementClient, err := AgreementManagementAPIClient(token)
 	if err != nil {
 		return nil, err
 	}
@@ -42,15 +48,34 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 	}
 
 	apiClient := &Client{
-		AuthorizeAPIClient:  authorizeClient,
-		ManagementAPIClient: managementClient,
-		MFAAPIClient:        mfaClient,
-		RiskAPIClient:       riskClient,
-		Region:              model.FindRegionByName(c.Region),
+		AgreementManagementAPIClient: agreementManagementClient,
+		AuthorizeAPIClient:           authorizeClient,
+		ManagementAPIClient:          managementClient,
+		MFAAPIClient:                 mfaClient,
+		RiskAPIClient:                riskClient,
+		Region:                       model.FindRegionByName(c.Region),
 	}
 
 	log.Printf("[INFO] PingOne Client configured")
 	return apiClient, nil
+}
+
+func AgreementManagementAPIClient(token *oauth2.Token) (*agreementmanagement.APIClient, error) {
+
+	var client *agreementmanagement.APIClient
+
+	clientcfg := agreementmanagement.NewConfiguration()
+	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", token.AccessToken))
+	client = agreementmanagement.NewAPIClient(clientcfg)
+
+	if client == nil {
+		return nil, fmt.Errorf("Cannot initialise PingOne Agreement Management client")
+	}
+
+	log.Printf("[INFO] PingOne Agreement Management Client initialised")
+
+	return client, nil
+
 }
 
 func AuthorizeAPIClient(token *oauth2.Token) (*authorize.APIClient, error) {

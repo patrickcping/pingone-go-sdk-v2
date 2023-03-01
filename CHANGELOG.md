@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.0](./agreementmanagement/CHANGELOG.md)
+    Initial release
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.16.0](./management/CHANGELOG.md)
     * **Breaking change** Agreement revision content type changed to an enum `EnumAgreementRevisionContentType`. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
     * **Breaking change** Required attributes now added to the `AgreementLanguageRevision` data model [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
