@@ -22376,18 +22376,18 @@ components:
       type: string
     Agreement:
       example:
-        consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
-        expiredUserConsents: 0
-        totalUserConsents: 1
+        totalExpiredConsents: 0
+        consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
         name: name
         description: description
+        totalConsents: 1
         id: id
         enabled: true
         reconsentPeriodDays: 6.0274563
       properties:
-        consentCountsUpdatedAt:
+        consentsAggregatedAt:
           description: The time the consent count metric was last updated. This value
             is typically updated once every 24 hours.
           format: date-time
@@ -22405,7 +22405,7 @@ components:
           type: boolean
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
-        expiredUserConsents:
+        totalExpiredConsents:
           description: "An integer that identifies the number of users who have consented\
             \ to the agreement, but their consent has expired. This value is last\
             \ calculated at the consentCountsUpdatedAt time."
@@ -22424,7 +22424,7 @@ components:
             to this agreement expires.
           format: float
           type: number
-        totalUserConsents:
+        totalConsents:
           description: An integer that identifies the total number of users who have
             consented to the agreement. This value is last calculated at the consentCountsUpdatedAt
             time.
@@ -23720,23 +23720,23 @@ components:
             - SMS
             updatedAt: updatedAt
           agreements:
-          - consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
-            environment:
+          - environment:
               id: id
-            expiredUserConsents: 0
-            totalUserConsents: 1
+            totalExpiredConsents: 0
+            consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
             name: name
             description: description
+            totalConsents: 1
             id: id
             enabled: true
             reconsentPeriodDays: 6.0274563
-          - consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
-            environment:
+          - environment:
               id: id
-            expiredUserConsents: 0
-            totalUserConsents: 1
+            totalExpiredConsents: 0
+            consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
             name: name
             description: description
+            totalConsents: 1
             id: id
             enabled: true
             reconsentPeriodDays: 6.0274563
@@ -28178,23 +28178,23 @@ components:
           - SMS
           updatedAt: updatedAt
         agreements:
-        - consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
-          environment:
+        - environment:
             id: id
-          expiredUserConsents: 0
-          totalUserConsents: 1
+          totalExpiredConsents: 0
+          consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
           name: name
           description: description
+          totalConsents: 1
           id: id
           enabled: true
           reconsentPeriodDays: 6.0274563
-        - consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
-          environment:
+        - environment:
             id: id
-          expiredUserConsents: 0
-          totalUserConsents: 1
+          totalExpiredConsents: 0
+          consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
           name: name
           description: description
+          totalConsents: 1
           id: id
           enabled: true
           reconsentPeriodDays: 6.0274563
