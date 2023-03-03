@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConsentCountsUpdatedAt** | Pointer to **time.Time** | The time the consent count metric was last updated. This value is typically updated once every 24 hours. | [optional] [readonly] 
+**ConsentsAggregatedAt** | Pointer to **time.Time** | The time the consent count metric was last updated. This value is typically updated once every 24 hours. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the agreement. | [optional] 
 **Enabled** | **bool** | A boolean that specifies the current enabled state of the agreement. This is a required property. The agreement must support the default language to be enabled. It cannot be disabled if it is referenced by a sign-on action. When an agreement is disabled, it is not used anywhere it is configured across PingOne. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**ExpiredUserConsents** | Pointer to **int32** | An integer that identifies the number of users who have consented to the agreement, but their consent has expired. This value is last calculated at the consentCountsUpdatedAt time. | [optional] [readonly] 
+**TotalExpiredConsents** | Pointer to **int32** | An integer that identifies the number of users who have consented to the agreement, but their consent has expired. This value is last calculated at the consentCountsUpdatedAt time. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the agreement ID. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the name of the agreement resource. This is a required property. | 
 **ReconsentPeriodDays** | Pointer to **float32** | A number that represents the number of days until a consent to this agreement expires. | [optional] 
-**TotalUserConsents** | Pointer to **int32** | An integer that identifies the total number of users who have consented to the agreement. This value is last calculated at the consentCountsUpdatedAt time. | [optional] [readonly] 
+**TotalConsents** | Pointer to **int32** | An integer that identifies the total number of users who have consented to the agreement. This value is last calculated at the consentCountsUpdatedAt time. | [optional] [readonly] 
 
 ## Methods
 
@@ -33,30 +33,30 @@ NewAgreementWithDefaults instantiates a new Agreement object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetConsentCountsUpdatedAt
+### GetConsentsAggregatedAt
 
-`func (o *Agreement) GetConsentCountsUpdatedAt() time.Time`
+`func (o *Agreement) GetConsentsAggregatedAt() time.Time`
 
-GetConsentCountsUpdatedAt returns the ConsentCountsUpdatedAt field if non-nil, zero value otherwise.
+GetConsentsAggregatedAt returns the ConsentsAggregatedAt field if non-nil, zero value otherwise.
 
-### GetConsentCountsUpdatedAtOk
+### GetConsentsAggregatedAtOk
 
-`func (o *Agreement) GetConsentCountsUpdatedAtOk() (*time.Time, bool)`
+`func (o *Agreement) GetConsentsAggregatedAtOk() (*time.Time, bool)`
 
-GetConsentCountsUpdatedAtOk returns a tuple with the ConsentCountsUpdatedAt field if it's non-nil, zero value otherwise
+GetConsentsAggregatedAtOk returns a tuple with the ConsentsAggregatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConsentCountsUpdatedAt
+### SetConsentsAggregatedAt
 
-`func (o *Agreement) SetConsentCountsUpdatedAt(v time.Time)`
+`func (o *Agreement) SetConsentsAggregatedAt(v time.Time)`
 
-SetConsentCountsUpdatedAt sets ConsentCountsUpdatedAt field to given value.
+SetConsentsAggregatedAt sets ConsentsAggregatedAt field to given value.
 
-### HasConsentCountsUpdatedAt
+### HasConsentsAggregatedAt
 
-`func (o *Agreement) HasConsentCountsUpdatedAt() bool`
+`func (o *Agreement) HasConsentsAggregatedAt() bool`
 
-HasConsentCountsUpdatedAt returns a boolean if a field has been set.
+HasConsentsAggregatedAt returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -128,30 +128,30 @@ SetEnvironment sets Environment field to given value.
 
 HasEnvironment returns a boolean if a field has been set.
 
-### GetExpiredUserConsents
+### GetTotalExpiredConsents
 
-`func (o *Agreement) GetExpiredUserConsents() int32`
+`func (o *Agreement) GetTotalExpiredConsents() int32`
 
-GetExpiredUserConsents returns the ExpiredUserConsents field if non-nil, zero value otherwise.
+GetTotalExpiredConsents returns the TotalExpiredConsents field if non-nil, zero value otherwise.
 
-### GetExpiredUserConsentsOk
+### GetTotalExpiredConsentsOk
 
-`func (o *Agreement) GetExpiredUserConsentsOk() (*int32, bool)`
+`func (o *Agreement) GetTotalExpiredConsentsOk() (*int32, bool)`
 
-GetExpiredUserConsentsOk returns a tuple with the ExpiredUserConsents field if it's non-nil, zero value otherwise
+GetTotalExpiredConsentsOk returns a tuple with the TotalExpiredConsents field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetExpiredUserConsents
+### SetTotalExpiredConsents
 
-`func (o *Agreement) SetExpiredUserConsents(v int32)`
+`func (o *Agreement) SetTotalExpiredConsents(v int32)`
 
-SetExpiredUserConsents sets ExpiredUserConsents field to given value.
+SetTotalExpiredConsents sets TotalExpiredConsents field to given value.
 
-### HasExpiredUserConsents
+### HasTotalExpiredConsents
 
-`func (o *Agreement) HasExpiredUserConsents() bool`
+`func (o *Agreement) HasTotalExpiredConsents() bool`
 
-HasExpiredUserConsents returns a boolean if a field has been set.
+HasTotalExpiredConsents returns a boolean if a field has been set.
 
 ### GetId
 
@@ -223,30 +223,30 @@ SetReconsentPeriodDays sets ReconsentPeriodDays field to given value.
 
 HasReconsentPeriodDays returns a boolean if a field has been set.
 
-### GetTotalUserConsents
+### GetTotalConsents
 
-`func (o *Agreement) GetTotalUserConsents() int32`
+`func (o *Agreement) GetTotalConsents() int32`
 
-GetTotalUserConsents returns the TotalUserConsents field if non-nil, zero value otherwise.
+GetTotalConsents returns the TotalConsents field if non-nil, zero value otherwise.
 
-### GetTotalUserConsentsOk
+### GetTotalConsentsOk
 
-`func (o *Agreement) GetTotalUserConsentsOk() (*int32, bool)`
+`func (o *Agreement) GetTotalConsentsOk() (*int32, bool)`
 
-GetTotalUserConsentsOk returns a tuple with the TotalUserConsents field if it's non-nil, zero value otherwise
+GetTotalConsentsOk returns a tuple with the TotalConsents field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTotalUserConsents
+### SetTotalConsents
 
-`func (o *Agreement) SetTotalUserConsents(v int32)`
+`func (o *Agreement) SetTotalConsents(v int32)`
 
-SetTotalUserConsents sets TotalUserConsents field to given value.
+SetTotalConsents sets TotalConsents field to given value.
 
-### HasTotalUserConsents
+### HasTotalConsents
 
-`func (o *Agreement) HasTotalUserConsents() bool`
+`func (o *Agreement) HasTotalConsents() bool`
 
-HasTotalUserConsents returns a boolean if a field has been set.
+HasTotalConsents returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
