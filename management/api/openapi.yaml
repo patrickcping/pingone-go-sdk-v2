@@ -22376,7 +22376,7 @@ components:
       type: string
     Agreement:
       example:
-        consentCountsUpdatedAt: consentCountsUpdatedAt
+        consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
         expiredUserConsents: 0
@@ -22390,6 +22390,7 @@ components:
         consentCountsUpdatedAt:
           description: The time the consent count metric was last updated. This value
             is typically updated once every 24 hours.
+          format: date-time
           readOnly: true
           type: string
         description:
@@ -23719,7 +23720,7 @@ components:
             - SMS
             updatedAt: updatedAt
           agreements:
-          - consentCountsUpdatedAt: consentCountsUpdatedAt
+          - consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
             expiredUserConsents: 0
@@ -23729,7 +23730,7 @@ components:
             id: id
             enabled: true
             reconsentPeriodDays: 6.0274563
-          - consentCountsUpdatedAt: consentCountsUpdatedAt
+          - consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
             expiredUserConsents: 0
@@ -23986,7 +23987,7 @@ components:
               allowPushNotification: true
               allowTotp: true
               allowNotificationOutsideWhitelist: true
-            expiresAt: expiresAt
+            expiresAt: 2000-01-23T04:56:07.000+00:00
             users:
               allowUpdateSelf: true
               allowPasswordPolicy: true
@@ -24016,7 +24017,7 @@ components:
               allowAccountProtection: true
             organization:
               id: id
-            terminatesAt: terminatesAt
+            terminatesAt: 2000-01-23T04:56:07.000+00:00
             name: name
             verify:
               allowDocumentMatch: true
@@ -24024,7 +24025,7 @@ components:
               allowFaceMatch: true
               allowPushNotifications: true
             assignedEnvironmentsCount: 7
-            beginsAt: beginsAt
+            beginsAt: 2000-01-23T04:56:07.000+00:00
             replacedByLicense:
               id: id
             id: id
@@ -24065,7 +24066,7 @@ components:
               allowPushNotification: true
               allowTotp: true
               allowNotificationOutsideWhitelist: true
-            expiresAt: expiresAt
+            expiresAt: 2000-01-23T04:56:07.000+00:00
             users:
               allowUpdateSelf: true
               allowPasswordPolicy: true
@@ -24095,7 +24096,7 @@ components:
               allowAccountProtection: true
             organization:
               id: id
-            terminatesAt: terminatesAt
+            terminatesAt: 2000-01-23T04:56:07.000+00:00
             name: name
             verify:
               allowDocumentMatch: true
@@ -24103,7 +24104,7 @@ components:
               allowFaceMatch: true
               allowPushNotifications: true
             assignedEnvironmentsCount: 7
-            beginsAt: beginsAt
+            beginsAt: 2000-01-23T04:56:07.000+00:00
             replacedByLicense:
               id: id
             id: id
@@ -24783,7 +24784,7 @@ components:
       - $ref: '#/components/schemas/IdentityProviderSAML_allOf'
     Image:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
         id: id
@@ -24803,7 +24804,7 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         createdAt:
           description: The time the resource was created.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         targets:
@@ -24811,7 +24812,7 @@ components:
       type: object
     Language:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         default: true
         environment:
           id: id
@@ -24820,7 +24821,7 @@ components:
         locale: locale
         enabled: true
         customerAdded: true
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         default:
           description: Specifies whether this language is the default for the environment.
@@ -24848,7 +24849,7 @@ components:
           type: string
         createdAt:
           description: The time the language resource was created.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         customerAdded:
@@ -24857,7 +24858,7 @@ components:
           type: boolean
         updatedAt:
           description: The time the language resource was last updated.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
       required:
@@ -24867,7 +24868,7 @@ components:
       type: object
     LanguageLocalizationStatus:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
         service: service
@@ -24876,11 +24877,11 @@ components:
         localizationComplete: true
         locale:
           id: id
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         createdAt:
           description: The time the language localization status resource was created.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         environment:
@@ -24901,7 +24902,7 @@ components:
         updatedAt:
           description: The time the language localization status resource was last
             updated.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
       required:
@@ -24940,7 +24941,7 @@ components:
           allowPushNotification: true
           allowTotp: true
           allowNotificationOutsideWhitelist: true
-        expiresAt: expiresAt
+        expiresAt: 2000-01-23T04:56:07.000+00:00
         users:
           allowUpdateSelf: true
           allowPasswordPolicy: true
@@ -24970,7 +24971,7 @@ components:
           allowAccountProtection: true
         organization:
           id: id
-        terminatesAt: terminatesAt
+        terminatesAt: 2000-01-23T04:56:07.000+00:00
         name: name
         verify:
           allowDocumentMatch: true
@@ -24978,7 +24979,7 @@ components:
           allowFaceMatch: true
           allowPushNotifications: true
         assignedEnvironmentsCount: 7
-        beginsAt: beginsAt
+        beginsAt: 2000-01-23T04:56:07.000+00:00
         replacedByLicense:
           id: id
         id: id
@@ -25000,7 +25001,7 @@ components:
           $ref: '#/components/schemas/License_authorize'
         beginsAt:
           description: The date and time this license begins.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         credentials:
@@ -25012,7 +25013,7 @@ components:
             access to PingOne services at expiration. All other licenses trigger an
             event to send a notification when the license expires but do not block
             services.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         fraud:
@@ -25053,7 +25054,7 @@ components:
           description: An optional attribute that designates the exact date and time
             when this license terminates access to PingOne services. This attribute
             can be added to any licensing package.
-          format: datetime
+          format: date-time
           type: string
         users:
           $ref: '#/components/schemas/License_users'
@@ -28177,7 +28178,7 @@ components:
           - SMS
           updatedAt: updatedAt
         agreements:
-        - consentCountsUpdatedAt: consentCountsUpdatedAt
+        - consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
           expiredUserConsents: 0
@@ -28187,7 +28188,7 @@ components:
           id: id
           enabled: true
           reconsentPeriodDays: 6.0274563
-        - consentCountsUpdatedAt: consentCountsUpdatedAt
+        - consentCountsUpdatedAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
           expiredUserConsents: 0
@@ -28444,7 +28445,7 @@ components:
             allowPushNotification: true
             allowTotp: true
             allowNotificationOutsideWhitelist: true
-          expiresAt: expiresAt
+          expiresAt: 2000-01-23T04:56:07.000+00:00
           users:
             allowUpdateSelf: true
             allowPasswordPolicy: true
@@ -28474,7 +28475,7 @@ components:
             allowAccountProtection: true
           organization:
             id: id
-          terminatesAt: terminatesAt
+          terminatesAt: 2000-01-23T04:56:07.000+00:00
           name: name
           verify:
             allowDocumentMatch: true
@@ -28482,7 +28483,7 @@ components:
             allowFaceMatch: true
             allowPushNotifications: true
           assignedEnvironmentsCount: 7
-          beginsAt: beginsAt
+          beginsAt: 2000-01-23T04:56:07.000+00:00
           replacedByLicense:
             id: id
           id: id
@@ -28523,7 +28524,7 @@ components:
             allowPushNotification: true
             allowTotp: true
             allowNotificationOutsideWhitelist: true
-          expiresAt: expiresAt
+          expiresAt: 2000-01-23T04:56:07.000+00:00
           users:
             allowUpdateSelf: true
             allowPasswordPolicy: true
@@ -28553,7 +28554,7 @@ components:
             allowAccountProtection: true
           organization:
             id: id
-          terminatesAt: terminatesAt
+          terminatesAt: 2000-01-23T04:56:07.000+00:00
           name: name
           verify:
             allowDocumentMatch: true
@@ -28561,7 +28562,7 @@ components:
             allowFaceMatch: true
             allowPushNotifications: true
           assignedEnvironmentsCount: 7
-          beginsAt: beginsAt
+          beginsAt: 2000-01-23T04:56:07.000+00:00
           replacedByLicense:
             id: id
           id: id

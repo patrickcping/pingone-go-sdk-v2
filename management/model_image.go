@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Image struct for Image
@@ -20,7 +21,7 @@ type Image struct {
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The time the resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	Targets *ImageTargets `json:"targets,omitempty"`
 }
 
@@ -106,9 +107,9 @@ func (o *Image) SetEnvironment(v ObjectEnvironment) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Image) GetCreatedAt() string {
+func (o *Image) GetCreatedAt() time.Time {
 	if o == nil || isNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -116,7 +117,7 @@ func (o *Image) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Image) GetCreatedAtOk() (*string, bool) {
+func (o *Image) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.CreatedAt) {
     return nil, false
 	}
@@ -132,8 +133,8 @@ func (o *Image) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *Image) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *Image) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 

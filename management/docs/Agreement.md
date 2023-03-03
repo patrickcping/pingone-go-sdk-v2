@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConsentCountsUpdatedAt** | Pointer to **string** | The time the consent count metric was last updated. This value is typically updated once every 24 hours. | [optional] [readonly] 
+**ConsentCountsUpdatedAt** | Pointer to **time.Time** | The time the consent count metric was last updated. This value is typically updated once every 24 hours. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the agreement. | [optional] 
 **Enabled** | **bool** | A boolean that specifies the current enabled state of the agreement. This is a required property. The agreement must support the default language to be enabled. It cannot be disabled if it is referenced by a sign-on action. When an agreement is disabled, it is not used anywhere it is configured across PingOne. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetConsentCountsUpdatedAt
 
-`func (o *Agreement) GetConsentCountsUpdatedAt() string`
+`func (o *Agreement) GetConsentCountsUpdatedAt() time.Time`
 
 GetConsentCountsUpdatedAt returns the ConsentCountsUpdatedAt field if non-nil, zero value otherwise.
 
 ### GetConsentCountsUpdatedAtOk
 
-`func (o *Agreement) GetConsentCountsUpdatedAtOk() (*string, bool)`
+`func (o *Agreement) GetConsentCountsUpdatedAtOk() (*time.Time, bool)`
 
 GetConsentCountsUpdatedAtOk returns a tuple with the ConsentCountsUpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConsentCountsUpdatedAt
 
-`func (o *Agreement) SetConsentCountsUpdatedAt(v string)`
+`func (o *Agreement) SetConsentCountsUpdatedAt(v time.Time)`
 
 SetConsentCountsUpdatedAt sets ConsentCountsUpdatedAt field to given value.
 
