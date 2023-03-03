@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The resource’s unique identifier. | [optional] [readonly] 
 **Locale** | **string** | An ISO standard language code. For more information about standard language codes, see ISO Language Code Table. | 
 **Name** | Pointer to **string** | The language name. If omitted, the ISO standard name is used. | [optional] 
-**CreatedAt** | Pointer to **string** | The time the language resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the language resource was created. | [optional] [readonly] 
 **CustomerAdded** | Pointer to **bool** | Specifies whether this language was added by a customer administrator. | [optional] [readonly] 
-**UpdatedAt** | Pointer to **string** | The time the language resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the language resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
@@ -170,20 +170,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *Language) GetCreatedAt() string`
+`func (o *Language) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Language) GetCreatedAtOk() (*string, bool)`
+`func (o *Language) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Language) SetCreatedAt(v string)`
+`func (o *Language) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -220,20 +220,20 @@ HasCustomerAdded returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *Language) GetUpdatedAt() string`
+`func (o *Language) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *Language) GetUpdatedAtOk() (*string, bool)`
+`func (o *Language) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *Language) SetUpdatedAt(v string)`
+`func (o *Language) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

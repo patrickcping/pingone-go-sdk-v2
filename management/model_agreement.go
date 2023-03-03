@@ -12,12 +12,13 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Agreement struct for Agreement
 type Agreement struct {
 	// The time the consent count metric was last updated. This value is typically updated once every 24 hours.
-	ConsentCountsUpdatedAt *string `json:"consentCountsUpdatedAt,omitempty"`
+	ConsentCountsUpdatedAt *time.Time `json:"consentCountsUpdatedAt,omitempty"`
 	// A string that specifies the description of the agreement.
 	Description *string `json:"description,omitempty"`
 	// A boolean that specifies the current enabled state of the agreement. This is a required property. The agreement must support the default language to be enabled. It cannot be disabled if it is referenced by a sign-on action. When an agreement is disabled, it is not used anywhere it is configured across PingOne.
@@ -55,9 +56,9 @@ func NewAgreementWithDefaults() *Agreement {
 }
 
 // GetConsentCountsUpdatedAt returns the ConsentCountsUpdatedAt field value if set, zero value otherwise.
-func (o *Agreement) GetConsentCountsUpdatedAt() string {
+func (o *Agreement) GetConsentCountsUpdatedAt() time.Time {
 	if o == nil || isNil(o.ConsentCountsUpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.ConsentCountsUpdatedAt
@@ -65,7 +66,7 @@ func (o *Agreement) GetConsentCountsUpdatedAt() string {
 
 // GetConsentCountsUpdatedAtOk returns a tuple with the ConsentCountsUpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Agreement) GetConsentCountsUpdatedAtOk() (*string, bool) {
+func (o *Agreement) GetConsentCountsUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.ConsentCountsUpdatedAt) {
     return nil, false
 	}
@@ -81,8 +82,8 @@ func (o *Agreement) HasConsentCountsUpdatedAt() bool {
 	return false
 }
 
-// SetConsentCountsUpdatedAt gets a reference to the given string and assigns it to the ConsentCountsUpdatedAt field.
-func (o *Agreement) SetConsentCountsUpdatedAt(v string) {
+// SetConsentCountsUpdatedAt gets a reference to the given time.Time and assigns it to the ConsentCountsUpdatedAt field.
+func (o *Agreement) SetConsentCountsUpdatedAt(v time.Time) {
 	o.ConsentCountsUpdatedAt = &v
 }
 

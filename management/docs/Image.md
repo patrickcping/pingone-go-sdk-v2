@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Targets** | Pointer to [**ImageTargets**](ImageTargets.md) |  | [optional] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasEnvironment returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *Image) GetCreatedAt() string`
+`func (o *Image) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Image) GetCreatedAtOk() (*string, bool)`
+`func (o *Image) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Image) SetCreatedAt(v string)`
+`func (o *Image) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 

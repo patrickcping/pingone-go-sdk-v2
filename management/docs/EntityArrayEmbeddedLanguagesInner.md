@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **Default** | **bool** | Specifies whether this language is the default for the environment. This property value must be set to false when creating a language resource. It can be set to true only after the language is enabled and after the localization of an agreement resource is complete when agreements are used for the environment. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Name** | Pointer to **string** | The language name. If omitted, the ISO standard name is used. | [optional] 
-**CreatedAt** | Pointer to **string** | The time the language resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the language resource was created. | [optional] [readonly] 
 **CustomerAdded** | Pointer to **bool** | Specifies whether this language was added by a customer administrator. | [optional] [readonly] 
-**UpdatedAt** | Pointer to **string** | The time the language resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the language resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
@@ -269,20 +269,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *EntityArrayEmbeddedLanguagesInner) GetCreatedAt() string`
+`func (o *EntityArrayEmbeddedLanguagesInner) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *EntityArrayEmbeddedLanguagesInner) GetCreatedAtOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedLanguagesInner) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *EntityArrayEmbeddedLanguagesInner) SetCreatedAt(v string)`
+`func (o *EntityArrayEmbeddedLanguagesInner) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -319,20 +319,20 @@ HasCustomerAdded returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *EntityArrayEmbeddedLanguagesInner) GetUpdatedAt() string`
+`func (o *EntityArrayEmbeddedLanguagesInner) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *EntityArrayEmbeddedLanguagesInner) GetUpdatedAtOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedLanguagesInner) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *EntityArrayEmbeddedLanguagesInner) SetUpdatedAt(v string)`
+`func (o *EntityArrayEmbeddedLanguagesInner) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

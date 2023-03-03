@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // Language struct for Language
@@ -28,11 +29,11 @@ type Language struct {
 	// The language name. If omitted, the ISO standard name is used.
 	Name *string `json:"name,omitempty"`
 	// The time the language resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Specifies whether this language was added by a customer administrator.
 	CustomerAdded *bool `json:"customerAdded,omitempty"`
 	// The time the language resource was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewLanguage instantiates a new Language object
@@ -224,9 +225,9 @@ func (o *Language) SetName(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Language) GetCreatedAt() string {
+func (o *Language) GetCreatedAt() time.Time {
 	if o == nil || isNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -234,7 +235,7 @@ func (o *Language) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Language) GetCreatedAtOk() (*string, bool) {
+func (o *Language) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.CreatedAt) {
     return nil, false
 	}
@@ -250,8 +251,8 @@ func (o *Language) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *Language) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *Language) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -288,9 +289,9 @@ func (o *Language) SetCustomerAdded(v bool) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *Language) GetUpdatedAt() string {
+func (o *Language) GetUpdatedAt() time.Time {
 	if o == nil || isNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -298,7 +299,7 @@ func (o *Language) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Language) GetUpdatedAtOk() (*string, bool) {
+func (o *Language) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.UpdatedAt) {
     return nil, false
 	}
@@ -314,8 +315,8 @@ func (o *Language) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *Language) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *Language) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 

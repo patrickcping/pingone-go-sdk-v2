@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // License struct for License
@@ -21,11 +22,11 @@ type License struct {
 	AssignedEnvironmentsCount *int32 `json:"assignedEnvironmentsCount,omitempty"`
 	Authorize *LicenseAuthorize `json:"authorize,omitempty"`
 	// The date and time this license begins.
-	BeginsAt *string `json:"beginsAt,omitempty"`
+	BeginsAt *time.Time `json:"beginsAt,omitempty"`
 	Credentials *LicenseCredentials `json:"credentials,omitempty"`
 	Environments *LicenseEnvironments `json:"environments,omitempty"`
 	// The date and time this license expires. TRIAL licenses stop access to PingOne services at expiration. All other licenses trigger an event to send a notification when the license expires but do not block services.
-	ExpiresAt *string `json:"expiresAt,omitempty"`
+	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	Fraud *LicenseFraud `json:"fraud,omitempty"`
 	Gateways *LicenseGateways `json:"gateways,omitempty"`
 	// A read-only string that specifies the license resource’s unique identifier.
@@ -42,7 +43,7 @@ type License struct {
 	ReplacedByLicense *LicenseReplacedByLicense `json:"replacedByLicense,omitempty"`
 	Status *EnumLicenseStatus `json:"status,omitempty"`
 	// An optional attribute that designates the exact date and time when this license terminates access to PingOne services. This attribute can be added to any licensing package.
-	TerminatesAt *string `json:"terminatesAt,omitempty"`
+	TerminatesAt *time.Time `json:"terminatesAt,omitempty"`
 	Users *LicenseUsers `json:"users,omitempty"`
 	Verify *LicenseVerify `json:"verify,omitempty"`
 }
@@ -162,9 +163,9 @@ func (o *License) SetAuthorize(v LicenseAuthorize) {
 }
 
 // GetBeginsAt returns the BeginsAt field value if set, zero value otherwise.
-func (o *License) GetBeginsAt() string {
+func (o *License) GetBeginsAt() time.Time {
 	if o == nil || isNil(o.BeginsAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.BeginsAt
@@ -172,7 +173,7 @@ func (o *License) GetBeginsAt() string {
 
 // GetBeginsAtOk returns a tuple with the BeginsAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *License) GetBeginsAtOk() (*string, bool) {
+func (o *License) GetBeginsAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.BeginsAt) {
     return nil, false
 	}
@@ -188,8 +189,8 @@ func (o *License) HasBeginsAt() bool {
 	return false
 }
 
-// SetBeginsAt gets a reference to the given string and assigns it to the BeginsAt field.
-func (o *License) SetBeginsAt(v string) {
+// SetBeginsAt gets a reference to the given time.Time and assigns it to the BeginsAt field.
+func (o *License) SetBeginsAt(v time.Time) {
 	o.BeginsAt = &v
 }
 
@@ -258,9 +259,9 @@ func (o *License) SetEnvironments(v LicenseEnvironments) {
 }
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
-func (o *License) GetExpiresAt() string {
+func (o *License) GetExpiresAt() time.Time {
 	if o == nil || isNil(o.ExpiresAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.ExpiresAt
@@ -268,7 +269,7 @@ func (o *License) GetExpiresAt() string {
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *License) GetExpiresAtOk() (*string, bool) {
+func (o *License) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.ExpiresAt) {
     return nil, false
 	}
@@ -284,8 +285,8 @@ func (o *License) HasExpiresAt() bool {
 	return false
 }
 
-// SetExpiresAt gets a reference to the given string and assigns it to the ExpiresAt field.
-func (o *License) SetExpiresAt(v string) {
+// SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
+func (o *License) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
@@ -666,9 +667,9 @@ func (o *License) SetStatus(v EnumLicenseStatus) {
 }
 
 // GetTerminatesAt returns the TerminatesAt field value if set, zero value otherwise.
-func (o *License) GetTerminatesAt() string {
+func (o *License) GetTerminatesAt() time.Time {
 	if o == nil || isNil(o.TerminatesAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.TerminatesAt
@@ -676,7 +677,7 @@ func (o *License) GetTerminatesAt() string {
 
 // GetTerminatesAtOk returns a tuple with the TerminatesAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *License) GetTerminatesAtOk() (*string, bool) {
+func (o *License) GetTerminatesAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.TerminatesAt) {
     return nil, false
 	}
@@ -692,8 +693,8 @@ func (o *License) HasTerminatesAt() bool {
 	return false
 }
 
-// SetTerminatesAt gets a reference to the given string and assigns it to the TerminatesAt field.
-func (o *License) SetTerminatesAt(v string) {
+// SetTerminatesAt gets a reference to the given time.Time and assigns it to the TerminatesAt field.
+func (o *License) SetTerminatesAt(v time.Time) {
 	o.TerminatesAt = &v
 }
 

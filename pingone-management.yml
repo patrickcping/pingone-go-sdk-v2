@@ -398,6 +398,7 @@ components:
       properties:
         consentCountsUpdatedAt:
           type: string
+          format: date-time
           description: The time the consent count metric was last updated. This value is typically updated once every 24 hours.
           readOnly: true
         description:
@@ -2364,7 +2365,7 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         createdAt:
           type: string
-          format: datetime
+          format: date-time
           readOnly: true
           description: The time the resource was created.
         targets:
@@ -2417,7 +2418,7 @@ components:
           description: The language name. If omitted, the ISO standard name is used.
         createdAt:
           type: string
-          format: datetime
+          format: date-time
           description: The time the language resource was created.
           readOnly: true
         customerAdded:
@@ -2426,7 +2427,7 @@ components:
           readOnly: true
         updatedAt:
           type: string
-          format: datetime
+          format: date-time
           description: The time the language resource was last updated.
           readOnly: true
       required:
@@ -2438,7 +2439,7 @@ components:
       properties:
         createdAt:
           type: string
-          format: datetime
+          format: date-time
           description: The time the language localization status resource was created.
           readOnly: true
         environment:
@@ -2463,7 +2464,7 @@ components:
           type: string
         updatedAt:
           type: string
-          format: datetime
+          format: date-time
           description: The time the language localization status resource was last updated.
           readOnly: true
       required:
@@ -2498,7 +2499,7 @@ components:
               description: A read-only boolean that specifies whether to enable the PingOne Authorize dynamic authorization feature.
         beginsAt:
           type: string
-          format: datetime
+          format: date-time
           description: The date and time this license begins.
           readOnly: true
         credentials:
@@ -2534,7 +2535,7 @@ components:
                 $ref: '#/components/schemas/EnumRegionCodeLicense'
         expiresAt:
           type: string
-          format: datetime
+          format: date-time
           readOnly: true
           description: The date and time this license expires. TRIAL licenses stop access to PingOne services at expiration. All other licenses trigger an event to send a notification when the license expires but do not block services.
         fraud:
@@ -2632,7 +2633,7 @@ components:
           $ref: '#/components/schemas/EnumLicenseStatus'
         terminatesAt:
           type: string
-          format: datetime
+          format: date-time
           description: An optional attribute that designates the exact date and time when this license terminates access to PingOne services. This attribute can be added to any licensing package.
         users:
           type: object
