@@ -80,7 +80,7 @@ func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -110,9 +110,9 @@ func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r Api
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
-	localVarFormParams.Add("usageType", parameterToString(*r.usageType, ""))
+	parameterAddToHeaderOrQuery(localVarFormParams, "usageType", r.usageType, "")
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileBytes *[]byte
 
@@ -302,7 +302,7 @@ func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -326,7 +326,7 @@ func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 
 	if localVarHeaderParams["Content-Type"] == "multipart/form-data" {
@@ -348,7 +348,7 @@ func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest
 	var req *http.Request
 	if localVarHeaderParams["Content-Type"] == "multipart/form-data" {
 
-		localVarFormParams.Add("usageType", parameterToString(*r.usageType, ""))
+		localVarFormParams.Add("usageType", parameterValueToString(*r.usageType, ""))
 		var fileLocalVarFormFileName string
 		var fileLocalVarFileBytes *[]byte
 
@@ -519,8 +519,8 @@ func (a *CertificateManagementApiService) DeleteCertificateExecute(r ApiDeleteCe
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates/{certID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterToString(r.certID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterValueToString(r.certID, "certID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -679,8 +679,8 @@ func (a *CertificateManagementApiService) DeleteKeyExecute(r ApiDeleteKeyRequest
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterToString(r.keyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -848,8 +848,8 @@ func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}/csr"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterToString(r.keyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -873,7 +873,7 @@ func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1023,8 +1023,8 @@ func (a *CertificateManagementApiService) GetCertificateExecute(r ApiGetCertific
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates/{certID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterToString(r.certID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterValueToString(r.certID, "certID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1195,8 +1195,8 @@ func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r Ap
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates/{certID}/applications"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterToString(r.certID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterValueToString(r.certID, "certID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1364,7 +1364,7 @@ func (a *CertificateManagementApiService) GetCertificatesExecute(r ApiGetCertifi
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1541,8 +1541,8 @@ func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (int
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterToString(r.keyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1566,7 +1566,7 @@ func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (int
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		localVarHeaderParams["Accept"] = parameterToString(*r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept", r.accept, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1724,8 +1724,8 @@ func (a *CertificateManagementApiService) GetKeyApplicationsExecute(r ApiGetKeyA
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}/applications"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterToString(r.keyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1893,7 +1893,7 @@ func (a *CertificateManagementApiService) GetKeysExecute(r ApiGetKeysRequest) (*
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2070,8 +2070,8 @@ func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCS
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}/csr"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterToString(r.keyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2259,8 +2259,8 @@ func (a *CertificateManagementApiService) UpdateKeyExecute(r ApiUpdateKeyRequest
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterToString(r.keyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2433,7 +2433,7 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptions
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/decryptions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2608,7 +2608,7 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptions
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/encryptions"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2783,7 +2783,7 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPos
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/signings"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2958,7 +2958,7 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDVerificatio
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/verifications"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

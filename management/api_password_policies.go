@@ -3,7 +3,7 @@ PingOne Platform API - SSO and Base
 
 The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
 
-API version: 2022-07-18
+API version: 2022-08-02
 */
 
 package management
@@ -70,7 +70,7 @@ func (a *PasswordPoliciesApiService) CreatePasswordPolicyExecute(r ApiCreatePass
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -269,8 +269,8 @@ func (a *PasswordPoliciesApiService) DeletePasswordPolicyExecute(r ApiDeletePass
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterToString(r.passwordPolicyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterValueToString(r.passwordPolicyID, "passwordPolicyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -429,7 +429,7 @@ func (a *PasswordPoliciesApiService) ReadAllPasswordPoliciesExecute(r ApiReadAll
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -600,8 +600,8 @@ func (a *PasswordPoliciesApiService) ReadOnePasswordPolicyExecute(r ApiReadOnePa
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterToString(r.passwordPolicyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterValueToString(r.passwordPolicyID, "passwordPolicyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -778,8 +778,8 @@ func (a *PasswordPoliciesApiService) UpdatePasswordPolicyExecute(r ApiUpdatePass
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterToString(r.passwordPolicyID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterValueToString(r.passwordPolicyID, "passwordPolicyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
