@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationDetailsUserVelocityByIpThreshold type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationDetailsUserVelocityByIpThreshold{}
+
 // RiskEvaluationDetailsUserVelocityByIpThreshold The information about the calculated threshold used.
 type RiskEvaluationDetailsUserVelocityByIpThreshold struct {
 	// An integer indicating the value calculated for the high threshold. If the IP was accessed by more than the high number of users during the past hour, the IP is flagged as a HIGH userVelocityByIp.level.
@@ -46,7 +49,7 @@ func NewRiskEvaluationDetailsUserVelocityByIpThresholdWithDefaults() *RiskEvalua
 
 // GetHigh returns the High field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetHigh() int32 {
-	if o == nil || isNil(o.High) {
+	if o == nil || IsNil(o.High) {
 		var ret int32
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetHigh() int32 {
 // GetHighOk returns a tuple with the High field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetHighOk() (*int32, bool) {
-	if o == nil || isNil(o.High) {
-    return nil, false
+	if o == nil || IsNil(o.High) {
+		return nil, false
 	}
 	return o.High, true
 }
 
 // HasHigh returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasHigh() bool {
-	if o != nil && !isNil(o.High) {
+	if o != nil && !IsNil(o.High) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetHigh(v int32) {
 
 // GetMedium returns the Medium field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetMedium() int32 {
-	if o == nil || isNil(o.Medium) {
+	if o == nil || IsNil(o.Medium) {
 		var ret int32
 		return ret
 	}
@@ -88,15 +91,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetMedium() int32 {
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetMediumOk() (*int32, bool) {
-	if o == nil || isNil(o.Medium) {
-    return nil, false
+	if o == nil || IsNil(o.Medium) {
+		return nil, false
 	}
 	return o.Medium, true
 }
 
 // HasMedium returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasMedium() bool {
-	if o != nil && !isNil(o.Medium) {
+	if o != nil && !IsNil(o.Medium) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetMedium(v int32) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSource() EnumThresholdSource {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret EnumThresholdSource
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSource() EnumThresho
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetSourceOk() (*EnumThresholdSource, bool) {
-	if o == nil || isNil(o.Source) {
-    return nil, false
+	if o == nil || IsNil(o.Source) {
+		return nil, false
 	}
 	return o.Source, true
 }
 
 // HasSource returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetSource(v EnumThresho
 
 // GetCalculatedAt returns the CalculatedAt field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetCalculatedAt() string {
-	if o == nil || isNil(o.CalculatedAt) {
+	if o == nil || IsNil(o.CalculatedAt) {
 		var ret string
 		return ret
 	}
@@ -152,15 +155,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetCalculatedAt() strin
 // GetCalculatedAtOk returns a tuple with the CalculatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetCalculatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CalculatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CalculatedAt) {
+		return nil, false
 	}
 	return o.CalculatedAt, true
 }
 
 // HasCalculatedAt returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasCalculatedAt() bool {
-	if o != nil && !isNil(o.CalculatedAt) {
+	if o != nil && !IsNil(o.CalculatedAt) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetCalculatedAt(v strin
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetExpiresAt() string {
-	if o == nil || isNil(o.ExpiresAt) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		var ret string
 		return ret
 	}
@@ -184,15 +187,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetExpiresAt() string {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) GetExpiresAtOk() (*string, bool) {
-	if o == nil || isNil(o.ExpiresAt) {
-    return nil, false
+	if o == nil || IsNil(o.ExpiresAt) {
+		return nil, false
 	}
 	return o.ExpiresAt, true
 }
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) HasExpiresAt() bool {
-	if o != nil && !isNil(o.ExpiresAt) {
+	if o != nil && !IsNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -205,23 +208,31 @@ func (o *RiskEvaluationDetailsUserVelocityByIpThreshold) SetExpiresAt(v string) 
 }
 
 func (o RiskEvaluationDetailsUserVelocityByIpThreshold) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.High) {
-		toSerialize["high"] = o.High
-	}
-	if !isNil(o.Medium) {
-		toSerialize["medium"] = o.Medium
-	}
-	if !isNil(o.Source) {
-		toSerialize["source"] = o.Source
-	}
-	if !isNil(o.CalculatedAt) {
-		toSerialize["calculatedAt"] = o.CalculatedAt
-	}
-	if !isNil(o.ExpiresAt) {
-		toSerialize["expiresAt"] = o.ExpiresAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationDetailsUserVelocityByIpThreshold) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.High) {
+		toSerialize["high"] = o.High
+	}
+	if !IsNil(o.Medium) {
+		toSerialize["medium"] = o.Medium
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.CalculatedAt) {
+		toSerialize["calculatedAt"] = o.CalculatedAt
+	}
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expiresAt"] = o.ExpiresAt
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationDetailsUserVelocityByIpThreshold struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationEvent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationEvent{}
+
 // RiskEvaluationEvent struct for RiskEvaluationEvent
 type RiskEvaluationEvent struct {
 	Browser *RiskEvaluationEventBrowser `json:"browser,omitempty"`
@@ -51,7 +54,7 @@ func NewRiskEvaluationEventWithDefaults() *RiskEvaluationEvent {
 
 // GetBrowser returns the Browser field value if set, zero value otherwise.
 func (o *RiskEvaluationEvent) GetBrowser() RiskEvaluationEventBrowser {
-	if o == nil || isNil(o.Browser) {
+	if o == nil || IsNil(o.Browser) {
 		var ret RiskEvaluationEventBrowser
 		return ret
 	}
@@ -61,15 +64,15 @@ func (o *RiskEvaluationEvent) GetBrowser() RiskEvaluationEventBrowser {
 // GetBrowserOk returns a tuple with the Browser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetBrowserOk() (*RiskEvaluationEventBrowser, bool) {
-	if o == nil || isNil(o.Browser) {
-    return nil, false
+	if o == nil || IsNil(o.Browser) {
+		return nil, false
 	}
 	return o.Browser, true
 }
 
 // HasBrowser returns a boolean if a field has been set.
 func (o *RiskEvaluationEvent) HasBrowser() bool {
-	if o != nil && !isNil(o.Browser) {
+	if o != nil && !IsNil(o.Browser) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *RiskEvaluationEvent) SetBrowser(v RiskEvaluationEventBrowser) {
 
 // GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise.
 func (o *RiskEvaluationEvent) GetCompletionStatus() EnumCompletionStatus {
-	if o == nil || isNil(o.CompletionStatus) {
+	if o == nil || IsNil(o.CompletionStatus) {
 		var ret EnumCompletionStatus
 		return ret
 	}
@@ -93,15 +96,15 @@ func (o *RiskEvaluationEvent) GetCompletionStatus() EnumCompletionStatus {
 // GetCompletionStatusOk returns a tuple with the CompletionStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetCompletionStatusOk() (*EnumCompletionStatus, bool) {
-	if o == nil || isNil(o.CompletionStatus) {
-    return nil, false
+	if o == nil || IsNil(o.CompletionStatus) {
+		return nil, false
 	}
 	return o.CompletionStatus, true
 }
 
 // HasCompletionStatus returns a boolean if a field has been set.
 func (o *RiskEvaluationEvent) HasCompletionStatus() bool {
-	if o != nil && !isNil(o.CompletionStatus) {
+	if o != nil && !IsNil(o.CompletionStatus) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *RiskEvaluationEvent) SetCompletionStatus(v EnumCompletionStatus) {
 
 // GetEvaluatedFactors returns the EvaluatedFactors field value if set, zero value otherwise.
 func (o *RiskEvaluationEvent) GetEvaluatedFactors() RiskEvaluationEventEvaluatedFactors {
-	if o == nil || isNil(o.EvaluatedFactors) {
+	if o == nil || IsNil(o.EvaluatedFactors) {
 		var ret RiskEvaluationEventEvaluatedFactors
 		return ret
 	}
@@ -125,15 +128,15 @@ func (o *RiskEvaluationEvent) GetEvaluatedFactors() RiskEvaluationEventEvaluated
 // GetEvaluatedFactorsOk returns a tuple with the EvaluatedFactors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetEvaluatedFactorsOk() (*RiskEvaluationEventEvaluatedFactors, bool) {
-	if o == nil || isNil(o.EvaluatedFactors) {
-    return nil, false
+	if o == nil || IsNil(o.EvaluatedFactors) {
+		return nil, false
 	}
 	return o.EvaluatedFactors, true
 }
 
 // HasEvaluatedFactors returns a boolean if a field has been set.
 func (o *RiskEvaluationEvent) HasEvaluatedFactors() bool {
-	if o != nil && !isNil(o.EvaluatedFactors) {
+	if o != nil && !IsNil(o.EvaluatedFactors) {
 		return true
 	}
 
@@ -159,7 +162,7 @@ func (o *RiskEvaluationEvent) GetIp() string {
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetIpOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Ip, true
 }
@@ -171,7 +174,7 @@ func (o *RiskEvaluationEvent) SetIp(v string) {
 
 // GetFlow returns the Flow field value if set, zero value otherwise.
 func (o *RiskEvaluationEvent) GetFlow() RiskEvaluationEventFlow {
-	if o == nil || isNil(o.Flow) {
+	if o == nil || IsNil(o.Flow) {
 		var ret RiskEvaluationEventFlow
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *RiskEvaluationEvent) GetFlow() RiskEvaluationEventFlow {
 // GetFlowOk returns a tuple with the Flow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetFlowOk() (*RiskEvaluationEventFlow, bool) {
-	if o == nil || isNil(o.Flow) {
-    return nil, false
+	if o == nil || IsNil(o.Flow) {
+		return nil, false
 	}
 	return o.Flow, true
 }
 
 // HasFlow returns a boolean if a field has been set.
 func (o *RiskEvaluationEvent) HasFlow() bool {
-	if o != nil && !isNil(o.Flow) {
+	if o != nil && !IsNil(o.Flow) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *RiskEvaluationEvent) SetFlow(v RiskEvaluationEventFlow) {
 
 // GetOrigin returns the Origin field value if set, zero value otherwise.
 func (o *RiskEvaluationEvent) GetOrigin() string {
-	if o == nil || isNil(o.Origin) {
+	if o == nil || IsNil(o.Origin) {
 		var ret string
 		return ret
 	}
@@ -213,15 +216,15 @@ func (o *RiskEvaluationEvent) GetOrigin() string {
 // GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetOriginOk() (*string, bool) {
-	if o == nil || isNil(o.Origin) {
-    return nil, false
+	if o == nil || IsNil(o.Origin) {
+		return nil, false
 	}
 	return o.Origin, true
 }
 
 // HasOrigin returns a boolean if a field has been set.
 func (o *RiskEvaluationEvent) HasOrigin() bool {
-	if o != nil && !isNil(o.Origin) {
+	if o != nil && !IsNil(o.Origin) {
 		return true
 	}
 
@@ -235,7 +238,7 @@ func (o *RiskEvaluationEvent) SetOrigin(v string) {
 
 // GetSession returns the Session field value if set, zero value otherwise.
 func (o *RiskEvaluationEvent) GetSession() RiskEvaluationEventSession {
-	if o == nil || isNil(o.Session) {
+	if o == nil || IsNil(o.Session) {
 		var ret RiskEvaluationEventSession
 		return ret
 	}
@@ -245,15 +248,15 @@ func (o *RiskEvaluationEvent) GetSession() RiskEvaluationEventSession {
 // GetSessionOk returns a tuple with the Session field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetSessionOk() (*RiskEvaluationEventSession, bool) {
-	if o == nil || isNil(o.Session) {
-    return nil, false
+	if o == nil || IsNil(o.Session) {
+		return nil, false
 	}
 	return o.Session, true
 }
 
 // HasSession returns a boolean if a field has been set.
 func (o *RiskEvaluationEvent) HasSession() bool {
-	if o != nil && !isNil(o.Session) {
+	if o != nil && !IsNil(o.Session) {
 		return true
 	}
 
@@ -267,7 +270,7 @@ func (o *RiskEvaluationEvent) SetSession(v RiskEvaluationEventSession) {
 
 // GetTargetResource returns the TargetResource field value if set, zero value otherwise.
 func (o *RiskEvaluationEvent) GetTargetResource() RiskEvaluationEventTargetResource {
-	if o == nil || isNil(o.TargetResource) {
+	if o == nil || IsNil(o.TargetResource) {
 		var ret RiskEvaluationEventTargetResource
 		return ret
 	}
@@ -277,15 +280,15 @@ func (o *RiskEvaluationEvent) GetTargetResource() RiskEvaluationEventTargetResou
 // GetTargetResourceOk returns a tuple with the TargetResource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetTargetResourceOk() (*RiskEvaluationEventTargetResource, bool) {
-	if o == nil || isNil(o.TargetResource) {
-    return nil, false
+	if o == nil || IsNil(o.TargetResource) {
+		return nil, false
 	}
 	return o.TargetResource, true
 }
 
 // HasTargetResource returns a boolean if a field has been set.
 func (o *RiskEvaluationEvent) HasTargetResource() bool {
-	if o != nil && !isNil(o.TargetResource) {
+	if o != nil && !IsNil(o.TargetResource) {
 		return true
 	}
 
@@ -311,7 +314,7 @@ func (o *RiskEvaluationEvent) GetUser() RiskEvaluationEventUser {
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetUserOk() (*RiskEvaluationEventUser, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.User, true
 }
@@ -323,7 +326,7 @@ func (o *RiskEvaluationEvent) SetUser(v RiskEvaluationEventUser) {
 
 // GetSharingType returns the SharingType field value if set, zero value otherwise.
 func (o *RiskEvaluationEvent) GetSharingType() EnumEventSharingType {
-	if o == nil || isNil(o.SharingType) {
+	if o == nil || IsNil(o.SharingType) {
 		var ret EnumEventSharingType
 		return ret
 	}
@@ -333,15 +336,15 @@ func (o *RiskEvaluationEvent) GetSharingType() EnumEventSharingType {
 // GetSharingTypeOk returns a tuple with the SharingType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEvent) GetSharingTypeOk() (*EnumEventSharingType, bool) {
-	if o == nil || isNil(o.SharingType) {
-    return nil, false
+	if o == nil || IsNil(o.SharingType) {
+		return nil, false
 	}
 	return o.SharingType, true
 }
 
 // HasSharingType returns a boolean if a field has been set.
 func (o *RiskEvaluationEvent) HasSharingType() bool {
-	if o != nil && !isNil(o.SharingType) {
+	if o != nil && !IsNil(o.SharingType) {
 		return true
 	}
 
@@ -354,38 +357,42 @@ func (o *RiskEvaluationEvent) SetSharingType(v EnumEventSharingType) {
 }
 
 func (o RiskEvaluationEvent) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Browser) {
-		toSerialize["browser"] = o.Browser
-	}
-	if !isNil(o.CompletionStatus) {
-		toSerialize["completionStatus"] = o.CompletionStatus
-	}
-	if !isNil(o.EvaluatedFactors) {
-		toSerialize["evaluatedFactors"] = o.EvaluatedFactors
-	}
-	if true {
-		toSerialize["ip"] = o.Ip
-	}
-	if !isNil(o.Flow) {
-		toSerialize["flow"] = o.Flow
-	}
-	if !isNil(o.Origin) {
-		toSerialize["origin"] = o.Origin
-	}
-	if !isNil(o.Session) {
-		toSerialize["session"] = o.Session
-	}
-	if !isNil(o.TargetResource) {
-		toSerialize["targetResource"] = o.TargetResource
-	}
-	if true {
-		toSerialize["user"] = o.User
-	}
-	if !isNil(o.SharingType) {
-		toSerialize["sharingType"] = o.SharingType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationEvent) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Browser) {
+		toSerialize["browser"] = o.Browser
+	}
+	if !IsNil(o.CompletionStatus) {
+		toSerialize["completionStatus"] = o.CompletionStatus
+	}
+	if !IsNil(o.EvaluatedFactors) {
+		toSerialize["evaluatedFactors"] = o.EvaluatedFactors
+	}
+	toSerialize["ip"] = o.Ip
+	if !IsNil(o.Flow) {
+		toSerialize["flow"] = o.Flow
+	}
+	if !IsNil(o.Origin) {
+		toSerialize["origin"] = o.Origin
+	}
+	if !IsNil(o.Session) {
+		toSerialize["session"] = o.Session
+	}
+	if !IsNil(o.TargetResource) {
+		toSerialize["targetResource"] = o.TargetResource
+	}
+	toSerialize["user"] = o.User
+	if !IsNil(o.SharingType) {
+		toSerialize["sharingType"] = o.SharingType
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationEvent struct {

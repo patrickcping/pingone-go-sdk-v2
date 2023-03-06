@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner{}
+
 // RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner struct for RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner
 type RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner struct {
 	Value string `json:"value"`
@@ -53,7 +56,7 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) GetValue
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) GetValueOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Value, true
 }
@@ -77,7 +80,7 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) GetWeigh
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) GetWeightOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Weight, true
 }
@@ -88,14 +91,18 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) SetWeigh
 }
 
 func (o RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["value"] = o.Value
-	}
-	if true {
-		toSerialize["weight"] = o.Weight
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["value"] = o.Value
+	toSerialize["weight"] = o.Weight
+	return toSerialize, nil
 }
 
 type NullableRiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner struct {

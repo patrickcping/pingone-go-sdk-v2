@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationDetailsUserRiskBehavior type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationDetailsUserRiskBehavior{}
+
 // RiskEvaluationDetailsUserRiskBehavior struct for RiskEvaluationDetailsUserRiskBehavior
 type RiskEvaluationDetailsUserRiskBehavior struct {
 	Level *EnumRiskLevel `json:"level,omitempty"`
@@ -40,7 +43,7 @@ func NewRiskEvaluationDetailsUserRiskBehaviorWithDefaults() *RiskEvaluationDetai
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserRiskBehavior) GetLevel() EnumRiskLevel {
-	if o == nil || isNil(o.Level) {
+	if o == nil || IsNil(o.Level) {
 		var ret EnumRiskLevel
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *RiskEvaluationDetailsUserRiskBehavior) GetLevel() EnumRiskLevel {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserRiskBehavior) GetLevelOk() (*EnumRiskLevel, bool) {
-	if o == nil || isNil(o.Level) {
-    return nil, false
+	if o == nil || IsNil(o.Level) {
+		return nil, false
 	}
 	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserRiskBehavior) HasLevel() bool {
-	if o != nil && !isNil(o.Level) {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *RiskEvaluationDetailsUserRiskBehavior) SetLevel(v EnumRiskLevel) {
 
 // GetReason returns the Reason field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserRiskBehavior) GetReason() string {
-	if o == nil || isNil(o.Reason) {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *RiskEvaluationDetailsUserRiskBehavior) GetReason() string {
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserRiskBehavior) GetReasonOk() (*string, bool) {
-	if o == nil || isNil(o.Reason) {
-    return nil, false
+	if o == nil || IsNil(o.Reason) {
+		return nil, false
 	}
 	return o.Reason, true
 }
 
 // HasReason returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserRiskBehavior) HasReason() bool {
-	if o != nil && !isNil(o.Reason) {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *RiskEvaluationDetailsUserRiskBehavior) SetReason(v string) {
 }
 
 func (o RiskEvaluationDetailsUserRiskBehavior) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Level) {
-		toSerialize["level"] = o.Level
-	}
-	if !isNil(o.Reason) {
-		toSerialize["reason"] = o.Reason
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationDetailsUserRiskBehavior) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
+	}
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationDetailsUserRiskBehavior struct {

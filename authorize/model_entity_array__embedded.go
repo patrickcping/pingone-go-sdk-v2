@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntityArrayEmbedded type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntityArrayEmbedded{}
+
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
 	DecisionEndpoints []DecisionEndpoint `json:"decisionEndpoints,omitempty"`
@@ -39,7 +42,7 @@ func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 
 // GetDecisionEndpoints returns the DecisionEndpoints field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetDecisionEndpoints() []DecisionEndpoint {
-	if o == nil || isNil(o.DecisionEndpoints) {
+	if o == nil || IsNil(o.DecisionEndpoints) {
 		var ret []DecisionEndpoint
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *EntityArrayEmbedded) GetDecisionEndpoints() []DecisionEndpoint {
 // GetDecisionEndpointsOk returns a tuple with the DecisionEndpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArrayEmbedded) GetDecisionEndpointsOk() ([]DecisionEndpoint, bool) {
-	if o == nil || isNil(o.DecisionEndpoints) {
-    return nil, false
+	if o == nil || IsNil(o.DecisionEndpoints) {
+		return nil, false
 	}
 	return o.DecisionEndpoints, true
 }
 
 // HasDecisionEndpoints returns a boolean if a field has been set.
 func (o *EntityArrayEmbedded) HasDecisionEndpoints() bool {
-	if o != nil && !isNil(o.DecisionEndpoints) {
+	if o != nil && !IsNil(o.DecisionEndpoints) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *EntityArrayEmbedded) SetDecisionEndpoints(v []DecisionEndpoint) {
 
 // GetApiServers returns the ApiServers field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetApiServers() []APIServer {
-	if o == nil || isNil(o.ApiServers) {
+	if o == nil || IsNil(o.ApiServers) {
 		var ret []APIServer
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *EntityArrayEmbedded) GetApiServers() []APIServer {
 // GetApiServersOk returns a tuple with the ApiServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArrayEmbedded) GetApiServersOk() ([]APIServer, bool) {
-	if o == nil || isNil(o.ApiServers) {
-    return nil, false
+	if o == nil || IsNil(o.ApiServers) {
+		return nil, false
 	}
 	return o.ApiServers, true
 }
 
 // HasApiServers returns a boolean if a field has been set.
 func (o *EntityArrayEmbedded) HasApiServers() bool {
-	if o != nil && !isNil(o.ApiServers) {
+	if o != nil && !IsNil(o.ApiServers) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *EntityArrayEmbedded) SetApiServers(v []APIServer) {
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.DecisionEndpoints) {
-		toSerialize["decisionEndpoints"] = o.DecisionEndpoints
-	}
-	if !isNil(o.ApiServers) {
-		toSerialize["apiServers"] = o.ApiServers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DecisionEndpoints) {
+		toSerialize["decisionEndpoints"] = o.DecisionEndpoints
+	}
+	if !IsNil(o.ApiServers) {
+		toSerialize["apiServers"] = o.ApiServers
+	}
+	return toSerialize, nil
 }
 
 type NullableEntityArrayEmbedded struct {

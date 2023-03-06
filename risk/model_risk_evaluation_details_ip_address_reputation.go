@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationDetailsIpAddressReputation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationDetailsIpAddressReputation{}
+
 // RiskEvaluationDetailsIpAddressReputation struct for RiskEvaluationDetailsIpAddressReputation
 type RiskEvaluationDetailsIpAddressReputation struct {
 	Level *EnumRiskLevel `json:"level,omitempty"`
@@ -40,7 +43,7 @@ func NewRiskEvaluationDetailsIpAddressReputationWithDefaults() *RiskEvaluationDe
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsIpAddressReputation) GetLevel() EnumRiskLevel {
-	if o == nil || isNil(o.Level) {
+	if o == nil || IsNil(o.Level) {
 		var ret EnumRiskLevel
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *RiskEvaluationDetailsIpAddressReputation) GetLevel() EnumRiskLevel {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsIpAddressReputation) GetLevelOk() (*EnumRiskLevel, bool) {
-	if o == nil || isNil(o.Level) {
-    return nil, false
+	if o == nil || IsNil(o.Level) {
+		return nil, false
 	}
 	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsIpAddressReputation) HasLevel() bool {
-	if o != nil && !isNil(o.Level) {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *RiskEvaluationDetailsIpAddressReputation) SetLevel(v EnumRiskLevel) {
 
 // GetScore returns the Score field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsIpAddressReputation) GetScore() int32 {
-	if o == nil || isNil(o.Score) {
+	if o == nil || IsNil(o.Score) {
 		var ret int32
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *RiskEvaluationDetailsIpAddressReputation) GetScore() int32 {
 // GetScoreOk returns a tuple with the Score field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsIpAddressReputation) GetScoreOk() (*int32, bool) {
-	if o == nil || isNil(o.Score) {
-    return nil, false
+	if o == nil || IsNil(o.Score) {
+		return nil, false
 	}
 	return o.Score, true
 }
 
 // HasScore returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsIpAddressReputation) HasScore() bool {
-	if o != nil && !isNil(o.Score) {
+	if o != nil && !IsNil(o.Score) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *RiskEvaluationDetailsIpAddressReputation) SetScore(v int32) {
 }
 
 func (o RiskEvaluationDetailsIpAddressReputation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Level) {
-		toSerialize["level"] = o.Level
-	}
-	if !isNil(o.Score) {
-		toSerialize["score"] = o.Score
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationDetailsIpAddressReputation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
+	}
+	if !IsNil(o.Score) {
+		toSerialize["score"] = o.Score
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationDetailsIpAddressReputation struct {

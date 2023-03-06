@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskPredictorDefaultResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPredictorDefaultResult{}
+
 // RiskPredictorDefaultResult This specifies the result assigned to the predictor if the predictor could not be calculated during the risk evaluation. If this field is not provided, and the predictor could not be calculated during risk evaluation, the following options are: If the predictor is used in an override, the override is skipped. In the weighted policy, the predictor will have a weight of 0.
 type RiskPredictorDefaultResult struct {
 	Level EnumRiskLevel `json:"level"`
@@ -52,7 +55,7 @@ func (o *RiskPredictorDefaultResult) GetLevel() EnumRiskLevel {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefaultResult) GetLevelOk() (*EnumRiskLevel, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Level, true
 }
@@ -64,7 +67,7 @@ func (o *RiskPredictorDefaultResult) SetLevel(v EnumRiskLevel) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RiskPredictorDefaultResult) GetType() EnumResultType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret EnumResultType
 		return ret
 	}
@@ -74,15 +77,15 @@ func (o *RiskPredictorDefaultResult) GetType() EnumResultType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefaultResult) GetTypeOk() (*EnumResultType, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *RiskPredictorDefaultResult) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -95,14 +98,20 @@ func (o *RiskPredictorDefaultResult) SetType(v EnumResultType) {
 }
 
 func (o RiskPredictorDefaultResult) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["level"] = o.Level
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskPredictorDefaultResult) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["level"] = o.Level
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskPredictorDefaultResult struct {

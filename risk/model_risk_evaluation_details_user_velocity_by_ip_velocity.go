@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationDetailsUserVelocityByIpVelocity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationDetailsUserVelocityByIpVelocity{}
+
 // RiskEvaluationDetailsUserVelocityByIpVelocity Integer values for the measures used to calculate velocity.
 type RiskEvaluationDetailsUserVelocityByIpVelocity struct {
 	// Relevant only for predictors having a measure value of \"DISTINCT_COUNT\". This is the number of users that accessed the IP in the past during seconds.
@@ -41,7 +44,7 @@ func NewRiskEvaluationDetailsUserVelocityByIpVelocityWithDefaults() *RiskEvaluat
 
 // GetDistinctCount returns the DistinctCount field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) GetDistinctCount() int32 {
-	if o == nil || isNil(o.DistinctCount) {
+	if o == nil || IsNil(o.DistinctCount) {
 		var ret int32
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) GetDistinctCount() int32
 // GetDistinctCountOk returns a tuple with the DistinctCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) GetDistinctCountOk() (*int32, bool) {
-	if o == nil || isNil(o.DistinctCount) {
-    return nil, false
+	if o == nil || IsNil(o.DistinctCount) {
+		return nil, false
 	}
 	return o.DistinctCount, true
 }
 
 // HasDistinctCount returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) HasDistinctCount() bool {
-	if o != nil && !isNil(o.DistinctCount) {
+	if o != nil && !IsNil(o.DistinctCount) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) SetDistinctCount(v int32
 
 // GetDuring returns the During field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) GetDuring() int32 {
-	if o == nil || isNil(o.During) {
+	if o == nil || IsNil(o.During) {
 		var ret int32
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) GetDuring() int32 {
 // GetDuringOk returns a tuple with the During field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) GetDuringOk() (*int32, bool) {
-	if o == nil || isNil(o.During) {
-    return nil, false
+	if o == nil || IsNil(o.During) {
+		return nil, false
 	}
 	return o.During, true
 }
 
 // HasDuring returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) HasDuring() bool {
-	if o != nil && !isNil(o.During) {
+	if o != nil && !IsNil(o.During) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *RiskEvaluationDetailsUserVelocityByIpVelocity) SetDuring(v int32) {
 }
 
 func (o RiskEvaluationDetailsUserVelocityByIpVelocity) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.DistinctCount) {
-		toSerialize["distinctCount"] = o.DistinctCount
-	}
-	if !isNil(o.During) {
-		toSerialize["during"] = o.During
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationDetailsUserVelocityByIpVelocity) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DistinctCount) {
+		toSerialize["distinctCount"] = o.DistinctCount
+	}
+	if !IsNil(o.During) {
+		toSerialize["during"] = o.During
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationDetailsUserVelocityByIpVelocity struct {

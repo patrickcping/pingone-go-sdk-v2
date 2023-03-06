@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the APIServerAuthorizationServerResource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &APIServerAuthorizationServerResource{}
+
 // APIServerAuthorizationServerResource The resource defines the characteristics of the OAuth 2.0 access tokens used to get access to the APIs on the API server such as the audience and scopes.
 type APIServerAuthorizationServerResource struct {
 	// A string that specifies the UUID of the custom PingOne resource. This property must identify a PingOne resource with a type property value of CUSTOM.
@@ -52,7 +55,7 @@ func (o *APIServerAuthorizationServerResource) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *APIServerAuthorizationServerResource) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *APIServerAuthorizationServerResource) SetId(v string) {
 }
 
 func (o APIServerAuthorizationServerResource) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o APIServerAuthorizationServerResource) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableAPIServerAuthorizationServerResource struct {
