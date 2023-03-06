@@ -111,6 +111,8 @@ type APIClient struct {
 
 	IntegrationCatalogApi *IntegrationCatalogApiService
 
+	KeyRotationPoliciesApi *KeyRotationPoliciesApiService
+
 	LanguageLocalizationStatusApi *LanguageLocalizationStatusApiService
 
 	LanguagesApi *LanguagesApiService
@@ -239,6 +241,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IdentityProvidersApi = (*IdentityProvidersApiService)(&c.common)
 	c.ImagesApi = (*ImagesApiService)(&c.common)
 	c.IntegrationCatalogApi = (*IntegrationCatalogApiService)(&c.common)
+	c.KeyRotationPoliciesApi = (*KeyRotationPoliciesApiService)(&c.common)
 	c.LanguageLocalizationStatusApi = (*LanguageLocalizationStatusApiService)(&c.common)
 	c.LanguagesApi = (*LanguagesApiService)(&c.common)
 	c.LicensesApi = (*LicensesApiService)(&c.common)

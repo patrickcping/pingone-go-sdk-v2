@@ -29,6 +29,7 @@ api_groups.go
 api_identity_provider_attributes.go
 api_identity_providers.go
 api_integration_catalog.go
+api_key_rotation_policies.go
 api_language_localization_status.go
 api_languages.go
 api_licenses.go
@@ -220,6 +221,9 @@ docs/EnumIdentityProviderExt.md
 docs/EnumIdentityProviderOIDCTokenAuthMethod.md
 docs/EnumIdentityProviderSAMLSSOBinding.md
 docs/EnumImageFormat.md
+docs/EnumKeyRotationPolicyAlgorithm.md
+docs/EnumKeyRotationPolicySigAlgorithm.md
+docs/EnumKeyRotationPolicyUsageType.md
 docs/EnumLicenseStatus.md
 docs/EnumMobileIntegrityDetectionPlatform.md
 docs/EnumNotificationsPolicyQuotaDeliveryMethods.md
@@ -323,6 +327,8 @@ docs/ImageTargets.md
 docs/ImageTargetsOriginal.md
 docs/ImagesApi.md
 docs/IntegrationCatalogApi.md
+docs/KeyRotationPoliciesApi.md
+docs/KeyRotationPolicy.md
 docs/Language.md
 docs/LanguageLocalizationStatus.md
 docs/LanguageLocalizationStatusApi.md
@@ -643,6 +649,9 @@ model_enum_identity_provider_ext.go
 model_enum_identity_provider_oidc_token_auth_method.go
 model_enum_identity_provider_samlsso_binding.go
 model_enum_image_format.go
+model_enum_key_rotation_policy_algorithm.go
+model_enum_key_rotation_policy_sig_algorithm.go
+model_enum_key_rotation_policy_usage_type.go
 model_enum_license_status.go
 model_enum_mobile_integrity_detection_platform.go
 model_enum_notifications_policy_quota_delivery_methods.go
@@ -734,6 +743,7 @@ model_identity_provider_saml_all_of_sp_signing_key.go
 model_image.go
 model_image_targets.go
 model_image_targets_original.go
+model_key_rotation_policy.go
 model_language.go
 model_language_localization_status.go
 model_language_localization_status_locale.go
