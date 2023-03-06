@@ -37,6 +37,7 @@ type EntityArrayEmbedded struct {
 	GroupMemberships []GroupMembership `json:"groupMemberships,omitempty"`
 	IdentityProviders []IdentityProvider `json:"identityProviders,omitempty"`
 	Keys []Certificate `json:"keys,omitempty"`
+	KeyRotationPolicies []KeyRotationPolicy `json:"keyRotationPolicies,omitempty"`
 	Languages []EntityArrayEmbeddedLanguagesInner `json:"languages,omitempty"`
 	Licenses []License `json:"licenses,omitempty"`
 	NotificationsPolicies []NotificationsPolicy `json:"notificationsPolicies,omitempty"`
@@ -649,6 +650,38 @@ func (o *EntityArrayEmbedded) HasKeys() bool {
 // SetKeys gets a reference to the given []Certificate and assigns it to the Keys field.
 func (o *EntityArrayEmbedded) SetKeys(v []Certificate) {
 	o.Keys = v
+}
+
+// GetKeyRotationPolicies returns the KeyRotationPolicies field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetKeyRotationPolicies() []KeyRotationPolicy {
+	if o == nil || IsNil(o.KeyRotationPolicies) {
+		var ret []KeyRotationPolicy
+		return ret
+	}
+	return o.KeyRotationPolicies
+}
+
+// GetKeyRotationPoliciesOk returns a tuple with the KeyRotationPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetKeyRotationPoliciesOk() ([]KeyRotationPolicy, bool) {
+	if o == nil || IsNil(o.KeyRotationPolicies) {
+		return nil, false
+	}
+	return o.KeyRotationPolicies, true
+}
+
+// HasKeyRotationPolicies returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasKeyRotationPolicies() bool {
+	if o != nil && !IsNil(o.KeyRotationPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyRotationPolicies gets a reference to the given []KeyRotationPolicy and assigns it to the KeyRotationPolicies field.
+func (o *EntityArrayEmbedded) SetKeyRotationPolicies(v []KeyRotationPolicy) {
+	o.KeyRotationPolicies = v
 }
 
 // GetLanguages returns the Languages field value if set, zero value otherwise.
@@ -1322,6 +1355,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Keys) {
 		toSerialize["keys"] = o.Keys
+	}
+	if !IsNil(o.KeyRotationPolicies) {
+		toSerialize["keyRotationPolicies"] = o.KeyRotationPolicies
 	}
 	if !IsNil(o.Languages) {
 		toSerialize["languages"] = o.Languages
