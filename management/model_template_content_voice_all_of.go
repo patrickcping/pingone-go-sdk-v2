@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentVoiceAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentVoiceAllOf{}
+
 // TemplateContentVoiceAllOf struct for TemplateContentVoiceAllOf
 type TemplateContentVoiceAllOf struct {
 	// The voice text.  Limited to 1Kb characters.   The following substitution place holders can be embedded in the message:   * `<pause1sec>`: Pauses the message narration for 1 second.     The pause interval <pause1sec> cannot be modified. To pause the message narration for more than one second, repeat multiple `<pause1sec>` occurrences in succession, according to the desired pause interval duration. For example, `<pause1sec><pause1sec><pause1sec>` pauses the message narration for three seconds.   * `<sayCharValue> .. </sayCharValue>`: Reads the character name of each character of the enclosed string separately.   * `<repeatMessage val=x> .. </repeatMessage>`: Narrates the enclosed text `<val>` number of times.      In the following message example, `${otp}` is assigned the value `\"123456\"`, and `${email}` is assigned the value `\"joe@bxz.com\"`:   ```   Hello <pause1sec> your authentication code is    <sayCharValue>${otp}</​sayCharValue>    <repeatMessage val=2> I repeat your code is    <sayCharValue>${otp}</​sayCharValue>   </​repeatMessage> <pause1sec>    Mail <sayCharValue>${email}</​sayCharValue> for help   ```   The narrated message on the voice call sounds like:   ```   HELLO <1 second silence> YOUR AUTHENTICATION CODE IS    ONE TWO THREE FOUR FIVE SIX    I REPEAT YOUR CODE IS ONE TWO THREE FOUR FIVE SIX    I REPEAT YOUR CODE IS ONE TWO THREE FOUR FIVE SIX <1 second silence>    MAIL JAY OH EE AT BEE EX ZEE DOT SEE OH EM FOR HELP   ``` 
@@ -54,7 +57,7 @@ func (o *TemplateContentVoiceAllOf) GetContent() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoiceAllOf) GetContentOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Content, true
 }
@@ -66,7 +69,7 @@ func (o *TemplateContentVoiceAllOf) SetContent(v string) {
 
 // GetVoice returns the Voice field value if set, zero value otherwise.
 func (o *TemplateContentVoiceAllOf) GetVoice() string {
-	if o == nil || isNil(o.Voice) {
+	if o == nil || IsNil(o.Voice) {
 		var ret string
 		return ret
 	}
@@ -76,15 +79,15 @@ func (o *TemplateContentVoiceAllOf) GetVoice() string {
 // GetVoiceOk returns a tuple with the Voice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoiceAllOf) GetVoiceOk() (*string, bool) {
-	if o == nil || isNil(o.Voice) {
-    return nil, false
+	if o == nil || IsNil(o.Voice) {
+		return nil, false
 	}
 	return o.Voice, true
 }
 
 // HasVoice returns a boolean if a field has been set.
 func (o *TemplateContentVoiceAllOf) HasVoice() bool {
-	if o != nil && !isNil(o.Voice) {
+	if o != nil && !IsNil(o.Voice) {
 		return true
 	}
 
@@ -97,14 +100,20 @@ func (o *TemplateContentVoiceAllOf) SetVoice(v string) {
 }
 
 func (o TemplateContentVoiceAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["content"] = o.Content
-	}
-	if !isNil(o.Voice) {
-		toSerialize["voice"] = o.Voice
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentVoiceAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["content"] = o.Content
+	if !IsNil(o.Voice) {
+		toSerialize["voice"] = o.Voice
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentVoiceAllOf struct {

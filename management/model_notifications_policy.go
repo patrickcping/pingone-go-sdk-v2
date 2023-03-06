@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NotificationsPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsPolicy{}
+
 // NotificationsPolicy struct for NotificationsPolicy
 type NotificationsPolicy struct {
 	// The time the resource was created.
@@ -56,7 +59,7 @@ func NewNotificationsPolicyWithDefaults() *NotificationsPolicy {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *NotificationsPolicy) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -66,15 +69,15 @@ func (o *NotificationsPolicy) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicy) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *NotificationsPolicy) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -88,7 +91,7 @@ func (o *NotificationsPolicy) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *NotificationsPolicy) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -98,15 +101,15 @@ func (o *NotificationsPolicy) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicy) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *NotificationsPolicy) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -120,7 +123,7 @@ func (o *NotificationsPolicy) SetUpdatedAt(v time.Time) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NotificationsPolicy) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -130,15 +133,15 @@ func (o *NotificationsPolicy) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicy) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *NotificationsPolicy) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -164,7 +167,7 @@ func (o *NotificationsPolicy) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicy) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -176,7 +179,7 @@ func (o *NotificationsPolicy) SetName(v string) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *NotificationsPolicy) GetDefault() bool {
-	if o == nil || isNil(o.Default) {
+	if o == nil || IsNil(o.Default) {
 		var ret bool
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *NotificationsPolicy) GetDefault() bool {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicy) GetDefaultOk() (*bool, bool) {
-	if o == nil || isNil(o.Default) {
-    return nil, false
+	if o == nil || IsNil(o.Default) {
+		return nil, false
 	}
 	return o.Default, true
 }
 
 // HasDefault returns a boolean if a field has been set.
 func (o *NotificationsPolicy) HasDefault() bool {
-	if o != nil && !isNil(o.Default) {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
@@ -220,7 +223,7 @@ func (o *NotificationsPolicy) GetQuotas() []NotificationsPolicyQuotasInner {
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicy) GetQuotasOk() ([]NotificationsPolicyQuotasInner, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Quotas, true
 }
@@ -231,26 +234,24 @@ func (o *NotificationsPolicy) SetQuotas(v []NotificationsPolicyQuotasInner) {
 }
 
 func (o NotificationsPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Default) {
-		toSerialize["default"] = o.Default
-	}
-	if true {
-		toSerialize["quotas"] = o.Quotas
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
+	toSerialize["quotas"] = o.Quotas
+	return toSerialize, nil
 }
 
 type NullableNotificationsPolicy struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime{}
+
 // DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime struct for DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime
 type DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime struct {
 	// The duration (number of time units) that the passcode is valid before it expires.
@@ -54,7 +57,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) GetDuration() int32
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) GetDurationOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Duration, true
 }
@@ -78,7 +81,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) GetTimeUnit() EnumT
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) GetTimeUnitOk() (*EnumTimeUnit, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TimeUnit, true
 }
@@ -89,14 +92,18 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) SetTimeUnit(v EnumT
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["duration"] = o.Duration
-	}
-	if true {
-		toSerialize["timeUnit"] = o.TimeUnit
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["duration"] = o.Duration
+	toSerialize["timeUnit"] = o.TimeUnit
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyOfflineDeviceOtpLifeTime struct {

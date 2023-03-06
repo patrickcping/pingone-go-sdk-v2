@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyFIDODevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyFIDODevice{}
+
 // DeviceAuthenticationPolicyFIDODevice struct for DeviceAuthenticationPolicyFIDODevice
 type DeviceAuthenticationPolicyFIDODevice struct {
 	// Enabled or disabled in the policy.
@@ -54,7 +57,7 @@ func (o *DeviceAuthenticationPolicyFIDODevice) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyFIDODevice) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -66,7 +69,7 @@ func (o *DeviceAuthenticationPolicyFIDODevice) SetEnabled(v bool) {
 
 // GetFidoPolicyId returns the FidoPolicyId field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyFIDODevice) GetFidoPolicyId() string {
-	if o == nil || isNil(o.FidoPolicyId) {
+	if o == nil || IsNil(o.FidoPolicyId) {
 		var ret string
 		return ret
 	}
@@ -76,15 +79,15 @@ func (o *DeviceAuthenticationPolicyFIDODevice) GetFidoPolicyId() string {
 // GetFidoPolicyIdOk returns a tuple with the FidoPolicyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyFIDODevice) GetFidoPolicyIdOk() (*string, bool) {
-	if o == nil || isNil(o.FidoPolicyId) {
-    return nil, false
+	if o == nil || IsNil(o.FidoPolicyId) {
+		return nil, false
 	}
 	return o.FidoPolicyId, true
 }
 
 // HasFidoPolicyId returns a boolean if a field has been set.
 func (o *DeviceAuthenticationPolicyFIDODevice) HasFidoPolicyId() bool {
-	if o != nil && !isNil(o.FidoPolicyId) {
+	if o != nil && !IsNil(o.FidoPolicyId) {
 		return true
 	}
 
@@ -97,14 +100,20 @@ func (o *DeviceAuthenticationPolicyFIDODevice) SetFidoPolicyId(v string) {
 }
 
 func (o DeviceAuthenticationPolicyFIDODevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.FidoPolicyId) {
-		toSerialize["fidoPolicyId"] = o.FidoPolicyId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyFIDODevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.FidoPolicyId) {
+		toSerialize["fidoPolicyId"] = o.FidoPolicyId
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyFIDODevice struct {

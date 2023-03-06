@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationsSettingsRestrictionsSmsVoiceQuota type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsRestrictionsSmsVoiceQuota{}
+
 // NotificationsSettingsRestrictionsSmsVoiceQuota struct for NotificationsSettingsRestrictionsSmsVoiceQuota
 type NotificationsSettingsRestrictionsSmsVoiceQuota struct {
 	// The maximum number of SMS and voice notifications that can be sent per user per day. - `restrictions.smsVoiceQuota.daily` can be set to any value between 0 and 50. - Trial accounts have a default value of 30. - The daily counters are reset every night at midnight UTC. 
@@ -52,7 +55,7 @@ func (o *NotificationsSettingsRestrictionsSmsVoiceQuota) GetDaily() int32 {
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsRestrictionsSmsVoiceQuota) GetDailyOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Daily, true
 }
@@ -63,11 +66,17 @@ func (o *NotificationsSettingsRestrictionsSmsVoiceQuota) SetDaily(v int32) {
 }
 
 func (o NotificationsSettingsRestrictionsSmsVoiceQuota) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["daily"] = o.Daily
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsRestrictionsSmsVoiceQuota) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["daily"] = o.Daily
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsRestrictionsSmsVoiceQuota struct {

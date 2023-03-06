@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Image type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Image{}
+
 // Image struct for Image
 type Image struct {
 	// A string that specifies the resource’s unique identifier.
@@ -44,7 +47,7 @@ func NewImageWithDefaults() *Image {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Image) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -54,15 +57,15 @@ func (o *Image) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Image) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Image) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *Image) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Image) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -86,15 +89,15 @@ func (o *Image) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Image) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Image) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *Image) SetEnvironment(v ObjectEnvironment) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Image) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -118,15 +121,15 @@ func (o *Image) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Image) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Image) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *Image) SetCreatedAt(v time.Time) {
 
 // GetTargets returns the Targets field value if set, zero value otherwise.
 func (o *Image) GetTargets() ImageTargets {
-	if o == nil || isNil(o.Targets) {
+	if o == nil || IsNil(o.Targets) {
 		var ret ImageTargets
 		return ret
 	}
@@ -150,15 +153,15 @@ func (o *Image) GetTargets() ImageTargets {
 // GetTargetsOk returns a tuple with the Targets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Image) GetTargetsOk() (*ImageTargets, bool) {
-	if o == nil || isNil(o.Targets) {
-    return nil, false
+	if o == nil || IsNil(o.Targets) {
+		return nil, false
 	}
 	return o.Targets, true
 }
 
 // HasTargets returns a boolean if a field has been set.
 func (o *Image) HasTargets() bool {
-	if o != nil && !isNil(o.Targets) {
+	if o != nil && !IsNil(o.Targets) {
 		return true
 	}
 
@@ -171,20 +174,24 @@ func (o *Image) SetTargets(v ImageTargets) {
 }
 
 func (o Image) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.Targets) {
-		toSerialize["targets"] = o.Targets
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Image) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: createdAt is readOnly
+	if !IsNil(o.Targets) {
+		toSerialize["targets"] = o.Targets
+	}
+	return toSerialize, nil
 }
 
 type NullableImage struct {

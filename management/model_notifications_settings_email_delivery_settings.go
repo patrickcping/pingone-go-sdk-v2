@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationsSettingsEmailDeliverySettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsEmailDeliverySettings{}
+
 // NotificationsSettingsEmailDeliverySettings struct for NotificationsSettingsEmailDeliverySettings
 type NotificationsSettingsEmailDeliverySettings struct {
 	// A string that specifies the organization's SMTP server.
@@ -54,7 +57,7 @@ func NewNotificationsSettingsEmailDeliverySettingsWithDefaults() *NotificationsS
 
 // GetHost returns the Host field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetHost() string {
-	if o == nil || isNil(o.Host) {
+	if o == nil || IsNil(o.Host) {
 		var ret string
 		return ret
 	}
@@ -64,15 +67,15 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetHost() string {
 // GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) GetHostOk() (*string, bool) {
-	if o == nil || isNil(o.Host) {
-    return nil, false
+	if o == nil || IsNil(o.Host) {
+		return nil, false
 	}
 	return o.Host, true
 }
 
 // HasHost returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) HasHost() bool {
-	if o != nil && !isNil(o.Host) {
+	if o != nil && !IsNil(o.Host) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetHost(v string) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetPort() int32 {
-	if o == nil || isNil(o.Port) {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -96,15 +99,15 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) GetPortOk() (*int32, bool) {
-	if o == nil || isNil(o.Port) {
-    return nil, false
+	if o == nil || IsNil(o.Port) {
+		return nil, false
 	}
 	return o.Port, true
 }
 
 // HasPort returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) HasPort() bool {
-	if o != nil && !isNil(o.Port) {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetPort(v int32) {
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetProtocol() string {
-	if o == nil || isNil(o.Protocol) {
+	if o == nil || IsNil(o.Protocol) {
 		var ret string
 		return ret
 	}
@@ -128,15 +131,15 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetProtocol() string {
 // GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) GetProtocolOk() (*string, bool) {
-	if o == nil || isNil(o.Protocol) {
-    return nil, false
+	if o == nil || IsNil(o.Protocol) {
+		return nil, false
 	}
 	return o.Protocol, true
 }
 
 // HasProtocol returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) HasProtocol() bool {
-	if o != nil && !isNil(o.Protocol) {
+	if o != nil && !IsNil(o.Protocol) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetProtocol(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetUsername() string {
-	if o == nil || isNil(o.Username) {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -160,15 +163,15 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) GetUsernameOk() (*string, bool) {
-	if o == nil || isNil(o.Username) {
-    return nil, false
+	if o == nil || IsNil(o.Username) {
+		return nil, false
 	}
 	return o.Username, true
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) HasUsername() bool {
-	if o != nil && !isNil(o.Username) {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetUsername(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetPassword() string {
-	if o == nil || isNil(o.Password) {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -192,15 +195,15 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) GetPasswordOk() (*string, bool) {
-	if o == nil || isNil(o.Password) {
-    return nil, false
+	if o == nil || IsNil(o.Password) {
+		return nil, false
 	}
 	return o.Password, true
 }
 
 // HasPassword returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) HasPassword() bool {
-	if o != nil && !isNil(o.Password) {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetPassword(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -224,15 +227,15 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetEnvironment() ObjectEnvi
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetEnvironment(v ObjectEnvi
 
 // GetFrom returns the From field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetFrom() NotificationsSettingsEmailDeliverySettingsFrom {
-	if o == nil || isNil(o.From) {
+	if o == nil || IsNil(o.From) {
 		var ret NotificationsSettingsEmailDeliverySettingsFrom
 		return ret
 	}
@@ -256,15 +259,15 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetFrom() NotificationsSett
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) GetFromOk() (*NotificationsSettingsEmailDeliverySettingsFrom, bool) {
-	if o == nil || isNil(o.From) {
-    return nil, false
+	if o == nil || IsNil(o.From) {
+		return nil, false
 	}
 	return o.From, true
 }
 
 // HasFrom returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) HasFrom() bool {
-	if o != nil && !isNil(o.From) {
+	if o != nil && !IsNil(o.From) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetFrom(v NotificationsSett
 
 // GetReplyTo returns the ReplyTo field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettings) GetReplyTo() NotificationsSettingsEmailDeliverySettingsReplyTo {
-	if o == nil || isNil(o.ReplyTo) {
+	if o == nil || IsNil(o.ReplyTo) {
 		var ret NotificationsSettingsEmailDeliverySettingsReplyTo
 		return ret
 	}
@@ -288,15 +291,15 @@ func (o *NotificationsSettingsEmailDeliverySettings) GetReplyTo() NotificationsS
 // GetReplyToOk returns a tuple with the ReplyTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) GetReplyToOk() (*NotificationsSettingsEmailDeliverySettingsReplyTo, bool) {
-	if o == nil || isNil(o.ReplyTo) {
-    return nil, false
+	if o == nil || IsNil(o.ReplyTo) {
+		return nil, false
 	}
 	return o.ReplyTo, true
 }
 
 // HasReplyTo returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettings) HasReplyTo() bool {
-	if o != nil && !isNil(o.ReplyTo) {
+	if o != nil && !IsNil(o.ReplyTo) {
 		return true
 	}
 
@@ -309,32 +312,38 @@ func (o *NotificationsSettingsEmailDeliverySettings) SetReplyTo(v NotificationsS
 }
 
 func (o NotificationsSettingsEmailDeliverySettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Host) {
-		toSerialize["host"] = o.Host
-	}
-	if !isNil(o.Port) {
-		toSerialize["port"] = o.Port
-	}
-	if !isNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
-	}
-	if !isNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	if !isNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.From) {
-		toSerialize["from"] = o.From
-	}
-	if !isNil(o.ReplyTo) {
-		toSerialize["replyTo"] = o.ReplyTo
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsEmailDeliverySettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Host) {
+		toSerialize["host"] = o.Host
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	// skip: protocol is readOnly
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.From) {
+		toSerialize["from"] = o.From
+	}
+	if !IsNil(o.ReplyTo) {
+		toSerialize["replyTo"] = o.ReplyTo
+	}
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsEmailDeliverySettings struct {

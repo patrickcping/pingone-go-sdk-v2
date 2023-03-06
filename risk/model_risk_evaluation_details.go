@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationDetails{}
+
 // RiskEvaluationDetails struct for RiskEvaluationDetails
 type RiskEvaluationDetails struct {
 	IpAddressReputation *RiskEvaluationDetailsIpAddressReputation `json:"ipAddressReputation,omitempty"`
@@ -59,7 +62,7 @@ func NewRiskEvaluationDetailsWithDefaults() *RiskEvaluationDetails {
 
 // GetIpAddressReputation returns the IpAddressReputation field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetIpAddressReputation() RiskEvaluationDetailsIpAddressReputation {
-	if o == nil || isNil(o.IpAddressReputation) {
+	if o == nil || IsNil(o.IpAddressReputation) {
 		var ret RiskEvaluationDetailsIpAddressReputation
 		return ret
 	}
@@ -69,15 +72,15 @@ func (o *RiskEvaluationDetails) GetIpAddressReputation() RiskEvaluationDetailsIp
 // GetIpAddressReputationOk returns a tuple with the IpAddressReputation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetIpAddressReputationOk() (*RiskEvaluationDetailsIpAddressReputation, bool) {
-	if o == nil || isNil(o.IpAddressReputation) {
-    return nil, false
+	if o == nil || IsNil(o.IpAddressReputation) {
+		return nil, false
 	}
 	return o.IpAddressReputation, true
 }
 
 // HasIpAddressReputation returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasIpAddressReputation() bool {
-	if o != nil && !isNil(o.IpAddressReputation) {
+	if o != nil && !IsNil(o.IpAddressReputation) {
 		return true
 	}
 
@@ -91,7 +94,7 @@ func (o *RiskEvaluationDetails) SetIpAddressReputation(v RiskEvaluationDetailsIp
 
 // GetIpVelocityByUser returns the IpVelocityByUser field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetIpVelocityByUser() RiskEvaluationDetailsIpVelocityByUser {
-	if o == nil || isNil(o.IpVelocityByUser) {
+	if o == nil || IsNil(o.IpVelocityByUser) {
 		var ret RiskEvaluationDetailsIpVelocityByUser
 		return ret
 	}
@@ -101,15 +104,15 @@ func (o *RiskEvaluationDetails) GetIpVelocityByUser() RiskEvaluationDetailsIpVel
 // GetIpVelocityByUserOk returns a tuple with the IpVelocityByUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetIpVelocityByUserOk() (*RiskEvaluationDetailsIpVelocityByUser, bool) {
-	if o == nil || isNil(o.IpVelocityByUser) {
-    return nil, false
+	if o == nil || IsNil(o.IpVelocityByUser) {
+		return nil, false
 	}
 	return o.IpVelocityByUser, true
 }
 
 // HasIpVelocityByUser returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasIpVelocityByUser() bool {
-	if o != nil && !isNil(o.IpVelocityByUser) {
+	if o != nil && !IsNil(o.IpVelocityByUser) {
 		return true
 	}
 
@@ -123,7 +126,7 @@ func (o *RiskEvaluationDetails) SetIpVelocityByUser(v RiskEvaluationDetailsIpVel
 
 // GetUserVelocityByIp returns the UserVelocityByIp field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetUserVelocityByIp() RiskEvaluationDetailsUserVelocityByIp {
-	if o == nil || isNil(o.UserVelocityByIp) {
+	if o == nil || IsNil(o.UserVelocityByIp) {
 		var ret RiskEvaluationDetailsUserVelocityByIp
 		return ret
 	}
@@ -133,15 +136,15 @@ func (o *RiskEvaluationDetails) GetUserVelocityByIp() RiskEvaluationDetailsUserV
 // GetUserVelocityByIpOk returns a tuple with the UserVelocityByIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetUserVelocityByIpOk() (*RiskEvaluationDetailsUserVelocityByIp, bool) {
-	if o == nil || isNil(o.UserVelocityByIp) {
-    return nil, false
+	if o == nil || IsNil(o.UserVelocityByIp) {
+		return nil, false
 	}
 	return o.UserVelocityByIp, true
 }
 
 // HasUserVelocityByIp returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasUserVelocityByIp() bool {
-	if o != nil && !isNil(o.UserVelocityByIp) {
+	if o != nil && !IsNil(o.UserVelocityByIp) {
 		return true
 	}
 
@@ -155,7 +158,7 @@ func (o *RiskEvaluationDetails) SetUserVelocityByIp(v RiskEvaluationDetailsUserV
 
 // GetImpossibleTravel returns the ImpossibleTravel field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetImpossibleTravel() bool {
-	if o == nil || isNil(o.ImpossibleTravel) {
+	if o == nil || IsNil(o.ImpossibleTravel) {
 		var ret bool
 		return ret
 	}
@@ -165,15 +168,15 @@ func (o *RiskEvaluationDetails) GetImpossibleTravel() bool {
 // GetImpossibleTravelOk returns a tuple with the ImpossibleTravel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetImpossibleTravelOk() (*bool, bool) {
-	if o == nil || isNil(o.ImpossibleTravel) {
-    return nil, false
+	if o == nil || IsNil(o.ImpossibleTravel) {
+		return nil, false
 	}
 	return o.ImpossibleTravel, true
 }
 
 // HasImpossibleTravel returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasImpossibleTravel() bool {
-	if o != nil && !isNil(o.ImpossibleTravel) {
+	if o != nil && !IsNil(o.ImpossibleTravel) {
 		return true
 	}
 
@@ -187,7 +190,7 @@ func (o *RiskEvaluationDetails) SetImpossibleTravel(v bool) {
 
 // GetEstimatedSpeed returns the EstimatedSpeed field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetEstimatedSpeed() float32 {
-	if o == nil || isNil(o.EstimatedSpeed) {
+	if o == nil || IsNil(o.EstimatedSpeed) {
 		var ret float32
 		return ret
 	}
@@ -197,15 +200,15 @@ func (o *RiskEvaluationDetails) GetEstimatedSpeed() float32 {
 // GetEstimatedSpeedOk returns a tuple with the EstimatedSpeed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetEstimatedSpeedOk() (*float32, bool) {
-	if o == nil || isNil(o.EstimatedSpeed) {
-    return nil, false
+	if o == nil || IsNil(o.EstimatedSpeed) {
+		return nil, false
 	}
 	return o.EstimatedSpeed, true
 }
 
 // HasEstimatedSpeed returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasEstimatedSpeed() bool {
-	if o != nil && !isNil(o.EstimatedSpeed) {
+	if o != nil && !IsNil(o.EstimatedSpeed) {
 		return true
 	}
 
@@ -219,7 +222,7 @@ func (o *RiskEvaluationDetails) SetEstimatedSpeed(v float32) {
 
 // GetAnonymousNetworkDetected returns the AnonymousNetworkDetected field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetAnonymousNetworkDetected() bool {
-	if o == nil || isNil(o.AnonymousNetworkDetected) {
+	if o == nil || IsNil(o.AnonymousNetworkDetected) {
 		var ret bool
 		return ret
 	}
@@ -229,15 +232,15 @@ func (o *RiskEvaluationDetails) GetAnonymousNetworkDetected() bool {
 // GetAnonymousNetworkDetectedOk returns a tuple with the AnonymousNetworkDetected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetAnonymousNetworkDetectedOk() (*bool, bool) {
-	if o == nil || isNil(o.AnonymousNetworkDetected) {
-    return nil, false
+	if o == nil || IsNil(o.AnonymousNetworkDetected) {
+		return nil, false
 	}
 	return o.AnonymousNetworkDetected, true
 }
 
 // HasAnonymousNetworkDetected returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasAnonymousNetworkDetected() bool {
-	if o != nil && !isNil(o.AnonymousNetworkDetected) {
+	if o != nil && !IsNil(o.AnonymousNetworkDetected) {
 		return true
 	}
 
@@ -251,7 +254,7 @@ func (o *RiskEvaluationDetails) SetAnonymousNetworkDetected(v bool) {
 
 // GetCountry returns the Country field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetCountry() string {
-	if o == nil || isNil(o.Country) {
+	if o == nil || IsNil(o.Country) {
 		var ret string
 		return ret
 	}
@@ -261,15 +264,15 @@ func (o *RiskEvaluationDetails) GetCountry() string {
 // GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetCountryOk() (*string, bool) {
-	if o == nil || isNil(o.Country) {
-    return nil, false
+	if o == nil || IsNil(o.Country) {
+		return nil, false
 	}
 	return o.Country, true
 }
 
 // HasCountry returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasCountry() bool {
-	if o != nil && !isNil(o.Country) {
+	if o != nil && !IsNil(o.Country) {
 		return true
 	}
 
@@ -283,7 +286,7 @@ func (o *RiskEvaluationDetails) SetCountry(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetState() string {
-	if o == nil || isNil(o.State) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -293,15 +296,15 @@ func (o *RiskEvaluationDetails) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetStateOk() (*string, bool) {
-	if o == nil || isNil(o.State) {
-    return nil, false
+	if o == nil || IsNil(o.State) {
+		return nil, false
 	}
 	return o.State, true
 }
 
 // HasState returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasState() bool {
-	if o != nil && !isNil(o.State) {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -315,7 +318,7 @@ func (o *RiskEvaluationDetails) SetState(v string) {
 
 // GetCity returns the City field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetCity() string {
-	if o == nil || isNil(o.City) {
+	if o == nil || IsNil(o.City) {
 		var ret string
 		return ret
 	}
@@ -325,15 +328,15 @@ func (o *RiskEvaluationDetails) GetCity() string {
 // GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetCityOk() (*string, bool) {
-	if o == nil || isNil(o.City) {
-    return nil, false
+	if o == nil || IsNil(o.City) {
+		return nil, false
 	}
 	return o.City, true
 }
 
 // HasCity returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasCity() bool {
-	if o != nil && !isNil(o.City) {
+	if o != nil && !IsNil(o.City) {
 		return true
 	}
 
@@ -347,7 +350,7 @@ func (o *RiskEvaluationDetails) SetCity(v string) {
 
 // GetLongitude returns the Longitude field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetLongitude() float32 {
-	if o == nil || isNil(o.Longitude) {
+	if o == nil || IsNil(o.Longitude) {
 		var ret float32
 		return ret
 	}
@@ -357,15 +360,15 @@ func (o *RiskEvaluationDetails) GetLongitude() float32 {
 // GetLongitudeOk returns a tuple with the Longitude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetLongitudeOk() (*float32, bool) {
-	if o == nil || isNil(o.Longitude) {
-    return nil, false
+	if o == nil || IsNil(o.Longitude) {
+		return nil, false
 	}
 	return o.Longitude, true
 }
 
 // HasLongitude returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasLongitude() bool {
-	if o != nil && !isNil(o.Longitude) {
+	if o != nil && !IsNil(o.Longitude) {
 		return true
 	}
 
@@ -379,7 +382,7 @@ func (o *RiskEvaluationDetails) SetLongitude(v float32) {
 
 // GetLatitude returns the Latitude field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetLatitude() float32 {
-	if o == nil || isNil(o.Latitude) {
+	if o == nil || IsNil(o.Latitude) {
 		var ret float32
 		return ret
 	}
@@ -389,15 +392,15 @@ func (o *RiskEvaluationDetails) GetLatitude() float32 {
 // GetLatitudeOk returns a tuple with the Latitude field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetLatitudeOk() (*float32, bool) {
-	if o == nil || isNil(o.Latitude) {
-    return nil, false
+	if o == nil || IsNil(o.Latitude) {
+		return nil, false
 	}
 	return o.Latitude, true
 }
 
 // HasLatitude returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasLatitude() bool {
-	if o != nil && !isNil(o.Latitude) {
+	if o != nil && !IsNil(o.Latitude) {
 		return true
 	}
 
@@ -411,7 +414,7 @@ func (o *RiskEvaluationDetails) SetLatitude(v float32) {
 
 // GetPreviousSuccessfulTransaction returns the PreviousSuccessfulTransaction field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetPreviousSuccessfulTransaction() RiskEvaluationDetailsPreviousSuccessfulTransaction {
-	if o == nil || isNil(o.PreviousSuccessfulTransaction) {
+	if o == nil || IsNil(o.PreviousSuccessfulTransaction) {
 		var ret RiskEvaluationDetailsPreviousSuccessfulTransaction
 		return ret
 	}
@@ -421,15 +424,15 @@ func (o *RiskEvaluationDetails) GetPreviousSuccessfulTransaction() RiskEvaluatio
 // GetPreviousSuccessfulTransactionOk returns a tuple with the PreviousSuccessfulTransaction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetPreviousSuccessfulTransactionOk() (*RiskEvaluationDetailsPreviousSuccessfulTransaction, bool) {
-	if o == nil || isNil(o.PreviousSuccessfulTransaction) {
-    return nil, false
+	if o == nil || IsNil(o.PreviousSuccessfulTransaction) {
+		return nil, false
 	}
 	return o.PreviousSuccessfulTransaction, true
 }
 
 // HasPreviousSuccessfulTransaction returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasPreviousSuccessfulTransaction() bool {
-	if o != nil && !isNil(o.PreviousSuccessfulTransaction) {
+	if o != nil && !IsNil(o.PreviousSuccessfulTransaction) {
 		return true
 	}
 
@@ -443,7 +446,7 @@ func (o *RiskEvaluationDetails) SetPreviousSuccessfulTransaction(v RiskEvaluatio
 
 // GetUserBasedRiskBehavior returns the UserBasedRiskBehavior field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetUserBasedRiskBehavior() RiskEvaluationDetailsUserBasedRiskBehavior {
-	if o == nil || isNil(o.UserBasedRiskBehavior) {
+	if o == nil || IsNil(o.UserBasedRiskBehavior) {
 		var ret RiskEvaluationDetailsUserBasedRiskBehavior
 		return ret
 	}
@@ -453,15 +456,15 @@ func (o *RiskEvaluationDetails) GetUserBasedRiskBehavior() RiskEvaluationDetails
 // GetUserBasedRiskBehaviorOk returns a tuple with the UserBasedRiskBehavior field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetUserBasedRiskBehaviorOk() (*RiskEvaluationDetailsUserBasedRiskBehavior, bool) {
-	if o == nil || isNil(o.UserBasedRiskBehavior) {
-    return nil, false
+	if o == nil || IsNil(o.UserBasedRiskBehavior) {
+		return nil, false
 	}
 	return o.UserBasedRiskBehavior, true
 }
 
 // HasUserBasedRiskBehavior returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasUserBasedRiskBehavior() bool {
-	if o != nil && !isNil(o.UserBasedRiskBehavior) {
+	if o != nil && !IsNil(o.UserBasedRiskBehavior) {
 		return true
 	}
 
@@ -475,7 +478,7 @@ func (o *RiskEvaluationDetails) SetUserBasedRiskBehavior(v RiskEvaluationDetails
 
 // GetUserRiskBehavior returns the UserRiskBehavior field value if set, zero value otherwise.
 func (o *RiskEvaluationDetails) GetUserRiskBehavior() RiskEvaluationDetailsUserRiskBehavior {
-	if o == nil || isNil(o.UserRiskBehavior) {
+	if o == nil || IsNil(o.UserRiskBehavior) {
 		var ret RiskEvaluationDetailsUserRiskBehavior
 		return ret
 	}
@@ -485,15 +488,15 @@ func (o *RiskEvaluationDetails) GetUserRiskBehavior() RiskEvaluationDetailsUserR
 // GetUserRiskBehaviorOk returns a tuple with the UserRiskBehavior field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetails) GetUserRiskBehaviorOk() (*RiskEvaluationDetailsUserRiskBehavior, bool) {
-	if o == nil || isNil(o.UserRiskBehavior) {
-    return nil, false
+	if o == nil || IsNil(o.UserRiskBehavior) {
+		return nil, false
 	}
 	return o.UserRiskBehavior, true
 }
 
 // HasUserRiskBehavior returns a boolean if a field has been set.
 func (o *RiskEvaluationDetails) HasUserRiskBehavior() bool {
-	if o != nil && !isNil(o.UserRiskBehavior) {
+	if o != nil && !IsNil(o.UserRiskBehavior) {
 		return true
 	}
 
@@ -506,50 +509,58 @@ func (o *RiskEvaluationDetails) SetUserRiskBehavior(v RiskEvaluationDetailsUserR
 }
 
 func (o RiskEvaluationDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.IpAddressReputation) {
-		toSerialize["ipAddressReputation"] = o.IpAddressReputation
-	}
-	if !isNil(o.IpVelocityByUser) {
-		toSerialize["ipVelocityByUser"] = o.IpVelocityByUser
-	}
-	if !isNil(o.UserVelocityByIp) {
-		toSerialize["userVelocityByIp"] = o.UserVelocityByIp
-	}
-	if !isNil(o.ImpossibleTravel) {
-		toSerialize["impossibleTravel"] = o.ImpossibleTravel
-	}
-	if !isNil(o.EstimatedSpeed) {
-		toSerialize["estimatedSpeed"] = o.EstimatedSpeed
-	}
-	if !isNil(o.AnonymousNetworkDetected) {
-		toSerialize["anonymousNetworkDetected"] = o.AnonymousNetworkDetected
-	}
-	if !isNil(o.Country) {
-		toSerialize["country"] = o.Country
-	}
-	if !isNil(o.State) {
-		toSerialize["state"] = o.State
-	}
-	if !isNil(o.City) {
-		toSerialize["city"] = o.City
-	}
-	if !isNil(o.Longitude) {
-		toSerialize["longitude"] = o.Longitude
-	}
-	if !isNil(o.Latitude) {
-		toSerialize["latitude"] = o.Latitude
-	}
-	if !isNil(o.PreviousSuccessfulTransaction) {
-		toSerialize["previousSuccessfulTransaction"] = o.PreviousSuccessfulTransaction
-	}
-	if !isNil(o.UserBasedRiskBehavior) {
-		toSerialize["userBasedRiskBehavior"] = o.UserBasedRiskBehavior
-	}
-	if !isNil(o.UserRiskBehavior) {
-		toSerialize["userRiskBehavior"] = o.UserRiskBehavior
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IpAddressReputation) {
+		toSerialize["ipAddressReputation"] = o.IpAddressReputation
+	}
+	if !IsNil(o.IpVelocityByUser) {
+		toSerialize["ipVelocityByUser"] = o.IpVelocityByUser
+	}
+	if !IsNil(o.UserVelocityByIp) {
+		toSerialize["userVelocityByIp"] = o.UserVelocityByIp
+	}
+	if !IsNil(o.ImpossibleTravel) {
+		toSerialize["impossibleTravel"] = o.ImpossibleTravel
+	}
+	if !IsNil(o.EstimatedSpeed) {
+		toSerialize["estimatedSpeed"] = o.EstimatedSpeed
+	}
+	if !IsNil(o.AnonymousNetworkDetected) {
+		toSerialize["anonymousNetworkDetected"] = o.AnonymousNetworkDetected
+	}
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.City) {
+		toSerialize["city"] = o.City
+	}
+	if !IsNil(o.Longitude) {
+		toSerialize["longitude"] = o.Longitude
+	}
+	if !IsNil(o.Latitude) {
+		toSerialize["latitude"] = o.Latitude
+	}
+	if !IsNil(o.PreviousSuccessfulTransaction) {
+		toSerialize["previousSuccessfulTransaction"] = o.PreviousSuccessfulTransaction
+	}
+	if !IsNil(o.UserBasedRiskBehavior) {
+		toSerialize["userBasedRiskBehavior"] = o.UserBasedRiskBehavior
+	}
+	if !IsNil(o.UserRiskBehavior) {
+		toSerialize["userRiskBehavior"] = o.UserRiskBehavior
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationDetails struct {

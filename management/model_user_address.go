@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserAddress type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserAddress{}
+
 // UserAddress struct for UserAddress
 type UserAddress struct {
 	// A string that specifies the country name component. When specified, the value must be in ISO 3166-1 `alpha-2` code format [ISO3166]. For example, the country codes for the United States and Sweden are `US` and \"SE\", respectively. Valid characters consist of two upper-case letters (regex `[A-Z]{2}`).
@@ -47,7 +50,7 @@ func NewUserAddressWithDefaults() *UserAddress {
 
 // GetCountryCode returns the CountryCode field value if set, zero value otherwise.
 func (o *UserAddress) GetCountryCode() string {
-	if o == nil || isNil(o.CountryCode) {
+	if o == nil || IsNil(o.CountryCode) {
 		var ret string
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *UserAddress) GetCountryCode() string {
 // GetCountryCodeOk returns a tuple with the CountryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAddress) GetCountryCodeOk() (*string, bool) {
-	if o == nil || isNil(o.CountryCode) {
-    return nil, false
+	if o == nil || IsNil(o.CountryCode) {
+		return nil, false
 	}
 	return o.CountryCode, true
 }
 
 // HasCountryCode returns a boolean if a field has been set.
 func (o *UserAddress) HasCountryCode() bool {
-	if o != nil && !isNil(o.CountryCode) {
+	if o != nil && !IsNil(o.CountryCode) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *UserAddress) SetCountryCode(v string) {
 
 // GetLocality returns the Locality field value if set, zero value otherwise.
 func (o *UserAddress) GetLocality() string {
-	if o == nil || isNil(o.Locality) {
+	if o == nil || IsNil(o.Locality) {
 		var ret string
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *UserAddress) GetLocality() string {
 // GetLocalityOk returns a tuple with the Locality field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAddress) GetLocalityOk() (*string, bool) {
-	if o == nil || isNil(o.Locality) {
-    return nil, false
+	if o == nil || IsNil(o.Locality) {
+		return nil, false
 	}
 	return o.Locality, true
 }
 
 // HasLocality returns a boolean if a field has been set.
 func (o *UserAddress) HasLocality() bool {
-	if o != nil && !isNil(o.Locality) {
+	if o != nil && !IsNil(o.Locality) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *UserAddress) SetLocality(v string) {
 
 // GetPostalCode returns the PostalCode field value if set, zero value otherwise.
 func (o *UserAddress) GetPostalCode() string {
-	if o == nil || isNil(o.PostalCode) {
+	if o == nil || IsNil(o.PostalCode) {
 		var ret string
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *UserAddress) GetPostalCode() string {
 // GetPostalCodeOk returns a tuple with the PostalCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAddress) GetPostalCodeOk() (*string, bool) {
-	if o == nil || isNil(o.PostalCode) {
-    return nil, false
+	if o == nil || IsNil(o.PostalCode) {
+		return nil, false
 	}
 	return o.PostalCode, true
 }
 
 // HasPostalCode returns a boolean if a field has been set.
 func (o *UserAddress) HasPostalCode() bool {
-	if o != nil && !isNil(o.PostalCode) {
+	if o != nil && !IsNil(o.PostalCode) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *UserAddress) SetPostalCode(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *UserAddress) GetRegion() string {
-	if o == nil || isNil(o.Region) {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -153,15 +156,15 @@ func (o *UserAddress) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAddress) GetRegionOk() (*string, bool) {
-	if o == nil || isNil(o.Region) {
-    return nil, false
+	if o == nil || IsNil(o.Region) {
+		return nil, false
 	}
 	return o.Region, true
 }
 
 // HasRegion returns a boolean if a field has been set.
 func (o *UserAddress) HasRegion() bool {
-	if o != nil && !isNil(o.Region) {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *UserAddress) SetRegion(v string) {
 
 // GetStreetAddress returns the StreetAddress field value if set, zero value otherwise.
 func (o *UserAddress) GetStreetAddress() string {
-	if o == nil || isNil(o.StreetAddress) {
+	if o == nil || IsNil(o.StreetAddress) {
 		var ret string
 		return ret
 	}
@@ -185,15 +188,15 @@ func (o *UserAddress) GetStreetAddress() string {
 // GetStreetAddressOk returns a tuple with the StreetAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserAddress) GetStreetAddressOk() (*string, bool) {
-	if o == nil || isNil(o.StreetAddress) {
-    return nil, false
+	if o == nil || IsNil(o.StreetAddress) {
+		return nil, false
 	}
 	return o.StreetAddress, true
 }
 
 // HasStreetAddress returns a boolean if a field has been set.
 func (o *UserAddress) HasStreetAddress() bool {
-	if o != nil && !isNil(o.StreetAddress) {
+	if o != nil && !IsNil(o.StreetAddress) {
 		return true
 	}
 
@@ -206,23 +209,31 @@ func (o *UserAddress) SetStreetAddress(v string) {
 }
 
 func (o UserAddress) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.CountryCode) {
-		toSerialize["countryCode"] = o.CountryCode
-	}
-	if !isNil(o.Locality) {
-		toSerialize["locality"] = o.Locality
-	}
-	if !isNil(o.PostalCode) {
-		toSerialize["postalCode"] = o.PostalCode
-	}
-	if !isNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
-	if !isNil(o.StreetAddress) {
-		toSerialize["streetAddress"] = o.StreetAddress
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserAddress) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CountryCode) {
+		toSerialize["countryCode"] = o.CountryCode
+	}
+	if !IsNil(o.Locality) {
+		toSerialize["locality"] = o.Locality
+	}
+	if !IsNil(o.PostalCode) {
+		toSerialize["postalCode"] = o.PostalCode
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.StreetAddress) {
+		toSerialize["streetAddress"] = o.StreetAddress
+	}
+	return toSerialize, nil
 }
 
 type NullableUserAddress struct {

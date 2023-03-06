@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MFAPushCredentialFCMAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFAPushCredentialFCMAllOf{}
+
 // MFAPushCredentialFCMAllOf struct for MFAPushCredentialFCMAllOf
 type MFAPushCredentialFCMAllOf struct {
 	// A string that Apple uses as an identifier to identify an authentication key.  Mandatory.
@@ -52,7 +55,7 @@ func (o *MFAPushCredentialFCMAllOf) GetKey() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialFCMAllOf) GetKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Key, true
 }
@@ -63,11 +66,17 @@ func (o *MFAPushCredentialFCMAllOf) SetKey(v string) {
 }
 
 func (o MFAPushCredentialFCMAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFAPushCredentialFCMAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	return toSerialize, nil
 }
 
 type NullableMFAPushCredentialFCMAllOf struct {

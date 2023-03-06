@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AgreementLanguageRevisionLanguage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgreementLanguageRevisionLanguage{}
+
 // AgreementLanguageRevisionLanguage struct for AgreementLanguageRevisionLanguage
 type AgreementLanguageRevisionLanguage struct {
 	// A relationship that specifies the language resource associated with this revision.
@@ -39,7 +42,7 @@ func NewAgreementLanguageRevisionLanguageWithDefaults() *AgreementLanguageRevisi
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AgreementLanguageRevisionLanguage) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *AgreementLanguageRevisionLanguage) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevisionLanguage) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *AgreementLanguageRevisionLanguage) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *AgreementLanguageRevisionLanguage) SetId(v string) {
 }
 
 func (o AgreementLanguageRevisionLanguage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AgreementLanguageRevisionLanguage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
 }
 
 type NullableAgreementLanguageRevisionLanguage struct {

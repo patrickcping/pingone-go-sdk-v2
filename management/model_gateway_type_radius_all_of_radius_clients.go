@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayTypeRADIUSAllOfRadiusClients type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayTypeRADIUSAllOfRadiusClients{}
+
 // GatewayTypeRADIUSAllOfRadiusClients struct for GatewayTypeRADIUSAllOfRadiusClients
 type GatewayTypeRADIUSAllOfRadiusClients struct {
 	// The IP of the RADIUS client.
@@ -54,7 +57,7 @@ func (o *GatewayTypeRADIUSAllOfRadiusClients) GetIp() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeRADIUSAllOfRadiusClients) GetIpOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Ip, true
 }
@@ -66,7 +69,7 @@ func (o *GatewayTypeRADIUSAllOfRadiusClients) SetIp(v string) {
 
 // GetSharedSecret returns the SharedSecret field value if set, zero value otherwise.
 func (o *GatewayTypeRADIUSAllOfRadiusClients) GetSharedSecret() string {
-	if o == nil || isNil(o.SharedSecret) {
+	if o == nil || IsNil(o.SharedSecret) {
 		var ret string
 		return ret
 	}
@@ -76,15 +79,15 @@ func (o *GatewayTypeRADIUSAllOfRadiusClients) GetSharedSecret() string {
 // GetSharedSecretOk returns a tuple with the SharedSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeRADIUSAllOfRadiusClients) GetSharedSecretOk() (*string, bool) {
-	if o == nil || isNil(o.SharedSecret) {
-    return nil, false
+	if o == nil || IsNil(o.SharedSecret) {
+		return nil, false
 	}
 	return o.SharedSecret, true
 }
 
 // HasSharedSecret returns a boolean if a field has been set.
 func (o *GatewayTypeRADIUSAllOfRadiusClients) HasSharedSecret() bool {
-	if o != nil && !isNil(o.SharedSecret) {
+	if o != nil && !IsNil(o.SharedSecret) {
 		return true
 	}
 
@@ -97,14 +100,20 @@ func (o *GatewayTypeRADIUSAllOfRadiusClients) SetSharedSecret(v string) {
 }
 
 func (o GatewayTypeRADIUSAllOfRadiusClients) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ip"] = o.Ip
-	}
-	if !isNil(o.SharedSecret) {
-		toSerialize["sharedSecret"] = o.SharedSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayTypeRADIUSAllOfRadiusClients) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ip"] = o.Ip
+	if !IsNil(o.SharedSecret) {
+		toSerialize["sharedSecret"] = o.SharedSecret
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayTypeRADIUSAllOfRadiusClients struct {

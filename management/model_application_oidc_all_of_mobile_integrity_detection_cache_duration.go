@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration{}
+
 // ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration struct for ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration
 type ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration struct {
 	// An integer that specifies the number of minutes or hours that specify the duration between successful integrity detection calls. Every attestation request entails a certain time tradeoff. You can choose to cache successful integrity detection calls for a predefined duration, between a minimum of 1 minute and a maximum of 48 hours. If mobile.integrityDetection.mode is ENABLED, the cache duration must be set.
@@ -40,7 +43,7 @@ func NewApplicationOIDCAllOfMobileIntegrityDetectionCacheDurationWithDefaults() 
 
 // GetAmount returns the Amount field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetAmount() int32 {
-	if o == nil || isNil(o.Amount) {
+	if o == nil || IsNil(o.Amount) {
 		var ret int32
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetAmount() 
 // GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetAmountOk() (*int32, bool) {
-	if o == nil || isNil(o.Amount) {
-    return nil, false
+	if o == nil || IsNil(o.Amount) {
+		return nil, false
 	}
 	return o.Amount, true
 }
 
 // HasAmount returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) HasAmount() bool {
-	if o != nil && !isNil(o.Amount) {
+	if o != nil && !IsNil(o.Amount) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) SetAmount(v 
 
 // GetUnits returns the Units field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetUnits() EnumDurationUnitMinsHours {
-	if o == nil || isNil(o.Units) {
+	if o == nil || IsNil(o.Units) {
 		var ret EnumDurationUnitMinsHours
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetUnits() E
 // GetUnitsOk returns a tuple with the Units field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) GetUnitsOk() (*EnumDurationUnitMinsHours, bool) {
-	if o == nil || isNil(o.Units) {
-    return nil, false
+	if o == nil || IsNil(o.Units) {
+		return nil, false
 	}
 	return o.Units, true
 }
 
 // HasUnits returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) HasUnits() bool {
-	if o != nil && !isNil(o.Units) {
+	if o != nil && !IsNil(o.Units) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) SetUnits(v E
 }
 
 func (o ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Amount) {
-		toSerialize["amount"] = o.Amount
-	}
-	if !isNil(o.Units) {
-		toSerialize["units"] = o.Units
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Amount) {
+		toSerialize["amount"] = o.Amount
+	}
+	if !IsNil(o.Units) {
+		toSerialize["units"] = o.Units
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration struct {

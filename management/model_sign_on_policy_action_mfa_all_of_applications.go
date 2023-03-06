@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionMFAAllOfApplications type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionMFAAllOfApplications{}
+
 // SignOnPolicyActionMFAAllOfApplications struct for SignOnPolicyActionMFAAllOfApplications
 type SignOnPolicyActionMFAAllOfApplications struct {
 	Id string `json:"id"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionMFAAllOfApplications) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionMFAAllOfApplications) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -65,7 +68,7 @@ func (o *SignOnPolicyActionMFAAllOfApplications) SetId(v string) {
 
 // GetAutoEnrollment returns the AutoEnrollment field value if set, zero value otherwise.
 func (o *SignOnPolicyActionMFAAllOfApplications) GetAutoEnrollment() SignOnPolicyActionMFAAllOfAutoEnrollment {
-	if o == nil || isNil(o.AutoEnrollment) {
+	if o == nil || IsNil(o.AutoEnrollment) {
 		var ret SignOnPolicyActionMFAAllOfAutoEnrollment
 		return ret
 	}
@@ -75,15 +78,15 @@ func (o *SignOnPolicyActionMFAAllOfApplications) GetAutoEnrollment() SignOnPolic
 // GetAutoEnrollmentOk returns a tuple with the AutoEnrollment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionMFAAllOfApplications) GetAutoEnrollmentOk() (*SignOnPolicyActionMFAAllOfAutoEnrollment, bool) {
-	if o == nil || isNil(o.AutoEnrollment) {
-    return nil, false
+	if o == nil || IsNil(o.AutoEnrollment) {
+		return nil, false
 	}
 	return o.AutoEnrollment, true
 }
 
 // HasAutoEnrollment returns a boolean if a field has been set.
 func (o *SignOnPolicyActionMFAAllOfApplications) HasAutoEnrollment() bool {
-	if o != nil && !isNil(o.AutoEnrollment) {
+	if o != nil && !IsNil(o.AutoEnrollment) {
 		return true
 	}
 
@@ -97,7 +100,7 @@ func (o *SignOnPolicyActionMFAAllOfApplications) SetAutoEnrollment(v SignOnPolic
 
 // GetDeviceAuthorization returns the DeviceAuthorization field value if set, zero value otherwise.
 func (o *SignOnPolicyActionMFAAllOfApplications) GetDeviceAuthorization() SignOnPolicyActionMFAAllOfDeviceAuthorization {
-	if o == nil || isNil(o.DeviceAuthorization) {
+	if o == nil || IsNil(o.DeviceAuthorization) {
 		var ret SignOnPolicyActionMFAAllOfDeviceAuthorization
 		return ret
 	}
@@ -107,15 +110,15 @@ func (o *SignOnPolicyActionMFAAllOfApplications) GetDeviceAuthorization() SignOn
 // GetDeviceAuthorizationOk returns a tuple with the DeviceAuthorization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionMFAAllOfApplications) GetDeviceAuthorizationOk() (*SignOnPolicyActionMFAAllOfDeviceAuthorization, bool) {
-	if o == nil || isNil(o.DeviceAuthorization) {
-    return nil, false
+	if o == nil || IsNil(o.DeviceAuthorization) {
+		return nil, false
 	}
 	return o.DeviceAuthorization, true
 }
 
 // HasDeviceAuthorization returns a boolean if a field has been set.
 func (o *SignOnPolicyActionMFAAllOfApplications) HasDeviceAuthorization() bool {
-	if o != nil && !isNil(o.DeviceAuthorization) {
+	if o != nil && !IsNil(o.DeviceAuthorization) {
 		return true
 	}
 
@@ -128,17 +131,23 @@ func (o *SignOnPolicyActionMFAAllOfApplications) SetDeviceAuthorization(v SignOn
 }
 
 func (o SignOnPolicyActionMFAAllOfApplications) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.AutoEnrollment) {
-		toSerialize["autoEnrollment"] = o.AutoEnrollment
-	}
-	if !isNil(o.DeviceAuthorization) {
-		toSerialize["deviceAuthorization"] = o.DeviceAuthorization
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionMFAAllOfApplications) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.AutoEnrollment) {
+		toSerialize["autoEnrollment"] = o.AutoEnrollment
+	}
+	if !IsNil(o.DeviceAuthorization) {
+		toSerialize["deviceAuthorization"] = o.DeviceAuthorization
+	}
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionMFAAllOfApplications struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationOIDCAllOfKerberosKey type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationOIDCAllOfKerberosKey{}
+
 // ApplicationOIDCAllOfKerberosKey A Relationship object containing the certificate issuer (root CA).
 type ApplicationOIDCAllOfKerberosKey struct {
 	// The unique identifier for the Kerberos key.
@@ -52,7 +55,7 @@ func (o *ApplicationOIDCAllOfKerberosKey) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfKerberosKey) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *ApplicationOIDCAllOfKerberosKey) SetId(v string) {
 }
 
 func (o ApplicationOIDCAllOfKerberosKey) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationOIDCAllOfKerberosKey) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableApplicationOIDCAllOfKerberosKey struct {

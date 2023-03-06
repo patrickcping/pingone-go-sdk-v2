@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MFASettingsAuthentication type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFASettingsAuthentication{}
+
 // MFASettingsAuthentication An object that contains the device selection settings.
 type MFASettingsAuthentication struct {
 	// Deprecated
@@ -54,7 +57,7 @@ func (o *MFASettingsAuthentication) GetDeviceSelection() EnumMFASettingsDeviceSe
 // Deprecated
 func (o *MFASettingsAuthentication) GetDeviceSelectionOk() (*EnumMFASettingsDeviceSelection, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DeviceSelection, true
 }
@@ -66,11 +69,17 @@ func (o *MFASettingsAuthentication) SetDeviceSelection(v EnumMFASettingsDeviceSe
 }
 
 func (o MFASettingsAuthentication) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["deviceSelection"] = o.DeviceSelection
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFASettingsAuthentication) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["deviceSelection"] = o.DeviceSelection
+	return toSerialize, nil
 }
 
 type NullableMFASettingsAuthentication struct {

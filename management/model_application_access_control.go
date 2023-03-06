@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationAccessControl type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationAccessControl{}
+
 // ApplicationAccessControl struct for ApplicationAccessControl
 type ApplicationAccessControl struct {
 	Role *ApplicationAccessControlRole `json:"role,omitempty"`
@@ -39,7 +42,7 @@ func NewApplicationAccessControlWithDefaults() *ApplicationAccessControl {
 
 // GetRole returns the Role field value if set, zero value otherwise.
 func (o *ApplicationAccessControl) GetRole() ApplicationAccessControlRole {
-	if o == nil || isNil(o.Role) {
+	if o == nil || IsNil(o.Role) {
 		var ret ApplicationAccessControlRole
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *ApplicationAccessControl) GetRole() ApplicationAccessControlRole {
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAccessControl) GetRoleOk() (*ApplicationAccessControlRole, bool) {
-	if o == nil || isNil(o.Role) {
-    return nil, false
+	if o == nil || IsNil(o.Role) {
+		return nil, false
 	}
 	return o.Role, true
 }
 
 // HasRole returns a boolean if a field has been set.
 func (o *ApplicationAccessControl) HasRole() bool {
-	if o != nil && !isNil(o.Role) {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ApplicationAccessControl) SetRole(v ApplicationAccessControlRole) {
 
 // GetGroup returns the Group field value if set, zero value otherwise.
 func (o *ApplicationAccessControl) GetGroup() ApplicationAccessControlGroup {
-	if o == nil || isNil(o.Group) {
+	if o == nil || IsNil(o.Group) {
 		var ret ApplicationAccessControlGroup
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *ApplicationAccessControl) GetGroup() ApplicationAccessControlGroup {
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationAccessControl) GetGroupOk() (*ApplicationAccessControlGroup, bool) {
-	if o == nil || isNil(o.Group) {
-    return nil, false
+	if o == nil || IsNil(o.Group) {
+		return nil, false
 	}
 	return o.Group, true
 }
 
 // HasGroup returns a boolean if a field has been set.
 func (o *ApplicationAccessControl) HasGroup() bool {
-	if o != nil && !isNil(o.Group) {
+	if o != nil && !IsNil(o.Group) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ApplicationAccessControl) SetGroup(v ApplicationAccessControlGroup) {
 }
 
 func (o ApplicationAccessControl) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Role) {
-		toSerialize["role"] = o.Role
-	}
-	if !isNil(o.Group) {
-		toSerialize["group"] = o.Group
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationAccessControl) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
+	}
+	if !IsNil(o.Group) {
+		toSerialize["group"] = o.Group
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationAccessControl struct {

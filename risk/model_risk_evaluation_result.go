@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationResult{}
+
 // RiskEvaluationResult struct for RiskEvaluationResult
 type RiskEvaluationResult struct {
 	Type *EnumResultType `json:"type,omitempty"`
@@ -41,7 +44,7 @@ func NewRiskEvaluationResultWithDefaults() *RiskEvaluationResult {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RiskEvaluationResult) GetType() EnumResultType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret EnumResultType
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *RiskEvaluationResult) GetType() EnumResultType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationResult) GetTypeOk() (*EnumResultType, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *RiskEvaluationResult) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RiskEvaluationResult) SetType(v EnumResultType) {
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *RiskEvaluationResult) GetLevel() EnumRiskLevel {
-	if o == nil || isNil(o.Level) {
+	if o == nil || IsNil(o.Level) {
 		var ret EnumRiskLevel
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *RiskEvaluationResult) GetLevel() EnumRiskLevel {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationResult) GetLevelOk() (*EnumRiskLevel, bool) {
-	if o == nil || isNil(o.Level) {
-    return nil, false
+	if o == nil || IsNil(o.Level) {
+		return nil, false
 	}
 	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *RiskEvaluationResult) HasLevel() bool {
-	if o != nil && !isNil(o.Level) {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *RiskEvaluationResult) SetLevel(v EnumRiskLevel) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *RiskEvaluationResult) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *RiskEvaluationResult) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationResult) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
-    return nil, false
+	if o == nil || IsNil(o.Value) {
+		return nil, false
 	}
 	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *RiskEvaluationResult) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -136,17 +139,23 @@ func (o *RiskEvaluationResult) SetValue(v string) {
 }
 
 func (o RiskEvaluationResult) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.Level) {
-		toSerialize["level"] = o.Level
-	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationResult) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
+	}
+	// skip: value is readOnly
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationResult struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DecisionEndpoint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DecisionEndpoint{}
+
 // DecisionEndpoint struct for DecisionEndpoint
 type DecisionEndpoint struct {
 	// A string that specifies alternative unique identifier for the endpoint, which provides a method for locating the resource by a known, fixed identifier.
@@ -60,7 +63,7 @@ func NewDecisionEndpointWithDefaults() *DecisionEndpoint {
 
 // GetAlternateId returns the AlternateId field value if set, zero value otherwise.
 func (o *DecisionEndpoint) GetAlternateId() string {
-	if o == nil || isNil(o.AlternateId) {
+	if o == nil || IsNil(o.AlternateId) {
 		var ret string
 		return ret
 	}
@@ -70,15 +73,15 @@ func (o *DecisionEndpoint) GetAlternateId() string {
 // GetAlternateIdOk returns a tuple with the AlternateId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetAlternateIdOk() (*string, bool) {
-	if o == nil || isNil(o.AlternateId) {
-    return nil, false
+	if o == nil || IsNil(o.AlternateId) {
+		return nil, false
 	}
 	return o.AlternateId, true
 }
 
 // HasAlternateId returns a boolean if a field has been set.
 func (o *DecisionEndpoint) HasAlternateId() bool {
-	if o != nil && !isNil(o.AlternateId) {
+	if o != nil && !IsNil(o.AlternateId) {
 		return true
 	}
 
@@ -92,7 +95,7 @@ func (o *DecisionEndpoint) SetAlternateId(v string) {
 
 // GetAuthorizationVersion returns the AuthorizationVersion field value if set, zero value otherwise.
 func (o *DecisionEndpoint) GetAuthorizationVersion() DecisionEndpointAuthorizationVersion {
-	if o == nil || isNil(o.AuthorizationVersion) {
+	if o == nil || IsNil(o.AuthorizationVersion) {
 		var ret DecisionEndpointAuthorizationVersion
 		return ret
 	}
@@ -102,15 +105,15 @@ func (o *DecisionEndpoint) GetAuthorizationVersion() DecisionEndpointAuthorizati
 // GetAuthorizationVersionOk returns a tuple with the AuthorizationVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetAuthorizationVersionOk() (*DecisionEndpointAuthorizationVersion, bool) {
-	if o == nil || isNil(o.AuthorizationVersion) {
-    return nil, false
+	if o == nil || IsNil(o.AuthorizationVersion) {
+		return nil, false
 	}
 	return o.AuthorizationVersion, true
 }
 
 // HasAuthorizationVersion returns a boolean if a field has been set.
 func (o *DecisionEndpoint) HasAuthorizationVersion() bool {
-	if o != nil && !isNil(o.AuthorizationVersion) {
+	if o != nil && !IsNil(o.AuthorizationVersion) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *DecisionEndpoint) GetDescription() string {
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetDescriptionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Description, true
 }
@@ -148,7 +151,7 @@ func (o *DecisionEndpoint) SetDescription(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DecisionEndpoint) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -158,15 +161,15 @@ func (o *DecisionEndpoint) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *DecisionEndpoint) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -192,7 +195,7 @@ func (o *DecisionEndpoint) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -204,7 +207,7 @@ func (o *DecisionEndpoint) SetName(v string) {
 
 // GetOwned returns the Owned field value if set, zero value otherwise.
 func (o *DecisionEndpoint) GetOwned() bool {
-	if o == nil || isNil(o.Owned) {
+	if o == nil || IsNil(o.Owned) {
 		var ret bool
 		return ret
 	}
@@ -214,15 +217,15 @@ func (o *DecisionEndpoint) GetOwned() bool {
 // GetOwnedOk returns a tuple with the Owned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetOwnedOk() (*bool, bool) {
-	if o == nil || isNil(o.Owned) {
-    return nil, false
+	if o == nil || IsNil(o.Owned) {
+		return nil, false
 	}
 	return o.Owned, true
 }
 
 // HasOwned returns a boolean if a field has been set.
 func (o *DecisionEndpoint) HasOwned() bool {
-	if o != nil && !isNil(o.Owned) {
+	if o != nil && !IsNil(o.Owned) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *DecisionEndpoint) SetOwned(v bool) {
 
 // GetPolicyId returns the PolicyId field value if set, zero value otherwise.
 func (o *DecisionEndpoint) GetPolicyId() string {
-	if o == nil || isNil(o.PolicyId) {
+	if o == nil || IsNil(o.PolicyId) {
 		var ret string
 		return ret
 	}
@@ -246,15 +249,15 @@ func (o *DecisionEndpoint) GetPolicyId() string {
 // GetPolicyIdOk returns a tuple with the PolicyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetPolicyIdOk() (*string, bool) {
-	if o == nil || isNil(o.PolicyId) {
-    return nil, false
+	if o == nil || IsNil(o.PolicyId) {
+		return nil, false
 	}
 	return o.PolicyId, true
 }
 
 // HasPolicyId returns a boolean if a field has been set.
 func (o *DecisionEndpoint) HasPolicyId() bool {
-	if o != nil && !isNil(o.PolicyId) {
+	if o != nil && !IsNil(o.PolicyId) {
 		return true
 	}
 
@@ -268,7 +271,7 @@ func (o *DecisionEndpoint) SetPolicyId(v string) {
 
 // GetProvenance returns the Provenance field value if set, zero value otherwise.
 func (o *DecisionEndpoint) GetProvenance() string {
-	if o == nil || isNil(o.Provenance) {
+	if o == nil || IsNil(o.Provenance) {
 		var ret string
 		return ret
 	}
@@ -278,15 +281,15 @@ func (o *DecisionEndpoint) GetProvenance() string {
 // GetProvenanceOk returns a tuple with the Provenance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetProvenanceOk() (*string, bool) {
-	if o == nil || isNil(o.Provenance) {
-    return nil, false
+	if o == nil || IsNil(o.Provenance) {
+		return nil, false
 	}
 	return o.Provenance, true
 }
 
 // HasProvenance returns a boolean if a field has been set.
 func (o *DecisionEndpoint) HasProvenance() bool {
-	if o != nil && !isNil(o.Provenance) {
+	if o != nil && !IsNil(o.Provenance) {
 		return true
 	}
 
@@ -300,7 +303,7 @@ func (o *DecisionEndpoint) SetProvenance(v string) {
 
 // GetRecentDecisionsEnabled returns the RecentDecisionsEnabled field value if set, zero value otherwise.
 func (o *DecisionEndpoint) GetRecentDecisionsEnabled() bool {
-	if o == nil || isNil(o.RecentDecisionsEnabled) {
+	if o == nil || IsNil(o.RecentDecisionsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -310,15 +313,15 @@ func (o *DecisionEndpoint) GetRecentDecisionsEnabled() bool {
 // GetRecentDecisionsEnabledOk returns a tuple with the RecentDecisionsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetRecentDecisionsEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.RecentDecisionsEnabled) {
-    return nil, false
+	if o == nil || IsNil(o.RecentDecisionsEnabled) {
+		return nil, false
 	}
 	return o.RecentDecisionsEnabled, true
 }
 
 // HasRecentDecisionsEnabled returns a boolean if a field has been set.
 func (o *DecisionEndpoint) HasRecentDecisionsEnabled() bool {
-	if o != nil && !isNil(o.RecentDecisionsEnabled) {
+	if o != nil && !IsNil(o.RecentDecisionsEnabled) {
 		return true
 	}
 
@@ -332,7 +335,7 @@ func (o *DecisionEndpoint) SetRecentDecisionsEnabled(v bool) {
 
 // GetRecentDecisions returns the RecentDecisions field value if set, zero value otherwise.
 func (o *DecisionEndpoint) GetRecentDecisions() DecisionEndpointRecentDecisions {
-	if o == nil || isNil(o.RecentDecisions) {
+	if o == nil || IsNil(o.RecentDecisions) {
 		var ret DecisionEndpointRecentDecisions
 		return ret
 	}
@@ -342,15 +345,15 @@ func (o *DecisionEndpoint) GetRecentDecisions() DecisionEndpointRecentDecisions 
 // GetRecentDecisionsOk returns a tuple with the RecentDecisions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetRecentDecisionsOk() (*DecisionEndpointRecentDecisions, bool) {
-	if o == nil || isNil(o.RecentDecisions) {
-    return nil, false
+	if o == nil || IsNil(o.RecentDecisions) {
+		return nil, false
 	}
 	return o.RecentDecisions, true
 }
 
 // HasRecentDecisions returns a boolean if a field has been set.
 func (o *DecisionEndpoint) HasRecentDecisions() bool {
-	if o != nil && !isNil(o.RecentDecisions) {
+	if o != nil && !IsNil(o.RecentDecisions) {
 		return true
 	}
 
@@ -376,7 +379,7 @@ func (o *DecisionEndpoint) GetRecordRecentRequests() bool {
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpoint) GetRecordRecentRequestsOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.RecordRecentRequests, true
 }
@@ -387,41 +390,41 @@ func (o *DecisionEndpoint) SetRecordRecentRequests(v bool) {
 }
 
 func (o DecisionEndpoint) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AlternateId) {
-		toSerialize["alternateId"] = o.AlternateId
-	}
-	if !isNil(o.AuthorizationVersion) {
-		toSerialize["authorizationVersion"] = o.AuthorizationVersion
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Owned) {
-		toSerialize["owned"] = o.Owned
-	}
-	if !isNil(o.PolicyId) {
-		toSerialize["policyId"] = o.PolicyId
-	}
-	if !isNil(o.Provenance) {
-		toSerialize["provenance"] = o.Provenance
-	}
-	if !isNil(o.RecentDecisionsEnabled) {
-		toSerialize["recentDecisionsEnabled"] = o.RecentDecisionsEnabled
-	}
-	if !isNil(o.RecentDecisions) {
-		toSerialize["recentDecisions"] = o.RecentDecisions
-	}
-	if true {
-		toSerialize["recordRecentRequests"] = o.RecordRecentRequests
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DecisionEndpoint) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AlternateId) {
+		toSerialize["alternateId"] = o.AlternateId
+	}
+	if !IsNil(o.AuthorizationVersion) {
+		toSerialize["authorizationVersion"] = o.AuthorizationVersion
+	}
+	toSerialize["description"] = o.Description
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Owned) {
+		toSerialize["owned"] = o.Owned
+	}
+	if !IsNil(o.PolicyId) {
+		toSerialize["policyId"] = o.PolicyId
+	}
+	if !IsNil(o.Provenance) {
+		toSerialize["provenance"] = o.Provenance
+	}
+	if !IsNil(o.RecentDecisionsEnabled) {
+		toSerialize["recentDecisionsEnabled"] = o.RecentDecisionsEnabled
+	}
+	if !IsNil(o.RecentDecisions) {
+		toSerialize["recentDecisions"] = o.RecentDecisions
+	}
+	toSerialize["recordRecentRequests"] = o.RecordRecentRequests
+	return toSerialize, nil
 }
 
 type NullableDecisionEndpoint struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionEquals type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionEquals{}
+
 // SignOnPolicyActionCommonConditionEquals struct for SignOnPolicyActionCommonConditionEquals
 type SignOnPolicyActionCommonConditionEquals struct {
 	Value string `json:"value"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionCommonConditionEquals) GetValue() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionEquals) GetValueOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Value, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionCommonConditionEquals) GetEquals() SignOnPolicyAction
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionEquals) GetEqualsOk() (*SignOnPolicyActionCommonConditionEqualsEquals, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Equals, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionCommonConditionEquals) SetEquals(v SignOnPolicyAction
 }
 
 func (o SignOnPolicyActionCommonConditionEquals) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["value"] = o.Value
-	}
-	if true {
-		toSerialize["equals"] = o.Equals
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionEquals) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["value"] = o.Value
+	toSerialize["equals"] = o.Equals
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionEquals struct {

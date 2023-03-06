@@ -28,7 +28,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -39,7 +39,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet(context.Background(), environmentID, planID).Accept(accept).ContentType(contentType).Execute()
+    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet(context.Background(), environmentID, planID).Accept(accept).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -101,7 +101,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -111,7 +111,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesGet(context.Background(), environmentID).Accept(accept).Authorization(authorization).Execute()
+    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesGet(context.Background(), environmentID).Accept(accept).Authorization(authorization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,7 +171,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -180,7 +180,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,7 +239,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -249,7 +249,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete(context.Background(), environmentID, ruleID).Accept(accept).Execute()
+    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete(context.Background(), environmentID, ruleID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -310,7 +310,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -320,7 +320,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet(context.Background(), environmentID, ruleID).Accept(accept).Execute()
+    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet(context.Background(), environmentID, ruleID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -381,7 +381,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -391,7 +391,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut(context.Background(), environmentID, storeID).Body(body).Execute()
+    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut(context.Background(), environmentID, storeID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ImageTargetsOriginal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ImageTargetsOriginal{}
+
 // ImageTargetsOriginal struct for ImageTargetsOriginal
 type ImageTargetsOriginal struct {
 	// A string that specifies the URL or fully qualified path to the image source file.
@@ -46,7 +49,7 @@ func NewImageTargetsOriginalWithDefaults() *ImageTargetsOriginal {
 
 // GetHref returns the Href field value if set, zero value otherwise.
 func (o *ImageTargetsOriginal) GetHref() string {
-	if o == nil || isNil(o.Href) {
+	if o == nil || IsNil(o.Href) {
 		var ret string
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *ImageTargetsOriginal) GetHref() string {
 // GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImageTargetsOriginal) GetHrefOk() (*string, bool) {
-	if o == nil || isNil(o.Href) {
-    return nil, false
+	if o == nil || IsNil(o.Href) {
+		return nil, false
 	}
 	return o.Href, true
 }
 
 // HasHref returns a boolean if a field has been set.
 func (o *ImageTargetsOriginal) HasHref() bool {
-	if o != nil && !isNil(o.Href) {
+	if o != nil && !IsNil(o.Href) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *ImageTargetsOriginal) SetHref(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ImageTargetsOriginal) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -88,15 +91,15 @@ func (o *ImageTargetsOriginal) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImageTargetsOriginal) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ImageTargetsOriginal) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *ImageTargetsOriginal) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ImageTargetsOriginal) GetType() EnumImageFormat {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret EnumImageFormat
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *ImageTargetsOriginal) GetType() EnumImageFormat {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImageTargetsOriginal) GetTypeOk() (*EnumImageFormat, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *ImageTargetsOriginal) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *ImageTargetsOriginal) SetType(v EnumImageFormat) {
 
 // GetWidth returns the Width field value if set, zero value otherwise.
 func (o *ImageTargetsOriginal) GetWidth() int32 {
-	if o == nil || isNil(o.Width) {
+	if o == nil || IsNil(o.Width) {
 		var ret int32
 		return ret
 	}
@@ -152,15 +155,15 @@ func (o *ImageTargetsOriginal) GetWidth() int32 {
 // GetWidthOk returns a tuple with the Width field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImageTargetsOriginal) GetWidthOk() (*int32, bool) {
-	if o == nil || isNil(o.Width) {
-    return nil, false
+	if o == nil || IsNil(o.Width) {
+		return nil, false
 	}
 	return o.Width, true
 }
 
 // HasWidth returns a boolean if a field has been set.
 func (o *ImageTargetsOriginal) HasWidth() bool {
-	if o != nil && !isNil(o.Width) {
+	if o != nil && !IsNil(o.Width) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *ImageTargetsOriginal) SetWidth(v int32) {
 
 // GetHeight returns the Height field value if set, zero value otherwise.
 func (o *ImageTargetsOriginal) GetHeight() int32 {
-	if o == nil || isNil(o.Height) {
+	if o == nil || IsNil(o.Height) {
 		var ret int32
 		return ret
 	}
@@ -184,15 +187,15 @@ func (o *ImageTargetsOriginal) GetHeight() int32 {
 // GetHeightOk returns a tuple with the Height field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ImageTargetsOriginal) GetHeightOk() (*int32, bool) {
-	if o == nil || isNil(o.Height) {
-    return nil, false
+	if o == nil || IsNil(o.Height) {
+		return nil, false
 	}
 	return o.Height, true
 }
 
 // HasHeight returns a boolean if a field has been set.
 func (o *ImageTargetsOriginal) HasHeight() bool {
-	if o != nil && !isNil(o.Height) {
+	if o != nil && !IsNil(o.Height) {
 		return true
 	}
 
@@ -205,23 +208,23 @@ func (o *ImageTargetsOriginal) SetHeight(v int32) {
 }
 
 func (o ImageTargetsOriginal) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Href) {
-		toSerialize["href"] = o.Href
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.Width) {
-		toSerialize["width"] = o.Width
-	}
-	if !isNil(o.Height) {
-		toSerialize["height"] = o.Height
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ImageTargetsOriginal) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: href is readOnly
+	// skip: id is readOnly
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	// skip: width is readOnly
+	// skip: height is readOnly
+	return toSerialize, nil
 }
 
 type NullableImageTargetsOriginal struct {

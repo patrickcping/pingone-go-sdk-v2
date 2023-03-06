@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MFAPushCredential type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFAPushCredential{}
+
 // MFAPushCredential struct for MFAPushCredential
 type MFAPushCredential struct {
 	Type EnumMFAPushCredentialAttrType `json:"type"`
@@ -51,7 +54,7 @@ func (o *MFAPushCredential) GetType() EnumMFAPushCredentialAttrType {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredential) GetTypeOk() (*EnumMFAPushCredentialAttrType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -62,11 +65,17 @@ func (o *MFAPushCredential) SetType(v EnumMFAPushCredentialAttrType) {
 }
 
 func (o MFAPushCredential) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFAPushCredential) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	return toSerialize, nil
 }
 
 type NullableMFAPushCredential struct {

@@ -80,7 +80,7 @@ func (a *ImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (*Image, 
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/images"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -104,10 +104,10 @@ func (a *ImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (*Image, 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	if r.contentDisposition != nil {
-		localVarHeaderParams["Content-Disposition"] = parameterToString(*r.contentDisposition, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Disposition", r.contentDisposition, "")
 	}
 
 	localVarPostBody = **r.file
@@ -268,8 +268,8 @@ func (a *ImagesApiService) DeleteImageExecute(r ApiDeleteImageRequest) (*http.Re
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/images/{imgID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterToString(r.imgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -431,8 +431,8 @@ func (a *ImagesApiService) ReadImageExecute(r ApiReadImageRequest) (*Image, *htt
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/images/{imgID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterToString(r.environmentID, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterToString(r.imgID, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

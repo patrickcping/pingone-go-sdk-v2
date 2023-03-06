@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute{}
+
 // SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute struct for SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute
 type SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute struct {
 	// Schema attributes to match against the provided identifier when searching for a user in the directory. Only unique attributes may be included.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) G
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) S
 }
 
 func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute struct {

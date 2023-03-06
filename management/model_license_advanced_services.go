@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseAdvancedServices type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseAdvancedServices{}
+
 // LicenseAdvancedServices struct for LicenseAdvancedServices
 type LicenseAdvancedServices struct {
 	PingId *LicenseAdvancedServicesPingId `json:"pingId,omitempty"`
@@ -38,7 +41,7 @@ func NewLicenseAdvancedServicesWithDefaults() *LicenseAdvancedServices {
 
 // GetPingId returns the PingId field value if set, zero value otherwise.
 func (o *LicenseAdvancedServices) GetPingId() LicenseAdvancedServicesPingId {
-	if o == nil || isNil(o.PingId) {
+	if o == nil || IsNil(o.PingId) {
 		var ret LicenseAdvancedServicesPingId
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *LicenseAdvancedServices) GetPingId() LicenseAdvancedServicesPingId {
 // GetPingIdOk returns a tuple with the PingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseAdvancedServices) GetPingIdOk() (*LicenseAdvancedServicesPingId, bool) {
-	if o == nil || isNil(o.PingId) {
-    return nil, false
+	if o == nil || IsNil(o.PingId) {
+		return nil, false
 	}
 	return o.PingId, true
 }
 
 // HasPingId returns a boolean if a field has been set.
 func (o *LicenseAdvancedServices) HasPingId() bool {
-	if o != nil && !isNil(o.PingId) {
+	if o != nil && !IsNil(o.PingId) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *LicenseAdvancedServices) SetPingId(v LicenseAdvancedServicesPingId) {
 }
 
 func (o LicenseAdvancedServices) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.PingId) {
-		toSerialize["pingId"] = o.PingId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseAdvancedServices) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PingId) {
+		toSerialize["pingId"] = o.PingId
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseAdvancedServices struct {

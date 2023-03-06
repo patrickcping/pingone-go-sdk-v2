@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationResourceGrantResource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationResourceGrantResource{}
+
 // ApplicationResourceGrantResource struct for ApplicationResourceGrantResource
 type ApplicationResourceGrantResource struct {
 	// A string that specifies the ID of the protected resource associated with this grant. This is a required property.
@@ -52,7 +55,7 @@ func (o *ApplicationResourceGrantResource) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationResourceGrantResource) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *ApplicationResourceGrantResource) SetId(v string) {
 }
 
 func (o ApplicationResourceGrantResource) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationResourceGrantResource) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableApplicationResourceGrantResource struct {

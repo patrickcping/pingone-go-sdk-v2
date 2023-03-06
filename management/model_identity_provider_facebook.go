@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderFacebook type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderFacebook{}
+
 // IdentityProviderFacebook struct for IdentityProviderFacebook
 type IdentityProviderFacebook struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
@@ -64,7 +67,7 @@ func NewIdentityProviderFacebookWithDefaults() *IdentityProviderFacebook {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetLinks() map[string]interface{} {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -74,15 +77,15 @@ func (o *IdentityProviderFacebook) GetLinks() map[string]interface{} {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Links) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Links) {
+		return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -96,7 +99,7 @@ func (o *IdentityProviderFacebook) SetLinks(v map[string]interface{}) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -106,15 +109,15 @@ func (o *IdentityProviderFacebook) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *IdentityProviderFacebook) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -152,7 +155,7 @@ func (o *IdentityProviderFacebook) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -162,15 +165,15 @@ func (o *IdentityProviderFacebook) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -184,7 +187,7 @@ func (o *IdentityProviderFacebook) SetEnvironment(v ObjectEnvironment) {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetIcon() IdentityProviderCommonIcon {
-	if o == nil || isNil(o.Icon) {
+	if o == nil || IsNil(o.Icon) {
 		var ret IdentityProviderCommonIcon
 		return ret
 	}
@@ -194,15 +197,15 @@ func (o *IdentityProviderFacebook) GetIcon() IdentityProviderCommonIcon {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetIconOk() (*IdentityProviderCommonIcon, bool) {
-	if o == nil || isNil(o.Icon) {
-    return nil, false
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
 	}
 	return o.Icon, true
 }
 
 // HasIcon returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasIcon() bool {
-	if o != nil && !isNil(o.Icon) {
+	if o != nil && !IsNil(o.Icon) {
 		return true
 	}
 
@@ -216,7 +219,7 @@ func (o *IdentityProviderFacebook) SetIcon(v IdentityProviderCommonIcon) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -226,15 +229,15 @@ func (o *IdentityProviderFacebook) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -248,7 +251,7 @@ func (o *IdentityProviderFacebook) SetId(v string) {
 
 // GetLoginButtonIcon returns the LoginButtonIcon field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetLoginButtonIcon() IdentityProviderCommonLoginButtonIcon {
-	if o == nil || isNil(o.LoginButtonIcon) {
+	if o == nil || IsNil(o.LoginButtonIcon) {
 		var ret IdentityProviderCommonLoginButtonIcon
 		return ret
 	}
@@ -258,15 +261,15 @@ func (o *IdentityProviderFacebook) GetLoginButtonIcon() IdentityProviderCommonLo
 // GetLoginButtonIconOk returns a tuple with the LoginButtonIcon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetLoginButtonIconOk() (*IdentityProviderCommonLoginButtonIcon, bool) {
-	if o == nil || isNil(o.LoginButtonIcon) {
-    return nil, false
+	if o == nil || IsNil(o.LoginButtonIcon) {
+		return nil, false
 	}
 	return o.LoginButtonIcon, true
 }
 
 // HasLoginButtonIcon returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasLoginButtonIcon() bool {
-	if o != nil && !isNil(o.LoginButtonIcon) {
+	if o != nil && !IsNil(o.LoginButtonIcon) {
 		return true
 	}
 
@@ -292,7 +295,7 @@ func (o *IdentityProviderFacebook) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -304,7 +307,7 @@ func (o *IdentityProviderFacebook) SetName(v string) {
 
 // GetRegistration returns the Registration field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetRegistration() IdentityProviderCommonRegistration {
-	if o == nil || isNil(o.Registration) {
+	if o == nil || IsNil(o.Registration) {
 		var ret IdentityProviderCommonRegistration
 		return ret
 	}
@@ -314,15 +317,15 @@ func (o *IdentityProviderFacebook) GetRegistration() IdentityProviderCommonRegis
 // GetRegistrationOk returns a tuple with the Registration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetRegistrationOk() (*IdentityProviderCommonRegistration, bool) {
-	if o == nil || isNil(o.Registration) {
-    return nil, false
+	if o == nil || IsNil(o.Registration) {
+		return nil, false
 	}
 	return o.Registration, true
 }
 
 // HasRegistration returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasRegistration() bool {
-	if o != nil && !isNil(o.Registration) {
+	if o != nil && !IsNil(o.Registration) {
 		return true
 	}
 
@@ -348,7 +351,7 @@ func (o *IdentityProviderFacebook) GetType() EnumIdentityProviderExt {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetTypeOk() (*EnumIdentityProviderExt, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -360,7 +363,7 @@ func (o *IdentityProviderFacebook) SetType(v EnumIdentityProviderExt) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -370,15 +373,15 @@ func (o *IdentityProviderFacebook) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -392,7 +395,7 @@ func (o *IdentityProviderFacebook) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *IdentityProviderFacebook) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -402,15 +405,15 @@ func (o *IdentityProviderFacebook) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *IdentityProviderFacebook) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -436,7 +439,7 @@ func (o *IdentityProviderFacebook) GetAppId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetAppIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AppId, true
 }
@@ -460,7 +463,7 @@ func (o *IdentityProviderFacebook) GetAppSecret() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebook) GetAppSecretOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AppSecret, true
 }
@@ -471,50 +474,42 @@ func (o *IdentityProviderFacebook) SetAppSecret(v string) {
 }
 
 func (o IdentityProviderFacebook) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
-		toSerialize["_links"] = o.Links
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.LoginButtonIcon) {
-		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Registration) {
-		toSerialize["registration"] = o.Registration
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["appId"] = o.AppId
-	}
-	if true {
-		toSerialize["appSecret"] = o.AppSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderFacebook) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
+	}
+	// skip: id is readOnly
+	if !IsNil(o.LoginButtonIcon) {
+		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Registration) {
+		toSerialize["registration"] = o.Registration
+	}
+	toSerialize["type"] = o.Type
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	toSerialize["appId"] = o.AppId
+	toSerialize["appSecret"] = o.AppSecret
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderFacebook struct {

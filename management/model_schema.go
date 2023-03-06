@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Schema type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Schema{}
+
 // Schema struct for Schema
 type Schema struct {
 	Attributes []SchemaAttribute `json:"attributes,omitempty"`
@@ -45,7 +48,7 @@ func NewSchemaWithDefaults() *Schema {
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Schema) GetAttributes() []SchemaAttribute {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil || IsNil(o.Attributes) {
 		var ret []SchemaAttribute
 		return ret
 	}
@@ -55,15 +58,15 @@ func (o *Schema) GetAttributes() []SchemaAttribute {
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetAttributesOk() ([]SchemaAttribute, bool) {
-	if o == nil || isNil(o.Attributes) {
-    return nil, false
+	if o == nil || IsNil(o.Attributes) {
+		return nil, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *Schema) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *Schema) SetAttributes(v []SchemaAttribute) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Schema) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -87,15 +90,15 @@ func (o *Schema) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Schema) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *Schema) SetDescription(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Schema) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -119,15 +122,15 @@ func (o *Schema) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Schema) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *Schema) SetEnvironment(v ObjectEnvironment) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Schema) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -151,15 +154,15 @@ func (o *Schema) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Schema) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *Schema) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Schema) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -183,15 +186,15 @@ func (o *Schema) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Schema) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Schema) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -204,23 +207,23 @@ func (o *Schema) SetName(v string) {
 }
 
 func (o Schema) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Attributes) {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Schema) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: attributes is readOnly
+	// skip: description is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: id is readOnly
+	// skip: name is readOnly
+	return toSerialize, nil
 }
 
 type NullableSchema struct {

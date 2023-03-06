@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserPassword type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserPassword{}
+
 // UserPassword An object that specifies the user's password. This property is never returned in the response.
 type UserPassword struct {
 	// A boolean that specifies whether the user is forced to change the password on the next log in. If not provided, the property is set to false.
@@ -42,7 +45,7 @@ func NewUserPasswordWithDefaults() *UserPassword {
 
 // GetForceChange returns the ForceChange field value if set, zero value otherwise.
 func (o *UserPassword) GetForceChange() bool {
-	if o == nil || isNil(o.ForceChange) {
+	if o == nil || IsNil(o.ForceChange) {
 		var ret bool
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *UserPassword) GetForceChange() bool {
 // GetForceChangeOk returns a tuple with the ForceChange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserPassword) GetForceChangeOk() (*bool, bool) {
-	if o == nil || isNil(o.ForceChange) {
-    return nil, false
+	if o == nil || IsNil(o.ForceChange) {
+		return nil, false
 	}
 	return o.ForceChange, true
 }
 
 // HasForceChange returns a boolean if a field has been set.
 func (o *UserPassword) HasForceChange() bool {
-	if o != nil && !isNil(o.ForceChange) {
+	if o != nil && !IsNil(o.ForceChange) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *UserPassword) SetForceChange(v bool) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *UserPassword) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *UserPassword) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserPassword) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
-    return nil, false
+	if o == nil || IsNil(o.Value) {
+		return nil, false
 	}
 	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *UserPassword) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *UserPassword) SetValue(v string) {
 
 // GetExternal returns the External field value if set, zero value otherwise.
 func (o *UserPassword) GetExternal() UserPasswordExternal {
-	if o == nil || isNil(o.External) {
+	if o == nil || IsNil(o.External) {
 		var ret UserPasswordExternal
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *UserPassword) GetExternal() UserPasswordExternal {
 // GetExternalOk returns a tuple with the External field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserPassword) GetExternalOk() (*UserPasswordExternal, bool) {
-	if o == nil || isNil(o.External) {
-    return nil, false
+	if o == nil || IsNil(o.External) {
+		return nil, false
 	}
 	return o.External, true
 }
 
 // HasExternal returns a boolean if a field has been set.
 func (o *UserPassword) HasExternal() bool {
-	if o != nil && !isNil(o.External) {
+	if o != nil && !IsNil(o.External) {
 		return true
 	}
 
@@ -137,17 +140,25 @@ func (o *UserPassword) SetExternal(v UserPasswordExternal) {
 }
 
 func (o UserPassword) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ForceChange) {
-		toSerialize["forceChange"] = o.ForceChange
-	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
-	if !isNil(o.External) {
-		toSerialize["external"] = o.External
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserPassword) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ForceChange) {
+		toSerialize["forceChange"] = o.ForceChange
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.External) {
+		toSerialize["external"] = o.External
+	}
+	return toSerialize, nil
 }
 
 type NullableUserPassword struct {

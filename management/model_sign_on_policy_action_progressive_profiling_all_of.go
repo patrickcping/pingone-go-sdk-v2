@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionProgressiveProfilingAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionProgressiveProfilingAllOf{}
+
 // SignOnPolicyActionProgressiveProfilingAllOf struct for SignOnPolicyActionProgressiveProfilingAllOf
 type SignOnPolicyActionProgressiveProfilingAllOf struct {
 	Attributes []SignOnPolicyActionProgressiveProfilingAllOfAttributes `json:"attributes"`
@@ -60,7 +63,7 @@ func (o *SignOnPolicyActionProgressiveProfilingAllOf) GetAttributes() []SignOnPo
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionProgressiveProfilingAllOf) GetAttributesOk() ([]SignOnPolicyActionProgressiveProfilingAllOfAttributes, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Attributes, true
 }
@@ -84,7 +87,7 @@ func (o *SignOnPolicyActionProgressiveProfilingAllOf) GetPreventMultiplePromptsP
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionProgressiveProfilingAllOf) GetPreventMultiplePromptsPerFlowOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PreventMultiplePromptsPerFlow, true
 }
@@ -108,7 +111,7 @@ func (o *SignOnPolicyActionProgressiveProfilingAllOf) GetPromptIntervalSeconds()
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionProgressiveProfilingAllOf) GetPromptIntervalSecondsOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PromptIntervalSeconds, true
 }
@@ -132,7 +135,7 @@ func (o *SignOnPolicyActionProgressiveProfilingAllOf) GetPromptText() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionProgressiveProfilingAllOf) GetPromptTextOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PromptText, true
 }
@@ -143,20 +146,20 @@ func (o *SignOnPolicyActionProgressiveProfilingAllOf) SetPromptText(v string) {
 }
 
 func (o SignOnPolicyActionProgressiveProfilingAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if true {
-		toSerialize["preventMultiplePromptsPerFlow"] = o.PreventMultiplePromptsPerFlow
-	}
-	if true {
-		toSerialize["promptIntervalSeconds"] = o.PromptIntervalSeconds
-	}
-	if true {
-		toSerialize["promptText"] = o.PromptText
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionProgressiveProfilingAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["attributes"] = o.Attributes
+	toSerialize["preventMultiplePromptsPerFlow"] = o.PreventMultiplePromptsPerFlow
+	toSerialize["promptIntervalSeconds"] = o.PromptIntervalSeconds
+	toSerialize["promptText"] = o.PromptText
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionProgressiveProfilingAllOf struct {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ApplicationWSFED type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationWSFED{}
+
 // ApplicationWSFED struct for ApplicationWSFED
 type ApplicationWSFED struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
@@ -81,7 +84,7 @@ func NewApplicationWSFEDWithDefaults() *ApplicationWSFED {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetLinks() map[string]interface{} {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *ApplicationWSFED) GetLinks() map[string]interface{} {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Links) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Links) {
+		return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ApplicationWSFED) SetLinks(v map[string]interface{}) {
 
 // GetAccessControl returns the AccessControl field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetAccessControl() ApplicationAccessControl {
-	if o == nil || isNil(o.AccessControl) {
+	if o == nil || IsNil(o.AccessControl) {
 		var ret ApplicationAccessControl
 		return ret
 	}
@@ -123,15 +126,15 @@ func (o *ApplicationWSFED) GetAccessControl() ApplicationAccessControl {
 // GetAccessControlOk returns a tuple with the AccessControl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetAccessControlOk() (*ApplicationAccessControl, bool) {
-	if o == nil || isNil(o.AccessControl) {
-    return nil, false
+	if o == nil || IsNil(o.AccessControl) {
+		return nil, false
 	}
 	return o.AccessControl, true
 }
 
 // HasAccessControl returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasAccessControl() bool {
-	if o != nil && !isNil(o.AccessControl) {
+	if o != nil && !IsNil(o.AccessControl) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ApplicationWSFED) SetAccessControl(v ApplicationAccessControl) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -155,15 +158,15 @@ func (o *ApplicationWSFED) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ApplicationWSFED) SetCreatedAt(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -187,15 +190,15 @@ func (o *ApplicationWSFED) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -221,7 +224,7 @@ func (o *ApplicationWSFED) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -233,7 +236,7 @@ func (o *ApplicationWSFED) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -243,15 +246,15 @@ func (o *ApplicationWSFED) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -265,7 +268,7 @@ func (o *ApplicationWSFED) SetEnvironment(v ObjectEnvironment) {
 
 // GetHiddenFromAppPortal returns the HiddenFromAppPortal field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetHiddenFromAppPortal() bool {
-	if o == nil || isNil(o.HiddenFromAppPortal) {
+	if o == nil || IsNil(o.HiddenFromAppPortal) {
 		var ret bool
 		return ret
 	}
@@ -275,15 +278,15 @@ func (o *ApplicationWSFED) GetHiddenFromAppPortal() bool {
 // GetHiddenFromAppPortalOk returns a tuple with the HiddenFromAppPortal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetHiddenFromAppPortalOk() (*bool, bool) {
-	if o == nil || isNil(o.HiddenFromAppPortal) {
-    return nil, false
+	if o == nil || IsNil(o.HiddenFromAppPortal) {
+		return nil, false
 	}
 	return o.HiddenFromAppPortal, true
 }
 
 // HasHiddenFromAppPortal returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasHiddenFromAppPortal() bool {
-	if o != nil && !isNil(o.HiddenFromAppPortal) {
+	if o != nil && !IsNil(o.HiddenFromAppPortal) {
 		return true
 	}
 
@@ -297,7 +300,7 @@ func (o *ApplicationWSFED) SetHiddenFromAppPortal(v bool) {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetIcon() ApplicationIcon {
-	if o == nil || isNil(o.Icon) {
+	if o == nil || IsNil(o.Icon) {
 		var ret ApplicationIcon
 		return ret
 	}
@@ -307,15 +310,15 @@ func (o *ApplicationWSFED) GetIcon() ApplicationIcon {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetIconOk() (*ApplicationIcon, bool) {
-	if o == nil || isNil(o.Icon) {
-    return nil, false
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
 	}
 	return o.Icon, true
 }
 
 // HasIcon returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasIcon() bool {
-	if o != nil && !isNil(o.Icon) {
+	if o != nil && !IsNil(o.Icon) {
 		return true
 	}
 
@@ -329,7 +332,7 @@ func (o *ApplicationWSFED) SetIcon(v ApplicationIcon) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -339,15 +342,15 @@ func (o *ApplicationWSFED) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -361,7 +364,7 @@ func (o *ApplicationWSFED) SetId(v string) {
 
 // GetLoginPageUrl returns the LoginPageUrl field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetLoginPageUrl() string {
-	if o == nil || isNil(o.LoginPageUrl) {
+	if o == nil || IsNil(o.LoginPageUrl) {
 		var ret string
 		return ret
 	}
@@ -371,15 +374,15 @@ func (o *ApplicationWSFED) GetLoginPageUrl() string {
 // GetLoginPageUrlOk returns a tuple with the LoginPageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetLoginPageUrlOk() (*string, bool) {
-	if o == nil || isNil(o.LoginPageUrl) {
-    return nil, false
+	if o == nil || IsNil(o.LoginPageUrl) {
+		return nil, false
 	}
 	return o.LoginPageUrl, true
 }
 
 // HasLoginPageUrl returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasLoginPageUrl() bool {
-	if o != nil && !isNil(o.LoginPageUrl) {
+	if o != nil && !IsNil(o.LoginPageUrl) {
 		return true
 	}
 
@@ -405,7 +408,7 @@ func (o *ApplicationWSFED) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -429,7 +432,7 @@ func (o *ApplicationWSFED) GetProtocol() EnumApplicationProtocol {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetProtocolOk() (*EnumApplicationProtocol, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Protocol, true
 }
@@ -453,7 +456,7 @@ func (o *ApplicationWSFED) GetType() EnumApplicationType {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetTypeOk() (*EnumApplicationType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -465,7 +468,7 @@ func (o *ApplicationWSFED) SetType(v EnumApplicationType) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -475,15 +478,15 @@ func (o *ApplicationWSFED) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -497,7 +500,7 @@ func (o *ApplicationWSFED) SetUpdatedAt(v time.Time) {
 
 // GetAudienceRestriction returns the AudienceRestriction field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetAudienceRestriction() string {
-	if o == nil || isNil(o.AudienceRestriction) {
+	if o == nil || IsNil(o.AudienceRestriction) {
 		var ret string
 		return ret
 	}
@@ -507,15 +510,15 @@ func (o *ApplicationWSFED) GetAudienceRestriction() string {
 // GetAudienceRestrictionOk returns a tuple with the AudienceRestriction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetAudienceRestrictionOk() (*string, bool) {
-	if o == nil || isNil(o.AudienceRestriction) {
-    return nil, false
+	if o == nil || IsNil(o.AudienceRestriction) {
+		return nil, false
 	}
 	return o.AudienceRestriction, true
 }
 
 // HasAudienceRestriction returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasAudienceRestriction() bool {
-	if o != nil && !isNil(o.AudienceRestriction) {
+	if o != nil && !IsNil(o.AudienceRestriction) {
 		return true
 	}
 
@@ -541,7 +544,7 @@ func (o *ApplicationWSFED) GetDomainName() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetDomainNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DomainName, true
 }
@@ -565,7 +568,7 @@ func (o *ApplicationWSFED) GetIdpSigning() ApplicationWSFEDAllOfIdpSigning {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetIdpSigningOk() (*ApplicationWSFEDAllOfIdpSigning, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.IdpSigning, true
 }
@@ -577,7 +580,7 @@ func (o *ApplicationWSFED) SetIdpSigning(v ApplicationWSFEDAllOfIdpSigning) {
 
 // GetKerberos returns the Kerberos field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetKerberos() ApplicationWSFEDAllOfKerberos {
-	if o == nil || isNil(o.Kerberos) {
+	if o == nil || IsNil(o.Kerberos) {
 		var ret ApplicationWSFEDAllOfKerberos
 		return ret
 	}
@@ -587,15 +590,15 @@ func (o *ApplicationWSFED) GetKerberos() ApplicationWSFEDAllOfKerberos {
 // GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetKerberosOk() (*ApplicationWSFEDAllOfKerberos, bool) {
-	if o == nil || isNil(o.Kerberos) {
-    return nil, false
+	if o == nil || IsNil(o.Kerberos) {
+		return nil, false
 	}
 	return o.Kerberos, true
 }
 
 // HasKerberos returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasKerberos() bool {
-	if o != nil && !isNil(o.Kerberos) {
+	if o != nil && !IsNil(o.Kerberos) {
 		return true
 	}
 
@@ -621,7 +624,7 @@ func (o *ApplicationWSFED) GetReplyUrl() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetReplyUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ReplyUrl, true
 }
@@ -633,7 +636,7 @@ func (o *ApplicationWSFED) SetReplyUrl(v string) {
 
 // GetSloEndpoint returns the SloEndpoint field value if set, zero value otherwise.
 func (o *ApplicationWSFED) GetSloEndpoint() string {
-	if o == nil || isNil(o.SloEndpoint) {
+	if o == nil || IsNil(o.SloEndpoint) {
 		var ret string
 		return ret
 	}
@@ -643,15 +646,15 @@ func (o *ApplicationWSFED) GetSloEndpoint() string {
 // GetSloEndpointOk returns a tuple with the SloEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFED) GetSloEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.SloEndpoint) {
-    return nil, false
+	if o == nil || IsNil(o.SloEndpoint) {
+		return nil, false
 	}
 	return o.SloEndpoint, true
 }
 
 // HasSloEndpoint returns a boolean if a field has been set.
 func (o *ApplicationWSFED) HasSloEndpoint() bool {
-	if o != nil && !isNil(o.SloEndpoint) {
+	if o != nil && !IsNil(o.SloEndpoint) {
 		return true
 	}
 
@@ -664,68 +667,56 @@ func (o *ApplicationWSFED) SetSloEndpoint(v string) {
 }
 
 func (o ApplicationWSFED) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
-		toSerialize["_links"] = o.Links
-	}
-	if !isNil(o.AccessControl) {
-		toSerialize["accessControl"] = o.AccessControl
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.HiddenFromAppPortal) {
-		toSerialize["hiddenFromAppPortal"] = o.HiddenFromAppPortal
-	}
-	if !isNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.LoginPageUrl) {
-		toSerialize["loginPageUrl"] = o.LoginPageUrl
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["protocol"] = o.Protocol
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.AudienceRestriction) {
-		toSerialize["audienceRestriction"] = o.AudienceRestriction
-	}
-	if true {
-		toSerialize["domainName"] = o.DomainName
-	}
-	if true {
-		toSerialize["idpSigning"] = o.IdpSigning
-	}
-	if !isNil(o.Kerberos) {
-		toSerialize["kerberos"] = o.Kerberos
-	}
-	if true {
-		toSerialize["replyUrl"] = o.ReplyUrl
-	}
-	if !isNil(o.SloEndpoint) {
-		toSerialize["sloEndpoint"] = o.SloEndpoint
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
+	if !IsNil(o.AccessControl) {
+		toSerialize["accessControl"] = o.AccessControl
+	}
+	// skip: createdAt is readOnly
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.HiddenFromAppPortal) {
+		toSerialize["hiddenFromAppPortal"] = o.HiddenFromAppPortal
+	}
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
+	}
+	// skip: id is readOnly
+	if !IsNil(o.LoginPageUrl) {
+		toSerialize["loginPageUrl"] = o.LoginPageUrl
+	}
+	toSerialize["name"] = o.Name
+	toSerialize["protocol"] = o.Protocol
+	toSerialize["type"] = o.Type
+	// skip: updatedAt is readOnly
+	if !IsNil(o.AudienceRestriction) {
+		toSerialize["audienceRestriction"] = o.AudienceRestriction
+	}
+	toSerialize["domainName"] = o.DomainName
+	toSerialize["idpSigning"] = o.IdpSigning
+	if !IsNil(o.Kerberos) {
+		toSerialize["kerberos"] = o.Kerberos
+	}
+	toSerialize["replyUrl"] = o.ReplyUrl
+	if !IsNil(o.SloEndpoint) {
+		toSerialize["sloEndpoint"] = o.SloEndpoint
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationWSFED struct {

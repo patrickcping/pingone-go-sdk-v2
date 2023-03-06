@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationDetailsUserVelocityByIp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationDetailsUserVelocityByIp{}
+
 // RiskEvaluationDetailsUserVelocityByIp struct for RiskEvaluationDetailsUserVelocityByIp
 type RiskEvaluationDetailsUserVelocityByIp struct {
 	Level *EnumRiskLevel `json:"level,omitempty"`
@@ -42,7 +45,7 @@ func NewRiskEvaluationDetailsUserVelocityByIpWithDefaults() *RiskEvaluationDetai
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIp) GetLevel() EnumRiskLevel {
-	if o == nil || isNil(o.Level) {
+	if o == nil || IsNil(o.Level) {
 		var ret EnumRiskLevel
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) GetLevel() EnumRiskLevel {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIp) GetLevelOk() (*EnumRiskLevel, bool) {
-	if o == nil || isNil(o.Level) {
-    return nil, false
+	if o == nil || IsNil(o.Level) {
+		return nil, false
 	}
 	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIp) HasLevel() bool {
-	if o != nil && !isNil(o.Level) {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) SetLevel(v EnumRiskLevel) {
 
 // GetReason returns the Reason field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIp) GetReason() string {
-	if o == nil || isNil(o.Reason) {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) GetReason() string {
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIp) GetReasonOk() (*string, bool) {
-	if o == nil || isNil(o.Reason) {
-    return nil, false
+	if o == nil || IsNil(o.Reason) {
+		return nil, false
 	}
 	return o.Reason, true
 }
 
 // HasReason returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIp) HasReason() bool {
-	if o != nil && !isNil(o.Reason) {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) SetReason(v string) {
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIp) GetThreshold() RiskEvaluationDetailsUserVelocityByIpThreshold {
-	if o == nil || isNil(o.Threshold) {
+	if o == nil || IsNil(o.Threshold) {
 		var ret RiskEvaluationDetailsUserVelocityByIpThreshold
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) GetThreshold() RiskEvaluationDet
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIp) GetThresholdOk() (*RiskEvaluationDetailsUserVelocityByIpThreshold, bool) {
-	if o == nil || isNil(o.Threshold) {
-    return nil, false
+	if o == nil || IsNil(o.Threshold) {
+		return nil, false
 	}
 	return o.Threshold, true
 }
 
 // HasThreshold returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIp) HasThreshold() bool {
-	if o != nil && !isNil(o.Threshold) {
+	if o != nil && !IsNil(o.Threshold) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) SetThreshold(v RiskEvaluationDet
 
 // GetVelocity returns the Velocity field value if set, zero value otherwise.
 func (o *RiskEvaluationDetailsUserVelocityByIp) GetVelocity() RiskEvaluationDetailsUserVelocityByIpVelocity {
-	if o == nil || isNil(o.Velocity) {
+	if o == nil || IsNil(o.Velocity) {
 		var ret RiskEvaluationDetailsUserVelocityByIpVelocity
 		return ret
 	}
@@ -148,15 +151,15 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) GetVelocity() RiskEvaluationDeta
 // GetVelocityOk returns a tuple with the Velocity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIp) GetVelocityOk() (*RiskEvaluationDetailsUserVelocityByIpVelocity, bool) {
-	if o == nil || isNil(o.Velocity) {
-    return nil, false
+	if o == nil || IsNil(o.Velocity) {
+		return nil, false
 	}
 	return o.Velocity, true
 }
 
 // HasVelocity returns a boolean if a field has been set.
 func (o *RiskEvaluationDetailsUserVelocityByIp) HasVelocity() bool {
-	if o != nil && !isNil(o.Velocity) {
+	if o != nil && !IsNil(o.Velocity) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *RiskEvaluationDetailsUserVelocityByIp) SetVelocity(v RiskEvaluationDeta
 }
 
 func (o RiskEvaluationDetailsUserVelocityByIp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Level) {
-		toSerialize["level"] = o.Level
-	}
-	if !isNil(o.Reason) {
-		toSerialize["reason"] = o.Reason
-	}
-	if !isNil(o.Threshold) {
-		toSerialize["threshold"] = o.Threshold
-	}
-	if !isNil(o.Velocity) {
-		toSerialize["velocity"] = o.Velocity
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationDetailsUserVelocityByIp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
+	}
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
+	}
+	if !IsNil(o.Threshold) {
+		toSerialize["threshold"] = o.Threshold
+	}
+	if !IsNil(o.Velocity) {
+		toSerialize["velocity"] = o.Velocity
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationDetailsUserVelocityByIp struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SubscriptionHttpEndpoint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SubscriptionHttpEndpoint{}
+
 // SubscriptionHttpEndpoint struct for SubscriptionHttpEndpoint
 type SubscriptionHttpEndpoint struct {
 	// A string that specifies a valid HTTPS URL to which event messages are sent. This is a required property.
@@ -54,7 +57,7 @@ func (o *SubscriptionHttpEndpoint) GetUrl() string {
 // and a boolean to check if the value has been set.
 func (o *SubscriptionHttpEndpoint) GetUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Url, true
 }
@@ -66,7 +69,7 @@ func (o *SubscriptionHttpEndpoint) SetUrl(v string) {
 
 // GetHeaders returns the Headers field value if set, zero value otherwise.
 func (o *SubscriptionHttpEndpoint) GetHeaders() map[string]interface{} {
-	if o == nil || isNil(o.Headers) {
+	if o == nil || IsNil(o.Headers) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -76,15 +79,15 @@ func (o *SubscriptionHttpEndpoint) GetHeaders() map[string]interface{} {
 // GetHeadersOk returns a tuple with the Headers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SubscriptionHttpEndpoint) GetHeadersOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Headers) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Headers) {
+		return map[string]interface{}{}, false
 	}
 	return o.Headers, true
 }
 
 // HasHeaders returns a boolean if a field has been set.
 func (o *SubscriptionHttpEndpoint) HasHeaders() bool {
-	if o != nil && !isNil(o.Headers) {
+	if o != nil && !IsNil(o.Headers) {
 		return true
 	}
 
@@ -97,14 +100,20 @@ func (o *SubscriptionHttpEndpoint) SetHeaders(v map[string]interface{}) {
 }
 
 func (o SubscriptionHttpEndpoint) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if !isNil(o.Headers) {
-		toSerialize["headers"] = o.Headers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SubscriptionHttpEndpoint) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["url"] = o.Url
+	if !IsNil(o.Headers) {
+		toSerialize["headers"] = o.Headers
+	}
+	return toSerialize, nil
 }
 
 type NullableSubscriptionHttpEndpoint struct {

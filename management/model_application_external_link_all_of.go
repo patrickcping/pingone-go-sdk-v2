@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationExternalLinkAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationExternalLinkAllOf{}
+
 // ApplicationExternalLinkAllOf struct for ApplicationExternalLinkAllOf
 type ApplicationExternalLinkAllOf struct {
 	// A string that specifies the custom home page URL for the application.
@@ -52,7 +55,7 @@ func (o *ApplicationExternalLinkAllOf) GetHomePageUrl() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationExternalLinkAllOf) GetHomePageUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomePageUrl, true
 }
@@ -63,11 +66,17 @@ func (o *ApplicationExternalLinkAllOf) SetHomePageUrl(v string) {
 }
 
 func (o ApplicationExternalLinkAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["homePageUrl"] = o.HomePageUrl
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationExternalLinkAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["homePageUrl"] = o.HomePageUrl
+	return toSerialize, nil
 }
 
 type NullableApplicationExternalLinkAllOf struct {

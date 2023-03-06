@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseGateways type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseGateways{}
+
 // LicenseGateways struct for LicenseGateways
 type LicenseGateways struct {
 	AllowLdapGateway *bool `json:"allowLdapGateway,omitempty"`
@@ -40,7 +43,7 @@ func NewLicenseGatewaysWithDefaults() *LicenseGateways {
 
 // GetAllowLdapGateway returns the AllowLdapGateway field value if set, zero value otherwise.
 func (o *LicenseGateways) GetAllowLdapGateway() bool {
-	if o == nil || isNil(o.AllowLdapGateway) {
+	if o == nil || IsNil(o.AllowLdapGateway) {
 		var ret bool
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *LicenseGateways) GetAllowLdapGateway() bool {
 // GetAllowLdapGatewayOk returns a tuple with the AllowLdapGateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseGateways) GetAllowLdapGatewayOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowLdapGateway) {
-    return nil, false
+	if o == nil || IsNil(o.AllowLdapGateway) {
+		return nil, false
 	}
 	return o.AllowLdapGateway, true
 }
 
 // HasAllowLdapGateway returns a boolean if a field has been set.
 func (o *LicenseGateways) HasAllowLdapGateway() bool {
-	if o != nil && !isNil(o.AllowLdapGateway) {
+	if o != nil && !IsNil(o.AllowLdapGateway) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *LicenseGateways) SetAllowLdapGateway(v bool) {
 
 // GetAllowKerberosGateway returns the AllowKerberosGateway field value if set, zero value otherwise.
 func (o *LicenseGateways) GetAllowKerberosGateway() bool {
-	if o == nil || isNil(o.AllowKerberosGateway) {
+	if o == nil || IsNil(o.AllowKerberosGateway) {
 		var ret bool
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *LicenseGateways) GetAllowKerberosGateway() bool {
 // GetAllowKerberosGatewayOk returns a tuple with the AllowKerberosGateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseGateways) GetAllowKerberosGatewayOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowKerberosGateway) {
-    return nil, false
+	if o == nil || IsNil(o.AllowKerberosGateway) {
+		return nil, false
 	}
 	return o.AllowKerberosGateway, true
 }
 
 // HasAllowKerberosGateway returns a boolean if a field has been set.
 func (o *LicenseGateways) HasAllowKerberosGateway() bool {
-	if o != nil && !isNil(o.AllowKerberosGateway) {
+	if o != nil && !IsNil(o.AllowKerberosGateway) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *LicenseGateways) SetAllowKerberosGateway(v bool) {
 
 // GetAllowRadiusGateway returns the AllowRadiusGateway field value if set, zero value otherwise.
 func (o *LicenseGateways) GetAllowRadiusGateway() bool {
-	if o == nil || isNil(o.AllowRadiusGateway) {
+	if o == nil || IsNil(o.AllowRadiusGateway) {
 		var ret bool
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *LicenseGateways) GetAllowRadiusGateway() bool {
 // GetAllowRadiusGatewayOk returns a tuple with the AllowRadiusGateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseGateways) GetAllowRadiusGatewayOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowRadiusGateway) {
-    return nil, false
+	if o == nil || IsNil(o.AllowRadiusGateway) {
+		return nil, false
 	}
 	return o.AllowRadiusGateway, true
 }
 
 // HasAllowRadiusGateway returns a boolean if a field has been set.
 func (o *LicenseGateways) HasAllowRadiusGateway() bool {
-	if o != nil && !isNil(o.AllowRadiusGateway) {
+	if o != nil && !IsNil(o.AllowRadiusGateway) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *LicenseGateways) SetAllowRadiusGateway(v bool) {
 }
 
 func (o LicenseGateways) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowLdapGateway) {
-		toSerialize["allowLdapGateway"] = o.AllowLdapGateway
-	}
-	if !isNil(o.AllowKerberosGateway) {
-		toSerialize["allowKerberosGateway"] = o.AllowKerberosGateway
-	}
-	if !isNil(o.AllowRadiusGateway) {
-		toSerialize["allowRadiusGateway"] = o.AllowRadiusGateway
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseGateways) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowLdapGateway) {
+		toSerialize["allowLdapGateway"] = o.AllowLdapGateway
+	}
+	if !IsNil(o.AllowKerberosGateway) {
+		toSerialize["allowKerberosGateway"] = o.AllowKerberosGateway
+	}
+	if !IsNil(o.AllowRadiusGateway) {
+		toSerialize["allowRadiusGateway"] = o.AllowRadiusGateway
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseGateways struct {

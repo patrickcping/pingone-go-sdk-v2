@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskPredictorItemMap type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPredictorItemMap{}
+
 // RiskPredictorItemMap struct for RiskPredictorItemMap
 type RiskPredictorItemMap struct {
 	Contains string `json:"contains"`
@@ -56,7 +59,7 @@ func (o *RiskPredictorItemMap) GetContains() string {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetContainsOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Contains, true
 }
@@ -68,7 +71,7 @@ func (o *RiskPredictorItemMap) SetContains(v string) {
 
 // GetIpRange returns the IpRange field value if set, zero value otherwise.
 func (o *RiskPredictorItemMap) GetIpRange() []string {
-	if o == nil || isNil(o.IpRange) {
+	if o == nil || IsNil(o.IpRange) {
 		var ret []string
 		return ret
 	}
@@ -78,15 +81,15 @@ func (o *RiskPredictorItemMap) GetIpRange() []string {
 // GetIpRangeOk returns a tuple with the IpRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetIpRangeOk() ([]string, bool) {
-	if o == nil || isNil(o.IpRange) {
-    return nil, false
+	if o == nil || IsNil(o.IpRange) {
+		return nil, false
 	}
 	return o.IpRange, true
 }
 
 // HasIpRange returns a boolean if a field has been set.
 func (o *RiskPredictorItemMap) HasIpRange() bool {
-	if o != nil && !isNil(o.IpRange) {
+	if o != nil && !IsNil(o.IpRange) {
 		return true
 	}
 
@@ -100,7 +103,7 @@ func (o *RiskPredictorItemMap) SetIpRange(v []string) {
 
 // GetBetween returns the Between field value if set, zero value otherwise.
 func (o *RiskPredictorItemMap) GetBetween() RiskPredictorItemMapBetween {
-	if o == nil || isNil(o.Between) {
+	if o == nil || IsNil(o.Between) {
 		var ret RiskPredictorItemMapBetween
 		return ret
 	}
@@ -110,15 +113,15 @@ func (o *RiskPredictorItemMap) GetBetween() RiskPredictorItemMapBetween {
 // GetBetweenOk returns a tuple with the Between field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetBetweenOk() (*RiskPredictorItemMapBetween, bool) {
-	if o == nil || isNil(o.Between) {
-    return nil, false
+	if o == nil || IsNil(o.Between) {
+		return nil, false
 	}
 	return o.Between, true
 }
 
 // HasBetween returns a boolean if a field has been set.
 func (o *RiskPredictorItemMap) HasBetween() bool {
-	if o != nil && !isNil(o.Between) {
+	if o != nil && !IsNil(o.Between) {
 		return true
 	}
 
@@ -132,7 +135,7 @@ func (o *RiskPredictorItemMap) SetBetween(v RiskPredictorItemMapBetween) {
 
 // GetList returns the List field value if set, zero value otherwise.
 func (o *RiskPredictorItemMap) GetList() []string {
-	if o == nil || isNil(o.List) {
+	if o == nil || IsNil(o.List) {
 		var ret []string
 		return ret
 	}
@@ -142,15 +145,15 @@ func (o *RiskPredictorItemMap) GetList() []string {
 // GetListOk returns a tuple with the List field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMap) GetListOk() ([]string, bool) {
-	if o == nil || isNil(o.List) {
-    return nil, false
+	if o == nil || IsNil(o.List) {
+		return nil, false
 	}
 	return o.List, true
 }
 
 // HasList returns a boolean if a field has been set.
 func (o *RiskPredictorItemMap) HasList() bool {
-	if o != nil && !isNil(o.List) {
+	if o != nil && !IsNil(o.List) {
 		return true
 	}
 
@@ -163,20 +166,26 @@ func (o *RiskPredictorItemMap) SetList(v []string) {
 }
 
 func (o RiskPredictorItemMap) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["contains"] = o.Contains
-	}
-	if !isNil(o.IpRange) {
-		toSerialize["ipRange"] = o.IpRange
-	}
-	if !isNil(o.Between) {
-		toSerialize["between"] = o.Between
-	}
-	if !isNil(o.List) {
-		toSerialize["list"] = o.List
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskPredictorItemMap) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["contains"] = o.Contains
+	if !IsNil(o.IpRange) {
+		toSerialize["ipRange"] = o.IpRange
+	}
+	if !IsNil(o.Between) {
+		toSerialize["between"] = o.Between
+	}
+	if !IsNil(o.List) {
+		toSerialize["list"] = o.List
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskPredictorItemMap struct {

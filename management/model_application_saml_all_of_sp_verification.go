@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationSAMLAllOfSpVerification type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationSAMLAllOfSpVerification{}
+
 // ApplicationSAMLAllOfSpVerification struct for ApplicationSAMLAllOfSpVerification
 type ApplicationSAMLAllOfSpVerification struct {
 	Certificates []ApplicationSAMLAllOfSpVerificationCertificates `json:"certificates"`
@@ -51,7 +54,7 @@ func (o *ApplicationSAMLAllOfSpVerification) GetCertificates() []ApplicationSAML
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOfSpVerification) GetCertificatesOk() ([]ApplicationSAMLAllOfSpVerificationCertificates, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Certificates, true
 }
@@ -62,11 +65,17 @@ func (o *ApplicationSAMLAllOfSpVerification) SetCertificates(v []ApplicationSAML
 }
 
 func (o ApplicationSAMLAllOfSpVerification) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["certificates"] = o.Certificates
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationSAMLAllOfSpVerification) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["certificates"] = o.Certificates
+	return toSerialize, nil
 }
 
 type NullableApplicationSAMLAllOfSpVerification struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseOrchestrate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseOrchestrate{}
+
 // LicenseOrchestrate struct for LicenseOrchestrate
 type LicenseOrchestrate struct {
 	AllowOrchestration *bool `json:"allowOrchestration,omitempty"`
@@ -38,7 +41,7 @@ func NewLicenseOrchestrateWithDefaults() *LicenseOrchestrate {
 
 // GetAllowOrchestration returns the AllowOrchestration field value if set, zero value otherwise.
 func (o *LicenseOrchestrate) GetAllowOrchestration() bool {
-	if o == nil || isNil(o.AllowOrchestration) {
+	if o == nil || IsNil(o.AllowOrchestration) {
 		var ret bool
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *LicenseOrchestrate) GetAllowOrchestration() bool {
 // GetAllowOrchestrationOk returns a tuple with the AllowOrchestration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseOrchestrate) GetAllowOrchestrationOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowOrchestration) {
-    return nil, false
+	if o == nil || IsNil(o.AllowOrchestration) {
+		return nil, false
 	}
 	return o.AllowOrchestration, true
 }
 
 // HasAllowOrchestration returns a boolean if a field has been set.
 func (o *LicenseOrchestrate) HasAllowOrchestration() bool {
-	if o != nil && !isNil(o.AllowOrchestration) {
+	if o != nil && !IsNil(o.AllowOrchestration) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *LicenseOrchestrate) SetAllowOrchestration(v bool) {
 }
 
 func (o LicenseOrchestrate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowOrchestration) {
-		toSerialize["allowOrchestration"] = o.AllowOrchestration
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseOrchestrate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowOrchestration) {
+		toSerialize["allowOrchestration"] = o.AllowOrchestration
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseOrchestrate struct {

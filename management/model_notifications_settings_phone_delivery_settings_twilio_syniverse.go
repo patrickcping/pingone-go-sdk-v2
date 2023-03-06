@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse{}
+
 // NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse struct for NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse
 type NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse struct {
 	// A string that specifies the resource’s unique identifier.
@@ -56,7 +59,7 @@ func NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseWithDefaults() 
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -66,15 +69,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetId() stri
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -88,7 +91,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetId(v stri
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -98,15 +101,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetEnvironme
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -132,7 +135,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetProvider(
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetProviderOk() (*EnumNotificationsSettingsPhoneDeliverySettingsProvider, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Provider, true
 }
@@ -144,7 +147,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetProvider(
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -154,15 +157,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetCreatedAt
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetCreatedAt
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetUpdatedAt
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -220,7 +223,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetSid() str
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetSidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Sid, true
 }
@@ -244,7 +247,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetAuthToken
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetAuthTokenOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AuthToken, true
 }
@@ -268,7 +271,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbers()
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbersOk() ([]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Numbers, true
 }
@@ -279,32 +282,26 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetNumbers(v
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["sid"] = o.Sid
-	}
-	if true {
-		toSerialize["authToken"] = o.AuthToken
-	}
-	if true {
-		toSerialize["numbers"] = o.Numbers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	toSerialize["provider"] = o.Provider
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	toSerialize["sid"] = o.Sid
+	toSerialize["authToken"] = o.AuthToken
+	toSerialize["numbers"] = o.Numbers
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse struct {

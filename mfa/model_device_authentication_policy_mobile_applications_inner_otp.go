@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyMobileApplicationsInnerOtp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerOtp{}
+
 // DeviceAuthenticationPolicyMobileApplicationsInnerOtp struct for DeviceAuthenticationPolicyMobileApplicationsInnerOtp
 type DeviceAuthenticationPolicyMobileApplicationsInnerOtp struct {
 	// Specifies whether OTP authentication is enabled or disabled for the policy.
@@ -52,7 +55,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerOtp) GetEnabled() bool
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerOtp) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -63,11 +66,17 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerOtp) SetEnabled(v bool
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerOtp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyMobileApplicationsInnerOtp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyMobileApplicationsInnerOtp struct {

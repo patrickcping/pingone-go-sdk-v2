@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AgreementRevisionText type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgreementRevisionText{}
+
 // AgreementRevisionText struct for AgreementRevisionText
 type AgreementRevisionText struct {
 	ResourcePath *string `json:"resourcePath,omitempty"`
@@ -40,7 +43,7 @@ func NewAgreementRevisionTextWithDefaults() *AgreementRevisionText {
 
 // GetResourcePath returns the ResourcePath field value if set, zero value otherwise.
 func (o *AgreementRevisionText) GetResourcePath() string {
-	if o == nil || isNil(o.ResourcePath) {
+	if o == nil || IsNil(o.ResourcePath) {
 		var ret string
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *AgreementRevisionText) GetResourcePath() string {
 // GetResourcePathOk returns a tuple with the ResourcePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementRevisionText) GetResourcePathOk() (*string, bool) {
-	if o == nil || isNil(o.ResourcePath) {
-    return nil, false
+	if o == nil || IsNil(o.ResourcePath) {
+		return nil, false
 	}
 	return o.ResourcePath, true
 }
 
 // HasResourcePath returns a boolean if a field has been set.
 func (o *AgreementRevisionText) HasResourcePath() bool {
-	if o != nil && !isNil(o.ResourcePath) {
+	if o != nil && !IsNil(o.ResourcePath) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *AgreementRevisionText) SetResourcePath(v string) {
 
 // GetData returns the Data field value if set, zero value otherwise.
 func (o *AgreementRevisionText) GetData() string {
-	if o == nil || isNil(o.Data) {
+	if o == nil || IsNil(o.Data) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *AgreementRevisionText) GetData() string {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementRevisionText) GetDataOk() (*string, bool) {
-	if o == nil || isNil(o.Data) {
-    return nil, false
+	if o == nil || IsNil(o.Data) {
+		return nil, false
 	}
 	return o.Data, true
 }
 
 // HasData returns a boolean if a field has been set.
 func (o *AgreementRevisionText) HasData() bool {
-	if o != nil && !isNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *AgreementRevisionText) SetData(v string) {
 
 // GetDataType returns the DataType field value if set, zero value otherwise.
 func (o *AgreementRevisionText) GetDataType() string {
-	if o == nil || isNil(o.DataType) {
+	if o == nil || IsNil(o.DataType) {
 		var ret string
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *AgreementRevisionText) GetDataType() string {
 // GetDataTypeOk returns a tuple with the DataType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementRevisionText) GetDataTypeOk() (*string, bool) {
-	if o == nil || isNil(o.DataType) {
-    return nil, false
+	if o == nil || IsNil(o.DataType) {
+		return nil, false
 	}
 	return o.DataType, true
 }
 
 // HasDataType returns a boolean if a field has been set.
 func (o *AgreementRevisionText) HasDataType() bool {
-	if o != nil && !isNil(o.DataType) {
+	if o != nil && !IsNil(o.DataType) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *AgreementRevisionText) SetDataType(v string) {
 }
 
 func (o AgreementRevisionText) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ResourcePath) {
-		toSerialize["resourcePath"] = o.ResourcePath
-	}
-	if !isNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
-	if !isNil(o.DataType) {
-		toSerialize["dataType"] = o.DataType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AgreementRevisionText) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ResourcePath) {
+		toSerialize["resourcePath"] = o.ResourcePath
+	}
+	if !IsNil(o.Data) {
+		toSerialize["data"] = o.Data
+	}
+	if !IsNil(o.DataType) {
+		toSerialize["dataType"] = o.DataType
+	}
+	return toSerialize, nil
 }
 
 type NullableAgreementRevisionText struct {

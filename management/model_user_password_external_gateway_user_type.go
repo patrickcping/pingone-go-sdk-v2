@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserPasswordExternalGatewayUserType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserPasswordExternalGatewayUserType{}
+
 // UserPasswordExternalGatewayUserType A reference to a userType in the list of userTypes values for an LDAP gateway.
 type UserPasswordExternalGatewayUserType struct {
 	// The UUID of a user type in the list of userTypes for the LDAP gateway.
@@ -39,7 +42,7 @@ func NewUserPasswordExternalGatewayUserTypeWithDefaults() *UserPasswordExternalG
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *UserPasswordExternalGatewayUserType) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *UserPasswordExternalGatewayUserType) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserPasswordExternalGatewayUserType) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *UserPasswordExternalGatewayUserType) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *UserPasswordExternalGatewayUserType) SetId(v string) {
 }
 
 func (o UserPasswordExternalGatewayUserType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserPasswordExternalGatewayUserType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
 }
 
 type NullableUserPasswordExternalGatewayUserType struct {

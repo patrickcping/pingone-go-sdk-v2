@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GroupPopulation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupPopulation{}
+
 // GroupPopulation The population to assign the group to
 type GroupPopulation struct {
 	// The population ID
@@ -52,7 +55,7 @@ func (o *GroupPopulation) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *GroupPopulation) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *GroupPopulation) SetId(v string) {
 }
 
 func (o GroupPopulation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GroupPopulation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableGroupPopulation struct {

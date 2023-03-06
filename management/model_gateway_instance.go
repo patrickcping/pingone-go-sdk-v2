@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayInstance type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayInstance{}
+
 // GatewayInstance struct for GatewayInstance
 type GatewayInstance struct {
 	// A boolean that specifies whether or not the gateway instance has one or more connections. This is a required property.
@@ -60,7 +63,7 @@ func NewGatewayInstanceWithDefaults() *GatewayInstance {
 
 // GetConnected returns the Connected field value if set, zero value otherwise.
 func (o *GatewayInstance) GetConnected() bool {
-	if o == nil || isNil(o.Connected) {
+	if o == nil || IsNil(o.Connected) {
 		var ret bool
 		return ret
 	}
@@ -70,15 +73,15 @@ func (o *GatewayInstance) GetConnected() bool {
 // GetConnectedOk returns a tuple with the Connected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetConnectedOk() (*bool, bool) {
-	if o == nil || isNil(o.Connected) {
-    return nil, false
+	if o == nil || IsNil(o.Connected) {
+		return nil, false
 	}
 	return o.Connected, true
 }
 
 // HasConnected returns a boolean if a field has been set.
 func (o *GatewayInstance) HasConnected() bool {
-	if o != nil && !isNil(o.Connected) {
+	if o != nil && !IsNil(o.Connected) {
 		return true
 	}
 
@@ -92,7 +95,7 @@ func (o *GatewayInstance) SetConnected(v bool) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GatewayInstance) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -102,15 +105,15 @@ func (o *GatewayInstance) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *GatewayInstance) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -124,7 +127,7 @@ func (o *GatewayInstance) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *GatewayInstance) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -134,15 +137,15 @@ func (o *GatewayInstance) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *GatewayInstance) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -156,7 +159,7 @@ func (o *GatewayInstance) SetEnvironment(v ObjectEnvironment) {
 
 // GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *GatewayInstance) GetGateway() GatewayInstanceGateway {
-	if o == nil || isNil(o.Gateway) {
+	if o == nil || IsNil(o.Gateway) {
 		var ret GatewayInstanceGateway
 		return ret
 	}
@@ -166,15 +169,15 @@ func (o *GatewayInstance) GetGateway() GatewayInstanceGateway {
 // GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetGatewayOk() (*GatewayInstanceGateway, bool) {
-	if o == nil || isNil(o.Gateway) {
-    return nil, false
+	if o == nil || IsNil(o.Gateway) {
+		return nil, false
 	}
 	return o.Gateway, true
 }
 
 // HasGateway returns a boolean if a field has been set.
 func (o *GatewayInstance) HasGateway() bool {
-	if o != nil && !isNil(o.Gateway) {
+	if o != nil && !IsNil(o.Gateway) {
 		return true
 	}
 
@@ -188,7 +191,7 @@ func (o *GatewayInstance) SetGateway(v GatewayInstanceGateway) {
 
 // GetCredential returns the Credential field value if set, zero value otherwise.
 func (o *GatewayInstance) GetCredential() GatewayInstanceCredential {
-	if o == nil || isNil(o.Credential) {
+	if o == nil || IsNil(o.Credential) {
 		var ret GatewayInstanceCredential
 		return ret
 	}
@@ -198,15 +201,15 @@ func (o *GatewayInstance) GetCredential() GatewayInstanceCredential {
 // GetCredentialOk returns a tuple with the Credential field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetCredentialOk() (*GatewayInstanceCredential, bool) {
-	if o == nil || isNil(o.Credential) {
-    return nil, false
+	if o == nil || IsNil(o.Credential) {
+		return nil, false
 	}
 	return o.Credential, true
 }
 
 // HasCredential returns a boolean if a field has been set.
 func (o *GatewayInstance) HasCredential() bool {
-	if o != nil && !isNil(o.Credential) {
+	if o != nil && !IsNil(o.Credential) {
 		return true
 	}
 
@@ -220,7 +223,7 @@ func (o *GatewayInstance) SetCredential(v GatewayInstanceCredential) {
 
 // GetCurrentErrors returns the CurrentErrors field value if set, zero value otherwise.
 func (o *GatewayInstance) GetCurrentErrors() []string {
-	if o == nil || isNil(o.CurrentErrors) {
+	if o == nil || IsNil(o.CurrentErrors) {
 		var ret []string
 		return ret
 	}
@@ -230,15 +233,15 @@ func (o *GatewayInstance) GetCurrentErrors() []string {
 // GetCurrentErrorsOk returns a tuple with the CurrentErrors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetCurrentErrorsOk() ([]string, bool) {
-	if o == nil || isNil(o.CurrentErrors) {
-    return nil, false
+	if o == nil || IsNil(o.CurrentErrors) {
+		return nil, false
 	}
 	return o.CurrentErrors, true
 }
 
 // HasCurrentErrors returns a boolean if a field has been set.
 func (o *GatewayInstance) HasCurrentErrors() bool {
-	if o != nil && !isNil(o.CurrentErrors) {
+	if o != nil && !IsNil(o.CurrentErrors) {
 		return true
 	}
 
@@ -252,7 +255,7 @@ func (o *GatewayInstance) SetCurrentErrors(v []string) {
 
 // GetHealthStatus returns the HealthStatus field value if set, zero value otherwise.
 func (o *GatewayInstance) GetHealthStatus() EnumHealthStatus {
-	if o == nil || isNil(o.HealthStatus) {
+	if o == nil || IsNil(o.HealthStatus) {
 		var ret EnumHealthStatus
 		return ret
 	}
@@ -262,15 +265,15 @@ func (o *GatewayInstance) GetHealthStatus() EnumHealthStatus {
 // GetHealthStatusOk returns a tuple with the HealthStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetHealthStatusOk() (*EnumHealthStatus, bool) {
-	if o == nil || isNil(o.HealthStatus) {
-    return nil, false
+	if o == nil || IsNil(o.HealthStatus) {
+		return nil, false
 	}
 	return o.HealthStatus, true
 }
 
 // HasHealthStatus returns a boolean if a field has been set.
 func (o *GatewayInstance) HasHealthStatus() bool {
-	if o != nil && !isNil(o.HealthStatus) {
+	if o != nil && !IsNil(o.HealthStatus) {
 		return true
 	}
 
@@ -284,7 +287,7 @@ func (o *GatewayInstance) SetHealthStatus(v EnumHealthStatus) {
 
 // GetHostname returns the Hostname field value if set, zero value otherwise.
 func (o *GatewayInstance) GetHostname() string {
-	if o == nil || isNil(o.Hostname) {
+	if o == nil || IsNil(o.Hostname) {
 		var ret string
 		return ret
 	}
@@ -294,15 +297,15 @@ func (o *GatewayInstance) GetHostname() string {
 // GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetHostnameOk() (*string, bool) {
-	if o == nil || isNil(o.Hostname) {
-    return nil, false
+	if o == nil || IsNil(o.Hostname) {
+		return nil, false
 	}
 	return o.Hostname, true
 }
 
 // HasHostname returns a boolean if a field has been set.
 func (o *GatewayInstance) HasHostname() bool {
-	if o != nil && !isNil(o.Hostname) {
+	if o != nil && !IsNil(o.Hostname) {
 		return true
 	}
 
@@ -316,7 +319,7 @@ func (o *GatewayInstance) SetHostname(v string) {
 
 // GetInitializedAt returns the InitializedAt field value if set, zero value otherwise.
 func (o *GatewayInstance) GetInitializedAt() string {
-	if o == nil || isNil(o.InitializedAt) {
+	if o == nil || IsNil(o.InitializedAt) {
 		var ret string
 		return ret
 	}
@@ -326,15 +329,15 @@ func (o *GatewayInstance) GetInitializedAt() string {
 // GetInitializedAtOk returns a tuple with the InitializedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetInitializedAtOk() (*string, bool) {
-	if o == nil || isNil(o.InitializedAt) {
-    return nil, false
+	if o == nil || IsNil(o.InitializedAt) {
+		return nil, false
 	}
 	return o.InitializedAt, true
 }
 
 // HasInitializedAt returns a boolean if a field has been set.
 func (o *GatewayInstance) HasInitializedAt() bool {
-	if o != nil && !isNil(o.InitializedAt) {
+	if o != nil && !IsNil(o.InitializedAt) {
 		return true
 	}
 
@@ -348,7 +351,7 @@ func (o *GatewayInstance) SetInitializedAt(v string) {
 
 // GetLastReportedAt returns the LastReportedAt field value if set, zero value otherwise.
 func (o *GatewayInstance) GetLastReportedAt() string {
-	if o == nil || isNil(o.LastReportedAt) {
+	if o == nil || IsNil(o.LastReportedAt) {
 		var ret string
 		return ret
 	}
@@ -358,15 +361,15 @@ func (o *GatewayInstance) GetLastReportedAt() string {
 // GetLastReportedAtOk returns a tuple with the LastReportedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetLastReportedAtOk() (*string, bool) {
-	if o == nil || isNil(o.LastReportedAt) {
-    return nil, false
+	if o == nil || IsNil(o.LastReportedAt) {
+		return nil, false
 	}
 	return o.LastReportedAt, true
 }
 
 // HasLastReportedAt returns a boolean if a field has been set.
 func (o *GatewayInstance) HasLastReportedAt() bool {
-	if o != nil && !isNil(o.LastReportedAt) {
+	if o != nil && !IsNil(o.LastReportedAt) {
 		return true
 	}
 
@@ -380,7 +383,7 @@ func (o *GatewayInstance) SetLastReportedAt(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *GatewayInstance) GetVersion() GatewayInstanceVersion {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret GatewayInstanceVersion
 		return ret
 	}
@@ -390,15 +393,15 @@ func (o *GatewayInstance) GetVersion() GatewayInstanceVersion {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetVersionOk() (*GatewayInstanceVersion, bool) {
-	if o == nil || isNil(o.Version) {
-    return nil, false
+	if o == nil || IsNil(o.Version) {
+		return nil, false
 	}
 	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *GatewayInstance) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -412,7 +415,7 @@ func (o *GatewayInstance) SetVersion(v GatewayInstanceVersion) {
 
 // GetBusyPercentage returns the BusyPercentage field value if set, zero value otherwise.
 func (o *GatewayInstance) GetBusyPercentage() int32 {
-	if o == nil || isNil(o.BusyPercentage) {
+	if o == nil || IsNil(o.BusyPercentage) {
 		var ret int32
 		return ret
 	}
@@ -422,15 +425,15 @@ func (o *GatewayInstance) GetBusyPercentage() int32 {
 // GetBusyPercentageOk returns a tuple with the BusyPercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetBusyPercentageOk() (*int32, bool) {
-	if o == nil || isNil(o.BusyPercentage) {
-    return nil, false
+	if o == nil || IsNil(o.BusyPercentage) {
+		return nil, false
 	}
 	return o.BusyPercentage, true
 }
 
 // HasBusyPercentage returns a boolean if a field has been set.
 func (o *GatewayInstance) HasBusyPercentage() bool {
-	if o != nil && !isNil(o.BusyPercentage) {
+	if o != nil && !IsNil(o.BusyPercentage) {
 		return true
 	}
 
@@ -444,7 +447,7 @@ func (o *GatewayInstance) SetBusyPercentage(v int32) {
 
 // GetOperationsPerSecond returns the OperationsPerSecond field value if set, zero value otherwise.
 func (o *GatewayInstance) GetOperationsPerSecond() float32 {
-	if o == nil || isNil(o.OperationsPerSecond) {
+	if o == nil || IsNil(o.OperationsPerSecond) {
 		var ret float32
 		return ret
 	}
@@ -454,15 +457,15 @@ func (o *GatewayInstance) GetOperationsPerSecond() float32 {
 // GetOperationsPerSecondOk returns a tuple with the OperationsPerSecond field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetOperationsPerSecondOk() (*float32, bool) {
-	if o == nil || isNil(o.OperationsPerSecond) {
-    return nil, false
+	if o == nil || IsNil(o.OperationsPerSecond) {
+		return nil, false
 	}
 	return o.OperationsPerSecond, true
 }
 
 // HasOperationsPerSecond returns a boolean if a field has been set.
 func (o *GatewayInstance) HasOperationsPerSecond() bool {
-	if o != nil && !isNil(o.OperationsPerSecond) {
+	if o != nil && !IsNil(o.OperationsPerSecond) {
 		return true
 	}
 
@@ -476,7 +479,7 @@ func (o *GatewayInstance) SetOperationsPerSecond(v float32) {
 
 // GetResponseTimeMillis returns the ResponseTimeMillis field value if set, zero value otherwise.
 func (o *GatewayInstance) GetResponseTimeMillis() float32 {
-	if o == nil || isNil(o.ResponseTimeMillis) {
+	if o == nil || IsNil(o.ResponseTimeMillis) {
 		var ret float32
 		return ret
 	}
@@ -486,15 +489,15 @@ func (o *GatewayInstance) GetResponseTimeMillis() float32 {
 // GetResponseTimeMillisOk returns a tuple with the ResponseTimeMillis field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayInstance) GetResponseTimeMillisOk() (*float32, bool) {
-	if o == nil || isNil(o.ResponseTimeMillis) {
-    return nil, false
+	if o == nil || IsNil(o.ResponseTimeMillis) {
+		return nil, false
 	}
 	return o.ResponseTimeMillis, true
 }
 
 // HasResponseTimeMillis returns a boolean if a field has been set.
 func (o *GatewayInstance) HasResponseTimeMillis() bool {
-	if o != nil && !isNil(o.ResponseTimeMillis) {
+	if o != nil && !IsNil(o.ResponseTimeMillis) {
 		return true
 	}
 
@@ -507,50 +510,56 @@ func (o *GatewayInstance) SetResponseTimeMillis(v float32) {
 }
 
 func (o GatewayInstance) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Connected) {
-		toSerialize["connected"] = o.Connected
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Gateway) {
-		toSerialize["gateway"] = o.Gateway
-	}
-	if !isNil(o.Credential) {
-		toSerialize["credential"] = o.Credential
-	}
-	if !isNil(o.CurrentErrors) {
-		toSerialize["currentErrors"] = o.CurrentErrors
-	}
-	if !isNil(o.HealthStatus) {
-		toSerialize["healthStatus"] = o.HealthStatus
-	}
-	if !isNil(o.Hostname) {
-		toSerialize["hostname"] = o.Hostname
-	}
-	if !isNil(o.InitializedAt) {
-		toSerialize["initializedAt"] = o.InitializedAt
-	}
-	if !isNil(o.LastReportedAt) {
-		toSerialize["lastReportedAt"] = o.LastReportedAt
-	}
-	if !isNil(o.Version) {
-		toSerialize["version"] = o.Version
-	}
-	if !isNil(o.BusyPercentage) {
-		toSerialize["busyPercentage"] = o.BusyPercentage
-	}
-	if !isNil(o.OperationsPerSecond) {
-		toSerialize["operationsPerSecond"] = o.OperationsPerSecond
-	}
-	if !isNil(o.ResponseTimeMillis) {
-		toSerialize["responseTimeMillis"] = o.ResponseTimeMillis
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayInstance) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Connected) {
+		toSerialize["connected"] = o.Connected
+	}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
+	}
+	if !IsNil(o.Credential) {
+		toSerialize["credential"] = o.Credential
+	}
+	if !IsNil(o.CurrentErrors) {
+		toSerialize["currentErrors"] = o.CurrentErrors
+	}
+	if !IsNil(o.HealthStatus) {
+		toSerialize["healthStatus"] = o.HealthStatus
+	}
+	if !IsNil(o.Hostname) {
+		toSerialize["hostname"] = o.Hostname
+	}
+	if !IsNil(o.InitializedAt) {
+		toSerialize["initializedAt"] = o.InitializedAt
+	}
+	if !IsNil(o.LastReportedAt) {
+		toSerialize["lastReportedAt"] = o.LastReportedAt
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.BusyPercentage) {
+		toSerialize["busyPercentage"] = o.BusyPercentage
+	}
+	if !IsNil(o.OperationsPerSecond) {
+		toSerialize["operationsPerSecond"] = o.OperationsPerSecond
+	}
+	if !IsNil(o.ResponseTimeMillis) {
+		toSerialize["responseTimeMillis"] = o.ResponseTimeMillis
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayInstance struct {

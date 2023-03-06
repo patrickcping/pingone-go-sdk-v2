@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionGeovelocity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionGeovelocity{}
+
 // SignOnPolicyActionCommonConditionGeovelocity struct for SignOnPolicyActionCommonConditionGeovelocity
 type SignOnPolicyActionCommonConditionGeovelocity struct {
 	GeoVelocity string `json:"geoVelocity"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionCommonConditionGeovelocity) GetGeoVelocity() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionGeovelocity) GetGeoVelocityOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GeoVelocity, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionCommonConditionGeovelocity) GetValid() SignOnPolicyAc
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionGeovelocity) GetValidOk() (*SignOnPolicyActionCommonConditionGeovelocityValid, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Valid, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionCommonConditionGeovelocity) SetValid(v SignOnPolicyAc
 }
 
 func (o SignOnPolicyActionCommonConditionGeovelocity) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["geoVelocity"] = o.GeoVelocity
-	}
-	if true {
-		toSerialize["valid"] = o.Valid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionGeovelocity) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["geoVelocity"] = o.GeoVelocity
+	toSerialize["valid"] = o.Valid
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionGeovelocity struct {

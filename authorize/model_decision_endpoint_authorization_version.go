@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DecisionEndpointAuthorizationVersion type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DecisionEndpointAuthorizationVersion{}
+
 // DecisionEndpointAuthorizationVersion struct for DecisionEndpointAuthorizationVersion
 type DecisionEndpointAuthorizationVersion struct {
 	// A string that specifies the ID of the Authorization Version deployed to this endpoint. Versioning allows independent development and deployment of policies. If omitted, the endpoint always uses the latest policy version available from the policy editor service.
@@ -45,7 +48,7 @@ func NewDecisionEndpointAuthorizationVersionWithDefaults() *DecisionEndpointAuth
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DecisionEndpointAuthorizationVersion) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -55,15 +58,15 @@ func (o *DecisionEndpointAuthorizationVersion) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpointAuthorizationVersion) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *DecisionEndpointAuthorizationVersion) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *DecisionEndpointAuthorizationVersion) SetId(v string) {
 
 // GetHref returns the Href field value if set, zero value otherwise.
 func (o *DecisionEndpointAuthorizationVersion) GetHref() string {
-	if o == nil || isNil(o.Href) {
+	if o == nil || IsNil(o.Href) {
 		var ret string
 		return ret
 	}
@@ -87,15 +90,15 @@ func (o *DecisionEndpointAuthorizationVersion) GetHref() string {
 // GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpointAuthorizationVersion) GetHrefOk() (*string, bool) {
-	if o == nil || isNil(o.Href) {
-    return nil, false
+	if o == nil || IsNil(o.Href) {
+		return nil, false
 	}
 	return o.Href, true
 }
 
 // HasHref returns a boolean if a field has been set.
 func (o *DecisionEndpointAuthorizationVersion) HasHref() bool {
-	if o != nil && !isNil(o.Href) {
+	if o != nil && !IsNil(o.Href) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *DecisionEndpointAuthorizationVersion) SetHref(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *DecisionEndpointAuthorizationVersion) GetTitle() string {
-	if o == nil || isNil(o.Title) {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -119,15 +122,15 @@ func (o *DecisionEndpointAuthorizationVersion) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpointAuthorizationVersion) GetTitleOk() (*string, bool) {
-	if o == nil || isNil(o.Title) {
-    return nil, false
+	if o == nil || IsNil(o.Title) {
+		return nil, false
 	}
 	return o.Title, true
 }
 
 // HasTitle returns a boolean if a field has been set.
 func (o *DecisionEndpointAuthorizationVersion) HasTitle() bool {
-	if o != nil && !isNil(o.Title) {
+	if o != nil && !IsNil(o.Title) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *DecisionEndpointAuthorizationVersion) SetTitle(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *DecisionEndpointAuthorizationVersion) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -151,15 +154,15 @@ func (o *DecisionEndpointAuthorizationVersion) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpointAuthorizationVersion) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *DecisionEndpointAuthorizationVersion) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *DecisionEndpointAuthorizationVersion) SetType(v string) {
 }
 
 func (o DecisionEndpointAuthorizationVersion) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Href) {
-		toSerialize["href"] = o.Href
-	}
-	if !isNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DecisionEndpointAuthorizationVersion) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableDecisionEndpointAuthorizationVersion struct {

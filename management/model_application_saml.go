@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ApplicationSAML type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationSAML{}
+
 // ApplicationSAML struct for ApplicationSAML
 type ApplicationSAML struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
@@ -88,7 +91,7 @@ func NewApplicationSAMLWithDefaults() *ApplicationSAML {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetLinks() map[string]interface{} {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -98,15 +101,15 @@ func (o *ApplicationSAML) GetLinks() map[string]interface{} {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Links) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Links) {
+		return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -120,7 +123,7 @@ func (o *ApplicationSAML) SetLinks(v map[string]interface{}) {
 
 // GetAccessControl returns the AccessControl field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetAccessControl() ApplicationAccessControl {
-	if o == nil || isNil(o.AccessControl) {
+	if o == nil || IsNil(o.AccessControl) {
 		var ret ApplicationAccessControl
 		return ret
 	}
@@ -130,15 +133,15 @@ func (o *ApplicationSAML) GetAccessControl() ApplicationAccessControl {
 // GetAccessControlOk returns a tuple with the AccessControl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetAccessControlOk() (*ApplicationAccessControl, bool) {
-	if o == nil || isNil(o.AccessControl) {
-    return nil, false
+	if o == nil || IsNil(o.AccessControl) {
+		return nil, false
 	}
 	return o.AccessControl, true
 }
 
 // HasAccessControl returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasAccessControl() bool {
-	if o != nil && !isNil(o.AccessControl) {
+	if o != nil && !IsNil(o.AccessControl) {
 		return true
 	}
 
@@ -152,7 +155,7 @@ func (o *ApplicationSAML) SetAccessControl(v ApplicationAccessControl) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -162,15 +165,15 @@ func (o *ApplicationSAML) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -184,7 +187,7 @@ func (o *ApplicationSAML) SetCreatedAt(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -194,15 +197,15 @@ func (o *ApplicationSAML) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -228,7 +231,7 @@ func (o *ApplicationSAML) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -240,7 +243,7 @@ func (o *ApplicationSAML) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -250,15 +253,15 @@ func (o *ApplicationSAML) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *ApplicationSAML) SetEnvironment(v ObjectEnvironment) {
 
 // GetHiddenFromAppPortal returns the HiddenFromAppPortal field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetHiddenFromAppPortal() bool {
-	if o == nil || isNil(o.HiddenFromAppPortal) {
+	if o == nil || IsNil(o.HiddenFromAppPortal) {
 		var ret bool
 		return ret
 	}
@@ -282,15 +285,15 @@ func (o *ApplicationSAML) GetHiddenFromAppPortal() bool {
 // GetHiddenFromAppPortalOk returns a tuple with the HiddenFromAppPortal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetHiddenFromAppPortalOk() (*bool, bool) {
-	if o == nil || isNil(o.HiddenFromAppPortal) {
-    return nil, false
+	if o == nil || IsNil(o.HiddenFromAppPortal) {
+		return nil, false
 	}
 	return o.HiddenFromAppPortal, true
 }
 
 // HasHiddenFromAppPortal returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasHiddenFromAppPortal() bool {
-	if o != nil && !isNil(o.HiddenFromAppPortal) {
+	if o != nil && !IsNil(o.HiddenFromAppPortal) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *ApplicationSAML) SetHiddenFromAppPortal(v bool) {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetIcon() ApplicationIcon {
-	if o == nil || isNil(o.Icon) {
+	if o == nil || IsNil(o.Icon) {
 		var ret ApplicationIcon
 		return ret
 	}
@@ -314,15 +317,15 @@ func (o *ApplicationSAML) GetIcon() ApplicationIcon {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetIconOk() (*ApplicationIcon, bool) {
-	if o == nil || isNil(o.Icon) {
-    return nil, false
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
 	}
 	return o.Icon, true
 }
 
 // HasIcon returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasIcon() bool {
-	if o != nil && !isNil(o.Icon) {
+	if o != nil && !IsNil(o.Icon) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *ApplicationSAML) SetIcon(v ApplicationIcon) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -346,15 +349,15 @@ func (o *ApplicationSAML) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *ApplicationSAML) SetId(v string) {
 
 // GetLoginPageUrl returns the LoginPageUrl field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetLoginPageUrl() string {
-	if o == nil || isNil(o.LoginPageUrl) {
+	if o == nil || IsNil(o.LoginPageUrl) {
 		var ret string
 		return ret
 	}
@@ -378,15 +381,15 @@ func (o *ApplicationSAML) GetLoginPageUrl() string {
 // GetLoginPageUrlOk returns a tuple with the LoginPageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetLoginPageUrlOk() (*string, bool) {
-	if o == nil || isNil(o.LoginPageUrl) {
-    return nil, false
+	if o == nil || IsNil(o.LoginPageUrl) {
+		return nil, false
 	}
 	return o.LoginPageUrl, true
 }
 
 // HasLoginPageUrl returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasLoginPageUrl() bool {
-	if o != nil && !isNil(o.LoginPageUrl) {
+	if o != nil && !IsNil(o.LoginPageUrl) {
 		return true
 	}
 
@@ -412,7 +415,7 @@ func (o *ApplicationSAML) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -436,7 +439,7 @@ func (o *ApplicationSAML) GetProtocol() EnumApplicationProtocol {
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetProtocolOk() (*EnumApplicationProtocol, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Protocol, true
 }
@@ -460,7 +463,7 @@ func (o *ApplicationSAML) GetType() EnumApplicationType {
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetTypeOk() (*EnumApplicationType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -472,7 +475,7 @@ func (o *ApplicationSAML) SetType(v EnumApplicationType) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -482,15 +485,15 @@ func (o *ApplicationSAML) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -504,7 +507,7 @@ func (o *ApplicationSAML) SetUpdatedAt(v time.Time) {
 
 // GetHomePageUrl returns the HomePageUrl field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetHomePageUrl() string {
-	if o == nil || isNil(o.HomePageUrl) {
+	if o == nil || IsNil(o.HomePageUrl) {
 		var ret string
 		return ret
 	}
@@ -514,15 +517,15 @@ func (o *ApplicationSAML) GetHomePageUrl() string {
 // GetHomePageUrlOk returns a tuple with the HomePageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetHomePageUrlOk() (*string, bool) {
-	if o == nil || isNil(o.HomePageUrl) {
-    return nil, false
+	if o == nil || IsNil(o.HomePageUrl) {
+		return nil, false
 	}
 	return o.HomePageUrl, true
 }
 
 // HasHomePageUrl returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasHomePageUrl() bool {
-	if o != nil && !isNil(o.HomePageUrl) {
+	if o != nil && !IsNil(o.HomePageUrl) {
 		return true
 	}
 
@@ -548,7 +551,7 @@ func (o *ApplicationSAML) GetAcsUrls() []string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetAcsUrlsOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.AcsUrls, true
 }
@@ -572,7 +575,7 @@ func (o *ApplicationSAML) GetAssertionDuration() int32 {
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetAssertionDurationOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AssertionDuration, true
 }
@@ -584,7 +587,7 @@ func (o *ApplicationSAML) SetAssertionDuration(v int32) {
 
 // GetAssertionSigned returns the AssertionSigned field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetAssertionSigned() bool {
-	if o == nil || isNil(o.AssertionSigned) {
+	if o == nil || IsNil(o.AssertionSigned) {
 		var ret bool
 		return ret
 	}
@@ -594,15 +597,15 @@ func (o *ApplicationSAML) GetAssertionSigned() bool {
 // GetAssertionSignedOk returns a tuple with the AssertionSigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetAssertionSignedOk() (*bool, bool) {
-	if o == nil || isNil(o.AssertionSigned) {
-    return nil, false
+	if o == nil || IsNil(o.AssertionSigned) {
+		return nil, false
 	}
 	return o.AssertionSigned, true
 }
 
 // HasAssertionSigned returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasAssertionSigned() bool {
-	if o != nil && !isNil(o.AssertionSigned) {
+	if o != nil && !IsNil(o.AssertionSigned) {
 		return true
 	}
 
@@ -616,7 +619,7 @@ func (o *ApplicationSAML) SetAssertionSigned(v bool) {
 
 // GetIdpSigning returns the IdpSigning field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetIdpSigning() ApplicationSAMLAllOfIdpSigning {
-	if o == nil || isNil(o.IdpSigning) {
+	if o == nil || IsNil(o.IdpSigning) {
 		var ret ApplicationSAMLAllOfIdpSigning
 		return ret
 	}
@@ -626,15 +629,15 @@ func (o *ApplicationSAML) GetIdpSigning() ApplicationSAMLAllOfIdpSigning {
 // GetIdpSigningOk returns a tuple with the IdpSigning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetIdpSigningOk() (*ApplicationSAMLAllOfIdpSigning, bool) {
-	if o == nil || isNil(o.IdpSigning) {
-    return nil, false
+	if o == nil || IsNil(o.IdpSigning) {
+		return nil, false
 	}
 	return o.IdpSigning, true
 }
 
 // HasIdpSigning returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasIdpSigning() bool {
-	if o != nil && !isNil(o.IdpSigning) {
+	if o != nil && !IsNil(o.IdpSigning) {
 		return true
 	}
 
@@ -648,7 +651,7 @@ func (o *ApplicationSAML) SetIdpSigning(v ApplicationSAMLAllOfIdpSigning) {
 
 // GetNameIdFormat returns the NameIdFormat field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetNameIdFormat() string {
-	if o == nil || isNil(o.NameIdFormat) {
+	if o == nil || IsNil(o.NameIdFormat) {
 		var ret string
 		return ret
 	}
@@ -658,15 +661,15 @@ func (o *ApplicationSAML) GetNameIdFormat() string {
 // GetNameIdFormatOk returns a tuple with the NameIdFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetNameIdFormatOk() (*string, bool) {
-	if o == nil || isNil(o.NameIdFormat) {
-    return nil, false
+	if o == nil || IsNil(o.NameIdFormat) {
+		return nil, false
 	}
 	return o.NameIdFormat, true
 }
 
 // HasNameIdFormat returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasNameIdFormat() bool {
-	if o != nil && !isNil(o.NameIdFormat) {
+	if o != nil && !IsNil(o.NameIdFormat) {
 		return true
 	}
 
@@ -680,7 +683,7 @@ func (o *ApplicationSAML) SetNameIdFormat(v string) {
 
 // GetResponseSigned returns the ResponseSigned field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetResponseSigned() bool {
-	if o == nil || isNil(o.ResponseSigned) {
+	if o == nil || IsNil(o.ResponseSigned) {
 		var ret bool
 		return ret
 	}
@@ -690,15 +693,15 @@ func (o *ApplicationSAML) GetResponseSigned() bool {
 // GetResponseSignedOk returns a tuple with the ResponseSigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetResponseSignedOk() (*bool, bool) {
-	if o == nil || isNil(o.ResponseSigned) {
-    return nil, false
+	if o == nil || IsNil(o.ResponseSigned) {
+		return nil, false
 	}
 	return o.ResponseSigned, true
 }
 
 // HasResponseSigned returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasResponseSigned() bool {
-	if o != nil && !isNil(o.ResponseSigned) {
+	if o != nil && !IsNil(o.ResponseSigned) {
 		return true
 	}
 
@@ -712,7 +715,7 @@ func (o *ApplicationSAML) SetResponseSigned(v bool) {
 
 // GetSloBinding returns the SloBinding field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetSloBinding() EnumApplicationSAMLSloBinding {
-	if o == nil || isNil(o.SloBinding) {
+	if o == nil || IsNil(o.SloBinding) {
 		var ret EnumApplicationSAMLSloBinding
 		return ret
 	}
@@ -722,15 +725,15 @@ func (o *ApplicationSAML) GetSloBinding() EnumApplicationSAMLSloBinding {
 // GetSloBindingOk returns a tuple with the SloBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetSloBindingOk() (*EnumApplicationSAMLSloBinding, bool) {
-	if o == nil || isNil(o.SloBinding) {
-    return nil, false
+	if o == nil || IsNil(o.SloBinding) {
+		return nil, false
 	}
 	return o.SloBinding, true
 }
 
 // HasSloBinding returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasSloBinding() bool {
-	if o != nil && !isNil(o.SloBinding) {
+	if o != nil && !IsNil(o.SloBinding) {
 		return true
 	}
 
@@ -744,7 +747,7 @@ func (o *ApplicationSAML) SetSloBinding(v EnumApplicationSAMLSloBinding) {
 
 // GetSloEndpoint returns the SloEndpoint field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetSloEndpoint() string {
-	if o == nil || isNil(o.SloEndpoint) {
+	if o == nil || IsNil(o.SloEndpoint) {
 		var ret string
 		return ret
 	}
@@ -754,15 +757,15 @@ func (o *ApplicationSAML) GetSloEndpoint() string {
 // GetSloEndpointOk returns a tuple with the SloEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetSloEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.SloEndpoint) {
-    return nil, false
+	if o == nil || IsNil(o.SloEndpoint) {
+		return nil, false
 	}
 	return o.SloEndpoint, true
 }
 
 // HasSloEndpoint returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasSloEndpoint() bool {
-	if o != nil && !isNil(o.SloEndpoint) {
+	if o != nil && !IsNil(o.SloEndpoint) {
 		return true
 	}
 
@@ -776,7 +779,7 @@ func (o *ApplicationSAML) SetSloEndpoint(v string) {
 
 // GetSloResponseEndpoint returns the SloResponseEndpoint field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetSloResponseEndpoint() string {
-	if o == nil || isNil(o.SloResponseEndpoint) {
+	if o == nil || IsNil(o.SloResponseEndpoint) {
 		var ret string
 		return ret
 	}
@@ -786,15 +789,15 @@ func (o *ApplicationSAML) GetSloResponseEndpoint() string {
 // GetSloResponseEndpointOk returns a tuple with the SloResponseEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetSloResponseEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.SloResponseEndpoint) {
-    return nil, false
+	if o == nil || IsNil(o.SloResponseEndpoint) {
+		return nil, false
 	}
 	return o.SloResponseEndpoint, true
 }
 
 // HasSloResponseEndpoint returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasSloResponseEndpoint() bool {
-	if o != nil && !isNil(o.SloResponseEndpoint) {
+	if o != nil && !IsNil(o.SloResponseEndpoint) {
 		return true
 	}
 
@@ -820,7 +823,7 @@ func (o *ApplicationSAML) GetSpEntityId() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetSpEntityIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SpEntityId, true
 }
@@ -832,7 +835,7 @@ func (o *ApplicationSAML) SetSpEntityId(v string) {
 
 // GetSpVerification returns the SpVerification field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetSpVerification() ApplicationSAMLAllOfSpVerification {
-	if o == nil || isNil(o.SpVerification) {
+	if o == nil || IsNil(o.SpVerification) {
 		var ret ApplicationSAMLAllOfSpVerification
 		return ret
 	}
@@ -842,15 +845,15 @@ func (o *ApplicationSAML) GetSpVerification() ApplicationSAMLAllOfSpVerification
 // GetSpVerificationOk returns a tuple with the SpVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAML) GetSpVerificationOk() (*ApplicationSAMLAllOfSpVerification, bool) {
-	if o == nil || isNil(o.SpVerification) {
-    return nil, false
+	if o == nil || IsNil(o.SpVerification) {
+		return nil, false
 	}
 	return o.SpVerification, true
 }
 
 // HasSpVerification returns a boolean if a field has been set.
 func (o *ApplicationSAML) HasSpVerification() bool {
-	if o != nil && !isNil(o.SpVerification) {
+	if o != nil && !IsNil(o.SpVerification) {
 		return true
 	}
 
@@ -863,86 +866,74 @@ func (o *ApplicationSAML) SetSpVerification(v ApplicationSAMLAllOfSpVerification
 }
 
 func (o ApplicationSAML) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
-		toSerialize["_links"] = o.Links
-	}
-	if !isNil(o.AccessControl) {
-		toSerialize["accessControl"] = o.AccessControl
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.HiddenFromAppPortal) {
-		toSerialize["hiddenFromAppPortal"] = o.HiddenFromAppPortal
-	}
-	if !isNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.LoginPageUrl) {
-		toSerialize["loginPageUrl"] = o.LoginPageUrl
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["protocol"] = o.Protocol
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.HomePageUrl) {
-		toSerialize["homePageUrl"] = o.HomePageUrl
-	}
-	if true {
-		toSerialize["acsUrls"] = o.AcsUrls
-	}
-	if true {
-		toSerialize["assertionDuration"] = o.AssertionDuration
-	}
-	if !isNil(o.AssertionSigned) {
-		toSerialize["assertionSigned"] = o.AssertionSigned
-	}
-	if !isNil(o.IdpSigning) {
-		toSerialize["idpSigning"] = o.IdpSigning
-	}
-	if !isNil(o.NameIdFormat) {
-		toSerialize["nameIdFormat"] = o.NameIdFormat
-	}
-	if !isNil(o.ResponseSigned) {
-		toSerialize["responseSigned"] = o.ResponseSigned
-	}
-	if !isNil(o.SloBinding) {
-		toSerialize["sloBinding"] = o.SloBinding
-	}
-	if !isNil(o.SloEndpoint) {
-		toSerialize["sloEndpoint"] = o.SloEndpoint
-	}
-	if !isNil(o.SloResponseEndpoint) {
-		toSerialize["sloResponseEndpoint"] = o.SloResponseEndpoint
-	}
-	if true {
-		toSerialize["spEntityId"] = o.SpEntityId
-	}
-	if !isNil(o.SpVerification) {
-		toSerialize["spVerification"] = o.SpVerification
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
+	if !IsNil(o.AccessControl) {
+		toSerialize["accessControl"] = o.AccessControl
+	}
+	// skip: createdAt is readOnly
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.HiddenFromAppPortal) {
+		toSerialize["hiddenFromAppPortal"] = o.HiddenFromAppPortal
+	}
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
+	}
+	// skip: id is readOnly
+	if !IsNil(o.LoginPageUrl) {
+		toSerialize["loginPageUrl"] = o.LoginPageUrl
+	}
+	toSerialize["name"] = o.Name
+	toSerialize["protocol"] = o.Protocol
+	toSerialize["type"] = o.Type
+	// skip: updatedAt is readOnly
+	if !IsNil(o.HomePageUrl) {
+		toSerialize["homePageUrl"] = o.HomePageUrl
+	}
+	toSerialize["acsUrls"] = o.AcsUrls
+	toSerialize["assertionDuration"] = o.AssertionDuration
+	if !IsNil(o.AssertionSigned) {
+		toSerialize["assertionSigned"] = o.AssertionSigned
+	}
+	if !IsNil(o.IdpSigning) {
+		toSerialize["idpSigning"] = o.IdpSigning
+	}
+	if !IsNil(o.NameIdFormat) {
+		toSerialize["nameIdFormat"] = o.NameIdFormat
+	}
+	if !IsNil(o.ResponseSigned) {
+		toSerialize["responseSigned"] = o.ResponseSigned
+	}
+	if !IsNil(o.SloBinding) {
+		toSerialize["sloBinding"] = o.SloBinding
+	}
+	if !IsNil(o.SloEndpoint) {
+		toSerialize["sloEndpoint"] = o.SloEndpoint
+	}
+	if !IsNil(o.SloResponseEndpoint) {
+		toSerialize["sloResponseEndpoint"] = o.SloResponseEndpoint
+	}
+	toSerialize["spEntityId"] = o.SpEntityId
+	if !IsNil(o.SpVerification) {
+		toSerialize["spVerification"] = o.SpVerification
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationSAML struct {

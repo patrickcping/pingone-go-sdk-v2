@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayTypeRADIUSAllOfDavinciPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayTypeRADIUSAllOfDavinciPolicy{}
+
 // GatewayTypeRADIUSAllOfDavinciPolicy struct for GatewayTypeRADIUSAllOfDavinciPolicy
 type GatewayTypeRADIUSAllOfDavinciPolicy struct {
 	// The ID of the Davinci flow policy to use.
@@ -52,7 +55,7 @@ func (o *GatewayTypeRADIUSAllOfDavinciPolicy) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeRADIUSAllOfDavinciPolicy) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *GatewayTypeRADIUSAllOfDavinciPolicy) SetId(v string) {
 }
 
 func (o GatewayTypeRADIUSAllOfDavinciPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayTypeRADIUSAllOfDavinciPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableGatewayTypeRADIUSAllOfDavinciPolicy struct {

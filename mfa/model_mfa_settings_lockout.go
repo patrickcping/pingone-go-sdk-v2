@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MFASettingsLockout type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFASettingsLockout{}
+
 // MFASettingsLockout An object that contains lockout settings.
 type MFASettingsLockout struct {
 	// An integer that defines the maximum number of incorrect authentication attempts before the account is locked.
@@ -54,7 +57,7 @@ func (o *MFASettingsLockout) GetFailureCount() int32 {
 // and a boolean to check if the value has been set.
 func (o *MFASettingsLockout) GetFailureCountOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.FailureCount, true
 }
@@ -66,7 +69,7 @@ func (o *MFASettingsLockout) SetFailureCount(v int32) {
 
 // GetDurationSeconds returns the DurationSeconds field value if set, zero value otherwise.
 func (o *MFASettingsLockout) GetDurationSeconds() int32 {
-	if o == nil || isNil(o.DurationSeconds) {
+	if o == nil || IsNil(o.DurationSeconds) {
 		var ret int32
 		return ret
 	}
@@ -76,15 +79,15 @@ func (o *MFASettingsLockout) GetDurationSeconds() int32 {
 // GetDurationSecondsOk returns a tuple with the DurationSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MFASettingsLockout) GetDurationSecondsOk() (*int32, bool) {
-	if o == nil || isNil(o.DurationSeconds) {
-    return nil, false
+	if o == nil || IsNil(o.DurationSeconds) {
+		return nil, false
 	}
 	return o.DurationSeconds, true
 }
 
 // HasDurationSeconds returns a boolean if a field has been set.
 func (o *MFASettingsLockout) HasDurationSeconds() bool {
-	if o != nil && !isNil(o.DurationSeconds) {
+	if o != nil && !IsNil(o.DurationSeconds) {
 		return true
 	}
 
@@ -97,14 +100,20 @@ func (o *MFASettingsLockout) SetDurationSeconds(v int32) {
 }
 
 func (o MFASettingsLockout) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["failureCount"] = o.FailureCount
-	}
-	if !isNil(o.DurationSeconds) {
-		toSerialize["durationSeconds"] = o.DurationSeconds
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFASettingsLockout) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["failureCount"] = o.FailureCount
+	if !IsNil(o.DurationSeconds) {
+		toSerialize["durationSeconds"] = o.DurationSeconds
+	}
+	return toSerialize, nil
 }
 
 type NullableMFASettingsLockout struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderClientIDClientSecretAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderClientIDClientSecretAllOf{}
+
 // IdentityProviderClientIDClientSecretAllOf struct for IdentityProviderClientIDClientSecretAllOf
 type IdentityProviderClientIDClientSecretAllOf struct {
 	// A string that specifies the application ID from the provider. This is a required property.
@@ -55,7 +58,7 @@ func (o *IdentityProviderClientIDClientSecretAllOf) GetClientId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecretAllOf) GetClientIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientId, true
 }
@@ -79,7 +82,7 @@ func (o *IdentityProviderClientIDClientSecretAllOf) GetClientSecret() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecretAllOf) GetClientSecretOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientSecret, true
 }
@@ -90,14 +93,18 @@ func (o *IdentityProviderClientIDClientSecretAllOf) SetClientSecret(v string) {
 }
 
 func (o IdentityProviderClientIDClientSecretAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["clientSecret"] = o.ClientSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderClientIDClientSecretAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["clientSecret"] = o.ClientSecret
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderClientIDClientSecretAllOf struct {

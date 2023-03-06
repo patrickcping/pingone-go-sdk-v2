@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Population type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Population{}
+
 // Population struct for Population
 type Population struct {
 	// The time the resource was created.
@@ -51,7 +54,7 @@ func NewPopulationWithDefaults() *Population {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Population) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -61,15 +64,15 @@ func (o *Population) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Population) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Population) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *Population) SetCreatedAt(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Population) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -93,15 +96,15 @@ func (o *Population) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Population) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Population) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *Population) SetDescription(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Population) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -125,15 +128,15 @@ func (o *Population) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Population) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Population) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -159,7 +162,7 @@ func (o *Population) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Population) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -171,7 +174,7 @@ func (o *Population) SetName(v string) {
 
 // GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
 func (o *Population) GetPasswordPolicy() PopulationPasswordPolicy {
-	if o == nil || isNil(o.PasswordPolicy) {
+	if o == nil || IsNil(o.PasswordPolicy) {
 		var ret PopulationPasswordPolicy
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *Population) GetPasswordPolicy() PopulationPasswordPolicy {
 // GetPasswordPolicyOk returns a tuple with the PasswordPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Population) GetPasswordPolicyOk() (*PopulationPasswordPolicy, bool) {
-	if o == nil || isNil(o.PasswordPolicy) {
-    return nil, false
+	if o == nil || IsNil(o.PasswordPolicy) {
+		return nil, false
 	}
 	return o.PasswordPolicy, true
 }
 
 // HasPasswordPolicy returns a boolean if a field has been set.
 func (o *Population) HasPasswordPolicy() bool {
-	if o != nil && !isNil(o.PasswordPolicy) {
+	if o != nil && !IsNil(o.PasswordPolicy) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *Population) SetPasswordPolicy(v PopulationPasswordPolicy) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Population) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -213,15 +216,15 @@ func (o *Population) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Population) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Population) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -235,7 +238,7 @@ func (o *Population) SetUpdatedAt(v string) {
 
 // GetUserCount returns the UserCount field value if set, zero value otherwise.
 func (o *Population) GetUserCount() int32 {
-	if o == nil || isNil(o.UserCount) {
+	if o == nil || IsNil(o.UserCount) {
 		var ret int32
 		return ret
 	}
@@ -245,15 +248,15 @@ func (o *Population) GetUserCount() int32 {
 // GetUserCountOk returns a tuple with the UserCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Population) GetUserCountOk() (*int32, bool) {
-	if o == nil || isNil(o.UserCount) {
-    return nil, false
+	if o == nil || IsNil(o.UserCount) {
+		return nil, false
 	}
 	return o.UserCount, true
 }
 
 // HasUserCount returns a boolean if a field has been set.
 func (o *Population) HasUserCount() bool {
-	if o != nil && !isNil(o.UserCount) {
+	if o != nil && !IsNil(o.UserCount) {
 		return true
 	}
 
@@ -266,29 +269,27 @@ func (o *Population) SetUserCount(v int32) {
 }
 
 func (o Population) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.PasswordPolicy) {
-		toSerialize["passwordPolicy"] = o.PasswordPolicy
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.UserCount) {
-		toSerialize["userCount"] = o.UserCount
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Population) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: createdAt is readOnly
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.PasswordPolicy) {
+		toSerialize["passwordPolicy"] = o.PasswordPolicy
+	}
+	// skip: updatedAt is readOnly
+	// skip: userCount is readOnly
+	return toSerialize, nil
 }
 
 type NullablePopulation struct {

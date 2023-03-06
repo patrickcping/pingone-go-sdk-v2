@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserMFAEnabled type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserMFAEnabled{}
+
 // UserMFAEnabled struct for UserMFAEnabled
 type UserMFAEnabled struct {
 	// Whether multi-factor authentication is enabled. This attribute is set to `false` by default when the user is created.
@@ -52,7 +55,7 @@ func (o *UserMFAEnabled) GetMfaEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *UserMFAEnabled) GetMfaEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.MfaEnabled, true
 }
@@ -63,11 +66,17 @@ func (o *UserMFAEnabled) SetMfaEnabled(v bool) {
 }
 
 func (o UserMFAEnabled) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["mfaEnabled"] = o.MfaEnabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserMFAEnabled) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["mfaEnabled"] = o.MfaEnabled
+	return toSerialize, nil
 }
 
 type NullableUserMFAEnabled struct {

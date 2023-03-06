@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationPingOneAdminConsole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationPingOneAdminConsole{}
+
 // ApplicationPingOneAdminConsole struct for ApplicationPingOneAdminConsole
 type ApplicationPingOneAdminConsole struct {
 	PkceEnforcement *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
@@ -39,7 +42,7 @@ func NewApplicationPingOneAdminConsoleWithDefaults() *ApplicationPingOneAdminCon
 
 // GetPkceEnforcement returns the PkceEnforcement field value if set, zero value otherwise.
 func (o *ApplicationPingOneAdminConsole) GetPkceEnforcement() EnumApplicationOIDCPKCEOption {
-	if o == nil || isNil(o.PkceEnforcement) {
+	if o == nil || IsNil(o.PkceEnforcement) {
 		var ret EnumApplicationOIDCPKCEOption
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *ApplicationPingOneAdminConsole) GetPkceEnforcement() EnumApplicationOID
 // GetPkceEnforcementOk returns a tuple with the PkceEnforcement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationPingOneAdminConsole) GetPkceEnforcementOk() (*EnumApplicationOIDCPKCEOption, bool) {
-	if o == nil || isNil(o.PkceEnforcement) {
-    return nil, false
+	if o == nil || IsNil(o.PkceEnforcement) {
+		return nil, false
 	}
 	return o.PkceEnforcement, true
 }
 
 // HasPkceEnforcement returns a boolean if a field has been set.
 func (o *ApplicationPingOneAdminConsole) HasPkceEnforcement() bool {
-	if o != nil && !isNil(o.PkceEnforcement) {
+	if o != nil && !IsNil(o.PkceEnforcement) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ApplicationPingOneAdminConsole) SetPkceEnforcement(v EnumApplicationOID
 
 // GetTokenEndpointAuthMethod returns the TokenEndpointAuthMethod field value if set, zero value otherwise.
 func (o *ApplicationPingOneAdminConsole) GetTokenEndpointAuthMethod() EnumApplicationOIDCTokenAuthMethod {
-	if o == nil || isNil(o.TokenEndpointAuthMethod) {
+	if o == nil || IsNil(o.TokenEndpointAuthMethod) {
 		var ret EnumApplicationOIDCTokenAuthMethod
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *ApplicationPingOneAdminConsole) GetTokenEndpointAuthMethod() EnumApplic
 // GetTokenEndpointAuthMethodOk returns a tuple with the TokenEndpointAuthMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationPingOneAdminConsole) GetTokenEndpointAuthMethodOk() (*EnumApplicationOIDCTokenAuthMethod, bool) {
-	if o == nil || isNil(o.TokenEndpointAuthMethod) {
-    return nil, false
+	if o == nil || IsNil(o.TokenEndpointAuthMethod) {
+		return nil, false
 	}
 	return o.TokenEndpointAuthMethod, true
 }
 
 // HasTokenEndpointAuthMethod returns a boolean if a field has been set.
 func (o *ApplicationPingOneAdminConsole) HasTokenEndpointAuthMethod() bool {
-	if o != nil && !isNil(o.TokenEndpointAuthMethod) {
+	if o != nil && !IsNil(o.TokenEndpointAuthMethod) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ApplicationPingOneAdminConsole) SetTokenEndpointAuthMethod(v EnumApplic
 }
 
 func (o ApplicationPingOneAdminConsole) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.PkceEnforcement) {
-		toSerialize["pkceEnforcement"] = o.PkceEnforcement
-	}
-	if !isNil(o.TokenEndpointAuthMethod) {
-		toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationPingOneAdminConsole) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PkceEnforcement) {
+		toSerialize["pkceEnforcement"] = o.PkceEnforcement
+	}
+	if !IsNil(o.TokenEndpointAuthMethod) {
+		toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationPingOneAdminConsole struct {

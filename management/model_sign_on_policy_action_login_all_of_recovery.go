@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionLoginAllOfRecovery type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionLoginAllOfRecovery{}
+
 // SignOnPolicyActionLoginAllOfRecovery Specifies the account recovery options.
 type SignOnPolicyActionLoginAllOfRecovery struct {
 	// A boolean that specifies the enabled/disabled state of the account recovery action. The default is disabled when creating a new policy. When enabled, it allows the use of the forgot password flow.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionLoginAllOfRecovery) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionLoginAllOfRecovery) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionLoginAllOfRecovery) SetEnabled(v bool) {
 }
 
 func (o SignOnPolicyActionLoginAllOfRecovery) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionLoginAllOfRecovery) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionLoginAllOfRecovery struct {

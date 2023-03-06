@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Group type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Group{}
+
 // Group struct for Group
 type Group struct {
 	// The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupIDs.
@@ -54,7 +57,7 @@ func NewGroupWithDefaults() *Group {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Group) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -64,15 +67,15 @@ func (o *Group) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Group) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *Group) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Group) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -96,15 +99,15 @@ func (o *Group) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Group) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *Group) SetEnvironment(v ObjectEnvironment) {
 
 // GetPopulation returns the Population field value if set, zero value otherwise.
 func (o *Group) GetPopulation() GroupPopulation {
-	if o == nil || isNil(o.Population) {
+	if o == nil || IsNil(o.Population) {
 		var ret GroupPopulation
 		return ret
 	}
@@ -128,15 +131,15 @@ func (o *Group) GetPopulation() GroupPopulation {
 // GetPopulationOk returns a tuple with the Population field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetPopulationOk() (*GroupPopulation, bool) {
-	if o == nil || isNil(o.Population) {
-    return nil, false
+	if o == nil || IsNil(o.Population) {
+		return nil, false
 	}
 	return o.Population, true
 }
 
 // HasPopulation returns a boolean if a field has been set.
 func (o *Group) HasPopulation() bool {
-	if o != nil && !isNil(o.Population) {
+	if o != nil && !IsNil(o.Population) {
 		return true
 	}
 
@@ -162,7 +165,7 @@ func (o *Group) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Group) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -174,7 +177,7 @@ func (o *Group) SetName(v string) {
 
 // GetUserFilter returns the UserFilter field value if set, zero value otherwise.
 func (o *Group) GetUserFilter() string {
-	if o == nil || isNil(o.UserFilter) {
+	if o == nil || IsNil(o.UserFilter) {
 		var ret string
 		return ret
 	}
@@ -184,15 +187,15 @@ func (o *Group) GetUserFilter() string {
 // GetUserFilterOk returns a tuple with the UserFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetUserFilterOk() (*string, bool) {
-	if o == nil || isNil(o.UserFilter) {
-    return nil, false
+	if o == nil || IsNil(o.UserFilter) {
+		return nil, false
 	}
 	return o.UserFilter, true
 }
 
 // HasUserFilter returns a boolean if a field has been set.
 func (o *Group) HasUserFilter() bool {
-	if o != nil && !isNil(o.UserFilter) {
+	if o != nil && !IsNil(o.UserFilter) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *Group) SetUserFilter(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Group) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -216,15 +219,15 @@ func (o *Group) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Group) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *Group) SetDescription(v string) {
 
 // GetExternalId returns the ExternalId field value if set, zero value otherwise.
 func (o *Group) GetExternalId() string {
-	if o == nil || isNil(o.ExternalId) {
+	if o == nil || IsNil(o.ExternalId) {
 		var ret string
 		return ret
 	}
@@ -248,15 +251,15 @@ func (o *Group) GetExternalId() string {
 // GetExternalIdOk returns a tuple with the ExternalId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetExternalIdOk() (*string, bool) {
-	if o == nil || isNil(o.ExternalId) {
-    return nil, false
+	if o == nil || IsNil(o.ExternalId) {
+		return nil, false
 	}
 	return o.ExternalId, true
 }
 
 // HasExternalId returns a boolean if a field has been set.
 func (o *Group) HasExternalId() bool {
-	if o != nil && !isNil(o.ExternalId) {
+	if o != nil && !IsNil(o.ExternalId) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *Group) SetExternalId(v string) {
 
 // GetCustomData returns the CustomData field value if set, zero value otherwise.
 func (o *Group) GetCustomData() map[string]interface{} {
-	if o == nil || isNil(o.CustomData) {
+	if o == nil || IsNil(o.CustomData) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -280,15 +283,15 @@ func (o *Group) GetCustomData() map[string]interface{} {
 // GetCustomDataOk returns a tuple with the CustomData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetCustomDataOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.CustomData) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.CustomData) {
+		return map[string]interface{}{}, false
 	}
 	return o.CustomData, true
 }
 
 // HasCustomData returns a boolean if a field has been set.
 func (o *Group) HasCustomData() bool {
-	if o != nil && !isNil(o.CustomData) {
+	if o != nil && !IsNil(o.CustomData) {
 		return true
 	}
 
@@ -302,7 +305,7 @@ func (o *Group) SetCustomData(v map[string]interface{}) {
 
 // GetDirectMemberCounts returns the DirectMemberCounts field value if set, zero value otherwise.
 func (o *Group) GetDirectMemberCounts() GroupDirectMemberCounts {
-	if o == nil || isNil(o.DirectMemberCounts) {
+	if o == nil || IsNil(o.DirectMemberCounts) {
 		var ret GroupDirectMemberCounts
 		return ret
 	}
@@ -312,15 +315,15 @@ func (o *Group) GetDirectMemberCounts() GroupDirectMemberCounts {
 // GetDirectMemberCountsOk returns a tuple with the DirectMemberCounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetDirectMemberCountsOk() (*GroupDirectMemberCounts, bool) {
-	if o == nil || isNil(o.DirectMemberCounts) {
-    return nil, false
+	if o == nil || IsNil(o.DirectMemberCounts) {
+		return nil, false
 	}
 	return o.DirectMemberCounts, true
 }
 
 // HasDirectMemberCounts returns a boolean if a field has been set.
 func (o *Group) HasDirectMemberCounts() bool {
-	if o != nil && !isNil(o.DirectMemberCounts) {
+	if o != nil && !IsNil(o.DirectMemberCounts) {
 		return true
 	}
 
@@ -334,7 +337,7 @@ func (o *Group) SetDirectMemberCounts(v GroupDirectMemberCounts) {
 
 // GetTotalMemberCounts returns the TotalMemberCounts field value if set, zero value otherwise.
 func (o *Group) GetTotalMemberCounts() GroupTotalMemberCounts {
-	if o == nil || isNil(o.TotalMemberCounts) {
+	if o == nil || IsNil(o.TotalMemberCounts) {
 		var ret GroupTotalMemberCounts
 		return ret
 	}
@@ -344,15 +347,15 @@ func (o *Group) GetTotalMemberCounts() GroupTotalMemberCounts {
 // GetTotalMemberCountsOk returns a tuple with the TotalMemberCounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Group) GetTotalMemberCountsOk() (*GroupTotalMemberCounts, bool) {
-	if o == nil || isNil(o.TotalMemberCounts) {
-    return nil, false
+	if o == nil || IsNil(o.TotalMemberCounts) {
+		return nil, false
 	}
 	return o.TotalMemberCounts, true
 }
 
 // HasTotalMemberCounts returns a boolean if a field has been set.
 func (o *Group) HasTotalMemberCounts() bool {
-	if o != nil && !isNil(o.TotalMemberCounts) {
+	if o != nil && !IsNil(o.TotalMemberCounts) {
 		return true
 	}
 
@@ -365,38 +368,42 @@ func (o *Group) SetTotalMemberCounts(v GroupTotalMemberCounts) {
 }
 
 func (o Group) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Population) {
-		toSerialize["population"] = o.Population
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.UserFilter) {
-		toSerialize["userFilter"] = o.UserFilter
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.ExternalId) {
-		toSerialize["externalId"] = o.ExternalId
-	}
-	if !isNil(o.CustomData) {
-		toSerialize["customData"] = o.CustomData
-	}
-	if !isNil(o.DirectMemberCounts) {
-		toSerialize["directMemberCounts"] = o.DirectMemberCounts
-	}
-	if !isNil(o.TotalMemberCounts) {
-		toSerialize["totalMemberCounts"] = o.TotalMemberCounts
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Group) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Population) {
+		toSerialize["population"] = o.Population
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.UserFilter) {
+		toSerialize["userFilter"] = o.UserFilter
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.ExternalId) {
+		toSerialize["externalId"] = o.ExternalId
+	}
+	if !IsNil(o.CustomData) {
+		toSerialize["customData"] = o.CustomData
+	}
+	if !IsNil(o.DirectMemberCounts) {
+		toSerialize["directMemberCounts"] = o.DirectMemberCounts
+	}
+	if !IsNil(o.TotalMemberCounts) {
+		toSerialize["totalMemberCounts"] = o.TotalMemberCounts
+	}
+	return toSerialize, nil
 }
 
 type NullableGroup struct {

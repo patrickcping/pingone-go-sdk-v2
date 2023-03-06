@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BillOfMaterialsProductsInnerBookmarksInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillOfMaterialsProductsInnerBookmarksInner{}
+
 // BillOfMaterialsProductsInnerBookmarksInner struct for BillOfMaterialsProductsInnerBookmarksInner
 type BillOfMaterialsProductsInnerBookmarksInner struct {
 	// Name of the custom bookmark. The name must be unique among the product bookmarks and be 50 characters or fewer.
@@ -55,7 +58,7 @@ func (o *BillOfMaterialsProductsInnerBookmarksInner) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInnerBookmarksInner) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -79,7 +82,7 @@ func (o *BillOfMaterialsProductsInnerBookmarksInner) GetHref() string {
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInnerBookmarksInner) GetHrefOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Href, true
 }
@@ -90,14 +93,18 @@ func (o *BillOfMaterialsProductsInnerBookmarksInner) SetHref(v string) {
 }
 
 func (o BillOfMaterialsProductsInnerBookmarksInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["href"] = o.Href
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillOfMaterialsProductsInnerBookmarksInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["href"] = o.Href
+	return toSerialize, nil
 }
 
 type NullableBillOfMaterialsProductsInnerBookmarksInner struct {
