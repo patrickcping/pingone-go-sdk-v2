@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderSAML type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderSAML{}
+
 // IdentityProviderSAML struct for IdentityProviderSAML
 type IdentityProviderSAML struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
@@ -74,7 +77,7 @@ func NewIdentityProviderSAMLWithDefaults() *IdentityProviderSAML {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetLinks() map[string]interface{} {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *IdentityProviderSAML) GetLinks() map[string]interface{} {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Links) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Links) {
+		return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *IdentityProviderSAML) SetLinks(v map[string]interface{}) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *IdentityProviderSAML) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *IdentityProviderSAML) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -162,7 +165,7 @@ func (o *IdentityProviderSAML) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -172,15 +175,15 @@ func (o *IdentityProviderSAML) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -194,7 +197,7 @@ func (o *IdentityProviderSAML) SetEnvironment(v ObjectEnvironment) {
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetIcon() IdentityProviderCommonIcon {
-	if o == nil || isNil(o.Icon) {
+	if o == nil || IsNil(o.Icon) {
 		var ret IdentityProviderCommonIcon
 		return ret
 	}
@@ -204,15 +207,15 @@ func (o *IdentityProviderSAML) GetIcon() IdentityProviderCommonIcon {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetIconOk() (*IdentityProviderCommonIcon, bool) {
-	if o == nil || isNil(o.Icon) {
-    return nil, false
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
 	}
 	return o.Icon, true
 }
 
 // HasIcon returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasIcon() bool {
-	if o != nil && !isNil(o.Icon) {
+	if o != nil && !IsNil(o.Icon) {
 		return true
 	}
 
@@ -226,7 +229,7 @@ func (o *IdentityProviderSAML) SetIcon(v IdentityProviderCommonIcon) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -236,15 +239,15 @@ func (o *IdentityProviderSAML) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -258,7 +261,7 @@ func (o *IdentityProviderSAML) SetId(v string) {
 
 // GetLoginButtonIcon returns the LoginButtonIcon field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetLoginButtonIcon() IdentityProviderCommonLoginButtonIcon {
-	if o == nil || isNil(o.LoginButtonIcon) {
+	if o == nil || IsNil(o.LoginButtonIcon) {
 		var ret IdentityProviderCommonLoginButtonIcon
 		return ret
 	}
@@ -268,15 +271,15 @@ func (o *IdentityProviderSAML) GetLoginButtonIcon() IdentityProviderCommonLoginB
 // GetLoginButtonIconOk returns a tuple with the LoginButtonIcon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetLoginButtonIconOk() (*IdentityProviderCommonLoginButtonIcon, bool) {
-	if o == nil || isNil(o.LoginButtonIcon) {
-    return nil, false
+	if o == nil || IsNil(o.LoginButtonIcon) {
+		return nil, false
 	}
 	return o.LoginButtonIcon, true
 }
 
 // HasLoginButtonIcon returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasLoginButtonIcon() bool {
-	if o != nil && !isNil(o.LoginButtonIcon) {
+	if o != nil && !IsNil(o.LoginButtonIcon) {
 		return true
 	}
 
@@ -302,7 +305,7 @@ func (o *IdentityProviderSAML) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -314,7 +317,7 @@ func (o *IdentityProviderSAML) SetName(v string) {
 
 // GetRegistration returns the Registration field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetRegistration() IdentityProviderCommonRegistration {
-	if o == nil || isNil(o.Registration) {
+	if o == nil || IsNil(o.Registration) {
 		var ret IdentityProviderCommonRegistration
 		return ret
 	}
@@ -324,15 +327,15 @@ func (o *IdentityProviderSAML) GetRegistration() IdentityProviderCommonRegistrat
 // GetRegistrationOk returns a tuple with the Registration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetRegistrationOk() (*IdentityProviderCommonRegistration, bool) {
-	if o == nil || isNil(o.Registration) {
-    return nil, false
+	if o == nil || IsNil(o.Registration) {
+		return nil, false
 	}
 	return o.Registration, true
 }
 
 // HasRegistration returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasRegistration() bool {
-	if o != nil && !isNil(o.Registration) {
+	if o != nil && !IsNil(o.Registration) {
 		return true
 	}
 
@@ -358,7 +361,7 @@ func (o *IdentityProviderSAML) GetType() EnumIdentityProviderExt {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetTypeOk() (*EnumIdentityProviderExt, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -370,7 +373,7 @@ func (o *IdentityProviderSAML) SetType(v EnumIdentityProviderExt) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -380,15 +383,15 @@ func (o *IdentityProviderSAML) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -402,7 +405,7 @@ func (o *IdentityProviderSAML) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -412,15 +415,15 @@ func (o *IdentityProviderSAML) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -434,7 +437,7 @@ func (o *IdentityProviderSAML) SetUpdatedAt(v string) {
 
 // GetAuthnRequestSigned returns the AuthnRequestSigned field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetAuthnRequestSigned() bool {
-	if o == nil || isNil(o.AuthnRequestSigned) {
+	if o == nil || IsNil(o.AuthnRequestSigned) {
 		var ret bool
 		return ret
 	}
@@ -444,15 +447,15 @@ func (o *IdentityProviderSAML) GetAuthnRequestSigned() bool {
 // GetAuthnRequestSignedOk returns a tuple with the AuthnRequestSigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetAuthnRequestSignedOk() (*bool, bool) {
-	if o == nil || isNil(o.AuthnRequestSigned) {
-    return nil, false
+	if o == nil || IsNil(o.AuthnRequestSigned) {
+		return nil, false
 	}
 	return o.AuthnRequestSigned, true
 }
 
 // HasAuthnRequestSigned returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasAuthnRequestSigned() bool {
-	if o != nil && !isNil(o.AuthnRequestSigned) {
+	if o != nil && !IsNil(o.AuthnRequestSigned) {
 		return true
 	}
 
@@ -478,7 +481,7 @@ func (o *IdentityProviderSAML) GetIdpEntityId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetIdpEntityIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.IdpEntityId, true
 }
@@ -502,7 +505,7 @@ func (o *IdentityProviderSAML) GetIdpVerification() IdentityProviderSAMLAllOfIdp
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetIdpVerificationOk() (*IdentityProviderSAMLAllOfIdpVerification, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.IdpVerification, true
 }
@@ -526,7 +529,7 @@ func (o *IdentityProviderSAML) GetSpEntityId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetSpEntityIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SpEntityId, true
 }
@@ -538,7 +541,7 @@ func (o *IdentityProviderSAML) SetSpEntityId(v string) {
 
 // GetSpSigning returns the SpSigning field value if set, zero value otherwise.
 func (o *IdentityProviderSAML) GetSpSigning() IdentityProviderSAMLAllOfSpSigning {
-	if o == nil || isNil(o.SpSigning) {
+	if o == nil || IsNil(o.SpSigning) {
 		var ret IdentityProviderSAMLAllOfSpSigning
 		return ret
 	}
@@ -548,15 +551,15 @@ func (o *IdentityProviderSAML) GetSpSigning() IdentityProviderSAMLAllOfSpSigning
 // GetSpSigningOk returns a tuple with the SpSigning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetSpSigningOk() (*IdentityProviderSAMLAllOfSpSigning, bool) {
-	if o == nil || isNil(o.SpSigning) {
-    return nil, false
+	if o == nil || IsNil(o.SpSigning) {
+		return nil, false
 	}
 	return o.SpSigning, true
 }
 
 // HasSpSigning returns a boolean if a field has been set.
 func (o *IdentityProviderSAML) HasSpSigning() bool {
-	if o != nil && !isNil(o.SpSigning) {
+	if o != nil && !IsNil(o.SpSigning) {
 		return true
 	}
 
@@ -582,7 +585,7 @@ func (o *IdentityProviderSAML) GetSsoBinding() EnumIdentityProviderSAMLSSOBindin
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetSsoBindingOk() (*EnumIdentityProviderSAMLSSOBinding, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SsoBinding, true
 }
@@ -606,7 +609,7 @@ func (o *IdentityProviderSAML) GetSsoEndpoint() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAML) GetSsoEndpointOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SsoEndpoint, true
 }
@@ -617,65 +620,51 @@ func (o *IdentityProviderSAML) SetSsoEndpoint(v string) {
 }
 
 func (o IdentityProviderSAML) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
-		toSerialize["_links"] = o.Links
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.LoginButtonIcon) {
-		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Registration) {
-		toSerialize["registration"] = o.Registration
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.AuthnRequestSigned) {
-		toSerialize["authnRequestSigned"] = o.AuthnRequestSigned
-	}
-	if true {
-		toSerialize["idpEntityId"] = o.IdpEntityId
-	}
-	if true {
-		toSerialize["idpVerification"] = o.IdpVerification
-	}
-	if true {
-		toSerialize["spEntityId"] = o.SpEntityId
-	}
-	if !isNil(o.SpSigning) {
-		toSerialize["spSigning"] = o.SpSigning
-	}
-	if true {
-		toSerialize["ssoBinding"] = o.SsoBinding
-	}
-	if true {
-		toSerialize["ssoEndpoint"] = o.SsoEndpoint
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderSAML) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
+	}
+	// skip: id is readOnly
+	if !IsNil(o.LoginButtonIcon) {
+		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Registration) {
+		toSerialize["registration"] = o.Registration
+	}
+	toSerialize["type"] = o.Type
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	if !IsNil(o.AuthnRequestSigned) {
+		toSerialize["authnRequestSigned"] = o.AuthnRequestSigned
+	}
+	toSerialize["idpEntityId"] = o.IdpEntityId
+	toSerialize["idpVerification"] = o.IdpVerification
+	toSerialize["spEntityId"] = o.SpEntityId
+	if !IsNil(o.SpSigning) {
+		toSerialize["spSigning"] = o.SpSigning
+	}
+	toSerialize["ssoBinding"] = o.SsoBinding
+	toSerialize["ssoEndpoint"] = o.SsoEndpoint
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderSAML struct {

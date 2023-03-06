@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ObjectApplication type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ObjectApplication{}
+
 // ObjectApplication struct for ObjectApplication
 type ObjectApplication struct {
 	// A string that specifies the application resource ID associated with the object.
@@ -39,7 +42,7 @@ func NewObjectApplicationWithDefaults() *ObjectApplication {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ObjectApplication) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *ObjectApplication) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectApplication) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ObjectApplication) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -70,11 +73,17 @@ func (o *ObjectApplication) SetId(v string) {
 }
 
 func (o ObjectApplication) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ObjectApplication) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	return toSerialize, nil
 }
 
 type NullableObjectApplication struct {

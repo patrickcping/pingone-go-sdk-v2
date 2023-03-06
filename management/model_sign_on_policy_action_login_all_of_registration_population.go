@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionLoginAllOfRegistrationPopulation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionLoginAllOfRegistrationPopulation{}
+
 // SignOnPolicyActionLoginAllOfRegistrationPopulation struct for SignOnPolicyActionLoginAllOfRegistrationPopulation
 type SignOnPolicyActionLoginAllOfRegistrationPopulation struct {
 	// A string that specifies the population ID associated with the newly registered user.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistrationPopulation) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistrationPopulation) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionLoginAllOfRegistrationPopulation) SetId(v string) {
 }
 
 func (o SignOnPolicyActionLoginAllOfRegistrationPopulation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionLoginAllOfRegistrationPopulation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionLoginAllOfRegistrationPopulation struct {

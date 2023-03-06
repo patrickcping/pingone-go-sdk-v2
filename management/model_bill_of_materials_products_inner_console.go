@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BillOfMaterialsProductsInnerConsole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillOfMaterialsProductsInnerConsole{}
+
 // BillOfMaterialsProductsInnerConsole struct for BillOfMaterialsProductsInnerConsole
 type BillOfMaterialsProductsInnerConsole struct {
 	// Primary console link for certain products
@@ -52,7 +55,7 @@ func (o *BillOfMaterialsProductsInnerConsole) GetHref() string {
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInnerConsole) GetHrefOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Href, true
 }
@@ -63,11 +66,17 @@ func (o *BillOfMaterialsProductsInnerConsole) SetHref(v string) {
 }
 
 func (o BillOfMaterialsProductsInnerConsole) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["href"] = o.Href
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillOfMaterialsProductsInnerConsole) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["href"] = o.Href
+	return toSerialize, nil
 }
 
 type NullableBillOfMaterialsProductsInnerConsole struct {

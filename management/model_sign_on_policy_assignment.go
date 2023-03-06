@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyAssignment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyAssignment{}
+
 // SignOnPolicyAssignment struct for SignOnPolicyAssignment
 type SignOnPolicyAssignment struct {
 	Application *ObjectApplication `json:"application,omitempty"`
@@ -46,7 +49,7 @@ func NewSignOnPolicyAssignmentWithDefaults() *SignOnPolicyAssignment {
 
 // GetApplication returns the Application field value if set, zero value otherwise.
 func (o *SignOnPolicyAssignment) GetApplication() ObjectApplication {
-	if o == nil || isNil(o.Application) {
+	if o == nil || IsNil(o.Application) {
 		var ret ObjectApplication
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *SignOnPolicyAssignment) GetApplication() ObjectApplication {
 // GetApplicationOk returns a tuple with the Application field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyAssignment) GetApplicationOk() (*ObjectApplication, bool) {
-	if o == nil || isNil(o.Application) {
-    return nil, false
+	if o == nil || IsNil(o.Application) {
+		return nil, false
 	}
 	return o.Application, true
 }
 
 // HasApplication returns a boolean if a field has been set.
 func (o *SignOnPolicyAssignment) HasApplication() bool {
-	if o != nil && !isNil(o.Application) {
+	if o != nil && !IsNil(o.Application) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *SignOnPolicyAssignment) SetApplication(v ObjectApplication) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *SignOnPolicyAssignment) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -88,15 +91,15 @@ func (o *SignOnPolicyAssignment) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyAssignment) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *SignOnPolicyAssignment) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *SignOnPolicyAssignment) SetEnvironment(v ObjectEnvironment) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SignOnPolicyAssignment) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *SignOnPolicyAssignment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyAssignment) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SignOnPolicyAssignment) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -154,7 +157,7 @@ func (o *SignOnPolicyAssignment) GetPriority() int32 {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyAssignment) GetPriorityOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Priority, true
 }
@@ -178,7 +181,7 @@ func (o *SignOnPolicyAssignment) GetSignOnPolicy() SignOnPolicyActionCommonSignO
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyAssignment) GetSignOnPolicyOk() (*SignOnPolicyActionCommonSignOnPolicy, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SignOnPolicy, true
 }
@@ -189,23 +192,25 @@ func (o *SignOnPolicyAssignment) SetSignOnPolicy(v SignOnPolicyActionCommonSignO
 }
 
 func (o SignOnPolicyAssignment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Application) {
-		toSerialize["application"] = o.Application
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["priority"] = o.Priority
-	}
-	if true {
-		toSerialize["signOnPolicy"] = o.SignOnPolicy
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyAssignment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Application) {
+		toSerialize["application"] = o.Application
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: id is readOnly
+	toSerialize["priority"] = o.Priority
+	toSerialize["signOnPolicy"] = o.SignOnPolicy
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyAssignment struct {

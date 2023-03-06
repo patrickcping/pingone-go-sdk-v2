@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AlertChannel type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AlertChannel{}
+
 // AlertChannel struct for AlertChannel
 type AlertChannel struct {
 	// Unique ID of the alert channel.
@@ -51,7 +54,7 @@ func NewAlertChannelWithDefaults() *AlertChannel {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AlertChannel) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -61,15 +64,15 @@ func (o *AlertChannel) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertChannel) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *AlertChannel) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *AlertChannel) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *AlertChannel) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -93,15 +96,15 @@ func (o *AlertChannel) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertChannel) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *AlertChannel) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -127,7 +130,7 @@ func (o *AlertChannel) GetChannelType() EnumAlertChannelType {
 // and a boolean to check if the value has been set.
 func (o *AlertChannel) GetChannelTypeOk() (*EnumAlertChannelType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ChannelType, true
 }
@@ -151,7 +154,7 @@ func (o *AlertChannel) GetAddresses() []string {
 // and a boolean to check if the value has been set.
 func (o *AlertChannel) GetAddressesOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Addresses, true
 }
@@ -163,7 +166,7 @@ func (o *AlertChannel) SetAddresses(v []string) {
 
 // GetIncludeSeverities returns the IncludeSeverities field value if set, zero value otherwise.
 func (o *AlertChannel) GetIncludeSeverities() []EnumAlertChannelSeverity {
-	if o == nil || isNil(o.IncludeSeverities) {
+	if o == nil || IsNil(o.IncludeSeverities) {
 		var ret []EnumAlertChannelSeverity
 		return ret
 	}
@@ -173,15 +176,15 @@ func (o *AlertChannel) GetIncludeSeverities() []EnumAlertChannelSeverity {
 // GetIncludeSeveritiesOk returns a tuple with the IncludeSeverities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertChannel) GetIncludeSeveritiesOk() ([]EnumAlertChannelSeverity, bool) {
-	if o == nil || isNil(o.IncludeSeverities) {
-    return nil, false
+	if o == nil || IsNil(o.IncludeSeverities) {
+		return nil, false
 	}
 	return o.IncludeSeverities, true
 }
 
 // HasIncludeSeverities returns a boolean if a field has been set.
 func (o *AlertChannel) HasIncludeSeverities() bool {
-	if o != nil && !isNil(o.IncludeSeverities) {
+	if o != nil && !IsNil(o.IncludeSeverities) {
 		return true
 	}
 
@@ -195,7 +198,7 @@ func (o *AlertChannel) SetIncludeSeverities(v []EnumAlertChannelSeverity) {
 
 // GetIncludeAlertTypes returns the IncludeAlertTypes field value if set, zero value otherwise.
 func (o *AlertChannel) GetIncludeAlertTypes() []EnumAlertChannelAlertType {
-	if o == nil || isNil(o.IncludeAlertTypes) {
+	if o == nil || IsNil(o.IncludeAlertTypes) {
 		var ret []EnumAlertChannelAlertType
 		return ret
 	}
@@ -205,15 +208,15 @@ func (o *AlertChannel) GetIncludeAlertTypes() []EnumAlertChannelAlertType {
 // GetIncludeAlertTypesOk returns a tuple with the IncludeAlertTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertChannel) GetIncludeAlertTypesOk() ([]EnumAlertChannelAlertType, bool) {
-	if o == nil || isNil(o.IncludeAlertTypes) {
-    return nil, false
+	if o == nil || IsNil(o.IncludeAlertTypes) {
+		return nil, false
 	}
 	return o.IncludeAlertTypes, true
 }
 
 // HasIncludeAlertTypes returns a boolean if a field has been set.
 func (o *AlertChannel) HasIncludeAlertTypes() bool {
-	if o != nil && !isNil(o.IncludeAlertTypes) {
+	if o != nil && !IsNil(o.IncludeAlertTypes) {
 		return true
 	}
 
@@ -227,7 +230,7 @@ func (o *AlertChannel) SetIncludeAlertTypes(v []EnumAlertChannelAlertType) {
 
 // GetExcludeAlertTypes returns the ExcludeAlertTypes field value if set, zero value otherwise.
 func (o *AlertChannel) GetExcludeAlertTypes() []EnumAlertChannelAlertType {
-	if o == nil || isNil(o.ExcludeAlertTypes) {
+	if o == nil || IsNil(o.ExcludeAlertTypes) {
 		var ret []EnumAlertChannelAlertType
 		return ret
 	}
@@ -237,15 +240,15 @@ func (o *AlertChannel) GetExcludeAlertTypes() []EnumAlertChannelAlertType {
 // GetExcludeAlertTypesOk returns a tuple with the ExcludeAlertTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AlertChannel) GetExcludeAlertTypesOk() ([]EnumAlertChannelAlertType, bool) {
-	if o == nil || isNil(o.ExcludeAlertTypes) {
-    return nil, false
+	if o == nil || IsNil(o.ExcludeAlertTypes) {
+		return nil, false
 	}
 	return o.ExcludeAlertTypes, true
 }
 
 // HasExcludeAlertTypes returns a boolean if a field has been set.
 func (o *AlertChannel) HasExcludeAlertTypes() bool {
-	if o != nil && !isNil(o.ExcludeAlertTypes) {
+	if o != nil && !IsNil(o.ExcludeAlertTypes) {
 		return true
 	}
 
@@ -258,29 +261,31 @@ func (o *AlertChannel) SetExcludeAlertTypes(v []EnumAlertChannelAlertType) {
 }
 
 func (o AlertChannel) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["channelType"] = o.ChannelType
-	}
-	if true {
-		toSerialize["addresses"] = o.Addresses
-	}
-	if !isNil(o.IncludeSeverities) {
-		toSerialize["includeSeverities"] = o.IncludeSeverities
-	}
-	if !isNil(o.IncludeAlertTypes) {
-		toSerialize["includeAlertTypes"] = o.IncludeAlertTypes
-	}
-	if !isNil(o.ExcludeAlertTypes) {
-		toSerialize["excludeAlertTypes"] = o.ExcludeAlertTypes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AlertChannel) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	toSerialize["channelType"] = o.ChannelType
+	toSerialize["addresses"] = o.Addresses
+	if !IsNil(o.IncludeSeverities) {
+		toSerialize["includeSeverities"] = o.IncludeSeverities
+	}
+	if !IsNil(o.IncludeAlertTypes) {
+		toSerialize["includeAlertTypes"] = o.IncludeAlertTypes
+	}
+	if !IsNil(o.ExcludeAlertTypes) {
+		toSerialize["excludeAlertTypes"] = o.ExcludeAlertTypes
+	}
+	return toSerialize, nil
 }
 
 type NullableAlertChannel struct {

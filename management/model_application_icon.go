@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationIcon type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationIcon{}
+
 // ApplicationIcon The HREF and the ID for the application icon.
 type ApplicationIcon struct {
 	Id string `json:"id"`
@@ -53,7 +56,7 @@ func (o *ApplicationIcon) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationIcon) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -77,7 +80,7 @@ func (o *ApplicationIcon) GetHref() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationIcon) GetHrefOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Href, true
 }
@@ -88,14 +91,18 @@ func (o *ApplicationIcon) SetHref(v string) {
 }
 
 func (o ApplicationIcon) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["href"] = o.Href
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationIcon) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["href"] = o.Href
+	return toSerialize, nil
 }
 
 type NullableApplicationIcon struct {

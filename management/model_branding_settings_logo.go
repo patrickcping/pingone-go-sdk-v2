@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BrandingSettingsLogo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BrandingSettingsLogo{}
+
 // BrandingSettingsLogo struct for BrandingSettingsLogo
 type BrandingSettingsLogo struct {
 	// The URL or fully qualified path to the logo file used for branding.
@@ -55,7 +58,7 @@ func (o *BrandingSettingsLogo) GetHref() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingSettingsLogo) GetHrefOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Href, true
 }
@@ -79,7 +82,7 @@ func (o *BrandingSettingsLogo) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingSettingsLogo) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -90,14 +93,18 @@ func (o *BrandingSettingsLogo) SetId(v string) {
 }
 
 func (o BrandingSettingsLogo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["href"] = o.Href
-	}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BrandingSettingsLogo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["href"] = o.Href
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableBrandingSettingsLogo struct {

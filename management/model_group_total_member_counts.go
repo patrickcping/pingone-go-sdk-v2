@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GroupTotalMemberCounts type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupTotalMemberCounts{}
+
 // GroupTotalMemberCounts An object containing a users (int) property. This property lists the total number of users added to the group. You must use GET /environments/{environmentID}/groups with the include=totalMemberCounts query parameter to retrieve this property. This property is not returned with a list of groups.
 type GroupTotalMemberCounts struct {
 	// Number of users with direct membership
@@ -39,7 +42,7 @@ func NewGroupTotalMemberCountsWithDefaults() *GroupTotalMemberCounts {
 
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *GroupTotalMemberCounts) GetUsers() int32 {
-	if o == nil || isNil(o.Users) {
+	if o == nil || IsNil(o.Users) {
 		var ret int32
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *GroupTotalMemberCounts) GetUsers() int32 {
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupTotalMemberCounts) GetUsersOk() (*int32, bool) {
-	if o == nil || isNil(o.Users) {
-    return nil, false
+	if o == nil || IsNil(o.Users) {
+		return nil, false
 	}
 	return o.Users, true
 }
 
 // HasUsers returns a boolean if a field has been set.
 func (o *GroupTotalMemberCounts) HasUsers() bool {
-	if o != nil && !isNil(o.Users) {
+	if o != nil && !IsNil(o.Users) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *GroupTotalMemberCounts) SetUsers(v int32) {
 }
 
 func (o GroupTotalMemberCounts) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Users) {
-		toSerialize["users"] = o.Users
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GroupTotalMemberCounts) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
+	}
+	return toSerialize, nil
 }
 
 type NullableGroupTotalMemberCounts struct {

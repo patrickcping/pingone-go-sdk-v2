@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionProgressiveProfilingAllOfAttributes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionProgressiveProfilingAllOfAttributes{}
+
 // SignOnPolicyActionProgressiveProfilingAllOfAttributes struct for SignOnPolicyActionProgressiveProfilingAllOfAttributes
 type SignOnPolicyActionProgressiveProfilingAllOfAttributes struct {
 	// A string that specifies the name and path of the user profile attribute as defined in the user schema (for example, email or address.postalCode). This property is required.
@@ -55,7 +58,7 @@ func (o *SignOnPolicyActionProgressiveProfilingAllOfAttributes) GetName() string
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionProgressiveProfilingAllOfAttributes) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -79,7 +82,7 @@ func (o *SignOnPolicyActionProgressiveProfilingAllOfAttributes) GetRequired() bo
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionProgressiveProfilingAllOfAttributes) GetRequiredOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Required, true
 }
@@ -90,14 +93,18 @@ func (o *SignOnPolicyActionProgressiveProfilingAllOfAttributes) SetRequired(v bo
 }
 
 func (o SignOnPolicyActionProgressiveProfilingAllOfAttributes) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["required"] = o.Required
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionProgressiveProfilingAllOfAttributes) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["required"] = o.Required
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionProgressiveProfilingAllOfAttributes struct {

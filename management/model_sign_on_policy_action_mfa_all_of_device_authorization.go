@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionMFAAllOfDeviceAuthorization type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionMFAAllOfDeviceAuthorization{}
+
 // SignOnPolicyActionMFAAllOfDeviceAuthorization struct for SignOnPolicyActionMFAAllOfDeviceAuthorization
 type SignOnPolicyActionMFAAllOfDeviceAuthorization struct {
 	// A boolean that specifies the enabled/disabled state of automatic MFA for native devices paired with the user for the specified application.
@@ -48,7 +51,7 @@ func NewSignOnPolicyActionMFAAllOfDeviceAuthorizationWithDefaults() *SignOnPolic
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -58,15 +61,15 @@ func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
-    return nil, false
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
 	}
 	return o.Enabled, true
 }
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) SetEnabled(v bool) {
 
 // GetExtraVerification returns the ExtraVerification field value if set, zero value otherwise.
 func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) GetExtraVerification() EnumSignOnPolicyExtraVerification {
-	if o == nil || isNil(o.ExtraVerification) {
+	if o == nil || IsNil(o.ExtraVerification) {
 		var ret EnumSignOnPolicyExtraVerification
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) GetExtraVerification() E
 // GetExtraVerificationOk returns a tuple with the ExtraVerification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) GetExtraVerificationOk() (*EnumSignOnPolicyExtraVerification, bool) {
-	if o == nil || isNil(o.ExtraVerification) {
-    return nil, false
+	if o == nil || IsNil(o.ExtraVerification) {
+		return nil, false
 	}
 	return o.ExtraVerification, true
 }
 
 // HasExtraVerification returns a boolean if a field has been set.
 func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) HasExtraVerification() bool {
-	if o != nil && !isNil(o.ExtraVerification) {
+	if o != nil && !IsNil(o.ExtraVerification) {
 		return true
 	}
 
@@ -111,14 +114,22 @@ func (o *SignOnPolicyActionMFAAllOfDeviceAuthorization) SetExtraVerification(v E
 }
 
 func (o SignOnPolicyActionMFAAllOfDeviceAuthorization) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.ExtraVerification) {
-		toSerialize["extraVerification"] = o.ExtraVerification
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionMFAAllOfDeviceAuthorization) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.ExtraVerification) {
+		toSerialize["extraVerification"] = o.ExtraVerification
+	}
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionMFAAllOfDeviceAuthorization struct {

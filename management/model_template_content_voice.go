@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentVoice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentVoice{}
+
 // TemplateContentVoice struct for TemplateContentVoice
 type TemplateContentVoice struct {
 	// The template id.
@@ -57,7 +60,7 @@ func NewTemplateContentVoiceWithDefaults() *TemplateContentVoice {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TemplateContentVoice) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -67,15 +70,15 @@ func (o *TemplateContentVoice) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *TemplateContentVoice) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *TemplateContentVoice) SetId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *TemplateContentVoice) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -99,15 +102,15 @@ func (o *TemplateContentVoice) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *TemplateContentVoice) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -121,7 +124,7 @@ func (o *TemplateContentVoice) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *TemplateContentVoice) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -131,15 +134,15 @@ func (o *TemplateContentVoice) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *TemplateContentVoice) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *TemplateContentVoice) SetUpdatedAt(v string) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *TemplateContentVoice) GetDefault() bool {
-	if o == nil || isNil(o.Default) {
+	if o == nil || IsNil(o.Default) {
 		var ret bool
 		return ret
 	}
@@ -163,15 +166,15 @@ func (o *TemplateContentVoice) GetDefault() bool {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetDefaultOk() (*bool, bool) {
-	if o == nil || isNil(o.Default) {
-    return nil, false
+	if o == nil || IsNil(o.Default) {
+		return nil, false
 	}
 	return o.Default, true
 }
 
 // HasDefault returns a boolean if a field has been set.
 func (o *TemplateContentVoice) HasDefault() bool {
-	if o != nil && !isNil(o.Default) {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
@@ -197,7 +200,7 @@ func (o *TemplateContentVoice) GetLocale() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetLocaleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Locale, true
 }
@@ -221,7 +224,7 @@ func (o *TemplateContentVoice) GetDeliveryMethod() EnumTemplateContentDeliveryMe
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetDeliveryMethodOk() (*EnumTemplateContentDeliveryMethod, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DeliveryMethod, true
 }
@@ -233,7 +236,7 @@ func (o *TemplateContentVoice) SetDeliveryMethod(v EnumTemplateContentDeliveryMe
 
 // GetVariant returns the Variant field value if set, zero value otherwise.
 func (o *TemplateContentVoice) GetVariant() string {
-	if o == nil || isNil(o.Variant) {
+	if o == nil || IsNil(o.Variant) {
 		var ret string
 		return ret
 	}
@@ -243,15 +246,15 @@ func (o *TemplateContentVoice) GetVariant() string {
 // GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetVariantOk() (*string, bool) {
-	if o == nil || isNil(o.Variant) {
-    return nil, false
+	if o == nil || IsNil(o.Variant) {
+		return nil, false
 	}
 	return o.Variant, true
 }
 
 // HasVariant returns a boolean if a field has been set.
 func (o *TemplateContentVoice) HasVariant() bool {
-	if o != nil && !isNil(o.Variant) {
+	if o != nil && !IsNil(o.Variant) {
 		return true
 	}
 
@@ -277,7 +280,7 @@ func (o *TemplateContentVoice) GetContent() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetContentOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Content, true
 }
@@ -289,7 +292,7 @@ func (o *TemplateContentVoice) SetContent(v string) {
 
 // GetVoice returns the Voice field value if set, zero value otherwise.
 func (o *TemplateContentVoice) GetVoice() string {
-	if o == nil || isNil(o.Voice) {
+	if o == nil || IsNil(o.Voice) {
 		var ret string
 		return ret
 	}
@@ -299,15 +302,15 @@ func (o *TemplateContentVoice) GetVoice() string {
 // GetVoiceOk returns a tuple with the Voice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentVoice) GetVoiceOk() (*string, bool) {
-	if o == nil || isNil(o.Voice) {
-    return nil, false
+	if o == nil || IsNil(o.Voice) {
+		return nil, false
 	}
 	return o.Voice, true
 }
 
 // HasVoice returns a boolean if a field has been set.
 func (o *TemplateContentVoice) HasVoice() bool {
-	if o != nil && !isNil(o.Voice) {
+	if o != nil && !IsNil(o.Voice) {
 		return true
 	}
 
@@ -320,35 +323,31 @@ func (o *TemplateContentVoice) SetVoice(v string) {
 }
 
 func (o TemplateContentVoice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.Default) {
-		toSerialize["default"] = o.Default
-	}
-	if true {
-		toSerialize["locale"] = o.Locale
-	}
-	if true {
-		toSerialize["deliveryMethod"] = o.DeliveryMethod
-	}
-	if !isNil(o.Variant) {
-		toSerialize["variant"] = o.Variant
-	}
-	if true {
-		toSerialize["content"] = o.Content
-	}
-	if !isNil(o.Voice) {
-		toSerialize["voice"] = o.Voice
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentVoice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
+	toSerialize["locale"] = o.Locale
+	toSerialize["deliveryMethod"] = o.DeliveryMethod
+	if !IsNil(o.Variant) {
+		toSerialize["variant"] = o.Variant
+	}
+	toSerialize["content"] = o.Content
+	if !IsNil(o.Voice) {
+		toSerialize["voice"] = o.Voice
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentVoice struct {

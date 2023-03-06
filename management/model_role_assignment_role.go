@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleAssignmentRole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleAssignmentRole{}
+
 // RoleAssignmentRole struct for RoleAssignmentRole
 type RoleAssignmentRole struct {
 	// A string that specifies the role ID.
@@ -52,7 +55,7 @@ func (o *RoleAssignmentRole) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentRole) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *RoleAssignmentRole) SetId(v string) {
 }
 
 func (o RoleAssignmentRole) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RoleAssignmentRole) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableRoleAssignmentRole struct {

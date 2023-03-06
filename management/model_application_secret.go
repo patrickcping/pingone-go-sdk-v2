@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationSecret type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationSecret{}
+
 // ApplicationSecret struct for ApplicationSecret
 type ApplicationSecret struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -40,7 +43,7 @@ func NewApplicationSecretWithDefaults() *ApplicationSecret {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *ApplicationSecret) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *ApplicationSecret) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSecret) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *ApplicationSecret) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ApplicationSecret) SetEnvironment(v ObjectEnvironment) {
 
 // GetSecret returns the Secret field value if set, zero value otherwise.
 func (o *ApplicationSecret) GetSecret() string {
-	if o == nil || isNil(o.Secret) {
+	if o == nil || IsNil(o.Secret) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *ApplicationSecret) GetSecret() string {
 // GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationSecret) GetSecretOk() (*string, bool) {
-	if o == nil || isNil(o.Secret) {
-    return nil, false
+	if o == nil || IsNil(o.Secret) {
+		return nil, false
 	}
 	return o.Secret, true
 }
 
 // HasSecret returns a boolean if a field has been set.
 func (o *ApplicationSecret) HasSecret() bool {
-	if o != nil && !isNil(o.Secret) {
+	if o != nil && !IsNil(o.Secret) {
 		return true
 	}
 
@@ -103,14 +106,20 @@ func (o *ApplicationSecret) SetSecret(v string) {
 }
 
 func (o ApplicationSecret) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Secret) {
-		toSerialize["secret"] = o.Secret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationSecret) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: secret is readOnly
+	return toSerialize, nil
 }
 
 type NullableApplicationSecret struct {

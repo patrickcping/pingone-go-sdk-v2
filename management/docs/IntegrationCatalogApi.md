@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsGet(context.Background(), environmentID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsGet(context.Background(), environmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -93,7 +93,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -102,7 +102,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(context.Background(), environmentID, integrationID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(context.Background(), environmentID, integrationID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -162,7 +162,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -171,7 +171,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(context.Background(), environmentID, integrationID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(context.Background(), environmentID, integrationID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -231,7 +231,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -241,7 +241,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -303,7 +303,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -313,7 +313,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

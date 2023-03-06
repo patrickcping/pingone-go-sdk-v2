@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleAssignment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleAssignment{}
+
 // RoleAssignment struct for RoleAssignment
 type RoleAssignment struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -47,7 +50,7 @@ func NewRoleAssignmentWithDefaults() *RoleAssignment {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *RoleAssignment) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *RoleAssignment) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *RoleAssignment) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *RoleAssignment) SetEnvironment(v ObjectEnvironment) {
 
 // GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *RoleAssignment) GetGateway() GatewayInstanceGateway {
-	if o == nil || isNil(o.Gateway) {
+	if o == nil || IsNil(o.Gateway) {
 		var ret GatewayInstanceGateway
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *RoleAssignment) GetGateway() GatewayInstanceGateway {
 // GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetGatewayOk() (*GatewayInstanceGateway, bool) {
-	if o == nil || isNil(o.Gateway) {
-    return nil, false
+	if o == nil || IsNil(o.Gateway) {
+		return nil, false
 	}
 	return o.Gateway, true
 }
 
 // HasGateway returns a boolean if a field has been set.
 func (o *RoleAssignment) HasGateway() bool {
-	if o != nil && !isNil(o.Gateway) {
+	if o != nil && !IsNil(o.Gateway) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *RoleAssignment) SetGateway(v GatewayInstanceGateway) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RoleAssignment) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *RoleAssignment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *RoleAssignment) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *RoleAssignment) SetId(v string) {
 
 // GetReadOnly returns the ReadOnly field value if set, zero value otherwise.
 func (o *RoleAssignment) GetReadOnly() bool {
-	if o == nil || isNil(o.ReadOnly) {
+	if o == nil || IsNil(o.ReadOnly) {
 		var ret bool
 		return ret
 	}
@@ -153,15 +156,15 @@ func (o *RoleAssignment) GetReadOnly() bool {
 // GetReadOnlyOk returns a tuple with the ReadOnly field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetReadOnlyOk() (*bool, bool) {
-	if o == nil || isNil(o.ReadOnly) {
-    return nil, false
+	if o == nil || IsNil(o.ReadOnly) {
+		return nil, false
 	}
 	return o.ReadOnly, true
 }
 
 // HasReadOnly returns a boolean if a field has been set.
 func (o *RoleAssignment) HasReadOnly() bool {
-	if o != nil && !isNil(o.ReadOnly) {
+	if o != nil && !IsNil(o.ReadOnly) {
 		return true
 	}
 
@@ -187,7 +190,7 @@ func (o *RoleAssignment) GetRole() RoleAssignmentRole {
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetRoleOk() (*RoleAssignmentRole, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Role, true
 }
@@ -211,7 +214,7 @@ func (o *RoleAssignment) GetScope() RoleAssignmentScope {
 // and a boolean to check if the value has been set.
 func (o *RoleAssignment) GetScopeOk() (*RoleAssignmentScope, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Scope, true
 }
@@ -222,26 +225,26 @@ func (o *RoleAssignment) SetScope(v RoleAssignmentScope) {
 }
 
 func (o RoleAssignment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Gateway) {
-		toSerialize["gateway"] = o.Gateway
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.ReadOnly) {
-		toSerialize["readOnly"] = o.ReadOnly
-	}
-	if true {
-		toSerialize["role"] = o.Role
-	}
-	if true {
-		toSerialize["scope"] = o.Scope
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RoleAssignment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
+	}
+	// skip: id is readOnly
+	// skip: readOnly is readOnly
+	toSerialize["role"] = o.Role
+	toSerialize["scope"] = o.Scope
+	return toSerialize, nil
 }
 
 type NullableRoleAssignment struct {

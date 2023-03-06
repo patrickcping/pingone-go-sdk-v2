@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentPushAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentPushAllOf{}
+
 // TemplateContentPushAllOf struct for TemplateContentPushAllOf
 type TemplateContentPushAllOf struct {
 	// The push title (maximum 200 characters). If supported, this can include variables.
@@ -56,7 +59,7 @@ func (o *TemplateContentPushAllOf) GetTitle() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPushAllOf) GetTitleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Title, true
 }
@@ -80,7 +83,7 @@ func (o *TemplateContentPushAllOf) GetBody() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPushAllOf) GetBodyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Body, true
 }
@@ -92,7 +95,7 @@ func (o *TemplateContentPushAllOf) SetBody(v string) {
 
 // GetPushCategory returns the PushCategory field value if set, zero value otherwise.
 func (o *TemplateContentPushAllOf) GetPushCategory() EnumTemplateContentPushCategory {
-	if o == nil || isNil(o.PushCategory) {
+	if o == nil || IsNil(o.PushCategory) {
 		var ret EnumTemplateContentPushCategory
 		return ret
 	}
@@ -102,15 +105,15 @@ func (o *TemplateContentPushAllOf) GetPushCategory() EnumTemplateContentPushCate
 // GetPushCategoryOk returns a tuple with the PushCategory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPushAllOf) GetPushCategoryOk() (*EnumTemplateContentPushCategory, bool) {
-	if o == nil || isNil(o.PushCategory) {
-    return nil, false
+	if o == nil || IsNil(o.PushCategory) {
+		return nil, false
 	}
 	return o.PushCategory, true
 }
 
 // HasPushCategory returns a boolean if a field has been set.
 func (o *TemplateContentPushAllOf) HasPushCategory() bool {
-	if o != nil && !isNil(o.PushCategory) {
+	if o != nil && !IsNil(o.PushCategory) {
 		return true
 	}
 
@@ -123,17 +126,21 @@ func (o *TemplateContentPushAllOf) SetPushCategory(v EnumTemplateContentPushCate
 }
 
 func (o TemplateContentPushAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["title"] = o.Title
-	}
-	if true {
-		toSerialize["body"] = o.Body
-	}
-	if !isNil(o.PushCategory) {
-		toSerialize["pushCategory"] = o.PushCategory
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentPushAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["title"] = o.Title
+	toSerialize["body"] = o.Body
+	if !IsNil(o.PushCategory) {
+		toSerialize["pushCategory"] = o.PushCategory
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentPushAllOf struct {

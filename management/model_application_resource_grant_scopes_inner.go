@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationResourceGrantScopesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationResourceGrantScopesInner{}
+
 // ApplicationResourceGrantScopesInner struct for ApplicationResourceGrantScopesInner
 type ApplicationResourceGrantScopesInner struct {
 	// id A array that specifies the IDs of the scopes associated with this grant. This is a required property.
@@ -52,7 +55,7 @@ func (o *ApplicationResourceGrantScopesInner) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationResourceGrantScopesInner) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *ApplicationResourceGrantScopesInner) SetId(v string) {
 }
 
 func (o ApplicationResourceGrantScopesInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationResourceGrantScopesInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableApplicationResourceGrantScopesInner struct {

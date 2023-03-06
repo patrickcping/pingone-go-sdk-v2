@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentEmailAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentEmailAllOf{}
+
 // TemplateContentEmailAllOf struct for TemplateContentEmailAllOf
 type TemplateContentEmailAllOf struct {
 	// The email text. Email text cannot be larger than 100 kB. Email text can contain HTML. If supported, this can include variables.
@@ -68,7 +71,7 @@ func (o *TemplateContentEmailAllOf) GetBody() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOf) GetBodyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Body, true
 }
@@ -80,7 +83,7 @@ func (o *TemplateContentEmailAllOf) SetBody(v string) {
 
 // GetFrom returns the From field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOf) GetFrom() TemplateContentEmailAllOfFrom {
-	if o == nil || isNil(o.From) {
+	if o == nil || IsNil(o.From) {
 		var ret TemplateContentEmailAllOfFrom
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *TemplateContentEmailAllOf) GetFrom() TemplateContentEmailAllOfFrom {
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOf) GetFromOk() (*TemplateContentEmailAllOfFrom, bool) {
-	if o == nil || isNil(o.From) {
-    return nil, false
+	if o == nil || IsNil(o.From) {
+		return nil, false
 	}
 	return o.From, true
 }
 
 // HasFrom returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOf) HasFrom() bool {
-	if o != nil && !isNil(o.From) {
+	if o != nil && !IsNil(o.From) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *TemplateContentEmailAllOf) SetFrom(v TemplateContentEmailAllOfFrom) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOf) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -122,15 +125,15 @@ func (o *TemplateContentEmailAllOf) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOf) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
-    return nil, false
+	if o == nil || IsNil(o.Subject) {
+		return nil, false
 	}
 	return o.Subject, true
 }
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOf) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *TemplateContentEmailAllOf) SetSubject(v string) {
 
 // GetReplyTo returns the ReplyTo field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOf) GetReplyTo() TemplateContentEmailAllOfReplyTo {
-	if o == nil || isNil(o.ReplyTo) {
+	if o == nil || IsNil(o.ReplyTo) {
 		var ret TemplateContentEmailAllOfReplyTo
 		return ret
 	}
@@ -154,15 +157,15 @@ func (o *TemplateContentEmailAllOf) GetReplyTo() TemplateContentEmailAllOfReplyT
 // GetReplyToOk returns a tuple with the ReplyTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOf) GetReplyToOk() (*TemplateContentEmailAllOfReplyTo, bool) {
-	if o == nil || isNil(o.ReplyTo) {
-    return nil, false
+	if o == nil || IsNil(o.ReplyTo) {
+		return nil, false
 	}
 	return o.ReplyTo, true
 }
 
 // HasReplyTo returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOf) HasReplyTo() bool {
-	if o != nil && !isNil(o.ReplyTo) {
+	if o != nil && !IsNil(o.ReplyTo) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *TemplateContentEmailAllOf) SetReplyTo(v TemplateContentEmailAllOfReplyT
 
 // GetCharset returns the Charset field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOf) GetCharset() string {
-	if o == nil || isNil(o.Charset) {
+	if o == nil || IsNil(o.Charset) {
 		var ret string
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *TemplateContentEmailAllOf) GetCharset() string {
 // GetCharsetOk returns a tuple with the Charset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOf) GetCharsetOk() (*string, bool) {
-	if o == nil || isNil(o.Charset) {
-    return nil, false
+	if o == nil || IsNil(o.Charset) {
+		return nil, false
 	}
 	return o.Charset, true
 }
 
 // HasCharset returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOf) HasCharset() bool {
-	if o != nil && !isNil(o.Charset) {
+	if o != nil && !IsNil(o.Charset) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *TemplateContentEmailAllOf) SetCharset(v string) {
 
 // GetEmailContentType returns the EmailContentType field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOf) GetEmailContentType() string {
-	if o == nil || isNil(o.EmailContentType) {
+	if o == nil || IsNil(o.EmailContentType) {
 		var ret string
 		return ret
 	}
@@ -218,15 +221,15 @@ func (o *TemplateContentEmailAllOf) GetEmailContentType() string {
 // GetEmailContentTypeOk returns a tuple with the EmailContentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOf) GetEmailContentTypeOk() (*string, bool) {
-	if o == nil || isNil(o.EmailContentType) {
-    return nil, false
+	if o == nil || IsNil(o.EmailContentType) {
+		return nil, false
 	}
 	return o.EmailContentType, true
 }
 
 // HasEmailContentType returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOf) HasEmailContentType() bool {
-	if o != nil && !isNil(o.EmailContentType) {
+	if o != nil && !IsNil(o.EmailContentType) {
 		return true
 	}
 
@@ -239,26 +242,32 @@ func (o *TemplateContentEmailAllOf) SetEmailContentType(v string) {
 }
 
 func (o TemplateContentEmailAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["body"] = o.Body
-	}
-	if !isNil(o.From) {
-		toSerialize["from"] = o.From
-	}
-	if !isNil(o.Subject) {
-		toSerialize["subject"] = o.Subject
-	}
-	if !isNil(o.ReplyTo) {
-		toSerialize["replyTo"] = o.ReplyTo
-	}
-	if !isNil(o.Charset) {
-		toSerialize["charset"] = o.Charset
-	}
-	if !isNil(o.EmailContentType) {
-		toSerialize["emailContentType"] = o.EmailContentType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentEmailAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["body"] = o.Body
+	if !IsNil(o.From) {
+		toSerialize["from"] = o.From
+	}
+	if !IsNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !IsNil(o.ReplyTo) {
+		toSerialize["replyTo"] = o.ReplyTo
+	}
+	if !IsNil(o.Charset) {
+		toSerialize["charset"] = o.Charset
+	}
+	if !IsNil(o.EmailContentType) {
+		toSerialize["emailContentType"] = o.EmailContentType
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentEmailAllOf struct {

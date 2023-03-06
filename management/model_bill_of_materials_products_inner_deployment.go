@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BillOfMaterialsProductsInnerDeployment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillOfMaterialsProductsInnerDeployment{}
+
 // BillOfMaterialsProductsInnerDeployment struct for BillOfMaterialsProductsInnerDeployment
 type BillOfMaterialsProductsInnerDeployment struct {
 	// The ID of the PingID deployment
@@ -39,7 +42,7 @@ func NewBillOfMaterialsProductsInnerDeploymentWithDefaults() *BillOfMaterialsPro
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BillOfMaterialsProductsInnerDeployment) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *BillOfMaterialsProductsInnerDeployment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInnerDeployment) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *BillOfMaterialsProductsInnerDeployment) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -70,11 +73,17 @@ func (o *BillOfMaterialsProductsInnerDeployment) SetId(v string) {
 }
 
 func (o BillOfMaterialsProductsInnerDeployment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillOfMaterialsProductsInnerDeployment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	return toSerialize, nil
 }
 
 type NullableBillOfMaterialsProductsInnerDeployment struct {

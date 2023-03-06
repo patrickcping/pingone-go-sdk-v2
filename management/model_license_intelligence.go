@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseIntelligence type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseIntelligence{}
+
 // LicenseIntelligence struct for LicenseIntelligence
 type LicenseIntelligence struct {
 	// A read-only boolean that specifies whether to use the intelligence geo-velocity feature. For `TRIAL` (unpaid) licenses, the default value is true. For `ADMIN`, `GLOBAL`, `RISK`, and `MFARISK`, the default value is true.
@@ -48,7 +51,7 @@ func NewLicenseIntelligenceWithDefaults() *LicenseIntelligence {
 
 // GetAllowGeoVelocity returns the AllowGeoVelocity field value if set, zero value otherwise.
 func (o *LicenseIntelligence) GetAllowGeoVelocity() bool {
-	if o == nil || isNil(o.AllowGeoVelocity) {
+	if o == nil || IsNil(o.AllowGeoVelocity) {
 		var ret bool
 		return ret
 	}
@@ -58,15 +61,15 @@ func (o *LicenseIntelligence) GetAllowGeoVelocity() bool {
 // GetAllowGeoVelocityOk returns a tuple with the AllowGeoVelocity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseIntelligence) GetAllowGeoVelocityOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowGeoVelocity) {
-    return nil, false
+	if o == nil || IsNil(o.AllowGeoVelocity) {
+		return nil, false
 	}
 	return o.AllowGeoVelocity, true
 }
 
 // HasAllowGeoVelocity returns a boolean if a field has been set.
 func (o *LicenseIntelligence) HasAllowGeoVelocity() bool {
-	if o != nil && !isNil(o.AllowGeoVelocity) {
+	if o != nil && !IsNil(o.AllowGeoVelocity) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *LicenseIntelligence) SetAllowGeoVelocity(v bool) {
 
 // GetAllowAnonymousNetworkDetection returns the AllowAnonymousNetworkDetection field value if set, zero value otherwise.
 func (o *LicenseIntelligence) GetAllowAnonymousNetworkDetection() bool {
-	if o == nil || isNil(o.AllowAnonymousNetworkDetection) {
+	if o == nil || IsNil(o.AllowAnonymousNetworkDetection) {
 		var ret bool
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *LicenseIntelligence) GetAllowAnonymousNetworkDetection() bool {
 // GetAllowAnonymousNetworkDetectionOk returns a tuple with the AllowAnonymousNetworkDetection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseIntelligence) GetAllowAnonymousNetworkDetectionOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowAnonymousNetworkDetection) {
-    return nil, false
+	if o == nil || IsNil(o.AllowAnonymousNetworkDetection) {
+		return nil, false
 	}
 	return o.AllowAnonymousNetworkDetection, true
 }
 
 // HasAllowAnonymousNetworkDetection returns a boolean if a field has been set.
 func (o *LicenseIntelligence) HasAllowAnonymousNetworkDetection() bool {
-	if o != nil && !isNil(o.AllowAnonymousNetworkDetection) {
+	if o != nil && !IsNil(o.AllowAnonymousNetworkDetection) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *LicenseIntelligence) SetAllowAnonymousNetworkDetection(v bool) {
 
 // GetAllowReputation returns the AllowReputation field value if set, zero value otherwise.
 func (o *LicenseIntelligence) GetAllowReputation() bool {
-	if o == nil || isNil(o.AllowReputation) {
+	if o == nil || IsNil(o.AllowReputation) {
 		var ret bool
 		return ret
 	}
@@ -122,15 +125,15 @@ func (o *LicenseIntelligence) GetAllowReputation() bool {
 // GetAllowReputationOk returns a tuple with the AllowReputation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseIntelligence) GetAllowReputationOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowReputation) {
-    return nil, false
+	if o == nil || IsNil(o.AllowReputation) {
+		return nil, false
 	}
 	return o.AllowReputation, true
 }
 
 // HasAllowReputation returns a boolean if a field has been set.
 func (o *LicenseIntelligence) HasAllowReputation() bool {
-	if o != nil && !isNil(o.AllowReputation) {
+	if o != nil && !IsNil(o.AllowReputation) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *LicenseIntelligence) SetAllowReputation(v bool) {
 
 // GetAllowDataConsent returns the AllowDataConsent field value if set, zero value otherwise.
 func (o *LicenseIntelligence) GetAllowDataConsent() bool {
-	if o == nil || isNil(o.AllowDataConsent) {
+	if o == nil || IsNil(o.AllowDataConsent) {
 		var ret bool
 		return ret
 	}
@@ -154,15 +157,15 @@ func (o *LicenseIntelligence) GetAllowDataConsent() bool {
 // GetAllowDataConsentOk returns a tuple with the AllowDataConsent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseIntelligence) GetAllowDataConsentOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowDataConsent) {
-    return nil, false
+	if o == nil || IsNil(o.AllowDataConsent) {
+		return nil, false
 	}
 	return o.AllowDataConsent, true
 }
 
 // HasAllowDataConsent returns a boolean if a field has been set.
 func (o *LicenseIntelligence) HasAllowDataConsent() bool {
-	if o != nil && !isNil(o.AllowDataConsent) {
+	if o != nil && !IsNil(o.AllowDataConsent) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *LicenseIntelligence) SetAllowDataConsent(v bool) {
 
 // GetAllowRisk returns the AllowRisk field value if set, zero value otherwise.
 func (o *LicenseIntelligence) GetAllowRisk() bool {
-	if o == nil || isNil(o.AllowRisk) {
+	if o == nil || IsNil(o.AllowRisk) {
 		var ret bool
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *LicenseIntelligence) GetAllowRisk() bool {
 // GetAllowRiskOk returns a tuple with the AllowRisk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseIntelligence) GetAllowRiskOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowRisk) {
-    return nil, false
+	if o == nil || IsNil(o.AllowRisk) {
+		return nil, false
 	}
 	return o.AllowRisk, true
 }
 
 // HasAllowRisk returns a boolean if a field has been set.
 func (o *LicenseIntelligence) HasAllowRisk() bool {
-	if o != nil && !isNil(o.AllowRisk) {
+	if o != nil && !IsNil(o.AllowRisk) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *LicenseIntelligence) SetAllowRisk(v bool) {
 
 // GetAllowAdvancedPredictors returns the AllowAdvancedPredictors field value if set, zero value otherwise.
 func (o *LicenseIntelligence) GetAllowAdvancedPredictors() bool {
-	if o == nil || isNil(o.AllowAdvancedPredictors) {
+	if o == nil || IsNil(o.AllowAdvancedPredictors) {
 		var ret bool
 		return ret
 	}
@@ -218,15 +221,15 @@ func (o *LicenseIntelligence) GetAllowAdvancedPredictors() bool {
 // GetAllowAdvancedPredictorsOk returns a tuple with the AllowAdvancedPredictors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseIntelligence) GetAllowAdvancedPredictorsOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowAdvancedPredictors) {
-    return nil, false
+	if o == nil || IsNil(o.AllowAdvancedPredictors) {
+		return nil, false
 	}
 	return o.AllowAdvancedPredictors, true
 }
 
 // HasAllowAdvancedPredictors returns a boolean if a field has been set.
 func (o *LicenseIntelligence) HasAllowAdvancedPredictors() bool {
-	if o != nil && !isNil(o.AllowAdvancedPredictors) {
+	if o != nil && !IsNil(o.AllowAdvancedPredictors) {
 		return true
 	}
 
@@ -239,26 +242,34 @@ func (o *LicenseIntelligence) SetAllowAdvancedPredictors(v bool) {
 }
 
 func (o LicenseIntelligence) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowGeoVelocity) {
-		toSerialize["allowGeoVelocity"] = o.AllowGeoVelocity
-	}
-	if !isNil(o.AllowAnonymousNetworkDetection) {
-		toSerialize["allowAnonymousNetworkDetection"] = o.AllowAnonymousNetworkDetection
-	}
-	if !isNil(o.AllowReputation) {
-		toSerialize["allowReputation"] = o.AllowReputation
-	}
-	if !isNil(o.AllowDataConsent) {
-		toSerialize["allowDataConsent"] = o.AllowDataConsent
-	}
-	if !isNil(o.AllowRisk) {
-		toSerialize["allowRisk"] = o.AllowRisk
-	}
-	if !isNil(o.AllowAdvancedPredictors) {
-		toSerialize["allowAdvancedPredictors"] = o.AllowAdvancedPredictors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseIntelligence) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowGeoVelocity) {
+		toSerialize["allowGeoVelocity"] = o.AllowGeoVelocity
+	}
+	if !IsNil(o.AllowAnonymousNetworkDetection) {
+		toSerialize["allowAnonymousNetworkDetection"] = o.AllowAnonymousNetworkDetection
+	}
+	if !IsNil(o.AllowReputation) {
+		toSerialize["allowReputation"] = o.AllowReputation
+	}
+	if !IsNil(o.AllowDataConsent) {
+		toSerialize["allowDataConsent"] = o.AllowDataConsent
+	}
+	if !IsNil(o.AllowRisk) {
+		toSerialize["allowRisk"] = o.AllowRisk
+	}
+	if !IsNil(o.AllowAdvancedPredictors) {
+		toSerialize["allowAdvancedPredictors"] = o.AllowAdvancedPredictors
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseIntelligence struct {

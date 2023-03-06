@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Environment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Environment{}
+
 // Environment struct for Environment
 type Environment struct {
 	BillOfMaterials *BillOfMaterials `json:"billOfMaterials,omitempty"`
@@ -56,7 +59,7 @@ func NewEnvironmentWithDefaults() *Environment {
 
 // GetBillOfMaterials returns the BillOfMaterials field value if set, zero value otherwise.
 func (o *Environment) GetBillOfMaterials() BillOfMaterials {
-	if o == nil || isNil(o.BillOfMaterials) {
+	if o == nil || IsNil(o.BillOfMaterials) {
 		var ret BillOfMaterials
 		return ret
 	}
@@ -66,15 +69,15 @@ func (o *Environment) GetBillOfMaterials() BillOfMaterials {
 // GetBillOfMaterialsOk returns a tuple with the BillOfMaterials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetBillOfMaterialsOk() (*BillOfMaterials, bool) {
-	if o == nil || isNil(o.BillOfMaterials) {
-    return nil, false
+	if o == nil || IsNil(o.BillOfMaterials) {
+		return nil, false
 	}
 	return o.BillOfMaterials, true
 }
 
 // HasBillOfMaterials returns a boolean if a field has been set.
 func (o *Environment) HasBillOfMaterials() bool {
-	if o != nil && !isNil(o.BillOfMaterials) {
+	if o != nil && !IsNil(o.BillOfMaterials) {
 		return true
 	}
 
@@ -88,7 +91,7 @@ func (o *Environment) SetBillOfMaterials(v BillOfMaterials) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Environment) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -98,15 +101,15 @@ func (o *Environment) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Environment) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -120,7 +123,7 @@ func (o *Environment) SetCreatedAt(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Environment) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -130,15 +133,15 @@ func (o *Environment) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Environment) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -152,7 +155,7 @@ func (o *Environment) SetDescription(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Environment) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -162,15 +165,15 @@ func (o *Environment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Environment) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -196,7 +199,7 @@ func (o *Environment) GetLicense() EnvironmentLicense {
 // and a boolean to check if the value has been set.
 func (o *Environment) GetLicenseOk() (*EnvironmentLicense, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.License, true
 }
@@ -220,7 +223,7 @@ func (o *Environment) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Environment) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -232,7 +235,7 @@ func (o *Environment) SetName(v string) {
 
 // GetOrganization returns the Organization field value if set, zero value otherwise.
 func (o *Environment) GetOrganization() EnvironmentOrganization {
-	if o == nil || isNil(o.Organization) {
+	if o == nil || IsNil(o.Organization) {
 		var ret EnvironmentOrganization
 		return ret
 	}
@@ -242,15 +245,15 @@ func (o *Environment) GetOrganization() EnvironmentOrganization {
 // GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetOrganizationOk() (*EnvironmentOrganization, bool) {
-	if o == nil || isNil(o.Organization) {
-    return nil, false
+	if o == nil || IsNil(o.Organization) {
+		return nil, false
 	}
 	return o.Organization, true
 }
 
 // HasOrganization returns a boolean if a field has been set.
 func (o *Environment) HasOrganization() bool {
-	if o != nil && !isNil(o.Organization) {
+	if o != nil && !IsNil(o.Organization) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *Environment) GetRegion() EnumRegionCode {
 // and a boolean to check if the value has been set.
 func (o *Environment) GetRegionOk() (*EnumRegionCode, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Region, true
 }
@@ -300,7 +303,7 @@ func (o *Environment) GetType() EnumEnvironmentType {
 // and a boolean to check if the value has been set.
 func (o *Environment) GetTypeOk() (*EnumEnvironmentType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -312,7 +315,7 @@ func (o *Environment) SetType(v EnumEnvironmentType) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Environment) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -322,15 +325,15 @@ func (o *Environment) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Environment) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Environment) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -343,38 +346,32 @@ func (o *Environment) SetUpdatedAt(v string) {
 }
 
 func (o Environment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.BillOfMaterials) {
-		toSerialize["billOfMaterials"] = o.BillOfMaterials
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["license"] = o.License
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Organization) {
-		toSerialize["organization"] = o.Organization
-	}
-	if true {
-		toSerialize["region"] = o.Region
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Environment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BillOfMaterials) {
+		toSerialize["billOfMaterials"] = o.BillOfMaterials
+	}
+	// skip: createdAt is readOnly
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	// skip: id is readOnly
+	toSerialize["license"] = o.License
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Organization) {
+		toSerialize["organization"] = o.Organization
+	}
+	toSerialize["region"] = o.Region
+	toSerialize["type"] = o.Type
+	// skip: updatedAt is readOnly
+	return toSerialize, nil
 }
 
 type NullableEnvironment struct {

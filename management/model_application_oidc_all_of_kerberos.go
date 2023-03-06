@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationOIDCAllOfKerberos type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationOIDCAllOfKerberos{}
+
 // ApplicationOIDCAllOfKerberos Object containing Kerberos settings
 type ApplicationOIDCAllOfKerberos struct {
 	Key ApplicationOIDCAllOfKerberosKey `json:"key"`
@@ -51,7 +54,7 @@ func (o *ApplicationOIDCAllOfKerberos) GetKey() ApplicationOIDCAllOfKerberosKey 
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfKerberos) GetKeyOk() (*ApplicationOIDCAllOfKerberosKey, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Key, true
 }
@@ -62,11 +65,17 @@ func (o *ApplicationOIDCAllOfKerberos) SetKey(v ApplicationOIDCAllOfKerberosKey)
 }
 
 func (o ApplicationOIDCAllOfKerberos) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationOIDCAllOfKerberos) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	return toSerialize, nil
 }
 
 type NullableApplicationOIDCAllOfKerberos struct {

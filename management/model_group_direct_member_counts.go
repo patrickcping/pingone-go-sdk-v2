@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GroupDirectMemberCounts type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupDirectMemberCounts{}
+
 // GroupDirectMemberCounts An object containing a users (int) property. This property lists the number of users explicitly added to the group with POST /environments/{environmentID}/users/{userID}/memberOfGroups. Since these members were explicitly added to the group, they can be removed from the group with DELETE /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}.
 type GroupDirectMemberCounts struct {
 	// Number of users with direct membership
@@ -39,7 +42,7 @@ func NewGroupDirectMemberCountsWithDefaults() *GroupDirectMemberCounts {
 
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *GroupDirectMemberCounts) GetUsers() int32 {
-	if o == nil || isNil(o.Users) {
+	if o == nil || IsNil(o.Users) {
 		var ret int32
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *GroupDirectMemberCounts) GetUsers() int32 {
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupDirectMemberCounts) GetUsersOk() (*int32, bool) {
-	if o == nil || isNil(o.Users) {
-    return nil, false
+	if o == nil || IsNil(o.Users) {
+		return nil, false
 	}
 	return o.Users, true
 }
 
 // HasUsers returns a boolean if a field has been set.
 func (o *GroupDirectMemberCounts) HasUsers() bool {
-	if o != nil && !isNil(o.Users) {
+	if o != nil && !IsNil(o.Users) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *GroupDirectMemberCounts) SetUsers(v int32) {
 }
 
 func (o GroupDirectMemberCounts) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Users) {
-		toSerialize["users"] = o.Users
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GroupDirectMemberCounts) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
+	}
+	return toSerialize, nil
 }
 
 type NullableGroupDirectMemberCounts struct {

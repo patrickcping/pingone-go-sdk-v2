@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Gateway type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Gateway{}
+
 // Gateway struct for Gateway
 type Gateway struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
@@ -55,7 +58,7 @@ func NewGatewayWithDefaults() *Gateway {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *Gateway) GetLinks() map[string]interface{} {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -65,15 +68,15 @@ func (o *Gateway) GetLinks() map[string]interface{} {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Links) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Links) {
+		return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *Gateway) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -87,7 +90,7 @@ func (o *Gateway) SetLinks(v map[string]interface{}) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Gateway) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -97,15 +100,15 @@ func (o *Gateway) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Gateway) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -119,7 +122,7 @@ func (o *Gateway) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Gateway) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -129,15 +132,15 @@ func (o *Gateway) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Gateway) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *Gateway) SetEnvironment(v ObjectEnvironment) {
 
 // GetCredentials returns the Credentials field value if set, zero value otherwise.
 func (o *Gateway) GetCredentials() []GatewayCredential {
-	if o == nil || isNil(o.Credentials) {
+	if o == nil || IsNil(o.Credentials) {
 		var ret []GatewayCredential
 		return ret
 	}
@@ -161,15 +164,15 @@ func (o *Gateway) GetCredentials() []GatewayCredential {
 // GetCredentialsOk returns a tuple with the Credentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetCredentialsOk() ([]GatewayCredential, bool) {
-	if o == nil || isNil(o.Credentials) {
-    return nil, false
+	if o == nil || IsNil(o.Credentials) {
+		return nil, false
 	}
 	return o.Credentials, true
 }
 
 // HasCredentials returns a boolean if a field has been set.
 func (o *Gateway) HasCredentials() bool {
-	if o != nil && !isNil(o.Credentials) {
+	if o != nil && !IsNil(o.Credentials) {
 		return true
 	}
 
@@ -195,7 +198,7 @@ func (o *Gateway) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -207,7 +210,7 @@ func (o *Gateway) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Gateway) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -217,15 +220,15 @@ func (o *Gateway) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Gateway) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -251,7 +254,7 @@ func (o *Gateway) GetType() EnumGatewayType {
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetTypeOk() (*EnumGatewayType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -275,7 +278,7 @@ func (o *Gateway) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -287,7 +290,7 @@ func (o *Gateway) SetEnabled(v bool) {
 
 // GetSupportedVersions returns the SupportedVersions field value if set, zero value otherwise.
 func (o *Gateway) GetSupportedVersions() []GatewaySupportedVersionsInner {
-	if o == nil || isNil(o.SupportedVersions) {
+	if o == nil || IsNil(o.SupportedVersions) {
 		var ret []GatewaySupportedVersionsInner
 		return ret
 	}
@@ -297,15 +300,15 @@ func (o *Gateway) GetSupportedVersions() []GatewaySupportedVersionsInner {
 // GetSupportedVersionsOk returns a tuple with the SupportedVersions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetSupportedVersionsOk() ([]GatewaySupportedVersionsInner, bool) {
-	if o == nil || isNil(o.SupportedVersions) {
-    return nil, false
+	if o == nil || IsNil(o.SupportedVersions) {
+		return nil, false
 	}
 	return o.SupportedVersions, true
 }
 
 // HasSupportedVersions returns a boolean if a field has been set.
 func (o *Gateway) HasSupportedVersions() bool {
-	if o != nil && !isNil(o.SupportedVersions) {
+	if o != nil && !IsNil(o.SupportedVersions) {
 		return true
 	}
 
@@ -319,7 +322,7 @@ func (o *Gateway) SetSupportedVersions(v []GatewaySupportedVersionsInner) {
 
 // GetCurrentAlerts returns the CurrentAlerts field value if set, zero value otherwise.
 func (o *Gateway) GetCurrentAlerts() []map[string]interface{} {
-	if o == nil || isNil(o.CurrentAlerts) {
+	if o == nil || IsNil(o.CurrentAlerts) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -329,15 +332,15 @@ func (o *Gateway) GetCurrentAlerts() []map[string]interface{} {
 // GetCurrentAlertsOk returns a tuple with the CurrentAlerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gateway) GetCurrentAlertsOk() ([]map[string]interface{}, bool) {
-	if o == nil || isNil(o.CurrentAlerts) {
-    return nil, false
+	if o == nil || IsNil(o.CurrentAlerts) {
+		return nil, false
 	}
 	return o.CurrentAlerts, true
 }
 
 // HasCurrentAlerts returns a boolean if a field has been set.
 func (o *Gateway) HasCurrentAlerts() bool {
-	if o != nil && !isNil(o.CurrentAlerts) {
+	if o != nil && !IsNil(o.CurrentAlerts) {
 		return true
 	}
 
@@ -350,38 +353,32 @@ func (o *Gateway) SetCurrentAlerts(v []map[string]interface{}) {
 }
 
 func (o Gateway) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
-		toSerialize["_links"] = o.Links
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Credentials) {
-		toSerialize["credentials"] = o.Credentials
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.SupportedVersions) {
-		toSerialize["supportedVersions"] = o.SupportedVersions
-	}
-	if !isNil(o.CurrentAlerts) {
-		toSerialize["currentAlerts"] = o.CurrentAlerts
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Gateway) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: credentials is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["type"] = o.Type
+	toSerialize["enabled"] = o.Enabled
+	// skip: supportedVersions is readOnly
+	// skip: currentAlerts is readOnly
+	return toSerialize, nil
 }
 
 type NullableGateway struct {

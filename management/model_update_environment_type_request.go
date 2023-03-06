@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdateEnvironmentTypeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateEnvironmentTypeRequest{}
+
 // UpdateEnvironmentTypeRequest struct for UpdateEnvironmentTypeRequest
 type UpdateEnvironmentTypeRequest struct {
 	Type *EnumEnvironmentType `json:"type,omitempty"`
@@ -38,7 +41,7 @@ func NewUpdateEnvironmentTypeRequestWithDefaults() *UpdateEnvironmentTypeRequest
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *UpdateEnvironmentTypeRequest) GetType() EnumEnvironmentType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret EnumEnvironmentType
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *UpdateEnvironmentTypeRequest) GetType() EnumEnvironmentType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateEnvironmentTypeRequest) GetTypeOk() (*EnumEnvironmentType, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *UpdateEnvironmentTypeRequest) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *UpdateEnvironmentTypeRequest) SetType(v EnumEnvironmentType) {
 }
 
 func (o UpdateEnvironmentTypeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdateEnvironmentTypeRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableUpdateEnvironmentTypeRequest struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BrandingTheme type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BrandingTheme{}
+
 // BrandingTheme struct for BrandingTheme
 type BrandingTheme struct {
 	Configuration BrandingThemeConfiguration `json:"configuration"`
@@ -59,7 +62,7 @@ func (o *BrandingTheme) GetConfiguration() BrandingThemeConfiguration {
 // and a boolean to check if the value has been set.
 func (o *BrandingTheme) GetConfigurationOk() (*BrandingThemeConfiguration, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Configuration, true
 }
@@ -83,7 +86,7 @@ func (o *BrandingTheme) GetDefault() bool {
 // and a boolean to check if the value has been set.
 func (o *BrandingTheme) GetDefaultOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Default, true
 }
@@ -95,7 +98,7 @@ func (o *BrandingTheme) SetDefault(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *BrandingTheme) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -105,15 +108,15 @@ func (o *BrandingTheme) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingTheme) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *BrandingTheme) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -127,7 +130,7 @@ func (o *BrandingTheme) SetEnvironment(v ObjectEnvironment) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BrandingTheme) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -137,15 +140,15 @@ func (o *BrandingTheme) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingTheme) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *BrandingTheme) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *BrandingTheme) GetTemplate() EnumBrandingThemeTemplate {
 // and a boolean to check if the value has been set.
 func (o *BrandingTheme) GetTemplateOk() (*EnumBrandingThemeTemplate, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Template, true
 }
@@ -182,23 +185,23 @@ func (o *BrandingTheme) SetTemplate(v EnumBrandingThemeTemplate) {
 }
 
 func (o BrandingTheme) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["configuration"] = o.Configuration
-	}
-	if true {
-		toSerialize["default"] = o.Default
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["template"] = o.Template
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BrandingTheme) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["configuration"] = o.Configuration
+	toSerialize["default"] = o.Default
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: id is readOnly
+	toSerialize["template"] = o.Template
+	return toSerialize, nil
 }
 
 type NullableBrandingTheme struct {

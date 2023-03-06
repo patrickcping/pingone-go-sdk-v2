@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationOIDCAllOfMobilePasscodeRefreshDuration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationOIDCAllOfMobilePasscodeRefreshDuration{}
+
 // ApplicationOIDCAllOfMobilePasscodeRefreshDuration struct for ApplicationOIDCAllOfMobilePasscodeRefreshDuration
 type ApplicationOIDCAllOfMobilePasscodeRefreshDuration struct {
 	// The amount of time a passcode should be displayed before being replaced with a new passcode - must be between 30 and 60.
@@ -58,7 +61,7 @@ func (o *ApplicationOIDCAllOfMobilePasscodeRefreshDuration) GetDuration() int32 
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobilePasscodeRefreshDuration) GetDurationOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Duration, true
 }
@@ -82,7 +85,7 @@ func (o *ApplicationOIDCAllOfMobilePasscodeRefreshDuration) GetTimeUnit() EnumPa
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobilePasscodeRefreshDuration) GetTimeUnitOk() (*EnumPasscodeRefreshTimeUnit, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TimeUnit, true
 }
@@ -93,14 +96,18 @@ func (o *ApplicationOIDCAllOfMobilePasscodeRefreshDuration) SetTimeUnit(v EnumPa
 }
 
 func (o ApplicationOIDCAllOfMobilePasscodeRefreshDuration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["duration"] = o.Duration
-	}
-	if true {
-		toSerialize["timeUnit"] = o.TimeUnit
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationOIDCAllOfMobilePasscodeRefreshDuration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["duration"] = o.Duration
+	toSerialize["timeUnit"] = o.TimeUnit
+	return toSerialize, nil
 }
 
 type NullableApplicationOIDCAllOfMobilePasscodeRefreshDuration struct {

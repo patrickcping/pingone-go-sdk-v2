@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BrandingSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BrandingSettings{}
+
 // BrandingSettings struct for BrandingSettings
 type BrandingSettings struct {
 	// Specifies the resource’s unique identifier.
@@ -43,7 +46,7 @@ func NewBrandingSettingsWithDefaults() *BrandingSettings {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BrandingSettings) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *BrandingSettings) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingSettings) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *BrandingSettings) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *BrandingSettings) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *BrandingSettings) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *BrandingSettings) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingSettings) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *BrandingSettings) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *BrandingSettings) SetEnvironment(v ObjectEnvironment) {
 
 // GetCompanyName returns the CompanyName field value if set, zero value otherwise.
 func (o *BrandingSettings) GetCompanyName() string {
-	if o == nil || isNil(o.CompanyName) {
+	if o == nil || IsNil(o.CompanyName) {
 		var ret string
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *BrandingSettings) GetCompanyName() string {
 // GetCompanyNameOk returns a tuple with the CompanyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingSettings) GetCompanyNameOk() (*string, bool) {
-	if o == nil || isNil(o.CompanyName) {
-    return nil, false
+	if o == nil || IsNil(o.CompanyName) {
+		return nil, false
 	}
 	return o.CompanyName, true
 }
 
 // HasCompanyName returns a boolean if a field has been set.
 func (o *BrandingSettings) HasCompanyName() bool {
-	if o != nil && !isNil(o.CompanyName) {
+	if o != nil && !IsNil(o.CompanyName) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *BrandingSettings) SetCompanyName(v string) {
 
 // GetLogo returns the Logo field value if set, zero value otherwise.
 func (o *BrandingSettings) GetLogo() BrandingSettingsLogo {
-	if o == nil || isNil(o.Logo) {
+	if o == nil || IsNil(o.Logo) {
 		var ret BrandingSettingsLogo
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *BrandingSettings) GetLogo() BrandingSettingsLogo {
 // GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingSettings) GetLogoOk() (*BrandingSettingsLogo, bool) {
-	if o == nil || isNil(o.Logo) {
-    return nil, false
+	if o == nil || IsNil(o.Logo) {
+		return nil, false
 	}
 	return o.Logo, true
 }
 
 // HasLogo returns a boolean if a field has been set.
 func (o *BrandingSettings) HasLogo() bool {
-	if o != nil && !isNil(o.Logo) {
+	if o != nil && !IsNil(o.Logo) {
 		return true
 	}
 
@@ -170,20 +173,26 @@ func (o *BrandingSettings) SetLogo(v BrandingSettingsLogo) {
 }
 
 func (o BrandingSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.CompanyName) {
-		toSerialize["companyName"] = o.CompanyName
-	}
-	if !isNil(o.Logo) {
-		toSerialize["logo"] = o.Logo
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BrandingSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.CompanyName) {
+		toSerialize["companyName"] = o.CompanyName
+	}
+	if !IsNil(o.Logo) {
+		toSerialize["logo"] = o.Logo
+	}
+	return toSerialize, nil
 }
 
 type NullableBrandingSettings struct {

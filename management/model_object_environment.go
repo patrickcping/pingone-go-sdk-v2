@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ObjectEnvironment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ObjectEnvironment{}
+
 // ObjectEnvironment struct for ObjectEnvironment
 type ObjectEnvironment struct {
 	// A string that specifies the environment associated with the object.
@@ -39,7 +42,7 @@ func NewObjectEnvironmentWithDefaults() *ObjectEnvironment {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ObjectEnvironment) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *ObjectEnvironment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectEnvironment) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ObjectEnvironment) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -70,11 +73,17 @@ func (o *ObjectEnvironment) SetId(v string) {
 }
 
 func (o ObjectEnvironment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ObjectEnvironment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	return toSerialize, nil
 }
 
 type NullableObjectEnvironment struct {

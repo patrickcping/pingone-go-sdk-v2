@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseName type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseName{}
+
 // LicenseName struct for LicenseName
 type LicenseName struct {
 	// The license name
@@ -52,7 +55,7 @@ func (o *LicenseName) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *LicenseName) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -63,11 +66,17 @@ func (o *LicenseName) SetName(v string) {
 }
 
 func (o LicenseName) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseName) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	return toSerialize, nil
 }
 
 type NullableLicenseName struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnvironmentLicense type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnvironmentLicense{}
+
 // EnvironmentLicense struct for EnvironmentLicense
 type EnvironmentLicense struct {
 	// A string that specifies the active license associated with this environment. This property is required only if your organization has more than one active license.
@@ -52,7 +55,7 @@ func (o *EnvironmentLicense) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *EnvironmentLicense) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *EnvironmentLicense) SetId(v string) {
 }
 
 func (o EnvironmentLicense) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnvironmentLicense) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableEnvironmentLicense struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode{}
+
 // SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode struct for SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode
 type SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode struct {
 	// Select this option to allow users to log in when PingOne and or PingID are not available.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode) GetEnable
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode) SetEnable
 }
 
 func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode struct {

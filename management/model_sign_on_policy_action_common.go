@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommon type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommon{}
+
 // SignOnPolicyActionCommon struct for SignOnPolicyActionCommon
 type SignOnPolicyActionCommon struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
@@ -48,7 +51,7 @@ func NewSignOnPolicyActionCommonWithDefaults() *SignOnPolicyActionCommon {
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *SignOnPolicyActionCommon) GetLinks() map[string]interface{} {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -58,15 +61,15 @@ func (o *SignOnPolicyActionCommon) GetLinks() map[string]interface{} {
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommon) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Links) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Links) {
+		return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *SignOnPolicyActionCommon) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *SignOnPolicyActionCommon) SetLinks(v map[string]interface{}) {
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
 func (o *SignOnPolicyActionCommon) GetCondition() SignOnPolicyActionCommonConditionOrOrInner {
-	if o == nil || isNil(o.Condition) {
+	if o == nil || IsNil(o.Condition) {
 		var ret SignOnPolicyActionCommonConditionOrOrInner
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *SignOnPolicyActionCommon) GetCondition() SignOnPolicyActionCommonCondit
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommon) GetConditionOk() (*SignOnPolicyActionCommonConditionOrOrInner, bool) {
-	if o == nil || isNil(o.Condition) {
-    return nil, false
+	if o == nil || IsNil(o.Condition) {
+		return nil, false
 	}
 	return o.Condition, true
 }
 
 // HasCondition returns a boolean if a field has been set.
 func (o *SignOnPolicyActionCommon) HasCondition() bool {
-	if o != nil && !isNil(o.Condition) {
+	if o != nil && !IsNil(o.Condition) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *SignOnPolicyActionCommon) SetCondition(v SignOnPolicyActionCommonCondit
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *SignOnPolicyActionCommon) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -122,15 +125,15 @@ func (o *SignOnPolicyActionCommon) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommon) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *SignOnPolicyActionCommon) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *SignOnPolicyActionCommon) SetEnvironment(v ObjectEnvironment) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SignOnPolicyActionCommon) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -154,15 +157,15 @@ func (o *SignOnPolicyActionCommon) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommon) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SignOnPolicyActionCommon) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -188,7 +191,7 @@ func (o *SignOnPolicyActionCommon) GetPriority() int32 {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommon) GetPriorityOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Priority, true
 }
@@ -200,7 +203,7 @@ func (o *SignOnPolicyActionCommon) SetPriority(v int32) {
 
 // GetSignOnPolicy returns the SignOnPolicy field value if set, zero value otherwise.
 func (o *SignOnPolicyActionCommon) GetSignOnPolicy() SignOnPolicyActionCommonSignOnPolicy {
-	if o == nil || isNil(o.SignOnPolicy) {
+	if o == nil || IsNil(o.SignOnPolicy) {
 		var ret SignOnPolicyActionCommonSignOnPolicy
 		return ret
 	}
@@ -210,15 +213,15 @@ func (o *SignOnPolicyActionCommon) GetSignOnPolicy() SignOnPolicyActionCommonSig
 // GetSignOnPolicyOk returns a tuple with the SignOnPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommon) GetSignOnPolicyOk() (*SignOnPolicyActionCommonSignOnPolicy, bool) {
-	if o == nil || isNil(o.SignOnPolicy) {
-    return nil, false
+	if o == nil || IsNil(o.SignOnPolicy) {
+		return nil, false
 	}
 	return o.SignOnPolicy, true
 }
 
 // HasSignOnPolicy returns a boolean if a field has been set.
 func (o *SignOnPolicyActionCommon) HasSignOnPolicy() bool {
-	if o != nil && !isNil(o.SignOnPolicy) {
+	if o != nil && !IsNil(o.SignOnPolicy) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *SignOnPolicyActionCommon) GetType() EnumSignOnPolicyType {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommon) GetTypeOk() (*EnumSignOnPolicyType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -255,29 +258,29 @@ func (o *SignOnPolicyActionCommon) SetType(v EnumSignOnPolicyType) {
 }
 
 func (o SignOnPolicyActionCommon) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
-		toSerialize["_links"] = o.Links
-	}
-	if !isNil(o.Condition) {
-		toSerialize["condition"] = o.Condition
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["priority"] = o.Priority
-	}
-	if !isNil(o.SignOnPolicy) {
-		toSerialize["signOnPolicy"] = o.SignOnPolicy
-	}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommon) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: _links is readOnly
+	if !IsNil(o.Condition) {
+		toSerialize["condition"] = o.Condition
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: id is readOnly
+	toSerialize["priority"] = o.Priority
+	if !IsNil(o.SignOnPolicy) {
+		toSerialize["signOnPolicy"] = o.SignOnPolicy
+	}
+	toSerialize["type"] = o.Type
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommon struct {

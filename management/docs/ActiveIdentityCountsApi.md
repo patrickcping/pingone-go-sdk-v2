@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -37,7 +37,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ActiveIdentityCountsApi.ReadActiveIdentityCount(context.Background(), organizationID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
+    r, err := apiClient.ActiveIdentityCountsApi.ReadActiveIdentityCount(context.Background(), organizationID, licenseID).AggregatedBy(aggregatedBy).Limit(limit).Order(order).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ActiveIdentityCountsApi.ReadActiveIdentityCount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -100,7 +100,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -111,7 +111,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ActiveIdentityCountsApi.V1EnvironmentsEnvironmentIDActiveIdentityCountsGet(context.Background(), environmentID).Filter(filter).Limit(limit).Order(order).Execute()
+    r, err := apiClient.ActiveIdentityCountsApi.V1EnvironmentsEnvironmentIDActiveIdentityCountsGet(context.Background(), environmentID).Filter(filter).Limit(limit).Order(order).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ActiveIdentityCountsApi.V1EnvironmentsEnvironmentIDActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,7 +172,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -184,7 +184,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ActiveIdentityCountsApi.V1EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet(context.Background(), environmentID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
+    r, err := apiClient.ActiveIdentityCountsApi.V1EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet(context.Background(), environmentID).Filter(filter).Limit(limit).Order(order).SamplePeriod(samplePeriod).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ActiveIdentityCountsApi.V1EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
