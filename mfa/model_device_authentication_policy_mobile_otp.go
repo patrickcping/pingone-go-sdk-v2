@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyMobileOtp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyMobileOtp{}
+
 // DeviceAuthenticationPolicyMobileOtp struct for DeviceAuthenticationPolicyMobileOtp
 type DeviceAuthenticationPolicyMobileOtp struct {
 	Failure DeviceAuthenticationPolicyOfflineDeviceOtpFailure `json:"failure"`
@@ -53,7 +56,7 @@ func (o *DeviceAuthenticationPolicyMobileOtp) GetFailure() DeviceAuthenticationP
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileOtp) GetFailureOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpFailure, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Failure, true
 }
@@ -77,7 +80,7 @@ func (o *DeviceAuthenticationPolicyMobileOtp) GetWindow() DeviceAuthenticationPo
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileOtp) GetWindowOk() (*DeviceAuthenticationPolicyMobileOtpWindow, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Window, true
 }
@@ -88,14 +91,18 @@ func (o *DeviceAuthenticationPolicyMobileOtp) SetWindow(v DeviceAuthenticationPo
 }
 
 func (o DeviceAuthenticationPolicyMobileOtp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["failure"] = o.Failure
-	}
-	if true {
-		toSerialize["window"] = o.Window
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyMobileOtp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["failure"] = o.Failure
+	toSerialize["window"] = o.Window
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyMobileOtp struct {

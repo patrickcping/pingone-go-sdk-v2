@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment{}
+
 // DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment struct for DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment
 type DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment struct {
 	// Set to true if you want the application to allow Auto Enrollment. Auto Enrollment means that the user can authenticate for the first time from an unpaired device, and the successful authentication will result in the pairing of the device for MFA.
@@ -52,7 +55,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) GetEna
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -63,11 +66,17 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) SetEna
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment struct {

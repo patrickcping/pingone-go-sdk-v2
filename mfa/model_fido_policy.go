@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the FIDOPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FIDOPolicy{}
+
 // FIDOPolicy struct for FIDOPolicy
 type FIDOPolicy struct {
 	// FIDO policy's UUID.
@@ -65,7 +68,7 @@ func NewFIDOPolicyWithDefaults() *FIDOPolicy {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -75,15 +78,15 @@ func (o *FIDOPolicy) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -97,7 +100,7 @@ func (o *FIDOPolicy) SetId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -107,15 +110,15 @@ func (o *FIDOPolicy) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -129,7 +132,7 @@ func (o *FIDOPolicy) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -139,15 +142,15 @@ func (o *FIDOPolicy) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -161,7 +164,7 @@ func (o *FIDOPolicy) SetUpdatedAt(v time.Time) {
 
 // GetEmbedded returns the Embedded field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetEmbedded() map[string]interface{} {
-	if o == nil || isNil(o.Embedded) {
+	if o == nil || IsNil(o.Embedded) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -171,15 +174,15 @@ func (o *FIDOPolicy) GetEmbedded() map[string]interface{} {
 // GetEmbeddedOk returns a tuple with the Embedded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetEmbeddedOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Embedded) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Embedded) {
+		return map[string]interface{}{}, false
 	}
 	return o.Embedded, true
 }
 
 // HasEmbedded returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasEmbedded() bool {
-	if o != nil && !isNil(o.Embedded) {
+	if o != nil && !IsNil(o.Embedded) {
 		return true
 	}
 
@@ -193,7 +196,7 @@ func (o *FIDOPolicy) SetEmbedded(v map[string]interface{}) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -203,15 +206,15 @@ func (o *FIDOPolicy) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -237,7 +240,7 @@ func (o *FIDOPolicy) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -249,7 +252,7 @@ func (o *FIDOPolicy) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -259,15 +262,15 @@ func (o *FIDOPolicy) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -293,7 +296,7 @@ func (o *FIDOPolicy) GetAttestationRequirements() EnumFIDOAttestationRequirement
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetAttestationRequirementsOk() (*EnumFIDOAttestationRequirements, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AttestationRequirements, true
 }
@@ -305,7 +308,7 @@ func (o *FIDOPolicy) SetAttestationRequirements(v EnumFIDOAttestationRequirement
 
 // GetAllowedAuthenticators returns the AllowedAuthenticators field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetAllowedAuthenticators() []FIDOPolicyAllowedAuthenticatorsInner {
-	if o == nil || isNil(o.AllowedAuthenticators) {
+	if o == nil || IsNil(o.AllowedAuthenticators) {
 		var ret []FIDOPolicyAllowedAuthenticatorsInner
 		return ret
 	}
@@ -315,15 +318,15 @@ func (o *FIDOPolicy) GetAllowedAuthenticators() []FIDOPolicyAllowedAuthenticator
 // GetAllowedAuthenticatorsOk returns a tuple with the AllowedAuthenticators field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetAllowedAuthenticatorsOk() ([]FIDOPolicyAllowedAuthenticatorsInner, bool) {
-	if o == nil || isNil(o.AllowedAuthenticators) {
-    return nil, false
+	if o == nil || IsNil(o.AllowedAuthenticators) {
+		return nil, false
 	}
 	return o.AllowedAuthenticators, true
 }
 
 // HasAllowedAuthenticators returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasAllowedAuthenticators() bool {
-	if o != nil && !isNil(o.AllowedAuthenticators) {
+	if o != nil && !IsNil(o.AllowedAuthenticators) {
 		return true
 	}
 
@@ -337,7 +340,7 @@ func (o *FIDOPolicy) SetAllowedAuthenticators(v []FIDOPolicyAllowedAuthenticator
 
 // GetEnforceDuringAuthentication returns the EnforceDuringAuthentication field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetEnforceDuringAuthentication() bool {
-	if o == nil || isNil(o.EnforceDuringAuthentication) {
+	if o == nil || IsNil(o.EnforceDuringAuthentication) {
 		var ret bool
 		return ret
 	}
@@ -347,15 +350,15 @@ func (o *FIDOPolicy) GetEnforceDuringAuthentication() bool {
 // GetEnforceDuringAuthenticationOk returns a tuple with the EnforceDuringAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetEnforceDuringAuthenticationOk() (*bool, bool) {
-	if o == nil || isNil(o.EnforceDuringAuthentication) {
-    return nil, false
+	if o == nil || IsNil(o.EnforceDuringAuthentication) {
+		return nil, false
 	}
 	return o.EnforceDuringAuthentication, true
 }
 
 // HasEnforceDuringAuthentication returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasEnforceDuringAuthentication() bool {
-	if o != nil && !isNil(o.EnforceDuringAuthentication) {
+	if o != nil && !IsNil(o.EnforceDuringAuthentication) {
 		return true
 	}
 
@@ -369,7 +372,7 @@ func (o *FIDOPolicy) SetEnforceDuringAuthentication(v bool) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *FIDOPolicy) GetDefault() bool {
-	if o == nil || isNil(o.Default) {
+	if o == nil || IsNil(o.Default) {
 		var ret bool
 		return ret
 	}
@@ -379,15 +382,15 @@ func (o *FIDOPolicy) GetDefault() bool {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetDefaultOk() (*bool, bool) {
-	if o == nil || isNil(o.Default) {
-    return nil, false
+	if o == nil || IsNil(o.Default) {
+		return nil, false
 	}
 	return o.Default, true
 }
 
 // HasDefault returns a boolean if a field has been set.
 func (o *FIDOPolicy) HasDefault() bool {
-	if o != nil && !isNil(o.Default) {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
@@ -413,7 +416,7 @@ func (o *FIDOPolicy) GetResidentKeyRequirement() EnumFIDOResidentKeyRequirement 
 // and a boolean to check if the value has been set.
 func (o *FIDOPolicy) GetResidentKeyRequirementOk() (*EnumFIDOResidentKeyRequirement, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ResidentKeyRequirement, true
 }
@@ -424,44 +427,40 @@ func (o *FIDOPolicy) SetResidentKeyRequirement(v EnumFIDOResidentKeyRequirement)
 }
 
 func (o FIDOPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.Embedded) {
-		toSerialize["_embedded"] = o.Embedded
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["attestationRequirements"] = o.AttestationRequirements
-	}
-	if !isNil(o.AllowedAuthenticators) {
-		toSerialize["allowedAuthenticators"] = o.AllowedAuthenticators
-	}
-	if !isNil(o.EnforceDuringAuthentication) {
-		toSerialize["enforceDuringAuthentication"] = o.EnforceDuringAuthentication
-	}
-	if !isNil(o.Default) {
-		toSerialize["default"] = o.Default
-	}
-	if true {
-		toSerialize["residentKeyRequirement"] = o.ResidentKeyRequirement
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FIDOPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	if !IsNil(o.Embedded) {
+		toSerialize["_embedded"] = o.Embedded
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["attestationRequirements"] = o.AttestationRequirements
+	if !IsNil(o.AllowedAuthenticators) {
+		toSerialize["allowedAuthenticators"] = o.AllowedAuthenticators
+	}
+	if !IsNil(o.EnforceDuringAuthentication) {
+		toSerialize["enforceDuringAuthentication"] = o.EnforceDuringAuthentication
+	}
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
+	toSerialize["residentKeyRequirement"] = o.ResidentKeyRequirement
+	return toSerialize, nil
 }
 
 type NullableFIDOPolicy struct {

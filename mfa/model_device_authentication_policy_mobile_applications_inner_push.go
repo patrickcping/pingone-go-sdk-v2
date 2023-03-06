@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyMobileApplicationsInnerPush type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPush{}
+
 // DeviceAuthenticationPolicyMobileApplicationsInnerPush struct for DeviceAuthenticationPolicyMobileApplicationsInnerPush
 type DeviceAuthenticationPolicyMobileApplicationsInnerPush struct {
 	// Specifies whether push notification is enabled or disabled for the policy.
@@ -52,7 +55,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) GetEnabled() boo
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -63,11 +66,17 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPush) SetEnabled(v boo
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPush) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyMobileApplicationsInnerPush) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyMobileApplicationsInnerPush struct {

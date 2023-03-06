@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MFAPushCredentialAPNS type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFAPushCredentialAPNS{}
+
 // MFAPushCredentialAPNS struct for MFAPushCredentialAPNS
 type MFAPushCredentialAPNS struct {
 	Type EnumMFAPushCredentialAttrType `json:"type"`
@@ -60,7 +63,7 @@ func (o *MFAPushCredentialAPNS) GetType() EnumMFAPushCredentialAttrType {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNS) GetTypeOk() (*EnumMFAPushCredentialAttrType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -84,7 +87,7 @@ func (o *MFAPushCredentialAPNS) GetKey() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNS) GetKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Key, true
 }
@@ -108,7 +111,7 @@ func (o *MFAPushCredentialAPNS) GetTeamId() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNS) GetTeamIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TeamId, true
 }
@@ -132,7 +135,7 @@ func (o *MFAPushCredentialAPNS) GetToken() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNS) GetTokenOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Token, true
 }
@@ -143,20 +146,20 @@ func (o *MFAPushCredentialAPNS) SetToken(v string) {
 }
 
 func (o MFAPushCredentialAPNS) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["teamId"] = o.TeamId
-	}
-	if true {
-		toSerialize["token"] = o.Token
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFAPushCredentialAPNS) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	toSerialize["key"] = o.Key
+	toSerialize["teamId"] = o.TeamId
+	toSerialize["token"] = o.Token
+	return toSerialize, nil
 }
 
 type NullableMFAPushCredentialAPNS struct {

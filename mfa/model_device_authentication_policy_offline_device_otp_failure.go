@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyOfflineDeviceOtpFailure type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtpFailure{}
+
 // DeviceAuthenticationPolicyOfflineDeviceOtpFailure struct for DeviceAuthenticationPolicyOfflineDeviceOtpFailure
 type DeviceAuthenticationPolicyOfflineDeviceOtpFailure struct {
 	// The maximum number of times that the OTP entry can fail for a user, before they are blocked.
@@ -54,7 +57,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) GetCount() int32 {
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) GetCountOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Count, true
 }
@@ -78,7 +81,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) GetCoolDown() Device
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) GetCoolDownOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.CoolDown, true
 }
@@ -89,14 +92,18 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailure) SetCoolDown(v Device
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpFailure) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["count"] = o.Count
-	}
-	if true {
-		toSerialize["coolDown"] = o.CoolDown
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyOfflineDeviceOtpFailure) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["count"] = o.Count
+	toSerialize["coolDown"] = o.CoolDown
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyOfflineDeviceOtpFailure struct {
