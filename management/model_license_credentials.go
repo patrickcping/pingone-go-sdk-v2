@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseCredentials{}
+
 // LicenseCredentials struct for LicenseCredentials
 type LicenseCredentials struct {
 	AllowCredentials *bool `json:"allowCredentials,omitempty"`
@@ -38,7 +41,7 @@ func NewLicenseCredentialsWithDefaults() *LicenseCredentials {
 
 // GetAllowCredentials returns the AllowCredentials field value if set, zero value otherwise.
 func (o *LicenseCredentials) GetAllowCredentials() bool {
-	if o == nil || isNil(o.AllowCredentials) {
+	if o == nil || IsNil(o.AllowCredentials) {
 		var ret bool
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *LicenseCredentials) GetAllowCredentials() bool {
 // GetAllowCredentialsOk returns a tuple with the AllowCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseCredentials) GetAllowCredentialsOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowCredentials) {
-    return nil, false
+	if o == nil || IsNil(o.AllowCredentials) {
+		return nil, false
 	}
 	return o.AllowCredentials, true
 }
 
 // HasAllowCredentials returns a boolean if a field has been set.
 func (o *LicenseCredentials) HasAllowCredentials() bool {
-	if o != nil && !isNil(o.AllowCredentials) {
+	if o != nil && !IsNil(o.AllowCredentials) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *LicenseCredentials) SetAllowCredentials(v bool) {
 }
 
 func (o LicenseCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowCredentials) {
-		toSerialize["allowCredentials"] = o.AllowCredentials
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowCredentials) {
+		toSerialize["allowCredentials"] = o.AllowCredentials
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseCredentials struct {

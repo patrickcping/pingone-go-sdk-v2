@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionIDPAllOfIdentityProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionIDPAllOfIdentityProvider{}
+
 // SignOnPolicyActionIDPAllOfIdentityProvider A reference to the external identity provider that is used to authenticate the user. This property is required.
 type SignOnPolicyActionIDPAllOfIdentityProvider struct {
 	// A string that specifies the ID of the external identity provider to which the user is redirected for sign-on. This property is required.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionIDPAllOfIdentityProvider) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionIDPAllOfIdentityProvider) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionIDPAllOfIdentityProvider) SetId(v string) {
 }
 
 func (o SignOnPolicyActionIDPAllOfIdentityProvider) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionIDPAllOfIdentityProvider) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionIDPAllOfIdentityProvider struct {

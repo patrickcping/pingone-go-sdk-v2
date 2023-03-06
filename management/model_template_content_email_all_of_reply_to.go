@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentEmailAllOfReplyTo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentEmailAllOfReplyTo{}
+
 // TemplateContentEmailAllOfReplyTo struct for TemplateContentEmailAllOfReplyTo
 type TemplateContentEmailAllOfReplyTo struct {
 	// The email's \"reply to\" name. If the environment uses the Ping Identity email sender, the name \"PingOne\" is used. You can configure other email \"reply to\" names per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details. 
@@ -49,7 +52,7 @@ func NewTemplateContentEmailAllOfReplyToWithDefaults() *TemplateContentEmailAllO
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOfReplyTo) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *TemplateContentEmailAllOfReplyTo) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOfReplyTo) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOfReplyTo) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *TemplateContentEmailAllOfReplyTo) SetName(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOfReplyTo) GetAddress() string {
-	if o == nil || isNil(o.Address) {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *TemplateContentEmailAllOfReplyTo) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOfReplyTo) GetAddressOk() (*string, bool) {
-	if o == nil || isNil(o.Address) {
-    return nil, false
+	if o == nil || IsNil(o.Address) {
+		return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOfReplyTo) HasAddress() bool {
-	if o != nil && !isNil(o.Address) {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
@@ -112,14 +115,22 @@ func (o *TemplateContentEmailAllOfReplyTo) SetAddress(v string) {
 }
 
 func (o TemplateContentEmailAllOfReplyTo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Address) {
-		toSerialize["address"] = o.Address
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentEmailAllOfReplyTo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentEmailAllOfReplyTo struct {

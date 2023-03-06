@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordPolicyLength type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordPolicyLength{}
+
 // PasswordPolicyLength Settings to control the user's password length
 type PasswordPolicyLength struct {
 	// The maximum number of characters allowed for the password. Defaults to 255. This property is not enforced when not present.
@@ -49,7 +52,7 @@ func NewPasswordPolicyLengthWithDefaults() *PasswordPolicyLength {
 
 // GetMax returns the Max field value if set, zero value otherwise.
 func (o *PasswordPolicyLength) GetMax() int32 {
-	if o == nil || isNil(o.Max) {
+	if o == nil || IsNil(o.Max) {
 		var ret int32
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *PasswordPolicyLength) GetMax() int32 {
 // GetMaxOk returns a tuple with the Max field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyLength) GetMaxOk() (*int32, bool) {
-	if o == nil || isNil(o.Max) {
-    return nil, false
+	if o == nil || IsNil(o.Max) {
+		return nil, false
 	}
 	return o.Max, true
 }
 
 // HasMax returns a boolean if a field has been set.
 func (o *PasswordPolicyLength) HasMax() bool {
-	if o != nil && !isNil(o.Max) {
+	if o != nil && !IsNil(o.Max) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *PasswordPolicyLength) SetMax(v int32) {
 
 // GetMin returns the Min field value if set, zero value otherwise.
 func (o *PasswordPolicyLength) GetMin() int32 {
-	if o == nil || isNil(o.Min) {
+	if o == nil || IsNil(o.Min) {
 		var ret int32
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *PasswordPolicyLength) GetMin() int32 {
 // GetMinOk returns a tuple with the Min field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyLength) GetMinOk() (*int32, bool) {
-	if o == nil || isNil(o.Min) {
-    return nil, false
+	if o == nil || IsNil(o.Min) {
+		return nil, false
 	}
 	return o.Min, true
 }
 
 // HasMin returns a boolean if a field has been set.
 func (o *PasswordPolicyLength) HasMin() bool {
-	if o != nil && !isNil(o.Min) {
+	if o != nil && !IsNil(o.Min) {
 		return true
 	}
 
@@ -112,14 +115,22 @@ func (o *PasswordPolicyLength) SetMin(v int32) {
 }
 
 func (o PasswordPolicyLength) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Max) {
-		toSerialize["max"] = o.Max
-	}
-	if !isNil(o.Min) {
-		toSerialize["min"] = o.Min
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PasswordPolicyLength) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Max) {
+		toSerialize["max"] = o.Max
+	}
+	if !IsNil(o.Min) {
+		toSerialize["min"] = o.Min
+	}
+	return toSerialize, nil
 }
 
 type NullablePasswordPolicyLength struct {

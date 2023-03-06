@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BrandingThemeConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BrandingThemeConfiguration{}
+
 // BrandingThemeConfiguration struct for BrandingThemeConfiguration
 type BrandingThemeConfiguration struct {
 	// The background color for the theme. It must be a valid hexadecimal color code, and it is a required property when configuration.backgroundType is set to COLOR.
@@ -67,7 +70,7 @@ func NewBrandingThemeConfigurationWithDefaults() *BrandingThemeConfiguration {
 
 // GetBackgroundColor returns the BackgroundColor field value if set, zero value otherwise.
 func (o *BrandingThemeConfiguration) GetBackgroundColor() string {
-	if o == nil || isNil(o.BackgroundColor) {
+	if o == nil || IsNil(o.BackgroundColor) {
 		var ret string
 		return ret
 	}
@@ -77,15 +80,15 @@ func (o *BrandingThemeConfiguration) GetBackgroundColor() string {
 // GetBackgroundColorOk returns a tuple with the BackgroundColor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetBackgroundColorOk() (*string, bool) {
-	if o == nil || isNil(o.BackgroundColor) {
-    return nil, false
+	if o == nil || IsNil(o.BackgroundColor) {
+		return nil, false
 	}
 	return o.BackgroundColor, true
 }
 
 // HasBackgroundColor returns a boolean if a field has been set.
 func (o *BrandingThemeConfiguration) HasBackgroundColor() bool {
-	if o != nil && !isNil(o.BackgroundColor) {
+	if o != nil && !IsNil(o.BackgroundColor) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *BrandingThemeConfiguration) GetBackgroundType() EnumBrandingThemeBackgr
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetBackgroundTypeOk() (*EnumBrandingThemeBackgroundType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.BackgroundType, true
 }
@@ -123,7 +126,7 @@ func (o *BrandingThemeConfiguration) SetBackgroundType(v EnumBrandingThemeBackgr
 
 // GetBackgroundImage returns the BackgroundImage field value if set, zero value otherwise.
 func (o *BrandingThemeConfiguration) GetBackgroundImage() BrandingThemeConfigurationBackgroundImage {
-	if o == nil || isNil(o.BackgroundImage) {
+	if o == nil || IsNil(o.BackgroundImage) {
 		var ret BrandingThemeConfigurationBackgroundImage
 		return ret
 	}
@@ -133,15 +136,15 @@ func (o *BrandingThemeConfiguration) GetBackgroundImage() BrandingThemeConfigura
 // GetBackgroundImageOk returns a tuple with the BackgroundImage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetBackgroundImageOk() (*BrandingThemeConfigurationBackgroundImage, bool) {
-	if o == nil || isNil(o.BackgroundImage) {
-    return nil, false
+	if o == nil || IsNil(o.BackgroundImage) {
+		return nil, false
 	}
 	return o.BackgroundImage, true
 }
 
 // HasBackgroundImage returns a boolean if a field has been set.
 func (o *BrandingThemeConfiguration) HasBackgroundImage() bool {
-	if o != nil && !isNil(o.BackgroundImage) {
+	if o != nil && !IsNil(o.BackgroundImage) {
 		return true
 	}
 
@@ -167,7 +170,7 @@ func (o *BrandingThemeConfiguration) GetBodyTextColor() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetBodyTextColorOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.BodyTextColor, true
 }
@@ -191,7 +194,7 @@ func (o *BrandingThemeConfiguration) GetButtonColor() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetButtonColorOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ButtonColor, true
 }
@@ -215,7 +218,7 @@ func (o *BrandingThemeConfiguration) GetButtonTextColor() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetButtonTextColorOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ButtonTextColor, true
 }
@@ -239,7 +242,7 @@ func (o *BrandingThemeConfiguration) GetCardColor() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetCardColorOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.CardColor, true
 }
@@ -251,7 +254,7 @@ func (o *BrandingThemeConfiguration) SetCardColor(v string) {
 
 // GetFooter returns the Footer field value if set, zero value otherwise.
 func (o *BrandingThemeConfiguration) GetFooter() string {
-	if o == nil || isNil(o.Footer) {
+	if o == nil || IsNil(o.Footer) {
 		var ret string
 		return ret
 	}
@@ -261,15 +264,15 @@ func (o *BrandingThemeConfiguration) GetFooter() string {
 // GetFooterOk returns a tuple with the Footer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetFooterOk() (*string, bool) {
-	if o == nil || isNil(o.Footer) {
-    return nil, false
+	if o == nil || IsNil(o.Footer) {
+		return nil, false
 	}
 	return o.Footer, true
 }
 
 // HasFooter returns a boolean if a field has been set.
 func (o *BrandingThemeConfiguration) HasFooter() bool {
-	if o != nil && !isNil(o.Footer) {
+	if o != nil && !IsNil(o.Footer) {
 		return true
 	}
 
@@ -295,7 +298,7 @@ func (o *BrandingThemeConfiguration) GetHeadingTextColor() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetHeadingTextColorOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HeadingTextColor, true
 }
@@ -319,7 +322,7 @@ func (o *BrandingThemeConfiguration) GetLinkTextColor() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetLinkTextColorOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.LinkTextColor, true
 }
@@ -331,7 +334,7 @@ func (o *BrandingThemeConfiguration) SetLinkTextColor(v string) {
 
 // GetLogo returns the Logo field value if set, zero value otherwise.
 func (o *BrandingThemeConfiguration) GetLogo() BrandingThemeConfigurationLogo {
-	if o == nil || isNil(o.Logo) {
+	if o == nil || IsNil(o.Logo) {
 		var ret BrandingThemeConfigurationLogo
 		return ret
 	}
@@ -341,15 +344,15 @@ func (o *BrandingThemeConfiguration) GetLogo() BrandingThemeConfigurationLogo {
 // GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetLogoOk() (*BrandingThemeConfigurationLogo, bool) {
-	if o == nil || isNil(o.Logo) {
-    return nil, false
+	if o == nil || IsNil(o.Logo) {
+		return nil, false
 	}
 	return o.Logo, true
 }
 
 // HasLogo returns a boolean if a field has been set.
 func (o *BrandingThemeConfiguration) HasLogo() bool {
-	if o != nil && !isNil(o.Logo) {
+	if o != nil && !IsNil(o.Logo) {
 		return true
 	}
 
@@ -375,7 +378,7 @@ func (o *BrandingThemeConfiguration) GetLogoType() EnumBrandingLogoType {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetLogoTypeOk() (*EnumBrandingLogoType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.LogoType, true
 }
@@ -387,7 +390,7 @@ func (o *BrandingThemeConfiguration) SetLogoType(v EnumBrandingLogoType) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *BrandingThemeConfiguration) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -397,15 +400,15 @@ func (o *BrandingThemeConfiguration) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfiguration) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *BrandingThemeConfiguration) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -418,47 +421,39 @@ func (o *BrandingThemeConfiguration) SetName(v string) {
 }
 
 func (o BrandingThemeConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.BackgroundColor) {
-		toSerialize["backgroundColor"] = o.BackgroundColor
-	}
-	if true {
-		toSerialize["backgroundType"] = o.BackgroundType
-	}
-	if !isNil(o.BackgroundImage) {
-		toSerialize["backgroundImage"] = o.BackgroundImage
-	}
-	if true {
-		toSerialize["bodyTextColor"] = o.BodyTextColor
-	}
-	if true {
-		toSerialize["buttonColor"] = o.ButtonColor
-	}
-	if true {
-		toSerialize["buttonTextColor"] = o.ButtonTextColor
-	}
-	if true {
-		toSerialize["cardColor"] = o.CardColor
-	}
-	if !isNil(o.Footer) {
-		toSerialize["footer"] = o.Footer
-	}
-	if true {
-		toSerialize["headingTextColor"] = o.HeadingTextColor
-	}
-	if true {
-		toSerialize["linkTextColor"] = o.LinkTextColor
-	}
-	if !isNil(o.Logo) {
-		toSerialize["logo"] = o.Logo
-	}
-	if true {
-		toSerialize["logoType"] = o.LogoType
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BrandingThemeConfiguration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BackgroundColor) {
+		toSerialize["backgroundColor"] = o.BackgroundColor
+	}
+	toSerialize["backgroundType"] = o.BackgroundType
+	if !IsNil(o.BackgroundImage) {
+		toSerialize["backgroundImage"] = o.BackgroundImage
+	}
+	toSerialize["bodyTextColor"] = o.BodyTextColor
+	toSerialize["buttonColor"] = o.ButtonColor
+	toSerialize["buttonTextColor"] = o.ButtonTextColor
+	toSerialize["cardColor"] = o.CardColor
+	if !IsNil(o.Footer) {
+		toSerialize["footer"] = o.Footer
+	}
+	toSerialize["headingTextColor"] = o.HeadingTextColor
+	toSerialize["linkTextColor"] = o.LinkTextColor
+	if !IsNil(o.Logo) {
+		toSerialize["logo"] = o.Logo
+	}
+	toSerialize["logoType"] = o.LogoType
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableBrandingThemeConfiguration struct {

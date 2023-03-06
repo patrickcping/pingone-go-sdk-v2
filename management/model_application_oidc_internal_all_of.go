@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationOIDCInternalAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationOIDCInternalAllOf{}
+
 // ApplicationOIDCInternalAllOf struct for ApplicationOIDCInternalAllOf
 type ApplicationOIDCInternalAllOf struct {
 	PkceEnforcement *EnumApplicationOIDCPKCEOption `json:"pkceEnforcement,omitempty"`
@@ -40,7 +43,7 @@ func NewApplicationOIDCInternalAllOfWithDefaults() *ApplicationOIDCInternalAllOf
 
 // GetPkceEnforcement returns the PkceEnforcement field value if set, zero value otherwise.
 func (o *ApplicationOIDCInternalAllOf) GetPkceEnforcement() EnumApplicationOIDCPKCEOption {
-	if o == nil || isNil(o.PkceEnforcement) {
+	if o == nil || IsNil(o.PkceEnforcement) {
 		var ret EnumApplicationOIDCPKCEOption
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *ApplicationOIDCInternalAllOf) GetPkceEnforcement() EnumApplicationOIDCP
 // GetPkceEnforcementOk returns a tuple with the PkceEnforcement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCInternalAllOf) GetPkceEnforcementOk() (*EnumApplicationOIDCPKCEOption, bool) {
-	if o == nil || isNil(o.PkceEnforcement) {
-    return nil, false
+	if o == nil || IsNil(o.PkceEnforcement) {
+		return nil, false
 	}
 	return o.PkceEnforcement, true
 }
 
 // HasPkceEnforcement returns a boolean if a field has been set.
 func (o *ApplicationOIDCInternalAllOf) HasPkceEnforcement() bool {
-	if o != nil && !isNil(o.PkceEnforcement) {
+	if o != nil && !IsNil(o.PkceEnforcement) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *ApplicationOIDCInternalAllOf) GetTokenEndpointAuthMethod() EnumApplicat
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCInternalAllOf) GetTokenEndpointAuthMethodOk() (*EnumApplicationOIDCTokenAuthMethod, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TokenEndpointAuthMethod, true
 }
@@ -95,14 +98,20 @@ func (o *ApplicationOIDCInternalAllOf) SetTokenEndpointAuthMethod(v EnumApplicat
 }
 
 func (o ApplicationOIDCInternalAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.PkceEnforcement) {
-		toSerialize["pkceEnforcement"] = o.PkceEnforcement
-	}
-	if true {
-		toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationOIDCInternalAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PkceEnforcement) {
+		toSerialize["pkceEnforcement"] = o.PkceEnforcement
+	}
+	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
+	return toSerialize, nil
 }
 
 type NullableApplicationOIDCInternalAllOf struct {

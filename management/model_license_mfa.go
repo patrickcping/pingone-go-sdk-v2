@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseMfa type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseMfa{}
+
 // LicenseMfa struct for LicenseMfa
 type LicenseMfa struct {
 	// A read-only boolean that specifies whether push notifications are allowed. For TRIAL (unpaid) licenses, the default value is true. For other license package types, adoption of the feature determines the default value.
@@ -47,7 +50,7 @@ func NewLicenseMfaWithDefaults() *LicenseMfa {
 
 // GetAllowPushNotification returns the AllowPushNotification field value if set, zero value otherwise.
 func (o *LicenseMfa) GetAllowPushNotification() bool {
-	if o == nil || isNil(o.AllowPushNotification) {
+	if o == nil || IsNil(o.AllowPushNotification) {
 		var ret bool
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *LicenseMfa) GetAllowPushNotification() bool {
 // GetAllowPushNotificationOk returns a tuple with the AllowPushNotification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseMfa) GetAllowPushNotificationOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowPushNotification) {
-    return nil, false
+	if o == nil || IsNil(o.AllowPushNotification) {
+		return nil, false
 	}
 	return o.AllowPushNotification, true
 }
 
 // HasAllowPushNotification returns a boolean if a field has been set.
 func (o *LicenseMfa) HasAllowPushNotification() bool {
-	if o != nil && !isNil(o.AllowPushNotification) {
+	if o != nil && !IsNil(o.AllowPushNotification) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *LicenseMfa) SetAllowPushNotification(v bool) {
 
 // GetAllowNotificationOutsideWhitelist returns the AllowNotificationOutsideWhitelist field value if set, zero value otherwise.
 func (o *LicenseMfa) GetAllowNotificationOutsideWhitelist() bool {
-	if o == nil || isNil(o.AllowNotificationOutsideWhitelist) {
+	if o == nil || IsNil(o.AllowNotificationOutsideWhitelist) {
 		var ret bool
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *LicenseMfa) GetAllowNotificationOutsideWhitelist() bool {
 // GetAllowNotificationOutsideWhitelistOk returns a tuple with the AllowNotificationOutsideWhitelist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseMfa) GetAllowNotificationOutsideWhitelistOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowNotificationOutsideWhitelist) {
-    return nil, false
+	if o == nil || IsNil(o.AllowNotificationOutsideWhitelist) {
+		return nil, false
 	}
 	return o.AllowNotificationOutsideWhitelist, true
 }
 
 // HasAllowNotificationOutsideWhitelist returns a boolean if a field has been set.
 func (o *LicenseMfa) HasAllowNotificationOutsideWhitelist() bool {
-	if o != nil && !isNil(o.AllowNotificationOutsideWhitelist) {
+	if o != nil && !IsNil(o.AllowNotificationOutsideWhitelist) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *LicenseMfa) SetAllowNotificationOutsideWhitelist(v bool) {
 
 // GetAllowFido2Devices returns the AllowFido2Devices field value if set, zero value otherwise.
 func (o *LicenseMfa) GetAllowFido2Devices() bool {
-	if o == nil || isNil(o.AllowFido2Devices) {
+	if o == nil || IsNil(o.AllowFido2Devices) {
 		var ret bool
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *LicenseMfa) GetAllowFido2Devices() bool {
 // GetAllowFido2DevicesOk returns a tuple with the AllowFido2Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseMfa) GetAllowFido2DevicesOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowFido2Devices) {
-    return nil, false
+	if o == nil || IsNil(o.AllowFido2Devices) {
+		return nil, false
 	}
 	return o.AllowFido2Devices, true
 }
 
 // HasAllowFido2Devices returns a boolean if a field has been set.
 func (o *LicenseMfa) HasAllowFido2Devices() bool {
-	if o != nil && !isNil(o.AllowFido2Devices) {
+	if o != nil && !IsNil(o.AllowFido2Devices) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *LicenseMfa) SetAllowFido2Devices(v bool) {
 
 // GetAllowVoiceOtp returns the AllowVoiceOtp field value if set, zero value otherwise.
 func (o *LicenseMfa) GetAllowVoiceOtp() bool {
-	if o == nil || isNil(o.AllowVoiceOtp) {
+	if o == nil || IsNil(o.AllowVoiceOtp) {
 		var ret bool
 		return ret
 	}
@@ -153,15 +156,15 @@ func (o *LicenseMfa) GetAllowVoiceOtp() bool {
 // GetAllowVoiceOtpOk returns a tuple with the AllowVoiceOtp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseMfa) GetAllowVoiceOtpOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowVoiceOtp) {
-    return nil, false
+	if o == nil || IsNil(o.AllowVoiceOtp) {
+		return nil, false
 	}
 	return o.AllowVoiceOtp, true
 }
 
 // HasAllowVoiceOtp returns a boolean if a field has been set.
 func (o *LicenseMfa) HasAllowVoiceOtp() bool {
-	if o != nil && !isNil(o.AllowVoiceOtp) {
+	if o != nil && !IsNil(o.AllowVoiceOtp) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *LicenseMfa) SetAllowVoiceOtp(v bool) {
 
 // GetAllowEmailOtp returns the AllowEmailOtp field value if set, zero value otherwise.
 func (o *LicenseMfa) GetAllowEmailOtp() bool {
-	if o == nil || isNil(o.AllowEmailOtp) {
+	if o == nil || IsNil(o.AllowEmailOtp) {
 		var ret bool
 		return ret
 	}
@@ -185,15 +188,15 @@ func (o *LicenseMfa) GetAllowEmailOtp() bool {
 // GetAllowEmailOtpOk returns a tuple with the AllowEmailOtp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseMfa) GetAllowEmailOtpOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowEmailOtp) {
-    return nil, false
+	if o == nil || IsNil(o.AllowEmailOtp) {
+		return nil, false
 	}
 	return o.AllowEmailOtp, true
 }
 
 // HasAllowEmailOtp returns a boolean if a field has been set.
 func (o *LicenseMfa) HasAllowEmailOtp() bool {
-	if o != nil && !isNil(o.AllowEmailOtp) {
+	if o != nil && !IsNil(o.AllowEmailOtp) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *LicenseMfa) SetAllowEmailOtp(v bool) {
 
 // GetAllowSmsOtp returns the AllowSmsOtp field value if set, zero value otherwise.
 func (o *LicenseMfa) GetAllowSmsOtp() bool {
-	if o == nil || isNil(o.AllowSmsOtp) {
+	if o == nil || IsNil(o.AllowSmsOtp) {
 		var ret bool
 		return ret
 	}
@@ -217,15 +220,15 @@ func (o *LicenseMfa) GetAllowSmsOtp() bool {
 // GetAllowSmsOtpOk returns a tuple with the AllowSmsOtp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseMfa) GetAllowSmsOtpOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowSmsOtp) {
-    return nil, false
+	if o == nil || IsNil(o.AllowSmsOtp) {
+		return nil, false
 	}
 	return o.AllowSmsOtp, true
 }
 
 // HasAllowSmsOtp returns a boolean if a field has been set.
 func (o *LicenseMfa) HasAllowSmsOtp() bool {
-	if o != nil && !isNil(o.AllowSmsOtp) {
+	if o != nil && !IsNil(o.AllowSmsOtp) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *LicenseMfa) SetAllowSmsOtp(v bool) {
 
 // GetAllowTotp returns the AllowTotp field value if set, zero value otherwise.
 func (o *LicenseMfa) GetAllowTotp() bool {
-	if o == nil || isNil(o.AllowTotp) {
+	if o == nil || IsNil(o.AllowTotp) {
 		var ret bool
 		return ret
 	}
@@ -249,15 +252,15 @@ func (o *LicenseMfa) GetAllowTotp() bool {
 // GetAllowTotpOk returns a tuple with the AllowTotp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseMfa) GetAllowTotpOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowTotp) {
-    return nil, false
+	if o == nil || IsNil(o.AllowTotp) {
+		return nil, false
 	}
 	return o.AllowTotp, true
 }
 
 // HasAllowTotp returns a boolean if a field has been set.
 func (o *LicenseMfa) HasAllowTotp() bool {
-	if o != nil && !isNil(o.AllowTotp) {
+	if o != nil && !IsNil(o.AllowTotp) {
 		return true
 	}
 
@@ -270,29 +273,37 @@ func (o *LicenseMfa) SetAllowTotp(v bool) {
 }
 
 func (o LicenseMfa) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowPushNotification) {
-		toSerialize["allowPushNotification"] = o.AllowPushNotification
-	}
-	if !isNil(o.AllowNotificationOutsideWhitelist) {
-		toSerialize["allowNotificationOutsideWhitelist"] = o.AllowNotificationOutsideWhitelist
-	}
-	if !isNil(o.AllowFido2Devices) {
-		toSerialize["allowFido2Devices"] = o.AllowFido2Devices
-	}
-	if !isNil(o.AllowVoiceOtp) {
-		toSerialize["allowVoiceOtp"] = o.AllowVoiceOtp
-	}
-	if !isNil(o.AllowEmailOtp) {
-		toSerialize["allowEmailOtp"] = o.AllowEmailOtp
-	}
-	if !isNil(o.AllowSmsOtp) {
-		toSerialize["allowSmsOtp"] = o.AllowSmsOtp
-	}
-	if !isNil(o.AllowTotp) {
-		toSerialize["allowTotp"] = o.AllowTotp
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseMfa) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowPushNotification) {
+		toSerialize["allowPushNotification"] = o.AllowPushNotification
+	}
+	if !IsNil(o.AllowNotificationOutsideWhitelist) {
+		toSerialize["allowNotificationOutsideWhitelist"] = o.AllowNotificationOutsideWhitelist
+	}
+	if !IsNil(o.AllowFido2Devices) {
+		toSerialize["allowFido2Devices"] = o.AllowFido2Devices
+	}
+	if !IsNil(o.AllowVoiceOtp) {
+		toSerialize["allowVoiceOtp"] = o.AllowVoiceOtp
+	}
+	if !IsNil(o.AllowEmailOtp) {
+		toSerialize["allowEmailOtp"] = o.AllowEmailOtp
+	}
+	if !IsNil(o.AllowSmsOtp) {
+		toSerialize["allowSmsOtp"] = o.AllowSmsOtp
+	}
+	if !IsNil(o.AllowTotp) {
+		toSerialize["allowTotp"] = o.AllowTotp
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseMfa struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ObjectPopulation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ObjectPopulation{}
+
 // ObjectPopulation struct for ObjectPopulation
 type ObjectPopulation struct {
 	// A string that specifies the population associated with the object.
@@ -39,7 +42,7 @@ func NewObjectPopulationWithDefaults() *ObjectPopulation {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ObjectPopulation) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *ObjectPopulation) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectPopulation) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ObjectPopulation) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -70,11 +73,17 @@ func (o *ObjectPopulation) SetId(v string) {
 }
 
 func (o ObjectPopulation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ObjectPopulation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	return toSerialize, nil
 }
 
 type NullableObjectPopulation struct {

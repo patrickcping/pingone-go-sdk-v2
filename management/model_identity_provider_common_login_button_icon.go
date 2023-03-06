@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderCommonLoginButtonIcon type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderCommonLoginButtonIcon{}
+
 // IdentityProviderCommonLoginButtonIcon struct for IdentityProviderCommonLoginButtonIcon
 type IdentityProviderCommonLoginButtonIcon struct {
 	// The image ID for the IdP login button icon. For Facebook, Google, and LinkedIn IdPs, updates to the login button are ignored to preserve the IdP branding rules.
@@ -41,7 +44,7 @@ func NewIdentityProviderCommonLoginButtonIconWithDefaults() *IdentityProviderCom
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityProviderCommonLoginButtonIcon) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *IdentityProviderCommonLoginButtonIcon) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderCommonLoginButtonIcon) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityProviderCommonLoginButtonIcon) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *IdentityProviderCommonLoginButtonIcon) SetId(v string) {
 
 // GetHref returns the Href field value if set, zero value otherwise.
 func (o *IdentityProviderCommonLoginButtonIcon) GetHref() string {
-	if o == nil || isNil(o.Href) {
+	if o == nil || IsNil(o.Href) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *IdentityProviderCommonLoginButtonIcon) GetHref() string {
 // GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderCommonLoginButtonIcon) GetHrefOk() (*string, bool) {
-	if o == nil || isNil(o.Href) {
-    return nil, false
+	if o == nil || IsNil(o.Href) {
+		return nil, false
 	}
 	return o.Href, true
 }
 
 // HasHref returns a boolean if a field has been set.
 func (o *IdentityProviderCommonLoginButtonIcon) HasHref() bool {
-	if o != nil && !isNil(o.Href) {
+	if o != nil && !IsNil(o.Href) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *IdentityProviderCommonLoginButtonIcon) SetHref(v string) {
 }
 
 func (o IdentityProviderCommonLoginButtonIcon) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Href) {
-		toSerialize["href"] = o.Href
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderCommonLoginButtonIcon) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderCommonLoginButtonIcon struct {

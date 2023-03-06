@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BrandingThemeConfigurationBackgroundImage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BrandingThemeConfigurationBackgroundImage{}
+
 // BrandingThemeConfigurationBackgroundImage struct for BrandingThemeConfigurationBackgroundImage
 type BrandingThemeConfigurationBackgroundImage struct {
 	// The URL or fully qualified path to the background image file used for branding. This is a required property when configuration.backgroundType is set to IMAGE.
@@ -55,7 +58,7 @@ func (o *BrandingThemeConfigurationBackgroundImage) GetHref() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfigurationBackgroundImage) GetHrefOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Href, true
 }
@@ -79,7 +82,7 @@ func (o *BrandingThemeConfigurationBackgroundImage) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeConfigurationBackgroundImage) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -90,14 +93,18 @@ func (o *BrandingThemeConfigurationBackgroundImage) SetId(v string) {
 }
 
 func (o BrandingThemeConfigurationBackgroundImage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["href"] = o.Href
-	}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BrandingThemeConfigurationBackgroundImage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["href"] = o.Href
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableBrandingThemeConfigurationBackgroundImage struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf{}
+
 // NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf struct for NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf
 type NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf struct {
 	// The public ID of the Twilio account. Relevant to Twilio only. 
@@ -58,7 +61,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetSid(
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetSidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Sid, true
 }
@@ -82,7 +85,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetAuth
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetAuthTokenOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AuthToken, true
 }
@@ -106,7 +109,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetNumb
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetNumbersOk() ([]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Numbers, true
 }
@@ -117,17 +120,19 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) SetNumb
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["sid"] = o.Sid
-	}
-	if true {
-		toSerialize["authToken"] = o.AuthToken
-	}
-	if true {
-		toSerialize["numbers"] = o.Numbers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["sid"] = o.Sid
+	toSerialize["authToken"] = o.AuthToken
+	toSerialize["numbers"] = o.Numbers
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf struct {

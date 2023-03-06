@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyOfflineDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDevice{}
+
 // DeviceAuthenticationPolicyOfflineDevice struct for DeviceAuthenticationPolicyOfflineDevice
 type DeviceAuthenticationPolicyOfflineDevice struct {
 	// Enabled or disabled in the policy.
@@ -54,7 +57,7 @@ func (o *DeviceAuthenticationPolicyOfflineDevice) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDevice) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -78,7 +81,7 @@ func (o *DeviceAuthenticationPolicyOfflineDevice) GetOtp() DeviceAuthenticationP
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDevice) GetOtpOk() (*DeviceAuthenticationPolicyOfflineDeviceOtp, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Otp, true
 }
@@ -89,14 +92,18 @@ func (o *DeviceAuthenticationPolicyOfflineDevice) SetOtp(v DeviceAuthenticationP
 }
 
 func (o DeviceAuthenticationPolicyOfflineDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["otp"] = o.Otp
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyOfflineDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["otp"] = o.Otp
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyOfflineDevice struct {

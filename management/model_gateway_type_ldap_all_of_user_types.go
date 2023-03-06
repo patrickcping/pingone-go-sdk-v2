@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayTypeLDAPAllOfUserTypes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayTypeLDAPAllOfUserTypes{}
+
 // GatewayTypeLDAPAllOfUserTypes struct for GatewayTypeLDAPAllOfUserTypes
 type GatewayTypeLDAPAllOfUserTypes struct {
 	// Defaults to false if this property isn't specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway.
@@ -53,7 +56,7 @@ func NewGatewayTypeLDAPAllOfUserTypesWithDefaults() *GatewayTypeLDAPAllOfUserTyp
 
 // GetAllowPasswordChanges returns the AllowPasswordChanges field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetAllowPasswordChanges() bool {
-	if o == nil || isNil(o.AllowPasswordChanges) {
+	if o == nil || IsNil(o.AllowPasswordChanges) {
 		var ret bool
 		return ret
 	}
@@ -63,15 +66,15 @@ func (o *GatewayTypeLDAPAllOfUserTypes) GetAllowPasswordChanges() bool {
 // GetAllowPasswordChangesOk returns a tuple with the AllowPasswordChanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetAllowPasswordChangesOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowPasswordChanges) {
-    return nil, false
+	if o == nil || IsNil(o.AllowPasswordChanges) {
+		return nil, false
 	}
 	return o.AllowPasswordChanges, true
 }
 
 // HasAllowPasswordChanges returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) HasAllowPasswordChanges() bool {
-	if o != nil && !isNil(o.AllowPasswordChanges) {
+	if o != nil && !IsNil(o.AllowPasswordChanges) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *GatewayTypeLDAPAllOfUserTypes) SetAllowPasswordChanges(v bool) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -95,15 +98,15 @@ func (o *GatewayTypeLDAPAllOfUserTypes) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -129,7 +132,7 @@ func (o *GatewayTypeLDAPAllOfUserTypes) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -141,7 +144,7 @@ func (o *GatewayTypeLDAPAllOfUserTypes) SetName(v string) {
 
 // GetNewUserLookup returns the NewUserLookup field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetNewUserLookup() GatewayTypeLDAPAllOfNewUserLookup {
-	if o == nil || isNil(o.NewUserLookup) {
+	if o == nil || IsNil(o.NewUserLookup) {
 		var ret GatewayTypeLDAPAllOfNewUserLookup
 		return ret
 	}
@@ -151,15 +154,15 @@ func (o *GatewayTypeLDAPAllOfUserTypes) GetNewUserLookup() GatewayTypeLDAPAllOfN
 // GetNewUserLookupOk returns a tuple with the NewUserLookup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetNewUserLookupOk() (*GatewayTypeLDAPAllOfNewUserLookup, bool) {
-	if o == nil || isNil(o.NewUserLookup) {
-    return nil, false
+	if o == nil || IsNil(o.NewUserLookup) {
+		return nil, false
 	}
 	return o.NewUserLookup, true
 }
 
 // HasNewUserLookup returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) HasNewUserLookup() bool {
-	if o != nil && !isNil(o.NewUserLookup) {
+	if o != nil && !IsNil(o.NewUserLookup) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *GatewayTypeLDAPAllOfUserTypes) GetOrderedCorrelationAttributes() []stri
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetOrderedCorrelationAttributesOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.OrderedCorrelationAttributes, true
 }
@@ -209,7 +212,7 @@ func (o *GatewayTypeLDAPAllOfUserTypes) GetPasswordAuthority() EnumGatewayPasswo
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetPasswordAuthorityOk() (*EnumGatewayPasswordAuthority, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PasswordAuthority, true
 }
@@ -233,7 +236,7 @@ func (o *GatewayTypeLDAPAllOfUserTypes) GetSearchBaseDn() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfUserTypes) GetSearchBaseDnOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SearchBaseDn, true
 }
@@ -244,29 +247,29 @@ func (o *GatewayTypeLDAPAllOfUserTypes) SetSearchBaseDn(v string) {
 }
 
 func (o GatewayTypeLDAPAllOfUserTypes) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowPasswordChanges) {
-		toSerialize["allowPasswordChanges"] = o.AllowPasswordChanges
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.NewUserLookup) {
-		toSerialize["newUserLookup"] = o.NewUserLookup
-	}
-	if true {
-		toSerialize["orderedCorrelationAttributes"] = o.OrderedCorrelationAttributes
-	}
-	if true {
-		toSerialize["passwordAuthority"] = o.PasswordAuthority
-	}
-	if true {
-		toSerialize["searchBaseDn"] = o.SearchBaseDn
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayTypeLDAPAllOfUserTypes) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowPasswordChanges) {
+		toSerialize["allowPasswordChanges"] = o.AllowPasswordChanges
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.NewUserLookup) {
+		toSerialize["newUserLookup"] = o.NewUserLookup
+	}
+	toSerialize["orderedCorrelationAttributes"] = o.OrderedCorrelationAttributes
+	toSerialize["passwordAuthority"] = o.PasswordAuthority
+	toSerialize["searchBaseDn"] = o.SearchBaseDn
+	return toSerialize, nil
 }
 
 type NullableGatewayTypeLDAPAllOfUserTypes struct {

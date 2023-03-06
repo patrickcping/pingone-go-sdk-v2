@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the GatewaySupportedVersionsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewaySupportedVersionsInner{}
+
 // GatewaySupportedVersionsInner struct for GatewaySupportedVersionsInner
 type GatewaySupportedVersionsInner struct {
 	// A string that specifies the gateway version number.
@@ -48,7 +51,7 @@ func NewGatewaySupportedVersionsInnerWithDefaults() *GatewaySupportedVersionsInn
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *GatewaySupportedVersionsInner) GetVersion() string {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -58,15 +61,15 @@ func (o *GatewaySupportedVersionsInner) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewaySupportedVersionsInner) GetVersionOk() (*string, bool) {
-	if o == nil || isNil(o.Version) {
-    return nil, false
+	if o == nil || IsNil(o.Version) {
+		return nil, false
 	}
 	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *GatewaySupportedVersionsInner) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *GatewaySupportedVersionsInner) SetVersion(v string) {
 
 // GetImage returns the Image field value if set, zero value otherwise.
 func (o *GatewaySupportedVersionsInner) GetImage() string {
-	if o == nil || isNil(o.Image) {
+	if o == nil || IsNil(o.Image) {
 		var ret string
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *GatewaySupportedVersionsInner) GetImage() string {
 // GetImageOk returns a tuple with the Image field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewaySupportedVersionsInner) GetImageOk() (*string, bool) {
-	if o == nil || isNil(o.Image) {
-    return nil, false
+	if o == nil || IsNil(o.Image) {
+		return nil, false
 	}
 	return o.Image, true
 }
 
 // HasImage returns a boolean if a field has been set.
 func (o *GatewaySupportedVersionsInner) HasImage() bool {
-	if o != nil && !isNil(o.Image) {
+	if o != nil && !IsNil(o.Image) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *GatewaySupportedVersionsInner) SetImage(v string) {
 
 // GetRecommended returns the Recommended field value if set, zero value otherwise.
 func (o *GatewaySupportedVersionsInner) GetRecommended() bool {
-	if o == nil || isNil(o.Recommended) {
+	if o == nil || IsNil(o.Recommended) {
 		var ret bool
 		return ret
 	}
@@ -122,15 +125,15 @@ func (o *GatewaySupportedVersionsInner) GetRecommended() bool {
 // GetRecommendedOk returns a tuple with the Recommended field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewaySupportedVersionsInner) GetRecommendedOk() (*bool, bool) {
-	if o == nil || isNil(o.Recommended) {
-    return nil, false
+	if o == nil || IsNil(o.Recommended) {
+		return nil, false
 	}
 	return o.Recommended, true
 }
 
 // HasRecommended returns a boolean if a field has been set.
 func (o *GatewaySupportedVersionsInner) HasRecommended() bool {
-	if o != nil && !isNil(o.Recommended) {
+	if o != nil && !IsNil(o.Recommended) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *GatewaySupportedVersionsInner) SetRecommended(v bool) {
 
 // GetLatest returns the Latest field value if set, zero value otherwise.
 func (o *GatewaySupportedVersionsInner) GetLatest() bool {
-	if o == nil || isNil(o.Latest) {
+	if o == nil || IsNil(o.Latest) {
 		var ret bool
 		return ret
 	}
@@ -154,15 +157,15 @@ func (o *GatewaySupportedVersionsInner) GetLatest() bool {
 // GetLatestOk returns a tuple with the Latest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewaySupportedVersionsInner) GetLatestOk() (*bool, bool) {
-	if o == nil || isNil(o.Latest) {
-    return nil, false
+	if o == nil || IsNil(o.Latest) {
+		return nil, false
 	}
 	return o.Latest, true
 }
 
 // HasLatest returns a boolean if a field has been set.
 func (o *GatewaySupportedVersionsInner) HasLatest() bool {
-	if o != nil && !isNil(o.Latest) {
+	if o != nil && !IsNil(o.Latest) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *GatewaySupportedVersionsInner) SetLatest(v bool) {
 
 // GetSupportEndsOn returns the SupportEndsOn field value if set, zero value otherwise.
 func (o *GatewaySupportedVersionsInner) GetSupportEndsOn() time.Time {
-	if o == nil || isNil(o.SupportEndsOn) {
+	if o == nil || IsNil(o.SupportEndsOn) {
 		var ret time.Time
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *GatewaySupportedVersionsInner) GetSupportEndsOn() time.Time {
 // GetSupportEndsOnOk returns a tuple with the SupportEndsOn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewaySupportedVersionsInner) GetSupportEndsOnOk() (*time.Time, bool) {
-	if o == nil || isNil(o.SupportEndsOn) {
-    return nil, false
+	if o == nil || IsNil(o.SupportEndsOn) {
+		return nil, false
 	}
 	return o.SupportEndsOn, true
 }
 
 // HasSupportEndsOn returns a boolean if a field has been set.
 func (o *GatewaySupportedVersionsInner) HasSupportEndsOn() bool {
-	if o != nil && !isNil(o.SupportEndsOn) {
+	if o != nil && !IsNil(o.SupportEndsOn) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *GatewaySupportedVersionsInner) SetSupportEndsOn(v time.Time) {
 
 // GetDaysUntilSupportEnds returns the DaysUntilSupportEnds field value if set, zero value otherwise.
 func (o *GatewaySupportedVersionsInner) GetDaysUntilSupportEnds() int32 {
-	if o == nil || isNil(o.DaysUntilSupportEnds) {
+	if o == nil || IsNil(o.DaysUntilSupportEnds) {
 		var ret int32
 		return ret
 	}
@@ -218,15 +221,15 @@ func (o *GatewaySupportedVersionsInner) GetDaysUntilSupportEnds() int32 {
 // GetDaysUntilSupportEndsOk returns a tuple with the DaysUntilSupportEnds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewaySupportedVersionsInner) GetDaysUntilSupportEndsOk() (*int32, bool) {
-	if o == nil || isNil(o.DaysUntilSupportEnds) {
-    return nil, false
+	if o == nil || IsNil(o.DaysUntilSupportEnds) {
+		return nil, false
 	}
 	return o.DaysUntilSupportEnds, true
 }
 
 // HasDaysUntilSupportEnds returns a boolean if a field has been set.
 func (o *GatewaySupportedVersionsInner) HasDaysUntilSupportEnds() bool {
-	if o != nil && !isNil(o.DaysUntilSupportEnds) {
+	if o != nil && !IsNil(o.DaysUntilSupportEnds) {
 		return true
 	}
 
@@ -239,26 +242,34 @@ func (o *GatewaySupportedVersionsInner) SetDaysUntilSupportEnds(v int32) {
 }
 
 func (o GatewaySupportedVersionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Version) {
-		toSerialize["version"] = o.Version
-	}
-	if !isNil(o.Image) {
-		toSerialize["image"] = o.Image
-	}
-	if !isNil(o.Recommended) {
-		toSerialize["recommended"] = o.Recommended
-	}
-	if !isNil(o.Latest) {
-		toSerialize["latest"] = o.Latest
-	}
-	if !isNil(o.SupportEndsOn) {
-		toSerialize["supportEndsOn"] = o.SupportEndsOn
-	}
-	if !isNil(o.DaysUntilSupportEnds) {
-		toSerialize["daysUntilSupportEnds"] = o.DaysUntilSupportEnds
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewaySupportedVersionsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Image) {
+		toSerialize["image"] = o.Image
+	}
+	if !IsNil(o.Recommended) {
+		toSerialize["recommended"] = o.Recommended
+	}
+	if !IsNil(o.Latest) {
+		toSerialize["latest"] = o.Latest
+	}
+	if !IsNil(o.SupportEndsOn) {
+		toSerialize["supportEndsOn"] = o.SupportEndsOn
+	}
+	if !IsNil(o.DaysUntilSupportEnds) {
+		toSerialize["daysUntilSupportEnds"] = o.DaysUntilSupportEnds
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewaySupportedVersionsInner struct {

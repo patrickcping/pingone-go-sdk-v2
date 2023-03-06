@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MFAPushCredentialHMSAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFAPushCredentialHMSAllOf{}
+
 // MFAPushCredentialHMSAllOf struct for MFAPushCredentialHMSAllOf
 type MFAPushCredentialHMSAllOf struct {
 	// Used only if type is set to HMS. OAuth 2.0 Client ID from the Huawei Developers API console.
@@ -55,7 +58,7 @@ func (o *MFAPushCredentialHMSAllOf) GetClientId() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialHMSAllOf) GetClientIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientId, true
 }
@@ -79,7 +82,7 @@ func (o *MFAPushCredentialHMSAllOf) GetClientSecret() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialHMSAllOf) GetClientSecretOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientSecret, true
 }
@@ -90,14 +93,18 @@ func (o *MFAPushCredentialHMSAllOf) SetClientSecret(v string) {
 }
 
 func (o MFAPushCredentialHMSAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["clientSecret"] = o.ClientSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFAPushCredentialHMSAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["clientSecret"] = o.ClientSecret
+	return toSerialize, nil
 }
 
 type NullableMFAPushCredentialHMSAllOf struct {

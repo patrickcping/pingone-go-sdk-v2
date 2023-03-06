@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionIPRange type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionIPRange{}
+
 // SignOnPolicyActionCommonConditionIPRange struct for SignOnPolicyActionCommonConditionIPRange
 type SignOnPolicyActionCommonConditionIPRange struct {
 	Contains string `json:"contains"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionCommonConditionIPRange) GetContains() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionIPRange) GetContainsOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Contains, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionCommonConditionIPRange) GetIpRange() []string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionIPRange) GetIpRangeOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IpRange, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionCommonConditionIPRange) SetIpRange(v []string) {
 }
 
 func (o SignOnPolicyActionCommonConditionIPRange) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["contains"] = o.Contains
-	}
-	if true {
-		toSerialize["ipRange"] = o.IpRange
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionIPRange) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["contains"] = o.Contains
+	toSerialize["ipRange"] = o.IpRange
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionIPRange struct {

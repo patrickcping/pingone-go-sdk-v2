@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BrandingThemeDefault type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BrandingThemeDefault{}
+
 // BrandingThemeDefault struct for BrandingThemeDefault
 type BrandingThemeDefault struct {
 	// A boolean to specify whether the theme is the default in the environment
@@ -52,7 +55,7 @@ func (o *BrandingThemeDefault) GetDefault() bool {
 // and a boolean to check if the value has been set.
 func (o *BrandingThemeDefault) GetDefaultOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Default, true
 }
@@ -63,11 +66,17 @@ func (o *BrandingThemeDefault) SetDefault(v bool) {
 }
 
 func (o BrandingThemeDefault) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["default"] = o.Default
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BrandingThemeDefault) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["default"] = o.Default
+	return toSerialize, nil
 }
 
 type NullableBrandingThemeDefault struct {

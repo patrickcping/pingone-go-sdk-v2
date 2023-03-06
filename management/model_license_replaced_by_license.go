@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseReplacedByLicense type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseReplacedByLicense{}
+
 // LicenseReplacedByLicense A read-only object that specifies the license ID of the license that replaces this license.
 type LicenseReplacedByLicense struct {
 	// A read-only string that specifies the license ID of the license that replaces this license.
@@ -39,7 +42,7 @@ func NewLicenseReplacedByLicenseWithDefaults() *LicenseReplacedByLicense {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *LicenseReplacedByLicense) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *LicenseReplacedByLicense) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseReplacedByLicense) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *LicenseReplacedByLicense) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *LicenseReplacedByLicense) SetId(v string) {
 }
 
 func (o LicenseReplacedByLicense) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseReplacedByLicense) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseReplacedByLicense struct {

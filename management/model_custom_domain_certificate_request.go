@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomDomainCertificateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomDomainCertificateRequest{}
+
 // CustomDomainCertificateRequest struct for CustomDomainCertificateRequest
 type CustomDomainCertificateRequest struct {
 	// A string that specifies the PEM-encoded certificate to import. This is a required property. The following validation is performed on the certificate: \\ It must not be expired. \\ It MUST not be self signed. \\ The custom domain name MUST match one of the subject alternative name (SAN) values on the certificate. 
@@ -57,7 +60,7 @@ func (o *CustomDomainCertificateRequest) GetCertificate() string {
 // and a boolean to check if the value has been set.
 func (o *CustomDomainCertificateRequest) GetCertificateOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Certificate, true
 }
@@ -69,7 +72,7 @@ func (o *CustomDomainCertificateRequest) SetCertificate(v string) {
 
 // GetIntermediateCertificates returns the IntermediateCertificates field value if set, zero value otherwise.
 func (o *CustomDomainCertificateRequest) GetIntermediateCertificates() string {
-	if o == nil || isNil(o.IntermediateCertificates) {
+	if o == nil || IsNil(o.IntermediateCertificates) {
 		var ret string
 		return ret
 	}
@@ -79,15 +82,15 @@ func (o *CustomDomainCertificateRequest) GetIntermediateCertificates() string {
 // GetIntermediateCertificatesOk returns a tuple with the IntermediateCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomDomainCertificateRequest) GetIntermediateCertificatesOk() (*string, bool) {
-	if o == nil || isNil(o.IntermediateCertificates) {
-    return nil, false
+	if o == nil || IsNil(o.IntermediateCertificates) {
+		return nil, false
 	}
 	return o.IntermediateCertificates, true
 }
 
 // HasIntermediateCertificates returns a boolean if a field has been set.
 func (o *CustomDomainCertificateRequest) HasIntermediateCertificates() bool {
-	if o != nil && !isNil(o.IntermediateCertificates) {
+	if o != nil && !IsNil(o.IntermediateCertificates) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *CustomDomainCertificateRequest) GetPrivateKey() string {
 // and a boolean to check if the value has been set.
 func (o *CustomDomainCertificateRequest) GetPrivateKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PrivateKey, true
 }
@@ -124,17 +127,21 @@ func (o *CustomDomainCertificateRequest) SetPrivateKey(v string) {
 }
 
 func (o CustomDomainCertificateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["certificate"] = o.Certificate
-	}
-	if !isNil(o.IntermediateCertificates) {
-		toSerialize["intermediateCertificates"] = o.IntermediateCertificates
-	}
-	if true {
-		toSerialize["privateKey"] = o.PrivateKey
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomDomainCertificateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["certificate"] = o.Certificate
+	if !IsNil(o.IntermediateCertificates) {
+		toSerialize["intermediateCertificates"] = o.IntermediateCertificates
+	}
+	toSerialize["privateKey"] = o.PrivateKey
+	return toSerialize, nil
 }
 
 type NullableCustomDomainCertificateRequest struct {

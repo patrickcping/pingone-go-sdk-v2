@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationSAMLAllOfIdpSigningKey type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationSAMLAllOfIdpSigningKey{}
+
 // ApplicationSAMLAllOfIdpSigningKey struct for ApplicationSAMLAllOfIdpSigningKey
 type ApplicationSAMLAllOfIdpSigningKey struct {
 	// A string that specifies the certificate to be used by the identity provider to sign assertions and responses. If this property is omitted, the default signing certificate for the environment is used.
@@ -52,7 +55,7 @@ func (o *ApplicationSAMLAllOfIdpSigningKey) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationSAMLAllOfIdpSigningKey) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *ApplicationSAMLAllOfIdpSigningKey) SetId(v string) {
 }
 
 func (o ApplicationSAMLAllOfIdpSigningKey) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationSAMLAllOfIdpSigningKey) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableApplicationSAMLAllOfIdpSigningKey struct {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AgreementLanguageRevision type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgreementLanguageRevision{}
+
 // AgreementLanguageRevision struct for AgreementLanguageRevision
 type AgreementLanguageRevision struct {
 	Agreement *AgreementLanguageAgreement `json:"agreement,omitempty"`
@@ -55,7 +58,7 @@ func NewAgreementLanguageRevisionWithDefaults() *AgreementLanguageRevision {
 
 // GetAgreement returns the Agreement field value if set, zero value otherwise.
 func (o *AgreementLanguageRevision) GetAgreement() AgreementLanguageAgreement {
-	if o == nil || isNil(o.Agreement) {
+	if o == nil || IsNil(o.Agreement) {
 		var ret AgreementLanguageAgreement
 		return ret
 	}
@@ -65,15 +68,15 @@ func (o *AgreementLanguageRevision) GetAgreement() AgreementLanguageAgreement {
 // GetAgreementOk returns a tuple with the Agreement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetAgreementOk() (*AgreementLanguageAgreement, bool) {
-	if o == nil || isNil(o.Agreement) {
-    return nil, false
+	if o == nil || IsNil(o.Agreement) {
+		return nil, false
 	}
 	return o.Agreement, true
 }
 
 // HasAgreement returns a boolean if a field has been set.
 func (o *AgreementLanguageRevision) HasAgreement() bool {
-	if o != nil && !isNil(o.Agreement) {
+	if o != nil && !IsNil(o.Agreement) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *AgreementLanguageRevision) GetContentType() EnumAgreementRevisionConten
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetContentTypeOk() (*EnumAgreementRevisionContentType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ContentType, true
 }
@@ -123,7 +126,7 @@ func (o *AgreementLanguageRevision) GetEffectiveAt() time.Time {
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetEffectiveAtOk() (*time.Time, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.EffectiveAt, true
 }
@@ -135,7 +138,7 @@ func (o *AgreementLanguageRevision) SetEffectiveAt(v time.Time) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AgreementLanguageRevision) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -145,15 +148,15 @@ func (o *AgreementLanguageRevision) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *AgreementLanguageRevision) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -167,7 +170,7 @@ func (o *AgreementLanguageRevision) SetId(v string) {
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *AgreementLanguageRevision) GetLanguage() AgreementLanguageRevisionLanguage {
-	if o == nil || isNil(o.Language) {
+	if o == nil || IsNil(o.Language) {
 		var ret AgreementLanguageRevisionLanguage
 		return ret
 	}
@@ -177,15 +180,15 @@ func (o *AgreementLanguageRevision) GetLanguage() AgreementLanguageRevisionLangu
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetLanguageOk() (*AgreementLanguageRevisionLanguage, bool) {
-	if o == nil || isNil(o.Language) {
-    return nil, false
+	if o == nil || IsNil(o.Language) {
+		return nil, false
 	}
 	return o.Language, true
 }
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *AgreementLanguageRevision) HasLanguage() bool {
-	if o != nil && !isNil(o.Language) {
+	if o != nil && !IsNil(o.Language) {
 		return true
 	}
 
@@ -199,7 +202,7 @@ func (o *AgreementLanguageRevision) SetLanguage(v AgreementLanguageRevisionLangu
 
 // GetNotValidAfter returns the NotValidAfter field value if set, zero value otherwise.
 func (o *AgreementLanguageRevision) GetNotValidAfter() time.Time {
-	if o == nil || isNil(o.NotValidAfter) {
+	if o == nil || IsNil(o.NotValidAfter) {
 		var ret time.Time
 		return ret
 	}
@@ -209,15 +212,15 @@ func (o *AgreementLanguageRevision) GetNotValidAfter() time.Time {
 // GetNotValidAfterOk returns a tuple with the NotValidAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetNotValidAfterOk() (*time.Time, bool) {
-	if o == nil || isNil(o.NotValidAfter) {
-    return nil, false
+	if o == nil || IsNil(o.NotValidAfter) {
+		return nil, false
 	}
 	return o.NotValidAfter, true
 }
 
 // HasNotValidAfter returns a boolean if a field has been set.
 func (o *AgreementLanguageRevision) HasNotValidAfter() bool {
-	if o != nil && !isNil(o.NotValidAfter) {
+	if o != nil && !IsNil(o.NotValidAfter) {
 		return true
 	}
 
@@ -243,7 +246,7 @@ func (o *AgreementLanguageRevision) GetRequireReconsent() bool {
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetRequireReconsentOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.RequireReconsent, true
 }
@@ -267,7 +270,7 @@ func (o *AgreementLanguageRevision) GetText() string {
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageRevision) GetTextOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Text, true
 }
@@ -278,32 +281,28 @@ func (o *AgreementLanguageRevision) SetText(v string) {
 }
 
 func (o AgreementLanguageRevision) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Agreement) {
-		toSerialize["agreement"] = o.Agreement
-	}
-	if true {
-		toSerialize["contentType"] = o.ContentType
-	}
-	if true {
-		toSerialize["effectiveAt"] = o.EffectiveAt
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Language) {
-		toSerialize["language"] = o.Language
-	}
-	if !isNil(o.NotValidAfter) {
-		toSerialize["notValidAfter"] = o.NotValidAfter
-	}
-	if true {
-		toSerialize["requireReconsent"] = o.RequireReconsent
-	}
-	if true {
-		toSerialize["text"] = o.Text
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AgreementLanguageRevision) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Agreement) {
+		toSerialize["agreement"] = o.Agreement
+	}
+	toSerialize["contentType"] = o.ContentType
+	toSerialize["effectiveAt"] = o.EffectiveAt
+	// skip: id is readOnly
+	if !IsNil(o.Language) {
+		toSerialize["language"] = o.Language
+	}
+	// skip: notValidAfter is readOnly
+	toSerialize["requireReconsent"] = o.RequireReconsent
+	toSerialize["text"] = o.Text
+	return toSerialize, nil
 }
 
 type NullableAgreementLanguageRevision struct {

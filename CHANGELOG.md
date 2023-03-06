@@ -2,7 +2,11 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.0](./agreementmanagement/CHANGELOG.md)
     * **Initial release** [#117](https://github.com/patrickcping/pingone-go-sdk-v2/pull/117)
+    * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.3](./authorize/CHANGELOG.md)
+    * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.16.0](./management/CHANGELOG.md)
+    * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
     * **Breaking change** Agreement revision content type changed to an enum `EnumAgreementRevisionContentType`. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
     * **Breaking change** Required attributes now added to the `AgreementLanguageRevision` data model [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
     * **Bug fix** `reconsentPeriodDays` attribute in the `Agreement` data model corrected to be a floating point number, as in the API. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
@@ -15,7 +19,10 @@
     * **Enhancement** Add support for `ApplicationPingOneAdminConsole` model for applications [#114](https://github.com/patrickcping/pingone-go-sdk-v2/pull/114)
     * **Enhancement** `effectiveAt` and `notValidAfter` attributes on the `AgreementLanguageRevision` changed to be date/time format. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.9.0](./mfa/CHANGELOG.md)
+    * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
     * **Feature** Support for "User MFA Enabled" API and data model [#113](https://github.com/patrickcping/pingone-go-sdk-v2/pull/113)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.3.3](./risk/CHANGELOG.md)
+    * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
 
 # Release (2023-02-22)
 

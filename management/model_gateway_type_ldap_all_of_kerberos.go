@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayTypeLDAPAllOfKerberos type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayTypeLDAPAllOfKerberos{}
+
 // GatewayTypeLDAPAllOfKerberos Contains the Kerberos authentication settings. Set this to null to disable Kerberos authentication.
 type GatewayTypeLDAPAllOfKerberos struct {
 	// The password for the Kerberos service account.
@@ -44,7 +47,7 @@ func NewGatewayTypeLDAPAllOfKerberosWithDefaults() *GatewayTypeLDAPAllOfKerberos
 
 // GetServiceAccountPassword returns the ServiceAccountPassword field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountPassword() string {
-	if o == nil || isNil(o.ServiceAccountPassword) {
+	if o == nil || IsNil(o.ServiceAccountPassword) {
 		var ret string
 		return ret
 	}
@@ -54,15 +57,15 @@ func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountPassword() string {
 // GetServiceAccountPasswordOk returns a tuple with the ServiceAccountPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountPasswordOk() (*string, bool) {
-	if o == nil || isNil(o.ServiceAccountPassword) {
-    return nil, false
+	if o == nil || IsNil(o.ServiceAccountPassword) {
+		return nil, false
 	}
 	return o.ServiceAccountPassword, true
 }
 
 // HasServiceAccountPassword returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOfKerberos) HasServiceAccountPassword() bool {
-	if o != nil && !isNil(o.ServiceAccountPassword) {
+	if o != nil && !IsNil(o.ServiceAccountPassword) {
 		return true
 	}
 
@@ -88,7 +91,7 @@ func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountUserPrincipalName() stri
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfKerberos) GetServiceAccountUserPrincipalNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ServiceAccountUserPrincipalName, true
 }
@@ -100,7 +103,7 @@ func (o *GatewayTypeLDAPAllOfKerberos) SetServiceAccountUserPrincipalName(v stri
 
 // GetMinutesToRetainPreviousCredentials returns the MinutesToRetainPreviousCredentials field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentials() int32 {
-	if o == nil || isNil(o.MinutesToRetainPreviousCredentials) {
+	if o == nil || IsNil(o.MinutesToRetainPreviousCredentials) {
 		var ret int32
 		return ret
 	}
@@ -110,15 +113,15 @@ func (o *GatewayTypeLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentials() i
 // GetMinutesToRetainPreviousCredentialsOk returns a tuple with the MinutesToRetainPreviousCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfKerberos) GetMinutesToRetainPreviousCredentialsOk() (*int32, bool) {
-	if o == nil || isNil(o.MinutesToRetainPreviousCredentials) {
-    return nil, false
+	if o == nil || IsNil(o.MinutesToRetainPreviousCredentials) {
+		return nil, false
 	}
 	return o.MinutesToRetainPreviousCredentials, true
 }
 
 // HasMinutesToRetainPreviousCredentials returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOfKerberos) HasMinutesToRetainPreviousCredentials() bool {
-	if o != nil && !isNil(o.MinutesToRetainPreviousCredentials) {
+	if o != nil && !IsNil(o.MinutesToRetainPreviousCredentials) {
 		return true
 	}
 
@@ -131,17 +134,23 @@ func (o *GatewayTypeLDAPAllOfKerberos) SetMinutesToRetainPreviousCredentials(v i
 }
 
 func (o GatewayTypeLDAPAllOfKerberos) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ServiceAccountPassword) {
-		toSerialize["serviceAccountPassword"] = o.ServiceAccountPassword
-	}
-	if true {
-		toSerialize["serviceAccountUserPrincipalName"] = o.ServiceAccountUserPrincipalName
-	}
-	if !isNil(o.MinutesToRetainPreviousCredentials) {
-		toSerialize["minutesToRetainPreviousCredentials"] = o.MinutesToRetainPreviousCredentials
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayTypeLDAPAllOfKerberos) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ServiceAccountPassword) {
+		toSerialize["serviceAccountPassword"] = o.ServiceAccountPassword
+	}
+	toSerialize["serviceAccountUserPrincipalName"] = o.ServiceAccountUserPrincipalName
+	if !IsNil(o.MinutesToRetainPreviousCredentials) {
+		toSerialize["minutesToRetainPreviousCredentials"] = o.MinutesToRetainPreviousCredentials
+	}
+	return toSerialize, nil
 }
 
 type NullableGatewayTypeLDAPAllOfKerberos struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderSAMLAllOfSpSigning type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderSAMLAllOfSpSigning{}
+
 // IdentityProviderSAMLAllOfSpSigning struct for IdentityProviderSAMLAllOfSpSigning
 type IdentityProviderSAMLAllOfSpSigning struct {
 	Key IdentityProviderSAMLAllOfSpSigningKey `json:"key"`
@@ -51,7 +54,7 @@ func (o *IdentityProviderSAMLAllOfSpSigning) GetKey() IdentityProviderSAMLAllOfS
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAMLAllOfSpSigning) GetKeyOk() (*IdentityProviderSAMLAllOfSpSigningKey, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Key, true
 }
@@ -62,11 +65,17 @@ func (o *IdentityProviderSAMLAllOfSpSigning) SetKey(v IdentityProviderSAMLAllOfS
 }
 
 func (o IdentityProviderSAMLAllOfSpSigning) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderSAMLAllOfSpSigning) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderSAMLAllOfSpSigning struct {

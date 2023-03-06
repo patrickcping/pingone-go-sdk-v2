@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionAnonymousNetwork type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionAnonymousNetwork{}
+
 // SignOnPolicyActionCommonConditionAnonymousNetwork struct for SignOnPolicyActionCommonConditionAnonymousNetwork
 type SignOnPolicyActionCommonConditionAnonymousNetwork struct {
 	AnonymousNetwork []string `json:"anonymousNetwork"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionCommonConditionAnonymousNetwork) GetAnonymousNetwork(
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionAnonymousNetwork) GetAnonymousNetworkOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.AnonymousNetwork, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionCommonConditionAnonymousNetwork) GetValid() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionAnonymousNetwork) GetValidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Valid, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionCommonConditionAnonymousNetwork) SetValid(v string) {
 }
 
 func (o SignOnPolicyActionCommonConditionAnonymousNetwork) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["anonymousNetwork"] = o.AnonymousNetwork
-	}
-	if true {
-		toSerialize["valid"] = o.Valid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionAnonymousNetwork) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["anonymousNetwork"] = o.AnonymousNetwork
+	toSerialize["valid"] = o.Valid
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionAnonymousNetwork struct {

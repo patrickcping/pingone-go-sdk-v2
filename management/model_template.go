@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Template type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Template{}
+
 // Template struct for Template
 type Template struct {
 	// The template id
@@ -56,7 +59,7 @@ func NewTemplateWithDefaults() *Template {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Template) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -66,15 +69,15 @@ func (o *Template) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Template) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Template) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -100,7 +103,7 @@ func (o *Template) GetDisplayName() string {
 // and a boolean to check if the value has been set.
 func (o *Template) GetDisplayNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DisplayName, true
 }
@@ -124,7 +127,7 @@ func (o *Template) GetDeliveryMethods() []string {
 // and a boolean to check if the value has been set.
 func (o *Template) GetDeliveryMethodsOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.DeliveryMethods, true
 }
@@ -136,7 +139,7 @@ func (o *Template) SetDeliveryMethods(v []string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Template) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -146,15 +149,15 @@ func (o *Template) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Template) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Template) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *Template) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Template) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -178,15 +181,15 @@ func (o *Template) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Template) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Template) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -200,7 +203,7 @@ func (o *Template) SetUpdatedAt(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Template) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -210,15 +213,15 @@ func (o *Template) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Template) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Template) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *Template) GetVariables() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *Template) GetVariablesOk() (map[string]interface{}, bool) {
 	if o == nil {
-    return map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Variables, true
 }
@@ -256,7 +259,7 @@ func (o *Template) SetVariables(v map[string]interface{}) {
 
 // GetAllowDynamicVariables returns the AllowDynamicVariables field value if set, zero value otherwise.
 func (o *Template) GetAllowDynamicVariables() bool {
-	if o == nil || isNil(o.AllowDynamicVariables) {
+	if o == nil || IsNil(o.AllowDynamicVariables) {
 		var ret bool
 		return ret
 	}
@@ -266,15 +269,15 @@ func (o *Template) GetAllowDynamicVariables() bool {
 // GetAllowDynamicVariablesOk returns a tuple with the AllowDynamicVariables field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Template) GetAllowDynamicVariablesOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowDynamicVariables) {
-    return nil, false
+	if o == nil || IsNil(o.AllowDynamicVariables) {
+		return nil, false
 	}
 	return o.AllowDynamicVariables, true
 }
 
 // HasAllowDynamicVariables returns a boolean if a field has been set.
 func (o *Template) HasAllowDynamicVariables() bool {
-	if o != nil && !isNil(o.AllowDynamicVariables) {
+	if o != nil && !IsNil(o.AllowDynamicVariables) {
 		return true
 	}
 
@@ -287,32 +290,28 @@ func (o *Template) SetAllowDynamicVariables(v bool) {
 }
 
 func (o Template) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["deliveryMethods"] = o.DeliveryMethods
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["variables"] = o.Variables
-	}
-	if !isNil(o.AllowDynamicVariables) {
-		toSerialize["allowDynamicVariables"] = o.AllowDynamicVariables
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Template) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["deliveryMethods"] = o.DeliveryMethods
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["variables"] = o.Variables
+	if !IsNil(o.AllowDynamicVariables) {
+		toSerialize["allowDynamicVariables"] = o.AllowDynamicVariables
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplate struct {

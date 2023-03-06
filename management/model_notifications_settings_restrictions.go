@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationsSettingsRestrictions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsRestrictions{}
+
 // NotificationsSettingsRestrictions struct for NotificationsSettingsRestrictions
 type NotificationsSettingsRestrictions struct {
 	SmsVoiceQuota NotificationsSettingsRestrictionsSmsVoiceQuota `json:"smsVoiceQuota"`
@@ -51,7 +54,7 @@ func (o *NotificationsSettingsRestrictions) GetSmsVoiceQuota() NotificationsSett
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsRestrictions) GetSmsVoiceQuotaOk() (*NotificationsSettingsRestrictionsSmsVoiceQuota, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SmsVoiceQuota, true
 }
@@ -62,11 +65,17 @@ func (o *NotificationsSettingsRestrictions) SetSmsVoiceQuota(v NotificationsSett
 }
 
 func (o NotificationsSettingsRestrictions) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["smsVoiceQuota"] = o.SmsVoiceQuota
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsRestrictions) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["smsVoiceQuota"] = o.SmsVoiceQuota
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsRestrictions struct {

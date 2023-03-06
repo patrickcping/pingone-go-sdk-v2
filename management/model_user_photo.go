@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserPhoto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserPhoto{}
+
 // UserPhoto struct for UserPhoto
 type UserPhoto struct {
 	// A string that specifies the URI that is a uniform resource locator (as defined in Section 1.1.3 of RFC 3986) that points to a resource location representing the user’s image. This can be removed from a user by setting the photo attribute to null. If provided, the resource must be a file (for example, a GIF, JPEG, or PNG image file) rather than a web page containing an image. It must be a valid URL that starts with the HTTP or HTTPS scheme.
@@ -39,7 +42,7 @@ func NewUserPhotoWithDefaults() *UserPhoto {
 
 // GetHref returns the Href field value if set, zero value otherwise.
 func (o *UserPhoto) GetHref() string {
-	if o == nil || isNil(o.Href) {
+	if o == nil || IsNil(o.Href) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *UserPhoto) GetHref() string {
 // GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserPhoto) GetHrefOk() (*string, bool) {
-	if o == nil || isNil(o.Href) {
-    return nil, false
+	if o == nil || IsNil(o.Href) {
+		return nil, false
 	}
 	return o.Href, true
 }
 
 // HasHref returns a boolean if a field has been set.
 func (o *UserPhoto) HasHref() bool {
-	if o != nil && !isNil(o.Href) {
+	if o != nil && !IsNil(o.Href) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *UserPhoto) SetHref(v string) {
 }
 
 func (o UserPhoto) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Href) {
-		toSerialize["href"] = o.Href
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserPhoto) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	return toSerialize, nil
 }
 
 type NullableUserPhoto struct {

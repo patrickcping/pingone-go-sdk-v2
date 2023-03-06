@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionLoginAllOfRegistration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionLoginAllOfRegistration{}
+
 // SignOnPolicyActionLoginAllOfRegistration Specifies the account registration options.
 type SignOnPolicyActionLoginAllOfRegistration struct {
 	// A boolean that specifies the enabled/disabled state of the policy action. The default is disabled when creating a new policy. When enabled, it allows the use of the new user registration flow. This attribute should be set to true when implementing the social login sign-on policy option.
@@ -60,7 +63,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistration) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -72,7 +75,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) SetEnabled(v bool) {
 
 // GetExternal returns the External field value if set, zero value otherwise.
 func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternal() SignOnPolicyActionLoginAllOfRegistrationExternal {
-	if o == nil || isNil(o.External) {
+	if o == nil || IsNil(o.External) {
 		var ret SignOnPolicyActionLoginAllOfRegistrationExternal
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternal() SignOnPolicyAct
 // GetExternalOk returns a tuple with the External field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistration) GetExternalOk() (*SignOnPolicyActionLoginAllOfRegistrationExternal, bool) {
-	if o == nil || isNil(o.External) {
-    return nil, false
+	if o == nil || IsNil(o.External) {
+		return nil, false
 	}
 	return o.External, true
 }
 
 // HasExternal returns a boolean if a field has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistration) HasExternal() bool {
-	if o != nil && !isNil(o.External) {
+	if o != nil && !IsNil(o.External) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) SetExternal(v SignOnPolicyAct
 
 // GetPopulation returns the Population field value if set, zero value otherwise.
 func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulation() SignOnPolicyActionLoginAllOfRegistrationPopulation {
-	if o == nil || isNil(o.Population) {
+	if o == nil || IsNil(o.Population) {
 		var ret SignOnPolicyActionLoginAllOfRegistrationPopulation
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulation() SignOnPolicyA
 // GetPopulationOk returns a tuple with the Population field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistration) GetPopulationOk() (*SignOnPolicyActionLoginAllOfRegistrationPopulation, bool) {
-	if o == nil || isNil(o.Population) {
-    return nil, false
+	if o == nil || IsNil(o.Population) {
+		return nil, false
 	}
 	return o.Population, true
 }
 
 // HasPopulation returns a boolean if a field has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistration) HasPopulation() bool {
-	if o != nil && !isNil(o.Population) {
+	if o != nil && !IsNil(o.Population) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) SetPopulation(v SignOnPolicyA
 
 // GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field value if set, zero value otherwise.
 func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAttributes() bool {
-	if o == nil || isNil(o.ConfirmIdentityProviderAttributes) {
+	if o == nil || IsNil(o.ConfirmIdentityProviderAttributes) {
 		var ret bool
 		return ret
 	}
@@ -146,15 +149,15 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAtt
 // GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistration) GetConfirmIdentityProviderAttributesOk() (*bool, bool) {
-	if o == nil || isNil(o.ConfirmIdentityProviderAttributes) {
-    return nil, false
+	if o == nil || IsNil(o.ConfirmIdentityProviderAttributes) {
+		return nil, false
 	}
 	return o.ConfirmIdentityProviderAttributes, true
 }
 
 // HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistration) HasConfirmIdentityProviderAttributes() bool {
-	if o != nil && !isNil(o.ConfirmIdentityProviderAttributes) {
+	if o != nil && !IsNil(o.ConfirmIdentityProviderAttributes) {
 		return true
 	}
 
@@ -167,20 +170,26 @@ func (o *SignOnPolicyActionLoginAllOfRegistration) SetConfirmIdentityProviderAtt
 }
 
 func (o SignOnPolicyActionLoginAllOfRegistration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.External) {
-		toSerialize["external"] = o.External
-	}
-	if !isNil(o.Population) {
-		toSerialize["population"] = o.Population
-	}
-	if !isNil(o.ConfirmIdentityProviderAttributes) {
-		toSerialize["confirmIdentityProviderAttributes"] = o.ConfirmIdentityProviderAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionLoginAllOfRegistration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.External) {
+		toSerialize["external"] = o.External
+	}
+	if !IsNil(o.Population) {
+		toSerialize["population"] = o.Population
+	}
+	if !IsNil(o.ConfirmIdentityProviderAttributes) {
+		toSerialize["confirmIdentityProviderAttributes"] = o.ConfirmIdentityProviderAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionLoginAllOfRegistration struct {

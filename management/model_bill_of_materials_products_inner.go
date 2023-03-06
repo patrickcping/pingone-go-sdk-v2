@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BillOfMaterialsProductsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillOfMaterialsProductsInner{}
+
 // BillOfMaterialsProductsInner struct for BillOfMaterialsProductsInner
 type BillOfMaterialsProductsInner struct {
 	// A string that specifies the BOM ID
@@ -47,7 +50,7 @@ func NewBillOfMaterialsProductsInnerWithDefaults() *BillOfMaterialsProductsInner
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *BillOfMaterialsProductsInner) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *BillOfMaterialsProductsInner) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInner) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *BillOfMaterialsProductsInner) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -91,7 +94,7 @@ func (o *BillOfMaterialsProductsInner) GetType() EnumProductType {
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInner) GetTypeOk() (*EnumProductType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -103,7 +106,7 @@ func (o *BillOfMaterialsProductsInner) SetType(v EnumProductType) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *BillOfMaterialsProductsInner) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -113,15 +116,15 @@ func (o *BillOfMaterialsProductsInner) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInner) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *BillOfMaterialsProductsInner) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -135,7 +138,7 @@ func (o *BillOfMaterialsProductsInner) SetDescription(v string) {
 
 // GetConsole returns the Console field value if set, zero value otherwise.
 func (o *BillOfMaterialsProductsInner) GetConsole() BillOfMaterialsProductsInnerConsole {
-	if o == nil || isNil(o.Console) {
+	if o == nil || IsNil(o.Console) {
 		var ret BillOfMaterialsProductsInnerConsole
 		return ret
 	}
@@ -145,15 +148,15 @@ func (o *BillOfMaterialsProductsInner) GetConsole() BillOfMaterialsProductsInner
 // GetConsoleOk returns a tuple with the Console field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInner) GetConsoleOk() (*BillOfMaterialsProductsInnerConsole, bool) {
-	if o == nil || isNil(o.Console) {
-    return nil, false
+	if o == nil || IsNil(o.Console) {
+		return nil, false
 	}
 	return o.Console, true
 }
 
 // HasConsole returns a boolean if a field has been set.
 func (o *BillOfMaterialsProductsInner) HasConsole() bool {
-	if o != nil && !isNil(o.Console) {
+	if o != nil && !IsNil(o.Console) {
 		return true
 	}
 
@@ -167,7 +170,7 @@ func (o *BillOfMaterialsProductsInner) SetConsole(v BillOfMaterialsProductsInner
 
 // GetDeployment returns the Deployment field value if set, zero value otherwise.
 func (o *BillOfMaterialsProductsInner) GetDeployment() BillOfMaterialsProductsInnerDeployment {
-	if o == nil || isNil(o.Deployment) {
+	if o == nil || IsNil(o.Deployment) {
 		var ret BillOfMaterialsProductsInnerDeployment
 		return ret
 	}
@@ -177,15 +180,15 @@ func (o *BillOfMaterialsProductsInner) GetDeployment() BillOfMaterialsProductsIn
 // GetDeploymentOk returns a tuple with the Deployment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInner) GetDeploymentOk() (*BillOfMaterialsProductsInnerDeployment, bool) {
-	if o == nil || isNil(o.Deployment) {
-    return nil, false
+	if o == nil || IsNil(o.Deployment) {
+		return nil, false
 	}
 	return o.Deployment, true
 }
 
 // HasDeployment returns a boolean if a field has been set.
 func (o *BillOfMaterialsProductsInner) HasDeployment() bool {
-	if o != nil && !isNil(o.Deployment) {
+	if o != nil && !IsNil(o.Deployment) {
 		return true
 	}
 
@@ -199,7 +202,7 @@ func (o *BillOfMaterialsProductsInner) SetDeployment(v BillOfMaterialsProductsIn
 
 // GetBookmarks returns the Bookmarks field value if set, zero value otherwise.
 func (o *BillOfMaterialsProductsInner) GetBookmarks() []BillOfMaterialsProductsInnerBookmarksInner {
-	if o == nil || isNil(o.Bookmarks) {
+	if o == nil || IsNil(o.Bookmarks) {
 		var ret []BillOfMaterialsProductsInnerBookmarksInner
 		return ret
 	}
@@ -209,15 +212,15 @@ func (o *BillOfMaterialsProductsInner) GetBookmarks() []BillOfMaterialsProductsI
 // GetBookmarksOk returns a tuple with the Bookmarks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterialsProductsInner) GetBookmarksOk() ([]BillOfMaterialsProductsInnerBookmarksInner, bool) {
-	if o == nil || isNil(o.Bookmarks) {
-    return nil, false
+	if o == nil || IsNil(o.Bookmarks) {
+		return nil, false
 	}
 	return o.Bookmarks, true
 }
 
 // HasBookmarks returns a boolean if a field has been set.
 func (o *BillOfMaterialsProductsInner) HasBookmarks() bool {
-	if o != nil && !isNil(o.Bookmarks) {
+	if o != nil && !IsNil(o.Bookmarks) {
 		return true
 	}
 
@@ -230,26 +233,28 @@ func (o *BillOfMaterialsProductsInner) SetBookmarks(v []BillOfMaterialsProductsI
 }
 
 func (o BillOfMaterialsProductsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Console) {
-		toSerialize["console"] = o.Console
-	}
-	if !isNil(o.Deployment) {
-		toSerialize["deployment"] = o.Deployment
-	}
-	if !isNil(o.Bookmarks) {
-		toSerialize["bookmarks"] = o.Bookmarks
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillOfMaterialsProductsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	toSerialize["type"] = o.Type
+	// skip: description is readOnly
+	if !IsNil(o.Console) {
+		toSerialize["console"] = o.Console
+	}
+	if !IsNil(o.Deployment) {
+		toSerialize["deployment"] = o.Deployment
+	}
+	if !IsNil(o.Bookmarks) {
+		toSerialize["bookmarks"] = o.Bookmarks
+	}
+	return toSerialize, nil
 }
 
 type NullableBillOfMaterialsProductsInner struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationPingOneSelfServiceAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationPingOneSelfServiceAllOf{}
+
 // ApplicationPingOneSelfServiceAllOf struct for ApplicationPingOneSelfServiceAllOf
 type ApplicationPingOneSelfServiceAllOf struct {
 	// If `true`, shows the default theme footer on the self service application. Applies only if `applyDefaultTheme` is also `true`.
@@ -42,7 +45,7 @@ func NewApplicationPingOneSelfServiceAllOfWithDefaults() *ApplicationPingOneSelf
 
 // GetEnableDefaultThemeFooter returns the EnableDefaultThemeFooter field value if set, zero value otherwise.
 func (o *ApplicationPingOneSelfServiceAllOf) GetEnableDefaultThemeFooter() bool {
-	if o == nil || isNil(o.EnableDefaultThemeFooter) {
+	if o == nil || IsNil(o.EnableDefaultThemeFooter) {
 		var ret bool
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *ApplicationPingOneSelfServiceAllOf) GetEnableDefaultThemeFooter() bool 
 // GetEnableDefaultThemeFooterOk returns a tuple with the EnableDefaultThemeFooter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationPingOneSelfServiceAllOf) GetEnableDefaultThemeFooterOk() (*bool, bool) {
-	if o == nil || isNil(o.EnableDefaultThemeFooter) {
-    return nil, false
+	if o == nil || IsNil(o.EnableDefaultThemeFooter) {
+		return nil, false
 	}
 	return o.EnableDefaultThemeFooter, true
 }
 
 // HasEnableDefaultThemeFooter returns a boolean if a field has been set.
 func (o *ApplicationPingOneSelfServiceAllOf) HasEnableDefaultThemeFooter() bool {
-	if o != nil && !isNil(o.EnableDefaultThemeFooter) {
+	if o != nil && !IsNil(o.EnableDefaultThemeFooter) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *ApplicationPingOneSelfServiceAllOf) GetApplyDefaultTheme() bool {
 // and a boolean to check if the value has been set.
 func (o *ApplicationPingOneSelfServiceAllOf) GetApplyDefaultThemeOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ApplyDefaultTheme, true
 }
@@ -97,14 +100,20 @@ func (o *ApplicationPingOneSelfServiceAllOf) SetApplyDefaultTheme(v bool) {
 }
 
 func (o ApplicationPingOneSelfServiceAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.EnableDefaultThemeFooter) {
-		toSerialize["enableDefaultThemeFooter"] = o.EnableDefaultThemeFooter
-	}
-	if true {
-		toSerialize["applyDefaultTheme"] = o.ApplyDefaultTheme
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationPingOneSelfServiceAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EnableDefaultThemeFooter) {
+		toSerialize["enableDefaultThemeFooter"] = o.EnableDefaultThemeFooter
+	}
+	toSerialize["applyDefaultTheme"] = o.ApplyDefaultTheme
+	return toSerialize, nil
 }
 
 type NullableApplicationPingOneSelfServiceAllOf struct {

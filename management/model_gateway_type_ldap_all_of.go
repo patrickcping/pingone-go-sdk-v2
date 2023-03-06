@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayTypeLDAPAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayTypeLDAPAllOf{}
+
 // GatewayTypeLDAPAllOf struct for GatewayTypeLDAPAllOf
 type GatewayTypeLDAPAllOf struct {
 	// A string that specifies the distinguished name information to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com).
@@ -67,7 +70,7 @@ func (o *GatewayTypeLDAPAllOf) GetBindDN() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetBindDNOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.BindDN, true
 }
@@ -91,7 +94,7 @@ func (o *GatewayTypeLDAPAllOf) GetBindPassword() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetBindPasswordOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.BindPassword, true
 }
@@ -103,7 +106,7 @@ func (o *GatewayTypeLDAPAllOf) SetBindPassword(v string) {
 
 // GetConnectionSecurity returns the ConnectionSecurity field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOf) GetConnectionSecurity() EnumGatewayTypeLDAPSecurity {
-	if o == nil || isNil(o.ConnectionSecurity) {
+	if o == nil || IsNil(o.ConnectionSecurity) {
 		var ret EnumGatewayTypeLDAPSecurity
 		return ret
 	}
@@ -113,15 +116,15 @@ func (o *GatewayTypeLDAPAllOf) GetConnectionSecurity() EnumGatewayTypeLDAPSecuri
 // GetConnectionSecurityOk returns a tuple with the ConnectionSecurity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetConnectionSecurityOk() (*EnumGatewayTypeLDAPSecurity, bool) {
-	if o == nil || isNil(o.ConnectionSecurity) {
-    return nil, false
+	if o == nil || IsNil(o.ConnectionSecurity) {
+		return nil, false
 	}
 	return o.ConnectionSecurity, true
 }
 
 // HasConnectionSecurity returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOf) HasConnectionSecurity() bool {
-	if o != nil && !isNil(o.ConnectionSecurity) {
+	if o != nil && !IsNil(o.ConnectionSecurity) {
 		return true
 	}
 
@@ -135,7 +138,7 @@ func (o *GatewayTypeLDAPAllOf) SetConnectionSecurity(v EnumGatewayTypeLDAPSecuri
 
 // GetKerberos returns the Kerberos field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOf) GetKerberos() GatewayTypeLDAPAllOfKerberos {
-	if o == nil || isNil(o.Kerberos) {
+	if o == nil || IsNil(o.Kerberos) {
 		var ret GatewayTypeLDAPAllOfKerberos
 		return ret
 	}
@@ -145,15 +148,15 @@ func (o *GatewayTypeLDAPAllOf) GetKerberos() GatewayTypeLDAPAllOfKerberos {
 // GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetKerberosOk() (*GatewayTypeLDAPAllOfKerberos, bool) {
-	if o == nil || isNil(o.Kerberos) {
-    return nil, false
+	if o == nil || IsNil(o.Kerberos) {
+		return nil, false
 	}
 	return o.Kerberos, true
 }
 
 // HasKerberos returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOf) HasKerberos() bool {
-	if o != nil && !isNil(o.Kerberos) {
+	if o != nil && !IsNil(o.Kerberos) {
 		return true
 	}
 
@@ -179,7 +182,7 @@ func (o *GatewayTypeLDAPAllOf) GetServersHostAndPort() []string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetServersHostAndPortOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ServersHostAndPort, true
 }
@@ -191,7 +194,7 @@ func (o *GatewayTypeLDAPAllOf) SetServersHostAndPort(v []string) {
 
 // GetUserTypes returns the UserTypes field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOf) GetUserTypes() []GatewayTypeLDAPAllOfUserTypes {
-	if o == nil || isNil(o.UserTypes) {
+	if o == nil || IsNil(o.UserTypes) {
 		var ret []GatewayTypeLDAPAllOfUserTypes
 		return ret
 	}
@@ -201,15 +204,15 @@ func (o *GatewayTypeLDAPAllOf) GetUserTypes() []GatewayTypeLDAPAllOfUserTypes {
 // GetUserTypesOk returns a tuple with the UserTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetUserTypesOk() ([]GatewayTypeLDAPAllOfUserTypes, bool) {
-	if o == nil || isNil(o.UserTypes) {
-    return nil, false
+	if o == nil || IsNil(o.UserTypes) {
+		return nil, false
 	}
 	return o.UserTypes, true
 }
 
 // HasUserTypes returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOf) HasUserTypes() bool {
-	if o != nil && !isNil(o.UserTypes) {
+	if o != nil && !IsNil(o.UserTypes) {
 		return true
 	}
 
@@ -223,7 +226,7 @@ func (o *GatewayTypeLDAPAllOf) SetUserTypes(v []GatewayTypeLDAPAllOfUserTypes) {
 
 // GetValidateTlsCertificates returns the ValidateTlsCertificates field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOf) GetValidateTlsCertificates() bool {
-	if o == nil || isNil(o.ValidateTlsCertificates) {
+	if o == nil || IsNil(o.ValidateTlsCertificates) {
 		var ret bool
 		return ret
 	}
@@ -233,15 +236,15 @@ func (o *GatewayTypeLDAPAllOf) GetValidateTlsCertificates() bool {
 // GetValidateTlsCertificatesOk returns a tuple with the ValidateTlsCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetValidateTlsCertificatesOk() (*bool, bool) {
-	if o == nil || isNil(o.ValidateTlsCertificates) {
-    return nil, false
+	if o == nil || IsNil(o.ValidateTlsCertificates) {
+		return nil, false
 	}
 	return o.ValidateTlsCertificates, true
 }
 
 // HasValidateTlsCertificates returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOf) HasValidateTlsCertificates() bool {
-	if o != nil && !isNil(o.ValidateTlsCertificates) {
+	if o != nil && !IsNil(o.ValidateTlsCertificates) {
 		return true
 	}
 
@@ -267,7 +270,7 @@ func (o *GatewayTypeLDAPAllOf) GetVendor() EnumGatewayVendor {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetVendorOk() (*EnumGatewayVendor, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Vendor, true
 }
@@ -279,7 +282,7 @@ func (o *GatewayTypeLDAPAllOf) SetVendor(v EnumGatewayVendor) {
 
 // GetFollowReferrals returns the FollowReferrals field value if set, zero value otherwise.
 func (o *GatewayTypeLDAPAllOf) GetFollowReferrals() bool {
-	if o == nil || isNil(o.FollowReferrals) {
+	if o == nil || IsNil(o.FollowReferrals) {
 		var ret bool
 		return ret
 	}
@@ -289,15 +292,15 @@ func (o *GatewayTypeLDAPAllOf) GetFollowReferrals() bool {
 // GetFollowReferralsOk returns a tuple with the FollowReferrals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOf) GetFollowReferralsOk() (*bool, bool) {
-	if o == nil || isNil(o.FollowReferrals) {
-    return nil, false
+	if o == nil || IsNil(o.FollowReferrals) {
+		return nil, false
 	}
 	return o.FollowReferrals, true
 }
 
 // HasFollowReferrals returns a boolean if a field has been set.
 func (o *GatewayTypeLDAPAllOf) HasFollowReferrals() bool {
-	if o != nil && !isNil(o.FollowReferrals) {
+	if o != nil && !IsNil(o.FollowReferrals) {
 		return true
 	}
 
@@ -310,35 +313,33 @@ func (o *GatewayTypeLDAPAllOf) SetFollowReferrals(v bool) {
 }
 
 func (o GatewayTypeLDAPAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["bindDN"] = o.BindDN
-	}
-	if true {
-		toSerialize["bindPassword"] = o.BindPassword
-	}
-	if !isNil(o.ConnectionSecurity) {
-		toSerialize["connectionSecurity"] = o.ConnectionSecurity
-	}
-	if !isNil(o.Kerberos) {
-		toSerialize["kerberos"] = o.Kerberos
-	}
-	if true {
-		toSerialize["serversHostAndPort"] = o.ServersHostAndPort
-	}
-	if !isNil(o.UserTypes) {
-		toSerialize["userTypes"] = o.UserTypes
-	}
-	if !isNil(o.ValidateTlsCertificates) {
-		toSerialize["validateTlsCertificates"] = o.ValidateTlsCertificates
-	}
-	if true {
-		toSerialize["vendor"] = o.Vendor
-	}
-	if !isNil(o.FollowReferrals) {
-		toSerialize["followReferrals"] = o.FollowReferrals
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayTypeLDAPAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["bindDN"] = o.BindDN
+	toSerialize["bindPassword"] = o.BindPassword
+	if !IsNil(o.ConnectionSecurity) {
+		toSerialize["connectionSecurity"] = o.ConnectionSecurity
+	}
+	if !IsNil(o.Kerberos) {
+		toSerialize["kerberos"] = o.Kerberos
+	}
+	toSerialize["serversHostAndPort"] = o.ServersHostAndPort
+	if !IsNil(o.UserTypes) {
+		toSerialize["userTypes"] = o.UserTypes
+	}
+	if !IsNil(o.ValidateTlsCertificates) {
+		toSerialize["validateTlsCertificates"] = o.ValidateTlsCertificates
+	}
+	toSerialize["vendor"] = o.Vendor
+	// skip: followReferrals is readOnly
+	return toSerialize, nil
 }
 
 type NullableGatewayTypeLDAPAllOf struct {

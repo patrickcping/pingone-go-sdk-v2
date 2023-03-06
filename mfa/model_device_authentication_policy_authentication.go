@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyAuthentication type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyAuthentication{}
+
 // DeviceAuthenticationPolicyAuthentication An object that contains the device selection settings.
 type DeviceAuthenticationPolicyAuthentication struct {
 	DeviceSelection EnumMFADevicePolicySelection `json:"deviceSelection"`
@@ -51,7 +54,7 @@ func (o *DeviceAuthenticationPolicyAuthentication) GetDeviceSelection() EnumMFAD
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyAuthentication) GetDeviceSelectionOk() (*EnumMFADevicePolicySelection, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DeviceSelection, true
 }
@@ -62,11 +65,17 @@ func (o *DeviceAuthenticationPolicyAuthentication) SetDeviceSelection(v EnumMFAD
 }
 
 func (o DeviceAuthenticationPolicyAuthentication) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["deviceSelection"] = o.DeviceSelection
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyAuthentication) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["deviceSelection"] = o.DeviceSelection
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyAuthentication struct {

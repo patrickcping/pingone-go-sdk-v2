@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CertificateKeyUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateKeyUpdate{}
+
 // CertificateKeyUpdate struct for CertificateKeyUpdate
 type CertificateKeyUpdate struct {
 	// Specifies whether this is the default key for the specified environment.
@@ -56,7 +59,7 @@ func (o *CertificateKeyUpdate) GetDefault() bool {
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyUpdate) GetDefaultOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Default, true
 }
@@ -80,7 +83,7 @@ func (o *CertificateKeyUpdate) GetUsageType() EnumCertificateKeyUsageType {
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyUpdate) GetUsageTypeOk() (*EnumCertificateKeyUsageType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.UsageType, true
 }
@@ -92,7 +95,7 @@ func (o *CertificateKeyUpdate) SetUsageType(v EnumCertificateKeyUsageType) {
 
 // GetIssuerDN returns the IssuerDN field value if set, zero value otherwise.
 func (o *CertificateKeyUpdate) GetIssuerDN() string {
-	if o == nil || isNil(o.IssuerDN) {
+	if o == nil || IsNil(o.IssuerDN) {
 		var ret string
 		return ret
 	}
@@ -102,15 +105,15 @@ func (o *CertificateKeyUpdate) GetIssuerDN() string {
 // GetIssuerDNOk returns a tuple with the IssuerDN field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateKeyUpdate) GetIssuerDNOk() (*string, bool) {
-	if o == nil || isNil(o.IssuerDN) {
-    return nil, false
+	if o == nil || IsNil(o.IssuerDN) {
+		return nil, false
 	}
 	return o.IssuerDN, true
 }
 
 // HasIssuerDN returns a boolean if a field has been set.
 func (o *CertificateKeyUpdate) HasIssuerDN() bool {
-	if o != nil && !isNil(o.IssuerDN) {
+	if o != nil && !IsNil(o.IssuerDN) {
 		return true
 	}
 
@@ -123,17 +126,21 @@ func (o *CertificateKeyUpdate) SetIssuerDN(v string) {
 }
 
 func (o CertificateKeyUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["default"] = o.Default
-	}
-	if true {
-		toSerialize["usageType"] = o.UsageType
-	}
-	if !isNil(o.IssuerDN) {
-		toSerialize["issuerDN"] = o.IssuerDN
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CertificateKeyUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["default"] = o.Default
+	toSerialize["usageType"] = o.UsageType
+	if !IsNil(o.IssuerDN) {
+		toSerialize["issuerDN"] = o.IssuerDN
+	}
+	return toSerialize, nil
 }
 
 type NullableCertificateKeyUpdate struct {

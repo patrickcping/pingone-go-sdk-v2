@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationOIDCAllOfMobile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationOIDCAllOfMobile{}
+
 // ApplicationOIDCAllOfMobile struct for ApplicationOIDCAllOfMobile
 type ApplicationOIDCAllOfMobile struct {
 	// A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  this setting overrides the top-level bundleId field
@@ -49,7 +52,7 @@ func NewApplicationOIDCAllOfMobileWithDefaults() *ApplicationOIDCAllOfMobile {
 
 // GetBundleId returns the BundleId field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetBundleId() string {
-	if o == nil || isNil(o.BundleId) {
+	if o == nil || IsNil(o.BundleId) {
 		var ret string
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *ApplicationOIDCAllOfMobile) GetBundleId() string {
 // GetBundleIdOk returns a tuple with the BundleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobile) GetBundleIdOk() (*string, bool) {
-	if o == nil || isNil(o.BundleId) {
-    return nil, false
+	if o == nil || IsNil(o.BundleId) {
+		return nil, false
 	}
 	return o.BundleId, true
 }
 
 // HasBundleId returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobile) HasBundleId() bool {
-	if o != nil && !isNil(o.BundleId) {
+	if o != nil && !IsNil(o.BundleId) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ApplicationOIDCAllOfMobile) SetBundleId(v string) {
 
 // GetPackageName returns the PackageName field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetPackageName() string {
-	if o == nil || isNil(o.PackageName) {
+	if o == nil || IsNil(o.PackageName) {
 		var ret string
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *ApplicationOIDCAllOfMobile) GetPackageName() string {
 // GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobile) GetPackageNameOk() (*string, bool) {
-	if o == nil || isNil(o.PackageName) {
-    return nil, false
+	if o == nil || IsNil(o.PackageName) {
+		return nil, false
 	}
 	return o.PackageName, true
 }
 
 // HasPackageName returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobile) HasPackageName() bool {
-	if o != nil && !isNil(o.PackageName) {
+	if o != nil && !IsNil(o.PackageName) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ApplicationOIDCAllOfMobile) SetPackageName(v string) {
 
 // GetHuaweiAppId returns the HuaweiAppId field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetHuaweiAppId() string {
-	if o == nil || isNil(o.HuaweiAppId) {
+	if o == nil || IsNil(o.HuaweiAppId) {
 		var ret string
 		return ret
 	}
@@ -123,15 +126,15 @@ func (o *ApplicationOIDCAllOfMobile) GetHuaweiAppId() string {
 // GetHuaweiAppIdOk returns a tuple with the HuaweiAppId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobile) GetHuaweiAppIdOk() (*string, bool) {
-	if o == nil || isNil(o.HuaweiAppId) {
-    return nil, false
+	if o == nil || IsNil(o.HuaweiAppId) {
+		return nil, false
 	}
 	return o.HuaweiAppId, true
 }
 
 // HasHuaweiAppId returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobile) HasHuaweiAppId() bool {
-	if o != nil && !isNil(o.HuaweiAppId) {
+	if o != nil && !IsNil(o.HuaweiAppId) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ApplicationOIDCAllOfMobile) SetHuaweiAppId(v string) {
 
 // GetHuaweiPackageName returns the HuaweiPackageName field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetHuaweiPackageName() string {
-	if o == nil || isNil(o.HuaweiPackageName) {
+	if o == nil || IsNil(o.HuaweiPackageName) {
 		var ret string
 		return ret
 	}
@@ -155,15 +158,15 @@ func (o *ApplicationOIDCAllOfMobile) GetHuaweiPackageName() string {
 // GetHuaweiPackageNameOk returns a tuple with the HuaweiPackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobile) GetHuaweiPackageNameOk() (*string, bool) {
-	if o == nil || isNil(o.HuaweiPackageName) {
-    return nil, false
+	if o == nil || IsNil(o.HuaweiPackageName) {
+		return nil, false
 	}
 	return o.HuaweiPackageName, true
 }
 
 // HasHuaweiPackageName returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobile) HasHuaweiPackageName() bool {
-	if o != nil && !isNil(o.HuaweiPackageName) {
+	if o != nil && !IsNil(o.HuaweiPackageName) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ApplicationOIDCAllOfMobile) SetHuaweiPackageName(v string) {
 
 // GetPasscodeRefreshDuration returns the PasscodeRefreshDuration field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDuration() ApplicationOIDCAllOfMobilePasscodeRefreshDuration {
-	if o == nil || isNil(o.PasscodeRefreshDuration) {
+	if o == nil || IsNil(o.PasscodeRefreshDuration) {
 		var ret ApplicationOIDCAllOfMobilePasscodeRefreshDuration
 		return ret
 	}
@@ -187,15 +190,15 @@ func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDuration() ApplicationOID
 // GetPasscodeRefreshDurationOk returns a tuple with the PasscodeRefreshDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobile) GetPasscodeRefreshDurationOk() (*ApplicationOIDCAllOfMobilePasscodeRefreshDuration, bool) {
-	if o == nil || isNil(o.PasscodeRefreshDuration) {
-    return nil, false
+	if o == nil || IsNil(o.PasscodeRefreshDuration) {
+		return nil, false
 	}
 	return o.PasscodeRefreshDuration, true
 }
 
 // HasPasscodeRefreshDuration returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobile) HasPasscodeRefreshDuration() bool {
-	if o != nil && !isNil(o.PasscodeRefreshDuration) {
+	if o != nil && !IsNil(o.PasscodeRefreshDuration) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ApplicationOIDCAllOfMobile) SetPasscodeRefreshDuration(v ApplicationOID
 
 // GetIntegrityDetection returns the IntegrityDetection field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetIntegrityDetection() ApplicationOIDCAllOfMobileIntegrityDetection {
-	if o == nil || isNil(o.IntegrityDetection) {
+	if o == nil || IsNil(o.IntegrityDetection) {
 		var ret ApplicationOIDCAllOfMobileIntegrityDetection
 		return ret
 	}
@@ -219,15 +222,15 @@ func (o *ApplicationOIDCAllOfMobile) GetIntegrityDetection() ApplicationOIDCAllO
 // GetIntegrityDetectionOk returns a tuple with the IntegrityDetection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobile) GetIntegrityDetectionOk() (*ApplicationOIDCAllOfMobileIntegrityDetection, bool) {
-	if o == nil || isNil(o.IntegrityDetection) {
-    return nil, false
+	if o == nil || IsNil(o.IntegrityDetection) {
+		return nil, false
 	}
 	return o.IntegrityDetection, true
 }
 
 // HasIntegrityDetection returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobile) HasIntegrityDetection() bool {
-	if o != nil && !isNil(o.IntegrityDetection) {
+	if o != nil && !IsNil(o.IntegrityDetection) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *ApplicationOIDCAllOfMobile) SetIntegrityDetection(v ApplicationOIDCAllO
 
 // GetUriPrefix returns the UriPrefix field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobile) GetUriPrefix() string {
-	if o == nil || isNil(o.UriPrefix) {
+	if o == nil || IsNil(o.UriPrefix) {
 		var ret string
 		return ret
 	}
@@ -251,15 +254,15 @@ func (o *ApplicationOIDCAllOfMobile) GetUriPrefix() string {
 // GetUriPrefixOk returns a tuple with the UriPrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobile) GetUriPrefixOk() (*string, bool) {
-	if o == nil || isNil(o.UriPrefix) {
-    return nil, false
+	if o == nil || IsNil(o.UriPrefix) {
+		return nil, false
 	}
 	return o.UriPrefix, true
 }
 
 // HasUriPrefix returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobile) HasUriPrefix() bool {
-	if o != nil && !isNil(o.UriPrefix) {
+	if o != nil && !IsNil(o.UriPrefix) {
 		return true
 	}
 
@@ -272,29 +275,37 @@ func (o *ApplicationOIDCAllOfMobile) SetUriPrefix(v string) {
 }
 
 func (o ApplicationOIDCAllOfMobile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.BundleId) {
-		toSerialize["bundleId"] = o.BundleId
-	}
-	if !isNil(o.PackageName) {
-		toSerialize["packageName"] = o.PackageName
-	}
-	if !isNil(o.HuaweiAppId) {
-		toSerialize["huaweiAppId"] = o.HuaweiAppId
-	}
-	if !isNil(o.HuaweiPackageName) {
-		toSerialize["huaweiPackageName"] = o.HuaweiPackageName
-	}
-	if !isNil(o.PasscodeRefreshDuration) {
-		toSerialize["passcodeRefreshDuration"] = o.PasscodeRefreshDuration
-	}
-	if !isNil(o.IntegrityDetection) {
-		toSerialize["integrityDetection"] = o.IntegrityDetection
-	}
-	if !isNil(o.UriPrefix) {
-		toSerialize["uriPrefix"] = o.UriPrefix
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationOIDCAllOfMobile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BundleId) {
+		toSerialize["bundleId"] = o.BundleId
+	}
+	if !IsNil(o.PackageName) {
+		toSerialize["packageName"] = o.PackageName
+	}
+	if !IsNil(o.HuaweiAppId) {
+		toSerialize["huaweiAppId"] = o.HuaweiAppId
+	}
+	if !IsNil(o.HuaweiPackageName) {
+		toSerialize["huaweiPackageName"] = o.HuaweiPackageName
+	}
+	if !IsNil(o.PasscodeRefreshDuration) {
+		toSerialize["passcodeRefreshDuration"] = o.PasscodeRefreshDuration
+	}
+	if !IsNil(o.IntegrityDetection) {
+		toSerialize["integrityDetection"] = o.IntegrityDetection
+	}
+	if !IsNil(o.UriPrefix) {
+		toSerialize["uriPrefix"] = o.UriPrefix
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationOIDCAllOfMobile struct {

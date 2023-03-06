@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionOr type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionOr{}
+
 // SignOnPolicyActionCommonConditionOr struct for SignOnPolicyActionCommonConditionOr
 type SignOnPolicyActionCommonConditionOr struct {
 	Or []SignOnPolicyActionCommonConditionOrOrInner `json:"or,omitempty"`
@@ -38,7 +41,7 @@ func NewSignOnPolicyActionCommonConditionOrWithDefaults() *SignOnPolicyActionCom
 
 // GetOr returns the Or field value if set, zero value otherwise.
 func (o *SignOnPolicyActionCommonConditionOr) GetOr() []SignOnPolicyActionCommonConditionOrOrInner {
-	if o == nil || isNil(o.Or) {
+	if o == nil || IsNil(o.Or) {
 		var ret []SignOnPolicyActionCommonConditionOrOrInner
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *SignOnPolicyActionCommonConditionOr) GetOr() []SignOnPolicyActionCommon
 // GetOrOk returns a tuple with the Or field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionOr) GetOrOk() ([]SignOnPolicyActionCommonConditionOrOrInner, bool) {
-	if o == nil || isNil(o.Or) {
-    return nil, false
+	if o == nil || IsNil(o.Or) {
+		return nil, false
 	}
 	return o.Or, true
 }
 
 // HasOr returns a boolean if a field has been set.
 func (o *SignOnPolicyActionCommonConditionOr) HasOr() bool {
-	if o != nil && !isNil(o.Or) {
+	if o != nil && !IsNil(o.Or) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *SignOnPolicyActionCommonConditionOr) SetOr(v []SignOnPolicyActionCommon
 }
 
 func (o SignOnPolicyActionCommonConditionOr) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Or) {
-		toSerialize["or"] = o.Or
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionOr) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Or) {
+		toSerialize["or"] = o.Or
+	}
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionOr struct {

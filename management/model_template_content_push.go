@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentPush type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentPush{}
+
 // TemplateContentPush struct for TemplateContentPush
 type TemplateContentPush struct {
 	// The template id.
@@ -59,7 +62,7 @@ func NewTemplateContentPushWithDefaults() *TemplateContentPush {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TemplateContentPush) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -69,15 +72,15 @@ func (o *TemplateContentPush) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *TemplateContentPush) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -91,7 +94,7 @@ func (o *TemplateContentPush) SetId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *TemplateContentPush) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -101,15 +104,15 @@ func (o *TemplateContentPush) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *TemplateContentPush) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -123,7 +126,7 @@ func (o *TemplateContentPush) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *TemplateContentPush) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -133,15 +136,15 @@ func (o *TemplateContentPush) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *TemplateContentPush) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -155,7 +158,7 @@ func (o *TemplateContentPush) SetUpdatedAt(v string) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *TemplateContentPush) GetDefault() bool {
-	if o == nil || isNil(o.Default) {
+	if o == nil || IsNil(o.Default) {
 		var ret bool
 		return ret
 	}
@@ -165,15 +168,15 @@ func (o *TemplateContentPush) GetDefault() bool {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetDefaultOk() (*bool, bool) {
-	if o == nil || isNil(o.Default) {
-    return nil, false
+	if o == nil || IsNil(o.Default) {
+		return nil, false
 	}
 	return o.Default, true
 }
 
 // HasDefault returns a boolean if a field has been set.
 func (o *TemplateContentPush) HasDefault() bool {
-	if o != nil && !isNil(o.Default) {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
@@ -199,7 +202,7 @@ func (o *TemplateContentPush) GetLocale() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetLocaleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Locale, true
 }
@@ -223,7 +226,7 @@ func (o *TemplateContentPush) GetDeliveryMethod() EnumTemplateContentDeliveryMet
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetDeliveryMethodOk() (*EnumTemplateContentDeliveryMethod, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DeliveryMethod, true
 }
@@ -235,7 +238,7 @@ func (o *TemplateContentPush) SetDeliveryMethod(v EnumTemplateContentDeliveryMet
 
 // GetVariant returns the Variant field value if set, zero value otherwise.
 func (o *TemplateContentPush) GetVariant() string {
-	if o == nil || isNil(o.Variant) {
+	if o == nil || IsNil(o.Variant) {
 		var ret string
 		return ret
 	}
@@ -245,15 +248,15 @@ func (o *TemplateContentPush) GetVariant() string {
 // GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetVariantOk() (*string, bool) {
-	if o == nil || isNil(o.Variant) {
-    return nil, false
+	if o == nil || IsNil(o.Variant) {
+		return nil, false
 	}
 	return o.Variant, true
 }
 
 // HasVariant returns a boolean if a field has been set.
 func (o *TemplateContentPush) HasVariant() bool {
-	if o != nil && !isNil(o.Variant) {
+	if o != nil && !IsNil(o.Variant) {
 		return true
 	}
 
@@ -279,7 +282,7 @@ func (o *TemplateContentPush) GetTitle() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetTitleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Title, true
 }
@@ -303,7 +306,7 @@ func (o *TemplateContentPush) GetBody() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetBodyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Body, true
 }
@@ -315,7 +318,7 @@ func (o *TemplateContentPush) SetBody(v string) {
 
 // GetPushCategory returns the PushCategory field value if set, zero value otherwise.
 func (o *TemplateContentPush) GetPushCategory() EnumTemplateContentPushCategory {
-	if o == nil || isNil(o.PushCategory) {
+	if o == nil || IsNil(o.PushCategory) {
 		var ret EnumTemplateContentPushCategory
 		return ret
 	}
@@ -325,15 +328,15 @@ func (o *TemplateContentPush) GetPushCategory() EnumTemplateContentPushCategory 
 // GetPushCategoryOk returns a tuple with the PushCategory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentPush) GetPushCategoryOk() (*EnumTemplateContentPushCategory, bool) {
-	if o == nil || isNil(o.PushCategory) {
-    return nil, false
+	if o == nil || IsNil(o.PushCategory) {
+		return nil, false
 	}
 	return o.PushCategory, true
 }
 
 // HasPushCategory returns a boolean if a field has been set.
 func (o *TemplateContentPush) HasPushCategory() bool {
-	if o != nil && !isNil(o.PushCategory) {
+	if o != nil && !IsNil(o.PushCategory) {
 		return true
 	}
 
@@ -346,38 +349,32 @@ func (o *TemplateContentPush) SetPushCategory(v EnumTemplateContentPushCategory)
 }
 
 func (o TemplateContentPush) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.Default) {
-		toSerialize["default"] = o.Default
-	}
-	if true {
-		toSerialize["locale"] = o.Locale
-	}
-	if true {
-		toSerialize["deliveryMethod"] = o.DeliveryMethod
-	}
-	if !isNil(o.Variant) {
-		toSerialize["variant"] = o.Variant
-	}
-	if true {
-		toSerialize["title"] = o.Title
-	}
-	if true {
-		toSerialize["body"] = o.Body
-	}
-	if !isNil(o.PushCategory) {
-		toSerialize["pushCategory"] = o.PushCategory
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentPush) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
+	toSerialize["locale"] = o.Locale
+	toSerialize["deliveryMethod"] = o.DeliveryMethod
+	if !IsNil(o.Variant) {
+		toSerialize["variant"] = o.Variant
+	}
+	toSerialize["title"] = o.Title
+	toSerialize["body"] = o.Body
+	if !IsNil(o.PushCategory) {
+		toSerialize["pushCategory"] = o.PushCategory
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentPush struct {

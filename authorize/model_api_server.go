@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the APIServer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &APIServer{}
+
 // APIServer struct for APIServer
 type APIServer struct {
 	AuthorizationServer APIServerAuthorizationServer `json:"authorizationServer"`
@@ -61,7 +64,7 @@ func (o *APIServer) GetAuthorizationServer() APIServerAuthorizationServer {
 // and a boolean to check if the value has been set.
 func (o *APIServer) GetAuthorizationServerOk() (*APIServerAuthorizationServer, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AuthorizationServer, true
 }
@@ -85,7 +88,7 @@ func (o *APIServer) GetBaseURLs() []string {
 // and a boolean to check if the value has been set.
 func (o *APIServer) GetBaseURLsOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.BaseURLs, true
 }
@@ -97,7 +100,7 @@ func (o *APIServer) SetBaseURLs(v []string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *APIServer) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -107,15 +110,15 @@ func (o *APIServer) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *APIServer) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *APIServer) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *APIServer) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *APIServer) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -153,7 +156,7 @@ func (o *APIServer) SetName(v string) {
 
 // GetOperations returns the Operations field value if set, zero value otherwise.
 func (o *APIServer) GetOperations() map[string]interface{} {
-	if o == nil || isNil(o.Operations) {
+	if o == nil || IsNil(o.Operations) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -163,15 +166,15 @@ func (o *APIServer) GetOperations() map[string]interface{} {
 // GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *APIServer) GetOperationsOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Operations) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Operations) {
+		return map[string]interface{}{}, false
 	}
 	return o.Operations, true
 }
 
 // HasOperations returns a boolean if a field has been set.
 func (o *APIServer) HasOperations() bool {
-	if o != nil && !isNil(o.Operations) {
+	if o != nil && !IsNil(o.Operations) {
 		return true
 	}
 
@@ -184,23 +187,23 @@ func (o *APIServer) SetOperations(v map[string]interface{}) {
 }
 
 func (o APIServer) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["authorizationServer"] = o.AuthorizationServer
-	}
-	if true {
-		toSerialize["baseURLs"] = o.BaseURLs
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Operations) {
-		toSerialize["operations"] = o.Operations
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o APIServer) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["authorizationServer"] = o.AuthorizationServer
+	toSerialize["baseURLs"] = o.BaseURLs
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Operations) {
+		toSerialize["operations"] = o.Operations
+	}
+	return toSerialize, nil
 }
 
 type NullableAPIServer struct {

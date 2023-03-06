@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentSMSAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentSMSAllOf{}
+
 // TemplateContentSMSAllOf struct for TemplateContentSMSAllOf
 type TemplateContentSMSAllOf struct {
 	// The SMS text. UC-2 encoding is used for text that contains non GSM-7 characters. UC-2 encoded text cannot exceed 67 characters. GSM-7 encoded text cannot exceed 153 characters. If supported, it can include variables. 
@@ -54,7 +57,7 @@ func (o *TemplateContentSMSAllOf) GetContent() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMSAllOf) GetContentOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Content, true
 }
@@ -66,7 +69,7 @@ func (o *TemplateContentSMSAllOf) SetContent(v string) {
 
 // GetSender returns the Sender field value if set, zero value otherwise.
 func (o *TemplateContentSMSAllOf) GetSender() string {
-	if o == nil || isNil(o.Sender) {
+	if o == nil || IsNil(o.Sender) {
 		var ret string
 		return ret
 	}
@@ -76,15 +79,15 @@ func (o *TemplateContentSMSAllOf) GetSender() string {
 // GetSenderOk returns a tuple with the Sender field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMSAllOf) GetSenderOk() (*string, bool) {
-	if o == nil || isNil(o.Sender) {
-    return nil, false
+	if o == nil || IsNil(o.Sender) {
+		return nil, false
 	}
 	return o.Sender, true
 }
 
 // HasSender returns a boolean if a field has been set.
 func (o *TemplateContentSMSAllOf) HasSender() bool {
-	if o != nil && !isNil(o.Sender) {
+	if o != nil && !IsNil(o.Sender) {
 		return true
 	}
 
@@ -97,14 +100,20 @@ func (o *TemplateContentSMSAllOf) SetSender(v string) {
 }
 
 func (o TemplateContentSMSAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["content"] = o.Content
-	}
-	if !isNil(o.Sender) {
-		toSerialize["sender"] = o.Sender
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentSMSAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["content"] = o.Content
+	if !IsNil(o.Sender) {
+		toSerialize["sender"] = o.Sender
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentSMSAllOf struct {

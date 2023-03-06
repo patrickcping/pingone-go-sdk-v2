@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationAccessControlGroupGroupsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationAccessControlGroupGroupsInner{}
+
 // ApplicationAccessControlGroupGroupsInner struct for ApplicationAccessControlGroupGroupsInner
 type ApplicationAccessControlGroupGroupsInner struct {
 	Id string `json:"id"`
@@ -51,7 +54,7 @@ func (o *ApplicationAccessControlGroupGroupsInner) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationAccessControlGroupGroupsInner) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -62,11 +65,17 @@ func (o *ApplicationAccessControlGroupGroupsInner) SetId(v string) {
 }
 
 func (o ApplicationAccessControlGroupGroupsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationAccessControlGroupGroupsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableApplicationAccessControlGroupGroupsInner struct {

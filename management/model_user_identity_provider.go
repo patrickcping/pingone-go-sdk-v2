@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserIdentityProvider type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserIdentityProvider{}
+
 // UserIdentityProvider struct for UserIdentityProvider
 type UserIdentityProvider struct {
 	// A mutable string that identifies the external identity provider used to authenticate the user. If not provided, PingOne is the identity provider. This attribute is required if the identity provider is authoritative for just-in-time user provisioning.
@@ -40,7 +43,7 @@ func NewUserIdentityProviderWithDefaults() *UserIdentityProvider {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *UserIdentityProvider) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *UserIdentityProvider) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserIdentityProvider) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *UserIdentityProvider) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *UserIdentityProvider) SetId(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *UserIdentityProvider) GetType() EnumIdentityProvider {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret EnumIdentityProvider
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *UserIdentityProvider) GetType() EnumIdentityProvider {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserIdentityProvider) GetTypeOk() (*EnumIdentityProvider, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *UserIdentityProvider) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *UserIdentityProvider) SetType(v EnumIdentityProvider) {
 }
 
 func (o UserIdentityProvider) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserIdentityProvider) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableUserIdentityProvider struct {

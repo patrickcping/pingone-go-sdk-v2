@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers{}
+
 // NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers struct for NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers
 type NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers struct {
 	Type EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType `json:"type"`
@@ -69,7 +72,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) GetTypeOk() (*EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -93,7 +96,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) GetSelectedOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Selected, true
 }
@@ -105,7 +108,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -149,7 +152,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) GetNumberOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Number, true
 }
@@ -173,7 +176,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) GetAvailableOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Available, true
 }
@@ -197,7 +200,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) GetCapabilitiesOk() ([]EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Capabilities, true
 }
@@ -221,7 +224,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) GetSupportedCountriesOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.SupportedCountries, true
 }
@@ -232,29 +235,23 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) 
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["selected"] = o.Selected
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if true {
-		toSerialize["number"] = o.Number
-	}
-	if true {
-		toSerialize["available"] = o.Available
-	}
-	if true {
-		toSerialize["capabilities"] = o.Capabilities
-	}
-	if true {
-		toSerialize["supportedCountries"] = o.SupportedCountries
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	toSerialize["selected"] = o.Selected
+	// skip: createdAt is readOnly
+	toSerialize["number"] = o.Number
+	toSerialize["available"] = o.Available
+	toSerialize["capabilities"] = o.Capabilities
+	toSerialize["supportedCountries"] = o.SupportedCountries
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers struct {

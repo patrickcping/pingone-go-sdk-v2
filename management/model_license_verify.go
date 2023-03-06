@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseVerify type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseVerify{}
+
 // LicenseVerify struct for LicenseVerify
 type LicenseVerify struct {
 	// A read-only boolean that specifies whether to enable the PingOne Verify push notifications feature.
@@ -45,7 +48,7 @@ func NewLicenseVerifyWithDefaults() *LicenseVerify {
 
 // GetAllowPushNotifications returns the AllowPushNotifications field value if set, zero value otherwise.
 func (o *LicenseVerify) GetAllowPushNotifications() bool {
-	if o == nil || isNil(o.AllowPushNotifications) {
+	if o == nil || IsNil(o.AllowPushNotifications) {
 		var ret bool
 		return ret
 	}
@@ -55,15 +58,15 @@ func (o *LicenseVerify) GetAllowPushNotifications() bool {
 // GetAllowPushNotificationsOk returns a tuple with the AllowPushNotifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseVerify) GetAllowPushNotificationsOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowPushNotifications) {
-    return nil, false
+	if o == nil || IsNil(o.AllowPushNotifications) {
+		return nil, false
 	}
 	return o.AllowPushNotifications, true
 }
 
 // HasAllowPushNotifications returns a boolean if a field has been set.
 func (o *LicenseVerify) HasAllowPushNotifications() bool {
-	if o != nil && !isNil(o.AllowPushNotifications) {
+	if o != nil && !IsNil(o.AllowPushNotifications) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *LicenseVerify) SetAllowPushNotifications(v bool) {
 
 // GetAllowDocumentMatch returns the AllowDocumentMatch field value if set, zero value otherwise.
 func (o *LicenseVerify) GetAllowDocumentMatch() bool {
-	if o == nil || isNil(o.AllowDocumentMatch) {
+	if o == nil || IsNil(o.AllowDocumentMatch) {
 		var ret bool
 		return ret
 	}
@@ -87,15 +90,15 @@ func (o *LicenseVerify) GetAllowDocumentMatch() bool {
 // GetAllowDocumentMatchOk returns a tuple with the AllowDocumentMatch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseVerify) GetAllowDocumentMatchOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowDocumentMatch) {
-    return nil, false
+	if o == nil || IsNil(o.AllowDocumentMatch) {
+		return nil, false
 	}
 	return o.AllowDocumentMatch, true
 }
 
 // HasAllowDocumentMatch returns a boolean if a field has been set.
 func (o *LicenseVerify) HasAllowDocumentMatch() bool {
-	if o != nil && !isNil(o.AllowDocumentMatch) {
+	if o != nil && !IsNil(o.AllowDocumentMatch) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *LicenseVerify) SetAllowDocumentMatch(v bool) {
 
 // GetAllowFaceMatch returns the AllowFaceMatch field value if set, zero value otherwise.
 func (o *LicenseVerify) GetAllowFaceMatch() bool {
-	if o == nil || isNil(o.AllowFaceMatch) {
+	if o == nil || IsNil(o.AllowFaceMatch) {
 		var ret bool
 		return ret
 	}
@@ -119,15 +122,15 @@ func (o *LicenseVerify) GetAllowFaceMatch() bool {
 // GetAllowFaceMatchOk returns a tuple with the AllowFaceMatch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseVerify) GetAllowFaceMatchOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowFaceMatch) {
-    return nil, false
+	if o == nil || IsNil(o.AllowFaceMatch) {
+		return nil, false
 	}
 	return o.AllowFaceMatch, true
 }
 
 // HasAllowFaceMatch returns a boolean if a field has been set.
 func (o *LicenseVerify) HasAllowFaceMatch() bool {
-	if o != nil && !isNil(o.AllowFaceMatch) {
+	if o != nil && !IsNil(o.AllowFaceMatch) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *LicenseVerify) SetAllowFaceMatch(v bool) {
 
 // GetAllowManualIdInspection returns the AllowManualIdInspection field value if set, zero value otherwise.
 func (o *LicenseVerify) GetAllowManualIdInspection() bool {
-	if o == nil || isNil(o.AllowManualIdInspection) {
+	if o == nil || IsNil(o.AllowManualIdInspection) {
 		var ret bool
 		return ret
 	}
@@ -151,15 +154,15 @@ func (o *LicenseVerify) GetAllowManualIdInspection() bool {
 // GetAllowManualIdInspectionOk returns a tuple with the AllowManualIdInspection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseVerify) GetAllowManualIdInspectionOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowManualIdInspection) {
-    return nil, false
+	if o == nil || IsNil(o.AllowManualIdInspection) {
+		return nil, false
 	}
 	return o.AllowManualIdInspection, true
 }
 
 // HasAllowManualIdInspection returns a boolean if a field has been set.
 func (o *LicenseVerify) HasAllowManualIdInspection() bool {
-	if o != nil && !isNil(o.AllowManualIdInspection) {
+	if o != nil && !IsNil(o.AllowManualIdInspection) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *LicenseVerify) SetAllowManualIdInspection(v bool) {
 }
 
 func (o LicenseVerify) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowPushNotifications) {
-		toSerialize["allowPushNotifications"] = o.AllowPushNotifications
-	}
-	if !isNil(o.AllowDocumentMatch) {
-		toSerialize["allowDocumentMatch"] = o.AllowDocumentMatch
-	}
-	if !isNil(o.AllowFaceMatch) {
-		toSerialize["allowFaceMatch"] = o.AllowFaceMatch
-	}
-	if !isNil(o.AllowManualIdInspection) {
-		toSerialize["allowManualIdInspection"] = o.AllowManualIdInspection
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseVerify) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowPushNotifications) {
+		toSerialize["allowPushNotifications"] = o.AllowPushNotifications
+	}
+	if !IsNil(o.AllowDocumentMatch) {
+		toSerialize["allowDocumentMatch"] = o.AllowDocumentMatch
+	}
+	if !IsNil(o.AllowFaceMatch) {
+		toSerialize["allowFaceMatch"] = o.AllowFaceMatch
+	}
+	if !IsNil(o.AllowManualIdInspection) {
+		toSerialize["allowManualIdInspection"] = o.AllowManualIdInspection
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseVerify struct {

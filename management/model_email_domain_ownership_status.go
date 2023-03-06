@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EmailDomainOwnershipStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EmailDomainOwnershipStatus{}
+
 // EmailDomainOwnershipStatus struct for EmailDomainOwnershipStatus
 type EmailDomainOwnershipStatus struct {
 	// A string that specifies the type of DNS record, with the value \"TXT\".
@@ -41,7 +44,7 @@ func NewEmailDomainOwnershipStatusWithDefaults() *EmailDomainOwnershipStatus {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *EmailDomainOwnershipStatus) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *EmailDomainOwnershipStatus) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainOwnershipStatus) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *EmailDomainOwnershipStatus) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *EmailDomainOwnershipStatus) SetType(v string) {
 
 // GetRegions returns the Regions field value if set, zero value otherwise.
 func (o *EmailDomainOwnershipStatus) GetRegions() []EmailDomainOwnershipStatusRegionsInner {
-	if o == nil || isNil(o.Regions) {
+	if o == nil || IsNil(o.Regions) {
 		var ret []EmailDomainOwnershipStatusRegionsInner
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *EmailDomainOwnershipStatus) GetRegions() []EmailDomainOwnershipStatusRe
 // GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainOwnershipStatus) GetRegionsOk() ([]EmailDomainOwnershipStatusRegionsInner, bool) {
-	if o == nil || isNil(o.Regions) {
-    return nil, false
+	if o == nil || IsNil(o.Regions) {
+		return nil, false
 	}
 	return o.Regions, true
 }
 
 // HasRegions returns a boolean if a field has been set.
 func (o *EmailDomainOwnershipStatus) HasRegions() bool {
-	if o != nil && !isNil(o.Regions) {
+	if o != nil && !IsNil(o.Regions) {
 		return true
 	}
 
@@ -104,14 +107,18 @@ func (o *EmailDomainOwnershipStatus) SetRegions(v []EmailDomainOwnershipStatusRe
 }
 
 func (o EmailDomainOwnershipStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.Regions) {
-		toSerialize["regions"] = o.Regions
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EmailDomainOwnershipStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: type is readOnly
+	// skip: regions is readOnly
+	return toSerialize, nil
 }
 
 type NullableEmailDomainOwnershipStatus struct {

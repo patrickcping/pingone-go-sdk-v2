@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderSAMLAllOfSpSigningKey type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderSAMLAllOfSpSigningKey{}
+
 // IdentityProviderSAMLAllOfSpSigningKey struct for IdentityProviderSAMLAllOfSpSigningKey
 type IdentityProviderSAMLAllOfSpSigningKey struct {
 	// A string that specifies the service provider's signing key ID.
@@ -52,7 +55,7 @@ func (o *IdentityProviderSAMLAllOfSpSigningKey) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderSAMLAllOfSpSigningKey) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *IdentityProviderSAMLAllOfSpSigningKey) SetId(v string) {
 }
 
 func (o IdentityProviderSAMLAllOfSpSigningKey) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderSAMLAllOfSpSigningKey) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderSAMLAllOfSpSigningKey struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the APIServerAuthorizationServer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &APIServerAuthorizationServer{}
+
 // APIServerAuthorizationServer A container object for properties related to the authorization server that will issue access tokens used to access the APIs.
 type APIServerAuthorizationServer struct {
 	Resource APIServerAuthorizationServerResource `json:"resource"`
@@ -51,7 +54,7 @@ func (o *APIServerAuthorizationServer) GetResource() APIServerAuthorizationServe
 // and a boolean to check if the value has been set.
 func (o *APIServerAuthorizationServer) GetResourceOk() (*APIServerAuthorizationServerResource, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Resource, true
 }
@@ -62,11 +65,17 @@ func (o *APIServerAuthorizationServer) SetResource(v APIServerAuthorizationServe
 }
 
 func (o APIServerAuthorizationServer) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["resource"] = o.Resource
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o APIServerAuthorizationServer) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["resource"] = o.Resource
+	return toSerialize, nil
 }
 
 type NullableAPIServerAuthorizationServer struct {

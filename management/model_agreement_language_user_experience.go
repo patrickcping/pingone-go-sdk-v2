@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AgreementLanguageUserExperience type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgreementLanguageUserExperience{}
+
 // AgreementLanguageUserExperience struct for AgreementLanguageUserExperience
 type AgreementLanguageUserExperience struct {
 	// A string that specifies the text next to the \"accept\" checkbox in the end user interface. Accepted character are unicode letters, combining marks, numeric characters, whitespace, and punctuation characters (regex `^[\\p{L}\\p{M}\\p{N}\\p{Zs}\\p{P}]+$`).
@@ -43,7 +46,7 @@ func NewAgreementLanguageUserExperienceWithDefaults() *AgreementLanguageUserExpe
 
 // GetAcceptCheckboxText returns the AcceptCheckboxText field value if set, zero value otherwise.
 func (o *AgreementLanguageUserExperience) GetAcceptCheckboxText() string {
-	if o == nil || isNil(o.AcceptCheckboxText) {
+	if o == nil || IsNil(o.AcceptCheckboxText) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *AgreementLanguageUserExperience) GetAcceptCheckboxText() string {
 // GetAcceptCheckboxTextOk returns a tuple with the AcceptCheckboxText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageUserExperience) GetAcceptCheckboxTextOk() (*string, bool) {
-	if o == nil || isNil(o.AcceptCheckboxText) {
-    return nil, false
+	if o == nil || IsNil(o.AcceptCheckboxText) {
+		return nil, false
 	}
 	return o.AcceptCheckboxText, true
 }
 
 // HasAcceptCheckboxText returns a boolean if a field has been set.
 func (o *AgreementLanguageUserExperience) HasAcceptCheckboxText() bool {
-	if o != nil && !isNil(o.AcceptCheckboxText) {
+	if o != nil && !IsNil(o.AcceptCheckboxText) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *AgreementLanguageUserExperience) SetAcceptCheckboxText(v string) {
 
 // GetContinueButtonText returns the ContinueButtonText field value if set, zero value otherwise.
 func (o *AgreementLanguageUserExperience) GetContinueButtonText() string {
-	if o == nil || isNil(o.ContinueButtonText) {
+	if o == nil || IsNil(o.ContinueButtonText) {
 		var ret string
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *AgreementLanguageUserExperience) GetContinueButtonText() string {
 // GetContinueButtonTextOk returns a tuple with the ContinueButtonText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageUserExperience) GetContinueButtonTextOk() (*string, bool) {
-	if o == nil || isNil(o.ContinueButtonText) {
-    return nil, false
+	if o == nil || IsNil(o.ContinueButtonText) {
+		return nil, false
 	}
 	return o.ContinueButtonText, true
 }
 
 // HasContinueButtonText returns a boolean if a field has been set.
 func (o *AgreementLanguageUserExperience) HasContinueButtonText() bool {
-	if o != nil && !isNil(o.ContinueButtonText) {
+	if o != nil && !IsNil(o.ContinueButtonText) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *AgreementLanguageUserExperience) SetContinueButtonText(v string) {
 
 // GetDeclineButtonText returns the DeclineButtonText field value if set, zero value otherwise.
 func (o *AgreementLanguageUserExperience) GetDeclineButtonText() string {
-	if o == nil || isNil(o.DeclineButtonText) {
+	if o == nil || IsNil(o.DeclineButtonText) {
 		var ret string
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *AgreementLanguageUserExperience) GetDeclineButtonText() string {
 // GetDeclineButtonTextOk returns a tuple with the DeclineButtonText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguageUserExperience) GetDeclineButtonTextOk() (*string, bool) {
-	if o == nil || isNil(o.DeclineButtonText) {
-    return nil, false
+	if o == nil || IsNil(o.DeclineButtonText) {
+		return nil, false
 	}
 	return o.DeclineButtonText, true
 }
 
 // HasDeclineButtonText returns a boolean if a field has been set.
 func (o *AgreementLanguageUserExperience) HasDeclineButtonText() bool {
-	if o != nil && !isNil(o.DeclineButtonText) {
+	if o != nil && !IsNil(o.DeclineButtonText) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *AgreementLanguageUserExperience) SetDeclineButtonText(v string) {
 }
 
 func (o AgreementLanguageUserExperience) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AcceptCheckboxText) {
-		toSerialize["acceptCheckboxText"] = o.AcceptCheckboxText
-	}
-	if !isNil(o.ContinueButtonText) {
-		toSerialize["continueButtonText"] = o.ContinueButtonText
-	}
-	if !isNil(o.DeclineButtonText) {
-		toSerialize["declineButtonText"] = o.DeclineButtonText
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AgreementLanguageUserExperience) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AcceptCheckboxText) {
+		toSerialize["acceptCheckboxText"] = o.AcceptCheckboxText
+	}
+	if !IsNil(o.ContinueButtonText) {
+		toSerialize["continueButtonText"] = o.ContinueButtonText
+	}
+	if !IsNil(o.DeclineButtonText) {
+		toSerialize["declineButtonText"] = o.DeclineButtonText
+	}
+	return toSerialize, nil
 }
 
 type NullableAgreementLanguageUserExperience struct {

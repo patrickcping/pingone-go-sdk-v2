@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SubscriptionFilterOptionsIncludedApplicationsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SubscriptionFilterOptionsIncludedApplicationsInner{}
+
 // SubscriptionFilterOptionsIncludedApplicationsInner struct for SubscriptionFilterOptionsIncludedApplicationsInner
 type SubscriptionFilterOptionsIncludedApplicationsInner struct {
 	Id string `json:"id"`
@@ -51,7 +54,7 @@ func (o *SubscriptionFilterOptionsIncludedApplicationsInner) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *SubscriptionFilterOptionsIncludedApplicationsInner) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -62,11 +65,17 @@ func (o *SubscriptionFilterOptionsIncludedApplicationsInner) SetId(v string) {
 }
 
 func (o SubscriptionFilterOptionsIncludedApplicationsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SubscriptionFilterOptionsIncludedApplicationsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableSubscriptionFilterOptionsIncludedApplicationsInner struct {

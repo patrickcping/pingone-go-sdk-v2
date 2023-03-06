@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayTypeRADIUSAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayTypeRADIUSAllOf{}
+
 // GatewayTypeRADIUSAllOf struct for GatewayTypeRADIUSAllOf
 type GatewayTypeRADIUSAllOf struct {
 	Davinci GatewayTypeRADIUSAllOfDavinci `json:"davinci"`
@@ -56,7 +59,7 @@ func (o *GatewayTypeRADIUSAllOf) GetDavinci() GatewayTypeRADIUSAllOfDavinci {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeRADIUSAllOf) GetDavinciOk() (*GatewayTypeRADIUSAllOfDavinci, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Davinci, true
 }
@@ -68,7 +71,7 @@ func (o *GatewayTypeRADIUSAllOf) SetDavinci(v GatewayTypeRADIUSAllOfDavinci) {
 
 // GetDefaultSharedSecret returns the DefaultSharedSecret field value if set, zero value otherwise.
 func (o *GatewayTypeRADIUSAllOf) GetDefaultSharedSecret() string {
-	if o == nil || isNil(o.DefaultSharedSecret) {
+	if o == nil || IsNil(o.DefaultSharedSecret) {
 		var ret string
 		return ret
 	}
@@ -78,15 +81,15 @@ func (o *GatewayTypeRADIUSAllOf) GetDefaultSharedSecret() string {
 // GetDefaultSharedSecretOk returns a tuple with the DefaultSharedSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeRADIUSAllOf) GetDefaultSharedSecretOk() (*string, bool) {
-	if o == nil || isNil(o.DefaultSharedSecret) {
-    return nil, false
+	if o == nil || IsNil(o.DefaultSharedSecret) {
+		return nil, false
 	}
 	return o.DefaultSharedSecret, true
 }
 
 // HasDefaultSharedSecret returns a boolean if a field has been set.
 func (o *GatewayTypeRADIUSAllOf) HasDefaultSharedSecret() bool {
-	if o != nil && !isNil(o.DefaultSharedSecret) {
+	if o != nil && !IsNil(o.DefaultSharedSecret) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *GatewayTypeRADIUSAllOf) GetRadiusClients() []GatewayTypeRADIUSAllOfRadi
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeRADIUSAllOf) GetRadiusClientsOk() ([]GatewayTypeRADIUSAllOfRadiusClients, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.RadiusClients, true
 }
@@ -123,17 +126,21 @@ func (o *GatewayTypeRADIUSAllOf) SetRadiusClients(v []GatewayTypeRADIUSAllOfRadi
 }
 
 func (o GatewayTypeRADIUSAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["davinci"] = o.Davinci
-	}
-	if !isNil(o.DefaultSharedSecret) {
-		toSerialize["defaultSharedSecret"] = o.DefaultSharedSecret
-	}
-	if true {
-		toSerialize["radiusClients"] = o.RadiusClients
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayTypeRADIUSAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["davinci"] = o.Davinci
+	if !IsNil(o.DefaultSharedSecret) {
+		toSerialize["defaultSharedSecret"] = o.DefaultSharedSecret
+	}
+	toSerialize["radiusClients"] = o.RadiusClients
+	return toSerialize, nil
 }
 
 type NullableGatewayTypeRADIUSAllOf struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserLifecycle type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserLifecycle{}
+
 // UserLifecycle struct for UserLifecycle
 type UserLifecycle struct {
 	Status *EnumUserLifecycleStatus `json:"status,omitempty"`
@@ -38,7 +41,7 @@ func NewUserLifecycleWithDefaults() *UserLifecycle {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *UserLifecycle) GetStatus() EnumUserLifecycleStatus {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret EnumUserLifecycleStatus
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *UserLifecycle) GetStatus() EnumUserLifecycleStatus {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLifecycle) GetStatusOk() (*EnumUserLifecycleStatus, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *UserLifecycle) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *UserLifecycle) SetStatus(v EnumUserLifecycleStatus) {
 }
 
 func (o UserLifecycle) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserLifecycle) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableUserLifecycle struct {

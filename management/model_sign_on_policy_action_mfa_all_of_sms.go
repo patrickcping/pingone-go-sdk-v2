@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionMFAAllOfSms type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionMFAAllOfSms{}
+
 // SignOnPolicyActionMFAAllOfSms Specifies MFA through SMS text messaging options.
 type SignOnPolicyActionMFAAllOfSms struct {
 	// A boolean that specifies the enabled/disabled state of the MFA through SMS action. The default is disabled when creating a new policy. When enabled, it allows users to receive the one-time password and authenticate through SMS text message.
@@ -43,7 +46,7 @@ func NewSignOnPolicyActionMFAAllOfSmsWithDefaults() *SignOnPolicyActionMFAAllOfS
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *SignOnPolicyActionMFAAllOfSms) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *SignOnPolicyActionMFAAllOfSms) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionMFAAllOfSms) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
-    return nil, false
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
 	}
 	return o.Enabled, true
 }
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *SignOnPolicyActionMFAAllOfSms) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -74,11 +77,19 @@ func (o *SignOnPolicyActionMFAAllOfSms) SetEnabled(v bool) {
 }
 
 func (o SignOnPolicyActionMFAAllOfSms) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionMFAAllOfSms) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionMFAAllOfSms struct {

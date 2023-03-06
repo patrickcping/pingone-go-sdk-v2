@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskPredictorItemMapBetween type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPredictorItemMapBetween{}
+
 // RiskPredictorItemMapBetween Minimum and maximum boundaries
 type RiskPredictorItemMapBetween struct {
 	MinScore float32 `json:"minScore"`
@@ -53,7 +56,7 @@ func (o *RiskPredictorItemMapBetween) GetMinScore() float32 {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMapBetween) GetMinScoreOk() (*float32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.MinScore, true
 }
@@ -77,7 +80,7 @@ func (o *RiskPredictorItemMapBetween) GetMaxScore() float32 {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorItemMapBetween) GetMaxScoreOk() (*float32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.MaxScore, true
 }
@@ -88,14 +91,18 @@ func (o *RiskPredictorItemMapBetween) SetMaxScore(v float32) {
 }
 
 func (o RiskPredictorItemMapBetween) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["minScore"] = o.MinScore
-	}
-	if true {
-		toSerialize["maxScore"] = o.MaxScore
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskPredictorItemMapBetween) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["minScore"] = o.MinScore
+	toSerialize["maxScore"] = o.MaxScore
+	return toSerialize, nil
 }
 
 type NullableRiskPredictorItemMapBetween struct {
