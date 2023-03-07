@@ -25188,6 +25188,9 @@ components:
           - null
           populations:
           - createdAt: createdAt
+            default: true
+            environment:
+              id: id
             passwordPolicy:
               id: id
             userCount: 0
@@ -25196,6 +25199,9 @@ components:
             id: id
             updatedAt: updatedAt
           - createdAt: createdAt
+            default: true
+            environment:
+              id: id
             passwordPolicy:
               id: id
             userCount: 0
@@ -26563,6 +26569,9 @@ components:
     Population:
       example:
         createdAt: createdAt
+        default: true
+        environment:
+          id: id
         passwordPolicy:
           id: id
         userCount: 0
@@ -26575,9 +26584,18 @@ components:
           description: The time the resource was created.
           readOnly: true
           type: string
+        default:
+          description: "The population to use as the default population for the environment.\
+            \ Only one population per environment can be the default. New users are\
+            \ assigned to the default population if it exists, and the Population\
+            \ ID is not provided in the [Create User](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user)\
+            \ request."
+          type: boolean
         description:
           description: A string that specifies the description of the population.
           type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -29840,6 +29858,9 @@ components:
         - null
         populations:
         - createdAt: createdAt
+          default: true
+          environment:
+            id: id
           passwordPolicy:
             id: id
           userCount: 0
@@ -29848,6 +29869,9 @@ components:
           id: id
           updatedAt: updatedAt
         - createdAt: createdAt
+          default: true
+          environment:
+            id: id
           passwordPolicy:
             id: id
           userCount: 0

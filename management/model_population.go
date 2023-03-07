@@ -21,8 +21,11 @@ var _ MappedNullable = &Population{}
 type Population struct {
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
+	// The population to use as the default population for the environment. Only one population per environment can be the default. New users are assigned to the default population if it exists, and the Population ID is not provided in the [Create User](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user) request.
+	Default *bool `json:"default,omitempty"`
 	// A string that specifies the description of the population.
 	Description *string `json:"description,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the population name, which must be provided and must be unique within an environment.
@@ -84,6 +87,38 @@ func (o *Population) SetCreatedAt(v string) {
 	o.CreatedAt = &v
 }
 
+// GetDefault returns the Default field value if set, zero value otherwise.
+func (o *Population) GetDefault() bool {
+	if o == nil || IsNil(o.Default) {
+		var ret bool
+		return ret
+	}
+	return *o.Default
+}
+
+// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Population) GetDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.Default) {
+		return nil, false
+	}
+	return o.Default, true
+}
+
+// HasDefault returns a boolean if a field has been set.
+func (o *Population) HasDefault() bool {
+	if o != nil && !IsNil(o.Default) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefault gets a reference to the given bool and assigns it to the Default field.
+func (o *Population) SetDefault(v bool) {
+	o.Default = &v
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Population) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -114,6 +149,38 @@ func (o *Population) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Population) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *Population) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Population) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *Population) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *Population) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -279,8 +346,14 @@ func (o Population) MarshalJSON() ([]byte, error) {
 func (o Population) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	// skip: createdAt is readOnly
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
 	}
 	// skip: id is readOnly
 	toSerialize["name"] = o.Name
