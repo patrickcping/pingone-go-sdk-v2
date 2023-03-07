@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -34,7 +34,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesActivityIDGet(context.Background(), environmentID, activityID).Execute()
+    r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesActivityIDGet(context.Background(), environmentID, activityID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesActivityIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -94,7 +94,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -103,7 +103,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesGet(context.Background(), environmentID).Filter(filter).Execute()
+    r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesGet(context.Background(), environmentID).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -162,7 +162,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -171,7 +171,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

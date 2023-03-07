@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationAccessControlGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationAccessControlGroup{}
+
 // ApplicationAccessControlGroup struct for ApplicationAccessControlGroup
 type ApplicationAccessControlGroup struct {
 	// A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
@@ -55,7 +58,7 @@ func (o *ApplicationAccessControlGroup) GetType() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationAccessControlGroup) GetTypeOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -79,7 +82,7 @@ func (o *ApplicationAccessControlGroup) GetGroups() []ApplicationAccessControlGr
 // and a boolean to check if the value has been set.
 func (o *ApplicationAccessControlGroup) GetGroupsOk() ([]ApplicationAccessControlGroupGroupsInner, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Groups, true
 }
@@ -90,14 +93,18 @@ func (o *ApplicationAccessControlGroup) SetGroups(v []ApplicationAccessControlGr
 }
 
 func (o ApplicationAccessControlGroup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["groups"] = o.Groups
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationAccessControlGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	toSerialize["groups"] = o.Groups
+	return toSerialize, nil
 }
 
 type NullableApplicationAccessControlGroup struct {

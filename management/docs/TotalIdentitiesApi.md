@@ -23,7 +23,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -32,7 +32,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TotalIdentitiesApi.V1EnvironmentsEnvironmentIDTotalIdentitiesGet(context.Background(), environmentID).Filter(filter).Execute()
+    r, err := apiClient.TotalIdentitiesApi.V1EnvironmentsEnvironmentIDTotalIdentitiesGet(context.Background(), environmentID).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TotalIdentitiesApi.V1EnvironmentsEnvironmentIDTotalIdentitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

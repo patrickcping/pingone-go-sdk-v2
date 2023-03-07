@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyMobileOtpWindow type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyMobileOtpWindow{}
+
 // DeviceAuthenticationPolicyMobileOtpWindow struct for DeviceAuthenticationPolicyMobileOtpWindow
 type DeviceAuthenticationPolicyMobileOtpWindow struct {
 	StepSize DeviceAuthenticationPolicyMobileOtpWindowStepSize `json:"stepSize"`
@@ -51,7 +54,7 @@ func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetStepSize() DeviceAuthenti
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileOtpWindow) GetStepSizeOk() (*DeviceAuthenticationPolicyMobileOtpWindowStepSize, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.StepSize, true
 }
@@ -62,11 +65,17 @@ func (o *DeviceAuthenticationPolicyMobileOtpWindow) SetStepSize(v DeviceAuthenti
 }
 
 func (o DeviceAuthenticationPolicyMobileOtpWindow) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["stepSize"] = o.StepSize
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyMobileOtpWindow) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["stepSize"] = o.StepSize
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyMobileOtpWindow struct {

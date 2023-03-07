@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentSMS type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentSMS{}
+
 // TemplateContentSMS struct for TemplateContentSMS
 type TemplateContentSMS struct {
 	// The template id.
@@ -57,7 +60,7 @@ func NewTemplateContentSMSWithDefaults() *TemplateContentSMS {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TemplateContentSMS) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -67,15 +70,15 @@ func (o *TemplateContentSMS) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *TemplateContentSMS) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *TemplateContentSMS) SetId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *TemplateContentSMS) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -99,15 +102,15 @@ func (o *TemplateContentSMS) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *TemplateContentSMS) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -121,7 +124,7 @@ func (o *TemplateContentSMS) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *TemplateContentSMS) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -131,15 +134,15 @@ func (o *TemplateContentSMS) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *TemplateContentSMS) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *TemplateContentSMS) SetUpdatedAt(v string) {
 
 // GetDefault returns the Default field value if set, zero value otherwise.
 func (o *TemplateContentSMS) GetDefault() bool {
-	if o == nil || isNil(o.Default) {
+	if o == nil || IsNil(o.Default) {
 		var ret bool
 		return ret
 	}
@@ -163,15 +166,15 @@ func (o *TemplateContentSMS) GetDefault() bool {
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetDefaultOk() (*bool, bool) {
-	if o == nil || isNil(o.Default) {
-    return nil, false
+	if o == nil || IsNil(o.Default) {
+		return nil, false
 	}
 	return o.Default, true
 }
 
 // HasDefault returns a boolean if a field has been set.
 func (o *TemplateContentSMS) HasDefault() bool {
-	if o != nil && !isNil(o.Default) {
+	if o != nil && !IsNil(o.Default) {
 		return true
 	}
 
@@ -197,7 +200,7 @@ func (o *TemplateContentSMS) GetLocale() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetLocaleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Locale, true
 }
@@ -221,7 +224,7 @@ func (o *TemplateContentSMS) GetDeliveryMethod() EnumTemplateContentDeliveryMeth
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetDeliveryMethodOk() (*EnumTemplateContentDeliveryMethod, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DeliveryMethod, true
 }
@@ -233,7 +236,7 @@ func (o *TemplateContentSMS) SetDeliveryMethod(v EnumTemplateContentDeliveryMeth
 
 // GetVariant returns the Variant field value if set, zero value otherwise.
 func (o *TemplateContentSMS) GetVariant() string {
-	if o == nil || isNil(o.Variant) {
+	if o == nil || IsNil(o.Variant) {
 		var ret string
 		return ret
 	}
@@ -243,15 +246,15 @@ func (o *TemplateContentSMS) GetVariant() string {
 // GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetVariantOk() (*string, bool) {
-	if o == nil || isNil(o.Variant) {
-    return nil, false
+	if o == nil || IsNil(o.Variant) {
+		return nil, false
 	}
 	return o.Variant, true
 }
 
 // HasVariant returns a boolean if a field has been set.
 func (o *TemplateContentSMS) HasVariant() bool {
-	if o != nil && !isNil(o.Variant) {
+	if o != nil && !IsNil(o.Variant) {
 		return true
 	}
 
@@ -277,7 +280,7 @@ func (o *TemplateContentSMS) GetContent() string {
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetContentOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Content, true
 }
@@ -289,7 +292,7 @@ func (o *TemplateContentSMS) SetContent(v string) {
 
 // GetSender returns the Sender field value if set, zero value otherwise.
 func (o *TemplateContentSMS) GetSender() string {
-	if o == nil || isNil(o.Sender) {
+	if o == nil || IsNil(o.Sender) {
 		var ret string
 		return ret
 	}
@@ -299,15 +302,15 @@ func (o *TemplateContentSMS) GetSender() string {
 // GetSenderOk returns a tuple with the Sender field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentSMS) GetSenderOk() (*string, bool) {
-	if o == nil || isNil(o.Sender) {
-    return nil, false
+	if o == nil || IsNil(o.Sender) {
+		return nil, false
 	}
 	return o.Sender, true
 }
 
 // HasSender returns a boolean if a field has been set.
 func (o *TemplateContentSMS) HasSender() bool {
-	if o != nil && !isNil(o.Sender) {
+	if o != nil && !IsNil(o.Sender) {
 		return true
 	}
 
@@ -320,35 +323,31 @@ func (o *TemplateContentSMS) SetSender(v string) {
 }
 
 func (o TemplateContentSMS) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.Default) {
-		toSerialize["default"] = o.Default
-	}
-	if true {
-		toSerialize["locale"] = o.Locale
-	}
-	if true {
-		toSerialize["deliveryMethod"] = o.DeliveryMethod
-	}
-	if !isNil(o.Variant) {
-		toSerialize["variant"] = o.Variant
-	}
-	if true {
-		toSerialize["content"] = o.Content
-	}
-	if !isNil(o.Sender) {
-		toSerialize["sender"] = o.Sender
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentSMS) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
+	}
+	toSerialize["locale"] = o.Locale
+	toSerialize["deliveryMethod"] = o.DeliveryMethod
+	if !IsNil(o.Variant) {
+		toSerialize["variant"] = o.Variant
+	}
+	toSerialize["content"] = o.Content
+	if !IsNil(o.Sender) {
+		toSerialize["sender"] = o.Sender
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentSMS struct {

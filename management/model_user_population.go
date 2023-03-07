@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserPopulation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserPopulation{}
+
 // UserPopulation struct for UserPopulation
 type UserPopulation struct {
 	// A string that specifies the identifier of the population resource associated with the user. This property cannot be updated using PUT {{apiPath}}/environments/{{environmentID}}/users/{{userID}}. However, it can be updated using PUT /environments/{{environmentID}}/users/{{userID}}/population.
@@ -52,7 +55,7 @@ func (o *UserPopulation) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *UserPopulation) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *UserPopulation) SetId(v string) {
 }
 
 func (o UserPopulation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserPopulation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableUserPopulation struct {

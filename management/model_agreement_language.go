@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AgreementLanguage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AgreementLanguage{}
+
 // AgreementLanguage struct for AgreementLanguage
 type AgreementLanguage struct {
 	Agreement *AgreementLanguageAgreement `json:"agreement,omitempty"`
@@ -51,7 +54,7 @@ func NewAgreementLanguageWithDefaults() *AgreementLanguage {
 
 // GetAgreement returns the Agreement field value if set, zero value otherwise.
 func (o *AgreementLanguage) GetAgreement() AgreementLanguageAgreement {
-	if o == nil || isNil(o.Agreement) {
+	if o == nil || IsNil(o.Agreement) {
 		var ret AgreementLanguageAgreement
 		return ret
 	}
@@ -61,15 +64,15 @@ func (o *AgreementLanguage) GetAgreement() AgreementLanguageAgreement {
 // GetAgreementOk returns a tuple with the Agreement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguage) GetAgreementOk() (*AgreementLanguageAgreement, bool) {
-	if o == nil || isNil(o.Agreement) {
-    return nil, false
+	if o == nil || IsNil(o.Agreement) {
+		return nil, false
 	}
 	return o.Agreement, true
 }
 
 // HasAgreement returns a boolean if a field has been set.
 func (o *AgreementLanguage) HasAgreement() bool {
-	if o != nil && !isNil(o.Agreement) {
+	if o != nil && !IsNil(o.Agreement) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *AgreementLanguage) SetAgreement(v AgreementLanguageAgreement) {
 
 // GetCurrentRevision returns the CurrentRevision field value if set, zero value otherwise.
 func (o *AgreementLanguage) GetCurrentRevision() AgreementLanguageCurrentRevision {
-	if o == nil || isNil(o.CurrentRevision) {
+	if o == nil || IsNil(o.CurrentRevision) {
 		var ret AgreementLanguageCurrentRevision
 		return ret
 	}
@@ -93,15 +96,15 @@ func (o *AgreementLanguage) GetCurrentRevision() AgreementLanguageCurrentRevisio
 // GetCurrentRevisionOk returns a tuple with the CurrentRevision field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguage) GetCurrentRevisionOk() (*AgreementLanguageCurrentRevision, bool) {
-	if o == nil || isNil(o.CurrentRevision) {
-    return nil, false
+	if o == nil || IsNil(o.CurrentRevision) {
+		return nil, false
 	}
 	return o.CurrentRevision, true
 }
 
 // HasCurrentRevision returns a boolean if a field has been set.
 func (o *AgreementLanguage) HasCurrentRevision() bool {
-	if o != nil && !isNil(o.CurrentRevision) {
+	if o != nil && !IsNil(o.CurrentRevision) {
 		return true
 	}
 
@@ -127,7 +130,7 @@ func (o *AgreementLanguage) GetDisplayName() string {
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguage) GetDisplayNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DisplayName, true
 }
@@ -151,7 +154,7 @@ func (o *AgreementLanguage) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguage) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -163,7 +166,7 @@ func (o *AgreementLanguage) SetEnabled(v bool) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AgreementLanguage) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -173,15 +176,15 @@ func (o *AgreementLanguage) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguage) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *AgreementLanguage) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *AgreementLanguage) GetLocale() string {
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguage) GetLocaleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Locale, true
 }
@@ -219,7 +222,7 @@ func (o *AgreementLanguage) SetLocale(v string) {
 
 // GetUserExperience returns the UserExperience field value if set, zero value otherwise.
 func (o *AgreementLanguage) GetUserExperience() AgreementLanguageUserExperience {
-	if o == nil || isNil(o.UserExperience) {
+	if o == nil || IsNil(o.UserExperience) {
 		var ret AgreementLanguageUserExperience
 		return ret
 	}
@@ -229,15 +232,15 @@ func (o *AgreementLanguage) GetUserExperience() AgreementLanguageUserExperience 
 // GetUserExperienceOk returns a tuple with the UserExperience field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AgreementLanguage) GetUserExperienceOk() (*AgreementLanguageUserExperience, bool) {
-	if o == nil || isNil(o.UserExperience) {
-    return nil, false
+	if o == nil || IsNil(o.UserExperience) {
+		return nil, false
 	}
 	return o.UserExperience, true
 }
 
 // HasUserExperience returns a boolean if a field has been set.
 func (o *AgreementLanguage) HasUserExperience() bool {
-	if o != nil && !isNil(o.UserExperience) {
+	if o != nil && !IsNil(o.UserExperience) {
 		return true
 	}
 
@@ -250,29 +253,29 @@ func (o *AgreementLanguage) SetUserExperience(v AgreementLanguageUserExperience)
 }
 
 func (o AgreementLanguage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Agreement) {
-		toSerialize["agreement"] = o.Agreement
-	}
-	if !isNil(o.CurrentRevision) {
-		toSerialize["currentRevision"] = o.CurrentRevision
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["locale"] = o.Locale
-	}
-	if !isNil(o.UserExperience) {
-		toSerialize["userExperience"] = o.UserExperience
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AgreementLanguage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Agreement) {
+		toSerialize["agreement"] = o.Agreement
+	}
+	if !IsNil(o.CurrentRevision) {
+		toSerialize["currentRevision"] = o.CurrentRevision
+	}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["enabled"] = o.Enabled
+	// skip: id is readOnly
+	toSerialize["locale"] = o.Locale
+	if !IsNil(o.UserExperience) {
+		toSerialize["userExperience"] = o.UserExperience
+	}
+	return toSerialize, nil
 }
 
 type NullableAgreementLanguage struct {

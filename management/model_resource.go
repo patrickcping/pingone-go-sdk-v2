@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Resource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Resource{}
+
 // Resource struct for Resource
 type Resource struct {
 	// An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days).
@@ -57,7 +60,7 @@ func NewResourceWithDefaults() *Resource {
 
 // GetAccessTokenValiditySeconds returns the AccessTokenValiditySeconds field value if set, zero value otherwise.
 func (o *Resource) GetAccessTokenValiditySeconds() int32 {
-	if o == nil || isNil(o.AccessTokenValiditySeconds) {
+	if o == nil || IsNil(o.AccessTokenValiditySeconds) {
 		var ret int32
 		return ret
 	}
@@ -67,15 +70,15 @@ func (o *Resource) GetAccessTokenValiditySeconds() int32 {
 // GetAccessTokenValiditySecondsOk returns a tuple with the AccessTokenValiditySeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetAccessTokenValiditySecondsOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessTokenValiditySeconds) {
-    return nil, false
+	if o == nil || IsNil(o.AccessTokenValiditySeconds) {
+		return nil, false
 	}
 	return o.AccessTokenValiditySeconds, true
 }
 
 // HasAccessTokenValiditySeconds returns a boolean if a field has been set.
 func (o *Resource) HasAccessTokenValiditySeconds() bool {
-	if o != nil && !isNil(o.AccessTokenValiditySeconds) {
+	if o != nil && !IsNil(o.AccessTokenValiditySeconds) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *Resource) SetAccessTokenValiditySeconds(v int32) {
 
 // GetAudience returns the Audience field value if set, zero value otherwise.
 func (o *Resource) GetAudience() string {
-	if o == nil || isNil(o.Audience) {
+	if o == nil || IsNil(o.Audience) {
 		var ret string
 		return ret
 	}
@@ -99,15 +102,15 @@ func (o *Resource) GetAudience() string {
 // GetAudienceOk returns a tuple with the Audience field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetAudienceOk() (*string, bool) {
-	if o == nil || isNil(o.Audience) {
-    return nil, false
+	if o == nil || IsNil(o.Audience) {
+		return nil, false
 	}
 	return o.Audience, true
 }
 
 // HasAudience returns a boolean if a field has been set.
 func (o *Resource) HasAudience() bool {
-	if o != nil && !isNil(o.Audience) {
+	if o != nil && !IsNil(o.Audience) {
 		return true
 	}
 
@@ -121,7 +124,7 @@ func (o *Resource) SetAudience(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Resource) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -131,15 +134,15 @@ func (o *Resource) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Resource) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *Resource) SetCreatedAt(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Resource) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -163,15 +166,15 @@ func (o *Resource) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Resource) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -185,7 +188,7 @@ func (o *Resource) SetDescription(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Resource) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -195,15 +198,15 @@ func (o *Resource) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Resource) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -217,7 +220,7 @@ func (o *Resource) SetEnvironment(v ObjectEnvironment) {
 
 // GetResource returns the Resource field value if set, zero value otherwise.
 func (o *Resource) GetResource() IdentityProviderAttributeIdentityProvider {
-	if o == nil || isNil(o.Resource) {
+	if o == nil || IsNil(o.Resource) {
 		var ret IdentityProviderAttributeIdentityProvider
 		return ret
 	}
@@ -227,15 +230,15 @@ func (o *Resource) GetResource() IdentityProviderAttributeIdentityProvider {
 // GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetResourceOk() (*IdentityProviderAttributeIdentityProvider, bool) {
-	if o == nil || isNil(o.Resource) {
-    return nil, false
+	if o == nil || IsNil(o.Resource) {
+		return nil, false
 	}
 	return o.Resource, true
 }
 
 // HasResource returns a boolean if a field has been set.
 func (o *Resource) HasResource() bool {
-	if o != nil && !isNil(o.Resource) {
+	if o != nil && !IsNil(o.Resource) {
 		return true
 	}
 
@@ -249,7 +252,7 @@ func (o *Resource) SetResource(v IdentityProviderAttributeIdentityProvider) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Resource) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -259,15 +262,15 @@ func (o *Resource) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Resource) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -293,7 +296,7 @@ func (o *Resource) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Resource) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -305,7 +308,7 @@ func (o *Resource) SetName(v string) {
 
 // GetIntrospectEndpointAuthMethod returns the IntrospectEndpointAuthMethod field value if set, zero value otherwise.
 func (o *Resource) GetIntrospectEndpointAuthMethod() EnumResourceIntrospectEndpointAuthMethod {
-	if o == nil || isNil(o.IntrospectEndpointAuthMethod) {
+	if o == nil || IsNil(o.IntrospectEndpointAuthMethod) {
 		var ret EnumResourceIntrospectEndpointAuthMethod
 		return ret
 	}
@@ -315,15 +318,15 @@ func (o *Resource) GetIntrospectEndpointAuthMethod() EnumResourceIntrospectEndpo
 // GetIntrospectEndpointAuthMethodOk returns a tuple with the IntrospectEndpointAuthMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetIntrospectEndpointAuthMethodOk() (*EnumResourceIntrospectEndpointAuthMethod, bool) {
-	if o == nil || isNil(o.IntrospectEndpointAuthMethod) {
-    return nil, false
+	if o == nil || IsNil(o.IntrospectEndpointAuthMethod) {
+		return nil, false
 	}
 	return o.IntrospectEndpointAuthMethod, true
 }
 
 // HasIntrospectEndpointAuthMethod returns a boolean if a field has been set.
 func (o *Resource) HasIntrospectEndpointAuthMethod() bool {
-	if o != nil && !isNil(o.IntrospectEndpointAuthMethod) {
+	if o != nil && !IsNil(o.IntrospectEndpointAuthMethod) {
 		return true
 	}
 
@@ -337,7 +340,7 @@ func (o *Resource) SetIntrospectEndpointAuthMethod(v EnumResourceIntrospectEndpo
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Resource) GetType() EnumResourceType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret EnumResourceType
 		return ret
 	}
@@ -347,15 +350,15 @@ func (o *Resource) GetType() EnumResourceType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetTypeOk() (*EnumResourceType, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Resource) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -369,7 +372,7 @@ func (o *Resource) SetType(v EnumResourceType) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Resource) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -379,15 +382,15 @@ func (o *Resource) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Resource) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Resource) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -400,41 +403,41 @@ func (o *Resource) SetUpdatedAt(v time.Time) {
 }
 
 func (o Resource) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AccessTokenValiditySeconds) {
-		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
-	}
-	if !isNil(o.Audience) {
-		toSerialize["audience"] = o.Audience
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Resource) {
-		toSerialize["resource"] = o.Resource
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.IntrospectEndpointAuthMethod) {
-		toSerialize["introspectEndpointAuthMethod"] = o.IntrospectEndpointAuthMethod
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Resource) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessTokenValiditySeconds) {
+		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
+	}
+	if !IsNil(o.Audience) {
+		toSerialize["audience"] = o.Audience
+	}
+	// skip: createdAt is readOnly
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Resource) {
+		toSerialize["resource"] = o.Resource
+	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.IntrospectEndpointAuthMethod) {
+		toSerialize["introspectEndpointAuthMethod"] = o.IntrospectEndpointAuthMethod
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	// skip: updatedAt is readOnly
+	return toSerialize, nil
 }
 
 type NullableResource struct {

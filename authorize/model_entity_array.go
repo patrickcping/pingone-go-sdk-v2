@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntityArray type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntityArray{}
+
 // EntityArray struct for EntityArray
 type EntityArray struct {
 	Embedded *EntityArrayEmbedded `json:"_embedded,omitempty"`
@@ -40,7 +43,7 @@ func NewEntityArrayWithDefaults() *EntityArray {
 
 // GetEmbedded returns the Embedded field value if set, zero value otherwise.
 func (o *EntityArray) GetEmbedded() EntityArrayEmbedded {
-	if o == nil || isNil(o.Embedded) {
+	if o == nil || IsNil(o.Embedded) {
 		var ret EntityArrayEmbedded
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *EntityArray) GetEmbedded() EntityArrayEmbedded {
 // GetEmbeddedOk returns a tuple with the Embedded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArray) GetEmbeddedOk() (*EntityArrayEmbedded, bool) {
-	if o == nil || isNil(o.Embedded) {
-    return nil, false
+	if o == nil || IsNil(o.Embedded) {
+		return nil, false
 	}
 	return o.Embedded, true
 }
 
 // HasEmbedded returns a boolean if a field has been set.
 func (o *EntityArray) HasEmbedded() bool {
-	if o != nil && !isNil(o.Embedded) {
+	if o != nil && !IsNil(o.Embedded) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EntityArray) SetEmbedded(v EntityArrayEmbedded) {
 
 // GetCount returns the Count field value if set, zero value otherwise.
 func (o *EntityArray) GetCount() float32 {
-	if o == nil || isNil(o.Count) {
+	if o == nil || IsNil(o.Count) {
 		var ret float32
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *EntityArray) GetCount() float32 {
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArray) GetCountOk() (*float32, bool) {
-	if o == nil || isNil(o.Count) {
-    return nil, false
+	if o == nil || IsNil(o.Count) {
+		return nil, false
 	}
 	return o.Count, true
 }
 
 // HasCount returns a boolean if a field has been set.
 func (o *EntityArray) HasCount() bool {
-	if o != nil && !isNil(o.Count) {
+	if o != nil && !IsNil(o.Count) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *EntityArray) SetCount(v float32) {
 
 // GetSize returns the Size field value if set, zero value otherwise.
 func (o *EntityArray) GetSize() float32 {
-	if o == nil || isNil(o.Size) {
+	if o == nil || IsNil(o.Size) {
 		var ret float32
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *EntityArray) GetSize() float32 {
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArray) GetSizeOk() (*float32, bool) {
-	if o == nil || isNil(o.Size) {
-    return nil, false
+	if o == nil || IsNil(o.Size) {
+		return nil, false
 	}
 	return o.Size, true
 }
 
 // HasSize returns a boolean if a field has been set.
 func (o *EntityArray) HasSize() bool {
-	if o != nil && !isNil(o.Size) {
+	if o != nil && !IsNil(o.Size) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *EntityArray) SetSize(v float32) {
 }
 
 func (o EntityArray) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Embedded) {
-		toSerialize["_embedded"] = o.Embedded
-	}
-	if !isNil(o.Count) {
-		toSerialize["count"] = o.Count
-	}
-	if !isNil(o.Size) {
-		toSerialize["size"] = o.Size
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EntityArray) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Embedded) {
+		toSerialize["_embedded"] = o.Embedded
+	}
+	if !IsNil(o.Count) {
+		toSerialize["count"] = o.Count
+	}
+	if !IsNil(o.Size) {
+		toSerialize["size"] = o.Size
+	}
+	return toSerialize, nil
 }
 
 type NullableEntityArray struct {

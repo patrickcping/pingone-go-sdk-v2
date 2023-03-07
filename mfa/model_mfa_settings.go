@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the MFASettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFASettings{}
+
 // MFASettings struct for MFASettings
 type MFASettings struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -46,7 +49,7 @@ func NewMFASettingsWithDefaults() *MFASettings {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *MFASettings) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *MFASettings) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MFASettings) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *MFASettings) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *MFASettings) SetEnvironment(v ObjectEnvironment) {
 // GetAuthentication returns the Authentication field value if set, zero value otherwise.
 // Deprecated
 func (o *MFASettings) GetAuthentication() MFASettingsAuthentication {
-	if o == nil || isNil(o.Authentication) {
+	if o == nil || IsNil(o.Authentication) {
 		var ret MFASettingsAuthentication
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *MFASettings) GetAuthentication() MFASettingsAuthentication {
 // and a boolean to check if the value has been set.
 // Deprecated
 func (o *MFASettings) GetAuthenticationOk() (*MFASettingsAuthentication, bool) {
-	if o == nil || isNil(o.Authentication) {
-    return nil, false
+	if o == nil || IsNil(o.Authentication) {
+		return nil, false
 	}
 	return o.Authentication, true
 }
 
 // HasAuthentication returns a boolean if a field has been set.
 func (o *MFASettings) HasAuthentication() bool {
-	if o != nil && !isNil(o.Authentication) {
+	if o != nil && !IsNil(o.Authentication) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *MFASettings) SetAuthentication(v MFASettingsAuthentication) {
 
 // GetLockout returns the Lockout field value if set, zero value otherwise.
 func (o *MFASettings) GetLockout() MFASettingsLockout {
-	if o == nil || isNil(o.Lockout) {
+	if o == nil || IsNil(o.Lockout) {
 		var ret MFASettingsLockout
 		return ret
 	}
@@ -123,15 +126,15 @@ func (o *MFASettings) GetLockout() MFASettingsLockout {
 // GetLockoutOk returns a tuple with the Lockout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MFASettings) GetLockoutOk() (*MFASettingsLockout, bool) {
-	if o == nil || isNil(o.Lockout) {
-    return nil, false
+	if o == nil || IsNil(o.Lockout) {
+		return nil, false
 	}
 	return o.Lockout, true
 }
 
 // HasLockout returns a boolean if a field has been set.
 func (o *MFASettings) HasLockout() bool {
-	if o != nil && !isNil(o.Lockout) {
+	if o != nil && !IsNil(o.Lockout) {
 		return true
 	}
 
@@ -157,7 +160,7 @@ func (o *MFASettings) GetPairing() MFASettingsPairing {
 // and a boolean to check if the value has been set.
 func (o *MFASettings) GetPairingOk() (*MFASettingsPairing, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Pairing, true
 }
@@ -169,7 +172,7 @@ func (o *MFASettings) SetPairing(v MFASettingsPairing) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *MFASettings) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -179,15 +182,15 @@ func (o *MFASettings) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MFASettings) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *MFASettings) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -200,23 +203,27 @@ func (o *MFASettings) SetUpdatedAt(v time.Time) {
 }
 
 func (o MFASettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Authentication) {
-		toSerialize["authentication"] = o.Authentication
-	}
-	if !isNil(o.Lockout) {
-		toSerialize["lockout"] = o.Lockout
-	}
-	if true {
-		toSerialize["pairing"] = o.Pairing
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFASettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Authentication) {
+		toSerialize["authentication"] = o.Authentication
+	}
+	if !IsNil(o.Lockout) {
+		toSerialize["lockout"] = o.Lockout
+	}
+	toSerialize["pairing"] = o.Pairing
+	// skip: updatedAt is readOnly
+	return toSerialize, nil
 }
 
 type NullableMFASettings struct {

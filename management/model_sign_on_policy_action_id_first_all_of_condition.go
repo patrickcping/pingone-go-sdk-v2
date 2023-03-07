@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionIDFirstAllOfCondition type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionIDFirstAllOfCondition{}
+
 // SignOnPolicyActionIDFirstAllOfCondition struct for SignOnPolicyActionIDFirstAllOfCondition
 type SignOnPolicyActionIDFirstAllOfCondition struct {
 	Contains string `json:"contains"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionIDFirstAllOfCondition) GetContains() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionIDFirstAllOfCondition) GetContainsOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Contains, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionIDFirstAllOfCondition) GetValue() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionIDFirstAllOfCondition) GetValueOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Value, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionIDFirstAllOfCondition) SetValue(v string) {
 }
 
 func (o SignOnPolicyActionIDFirstAllOfCondition) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["contains"] = o.Contains
-	}
-	if true {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionIDFirstAllOfCondition) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["contains"] = o.Contains
+	toSerialize["value"] = o.Value
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionIDFirstAllOfCondition struct {

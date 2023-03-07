@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyMobile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyMobile{}
+
 // DeviceAuthenticationPolicyMobile Mobile device authentication policy settings.
 type DeviceAuthenticationPolicyMobile struct {
 	// Enabled or disabled in the policy.
@@ -55,7 +58,7 @@ func (o *DeviceAuthenticationPolicyMobile) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobile) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -79,7 +82,7 @@ func (o *DeviceAuthenticationPolicyMobile) GetOtp() DeviceAuthenticationPolicyMo
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobile) GetOtpOk() (*DeviceAuthenticationPolicyMobileOtp, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Otp, true
 }
@@ -91,7 +94,7 @@ func (o *DeviceAuthenticationPolicyMobile) SetOtp(v DeviceAuthenticationPolicyMo
 
 // GetApplications returns the Applications field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyMobile) GetApplications() []DeviceAuthenticationPolicyMobileApplicationsInner {
-	if o == nil || isNil(o.Applications) {
+	if o == nil || IsNil(o.Applications) {
 		var ret []DeviceAuthenticationPolicyMobileApplicationsInner
 		return ret
 	}
@@ -101,15 +104,15 @@ func (o *DeviceAuthenticationPolicyMobile) GetApplications() []DeviceAuthenticat
 // GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobile) GetApplicationsOk() ([]DeviceAuthenticationPolicyMobileApplicationsInner, bool) {
-	if o == nil || isNil(o.Applications) {
-    return nil, false
+	if o == nil || IsNil(o.Applications) {
+		return nil, false
 	}
 	return o.Applications, true
 }
 
 // HasApplications returns a boolean if a field has been set.
 func (o *DeviceAuthenticationPolicyMobile) HasApplications() bool {
-	if o != nil && !isNil(o.Applications) {
+	if o != nil && !IsNil(o.Applications) {
 		return true
 	}
 
@@ -122,17 +125,21 @@ func (o *DeviceAuthenticationPolicyMobile) SetApplications(v []DeviceAuthenticat
 }
 
 func (o DeviceAuthenticationPolicyMobile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["otp"] = o.Otp
-	}
-	if !isNil(o.Applications) {
-		toSerialize["applications"] = o.Applications
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyMobile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["otp"] = o.Otp
+	if !IsNil(o.Applications) {
+		toSerialize["applications"] = o.Applications
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyMobile struct {

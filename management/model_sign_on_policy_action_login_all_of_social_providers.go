@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionLoginAllOfSocialProviders type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionLoginAllOfSocialProviders{}
+
 // SignOnPolicyActionLoginAllOfSocialProviders struct for SignOnPolicyActionLoginAllOfSocialProviders
 type SignOnPolicyActionLoginAllOfSocialProviders struct {
 	// ID of the identity provider that can be used for the social login sign-on flow.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionLoginAllOfSocialProviders) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionLoginAllOfSocialProviders) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionLoginAllOfSocialProviders) SetId(v string) {
 }
 
 func (o SignOnPolicyActionLoginAllOfSocialProviders) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionLoginAllOfSocialProviders) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionLoginAllOfSocialProviders struct {

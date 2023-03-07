@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy{}
+
 // SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy Details of the MFA policy that should be used. If it is omitted, the environment default MFA policy is used.
 type SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy struct {
 	// The ID of the MFA policy that should be used.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) SetId(v string) {
 }
 
 func (o SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy struct {

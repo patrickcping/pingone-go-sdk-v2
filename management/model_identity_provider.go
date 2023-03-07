@@ -3,7 +3,7 @@ PingOne Platform API - SSO and Base
 
 The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
 
-API version: 2022-07-18
+API version: 2022-08-02
 */
 
 package management

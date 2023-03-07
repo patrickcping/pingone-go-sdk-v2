@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionGeovelocityValid type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionGeovelocityValid{}
+
 // SignOnPolicyActionCommonConditionGeovelocityValid struct for SignOnPolicyActionCommonConditionGeovelocityValid
 type SignOnPolicyActionCommonConditionGeovelocityValid struct {
 	PreviousSuccessfulAuthenticationIp string `json:"previousSuccessfulAuthenticationIp"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionCommonConditionGeovelocityValid) GetPreviousSuccessfu
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionGeovelocityValid) GetPreviousSuccessfulAuthenticationIpOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PreviousSuccessfulAuthenticationIp, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionCommonConditionGeovelocityValid) GetPreviousSuccessfu
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionGeovelocityValid) GetPreviousSuccessfulAuthenticationTimeOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PreviousSuccessfulAuthenticationTime, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionCommonConditionGeovelocityValid) SetPreviousSuccessfu
 }
 
 func (o SignOnPolicyActionCommonConditionGeovelocityValid) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["previousSuccessfulAuthenticationIp"] = o.PreviousSuccessfulAuthenticationIp
-	}
-	if true {
-		toSerialize["previousSuccessfulAuthenticationTime"] = o.PreviousSuccessfulAuthenticationTime
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionGeovelocityValid) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["previousSuccessfulAuthenticationIp"] = o.PreviousSuccessfulAuthenticationIp
+	toSerialize["previousSuccessfulAuthenticationTime"] = o.PreviousSuccessfulAuthenticationTime
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionGeovelocityValid struct {

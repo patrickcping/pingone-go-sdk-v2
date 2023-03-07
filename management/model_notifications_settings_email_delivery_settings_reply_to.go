@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationsSettingsEmailDeliverySettingsReplyTo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsEmailDeliverySettingsReplyTo{}
+
 // NotificationsSettingsEmailDeliverySettingsReplyTo struct for NotificationsSettingsEmailDeliverySettingsReplyTo
 type NotificationsSettingsEmailDeliverySettingsReplyTo struct {
 	// A string that specifies the email's \"reply to\" name.
@@ -41,7 +44,7 @@ func NewNotificationsSettingsEmailDeliverySettingsReplyToWithDefaults() *Notific
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) SetName(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) GetAddress() string {
-	if o == nil || isNil(o.Address) {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) GetAddress() string 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) GetAddressOk() (*string, bool) {
-	if o == nil || isNil(o.Address) {
-    return nil, false
+	if o == nil || IsNil(o.Address) {
+		return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) HasAddress() bool {
-	if o != nil && !isNil(o.Address) {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *NotificationsSettingsEmailDeliverySettingsReplyTo) SetAddress(v string)
 }
 
 func (o NotificationsSettingsEmailDeliverySettingsReplyTo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Address) {
-		toSerialize["address"] = o.Address
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsEmailDeliverySettingsReplyTo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsEmailDeliverySettingsReplyTo struct {

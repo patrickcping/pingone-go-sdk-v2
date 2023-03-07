@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationEventSession type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationEventSession{}
+
 // RiskEvaluationEventSession struct for RiskEvaluationEventSession
 type RiskEvaluationEventSession struct {
 	// A string that specifies a unique session ID associated with the event.
@@ -52,7 +55,7 @@ func (o *RiskEvaluationEventSession) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventSession) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *RiskEvaluationEventSession) SetId(v string) {
 }
 
 func (o RiskEvaluationEventSession) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationEventSession) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationEventSession struct {

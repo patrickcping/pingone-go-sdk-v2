@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet(context.Background(), environmentID, userID, agreementID).Execute()
+    r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet(context.Background(), environmentID, userID, agreementID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -97,7 +97,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -108,7 +108,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost(context.Background(), environmentID, userID, agreementID).ContentType(contentType).Execute()
+    r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost(context.Background(), environmentID, userID, agreementID).ContentType(contentType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,7 +171,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -180,7 +180,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

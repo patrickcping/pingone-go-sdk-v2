@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationWSFEDAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationWSFEDAllOf{}
+
 // ApplicationWSFEDAllOf struct for ApplicationWSFEDAllOf
 type ApplicationWSFEDAllOf struct {
 	// The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
@@ -54,7 +57,7 @@ func NewApplicationWSFEDAllOfWithDefaults() *ApplicationWSFEDAllOf {
 
 // GetAudienceRestriction returns the AudienceRestriction field value if set, zero value otherwise.
 func (o *ApplicationWSFEDAllOf) GetAudienceRestriction() string {
-	if o == nil || isNil(o.AudienceRestriction) {
+	if o == nil || IsNil(o.AudienceRestriction) {
 		var ret string
 		return ret
 	}
@@ -64,15 +67,15 @@ func (o *ApplicationWSFEDAllOf) GetAudienceRestriction() string {
 // GetAudienceRestrictionOk returns a tuple with the AudienceRestriction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOf) GetAudienceRestrictionOk() (*string, bool) {
-	if o == nil || isNil(o.AudienceRestriction) {
-    return nil, false
+	if o == nil || IsNil(o.AudienceRestriction) {
+		return nil, false
 	}
 	return o.AudienceRestriction, true
 }
 
 // HasAudienceRestriction returns a boolean if a field has been set.
 func (o *ApplicationWSFEDAllOf) HasAudienceRestriction() bool {
-	if o != nil && !isNil(o.AudienceRestriction) {
+	if o != nil && !IsNil(o.AudienceRestriction) {
 		return true
 	}
 
@@ -98,7 +101,7 @@ func (o *ApplicationWSFEDAllOf) GetDomainName() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOf) GetDomainNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DomainName, true
 }
@@ -122,7 +125,7 @@ func (o *ApplicationWSFEDAllOf) GetIdpSigning() ApplicationWSFEDAllOfIdpSigning 
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOf) GetIdpSigningOk() (*ApplicationWSFEDAllOfIdpSigning, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.IdpSigning, true
 }
@@ -134,7 +137,7 @@ func (o *ApplicationWSFEDAllOf) SetIdpSigning(v ApplicationWSFEDAllOfIdpSigning)
 
 // GetKerberos returns the Kerberos field value if set, zero value otherwise.
 func (o *ApplicationWSFEDAllOf) GetKerberos() ApplicationWSFEDAllOfKerberos {
-	if o == nil || isNil(o.Kerberos) {
+	if o == nil || IsNil(o.Kerberos) {
 		var ret ApplicationWSFEDAllOfKerberos
 		return ret
 	}
@@ -144,15 +147,15 @@ func (o *ApplicationWSFEDAllOf) GetKerberos() ApplicationWSFEDAllOfKerberos {
 // GetKerberosOk returns a tuple with the Kerberos field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOf) GetKerberosOk() (*ApplicationWSFEDAllOfKerberos, bool) {
-	if o == nil || isNil(o.Kerberos) {
-    return nil, false
+	if o == nil || IsNil(o.Kerberos) {
+		return nil, false
 	}
 	return o.Kerberos, true
 }
 
 // HasKerberos returns a boolean if a field has been set.
 func (o *ApplicationWSFEDAllOf) HasKerberos() bool {
-	if o != nil && !isNil(o.Kerberos) {
+	if o != nil && !IsNil(o.Kerberos) {
 		return true
 	}
 
@@ -178,7 +181,7 @@ func (o *ApplicationWSFEDAllOf) GetReplyUrl() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOf) GetReplyUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ReplyUrl, true
 }
@@ -190,7 +193,7 @@ func (o *ApplicationWSFEDAllOf) SetReplyUrl(v string) {
 
 // GetSloEndpoint returns the SloEndpoint field value if set, zero value otherwise.
 func (o *ApplicationWSFEDAllOf) GetSloEndpoint() string {
-	if o == nil || isNil(o.SloEndpoint) {
+	if o == nil || IsNil(o.SloEndpoint) {
 		var ret string
 		return ret
 	}
@@ -200,15 +203,15 @@ func (o *ApplicationWSFEDAllOf) GetSloEndpoint() string {
 // GetSloEndpointOk returns a tuple with the SloEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOf) GetSloEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.SloEndpoint) {
-    return nil, false
+	if o == nil || IsNil(o.SloEndpoint) {
+		return nil, false
 	}
 	return o.SloEndpoint, true
 }
 
 // HasSloEndpoint returns a boolean if a field has been set.
 func (o *ApplicationWSFEDAllOf) HasSloEndpoint() bool {
-	if o != nil && !isNil(o.SloEndpoint) {
+	if o != nil && !IsNil(o.SloEndpoint) {
 		return true
 	}
 
@@ -221,26 +224,28 @@ func (o *ApplicationWSFEDAllOf) SetSloEndpoint(v string) {
 }
 
 func (o ApplicationWSFEDAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AudienceRestriction) {
-		toSerialize["audienceRestriction"] = o.AudienceRestriction
-	}
-	if true {
-		toSerialize["domainName"] = o.DomainName
-	}
-	if true {
-		toSerialize["idpSigning"] = o.IdpSigning
-	}
-	if !isNil(o.Kerberos) {
-		toSerialize["kerberos"] = o.Kerberos
-	}
-	if true {
-		toSerialize["replyUrl"] = o.ReplyUrl
-	}
-	if !isNil(o.SloEndpoint) {
-		toSerialize["sloEndpoint"] = o.SloEndpoint
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationWSFEDAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AudienceRestriction) {
+		toSerialize["audienceRestriction"] = o.AudienceRestriction
+	}
+	toSerialize["domainName"] = o.DomainName
+	toSerialize["idpSigning"] = o.IdpSigning
+	if !IsNil(o.Kerberos) {
+		toSerialize["kerberos"] = o.Kerberos
+	}
+	toSerialize["replyUrl"] = o.ReplyUrl
+	if !IsNil(o.SloEndpoint) {
+		toSerialize["sloEndpoint"] = o.SloEndpoint
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationWSFEDAllOf struct {

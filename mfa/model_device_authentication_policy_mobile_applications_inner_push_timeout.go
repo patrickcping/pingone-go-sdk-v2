@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout{}
+
 // DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout struct for DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout
 type DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout struct {
 	// The amount of time a user has to respond to a push notification before it expires. Minimum is 40 seconds and maximum is 150 seconds. If this parameter is not provided, the duration is set to 40 seconds.
@@ -56,7 +59,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) GetDurati
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) GetDurationOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Duration, true
 }
@@ -80,7 +83,7 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) GetTimeUn
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) GetTimeUnitOk() (*EnumTimeUnitPushTimeout, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TimeUnit, true
 }
@@ -91,14 +94,18 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) SetTimeUn
 }
 
 func (o DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["duration"] = o.Duration
-	}
-	if true {
-		toSerialize["timeUnit"] = o.TimeUnit
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["duration"] = o.Duration
+	toSerialize["timeUnit"] = o.TimeUnit
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout struct {

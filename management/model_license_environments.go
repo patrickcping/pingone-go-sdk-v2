@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseEnvironments type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseEnvironments{}
+
 // LicenseEnvironments struct for LicenseEnvironments
 type LicenseEnvironments struct {
 	AllowAddResources *bool `json:"allowAddResources,omitempty"`
@@ -49,7 +52,7 @@ func NewLicenseEnvironmentsWithDefaults() *LicenseEnvironments {
 
 // GetAllowAddResources returns the AllowAddResources field value if set, zero value otherwise.
 func (o *LicenseEnvironments) GetAllowAddResources() bool {
-	if o == nil || isNil(o.AllowAddResources) {
+	if o == nil || IsNil(o.AllowAddResources) {
 		var ret bool
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *LicenseEnvironments) GetAllowAddResources() bool {
 // GetAllowAddResourcesOk returns a tuple with the AllowAddResources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseEnvironments) GetAllowAddResourcesOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowAddResources) {
-    return nil, false
+	if o == nil || IsNil(o.AllowAddResources) {
+		return nil, false
 	}
 	return o.AllowAddResources, true
 }
 
 // HasAllowAddResources returns a boolean if a field has been set.
 func (o *LicenseEnvironments) HasAllowAddResources() bool {
-	if o != nil && !isNil(o.AllowAddResources) {
+	if o != nil && !IsNil(o.AllowAddResources) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *LicenseEnvironments) SetAllowAddResources(v bool) {
 
 // GetAllowConnections returns the AllowConnections field value if set, zero value otherwise.
 func (o *LicenseEnvironments) GetAllowConnections() bool {
-	if o == nil || isNil(o.AllowConnections) {
+	if o == nil || IsNil(o.AllowConnections) {
 		var ret bool
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *LicenseEnvironments) GetAllowConnections() bool {
 // GetAllowConnectionsOk returns a tuple with the AllowConnections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseEnvironments) GetAllowConnectionsOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowConnections) {
-    return nil, false
+	if o == nil || IsNil(o.AllowConnections) {
+		return nil, false
 	}
 	return o.AllowConnections, true
 }
 
 // HasAllowConnections returns a boolean if a field has been set.
 func (o *LicenseEnvironments) HasAllowConnections() bool {
-	if o != nil && !isNil(o.AllowConnections) {
+	if o != nil && !IsNil(o.AllowConnections) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *LicenseEnvironments) SetAllowConnections(v bool) {
 
 // GetAllowCustomDomain returns the AllowCustomDomain field value if set, zero value otherwise.
 func (o *LicenseEnvironments) GetAllowCustomDomain() bool {
-	if o == nil || isNil(o.AllowCustomDomain) {
+	if o == nil || IsNil(o.AllowCustomDomain) {
 		var ret bool
 		return ret
 	}
@@ -123,15 +126,15 @@ func (o *LicenseEnvironments) GetAllowCustomDomain() bool {
 // GetAllowCustomDomainOk returns a tuple with the AllowCustomDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseEnvironments) GetAllowCustomDomainOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowCustomDomain) {
-    return nil, false
+	if o == nil || IsNil(o.AllowCustomDomain) {
+		return nil, false
 	}
 	return o.AllowCustomDomain, true
 }
 
 // HasAllowCustomDomain returns a boolean if a field has been set.
 func (o *LicenseEnvironments) HasAllowCustomDomain() bool {
-	if o != nil && !isNil(o.AllowCustomDomain) {
+	if o != nil && !IsNil(o.AllowCustomDomain) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *LicenseEnvironments) SetAllowCustomDomain(v bool) {
 
 // GetAllowCustomSchema returns the AllowCustomSchema field value if set, zero value otherwise.
 func (o *LicenseEnvironments) GetAllowCustomSchema() bool {
-	if o == nil || isNil(o.AllowCustomSchema) {
+	if o == nil || IsNil(o.AllowCustomSchema) {
 		var ret bool
 		return ret
 	}
@@ -155,15 +158,15 @@ func (o *LicenseEnvironments) GetAllowCustomSchema() bool {
 // GetAllowCustomSchemaOk returns a tuple with the AllowCustomSchema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseEnvironments) GetAllowCustomSchemaOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowCustomSchema) {
-    return nil, false
+	if o == nil || IsNil(o.AllowCustomSchema) {
+		return nil, false
 	}
 	return o.AllowCustomSchema, true
 }
 
 // HasAllowCustomSchema returns a boolean if a field has been set.
 func (o *LicenseEnvironments) HasAllowCustomSchema() bool {
-	if o != nil && !isNil(o.AllowCustomSchema) {
+	if o != nil && !IsNil(o.AllowCustomSchema) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *LicenseEnvironments) SetAllowCustomSchema(v bool) {
 
 // GetAllowProduction returns the AllowProduction field value if set, zero value otherwise.
 func (o *LicenseEnvironments) GetAllowProduction() bool {
-	if o == nil || isNil(o.AllowProduction) {
+	if o == nil || IsNil(o.AllowProduction) {
 		var ret bool
 		return ret
 	}
@@ -187,15 +190,15 @@ func (o *LicenseEnvironments) GetAllowProduction() bool {
 // GetAllowProductionOk returns a tuple with the AllowProduction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseEnvironments) GetAllowProductionOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowProduction) {
-    return nil, false
+	if o == nil || IsNil(o.AllowProduction) {
+		return nil, false
 	}
 	return o.AllowProduction, true
 }
 
 // HasAllowProduction returns a boolean if a field has been set.
 func (o *LicenseEnvironments) HasAllowProduction() bool {
-	if o != nil && !isNil(o.AllowProduction) {
+	if o != nil && !IsNil(o.AllowProduction) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *LicenseEnvironments) SetAllowProduction(v bool) {
 
 // GetMax returns the Max field value if set, zero value otherwise.
 func (o *LicenseEnvironments) GetMax() int32 {
-	if o == nil || isNil(o.Max) {
+	if o == nil || IsNil(o.Max) {
 		var ret int32
 		return ret
 	}
@@ -219,15 +222,15 @@ func (o *LicenseEnvironments) GetMax() int32 {
 // GetMaxOk returns a tuple with the Max field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseEnvironments) GetMaxOk() (*int32, bool) {
-	if o == nil || isNil(o.Max) {
-    return nil, false
+	if o == nil || IsNil(o.Max) {
+		return nil, false
 	}
 	return o.Max, true
 }
 
 // HasMax returns a boolean if a field has been set.
 func (o *LicenseEnvironments) HasMax() bool {
-	if o != nil && !isNil(o.Max) {
+	if o != nil && !IsNil(o.Max) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *LicenseEnvironments) SetMax(v int32) {
 
 // GetRegions returns the Regions field value if set, zero value otherwise.
 func (o *LicenseEnvironments) GetRegions() []EnumRegionCodeLicense {
-	if o == nil || isNil(o.Regions) {
+	if o == nil || IsNil(o.Regions) {
 		var ret []EnumRegionCodeLicense
 		return ret
 	}
@@ -251,15 +254,15 @@ func (o *LicenseEnvironments) GetRegions() []EnumRegionCodeLicense {
 // GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseEnvironments) GetRegionsOk() ([]EnumRegionCodeLicense, bool) {
-	if o == nil || isNil(o.Regions) {
-    return nil, false
+	if o == nil || IsNil(o.Regions) {
+		return nil, false
 	}
 	return o.Regions, true
 }
 
 // HasRegions returns a boolean if a field has been set.
 func (o *LicenseEnvironments) HasRegions() bool {
-	if o != nil && !isNil(o.Regions) {
+	if o != nil && !IsNil(o.Regions) {
 		return true
 	}
 
@@ -272,29 +275,37 @@ func (o *LicenseEnvironments) SetRegions(v []EnumRegionCodeLicense) {
 }
 
 func (o LicenseEnvironments) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowAddResources) {
-		toSerialize["allowAddResources"] = o.AllowAddResources
-	}
-	if !isNil(o.AllowConnections) {
-		toSerialize["allowConnections"] = o.AllowConnections
-	}
-	if !isNil(o.AllowCustomDomain) {
-		toSerialize["allowCustomDomain"] = o.AllowCustomDomain
-	}
-	if !isNil(o.AllowCustomSchema) {
-		toSerialize["allowCustomSchema"] = o.AllowCustomSchema
-	}
-	if !isNil(o.AllowProduction) {
-		toSerialize["allowProduction"] = o.AllowProduction
-	}
-	if !isNil(o.Max) {
-		toSerialize["max"] = o.Max
-	}
-	if !isNil(o.Regions) {
-		toSerialize["regions"] = o.Regions
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseEnvironments) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowAddResources) {
+		toSerialize["allowAddResources"] = o.AllowAddResources
+	}
+	if !IsNil(o.AllowConnections) {
+		toSerialize["allowConnections"] = o.AllowConnections
+	}
+	if !IsNil(o.AllowCustomDomain) {
+		toSerialize["allowCustomDomain"] = o.AllowCustomDomain
+	}
+	if !IsNil(o.AllowCustomSchema) {
+		toSerialize["allowCustomSchema"] = o.AllowCustomSchema
+	}
+	if !IsNil(o.AllowProduction) {
+		toSerialize["allowProduction"] = o.AllowProduction
+	}
+	if !IsNil(o.Max) {
+		toSerialize["max"] = o.Max
+	}
+	if !IsNil(o.Regions) {
+		toSerialize["regions"] = o.Regions
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseEnvironments struct {

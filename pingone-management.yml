@@ -25,6 +25,10 @@ components:
       bearerFormat: JWT
       description: OAuth bearer token (see documentation)
   schemas:
+    EnumAgreementRevisionContentType:
+      type: string
+      description: An immutable string that specifies the content type of text. Options are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1) and [Media Types/text](https://www.iana.org/assignments/media-types/media-types.xhtml#text). This attribute is supported in POST requests only.
+      enum: [text/html,text/plain]
     EnumAlertChannelAlertType:
       type: string
       enum: [CERTIFICATE_EXPIRED, CERTIFICATE_EXPIRING, KEY_PAIR_EXPIRED, GATEWAY_VERSION_DEPRECATED, KEY_PAIR_EXPIRING, GATEWAY_VERSION_DEPRECATING]
@@ -189,6 +193,18 @@ components:
       type: string
       enum: [png, jpg, gif]
       description: A string that specifies the type of format used for the image. Options are jpg, png, and gif.
+    EnumKeyRotationPolicyAlgorithm:
+      type: string
+      enum: [RSA]
+      description: The algorithm this KRP applies to generated `KrpKeys`. `RSA` is currently the only supported value.
+    EnumKeyRotationPolicySigAlgorithm:
+      type: string
+      enum: [SHA256withRSA]
+      description: The signature algorithm this KRP will apply to generated `KrpKeys`. `SHA256withRSA` is currently the only supported value.
+    EnumKeyRotationPolicyUsageType:
+      type: string
+      enum: [SIGNING]
+      description: How the KRP will be used, pertaining to what operations the KRP supports. The only valid value for initial release is `SIGNING`.
     EnumLicenseStatus:
       type: string
       enum: [ACTIVE, EXPIRED, FUTURE, TERMINATED]
@@ -252,8 +268,8 @@ components:
         `CUSTOM_PROVIDER`: Specifies a custom-defined SMS provider (excluding Twilio and Syniverse).
     EnumOrganizationType:
       type: string
-      enum: [PAID, TRIAL]
-      description: A string that specifies the organization type. If the organization has any paid licenses, the type property value is set to `PAID`. Otherwise, the property value is set to `TRIAL`.
+      enum: [PAID, TRIAL, INTERNAL]
+      description: A string that specifies the organization type. If the organization has any paid licenses, the type property value is set to `PAID`. Otherwise, the property value is set to `TRIAL`.  Internal organizations have a value of `INTERNAL`.
     EnumPasscodeRefreshTimeUnit:
       type: string
       description: The type of time unit for `mobile.passcodeRefreshDuration.duration`.  Must be SECONDS.
@@ -395,8 +411,9 @@ components:
     Agreement:
       type: object
       properties:
-        consentCountsUpdatedAt:
+        consentsAggregatedAt:
           type: string
+          format: date-time
           description: The time the consent count metric was last updated. This value is typically updated once every 24 hours.
           readOnly: true
         description:
@@ -407,7 +424,7 @@ components:
           description: A boolean that specifies the current enabled state of the agreement. This is a required property. The agreement must support the default language to be enabled. It cannot be disabled if it is referenced by a sign-on action. When an agreement is disabled, it is not used anywhere it is configured across PingOne.
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
-        expiredUserConsents:
+        totalExpiredConsents:
           type: integer
           description: An integer that identifies the number of users who have consented to the agreement, but their consent has expired. This value is last calculated at the consentCountsUpdatedAt time.
           readOnly: true
@@ -419,9 +436,10 @@ components:
           type: string
           description: A string that specifies the name of the agreement resource. This is a required property.
         reconsentPeriodDays:
-          type: integer
+          type: number
+          format: float
           description: A number that represents the number of days until a consent to this agreement expires.
-        totalUserConsents:
+        totalConsents:
           type: integer
           description: An integer that identifies the total number of users who have consented to the agreement. This value is last calculated at the consentCountsUpdatedAt time.
           readOnly: true
@@ -488,11 +506,10 @@ components:
               description: A read-only string of the ID for the agreement resource for this revision.
           readOnly: true
         contentType:
-          type: string
-          description: An immutable string that specifies the content type of text. Options are text/html and text/plain, as defined by rfc-6838 and Media Types/text. This attribute is supported in POST requests only.
-          enum: [text/html,text/plain]
+          $ref: '#/components/schemas/EnumAgreementRevisionContentType'
         effectiveAt:
           type: string
+          format: date-time
           description: A date that specifies the start date that the revision is presented to users. This property value can be modified only if the current value is a date that has not already passed. The effective date must be unique for each language agreement, and the property value can be the present date or a future date only.
         id:
           type: string
@@ -507,14 +524,20 @@ components:
           readOnly: true
         notValidAfter:
           type: string
+          format: date-time
           description: A date that specifies whether the revision is still valid in the context of all revisions for a language. This property is calculated dynamically at read time, taking into consideration the agreement language, the language enabled property, and the agreement enabled property. When a new revision is added, the notValidAfter property values for all other previous revisions might be impacted. For example, if a new revision becomes effective and it forces reconsent, then all older revisions are no longer valid.
           readOnly: true
-        requiresReconsent:
+        requireReconsent:
           type: boolean
           description: A boolean that specifies whether the user is required to provide consent to the language revision after it becomes effective.
         text:
           type: string
           description: An immutable string that specifies text or HTML for the revision. This attribute is supported in POST requests only. For more information, see contentType.
+      required:
+        - contentType
+        - effectiveAt
+        - requireReconsent
+        - text
     AlertChannel:
       type: object
       properties:
@@ -1580,6 +1603,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Certificate'
+            keyRotationPolicies:
+              type: array
+              items:
+                $ref: '#/components/schemas/KeyRotationPolicy'
             languages:
               type: array
               items:
@@ -2414,7 +2441,7 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         createdAt:
           type: string
-          format: datetime
+          format: date-time
           readOnly: true
           description: The time the resource was created.
         targets:
@@ -2444,6 +2471,57 @@ components:
                   type: integer
                   readOnly: true
                   description: The height of the image (in pixels).
+    KeyRotationPolicy:
+      type: object
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/EnumKeyRotationPolicyAlgorithm'
+        currentKeyId:
+          type: string
+          description: The `kid` (key identifier) of the `KrpKey` designated as `CURRENT`.
+          readOnly: true
+        dn:
+          type: string
+          description: The DN this KRP will apply to generated `KrpKeys`. Is applied as both `issuerDN` and `subjectDN` because generated `KrpKeys` are self-signed.
+        id:
+          type: string
+          description: The resource’s unique identifier.
+          readOnly: true
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        keyLength:
+          type: integer
+          description: The number of bytes of a cryptographic key this KRP will apply to generated `KrpKeys`.
+        name:
+          type: string
+          description: Human-readable name displayed in the admin console.
+        nextKeyId:
+          type: string
+          description: The `kid` (key identifier) of the `KrpKey` designated as `NEXT`.
+          readOnly: true
+        rotatedAt:
+          type: string
+          format: date-time
+          description: The last time this KRP was rotated.
+          readOnly: true
+        rotationPeriod:
+          type: integer
+          description: The number of days to elapse before this KRP rotates `KrpKeys`. The default value is `90` days. The minimum value is `30` days. The maximum value is 1 day less than the `validityPeriod` value.
+        signatureAlgorithm:
+          $ref: '#/components/schemas/EnumKeyRotationPolicySigAlgorithm'
+        usageType:
+          $ref: '#/components/schemas/EnumKeyRotationPolicyUsageType'
+        validityPeriod:
+          type: integer
+          description: Controls the `startsAt` and `expiresAt` fields this KRP will apply to generated `KrpKeys`. The default value is `365` days.
+      required:
+        - algorithm
+        - dn
+        - keyLength
+        - name
+        - signatureAlgorithm
+        - usageType
+        - validityPeriod
     Language:
       type: object
       properties:
@@ -2467,7 +2545,7 @@ components:
           description: The language name. If omitted, the ISO standard name is used.
         createdAt:
           type: string
-          format: datetime
+          format: date-time
           description: The time the language resource was created.
           readOnly: true
         customerAdded:
@@ -2476,7 +2554,7 @@ components:
           readOnly: true
         updatedAt:
           type: string
-          format: datetime
+          format: date-time
           description: The time the language resource was last updated.
           readOnly: true
       required:
@@ -2488,7 +2566,7 @@ components:
       properties:
         createdAt:
           type: string
-          format: datetime
+          format: date-time
           description: The time the language localization status resource was created.
           readOnly: true
         environment:
@@ -2513,7 +2591,7 @@ components:
           type: string
         updatedAt:
           type: string
-          format: datetime
+          format: date-time
           description: The time the language localization status resource was last updated.
           readOnly: true
       required:
@@ -2548,7 +2626,7 @@ components:
               description: A read-only boolean that specifies whether to enable the PingOne Authorize dynamic authorization feature.
         beginsAt:
           type: string
-          format: datetime
+          format: date-time
           description: The date and time this license begins.
           readOnly: true
         credentials:
@@ -2584,7 +2662,7 @@ components:
                 $ref: '#/components/schemas/EnumRegionCodeLicense'
         expiresAt:
           type: string
-          format: datetime
+          format: date-time
           readOnly: true
           description: The date and time this license expires. TRIAL licenses stop access to PingOne services at expiration. All other licenses trigger an event to send a notification when the license expires but do not block services.
         fraud:
@@ -2682,7 +2760,7 @@ components:
           $ref: '#/components/schemas/EnumLicenseStatus'
         terminatesAt:
           type: string
-          format: datetime
+          format: date-time
           description: An optional attribute that designates the exact date and time when this license terminates access to PingOne services. This attribute can be added to any licensing package.
         users:
           type: object
@@ -4852,6 +4930,7 @@ tags:
   - name: Gateway Role Assignments
   - name: Groups
   - name: Identity Propagation (Provisioning)
+  - name: Key Rotation Policies
   - name: >-
       Propagation
       Revisions
@@ -5845,7 +5924,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/AgreementLanguage'
               example:
                 locale: en-CH
                 displayName: Language_{{$timestamp}}
@@ -9816,6 +9895,305 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Certificate'
+  /v1/environments/{environmentID}/keyRotationPolicies:
+    get:
+      tags:
+        - Key Rotation Policies
+      summary: GET Key Rotation Policies
+      operationId: getKeyRotationPolicies
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+    post:
+      tags:
+        - Key Rotation Policies
+      summary: CREATE Key Rotation Policy
+      operationId: createKeyRotationPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyRotationPolicy'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '405':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyRotationPolicy'
+  /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID}:
+    get:
+      tags:
+        - Key Rotation Policies
+      summary: GET Key Rotation Policy
+      operationId: getKeyRotationPolicy
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: keyRotationPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyRotationPolicy'
+    put:
+      tags:
+        - Key Rotation Policies
+      summary: UPDATE Key Rotation Policy
+      operationId: updateKeyRotationPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyRotationPolicy'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: keyRotationPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyRotationPolicy'
+    delete:
+      tags:
+        - Key Rotation Policies
+      summary: DELETE Key Rotation Policy
+      operationId: deleteKeyRotationPolicy
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: keyRotationPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          description: Invalid request received.  Malformed JSON, malformed HTTP request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '401':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '403':
+          description: Request failed due to authorization issue.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '429':
+          description: Request was rate limited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '500':
+          description: Uncaught error occurred.  Platform outage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+        '204':
+          description: Successful response
   /v1/environments/{environmentID}/certificates:
     get:
       tags:

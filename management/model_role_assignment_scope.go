@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleAssignmentScope type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleAssignmentScope{}
+
 // RoleAssignmentScope struct for RoleAssignmentScope
 type RoleAssignmentScope struct {
 	// A string that specifies the role assignment scope ID.
@@ -54,7 +57,7 @@ func (o *RoleAssignmentScope) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentScope) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -78,7 +81,7 @@ func (o *RoleAssignmentScope) GetType() EnumRoleAssignmentScopeType {
 // and a boolean to check if the value has been set.
 func (o *RoleAssignmentScope) GetTypeOk() (*EnumRoleAssignmentScopeType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -89,14 +92,18 @@ func (o *RoleAssignmentScope) SetType(v EnumRoleAssignmentScopeType) {
 }
 
 func (o RoleAssignmentScope) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RoleAssignmentScope) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["type"] = o.Type
+	return toSerialize, nil
 }
 
 type NullableRoleAssignmentScope struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseUsers type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseUsers{}
+
 // LicenseUsers struct for LicenseUsers
 type LicenseUsers struct {
 	// A read-only boolean that specifies whether the license supports sending password management notifications.
@@ -67,7 +70,7 @@ func NewLicenseUsersWithDefaults() *LicenseUsers {
 
 // GetAllowPasswordManagementNotifications returns the AllowPasswordManagementNotifications field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowPasswordManagementNotifications() bool {
-	if o == nil || isNil(o.AllowPasswordManagementNotifications) {
+	if o == nil || IsNil(o.AllowPasswordManagementNotifications) {
 		var ret bool
 		return ret
 	}
@@ -77,15 +80,15 @@ func (o *LicenseUsers) GetAllowPasswordManagementNotifications() bool {
 // GetAllowPasswordManagementNotificationsOk returns a tuple with the AllowPasswordManagementNotifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowPasswordManagementNotificationsOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowPasswordManagementNotifications) {
-    return nil, false
+	if o == nil || IsNil(o.AllowPasswordManagementNotifications) {
+		return nil, false
 	}
 	return o.AllowPasswordManagementNotifications, true
 }
 
 // HasAllowPasswordManagementNotifications returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowPasswordManagementNotifications() bool {
-	if o != nil && !isNil(o.AllowPasswordManagementNotifications) {
+	if o != nil && !IsNil(o.AllowPasswordManagementNotifications) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *LicenseUsers) SetAllowPasswordManagementNotifications(v bool) {
 
 // GetAllowIdentityProviders returns the AllowIdentityProviders field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowIdentityProviders() bool {
-	if o == nil || isNil(o.AllowIdentityProviders) {
+	if o == nil || IsNil(o.AllowIdentityProviders) {
 		var ret bool
 		return ret
 	}
@@ -109,15 +112,15 @@ func (o *LicenseUsers) GetAllowIdentityProviders() bool {
 // GetAllowIdentityProvidersOk returns a tuple with the AllowIdentityProviders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowIdentityProvidersOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowIdentityProviders) {
-    return nil, false
+	if o == nil || IsNil(o.AllowIdentityProviders) {
+		return nil, false
 	}
 	return o.AllowIdentityProviders, true
 }
 
 // HasAllowIdentityProviders returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowIdentityProviders() bool {
-	if o != nil && !isNil(o.AllowIdentityProviders) {
+	if o != nil && !IsNil(o.AllowIdentityProviders) {
 		return true
 	}
 
@@ -131,7 +134,7 @@ func (o *LicenseUsers) SetAllowIdentityProviders(v bool) {
 
 // GetAllowMyAccount returns the AllowMyAccount field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowMyAccount() bool {
-	if o == nil || isNil(o.AllowMyAccount) {
+	if o == nil || IsNil(o.AllowMyAccount) {
 		var ret bool
 		return ret
 	}
@@ -141,15 +144,15 @@ func (o *LicenseUsers) GetAllowMyAccount() bool {
 // GetAllowMyAccountOk returns a tuple with the AllowMyAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowMyAccountOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowMyAccount) {
-    return nil, false
+	if o == nil || IsNil(o.AllowMyAccount) {
+		return nil, false
 	}
 	return o.AllowMyAccount, true
 }
 
 // HasAllowMyAccount returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowMyAccount() bool {
-	if o != nil && !isNil(o.AllowMyAccount) {
+	if o != nil && !IsNil(o.AllowMyAccount) {
 		return true
 	}
 
@@ -163,7 +166,7 @@ func (o *LicenseUsers) SetAllowMyAccount(v bool) {
 
 // GetAllowPasswordManagement returns the AllowPasswordManagement field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowPasswordManagement() bool {
-	if o == nil || isNil(o.AllowPasswordManagement) {
+	if o == nil || IsNil(o.AllowPasswordManagement) {
 		var ret bool
 		return ret
 	}
@@ -173,15 +176,15 @@ func (o *LicenseUsers) GetAllowPasswordManagement() bool {
 // GetAllowPasswordManagementOk returns a tuple with the AllowPasswordManagement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowPasswordManagementOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowPasswordManagement) {
-    return nil, false
+	if o == nil || IsNil(o.AllowPasswordManagement) {
+		return nil, false
 	}
 	return o.AllowPasswordManagement, true
 }
 
 // HasAllowPasswordManagement returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowPasswordManagement() bool {
-	if o != nil && !isNil(o.AllowPasswordManagement) {
+	if o != nil && !IsNil(o.AllowPasswordManagement) {
 		return true
 	}
 
@@ -195,7 +198,7 @@ func (o *LicenseUsers) SetAllowPasswordManagement(v bool) {
 
 // GetAllowPasswordOnlyAuthentication returns the AllowPasswordOnlyAuthentication field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowPasswordOnlyAuthentication() bool {
-	if o == nil || isNil(o.AllowPasswordOnlyAuthentication) {
+	if o == nil || IsNil(o.AllowPasswordOnlyAuthentication) {
 		var ret bool
 		return ret
 	}
@@ -205,15 +208,15 @@ func (o *LicenseUsers) GetAllowPasswordOnlyAuthentication() bool {
 // GetAllowPasswordOnlyAuthenticationOk returns a tuple with the AllowPasswordOnlyAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowPasswordOnlyAuthenticationOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowPasswordOnlyAuthentication) {
-    return nil, false
+	if o == nil || IsNil(o.AllowPasswordOnlyAuthentication) {
+		return nil, false
 	}
 	return o.AllowPasswordOnlyAuthentication, true
 }
 
 // HasAllowPasswordOnlyAuthentication returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowPasswordOnlyAuthentication() bool {
-	if o != nil && !isNil(o.AllowPasswordOnlyAuthentication) {
+	if o != nil && !IsNil(o.AllowPasswordOnlyAuthentication) {
 		return true
 	}
 
@@ -227,7 +230,7 @@ func (o *LicenseUsers) SetAllowPasswordOnlyAuthentication(v bool) {
 
 // GetAllowPasswordPolicy returns the AllowPasswordPolicy field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowPasswordPolicy() bool {
-	if o == nil || isNil(o.AllowPasswordPolicy) {
+	if o == nil || IsNil(o.AllowPasswordPolicy) {
 		var ret bool
 		return ret
 	}
@@ -237,15 +240,15 @@ func (o *LicenseUsers) GetAllowPasswordPolicy() bool {
 // GetAllowPasswordPolicyOk returns a tuple with the AllowPasswordPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowPasswordPolicyOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowPasswordPolicy) {
-    return nil, false
+	if o == nil || IsNil(o.AllowPasswordPolicy) {
+		return nil, false
 	}
 	return o.AllowPasswordPolicy, true
 }
 
 // HasAllowPasswordPolicy returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowPasswordPolicy() bool {
-	if o != nil && !isNil(o.AllowPasswordPolicy) {
+	if o != nil && !IsNil(o.AllowPasswordPolicy) {
 		return true
 	}
 
@@ -259,7 +262,7 @@ func (o *LicenseUsers) SetAllowPasswordPolicy(v bool) {
 
 // GetAllowProvisioning returns the AllowProvisioning field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowProvisioning() bool {
-	if o == nil || isNil(o.AllowProvisioning) {
+	if o == nil || IsNil(o.AllowProvisioning) {
 		var ret bool
 		return ret
 	}
@@ -269,15 +272,15 @@ func (o *LicenseUsers) GetAllowProvisioning() bool {
 // GetAllowProvisioningOk returns a tuple with the AllowProvisioning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowProvisioningOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowProvisioning) {
-    return nil, false
+	if o == nil || IsNil(o.AllowProvisioning) {
+		return nil, false
 	}
 	return o.AllowProvisioning, true
 }
 
 // HasAllowProvisioning returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowProvisioning() bool {
-	if o != nil && !isNil(o.AllowProvisioning) {
+	if o != nil && !IsNil(o.AllowProvisioning) {
 		return true
 	}
 
@@ -291,7 +294,7 @@ func (o *LicenseUsers) SetAllowProvisioning(v bool) {
 
 // GetAllowInboundProvisioning returns the AllowInboundProvisioning field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowInboundProvisioning() bool {
-	if o == nil || isNil(o.AllowInboundProvisioning) {
+	if o == nil || IsNil(o.AllowInboundProvisioning) {
 		var ret bool
 		return ret
 	}
@@ -301,15 +304,15 @@ func (o *LicenseUsers) GetAllowInboundProvisioning() bool {
 // GetAllowInboundProvisioningOk returns a tuple with the AllowInboundProvisioning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowInboundProvisioningOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowInboundProvisioning) {
-    return nil, false
+	if o == nil || IsNil(o.AllowInboundProvisioning) {
+		return nil, false
 	}
 	return o.AllowInboundProvisioning, true
 }
 
 // HasAllowInboundProvisioning returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowInboundProvisioning() bool {
-	if o != nil && !isNil(o.AllowInboundProvisioning) {
+	if o != nil && !IsNil(o.AllowInboundProvisioning) {
 		return true
 	}
 
@@ -323,7 +326,7 @@ func (o *LicenseUsers) SetAllowInboundProvisioning(v bool) {
 
 // GetAllowRoleAssignment returns the AllowRoleAssignment field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowRoleAssignment() bool {
-	if o == nil || isNil(o.AllowRoleAssignment) {
+	if o == nil || IsNil(o.AllowRoleAssignment) {
 		var ret bool
 		return ret
 	}
@@ -333,15 +336,15 @@ func (o *LicenseUsers) GetAllowRoleAssignment() bool {
 // GetAllowRoleAssignmentOk returns a tuple with the AllowRoleAssignment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowRoleAssignmentOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowRoleAssignment) {
-    return nil, false
+	if o == nil || IsNil(o.AllowRoleAssignment) {
+		return nil, false
 	}
 	return o.AllowRoleAssignment, true
 }
 
 // HasAllowRoleAssignment returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowRoleAssignment() bool {
-	if o != nil && !isNil(o.AllowRoleAssignment) {
+	if o != nil && !IsNil(o.AllowRoleAssignment) {
 		return true
 	}
 
@@ -355,7 +358,7 @@ func (o *LicenseUsers) SetAllowRoleAssignment(v bool) {
 
 // GetAllowVerificationFlow returns the AllowVerificationFlow field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowVerificationFlow() bool {
-	if o == nil || isNil(o.AllowVerificationFlow) {
+	if o == nil || IsNil(o.AllowVerificationFlow) {
 		var ret bool
 		return ret
 	}
@@ -365,15 +368,15 @@ func (o *LicenseUsers) GetAllowVerificationFlow() bool {
 // GetAllowVerificationFlowOk returns a tuple with the AllowVerificationFlow field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowVerificationFlowOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowVerificationFlow) {
-    return nil, false
+	if o == nil || IsNil(o.AllowVerificationFlow) {
+		return nil, false
 	}
 	return o.AllowVerificationFlow, true
 }
 
 // HasAllowVerificationFlow returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowVerificationFlow() bool {
-	if o != nil && !isNil(o.AllowVerificationFlow) {
+	if o != nil && !IsNil(o.AllowVerificationFlow) {
 		return true
 	}
 
@@ -387,7 +390,7 @@ func (o *LicenseUsers) SetAllowVerificationFlow(v bool) {
 
 // GetAllowUpdateSelf returns the AllowUpdateSelf field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAllowUpdateSelf() bool {
-	if o == nil || isNil(o.AllowUpdateSelf) {
+	if o == nil || IsNil(o.AllowUpdateSelf) {
 		var ret bool
 		return ret
 	}
@@ -397,15 +400,15 @@ func (o *LicenseUsers) GetAllowUpdateSelf() bool {
 // GetAllowUpdateSelfOk returns a tuple with the AllowUpdateSelf field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAllowUpdateSelfOk() (*bool, bool) {
-	if o == nil || isNil(o.AllowUpdateSelf) {
-    return nil, false
+	if o == nil || IsNil(o.AllowUpdateSelf) {
+		return nil, false
 	}
 	return o.AllowUpdateSelf, true
 }
 
 // HasAllowUpdateSelf returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAllowUpdateSelf() bool {
-	if o != nil && !isNil(o.AllowUpdateSelf) {
+	if o != nil && !IsNil(o.AllowUpdateSelf) {
 		return true
 	}
 
@@ -419,7 +422,7 @@ func (o *LicenseUsers) SetAllowUpdateSelf(v bool) {
 
 // GetEntitledToSupport returns the EntitledToSupport field value if set, zero value otherwise.
 func (o *LicenseUsers) GetEntitledToSupport() bool {
-	if o == nil || isNil(o.EntitledToSupport) {
+	if o == nil || IsNil(o.EntitledToSupport) {
 		var ret bool
 		return ret
 	}
@@ -429,15 +432,15 @@ func (o *LicenseUsers) GetEntitledToSupport() bool {
 // GetEntitledToSupportOk returns a tuple with the EntitledToSupport field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetEntitledToSupportOk() (*bool, bool) {
-	if o == nil || isNil(o.EntitledToSupport) {
-    return nil, false
+	if o == nil || IsNil(o.EntitledToSupport) {
+		return nil, false
 	}
 	return o.EntitledToSupport, true
 }
 
 // HasEntitledToSupport returns a boolean if a field has been set.
 func (o *LicenseUsers) HasEntitledToSupport() bool {
-	if o != nil && !isNil(o.EntitledToSupport) {
+	if o != nil && !IsNil(o.EntitledToSupport) {
 		return true
 	}
 
@@ -451,7 +454,7 @@ func (o *LicenseUsers) SetEntitledToSupport(v bool) {
 
 // GetMax returns the Max field value if set, zero value otherwise.
 func (o *LicenseUsers) GetMax() int32 {
-	if o == nil || isNil(o.Max) {
+	if o == nil || IsNil(o.Max) {
 		var ret int32
 		return ret
 	}
@@ -461,15 +464,15 @@ func (o *LicenseUsers) GetMax() int32 {
 // GetMaxOk returns a tuple with the Max field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetMaxOk() (*int32, bool) {
-	if o == nil || isNil(o.Max) {
-    return nil, false
+	if o == nil || IsNil(o.Max) {
+		return nil, false
 	}
 	return o.Max, true
 }
 
 // HasMax returns a boolean if a field has been set.
 func (o *LicenseUsers) HasMax() bool {
-	if o != nil && !isNil(o.Max) {
+	if o != nil && !IsNil(o.Max) {
 		return true
 	}
 
@@ -483,7 +486,7 @@ func (o *LicenseUsers) SetMax(v int32) {
 
 // GetHardLimitMax returns the HardLimitMax field value if set, zero value otherwise.
 func (o *LicenseUsers) GetHardLimitMax() int32 {
-	if o == nil || isNil(o.HardLimitMax) {
+	if o == nil || IsNil(o.HardLimitMax) {
 		var ret int32
 		return ret
 	}
@@ -493,15 +496,15 @@ func (o *LicenseUsers) GetHardLimitMax() int32 {
 // GetHardLimitMaxOk returns a tuple with the HardLimitMax field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetHardLimitMaxOk() (*int32, bool) {
-	if o == nil || isNil(o.HardLimitMax) {
-    return nil, false
+	if o == nil || IsNil(o.HardLimitMax) {
+		return nil, false
 	}
 	return o.HardLimitMax, true
 }
 
 // HasHardLimitMax returns a boolean if a field has been set.
 func (o *LicenseUsers) HasHardLimitMax() bool {
-	if o != nil && !isNil(o.HardLimitMax) {
+	if o != nil && !IsNil(o.HardLimitMax) {
 		return true
 	}
 
@@ -515,7 +518,7 @@ func (o *LicenseUsers) SetHardLimitMax(v int32) {
 
 // GetAnnualActiveIncluded returns the AnnualActiveIncluded field value if set, zero value otherwise.
 func (o *LicenseUsers) GetAnnualActiveIncluded() int32 {
-	if o == nil || isNil(o.AnnualActiveIncluded) {
+	if o == nil || IsNil(o.AnnualActiveIncluded) {
 		var ret int32
 		return ret
 	}
@@ -525,15 +528,15 @@ func (o *LicenseUsers) GetAnnualActiveIncluded() int32 {
 // GetAnnualActiveIncludedOk returns a tuple with the AnnualActiveIncluded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetAnnualActiveIncludedOk() (*int32, bool) {
-	if o == nil || isNil(o.AnnualActiveIncluded) {
-    return nil, false
+	if o == nil || IsNil(o.AnnualActiveIncluded) {
+		return nil, false
 	}
 	return o.AnnualActiveIncluded, true
 }
 
 // HasAnnualActiveIncluded returns a boolean if a field has been set.
 func (o *LicenseUsers) HasAnnualActiveIncluded() bool {
-	if o != nil && !isNil(o.AnnualActiveIncluded) {
+	if o != nil && !IsNil(o.AnnualActiveIncluded) {
 		return true
 	}
 
@@ -547,7 +550,7 @@ func (o *LicenseUsers) SetAnnualActiveIncluded(v int32) {
 
 // GetMonthlyActiveIncluded returns the MonthlyActiveIncluded field value if set, zero value otherwise.
 func (o *LicenseUsers) GetMonthlyActiveIncluded() int32 {
-	if o == nil || isNil(o.MonthlyActiveIncluded) {
+	if o == nil || IsNil(o.MonthlyActiveIncluded) {
 		var ret int32
 		return ret
 	}
@@ -557,15 +560,15 @@ func (o *LicenseUsers) GetMonthlyActiveIncluded() int32 {
 // GetMonthlyActiveIncludedOk returns a tuple with the MonthlyActiveIncluded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseUsers) GetMonthlyActiveIncludedOk() (*int32, bool) {
-	if o == nil || isNil(o.MonthlyActiveIncluded) {
-    return nil, false
+	if o == nil || IsNil(o.MonthlyActiveIncluded) {
+		return nil, false
 	}
 	return o.MonthlyActiveIncluded, true
 }
 
 // HasMonthlyActiveIncluded returns a boolean if a field has been set.
 func (o *LicenseUsers) HasMonthlyActiveIncluded() bool {
-	if o != nil && !isNil(o.MonthlyActiveIncluded) {
+	if o != nil && !IsNil(o.MonthlyActiveIncluded) {
 		return true
 	}
 
@@ -578,56 +581,64 @@ func (o *LicenseUsers) SetMonthlyActiveIncluded(v int32) {
 }
 
 func (o LicenseUsers) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AllowPasswordManagementNotifications) {
-		toSerialize["allowPasswordManagementNotifications"] = o.AllowPasswordManagementNotifications
-	}
-	if !isNil(o.AllowIdentityProviders) {
-		toSerialize["allowIdentityProviders"] = o.AllowIdentityProviders
-	}
-	if !isNil(o.AllowMyAccount) {
-		toSerialize["allowMyAccount"] = o.AllowMyAccount
-	}
-	if !isNil(o.AllowPasswordManagement) {
-		toSerialize["allowPasswordManagement"] = o.AllowPasswordManagement
-	}
-	if !isNil(o.AllowPasswordOnlyAuthentication) {
-		toSerialize["allowPasswordOnlyAuthentication"] = o.AllowPasswordOnlyAuthentication
-	}
-	if !isNil(o.AllowPasswordPolicy) {
-		toSerialize["allowPasswordPolicy"] = o.AllowPasswordPolicy
-	}
-	if !isNil(o.AllowProvisioning) {
-		toSerialize["allowProvisioning"] = o.AllowProvisioning
-	}
-	if !isNil(o.AllowInboundProvisioning) {
-		toSerialize["allowInboundProvisioning"] = o.AllowInboundProvisioning
-	}
-	if !isNil(o.AllowRoleAssignment) {
-		toSerialize["allowRoleAssignment"] = o.AllowRoleAssignment
-	}
-	if !isNil(o.AllowVerificationFlow) {
-		toSerialize["allowVerificationFlow"] = o.AllowVerificationFlow
-	}
-	if !isNil(o.AllowUpdateSelf) {
-		toSerialize["allowUpdateSelf"] = o.AllowUpdateSelf
-	}
-	if !isNil(o.EntitledToSupport) {
-		toSerialize["entitledToSupport"] = o.EntitledToSupport
-	}
-	if !isNil(o.Max) {
-		toSerialize["max"] = o.Max
-	}
-	if !isNil(o.HardLimitMax) {
-		toSerialize["hardLimitMax"] = o.HardLimitMax
-	}
-	if !isNil(o.AnnualActiveIncluded) {
-		toSerialize["annualActiveIncluded"] = o.AnnualActiveIncluded
-	}
-	if !isNil(o.MonthlyActiveIncluded) {
-		toSerialize["monthlyActiveIncluded"] = o.MonthlyActiveIncluded
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseUsers) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowPasswordManagementNotifications) {
+		toSerialize["allowPasswordManagementNotifications"] = o.AllowPasswordManagementNotifications
+	}
+	if !IsNil(o.AllowIdentityProviders) {
+		toSerialize["allowIdentityProviders"] = o.AllowIdentityProviders
+	}
+	if !IsNil(o.AllowMyAccount) {
+		toSerialize["allowMyAccount"] = o.AllowMyAccount
+	}
+	if !IsNil(o.AllowPasswordManagement) {
+		toSerialize["allowPasswordManagement"] = o.AllowPasswordManagement
+	}
+	if !IsNil(o.AllowPasswordOnlyAuthentication) {
+		toSerialize["allowPasswordOnlyAuthentication"] = o.AllowPasswordOnlyAuthentication
+	}
+	if !IsNil(o.AllowPasswordPolicy) {
+		toSerialize["allowPasswordPolicy"] = o.AllowPasswordPolicy
+	}
+	if !IsNil(o.AllowProvisioning) {
+		toSerialize["allowProvisioning"] = o.AllowProvisioning
+	}
+	if !IsNil(o.AllowInboundProvisioning) {
+		toSerialize["allowInboundProvisioning"] = o.AllowInboundProvisioning
+	}
+	if !IsNil(o.AllowRoleAssignment) {
+		toSerialize["allowRoleAssignment"] = o.AllowRoleAssignment
+	}
+	if !IsNil(o.AllowVerificationFlow) {
+		toSerialize["allowVerificationFlow"] = o.AllowVerificationFlow
+	}
+	if !IsNil(o.AllowUpdateSelf) {
+		toSerialize["allowUpdateSelf"] = o.AllowUpdateSelf
+	}
+	if !IsNil(o.EntitledToSupport) {
+		toSerialize["entitledToSupport"] = o.EntitledToSupport
+	}
+	if !IsNil(o.Max) {
+		toSerialize["max"] = o.Max
+	}
+	if !IsNil(o.HardLimitMax) {
+		toSerialize["hardLimitMax"] = o.HardLimitMax
+	}
+	if !IsNil(o.AnnualActiveIncluded) {
+		toSerialize["annualActiveIncluded"] = o.AnnualActiveIncluded
+	}
+	if !IsNil(o.MonthlyActiveIncluded) {
+		toSerialize["monthlyActiveIncluded"] = o.MonthlyActiveIncluded
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseUsers struct {

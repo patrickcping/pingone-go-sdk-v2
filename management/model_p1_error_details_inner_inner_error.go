@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the P1ErrorDetailsInnerInnerError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &P1ErrorDetailsInnerInnerError{}
+
 // P1ErrorDetailsInnerInnerError Additional details to help the client developer resolve the fault (primarily for UI validation reasons).
 type P1ErrorDetailsInnerInnerError struct {
 	// Errors that failed due to range violation. This attribute represents the minimum value of the range.
@@ -47,7 +50,7 @@ func NewP1ErrorDetailsInnerInnerErrorWithDefaults() *P1ErrorDetailsInnerInnerErr
 
 // GetRangeMinimumValue returns the RangeMinimumValue field value if set, zero value otherwise.
 func (o *P1ErrorDetailsInnerInnerError) GetRangeMinimumValue() int32 {
-	if o == nil || isNil(o.RangeMinimumValue) {
+	if o == nil || IsNil(o.RangeMinimumValue) {
 		var ret int32
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *P1ErrorDetailsInnerInnerError) GetRangeMinimumValue() int32 {
 // GetRangeMinimumValueOk returns a tuple with the RangeMinimumValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *P1ErrorDetailsInnerInnerError) GetRangeMinimumValueOk() (*int32, bool) {
-	if o == nil || isNil(o.RangeMinimumValue) {
-    return nil, false
+	if o == nil || IsNil(o.RangeMinimumValue) {
+		return nil, false
 	}
 	return o.RangeMinimumValue, true
 }
 
 // HasRangeMinimumValue returns a boolean if a field has been set.
 func (o *P1ErrorDetailsInnerInnerError) HasRangeMinimumValue() bool {
-	if o != nil && !isNil(o.RangeMinimumValue) {
+	if o != nil && !IsNil(o.RangeMinimumValue) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *P1ErrorDetailsInnerInnerError) SetRangeMinimumValue(v int32) {
 
 // GetRangeMaximumValue returns the RangeMaximumValue field value if set, zero value otherwise.
 func (o *P1ErrorDetailsInnerInnerError) GetRangeMaximumValue() int32 {
-	if o == nil || isNil(o.RangeMaximumValue) {
+	if o == nil || IsNil(o.RangeMaximumValue) {
 		var ret int32
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *P1ErrorDetailsInnerInnerError) GetRangeMaximumValue() int32 {
 // GetRangeMaximumValueOk returns a tuple with the RangeMaximumValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *P1ErrorDetailsInnerInnerError) GetRangeMaximumValueOk() (*int32, bool) {
-	if o == nil || isNil(o.RangeMaximumValue) {
-    return nil, false
+	if o == nil || IsNil(o.RangeMaximumValue) {
+		return nil, false
 	}
 	return o.RangeMaximumValue, true
 }
 
 // HasRangeMaximumValue returns a boolean if a field has been set.
 func (o *P1ErrorDetailsInnerInnerError) HasRangeMaximumValue() bool {
-	if o != nil && !isNil(o.RangeMaximumValue) {
+	if o != nil && !IsNil(o.RangeMaximumValue) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *P1ErrorDetailsInnerInnerError) SetRangeMaximumValue(v int32) {
 
 // GetAllowedPattern returns the AllowedPattern field value if set, zero value otherwise.
 func (o *P1ErrorDetailsInnerInnerError) GetAllowedPattern() string {
-	if o == nil || isNil(o.AllowedPattern) {
+	if o == nil || IsNil(o.AllowedPattern) {
 		var ret string
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *P1ErrorDetailsInnerInnerError) GetAllowedPattern() string {
 // GetAllowedPatternOk returns a tuple with the AllowedPattern field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *P1ErrorDetailsInnerInnerError) GetAllowedPatternOk() (*string, bool) {
-	if o == nil || isNil(o.AllowedPattern) {
-    return nil, false
+	if o == nil || IsNil(o.AllowedPattern) {
+		return nil, false
 	}
 	return o.AllowedPattern, true
 }
 
 // HasAllowedPattern returns a boolean if a field has been set.
 func (o *P1ErrorDetailsInnerInnerError) HasAllowedPattern() bool {
-	if o != nil && !isNil(o.AllowedPattern) {
+	if o != nil && !IsNil(o.AllowedPattern) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *P1ErrorDetailsInnerInnerError) SetAllowedPattern(v string) {
 
 // GetAllowedValues returns the AllowedValues field value if set, zero value otherwise.
 func (o *P1ErrorDetailsInnerInnerError) GetAllowedValues() []string {
-	if o == nil || isNil(o.AllowedValues) {
+	if o == nil || IsNil(o.AllowedValues) {
 		var ret []string
 		return ret
 	}
@@ -153,15 +156,15 @@ func (o *P1ErrorDetailsInnerInnerError) GetAllowedValues() []string {
 // GetAllowedValuesOk returns a tuple with the AllowedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *P1ErrorDetailsInnerInnerError) GetAllowedValuesOk() ([]string, bool) {
-	if o == nil || isNil(o.AllowedValues) {
-    return nil, false
+	if o == nil || IsNil(o.AllowedValues) {
+		return nil, false
 	}
 	return o.AllowedValues, true
 }
 
 // HasAllowedValues returns a boolean if a field has been set.
 func (o *P1ErrorDetailsInnerInnerError) HasAllowedValues() bool {
-	if o != nil && !isNil(o.AllowedValues) {
+	if o != nil && !IsNil(o.AllowedValues) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *P1ErrorDetailsInnerInnerError) SetAllowedValues(v []string) {
 
 // GetMaximumValue returns the MaximumValue field value if set, zero value otherwise.
 func (o *P1ErrorDetailsInnerInnerError) GetMaximumValue() int32 {
-	if o == nil || isNil(o.MaximumValue) {
+	if o == nil || IsNil(o.MaximumValue) {
 		var ret int32
 		return ret
 	}
@@ -185,15 +188,15 @@ func (o *P1ErrorDetailsInnerInnerError) GetMaximumValue() int32 {
 // GetMaximumValueOk returns a tuple with the MaximumValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *P1ErrorDetailsInnerInnerError) GetMaximumValueOk() (*int32, bool) {
-	if o == nil || isNil(o.MaximumValue) {
-    return nil, false
+	if o == nil || IsNil(o.MaximumValue) {
+		return nil, false
 	}
 	return o.MaximumValue, true
 }
 
 // HasMaximumValue returns a boolean if a field has been set.
 func (o *P1ErrorDetailsInnerInnerError) HasMaximumValue() bool {
-	if o != nil && !isNil(o.MaximumValue) {
+	if o != nil && !IsNil(o.MaximumValue) {
 		return true
 	}
 
@@ -206,23 +209,31 @@ func (o *P1ErrorDetailsInnerInnerError) SetMaximumValue(v int32) {
 }
 
 func (o P1ErrorDetailsInnerInnerError) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.RangeMinimumValue) {
-		toSerialize["rangeMinimumValue"] = o.RangeMinimumValue
-	}
-	if !isNil(o.RangeMaximumValue) {
-		toSerialize["rangeMaximumValue"] = o.RangeMaximumValue
-	}
-	if !isNil(o.AllowedPattern) {
-		toSerialize["allowedPattern"] = o.AllowedPattern
-	}
-	if !isNil(o.AllowedValues) {
-		toSerialize["allowedValues"] = o.AllowedValues
-	}
-	if !isNil(o.MaximumValue) {
-		toSerialize["maximumValue"] = o.MaximumValue
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o P1ErrorDetailsInnerInnerError) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RangeMinimumValue) {
+		toSerialize["rangeMinimumValue"] = o.RangeMinimumValue
+	}
+	if !IsNil(o.RangeMaximumValue) {
+		toSerialize["rangeMaximumValue"] = o.RangeMaximumValue
+	}
+	if !IsNil(o.AllowedPattern) {
+		toSerialize["allowedPattern"] = o.AllowedPattern
+	}
+	if !IsNil(o.AllowedValues) {
+		toSerialize["allowedValues"] = o.AllowedValues
+	}
+	if !IsNil(o.MaximumValue) {
+		toSerialize["maximumValue"] = o.MaximumValue
+	}
+	return toSerialize, nil
 }
 
 type NullableP1ErrorDetailsInnerInnerError struct {

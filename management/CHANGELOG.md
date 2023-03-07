@@ -1,7 +1,20 @@
 # v0.16.0 (Unreleased)
 
+* **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
+* **Breaking change** Agreement revision content type changed to an enum `EnumAgreementRevisionContentType`. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
+* **Breaking change** Required attributes now added to the `AgreementLanguageRevision` data model [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
+* **Feature** Support for Key Rotation Policies [#123](https://github.com/patrickcping/pingone-go-sdk-v2/pull/123)
+* **Bug fix** `reconsentPeriodDays` attribute in the `Agreement` data model corrected to be a floating point number, as in the API. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
+* **Bug fix** `requireReconsent` attribute corrected in `AgreementLanguageRevision` data model. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
+* **Bug fix** Fix the `PUT` request payload to be the `AgreementLanguage` data model [#118](https://github.com/patrickcping/pingone-go-sdk-v2/pull/118)
+* **Bug fix** Corrected the RFC3339 date time string format for `Agreement.ConsentCountsUpdatedAt`, `EntityArrayEmbeddedLanguagesInner.CreatedAt`, `EntityArrayEmbeddedLanguagesInner.UpdatedAt`, `Image.CreatedAt`, `Language.CreatedAt`, `Language.UpdatedAt`, `LanguageLocalizationStatus.CreatedAt`, `LanguageLocalizationStatus.UpdatedAt`, `License.BeginsAt`, `License.ExpiresAt` and `License.TerminatesAt` [#119](https://github.com/patrickcping/pingone-go-sdk-v2/pull/119)
+* **Bug fix** Corrected `Agreement.consentCountsUpdatedAt` => `Agreement.consentsAggregatedAt` [#120](https://github.com/patrickcping/pingone-go-sdk-v2/pull/120)
+* **Bug fix** Corrected `Agreement.expiredUserConsents` => `Agreement.totalExpiredConsents` [#120](https://github.com/patrickcping/pingone-go-sdk-v2/pull/120)
+* **Bug fix** Corrected `Agreement.totalUserConsents` => `Agreement.totalConsents` [#120](https://github.com/patrickcping/pingone-go-sdk-v2/pull/120)
 * **Enhancement** Add support for `ApplicationPingOneAdminConsole` model for applications [#114](https://github.com/patrickcping/pingone-go-sdk-v2/pull/114)
 * **Enhancement** Add support for Flow policies and application flow policy assignments [#115](https://github.com/patrickcping/pingone-go-sdk-v2/pull/115)
+* **Enhancement** `effectiveAt` and `notValidAfter` attributes on the `AgreementLanguageRevision` changed to be date/time format. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
+* **Enhancement** Add `INTERNAL` value to the `EnumOrganizationType` enum. [#124](https://github.com/patrickcping/pingone-go-sdk-v2/pull/124)
 
 # v0.15.0 (2023-02-22)
 

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **IdentityProviders** | Pointer to [**[]IdentityProvider**](IdentityProvider.md) |  | [optional] 
 **Keys** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
+**KeyRotationPolicies** | Pointer to [**[]KeyRotationPolicy**](KeyRotationPolicy.md) |  | [optional] 
 **Languages** | Pointer to [**[]EntityArrayEmbeddedLanguagesInner**](EntityArrayEmbeddedLanguagesInner.md) |  | [optional] 
 **Licenses** | Pointer to [**[]License**](License.md) |  | [optional] 
 **NotificationsPolicies** | Pointer to [**[]NotificationsPolicy**](NotificationsPolicy.md) |  | [optional] 
@@ -562,6 +563,31 @@ SetKeys sets Keys field to given value.
 `func (o *EntityArrayEmbedded) HasKeys() bool`
 
 HasKeys returns a boolean if a field has been set.
+
+### GetKeyRotationPolicies
+
+`func (o *EntityArrayEmbedded) GetKeyRotationPolicies() []KeyRotationPolicy`
+
+GetKeyRotationPolicies returns the KeyRotationPolicies field if non-nil, zero value otherwise.
+
+### GetKeyRotationPoliciesOk
+
+`func (o *EntityArrayEmbedded) GetKeyRotationPoliciesOk() (*[]KeyRotationPolicy, bool)`
+
+GetKeyRotationPoliciesOk returns a tuple with the KeyRotationPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyRotationPolicies
+
+`func (o *EntityArrayEmbedded) SetKeyRotationPolicies(v []KeyRotationPolicy)`
+
+SetKeyRotationPolicies sets KeyRotationPolicies field to given value.
+
+### HasKeyRotationPolicies
+
+`func (o *EntityArrayEmbedded) HasKeyRotationPolicies() bool`
+
+HasKeyRotationPolicies returns a boolean if a field has been set.
 
 ### GetLanguages
 

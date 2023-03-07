@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PopulationPasswordPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PopulationPasswordPolicy{}
+
 // PopulationPasswordPolicy The object reference to the password policy resource. This is an optional property.
 type PopulationPasswordPolicy struct {
 	// The ID of the password policy that is used for this population. If absent, the environment's default is used. Requried if `passwordPolicy` is used.
@@ -52,7 +55,7 @@ func (o *PopulationPasswordPolicy) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *PopulationPasswordPolicy) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *PopulationPasswordPolicy) SetId(v string) {
 }
 
 func (o PopulationPasswordPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PopulationPasswordPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullablePopulationPasswordPolicy struct {

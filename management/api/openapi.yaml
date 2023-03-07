@@ -55,6 +55,7 @@ tags:
 - name: Gateway Role Assignments
 - name: Groups
 - name: Identity Propagation (Provisioning)
+- name: Key Rotation Policies
 - name: Propagation Revisions
 - name: Propagation Plans
 - name: Propagation Stores
@@ -1202,10 +1203,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                locale: en-CH
-                displayName: "Language_{{$timestamp}}"
-              type: object
+              $ref: '#/components/schemas/AgreementLanguage'
       responses:
         "400":
           content:
@@ -5307,6 +5305,327 @@ paths:
       summary: Import Certificate Authority (CA) Response to a CSR
       tags:
       - Certificate Management
+  /v1/environments/{environmentID}/keyRotationPolicies:
+    get:
+      operationId: getKeyRotationPolicies
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: GET Key Rotation Policies
+      tags:
+      - Key Rotation Policies
+    post:
+      operationId: createKeyRotationPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyRotationPolicy'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyRotationPolicy'
+          description: Successful response
+      summary: CREATE Key Rotation Policy
+      tags:
+      - Key Rotation Policies
+  /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID}:
+    delete:
+      operationId: deleteKeyRotationPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: keyRotationPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Key Rotation Policy
+      tags:
+      - Key Rotation Policies
+    get:
+      operationId: getKeyRotationPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: keyRotationPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyRotationPolicy'
+          description: Successful response
+      summary: GET Key Rotation Policy
+      tags:
+      - Key Rotation Policies
+    put:
+      operationId: updateKeyRotationPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: keyRotationPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyRotationPolicy'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyRotationPolicy'
+          description: Successful response
+      summary: UPDATE Key Rotation Policy
+      tags:
+      - Key Rotation Policies
   /v1/environments/{environmentID}/certificates:
     get:
       operationId: getCertificates
@@ -22115,6 +22434,15 @@ paths:
       - Roles
 components:
   schemas:
+    EnumAgreementRevisionContentType:
+      description: "An immutable string that specifies the content type of text. Options\
+        \ are text/html and text/plain, as defined by [rfc-6838](https://datatracker.ietf.org/doc/html/rfc6838#section-4.2.1)\
+        \ and [Media Types/text](https://www.iana.org/assignments/media-types/media-types.xhtml#text).\
+        \ This attribute is supported in POST requests only."
+      enum:
+      - text/html
+      - text/plain
+      type: string
     EnumAlertChannelAlertType:
       description: "Alert channel alerting types. Possible values are `CERTIFICATE_EXPIRED`,\
         \ `CERTIFICATE_EXPIRING`, `KEY_PAIR_EXPIRED`, `GATEWAY_VERSION_DEPRECATED`,\
@@ -22481,6 +22809,24 @@ components:
       - jpg
       - gif
       type: string
+    EnumKeyRotationPolicyAlgorithm:
+      description: The algorithm this KRP applies to generated `KrpKeys`. `RSA` is
+        currently the only supported value.
+      enum:
+      - RSA
+      type: string
+    EnumKeyRotationPolicySigAlgorithm:
+      description: The signature algorithm this KRP will apply to generated `KrpKeys`.
+        `SHA256withRSA` is currently the only supported value.
+      enum:
+      - SHA256withRSA
+      type: string
+    EnumKeyRotationPolicyUsageType:
+      description: "How the KRP will be used, pertaining to what operations the KRP\
+        \ supports. The only valid value for initial release is `SIGNING`."
+      enum:
+      - SIGNING
+      type: string
     EnumLicenseStatus:
       description: "A string that specifies the status of the license. Options are\
         \ `ACTIVE`, `EXPIRED`, `FUTURE` and `TERMINATED`."
@@ -22575,10 +22921,12 @@ components:
     EnumOrganizationType:
       description: "A string that specifies the organization type. If the organization\
         \ has any paid licenses, the type property value is set to `PAID`. Otherwise,\
-        \ the property value is set to `TRIAL`."
+        \ the property value is set to `TRIAL`.  Internal organizations have a value\
+        \ of `INTERNAL`."
       enum:
       - PAID
       - TRIAL
+      - INTERNAL
       type: string
     EnumPasscodeRefreshTimeUnit:
       default: SECONDS
@@ -22863,20 +23211,21 @@ components:
       type: string
     Agreement:
       example:
-        consentCountsUpdatedAt: consentCountsUpdatedAt
         environment:
           id: id
-        expiredUserConsents: 0
-        totalUserConsents: 1
+        totalExpiredConsents: 0
+        consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
         name: name
         description: description
+        totalConsents: 1
         id: id
         enabled: true
-        reconsentPeriodDays: 6
+        reconsentPeriodDays: 6.0274563
       properties:
-        consentCountsUpdatedAt:
+        consentsAggregatedAt:
           description: The time the consent count metric was last updated. This value
             is typically updated once every 24 hours.
+          format: date-time
           readOnly: true
           type: string
         description:
@@ -22891,7 +23240,7 @@ components:
           type: boolean
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
-        expiredUserConsents:
+        totalExpiredConsents:
           description: "An integer that identifies the number of users who have consented\
             \ to the agreement, but their consent has expired. This value is last\
             \ calculated at the consentCountsUpdatedAt time."
@@ -22908,8 +23257,9 @@ components:
         reconsentPeriodDays:
           description: A number that represents the number of days until a consent
             to this agreement expires.
-          type: integer
-        totalUserConsents:
+          format: float
+          type: number
+        totalConsents:
           description: An integer that identifies the total number of users who have
             consented to the agreement. This value is last calculated at the consentCountsUpdatedAt
             time.
@@ -22968,31 +23318,26 @@ components:
       example:
         agreement:
           id: id
-        notValidAfter: notValidAfter
-        effectiveAt: effectiveAt
+        requireReconsent: true
+        notValidAfter: 2000-01-23T04:56:07.000+00:00
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
         language:
           id: id
-        requiresReconsent: true
         id: id
         text: text
-        contentType: text/html
+        contentType: null
       properties:
         agreement:
           $ref: '#/components/schemas/AgreementLanguage_agreement'
         contentType:
-          description: "An immutable string that specifies the content type of text.\
-            \ Options are text/html and text/plain, as defined by rfc-6838 and Media\
-            \ Types/text. This attribute is supported in POST requests only."
-          enum:
-          - text/html
-          - text/plain
-          type: string
+          $ref: '#/components/schemas/EnumAgreementRevisionContentType'
         effectiveAt:
           description: "A date that specifies the start date that the revision is\
             \ presented to users. This property value can be modified only if the\
             \ current value is a date that has not already passed. The effective date\
             \ must be unique for each language agreement, and the property value can\
             \ be the present date or a future date only."
+          format: date-time
           type: string
         id:
           description: A read-only string that specifies the revision ID.
@@ -23009,9 +23354,10 @@ components:
             \ previous revisions might be impacted. For example, if a new revision\
             \ becomes effective and it forces reconsent, then all older revisions\
             \ are no longer valid."
+          format: date-time
           readOnly: true
           type: string
-        requiresReconsent:
+        requireReconsent:
           description: A boolean that specifies whether the user is required to provide
             consent to the language revision after it becomes effective.
           type: boolean
@@ -23020,6 +23366,11 @@ components:
             \ This attribute is supported in POST requests only. For more information,\
             \ see contentType."
           type: string
+      required:
+      - contentType
+      - effectiveAt
+      - requireReconsent
+      - text
       type: object
     AlertChannel:
       example:
@@ -23716,7 +24067,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 8.969578798196912
+        size: 3.0205796992916243
         _embedded:
           flowPolicies:
           - environment:
@@ -24004,14 +24355,14 @@ components:
             status: null
           passwordPolicies:
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-              "0123456789": 5
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+              "0123456789": 3
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
               abcdefghijklmnopqrstuvwxyz: 6
             populationCount: 7
             length:
-              min: 29
-              max: 8
+              min: 16
+              max: 6
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -24019,7 +24370,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 3
+            minComplexity: 7
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -24030,7 +24381,7 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 3
+            minUniqueCharacters: 0
             name: name
             maxAgeDays: 1
             id: id
@@ -24038,14 +24389,14 @@ components:
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-              "0123456789": 5
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+              "0123456789": 3
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
               abcdefghijklmnopqrstuvwxyz: 6
             populationCount: 7
             length:
-              min: 29
-              max: 8
+              min: 16
+              max: 6
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -24053,7 +24404,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 3
+            minComplexity: 7
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -24064,7 +24415,7 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 3
+            minUniqueCharacters: 0
             name: name
             maxAgeDays: 1
             id: id
@@ -24074,24 +24425,24 @@ components:
           revisions:
           - agreement:
               id: id
-            notValidAfter: notValidAfter
-            effectiveAt: effectiveAt
+            requireReconsent: true
+            notValidAfter: 2000-01-23T04:56:07.000+00:00
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
             language:
               id: id
-            requiresReconsent: true
             id: id
             text: text
-            contentType: text/html
+            contentType: null
           - agreement:
               id: id
-            notValidAfter: notValidAfter
-            effectiveAt: effectiveAt
+            requireReconsent: true
+            notValidAfter: 2000-01-23T04:56:07.000+00:00
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
             language:
               id: id
-            requiresReconsent: true
             id: id
             text: text
-            contentType: text/html
+            contentType: null
           roleAssignments:
           - environment:
               id: id
@@ -24159,20 +24510,49 @@ components:
           identityProviders:
           - null
           - null
+          keyRotationPolicies:
+          - dn: dn
+            nextKeyId: nextKeyId
+            currentKeyId: currentKeyId
+            signatureAlgorithm: null
+            validityPeriod: 1
+            environment:
+              id: id
+            keyLength: 7
+            rotationPeriod: 1
+            name: name
+            rotatedAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            algorithm: null
+            usageType: null
+          - dn: dn
+            nextKeyId: nextKeyId
+            currentKeyId: currentKeyId
+            signatureAlgorithm: null
+            validityPeriod: 1
+            environment:
+              id: id
+            keyLength: 7
+            rotationPeriod: 1
+            name: name
+            rotatedAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            algorithm: null
+            usageType: null
           notificationsPolicies:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
             quotas:
-            - total: 4
-              unclaimed: 9
-              claimed: 5
+            - total: 9
+              unclaimed: 6
+              claimed: 9
               type: null
               deliveryMethods:
               - null
               - null
-            - total: 4
-              unclaimed: 9
-              claimed: 5
+            - total: 9
+              unclaimed: 6
+              claimed: 9
               type: null
               deliveryMethods:
               - null
@@ -24183,16 +24563,16 @@ components:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
             quotas:
-            - total: 4
-              unclaimed: 9
-              claimed: 5
+            - total: 9
+              unclaimed: 6
+              claimed: 9
               type: null
               deliveryMethods:
               - null
               - null
-            - total: 4
-              unclaimed: 9
-              claimed: 5
+            - total: 9
+              unclaimed: 6
+              claimed: 9
               type: null
               deliveryMethods:
               - null
@@ -24225,26 +24605,26 @@ components:
             - SMS
             updatedAt: updatedAt
           agreements:
-          - consentCountsUpdatedAt: consentCountsUpdatedAt
-            environment:
+          - environment:
               id: id
-            expiredUserConsents: 0
-            totalUserConsents: 1
+            totalExpiredConsents: 0
+            consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
             name: name
             description: description
+            totalConsents: 1
             id: id
             enabled: true
-            reconsentPeriodDays: 6
-          - consentCountsUpdatedAt: consentCountsUpdatedAt
-            environment:
+            reconsentPeriodDays: 6.0274563
+          - environment:
               id: id
-            expiredUserConsents: 0
-            totalUserConsents: 1
+            totalExpiredConsents: 0
+            consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
             name: name
             description: description
+            totalConsents: 1
             id: id
             enabled: true
-            reconsentPeriodDays: 6
+            reconsentPeriodDays: 6.0274563
           emailDomains:
           - environment:
               id: id
@@ -24373,7 +24753,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 0
+              secondsUntilUnlock: 8
               unlockAt: unlockAt
               status: null
             username: username
@@ -24439,7 +24819,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 0
+              secondsUntilUnlock: 8
               unlockAt: unlockAt
               status: null
             username: username
@@ -24495,7 +24875,7 @@ components:
               - null
               - null
               allowAddResources: true
-              max: 1
+              max: 6
               allowCustomSchema: true
               allowProduction: true
               allowCustomDomain: true
@@ -24509,21 +24889,21 @@ components:
               allowPushNotification: true
               allowTotp: true
               allowNotificationOutsideWhitelist: true
-            expiresAt: expiresAt
+            expiresAt: 2000-01-23T04:56:07.000+00:00
             users:
               allowUpdateSelf: true
               allowPasswordPolicy: true
-              max: 1
+              max: 7
               allowMyAccount: true
               allowPasswordOnlyAuthentication: true
               allowRoleAssignment: true
               entitledToSupport: true
-              annualActiveIncluded: 7
+              annualActiveIncluded: 4
               allowPasswordManagement: true
               allowIdentityProviders: true
               allowInboundProvisioning: true
               allowVerificationFlow: true
-              monthlyActiveIncluded: 1
+              monthlyActiveIncluded: 5
               allowProvisioning: true
               hardLimitMax: 6
               allowPasswordManagementNotifications: true
@@ -24539,7 +24919,7 @@ components:
               allowAccountProtection: true
             organization:
               id: id
-            terminatesAt: terminatesAt
+            terminatesAt: 2000-01-23T04:56:07.000+00:00
             name: name
             verify:
               allowDocumentMatch: true
@@ -24547,7 +24927,7 @@ components:
               allowFaceMatch: true
               allowPushNotifications: true
             assignedEnvironmentsCount: 1
-            beginsAt: beginsAt
+            beginsAt: 2000-01-23T04:56:07.000+00:00
             replacedByLicense:
               id: id
             id: id
@@ -24574,7 +24954,7 @@ components:
               - null
               - null
               allowAddResources: true
-              max: 1
+              max: 6
               allowCustomSchema: true
               allowProduction: true
               allowCustomDomain: true
@@ -24588,21 +24968,21 @@ components:
               allowPushNotification: true
               allowTotp: true
               allowNotificationOutsideWhitelist: true
-            expiresAt: expiresAt
+            expiresAt: 2000-01-23T04:56:07.000+00:00
             users:
               allowUpdateSelf: true
               allowPasswordPolicy: true
-              max: 1
+              max: 7
               allowMyAccount: true
               allowPasswordOnlyAuthentication: true
               allowRoleAssignment: true
               entitledToSupport: true
-              annualActiveIncluded: 7
+              annualActiveIncluded: 4
               allowPasswordManagement: true
               allowIdentityProviders: true
               allowInboundProvisioning: true
               allowVerificationFlow: true
-              monthlyActiveIncluded: 1
+              monthlyActiveIncluded: 5
               allowProvisioning: true
               hardLimitMax: 6
               allowPasswordManagementNotifications: true
@@ -24618,7 +24998,7 @@ components:
               allowAccountProtection: true
             organization:
               id: id
-            terminatesAt: terminatesAt
+            terminatesAt: 2000-01-23T04:56:07.000+00:00
             name: name
             verify:
               allowDocumentMatch: true
@@ -24626,7 +25006,7 @@ components:
               allowFaceMatch: true
               allowPushNotifications: true
             assignedEnvironmentsCount: 1
-            beginsAt: beginsAt
+            beginsAt: 2000-01-23T04:56:07.000+00:00
             replacedByLicense:
               id: id
             id: id
@@ -24810,7 +25190,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 0
+            userCount: 6
             name: name
             description: description
             id: id
@@ -24818,7 +25198,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 0
+            userCount: 6
             name: name
             description: description
             id: id
@@ -24869,7 +25249,7 @@ components:
           applications:
           - null
           - null
-        count: 4.652396432933246
+        count: 7.740351818741173
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -25360,7 +25740,7 @@ components:
       - $ref: '#/components/schemas/IdentityProviderSAML_allOf'
     Image:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
         id: id
@@ -25380,15 +25760,86 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         createdAt:
           description: The time the resource was created.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         targets:
           $ref: '#/components/schemas/Image_targets'
       type: object
+    KeyRotationPolicy:
+      example:
+        dn: dn
+        nextKeyId: nextKeyId
+        currentKeyId: currentKeyId
+        signatureAlgorithm: null
+        validityPeriod: 1
+        environment:
+          id: id
+        keyLength: 7
+        rotationPeriod: 1
+        name: name
+        rotatedAt: 2000-01-23T04:56:07.000+00:00
+        id: id
+        algorithm: null
+        usageType: null
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/EnumKeyRotationPolicyAlgorithm'
+        currentKeyId:
+          description: The `kid` (key identifier) of the `KrpKey` designated as `CURRENT`.
+          readOnly: true
+          type: string
+        dn:
+          description: The DN this KRP will apply to generated `KrpKeys`. Is applied
+            as both `issuerDN` and `subjectDN` because generated `KrpKeys` are self-signed.
+          type: string
+        id:
+          description: The resource’s unique identifier.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        keyLength:
+          description: The number of bytes of a cryptographic key this KRP will apply
+            to generated `KrpKeys`.
+          type: integer
+        name:
+          description: Human-readable name displayed in the admin console.
+          type: string
+        nextKeyId:
+          description: The `kid` (key identifier) of the `KrpKey` designated as `NEXT`.
+          readOnly: true
+          type: string
+        rotatedAt:
+          description: The last time this KRP was rotated.
+          format: date-time
+          readOnly: true
+          type: string
+        rotationPeriod:
+          description: The number of days to elapse before this KRP rotates `KrpKeys`.
+            The default value is `90` days. The minimum value is `30` days. The maximum
+            value is 1 day less than the `validityPeriod` value.
+          type: integer
+        signatureAlgorithm:
+          $ref: '#/components/schemas/EnumKeyRotationPolicySigAlgorithm'
+        usageType:
+          $ref: '#/components/schemas/EnumKeyRotationPolicyUsageType'
+        validityPeriod:
+          description: Controls the `startsAt` and `expiresAt` fields this KRP will
+            apply to generated `KrpKeys`. The default value is `365` days.
+          type: integer
+      required:
+      - algorithm
+      - dn
+      - keyLength
+      - name
+      - signatureAlgorithm
+      - usageType
+      - validityPeriod
+      type: object
     Language:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         default: true
         environment:
           id: id
@@ -25397,7 +25848,7 @@ components:
         locale: locale
         enabled: true
         customerAdded: true
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         default:
           description: Specifies whether this language is the default for the environment.
@@ -25425,7 +25876,7 @@ components:
           type: string
         createdAt:
           description: The time the language resource was created.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         customerAdded:
@@ -25434,7 +25885,7 @@ components:
           type: boolean
         updatedAt:
           description: The time the language resource was last updated.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
       required:
@@ -25444,7 +25895,7 @@ components:
       type: object
     LanguageLocalizationStatus:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
         service: service
@@ -25453,11 +25904,11 @@ components:
         localizationComplete: true
         locale:
           id: id
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         createdAt:
           description: The time the language localization status resource was created.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         environment:
@@ -25478,7 +25929,7 @@ components:
         updatedAt:
           description: The time the language localization status resource was last
             updated.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
       required:
@@ -25503,7 +25954,7 @@ components:
           - null
           - null
           allowAddResources: true
-          max: 1
+          max: 6
           allowCustomSchema: true
           allowProduction: true
           allowCustomDomain: true
@@ -25517,21 +25968,21 @@ components:
           allowPushNotification: true
           allowTotp: true
           allowNotificationOutsideWhitelist: true
-        expiresAt: expiresAt
+        expiresAt: 2000-01-23T04:56:07.000+00:00
         users:
           allowUpdateSelf: true
           allowPasswordPolicy: true
-          max: 1
+          max: 7
           allowMyAccount: true
           allowPasswordOnlyAuthentication: true
           allowRoleAssignment: true
           entitledToSupport: true
-          annualActiveIncluded: 7
+          annualActiveIncluded: 4
           allowPasswordManagement: true
           allowIdentityProviders: true
           allowInboundProvisioning: true
           allowVerificationFlow: true
-          monthlyActiveIncluded: 1
+          monthlyActiveIncluded: 5
           allowProvisioning: true
           hardLimitMax: 6
           allowPasswordManagementNotifications: true
@@ -25547,7 +25998,7 @@ components:
           allowAccountProtection: true
         organization:
           id: id
-        terminatesAt: terminatesAt
+        terminatesAt: 2000-01-23T04:56:07.000+00:00
         name: name
         verify:
           allowDocumentMatch: true
@@ -25555,7 +26006,7 @@ components:
           allowFaceMatch: true
           allowPushNotifications: true
         assignedEnvironmentsCount: 1
-        beginsAt: beginsAt
+        beginsAt: 2000-01-23T04:56:07.000+00:00
         replacedByLicense:
           id: id
         id: id
@@ -25577,7 +26028,7 @@ components:
           $ref: '#/components/schemas/License_authorize'
         beginsAt:
           description: The date and time this license begins.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         credentials:
@@ -25589,7 +26040,7 @@ components:
             access to PingOne services at expiration. All other licenses trigger an
             event to send a notification when the license expires but do not block
             services.
-          format: datetime
+          format: date-time
           readOnly: true
           type: string
         fraud:
@@ -25630,7 +26081,7 @@ components:
           description: An optional attribute that designates the exact date and time
             when this license terminates access to PingOne services. This attribute
             can be added to any licensing package.
-          format: datetime
+          format: date-time
           type: string
         users:
           $ref: '#/components/schemas/License_users'
@@ -25654,16 +26105,16 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         default: false
         quotas:
-        - total: 4
-          unclaimed: 9
-          claimed: 5
+        - total: 9
+          unclaimed: 6
+          claimed: 9
           type: null
           deliveryMethods:
           - null
           - null
-        - total: 4
-          unclaimed: 9
-          claimed: 5
+        - total: 9
+          unclaimed: 6
+          claimed: 9
           type: null
           deliveryMethods:
           - null
@@ -25951,14 +26402,14 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-          "0123456789": 5
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+          "0123456789": 3
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
           abcdefghijklmnopqrstuvwxyz: 6
         populationCount: 7
         length:
-          min: 29
-          max: 8
+          min: 16
+          max: 6
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -25966,7 +26417,7 @@ components:
         history:
           retentionDays: 1
           count: 1
-        minComplexity: 3
+        minComplexity: 7
         excludesProfileData: true
         currentPassword: currentPassword
         createdAt: createdAt
@@ -25977,7 +26428,7 @@ components:
           durationSeconds: 1
           failureCount: 1
         bypassPolicy: false
-        minUniqueCharacters: 3
+        minUniqueCharacters: 0
         name: name
         maxAgeDays: 1
         id: id
@@ -26114,7 +26565,7 @@ components:
         createdAt: createdAt
         passwordPolicy:
           id: id
-        userCount: 0
+        userCount: 6
         name: name
         description: description
         id: id
@@ -27082,7 +27533,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 0
+          secondsUntilUnlock: 8
           unlockAt: unlockAt
           status: null
         username: username
@@ -28556,14 +29007,14 @@ components:
           status: null
         passwordPolicies:
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-            "0123456789": 5
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+            "0123456789": 3
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
             abcdefghijklmnopqrstuvwxyz: 6
           populationCount: 7
           length:
-            min: 29
-            max: 8
+            min: 16
+            max: 6
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -28571,7 +29022,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 3
+          minComplexity: 7
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -28582,7 +29033,7 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 3
+          minUniqueCharacters: 0
           name: name
           maxAgeDays: 1
           id: id
@@ -28590,14 +29041,14 @@ components:
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-            "0123456789": 5
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+            "0123456789": 3
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
             abcdefghijklmnopqrstuvwxyz: 6
           populationCount: 7
           length:
-            min: 29
-            max: 8
+            min: 16
+            max: 6
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -28605,7 +29056,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 3
+          minComplexity: 7
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -28616,7 +29067,7 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 3
+          minUniqueCharacters: 0
           name: name
           maxAgeDays: 1
           id: id
@@ -28626,24 +29077,24 @@ components:
         revisions:
         - agreement:
             id: id
-          notValidAfter: notValidAfter
-          effectiveAt: effectiveAt
+          requireReconsent: true
+          notValidAfter: 2000-01-23T04:56:07.000+00:00
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
           language:
             id: id
-          requiresReconsent: true
           id: id
           text: text
-          contentType: text/html
+          contentType: null
         - agreement:
             id: id
-          notValidAfter: notValidAfter
-          effectiveAt: effectiveAt
+          requireReconsent: true
+          notValidAfter: 2000-01-23T04:56:07.000+00:00
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
           language:
             id: id
-          requiresReconsent: true
           id: id
           text: text
-          contentType: text/html
+          contentType: null
         roleAssignments:
         - environment:
             id: id
@@ -28711,20 +29162,49 @@ components:
         identityProviders:
         - null
         - null
+        keyRotationPolicies:
+        - dn: dn
+          nextKeyId: nextKeyId
+          currentKeyId: currentKeyId
+          signatureAlgorithm: null
+          validityPeriod: 1
+          environment:
+            id: id
+          keyLength: 7
+          rotationPeriod: 1
+          name: name
+          rotatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          algorithm: null
+          usageType: null
+        - dn: dn
+          nextKeyId: nextKeyId
+          currentKeyId: currentKeyId
+          signatureAlgorithm: null
+          validityPeriod: 1
+          environment:
+            id: id
+          keyLength: 7
+          rotationPeriod: 1
+          name: name
+          rotatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          algorithm: null
+          usageType: null
         notificationsPolicies:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
           quotas:
-          - total: 4
-            unclaimed: 9
-            claimed: 5
+          - total: 9
+            unclaimed: 6
+            claimed: 9
             type: null
             deliveryMethods:
             - null
             - null
-          - total: 4
-            unclaimed: 9
-            claimed: 5
+          - total: 9
+            unclaimed: 6
+            claimed: 9
             type: null
             deliveryMethods:
             - null
@@ -28735,16 +29215,16 @@ components:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
           quotas:
-          - total: 4
-            unclaimed: 9
-            claimed: 5
+          - total: 9
+            unclaimed: 6
+            claimed: 9
             type: null
             deliveryMethods:
             - null
             - null
-          - total: 4
-            unclaimed: 9
-            claimed: 5
+          - total: 9
+            unclaimed: 6
+            claimed: 9
             type: null
             deliveryMethods:
             - null
@@ -28777,26 +29257,26 @@ components:
           - SMS
           updatedAt: updatedAt
         agreements:
-        - consentCountsUpdatedAt: consentCountsUpdatedAt
-          environment:
+        - environment:
             id: id
-          expiredUserConsents: 0
-          totalUserConsents: 1
+          totalExpiredConsents: 0
+          consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
           name: name
           description: description
+          totalConsents: 1
           id: id
           enabled: true
-          reconsentPeriodDays: 6
-        - consentCountsUpdatedAt: consentCountsUpdatedAt
-          environment:
+          reconsentPeriodDays: 6.0274563
+        - environment:
             id: id
-          expiredUserConsents: 0
-          totalUserConsents: 1
+          totalExpiredConsents: 0
+          consentsAggregatedAt: 2000-01-23T04:56:07.000+00:00
           name: name
           description: description
+          totalConsents: 1
           id: id
           enabled: true
-          reconsentPeriodDays: 6
+          reconsentPeriodDays: 6.0274563
         emailDomains:
         - environment:
             id: id
@@ -28925,7 +29405,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 0
+            secondsUntilUnlock: 8
             unlockAt: unlockAt
             status: null
           username: username
@@ -28991,7 +29471,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 0
+            secondsUntilUnlock: 8
             unlockAt: unlockAt
             status: null
           username: username
@@ -29047,7 +29527,7 @@ components:
             - null
             - null
             allowAddResources: true
-            max: 1
+            max: 6
             allowCustomSchema: true
             allowProduction: true
             allowCustomDomain: true
@@ -29061,21 +29541,21 @@ components:
             allowPushNotification: true
             allowTotp: true
             allowNotificationOutsideWhitelist: true
-          expiresAt: expiresAt
+          expiresAt: 2000-01-23T04:56:07.000+00:00
           users:
             allowUpdateSelf: true
             allowPasswordPolicy: true
-            max: 1
+            max: 7
             allowMyAccount: true
             allowPasswordOnlyAuthentication: true
             allowRoleAssignment: true
             entitledToSupport: true
-            annualActiveIncluded: 7
+            annualActiveIncluded: 4
             allowPasswordManagement: true
             allowIdentityProviders: true
             allowInboundProvisioning: true
             allowVerificationFlow: true
-            monthlyActiveIncluded: 1
+            monthlyActiveIncluded: 5
             allowProvisioning: true
             hardLimitMax: 6
             allowPasswordManagementNotifications: true
@@ -29091,7 +29571,7 @@ components:
             allowAccountProtection: true
           organization:
             id: id
-          terminatesAt: terminatesAt
+          terminatesAt: 2000-01-23T04:56:07.000+00:00
           name: name
           verify:
             allowDocumentMatch: true
@@ -29099,7 +29579,7 @@ components:
             allowFaceMatch: true
             allowPushNotifications: true
           assignedEnvironmentsCount: 1
-          beginsAt: beginsAt
+          beginsAt: 2000-01-23T04:56:07.000+00:00
           replacedByLicense:
             id: id
           id: id
@@ -29126,7 +29606,7 @@ components:
             - null
             - null
             allowAddResources: true
-            max: 1
+            max: 6
             allowCustomSchema: true
             allowProduction: true
             allowCustomDomain: true
@@ -29140,21 +29620,21 @@ components:
             allowPushNotification: true
             allowTotp: true
             allowNotificationOutsideWhitelist: true
-          expiresAt: expiresAt
+          expiresAt: 2000-01-23T04:56:07.000+00:00
           users:
             allowUpdateSelf: true
             allowPasswordPolicy: true
-            max: 1
+            max: 7
             allowMyAccount: true
             allowPasswordOnlyAuthentication: true
             allowRoleAssignment: true
             entitledToSupport: true
-            annualActiveIncluded: 7
+            annualActiveIncluded: 4
             allowPasswordManagement: true
             allowIdentityProviders: true
             allowInboundProvisioning: true
             allowVerificationFlow: true
-            monthlyActiveIncluded: 1
+            monthlyActiveIncluded: 5
             allowProvisioning: true
             hardLimitMax: 6
             allowPasswordManagementNotifications: true
@@ -29170,7 +29650,7 @@ components:
             allowAccountProtection: true
           organization:
             id: id
-          terminatesAt: terminatesAt
+          terminatesAt: 2000-01-23T04:56:07.000+00:00
           name: name
           verify:
             allowDocumentMatch: true
@@ -29178,7 +29658,7 @@ components:
             allowFaceMatch: true
             allowPushNotifications: true
           assignedEnvironmentsCount: 1
-          beginsAt: beginsAt
+          beginsAt: 2000-01-23T04:56:07.000+00:00
           replacedByLicense:
             id: id
           id: id
@@ -29362,7 +29842,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 0
+          userCount: 6
           name: name
           description: description
           id: id
@@ -29370,7 +29850,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 0
+          userCount: 6
           name: name
           description: description
           id: id
@@ -29501,6 +29981,10 @@ components:
         keys:
           items:
             $ref: '#/components/schemas/Certificate'
+          type: array
+        keyRotationPolicies:
+          items:
+            $ref: '#/components/schemas/KeyRotationPolicy'
           type: array
         languages:
           items:
@@ -30260,7 +30744,7 @@ components:
         - null
         - null
         allowAddResources: true
-        max: 1
+        max: 6
         allowCustomSchema: true
         allowProduction: true
         allowCustomDomain: true
@@ -30435,17 +30919,17 @@ components:
       example:
         allowUpdateSelf: true
         allowPasswordPolicy: true
-        max: 1
+        max: 7
         allowMyAccount: true
         allowPasswordOnlyAuthentication: true
         allowRoleAssignment: true
         entitledToSupport: true
-        annualActiveIncluded: 7
+        annualActiveIncluded: 4
         allowPasswordManagement: true
         allowIdentityProviders: true
         allowInboundProvisioning: true
         allowVerificationFlow: true
-        monthlyActiveIncluded: 1
+        monthlyActiveIncluded: 5
         allowProvisioning: true
         hardLimitMax: 6
         allowPasswordManagementNotifications: true
@@ -30543,9 +31027,9 @@ components:
       type: object
     NotificationsPolicy_quotas_inner:
       example:
-        total: 4
-        unclaimed: 9
-        claimed: 5
+        total: 9
+        unclaimed: 6
+        claimed: 9
         type: null
         deliveryMethods:
         - null
@@ -30895,8 +31379,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 29
-        max: 8
+        min: 16
+        max: 6
       properties:
         max:
           default: 255
@@ -30938,9 +31422,9 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 6
-        "0123456789": 5
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+        "0123456789": 3
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
         abcdefghijklmnopqrstuvwxyz: 6
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
@@ -31776,7 +32260,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 0
+        secondsUntilUnlock: 8
         unlockAt: unlockAt
         status: null
       properties:

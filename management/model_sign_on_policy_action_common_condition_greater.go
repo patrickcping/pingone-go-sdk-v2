@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionGreater type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionGreater{}
+
 // SignOnPolicyActionCommonConditionGreater struct for SignOnPolicyActionCommonConditionGreater
 type SignOnPolicyActionCommonConditionGreater struct {
 	// An integer that specifies the maximum number of seconds to wait since the last sign on before prompting for a new sign-on action.
@@ -55,7 +58,7 @@ func (o *SignOnPolicyActionCommonConditionGreater) GetGreater() int32 {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionGreater) GetGreaterOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Greater, true
 }
@@ -79,7 +82,7 @@ func (o *SignOnPolicyActionCommonConditionGreater) GetSecondsSince() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionGreater) GetSecondsSinceOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.SecondsSince, true
 }
@@ -90,14 +93,18 @@ func (o *SignOnPolicyActionCommonConditionGreater) SetSecondsSince(v string) {
 }
 
 func (o SignOnPolicyActionCommonConditionGreater) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["greater"] = o.Greater
-	}
-	if true {
-		toSerialize["secondsSince"] = o.SecondsSince
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionGreater) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["greater"] = o.Greater
+	toSerialize["secondsSince"] = o.SecondsSince
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionGreater struct {

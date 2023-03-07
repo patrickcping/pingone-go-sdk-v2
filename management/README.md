@@ -15,7 +15,6 @@ Install the following dependencies:
 
 ```shell
 go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
@@ -227,6 +226,11 @@ Class | Method | HTTP request | Description
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions | READ Integration Version Metadata
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsintegrationversionidassetget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | READ Integration Version Asset Download
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsintegrationversionidget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
+*KeyRotationPoliciesApi* | [**CreateKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#createkeyrotationpolicy) | **Post** /v1/environments/{environmentID}/keyRotationPolicies | CREATE Key Rotation Policy
+*KeyRotationPoliciesApi* | [**DeleteKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#deletekeyrotationpolicy) | **Delete** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | DELETE Key Rotation Policy
+*KeyRotationPoliciesApi* | [**GetKeyRotationPolicies**](docs/KeyRotationPoliciesApi.md#getkeyrotationpolicies) | **Get** /v1/environments/{environmentID}/keyRotationPolicies | GET Key Rotation Policies
+*KeyRotationPoliciesApi* | [**GetKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#getkeyrotationpolicy) | **Get** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | GET Key Rotation Policy
+*KeyRotationPoliciesApi* | [**UpdateKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#updatekeyrotationpolicy) | **Put** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | UPDATE Key Rotation Policy
 *LanguageLocalizationStatusApi* | [**CreateLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#createlanguagelocalizationstatus) | **Post** /v1/environments/{environmentID}/languages/{languageID}/status | CREATE Language Localization Status
 *LanguageLocalizationStatusApi* | [**DeleteLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#deletelanguagelocalizationstatus) | **Delete** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | DELETE Language Localization Status
 *LanguageLocalizationStatusApi* | [**ReadLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#readlanguagelocalizationstatus) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status | READ Language Localization Status
@@ -491,6 +495,7 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbeddedAttributesInner](docs/EntityArrayEmbeddedAttributesInner.md)
  - [EntityArrayEmbeddedGatewaysInner](docs/EntityArrayEmbeddedGatewaysInner.md)
  - [EntityArrayEmbeddedLanguagesInner](docs/EntityArrayEmbeddedLanguagesInner.md)
+ - [EnumAgreementRevisionContentType](docs/EnumAgreementRevisionContentType.md)
  - [EnumAlertChannelAlertType](docs/EnumAlertChannelAlertType.md)
  - [EnumAlertChannelSeverity](docs/EnumAlertChannelSeverity.md)
  - [EnumAlertChannelType](docs/EnumAlertChannelType.md)
@@ -535,6 +540,9 @@ Class | Method | HTTP request | Description
  - [EnumIdentityProviderOIDCTokenAuthMethod](docs/EnumIdentityProviderOIDCTokenAuthMethod.md)
  - [EnumIdentityProviderSAMLSSOBinding](docs/EnumIdentityProviderSAMLSSOBinding.md)
  - [EnumImageFormat](docs/EnumImageFormat.md)
+ - [EnumKeyRotationPolicyAlgorithm](docs/EnumKeyRotationPolicyAlgorithm.md)
+ - [EnumKeyRotationPolicySigAlgorithm](docs/EnumKeyRotationPolicySigAlgorithm.md)
+ - [EnumKeyRotationPolicyUsageType](docs/EnumKeyRotationPolicyUsageType.md)
  - [EnumLicenseStatus](docs/EnumLicenseStatus.md)
  - [EnumMobileIntegrityDetectionPlatform](docs/EnumMobileIntegrityDetectionPlatform.md)
  - [EnumNotificationsPolicyQuotaDeliveryMethods](docs/EnumNotificationsPolicyQuotaDeliveryMethods.md)
@@ -631,6 +639,7 @@ Class | Method | HTTP request | Description
  - [Image](docs/Image.md)
  - [ImageTargets](docs/ImageTargets.md)
  - [ImageTargetsOriginal](docs/ImageTargetsOriginal.md)
+ - [KeyRotationPolicy](docs/KeyRotationPolicy.md)
  - [Language](docs/Language.md)
  - [LanguageLocalizationStatus](docs/LanguageLocalizationStatus.md)
  - [LanguageLocalizationStatusLocale](docs/LanguageLocalizationStatusLocale.md)

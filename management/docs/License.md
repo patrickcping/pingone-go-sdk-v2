@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **AdvancedServices** | Pointer to [**LicenseAdvancedServices**](LicenseAdvancedServices.md) |  | [optional] 
 **AssignedEnvironmentsCount** | Pointer to **int32** | A read-only integer that specifies the total number of environments associated with this license. | [optional] [readonly] 
 **Authorize** | Pointer to [**LicenseAuthorize**](LicenseAuthorize.md) |  | [optional] 
-**BeginsAt** | Pointer to **string** | The date and time this license begins. | [optional] [readonly] 
+**BeginsAt** | Pointer to **time.Time** | The date and time this license begins. | [optional] [readonly] 
 **Credentials** | Pointer to [**LicenseCredentials**](LicenseCredentials.md) |  | [optional] 
 **Environments** | Pointer to [**LicenseEnvironments**](LicenseEnvironments.md) |  | [optional] 
-**ExpiresAt** | Pointer to **string** | The date and time this license expires. TRIAL licenses stop access to PingOne services at expiration. All other licenses trigger an event to send a notification when the license expires but do not block services. | [optional] [readonly] 
+**ExpiresAt** | Pointer to **time.Time** | The date and time this license expires. TRIAL licenses stop access to PingOne services at expiration. All other licenses trigger an event to send a notification when the license expires but do not block services. | [optional] [readonly] 
 **Fraud** | Pointer to [**LicenseFraud**](LicenseFraud.md) |  | [optional] 
 **Gateways** | Pointer to [**LicenseGateways**](LicenseGateways.md) |  | [optional] 
 **Id** | Pointer to **string** | A read-only string that specifies the license resource’s unique identifier. | [optional] [readonly] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **ReplacesLicense** | Pointer to [**LicenseReplacesLicense**](LicenseReplacesLicense.md) |  | [optional] 
 **ReplacedByLicense** | Pointer to [**LicenseReplacedByLicense**](LicenseReplacedByLicense.md) |  | [optional] 
 **Status** | Pointer to [**EnumLicenseStatus**](EnumLicenseStatus.md) |  | [optional] 
-**TerminatesAt** | Pointer to **string** | An optional attribute that designates the exact date and time when this license terminates access to PingOne services. This attribute can be added to any licensing package. | [optional] 
+**TerminatesAt** | Pointer to **time.Time** | An optional attribute that designates the exact date and time when this license terminates access to PingOne services. This attribute can be added to any licensing package. | [optional] 
 **Users** | Pointer to [**LicenseUsers**](LicenseUsers.md) |  | [optional] 
 **Verify** | Pointer to [**LicenseVerify**](LicenseVerify.md) |  | [optional] 
 
@@ -123,20 +123,20 @@ HasAuthorize returns a boolean if a field has been set.
 
 ### GetBeginsAt
 
-`func (o *License) GetBeginsAt() string`
+`func (o *License) GetBeginsAt() time.Time`
 
 GetBeginsAt returns the BeginsAt field if non-nil, zero value otherwise.
 
 ### GetBeginsAtOk
 
-`func (o *License) GetBeginsAtOk() (*string, bool)`
+`func (o *License) GetBeginsAtOk() (*time.Time, bool)`
 
 GetBeginsAtOk returns a tuple with the BeginsAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBeginsAt
 
-`func (o *License) SetBeginsAt(v string)`
+`func (o *License) SetBeginsAt(v time.Time)`
 
 SetBeginsAt sets BeginsAt field to given value.
 
@@ -198,20 +198,20 @@ HasEnvironments returns a boolean if a field has been set.
 
 ### GetExpiresAt
 
-`func (o *License) GetExpiresAt() string`
+`func (o *License) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *License) GetExpiresAtOk() (*string, bool)`
+`func (o *License) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *License) SetExpiresAt(v string)`
+`func (o *License) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
@@ -518,20 +518,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetTerminatesAt
 
-`func (o *License) GetTerminatesAt() string`
+`func (o *License) GetTerminatesAt() time.Time`
 
 GetTerminatesAt returns the TerminatesAt field if non-nil, zero value otherwise.
 
 ### GetTerminatesAtOk
 
-`func (o *License) GetTerminatesAtOk() (*string, bool)`
+`func (o *License) GetTerminatesAtOk() (*time.Time, bool)`
 
 GetTerminatesAtOk returns a tuple with the TerminatesAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTerminatesAt
 
-`func (o *License) SetTerminatesAt(v string)`
+`func (o *License) SetTerminatesAt(v time.Time)`
 
 SetTerminatesAt sets TerminatesAt field to given value.
 

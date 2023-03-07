@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationPingOnePortalAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationPingOnePortalAllOf{}
+
 // ApplicationPingOnePortalAllOf struct for ApplicationPingOnePortalAllOf
 type ApplicationPingOnePortalAllOf struct {
 	// If `true`, applies the default theme to the app portal application.
@@ -52,7 +55,7 @@ func (o *ApplicationPingOnePortalAllOf) GetApplyDefaultTheme() bool {
 // and a boolean to check if the value has been set.
 func (o *ApplicationPingOnePortalAllOf) GetApplyDefaultThemeOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ApplyDefaultTheme, true
 }
@@ -63,11 +66,17 @@ func (o *ApplicationPingOnePortalAllOf) SetApplyDefaultTheme(v bool) {
 }
 
 func (o ApplicationPingOnePortalAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["applyDefaultTheme"] = o.ApplyDefaultTheme
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationPingOnePortalAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["applyDefaultTheme"] = o.ApplyDefaultTheme
+	return toSerialize, nil
 }
 
 type NullableApplicationPingOnePortalAllOf struct {

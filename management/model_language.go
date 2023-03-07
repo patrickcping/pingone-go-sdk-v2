@@ -12,7 +12,11 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
+
+// checks if the Language type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Language{}
 
 // Language struct for Language
 type Language struct {
@@ -28,11 +32,11 @@ type Language struct {
 	// The language name. If omitted, the ISO standard name is used.
 	Name *string `json:"name,omitempty"`
 	// The time the language resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Specifies whether this language was added by a customer administrator.
 	CustomerAdded *bool `json:"customerAdded,omitempty"`
 	// The time the language resource was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewLanguage instantiates a new Language object
@@ -69,7 +73,7 @@ func (o *Language) GetDefault() bool {
 // and a boolean to check if the value has been set.
 func (o *Language) GetDefaultOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Default, true
 }
@@ -93,7 +97,7 @@ func (o *Language) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *Language) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -105,7 +109,7 @@ func (o *Language) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Language) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -115,15 +119,15 @@ func (o *Language) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Language) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Language) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -137,7 +141,7 @@ func (o *Language) SetEnvironment(v ObjectEnvironment) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Language) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -147,15 +151,15 @@ func (o *Language) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Language) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Language) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -181,7 +185,7 @@ func (o *Language) GetLocale() string {
 // and a boolean to check if the value has been set.
 func (o *Language) GetLocaleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Locale, true
 }
@@ -193,7 +197,7 @@ func (o *Language) SetLocale(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Language) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -203,15 +207,15 @@ func (o *Language) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Language) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Language) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -224,9 +228,9 @@ func (o *Language) SetName(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *Language) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
-		var ret string
+func (o *Language) GetCreatedAt() time.Time {
+	if o == nil || IsNil(o.CreatedAt) {
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -234,30 +238,30 @@ func (o *Language) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Language) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+func (o *Language) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Language) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *Language) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *Language) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetCustomerAdded returns the CustomerAdded field value if set, zero value otherwise.
 func (o *Language) GetCustomerAdded() bool {
-	if o == nil || isNil(o.CustomerAdded) {
+	if o == nil || IsNil(o.CustomerAdded) {
 		var ret bool
 		return ret
 	}
@@ -267,15 +271,15 @@ func (o *Language) GetCustomerAdded() bool {
 // GetCustomerAddedOk returns a tuple with the CustomerAdded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Language) GetCustomerAddedOk() (*bool, bool) {
-	if o == nil || isNil(o.CustomerAdded) {
-    return nil, false
+	if o == nil || IsNil(o.CustomerAdded) {
+		return nil, false
 	}
 	return o.CustomerAdded, true
 }
 
 // HasCustomerAdded returns a boolean if a field has been set.
 func (o *Language) HasCustomerAdded() bool {
-	if o != nil && !isNil(o.CustomerAdded) {
+	if o != nil && !IsNil(o.CustomerAdded) {
 		return true
 	}
 
@@ -288,9 +292,9 @@ func (o *Language) SetCustomerAdded(v bool) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *Language) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
-		var ret string
+func (o *Language) GetUpdatedAt() time.Time {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -298,57 +302,51 @@ func (o *Language) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Language) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+func (o *Language) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Language) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *Language) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *Language) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 func (o Language) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["default"] = o.Default
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["locale"] = o.Locale
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.CustomerAdded) {
-		toSerialize["customerAdded"] = o.CustomerAdded
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Language) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["default"] = o.Default
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: id is readOnly
+	toSerialize["locale"] = o.Locale
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	// skip: createdAt is readOnly
+	// skip: customerAdded is readOnly
+	// skip: updatedAt is readOnly
+	return toSerialize, nil
 }
 
 type NullableLanguage struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LicenseAdvancedServicesPingId type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LicenseAdvancedServicesPingId{}
+
 // LicenseAdvancedServicesPingId struct for LicenseAdvancedServicesPingId
 type LicenseAdvancedServicesPingId struct {
 	Included *bool `json:"included,omitempty"`
@@ -39,7 +42,7 @@ func NewLicenseAdvancedServicesPingIdWithDefaults() *LicenseAdvancedServicesPing
 
 // GetIncluded returns the Included field value if set, zero value otherwise.
 func (o *LicenseAdvancedServicesPingId) GetIncluded() bool {
-	if o == nil || isNil(o.Included) {
+	if o == nil || IsNil(o.Included) {
 		var ret bool
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *LicenseAdvancedServicesPingId) GetIncluded() bool {
 // GetIncludedOk returns a tuple with the Included field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseAdvancedServicesPingId) GetIncludedOk() (*bool, bool) {
-	if o == nil || isNil(o.Included) {
-    return nil, false
+	if o == nil || IsNil(o.Included) {
+		return nil, false
 	}
 	return o.Included, true
 }
 
 // HasIncluded returns a boolean if a field has been set.
 func (o *LicenseAdvancedServicesPingId) HasIncluded() bool {
-	if o != nil && !isNil(o.Included) {
+	if o != nil && !IsNil(o.Included) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *LicenseAdvancedServicesPingId) SetIncluded(v bool) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *LicenseAdvancedServicesPingId) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *LicenseAdvancedServicesPingId) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LicenseAdvancedServicesPingId) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *LicenseAdvancedServicesPingId) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *LicenseAdvancedServicesPingId) SetType(v string) {
 }
 
 func (o LicenseAdvancedServicesPingId) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Included) {
-		toSerialize["included"] = o.Included
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LicenseAdvancedServicesPingId) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Included) {
+		toSerialize["included"] = o.Included
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableLicenseAdvancedServicesPingId struct {

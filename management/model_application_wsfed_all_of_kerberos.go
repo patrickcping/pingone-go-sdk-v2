@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationWSFEDAllOfKerberos type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationWSFEDAllOfKerberos{}
+
 // ApplicationWSFEDAllOfKerberos Contains the Kerberos authentication settings. Set this to null to disable Kerberos authentication.
 type ApplicationWSFEDAllOfKerberos struct {
 	// Contains the gateway properties.
@@ -39,7 +42,7 @@ func NewApplicationWSFEDAllOfKerberosWithDefaults() *ApplicationWSFEDAllOfKerber
 
 // GetGateways returns the Gateways field value if set, zero value otherwise.
 func (o *ApplicationWSFEDAllOfKerberos) GetGateways() []ApplicationWSFEDAllOfKerberosGateways {
-	if o == nil || isNil(o.Gateways) {
+	if o == nil || IsNil(o.Gateways) {
 		var ret []ApplicationWSFEDAllOfKerberosGateways
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *ApplicationWSFEDAllOfKerberos) GetGateways() []ApplicationWSFEDAllOfKer
 // GetGatewaysOk returns a tuple with the Gateways field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOfKerberos) GetGatewaysOk() ([]ApplicationWSFEDAllOfKerberosGateways, bool) {
-	if o == nil || isNil(o.Gateways) {
-    return nil, false
+	if o == nil || IsNil(o.Gateways) {
+		return nil, false
 	}
 	return o.Gateways, true
 }
 
 // HasGateways returns a boolean if a field has been set.
 func (o *ApplicationWSFEDAllOfKerberos) HasGateways() bool {
-	if o != nil && !isNil(o.Gateways) {
+	if o != nil && !IsNil(o.Gateways) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ApplicationWSFEDAllOfKerberos) SetGateways(v []ApplicationWSFEDAllOfKer
 }
 
 func (o ApplicationWSFEDAllOfKerberos) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Gateways) {
-		toSerialize["gateways"] = o.Gateways
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationWSFEDAllOfKerberos) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Gateways) {
+		toSerialize["gateways"] = o.Gateways
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationWSFEDAllOfKerberos struct {

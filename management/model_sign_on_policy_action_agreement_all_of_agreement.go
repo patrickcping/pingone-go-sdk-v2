@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionAgreementAllOfAgreement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionAgreementAllOfAgreement{}
+
 // SignOnPolicyActionAgreementAllOfAgreement The relationship to the agreement to which the user must consent. The agreement must exist and be enabled. An agreement cannot be disabed if an action uses it. An enabled agreement must always support the default language. This property is required.
 type SignOnPolicyActionAgreementAllOfAgreement struct {
 	// A string that specifies the ID of the agreement to which the user must consent. This property is required.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionAgreementAllOfAgreement) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionAgreementAllOfAgreement) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionAgreementAllOfAgreement) SetId(v string) {
 }
 
 func (o SignOnPolicyActionAgreementAllOfAgreement) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionAgreementAllOfAgreement) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionAgreementAllOfAgreement struct {

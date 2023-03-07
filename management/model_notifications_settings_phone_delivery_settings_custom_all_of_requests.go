@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests{}
+
 // NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests struct for NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests
 type NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests struct {
 	DeliveryMethod EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod `json:"deliveryMethod"`
@@ -70,7 +73,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetDeliv
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetDeliveryMethodOk() (*EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DeliveryMethod, true
 }
@@ -94,7 +97,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetUrl()
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetUrlOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Url, true
 }
@@ -118,7 +121,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetBody(
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetBodyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Body, true
 }
@@ -142,7 +145,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetHeade
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetHeadersOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Headers, true
 }
@@ -166,7 +169,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetMetho
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetMethodOk() (*EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Method, true
 }
@@ -190,7 +193,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetPhone
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetPhoneNumberFormatOk() (*EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PhoneNumberFormat, true
 }
@@ -202,7 +205,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) SetPhone
 
 // GetBeforeTag returns the BeforeTag field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetBeforeTag() string {
-	if o == nil || isNil(o.BeforeTag) {
+	if o == nil || IsNil(o.BeforeTag) {
 		var ret string
 		return ret
 	}
@@ -212,15 +215,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetBefor
 // GetBeforeTagOk returns a tuple with the BeforeTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetBeforeTagOk() (*string, bool) {
-	if o == nil || isNil(o.BeforeTag) {
-    return nil, false
+	if o == nil || IsNil(o.BeforeTag) {
+		return nil, false
 	}
 	return o.BeforeTag, true
 }
 
 // HasBeforeTag returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) HasBeforeTag() bool {
-	if o != nil && !isNil(o.BeforeTag) {
+	if o != nil && !IsNil(o.BeforeTag) {
 		return true
 	}
 
@@ -234,7 +237,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) SetBefor
 
 // GetAfterTag returns the AfterTag field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetAfterTag() string {
-	if o == nil || isNil(o.AfterTag) {
+	if o == nil || IsNil(o.AfterTag) {
 		var ret string
 		return ret
 	}
@@ -244,15 +247,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetAfter
 // GetAfterTagOk returns a tuple with the AfterTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) GetAfterTagOk() (*string, bool) {
-	if o == nil || isNil(o.AfterTag) {
-    return nil, false
+	if o == nil || IsNil(o.AfterTag) {
+		return nil, false
 	}
 	return o.AfterTag, true
 }
 
 // HasAfterTag returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) HasAfterTag() bool {
-	if o != nil && !isNil(o.AfterTag) {
+	if o != nil && !IsNil(o.AfterTag) {
 		return true
 	}
 
@@ -265,32 +268,28 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) SetAfter
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["deliveryMethod"] = o.DeliveryMethod
-	}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if true {
-		toSerialize["body"] = o.Body
-	}
-	if true {
-		toSerialize["headers"] = o.Headers
-	}
-	if true {
-		toSerialize["method"] = o.Method
-	}
-	if true {
-		toSerialize["phoneNumberFormat"] = o.PhoneNumberFormat
-	}
-	if !isNil(o.BeforeTag) {
-		toSerialize["beforeTag"] = o.BeforeTag
-	}
-	if !isNil(o.AfterTag) {
-		toSerialize["afterTag"] = o.AfterTag
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["deliveryMethod"] = o.DeliveryMethod
+	toSerialize["url"] = o.Url
+	toSerialize["body"] = o.Body
+	toSerialize["headers"] = o.Headers
+	toSerialize["method"] = o.Method
+	toSerialize["phoneNumberFormat"] = o.PhoneNumberFormat
+	if !IsNil(o.BeforeTag) {
+		toSerialize["beforeTag"] = o.BeforeTag
+	}
+	if !IsNil(o.AfterTag) {
+		toSerialize["afterTag"] = o.AfterTag
+	}
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests struct {

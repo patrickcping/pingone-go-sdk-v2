@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **string** | The time the language localization status resource was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | The time the language localization status resource was created. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | The resource’s unique identifier. | [optional] [readonly] 
 **Locale** | Pointer to [**LanguageLocalizationStatusLocale**](LanguageLocalizationStatusLocale.md) |  | [optional] 
 **Service** | **string** | The name of the service associated with this resource. | 
 **LocalizationComplete** | Pointer to **bool** |  | [optional] 
 **StatusDetails** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **string** | The time the language localization status resource was last updated. | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** | The time the language localization status resource was last updated. | [optional] [readonly] 
 
 ## Methods
 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCreatedAt
 
-`func (o *LanguageLocalizationStatus) GetCreatedAt() string`
+`func (o *LanguageLocalizationStatus) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *LanguageLocalizationStatus) GetCreatedAtOk() (*string, bool)`
+`func (o *LanguageLocalizationStatus) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *LanguageLocalizationStatus) SetCreatedAt(v string)`
+`func (o *LanguageLocalizationStatus) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -204,20 +204,20 @@ HasStatusDetails returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *LanguageLocalizationStatus) GetUpdatedAt() string`
+`func (o *LanguageLocalizationStatus) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *LanguageLocalizationStatus) GetUpdatedAtOk() (*string, bool)`
+`func (o *LanguageLocalizationStatus) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *LanguageLocalizationStatus) SetUpdatedAt(v string)`
+`func (o *LanguageLocalizationStatus) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

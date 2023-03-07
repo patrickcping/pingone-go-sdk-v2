@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationWSFEDAllOfKerberosGateways type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationWSFEDAllOfKerberosGateways{}
+
 // ApplicationWSFEDAllOfKerberosGateways struct for ApplicationWSFEDAllOfKerberosGateways
 type ApplicationWSFEDAllOfKerberosGateways struct {
 	// The UUID of the LDAP gateway.
@@ -56,7 +59,7 @@ func (o *ApplicationWSFEDAllOfKerberosGateways) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOfKerberosGateways) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -80,7 +83,7 @@ func (o *ApplicationWSFEDAllOfKerberosGateways) GetType() EnumApplicationWSFEDKe
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOfKerberosGateways) GetTypeOk() (*EnumApplicationWSFEDKerberosGatewayType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -104,7 +107,7 @@ func (o *ApplicationWSFEDAllOfKerberosGateways) GetUserType() ApplicationWSFEDAl
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOfKerberosGateways) GetUserTypeOk() (*ApplicationWSFEDAllOfKerberosUserType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.UserType, true
 }
@@ -115,17 +118,19 @@ func (o *ApplicationWSFEDAllOfKerberosGateways) SetUserType(v ApplicationWSFEDAl
 }
 
 func (o ApplicationWSFEDAllOfKerberosGateways) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["userType"] = o.UserType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationWSFEDAllOfKerberosGateways) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["type"] = o.Type
+	toSerialize["userType"] = o.UserType
+	return toSerialize, nil
 }
 
 type NullableApplicationWSFEDAllOfKerberosGateways struct {

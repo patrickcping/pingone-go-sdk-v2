@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DecisionEndpointRecentDecisions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DecisionEndpointRecentDecisions{}
+
 // DecisionEndpointRecentDecisions struct for DecisionEndpointRecentDecisions
 type DecisionEndpointRecentDecisions struct {
 	// A string that specifies the request URL for the recent decisions endpoint.
@@ -43,7 +46,7 @@ func NewDecisionEndpointRecentDecisionsWithDefaults() *DecisionEndpointRecentDec
 
 // GetHref returns the Href field value if set, zero value otherwise.
 func (o *DecisionEndpointRecentDecisions) GetHref() string {
-	if o == nil || isNil(o.Href) {
+	if o == nil || IsNil(o.Href) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *DecisionEndpointRecentDecisions) GetHref() string {
 // GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpointRecentDecisions) GetHrefOk() (*string, bool) {
-	if o == nil || isNil(o.Href) {
-    return nil, false
+	if o == nil || IsNil(o.Href) {
+		return nil, false
 	}
 	return o.Href, true
 }
 
 // HasHref returns a boolean if a field has been set.
 func (o *DecisionEndpointRecentDecisions) HasHref() bool {
-	if o != nil && !isNil(o.Href) {
+	if o != nil && !IsNil(o.Href) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *DecisionEndpointRecentDecisions) SetHref(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *DecisionEndpointRecentDecisions) GetTitle() string {
-	if o == nil || isNil(o.Title) {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *DecisionEndpointRecentDecisions) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpointRecentDecisions) GetTitleOk() (*string, bool) {
-	if o == nil || isNil(o.Title) {
-    return nil, false
+	if o == nil || IsNil(o.Title) {
+		return nil, false
 	}
 	return o.Title, true
 }
 
 // HasTitle returns a boolean if a field has been set.
 func (o *DecisionEndpointRecentDecisions) HasTitle() bool {
-	if o != nil && !isNil(o.Title) {
+	if o != nil && !IsNil(o.Title) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *DecisionEndpointRecentDecisions) SetTitle(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *DecisionEndpointRecentDecisions) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *DecisionEndpointRecentDecisions) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DecisionEndpointRecentDecisions) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *DecisionEndpointRecentDecisions) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *DecisionEndpointRecentDecisions) SetType(v string) {
 }
 
 func (o DecisionEndpointRecentDecisions) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Href) {
-		toSerialize["href"] = o.Href
-	}
-	if !isNil(o.Title) {
-		toSerialize["title"] = o.Title
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DecisionEndpointRecentDecisions) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableDecisionEndpointRecentDecisions struct {

@@ -1,0 +1,189 @@
+openapi: 3.0.0
+info:
+  description: The PingOne Platform API covering the PingOne Agreement Management
+    service
+  title: PingOne Platform API - Agreement Management
+  version: 2022-09-23
+servers:
+- description: PingOne Platform API Endpoint
+  url: "https://agreement-mgmt.pingone.{suffix}"
+  variables:
+    suffix:
+      default: eu
+      enum:
+      - eu
+      - com
+      - asia
+      - ca
+security:
+- bearer: []
+tags:
+- name: Agreement Revisions Resources
+paths:
+  /environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID}.json:
+    get:
+      operationId: readOneAgreementLanguageRevision
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: agreementID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: languageID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: revisionID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgreementRevisionText'
+          description: Successful response
+      summary: READ One Agreement Language Revision
+      tags:
+      - Agreement Revisions Resources
+components:
+  schemas:
+    AgreementRevisionText:
+      example:
+        data: data
+        resourcePath: resourcePath
+        dataType: dataType
+      properties:
+        resourcePath:
+          type: string
+        data:
+          type: string
+        dataType:
+          type: string
+      type: object
+    P1Error:
+      properties:
+        id:
+          description: "A unique identifier that is stored in log files and always\
+            \ included in an error response. This value can be used to track the error\
+            \ received by the client, with server-side activity included for troubleshooting\
+            \ purposes."
+          type: string
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        details:
+          description: Additional details about the error. Optional information to
+            help resolve the error and to display to users.
+          items:
+            $ref: '#/components/schemas/P1Error_details_inner'
+          type: array
+      type: object
+    P1Error_details_inner_innerError:
+      description: Additional details to help the client developer resolve the fault
+        (primarily for UI validation reasons).
+      properties:
+        rangeMinimumValue:
+          description: Errors that failed due to range violation. This attribute represents
+            the minimum value of the range.
+          type: integer
+        rangeMaximumValue:
+          description: The maximum range or value of an attribute.
+          type: integer
+        allowedPattern:
+          description: A regex pattern describing an acceptable input pattern.
+          type: string
+        allowedValues:
+          description: A list describing acceptable values.
+          items:
+            type: string
+          type: array
+        maximumValue:
+          description: The maximum value allowed for the request.
+          type: integer
+      type: object
+    P1Error_details_inner:
+      properties:
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        target:
+          description: The item that caused the error (such as a form field ID or
+            an attribute inside a JSON object).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        innerError:
+          $ref: '#/components/schemas/P1Error_details_inner_innerError'
+      type: object
+  securitySchemes:
+    bearer:
+      bearerFormat: JWT
+      description: OAuth bearer token (see documentation)
+      scheme: bearer
+      type: http

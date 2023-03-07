@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -100,7 +100,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -110,7 +110,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgreementLanguagesResourcesApi.DeleteAgreementLanguage(context.Background(), environmentID, agreementID, languageID).Execute()
+    r, err := apiClient.AgreementLanguagesResourcesApi.DeleteAgreementLanguage(context.Background(), environmentID, agreementID, languageID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AgreementLanguagesResourcesApi.DeleteAgreementLanguage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,7 +172,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -243,7 +243,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAgreementLanguage
 
-> AgreementLanguage UpdateAgreementLanguage(ctx, environmentID, agreementID, languageID).Body(body).Execute()
+> AgreementLanguage UpdateAgreementLanguage(ctx, environmentID, agreementID, languageID).AgreementLanguage(agreementLanguage).Execute()
 
 UPDATE Language
 
@@ -317,18 +317,18 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
     environmentID := "environmentID_example" // string | 
     agreementID := "agreementID_example" // string | 
     languageID := "languageID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    agreementLanguage := *openapiclient.NewAgreementLanguage("DisplayName_example", false, "Locale_example") // AgreementLanguage |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AgreementLanguagesResourcesApi.UpdateAgreementLanguage(context.Background(), environmentID, agreementID, languageID).Body(body).Execute()
+    resp, r, err := apiClient.AgreementLanguagesResourcesApi.UpdateAgreementLanguage(context.Background(), environmentID, agreementID, languageID).AgreementLanguage(agreementLanguage).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AgreementLanguagesResourcesApi.UpdateAgreementLanguage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 
 
- **body** | **map[string]interface{}** |  | 
+ **agreementLanguage** | [**AgreementLanguage**](AgreementLanguage.md) |  | 
 
 ### Return type
 
