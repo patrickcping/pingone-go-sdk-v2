@@ -22428,10 +22428,12 @@ components:
     EnumOrganizationType:
       description: "A string that specifies the organization type. If the organization\
         \ has any paid licenses, the type property value is set to `PAID`. Otherwise,\
-        \ the property value is set to `TRIAL`."
+        \ the property value is set to `TRIAL`.  Internal organizations have a value\
+        \ of `INTERNAL`."
       enum:
       - PAID
       - TRIAL
+      - INTERNAL
       type: string
     EnumPasscodeRefreshTimeUnit:
       default: SECONDS
