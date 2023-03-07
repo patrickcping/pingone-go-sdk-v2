@@ -20,6 +20,7 @@
     * **Enhancement** Add support for `ApplicationPingOneAdminConsole` model for applications [#114](https://github.com/patrickcping/pingone-go-sdk-v2/pull/114)
     * **Enhancement** `effectiveAt` and `notValidAfter` attributes on the `AgreementLanguageRevision` changed to be date/time format. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
     * **Enhancement** Add `INTERNAL` value to the `EnumOrganizationType` enum. [#124](https://github.com/patrickcping/pingone-go-sdk-v2/pull/124)
+    * **Enhancement** Add support for Flow policies and application flow policy assignments [#115](https://github.com/patrickcping/pingone-go-sdk-v2/pull/115)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.9.0](./mfa/CHANGELOG.md)
     * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
     * **Feature** Support for "User MFA Enabled" API and data model [#113](https://github.com/patrickcping/pingone-go-sdk-v2/pull/113)

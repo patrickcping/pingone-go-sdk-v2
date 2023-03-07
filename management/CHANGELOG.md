@@ -12,6 +12,7 @@
 * **Bug fix** Corrected `Agreement.expiredUserConsents` => `Agreement.totalExpiredConsents` [#120](https://github.com/patrickcping/pingone-go-sdk-v2/pull/120)
 * **Bug fix** Corrected `Agreement.totalUserConsents` => `Agreement.totalConsents` [#120](https://github.com/patrickcping/pingone-go-sdk-v2/pull/120)
 * **Enhancement** Add support for `ApplicationPingOneAdminConsole` model for applications [#114](https://github.com/patrickcping/pingone-go-sdk-v2/pull/114)
+* **Enhancement** Add support for Flow policies and application flow policy assignments [#115](https://github.com/patrickcping/pingone-go-sdk-v2/pull/115)
 * **Enhancement** `effectiveAt` and `notValidAfter` attributes on the `AgreementLanguageRevision` changed to be date/time format. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
 * **Enhancement** Add `INTERNAL` value to the `EnumOrganizationType` enum. [#124](https://github.com/patrickcping/pingone-go-sdk-v2/pull/124)
 

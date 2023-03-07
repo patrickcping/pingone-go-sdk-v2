@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **CustomDomains** | Pointer to [**[]CustomDomain**](CustomDomain.md) |  | [optional] 
 **EmailDomains** | Pointer to [**[]EmailDomain**](EmailDomain.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
+**FlowPolicies** | Pointer to [**[]FlowPolicy**](FlowPolicy.md) |  | [optional] 
+**FlowPolicyAssignments** | Pointer to [**[]FlowPolicyAssignment**](FlowPolicyAssignment.md) |  | [optional] 
 **GatewayInstances** | Pointer to [**[]GatewayInstance**](GatewayInstance.md) |  | [optional] 
 **Gateways** | Pointer to [**[]EntityArrayEmbeddedGatewaysInner**](EntityArrayEmbeddedGatewaysInner.md) |  | [optional] 
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
@@ -336,6 +338,56 @@ SetEnvironments sets Environments field to given value.
 `func (o *EntityArrayEmbedded) HasEnvironments() bool`
 
 HasEnvironments returns a boolean if a field has been set.
+
+### GetFlowPolicies
+
+`func (o *EntityArrayEmbedded) GetFlowPolicies() []FlowPolicy`
+
+GetFlowPolicies returns the FlowPolicies field if non-nil, zero value otherwise.
+
+### GetFlowPoliciesOk
+
+`func (o *EntityArrayEmbedded) GetFlowPoliciesOk() (*[]FlowPolicy, bool)`
+
+GetFlowPoliciesOk returns a tuple with the FlowPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowPolicies
+
+`func (o *EntityArrayEmbedded) SetFlowPolicies(v []FlowPolicy)`
+
+SetFlowPolicies sets FlowPolicies field to given value.
+
+### HasFlowPolicies
+
+`func (o *EntityArrayEmbedded) HasFlowPolicies() bool`
+
+HasFlowPolicies returns a boolean if a field has been set.
+
+### GetFlowPolicyAssignments
+
+`func (o *EntityArrayEmbedded) GetFlowPolicyAssignments() []FlowPolicyAssignment`
+
+GetFlowPolicyAssignments returns the FlowPolicyAssignments field if non-nil, zero value otherwise.
+
+### GetFlowPolicyAssignmentsOk
+
+`func (o *EntityArrayEmbedded) GetFlowPolicyAssignmentsOk() (*[]FlowPolicyAssignment, bool)`
+
+GetFlowPolicyAssignmentsOk returns a tuple with the FlowPolicyAssignments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowPolicyAssignments
+
+`func (o *EntityArrayEmbedded) SetFlowPolicyAssignments(v []FlowPolicyAssignment)`
+
+SetFlowPolicyAssignments sets FlowPolicyAssignments field to given value.
+
+### HasFlowPolicyAssignments
+
+`func (o *EntityArrayEmbedded) HasFlowPolicyAssignments() bool`
+
+HasFlowPolicyAssignments returns a boolean if a field has been set.
 
 ### GetGatewayInstances
 

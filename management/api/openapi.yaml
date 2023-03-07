@@ -32,6 +32,7 @@ tags:
 - name: Applications
 - name: Application Secret
 - name: Application Resource Grants
+- name: Application Flow Policy Assignments
 - name: Application Sign-On Policy Assignments
 - name: Application Role Assignments
 - name: Application Attribute Mapping
@@ -46,6 +47,7 @@ tags:
 - name: Custom Domains
 - name: Device Authentication Policy
 - name: Environments
+- name: Flow Policies
 - name: Gateway Management
 - name: Gateways
 - name: Gateway Credentials
@@ -3045,6 +3047,362 @@ paths:
       summary: UPDATE SOP Assignment
       tags:
       - Application Sign-On Policy Assignments
+  /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments:
+    get:
+      operationId: readAllFlowPolicyAssignments
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Flow Policy Assignments
+      tags:
+      - Application Flow Policy Assignments
+    post:
+      operationId: createFlowPolicyAssignment
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowPolicyAssignment'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowPolicyAssignment'
+          description: Successful response
+      summary: CREATE Flow Assignment
+      tags:
+      - Application Flow Policy Assignments
+  /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID}:
+    delete:
+      operationId: deleteFlowPolicyAssignment
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: flowPolicyAssignmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Flow Policy Assignment
+      tags:
+      - Application Flow Policy Assignments
+    get:
+      operationId: readOneFlowPolicyAssignment
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: flowPolicyAssignmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowPolicyAssignment'
+          description: Successful response
+      summary: READ One Flow Policy Assignment
+      tags:
+      - Application Flow Policy Assignments
+    put:
+      operationId: updateFlowPolicyAssignment
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: flowPolicyAssignmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowPolicyAssignment'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowPolicyAssignment'
+          description: Successful response
+      summary: UPDATE Flow Policy Assignment
+      tags:
+      - Application Flow Policy Assignments
   /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments:
     get:
       operationId: readApplicationRoleAssignments
@@ -4257,6 +4615,137 @@ paths:
       summary: READ Environment Capabilities
       tags:
       - Capabilities
+  /v1/environments/{environmentID}/flowPolicies:
+    get:
+      operationId: readAllFlowPolicies
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: trigger.type eq "AUTHENTICATION"
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Flow Policies
+      tags:
+      - Flow Policies
+  /v1/environments/{environmentID}/flowPolicies/{flowPolicyID}:
+    get:
+      operationId: readOneFlowPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: flowPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowPolicy'
+          description: Successful response
+      summary: READ ONE Flow Policy
+      tags:
+      - Flow Policies
   /v1/environments/{environmentID}/keys:
     get:
       operationId: getKeys
@@ -22180,6 +22669,10 @@ components:
       - PRODUCTION
       - SANDBOX
       type: string
+    EnumFlowPolicyTriggerType:
+      enum:
+      - AUTHENTICATION
+      type: string
     EnumGatewayTypeLDAPSecurity:
       description: "A string that specifies the connection security type. Options\
         \ are None, TLS, and StartTLS. The default value is None."
@@ -23574,8 +24067,29 @@ components:
       type: object
     EntityArray:
       example:
-        size: 3.0205796992916243
+        size: 3.0576100241049344
         _embedded:
+          flowPolicies:
+          - environment:
+              id: id
+            application:
+              name: name
+              id: id
+            name: name
+            id: id
+            trigger:
+              type: null
+            enabled: true
+          - environment:
+              id: id
+            application:
+              name: name
+              id: id
+            name: name
+            id: id
+            trigger:
+              type: null
+            enabled: true
           subscriptions:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -23841,14 +24355,14 @@ components:
             status: null
           passwordPolicies:
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
               "0123456789": 3
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
-              abcdefghijklmnopqrstuvwxyz: 6
-            populationCount: 7
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+              abcdefghijklmnopqrstuvwxyz: 3
+            populationCount: 6
             length:
-              min: 16
-              max: 6
+              min: 24
+              max: 3
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -23856,7 +24370,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 7
+            minComplexity: 0
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -23867,7 +24381,7 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 0
+            minUniqueCharacters: 7
             name: name
             maxAgeDays: 1
             id: id
@@ -23875,14 +24389,14 @@ components:
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
               "0123456789": 3
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
-              abcdefghijklmnopqrstuvwxyz: 6
-            populationCount: 7
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+              abcdefghijklmnopqrstuvwxyz: 3
+            populationCount: 6
             length:
-              min: 16
-              max: 6
+              min: 24
+              max: 3
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -23890,7 +24404,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 7
+            minComplexity: 0
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -23901,7 +24415,7 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 0
+            minUniqueCharacters: 7
             name: name
             maxAgeDays: 1
             id: id
@@ -24004,7 +24518,7 @@ components:
             validityPeriod: 1
             environment:
               id: id
-            keyLength: 7
+            keyLength: 1
             rotationPeriod: 1
             name: name
             rotatedAt: 2000-01-23T04:56:07.000+00:00
@@ -24018,7 +24532,7 @@ components:
             validityPeriod: 1
             environment:
               id: id
-            keyLength: 7
+            keyLength: 1
             rotationPeriod: 1
             name: name
             rotatedAt: 2000-01-23T04:56:07.000+00:00
@@ -24030,15 +24544,15 @@ components:
             default: false
             quotas:
             - total: 9
-              unclaimed: 6
-              claimed: 9
+              unclaimed: 8
+              claimed: 6
               type: null
               deliveryMethods:
               - null
               - null
             - total: 9
-              unclaimed: 6
-              claimed: 9
+              unclaimed: 8
+              claimed: 6
               type: null
               deliveryMethods:
               - null
@@ -24050,15 +24564,15 @@ components:
             default: false
             quotas:
             - total: 9
-              unclaimed: 6
-              claimed: 9
+              unclaimed: 8
+              claimed: 6
               type: null
               deliveryMethods:
               - null
               - null
             - total: 9
-              unclaimed: 6
-              claimed: 9
+              unclaimed: 8
+              claimed: 6
               type: null
               deliveryMethods:
               - null
@@ -24122,7 +24636,7 @@ components:
             id: id
           groups:
           - directMemberCounts:
-              users: 2
+              users: 4
             environment:
               id: id
             name: name
@@ -24132,11 +24646,11 @@ components:
             customData: "{}"
             id: id
             totalMemberCounts:
-              users: 4
+              users: 7
             population:
               id: id
           - directMemberCounts:
-              users: 2
+              users: 4
             environment:
               id: id
             name: name
@@ -24146,7 +24660,7 @@ components:
             customData: "{}"
             id: id
             totalMemberCounts:
-              users: 4
+              users: 7
             population:
               id: id
           resources:
@@ -24156,7 +24670,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 0
+            accessTokenValiditySeconds: 4
             name: name
             description: description
             id: id
@@ -24169,7 +24683,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 0
+            accessTokenValiditySeconds: 4
             name: name
             description: description
             id: id
@@ -24239,7 +24753,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 8
+              secondsUntilUnlock: 7
               unlockAt: unlockAt
               status: null
             username: username
@@ -24305,7 +24819,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 8
+              secondsUntilUnlock: 7
               unlockAt: unlockAt
               status: null
             username: username
@@ -24326,6 +24840,23 @@ components:
               id: id
             id: id
             priority: 1
+          flowPolicyAssignments:
+          - environment:
+              id: id
+            application:
+              id: id
+            id: id
+            flowPolicy:
+              id: id
+            priority: 7
+          - environment:
+              id: id
+            application:
+              id: id
+            id: id
+            flowPolicy:
+              id: id
+            priority: 7
           licenses:
           - gateways:
               allowLdapGateway: true
@@ -24344,7 +24875,7 @@ components:
               - null
               - null
               allowAddResources: true
-              max: 6
+              max: 7
               allowCustomSchema: true
               allowProduction: true
               allowCustomDomain: true
@@ -24362,19 +24893,19 @@ components:
             users:
               allowUpdateSelf: true
               allowPasswordPolicy: true
-              max: 7
+              max: 1
               allowMyAccount: true
               allowPasswordOnlyAuthentication: true
               allowRoleAssignment: true
               entitledToSupport: true
-              annualActiveIncluded: 4
+              annualActiveIncluded: 5
               allowPasswordManagement: true
               allowIdentityProviders: true
               allowInboundProvisioning: true
               allowVerificationFlow: true
-              monthlyActiveIncluded: 5
+              monthlyActiveIncluded: 9
               allowProvisioning: true
-              hardLimitMax: 1
+              hardLimitMax: 4
               allowPasswordManagementNotifications: true
             intelligence:
               allowReputation: true
@@ -24395,7 +24926,7 @@ components:
               allowManualIdInspection: true
               allowFaceMatch: true
               allowPushNotifications: true
-            assignedEnvironmentsCount: 1
+            assignedEnvironmentsCount: 6
             beginsAt: 2000-01-23T04:56:07.000+00:00
             replacedByLicense:
               id: id
@@ -24423,7 +24954,7 @@ components:
               - null
               - null
               allowAddResources: true
-              max: 6
+              max: 7
               allowCustomSchema: true
               allowProduction: true
               allowCustomDomain: true
@@ -24441,19 +24972,19 @@ components:
             users:
               allowUpdateSelf: true
               allowPasswordPolicy: true
-              max: 7
+              max: 1
               allowMyAccount: true
               allowPasswordOnlyAuthentication: true
               allowRoleAssignment: true
               entitledToSupport: true
-              annualActiveIncluded: 4
+              annualActiveIncluded: 5
               allowPasswordManagement: true
               allowIdentityProviders: true
               allowInboundProvisioning: true
               allowVerificationFlow: true
-              monthlyActiveIncluded: 5
+              monthlyActiveIncluded: 9
               allowProvisioning: true
-              hardLimitMax: 1
+              hardLimitMax: 4
               allowPasswordManagementNotifications: true
             intelligence:
               allowReputation: true
@@ -24474,7 +25005,7 @@ components:
               allowManualIdInspection: true
               allowFaceMatch: true
               allowPushNotifications: true
-            assignedEnvironmentsCount: 1
+            assignedEnvironmentsCount: 6
             beginsAt: 2000-01-23T04:56:07.000+00:00
             replacedByLicense:
               id: id
@@ -24659,7 +25190,7 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 6
+            userCount: 0
             name: name
             description: description
             id: id
@@ -24667,14 +25198,14 @@ components:
           - createdAt: createdAt
             passwordPolicy:
               id: id
-            userCount: 6
+            userCount: 0
             name: name
             description: description
             id: id
             updatedAt: updatedAt
           gatewayInstances:
           - lastReportedAt: lastReportedAt
-            responseTimeMillis: 3.616076749251911
+            responseTimeMillis: 2.027123023002322
             version:
               updateStatus: null
               versionNumber: versionNumber
@@ -24685,17 +25216,17 @@ components:
             - currentErrors
             - currentErrors
             hostname: hostname
-            operationsPerSecond: 9.301444243932576
+            operationsPerSecond: 3.616076749251911
             credential:
               id: id
             healthStatus: null
             initializedAt: initializedAt
             id: id
-            busyPercentage: 7
+            busyPercentage: 9
             gateway:
               id: id
           - lastReportedAt: lastReportedAt
-            responseTimeMillis: 3.616076749251911
+            responseTimeMillis: 2.027123023002322
             version:
               updateStatus: null
               versionNumber: versionNumber
@@ -24706,19 +25237,19 @@ components:
             - currentErrors
             - currentErrors
             hostname: hostname
-            operationsPerSecond: 9.301444243932576
+            operationsPerSecond: 3.616076749251911
             credential:
               id: id
             healthStatus: null
             initializedAt: initializedAt
             id: id
-            busyPercentage: 7
+            busyPercentage: 9
             gateway:
               id: id
           applications:
           - null
           - null
-        count: 7.740351818741173
+        count: 3.0205796992916243
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -24776,6 +25307,60 @@ components:
       - name
       - region
       - type
+      type: object
+    FlowPolicy:
+      example:
+        environment:
+          id: id
+        application:
+          name: name
+          id: id
+        name: name
+        id: id
+        trigger:
+          type: null
+        enabled: true
+      properties:
+        id:
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        application:
+          $ref: '#/components/schemas/FlowPolicy_application'
+        enabled:
+          readOnly: true
+          type: boolean
+        name:
+          readOnly: true
+          type: string
+        trigger:
+          $ref: '#/components/schemas/FlowPolicy_trigger'
+      type: object
+    FlowPolicyAssignment:
+      example:
+        environment:
+          id: id
+        application:
+          id: id
+        id: id
+        flowPolicy:
+          id: id
+        priority: 7
+      properties:
+        id:
+          readOnly: true
+          type: string
+        application:
+          $ref: '#/components/schemas/ObjectApplication'
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        flowPolicy:
+          $ref: '#/components/schemas/Application_accessControl_group_groups_inner'
+        priority:
+          type: integer
+      required:
+      - flowPolicy
       type: object
     Gateway:
       properties:
@@ -24869,7 +25454,7 @@ components:
     GatewayInstance:
       example:
         lastReportedAt: lastReportedAt
-        responseTimeMillis: 3.616076749251911
+        responseTimeMillis: 2.027123023002322
         version:
           updateStatus: null
           versionNumber: versionNumber
@@ -24880,13 +25465,13 @@ components:
         - currentErrors
         - currentErrors
         hostname: hostname
-        operationsPerSecond: 9.301444243932576
+        operationsPerSecond: 3.616076749251911
         credential:
           id: id
         healthStatus: null
         initializedAt: initializedAt
         id: id
-        busyPercentage: 7
+        busyPercentage: 9
         gateway:
           id: id
       properties:
@@ -24943,7 +25528,7 @@ components:
     Group:
       example:
         directMemberCounts:
-          users: 2
+          users: 4
         environment:
           id: id
         name: name
@@ -24953,7 +25538,7 @@ components:
         customData: "{}"
         id: id
         totalMemberCounts:
-          users: 4
+          users: 7
         population:
           id: id
       properties:
@@ -25190,7 +25775,7 @@ components:
         validityPeriod: 1
         environment:
           id: id
-        keyLength: 7
+        keyLength: 1
         rotationPeriod: 1
         name: name
         rotatedAt: 2000-01-23T04:56:07.000+00:00
@@ -25369,7 +25954,7 @@ components:
           - null
           - null
           allowAddResources: true
-          max: 6
+          max: 7
           allowCustomSchema: true
           allowProduction: true
           allowCustomDomain: true
@@ -25387,19 +25972,19 @@ components:
         users:
           allowUpdateSelf: true
           allowPasswordPolicy: true
-          max: 7
+          max: 1
           allowMyAccount: true
           allowPasswordOnlyAuthentication: true
           allowRoleAssignment: true
           entitledToSupport: true
-          annualActiveIncluded: 4
+          annualActiveIncluded: 5
           allowPasswordManagement: true
           allowIdentityProviders: true
           allowInboundProvisioning: true
           allowVerificationFlow: true
-          monthlyActiveIncluded: 5
+          monthlyActiveIncluded: 9
           allowProvisioning: true
-          hardLimitMax: 1
+          hardLimitMax: 4
           allowPasswordManagementNotifications: true
         intelligence:
           allowReputation: true
@@ -25420,7 +26005,7 @@ components:
           allowManualIdInspection: true
           allowFaceMatch: true
           allowPushNotifications: true
-        assignedEnvironmentsCount: 1
+        assignedEnvironmentsCount: 6
         beginsAt: 2000-01-23T04:56:07.000+00:00
         replacedByLicense:
           id: id
@@ -25521,15 +26106,15 @@ components:
         default: false
         quotas:
         - total: 9
-          unclaimed: 6
-          claimed: 9
+          unclaimed: 8
+          claimed: 6
           type: null
           deliveryMethods:
           - null
           - null
         - total: 9
-          unclaimed: 6
-          claimed: 9
+          unclaimed: 8
+          claimed: 6
           type: null
           deliveryMethods:
           - null
@@ -25817,14 +26402,14 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
           "0123456789": 3
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
-          abcdefghijklmnopqrstuvwxyz: 6
-        populationCount: 7
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+          abcdefghijklmnopqrstuvwxyz: 3
+        populationCount: 6
         length:
-          min: 16
-          max: 6
+          min: 24
+          max: 3
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -25832,7 +26417,7 @@ components:
         history:
           retentionDays: 1
           count: 1
-        minComplexity: 7
+        minComplexity: 0
         excludesProfileData: true
         currentPassword: currentPassword
         createdAt: createdAt
@@ -25843,7 +26428,7 @@ components:
           durationSeconds: 1
           failureCount: 1
         bypassPolicy: false
-        minUniqueCharacters: 0
+        minUniqueCharacters: 7
         name: name
         maxAgeDays: 1
         id: id
@@ -25980,7 +26565,7 @@ components:
         createdAt: createdAt
         passwordPolicy:
           id: id
-        userCount: 6
+        userCount: 0
         name: name
         description: description
         id: id
@@ -26022,7 +26607,7 @@ components:
           id: id
         resource:
           id: id
-        accessTokenValiditySeconds: 0
+        accessTokenValiditySeconds: 4
         name: name
         description: description
         id: id
@@ -26948,7 +27533,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 8
+          secondsUntilUnlock: 7
           unlockAt: unlockAt
           status: null
         username: username
@@ -27307,6 +27892,8 @@ components:
       - type
       type: object
     Application_accessControl_group_groups_inner:
+      example:
+        id: id
       properties:
         id:
           type: string
@@ -28134,6 +28721,27 @@ components:
       - $ref: '#/components/schemas/Language'
     EntityArray__embedded:
       example:
+        flowPolicies:
+        - environment:
+            id: id
+          application:
+            name: name
+            id: id
+          name: name
+          id: id
+          trigger:
+            type: null
+          enabled: true
+        - environment:
+            id: id
+          application:
+            name: name
+            id: id
+          name: name
+          id: id
+          trigger:
+            type: null
+          enabled: true
         subscriptions:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -28399,14 +29007,14 @@ components:
           status: null
         passwordPolicies:
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
             "0123456789": 3
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
-            abcdefghijklmnopqrstuvwxyz: 6
-          populationCount: 7
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+            abcdefghijklmnopqrstuvwxyz: 3
+          populationCount: 6
           length:
-            min: 16
-            max: 6
+            min: 24
+            max: 3
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -28414,7 +29022,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 7
+          minComplexity: 0
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -28425,7 +29033,7 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 0
+          minUniqueCharacters: 7
           name: name
           maxAgeDays: 1
           id: id
@@ -28433,14 +29041,14 @@ components:
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
             "0123456789": 3
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
-            abcdefghijklmnopqrstuvwxyz: 6
-          populationCount: 7
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+            abcdefghijklmnopqrstuvwxyz: 3
+          populationCount: 6
           length:
-            min: 16
-            max: 6
+            min: 24
+            max: 3
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -28448,7 +29056,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 7
+          minComplexity: 0
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -28459,7 +29067,7 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 0
+          minUniqueCharacters: 7
           name: name
           maxAgeDays: 1
           id: id
@@ -28562,7 +29170,7 @@ components:
           validityPeriod: 1
           environment:
             id: id
-          keyLength: 7
+          keyLength: 1
           rotationPeriod: 1
           name: name
           rotatedAt: 2000-01-23T04:56:07.000+00:00
@@ -28576,7 +29184,7 @@ components:
           validityPeriod: 1
           environment:
             id: id
-          keyLength: 7
+          keyLength: 1
           rotationPeriod: 1
           name: name
           rotatedAt: 2000-01-23T04:56:07.000+00:00
@@ -28588,15 +29196,15 @@ components:
           default: false
           quotas:
           - total: 9
-            unclaimed: 6
-            claimed: 9
+            unclaimed: 8
+            claimed: 6
             type: null
             deliveryMethods:
             - null
             - null
           - total: 9
-            unclaimed: 6
-            claimed: 9
+            unclaimed: 8
+            claimed: 6
             type: null
             deliveryMethods:
             - null
@@ -28608,15 +29216,15 @@ components:
           default: false
           quotas:
           - total: 9
-            unclaimed: 6
-            claimed: 9
+            unclaimed: 8
+            claimed: 6
             type: null
             deliveryMethods:
             - null
             - null
           - total: 9
-            unclaimed: 6
-            claimed: 9
+            unclaimed: 8
+            claimed: 6
             type: null
             deliveryMethods:
             - null
@@ -28680,7 +29288,7 @@ components:
           id: id
         groups:
         - directMemberCounts:
-            users: 2
+            users: 4
           environment:
             id: id
           name: name
@@ -28690,11 +29298,11 @@ components:
           customData: "{}"
           id: id
           totalMemberCounts:
-            users: 4
+            users: 7
           population:
             id: id
         - directMemberCounts:
-            users: 2
+            users: 4
           environment:
             id: id
           name: name
@@ -28704,7 +29312,7 @@ components:
           customData: "{}"
           id: id
           totalMemberCounts:
-            users: 4
+            users: 7
           population:
             id: id
         resources:
@@ -28714,7 +29322,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 0
+          accessTokenValiditySeconds: 4
           name: name
           description: description
           id: id
@@ -28727,7 +29335,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 0
+          accessTokenValiditySeconds: 4
           name: name
           description: description
           id: id
@@ -28797,7 +29405,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 8
+            secondsUntilUnlock: 7
             unlockAt: unlockAt
             status: null
           username: username
@@ -28863,7 +29471,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 8
+            secondsUntilUnlock: 7
             unlockAt: unlockAt
             status: null
           username: username
@@ -28884,6 +29492,23 @@ components:
             id: id
           id: id
           priority: 1
+        flowPolicyAssignments:
+        - environment:
+            id: id
+          application:
+            id: id
+          id: id
+          flowPolicy:
+            id: id
+          priority: 7
+        - environment:
+            id: id
+          application:
+            id: id
+          id: id
+          flowPolicy:
+            id: id
+          priority: 7
         licenses:
         - gateways:
             allowLdapGateway: true
@@ -28902,7 +29527,7 @@ components:
             - null
             - null
             allowAddResources: true
-            max: 6
+            max: 7
             allowCustomSchema: true
             allowProduction: true
             allowCustomDomain: true
@@ -28920,19 +29545,19 @@ components:
           users:
             allowUpdateSelf: true
             allowPasswordPolicy: true
-            max: 7
+            max: 1
             allowMyAccount: true
             allowPasswordOnlyAuthentication: true
             allowRoleAssignment: true
             entitledToSupport: true
-            annualActiveIncluded: 4
+            annualActiveIncluded: 5
             allowPasswordManagement: true
             allowIdentityProviders: true
             allowInboundProvisioning: true
             allowVerificationFlow: true
-            monthlyActiveIncluded: 5
+            monthlyActiveIncluded: 9
             allowProvisioning: true
-            hardLimitMax: 1
+            hardLimitMax: 4
             allowPasswordManagementNotifications: true
           intelligence:
             allowReputation: true
@@ -28953,7 +29578,7 @@ components:
             allowManualIdInspection: true
             allowFaceMatch: true
             allowPushNotifications: true
-          assignedEnvironmentsCount: 1
+          assignedEnvironmentsCount: 6
           beginsAt: 2000-01-23T04:56:07.000+00:00
           replacedByLicense:
             id: id
@@ -28981,7 +29606,7 @@ components:
             - null
             - null
             allowAddResources: true
-            max: 6
+            max: 7
             allowCustomSchema: true
             allowProduction: true
             allowCustomDomain: true
@@ -28999,19 +29624,19 @@ components:
           users:
             allowUpdateSelf: true
             allowPasswordPolicy: true
-            max: 7
+            max: 1
             allowMyAccount: true
             allowPasswordOnlyAuthentication: true
             allowRoleAssignment: true
             entitledToSupport: true
-            annualActiveIncluded: 4
+            annualActiveIncluded: 5
             allowPasswordManagement: true
             allowIdentityProviders: true
             allowInboundProvisioning: true
             allowVerificationFlow: true
-            monthlyActiveIncluded: 5
+            monthlyActiveIncluded: 9
             allowProvisioning: true
-            hardLimitMax: 1
+            hardLimitMax: 4
             allowPasswordManagementNotifications: true
           intelligence:
             allowReputation: true
@@ -29032,7 +29657,7 @@ components:
             allowManualIdInspection: true
             allowFaceMatch: true
             allowPushNotifications: true
-          assignedEnvironmentsCount: 1
+          assignedEnvironmentsCount: 6
           beginsAt: 2000-01-23T04:56:07.000+00:00
           replacedByLicense:
             id: id
@@ -29217,7 +29842,7 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 6
+          userCount: 0
           name: name
           description: description
           id: id
@@ -29225,14 +29850,14 @@ components:
         - createdAt: createdAt
           passwordPolicy:
             id: id
-          userCount: 6
+          userCount: 0
           name: name
           description: description
           id: id
           updatedAt: updatedAt
         gatewayInstances:
         - lastReportedAt: lastReportedAt
-          responseTimeMillis: 3.616076749251911
+          responseTimeMillis: 2.027123023002322
           version:
             updateStatus: null
             versionNumber: versionNumber
@@ -29243,17 +29868,17 @@ components:
           - currentErrors
           - currentErrors
           hostname: hostname
-          operationsPerSecond: 9.301444243932576
+          operationsPerSecond: 3.616076749251911
           credential:
             id: id
           healthStatus: null
           initializedAt: initializedAt
           id: id
-          busyPercentage: 7
+          busyPercentage: 9
           gateway:
             id: id
         - lastReportedAt: lastReportedAt
-          responseTimeMillis: 3.616076749251911
+          responseTimeMillis: 2.027123023002322
           version:
             updateStatus: null
             versionNumber: versionNumber
@@ -29264,13 +29889,13 @@ components:
           - currentErrors
           - currentErrors
           hostname: hostname
-          operationsPerSecond: 9.301444243932576
+          operationsPerSecond: 3.616076749251911
           credential:
             id: id
           healthStatus: null
           initializedAt: initializedAt
           id: id
-          busyPercentage: 7
+          busyPercentage: 9
           gateway:
             id: id
         applications:
@@ -29320,6 +29945,14 @@ components:
         environments:
           items:
             $ref: '#/components/schemas/Environment'
+          type: array
+        flowPolicies:
+          items:
+            $ref: '#/components/schemas/FlowPolicy'
+          type: array
+        flowPolicyAssignments:
+          items:
+            $ref: '#/components/schemas/FlowPolicyAssignment'
           type: array
         gatewayInstances:
           items:
@@ -29446,6 +30079,25 @@ components:
           description: A string that specifies the organization resource’s unique
             identifier associated with the environment.
           type: string
+      type: object
+    FlowPolicy_application:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      readOnly: true
+      type: object
+    FlowPolicy_trigger:
+      example:
+        type: null
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumFlowPolicyTriggerType'
+      readOnly: true
       type: object
     Gateway_supportedVersions_inner:
       properties:
@@ -29721,7 +30373,7 @@ components:
         \ Since these members were explicitly added to the group, they can be removed\
         \ from the group with DELETE /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}."
       example:
-        users: 2
+        users: 4
       properties:
         users:
           description: Number of users with direct membership
@@ -29734,7 +30386,7 @@ components:
         \ with the include=totalMemberCounts query parameter to retrieve this property.\
         \ This property is not returned with a list of groups."
       example:
-        users: 4
+        users: 7
       properties:
         users:
           description: Number of users with direct membership
@@ -30092,7 +30744,7 @@ components:
         - null
         - null
         allowAddResources: true
-        max: 6
+        max: 7
         allowCustomSchema: true
         allowProduction: true
         allowCustomDomain: true
@@ -30267,19 +30919,19 @@ components:
       example:
         allowUpdateSelf: true
         allowPasswordPolicy: true
-        max: 7
+        max: 1
         allowMyAccount: true
         allowPasswordOnlyAuthentication: true
         allowRoleAssignment: true
         entitledToSupport: true
-        annualActiveIncluded: 4
+        annualActiveIncluded: 5
         allowPasswordManagement: true
         allowIdentityProviders: true
         allowInboundProvisioning: true
         allowVerificationFlow: true
-        monthlyActiveIncluded: 5
+        monthlyActiveIncluded: 9
         allowProvisioning: true
-        hardLimitMax: 1
+        hardLimitMax: 4
         allowPasswordManagementNotifications: true
       properties:
         allowPasswordManagementNotifications:
@@ -30376,8 +31028,8 @@ components:
     NotificationsPolicy_quotas_inner:
       example:
         total: 9
-        unclaimed: 6
-        claimed: 9
+        unclaimed: 8
+        claimed: 6
         type: null
         deliveryMethods:
         - null
@@ -30727,8 +31379,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 16
-        max: 6
+        min: 24
+        max: 3
       properties:
         max:
           default: 255
@@ -30770,10 +31422,10 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 3
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
         "0123456789": 3
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 5
-        abcdefghijklmnopqrstuvwxyz: 6
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+        abcdefghijklmnopqrstuvwxyz: 3
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
           description: Count of alphabetical uppercase characters (`ABCDEFGHIJKLMNOPQRSTUVWXYZ`)
@@ -31608,7 +32260,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 8
+        secondsUntilUnlock: 7
         unlockAt: unlockAt
         status: null
       properties:
