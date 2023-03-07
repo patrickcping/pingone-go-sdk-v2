@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FlowPolicyTrigger type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FlowPolicyTrigger{}
+
 // FlowPolicyTrigger struct for FlowPolicyTrigger
 type FlowPolicyTrigger struct {
 	Type *EnumFlowPolicyTriggerType `json:"type,omitempty"`
@@ -38,7 +41,7 @@ func NewFlowPolicyTriggerWithDefaults() *FlowPolicyTrigger {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *FlowPolicyTrigger) GetType() EnumFlowPolicyTriggerType {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret EnumFlowPolicyTriggerType
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *FlowPolicyTrigger) GetType() EnumFlowPolicyTriggerType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicyTrigger) GetTypeOk() (*EnumFlowPolicyTriggerType, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *FlowPolicyTrigger) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *FlowPolicyTrigger) SetType(v EnumFlowPolicyTriggerType) {
 }
 
 func (o FlowPolicyTrigger) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FlowPolicyTrigger) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableFlowPolicyTrigger struct {

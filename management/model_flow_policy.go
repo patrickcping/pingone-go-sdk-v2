@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FlowPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FlowPolicy{}
+
 // FlowPolicy struct for FlowPolicy
 type FlowPolicy struct {
 	Id *string `json:"id,omitempty"`
@@ -43,7 +46,7 @@ func NewFlowPolicyWithDefaults() *FlowPolicy {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *FlowPolicy) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *FlowPolicy) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicy) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *FlowPolicy) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *FlowPolicy) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *FlowPolicy) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *FlowPolicy) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicy) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *FlowPolicy) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *FlowPolicy) SetEnvironment(v ObjectEnvironment) {
 
 // GetApplication returns the Application field value if set, zero value otherwise.
 func (o *FlowPolicy) GetApplication() FlowPolicyApplication {
-	if o == nil || isNil(o.Application) {
+	if o == nil || IsNil(o.Application) {
 		var ret FlowPolicyApplication
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *FlowPolicy) GetApplication() FlowPolicyApplication {
 // GetApplicationOk returns a tuple with the Application field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicy) GetApplicationOk() (*FlowPolicyApplication, bool) {
-	if o == nil || isNil(o.Application) {
-    return nil, false
+	if o == nil || IsNil(o.Application) {
+		return nil, false
 	}
 	return o.Application, true
 }
 
 // HasApplication returns a boolean if a field has been set.
 func (o *FlowPolicy) HasApplication() bool {
-	if o != nil && !isNil(o.Application) {
+	if o != nil && !IsNil(o.Application) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *FlowPolicy) SetApplication(v FlowPolicyApplication) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *FlowPolicy) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *FlowPolicy) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicy) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
-    return nil, false
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
 	}
 	return o.Enabled, true
 }
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *FlowPolicy) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *FlowPolicy) SetEnabled(v bool) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *FlowPolicy) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *FlowPolicy) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicy) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *FlowPolicy) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *FlowPolicy) SetName(v string) {
 
 // GetTrigger returns the Trigger field value if set, zero value otherwise.
 func (o *FlowPolicy) GetTrigger() FlowPolicyTrigger {
-	if o == nil || isNil(o.Trigger) {
+	if o == nil || IsNil(o.Trigger) {
 		var ret FlowPolicyTrigger
 		return ret
 	}
@@ -213,15 +216,15 @@ func (o *FlowPolicy) GetTrigger() FlowPolicyTrigger {
 // GetTriggerOk returns a tuple with the Trigger field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicy) GetTriggerOk() (*FlowPolicyTrigger, bool) {
-	if o == nil || isNil(o.Trigger) {
-    return nil, false
+	if o == nil || IsNil(o.Trigger) {
+		return nil, false
 	}
 	return o.Trigger, true
 }
 
 // HasTrigger returns a boolean if a field has been set.
 func (o *FlowPolicy) HasTrigger() bool {
-	if o != nil && !isNil(o.Trigger) {
+	if o != nil && !IsNil(o.Trigger) {
 		return true
 	}
 
@@ -234,26 +237,28 @@ func (o *FlowPolicy) SetTrigger(v FlowPolicyTrigger) {
 }
 
 func (o FlowPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Application) {
-		toSerialize["application"] = o.Application
-	}
-	if !isNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Trigger) {
-		toSerialize["trigger"] = o.Trigger
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FlowPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Application) {
+		toSerialize["application"] = o.Application
+	}
+	// skip: enabled is readOnly
+	// skip: name is readOnly
+	if !IsNil(o.Trigger) {
+		toSerialize["trigger"] = o.Trigger
+	}
+	return toSerialize, nil
 }
 
 type NullableFlowPolicy struct {

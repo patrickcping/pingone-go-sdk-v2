@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FlowPolicyAssignment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FlowPolicyAssignment{}
+
 // FlowPolicyAssignment struct for FlowPolicyAssignment
 type FlowPolicyAssignment struct {
 	Id *string `json:"id,omitempty"`
@@ -43,7 +46,7 @@ func NewFlowPolicyAssignmentWithDefaults() *FlowPolicyAssignment {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *FlowPolicyAssignment) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *FlowPolicyAssignment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicyAssignment) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *FlowPolicyAssignment) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *FlowPolicyAssignment) SetId(v string) {
 
 // GetApplication returns the Application field value if set, zero value otherwise.
 func (o *FlowPolicyAssignment) GetApplication() ObjectApplication {
-	if o == nil || isNil(o.Application) {
+	if o == nil || IsNil(o.Application) {
 		var ret ObjectApplication
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *FlowPolicyAssignment) GetApplication() ObjectApplication {
 // GetApplicationOk returns a tuple with the Application field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicyAssignment) GetApplicationOk() (*ObjectApplication, bool) {
-	if o == nil || isNil(o.Application) {
-    return nil, false
+	if o == nil || IsNil(o.Application) {
+		return nil, false
 	}
 	return o.Application, true
 }
 
 // HasApplication returns a boolean if a field has been set.
 func (o *FlowPolicyAssignment) HasApplication() bool {
-	if o != nil && !isNil(o.Application) {
+	if o != nil && !IsNil(o.Application) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *FlowPolicyAssignment) SetApplication(v ObjectApplication) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *FlowPolicyAssignment) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *FlowPolicyAssignment) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicyAssignment) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *FlowPolicyAssignment) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *FlowPolicyAssignment) GetFlowPolicy() ApplicationAccessControlGroupGrou
 // and a boolean to check if the value has been set.
 func (o *FlowPolicyAssignment) GetFlowPolicyOk() (*ApplicationAccessControlGroupGroupsInner, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.FlowPolicy, true
 }
@@ -163,7 +166,7 @@ func (o *FlowPolicyAssignment) SetFlowPolicy(v ApplicationAccessControlGroupGrou
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
 func (o *FlowPolicyAssignment) GetPriority() int32 {
-	if o == nil || isNil(o.Priority) {
+	if o == nil || IsNil(o.Priority) {
 		var ret int32
 		return ret
 	}
@@ -173,15 +176,15 @@ func (o *FlowPolicyAssignment) GetPriority() int32 {
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FlowPolicyAssignment) GetPriorityOk() (*int32, bool) {
-	if o == nil || isNil(o.Priority) {
-    return nil, false
+	if o == nil || IsNil(o.Priority) {
+		return nil, false
 	}
 	return o.Priority, true
 }
 
 // HasPriority returns a boolean if a field has been set.
 func (o *FlowPolicyAssignment) HasPriority() bool {
-	if o != nil && !isNil(o.Priority) {
+	if o != nil && !IsNil(o.Priority) {
 		return true
 	}
 
@@ -194,23 +197,27 @@ func (o *FlowPolicyAssignment) SetPriority(v int32) {
 }
 
 func (o FlowPolicyAssignment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Application) {
-		toSerialize["application"] = o.Application
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["flowPolicy"] = o.FlowPolicy
-	}
-	if !isNil(o.Priority) {
-		toSerialize["priority"] = o.Priority
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FlowPolicyAssignment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	if !IsNil(o.Application) {
+		toSerialize["application"] = o.Application
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	toSerialize["flowPolicy"] = o.FlowPolicy
+	if !IsNil(o.Priority) {
+		toSerialize["priority"] = o.Priority
+	}
+	return toSerialize, nil
 }
 
 type NullableFlowPolicyAssignment struct {

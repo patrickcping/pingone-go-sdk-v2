@@ -432,7 +432,7 @@ func (o *EntityArrayEmbedded) SetEnvironments(v []Environment) {
 
 // GetFlowPolicies returns the FlowPolicies field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetFlowPolicies() []FlowPolicy {
-	if o == nil || isNil(o.FlowPolicies) {
+	if o == nil || IsNil(o.FlowPolicies) {
 		var ret []FlowPolicy
 		return ret
 	}
@@ -442,15 +442,15 @@ func (o *EntityArrayEmbedded) GetFlowPolicies() []FlowPolicy {
 // GetFlowPoliciesOk returns a tuple with the FlowPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArrayEmbedded) GetFlowPoliciesOk() ([]FlowPolicy, bool) {
-	if o == nil || isNil(o.FlowPolicies) {
-    return nil, false
+	if o == nil || IsNil(o.FlowPolicies) {
+		return nil, false
 	}
 	return o.FlowPolicies, true
 }
 
 // HasFlowPolicies returns a boolean if a field has been set.
 func (o *EntityArrayEmbedded) HasFlowPolicies() bool {
-	if o != nil && !isNil(o.FlowPolicies) {
+	if o != nil && !IsNil(o.FlowPolicies) {
 		return true
 	}
 
@@ -464,7 +464,7 @@ func (o *EntityArrayEmbedded) SetFlowPolicies(v []FlowPolicy) {
 
 // GetFlowPolicyAssignments returns the FlowPolicyAssignments field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetFlowPolicyAssignments() []FlowPolicyAssignment {
-	if o == nil || isNil(o.FlowPolicyAssignments) {
+	if o == nil || IsNil(o.FlowPolicyAssignments) {
 		var ret []FlowPolicyAssignment
 		return ret
 	}
@@ -474,15 +474,15 @@ func (o *EntityArrayEmbedded) GetFlowPolicyAssignments() []FlowPolicyAssignment 
 // GetFlowPolicyAssignmentsOk returns a tuple with the FlowPolicyAssignments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArrayEmbedded) GetFlowPolicyAssignmentsOk() ([]FlowPolicyAssignment, bool) {
-	if o == nil || isNil(o.FlowPolicyAssignments) {
-    return nil, false
+	if o == nil || IsNil(o.FlowPolicyAssignments) {
+		return nil, false
 	}
 	return o.FlowPolicyAssignments, true
 }
 
 // HasFlowPolicyAssignments returns a boolean if a field has been set.
 func (o *EntityArrayEmbedded) HasFlowPolicyAssignments() bool {
-	if o != nil && !isNil(o.FlowPolicyAssignments) {
+	if o != nil && !IsNil(o.FlowPolicyAssignments) {
 		return true
 	}
 
