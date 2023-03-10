@@ -1,4 +1,4 @@
-# v0.3.3 (Unreleased)
+# v0.3.3 (2023-03-10)
 
 * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
 

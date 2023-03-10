@@ -1,4 +1,4 @@
-# v0.16.0 (Unreleased)
+# v0.16.0 (2023-03-10)
 
 * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
 * **Breaking change** Agreement revision content type changed to an enum `EnumAgreementRevisionContentType`. [#116](https://github.com/patrickcping/pingone-go-sdk-v2/pull/116)
