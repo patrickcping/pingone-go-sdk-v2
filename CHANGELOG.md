@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.5.4
+    * **Note** bump `golang.org/x/oauth2` v0.5.0 => v0.6.0 [#121](https://github.com/patrickcping/pingone-go-sdk-v2/pull/121)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.0](./agreementmanagement/CHANGELOG.md)
     * **Initial release** [#117](https://github.com/patrickcping/pingone-go-sdk-v2/pull/117)
     * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
