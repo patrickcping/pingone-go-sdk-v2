@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EmailDomainDKIMStatusRegionsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EmailDomainDKIMStatusRegionsInner{}
+
 // EmailDomainDKIMStatusRegionsInner struct for EmailDomainDKIMStatusRegionsInner
 type EmailDomainDKIMStatusRegionsInner struct {
 	// The name of the region.
@@ -42,7 +45,7 @@ func NewEmailDomainDKIMStatusRegionsInnerWithDefaults() *EmailDomainDKIMStatusRe
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EmailDomainDKIMStatusRegionsInner) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *EmailDomainDKIMStatusRegionsInner) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainDKIMStatusRegionsInner) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *EmailDomainDKIMStatusRegionsInner) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *EmailDomainDKIMStatusRegionsInner) SetName(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *EmailDomainDKIMStatusRegionsInner) GetStatus() EnumEmailDomainStatus {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret EnumEmailDomainStatus
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *EmailDomainDKIMStatusRegionsInner) GetStatus() EnumEmailDomainStatus {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainDKIMStatusRegionsInner) GetStatusOk() (*EnumEmailDomainStatus, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *EmailDomainDKIMStatusRegionsInner) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *EmailDomainDKIMStatusRegionsInner) SetStatus(v EnumEmailDomainStatus) {
 
 // GetTokens returns the Tokens field value if set, zero value otherwise.
 func (o *EmailDomainDKIMStatusRegionsInner) GetTokens() []EmailDomainDKIMStatusRegionsInnerTokensInner {
-	if o == nil || isNil(o.Tokens) {
+	if o == nil || IsNil(o.Tokens) {
 		var ret []EmailDomainDKIMStatusRegionsInnerTokensInner
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *EmailDomainDKIMStatusRegionsInner) GetTokens() []EmailDomainDKIMStatusR
 // GetTokensOk returns a tuple with the Tokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainDKIMStatusRegionsInner) GetTokensOk() ([]EmailDomainDKIMStatusRegionsInnerTokensInner, bool) {
-	if o == nil || isNil(o.Tokens) {
-    return nil, false
+	if o == nil || IsNil(o.Tokens) {
+		return nil, false
 	}
 	return o.Tokens, true
 }
 
 // HasTokens returns a boolean if a field has been set.
 func (o *EmailDomainDKIMStatusRegionsInner) HasTokens() bool {
-	if o != nil && !isNil(o.Tokens) {
+	if o != nil && !IsNil(o.Tokens) {
 		return true
 	}
 
@@ -137,17 +140,25 @@ func (o *EmailDomainDKIMStatusRegionsInner) SetTokens(v []EmailDomainDKIMStatusR
 }
 
 func (o EmailDomainDKIMStatusRegionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.Tokens) {
-		toSerialize["tokens"] = o.Tokens
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EmailDomainDKIMStatusRegionsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Tokens) {
+		toSerialize["tokens"] = o.Tokens
+	}
+	return toSerialize, nil
 }
 
 type NullableEmailDomainDKIMStatusRegionsInner struct {

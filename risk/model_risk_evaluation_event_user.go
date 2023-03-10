@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationEventUser type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationEventUser{}
+
 // RiskEvaluationEventUser struct for RiskEvaluationEventUser
 type RiskEvaluationEventUser struct {
 	// A string that specifies the ID of the user associated with the event (maximum size 1024 characters). This is a required property.
@@ -58,7 +61,7 @@ func (o *RiskEvaluationEventUser) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventUser) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -70,7 +73,7 @@ func (o *RiskEvaluationEventUser) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RiskEvaluationEventUser) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -80,15 +83,15 @@ func (o *RiskEvaluationEventUser) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventUser) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *RiskEvaluationEventUser) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -114,7 +117,7 @@ func (o *RiskEvaluationEventUser) GetType() EnumUserType {
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventUser) GetTypeOk() (*EnumUserType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -126,7 +129,7 @@ func (o *RiskEvaluationEventUser) SetType(v EnumUserType) {
 
 // GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *RiskEvaluationEventUser) GetGroups() []RiskEvaluationEventUserGroupsInner {
-	if o == nil || isNil(o.Groups) {
+	if o == nil || IsNil(o.Groups) {
 		var ret []RiskEvaluationEventUserGroupsInner
 		return ret
 	}
@@ -136,15 +139,15 @@ func (o *RiskEvaluationEventUser) GetGroups() []RiskEvaluationEventUserGroupsInn
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventUser) GetGroupsOk() ([]RiskEvaluationEventUserGroupsInner, bool) {
-	if o == nil || isNil(o.Groups) {
-    return nil, false
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
 	}
 	return o.Groups, true
 }
 
 // HasGroups returns a boolean if a field has been set.
 func (o *RiskEvaluationEventUser) HasGroups() bool {
-	if o != nil && !isNil(o.Groups) {
+	if o != nil && !IsNil(o.Groups) {
 		return true
 	}
 
@@ -157,20 +160,24 @@ func (o *RiskEvaluationEventUser) SetGroups(v []RiskEvaluationEventUserGroupsInn
 }
 
 func (o RiskEvaluationEventUser) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.Groups) {
-		toSerialize["groups"] = o.Groups
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationEventUser) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	toSerialize["type"] = o.Type
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationEventUser struct {

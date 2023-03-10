@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **CustomDomains** | Pointer to [**[]CustomDomain**](CustomDomain.md) |  | [optional] 
 **EmailDomains** | Pointer to [**[]EmailDomain**](EmailDomain.md) |  | [optional] 
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
+**FlowPolicies** | Pointer to [**[]FlowPolicy**](FlowPolicy.md) |  | [optional] 
+**FlowPolicyAssignments** | Pointer to [**[]FlowPolicyAssignment**](FlowPolicyAssignment.md) |  | [optional] 
 **GatewayInstances** | Pointer to [**[]GatewayInstance**](GatewayInstance.md) |  | [optional] 
 **Gateways** | Pointer to [**[]EntityArrayEmbeddedGatewaysInner**](EntityArrayEmbeddedGatewaysInner.md) |  | [optional] 
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
@@ -22,6 +24,7 @@ Name | Type | Description | Notes
 **GroupMemberships** | Pointer to [**[]GroupMembership**](GroupMembership.md) |  | [optional] 
 **IdentityProviders** | Pointer to [**[]IdentityProvider**](IdentityProvider.md) |  | [optional] 
 **Keys** | Pointer to [**[]Certificate**](Certificate.md) |  | [optional] 
+**KeyRotationPolicies** | Pointer to [**[]KeyRotationPolicy**](KeyRotationPolicy.md) |  | [optional] 
 **Languages** | Pointer to [**[]EntityArrayEmbeddedLanguagesInner**](EntityArrayEmbeddedLanguagesInner.md) |  | [optional] 
 **Licenses** | Pointer to [**[]License**](License.md) |  | [optional] 
 **NotificationsPolicies** | Pointer to [**[]NotificationsPolicy**](NotificationsPolicy.md) |  | [optional] 
@@ -336,6 +339,56 @@ SetEnvironments sets Environments field to given value.
 
 HasEnvironments returns a boolean if a field has been set.
 
+### GetFlowPolicies
+
+`func (o *EntityArrayEmbedded) GetFlowPolicies() []FlowPolicy`
+
+GetFlowPolicies returns the FlowPolicies field if non-nil, zero value otherwise.
+
+### GetFlowPoliciesOk
+
+`func (o *EntityArrayEmbedded) GetFlowPoliciesOk() (*[]FlowPolicy, bool)`
+
+GetFlowPoliciesOk returns a tuple with the FlowPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowPolicies
+
+`func (o *EntityArrayEmbedded) SetFlowPolicies(v []FlowPolicy)`
+
+SetFlowPolicies sets FlowPolicies field to given value.
+
+### HasFlowPolicies
+
+`func (o *EntityArrayEmbedded) HasFlowPolicies() bool`
+
+HasFlowPolicies returns a boolean if a field has been set.
+
+### GetFlowPolicyAssignments
+
+`func (o *EntityArrayEmbedded) GetFlowPolicyAssignments() []FlowPolicyAssignment`
+
+GetFlowPolicyAssignments returns the FlowPolicyAssignments field if non-nil, zero value otherwise.
+
+### GetFlowPolicyAssignmentsOk
+
+`func (o *EntityArrayEmbedded) GetFlowPolicyAssignmentsOk() (*[]FlowPolicyAssignment, bool)`
+
+GetFlowPolicyAssignmentsOk returns a tuple with the FlowPolicyAssignments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlowPolicyAssignments
+
+`func (o *EntityArrayEmbedded) SetFlowPolicyAssignments(v []FlowPolicyAssignment)`
+
+SetFlowPolicyAssignments sets FlowPolicyAssignments field to given value.
+
+### HasFlowPolicyAssignments
+
+`func (o *EntityArrayEmbedded) HasFlowPolicyAssignments() bool`
+
+HasFlowPolicyAssignments returns a boolean if a field has been set.
+
 ### GetGatewayInstances
 
 `func (o *EntityArrayEmbedded) GetGatewayInstances() []GatewayInstance`
@@ -510,6 +563,31 @@ SetKeys sets Keys field to given value.
 `func (o *EntityArrayEmbedded) HasKeys() bool`
 
 HasKeys returns a boolean if a field has been set.
+
+### GetKeyRotationPolicies
+
+`func (o *EntityArrayEmbedded) GetKeyRotationPolicies() []KeyRotationPolicy`
+
+GetKeyRotationPolicies returns the KeyRotationPolicies field if non-nil, zero value otherwise.
+
+### GetKeyRotationPoliciesOk
+
+`func (o *EntityArrayEmbedded) GetKeyRotationPoliciesOk() (*[]KeyRotationPolicy, bool)`
+
+GetKeyRotationPoliciesOk returns a tuple with the KeyRotationPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyRotationPolicies
+
+`func (o *EntityArrayEmbedded) SetKeyRotationPolicies(v []KeyRotationPolicy)`
+
+SetKeyRotationPolicies sets KeyRotationPolicies field to given value.
+
+### HasKeyRotationPolicies
+
+`func (o *EntityArrayEmbedded) HasKeyRotationPolicies() bool`
+
+HasKeyRotationPolicies returns a boolean if a field has been set.
 
 ### GetLanguages
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown{}
+
 // DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown struct for DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown
 type DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown struct {
 	// The duration (number of time units) the user is blocked after reaching the maximum number of passcode failures.
@@ -54,7 +57,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) GetDuration(
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) GetDurationOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Duration, true
 }
@@ -78,7 +81,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) GetTimeUnit(
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) GetTimeUnitOk() (*EnumTimeUnit, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TimeUnit, true
 }
@@ -89,14 +92,18 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) SetTimeUnit(
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["duration"] = o.Duration
-	}
-	if true {
-		toSerialize["timeUnit"] = o.TimeUnit
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["duration"] = o.Duration
+	toSerialize["timeUnit"] = o.TimeUnit
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationRiskPolicySet type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationRiskPolicySet{}
+
 // RiskEvaluationRiskPolicySet struct for RiskEvaluationRiskPolicySet
 type RiskEvaluationRiskPolicySet struct {
 	// A string that specifies the risk policy set resource's unique identifier. If the risk policy set ID and name are both specified, the policy set specified by the riskPolicySet.id is used. If the risk policy set ID and name are not specified, the environment's default risk policy set is used.
@@ -41,7 +44,7 @@ func NewRiskEvaluationRiskPolicySetWithDefaults() *RiskEvaluationRiskPolicySet {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RiskEvaluationRiskPolicySet) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *RiskEvaluationRiskPolicySet) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationRiskPolicySet) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *RiskEvaluationRiskPolicySet) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RiskEvaluationRiskPolicySet) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *RiskEvaluationRiskPolicySet) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *RiskEvaluationRiskPolicySet) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationRiskPolicySet) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *RiskEvaluationRiskPolicySet) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *RiskEvaluationRiskPolicySet) SetName(v string) {
 }
 
 func (o RiskEvaluationRiskPolicySet) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationRiskPolicySet) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationRiskPolicySet struct {

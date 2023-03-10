@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserLastSignOn type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserLastSignOn{}
+
 // UserLastSignOn struct for UserLastSignOn
 type UserLastSignOn struct {
 	// The time of the last successful login of the user through the PingOne flow API.
@@ -41,7 +44,7 @@ func NewUserLastSignOnWithDefaults() *UserLastSignOn {
 
 // GetAt returns the At field value if set, zero value otherwise.
 func (o *UserLastSignOn) GetAt() string {
-	if o == nil || isNil(o.At) {
+	if o == nil || IsNil(o.At) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *UserLastSignOn) GetAt() string {
 // GetAtOk returns a tuple with the At field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLastSignOn) GetAtOk() (*string, bool) {
-	if o == nil || isNil(o.At) {
-    return nil, false
+	if o == nil || IsNil(o.At) {
+		return nil, false
 	}
 	return o.At, true
 }
 
 // HasAt returns a boolean if a field has been set.
 func (o *UserLastSignOn) HasAt() bool {
-	if o != nil && !isNil(o.At) {
+	if o != nil && !IsNil(o.At) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *UserLastSignOn) SetAt(v string) {
 
 // GetRemoteIp returns the RemoteIp field value if set, zero value otherwise.
 func (o *UserLastSignOn) GetRemoteIp() string {
-	if o == nil || isNil(o.RemoteIp) {
+	if o == nil || IsNil(o.RemoteIp) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *UserLastSignOn) GetRemoteIp() string {
 // GetRemoteIpOk returns a tuple with the RemoteIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserLastSignOn) GetRemoteIpOk() (*string, bool) {
-	if o == nil || isNil(o.RemoteIp) {
-    return nil, false
+	if o == nil || IsNil(o.RemoteIp) {
+		return nil, false
 	}
 	return o.RemoteIp, true
 }
 
 // HasRemoteIp returns a boolean if a field has been set.
 func (o *UserLastSignOn) HasRemoteIp() bool {
-	if o != nil && !isNil(o.RemoteIp) {
+	if o != nil && !IsNil(o.RemoteIp) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *UserLastSignOn) SetRemoteIp(v string) {
 }
 
 func (o UserLastSignOn) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.At) {
-		toSerialize["at"] = o.At
-	}
-	if !isNil(o.RemoteIp) {
-		toSerialize["remoteIp"] = o.RemoteIp
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserLastSignOn) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.At) {
+		toSerialize["at"] = o.At
+	}
+	if !IsNil(o.RemoteIp) {
+		toSerialize["remoteIp"] = o.RemoteIp
+	}
+	return toSerialize, nil
 }
 
 type NullableUserLastSignOn struct {

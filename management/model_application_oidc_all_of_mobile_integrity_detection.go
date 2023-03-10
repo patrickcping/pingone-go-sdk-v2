@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationOIDCAllOfMobileIntegrityDetection type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationOIDCAllOfMobileIntegrityDetection{}
+
 // ApplicationOIDCAllOfMobileIntegrityDetection struct for ApplicationOIDCAllOfMobileIntegrityDetection
 type ApplicationOIDCAllOfMobileIntegrityDetection struct {
 	// You can enable device integrity checking separately for Android and iOS by setting `mobile.integrityDetection.mode` to `ENABLED` and then using `mobile.integrityDetection.excludedPlatforms` to specify the OS where you do not want to use device integrity checking. The values to use are `GOOGLE` and `IOS` (all upper case). Note that this is implemented as an array even though currently you can only include a single value.
@@ -41,7 +44,7 @@ func NewApplicationOIDCAllOfMobileIntegrityDetectionWithDefaults() *ApplicationO
 
 // GetExcludedPlatforms returns the ExcludedPlatforms field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetExcludedPlatforms() []EnumMobileIntegrityDetectionPlatform {
-	if o == nil || isNil(o.ExcludedPlatforms) {
+	if o == nil || IsNil(o.ExcludedPlatforms) {
 		var ret []EnumMobileIntegrityDetectionPlatform
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetExcludedPlatforms() []
 // GetExcludedPlatformsOk returns a tuple with the ExcludedPlatforms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetExcludedPlatformsOk() ([]EnumMobileIntegrityDetectionPlatform, bool) {
-	if o == nil || isNil(o.ExcludedPlatforms) {
-    return nil, false
+	if o == nil || IsNil(o.ExcludedPlatforms) {
+		return nil, false
 	}
 	return o.ExcludedPlatforms, true
 }
 
 // HasExcludedPlatforms returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) HasExcludedPlatforms() bool {
-	if o != nil && !isNil(o.ExcludedPlatforms) {
+	if o != nil && !IsNil(o.ExcludedPlatforms) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetExcludedPlatforms(v []
 
 // GetMode returns the Mode field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetMode() EnumEnabledStatus {
-	if o == nil || isNil(o.Mode) {
+	if o == nil || IsNil(o.Mode) {
 		var ret EnumEnabledStatus
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetMode() EnumEnabledStat
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetModeOk() (*EnumEnabledStatus, bool) {
-	if o == nil || isNil(o.Mode) {
-    return nil, false
+	if o == nil || IsNil(o.Mode) {
+		return nil, false
 	}
 	return o.Mode, true
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) HasMode() bool {
-	if o != nil && !isNil(o.Mode) {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetMode(v EnumEnabledStat
 
 // GetCacheDuration returns the CacheDuration field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetCacheDuration() ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration {
-	if o == nil || isNil(o.CacheDuration) {
+	if o == nil || IsNil(o.CacheDuration) {
 		var ret ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetCacheDuration() Applic
 // GetCacheDurationOk returns a tuple with the CacheDuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetCacheDurationOk() (*ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration, bool) {
-	if o == nil || isNil(o.CacheDuration) {
-    return nil, false
+	if o == nil || IsNil(o.CacheDuration) {
+		return nil, false
 	}
 	return o.CacheDuration, true
 }
 
 // HasCacheDuration returns a boolean if a field has been set.
 func (o *ApplicationOIDCAllOfMobileIntegrityDetection) HasCacheDuration() bool {
-	if o != nil && !isNil(o.CacheDuration) {
+	if o != nil && !IsNil(o.CacheDuration) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetCacheDuration(v Applic
 }
 
 func (o ApplicationOIDCAllOfMobileIntegrityDetection) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ExcludedPlatforms) {
-		toSerialize["excludedPlatforms"] = o.ExcludedPlatforms
-	}
-	if !isNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
-	}
-	if !isNil(o.CacheDuration) {
-		toSerialize["cacheDuration"] = o.CacheDuration
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationOIDCAllOfMobileIntegrityDetection) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ExcludedPlatforms) {
+		toSerialize["excludedPlatforms"] = o.ExcludedPlatforms
+	}
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
+	}
+	if !IsNil(o.CacheDuration) {
+		toSerialize["cacheDuration"] = o.CacheDuration
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationOIDCAllOfMobileIntegrityDetection struct {

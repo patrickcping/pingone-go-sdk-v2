@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionIDPAllOfRegistration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionIDPAllOfRegistration{}
+
 // SignOnPolicyActionIDPAllOfRegistration Specifies the account registration options.
 type SignOnPolicyActionIDPAllOfRegistration struct {
 	// A boolean that specifies whether users must confirm data returned from an identity provider prior to registration. Users can modify the data and omit non-required attributes. Modified attributes are added to the user's profile during account creation. This is an optional property. If omitted, the default value is set to false.
@@ -47,7 +50,7 @@ func NewSignOnPolicyActionIDPAllOfRegistrationWithDefaults() *SignOnPolicyAction
 
 // GetConfirmIdentityProviderAttributes returns the ConfirmIdentityProviderAttributes field value if set, zero value otherwise.
 func (o *SignOnPolicyActionIDPAllOfRegistration) GetConfirmIdentityProviderAttributes() bool {
-	if o == nil || isNil(o.ConfirmIdentityProviderAttributes) {
+	if o == nil || IsNil(o.ConfirmIdentityProviderAttributes) {
 		var ret bool
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *SignOnPolicyActionIDPAllOfRegistration) GetConfirmIdentityProviderAttri
 // GetConfirmIdentityProviderAttributesOk returns a tuple with the ConfirmIdentityProviderAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionIDPAllOfRegistration) GetConfirmIdentityProviderAttributesOk() (*bool, bool) {
-	if o == nil || isNil(o.ConfirmIdentityProviderAttributes) {
-    return nil, false
+	if o == nil || IsNil(o.ConfirmIdentityProviderAttributes) {
+		return nil, false
 	}
 	return o.ConfirmIdentityProviderAttributes, true
 }
 
 // HasConfirmIdentityProviderAttributes returns a boolean if a field has been set.
 func (o *SignOnPolicyActionIDPAllOfRegistration) HasConfirmIdentityProviderAttributes() bool {
-	if o != nil && !isNil(o.ConfirmIdentityProviderAttributes) {
+	if o != nil && !IsNil(o.ConfirmIdentityProviderAttributes) {
 		return true
 	}
 
@@ -91,7 +94,7 @@ func (o *SignOnPolicyActionIDPAllOfRegistration) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionIDPAllOfRegistration) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -103,7 +106,7 @@ func (o *SignOnPolicyActionIDPAllOfRegistration) SetEnabled(v bool) {
 
 // GetPopulation returns the Population field value if set, zero value otherwise.
 func (o *SignOnPolicyActionIDPAllOfRegistration) GetPopulation() SignOnPolicyActionLoginAllOfRegistrationPopulation {
-	if o == nil || isNil(o.Population) {
+	if o == nil || IsNil(o.Population) {
 		var ret SignOnPolicyActionLoginAllOfRegistrationPopulation
 		return ret
 	}
@@ -113,15 +116,15 @@ func (o *SignOnPolicyActionIDPAllOfRegistration) GetPopulation() SignOnPolicyAct
 // GetPopulationOk returns a tuple with the Population field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionIDPAllOfRegistration) GetPopulationOk() (*SignOnPolicyActionLoginAllOfRegistrationPopulation, bool) {
-	if o == nil || isNil(o.Population) {
-    return nil, false
+	if o == nil || IsNil(o.Population) {
+		return nil, false
 	}
 	return o.Population, true
 }
 
 // HasPopulation returns a boolean if a field has been set.
 func (o *SignOnPolicyActionIDPAllOfRegistration) HasPopulation() bool {
-	if o != nil && !isNil(o.Population) {
+	if o != nil && !IsNil(o.Population) {
 		return true
 	}
 
@@ -134,17 +137,23 @@ func (o *SignOnPolicyActionIDPAllOfRegistration) SetPopulation(v SignOnPolicyAct
 }
 
 func (o SignOnPolicyActionIDPAllOfRegistration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ConfirmIdentityProviderAttributes) {
-		toSerialize["confirmIdentityProviderAttributes"] = o.ConfirmIdentityProviderAttributes
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Population) {
-		toSerialize["population"] = o.Population
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionIDPAllOfRegistration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ConfirmIdentityProviderAttributes) {
+		toSerialize["confirmIdentityProviderAttributes"] = o.ConfirmIdentityProviderAttributes
+	}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Population) {
+		toSerialize["population"] = o.Population
+	}
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionIDPAllOfRegistration struct {

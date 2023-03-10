@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NotificationsSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettings{}
+
 // NotificationsSettings struct for NotificationsSettings
 type NotificationsSettings struct {
 	// The time the resource was last updated.
@@ -47,7 +50,7 @@ func NewNotificationsSettingsWithDefaults() *NotificationsSettings {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *NotificationsSettings) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *NotificationsSettings) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettings) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *NotificationsSettings) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *NotificationsSettings) SetUpdatedAt(v time.Time) {
 
 // GetRestrictions returns the Restrictions field value if set, zero value otherwise.
 func (o *NotificationsSettings) GetRestrictions() NotificationsSettingsRestrictions {
-	if o == nil || isNil(o.Restrictions) {
+	if o == nil || IsNil(o.Restrictions) {
 		var ret NotificationsSettingsRestrictions
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *NotificationsSettings) GetRestrictions() NotificationsSettingsRestricti
 // GetRestrictionsOk returns a tuple with the Restrictions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettings) GetRestrictionsOk() (*NotificationsSettingsRestrictions, bool) {
-	if o == nil || isNil(o.Restrictions) {
-    return nil, false
+	if o == nil || IsNil(o.Restrictions) {
+		return nil, false
 	}
 	return o.Restrictions, true
 }
 
 // HasRestrictions returns a boolean if a field has been set.
 func (o *NotificationsSettings) HasRestrictions() bool {
-	if o != nil && !isNil(o.Restrictions) {
+	if o != nil && !IsNil(o.Restrictions) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *NotificationsSettings) SetRestrictions(v NotificationsSettingsRestricti
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NotificationsSettings) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *NotificationsSettings) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettings) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *NotificationsSettings) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *NotificationsSettings) SetId(v string) {
 
 // GetSmsProvidersFallbackChain returns the SmsProvidersFallbackChain field value if set, zero value otherwise.
 func (o *NotificationsSettings) GetSmsProvidersFallbackChain() []string {
-	if o == nil || isNil(o.SmsProvidersFallbackChain) {
+	if o == nil || IsNil(o.SmsProvidersFallbackChain) {
 		var ret []string
 		return ret
 	}
@@ -153,15 +156,15 @@ func (o *NotificationsSettings) GetSmsProvidersFallbackChain() []string {
 // GetSmsProvidersFallbackChainOk returns a tuple with the SmsProvidersFallbackChain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettings) GetSmsProvidersFallbackChainOk() ([]string, bool) {
-	if o == nil || isNil(o.SmsProvidersFallbackChain) {
-    return nil, false
+	if o == nil || IsNil(o.SmsProvidersFallbackChain) {
+		return nil, false
 	}
 	return o.SmsProvidersFallbackChain, true
 }
 
 // HasSmsProvidersFallbackChain returns a boolean if a field has been set.
 func (o *NotificationsSettings) HasSmsProvidersFallbackChain() bool {
-	if o != nil && !isNil(o.SmsProvidersFallbackChain) {
+	if o != nil && !IsNil(o.SmsProvidersFallbackChain) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *NotificationsSettings) SetSmsProvidersFallbackChain(v []string) {
 
 // GetFrom returns the From field value if set, zero value otherwise.
 func (o *NotificationsSettings) GetFrom() NotificationsSettingsFrom {
-	if o == nil || isNil(o.From) {
+	if o == nil || IsNil(o.From) {
 		var ret NotificationsSettingsFrom
 		return ret
 	}
@@ -185,15 +188,15 @@ func (o *NotificationsSettings) GetFrom() NotificationsSettingsFrom {
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettings) GetFromOk() (*NotificationsSettingsFrom, bool) {
-	if o == nil || isNil(o.From) {
-    return nil, false
+	if o == nil || IsNil(o.From) {
+		return nil, false
 	}
 	return o.From, true
 }
 
 // HasFrom returns a boolean if a field has been set.
 func (o *NotificationsSettings) HasFrom() bool {
-	if o != nil && !isNil(o.From) {
+	if o != nil && !IsNil(o.From) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *NotificationsSettings) SetFrom(v NotificationsSettingsFrom) {
 
 // GetReplyTo returns the ReplyTo field value if set, zero value otherwise.
 func (o *NotificationsSettings) GetReplyTo() NotificationsSettingsReplyTo {
-	if o == nil || isNil(o.ReplyTo) {
+	if o == nil || IsNil(o.ReplyTo) {
 		var ret NotificationsSettingsReplyTo
 		return ret
 	}
@@ -217,15 +220,15 @@ func (o *NotificationsSettings) GetReplyTo() NotificationsSettingsReplyTo {
 // GetReplyToOk returns a tuple with the ReplyTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettings) GetReplyToOk() (*NotificationsSettingsReplyTo, bool) {
-	if o == nil || isNil(o.ReplyTo) {
-    return nil, false
+	if o == nil || IsNil(o.ReplyTo) {
+		return nil, false
 	}
 	return o.ReplyTo, true
 }
 
 // HasReplyTo returns a boolean if a field has been set.
 func (o *NotificationsSettings) HasReplyTo() bool {
-	if o != nil && !isNil(o.ReplyTo) {
+	if o != nil && !IsNil(o.ReplyTo) {
 		return true
 	}
 
@@ -238,26 +241,30 @@ func (o *NotificationsSettings) SetReplyTo(v NotificationsSettingsReplyTo) {
 }
 
 func (o NotificationsSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.Restrictions) {
-		toSerialize["restrictions"] = o.Restrictions
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.SmsProvidersFallbackChain) {
-		toSerialize["smsProvidersFallbackChain"] = o.SmsProvidersFallbackChain
-	}
-	if !isNil(o.From) {
-		toSerialize["from"] = o.From
-	}
-	if !isNil(o.ReplyTo) {
-		toSerialize["replyTo"] = o.ReplyTo
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: updatedAt is readOnly
+	if !IsNil(o.Restrictions) {
+		toSerialize["restrictions"] = o.Restrictions
+	}
+	// skip: id is readOnly
+	if !IsNil(o.SmsProvidersFallbackChain) {
+		toSerialize["smsProvidersFallbackChain"] = o.SmsProvidersFallbackChain
+	}
+	if !IsNil(o.From) {
+		toSerialize["from"] = o.From
+	}
+	if !IsNil(o.ReplyTo) {
+		toSerialize["replyTo"] = o.ReplyTo
+	}
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettings struct {

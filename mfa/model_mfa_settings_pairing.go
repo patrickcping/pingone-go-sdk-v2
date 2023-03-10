@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MFASettingsPairing type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFASettingsPairing{}
+
 // MFASettingsPairing An object that contains pairing settings.
 type MFASettingsPairing struct {
 	// An integer that defines the maximum number of MFA devices each user can have. This can be any number up to 15. The default value is 5.
@@ -56,7 +59,7 @@ func (o *MFASettingsPairing) GetMaxAllowedDevices() int32 {
 // and a boolean to check if the value has been set.
 func (o *MFASettingsPairing) GetMaxAllowedDevicesOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.MaxAllowedDevices, true
 }
@@ -80,7 +83,7 @@ func (o *MFASettingsPairing) GetPairingKeyFormat() EnumMFASettingsPairingKeyForm
 // and a boolean to check if the value has been set.
 func (o *MFASettingsPairing) GetPairingKeyFormatOk() (*EnumMFASettingsPairingKeyFormat, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PairingKeyFormat, true
 }
@@ -91,14 +94,18 @@ func (o *MFASettingsPairing) SetPairingKeyFormat(v EnumMFASettingsPairingKeyForm
 }
 
 func (o MFASettingsPairing) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["maxAllowedDevices"] = o.MaxAllowedDevices
-	}
-	if true {
-		toSerialize["pairingKeyFormat"] = o.PairingKeyFormat
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFASettingsPairing) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["maxAllowedDevices"] = o.MaxAllowedDevices
+	toSerialize["pairingKeyFormat"] = o.PairingKeyFormat
+	return toSerialize, nil
 }
 
 type NullableMFASettingsPairing struct {

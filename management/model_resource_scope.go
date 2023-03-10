@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ResourceScope type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResourceScope{}
+
 // ResourceScope struct for ResourceScope
 type ResourceScope struct {
 	// A string that specifies the resource’s unique identifier.
@@ -54,7 +57,7 @@ func NewResourceScopeWithDefaults() *ResourceScope {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ResourceScope) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -64,15 +67,15 @@ func (o *ResourceScope) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ResourceScope) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -98,7 +101,7 @@ func (o *ResourceScope) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -110,7 +113,7 @@ func (o *ResourceScope) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ResourceScope) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *ResourceScope) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ResourceScope) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *ResourceScope) SetDescription(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *ResourceScope) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -152,15 +155,15 @@ func (o *ResourceScope) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *ResourceScope) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *ResourceScope) SetEnvironment(v ObjectEnvironment) {
 
 // GetSchemaAttributes returns the SchemaAttributes field value if set, zero value otherwise.
 func (o *ResourceScope) GetSchemaAttributes() []string {
-	if o == nil || isNil(o.SchemaAttributes) {
+	if o == nil || IsNil(o.SchemaAttributes) {
 		var ret []string
 		return ret
 	}
@@ -184,15 +187,15 @@ func (o *ResourceScope) GetSchemaAttributes() []string {
 // GetSchemaAttributesOk returns a tuple with the SchemaAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetSchemaAttributesOk() ([]string, bool) {
-	if o == nil || isNil(o.SchemaAttributes) {
-    return nil, false
+	if o == nil || IsNil(o.SchemaAttributes) {
+		return nil, false
 	}
 	return o.SchemaAttributes, true
 }
 
 // HasSchemaAttributes returns a boolean if a field has been set.
 func (o *ResourceScope) HasSchemaAttributes() bool {
-	if o != nil && !isNil(o.SchemaAttributes) {
+	if o != nil && !IsNil(o.SchemaAttributes) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *ResourceScope) SetSchemaAttributes(v []string) {
 
 // GetMappedClaims returns the MappedClaims field value if set, zero value otherwise.
 func (o *ResourceScope) GetMappedClaims() []string {
-	if o == nil || isNil(o.MappedClaims) {
+	if o == nil || IsNil(o.MappedClaims) {
 		var ret []string
 		return ret
 	}
@@ -216,15 +219,15 @@ func (o *ResourceScope) GetMappedClaims() []string {
 // GetMappedClaimsOk returns a tuple with the MappedClaims field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetMappedClaimsOk() ([]string, bool) {
-	if o == nil || isNil(o.MappedClaims) {
-    return nil, false
+	if o == nil || IsNil(o.MappedClaims) {
+		return nil, false
 	}
 	return o.MappedClaims, true
 }
 
 // HasMappedClaims returns a boolean if a field has been set.
 func (o *ResourceScope) HasMappedClaims() bool {
-	if o != nil && !isNil(o.MappedClaims) {
+	if o != nil && !IsNil(o.MappedClaims) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *ResourceScope) SetMappedClaims(v []string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *ResourceScope) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -248,15 +251,15 @@ func (o *ResourceScope) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ResourceScope) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *ResourceScope) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *ResourceScope) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -280,15 +283,15 @@ func (o *ResourceScope) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ResourceScope) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *ResourceScope) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -301,32 +304,32 @@ func (o *ResourceScope) SetUpdatedAt(v time.Time) {
 }
 
 func (o ResourceScope) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.SchemaAttributes) {
-		toSerialize["schemaAttributes"] = o.SchemaAttributes
-	}
-	if !isNil(o.MappedClaims) {
-		toSerialize["mappedClaims"] = o.MappedClaims
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ResourceScope) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.SchemaAttributes) {
+		toSerialize["schemaAttributes"] = o.SchemaAttributes
+	}
+	if !IsNil(o.MappedClaims) {
+		toSerialize["mappedClaims"] = o.MappedClaims
+	}
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	return toSerialize, nil
 }
 
 type NullableResourceScope struct {

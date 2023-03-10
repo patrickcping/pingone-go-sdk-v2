@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskEvaluationEventEvaluatedFactors type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskEvaluationEventEvaluatedFactors{}
+
 // RiskEvaluationEventEvaluatedFactors struct for RiskEvaluationEventEvaluatedFactors
 type RiskEvaluationEventEvaluatedFactors struct {
 	Status *EnumCompletionStatus `json:"status,omitempty"`
@@ -40,7 +43,7 @@ func NewRiskEvaluationEventEvaluatedFactorsWithDefaults() *RiskEvaluationEventEv
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *RiskEvaluationEventEvaluatedFactors) GetStatus() EnumCompletionStatus {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret EnumCompletionStatus
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *RiskEvaluationEventEvaluatedFactors) GetStatus() EnumCompletionStatus {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventEvaluatedFactors) GetStatusOk() (*EnumCompletionStatus, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *RiskEvaluationEventEvaluatedFactors) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *RiskEvaluationEventEvaluatedFactors) SetStatus(v EnumCompletionStatus) 
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RiskEvaluationEventEvaluatedFactors) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *RiskEvaluationEventEvaluatedFactors) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RiskEvaluationEventEvaluatedFactors) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *RiskEvaluationEventEvaluatedFactors) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *RiskEvaluationEventEvaluatedFactors) SetType(v string) {
 }
 
 func (o RiskEvaluationEventEvaluatedFactors) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskEvaluationEventEvaluatedFactors) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableRiskEvaluationEventEvaluatedFactors struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskPolicySetRiskPoliciesInnerConditionBetween type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPolicySetRiskPoliciesInnerConditionBetween{}
+
 // RiskPolicySetRiskPoliciesInnerConditionBetween struct for RiskPolicySetRiskPoliciesInnerConditionBetween
 type RiskPolicySetRiskPoliciesInnerConditionBetween struct {
 	MinScore int32 `json:"minScore"`
@@ -53,7 +56,7 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) GetMinScore() int32 {
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) GetMinScoreOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.MinScore, true
 }
@@ -77,7 +80,7 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) GetMaxScore() int32 {
 // and a boolean to check if the value has been set.
 func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) GetMaxScoreOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.MaxScore, true
 }
@@ -88,14 +91,18 @@ func (o *RiskPolicySetRiskPoliciesInnerConditionBetween) SetMaxScore(v int32) {
 }
 
 func (o RiskPolicySetRiskPoliciesInnerConditionBetween) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["minScore"] = o.MinScore
-	}
-	if true {
-		toSerialize["maxScore"] = o.MaxScore
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskPolicySetRiskPoliciesInnerConditionBetween) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["minScore"] = o.MinScore
+	toSerialize["maxScore"] = o.MaxScore
+	return toSerialize, nil
 }
 
 type NullableRiskPolicySetRiskPoliciesInnerConditionBetween struct {

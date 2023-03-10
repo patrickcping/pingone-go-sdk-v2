@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntityArrayEmbedded type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntityArrayEmbedded{}
+
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
 	RiskPolicySets []RiskPolicySet `json:"riskPolicySets,omitempty"`
@@ -39,7 +42,7 @@ func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 
 // GetRiskPolicySets returns the RiskPolicySets field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRiskPolicySets() []RiskPolicySet {
-	if o == nil || isNil(o.RiskPolicySets) {
+	if o == nil || IsNil(o.RiskPolicySets) {
 		var ret []RiskPolicySet
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *EntityArrayEmbedded) GetRiskPolicySets() []RiskPolicySet {
 // GetRiskPolicySetsOk returns a tuple with the RiskPolicySets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArrayEmbedded) GetRiskPolicySetsOk() ([]RiskPolicySet, bool) {
-	if o == nil || isNil(o.RiskPolicySets) {
-    return nil, false
+	if o == nil || IsNil(o.RiskPolicySets) {
+		return nil, false
 	}
 	return o.RiskPolicySets, true
 }
 
 // HasRiskPolicySets returns a boolean if a field has been set.
 func (o *EntityArrayEmbedded) HasRiskPolicySets() bool {
-	if o != nil && !isNil(o.RiskPolicySets) {
+	if o != nil && !IsNil(o.RiskPolicySets) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *EntityArrayEmbedded) SetRiskPolicySets(v []RiskPolicySet) {
 
 // GetRiskPredictors returns the RiskPredictors field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor {
-	if o == nil || isNil(o.RiskPredictors) {
+	if o == nil || IsNil(o.RiskPredictors) {
 		var ret []RiskPredictor
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor {
 // GetRiskPredictorsOk returns a tuple with the RiskPredictors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EntityArrayEmbedded) GetRiskPredictorsOk() ([]RiskPredictor, bool) {
-	if o == nil || isNil(o.RiskPredictors) {
-    return nil, false
+	if o == nil || IsNil(o.RiskPredictors) {
+		return nil, false
 	}
 	return o.RiskPredictors, true
 }
 
 // HasRiskPredictors returns a boolean if a field has been set.
 func (o *EntityArrayEmbedded) HasRiskPredictors() bool {
-	if o != nil && !isNil(o.RiskPredictors) {
+	if o != nil && !IsNil(o.RiskPredictors) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictor) {
 }
 
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.RiskPolicySets) {
-		toSerialize["riskPolicySets"] = o.RiskPolicySets
-	}
-	if !isNil(o.RiskPredictors) {
-		toSerialize["riskPredictors"] = o.RiskPredictors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RiskPolicySets) {
+		toSerialize["riskPolicySets"] = o.RiskPolicySets
+	}
+	if !IsNil(o.RiskPredictors) {
+		toSerialize["riskPredictors"] = o.RiskPredictors
+	}
+	return toSerialize, nil
 }
 
 type NullableEntityArrayEmbedded struct {

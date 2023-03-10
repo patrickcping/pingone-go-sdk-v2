@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserName type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserName{}
+
 // UserName struct for UserName
 type UserName struct {
 	// A string that specifies the family name of the user, or Last in most Western languages (for example, ‘Jensen’ given the full name ‘Ms. Barbara J Jensen, III’). This may be explicitly set to null when updating a name to unset it. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), space, dot, apostrophe, or hyphen (regex `^[\\p{L}\\p{M}\\p{N}' .-]*$`). It can have a length of no more than 256 characters (min/max=1/256).
@@ -49,7 +52,7 @@ func NewUserNameWithDefaults() *UserName {
 
 // GetFamily returns the Family field value if set, zero value otherwise.
 func (o *UserName) GetFamily() string {
-	if o == nil || isNil(o.Family) {
+	if o == nil || IsNil(o.Family) {
 		var ret string
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *UserName) GetFamily() string {
 // GetFamilyOk returns a tuple with the Family field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserName) GetFamilyOk() (*string, bool) {
-	if o == nil || isNil(o.Family) {
-    return nil, false
+	if o == nil || IsNil(o.Family) {
+		return nil, false
 	}
 	return o.Family, true
 }
 
 // HasFamily returns a boolean if a field has been set.
 func (o *UserName) HasFamily() bool {
-	if o != nil && !isNil(o.Family) {
+	if o != nil && !IsNil(o.Family) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *UserName) SetFamily(v string) {
 
 // GetFormatted returns the Formatted field value if set, zero value otherwise.
 func (o *UserName) GetFormatted() string {
-	if o == nil || isNil(o.Formatted) {
+	if o == nil || IsNil(o.Formatted) {
 		var ret string
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *UserName) GetFormatted() string {
 // GetFormattedOk returns a tuple with the Formatted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserName) GetFormattedOk() (*string, bool) {
-	if o == nil || isNil(o.Formatted) {
-    return nil, false
+	if o == nil || IsNil(o.Formatted) {
+		return nil, false
 	}
 	return o.Formatted, true
 }
 
 // HasFormatted returns a boolean if a field has been set.
 func (o *UserName) HasFormatted() bool {
-	if o != nil && !isNil(o.Formatted) {
+	if o != nil && !IsNil(o.Formatted) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *UserName) SetFormatted(v string) {
 
 // GetGiven returns the Given field value if set, zero value otherwise.
 func (o *UserName) GetGiven() string {
-	if o == nil || isNil(o.Given) {
+	if o == nil || IsNil(o.Given) {
 		var ret string
 		return ret
 	}
@@ -123,15 +126,15 @@ func (o *UserName) GetGiven() string {
 // GetGivenOk returns a tuple with the Given field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserName) GetGivenOk() (*string, bool) {
-	if o == nil || isNil(o.Given) {
-    return nil, false
+	if o == nil || IsNil(o.Given) {
+		return nil, false
 	}
 	return o.Given, true
 }
 
 // HasGiven returns a boolean if a field has been set.
 func (o *UserName) HasGiven() bool {
-	if o != nil && !isNil(o.Given) {
+	if o != nil && !IsNil(o.Given) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *UserName) SetGiven(v string) {
 
 // GetHonorificPrefix returns the HonorificPrefix field value if set, zero value otherwise.
 func (o *UserName) GetHonorificPrefix() string {
-	if o == nil || isNil(o.HonorificPrefix) {
+	if o == nil || IsNil(o.HonorificPrefix) {
 		var ret string
 		return ret
 	}
@@ -155,15 +158,15 @@ func (o *UserName) GetHonorificPrefix() string {
 // GetHonorificPrefixOk returns a tuple with the HonorificPrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserName) GetHonorificPrefixOk() (*string, bool) {
-	if o == nil || isNil(o.HonorificPrefix) {
-    return nil, false
+	if o == nil || IsNil(o.HonorificPrefix) {
+		return nil, false
 	}
 	return o.HonorificPrefix, true
 }
 
 // HasHonorificPrefix returns a boolean if a field has been set.
 func (o *UserName) HasHonorificPrefix() bool {
-	if o != nil && !isNil(o.HonorificPrefix) {
+	if o != nil && !IsNil(o.HonorificPrefix) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *UserName) SetHonorificPrefix(v string) {
 
 // GetHonorificSuffix returns the HonorificSuffix field value if set, zero value otherwise.
 func (o *UserName) GetHonorificSuffix() string {
-	if o == nil || isNil(o.HonorificSuffix) {
+	if o == nil || IsNil(o.HonorificSuffix) {
 		var ret string
 		return ret
 	}
@@ -187,15 +190,15 @@ func (o *UserName) GetHonorificSuffix() string {
 // GetHonorificSuffixOk returns a tuple with the HonorificSuffix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserName) GetHonorificSuffixOk() (*string, bool) {
-	if o == nil || isNil(o.HonorificSuffix) {
-    return nil, false
+	if o == nil || IsNil(o.HonorificSuffix) {
+		return nil, false
 	}
 	return o.HonorificSuffix, true
 }
 
 // HasHonorificSuffix returns a boolean if a field has been set.
 func (o *UserName) HasHonorificSuffix() bool {
-	if o != nil && !isNil(o.HonorificSuffix) {
+	if o != nil && !IsNil(o.HonorificSuffix) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *UserName) SetHonorificSuffix(v string) {
 
 // GetMiddle returns the Middle field value if set, zero value otherwise.
 func (o *UserName) GetMiddle() string {
-	if o == nil || isNil(o.Middle) {
+	if o == nil || IsNil(o.Middle) {
 		var ret string
 		return ret
 	}
@@ -219,15 +222,15 @@ func (o *UserName) GetMiddle() string {
 // GetMiddleOk returns a tuple with the Middle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserName) GetMiddleOk() (*string, bool) {
-	if o == nil || isNil(o.Middle) {
-    return nil, false
+	if o == nil || IsNil(o.Middle) {
+		return nil, false
 	}
 	return o.Middle, true
 }
 
 // HasMiddle returns a boolean if a field has been set.
 func (o *UserName) HasMiddle() bool {
-	if o != nil && !isNil(o.Middle) {
+	if o != nil && !IsNil(o.Middle) {
 		return true
 	}
 
@@ -240,26 +243,34 @@ func (o *UserName) SetMiddle(v string) {
 }
 
 func (o UserName) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Family) {
-		toSerialize["family"] = o.Family
-	}
-	if !isNil(o.Formatted) {
-		toSerialize["formatted"] = o.Formatted
-	}
-	if !isNil(o.Given) {
-		toSerialize["given"] = o.Given
-	}
-	if !isNil(o.HonorificPrefix) {
-		toSerialize["honorificPrefix"] = o.HonorificPrefix
-	}
-	if !isNil(o.HonorificSuffix) {
-		toSerialize["honorificSuffix"] = o.HonorificSuffix
-	}
-	if !isNil(o.Middle) {
-		toSerialize["middle"] = o.Middle
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserName) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Family) {
+		toSerialize["family"] = o.Family
+	}
+	if !IsNil(o.Formatted) {
+		toSerialize["formatted"] = o.Formatted
+	}
+	if !IsNil(o.Given) {
+		toSerialize["given"] = o.Given
+	}
+	if !IsNil(o.HonorificPrefix) {
+		toSerialize["honorificPrefix"] = o.HonorificPrefix
+	}
+	if !IsNil(o.HonorificSuffix) {
+		toSerialize["honorificSuffix"] = o.HonorificSuffix
+	}
+	if !IsNil(o.Middle) {
+		toSerialize["middle"] = o.Middle
+	}
+	return toSerialize, nil
 }
 
 type NullableUserName struct {

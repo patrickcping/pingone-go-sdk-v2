@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CustomDomainCertificate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomDomainCertificate{}
+
 // CustomDomainCertificate An object that specifies information about the SSL certificate used by this custom domain. If this property is not present, it indicates that an SSL certificate has not been setup for this custom domain.
 type CustomDomainCertificate struct {
 	// The time when the certificate expires.
@@ -40,7 +43,7 @@ func NewCustomDomainCertificateWithDefaults() *CustomDomainCertificate {
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
 func (o *CustomDomainCertificate) GetExpiresAt() time.Time {
-	if o == nil || isNil(o.ExpiresAt) {
+	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *CustomDomainCertificate) GetExpiresAt() time.Time {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CustomDomainCertificate) GetExpiresAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.ExpiresAt) {
-    return nil, false
+	if o == nil || IsNil(o.ExpiresAt) {
+		return nil, false
 	}
 	return o.ExpiresAt, true
 }
 
 // HasExpiresAt returns a boolean if a field has been set.
 func (o *CustomDomainCertificate) HasExpiresAt() bool {
-	if o != nil && !isNil(o.ExpiresAt) {
+	if o != nil && !IsNil(o.ExpiresAt) {
 		return true
 	}
 
@@ -71,11 +74,17 @@ func (o *CustomDomainCertificate) SetExpiresAt(v time.Time) {
 }
 
 func (o CustomDomainCertificate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ExpiresAt) {
-		toSerialize["expiresAt"] = o.ExpiresAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CustomDomainCertificate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: expiresAt is readOnly
+	return toSerialize, nil
 }
 
 type NullableCustomDomainCertificate struct {

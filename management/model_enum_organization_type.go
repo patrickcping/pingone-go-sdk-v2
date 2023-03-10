@@ -15,19 +15,21 @@ import (
 	"fmt"
 )
 
-// EnumOrganizationType A string that specifies the organization type. If the organization has any paid licenses, the type property value is set to `PAID`. Otherwise, the property value is set to `TRIAL`.
+// EnumOrganizationType A string that specifies the organization type. If the organization has any paid licenses, the type property value is set to `PAID`. Otherwise, the property value is set to `TRIAL`.  Internal organizations have a value of `INTERNAL`.
 type EnumOrganizationType string
 
 // List of EnumOrganizationType
 const (
 	ENUMORGANIZATIONTYPE_PAID EnumOrganizationType = "PAID"
 	ENUMORGANIZATIONTYPE_TRIAL EnumOrganizationType = "TRIAL"
+	ENUMORGANIZATIONTYPE_INTERNAL EnumOrganizationType = "INTERNAL"
 )
 
 // All allowed values of EnumOrganizationType enum
 var AllowedEnumOrganizationTypeEnumValues = []EnumOrganizationType{
 	"PAID",
 	"TRIAL",
+	"INTERNAL",
 }
 
 func (v *EnumOrganizationType) UnmarshalJSON(src []byte) error {

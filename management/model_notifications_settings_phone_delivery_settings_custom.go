@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NotificationsSettingsPhoneDeliverySettingsCustom type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCustom{}
+
 // NotificationsSettingsPhoneDeliverySettingsCustom struct for NotificationsSettingsPhoneDeliverySettingsCustom
 type NotificationsSettingsPhoneDeliverySettingsCustom struct {
 	// A string that specifies the resource’s unique identifier.
@@ -53,7 +56,7 @@ func NewNotificationsSettingsPhoneDeliverySettingsCustomWithDefaults() *Notifica
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -63,15 +66,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -95,15 +98,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetEnvironment() Obje
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -129,7 +132,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetProvider() EnumNot
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetProviderOk() (*EnumNotificationsSettingsPhoneDeliverySettingsProvider, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Provider, true
 }
@@ -141,7 +144,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetProvider(v EnumNot
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -151,15 +154,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetCreatedAt() time.T
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetCreatedAt(v time.T
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -183,15 +186,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetUpdatedAt() time.T
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetUpdatedAt(v time.T
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -215,15 +218,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -249,7 +252,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetRequests() Notific
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetRequestsOk() (*NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Requests, true
 }
@@ -273,7 +276,7 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetAuthentication() N
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetAuthenticationOk() (*NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Authentication, true
 }
@@ -284,32 +287,28 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetAuthentication(v N
 }
 
 func (o NotificationsSettingsPhoneDeliverySettingsCustom) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["provider"] = o.Provider
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["requests"] = o.Requests
-	}
-	if true {
-		toSerialize["authentication"] = o.Authentication
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsPhoneDeliverySettingsCustom) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	toSerialize["provider"] = o.Provider
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	toSerialize["requests"] = o.Requests
+	toSerialize["authentication"] = o.Authentication
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettingsCustom struct {

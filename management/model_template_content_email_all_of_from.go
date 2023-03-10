@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateContentEmailAllOfFrom type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateContentEmailAllOfFrom{}
+
 // TemplateContentEmailAllOfFrom struct for TemplateContentEmailAllOfFrom
 type TemplateContentEmailAllOfFrom struct {
 	// The email's sender name. If the environment uses the Ping Identity email sender, the name \"PingOne\" is used. You can configure other email sender names per environment. See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details. 
@@ -49,7 +52,7 @@ func NewTemplateContentEmailAllOfFromWithDefaults() *TemplateContentEmailAllOfFr
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOfFrom) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *TemplateContentEmailAllOfFrom) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOfFrom) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOfFrom) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *TemplateContentEmailAllOfFrom) SetName(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *TemplateContentEmailAllOfFrom) GetAddress() string {
-	if o == nil || isNil(o.Address) {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *TemplateContentEmailAllOfFrom) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TemplateContentEmailAllOfFrom) GetAddressOk() (*string, bool) {
-	if o == nil || isNil(o.Address) {
-    return nil, false
+	if o == nil || IsNil(o.Address) {
+		return nil, false
 	}
 	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *TemplateContentEmailAllOfFrom) HasAddress() bool {
-	if o != nil && !isNil(o.Address) {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
@@ -112,14 +115,22 @@ func (o *TemplateContentEmailAllOfFrom) SetAddress(v string) {
 }
 
 func (o TemplateContentEmailAllOfFrom) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Address) {
-		toSerialize["address"] = o.Address
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TemplateContentEmailAllOfFrom) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
+	return toSerialize, nil
 }
 
 type NullableTemplateContentEmailAllOfFrom struct {

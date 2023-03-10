@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyOfflineDeviceOtp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDeviceOtp{}
+
 // DeviceAuthenticationPolicyOfflineDeviceOtp struct for DeviceAuthenticationPolicyOfflineDeviceOtp
 type DeviceAuthenticationPolicyOfflineDeviceOtp struct {
 	LifeTime DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime `json:"lifeTime"`
@@ -53,7 +56,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifeTime() DeviceAuthent
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetLifeTimeOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpLifeTime, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.LifeTime, true
 }
@@ -77,7 +80,7 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetFailure() DeviceAuthenti
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) GetFailureOk() (*DeviceAuthenticationPolicyOfflineDeviceOtpFailure, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Failure, true
 }
@@ -88,14 +91,18 @@ func (o *DeviceAuthenticationPolicyOfflineDeviceOtp) SetFailure(v DeviceAuthenti
 }
 
 func (o DeviceAuthenticationPolicyOfflineDeviceOtp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["lifeTime"] = o.LifeTime
-	}
-	if true {
-		toSerialize["failure"] = o.Failure
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyOfflineDeviceOtp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["lifeTime"] = o.LifeTime
+	toSerialize["failure"] = o.Failure
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyOfflineDeviceOtp struct {

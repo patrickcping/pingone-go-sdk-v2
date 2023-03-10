@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -34,7 +34,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -94,7 +94,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -105,7 +105,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
+    r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -167,7 +167,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -178,7 +178,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
+    r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RiskPredictorDefault type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPredictorDefault{}
+
 // RiskPredictorDefault struct for RiskPredictorDefault
 type RiskPredictorDefault struct {
 	// An integer type. This specifies the weight assigned to the risk predictor in a new policy by default.
@@ -54,7 +57,7 @@ func (o *RiskPredictorDefault) GetWeight() int32 {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefault) GetWeightOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Weight, true
 }
@@ -78,7 +81,7 @@ func (o *RiskPredictorDefault) GetResult() RiskPredictorDefaultResult {
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorDefault) GetResultOk() (*RiskPredictorDefaultResult, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Result, true
 }
@@ -89,14 +92,18 @@ func (o *RiskPredictorDefault) SetResult(v RiskPredictorDefaultResult) {
 }
 
 func (o RiskPredictorDefault) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["weight"] = o.Weight
-	}
-	if true {
-		toSerialize["result"] = o.Result
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RiskPredictorDefault) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["weight"] = o.Weight
+	toSerialize["result"] = o.Result
+	return toSerialize, nil
 }
 
 type NullableRiskPredictorDefault struct {

@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -36,7 +36,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -105,7 +105,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost(context.Background(), environmentID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -165,7 +165,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -175,7 +175,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete(context.Background(), environmentID, userID, transactionID).Execute()
+    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete(context.Background(), environmentID, userID, transactionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -237,7 +237,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -247,7 +247,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet(context.Background(), environmentID, userID, transactionID).Execute()
+    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet(context.Background(), environmentID, userID, transactionID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -309,7 +309,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -320,7 +320,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut(context.Background(), environmentID, userID, transactionID).Body(body).Execute()
+    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut(context.Background(), environmentID, userID, transactionID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

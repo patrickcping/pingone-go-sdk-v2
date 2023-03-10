@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionPingIDWinLoginPasswordlessAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionPingIDWinLoginPasswordlessAllOf{}
+
 // SignOnPolicyActionPingIDWinLoginPasswordlessAllOf struct for SignOnPolicyActionPingIDWinLoginPasswordlessAllOf
 type SignOnPolicyActionPingIDWinLoginPasswordlessAllOf struct {
 	UniqueUserAttribute SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute `json:"uniqueUserAttribute"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOf) GetUniqueUserAttribu
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOf) GetUniqueUserAttributeOk() (*SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.UniqueUserAttribute, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOf) GetOfflineMode() Sig
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOf) GetOfflineModeOk() (*SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.OfflineMode, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOf) SetOfflineMode(v Sig
 }
 
 func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["uniqueUserAttribute"] = o.UniqueUserAttribute
-	}
-	if true {
-		toSerialize["offlineMode"] = o.OfflineMode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["uniqueUserAttribute"] = o.UniqueUserAttribute
+	toSerialize["offlineMode"] = o.OfflineMode
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionPingIDWinLoginPasswordlessAllOf struct {

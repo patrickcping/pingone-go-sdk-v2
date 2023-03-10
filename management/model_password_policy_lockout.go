@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordPolicyLockout type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordPolicyLockout{}
+
 // PasswordPolicyLockout Settings to control the user's lockout on unsuccessful authentication attempts
 type PasswordPolicyLockout struct {
 	// The length of time before a password is automatically moved out of the lock out state. The value must be a positive, non-zero integer.
@@ -41,7 +44,7 @@ func NewPasswordPolicyLockoutWithDefaults() *PasswordPolicyLockout {
 
 // GetDurationSeconds returns the DurationSeconds field value if set, zero value otherwise.
 func (o *PasswordPolicyLockout) GetDurationSeconds() int32 {
-	if o == nil || isNil(o.DurationSeconds) {
+	if o == nil || IsNil(o.DurationSeconds) {
 		var ret int32
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *PasswordPolicyLockout) GetDurationSeconds() int32 {
 // GetDurationSecondsOk returns a tuple with the DurationSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyLockout) GetDurationSecondsOk() (*int32, bool) {
-	if o == nil || isNil(o.DurationSeconds) {
-    return nil, false
+	if o == nil || IsNil(o.DurationSeconds) {
+		return nil, false
 	}
 	return o.DurationSeconds, true
 }
 
 // HasDurationSeconds returns a boolean if a field has been set.
 func (o *PasswordPolicyLockout) HasDurationSeconds() bool {
-	if o != nil && !isNil(o.DurationSeconds) {
+	if o != nil && !IsNil(o.DurationSeconds) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PasswordPolicyLockout) SetDurationSeconds(v int32) {
 
 // GetFailureCount returns the FailureCount field value if set, zero value otherwise.
 func (o *PasswordPolicyLockout) GetFailureCount() int32 {
-	if o == nil || isNil(o.FailureCount) {
+	if o == nil || IsNil(o.FailureCount) {
 		var ret int32
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *PasswordPolicyLockout) GetFailureCount() int32 {
 // GetFailureCountOk returns a tuple with the FailureCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PasswordPolicyLockout) GetFailureCountOk() (*int32, bool) {
-	if o == nil || isNil(o.FailureCount) {
-    return nil, false
+	if o == nil || IsNil(o.FailureCount) {
+		return nil, false
 	}
 	return o.FailureCount, true
 }
 
 // HasFailureCount returns a boolean if a field has been set.
 func (o *PasswordPolicyLockout) HasFailureCount() bool {
-	if o != nil && !isNil(o.FailureCount) {
+	if o != nil && !IsNil(o.FailureCount) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *PasswordPolicyLockout) SetFailureCount(v int32) {
 }
 
 func (o PasswordPolicyLockout) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.DurationSeconds) {
-		toSerialize["durationSeconds"] = o.DurationSeconds
-	}
-	if !isNil(o.FailureCount) {
-		toSerialize["failureCount"] = o.FailureCount
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PasswordPolicyLockout) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DurationSeconds) {
+		toSerialize["durationSeconds"] = o.DurationSeconds
+	}
+	if !IsNil(o.FailureCount) {
+		toSerialize["failureCount"] = o.FailureCount
+	}
+	return toSerialize, nil
 }
 
 type NullablePasswordPolicyLockout struct {

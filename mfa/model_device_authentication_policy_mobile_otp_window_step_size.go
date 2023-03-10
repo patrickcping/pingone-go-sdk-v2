@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceAuthenticationPolicyMobileOtpWindowStepSize type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceAuthenticationPolicyMobileOtpWindowStepSize{}
+
 // DeviceAuthenticationPolicyMobileOtpWindowStepSize struct for DeviceAuthenticationPolicyMobileOtpWindowStepSize
 type DeviceAuthenticationPolicyMobileOtpWindowStepSize struct {
 	Duration int32 `json:"duration"`
@@ -53,7 +56,7 @@ func (o *DeviceAuthenticationPolicyMobileOtpWindowStepSize) GetDuration() int32 
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileOtpWindowStepSize) GetDurationOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Duration, true
 }
@@ -77,7 +80,7 @@ func (o *DeviceAuthenticationPolicyMobileOtpWindowStepSize) GetTimeUnit() EnumTi
 // and a boolean to check if the value has been set.
 func (o *DeviceAuthenticationPolicyMobileOtpWindowStepSize) GetTimeUnitOk() (*EnumTimeUnit, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TimeUnit, true
 }
@@ -88,14 +91,18 @@ func (o *DeviceAuthenticationPolicyMobileOtpWindowStepSize) SetTimeUnit(v EnumTi
 }
 
 func (o DeviceAuthenticationPolicyMobileOtpWindowStepSize) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["duration"] = o.Duration
-	}
-	if true {
-		toSerialize["timeUnit"] = o.TimeUnit
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceAuthenticationPolicyMobileOtpWindowStepSize) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["duration"] = o.Duration
+	toSerialize["timeUnit"] = o.TimeUnit
+	return toSerialize, nil
 }
 
 type NullableDeviceAuthenticationPolicyMobileOtpWindowStepSize struct {

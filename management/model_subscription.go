@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Subscription type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Subscription{}
+
 // Subscription struct for Subscription
 type Subscription struct {
 	// The time the key resource expires.The date and time at which the subscription resource was created (ISO 8601 format).
@@ -60,7 +63,7 @@ func NewSubscriptionWithDefaults() *Subscription {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *Subscription) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -70,15 +73,15 @@ func (o *Subscription) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *Subscription) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *Subscription) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -116,7 +119,7 @@ func (o *Subscription) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Subscription) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -126,15 +129,15 @@ func (o *Subscription) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Subscription) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *Subscription) GetFilterOptions() SubscriptionFilterOptions {
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetFilterOptionsOk() (*SubscriptionFilterOptions, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.FilterOptions, true
 }
@@ -184,7 +187,7 @@ func (o *Subscription) GetFormat() EnumSubscriptionFormat {
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetFormatOk() (*EnumSubscriptionFormat, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Format, true
 }
@@ -196,7 +199,7 @@ func (o *Subscription) SetFormat(v EnumSubscriptionFormat) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Subscription) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -206,15 +209,15 @@ func (o *Subscription) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Subscription) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *Subscription) GetHttpEndpoint() SubscriptionHttpEndpoint {
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetHttpEndpointOk() (*SubscriptionHttpEndpoint, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HttpEndpoint, true
 }
@@ -264,7 +267,7 @@ func (o *Subscription) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -276,7 +279,7 @@ func (o *Subscription) SetName(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Subscription) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -286,15 +289,15 @@ func (o *Subscription) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *Subscription) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -320,7 +323,7 @@ func (o *Subscription) GetVerifyTlsCertificates() bool {
 // and a boolean to check if the value has been set.
 func (o *Subscription) GetVerifyTlsCertificatesOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.VerifyTlsCertificates, true
 }
@@ -331,38 +334,28 @@ func (o *Subscription) SetVerifyTlsCertificates(v bool) {
 }
 
 func (o Subscription) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if true {
-		toSerialize["filterOptions"] = o.FilterOptions
-	}
-	if true {
-		toSerialize["format"] = o.Format
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["httpEndpoint"] = o.HttpEndpoint
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["verifyTlsCertificates"] = o.VerifyTlsCertificates
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Subscription) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: createdAt is readOnly
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	toSerialize["filterOptions"] = o.FilterOptions
+	toSerialize["format"] = o.Format
+	// skip: id is readOnly
+	toSerialize["httpEndpoint"] = o.HttpEndpoint
+	toSerialize["name"] = o.Name
+	// skip: updatedAt is readOnly
+	toSerialize["verifyTlsCertificates"] = o.VerifyTlsCertificates
+	return toSerialize, nil
 }
 
 type NullableSubscription struct {

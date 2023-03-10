@@ -32,7 +32,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -104,7 +104,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -113,7 +113,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.DeleteUser(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UsersApi.DeleteUser(context.Background(), environmentID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.DeleteUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -173,7 +173,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -245,7 +245,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -318,7 +318,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -391,7 +391,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -464,7 +464,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -473,7 +473,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -533,7 +533,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -543,7 +543,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut(context.Background(), environmentID, userID).Body(body).Execute()
+    r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut(context.Background(), environmentID, userID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -604,7 +604,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -613,7 +613,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -673,7 +673,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -683,7 +683,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut(context.Background(), environmentID, userID).Body(body).Execute()
+    r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut(context.Background(), environmentID, userID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

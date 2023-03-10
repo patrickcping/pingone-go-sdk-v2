@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderFacebookAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderFacebookAllOf{}
+
 // IdentityProviderFacebookAllOf struct for IdentityProviderFacebookAllOf
 type IdentityProviderFacebookAllOf struct {
 	// A string that specifies the application ID from Facebook. This is a required property.
@@ -55,7 +58,7 @@ func (o *IdentityProviderFacebookAllOf) GetAppId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebookAllOf) GetAppIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AppId, true
 }
@@ -79,7 +82,7 @@ func (o *IdentityProviderFacebookAllOf) GetAppSecret() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderFacebookAllOf) GetAppSecretOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AppSecret, true
 }
@@ -90,14 +93,18 @@ func (o *IdentityProviderFacebookAllOf) SetAppSecret(v string) {
 }
 
 func (o IdentityProviderFacebookAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["appId"] = o.AppId
-	}
-	if true {
-		toSerialize["appSecret"] = o.AppSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderFacebookAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["appId"] = o.AppId
+	toSerialize["appSecret"] = o.AppSecret
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderFacebookAllOf struct {

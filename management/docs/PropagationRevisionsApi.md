@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -34,7 +34,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet(context.Background(), environmentID).Accept(accept).Execute()
+    r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet(context.Background(), environmentID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -93,7 +93,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -101,7 +101,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPost(context.Background(), environmentID).Execute()
+    r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPost(context.Background(), environmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -159,7 +159,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -169,7 +169,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet(context.Background(), environmentID, previousRevisionID).Accept(accept).Execute()
+    r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet(context.Background(), environmentID, previousRevisionID).Accept(accept).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

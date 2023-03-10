@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionIDFirstAllOfDiscoveryRules type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionIDFirstAllOfDiscoveryRules{}
+
 // SignOnPolicyActionIDFirstAllOfDiscoveryRules struct for SignOnPolicyActionIDFirstAllOfDiscoveryRules
 type SignOnPolicyActionIDFirstAllOfDiscoveryRules struct {
 	Condition SignOnPolicyActionIDFirstAllOfCondition `json:"condition"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionIDFirstAllOfDiscoveryRules) GetCondition() SignOnPoli
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionIDFirstAllOfDiscoveryRules) GetConditionOk() (*SignOnPolicyActionIDFirstAllOfCondition, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Condition, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionIDFirstAllOfDiscoveryRules) GetIdentityProvider() Sig
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionIDFirstAllOfDiscoveryRules) GetIdentityProviderOk() (*SignOnPolicyActionIDFirstAllOfIdentityProvider, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.IdentityProvider, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionIDFirstAllOfDiscoveryRules) SetIdentityProvider(v Sig
 }
 
 func (o SignOnPolicyActionIDFirstAllOfDiscoveryRules) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["condition"] = o.Condition
-	}
-	if true {
-		toSerialize["identityProvider"] = o.IdentityProvider
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionIDFirstAllOfDiscoveryRules) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["condition"] = o.Condition
+	toSerialize["identityProvider"] = o.IdentityProvider
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionIDFirstAllOfDiscoveryRules struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BillOfMaterials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BillOfMaterials{}
+
 // BillOfMaterials struct for BillOfMaterials
 type BillOfMaterials struct {
 	SolutionType *EnumSolutionType `json:"solutionType,omitempty"`
@@ -45,7 +48,7 @@ func NewBillOfMaterialsWithDefaults() *BillOfMaterials {
 
 // GetSolutionType returns the SolutionType field value if set, zero value otherwise.
 func (o *BillOfMaterials) GetSolutionType() EnumSolutionType {
-	if o == nil || isNil(o.SolutionType) {
+	if o == nil || IsNil(o.SolutionType) {
 		var ret EnumSolutionType
 		return ret
 	}
@@ -55,15 +58,15 @@ func (o *BillOfMaterials) GetSolutionType() EnumSolutionType {
 // GetSolutionTypeOk returns a tuple with the SolutionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterials) GetSolutionTypeOk() (*EnumSolutionType, bool) {
-	if o == nil || isNil(o.SolutionType) {
-    return nil, false
+	if o == nil || IsNil(o.SolutionType) {
+		return nil, false
 	}
 	return o.SolutionType, true
 }
 
 // HasSolutionType returns a boolean if a field has been set.
 func (o *BillOfMaterials) HasSolutionType() bool {
-	if o != nil && !isNil(o.SolutionType) {
+	if o != nil && !IsNil(o.SolutionType) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *BillOfMaterials) SetSolutionType(v EnumSolutionType) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *BillOfMaterials) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -87,15 +90,15 @@ func (o *BillOfMaterials) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterials) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *BillOfMaterials) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *BillOfMaterials) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *BillOfMaterials) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -119,15 +122,15 @@ func (o *BillOfMaterials) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterials) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *BillOfMaterials) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -153,7 +156,7 @@ func (o *BillOfMaterials) GetProducts() []BillOfMaterialsProductsInner {
 // and a boolean to check if the value has been set.
 func (o *BillOfMaterials) GetProductsOk() ([]BillOfMaterialsProductsInner, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Products, true
 }
@@ -164,20 +167,22 @@ func (o *BillOfMaterials) SetProducts(v []BillOfMaterialsProductsInner) {
 }
 
 func (o BillOfMaterials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.SolutionType) {
-		toSerialize["solutionType"] = o.SolutionType
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["products"] = o.Products
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o BillOfMaterials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SolutionType) {
+		toSerialize["solutionType"] = o.SolutionType
+	}
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	toSerialize["products"] = o.Products
+	return toSerialize, nil
 }
 
 type NullableBillOfMaterials struct {

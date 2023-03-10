@@ -15,7 +15,6 @@ Install the following dependencies:
 
 ```shell
 go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
@@ -105,6 +104,11 @@ Class | Method | HTTP request | Description
 *ApplicationAttributeMappingApi* | [**ReadAllApplicationAttributeMappings**](docs/ApplicationAttributeMappingApi.md#readallapplicationattributemappings) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/attributes | READ All Application Attribute Mappings
 *ApplicationAttributeMappingApi* | [**ReadOneApplicationAttributeMapping**](docs/ApplicationAttributeMappingApi.md#readoneapplicationattributemapping) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | READ One Application Attribute Mapping
 *ApplicationAttributeMappingApi* | [**UpdateApplicationAttributeMapping**](docs/ApplicationAttributeMappingApi.md#updateapplicationattributemapping) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | UPDATE Application Attribute Mapping
+*ApplicationFlowPolicyAssignmentsApi* | [**CreateFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#createflowpolicyassignment) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | CREATE Flow Assignment
+*ApplicationFlowPolicyAssignmentsApi* | [**DeleteFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#deleteflowpolicyassignment) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | DELETE Flow Policy Assignment
+*ApplicationFlowPolicyAssignmentsApi* | [**ReadAllFlowPolicyAssignments**](docs/ApplicationFlowPolicyAssignmentsApi.md#readallflowpolicyassignments) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | READ All Flow Policy Assignments
+*ApplicationFlowPolicyAssignmentsApi* | [**ReadOneFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#readoneflowpolicyassignment) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | READ One Flow Policy Assignment
+*ApplicationFlowPolicyAssignmentsApi* | [**UpdateFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#updateflowpolicyassignment) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | UPDATE Flow Policy Assignment
 *ApplicationResourceGrantsApi* | [**CreateApplicationGrant**](docs/ApplicationResourceGrantsApi.md#createapplicationgrant) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/grants | CREATE Grant
 *ApplicationResourceGrantsApi* | [**DeleteApplicationGrant**](docs/ApplicationResourceGrantsApi.md#deleteapplicationgrant) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/grants/{grantID} | DELETE Grant
 *ApplicationResourceGrantsApi* | [**ReadAllApplicationGrants**](docs/ApplicationResourceGrantsApi.md#readallapplicationgrants) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/grants | READ All Grants for an Application
@@ -173,6 +177,8 @@ Class | Method | HTTP request | Description
 *EnvironmentsApi* | [**ReadOneEnvironment**](docs/EnvironmentsApi.md#readoneenvironment) | **Get** /v1/environments/{environmentID} | READ One Environment
 *EnvironmentsApi* | [**UpdateEnvironment**](docs/EnvironmentsApi.md#updateenvironment) | **Put** /v1/environments/{environmentID} | UPDATE Environment
 *EnvironmentsApi* | [**UpdateEnvironmentType**](docs/EnvironmentsApi.md#updateenvironmenttype) | **Put** /v1/environments/{environmentID}/type | UPDATE Environment Type
+*FlowPoliciesApi* | [**ReadAllFlowPolicies**](docs/FlowPoliciesApi.md#readallflowpolicies) | **Get** /v1/environments/{environmentID}/flowPolicies | READ All Flow Policies
+*FlowPoliciesApi* | [**ReadOneFlowPolicy**](docs/FlowPoliciesApi.md#readoneflowpolicy) | **Get** /v1/environments/{environmentID}/flowPolicies/{flowPolicyID} | READ ONE Flow Policy
 *GatewayCredentialsApi* | [**CreateGatewayCredential**](docs/GatewayCredentialsApi.md#creategatewaycredential) | **Post** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials | CREATE Gateway Credentials
 *GatewayCredentialsApi* | [**DeleteGatewayCredential**](docs/GatewayCredentialsApi.md#deletegatewaycredential) | **Delete** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID} | DELETE Gateway Credentials
 *GatewayCredentialsApi* | [**ReadAllGatewayCredentials**](docs/GatewayCredentialsApi.md#readallgatewaycredentials) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials | READ All Gateway Credentials
@@ -220,6 +226,11 @@ Class | Method | HTTP request | Description
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions | READ Integration Version Metadata
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsintegrationversionidassetget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | READ Integration Version Asset Download
 *IntegrationCatalogApi* | [**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet**](docs/IntegrationCatalogApi.md#v1environmentsenvironmentidintegrationsintegrationidversionsintegrationversionidget) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
+*KeyRotationPoliciesApi* | [**CreateKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#createkeyrotationpolicy) | **Post** /v1/environments/{environmentID}/keyRotationPolicies | CREATE Key Rotation Policy
+*KeyRotationPoliciesApi* | [**DeleteKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#deletekeyrotationpolicy) | **Delete** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | DELETE Key Rotation Policy
+*KeyRotationPoliciesApi* | [**GetKeyRotationPolicies**](docs/KeyRotationPoliciesApi.md#getkeyrotationpolicies) | **Get** /v1/environments/{environmentID}/keyRotationPolicies | GET Key Rotation Policies
+*KeyRotationPoliciesApi* | [**GetKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#getkeyrotationpolicy) | **Get** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | GET Key Rotation Policy
+*KeyRotationPoliciesApi* | [**UpdateKeyRotationPolicy**](docs/KeyRotationPoliciesApi.md#updatekeyrotationpolicy) | **Put** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | UPDATE Key Rotation Policy
 *LanguageLocalizationStatusApi* | [**CreateLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#createlanguagelocalizationstatus) | **Post** /v1/environments/{environmentID}/languages/{languageID}/status | CREATE Language Localization Status
 *LanguageLocalizationStatusApi* | [**DeleteLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#deletelanguagelocalizationstatus) | **Delete** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | DELETE Language Localization Status
 *LanguageLocalizationStatusApi* | [**ReadLanguageLocalizationStatus**](docs/LanguageLocalizationStatusApi.md#readlanguagelocalizationstatus) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status | READ Language Localization Status
@@ -515,6 +526,7 @@ Class | Method | HTTP request | Description
  - [EnumEmailDomainStatus](docs/EnumEmailDomainStatus.md)
  - [EnumEnabledStatus](docs/EnumEnabledStatus.md)
  - [EnumEnvironmentType](docs/EnumEnvironmentType.md)
+ - [EnumFlowPolicyTriggerType](docs/EnumFlowPolicyTriggerType.md)
  - [EnumGatewayPasswordAuthority](docs/EnumGatewayPasswordAuthority.md)
  - [EnumGatewayType](docs/EnumGatewayType.md)
  - [EnumGatewayTypeLDAPSecurity](docs/EnumGatewayTypeLDAPSecurity.md)
@@ -528,6 +540,9 @@ Class | Method | HTTP request | Description
  - [EnumIdentityProviderOIDCTokenAuthMethod](docs/EnumIdentityProviderOIDCTokenAuthMethod.md)
  - [EnumIdentityProviderSAMLSSOBinding](docs/EnumIdentityProviderSAMLSSOBinding.md)
  - [EnumImageFormat](docs/EnumImageFormat.md)
+ - [EnumKeyRotationPolicyAlgorithm](docs/EnumKeyRotationPolicyAlgorithm.md)
+ - [EnumKeyRotationPolicySigAlgorithm](docs/EnumKeyRotationPolicySigAlgorithm.md)
+ - [EnumKeyRotationPolicyUsageType](docs/EnumKeyRotationPolicyUsageType.md)
  - [EnumLicenseStatus](docs/EnumLicenseStatus.md)
  - [EnumMobileIntegrityDetectionPlatform](docs/EnumMobileIntegrityDetectionPlatform.md)
  - [EnumNotificationsPolicyQuotaDeliveryMethods](docs/EnumNotificationsPolicyQuotaDeliveryMethods.md)
@@ -568,6 +583,10 @@ Class | Method | HTTP request | Description
  - [Environment](docs/Environment.md)
  - [EnvironmentLicense](docs/EnvironmentLicense.md)
  - [EnvironmentOrganization](docs/EnvironmentOrganization.md)
+ - [FlowPolicy](docs/FlowPolicy.md)
+ - [FlowPolicyApplication](docs/FlowPolicyApplication.md)
+ - [FlowPolicyAssignment](docs/FlowPolicyAssignment.md)
+ - [FlowPolicyTrigger](docs/FlowPolicyTrigger.md)
  - [Gateway](docs/Gateway.md)
  - [GatewayCredential](docs/GatewayCredential.md)
  - [GatewayInstance](docs/GatewayInstance.md)
@@ -620,6 +639,7 @@ Class | Method | HTTP request | Description
  - [Image](docs/Image.md)
  - [ImageTargets](docs/ImageTargets.md)
  - [ImageTargetsOriginal](docs/ImageTargetsOriginal.md)
+ - [KeyRotationPolicy](docs/KeyRotationPolicy.md)
  - [Language](docs/Language.md)
  - [LanguageLocalizationStatus](docs/LanguageLocalizationStatus.md)
  - [LanguageLocalizationStatusLocale](docs/LanguageLocalizationStatusLocale.md)

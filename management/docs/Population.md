@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
+**Default** | Pointer to **bool** | The population to use as the default population for the environment. Only one population per environment can be the default. New users are assigned to the default population if it exists, and the Population ID is not provided in the [Create User](https://apidocs.pingidentity.com/pingone/platform/v1/api/#post-create-user) request. | [optional] 
 **Description** | Pointer to **string** | A string that specifies the description of the population. | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the population name, which must be provided and must be unique within an environment. | 
 **PasswordPolicy** | Pointer to [**PopulationPasswordPolicy**](PopulationPasswordPolicy.md) |  | [optional] 
@@ -56,6 +58,31 @@ SetCreatedAt sets CreatedAt field to given value.
 
 HasCreatedAt returns a boolean if a field has been set.
 
+### GetDefault
+
+`func (o *Population) GetDefault() bool`
+
+GetDefault returns the Default field if non-nil, zero value otherwise.
+
+### GetDefaultOk
+
+`func (o *Population) GetDefaultOk() (*bool, bool)`
+
+GetDefaultOk returns a tuple with the Default field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefault
+
+`func (o *Population) SetDefault(v bool)`
+
+SetDefault sets Default field to given value.
+
+### HasDefault
+
+`func (o *Population) HasDefault() bool`
+
+HasDefault returns a boolean if a field has been set.
+
 ### GetDescription
 
 `func (o *Population) GetDescription() string`
@@ -80,6 +107,31 @@ SetDescription sets Description field to given value.
 `func (o *Population) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnvironment
+
+`func (o *Population) GetEnvironment() ObjectEnvironment`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *Population) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *Population) SetEnvironment(v ObjectEnvironment)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *Population) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetId
 

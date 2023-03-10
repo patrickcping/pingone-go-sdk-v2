@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderAttribute type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderAttribute{}
+
 // IdentityProviderAttribute struct for IdentityProviderAttribute
 type IdentityProviderAttribute struct {
 	MappingType *EnumIdentityProviderAttributeMappingType `json:"mappingType,omitempty"`
@@ -54,7 +57,7 @@ func NewIdentityProviderAttributeWithDefaults() *IdentityProviderAttribute {
 
 // GetMappingType returns the MappingType field value if set, zero value otherwise.
 func (o *IdentityProviderAttribute) GetMappingType() EnumIdentityProviderAttributeMappingType {
-	if o == nil || isNil(o.MappingType) {
+	if o == nil || IsNil(o.MappingType) {
 		var ret EnumIdentityProviderAttributeMappingType
 		return ret
 	}
@@ -64,15 +67,15 @@ func (o *IdentityProviderAttribute) GetMappingType() EnumIdentityProviderAttribu
 // GetMappingTypeOk returns a tuple with the MappingType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetMappingTypeOk() (*EnumIdentityProviderAttributeMappingType, bool) {
-	if o == nil || isNil(o.MappingType) {
-    return nil, false
+	if o == nil || IsNil(o.MappingType) {
+		return nil, false
 	}
 	return o.MappingType, true
 }
 
 // HasMappingType returns a boolean if a field has been set.
 func (o *IdentityProviderAttribute) HasMappingType() bool {
-	if o != nil && !isNil(o.MappingType) {
+	if o != nil && !IsNil(o.MappingType) {
 		return true
 	}
 
@@ -98,7 +101,7 @@ func (o *IdentityProviderAttribute) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -122,7 +125,7 @@ func (o *IdentityProviderAttribute) GetValue() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetValueOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Value, true
 }
@@ -146,7 +149,7 @@ func (o *IdentityProviderAttribute) GetUpdate() EnumIdentityProviderAttributeMap
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetUpdateOk() (*EnumIdentityProviderAttributeMappingUpdate, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Update, true
 }
@@ -158,7 +161,7 @@ func (o *IdentityProviderAttribute) SetUpdate(v EnumIdentityProviderAttributeMap
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityProviderAttribute) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -168,15 +171,15 @@ func (o *IdentityProviderAttribute) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityProviderAttribute) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -190,7 +193,7 @@ func (o *IdentityProviderAttribute) SetId(v string) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *IdentityProviderAttribute) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -200,15 +203,15 @@ func (o *IdentityProviderAttribute) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *IdentityProviderAttribute) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -222,7 +225,7 @@ func (o *IdentityProviderAttribute) SetEnvironment(v ObjectEnvironment) {
 
 // GetIdentityProvider returns the IdentityProvider field value if set, zero value otherwise.
 func (o *IdentityProviderAttribute) GetIdentityProvider() IdentityProviderAttributeIdentityProvider {
-	if o == nil || isNil(o.IdentityProvider) {
+	if o == nil || IsNil(o.IdentityProvider) {
 		var ret IdentityProviderAttributeIdentityProvider
 		return ret
 	}
@@ -232,15 +235,15 @@ func (o *IdentityProviderAttribute) GetIdentityProvider() IdentityProviderAttrib
 // GetIdentityProviderOk returns a tuple with the IdentityProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetIdentityProviderOk() (*IdentityProviderAttributeIdentityProvider, bool) {
-	if o == nil || isNil(o.IdentityProvider) {
-    return nil, false
+	if o == nil || IsNil(o.IdentityProvider) {
+		return nil, false
 	}
 	return o.IdentityProvider, true
 }
 
 // HasIdentityProvider returns a boolean if a field has been set.
 func (o *IdentityProviderAttribute) HasIdentityProvider() bool {
-	if o != nil && !isNil(o.IdentityProvider) {
+	if o != nil && !IsNil(o.IdentityProvider) {
 		return true
 	}
 
@@ -254,7 +257,7 @@ func (o *IdentityProviderAttribute) SetIdentityProvider(v IdentityProviderAttrib
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *IdentityProviderAttribute) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -264,15 +267,15 @@ func (o *IdentityProviderAttribute) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *IdentityProviderAttribute) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -286,7 +289,7 @@ func (o *IdentityProviderAttribute) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *IdentityProviderAttribute) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -296,15 +299,15 @@ func (o *IdentityProviderAttribute) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAttribute) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *IdentityProviderAttribute) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -317,35 +320,31 @@ func (o *IdentityProviderAttribute) SetUpdatedAt(v string) {
 }
 
 func (o IdentityProviderAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.MappingType) {
-		toSerialize["mappingType"] = o.MappingType
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["value"] = o.Value
-	}
-	if true {
-		toSerialize["update"] = o.Update
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.IdentityProvider) {
-		toSerialize["identityProvider"] = o.IdentityProvider
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderAttribute) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MappingType) {
+		toSerialize["mappingType"] = o.MappingType
+	}
+	toSerialize["name"] = o.Name
+	toSerialize["value"] = o.Value
+	toSerialize["update"] = o.Update
+	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.IdentityProvider) {
+		toSerialize["identityProvider"] = o.IdentityProvider
+	}
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderAttribute struct {

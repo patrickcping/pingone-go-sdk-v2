@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationsSettingsEmailDeliverySettingsFrom type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsSettingsEmailDeliverySettingsFrom{}
+
 // NotificationsSettingsEmailDeliverySettingsFrom struct for NotificationsSettingsEmailDeliverySettingsFrom
 type NotificationsSettingsEmailDeliverySettingsFrom struct {
 	// A string that specifies the email's \"from\" name.
@@ -42,7 +45,7 @@ func NewNotificationsSettingsEmailDeliverySettingsFromWithDefaults() *Notificati
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *NotificationsSettingsEmailDeliverySettingsFrom) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *NotificationsSettingsEmailDeliverySettingsFrom) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettingsFrom) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *NotificationsSettingsEmailDeliverySettingsFrom) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *NotificationsSettingsEmailDeliverySettingsFrom) GetAddress() string {
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsEmailDeliverySettingsFrom) GetAddressOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Address, true
 }
@@ -97,14 +100,20 @@ func (o *NotificationsSettingsEmailDeliverySettingsFrom) SetAddress(v string) {
 }
 
 func (o NotificationsSettingsEmailDeliverySettingsFrom) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["address"] = o.Address
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsSettingsEmailDeliverySettingsFrom) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	toSerialize["address"] = o.Address
+	return toSerialize, nil
 }
 
 type NullableNotificationsSettingsEmailDeliverySettingsFrom struct {

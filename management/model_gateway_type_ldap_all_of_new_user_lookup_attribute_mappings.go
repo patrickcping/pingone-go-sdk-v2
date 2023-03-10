@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayTypeLDAPAllOfNewUserLookupAttributeMappings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayTypeLDAPAllOfNewUserLookupAttributeMappings{}
+
 // GatewayTypeLDAPAllOfNewUserLookupAttributeMappings struct for GatewayTypeLDAPAllOfNewUserLookupAttributeMappings
 type GatewayTypeLDAPAllOfNewUserLookupAttributeMappings struct {
 	// The PingOne username attribute. See Users properties for the complete list of PingOne user attributes.
@@ -55,7 +58,7 @@ func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -79,7 +82,7 @@ func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) GetValue() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) GetValueOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Value, true
 }
@@ -90,14 +93,18 @@ func (o *GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) SetValue(v string) 
 }
 
 func (o GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayTypeLDAPAllOfNewUserLookupAttributeMappings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["value"] = o.Value
+	return toSerialize, nil
 }
 
 type NullableGatewayTypeLDAPAllOfNewUserLookupAttributeMappings struct {

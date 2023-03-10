@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderPaypalAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderPaypalAllOf{}
+
 // IdentityProviderPaypalAllOf struct for IdentityProviderPaypalAllOf
 type IdentityProviderPaypalAllOf struct {
 	// A string that specifies the application ID from PayPal. This is a required property.
@@ -58,7 +61,7 @@ func (o *IdentityProviderPaypalAllOf) GetClientId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderPaypalAllOf) GetClientIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientId, true
 }
@@ -82,7 +85,7 @@ func (o *IdentityProviderPaypalAllOf) GetClientSecret() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderPaypalAllOf) GetClientSecretOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientSecret, true
 }
@@ -106,7 +109,7 @@ func (o *IdentityProviderPaypalAllOf) GetClientEnvironment() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderPaypalAllOf) GetClientEnvironmentOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientEnvironment, true
 }
@@ -117,17 +120,19 @@ func (o *IdentityProviderPaypalAllOf) SetClientEnvironment(v string) {
 }
 
 func (o IdentityProviderPaypalAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["clientSecret"] = o.ClientSecret
-	}
-	if true {
-		toSerialize["clientEnvironment"] = o.ClientEnvironment
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderPaypalAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["clientSecret"] = o.ClientSecret
+	toSerialize["clientEnvironment"] = o.ClientEnvironment
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderPaypalAllOf struct {

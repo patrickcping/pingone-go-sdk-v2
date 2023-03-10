@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionMFAAllOfSecurityKey type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionMFAAllOfSecurityKey{}
+
 // SignOnPolicyActionMFAAllOfSecurityKey Specifies MFA using a FIDO2 or U2F security key device.
 type SignOnPolicyActionMFAAllOfSecurityKey struct {
 	// A boolean that specifies whether to permit users to authenticate with a security key device.
@@ -43,7 +46,7 @@ func NewSignOnPolicyActionMFAAllOfSecurityKeyWithDefaults() *SignOnPolicyActionM
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *SignOnPolicyActionMFAAllOfSecurityKey) GetEnabled() bool {
-	if o == nil || isNil(o.Enabled) {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *SignOnPolicyActionMFAAllOfSecurityKey) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionMFAAllOfSecurityKey) GetEnabledOk() (*bool, bool) {
-	if o == nil || isNil(o.Enabled) {
-    return nil, false
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
 	}
 	return o.Enabled, true
 }
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *SignOnPolicyActionMFAAllOfSecurityKey) HasEnabled() bool {
-	if o != nil && !isNil(o.Enabled) {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -74,11 +77,19 @@ func (o *SignOnPolicyActionMFAAllOfSecurityKey) SetEnabled(v bool) {
 }
 
 func (o SignOnPolicyActionMFAAllOfSecurityKey) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Enabled) {
-		toSerialize["enabled"] = o.Enabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionMFAAllOfSecurityKey) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionMFAAllOfSecurityKey struct {

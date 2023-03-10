@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MFAPushCredentialAPNSAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MFAPushCredentialAPNSAllOf{}
+
 // MFAPushCredentialAPNSAllOf struct for MFAPushCredentialAPNSAllOf
 type MFAPushCredentialAPNSAllOf struct {
 	// A string that Apple uses as an identifier to identify an authentication key.  Mandatory.
@@ -58,7 +61,7 @@ func (o *MFAPushCredentialAPNSAllOf) GetKey() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNSAllOf) GetKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Key, true
 }
@@ -82,7 +85,7 @@ func (o *MFAPushCredentialAPNSAllOf) GetTeamId() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNSAllOf) GetTeamIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TeamId, true
 }
@@ -106,7 +109,7 @@ func (o *MFAPushCredentialAPNSAllOf) GetToken() string {
 // and a boolean to check if the value has been set.
 func (o *MFAPushCredentialAPNSAllOf) GetTokenOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Token, true
 }
@@ -117,17 +120,19 @@ func (o *MFAPushCredentialAPNSAllOf) SetToken(v string) {
 }
 
 func (o MFAPushCredentialAPNSAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["teamId"] = o.TeamId
-	}
-	if true {
-		toSerialize["token"] = o.Token
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MFAPushCredentialAPNSAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
+	toSerialize["teamId"] = o.TeamId
+	toSerialize["token"] = o.Token
+	return toSerialize, nil
 }
 
 type NullableMFAPushCredentialAPNSAllOf struct {

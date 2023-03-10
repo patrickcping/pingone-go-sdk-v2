@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionIPRisk type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionIPRisk{}
+
 // SignOnPolicyActionCommonConditionIPRisk struct for SignOnPolicyActionCommonConditionIPRisk
 type SignOnPolicyActionCommonConditionIPRisk struct {
 	IpRisk SignOnPolicyActionCommonConditionIPRiskIpRisk `json:"ipRisk"`
@@ -53,7 +56,7 @@ func (o *SignOnPolicyActionCommonConditionIPRisk) GetIpRisk() SignOnPolicyAction
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionIPRisk) GetIpRiskOk() (*SignOnPolicyActionCommonConditionIPRiskIpRisk, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.IpRisk, true
 }
@@ -77,7 +80,7 @@ func (o *SignOnPolicyActionCommonConditionIPRisk) GetValid() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionIPRisk) GetValidOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Valid, true
 }
@@ -88,14 +91,18 @@ func (o *SignOnPolicyActionCommonConditionIPRisk) SetValid(v string) {
 }
 
 func (o SignOnPolicyActionCommonConditionIPRisk) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ipRisk"] = o.IpRisk
-	}
-	if true {
-		toSerialize["valid"] = o.Valid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionIPRisk) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ipRisk"] = o.IpRisk
+	toSerialize["valid"] = o.Valid
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionIPRisk struct {

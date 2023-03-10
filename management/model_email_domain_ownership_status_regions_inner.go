@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EmailDomainOwnershipStatusRegionsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EmailDomainOwnershipStatusRegionsInner{}
+
 // EmailDomainOwnershipStatusRegionsInner struct for EmailDomainOwnershipStatusRegionsInner
 type EmailDomainOwnershipStatusRegionsInner struct {
 	// The name of the region.
@@ -44,7 +47,7 @@ func NewEmailDomainOwnershipStatusRegionsInnerWithDefaults() *EmailDomainOwnersh
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EmailDomainOwnershipStatusRegionsInner) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -54,15 +57,15 @@ func (o *EmailDomainOwnershipStatusRegionsInner) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainOwnershipStatusRegionsInner) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *EmailDomainOwnershipStatusRegionsInner) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *EmailDomainOwnershipStatusRegionsInner) SetName(v string) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *EmailDomainOwnershipStatusRegionsInner) GetStatus() EnumEmailDomainStatus {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret EnumEmailDomainStatus
 		return ret
 	}
@@ -86,15 +89,15 @@ func (o *EmailDomainOwnershipStatusRegionsInner) GetStatus() EnumEmailDomainStat
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainOwnershipStatusRegionsInner) GetStatusOk() (*EnumEmailDomainStatus, bool) {
-	if o == nil || isNil(o.Status) {
-    return nil, false
+	if o == nil || IsNil(o.Status) {
+		return nil, false
 	}
 	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *EmailDomainOwnershipStatusRegionsInner) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *EmailDomainOwnershipStatusRegionsInner) SetStatus(v EnumEmailDomainStat
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *EmailDomainOwnershipStatusRegionsInner) GetKey() string {
-	if o == nil || isNil(o.Key) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
@@ -118,15 +121,15 @@ func (o *EmailDomainOwnershipStatusRegionsInner) GetKey() string {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainOwnershipStatusRegionsInner) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
-    return nil, false
+	if o == nil || IsNil(o.Key) {
+		return nil, false
 	}
 	return o.Key, true
 }
 
 // HasKey returns a boolean if a field has been set.
 func (o *EmailDomainOwnershipStatusRegionsInner) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *EmailDomainOwnershipStatusRegionsInner) SetKey(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *EmailDomainOwnershipStatusRegionsInner) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -150,15 +153,15 @@ func (o *EmailDomainOwnershipStatusRegionsInner) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EmailDomainOwnershipStatusRegionsInner) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
-    return nil, false
+	if o == nil || IsNil(o.Value) {
+		return nil, false
 	}
 	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *EmailDomainOwnershipStatusRegionsInner) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -171,20 +174,28 @@ func (o *EmailDomainOwnershipStatusRegionsInner) SetValue(v string) {
 }
 
 func (o EmailDomainOwnershipStatusRegionsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.Key) {
-		toSerialize["key"] = o.Key
-	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EmailDomainOwnershipStatusRegionsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableEmailDomainOwnershipStatusRegionsInner struct {

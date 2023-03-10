@@ -1,3 +1,7 @@
+# v0.3.3 (Unreleased)
+
+* **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)
+
 # v0.3.2 (2023-02-22)
 
 * **Note** bump `golang.org/x/net` v0.2.0 => v0.7.0 [#109](https://github.com/patrickcping/pingone-go-sdk-v2/pull/109)

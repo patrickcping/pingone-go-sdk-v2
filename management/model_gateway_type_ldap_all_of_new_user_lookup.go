@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GatewayTypeLDAPAllOfNewUserLookup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayTypeLDAPAllOfNewUserLookup{}
+
 // GatewayTypeLDAPAllOfNewUserLookup The configurations for initially authenticating new users who will be migrated to PingOne. Note If there are multiple users having the same user name, only the first user processed is provisioned.
 type GatewayTypeLDAPAllOfNewUserLookup struct {
 	// A list of objects supplying a mapping of PingOne attributes to external LDAP attributes. One of the entries must be a mapping for \"username`. This is required for the PingOne user schema.
@@ -57,7 +60,7 @@ func (o *GatewayTypeLDAPAllOfNewUserLookup) GetAttributeMappings() []GatewayType
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfNewUserLookup) GetAttributeMappingsOk() ([]GatewayTypeLDAPAllOfNewUserLookupAttributeMappings, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.AttributeMappings, true
 }
@@ -81,7 +84,7 @@ func (o *GatewayTypeLDAPAllOfNewUserLookup) GetLdapFilterPattern() string {
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfNewUserLookup) GetLdapFilterPatternOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.LdapFilterPattern, true
 }
@@ -105,7 +108,7 @@ func (o *GatewayTypeLDAPAllOfNewUserLookup) GetPopulation() GatewayTypeLDAPAllOf
 // and a boolean to check if the value has been set.
 func (o *GatewayTypeLDAPAllOfNewUserLookup) GetPopulationOk() (*GatewayTypeLDAPAllOfNewUserLookupPopulation, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Population, true
 }
@@ -116,17 +119,19 @@ func (o *GatewayTypeLDAPAllOfNewUserLookup) SetPopulation(v GatewayTypeLDAPAllOf
 }
 
 func (o GatewayTypeLDAPAllOfNewUserLookup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["attributeMappings"] = o.AttributeMappings
-	}
-	if true {
-		toSerialize["ldapFilterPattern"] = o.LdapFilterPattern
-	}
-	if true {
-		toSerialize["population"] = o.Population
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayTypeLDAPAllOfNewUserLookup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["attributeMappings"] = o.AttributeMappings
+	toSerialize["ldapFilterPattern"] = o.LdapFilterPattern
+	toSerialize["population"] = o.Population
+	return toSerialize, nil
 }
 
 type NullableGatewayTypeLDAPAllOfNewUserLookup struct {

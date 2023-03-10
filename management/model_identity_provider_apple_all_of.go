@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderAppleAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderAppleAllOf{}
+
 // IdentityProviderAppleAllOf struct for IdentityProviderAppleAllOf
 type IdentityProviderAppleAllOf struct {
 	// A string that specifies the application ID from Apple. This is the identifier obtained after registering a services ID in the Apple developer portal. This is a required property.
@@ -61,7 +64,7 @@ func (o *IdentityProviderAppleAllOf) GetClientId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAppleAllOf) GetClientIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientId, true
 }
@@ -85,7 +88,7 @@ func (o *IdentityProviderAppleAllOf) GetClientSecretSigningKey() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAppleAllOf) GetClientSecretSigningKeyOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientSecretSigningKey, true
 }
@@ -109,7 +112,7 @@ func (o *IdentityProviderAppleAllOf) GetKeyId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAppleAllOf) GetKeyIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.KeyId, true
 }
@@ -133,7 +136,7 @@ func (o *IdentityProviderAppleAllOf) GetTeamId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderAppleAllOf) GetTeamIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TeamId, true
 }
@@ -144,20 +147,20 @@ func (o *IdentityProviderAppleAllOf) SetTeamId(v string) {
 }
 
 func (o IdentityProviderAppleAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["clientSecretSigningKey"] = o.ClientSecretSigningKey
-	}
-	if true {
-		toSerialize["keyId"] = o.KeyId
-	}
-	if true {
-		toSerialize["teamId"] = o.TeamId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderAppleAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["clientSecretSigningKey"] = o.ClientSecretSigningKey
+	toSerialize["keyId"] = o.KeyId
+	toSerialize["teamId"] = o.TeamId
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderAppleAllOf struct {

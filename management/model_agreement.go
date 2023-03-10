@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Agreement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Agreement{}
+
 // Agreement struct for Agreement
 type Agreement struct {
 	// The time the consent count metric was last updated. This value is typically updated once every 24 hours.
@@ -57,7 +60,7 @@ func NewAgreementWithDefaults() *Agreement {
 
 // GetConsentsAggregatedAt returns the ConsentsAggregatedAt field value if set, zero value otherwise.
 func (o *Agreement) GetConsentsAggregatedAt() time.Time {
-	if o == nil || isNil(o.ConsentsAggregatedAt) {
+	if o == nil || IsNil(o.ConsentsAggregatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -67,15 +70,15 @@ func (o *Agreement) GetConsentsAggregatedAt() time.Time {
 // GetConsentsAggregatedAtOk returns a tuple with the ConsentsAggregatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetConsentsAggregatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.ConsentsAggregatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.ConsentsAggregatedAt) {
+		return nil, false
 	}
 	return o.ConsentsAggregatedAt, true
 }
 
 // HasConsentsAggregatedAt returns a boolean if a field has been set.
 func (o *Agreement) HasConsentsAggregatedAt() bool {
-	if o != nil && !isNil(o.ConsentsAggregatedAt) {
+	if o != nil && !IsNil(o.ConsentsAggregatedAt) {
 		return true
 	}
 
@@ -89,7 +92,7 @@ func (o *Agreement) SetConsentsAggregatedAt(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Agreement) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -99,15 +102,15 @@ func (o *Agreement) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Agreement) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -133,7 +136,7 @@ func (o *Agreement) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -145,7 +148,7 @@ func (o *Agreement) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *Agreement) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -155,15 +158,15 @@ func (o *Agreement) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *Agreement) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *Agreement) SetEnvironment(v ObjectEnvironment) {
 
 // GetTotalExpiredConsents returns the TotalExpiredConsents field value if set, zero value otherwise.
 func (o *Agreement) GetTotalExpiredConsents() int32 {
-	if o == nil || isNil(o.TotalExpiredConsents) {
+	if o == nil || IsNil(o.TotalExpiredConsents) {
 		var ret int32
 		return ret
 	}
@@ -187,15 +190,15 @@ func (o *Agreement) GetTotalExpiredConsents() int32 {
 // GetTotalExpiredConsentsOk returns a tuple with the TotalExpiredConsents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetTotalExpiredConsentsOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalExpiredConsents) {
-    return nil, false
+	if o == nil || IsNil(o.TotalExpiredConsents) {
+		return nil, false
 	}
 	return o.TotalExpiredConsents, true
 }
 
 // HasTotalExpiredConsents returns a boolean if a field has been set.
 func (o *Agreement) HasTotalExpiredConsents() bool {
-	if o != nil && !isNil(o.TotalExpiredConsents) {
+	if o != nil && !IsNil(o.TotalExpiredConsents) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *Agreement) SetTotalExpiredConsents(v int32) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Agreement) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -219,15 +222,15 @@ func (o *Agreement) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Agreement) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -253,7 +256,7 @@ func (o *Agreement) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -265,7 +268,7 @@ func (o *Agreement) SetName(v string) {
 
 // GetReconsentPeriodDays returns the ReconsentPeriodDays field value if set, zero value otherwise.
 func (o *Agreement) GetReconsentPeriodDays() float32 {
-	if o == nil || isNil(o.ReconsentPeriodDays) {
+	if o == nil || IsNil(o.ReconsentPeriodDays) {
 		var ret float32
 		return ret
 	}
@@ -275,15 +278,15 @@ func (o *Agreement) GetReconsentPeriodDays() float32 {
 // GetReconsentPeriodDaysOk returns a tuple with the ReconsentPeriodDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetReconsentPeriodDaysOk() (*float32, bool) {
-	if o == nil || isNil(o.ReconsentPeriodDays) {
-    return nil, false
+	if o == nil || IsNil(o.ReconsentPeriodDays) {
+		return nil, false
 	}
 	return o.ReconsentPeriodDays, true
 }
 
 // HasReconsentPeriodDays returns a boolean if a field has been set.
 func (o *Agreement) HasReconsentPeriodDays() bool {
-	if o != nil && !isNil(o.ReconsentPeriodDays) {
+	if o != nil && !IsNil(o.ReconsentPeriodDays) {
 		return true
 	}
 
@@ -297,7 +300,7 @@ func (o *Agreement) SetReconsentPeriodDays(v float32) {
 
 // GetTotalConsents returns the TotalConsents field value if set, zero value otherwise.
 func (o *Agreement) GetTotalConsents() int32 {
-	if o == nil || isNil(o.TotalConsents) {
+	if o == nil || IsNil(o.TotalConsents) {
 		var ret int32
 		return ret
 	}
@@ -307,15 +310,15 @@ func (o *Agreement) GetTotalConsents() int32 {
 // GetTotalConsentsOk returns a tuple with the TotalConsents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Agreement) GetTotalConsentsOk() (*int32, bool) {
-	if o == nil || isNil(o.TotalConsents) {
-    return nil, false
+	if o == nil || IsNil(o.TotalConsents) {
+		return nil, false
 	}
 	return o.TotalConsents, true
 }
 
 // HasTotalConsents returns a boolean if a field has been set.
 func (o *Agreement) HasTotalConsents() bool {
-	if o != nil && !isNil(o.TotalConsents) {
+	if o != nil && !IsNil(o.TotalConsents) {
 		return true
 	}
 
@@ -328,35 +331,31 @@ func (o *Agreement) SetTotalConsents(v int32) {
 }
 
 func (o Agreement) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ConsentsAggregatedAt) {
-		toSerialize["consentsAggregatedAt"] = o.ConsentsAggregatedAt
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.TotalExpiredConsents) {
-		toSerialize["totalExpiredConsents"] = o.TotalExpiredConsents
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.ReconsentPeriodDays) {
-		toSerialize["reconsentPeriodDays"] = o.ReconsentPeriodDays
-	}
-	if !isNil(o.TotalConsents) {
-		toSerialize["totalConsents"] = o.TotalConsents
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Agreement) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: consentsAggregatedAt is readOnly
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: totalExpiredConsents is readOnly
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.ReconsentPeriodDays) {
+		toSerialize["reconsentPeriodDays"] = o.ReconsentPeriodDays
+	}
+	// skip: totalConsents is readOnly
+	return toSerialize, nil
 }
 
 type NullableAgreement struct {

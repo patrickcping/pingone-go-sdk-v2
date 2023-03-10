@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderOIDCAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderOIDCAllOf{}
+
 // IdentityProviderOIDCAllOf struct for IdentityProviderOIDCAllOf
 type IdentityProviderOIDCAllOf struct {
 	// A string that specifies the the OIDC identity provider's authorization endpoint. This value must be a URL that uses https. This is a required property.
@@ -78,7 +81,7 @@ func (o *IdentityProviderOIDCAllOf) GetAuthorizationEndpoint() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetAuthorizationEndpointOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AuthorizationEndpoint, true
 }
@@ -102,7 +105,7 @@ func (o *IdentityProviderOIDCAllOf) GetClientId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetClientIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientId, true
 }
@@ -126,7 +129,7 @@ func (o *IdentityProviderOIDCAllOf) GetClientSecret() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetClientSecretOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientSecret, true
 }
@@ -138,7 +141,7 @@ func (o *IdentityProviderOIDCAllOf) SetClientSecret(v string) {
 
 // GetDiscoveryEndpoint returns the DiscoveryEndpoint field value if set, zero value otherwise.
 func (o *IdentityProviderOIDCAllOf) GetDiscoveryEndpoint() string {
-	if o == nil || isNil(o.DiscoveryEndpoint) {
+	if o == nil || IsNil(o.DiscoveryEndpoint) {
 		var ret string
 		return ret
 	}
@@ -148,15 +151,15 @@ func (o *IdentityProviderOIDCAllOf) GetDiscoveryEndpoint() string {
 // GetDiscoveryEndpointOk returns a tuple with the DiscoveryEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetDiscoveryEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.DiscoveryEndpoint) {
-    return nil, false
+	if o == nil || IsNil(o.DiscoveryEndpoint) {
+		return nil, false
 	}
 	return o.DiscoveryEndpoint, true
 }
 
 // HasDiscoveryEndpoint returns a boolean if a field has been set.
 func (o *IdentityProviderOIDCAllOf) HasDiscoveryEndpoint() bool {
-	if o != nil && !isNil(o.DiscoveryEndpoint) {
+	if o != nil && !IsNil(o.DiscoveryEndpoint) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *IdentityProviderOIDCAllOf) GetIssuer() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetIssuerOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Issuer, true
 }
@@ -206,7 +209,7 @@ func (o *IdentityProviderOIDCAllOf) GetJwksEndpoint() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetJwksEndpointOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.JwksEndpoint, true
 }
@@ -230,7 +233,7 @@ func (o *IdentityProviderOIDCAllOf) GetScopes() []string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetScopesOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.Scopes, true
 }
@@ -254,7 +257,7 @@ func (o *IdentityProviderOIDCAllOf) GetTokenEndpoint() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetTokenEndpointOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TokenEndpoint, true
 }
@@ -278,7 +281,7 @@ func (o *IdentityProviderOIDCAllOf) GetTokenEndpointAuthMethod() EnumIdentityPro
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetTokenEndpointAuthMethodOk() (*EnumIdentityProviderOIDCTokenAuthMethod, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TokenEndpointAuthMethod, true
 }
@@ -290,7 +293,7 @@ func (o *IdentityProviderOIDCAllOf) SetTokenEndpointAuthMethod(v EnumIdentityPro
 
 // GetUserInfoEndpoint returns the UserInfoEndpoint field value if set, zero value otherwise.
 func (o *IdentityProviderOIDCAllOf) GetUserInfoEndpoint() string {
-	if o == nil || isNil(o.UserInfoEndpoint) {
+	if o == nil || IsNil(o.UserInfoEndpoint) {
 		var ret string
 		return ret
 	}
@@ -300,15 +303,15 @@ func (o *IdentityProviderOIDCAllOf) GetUserInfoEndpoint() string {
 // GetUserInfoEndpointOk returns a tuple with the UserInfoEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderOIDCAllOf) GetUserInfoEndpointOk() (*string, bool) {
-	if o == nil || isNil(o.UserInfoEndpoint) {
-    return nil, false
+	if o == nil || IsNil(o.UserInfoEndpoint) {
+		return nil, false
 	}
 	return o.UserInfoEndpoint, true
 }
 
 // HasUserInfoEndpoint returns a boolean if a field has been set.
 func (o *IdentityProviderOIDCAllOf) HasUserInfoEndpoint() bool {
-	if o != nil && !isNil(o.UserInfoEndpoint) {
+	if o != nil && !IsNil(o.UserInfoEndpoint) {
 		return true
 	}
 
@@ -321,38 +324,30 @@ func (o *IdentityProviderOIDCAllOf) SetUserInfoEndpoint(v string) {
 }
 
 func (o IdentityProviderOIDCAllOf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["authorizationEndpoint"] = o.AuthorizationEndpoint
-	}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["clientSecret"] = o.ClientSecret
-	}
-	if !isNil(o.DiscoveryEndpoint) {
-		toSerialize["discoveryEndpoint"] = o.DiscoveryEndpoint
-	}
-	if true {
-		toSerialize["issuer"] = o.Issuer
-	}
-	if true {
-		toSerialize["jwksEndpoint"] = o.JwksEndpoint
-	}
-	if true {
-		toSerialize["scopes"] = o.Scopes
-	}
-	if true {
-		toSerialize["tokenEndpoint"] = o.TokenEndpoint
-	}
-	if true {
-		toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
-	}
-	if !isNil(o.UserInfoEndpoint) {
-		toSerialize["userInfoEndpoint"] = o.UserInfoEndpoint
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderOIDCAllOf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["authorizationEndpoint"] = o.AuthorizationEndpoint
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["clientSecret"] = o.ClientSecret
+	if !IsNil(o.DiscoveryEndpoint) {
+		toSerialize["discoveryEndpoint"] = o.DiscoveryEndpoint
+	}
+	toSerialize["issuer"] = o.Issuer
+	toSerialize["jwksEndpoint"] = o.JwksEndpoint
+	toSerialize["scopes"] = o.Scopes
+	toSerialize["tokenEndpoint"] = o.TokenEndpoint
+	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
+	if !IsNil(o.UserInfoEndpoint) {
+		toSerialize["userInfoEndpoint"] = o.UserInfoEndpoint
+	}
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderOIDCAllOf struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SchemaAttribute type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SchemaAttribute{}
+
 // SchemaAttribute struct for SchemaAttribute
 type SchemaAttribute struct {
 	// A string that specifies an optional property that specifies the description of the attribute. If provided, it must not be an empty string. Valid characters consists of any Unicode letter, mark (for example, accent or umlaut), numeric character, punctuation character, or space.
@@ -62,7 +65,7 @@ func NewSchemaAttributeWithDefaults() *SchemaAttribute {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -72,15 +75,15 @@ func (o *SchemaAttribute) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -94,7 +97,7 @@ func (o *SchemaAttribute) SetDescription(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -104,15 +107,15 @@ func (o *SchemaAttribute) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
-    return nil, false
+	if o == nil || IsNil(o.DisplayName) {
+		return nil, false
 	}
 	return o.DisplayName, true
 }
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *SchemaAttribute) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -150,7 +153,7 @@ func (o *SchemaAttribute) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -160,15 +163,15 @@ func (o *SchemaAttribute) GetEnvironment() ObjectEnvironment {
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *SchemaAttribute) SetEnvironment(v ObjectEnvironment) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -192,15 +195,15 @@ func (o *SchemaAttribute) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *SchemaAttribute) SetId(v string) {
 
 // GetLdapAttribute returns the LdapAttribute field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetLdapAttribute() string {
-	if o == nil || isNil(o.LdapAttribute) {
+	if o == nil || IsNil(o.LdapAttribute) {
 		var ret string
 		return ret
 	}
@@ -224,15 +227,15 @@ func (o *SchemaAttribute) GetLdapAttribute() string {
 // GetLdapAttributeOk returns a tuple with the LdapAttribute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetLdapAttributeOk() (*string, bool) {
-	if o == nil || isNil(o.LdapAttribute) {
-    return nil, false
+	if o == nil || IsNil(o.LdapAttribute) {
+		return nil, false
 	}
 	return o.LdapAttribute, true
 }
 
 // HasLdapAttribute returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasLdapAttribute() bool {
-	if o != nil && !isNil(o.LdapAttribute) {
+	if o != nil && !IsNil(o.LdapAttribute) {
 		return true
 	}
 
@@ -258,7 +261,7 @@ func (o *SchemaAttribute) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -270,7 +273,7 @@ func (o *SchemaAttribute) SetName(v string) {
 
 // GetRequired returns the Required field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetRequired() bool {
-	if o == nil || isNil(o.Required) {
+	if o == nil || IsNil(o.Required) {
 		var ret bool
 		return ret
 	}
@@ -280,15 +283,15 @@ func (o *SchemaAttribute) GetRequired() bool {
 // GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.Required) {
-    return nil, false
+	if o == nil || IsNil(o.Required) {
+		return nil, false
 	}
 	return o.Required, true
 }
 
 // HasRequired returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasRequired() bool {
-	if o != nil && !isNil(o.Required) {
+	if o != nil && !IsNil(o.Required) {
 		return true
 	}
 
@@ -302,7 +305,7 @@ func (o *SchemaAttribute) SetRequired(v bool) {
 
 // GetSchema returns the Schema field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetSchema() SchemaAttributeSchema {
-	if o == nil || isNil(o.Schema) {
+	if o == nil || IsNil(o.Schema) {
 		var ret SchemaAttributeSchema
 		return ret
 	}
@@ -312,15 +315,15 @@ func (o *SchemaAttribute) GetSchema() SchemaAttributeSchema {
 // GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetSchemaOk() (*SchemaAttributeSchema, bool) {
-	if o == nil || isNil(o.Schema) {
-    return nil, false
+	if o == nil || IsNil(o.Schema) {
+		return nil, false
 	}
 	return o.Schema, true
 }
 
 // HasSchema returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasSchema() bool {
-	if o != nil && !isNil(o.Schema) {
+	if o != nil && !IsNil(o.Schema) {
 		return true
 	}
 
@@ -334,7 +337,7 @@ func (o *SchemaAttribute) SetSchema(v SchemaAttributeSchema) {
 
 // GetSchemaType returns the SchemaType field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetSchemaType() EnumSchemaAttributeSchemaType {
-	if o == nil || isNil(o.SchemaType) {
+	if o == nil || IsNil(o.SchemaType) {
 		var ret EnumSchemaAttributeSchemaType
 		return ret
 	}
@@ -344,15 +347,15 @@ func (o *SchemaAttribute) GetSchemaType() EnumSchemaAttributeSchemaType {
 // GetSchemaTypeOk returns a tuple with the SchemaType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetSchemaTypeOk() (*EnumSchemaAttributeSchemaType, bool) {
-	if o == nil || isNil(o.SchemaType) {
-    return nil, false
+	if o == nil || IsNil(o.SchemaType) {
+		return nil, false
 	}
 	return o.SchemaType, true
 }
 
 // HasSchemaType returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasSchemaType() bool {
-	if o != nil && !isNil(o.SchemaType) {
+	if o != nil && !IsNil(o.SchemaType) {
 		return true
 	}
 
@@ -378,7 +381,7 @@ func (o *SchemaAttribute) GetType() EnumSchemaAttributeType {
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetTypeOk() (*EnumSchemaAttributeType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -390,7 +393,7 @@ func (o *SchemaAttribute) SetType(v EnumSchemaAttributeType) {
 
 // GetUnique returns the Unique field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetUnique() bool {
-	if o == nil || isNil(o.Unique) {
+	if o == nil || IsNil(o.Unique) {
 		var ret bool
 		return ret
 	}
@@ -400,15 +403,15 @@ func (o *SchemaAttribute) GetUnique() bool {
 // GetUniqueOk returns a tuple with the Unique field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetUniqueOk() (*bool, bool) {
-	if o == nil || isNil(o.Unique) {
-    return nil, false
+	if o == nil || IsNil(o.Unique) {
+		return nil, false
 	}
 	return o.Unique, true
 }
 
 // HasUnique returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasUnique() bool {
-	if o != nil && !isNil(o.Unique) {
+	if o != nil && !IsNil(o.Unique) {
 		return true
 	}
 
@@ -422,7 +425,7 @@ func (o *SchemaAttribute) SetUnique(v bool) {
 
 // GetMultiValued returns the MultiValued field value if set, zero value otherwise.
 func (o *SchemaAttribute) GetMultiValued() bool {
-	if o == nil || isNil(o.MultiValued) {
+	if o == nil || IsNil(o.MultiValued) {
 		var ret bool
 		return ret
 	}
@@ -432,15 +435,15 @@ func (o *SchemaAttribute) GetMultiValued() bool {
 // GetMultiValuedOk returns a tuple with the MultiValued field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SchemaAttribute) GetMultiValuedOk() (*bool, bool) {
-	if o == nil || isNil(o.MultiValued) {
-    return nil, false
+	if o == nil || IsNil(o.MultiValued) {
+		return nil, false
 	}
 	return o.MultiValued, true
 }
 
 // HasMultiValued returns a boolean if a field has been set.
 func (o *SchemaAttribute) HasMultiValued() bool {
-	if o != nil && !isNil(o.MultiValued) {
+	if o != nil && !IsNil(o.MultiValued) {
 		return true
 	}
 
@@ -453,47 +456,45 @@ func (o *SchemaAttribute) SetMultiValued(v bool) {
 }
 
 func (o SchemaAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.LdapAttribute) {
-		toSerialize["ldapAttribute"] = o.LdapAttribute
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Required) {
-		toSerialize["required"] = o.Required
-	}
-	if !isNil(o.Schema) {
-		toSerialize["schema"] = o.Schema
-	}
-	if !isNil(o.SchemaType) {
-		toSerialize["schemaType"] = o.SchemaType
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.Unique) {
-		toSerialize["unique"] = o.Unique
-	}
-	if !isNil(o.MultiValued) {
-		toSerialize["multiValued"] = o.MultiValued
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SchemaAttribute) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	// skip: id is readOnly
+	// skip: ldapAttribute is readOnly
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Required) {
+		toSerialize["required"] = o.Required
+	}
+	if !IsNil(o.Schema) {
+		toSerialize["schema"] = o.Schema
+	}
+	if !IsNil(o.SchemaType) {
+		toSerialize["schemaType"] = o.SchemaType
+	}
+	toSerialize["type"] = o.Type
+	if !IsNil(o.Unique) {
+		toSerialize["unique"] = o.Unique
+	}
+	if !IsNil(o.MultiValued) {
+		toSerialize["multiValued"] = o.MultiValued
+	}
+	return toSerialize, nil
 }
 
 type NullableSchemaAttribute struct {

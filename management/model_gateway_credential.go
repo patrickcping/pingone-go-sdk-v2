@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the GatewayCredential type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GatewayCredential{}
+
 // GatewayCredential struct for GatewayCredential
 type GatewayCredential struct {
 	// A string that specifies the auto-generated ID for this credential. This is the JWT's jti claim. This is a required property.
@@ -46,7 +49,7 @@ func NewGatewayCredentialWithDefaults() *GatewayCredential {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GatewayCredential) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *GatewayCredential) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCredential) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *GatewayCredential) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *GatewayCredential) SetId(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *GatewayCredential) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -88,15 +91,15 @@ func (o *GatewayCredential) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCredential) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *GatewayCredential) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *GatewayCredential) SetCreatedAt(v time.Time) {
 
 // GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise.
 func (o *GatewayCredential) GetLastUsedAt() time.Time {
-	if o == nil || isNil(o.LastUsedAt) {
+	if o == nil || IsNil(o.LastUsedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *GatewayCredential) GetLastUsedAt() time.Time {
 // GetLastUsedAtOk returns a tuple with the LastUsedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCredential) GetLastUsedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastUsedAt) {
-    return nil, false
+	if o == nil || IsNil(o.LastUsedAt) {
+		return nil, false
 	}
 	return o.LastUsedAt, true
 }
 
 // HasLastUsedAt returns a boolean if a field has been set.
 func (o *GatewayCredential) HasLastUsedAt() bool {
-	if o != nil && !isNil(o.LastUsedAt) {
+	if o != nil && !IsNil(o.LastUsedAt) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *GatewayCredential) SetLastUsedAt(v time.Time) {
 
 // GetCredential returns the Credential field value if set, zero value otherwise.
 func (o *GatewayCredential) GetCredential() string {
-	if o == nil || isNil(o.Credential) {
+	if o == nil || IsNil(o.Credential) {
 		var ret string
 		return ret
 	}
@@ -152,15 +155,15 @@ func (o *GatewayCredential) GetCredential() string {
 // GetCredentialOk returns a tuple with the Credential field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GatewayCredential) GetCredentialOk() (*string, bool) {
-	if o == nil || isNil(o.Credential) {
-    return nil, false
+	if o == nil || IsNil(o.Credential) {
+		return nil, false
 	}
 	return o.Credential, true
 }
 
 // HasCredential returns a boolean if a field has been set.
 func (o *GatewayCredential) HasCredential() bool {
-	if o != nil && !isNil(o.Credential) {
+	if o != nil && !IsNil(o.Credential) {
 		return true
 	}
 
@@ -173,20 +176,20 @@ func (o *GatewayCredential) SetCredential(v string) {
 }
 
 func (o GatewayCredential) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.LastUsedAt) {
-		toSerialize["lastUsedAt"] = o.LastUsedAt
-	}
-	if !isNil(o.Credential) {
-		toSerialize["credential"] = o.Credential
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GatewayCredential) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
+	// skip: createdAt is readOnly
+	// skip: lastUsedAt is readOnly
+	// skip: credential is readOnly
+	return toSerialize, nil
 }
 
 type NullableGatewayCredential struct {

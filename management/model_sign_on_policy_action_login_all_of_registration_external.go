@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionLoginAllOfRegistrationExternal type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionLoginAllOfRegistrationExternal{}
+
 // SignOnPolicyActionLoginAllOfRegistrationExternal struct for SignOnPolicyActionLoginAllOfRegistrationExternal
 type SignOnPolicyActionLoginAllOfRegistrationExternal struct {
 	// A string that specifies the link to the external identity provider's identity store. This property is set when the administrator chooses to have users register in an external identity store. This attribute can be set only when the registration.enabled property is set to false.
@@ -52,7 +55,7 @@ func (o *SignOnPolicyActionLoginAllOfRegistrationExternal) GetHref() string {
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionLoginAllOfRegistrationExternal) GetHrefOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Href, true
 }
@@ -63,11 +66,17 @@ func (o *SignOnPolicyActionLoginAllOfRegistrationExternal) SetHref(v string) {
 }
 
 func (o SignOnPolicyActionLoginAllOfRegistrationExternal) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["href"] = o.Href
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionLoginAllOfRegistrationExternal) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["href"] = o.Href
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionLoginAllOfRegistrationExternal struct {

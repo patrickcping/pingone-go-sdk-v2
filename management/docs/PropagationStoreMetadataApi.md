@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -94,7 +94,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -103,7 +103,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -162,7 +162,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -171,7 +171,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -230,7 +230,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func main() {
@@ -239,7 +239,7 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProviderClientIDClientSecret type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProviderClientIDClientSecret{}
+
 // IdentityProviderClientIDClientSecret struct for IdentityProviderClientIDClientSecret
 type IdentityProviderClientIDClientSecret struct {
 	Links map[string]interface{} `json:"_links,omitempty"`
@@ -64,7 +67,7 @@ func NewIdentityProviderClientIDClientSecretWithDefaults() *IdentityProviderClie
 
 // GetLinks returns the Links field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetLinks() map[string]interface{} {
-	if o == nil || isNil(o.Links) {
+	if o == nil || IsNil(o.Links) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -74,15 +77,15 @@ func (o *IdentityProviderClientIDClientSecret) GetLinks() map[string]interface{}
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetLinksOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Links) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Links) {
+		return map[string]interface{}{}, false
 	}
 	return o.Links, true
 }
 
 // HasLinks returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasLinks() bool {
-	if o != nil && !isNil(o.Links) {
+	if o != nil && !IsNil(o.Links) {
 		return true
 	}
 
@@ -96,7 +99,7 @@ func (o *IdentityProviderClientIDClientSecret) SetLinks(v map[string]interface{}
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -106,15 +109,15 @@ func (o *IdentityProviderClientIDClientSecret) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *IdentityProviderClientIDClientSecret) GetEnabled() bool {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetEnabledOk() (*bool, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Enabled, true
 }
@@ -152,7 +155,7 @@ func (o *IdentityProviderClientIDClientSecret) SetEnabled(v bool) {
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetEnvironment() ObjectEnvironment {
-	if o == nil || isNil(o.Environment) {
+	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
 	}
@@ -162,15 +165,15 @@ func (o *IdentityProviderClientIDClientSecret) GetEnvironment() ObjectEnvironmen
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || isNil(o.Environment) {
-    return nil, false
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
 	}
 	return o.Environment, true
 }
 
 // HasEnvironment returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasEnvironment() bool {
-	if o != nil && !isNil(o.Environment) {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
@@ -184,7 +187,7 @@ func (o *IdentityProviderClientIDClientSecret) SetEnvironment(v ObjectEnvironmen
 
 // GetIcon returns the Icon field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetIcon() IdentityProviderCommonIcon {
-	if o == nil || isNil(o.Icon) {
+	if o == nil || IsNil(o.Icon) {
 		var ret IdentityProviderCommonIcon
 		return ret
 	}
@@ -194,15 +197,15 @@ func (o *IdentityProviderClientIDClientSecret) GetIcon() IdentityProviderCommonI
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetIconOk() (*IdentityProviderCommonIcon, bool) {
-	if o == nil || isNil(o.Icon) {
-    return nil, false
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
 	}
 	return o.Icon, true
 }
 
 // HasIcon returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasIcon() bool {
-	if o != nil && !isNil(o.Icon) {
+	if o != nil && !IsNil(o.Icon) {
 		return true
 	}
 
@@ -216,7 +219,7 @@ func (o *IdentityProviderClientIDClientSecret) SetIcon(v IdentityProviderCommonI
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -226,15 +229,15 @@ func (o *IdentityProviderClientIDClientSecret) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -248,7 +251,7 @@ func (o *IdentityProviderClientIDClientSecret) SetId(v string) {
 
 // GetLoginButtonIcon returns the LoginButtonIcon field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetLoginButtonIcon() IdentityProviderCommonLoginButtonIcon {
-	if o == nil || isNil(o.LoginButtonIcon) {
+	if o == nil || IsNil(o.LoginButtonIcon) {
 		var ret IdentityProviderCommonLoginButtonIcon
 		return ret
 	}
@@ -258,15 +261,15 @@ func (o *IdentityProviderClientIDClientSecret) GetLoginButtonIcon() IdentityProv
 // GetLoginButtonIconOk returns a tuple with the LoginButtonIcon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetLoginButtonIconOk() (*IdentityProviderCommonLoginButtonIcon, bool) {
-	if o == nil || isNil(o.LoginButtonIcon) {
-    return nil, false
+	if o == nil || IsNil(o.LoginButtonIcon) {
+		return nil, false
 	}
 	return o.LoginButtonIcon, true
 }
 
 // HasLoginButtonIcon returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasLoginButtonIcon() bool {
-	if o != nil && !isNil(o.LoginButtonIcon) {
+	if o != nil && !IsNil(o.LoginButtonIcon) {
 		return true
 	}
 
@@ -292,7 +295,7 @@ func (o *IdentityProviderClientIDClientSecret) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -304,7 +307,7 @@ func (o *IdentityProviderClientIDClientSecret) SetName(v string) {
 
 // GetRegistration returns the Registration field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetRegistration() IdentityProviderCommonRegistration {
-	if o == nil || isNil(o.Registration) {
+	if o == nil || IsNil(o.Registration) {
 		var ret IdentityProviderCommonRegistration
 		return ret
 	}
@@ -314,15 +317,15 @@ func (o *IdentityProviderClientIDClientSecret) GetRegistration() IdentityProvide
 // GetRegistrationOk returns a tuple with the Registration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetRegistrationOk() (*IdentityProviderCommonRegistration, bool) {
-	if o == nil || isNil(o.Registration) {
-    return nil, false
+	if o == nil || IsNil(o.Registration) {
+		return nil, false
 	}
 	return o.Registration, true
 }
 
 // HasRegistration returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasRegistration() bool {
-	if o != nil && !isNil(o.Registration) {
+	if o != nil && !IsNil(o.Registration) {
 		return true
 	}
 
@@ -348,7 +351,7 @@ func (o *IdentityProviderClientIDClientSecret) GetType() EnumIdentityProviderExt
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetTypeOk() (*EnumIdentityProviderExt, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -360,7 +363,7 @@ func (o *IdentityProviderClientIDClientSecret) SetType(v EnumIdentityProviderExt
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetCreatedAt() string {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
@@ -370,15 +373,15 @@ func (o *IdentityProviderClientIDClientSecret) GetCreatedAt() string {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetCreatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -392,7 +395,7 @@ func (o *IdentityProviderClientIDClientSecret) SetCreatedAt(v string) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *IdentityProviderClientIDClientSecret) GetUpdatedAt() string {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret string
 		return ret
 	}
@@ -402,15 +405,15 @@ func (o *IdentityProviderClientIDClientSecret) GetUpdatedAt() string {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *IdentityProviderClientIDClientSecret) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -436,7 +439,7 @@ func (o *IdentityProviderClientIDClientSecret) GetClientId() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetClientIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientId, true
 }
@@ -460,7 +463,7 @@ func (o *IdentityProviderClientIDClientSecret) GetClientSecret() string {
 // and a boolean to check if the value has been set.
 func (o *IdentityProviderClientIDClientSecret) GetClientSecretOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ClientSecret, true
 }
@@ -471,50 +474,42 @@ func (o *IdentityProviderClientIDClientSecret) SetClientSecret(v string) {
 }
 
 func (o IdentityProviderClientIDClientSecret) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Links) {
-		toSerialize["_links"] = o.Links
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if !isNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !isNil(o.Icon) {
-		toSerialize["icon"] = o.Icon
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.LoginButtonIcon) {
-		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Registration) {
-		toSerialize["registration"] = o.Registration
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["clientSecret"] = o.ClientSecret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProviderClientIDClientSecret) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
+	}
+	// skip: id is readOnly
+	if !IsNil(o.LoginButtonIcon) {
+		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Registration) {
+		toSerialize["registration"] = o.Registration
+	}
+	toSerialize["type"] = o.Type
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["clientSecret"] = o.ClientSecret
+	return toSerialize, nil
 }
 
 type NullableIdentityProviderClientIDClientSecret struct {

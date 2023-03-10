@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationsPolicyQuotasInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationsPolicyQuotasInner{}
+
 // NotificationsPolicyQuotasInner struct for NotificationsPolicyQuotasInner
 type NotificationsPolicyQuotasInner struct {
 	Type EnumNotificationsPolicyQuotaItemType `json:"type"`
@@ -60,7 +63,7 @@ func (o *NotificationsPolicyQuotasInner) GetType() EnumNotificationsPolicyQuotaI
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicyQuotasInner) GetTypeOk() (*EnumNotificationsPolicyQuotaItemType, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -84,7 +87,7 @@ func (o *NotificationsPolicyQuotasInner) GetDeliveryMethods() []EnumNotification
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicyQuotasInner) GetDeliveryMethodsOk() ([]EnumNotificationsPolicyQuotaDeliveryMethods, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.DeliveryMethods, true
 }
@@ -96,7 +99,7 @@ func (o *NotificationsPolicyQuotasInner) SetDeliveryMethods(v []EnumNotification
 
 // GetTotal returns the Total field value if set, zero value otherwise.
 func (o *NotificationsPolicyQuotasInner) GetTotal() int32 {
-	if o == nil || isNil(o.Total) {
+	if o == nil || IsNil(o.Total) {
 		var ret int32
 		return ret
 	}
@@ -106,15 +109,15 @@ func (o *NotificationsPolicyQuotasInner) GetTotal() int32 {
 // GetTotalOk returns a tuple with the Total field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicyQuotasInner) GetTotalOk() (*int32, bool) {
-	if o == nil || isNil(o.Total) {
-    return nil, false
+	if o == nil || IsNil(o.Total) {
+		return nil, false
 	}
 	return o.Total, true
 }
 
 // HasTotal returns a boolean if a field has been set.
 func (o *NotificationsPolicyQuotasInner) HasTotal() bool {
-	if o != nil && !isNil(o.Total) {
+	if o != nil && !IsNil(o.Total) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *NotificationsPolicyQuotasInner) SetTotal(v int32) {
 
 // GetClaimed returns the Claimed field value if set, zero value otherwise.
 func (o *NotificationsPolicyQuotasInner) GetClaimed() int32 {
-	if o == nil || isNil(o.Claimed) {
+	if o == nil || IsNil(o.Claimed) {
 		var ret int32
 		return ret
 	}
@@ -138,15 +141,15 @@ func (o *NotificationsPolicyQuotasInner) GetClaimed() int32 {
 // GetClaimedOk returns a tuple with the Claimed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicyQuotasInner) GetClaimedOk() (*int32, bool) {
-	if o == nil || isNil(o.Claimed) {
-    return nil, false
+	if o == nil || IsNil(o.Claimed) {
+		return nil, false
 	}
 	return o.Claimed, true
 }
 
 // HasClaimed returns a boolean if a field has been set.
 func (o *NotificationsPolicyQuotasInner) HasClaimed() bool {
-	if o != nil && !isNil(o.Claimed) {
+	if o != nil && !IsNil(o.Claimed) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *NotificationsPolicyQuotasInner) SetClaimed(v int32) {
 
 // GetUnclaimed returns the Unclaimed field value if set, zero value otherwise.
 func (o *NotificationsPolicyQuotasInner) GetUnclaimed() int32 {
-	if o == nil || isNil(o.Unclaimed) {
+	if o == nil || IsNil(o.Unclaimed) {
 		var ret int32
 		return ret
 	}
@@ -170,15 +173,15 @@ func (o *NotificationsPolicyQuotasInner) GetUnclaimed() int32 {
 // GetUnclaimedOk returns a tuple with the Unclaimed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsPolicyQuotasInner) GetUnclaimedOk() (*int32, bool) {
-	if o == nil || isNil(o.Unclaimed) {
-    return nil, false
+	if o == nil || IsNil(o.Unclaimed) {
+		return nil, false
 	}
 	return o.Unclaimed, true
 }
 
 // HasUnclaimed returns a boolean if a field has been set.
 func (o *NotificationsPolicyQuotasInner) HasUnclaimed() bool {
-	if o != nil && !isNil(o.Unclaimed) {
+	if o != nil && !IsNil(o.Unclaimed) {
 		return true
 	}
 
@@ -191,23 +194,27 @@ func (o *NotificationsPolicyQuotasInner) SetUnclaimed(v int32) {
 }
 
 func (o NotificationsPolicyQuotasInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["deliveryMethods"] = o.DeliveryMethods
-	}
-	if !isNil(o.Total) {
-		toSerialize["total"] = o.Total
-	}
-	if !isNil(o.Claimed) {
-		toSerialize["claimed"] = o.Claimed
-	}
-	if !isNil(o.Unclaimed) {
-		toSerialize["unclaimed"] = o.Unclaimed
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationsPolicyQuotasInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	toSerialize["deliveryMethods"] = o.DeliveryMethods
+	if !IsNil(o.Total) {
+		toSerialize["total"] = o.Total
+	}
+	if !IsNil(o.Claimed) {
+		toSerialize["claimed"] = o.Claimed
+	}
+	if !IsNil(o.Unclaimed) {
+		toSerialize["unclaimed"] = o.Unclaimed
+	}
+	return toSerialize, nil
 }
 
 type NullableNotificationsPolicyQuotasInner struct {

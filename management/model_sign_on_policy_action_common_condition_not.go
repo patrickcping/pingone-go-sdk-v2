@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignOnPolicyActionCommonConditionNot type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignOnPolicyActionCommonConditionNot{}
+
 // SignOnPolicyActionCommonConditionNot struct for SignOnPolicyActionCommonConditionNot
 type SignOnPolicyActionCommonConditionNot struct {
 	Not *SignOnPolicyActionCommonConditionAggregate `json:"not,omitempty"`
@@ -38,7 +41,7 @@ func NewSignOnPolicyActionCommonConditionNotWithDefaults() *SignOnPolicyActionCo
 
 // GetNot returns the Not field value if set, zero value otherwise.
 func (o *SignOnPolicyActionCommonConditionNot) GetNot() SignOnPolicyActionCommonConditionAggregate {
-	if o == nil || isNil(o.Not) {
+	if o == nil || IsNil(o.Not) {
 		var ret SignOnPolicyActionCommonConditionAggregate
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *SignOnPolicyActionCommonConditionNot) GetNot() SignOnPolicyActionCommon
 // GetNotOk returns a tuple with the Not field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignOnPolicyActionCommonConditionNot) GetNotOk() (*SignOnPolicyActionCommonConditionAggregate, bool) {
-	if o == nil || isNil(o.Not) {
-    return nil, false
+	if o == nil || IsNil(o.Not) {
+		return nil, false
 	}
 	return o.Not, true
 }
 
 // HasNot returns a boolean if a field has been set.
 func (o *SignOnPolicyActionCommonConditionNot) HasNot() bool {
-	if o != nil && !isNil(o.Not) {
+	if o != nil && !IsNil(o.Not) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *SignOnPolicyActionCommonConditionNot) SetNot(v SignOnPolicyActionCommon
 }
 
 func (o SignOnPolicyActionCommonConditionNot) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Not) {
-		toSerialize["not"] = o.Not
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignOnPolicyActionCommonConditionNot) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Not) {
+		toSerialize["not"] = o.Not
+	}
+	return toSerialize, nil
 }
 
 type NullableSignOnPolicyActionCommonConditionNot struct {

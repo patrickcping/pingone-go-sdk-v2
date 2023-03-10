@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationWSFEDAllOfIdpSigning type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationWSFEDAllOfIdpSigning{}
+
 // ApplicationWSFEDAllOfIdpSigning Contains the information about the signing of requests by the identity provider (IdP).
 type ApplicationWSFEDAllOfIdpSigning struct {
 	// The signature algorithm to be used for signing. Algorithms upported RSA_SHA 256, 384, 512, and ECDSA_SHA 1, 224, 256, 384, 512.
@@ -54,7 +57,7 @@ func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithm() string {
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithmOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Algorithm, true
 }
@@ -78,7 +81,7 @@ func (o *ApplicationWSFEDAllOfIdpSigning) GetKey() ApplicationWSFEDAllOfIdpSigni
 // and a boolean to check if the value has been set.
 func (o *ApplicationWSFEDAllOfIdpSigning) GetKeyOk() (*ApplicationWSFEDAllOfIdpSigningKey, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Key, true
 }
@@ -89,14 +92,18 @@ func (o *ApplicationWSFEDAllOfIdpSigning) SetKey(v ApplicationWSFEDAllOfIdpSigni
 }
 
 func (o ApplicationWSFEDAllOfIdpSigning) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["algorithm"] = o.Algorithm
-	}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationWSFEDAllOfIdpSigning) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["algorithm"] = o.Algorithm
+	toSerialize["key"] = o.Key
+	return toSerialize, nil
 }
 
 type NullableApplicationWSFEDAllOfIdpSigning struct {
