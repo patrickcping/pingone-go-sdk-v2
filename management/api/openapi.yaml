@@ -27990,9 +27990,7 @@ components:
         key:
           $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigning_key'
         algorithm:
-          description: A string that specifies the IdP Signing key algorithm.
-          readOnly: true
-          type: string
+          $ref: '#/components/schemas/EnumCertificateKeySignagureAlgorithm'
       required:
       - key
       type: object

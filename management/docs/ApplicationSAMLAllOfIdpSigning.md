@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | [**ApplicationSAMLAllOfIdpSigningKey**](ApplicationSAMLAllOfIdpSigningKey.md) |  | 
-**Algorithm** | Pointer to **string** | A string that specifies the IdP Signing key algorithm. | [optional] [readonly] 
+**Algorithm** | Pointer to [**EnumCertificateKeySignagureAlgorithm**](EnumCertificateKeySignagureAlgorithm.md) |  | [optional] 
 
 ## Methods
 
@@ -48,20 +48,20 @@ SetKey sets Key field to given value.
 
 ### GetAlgorithm
 
-`func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithm() string`
+`func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithm() EnumCertificateKeySignagureAlgorithm`
 
 GetAlgorithm returns the Algorithm field if non-nil, zero value otherwise.
 
 ### GetAlgorithmOk
 
-`func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithmOk() (*string, bool)`
+`func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithmOk() (*EnumCertificateKeySignagureAlgorithm, bool)`
 
 GetAlgorithmOk returns a tuple with the Algorithm field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlgorithm
 
-`func (o *ApplicationSAMLAllOfIdpSigning) SetAlgorithm(v string)`
+`func (o *ApplicationSAMLAllOfIdpSigning) SetAlgorithm(v EnumCertificateKeySignagureAlgorithm)`
 
 SetAlgorithm sets Algorithm field to given value.
 

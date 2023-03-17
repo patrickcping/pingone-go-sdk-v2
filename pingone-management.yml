@@ -700,9 +700,7 @@ components:
                   required:
                     - id
                 algorithm:
-                  type: string
-                  description: A string that specifies the IdP Signing key algorithm.
-                  readOnly: true
+                  $ref: '#/components/schemas/EnumCertificateKeySignagureAlgorithm'
               required:
                 - key
             nameIdFormat:
