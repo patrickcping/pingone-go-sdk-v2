@@ -1,3 +1,8 @@
+# v0.17.0 (Unreleased)
+
+* **Bug fix** `priority` attribute in the `FlowPolicyAssignment` data model corrected to be a required field, with a minimum value of `1`.
+* **Note** Added `FlowPolicy` and `FlowPolicyAssignment` data model descriptions.
+
 # v0.16.0 (2023-03-10)
 
 * **Note** bump codegen v6.2.1 => v6.4.0 [#122](https://github.com/patrickcping/pingone-go-sdk-v2/pull/122)

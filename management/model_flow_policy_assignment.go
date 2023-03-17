@@ -19,20 +19,23 @@ var _ MappedNullable = &FlowPolicyAssignment{}
 
 // FlowPolicyAssignment struct for FlowPolicyAssignment
 type FlowPolicyAssignment struct {
+	// A string that specifies the flow policy assignment resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	Application *ObjectApplication `json:"application,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	FlowPolicy ApplicationAccessControlGroupGroupsInner `json:"flowPolicy"`
-	Priority *int32 `json:"priority,omitempty"`
+	FlowPolicy FlowPolicyAssignmentFlowPolicy `json:"flowPolicy"`
+	// The order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first.
+	Priority int32 `json:"priority"`
 }
 
 // NewFlowPolicyAssignment instantiates a new FlowPolicyAssignment object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlowPolicyAssignment(flowPolicy ApplicationAccessControlGroupGroupsInner) *FlowPolicyAssignment {
+func NewFlowPolicyAssignment(flowPolicy FlowPolicyAssignmentFlowPolicy, priority int32) *FlowPolicyAssignment {
 	this := FlowPolicyAssignment{}
 	this.FlowPolicy = flowPolicy
+	this.Priority = priority
 	return &this
 }
 
@@ -141,9 +144,9 @@ func (o *FlowPolicyAssignment) SetEnvironment(v ObjectEnvironment) {
 }
 
 // GetFlowPolicy returns the FlowPolicy field value
-func (o *FlowPolicyAssignment) GetFlowPolicy() ApplicationAccessControlGroupGroupsInner {
+func (o *FlowPolicyAssignment) GetFlowPolicy() FlowPolicyAssignmentFlowPolicy {
 	if o == nil {
-		var ret ApplicationAccessControlGroupGroupsInner
+		var ret FlowPolicyAssignmentFlowPolicy
 		return ret
 	}
 
@@ -152,7 +155,7 @@ func (o *FlowPolicyAssignment) GetFlowPolicy() ApplicationAccessControlGroupGrou
 
 // GetFlowPolicyOk returns a tuple with the FlowPolicy field value
 // and a boolean to check if the value has been set.
-func (o *FlowPolicyAssignment) GetFlowPolicyOk() (*ApplicationAccessControlGroupGroupsInner, bool) {
+func (o *FlowPolicyAssignment) GetFlowPolicyOk() (*FlowPolicyAssignmentFlowPolicy, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -160,40 +163,32 @@ func (o *FlowPolicyAssignment) GetFlowPolicyOk() (*ApplicationAccessControlGroup
 }
 
 // SetFlowPolicy sets field value
-func (o *FlowPolicyAssignment) SetFlowPolicy(v ApplicationAccessControlGroupGroupsInner) {
+func (o *FlowPolicyAssignment) SetFlowPolicy(v FlowPolicyAssignmentFlowPolicy) {
 	o.FlowPolicy = v
 }
 
-// GetPriority returns the Priority field value if set, zero value otherwise.
+// GetPriority returns the Priority field value
 func (o *FlowPolicyAssignment) GetPriority() int32 {
-	if o == nil || IsNil(o.Priority) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Priority
+
+	return o.Priority
 }
 
-// GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
+// GetPriorityOk returns a tuple with the Priority field value
 // and a boolean to check if the value has been set.
 func (o *FlowPolicyAssignment) GetPriorityOk() (*int32, bool) {
-	if o == nil || IsNil(o.Priority) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Priority, true
+	return &o.Priority, true
 }
 
-// HasPriority returns a boolean if a field has been set.
-func (o *FlowPolicyAssignment) HasPriority() bool {
-	if o != nil && !IsNil(o.Priority) {
-		return true
-	}
-
-	return false
-}
-
-// SetPriority gets a reference to the given int32 and assigns it to the Priority field.
+// SetPriority sets field value
 func (o *FlowPolicyAssignment) SetPriority(v int32) {
-	o.Priority = &v
+	o.Priority = v
 }
 
 func (o FlowPolicyAssignment) MarshalJSON() ([]byte, error) {
@@ -214,9 +209,7 @@ func (o FlowPolicyAssignment) ToMap() (map[string]interface{}, error) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["flowPolicy"] = o.FlowPolicy
-	if !IsNil(o.Priority) {
-		toSerialize["priority"] = o.Priority
-	}
+	toSerialize["priority"] = o.Priority
 	return toSerialize, nil
 }
 

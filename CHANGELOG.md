@@ -1,3 +1,9 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.17.0](./management/CHANGELOG.md)
+    * **Bug fix** `priority` attribute in the `FlowPolicyAssignment` data model corrected to be a required field, with a minimum value of `1`.
+    * **Note** Added `FlowPolicy` and `FlowPolicyAssignment` data model descriptions.
+
 # Release (2023-03-10)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.0

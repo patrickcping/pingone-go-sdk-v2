@@ -17,7 +17,7 @@ import (
 // checks if the FlowPolicyTrigger type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FlowPolicyTrigger{}
 
-// FlowPolicyTrigger struct for FlowPolicyTrigger
+// FlowPolicyTrigger An object that specifies trigger information associated with the flow policy resource.
 type FlowPolicyTrigger struct {
 	Type *EnumFlowPolicyTriggerType `json:"type,omitempty"`
 }
