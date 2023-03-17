@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** | The unique identifier of the application resource associated with the flow policy. | [optional] 
+**Name** | Pointer to **string** | The name of the application resource associated with the flow policy. | [optional] 
 
 ## Methods
 

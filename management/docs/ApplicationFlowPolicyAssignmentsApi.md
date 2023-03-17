@@ -33,7 +33,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     applicationID := "applicationID_example" // string | 
-    flowPolicyAssignment := *openapiclient.NewFlowPolicyAssignment(*openapiclient.NewApplicationAccessControlGroupGroupsInner("Id_example")) // FlowPolicyAssignment |  (optional)
+    flowPolicyAssignment := *openapiclient.NewFlowPolicyAssignment(*openapiclient.NewFlowPolicyAssignmentFlowPolicy("Id_example"), int32(123)) // FlowPolicyAssignment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -324,7 +324,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     applicationID := "applicationID_example" // string | 
     flowPolicyAssignmentID := "flowPolicyAssignmentID_example" // string | 
-    flowPolicyAssignment := *openapiclient.NewFlowPolicyAssignment(*openapiclient.NewApplicationAccessControlGroupGroupsInner("Id_example")) // FlowPolicyAssignment |  (optional)
+    flowPolicyAssignment := *openapiclient.NewFlowPolicyAssignment(*openapiclient.NewFlowPolicyAssignmentFlowPolicy("Id_example"), int32(123)) // FlowPolicyAssignment |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

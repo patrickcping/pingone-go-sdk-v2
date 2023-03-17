@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumFlowPolicyTriggerType the model 'EnumFlowPolicyTriggerType'
+// EnumFlowPolicyTriggerType An enum string that specifies the trigger type associated with the flow policy trigger.
 type EnumFlowPolicyTriggerType string
 
 // List of EnumFlowPolicyTriggerType

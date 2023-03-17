@@ -22670,6 +22670,8 @@ components:
       - SANDBOX
       type: string
     EnumFlowPolicyTriggerType:
+      description: An enum string that specifies the trigger type associated with
+        the flow policy trigger.
       enum:
       - AUTHENTICATION
       type: string
@@ -24848,7 +24850,7 @@ components:
             id: id
             flowPolicy:
               id: id
-            priority: 7
+            priority: 1
           - environment:
               id: id
             application:
@@ -24856,7 +24858,7 @@ components:
             id: id
             flowPolicy:
               id: id
-            priority: 7
+            priority: 1
           licenses:
           - gateways:
               allowLdapGateway: true
@@ -25328,6 +25330,7 @@ components:
         enabled: true
       properties:
         id:
+          description: The flow policy resource's unique identifier.
           readOnly: true
           type: string
         environment:
@@ -25335,9 +25338,11 @@ components:
         application:
           $ref: '#/components/schemas/FlowPolicy_application'
         enabled:
+          description: A boolean that specifies whether the flow policy is enabled.
           readOnly: true
           type: boolean
         name:
+          description: The flow policy resource name.
           readOnly: true
           type: string
         trigger:
@@ -25352,9 +25357,11 @@ components:
         id: id
         flowPolicy:
           id: id
-        priority: 7
+        priority: 1
       properties:
         id:
+          description: A string that specifies the flow policy assignment resource's
+            unique identifier.
           readOnly: true
           type: string
         application:
@@ -25362,11 +25369,16 @@ components:
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         flowPolicy:
-          $ref: '#/components/schemas/Application_accessControl_group_groups_inner'
+          $ref: '#/components/schemas/FlowPolicyAssignment_flowPolicy'
         priority:
+          description: The order in which the policy referenced by this assignment
+            is evaluated during an authentication flow relative to other policies.
+            An assignment with a lower priority will be evaluated first.
+          minimum: 1
           type: integer
       required:
       - flowPolicy
+      - priority
       type: object
     Gateway:
       properties:
@@ -27910,8 +27922,6 @@ components:
       - type
       type: object
     Application_accessControl_group_groups_inner:
-      example:
-        id: id
       properties:
         id:
           type: string
@@ -29518,7 +29528,7 @@ components:
           id: id
           flowPolicy:
             id: id
-          priority: 7
+          priority: 1
         - environment:
             id: id
           application:
@@ -29526,7 +29536,7 @@ components:
           id: id
           flowPolicy:
             id: id
-          priority: 7
+          priority: 1
         licenses:
         - gateways:
             allowLdapGateway: true
@@ -30105,23 +30115,43 @@ components:
           type: string
       type: object
     FlowPolicy_application:
+      description: An object that specifies the application information associated
+        with the flow policy resource.
       example:
         name: name
         id: id
       properties:
         id:
+          description: The unique identifier of the application resource associated
+            with the flow policy.
           type: string
         name:
+          description: The name of the application resource associated with the flow
+            policy.
           type: string
       readOnly: true
       type: object
     FlowPolicy_trigger:
+      description: An object that specifies trigger information associated with the
+        flow policy resource.
       example:
         type: null
       properties:
         type:
           $ref: '#/components/schemas/EnumFlowPolicyTriggerType'
       readOnly: true
+      type: object
+    FlowPolicyAssignment_flowPolicy:
+      description: An object that contains details of the flow policy resource.
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the flow policy resource ID associated
+            with the flow policy assignment.
+          type: string
+      required:
+      - id
       type: object
     Gateway_supportedVersions_inner:
       properties:

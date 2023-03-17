@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] [readonly] 
+**Id** | Pointer to **string** | A string that specifies the flow policy assignment resource&#39;s unique identifier. | [optional] [readonly] 
 **Application** | Pointer to [**ObjectApplication**](ObjectApplication.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**FlowPolicy** | [**ApplicationAccessControlGroupGroupsInner**](ApplicationAccessControlGroupGroupsInner.md) |  | 
-**Priority** | Pointer to **int32** |  | [optional] 
+**FlowPolicy** | [**FlowPolicyAssignmentFlowPolicy**](FlowPolicyAssignmentFlowPolicy.md) |  | 
+**Priority** | **int32** | The order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first. | 
 
 ## Methods
 
 ### NewFlowPolicyAssignment
 
-`func NewFlowPolicyAssignment(flowPolicy ApplicationAccessControlGroupGroupsInner, ) *FlowPolicyAssignment`
+`func NewFlowPolicyAssignment(flowPolicy FlowPolicyAssignmentFlowPolicy, priority int32, ) *FlowPolicyAssignment`
 
 NewFlowPolicyAssignment instantiates a new FlowPolicyAssignment object
 This constructor will assign default values to properties that have it defined,
@@ -106,20 +106,20 @@ HasEnvironment returns a boolean if a field has been set.
 
 ### GetFlowPolicy
 
-`func (o *FlowPolicyAssignment) GetFlowPolicy() ApplicationAccessControlGroupGroupsInner`
+`func (o *FlowPolicyAssignment) GetFlowPolicy() FlowPolicyAssignmentFlowPolicy`
 
 GetFlowPolicy returns the FlowPolicy field if non-nil, zero value otherwise.
 
 ### GetFlowPolicyOk
 
-`func (o *FlowPolicyAssignment) GetFlowPolicyOk() (*ApplicationAccessControlGroupGroupsInner, bool)`
+`func (o *FlowPolicyAssignment) GetFlowPolicyOk() (*FlowPolicyAssignmentFlowPolicy, bool)`
 
 GetFlowPolicyOk returns a tuple with the FlowPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFlowPolicy
 
-`func (o *FlowPolicyAssignment) SetFlowPolicy(v ApplicationAccessControlGroupGroupsInner)`
+`func (o *FlowPolicyAssignment) SetFlowPolicy(v FlowPolicyAssignmentFlowPolicy)`
 
 SetFlowPolicy sets FlowPolicy field to given value.
 
@@ -143,11 +143,6 @@ and a boolean to check if the value has been set.
 
 SetPriority sets Priority field to given value.
 
-### HasPriority
-
-`func (o *FlowPolicyAssignment) HasPriority() bool`
-
-HasPriority returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

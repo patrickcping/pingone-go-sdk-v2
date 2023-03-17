@@ -17,9 +17,11 @@ import (
 // checks if the FlowPolicyApplication type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FlowPolicyApplication{}
 
-// FlowPolicyApplication struct for FlowPolicyApplication
+// FlowPolicyApplication An object that specifies the application information associated with the flow policy resource.
 type FlowPolicyApplication struct {
+	// The unique identifier of the application resource associated with the flow policy.
 	Id *string `json:"id,omitempty"`
+	// The name of the application resource associated with the flow policy.
 	Name *string `json:"name,omitempty"`
 }
 

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] [readonly] 
+**Id** | Pointer to **string** | The flow policy resource&#39;s unique identifier. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Application** | Pointer to [**FlowPolicyApplication**](FlowPolicyApplication.md) |  | [optional] 
-**Enabled** | Pointer to **bool** |  | [optional] [readonly] 
-**Name** | Pointer to **string** |  | [optional] [readonly] 
+**Enabled** | Pointer to **bool** | A boolean that specifies whether the flow policy is enabled. | [optional] [readonly] 
+**Name** | Pointer to **string** | The flow policy resource name. | [optional] [readonly] 
 **Trigger** | Pointer to [**FlowPolicyTrigger**](FlowPolicyTrigger.md) |  | [optional] 
 
 ## Methods

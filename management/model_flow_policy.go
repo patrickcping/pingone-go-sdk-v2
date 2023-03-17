@@ -19,10 +19,13 @@ var _ MappedNullable = &FlowPolicy{}
 
 // FlowPolicy struct for FlowPolicy
 type FlowPolicy struct {
+	// The flow policy resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Application *FlowPolicyApplication `json:"application,omitempty"`
+	// A boolean that specifies whether the flow policy is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
+	// The flow policy resource name.
 	Name *string `json:"name,omitempty"`
 	Trigger *FlowPolicyTrigger `json:"trigger,omitempty"`
 }

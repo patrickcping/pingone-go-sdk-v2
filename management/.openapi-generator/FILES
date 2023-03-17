@@ -273,6 +273,7 @@ docs/FlowPoliciesApi.md
 docs/FlowPolicy.md
 docs/FlowPolicyApplication.md
 docs/FlowPolicyAssignment.md
+docs/FlowPolicyAssignmentFlowPolicy.md
 docs/FlowPolicyTrigger.md
 docs/Gateway.md
 docs/GatewayCredential.md
@@ -705,6 +706,7 @@ model_environment_organization.go
 model_flow_policy.go
 model_flow_policy_application.go
 model_flow_policy_assignment.go
+model_flow_policy_assignment_flow_policy.go
 model_flow_policy_trigger.go
 model_gateway.go
 model_gateway_credential.go
