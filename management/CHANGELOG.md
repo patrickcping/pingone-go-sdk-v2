@@ -1,8 +1,9 @@
 # v0.17.0 (Unreleased)
 
+* **Note** Added `FlowPolicy` and `FlowPolicyAssignment` data model descriptions. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
 * **Bug fix** `priority` attribute in the `FlowPolicyAssignment` data model corrected to be a required field, with a minimum value of `1`. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
 * **Bug fix** `flowPolicy` attribute in the `FlowPolicyAssignment` data model corrected to the `FlowPolicyAssignmentFlowPolicy` data model. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
-* **Note** Added `FlowPolicy` and `FlowPolicyAssignment` data model descriptions. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
+* **Bug fix** `idpSigning.algorithm` attribute in the `ApplicationSAML` data model corrected to be writable, set as ENUM.
 
 # v0.16.0 (2023-03-10)
 

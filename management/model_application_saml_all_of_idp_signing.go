@@ -20,8 +20,7 @@ var _ MappedNullable = &ApplicationSAMLAllOfIdpSigning{}
 // ApplicationSAMLAllOfIdpSigning struct for ApplicationSAMLAllOfIdpSigning
 type ApplicationSAMLAllOfIdpSigning struct {
 	Key ApplicationSAMLAllOfIdpSigningKey `json:"key"`
-	// A string that specifies the IdP Signing key algorithm.
-	Algorithm *string `json:"algorithm,omitempty"`
+	Algorithm *EnumCertificateKeySignagureAlgorithm `json:"algorithm,omitempty"`
 }
 
 // NewApplicationSAMLAllOfIdpSigning instantiates a new ApplicationSAMLAllOfIdpSigning object
@@ -67,9 +66,9 @@ func (o *ApplicationSAMLAllOfIdpSigning) SetKey(v ApplicationSAMLAllOfIdpSigning
 }
 
 // GetAlgorithm returns the Algorithm field value if set, zero value otherwise.
-func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithm() string {
+func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithm() EnumCertificateKeySignagureAlgorithm {
 	if o == nil || IsNil(o.Algorithm) {
-		var ret string
+		var ret EnumCertificateKeySignagureAlgorithm
 		return ret
 	}
 	return *o.Algorithm
@@ -77,7 +76,7 @@ func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithm() string {
 
 // GetAlgorithmOk returns a tuple with the Algorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithmOk() (*string, bool) {
+func (o *ApplicationSAMLAllOfIdpSigning) GetAlgorithmOk() (*EnumCertificateKeySignagureAlgorithm, bool) {
 	if o == nil || IsNil(o.Algorithm) {
 		return nil, false
 	}
@@ -93,8 +92,8 @@ func (o *ApplicationSAMLAllOfIdpSigning) HasAlgorithm() bool {
 	return false
 }
 
-// SetAlgorithm gets a reference to the given string and assigns it to the Algorithm field.
-func (o *ApplicationSAMLAllOfIdpSigning) SetAlgorithm(v string) {
+// SetAlgorithm gets a reference to the given EnumCertificateKeySignagureAlgorithm and assigns it to the Algorithm field.
+func (o *ApplicationSAMLAllOfIdpSigning) SetAlgorithm(v EnumCertificateKeySignagureAlgorithm) {
 	o.Algorithm = &v
 }
 
@@ -109,7 +108,9 @@ func (o ApplicationSAMLAllOfIdpSigning) MarshalJSON() ([]byte, error) {
 func (o ApplicationSAMLAllOfIdpSigning) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
-	// skip: algorithm is readOnly
+	if !IsNil(o.Algorithm) {
+		toSerialize["algorithm"] = o.Algorithm
+	}
 	return toSerialize, nil
 }
 
