@@ -8,7 +8,6 @@ api_fido_policy.go
 api_mfa_settings.go
 api_user_mfa_devices.go
 api_user_mfa_pairing_keys.go
-client.go
 configuration.go
 docs/ApplicationsApplicationMFAPushCredentialsApi.md
 docs/CreateMFAPushCredentialRequest.md

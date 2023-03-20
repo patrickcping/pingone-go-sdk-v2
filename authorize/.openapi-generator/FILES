@@ -2,7 +2,6 @@ README.md
 api/openapi.yaml
 api_api_servers.go
 api_policy_decision_management.go
-client.go
 configuration.go
 docs/APIServer.md
 docs/APIServerAuthorizationServer.md

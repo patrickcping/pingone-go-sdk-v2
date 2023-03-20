@@ -3,11 +3,21 @@
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.1
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.16.0 => v0.17.0 [#132](https://github.com/patrickcping/pingone-go-sdk-v2/pull/132)
     * **Note** bump `github.com/golangci/golangci-lint` from v1.51.2 to v1.52.0 [#129](https://github.com/patrickcping/pingone-go-sdk-v2/pull/129)
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.1](./agreementmanagement/CHANGELOG.md)
+    * **Note** Adjust client request/response debug and fix linting issues. [#133](https://github.com/patrickcping/pingone-go-sdk-v2/pull/133)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.4](./authorize/CHANGELOG.md)
+    * **Note** Adjust client request/response debug and fix linting issues. [#133](https://github.com/patrickcping/pingone-go-sdk-v2/pull/133)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.17.1](./management/CHANGELOG.md)
+    * **Note** Adjust client request/response debug and fix linting issues. [#133](https://github.com/patrickcping/pingone-go-sdk-v2/pull/133)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.17.0](./management/CHANGELOG.md)
     * **Note** Added `FlowPolicy` and `FlowPolicyAssignment` data model descriptions. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
     * **Bug fix** `priority` attribute in the `FlowPolicyAssignment` data model corrected to be a required field, with a minimum value of `1`. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
     * **Bug fix** `flowPolicy` attribute in the `FlowPolicyAssignment` data model corrected to the `FlowPolicyAssignmentFlowPolicy` data model. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
     * **Bug fix** `idpSigning.algorithm` attribute in the `ApplicationSAML` data model corrected to be writable, set as ENUM.
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.9.1](./mfa/CHANGELOG.md)
+    * **Note** Adjust client request/response debug and fix linting issues. [#133](https://github.com/patrickcping/pingone-go-sdk-v2/pull/133)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.3.4](./risk/CHANGELOG.md)
+    * **Note** Adjust client request/response debug and fix linting issues. [#133](https://github.com/patrickcping/pingone-go-sdk-v2/pull/133)
 
 # Release (2023-03-10)
 

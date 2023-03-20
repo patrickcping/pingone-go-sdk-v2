@@ -3,7 +3,6 @@ api/openapi.yaml
 api_risk_advanced_predictors.go
 api_risk_evaluations.go
 api_risk_policies.go
-client.go
 configuration.go
 docs/EntityArray.md
 docs/EntityArrayEmbedded.md
