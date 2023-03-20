@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2023-03-20)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.17.0](./management/CHANGELOG.md)
     * **Note** Added `FlowPolicy` and `FlowPolicyAssignment` data model descriptions. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
