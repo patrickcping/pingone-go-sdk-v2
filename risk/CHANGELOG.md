@@ -1,6 +1,6 @@
 # v0.3.4 (2023-03-20)
 
-* **Note** Adjust client request/response debug and fix linting issues
+* **Note** Adjust client request/response debug and fix linting issues. [#133](https://github.com/patrickcping/pingone-go-sdk-v2/pull/133)
 
 # v0.3.3 (2023-03-10)
 
