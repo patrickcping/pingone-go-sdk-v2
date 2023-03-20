@@ -1,12 +1,12 @@
 # Release (2023-03-20)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.1
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.1.0 => v0.1.1
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.3 => v0.1.4
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.17.0 => v0.17.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.1.0 => v0.1.1 [#134](https://github.com/patrickcping/pingone-go-sdk-v2/pull/134)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.3 => v0.1.4 [#134](https://github.com/patrickcping/pingone-go-sdk-v2/pull/134)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.17.0 => v0.17.1 [#134](https://github.com/patrickcping/pingone-go-sdk-v2/pull/134)
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.16.0 => v0.17.0 [#132](https://github.com/patrickcping/pingone-go-sdk-v2/pull/132)
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.9.0 => v0.9.1
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.3.3 => v0.3.4
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.9.0 => v0.9.1 [#134](https://github.com/patrickcping/pingone-go-sdk-v2/pull/134)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.3.3 => v0.3.4 [#134](https://github.com/patrickcping/pingone-go-sdk-v2/pull/134)
     * **Note** bump `github.com/golangci/golangci-lint` from v1.51.2 to v1.52.0 [#129](https://github.com/patrickcping/pingone-go-sdk-v2/pull/129)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.1](./agreementmanagement/CHANGELOG.md)
     * **Note** Adjust client request/response debug and fix linting issues. [#133](https://github.com/patrickcping/pingone-go-sdk-v2/pull/133)
