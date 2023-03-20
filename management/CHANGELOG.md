@@ -1,3 +1,7 @@
+# v0.17.1 (2023-03-20)
+
+* **Note** Adjust client request/response debug and fix linting issues
+
 # v0.17.0 (2023-03-20)
 
 * **Note** Added `FlowPolicy` and `FlowPolicyAssignment` data model descriptions. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)

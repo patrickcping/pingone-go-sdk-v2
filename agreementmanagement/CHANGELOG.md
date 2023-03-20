@@ -1,3 +1,7 @@
+# v0.1.1 (2023-03-20)
+
+* **Note** Adjust client request/response debug and fix linting issues
+
 # v0.1.0 (2023-03-10)
 
 * **Initial release** [#117](https://github.com/patrickcping/pingone-go-sdk-v2/pull/117)

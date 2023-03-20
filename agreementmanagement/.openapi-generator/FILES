@@ -1,7 +1,6 @@
 README.md
 api/openapi.yaml
 api_agreement_revisions_resources.go
-client.go
 configuration.go
 docs/AgreementRevisionText.md
 docs/AgreementRevisionsResourcesApi.md
