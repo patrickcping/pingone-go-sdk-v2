@@ -30,6 +30,8 @@ GNUmakefile
 .version
 test/*
 
+client.go
+
 docs/Certificate.md
 docs/PasswordPolicyMinCharacters.md
 

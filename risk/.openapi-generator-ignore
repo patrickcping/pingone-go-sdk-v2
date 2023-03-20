@@ -29,3 +29,5 @@ CHANGELOG.md
 GNUmakefile
 .version
 test/*
+
+client.go
