@@ -6,7 +6,7 @@ require (
 	github.com/golangci/golangci-lint v1.52.0
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.0
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.3
-	github.com/patrickcping/pingone-go-sdk-v2/management v0.16.0
+	github.com/patrickcping/pingone-go-sdk-v2/management v0.17.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.9.0
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.3.3
 	github.com/pavius/impi v0.0.3

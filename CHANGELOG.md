@@ -1,6 +1,7 @@
 # Release (2023-03-20)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.16.0 => v0.17.0
     * **Note** bump `github.com/golangci/golangci-lint` from v1.51.2 to v1.52.0 [#129](https://github.com/patrickcping/pingone-go-sdk-v2/pull/129)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.17.0](./management/CHANGELOG.md)
     * **Note** Added `FlowPolicy` and `FlowPolicyAssignment` data model descriptions. [#127](https://github.com/patrickcping/pingone-go-sdk-v2/pull/127)
