@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumCompletionStatus A string that specifies the state of the transaction. Options are FAILED, IN_PROGRESS, and SUCCESS. If a value is not provided, the value defaults to IN_PROGRESS. The value of this property can be changed only if its current state is IN_PROGRESS.
+// EnumCompletionStatus A string that specifies the state of the transaction. Options are `FAILED`, `IN_PROGRESS`, and `SUCCESS`. If a value is not provided, the value defaults to `IN_PROGRESS`. The value of this property can be changed only if its current state is `IN_PROGRESS`.
 type EnumCompletionStatus string
 
 // List of EnumCompletionStatus

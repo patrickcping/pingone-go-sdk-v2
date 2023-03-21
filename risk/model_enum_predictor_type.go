@@ -15,21 +15,33 @@ import (
 	"fmt"
 )
 
-// EnumPredictorType An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR, or MAP
+// EnumPredictorType An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`, `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `NEW_DEVICE`, `USER_LOCATION_ANOMALY`, `USER_RISK_BEHAVIOR` or `VELOCITY`.
 type EnumPredictorType string
 
 // List of EnumPredictorType
 const (
-	ENUMPREDICTORTYPE_VELOCITY EnumPredictorType = "VELOCITY"
-	ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR EnumPredictorType = "USER_RISK_BEHAVIOR"
+	ENUMPREDICTORTYPE_ANONYMOUS_NETWORK EnumPredictorType = "ANONYMOUS_NETWORK"
+	ENUMPREDICTORTYPE_COMPOSITE EnumPredictorType = "COMPOSITE"
+	ENUMPREDICTORTYPE_GEO_VELOCITY EnumPredictorType = "GEO_VELOCITY"
+	ENUMPREDICTORTYPE_IP_REPUTATION EnumPredictorType = "IP_REPUTATION"
 	ENUMPREDICTORTYPE_MAP EnumPredictorType = "MAP"
+	ENUMPREDICTORTYPE_NEW_DEVICE EnumPredictorType = "NEW_DEVICE"
+	ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY EnumPredictorType = "USER_LOCATION_ANOMALY"
+	ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR EnumPredictorType = "USER_RISK_BEHAVIOR"
+	ENUMPREDICTORTYPE_VELOCITY EnumPredictorType = "VELOCITY"
 )
 
 // All allowed values of EnumPredictorType enum
 var AllowedEnumPredictorTypeEnumValues = []EnumPredictorType{
-	"VELOCITY",
-	"USER_RISK_BEHAVIOR",
+	"ANONYMOUS_NETWORK",
+	"COMPOSITE",
+	"GEO_VELOCITY",
+	"IP_REPUTATION",
 	"MAP",
+	"NEW_DEVICE",
+	"USER_LOCATION_ANOMALY",
+	"USER_RISK_BEHAVIOR",
+	"VELOCITY",
 }
 
 func (v *EnumPredictorType) UnmarshalJSON(src []byte) error {

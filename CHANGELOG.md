@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.4.0](./risk/CHANGELOG.md)
+    * **Feature** Full support for risk predictors
+
 # Release (2023-03-20)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.1

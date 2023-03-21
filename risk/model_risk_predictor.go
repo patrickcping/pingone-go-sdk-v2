@@ -12,6 +12,7 @@ package risk
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the RiskPredictor type satisfies the MappedNullable interface at compile time
@@ -29,11 +30,15 @@ type RiskPredictor struct {
 	// A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// Indicates whether PingOne Risk is licensed for the environment.
+	Licensed *bool `json:"licensed,omitempty"`
+	// A boolean to indicate whether the predictor is deletable in the environment.
+	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorDefault `json:"default,omitempty"`
-	Map *RiskPredictorMap `json:"map,omitempty"`
+	Condition *RiskPredictorCondition `json:"condition,omitempty"`
 }
 
 // NewRiskPredictor instantiates a new RiskPredictor object
@@ -193,9 +198,9 @@ func (o *RiskPredictor) SetDescription(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *RiskPredictor) GetCreatedAt() string {
+func (o *RiskPredictor) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -203,7 +208,7 @@ func (o *RiskPredictor) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetCreatedAtOk() (*string, bool) {
+func (o *RiskPredictor) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -219,15 +224,15 @@ func (o *RiskPredictor) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *RiskPredictor) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *RiskPredictor) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *RiskPredictor) GetUpdatedAt() string {
+func (o *RiskPredictor) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -235,7 +240,7 @@ func (o *RiskPredictor) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetUpdatedAtOk() (*string, bool) {
+func (o *RiskPredictor) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -251,9 +256,73 @@ func (o *RiskPredictor) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *RiskPredictor) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *RiskPredictor) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
+}
+
+// GetLicensed returns the Licensed field value if set, zero value otherwise.
+func (o *RiskPredictor) GetLicensed() bool {
+	if o == nil || IsNil(o.Licensed) {
+		var ret bool
+		return ret
+	}
+	return *o.Licensed
+}
+
+// GetLicensedOk returns a tuple with the Licensed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictor) GetLicensedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Licensed) {
+		return nil, false
+	}
+	return o.Licensed, true
+}
+
+// HasLicensed returns a boolean if a field has been set.
+func (o *RiskPredictor) HasLicensed() bool {
+	if o != nil && !IsNil(o.Licensed) {
+		return true
+	}
+
+	return false
+}
+
+// SetLicensed gets a reference to the given bool and assigns it to the Licensed field.
+func (o *RiskPredictor) SetLicensed(v bool) {
+	o.Licensed = &v
+}
+
+// GetDeletable returns the Deletable field value if set, zero value otherwise.
+func (o *RiskPredictor) GetDeletable() bool {
+	if o == nil || IsNil(o.Deletable) {
+		var ret bool
+		return ret
+	}
+	return *o.Deletable
+}
+
+// GetDeletableOk returns a tuple with the Deletable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictor) GetDeletableOk() (*bool, bool) {
+	if o == nil || IsNil(o.Deletable) {
+		return nil, false
+	}
+	return o.Deletable, true
+}
+
+// HasDeletable returns a boolean if a field has been set.
+func (o *RiskPredictor) HasDeletable() bool {
+	if o != nil && !IsNil(o.Deletable) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeletable gets a reference to the given bool and assigns it to the Deletable field.
+func (o *RiskPredictor) SetDeletable(v bool) {
+	o.Deletable = &v
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
@@ -288,36 +357,36 @@ func (o *RiskPredictor) SetDefault(v RiskPredictorDefault) {
 	o.Default = &v
 }
 
-// GetMap returns the Map field value if set, zero value otherwise.
-func (o *RiskPredictor) GetMap() RiskPredictorMap {
-	if o == nil || IsNil(o.Map) {
-		var ret RiskPredictorMap
+// GetCondition returns the Condition field value if set, zero value otherwise.
+func (o *RiskPredictor) GetCondition() RiskPredictorCondition {
+	if o == nil || IsNil(o.Condition) {
+		var ret RiskPredictorCondition
 		return ret
 	}
-	return *o.Map
+	return *o.Condition
 }
 
-// GetMapOk returns a tuple with the Map field value if set, nil otherwise
+// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetMapOk() (*RiskPredictorMap, bool) {
-	if o == nil || IsNil(o.Map) {
+func (o *RiskPredictor) GetConditionOk() (*RiskPredictorCondition, bool) {
+	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
-	return o.Map, true
+	return o.Condition, true
 }
 
-// HasMap returns a boolean if a field has been set.
-func (o *RiskPredictor) HasMap() bool {
-	if o != nil && !IsNil(o.Map) {
+// HasCondition returns a boolean if a field has been set.
+func (o *RiskPredictor) HasCondition() bool {
+	if o != nil && !IsNil(o.Condition) {
 		return true
 	}
 
 	return false
 }
 
-// SetMap gets a reference to the given RiskPredictorMap and assigns it to the Map field.
-func (o *RiskPredictor) SetMap(v RiskPredictorMap) {
-	o.Map = &v
+// SetCondition gets a reference to the given RiskPredictorCondition and assigns it to the Condition field.
+func (o *RiskPredictor) SetCondition(v RiskPredictorCondition) {
+	o.Condition = &v
 }
 
 func (o RiskPredictor) MarshalJSON() ([]byte, error) {
@@ -339,11 +408,17 @@ func (o RiskPredictor) ToMap() (map[string]interface{}, error) {
 	}
 	// skip: createdAt is readOnly
 	// skip: updatedAt is readOnly
+	if !IsNil(o.Licensed) {
+		toSerialize["licensed"] = o.Licensed
+	}
+	if !IsNil(o.Deletable) {
+		toSerialize["deletable"] = o.Deletable
+	}
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
-	if !IsNil(o.Map) {
-		toSerialize["map"] = o.Map
+	if !IsNil(o.Condition) {
+		toSerialize["condition"] = o.Condition
 	}
 	return toSerialize, nil
 }

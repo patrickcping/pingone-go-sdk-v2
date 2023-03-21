@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumUserType A string that specifies the type of user associated with the event. Options are EXTERNAL.
+// EnumUserType A string that specifies the type of user associated with the event. Options are `EXTERNAL`.
 type EnumUserType string
 
 // List of EnumUserType
