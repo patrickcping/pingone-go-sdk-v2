@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.18.0](./management/CHANGELOG.md)
+    * **Enhancement** Add `CustomCRL` to the `Certificate` data model [#136](https://github.com/patrickcping/pingone-go-sdk-v2/pull/136)
+
 # Release (2023-03-20)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.1
