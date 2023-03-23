@@ -47,6 +47,8 @@ type Certificate struct {
 	UsageType EnumCertificateKeyUsageType `json:"usageType"`
 	// Specifies the number of days the key is valid.
 	ValidityPeriod int32 `json:"validityPeriod"`
+	// A URL string of a custom Certificate Revokation List endpoint.  Used for certificates of type `ISSUANCE`.
+	CustomCRL *string `json:"customCRL,omitempty"`
 }
 
 // NewCertificate instantiates a new Certificate object
@@ -561,6 +563,38 @@ func (o *Certificate) SetValidityPeriod(v int32) {
 	o.ValidityPeriod = v
 }
 
+// GetCustomCRL returns the CustomCRL field value if set, zero value otherwise.
+func (o *Certificate) GetCustomCRL() string {
+	if o == nil || IsNil(o.CustomCRL) {
+		var ret string
+		return ret
+	}
+	return *o.CustomCRL
+}
+
+// GetCustomCRLOk returns a tuple with the CustomCRL field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Certificate) GetCustomCRLOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomCRL) {
+		return nil, false
+	}
+	return o.CustomCRL, true
+}
+
+// HasCustomCRL returns a boolean if a field has been set.
+func (o *Certificate) HasCustomCRL() bool {
+	if o != nil && !IsNil(o.CustomCRL) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomCRL gets a reference to the given string and assigns it to the CustomCRL field.
+func (o *Certificate) SetCustomCRL(v string) {
+	o.CustomCRL = &v
+}
+
 func (o Certificate) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -600,6 +634,9 @@ func (o Certificate) ToMap() (map[string]interface{}, error) {
 	toSerialize["subjectDN"] = o.SubjectDN
 	toSerialize["usageType"] = o.UsageType
 	toSerialize["validityPeriod"] = o.ValidityPeriod
+	if !IsNil(o.CustomCRL) {
+		toSerialize["customCRL"] = o.CustomCRL
+	}
 	return toSerialize, nil
 }
 
