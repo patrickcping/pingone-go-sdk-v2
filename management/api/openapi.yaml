@@ -23765,6 +23765,7 @@ components:
       type: object
     Certificate:
       example:
+        customCRL: customCRL
         serialNumber: 5
         issuerDN: issuerDN
         expiresAt: 2000-01-23T04:56:07.000+00:00
@@ -23842,6 +23843,11 @@ components:
           description: Specifies the number of days the key is valid.
           minimum: 1
           type: integer
+        customCRL:
+          description: A URL string of a custom Certificate Revokation List endpoint.  Used
+            for certificates of type `ISSUANCE`.
+          pattern: "^http:\\/\\/[a-zA-Z0-9.-\\/]*$"
+          type: string
       required:
       - algorithm
       - keyLength
@@ -24180,7 +24186,8 @@ components:
             license:
               id: 34f0efac-21d9-4a17-8a35-196bb3362983
           keys:
-          - serialNumber: 5
+          - customCRL: customCRL
+            serialNumber: 5
             issuerDN: issuerDN
             expiresAt: 2000-01-23T04:56:07.000+00:00
             signatureAlgorithm: null
@@ -24199,7 +24206,8 @@ components:
             status: null
             subjectDN: subjectDN
             usageType: null
-          - serialNumber: 5
+          - customCRL: customCRL
+            serialNumber: 5
             issuerDN: issuerDN
             expiresAt: 2000-01-23T04:56:07.000+00:00
             signatureAlgorithm: null
@@ -25019,7 +25027,8 @@ components:
               allowDynamicAuthorization: true
             status: null
           certificates:
-          - serialNumber: 5
+          - customCRL: customCRL
+            serialNumber: 5
             issuerDN: issuerDN
             expiresAt: 2000-01-23T04:56:07.000+00:00
             signatureAlgorithm: null
@@ -25038,7 +25047,8 @@ components:
             status: null
             subjectDN: subjectDN
             usageType: null
-          - serialNumber: 5
+          - customCRL: customCRL
+            serialNumber: 5
             issuerDN: issuerDN
             expiresAt: 2000-01-23T04:56:07.000+00:00
             signatureAlgorithm: null
@@ -28856,7 +28866,8 @@ components:
           license:
             id: 34f0efac-21d9-4a17-8a35-196bb3362983
         keys:
-        - serialNumber: 5
+        - customCRL: customCRL
+          serialNumber: 5
           issuerDN: issuerDN
           expiresAt: 2000-01-23T04:56:07.000+00:00
           signatureAlgorithm: null
@@ -28875,7 +28886,8 @@ components:
           status: null
           subjectDN: subjectDN
           usageType: null
-        - serialNumber: 5
+        - customCRL: customCRL
+          serialNumber: 5
           issuerDN: issuerDN
           expiresAt: 2000-01-23T04:56:07.000+00:00
           signatureAlgorithm: null
@@ -29695,7 +29707,8 @@ components:
             allowDynamicAuthorization: true
           status: null
         certificates:
-        - serialNumber: 5
+        - customCRL: customCRL
+          serialNumber: 5
           issuerDN: issuerDN
           expiresAt: 2000-01-23T04:56:07.000+00:00
           signatureAlgorithm: null
@@ -29714,7 +29727,8 @@ components:
           status: null
           subjectDN: subjectDN
           usageType: null
-        - serialNumber: 5
+        - customCRL: customCRL
+          serialNumber: 5
           issuerDN: issuerDN
           expiresAt: 2000-01-23T04:56:07.000+00:00
           signatureAlgorithm: null
