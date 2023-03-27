@@ -61,7 +61,7 @@ components:
       description: A string that specifies the flow type for the event. The only option (and default) is `AUTHENTICATION`.
     EnumPredictorCompositeConditionType:
       type: string
-      enum: [VALUE_COMPARISON]
+      enum: [VALUE_COMPARISON, STRING_LIST]
     EnumPredictorType:
       type: string
       enum: [ANONYMOUS_NETWORK, COMPOSITE, GEO_VELOCITY, IP_REPUTATION, MAP, NEW_DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
@@ -643,7 +643,8 @@ components:
           $ref: '#/components/schemas/EnumPredictorType'
         description:
           type: string
-          description: A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
+          description: A string type. This specifies the description of the risk predictor. Maximum length is 1024 characters.
+          maxLength: 1024
         createdAt:
           type: string
           format: date-time
@@ -656,9 +657,11 @@ components:
           description: The time the resource was updated.
         licensed:
           type: boolean
+          readOnly: true
           description: Indicates whether PingOne Risk is licensed for the environment.
         deletable:
           type: boolean
+          readOnly: true
           description: A boolean to indicate whether the predictor is deletable in the environment.
         default:
           type: object
@@ -705,14 +708,14 @@ components:
         - name
         - compactName
         - type
-    RiskPredictorAnonymous:
+    RiskPredictorAnonymousNetwork:
       allOf:
         - $ref: '#/components/schemas/RiskPredictor'
         - type: object
           properties:
             whiteList:
               type: array
-              description: A list of IP addresses (CDIRs) that are ignored for the predictor results.
+              description: A list of IP addresses (CIDRs) that are ignored for the predictor results.
               items:
                 type: string
                 format: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
@@ -752,6 +755,21 @@ components:
         - $ref: '#/components/schemas/RiskPredictorCompositeNot'
         - $ref: '#/components/schemas/RiskPredictorCompositeOr'
         - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
+        - type: object
+          properties:
+            contains:
+              type: string
+              format: ^\${(event|details)[a-z\.]+}$
+            list:
+              type: array
+              items:
+                type: string
+            type:
+              $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
+          required:
+            - contains
+            - list
+            - type
         - type: object
           properties:
             equals:
@@ -888,7 +906,14 @@ components:
                 type: string
                 pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
     RiskPredictorNewDevice:
-      $ref: '#/components/schemas/RiskPredictor'
+      allOf:
+        - $ref: '#/components/schemas/RiskPredictor'
+        - type: object
+          properties:
+            activationAt:
+              type: string
+              format: date-time
+              description: You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
     RiskPredictorUserLocationAnomaly:
       allOf:
         - $ref: '#/components/schemas/RiskPredictor'

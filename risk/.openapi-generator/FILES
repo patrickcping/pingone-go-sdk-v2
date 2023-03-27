@@ -58,8 +58,8 @@ docs/RiskPolicySetRiskPoliciesInnerConditionAggregatedWeightsInner.md
 docs/RiskPolicySetRiskPoliciesInnerConditionBetween.md
 docs/RiskPolicySetRiskPoliciesInnerConditionEquals.md
 docs/RiskPredictor.md
-docs/RiskPredictorAnonymous.md
-docs/RiskPredictorAnonymousAllOf.md
+docs/RiskPredictorAnonymousNetwork.md
+docs/RiskPredictorAnonymousNetworkAllOf.md
 docs/RiskPredictorComposite.md
 docs/RiskPredictorCompositeAllOf.md
 docs/RiskPredictorCompositeAllOfComposition.md
@@ -67,6 +67,7 @@ docs/RiskPredictorCompositeAnd.md
 docs/RiskPredictorCompositeCondition.md
 docs/RiskPredictorCompositeConditionBase.md
 docs/RiskPredictorCompositeConditionOneOf.md
+docs/RiskPredictorCompositeConditionOneOf1.md
 docs/RiskPredictorCompositeNot.md
 docs/RiskPredictorCompositeOr.md
 docs/RiskPredictorCondition.md
@@ -84,6 +85,8 @@ docs/RiskPredictorDefaultResult.md
 docs/RiskPredictorGeovelocity.md
 docs/RiskPredictorGeovelocityAllOf.md
 docs/RiskPredictorIPReputation.md
+docs/RiskPredictorNewDevice.md
+docs/RiskPredictorNewDeviceAllOf.md
 docs/RiskPredictorUEBA.md
 docs/RiskPredictorUEBAAllOf.md
 docs/RiskPredictorUEBAAllOfPredictionModel.md
@@ -150,8 +153,8 @@ model_risk_policy_set_risk_policies_inner_condition_aggregated_weights_inner.go
 model_risk_policy_set_risk_policies_inner_condition_between.go
 model_risk_policy_set_risk_policies_inner_condition_equals.go
 model_risk_predictor.go
-model_risk_predictor_anonymous.go
-model_risk_predictor_anonymous_all_of.go
+model_risk_predictor_anonymous_network.go
+model_risk_predictor_anonymous_network_all_of.go
 model_risk_predictor_composite.go
 model_risk_predictor_composite_all_of.go
 model_risk_predictor_composite_all_of_composition.go
@@ -159,6 +162,7 @@ model_risk_predictor_composite_and.go
 model_risk_predictor_composite_condition.go
 model_risk_predictor_composite_condition_base.go
 model_risk_predictor_composite_condition_one_of.go
+model_risk_predictor_composite_condition_one_of_1.go
 model_risk_predictor_composite_not.go
 model_risk_predictor_composite_or.go
 model_risk_predictor_condition.go
@@ -176,6 +180,8 @@ model_risk_predictor_default_result.go
 model_risk_predictor_geovelocity.go
 model_risk_predictor_geovelocity_all_of.go
 model_risk_predictor_ip_reputation.go
+model_risk_predictor_new_device.go
+model_risk_predictor_new_device_all_of.go
 model_risk_predictor_ueba.go
 model_risk_predictor_ueba_all_of.go
 model_risk_predictor_ueba_all_of_prediction_model.go

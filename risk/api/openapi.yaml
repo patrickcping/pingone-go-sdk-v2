@@ -1101,6 +1101,7 @@ components:
     EnumPredictorCompositeConditionType:
       enum:
       - VALUE_COMPARISON
+      - STRING_LIST
       type: string
     EnumPredictorType:
       description: "An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`,\
@@ -1761,8 +1762,9 @@ components:
         type:
           $ref: '#/components/schemas/EnumPredictorType'
         description:
-          description: A string type. This specifies the desription of the risk predictor.
+          description: A string type. This specifies the description of the risk predictor.
             Maximum length is 1024 characters.
+          maxLength: 1024
           type: string
         createdAt:
           description: The time the resource was created.
@@ -1776,10 +1778,12 @@ components:
           type: string
         licensed:
           description: Indicates whether PingOne Risk is licensed for the environment.
+          readOnly: true
           type: boolean
         deletable:
           description: A boolean to indicate whether the predictor is deletable in
             the environment.
+          readOnly: true
           type: boolean
         default:
           $ref: '#/components/schemas/RiskPredictor_default'
@@ -1790,10 +1794,10 @@ components:
       - name
       - type
       type: object
-    RiskPredictorAnonymous:
+    RiskPredictorAnonymousNetwork:
       allOf:
       - $ref: '#/components/schemas/RiskPredictor'
-      - $ref: '#/components/schemas/RiskPredictorAnonymous_allOf'
+      - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork_allOf'
     RiskPredictorComposite:
       allOf:
       - $ref: '#/components/schemas/RiskPredictor'
@@ -1818,6 +1822,7 @@ components:
       - $ref: '#/components/schemas/RiskPredictorCompositeOr'
       - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
       - $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf'
+      - $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1'
     RiskPredictorCompositeNot:
       properties:
         not:
@@ -1897,7 +1902,9 @@ components:
       - $ref: '#/components/schemas/RiskPredictor'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
     RiskPredictorNewDevice:
-      $ref: '#/components/schemas/RiskPredictor'
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorNewDevice_allOf'
     RiskPredictorUserLocationAnomaly:
       allOf:
       - $ref: '#/components/schemas/RiskPredictor'
@@ -2783,10 +2790,10 @@ components:
           type: array
       readOnly: true
       type: object
-    RiskPredictorAnonymous_allOf:
+    RiskPredictorAnonymousNetwork_allOf:
       properties:
         whiteList:
-          description: A list of IP addresses (CDIRs) that are ignored for the predictor
+          description: A list of IP addresses (CIDRs) that are ignored for the predictor
             results.
           items:
             format: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
@@ -2814,6 +2821,23 @@ components:
       type: object
       example: null
     RiskPredictorCompositeCondition_oneOf:
+      properties:
+        contains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        list:
+          items:
+            type: string
+          type: array
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
+      required:
+      - contains
+      - list
+      - type
+      type: object
+      example: null
+    RiskPredictorCompositeCondition_oneOf_1:
       properties:
         equals:
           type: object
@@ -2878,6 +2902,19 @@ components:
             pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
             type: string
           type: array
+      type: object
+      example: null
+    RiskPredictorNewDevice_allOf:
+      properties:
+        activationAt:
+          description: You can use the `activationAt` parameter to specify a date
+            on which the learning process for the predictor should be restarted. This
+            can be used in conjunction with the fallback setting (`default.result.level`)
+            to force strong authentication when moving the predictor to production.
+            The date should be in an RFC3339 format. Note that activation date uses
+            UTC time.
+          format: date-time
+          type: string
       type: object
       example: null
     RiskPredictorUserLocationAnomaly_allOf_radius:

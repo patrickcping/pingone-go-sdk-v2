@@ -21,11 +21,13 @@ type EnumPredictorCompositeConditionType string
 // List of EnumPredictorCompositeConditionType
 const (
 	ENUMPREDICTORCOMPOSITECONDITIONTYPE_VALUE_COMPARISON EnumPredictorCompositeConditionType = "VALUE_COMPARISON"
+	ENUMPREDICTORCOMPOSITECONDITIONTYPE_STRING_LIST EnumPredictorCompositeConditionType = "STRING_LIST"
 )
 
 // All allowed values of EnumPredictorCompositeConditionType enum
 var AllowedEnumPredictorCompositeConditionTypeEnumValues = []EnumPredictorCompositeConditionType{
 	"VALUE_COMPARISON",
+	"STRING_LIST",
 }
 
 func (v *EnumPredictorCompositeConditionType) UnmarshalJSON(src []byte) error {

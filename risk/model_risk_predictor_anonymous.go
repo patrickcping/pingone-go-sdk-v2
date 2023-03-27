@@ -442,12 +442,8 @@ func (o RiskPredictorAnonymous) ToMap() (map[string]interface{}, error) {
 	}
 	// skip: createdAt is readOnly
 	// skip: updatedAt is readOnly
-	if !IsNil(o.Licensed) {
-		toSerialize["licensed"] = o.Licensed
-	}
-	if !IsNil(o.Deletable) {
-		toSerialize["deletable"] = o.Deletable
-	}
+	// skip: licensed is readOnly
+	// skip: deletable is readOnly
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
