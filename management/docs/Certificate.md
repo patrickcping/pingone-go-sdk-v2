@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **SubjectDN** | **string** | Specifies the distinguished name of the subject being secured. | 
 **UsageType** | [**EnumCertificateKeyUsageType**](EnumCertificateKeyUsageType.md) |  | 
 **ValidityPeriod** | **int32** | Specifies the number of days the key is valid. | 
+**CustomCRL** | Pointer to **string** | A URL string of a custom Certificate Revokation List endpoint.  Used for certificates of type &#x60;ISSUANCE&#x60;. | [optional] 
 
 ## Methods
 
@@ -430,6 +431,31 @@ and a boolean to check if the value has been set.
 
 SetValidityPeriod sets ValidityPeriod field to given value.
 
+
+### GetCustomCRL
+
+`func (o *Certificate) GetCustomCRL() string`
+
+GetCustomCRL returns the CustomCRL field if non-nil, zero value otherwise.
+
+### GetCustomCRLOk
+
+`func (o *Certificate) GetCustomCRLOk() (*string, bool)`
+
+GetCustomCRLOk returns a tuple with the CustomCRL field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomCRL
+
+`func (o *Certificate) SetCustomCRL(v string)`
+
+SetCustomCRL sets CustomCRL field to given value.
+
+### HasCustomCRL
+
+`func (o *Certificate) HasCustomCRL() bool`
+
+HasCustomCRL returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

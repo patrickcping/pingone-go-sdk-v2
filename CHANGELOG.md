@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.18.0](./management/CHANGELOG.md)
+    * **Enhancement** Add `CustomCRL` to the `Certificate` data model [#136](https://github.com/patrickcping/pingone-go-sdk-v2/pull/136)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.4.0](./risk/CHANGELOG.md)
     * **Feature** Full support for risk predictors. [#135](https://github.com/patrickcping/pingone-go-sdk-v2/pull/135)
 
