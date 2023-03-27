@@ -1,104 +1,104 @@
-# RiskPredictorMap
+# RiskPredictorCustomAllOfMap
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**High** | Pointer to [**RiskPredictorItemMap**](RiskPredictorItemMap.md) |  | [optional] 
-**Medium** | Pointer to [**RiskPredictorItemMap**](RiskPredictorItemMap.md) |  | [optional] 
-**Low** | Pointer to [**RiskPredictorItemMap**](RiskPredictorItemMap.md) |  | [optional] 
+**High** | Pointer to [**RiskPredictorCustomItem**](RiskPredictorCustomItem.md) |  | [optional] 
+**Medium** | Pointer to [**RiskPredictorCustomItem**](RiskPredictorCustomItem.md) |  | [optional] 
+**Low** | Pointer to [**RiskPredictorCustomItem**](RiskPredictorCustomItem.md) |  | [optional] 
 
 ## Methods
 
-### NewRiskPredictorMap
+### NewRiskPredictorCustomAllOfMap
 
-`func NewRiskPredictorMap() *RiskPredictorMap`
+`func NewRiskPredictorCustomAllOfMap() *RiskPredictorCustomAllOfMap`
 
-NewRiskPredictorMap instantiates a new RiskPredictorMap object
+NewRiskPredictorCustomAllOfMap instantiates a new RiskPredictorCustomAllOfMap object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRiskPredictorMapWithDefaults
+### NewRiskPredictorCustomAllOfMapWithDefaults
 
-`func NewRiskPredictorMapWithDefaults() *RiskPredictorMap`
+`func NewRiskPredictorCustomAllOfMapWithDefaults() *RiskPredictorCustomAllOfMap`
 
-NewRiskPredictorMapWithDefaults instantiates a new RiskPredictorMap object
+NewRiskPredictorCustomAllOfMapWithDefaults instantiates a new RiskPredictorCustomAllOfMap object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetHigh
 
-`func (o *RiskPredictorMap) GetHigh() RiskPredictorItemMap`
+`func (o *RiskPredictorCustomAllOfMap) GetHigh() RiskPredictorCustomItem`
 
 GetHigh returns the High field if non-nil, zero value otherwise.
 
 ### GetHighOk
 
-`func (o *RiskPredictorMap) GetHighOk() (*RiskPredictorItemMap, bool)`
+`func (o *RiskPredictorCustomAllOfMap) GetHighOk() (*RiskPredictorCustomItem, bool)`
 
 GetHighOk returns a tuple with the High field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHigh
 
-`func (o *RiskPredictorMap) SetHigh(v RiskPredictorItemMap)`
+`func (o *RiskPredictorCustomAllOfMap) SetHigh(v RiskPredictorCustomItem)`
 
 SetHigh sets High field to given value.
 
 ### HasHigh
 
-`func (o *RiskPredictorMap) HasHigh() bool`
+`func (o *RiskPredictorCustomAllOfMap) HasHigh() bool`
 
 HasHigh returns a boolean if a field has been set.
 
 ### GetMedium
 
-`func (o *RiskPredictorMap) GetMedium() RiskPredictorItemMap`
+`func (o *RiskPredictorCustomAllOfMap) GetMedium() RiskPredictorCustomItem`
 
 GetMedium returns the Medium field if non-nil, zero value otherwise.
 
 ### GetMediumOk
 
-`func (o *RiskPredictorMap) GetMediumOk() (*RiskPredictorItemMap, bool)`
+`func (o *RiskPredictorCustomAllOfMap) GetMediumOk() (*RiskPredictorCustomItem, bool)`
 
 GetMediumOk returns a tuple with the Medium field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMedium
 
-`func (o *RiskPredictorMap) SetMedium(v RiskPredictorItemMap)`
+`func (o *RiskPredictorCustomAllOfMap) SetMedium(v RiskPredictorCustomItem)`
 
 SetMedium sets Medium field to given value.
 
 ### HasMedium
 
-`func (o *RiskPredictorMap) HasMedium() bool`
+`func (o *RiskPredictorCustomAllOfMap) HasMedium() bool`
 
 HasMedium returns a boolean if a field has been set.
 
 ### GetLow
 
-`func (o *RiskPredictorMap) GetLow() RiskPredictorItemMap`
+`func (o *RiskPredictorCustomAllOfMap) GetLow() RiskPredictorCustomItem`
 
 GetLow returns the Low field if non-nil, zero value otherwise.
 
 ### GetLowOk
 
-`func (o *RiskPredictorMap) GetLowOk() (*RiskPredictorItemMap, bool)`
+`func (o *RiskPredictorCustomAllOfMap) GetLowOk() (*RiskPredictorCustomItem, bool)`
 
 GetLowOk returns a tuple with the Low field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLow
 
-`func (o *RiskPredictorMap) SetLow(v RiskPredictorItemMap)`
+`func (o *RiskPredictorCustomAllOfMap) SetLow(v RiskPredictorCustomItem)`
 
 SetLow sets Low field to given value.
 
 ### HasLow
 
-`func (o *RiskPredictorMap) HasLow() bool`
+`func (o *RiskPredictorCustomAllOfMap) HasLow() bool`
 
 HasLow returns a boolean if a field has been set.
 

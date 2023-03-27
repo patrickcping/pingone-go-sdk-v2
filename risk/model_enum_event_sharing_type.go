@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumEventSharingType A string that specifies the device sharing type. Options are UNSPECIFIED, SHARED, and PRIVATE.
+// EnumEventSharingType A string that specifies the device sharing type. Options are `UNSPECIFIED`, `SHARED`, and `PRIVATE`.
 type EnumEventSharingType string
 
 // List of EnumEventSharingType

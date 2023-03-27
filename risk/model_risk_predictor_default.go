@@ -17,10 +17,12 @@ import (
 // checks if the RiskPredictorDefault type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RiskPredictorDefault{}
 
-// RiskPredictorDefault struct for RiskPredictorDefault
+// RiskPredictorDefault Contains the default values used for a new risk predictor.
 type RiskPredictorDefault struct {
 	// An integer type. This specifies the weight assigned to the risk predictor in a new policy by default.
 	Weight int32 `json:"weight"`
+	Score *int32 `json:"score,omitempty"`
+	Evaluated *bool `json:"evaluated,omitempty"`
 	Result RiskPredictorDefaultResult `json:"result"`
 }
 
@@ -67,6 +69,70 @@ func (o *RiskPredictorDefault) SetWeight(v int32) {
 	o.Weight = v
 }
 
+// GetScore returns the Score field value if set, zero value otherwise.
+func (o *RiskPredictorDefault) GetScore() int32 {
+	if o == nil || IsNil(o.Score) {
+		var ret int32
+		return ret
+	}
+	return *o.Score
+}
+
+// GetScoreOk returns a tuple with the Score field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorDefault) GetScoreOk() (*int32, bool) {
+	if o == nil || IsNil(o.Score) {
+		return nil, false
+	}
+	return o.Score, true
+}
+
+// HasScore returns a boolean if a field has been set.
+func (o *RiskPredictorDefault) HasScore() bool {
+	if o != nil && !IsNil(o.Score) {
+		return true
+	}
+
+	return false
+}
+
+// SetScore gets a reference to the given int32 and assigns it to the Score field.
+func (o *RiskPredictorDefault) SetScore(v int32) {
+	o.Score = &v
+}
+
+// GetEvaluated returns the Evaluated field value if set, zero value otherwise.
+func (o *RiskPredictorDefault) GetEvaluated() bool {
+	if o == nil || IsNil(o.Evaluated) {
+		var ret bool
+		return ret
+	}
+	return *o.Evaluated
+}
+
+// GetEvaluatedOk returns a tuple with the Evaluated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorDefault) GetEvaluatedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Evaluated) {
+		return nil, false
+	}
+	return o.Evaluated, true
+}
+
+// HasEvaluated returns a boolean if a field has been set.
+func (o *RiskPredictorDefault) HasEvaluated() bool {
+	if o != nil && !IsNil(o.Evaluated) {
+		return true
+	}
+
+	return false
+}
+
+// SetEvaluated gets a reference to the given bool and assigns it to the Evaluated field.
+func (o *RiskPredictorDefault) SetEvaluated(v bool) {
+	o.Evaluated = &v
+}
+
 // GetResult returns the Result field value
 func (o *RiskPredictorDefault) GetResult() RiskPredictorDefaultResult {
 	if o == nil {
@@ -102,6 +168,12 @@ func (o RiskPredictorDefault) MarshalJSON() ([]byte, error) {
 func (o RiskPredictorDefault) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["weight"] = o.Weight
+	if !IsNil(o.Score) {
+		toSerialize["score"] = o.Score
+	}
+	if !IsNil(o.Evaluated) {
+		toSerialize["evaluated"] = o.Evaluated
+	}
 	toSerialize["result"] = o.Result
 	return toSerialize, nil
 }

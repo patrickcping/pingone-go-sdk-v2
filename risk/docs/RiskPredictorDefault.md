@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Weight** | **int32** | An integer type. This specifies the weight assigned to the risk predictor in a new policy by default. | 
+**Score** | Pointer to **int32** |  | [optional] 
+**Evaluated** | Pointer to **bool** |  | [optional] 
 **Result** | [**RiskPredictorDefaultResult**](RiskPredictorDefaultResult.md) |  | 
 
 ## Methods
@@ -45,6 +47,56 @@ and a boolean to check if the value has been set.
 
 SetWeight sets Weight field to given value.
 
+
+### GetScore
+
+`func (o *RiskPredictorDefault) GetScore() int32`
+
+GetScore returns the Score field if non-nil, zero value otherwise.
+
+### GetScoreOk
+
+`func (o *RiskPredictorDefault) GetScoreOk() (*int32, bool)`
+
+GetScoreOk returns a tuple with the Score field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScore
+
+`func (o *RiskPredictorDefault) SetScore(v int32)`
+
+SetScore sets Score field to given value.
+
+### HasScore
+
+`func (o *RiskPredictorDefault) HasScore() bool`
+
+HasScore returns a boolean if a field has been set.
+
+### GetEvaluated
+
+`func (o *RiskPredictorDefault) GetEvaluated() bool`
+
+GetEvaluated returns the Evaluated field if non-nil, zero value otherwise.
+
+### GetEvaluatedOk
+
+`func (o *RiskPredictorDefault) GetEvaluatedOk() (*bool, bool)`
+
+GetEvaluatedOk returns a tuple with the Evaluated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEvaluated
+
+`func (o *RiskPredictorDefault) SetEvaluated(v bool)`
+
+SetEvaluated sets Evaluated field to given value.
+
+### HasEvaluated
+
+`func (o *RiskPredictorDefault) HasEvaluated() bool`
+
+HasEvaluated returns a boolean if a field has been set.
 
 ### GetResult
 

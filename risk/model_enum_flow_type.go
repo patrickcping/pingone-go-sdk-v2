@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumFlowType A string that specifies the flow type for the event. The only option (and default) is AUTHENTICATION.
+// EnumFlowType A string that specifies the flow type for the event. The only option (and default) is `AUTHENTICATION`.
 type EnumFlowType string
 
 // List of EnumFlowType

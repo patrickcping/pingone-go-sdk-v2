@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumResultType A string that specifies the risk evaluation result type. Options are VALUE.
+// EnumResultType A string that specifies the risk evaluation result type. Options are `VALUE`.
 type EnumResultType string
 
 // List of EnumResultType

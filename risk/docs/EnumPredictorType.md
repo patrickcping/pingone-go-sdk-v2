@@ -3,11 +3,23 @@
 ## Enum
 
 
-* `VELOCITY` (value: `"VELOCITY"`)
+* `ANONYMOUS_NETWORK` (value: `"ANONYMOUS_NETWORK"`)
+
+* `COMPOSITE` (value: `"COMPOSITE"`)
+
+* `GEO_VELOCITY` (value: `"GEO_VELOCITY"`)
+
+* `IP_REPUTATION` (value: `"IP_REPUTATION"`)
+
+* `MAP` (value: `"MAP"`)
+
+* `NEW_DEVICE` (value: `"NEW_DEVICE"`)
+
+* `USER_LOCATION_ANOMALY` (value: `"USER_LOCATION_ANOMALY"`)
 
 * `USER_RISK_BEHAVIOR` (value: `"USER_RISK_BEHAVIOR"`)
 
-* `MAP` (value: `"MAP"`)
+* `VELOCITY` (value: `"VELOCITY"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
