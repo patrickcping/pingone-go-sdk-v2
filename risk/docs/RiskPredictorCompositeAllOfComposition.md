@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Condition** | [**NullableOneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr**](oneOf&lt;RiskPredictorCompositeNot,RiskPredictorCompositeAnd,RiskPredictorCompositeOr&gt;.md) |  | 
+**Condition** | [**RiskPredictorCompositeConditionBase**](RiskPredictorCompositeConditionBase.md) |  | 
 **Level** | [**EnumRiskLevel**](EnumRiskLevel.md) |  | 
 
 ## Methods
 
 ### NewRiskPredictorCompositeAllOfComposition
 
-`func NewRiskPredictorCompositeAllOfComposition(condition NullableOneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr, level EnumRiskLevel, ) *RiskPredictorCompositeAllOfComposition`
+`func NewRiskPredictorCompositeAllOfComposition(condition RiskPredictorCompositeConditionBase, level EnumRiskLevel, ) *RiskPredictorCompositeAllOfComposition`
 
 NewRiskPredictorCompositeAllOfComposition instantiates a new RiskPredictorCompositeAllOfComposition object
 This constructor will assign default values to properties that have it defined,
@@ -28,34 +28,24 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCondition
 
-`func (o *RiskPredictorCompositeAllOfComposition) GetCondition() OneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr`
+`func (o *RiskPredictorCompositeAllOfComposition) GetCondition() RiskPredictorCompositeConditionBase`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *RiskPredictorCompositeAllOfComposition) GetConditionOk() (*OneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr, bool)`
+`func (o *RiskPredictorCompositeAllOfComposition) GetConditionOk() (*RiskPredictorCompositeConditionBase, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *RiskPredictorCompositeAllOfComposition) SetCondition(v OneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr)`
+`func (o *RiskPredictorCompositeAllOfComposition) SetCondition(v RiskPredictorCompositeConditionBase)`
 
 SetCondition sets Condition field to given value.
 
 
-### SetConditionNil
-
-`func (o *RiskPredictorCompositeAllOfComposition) SetConditionNil(b bool)`
-
- SetConditionNil sets the value for Condition to be an explicit nil
-
-### UnsetCondition
-`func (o *RiskPredictorCompositeAllOfComposition) UnsetCondition()`
-
-UnsetCondition ensures that no value is present for Condition, not even an explicit nil
 ### GetLevel
 
 `func (o *RiskPredictorCompositeAllOfComposition) GetLevel() EnumRiskLevel`

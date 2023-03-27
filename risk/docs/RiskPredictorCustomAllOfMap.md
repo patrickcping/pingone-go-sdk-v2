@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**High** | Pointer to [**NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList**](oneOf&lt;RiskPredictorCustomItemIPRange,RiskPredictorCustomItemBetween,RiskPredictorCustomItemList&gt;.md) |  | [optional] 
-**Medium** | Pointer to [**NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList**](oneOf&lt;RiskPredictorCustomItemIPRange,RiskPredictorCustomItemBetween,RiskPredictorCustomItemList&gt;.md) |  | [optional] 
-**Low** | Pointer to [**NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList**](oneOf&lt;RiskPredictorCustomItemIPRange,RiskPredictorCustomItemBetween,RiskPredictorCustomItemList&gt;.md) |  | [optional] 
+**High** | Pointer to [**RiskPredictorCustomItem**](RiskPredictorCustomItem.md) |  | [optional] 
+**Medium** | Pointer to [**RiskPredictorCustomItem**](RiskPredictorCustomItem.md) |  | [optional] 
+**Low** | Pointer to [**RiskPredictorCustomItem**](RiskPredictorCustomItem.md) |  | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetHigh
 
-`func (o *RiskPredictorCustomAllOfMap) GetHigh() OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList`
+`func (o *RiskPredictorCustomAllOfMap) GetHigh() RiskPredictorCustomItem`
 
 GetHigh returns the High field if non-nil, zero value otherwise.
 
 ### GetHighOk
 
-`func (o *RiskPredictorCustomAllOfMap) GetHighOk() (*OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList, bool)`
+`func (o *RiskPredictorCustomAllOfMap) GetHighOk() (*RiskPredictorCustomItem, bool)`
 
 GetHighOk returns a tuple with the High field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHigh
 
-`func (o *RiskPredictorCustomAllOfMap) SetHigh(v OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList)`
+`func (o *RiskPredictorCustomAllOfMap) SetHigh(v RiskPredictorCustomItem)`
 
 SetHigh sets High field to given value.
 
@@ -52,32 +52,22 @@ SetHigh sets High field to given value.
 
 HasHigh returns a boolean if a field has been set.
 
-### SetHighNil
-
-`func (o *RiskPredictorCustomAllOfMap) SetHighNil(b bool)`
-
- SetHighNil sets the value for High to be an explicit nil
-
-### UnsetHigh
-`func (o *RiskPredictorCustomAllOfMap) UnsetHigh()`
-
-UnsetHigh ensures that no value is present for High, not even an explicit nil
 ### GetMedium
 
-`func (o *RiskPredictorCustomAllOfMap) GetMedium() OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList`
+`func (o *RiskPredictorCustomAllOfMap) GetMedium() RiskPredictorCustomItem`
 
 GetMedium returns the Medium field if non-nil, zero value otherwise.
 
 ### GetMediumOk
 
-`func (o *RiskPredictorCustomAllOfMap) GetMediumOk() (*OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList, bool)`
+`func (o *RiskPredictorCustomAllOfMap) GetMediumOk() (*RiskPredictorCustomItem, bool)`
 
 GetMediumOk returns a tuple with the Medium field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMedium
 
-`func (o *RiskPredictorCustomAllOfMap) SetMedium(v OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList)`
+`func (o *RiskPredictorCustomAllOfMap) SetMedium(v RiskPredictorCustomItem)`
 
 SetMedium sets Medium field to given value.
 
@@ -87,32 +77,22 @@ SetMedium sets Medium field to given value.
 
 HasMedium returns a boolean if a field has been set.
 
-### SetMediumNil
-
-`func (o *RiskPredictorCustomAllOfMap) SetMediumNil(b bool)`
-
- SetMediumNil sets the value for Medium to be an explicit nil
-
-### UnsetMedium
-`func (o *RiskPredictorCustomAllOfMap) UnsetMedium()`
-
-UnsetMedium ensures that no value is present for Medium, not even an explicit nil
 ### GetLow
 
-`func (o *RiskPredictorCustomAllOfMap) GetLow() OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList`
+`func (o *RiskPredictorCustomAllOfMap) GetLow() RiskPredictorCustomItem`
 
 GetLow returns the Low field if non-nil, zero value otherwise.
 
 ### GetLowOk
 
-`func (o *RiskPredictorCustomAllOfMap) GetLowOk() (*OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList, bool)`
+`func (o *RiskPredictorCustomAllOfMap) GetLowOk() (*RiskPredictorCustomItem, bool)`
 
 GetLowOk returns a tuple with the Low field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLow
 
-`func (o *RiskPredictorCustomAllOfMap) SetLow(v OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList)`
+`func (o *RiskPredictorCustomAllOfMap) SetLow(v RiskPredictorCustomItem)`
 
 SetLow sets Low field to given value.
 
@@ -122,16 +102,6 @@ SetLow sets Low field to given value.
 
 HasLow returns a boolean if a field has been set.
 
-### SetLowNil
-
-`func (o *RiskPredictorCustomAllOfMap) SetLowNil(b bool)`
-
- SetLowNil sets the value for Low to be an explicit nil
-
-### UnsetLow
-`func (o *RiskPredictorCustomAllOfMap) UnsetLow()`
-
-UnsetLow ensures that no value is present for Low, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

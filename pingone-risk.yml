@@ -725,10 +725,7 @@ components:
               type: object
               properties:
                 condition:
-                  oneOf:
-                    - $ref: '#/components/schemas/RiskPredictorCompositeNot'
-                    - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
-                    - $ref: '#/components/schemas/RiskPredictorCompositeOr'
+                  $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
                 level:
                   $ref: '#/components/schemas/EnumRiskLevel'
               required:
@@ -745,6 +742,11 @@ components:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
       required:
         - and
+    RiskPredictorCompositeConditionBase:
+      oneOf:
+        - $ref: '#/components/schemas/RiskPredictorCompositeNot'
+        - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
+        - $ref: '#/components/schemas/RiskPredictorCompositeOr'
     RiskPredictorCompositeCondition:
       oneOf:
         - $ref: '#/components/schemas/RiskPredictorCompositeNot'
@@ -797,22 +799,18 @@ components:
               description: An object that defines the mapping of risk levels for the list of all results.
               properties:
                 high:
-                  oneOf:
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemIPRange'
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemBetween'
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemList'
+                  $ref: '#/components/schemas/RiskPredictorCustomItem'
                 medium:
-                  oneOf:
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemIPRange'
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemBetween'
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemList'
+                  $ref: '#/components/schemas/RiskPredictorCustomItem'
                 low:
-                  oneOf:
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemIPRange'
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemBetween'
-                    - $ref: '#/components/schemas/RiskPredictorCustomItemList'
+                  $ref: '#/components/schemas/RiskPredictorCustomItem'
           required:
             - map
+    RiskPredictorCustomItem:
+      oneOf:
+        - $ref: '#/components/schemas/RiskPredictorCustomItemIPRange'
+        - $ref: '#/components/schemas/RiskPredictorCustomItemBetween'
+        - $ref: '#/components/schemas/RiskPredictorCustomItemList'
     RiskPredictorCustomItemIPRange:
       type: object
       description: The mapping of risk levels for the IP ranges specified.

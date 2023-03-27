@@ -65,6 +65,7 @@ docs/RiskPredictorCompositeAllOf.md
 docs/RiskPredictorCompositeAllOfComposition.md
 docs/RiskPredictorCompositeAnd.md
 docs/RiskPredictorCompositeCondition.md
+docs/RiskPredictorCompositeConditionBase.md
 docs/RiskPredictorCompositeConditionOneOf.md
 docs/RiskPredictorCompositeNot.md
 docs/RiskPredictorCompositeOr.md
@@ -73,6 +74,7 @@ docs/RiskPredictorConditionScoresInner.md
 docs/RiskPredictorCustom.md
 docs/RiskPredictorCustomAllOf.md
 docs/RiskPredictorCustomAllOfMap.md
+docs/RiskPredictorCustomItem.md
 docs/RiskPredictorCustomItemBetween.md
 docs/RiskPredictorCustomItemBetweenBetween.md
 docs/RiskPredictorCustomItemIPRange.md
@@ -155,6 +157,7 @@ model_risk_predictor_composite_all_of.go
 model_risk_predictor_composite_all_of_composition.go
 model_risk_predictor_composite_and.go
 model_risk_predictor_composite_condition.go
+model_risk_predictor_composite_condition_base.go
 model_risk_predictor_composite_condition_one_of.go
 model_risk_predictor_composite_not.go
 model_risk_predictor_composite_or.go
@@ -163,6 +166,7 @@ model_risk_predictor_condition_scores_inner.go
 model_risk_predictor_custom.go
 model_risk_predictor_custom_all_of.go
 model_risk_predictor_custom_all_of_map.go
+model_risk_predictor_custom_item.go
 model_risk_predictor_custom_item_between.go
 model_risk_predictor_custom_item_between_between.go
 model_risk_predictor_custom_item_ip_range.go

@@ -19,7 +19,7 @@ var _ MappedNullable = &RiskPredictorCompositeAllOfComposition{}
 
 // RiskPredictorCompositeAllOfComposition struct for RiskPredictorCompositeAllOfComposition
 type RiskPredictorCompositeAllOfComposition struct {
-	Condition NullableOneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr `json:"condition"`
+	Condition RiskPredictorCompositeConditionBase `json:"condition"`
 	Level EnumRiskLevel `json:"level"`
 }
 
@@ -27,7 +27,7 @@ type RiskPredictorCompositeAllOfComposition struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorCompositeAllOfComposition(condition NullableOneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr, level EnumRiskLevel) *RiskPredictorCompositeAllOfComposition {
+func NewRiskPredictorCompositeAllOfComposition(condition RiskPredictorCompositeConditionBase, level EnumRiskLevel) *RiskPredictorCompositeAllOfComposition {
 	this := RiskPredictorCompositeAllOfComposition{}
 	this.Condition = condition
 	this.Level = level
@@ -43,29 +43,27 @@ func NewRiskPredictorCompositeAllOfCompositionWithDefaults() *RiskPredictorCompo
 }
 
 // GetCondition returns the Condition field value
-// If the value is explicit nil, the zero value for OneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr will be returned
-func (o *RiskPredictorCompositeAllOfComposition) GetCondition() OneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr {
-	if o == nil || o.Condition.Get() == nil {
-		var ret OneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr
+func (o *RiskPredictorCompositeAllOfComposition) GetCondition() RiskPredictorCompositeConditionBase {
+	if o == nil {
+		var ret RiskPredictorCompositeConditionBase
 		return ret
 	}
 
-	return *o.Condition.Get()
+	return o.Condition
 }
 
 // GetConditionOk returns a tuple with the Condition field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RiskPredictorCompositeAllOfComposition) GetConditionOk() (*OneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr, bool) {
+func (o *RiskPredictorCompositeAllOfComposition) GetConditionOk() (*RiskPredictorCompositeConditionBase, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Condition.Get(), o.Condition.IsSet()
+	return &o.Condition, true
 }
 
 // SetCondition sets field value
-func (o *RiskPredictorCompositeAllOfComposition) SetCondition(v OneOfRiskPredictorCompositeNotRiskPredictorCompositeAndRiskPredictorCompositeOr) {
-	o.Condition.Set(&v)
+func (o *RiskPredictorCompositeAllOfComposition) SetCondition(v RiskPredictorCompositeConditionBase) {
+	o.Condition = v
 }
 
 // GetLevel returns the Level field value
@@ -102,7 +100,7 @@ func (o RiskPredictorCompositeAllOfComposition) MarshalJSON() ([]byte, error) {
 
 func (o RiskPredictorCompositeAllOfComposition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["condition"] = o.Condition.Get()
+	toSerialize["condition"] = o.Condition
 	toSerialize["level"] = o.Level
 	return toSerialize, nil
 }

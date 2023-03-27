@@ -19,9 +19,9 @@ var _ MappedNullable = &RiskPredictorCustomAllOfMap{}
 
 // RiskPredictorCustomAllOfMap An object that defines the mapping of risk levels for the list of all results.
 type RiskPredictorCustomAllOfMap struct {
-	High NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList `json:"high,omitempty"`
-	Medium NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList `json:"medium,omitempty"`
-	Low NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList `json:"low,omitempty"`
+	High *RiskPredictorCustomItem `json:"high,omitempty"`
+	Medium *RiskPredictorCustomItem `json:"medium,omitempty"`
+	Low *RiskPredictorCustomItem `json:"low,omitempty"`
 }
 
 // NewRiskPredictorCustomAllOfMap instantiates a new RiskPredictorCustomAllOfMap object
@@ -41,130 +41,100 @@ func NewRiskPredictorCustomAllOfMapWithDefaults() *RiskPredictorCustomAllOfMap {
 	return &this
 }
 
-// GetHigh returns the High field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RiskPredictorCustomAllOfMap) GetHigh() OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList {
-	if o == nil || IsNil(o.High.Get()) {
-		var ret OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList
+// GetHigh returns the High field value if set, zero value otherwise.
+func (o *RiskPredictorCustomAllOfMap) GetHigh() RiskPredictorCustomItem {
+	if o == nil || IsNil(o.High) {
+		var ret RiskPredictorCustomItem
 		return ret
 	}
-	return *o.High.Get()
+	return *o.High
 }
 
 // GetHighOk returns a tuple with the High field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RiskPredictorCustomAllOfMap) GetHighOk() (*OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList, bool) {
-	if o == nil {
+func (o *RiskPredictorCustomAllOfMap) GetHighOk() (*RiskPredictorCustomItem, bool) {
+	if o == nil || IsNil(o.High) {
 		return nil, false
 	}
-	return o.High.Get(), o.High.IsSet()
+	return o.High, true
 }
 
 // HasHigh returns a boolean if a field has been set.
 func (o *RiskPredictorCustomAllOfMap) HasHigh() bool {
-	if o != nil && o.High.IsSet() {
+	if o != nil && !IsNil(o.High) {
 		return true
 	}
 
 	return false
 }
 
-// SetHigh gets a reference to the given NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList and assigns it to the High field.
-func (o *RiskPredictorCustomAllOfMap) SetHigh(v OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList) {
-	o.High.Set(&v)
-}
-// SetHighNil sets the value for High to be an explicit nil
-func (o *RiskPredictorCustomAllOfMap) SetHighNil() {
-	o.High.Set(nil)
+// SetHigh gets a reference to the given RiskPredictorCustomItem and assigns it to the High field.
+func (o *RiskPredictorCustomAllOfMap) SetHigh(v RiskPredictorCustomItem) {
+	o.High = &v
 }
 
-// UnsetHigh ensures that no value is present for High, not even an explicit nil
-func (o *RiskPredictorCustomAllOfMap) UnsetHigh() {
-	o.High.Unset()
-}
-
-// GetMedium returns the Medium field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RiskPredictorCustomAllOfMap) GetMedium() OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList {
-	if o == nil || IsNil(o.Medium.Get()) {
-		var ret OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList
+// GetMedium returns the Medium field value if set, zero value otherwise.
+func (o *RiskPredictorCustomAllOfMap) GetMedium() RiskPredictorCustomItem {
+	if o == nil || IsNil(o.Medium) {
+		var ret RiskPredictorCustomItem
 		return ret
 	}
-	return *o.Medium.Get()
+	return *o.Medium
 }
 
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RiskPredictorCustomAllOfMap) GetMediumOk() (*OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList, bool) {
-	if o == nil {
+func (o *RiskPredictorCustomAllOfMap) GetMediumOk() (*RiskPredictorCustomItem, bool) {
+	if o == nil || IsNil(o.Medium) {
 		return nil, false
 	}
-	return o.Medium.Get(), o.Medium.IsSet()
+	return o.Medium, true
 }
 
 // HasMedium returns a boolean if a field has been set.
 func (o *RiskPredictorCustomAllOfMap) HasMedium() bool {
-	if o != nil && o.Medium.IsSet() {
+	if o != nil && !IsNil(o.Medium) {
 		return true
 	}
 
 	return false
 }
 
-// SetMedium gets a reference to the given NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList and assigns it to the Medium field.
-func (o *RiskPredictorCustomAllOfMap) SetMedium(v OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList) {
-	o.Medium.Set(&v)
-}
-// SetMediumNil sets the value for Medium to be an explicit nil
-func (o *RiskPredictorCustomAllOfMap) SetMediumNil() {
-	o.Medium.Set(nil)
+// SetMedium gets a reference to the given RiskPredictorCustomItem and assigns it to the Medium field.
+func (o *RiskPredictorCustomAllOfMap) SetMedium(v RiskPredictorCustomItem) {
+	o.Medium = &v
 }
 
-// UnsetMedium ensures that no value is present for Medium, not even an explicit nil
-func (o *RiskPredictorCustomAllOfMap) UnsetMedium() {
-	o.Medium.Unset()
-}
-
-// GetLow returns the Low field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RiskPredictorCustomAllOfMap) GetLow() OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList {
-	if o == nil || IsNil(o.Low.Get()) {
-		var ret OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList
+// GetLow returns the Low field value if set, zero value otherwise.
+func (o *RiskPredictorCustomAllOfMap) GetLow() RiskPredictorCustomItem {
+	if o == nil || IsNil(o.Low) {
+		var ret RiskPredictorCustomItem
 		return ret
 	}
-	return *o.Low.Get()
+	return *o.Low
 }
 
 // GetLowOk returns a tuple with the Low field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RiskPredictorCustomAllOfMap) GetLowOk() (*OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList, bool) {
-	if o == nil {
+func (o *RiskPredictorCustomAllOfMap) GetLowOk() (*RiskPredictorCustomItem, bool) {
+	if o == nil || IsNil(o.Low) {
 		return nil, false
 	}
-	return o.Low.Get(), o.Low.IsSet()
+	return o.Low, true
 }
 
 // HasLow returns a boolean if a field has been set.
 func (o *RiskPredictorCustomAllOfMap) HasLow() bool {
-	if o != nil && o.Low.IsSet() {
+	if o != nil && !IsNil(o.Low) {
 		return true
 	}
 
 	return false
 }
 
-// SetLow gets a reference to the given NullableOneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList and assigns it to the Low field.
-func (o *RiskPredictorCustomAllOfMap) SetLow(v OneOfRiskPredictorCustomItemIPRangeRiskPredictorCustomItemBetweenRiskPredictorCustomItemList) {
-	o.Low.Set(&v)
-}
-// SetLowNil sets the value for Low to be an explicit nil
-func (o *RiskPredictorCustomAllOfMap) SetLowNil() {
-	o.Low.Set(nil)
-}
-
-// UnsetLow ensures that no value is present for Low, not even an explicit nil
-func (o *RiskPredictorCustomAllOfMap) UnsetLow() {
-	o.Low.Unset()
+// SetLow gets a reference to the given RiskPredictorCustomItem and assigns it to the Low field.
+func (o *RiskPredictorCustomAllOfMap) SetLow(v RiskPredictorCustomItem) {
+	o.Low = &v
 }
 
 func (o RiskPredictorCustomAllOfMap) MarshalJSON() ([]byte, error) {
@@ -177,14 +147,14 @@ func (o RiskPredictorCustomAllOfMap) MarshalJSON() ([]byte, error) {
 
 func (o RiskPredictorCustomAllOfMap) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.High.IsSet() {
-		toSerialize["high"] = o.High.Get()
+	if !IsNil(o.High) {
+		toSerialize["high"] = o.High
 	}
-	if o.Medium.IsSet() {
-		toSerialize["medium"] = o.Medium.Get()
+	if !IsNil(o.Medium) {
+		toSerialize["medium"] = o.Medium
 	}
-	if o.Low.IsSet() {
-		toSerialize["low"] = o.Low.Get()
+	if !IsNil(o.Low) {
+		toSerialize["low"] = o.Low
 	}
 	return toSerialize, nil
 }
