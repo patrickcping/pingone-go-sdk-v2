@@ -34,6 +34,14 @@ type ApplicationAttributeMapping struct {
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A string that specifies the string constants or expression for mapping the attribute path against a specific source. The expression format is ${<source>.<attribute_path>}. The only supported source is user (for example, ${user.id}). This is a required property.
 	Value string `json:"value"`
+	// A URI reference representing the classification of the attribute. Helps the service provider interpret the attribute format.
+	NameFormat *string `json:"nameFormat,omitempty"`
+	// Whether the attribute mapping should be available in the ID Token. This property is applicable only when the application's `protocol` property is `OPENID_CONNECT`. If omitted, the default is `true`. Note that the `idToken` and `userInfo` properties cannot both be set to `false`. At least one of these properties must have a value of true.
+	IdToken *bool `json:"idToken,omitempty"`
+	// Whether the attribute mapping should be available through the `/as/userinfo` endpoint. This property is applicable only when the application's protocol property is `OPENID_CONNECT`. If omitted, the default is `true`. Note that the `idToken` and `userInfo` properties cannot both be set to `false`. At least one of these properties must have a value of `true`.
+	UserInfo *bool `json:"userInfo,omitempty"`
+	// OIDC resource scope IDs that this attribute mapping is available for exclusively. This setting overrides any global OIDC resource scopes that contain an attribute mapping with the same name. The list can contain only scope IDs that have been granted for the application through the `/grants` endpoint. A null value is accepted for backwards compatibility. However, an empty set is invalid, and one scope ID is expected. If null, the response includes this mapping in the `openid` scope.
+	OidcScopes []string `json:"oidcScopes,omitempty"`
 }
 
 // NewApplicationAttributeMapping instantiates a new ApplicationAttributeMapping object
@@ -45,6 +53,10 @@ func NewApplicationAttributeMapping(name string, required bool, value string) *A
 	this.Name = name
 	this.Required = required
 	this.Value = value
+	var idToken bool = true
+	this.IdToken = &idToken
+	var userInfo bool = true
+	this.UserInfo = &userInfo
 	return &this
 }
 
@@ -53,6 +65,10 @@ func NewApplicationAttributeMapping(name string, required bool, value string) *A
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationAttributeMappingWithDefaults() *ApplicationAttributeMapping {
 	this := ApplicationAttributeMapping{}
+	var idToken bool = true
+	this.IdToken = &idToken
+	var userInfo bool = true
+	this.UserInfo = &userInfo
 	return &this
 }
 
@@ -288,6 +304,134 @@ func (o *ApplicationAttributeMapping) SetValue(v string) {
 	o.Value = v
 }
 
+// GetNameFormat returns the NameFormat field value if set, zero value otherwise.
+func (o *ApplicationAttributeMapping) GetNameFormat() string {
+	if o == nil || IsNil(o.NameFormat) {
+		var ret string
+		return ret
+	}
+	return *o.NameFormat
+}
+
+// GetNameFormatOk returns a tuple with the NameFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAttributeMapping) GetNameFormatOk() (*string, bool) {
+	if o == nil || IsNil(o.NameFormat) {
+		return nil, false
+	}
+	return o.NameFormat, true
+}
+
+// HasNameFormat returns a boolean if a field has been set.
+func (o *ApplicationAttributeMapping) HasNameFormat() bool {
+	if o != nil && !IsNil(o.NameFormat) {
+		return true
+	}
+
+	return false
+}
+
+// SetNameFormat gets a reference to the given string and assigns it to the NameFormat field.
+func (o *ApplicationAttributeMapping) SetNameFormat(v string) {
+	o.NameFormat = &v
+}
+
+// GetIdToken returns the IdToken field value if set, zero value otherwise.
+func (o *ApplicationAttributeMapping) GetIdToken() bool {
+	if o == nil || IsNil(o.IdToken) {
+		var ret bool
+		return ret
+	}
+	return *o.IdToken
+}
+
+// GetIdTokenOk returns a tuple with the IdToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAttributeMapping) GetIdTokenOk() (*bool, bool) {
+	if o == nil || IsNil(o.IdToken) {
+		return nil, false
+	}
+	return o.IdToken, true
+}
+
+// HasIdToken returns a boolean if a field has been set.
+func (o *ApplicationAttributeMapping) HasIdToken() bool {
+	if o != nil && !IsNil(o.IdToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdToken gets a reference to the given bool and assigns it to the IdToken field.
+func (o *ApplicationAttributeMapping) SetIdToken(v bool) {
+	o.IdToken = &v
+}
+
+// GetUserInfo returns the UserInfo field value if set, zero value otherwise.
+func (o *ApplicationAttributeMapping) GetUserInfo() bool {
+	if o == nil || IsNil(o.UserInfo) {
+		var ret bool
+		return ret
+	}
+	return *o.UserInfo
+}
+
+// GetUserInfoOk returns a tuple with the UserInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAttributeMapping) GetUserInfoOk() (*bool, bool) {
+	if o == nil || IsNil(o.UserInfo) {
+		return nil, false
+	}
+	return o.UserInfo, true
+}
+
+// HasUserInfo returns a boolean if a field has been set.
+func (o *ApplicationAttributeMapping) HasUserInfo() bool {
+	if o != nil && !IsNil(o.UserInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserInfo gets a reference to the given bool and assigns it to the UserInfo field.
+func (o *ApplicationAttributeMapping) SetUserInfo(v bool) {
+	o.UserInfo = &v
+}
+
+// GetOidcScopes returns the OidcScopes field value if set, zero value otherwise.
+func (o *ApplicationAttributeMapping) GetOidcScopes() []string {
+	if o == nil || IsNil(o.OidcScopes) {
+		var ret []string
+		return ret
+	}
+	return o.OidcScopes
+}
+
+// GetOidcScopesOk returns a tuple with the OidcScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAttributeMapping) GetOidcScopesOk() ([]string, bool) {
+	if o == nil || IsNil(o.OidcScopes) {
+		return nil, false
+	}
+	return o.OidcScopes, true
+}
+
+// HasOidcScopes returns a boolean if a field has been set.
+func (o *ApplicationAttributeMapping) HasOidcScopes() bool {
+	if o != nil && !IsNil(o.OidcScopes) {
+		return true
+	}
+
+	return false
+}
+
+// SetOidcScopes gets a reference to the given []string and assigns it to the OidcScopes field.
+func (o *ApplicationAttributeMapping) SetOidcScopes(v []string) {
+	o.OidcScopes = v
+}
+
 func (o ApplicationAttributeMapping) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -310,6 +454,18 @@ func (o ApplicationAttributeMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize["required"] = o.Required
 	// skip: updatedAt is readOnly
 	toSerialize["value"] = o.Value
+	if !IsNil(o.NameFormat) {
+		toSerialize["nameFormat"] = o.NameFormat
+	}
+	if !IsNil(o.IdToken) {
+		toSerialize["idToken"] = o.IdToken
+	}
+	if !IsNil(o.UserInfo) {
+		toSerialize["userInfo"] = o.UserInfo
+	}
+	if !IsNil(o.OidcScopes) {
+		toSerialize["oidcScopes"] = o.OidcScopes
+	}
 	return toSerialize, nil
 }
 

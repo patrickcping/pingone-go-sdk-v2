@@ -23544,10 +23544,16 @@ components:
     ApplicationAttributeMapping:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
+        userInfo: true
         application:
           id: id
+        nameFormat: nameFormat
         mappingType: null
         name: name
+        idToken: true
+        oidcScopes:
+        - oidcScopes
+        - oidcScopes
         id: id
         value: value
         required: true
@@ -23591,6 +23597,38 @@ components:
             \ format is ${<source>.<attribute_path>}. The only supported source is\
             \ user (for example, ${user.id}). This is a required property."
           type: string
+        nameFormat:
+          description: A URI reference representing the classification of the attribute.
+            Helps the service provider interpret the attribute format.
+          type: string
+        idToken:
+          default: true
+          description: "Whether the attribute mapping should be available in the ID\
+            \ Token. This property is applicable only when the application's `protocol`\
+            \ property is `OPENID_CONNECT`. If omitted, the default is `true`. Note\
+            \ that the `idToken` and `userInfo` properties cannot both be set to `false`.\
+            \ At least one of these properties must have a value of true."
+          type: boolean
+        userInfo:
+          default: true
+          description: "Whether the attribute mapping should be available through\
+            \ the `/as/userinfo` endpoint. This property is applicable only when the\
+            \ application's protocol property is `OPENID_CONNECT`. If omitted, the\
+            \ default is `true`. Note that the `idToken` and `userInfo` properties\
+            \ cannot both be set to `false`. At least one of these properties must\
+            \ have a value of `true`."
+          type: boolean
+        oidcScopes:
+          description: "OIDC resource scope IDs that this attribute mapping is available\
+            \ for exclusively. This setting overrides any global OIDC resource scopes\
+            \ that contain an attribute mapping with the same name. The list can contain\
+            \ only scope IDs that have been granted for the application through the\
+            \ `/grants` endpoint. A null value is accepted for backwards compatibility.\
+            \ However, an empty set is invalid, and one scope ID is expected. If null,\
+            \ the response includes this mapping in the `openid` scope."
+          items:
+            type: string
+          type: array
       required:
       - name
       - required
