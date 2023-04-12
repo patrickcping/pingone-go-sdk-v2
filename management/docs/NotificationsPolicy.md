@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | The name to use for the notification policy. Must be unique among the notification policies in the environment. | 
 **Default** | Pointer to **bool** | Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is &#x60;false&#x60; | [optional] [default to false]
+**CountryLimit** | Pointer to [**NotificationsPolicyCountryLimit**](NotificationsPolicyCountryLimit.md) |  | [optional] 
 **Quotas** | [**[]NotificationsPolicyQuotasInner**](NotificationsPolicyQuotasInner.md) | Collection of objects that define the SMS/Voice limits. Each object contain the following elements- &#x60;type&#x60;, &#x60;deliveryMethods&#x60;, &#x60;total&#x60;. Currently, a policy can contain ony one such object. Note that instead of &#x60;total&#x60;, you can use the pair of fields- &#x60;claimed&#x60; and &#x60;unclaimed&#x60;. | 
 
 ## Methods
@@ -149,6 +150,31 @@ SetDefault sets Default field to given value.
 `func (o *NotificationsPolicy) HasDefault() bool`
 
 HasDefault returns a boolean if a field has been set.
+
+### GetCountryLimit
+
+`func (o *NotificationsPolicy) GetCountryLimit() NotificationsPolicyCountryLimit`
+
+GetCountryLimit returns the CountryLimit field if non-nil, zero value otherwise.
+
+### GetCountryLimitOk
+
+`func (o *NotificationsPolicy) GetCountryLimitOk() (*NotificationsPolicyCountryLimit, bool)`
+
+GetCountryLimitOk returns a tuple with the CountryLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCountryLimit
+
+`func (o *NotificationsPolicy) SetCountryLimit(v NotificationsPolicyCountryLimit)`
+
+SetCountryLimit sets CountryLimit field to given value.
+
+### HasCountryLimit
+
+`func (o *NotificationsPolicy) HasCountryLimit() bool`
+
+HasCountryLimit returns a boolean if a field has been set.
 
 ### GetQuotas
 

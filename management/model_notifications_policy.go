@@ -30,6 +30,7 @@ type NotificationsPolicy struct {
 	Name string `json:"name"`
 	// Indication of whether this policy is the default notification policy for the environment. If the parameter is not provided, the value used is `false`
 	Default *bool `json:"default,omitempty"`
+	CountryLimit *NotificationsPolicyCountryLimit `json:"countryLimit,omitempty"`
 	// Collection of objects that define the SMS/Voice limits. Each object contain the following elements- `type`, `deliveryMethods`, `total`. Currently, a policy can contain ony one such object. Note that instead of `total`, you can use the pair of fields- `claimed` and `unclaimed`.
 	Quotas []NotificationsPolicyQuotasInner `json:"quotas"`
 }
@@ -209,6 +210,38 @@ func (o *NotificationsPolicy) SetDefault(v bool) {
 	o.Default = &v
 }
 
+// GetCountryLimit returns the CountryLimit field value if set, zero value otherwise.
+func (o *NotificationsPolicy) GetCountryLimit() NotificationsPolicyCountryLimit {
+	if o == nil || IsNil(o.CountryLimit) {
+		var ret NotificationsPolicyCountryLimit
+		return ret
+	}
+	return *o.CountryLimit
+}
+
+// GetCountryLimitOk returns a tuple with the CountryLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsPolicy) GetCountryLimitOk() (*NotificationsPolicyCountryLimit, bool) {
+	if o == nil || IsNil(o.CountryLimit) {
+		return nil, false
+	}
+	return o.CountryLimit, true
+}
+
+// HasCountryLimit returns a boolean if a field has been set.
+func (o *NotificationsPolicy) HasCountryLimit() bool {
+	if o != nil && !IsNil(o.CountryLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetCountryLimit gets a reference to the given NotificationsPolicyCountryLimit and assigns it to the CountryLimit field.
+func (o *NotificationsPolicy) SetCountryLimit(v NotificationsPolicyCountryLimit) {
+	o.CountryLimit = &v
+}
+
 // GetQuotas returns the Quotas field value
 func (o *NotificationsPolicy) GetQuotas() []NotificationsPolicyQuotasInner {
 	if o == nil {
@@ -249,6 +282,9 @@ func (o NotificationsPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
+	}
+	if !IsNil(o.CountryLimit) {
+		toSerialize["countryLimit"] = o.CountryLimit
 	}
 	toSerialize["quotas"] = o.Quotas
 	return toSerialize, nil
