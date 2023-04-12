@@ -2,6 +2,7 @@
 
 * **Enhancement** Add `CustomCRL` to the `Certificate` data model [#136](https://github.com/patrickcping/pingone-go-sdk-v2/pull/136)
 * **Enhancement** Add notifications policy country limit attributes for `NotificationsPolicy` model. [#142](https://github.com/patrickcping/pingone-go-sdk-v2/pull/142)
+* **Enhancement** Expand the `ApplicationAttributeMapping` model for attribute scoping.
 
 # v0.17.1 (2023-03-20)
 

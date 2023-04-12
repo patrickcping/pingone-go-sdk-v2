@@ -12,6 +12,10 @@ Name | Type | Description | Notes
 **Required** | **bool** | A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided. | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 **Value** | **string** | A string that specifies the value of the custom resource attribute. This value can be a placeholder that references an attribute in the user schema, expressed as &#x60;${user.path.to.value}&#x60;, or it can be a static string. Placeholders must be valid, enabled attributes in the environment’s user schema. Examples fo valid values are &#x60;${user.email}&#x60;, &#x60;${user.name.family}&#x60;, and &#x60;myClaimValueString&#x60; | 
+**NameFormat** | Pointer to **string** | A URI reference representing the classification of the attribute. Helps the service provider interpret the attribute format. | [optional] 
+**IdToken** | Pointer to **bool** | A boolean that specifies whether the attribute mapping should be available in the ID Token. This property is applicable only when the application&#39;s protocol property is &#x60;OPENID_CONNECT&#x60;. If omitted, the default is &#x60;true&#x60;. Note that the &#x60;idToken&#x60; and &#x60;userInfo&#x60; properties cannot both be set to &#x60;false&#x60;. At least one of these properties must have a value of &#x60;true&#x60;. | [optional] 
+**UserInfo** | Pointer to **bool** | A boolean that specifies whether the attribute mapping should be available through the &#x60;/as/userinfo&#x60; endpoint. This property is applicable only when the application&#39;s protocol property is &#x60;OPENID_CONNECT&#x60;. If omitted, the default is &#x60;true&#x60;. Note that the &#x60;idToken&#x60; and &#x60;userInfo&#x60; properties cannot both be set to &#x60;false&#x60;. At least one of these properties must have a value of &#x60;true&#x60;. | [optional] 
+**OidcScopes** | Pointer to **[]string** | OIDC resource scope IDs that this attribute mapping is available for exclusively. This setting overrides any global OIDC resource scopes that contain an attribute mapping with the same name. The list can contain only scope IDs that have been granted for the application through the &#x60;/grants&#x60; endpoint. A null value is accepted for backwards compatibility. However, an empty set is invalid, and one scope ID is expected. If null, the response includes this mapping in the &#x60;openid&#x60; scope. | [optional] 
 **Update** | [**EnumIdentityProviderAttributeMappingUpdate**](EnumIdentityProviderAttributeMappingUpdate.md) |  | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **IdentityProvider** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
@@ -25,8 +29,6 @@ Name | Type | Description | Notes
 **Unique** | Pointer to **bool** | A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. | [optional] 
 **MultiValued** | Pointer to **bool** | A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000. | [optional] 
 **Resource** | Pointer to [**IdentityProviderAttributeIdentityProvider**](IdentityProviderAttributeIdentityProvider.md) |  | [optional] 
-**IdToken** | Pointer to **bool** | A boolean that specifies whether the attribute mapping should be available in the ID Token. This property is applicable only when the application&#39;s protocol property is &#x60;OPENID_CONNECT&#x60;. If omitted, the default is &#x60;true&#x60;. Note that the &#x60;idToken&#x60; and &#x60;userInfo&#x60; properties cannot both be set to &#x60;false&#x60;. At least one of these properties must have a value of &#x60;true&#x60;. | [optional] 
-**UserInfo** | Pointer to **bool** | A boolean that specifies whether the attribute mapping should be available through the &#x60;/as/userinfo&#x60; endpoint. This property is applicable only when the application&#39;s protocol property is &#x60;OPENID_CONNECT&#x60;. If omitted, the default is &#x60;true&#x60;. Note that the &#x60;idToken&#x60; and &#x60;userInfo&#x60; properties cannot both be set to &#x60;false&#x60;. At least one of these properties must have a value of &#x60;true&#x60;. | [optional] 
 
 ## Methods
 
@@ -231,6 +233,106 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+
+### GetNameFormat
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetNameFormat() string`
+
+GetNameFormat returns the NameFormat field if non-nil, zero value otherwise.
+
+### GetNameFormatOk
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetNameFormatOk() (*string, bool)`
+
+GetNameFormatOk returns a tuple with the NameFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNameFormat
+
+`func (o *EntityArrayEmbeddedAttributesInner) SetNameFormat(v string)`
+
+SetNameFormat sets NameFormat field to given value.
+
+### HasNameFormat
+
+`func (o *EntityArrayEmbeddedAttributesInner) HasNameFormat() bool`
+
+HasNameFormat returns a boolean if a field has been set.
+
+### GetIdToken
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetIdToken() bool`
+
+GetIdToken returns the IdToken field if non-nil, zero value otherwise.
+
+### GetIdTokenOk
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetIdTokenOk() (*bool, bool)`
+
+GetIdTokenOk returns a tuple with the IdToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdToken
+
+`func (o *EntityArrayEmbeddedAttributesInner) SetIdToken(v bool)`
+
+SetIdToken sets IdToken field to given value.
+
+### HasIdToken
+
+`func (o *EntityArrayEmbeddedAttributesInner) HasIdToken() bool`
+
+HasIdToken returns a boolean if a field has been set.
+
+### GetUserInfo
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetUserInfo() bool`
+
+GetUserInfo returns the UserInfo field if non-nil, zero value otherwise.
+
+### GetUserInfoOk
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetUserInfoOk() (*bool, bool)`
+
+GetUserInfoOk returns a tuple with the UserInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserInfo
+
+`func (o *EntityArrayEmbeddedAttributesInner) SetUserInfo(v bool)`
+
+SetUserInfo sets UserInfo field to given value.
+
+### HasUserInfo
+
+`func (o *EntityArrayEmbeddedAttributesInner) HasUserInfo() bool`
+
+HasUserInfo returns a boolean if a field has been set.
+
+### GetOidcScopes
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetOidcScopes() []string`
+
+GetOidcScopes returns the OidcScopes field if non-nil, zero value otherwise.
+
+### GetOidcScopesOk
+
+`func (o *EntityArrayEmbeddedAttributesInner) GetOidcScopesOk() (*[]string, bool)`
+
+GetOidcScopesOk returns a tuple with the OidcScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOidcScopes
+
+`func (o *EntityArrayEmbeddedAttributesInner) SetOidcScopes(v []string)`
+
+SetOidcScopes sets OidcScopes field to given value.
+
+### HasOidcScopes
+
+`func (o *EntityArrayEmbeddedAttributesInner) HasOidcScopes() bool`
+
+HasOidcScopes returns a boolean if a field has been set.
 
 ### GetUpdate
 
@@ -541,56 +643,6 @@ SetResource sets Resource field to given value.
 `func (o *EntityArrayEmbeddedAttributesInner) HasResource() bool`
 
 HasResource returns a boolean if a field has been set.
-
-### GetIdToken
-
-`func (o *EntityArrayEmbeddedAttributesInner) GetIdToken() bool`
-
-GetIdToken returns the IdToken field if non-nil, zero value otherwise.
-
-### GetIdTokenOk
-
-`func (o *EntityArrayEmbeddedAttributesInner) GetIdTokenOk() (*bool, bool)`
-
-GetIdTokenOk returns a tuple with the IdToken field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIdToken
-
-`func (o *EntityArrayEmbeddedAttributesInner) SetIdToken(v bool)`
-
-SetIdToken sets IdToken field to given value.
-
-### HasIdToken
-
-`func (o *EntityArrayEmbeddedAttributesInner) HasIdToken() bool`
-
-HasIdToken returns a boolean if a field has been set.
-
-### GetUserInfo
-
-`func (o *EntityArrayEmbeddedAttributesInner) GetUserInfo() bool`
-
-GetUserInfo returns the UserInfo field if non-nil, zero value otherwise.
-
-### GetUserInfoOk
-
-`func (o *EntityArrayEmbeddedAttributesInner) GetUserInfoOk() (*bool, bool)`
-
-GetUserInfoOk returns a tuple with the UserInfo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserInfo
-
-`func (o *EntityArrayEmbeddedAttributesInner) SetUserInfo(v bool)`
-
-SetUserInfo sets UserInfo field to given value.
-
-### HasUserInfo
-
-`func (o *EntityArrayEmbeddedAttributesInner) HasUserInfo() bool`
-
-HasUserInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

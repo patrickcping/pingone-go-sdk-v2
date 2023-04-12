@@ -12,6 +12,10 @@ Name | Type | Description | Notes
 **Required** | **bool** | A boolean to specify whether a mapping value is required for this attribute. If true, a value must be set and a non-empty value must be available in the SAML assertion or ID token. | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was updated. | [optional] [readonly] 
 **Value** | **string** | A string that specifies the string constants or expression for mapping the attribute path against a specific source. The expression format is ${&lt;source&gt;.&lt;attribute_path&gt;}. The only supported source is user (for example, ${user.id}). This is a required property. | 
+**NameFormat** | Pointer to **string** | A URI reference representing the classification of the attribute. Helps the service provider interpret the attribute format. | [optional] 
+**IdToken** | Pointer to **bool** | Whether the attribute mapping should be available in the ID Token. This property is applicable only when the application&#39;s &#x60;protocol&#x60; property is &#x60;OPENID_CONNECT&#x60;. If omitted, the default is &#x60;true&#x60;. Note that the &#x60;idToken&#x60; and &#x60;userInfo&#x60; properties cannot both be set to &#x60;false&#x60;. At least one of these properties must have a value of true. | [optional] [default to true]
+**UserInfo** | Pointer to **bool** | Whether the attribute mapping should be available through the &#x60;/as/userinfo&#x60; endpoint. This property is applicable only when the application&#39;s protocol property is &#x60;OPENID_CONNECT&#x60;. If omitted, the default is &#x60;true&#x60;. Note that the &#x60;idToken&#x60; and &#x60;userInfo&#x60; properties cannot both be set to &#x60;false&#x60;. At least one of these properties must have a value of &#x60;true&#x60;. | [optional] [default to true]
+**OidcScopes** | Pointer to **[]string** | OIDC resource scope IDs that this attribute mapping is available for exclusively. This setting overrides any global OIDC resource scopes that contain an attribute mapping with the same name. The list can contain only scope IDs that have been granted for the application through the &#x60;/grants&#x60; endpoint. A null value is accepted for backwards compatibility. However, an empty set is invalid, and one scope ID is expected. If null, the response includes this mapping in the &#x60;openid&#x60; scope. | [optional] 
 
 ## Methods
 
@@ -216,6 +220,106 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+
+### GetNameFormat
+
+`func (o *ApplicationAttributeMapping) GetNameFormat() string`
+
+GetNameFormat returns the NameFormat field if non-nil, zero value otherwise.
+
+### GetNameFormatOk
+
+`func (o *ApplicationAttributeMapping) GetNameFormatOk() (*string, bool)`
+
+GetNameFormatOk returns a tuple with the NameFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNameFormat
+
+`func (o *ApplicationAttributeMapping) SetNameFormat(v string)`
+
+SetNameFormat sets NameFormat field to given value.
+
+### HasNameFormat
+
+`func (o *ApplicationAttributeMapping) HasNameFormat() bool`
+
+HasNameFormat returns a boolean if a field has been set.
+
+### GetIdToken
+
+`func (o *ApplicationAttributeMapping) GetIdToken() bool`
+
+GetIdToken returns the IdToken field if non-nil, zero value otherwise.
+
+### GetIdTokenOk
+
+`func (o *ApplicationAttributeMapping) GetIdTokenOk() (*bool, bool)`
+
+GetIdTokenOk returns a tuple with the IdToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdToken
+
+`func (o *ApplicationAttributeMapping) SetIdToken(v bool)`
+
+SetIdToken sets IdToken field to given value.
+
+### HasIdToken
+
+`func (o *ApplicationAttributeMapping) HasIdToken() bool`
+
+HasIdToken returns a boolean if a field has been set.
+
+### GetUserInfo
+
+`func (o *ApplicationAttributeMapping) GetUserInfo() bool`
+
+GetUserInfo returns the UserInfo field if non-nil, zero value otherwise.
+
+### GetUserInfoOk
+
+`func (o *ApplicationAttributeMapping) GetUserInfoOk() (*bool, bool)`
+
+GetUserInfoOk returns a tuple with the UserInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserInfo
+
+`func (o *ApplicationAttributeMapping) SetUserInfo(v bool)`
+
+SetUserInfo sets UserInfo field to given value.
+
+### HasUserInfo
+
+`func (o *ApplicationAttributeMapping) HasUserInfo() bool`
+
+HasUserInfo returns a boolean if a field has been set.
+
+### GetOidcScopes
+
+`func (o *ApplicationAttributeMapping) GetOidcScopes() []string`
+
+GetOidcScopes returns the OidcScopes field if non-nil, zero value otherwise.
+
+### GetOidcScopesOk
+
+`func (o *ApplicationAttributeMapping) GetOidcScopesOk() (*[]string, bool)`
+
+GetOidcScopesOk returns a tuple with the OidcScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOidcScopes
+
+`func (o *ApplicationAttributeMapping) SetOidcScopes(v []string)`
+
+SetOidcScopes sets OidcScopes field to given value.
+
+### HasOidcScopes
+
+`func (o *ApplicationAttributeMapping) HasOidcScopes() bool`
+
+HasOidcScopes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
