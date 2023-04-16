@@ -1,4 +1,4 @@
-module github.com/GIT_USER_ID/--git-user-id/credentials
+module github.com/patrickcping/pingone-go-sdk-v2/credentials
 
 go 1.18
 
