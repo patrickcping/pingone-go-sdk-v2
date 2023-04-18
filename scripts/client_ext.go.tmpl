@@ -39,7 +39,7 @@ func exponentialBackOffRetry(f SDKInterfaceFunc) (interface{}, *http.Response, e
 
 		backOffTime, isRetryable = testForRetryable(resp, err, backOffTime)
 
-		if err != nil || isRetryable {
+		if (err != nil && isRetryable) || isRetryable {
 			log.Printf("Attempt %d failed: %v, backing off by %s.", i+1, err, backOffTime.String())
 			time.Sleep(backOffTime)
 			continue
