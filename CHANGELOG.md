@@ -3,6 +3,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.2
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.17.1 => v0.18.0 [#146](https://github.com/patrickcping/pingone-go-sdk-v2/pull/146)
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.3.4 => v0.4.0 [#146](https://github.com/patrickcping/pingone-go-sdk-v2/pull/146)
+    * **Note** bump `github.com/golangci/golangci-lint` from v1.52.0 to v1.52.2 [#138](https://github.com/patrickcping/pingone-go-sdk-v2/pull/138)
     * **Note** bump `golang.org/x/oauth2` from v0.6.0 to v0.7.0 [#140](https://github.com/patrickcping/pingone-go-sdk-v2/pull/140)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.18.0](./management/CHANGELOG.md)
     * **Enhancement** Add `CustomCRL` to the `Certificate` data model [#136](https://github.com/patrickcping/pingone-go-sdk-v2/pull/136)
