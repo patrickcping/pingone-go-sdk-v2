@@ -52,7 +52,7 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 	ext := ".go"
 
 	// Get a list of all files with the given extension in the directory
-	files, err := filepath.Glob(filepath.Join(dir, "*"+ext))
+	files, err := filepath.Glob(filepath.Join(dir, filepath.Clean("*"+ext)))
 	if err != nil {
 		panic(err)
 	}

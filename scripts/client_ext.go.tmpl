@@ -1,7 +1,9 @@
 package PACKAGENAME
 
+
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
@@ -12,12 +14,17 @@ import (
 type SDKInterfaceFunc func() (interface{}, *http.Response, error)
 
 var (
-	maxRetries               = 10
-	maximumRetryAfterBackoff = 10
+	maxRetries               = 5
+	maximumRetryAfterBackoff = 30
 )
 
 func processResponse(f SDKInterfaceFunc) (interface{}, *http.Response, error) {
-	return exponentialBackOffRetry(f)
+	obj, response, error := exponentialBackOffRetry(f)
+	return obj, response, reformError(error)
+}
+
+func reformError(err error) error {
+	return err
 }
 
 func exponentialBackOffRetry(f SDKInterfaceFunc) (interface{}, *http.Response, error) {
@@ -25,14 +32,15 @@ func exponentialBackOffRetry(f SDKInterfaceFunc) (interface{}, *http.Response, e
 	var resp *http.Response
 	var err error
 	backOffTime := time.Second
+	var isRetryable bool
 
 	for i := 0; i < maxRetries; i++ {
 		obj, resp, err = f()
 
-		backOffTime, isRetryable := isRetryable(resp, err, backOffTime)
+		backOffTime, isRetryable = testForRetryable(resp, err, backOffTime)
 
-		if err != nil && isRetryable {
-			fmt.Printf("Attempt %d failed: %v\n", i+1, err)
+		if err != nil || isRetryable {
+			log.Printf("Attempt %d failed: %v, backing off by %s.", i+1, err, backOffTime.String())
 			time.Sleep(backOffTime)
 			continue
 		}
@@ -40,19 +48,19 @@ func exponentialBackOffRetry(f SDKInterfaceFunc) (interface{}, *http.Response, e
 		return obj, resp, err
 	}
 
-	fmt.Printf("Request failed after %d attempts", maxRetries)
+	log.Printf("Request failed after %d attempts", maxRetries)
 
 	return obj, resp, err // output the final error
 }
 
-func isRetryable(r *http.Response, err error, currentBackoff time.Duration) (time.Duration, bool) {
+func testForRetryable(r *http.Response, err error, currentBackoff time.Duration) (time.Duration, bool) {
 
 	backoff := currentBackoff
 
 	if r.StatusCode == 501 || r.StatusCode == 503 || r.StatusCode == 429 {
 		retryAfter, err := parseRetryAfterHeader(r)
 		if err != nil {
-			fmt.Printf("Cannot parse the expected \"Retry-After\" header.")
+			log.Printf("Cannot parse the expected \"Retry-After\" header: %s", err)
 			backoff = currentBackoff * 2
 		}
 
@@ -75,7 +83,7 @@ func isRetryable(r *http.Response, err error, currentBackoff time.Duration) (tim
 	}
 
 	if slices.Contains(retryAbleCodes, r.StatusCode) {
-		fmt.Printf("HTTP status code %d detected, available for retry", r.StatusCode)
+		log.Printf("HTTP status code %d detected, available for retry", r.StatusCode)
 		return backoff, true
 	}
 
