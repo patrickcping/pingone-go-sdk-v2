@@ -1,3 +1,18 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.3
+    * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.2](./agreementmanagement/CHANGELOG.md)
+    * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.5](./authorize/CHANGELOG.md)
+    * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.18.1](./management/CHANGELOG.md)
+    * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.9.2](./mfa/CHANGELOG.md)
+    * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.4.1](./risk/CHANGELOG.md)
+    * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
+
 # Release (2023-04-18)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.2
