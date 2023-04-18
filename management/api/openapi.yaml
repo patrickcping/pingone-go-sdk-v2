@@ -22843,6 +22843,24 @@ components:
       - IOS
       - GOOGLE
       type: string
+    EnumNotificationsPolicyCountryLimitDeliveryMethod:
+      description: "The delivery method that the defined limitation should be applied\
+        \ to.  Options are `SMS`, `Voice`."
+      enum:
+      - SMS
+      - Voice
+      type: string
+    EnumNotificationsPolicyCountryLimitType:
+      description: |
+        Determines the kind of limitation being defined. The possible values are:
+        `NONE`
+        `ALLOWED` - allows SMS/Voice notifications only for the countries specified with `countryLimit.countries`
+        `DENIED` - denies SMS/Voice notifications for the countries specified with `countryLimit.countries`
+      enum:
+      - NONE
+      - ALLOWED
+      - DENIED
+      type: string
     EnumNotificationsPolicyQuotaDeliveryMethods:
       enum:
       - SMS
@@ -23526,10 +23544,16 @@ components:
     ApplicationAttributeMapping:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
+        userInfo: true
         application:
           id: id
+        nameFormat: nameFormat
         mappingType: null
         name: name
+        idToken: true
+        oidcScopes:
+        - oidcScopes
+        - oidcScopes
         id: id
         value: value
         required: true
@@ -23573,6 +23597,38 @@ components:
             \ format is ${<source>.<attribute_path>}. The only supported source is\
             \ user (for example, ${user.id}). This is a required property."
           type: string
+        nameFormat:
+          description: A URI reference representing the classification of the attribute.
+            Helps the service provider interpret the attribute format.
+          type: string
+        idToken:
+          default: true
+          description: "Whether the attribute mapping should be available in the ID\
+            \ Token. This property is applicable only when the application's `protocol`\
+            \ property is `OPENID_CONNECT`. If omitted, the default is `true`. Note\
+            \ that the `idToken` and `userInfo` properties cannot both be set to `false`.\
+            \ At least one of these properties must have a value of true."
+          type: boolean
+        userInfo:
+          default: true
+          description: "Whether the attribute mapping should be available through\
+            \ the `/as/userinfo` endpoint. This property is applicable only when the\
+            \ application's protocol property is `OPENID_CONNECT`. If omitted, the\
+            \ default is `true`. Note that the `idToken` and `userInfo` properties\
+            \ cannot both be set to `false`. At least one of these properties must\
+            \ have a value of `true`."
+          type: boolean
+        oidcScopes:
+          description: "OIDC resource scope IDs that this attribute mapping is available\
+            \ for exclusively. This setting overrides any global OIDC resource scopes\
+            \ that contain an attribute mapping with the same name. The list can contain\
+            \ only scope IDs that have been granted for the application through the\
+            \ `/grants` endpoint. A null value is accepted for backwards compatibility.\
+            \ However, an empty set is invalid, and one scope ID is expected. If null,\
+            \ the response includes this mapping in the `openid` scope."
+          items:
+            type: string
+          type: array
       required:
       - name
       - required
@@ -24569,6 +24625,14 @@ components:
               - null
             name: name
             id: id
+            countryLimit:
+              countries:
+              - countries
+              - countries
+              type: null
+              deliveryMethods:
+              - null
+              - null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
@@ -24589,6 +24653,14 @@ components:
               - null
             name: name
             id: id
+            countryLimit:
+              countries:
+              - countries
+              - countries
+              type: null
+              deliveryMethods:
+              - null
+              - null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           languages:
           - null
@@ -26149,6 +26221,14 @@ components:
           - null
         name: name
         id: id
+        countryLimit:
+          countries:
+          - countries
+          - countries
+          type: null
+          deliveryMethods:
+          - null
+          - null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         createdAt:
@@ -26175,6 +26255,8 @@ components:
             \ policy for the environment. If the parameter is not provided, the value\
             \ used is `false`"
           type: boolean
+        countryLimit:
+          $ref: '#/components/schemas/NotificationsPolicy_countryLimit'
         quotas:
           description: "Collection of objects that define the SMS/Voice limits. Each\
             \ object contain the following elements- `type`, `deliveryMethods`, `total`.\
@@ -29249,6 +29331,14 @@ components:
             - null
           name: name
           id: id
+          countryLimit:
+            countries:
+            - countries
+            - countries
+            type: null
+            deliveryMethods:
+            - null
+            - null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
@@ -29269,6 +29359,14 @@ components:
             - null
           name: name
           id: id
+          countryLimit:
+            countries:
+            - countries
+            - countries
+            type: null
+            deliveryMethods:
+            - null
+            - null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         languages:
         - null
@@ -31090,6 +31188,38 @@ components:
             Verify manual ID inspection feature.
           type: boolean
       readOnly: true
+      type: object
+    NotificationsPolicy_countryLimit:
+      description: You can use the `countryLimit` object to limit the countries where
+        you can send SMS and voice notifications.
+      example:
+        countries:
+        - countries
+        - countries
+        type: null
+        deliveryMethods:
+        - null
+        - null
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumNotificationsPolicyCountryLimitType'
+        deliveryMethods:
+          description: "The delivery methods that the defined limitation should be\
+            \ applied to. Content of the array can be `SMS`, `Voice`, or both. If\
+            \ the parameter is not provided, the default is `SMS` and `Voice`."
+          items:
+            $ref: '#/components/schemas/EnumNotificationsPolicyCountryLimitDeliveryMethod'
+          type: array
+        countries:
+          description: The countries where the specified methods should be allowed
+            or denied. Use the two-letter country codes from ISO 3166-1.
+          items:
+            pattern: ^(A(D|E|F|G|I|L|M|N|O|R|S|T|Q|U|W|X|Z)|B(A|B|D|E|F|G|H|I|J|L|M|N|O|R|S|T|V|W|Y|Z)|C(A|C|D|F|G|H|I|K|L|M|N|O|R|U|V|X|Y|Z)|D(E|J|K|M|O|Z)|E(C|E|G|H|R|S|T)|F(I|J|K|M|O|R)|G(A|B|D|E|F|G|H|I|L|M|N|P|Q|R|S|T|U|W|Y)|H(K|M|N|R|T|U)|I(D|E|Q|L|M|N|O|R|S|T)|J(E|M|O|P)|K(E|G|H|I|M|N|P|R|W|Y|Z)|L(A|B|C|I|K|R|S|T|U|V|Y)|M(A|C|D|E|F|G|H|K|L|M|N|O|Q|P|R|S|T|U|V|W|X|Y|Z)|N(A|C|E|F|G|I|L|O|P|R|U|Z)|OM|P(A|E|F|G|H|K|L|M|N|R|S|T|W|Y)|QA|R(E|O|S|U|W)|S(A|B|C|D|E|G|H|I|J|K|L|M|N|O|R|T|V|Y|Z)|T(C|D|F|G|H|J|K|L|M|N|O|R|T|V|W|Z)|U(A|G|M|S|Y|Z)|V(A|C|E|G|I|N|U)|W(F|S)|Y(E|T)|Z(A|M|W))$
+            type: string
+          type: array
+      required:
+      - countries
+      - type
       type: object
     NotificationsPolicy_quotas_inner:
       example:

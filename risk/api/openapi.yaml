@@ -876,7 +876,7 @@ components:
   schemas:
     EntityArray:
       example:
-        size: 3.616076749251911
+        size: 9.301444243932576
         _embedded:
           riskPolicySets:
           - createdAt: createdAt
@@ -1014,99 +1014,51 @@ components:
               value: value
             updatedAt: updatedAt
           riskPredictors:
-          - createdAt: createdAt
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             default:
               result:
                 level: null
                 type: null
+              score: 2
               weight: 5
+              evaluated: true
+            condition:
+              scores:
+              - name: name
+                value: value
+              - name: name
+                value: value
+            licensed: true
             name: name
+            deletable: true
             description: description
             id: id
             type: null
             compactName: compactName
-            map:
-              high:
-                contains: contains
-                ipRange:
-                - ipRange
-                - ipRange
-                list:
-                - list
-                - list
-                between:
-                  minScore: 2.3021358869347655
-                  maxScore: 7.061401241503109
-              low:
-                contains: contains
-                ipRange:
-                - ipRange
-                - ipRange
-                list:
-                - list
-                - list
-                between:
-                  minScore: 2.3021358869347655
-                  maxScore: 7.061401241503109
-              medium:
-                contains: contains
-                ipRange:
-                - ipRange
-                - ipRange
-                list:
-                - list
-                - list
-                between:
-                  minScore: 2.3021358869347655
-                  maxScore: 7.061401241503109
-            updatedAt: updatedAt
-          - createdAt: createdAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
             default:
               result:
                 level: null
                 type: null
+              score: 2
               weight: 5
+              evaluated: true
+            condition:
+              scores:
+              - name: name
+                value: value
+              - name: name
+                value: value
+            licensed: true
             name: name
+            deletable: true
             description: description
             id: id
             type: null
             compactName: compactName
-            map:
-              high:
-                contains: contains
-                ipRange:
-                - ipRange
-                - ipRange
-                list:
-                - list
-                - list
-                between:
-                  minScore: 2.3021358869347655
-                  maxScore: 7.061401241503109
-              low:
-                contains: contains
-                ipRange:
-                - ipRange
-                - ipRange
-                list:
-                - list
-                - list
-                between:
-                  minScore: 2.3021358869347655
-                  maxScore: 7.061401241503109
-              medium:
-                contains: contains
-                ipRange:
-                - ipRange
-                - ipRange
-                list:
-                - list
-                - list
-                between:
-                  minScore: 2.3021358869347655
-                  maxScore: 7.061401241503109
-            updatedAt: updatedAt
-        count: 9.301444243932576
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        count: 7.061401241503109
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -1117,17 +1069,24 @@ components:
       type: object
     EnumCompletionStatus:
       description: "A string that specifies the state of the transaction. Options\
-        \ are FAILED, IN_PROGRESS, and SUCCESS. If a value is not provided, the value\
-        \ defaults to IN_PROGRESS. The value of this property can be changed only\
-        \ if its current state is IN_PROGRESS."
+        \ are `FAILED`, `IN_PROGRESS`, and `SUCCESS`. If a value is not provided,\
+        \ the value defaults to `IN_PROGRESS`. The value of this property can be changed\
+        \ only if its current state is `IN_PROGRESS`."
       enum:
       - FAILED
       - IN_PROGRESS
       - SUCCESS
       type: string
+    EnumDistanceUnit:
+      description: "A string that specifies the unit of distance. Options are `kilometers`,\
+        \ `miles`."
+      enum:
+      - kilometers
+      - miles
+      type: string
     EnumEventSharingType:
-      description: "A string that specifies the device sharing type. Options are UNSPECIFIED,\
-        \ SHARED, and PRIVATE."
+      description: "A string that specifies the device sharing type. Options are `UNSPECIFIED`,\
+        \ `SHARED`, and `PRIVATE`."
       enum:
       - UNSPECIFIED
       - SHARED
@@ -1135,46 +1094,83 @@ components:
       type: string
     EnumFlowType:
       description: A string that specifies the flow type for the event. The only option
-        (and default) is AUTHENTICATION.
+        (and default) is `AUTHENTICATION`.
       enum:
       - AUTHENTICATION
       type: string
-    EnumPredictorType:
-      description: "An enum type. This can be either VELOCITY, USER_RISK_BEHAVIOR,\
-        \ or MAP"
+    EnumPredictorCompositeConditionType:
       enum:
-      - VELOCITY
-      - USER_RISK_BEHAVIOR
+      - VALUE_COMPARISON
+      - STRING_LIST
+      type: string
+    EnumPredictorType:
+      description: "An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`,\
+        \ `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `NEW_DEVICE`, `USER_LOCATION_ANOMALY`,\
+        \ `USER_RISK_BEHAVIOR` or `VELOCITY`."
+      enum:
+      - ANONYMOUS_NETWORK
+      - COMPOSITE
+      - GEO_VELOCITY
+      - IP_REPUTATION
       - MAP
+      - NEW_DEVICE
+      - USER_LOCATION_ANOMALY
+      - USER_RISK_BEHAVIOR
+      - VELOCITY
+      type: string
+    EnumPredictorUnit:
+      enum:
+      - DAY
+      - HOUR
+      type: string
+    EnumPredictorVelocityFallbackStrategy:
+      enum:
+      - ENVIRONMENT_MAX
+      type: string
+    EnumPredictorVelocityMeasure:
+      enum:
+      - DISTINCT_COUNT
+      type: string
+    EnumPredictorVelocityUseType:
+      enum:
+      - POISSON_WITH_MAX
       type: string
     EnumResultType:
       description: A string that specifies the risk evaluation result type. Options
-        are VALUE.
+        are `VALUE`.
       enum:
       - VALUE
       type: string
     EnumRiskLevel:
-      description: Enum string that specifies a given risk level
+      description: "Enum string that specifies a given risk level.  Options are `LOW`,\
+        \ `MEDIUM`, `HIGH`."
       enum:
       - LOW
       - MEDIUM
       - HIGH
       type: string
+    EnumRiskModel:
+      description: Enum string that specifies the risk model.  Options are `points`
+        (individual user model) and `login_anomaly_statistic` (organization wide model).
+      enum:
+      - points
+      - login_anomaly_statistic
+      type: string
     EnumThresholdSource:
       description: "An enum indicating the source used to calculate the threshold.\
-        \ This can be MIN_NOT_REACHED. If the measure is less than every.minSample,\
-        \ the threshold isn't calculated. Instead, a value of LOW is automatically\
+        \ This can be `MIN_NOT_REACHED`. If the measure is less than `every.minSample`,\
+        \ the threshold isn't calculated. Instead, a value of `LOW` is automatically\
         \ assigned. If less than five IPs were used by the user during the past hour,\
-        \ MIN_NOT_REACHED is set. CALCULATED. Indicates the threshold is guaranteed\
-        \ to be calculated. ENVIRONMENT_FALLBACK. Indicates a global threshold calculated\
+        \ `MIN_NOT_REACHED` is set. `CALCULATED`. Indicates the threshold is guaranteed\
+        \ to be calculated. `ENVIRONMENT_FALLBACK`. Indicates a global threshold calculated\
         \ for the entire environment is used. The global threshold is used when the\
-        \ ipVelocityByUser.threshold couldn't be calculated, generally due to a lack\
-        \ of past transactions for the risk predictor to use for the threshold calculation.\
-        \ DEFAULT_FALLBACK. Indicates the default threshold defined for the predictor\
-        \ (in threshold.medium or threshold.high) is used. The default threshold is\
-        \ used when ENVIRONMENT_FALLBACK (the global threshold) couldn't be calculated,\
-        \ generally due to a lack of past transactions for the risk predictor to use\
-        \ for the environment threshold calculation."
+        \ `ipVelocityByUser.threshold` couldn't be calculated, generally due to a\
+        \ lack of past transactions for the risk predictor to use for the threshold\
+        \ calculation. `DEFAULT_FALLBACK`. Indicates the default threshold defined\
+        \ for the predictor (in `threshold.medium` or `threshold.high`) is used. The\
+        \ default threshold is used when `ENVIRONMENT_FALLBACK` (the global threshold)\
+        \ couldn't be calculated, generally due to a lack of past transactions for\
+        \ the risk predictor to use for the environment threshold calculation."
       enum:
       - MIN_NOT_REACHED
       - CALCULATED
@@ -1183,7 +1179,7 @@ components:
       type: string
     EnumUserType:
       description: A string that specifies the type of user associated with the event.
-        Options are EXTERNAL.
+        Options are `EXTERNAL`.
       enum:
       - EXTERNAL
       type: string
@@ -1723,52 +1719,28 @@ components:
       type: object
     RiskPredictor:
       example:
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         default:
           result:
             level: null
             type: null
+          score: 2
           weight: 5
+          evaluated: true
+        condition:
+          scores:
+          - name: name
+            value: value
+          - name: name
+            value: value
+        licensed: true
         name: name
+        deletable: true
         description: description
         id: id
         type: null
         compactName: compactName
-        map:
-          high:
-            contains: contains
-            ipRange:
-            - ipRange
-            - ipRange
-            list:
-            - list
-            - list
-            between:
-              minScore: 2.3021358869347655
-              maxScore: 7.061401241503109
-          low:
-            contains: contains
-            ipRange:
-            - ipRange
-            - ipRange
-            list:
-            - list
-            - list
-            between:
-              minScore: 2.3021358869347655
-              maxScore: 7.061401241503109
-          medium:
-            contains: contains
-            ipRange:
-            - ipRange
-            - ipRange
-            list:
-            - list
-            - list
-            between:
-              minScore: 2.3021358869347655
-              maxScore: 7.061401241503109
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           description: A string that specifies the resource’s unique identifier.
@@ -1785,52 +1757,132 @@ components:
             \ must be alpha-numeric, with no special characters or spaces. This name\
             \ is used in the API both for policy configuration, and in the Risk Evaluation\
             \ response (under details)."
+          format: "^[a-zA-Z0-9]+$"
           type: string
         type:
           $ref: '#/components/schemas/EnumPredictorType'
         description:
-          description: A string type. This specifies the desription of the risk predictor.
+          description: A string type. This specifies the description of the risk predictor.
             Maximum length is 1024 characters.
+          maxLength: 1024
           type: string
         createdAt:
           description: The time the resource was created.
+          format: date-time
           readOnly: true
           type: string
         updatedAt:
           description: The time the resource was updated.
+          format: date-time
           readOnly: true
           type: string
+        licensed:
+          description: Indicates whether PingOne Risk is licensed for the environment.
+          readOnly: true
+          type: boolean
+        deletable:
+          description: A boolean to indicate whether the predictor is deletable in
+            the environment.
+          readOnly: true
+          type: boolean
         default:
           $ref: '#/components/schemas/RiskPredictor_default'
-        map:
-          $ref: '#/components/schemas/RiskPredictor_map'
+        condition:
+          $ref: '#/components/schemas/RiskPredictor_condition'
       required:
       - compactName
       - name
       - type
       type: object
-    RiskPredictorItemMap:
-      example:
-        contains: contains
-        ipRange:
-        - ipRange
-        - ipRange
-        list:
-        - list
-        - list
-        between:
-          minScore: 2.3021358869347655
-          maxScore: 7.061401241503109
+    RiskPredictorAnonymousNetwork:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork_allOf'
+    RiskPredictorComposite:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorComposite_allOf'
+    RiskPredictorCompositeAnd:
+      properties:
+        and:
+          items:
+            $ref: '#/components/schemas/RiskPredictorCompositeCondition'
+          type: array
+      required:
+      - and
+      type: object
+    RiskPredictorCompositeConditionBase:
+      oneOf:
+      - $ref: '#/components/schemas/RiskPredictorCompositeNot'
+      - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
+      - $ref: '#/components/schemas/RiskPredictorCompositeOr'
+    RiskPredictorCompositeCondition:
+      oneOf:
+      - $ref: '#/components/schemas/RiskPredictorCompositeNot'
+      - $ref: '#/components/schemas/RiskPredictorCompositeOr'
+      - $ref: '#/components/schemas/RiskPredictorCompositeAnd'
+      - $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf'
+      - $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1'
+    RiskPredictorCompositeNot:
+      properties:
+        not:
+          $ref: '#/components/schemas/RiskPredictorCompositeOr'
+      required:
+      - not
+      type: object
+    RiskPredictorCompositeOr:
+      properties:
+        or:
+          items:
+            $ref: '#/components/schemas/RiskPredictorCompositeCondition'
+          type: array
+      required:
+      - or
+      type: object
+    RiskPredictorCustom:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCustom_allOf'
+    RiskPredictorCustomItem:
+      oneOf:
+      - $ref: '#/components/schemas/RiskPredictorCustomItemIPRange'
+      - $ref: '#/components/schemas/RiskPredictorCustomItemBetween'
+      - $ref: '#/components/schemas/RiskPredictorCustomItemList'
+    RiskPredictorCustomItemIPRange:
+      description: The mapping of risk levels for the IP ranges specified.
       properties:
         contains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
           type: string
         ipRange:
           description: List of CIDRs to include
           items:
+            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
             type: string
           type: array
+      required:
+      - contains
+      - ipRange
+      type: object
+    RiskPredictorCustomItemBetween:
+      description: "The mapping of risk levels for numerical values in a minimum,\
+        \ maxiumum boundary."
+      properties:
+        contains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
         between:
-          $ref: '#/components/schemas/RiskPredictorItemMap_between'
+          $ref: '#/components/schemas/RiskPredictorCustomItemBetween_between'
+      required:
+      - between
+      - contains
+      type: object
+    RiskPredictorCustomItemList:
+      description: The mapping of risk levels for the list of all results.
+      properties:
+        contains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
         list:
           description: An array that specifies the list of entities that represent
             the risk conditions.
@@ -1839,7 +1891,32 @@ components:
           type: array
       required:
       - contains
+      - list
       type: object
+    RiskPredictorGeovelocity:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
+    RiskPredictorIPReputation:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
+    RiskPredictorNewDevice:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorNewDevice_allOf'
+    RiskPredictorUserLocationAnomaly:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf'
+    RiskPredictorUEBA:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorUEBA_allOf'
+    RiskPredictorVelocity:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorVelocity_allOf'
     EntityArray__embedded:
       example:
         riskPolicySets:
@@ -1978,98 +2055,50 @@ components:
             value: value
           updatedAt: updatedAt
         riskPredictors:
-        - createdAt: createdAt
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           default:
             result:
               level: null
               type: null
+            score: 2
             weight: 5
+            evaluated: true
+          condition:
+            scores:
+            - name: name
+              value: value
+            - name: name
+              value: value
+          licensed: true
           name: name
+          deletable: true
           description: description
           id: id
           type: null
           compactName: compactName
-          map:
-            high:
-              contains: contains
-              ipRange:
-              - ipRange
-              - ipRange
-              list:
-              - list
-              - list
-              between:
-                minScore: 2.3021358869347655
-                maxScore: 7.061401241503109
-            low:
-              contains: contains
-              ipRange:
-              - ipRange
-              - ipRange
-              list:
-              - list
-              - list
-              between:
-                minScore: 2.3021358869347655
-                maxScore: 7.061401241503109
-            medium:
-              contains: contains
-              ipRange:
-              - ipRange
-              - ipRange
-              list:
-              - list
-              - list
-              between:
-                minScore: 2.3021358869347655
-                maxScore: 7.061401241503109
-          updatedAt: updatedAt
-        - createdAt: createdAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
           default:
             result:
               level: null
               type: null
+            score: 2
             weight: 5
+            evaluated: true
+          condition:
+            scores:
+            - name: name
+              value: value
+            - name: name
+              value: value
+          licensed: true
           name: name
+          deletable: true
           description: description
           id: id
           type: null
           compactName: compactName
-          map:
-            high:
-              contains: contains
-              ipRange:
-              - ipRange
-              - ipRange
-              list:
-              - list
-              - list
-              between:
-                minScore: 2.3021358869347655
-                maxScore: 7.061401241503109
-            low:
-              contains: contains
-              ipRange:
-              - ipRange
-              - ipRange
-              list:
-              - list
-              - list
-              between:
-                minScore: 2.3021358869347655
-                maxScore: 7.061401241503109
-            medium:
-              contains: contains
-              ipRange:
-              - ipRange
-              - ipRange
-              list:
-              - list
-              - list
-              between:
-                minScore: 2.3021358869347655
-                maxScore: 7.061401241503109
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         riskPolicySets:
           items:
@@ -2714,81 +2743,293 @@ components:
       - level
       type: object
     RiskPredictor_default:
+      description: Contains the default values used for a new risk predictor.
       example:
         result:
           level: null
           type: null
+        score: 2
         weight: 5
+        evaluated: true
       properties:
         weight:
           description: An integer type. This specifies the weight assigned to the
             risk predictor in a new policy by default.
           type: integer
+        score:
+          type: integer
+        evaluated:
+          type: boolean
         result:
           $ref: '#/components/schemas/RiskPredictor_default_result'
       required:
       - result
       - weight
       type: object
-    RiskPredictor_map:
+    RiskPredictor_condition_scores_inner:
+      example:
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+      type: object
+    RiskPredictor_condition:
+      example:
+        scores:
+        - name: name
+          value: value
+        - name: name
+          value: value
+      properties:
+        scores:
+          items:
+            $ref: '#/components/schemas/RiskPredictor_condition_scores_inner'
+          type: array
+      readOnly: true
+      type: object
+    RiskPredictorAnonymousNetwork_allOf:
+      properties:
+        whiteList:
+          description: A list of IP addresses (CIDRs) that are ignored for the predictor
+            results.
+          items:
+            format: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+            type: string
+          type: array
+      type: object
+      example: null
+    RiskPredictorComposite_allOf_composition:
+      properties:
+        condition:
+          $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
+        level:
+          $ref: '#/components/schemas/EnumRiskLevel'
+      required:
+      - condition
+      - level
+      type: object
+      example: null
+    RiskPredictorComposite_allOf:
+      properties:
+        composition:
+          $ref: '#/components/schemas/RiskPredictorComposite_allOf_composition'
+      required:
+      - composition
+      type: object
+      example: null
+    RiskPredictorCompositeCondition_oneOf:
+      properties:
+        contains:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        list:
+          items:
+            type: string
+          type: array
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
+      required:
+      - contains
+      - list
+      - type
+      type: object
+      example: null
+    RiskPredictorCompositeCondition_oneOf_1:
+      properties:
+        equals:
+          type: object
+        notEquals:
+          type: object
+        greater:
+          type: integer
+        greaterEquals:
+          type: integer
+        lower:
+          type: integer
+        lowerEquals:
+          type: integer
+        value:
+          format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
+      required:
+      - value
+      type: object
+      example: null
+    RiskPredictorCustom_allOf_map:
       description: An object that defines the mapping of risk levels for the list
         of all results.
-      example:
-        high:
-          contains: contains
-          ipRange:
-          - ipRange
-          - ipRange
-          list:
-          - list
-          - list
-          between:
-            minScore: 2.3021358869347655
-            maxScore: 7.061401241503109
-        low:
-          contains: contains
-          ipRange:
-          - ipRange
-          - ipRange
-          list:
-          - list
-          - list
-          between:
-            minScore: 2.3021358869347655
-            maxScore: 7.061401241503109
-        medium:
-          contains: contains
-          ipRange:
-          - ipRange
-          - ipRange
-          list:
-          - list
-          - list
-          between:
-            minScore: 2.3021358869347655
-            maxScore: 7.061401241503109
       properties:
         high:
-          $ref: '#/components/schemas/RiskPredictorItemMap'
+          $ref: '#/components/schemas/RiskPredictorCustomItem'
         medium:
-          $ref: '#/components/schemas/RiskPredictorItemMap'
+          $ref: '#/components/schemas/RiskPredictorCustomItem'
         low:
-          $ref: '#/components/schemas/RiskPredictorItemMap'
+          $ref: '#/components/schemas/RiskPredictorCustomItem'
       type: object
-    RiskPredictorItemMap_between:
+      example: null
+    RiskPredictorCustom_allOf:
+      properties:
+        map:
+          $ref: '#/components/schemas/RiskPredictorCustom_allOf_map'
+      required:
+      - map
+      type: object
+      example: null
+    RiskPredictorCustomItemBetween_between:
       description: Minimum and maximum boundaries
-      example:
-        minScore: 2.3021358869347655
-        maxScore: 7.061401241503109
       properties:
         minScore:
+          format: float
           type: number
         maxScore:
+          format: float
           type: number
       required:
       - maxScore
       - minScore
       type: object
+    RiskPredictorGeovelocity_allOf:
+      properties:
+        whiteList:
+          description: A list of IP addresses (CDIRs) that are ignored for the predictor
+            results.
+          items:
+            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+            type: string
+          type: array
+      type: object
+      example: null
+    RiskPredictorNewDevice_allOf:
+      properties:
+        activationAt:
+          description: You can use the `activationAt` parameter to specify a date
+            on which the learning process for the predictor should be restarted. This
+            can be used in conjunction with the fallback setting (`default.result.level`)
+            to force strong authentication when moving the predictor to production.
+            The date should be in an RFC3339 format. Note that activation date uses
+            UTC time.
+          format: date-time
+          type: string
+      type: object
+      example: null
+    RiskPredictorUserLocationAnomaly_allOf_radius:
+      properties:
+        distance:
+          description: A value to apply to the distance radius.  Minimum of 10 miles
+            (16 km) and maximum of 100 miles (160 km)
+          maximum: 160
+          minimum: 10
+          type: integer
+        unit:
+          $ref: '#/components/schemas/EnumDistanceUnit'
+      required:
+      - distance
+      - unit
+      type: object
+      example: null
+    RiskPredictorUserLocationAnomaly_allOf:
+      properties:
+        days:
+          type: integer
+        radius:
+          $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf_radius'
+      required:
+      - radius
+      type: object
+      example: null
+    RiskPredictorUEBA_allOf_predictionModel:
+      properties:
+        name:
+          $ref: '#/components/schemas/EnumRiskModel'
+      required:
+      - name
+      type: object
+      example: null
+    RiskPredictorUEBA_allOf:
+      properties:
+        predictionModel:
+          $ref: '#/components/schemas/RiskPredictorUEBA_allOf_predictionModel'
+      required:
+      - predictionModel
+      type: object
+      example: null
+    RiskPredictorVelocity_allOf_every:
+      properties:
+        unit:
+          $ref: '#/components/schemas/EnumPredictorUnit'
+        quantity:
+          type: integer
+        minSample:
+          type: integer
+      type: object
+      example: null
+    RiskPredictorVelocity_allOf_fallback:
+      properties:
+        strategy:
+          $ref: '#/components/schemas/EnumPredictorVelocityFallbackStrategy'
+        high:
+          type: integer
+        medium:
+          type: integer
+      type: object
+      example: null
+    RiskPredictorVelocity_allOf_maxDelay:
+      properties:
+        unit:
+          $ref: '#/components/schemas/EnumPredictorUnit'
+        quantity:
+          type: integer
+      type: object
+      example: null
+    RiskPredictorVelocity_allOf_slidingWindow:
+      properties:
+        minSample:
+          type: integer
+        quantity:
+          type: integer
+        unit:
+          $ref: '#/components/schemas/EnumPredictorUnit'
+      type: object
+      example: null
+    RiskPredictorVelocity_allOf_use:
+      properties:
+        high:
+          type: integer
+        medium:
+          type: integer
+        type:
+          $ref: '#/components/schemas/EnumPredictorVelocityUseType'
+      type: object
+      example: null
+    RiskPredictorVelocity_allOf:
+      properties:
+        by:
+          items:
+            format: "^\\${event\\.user\\.id}$|^\\${event\\.ip}$"
+            type: string
+          type: array
+        every:
+          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_every'
+        fallback:
+          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_fallback'
+        maxDelay:
+          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_maxDelay'
+        measure:
+          $ref: '#/components/schemas/EnumPredictorVelocityMeasure'
+        of:
+          format: "^\\${event\\.user\\.id}$|^\\${event\\.ip}$"
+          type: string
+        slidingWindow:
+          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_slidingWindow'
+        use:
+          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_use'
+      type: object
+      example: null
   securitySchemes:
     bearer:
       bearerFormat: JWT

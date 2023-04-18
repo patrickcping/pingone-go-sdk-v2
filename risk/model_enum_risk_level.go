@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumRiskLevel Enum string that specifies a given risk level
+// EnumRiskLevel Enum string that specifies a given risk level.  Options are `LOW`, `MEDIUM`, `HIGH`.
 type EnumRiskLevel string
 
 // List of EnumRiskLevel

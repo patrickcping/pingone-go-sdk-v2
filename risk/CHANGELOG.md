@@ -1,3 +1,7 @@
+# v0.4.0 (2023-04-18)
+
+* **Feature** Full support for risk predictors. [#135](https://github.com/patrickcping/pingone-go-sdk-v2/pull/135)
+
 # v0.3.4 (2023-03-20)
 
 * **Note** Adjust client request/response debug and fix linting issues. [#133](https://github.com/patrickcping/pingone-go-sdk-v2/pull/133)

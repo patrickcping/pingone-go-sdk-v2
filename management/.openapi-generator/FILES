@@ -229,6 +229,8 @@ docs/EnumKeyRotationPolicySigAlgorithm.md
 docs/EnumKeyRotationPolicyUsageType.md
 docs/EnumLicenseStatus.md
 docs/EnumMobileIntegrityDetectionPlatform.md
+docs/EnumNotificationsPolicyCountryLimitDeliveryMethod.md
+docs/EnumNotificationsPolicyCountryLimitType.md
 docs/EnumNotificationsPolicyQuotaDeliveryMethods.md
 docs/EnumNotificationsPolicyQuotaItemType.md
 docs/EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod.md
@@ -364,6 +366,7 @@ docs/LinkedAccountsApi.md
 docs/MFAPairingKeysApi.md
 docs/NotificationsPoliciesApi.md
 docs/NotificationsPolicy.md
+docs/NotificationsPolicyCountryLimit.md
 docs/NotificationsPolicyQuotasInner.md
 docs/NotificationsSettings.md
 docs/NotificationsSettingsApi.md
@@ -664,6 +667,8 @@ model_enum_key_rotation_policy_sig_algorithm.go
 model_enum_key_rotation_policy_usage_type.go
 model_enum_license_status.go
 model_enum_mobile_integrity_detection_platform.go
+model_enum_notifications_policy_country_limit_delivery_method.go
+model_enum_notifications_policy_country_limit_type.go
 model_enum_notifications_policy_quota_delivery_methods.go
 model_enum_notifications_policy_quota_item_type.go
 model_enum_notifications_settings_phone_delivery_settings_custom_auth_method.go
@@ -779,6 +784,7 @@ model_license_replaces_license.go
 model_license_users.go
 model_license_verify.go
 model_notifications_policy.go
+model_notifications_policy_country_limit.go
 model_notifications_policy_quotas_inner.go
 model_notifications_settings.go
 model_notifications_settings_email_delivery_settings.go

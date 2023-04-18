@@ -1,4 +1,4 @@
-# RiskPredictorItemMapBetween
+# RiskPredictorCustomItemBetweenBetween
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewRiskPredictorItemMapBetween
+### NewRiskPredictorCustomItemBetweenBetween
 
-`func NewRiskPredictorItemMapBetween(minScore float32, maxScore float32, ) *RiskPredictorItemMapBetween`
+`func NewRiskPredictorCustomItemBetweenBetween(minScore float32, maxScore float32, ) *RiskPredictorCustomItemBetweenBetween`
 
-NewRiskPredictorItemMapBetween instantiates a new RiskPredictorItemMapBetween object
+NewRiskPredictorCustomItemBetweenBetween instantiates a new RiskPredictorCustomItemBetweenBetween object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRiskPredictorItemMapBetweenWithDefaults
+### NewRiskPredictorCustomItemBetweenBetweenWithDefaults
 
-`func NewRiskPredictorItemMapBetweenWithDefaults() *RiskPredictorItemMapBetween`
+`func NewRiskPredictorCustomItemBetweenBetweenWithDefaults() *RiskPredictorCustomItemBetweenBetween`
 
-NewRiskPredictorItemMapBetweenWithDefaults instantiates a new RiskPredictorItemMapBetween object
+NewRiskPredictorCustomItemBetweenBetweenWithDefaults instantiates a new RiskPredictorCustomItemBetweenBetween object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetMinScore
 
-`func (o *RiskPredictorItemMapBetween) GetMinScore() float32`
+`func (o *RiskPredictorCustomItemBetweenBetween) GetMinScore() float32`
 
 GetMinScore returns the MinScore field if non-nil, zero value otherwise.
 
 ### GetMinScoreOk
 
-`func (o *RiskPredictorItemMapBetween) GetMinScoreOk() (*float32, bool)`
+`func (o *RiskPredictorCustomItemBetweenBetween) GetMinScoreOk() (*float32, bool)`
 
 GetMinScoreOk returns a tuple with the MinScore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMinScore
 
-`func (o *RiskPredictorItemMapBetween) SetMinScore(v float32)`
+`func (o *RiskPredictorCustomItemBetweenBetween) SetMinScore(v float32)`
 
 SetMinScore sets MinScore field to given value.
 
 
 ### GetMaxScore
 
-`func (o *RiskPredictorItemMapBetween) GetMaxScore() float32`
+`func (o *RiskPredictorCustomItemBetweenBetween) GetMaxScore() float32`
 
 GetMaxScore returns the MaxScore field if non-nil, zero value otherwise.
 
 ### GetMaxScoreOk
 
-`func (o *RiskPredictorItemMapBetween) GetMaxScoreOk() (*float32, bool)`
+`func (o *RiskPredictorCustomItemBetweenBetween) GetMaxScoreOk() (*float32, bool)`
 
 GetMaxScoreOk returns a tuple with the MaxScore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxScore
 
-`func (o *RiskPredictorItemMapBetween) SetMaxScore(v float32)`
+`func (o *RiskPredictorCustomItemBetweenBetween) SetMaxScore(v float32)`
 
 SetMaxScore sets MaxScore field to given value.
 

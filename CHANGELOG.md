@@ -1,7 +1,15 @@
-# Release (Unreleased)
+# Release (2023-04-18)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.2
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.17.1 => v0.18.0 [#146](https://github.com/patrickcping/pingone-go-sdk-v2/pull/146)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.3.4 => v0.4.0 [#146](https://github.com/patrickcping/pingone-go-sdk-v2/pull/146)
+    * **Note** bump `golang.org/x/oauth2` from v0.6.0 to v0.7.0 [#140](https://github.com/patrickcping/pingone-go-sdk-v2/pull/140)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.18.0](./management/CHANGELOG.md)
     * **Enhancement** Add `CustomCRL` to the `Certificate` data model [#136](https://github.com/patrickcping/pingone-go-sdk-v2/pull/136)
+    * **Enhancement** Add notifications policy country limit attributes for `NotificationsPolicy` model. [#142](https://github.com/patrickcping/pingone-go-sdk-v2/pull/142)
+    * **Enhancement** Expand the `ApplicationAttributeMapping` model for attribute scoping. [#143](https://github.com/patrickcping/pingone-go-sdk-v2/pull/143)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.4.0](./risk/CHANGELOG.md)
+    * **Feature** Full support for risk predictors. [#135](https://github.com/patrickcping/pingone-go-sdk-v2/pull/135)
 
 # Release (2023-03-20)
 
