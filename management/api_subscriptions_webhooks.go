@@ -57,6 +57,15 @@ func (a *SubscriptionsWebhooksApiService) CreateSubscription(ctx context.Context
 // Execute executes the request
 //  @return Subscription
 func (a *SubscriptionsWebhooksApiService) CreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*Subscription, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateSubscriptionExecute(r)
+		},
+	)
+	return obj.(*Subscription), response, error
+}
+			
+func (a *SubscriptionsWebhooksApiService) internalCreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *SubscriptionsWebhooksApiService) DeleteSubscription(ctx context.Context
 
 // Execute executes the request
 func (a *SubscriptionsWebhooksApiService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteSubscriptionExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *SubscriptionsWebhooksApiService) internalDeleteSubscriptionExecute(r ApiDeleteSubscriptionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptions(ctx context.Conte
 // Execute executes the request
 //  @return EntityArray
 func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptionsExecute(r ApiReadAllSubscriptionsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllSubscriptionsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *SubscriptionsWebhooksApiService) internalReadAllSubscriptionsExecute(r ApiReadAllSubscriptionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *SubscriptionsWebhooksApiService) ReadOneSubscription(ctx context.Contex
 // Execute executes the request
 //  @return Subscription
 func (a *SubscriptionsWebhooksApiService) ReadOneSubscriptionExecute(r ApiReadOneSubscriptionRequest) (*Subscription, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneSubscriptionExecute(r)
+		},
+	)
+	return obj.(*Subscription), response, error
+}
+			
+func (a *SubscriptionsWebhooksApiService) internalReadOneSubscriptionExecute(r ApiReadOneSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *SubscriptionsWebhooksApiService) UpdateSubscription(ctx context.Context
 // Execute executes the request
 //  @return Subscription
 func (a *SubscriptionsWebhooksApiService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRequest) (*Subscription, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateSubscriptionExecute(r)
+		},
+	)
+	return obj.(*Subscription), response, error
+}
+			
+func (a *SubscriptionsWebhooksApiService) internalUpdateSubscriptionExecute(r ApiUpdateSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

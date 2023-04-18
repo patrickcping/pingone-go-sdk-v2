@@ -57,6 +57,15 @@ func (a *PopulationsApiService) CreatePopulation(ctx context.Context, environmen
 // Execute executes the request
 //  @return Population
 func (a *PopulationsApiService) CreatePopulationExecute(r ApiCreatePopulationRequest) (*Population, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreatePopulationExecute(r)
+		},
+	)
+	return obj.(*Population), response, error
+}
+			
+func (a *PopulationsApiService) internalCreatePopulationExecute(r ApiCreatePopulationRequest) (*Population, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -242,6 +251,16 @@ func (a *PopulationsApiService) DeletePopulation(ctx context.Context, environmen
 
 // Execute executes the request
 func (a *PopulationsApiService) DeletePopulationExecute(r ApiDeletePopulationRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeletePopulationExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PopulationsApiService) internalDeletePopulationExecute(r ApiDeletePopulationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -414,6 +433,15 @@ func (a *PopulationsApiService) ReadAllPopulations(ctx context.Context, environm
 // Execute executes the request
 //  @return EntityArray
 func (a *PopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllPopulationsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *PopulationsApiService) internalReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -590,6 +618,15 @@ func (a *PopulationsApiService) ReadOnePopulation(ctx context.Context, environme
 // Execute executes the request
 //  @return Population
 func (a *PopulationsApiService) ReadOnePopulationExecute(r ApiReadOnePopulationRequest) (*Population, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOnePopulationExecute(r)
+		},
+	)
+	return obj.(*Population), response, error
+}
+			
+func (a *PopulationsApiService) internalReadOnePopulationExecute(r ApiReadOnePopulationRequest) (*Population, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -767,6 +804,15 @@ func (a *PopulationsApiService) UpdatePopulation(ctx context.Context, environmen
 // Execute executes the request
 //  @return Population
 func (a *PopulationsApiService) UpdatePopulationExecute(r ApiUpdatePopulationRequest) (*Population, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdatePopulationExecute(r)
+		},
+	)
+	return obj.(*Population), response, error
+}
+			
+func (a *PopulationsApiService) internalUpdatePopulationExecute(r ApiUpdatePopulationRequest) (*Population, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

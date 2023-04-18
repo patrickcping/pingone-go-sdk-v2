@@ -60,6 +60,15 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCrede
 // Execute executes the request
 //  @return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) CreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateMFAPushCredentialExecute(r)
+		},
+	)
+	return obj.(*MFAPushCredentialResponse), response, error
+}
+			
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAPushCredentialExecute(r ApiCreateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -252,6 +261,16 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCrede
 
 // Execute executes the request
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) DeleteMFAPushCredentialExecute(r ApiDeleteMFAPushCredentialRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteMFAPushCredentialExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalDeleteMFAPushCredentialExecute(r ApiDeleteMFAPushCredentialRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -417,6 +436,15 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCred
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllMFAPushCredentialsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadAllMFAPushCredentialsExecute(r ApiReadAllMFAPushCredentialsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -591,6 +619,15 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCred
 // Execute executes the request
 //  @return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) ReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneMFAPushCredentialExecute(r)
+		},
+	)
+	return obj.(*MFAPushCredentialResponse), response, error
+}
+			
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalReadOneMFAPushCredentialExecute(r ApiReadOneMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -772,6 +809,15 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCrede
 // Execute executes the request
 //  @return MFAPushCredentialResponse
 func (a *ApplicationsApplicationMFAPushCredentialsApiService) UpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateMFAPushCredentialExecute(r)
+		},
+	)
+	return obj.(*MFAPushCredentialResponse), response, error
+}
+			
+func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAPushCredentialExecute(r ApiUpdateMFAPushCredentialRequest) (*MFAPushCredentialResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

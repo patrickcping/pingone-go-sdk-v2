@@ -54,6 +54,15 @@ func (a *GatewayInstancesApiService) ReadAllGatewayInstances(ctx context.Context
 // Execute executes the request
 //  @return EntityArray
 func (a *GatewayInstancesApiService) ReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllGatewayInstancesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *GatewayInstancesApiService) internalReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -228,6 +237,15 @@ func (a *GatewayInstancesApiService) ReadOneGatewayInstance(ctx context.Context,
 // Execute executes the request
 //  @return GatewayInstance
 func (a *GatewayInstancesApiService) ReadOneGatewayInstanceExecute(r ApiReadOneGatewayInstanceRequest) (*GatewayInstance, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneGatewayInstanceExecute(r)
+		},
+	)
+	return obj.(*GatewayInstance), response, error
+}
+			
+func (a *GatewayInstancesApiService) internalReadOneGatewayInstanceExecute(r ApiReadOneGatewayInstanceRequest) (*GatewayInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

@@ -60,6 +60,15 @@ func (a *NotificationsTemplatesApiService) CreateContent(ctx context.Context, en
 // Execute executes the request
 //  @return TemplateContent
 func (a *NotificationsTemplatesApiService) CreateContentExecute(r ApiCreateContentRequest) (*TemplateContent, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateContentExecute(r)
+		},
+	)
+	return obj.(*TemplateContent), response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalCreateContentExecute(r ApiCreateContentRequest) (*TemplateContent, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -249,6 +258,16 @@ func (a *NotificationsTemplatesApiService) DeleteBulkVariantContents(ctx context
 
 // Execute executes the request
 func (a *NotificationsTemplatesApiService) DeleteBulkVariantContentsExecute(r ApiDeleteBulkVariantContentsRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteBulkVariantContentsExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalDeleteBulkVariantContentsExecute(r ApiDeleteBulkVariantContentsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -415,6 +434,16 @@ func (a *NotificationsTemplatesApiService) DeleteContent(ctx context.Context, en
 
 // Execute executes the request
 func (a *NotificationsTemplatesApiService) DeleteContentExecute(r ApiDeleteContentRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteContentExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalDeleteContentExecute(r ApiDeleteContentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -589,6 +618,15 @@ func (a *NotificationsTemplatesApiService) PatchBulkVariantContents(ctx context.
 // Execute executes the request
 //  @return EntityArray
 func (a *NotificationsTemplatesApiService) PatchBulkVariantContentsExecute(r ApiPatchBulkVariantContentsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalPatchBulkVariantContentsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalPatchBulkVariantContentsExecute(r ApiPatchBulkVariantContentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -765,6 +803,15 @@ func (a *NotificationsTemplatesApiService) ReadAllTemplateContents(ctx context.C
 // Execute executes the request
 //  @return EntityArray
 func (a *NotificationsTemplatesApiService) ReadAllTemplateContentsExecute(r ApiReadAllTemplateContentsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllTemplateContentsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalReadAllTemplateContentsExecute(r ApiReadAllTemplateContentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -945,6 +992,15 @@ func (a *NotificationsTemplatesApiService) ReadAllTemplates(ctx context.Context,
 // Execute executes the request
 //  @return EntityArray
 func (a *NotificationsTemplatesApiService) ReadAllTemplatesExecute(r ApiReadAllTemplatesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllTemplatesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalReadAllTemplatesExecute(r ApiReadAllTemplatesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1124,6 +1180,15 @@ func (a *NotificationsTemplatesApiService) ReadOneContent(ctx context.Context, e
 // Execute executes the request
 //  @return TemplateContent
 func (a *NotificationsTemplatesApiService) ReadOneContentExecute(r ApiReadOneContentRequest) (*TemplateContent, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneContentExecute(r)
+		},
+	)
+	return obj.(*TemplateContent), response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalReadOneContentExecute(r ApiReadOneContentRequest) (*TemplateContent, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1296,6 +1361,15 @@ func (a *NotificationsTemplatesApiService) ReadOneTemplate(ctx context.Context, 
 // Execute executes the request
 //  @return Template
 func (a *NotificationsTemplatesApiService) ReadOneTemplateExecute(r ApiReadOneTemplateRequest) (*Template, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneTemplateExecute(r)
+		},
+	)
+	return obj.(*Template), response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalReadOneTemplateExecute(r ApiReadOneTemplateRequest) (*Template, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1476,6 +1550,15 @@ func (a *NotificationsTemplatesApiService) UpdateContent(ctx context.Context, en
 // Execute executes the request
 //  @return TemplateContent
 func (a *NotificationsTemplatesApiService) UpdateContentExecute(r ApiUpdateContentRequest) (*TemplateContent, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateContentExecute(r)
+		},
+	)
+	return obj.(*TemplateContent), response, error
+}
+			
+func (a *NotificationsTemplatesApiService) internalUpdateContentExecute(r ApiUpdateContentRequest) (*TemplateContent, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

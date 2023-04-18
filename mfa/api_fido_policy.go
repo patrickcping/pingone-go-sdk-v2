@@ -57,6 +57,15 @@ func (a *FIDOPolicyApiService) CreateFidoPolicy(ctx context.Context, environment
 // Execute executes the request
 //  @return FIDOPolicy
 func (a *FIDOPolicyApiService) CreateFidoPolicyExecute(r ApiCreateFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateFidoPolicyExecute(r)
+		},
+	)
+	return obj.(*FIDOPolicy), response, error
+}
+			
+func (a *FIDOPolicyApiService) internalCreateFidoPolicyExecute(r ApiCreateFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *FIDOPolicyApiService) DeleteFidoPolicy(ctx context.Context, environment
 
 // Execute executes the request
 func (a *FIDOPolicyApiService) DeleteFidoPolicyExecute(r ApiDeleteFidoPolicyRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteFidoPolicyExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *FIDOPolicyApiService) internalDeleteFidoPolicyExecute(r ApiDeleteFidoPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *FIDOPolicyApiService) ReadFidoPolicies(ctx context.Context, environment
 // Execute executes the request
 //  @return EntityArray
 func (a *FIDOPolicyApiService) ReadFidoPoliciesExecute(r ApiReadFidoPoliciesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadFidoPoliciesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *FIDOPolicyApiService) internalReadFidoPoliciesExecute(r ApiReadFidoPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *FIDOPolicyApiService) ReadOneFidoPolicy(ctx context.Context, environmen
 // Execute executes the request
 //  @return FIDOPolicy
 func (a *FIDOPolicyApiService) ReadOneFidoPolicyExecute(r ApiReadOneFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneFidoPolicyExecute(r)
+		},
+	)
+	return obj.(*FIDOPolicy), response, error
+}
+			
+func (a *FIDOPolicyApiService) internalReadOneFidoPolicyExecute(r ApiReadOneFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *FIDOPolicyApiService) UpdateFIDOPolicy(ctx context.Context, environment
 // Execute executes the request
 //  @return FIDOPolicy
 func (a *FIDOPolicyApiService) UpdateFIDOPolicyExecute(r ApiUpdateFIDOPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateFIDOPolicyExecute(r)
+		},
+	)
+	return obj.(*FIDOPolicy), response, error
+}
+			
+func (a *FIDOPolicyApiService) internalUpdateFIDOPolicyExecute(r ApiUpdateFIDOPolicyRequest) (*FIDOPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

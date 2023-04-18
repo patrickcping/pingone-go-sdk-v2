@@ -60,6 +60,15 @@ func (a *AgreementRevisionsResourcesApiService) ReadOneAgreementLanguageRevision
 // Execute executes the request
 //  @return AgreementRevisionText
 func (a *AgreementRevisionsResourcesApiService) ReadOneAgreementLanguageRevisionExecute(r ApiReadOneAgreementLanguageRevisionRequest) (*AgreementRevisionText, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneAgreementLanguageRevisionExecute(r)
+		},
+	)
+	return obj.(*AgreementRevisionText), response, error
+}
+			
+func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguageRevisionExecute(r ApiReadOneAgreementLanguageRevisionRequest) (*AgreementRevisionText, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

@@ -57,6 +57,15 @@ func (a *NotificationsPoliciesApiService) CreateNotificationsPolicy(ctx context.
 // Execute executes the request
 //  @return NotificationsPolicy
 func (a *NotificationsPoliciesApiService) CreateNotificationsPolicyExecute(r ApiCreateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateNotificationsPolicyExecute(r)
+		},
+	)
+	return obj.(*NotificationsPolicy), response, error
+}
+			
+func (a *NotificationsPoliciesApiService) internalCreateNotificationsPolicyExecute(r ApiCreateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -228,6 +237,16 @@ func (a *NotificationsPoliciesApiService) DeleteNotificationsPolicy(ctx context.
 
 // Execute executes the request
 func (a *NotificationsPoliciesApiService) DeleteNotificationsPolicyExecute(r ApiDeleteNotificationsPolicyRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteNotificationsPolicyExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *NotificationsPoliciesApiService) internalDeleteNotificationsPolicyExecute(r ApiDeleteNotificationsPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -386,6 +405,15 @@ func (a *NotificationsPoliciesApiService) ReadAllNotificationsPolicies(ctx conte
 // Execute executes the request
 //  @return EntityArray
 func (a *NotificationsPoliciesApiService) ReadAllNotificationsPoliciesExecute(r ApiReadAllNotificationsPoliciesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllNotificationsPoliciesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *NotificationsPoliciesApiService) internalReadAllNotificationsPoliciesExecute(r ApiReadAllNotificationsPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -556,6 +584,15 @@ func (a *NotificationsPoliciesApiService) ReadOneNotificationsPolicy(ctx context
 // Execute executes the request
 //  @return NotificationsPolicy
 func (a *NotificationsPoliciesApiService) ReadOneNotificationsPolicyExecute(r ApiReadOneNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneNotificationsPolicyExecute(r)
+		},
+	)
+	return obj.(*NotificationsPolicy), response, error
+}
+			
+func (a *NotificationsPoliciesApiService) internalReadOneNotificationsPolicyExecute(r ApiReadOneNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -733,6 +770,15 @@ func (a *NotificationsPoliciesApiService) UpdateNotificationsPolicy(ctx context.
 // Execute executes the request
 //  @return NotificationsPolicy
 func (a *NotificationsPoliciesApiService) UpdateNotificationsPolicyExecute(r ApiUpdateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateNotificationsPolicyExecute(r)
+		},
+	)
+	return obj.(*NotificationsPolicy), response, error
+}
+			
+func (a *NotificationsPoliciesApiService) internalUpdateNotificationsPolicyExecute(r ApiUpdateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

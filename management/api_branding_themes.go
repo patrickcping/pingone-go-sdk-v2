@@ -57,6 +57,15 @@ func (a *BrandingThemesApiService) CreateBrandingTheme(ctx context.Context, envi
 // Execute executes the request
 //  @return BrandingTheme
 func (a *BrandingThemesApiService) CreateBrandingThemeExecute(r ApiCreateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateBrandingThemeExecute(r)
+		},
+	)
+	return obj.(*BrandingTheme), response, error
+}
+			
+func (a *BrandingThemesApiService) internalCreateBrandingThemeExecute(r ApiCreateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *BrandingThemesApiService) DeleteBrandingTheme(ctx context.Context, envi
 
 // Execute executes the request
 func (a *BrandingThemesApiService) DeleteBrandingThemeExecute(r ApiDeleteBrandingThemeRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteBrandingThemeExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *BrandingThemesApiService) internalDeleteBrandingThemeExecute(r ApiDeleteBrandingThemeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -400,6 +419,15 @@ func (a *BrandingThemesApiService) ReadBrandingThemeDefault(ctx context.Context,
 // Execute executes the request
 //  @return BrandingThemeDefault
 func (a *BrandingThemesApiService) ReadBrandingThemeDefaultExecute(r ApiReadBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadBrandingThemeDefaultExecute(r)
+		},
+	)
+	return obj.(*BrandingThemeDefault), response, error
+}
+			
+func (a *BrandingThemesApiService) internalReadBrandingThemeDefaultExecute(r ApiReadBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -568,6 +596,15 @@ func (a *BrandingThemesApiService) ReadBrandingThemes(ctx context.Context, envir
 // Execute executes the request
 //  @return EntityArray
 func (a *BrandingThemesApiService) ReadBrandingThemesExecute(r ApiReadBrandingThemesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadBrandingThemesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *BrandingThemesApiService) internalReadBrandingThemesExecute(r ApiReadBrandingThemesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -738,6 +775,15 @@ func (a *BrandingThemesApiService) ReadOneBrandingTheme(ctx context.Context, env
 // Execute executes the request
 //  @return BrandingTheme
 func (a *BrandingThemesApiService) ReadOneBrandingThemeExecute(r ApiReadOneBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneBrandingThemeExecute(r)
+		},
+	)
+	return obj.(*BrandingTheme), response, error
+}
+			
+func (a *BrandingThemesApiService) internalReadOneBrandingThemeExecute(r ApiReadOneBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -915,6 +961,15 @@ func (a *BrandingThemesApiService) UpdateBrandingTheme(ctx context.Context, envi
 // Execute executes the request
 //  @return BrandingTheme
 func (a *BrandingThemesApiService) UpdateBrandingThemeExecute(r ApiUpdateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateBrandingThemeExecute(r)
+		},
+	)
+	return obj.(*BrandingTheme), response, error
+}
+			
+func (a *BrandingThemesApiService) internalUpdateBrandingThemeExecute(r ApiUpdateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1094,6 +1149,15 @@ func (a *BrandingThemesApiService) UpdateBrandingThemeDefault(ctx context.Contex
 // Execute executes the request
 //  @return BrandingThemeDefault
 func (a *BrandingThemesApiService) UpdateBrandingThemeDefaultExecute(r ApiUpdateBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateBrandingThemeDefaultExecute(r)
+		},
+	)
+	return obj.(*BrandingThemeDefault), response, error
+}
+			
+func (a *BrandingThemesApiService) internalUpdateBrandingThemeDefaultExecute(r ApiUpdateBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

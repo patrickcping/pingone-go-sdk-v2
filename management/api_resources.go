@@ -57,6 +57,15 @@ func (a *ResourcesApiService) CreateResource(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return Resource
 func (a *ResourcesApiService) CreateResourceExecute(r ApiCreateResourceRequest) (*Resource, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateResourceExecute(r)
+		},
+	)
+	return obj.(*Resource), response, error
+}
+			
+func (a *ResourcesApiService) internalCreateResourceExecute(r ApiCreateResourceRequest) (*Resource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *ResourcesApiService) DeleteResource(ctx context.Context, environmentID 
 
 // Execute executes the request
 func (a *ResourcesApiService) DeleteResourceExecute(r ApiDeleteResourceRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteResourceExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ResourcesApiService) internalDeleteResourceExecute(r ApiDeleteResourceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *ResourcesApiService) ReadAllResources(ctx context.Context, environmentI
 // Execute executes the request
 //  @return EntityArray
 func (a *ResourcesApiService) ReadAllResourcesExecute(r ApiReadAllResourcesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllResourcesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *ResourcesApiService) internalReadAllResourcesExecute(r ApiReadAllResourcesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *ResourcesApiService) ReadOneResource(ctx context.Context, environmentID
 // Execute executes the request
 //  @return Resource
 func (a *ResourcesApiService) ReadOneResourceExecute(r ApiReadOneResourceRequest) (*Resource, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneResourceExecute(r)
+		},
+	)
+	return obj.(*Resource), response, error
+}
+			
+func (a *ResourcesApiService) internalReadOneResourceExecute(r ApiReadOneResourceRequest) (*Resource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *ResourcesApiService) UpdateResource(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return Resource
 func (a *ResourcesApiService) UpdateResourceExecute(r ApiUpdateResourceRequest) (*Resource, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateResourceExecute(r)
+		},
+	)
+	return obj.(*Resource), response, error
+}
+			
+func (a *ResourcesApiService) internalUpdateResourceExecute(r ApiUpdateResourceRequest) (*Resource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

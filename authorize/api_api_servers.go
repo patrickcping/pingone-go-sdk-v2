@@ -57,6 +57,15 @@ func (a *APIServersApiService) CreateAPIServer(ctx context.Context, environmentI
 // Execute executes the request
 //  @return APIServer
 func (a *APIServersApiService) CreateAPIServerExecute(r ApiCreateAPIServerRequest) (*APIServer, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateAPIServerExecute(r)
+		},
+	)
+	return obj.(*APIServer), response, error
+}
+			
+func (a *APIServersApiService) internalCreateAPIServerExecute(r ApiCreateAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *APIServersApiService) DeleteAPIServer(ctx context.Context, environmentI
 
 // Execute executes the request
 func (a *APIServersApiService) DeleteAPIServerExecute(r ApiDeleteAPIServerRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteAPIServerExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *APIServersApiService) internalDeleteAPIServerExecute(r ApiDeleteAPIServerRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *APIServersApiService) ReadAllAPIServers(ctx context.Context, environmen
 // Execute executes the request
 //  @return EntityArray
 func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllAPIServersExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *APIServersApiService) internalReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *APIServersApiService) ReadOneAPIServer(ctx context.Context, environment
 // Execute executes the request
 //  @return APIServer
 func (a *APIServersApiService) ReadOneAPIServerExecute(r ApiReadOneAPIServerRequest) (*APIServer, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneAPIServerExecute(r)
+		},
+	)
+	return obj.(*APIServer), response, error
+}
+			
+func (a *APIServersApiService) internalReadOneAPIServerExecute(r ApiReadOneAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *APIServersApiService) UpdateAPIServer(ctx context.Context, environmentI
 // Execute executes the request
 //  @return APIServer
 func (a *APIServersApiService) UpdateAPIServerExecute(r ApiUpdateAPIServerRequest) (*APIServer, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateAPIServerExecute(r)
+		},
+	)
+	return obj.(*APIServer), response, error
+}
+			
+func (a *APIServersApiService) internalUpdateAPIServerExecute(r ApiUpdateAPIServerRequest) (*APIServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

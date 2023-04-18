@@ -54,6 +54,15 @@ func (a *UserPopulationsApiService) ReadUserPopulation(ctx context.Context, envi
 // Execute executes the request
 //  @return UserPopulation
 func (a *UserPopulationsApiService) ReadUserPopulationExecute(r ApiReadUserPopulationRequest) (*UserPopulation, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadUserPopulationExecute(r)
+		},
+	)
+	return obj.(*UserPopulation), response, error
+}
+			
+func (a *UserPopulationsApiService) internalReadUserPopulationExecute(r ApiReadUserPopulationRequest) (*UserPopulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -231,6 +240,15 @@ func (a *UserPopulationsApiService) UpdateUserPopulation(ctx context.Context, en
 // Execute executes the request
 //  @return UserPopulation
 func (a *UserPopulationsApiService) UpdateUserPopulationExecute(r ApiUpdateUserPopulationRequest) (*UserPopulation, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateUserPopulationExecute(r)
+		},
+	)
+	return obj.(*UserPopulation), response, error
+}
+			
+func (a *UserPopulationsApiService) internalUpdateUserPopulationExecute(r ApiUpdateUserPopulationRequest) (*UserPopulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

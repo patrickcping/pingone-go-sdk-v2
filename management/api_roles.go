@@ -48,6 +48,15 @@ func (a *RolesApiService) ReadAllRoles(ctx context.Context) ApiReadAllRolesReque
 // Execute executes the request
 //  @return EntityArray
 func (a *RolesApiService) ReadAllRolesExecute(r ApiReadAllRolesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllRolesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *RolesApiService) internalReadAllRolesExecute(r ApiReadAllRolesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -214,6 +223,15 @@ func (a *RolesApiService) ReadOneRole(ctx context.Context, roleID string) ApiRea
 // Execute executes the request
 //  @return Role
 func (a *RolesApiService) ReadOneRoleExecute(r ApiReadOneRoleRequest) (*Role, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneRoleExecute(r)
+		},
+	)
+	return obj.(*Role), response, error
+}
+			
+func (a *RolesApiService) internalReadOneRoleExecute(r ApiReadOneRoleRequest) (*Role, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

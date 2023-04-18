@@ -57,6 +57,15 @@ func (a *PolicyDecisionManagementApiService) CreateDecisionEndpoint(ctx context.
 // Execute executes the request
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) CreateDecisionEndpointExecute(r ApiCreateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateDecisionEndpointExecute(r)
+		},
+	)
+	return obj.(*DecisionEndpoint), response, error
+}
+			
+func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecute(r ApiCreateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpoint(ctx context.
 
 // Execute executes the request
 func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpointExecute(r ApiDeleteDecisionEndpointRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteDecisionEndpointExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecute(r ApiDeleteDecisionEndpointRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpoints(ctx contex
 // Execute executes the request
 //  @return EntityArray
 func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllDecisionEndpointsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpoint(ctx context
 // Execute executes the request
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpointExecute(r ApiReadOneDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneDecisionEndpointExecute(r)
+		},
+	)
+	return obj.(*DecisionEndpoint), response, error
+}
+			
+func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExecute(r ApiReadOneDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpoint(ctx context.
 // Execute executes the request
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpointExecute(r ApiUpdateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateDecisionEndpointExecute(r)
+		},
+	)
+	return obj.(*DecisionEndpoint), response, error
+}
+			
+func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecute(r ApiUpdateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -54,6 +54,15 @@ func (a *EnvironmentsApiService) CreateEnvironmentActiveLicense(ctx context.Cont
 // Execute executes the request
 //  @return Environment
 func (a *EnvironmentsApiService) CreateEnvironmentActiveLicenseExecute(r ApiCreateEnvironmentActiveLicenseRequest) (*Environment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateEnvironmentActiveLicenseExecute(r)
+		},
+	)
+	return obj.(*Environment), response, error
+}
+			
+func (a *EnvironmentsApiService) internalCreateEnvironmentActiveLicenseExecute(r ApiCreateEnvironmentActiveLicenseRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -232,6 +241,16 @@ func (a *EnvironmentsApiService) DeleteEnvironment(ctx context.Context, environm
 
 // Execute executes the request
 func (a *EnvironmentsApiService) DeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteEnvironmentExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *EnvironmentsApiService) internalDeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -400,6 +419,15 @@ func (a *EnvironmentsApiService) ReadAllEnvironments(ctx context.Context) ApiRea
 // Execute executes the request
 //  @return EntityArray
 func (a *EnvironmentsApiService) ReadAllEnvironmentsExecute(r ApiReadAllEnvironmentsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllEnvironmentsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *EnvironmentsApiService) internalReadAllEnvironmentsExecute(r ApiReadAllEnvironmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -572,6 +600,15 @@ func (a *EnvironmentsApiService) ReadOneEnvironment(ctx context.Context, environ
 // Execute executes the request
 //  @return Environment
 func (a *EnvironmentsApiService) ReadOneEnvironmentExecute(r ApiReadOneEnvironmentRequest) (*Environment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneEnvironmentExecute(r)
+		},
+	)
+	return obj.(*Environment), response, error
+}
+			
+func (a *EnvironmentsApiService) internalReadOneEnvironmentExecute(r ApiReadOneEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -745,6 +782,15 @@ func (a *EnvironmentsApiService) UpdateEnvironment(ctx context.Context, environm
 // Execute executes the request
 //  @return Environment
 func (a *EnvironmentsApiService) UpdateEnvironmentExecute(r ApiUpdateEnvironmentRequest) (*Environment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateEnvironmentExecute(r)
+		},
+	)
+	return obj.(*Environment), response, error
+}
+			
+func (a *EnvironmentsApiService) internalUpdateEnvironmentExecute(r ApiUpdateEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -920,6 +966,15 @@ func (a *EnvironmentsApiService) UpdateEnvironmentType(ctx context.Context, envi
 // Execute executes the request
 //  @return Environment
 func (a *EnvironmentsApiService) UpdateEnvironmentTypeExecute(r ApiUpdateEnvironmentTypeRequest) (*Environment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateEnvironmentTypeExecute(r)
+		},
+	)
+	return obj.(*Environment), response, error
+}
+			
+func (a *EnvironmentsApiService) internalUpdateEnvironmentTypeExecute(r ApiUpdateEnvironmentTypeRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

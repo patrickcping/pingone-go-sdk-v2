@@ -57,6 +57,15 @@ func (a *AlertingApiService) CreateAlertChannel(ctx context.Context, environment
 // Execute executes the request
 //  @return AlertChannel
 func (a *AlertingApiService) CreateAlertChannelExecute(r ApiCreateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateAlertChannelExecute(r)
+		},
+	)
+	return obj.(*AlertChannel), response, error
+}
+			
+func (a *AlertingApiService) internalCreateAlertChannelExecute(r ApiCreateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *AlertingApiService) DeleteAlertChannel(ctx context.Context, environment
 
 // Execute executes the request
 func (a *AlertingApiService) DeleteAlertChannelExecute(r ApiDeleteAlertChannelRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteAlertChannelExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *AlertingApiService) internalDeleteAlertChannelExecute(r ApiDeleteAlertChannelRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *AlertingApiService) ReadAllAlertChannels(ctx context.Context, environme
 // Execute executes the request
 //  @return EntityArray
 func (a *AlertingApiService) ReadAllAlertChannelsExecute(r ApiReadAllAlertChannelsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllAlertChannelsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *AlertingApiService) internalReadAllAlertChannelsExecute(r ApiReadAllAlertChannelsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *AlertingApiService) ReadOneAlertChannel(ctx context.Context, environmen
 // Execute executes the request
 //  @return AlertChannel
 func (a *AlertingApiService) ReadOneAlertChannelExecute(r ApiReadOneAlertChannelRequest) (*AlertChannel, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneAlertChannelExecute(r)
+		},
+	)
+	return obj.(*AlertChannel), response, error
+}
+			
+func (a *AlertingApiService) internalReadOneAlertChannelExecute(r ApiReadOneAlertChannelRequest) (*AlertChannel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *AlertingApiService) UpdateAlertChannel(ctx context.Context, environment
 // Execute executes the request
 //  @return AlertChannel
 func (a *AlertingApiService) UpdateAlertChannelExecute(r ApiUpdateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateAlertChannelExecute(r)
+		},
+	)
+	return obj.(*AlertChannel), response, error
+}
+			
+func (a *AlertingApiService) internalUpdateAlertChannelExecute(r ApiUpdateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
