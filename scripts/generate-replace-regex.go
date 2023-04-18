@@ -7,40 +7,6 @@ import (
 )
 
 func main() {
-	// Define the list of regex replacement rules
-	replaceRules := []struct {
-		pattern string
-		repl    string
-	}{
-		{
-			`func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(([\*a-zA-Z]*), \*http\.Response, error\) {`,
-			`func ($1) $2$3($4) ($5, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internal$2$3(r)
-		},
-	)
-	return obj.($5), response, error
-}
-			
-func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
-		},
-		{
-			`func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(\*http\.Response, error\) {`,
-			`func ($1) $2$3($4) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internal$2$3(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func ($1) internal$2$3($4) (*http.Response, error) {`,
-		},
-	}
-
 	// Get the target directory from the command line argument
 	if len(os.Args) < 2 {
 		println("Usage: go run script.go <directory>")
@@ -78,3 +44,39 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 		}
 	}
 }
+
+var (
+	// Define the full list of regex replacement rules
+	replaceRules = []struct {
+		pattern string
+		repl    string
+	}{
+		{
+			`func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(([\*a-zA-Z]*), \*http\.Response, error\) {`,
+			`func ($1) $2$3($4) ($5, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internal$2$3(r)
+		},
+	)
+	return obj.($5), response, error
+}
+			
+func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
+		},
+		{
+			`func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(\*http\.Response, error\) {`,
+			`func ($1) $2$3($4) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internal$2$3(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func ($1) internal$2$3($4) (*http.Response, error) {`,
+		},
+	}
+)
