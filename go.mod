@@ -1,14 +1,14 @@
 module github.com/patrickcping/pingone-go-sdk-v2
 
-go 1.18
+go 1.20
 
 require (
 	github.com/golangci/golangci-lint v1.52.0
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.1
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.4
-	github.com/patrickcping/pingone-go-sdk-v2/management v0.17.1
+	github.com/patrickcping/pingone-go-sdk-v2/management v0.18.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.9.1
-	github.com/patrickcping/pingone-go-sdk-v2/risk v0.3.4
+	github.com/patrickcping/pingone-go-sdk-v2/risk v0.4.0
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.15.0
 	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e
