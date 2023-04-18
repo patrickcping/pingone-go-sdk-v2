@@ -54,6 +54,15 @@ func (a *EnableUsersApiService) ReadUserEnabled(ctx context.Context, environment
 // Execute executes the request
 //  @return UserEnabled
 func (a *EnableUsersApiService) ReadUserEnabledExecute(r ApiReadUserEnabledRequest) (*UserEnabled, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadUserEnabledExecute(r)
+		},
+	)
+	return obj.(*UserEnabled), response, error
+}
+			
+func (a *EnableUsersApiService) internalReadUserEnabledExecute(r ApiReadUserEnabledRequest) (*UserEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -231,6 +240,15 @@ func (a *EnableUsersApiService) UpdateUserEnabled(ctx context.Context, environme
 // Execute executes the request
 //  @return UserEnabled
 func (a *EnableUsersApiService) UpdateUserEnabledExecute(r ApiUpdateUserEnabledRequest) (*UserEnabled, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateUserEnabledExecute(r)
+		},
+	)
+	return obj.(*UserEnabled), response, error
+}
+			
+func (a *EnableUsersApiService) internalUpdateUserEnabledExecute(r ApiUpdateUserEnabledRequest) (*UserEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

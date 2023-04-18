@@ -71,6 +71,16 @@ func (a *ActiveIdentityCountsApiService) ReadActiveIdentityCount(ctx context.Con
 
 // Execute executes the request
 func (a *ActiveIdentityCountsApiService) ReadActiveIdentityCountExecute(r ApiReadActiveIdentityCountRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalReadActiveIdentityCountExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ActiveIdentityCountsApiService) internalReadActiveIdentityCountExecute(r ApiReadActiveIdentityCountRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

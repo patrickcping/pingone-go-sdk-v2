@@ -54,6 +54,15 @@ func (a *EnableUsersMFAApiService) ReadUserMFAEnabled(ctx context.Context, envir
 // Execute executes the request
 //  @return UserMFAEnabled
 func (a *EnableUsersMFAApiService) ReadUserMFAEnabledExecute(r ApiReadUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadUserMFAEnabledExecute(r)
+		},
+	)
+	return obj.(*UserMFAEnabled), response, error
+}
+			
+func (a *EnableUsersMFAApiService) internalReadUserMFAEnabledExecute(r ApiReadUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -231,6 +240,15 @@ func (a *EnableUsersMFAApiService) UpdateUserMFAEnabled(ctx context.Context, env
 // Execute executes the request
 //  @return UserMFAEnabled
 func (a *EnableUsersMFAApiService) UpdateUserMFAEnabledExecute(r ApiUpdateUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateUserMFAEnabledExecute(r)
+		},
+	)
+	return obj.(*UserMFAEnabled), response, error
+}
+			
+func (a *EnableUsersMFAApiService) internalUpdateUserMFAEnabledExecute(r ApiUpdateUserMFAEnabledRequest) (*UserMFAEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

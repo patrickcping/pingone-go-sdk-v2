@@ -60,6 +60,15 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) CreateSignOnPolicyAssignm
 // Execute executes the request
 //  @return SignOnPolicyAssignment
 func (a *ApplicationSignOnPolicyAssignmentsApiService) CreateSignOnPolicyAssignmentExecute(r ApiCreateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateSignOnPolicyAssignmentExecute(r)
+		},
+	)
+	return obj.(*SignOnPolicyAssignment), response, error
+}
+			
+func (a *ApplicationSignOnPolicyAssignmentsApiService) internalCreateSignOnPolicyAssignmentExecute(r ApiCreateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) DeleteSignOnPolicyAssignm
 
 // Execute executes the request
 func (a *ApplicationSignOnPolicyAssignmentsApiService) DeleteSignOnPolicyAssignmentExecute(r ApiDeleteSignOnPolicyAssignmentRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteSignOnPolicyAssignmentExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ApplicationSignOnPolicyAssignmentsApiService) internalDeleteSignOnPolicyAssignmentExecute(r ApiDeleteSignOnPolicyAssignmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssign
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssignmentsExecute(r ApiReadAllSignOnPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllSignOnPolicyAssignmentsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *ApplicationSignOnPolicyAssignmentsApiService) internalReadAllSignOnPolicyAssignmentsExecute(r ApiReadAllSignOnPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadOneSignOnPolicyAssign
 // Execute executes the request
 //  @return SignOnPolicyAssignment
 func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadOneSignOnPolicyAssignmentExecute(r ApiReadOneSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneSignOnPolicyAssignmentExecute(r)
+		},
+	)
+	return obj.(*SignOnPolicyAssignment), response, error
+}
+			
+func (a *ApplicationSignOnPolicyAssignmentsApiService) internalReadOneSignOnPolicyAssignmentExecute(r ApiReadOneSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) UpdateSignOnPolicyAssignm
 // Execute executes the request
 //  @return SignOnPolicyAssignment
 func (a *ApplicationSignOnPolicyAssignmentsApiService) UpdateSignOnPolicyAssignmentExecute(r ApiUpdateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateSignOnPolicyAssignmentExecute(r)
+		},
+	)
+	return obj.(*SignOnPolicyAssignment), response, error
+}
+			
+func (a *ApplicationSignOnPolicyAssignmentsApiService) internalUpdateSignOnPolicyAssignmentExecute(r ApiUpdateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -60,6 +60,15 @@ func (a *AgreementLanguagesResourcesApiService) CreateAgreementLanguage(ctx cont
 // Execute executes the request
 //  @return AgreementLanguage
 func (a *AgreementLanguagesResourcesApiService) CreateAgreementLanguageExecute(r ApiCreateAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateAgreementLanguageExecute(r)
+		},
+	)
+	return obj.(*AgreementLanguage), response, error
+}
+			
+func (a *AgreementLanguagesResourcesApiService) internalCreateAgreementLanguageExecute(r ApiCreateAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *AgreementLanguagesResourcesApiService) DeleteAgreementLanguage(ctx cont
 
 // Execute executes the request
 func (a *AgreementLanguagesResourcesApiService) DeleteAgreementLanguageExecute(r ApiDeleteAgreementLanguageRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteAgreementLanguageExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *AgreementLanguagesResourcesApiService) internalDeleteAgreementLanguageExecute(r ApiDeleteAgreementLanguageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *AgreementLanguagesResourcesApiService) ReadAllAgreementLanguages(ctx co
 // Execute executes the request
 //  @return EntityArray
 func (a *AgreementLanguagesResourcesApiService) ReadAllAgreementLanguagesExecute(r ApiReadAllAgreementLanguagesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllAgreementLanguagesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *AgreementLanguagesResourcesApiService) internalReadAllAgreementLanguagesExecute(r ApiReadAllAgreementLanguagesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *AgreementLanguagesResourcesApiService) ReadOneAgreementLanguage(ctx con
 // Execute executes the request
 //  @return AgreementLanguage
 func (a *AgreementLanguagesResourcesApiService) ReadOneAgreementLanguageExecute(r ApiReadOneAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneAgreementLanguageExecute(r)
+		},
+	)
+	return obj.(*AgreementLanguage), response, error
+}
+			
+func (a *AgreementLanguagesResourcesApiService) internalReadOneAgreementLanguageExecute(r ApiReadOneAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *AgreementLanguagesResourcesApiService) UpdateAgreementLanguage(ctx cont
 // Execute executes the request
 //  @return AgreementLanguage
 func (a *AgreementLanguagesResourcesApiService) UpdateAgreementLanguageExecute(r ApiUpdateAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateAgreementLanguageExecute(r)
+		},
+	)
+	return obj.(*AgreementLanguage), response, error
+}
+			
+func (a *AgreementLanguagesResourcesApiService) internalUpdateAgreementLanguageExecute(r ApiUpdateAgreementLanguageRequest) (*AgreementLanguage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

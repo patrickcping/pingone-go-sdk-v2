@@ -51,6 +51,15 @@ func (a *BillOfMaterialsBOMApiService) ReadOneBillOfMaterials(ctx context.Contex
 // Execute executes the request
 //  @return BillOfMaterials
 func (a *BillOfMaterialsBOMApiService) ReadOneBillOfMaterialsExecute(r ApiReadOneBillOfMaterialsRequest) (*BillOfMaterials, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneBillOfMaterialsExecute(r)
+		},
+	)
+	return obj.(*BillOfMaterials), response, error
+}
+			
+func (a *BillOfMaterialsBOMApiService) internalReadOneBillOfMaterialsExecute(r ApiReadOneBillOfMaterialsRequest) (*BillOfMaterials, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -224,6 +233,15 @@ func (a *BillOfMaterialsBOMApiService) UpdateBillOfMaterials(ctx context.Context
 // Execute executes the request
 //  @return BillOfMaterials
 func (a *BillOfMaterialsBOMApiService) UpdateBillOfMaterialsExecute(r ApiUpdateBillOfMaterialsRequest) (*BillOfMaterials, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateBillOfMaterialsExecute(r)
+		},
+	)
+	return obj.(*BillOfMaterials), response, error
+}
+			
+func (a *BillOfMaterialsBOMApiService) internalUpdateBillOfMaterialsExecute(r ApiUpdateBillOfMaterialsRequest) (*BillOfMaterials, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

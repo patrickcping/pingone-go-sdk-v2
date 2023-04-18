@@ -67,6 +67,15 @@ func (a *ImagesApiService) CreateImage(ctx context.Context, environmentID string
 //
 //	@return Image
 func (a *ImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateImageExecute(r)
+		},
+	)
+	return obj.(*Image), response, error
+}
+			
+func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -256,6 +265,16 @@ func (a *ImagesApiService) DeleteImage(ctx context.Context, environmentID string
 
 // Execute executes the request
 func (a *ImagesApiService) DeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteImageExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -418,6 +437,15 @@ func (a *ImagesApiService) ReadImage(ctx context.Context, environmentID string, 
 //
 //	@return Image
 func (a *ImagesApiService) ReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadImageExecute(r)
+		},
+	)
+	return obj.(*Image), response, error
+}
+			
+func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

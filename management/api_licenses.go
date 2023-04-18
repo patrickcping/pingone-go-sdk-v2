@@ -64,6 +64,15 @@ func (a *LicensesApiService) ReadAllLicenses(ctx context.Context, organizationID
 // Execute executes the request
 //  @return EntityArray
 func (a *LicensesApiService) ReadAllLicensesExecute(r ApiReadAllLicensesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllLicensesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *LicensesApiService) internalReadAllLicensesExecute(r ApiReadAllLicensesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -240,6 +249,15 @@ func (a *LicensesApiService) ReadOneLicense(ctx context.Context, organizationID 
 // Execute executes the request
 //  @return License
 func (a *LicensesApiService) ReadOneLicenseExecute(r ApiReadOneLicenseRequest) (*License, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneLicenseExecute(r)
+		},
+	)
+	return obj.(*License), response, error
+}
+			
+func (a *LicensesApiService) internalReadOneLicenseExecute(r ApiReadOneLicenseRequest) (*License, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -411,6 +429,15 @@ func (a *LicensesApiService) ReadOneLicenseName(ctx context.Context, organizatio
 // Execute executes the request
 //  @return LicenseName
 func (a *LicensesApiService) ReadOneLicenseNameExecute(r ApiReadOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneLicenseNameExecute(r)
+		},
+	)
+	return obj.(*LicenseName), response, error
+}
+			
+func (a *LicensesApiService) internalReadOneLicenseNameExecute(r ApiReadOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -588,6 +615,15 @@ func (a *LicensesApiService) UpdateOneLicenseName(ctx context.Context, organizat
 // Execute executes the request
 //  @return LicenseName
 func (a *LicensesApiService) UpdateOneLicenseNameExecute(r ApiUpdateOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateOneLicenseNameExecute(r)
+		},
+	)
+	return obj.(*LicenseName), response, error
+}
+			
+func (a *LicensesApiService) internalUpdateOneLicenseNameExecute(r ApiUpdateOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

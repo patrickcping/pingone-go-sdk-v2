@@ -60,6 +60,15 @@ func (a *ApplicationAttributeMappingApiService) CreateApplicationAttributeMappin
 // Execute executes the request
 //  @return ApplicationAttributeMapping
 func (a *ApplicationAttributeMappingApiService) CreateApplicationAttributeMappingExecute(r ApiCreateApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateApplicationAttributeMappingExecute(r)
+		},
+	)
+	return obj.(*ApplicationAttributeMapping), response, error
+}
+			
+func (a *ApplicationAttributeMappingApiService) internalCreateApplicationAttributeMappingExecute(r ApiCreateApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *ApplicationAttributeMappingApiService) DeleteApplicationAttributeMappin
 
 // Execute executes the request
 func (a *ApplicationAttributeMappingApiService) DeleteApplicationAttributeMappingExecute(r ApiDeleteApplicationAttributeMappingRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteApplicationAttributeMappingExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ApplicationAttributeMappingApiService) internalDeleteApplicationAttributeMappingExecute(r ApiDeleteApplicationAttributeMappingRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *ApplicationAttributeMappingApiService) ReadAllApplicationAttributeMappi
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationAttributeMappingApiService) ReadAllApplicationAttributeMappingsExecute(r ApiReadAllApplicationAttributeMappingsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllApplicationAttributeMappingsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *ApplicationAttributeMappingApiService) internalReadAllApplicationAttributeMappingsExecute(r ApiReadAllApplicationAttributeMappingsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *ApplicationAttributeMappingApiService) ReadOneApplicationAttributeMappi
 // Execute executes the request
 //  @return ApplicationAttributeMapping
 func (a *ApplicationAttributeMappingApiService) ReadOneApplicationAttributeMappingExecute(r ApiReadOneApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneApplicationAttributeMappingExecute(r)
+		},
+	)
+	return obj.(*ApplicationAttributeMapping), response, error
+}
+			
+func (a *ApplicationAttributeMappingApiService) internalReadOneApplicationAttributeMappingExecute(r ApiReadOneApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *ApplicationAttributeMappingApiService) UpdateApplicationAttributeMappin
 // Execute executes the request
 //  @return ApplicationAttributeMapping
 func (a *ApplicationAttributeMappingApiService) UpdateApplicationAttributeMappingExecute(r ApiUpdateApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateApplicationAttributeMappingExecute(r)
+		},
+	)
+	return obj.(*ApplicationAttributeMapping), response, error
+}
+			
+func (a *ApplicationAttributeMappingApiService) internalUpdateApplicationAttributeMappingExecute(r ApiUpdateApplicationAttributeMappingRequest) (*ApplicationAttributeMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

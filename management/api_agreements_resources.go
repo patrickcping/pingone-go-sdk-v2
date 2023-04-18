@@ -57,6 +57,15 @@ func (a *AgreementsResourcesApiService) CreateAgreement(ctx context.Context, env
 // Execute executes the request
 //  @return Agreement
 func (a *AgreementsResourcesApiService) CreateAgreementExecute(r ApiCreateAgreementRequest) (*Agreement, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateAgreementExecute(r)
+		},
+	)
+	return obj.(*Agreement), response, error
+}
+			
+func (a *AgreementsResourcesApiService) internalCreateAgreementExecute(r ApiCreateAgreementRequest) (*Agreement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *AgreementsResourcesApiService) DeleteAgreement(ctx context.Context, env
 
 // Execute executes the request
 func (a *AgreementsResourcesApiService) DeleteAgreementExecute(r ApiDeleteAgreementRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteAgreementExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *AgreementsResourcesApiService) internalDeleteAgreementExecute(r ApiDeleteAgreementRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *AgreementsResourcesApiService) ReadAllAgreements(ctx context.Context, e
 // Execute executes the request
 //  @return EntityArray
 func (a *AgreementsResourcesApiService) ReadAllAgreementsExecute(r ApiReadAllAgreementsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllAgreementsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *AgreementsResourcesApiService) internalReadAllAgreementsExecute(r ApiReadAllAgreementsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *AgreementsResourcesApiService) ReadOneAgreement(ctx context.Context, en
 // Execute executes the request
 //  @return Agreement
 func (a *AgreementsResourcesApiService) ReadOneAgreementExecute(r ApiReadOneAgreementRequest) (*Agreement, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneAgreementExecute(r)
+		},
+	)
+	return obj.(*Agreement), response, error
+}
+			
+func (a *AgreementsResourcesApiService) internalReadOneAgreementExecute(r ApiReadOneAgreementRequest) (*Agreement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *AgreementsResourcesApiService) UpdateAgreement(ctx context.Context, env
 // Execute executes the request
 //  @return Agreement
 func (a *AgreementsResourcesApiService) UpdateAgreementExecute(r ApiUpdateAgreementRequest) (*Agreement, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateAgreementExecute(r)
+		},
+	)
+	return obj.(*Agreement), response, error
+}
+			
+func (a *AgreementsResourcesApiService) internalUpdateAgreementExecute(r ApiUpdateAgreementRequest) (*Agreement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

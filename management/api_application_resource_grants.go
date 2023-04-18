@@ -60,6 +60,15 @@ func (a *ApplicationResourceGrantsApiService) CreateApplicationGrant(ctx context
 // Execute executes the request
 //  @return ApplicationResourceGrant
 func (a *ApplicationResourceGrantsApiService) CreateApplicationGrantExecute(r ApiCreateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateApplicationGrantExecute(r)
+		},
+	)
+	return obj.(*ApplicationResourceGrant), response, error
+}
+			
+func (a *ApplicationResourceGrantsApiService) internalCreateApplicationGrantExecute(r ApiCreateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *ApplicationResourceGrantsApiService) DeleteApplicationGrant(ctx context
 
 // Execute executes the request
 func (a *ApplicationResourceGrantsApiService) DeleteApplicationGrantExecute(r ApiDeleteApplicationGrantRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteApplicationGrantExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ApplicationResourceGrantsApiService) internalDeleteApplicationGrantExecute(r ApiDeleteApplicationGrantRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrants(ctx conte
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrantsExecute(r ApiReadAllApplicationGrantsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllApplicationGrantsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *ApplicationResourceGrantsApiService) internalReadAllApplicationGrantsExecute(r ApiReadAllApplicationGrantsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *ApplicationResourceGrantsApiService) ReadOneApplicationGrant(ctx contex
 // Execute executes the request
 //  @return ApplicationResourceGrant
 func (a *ApplicationResourceGrantsApiService) ReadOneApplicationGrantExecute(r ApiReadOneApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneApplicationGrantExecute(r)
+		},
+	)
+	return obj.(*ApplicationResourceGrant), response, error
+}
+			
+func (a *ApplicationResourceGrantsApiService) internalReadOneApplicationGrantExecute(r ApiReadOneApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *ApplicationResourceGrantsApiService) UpdateApplicationGrant(ctx context
 // Execute executes the request
 //  @return ApplicationResourceGrant
 func (a *ApplicationResourceGrantsApiService) UpdateApplicationGrantExecute(r ApiUpdateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateApplicationGrantExecute(r)
+		},
+	)
+	return obj.(*ApplicationResourceGrant), response, error
+}
+			
+func (a *ApplicationResourceGrantsApiService) internalUpdateApplicationGrantExecute(r ApiUpdateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

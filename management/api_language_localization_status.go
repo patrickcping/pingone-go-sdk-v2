@@ -60,6 +60,15 @@ func (a *LanguageLocalizationStatusApiService) CreateLanguageLocalizationStatus(
 // Execute executes the request
 //  @return LanguageLocalizationStatus
 func (a *LanguageLocalizationStatusApiService) CreateLanguageLocalizationStatusExecute(r ApiCreateLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateLanguageLocalizationStatusExecute(r)
+		},
+	)
+	return obj.(*LanguageLocalizationStatus), response, error
+}
+			
+func (a *LanguageLocalizationStatusApiService) internalCreateLanguageLocalizationStatusExecute(r ApiCreateLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *LanguageLocalizationStatusApiService) DeleteLanguageLocalizationStatus(
 
 // Execute executes the request
 func (a *LanguageLocalizationStatusApiService) DeleteLanguageLocalizationStatusExecute(r ApiDeleteLanguageLocalizationStatusRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteLanguageLocalizationStatusExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *LanguageLocalizationStatusApiService) internalDeleteLanguageLocalizationStatusExecute(r ApiDeleteLanguageLocalizationStatusRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *LanguageLocalizationStatusApiService) ReadLanguageLocalizationStatus(ct
 // Execute executes the request
 //  @return LanguageLocalizationStatus
 func (a *LanguageLocalizationStatusApiService) ReadLanguageLocalizationStatusExecute(r ApiReadLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadLanguageLocalizationStatusExecute(r)
+		},
+	)
+	return obj.(*LanguageLocalizationStatus), response, error
+}
+			
+func (a *LanguageLocalizationStatusApiService) internalReadLanguageLocalizationStatusExecute(r ApiReadLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *LanguageLocalizationStatusApiService) ReadOneLanguageLocalizationStatus
 // Execute executes the request
 //  @return LanguageLocalizationStatus
 func (a *LanguageLocalizationStatusApiService) ReadOneLanguageLocalizationStatusExecute(r ApiReadOneLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneLanguageLocalizationStatusExecute(r)
+		},
+	)
+	return obj.(*LanguageLocalizationStatus), response, error
+}
+			
+func (a *LanguageLocalizationStatusApiService) internalReadOneLanguageLocalizationStatusExecute(r ApiReadOneLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *LanguageLocalizationStatusApiService) UpdateLanguageLocalizationStatus(
 // Execute executes the request
 //  @return LanguageLocalizationStatus
 func (a *LanguageLocalizationStatusApiService) UpdateLanguageLocalizationStatusExecute(r ApiUpdateLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateLanguageLocalizationStatusExecute(r)
+		},
+	)
+	return obj.(*LanguageLocalizationStatus), response, error
+}
+			
+func (a *LanguageLocalizationStatusApiService) internalUpdateLanguageLocalizationStatusExecute(r ApiUpdateLanguageLocalizationStatusRequest) (*LanguageLocalizationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

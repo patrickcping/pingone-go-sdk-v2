@@ -54,6 +54,15 @@ func (a *OrganizationsApiService) ReadAllOrganizations(ctx context.Context) ApiR
 // Execute executes the request
 //  @return EntityArray
 func (a *OrganizationsApiService) ReadAllOrganizationsExecute(r ApiReadAllOrganizationsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllOrganizationsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *OrganizationsApiService) internalReadAllOrganizationsExecute(r ApiReadAllOrganizationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -223,6 +232,15 @@ func (a *OrganizationsApiService) ReadOneOrganization(ctx context.Context, organ
 // Execute executes the request
 //  @return Organization
 func (a *OrganizationsApiService) ReadOneOrganizationExecute(r ApiReadOneOrganizationRequest) (*Organization, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneOrganizationExecute(r)
+		},
+	)
+	return obj.(*Organization), response, error
+}
+			
+func (a *OrganizationsApiService) internalReadOneOrganizationExecute(r ApiReadOneOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

@@ -63,6 +63,15 @@ func (a *UsersApiService) CreateUser(ctx context.Context, environmentID string) 
 // Execute executes the request
 //  @return User
 func (a *UsersApiService) CreateUserExecute(r ApiCreateUserRequest) (*User, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateUserExecute(r)
+		},
+	)
+	return obj.(*User), response, error
+}
+			
+func (a *UsersApiService) internalCreateUserExecute(r ApiCreateUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -248,6 +257,16 @@ func (a *UsersApiService) DeleteUser(ctx context.Context, environmentID string, 
 
 // Execute executes the request
 func (a *UsersApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteUserExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalDeleteUserExecute(r ApiDeleteUserRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -418,6 +437,15 @@ func (a *UsersApiService) ReadAllUsers(ctx context.Context, environmentID string
 // Execute executes the request
 //  @return EntityArray
 func (a *UsersApiService) ReadAllUsersExecute(r ApiReadAllUsersRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllUsersExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *UsersApiService) internalReadAllUsersExecute(r ApiReadAllUsersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -600,6 +628,15 @@ func (a *UsersApiService) ReadUser(ctx context.Context, environmentID string, us
 // Execute executes the request
 //  @return User
 func (a *UsersApiService) ReadUserExecute(r ApiReadUserRequest) (*User, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadUserExecute(r)
+		},
+	)
+	return obj.(*User), response, error
+}
+			
+func (a *UsersApiService) internalReadUserExecute(r ApiReadUserRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -780,6 +817,15 @@ func (a *UsersApiService) UpdateUserPatch(ctx context.Context, environmentID str
 // Execute executes the request
 //  @return User
 func (a *UsersApiService) UpdateUserPatchExecute(r ApiUpdateUserPatchRequest) (*User, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateUserPatchExecute(r)
+		},
+	)
+	return obj.(*User), response, error
+}
+			
+func (a *UsersApiService) internalUpdateUserPatchExecute(r ApiUpdateUserPatchRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -959,6 +1005,15 @@ func (a *UsersApiService) UpdateUserPut(ctx context.Context, environmentID strin
 // Execute executes the request
 //  @return User
 func (a *UsersApiService) UpdateUserPutExecute(r ApiUpdateUserPutRequest) (*User, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateUserPutExecute(r)
+		},
+	)
+	return obj.(*User), response, error
+}
+			
+func (a *UsersApiService) internalUpdateUserPutExecute(r ApiUpdateUserPutRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

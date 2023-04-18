@@ -57,6 +57,15 @@ func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPolicie
 // Execute executes the request
 //  @return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateDeviceAuthenticationPoliciesExecute(r)
+		},
+	)
+	return obj.(*DeviceAuthenticationPolicy), response, error
+}
+			
+func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicy(
 
 // Execute executes the request
 func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicyExecute(r ApiDeleteDeviceAuthenticationPolicyRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteDeviceAuthenticationPolicyExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticationPolicyExecute(r ApiDeleteDeviceAuthenticationPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPolicies(
 // Execute executes the request
 //  @return EntityArray
 func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadDeviceAuthenticationPoliciesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy
 // Execute executes the request
 //  @return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicyExecute(r ApiReadOneDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneDeviceAuthenticationPolicyExecute(r)
+		},
+	)
+	return obj.(*DeviceAuthenticationPolicy), response, error
+}
+			
+func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticationPolicyExecute(r ApiReadOneDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicy(
 // Execute executes the request
 //  @return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateDeviceAuthenticationPolicyExecute(r)
+		},
+	)
+	return obj.(*DeviceAuthenticationPolicy), response, error
+}
+			
+func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
