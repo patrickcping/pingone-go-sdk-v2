@@ -4,20 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Application** | Pointer to [**ObjectApplication**](ObjectApplication.md) |  | [optional] 
+**Application** | [**ObjectApplication**](ObjectApplication.md) |  | 
 **AppOpenUrl** | **string** | A string that specifies the URL sent in notifications to the user to communicate with the service. | 
-**CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential digital wallet app was created. | [optional] 
+**CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential digital wallet app was created. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential digital wallet app. | [optional] 
+**Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential digital wallet app. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the name associated with the digital wallet app. | 
-**UpdatedAt** | Pointer to **string** | A string that specifies the date and time the credential digital wallet app was last updated; can be null. | [optional] 
+**UpdatedAt** | Pointer to **string** |  | [optional] [readonly] 
 **UsesPingOneWalletSDK** | Pointer to **bool** | A boolean that specifies whether the user&#39;s wallet app uses the PingOne Wallet SDK. | [optional] 
 
 ## Methods
 
 ### NewDigitalWalletApplication
 
-`func NewDigitalWalletApplication(appOpenUrl string, name string, ) *DigitalWalletApplication`
+`func NewDigitalWalletApplication(application ObjectApplication, appOpenUrl string, name string, ) *DigitalWalletApplication`
 
 NewDigitalWalletApplication instantiates a new DigitalWalletApplication object
 This constructor will assign default values to properties that have it defined,
@@ -51,11 +51,6 @@ and a boolean to check if the value has been set.
 
 SetApplication sets Application field to given value.
 
-### HasApplication
-
-`func (o *DigitalWalletApplication) HasApplication() bool`
-
-HasApplication returns a boolean if a field has been set.
 
 ### GetAppOpenUrl
 

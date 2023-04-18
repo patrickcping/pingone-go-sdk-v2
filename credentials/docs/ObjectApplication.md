@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | A string that specifies the application resource ID associated with the object. | [optional] [readonly] 
+**Id** | Pointer to **string** | A string that specifies the application resource ID associated with the object. | [optional] 
 
 ## Methods
 

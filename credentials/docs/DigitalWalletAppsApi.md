@@ -1,6 +1,6 @@
 # \DigitalWalletAppsApi
 
-All URIs are relative to *https://api.pingone.com*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,12 +27,12 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+    openapiclient "github.com/GIT_USER_ID/--git-user-id/credentials"
 )
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    digitalWalletApplication := *openapiclient.NewDigitalWalletApplication("AppOpenUrl_example", "Name_example") // DigitalWalletApplication |  (optional)
+    digitalWalletApplication := *openapiclient.NewDigitalWalletApplication(*openapiclient.NewObjectApplication(), "AppOpenUrl_example", "Name_example") // DigitalWalletApplication |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -97,7 +97,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+    openapiclient "github.com/GIT_USER_ID/--git-user-id/credentials"
 )
 
 func main() {
@@ -166,7 +166,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+    openapiclient "github.com/GIT_USER_ID/--git-user-id/credentials"
 )
 
 func main() {
@@ -234,7 +234,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+    openapiclient "github.com/GIT_USER_ID/--git-user-id/credentials"
 )
 
 func main() {
@@ -305,13 +305,13 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+    openapiclient "github.com/GIT_USER_ID/--git-user-id/credentials"
 )
 
 func main() {
     environmentID := "environmentID_example" // string | 
     digitalWalletApplicationID := "digitalWalletApplicationID_example" // string | 
-    digitalWalletApplication := *openapiclient.NewDigitalWalletApplication("AppOpenUrl_example", "Name_example") // DigitalWalletApplication |  (optional)
+    digitalWalletApplication := *openapiclient.NewDigitalWalletApplication(*openapiclient.NewObjectApplication(), "AppOpenUrl_example", "Name_example") // DigitalWalletApplication |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

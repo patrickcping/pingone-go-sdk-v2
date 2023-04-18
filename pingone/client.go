@@ -109,6 +109,7 @@ func CredentialsAPIClient(token *oauth2.Token) (*credentials.APIClient, error) {
 
 	clientcfg := credentials.NewConfiguration()
 	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", token.AccessToken))
+
 	client = credentials.NewAPIClient(clientcfg)
 
 	if client == nil {

@@ -89,11 +89,11 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator//go",
+		UserAgent:        "OpenAPI-Generator/0.1.0/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://api.pingone.{suffix}",
+				URL: "https://api.pingone.{suffix}/v1",
 				Description: "PingOne Platform API Endpoint",
 				Variables: map[string]ServerVariable{
 					"suffix": ServerVariable{

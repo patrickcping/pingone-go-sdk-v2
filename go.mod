@@ -8,14 +8,14 @@ require (
 	github.com/golangci/golangci-lint v1.52.0
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.1
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.4
-	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.0.0-00010101000000-000000000000
-	github.com/patrickcping/pingone-go-sdk-v2/management v0.17.1
+	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.1.0
+	github.com/patrickcping/pingone-go-sdk-v2/management v0.18.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.9.1
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.3.4
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.15.0
 	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e
-	golang.org/x/oauth2 v0.6.0
+	golang.org/x/oauth2 v0.7.0
 )
 
 require (
@@ -177,10 +177,10 @@ require (
 	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20230224173230-c95f2b4c22f2 // indirect
 	golang.org/x/mod v0.9.0 // indirect
-	golang.org/x/net v0.8.0 // indirect
+	golang.org/x/net v0.9.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
-	golang.org/x/sys v0.6.0 // indirect
-	golang.org/x/text v0.8.0 // indirect
+	golang.org/x/sys v0.7.0 // indirect
+	golang.org/x/text v0.9.0 // indirect
 	golang.org/x/tools v0.7.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect

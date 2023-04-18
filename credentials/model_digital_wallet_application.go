@@ -19,7 +19,7 @@ var _ MappedNullable = &DigitalWalletApplication{}
 
 // DigitalWalletApplication struct for DigitalWalletApplication
 type DigitalWalletApplication struct {
-	Application *ObjectApplication `json:"application,omitempty"`
+	Application ObjectApplication `json:"application"`
 	// A string that specifies the URL sent in notifications to the user to communicate with the service.
 	AppOpenUrl string `json:"appOpenUrl"`
 	// A string that specifies the date and time the credential digital wallet app was created.
@@ -29,7 +29,6 @@ type DigitalWalletApplication struct {
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the name associated with the digital wallet app.
 	Name string `json:"name"`
-	// A string that specifies the date and time the credential digital wallet app was last updated; can be null.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether the user's wallet app uses the PingOne Wallet SDK.
 	UsesPingOneWalletSDK *bool `json:"usesPingOneWalletSDK,omitempty"`
@@ -39,8 +38,9 @@ type DigitalWalletApplication struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDigitalWalletApplication(appOpenUrl string, name string) *DigitalWalletApplication {
+func NewDigitalWalletApplication(application ObjectApplication, appOpenUrl string, name string) *DigitalWalletApplication {
 	this := DigitalWalletApplication{}
+	this.Application = application
 	this.AppOpenUrl = appOpenUrl
 	this.Name = name
 	return &this
@@ -54,36 +54,28 @@ func NewDigitalWalletApplicationWithDefaults() *DigitalWalletApplication {
 	return &this
 }
 
-// GetApplication returns the Application field value if set, zero value otherwise.
+// GetApplication returns the Application field value
 func (o *DigitalWalletApplication) GetApplication() ObjectApplication {
-	if o == nil || IsNil(o.Application) {
+	if o == nil {
 		var ret ObjectApplication
 		return ret
 	}
-	return *o.Application
+
+	return o.Application
 }
 
-// GetApplicationOk returns a tuple with the Application field value if set, nil otherwise
+// GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
 func (o *DigitalWalletApplication) GetApplicationOk() (*ObjectApplication, bool) {
-	if o == nil || IsNil(o.Application) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Application, true
+	return &o.Application, true
 }
 
-// HasApplication returns a boolean if a field has been set.
-func (o *DigitalWalletApplication) HasApplication() bool {
-	if o != nil && !IsNil(o.Application) {
-		return true
-	}
-
-	return false
-}
-
-// SetApplication gets a reference to the given ObjectApplication and assigns it to the Application field.
+// SetApplication sets field value
 func (o *DigitalWalletApplication) SetApplication(v ObjectApplication) {
-	o.Application = &v
+	o.Application = v
 }
 
 // GetAppOpenUrl returns the AppOpenUrl field value
@@ -304,23 +296,15 @@ func (o DigitalWalletApplication) MarshalJSON() ([]byte, error) {
 
 func (o DigitalWalletApplication) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Application) {
-		toSerialize["application"] = o.Application
-	}
+	toSerialize["application"] = o.Application
 	toSerialize["appOpenUrl"] = o.AppOpenUrl
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	toSerialize["name"] = o.Name
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: updatedAt is readOnly
 	if !IsNil(o.UsesPingOneWalletSDK) {
 		toSerialize["usesPingOneWalletSDK"] = o.UsesPingOneWalletSDK
 	}

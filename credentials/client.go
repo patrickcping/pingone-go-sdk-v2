@@ -46,7 +46,7 @@ var (
 type APIClient struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
-
+	
 	// API Services
 
 	CredentialIssuanceRulesApi *CredentialIssuanceRulesApiService
@@ -69,6 +69,16 @@ type service struct {
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	LOG_FILE := "/Users/mikesimon/dev/tools/terraform/neo.log"
+    // open log file
+    logFile, err := os.OpenFile(LOG_FILE, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0644)
+    if err != nil {
+        log.Panic(err)
+    }
+	log.SetOutput(logFile)
+	log.SetFlags(log.Lshortfile | log.LstdFlags)
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
@@ -84,7 +94,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DigitalWalletAppsApi = (*DigitalWalletAppsApiService)(&c.common)
 	c.DigitalWalletsApi = (*DigitalWalletsApiService)(&c.common)
 	c.UserCredentialsApi = (*UserCredentialsApiService)(&c.common)
-
+ 
 	return c
 }
 
