@@ -52,7 +52,7 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 	ext := ".go"
 
 	// Get a list of all files with the given extension in the directory
-	files, err := filepath.Glob(filepath.Join(dir, filepath.Clean("*"+ext)))
+	files, err := filepath.Glob(filepath.Join(dir, "*"+ext))
 	if err != nil {
 		panic(err)
 	}
@@ -60,7 +60,7 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 	// Iterate over the files and apply the regex replacement rules
 	for _, file := range files {
 		// Read the file contents
-		content, err := os.ReadFile(file)
+		content, err := os.ReadFile(filepath.Clean(file))
 		if err != nil {
 			panic(err)
 		}
