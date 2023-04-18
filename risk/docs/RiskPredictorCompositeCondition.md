@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **Not** | [**RiskPredictorCompositeOr**](RiskPredictorCompositeOr.md) |  | 
 **Or** | [**[]RiskPredictorCompositeCondition**](RiskPredictorCompositeCondition.md) |  | 
 **And** | [**[]RiskPredictorCompositeCondition**](RiskPredictorCompositeCondition.md) |  | 
+**Contains** | **string** |  | 
+**List** | **[]string** |  | 
+**Type** | [**EnumPredictorCompositeConditionType**](EnumPredictorCompositeConditionType.md) |  | 
 **Equals** | Pointer to **map[string]interface{}** |  | [optional] 
 **NotEquals** | Pointer to **map[string]interface{}** |  | [optional] 
 **Greater** | Pointer to **int32** |  | [optional] 
@@ -14,13 +17,12 @@ Name | Type | Description | Notes
 **Lower** | Pointer to **int32** |  | [optional] 
 **LowerEquals** | Pointer to **int32** |  | [optional] 
 **Value** | **string** |  | 
-**Type** | Pointer to [**EnumPredictorCompositeConditionType**](EnumPredictorCompositeConditionType.md) |  | [optional] 
 
 ## Methods
 
 ### NewRiskPredictorCompositeCondition
 
-`func NewRiskPredictorCompositeCondition(not RiskPredictorCompositeOr, or []RiskPredictorCompositeCondition, and []RiskPredictorCompositeCondition, value string, ) *RiskPredictorCompositeCondition`
+`func NewRiskPredictorCompositeCondition(not RiskPredictorCompositeOr, or []RiskPredictorCompositeCondition, and []RiskPredictorCompositeCondition, contains string, list []string, type_ EnumPredictorCompositeConditionType, value string, ) *RiskPredictorCompositeCondition`
 
 NewRiskPredictorCompositeCondition instantiates a new RiskPredictorCompositeCondition object
 This constructor will assign default values to properties that have it defined,
@@ -93,6 +95,66 @@ and a boolean to check if the value has been set.
 `func (o *RiskPredictorCompositeCondition) SetAnd(v []RiskPredictorCompositeCondition)`
 
 SetAnd sets And field to given value.
+
+
+### GetContains
+
+`func (o *RiskPredictorCompositeCondition) GetContains() string`
+
+GetContains returns the Contains field if non-nil, zero value otherwise.
+
+### GetContainsOk
+
+`func (o *RiskPredictorCompositeCondition) GetContainsOk() (*string, bool)`
+
+GetContainsOk returns a tuple with the Contains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContains
+
+`func (o *RiskPredictorCompositeCondition) SetContains(v string)`
+
+SetContains sets Contains field to given value.
+
+
+### GetList
+
+`func (o *RiskPredictorCompositeCondition) GetList() []string`
+
+GetList returns the List field if non-nil, zero value otherwise.
+
+### GetListOk
+
+`func (o *RiskPredictorCompositeCondition) GetListOk() (*[]string, bool)`
+
+GetListOk returns a tuple with the List field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetList
+
+`func (o *RiskPredictorCompositeCondition) SetList(v []string)`
+
+SetList sets List field to given value.
+
+
+### GetType
+
+`func (o *RiskPredictorCompositeCondition) GetType() EnumPredictorCompositeConditionType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *RiskPredictorCompositeCondition) GetTypeOk() (*EnumPredictorCompositeConditionType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *RiskPredictorCompositeCondition) SetType(v EnumPredictorCompositeConditionType)`
+
+SetType sets Type field to given value.
 
 
 ### GetEquals
@@ -264,31 +326,6 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
-
-### GetType
-
-`func (o *RiskPredictorCompositeCondition) GetType() EnumPredictorCompositeConditionType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *RiskPredictorCompositeCondition) GetTypeOk() (*EnumPredictorCompositeConditionType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *RiskPredictorCompositeCondition) SetType(v EnumPredictorCompositeConditionType)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *RiskPredictorCompositeCondition) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

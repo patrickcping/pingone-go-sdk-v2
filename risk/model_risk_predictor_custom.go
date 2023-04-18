@@ -27,7 +27,7 @@ type RiskPredictorCustom struct {
 	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
 	CompactName string `json:"compactName"`
 	Type EnumPredictorType `json:"type"`
-	// A string type. This specifies the desription of the risk predictor. Maximum length is 1024 characters.
+	// A string type. This specifies the description of the risk predictor. Maximum length is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -434,12 +434,8 @@ func (o RiskPredictorCustom) ToMap() (map[string]interface{}, error) {
 	}
 	// skip: createdAt is readOnly
 	// skip: updatedAt is readOnly
-	if !IsNil(o.Licensed) {
-		toSerialize["licensed"] = o.Licensed
-	}
-	if !IsNil(o.Deletable) {
-		toSerialize["deletable"] = o.Deletable
-	}
+	// skip: licensed is readOnly
+	// skip: deletable is readOnly
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}

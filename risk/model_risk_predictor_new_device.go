@@ -15,11 +15,11 @@ import (
 	"time"
 )
 
-// checks if the RiskPredictorIPReputation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RiskPredictorIPReputation{}
+// checks if the RiskPredictorNewDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPredictorNewDevice{}
 
-// RiskPredictorIPReputation struct for RiskPredictorIPReputation
-type RiskPredictorIPReputation struct {
+// RiskPredictorNewDevice struct for RiskPredictorNewDevice
+type RiskPredictorNewDevice struct {
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -39,32 +39,32 @@ type RiskPredictorIPReputation struct {
 	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCondition `json:"condition,omitempty"`
-	// A list of IP addresses (CDIRs) that are ignored for the predictor results.
-	WhiteList []string `json:"whiteList,omitempty"`
+	// You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
+	ActivationAt *time.Time `json:"activationAt,omitempty"`
 }
 
-// NewRiskPredictorIPReputation instantiates a new RiskPredictorIPReputation object
+// NewRiskPredictorNewDevice instantiates a new RiskPredictorNewDevice object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorIPReputation(name string, compactName string, type_ EnumPredictorType) *RiskPredictorIPReputation {
-	this := RiskPredictorIPReputation{}
+func NewRiskPredictorNewDevice(name string, compactName string, type_ EnumPredictorType) *RiskPredictorNewDevice {
+	this := RiskPredictorNewDevice{}
 	this.Name = name
 	this.CompactName = compactName
 	this.Type = type_
 	return &this
 }
 
-// NewRiskPredictorIPReputationWithDefaults instantiates a new RiskPredictorIPReputation object
+// NewRiskPredictorNewDeviceWithDefaults instantiates a new RiskPredictorNewDevice object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRiskPredictorIPReputationWithDefaults() *RiskPredictorIPReputation {
-	this := RiskPredictorIPReputation{}
+func NewRiskPredictorNewDeviceWithDefaults() *RiskPredictorNewDevice {
+	this := RiskPredictorNewDevice{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetId() string {
+func (o *RiskPredictorNewDevice) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -74,7 +74,7 @@ func (o *RiskPredictorIPReputation) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetIdOk() (*string, bool) {
+func (o *RiskPredictorNewDevice) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -82,7 +82,7 @@ func (o *RiskPredictorIPReputation) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasId() bool {
+func (o *RiskPredictorNewDevice) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -91,12 +91,12 @@ func (o *RiskPredictorIPReputation) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *RiskPredictorIPReputation) SetId(v string) {
+func (o *RiskPredictorNewDevice) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value
-func (o *RiskPredictorIPReputation) GetName() string {
+func (o *RiskPredictorNewDevice) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -107,7 +107,7 @@ func (o *RiskPredictorIPReputation) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetNameOk() (*string, bool) {
+func (o *RiskPredictorNewDevice) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -115,12 +115,12 @@ func (o *RiskPredictorIPReputation) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *RiskPredictorIPReputation) SetName(v string) {
+func (o *RiskPredictorNewDevice) SetName(v string) {
 	o.Name = v
 }
 
 // GetCompactName returns the CompactName field value
-func (o *RiskPredictorIPReputation) GetCompactName() string {
+func (o *RiskPredictorNewDevice) GetCompactName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -131,7 +131,7 @@ func (o *RiskPredictorIPReputation) GetCompactName() string {
 
 // GetCompactNameOk returns a tuple with the CompactName field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetCompactNameOk() (*string, bool) {
+func (o *RiskPredictorNewDevice) GetCompactNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -139,12 +139,12 @@ func (o *RiskPredictorIPReputation) GetCompactNameOk() (*string, bool) {
 }
 
 // SetCompactName sets field value
-func (o *RiskPredictorIPReputation) SetCompactName(v string) {
+func (o *RiskPredictorNewDevice) SetCompactName(v string) {
 	o.CompactName = v
 }
 
 // GetType returns the Type field value
-func (o *RiskPredictorIPReputation) GetType() EnumPredictorType {
+func (o *RiskPredictorNewDevice) GetType() EnumPredictorType {
 	if o == nil {
 		var ret EnumPredictorType
 		return ret
@@ -155,7 +155,7 @@ func (o *RiskPredictorIPReputation) GetType() EnumPredictorType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetTypeOk() (*EnumPredictorType, bool) {
+func (o *RiskPredictorNewDevice) GetTypeOk() (*EnumPredictorType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -163,12 +163,12 @@ func (o *RiskPredictorIPReputation) GetTypeOk() (*EnumPredictorType, bool) {
 }
 
 // SetType sets field value
-func (o *RiskPredictorIPReputation) SetType(v EnumPredictorType) {
+func (o *RiskPredictorNewDevice) SetType(v EnumPredictorType) {
 	o.Type = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetDescription() string {
+func (o *RiskPredictorNewDevice) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -178,7 +178,7 @@ func (o *RiskPredictorIPReputation) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetDescriptionOk() (*string, bool) {
+func (o *RiskPredictorNewDevice) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -186,7 +186,7 @@ func (o *RiskPredictorIPReputation) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasDescription() bool {
+func (o *RiskPredictorNewDevice) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -195,12 +195,12 @@ func (o *RiskPredictorIPReputation) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *RiskPredictorIPReputation) SetDescription(v string) {
+func (o *RiskPredictorNewDevice) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetCreatedAt() time.Time {
+func (o *RiskPredictorNewDevice) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
@@ -210,7 +210,7 @@ func (o *RiskPredictorIPReputation) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetCreatedAtOk() (*time.Time, bool) {
+func (o *RiskPredictorNewDevice) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -218,7 +218,7 @@ func (o *RiskPredictorIPReputation) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasCreatedAt() bool {
+func (o *RiskPredictorNewDevice) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -227,12 +227,12 @@ func (o *RiskPredictorIPReputation) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *RiskPredictorIPReputation) SetCreatedAt(v time.Time) {
+func (o *RiskPredictorNewDevice) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetUpdatedAt() time.Time {
+func (o *RiskPredictorNewDevice) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
@@ -242,7 +242,7 @@ func (o *RiskPredictorIPReputation) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *RiskPredictorNewDevice) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -250,7 +250,7 @@ func (o *RiskPredictorIPReputation) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasUpdatedAt() bool {
+func (o *RiskPredictorNewDevice) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -259,12 +259,12 @@ func (o *RiskPredictorIPReputation) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *RiskPredictorIPReputation) SetUpdatedAt(v time.Time) {
+func (o *RiskPredictorNewDevice) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 // GetLicensed returns the Licensed field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetLicensed() bool {
+func (o *RiskPredictorNewDevice) GetLicensed() bool {
 	if o == nil || IsNil(o.Licensed) {
 		var ret bool
 		return ret
@@ -274,7 +274,7 @@ func (o *RiskPredictorIPReputation) GetLicensed() bool {
 
 // GetLicensedOk returns a tuple with the Licensed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetLicensedOk() (*bool, bool) {
+func (o *RiskPredictorNewDevice) GetLicensedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Licensed) {
 		return nil, false
 	}
@@ -282,7 +282,7 @@ func (o *RiskPredictorIPReputation) GetLicensedOk() (*bool, bool) {
 }
 
 // HasLicensed returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasLicensed() bool {
+func (o *RiskPredictorNewDevice) HasLicensed() bool {
 	if o != nil && !IsNil(o.Licensed) {
 		return true
 	}
@@ -291,12 +291,12 @@ func (o *RiskPredictorIPReputation) HasLicensed() bool {
 }
 
 // SetLicensed gets a reference to the given bool and assigns it to the Licensed field.
-func (o *RiskPredictorIPReputation) SetLicensed(v bool) {
+func (o *RiskPredictorNewDevice) SetLicensed(v bool) {
 	o.Licensed = &v
 }
 
 // GetDeletable returns the Deletable field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetDeletable() bool {
+func (o *RiskPredictorNewDevice) GetDeletable() bool {
 	if o == nil || IsNil(o.Deletable) {
 		var ret bool
 		return ret
@@ -306,7 +306,7 @@ func (o *RiskPredictorIPReputation) GetDeletable() bool {
 
 // GetDeletableOk returns a tuple with the Deletable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetDeletableOk() (*bool, bool) {
+func (o *RiskPredictorNewDevice) GetDeletableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Deletable) {
 		return nil, false
 	}
@@ -314,7 +314,7 @@ func (o *RiskPredictorIPReputation) GetDeletableOk() (*bool, bool) {
 }
 
 // HasDeletable returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasDeletable() bool {
+func (o *RiskPredictorNewDevice) HasDeletable() bool {
 	if o != nil && !IsNil(o.Deletable) {
 		return true
 	}
@@ -323,12 +323,12 @@ func (o *RiskPredictorIPReputation) HasDeletable() bool {
 }
 
 // SetDeletable gets a reference to the given bool and assigns it to the Deletable field.
-func (o *RiskPredictorIPReputation) SetDeletable(v bool) {
+func (o *RiskPredictorNewDevice) SetDeletable(v bool) {
 	o.Deletable = &v
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetDefault() RiskPredictorDefault {
+func (o *RiskPredictorNewDevice) GetDefault() RiskPredictorDefault {
 	if o == nil || IsNil(o.Default) {
 		var ret RiskPredictorDefault
 		return ret
@@ -338,7 +338,7 @@ func (o *RiskPredictorIPReputation) GetDefault() RiskPredictorDefault {
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetDefaultOk() (*RiskPredictorDefault, bool) {
+func (o *RiskPredictorNewDevice) GetDefaultOk() (*RiskPredictorDefault, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
@@ -346,7 +346,7 @@ func (o *RiskPredictorIPReputation) GetDefaultOk() (*RiskPredictorDefault, bool)
 }
 
 // HasDefault returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasDefault() bool {
+func (o *RiskPredictorNewDevice) HasDefault() bool {
 	if o != nil && !IsNil(o.Default) {
 		return true
 	}
@@ -355,12 +355,12 @@ func (o *RiskPredictorIPReputation) HasDefault() bool {
 }
 
 // SetDefault gets a reference to the given RiskPredictorDefault and assigns it to the Default field.
-func (o *RiskPredictorIPReputation) SetDefault(v RiskPredictorDefault) {
+func (o *RiskPredictorNewDevice) SetDefault(v RiskPredictorDefault) {
 	o.Default = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetCondition() RiskPredictorCondition {
+func (o *RiskPredictorNewDevice) GetCondition() RiskPredictorCondition {
 	if o == nil || IsNil(o.Condition) {
 		var ret RiskPredictorCondition
 		return ret
@@ -370,7 +370,7 @@ func (o *RiskPredictorIPReputation) GetCondition() RiskPredictorCondition {
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetConditionOk() (*RiskPredictorCondition, bool) {
+func (o *RiskPredictorNewDevice) GetConditionOk() (*RiskPredictorCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -378,7 +378,7 @@ func (o *RiskPredictorIPReputation) GetConditionOk() (*RiskPredictorCondition, b
 }
 
 // HasCondition returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasCondition() bool {
+func (o *RiskPredictorNewDevice) HasCondition() bool {
 	if o != nil && !IsNil(o.Condition) {
 		return true
 	}
@@ -387,43 +387,43 @@ func (o *RiskPredictorIPReputation) HasCondition() bool {
 }
 
 // SetCondition gets a reference to the given RiskPredictorCondition and assigns it to the Condition field.
-func (o *RiskPredictorIPReputation) SetCondition(v RiskPredictorCondition) {
+func (o *RiskPredictorNewDevice) SetCondition(v RiskPredictorCondition) {
 	o.Condition = &v
 }
 
-// GetWhiteList returns the WhiteList field value if set, zero value otherwise.
-func (o *RiskPredictorIPReputation) GetWhiteList() []string {
-	if o == nil || IsNil(o.WhiteList) {
-		var ret []string
+// GetActivationAt returns the ActivationAt field value if set, zero value otherwise.
+func (o *RiskPredictorNewDevice) GetActivationAt() time.Time {
+	if o == nil || IsNil(o.ActivationAt) {
+		var ret time.Time
 		return ret
 	}
-	return o.WhiteList
+	return *o.ActivationAt
 }
 
-// GetWhiteListOk returns a tuple with the WhiteList field value if set, nil otherwise
+// GetActivationAtOk returns a tuple with the ActivationAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorIPReputation) GetWhiteListOk() ([]string, bool) {
-	if o == nil || IsNil(o.WhiteList) {
+func (o *RiskPredictorNewDevice) GetActivationAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.ActivationAt) {
 		return nil, false
 	}
-	return o.WhiteList, true
+	return o.ActivationAt, true
 }
 
-// HasWhiteList returns a boolean if a field has been set.
-func (o *RiskPredictorIPReputation) HasWhiteList() bool {
-	if o != nil && !IsNil(o.WhiteList) {
+// HasActivationAt returns a boolean if a field has been set.
+func (o *RiskPredictorNewDevice) HasActivationAt() bool {
+	if o != nil && !IsNil(o.ActivationAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetWhiteList gets a reference to the given []string and assigns it to the WhiteList field.
-func (o *RiskPredictorIPReputation) SetWhiteList(v []string) {
-	o.WhiteList = v
+// SetActivationAt gets a reference to the given time.Time and assigns it to the ActivationAt field.
+func (o *RiskPredictorNewDevice) SetActivationAt(v time.Time) {
+	o.ActivationAt = &v
 }
 
-func (o RiskPredictorIPReputation) MarshalJSON() ([]byte, error) {
+func (o RiskPredictorNewDevice) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -431,7 +431,7 @@ func (o RiskPredictorIPReputation) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o RiskPredictorIPReputation) ToMap() (map[string]interface{}, error) {
+func (o RiskPredictorNewDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	// skip: id is readOnly
 	toSerialize["name"] = o.Name
@@ -450,44 +450,44 @@ func (o RiskPredictorIPReputation) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}
-	if !IsNil(o.WhiteList) {
-		toSerialize["whiteList"] = o.WhiteList
+	if !IsNil(o.ActivationAt) {
+		toSerialize["activationAt"] = o.ActivationAt
 	}
 	return toSerialize, nil
 }
 
-type NullableRiskPredictorIPReputation struct {
-	value *RiskPredictorIPReputation
+type NullableRiskPredictorNewDevice struct {
+	value *RiskPredictorNewDevice
 	isSet bool
 }
 
-func (v NullableRiskPredictorIPReputation) Get() *RiskPredictorIPReputation {
+func (v NullableRiskPredictorNewDevice) Get() *RiskPredictorNewDevice {
 	return v.value
 }
 
-func (v *NullableRiskPredictorIPReputation) Set(val *RiskPredictorIPReputation) {
+func (v *NullableRiskPredictorNewDevice) Set(val *RiskPredictorNewDevice) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRiskPredictorIPReputation) IsSet() bool {
+func (v NullableRiskPredictorNewDevice) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRiskPredictorIPReputation) Unset() {
+func (v *NullableRiskPredictorNewDevice) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRiskPredictorIPReputation(val *RiskPredictorIPReputation) *NullableRiskPredictorIPReputation {
-	return &NullableRiskPredictorIPReputation{value: val, isSet: true}
+func NewNullableRiskPredictorNewDevice(val *RiskPredictorNewDevice) *NullableRiskPredictorNewDevice {
+	return &NullableRiskPredictorNewDevice{value: val, isSet: true}
 }
 
-func (v NullableRiskPredictorIPReputation) MarshalJSON() ([]byte, error) {
+func (v NullableRiskPredictorNewDevice) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRiskPredictorIPReputation) UnmarshalJSON(src []byte) error {
+func (v *NullableRiskPredictorNewDevice) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -1,4 +1,4 @@
-# RiskPredictorComposite
+# RiskPredictorNewDevice
 
 ## Properties
 
@@ -15,306 +15,311 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorDefault**](RiskPredictorDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCondition**](RiskPredictorCondition.md) |  | [optional] 
-**Composition** | [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | 
+**ActivationAt** | Pointer to **time.Time** | You can use the &#x60;activationAt&#x60; parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (&#x60;default.result.level&#x60;) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time. | [optional] 
 
 ## Methods
 
-### NewRiskPredictorComposite
+### NewRiskPredictorNewDevice
 
-`func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, ) *RiskPredictorComposite`
+`func NewRiskPredictorNewDevice(name string, compactName string, type_ EnumPredictorType, ) *RiskPredictorNewDevice`
 
-NewRiskPredictorComposite instantiates a new RiskPredictorComposite object
+NewRiskPredictorNewDevice instantiates a new RiskPredictorNewDevice object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRiskPredictorCompositeWithDefaults
+### NewRiskPredictorNewDeviceWithDefaults
 
-`func NewRiskPredictorCompositeWithDefaults() *RiskPredictorComposite`
+`func NewRiskPredictorNewDeviceWithDefaults() *RiskPredictorNewDevice`
 
-NewRiskPredictorCompositeWithDefaults instantiates a new RiskPredictorComposite object
+NewRiskPredictorNewDeviceWithDefaults instantiates a new RiskPredictorNewDevice object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *RiskPredictorComposite) GetId() string`
+`func (o *RiskPredictorNewDevice) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *RiskPredictorComposite) GetIdOk() (*string, bool)`
+`func (o *RiskPredictorNewDevice) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *RiskPredictorComposite) SetId(v string)`
+`func (o *RiskPredictorNewDevice) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *RiskPredictorComposite) HasId() bool`
+`func (o *RiskPredictorNewDevice) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *RiskPredictorComposite) GetName() string`
+`func (o *RiskPredictorNewDevice) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *RiskPredictorComposite) GetNameOk() (*string, bool)`
+`func (o *RiskPredictorNewDevice) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *RiskPredictorComposite) SetName(v string)`
+`func (o *RiskPredictorNewDevice) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetCompactName
 
-`func (o *RiskPredictorComposite) GetCompactName() string`
+`func (o *RiskPredictorNewDevice) GetCompactName() string`
 
 GetCompactName returns the CompactName field if non-nil, zero value otherwise.
 
 ### GetCompactNameOk
 
-`func (o *RiskPredictorComposite) GetCompactNameOk() (*string, bool)`
+`func (o *RiskPredictorNewDevice) GetCompactNameOk() (*string, bool)`
 
 GetCompactNameOk returns a tuple with the CompactName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompactName
 
-`func (o *RiskPredictorComposite) SetCompactName(v string)`
+`func (o *RiskPredictorNewDevice) SetCompactName(v string)`
 
 SetCompactName sets CompactName field to given value.
 
 
 ### GetType
 
-`func (o *RiskPredictorComposite) GetType() EnumPredictorType`
+`func (o *RiskPredictorNewDevice) GetType() EnumPredictorType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *RiskPredictorComposite) GetTypeOk() (*EnumPredictorType, bool)`
+`func (o *RiskPredictorNewDevice) GetTypeOk() (*EnumPredictorType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *RiskPredictorComposite) SetType(v EnumPredictorType)`
+`func (o *RiskPredictorNewDevice) SetType(v EnumPredictorType)`
 
 SetType sets Type field to given value.
 
 
 ### GetDescription
 
-`func (o *RiskPredictorComposite) GetDescription() string`
+`func (o *RiskPredictorNewDevice) GetDescription() string`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *RiskPredictorComposite) GetDescriptionOk() (*string, bool)`
+`func (o *RiskPredictorNewDevice) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *RiskPredictorComposite) SetDescription(v string)`
+`func (o *RiskPredictorNewDevice) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
 
 ### HasDescription
 
-`func (o *RiskPredictorComposite) HasDescription() bool`
+`func (o *RiskPredictorNewDevice) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *RiskPredictorComposite) GetCreatedAt() time.Time`
+`func (o *RiskPredictorNewDevice) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *RiskPredictorComposite) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *RiskPredictorNewDevice) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *RiskPredictorComposite) SetCreatedAt(v time.Time)`
+`func (o *RiskPredictorNewDevice) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 ### HasCreatedAt
 
-`func (o *RiskPredictorComposite) HasCreatedAt() bool`
+`func (o *RiskPredictorNewDevice) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *RiskPredictorComposite) GetUpdatedAt() time.Time`
+`func (o *RiskPredictorNewDevice) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *RiskPredictorComposite) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *RiskPredictorNewDevice) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *RiskPredictorComposite) SetUpdatedAt(v time.Time)`
+`func (o *RiskPredictorNewDevice) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 ### HasUpdatedAt
 
-`func (o *RiskPredictorComposite) HasUpdatedAt() bool`
+`func (o *RiskPredictorNewDevice) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetLicensed
 
-`func (o *RiskPredictorComposite) GetLicensed() bool`
+`func (o *RiskPredictorNewDevice) GetLicensed() bool`
 
 GetLicensed returns the Licensed field if non-nil, zero value otherwise.
 
 ### GetLicensedOk
 
-`func (o *RiskPredictorComposite) GetLicensedOk() (*bool, bool)`
+`func (o *RiskPredictorNewDevice) GetLicensedOk() (*bool, bool)`
 
 GetLicensedOk returns a tuple with the Licensed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLicensed
 
-`func (o *RiskPredictorComposite) SetLicensed(v bool)`
+`func (o *RiskPredictorNewDevice) SetLicensed(v bool)`
 
 SetLicensed sets Licensed field to given value.
 
 ### HasLicensed
 
-`func (o *RiskPredictorComposite) HasLicensed() bool`
+`func (o *RiskPredictorNewDevice) HasLicensed() bool`
 
 HasLicensed returns a boolean if a field has been set.
 
 ### GetDeletable
 
-`func (o *RiskPredictorComposite) GetDeletable() bool`
+`func (o *RiskPredictorNewDevice) GetDeletable() bool`
 
 GetDeletable returns the Deletable field if non-nil, zero value otherwise.
 
 ### GetDeletableOk
 
-`func (o *RiskPredictorComposite) GetDeletableOk() (*bool, bool)`
+`func (o *RiskPredictorNewDevice) GetDeletableOk() (*bool, bool)`
 
 GetDeletableOk returns a tuple with the Deletable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeletable
 
-`func (o *RiskPredictorComposite) SetDeletable(v bool)`
+`func (o *RiskPredictorNewDevice) SetDeletable(v bool)`
 
 SetDeletable sets Deletable field to given value.
 
 ### HasDeletable
 
-`func (o *RiskPredictorComposite) HasDeletable() bool`
+`func (o *RiskPredictorNewDevice) HasDeletable() bool`
 
 HasDeletable returns a boolean if a field has been set.
 
 ### GetDefault
 
-`func (o *RiskPredictorComposite) GetDefault() RiskPredictorDefault`
+`func (o *RiskPredictorNewDevice) GetDefault() RiskPredictorDefault`
 
 GetDefault returns the Default field if non-nil, zero value otherwise.
 
 ### GetDefaultOk
 
-`func (o *RiskPredictorComposite) GetDefaultOk() (*RiskPredictorDefault, bool)`
+`func (o *RiskPredictorNewDevice) GetDefaultOk() (*RiskPredictorDefault, bool)`
 
 GetDefaultOk returns a tuple with the Default field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefault
 
-`func (o *RiskPredictorComposite) SetDefault(v RiskPredictorDefault)`
+`func (o *RiskPredictorNewDevice) SetDefault(v RiskPredictorDefault)`
 
 SetDefault sets Default field to given value.
 
 ### HasDefault
 
-`func (o *RiskPredictorComposite) HasDefault() bool`
+`func (o *RiskPredictorNewDevice) HasDefault() bool`
 
 HasDefault returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *RiskPredictorComposite) GetCondition() RiskPredictorCondition`
+`func (o *RiskPredictorNewDevice) GetCondition() RiskPredictorCondition`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *RiskPredictorComposite) GetConditionOk() (*RiskPredictorCondition, bool)`
+`func (o *RiskPredictorNewDevice) GetConditionOk() (*RiskPredictorCondition, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *RiskPredictorComposite) SetCondition(v RiskPredictorCondition)`
+`func (o *RiskPredictorNewDevice) SetCondition(v RiskPredictorCondition)`
 
 SetCondition sets Condition field to given value.
 
 ### HasCondition
 
-`func (o *RiskPredictorComposite) HasCondition() bool`
+`func (o *RiskPredictorNewDevice) HasCondition() bool`
 
 HasCondition returns a boolean if a field has been set.
 
-### GetComposition
+### GetActivationAt
 
-`func (o *RiskPredictorComposite) GetComposition() RiskPredictorCompositeAllOfComposition`
+`func (o *RiskPredictorNewDevice) GetActivationAt() time.Time`
 
-GetComposition returns the Composition field if non-nil, zero value otherwise.
+GetActivationAt returns the ActivationAt field if non-nil, zero value otherwise.
 
-### GetCompositionOk
+### GetActivationAtOk
 
-`func (o *RiskPredictorComposite) GetCompositionOk() (*RiskPredictorCompositeAllOfComposition, bool)`
+`func (o *RiskPredictorNewDevice) GetActivationAtOk() (*time.Time, bool)`
 
-GetCompositionOk returns a tuple with the Composition field if it's non-nil, zero value otherwise
+GetActivationAtOk returns a tuple with the ActivationAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetComposition
+### SetActivationAt
 
-`func (o *RiskPredictorComposite) SetComposition(v RiskPredictorCompositeAllOfComposition)`
+`func (o *RiskPredictorNewDevice) SetActivationAt(v time.Time)`
 
-SetComposition sets Composition field to given value.
+SetActivationAt sets ActivationAt field to given value.
 
+### HasActivationAt
+
+`func (o *RiskPredictorNewDevice) HasActivationAt() bool`
+
+HasActivationAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

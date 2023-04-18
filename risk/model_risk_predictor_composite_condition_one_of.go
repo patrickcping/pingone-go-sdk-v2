@@ -19,23 +19,20 @@ var _ MappedNullable = &RiskPredictorCompositeConditionOneOf{}
 
 // RiskPredictorCompositeConditionOneOf struct for RiskPredictorCompositeConditionOneOf
 type RiskPredictorCompositeConditionOneOf struct {
-	Equals map[string]interface{} `json:"equals,omitempty"`
-	NotEquals map[string]interface{} `json:"notEquals,omitempty"`
-	Greater *int32 `json:"greater,omitempty"`
-	GreaterEquals *int32 `json:"greaterEquals,omitempty"`
-	Lower *int32 `json:"lower,omitempty"`
-	LowerEquals *int32 `json:"lowerEquals,omitempty"`
-	Value string `json:"value"`
-	Type *EnumPredictorCompositeConditionType `json:"type,omitempty"`
+	Contains string `json:"contains"`
+	List []string `json:"list"`
+	Type EnumPredictorCompositeConditionType `json:"type"`
 }
 
 // NewRiskPredictorCompositeConditionOneOf instantiates a new RiskPredictorCompositeConditionOneOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorCompositeConditionOneOf(value string) *RiskPredictorCompositeConditionOneOf {
+func NewRiskPredictorCompositeConditionOneOf(contains string, list []string, type_ EnumPredictorCompositeConditionType) *RiskPredictorCompositeConditionOneOf {
 	this := RiskPredictorCompositeConditionOneOf{}
-	this.Value = value
+	this.Contains = contains
+	this.List = list
+	this.Type = type_
 	return &this
 }
 
@@ -47,252 +44,76 @@ func NewRiskPredictorCompositeConditionOneOfWithDefaults() *RiskPredictorComposi
 	return &this
 }
 
-// GetEquals returns the Equals field value if set, zero value otherwise.
-func (o *RiskPredictorCompositeConditionOneOf) GetEquals() map[string]interface{} {
-	if o == nil || IsNil(o.Equals) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Equals
-}
-
-// GetEqualsOk returns a tuple with the Equals field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictorCompositeConditionOneOf) GetEqualsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Equals) {
-		return map[string]interface{}{}, false
-	}
-	return o.Equals, true
-}
-
-// HasEquals returns a boolean if a field has been set.
-func (o *RiskPredictorCompositeConditionOneOf) HasEquals() bool {
-	if o != nil && !IsNil(o.Equals) {
-		return true
-	}
-
-	return false
-}
-
-// SetEquals gets a reference to the given map[string]interface{} and assigns it to the Equals field.
-func (o *RiskPredictorCompositeConditionOneOf) SetEquals(v map[string]interface{}) {
-	o.Equals = v
-}
-
-// GetNotEquals returns the NotEquals field value if set, zero value otherwise.
-func (o *RiskPredictorCompositeConditionOneOf) GetNotEquals() map[string]interface{} {
-	if o == nil || IsNil(o.NotEquals) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.NotEquals
-}
-
-// GetNotEqualsOk returns a tuple with the NotEquals field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictorCompositeConditionOneOf) GetNotEqualsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.NotEquals) {
-		return map[string]interface{}{}, false
-	}
-	return o.NotEquals, true
-}
-
-// HasNotEquals returns a boolean if a field has been set.
-func (o *RiskPredictorCompositeConditionOneOf) HasNotEquals() bool {
-	if o != nil && !IsNil(o.NotEquals) {
-		return true
-	}
-
-	return false
-}
-
-// SetNotEquals gets a reference to the given map[string]interface{} and assigns it to the NotEquals field.
-func (o *RiskPredictorCompositeConditionOneOf) SetNotEquals(v map[string]interface{}) {
-	o.NotEquals = v
-}
-
-// GetGreater returns the Greater field value if set, zero value otherwise.
-func (o *RiskPredictorCompositeConditionOneOf) GetGreater() int32 {
-	if o == nil || IsNil(o.Greater) {
-		var ret int32
-		return ret
-	}
-	return *o.Greater
-}
-
-// GetGreaterOk returns a tuple with the Greater field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictorCompositeConditionOneOf) GetGreaterOk() (*int32, bool) {
-	if o == nil || IsNil(o.Greater) {
-		return nil, false
-	}
-	return o.Greater, true
-}
-
-// HasGreater returns a boolean if a field has been set.
-func (o *RiskPredictorCompositeConditionOneOf) HasGreater() bool {
-	if o != nil && !IsNil(o.Greater) {
-		return true
-	}
-
-	return false
-}
-
-// SetGreater gets a reference to the given int32 and assigns it to the Greater field.
-func (o *RiskPredictorCompositeConditionOneOf) SetGreater(v int32) {
-	o.Greater = &v
-}
-
-// GetGreaterEquals returns the GreaterEquals field value if set, zero value otherwise.
-func (o *RiskPredictorCompositeConditionOneOf) GetGreaterEquals() int32 {
-	if o == nil || IsNil(o.GreaterEquals) {
-		var ret int32
-		return ret
-	}
-	return *o.GreaterEquals
-}
-
-// GetGreaterEqualsOk returns a tuple with the GreaterEquals field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictorCompositeConditionOneOf) GetGreaterEqualsOk() (*int32, bool) {
-	if o == nil || IsNil(o.GreaterEquals) {
-		return nil, false
-	}
-	return o.GreaterEquals, true
-}
-
-// HasGreaterEquals returns a boolean if a field has been set.
-func (o *RiskPredictorCompositeConditionOneOf) HasGreaterEquals() bool {
-	if o != nil && !IsNil(o.GreaterEquals) {
-		return true
-	}
-
-	return false
-}
-
-// SetGreaterEquals gets a reference to the given int32 and assigns it to the GreaterEquals field.
-func (o *RiskPredictorCompositeConditionOneOf) SetGreaterEquals(v int32) {
-	o.GreaterEquals = &v
-}
-
-// GetLower returns the Lower field value if set, zero value otherwise.
-func (o *RiskPredictorCompositeConditionOneOf) GetLower() int32 {
-	if o == nil || IsNil(o.Lower) {
-		var ret int32
-		return ret
-	}
-	return *o.Lower
-}
-
-// GetLowerOk returns a tuple with the Lower field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictorCompositeConditionOneOf) GetLowerOk() (*int32, bool) {
-	if o == nil || IsNil(o.Lower) {
-		return nil, false
-	}
-	return o.Lower, true
-}
-
-// HasLower returns a boolean if a field has been set.
-func (o *RiskPredictorCompositeConditionOneOf) HasLower() bool {
-	if o != nil && !IsNil(o.Lower) {
-		return true
-	}
-
-	return false
-}
-
-// SetLower gets a reference to the given int32 and assigns it to the Lower field.
-func (o *RiskPredictorCompositeConditionOneOf) SetLower(v int32) {
-	o.Lower = &v
-}
-
-// GetLowerEquals returns the LowerEquals field value if set, zero value otherwise.
-func (o *RiskPredictorCompositeConditionOneOf) GetLowerEquals() int32 {
-	if o == nil || IsNil(o.LowerEquals) {
-		var ret int32
-		return ret
-	}
-	return *o.LowerEquals
-}
-
-// GetLowerEqualsOk returns a tuple with the LowerEquals field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictorCompositeConditionOneOf) GetLowerEqualsOk() (*int32, bool) {
-	if o == nil || IsNil(o.LowerEquals) {
-		return nil, false
-	}
-	return o.LowerEquals, true
-}
-
-// HasLowerEquals returns a boolean if a field has been set.
-func (o *RiskPredictorCompositeConditionOneOf) HasLowerEquals() bool {
-	if o != nil && !IsNil(o.LowerEquals) {
-		return true
-	}
-
-	return false
-}
-
-// SetLowerEquals gets a reference to the given int32 and assigns it to the LowerEquals field.
-func (o *RiskPredictorCompositeConditionOneOf) SetLowerEquals(v int32) {
-	o.LowerEquals = &v
-}
-
-// GetValue returns the Value field value
-func (o *RiskPredictorCompositeConditionOneOf) GetValue() string {
+// GetContains returns the Contains field value
+func (o *RiskPredictorCompositeConditionOneOf) GetContains() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Value
+	return o.Contains
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetContainsOk returns a tuple with the Contains field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorCompositeConditionOneOf) GetValueOk() (*string, bool) {
+func (o *RiskPredictorCompositeConditionOneOf) GetContainsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Value, true
+	return &o.Contains, true
 }
 
-// SetValue sets field value
-func (o *RiskPredictorCompositeConditionOneOf) SetValue(v string) {
-	o.Value = v
+// SetContains sets field value
+func (o *RiskPredictorCompositeConditionOneOf) SetContains(v string) {
+	o.Contains = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetList returns the List field value
+func (o *RiskPredictorCompositeConditionOneOf) GetList() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.List
+}
+
+// GetListOk returns a tuple with the List field value
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorCompositeConditionOneOf) GetListOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.List, true
+}
+
+// SetList sets field value
+func (o *RiskPredictorCompositeConditionOneOf) SetList(v []string) {
+	o.List = v
+}
+
+// GetType returns the Type field value
 func (o *RiskPredictorCompositeConditionOneOf) GetType() EnumPredictorCompositeConditionType {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret EnumPredictorCompositeConditionType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorCompositeConditionOneOf) GetTypeOk() (*EnumPredictorCompositeConditionType, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *RiskPredictorCompositeConditionOneOf) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given EnumPredictorCompositeConditionType and assigns it to the Type field.
+// SetType sets field value
 func (o *RiskPredictorCompositeConditionOneOf) SetType(v EnumPredictorCompositeConditionType) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o RiskPredictorCompositeConditionOneOf) MarshalJSON() ([]byte, error) {
@@ -305,28 +126,9 @@ func (o RiskPredictorCompositeConditionOneOf) MarshalJSON() ([]byte, error) {
 
 func (o RiskPredictorCompositeConditionOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Equals) {
-		toSerialize["equals"] = o.Equals
-	}
-	if !IsNil(o.NotEquals) {
-		toSerialize["notEquals"] = o.NotEquals
-	}
-	if !IsNil(o.Greater) {
-		toSerialize["greater"] = o.Greater
-	}
-	if !IsNil(o.GreaterEquals) {
-		toSerialize["greaterEquals"] = o.GreaterEquals
-	}
-	if !IsNil(o.Lower) {
-		toSerialize["lower"] = o.Lower
-	}
-	if !IsNil(o.LowerEquals) {
-		toSerialize["lowerEquals"] = o.LowerEquals
-	}
-	toSerialize["value"] = o.Value
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["contains"] = o.Contains
+	toSerialize["list"] = o.List
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 

@@ -19,6 +19,7 @@ import (
 type RiskPredictorCompositeCondition struct {
 	RiskPredictorCompositeAnd *RiskPredictorCompositeAnd
 	RiskPredictorCompositeConditionOneOf *RiskPredictorCompositeConditionOneOf
+	RiskPredictorCompositeConditionOneOf1 *RiskPredictorCompositeConditionOneOf1
 	RiskPredictorCompositeNot *RiskPredictorCompositeNot
 	RiskPredictorCompositeOr *RiskPredictorCompositeOr
 }
@@ -34,6 +35,13 @@ func RiskPredictorCompositeAndAsRiskPredictorCompositeCondition(v *RiskPredictor
 func RiskPredictorCompositeConditionOneOfAsRiskPredictorCompositeCondition(v *RiskPredictorCompositeConditionOneOf) RiskPredictorCompositeCondition {
 	return RiskPredictorCompositeCondition{
 		RiskPredictorCompositeConditionOneOf: v,
+	}
+}
+
+// RiskPredictorCompositeConditionOneOf1AsRiskPredictorCompositeCondition is a convenience function that returns RiskPredictorCompositeConditionOneOf1 wrapped in RiskPredictorCompositeCondition
+func RiskPredictorCompositeConditionOneOf1AsRiskPredictorCompositeCondition(v *RiskPredictorCompositeConditionOneOf1) RiskPredictorCompositeCondition {
+	return RiskPredictorCompositeCondition{
+		RiskPredictorCompositeConditionOneOf1: v,
 	}
 }
 
@@ -82,6 +90,19 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 		dst.RiskPredictorCompositeConditionOneOf = nil
 	}
 
+	// try to unmarshal data into RiskPredictorCompositeConditionOneOf1
+	err = newStrictDecoder(data).Decode(&dst.RiskPredictorCompositeConditionOneOf1)
+	if err == nil {
+		jsonRiskPredictorCompositeConditionOneOf1, _ := json.Marshal(dst.RiskPredictorCompositeConditionOneOf1)
+		if string(jsonRiskPredictorCompositeConditionOneOf1) == "{}" { // empty struct
+			dst.RiskPredictorCompositeConditionOneOf1 = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.RiskPredictorCompositeConditionOneOf1 = nil
+	}
+
 	// try to unmarshal data into RiskPredictorCompositeNot
 	err = newStrictDecoder(data).Decode(&dst.RiskPredictorCompositeNot)
 	if err == nil {
@@ -112,6 +133,7 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 		// reset to nil
 		dst.RiskPredictorCompositeAnd = nil
 		dst.RiskPredictorCompositeConditionOneOf = nil
+		dst.RiskPredictorCompositeConditionOneOf1 = nil
 		dst.RiskPredictorCompositeNot = nil
 		dst.RiskPredictorCompositeOr = nil
 
@@ -131,6 +153,10 @@ func (src RiskPredictorCompositeCondition) MarshalJSON() ([]byte, error) {
 
 	if src.RiskPredictorCompositeConditionOneOf != nil {
 		return json.Marshal(&src.RiskPredictorCompositeConditionOneOf)
+	}
+
+	if src.RiskPredictorCompositeConditionOneOf1 != nil {
+		return json.Marshal(&src.RiskPredictorCompositeConditionOneOf1)
 	}
 
 	if src.RiskPredictorCompositeNot != nil {
@@ -155,6 +181,10 @@ func (obj *RiskPredictorCompositeCondition) GetActualInstance() (interface{}) {
 
 	if obj.RiskPredictorCompositeConditionOneOf != nil {
 		return obj.RiskPredictorCompositeConditionOneOf
+	}
+
+	if obj.RiskPredictorCompositeConditionOneOf1 != nil {
+		return obj.RiskPredictorCompositeConditionOneOf1
 	}
 
 	if obj.RiskPredictorCompositeNot != nil {
