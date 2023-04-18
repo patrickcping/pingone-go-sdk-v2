@@ -101,5 +101,5 @@ func parseRetryAfterHeader(resp *http.Response) (time.Duration, error) {
 		return 0, fmt.Errorf("Unable to parse Retry-After header value: %v", err)
 	}
 
-	return retryAfterTime.Sub(time.Now()), nil
+	return time.Until(retryAfterTime), nil
 }

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -61,7 +60,7 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 	// Iterate over the files and apply the regex replacement rules
 	for _, file := range files {
 		// Read the file contents
-		content, err := ioutil.ReadFile(file)
+		content, err := os.ReadFile(file)
 		if err != nil {
 			panic(err)
 		}
@@ -73,7 +72,7 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 		}
 
 		// Write the updated file contents
-		err = ioutil.WriteFile(file, content, os.ModePerm)
+		err = os.WriteFile(file, content, os.ModePerm)
 		if err != nil {
 			panic(err)
 		}
