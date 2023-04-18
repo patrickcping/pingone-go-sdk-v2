@@ -51,6 +51,7 @@ var (
 		pattern string
 		repl    string
 	}{
+		// Add retryability to typed output
 		{
 			`func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(([\*a-zA-Z]*), \*http\.Response, error\) {`,
 			`func ($1) $2$3($4) ($5, *http.Response, error) {
@@ -64,6 +65,8 @@ var (
 			
 func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 		},
+
+		// Add retryability to non-typed outputs
 		{
 			`func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(\*http\.Response, error\) {`,
 			`func ($1) $2$3($4) (*http.Response, error) {
@@ -77,6 +80,27 @@ func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 }
 			
 func ($1) internal$2$3($4) (*http.Response, error) {`,
+		},
+
+		// Handle errors for linters
+		// {
+		// 	`	localVarHTTPResponse.Body.Close()`,
+		// 	`	_ = localVarHTTPResponse.Body.Close()`,
+		// },
+
+		{
+			`______`,
+			`SpecialChar`,
+		},
+
+		{
+			`json:"~!@\#\$%\^&amp;\*\(\)-_&\#x3D;\+\[]\{}\|;:,\.&lt;&gt;/\?,omitempty"`,
+			`json:"specialchar,omitempty"`,
+		},
+
+		{
+			`toSerialize\["~!@\#\$%\^&amp;\*\(\)-_&\#x3D;\+\[]\{}\|;:,\.&lt;&gt;/\?"]\ =\ o\.SpecialChar`,
+			`toSerialize["~!@#$%^&*()-_=+[]{}|;:,.<>/?"] = o.SpecialChar`,
 		},
 	}
 )
