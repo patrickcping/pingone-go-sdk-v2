@@ -1,11 +1,11 @@
 package mfa
 
-
 import (
 	"fmt"
 	"log"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"golang.org/x/exp/slices"
@@ -90,7 +90,15 @@ func testForRetryable(r *http.Response, err error, currentBackoff time.Duration)
 	}
 
 	if err != nil {
-		log.Printf("Error found but not retried: %s", err)
+		if genericOAError, ok := err.(GenericOpenAPIError); ok && genericOAError.Model() != nil {
+			// We have an application level error
+			if modelError, ok := genericOAError.Model().(P1Error); ok {
+				if strings.EqualFold(modelError.GetCode(), "UNEXPECTED_ERROR") {
+					log.Printf("Unexpected error detected, available for retry")
+					return backoff, true
+				}
+			}
+		}
 	}
 
 	return backoff, false
