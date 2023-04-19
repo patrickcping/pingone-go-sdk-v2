@@ -814,6 +814,7 @@ model_password_policy.go
 model_password_policy_history.go
 model_password_policy_length.go
 model_password_policy_lockout.go
+model_password_policy_min_characters.go
 model_population.go
 model_population_password_policy.go
 model_resource.go

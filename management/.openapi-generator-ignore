@@ -39,7 +39,6 @@ api_certificate_management.go
 api_images.go
 api_password_policies.go
 
-model_certificate.go
 model_create_application_201_response.go
 model_create_application_request.go
 model_create_gateway_201_response.go
@@ -50,7 +49,6 @@ model_entity_array__embedded_gateways_inner.go
 model_entity_array__embedded_languages_inner.go
 model_identity_provider.go
 model_object_environment.go
-model_password_policy_min_characters.go
 model_read_one_application_200_response.go
 model_sign_on_policy_action_common_condition_or_or_inner.go
 model_sign_on_policy_action.go
