@@ -602,6 +602,7 @@ model_branding_theme_configuration.go
 model_branding_theme_configuration_background_image.go
 model_branding_theme_configuration_logo.go
 model_branding_theme_default.go
+model_certificate.go
 model_certificate_key_update.go
 model_custom_domain.go
 model_custom_domain_certificate.go
