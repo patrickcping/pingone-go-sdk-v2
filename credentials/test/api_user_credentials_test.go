@@ -11,10 +11,11 @@ package credentials
 
 import (
 	"context"
+	"testing"
+
 	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func Test_credentials_UserCredentialsApiService(t *testing.T) {
@@ -92,7 +93,7 @@ func Test_credentials_UserCredentialsApiService(t *testing.T) {
 		var userID string
 		var credentialID string
 
-		resp, httpRes, err := apiClient.UserCredentialsApi.UpdateAUserCredential(context.Background(), environmentID, userID, credentialID).Execute()
+		resp, httpRes, err := apiClient.UserCredentialsApi.UpdateUserCredential(context.Background(), environmentID, userID, credentialID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -198,27 +198,27 @@ func (a *CredentialTypesApiService) CreateCredentialTypeExecute(r ApiCreateCrede
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteACredentialTypeRequest struct {
+type ApiDeleteCredentialTypeRequest struct {
 	ctx context.Context
 	ApiService *CredentialTypesApiService
 	environmentID string
 	credentialTypeID string
 }
 
-func (r ApiDeleteACredentialTypeRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteACredentialTypeExecute(r)
+func (r ApiDeleteCredentialTypeRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteCredentialTypeExecute(r)
 }
 
 /*
-DeleteACredentialType Delete a Credential Type
+DeleteCredentialType Delete a Credential Type
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param credentialTypeID
- @return ApiDeleteACredentialTypeRequest
+ @return ApiDeleteCredentialTypeRequest
 */
-func (a *CredentialTypesApiService) DeleteACredentialType(ctx context.Context, environmentID string, credentialTypeID string) ApiDeleteACredentialTypeRequest {
-	return ApiDeleteACredentialTypeRequest{
+func (a *CredentialTypesApiService) DeleteCredentialType(ctx context.Context, environmentID string, credentialTypeID string) ApiDeleteCredentialTypeRequest {
+	return ApiDeleteCredentialTypeRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -227,14 +227,14 @@ func (a *CredentialTypesApiService) DeleteACredentialType(ctx context.Context, e
 }
 
 // Execute executes the request
-func (a *CredentialTypesApiService) DeleteACredentialTypeExecute(r ApiDeleteACredentialTypeRequest) (*http.Response, error) {
+func (a *CredentialTypesApiService) DeleteCredentialTypeExecute(r ApiDeleteCredentialTypeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.DeleteACredentialType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.DeleteCredentialType")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -696,7 +696,7 @@ func (a *CredentialTypesApiService) ReadOneCredentialTypeExecute(r ApiReadOneCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateACredentialTypeRequest struct {
+type ApiUpdateCredentialTypeRequest struct {
 	ctx context.Context
 	ApiService *CredentialTypesApiService
 	environmentID string
@@ -704,25 +704,25 @@ type ApiUpdateACredentialTypeRequest struct {
 	credentialType *CredentialType
 }
 
-func (r ApiUpdateACredentialTypeRequest) CredentialType(credentialType CredentialType) ApiUpdateACredentialTypeRequest {
+func (r ApiUpdateCredentialTypeRequest) CredentialType(credentialType CredentialType) ApiUpdateCredentialTypeRequest {
 	r.credentialType = &credentialType
 	return r
 }
 
-func (r ApiUpdateACredentialTypeRequest) Execute() (*CredentialType, *http.Response, error) {
-	return r.ApiService.UpdateACredentialTypeExecute(r)
+func (r ApiUpdateCredentialTypeRequest) Execute() (*CredentialType, *http.Response, error) {
+	return r.ApiService.UpdateCredentialTypeExecute(r)
 }
 
 /*
-UpdateACredentialType Update a Credential Type
+UpdateCredentialType Update a Credential Type
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param credentialTypeID
- @return ApiUpdateACredentialTypeRequest
+ @return ApiUpdateCredentialTypeRequest
 */
-func (a *CredentialTypesApiService) UpdateACredentialType(ctx context.Context, environmentID string, credentialTypeID string) ApiUpdateACredentialTypeRequest {
-	return ApiUpdateACredentialTypeRequest{
+func (a *CredentialTypesApiService) UpdateCredentialType(ctx context.Context, environmentID string, credentialTypeID string) ApiUpdateCredentialTypeRequest {
+	return ApiUpdateCredentialTypeRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -732,7 +732,7 @@ func (a *CredentialTypesApiService) UpdateACredentialType(ctx context.Context, e
 
 // Execute executes the request
 //  @return CredentialType
-func (a *CredentialTypesApiService) UpdateACredentialTypeExecute(r ApiUpdateACredentialTypeRequest) (*CredentialType, *http.Response, error) {
+func (a *CredentialTypesApiService) UpdateCredentialTypeExecute(r ApiUpdateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -740,7 +740,7 @@ func (a *CredentialTypesApiService) UpdateACredentialTypeExecute(r ApiUpdateACre
 		localVarReturnValue  *CredentialType
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.UpdateACredentialType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CredentialTypesApiService.UpdateCredentialType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -85,6 +85,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	c := &APIClient{}
 	c.cfg = cfg
+	cfg.Debug = true // remove debug
 	c.common.client = c
 
 	// API Services

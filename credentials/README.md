@@ -90,10 +90,10 @@ Class | Method | HTTP request | Description
 *CredentialIssuersApi* | [**ReadCredentialIssuerProfile**](docs/CredentialIssuersApi.md#readcredentialissuerprofile) | **Get** /environments/{environmentID}/credentialIssuerProfile | Read Credential Issuer Profile
 *CredentialIssuersApi* | [**UpdateCredentialIssuerProfile**](docs/CredentialIssuersApi.md#updatecredentialissuerprofile) | **Put** /environments/{environmentID}/credentialIssuerProfile | Update Credential Issuer Profile
 *CredentialTypesApi* | [**CreateCredentialType**](docs/CredentialTypesApi.md#createcredentialtype) | **Post** /environments/{environmentID}/credentialTypes | Create Credential Type
-*CredentialTypesApi* | [**DeleteACredentialType**](docs/CredentialTypesApi.md#deleteacredentialtype) | **Delete** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Delete a Credential Type
+*CredentialTypesApi* | [**DeleteCredentialType**](docs/CredentialTypesApi.md#deletecredentialtype) | **Delete** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Delete a Credential Type
 *CredentialTypesApi* | [**ReadAllCredentialTypes**](docs/CredentialTypesApi.md#readallcredentialtypes) | **Get** /environments/{environmentID}/credentialTypes | Read All Credential Types
 *CredentialTypesApi* | [**ReadOneCredentialType**](docs/CredentialTypesApi.md#readonecredentialtype) | **Get** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Read One Credential Type
-*CredentialTypesApi* | [**UpdateACredentialType**](docs/CredentialTypesApi.md#updateacredentialtype) | **Put** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Update a Credential Type
+*CredentialTypesApi* | [**UpdateCredentialType**](docs/CredentialTypesApi.md#updatecredentialtype) | **Put** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Update a Credential Type
 *DigitalWalletAppsApi* | [**CreateDigitalWalletApp**](docs/DigitalWalletAppsApi.md#createdigitalwalletapp) | **Post** /environments/{environmentID}/digitalWalletApplications | Create Digital Wallet App
 *DigitalWalletAppsApi* | [**DeleteDigitalWalletApp**](docs/DigitalWalletAppsApi.md#deletedigitalwalletapp) | **Delete** /environments/{environmentID}/digitalWalletApplications/{digitalWalletApplicationID} | Delete Digital Wallet App
 *DigitalWalletAppsApi* | [**ReadAllDigitalWalletApps**](docs/DigitalWalletAppsApi.md#readalldigitalwalletapps) | **Get** /environments/{environmentID}/digitalWalletApplications | Read All Digital Wallet Apps
@@ -109,7 +109,7 @@ Class | Method | HTTP request | Description
 *UserCredentialsApi* | [**ReadAllUserCredentials**](docs/UserCredentialsApi.md#readallusercredentials) | **Get** /environments/{environmentID}/users/{userID}/credentials | Read All User Credentials
 *UserCredentialsApi* | [**ReadOneUserCredential**](docs/UserCredentialsApi.md#readoneusercredential) | **Get** /environments/{environmentID}/users/{userID}/credentials/{credentialID} | Read One User Credential
 *UserCredentialsApi* | [**ReadOneUserCredentialWallet**](docs/UserCredentialsApi.md#readoneusercredentialwallet) | **Get** /environments/{environmentID}/users/{userID}/credentials/{credentialID}/provisionedCredentials | Read One User Credential Wallet
-*UserCredentialsApi* | [**UpdateAUserCredential**](docs/UserCredentialsApi.md#updateausercredential) | **Put** /environments/{environmentID}/users/{userID}/credentials/{credentialID} | Update a User Credential
+*UserCredentialsApi* | [**UpdateUserCredential**](docs/UserCredentialsApi.md#updateusercredential) | **Put** /environments/{environmentID}/users/{userID}/credentials/{credentialID} | Update a User Credential
 
 
 ## Documentation For Models

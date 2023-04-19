@@ -723,7 +723,7 @@ func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecute(r ApiRead
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateAUserCredentialRequest struct {
+type ApiUpdateUserCredentialRequest struct {
 	ctx context.Context
 	ApiService *UserCredentialsApiService
 	environmentID string
@@ -732,26 +732,26 @@ type ApiUpdateAUserCredentialRequest struct {
 	userCredential *UserCredential
 }
 
-func (r ApiUpdateAUserCredentialRequest) UserCredential(userCredential UserCredential) ApiUpdateAUserCredentialRequest {
+func (r ApiUpdateUserCredentialRequest) UserCredential(userCredential UserCredential) ApiUpdateUserCredentialRequest {
 	r.userCredential = &userCredential
 	return r
 }
 
-func (r ApiUpdateAUserCredentialRequest) Execute() (*UserCredential, *http.Response, error) {
-	return r.ApiService.UpdateAUserCredentialExecute(r)
+func (r ApiUpdateUserCredentialRequest) Execute() (*UserCredential, *http.Response, error) {
+	return r.ApiService.UpdateUserCredentialExecute(r)
 }
 
 /*
-UpdateAUserCredential Update a User Credential
+UpdateUserCredential Update a User Credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param userID
  @param credentialID
- @return ApiUpdateAUserCredentialRequest
+ @return ApiUpdateUserCredentialRequest
 */
-func (a *UserCredentialsApiService) UpdateAUserCredential(ctx context.Context, environmentID string, userID string, credentialID string) ApiUpdateAUserCredentialRequest {
-	return ApiUpdateAUserCredentialRequest{
+func (a *UserCredentialsApiService) UpdateUserCredential(ctx context.Context, environmentID string, userID string, credentialID string) ApiUpdateUserCredentialRequest {
+	return ApiUpdateUserCredentialRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -762,7 +762,7 @@ func (a *UserCredentialsApiService) UpdateAUserCredential(ctx context.Context, e
 
 // Execute executes the request
 //  @return UserCredential
-func (a *UserCredentialsApiService) UpdateAUserCredentialExecute(r ApiUpdateAUserCredentialRequest) (*UserCredential, *http.Response, error) {
+func (a *UserCredentialsApiService) UpdateUserCredentialExecute(r ApiUpdateUserCredentialRequest) (*UserCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -770,7 +770,7 @@ func (a *UserCredentialsApiService) UpdateAUserCredentialExecute(r ApiUpdateAUse
 		localVarReturnValue  *UserCredential
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserCredentialsApiService.UpdateAUserCredential")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserCredentialsApiService.UpdateUserCredential")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**ReadAllUserCredentials**](UserCredentialsApi.md#ReadAllUserCredentials) | **Get** /environments/{environmentID}/users/{userID}/credentials | Read All User Credentials
 [**ReadOneUserCredential**](UserCredentialsApi.md#ReadOneUserCredential) | **Get** /environments/{environmentID}/users/{userID}/credentials/{credentialID} | Read One User Credential
 [**ReadOneUserCredentialWallet**](UserCredentialsApi.md#ReadOneUserCredentialWallet) | **Get** /environments/{environmentID}/users/{userID}/credentials/{credentialID}/provisionedCredentials | Read One User Credential Wallet
-[**UpdateAUserCredential**](UserCredentialsApi.md#UpdateAUserCredential) | **Put** /environments/{environmentID}/users/{userID}/credentials/{credentialID} | Update a User Credential
+[**UpdateUserCredential**](UserCredentialsApi.md#UpdateUserCredential) | **Put** /environments/{environmentID}/users/{userID}/credentials/{credentialID} | Update a User Credential
 
 
 
@@ -304,9 +304,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAUserCredential
+## UpdateUserCredential
 
-> UserCredential UpdateAUserCredential(ctx, environmentID, userID, credentialID).UserCredential(userCredential).Execute()
+> UserCredential UpdateUserCredential(ctx, environmentID, userID, credentialID).UserCredential(userCredential).Execute()
 
 Update a User Credential
 
@@ -330,13 +330,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserCredentialsApi.UpdateAUserCredential(context.Background(), environmentID, userID, credentialID).UserCredential(userCredential).Execute()
+    resp, r, err := apiClient.UserCredentialsApi.UpdateUserCredential(context.Background(), environmentID, userID, credentialID).UserCredential(userCredential).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.UpdateAUserCredential``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserCredentialsApi.UpdateUserCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAUserCredential`: UserCredential
-    fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.UpdateAUserCredential`: %v\n", resp)
+    // response from `UpdateUserCredential`: UserCredential
+    fmt.Fprintf(os.Stdout, "Response from `UserCredentialsApi.UpdateUserCredential`: %v\n", resp)
 }
 ```
 
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAUserCredentialRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateUserCredentialRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

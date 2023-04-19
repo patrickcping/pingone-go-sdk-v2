@@ -11,10 +11,11 @@ package credentials
 
 import (
 	"context"
+	"testing"
+
 	openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func Test_credentials_CredentialTypesApiService(t *testing.T) {
@@ -43,7 +44,7 @@ func Test_credentials_CredentialTypesApiService(t *testing.T) {
 		var environmentID string
 		var credentialTypeID string
 
-		httpRes, err := apiClient.CredentialTypesApi.DeleteACredentialType(context.Background(), environmentID, credentialTypeID).Execute()
+		httpRes, err := apiClient.CredentialTypesApi.DeleteCredentialType(context.Background(), environmentID, credentialTypeID).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -86,7 +87,7 @@ func Test_credentials_CredentialTypesApiService(t *testing.T) {
 		var environmentID string
 		var credentialTypeID string
 
-		resp, httpRes, err := apiClient.CredentialTypesApi.UpdateACredentialType(context.Background(), environmentID, credentialTypeID).Execute()
+		resp, httpRes, err := apiClient.CredentialTypesApi.UpdateCredentialType(context.Background(), environmentID, credentialTypeID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

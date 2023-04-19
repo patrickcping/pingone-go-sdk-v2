@@ -5,10 +5,10 @@ All URIs are relative to *https://api.pingone.com/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCredentialType**](CredentialTypesApi.md#CreateCredentialType) | **Post** /environments/{environmentID}/credentialTypes | Create Credential Type
-[**DeleteACredentialType**](CredentialTypesApi.md#DeleteACredentialType) | **Delete** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Delete a Credential Type
+[**DeleteCredentialType**](CredentialTypesApi.md#DeleteCredentialType) | **Delete** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Delete a Credential Type
 [**ReadAllCredentialTypes**](CredentialTypesApi.md#ReadAllCredentialTypes) | **Get** /environments/{environmentID}/credentialTypes | Read All Credential Types
 [**ReadOneCredentialType**](CredentialTypesApi.md#ReadOneCredentialType) | **Get** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Read One Credential Type
-[**UpdateACredentialType**](CredentialTypesApi.md#UpdateACredentialType) | **Put** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Update a Credential Type
+[**UpdateCredentialType**](CredentialTypesApi.md#UpdateCredentialType) | **Put** /environments/{environmentID}/credentialTypes/{credentialTypeID} | Update a Credential Type
 
 
 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteACredentialType
+## DeleteCredentialType
 
-> DeleteACredentialType(ctx, environmentID, credentialTypeID).Execute()
+> DeleteCredentialType(ctx, environmentID, credentialTypeID).Execute()
 
 Delete a Credential Type
 
@@ -106,9 +106,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CredentialTypesApi.DeleteACredentialType(context.Background(), environmentID, credentialTypeID).Execute()
+    r, err := apiClient.CredentialTypesApi.DeleteCredentialType(context.Background(), environmentID, credentialTypeID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.DeleteACredentialType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.DeleteCredentialType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteACredentialTypeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteCredentialTypeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -290,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateACredentialType
+## UpdateCredentialType
 
-> CredentialType UpdateACredentialType(ctx, environmentID, credentialTypeID).CredentialType(credentialType).Execute()
+> CredentialType UpdateCredentialType(ctx, environmentID, credentialTypeID).CredentialType(credentialType).Execute()
 
 Update a Credential Type
 
@@ -315,13 +315,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CredentialTypesApi.UpdateACredentialType(context.Background(), environmentID, credentialTypeID).CredentialType(credentialType).Execute()
+    resp, r, err := apiClient.CredentialTypesApi.UpdateCredentialType(context.Background(), environmentID, credentialTypeID).CredentialType(credentialType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.UpdateACredentialType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CredentialTypesApi.UpdateCredentialType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateACredentialType`: CredentialType
-    fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.UpdateACredentialType`: %v\n", resp)
+    // response from `UpdateCredentialType`: CredentialType
+    fmt.Fprintf(os.Stdout, "Response from `CredentialTypesApi.UpdateCredentialType`: %v\n", resp)
 }
 ```
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateACredentialTypeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateCredentialTypeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
