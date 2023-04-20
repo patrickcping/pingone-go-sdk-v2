@@ -239,6 +239,16 @@ func (a *ApplicationsApiService) DeleteApplication(ctx context.Context, environm
 
 // Execute executes the request
 func (a *ApplicationsApiService) DeleteApplicationExecute(r ApiDeleteApplicationRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteApplicationExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ApplicationsApiService) internalDeleteApplicationExecute(r ApiDeleteApplicationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +407,15 @@ func (a *ApplicationsApiService) ReadAllApplications(ctx context.Context, enviro
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationsApiService) ReadAllApplicationsExecute(r ApiReadAllApplicationsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllApplicationsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *ApplicationsApiService) internalReadAllApplicationsExecute(r ApiReadAllApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

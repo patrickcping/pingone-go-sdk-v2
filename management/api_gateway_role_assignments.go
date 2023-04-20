@@ -60,6 +60,15 @@ func (a *GatewayRoleAssignmentsApiService) CreateGatewayRoleAssignment(ctx conte
 // Execute executes the request
 //  @return RoleAssignment
 func (a *GatewayRoleAssignmentsApiService) CreateGatewayRoleAssignmentExecute(r ApiCreateGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateGatewayRoleAssignmentExecute(r)
+		},
+	)
+	return obj.(*RoleAssignment), response, error
+}
+			
+func (a *GatewayRoleAssignmentsApiService) internalCreateGatewayRoleAssignmentExecute(r ApiCreateGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *GatewayRoleAssignmentsApiService) DeleteGatewayRoleAssignment(ctx conte
 
 // Execute executes the request
 func (a *GatewayRoleAssignmentsApiService) DeleteGatewayRoleAssignmentExecute(r ApiDeleteGatewayRoleAssignmentRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteGatewayRoleAssignmentExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *GatewayRoleAssignmentsApiService) internalDeleteGatewayRoleAssignmentExecute(r ApiDeleteGatewayRoleAssignmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *GatewayRoleAssignmentsApiService) ReadGatewayRoleAssignments(ctx contex
 // Execute executes the request
 //  @return EntityArray
 func (a *GatewayRoleAssignmentsApiService) ReadGatewayRoleAssignmentsExecute(r ApiReadGatewayRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadGatewayRoleAssignmentsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *GatewayRoleAssignmentsApiService) internalReadGatewayRoleAssignmentsExecute(r ApiReadGatewayRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *GatewayRoleAssignmentsApiService) ReadOneGatewayRoleAssignment(ctx cont
 // Execute executes the request
 //  @return RoleAssignment
 func (a *GatewayRoleAssignmentsApiService) ReadOneGatewayRoleAssignmentExecute(r ApiReadOneGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneGatewayRoleAssignmentExecute(r)
+		},
+	)
+	return obj.(*RoleAssignment), response, error
+}
+			
+func (a *GatewayRoleAssignmentsApiService) internalReadOneGatewayRoleAssignmentExecute(r ApiReadOneGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *GatewayRoleAssignmentsApiService) UpdateGatewayRoleAssignment(ctx conte
 // Execute executes the request
 //  @return RoleAssignment
 func (a *GatewayRoleAssignmentsApiService) UpdateGatewayRoleAssignmentExecute(r ApiUpdateGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateGatewayRoleAssignmentExecute(r)
+		},
+	)
+	return obj.(*RoleAssignment), response, error
+}
+			
+func (a *GatewayRoleAssignmentsApiService) internalUpdateGatewayRoleAssignmentExecute(r ApiUpdateGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

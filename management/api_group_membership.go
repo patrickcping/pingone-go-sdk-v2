@@ -60,6 +60,15 @@ func (a *GroupMembershipApiService) AddUserToGroup(ctx context.Context, environm
 // Execute executes the request
 //  @return Group
 func (a *GroupMembershipApiService) AddUserToGroupExecute(r ApiAddUserToGroupRequest) (*Group, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalAddUserToGroupExecute(r)
+		},
+	)
+	return obj.(*Group), response, error
+}
+			
+func (a *GroupMembershipApiService) internalAddUserToGroupExecute(r ApiAddUserToGroupRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -262,6 +271,15 @@ func (a *GroupMembershipApiService) ReadAllGroupMembershipsForUser(ctx context.C
 // Execute executes the request
 //  @return EntityArray
 func (a *GroupMembershipApiService) ReadAllGroupMembershipsForUserExecute(r ApiReadAllGroupMembershipsForUserRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllGroupMembershipsForUserExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *GroupMembershipApiService) internalReadAllGroupMembershipsForUserExecute(r ApiReadAllGroupMembershipsForUserRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -451,6 +469,15 @@ func (a *GroupMembershipApiService) ReadOneGroupMembershipForUser(ctx context.Co
 // Execute executes the request
 //  @return Group
 func (a *GroupMembershipApiService) ReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (*Group, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneGroupMembershipForUserExecute(r)
+		},
+	)
+	return obj.(*Group), response, error
+}
+			
+func (a *GroupMembershipApiService) internalReadOneGroupMembershipForUserExecute(r ApiReadOneGroupMembershipForUserRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -628,6 +655,16 @@ func (a *GroupMembershipApiService) RemoveUserFromGroup(ctx context.Context, env
 
 // Execute executes the request
 func (a *GroupMembershipApiService) RemoveUserFromGroupExecute(r ApiRemoveUserFromGroupRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalRemoveUserFromGroupExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *GroupMembershipApiService) internalRemoveUserFromGroupExecute(r ApiRemoveUserFromGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}

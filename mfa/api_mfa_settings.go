@@ -51,6 +51,15 @@ func (a *MFASettingsApiService) ReadMFASettings(ctx context.Context, environment
 // Execute executes the request
 //  @return MFASettings
 func (a *MFASettingsApiService) ReadMFASettingsExecute(r ApiReadMFASettingsRequest) (*MFASettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadMFASettingsExecute(r)
+		},
+	)
+	return obj.(*MFASettings), response, error
+}
+			
+func (a *MFASettingsApiService) internalReadMFASettingsExecute(r ApiReadMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -218,6 +227,15 @@ func (a *MFASettingsApiService) ResetMFASettings(ctx context.Context, environmen
 // Execute executes the request
 //  @return MFASettings
 func (a *MFASettingsApiService) ResetMFASettingsExecute(r ApiResetMFASettingsRequest) (*MFASettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalResetMFASettingsExecute(r)
+		},
+	)
+	return obj.(*MFASettings), response, error
+}
+			
+func (a *MFASettingsApiService) internalResetMFASettingsExecute(r ApiResetMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -391,6 +409,15 @@ func (a *MFASettingsApiService) UpdateMFASettings(ctx context.Context, environme
 // Execute executes the request
 //  @return MFASettings
 func (a *MFASettingsApiService) UpdateMFASettingsExecute(r ApiUpdateMFASettingsRequest) (*MFASettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateMFASettingsExecute(r)
+		},
+	)
+	return obj.(*MFASettings), response, error
+}
+			
+func (a *MFASettingsApiService) internalUpdateMFASettingsExecute(r ApiUpdateMFASettingsRequest) (*MFASettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

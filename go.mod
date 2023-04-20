@@ -1,17 +1,15 @@
 module github.com/patrickcping/pingone-go-sdk-v2
 
-replace github.com/patrickcping/pingone-go-sdk-v2/credentials => ../pingone-go-sdk-v2/credentials
-
 go 1.18
 
 require (
-	github.com/golangci/golangci-lint v1.52.0
+	github.com/golangci/golangci-lint v1.52.2
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.1
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.4
 	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.1.0
 	github.com/patrickcping/pingone-go-sdk-v2/management v0.18.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.9.1
-	github.com/patrickcping/pingone-go-sdk-v2/risk v0.3.4
+	github.com/patrickcping/pingone-go-sdk-v2/risk v0.4.0
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.15.0
 	golang.org/x/exp v0.0.0-20220722155223-a9213eeb770e
@@ -116,7 +114,7 @@ require (
 	github.com/mgechev/revive v1.3.1 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
-	github.com/moricho/tparallel v0.3.0 // indirect
+	github.com/moricho/tparallel v0.3.1 // indirect
 	github.com/nakabonne/nestif v0.3.1 // indirect
 	github.com/nbutton23/zxcvbn-go v0.0.0-20210217022336-fa2cb2858354 // indirect
 	github.com/nishanths/exhaustive v0.9.5 // indirect

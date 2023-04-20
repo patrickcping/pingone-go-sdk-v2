@@ -60,6 +60,15 @@ func (a *ApplicationRoleAssignmentsApiService) CreateApplicationRoleAssignment(c
 // Execute executes the request
 //  @return RoleAssignment
 func (a *ApplicationRoleAssignmentsApiService) CreateApplicationRoleAssignmentExecute(r ApiCreateApplicationRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateApplicationRoleAssignmentExecute(r)
+		},
+	)
+	return obj.(*RoleAssignment), response, error
+}
+			
+func (a *ApplicationRoleAssignmentsApiService) internalCreateApplicationRoleAssignmentExecute(r ApiCreateApplicationRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *ApplicationRoleAssignmentsApiService) DeleteApplicationRoleAssignment(c
 
 // Execute executes the request
 func (a *ApplicationRoleAssignmentsApiService) DeleteApplicationRoleAssignmentExecute(r ApiDeleteApplicationRoleAssignmentRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteApplicationRoleAssignmentExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ApplicationRoleAssignmentsApiService) internalDeleteApplicationRoleAssignmentExecute(r ApiDeleteApplicationRoleAssignmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignments(ct
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationRoleAssignmentsApiService) ReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadApplicationRoleAssignmentsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *ApplicationRoleAssignmentsApiService) internalReadApplicationRoleAssignmentsExecute(r ApiReadApplicationRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *ApplicationRoleAssignmentsApiService) ReadOneApplicationRoleAssignment(
 // Execute executes the request
 //  @return RoleAssignment
 func (a *ApplicationRoleAssignmentsApiService) ReadOneApplicationRoleAssignmentExecute(r ApiReadOneApplicationRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneApplicationRoleAssignmentExecute(r)
+		},
+	)
+	return obj.(*RoleAssignment), response, error
+}
+			
+func (a *ApplicationRoleAssignmentsApiService) internalReadOneApplicationRoleAssignmentExecute(r ApiReadOneApplicationRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

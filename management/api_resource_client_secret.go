@@ -54,6 +54,15 @@ func (a *ResourceClientSecretApiService) CreateResourceSecret(ctx context.Contex
 // Execute executes the request
 //  @return ResourceSecret
 func (a *ResourceClientSecretApiService) CreateResourceSecretExecute(r ApiCreateResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateResourceSecretExecute(r)
+		},
+	)
+	return obj.(*ResourceSecret), response, error
+}
+			
+func (a *ResourceClientSecretApiService) internalCreateResourceSecretExecute(r ApiCreateResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -236,6 +245,15 @@ func (a *ResourceClientSecretApiService) ReadResourceSecret(ctx context.Context,
 // Execute executes the request
 //  @return ResourceSecret
 func (a *ResourceClientSecretApiService) ReadResourceSecretExecute(r ApiReadResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadResourceSecretExecute(r)
+		},
+	)
+	return obj.(*ResourceSecret), response, error
+}
+			
+func (a *ResourceClientSecretApiService) internalReadResourceSecretExecute(r ApiReadResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

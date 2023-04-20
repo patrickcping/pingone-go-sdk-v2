@@ -57,6 +57,15 @@ func (a *RiskPoliciesApiService) CreateRiskPolicySet(ctx context.Context, enviro
 // Execute executes the request
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) CreateRiskPolicySetExecute(r ApiCreateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateRiskPolicySetExecute(r)
+		},
+	)
+	return obj.(*RiskPolicySet), response, error
+}
+			
+func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *RiskPoliciesApiService) DeleteRiskPolicySet(ctx context.Context, enviro
 
 // Execute executes the request
 func (a *RiskPoliciesApiService) DeleteRiskPolicySetExecute(r ApiDeleteRiskPolicySetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteRiskPolicySetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteRiskPolicySetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -400,6 +419,15 @@ func (a *RiskPoliciesApiService) ReadOneRiskPolicySet(ctx context.Context, envir
 // Execute executes the request
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) ReadOneRiskPolicySetExecute(r ApiReadOneRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneRiskPolicySetExecute(r)
+		},
+	)
+	return obj.(*RiskPolicySet), response, error
+}
+			
+func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOneRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -568,6 +596,15 @@ func (a *RiskPoliciesApiService) ReadRiskPolicySets(ctx context.Context, environ
 // Execute executes the request
 //  @return EntityArray
 func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadRiskPolicySetsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *RiskPoliciesApiService) UpdateRiskPolicySet(ctx context.Context, enviro
 // Execute executes the request
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) UpdateRiskPolicySetExecute(r ApiUpdateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateRiskPolicySetExecute(r)
+		},
+	)
+	return obj.(*RiskPolicySet), response, error
+}
+			
+func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

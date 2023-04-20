@@ -239,6 +239,16 @@ func (a *GatewaysApiService) DeleteGateway(ctx context.Context, environmentID st
 
 // Execute executes the request
 func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteGatewayExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *GatewaysApiService) internalDeleteGatewayExecute(r ApiDeleteGatewayRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +407,15 @@ func (a *GatewaysApiService) ReadAllGateways(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return EntityArray
 func (a *GatewaysApiService) ReadAllGatewaysExecute(r ApiReadAllGatewaysRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllGatewaysExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *GatewaysApiService) internalReadAllGatewaysExecute(r ApiReadAllGatewaysRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

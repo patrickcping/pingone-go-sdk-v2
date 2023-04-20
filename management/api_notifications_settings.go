@@ -50,6 +50,16 @@ func (a *NotificationsSettingsApiService) DeleteNotificationsSettings(ctx contex
 
 // Execute executes the request
 func (a *NotificationsSettingsApiService) DeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteNotificationsSettingsExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *NotificationsSettingsApiService) internalDeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -207,6 +217,15 @@ func (a *NotificationsSettingsApiService) ReadNotificationsSettings(ctx context.
 // Execute executes the request
 //  @return NotificationsSettings
 func (a *NotificationsSettingsApiService) ReadNotificationsSettingsExecute(r ApiReadNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadNotificationsSettingsExecute(r)
+		},
+	)
+	return obj.(*NotificationsSettings), response, error
+}
+			
+func (a *NotificationsSettingsApiService) internalReadNotificationsSettingsExecute(r ApiReadNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -374,6 +393,15 @@ func (a *NotificationsSettingsApiService) UpdateNotificationsSettings(ctx contex
 // Execute executes the request
 //  @return NotificationsSettings
 func (a *NotificationsSettingsApiService) UpdateNotificationsSettingsExecute(r ApiUpdateNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateNotificationsSettingsExecute(r)
+		},
+	)
+	return obj.(*NotificationsSettings), response, error
+}
+			
+func (a *NotificationsSettingsApiService) internalUpdateNotificationsSettingsExecute(r ApiUpdateNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

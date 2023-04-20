@@ -60,6 +60,15 @@ func (a *IdentityProviderAttributesApiService) CreateIdentityProviderAttribute(c
 // Execute executes the request
 //  @return IdentityProviderAttribute
 func (a *IdentityProviderAttributesApiService) CreateIdentityProviderAttributeExecute(r ApiCreateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateIdentityProviderAttributeExecute(r)
+		},
+	)
+	return obj.(*IdentityProviderAttribute), response, error
+}
+			
+func (a *IdentityProviderAttributesApiService) internalCreateIdentityProviderAttributeExecute(r ApiCreateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *IdentityProviderAttributesApiService) DeleteIdentityProviderAttribute(c
 
 // Execute executes the request
 func (a *IdentityProviderAttributesApiService) DeleteIdentityProviderAttributeExecute(r ApiDeleteIdentityProviderAttributeRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteIdentityProviderAttributeExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *IdentityProviderAttributesApiService) internalDeleteIdentityProviderAttributeExecute(r ApiDeleteIdentityProviderAttributeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *IdentityProviderAttributesApiService) ReadAllIdentityProviderAttributes
 // Execute executes the request
 //  @return EntityArray
 func (a *IdentityProviderAttributesApiService) ReadAllIdentityProviderAttributesExecute(r ApiReadAllIdentityProviderAttributesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllIdentityProviderAttributesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *IdentityProviderAttributesApiService) internalReadAllIdentityProviderAttributesExecute(r ApiReadAllIdentityProviderAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *IdentityProviderAttributesApiService) ReadOneIdentityProviderAttribute(
 // Execute executes the request
 //  @return IdentityProviderAttribute
 func (a *IdentityProviderAttributesApiService) ReadOneIdentityProviderAttributeExecute(r ApiReadOneIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneIdentityProviderAttributeExecute(r)
+		},
+	)
+	return obj.(*IdentityProviderAttribute), response, error
+}
+			
+func (a *IdentityProviderAttributesApiService) internalReadOneIdentityProviderAttributeExecute(r ApiReadOneIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *IdentityProviderAttributesApiService) UpdateIdentityProviderAttribute(c
 // Execute executes the request
 //  @return IdentityProviderAttribute
 func (a *IdentityProviderAttributesApiService) UpdateIdentityProviderAttributeExecute(r ApiUpdateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateIdentityProviderAttributeExecute(r)
+		},
+	)
+	return obj.(*IdentityProviderAttribute), response, error
+}
+			
+func (a *IdentityProviderAttributesApiService) internalUpdateIdentityProviderAttributeExecute(r ApiUpdateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

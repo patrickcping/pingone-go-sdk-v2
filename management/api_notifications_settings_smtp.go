@@ -50,6 +50,16 @@ func (a *NotificationsSettingsSMTPApiService) DeleteEmailDeliverySettings(ctx co
 
 // Execute executes the request
 func (a *NotificationsSettingsSMTPApiService) DeleteEmailDeliverySettingsExecute(r ApiDeleteEmailDeliverySettingsRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteEmailDeliverySettingsExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *NotificationsSettingsSMTPApiService) internalDeleteEmailDeliverySettingsExecute(r ApiDeleteEmailDeliverySettingsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -207,6 +217,15 @@ func (a *NotificationsSettingsSMTPApiService) ReadEmailNotificationsSettings(ctx
 // Execute executes the request
 //  @return NotificationsSettingsEmailDeliverySettings
 func (a *NotificationsSettingsSMTPApiService) ReadEmailNotificationsSettingsExecute(r ApiReadEmailNotificationsSettingsRequest) (*NotificationsSettingsEmailDeliverySettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadEmailNotificationsSettingsExecute(r)
+		},
+	)
+	return obj.(*NotificationsSettingsEmailDeliverySettings), response, error
+}
+			
+func (a *NotificationsSettingsSMTPApiService) internalReadEmailNotificationsSettingsExecute(r ApiReadEmailNotificationsSettingsRequest) (*NotificationsSettingsEmailDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -380,6 +399,15 @@ func (a *NotificationsSettingsSMTPApiService) UpdateEmailNotificationsSettings(c
 // Execute executes the request
 //  @return NotificationsSettingsEmailDeliverySettings
 func (a *NotificationsSettingsSMTPApiService) UpdateEmailNotificationsSettingsExecute(r ApiUpdateEmailNotificationsSettingsRequest) (*NotificationsSettingsEmailDeliverySettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateEmailNotificationsSettingsExecute(r)
+		},
+	)
+	return obj.(*NotificationsSettingsEmailDeliverySettings), response, error
+}
+			
+func (a *NotificationsSettingsSMTPApiService) internalUpdateEmailNotificationsSettingsExecute(r ApiUpdateEmailNotificationsSettingsRequest) (*NotificationsSettingsEmailDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

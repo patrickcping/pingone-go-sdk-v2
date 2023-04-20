@@ -57,6 +57,15 @@ func (a *RiskEvaluationsApiService) CreateRiskEvaluation(ctx context.Context, en
 // Execute executes the request
 //  @return RiskEvaluation
 func (a *RiskEvaluationsApiService) CreateRiskEvaluationExecute(r ApiCreateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateRiskEvaluationExecute(r)
+		},
+	)
+	return obj.(*RiskEvaluation), response, error
+}
+			
+func (a *RiskEvaluationsApiService) internalCreateRiskEvaluationExecute(r ApiCreateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -240,6 +249,15 @@ func (a *RiskEvaluationsApiService) ReadOneRiskEvaluation(ctx context.Context, e
 // Execute executes the request
 //  @return RiskEvaluation
 func (a *RiskEvaluationsApiService) ReadOneRiskEvaluationExecute(r ApiReadOneRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneRiskEvaluationExecute(r)
+		},
+	)
+	return obj.(*RiskEvaluation), response, error
+}
+			
+func (a *RiskEvaluationsApiService) internalReadOneRiskEvaluationExecute(r ApiReadOneRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -417,6 +435,15 @@ func (a *RiskEvaluationsApiService) UpdateRiskEvaluation(ctx context.Context, en
 // Execute executes the request
 //  @return RiskEvaluation
 func (a *RiskEvaluationsApiService) UpdateRiskEvaluationExecute(r ApiUpdateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateRiskEvaluationExecute(r)
+		},
+	)
+	return obj.(*RiskEvaluation), response, error
+}
+			
+func (a *RiskEvaluationsApiService) internalUpdateRiskEvaluationExecute(r ApiUpdateRiskEvaluationRequest) (*RiskEvaluation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

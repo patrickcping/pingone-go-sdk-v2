@@ -57,6 +57,15 @@ func (a *LanguagesApiService) CreateLanguage(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return Language
 func (a *LanguagesApiService) CreateLanguageExecute(r ApiCreateLanguageRequest) (*Language, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateLanguageExecute(r)
+		},
+	)
+	return obj.(*Language), response, error
+}
+			
+func (a *LanguagesApiService) internalCreateLanguageExecute(r ApiCreateLanguageRequest) (*Language, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *LanguagesApiService) DeleteLanguage(ctx context.Context, environmentID 
 
 // Execute executes the request
 func (a *LanguagesApiService) DeleteLanguageExecute(r ApiDeleteLanguageRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteLanguageExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *LanguagesApiService) internalDeleteLanguageExecute(r ApiDeleteLanguageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *LanguagesApiService) ReadLanguages(ctx context.Context, environmentID s
 // Execute executes the request
 //  @return EntityArray
 func (a *LanguagesApiService) ReadLanguagesExecute(r ApiReadLanguagesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadLanguagesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *LanguagesApiService) internalReadLanguagesExecute(r ApiReadLanguagesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *LanguagesApiService) ReadOneLanguage(ctx context.Context, environmentID
 // Execute executes the request
 //  @return Language
 func (a *LanguagesApiService) ReadOneLanguageExecute(r ApiReadOneLanguageRequest) (*Language, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneLanguageExecute(r)
+		},
+	)
+	return obj.(*Language), response, error
+}
+			
+func (a *LanguagesApiService) internalReadOneLanguageExecute(r ApiReadOneLanguageRequest) (*Language, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *LanguagesApiService) UpdateLanguage(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return Language
 func (a *LanguagesApiService) UpdateLanguageExecute(r ApiUpdateLanguageRequest) (*Language, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateLanguageExecute(r)
+		},
+	)
+	return obj.(*Language), response, error
+}
+			
+func (a *LanguagesApiService) internalUpdateLanguageExecute(r ApiUpdateLanguageRequest) (*Language, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -57,6 +57,15 @@ func (a *PhoneDeliverySettingsApiService) CreatePhoneDeliverySettings(ctx contex
 // Execute executes the request
 //  @return NotificationsSettingsPhoneDeliverySettings
 func (a *PhoneDeliverySettingsApiService) CreatePhoneDeliverySettingsExecute(r ApiCreatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreatePhoneDeliverySettingsExecute(r)
+		},
+	)
+	return obj.(*NotificationsSettingsPhoneDeliverySettings), response, error
+}
+			
+func (a *PhoneDeliverySettingsApiService) internalCreatePhoneDeliverySettingsExecute(r ApiCreatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *PhoneDeliverySettingsApiService) DeletePhoneDeliverySettings(ctx contex
 
 // Execute executes the request
 func (a *PhoneDeliverySettingsApiService) DeletePhoneDeliverySettingsExecute(r ApiDeletePhoneDeliverySettingsRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeletePhoneDeliverySettingsExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PhoneDeliverySettingsApiService) internalDeletePhoneDeliverySettingsExecute(r ApiDeletePhoneDeliverySettingsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettings(ctx conte
 // Execute executes the request
 //  @return EntityArray
 func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettingsExecute(r ApiReadAllPhoneDeliverySettingsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllPhoneDeliverySettingsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *PhoneDeliverySettingsApiService) internalReadAllPhoneDeliverySettingsExecute(r ApiReadAllPhoneDeliverySettingsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *PhoneDeliverySettingsApiService) ReadOnePhoneDeliverySettings(ctx conte
 // Execute executes the request
 //  @return NotificationsSettingsPhoneDeliverySettings
 func (a *PhoneDeliverySettingsApiService) ReadOnePhoneDeliverySettingsExecute(r ApiReadOnePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOnePhoneDeliverySettingsExecute(r)
+		},
+	)
+	return obj.(*NotificationsSettingsPhoneDeliverySettings), response, error
+}
+			
+func (a *PhoneDeliverySettingsApiService) internalReadOnePhoneDeliverySettingsExecute(r ApiReadOnePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *PhoneDeliverySettingsApiService) UpdatePhoneDeliverySettings(ctx contex
 // Execute executes the request
 //  @return NotificationsSettingsPhoneDeliverySettings
 func (a *PhoneDeliverySettingsApiService) UpdatePhoneDeliverySettingsExecute(r ApiUpdatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdatePhoneDeliverySettingsExecute(r)
+		},
+	)
+	return obj.(*NotificationsSettingsPhoneDeliverySettings), response, error
+}
+			
+func (a *PhoneDeliverySettingsApiService) internalUpdatePhoneDeliverySettingsExecute(r ApiUpdatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -60,6 +60,15 @@ func (a *SignOnPolicyActionsApiService) CreateSignOnPolicyAction(ctx context.Con
 // Execute executes the request
 //  @return SignOnPolicyAction
 func (a *SignOnPolicyActionsApiService) CreateSignOnPolicyActionExecute(r ApiCreateSignOnPolicyActionRequest) (*SignOnPolicyAction, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateSignOnPolicyActionExecute(r)
+		},
+	)
+	return obj.(*SignOnPolicyAction), response, error
+}
+			
+func (a *SignOnPolicyActionsApiService) internalCreateSignOnPolicyActionExecute(r ApiCreateSignOnPolicyActionRequest) (*SignOnPolicyAction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *SignOnPolicyActionsApiService) DeleteSignOnPolicyAction(ctx context.Con
 
 // Execute executes the request
 func (a *SignOnPolicyActionsApiService) DeleteSignOnPolicyActionExecute(r ApiDeleteSignOnPolicyActionRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteSignOnPolicyActionExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *SignOnPolicyActionsApiService) internalDeleteSignOnPolicyActionExecute(r ApiDeleteSignOnPolicyActionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *SignOnPolicyActionsApiService) ReadAllSignOnPolicyActions(ctx context.C
 // Execute executes the request
 //  @return EntityArray
 func (a *SignOnPolicyActionsApiService) ReadAllSignOnPolicyActionsExecute(r ApiReadAllSignOnPolicyActionsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllSignOnPolicyActionsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *SignOnPolicyActionsApiService) internalReadAllSignOnPolicyActionsExecute(r ApiReadAllSignOnPolicyActionsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *SignOnPolicyActionsApiService) ReadOneSignOnPolicyAction(ctx context.Co
 // Execute executes the request
 //  @return SignOnPolicyAction
 func (a *SignOnPolicyActionsApiService) ReadOneSignOnPolicyActionExecute(r ApiReadOneSignOnPolicyActionRequest) (*SignOnPolicyAction, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneSignOnPolicyActionExecute(r)
+		},
+	)
+	return obj.(*SignOnPolicyAction), response, error
+}
+			
+func (a *SignOnPolicyActionsApiService) internalReadOneSignOnPolicyActionExecute(r ApiReadOneSignOnPolicyActionRequest) (*SignOnPolicyAction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *SignOnPolicyActionsApiService) UpdateSignOnPolicyAction(ctx context.Con
 // Execute executes the request
 //  @return SignOnPolicyAction
 func (a *SignOnPolicyActionsApiService) UpdateSignOnPolicyActionExecute(r ApiUpdateSignOnPolicyActionRequest) (*SignOnPolicyAction, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateSignOnPolicyActionExecute(r)
+		},
+	)
+	return obj.(*SignOnPolicyAction), response, error
+}
+			
+func (a *SignOnPolicyActionsApiService) internalUpdateSignOnPolicyActionExecute(r ApiUpdateSignOnPolicyActionRequest) (*SignOnPolicyAction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

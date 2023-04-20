@@ -57,6 +57,15 @@ func (a *CustomDomainsApiService) CreateDomain(ctx context.Context, environmentI
 // Execute executes the request
 //  @return CustomDomain
 func (a *CustomDomainsApiService) CreateDomainExecute(r ApiCreateDomainRequest) (*CustomDomain, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateDomainExecute(r)
+		},
+	)
+	return obj.(*CustomDomain), response, error
+}
+			
+func (a *CustomDomainsApiService) internalCreateDomainExecute(r ApiCreateDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *CustomDomainsApiService) DeleteDomain(ctx context.Context, environmentI
 
 // Execute executes the request
 func (a *CustomDomainsApiService) DeleteDomainExecute(r ApiDeleteDomainRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteDomainExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *CustomDomainsApiService) internalDeleteDomainExecute(r ApiDeleteDomainRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *CustomDomainsApiService) ReadAllDomains(ctx context.Context, environmen
 // Execute executes the request
 //  @return EntityArray
 func (a *CustomDomainsApiService) ReadAllDomainsExecute(r ApiReadAllDomainsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllDomainsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *CustomDomainsApiService) internalReadAllDomainsExecute(r ApiReadAllDomainsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *CustomDomainsApiService) ReadOneDomain(ctx context.Context, environment
 // Execute executes the request
 //  @return CustomDomain
 func (a *CustomDomainsApiService) ReadOneDomainExecute(r ApiReadOneDomainRequest) (*CustomDomain, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneDomainExecute(r)
+		},
+	)
+	return obj.(*CustomDomain), response, error
+}
+			
+func (a *CustomDomainsApiService) internalReadOneDomainExecute(r ApiReadOneDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -750,6 +787,15 @@ func (a *CustomDomainsApiService) UpdateDomain(ctx context.Context, environmentI
 // Execute executes the request
 //  @return CustomDomain
 func (a *CustomDomainsApiService) UpdateDomainExecute(r ApiUpdateDomainRequest) (*CustomDomain, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateDomainExecute(r)
+		},
+	)
+	return obj.(*CustomDomain), response, error
+}
+			
+func (a *CustomDomainsApiService) internalUpdateDomainExecute(r ApiUpdateDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

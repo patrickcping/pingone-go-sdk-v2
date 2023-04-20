@@ -57,6 +57,15 @@ func (a *TrustedEmailDomainsApiService) CreateTrustedEmailDomain(ctx context.Con
 // Execute executes the request
 //  @return EmailDomain
 func (a *TrustedEmailDomainsApiService) CreateTrustedEmailDomainExecute(r ApiCreateTrustedEmailDomainRequest) (*EmailDomain, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateTrustedEmailDomainExecute(r)
+		},
+	)
+	return obj.(*EmailDomain), response, error
+}
+			
+func (a *TrustedEmailDomainsApiService) internalCreateTrustedEmailDomainExecute(r ApiCreateTrustedEmailDomainRequest) (*EmailDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *TrustedEmailDomainsApiService) DeleteTrustedEmailDomain(ctx context.Con
 
 // Execute executes the request
 func (a *TrustedEmailDomainsApiService) DeleteTrustedEmailDomainExecute(r ApiDeleteTrustedEmailDomainRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteTrustedEmailDomainExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *TrustedEmailDomainsApiService) internalDeleteTrustedEmailDomainExecute(r ApiDeleteTrustedEmailDomainRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *TrustedEmailDomainsApiService) ReadAllTrustedEmailDomains(ctx context.C
 // Execute executes the request
 //  @return EntityArray
 func (a *TrustedEmailDomainsApiService) ReadAllTrustedEmailDomainsExecute(r ApiReadAllTrustedEmailDomainsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllTrustedEmailDomainsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *TrustedEmailDomainsApiService) internalReadAllTrustedEmailDomainsExecute(r ApiReadAllTrustedEmailDomainsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *TrustedEmailDomainsApiService) ReadOneTrustedEmailDomain(ctx context.Co
 // Execute executes the request
 //  @return EmailDomain
 func (a *TrustedEmailDomainsApiService) ReadOneTrustedEmailDomainExecute(r ApiReadOneTrustedEmailDomainRequest) (*EmailDomain, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneTrustedEmailDomainExecute(r)
+		},
+	)
+	return obj.(*EmailDomain), response, error
+}
+			
+func (a *TrustedEmailDomainsApiService) internalReadOneTrustedEmailDomainExecute(r ApiReadOneTrustedEmailDomainRequest) (*EmailDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -738,6 +775,15 @@ func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainDKIMStatus(ctx con
 // Execute executes the request
 //  @return EmailDomainDKIMStatus
 func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainDKIMStatusExecute(r ApiReadTrustedEmailDomainDKIMStatusRequest) (*EmailDomainDKIMStatus, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadTrustedEmailDomainDKIMStatusExecute(r)
+		},
+	)
+	return obj.(*EmailDomainDKIMStatus), response, error
+}
+			
+func (a *TrustedEmailDomainsApiService) internalReadTrustedEmailDomainDKIMStatusExecute(r ApiReadTrustedEmailDomainDKIMStatusRequest) (*EmailDomainDKIMStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -909,6 +955,15 @@ func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainOwnershipStatus(ct
 // Execute executes the request
 //  @return EmailDomainOwnershipStatus
 func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainOwnershipStatusExecute(r ApiReadTrustedEmailDomainOwnershipStatusRequest) (*EmailDomainOwnershipStatus, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadTrustedEmailDomainOwnershipStatusExecute(r)
+		},
+	)
+	return obj.(*EmailDomainOwnershipStatus), response, error
+}
+			
+func (a *TrustedEmailDomainsApiService) internalReadTrustedEmailDomainOwnershipStatusExecute(r ApiReadTrustedEmailDomainOwnershipStatusRequest) (*EmailDomainOwnershipStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1080,6 +1135,15 @@ func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainSPFStatus(ctx cont
 // Execute executes the request
 //  @return EmailDomainSPFStatus
 func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainSPFStatusExecute(r ApiReadTrustedEmailDomainSPFStatusRequest) (*EmailDomainSPFStatus, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadTrustedEmailDomainSPFStatusExecute(r)
+		},
+	)
+	return obj.(*EmailDomainSPFStatus), response, error
+}
+			
+func (a *TrustedEmailDomainsApiService) internalReadTrustedEmailDomainSPFStatusExecute(r ApiReadTrustedEmailDomainSPFStatusRequest) (*EmailDomainSPFStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

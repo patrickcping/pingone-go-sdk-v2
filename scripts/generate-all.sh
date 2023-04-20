@@ -14,6 +14,7 @@ do
     else
         echo "Module $i found.  Running generate.."
 
+        # Generate from OpenAPI
         pushd $i
             echo "==> Running codegen-$i..."
 
@@ -24,6 +25,14 @@ do
                 go get -u ./...
                 go mod tidy
                 go mod vendor
+
+                # Generate the retry code
+                template=$(cat ../scripts/client_ext.go.tmpl)
+                template=${template//PACKAGENAME/$i}
+                echo "$template" > "client_ext.go"
+
+                go run ../scripts/generate-replace-regex.go .
+                
             else \
                 echo "pingone-$i.yml missing.  Skipping"; \
             fi

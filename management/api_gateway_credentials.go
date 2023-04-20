@@ -54,6 +54,15 @@ func (a *GatewayCredentialsApiService) CreateGatewayCredential(ctx context.Conte
 // Execute executes the request
 //  @return GatewayCredential
 func (a *GatewayCredentialsApiService) CreateGatewayCredentialExecute(r ApiCreateGatewayCredentialRequest) (*GatewayCredential, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateGatewayCredentialExecute(r)
+		},
+	)
+	return obj.(*GatewayCredential), response, error
+}
+			
+func (a *GatewayCredentialsApiService) internalCreateGatewayCredentialExecute(r ApiCreateGatewayCredentialRequest) (*GatewayCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -238,6 +247,16 @@ func (a *GatewayCredentialsApiService) DeleteGatewayCredential(ctx context.Conte
 
 // Execute executes the request
 func (a *GatewayCredentialsApiService) DeleteGatewayCredentialExecute(r ApiDeleteGatewayCredentialRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteGatewayCredentialExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *GatewayCredentialsApiService) internalDeleteGatewayCredentialExecute(r ApiDeleteGatewayCredentialRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -400,6 +419,15 @@ func (a *GatewayCredentialsApiService) ReadAllGatewayCredentials(ctx context.Con
 // Execute executes the request
 //  @return EntityArray
 func (a *GatewayCredentialsApiService) ReadAllGatewayCredentialsExecute(r ApiReadAllGatewayCredentialsRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllGatewayCredentialsExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *GatewayCredentialsApiService) internalReadAllGatewayCredentialsExecute(r ApiReadAllGatewayCredentialsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -574,6 +602,15 @@ func (a *GatewayCredentialsApiService) ReadOneGatewayCredential(ctx context.Cont
 // Execute executes the request
 //  @return GatewayCredential
 func (a *GatewayCredentialsApiService) ReadOneGatewayCredentialExecute(r ApiReadOneGatewayCredentialRequest) (*GatewayCredential, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneGatewayCredentialExecute(r)
+		},
+	)
+	return obj.(*GatewayCredential), response, error
+}
+			
+func (a *GatewayCredentialsApiService) internalReadOneGatewayCredentialExecute(r ApiReadOneGatewayCredentialRequest) (*GatewayCredential, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

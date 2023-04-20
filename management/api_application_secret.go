@@ -54,6 +54,15 @@ func (a *ApplicationSecretApiService) ReadApplicationSecret(ctx context.Context,
 // Execute executes the request
 //  @return ApplicationSecret
 func (a *ApplicationSecretApiService) ReadApplicationSecretExecute(r ApiReadApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadApplicationSecretExecute(r)
+		},
+	)
+	return obj.(*ApplicationSecret), response, error
+}
+			
+func (a *ApplicationSecretApiService) internalReadApplicationSecretExecute(r ApiReadApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -224,6 +233,16 @@ func (a *ApplicationSecretApiService) UpdateApplicationSecret(ctx context.Contex
 
 // Execute executes the request
 func (a *ApplicationSecretApiService) UpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalUpdateApplicationSecretExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ApplicationSecretApiService) internalUpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

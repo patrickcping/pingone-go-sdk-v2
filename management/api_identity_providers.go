@@ -57,6 +57,15 @@ func (a *IdentityProvidersApiService) CreateIdentityProvider(ctx context.Context
 // Execute executes the request
 //  @return IdentityProvider
 func (a *IdentityProvidersApiService) CreateIdentityProviderExecute(r ApiCreateIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateIdentityProviderExecute(r)
+		},
+	)
+	return obj.(*IdentityProvider), response, error
+}
+			
+func (a *IdentityProvidersApiService) internalCreateIdentityProviderExecute(r ApiCreateIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -239,6 +248,16 @@ func (a *IdentityProvidersApiService) DeleteIdentityProvider(ctx context.Context
 
 // Execute executes the request
 func (a *IdentityProvidersApiService) DeleteIdentityProviderExecute(r ApiDeleteIdentityProviderRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteIdentityProviderExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *IdentityProvidersApiService) internalDeleteIdentityProviderExecute(r ApiDeleteIdentityProviderRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -397,6 +416,15 @@ func (a *IdentityProvidersApiService) ReadAllIdentityProviders(ctx context.Conte
 // Execute executes the request
 //  @return EntityArray
 func (a *IdentityProvidersApiService) ReadAllIdentityProvidersExecute(r ApiReadAllIdentityProvidersRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllIdentityProvidersExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *IdentityProvidersApiService) internalReadAllIdentityProvidersExecute(r ApiReadAllIdentityProvidersRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,6 +595,15 @@ func (a *IdentityProvidersApiService) ReadOneIdentityProvider(ctx context.Contex
 // Execute executes the request
 //  @return IdentityProvider
 func (a *IdentityProvidersApiService) ReadOneIdentityProviderExecute(r ApiReadOneIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneIdentityProviderExecute(r)
+		},
+	)
+	return obj.(*IdentityProvider), response, error
+}
+			
+func (a *IdentityProvidersApiService) internalReadOneIdentityProviderExecute(r ApiReadOneIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,6 +781,15 @@ func (a *IdentityProvidersApiService) UpdateIdentityProvider(ctx context.Context
 // Execute executes the request
 //  @return IdentityProvider
 func (a *IdentityProvidersApiService) UpdateIdentityProviderExecute(r ApiUpdateIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateIdentityProviderExecute(r)
+		},
+	)
+	return obj.(*IdentityProvider), response, error
+}
+			
+func (a *IdentityProvidersApiService) internalUpdateIdentityProviderExecute(r ApiUpdateIdentityProviderRequest) (*IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

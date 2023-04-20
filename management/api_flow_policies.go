@@ -57,6 +57,15 @@ func (a *FlowPoliciesApiService) ReadAllFlowPolicies(ctx context.Context, enviro
 // Execute executes the request
 //  @return EntityArray
 func (a *FlowPoliciesApiService) ReadAllFlowPoliciesExecute(r ApiReadAllFlowPoliciesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllFlowPoliciesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *FlowPoliciesApiService) internalReadAllFlowPoliciesExecute(r ApiReadAllFlowPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -230,6 +239,15 @@ func (a *FlowPoliciesApiService) ReadOneFlowPolicy(ctx context.Context, environm
 // Execute executes the request
 //  @return FlowPolicy
 func (a *FlowPoliciesApiService) ReadOneFlowPolicyExecute(r ApiReadOneFlowPolicyRequest) (*FlowPolicy, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneFlowPolicyExecute(r)
+		},
+	)
+	return obj.(*FlowPolicy), response, error
+}
+			
+func (a *FlowPoliciesApiService) internalReadOneFlowPolicyExecute(r ApiReadOneFlowPolicyRequest) (*FlowPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

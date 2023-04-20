@@ -60,6 +60,15 @@ func (a *ResourceAttributesApiService) CreateResourceAttribute(ctx context.Conte
 // Execute executes the request
 //  @return ResourceAttribute
 func (a *ResourceAttributesApiService) CreateResourceAttributeExecute(r ApiCreateResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateResourceAttributeExecute(r)
+		},
+	)
+	return obj.(*ResourceAttribute), response, error
+}
+			
+func (a *ResourceAttributesApiService) internalCreateResourceAttributeExecute(r ApiCreateResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -246,6 +255,16 @@ func (a *ResourceAttributesApiService) DeleteResourceAttribute(ctx context.Conte
 
 // Execute executes the request
 func (a *ResourceAttributesApiService) DeleteResourceAttributeExecute(r ApiDeleteResourceAttributeRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteResourceAttributeExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ResourceAttributesApiService) internalDeleteResourceAttributeExecute(r ApiDeleteResourceAttributeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -408,6 +427,15 @@ func (a *ResourceAttributesApiService) ReadAllResourceAttributes(ctx context.Con
 // Execute executes the request
 //  @return EntityArray
 func (a *ResourceAttributesApiService) ReadAllResourceAttributesExecute(r ApiReadAllResourceAttributesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllResourceAttributesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *ResourceAttributesApiService) internalReadAllResourceAttributesExecute(r ApiReadAllResourceAttributesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -582,6 +610,15 @@ func (a *ResourceAttributesApiService) ReadOneResourceAttribute(ctx context.Cont
 // Execute executes the request
 //  @return ResourceAttribute
 func (a *ResourceAttributesApiService) ReadOneResourceAttributeExecute(r ApiReadOneResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneResourceAttributeExecute(r)
+		},
+	)
+	return obj.(*ResourceAttribute), response, error
+}
+			
+func (a *ResourceAttributesApiService) internalReadOneResourceAttributeExecute(r ApiReadOneResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +800,15 @@ func (a *ResourceAttributesApiService) UpdateResourceAttribute(ctx context.Conte
 // Execute executes the request
 //  @return ResourceAttribute
 func (a *ResourceAttributesApiService) UpdateResourceAttributeExecute(r ApiUpdateResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateResourceAttributeExecute(r)
+		},
+	)
+	return obj.(*ResourceAttribute), response, error
+}
+			
+func (a *ResourceAttributesApiService) internalUpdateResourceAttributeExecute(r ApiUpdateResourceAttributeRequest) (*ResourceAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
