@@ -2405,6 +2405,49 @@ paths:
       tags:
       - User MFA Pairing Keys
 components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: "Invalid request received.  Malformed JSON, malformed HTTP request."
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Request failed due to authorization issue.
+    "403":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Request failed due to authorization issue.
+    "404":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Not found.
+    "405":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: "Invalid request received.  Malformed JSON, malformed HTTP request."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Request was rate limited
+    "500":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Uncaught error occurred.  Platform outage
   schemas:
     DeviceAuthenticationPolicyFIDODevice:
       example:
