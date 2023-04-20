@@ -19,6 +19,8 @@ var _ MappedNullable = &CredentialTypeMetaDataFieldsInner{}
 
 // CredentialTypeMetaDataFieldsInner struct for CredentialTypeMetaDataFieldsInner
 type CredentialTypeMetaDataFieldsInner struct {
+	// A string that specifies the name of the PingOne Directory attribute if field.type is Directory Attribute.
+	Attribute *string `json:"attribute,omitempty"`
 	// A string that specifies the identifier of the field.
 	Id string `json:"id"`
 	// A string that specifies the descriptive text when showing the field.
@@ -49,6 +51,38 @@ func NewCredentialTypeMetaDataFieldsInner(id string, title string, isVisible boo
 func NewCredentialTypeMetaDataFieldsInnerWithDefaults() *CredentialTypeMetaDataFieldsInner {
 	this := CredentialTypeMetaDataFieldsInner{}
 	return &this
+}
+
+// GetAttribute returns the Attribute field value if set, zero value otherwise.
+func (o *CredentialTypeMetaDataFieldsInner) GetAttribute() string {
+	if o == nil || IsNil(o.Attribute) {
+		var ret string
+		return ret
+	}
+	return *o.Attribute
+}
+
+// GetAttributeOk returns a tuple with the Attribute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaDataFieldsInner) GetAttributeOk() (*string, bool) {
+	if o == nil || IsNil(o.Attribute) {
+		return nil, false
+	}
+	return o.Attribute, true
+}
+
+// HasAttribute returns a boolean if a field has been set.
+func (o *CredentialTypeMetaDataFieldsInner) HasAttribute() bool {
+	if o != nil && !IsNil(o.Attribute) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttribute gets a reference to the given string and assigns it to the Attribute field.
+func (o *CredentialTypeMetaDataFieldsInner) SetAttribute(v string) {
+	o.Attribute = &v
 }
 
 // GetId returns the Id field value
@@ -189,6 +223,9 @@ func (o CredentialTypeMetaDataFieldsInner) MarshalJSON() ([]byte, error) {
 
 func (o CredentialTypeMetaDataFieldsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Attribute) {
+		toSerialize["attribute"] = o.Attribute
+	}
 	toSerialize["id"] = o.Id
 	toSerialize["title"] = o.Title
 	toSerialize["isVisible"] = o.IsVisible

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Attribute** | Pointer to **string** | A string that specifies the name of the PingOne Directory attribute if field.type is Directory Attribute. | [optional] 
 **Id** | **string** | A string that specifies the identifier of the field. | 
 **Title** | **string** | A string that specifies the descriptive text when showing the field. | 
 **IsVisible** | **bool** | A boolean value that specifies whether the field should be visible to viewers of the credential. | 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewCredentialTypeMetaDataFieldsInnerWithDefaults instantiates a new CredentialTypeMetaDataFieldsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAttribute
+
+`func (o *CredentialTypeMetaDataFieldsInner) GetAttribute() string`
+
+GetAttribute returns the Attribute field if non-nil, zero value otherwise.
+
+### GetAttributeOk
+
+`func (o *CredentialTypeMetaDataFieldsInner) GetAttributeOk() (*string, bool)`
+
+GetAttributeOk returns a tuple with the Attribute field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttribute
+
+`func (o *CredentialTypeMetaDataFieldsInner) SetAttribute(v string)`
+
+SetAttribute sets Attribute field to given value.
+
+### HasAttribute
+
+`func (o *CredentialTypeMetaDataFieldsInner) HasAttribute() bool`
+
+HasAttribute returns a boolean if a field has been set.
 
 ### GetId
 
