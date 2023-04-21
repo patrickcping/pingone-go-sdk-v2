@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was updated. | [optional] [readonly] 
 **Licensed** | Pointer to **bool** | Indicates whether PingOne Risk is licensed for the environment. | [optional] [readonly] 
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
-**Default** | Pointer to [**RiskPredictorDefault**](RiskPredictorDefault.md) |  | [optional] 
-**Condition** | Pointer to [**RiskPredictorCondition**](RiskPredictorCondition.md) |  | [optional] 
+**Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
+**Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
 **PredictionModel** | [**RiskPredictorUEBAAllOfPredictionModel**](RiskPredictorUEBAAllOfPredictionModel.md) |  | 
 
 ## Methods
@@ -248,20 +248,20 @@ HasDeletable returns a boolean if a field has been set.
 
 ### GetDefault
 
-`func (o *RiskPredictorUEBA) GetDefault() RiskPredictorDefault`
+`func (o *RiskPredictorUEBA) GetDefault() RiskPredictorCommonDefault`
 
 GetDefault returns the Default field if non-nil, zero value otherwise.
 
 ### GetDefaultOk
 
-`func (o *RiskPredictorUEBA) GetDefaultOk() (*RiskPredictorDefault, bool)`
+`func (o *RiskPredictorUEBA) GetDefaultOk() (*RiskPredictorCommonDefault, bool)`
 
 GetDefaultOk returns a tuple with the Default field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefault
 
-`func (o *RiskPredictorUEBA) SetDefault(v RiskPredictorDefault)`
+`func (o *RiskPredictorUEBA) SetDefault(v RiskPredictorCommonDefault)`
 
 SetDefault sets Default field to given value.
 
@@ -273,20 +273,20 @@ HasDefault returns a boolean if a field has been set.
 
 ### GetCondition
 
-`func (o *RiskPredictorUEBA) GetCondition() RiskPredictorCondition`
+`func (o *RiskPredictorUEBA) GetCondition() RiskPredictorCommonCondition`
 
 GetCondition returns the Condition field if non-nil, zero value otherwise.
 
 ### GetConditionOk
 
-`func (o *RiskPredictorUEBA) GetConditionOk() (*RiskPredictorCondition, bool)`
+`func (o *RiskPredictorUEBA) GetConditionOk() (*RiskPredictorCommonCondition, bool)`
 
 GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCondition
 
-`func (o *RiskPredictorUEBA) SetCondition(v RiskPredictorCondition)`
+`func (o *RiskPredictorUEBA) SetCondition(v RiskPredictorCommonCondition)`
 
 SetCondition sets Condition field to given value.
 

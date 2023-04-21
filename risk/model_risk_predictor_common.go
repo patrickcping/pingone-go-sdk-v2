@@ -15,11 +15,11 @@ import (
 	"time"
 )
 
-// checks if the RiskPredictorAnonymousNetwork type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RiskPredictorAnonymousNetwork{}
+// checks if the RiskPredictorCommon type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPredictorCommon{}
 
-// RiskPredictorAnonymousNetwork struct for RiskPredictorAnonymousNetwork
-type RiskPredictorAnonymousNetwork struct {
+// RiskPredictorCommon struct for RiskPredictorCommon
+type RiskPredictorCommon struct {
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -39,32 +39,30 @@ type RiskPredictorAnonymousNetwork struct {
 	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
-	// A list of IP addresses (CIDRs) that are ignored for the predictor results.
-	WhiteList []string `json:"whiteList,omitempty"`
 }
 
-// NewRiskPredictorAnonymousNetwork instantiates a new RiskPredictorAnonymousNetwork object
+// NewRiskPredictorCommon instantiates a new RiskPredictorCommon object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorAnonymousNetwork(name string, compactName string, type_ EnumPredictorType) *RiskPredictorAnonymousNetwork {
-	this := RiskPredictorAnonymousNetwork{}
+func NewRiskPredictorCommon(name string, compactName string, type_ EnumPredictorType) *RiskPredictorCommon {
+	this := RiskPredictorCommon{}
 	this.Name = name
 	this.CompactName = compactName
 	this.Type = type_
 	return &this
 }
 
-// NewRiskPredictorAnonymousNetworkWithDefaults instantiates a new RiskPredictorAnonymousNetwork object
+// NewRiskPredictorCommonWithDefaults instantiates a new RiskPredictorCommon object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRiskPredictorAnonymousNetworkWithDefaults() *RiskPredictorAnonymousNetwork {
-	this := RiskPredictorAnonymousNetwork{}
+func NewRiskPredictorCommonWithDefaults() *RiskPredictorCommon {
+	this := RiskPredictorCommon{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetId() string {
+func (o *RiskPredictorCommon) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -74,7 +72,7 @@ func (o *RiskPredictorAnonymousNetwork) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetIdOk() (*string, bool) {
+func (o *RiskPredictorCommon) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -82,7 +80,7 @@ func (o *RiskPredictorAnonymousNetwork) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasId() bool {
+func (o *RiskPredictorCommon) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -91,12 +89,12 @@ func (o *RiskPredictorAnonymousNetwork) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *RiskPredictorAnonymousNetwork) SetId(v string) {
+func (o *RiskPredictorCommon) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value
-func (o *RiskPredictorAnonymousNetwork) GetName() string {
+func (o *RiskPredictorCommon) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -107,7 +105,7 @@ func (o *RiskPredictorAnonymousNetwork) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetNameOk() (*string, bool) {
+func (o *RiskPredictorCommon) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -115,12 +113,12 @@ func (o *RiskPredictorAnonymousNetwork) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *RiskPredictorAnonymousNetwork) SetName(v string) {
+func (o *RiskPredictorCommon) SetName(v string) {
 	o.Name = v
 }
 
 // GetCompactName returns the CompactName field value
-func (o *RiskPredictorAnonymousNetwork) GetCompactName() string {
+func (o *RiskPredictorCommon) GetCompactName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -131,7 +129,7 @@ func (o *RiskPredictorAnonymousNetwork) GetCompactName() string {
 
 // GetCompactNameOk returns a tuple with the CompactName field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetCompactNameOk() (*string, bool) {
+func (o *RiskPredictorCommon) GetCompactNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -139,12 +137,12 @@ func (o *RiskPredictorAnonymousNetwork) GetCompactNameOk() (*string, bool) {
 }
 
 // SetCompactName sets field value
-func (o *RiskPredictorAnonymousNetwork) SetCompactName(v string) {
+func (o *RiskPredictorCommon) SetCompactName(v string) {
 	o.CompactName = v
 }
 
 // GetType returns the Type field value
-func (o *RiskPredictorAnonymousNetwork) GetType() EnumPredictorType {
+func (o *RiskPredictorCommon) GetType() EnumPredictorType {
 	if o == nil {
 		var ret EnumPredictorType
 		return ret
@@ -155,7 +153,7 @@ func (o *RiskPredictorAnonymousNetwork) GetType() EnumPredictorType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetTypeOk() (*EnumPredictorType, bool) {
+func (o *RiskPredictorCommon) GetTypeOk() (*EnumPredictorType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -163,12 +161,12 @@ func (o *RiskPredictorAnonymousNetwork) GetTypeOk() (*EnumPredictorType, bool) {
 }
 
 // SetType sets field value
-func (o *RiskPredictorAnonymousNetwork) SetType(v EnumPredictorType) {
+func (o *RiskPredictorCommon) SetType(v EnumPredictorType) {
 	o.Type = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetDescription() string {
+func (o *RiskPredictorCommon) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -178,7 +176,7 @@ func (o *RiskPredictorAnonymousNetwork) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetDescriptionOk() (*string, bool) {
+func (o *RiskPredictorCommon) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -186,7 +184,7 @@ func (o *RiskPredictorAnonymousNetwork) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasDescription() bool {
+func (o *RiskPredictorCommon) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -195,12 +193,12 @@ func (o *RiskPredictorAnonymousNetwork) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *RiskPredictorAnonymousNetwork) SetDescription(v string) {
+func (o *RiskPredictorCommon) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetCreatedAt() time.Time {
+func (o *RiskPredictorCommon) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
@@ -210,7 +208,7 @@ func (o *RiskPredictorAnonymousNetwork) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetCreatedAtOk() (*time.Time, bool) {
+func (o *RiskPredictorCommon) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -218,7 +216,7 @@ func (o *RiskPredictorAnonymousNetwork) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasCreatedAt() bool {
+func (o *RiskPredictorCommon) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -227,12 +225,12 @@ func (o *RiskPredictorAnonymousNetwork) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *RiskPredictorAnonymousNetwork) SetCreatedAt(v time.Time) {
+func (o *RiskPredictorCommon) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetUpdatedAt() time.Time {
+func (o *RiskPredictorCommon) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
@@ -242,7 +240,7 @@ func (o *RiskPredictorAnonymousNetwork) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *RiskPredictorCommon) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -250,7 +248,7 @@ func (o *RiskPredictorAnonymousNetwork) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasUpdatedAt() bool {
+func (o *RiskPredictorCommon) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -259,12 +257,12 @@ func (o *RiskPredictorAnonymousNetwork) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *RiskPredictorAnonymousNetwork) SetUpdatedAt(v time.Time) {
+func (o *RiskPredictorCommon) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 // GetLicensed returns the Licensed field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetLicensed() bool {
+func (o *RiskPredictorCommon) GetLicensed() bool {
 	if o == nil || IsNil(o.Licensed) {
 		var ret bool
 		return ret
@@ -274,7 +272,7 @@ func (o *RiskPredictorAnonymousNetwork) GetLicensed() bool {
 
 // GetLicensedOk returns a tuple with the Licensed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetLicensedOk() (*bool, bool) {
+func (o *RiskPredictorCommon) GetLicensedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Licensed) {
 		return nil, false
 	}
@@ -282,7 +280,7 @@ func (o *RiskPredictorAnonymousNetwork) GetLicensedOk() (*bool, bool) {
 }
 
 // HasLicensed returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasLicensed() bool {
+func (o *RiskPredictorCommon) HasLicensed() bool {
 	if o != nil && !IsNil(o.Licensed) {
 		return true
 	}
@@ -291,12 +289,12 @@ func (o *RiskPredictorAnonymousNetwork) HasLicensed() bool {
 }
 
 // SetLicensed gets a reference to the given bool and assigns it to the Licensed field.
-func (o *RiskPredictorAnonymousNetwork) SetLicensed(v bool) {
+func (o *RiskPredictorCommon) SetLicensed(v bool) {
 	o.Licensed = &v
 }
 
 // GetDeletable returns the Deletable field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetDeletable() bool {
+func (o *RiskPredictorCommon) GetDeletable() bool {
 	if o == nil || IsNil(o.Deletable) {
 		var ret bool
 		return ret
@@ -306,7 +304,7 @@ func (o *RiskPredictorAnonymousNetwork) GetDeletable() bool {
 
 // GetDeletableOk returns a tuple with the Deletable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetDeletableOk() (*bool, bool) {
+func (o *RiskPredictorCommon) GetDeletableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Deletable) {
 		return nil, false
 	}
@@ -314,7 +312,7 @@ func (o *RiskPredictorAnonymousNetwork) GetDeletableOk() (*bool, bool) {
 }
 
 // HasDeletable returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasDeletable() bool {
+func (o *RiskPredictorCommon) HasDeletable() bool {
 	if o != nil && !IsNil(o.Deletable) {
 		return true
 	}
@@ -323,12 +321,12 @@ func (o *RiskPredictorAnonymousNetwork) HasDeletable() bool {
 }
 
 // SetDeletable gets a reference to the given bool and assigns it to the Deletable field.
-func (o *RiskPredictorAnonymousNetwork) SetDeletable(v bool) {
+func (o *RiskPredictorCommon) SetDeletable(v bool) {
 	o.Deletable = &v
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetDefault() RiskPredictorCommonDefault {
+func (o *RiskPredictorCommon) GetDefault() RiskPredictorCommonDefault {
 	if o == nil || IsNil(o.Default) {
 		var ret RiskPredictorCommonDefault
 		return ret
@@ -338,7 +336,7 @@ func (o *RiskPredictorAnonymousNetwork) GetDefault() RiskPredictorCommonDefault 
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
+func (o *RiskPredictorCommon) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
@@ -346,7 +344,7 @@ func (o *RiskPredictorAnonymousNetwork) GetDefaultOk() (*RiskPredictorCommonDefa
 }
 
 // HasDefault returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasDefault() bool {
+func (o *RiskPredictorCommon) HasDefault() bool {
 	if o != nil && !IsNil(o.Default) {
 		return true
 	}
@@ -355,12 +353,12 @@ func (o *RiskPredictorAnonymousNetwork) HasDefault() bool {
 }
 
 // SetDefault gets a reference to the given RiskPredictorCommonDefault and assigns it to the Default field.
-func (o *RiskPredictorAnonymousNetwork) SetDefault(v RiskPredictorCommonDefault) {
+func (o *RiskPredictorCommon) SetDefault(v RiskPredictorCommonDefault) {
 	o.Default = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetCondition() RiskPredictorCommonCondition {
+func (o *RiskPredictorCommon) GetCondition() RiskPredictorCommonCondition {
 	if o == nil || IsNil(o.Condition) {
 		var ret RiskPredictorCommonCondition
 		return ret
@@ -370,7 +368,7 @@ func (o *RiskPredictorAnonymousNetwork) GetCondition() RiskPredictorCommonCondit
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
+func (o *RiskPredictorCommon) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -378,7 +376,7 @@ func (o *RiskPredictorAnonymousNetwork) GetConditionOk() (*RiskPredictorCommonCo
 }
 
 // HasCondition returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasCondition() bool {
+func (o *RiskPredictorCommon) HasCondition() bool {
 	if o != nil && !IsNil(o.Condition) {
 		return true
 	}
@@ -387,43 +385,11 @@ func (o *RiskPredictorAnonymousNetwork) HasCondition() bool {
 }
 
 // SetCondition gets a reference to the given RiskPredictorCommonCondition and assigns it to the Condition field.
-func (o *RiskPredictorAnonymousNetwork) SetCondition(v RiskPredictorCommonCondition) {
+func (o *RiskPredictorCommon) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 
-// GetWhiteList returns the WhiteList field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetWhiteList() []string {
-	if o == nil || IsNil(o.WhiteList) {
-		var ret []string
-		return ret
-	}
-	return o.WhiteList
-}
-
-// GetWhiteListOk returns a tuple with the WhiteList field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetWhiteListOk() ([]string, bool) {
-	if o == nil || IsNil(o.WhiteList) {
-		return nil, false
-	}
-	return o.WhiteList, true
-}
-
-// HasWhiteList returns a boolean if a field has been set.
-func (o *RiskPredictorAnonymousNetwork) HasWhiteList() bool {
-	if o != nil && !IsNil(o.WhiteList) {
-		return true
-	}
-
-	return false
-}
-
-// SetWhiteList gets a reference to the given []string and assigns it to the WhiteList field.
-func (o *RiskPredictorAnonymousNetwork) SetWhiteList(v []string) {
-	o.WhiteList = v
-}
-
-func (o RiskPredictorAnonymousNetwork) MarshalJSON() ([]byte, error) {
+func (o RiskPredictorCommon) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -431,7 +397,7 @@ func (o RiskPredictorAnonymousNetwork) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o RiskPredictorAnonymousNetwork) ToMap() (map[string]interface{}, error) {
+func (o RiskPredictorCommon) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	// skip: id is readOnly
 	toSerialize["name"] = o.Name
@@ -450,44 +416,41 @@ func (o RiskPredictorAnonymousNetwork) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}
-	if !IsNil(o.WhiteList) {
-		toSerialize["whiteList"] = o.WhiteList
-	}
 	return toSerialize, nil
 }
 
-type NullableRiskPredictorAnonymousNetwork struct {
-	value *RiskPredictorAnonymousNetwork
+type NullableRiskPredictorCommon struct {
+	value *RiskPredictorCommon
 	isSet bool
 }
 
-func (v NullableRiskPredictorAnonymousNetwork) Get() *RiskPredictorAnonymousNetwork {
+func (v NullableRiskPredictorCommon) Get() *RiskPredictorCommon {
 	return v.value
 }
 
-func (v *NullableRiskPredictorAnonymousNetwork) Set(val *RiskPredictorAnonymousNetwork) {
+func (v *NullableRiskPredictorCommon) Set(val *RiskPredictorCommon) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRiskPredictorAnonymousNetwork) IsSet() bool {
+func (v NullableRiskPredictorCommon) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRiskPredictorAnonymousNetwork) Unset() {
+func (v *NullableRiskPredictorCommon) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRiskPredictorAnonymousNetwork(val *RiskPredictorAnonymousNetwork) *NullableRiskPredictorAnonymousNetwork {
-	return &NullableRiskPredictorAnonymousNetwork{value: val, isSet: true}
+func NewNullableRiskPredictorCommon(val *RiskPredictorCommon) *NullableRiskPredictorCommon {
+	return &NullableRiskPredictorCommon{value: val, isSet: true}
 }
 
-func (v NullableRiskPredictorAnonymousNetwork) MarshalJSON() ([]byte, error) {
+func (v NullableRiskPredictorCommon) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRiskPredictorAnonymousNetwork) UnmarshalJSON(src []byte) error {
+func (v *NullableRiskPredictorCommon) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
