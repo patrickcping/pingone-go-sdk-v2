@@ -119,5 +119,73 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 			repl: `import (
 	"math/big"`,
 		},
+
+		// RiskPredictor model
+		{
+			fileSelectPattern: "model_risk_predictor.go",
+			pattern:           `(func \(dst \*RiskPredictor\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
+
+	var common RiskPredictorCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.RiskPredictorAnonymousNetwork = nil
+	dst.RiskPredictorComposite = nil
+	dst.RiskPredictorCustom = nil
+	dst.RiskPredictorGeovelocity = nil
+	dst.RiskPredictorIPReputation = nil
+	dst.RiskPredictorNewDevice = nil
+	dst.RiskPredictorUEBA = nil
+	dst.RiskPredictorUserLocationAnomaly = nil
+	dst.RiskPredictorVelocity = nil
+
+	switch common.GetType() {
+	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
+		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_COMPOSITE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_MAP:
+		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_GEO_VELOCITY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorGeovelocity); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_IP_REPUTATION:
+		if err := json.Unmarshal(data, &dst.RiskPredictorIPReputation); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_NEW_DEVICE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorNewDevice); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUEBA); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUserLocationAnomaly); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_VELOCITY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorVelocity); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(RiskPredictor)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )
