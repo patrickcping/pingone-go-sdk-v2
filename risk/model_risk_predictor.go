@@ -94,143 +94,64 @@ func RiskPredictorVelocityAsRiskPredictor(v *RiskPredictorVelocity) RiskPredicto
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into RiskPredictorAnonymousNetwork
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorAnonymousNetwork)
-	if err == nil {
-		jsonRiskPredictorAnonymousNetwork, _ := json.Marshal(dst.RiskPredictorAnonymousNetwork)
-		if string(jsonRiskPredictorAnonymousNetwork) == "{}" { // empty struct
-			dst.RiskPredictorAnonymousNetwork = nil
-		} else {
-			match++
+
+	var common RiskPredictorCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.RiskPredictorAnonymousNetwork = nil
+	dst.RiskPredictorComposite = nil
+	dst.RiskPredictorCustom = nil
+	dst.RiskPredictorGeovelocity = nil
+	dst.RiskPredictorIPReputation = nil
+	dst.RiskPredictorNewDevice = nil
+	dst.RiskPredictorUEBA = nil
+	dst.RiskPredictorUserLocationAnomaly = nil
+	dst.RiskPredictorVelocity = nil
+
+	switch common.GetType() {
+	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
+		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorAnonymousNetwork = nil
-	}
-
-	// try to unmarshal data into RiskPredictorComposite
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorComposite)
-	if err == nil {
-		jsonRiskPredictorComposite, _ := json.Marshal(dst.RiskPredictorComposite)
-		if string(jsonRiskPredictorComposite) == "{}" { // empty struct
-			dst.RiskPredictorComposite = nil
-		} else {
-			match++
+	case ENUMPREDICTORTYPE_COMPOSITE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorComposite = nil
-	}
-
-	// try to unmarshal data into RiskPredictorCustom
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorCustom)
-	if err == nil {
-		jsonRiskPredictorCustom, _ := json.Marshal(dst.RiskPredictorCustom)
-		if string(jsonRiskPredictorCustom) == "{}" { // empty struct
-			dst.RiskPredictorCustom = nil
-		} else {
-			match++
+	case ENUMPREDICTORTYPE_MAP:
+		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorCustom = nil
-	}
-
-	// try to unmarshal data into RiskPredictorGeovelocity
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorGeovelocity)
-	if err == nil {
-		jsonRiskPredictorGeovelocity, _ := json.Marshal(dst.RiskPredictorGeovelocity)
-		if string(jsonRiskPredictorGeovelocity) == "{}" { // empty struct
-			dst.RiskPredictorGeovelocity = nil
-		} else {
-			match++
+	case ENUMPREDICTORTYPE_GEO_VELOCITY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorGeovelocity); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorGeovelocity = nil
-	}
-
-	// try to unmarshal data into RiskPredictorIPReputation
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorIPReputation)
-	if err == nil {
-		jsonRiskPredictorIPReputation, _ := json.Marshal(dst.RiskPredictorIPReputation)
-		if string(jsonRiskPredictorIPReputation) == "{}" { // empty struct
-			dst.RiskPredictorIPReputation = nil
-		} else {
-			match++
+	case ENUMPREDICTORTYPE_IP_REPUTATION:
+		if err := json.Unmarshal(data, &dst.RiskPredictorIPReputation); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorIPReputation = nil
-	}
-
-	// try to unmarshal data into RiskPredictorNewDevice
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorNewDevice)
-	if err == nil {
-		jsonRiskPredictorNewDevice, _ := json.Marshal(dst.RiskPredictorNewDevice)
-		if string(jsonRiskPredictorNewDevice) == "{}" { // empty struct
-			dst.RiskPredictorNewDevice = nil
-		} else {
-			match++
+	case ENUMPREDICTORTYPE_NEW_DEVICE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorNewDevice); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorNewDevice = nil
-	}
-
-	// try to unmarshal data into RiskPredictorUEBA
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorUEBA)
-	if err == nil {
-		jsonRiskPredictorUEBA, _ := json.Marshal(dst.RiskPredictorUEBA)
-		if string(jsonRiskPredictorUEBA) == "{}" { // empty struct
-			dst.RiskPredictorUEBA = nil
-		} else {
-			match++
+	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUEBA); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorUEBA = nil
-	}
-
-	// try to unmarshal data into RiskPredictorUserLocationAnomaly
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorUserLocationAnomaly)
-	if err == nil {
-		jsonRiskPredictorUserLocationAnomaly, _ := json.Marshal(dst.RiskPredictorUserLocationAnomaly)
-		if string(jsonRiskPredictorUserLocationAnomaly) == "{}" { // empty struct
-			dst.RiskPredictorUserLocationAnomaly = nil
-		} else {
-			match++
+	case ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUserLocationAnomaly); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorUserLocationAnomaly = nil
-	}
-
-	// try to unmarshal data into RiskPredictorVelocity
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorVelocity)
-	if err == nil {
-		jsonRiskPredictorVelocity, _ := json.Marshal(dst.RiskPredictorVelocity)
-		if string(jsonRiskPredictorVelocity) == "{}" { // empty struct
-			dst.RiskPredictorVelocity = nil
-		} else {
-			match++
+	case ENUMPREDICTORTYPE_VELOCITY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorVelocity); err != nil { // simple model
+			return err
 		}
-	} else {
-		dst.RiskPredictorVelocity = nil
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(RiskPredictor)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.RiskPredictorAnonymousNetwork = nil
-		dst.RiskPredictorComposite = nil
-		dst.RiskPredictorCustom = nil
-		dst.RiskPredictorGeovelocity = nil
-		dst.RiskPredictorIPReputation = nil
-		dst.RiskPredictorNewDevice = nil
-		dst.RiskPredictorUEBA = nil
-		dst.RiskPredictorUserLocationAnomaly = nil
-		dst.RiskPredictorVelocity = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(RiskPredictor)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(RiskPredictor)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
