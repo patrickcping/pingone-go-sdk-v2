@@ -12,411 +12,232 @@ package risk
 
 import (
 	"encoding/json"
-	"time"
+	"fmt"
 )
 
-// checks if the RiskPredictor type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RiskPredictor{}
-
-// RiskPredictor struct for RiskPredictor
+// RiskPredictor - struct for RiskPredictor
 type RiskPredictor struct {
-	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
-	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
-	Name string `json:"name"`
-	// A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details).
-	CompactName string `json:"compactName"`
-	Type EnumPredictorType `json:"type"`
-	// A string type. This specifies the description of the risk predictor. Maximum length is 1024 characters.
-	Description *string `json:"description,omitempty"`
-	// The time the resource was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// The time the resource was updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	// Indicates whether PingOne Risk is licensed for the environment.
-	Licensed *bool `json:"licensed,omitempty"`
-	// A boolean to indicate whether the predictor is deletable in the environment.
-	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCondition `json:"condition,omitempty"`
+	RiskPredictorAnonymousNetwork *RiskPredictorAnonymousNetwork
+	RiskPredictorComposite *RiskPredictorComposite
+	RiskPredictorCustom *RiskPredictorCustom
+	RiskPredictorGeovelocity *RiskPredictorGeovelocity
+	RiskPredictorIPReputation *RiskPredictorIPReputation
+	RiskPredictorNewDevice *RiskPredictorNewDevice
+	RiskPredictorUEBA *RiskPredictorUEBA
+	RiskPredictorUserLocationAnomaly *RiskPredictorUserLocationAnomaly
+	RiskPredictorVelocity *RiskPredictorVelocity
 }
 
-// NewRiskPredictor instantiates a new RiskPredictor object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType) *RiskPredictor {
-	this := RiskPredictor{}
-	this.Name = name
-	this.CompactName = compactName
-	this.Type = type_
-	return &this
-}
-
-// NewRiskPredictorWithDefaults instantiates a new RiskPredictor object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewRiskPredictorWithDefaults() *RiskPredictor {
-	this := RiskPredictor{}
-	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *RiskPredictor) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
+// RiskPredictorAnonymousNetworkAsRiskPredictor is a convenience function that returns RiskPredictorAnonymousNetwork wrapped in RiskPredictor
+func RiskPredictorAnonymousNetworkAsRiskPredictor(v *RiskPredictorAnonymousNetwork) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorAnonymousNetwork: v,
 	}
-	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
+// RiskPredictorCompositeAsRiskPredictor is a convenience function that returns RiskPredictorComposite wrapped in RiskPredictor
+func RiskPredictorCompositeAsRiskPredictor(v *RiskPredictorComposite) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorComposite: v,
 	}
-	return o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *RiskPredictor) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
+// RiskPredictorCustomAsRiskPredictor is a convenience function that returns RiskPredictorCustom wrapped in RiskPredictor
+func RiskPredictorCustomAsRiskPredictor(v *RiskPredictorCustom) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorCustom: v,
 	}
-
-	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *RiskPredictor) SetId(v string) {
-	o.Id = &v
-}
-
-// GetName returns the Name field value
-func (o *RiskPredictor) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
+// RiskPredictorGeovelocityAsRiskPredictor is a convenience function that returns RiskPredictorGeovelocity wrapped in RiskPredictor
+func RiskPredictorGeovelocityAsRiskPredictor(v *RiskPredictorGeovelocity) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorGeovelocity: v,
 	}
-
-	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// RiskPredictorIPReputationAsRiskPredictor is a convenience function that returns RiskPredictorIPReputation wrapped in RiskPredictor
+func RiskPredictorIPReputationAsRiskPredictor(v *RiskPredictorIPReputation) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorIPReputation: v,
 	}
-	return &o.Name, true
 }
 
-// SetName sets field value
-func (o *RiskPredictor) SetName(v string) {
-	o.Name = v
+// RiskPredictorNewDeviceAsRiskPredictor is a convenience function that returns RiskPredictorNewDevice wrapped in RiskPredictor
+func RiskPredictorNewDeviceAsRiskPredictor(v *RiskPredictorNewDevice) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorNewDevice: v,
+	}
 }
 
-// GetCompactName returns the CompactName field value
-func (o *RiskPredictor) GetCompactName() string {
-	if o == nil {
-		var ret string
-		return ret
+// RiskPredictorUEBAAsRiskPredictor is a convenience function that returns RiskPredictorUEBA wrapped in RiskPredictor
+func RiskPredictorUEBAAsRiskPredictor(v *RiskPredictorUEBA) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorUEBA: v,
+	}
+}
+
+// RiskPredictorUserLocationAnomalyAsRiskPredictor is a convenience function that returns RiskPredictorUserLocationAnomaly wrapped in RiskPredictor
+func RiskPredictorUserLocationAnomalyAsRiskPredictor(v *RiskPredictorUserLocationAnomaly) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorUserLocationAnomaly: v,
+	}
+}
+
+// RiskPredictorVelocityAsRiskPredictor is a convenience function that returns RiskPredictorVelocity wrapped in RiskPredictor
+func RiskPredictorVelocityAsRiskPredictor(v *RiskPredictorVelocity) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorVelocity: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
+
+	var common RiskPredictorCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
 	}
 
-	return o.CompactName
-}
+	dst.RiskPredictorAnonymousNetwork = nil
+	dst.RiskPredictorComposite = nil
+	dst.RiskPredictorCustom = nil
+	dst.RiskPredictorGeovelocity = nil
+	dst.RiskPredictorIPReputation = nil
+	dst.RiskPredictorNewDevice = nil
+	dst.RiskPredictorUEBA = nil
+	dst.RiskPredictorUserLocationAnomaly = nil
+	dst.RiskPredictorVelocity = nil
 
-// GetCompactNameOk returns a tuple with the CompactName field value
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetCompactNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+	switch common.GetType() {
+	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
+		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_COMPOSITE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_MAP:
+		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_GEO_VELOCITY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorGeovelocity); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_IP_REPUTATION:
+		if err := json.Unmarshal(data, &dst.RiskPredictorIPReputation); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_NEW_DEVICE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorNewDevice); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUEBA); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUserLocationAnomaly); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_VELOCITY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorVelocity); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(RiskPredictor)")
 	}
-	return &o.CompactName, true
+	return nil
 }
 
-// SetCompactName sets field value
-func (o *RiskPredictor) SetCompactName(v string) {
-	o.CompactName = v
-}
-
-// GetType returns the Type field value
-func (o *RiskPredictor) GetType() EnumPredictorType {
-	if o == nil {
-		var ret EnumPredictorType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetTypeOk() (*EnumPredictorType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *RiskPredictor) SetType(v EnumPredictorType) {
-	o.Type = v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *RiskPredictor) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *RiskPredictor) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src RiskPredictor) MarshalJSON() ([]byte, error) {
+	if src.RiskPredictorAnonymousNetwork != nil {
+		return json.Marshal(&src.RiskPredictorAnonymousNetwork)
 	}
 
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *RiskPredictor) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *RiskPredictor) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
-	}
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *RiskPredictor) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
+	if src.RiskPredictorComposite != nil {
+		return json.Marshal(&src.RiskPredictorComposite)
 	}
 
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *RiskPredictor) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *RiskPredictor) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *RiskPredictor) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
+	if src.RiskPredictorCustom != nil {
+		return json.Marshal(&src.RiskPredictorCustom)
 	}
 
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *RiskPredictor) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
-// GetLicensed returns the Licensed field value if set, zero value otherwise.
-func (o *RiskPredictor) GetLicensed() bool {
-	if o == nil || IsNil(o.Licensed) {
-		var ret bool
-		return ret
-	}
-	return *o.Licensed
-}
-
-// GetLicensedOk returns a tuple with the Licensed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetLicensedOk() (*bool, bool) {
-	if o == nil || IsNil(o.Licensed) {
-		return nil, false
-	}
-	return o.Licensed, true
-}
-
-// HasLicensed returns a boolean if a field has been set.
-func (o *RiskPredictor) HasLicensed() bool {
-	if o != nil && !IsNil(o.Licensed) {
-		return true
+	if src.RiskPredictorGeovelocity != nil {
+		return json.Marshal(&src.RiskPredictorGeovelocity)
 	}
 
-	return false
-}
-
-// SetLicensed gets a reference to the given bool and assigns it to the Licensed field.
-func (o *RiskPredictor) SetLicensed(v bool) {
-	o.Licensed = &v
-}
-
-// GetDeletable returns the Deletable field value if set, zero value otherwise.
-func (o *RiskPredictor) GetDeletable() bool {
-	if o == nil || IsNil(o.Deletable) {
-		var ret bool
-		return ret
-	}
-	return *o.Deletable
-}
-
-// GetDeletableOk returns a tuple with the Deletable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetDeletableOk() (*bool, bool) {
-	if o == nil || IsNil(o.Deletable) {
-		return nil, false
-	}
-	return o.Deletable, true
-}
-
-// HasDeletable returns a boolean if a field has been set.
-func (o *RiskPredictor) HasDeletable() bool {
-	if o != nil && !IsNil(o.Deletable) {
-		return true
+	if src.RiskPredictorIPReputation != nil {
+		return json.Marshal(&src.RiskPredictorIPReputation)
 	}
 
-	return false
-}
-
-// SetDeletable gets a reference to the given bool and assigns it to the Deletable field.
-func (o *RiskPredictor) SetDeletable(v bool) {
-	o.Deletable = &v
-}
-
-// GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictor) GetDefault() RiskPredictorDefault {
-	if o == nil || IsNil(o.Default) {
-		var ret RiskPredictorDefault
-		return ret
-	}
-	return *o.Default
-}
-
-// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetDefaultOk() (*RiskPredictorDefault, bool) {
-	if o == nil || IsNil(o.Default) {
-		return nil, false
-	}
-	return o.Default, true
-}
-
-// HasDefault returns a boolean if a field has been set.
-func (o *RiskPredictor) HasDefault() bool {
-	if o != nil && !IsNil(o.Default) {
-		return true
+	if src.RiskPredictorNewDevice != nil {
+		return json.Marshal(&src.RiskPredictorNewDevice)
 	}
 
-	return false
-}
-
-// SetDefault gets a reference to the given RiskPredictorDefault and assigns it to the Default field.
-func (o *RiskPredictor) SetDefault(v RiskPredictorDefault) {
-	o.Default = &v
-}
-
-// GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictor) GetCondition() RiskPredictorCondition {
-	if o == nil || IsNil(o.Condition) {
-		var ret RiskPredictorCondition
-		return ret
-	}
-	return *o.Condition
-}
-
-// GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPredictor) GetConditionOk() (*RiskPredictorCondition, bool) {
-	if o == nil || IsNil(o.Condition) {
-		return nil, false
-	}
-	return o.Condition, true
-}
-
-// HasCondition returns a boolean if a field has been set.
-func (o *RiskPredictor) HasCondition() bool {
-	if o != nil && !IsNil(o.Condition) {
-		return true
+	if src.RiskPredictorUEBA != nil {
+		return json.Marshal(&src.RiskPredictorUEBA)
 	}
 
-	return false
+	if src.RiskPredictorUserLocationAnomaly != nil {
+		return json.Marshal(&src.RiskPredictorUserLocationAnomaly)
+	}
+
+	if src.RiskPredictorVelocity != nil {
+		return json.Marshal(&src.RiskPredictorVelocity)
+	}
+
+	return nil, nil // no data in oneOf schemas
 }
 
-// SetCondition gets a reference to the given RiskPredictorCondition and assigns it to the Condition field.
-func (o *RiskPredictor) SetCondition(v RiskPredictorCondition) {
-	o.Condition = &v
-}
+// Get the actual instance
+func (obj *RiskPredictor) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.RiskPredictorAnonymousNetwork != nil {
+		return obj.RiskPredictorAnonymousNetwork
+	}
 
-func (o RiskPredictor) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
+	if obj.RiskPredictorComposite != nil {
+		return obj.RiskPredictorComposite
 	}
-	return json.Marshal(toSerialize)
-}
 
-func (o RiskPredictor) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	toSerialize["name"] = o.Name
-	toSerialize["compactName"] = o.CompactName
-	toSerialize["type"] = o.Type
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if obj.RiskPredictorCustom != nil {
+		return obj.RiskPredictorCustom
 	}
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
-	// skip: licensed is readOnly
-	// skip: deletable is readOnly
-	if !IsNil(o.Default) {
-		toSerialize["default"] = o.Default
+
+	if obj.RiskPredictorGeovelocity != nil {
+		return obj.RiskPredictorGeovelocity
 	}
-	if !IsNil(o.Condition) {
-		toSerialize["condition"] = o.Condition
+
+	if obj.RiskPredictorIPReputation != nil {
+		return obj.RiskPredictorIPReputation
 	}
-	return toSerialize, nil
+
+	if obj.RiskPredictorNewDevice != nil {
+		return obj.RiskPredictorNewDevice
+	}
+
+	if obj.RiskPredictorUEBA != nil {
+		return obj.RiskPredictorUEBA
+	}
+
+	if obj.RiskPredictorUserLocationAnomaly != nil {
+		return obj.RiskPredictorUserLocationAnomaly
+	}
+
+	if obj.RiskPredictorVelocity != nil {
+		return obj.RiskPredictorVelocity
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableRiskPredictor struct {

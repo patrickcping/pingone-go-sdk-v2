@@ -37,8 +37,8 @@ type RiskPredictorUserLocationAnomaly struct {
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
 	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCondition `json:"condition,omitempty"`
+	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
+	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	Days *int32 `json:"days,omitempty"`
 	Radius RiskPredictorUserLocationAnomalyAllOfRadius `json:"radius"`
 }
@@ -329,9 +329,9 @@ func (o *RiskPredictorUserLocationAnomaly) SetDeletable(v bool) {
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictorUserLocationAnomaly) GetDefault() RiskPredictorDefault {
+func (o *RiskPredictorUserLocationAnomaly) GetDefault() RiskPredictorCommonDefault {
 	if o == nil || IsNil(o.Default) {
-		var ret RiskPredictorDefault
+		var ret RiskPredictorCommonDefault
 		return ret
 	}
 	return *o.Default
@@ -339,7 +339,7 @@ func (o *RiskPredictorUserLocationAnomaly) GetDefault() RiskPredictorDefault {
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUserLocationAnomaly) GetDefaultOk() (*RiskPredictorDefault, bool) {
+func (o *RiskPredictorUserLocationAnomaly) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
@@ -355,15 +355,15 @@ func (o *RiskPredictorUserLocationAnomaly) HasDefault() bool {
 	return false
 }
 
-// SetDefault gets a reference to the given RiskPredictorDefault and assigns it to the Default field.
-func (o *RiskPredictorUserLocationAnomaly) SetDefault(v RiskPredictorDefault) {
+// SetDefault gets a reference to the given RiskPredictorCommonDefault and assigns it to the Default field.
+func (o *RiskPredictorUserLocationAnomaly) SetDefault(v RiskPredictorCommonDefault) {
 	o.Default = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictorUserLocationAnomaly) GetCondition() RiskPredictorCondition {
+func (o *RiskPredictorUserLocationAnomaly) GetCondition() RiskPredictorCommonCondition {
 	if o == nil || IsNil(o.Condition) {
-		var ret RiskPredictorCondition
+		var ret RiskPredictorCommonCondition
 		return ret
 	}
 	return *o.Condition
@@ -371,7 +371,7 @@ func (o *RiskPredictorUserLocationAnomaly) GetCondition() RiskPredictorCondition
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUserLocationAnomaly) GetConditionOk() (*RiskPredictorCondition, bool) {
+func (o *RiskPredictorUserLocationAnomaly) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -387,8 +387,8 @@ func (o *RiskPredictorUserLocationAnomaly) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given RiskPredictorCondition and assigns it to the Condition field.
-func (o *RiskPredictorUserLocationAnomaly) SetCondition(v RiskPredictorCondition) {
+// SetCondition gets a reference to the given RiskPredictorCommonCondition and assigns it to the Condition field.
+func (o *RiskPredictorUserLocationAnomaly) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 

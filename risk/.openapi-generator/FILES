@@ -60,6 +60,11 @@ docs/RiskPolicySetRiskPoliciesInnerConditionEquals.md
 docs/RiskPredictor.md
 docs/RiskPredictorAnonymousNetwork.md
 docs/RiskPredictorAnonymousNetworkAllOf.md
+docs/RiskPredictorCommon.md
+docs/RiskPredictorCommonCondition.md
+docs/RiskPredictorCommonConditionScoresInner.md
+docs/RiskPredictorCommonDefault.md
+docs/RiskPredictorCommonDefaultResult.md
 docs/RiskPredictorComposite.md
 docs/RiskPredictorCompositeAllOf.md
 docs/RiskPredictorCompositeAllOfComposition.md
@@ -70,8 +75,6 @@ docs/RiskPredictorCompositeConditionOneOf.md
 docs/RiskPredictorCompositeConditionOneOf1.md
 docs/RiskPredictorCompositeNot.md
 docs/RiskPredictorCompositeOr.md
-docs/RiskPredictorCondition.md
-docs/RiskPredictorConditionScoresInner.md
 docs/RiskPredictorCustom.md
 docs/RiskPredictorCustomAllOf.md
 docs/RiskPredictorCustomAllOfMap.md
@@ -80,8 +83,6 @@ docs/RiskPredictorCustomItemBetween.md
 docs/RiskPredictorCustomItemBetweenBetween.md
 docs/RiskPredictorCustomItemIPRange.md
 docs/RiskPredictorCustomItemList.md
-docs/RiskPredictorDefault.md
-docs/RiskPredictorDefaultResult.md
 docs/RiskPredictorGeovelocity.md
 docs/RiskPredictorGeovelocityAllOf.md
 docs/RiskPredictorIPReputation.md
@@ -155,6 +156,11 @@ model_risk_policy_set_risk_policies_inner_condition_equals.go
 model_risk_predictor.go
 model_risk_predictor_anonymous_network.go
 model_risk_predictor_anonymous_network_all_of.go
+model_risk_predictor_common.go
+model_risk_predictor_common_condition.go
+model_risk_predictor_common_condition_scores_inner.go
+model_risk_predictor_common_default.go
+model_risk_predictor_common_default_result.go
 model_risk_predictor_composite.go
 model_risk_predictor_composite_all_of.go
 model_risk_predictor_composite_all_of_composition.go
@@ -165,8 +171,6 @@ model_risk_predictor_composite_condition_one_of.go
 model_risk_predictor_composite_condition_one_of_1.go
 model_risk_predictor_composite_not.go
 model_risk_predictor_composite_or.go
-model_risk_predictor_condition.go
-model_risk_predictor_condition_scores_inner.go
 model_risk_predictor_custom.go
 model_risk_predictor_custom_all_of.go
 model_risk_predictor_custom_all_of_map.go
@@ -175,8 +179,6 @@ model_risk_predictor_custom_item_between.go
 model_risk_predictor_custom_item_between_between.go
 model_risk_predictor_custom_item_ip_range.go
 model_risk_predictor_custom_item_list.go
-model_risk_predictor_default.go
-model_risk_predictor_default_result.go
 model_risk_predictor_geovelocity.go
 model_risk_predictor_geovelocity_all_of.go
 model_risk_predictor_ip_reputation.go

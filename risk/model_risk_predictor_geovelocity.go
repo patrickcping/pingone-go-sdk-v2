@@ -37,8 +37,8 @@ type RiskPredictorGeovelocity struct {
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
 	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCondition `json:"condition,omitempty"`
+	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
+	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	// A list of IP addresses (CDIRs) that are ignored for the predictor results.
 	WhiteList []string `json:"whiteList,omitempty"`
 }
@@ -328,9 +328,9 @@ func (o *RiskPredictorGeovelocity) SetDeletable(v bool) {
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictorGeovelocity) GetDefault() RiskPredictorDefault {
+func (o *RiskPredictorGeovelocity) GetDefault() RiskPredictorCommonDefault {
 	if o == nil || IsNil(o.Default) {
-		var ret RiskPredictorDefault
+		var ret RiskPredictorCommonDefault
 		return ret
 	}
 	return *o.Default
@@ -338,7 +338,7 @@ func (o *RiskPredictorGeovelocity) GetDefault() RiskPredictorDefault {
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorGeovelocity) GetDefaultOk() (*RiskPredictorDefault, bool) {
+func (o *RiskPredictorGeovelocity) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
@@ -354,15 +354,15 @@ func (o *RiskPredictorGeovelocity) HasDefault() bool {
 	return false
 }
 
-// SetDefault gets a reference to the given RiskPredictorDefault and assigns it to the Default field.
-func (o *RiskPredictorGeovelocity) SetDefault(v RiskPredictorDefault) {
+// SetDefault gets a reference to the given RiskPredictorCommonDefault and assigns it to the Default field.
+func (o *RiskPredictorGeovelocity) SetDefault(v RiskPredictorCommonDefault) {
 	o.Default = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictorGeovelocity) GetCondition() RiskPredictorCondition {
+func (o *RiskPredictorGeovelocity) GetCondition() RiskPredictorCommonCondition {
 	if o == nil || IsNil(o.Condition) {
-		var ret RiskPredictorCondition
+		var ret RiskPredictorCommonCondition
 		return ret
 	}
 	return *o.Condition
@@ -370,7 +370,7 @@ func (o *RiskPredictorGeovelocity) GetCondition() RiskPredictorCondition {
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorGeovelocity) GetConditionOk() (*RiskPredictorCondition, bool) {
+func (o *RiskPredictorGeovelocity) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -386,8 +386,8 @@ func (o *RiskPredictorGeovelocity) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given RiskPredictorCondition and assigns it to the Condition field.
-func (o *RiskPredictorGeovelocity) SetCondition(v RiskPredictorCondition) {
+// SetCondition gets a reference to the given RiskPredictorCommonCondition and assigns it to the Condition field.
+func (o *RiskPredictorGeovelocity) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 

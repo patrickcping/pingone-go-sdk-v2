@@ -1761,6 +1761,17 @@ components:
       - level
       type: object
     RiskPredictor:
+      oneOf:
+      - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
+      - $ref: '#/components/schemas/RiskPredictorComposite'
+      - $ref: '#/components/schemas/RiskPredictorCustom'
+      - $ref: '#/components/schemas/RiskPredictorGeovelocity'
+      - $ref: '#/components/schemas/RiskPredictorIPReputation'
+      - $ref: '#/components/schemas/RiskPredictorNewDevice'
+      - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly'
+      - $ref: '#/components/schemas/RiskPredictorUEBA'
+      - $ref: '#/components/schemas/RiskPredictorVelocity'
+    RiskPredictorCommon:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
         default:
@@ -1829,9 +1840,9 @@ components:
           readOnly: true
           type: boolean
         default:
-          $ref: '#/components/schemas/RiskPredictor_default'
+          $ref: '#/components/schemas/RiskPredictorCommon_default'
         condition:
-          $ref: '#/components/schemas/RiskPredictor_condition'
+          $ref: '#/components/schemas/RiskPredictorCommon_condition'
       required:
       - compactName
       - name
@@ -1839,11 +1850,11 @@ components:
       type: object
     RiskPredictorAnonymousNetwork:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork_allOf'
     RiskPredictorComposite:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorComposite_allOf'
     RiskPredictorCompositeAnd:
       properties:
@@ -1884,7 +1895,7 @@ components:
       type: object
     RiskPredictorCustom:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorCustom_allOf'
     RiskPredictorCustomItem:
       oneOf:
@@ -1938,27 +1949,27 @@ components:
       type: object
     RiskPredictorGeovelocity:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
     RiskPredictorIPReputation:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
     RiskPredictorNewDevice:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorNewDevice_allOf'
     RiskPredictorUserLocationAnomaly:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf'
     RiskPredictorUEBA:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorUEBA_allOf'
     RiskPredictorVelocity:
       allOf:
-      - $ref: '#/components/schemas/RiskPredictor'
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorVelocity_allOf'
     EntityArray__embedded:
       example:
@@ -2149,7 +2160,7 @@ components:
           type: array
         riskPredictors:
           items:
-            $ref: '#/components/schemas/RiskPredictor'
+            $ref: '#/components/schemas/RiskPredictorCommon'
           type: array
       type: object
     P1Error_details_inner_innerError:
@@ -2767,7 +2778,7 @@ components:
       - name
       - result
       type: object
-    RiskPredictor_default_result:
+    RiskPredictorCommon_default_result:
       description: "This specifies the result assigned to the predictor if the predictor\
         \ could not be calculated during the risk evaluation. If this field is not\
         \ provided, and the predictor could not be calculated during risk evaluation,\
@@ -2785,7 +2796,7 @@ components:
       required:
       - level
       type: object
-    RiskPredictor_default:
+    RiskPredictorCommon_default:
       description: Contains the default values used for a new risk predictor.
       example:
         result:
@@ -2804,12 +2815,12 @@ components:
         evaluated:
           type: boolean
         result:
-          $ref: '#/components/schemas/RiskPredictor_default_result'
+          $ref: '#/components/schemas/RiskPredictorCommon_default_result'
       required:
       - result
       - weight
       type: object
-    RiskPredictor_condition_scores_inner:
+    RiskPredictorCommon_condition_scores_inner:
       example:
         name: name
         value: value
@@ -2819,7 +2830,7 @@ components:
         value:
           type: string
       type: object
-    RiskPredictor_condition:
+    RiskPredictorCommon_condition:
       example:
         scores:
         - name: name
@@ -2829,7 +2840,7 @@ components:
       properties:
         scores:
           items:
-            $ref: '#/components/schemas/RiskPredictor_condition_scores_inner'
+            $ref: '#/components/schemas/RiskPredictorCommon_condition_scores_inner'
           type: array
       readOnly: true
       type: object
