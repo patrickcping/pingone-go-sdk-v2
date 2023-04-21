@@ -49,6 +49,10 @@ var (
 		pattern           string
 		repl              string
 	}{
+		/////////////////////////
+		// ALL API
+		/////////////////////////
+
 		// Add retryability to typed output
 		{
 			fileSelectPattern: "api_*.go",
@@ -82,11 +86,16 @@ func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 func ($1) internal$2$3($4) (*http.Response, error) {`,
 		},
 
-		// Handle errors for linters
-		// {
-		// 	`	localVarHTTPResponse.Body.Close()`,
-		// 	`	_ = localVarHTTPResponse.Body.Close()`,
-		// },
+		// Handle errors for Github code scanning
+		{
+			fileSelectPattern: "api_*.go",
+			pattern:           `	localVarHTTPResponse\.Body\.Close\(\)`,
+			repl:              `	_ = localVarHTTPResponse.Body.Close()`,
+		},
+
+		/////////////////////////
+		// Management: Password policy
+		/////////////////////////
 
 		// Password policy model
 		{
@@ -107,6 +116,10 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 			repl:              `toSerialize["~!@#$%^&*()-_=+[]{}|;:,.<>/?"] = o.SpecialChar`,
 		},
 
+		/////////////////////////
+		// Management: Certificate
+		/////////////////////////
+
 		// Certificate model
 		{
 			fileSelectPattern: "model_certificate.go",
@@ -119,6 +132,10 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 			repl: `import (
 	"math/big"`,
 		},
+
+		/////////////////////////
+		// Risk: Risk Predictor
+		/////////////////////////
 
 		// RiskPredictor model
 		{
