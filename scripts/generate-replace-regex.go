@@ -49,10 +49,14 @@ var (
 		pattern           string
 		repl              string
 	}{
+		/////////////////////////
+		// ALL API
+		/////////////////////////
+
 		// Add retryability to typed output
 		{
 			fileSelectPattern: "api_*.go",
-			pattern:           `func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(([\*a-zA-Z]*), \*http\.Response, error\) {`,
+			pattern:           `func \(([a-zA-Z0-9\* ]+)\) ([a-zA-Z])([a-zA-Z0-9]+Execute)\(([a-zA-Z0-9 ]*)\) \(([\*a-zA-Z0-9]*), \*http\.Response, error\) {`,
 			repl: `func ($1) $2$3($4) ($5, *http.Response, error) {
 	obj, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
@@ -68,7 +72,7 @@ func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 		// Add retryability to non-typed outputs
 		{
 			fileSelectPattern: "api_*.go",
-			pattern:           `func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(\*http\.Response, error\) {`,
+			pattern:           `func \(([a-zA-Z0-9\* ]+)\) ([a-zA-Z])([a-zA-Z0-9]+Execute)\(([a-zA-Z0-9 ]*)\) \(\*http\.Response, error\) {`,
 			repl: `func ($1) $2$3($4) (*http.Response, error) {
 	_, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
@@ -82,11 +86,16 @@ func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 func ($1) internal$2$3($4) (*http.Response, error) {`,
 		},
 
-		// Handle errors for linters
-		// {
-		// 	`	localVarHTTPResponse.Body.Close()`,
-		// 	`	_ = localVarHTTPResponse.Body.Close()`,
-		// },
+		// Handle errors for Github code scanning
+		{
+			fileSelectPattern: "api_*.go",
+			pattern:           `	localVarHTTPResponse\.Body\.Close\(\)`,
+			repl:              `	_ = localVarHTTPResponse.Body.Close()`,
+		},
+
+		/////////////////////////
+		// Management: Password policy
+		/////////////////////////
 
 		// Password policy model
 		{
@@ -107,6 +116,10 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 			repl:              `toSerialize["~!@#$%^&*()-_=+[]{}|;:,.<>/?"] = o.SpecialChar`,
 		},
 
+		/////////////////////////
+		// Management: Certificate
+		/////////////////////////
+
 		// Certificate model
 		{
 			fileSelectPattern: "model_certificate.go",
@@ -118,6 +131,78 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 			pattern:           `import \(`,
 			repl: `import (
 	"math/big"`,
+		},
+
+		/////////////////////////
+		// Risk: Risk Predictor
+		/////////////////////////
+
+		// RiskPredictor model
+		{
+			fileSelectPattern: "model_risk_predictor.go",
+			pattern:           `(func \(dst \*RiskPredictor\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
+
+	var common RiskPredictorCommon
+
+	if err := json.Unmarshal(data, &common); err != nil { // simple model
+		return err
+	}
+
+	dst.RiskPredictorAnonymousNetwork = nil
+	dst.RiskPredictorComposite = nil
+	dst.RiskPredictorCustom = nil
+	dst.RiskPredictorGeovelocity = nil
+	dst.RiskPredictorIPReputation = nil
+	dst.RiskPredictorNewDevice = nil
+	dst.RiskPredictorUEBA = nil
+	dst.RiskPredictorUserLocationAnomaly = nil
+	dst.RiskPredictorVelocity = nil
+
+	switch common.GetType() {
+	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
+		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_COMPOSITE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_MAP:
+		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_GEO_VELOCITY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorGeovelocity); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_IP_REPUTATION:
+		if err := json.Unmarshal(data, &dst.RiskPredictorIPReputation); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_NEW_DEVICE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorNewDevice); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUEBA); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorUserLocationAnomaly); err != nil { // simple model
+			return err
+		}
+	case ENUMPREDICTORTYPE_VELOCITY:
+		if err := json.Unmarshal(data, &dst.RiskPredictorVelocity); err != nil { // simple model
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(RiskPredictor)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
 	}
 )

@@ -53,6 +53,16 @@ func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsGet(c
 
 // Execute executes the request
 func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDSessionsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDSessionsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *SessionsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDSessionsGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDSessionsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -100,7 +110,7 @@ func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsGetEx
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -216,6 +226,16 @@ func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessi
 
 // Execute executes the request
 func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *SessionsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -264,7 +284,7 @@ func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessi
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -380,6 +400,16 @@ func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessi
 
 // Execute executes the request
 func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *SessionsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -428,7 +458,7 @@ func (a *SessionsApiService) V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessi
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err

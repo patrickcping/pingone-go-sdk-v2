@@ -115,7 +115,7 @@ func (a *GroupsApiService) internalCreateGroupExecute(r ApiCreateGroupRequest) (
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -314,7 +314,7 @@ func (a *GroupsApiService) internalCreateGroupNestingExecute(r ApiCreateGroupNes
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -504,7 +504,7 @@ func (a *GroupsApiService) internalDeleteGroupExecute(r ApiDeleteGroupRequest) (
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -678,7 +678,7 @@ func (a *GroupsApiService) internalDeleteGroupNestingExecute(r ApiDeleteGroupNes
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -863,7 +863,7 @@ func (a *GroupsApiService) internalReadAllGroupsExecute(r ApiReadAllGroupsReques
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1043,7 +1043,7 @@ func (a *GroupsApiService) internalReadGroupNestingExecute(r ApiReadGroupNesting
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1232,7 +1232,7 @@ func (a *GroupsApiService) internalReadOneGroupExecute(r ApiReadOneGroupRequest)
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1416,7 +1416,7 @@ func (a *GroupsApiService) internalReadOneGroupNestingExecute(r ApiReadOneGroupN
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1604,7 +1604,7 @@ func (a *GroupsApiService) internalUpdateGroupExecute(r ApiUpdateGroupRequest) (
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

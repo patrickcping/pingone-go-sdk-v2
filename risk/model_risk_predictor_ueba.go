@@ -37,8 +37,8 @@ type RiskPredictorUEBA struct {
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
 	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCondition `json:"condition,omitempty"`
+	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
+	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	PredictionModel RiskPredictorUEBAAllOfPredictionModel `json:"predictionModel"`
 }
 
@@ -328,9 +328,9 @@ func (o *RiskPredictorUEBA) SetDeletable(v bool) {
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetDefault() RiskPredictorDefault {
+func (o *RiskPredictorUEBA) GetDefault() RiskPredictorCommonDefault {
 	if o == nil || IsNil(o.Default) {
-		var ret RiskPredictorDefault
+		var ret RiskPredictorCommonDefault
 		return ret
 	}
 	return *o.Default
@@ -338,7 +338,7 @@ func (o *RiskPredictorUEBA) GetDefault() RiskPredictorDefault {
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetDefaultOk() (*RiskPredictorDefault, bool) {
+func (o *RiskPredictorUEBA) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
@@ -354,15 +354,15 @@ func (o *RiskPredictorUEBA) HasDefault() bool {
 	return false
 }
 
-// SetDefault gets a reference to the given RiskPredictorDefault and assigns it to the Default field.
-func (o *RiskPredictorUEBA) SetDefault(v RiskPredictorDefault) {
+// SetDefault gets a reference to the given RiskPredictorCommonDefault and assigns it to the Default field.
+func (o *RiskPredictorUEBA) SetDefault(v RiskPredictorCommonDefault) {
 	o.Default = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetCondition() RiskPredictorCondition {
+func (o *RiskPredictorUEBA) GetCondition() RiskPredictorCommonCondition {
 	if o == nil || IsNil(o.Condition) {
-		var ret RiskPredictorCondition
+		var ret RiskPredictorCommonCondition
 		return ret
 	}
 	return *o.Condition
@@ -370,7 +370,7 @@ func (o *RiskPredictorUEBA) GetCondition() RiskPredictorCondition {
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetConditionOk() (*RiskPredictorCondition, bool) {
+func (o *RiskPredictorUEBA) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -386,8 +386,8 @@ func (o *RiskPredictorUEBA) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given RiskPredictorCondition and assigns it to the Condition field.
-func (o *RiskPredictorUEBA) SetCondition(v RiskPredictorCondition) {
+// SetCondition gets a reference to the given RiskPredictorCommonCondition and assigns it to the Condition field.
+func (o *RiskPredictorUEBA) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 

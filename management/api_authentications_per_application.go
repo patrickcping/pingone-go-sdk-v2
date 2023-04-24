@@ -74,6 +74,16 @@ func (a *AuthenticationsPerApplicationApiService) V1EnvironmentsEnvironmentIDApp
 
 // Execute executes the request
 func (a *AuthenticationsPerApplicationApiService) V1EnvironmentsEnvironmentIDApplicationSignonsGetExecute(r ApiV1EnvironmentsEnvironmentIDApplicationSignonsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDApplicationSignonsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *AuthenticationsPerApplicationApiService) internalV1EnvironmentsEnvironmentIDApplicationSignonsGetExecute(r ApiV1EnvironmentsEnvironmentIDApplicationSignonsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -132,7 +142,7 @@ func (a *AuthenticationsPerApplicationApiService) V1EnvironmentsEnvironmentIDApp
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err

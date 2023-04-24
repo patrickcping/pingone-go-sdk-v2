@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExcludedPlatforms** | Pointer to [**[]EnumMobileIntegrityDetectionPlatform**](EnumMobileIntegrityDetectionPlatform.md) | You can enable device integrity checking separately for Android and iOS by setting &#x60;mobile.integrityDetection.mode&#x60; to &#x60;ENABLED&#x60; and then using &#x60;mobile.integrityDetection.excludedPlatforms&#x60; to specify the OS where you do not want to use device integrity checking. The values to use are &#x60;GOOGLE&#x60; and &#x60;IOS&#x60; (all upper case). Note that this is implemented as an array even though currently you can only include a single value. | [optional] 
+**ExcludedPlatforms** | Pointer to [**[]EnumMobileIntegrityDetectionPlatform**](EnumMobileIntegrityDetectionPlatform.md) | You can enable device integrity checking separately for Android and iOS by setting &#x60;mobile.integrityDetection.mode&#x60; to &#x60;ENABLED&#x60; and then using &#x60;mobile.integrityDetection.excludedPlatforms&#x60; to specify the OS where you do not want to use device integrity checking. The values to use are &#x60;GOOGLE&#x60; and &#x60;IOS&#x60; (all upper case). Note that this is implemented as an array even though currently you can only include a single value.  If &#x60;GOOGLE&#x60; is not included as a value, &#x60;googlePlay&#x60; is required to be set. | [optional] 
 **Mode** | Pointer to [**EnumEnabledStatus**](EnumEnabledStatus.md) |  | [optional] 
 **CacheDuration** | Pointer to [**ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration**](ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration.md) |  | [optional] 
+**GooglePlay** | Pointer to [**ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay**](ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetCacheDuration sets CacheDuration field to given value.
 `func (o *ApplicationOIDCAllOfMobileIntegrityDetection) HasCacheDuration() bool`
 
 HasCacheDuration returns a boolean if a field has been set.
+
+### GetGooglePlay
+
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetGooglePlay() ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay`
+
+GetGooglePlay returns the GooglePlay field if non-nil, zero value otherwise.
+
+### GetGooglePlayOk
+
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetGooglePlayOk() (*ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay, bool)`
+
+GetGooglePlayOk returns a tuple with the GooglePlay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGooglePlay
+
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetGooglePlay(v ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay)`
+
+SetGooglePlay sets GooglePlay field to given value.
+
+### HasGooglePlay
+
+`func (o *ApplicationOIDCAllOfMobileIntegrityDetection) HasGooglePlay() bool`
+
+HasGooglePlay returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

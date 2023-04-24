@@ -37,8 +37,8 @@ type RiskPredictorVelocity struct {
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
 	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCondition `json:"condition,omitempty"`
+	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
+	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	By []string `json:"by,omitempty"`
 	Every *RiskPredictorVelocityAllOfEvery `json:"every,omitempty"`
 	Fallback *RiskPredictorVelocityAllOfFallback `json:"fallback,omitempty"`
@@ -334,9 +334,9 @@ func (o *RiskPredictorVelocity) SetDeletable(v bool) {
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictorVelocity) GetDefault() RiskPredictorDefault {
+func (o *RiskPredictorVelocity) GetDefault() RiskPredictorCommonDefault {
 	if o == nil || IsNil(o.Default) {
-		var ret RiskPredictorDefault
+		var ret RiskPredictorCommonDefault
 		return ret
 	}
 	return *o.Default
@@ -344,7 +344,7 @@ func (o *RiskPredictorVelocity) GetDefault() RiskPredictorDefault {
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorVelocity) GetDefaultOk() (*RiskPredictorDefault, bool) {
+func (o *RiskPredictorVelocity) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
@@ -360,15 +360,15 @@ func (o *RiskPredictorVelocity) HasDefault() bool {
 	return false
 }
 
-// SetDefault gets a reference to the given RiskPredictorDefault and assigns it to the Default field.
-func (o *RiskPredictorVelocity) SetDefault(v RiskPredictorDefault) {
+// SetDefault gets a reference to the given RiskPredictorCommonDefault and assigns it to the Default field.
+func (o *RiskPredictorVelocity) SetDefault(v RiskPredictorCommonDefault) {
 	o.Default = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictorVelocity) GetCondition() RiskPredictorCondition {
+func (o *RiskPredictorVelocity) GetCondition() RiskPredictorCommonCondition {
 	if o == nil || IsNil(o.Condition) {
-		var ret RiskPredictorCondition
+		var ret RiskPredictorCommonCondition
 		return ret
 	}
 	return *o.Condition
@@ -376,7 +376,7 @@ func (o *RiskPredictorVelocity) GetCondition() RiskPredictorCondition {
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorVelocity) GetConditionOk() (*RiskPredictorCondition, bool) {
+func (o *RiskPredictorVelocity) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -392,8 +392,8 @@ func (o *RiskPredictorVelocity) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given RiskPredictorCondition and assigns it to the Condition field.
-func (o *RiskPredictorVelocity) SetCondition(v RiskPredictorCondition) {
+// SetCondition gets a reference to the given RiskPredictorCommonCondition and assigns it to the Condition field.
+func (o *RiskPredictorVelocity) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 

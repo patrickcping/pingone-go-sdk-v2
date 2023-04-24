@@ -56,6 +56,16 @@ func (a *UserActivitiesApiService) V1EnvironmentsEnvironmentIDUserActivitiesGet(
 
 // Execute executes the request
 func (a *UserActivitiesApiService) V1EnvironmentsEnvironmentIDUserActivitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDUserActivitiesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUserActivitiesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserActivitiesApiService) internalV1EnvironmentsEnvironmentIDUserActivitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDUserActivitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -105,7 +115,7 @@ func (a *UserActivitiesApiService) V1EnvironmentsEnvironmentIDUserActivitiesGetE
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err

@@ -50,6 +50,16 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsGe
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDIntegrationsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *IntegrationCatalogApiService) internalV1EnvironmentsEnvironmentIDIntegrationsGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -96,7 +106,7 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsGe
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -209,6 +219,16 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIn
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *IntegrationCatalogApiService) internalV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -256,7 +276,7 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIn
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -369,6 +389,16 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIn
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *IntegrationCatalogApiService) internalV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -416,7 +446,7 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIn
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -532,6 +562,16 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIn
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *IntegrationCatalogApiService) internalV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -580,7 +620,7 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIn
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -696,6 +736,16 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIn
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *IntegrationCatalogApiService) internalV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,7 +794,7 @@ func (a *IntegrationCatalogApiService) V1EnvironmentsEnvironmentIDIntegrationsIn
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err

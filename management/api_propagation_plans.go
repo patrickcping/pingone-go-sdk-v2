@@ -56,6 +56,16 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 
 // Execute executes the request
 func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlansGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationPlansGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationPlansApiService) internalV1EnvironmentsEnvironmentIDPropagationPlansGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -105,7 +115,7 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -224,6 +234,16 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 
 // Execute executes the request
 func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationPlansApiService) internalV1EnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -274,7 +294,7 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -393,6 +413,16 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 
 // Execute executes the request
 func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlansPlanIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationPlansPlanIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationPlansApiService) internalV1EnvironmentsEnvironmentIDPropagationPlansPlanIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -443,7 +473,7 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -562,6 +592,16 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 
 // Execute executes the request
 func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlansPlanIDPutExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationPlansPlanIDPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationPlansApiService) internalV1EnvironmentsEnvironmentIDPropagationPlansPlanIDPutExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -611,7 +651,7 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -727,6 +767,16 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 
 // Execute executes the request
 func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlansPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationPlansPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationPlansApiService) internalV1EnvironmentsEnvironmentIDPropagationPlansPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -775,7 +825,7 @@ func (a *PropagationPlansApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err

@@ -124,7 +124,7 @@ func (a *UsersApiService) internalCreateUserExecute(r ApiCreateUserRequest) (*Us
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -314,7 +314,7 @@ func (a *UsersApiService) internalDeleteUserExecute(r ApiDeleteUserRequest) (*ht
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -499,7 +499,7 @@ func (a *UsersApiService) internalReadAllUsersExecute(r ApiReadAllUsersRequest) 
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -688,7 +688,7 @@ func (a *UsersApiService) internalReadUserExecute(r ApiReadUserRequest) (*User, 
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -876,7 +876,7 @@ func (a *UsersApiService) internalUpdateUserPatchExecute(r ApiUpdateUserPatchReq
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1064,7 +1064,7 @@ func (a *UsersApiService) internalUpdateUserPutExecute(r ApiUpdateUserPutRequest
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -1186,6 +1186,16 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProvider
 
 // Execute executes the request
 func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1233,7 +1243,7 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProvider
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -1352,6 +1362,16 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProvider
 
 // Execute executes the request
 func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1401,7 +1421,7 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProvider
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -1514,6 +1534,16 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet(
 
 // Execute executes the request
 func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1561,7 +1591,7 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetE
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -1680,6 +1710,16 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut(
 
 // Execute executes the request
 func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1729,7 +1769,7 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutE
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err

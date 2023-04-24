@@ -37,8 +37,8 @@ type RiskPredictorAnonymousNetwork struct {
 	Licensed *bool `json:"licensed,omitempty"`
 	// A boolean to indicate whether the predictor is deletable in the environment.
 	Deletable *bool `json:"deletable,omitempty"`
-	Default *RiskPredictorDefault `json:"default,omitempty"`
-	Condition *RiskPredictorCondition `json:"condition,omitempty"`
+	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
+	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
 	// A list of IP addresses (CIDRs) that are ignored for the predictor results.
 	WhiteList []string `json:"whiteList,omitempty"`
 }
@@ -328,9 +328,9 @@ func (o *RiskPredictorAnonymousNetwork) SetDeletable(v bool) {
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetDefault() RiskPredictorDefault {
+func (o *RiskPredictorAnonymousNetwork) GetDefault() RiskPredictorCommonDefault {
 	if o == nil || IsNil(o.Default) {
-		var ret RiskPredictorDefault
+		var ret RiskPredictorCommonDefault
 		return ret
 	}
 	return *o.Default
@@ -338,7 +338,7 @@ func (o *RiskPredictorAnonymousNetwork) GetDefault() RiskPredictorDefault {
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetDefaultOk() (*RiskPredictorDefault, bool) {
+func (o *RiskPredictorAnonymousNetwork) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
@@ -354,15 +354,15 @@ func (o *RiskPredictorAnonymousNetwork) HasDefault() bool {
 	return false
 }
 
-// SetDefault gets a reference to the given RiskPredictorDefault and assigns it to the Default field.
-func (o *RiskPredictorAnonymousNetwork) SetDefault(v RiskPredictorDefault) {
+// SetDefault gets a reference to the given RiskPredictorCommonDefault and assigns it to the Default field.
+func (o *RiskPredictorAnonymousNetwork) SetDefault(v RiskPredictorCommonDefault) {
 	o.Default = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictorAnonymousNetwork) GetCondition() RiskPredictorCondition {
+func (o *RiskPredictorAnonymousNetwork) GetCondition() RiskPredictorCommonCondition {
 	if o == nil || IsNil(o.Condition) {
-		var ret RiskPredictorCondition
+		var ret RiskPredictorCommonCondition
 		return ret
 	}
 	return *o.Condition
@@ -370,7 +370,7 @@ func (o *RiskPredictorAnonymousNetwork) GetCondition() RiskPredictorCondition {
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorAnonymousNetwork) GetConditionOk() (*RiskPredictorCondition, bool) {
+func (o *RiskPredictorAnonymousNetwork) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -386,8 +386,8 @@ func (o *RiskPredictorAnonymousNetwork) HasCondition() bool {
 	return false
 }
 
-// SetCondition gets a reference to the given RiskPredictorCondition and assigns it to the Condition field.
-func (o *RiskPredictorAnonymousNetwork) SetCondition(v RiskPredictorCondition) {
+// SetCondition gets a reference to the given RiskPredictorCommonCondition and assigns it to the Condition field.
+func (o *RiskPredictorAnonymousNetwork) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 

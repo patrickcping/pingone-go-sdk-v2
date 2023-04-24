@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -92,9 +93,20 @@ func testForRetryable(r *http.Response, err error, currentBackoff time.Duration)
 	if err != nil {
 		if genericOAError, ok := err.(GenericOpenAPIError); ok && genericOAError.Model() != nil {
 			// We have an application level error
+
 			if modelError, ok := genericOAError.Model().(P1Error); ok {
+
+				// Test for unexpected errors
 				if strings.EqualFold(modelError.GetCode(), "UNEXPECTED_ERROR") {
 					log.Printf("Unexpected error detected, available for retry")
+					return backoff, true
+				}
+
+				// Test for inconsistent role state
+				m, _ := regexp.MatchString(`^Role assignment [a-z0-9\-]* cannot be deleted as it is read only`, modelError.GetMessage())
+
+				if m {
+					log.Printf("Inconsistent role assignment, available for retry")
 					return backoff, true
 				}
 			}

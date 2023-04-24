@@ -1,6 +1,7 @@
-# v0.18.1 (Unreleased)
+# v0.19.0 (2023-04-24)
 
 * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
+* **Enhancement** Added support for the Google Play Integrity API, `GooglePlay` for the `ApplicationOIDC` object model.  *Breaking change note*: This is now a required attribute when configuring integrity detection on Android devices. [#153](https://github.com/patrickcping/pingone-go-sdk-v2/pull/153)
 
 # v0.18.0 (2023-04-18)
 

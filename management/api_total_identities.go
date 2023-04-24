@@ -56,6 +56,16 @@ func (a *TotalIdentitiesApiService) V1EnvironmentsEnvironmentIDTotalIdentitiesGe
 
 // Execute executes the request
 func (a *TotalIdentitiesApiService) V1EnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDTotalIdentitiesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *TotalIdentitiesApiService) internalV1EnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDTotalIdentitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -105,7 +115,7 @@ func (a *TotalIdentitiesApiService) V1EnvironmentsEnvironmentIDTotalIdentitiesGe
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
