@@ -22519,6 +22519,17 @@ components:
       enum:
       - ADMIN_USERS_ONLY
       type: string
+    EnumApplicationNativeGooglePlayVerificationType:
+      description: "The type of verification that should be used. The possible values\
+        \ are `GOOGLE` and `INTERNAL`. Using internal verification will not count\
+        \ against your Google API call quota. The value you select for `verificationType`\
+        \ determines what other parameters you must provide. When set to `GOOGLE`,\
+        \ you must provide `serviceAccountCredentials`. When set to `INTERNAL`, you\
+        \ must provide `decryptionKey` and `verificationKey`."
+      enum:
+      - GOOGLE
+      - INTERNAL
+      type: string
     EnumApplicationOIDCGrantType:
       enum:
       - AUTHORIZATION_CODE
@@ -28235,15 +28246,41 @@ components:
           $ref: '#/components/schemas/EnumDurationUnitMinsHours'
       type: object
       example: null
+    ApplicationOIDC_allOf_mobile_integrityDetection_googlePlay:
+      description: Object that contains the credentials required for using Google's
+        Play Integrity API for integrity detection.  Required if `excludedPlatforms`
+        does not contain `GOOGLE`.
+      properties:
+        decryptionKey:
+          description: Play Integrity verdict decryption key from your Google Play
+            Services account. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType`
+            to `INTERNAL`.
+          type: string
+        serviceAccountCredentials:
+          description: Contents of the JSON file that represents your Service Account
+            Credentials. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType`
+            to `GOOGLE`.
+          type: string
+        verificationKey:
+          description: Play Integrity verdict signature verification key from your
+            Google Play Services account. This parameter must be provided if you have
+            set `mobile.integrityDetection.googlePlay.verificationType` to `INTERNAL`.
+          type: string
+        verificationType:
+          $ref: '#/components/schemas/EnumApplicationNativeGooglePlayVerificationType'
+      type: object
+      example: null
     ApplicationOIDC_allOf_mobile_integrityDetection:
       properties:
         excludedPlatforms:
-          description: You can enable device integrity checking separately for Android
-            and iOS by setting `mobile.integrityDetection.mode` to `ENABLED` and then
-            using `mobile.integrityDetection.excludedPlatforms` to specify the OS
-            where you do not want to use device integrity checking. The values to
-            use are `GOOGLE` and `IOS` (all upper case). Note that this is implemented
-            as an array even though currently you can only include a single value.
+          description: "You can enable device integrity checking separately for Android\
+            \ and iOS by setting `mobile.integrityDetection.mode` to `ENABLED` and\
+            \ then using `mobile.integrityDetection.excludedPlatforms` to specify\
+            \ the OS where you do not want to use device integrity checking. The values\
+            \ to use are `GOOGLE` and `IOS` (all upper case). Note that this is implemented\
+            \ as an array even though currently you can only include a single value.\
+            \  If `GOOGLE` is not included as a value, `googlePlay` is required to\
+            \ be set."
           items:
             $ref: '#/components/schemas/EnumMobileIntegrityDetectionPlatform'
           maxItems: 1
@@ -28252,6 +28289,8 @@ components:
           $ref: '#/components/schemas/EnumEnabledStatus'
         cacheDuration:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection_cacheDuration'
+        googlePlay:
+          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile_integrityDetection_googlePlay'
       type: object
       example: null
     ApplicationOIDC_allOf_mobile:

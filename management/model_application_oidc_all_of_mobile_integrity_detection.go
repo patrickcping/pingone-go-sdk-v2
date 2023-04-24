@@ -19,10 +19,11 @@ var _ MappedNullable = &ApplicationOIDCAllOfMobileIntegrityDetection{}
 
 // ApplicationOIDCAllOfMobileIntegrityDetection struct for ApplicationOIDCAllOfMobileIntegrityDetection
 type ApplicationOIDCAllOfMobileIntegrityDetection struct {
-	// You can enable device integrity checking separately for Android and iOS by setting `mobile.integrityDetection.mode` to `ENABLED` and then using `mobile.integrityDetection.excludedPlatforms` to specify the OS where you do not want to use device integrity checking. The values to use are `GOOGLE` and `IOS` (all upper case). Note that this is implemented as an array even though currently you can only include a single value.
+	// You can enable device integrity checking separately for Android and iOS by setting `mobile.integrityDetection.mode` to `ENABLED` and then using `mobile.integrityDetection.excludedPlatforms` to specify the OS where you do not want to use device integrity checking. The values to use are `GOOGLE` and `IOS` (all upper case). Note that this is implemented as an array even though currently you can only include a single value.  If `GOOGLE` is not included as a value, `googlePlay` is required to be set.
 	ExcludedPlatforms []EnumMobileIntegrityDetectionPlatform `json:"excludedPlatforms,omitempty"`
 	Mode *EnumEnabledStatus `json:"mode,omitempty"`
 	CacheDuration *ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration `json:"cacheDuration,omitempty"`
+	GooglePlay *ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay `json:"googlePlay,omitempty"`
 }
 
 // NewApplicationOIDCAllOfMobileIntegrityDetection instantiates a new ApplicationOIDCAllOfMobileIntegrityDetection object
@@ -138,6 +139,38 @@ func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetCacheDuration(v Applic
 	o.CacheDuration = &v
 }
 
+// GetGooglePlay returns the GooglePlay field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetGooglePlay() ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay {
+	if o == nil || IsNil(o.GooglePlay) {
+		var ret ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay
+		return ret
+	}
+	return *o.GooglePlay
+}
+
+// GetGooglePlayOk returns a tuple with the GooglePlay field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) GetGooglePlayOk() (*ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay, bool) {
+	if o == nil || IsNil(o.GooglePlay) {
+		return nil, false
+	}
+	return o.GooglePlay, true
+}
+
+// HasGooglePlay returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) HasGooglePlay() bool {
+	if o != nil && !IsNil(o.GooglePlay) {
+		return true
+	}
+
+	return false
+}
+
+// SetGooglePlay gets a reference to the given ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay and assigns it to the GooglePlay field.
+func (o *ApplicationOIDCAllOfMobileIntegrityDetection) SetGooglePlay(v ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay) {
+	o.GooglePlay = &v
+}
+
 func (o ApplicationOIDCAllOfMobileIntegrityDetection) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -156,6 +189,9 @@ func (o ApplicationOIDCAllOfMobileIntegrityDetection) ToMap() (map[string]interf
 	}
 	if !IsNil(o.CacheDuration) {
 		toSerialize["cacheDuration"] = o.CacheDuration
+	}
+	if !IsNil(o.GooglePlay) {
+		toSerialize["googlePlay"] = o.GooglePlay
 	}
 	return toSerialize, nil
 }
