@@ -56,7 +56,7 @@ var (
 		// Add retryability to typed output
 		{
 			fileSelectPattern: "api_*.go",
-			pattern:           `func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(([\*a-zA-Z]*), \*http\.Response, error\) {`,
+			pattern:           `func \(([a-zA-Z\* ]+)\) ([a-zA-Z])([a-zA-Z]+Execute)\(([a-zA-Z ]*)\) \(([\*a-zA-Z0-9]*), \*http\.Response, error\) {`,
 			repl: `func ($1) $2$3($4) ($5, *http.Response, error) {
 	obj, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {

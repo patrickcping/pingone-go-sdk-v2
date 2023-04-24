@@ -57,6 +57,15 @@ func (a *ApplicationsApiService) CreateApplication(ctx context.Context, environm
 // Execute executes the request
 //  @return CreateApplication201Response
 func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*CreateApplication201Response, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateApplicationExecute(r)
+		},
+	)
+	return obj.(*CreateApplication201Response), response, error
+}
+			
+func (a *ApplicationsApiService) internalCreateApplicationExecute(r ApiCreateApplicationRequest) (*CreateApplication201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -586,6 +595,15 @@ func (a *ApplicationsApiService) ReadOneApplication(ctx context.Context, environ
 // Execute executes the request
 //  @return ReadOneApplication200Response
 func (a *ApplicationsApiService) ReadOneApplicationExecute(r ApiReadOneApplicationRequest) (*ReadOneApplication200Response, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneApplicationExecute(r)
+		},
+	)
+	return obj.(*ReadOneApplication200Response), response, error
+}
+			
+func (a *ApplicationsApiService) internalReadOneApplicationExecute(r ApiReadOneApplicationRequest) (*ReadOneApplication200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +781,15 @@ func (a *ApplicationsApiService) UpdateApplication(ctx context.Context, environm
 // Execute executes the request
 //  @return ReadOneApplication200Response
 func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (*ReadOneApplication200Response, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateApplicationExecute(r)
+		},
+	)
+	return obj.(*ReadOneApplication200Response), response, error
+}
+			
+func (a *ApplicationsApiService) internalUpdateApplicationExecute(r ApiUpdateApplicationRequest) (*ReadOneApplication200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
