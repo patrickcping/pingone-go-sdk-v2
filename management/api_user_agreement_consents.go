@@ -56,6 +56,16 @@ func (a *UserAgreementConsentsApiService) V1EnvironmentsEnvironmentIDUsersUserID
 
 // Execute executes the request
 func (a *UserAgreementConsentsApiService) V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserAgreementConsentsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -226,6 +236,16 @@ func (a *UserAgreementConsentsApiService) V1EnvironmentsEnvironmentIDUsersUserID
 
 // Execute executes the request
 func (a *UserAgreementConsentsApiService) V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserAgreementConsentsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -401,6 +421,16 @@ func (a *UserAgreementConsentsApiService) V1EnvironmentsEnvironmentIDUsersUserID
 
 // Execute executes the request
 func (a *UserAgreementConsentsApiService) V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserAgreementConsentsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

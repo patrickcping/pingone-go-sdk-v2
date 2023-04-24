@@ -1186,6 +1186,16 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProvider
 
 // Execute executes the request
 func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1352,6 +1362,16 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProvider
 
 // Execute executes the request
 func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1514,6 +1534,16 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet(
 
 // Execute executes the request
 func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1680,6 +1710,16 @@ func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut(
 
 // Execute executes the request
 func (a *UsersApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UsersApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

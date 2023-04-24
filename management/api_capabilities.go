@@ -50,6 +50,16 @@ func (a *CapabilitiesApiService) V1EnvironmentsEnvironmentIDCapabilitiesGet(ctx 
 
 // Execute executes the request
 func (a *CapabilitiesApiService) V1EnvironmentsEnvironmentIDCapabilitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDCapabilitiesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDCapabilitiesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *CapabilitiesApiService) internalV1EnvironmentsEnvironmentIDCapabilitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDCapabilitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -206,6 +216,16 @@ func (a *CapabilitiesApiService) V1OrganizationsOrganizationIDCapabilitiesGet(ct
 
 // Execute executes the request
 func (a *CapabilitiesApiService) V1OrganizationsOrganizationIDCapabilitiesGetExecute(r ApiV1OrganizationsOrganizationIDCapabilitiesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1OrganizationsOrganizationIDCapabilitiesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *CapabilitiesApiService) internalV1OrganizationsOrganizationIDCapabilitiesGetExecute(r ApiV1OrganizationsOrganizationIDCapabilitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

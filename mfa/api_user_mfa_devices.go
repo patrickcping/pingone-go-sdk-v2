@@ -59,6 +59,16 @@ func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevices
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserMFADevicesApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -225,6 +235,16 @@ func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevices
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserMFADevicesApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -389,6 +409,16 @@ func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevices
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserMFADevicesApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -559,6 +589,16 @@ func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevices
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserMFADevicesApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -731,6 +771,16 @@ func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevices
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserMFADevicesApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -909,6 +959,16 @@ func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevices
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserMFADevicesApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1086,6 +1146,16 @@ func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevices
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserMFADevicesApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1258,6 +1328,16 @@ func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevices
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) V1EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserMFADevicesApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

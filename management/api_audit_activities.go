@@ -53,6 +53,16 @@ func (a *AuditActivitiesApiService) V1EnvironmentsEnvironmentIDActivitiesActivit
 
 // Execute executes the request
 func (a *AuditActivitiesApiService) V1EnvironmentsEnvironmentIDActivitiesActivityIDGetExecute(r ApiV1EnvironmentsEnvironmentIDActivitiesActivityIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDActivitiesActivityIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *AuditActivitiesApiService) internalV1EnvironmentsEnvironmentIDActivitiesActivityIDGetExecute(r ApiV1EnvironmentsEnvironmentIDActivitiesActivityIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -216,6 +226,16 @@ func (a *AuditActivitiesApiService) V1EnvironmentsEnvironmentIDActivitiesGet(ctx
 
 // Execute executes the request
 func (a *AuditActivitiesApiService) V1EnvironmentsEnvironmentIDActivitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDActivitiesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDActivitiesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *AuditActivitiesApiService) internalV1EnvironmentsEnvironmentIDActivitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDActivitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -381,6 +401,16 @@ func (a *AuditActivitiesApiService) V1EnvironmentsEnvironmentIDActivitiesPost(ct
 
 // Execute executes the request
 func (a *AuditActivitiesApiService) V1EnvironmentsEnvironmentIDActivitiesPostExecute(r ApiV1EnvironmentsEnvironmentIDActivitiesPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDActivitiesPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *AuditActivitiesApiService) internalV1EnvironmentsEnvironmentIDActivitiesPostExecute(r ApiV1EnvironmentsEnvironmentIDActivitiesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

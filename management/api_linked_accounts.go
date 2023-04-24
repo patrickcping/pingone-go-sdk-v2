@@ -53,6 +53,16 @@ func (a *LinkedAccountsApiService) V1EnvironmentsEnvironmentIDUsersUserIDLinkedA
 
 // Execute executes the request
 func (a *LinkedAccountsApiService) V1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *LinkedAccountsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -216,6 +226,16 @@ func (a *LinkedAccountsApiService) V1EnvironmentsEnvironmentIDUsersUserIDLinkedA
 
 // Execute executes the request
 func (a *LinkedAccountsApiService) V1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *LinkedAccountsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -380,6 +400,16 @@ func (a *LinkedAccountsApiService) V1EnvironmentsEnvironmentIDUsersUserIDLinkedA
 
 // Execute executes the request
 func (a *LinkedAccountsApiService) V1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *LinkedAccountsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

@@ -57,6 +57,15 @@ func (a *GatewaysApiService) CreateGateway(ctx context.Context, environmentID st
 // Execute executes the request
 //  @return CreateGateway201Response
 func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateGatewayExecute(r)
+		},
+	)
+	return obj.(*CreateGateway201Response), response, error
+}
+			
+func (a *GatewaysApiService) internalCreateGatewayExecute(r ApiCreateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -586,6 +595,15 @@ func (a *GatewaysApiService) ReadOneGateway(ctx context.Context, environmentID s
 // Execute executes the request
 //  @return CreateGateway201Response
 func (a *GatewaysApiService) ReadOneGatewayExecute(r ApiReadOneGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneGatewayExecute(r)
+		},
+	)
+	return obj.(*CreateGateway201Response), response, error
+}
+			
+func (a *GatewaysApiService) internalReadOneGatewayExecute(r ApiReadOneGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -763,6 +781,15 @@ func (a *GatewaysApiService) UpdateGateway(ctx context.Context, environmentID st
 // Execute executes the request
 //  @return CreateGateway201Response
 func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateGatewayExecute(r)
+		},
+	)
+	return obj.(*CreateGateway201Response), response, error
+}
+			
+func (a *GatewaysApiService) internalUpdateGatewayExecute(r ApiUpdateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -53,6 +53,16 @@ func (a *UserPasswordsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPassword
 
 // Execute executes the request
 func (a *UserPasswordsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPasswordGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPasswordGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDPasswordGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserPasswordsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDPasswordGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPasswordGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -225,6 +235,16 @@ func (a *UserPasswordsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPassword
 
 // Execute executes the request
 func (a *UserPasswordsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPasswordPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPasswordPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDPasswordPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserPasswordsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDPasswordPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPasswordPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -413,6 +433,16 @@ func (a *UserPasswordsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPassword
 
 // Execute executes the request
 func (a *UserPasswordsApiService) V1EnvironmentsEnvironmentIDUsersUserIDPasswordPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPasswordPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDPasswordPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserPasswordsApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDPasswordPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPasswordPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
