@@ -1,12 +1,14 @@
 module github.com/patrickcping/pingone-go-sdk-v2
 
-go 1.18
+go 1.20
+
+replace github.com/patrickcping/pingone-go-sdk-v2/credentials => /Users/mikesimon/dev/src/github.com/pingone-go-sdk-v2/credentials
 
 require (
 	github.com/golangci/golangci-lint v1.52.2
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.1
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.4
-	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.1.0
+	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.0.0
 	github.com/patrickcping/pingone-go-sdk-v2/management v0.18.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.9.1
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.4.0
