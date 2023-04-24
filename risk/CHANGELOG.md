@@ -1,4 +1,4 @@
-# v0.5.0 (Unreleased)
+# v0.5.0 (2023-04-24)
 
 * **Breaking change** `RiskPredictor` model changed to `RiskPredictorCommon`, replaced with the predictor type model. [#151](https://github.com/patrickcping/pingone-go-sdk-v2/pull/151)
 * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)

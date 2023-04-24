@@ -1,4 +1,4 @@
-# v0.9.2 (Unreleased)
+# v0.9.2 (2023-04-24)
 
 * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
 
