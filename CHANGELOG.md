@@ -1,11 +1,11 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.3
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.1.1 => v0.1.2
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.4 => v0.1.5
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.18.0 => v0.19.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.9.1 => v0.9.2
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.4.0 => v0.5.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.1.1 => v0.1.2 [#155](https://github.com/patrickcping/pingone-go-sdk-v2/pull/155)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.4 => v0.1.5 [#155](https://github.com/patrickcping/pingone-go-sdk-v2/pull/155)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.18.0 => v0.19.0 [#155](https://github.com/patrickcping/pingone-go-sdk-v2/pull/155)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.9.1 => v0.9.2 [#155](https://github.com/patrickcping/pingone-go-sdk-v2/pull/155)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.4.0 => v0.5.0 [#155](https://github.com/patrickcping/pingone-go-sdk-v2/pull/155)
     * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.2](./agreementmanagement/CHANGELOG.md)
     * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
