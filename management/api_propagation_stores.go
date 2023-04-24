@@ -62,6 +62,16 @@ func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStor
 
 // Execute executes the request
 func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoresApiService) internalV1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -240,6 +250,16 @@ func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStor
 
 // Execute executes the request
 func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStoresGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoresGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoresApiService) internalV1EnvironmentsEnvironmentIDPropagationStoresGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -405,6 +425,16 @@ func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStor
 
 // Execute executes the request
 func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStoresPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoresPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoresApiService) internalV1EnvironmentsEnvironmentIDPropagationStoresPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -583,6 +613,16 @@ func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStor
 
 // Execute executes the request
 func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoresApiService) internalV1EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -752,6 +792,16 @@ func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStor
 
 // Execute executes the request
 func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoresApiService) internalV1EnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -921,6 +971,16 @@ func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStor
 
 // Execute executes the request
 func (a *PropagationStoresApiService) V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoresApiService) internalV1EnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

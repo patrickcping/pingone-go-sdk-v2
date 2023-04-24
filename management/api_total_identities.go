@@ -56,6 +56,16 @@ func (a *TotalIdentitiesApiService) V1EnvironmentsEnvironmentIDTotalIdentitiesGe
 
 // Execute executes the request
 func (a *TotalIdentitiesApiService) V1EnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDTotalIdentitiesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *TotalIdentitiesApiService) internalV1EnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r ApiV1EnvironmentsEnvironmentIDTotalIdentitiesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

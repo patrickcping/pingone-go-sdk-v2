@@ -265,6 +265,16 @@ func (a *ActiveIdentityCountsApiService) V1EnvironmentsEnvironmentIDActiveIdenti
 
 // Execute executes the request
 func (a *ActiveIdentityCountsApiService) V1EnvironmentsEnvironmentIDActiveIdentityCountsGetExecute(r ApiV1EnvironmentsEnvironmentIDActiveIdentityCountsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDActiveIdentityCountsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ActiveIdentityCountsApiService) internalV1EnvironmentsEnvironmentIDActiveIdentityCountsGetExecute(r ApiV1EnvironmentsEnvironmentIDActiveIdentityCountsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -454,6 +464,16 @@ func (a *ActiveIdentityCountsApiService) V1EnvironmentsEnvironmentIDMetricsActiv
 
 // Execute executes the request
 func (a *ActiveIdentityCountsApiService) V1EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetExecute(r ApiV1EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ActiveIdentityCountsApiService) internalV1EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetExecute(r ApiV1EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

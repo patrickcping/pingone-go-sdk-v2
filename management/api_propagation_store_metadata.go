@@ -56,6 +56,16 @@ func (a *PropagationStoreMetadataApiService) V1EnvironmentsEnvironmentIDPropagat
 
 // Execute executes the request
 func (a *PropagationStoreMetadataApiService) V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoreMetadataApiService) internalV1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -231,6 +241,16 @@ func (a *PropagationStoreMetadataApiService) V1EnvironmentsEnvironmentIDPropagat
 
 // Execute executes the request
 func (a *PropagationStoreMetadataApiService) V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoreMetadataApiService) internalV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -406,6 +426,16 @@ func (a *PropagationStoreMetadataApiService) V1EnvironmentsEnvironmentIDPropagat
 
 // Execute executes the request
 func (a *PropagationStoreMetadataApiService) V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoreMetadataApiService) internalV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -581,6 +611,16 @@ func (a *PropagationStoreMetadataApiService) V1EnvironmentsEnvironmentIDPropagat
 
 // Execute executes the request
 func (a *PropagationStoreMetadataApiService) V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationStoreMetadataApiService) internalV1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

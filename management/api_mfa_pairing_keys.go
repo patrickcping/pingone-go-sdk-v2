@@ -56,6 +56,16 @@ func (a *MFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairing
 
 // Execute executes the request
 func (a *MFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *MFAPairingKeysApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -220,6 +230,16 @@ func (a *MFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairing
 
 // Execute executes the request
 func (a *MFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *MFAPairingKeysApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -387,6 +407,16 @@ func (a *MFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairing
 
 // Execute executes the request
 func (a *MFAPairingKeysApiService) V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *MFAPairingKeysApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

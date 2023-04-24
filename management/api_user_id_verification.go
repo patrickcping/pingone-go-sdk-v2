@@ -53,6 +53,16 @@ func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVer
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserIDVerificationApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -213,6 +223,16 @@ func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVer
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserIDVerificationApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -387,6 +407,16 @@ func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVer
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserIDVerificationApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -551,6 +581,16 @@ func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVer
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserIDVerificationApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -721,6 +761,16 @@ func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVer
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *UserIDVerificationApiService) internalV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutExecute(r ApiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

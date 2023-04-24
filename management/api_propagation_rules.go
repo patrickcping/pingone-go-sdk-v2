@@ -65,6 +65,16 @@ func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationPlans
 
 // Execute executes the request
 func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRulesApiService) internalV1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -240,6 +250,16 @@ func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRules
 
 // Execute executes the request
 func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRulesGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationRulesGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRulesApiService) internalV1EnvironmentsEnvironmentIDPropagationRulesGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -408,6 +428,16 @@ func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRules
 
 // Execute executes the request
 func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRulesPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationRulesPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRulesApiService) internalV1EnvironmentsEnvironmentIDPropagationRulesPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -586,6 +616,16 @@ func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRules
 
 // Execute executes the request
 func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRulesApiService) internalV1EnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -755,6 +795,16 @@ func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRules
 
 // Execute executes the request
 func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesRuleIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationRulesRuleIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRulesApiService) internalV1EnvironmentsEnvironmentIDPropagationRulesRuleIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesRuleIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -924,6 +974,16 @@ func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRules
 
 // Execute executes the request
 func (a *PropagationRulesApiService) V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPutExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesStoreIDPutRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationRulesStoreIDPutExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRulesApiService) internalV1EnvironmentsEnvironmentIDPropagationRulesStoreIDPutExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRulesStoreIDPutRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

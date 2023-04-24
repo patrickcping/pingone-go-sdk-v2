@@ -56,6 +56,16 @@ func (a *PropagationRevisionsApiService) V1EnvironmentsEnvironmentIDPropagationR
 
 // Execute executes the request
 func (a *PropagationRevisionsApiService) V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRevisionsApiService) internalV1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -215,6 +225,16 @@ func (a *PropagationRevisionsApiService) V1EnvironmentsEnvironmentIDPropagationR
 
 // Execute executes the request
 func (a *PropagationRevisionsApiService) V1EnvironmentsEnvironmentIDPropagationRevisionsPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRevisionsPostRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationRevisionsPostExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRevisionsApiService) internalV1EnvironmentsEnvironmentIDPropagationRevisionsPostExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRevisionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -391,6 +411,16 @@ func (a *PropagationRevisionsApiService) V1EnvironmentsEnvironmentIDPropagationR
 
 // Execute executes the request
 func (a *PropagationRevisionsApiService) V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *PropagationRevisionsApiService) internalV1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetExecute(r ApiV1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
