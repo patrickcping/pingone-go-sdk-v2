@@ -1,6 +1,7 @@
-# v0.19.2 (Unreleased)
+# v0.20.0 (Unreleased)
 
 * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+* **Enhancement** Add support for enumerated values and regex validation to the schema attribute model. [#161](https://github.com/patrickcping/pingone-go-sdk-v2/pull/161)
 
 # v0.19.1 (2023-04-28)
 

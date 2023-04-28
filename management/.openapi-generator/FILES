@@ -431,6 +431,8 @@ docs/RolePermissionsInner.md
 docs/RolesApi.md
 docs/Schema.md
 docs/SchemaAttribute.md
+docs/SchemaAttributeEnumeratedValuesInner.md
+docs/SchemaAttributeRegexValidation.md
 docs/SchemaAttributeSchema.md
 docs/SchemasApi.md
 docs/SessionsApi.md
@@ -833,6 +835,8 @@ model_role_assignment_scope.go
 model_role_permissions_inner.go
 model_schema.go
 model_schema_attribute.go
+model_schema_attribute_enumerated_values_inner.go
+model_schema_attribute_regex_validation.go
 model_schema_attribute_schema.go
 model_sign_on_policy.go
 model_sign_on_policy_action_agreement.go

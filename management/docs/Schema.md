@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowsContainsOperator** | Pointer to **bool** | Indicates whether or not the &#x60;contains&#x60; operator can be used. You can use the &#x60;contains&#x60; operator in a maximum of 5 custom attributes. | [optional] [readonly] 
 **Attributes** | Pointer to [**[]SchemaAttribute**](SchemaAttribute.md) |  | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the schema. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewSchemaWithDefaults instantiates a new Schema object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowsContainsOperator
+
+`func (o *Schema) GetAllowsContainsOperator() bool`
+
+GetAllowsContainsOperator returns the AllowsContainsOperator field if non-nil, zero value otherwise.
+
+### GetAllowsContainsOperatorOk
+
+`func (o *Schema) GetAllowsContainsOperatorOk() (*bool, bool)`
+
+GetAllowsContainsOperatorOk returns a tuple with the AllowsContainsOperator field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowsContainsOperator
+
+`func (o *Schema) SetAllowsContainsOperator(v bool)`
+
+SetAllowsContainsOperator sets AllowsContainsOperator field to given value.
+
+### HasAllowsContainsOperator
+
+`func (o *Schema) HasAllowsContainsOperator() bool`
+
+HasAllowsContainsOperator returns a boolean if a field has been set.
 
 ### GetAttributes
 

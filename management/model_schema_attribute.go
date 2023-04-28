@@ -36,11 +36,15 @@ type SchemaAttribute struct {
 	Required *bool `json:"required,omitempty"`
 	Schema *SchemaAttributeSchema `json:"schema,omitempty"`
 	SchemaType *EnumSchemaAttributeSchemaType `json:"schemaType,omitempty"`
+	// The list of sub-attributes of this attribute. Only `COMPLEX` attribute types can have sub-attributes, and only one-level of nesting is allowed. The leaf attribute definition must have a type of `STRING` or `JSON`. A `COMPLEX` attribute definition must have at least one child attribute definition.
+	SubAttributes []SchemaAttribute `json:"subAttributes,omitempty"`
 	Type EnumSchemaAttributeType `json:"type"`
 	// A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null.
 	Unique *bool `json:"unique,omitempty"`
 	// A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000.
 	MultiValued *bool `json:"multiValued,omitempty"`
+	EnumeratedValues []SchemaAttributeEnumeratedValuesInner `json:"enumeratedValues,omitempty"`
+	RegexValidation *SchemaAttributeRegexValidation `json:"regexValidation,omitempty"`
 }
 
 // NewSchemaAttribute instantiates a new SchemaAttribute object
@@ -367,6 +371,38 @@ func (o *SchemaAttribute) SetSchemaType(v EnumSchemaAttributeSchemaType) {
 	o.SchemaType = &v
 }
 
+// GetSubAttributes returns the SubAttributes field value if set, zero value otherwise.
+func (o *SchemaAttribute) GetSubAttributes() []SchemaAttribute {
+	if o == nil || IsNil(o.SubAttributes) {
+		var ret []SchemaAttribute
+		return ret
+	}
+	return o.SubAttributes
+}
+
+// GetSubAttributesOk returns a tuple with the SubAttributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SchemaAttribute) GetSubAttributesOk() ([]SchemaAttribute, bool) {
+	if o == nil || IsNil(o.SubAttributes) {
+		return nil, false
+	}
+	return o.SubAttributes, true
+}
+
+// HasSubAttributes returns a boolean if a field has been set.
+func (o *SchemaAttribute) HasSubAttributes() bool {
+	if o != nil && !IsNil(o.SubAttributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubAttributes gets a reference to the given []SchemaAttribute and assigns it to the SubAttributes field.
+func (o *SchemaAttribute) SetSubAttributes(v []SchemaAttribute) {
+	o.SubAttributes = v
+}
+
 // GetType returns the Type field value
 func (o *SchemaAttribute) GetType() EnumSchemaAttributeType {
 	if o == nil {
@@ -455,6 +491,70 @@ func (o *SchemaAttribute) SetMultiValued(v bool) {
 	o.MultiValued = &v
 }
 
+// GetEnumeratedValues returns the EnumeratedValues field value if set, zero value otherwise.
+func (o *SchemaAttribute) GetEnumeratedValues() []SchemaAttributeEnumeratedValuesInner {
+	if o == nil || IsNil(o.EnumeratedValues) {
+		var ret []SchemaAttributeEnumeratedValuesInner
+		return ret
+	}
+	return o.EnumeratedValues
+}
+
+// GetEnumeratedValuesOk returns a tuple with the EnumeratedValues field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SchemaAttribute) GetEnumeratedValuesOk() ([]SchemaAttributeEnumeratedValuesInner, bool) {
+	if o == nil || IsNil(o.EnumeratedValues) {
+		return nil, false
+	}
+	return o.EnumeratedValues, true
+}
+
+// HasEnumeratedValues returns a boolean if a field has been set.
+func (o *SchemaAttribute) HasEnumeratedValues() bool {
+	if o != nil && !IsNil(o.EnumeratedValues) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnumeratedValues gets a reference to the given []SchemaAttributeEnumeratedValuesInner and assigns it to the EnumeratedValues field.
+func (o *SchemaAttribute) SetEnumeratedValues(v []SchemaAttributeEnumeratedValuesInner) {
+	o.EnumeratedValues = v
+}
+
+// GetRegexValidation returns the RegexValidation field value if set, zero value otherwise.
+func (o *SchemaAttribute) GetRegexValidation() SchemaAttributeRegexValidation {
+	if o == nil || IsNil(o.RegexValidation) {
+		var ret SchemaAttributeRegexValidation
+		return ret
+	}
+	return *o.RegexValidation
+}
+
+// GetRegexValidationOk returns a tuple with the RegexValidation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SchemaAttribute) GetRegexValidationOk() (*SchemaAttributeRegexValidation, bool) {
+	if o == nil || IsNil(o.RegexValidation) {
+		return nil, false
+	}
+	return o.RegexValidation, true
+}
+
+// HasRegexValidation returns a boolean if a field has been set.
+func (o *SchemaAttribute) HasRegexValidation() bool {
+	if o != nil && !IsNil(o.RegexValidation) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegexValidation gets a reference to the given SchemaAttributeRegexValidation and assigns it to the RegexValidation field.
+func (o *SchemaAttribute) SetRegexValidation(v SchemaAttributeRegexValidation) {
+	o.RegexValidation = &v
+}
+
 func (o SchemaAttribute) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -487,12 +587,21 @@ func (o SchemaAttribute) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SchemaType) {
 		toSerialize["schemaType"] = o.SchemaType
 	}
+	if !IsNil(o.SubAttributes) {
+		toSerialize["subAttributes"] = o.SubAttributes
+	}
 	toSerialize["type"] = o.Type
 	if !IsNil(o.Unique) {
 		toSerialize["unique"] = o.Unique
 	}
 	if !IsNil(o.MultiValued) {
 		toSerialize["multiValued"] = o.MultiValued
+	}
+	if !IsNil(o.EnumeratedValues) {
+		toSerialize["enumeratedValues"] = o.EnumeratedValues
+	}
+	if !IsNil(o.RegexValidation) {
+		toSerialize["regexValidation"] = o.RegexValidation
 	}
 	return toSerialize, nil
 }
