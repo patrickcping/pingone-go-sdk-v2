@@ -1,6 +1,6 @@
 # v0.5.2 (Unreleased)
 
-* **Note** Change default useragent for HTTP requests.
+* **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 
 # v0.5.1 (2023-04-28)
 

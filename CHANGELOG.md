@@ -1,16 +1,16 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.4](./agreementmanagement/CHANGELOG.md)
-    * **Note** Change default useragent for HTTP requests.
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.7](./authorize/CHANGELOG.md)
-    * **Note** Change default useragent for HTTP requests.
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.19.2](./management/CHANGELOG.md)
-    * **Note** Change default useragent for HTTP requests.
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.10.0](./mfa/CHANGELOG.md)
-    * **Note** Change default useragent for HTTP requests.
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
     * **Enhancement** Support for `PairingKeyLifetime` and `PushLimit` in the `DeviceAuthenticationPolicyMobileApplicationsInner` model. [#159](https://github.com/patrickcping/pingone-go-sdk-v2/pull/159)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.5.2](./risk/CHANGELOG.md)
-    * **Note** Change default useragent for HTTP requests.
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 
 # Release (2023-04-28)
 
