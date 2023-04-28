@@ -701,7 +701,6 @@ components:
                 - level
           required:
             - weight
-            - result
         condition:
           type: object
           readOnly: true
