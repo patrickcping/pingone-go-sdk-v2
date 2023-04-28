@@ -2,7 +2,7 @@
 
 * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * **Enhancement** Add support for enumerated values and regex validation to the schema attribute model. [#161](https://github.com/patrickcping/pingone-go-sdk-v2/pull/161)
-* **Enhancement** Add support for setting `Email` quotas in notification policies.
+* **Enhancement** Add support for setting `Email` quotas in notification policies. [#162](https://github.com/patrickcping/pingone-go-sdk-v2/pull/162)
 
 # v0.19.1 (2023-04-28)
 

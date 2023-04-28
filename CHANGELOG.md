@@ -10,7 +10,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.10.0](./mfa/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
     * **Enhancement** Support for `PairingKeyLifetime` and `PushLimit` in the `DeviceAuthenticationPolicyMobileApplicationsInner` model. [#159](https://github.com/patrickcping/pingone-go-sdk-v2/pull/159)
-    * **Enhancement** Add support for setting `Email` quotas in notification policies.
+    * **Enhancement** Add support for setting `Email` quotas in notification policies. [#162](https://github.com/patrickcping/pingone-go-sdk-v2/pull/162)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.5.2](./risk/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 
