@@ -1,3 +1,7 @@
+# v0.10.0 (Unreleased)
+
+* **Enhancement** Support for `PairingKeyLifetime` and `PushLimit` in the `DeviceAuthenticationPolicyMobileApplicationsInner` model.
+
 # v0.9.3 (2023-04-28)
 
 * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
