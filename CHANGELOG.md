@@ -1,3 +1,18 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.4
+    * **Note** Remove unnecessary log output. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.3](./agreementmanagement/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.6](./authorize/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.19.1](./management/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.9.3](./mfa/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.5.1](./risk/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+
 # Release (2023-04-24)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.3

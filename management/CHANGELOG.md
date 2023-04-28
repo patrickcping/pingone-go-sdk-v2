@@ -1,3 +1,7 @@
+# v0.19.1 (Unreleased)
+
+* **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+
 # v0.19.0 (2023-04-24)
 
 * **Note** Add retry logic for retryable HTTP status codes. [#147](https://github.com/patrickcping/pingone-go-sdk-v2/pull/147)
