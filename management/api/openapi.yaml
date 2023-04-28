@@ -22919,6 +22919,7 @@ components:
       enum:
       - SMS
       - Voice
+      - Email
       type: string
     EnumNotificationsPolicyQuotaItemType:
       description: Specifies whether the limit defined is per-user or per environment.
@@ -31550,10 +31551,9 @@ components:
         type:
           $ref: '#/components/schemas/EnumNotificationsPolicyQuotaItemType'
         deliveryMethods:
-          description: "The delivery methods for which the limit is being defined.\
-            \ Currently, the content of the array must be `SMS`, `Voice`. This means\
-            \ that the combined total of SMS and Voice notifications must be below\
-            \ the limit defined."
+          description: |
+            The delivery methods for which the limit is being defined. The value can be `Email` or `SMS,Voice`. When you use the `SMS`, `Voice` option, it means that the combined total of SMS and voice notifications must be below the limit defined. If you are limiting both email and SMS/voice, each limit should be represented by a different object in the `quotas` array, for example:
+            `"quotas": [{"type": "USER","deliveryMethods": ["SMS","Voice"],"total": 30},{"type": "USER","deliveryMethods": ["Email"],"total": 30}]`
           items:
             $ref: '#/components/schemas/EnumNotificationsPolicyQuotaDeliveryMethods'
           type: array
