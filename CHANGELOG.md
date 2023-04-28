@@ -6,7 +6,7 @@
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.20.0](./management/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
-    * **Enhancement** Add support for enumerated values and regex validation to the schema attribute model.
+    * **Enhancement** Add support for enumerated values and regex validation to the schema attribute model. [#161](https://github.com/patrickcping/pingone-go-sdk-v2/pull/161)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.10.0](./mfa/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
     * **Enhancement** Support for `PairingKeyLifetime` and `PushLimit` in the `DeviceAuthenticationPolicyMobileApplicationsInner` model. [#159](https://github.com/patrickcping/pingone-go-sdk-v2/pull/159)
