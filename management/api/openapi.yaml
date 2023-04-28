@@ -25207,8 +25207,27 @@ components:
               displayName: displayName
               description: description
               type: null
+              enumeratedValues:
+              - archived: true
+                description: description
+                value: value
+              - archived: true
+                description: description
+                value: value
               enabled: true
               required: true
+              subAttributes:
+              - null
+              - null
+              regexValidation:
+                valuesPatternShouldNotMatch:
+                - valuesPatternShouldNotMatch
+                - valuesPatternShouldNotMatch
+                requirements: requirements
+                valuesPatternShouldMatch:
+                - valuesPatternShouldMatch
+                - valuesPatternShouldMatch
+                pattern: pattern
               environment:
                 id: id
               unique: true
@@ -25222,8 +25241,27 @@ components:
               displayName: displayName
               description: description
               type: null
+              enumeratedValues:
+              - archived: true
+                description: description
+                value: value
+              - archived: true
+                description: description
+                value: value
               enabled: true
               required: true
+              subAttributes:
+              - null
+              - null
+              regexValidation:
+                valuesPatternShouldNotMatch:
+                - valuesPatternShouldNotMatch
+                - valuesPatternShouldNotMatch
+                requirements: requirements
+                valuesPatternShouldMatch:
+                - valuesPatternShouldMatch
+                - valuesPatternShouldMatch
+                pattern: pattern
               environment:
                 id: id
               unique: true
@@ -25233,6 +25271,7 @@ components:
               ldapAttribute: ldapAttribute
               multiValued: true
             id: id
+            allowsContainsOperator: true
           - environment:
               id: id
             name: name
@@ -25243,8 +25282,27 @@ components:
               displayName: displayName
               description: description
               type: null
+              enumeratedValues:
+              - archived: true
+                description: description
+                value: value
+              - archived: true
+                description: description
+                value: value
               enabled: true
               required: true
+              subAttributes:
+              - null
+              - null
+              regexValidation:
+                valuesPatternShouldNotMatch:
+                - valuesPatternShouldNotMatch
+                - valuesPatternShouldNotMatch
+                requirements: requirements
+                valuesPatternShouldMatch:
+                - valuesPatternShouldMatch
+                - valuesPatternShouldMatch
+                pattern: pattern
               environment:
                 id: id
               unique: true
@@ -25258,8 +25316,27 @@ components:
               displayName: displayName
               description: description
               type: null
+              enumeratedValues:
+              - archived: true
+                description: description
+                value: value
+              - archived: true
+                description: description
+                value: value
               enabled: true
               required: true
+              subAttributes:
+              - null
+              - null
+              regexValidation:
+                valuesPatternShouldNotMatch:
+                - valuesPatternShouldNotMatch
+                - valuesPatternShouldNotMatch
+                requirements: requirements
+                valuesPatternShouldMatch:
+                - valuesPatternShouldMatch
+                - valuesPatternShouldMatch
+                pattern: pattern
               environment:
                 id: id
               unique: true
@@ -25269,6 +25346,7 @@ components:
               ldapAttribute: ldapAttribute
               multiValued: true
             id: id
+            allowsContainsOperator: true
           organizations:
           - createdAt: createdAt
             name: name
@@ -27071,8 +27149,27 @@ components:
           displayName: displayName
           description: description
           type: null
+          enumeratedValues:
+          - archived: true
+            description: description
+            value: value
+          - archived: true
+            description: description
+            value: value
           enabled: true
           required: true
+          subAttributes:
+          - null
+          - null
+          regexValidation:
+            valuesPatternShouldNotMatch:
+            - valuesPatternShouldNotMatch
+            - valuesPatternShouldNotMatch
+            requirements: requirements
+            valuesPatternShouldMatch:
+            - valuesPatternShouldMatch
+            - valuesPatternShouldMatch
+            pattern: pattern
           environment:
             id: id
           unique: true
@@ -27086,8 +27183,27 @@ components:
           displayName: displayName
           description: description
           type: null
+          enumeratedValues:
+          - archived: true
+            description: description
+            value: value
+          - archived: true
+            description: description
+            value: value
           enabled: true
           required: true
+          subAttributes:
+          - null
+          - null
+          regexValidation:
+            valuesPatternShouldNotMatch:
+            - valuesPatternShouldNotMatch
+            - valuesPatternShouldNotMatch
+            requirements: requirements
+            valuesPatternShouldMatch:
+            - valuesPatternShouldMatch
+            - valuesPatternShouldMatch
+            pattern: pattern
           environment:
             id: id
           unique: true
@@ -27097,7 +27213,13 @@ components:
           ldapAttribute: ldapAttribute
           multiValued: true
         id: id
+        allowsContainsOperator: true
       properties:
+        allowsContainsOperator:
+          description: Indicates whether or not the `contains` operator can be used.
+            You can use the `contains` operator in a maximum of 5 custom attributes.
+          readOnly: true
+          type: boolean
         attributes:
           items:
             $ref: '#/components/schemas/SchemaAttribute'
@@ -27125,8 +27247,27 @@ components:
         displayName: displayName
         description: description
         type: null
+        enumeratedValues:
+        - archived: true
+          description: description
+          value: value
+        - archived: true
+          description: description
+          value: value
         enabled: true
         required: true
+        subAttributes:
+        - null
+        - null
+        regexValidation:
+          valuesPatternShouldNotMatch:
+          - valuesPatternShouldNotMatch
+          - valuesPatternShouldNotMatch
+          requirements: requirements
+          valuesPatternShouldMatch:
+          - valuesPatternShouldMatch
+          - valuesPatternShouldMatch
+          pattern: pattern
         environment:
           id: id
         unique: true
@@ -27181,6 +27322,15 @@ components:
           $ref: '#/components/schemas/SchemaAttribute_schema'
         schemaType:
           $ref: '#/components/schemas/EnumSchemaAttributeSchemaType'
+        subAttributes:
+          description: "The list of sub-attributes of this attribute. Only `COMPLEX`\
+            \ attribute types can have sub-attributes, and only one-level of nesting\
+            \ is allowed. The leaf attribute definition must have a type of `STRING`\
+            \ or `JSON`. A `COMPLEX` attribute definition must have at least one child\
+            \ attribute definition."
+          items:
+            $ref: '#/components/schemas/SchemaAttribute'
+          type: array
         type:
           $ref: '#/components/schemas/EnumSchemaAttributeType'
         unique:
@@ -27195,6 +27345,12 @@ components:
             \ as changing from true to false is not allowed. Maximum number of values\
             \ stored is 1,000."
           type: boolean
+        enumeratedValues:
+          items:
+            $ref: '#/components/schemas/SchemaAttribute_enumeratedValues_inner'
+          type: array
+        regexValidation:
+          $ref: '#/components/schemas/SchemaAttribute_regexValidation'
       required:
       - enabled
       - name
@@ -29941,8 +30097,27 @@ components:
             displayName: displayName
             description: description
             type: null
+            enumeratedValues:
+            - archived: true
+              description: description
+              value: value
+            - archived: true
+              description: description
+              value: value
             enabled: true
             required: true
+            subAttributes:
+            - null
+            - null
+            regexValidation:
+              valuesPatternShouldNotMatch:
+              - valuesPatternShouldNotMatch
+              - valuesPatternShouldNotMatch
+              requirements: requirements
+              valuesPatternShouldMatch:
+              - valuesPatternShouldMatch
+              - valuesPatternShouldMatch
+              pattern: pattern
             environment:
               id: id
             unique: true
@@ -29956,8 +30131,27 @@ components:
             displayName: displayName
             description: description
             type: null
+            enumeratedValues:
+            - archived: true
+              description: description
+              value: value
+            - archived: true
+              description: description
+              value: value
             enabled: true
             required: true
+            subAttributes:
+            - null
+            - null
+            regexValidation:
+              valuesPatternShouldNotMatch:
+              - valuesPatternShouldNotMatch
+              - valuesPatternShouldNotMatch
+              requirements: requirements
+              valuesPatternShouldMatch:
+              - valuesPatternShouldMatch
+              - valuesPatternShouldMatch
+              pattern: pattern
             environment:
               id: id
             unique: true
@@ -29967,6 +30161,7 @@ components:
             ldapAttribute: ldapAttribute
             multiValued: true
           id: id
+          allowsContainsOperator: true
         - environment:
             id: id
           name: name
@@ -29977,8 +30172,27 @@ components:
             displayName: displayName
             description: description
             type: null
+            enumeratedValues:
+            - archived: true
+              description: description
+              value: value
+            - archived: true
+              description: description
+              value: value
             enabled: true
             required: true
+            subAttributes:
+            - null
+            - null
+            regexValidation:
+              valuesPatternShouldNotMatch:
+              - valuesPatternShouldNotMatch
+              - valuesPatternShouldNotMatch
+              requirements: requirements
+              valuesPatternShouldMatch:
+              - valuesPatternShouldMatch
+              - valuesPatternShouldMatch
+              pattern: pattern
             environment:
               id: id
             unique: true
@@ -29992,8 +30206,27 @@ components:
             displayName: displayName
             description: description
             type: null
+            enumeratedValues:
+            - archived: true
+              description: description
+              value: value
+            - archived: true
+              description: description
+              value: value
             enabled: true
             required: true
+            subAttributes:
+            - null
+            - null
+            regexValidation:
+              valuesPatternShouldNotMatch:
+              - valuesPatternShouldNotMatch
+              - valuesPatternShouldNotMatch
+              requirements: requirements
+              valuesPatternShouldMatch:
+              - valuesPatternShouldMatch
+              - valuesPatternShouldMatch
+              pattern: pattern
             environment:
               id: id
             unique: true
@@ -30003,6 +30236,7 @@ components:
             ldapAttribute: ldapAttribute
             multiValued: true
           id: id
+          allowsContainsOperator: true
         organizations:
         - createdAt: createdAt
           name: name
@@ -31785,6 +32019,67 @@ components:
             by this relationship.
           readOnly: true
           type: string
+      type: object
+    SchemaAttribute_enumeratedValues_inner:
+      description: An object representation of an enumerated value. Maximum number
+        of enumerations is 100.
+      example:
+        archived: true
+        description: description
+        value: value
+      properties:
+        value:
+          description: A string that specifies the immutable value. Values are case
+            sensitive; two values that differ only by case are not allowed.
+          type: string
+        archived:
+          description: "A boolean that specifies whether the enumerated value is archived.\
+            \ Archived values cannot be added to a user, but existing archived values\
+            \ are preserved. This allows clients that read the schema to know all\
+            \ possible values of an attribute."
+          type: boolean
+        description:
+          description: A string that specifies the description of the enumerated value.
+          type: string
+      required:
+      - value
+      type: object
+    SchemaAttribute_regexValidation:
+      description: Object representation of the optional regular expression representation
+        of this attribute.
+      example:
+        valuesPatternShouldNotMatch:
+        - valuesPatternShouldNotMatch
+        - valuesPatternShouldNotMatch
+        requirements: requirements
+        valuesPatternShouldMatch:
+        - valuesPatternShouldMatch
+        - valuesPatternShouldMatch
+        pattern: pattern
+      properties:
+        pattern:
+          description: A string that specifies the regular expression to which the
+            attribute must conform.
+          type: string
+        requirements:
+          description: A string that specifies a developer friendly description of
+            the regular expression requirements.
+          type: string
+        valuesPatternShouldMatch:
+          description: An array that specifies the list of strings matching the regular
+            expression.
+          items:
+            type: string
+          type: array
+        valuesPatternShouldNotMatch:
+          description: An array that specifies the list of strings not matching the
+            regular expression.
+          items:
+            type: string
+          type: array
+      required:
+      - pattern
+      - requirements
       type: object
     SignOnPolicyActionCommonConditionIPRisk_ipRisk:
       properties:
