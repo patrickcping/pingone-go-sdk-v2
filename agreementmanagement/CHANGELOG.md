@@ -1,3 +1,7 @@
+# v0.1.4 (Unreleased)
+
+* **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+
 # v0.1.3 (2023-04-28)
 
 * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
