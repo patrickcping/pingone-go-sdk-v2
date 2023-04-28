@@ -2890,7 +2890,6 @@ components:
       - list
       - type
       type: object
-      example: null
     RiskPredictorCompositeCondition_oneOf_1:
       properties:
         equals:
@@ -2913,7 +2912,6 @@ components:
       required:
       - value
       type: object
-      example: null
     RiskPredictorCustom_allOf_map:
       description: An object that defines the mapping of risk levels for the list
         of all results.
