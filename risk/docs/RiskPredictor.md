@@ -18,8 +18,9 @@ Name | Type | Description | Notes
 **WhiteList** | Pointer to **[]string** | A list of IP addresses (CDIRs) that are ignored for the predictor results. | [optional] 
 **Composition** | [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | 
 **Map** | [**RiskPredictorCustomAllOfMap**](RiskPredictorCustomAllOfMap.md) |  | 
+**Detect** | [**EnumPredictorNewDeviceDetectType**](EnumPredictorNewDeviceDetectType.md) |  | 
 **ActivationAt** | Pointer to **time.Time** | You can use the &#x60;activationAt&#x60; parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (&#x60;default.result.level&#x60;) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time. | [optional] 
-**Days** | Pointer to **int32** |  | [optional] 
+**Days** | **int32** |  | 
 **Radius** | [**RiskPredictorUserLocationAnomalyAllOfRadius**](RiskPredictorUserLocationAnomalyAllOfRadius.md) |  | 
 **PredictionModel** | [**RiskPredictorUEBAAllOfPredictionModel**](RiskPredictorUEBAAllOfPredictionModel.md) |  | 
 **By** | Pointer to **[]string** |  | [optional] 
@@ -35,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictor
 
-`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, map_ RiskPredictorCustomAllOfMap, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUEBAAllOfPredictionModel, ) *RiskPredictor`
+`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUEBAAllOfPredictionModel, ) *RiskPredictor`
 
 NewRiskPredictor instantiates a new RiskPredictor object
 This constructor will assign default values to properties that have it defined,
@@ -375,6 +376,26 @@ and a boolean to check if the value has been set.
 SetMap sets Map field to given value.
 
 
+### GetDetect
+
+`func (o *RiskPredictor) GetDetect() EnumPredictorNewDeviceDetectType`
+
+GetDetect returns the Detect field if non-nil, zero value otherwise.
+
+### GetDetectOk
+
+`func (o *RiskPredictor) GetDetectOk() (*EnumPredictorNewDeviceDetectType, bool)`
+
+GetDetectOk returns a tuple with the Detect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetect
+
+`func (o *RiskPredictor) SetDetect(v EnumPredictorNewDeviceDetectType)`
+
+SetDetect sets Detect field to given value.
+
+
 ### GetActivationAt
 
 `func (o *RiskPredictor) GetActivationAt() time.Time`
@@ -419,11 +440,6 @@ and a boolean to check if the value has been set.
 
 SetDays sets Days field to given value.
 
-### HasDays
-
-`func (o *RiskPredictor) HasDays() bool`
-
-HasDays returns a boolean if a field has been set.
 
 ### GetRadius
 

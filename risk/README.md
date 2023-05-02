@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
  - [EnumEventSharingType](docs/EnumEventSharingType.md)
  - [EnumFlowType](docs/EnumFlowType.md)
  - [EnumPredictorCompositeConditionType](docs/EnumPredictorCompositeConditionType.md)
+ - [EnumPredictorNewDeviceDetectType](docs/EnumPredictorNewDeviceDetectType.md)
  - [EnumPredictorType](docs/EnumPredictorType.md)
  - [EnumPredictorUnit](docs/EnumPredictorUnit.md)
  - [EnumPredictorVelocityFallbackStrategy](docs/EnumPredictorVelocityFallbackStrategy.md)

@@ -11,6 +11,7 @@ docs/EnumDistanceUnit.md
 docs/EnumEventSharingType.md
 docs/EnumFlowType.md
 docs/EnumPredictorCompositeConditionType.md
+docs/EnumPredictorNewDeviceDetectType.md
 docs/EnumPredictorType.md
 docs/EnumPredictorUnit.md
 docs/EnumPredictorVelocityFallbackStrategy.md
@@ -110,6 +111,7 @@ model_enum_distance_unit.go
 model_enum_event_sharing_type.go
 model_enum_flow_type.go
 model_enum_predictor_composite_condition_type.go
+model_enum_predictor_new_device_detect_type.go
 model_enum_predictor_type.go
 model_enum_predictor_unit.go
 model_enum_predictor_velocity_fallback_strategy.go

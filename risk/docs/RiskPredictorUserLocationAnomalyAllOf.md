@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Days** | Pointer to **int32** |  | [optional] 
+**Days** | **int32** |  | 
 **Radius** | [**RiskPredictorUserLocationAnomalyAllOfRadius**](RiskPredictorUserLocationAnomalyAllOfRadius.md) |  | 
 
 ## Methods
 
 ### NewRiskPredictorUserLocationAnomalyAllOf
 
-`func NewRiskPredictorUserLocationAnomalyAllOf(radius RiskPredictorUserLocationAnomalyAllOfRadius, ) *RiskPredictorUserLocationAnomalyAllOf`
+`func NewRiskPredictorUserLocationAnomalyAllOf(days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, ) *RiskPredictorUserLocationAnomalyAllOf`
 
 NewRiskPredictorUserLocationAnomalyAllOf instantiates a new RiskPredictorUserLocationAnomalyAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetDays sets Days field to given value.
 
-### HasDays
-
-`func (o *RiskPredictorUserLocationAnomalyAllOf) HasDays() bool`
-
-HasDays returns a boolean if a field has been set.
 
 ### GetRadius
 

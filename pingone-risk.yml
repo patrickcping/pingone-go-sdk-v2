@@ -62,10 +62,13 @@ components:
     EnumPredictorCompositeConditionType:
       type: string
       enum: [VALUE_COMPARISON, STRING_LIST]
+    EnumPredictorNewDeviceDetectType:
+      type: string
+      enum: [NEW_DEVICE]
     EnumPredictorType:
       type: string
-      enum: [ANONYMOUS_NETWORK, COMPOSITE, GEO_VELOCITY, IP_REPUTATION, MAP, NEW_DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
-      description: An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`, `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `NEW_DEVICE`, `USER_LOCATION_ANOMALY`, `USER_RISK_BEHAVIOR` or `VELOCITY`.
+      enum: [ANONYMOUS_NETWORK, COMPOSITE, GEO_VELOCITY, IP_REPUTATION, MAP, DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
+      description: An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`, `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `DEVICE`, `USER_LOCATION_ANOMALY`, `USER_RISK_BEHAVIOR` or `VELOCITY`.
     EnumPredictorUnit:
       type: string
       enum: [DAY, HOUR]
@@ -920,10 +923,14 @@ components:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
           properties:
+            detect:
+              $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
             activationAt:
               type: string
               format: date-time
               description: You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
+          required:
+            - detect
     RiskPredictorUserLocationAnomaly:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -945,6 +952,7 @@ components:
                 - distance
                 - unit
           required:
+            - days
             - radius
     RiskPredictorUEBA:
       allOf:

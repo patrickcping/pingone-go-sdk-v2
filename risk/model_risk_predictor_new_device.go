@@ -39,6 +39,7 @@ type RiskPredictorNewDevice struct {
 	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
+	Detect EnumPredictorNewDeviceDetectType `json:"detect"`
 	// You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
 	ActivationAt *time.Time `json:"activationAt,omitempty"`
 }
@@ -47,11 +48,12 @@ type RiskPredictorNewDevice struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorNewDevice(name string, compactName string, type_ EnumPredictorType) *RiskPredictorNewDevice {
+func NewRiskPredictorNewDevice(name string, compactName string, type_ EnumPredictorType, detect EnumPredictorNewDeviceDetectType) *RiskPredictorNewDevice {
 	this := RiskPredictorNewDevice{}
 	this.Name = name
 	this.CompactName = compactName
 	this.Type = type_
+	this.Detect = detect
 	return &this
 }
 
@@ -391,6 +393,30 @@ func (o *RiskPredictorNewDevice) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 
+// GetDetect returns the Detect field value
+func (o *RiskPredictorNewDevice) GetDetect() EnumPredictorNewDeviceDetectType {
+	if o == nil {
+		var ret EnumPredictorNewDeviceDetectType
+		return ret
+	}
+
+	return o.Detect
+}
+
+// GetDetectOk returns a tuple with the Detect field value
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorNewDevice) GetDetectOk() (*EnumPredictorNewDeviceDetectType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Detect, true
+}
+
+// SetDetect sets field value
+func (o *RiskPredictorNewDevice) SetDetect(v EnumPredictorNewDeviceDetectType) {
+	o.Detect = v
+}
+
 // GetActivationAt returns the ActivationAt field value if set, zero value otherwise.
 func (o *RiskPredictorNewDevice) GetActivationAt() time.Time {
 	if o == nil || IsNil(o.ActivationAt) {
@@ -450,6 +476,7 @@ func (o RiskPredictorNewDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}
+	toSerialize["detect"] = o.Detect
 	if !IsNil(o.ActivationAt) {
 		toSerialize["activationAt"] = o.ActivationAt
 	}

@@ -1146,9 +1146,13 @@ components:
       - VALUE_COMPARISON
       - STRING_LIST
       type: string
+    EnumPredictorNewDeviceDetectType:
+      enum:
+      - NEW_DEVICE
+      type: string
     EnumPredictorType:
       description: "An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`,\
-        \ `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `NEW_DEVICE`, `USER_LOCATION_ANOMALY`,\
+        \ `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `DEVICE`, `USER_LOCATION_ANOMALY`,\
         \ `USER_RISK_BEHAVIOR` or `VELOCITY`."
       enum:
       - ANONYMOUS_NETWORK
@@ -1156,7 +1160,7 @@ components:
       - GEO_VELOCITY
       - IP_REPUTATION
       - MAP
-      - NEW_DEVICE
+      - DEVICE
       - USER_LOCATION_ANOMALY
       - USER_RISK_BEHAVIOR
       - VELOCITY
@@ -2817,7 +2821,6 @@ components:
         result:
           $ref: '#/components/schemas/RiskPredictorCommon_default_result'
       required:
-      - result
       - weight
       type: object
     RiskPredictorCommon_condition_scores_inner:
@@ -2890,7 +2893,6 @@ components:
       - list
       - type
       type: object
-      example: null
     RiskPredictorCompositeCondition_oneOf_1:
       properties:
         equals:
@@ -2913,7 +2915,6 @@ components:
       required:
       - value
       type: object
-      example: null
     RiskPredictorCustom_allOf_map:
       description: An object that defines the mapping of risk levels for the list
         of all results.
@@ -2960,6 +2961,8 @@ components:
       example: null
     RiskPredictorNewDevice_allOf:
       properties:
+        detect:
+          $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
         activationAt:
           description: You can use the `activationAt` parameter to specify a date
             on which the learning process for the predictor should be restarted. This
@@ -2969,6 +2972,8 @@ components:
             UTC time.
           format: date-time
           type: string
+      required:
+      - detect
       type: object
       example: null
     RiskPredictorUserLocationAnomaly_allOf_radius:
@@ -2993,6 +2998,7 @@ components:
         radius:
           $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf_radius'
       required:
+      - days
       - radius
       type: object
       example: null

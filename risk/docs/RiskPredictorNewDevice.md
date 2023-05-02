@@ -15,13 +15,14 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
+**Detect** | [**EnumPredictorNewDeviceDetectType**](EnumPredictorNewDeviceDetectType.md) |  | 
 **ActivationAt** | Pointer to **time.Time** | You can use the &#x60;activationAt&#x60; parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (&#x60;default.result.level&#x60;) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time. | [optional] 
 
 ## Methods
 
 ### NewRiskPredictorNewDevice
 
-`func NewRiskPredictorNewDevice(name string, compactName string, type_ EnumPredictorType, ) *RiskPredictorNewDevice`
+`func NewRiskPredictorNewDevice(name string, compactName string, type_ EnumPredictorType, detect EnumPredictorNewDeviceDetectType, ) *RiskPredictorNewDevice`
 
 NewRiskPredictorNewDevice instantiates a new RiskPredictorNewDevice object
 This constructor will assign default values to properties that have it defined,
@@ -295,6 +296,26 @@ SetCondition sets Condition field to given value.
 `func (o *RiskPredictorNewDevice) HasCondition() bool`
 
 HasCondition returns a boolean if a field has been set.
+
+### GetDetect
+
+`func (o *RiskPredictorNewDevice) GetDetect() EnumPredictorNewDeviceDetectType`
+
+GetDetect returns the Detect field if non-nil, zero value otherwise.
+
+### GetDetectOk
+
+`func (o *RiskPredictorNewDevice) GetDetectOk() (*EnumPredictorNewDeviceDetectType, bool)`
+
+GetDetectOk returns a tuple with the Detect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetect
+
+`func (o *RiskPredictorNewDevice) SetDetect(v EnumPredictorNewDeviceDetectType)`
+
+SetDetect sets Detect field to given value.
+
 
 ### GetActivationAt
 
