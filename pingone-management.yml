@@ -5017,6 +5017,7 @@ components:
       required:
         - email
         - username
+      additionalProperties: true
     UserEnabled:
       type: object
       properties:

@@ -27803,6 +27803,7 @@ components:
     TemplateContentBulkVariant:
       type: object
     User:
+      additionalProperties: true
       example:
         preferredLanguage: preferredLanguage
         timezone: timezone
