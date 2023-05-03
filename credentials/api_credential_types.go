@@ -57,6 +57,15 @@ func (a *CredentialTypesApiService) CreateCredentialType(ctx context.Context, en
 // Execute executes the request
 //  @return CredentialType
 func (a *CredentialTypesApiService) CreateCredentialTypeExecute(r ApiCreateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateCredentialTypeExecute(r)
+		},
+	)
+	return obj.(*CredentialType), response, error
+}
+			
+func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCreateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -106,7 +115,7 @@ func (a *CredentialTypesApiService) CreateCredentialTypeExecute(r ApiCreateCrede
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -228,6 +237,16 @@ func (a *CredentialTypesApiService) DeleteCredentialType(ctx context.Context, en
 
 // Execute executes the request
 func (a *CredentialTypesApiService) DeleteCredentialTypeExecute(r ApiDeleteCredentialTypeRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteCredentialTypeExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDeleteCredentialTypeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -275,7 +294,7 @@ func (a *CredentialTypesApiService) DeleteCredentialTypeExecute(r ApiDeleteCrede
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
@@ -386,6 +405,15 @@ func (a *CredentialTypesApiService) ReadAllCredentialTypes(ctx context.Context, 
 // Execute executes the request
 //  @return EntityArray
 func (a *CredentialTypesApiService) ReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) (*EntityArray, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadAllCredentialTypesExecute(r)
+		},
+	)
+	return obj.(*EntityArray), response, error
+}
+			
+func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -433,7 +461,7 @@ func (a *CredentialTypesApiService) ReadAllCredentialTypesExecute(r ApiReadAllCr
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -556,6 +584,15 @@ func (a *CredentialTypesApiService) ReadOneCredentialType(ctx context.Context, e
 // Execute executes the request
 //  @return CredentialType
 func (a *CredentialTypesApiService) ReadOneCredentialTypeExecute(r ApiReadOneCredentialTypeRequest) (*CredentialType, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadOneCredentialTypeExecute(r)
+		},
+	)
+	return obj.(*CredentialType), response, error
+}
+			
+func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiReadOneCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -604,7 +641,7 @@ func (a *CredentialTypesApiService) ReadOneCredentialTypeExecute(r ApiReadOneCre
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
@@ -733,6 +770,15 @@ func (a *CredentialTypesApiService) UpdateCredentialType(ctx context.Context, en
 // Execute executes the request
 //  @return CredentialType
 func (a *CredentialTypesApiService) UpdateCredentialTypeExecute(r ApiUpdateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateCredentialTypeExecute(r)
+		},
+	)
+	return obj.(*CredentialType), response, error
+}
+			
+func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpdateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -783,7 +829,7 @@ func (a *CredentialTypesApiService) UpdateCredentialTypeExecute(r ApiUpdateCrede
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
+	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err

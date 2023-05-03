@@ -19,7 +19,7 @@ var _ MappedNullable = &CredentialIssuanceRuleNotification{}
 
 // CredentialIssuanceRuleNotification struct for CredentialIssuanceRuleNotification
 type CredentialIssuanceRuleNotification struct {
-	Methods *EnumCredentialIssuanceRuleNotificationMethod `json:"methods,omitempty"`
+	Methods []EnumCredentialIssuanceRuleNotificationMethod `json:"methods,omitempty"`
 }
 
 // NewCredentialIssuanceRuleNotification instantiates a new CredentialIssuanceRuleNotification object
@@ -40,17 +40,17 @@ func NewCredentialIssuanceRuleNotificationWithDefaults() *CredentialIssuanceRule
 }
 
 // GetMethods returns the Methods field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleNotification) GetMethods() EnumCredentialIssuanceRuleNotificationMethod {
+func (o *CredentialIssuanceRuleNotification) GetMethods() []EnumCredentialIssuanceRuleNotificationMethod {
 	if o == nil || IsNil(o.Methods) {
-		var ret EnumCredentialIssuanceRuleNotificationMethod
+		var ret []EnumCredentialIssuanceRuleNotificationMethod
 		return ret
 	}
-	return *o.Methods
+	return o.Methods
 }
 
 // GetMethodsOk returns a tuple with the Methods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleNotification) GetMethodsOk() (*EnumCredentialIssuanceRuleNotificationMethod, bool) {
+func (o *CredentialIssuanceRuleNotification) GetMethodsOk() ([]EnumCredentialIssuanceRuleNotificationMethod, bool) {
 	if o == nil || IsNil(o.Methods) {
 		return nil, false
 	}
@@ -66,9 +66,9 @@ func (o *CredentialIssuanceRuleNotification) HasMethods() bool {
 	return false
 }
 
-// SetMethods gets a reference to the given EnumCredentialIssuanceRuleNotificationMethod and assigns it to the Methods field.
-func (o *CredentialIssuanceRuleNotification) SetMethods(v EnumCredentialIssuanceRuleNotificationMethod) {
-	o.Methods = &v
+// SetMethods gets a reference to the given []EnumCredentialIssuanceRuleNotificationMethod and assigns it to the Methods field.
+func (o *CredentialIssuanceRuleNotification) SetMethods(v []EnumCredentialIssuanceRuleNotificationMethod) {
+	o.Methods = v
 }
 
 func (o CredentialIssuanceRuleNotification) MarshalJSON() ([]byte, error) {

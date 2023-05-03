@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Methods** | Pointer to [**EnumCredentialIssuanceRuleNotificationMethod**](EnumCredentialIssuanceRuleNotificationMethod.md) |  | [optional] 
+**Methods** | Pointer to [**[]EnumCredentialIssuanceRuleNotificationMethod**](EnumCredentialIssuanceRuleNotificationMethod.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMethods
 
-`func (o *CredentialIssuanceRuleNotification) GetMethods() EnumCredentialIssuanceRuleNotificationMethod`
+`func (o *CredentialIssuanceRuleNotification) GetMethods() []EnumCredentialIssuanceRuleNotificationMethod`
 
 GetMethods returns the Methods field if non-nil, zero value otherwise.
 
 ### GetMethodsOk
 
-`func (o *CredentialIssuanceRuleNotification) GetMethodsOk() (*EnumCredentialIssuanceRuleNotificationMethod, bool)`
+`func (o *CredentialIssuanceRuleNotification) GetMethodsOk() (*[]EnumCredentialIssuanceRuleNotificationMethod, bool)`
 
 GetMethodsOk returns a tuple with the Methods field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMethods
 
-`func (o *CredentialIssuanceRuleNotification) SetMethods(v EnumCredentialIssuanceRuleNotificationMethod)`
+`func (o *CredentialIssuanceRuleNotification) SetMethods(v []EnumCredentialIssuanceRuleNotificationMethod)`
 
 SetMethods sets Methods field to given value.
 
