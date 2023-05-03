@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedItemsInner](docs/EntityArrayEmbeddedItemsInner.md)
  - [EnumCredentialIssuanceRuleAutomationMethod](docs/EnumCredentialIssuanceRuleAutomationMethod.md)
+ - [EnumCredentialIssuanceRuleNotificationMethod](docs/EnumCredentialIssuanceRuleNotificationMethod.md)
  - [EnumCredentialIssuanceRuleStagedChangeAction](docs/EnumCredentialIssuanceRuleStagedChangeAction.md)
  - [EnumCredentialIssuanceRuleStatus](docs/EnumCredentialIssuanceRuleStatus.md)
  - [EnumCredentialTypeMetaDataFieldsType](docs/EnumCredentialTypeMetaDataFieldsType.md)
