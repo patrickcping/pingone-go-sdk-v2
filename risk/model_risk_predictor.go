@@ -20,11 +20,11 @@ type RiskPredictor struct {
 	RiskPredictorAnonymousNetwork *RiskPredictorAnonymousNetwork
 	RiskPredictorComposite *RiskPredictorComposite
 	RiskPredictorCustom *RiskPredictorCustom
+	RiskPredictorDevice *RiskPredictorDevice
 	RiskPredictorGeovelocity *RiskPredictorGeovelocity
 	RiskPredictorIPReputation *RiskPredictorIPReputation
-	RiskPredictorNewDevice *RiskPredictorNewDevice
-	RiskPredictorUEBA *RiskPredictorUEBA
 	RiskPredictorUserLocationAnomaly *RiskPredictorUserLocationAnomaly
+	RiskPredictorUserRiskBehavior *RiskPredictorUserRiskBehavior
 	RiskPredictorVelocity *RiskPredictorVelocity
 }
 
@@ -49,6 +49,13 @@ func RiskPredictorCustomAsRiskPredictor(v *RiskPredictorCustom) RiskPredictor {
 	}
 }
 
+// RiskPredictorDeviceAsRiskPredictor is a convenience function that returns RiskPredictorDevice wrapped in RiskPredictor
+func RiskPredictorDeviceAsRiskPredictor(v *RiskPredictorDevice) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorDevice: v,
+	}
+}
+
 // RiskPredictorGeovelocityAsRiskPredictor is a convenience function that returns RiskPredictorGeovelocity wrapped in RiskPredictor
 func RiskPredictorGeovelocityAsRiskPredictor(v *RiskPredictorGeovelocity) RiskPredictor {
 	return RiskPredictor{
@@ -63,24 +70,17 @@ func RiskPredictorIPReputationAsRiskPredictor(v *RiskPredictorIPReputation) Risk
 	}
 }
 
-// RiskPredictorNewDeviceAsRiskPredictor is a convenience function that returns RiskPredictorNewDevice wrapped in RiskPredictor
-func RiskPredictorNewDeviceAsRiskPredictor(v *RiskPredictorNewDevice) RiskPredictor {
-	return RiskPredictor{
-		RiskPredictorNewDevice: v,
-	}
-}
-
-// RiskPredictorUEBAAsRiskPredictor is a convenience function that returns RiskPredictorUEBA wrapped in RiskPredictor
-func RiskPredictorUEBAAsRiskPredictor(v *RiskPredictorUEBA) RiskPredictor {
-	return RiskPredictor{
-		RiskPredictorUEBA: v,
-	}
-}
-
 // RiskPredictorUserLocationAnomalyAsRiskPredictor is a convenience function that returns RiskPredictorUserLocationAnomaly wrapped in RiskPredictor
 func RiskPredictorUserLocationAnomalyAsRiskPredictor(v *RiskPredictorUserLocationAnomaly) RiskPredictor {
 	return RiskPredictor{
 		RiskPredictorUserLocationAnomaly: v,
+	}
+}
+
+// RiskPredictorUserRiskBehaviorAsRiskPredictor is a convenience function that returns RiskPredictorUserRiskBehavior wrapped in RiskPredictor
+func RiskPredictorUserRiskBehaviorAsRiskPredictor(v *RiskPredictorUserRiskBehavior) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorUserRiskBehavior: v,
 	}
 }
 
@@ -106,8 +106,8 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 	dst.RiskPredictorCustom = nil
 	dst.RiskPredictorGeovelocity = nil
 	dst.RiskPredictorIPReputation = nil
-	dst.RiskPredictorNewDevice = nil
-	dst.RiskPredictorUEBA = nil
+	dst.RiskPredictorDevice = nil
+	dst.RiskPredictorUserRiskBehavior = nil
 	dst.RiskPredictorUserLocationAnomaly = nil
 	dst.RiskPredictorVelocity = nil
 
@@ -133,11 +133,11 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 			return err
 		}
 	case ENUMPREDICTORTYPE_DEVICE:
-		if err := json.Unmarshal(data, &dst.RiskPredictorNewDevice); err != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorDevice); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
-		if err := json.Unmarshal(data, &dst.RiskPredictorUEBA); err != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorUserRiskBehavior); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY:
@@ -168,6 +168,10 @@ func (src RiskPredictor) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RiskPredictorCustom)
 	}
 
+	if src.RiskPredictorDevice != nil {
+		return json.Marshal(&src.RiskPredictorDevice)
+	}
+
 	if src.RiskPredictorGeovelocity != nil {
 		return json.Marshal(&src.RiskPredictorGeovelocity)
 	}
@@ -176,16 +180,12 @@ func (src RiskPredictor) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RiskPredictorIPReputation)
 	}
 
-	if src.RiskPredictorNewDevice != nil {
-		return json.Marshal(&src.RiskPredictorNewDevice)
-	}
-
-	if src.RiskPredictorUEBA != nil {
-		return json.Marshal(&src.RiskPredictorUEBA)
-	}
-
 	if src.RiskPredictorUserLocationAnomaly != nil {
 		return json.Marshal(&src.RiskPredictorUserLocationAnomaly)
+	}
+
+	if src.RiskPredictorUserRiskBehavior != nil {
+		return json.Marshal(&src.RiskPredictorUserRiskBehavior)
 	}
 
 	if src.RiskPredictorVelocity != nil {
@@ -212,6 +212,10 @@ func (obj *RiskPredictor) GetActualInstance() (interface{}) {
 		return obj.RiskPredictorCustom
 	}
 
+	if obj.RiskPredictorDevice != nil {
+		return obj.RiskPredictorDevice
+	}
+
 	if obj.RiskPredictorGeovelocity != nil {
 		return obj.RiskPredictorGeovelocity
 	}
@@ -220,16 +224,12 @@ func (obj *RiskPredictor) GetActualInstance() (interface{}) {
 		return obj.RiskPredictorIPReputation
 	}
 
-	if obj.RiskPredictorNewDevice != nil {
-		return obj.RiskPredictorNewDevice
-	}
-
-	if obj.RiskPredictorUEBA != nil {
-		return obj.RiskPredictorUEBA
-	}
-
 	if obj.RiskPredictorUserLocationAnomaly != nil {
 		return obj.RiskPredictorUserLocationAnomaly
+	}
+
+	if obj.RiskPredictorUserRiskBehavior != nil {
+		return obj.RiskPredictorUserRiskBehavior
 	}
 
 	if obj.RiskPredictorVelocity != nil {

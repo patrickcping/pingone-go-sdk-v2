@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **ActivationAt** | Pointer to **time.Time** | You can use the &#x60;activationAt&#x60; parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (&#x60;default.result.level&#x60;) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time. | [optional] 
 **Days** | **int32** |  | 
 **Radius** | [**RiskPredictorUserLocationAnomalyAllOfRadius**](RiskPredictorUserLocationAnomalyAllOfRadius.md) |  | 
-**PredictionModel** | [**RiskPredictorUEBAAllOfPredictionModel**](RiskPredictorUEBAAllOfPredictionModel.md) |  | 
+**PredictionModel** | [**RiskPredictorUserRiskBehaviorAllOfPredictionModel**](RiskPredictorUserRiskBehaviorAllOfPredictionModel.md) |  | 
 **By** | Pointer to **[]string** |  | [optional] 
 **Every** | Pointer to [**RiskPredictorVelocityAllOfEvery**](RiskPredictorVelocityAllOfEvery.md) |  | [optional] 
 **Fallback** | Pointer to [**RiskPredictorVelocityAllOfFallback**](RiskPredictorVelocityAllOfFallback.md) |  | [optional] 
@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictor
 
-`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUEBAAllOfPredictionModel, ) *RiskPredictor`
+`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel, ) *RiskPredictor`
 
 NewRiskPredictor instantiates a new RiskPredictor object
 This constructor will assign default values to properties that have it defined,
@@ -463,20 +463,20 @@ SetRadius sets Radius field to given value.
 
 ### GetPredictionModel
 
-`func (o *RiskPredictor) GetPredictionModel() RiskPredictorUEBAAllOfPredictionModel`
+`func (o *RiskPredictor) GetPredictionModel() RiskPredictorUserRiskBehaviorAllOfPredictionModel`
 
 GetPredictionModel returns the PredictionModel field if non-nil, zero value otherwise.
 
 ### GetPredictionModelOk
 
-`func (o *RiskPredictor) GetPredictionModelOk() (*RiskPredictorUEBAAllOfPredictionModel, bool)`
+`func (o *RiskPredictor) GetPredictionModelOk() (*RiskPredictorUserRiskBehaviorAllOfPredictionModel, bool)`
 
 GetPredictionModelOk returns a tuple with the PredictionModel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPredictionModel
 
-`func (o *RiskPredictor) SetPredictionModel(v RiskPredictorUEBAAllOfPredictionModel)`
+`func (o *RiskPredictor) SetPredictionModel(v RiskPredictorUserRiskBehaviorAllOfPredictionModel)`
 
 SetPredictionModel sets PredictionModel field to given value.
 

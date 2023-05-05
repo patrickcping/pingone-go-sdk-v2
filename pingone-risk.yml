@@ -89,7 +89,7 @@ components:
       type: string
       enum: [LOW, MEDIUM, HIGH]
       description: Enum string that specifies a given risk level.  Options are `LOW`, `MEDIUM`, `HIGH`.
-    EnumRiskModel:
+    EnumUserRiskBehaviorRiskModel:
       type: string
       enum: [points, login_anomaly_statistic]
       description: Enum string that specifies the risk model.  Options are `points` (individual user model) and `login_anomaly_statistic` (organization wide model).
@@ -635,9 +635,9 @@ components:
         - $ref: '#/components/schemas/RiskPredictorCustom'
         - $ref: '#/components/schemas/RiskPredictorGeovelocity'
         - $ref: '#/components/schemas/RiskPredictorIPReputation'
-        - $ref: '#/components/schemas/RiskPredictorNewDevice'
+        - $ref: '#/components/schemas/RiskPredictorDevice'
         - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly'
-        - $ref: '#/components/schemas/RiskPredictorUEBA'
+        - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior'
         - $ref: '#/components/schemas/RiskPredictorVelocity'
     RiskPredictorCommon:
       type: object
@@ -918,7 +918,7 @@ components:
               items:
                 type: string
                 pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
-    RiskPredictorNewDevice:
+    RiskPredictorDevice:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
@@ -954,7 +954,7 @@ components:
           required:
             - days
             - radius
-    RiskPredictorUEBA:
+    RiskPredictorUserRiskBehavior:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
@@ -963,7 +963,7 @@ components:
               type: object
               properties:
                 name:
-                  $ref: '#/components/schemas/EnumRiskModel'
+                  $ref: '#/components/schemas/EnumUserRiskBehaviorRiskModel'
               required:
                 - name
           required:
@@ -993,9 +993,11 @@ components:
                 strategy:
                   $ref: '#/components/schemas/EnumPredictorVelocityFallbackStrategy'
                 high:
-                  type: integer
+                  type: number
+                  format: float
                 medium:
-                  type: integer
+                  type: number
+                  format: float
             maxDelay:
               type: object
               properties:
@@ -1021,9 +1023,11 @@ components:
               type: object
               properties:
                 high:
-                  type: integer
+                  type: number
+                  format: float
                 medium:
-                  type: integer
+                  type: number
+                  format: float
                 type:
                   $ref: '#/components/schemas/EnumPredictorVelocityUseType'
   responses:

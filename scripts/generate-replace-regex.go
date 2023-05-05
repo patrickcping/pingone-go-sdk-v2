@@ -145,7 +145,7 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 
 	var common RiskPredictorCommon
 
-	if err := json.Unmarshal(data, &common); err != nil { // simple model
+	if err := json.Unmarshal(data, &common); err != nil {
 		return err
 	}
 
@@ -154,46 +154,46 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 	dst.RiskPredictorCustom = nil
 	dst.RiskPredictorGeovelocity = nil
 	dst.RiskPredictorIPReputation = nil
-	dst.RiskPredictorNewDevice = nil
-	dst.RiskPredictorUEBA = nil
+	dst.RiskPredictorDevice = nil
+	dst.RiskPredictorUserRiskBehavior = nil
 	dst.RiskPredictorUserLocationAnomaly = nil
 	dst.RiskPredictorVelocity = nil
 
 	switch common.GetType() {
 	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
-		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_COMPOSITE:
-		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_MAP:
-		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_GEO_VELOCITY:
-		if err := json.Unmarshal(data, &dst.RiskPredictorGeovelocity); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.RiskPredictorGeovelocity); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_IP_REPUTATION:
-		if err := json.Unmarshal(data, &dst.RiskPredictorIPReputation); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.RiskPredictorIPReputation); err != nil {
 			return err
 		}
-	case ENUMPREDICTORTYPE_NEW_DEVICE:
-		if err := json.Unmarshal(data, &dst.RiskPredictorNewDevice); err != nil { // simple model
+	case ENUMPREDICTORTYPE_DEVICE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorDevice); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
-		if err := json.Unmarshal(data, &dst.RiskPredictorUEBA); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.RiskPredictorUserRiskBehavior); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY:
-		if err := json.Unmarshal(data, &dst.RiskPredictorUserLocationAnomaly); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.RiskPredictorUserLocationAnomaly); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_VELOCITY:
-		if err := json.Unmarshal(data, &dst.RiskPredictorVelocity); err != nil { // simple model
+		if err := json.Unmarshal(data, &dst.RiskPredictorVelocity); err != nil {
 			return err
 		}
 	default:
