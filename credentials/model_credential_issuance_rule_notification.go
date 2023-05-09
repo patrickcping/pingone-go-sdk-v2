@@ -20,12 +20,7 @@ var _ MappedNullable = &CredentialIssuanceRuleNotification{}
 // CredentialIssuanceRuleNotification struct for CredentialIssuanceRuleNotification
 type CredentialIssuanceRuleNotification struct {
 	Methods []EnumCredentialIssuanceRuleNotificationMethod `json:"methods,omitempty"`
-	// A string that specifies the ISO 2-character language code used for the notification; for example, en.
-	Locale *string `json:"locale,omitempty"`
-	// An object of key:value pairs that defines the dynamic variables used by the content variant.
-	Variables map[string]interface{} `json:"variables,omitempty"`
-	// A string that specifies the unique user-defined name for the content variant that contains the message text used for the notification
-	Variant *string `json:"variant,omitempty"`
+	Template *CredentialIssuanceRuleNotificationTemplate `json:"template,omitempty"`
 }
 
 // NewCredentialIssuanceRuleNotification instantiates a new CredentialIssuanceRuleNotification object
@@ -77,100 +72,36 @@ func (o *CredentialIssuanceRuleNotification) SetMethods(v []EnumCredentialIssuan
 	o.Methods = v
 }
 
-// GetLocale returns the Locale field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleNotification) GetLocale() string {
-	if o == nil || IsNil(o.Locale) {
-		var ret string
+// GetTemplate returns the Template field value if set, zero value otherwise.
+func (o *CredentialIssuanceRuleNotification) GetTemplate() CredentialIssuanceRuleNotificationTemplate {
+	if o == nil || IsNil(o.Template) {
+		var ret CredentialIssuanceRuleNotificationTemplate
 		return ret
 	}
-	return *o.Locale
+	return *o.Template
 }
 
-// GetLocaleOk returns a tuple with the Locale field value if set, nil otherwise
+// GetTemplateOk returns a tuple with the Template field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleNotification) GetLocaleOk() (*string, bool) {
-	if o == nil || IsNil(o.Locale) {
+func (o *CredentialIssuanceRuleNotification) GetTemplateOk() (*CredentialIssuanceRuleNotificationTemplate, bool) {
+	if o == nil || IsNil(o.Template) {
 		return nil, false
 	}
-	return o.Locale, true
+	return o.Template, true
 }
 
-// HasLocale returns a boolean if a field has been set.
-func (o *CredentialIssuanceRuleNotification) HasLocale() bool {
-	if o != nil && !IsNil(o.Locale) {
+// HasTemplate returns a boolean if a field has been set.
+func (o *CredentialIssuanceRuleNotification) HasTemplate() bool {
+	if o != nil && !IsNil(o.Template) {
 		return true
 	}
 
 	return false
 }
 
-// SetLocale gets a reference to the given string and assigns it to the Locale field.
-func (o *CredentialIssuanceRuleNotification) SetLocale(v string) {
-	o.Locale = &v
-}
-
-// GetVariables returns the Variables field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleNotification) GetVariables() map[string]interface{} {
-	if o == nil || IsNil(o.Variables) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.Variables
-}
-
-// GetVariablesOk returns a tuple with the Variables field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleNotification) GetVariablesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Variables) {
-		return map[string]interface{}{}, false
-	}
-	return o.Variables, true
-}
-
-// HasVariables returns a boolean if a field has been set.
-func (o *CredentialIssuanceRuleNotification) HasVariables() bool {
-	if o != nil && !IsNil(o.Variables) {
-		return true
-	}
-
-	return false
-}
-
-// SetVariables gets a reference to the given map[string]interface{} and assigns it to the Variables field.
-func (o *CredentialIssuanceRuleNotification) SetVariables(v map[string]interface{}) {
-	o.Variables = v
-}
-
-// GetVariant returns the Variant field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleNotification) GetVariant() string {
-	if o == nil || IsNil(o.Variant) {
-		var ret string
-		return ret
-	}
-	return *o.Variant
-}
-
-// GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleNotification) GetVariantOk() (*string, bool) {
-	if o == nil || IsNil(o.Variant) {
-		return nil, false
-	}
-	return o.Variant, true
-}
-
-// HasVariant returns a boolean if a field has been set.
-func (o *CredentialIssuanceRuleNotification) HasVariant() bool {
-	if o != nil && !IsNil(o.Variant) {
-		return true
-	}
-
-	return false
-}
-
-// SetVariant gets a reference to the given string and assigns it to the Variant field.
-func (o *CredentialIssuanceRuleNotification) SetVariant(v string) {
-	o.Variant = &v
+// SetTemplate gets a reference to the given CredentialIssuanceRuleNotificationTemplate and assigns it to the Template field.
+func (o *CredentialIssuanceRuleNotification) SetTemplate(v CredentialIssuanceRuleNotificationTemplate) {
+	o.Template = &v
 }
 
 func (o CredentialIssuanceRuleNotification) MarshalJSON() ([]byte, error) {
@@ -186,14 +117,8 @@ func (o CredentialIssuanceRuleNotification) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Methods) {
 		toSerialize["methods"] = o.Methods
 	}
-	if !IsNil(o.Locale) {
-		toSerialize["locale"] = o.Locale
-	}
-	if !IsNil(o.Variables) {
-		toSerialize["variables"] = o.Variables
-	}
-	if !IsNil(o.Variant) {
-		toSerialize["variant"] = o.Variant
+	if !IsNil(o.Template) {
+		toSerialize["template"] = o.Template
 	}
 	return toSerialize, nil
 }

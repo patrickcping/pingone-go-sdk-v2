@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
  - [CredentialIssuanceRuleDigitalWalletApplication](docs/CredentialIssuanceRuleDigitalWalletApplication.md)
  - [CredentialIssuanceRuleFilter](docs/CredentialIssuanceRuleFilter.md)
  - [CredentialIssuanceRuleNotification](docs/CredentialIssuanceRuleNotification.md)
+ - [CredentialIssuanceRuleNotificationTemplate](docs/CredentialIssuanceRuleNotificationTemplate.md)
  - [CredentialIssuanceRuleStagedChange](docs/CredentialIssuanceRuleStagedChange.md)
  - [CredentialIssuanceRuleStagedChangeStagedChanges](docs/CredentialIssuanceRuleStagedChangeStagedChanges.md)
  - [CredentialIssuanceRuleStagedChangeStagedChangesCredentialType](docs/CredentialIssuanceRuleStagedChangeStagedChangesCredentialType.md)

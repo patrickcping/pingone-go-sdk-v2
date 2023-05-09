@@ -5,9 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Methods** | Pointer to [**[]EnumCredentialIssuanceRuleNotificationMethod**](EnumCredentialIssuanceRuleNotificationMethod.md) |  | [optional] 
-**Locale** | Pointer to **string** | A string that specifies the ISO 2-character language code used for the notification; for example, en. | [optional] 
-**Variables** | Pointer to **map[string]interface{}** | An object of key:value pairs that defines the dynamic variables used by the content variant. | [optional] 
-**Variant** | Pointer to **string** | A string that specifies the unique user-defined name for the content variant that contains the message text used for the notification | [optional] 
+**Template** | Pointer to [**CredentialIssuanceRuleNotificationTemplate**](CredentialIssuanceRuleNotificationTemplate.md) |  | [optional] 
 
 ## Methods
 
@@ -53,80 +51,30 @@ SetMethods sets Methods field to given value.
 
 HasMethods returns a boolean if a field has been set.
 
-### GetLocale
+### GetTemplate
 
-`func (o *CredentialIssuanceRuleNotification) GetLocale() string`
+`func (o *CredentialIssuanceRuleNotification) GetTemplate() CredentialIssuanceRuleNotificationTemplate`
 
-GetLocale returns the Locale field if non-nil, zero value otherwise.
+GetTemplate returns the Template field if non-nil, zero value otherwise.
 
-### GetLocaleOk
+### GetTemplateOk
 
-`func (o *CredentialIssuanceRuleNotification) GetLocaleOk() (*string, bool)`
+`func (o *CredentialIssuanceRuleNotification) GetTemplateOk() (*CredentialIssuanceRuleNotificationTemplate, bool)`
 
-GetLocaleOk returns a tuple with the Locale field if it's non-nil, zero value otherwise
+GetTemplateOk returns a tuple with the Template field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLocale
+### SetTemplate
 
-`func (o *CredentialIssuanceRuleNotification) SetLocale(v string)`
+`func (o *CredentialIssuanceRuleNotification) SetTemplate(v CredentialIssuanceRuleNotificationTemplate)`
 
-SetLocale sets Locale field to given value.
+SetTemplate sets Template field to given value.
 
-### HasLocale
+### HasTemplate
 
-`func (o *CredentialIssuanceRuleNotification) HasLocale() bool`
+`func (o *CredentialIssuanceRuleNotification) HasTemplate() bool`
 
-HasLocale returns a boolean if a field has been set.
-
-### GetVariables
-
-`func (o *CredentialIssuanceRuleNotification) GetVariables() map[string]interface{}`
-
-GetVariables returns the Variables field if non-nil, zero value otherwise.
-
-### GetVariablesOk
-
-`func (o *CredentialIssuanceRuleNotification) GetVariablesOk() (*map[string]interface{}, bool)`
-
-GetVariablesOk returns a tuple with the Variables field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVariables
-
-`func (o *CredentialIssuanceRuleNotification) SetVariables(v map[string]interface{})`
-
-SetVariables sets Variables field to given value.
-
-### HasVariables
-
-`func (o *CredentialIssuanceRuleNotification) HasVariables() bool`
-
-HasVariables returns a boolean if a field has been set.
-
-### GetVariant
-
-`func (o *CredentialIssuanceRuleNotification) GetVariant() string`
-
-GetVariant returns the Variant field if non-nil, zero value otherwise.
-
-### GetVariantOk
-
-`func (o *CredentialIssuanceRuleNotification) GetVariantOk() (*string, bool)`
-
-GetVariantOk returns a tuple with the Variant field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVariant
-
-`func (o *CredentialIssuanceRuleNotification) SetVariant(v string)`
-
-SetVariant sets Variant field to given value.
-
-### HasVariant
-
-`func (o *CredentialIssuanceRuleNotification) HasVariant() bool`
-
-HasVariant returns a boolean if a field has been set.
+HasTemplate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
