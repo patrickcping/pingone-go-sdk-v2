@@ -23,6 +23,8 @@ type DeviceAuthenticationPolicyMobileApplicationsInner struct {
 	Id string `json:"id"`
 	Push *DeviceAuthenticationPolicyMobileApplicationsInnerPush `json:"push,omitempty"`
 	PushTimeout *DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout `json:"pushTimeout,omitempty"`
+	PairingKeyLifetime *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime `json:"pairingKeyLifetime,omitempty"`
+	PushLimit *DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit `json:"pushLimit,omitempty"`
 	Otp *DeviceAuthenticationPolicyMobileApplicationsInnerOtp `json:"otp,omitempty"`
 	DeviceAuthorization *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization `json:"deviceAuthorization,omitempty"`
 	AutoEnrollment *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment `json:"autoEnrollment,omitempty"`
@@ -133,6 +135,70 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPushTimeout() boo
 // SetPushTimeout gets a reference to the given DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout and assigns it to the PushTimeout field.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPushTimeout(v DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout) {
 	o.PushTimeout = &v
+}
+
+// GetPairingKeyLifetime returns the PairingKeyLifetime field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPairingKeyLifetime() DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime {
+	if o == nil || IsNil(o.PairingKeyLifetime) {
+		var ret DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime
+		return ret
+	}
+	return *o.PairingKeyLifetime
+}
+
+// GetPairingKeyLifetimeOk returns a tuple with the PairingKeyLifetime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPairingKeyLifetimeOk() (*DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime, bool) {
+	if o == nil || IsNil(o.PairingKeyLifetime) {
+		return nil, false
+	}
+	return o.PairingKeyLifetime, true
+}
+
+// HasPairingKeyLifetime returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPairingKeyLifetime() bool {
+	if o != nil && !IsNil(o.PairingKeyLifetime) {
+		return true
+	}
+
+	return false
+}
+
+// SetPairingKeyLifetime gets a reference to the given DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime and assigns it to the PairingKeyLifetime field.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPairingKeyLifetime(v DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) {
+	o.PairingKeyLifetime = &v
+}
+
+// GetPushLimit returns the PushLimit field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPushLimit() DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit {
+	if o == nil || IsNil(o.PushLimit) {
+		var ret DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit
+		return ret
+	}
+	return *o.PushLimit
+}
+
+// GetPushLimitOk returns a tuple with the PushLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPushLimitOk() (*DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit, bool) {
+	if o == nil || IsNil(o.PushLimit) {
+		return nil, false
+	}
+	return o.PushLimit, true
+}
+
+// HasPushLimit returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPushLimit() bool {
+	if o != nil && !IsNil(o.PushLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetPushLimit gets a reference to the given DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit and assigns it to the PushLimit field.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPushLimit(v DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit) {
+	o.PushLimit = &v
 }
 
 // GetOtp returns the Otp field value if set, zero value otherwise.
@@ -279,6 +345,12 @@ func (o DeviceAuthenticationPolicyMobileApplicationsInner) ToMap() (map[string]i
 	}
 	if !IsNil(o.PushTimeout) {
 		toSerialize["pushTimeout"] = o.PushTimeout
+	}
+	if !IsNil(o.PairingKeyLifetime) {
+		toSerialize["pairingKeyLifetime"] = o.PairingKeyLifetime
+	}
+	if !IsNil(o.PushLimit) {
+		toSerialize["pushLimit"] = o.PushLimit
 	}
 	if !IsNil(o.Otp) {
 		toSerialize["otp"] = o.Otp

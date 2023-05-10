@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Id** | **string** | The application&#39;s ID. | 
 **Push** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerPush**](DeviceAuthenticationPolicyMobileApplicationsInnerPush.md) |  | [optional] 
 **PushTimeout** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout**](DeviceAuthenticationPolicyMobileApplicationsInnerPushTimeout.md) |  | [optional] 
+**PairingKeyLifetime** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime**](DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime.md) |  | [optional] 
+**PushLimit** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit**](DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit.md) |  | [optional] 
 **Otp** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerOtp**](DeviceAuthenticationPolicyMobileApplicationsInnerOtp.md) |  | [optional] 
 **DeviceAuthorization** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization**](DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization.md) |  | [optional] 
 **AutoEnrollment** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment**](DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment.md) |  | [optional] 
@@ -100,6 +102,56 @@ SetPushTimeout sets PushTimeout field to given value.
 `func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPushTimeout() bool`
 
 HasPushTimeout returns a boolean if a field has been set.
+
+### GetPairingKeyLifetime
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPairingKeyLifetime() DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime`
+
+GetPairingKeyLifetime returns the PairingKeyLifetime field if non-nil, zero value otherwise.
+
+### GetPairingKeyLifetimeOk
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPairingKeyLifetimeOk() (*DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime, bool)`
+
+GetPairingKeyLifetimeOk returns a tuple with the PairingKeyLifetime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPairingKeyLifetime
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPairingKeyLifetime(v DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime)`
+
+SetPairingKeyLifetime sets PairingKeyLifetime field to given value.
+
+### HasPairingKeyLifetime
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPairingKeyLifetime() bool`
+
+HasPairingKeyLifetime returns a boolean if a field has been set.
+
+### GetPushLimit
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPushLimit() DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit`
+
+GetPushLimit returns the PushLimit field if non-nil, zero value otherwise.
+
+### GetPushLimitOk
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPushLimitOk() (*DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit, bool)`
+
+GetPushLimitOk returns a tuple with the PushLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPushLimit
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPushLimit(v DeviceAuthenticationPolicyMobileApplicationsInnerPushLimit)`
+
+SetPushLimit sets PushLimit field to given value.
+
+### HasPushLimit
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPushLimit() bool`
+
+HasPushLimit returns a boolean if a field has been set.
 
 ### GetOtp
 

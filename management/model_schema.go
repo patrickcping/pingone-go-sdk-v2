@@ -19,6 +19,8 @@ var _ MappedNullable = &Schema{}
 
 // Schema struct for Schema
 type Schema struct {
+	// Indicates whether or not the `contains` operator can be used. You can use the `contains` operator in a maximum of 5 custom attributes.
+	AllowsContainsOperator *bool `json:"allowsContainsOperator,omitempty"`
 	Attributes []SchemaAttribute `json:"attributes,omitempty"`
 	// A string that specifies the description of the schema.
 	Description *string `json:"description,omitempty"`
@@ -44,6 +46,38 @@ func NewSchema() *Schema {
 func NewSchemaWithDefaults() *Schema {
 	this := Schema{}
 	return &this
+}
+
+// GetAllowsContainsOperator returns the AllowsContainsOperator field value if set, zero value otherwise.
+func (o *Schema) GetAllowsContainsOperator() bool {
+	if o == nil || IsNil(o.AllowsContainsOperator) {
+		var ret bool
+		return ret
+	}
+	return *o.AllowsContainsOperator
+}
+
+// GetAllowsContainsOperatorOk returns a tuple with the AllowsContainsOperator field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Schema) GetAllowsContainsOperatorOk() (*bool, bool) {
+	if o == nil || IsNil(o.AllowsContainsOperator) {
+		return nil, false
+	}
+	return o.AllowsContainsOperator, true
+}
+
+// HasAllowsContainsOperator returns a boolean if a field has been set.
+func (o *Schema) HasAllowsContainsOperator() bool {
+	if o != nil && !IsNil(o.AllowsContainsOperator) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowsContainsOperator gets a reference to the given bool and assigns it to the AllowsContainsOperator field.
+func (o *Schema) SetAllowsContainsOperator(v bool) {
+	o.AllowsContainsOperator = &v
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -216,6 +250,7 @@ func (o Schema) MarshalJSON() ([]byte, error) {
 
 func (o Schema) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	// skip: allowsContainsOperator is readOnly
 	// skip: attributes is readOnly
 	// skip: description is readOnly
 	if !IsNil(o.Environment) {

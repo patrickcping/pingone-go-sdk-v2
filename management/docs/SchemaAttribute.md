@@ -14,9 +14,12 @@ Name | Type | Description | Notes
 **Required** | Pointer to **bool** | A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided. | [optional] 
 **Schema** | Pointer to [**SchemaAttributeSchema**](SchemaAttributeSchema.md) |  | [optional] 
 **SchemaType** | Pointer to [**EnumSchemaAttributeSchemaType**](EnumSchemaAttributeSchemaType.md) |  | [optional] 
+**SubAttributes** | Pointer to [**[]SchemaAttribute**](SchemaAttribute.md) | The list of sub-attributes of this attribute. Only &#x60;COMPLEX&#x60; attribute types can have sub-attributes, and only one-level of nesting is allowed. The leaf attribute definition must have a type of &#x60;STRING&#x60; or &#x60;JSON&#x60;. A &#x60;COMPLEX&#x60; attribute definition must have at least one child attribute definition. | [optional] 
 **Type** | [**EnumSchemaAttributeType**](EnumSchemaAttributeType.md) |  | 
 **Unique** | Pointer to **bool** | A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. | [optional] 
 **MultiValued** | Pointer to **bool** | A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000. | [optional] 
+**EnumeratedValues** | Pointer to [**[]SchemaAttributeEnumeratedValuesInner**](SchemaAttributeEnumeratedValuesInner.md) |  | [optional] 
+**RegexValidation** | Pointer to [**SchemaAttributeRegexValidation**](SchemaAttributeRegexValidation.md) |  | [optional] 
 
 ## Methods
 
@@ -277,6 +280,31 @@ SetSchemaType sets SchemaType field to given value.
 
 HasSchemaType returns a boolean if a field has been set.
 
+### GetSubAttributes
+
+`func (o *SchemaAttribute) GetSubAttributes() []SchemaAttribute`
+
+GetSubAttributes returns the SubAttributes field if non-nil, zero value otherwise.
+
+### GetSubAttributesOk
+
+`func (o *SchemaAttribute) GetSubAttributesOk() (*[]SchemaAttribute, bool)`
+
+GetSubAttributesOk returns a tuple with the SubAttributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubAttributes
+
+`func (o *SchemaAttribute) SetSubAttributes(v []SchemaAttribute)`
+
+SetSubAttributes sets SubAttributes field to given value.
+
+### HasSubAttributes
+
+`func (o *SchemaAttribute) HasSubAttributes() bool`
+
+HasSubAttributes returns a boolean if a field has been set.
+
 ### GetType
 
 `func (o *SchemaAttribute) GetType() EnumSchemaAttributeType`
@@ -346,6 +374,56 @@ SetMultiValued sets MultiValued field to given value.
 `func (o *SchemaAttribute) HasMultiValued() bool`
 
 HasMultiValued returns a boolean if a field has been set.
+
+### GetEnumeratedValues
+
+`func (o *SchemaAttribute) GetEnumeratedValues() []SchemaAttributeEnumeratedValuesInner`
+
+GetEnumeratedValues returns the EnumeratedValues field if non-nil, zero value otherwise.
+
+### GetEnumeratedValuesOk
+
+`func (o *SchemaAttribute) GetEnumeratedValuesOk() (*[]SchemaAttributeEnumeratedValuesInner, bool)`
+
+GetEnumeratedValuesOk returns a tuple with the EnumeratedValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnumeratedValues
+
+`func (o *SchemaAttribute) SetEnumeratedValues(v []SchemaAttributeEnumeratedValuesInner)`
+
+SetEnumeratedValues sets EnumeratedValues field to given value.
+
+### HasEnumeratedValues
+
+`func (o *SchemaAttribute) HasEnumeratedValues() bool`
+
+HasEnumeratedValues returns a boolean if a field has been set.
+
+### GetRegexValidation
+
+`func (o *SchemaAttribute) GetRegexValidation() SchemaAttributeRegexValidation`
+
+GetRegexValidation returns the RegexValidation field if non-nil, zero value otherwise.
+
+### GetRegexValidationOk
+
+`func (o *SchemaAttribute) GetRegexValidationOk() (*SchemaAttributeRegexValidation, bool)`
+
+GetRegexValidationOk returns a tuple with the RegexValidation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegexValidation
+
+`func (o *SchemaAttribute) SetRegexValidation(v SchemaAttributeRegexValidation)`
+
+SetRegexValidation sets RegexValidation field to given value.
+
+### HasRegexValidation
+
+`func (o *SchemaAttribute) HasRegexValidation() bool`
+
+HasRegexValidation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

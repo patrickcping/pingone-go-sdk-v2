@@ -91,7 +91,7 @@ func testForRetryable(r *http.Response, err error, currentBackoff time.Duration)
 	}
 
 	if err != nil {
-		if genericOAError, ok := err.(GenericOpenAPIError); ok && genericOAError.Model() != nil {
+		if genericOAError, ok := err.(*GenericOpenAPIError); ok && genericOAError.Model() != nil {
 			// We have an application level error
 
 			if modelError, ok := genericOAError.Model().(P1Error); ok {

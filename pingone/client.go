@@ -65,7 +65,6 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 		Region:                       model.FindRegionByName(c.Region),
 	}
 
-	log.Printf("[INFO] PingOne Client configured")
 	return apiClient, nil
 }
 
@@ -80,8 +79,6 @@ func AgreementManagementAPIClient(token *oauth2.Token) (*agreementmanagement.API
 	if client == nil {
 		return nil, fmt.Errorf("Cannot initialise PingOne Agreement Management client")
 	}
-
-	log.Printf("[INFO] PingOne Agreement Management Client initialised")
 
 	return client, nil
 
@@ -98,8 +95,6 @@ func AuthorizeAPIClient(token *oauth2.Token) (*authorize.APIClient, error) {
 	if client == nil {
 		return nil, fmt.Errorf("Cannot initialise PingOne Authorize client")
 	}
-
-	log.Printf("[INFO] PingOne Authorize Client initialised")
 
 	return client, nil
 
@@ -136,8 +131,6 @@ func ManagementAPIClient(token *oauth2.Token) (*management.APIClient, error) {
 		return nil, fmt.Errorf("Cannot initialise PingOne Management client")
 	}
 
-	log.Printf("[INFO] PingOne Management Client initialised")
-
 	return client, nil
 
 }
@@ -153,8 +146,6 @@ func MFAAPIClient(token *oauth2.Token) (*mfa.APIClient, error) {
 	if client == nil {
 		return nil, fmt.Errorf("Cannot initialise PingOne MFA client")
 	}
-
-	log.Printf("[INFO] PingOne MFA Client initialised")
 
 	return client, nil
 
@@ -172,8 +163,6 @@ func RiskAPIClient(token *oauth2.Token) (*risk.APIClient, error) {
 		return nil, fmt.Errorf("Cannot initialise PingOne Risk client")
 	}
 
-	log.Printf("[INFO] PingOne Risk Client initialised")
-
 	return client, nil
 
 }
@@ -190,7 +179,6 @@ func getToken(ctx context.Context, c *Config) (*oauth2.Token, error) {
 
 		//Get URL from SDK
 		authURL := fmt.Sprintf("https://auth.pingone.%s", regionSuffix)
-		log.Printf("[INFO] Getting token from %s", authURL)
 
 		//OAuth 2.0 config for client creds
 		config := clientcredentials.Config{
@@ -206,7 +194,6 @@ func getToken(ctx context.Context, c *Config) (*oauth2.Token, error) {
 		if err != nil {
 			return nil, err
 		}
-		log.Printf("[INFO] Token retrieved")
 
 		return token, nil
 
