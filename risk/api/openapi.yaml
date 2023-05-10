@@ -1912,6 +1912,9 @@ components:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
           type: string
+        type:
+          readOnly: true
+          type: string
         ipRange:
           description: List of CIDRs to include
           items:
@@ -1929,6 +1932,9 @@ components:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
           type: string
+        type:
+          readOnly: true
+          type: string
         between:
           $ref: '#/components/schemas/RiskPredictorCustomItemBetween_between'
       required:
@@ -1940,6 +1946,9 @@ components:
       properties:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        type:
+          readOnly: true
           type: string
         list:
           description: An array that specifies the list of entities that represent

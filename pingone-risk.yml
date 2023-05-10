@@ -849,6 +849,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         ipRange:
           type: array
           description: List of CIDRs to include
@@ -865,6 +868,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         between:
           type: object
           description: Minimum and maximum boundaries
@@ -888,6 +894,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         list:
           type: array
           description: An array that specifies the list of entities that represent the risk conditions.
