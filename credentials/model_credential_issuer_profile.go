@@ -22,6 +22,7 @@ type CredentialIssuerProfile struct {
 	ApplicationInstance *CredentialIssuerProfileApplicationInstance `json:"applicationInstance,omitempty"`
 	// A string that specifies the date and time the issuer profile was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
+	Environment *Environment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) of the credential issuer.
 	Id *string `json:"id,omitempty"`
 	// The name of the credential issuer. This will be included in credentials issued.
@@ -114,6 +115,38 @@ func (o *CredentialIssuerProfile) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *CredentialIssuerProfile) SetCreatedAt(v string) {
 	o.CreatedAt = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *CredentialIssuerProfile) GetEnvironment() Environment {
+	if o == nil || IsNil(o.Environment) {
+		var ret Environment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialIssuerProfile) GetEnvironmentOk() (*Environment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *CredentialIssuerProfile) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given Environment and assigns it to the Environment field.
+func (o *CredentialIssuerProfile) SetEnvironment(v Environment) {
+	o.Environment = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -283,6 +316,9 @@ func (o CredentialIssuerProfile) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApplicationInstance** | Pointer to [**CredentialIssuerProfileApplicationInstance**](CredentialIssuerProfileApplicationInstance.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | A string that specifies the date and time the issuer profile was created. | [optional] 
+**Environment** | Pointer to [**Environment**](Environment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the credential issuer. | [optional] 
 **Name** | **string** | The name of the credential issuer. This will be included in credentials issued. | 
 **UpdatedAt** | Pointer to **string** | A string that specifies the date and time the credential issuer profile was last updated; can be null. | [optional] 
@@ -80,6 +81,31 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *CredentialIssuerProfile) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### GetEnvironment
+
+`func (o *CredentialIssuerProfile) GetEnvironment() Environment`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *CredentialIssuerProfile) GetEnvironmentOk() (*Environment, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *CredentialIssuerProfile) SetEnvironment(v Environment)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *CredentialIssuerProfile) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetId
 
