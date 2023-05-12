@@ -62,71 +62,60 @@ func RiskPredictorCompositeOrAsRiskPredictorCompositeCondition(v *RiskPredictorC
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
-	var err error
+
 	match := 0
-	// try to unmarshal data into RiskPredictorCompositeAnd
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorCompositeAnd)
-	if err == nil {
-		jsonRiskPredictorCompositeAnd, _ := json.Marshal(dst.RiskPredictorCompositeAnd)
-		if string(jsonRiskPredictorCompositeAnd) == "{}" { // empty struct
-			dst.RiskPredictorCompositeAnd = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.RiskPredictorCompositeAnd = nil
+	var common map[string]interface{}
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
 	}
 
-	// try to unmarshal data into RiskPredictorCompositeConditionOneOf
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorCompositeConditionOneOf)
-	if err == nil {
-		jsonRiskPredictorCompositeConditionOneOf, _ := json.Marshal(dst.RiskPredictorCompositeConditionOneOf)
-		if string(jsonRiskPredictorCompositeConditionOneOf) == "{}" { // empty struct
-			dst.RiskPredictorCompositeConditionOneOf = nil
-		} else {
-			match++
+	fmt.Printf("HERE-MOO!!! %+v\n", common)
+
+	dst.RiskPredictorCompositeAnd = nil
+	dst.RiskPredictorCompositeConditionOneOf = nil
+	dst.RiskPredictorCompositeConditionOneOf1 = nil
+	dst.RiskPredictorCompositeNot = nil
+	dst.RiskPredictorCompositeOr = nil
+
+	if common["and"] != nil {
+		fmt.Printf("HERE-MOO1!!!\n")
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeAnd); err != nil {
+			return err
 		}
-	} else {
-		dst.RiskPredictorCompositeConditionOneOf = nil
+		match++
 	}
 
-	// try to unmarshal data into RiskPredictorCompositeConditionOneOf1
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorCompositeConditionOneOf1)
-	if err == nil {
-		jsonRiskPredictorCompositeConditionOneOf1, _ := json.Marshal(dst.RiskPredictorCompositeConditionOneOf1)
-		if string(jsonRiskPredictorCompositeConditionOneOf1) == "{}" { // empty struct
-			dst.RiskPredictorCompositeConditionOneOf1 = nil
-		} else {
-			match++
+	if common["or"] != nil {
+		fmt.Printf("HERE-MOO2!!!\n")
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeOr); err != nil {
+			return err
 		}
-	} else {
-		dst.RiskPredictorCompositeConditionOneOf1 = nil
+		match++
 	}
 
-	// try to unmarshal data into RiskPredictorCompositeNot
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorCompositeNot)
-	if err == nil {
-		jsonRiskPredictorCompositeNot, _ := json.Marshal(dst.RiskPredictorCompositeNot)
-		if string(jsonRiskPredictorCompositeNot) == "{}" { // empty struct
-			dst.RiskPredictorCompositeNot = nil
-		} else {
-			match++
+	if common["not"] != nil {
+		fmt.Printf("HERE-MOO3!!!\n")
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeNot); err != nil {
+			return err
 		}
-	} else {
-		dst.RiskPredictorCompositeNot = nil
+		match++
 	}
 
-	// try to unmarshal data into RiskPredictorCompositeOr
-	err = newStrictDecoder(data).Decode(&dst.RiskPredictorCompositeOr)
-	if err == nil {
-		jsonRiskPredictorCompositeOr, _ := json.Marshal(dst.RiskPredictorCompositeOr)
-		if string(jsonRiskPredictorCompositeOr) == "{}" { // empty struct
-			dst.RiskPredictorCompositeOr = nil
-		} else {
-			match++
+	if common["type"].(string) == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_STRING_LIST) {
+		fmt.Printf("HERE-MOO4!!!\n")
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf); err != nil {
+			return err
 		}
-	} else {
-		dst.RiskPredictorCompositeOr = nil
+		match++
+	}
+
+	if common["type"].(string) == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_VALUE_COMPARISON) {
+		fmt.Printf("HERE-MOO5!!!\n")
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf1); err != nil {
+			return err
+		}
+		match++
 	}
 
 	if match > 1 { // more than 1 match
