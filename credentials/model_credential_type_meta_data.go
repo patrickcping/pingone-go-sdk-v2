@@ -19,23 +19,25 @@ var _ MappedNullable = &CredentialTypeMetaData{}
 
 // CredentialTypeMetaData struct for CredentialTypeMetaData
 type CredentialTypeMetaData struct {
-	// A string that specifies the name of the credential.
-	Name *string `json:"name,omitempty"`
-	// A string that specifies the description of the credential.
-	Description *string `json:"description,omitempty"`
-	// A string that specifies the color of the text to show on the credential.
-	TextColor *string `json:"textColor,omitempty"`
-	// A string that specifies the color to show on the credential.
-	CardColor *string `json:"cardColor,omitempty"`
 	// A string that specifies the URL to an image of the background to show in the credential.
 	BackgroundImage *string `json:"backgroundImage,omitempty"`
-	// A string that specifies the URL to an image of the logo to show in the credential.
-	LogoImage *string `json:"logoImage,omitempty"`
 	// A string that specifies the percent opacity of the background image in the credential. High percentage opacity may make reading text difficult.
 	BgOpacityPercent *int32 `json:"bgOpacityPercent,omitempty"`
+	// A string that specifies the color to show on the credential.
+	CardColor *string `json:"cardColor,omitempty"`
+	// An integer value between 1-3 that specifies the vertical layout of displayed fields in the credential type.
+	Columns *int32 `json:"columns,omitempty"`
+	// A string that specifies the description of the credential.
+	Description *string `json:"description,omitempty"`
 	// An array of objects that specifies the fields on the credential.
 	Fields []CredentialTypeMetaDataFieldsInner `json:"fields,omitempty"`
-	// An integer that specifies theersion of this credential. If not provided, the service assigns a version.
+	// A string that specifies the URL to an image of the logo to show in the credential.
+	LogoImage *string `json:"logoImage,omitempty"`
+	// A string that specifies the name of the credential.
+	Name *string `json:"name,omitempty"`
+	// A string that specifies the color of the text to show on the credential.
+	TextColor *string `json:"textColor,omitempty"`
+	// An integer that specifies the version of this credential. If not provided, the service assigns a version.
 	Version *int32 `json:"version,omitempty"`
 }
 
@@ -54,134 +56,6 @@ func NewCredentialTypeMetaData() *CredentialTypeMetaData {
 func NewCredentialTypeMetaDataWithDefaults() *CredentialTypeMetaData {
 	this := CredentialTypeMetaData{}
 	return &this
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *CredentialTypeMetaData) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialTypeMetaData) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *CredentialTypeMetaData) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *CredentialTypeMetaData) SetName(v string) {
-	o.Name = &v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *CredentialTypeMetaData) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialTypeMetaData) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *CredentialTypeMetaData) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *CredentialTypeMetaData) SetDescription(v string) {
-	o.Description = &v
-}
-
-// GetTextColor returns the TextColor field value if set, zero value otherwise.
-func (o *CredentialTypeMetaData) GetTextColor() string {
-	if o == nil || IsNil(o.TextColor) {
-		var ret string
-		return ret
-	}
-	return *o.TextColor
-}
-
-// GetTextColorOk returns a tuple with the TextColor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialTypeMetaData) GetTextColorOk() (*string, bool) {
-	if o == nil || IsNil(o.TextColor) {
-		return nil, false
-	}
-	return o.TextColor, true
-}
-
-// HasTextColor returns a boolean if a field has been set.
-func (o *CredentialTypeMetaData) HasTextColor() bool {
-	if o != nil && !IsNil(o.TextColor) {
-		return true
-	}
-
-	return false
-}
-
-// SetTextColor gets a reference to the given string and assigns it to the TextColor field.
-func (o *CredentialTypeMetaData) SetTextColor(v string) {
-	o.TextColor = &v
-}
-
-// GetCardColor returns the CardColor field value if set, zero value otherwise.
-func (o *CredentialTypeMetaData) GetCardColor() string {
-	if o == nil || IsNil(o.CardColor) {
-		var ret string
-		return ret
-	}
-	return *o.CardColor
-}
-
-// GetCardColorOk returns a tuple with the CardColor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialTypeMetaData) GetCardColorOk() (*string, bool) {
-	if o == nil || IsNil(o.CardColor) {
-		return nil, false
-	}
-	return o.CardColor, true
-}
-
-// HasCardColor returns a boolean if a field has been set.
-func (o *CredentialTypeMetaData) HasCardColor() bool {
-	if o != nil && !IsNil(o.CardColor) {
-		return true
-	}
-
-	return false
-}
-
-// SetCardColor gets a reference to the given string and assigns it to the CardColor field.
-func (o *CredentialTypeMetaData) SetCardColor(v string) {
-	o.CardColor = &v
 }
 
 // GetBackgroundImage returns the BackgroundImage field value if set, zero value otherwise.
@@ -216,38 +90,6 @@ func (o *CredentialTypeMetaData) SetBackgroundImage(v string) {
 	o.BackgroundImage = &v
 }
 
-// GetLogoImage returns the LogoImage field value if set, zero value otherwise.
-func (o *CredentialTypeMetaData) GetLogoImage() string {
-	if o == nil || IsNil(o.LogoImage) {
-		var ret string
-		return ret
-	}
-	return *o.LogoImage
-}
-
-// GetLogoImageOk returns a tuple with the LogoImage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CredentialTypeMetaData) GetLogoImageOk() (*string, bool) {
-	if o == nil || IsNil(o.LogoImage) {
-		return nil, false
-	}
-	return o.LogoImage, true
-}
-
-// HasLogoImage returns a boolean if a field has been set.
-func (o *CredentialTypeMetaData) HasLogoImage() bool {
-	if o != nil && !IsNil(o.LogoImage) {
-		return true
-	}
-
-	return false
-}
-
-// SetLogoImage gets a reference to the given string and assigns it to the LogoImage field.
-func (o *CredentialTypeMetaData) SetLogoImage(v string) {
-	o.LogoImage = &v
-}
-
 // GetBgOpacityPercent returns the BgOpacityPercent field value if set, zero value otherwise.
 func (o *CredentialTypeMetaData) GetBgOpacityPercent() int32 {
 	if o == nil || IsNil(o.BgOpacityPercent) {
@@ -280,6 +122,102 @@ func (o *CredentialTypeMetaData) SetBgOpacityPercent(v int32) {
 	o.BgOpacityPercent = &v
 }
 
+// GetCardColor returns the CardColor field value if set, zero value otherwise.
+func (o *CredentialTypeMetaData) GetCardColor() string {
+	if o == nil || IsNil(o.CardColor) {
+		var ret string
+		return ret
+	}
+	return *o.CardColor
+}
+
+// GetCardColorOk returns a tuple with the CardColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaData) GetCardColorOk() (*string, bool) {
+	if o == nil || IsNil(o.CardColor) {
+		return nil, false
+	}
+	return o.CardColor, true
+}
+
+// HasCardColor returns a boolean if a field has been set.
+func (o *CredentialTypeMetaData) HasCardColor() bool {
+	if o != nil && !IsNil(o.CardColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardColor gets a reference to the given string and assigns it to the CardColor field.
+func (o *CredentialTypeMetaData) SetCardColor(v string) {
+	o.CardColor = &v
+}
+
+// GetColumns returns the Columns field value if set, zero value otherwise.
+func (o *CredentialTypeMetaData) GetColumns() int32 {
+	if o == nil || IsNil(o.Columns) {
+		var ret int32
+		return ret
+	}
+	return *o.Columns
+}
+
+// GetColumnsOk returns a tuple with the Columns field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaData) GetColumnsOk() (*int32, bool) {
+	if o == nil || IsNil(o.Columns) {
+		return nil, false
+	}
+	return o.Columns, true
+}
+
+// HasColumns returns a boolean if a field has been set.
+func (o *CredentialTypeMetaData) HasColumns() bool {
+	if o != nil && !IsNil(o.Columns) {
+		return true
+	}
+
+	return false
+}
+
+// SetColumns gets a reference to the given int32 and assigns it to the Columns field.
+func (o *CredentialTypeMetaData) SetColumns(v int32) {
+	o.Columns = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *CredentialTypeMetaData) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaData) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CredentialTypeMetaData) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *CredentialTypeMetaData) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetFields returns the Fields field value if set, zero value otherwise.
 func (o *CredentialTypeMetaData) GetFields() []CredentialTypeMetaDataFieldsInner {
 	if o == nil || IsNil(o.Fields) {
@@ -310,6 +248,102 @@ func (o *CredentialTypeMetaData) HasFields() bool {
 // SetFields gets a reference to the given []CredentialTypeMetaDataFieldsInner and assigns it to the Fields field.
 func (o *CredentialTypeMetaData) SetFields(v []CredentialTypeMetaDataFieldsInner) {
 	o.Fields = v
+}
+
+// GetLogoImage returns the LogoImage field value if set, zero value otherwise.
+func (o *CredentialTypeMetaData) GetLogoImage() string {
+	if o == nil || IsNil(o.LogoImage) {
+		var ret string
+		return ret
+	}
+	return *o.LogoImage
+}
+
+// GetLogoImageOk returns a tuple with the LogoImage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaData) GetLogoImageOk() (*string, bool) {
+	if o == nil || IsNil(o.LogoImage) {
+		return nil, false
+	}
+	return o.LogoImage, true
+}
+
+// HasLogoImage returns a boolean if a field has been set.
+func (o *CredentialTypeMetaData) HasLogoImage() bool {
+	if o != nil && !IsNil(o.LogoImage) {
+		return true
+	}
+
+	return false
+}
+
+// SetLogoImage gets a reference to the given string and assigns it to the LogoImage field.
+func (o *CredentialTypeMetaData) SetLogoImage(v string) {
+	o.LogoImage = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *CredentialTypeMetaData) GetName() string {
+	if o == nil || IsNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaData) GetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *CredentialTypeMetaData) HasName() bool {
+	if o != nil && !IsNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *CredentialTypeMetaData) SetName(v string) {
+	o.Name = &v
+}
+
+// GetTextColor returns the TextColor field value if set, zero value otherwise.
+func (o *CredentialTypeMetaData) GetTextColor() string {
+	if o == nil || IsNil(o.TextColor) {
+		var ret string
+		return ret
+	}
+	return *o.TextColor
+}
+
+// GetTextColorOk returns a tuple with the TextColor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaData) GetTextColorOk() (*string, bool) {
+	if o == nil || IsNil(o.TextColor) {
+		return nil, false
+	}
+	return o.TextColor, true
+}
+
+// HasTextColor returns a boolean if a field has been set.
+func (o *CredentialTypeMetaData) HasTextColor() bool {
+	if o != nil && !IsNil(o.TextColor) {
+		return true
+	}
+
+	return false
+}
+
+// SetTextColor gets a reference to the given string and assigns it to the TextColor field.
+func (o *CredentialTypeMetaData) SetTextColor(v string) {
+	o.TextColor = &v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
@@ -354,29 +388,32 @@ func (o CredentialTypeMetaData) MarshalJSON() ([]byte, error) {
 
 func (o CredentialTypeMetaData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.TextColor) {
-		toSerialize["textColor"] = o.TextColor
-	}
-	if !IsNil(o.CardColor) {
-		toSerialize["cardColor"] = o.CardColor
-	}
 	if !IsNil(o.BackgroundImage) {
 		toSerialize["backgroundImage"] = o.BackgroundImage
-	}
-	if !IsNil(o.LogoImage) {
-		toSerialize["logoImage"] = o.LogoImage
 	}
 	if !IsNil(o.BgOpacityPercent) {
 		toSerialize["bgOpacityPercent"] = o.BgOpacityPercent
 	}
+	if !IsNil(o.CardColor) {
+		toSerialize["cardColor"] = o.CardColor
+	}
+	if !IsNil(o.Columns) {
+		toSerialize["columns"] = o.Columns
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.Fields) {
 		toSerialize["fields"] = o.Fields
+	}
+	if !IsNil(o.LogoImage) {
+		toSerialize["logoImage"] = o.LogoImage
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TextColor) {
+		toSerialize["textColor"] = o.TextColor
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version

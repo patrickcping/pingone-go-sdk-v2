@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CardType** | Pointer to **string** | A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance. | [optional] 
 **CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential type was created. | [optional] 
 **Description** | Pointer to **string** | A string that specifies the description of the credential type. | [optional] 
+**DeletedAt** | Pointer to **string** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] 
 **Environment** | Pointer to [**Environment**](Environment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential type. | [optional] 
 **Issuer** | Pointer to [**CredentialTypeIssuer**](CredentialTypeIssuer.md) |  | [optional] 
@@ -129,6 +130,31 @@ SetDescription sets Description field to given value.
 `func (o *CredentialType) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetDeletedAt
+
+`func (o *CredentialType) GetDeletedAt() string`
+
+GetDeletedAt returns the DeletedAt field if non-nil, zero value otherwise.
+
+### GetDeletedAtOk
+
+`func (o *CredentialType) GetDeletedAtOk() (*string, bool)`
+
+GetDeletedAtOk returns a tuple with the DeletedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeletedAt
+
+`func (o *CredentialType) SetDeletedAt(v string)`
+
+SetDeletedAt sets DeletedAt field to given value.
+
+### HasDeletedAt
+
+`func (o *CredentialType) HasDeletedAt() bool`
+
+HasDeletedAt returns a boolean if a field has been set.
 
 ### GetEnvironment
 

@@ -27,6 +27,8 @@ type CredentialType struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A string that specifies the description of the credential type.
 	Description *string `json:"description,omitempty"`
+	// A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \"soft delete\".
+	DeletedAt *string `json:"deletedAt,omitempty"`
 	Environment *Environment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential type.
 	Id *string `json:"id,omitempty"`
@@ -178,6 +180,38 @@ func (o *CredentialType) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CredentialType) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetDeletedAt returns the DeletedAt field value if set, zero value otherwise.
+func (o *CredentialType) GetDeletedAt() string {
+	if o == nil || IsNil(o.DeletedAt) {
+		var ret string
+		return ret
+	}
+	return *o.DeletedAt
+}
+
+// GetDeletedAtOk returns a tuple with the DeletedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetDeletedAtOk() (*string, bool) {
+	if o == nil || IsNil(o.DeletedAt) {
+		return nil, false
+	}
+	return o.DeletedAt, true
+}
+
+// HasDeletedAt returns a boolean if a field has been set.
+func (o *CredentialType) HasDeletedAt() bool {
+	if o != nil && !IsNil(o.DeletedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeletedAt gets a reference to the given string and assigns it to the DeletedAt field.
+func (o *CredentialType) SetDeletedAt(v string) {
+	o.DeletedAt = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -407,6 +441,9 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.DeletedAt) {
+		toSerialize["deletedAt"] = o.DeletedAt
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
