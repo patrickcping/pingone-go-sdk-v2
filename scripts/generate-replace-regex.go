@@ -215,5 +215,133 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// RiskPredictorCompositeCondition model
+		{
+			fileSelectPattern: "model_risk_predictor_composite_condition.go",
+			pattern:           `(func \(dst \*RiskPredictorCompositeCondition\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
+
+	match := 0
+	var common map[string]interface{}
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.RiskPredictorCompositeAnd = nil
+	dst.RiskPredictorCompositeConditionOneOf = nil
+	dst.RiskPredictorCompositeConditionOneOf1 = nil
+	dst.RiskPredictorCompositeNot = nil
+	dst.RiskPredictorCompositeOr = nil
+
+	if common["and"] != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeAnd); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if common["or"] != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeOr); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if common["not"] != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeNot); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_STRING_LIST) {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_VALUE_COMPARISON) {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf1); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.RiskPredictorCompositeAnd = nil
+		dst.RiskPredictorCompositeConditionOneOf = nil
+		dst.RiskPredictorCompositeConditionOneOf1 = nil
+		dst.RiskPredictorCompositeNot = nil
+		dst.RiskPredictorCompositeOr = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(RiskPredictorCompositeCondition)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(RiskPredictorCompositeCondition)")
+	}
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// RiskPredictorCompositeConditionBase model
+		{
+			fileSelectPattern: "model_risk_predictor_composite_condition_base.go",
+			pattern:           `(func \(dst \*RiskPredictorCompositeConditionBase\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *RiskPredictorCompositeConditionBase) UnmarshalJSON(data []byte) error {
+	
+	match := 0
+	var common map[string]interface{}
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.RiskPredictorCompositeAnd = nil
+	dst.RiskPredictorCompositeNot = nil
+	dst.RiskPredictorCompositeOr = nil
+
+	if common["and"] != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeAnd); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if common["or"] != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeOr); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if common["not"] != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeNot); err != nil {
+			return err
+		}
+		match++
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.RiskPredictorCompositeAnd = nil
+		dst.RiskPredictorCompositeNot = nil
+		dst.RiskPredictorCompositeOr = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(RiskPredictorCompositeConditionBase)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(RiskPredictorCompositeConditionBase)")
+	}
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )
