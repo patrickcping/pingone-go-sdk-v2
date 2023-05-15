@@ -1,3 +1,39 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.4](./agreementmanagement/CHANGELOG.md)
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.7](./authorize/CHANGELOG.md)
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.20.0](./management/CHANGELOG.md)
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+    * **Enhancement** Add support for enumerated values and regex validation to the schema attribute model. [#161](https://github.com/patrickcping/pingone-go-sdk-v2/pull/161)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.10.0](./mfa/CHANGELOG.md)
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+    * **Enhancement** Support for `PairingKeyLifetime` and `PushLimit` in the `DeviceAuthenticationPolicyMobileApplicationsInner` model. [#159](https://github.com/patrickcping/pingone-go-sdk-v2/pull/159)
+    * **Enhancement** Add support for setting `Email` quotas in notification policies. [#162](https://github.com/patrickcping/pingone-go-sdk-v2/pull/162)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.5.2](./risk/CHANGELOG.md)
+    * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+
+# Release (2023-04-28)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.4
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.1.2 => v0.1.3 [#158](https://github.com/patrickcping/pingone-go-sdk-v2/pull/158)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.5 => v0.1.6 [#158](https://github.com/patrickcping/pingone-go-sdk-v2/pull/158)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.19.0 => v0.19.1 [#158](https://github.com/patrickcping/pingone-go-sdk-v2/pull/158)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.9.2 => v0.9.3 [#158](https://github.com/patrickcping/pingone-go-sdk-v2/pull/158)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.5.0 => v0.5.1 [#158](https://github.com/patrickcping/pingone-go-sdk-v2/pull/158)
+    * **Note** Remove unnecessary log output. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.3](./agreementmanagement/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.6](./authorize/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.19.1](./management/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.9.3](./mfa/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.5.1](./risk/CHANGELOG.md)
+    * **Bug** Fix for retry for conditions based on PingOne error response object. [#157](https://github.com/patrickcping/pingone-go-sdk-v2/pull/157)
+
 # Release (2023-04-24)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.3

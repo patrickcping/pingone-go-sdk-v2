@@ -2525,6 +2525,9 @@ components:
             deviceAuthorization:
               extraVerification: null
               enabled: true
+            pairingKeyLifetime:
+              duration: 2
+              timeUnit: null
             integrityDetection: null
             pushTimeout:
               duration: 102
@@ -2534,11 +2537,22 @@ components:
             id: id
             push:
               enabled: true
+            pushLimit:
+              lockDuration:
+                duration: 9
+                timeUnit: null
+              count: 35
+              timePeriod:
+                duration: 3
+                timeUnit: null
           - autoEnrollment:
               enabled: true
             deviceAuthorization:
               extraVerification: null
               enabled: true
+            pairingKeyLifetime:
+              duration: 2
+              timeUnit: null
             integrityDetection: null
             pushTimeout:
               duration: 102
@@ -2548,6 +2562,14 @@ components:
             id: id
             push:
               enabled: true
+            pushLimit:
+              lockDuration:
+                duration: 9
+                timeUnit: null
+              count: 35
+              timePeriod:
+                duration: 3
+                timeUnit: null
         platform:
           enabled: true
           fidoPolicyId: fidoPolicyId
@@ -2636,7 +2658,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 7.061401241503109
+        size: 4.145608029883936
         _embedded:
           fidoDevicesMetadata:
           - null
@@ -2713,6 +2735,9 @@ components:
                 deviceAuthorization:
                   extraVerification: null
                   enabled: true
+                pairingKeyLifetime:
+                  duration: 2
+                  timeUnit: null
                 integrityDetection: null
                 pushTimeout:
                   duration: 102
@@ -2722,11 +2747,22 @@ components:
                 id: id
                 push:
                   enabled: true
+                pushLimit:
+                  lockDuration:
+                    duration: 9
+                    timeUnit: null
+                  count: 35
+                  timePeriod:
+                    duration: 3
+                    timeUnit: null
               - autoEnrollment:
                   enabled: true
                 deviceAuthorization:
                   extraVerification: null
                   enabled: true
+                pairingKeyLifetime:
+                  duration: 2
+                  timeUnit: null
                 integrityDetection: null
                 pushTimeout:
                   duration: 102
@@ -2736,6 +2772,14 @@ components:
                 id: id
                 push:
                   enabled: true
+                pushLimit:
+                  lockDuration:
+                    duration: 9
+                    timeUnit: null
+                  count: 35
+                  timePeriod:
+                    duration: 3
+                    timeUnit: null
             platform:
               enabled: true
               fidoPolicyId: fidoPolicyId
@@ -2810,6 +2854,9 @@ components:
                 deviceAuthorization:
                   extraVerification: null
                   enabled: true
+                pairingKeyLifetime:
+                  duration: 2
+                  timeUnit: null
                 integrityDetection: null
                 pushTimeout:
                   duration: 102
@@ -2819,11 +2866,22 @@ components:
                 id: id
                 push:
                   enabled: true
+                pushLimit:
+                  lockDuration:
+                    duration: 9
+                    timeUnit: null
+                  count: 35
+                  timePeriod:
+                    duration: 3
+                    timeUnit: null
               - autoEnrollment:
                   enabled: true
                 deviceAuthorization:
                   extraVerification: null
                   enabled: true
+                pairingKeyLifetime:
+                  duration: 2
+                  timeUnit: null
                 integrityDetection: null
                 pushTimeout:
                   duration: 102
@@ -2833,6 +2891,14 @@ components:
                 id: id
                 push:
                   enabled: true
+                pushLimit:
+                  lockDuration:
+                    duration: 9
+                    timeUnit: null
+                  count: 35
+                  timePeriod:
+                    duration: 3
+                    timeUnit: null
             platform:
               enabled: true
               fidoPolicyId: fidoPolicyId
@@ -2870,7 +2936,7 @@ components:
             authentication:
               deviceSelection: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
-        count: 2.3021358869347655
+        count: 2.027123023002322
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -3333,6 +3399,84 @@ components:
       - duration
       - timeUnit
       type: object
+    DeviceAuthenticationPolicy_mobile_applications_inner_pairingKeyLifetime:
+      example:
+        duration: 2
+        timeUnit: null
+      properties:
+        duration:
+          default: 10
+          description: "The amount of time an issued pairing key can be used until\
+            \ it expires. Minimum is 1 minute and maximum is 48 hours. If this parameter\
+            \ is not provided, the duration is set to 10 minutes."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_lockDuration:
+      example:
+        duration: 9
+        timeUnit: null
+      properties:
+        duration:
+          default: 30
+          description: "The length of time that push notifications should be blocked\
+            \ for the application if the defined limit has been reached. The minimum\
+            \ value is 1 minute and the maximum value is 120 minutes. If this parameter\
+            \ is not provided, the default value is 30 minutes."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_timePeriod:
+      example:
+        duration: 3
+        timeUnit: null
+      properties:
+        duration:
+          default: 10
+          description: "The time period in which the push notifications are counted\
+            \ towards the defined limit. The minimum value is 1 minute and the maximum\
+            \ value is 120 minutes. If this parameter is not provided, the default\
+            \ value is 10 minutes."
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit:
+      example:
+        lockDuration:
+          duration: 9
+          timeUnit: null
+        count: 35
+        timePeriod:
+          duration: 3
+          timeUnit: null
+      properties:
+        count:
+          default: 5
+          description: "The number of consecutive push notifications that can be ignored\
+            \ or rejected by a user within a defined period before push notifications\
+            \ are blocked for the application. The minimum value is 1 and the maximum\
+            \ value is 50. If this parameter is not provided, the default value is\
+            \ 5."
+          maximum: 50
+          minimum: 1
+          type: integer
+        lockDuration:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_lockDuration'
+        timePeriod:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit_timePeriod'
+      type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_otp:
       example:
         enabled: true
@@ -3378,6 +3522,9 @@ components:
         deviceAuthorization:
           extraVerification: null
           enabled: true
+        pairingKeyLifetime:
+          duration: 2
+          timeUnit: null
         integrityDetection: null
         pushTimeout:
           duration: 102
@@ -3387,6 +3534,14 @@ components:
         id: id
         push:
           enabled: true
+        pushLimit:
+          lockDuration:
+            duration: 9
+            timeUnit: null
+          count: 35
+          timePeriod:
+            duration: 3
+            timeUnit: null
       properties:
         id:
           description: The application's ID.
@@ -3395,6 +3550,10 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_push'
         pushTimeout:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_pushTimeout'
+        pairingKeyLifetime:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_pairingKeyLifetime'
+        pushLimit:
+          $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_pushLimit'
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_otp'
         deviceAuthorization:
@@ -3426,6 +3585,9 @@ components:
           deviceAuthorization:
             extraVerification: null
             enabled: true
+          pairingKeyLifetime:
+            duration: 2
+            timeUnit: null
           integrityDetection: null
           pushTimeout:
             duration: 102
@@ -3435,11 +3597,22 @@ components:
           id: id
           push:
             enabled: true
+          pushLimit:
+            lockDuration:
+              duration: 9
+              timeUnit: null
+            count: 35
+            timePeriod:
+              duration: 3
+              timeUnit: null
         - autoEnrollment:
             enabled: true
           deviceAuthorization:
             extraVerification: null
             enabled: true
+          pairingKeyLifetime:
+            duration: 2
+            timeUnit: null
           integrityDetection: null
           pushTimeout:
             duration: 102
@@ -3449,6 +3622,14 @@ components:
           id: id
           push:
             enabled: true
+          pushLimit:
+            lockDuration:
+              duration: 9
+              timeUnit: null
+            count: 35
+            timePeriod:
+              duration: 3
+              timeUnit: null
       properties:
         enabled:
           description: Enabled or disabled in the policy.
@@ -3578,6 +3759,9 @@ components:
               deviceAuthorization:
                 extraVerification: null
                 enabled: true
+              pairingKeyLifetime:
+                duration: 2
+                timeUnit: null
               integrityDetection: null
               pushTimeout:
                 duration: 102
@@ -3587,11 +3771,22 @@ components:
               id: id
               push:
                 enabled: true
+              pushLimit:
+                lockDuration:
+                  duration: 9
+                  timeUnit: null
+                count: 35
+                timePeriod:
+                  duration: 3
+                  timeUnit: null
             - autoEnrollment:
                 enabled: true
               deviceAuthorization:
                 extraVerification: null
                 enabled: true
+              pairingKeyLifetime:
+                duration: 2
+                timeUnit: null
               integrityDetection: null
               pushTimeout:
                 duration: 102
@@ -3601,6 +3796,14 @@ components:
               id: id
               push:
                 enabled: true
+              pushLimit:
+                lockDuration:
+                  duration: 9
+                  timeUnit: null
+                count: 35
+                timePeriod:
+                  duration: 3
+                  timeUnit: null
           platform:
             enabled: true
             fidoPolicyId: fidoPolicyId
@@ -3675,6 +3878,9 @@ components:
               deviceAuthorization:
                 extraVerification: null
                 enabled: true
+              pairingKeyLifetime:
+                duration: 2
+                timeUnit: null
               integrityDetection: null
               pushTimeout:
                 duration: 102
@@ -3684,11 +3890,22 @@ components:
               id: id
               push:
                 enabled: true
+              pushLimit:
+                lockDuration:
+                  duration: 9
+                  timeUnit: null
+                count: 35
+                timePeriod:
+                  duration: 3
+                  timeUnit: null
             - autoEnrollment:
                 enabled: true
               deviceAuthorization:
                 extraVerification: null
                 enabled: true
+              pairingKeyLifetime:
+                duration: 2
+                timeUnit: null
               integrityDetection: null
               pushTimeout:
                 duration: 102
@@ -3698,6 +3915,14 @@ components:
               id: id
               push:
                 enabled: true
+              pushLimit:
+                lockDuration:
+                  duration: 9
+                  timeUnit: null
+                count: 35
+                timePeriod:
+                  duration: 3
+                  timeUnit: null
           platform:
             enabled: true
             fidoPolicyId: fidoPolicyId

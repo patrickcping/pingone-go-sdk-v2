@@ -22,12 +22,14 @@ type EnumNotificationsPolicyQuotaDeliveryMethods string
 const (
 	ENUMNOTIFICATIONSPOLICYQUOTADELIVERYMETHODS_SMS EnumNotificationsPolicyQuotaDeliveryMethods = "SMS"
 	ENUMNOTIFICATIONSPOLICYQUOTADELIVERYMETHODS_VOICE EnumNotificationsPolicyQuotaDeliveryMethods = "Voice"
+	ENUMNOTIFICATIONSPOLICYQUOTADELIVERYMETHODS_EMAIL EnumNotificationsPolicyQuotaDeliveryMethods = "Email"
 )
 
 // All allowed values of EnumNotificationsPolicyQuotaDeliveryMethods enum
 var AllowedEnumNotificationsPolicyQuotaDeliveryMethodsEnumValues = []EnumNotificationsPolicyQuotaDeliveryMethods{
 	"SMS",
 	"Voice",
+	"Email",
 }
 
 func (v *EnumNotificationsPolicyQuotaDeliveryMethods) UnmarshalJSON(src []byte) error {
