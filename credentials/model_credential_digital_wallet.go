@@ -23,7 +23,7 @@ type CredentialDigitalWallet struct {
 	// A string that specifies the date and time the credential digital wallet was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	DigitalWalletApplication *CredentialDigitalWalletDigitalWalletApplication `json:"digitalWalletApplication,omitempty"`
-	Environment *Environment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential digital wallet app.
 	Id *string `json:"id,omitempty"`
 	Notification *CredentialDigitalWalletNotification `json:"notification,omitempty"`
@@ -149,9 +149,9 @@ func (o *CredentialDigitalWallet) SetDigitalWalletApplication(v CredentialDigita
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *CredentialDigitalWallet) GetEnvironment() Environment {
+func (o *CredentialDigitalWallet) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
-		var ret Environment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -159,7 +159,7 @@ func (o *CredentialDigitalWallet) GetEnvironment() Environment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialDigitalWallet) GetEnvironmentOk() (*Environment, bool) {
+func (o *CredentialDigitalWallet) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -175,8 +175,8 @@ func (o *CredentialDigitalWallet) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given Environment and assigns it to the Environment field.
-func (o *CredentialDigitalWallet) SetEnvironment(v Environment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *CredentialDigitalWallet) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **Credential** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
 **DigitalWallet** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
-**Environment** | Pointer to [**Environment**](Environment.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **ExpiredAt** | Pointer to **string** | A string that specifies the date that the provisioned credential expires. If this value is null, the provisioned credential never expires. | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** | A string that specifies the tatus of the provisioned credential. | [optional] 
@@ -136,20 +136,20 @@ HasDigitalWallet returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *ProvisionedCredential) GetEnvironment() Environment`
+`func (o *ProvisionedCredential) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *ProvisionedCredential) GetEnvironmentOk() (*Environment, bool)`
+`func (o *ProvisionedCredential) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *ProvisionedCredential) SetEnvironment(v Environment)`
+`func (o *ProvisionedCredential) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

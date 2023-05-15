@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Issued** | Pointer to [**[]CredentialIssuanceRuleUsageDetailsIssuedInner**](CredentialIssuanceRuleUsageDetailsIssuedInner.md) |  | [optional] 
-**Revoked** | Pointer to [**[]CredentialIssuanceRuleUsageDetailsIssuedInner**](CredentialIssuanceRuleUsageDetailsIssuedInner.md) |  | [optional] 
-**Updated** | Pointer to [**[]CredentialIssuanceRuleUsageDetailsIssuedInner**](CredentialIssuanceRuleUsageDetailsIssuedInner.md) |  | [optional] 
+**Issued** | Pointer to [**[]CredentialIssuanceRuleUsageInner**](CredentialIssuanceRuleUsageInner.md) |  | [optional] 
+**Revoked** | Pointer to [**[]CredentialIssuanceRuleUsageInner**](CredentialIssuanceRuleUsageInner.md) |  | [optional] 
+**Updated** | Pointer to [**[]CredentialIssuanceRuleUsageInner**](CredentialIssuanceRuleUsageInner.md) |  | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIssued
 
-`func (o *CredentialIssuanceRuleUsageDetails) GetIssued() []CredentialIssuanceRuleUsageDetailsIssuedInner`
+`func (o *CredentialIssuanceRuleUsageDetails) GetIssued() []CredentialIssuanceRuleUsageInner`
 
 GetIssued returns the Issued field if non-nil, zero value otherwise.
 
 ### GetIssuedOk
 
-`func (o *CredentialIssuanceRuleUsageDetails) GetIssuedOk() (*[]CredentialIssuanceRuleUsageDetailsIssuedInner, bool)`
+`func (o *CredentialIssuanceRuleUsageDetails) GetIssuedOk() (*[]CredentialIssuanceRuleUsageInner, bool)`
 
 GetIssuedOk returns a tuple with the Issued field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIssued
 
-`func (o *CredentialIssuanceRuleUsageDetails) SetIssued(v []CredentialIssuanceRuleUsageDetailsIssuedInner)`
+`func (o *CredentialIssuanceRuleUsageDetails) SetIssued(v []CredentialIssuanceRuleUsageInner)`
 
 SetIssued sets Issued field to given value.
 
@@ -54,20 +54,20 @@ HasIssued returns a boolean if a field has been set.
 
 ### GetRevoked
 
-`func (o *CredentialIssuanceRuleUsageDetails) GetRevoked() []CredentialIssuanceRuleUsageDetailsIssuedInner`
+`func (o *CredentialIssuanceRuleUsageDetails) GetRevoked() []CredentialIssuanceRuleUsageInner`
 
 GetRevoked returns the Revoked field if non-nil, zero value otherwise.
 
 ### GetRevokedOk
 
-`func (o *CredentialIssuanceRuleUsageDetails) GetRevokedOk() (*[]CredentialIssuanceRuleUsageDetailsIssuedInner, bool)`
+`func (o *CredentialIssuanceRuleUsageDetails) GetRevokedOk() (*[]CredentialIssuanceRuleUsageInner, bool)`
 
 GetRevokedOk returns a tuple with the Revoked field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevoked
 
-`func (o *CredentialIssuanceRuleUsageDetails) SetRevoked(v []CredentialIssuanceRuleUsageDetailsIssuedInner)`
+`func (o *CredentialIssuanceRuleUsageDetails) SetRevoked(v []CredentialIssuanceRuleUsageInner)`
 
 SetRevoked sets Revoked field to given value.
 
@@ -79,20 +79,20 @@ HasRevoked returns a boolean if a field has been set.
 
 ### GetUpdated
 
-`func (o *CredentialIssuanceRuleUsageDetails) GetUpdated() []CredentialIssuanceRuleUsageDetailsIssuedInner`
+`func (o *CredentialIssuanceRuleUsageDetails) GetUpdated() []CredentialIssuanceRuleUsageInner`
 
 GetUpdated returns the Updated field if non-nil, zero value otherwise.
 
 ### GetUpdatedOk
 
-`func (o *CredentialIssuanceRuleUsageDetails) GetUpdatedOk() (*[]CredentialIssuanceRuleUsageDetailsIssuedInner, bool)`
+`func (o *CredentialIssuanceRuleUsageDetails) GetUpdatedOk() (*[]CredentialIssuanceRuleUsageInner, bool)`
 
 GetUpdatedOk returns a tuple with the Updated field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdated
 
-`func (o *CredentialIssuanceRuleUsageDetails) SetUpdated(v []CredentialIssuanceRuleUsageDetailsIssuedInner)`
+`func (o *CredentialIssuanceRuleUsageDetails) SetUpdated(v []CredentialIssuanceRuleUsageInner)`
 
 SetUpdated sets Updated field to given value.
 

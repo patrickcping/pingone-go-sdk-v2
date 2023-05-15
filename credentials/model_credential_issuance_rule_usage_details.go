@@ -19,9 +19,9 @@ var _ MappedNullable = &CredentialIssuanceRuleUsageDetails{}
 
 // CredentialIssuanceRuleUsageDetails struct for CredentialIssuanceRuleUsageDetails
 type CredentialIssuanceRuleUsageDetails struct {
-	Issued []CredentialIssuanceRuleUsageDetailsIssuedInner `json:"issued,omitempty"`
-	Revoked []CredentialIssuanceRuleUsageDetailsIssuedInner `json:"revoked,omitempty"`
-	Updated []CredentialIssuanceRuleUsageDetailsIssuedInner `json:"updated,omitempty"`
+	Issued []CredentialIssuanceRuleUsageInner `json:"issued,omitempty"`
+	Revoked []CredentialIssuanceRuleUsageInner `json:"revoked,omitempty"`
+	Updated []CredentialIssuanceRuleUsageInner `json:"updated,omitempty"`
 }
 
 // NewCredentialIssuanceRuleUsageDetails instantiates a new CredentialIssuanceRuleUsageDetails object
@@ -42,9 +42,9 @@ func NewCredentialIssuanceRuleUsageDetailsWithDefaults() *CredentialIssuanceRule
 }
 
 // GetIssued returns the Issued field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleUsageDetails) GetIssued() []CredentialIssuanceRuleUsageDetailsIssuedInner {
+func (o *CredentialIssuanceRuleUsageDetails) GetIssued() []CredentialIssuanceRuleUsageInner {
 	if o == nil || IsNil(o.Issued) {
-		var ret []CredentialIssuanceRuleUsageDetailsIssuedInner
+		var ret []CredentialIssuanceRuleUsageInner
 		return ret
 	}
 	return o.Issued
@@ -52,7 +52,7 @@ func (o *CredentialIssuanceRuleUsageDetails) GetIssued() []CredentialIssuanceRul
 
 // GetIssuedOk returns a tuple with the Issued field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleUsageDetails) GetIssuedOk() ([]CredentialIssuanceRuleUsageDetailsIssuedInner, bool) {
+func (o *CredentialIssuanceRuleUsageDetails) GetIssuedOk() ([]CredentialIssuanceRuleUsageInner, bool) {
 	if o == nil || IsNil(o.Issued) {
 		return nil, false
 	}
@@ -68,15 +68,15 @@ func (o *CredentialIssuanceRuleUsageDetails) HasIssued() bool {
 	return false
 }
 
-// SetIssued gets a reference to the given []CredentialIssuanceRuleUsageDetailsIssuedInner and assigns it to the Issued field.
-func (o *CredentialIssuanceRuleUsageDetails) SetIssued(v []CredentialIssuanceRuleUsageDetailsIssuedInner) {
+// SetIssued gets a reference to the given []CredentialIssuanceRuleUsageInner and assigns it to the Issued field.
+func (o *CredentialIssuanceRuleUsageDetails) SetIssued(v []CredentialIssuanceRuleUsageInner) {
 	o.Issued = v
 }
 
 // GetRevoked returns the Revoked field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleUsageDetails) GetRevoked() []CredentialIssuanceRuleUsageDetailsIssuedInner {
+func (o *CredentialIssuanceRuleUsageDetails) GetRevoked() []CredentialIssuanceRuleUsageInner {
 	if o == nil || IsNil(o.Revoked) {
-		var ret []CredentialIssuanceRuleUsageDetailsIssuedInner
+		var ret []CredentialIssuanceRuleUsageInner
 		return ret
 	}
 	return o.Revoked
@@ -84,7 +84,7 @@ func (o *CredentialIssuanceRuleUsageDetails) GetRevoked() []CredentialIssuanceRu
 
 // GetRevokedOk returns a tuple with the Revoked field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleUsageDetails) GetRevokedOk() ([]CredentialIssuanceRuleUsageDetailsIssuedInner, bool) {
+func (o *CredentialIssuanceRuleUsageDetails) GetRevokedOk() ([]CredentialIssuanceRuleUsageInner, bool) {
 	if o == nil || IsNil(o.Revoked) {
 		return nil, false
 	}
@@ -100,15 +100,15 @@ func (o *CredentialIssuanceRuleUsageDetails) HasRevoked() bool {
 	return false
 }
 
-// SetRevoked gets a reference to the given []CredentialIssuanceRuleUsageDetailsIssuedInner and assigns it to the Revoked field.
-func (o *CredentialIssuanceRuleUsageDetails) SetRevoked(v []CredentialIssuanceRuleUsageDetailsIssuedInner) {
+// SetRevoked gets a reference to the given []CredentialIssuanceRuleUsageInner and assigns it to the Revoked field.
+func (o *CredentialIssuanceRuleUsageDetails) SetRevoked(v []CredentialIssuanceRuleUsageInner) {
 	o.Revoked = v
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleUsageDetails) GetUpdated() []CredentialIssuanceRuleUsageDetailsIssuedInner {
+func (o *CredentialIssuanceRuleUsageDetails) GetUpdated() []CredentialIssuanceRuleUsageInner {
 	if o == nil || IsNil(o.Updated) {
-		var ret []CredentialIssuanceRuleUsageDetailsIssuedInner
+		var ret []CredentialIssuanceRuleUsageInner
 		return ret
 	}
 	return o.Updated
@@ -116,7 +116,7 @@ func (o *CredentialIssuanceRuleUsageDetails) GetUpdated() []CredentialIssuanceRu
 
 // GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleUsageDetails) GetUpdatedOk() ([]CredentialIssuanceRuleUsageDetailsIssuedInner, bool) {
+func (o *CredentialIssuanceRuleUsageDetails) GetUpdatedOk() ([]CredentialIssuanceRuleUsageInner, bool) {
 	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *CredentialIssuanceRuleUsageDetails) HasUpdated() bool {
 	return false
 }
 
-// SetUpdated gets a reference to the given []CredentialIssuanceRuleUsageDetailsIssuedInner and assigns it to the Updated field.
-func (o *CredentialIssuanceRuleUsageDetails) SetUpdated(v []CredentialIssuanceRuleUsageDetailsIssuedInner) {
+// SetUpdated gets a reference to the given []CredentialIssuanceRuleUsageInner and assigns it to the Updated field.
+func (o *CredentialIssuanceRuleUsageDetails) SetUpdated(v []CredentialIssuanceRuleUsageInner) {
 	o.Updated = v
 }
 

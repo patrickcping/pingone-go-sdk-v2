@@ -24,7 +24,7 @@ type CredentialIssuanceRule struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	CredentialType *CredentialIssuanceRuleCredentialType `json:"credentialType,omitempty"`
 	DigitalWalletApplication *CredentialIssuanceRuleDigitalWalletApplication `json:"digitalWalletApplication,omitempty"`
-	Environment *Environment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Filter *CredentialIssuanceRuleFilter `json:"filter,omitempty"`
 	// A string that specifies the identifier (UUID) of the credential issuance rule.
 	Id *string `json:"id,omitempty"`
@@ -174,9 +174,9 @@ func (o *CredentialIssuanceRule) SetDigitalWalletApplication(v CredentialIssuanc
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *CredentialIssuanceRule) GetEnvironment() Environment {
+func (o *CredentialIssuanceRule) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
-		var ret Environment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -184,7 +184,7 @@ func (o *CredentialIssuanceRule) GetEnvironment() Environment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRule) GetEnvironmentOk() (*Environment, bool) {
+func (o *CredentialIssuanceRule) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -200,8 +200,8 @@ func (o *CredentialIssuanceRule) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given Environment and assigns it to the Environment field.
-func (o *CredentialIssuanceRule) SetEnvironment(v Environment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *CredentialIssuanceRule) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 

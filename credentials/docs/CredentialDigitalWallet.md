@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Application** | Pointer to [**CredentialDigitalWalletApplication**](CredentialDigitalWalletApplication.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential digital wallet was created. | [optional] 
 **DigitalWalletApplication** | Pointer to [**CredentialDigitalWalletDigitalWalletApplication**](CredentialDigitalWalletDigitalWalletApplication.md) |  | [optional] 
-**Environment** | Pointer to [**Environment**](Environment.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential digital wallet app. | [optional] 
 **Notification** | Pointer to [**CredentialDigitalWalletNotification**](CredentialDigitalWalletNotification.md) |  | [optional] 
 **UpdatedAt** | Pointer to **string** | A string that specifies the date and time the credential digital wallet was last updated; can be null. | [optional] 
@@ -111,20 +111,20 @@ HasDigitalWalletApplication returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *CredentialDigitalWallet) GetEnvironment() Environment`
+`func (o *CredentialDigitalWallet) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *CredentialDigitalWallet) GetEnvironmentOk() (*Environment, bool)`
+`func (o *CredentialDigitalWallet) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *CredentialDigitalWallet) SetEnvironment(v Environment)`
+`func (o *CredentialDigitalWallet) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

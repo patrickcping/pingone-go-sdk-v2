@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **UpdatedAt** | Pointer to **string** |  | [optional] 
-**Environment** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **User** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
 **DigitalWallet** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
 **Challenge** | Pointer to **string** |  | [optional] 
@@ -110,20 +110,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *CredentialDigitalWalletPairingSession) GetEnvironment() CredentialDigitalWalletNotificationResultsInnerNotification`
+`func (o *CredentialDigitalWalletPairingSession) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *CredentialDigitalWalletPairingSession) GetEnvironmentOk() (*CredentialDigitalWalletNotificationResultsInnerNotification, bool)`
+`func (o *CredentialDigitalWalletPairingSession) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *CredentialDigitalWalletPairingSession) SetEnvironment(v CredentialDigitalWalletNotificationResultsInnerNotification)`
+`func (o *CredentialDigitalWalletPairingSession) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

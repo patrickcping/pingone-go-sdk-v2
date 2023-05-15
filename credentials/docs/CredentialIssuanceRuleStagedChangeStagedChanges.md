@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Action** | Pointer to [**EnumCredentialIssuanceRuleAutomationMethod**](EnumCredentialIssuanceRuleAutomationMethod.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | A string that specifies the date and time the change was staged by the service. | [optional] 
 **CredentialType** | Pointer to [**CredentialIssuanceRuleStagedChangeStagedChangesCredentialType**](CredentialIssuanceRuleStagedChangeStagedChangesCredentialType.md) |  | [optional] 
-**Environment** | Pointer to [**Environment**](Environment.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **IssuanceRule** | Pointer to [**CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule**](CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule.md) |  | [optional] 
 **Scheduled** | Pointer to **bool** | A boolean that specifies whether or not the staged change is scheduled. | [optional] 
 **User** | Pointer to [**CredentialIssuanceRuleStagedChangeStagedChangesUser**](CredentialIssuanceRuleStagedChangeStagedChangesUser.md) |  | [optional] 
@@ -108,20 +108,20 @@ HasCredentialType returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironment() Environment`
+`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironmentOk() (*Environment, bool)`
+`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) SetEnvironment(v Environment)`
+`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

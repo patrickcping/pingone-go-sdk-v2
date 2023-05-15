@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential issuance rule was created. | [optional] 
 **CredentialType** | Pointer to [**CredentialIssuanceRuleCredentialType**](CredentialIssuanceRuleCredentialType.md) |  | [optional] 
 **DigitalWalletApplication** | Pointer to [**CredentialIssuanceRuleDigitalWalletApplication**](CredentialIssuanceRuleDigitalWalletApplication.md) |  | [optional] 
-**Environment** | Pointer to [**Environment**](Environment.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Filter** | Pointer to [**CredentialIssuanceRuleFilter**](CredentialIssuanceRuleFilter.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the credential issuance rule. | [optional] 
 **Notification** | Pointer to [**CredentialIssuanceRuleNotification**](CredentialIssuanceRuleNotification.md) |  | [optional] 
@@ -131,20 +131,20 @@ HasDigitalWalletApplication returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *CredentialIssuanceRule) GetEnvironment() Environment`
+`func (o *CredentialIssuanceRule) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *CredentialIssuanceRule) GetEnvironmentOk() (*Environment, bool)`
+`func (o *CredentialIssuanceRule) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *CredentialIssuanceRule) SetEnvironment(v Environment)`
+`func (o *CredentialIssuanceRule) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

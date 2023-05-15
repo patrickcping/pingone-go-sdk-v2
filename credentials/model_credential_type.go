@@ -29,7 +29,7 @@ type CredentialType struct {
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \"soft delete\".
 	DeletedAt *string `json:"deletedAt,omitempty"`
-	Environment *Environment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential type.
 	Id *string `json:"id,omitempty"`
 	Issuer *CredentialTypeIssuer `json:"issuer,omitempty"`
@@ -215,9 +215,9 @@ func (o *CredentialType) SetDeletedAt(v string) {
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *CredentialType) GetEnvironment() Environment {
+func (o *CredentialType) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
-		var ret Environment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -225,7 +225,7 @@ func (o *CredentialType) GetEnvironment() Environment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetEnvironmentOk() (*Environment, bool) {
+func (o *CredentialType) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -241,8 +241,8 @@ func (o *CredentialType) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given Environment and assigns it to the Environment field.
-func (o *CredentialType) SetEnvironment(v Environment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *CredentialType) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 

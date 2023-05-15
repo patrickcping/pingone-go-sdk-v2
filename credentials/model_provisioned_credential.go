@@ -23,7 +23,7 @@ type ProvisionedCredential struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	Credential *CredentialDigitalWalletNotificationResultsInnerNotification `json:"credential,omitempty"`
 	DigitalWallet *CredentialDigitalWalletNotificationResultsInnerNotification `json:"digitalWallet,omitempty"`
-	Environment *Environment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the date that the provisioned credential expires. If this value is null, the provisioned credential never expires.
 	ExpiredAt *string `json:"expiredAt,omitempty"`
 	Id *string `json:"id,omitempty"`
@@ -179,9 +179,9 @@ func (o *ProvisionedCredential) SetDigitalWallet(v CredentialDigitalWalletNotifi
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *ProvisionedCredential) GetEnvironment() Environment {
+func (o *ProvisionedCredential) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
-		var ret Environment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -189,7 +189,7 @@ func (o *ProvisionedCredential) GetEnvironment() Environment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisionedCredential) GetEnvironmentOk() (*Environment, bool) {
+func (o *ProvisionedCredential) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -205,8 +205,8 @@ func (o *ProvisionedCredential) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given Environment and assigns it to the Environment field.
-func (o *ProvisionedCredential) SetEnvironment(v Environment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *ProvisionedCredential) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 

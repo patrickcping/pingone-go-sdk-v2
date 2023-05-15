@@ -22,7 +22,7 @@ type CredentialDigitalWalletPairingSession struct {
 	Id *string `json:"id,omitempty"`
 	CreatedAt *string `json:"createdAt,omitempty"`
 	UpdatedAt *string `json:"updatedAt,omitempty"`
-	Environment *CredentialDigitalWalletNotificationResultsInnerNotification `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	User *CredentialDigitalWalletNotificationResultsInnerNotification `json:"user,omitempty"`
 	DigitalWallet *CredentialDigitalWalletNotificationResultsInnerNotification `json:"digitalWallet,omitempty"`
 	Challenge *string `json:"challenge,omitempty"`
@@ -144,9 +144,9 @@ func (o *CredentialDigitalWalletPairingSession) SetUpdatedAt(v string) {
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *CredentialDigitalWalletPairingSession) GetEnvironment() CredentialDigitalWalletNotificationResultsInnerNotification {
+func (o *CredentialDigitalWalletPairingSession) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
-		var ret CredentialDigitalWalletNotificationResultsInnerNotification
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -154,7 +154,7 @@ func (o *CredentialDigitalWalletPairingSession) GetEnvironment() CredentialDigit
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialDigitalWalletPairingSession) GetEnvironmentOk() (*CredentialDigitalWalletNotificationResultsInnerNotification, bool) {
+func (o *CredentialDigitalWalletPairingSession) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *CredentialDigitalWalletPairingSession) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given CredentialDigitalWalletNotificationResultsInnerNotification and assigns it to the Environment field.
-func (o *CredentialDigitalWalletPairingSession) SetEnvironment(v CredentialDigitalWalletNotificationResultsInnerNotification) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *CredentialDigitalWalletPairingSession) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 

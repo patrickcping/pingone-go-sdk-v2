@@ -21,7 +21,7 @@ var _ MappedNullable = &UserCredential{}
 type UserCredential struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	CredentialType *CredentialDigitalWalletNotificationResultsInnerNotification `json:"credentialType,omitempty"`
-	Environment *Environment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	ExpiresAt *string `json:"expiresAt,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Notification *CredentialDigitalWalletNotification `json:"notification,omitempty"`
@@ -113,9 +113,9 @@ func (o *UserCredential) SetCredentialType(v CredentialDigitalWalletNotification
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *UserCredential) GetEnvironment() Environment {
+func (o *UserCredential) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
-		var ret Environment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -123,7 +123,7 @@ func (o *UserCredential) GetEnvironment() Environment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCredential) GetEnvironmentOk() (*Environment, bool) {
+func (o *UserCredential) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -139,8 +139,8 @@ func (o *UserCredential) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given Environment and assigns it to the Environment field.
-func (o *UserCredential) SetEnvironment(v Environment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *UserCredential) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 

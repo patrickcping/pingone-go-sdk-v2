@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **string** |  | [optional] 
 **CredentialType** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
-**Environment** | Pointer to [**Environment**](Environment.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **ExpiresAt** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Notification** | Pointer to [**CredentialDigitalWalletNotification**](CredentialDigitalWalletNotification.md) |  | [optional] 
@@ -86,20 +86,20 @@ HasCredentialType returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *UserCredential) GetEnvironment() Environment`
+`func (o *UserCredential) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *UserCredential) GetEnvironmentOk() (*Environment, bool)`
+`func (o *UserCredential) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *UserCredential) SetEnvironment(v Environment)`
+`func (o *UserCredential) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

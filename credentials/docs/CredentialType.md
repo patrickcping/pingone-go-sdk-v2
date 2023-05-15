@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential type was created. | [optional] 
 **Description** | Pointer to **string** | A string that specifies the description of the credential type. | [optional] 
 **DeletedAt** | Pointer to **string** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] 
-**Environment** | Pointer to [**Environment**](Environment.md) |  | [optional] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential type. | [optional] 
 **Issuer** | Pointer to [**CredentialTypeIssuer**](CredentialTypeIssuer.md) |  | [optional] 
 **IssuerName** | Pointer to **string** | v issuer name associated with the card, can differ from title. | [optional] 
@@ -158,20 +158,20 @@ HasDeletedAt returns a boolean if a field has been set.
 
 ### GetEnvironment
 
-`func (o *CredentialType) GetEnvironment() Environment`
+`func (o *CredentialType) GetEnvironment() ObjectEnvironment`
 
 GetEnvironment returns the Environment field if non-nil, zero value otherwise.
 
 ### GetEnvironmentOk
 
-`func (o *CredentialType) GetEnvironmentOk() (*Environment, bool)`
+`func (o *CredentialType) GetEnvironmentOk() (*ObjectEnvironment, bool)`
 
 GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnvironment
 
-`func (o *CredentialType) SetEnvironment(v Environment)`
+`func (o *CredentialType) SetEnvironment(v ObjectEnvironment)`
 
 SetEnvironment sets Environment field to given value.
 

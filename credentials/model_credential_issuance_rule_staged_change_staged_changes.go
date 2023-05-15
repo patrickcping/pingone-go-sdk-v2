@@ -23,7 +23,7 @@ type CredentialIssuanceRuleStagedChangeStagedChanges struct {
 	// A string that specifies the date and time the change was staged by the service.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	CredentialType *CredentialIssuanceRuleStagedChangeStagedChangesCredentialType `json:"credentialType,omitempty"`
-	Environment *Environment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	IssuanceRule *CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule `json:"issuanceRule,omitempty"`
 	// A boolean that specifies whether or not the staged change is scheduled.
 	Scheduled *bool `json:"scheduled,omitempty"`
@@ -144,9 +144,9 @@ func (o *CredentialIssuanceRuleStagedChangeStagedChanges) SetCredentialType(v Cr
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironment() Environment {
+func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
-		var ret Environment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -154,7 +154,7 @@ func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironment() Envir
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironmentOk() (*Environment, bool) {
+func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *CredentialIssuanceRuleStagedChangeStagedChanges) HasEnvironment() bool 
 	return false
 }
 
-// SetEnvironment gets a reference to the given Environment and assigns it to the Environment field.
-func (o *CredentialIssuanceRuleStagedChangeStagedChanges) SetEnvironment(v Environment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *CredentialIssuanceRuleStagedChangeStagedChanges) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 

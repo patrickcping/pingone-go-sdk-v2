@@ -22,7 +22,7 @@ type CredentialIssuerProfile struct {
 	ApplicationInstance *CredentialIssuerProfileApplicationInstance `json:"applicationInstance,omitempty"`
 	// A string that specifies the date and time the issuer profile was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
-	Environment *Environment `json:"environment,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) of the credential issuer.
 	Id *string `json:"id,omitempty"`
 	// The name of the credential issuer. This will be included in credentials issued.
@@ -118,9 +118,9 @@ func (o *CredentialIssuerProfile) SetCreatedAt(v string) {
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *CredentialIssuerProfile) GetEnvironment() Environment {
+func (o *CredentialIssuerProfile) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
-		var ret Environment
+		var ret ObjectEnvironment
 		return ret
 	}
 	return *o.Environment
@@ -128,7 +128,7 @@ func (o *CredentialIssuerProfile) GetEnvironment() Environment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuerProfile) GetEnvironmentOk() (*Environment, bool) {
+func (o *CredentialIssuerProfile) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -144,8 +144,8 @@ func (o *CredentialIssuerProfile) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given Environment and assigns it to the Environment field.
-func (o *CredentialIssuerProfile) SetEnvironment(v Environment) {
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *CredentialIssuerProfile) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
