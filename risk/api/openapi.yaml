@@ -1145,6 +1145,9 @@ components:
       enum:
       - VALUE_COMPARISON
       - STRING_LIST
+      - AND
+      - NOT
+      - OR
       type: string
     EnumPredictorNewDeviceDetectType:
       enum:
@@ -1866,6 +1869,8 @@ components:
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
           type: array
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - and
       type: object
@@ -1885,6 +1890,8 @@ components:
       properties:
         not:
           $ref: '#/components/schemas/RiskPredictorCompositeOr'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - not
       type: object
@@ -1894,6 +1901,8 @@ components:
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
           type: array
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - or
       type: object
@@ -2902,12 +2911,16 @@ components:
       - list
       - type
       type: object
+    RiskPredictorCompositeCondition_oneOf_1_equals:
+      oneOf:
+      - type: string
+      - type: integer
     RiskPredictorCompositeCondition_oneOf_1:
       properties:
         equals:
-          type: object
+          $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1_equals'
         notEquals:
-          type: object
+          $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1_equals'
         greater:
           type: integer
         greaterEquals:

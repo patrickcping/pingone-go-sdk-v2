@@ -54,14 +54,11 @@ func (dst *RiskPredictorCompositeConditionBase) UnmarshalJSON(data []byte) error
 		return err
 	}
 
-	fmt.Printf("HERE!!! %+v\n", common)
-
 	dst.RiskPredictorCompositeAnd = nil
 	dst.RiskPredictorCompositeNot = nil
 	dst.RiskPredictorCompositeOr = nil
 
 	if common["and"] != nil {
-		fmt.Printf("HERE1!!!\n")
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeAnd); err != nil {
 			return err
 		}
@@ -69,7 +66,6 @@ func (dst *RiskPredictorCompositeConditionBase) UnmarshalJSON(data []byte) error
 	}
 
 	if common["or"] != nil {
-		fmt.Printf("HERE2!!!\n")
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeOr); err != nil {
 			return err
 		}
@@ -77,7 +73,6 @@ func (dst *RiskPredictorCompositeConditionBase) UnmarshalJSON(data []byte) error
 	}
 
 	if common["not"] != nil {
-		fmt.Printf("HERE3!!!\n")
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeNot); err != nil {
 			return err
 		}

@@ -61,7 +61,7 @@ components:
       description: A string that specifies the flow type for the event. The only option (and default) is `AUTHENTICATION`.
     EnumPredictorCompositeConditionType:
       type: string
-      enum: [VALUE_COMPARISON, STRING_LIST]
+      enum: [VALUE_COMPARISON, STRING_LIST, AND, NOT, OR]
     EnumPredictorNewDeviceDetectType:
       type: string
       enum: [NEW_DEVICE]
@@ -756,6 +756,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - and
     RiskPredictorCompositeConditionBase:
@@ -786,9 +788,13 @@ components:
         - type: object
           properties:
             equals:
-              type: object
+              oneOf:
+                - type: string
+                - type: integer
             notEquals:
-              type: object
+              oneOf:
+                - type: string
+                - type: integer
             greater:
               type: integer
             greaterEquals:
@@ -809,6 +815,8 @@ components:
       properties:
         not:
           $ref: '#/components/schemas/RiskPredictorCompositeOr'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - not
     RiskPredictorCompositeOr:
@@ -818,6 +826,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - or
     RiskPredictorCustom:

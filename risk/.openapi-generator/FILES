@@ -74,6 +74,7 @@ docs/RiskPredictorCompositeCondition.md
 docs/RiskPredictorCompositeConditionBase.md
 docs/RiskPredictorCompositeConditionOneOf.md
 docs/RiskPredictorCompositeConditionOneOf1.md
+docs/RiskPredictorCompositeConditionOneOf1Equals.md
 docs/RiskPredictorCompositeNot.md
 docs/RiskPredictorCompositeOr.md
 docs/RiskPredictorCustom.md
@@ -171,6 +172,7 @@ model_risk_predictor_composite_condition.go
 model_risk_predictor_composite_condition_base.go
 model_risk_predictor_composite_condition_one_of.go
 model_risk_predictor_composite_condition_one_of_1.go
+model_risk_predictor_composite_condition_one_of_1_equals.go
 model_risk_predictor_composite_not.go
 model_risk_predictor_composite_or.go
 model_risk_predictor_custom.go

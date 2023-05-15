@@ -70,8 +70,6 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 		return err
 	}
 
-	fmt.Printf("HERE-MOO!!! %+v\n", common)
-
 	dst.RiskPredictorCompositeAnd = nil
 	dst.RiskPredictorCompositeConditionOneOf = nil
 	dst.RiskPredictorCompositeConditionOneOf1 = nil
@@ -79,7 +77,6 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 	dst.RiskPredictorCompositeOr = nil
 
 	if common["and"] != nil {
-		fmt.Printf("HERE-MOO1!!!\n")
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeAnd); err != nil {
 			return err
 		}
@@ -87,7 +84,6 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 	}
 
 	if common["or"] != nil {
-		fmt.Printf("HERE-MOO2!!!\n")
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeOr); err != nil {
 			return err
 		}
@@ -95,23 +91,20 @@ func (dst *RiskPredictorCompositeCondition) UnmarshalJSON(data []byte) error {
 	}
 
 	if common["not"] != nil {
-		fmt.Printf("HERE-MOO3!!!\n")
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeNot); err != nil {
 			return err
 		}
 		match++
 	}
 
-	if common["type"].(string) == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_STRING_LIST) {
-		fmt.Printf("HERE-MOO4!!!\n")
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_STRING_LIST) {
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf); err != nil {
 			return err
 		}
 		match++
 	}
 
-	if common["type"].(string) == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_VALUE_COMPARISON) {
-		fmt.Printf("HERE-MOO5!!!\n")
+	if v, ok := common["type"].(string); ok && v == string(ENUMPREDICTORCOMPOSITECONDITIONTYPE_VALUE_COMPARISON) {
 		if err := json.Unmarshal(data, &dst.RiskPredictorCompositeConditionOneOf1); err != nil {
 			return err
 		}

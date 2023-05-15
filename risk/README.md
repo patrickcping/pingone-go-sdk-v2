@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
  - [RiskPredictorCompositeConditionBase](docs/RiskPredictorCompositeConditionBase.md)
  - [RiskPredictorCompositeConditionOneOf](docs/RiskPredictorCompositeConditionOneOf.md)
  - [RiskPredictorCompositeConditionOneOf1](docs/RiskPredictorCompositeConditionOneOf1.md)
+ - [RiskPredictorCompositeConditionOneOf1Equals](docs/RiskPredictorCompositeConditionOneOf1Equals.md)
  - [RiskPredictorCompositeNot](docs/RiskPredictorCompositeNot.md)
  - [RiskPredictorCompositeOr](docs/RiskPredictorCompositeOr.md)
  - [RiskPredictorCustom](docs/RiskPredictorCustom.md)
