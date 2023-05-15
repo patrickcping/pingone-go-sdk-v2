@@ -69,23 +69,13 @@ type service struct {
 // NewAPIClient creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	LOG_FILE := "/Users/mikesimon/dev/tools/terraform/neo.log"
-    // open log file
-    logFile, err := os.OpenFile(LOG_FILE, os.O_APPEND|os.O_RDWR|os.O_CREATE, 0644)
-    if err != nil {
-        log.Panic(err)
-    }
-	log.SetOutput(logFile)
-	log.SetFlags(log.Lshortfile | log.LstdFlags)
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	if cfg.HTTPClient == nil {
 		cfg.HTTPClient = http.DefaultClient
 	}
 
 	c := &APIClient{}
 	c.cfg = cfg
-	cfg.Debug = true // remove debug
+	cfg.Debug = false
 	c.common.client = c
 
 	// API Services

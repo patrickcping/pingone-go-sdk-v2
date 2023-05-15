@@ -76,6 +76,24 @@ func (a *ImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (*Image, 
 }
 			
 func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateImageExecute(r)
+		},
+	)
+	return obj.(*Image), response, error
+}
+			
+func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalinternalCreateImageExecute(r)
+		},
+	)
+	return obj.(*Image), response, error
+}
+			
+func (a *ImagesApiService) internalinternalCreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -275,6 +293,26 @@ func (a *ImagesApiService) DeleteImageExecute(r ApiDeleteImageRequest) (*http.Re
 }
 			
 func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalDeleteImageExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
+	_, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			resp, err := r.ApiService.internalinternalDeleteImageExecute(r)
+			return nil, resp, err
+		},
+	)
+	return response, error
+}
+			
+func (a *ImagesApiService) internalinternalDeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -446,6 +484,24 @@ func (a *ImagesApiService) ReadImageExecute(r ApiReadImageRequest) (*Image, *htt
 }
 			
 func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadImageExecute(r)
+		},
+	)
+	return obj.(*Image), response, error
+}
+			
+func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalinternalReadImageExecute(r)
+		},
+	)
+	return obj.(*Image), response, error
+}
+			
+func (a *ImagesApiService) internalinternalReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

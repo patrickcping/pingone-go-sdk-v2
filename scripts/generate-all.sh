@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 ## declare an array variable
-##declare -a arr=("agreementmanagement" "authorize" "credentials" "davinci" "management" "mfa" "risk" "verify")
-declare -a arr=("credentials")
+declare -a arr=("agreementmanagement" "authorize" "credentials" "davinci" "management" "mfa" "risk" "verify")
+##declare -a arr=("credentials")
 ## now loop through the above array
 for i in "${arr[@]}"
 do
