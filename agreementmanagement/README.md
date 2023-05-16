@@ -91,7 +91,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-Authentication schemes defined for the API:
+
 ### bearer
 
 - **Type**: HTTP Bearer token authentication
