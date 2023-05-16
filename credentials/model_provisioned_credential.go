@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ProvisionedCredential type satisfies the MappedNullable interface at compile time
@@ -20,12 +21,12 @@ var _ MappedNullable = &ProvisionedCredential{}
 // ProvisionedCredential struct for ProvisionedCredential
 type ProvisionedCredential struct {
 	ClaimReference *ProvisionedCredentialClaimReference `json:"claimReference,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	Credential *CredentialDigitalWalletNotificationResultsInnerNotification `json:"credential,omitempty"`
-	DigitalWallet *CredentialDigitalWalletNotificationResultsInnerNotification `json:"digitalWallet,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	Credential *ProvisionedCredentialCredential `json:"credential,omitempty"`
+	DigitalWallet *ProvisionedCredentialCredential `json:"digitalWallet,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the date that the provisioned credential expires. If this value is null, the provisioned credential never expires.
-	ExpiredAt *string `json:"expiredAt,omitempty"`
+	ExpiredAt *time.Time `json:"expiredAt,omitempty"`
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the tatus of the provisioned credential.
 	Status *string `json:"status,omitempty"`
@@ -83,9 +84,9 @@ func (o *ProvisionedCredential) SetClaimReference(v ProvisionedCredentialClaimRe
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *ProvisionedCredential) GetCreatedAt() string {
+func (o *ProvisionedCredential) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -93,7 +94,7 @@ func (o *ProvisionedCredential) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisionedCredential) GetCreatedAtOk() (*string, bool) {
+func (o *ProvisionedCredential) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -109,15 +110,15 @@ func (o *ProvisionedCredential) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *ProvisionedCredential) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *ProvisionedCredential) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetCredential returns the Credential field value if set, zero value otherwise.
-func (o *ProvisionedCredential) GetCredential() CredentialDigitalWalletNotificationResultsInnerNotification {
+func (o *ProvisionedCredential) GetCredential() ProvisionedCredentialCredential {
 	if o == nil || IsNil(o.Credential) {
-		var ret CredentialDigitalWalletNotificationResultsInnerNotification
+		var ret ProvisionedCredentialCredential
 		return ret
 	}
 	return *o.Credential
@@ -125,7 +126,7 @@ func (o *ProvisionedCredential) GetCredential() CredentialDigitalWalletNotificat
 
 // GetCredentialOk returns a tuple with the Credential field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisionedCredential) GetCredentialOk() (*CredentialDigitalWalletNotificationResultsInnerNotification, bool) {
+func (o *ProvisionedCredential) GetCredentialOk() (*ProvisionedCredentialCredential, bool) {
 	if o == nil || IsNil(o.Credential) {
 		return nil, false
 	}
@@ -141,15 +142,15 @@ func (o *ProvisionedCredential) HasCredential() bool {
 	return false
 }
 
-// SetCredential gets a reference to the given CredentialDigitalWalletNotificationResultsInnerNotification and assigns it to the Credential field.
-func (o *ProvisionedCredential) SetCredential(v CredentialDigitalWalletNotificationResultsInnerNotification) {
+// SetCredential gets a reference to the given ProvisionedCredentialCredential and assigns it to the Credential field.
+func (o *ProvisionedCredential) SetCredential(v ProvisionedCredentialCredential) {
 	o.Credential = &v
 }
 
 // GetDigitalWallet returns the DigitalWallet field value if set, zero value otherwise.
-func (o *ProvisionedCredential) GetDigitalWallet() CredentialDigitalWalletNotificationResultsInnerNotification {
+func (o *ProvisionedCredential) GetDigitalWallet() ProvisionedCredentialCredential {
 	if o == nil || IsNil(o.DigitalWallet) {
-		var ret CredentialDigitalWalletNotificationResultsInnerNotification
+		var ret ProvisionedCredentialCredential
 		return ret
 	}
 	return *o.DigitalWallet
@@ -157,7 +158,7 @@ func (o *ProvisionedCredential) GetDigitalWallet() CredentialDigitalWalletNotifi
 
 // GetDigitalWalletOk returns a tuple with the DigitalWallet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisionedCredential) GetDigitalWalletOk() (*CredentialDigitalWalletNotificationResultsInnerNotification, bool) {
+func (o *ProvisionedCredential) GetDigitalWalletOk() (*ProvisionedCredentialCredential, bool) {
 	if o == nil || IsNil(o.DigitalWallet) {
 		return nil, false
 	}
@@ -173,8 +174,8 @@ func (o *ProvisionedCredential) HasDigitalWallet() bool {
 	return false
 }
 
-// SetDigitalWallet gets a reference to the given CredentialDigitalWalletNotificationResultsInnerNotification and assigns it to the DigitalWallet field.
-func (o *ProvisionedCredential) SetDigitalWallet(v CredentialDigitalWalletNotificationResultsInnerNotification) {
+// SetDigitalWallet gets a reference to the given ProvisionedCredentialCredential and assigns it to the DigitalWallet field.
+func (o *ProvisionedCredential) SetDigitalWallet(v ProvisionedCredentialCredential) {
 	o.DigitalWallet = &v
 }
 
@@ -211,9 +212,9 @@ func (o *ProvisionedCredential) SetEnvironment(v ObjectEnvironment) {
 }
 
 // GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise.
-func (o *ProvisionedCredential) GetExpiredAt() string {
+func (o *ProvisionedCredential) GetExpiredAt() time.Time {
 	if o == nil || IsNil(o.ExpiredAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.ExpiredAt
@@ -221,7 +222,7 @@ func (o *ProvisionedCredential) GetExpiredAt() string {
 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisionedCredential) GetExpiredAtOk() (*string, bool) {
+func (o *ProvisionedCredential) GetExpiredAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpiredAt) {
 		return nil, false
 	}
@@ -237,8 +238,8 @@ func (o *ProvisionedCredential) HasExpiredAt() bool {
 	return false
 }
 
-// SetExpiredAt gets a reference to the given string and assigns it to the ExpiredAt field.
-func (o *ProvisionedCredential) SetExpiredAt(v string) {
+// SetExpiredAt gets a reference to the given time.Time and assigns it to the ExpiredAt field.
+func (o *ProvisionedCredential) SetExpiredAt(v time.Time) {
 	o.ExpiredAt = &v
 }
 
@@ -383,9 +384,7 @@ func (o ProvisionedCredential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClaimReference) {
 		toSerialize["claimReference"] = o.ClaimReference
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	if !IsNil(o.Credential) {
 		toSerialize["credential"] = o.Credential
 	}
@@ -395,15 +394,9 @@ func (o ProvisionedCredential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !IsNil(o.ExpiredAt) {
-		toSerialize["expiredAt"] = o.ExpiredAt
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
+	// skip: expiredAt is readOnly
+	// skip: id is readOnly
+	// skip: status is readOnly
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}

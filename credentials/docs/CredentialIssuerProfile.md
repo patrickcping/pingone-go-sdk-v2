@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApplicationInstance** | Pointer to [**CredentialIssuerProfileApplicationInstance**](CredentialIssuerProfileApplicationInstance.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** | A string that specifies the date and time the issuer profile was created. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the issuer profile was created. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the credential issuer. | [optional] 
+**Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the credential issuer. | [optional] [readonly] 
 **Name** | **string** | The name of the credential issuer. This will be included in credentials issued. | 
-**UpdatedAt** | Pointer to **string** | A string that specifies the date and time the credential issuer profile was last updated; can be null. | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential issuer profile was last updated; can be null. | [optional] [readonly] 
 **SiteUrl** | Pointer to **string** | A string that specifies the base URL associated with the credential issuer. | [optional] 
 **CustomEmailTemplate** | Pointer to **string** | A string that specifies the default notification template used in credential issuance notifications. Deprecated. | [optional] 
 
@@ -59,20 +59,20 @@ HasApplicationInstance returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *CredentialIssuerProfile) GetCreatedAt() string`
+`func (o *CredentialIssuerProfile) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CredentialIssuerProfile) GetCreatedAtOk() (*string, bool)`
+`func (o *CredentialIssuerProfile) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CredentialIssuerProfile) SetCreatedAt(v string)`
+`func (o *CredentialIssuerProfile) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -154,20 +154,20 @@ SetName sets Name field to given value.
 
 ### GetUpdatedAt
 
-`func (o *CredentialIssuerProfile) GetUpdatedAt() string`
+`func (o *CredentialIssuerProfile) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CredentialIssuerProfile) GetUpdatedAtOk() (*string, bool)`
+`func (o *CredentialIssuerProfile) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CredentialIssuerProfile) SetUpdatedAt(v string)`
+`func (o *CredentialIssuerProfile) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

@@ -20,16 +20,15 @@ var _ MappedNullable = &CredentialIssuerProfileApplicationInstance{}
 // CredentialIssuerProfileApplicationInstance struct for CredentialIssuerProfileApplicationInstance
 type CredentialIssuerProfileApplicationInstance struct {
 	// A string that specifies the identifier (UUID) of the application instance registered with the PingOne platform service.
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // NewCredentialIssuerProfileApplicationInstance instantiates a new CredentialIssuerProfileApplicationInstance object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCredentialIssuerProfileApplicationInstance(id string) *CredentialIssuerProfileApplicationInstance {
+func NewCredentialIssuerProfileApplicationInstance() *CredentialIssuerProfileApplicationInstance {
 	this := CredentialIssuerProfileApplicationInstance{}
-	this.Id = id
 	return &this
 }
 
@@ -41,28 +40,36 @@ func NewCredentialIssuerProfileApplicationInstanceWithDefaults() *CredentialIssu
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *CredentialIssuerProfileApplicationInstance) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CredentialIssuerProfileApplicationInstance) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *CredentialIssuerProfileApplicationInstance) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CredentialIssuerProfileApplicationInstance) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
 func (o CredentialIssuerProfileApplicationInstance) MarshalJSON() ([]byte, error) {
@@ -75,7 +82,7 @@ func (o CredentialIssuerProfileApplicationInstance) MarshalJSON() ([]byte, error
 
 func (o CredentialIssuerProfileApplicationInstance) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
+	// skip: id is readOnly
 	return toSerialize, nil
 }
 

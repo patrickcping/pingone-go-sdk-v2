@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **User** | Pointer to [**CredentialIssuanceRuleUsageInnerUser**](CredentialIssuanceRuleUsageInnerUser.md) |  | [optional] 
 **Credential** | Pointer to [**CredentialIssuanceRuleUsageInnerCredential**](CredentialIssuanceRuleUsageInnerCredential.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** | A string representing the date and time the credential was issued by the service. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | A string representing the date and time the credential was issued by the service. | [optional] [readonly] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasCredential returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *CredentialIssuanceRuleUsageInner) GetCreatedAt() string`
+`func (o *CredentialIssuanceRuleUsageInner) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CredentialIssuanceRuleUsageInner) GetCreatedAtOk() (*string, bool)`
+`func (o *CredentialIssuanceRuleUsageInner) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CredentialIssuanceRuleUsageInner) SetCreatedAt(v string)`
+`func (o *CredentialIssuanceRuleUsageInner) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 

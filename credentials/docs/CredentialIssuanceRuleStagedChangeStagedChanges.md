@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | Pointer to [**EnumCredentialIssuanceRuleAutomationMethod**](EnumCredentialIssuanceRuleAutomationMethod.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** | A string that specifies the date and time the change was staged by the service. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the change was staged by the service. | [optional] [readonly] 
 **CredentialType** | Pointer to [**CredentialIssuanceRuleStagedChangeStagedChangesCredentialType**](CredentialIssuanceRuleStagedChangeStagedChangesCredentialType.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **IssuanceRule** | Pointer to [**CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule**](CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule.md) |  | [optional] 
@@ -58,20 +58,20 @@ HasAction returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetCreatedAt() string`
+`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetCreatedAtOk() (*string, bool)`
+`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) SetCreatedAt(v string)`
+`func (o *CredentialIssuanceRuleStagedChangeStagedChanges) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 

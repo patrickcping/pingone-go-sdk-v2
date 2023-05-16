@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CredentialType type satisfies the MappedNullable interface at compile time
@@ -24,7 +25,7 @@ type CredentialType struct {
 	// A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance.
 	CardType *string `json:"cardType,omitempty"`
 	// A string that specifies the date and time the credential type was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the description of the credential type.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \"soft delete\".
@@ -39,7 +40,7 @@ type CredentialType struct {
 	// A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title.
 	Title string `json:"title"`
 	// A string that specifies the date and time the credential type was last updated; can be null.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewCredentialType instantiates a new CredentialType object
@@ -119,9 +120,9 @@ func (o *CredentialType) SetCardType(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CredentialType) GetCreatedAt() string {
+func (o *CredentialType) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -129,7 +130,7 @@ func (o *CredentialType) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetCreatedAtOk() (*string, bool) {
+func (o *CredentialType) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -145,8 +146,8 @@ func (o *CredentialType) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *CredentialType) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *CredentialType) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -391,9 +392,9 @@ func (o *CredentialType) SetTitle(v string) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *CredentialType) GetUpdatedAt() string {
+func (o *CredentialType) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -401,7 +402,7 @@ func (o *CredentialType) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetUpdatedAtOk() (*string, bool) {
+func (o *CredentialType) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -417,8 +418,8 @@ func (o *CredentialType) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *CredentialType) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *CredentialType) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
@@ -436,9 +437,7 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CardType) {
 		toSerialize["cardType"] = o.CardType
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -448,9 +447,7 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if !IsNil(o.Issuer) {
 		toSerialize["issuer"] = o.Issuer
 	}
@@ -459,9 +456,7 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["metadata"] = o.Metadata
 	toSerialize["title"] = o.Title
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: updatedAt is readOnly
 	return toSerialize, nil
 }
 

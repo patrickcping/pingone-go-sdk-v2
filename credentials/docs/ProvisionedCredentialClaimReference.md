@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Issuer** | Pointer to **string** |  | [optional] 
 **Subject** | Pointer to **string** |  | [optional] 
 **Holder** | Pointer to **string** |  | [optional] 
-**CreateDate** | Pointer to **string** |  | [optional] 
+**CreateDate** | Pointer to **time.Time** |  | [optional] [readonly] 
 **DataJson** | Pointer to **string** |  | [optional] 
 **DataSignature** | Pointer to **string** |  | [optional] 
 **DataHash** | Pointer to **string** |  | [optional] 
@@ -161,20 +161,20 @@ HasHolder returns a boolean if a field has been set.
 
 ### GetCreateDate
 
-`func (o *ProvisionedCredentialClaimReference) GetCreateDate() string`
+`func (o *ProvisionedCredentialClaimReference) GetCreateDate() time.Time`
 
 GetCreateDate returns the CreateDate field if non-nil, zero value otherwise.
 
 ### GetCreateDateOk
 
-`func (o *ProvisionedCredentialClaimReference) GetCreateDateOk() (*string, bool)`
+`func (o *ProvisionedCredentialClaimReference) GetCreateDateOk() (*time.Time, bool)`
 
 GetCreateDateOk returns a tuple with the CreateDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreateDate
 
-`func (o *ProvisionedCredentialClaimReference) SetCreateDate(v string)`
+`func (o *ProvisionedCredentialClaimReference) SetCreateDate(v time.Time)`
 
 SetCreateDate sets CreateDate field to given value.
 

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | A string that specifies the identifier (UUID) of the issuer. | 
+**Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the issuer. | [optional] [readonly] 
 
 ## Methods
 
 ### NewCredentialTypeIssuer
 
-`func NewCredentialTypeIssuer(id string, ) *CredentialTypeIssuer`
+`func NewCredentialTypeIssuer() *CredentialTypeIssuer`
 
 NewCredentialTypeIssuer instantiates a new CredentialTypeIssuer object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +44,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *CredentialTypeIssuer) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

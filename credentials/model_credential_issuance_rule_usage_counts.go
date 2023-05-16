@@ -180,18 +180,10 @@ func (o CredentialIssuanceRuleUsageCounts) MarshalJSON() ([]byte, error) {
 
 func (o CredentialIssuanceRuleUsageCounts) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Issued) {
-		toSerialize["issued"] = o.Issued
-	}
-	if !IsNil(o.Accepted) {
-		toSerialize["accepted"] = o.Accepted
-	}
-	if !IsNil(o.Updated) {
-		toSerialize["updated"] = o.Updated
-	}
-	if !IsNil(o.Revoked) {
-		toSerialize["revoked"] = o.Revoked
-	}
+	// skip: issued is readOnly
+	// skip: accepted is readOnly
+	// skip: updated is readOnly
+	// skip: revoked is readOnly
 	return toSerialize, nil
 }
 

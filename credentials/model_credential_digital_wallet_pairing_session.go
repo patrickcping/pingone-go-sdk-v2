@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CredentialDigitalWalletPairingSession type satisfies the MappedNullable interface at compile time
@@ -20,8 +21,8 @@ var _ MappedNullable = &CredentialDigitalWalletPairingSession{}
 // CredentialDigitalWalletPairingSession struct for CredentialDigitalWalletPairingSession
 type CredentialDigitalWalletPairingSession struct {
 	Id *string `json:"id,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	User *CredentialDigitalWalletNotificationResultsInnerNotification `json:"user,omitempty"`
 	DigitalWallet *CredentialDigitalWalletNotificationResultsInnerNotification `json:"digitalWallet,omitempty"`
@@ -80,9 +81,9 @@ func (o *CredentialDigitalWalletPairingSession) SetId(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CredentialDigitalWalletPairingSession) GetCreatedAt() string {
+func (o *CredentialDigitalWalletPairingSession) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -90,7 +91,7 @@ func (o *CredentialDigitalWalletPairingSession) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialDigitalWalletPairingSession) GetCreatedAtOk() (*string, bool) {
+func (o *CredentialDigitalWalletPairingSession) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -106,15 +107,15 @@ func (o *CredentialDigitalWalletPairingSession) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *CredentialDigitalWalletPairingSession) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *CredentialDigitalWalletPairingSession) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *CredentialDigitalWalletPairingSession) GetUpdatedAt() string {
+func (o *CredentialDigitalWalletPairingSession) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -122,7 +123,7 @@ func (o *CredentialDigitalWalletPairingSession) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialDigitalWalletPairingSession) GetUpdatedAtOk() (*string, bool) {
+func (o *CredentialDigitalWalletPairingSession) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -138,8 +139,8 @@ func (o *CredentialDigitalWalletPairingSession) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *CredentialDigitalWalletPairingSession) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *CredentialDigitalWalletPairingSession) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
@@ -348,12 +349,8 @@ func (o CredentialDigitalWalletPairingSession) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | A string that specifies the identifier (UUID) of the credential issuance rule. | 
+**Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the credential issuance rule. | [optional] [readonly] 
 
 ## Methods
 
 ### NewCredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule
 
-`func NewCredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule(id string, ) *CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule`
+`func NewCredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule() *CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule`
 
 NewCredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule instantiates a new CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +44,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

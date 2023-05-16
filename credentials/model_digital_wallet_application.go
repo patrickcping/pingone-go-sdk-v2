@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the DigitalWalletApplication type satisfies the MappedNullable interface at compile time
@@ -23,13 +24,13 @@ type DigitalWalletApplication struct {
 	// A string that specifies the URL sent in notifications to the user to communicate with the service.
 	AppOpenUrl string `json:"appOpenUrl"`
 	// A string that specifies the date and time the credential digital wallet app was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential digital wallet app.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the name associated with the digital wallet app.
 	Name string `json:"name"`
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether the user's wallet app uses the PingOne Wallet SDK.
 	UsesPingOneWalletSDK *bool `json:"usesPingOneWalletSDK,omitempty"`
 }
@@ -103,9 +104,9 @@ func (o *DigitalWalletApplication) SetAppOpenUrl(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *DigitalWalletApplication) GetCreatedAt() string {
+func (o *DigitalWalletApplication) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -113,7 +114,7 @@ func (o *DigitalWalletApplication) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DigitalWalletApplication) GetCreatedAtOk() (*string, bool) {
+func (o *DigitalWalletApplication) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -129,8 +130,8 @@ func (o *DigitalWalletApplication) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *DigitalWalletApplication) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *DigitalWalletApplication) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -223,9 +224,9 @@ func (o *DigitalWalletApplication) SetName(v string) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *DigitalWalletApplication) GetUpdatedAt() string {
+func (o *DigitalWalletApplication) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -233,7 +234,7 @@ func (o *DigitalWalletApplication) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DigitalWalletApplication) GetUpdatedAtOk() (*string, bool) {
+func (o *DigitalWalletApplication) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -249,8 +250,8 @@ func (o *DigitalWalletApplication) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *DigitalWalletApplication) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *DigitalWalletApplication) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 

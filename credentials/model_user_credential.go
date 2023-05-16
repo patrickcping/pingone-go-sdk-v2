@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the UserCredential type satisfies the MappedNullable interface at compile time
@@ -19,14 +20,14 @@ var _ MappedNullable = &UserCredential{}
 
 // UserCredential struct for UserCredential
 type UserCredential struct {
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	CredentialType *CredentialDigitalWalletNotificationResultsInnerNotification `json:"credentialType,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	ExpiresAt *string `json:"expiresAt,omitempty"`
+	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Notification *CredentialDigitalWalletNotification `json:"notification,omitempty"`
 	Status *string `json:"status,omitempty"`
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	User *CredentialDigitalWalletNotificationResultsInnerNotification `json:"user,omitempty"`
 	Userdata *UserCredentialUserdata `json:"userdata,omitempty"`
 }
@@ -49,9 +50,9 @@ func NewUserCredentialWithDefaults() *UserCredential {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *UserCredential) GetCreatedAt() string {
+func (o *UserCredential) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -59,7 +60,7 @@ func (o *UserCredential) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCredential) GetCreatedAtOk() (*string, bool) {
+func (o *UserCredential) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -75,8 +76,8 @@ func (o *UserCredential) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *UserCredential) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *UserCredential) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -145,9 +146,9 @@ func (o *UserCredential) SetEnvironment(v ObjectEnvironment) {
 }
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
-func (o *UserCredential) GetExpiresAt() string {
+func (o *UserCredential) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.ExpiresAt
@@ -155,7 +156,7 @@ func (o *UserCredential) GetExpiresAt() string {
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCredential) GetExpiresAtOk() (*string, bool) {
+func (o *UserCredential) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
@@ -171,8 +172,8 @@ func (o *UserCredential) HasExpiresAt() bool {
 	return false
 }
 
-// SetExpiresAt gets a reference to the given string and assigns it to the ExpiresAt field.
-func (o *UserCredential) SetExpiresAt(v string) {
+// SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
+func (o *UserCredential) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
@@ -273,9 +274,9 @@ func (o *UserCredential) SetStatus(v string) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *UserCredential) GetUpdatedAt() string {
+func (o *UserCredential) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -283,7 +284,7 @@ func (o *UserCredential) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCredential) GetUpdatedAtOk() (*string, bool) {
+func (o *UserCredential) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -299,8 +300,8 @@ func (o *UserCredential) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *UserCredential) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *UserCredential) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
@@ -378,18 +379,14 @@ func (o UserCredential) MarshalJSON() ([]byte, error) {
 
 func (o UserCredential) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	if !IsNil(o.CredentialType) {
 		toSerialize["credentialType"] = o.CredentialType
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !IsNil(o.ExpiresAt) {
-		toSerialize["expiresAt"] = o.ExpiresAt
-	}
+	// skip: expiresAt is readOnly
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -399,9 +396,7 @@ func (o UserCredential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: updatedAt is readOnly
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}

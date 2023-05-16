@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Issued** | Pointer to **int32** |  | [optional] 
-**Accepted** | Pointer to **int32** |  | [optional] 
-**Updated** | Pointer to **int32** |  | [optional] 
-**Revoked** | Pointer to **int32** |  | [optional] 
+**Issued** | Pointer to **int32** |  | [optional] [readonly] 
+**Accepted** | Pointer to **int32** |  | [optional] [readonly] 
+**Updated** | Pointer to **int32** |  | [optional] [readonly] 
+**Revoked** | Pointer to **int32** |  | [optional] [readonly] 
 
 ## Methods
 

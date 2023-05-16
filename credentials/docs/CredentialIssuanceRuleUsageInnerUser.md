@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | A string representing the identifier (UUID) of the user identified by the filter on the credential issuance rule. | 
+**Id** | **string** | A string representing the identifier (UUID) of the user identified by the filter on the credential issuance rule. | [readonly] 
 
 ## Methods
 

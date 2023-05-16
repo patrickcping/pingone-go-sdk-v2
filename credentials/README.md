@@ -21,7 +21,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import credentials "github.com/patrickcping/pingone-go-sdk-v2/credentials"
+import credentials "github.com/GIT_USER_ID/--git-user-id/credentials"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -167,6 +167,7 @@ Class | Method | HTTP request | Description
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
  - [ProvisionedCredential](docs/ProvisionedCredential.md)
  - [ProvisionedCredentialClaimReference](docs/ProvisionedCredentialClaimReference.md)
+ - [ProvisionedCredentialCredential](docs/ProvisionedCredentialCredential.md)
  - [ProvisionedCredentialUser](docs/ProvisionedCredentialUser.md)
  - [ProvisionedCredentialWalletActionsInner](docs/ProvisionedCredentialWalletActionsInner.md)
  - [UserCredential](docs/UserCredential.md)

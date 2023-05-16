@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ProvisionedCredentialClaimReference type satisfies the MappedNullable interface at compile time
@@ -24,7 +25,7 @@ type ProvisionedCredentialClaimReference struct {
 	Issuer *string `json:"issuer,omitempty"`
 	Subject *string `json:"subject,omitempty"`
 	Holder *string `json:"holder,omitempty"`
-	CreateDate *string `json:"createDate,omitempty"`
+	CreateDate *time.Time `json:"createDate,omitempty"`
 	DataJson *string `json:"dataJson,omitempty"`
 	DataSignature *string `json:"dataSignature,omitempty"`
 	DataHash *string `json:"dataHash,omitempty"`
@@ -209,9 +210,9 @@ func (o *ProvisionedCredentialClaimReference) SetHolder(v string) {
 }
 
 // GetCreateDate returns the CreateDate field value if set, zero value otherwise.
-func (o *ProvisionedCredentialClaimReference) GetCreateDate() string {
+func (o *ProvisionedCredentialClaimReference) GetCreateDate() time.Time {
 	if o == nil || IsNil(o.CreateDate) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreateDate
@@ -219,7 +220,7 @@ func (o *ProvisionedCredentialClaimReference) GetCreateDate() string {
 
 // GetCreateDateOk returns a tuple with the CreateDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisionedCredentialClaimReference) GetCreateDateOk() (*string, bool) {
+func (o *ProvisionedCredentialClaimReference) GetCreateDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreateDate) {
 		return nil, false
 	}
@@ -235,8 +236,8 @@ func (o *ProvisionedCredentialClaimReference) HasCreateDate() bool {
 	return false
 }
 
-// SetCreateDate gets a reference to the given string and assigns it to the CreateDate field.
-func (o *ProvisionedCredentialClaimReference) SetCreateDate(v string) {
+// SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
+func (o *ProvisionedCredentialClaimReference) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
 }
 
@@ -393,9 +394,7 @@ func (o ProvisionedCredentialClaimReference) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Holder) {
 		toSerialize["holder"] = o.Holder
 	}
-	if !IsNil(o.CreateDate) {
-		toSerialize["createDate"] = o.CreateDate
-	}
+	// skip: createDate is readOnly
 	if !IsNil(o.DataJson) {
 		toSerialize["dataJson"] = o.DataJson
 	}

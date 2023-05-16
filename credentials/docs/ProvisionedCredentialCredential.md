@@ -1,52 +1,52 @@
-# ProvisionedCredentialUser
+# ProvisionedCredentialCredential
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the user associated with the provisioned credential. | [optional] [readonly] 
+**Id** | Pointer to **string** |  | [optional] [readonly] 
 
 ## Methods
 
-### NewProvisionedCredentialUser
+### NewProvisionedCredentialCredential
 
-`func NewProvisionedCredentialUser() *ProvisionedCredentialUser`
+`func NewProvisionedCredentialCredential() *ProvisionedCredentialCredential`
 
-NewProvisionedCredentialUser instantiates a new ProvisionedCredentialUser object
+NewProvisionedCredentialCredential instantiates a new ProvisionedCredentialCredential object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewProvisionedCredentialUserWithDefaults
+### NewProvisionedCredentialCredentialWithDefaults
 
-`func NewProvisionedCredentialUserWithDefaults() *ProvisionedCredentialUser`
+`func NewProvisionedCredentialCredentialWithDefaults() *ProvisionedCredentialCredential`
 
-NewProvisionedCredentialUserWithDefaults instantiates a new ProvisionedCredentialUser object
+NewProvisionedCredentialCredentialWithDefaults instantiates a new ProvisionedCredentialCredential object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ProvisionedCredentialUser) GetId() string`
+`func (o *ProvisionedCredentialCredential) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ProvisionedCredentialUser) GetIdOk() (*string, bool)`
+`func (o *ProvisionedCredentialCredential) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ProvisionedCredentialUser) SetId(v string)`
+`func (o *ProvisionedCredentialCredential) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *ProvisionedCredentialUser) HasId() bool`
+`func (o *ProvisionedCredentialCredential) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 

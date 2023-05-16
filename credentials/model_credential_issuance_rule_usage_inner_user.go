@@ -75,7 +75,7 @@ func (o CredentialIssuanceRuleUsageInnerUser) MarshalJSON() ([]byte, error) {
 
 func (o CredentialIssuanceRuleUsageInnerUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
+	// skip: id is readOnly
 	return toSerialize, nil
 }
 

@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CredentialDigitalWallet type satisfies the MappedNullable interface at compile time
@@ -21,14 +22,14 @@ var _ MappedNullable = &CredentialDigitalWallet{}
 type CredentialDigitalWallet struct {
 	Application *CredentialDigitalWalletApplication `json:"application,omitempty"`
 	// A string that specifies the date and time the credential digital wallet was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	DigitalWalletApplication *CredentialDigitalWalletDigitalWalletApplication `json:"digitalWalletApplication,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential digital wallet app.
 	Id *string `json:"id,omitempty"`
 	Notification *CredentialDigitalWalletNotification `json:"notification,omitempty"`
 	// A string that specifies the date and time the credential digital wallet was last updated; can be null.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	User *CredentialDigitalWalletUser `json:"user,omitempty"`
 	// A string that specifies the status of the wallet.
 	Status *string `json:"status,omitempty"`
@@ -85,9 +86,9 @@ func (o *CredentialDigitalWallet) SetApplication(v CredentialDigitalWalletApplic
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CredentialDigitalWallet) GetCreatedAt() string {
+func (o *CredentialDigitalWallet) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -95,7 +96,7 @@ func (o *CredentialDigitalWallet) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialDigitalWallet) GetCreatedAtOk() (*string, bool) {
+func (o *CredentialDigitalWallet) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -111,8 +112,8 @@ func (o *CredentialDigitalWallet) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *CredentialDigitalWallet) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *CredentialDigitalWallet) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -245,9 +246,9 @@ func (o *CredentialDigitalWallet) SetNotification(v CredentialDigitalWalletNotif
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *CredentialDigitalWallet) GetUpdatedAt() string {
+func (o *CredentialDigitalWallet) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -255,7 +256,7 @@ func (o *CredentialDigitalWallet) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialDigitalWallet) GetUpdatedAtOk() (*string, bool) {
+func (o *CredentialDigitalWallet) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -271,8 +272,8 @@ func (o *CredentialDigitalWallet) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *CredentialDigitalWallet) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *CredentialDigitalWallet) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
@@ -385,9 +386,7 @@ func (o CredentialDigitalWallet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	if !IsNil(o.DigitalWalletApplication) {
 		toSerialize["digitalWalletApplication"] = o.DigitalWalletApplication
 	}
@@ -400,9 +399,7 @@ func (o CredentialDigitalWallet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Notification) {
 		toSerialize["notification"] = o.Notification
 	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: updatedAt is readOnly
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}

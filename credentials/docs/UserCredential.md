@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreatedAt** | Pointer to **string** |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **CredentialType** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**ExpiresAt** | Pointer to **string** |  | [optional] 
+**ExpiresAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Id** | Pointer to **string** |  | [optional] 
 **Notification** | Pointer to [**CredentialDigitalWalletNotification**](CredentialDigitalWalletNotification.md) |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **string** |  | [optional] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **User** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
 **Userdata** | Pointer to [**UserCredentialUserdata**](UserCredentialUserdata.md) |  | [optional] 
 
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCreatedAt
 
-`func (o *UserCredential) GetCreatedAt() string`
+`func (o *UserCredential) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *UserCredential) GetCreatedAtOk() (*string, bool)`
+`func (o *UserCredential) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *UserCredential) SetCreatedAt(v string)`
+`func (o *UserCredential) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -111,20 +111,20 @@ HasEnvironment returns a boolean if a field has been set.
 
 ### GetExpiresAt
 
-`func (o *UserCredential) GetExpiresAt() string`
+`func (o *UserCredential) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *UserCredential) GetExpiresAtOk() (*string, bool)`
+`func (o *UserCredential) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *UserCredential) SetExpiresAt(v string)`
+`func (o *UserCredential) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
@@ -211,20 +211,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *UserCredential) GetUpdatedAt() string`
+`func (o *UserCredential) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *UserCredential) GetUpdatedAtOk() (*string, bool)`
+`func (o *UserCredential) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *UserCredential) SetUpdatedAt(v string)`
+`func (o *UserCredential) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

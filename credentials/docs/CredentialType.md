@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CardDesignTemplate** | **string** | A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image. | 
 **CardType** | Pointer to **string** | A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance. | [optional] 
-**CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential type was created. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the credential type. | [optional] 
 **DeletedAt** | Pointer to **string** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential type. | [optional] 
+**Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential type. | [optional] [readonly] 
 **Issuer** | Pointer to [**CredentialTypeIssuer**](CredentialTypeIssuer.md) |  | [optional] 
 **IssuerName** | Pointer to **string** | v issuer name associated with the card, can differ from title. | [optional] 
 **Metadata** | [**CredentialTypeMetaData**](CredentialTypeMetaData.md) |  | 
 **Title** | **string** | A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title. | 
-**UpdatedAt** | Pointer to **string** | A string that specifies the date and time the credential type was last updated; can be null. | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was last updated; can be null. | [optional] [readonly] 
 
 ## Methods
 
@@ -83,20 +83,20 @@ HasCardType returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *CredentialType) GetCreatedAt() string`
+`func (o *CredentialType) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CredentialType) GetCreatedAtOk() (*string, bool)`
+`func (o *CredentialType) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CredentialType) SetCreatedAt(v string)`
+`func (o *CredentialType) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -298,20 +298,20 @@ SetTitle sets Title field to given value.
 
 ### GetUpdatedAt
 
-`func (o *CredentialType) GetUpdatedAt() string`
+`func (o *CredentialType) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CredentialType) GetUpdatedAtOk() (*string, bool)`
+`func (o *CredentialType) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CredentialType) SetUpdatedAt(v string)`
+`func (o *CredentialType) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

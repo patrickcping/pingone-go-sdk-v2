@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Automation** | [**CredentialIssuanceRuleAutomation**](CredentialIssuanceRuleAutomation.md) |  | 
-**CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential issuance rule was created. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential issuance rule was created. | [optional] [readonly] 
 **CredentialType** | Pointer to [**CredentialIssuanceRuleCredentialType**](CredentialIssuanceRuleCredentialType.md) |  | [optional] 
 **DigitalWalletApplication** | Pointer to [**CredentialIssuanceRuleDigitalWalletApplication**](CredentialIssuanceRuleDigitalWalletApplication.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Filter** | Pointer to [**CredentialIssuanceRuleFilter**](CredentialIssuanceRuleFilter.md) |  | [optional] 
-**Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the credential issuance rule. | [optional] 
+**Id** | Pointer to **string** | A string that specifies the identifier (UUID) of the credential issuance rule. | [optional] [readonly] 
 **Notification** | Pointer to [**CredentialIssuanceRuleNotification**](CredentialIssuanceRuleNotification.md) |  | [optional] 
 **Status** | [**EnumCredentialIssuanceRuleStatus**](EnumCredentialIssuanceRuleStatus.md) |  | 
-**UpdatedAt** | Pointer to **string** | A string that specifies the date and time the credential issuance rule was last updated; can be null. | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential issuance rule was last updated; can be null. | [optional] [readonly] 
 
 ## Methods
 
@@ -56,20 +56,20 @@ SetAutomation sets Automation field to given value.
 
 ### GetCreatedAt
 
-`func (o *CredentialIssuanceRule) GetCreatedAt() string`
+`func (o *CredentialIssuanceRule) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CredentialIssuanceRule) GetCreatedAtOk() (*string, bool)`
+`func (o *CredentialIssuanceRule) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CredentialIssuanceRule) SetCreatedAt(v string)`
+`func (o *CredentialIssuanceRule) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -251,20 +251,20 @@ SetStatus sets Status field to given value.
 
 ### GetUpdatedAt
 
-`func (o *CredentialIssuanceRule) GetUpdatedAt() string`
+`func (o *CredentialIssuanceRule) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CredentialIssuanceRule) GetUpdatedAtOk() (*string, bool)`
+`func (o *CredentialIssuanceRule) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CredentialIssuanceRule) SetUpdatedAt(v string)`
+`func (o *CredentialIssuanceRule) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

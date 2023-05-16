@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CardDesignTemplate** | **string** | A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image. | 
 **CardType** | Pointer to **string** | A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance. | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the credential type. | [optional] 
 **DeletedAt** | Pointer to **string** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **IssuerName** | Pointer to **string** | v issuer name associated with the card, can differ from title. | [optional] 
 **Metadata** | [**CredentialTypeMetaData**](CredentialTypeMetaData.md) |  | 
 **Title** | **string** | A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title. | 
-**UpdatedAt** | Pointer to **string** |  | [optional] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **CredentialType** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
-**ExpiresAt** | Pointer to **string** |  | [optional] 
+**ExpiresAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Notification** | Pointer to [**CredentialDigitalWalletNotification**](CredentialDigitalWalletNotification.md) |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **User** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
@@ -89,20 +89,20 @@ HasCardType returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *EntityArrayEmbeddedItemsInner) GetCreatedAt() string`
+`func (o *EntityArrayEmbeddedItemsInner) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *EntityArrayEmbeddedItemsInner) GetCreatedAtOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedItemsInner) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *EntityArrayEmbeddedItemsInner) SetCreatedAt(v string)`
+`func (o *EntityArrayEmbeddedItemsInner) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -304,20 +304,20 @@ SetTitle sets Title field to given value.
 
 ### GetUpdatedAt
 
-`func (o *EntityArrayEmbeddedItemsInner) GetUpdatedAt() string`
+`func (o *EntityArrayEmbeddedItemsInner) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *EntityArrayEmbeddedItemsInner) GetUpdatedAtOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedItemsInner) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *EntityArrayEmbeddedItemsInner) SetUpdatedAt(v string)`
+`func (o *EntityArrayEmbeddedItemsInner) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
@@ -354,20 +354,20 @@ HasCredentialType returns a boolean if a field has been set.
 
 ### GetExpiresAt
 
-`func (o *EntityArrayEmbeddedItemsInner) GetExpiresAt() string`
+`func (o *EntityArrayEmbeddedItemsInner) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *EntityArrayEmbeddedItemsInner) GetExpiresAtOk() (*string, bool)`
+`func (o *EntityArrayEmbeddedItemsInner) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *EntityArrayEmbeddedItemsInner) SetExpiresAt(v string)`
+`func (o *EntityArrayEmbeddedItemsInner) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 

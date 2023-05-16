@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Application** | Pointer to [**CredentialDigitalWalletApplication**](CredentialDigitalWalletApplication.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential digital wallet was created. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential digital wallet was created. | [optional] [readonly] 
 **DigitalWalletApplication** | Pointer to [**CredentialDigitalWalletDigitalWalletApplication**](CredentialDigitalWalletDigitalWalletApplication.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential digital wallet app. | [optional] 
 **Notification** | Pointer to [**CredentialDigitalWalletNotification**](CredentialDigitalWalletNotification.md) |  | [optional] 
-**UpdatedAt** | Pointer to **string** | A string that specifies the date and time the credential digital wallet was last updated; can be null. | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential digital wallet was last updated; can be null. | [optional] [readonly] 
 **User** | Pointer to [**CredentialDigitalWalletUser**](CredentialDigitalWalletUser.md) |  | [optional] 
 **Status** | Pointer to **string** | A string that specifies the status of the wallet. | [optional] 
 **PairingSession** | Pointer to [**CredentialDigitalWalletPairingSession**](CredentialDigitalWalletPairingSession.md) |  | [optional] 
@@ -61,20 +61,20 @@ HasApplication returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *CredentialDigitalWallet) GetCreatedAt() string`
+`func (o *CredentialDigitalWallet) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CredentialDigitalWallet) GetCreatedAtOk() (*string, bool)`
+`func (o *CredentialDigitalWallet) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CredentialDigitalWallet) SetCreatedAt(v string)`
+`func (o *CredentialDigitalWallet) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -186,20 +186,20 @@ HasNotification returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *CredentialDigitalWallet) GetUpdatedAt() string`
+`func (o *CredentialDigitalWallet) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CredentialDigitalWallet) GetUpdatedAtOk() (*string, bool)`
+`func (o *CredentialDigitalWallet) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CredentialDigitalWallet) SetUpdatedAt(v string)`
+`func (o *CredentialDigitalWallet) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

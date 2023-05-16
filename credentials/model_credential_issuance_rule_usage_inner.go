@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CredentialIssuanceRuleUsageInner type satisfies the MappedNullable interface at compile time
@@ -22,7 +23,7 @@ type CredentialIssuanceRuleUsageInner struct {
 	User *CredentialIssuanceRuleUsageInnerUser `json:"user,omitempty"`
 	Credential *CredentialIssuanceRuleUsageInnerCredential `json:"credential,omitempty"`
 	// A string representing the date and time the credential was issued by the service.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 }
 
 // NewCredentialIssuanceRuleUsageInner instantiates a new CredentialIssuanceRuleUsageInner object
@@ -107,9 +108,9 @@ func (o *CredentialIssuanceRuleUsageInner) SetCredential(v CredentialIssuanceRul
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CredentialIssuanceRuleUsageInner) GetCreatedAt() string {
+func (o *CredentialIssuanceRuleUsageInner) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -117,7 +118,7 @@ func (o *CredentialIssuanceRuleUsageInner) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRuleUsageInner) GetCreatedAtOk() (*string, bool) {
+func (o *CredentialIssuanceRuleUsageInner) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -133,8 +134,8 @@ func (o *CredentialIssuanceRuleUsageInner) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *CredentialIssuanceRuleUsageInner) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *CredentialIssuanceRuleUsageInner) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -154,9 +155,7 @@ func (o CredentialIssuanceRuleUsageInner) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Credential) {
 		toSerialize["credential"] = o.Credential
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	return toSerialize, nil
 }
 

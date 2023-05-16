@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClaimReference** | Pointer to [**ProvisionedCredentialClaimReference**](ProvisionedCredentialClaimReference.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
-**Credential** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
-**DigitalWallet** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**Credential** | Pointer to [**ProvisionedCredentialCredential**](ProvisionedCredentialCredential.md) |  | [optional] 
+**DigitalWallet** | Pointer to [**ProvisionedCredentialCredential**](ProvisionedCredentialCredential.md) |  | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
-**ExpiredAt** | Pointer to **string** | A string that specifies the date that the provisioned credential expires. If this value is null, the provisioned credential never expires. | [optional] 
-**Id** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** | A string that specifies the tatus of the provisioned credential. | [optional] 
+**ExpiredAt** | Pointer to **time.Time** | A string that specifies the date that the provisioned credential expires. If this value is null, the provisioned credential never expires. | [optional] [readonly] 
+**Id** | Pointer to **string** |  | [optional] [readonly] 
+**Status** | Pointer to **string** | A string that specifies the tatus of the provisioned credential. | [optional] [readonly] 
 **User** | Pointer to [**ProvisionedCredentialUser**](ProvisionedCredentialUser.md) |  | [optional] 
 **WalletActions** | Pointer to [**[]ProvisionedCredentialWalletActionsInner**](ProvisionedCredentialWalletActionsInner.md) |  | [optional] 
 
@@ -61,20 +61,20 @@ HasClaimReference returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *ProvisionedCredential) GetCreatedAt() string`
+`func (o *ProvisionedCredential) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *ProvisionedCredential) GetCreatedAtOk() (*string, bool)`
+`func (o *ProvisionedCredential) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *ProvisionedCredential) SetCreatedAt(v string)`
+`func (o *ProvisionedCredential) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -86,20 +86,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetCredential
 
-`func (o *ProvisionedCredential) GetCredential() CredentialDigitalWalletNotificationResultsInnerNotification`
+`func (o *ProvisionedCredential) GetCredential() ProvisionedCredentialCredential`
 
 GetCredential returns the Credential field if non-nil, zero value otherwise.
 
 ### GetCredentialOk
 
-`func (o *ProvisionedCredential) GetCredentialOk() (*CredentialDigitalWalletNotificationResultsInnerNotification, bool)`
+`func (o *ProvisionedCredential) GetCredentialOk() (*ProvisionedCredentialCredential, bool)`
 
 GetCredentialOk returns a tuple with the Credential field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredential
 
-`func (o *ProvisionedCredential) SetCredential(v CredentialDigitalWalletNotificationResultsInnerNotification)`
+`func (o *ProvisionedCredential) SetCredential(v ProvisionedCredentialCredential)`
 
 SetCredential sets Credential field to given value.
 
@@ -111,20 +111,20 @@ HasCredential returns a boolean if a field has been set.
 
 ### GetDigitalWallet
 
-`func (o *ProvisionedCredential) GetDigitalWallet() CredentialDigitalWalletNotificationResultsInnerNotification`
+`func (o *ProvisionedCredential) GetDigitalWallet() ProvisionedCredentialCredential`
 
 GetDigitalWallet returns the DigitalWallet field if non-nil, zero value otherwise.
 
 ### GetDigitalWalletOk
 
-`func (o *ProvisionedCredential) GetDigitalWalletOk() (*CredentialDigitalWalletNotificationResultsInnerNotification, bool)`
+`func (o *ProvisionedCredential) GetDigitalWalletOk() (*ProvisionedCredentialCredential, bool)`
 
 GetDigitalWalletOk returns a tuple with the DigitalWallet field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDigitalWallet
 
-`func (o *ProvisionedCredential) SetDigitalWallet(v CredentialDigitalWalletNotificationResultsInnerNotification)`
+`func (o *ProvisionedCredential) SetDigitalWallet(v ProvisionedCredentialCredential)`
 
 SetDigitalWallet sets DigitalWallet field to given value.
 
@@ -161,20 +161,20 @@ HasEnvironment returns a boolean if a field has been set.
 
 ### GetExpiredAt
 
-`func (o *ProvisionedCredential) GetExpiredAt() string`
+`func (o *ProvisionedCredential) GetExpiredAt() time.Time`
 
 GetExpiredAt returns the ExpiredAt field if non-nil, zero value otherwise.
 
 ### GetExpiredAtOk
 
-`func (o *ProvisionedCredential) GetExpiredAtOk() (*string, bool)`
+`func (o *ProvisionedCredential) GetExpiredAtOk() (*time.Time, bool)`
 
 GetExpiredAtOk returns a tuple with the ExpiredAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiredAt
 
-`func (o *ProvisionedCredential) SetExpiredAt(v string)`
+`func (o *ProvisionedCredential) SetExpiredAt(v time.Time)`
 
 SetExpiredAt sets ExpiredAt field to given value.
 

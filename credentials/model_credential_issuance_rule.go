@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CredentialIssuanceRule type satisfies the MappedNullable interface at compile time
@@ -21,7 +22,7 @@ var _ MappedNullable = &CredentialIssuanceRule{}
 type CredentialIssuanceRule struct {
 	Automation CredentialIssuanceRuleAutomation `json:"automation"`
 	// A string that specifies the date and time the credential issuance rule was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	CredentialType *CredentialIssuanceRuleCredentialType `json:"credentialType,omitempty"`
 	DigitalWalletApplication *CredentialIssuanceRuleDigitalWalletApplication `json:"digitalWalletApplication,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -31,7 +32,7 @@ type CredentialIssuanceRule struct {
 	Notification *CredentialIssuanceRuleNotification `json:"notification,omitempty"`
 	Status EnumCredentialIssuanceRuleStatus `json:"status"`
 	// A string that specifies the date and time the credential issuance rule was last updated; can be null.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewCredentialIssuanceRule instantiates a new CredentialIssuanceRule object
@@ -78,9 +79,9 @@ func (o *CredentialIssuanceRule) SetAutomation(v CredentialIssuanceRuleAutomatio
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CredentialIssuanceRule) GetCreatedAt() string {
+func (o *CredentialIssuanceRule) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -88,7 +89,7 @@ func (o *CredentialIssuanceRule) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRule) GetCreatedAtOk() (*string, bool) {
+func (o *CredentialIssuanceRule) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -104,8 +105,8 @@ func (o *CredentialIssuanceRule) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *CredentialIssuanceRule) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *CredentialIssuanceRule) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -326,9 +327,9 @@ func (o *CredentialIssuanceRule) SetStatus(v EnumCredentialIssuanceRuleStatus) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *CredentialIssuanceRule) GetUpdatedAt() string {
+func (o *CredentialIssuanceRule) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -336,7 +337,7 @@ func (o *CredentialIssuanceRule) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuanceRule) GetUpdatedAtOk() (*string, bool) {
+func (o *CredentialIssuanceRule) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -352,8 +353,8 @@ func (o *CredentialIssuanceRule) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *CredentialIssuanceRule) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *CredentialIssuanceRule) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
@@ -368,9 +369,7 @@ func (o CredentialIssuanceRule) MarshalJSON() ([]byte, error) {
 func (o CredentialIssuanceRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["automation"] = o.Automation
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	if !IsNil(o.CredentialType) {
 		toSerialize["credentialType"] = o.CredentialType
 	}
@@ -383,16 +382,12 @@ func (o CredentialIssuanceRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if !IsNil(o.Notification) {
 		toSerialize["notification"] = o.Notification
 	}
 	toSerialize["status"] = o.Status
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: updatedAt is readOnly
 	return toSerialize, nil
 }
 

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **string** |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **User** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
 **DigitalWallet** | Pointer to [**CredentialDigitalWalletNotificationResultsInnerNotification**](CredentialDigitalWalletNotificationResultsInnerNotification.md) |  | [optional] 
@@ -60,20 +60,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *CredentialDigitalWalletPairingSession) GetCreatedAt() string`
+`func (o *CredentialDigitalWalletPairingSession) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *CredentialDigitalWalletPairingSession) GetCreatedAtOk() (*string, bool)`
+`func (o *CredentialDigitalWalletPairingSession) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *CredentialDigitalWalletPairingSession) SetCreatedAt(v string)`
+`func (o *CredentialDigitalWalletPairingSession) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -85,20 +85,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *CredentialDigitalWalletPairingSession) GetUpdatedAt() string`
+`func (o *CredentialDigitalWalletPairingSession) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *CredentialDigitalWalletPairingSession) GetUpdatedAtOk() (*string, bool)`
+`func (o *CredentialDigitalWalletPairingSession) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *CredentialDigitalWalletPairingSession) SetUpdatedAt(v string)`
+`func (o *CredentialDigitalWalletPairingSession) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

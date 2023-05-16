@@ -12,6 +12,7 @@ package credentials
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CredentialIssuerProfile type satisfies the MappedNullable interface at compile time
@@ -21,14 +22,14 @@ var _ MappedNullable = &CredentialIssuerProfile{}
 type CredentialIssuerProfile struct {
 	ApplicationInstance *CredentialIssuerProfileApplicationInstance `json:"applicationInstance,omitempty"`
 	// A string that specifies the date and time the issuer profile was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) of the credential issuer.
 	Id *string `json:"id,omitempty"`
 	// The name of the credential issuer. This will be included in credentials issued.
 	Name string `json:"name"`
 	// A string that specifies the date and time the credential issuer profile was last updated; can be null.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A string that specifies the base URL associated with the credential issuer.
 	SiteUrl *string `json:"siteUrl,omitempty"`
 	// A string that specifies the default notification template used in credential issuance notifications. Deprecated.
@@ -86,9 +87,9 @@ func (o *CredentialIssuerProfile) SetApplicationInstance(v CredentialIssuerProfi
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CredentialIssuerProfile) GetCreatedAt() string {
+func (o *CredentialIssuerProfile) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -96,7 +97,7 @@ func (o *CredentialIssuerProfile) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuerProfile) GetCreatedAtOk() (*string, bool) {
+func (o *CredentialIssuerProfile) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -112,8 +113,8 @@ func (o *CredentialIssuerProfile) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *CredentialIssuerProfile) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *CredentialIssuerProfile) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -206,9 +207,9 @@ func (o *CredentialIssuerProfile) SetName(v string) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *CredentialIssuerProfile) GetUpdatedAt() string {
+func (o *CredentialIssuerProfile) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -216,7 +217,7 @@ func (o *CredentialIssuerProfile) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialIssuerProfile) GetUpdatedAtOk() (*string, bool) {
+func (o *CredentialIssuerProfile) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -232,8 +233,8 @@ func (o *CredentialIssuerProfile) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *CredentialIssuerProfile) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *CredentialIssuerProfile) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
@@ -314,19 +315,13 @@ func (o CredentialIssuerProfile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplicationInstance) {
 		toSerialize["applicationInstance"] = o.ApplicationInstance
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	toSerialize["name"] = o.Name
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: updatedAt is readOnly
 	if !IsNil(o.SiteUrl) {
 		toSerialize["siteUrl"] = o.SiteUrl
 	}

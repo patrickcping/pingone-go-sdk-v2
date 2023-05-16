@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | A string that specifies the action taken regarding the provisioned credential. | [optional] 
-**OccurredAt** | Pointer to **string** | A string that specifies the date and time that the action occurred. | [optional] 
+**Type** | Pointer to **string** | A string that specifies the action taken regarding the provisioned credential. | [optional] [readonly] 
+**OccurredAt** | Pointer to **string** | A string that specifies the date and time that the action occurred. | [optional] [readonly] 
 
 ## Methods
 

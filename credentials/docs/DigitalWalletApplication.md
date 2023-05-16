@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Application** | [**ObjectApplication**](ObjectApplication.md) |  | 
 **AppOpenUrl** | **string** | A string that specifies the URL sent in notifications to the user to communicate with the service. | 
-**CreatedAt** | Pointer to **string** | A string that specifies the date and time the credential digital wallet app was created. | [optional] [readonly] 
+**CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential digital wallet app was created. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential digital wallet app. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the name associated with the digital wallet app. | 
-**UpdatedAt** | Pointer to **string** |  | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **UsesPingOneWalletSDK** | Pointer to **bool** | A boolean that specifies whether the user&#39;s wallet app uses the PingOne Wallet SDK. | [optional] 
 
 ## Methods
@@ -74,20 +74,20 @@ SetAppOpenUrl sets AppOpenUrl field to given value.
 
 ### GetCreatedAt
 
-`func (o *DigitalWalletApplication) GetCreatedAt() string`
+`func (o *DigitalWalletApplication) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *DigitalWalletApplication) GetCreatedAtOk() (*string, bool)`
+`func (o *DigitalWalletApplication) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *DigitalWalletApplication) SetCreatedAt(v string)`
+`func (o *DigitalWalletApplication) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -169,20 +169,20 @@ SetName sets Name field to given value.
 
 ### GetUpdatedAt
 
-`func (o *DigitalWalletApplication) GetUpdatedAt() string`
+`func (o *DigitalWalletApplication) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *DigitalWalletApplication) GetUpdatedAtOk() (*string, bool)`
+`func (o *DigitalWalletApplication) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *DigitalWalletApplication) SetUpdatedAt(v string)`
+`func (o *DigitalWalletApplication) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
