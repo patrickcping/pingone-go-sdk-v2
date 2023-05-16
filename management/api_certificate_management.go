@@ -76,24 +76,6 @@ func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r Api
 }
 			
 func (a *CertificateManagementApiService) internalCreateCertificateFromFileExecute(r ApiCreateCertificateFromFileRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalCreateCertificateFromFileExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalCreateCertificateFromFileExecute(r ApiCreateCertificateFromFileRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalCreateCertificateFromFileExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalCreateCertificateFromFileExecute(r ApiCreateCertificateFromFileRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -325,24 +307,6 @@ func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest
 }
 			
 func (a *CertificateManagementApiService) internalCreateKeyExecute(r ApiCreateKeyRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalCreateKeyExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalCreateKeyExecute(r ApiCreateKeyRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalCreateKeyExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalCreateKeyExecute(r ApiCreateKeyRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -571,26 +535,6 @@ func (a *CertificateManagementApiService) DeleteCertificateExecute(r ApiDeleteCe
 }
 			
 func (a *CertificateManagementApiService) internalDeleteCertificateExecute(r ApiDeleteCertificateRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalDeleteCertificateExecute(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func (a *CertificateManagementApiService) internalDeleteCertificateExecute(r ApiDeleteCertificateRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalinternalDeleteCertificateExecute(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalDeleteCertificateExecute(r ApiDeleteCertificateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -761,26 +705,6 @@ func (a *CertificateManagementApiService) DeleteKeyExecute(r ApiDeleteKeyRequest
 }
 			
 func (a *CertificateManagementApiService) internalDeleteKeyExecute(r ApiDeleteKeyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalDeleteKeyExecute(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func (a *CertificateManagementApiService) internalDeleteKeyExecute(r ApiDeleteKeyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalinternalDeleteKeyExecute(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalDeleteKeyExecute(r ApiDeleteKeyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -958,24 +882,6 @@ func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest
 }
 			
 func (a *CertificateManagementApiService) internalExportCSRExecute(r ApiExportCSRRequest) (string, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalExportCSRExecute(r)
-		},
-	)
-	return obj.(string), response, error
-}
-			
-func (a *CertificateManagementApiService) internalExportCSRExecute(r ApiExportCSRRequest) (string, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalExportCSRExecute(r)
-		},
-	)
-	return obj.(string), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalExportCSRExecute(r ApiExportCSRRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1160,24 +1066,6 @@ func (a *CertificateManagementApiService) GetCertificateExecute(r ApiGetCertific
 }
 			
 func (a *CertificateManagementApiService) internalGetCertificateExecute(r ApiGetCertificateRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalGetCertificateExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalGetCertificateExecute(r ApiGetCertificateRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalGetCertificateExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalGetCertificateExecute(r ApiGetCertificateRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1359,24 +1247,6 @@ func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r Ap
 }
 			
 func (a *CertificateManagementApiService) internalGetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalGetCertificateApplicationsExecute(r)
-		},
-	)
-	return obj.(*EntityArray), response, error
-}
-			
-func (a *CertificateManagementApiService) internalGetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalGetCertificateApplicationsExecute(r)
-		},
-	)
-	return obj.(*EntityArray), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalGetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1555,24 +1425,6 @@ func (a *CertificateManagementApiService) GetCertificatesExecute(r ApiGetCertifi
 }
 			
 func (a *CertificateManagementApiService) internalGetCertificatesExecute(r ApiGetCertificatesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalGetCertificatesExecute(r)
-		},
-	)
-	return obj.(*EntityArray), response, error
-}
-			
-func (a *CertificateManagementApiService) internalGetCertificatesExecute(r ApiGetCertificatesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalGetCertificatesExecute(r)
-		},
-	)
-	return obj.(*EntityArray), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalGetCertificatesExecute(r ApiGetCertificatesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1942,24 +1794,6 @@ func (a *CertificateManagementApiService) GetKeyApplicationsExecute(r ApiGetKeyA
 }
 			
 func (a *CertificateManagementApiService) internalGetKeyApplicationsExecute(r ApiGetKeyApplicationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalGetKeyApplicationsExecute(r)
-		},
-	)
-	return obj.(*EntityArray), response, error
-}
-			
-func (a *CertificateManagementApiService) internalGetKeyApplicationsExecute(r ApiGetKeyApplicationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalGetKeyApplicationsExecute(r)
-		},
-	)
-	return obj.(*EntityArray), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalGetKeyApplicationsExecute(r ApiGetKeyApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2138,24 +1972,6 @@ func (a *CertificateManagementApiService) GetKeysExecute(r ApiGetKeysRequest) (*
 }
 			
 func (a *CertificateManagementApiService) internalGetKeysExecute(r ApiGetKeysRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalGetKeysExecute(r)
-		},
-	)
-	return obj.(*EntityArray), response, error
-}
-			
-func (a *CertificateManagementApiService) internalGetKeysExecute(r ApiGetKeysRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalGetKeysExecute(r)
-		},
-	)
-	return obj.(*EntityArray), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalGetKeysExecute(r ApiGetKeysRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2342,24 +2158,6 @@ func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCS
 }
 			
 func (a *CertificateManagementApiService) internalImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalImportCSRResponseExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalImportCSRResponseExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2558,24 +2356,6 @@ func (a *CertificateManagementApiService) UpdateKeyExecute(r ApiUpdateKeyRequest
 }
 			
 func (a *CertificateManagementApiService) internalUpdateKeyExecute(r ApiUpdateKeyRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalUpdateKeyExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalUpdateKeyExecute(r ApiUpdateKeyRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalinternalUpdateKeyExecute(r)
-		},
-	)
-	return obj.(*Certificate), response, error
-}
-			
-func (a *CertificateManagementApiService) internalinternalUpdateKeyExecute(r ApiUpdateKeyRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -2751,16 +2531,6 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptions
 
 // Execute executes the request
 func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptionsPostExecute(r ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDDecryptionsPostExecute(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func (a *CertificateManagementApiService) internalV1EnvironmentsEnvironmentIDDecryptionsPostExecute(r ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -2936,16 +2706,6 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptions
 
 // Execute executes the request
 func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptionsPostExecute(r ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDEncryptionsPostExecute(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func (a *CertificateManagementApiService) internalV1EnvironmentsEnvironmentIDEncryptionsPostExecute(r ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -3121,16 +2881,6 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPos
 
 // Execute executes the request
 func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPostExecute(r ApiV1EnvironmentsEnvironmentIDSigningsPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDSigningsPostExecute(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func (a *CertificateManagementApiService) internalV1EnvironmentsEnvironmentIDSigningsPostExecute(r ApiV1EnvironmentsEnvironmentIDSigningsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -3306,16 +3056,6 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDVerificatio
 
 // Execute executes the request
 func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDVerificationsPostExecute(r ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalV1EnvironmentsEnvironmentIDVerificationsPostExecute(r)
-			return nil, resp, err
-		},
-	)
-	return response, error
-}
-			
-func (a *CertificateManagementApiService) internalV1EnvironmentsEnvironmentIDVerificationsPostExecute(r ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
