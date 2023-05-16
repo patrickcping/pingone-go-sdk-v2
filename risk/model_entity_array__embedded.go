@@ -20,7 +20,7 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
 	RiskPolicySets []RiskPolicySet `json:"riskPolicySets,omitempty"`
-	RiskPredictors []RiskPredictorCommon `json:"riskPredictors,omitempty"`
+	RiskPredictors []RiskPredictor `json:"riskPredictors,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -73,9 +73,9 @@ func (o *EntityArrayEmbedded) SetRiskPolicySets(v []RiskPolicySet) {
 }
 
 // GetRiskPredictors returns the RiskPredictors field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictorCommon {
+func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor {
 	if o == nil || IsNil(o.RiskPredictors) {
-		var ret []RiskPredictorCommon
+		var ret []RiskPredictor
 		return ret
 	}
 	return o.RiskPredictors
@@ -83,7 +83,7 @@ func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictorCommon {
 
 // GetRiskPredictorsOk returns a tuple with the RiskPredictors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetRiskPredictorsOk() ([]RiskPredictorCommon, bool) {
+func (o *EntityArrayEmbedded) GetRiskPredictorsOk() ([]RiskPredictor, bool) {
 	if o == nil || IsNil(o.RiskPredictors) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *EntityArrayEmbedded) HasRiskPredictors() bool {
 	return false
 }
 
-// SetRiskPredictors gets a reference to the given []RiskPredictorCommon and assigns it to the RiskPredictors field.
-func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictorCommon) {
+// SetRiskPredictors gets a reference to the given []RiskPredictor and assigns it to the RiskPredictors field.
+func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictor) {
 	o.RiskPredictors = v
 }
 

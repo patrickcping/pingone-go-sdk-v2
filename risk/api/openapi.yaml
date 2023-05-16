@@ -919,7 +919,7 @@ components:
   schemas:
     EntityArray:
       example:
-        size: 9.301444243932576
+        size: 2.3021358869347655
         _embedded:
           riskPolicySets:
           - createdAt: createdAt
@@ -1057,51 +1057,9 @@ components:
               value: value
             updatedAt: updatedAt
           riskPredictors:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            default:
-              result:
-                level: null
-                type: null
-              score: 2
-              weight: 5
-              evaluated: true
-            condition:
-              scores:
-              - name: name
-                value: value
-              - name: name
-                value: value
-            licensed: true
-            name: name
-            deletable: true
-            description: description
-            id: id
-            type: null
-            compactName: compactName
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            default:
-              result:
-                level: null
-                type: null
-              score: 2
-              weight: 5
-              evaluated: true
-            condition:
-              scores:
-              - name: name
-                value: value
-              - name: name
-                value: value
-            licensed: true
-            name: name
-            deletable: true
-            description: description
-            id: id
-            type: null
-            compactName: compactName
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-        count: 7.061401241503109
+          - null
+          - null
+        count: 5.637376656633329
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -1779,29 +1737,6 @@ components:
       - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior'
       - $ref: '#/components/schemas/RiskPredictorVelocity'
     RiskPredictorCommon:
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        default:
-          result:
-            level: null
-            type: null
-          score: 2
-          weight: 5
-          evaluated: true
-        condition:
-          scores:
-          - name: name
-            value: value
-          - name: name
-            value: value
-        licensed: true
-        name: name
-        deletable: true
-        description: description
-        id: id
-        type: null
-        compactName: compactName
-        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           description: A string that specifies the resource’s unique identifier.
@@ -2131,50 +2066,8 @@ components:
             value: value
           updatedAt: updatedAt
         riskPredictors:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          default:
-            result:
-              level: null
-              type: null
-            score: 2
-            weight: 5
-            evaluated: true
-          condition:
-            scores:
-            - name: name
-              value: value
-            - name: name
-              value: value
-          licensed: true
-          name: name
-          deletable: true
-          description: description
-          id: id
-          type: null
-          compactName: compactName
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          default:
-            result:
-              level: null
-              type: null
-            score: 2
-            weight: 5
-            evaluated: true
-          condition:
-            scores:
-            - name: name
-              value: value
-            - name: name
-              value: value
-          licensed: true
-          name: name
-          deletable: true
-          description: description
-          id: id
-          type: null
-          compactName: compactName
-          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - null
+        - null
       properties:
         riskPolicySets:
           items:
@@ -2182,7 +2075,7 @@ components:
           type: array
         riskPredictors:
           items:
-            $ref: '#/components/schemas/RiskPredictorCommon'
+            $ref: '#/components/schemas/RiskPredictor'
           type: array
       type: object
     P1Error_details_inner_innerError:
@@ -2807,9 +2700,6 @@ components:
         \ the following options are: If the predictor is used in an override, the\
         \ override is skipped. In the weighted policy, the predictor will have a weight\
         \ of 0."
-      example:
-        level: null
-        type: null
       properties:
         level:
           $ref: '#/components/schemas/EnumRiskLevel'
@@ -2820,13 +2710,6 @@ components:
       type: object
     RiskPredictorCommon_default:
       description: Contains the default values used for a new risk predictor.
-      example:
-        result:
-          level: null
-          type: null
-        score: 2
-        weight: 5
-        evaluated: true
       properties:
         weight:
           description: An integer type. This specifies the weight assigned to the
@@ -2842,9 +2725,6 @@ components:
       - weight
       type: object
     RiskPredictorCommon_condition_scores_inner:
-      example:
-        name: name
-        value: value
       properties:
         name:
           type: string
@@ -2852,12 +2732,6 @@ components:
           type: string
       type: object
     RiskPredictorCommon_condition:
-      example:
-        scores:
-        - name: name
-          value: value
-        - name: name
-          value: value
       properties:
         scores:
           items:
