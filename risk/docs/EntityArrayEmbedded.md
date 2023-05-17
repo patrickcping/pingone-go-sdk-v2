@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RiskPolicySets** | Pointer to [**[]RiskPolicySet**](RiskPolicySet.md) |  | [optional] 
-**RiskPredictors** | Pointer to [**[]RiskPredictorCommon**](RiskPredictorCommon.md) |  | [optional] 
+**RiskPredictors** | Pointer to [**[]RiskPredictor**](RiskPredictor.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasRiskPolicySets returns a boolean if a field has been set.
 
 ### GetRiskPredictors
 
-`func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictorCommon`
+`func (o *EntityArrayEmbedded) GetRiskPredictors() []RiskPredictor`
 
 GetRiskPredictors returns the RiskPredictors field if non-nil, zero value otherwise.
 
 ### GetRiskPredictorsOk
 
-`func (o *EntityArrayEmbedded) GetRiskPredictorsOk() (*[]RiskPredictorCommon, bool)`
+`func (o *EntityArrayEmbedded) GetRiskPredictorsOk() (*[]RiskPredictor, bool)`
 
 GetRiskPredictorsOk returns a tuple with the RiskPredictors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRiskPredictors
 
-`func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictorCommon)`
+`func (o *EntityArrayEmbedded) SetRiskPredictors(v []RiskPredictor)`
 
 SetRiskPredictors sets RiskPredictors field to given value.
 

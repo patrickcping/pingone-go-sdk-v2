@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**High** | Pointer to **int32** |  | [optional] 
-**Medium** | Pointer to **int32** |  | [optional] 
+**High** | Pointer to **float32** |  | [optional] 
+**Medium** | Pointer to **float32** |  | [optional] 
 **Type** | Pointer to [**EnumPredictorVelocityUseType**](EnumPredictorVelocityUseType.md) |  | [optional] 
 
 ## Methods
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetHigh
 
-`func (o *RiskPredictorVelocityAllOfUse) GetHigh() int32`
+`func (o *RiskPredictorVelocityAllOfUse) GetHigh() float32`
 
 GetHigh returns the High field if non-nil, zero value otherwise.
 
 ### GetHighOk
 
-`func (o *RiskPredictorVelocityAllOfUse) GetHighOk() (*int32, bool)`
+`func (o *RiskPredictorVelocityAllOfUse) GetHighOk() (*float32, bool)`
 
 GetHighOk returns a tuple with the High field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHigh
 
-`func (o *RiskPredictorVelocityAllOfUse) SetHigh(v int32)`
+`func (o *RiskPredictorVelocityAllOfUse) SetHigh(v float32)`
 
 SetHigh sets High field to given value.
 
@@ -54,20 +54,20 @@ HasHigh returns a boolean if a field has been set.
 
 ### GetMedium
 
-`func (o *RiskPredictorVelocityAllOfUse) GetMedium() int32`
+`func (o *RiskPredictorVelocityAllOfUse) GetMedium() float32`
 
 GetMedium returns the Medium field if non-nil, zero value otherwise.
 
 ### GetMediumOk
 
-`func (o *RiskPredictorVelocityAllOfUse) GetMediumOk() (*int32, bool)`
+`func (o *RiskPredictorVelocityAllOfUse) GetMediumOk() (*float32, bool)`
 
 GetMediumOk returns a tuple with the Medium field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMedium
 
-`func (o *RiskPredictorVelocityAllOfUse) SetMedium(v int32)`
+`func (o *RiskPredictorVelocityAllOfUse) SetMedium(v float32)`
 
 SetMedium sets Medium field to given value.
 

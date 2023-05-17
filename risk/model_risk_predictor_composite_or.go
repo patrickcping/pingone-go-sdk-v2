@@ -20,6 +20,7 @@ var _ MappedNullable = &RiskPredictorCompositeOr{}
 // RiskPredictorCompositeOr struct for RiskPredictorCompositeOr
 type RiskPredictorCompositeOr struct {
 	Or []RiskPredictorCompositeCondition `json:"or"`
+	Type *EnumPredictorCompositeConditionType `json:"type,omitempty"`
 }
 
 // NewRiskPredictorCompositeOr instantiates a new RiskPredictorCompositeOr object
@@ -64,6 +65,38 @@ func (o *RiskPredictorCompositeOr) SetOr(v []RiskPredictorCompositeCondition) {
 	o.Or = v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *RiskPredictorCompositeOr) GetType() EnumPredictorCompositeConditionType {
+	if o == nil || IsNil(o.Type) {
+		var ret EnumPredictorCompositeConditionType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorCompositeOr) GetTypeOk() (*EnumPredictorCompositeConditionType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *RiskPredictorCompositeOr) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given EnumPredictorCompositeConditionType and assigns it to the Type field.
+func (o *RiskPredictorCompositeOr) SetType(v EnumPredictorCompositeConditionType) {
+	o.Type = &v
+}
+
 func (o RiskPredictorCompositeOr) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -75,6 +108,9 @@ func (o RiskPredictorCompositeOr) MarshalJSON() ([]byte, error) {
 func (o RiskPredictorCompositeOr) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["or"] = o.Or
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
 }
 

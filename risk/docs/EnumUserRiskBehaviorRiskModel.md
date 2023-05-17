@@ -1,4 +1,4 @@
-# EnumRiskModel
+# EnumUserRiskBehaviorRiskModel
 
 ## Enum
 

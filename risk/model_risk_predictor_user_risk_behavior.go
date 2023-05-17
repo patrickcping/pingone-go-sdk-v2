@@ -15,11 +15,11 @@ import (
 	"time"
 )
 
-// checks if the RiskPredictorUEBA type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RiskPredictorUEBA{}
+// checks if the RiskPredictorUserRiskBehavior type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPredictorUserRiskBehavior{}
 
-// RiskPredictorUEBA struct for RiskPredictorUEBA
-type RiskPredictorUEBA struct {
+// RiskPredictorUserRiskBehavior struct for RiskPredictorUserRiskBehavior
+type RiskPredictorUserRiskBehavior struct {
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -39,15 +39,15 @@ type RiskPredictorUEBA struct {
 	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
-	PredictionModel RiskPredictorUEBAAllOfPredictionModel `json:"predictionModel"`
+	PredictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel `json:"predictionModel"`
 }
 
-// NewRiskPredictorUEBA instantiates a new RiskPredictorUEBA object
+// NewRiskPredictorUserRiskBehavior instantiates a new RiskPredictorUserRiskBehavior object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorUEBA(name string, compactName string, type_ EnumPredictorType, predictionModel RiskPredictorUEBAAllOfPredictionModel) *RiskPredictorUEBA {
-	this := RiskPredictorUEBA{}
+func NewRiskPredictorUserRiskBehavior(name string, compactName string, type_ EnumPredictorType, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel) *RiskPredictorUserRiskBehavior {
+	this := RiskPredictorUserRiskBehavior{}
 	this.Name = name
 	this.CompactName = compactName
 	this.Type = type_
@@ -55,16 +55,16 @@ func NewRiskPredictorUEBA(name string, compactName string, type_ EnumPredictorTy
 	return &this
 }
 
-// NewRiskPredictorUEBAWithDefaults instantiates a new RiskPredictorUEBA object
+// NewRiskPredictorUserRiskBehaviorWithDefaults instantiates a new RiskPredictorUserRiskBehavior object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRiskPredictorUEBAWithDefaults() *RiskPredictorUEBA {
-	this := RiskPredictorUEBA{}
+func NewRiskPredictorUserRiskBehaviorWithDefaults() *RiskPredictorUserRiskBehavior {
+	this := RiskPredictorUserRiskBehavior{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetId() string {
+func (o *RiskPredictorUserRiskBehavior) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -74,7 +74,7 @@ func (o *RiskPredictorUEBA) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetIdOk() (*string, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -82,7 +82,7 @@ func (o *RiskPredictorUEBA) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *RiskPredictorUEBA) HasId() bool {
+func (o *RiskPredictorUserRiskBehavior) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -91,12 +91,12 @@ func (o *RiskPredictorUEBA) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *RiskPredictorUEBA) SetId(v string) {
+func (o *RiskPredictorUserRiskBehavior) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value
-func (o *RiskPredictorUEBA) GetName() string {
+func (o *RiskPredictorUserRiskBehavior) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -107,7 +107,7 @@ func (o *RiskPredictorUEBA) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetNameOk() (*string, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -115,12 +115,12 @@ func (o *RiskPredictorUEBA) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *RiskPredictorUEBA) SetName(v string) {
+func (o *RiskPredictorUserRiskBehavior) SetName(v string) {
 	o.Name = v
 }
 
 // GetCompactName returns the CompactName field value
-func (o *RiskPredictorUEBA) GetCompactName() string {
+func (o *RiskPredictorUserRiskBehavior) GetCompactName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -131,7 +131,7 @@ func (o *RiskPredictorUEBA) GetCompactName() string {
 
 // GetCompactNameOk returns a tuple with the CompactName field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetCompactNameOk() (*string, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetCompactNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -139,12 +139,12 @@ func (o *RiskPredictorUEBA) GetCompactNameOk() (*string, bool) {
 }
 
 // SetCompactName sets field value
-func (o *RiskPredictorUEBA) SetCompactName(v string) {
+func (o *RiskPredictorUserRiskBehavior) SetCompactName(v string) {
 	o.CompactName = v
 }
 
 // GetType returns the Type field value
-func (o *RiskPredictorUEBA) GetType() EnumPredictorType {
+func (o *RiskPredictorUserRiskBehavior) GetType() EnumPredictorType {
 	if o == nil {
 		var ret EnumPredictorType
 		return ret
@@ -155,7 +155,7 @@ func (o *RiskPredictorUEBA) GetType() EnumPredictorType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetTypeOk() (*EnumPredictorType, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetTypeOk() (*EnumPredictorType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -163,12 +163,12 @@ func (o *RiskPredictorUEBA) GetTypeOk() (*EnumPredictorType, bool) {
 }
 
 // SetType sets field value
-func (o *RiskPredictorUEBA) SetType(v EnumPredictorType) {
+func (o *RiskPredictorUserRiskBehavior) SetType(v EnumPredictorType) {
 	o.Type = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetDescription() string {
+func (o *RiskPredictorUserRiskBehavior) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -178,7 +178,7 @@ func (o *RiskPredictorUEBA) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetDescriptionOk() (*string, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -186,7 +186,7 @@ func (o *RiskPredictorUEBA) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *RiskPredictorUEBA) HasDescription() bool {
+func (o *RiskPredictorUserRiskBehavior) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -195,12 +195,12 @@ func (o *RiskPredictorUEBA) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *RiskPredictorUEBA) SetDescription(v string) {
+func (o *RiskPredictorUserRiskBehavior) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetCreatedAt() time.Time {
+func (o *RiskPredictorUserRiskBehavior) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
@@ -210,7 +210,7 @@ func (o *RiskPredictorUEBA) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetCreatedAtOk() (*time.Time, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -218,7 +218,7 @@ func (o *RiskPredictorUEBA) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *RiskPredictorUEBA) HasCreatedAt() bool {
+func (o *RiskPredictorUserRiskBehavior) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -227,12 +227,12 @@ func (o *RiskPredictorUEBA) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *RiskPredictorUEBA) SetCreatedAt(v time.Time) {
+func (o *RiskPredictorUserRiskBehavior) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetUpdatedAt() time.Time {
+func (o *RiskPredictorUserRiskBehavior) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
@@ -242,7 +242,7 @@ func (o *RiskPredictorUEBA) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -250,7 +250,7 @@ func (o *RiskPredictorUEBA) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *RiskPredictorUEBA) HasUpdatedAt() bool {
+func (o *RiskPredictorUserRiskBehavior) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -259,12 +259,12 @@ func (o *RiskPredictorUEBA) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *RiskPredictorUEBA) SetUpdatedAt(v time.Time) {
+func (o *RiskPredictorUserRiskBehavior) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 // GetLicensed returns the Licensed field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetLicensed() bool {
+func (o *RiskPredictorUserRiskBehavior) GetLicensed() bool {
 	if o == nil || IsNil(o.Licensed) {
 		var ret bool
 		return ret
@@ -274,7 +274,7 @@ func (o *RiskPredictorUEBA) GetLicensed() bool {
 
 // GetLicensedOk returns a tuple with the Licensed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetLicensedOk() (*bool, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetLicensedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Licensed) {
 		return nil, false
 	}
@@ -282,7 +282,7 @@ func (o *RiskPredictorUEBA) GetLicensedOk() (*bool, bool) {
 }
 
 // HasLicensed returns a boolean if a field has been set.
-func (o *RiskPredictorUEBA) HasLicensed() bool {
+func (o *RiskPredictorUserRiskBehavior) HasLicensed() bool {
 	if o != nil && !IsNil(o.Licensed) {
 		return true
 	}
@@ -291,12 +291,12 @@ func (o *RiskPredictorUEBA) HasLicensed() bool {
 }
 
 // SetLicensed gets a reference to the given bool and assigns it to the Licensed field.
-func (o *RiskPredictorUEBA) SetLicensed(v bool) {
+func (o *RiskPredictorUserRiskBehavior) SetLicensed(v bool) {
 	o.Licensed = &v
 }
 
 // GetDeletable returns the Deletable field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetDeletable() bool {
+func (o *RiskPredictorUserRiskBehavior) GetDeletable() bool {
 	if o == nil || IsNil(o.Deletable) {
 		var ret bool
 		return ret
@@ -306,7 +306,7 @@ func (o *RiskPredictorUEBA) GetDeletable() bool {
 
 // GetDeletableOk returns a tuple with the Deletable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetDeletableOk() (*bool, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetDeletableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Deletable) {
 		return nil, false
 	}
@@ -314,7 +314,7 @@ func (o *RiskPredictorUEBA) GetDeletableOk() (*bool, bool) {
 }
 
 // HasDeletable returns a boolean if a field has been set.
-func (o *RiskPredictorUEBA) HasDeletable() bool {
+func (o *RiskPredictorUserRiskBehavior) HasDeletable() bool {
 	if o != nil && !IsNil(o.Deletable) {
 		return true
 	}
@@ -323,12 +323,12 @@ func (o *RiskPredictorUEBA) HasDeletable() bool {
 }
 
 // SetDeletable gets a reference to the given bool and assigns it to the Deletable field.
-func (o *RiskPredictorUEBA) SetDeletable(v bool) {
+func (o *RiskPredictorUserRiskBehavior) SetDeletable(v bool) {
 	o.Deletable = &v
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetDefault() RiskPredictorCommonDefault {
+func (o *RiskPredictorUserRiskBehavior) GetDefault() RiskPredictorCommonDefault {
 	if o == nil || IsNil(o.Default) {
 		var ret RiskPredictorCommonDefault
 		return ret
@@ -338,7 +338,7 @@ func (o *RiskPredictorUEBA) GetDefault() RiskPredictorCommonDefault {
 
 // GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
@@ -346,7 +346,7 @@ func (o *RiskPredictorUEBA) GetDefaultOk() (*RiskPredictorCommonDefault, bool) {
 }
 
 // HasDefault returns a boolean if a field has been set.
-func (o *RiskPredictorUEBA) HasDefault() bool {
+func (o *RiskPredictorUserRiskBehavior) HasDefault() bool {
 	if o != nil && !IsNil(o.Default) {
 		return true
 	}
@@ -355,12 +355,12 @@ func (o *RiskPredictorUEBA) HasDefault() bool {
 }
 
 // SetDefault gets a reference to the given RiskPredictorCommonDefault and assigns it to the Default field.
-func (o *RiskPredictorUEBA) SetDefault(v RiskPredictorCommonDefault) {
+func (o *RiskPredictorUserRiskBehavior) SetDefault(v RiskPredictorCommonDefault) {
 	o.Default = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
-func (o *RiskPredictorUEBA) GetCondition() RiskPredictorCommonCondition {
+func (o *RiskPredictorUserRiskBehavior) GetCondition() RiskPredictorCommonCondition {
 	if o == nil || IsNil(o.Condition) {
 		var ret RiskPredictorCommonCondition
 		return ret
@@ -370,7 +370,7 @@ func (o *RiskPredictorUEBA) GetCondition() RiskPredictorCommonCondition {
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetConditionOk() (*RiskPredictorCommonCondition, bool) {
 	if o == nil || IsNil(o.Condition) {
 		return nil, false
 	}
@@ -378,7 +378,7 @@ func (o *RiskPredictorUEBA) GetConditionOk() (*RiskPredictorCommonCondition, boo
 }
 
 // HasCondition returns a boolean if a field has been set.
-func (o *RiskPredictorUEBA) HasCondition() bool {
+func (o *RiskPredictorUserRiskBehavior) HasCondition() bool {
 	if o != nil && !IsNil(o.Condition) {
 		return true
 	}
@@ -387,14 +387,14 @@ func (o *RiskPredictorUEBA) HasCondition() bool {
 }
 
 // SetCondition gets a reference to the given RiskPredictorCommonCondition and assigns it to the Condition field.
-func (o *RiskPredictorUEBA) SetCondition(v RiskPredictorCommonCondition) {
+func (o *RiskPredictorUserRiskBehavior) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 
 // GetPredictionModel returns the PredictionModel field value
-func (o *RiskPredictorUEBA) GetPredictionModel() RiskPredictorUEBAAllOfPredictionModel {
+func (o *RiskPredictorUserRiskBehavior) GetPredictionModel() RiskPredictorUserRiskBehaviorAllOfPredictionModel {
 	if o == nil {
-		var ret RiskPredictorUEBAAllOfPredictionModel
+		var ret RiskPredictorUserRiskBehaviorAllOfPredictionModel
 		return ret
 	}
 
@@ -403,7 +403,7 @@ func (o *RiskPredictorUEBA) GetPredictionModel() RiskPredictorUEBAAllOfPredictio
 
 // GetPredictionModelOk returns a tuple with the PredictionModel field value
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorUEBA) GetPredictionModelOk() (*RiskPredictorUEBAAllOfPredictionModel, bool) {
+func (o *RiskPredictorUserRiskBehavior) GetPredictionModelOk() (*RiskPredictorUserRiskBehaviorAllOfPredictionModel, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -411,11 +411,11 @@ func (o *RiskPredictorUEBA) GetPredictionModelOk() (*RiskPredictorUEBAAllOfPredi
 }
 
 // SetPredictionModel sets field value
-func (o *RiskPredictorUEBA) SetPredictionModel(v RiskPredictorUEBAAllOfPredictionModel) {
+func (o *RiskPredictorUserRiskBehavior) SetPredictionModel(v RiskPredictorUserRiskBehaviorAllOfPredictionModel) {
 	o.PredictionModel = v
 }
 
-func (o RiskPredictorUEBA) MarshalJSON() ([]byte, error) {
+func (o RiskPredictorUserRiskBehavior) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -423,7 +423,7 @@ func (o RiskPredictorUEBA) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o RiskPredictorUEBA) ToMap() (map[string]interface{}, error) {
+func (o RiskPredictorUserRiskBehavior) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	// skip: id is readOnly
 	toSerialize["name"] = o.Name
@@ -446,38 +446,38 @@ func (o RiskPredictorUEBA) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableRiskPredictorUEBA struct {
-	value *RiskPredictorUEBA
+type NullableRiskPredictorUserRiskBehavior struct {
+	value *RiskPredictorUserRiskBehavior
 	isSet bool
 }
 
-func (v NullableRiskPredictorUEBA) Get() *RiskPredictorUEBA {
+func (v NullableRiskPredictorUserRiskBehavior) Get() *RiskPredictorUserRiskBehavior {
 	return v.value
 }
 
-func (v *NullableRiskPredictorUEBA) Set(val *RiskPredictorUEBA) {
+func (v *NullableRiskPredictorUserRiskBehavior) Set(val *RiskPredictorUserRiskBehavior) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRiskPredictorUEBA) IsSet() bool {
+func (v NullableRiskPredictorUserRiskBehavior) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRiskPredictorUEBA) Unset() {
+func (v *NullableRiskPredictorUserRiskBehavior) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRiskPredictorUEBA(val *RiskPredictorUEBA) *NullableRiskPredictorUEBA {
-	return &NullableRiskPredictorUEBA{value: val, isSet: true}
+func NewNullableRiskPredictorUserRiskBehavior(val *RiskPredictorUserRiskBehavior) *NullableRiskPredictorUserRiskBehavior {
+	return &NullableRiskPredictorUserRiskBehavior{value: val, isSet: true}
 }
 
-func (v NullableRiskPredictorUEBA) MarshalJSON() ([]byte, error) {
+func (v NullableRiskPredictorUserRiskBehavior) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRiskPredictorUEBA) UnmarshalJSON(src []byte) error {
+func (v *NullableRiskPredictorUserRiskBehavior) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -20,8 +20,8 @@ var _ MappedNullable = &RiskPredictorVelocityAllOfFallback{}
 // RiskPredictorVelocityAllOfFallback struct for RiskPredictorVelocityAllOfFallback
 type RiskPredictorVelocityAllOfFallback struct {
 	Strategy *EnumPredictorVelocityFallbackStrategy `json:"strategy,omitempty"`
-	High *int32 `json:"high,omitempty"`
-	Medium *int32 `json:"medium,omitempty"`
+	High *float32 `json:"high,omitempty"`
+	Medium *float32 `json:"medium,omitempty"`
 }
 
 // NewRiskPredictorVelocityAllOfFallback instantiates a new RiskPredictorVelocityAllOfFallback object
@@ -74,9 +74,9 @@ func (o *RiskPredictorVelocityAllOfFallback) SetStrategy(v EnumPredictorVelocity
 }
 
 // GetHigh returns the High field value if set, zero value otherwise.
-func (o *RiskPredictorVelocityAllOfFallback) GetHigh() int32 {
+func (o *RiskPredictorVelocityAllOfFallback) GetHigh() float32 {
 	if o == nil || IsNil(o.High) {
-		var ret int32
+		var ret float32
 		return ret
 	}
 	return *o.High
@@ -84,7 +84,7 @@ func (o *RiskPredictorVelocityAllOfFallback) GetHigh() int32 {
 
 // GetHighOk returns a tuple with the High field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorVelocityAllOfFallback) GetHighOk() (*int32, bool) {
+func (o *RiskPredictorVelocityAllOfFallback) GetHighOk() (*float32, bool) {
 	if o == nil || IsNil(o.High) {
 		return nil, false
 	}
@@ -100,15 +100,15 @@ func (o *RiskPredictorVelocityAllOfFallback) HasHigh() bool {
 	return false
 }
 
-// SetHigh gets a reference to the given int32 and assigns it to the High field.
-func (o *RiskPredictorVelocityAllOfFallback) SetHigh(v int32) {
+// SetHigh gets a reference to the given float32 and assigns it to the High field.
+func (o *RiskPredictorVelocityAllOfFallback) SetHigh(v float32) {
 	o.High = &v
 }
 
 // GetMedium returns the Medium field value if set, zero value otherwise.
-func (o *RiskPredictorVelocityAllOfFallback) GetMedium() int32 {
+func (o *RiskPredictorVelocityAllOfFallback) GetMedium() float32 {
 	if o == nil || IsNil(o.Medium) {
-		var ret int32
+		var ret float32
 		return ret
 	}
 	return *o.Medium
@@ -116,7 +116,7 @@ func (o *RiskPredictorVelocityAllOfFallback) GetMedium() int32 {
 
 // GetMediumOk returns a tuple with the Medium field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPredictorVelocityAllOfFallback) GetMediumOk() (*int32, bool) {
+func (o *RiskPredictorVelocityAllOfFallback) GetMediumOk() (*float32, bool) {
 	if o == nil || IsNil(o.Medium) {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *RiskPredictorVelocityAllOfFallback) HasMedium() bool {
 	return false
 }
 
-// SetMedium gets a reference to the given int32 and assigns it to the Medium field.
-func (o *RiskPredictorVelocityAllOfFallback) SetMedium(v int32) {
+// SetMedium gets a reference to the given float32 and assigns it to the Medium field.
+func (o *RiskPredictorVelocityAllOfFallback) SetMedium(v float32) {
 	o.Medium = &v
 }
 

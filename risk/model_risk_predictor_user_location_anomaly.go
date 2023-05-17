@@ -39,7 +39,7 @@ type RiskPredictorUserLocationAnomaly struct {
 	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
-	Days *int32 `json:"days,omitempty"`
+	Days int32 `json:"days"`
 	Radius RiskPredictorUserLocationAnomalyAllOfRadius `json:"radius"`
 }
 
@@ -47,11 +47,12 @@ type RiskPredictorUserLocationAnomaly struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorUserLocationAnomaly(name string, compactName string, type_ EnumPredictorType, radius RiskPredictorUserLocationAnomalyAllOfRadius) *RiskPredictorUserLocationAnomaly {
+func NewRiskPredictorUserLocationAnomaly(name string, compactName string, type_ EnumPredictorType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius) *RiskPredictorUserLocationAnomaly {
 	this := RiskPredictorUserLocationAnomaly{}
 	this.Name = name
 	this.CompactName = compactName
 	this.Type = type_
+	this.Days = days
 	this.Radius = radius
 	return &this
 }
@@ -392,36 +393,28 @@ func (o *RiskPredictorUserLocationAnomaly) SetCondition(v RiskPredictorCommonCon
 	o.Condition = &v
 }
 
-// GetDays returns the Days field value if set, zero value otherwise.
+// GetDays returns the Days field value
 func (o *RiskPredictorUserLocationAnomaly) GetDays() int32 {
-	if o == nil || IsNil(o.Days) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Days
+
+	return o.Days
 }
 
-// GetDaysOk returns a tuple with the Days field value if set, nil otherwise
+// GetDaysOk returns a tuple with the Days field value
 // and a boolean to check if the value has been set.
 func (o *RiskPredictorUserLocationAnomaly) GetDaysOk() (*int32, bool) {
-	if o == nil || IsNil(o.Days) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Days, true
+	return &o.Days, true
 }
 
-// HasDays returns a boolean if a field has been set.
-func (o *RiskPredictorUserLocationAnomaly) HasDays() bool {
-	if o != nil && !IsNil(o.Days) {
-		return true
-	}
-
-	return false
-}
-
-// SetDays gets a reference to the given int32 and assigns it to the Days field.
+// SetDays sets field value
 func (o *RiskPredictorUserLocationAnomaly) SetDays(v int32) {
-	o.Days = &v
+	o.Days = v
 }
 
 // GetRadius returns the Radius field value
@@ -475,9 +468,7 @@ func (o RiskPredictorUserLocationAnomaly) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}
-	if !IsNil(o.Days) {
-		toSerialize["days"] = o.Days
-	}
+	toSerialize["days"] = o.Days
 	toSerialize["radius"] = o.Radius
 	return toSerialize, nil
 }

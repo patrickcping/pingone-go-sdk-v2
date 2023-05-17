@@ -15,14 +15,14 @@ Name | Type | Description | Notes
 **Deletable** | Pointer to **bool** | A boolean to indicate whether the predictor is deletable in the environment. | [optional] [readonly] 
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
-**Days** | Pointer to **int32** |  | [optional] 
+**Days** | **int32** |  | 
 **Radius** | [**RiskPredictorUserLocationAnomalyAllOfRadius**](RiskPredictorUserLocationAnomalyAllOfRadius.md) |  | 
 
 ## Methods
 
 ### NewRiskPredictorUserLocationAnomaly
 
-`func NewRiskPredictorUserLocationAnomaly(name string, compactName string, type_ EnumPredictorType, radius RiskPredictorUserLocationAnomalyAllOfRadius, ) *RiskPredictorUserLocationAnomaly`
+`func NewRiskPredictorUserLocationAnomaly(name string, compactName string, type_ EnumPredictorType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, ) *RiskPredictorUserLocationAnomaly`
 
 NewRiskPredictorUserLocationAnomaly instantiates a new RiskPredictorUserLocationAnomaly object
 This constructor will assign default values to properties that have it defined,
@@ -316,11 +316,6 @@ and a boolean to check if the value has been set.
 
 SetDays sets Days field to given value.
 
-### HasDays
-
-`func (o *RiskPredictorUserLocationAnomaly) HasDays() bool`
-
-HasDays returns a boolean if a field has been set.
 
 ### GetRadius
 
