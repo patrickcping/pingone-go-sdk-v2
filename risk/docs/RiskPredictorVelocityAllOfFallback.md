@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Strategy** | Pointer to [**EnumPredictorVelocityFallbackStrategy**](EnumPredictorVelocityFallbackStrategy.md) |  | [optional] 
-**High** | Pointer to **int32** |  | [optional] 
-**Medium** | Pointer to **int32** |  | [optional] 
+**High** | Pointer to **float32** |  | [optional] 
+**Medium** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasStrategy returns a boolean if a field has been set.
 
 ### GetHigh
 
-`func (o *RiskPredictorVelocityAllOfFallback) GetHigh() int32`
+`func (o *RiskPredictorVelocityAllOfFallback) GetHigh() float32`
 
 GetHigh returns the High field if non-nil, zero value otherwise.
 
 ### GetHighOk
 
-`func (o *RiskPredictorVelocityAllOfFallback) GetHighOk() (*int32, bool)`
+`func (o *RiskPredictorVelocityAllOfFallback) GetHighOk() (*float32, bool)`
 
 GetHighOk returns a tuple with the High field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHigh
 
-`func (o *RiskPredictorVelocityAllOfFallback) SetHigh(v int32)`
+`func (o *RiskPredictorVelocityAllOfFallback) SetHigh(v float32)`
 
 SetHigh sets High field to given value.
 
@@ -79,20 +79,20 @@ HasHigh returns a boolean if a field has been set.
 
 ### GetMedium
 
-`func (o *RiskPredictorVelocityAllOfFallback) GetMedium() int32`
+`func (o *RiskPredictorVelocityAllOfFallback) GetMedium() float32`
 
 GetMedium returns the Medium field if non-nil, zero value otherwise.
 
 ### GetMediumOk
 
-`func (o *RiskPredictorVelocityAllOfFallback) GetMediumOk() (*int32, bool)`
+`func (o *RiskPredictorVelocityAllOfFallback) GetMediumOk() (*float32, bool)`
 
 GetMediumOk returns a tuple with the Medium field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMedium
 
-`func (o *RiskPredictorVelocityAllOfFallback) SetMedium(v int32)`
+`func (o *RiskPredictorVelocityAllOfFallback) SetMedium(v float32)`
 
 SetMedium sets Medium field to given value.
 

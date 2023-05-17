@@ -38,7 +38,7 @@ components:
             riskPredictors:
               type: array
               items:
-                $ref: '#/components/schemas/RiskPredictorCommon'
+                $ref: '#/components/schemas/RiskPredictor'
         count:
           type: number
         size:
@@ -61,11 +61,14 @@ components:
       description: A string that specifies the flow type for the event. The only option (and default) is `AUTHENTICATION`.
     EnumPredictorCompositeConditionType:
       type: string
-      enum: [VALUE_COMPARISON, STRING_LIST]
+      enum: [VALUE_COMPARISON, STRING_LIST, AND, NOT, OR]
+    EnumPredictorNewDeviceDetectType:
+      type: string
+      enum: [NEW_DEVICE]
     EnumPredictorType:
       type: string
-      enum: [ANONYMOUS_NETWORK, COMPOSITE, GEO_VELOCITY, IP_REPUTATION, MAP, NEW_DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
-      description: An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`, `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `NEW_DEVICE`, `USER_LOCATION_ANOMALY`, `USER_RISK_BEHAVIOR` or `VELOCITY`.
+      enum: [ANONYMOUS_NETWORK, COMPOSITE, GEO_VELOCITY, IP_REPUTATION, MAP, DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
+      description: An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`, `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `DEVICE`, `USER_LOCATION_ANOMALY`, `USER_RISK_BEHAVIOR` or `VELOCITY`.
     EnumPredictorUnit:
       type: string
       enum: [DAY, HOUR]
@@ -86,7 +89,7 @@ components:
       type: string
       enum: [LOW, MEDIUM, HIGH]
       description: Enum string that specifies a given risk level.  Options are `LOW`, `MEDIUM`, `HIGH`.
-    EnumRiskModel:
+    EnumUserRiskBehaviorRiskModel:
       type: string
       enum: [points, login_anomaly_statistic]
       description: Enum string that specifies the risk model.  Options are `points` (individual user model) and `login_anomaly_statistic` (organization wide model).
@@ -632,9 +635,9 @@ components:
         - $ref: '#/components/schemas/RiskPredictorCustom'
         - $ref: '#/components/schemas/RiskPredictorGeovelocity'
         - $ref: '#/components/schemas/RiskPredictorIPReputation'
-        - $ref: '#/components/schemas/RiskPredictorNewDevice'
+        - $ref: '#/components/schemas/RiskPredictorDevice'
         - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly'
-        - $ref: '#/components/schemas/RiskPredictorUEBA'
+        - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior'
         - $ref: '#/components/schemas/RiskPredictorVelocity'
     RiskPredictorCommon:
       type: object
@@ -694,14 +697,12 @@ components:
               properties:
                 level:
                   $ref: '#/components/schemas/EnumRiskLevel'
-                  description: A string that identifies the risk level. Options are HIGH, MEDIUM, and LOW.
                 type:
                   $ref: '#/components/schemas/EnumResultType'
               required:
-                - level
+                - type
           required:
             - weight
-            - result
         condition:
           type: object
           readOnly: true
@@ -754,6 +755,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - and
     RiskPredictorCompositeConditionBase:
@@ -784,9 +787,13 @@ components:
         - type: object
           properties:
             equals:
-              type: object
+              oneOf:
+                - type: string
+                - type: integer
             notEquals:
-              type: object
+              oneOf:
+                - type: string
+                - type: integer
             greater:
               type: integer
             greaterEquals:
@@ -807,6 +814,8 @@ components:
       properties:
         not:
           $ref: '#/components/schemas/RiskPredictorCompositeOr'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - not
     RiskPredictorCompositeOr:
@@ -816,6 +825,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - or
     RiskPredictorCustom:
@@ -847,6 +858,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         ipRange:
           type: array
           description: List of CIDRs to include
@@ -863,6 +877,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         between:
           type: object
           description: Minimum and maximum boundaries
@@ -886,6 +903,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         list:
           type: array
           description: An array that specifies the list of entities that represent the risk conditions.
@@ -916,15 +936,19 @@ components:
               items:
                 type: string
                 pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
-    RiskPredictorNewDevice:
+    RiskPredictorDevice:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
           properties:
+            detect:
+              $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
             activationAt:
               type: string
               format: date-time
               description: You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
+          required:
+            - detect
     RiskPredictorUserLocationAnomaly:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -946,8 +970,9 @@ components:
                 - distance
                 - unit
           required:
+            - days
             - radius
-    RiskPredictorUEBA:
+    RiskPredictorUserRiskBehavior:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
@@ -956,7 +981,7 @@ components:
               type: object
               properties:
                 name:
-                  $ref: '#/components/schemas/EnumRiskModel'
+                  $ref: '#/components/schemas/EnumUserRiskBehaviorRiskModel'
               required:
                 - name
           required:
@@ -986,9 +1011,11 @@ components:
                 strategy:
                   $ref: '#/components/schemas/EnumPredictorVelocityFallbackStrategy'
                 high:
-                  type: integer
+                  type: number
+                  format: float
                 medium:
-                  type: integer
+                  type: number
+                  format: float
             maxDelay:
               type: object
               properties:
@@ -1014,9 +1041,11 @@ components:
               type: object
               properties:
                 high:
-                  type: integer
+                  type: number
+                  format: float
                 medium:
-                  type: integer
+                  type: number
+                  format: float
                 type:
                   $ref: '#/components/schemas/EnumPredictorVelocityUseType'
   responses:

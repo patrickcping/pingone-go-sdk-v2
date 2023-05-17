@@ -13,7 +13,7 @@
 
 * `MAP` (value: `"MAP"`)
 
-* `NEW_DEVICE` (value: `"NEW_DEVICE"`)
+* `DEVICE` (value: `"DEVICE"`)
 
 * `USER_LOCATION_ANOMALY` (value: `"USER_LOCATION_ANOMALY"`)
 
