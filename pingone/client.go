@@ -113,8 +113,6 @@ func CredentialsAPIClient(token *oauth2.Token) (*credentials.APIClient, error) {
 		return nil, fmt.Errorf("Cannot initialise PingOne Credentials client")
 	}
 
-	log.Printf("[INFO] PingOne Credentials Client initialised")
-
 	return client, nil
 
 }
