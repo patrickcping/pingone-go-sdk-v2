@@ -4,6 +4,8 @@
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.7](./authorize/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.1.0](./credentials/CHANGELOG.md)
+    * **Initial release** [#166](https://github.com/patrickcping/pingone-go-sdk-v2/pull/166)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.20.0](./management/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
     * **Enhancement** Add support for enumerated values and regex validation to the schema attribute model. [#161](https://github.com/patrickcping/pingone-go-sdk-v2/pull/161)
