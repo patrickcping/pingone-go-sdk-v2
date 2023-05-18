@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/--git-user-id/credentials"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/--git-user-id/credentials"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/GIT_USER_ID/--git-user-id/credentials"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/credentials"
 )
 
 func main() {
