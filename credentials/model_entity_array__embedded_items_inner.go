@@ -31,7 +31,11 @@ func (dst *EntityArrayEmbeddedItemsInner) UnmarshalJSON(data []byte) error {
 		if string(jsonCredentialType) == "{}" { // empty struct
 			dst.CredentialType = nil
 		} else {
-			return nil // data stored in dst.CredentialType, return on the first match
+			if dst.CredentialType.CardDesignTemplate != "" {
+				return nil // data stored in dst.CredentialType, return on the first match
+			} else {
+				dst.CredentialType = nil
+			}
 		}
 	} else {
 		dst.CredentialType = nil
@@ -44,7 +48,11 @@ func (dst *EntityArrayEmbeddedItemsInner) UnmarshalJSON(data []byte) error {
 		if string(jsonUserCredential) == "{}" { // empty struct
 			dst.UserCredential = nil
 		} else {
-			return nil // data stored in dst.UserCredential, return on the first match
+			if dst.UserCredential.User.Id != "" {
+				return nil // data stored in dst.UserCredential, return on the first match
+			} else {
+				dst.UserCredential = nil
+			}
 		}
 	} else {
 		dst.UserCredential = nil
