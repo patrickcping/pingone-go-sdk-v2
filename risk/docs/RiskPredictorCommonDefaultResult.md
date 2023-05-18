@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | [**EnumRiskLevel**](EnumRiskLevel.md) |  | 
-**Type** | Pointer to [**EnumResultType**](EnumResultType.md) |  | [optional] 
+**Level** | Pointer to [**EnumRiskLevel**](EnumRiskLevel.md) |  | [optional] 
+**Type** | [**EnumResultType**](EnumResultType.md) |  | 
 
 ## Methods
 
 ### NewRiskPredictorCommonDefaultResult
 
-`func NewRiskPredictorCommonDefaultResult(level EnumRiskLevel, ) *RiskPredictorCommonDefaultResult`
+`func NewRiskPredictorCommonDefaultResult(type_ EnumResultType, ) *RiskPredictorCommonDefaultResult`
 
 NewRiskPredictorCommonDefaultResult instantiates a new RiskPredictorCommonDefaultResult object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetLevel sets Level field to given value.
 
+### HasLevel
+
+`func (o *RiskPredictorCommonDefaultResult) HasLevel() bool`
+
+HasLevel returns a boolean if a field has been set.
 
 ### GetType
 
@@ -65,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *RiskPredictorCommonDefaultResult) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

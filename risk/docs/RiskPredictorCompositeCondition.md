@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Not** | [**RiskPredictorCompositeOr**](RiskPredictorCompositeOr.md) |  | 
+**Type** | [**EnumPredictorCompositeConditionType**](EnumPredictorCompositeConditionType.md) |  | 
 **Or** | [**[]RiskPredictorCompositeCondition**](RiskPredictorCompositeCondition.md) |  | 
 **And** | [**[]RiskPredictorCompositeCondition**](RiskPredictorCompositeCondition.md) |  | 
 **Contains** | **string** |  | 
 **List** | **[]string** |  | 
-**Type** | [**EnumPredictorCompositeConditionType**](EnumPredictorCompositeConditionType.md) |  | 
-**Equals** | Pointer to **map[string]interface{}** |  | [optional] 
-**NotEquals** | Pointer to **map[string]interface{}** |  | [optional] 
+**Equals** | Pointer to [**RiskPredictorCompositeConditionOneOf1Equals**](RiskPredictorCompositeConditionOneOf1Equals.md) |  | [optional] 
+**NotEquals** | Pointer to [**RiskPredictorCompositeConditionOneOf1Equals**](RiskPredictorCompositeConditionOneOf1Equals.md) |  | [optional] 
 **Greater** | Pointer to **int32** |  | [optional] 
 **GreaterEquals** | Pointer to **int32** |  | [optional] 
 **Lower** | Pointer to **int32** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictorCompositeCondition
 
-`func NewRiskPredictorCompositeCondition(not RiskPredictorCompositeOr, or []RiskPredictorCompositeCondition, and []RiskPredictorCompositeCondition, contains string, list []string, type_ EnumPredictorCompositeConditionType, value string, ) *RiskPredictorCompositeCondition`
+`func NewRiskPredictorCompositeCondition(not RiskPredictorCompositeOr, type_ EnumPredictorCompositeConditionType, or []RiskPredictorCompositeCondition, and []RiskPredictorCompositeCondition, contains string, list []string, value string, ) *RiskPredictorCompositeCondition`
 
 NewRiskPredictorCompositeCondition instantiates a new RiskPredictorCompositeCondition object
 This constructor will assign default values to properties that have it defined,
@@ -55,6 +55,26 @@ and a boolean to check if the value has been set.
 `func (o *RiskPredictorCompositeCondition) SetNot(v RiskPredictorCompositeOr)`
 
 SetNot sets Not field to given value.
+
+
+### GetType
+
+`func (o *RiskPredictorCompositeCondition) GetType() EnumPredictorCompositeConditionType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *RiskPredictorCompositeCondition) GetTypeOk() (*EnumPredictorCompositeConditionType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *RiskPredictorCompositeCondition) SetType(v EnumPredictorCompositeConditionType)`
+
+SetType sets Type field to given value.
 
 
 ### GetOr
@@ -137,42 +157,22 @@ and a boolean to check if the value has been set.
 SetList sets List field to given value.
 
 
-### GetType
-
-`func (o *RiskPredictorCompositeCondition) GetType() EnumPredictorCompositeConditionType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *RiskPredictorCompositeCondition) GetTypeOk() (*EnumPredictorCompositeConditionType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *RiskPredictorCompositeCondition) SetType(v EnumPredictorCompositeConditionType)`
-
-SetType sets Type field to given value.
-
-
 ### GetEquals
 
-`func (o *RiskPredictorCompositeCondition) GetEquals() map[string]interface{}`
+`func (o *RiskPredictorCompositeCondition) GetEquals() RiskPredictorCompositeConditionOneOf1Equals`
 
 GetEquals returns the Equals field if non-nil, zero value otherwise.
 
 ### GetEqualsOk
 
-`func (o *RiskPredictorCompositeCondition) GetEqualsOk() (*map[string]interface{}, bool)`
+`func (o *RiskPredictorCompositeCondition) GetEqualsOk() (*RiskPredictorCompositeConditionOneOf1Equals, bool)`
 
 GetEqualsOk returns a tuple with the Equals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEquals
 
-`func (o *RiskPredictorCompositeCondition) SetEquals(v map[string]interface{})`
+`func (o *RiskPredictorCompositeCondition) SetEquals(v RiskPredictorCompositeConditionOneOf1Equals)`
 
 SetEquals sets Equals field to given value.
 
@@ -184,20 +184,20 @@ HasEquals returns a boolean if a field has been set.
 
 ### GetNotEquals
 
-`func (o *RiskPredictorCompositeCondition) GetNotEquals() map[string]interface{}`
+`func (o *RiskPredictorCompositeCondition) GetNotEquals() RiskPredictorCompositeConditionOneOf1Equals`
 
 GetNotEquals returns the NotEquals field if non-nil, zero value otherwise.
 
 ### GetNotEqualsOk
 
-`func (o *RiskPredictorCompositeCondition) GetNotEqualsOk() (*map[string]interface{}, bool)`
+`func (o *RiskPredictorCompositeCondition) GetNotEqualsOk() (*RiskPredictorCompositeConditionOneOf1Equals, bool)`
 
 GetNotEqualsOk returns a tuple with the NotEquals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotEquals
 
-`func (o *RiskPredictorCompositeCondition) SetNotEquals(v map[string]interface{})`
+`func (o *RiskPredictorCompositeCondition) SetNotEquals(v RiskPredictorCompositeConditionOneOf1Equals)`
 
 SetNotEquals sets NotEquals field to given value.
 

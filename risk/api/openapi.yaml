@@ -919,7 +919,7 @@ components:
   schemas:
     EntityArray:
       example:
-        size: 9.301444243932576
+        size: 2.3021358869347655
         _embedded:
           riskPolicySets:
           - createdAt: createdAt
@@ -1057,51 +1057,9 @@ components:
               value: value
             updatedAt: updatedAt
           riskPredictors:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            default:
-              result:
-                level: null
-                type: null
-              score: 2
-              weight: 5
-              evaluated: true
-            condition:
-              scores:
-              - name: name
-                value: value
-              - name: name
-                value: value
-            licensed: true
-            name: name
-            deletable: true
-            description: description
-            id: id
-            type: null
-            compactName: compactName
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            default:
-              result:
-                level: null
-                type: null
-              score: 2
-              weight: 5
-              evaluated: true
-            condition:
-              scores:
-              - name: name
-                value: value
-              - name: name
-                value: value
-            licensed: true
-            name: name
-            deletable: true
-            description: description
-            id: id
-            type: null
-            compactName: compactName
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-        count: 7.061401241503109
+          - null
+          - null
+        count: 5.637376656633329
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -1145,10 +1103,17 @@ components:
       enum:
       - VALUE_COMPARISON
       - STRING_LIST
+      - AND
+      - NOT
+      - OR
+      type: string
+    EnumPredictorNewDeviceDetectType:
+      enum:
+      - NEW_DEVICE
       type: string
     EnumPredictorType:
       description: "An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`,\
-        \ `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `NEW_DEVICE`, `USER_LOCATION_ANOMALY`,\
+        \ `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `DEVICE`, `USER_LOCATION_ANOMALY`,\
         \ `USER_RISK_BEHAVIOR` or `VELOCITY`."
       enum:
       - ANONYMOUS_NETWORK
@@ -1156,7 +1121,7 @@ components:
       - GEO_VELOCITY
       - IP_REPUTATION
       - MAP
-      - NEW_DEVICE
+      - DEVICE
       - USER_LOCATION_ANOMALY
       - USER_RISK_BEHAVIOR
       - VELOCITY
@@ -1192,7 +1157,7 @@ components:
       - MEDIUM
       - HIGH
       type: string
-    EnumRiskModel:
+    EnumUserRiskBehaviorRiskModel:
       description: Enum string that specifies the risk model.  Options are `points`
         (individual user model) and `login_anomaly_statistic` (organization wide model).
       enum:
@@ -1767,34 +1732,11 @@ components:
       - $ref: '#/components/schemas/RiskPredictorCustom'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity'
       - $ref: '#/components/schemas/RiskPredictorIPReputation'
-      - $ref: '#/components/schemas/RiskPredictorNewDevice'
+      - $ref: '#/components/schemas/RiskPredictorDevice'
       - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly'
-      - $ref: '#/components/schemas/RiskPredictorUEBA'
+      - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior'
       - $ref: '#/components/schemas/RiskPredictorVelocity'
     RiskPredictorCommon:
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        default:
-          result:
-            level: null
-            type: null
-          score: 2
-          weight: 5
-          evaluated: true
-        condition:
-          scores:
-          - name: name
-            value: value
-          - name: name
-            value: value
-        licensed: true
-        name: name
-        deletable: true
-        description: description
-        id: id
-        type: null
-        compactName: compactName
-        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           description: A string that specifies the resource’s unique identifier.
@@ -1862,6 +1804,8 @@ components:
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
           type: array
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - and
       type: object
@@ -1881,6 +1825,8 @@ components:
       properties:
         not:
           $ref: '#/components/schemas/RiskPredictorCompositeOr'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - not
       type: object
@@ -1890,6 +1836,8 @@ components:
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
           type: array
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - or
       type: object
@@ -1908,6 +1856,9 @@ components:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
           type: string
+        type:
+          readOnly: true
+          type: string
         ipRange:
           description: List of CIDRs to include
           items:
@@ -1925,6 +1876,9 @@ components:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
           type: string
+        type:
+          readOnly: true
+          type: string
         between:
           $ref: '#/components/schemas/RiskPredictorCustomItemBetween_between'
       required:
@@ -1936,6 +1890,9 @@ components:
       properties:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        type:
+          readOnly: true
           type: string
         list:
           description: An array that specifies the list of entities that represent
@@ -1955,18 +1912,18 @@ components:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
-    RiskPredictorNewDevice:
+    RiskPredictorDevice:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorNewDevice_allOf'
+      - $ref: '#/components/schemas/RiskPredictorDevice_allOf'
     RiskPredictorUserLocationAnomaly:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf'
-    RiskPredictorUEBA:
+    RiskPredictorUserRiskBehavior:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorUEBA_allOf'
+      - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior_allOf'
     RiskPredictorVelocity:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -2109,50 +2066,8 @@ components:
             value: value
           updatedAt: updatedAt
         riskPredictors:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          default:
-            result:
-              level: null
-              type: null
-            score: 2
-            weight: 5
-            evaluated: true
-          condition:
-            scores:
-            - name: name
-              value: value
-            - name: name
-              value: value
-          licensed: true
-          name: name
-          deletable: true
-          description: description
-          id: id
-          type: null
-          compactName: compactName
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          default:
-            result:
-              level: null
-              type: null
-            score: 2
-            weight: 5
-            evaluated: true
-          condition:
-            scores:
-            - name: name
-              value: value
-            - name: name
-              value: value
-          licensed: true
-          name: name
-          deletable: true
-          description: description
-          id: id
-          type: null
-          compactName: compactName
-          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - null
+        - null
       properties:
         riskPolicySets:
           items:
@@ -2160,7 +2075,7 @@ components:
           type: array
         riskPredictors:
           items:
-            $ref: '#/components/schemas/RiskPredictorCommon'
+            $ref: '#/components/schemas/RiskPredictor'
           type: array
       type: object
     P1Error_details_inner_innerError:
@@ -2785,9 +2700,6 @@ components:
         \ the following options are: If the predictor is used in an override, the\
         \ override is skipped. In the weighted policy, the predictor will have a weight\
         \ of 0."
-      example:
-        level: null
-        type: null
       properties:
         level:
           $ref: '#/components/schemas/EnumRiskLevel'
@@ -2798,13 +2710,6 @@ components:
       type: object
     RiskPredictorCommon_default:
       description: Contains the default values used for a new risk predictor.
-      example:
-        result:
-          level: null
-          type: null
-        score: 2
-        weight: 5
-        evaluated: true
       properties:
         weight:
           description: An integer type. This specifies the weight assigned to the
@@ -2817,13 +2722,9 @@ components:
         result:
           $ref: '#/components/schemas/RiskPredictorCommon_default_result'
       required:
-      - result
       - weight
       type: object
     RiskPredictorCommon_condition_scores_inner:
-      example:
-        name: name
-        value: value
       properties:
         name:
           type: string
@@ -2831,12 +2732,6 @@ components:
           type: string
       type: object
     RiskPredictorCommon_condition:
-      example:
-        scores:
-        - name: name
-          value: value
-        - name: name
-          value: value
       properties:
         scores:
           items:
@@ -2890,12 +2785,16 @@ components:
       - list
       - type
       type: object
+    RiskPredictorCompositeCondition_oneOf_1_equals:
+      oneOf:
+      - type: string
+      - type: integer
     RiskPredictorCompositeCondition_oneOf_1:
       properties:
         equals:
-          type: object
+          $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1_equals'
         notEquals:
-          type: object
+          $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1_equals'
         greater:
           type: integer
         greaterEquals:
@@ -2956,8 +2855,10 @@ components:
           type: array
       type: object
       example: null
-    RiskPredictorNewDevice_allOf:
+    RiskPredictorDevice_allOf:
       properties:
+        detect:
+          $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
         activationAt:
           description: You can use the `activationAt` parameter to specify a date
             on which the learning process for the predictor should be restarted. This
@@ -2967,6 +2868,8 @@ components:
             UTC time.
           format: date-time
           type: string
+      required:
+      - detect
       type: object
       example: null
     RiskPredictorUserLocationAnomaly_allOf_radius:
@@ -2991,21 +2894,22 @@ components:
         radius:
           $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf_radius'
       required:
+      - days
       - radius
       type: object
       example: null
-    RiskPredictorUEBA_allOf_predictionModel:
+    RiskPredictorUserRiskBehavior_allOf_predictionModel:
       properties:
         name:
-          $ref: '#/components/schemas/EnumRiskModel'
+          $ref: '#/components/schemas/EnumUserRiskBehaviorRiskModel'
       required:
       - name
       type: object
       example: null
-    RiskPredictorUEBA_allOf:
+    RiskPredictorUserRiskBehavior_allOf:
       properties:
         predictionModel:
-          $ref: '#/components/schemas/RiskPredictorUEBA_allOf_predictionModel'
+          $ref: '#/components/schemas/RiskPredictorUserRiskBehavior_allOf_predictionModel'
       required:
       - predictionModel
       type: object
@@ -3025,9 +2929,11 @@ components:
         strategy:
           $ref: '#/components/schemas/EnumPredictorVelocityFallbackStrategy'
         high:
-          type: integer
+          format: float
+          type: number
         medium:
-          type: integer
+          format: float
+          type: number
       type: object
       example: null
     RiskPredictorVelocity_allOf_maxDelay:
@@ -3051,9 +2957,11 @@ components:
     RiskPredictorVelocity_allOf_use:
       properties:
         high:
-          type: integer
+          format: float
+          type: number
         medium:
-          type: integer
+          format: float
+          type: number
         type:
           $ref: '#/components/schemas/EnumPredictorVelocityUseType'
       type: object
