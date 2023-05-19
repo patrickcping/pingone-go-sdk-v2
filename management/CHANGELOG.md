@@ -1,3 +1,7 @@
+# v0.20.1 (Unreleased)
+
+* **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward.
+
 # v0.20.0 (2023-05-19)
 
 * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
