@@ -919,10 +919,13 @@ components:
   schemas:
     EntityArray:
       example:
-        size: 2.3021358869347655
+        size: 7.061401241503109
         _embedded:
           riskPolicySets:
-          - createdAt: createdAt
+          - evaluatedPredictors:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
             default: true
             environment:
               id: id
@@ -934,7 +937,7 @@ components:
                 level: null
                 type: null
                 value: value
-              createdAt: createdAt
+              createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
                 - weight: 0
@@ -943,25 +946,31 @@ components:
                   value: value
                 contains: contains
                 equals: null
+                aggregatedScores:
+                - score: 6
+                  value: value
+                - score: 6
+                  value: value
                 ipRange:
                 - ipRange
                 - ipRange
+                type: null
                 value: value
                 between:
-                  minScore: 6
-                  maxScore: 1
+                  minScore: 146
+                  maxScore: 596
               environment:
                 id: id
               name: name
               description: description
               id: id
               priority: 5
-              updatedAt: updatedAt
+              updatedAt: 2000-01-23T04:56:07.000+00:00
             - result:
                 level: null
                 type: null
                 value: value
-              createdAt: createdAt
+              createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
                 - weight: 0
@@ -970,26 +979,35 @@ components:
                   value: value
                 contains: contains
                 equals: null
+                aggregatedScores:
+                - score: 6
+                  value: value
+                - score: 6
+                  value: value
                 ipRange:
                 - ipRange
                 - ipRange
+                type: null
                 value: value
                 between:
-                  minScore: 6
-                  maxScore: 1
+                  minScore: 146
+                  maxScore: 596
               environment:
                 id: id
               name: name
               description: description
               id: id
               priority: 5
-              updatedAt: updatedAt
+              updatedAt: 2000-01-23T04:56:07.000+00:00
             defaultResult:
               level: null
               type: null
               value: value
-            updatedAt: updatedAt
-          - createdAt: createdAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - evaluatedPredictors:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
             default: true
             environment:
               id: id
@@ -1001,7 +1019,7 @@ components:
                 level: null
                 type: null
                 value: value
-              createdAt: createdAt
+              createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
                 - weight: 0
@@ -1010,25 +1028,31 @@ components:
                   value: value
                 contains: contains
                 equals: null
+                aggregatedScores:
+                - score: 6
+                  value: value
+                - score: 6
+                  value: value
                 ipRange:
                 - ipRange
                 - ipRange
+                type: null
                 value: value
                 between:
-                  minScore: 6
-                  maxScore: 1
+                  minScore: 146
+                  maxScore: 596
               environment:
                 id: id
               name: name
               description: description
               id: id
               priority: 5
-              updatedAt: updatedAt
+              updatedAt: 2000-01-23T04:56:07.000+00:00
             - result:
                 level: null
                 type: null
                 value: value
-              createdAt: createdAt
+              createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
                 - weight: 0
@@ -1037,29 +1061,35 @@ components:
                   value: value
                 contains: contains
                 equals: null
+                aggregatedScores:
+                - score: 6
+                  value: value
+                - score: 6
+                  value: value
                 ipRange:
                 - ipRange
                 - ipRange
+                type: null
                 value: value
                 between:
-                  minScore: 6
-                  maxScore: 1
+                  minScore: 146
+                  maxScore: 596
               environment:
                 id: id
               name: name
               description: description
               id: id
               priority: 5
-              updatedAt: updatedAt
+              updatedAt: 2000-01-23T04:56:07.000+00:00
             defaultResult:
               level: null
               type: null
               value: value
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           riskPredictors:
           - null
           - null
-        count: 5.637376656633329
+        count: 2.3021358869347655
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -1098,6 +1128,15 @@ components:
         (and default) is `AUTHENTICATION`.
       enum:
       - AUTHENTICATION
+      type: string
+    EnumRiskPolicyConditionType:
+      description: |
+        Indicates the type of policy you are defining. Can be one of the following values: `AGGREGATED_SCORES`, `AGGREGATED_WEIGHTS`, `VALUE_COMPARISON`, and `IP_RANGE` (for override policies or custom predictors).
+      enum:
+      - AGGREGATED_WEIGHTS
+      - AGGREGATED_SCORES
+      - VALUE_COMPARISON
+      - IP_RANGE
       type: string
     EnumPredictorCompositeConditionType:
       enum:
@@ -1594,9 +1633,93 @@ components:
           readOnly: true
           type: string
       type: object
+    RiskPolicy:
+      example:
+        result:
+          level: null
+          type: null
+          value: value
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        condition:
+          aggregatedWeights:
+          - weight: 0
+            value: value
+          - weight: 0
+            value: value
+          contains: contains
+          equals: null
+          aggregatedScores:
+          - score: 6
+            value: value
+          - score: 6
+            value: value
+          ipRange:
+          - ipRange
+          - ipRange
+          type: null
+          value: value
+          between:
+            minScore: 146
+            maxScore: 596
+        environment:
+          id: id
+        name: name
+        description: description
+        id: id
+        priority: 5
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        condition:
+          $ref: '#/components/schemas/RiskPolicy_condition'
+        createdAt:
+          description: The time the resource was first created (format ISO-8061).
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: "A string that specifies a description for this risk policy.\
+            \ This is an optional property. Valid characters consist of any Unicode\
+            \ letter, mark (for example, accent, umlaut), numeric character, punctuation\
+            \ character, or space. Maximum size is 1024 characters."
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: "A string that specifies a name for this risk policy. Valid\
+            \ characters consist of any Unicode letter, mark (for example, accent,\
+            \ umlaut), numeric character, forward slash, dot, apostrophe, underscore,\
+            \ space, or hyphen. Maximum size is 256 characters."
+          type: string
+        priority:
+          description: "An integer that specifies priority of the policy inside a\
+            \ risk policy set, designating which policy should run first. This is\
+            \ a read-only value. The priority is determined by the order in which\
+            \ policies are listed in the policy set. The first policy in the list\
+            \ is assigned priority 1 and is evaluated first. The next policy in the\
+            \ list is assigned priority 2 and so on."
+          type: integer
+        result:
+          $ref: '#/components/schemas/RiskPolicyResult'
+        updatedAt:
+          description: The time the resource was last updated (format ISO-8061).
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - condition
+      - name
+      - result
+      type: object
     RiskPolicySet:
       example:
-        createdAt: createdAt
+        evaluatedPredictors:
+        - id: id
+        - id: id
+        createdAt: 2000-01-23T04:56:07.000+00:00
         default: true
         environment:
           id: id
@@ -1608,7 +1731,7 @@ components:
             level: null
             type: null
             value: value
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
             - weight: 0
@@ -1617,25 +1740,31 @@ components:
               value: value
             contains: contains
             equals: null
+            aggregatedScores:
+            - score: 6
+              value: value
+            - score: 6
+              value: value
             ipRange:
             - ipRange
             - ipRange
+            type: null
             value: value
             between:
-              minScore: 6
-              maxScore: 1
+              minScore: 146
+              maxScore: 596
           environment:
             id: id
           name: name
           description: description
           id: id
           priority: 5
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         - result:
             level: null
             type: null
             value: value
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
             - weight: 0
@@ -1644,28 +1773,35 @@ components:
               value: value
             contains: contains
             equals: null
+            aggregatedScores:
+            - score: 6
+              value: value
+            - score: 6
+              value: value
             ipRange:
             - ipRange
             - ipRange
+            type: null
             value: value
             between:
-              minScore: 6
-              maxScore: 1
+              minScore: 146
+              maxScore: 596
           environment:
             id: id
           name: name
           description: description
           id: id
           priority: 5
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         defaultResult:
           level: null
           type: null
           value: value
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         createdAt:
           description: The time the resource was created (format ISO-8061).
+          format: date-time
           readOnly: true
           type: string
         default:
@@ -1701,12 +1837,20 @@ components:
         riskPolicies:
           description: An array of policies related to this policy set.
           items:
-            $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner'
+            $ref: '#/components/schemas/RiskPolicy'
           type: array
         updatedAt:
           description: The time the resource was last updated (format ISO-8061).
+          format: date-time
           readOnly: true
           type: string
+        evaluatedPredictors:
+          description: "The IDs for the predictors to evaluate in this policy set.\
+            \ In POST and PUT requests, if this property is null, all of the licensed\
+            \ predictors are used."
+          items:
+            $ref: '#/components/schemas/RiskPolicySet_evaluatedPredictors_inner'
+          type: array
       required:
       - name
       type: object
@@ -1931,7 +2075,10 @@ components:
     EntityArray__embedded:
       example:
         riskPolicySets:
-        - createdAt: createdAt
+        - evaluatedPredictors:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
           default: true
           environment:
             id: id
@@ -1943,7 +2090,7 @@ components:
               level: null
               type: null
               value: value
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
               - weight: 0
@@ -1952,25 +2099,31 @@ components:
                 value: value
               contains: contains
               equals: null
+              aggregatedScores:
+              - score: 6
+                value: value
+              - score: 6
+                value: value
               ipRange:
               - ipRange
               - ipRange
+              type: null
               value: value
               between:
-                minScore: 6
-                maxScore: 1
+                minScore: 146
+                maxScore: 596
             environment:
               id: id
             name: name
             description: description
             id: id
             priority: 5
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           - result:
               level: null
               type: null
               value: value
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
               - weight: 0
@@ -1979,26 +2132,35 @@ components:
                 value: value
               contains: contains
               equals: null
+              aggregatedScores:
+              - score: 6
+                value: value
+              - score: 6
+                value: value
               ipRange:
               - ipRange
               - ipRange
+              type: null
               value: value
               between:
-                minScore: 6
-                maxScore: 1
+                minScore: 146
+                maxScore: 596
             environment:
               id: id
             name: name
             description: description
             id: id
             priority: 5
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           defaultResult:
             level: null
             type: null
             value: value
-          updatedAt: updatedAt
-        - createdAt: createdAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - evaluatedPredictors:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
           default: true
           environment:
             id: id
@@ -2010,7 +2172,7 @@ components:
               level: null
               type: null
               value: value
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
               - weight: 0
@@ -2019,25 +2181,31 @@ components:
                 value: value
               contains: contains
               equals: null
+              aggregatedScores:
+              - score: 6
+                value: value
+              - score: 6
+                value: value
               ipRange:
               - ipRange
               - ipRange
+              type: null
               value: value
               between:
-                minScore: 6
-                maxScore: 1
+                minScore: 146
+                maxScore: 596
             environment:
               id: id
             name: name
             description: description
             id: id
             priority: 5
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           - result:
               level: null
               type: null
               value: value
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
               - weight: 0
@@ -2046,25 +2214,31 @@ components:
                 value: value
               contains: contains
               equals: null
+              aggregatedScores:
+              - score: 6
+                value: value
+              - score: 6
+                value: value
               ipRange:
               - ipRange
               - ipRange
+              type: null
               value: value
               between:
-                minScore: 6
-                maxScore: 1
+                minScore: 146
+                maxScore: 596
             environment:
               id: id
             name: name
             description: description
             id: id
             priority: 5
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           defaultResult:
             level: null
             type: null
             value: value
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         riskPredictors:
         - null
         - null
@@ -2554,38 +2728,77 @@ components:
       - id
       - type
       type: object
-    RiskPolicySet_riskPolicies_inner_condition_equals:
+    RiskPolicy_condition_equals:
       oneOf:
       - type: string
       - type: boolean
-    RiskPolicySet_riskPolicies_inner_condition_aggregatedWeights_inner:
+    RiskPolicy_condition_aggregatedWeights_inner:
       example:
         weight: 0
         value: value
       properties:
         value:
+          description: "Text that identifies a specific risk predictor in the environment.\
+            \ It uses the form `${details.xxxxxxx.level}`, where the string between\
+            \ `details` and `level` is the compact name of the relevant predictor."
           type: string
         weight:
+          description: "The score you want to assign to the predictor when it is determined\
+            \ that there is a high risk for the predictor. Value should be between\
+            \ 0 and 100. If it is determined that there is medium risk, the predictor\
+            \ will automatically be assigned a score equal to half of the value you\
+            \ specified for high risk."
           type: integer
       required:
       - value
       - weight
       type: object
-    RiskPolicySet_riskPolicies_inner_condition_between:
+    RiskPolicy_condition_aggregatedScores_inner:
       example:
-        minScore: 6
-        maxScore: 1
+        score: 6
+        value: value
+      properties:
+        value:
+          description: "Text that identifies a specific risk predictor in the environment.\
+            \ It uses the form `${details.xxxxxxx.level}`, where the string between\
+            \ `details` and `level` is the compact name of the relevant predictor."
+          type: string
+        score:
+          description: "The score you want to assign to the predictor when it is determined\
+            \ that there is a high risk for the predictor. Value should be between\
+            \ 0 and 100. If it is determined that there is medium risk, the predictor\
+            \ will automatically be assigned a score equal to half of the value you\
+            \ specified for high risk."
+          type: integer
+      required:
+      - score
+      - value
+      type: object
+    RiskPolicy_condition_between:
+      example:
+        minScore: 146
+        maxScore: 596
       properties:
         minScore:
+          description: Required for policies of type `AGGREGATED_SCORES` or `AGGREGATED_WEIGHTS`.
+            The beginning of the risk score range that will be translated into the
+            specified risk level (`MEDIUM` or `HIGH`). Must be between `0` and `1000`.
+          maximum: 1000
+          minimum: 0
           type: integer
         maxScore:
+          description: Required for policies of type `AGGREGATED_SCORES` or `AGGREGATED_WEIGHTS`.
+            The end of the risk score range that will be translated into the specified
+            risk level (`MEDIUM` or `HIGH`). Must be between `0` and `1000`.
+          maximum: 1000
+          minimum: 0
           type: integer
       required:
       - maxScore
       - minScore
       type: object
-    RiskPolicySet_riskPolicies_inner_condition:
-      description: The condition logic that determines when a policy is evaluated
+    RiskPolicy_condition:
+      description: Contains the condition logic that determines when a policy is evaluated
         to true and when it is evaluated to false.
       example:
         aggregatedWeights:
@@ -2595,14 +2808,22 @@ components:
           value: value
         contains: contains
         equals: null
+        aggregatedScores:
+        - score: 6
+          value: value
+        - score: 6
+          value: value
         ipRange:
         - ipRange
         - ipRange
+        type: null
         value: value
         between:
-          minScore: 6
-          maxScore: 1
+          minScore: 146
+          maxScore: 596
       properties:
+        type:
+          $ref: '#/components/schemas/EnumRiskPolicyConditionType'
         contains:
           type: string
         ipRange:
@@ -2612,86 +2833,35 @@ components:
         value:
           type: string
         equals:
-          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_equals'
+          $ref: '#/components/schemas/RiskPolicy_condition_equals'
         aggregatedWeights:
+          description: "Required for weights-based policies. The elements in the array\
+            \ are `value`-`weight` pairs, representing a weighting for the weighted\
+            \ average calculation that should be assigned to a specific predictor\
+            \ when it is determined that there is a high risk for the predictor."
           items:
-            $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_aggregatedWeights_inner'
+            $ref: '#/components/schemas/RiskPolicy_condition_aggregatedWeights_inner'
+          type: array
+        aggregatedScores:
+          description: "Required for score-based policies. The elements in the array\
+            \ are `value`-`score` pairs, representing the score that should be assigned\
+            \ to a specific predictor when it is determined that there is a high risk\
+            \ for the predictor."
+          items:
+            $ref: '#/components/schemas/RiskPolicy_condition_aggregatedScores_inner'
           type: array
         between:
-          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_between'
+          $ref: '#/components/schemas/RiskPolicy_condition_between'
       type: object
-    RiskPolicySet_riskPolicies_inner:
+    RiskPolicySet_evaluatedPredictors_inner:
       example:
-        result:
-          level: null
-          type: null
-          value: value
-        createdAt: createdAt
-        condition:
-          aggregatedWeights:
-          - weight: 0
-            value: value
-          - weight: 0
-            value: value
-          contains: contains
-          equals: null
-          ipRange:
-          - ipRange
-          - ipRange
-          value: value
-          between:
-            minScore: 6
-            maxScore: 1
-        environment:
-          id: id
-        name: name
-        description: description
         id: id
-        priority: 5
-        updatedAt: updatedAt
       properties:
-        condition:
-          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition'
-        createdAt:
-          description: The time the resource was first created (format ISO-8061).
-          readOnly: true
-          type: string
-        description:
-          description: "A string that specifies a description for this risk policy.\
-            \ This is an optional property. Valid characters consist of any Unicode\
-            \ letter, mark (for example, accent, umlaut), numeric character, punctuation\
-            \ character, or space. Maximum size is 1024 characters."
-          type: string
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
         id:
           description: A string that specifies the resource’s unique identifier.
-          readOnly: true
-          type: string
-        name:
-          description: "A string that specifies a name for this risk policy. Valid\
-            \ characters consist of any Unicode letter, mark (for example, accent,\
-            \ umlaut), numeric character, forward slash, dot, apostrophe, underscore,\
-            \ space, or hyphen. Maximum size is 256 characters."
-          type: string
-        priority:
-          description: "An integer that specifies priority of the policy inside a\
-            \ risk policy set, designating which policy should run first. This is\
-            \ a read-only value. The priority is determined by the order in which\
-            \ policies are listed in the policy set. The first policy in the list\
-            \ is assigned priority 1 and is evaluated first. The next policy in the\
-            \ list is assigned priority 2 and so on."
-          type: integer
-        result:
-          $ref: '#/components/schemas/RiskPolicyResult'
-        updatedAt:
-          description: The time the resource was last updated (format ISO-8061).
-          readOnly: true
           type: string
       required:
-      - condition
-      - name
-      - result
+      - id
       type: object
     RiskPredictorCommon_default_result:
       description: "This specifies the result assigned to the predictor if the predictor\
@@ -2706,7 +2876,7 @@ components:
         type:
           $ref: '#/components/schemas/EnumResultType'
       required:
-      - level
+      - type
       type: object
     RiskPredictorCommon_default:
       description: Contains the default values used for a new risk predictor.

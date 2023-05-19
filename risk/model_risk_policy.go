@@ -12,16 +12,17 @@ package risk
 
 import (
 	"encoding/json"
+	"time"
 )
 
-// checks if the RiskPolicySetRiskPoliciesInner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RiskPolicySetRiskPoliciesInner{}
+// checks if the RiskPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RiskPolicy{}
 
-// RiskPolicySetRiskPoliciesInner struct for RiskPolicySetRiskPoliciesInner
-type RiskPolicySetRiskPoliciesInner struct {
-	Condition RiskPolicySetRiskPoliciesInnerCondition `json:"condition"`
+// RiskPolicy struct for RiskPolicy
+type RiskPolicy struct {
+	Condition RiskPolicyCondition `json:"condition"`
 	// The time the resource was first created (format ISO-8061).
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -33,33 +34,33 @@ type RiskPolicySetRiskPoliciesInner struct {
 	Priority *int32 `json:"priority,omitempty"`
 	Result RiskPolicyResult `json:"result"`
 	// The time the resource was last updated (format ISO-8061).
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
-// NewRiskPolicySetRiskPoliciesInner instantiates a new RiskPolicySetRiskPoliciesInner object
+// NewRiskPolicy instantiates a new RiskPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPolicySetRiskPoliciesInner(condition RiskPolicySetRiskPoliciesInnerCondition, name string, result RiskPolicyResult) *RiskPolicySetRiskPoliciesInner {
-	this := RiskPolicySetRiskPoliciesInner{}
+func NewRiskPolicy(condition RiskPolicyCondition, name string, result RiskPolicyResult) *RiskPolicy {
+	this := RiskPolicy{}
 	this.Condition = condition
 	this.Name = name
 	this.Result = result
 	return &this
 }
 
-// NewRiskPolicySetRiskPoliciesInnerWithDefaults instantiates a new RiskPolicySetRiskPoliciesInner object
+// NewRiskPolicyWithDefaults instantiates a new RiskPolicy object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRiskPolicySetRiskPoliciesInnerWithDefaults() *RiskPolicySetRiskPoliciesInner {
-	this := RiskPolicySetRiskPoliciesInner{}
+func NewRiskPolicyWithDefaults() *RiskPolicy {
+	this := RiskPolicy{}
 	return &this
 }
 
 // GetCondition returns the Condition field value
-func (o *RiskPolicySetRiskPoliciesInner) GetCondition() RiskPolicySetRiskPoliciesInnerCondition {
+func (o *RiskPolicy) GetCondition() RiskPolicyCondition {
 	if o == nil {
-		var ret RiskPolicySetRiskPoliciesInnerCondition
+		var ret RiskPolicyCondition
 		return ret
 	}
 
@@ -68,7 +69,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetCondition() RiskPolicySetRiskPolicie
 
 // GetConditionOk returns a tuple with the Condition field value
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetConditionOk() (*RiskPolicySetRiskPoliciesInnerCondition, bool) {
+func (o *RiskPolicy) GetConditionOk() (*RiskPolicyCondition, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,14 +77,14 @@ func (o *RiskPolicySetRiskPoliciesInner) GetConditionOk() (*RiskPolicySetRiskPol
 }
 
 // SetCondition sets field value
-func (o *RiskPolicySetRiskPoliciesInner) SetCondition(v RiskPolicySetRiskPoliciesInnerCondition) {
+func (o *RiskPolicy) SetCondition(v RiskPolicyCondition) {
 	o.Condition = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *RiskPolicySetRiskPoliciesInner) GetCreatedAt() string {
+func (o *RiskPolicy) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -91,7 +92,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetCreatedAtOk() (*string, bool) {
+func (o *RiskPolicy) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -99,7 +100,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetCreatedAtOk() (*string, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPoliciesInner) HasCreatedAt() bool {
+func (o *RiskPolicy) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -107,13 +108,13 @@ func (o *RiskPolicySetRiskPoliciesInner) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *RiskPolicySetRiskPoliciesInner) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *RiskPolicy) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *RiskPolicySetRiskPoliciesInner) GetDescription() string {
+func (o *RiskPolicy) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -123,7 +124,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetDescriptionOk() (*string, bool) {
+func (o *RiskPolicy) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -131,7 +132,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPoliciesInner) HasDescription() bool {
+func (o *RiskPolicy) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -140,12 +141,12 @@ func (o *RiskPolicySetRiskPoliciesInner) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *RiskPolicySetRiskPoliciesInner) SetDescription(v string) {
+func (o *RiskPolicy) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *RiskPolicySetRiskPoliciesInner) GetEnvironment() ObjectEnvironment {
+func (o *RiskPolicy) GetEnvironment() ObjectEnvironment {
 	if o == nil || IsNil(o.Environment) {
 		var ret ObjectEnvironment
 		return ret
@@ -155,7 +156,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetEnvironment() ObjectEnvironment {
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+func (o *RiskPolicy) GetEnvironmentOk() (*ObjectEnvironment, bool) {
 	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
@@ -163,7 +164,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetEnvironmentOk() (*ObjectEnvironment,
 }
 
 // HasEnvironment returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPoliciesInner) HasEnvironment() bool {
+func (o *RiskPolicy) HasEnvironment() bool {
 	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
@@ -172,12 +173,12 @@ func (o *RiskPolicySetRiskPoliciesInner) HasEnvironment() bool {
 }
 
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *RiskPolicySetRiskPoliciesInner) SetEnvironment(v ObjectEnvironment) {
+func (o *RiskPolicy) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *RiskPolicySetRiskPoliciesInner) GetId() string {
+func (o *RiskPolicy) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -187,7 +188,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetIdOk() (*string, bool) {
+func (o *RiskPolicy) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -195,7 +196,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPoliciesInner) HasId() bool {
+func (o *RiskPolicy) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -204,12 +205,12 @@ func (o *RiskPolicySetRiskPoliciesInner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *RiskPolicySetRiskPoliciesInner) SetId(v string) {
+func (o *RiskPolicy) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value
-func (o *RiskPolicySetRiskPoliciesInner) GetName() string {
+func (o *RiskPolicy) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -220,7 +221,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetNameOk() (*string, bool) {
+func (o *RiskPolicy) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -228,12 +229,12 @@ func (o *RiskPolicySetRiskPoliciesInner) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *RiskPolicySetRiskPoliciesInner) SetName(v string) {
+func (o *RiskPolicy) SetName(v string) {
 	o.Name = v
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
-func (o *RiskPolicySetRiskPoliciesInner) GetPriority() int32 {
+func (o *RiskPolicy) GetPriority() int32 {
 	if o == nil || IsNil(o.Priority) {
 		var ret int32
 		return ret
@@ -243,7 +244,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetPriority() int32 {
 
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetPriorityOk() (*int32, bool) {
+func (o *RiskPolicy) GetPriorityOk() (*int32, bool) {
 	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
@@ -251,7 +252,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetPriorityOk() (*int32, bool) {
 }
 
 // HasPriority returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPoliciesInner) HasPriority() bool {
+func (o *RiskPolicy) HasPriority() bool {
 	if o != nil && !IsNil(o.Priority) {
 		return true
 	}
@@ -260,12 +261,12 @@ func (o *RiskPolicySetRiskPoliciesInner) HasPriority() bool {
 }
 
 // SetPriority gets a reference to the given int32 and assigns it to the Priority field.
-func (o *RiskPolicySetRiskPoliciesInner) SetPriority(v int32) {
+func (o *RiskPolicy) SetPriority(v int32) {
 	o.Priority = &v
 }
 
 // GetResult returns the Result field value
-func (o *RiskPolicySetRiskPoliciesInner) GetResult() RiskPolicyResult {
+func (o *RiskPolicy) GetResult() RiskPolicyResult {
 	if o == nil {
 		var ret RiskPolicyResult
 		return ret
@@ -276,7 +277,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetResult() RiskPolicyResult {
 
 // GetResultOk returns a tuple with the Result field value
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetResultOk() (*RiskPolicyResult, bool) {
+func (o *RiskPolicy) GetResultOk() (*RiskPolicyResult, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -284,14 +285,14 @@ func (o *RiskPolicySetRiskPoliciesInner) GetResultOk() (*RiskPolicyResult, bool)
 }
 
 // SetResult sets field value
-func (o *RiskPolicySetRiskPoliciesInner) SetResult(v RiskPolicyResult) {
+func (o *RiskPolicy) SetResult(v RiskPolicyResult) {
 	o.Result = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *RiskPolicySetRiskPoliciesInner) GetUpdatedAt() string {
+func (o *RiskPolicy) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -299,7 +300,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySetRiskPoliciesInner) GetUpdatedAtOk() (*string, bool) {
+func (o *RiskPolicy) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -307,7 +308,7 @@ func (o *RiskPolicySetRiskPoliciesInner) GetUpdatedAtOk() (*string, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *RiskPolicySetRiskPoliciesInner) HasUpdatedAt() bool {
+func (o *RiskPolicy) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -315,12 +316,12 @@ func (o *RiskPolicySetRiskPoliciesInner) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *RiskPolicySetRiskPoliciesInner) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *RiskPolicy) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-func (o RiskPolicySetRiskPoliciesInner) MarshalJSON() ([]byte, error) {
+func (o RiskPolicy) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -328,7 +329,7 @@ func (o RiskPolicySetRiskPoliciesInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o RiskPolicySetRiskPoliciesInner) ToMap() (map[string]interface{}, error) {
+func (o RiskPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["condition"] = o.Condition
 	// skip: createdAt is readOnly
@@ -348,38 +349,38 @@ func (o RiskPolicySetRiskPoliciesInner) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-type NullableRiskPolicySetRiskPoliciesInner struct {
-	value *RiskPolicySetRiskPoliciesInner
+type NullableRiskPolicy struct {
+	value *RiskPolicy
 	isSet bool
 }
 
-func (v NullableRiskPolicySetRiskPoliciesInner) Get() *RiskPolicySetRiskPoliciesInner {
+func (v NullableRiskPolicy) Get() *RiskPolicy {
 	return v.value
 }
 
-func (v *NullableRiskPolicySetRiskPoliciesInner) Set(val *RiskPolicySetRiskPoliciesInner) {
+func (v *NullableRiskPolicy) Set(val *RiskPolicy) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRiskPolicySetRiskPoliciesInner) IsSet() bool {
+func (v NullableRiskPolicy) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRiskPolicySetRiskPoliciesInner) Unset() {
+func (v *NullableRiskPolicy) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRiskPolicySetRiskPoliciesInner(val *RiskPolicySetRiskPoliciesInner) *NullableRiskPolicySetRiskPoliciesInner {
-	return &NullableRiskPolicySetRiskPoliciesInner{value: val, isSet: true}
+func NewNullableRiskPolicy(val *RiskPolicy) *NullableRiskPolicy {
+	return &NullableRiskPolicy{value: val, isSet: true}
 }
 
-func (v NullableRiskPolicySetRiskPoliciesInner) MarshalJSON() ([]byte, error) {
+func (v NullableRiskPolicy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRiskPolicySetRiskPoliciesInner) UnmarshalJSON(src []byte) error {
+func (v *NullableRiskPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

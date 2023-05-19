@@ -12,6 +12,7 @@ package risk
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the RiskPolicySet type satisfies the MappedNullable interface at compile time
@@ -20,7 +21,7 @@ var _ MappedNullable = &RiskPolicySet{}
 // RiskPolicySet struct for RiskPolicySet
 type RiskPolicySet struct {
 	// The time the resource was created (format ISO-8061).
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether this risk policy set is the environment's default risk policy set, which is used whenever an explicit policySet ID is not specified in the risk policy evaluation request. If this property is not specified, the value defaults to false, and this risk policy set is not regarded as the default risk policy set for the environment. When this property is set to true (in PUT or POST requests), the default property of all other risk policy sets in the environment is set to false.
 	Default *bool `json:"default,omitempty"`
 	DefaultResult *RiskPolicyResult `json:"defaultResult,omitempty"`
@@ -32,9 +33,11 @@ type RiskPolicySet struct {
 	// A string that specifies a name for this policy set. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters.
 	Name string `json:"name"`
 	// An array of policies related to this policy set.
-	RiskPolicies []RiskPolicySetRiskPoliciesInner `json:"riskPolicies,omitempty"`
+	RiskPolicies []RiskPolicy `json:"riskPolicies,omitempty"`
 	// The time the resource was last updated (format ISO-8061).
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	// The IDs for the predictors to evaluate in this policy set. In POST and PUT requests, if this property is null, all of the licensed predictors are used.
+	EvaluatedPredictors []RiskPolicySetEvaluatedPredictorsInner `json:"evaluatedPredictors,omitempty"`
 }
 
 // NewRiskPolicySet instantiates a new RiskPolicySet object
@@ -56,9 +59,9 @@ func NewRiskPolicySetWithDefaults() *RiskPolicySet {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *RiskPolicySet) GetCreatedAt() string {
+func (o *RiskPolicySet) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -66,7 +69,7 @@ func (o *RiskPolicySet) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySet) GetCreatedAtOk() (*string, bool) {
+func (o *RiskPolicySet) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -82,8 +85,8 @@ func (o *RiskPolicySet) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *RiskPolicySet) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *RiskPolicySet) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -272,9 +275,9 @@ func (o *RiskPolicySet) SetName(v string) {
 }
 
 // GetRiskPolicies returns the RiskPolicies field value if set, zero value otherwise.
-func (o *RiskPolicySet) GetRiskPolicies() []RiskPolicySetRiskPoliciesInner {
+func (o *RiskPolicySet) GetRiskPolicies() []RiskPolicy {
 	if o == nil || IsNil(o.RiskPolicies) {
-		var ret []RiskPolicySetRiskPoliciesInner
+		var ret []RiskPolicy
 		return ret
 	}
 	return o.RiskPolicies
@@ -282,7 +285,7 @@ func (o *RiskPolicySet) GetRiskPolicies() []RiskPolicySetRiskPoliciesInner {
 
 // GetRiskPoliciesOk returns a tuple with the RiskPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySet) GetRiskPoliciesOk() ([]RiskPolicySetRiskPoliciesInner, bool) {
+func (o *RiskPolicySet) GetRiskPoliciesOk() ([]RiskPolicy, bool) {
 	if o == nil || IsNil(o.RiskPolicies) {
 		return nil, false
 	}
@@ -298,15 +301,15 @@ func (o *RiskPolicySet) HasRiskPolicies() bool {
 	return false
 }
 
-// SetRiskPolicies gets a reference to the given []RiskPolicySetRiskPoliciesInner and assigns it to the RiskPolicies field.
-func (o *RiskPolicySet) SetRiskPolicies(v []RiskPolicySetRiskPoliciesInner) {
+// SetRiskPolicies gets a reference to the given []RiskPolicy and assigns it to the RiskPolicies field.
+func (o *RiskPolicySet) SetRiskPolicies(v []RiskPolicy) {
 	o.RiskPolicies = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *RiskPolicySet) GetUpdatedAt() string {
+func (o *RiskPolicySet) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -314,7 +317,7 @@ func (o *RiskPolicySet) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySet) GetUpdatedAtOk() (*string, bool) {
+func (o *RiskPolicySet) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -330,9 +333,41 @@ func (o *RiskPolicySet) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *RiskPolicySet) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *RiskPolicySet) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
+}
+
+// GetEvaluatedPredictors returns the EvaluatedPredictors field value if set, zero value otherwise.
+func (o *RiskPolicySet) GetEvaluatedPredictors() []RiskPolicySetEvaluatedPredictorsInner {
+	if o == nil || IsNil(o.EvaluatedPredictors) {
+		var ret []RiskPolicySetEvaluatedPredictorsInner
+		return ret
+	}
+	return o.EvaluatedPredictors
+}
+
+// GetEvaluatedPredictorsOk returns a tuple with the EvaluatedPredictors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicySet) GetEvaluatedPredictorsOk() ([]RiskPolicySetEvaluatedPredictorsInner, bool) {
+	if o == nil || IsNil(o.EvaluatedPredictors) {
+		return nil, false
+	}
+	return o.EvaluatedPredictors, true
+}
+
+// HasEvaluatedPredictors returns a boolean if a field has been set.
+func (o *RiskPolicySet) HasEvaluatedPredictors() bool {
+	if o != nil && !IsNil(o.EvaluatedPredictors) {
+		return true
+	}
+
+	return false
+}
+
+// SetEvaluatedPredictors gets a reference to the given []RiskPolicySetEvaluatedPredictorsInner and assigns it to the EvaluatedPredictors field.
+func (o *RiskPolicySet) SetEvaluatedPredictors(v []RiskPolicySetEvaluatedPredictorsInner) {
+	o.EvaluatedPredictors = v
 }
 
 func (o RiskPolicySet) MarshalJSON() ([]byte, error) {
@@ -364,6 +399,9 @@ func (o RiskPolicySet) ToMap() (map[string]interface{}, error) {
 		toSerialize["riskPolicies"] = o.RiskPolicies
 	}
 	// skip: updatedAt is readOnly
+	if !IsNil(o.EvaluatedPredictors) {
+		toSerialize["evaluatedPredictors"] = o.EvaluatedPredictors
+	}
 	return toSerialize, nil
 }
 

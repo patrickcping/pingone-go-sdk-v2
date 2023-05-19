@@ -1,4 +1,4 @@
-# RiskPolicySetRiskPoliciesInnerConditionEquals
+# RiskPolicyConditionEquals
 
 ## Properties
 
@@ -7,20 +7,20 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewRiskPolicySetRiskPoliciesInnerConditionEquals
+### NewRiskPolicyConditionEquals
 
-`func NewRiskPolicySetRiskPoliciesInnerConditionEquals() *RiskPolicySetRiskPoliciesInnerConditionEquals`
+`func NewRiskPolicyConditionEquals() *RiskPolicyConditionEquals`
 
-NewRiskPolicySetRiskPoliciesInnerConditionEquals instantiates a new RiskPolicySetRiskPoliciesInnerConditionEquals object
+NewRiskPolicyConditionEquals instantiates a new RiskPolicyConditionEquals object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRiskPolicySetRiskPoliciesInnerConditionEqualsWithDefaults
+### NewRiskPolicyConditionEqualsWithDefaults
 
-`func NewRiskPolicySetRiskPoliciesInnerConditionEqualsWithDefaults() *RiskPolicySetRiskPoliciesInnerConditionEquals`
+`func NewRiskPolicyConditionEqualsWithDefaults() *RiskPolicyConditionEquals`
 
-NewRiskPolicySetRiskPoliciesInnerConditionEqualsWithDefaults instantiates a new RiskPolicySetRiskPoliciesInnerConditionEquals object
+NewRiskPolicyConditionEqualsWithDefaults instantiates a new RiskPolicyConditionEquals object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
