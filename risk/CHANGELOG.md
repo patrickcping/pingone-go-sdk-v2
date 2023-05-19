@@ -1,4 +1,4 @@
-# v0.6.0 (Unreleased)
+# v0.6.0 (2023-05-19)
 
 * **Breaking change** `RiskPolicySetRiskPoliciesInner` model changed to `RiskPolicy`. [#170](https://github.com/patrickcping/pingone-go-sdk-v2/pull/170)
 * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
