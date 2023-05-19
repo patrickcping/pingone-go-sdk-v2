@@ -47,9 +47,11 @@ type ApplicationOIDC struct {
 	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
 	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
 	Mobile *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
-	// A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
+	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. 
+	// Deprecated
 	BundleId *string `json:"bundleId,omitempty"`
-	// A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
+	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. 
+	// Deprecated
 	PackageName *string `json:"packageName,omitempty"`
 	Kerberos *ApplicationOIDCAllOfKerberos `json:"kerberos,omitempty"`
 	// A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS.
@@ -620,6 +622,7 @@ func (o *ApplicationOIDC) SetMobile(v ApplicationOIDCAllOfMobile) {
 }
 
 // GetBundleId returns the BundleId field value if set, zero value otherwise.
+// Deprecated
 func (o *ApplicationOIDC) GetBundleId() string {
 	if o == nil || IsNil(o.BundleId) {
 		var ret string
@@ -630,6 +633,7 @@ func (o *ApplicationOIDC) GetBundleId() string {
 
 // GetBundleIdOk returns a tuple with the BundleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ApplicationOIDC) GetBundleIdOk() (*string, bool) {
 	if o == nil || IsNil(o.BundleId) {
 		return nil, false
@@ -647,11 +651,13 @@ func (o *ApplicationOIDC) HasBundleId() bool {
 }
 
 // SetBundleId gets a reference to the given string and assigns it to the BundleId field.
+// Deprecated
 func (o *ApplicationOIDC) SetBundleId(v string) {
 	o.BundleId = &v
 }
 
 // GetPackageName returns the PackageName field value if set, zero value otherwise.
+// Deprecated
 func (o *ApplicationOIDC) GetPackageName() string {
 	if o == nil || IsNil(o.PackageName) {
 		var ret string
@@ -662,6 +668,7 @@ func (o *ApplicationOIDC) GetPackageName() string {
 
 // GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ApplicationOIDC) GetPackageNameOk() (*string, bool) {
 	if o == nil || IsNil(o.PackageName) {
 		return nil, false
@@ -679,6 +686,7 @@ func (o *ApplicationOIDC) HasPackageName() bool {
 }
 
 // SetPackageName gets a reference to the given string and assigns it to the PackageName field.
+// Deprecated
 func (o *ApplicationOIDC) SetPackageName(v string) {
 	o.PackageName = &v
 }

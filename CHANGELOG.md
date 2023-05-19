@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.20.1](./management/CHANGELOG.md)
+    * **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward.
+
 # Release (2023-05-19)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.0

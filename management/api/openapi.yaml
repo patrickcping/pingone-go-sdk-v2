@@ -28522,15 +28522,14 @@ components:
         mobile:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile'
         bundleId:
-          description: "A string that specifies the bundle associated with the application,\
-            \ for push notifications in native apps. The value of the bundleId property\
-            \ is unique per environment, and once defined, is immutable."
+          deprecated: true
+          description: |
+            **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
           type: string
         packageName:
-          description: "A string that specifies the package name associated with the\
-            \ application, for push notifications in native apps. The value of the\
-            \ mobile.packageName property is unique per environment, and once defined,\
-            \ is immutable."
+          deprecated: true
+          description: |
+            **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
           type: string
         kerberos:
           $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos'
