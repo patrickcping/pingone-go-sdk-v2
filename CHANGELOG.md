@@ -1,6 +1,11 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.1.3 => v0.1.4
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.6 => v0.1.7
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.19.1 => v0.20.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.9.3 => v0.10.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.5.1 => v0.6.0
     * **Note** bump `golang.org/x/oauth2` from v0.7.0 to v0.8.0 [#165](https://github.com/patrickcping/pingone-go-sdk-v2/pull/165)
     * **Enhancement** Common client support for the new PingOne Credentials module. [#169](https://github.com/patrickcping/pingone-go-sdk-v2/pull/169)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.4](./agreementmanagement/CHANGELOG.md)
