@@ -38,7 +38,7 @@ components:
             riskPredictors:
               type: array
               items:
-                $ref: '#/components/schemas/RiskPredictorCommon'
+                $ref: '#/components/schemas/RiskPredictor'
         count:
           type: number
         size:
@@ -59,13 +59,21 @@ components:
       type: string
       enum: [AUTHENTICATION]
       description: A string that specifies the flow type for the event. The only option (and default) is `AUTHENTICATION`.
+    EnumRiskPolicyConditionType:
+      type: string
+      description: |
+        Indicates the type of policy you are defining. Can be one of the following values: `AGGREGATED_SCORES`, `AGGREGATED_WEIGHTS`, `VALUE_COMPARISON`, and `IP_RANGE` (for override policies or custom predictors).
+      enum: [AGGREGATED_WEIGHTS, AGGREGATED_SCORES, VALUE_COMPARISON, IP_RANGE]
     EnumPredictorCompositeConditionType:
       type: string
-      enum: [VALUE_COMPARISON, STRING_LIST]
+      enum: [VALUE_COMPARISON, STRING_LIST, AND, NOT, OR]
+    EnumPredictorNewDeviceDetectType:
+      type: string
+      enum: [NEW_DEVICE]
     EnumPredictorType:
       type: string
-      enum: [ANONYMOUS_NETWORK, COMPOSITE, GEO_VELOCITY, IP_REPUTATION, MAP, NEW_DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
-      description: An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`, `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `NEW_DEVICE`, `USER_LOCATION_ANOMALY`, `USER_RISK_BEHAVIOR` or `VELOCITY`.
+      enum: [ANONYMOUS_NETWORK, COMPOSITE, GEO_VELOCITY, IP_REPUTATION, MAP, DEVICE, USER_LOCATION_ANOMALY, USER_RISK_BEHAVIOR, VELOCITY]
+      description: An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`, `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `DEVICE`, `USER_LOCATION_ANOMALY`, `USER_RISK_BEHAVIOR` or `VELOCITY`.
     EnumPredictorUnit:
       type: string
       enum: [DAY, HOUR]
@@ -86,7 +94,7 @@ components:
       type: string
       enum: [LOW, MEDIUM, HIGH]
       description: Enum string that specifies a given risk level.  Options are `LOW`, `MEDIUM`, `HIGH`.
-    EnumRiskModel:
+    EnumUserRiskBehaviorRiskModel:
       type: string
       enum: [points, login_anomaly_statistic]
       description: Enum string that specifies the risk model.  Options are `points` (individual user model) and `login_anomaly_statistic` (organization wide model).
@@ -509,11 +517,111 @@ components:
           type: string
           readOnly: true
           description: A string that specifies any custom attribute the administrator defines.
+    RiskPolicy:
+      type: object
+      properties:
+        condition:
+          type: object
+          description: Contains the condition logic that determines when a policy is evaluated to true and when it is evaluated to false.
+          properties:
+            type:
+              $ref: '#/components/schemas/EnumRiskPolicyConditionType'
+            contains:
+              type: string
+            ipRange:
+              type: array
+              items:
+                type: string
+            value:
+              type: string
+            equals:
+              oneOf:
+                - type: string
+                - type: boolean
+            aggregatedWeights:
+              type: array
+              description: Required for weights-based policies. The elements in the array are `value`-`weight` pairs, representing a weighting for the weighted average calculation that should be assigned to a specific predictor when it is determined that there is a high risk for the predictor.
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    description: Text that identifies a specific risk predictor in the environment. It uses the form `${details.xxxxxxx.level}`, where the string between `details` and `level` is the compact name of the relevant predictor.
+                  weight:
+                    type: integer
+                    description: The score you want to assign to the predictor when it is determined that there is a high risk for the predictor. Value should be between 0 and 100. If it is determined that there is medium risk, the predictor will automatically be assigned a score equal to half of the value you specified for high risk.
+                required:
+                  - value
+                  - weight
+            aggregatedScores:
+              type: array
+              description: Required for score-based policies. The elements in the array are `value`-`score` pairs, representing the score that should be assigned to a specific predictor when it is determined that there is a high risk for the predictor.
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    description: Text that identifies a specific risk predictor in the environment. It uses the form `${details.xxxxxxx.level}`, where the string between `details` and `level` is the compact name of the relevant predictor.
+                  score:
+                    type: integer
+                    description: The score you want to assign to the predictor when it is determined that there is a high risk for the predictor. Value should be between 0 and 100. If it is determined that there is medium risk, the predictor will automatically be assigned a score equal to half of the value you specified for high risk.
+                required:
+                  - value
+                  - score
+            between:
+              type: object
+              properties:
+                minScore:
+                  type: integer
+                  description: Required for policies of type `AGGREGATED_SCORES` or `AGGREGATED_WEIGHTS`. The beginning of the risk score range that will be translated into the specified risk level (`MEDIUM` or `HIGH`). Must be between `0` and `1000`.
+                  minimum: 0
+                  maximum: 1000
+                maxScore:
+                  type: integer
+                  description: Required for policies of type `AGGREGATED_SCORES` or `AGGREGATED_WEIGHTS`. The end of the risk score range that will be translated into the specified risk level (`MEDIUM` or `HIGH`). Must be between `0` and `1000`.
+                  minimum: 0
+                  maximum: 1000
+              required:
+                - minScore
+                - maxScore
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was first created (format ISO-8061).
+        description:
+          type: string
+          description: A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          type: string
+          readOnly: true
+          description: A string that specifies the resource’s unique identifier.
+        name:
+          type: string
+          description: A string that specifies a name for this risk policy. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters.
+        priority:
+          type: integer
+          description: An integer that specifies priority of the policy inside a risk policy set, designating which policy should run first. This is a read-only value. The priority is determined by the order in which policies are listed in the policy set. The first policy in the list is assigned priority 1 and is evaluated first. The next policy in the list is assigned priority 2 and so on.
+        result:
+          $ref: '#/components/schemas/RiskPolicyResult'
+          description: A result object that specifies the result returned if the policy is evaluated as true. If several policies are evaluated as true, the result related to the highest priority policy is returned. for more information, see the Result attribute data model in the Risk Evaluations topic.
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the resource was last updated (format ISO-8061).
+      required:
+        - name
+        - result
+        - condition
     RiskPolicySet:
       type: object
       properties:
         createdAt:
           type: string
+          format: date-time
           readOnly: true
           description: The time the resource was created (format ISO-8061).
         default:
@@ -538,80 +646,23 @@ components:
           type: array
           description: An array of policies related to this policy set.
           items:
-            type: object
-            properties:
-              condition:
-                type: object
-                description: The condition logic that determines when a policy is evaluated to true and when it is evaluated to false.
-                properties:
-                  contains:
-                    type: string
-                  ipRange:
-                    type: array
-                    items:
-                      type: string
-                  value:
-                    type: string
-                  equals:
-                    oneOf:
-                    - type: string
-                    - type: boolean
-                  aggregatedWeights:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        value:
-                          type: string
-                        weight:
-                          type: integer
-                      required:
-                        - value
-                        - weight
-                  between:
-                    type: object
-                    properties:
-                      minScore:
-                        type: integer
-                      maxScore:
-                        type: integer
-                    required:
-                      - minScore
-                      - maxScore
-              createdAt:
-                type: string
-                readOnly: true
-                description: The time the resource was first created (format ISO-8061).
-              description:
-                type: string
-                description: A string that specifies a description for this risk policy. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters.
-              environment:
-                $ref: '#/components/schemas/ObjectEnvironment'
-              id:
-                type: string
-                readOnly: true
-                description: A string that specifies the resource’s unique identifier.
-              name:
-                type: string
-                description: A string that specifies a name for this risk policy. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen. Maximum size is 256 characters.
-              priority:
-                type: integer
-                description: An integer that specifies priority of the policy inside a risk policy set, designating which policy should run first. This is a read-only value. The priority is determined by the order in which policies are listed in the policy set. The first policy in the list is assigned priority 1 and is evaluated first. The next policy in the list is assigned priority 2 and so on.
-              result:
-                $ref: '#/components/schemas/RiskPolicyResult'
-                description: A result object that specifies the result returned if the policy is evaluated as true. If several policies are evaluated as true, the result related to the highest priority policy is returned. for more information, see the Result attribute data model in the Risk Evaluations topic.
-              updatedAt:
-                type: string
-                readOnly: true
-                description: The time the resource was last updated (format ISO-8061).
-            required:
-              - name
-              - result
-              - condition
+            $ref: '#/components/schemas/RiskPolicy'
         updatedAt:
           type: string
+          format: date-time
           readOnly: true
           description: The time the resource was last updated (format ISO-8061).
+        evaluatedPredictors:
+          type: array
+          description: The IDs for the predictors to evaluate in this policy set. In POST and PUT requests, if this property is null, all of the licensed predictors are used.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: A string that specifies the resource’s unique identifier.
+            required:
+              - id
       required:
         - name
     RiskPolicyResult:
@@ -632,9 +683,9 @@ components:
         - $ref: '#/components/schemas/RiskPredictorCustom'
         - $ref: '#/components/schemas/RiskPredictorGeovelocity'
         - $ref: '#/components/schemas/RiskPredictorIPReputation'
-        - $ref: '#/components/schemas/RiskPredictorNewDevice'
+        - $ref: '#/components/schemas/RiskPredictorDevice'
         - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly'
-        - $ref: '#/components/schemas/RiskPredictorUEBA'
+        - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior'
         - $ref: '#/components/schemas/RiskPredictorVelocity'
     RiskPredictorCommon:
       type: object
@@ -694,14 +745,12 @@ components:
               properties:
                 level:
                   $ref: '#/components/schemas/EnumRiskLevel'
-                  description: A string that identifies the risk level. Options are HIGH, MEDIUM, and LOW.
                 type:
                   $ref: '#/components/schemas/EnumResultType'
               required:
-                - level
+                - type
           required:
             - weight
-            - result
         condition:
           type: object
           readOnly: true
@@ -754,6 +803,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - and
     RiskPredictorCompositeConditionBase:
@@ -784,9 +835,13 @@ components:
         - type: object
           properties:
             equals:
-              type: object
+              oneOf:
+                - type: string
+                - type: integer
             notEquals:
-              type: object
+              oneOf:
+                - type: string
+                - type: integer
             greater:
               type: integer
             greaterEquals:
@@ -807,6 +862,8 @@ components:
       properties:
         not:
           $ref: '#/components/schemas/RiskPredictorCompositeOr'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - not
     RiskPredictorCompositeOr:
@@ -816,6 +873,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
         - or
     RiskPredictorCustom:
@@ -847,6 +906,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         ipRange:
           type: array
           description: List of CIDRs to include
@@ -863,6 +925,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         between:
           type: object
           description: Minimum and maximum boundaries
@@ -886,6 +951,9 @@ components:
         contains:
           type: string
           format: ^\${(event|details)[a-z\.]+}$
+        type:
+          type: string
+          readOnly: true
         list:
           type: array
           description: An array that specifies the list of entities that represent the risk conditions.
@@ -916,15 +984,19 @@ components:
               items:
                 type: string
                 pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
-    RiskPredictorNewDevice:
+    RiskPredictorDevice:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
           properties:
+            detect:
+              $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
             activationAt:
               type: string
               format: date-time
               description: You can use the `activationAt` parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (`default.result.level`) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time.
+          required:
+            - detect
     RiskPredictorUserLocationAnomaly:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
@@ -946,8 +1018,9 @@ components:
                 - distance
                 - unit
           required:
+            - days
             - radius
-    RiskPredictorUEBA:
+    RiskPredictorUserRiskBehavior:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
         - type: object
@@ -956,7 +1029,7 @@ components:
               type: object
               properties:
                 name:
-                  $ref: '#/components/schemas/EnumRiskModel'
+                  $ref: '#/components/schemas/EnumUserRiskBehaviorRiskModel'
               required:
                 - name
           required:
@@ -986,9 +1059,11 @@ components:
                 strategy:
                   $ref: '#/components/schemas/EnumPredictorVelocityFallbackStrategy'
                 high:
-                  type: integer
+                  type: number
+                  format: float
                 medium:
-                  type: integer
+                  type: number
+                  format: float
             maxDelay:
               type: object
               properties:
@@ -1014,9 +1089,11 @@ components:
               type: object
               properties:
                 high:
-                  type: integer
+                  type: number
+                  format: float
                 medium:
-                  type: integer
+                  type: number
+                  format: float
                 type:
                   $ref: '#/components/schemas/EnumPredictorVelocityUseType'
   responses:

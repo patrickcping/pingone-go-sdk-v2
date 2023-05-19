@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Equals** | Pointer to **map[string]interface{}** |  | [optional] 
-**NotEquals** | Pointer to **map[string]interface{}** |  | [optional] 
+**Equals** | Pointer to [**RiskPredictorCompositeConditionOneOf1Equals**](RiskPredictorCompositeConditionOneOf1Equals.md) |  | [optional] 
+**NotEquals** | Pointer to [**RiskPredictorCompositeConditionOneOf1Equals**](RiskPredictorCompositeConditionOneOf1Equals.md) |  | [optional] 
 **Greater** | Pointer to **int32** |  | [optional] 
 **GreaterEquals** | Pointer to **int32** |  | [optional] 
 **Lower** | Pointer to **int32** |  | [optional] 
@@ -34,20 +34,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetEquals
 
-`func (o *RiskPredictorCompositeConditionOneOf1) GetEquals() map[string]interface{}`
+`func (o *RiskPredictorCompositeConditionOneOf1) GetEquals() RiskPredictorCompositeConditionOneOf1Equals`
 
 GetEquals returns the Equals field if non-nil, zero value otherwise.
 
 ### GetEqualsOk
 
-`func (o *RiskPredictorCompositeConditionOneOf1) GetEqualsOk() (*map[string]interface{}, bool)`
+`func (o *RiskPredictorCompositeConditionOneOf1) GetEqualsOk() (*RiskPredictorCompositeConditionOneOf1Equals, bool)`
 
 GetEqualsOk returns a tuple with the Equals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEquals
 
-`func (o *RiskPredictorCompositeConditionOneOf1) SetEquals(v map[string]interface{})`
+`func (o *RiskPredictorCompositeConditionOneOf1) SetEquals(v RiskPredictorCompositeConditionOneOf1Equals)`
 
 SetEquals sets Equals field to given value.
 
@@ -59,20 +59,20 @@ HasEquals returns a boolean if a field has been set.
 
 ### GetNotEquals
 
-`func (o *RiskPredictorCompositeConditionOneOf1) GetNotEquals() map[string]interface{}`
+`func (o *RiskPredictorCompositeConditionOneOf1) GetNotEquals() RiskPredictorCompositeConditionOneOf1Equals`
 
 GetNotEquals returns the NotEquals field if non-nil, zero value otherwise.
 
 ### GetNotEqualsOk
 
-`func (o *RiskPredictorCompositeConditionOneOf1) GetNotEqualsOk() (*map[string]interface{}, bool)`
+`func (o *RiskPredictorCompositeConditionOneOf1) GetNotEqualsOk() (*RiskPredictorCompositeConditionOneOf1Equals, bool)`
 
 GetNotEqualsOk returns a tuple with the NotEquals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotEquals
 
-`func (o *RiskPredictorCompositeConditionOneOf1) SetNotEquals(v map[string]interface{})`
+`func (o *RiskPredictorCompositeConditionOneOf1) SetNotEquals(v RiskPredictorCompositeConditionOneOf1Equals)`
 
 SetNotEquals sets NotEquals field to given value.
 

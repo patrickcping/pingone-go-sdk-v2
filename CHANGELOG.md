@@ -1,9 +1,13 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.6.5
+    * **Note** bump `golang.org/x/oauth2` from v0.7.0 to v0.8.0 [#165](https://github.com/patrickcping/pingone-go-sdk-v2/pull/165)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.1.4](./agreementmanagement/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.1.7](./authorize/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.1.0](./credentials/CHANGELOG.md)
+    * **Initial release** [#166](https://github.com/patrickcping/pingone-go-sdk-v2/pull/166)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.20.0](./management/CHANGELOG.md)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
     * **Enhancement** Add support for enumerated values and regex validation to the schema attribute model. [#161](https://github.com/patrickcping/pingone-go-sdk-v2/pull/161)
@@ -11,8 +15,12 @@
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
     * **Enhancement** Support for `PairingKeyLifetime` and `PushLimit` in the `DeviceAuthenticationPolicyMobileApplicationsInner` model. [#159](https://github.com/patrickcping/pingone-go-sdk-v2/pull/159)
     * **Enhancement** Add support for setting `Email` quotas in notification policies. [#162](https://github.com/patrickcping/pingone-go-sdk-v2/pull/162)
-* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.5.2](./risk/CHANGELOG.md)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.6.0](./risk/CHANGELOG.md)
+    * **Breaking change** `RiskPolicySetRiskPoliciesInner` model changed to `RiskPolicy`. [#170](https://github.com/patrickcping/pingone-go-sdk-v2/pull/170)
     * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
+    * **Bug** Fix the Risk Predictor data model. [#164](https://github.com/patrickcping/pingone-go-sdk-v2/pull/164)
+    * **Enhancement** Enhance the Risk Predictor data model. [#164](https://github.com/patrickcping/pingone-go-sdk-v2/pull/164)
+    * **Enhancement** Support score based risk policies. [#170](https://github.com/patrickcping/pingone-go-sdk-v2/pull/170)
 
 # Release (2023-04-28)
 
