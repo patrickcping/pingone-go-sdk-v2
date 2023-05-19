@@ -1,8 +1,10 @@
 # v0.6.0 (Unreleased)
 
+* **Breaking change** `RiskPolicySetRiskPoliciesInner` model changed to `RiskPolicy`. [#170](https://github.com/patrickcping/pingone-go-sdk-v2/pull/170)
 * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * **Bug** Fix the Risk Predictor data model. [#164](https://github.com/patrickcping/pingone-go-sdk-v2/pull/164)
 * **Enhancement** Enhance the Risk Predictor data model. [#164](https://github.com/patrickcping/pingone-go-sdk-v2/pull/164)
+* **Enhancement** Support score based risk policies. [#170](https://github.com/patrickcping/pingone-go-sdk-v2/pull/170)
 
 # v0.5.1 (2023-04-28)
 
