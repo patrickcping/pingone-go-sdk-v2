@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/authorize"
+	"github.com/patrickcping/pingone-go-sdk-v2/credentials"
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
 	"github.com/patrickcping/pingone-go-sdk-v2/mfa"
 	"github.com/patrickcping/pingone-go-sdk-v2/risk"
@@ -59,6 +60,12 @@ func RemarshalGenericOpenAPIErrorObj(errorInf interface{}) (*GenericOpenAPIError
 		}
 		errorJSON, err = json.Marshal(t.Model())
 	case *risk.GenericOpenAPIError:
+		errorObj = &GenericOpenAPIError{
+			body:  t.Body(),
+			error: t.Error(),
+		}
+		errorJSON, err = json.Marshal(t.Model())
+	case *credentials.GenericOpenAPIError:
 		errorObj = &GenericOpenAPIError{
 			body:  t.Body(),
 			error: t.Error(),

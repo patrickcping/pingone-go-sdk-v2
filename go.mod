@@ -6,12 +6,13 @@ require (
 	github.com/golangci/golangci-lint v1.52.2
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.3
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.6
+	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.1.0
 	github.com/patrickcping/pingone-go-sdk-v2/management v0.19.1
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.9.3
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.5.1
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.15.0
-	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
+	golang.org/x/exp v0.0.0-20230515195305-f3d0a9c9a5cc
 	golang.org/x/oauth2 v0.8.0
 )
 
