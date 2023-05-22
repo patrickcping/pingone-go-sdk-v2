@@ -19,14 +19,14 @@ var _ MappedNullable = &FormComponents{}
 
 // FormComponents struct for FormComponents
 type FormComponents struct {
-	Fields []map[string]interface{} `json:"fields"`
+	Fields []FormField `json:"fields"`
 }
 
 // NewFormComponents instantiates a new FormComponents object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormComponents(fields []map[string]interface{}) *FormComponents {
+func NewFormComponents(fields []FormField) *FormComponents {
 	this := FormComponents{}
 	this.Fields = fields
 	return &this
@@ -41,9 +41,9 @@ func NewFormComponentsWithDefaults() *FormComponents {
 }
 
 // GetFields returns the Fields field value
-func (o *FormComponents) GetFields() []map[string]interface{} {
+func (o *FormComponents) GetFields() []FormField {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []FormField
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *FormComponents) GetFields() []map[string]interface{} {
 
 // GetFieldsOk returns a tuple with the Fields field value
 // and a boolean to check if the value has been set.
-func (o *FormComponents) GetFieldsOk() ([]map[string]interface{}, bool) {
+func (o *FormComponents) GetFieldsOk() ([]FormField, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *FormComponents) GetFieldsOk() ([]map[string]interface{}, bool) {
 }
 
 // SetFields sets field value
-func (o *FormComponents) SetFields(v []map[string]interface{}) {
+func (o *FormComponents) SetFields(v []FormField) {
 	o.Fields = v
 }
 

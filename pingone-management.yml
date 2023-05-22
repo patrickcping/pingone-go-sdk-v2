@@ -1949,7 +1949,138 @@ components:
       required:
         - fields
     FormField:
+      oneOf:
+        - $ref: '#/components/schemas/FormFieldText'
+        - $ref: '#/components/schemas/FormFieldPassword'
+        - $ref: '#/components/schemas/FormFieldPasswordVerify'
+        - $ref: '#/components/schemas/FormFieldRadio'
+        - $ref: '#/components/schemas/FormFieldCheckbox'
+        - $ref: '#/components/schemas/FormFieldDropdown'
+        - $ref: '#/components/schemas/FormFieldCombobox'
+        - $ref: '#/components/schemas/FormFieldDivider'
+        - $ref: '#/components/schemas/FormFieldEmptyField'
+        - $ref: '#/components/schemas/FormFieldTextblobslateTextblob'
+        - $ref: '#/components/schemas/FormFieldSubmitButton'
+        - $ref: '#/components/schemas/FormFieldErrorDisplay'
+        - $ref: '#/components/schemas/FormFieldFlowLink'
+        - $ref: '#/components/schemas/FormFieldFlowButton'
+        - $ref: '#/components/schemas/FormFieldRecaptchaV2'
+        - $ref: '#/components/schemas/FormFieldQrCode'
+        - $ref: '#/components/schemas/FormFieldSocialLoginButton'
+      discriminator:
+        propertyName: type
+        mapping:
+          TEXT: '#/components/schemas/FormFieldText'
+          PASSWORD: '#/components/schemas/FormFieldPassword'
+          PASSWORD_VERIFY: '#/components/schemas/FormFieldPasswordVerify'
+          RADIO: '#/components/schemas/FormFieldRadio'
+          CHECKBOX: '#/components/schemas/FormFieldCheckbox'
+          DROPDOWN: '#/components/schemas/FormFieldDropdown'
+          COMBOBOX: '#/components/schemas/FormFieldCombobox'
+          DIVIDER: '#/components/schemas/FormFieldDivider'
+          EMPTY_FIELD: '#/components/schemas/FormFieldEmptyField'
+          TEXTBLOBSLATE_TEXTBLOB: '#/components/schemas/FormFieldTextblobslateTextblob'
+          SUBMIT_BUTTON: '#/components/schemas/FormFieldSubmitButton'
+          ERROR_DISPLAY: '#/components/schemas/FormFieldErrorDisplay'
+          FLOW_LINK: '#/components/schemas/FormFieldFlowLink'
+          FLOW_BUTTON: '#/components/schemas/FormFieldFlowButton'
+          RECAPTCHA_V2: '#/components/schemas/FormFieldRecaptchaV2'
+          QR_CODE: '#/components/schemas/FormFieldQrCode'
+          SOCIAL_LOGIN_BUTTON: '#/components/schemas/FormFieldSocialLoginButton'
+    FormFieldCommon:
       type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumFormFieldType'
+        position:
+          type: object
+          properties:
+            row:
+              type: integer
+              description: An integer that specifies the number of rows (maximum number is 50).
+              maximum: 50
+            col:
+              type: integer
+              description: An integer that specifies the number of columns (min = 1; max = 4).
+              minimum: 1
+              maximum: 4
+            width:
+              type: integer
+              description: An integer that specifies the width of the field (in percentage).
+          required:
+            - row
+            - col
+      required:
+        - type
+        - position
+    FormFieldText:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldPassword:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldPasswordVerify:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldRadio:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldCheckbox:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldDropdown:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldCombobox:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldDivider:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldEmptyField:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldTextblobslateTextblob:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldSubmitButton:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldErrorDisplay:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldFlowLink:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldFlowButton:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldRecaptchaV2:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldQrCode:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
+    FormFieldSocialLoginButton:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - type: object
     Gateway:
       type: object
       properties:
