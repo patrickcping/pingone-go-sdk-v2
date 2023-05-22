@@ -24228,9 +24228,11 @@ components:
               includedTags:
               - null
               - null
+              userAgentExposed: false
               includedPopulations:
               - id: id
               - id: id
+              ipAddressExposed: false
               includedApplications:
               - id: id
               - id: id
@@ -24254,9 +24256,11 @@ components:
               includedTags:
               - null
               - null
+              userAgentExposed: false
               includedPopulations:
               - id: id
               - id: id
+              ipAddressExposed: false
               includedApplications:
               - id: id
               - id: id
@@ -27621,9 +27625,11 @@ components:
           includedTags:
           - null
           - null
+          userAgentExposed: false
           includedPopulations:
           - id: id
           - id: id
+          ipAddressExposed: false
           includedApplications:
           - id: id
           - id: id
@@ -29117,9 +29123,11 @@ components:
             includedTags:
             - null
             - null
+            userAgentExposed: false
             includedPopulations:
             - id: id
             - id: id
+            ipAddressExposed: false
             includedApplications:
             - id: id
             - id: id
@@ -29143,9 +29151,11 @@ components:
             includedTags:
             - null
             - null
+            userAgentExposed: false
             includedPopulations:
             - id: id
             - id: id
+            ipAddressExposed: false
             includedApplications:
             - id: id
             - id: id
@@ -32610,9 +32620,11 @@ components:
         includedTags:
         - null
         - null
+        userAgentExposed: false
         includedPopulations:
         - id: id
         - id: id
+        ipAddressExposed: false
         includedApplications:
         - id: id
         - id: id
@@ -32648,6 +32660,16 @@ components:
           items:
             $ref: '#/components/schemas/EnumSubscriptionFilterIncludedTags'
           type: array
+        ipAddressExposed:
+          default: false
+          description: Whether the IP address of an actor should be present in the
+            `source` section of the event.
+          type: boolean
+        userAgentExposed:
+          default: false
+          description: Whether the User-Agent HTTP header of an event should be present
+            in the `source` section of the event.
+          type: boolean
       required:
       - includedActionTypes
       type: object
