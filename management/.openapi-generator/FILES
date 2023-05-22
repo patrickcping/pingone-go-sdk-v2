@@ -51,6 +51,7 @@ api_propagation_revisions.go
 api_propagation_rules.go
 api_propagation_store_metadata.go
 api_propagation_stores.go
+api_recaptcha_configuration.go
 api_resource_attributes.go
 api_resource_client_secret.go
 api_resource_scopes.go
@@ -468,6 +469,8 @@ docs/PropagationRulesApi.md
 docs/PropagationStoreMetadataApi.md
 docs/PropagationStoresApi.md
 docs/ReadOneApplication200Response.md
+docs/RecaptchaConfiguration.md
+docs/RecaptchaConfigurationApi.md
 docs/Resource.md
 docs/ResourceAttribute.md
 docs/ResourceAttributesApi.md
@@ -928,6 +931,7 @@ model_password_policy_lockout.go
 model_password_policy_min_characters.go
 model_population.go
 model_population_password_policy.go
+model_recaptcha_configuration.go
 model_resource.go
 model_resource_attribute.go
 model_resource_scope.go

@@ -322,6 +322,9 @@ Class | Method | HTTP request | Description
 *PropagationStoresApi* | [**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete**](docs/PropagationStoresApi.md#v1environmentsenvironmentidpropagationstoresstoreiddelete) | **Delete** /v1/environments/{environmentID}/propagation/stores/{storeID} | DELETE Store
 *PropagationStoresApi* | [**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGet**](docs/PropagationStoresApi.md#v1environmentsenvironmentidpropagationstoresstoreidget) | **Get** /v1/environments/{environmentID}/propagation/stores/{storeID} | READ One Store
 *PropagationStoresApi* | [**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPut**](docs/PropagationStoresApi.md#v1environmentsenvironmentidpropagationstoresstoreidput) | **Put** /v1/environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
+*RecaptchaConfigurationApi* | [**DeleteRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#deleterecaptchaconfiguration) | **Delete** /v1/environments/{environmentID}/recaptchaV2Config | DELETE Recaptcha Configuration
+*RecaptchaConfigurationApi* | [**ReadRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#readrecaptchaconfiguration) | **Get** /v1/environments/{environmentID}/recaptchaV2Config | READ Recaptcha Configuration
+*RecaptchaConfigurationApi* | [**UpdateRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#updaterecaptchaconfiguration) | **Put** /v1/environments/{environmentID}/recaptchaV2Config | UPDATE Recaptcha Configuration
 *ResourceAttributesApi* | [**CreateResourceAttribute**](docs/ResourceAttributesApi.md#createresourceattribute) | **Post** /v1/environments/{environmentID}/resources/{resourceID}/attributes | CREATE Resource Attribute
 *ResourceAttributesApi* | [**DeleteResourceAttribute**](docs/ResourceAttributesApi.md#deleteresourceattribute) | **Delete** /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | DELETE Resource Attribute
 *ResourceAttributesApi* | [**ReadAllResourceAttributes**](docs/ResourceAttributesApi.md#readallresourceattributes) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/attributes | READ All Resource Attributes
@@ -756,6 +759,7 @@ Class | Method | HTTP request | Description
  - [Population](docs/Population.md)
  - [PopulationPasswordPolicy](docs/PopulationPasswordPolicy.md)
  - [ReadOneApplication200Response](docs/ReadOneApplication200Response.md)
+ - [RecaptchaConfiguration](docs/RecaptchaConfiguration.md)
  - [Resource](docs/Resource.md)
  - [ResourceAttribute](docs/ResourceAttribute.md)
  - [ResourceScope](docs/ResourceScope.md)

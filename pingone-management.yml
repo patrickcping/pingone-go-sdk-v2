@@ -4091,6 +4091,30 @@ components:
           readOnly: true
       required:
         - name
+    RecaptchaConfiguration:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the configuration was created.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time the configuration was last updated.
+        siteKey:
+          type: string
+          description: A string that specifies the public site key for the Recaptcha configuration provided by Google.
+        secretKey:
+          type: string
+          description: A string that specifies the confidential secret key for the Recaptcha configuration provided by Google.
+      required:
+        - siteKey
+        - secretKey
     Resource:
       type: object
       properties:
@@ -14709,6 +14733,100 @@ paths:
             type: string
           required: true
         - name: populationID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '204':
+          description: Successful response
+  /v1/environments/{environmentID}/recaptchaV2Config:
+    get:
+      tags:
+        - Recaptcha Configuration
+      summary: READ Recaptcha Configuration
+      operationId: readRecaptchaConfiguration
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecaptchaConfiguration'
+    put:
+      tags:
+        - Recaptcha Configuration
+      summary: UPDATE Recaptcha Configuration
+      operationId: updateRecaptchaConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecaptchaConfiguration'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecaptchaConfiguration'
+    delete:
+      tags:
+        - Recaptcha Configuration
+      summary: DELETE Recaptcha Configuration
+      operationId: deleteRecaptchaConfiguration
+      parameters:
+        - name: environmentID
           in: path
           schema:
             type: string
