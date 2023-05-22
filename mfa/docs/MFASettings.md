@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Authentication** | Pointer to [**MFASettingsAuthentication**](MFASettingsAuthentication.md) |  | [optional] 
 **Lockout** | Pointer to [**MFASettingsLockout**](MFASettingsLockout.md) |  | [optional] 
 **Pairing** | [**MFASettingsPairing**](MFASettingsPairing.md) |  | 
+**PhoneExtensions** | Pointer to [**MFASettingsPhoneExtensions**](MFASettingsPhoneExtensions.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
 ## Methods
@@ -123,6 +124,31 @@ and a boolean to check if the value has been set.
 
 SetPairing sets Pairing field to given value.
 
+
+### GetPhoneExtensions
+
+`func (o *MFASettings) GetPhoneExtensions() MFASettingsPhoneExtensions`
+
+GetPhoneExtensions returns the PhoneExtensions field if non-nil, zero value otherwise.
+
+### GetPhoneExtensionsOk
+
+`func (o *MFASettings) GetPhoneExtensionsOk() (*MFASettingsPhoneExtensions, bool)`
+
+GetPhoneExtensionsOk returns a tuple with the PhoneExtensions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhoneExtensions
+
+`func (o *MFASettings) SetPhoneExtensions(v MFASettingsPhoneExtensions)`
+
+SetPhoneExtensions sets PhoneExtensions field to given value.
+
+### HasPhoneExtensions
+
+`func (o *MFASettings) HasPhoneExtensions() bool`
+
+HasPhoneExtensions returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

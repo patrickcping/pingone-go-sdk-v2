@@ -32,6 +32,7 @@ type EntityArrayEmbedded struct {
 	Environments []Environment `json:"environments,omitempty"`
 	FlowPolicies []FlowPolicy `json:"flowPolicies,omitempty"`
 	FlowPolicyAssignments []FlowPolicyAssignment `json:"flowPolicyAssignments,omitempty"`
+	Forms []Form `json:"forms,omitempty"`
 	GatewayInstances []GatewayInstance `json:"gatewayInstances,omitempty"`
 	Gateways []EntityArrayEmbeddedGatewaysInner `json:"gateways,omitempty"`
 	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
@@ -492,6 +493,38 @@ func (o *EntityArrayEmbedded) HasFlowPolicyAssignments() bool {
 // SetFlowPolicyAssignments gets a reference to the given []FlowPolicyAssignment and assigns it to the FlowPolicyAssignments field.
 func (o *EntityArrayEmbedded) SetFlowPolicyAssignments(v []FlowPolicyAssignment) {
 	o.FlowPolicyAssignments = v
+}
+
+// GetForms returns the Forms field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetForms() []Form {
+	if o == nil || IsNil(o.Forms) {
+		var ret []Form
+		return ret
+	}
+	return o.Forms
+}
+
+// GetFormsOk returns a tuple with the Forms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetFormsOk() ([]Form, bool) {
+	if o == nil || IsNil(o.Forms) {
+		return nil, false
+	}
+	return o.Forms, true
+}
+
+// HasForms returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasForms() bool {
+	if o != nil && !IsNil(o.Forms) {
+		return true
+	}
+
+	return false
+}
+
+// SetForms gets a reference to the given []Form and assigns it to the Forms field.
+func (o *EntityArrayEmbedded) SetForms(v []Form) {
+	o.Forms = v
 }
 
 // GetGatewayInstances returns the GatewayInstances field value if set, zero value otherwise.
@@ -1406,6 +1439,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FlowPolicyAssignments) {
 		toSerialize["flowPolicyAssignments"] = o.FlowPolicyAssignments
+	}
+	if !IsNil(o.Forms) {
+		toSerialize["forms"] = o.Forms
 	}
 	if !IsNil(o.GatewayInstances) {
 		toSerialize["gatewayInstances"] = o.GatewayInstances

@@ -25,6 +25,7 @@ type MFASettings struct {
 	Authentication *MFASettingsAuthentication `json:"authentication,omitempty"`
 	Lockout *MFASettingsLockout `json:"lockout,omitempty"`
 	Pairing MFASettingsPairing `json:"pairing"`
+	PhoneExtensions *MFASettingsPhoneExtensions `json:"phoneExtensions,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
@@ -170,6 +171,38 @@ func (o *MFASettings) SetPairing(v MFASettingsPairing) {
 	o.Pairing = v
 }
 
+// GetPhoneExtensions returns the PhoneExtensions field value if set, zero value otherwise.
+func (o *MFASettings) GetPhoneExtensions() MFASettingsPhoneExtensions {
+	if o == nil || IsNil(o.PhoneExtensions) {
+		var ret MFASettingsPhoneExtensions
+		return ret
+	}
+	return *o.PhoneExtensions
+}
+
+// GetPhoneExtensionsOk returns a tuple with the PhoneExtensions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MFASettings) GetPhoneExtensionsOk() (*MFASettingsPhoneExtensions, bool) {
+	if o == nil || IsNil(o.PhoneExtensions) {
+		return nil, false
+	}
+	return o.PhoneExtensions, true
+}
+
+// HasPhoneExtensions returns a boolean if a field has been set.
+func (o *MFASettings) HasPhoneExtensions() bool {
+	if o != nil && !IsNil(o.PhoneExtensions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPhoneExtensions gets a reference to the given MFASettingsPhoneExtensions and assigns it to the PhoneExtensions field.
+func (o *MFASettings) SetPhoneExtensions(v MFASettingsPhoneExtensions) {
+	o.PhoneExtensions = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *MFASettings) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -222,6 +255,9 @@ func (o MFASettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["lockout"] = o.Lockout
 	}
 	toSerialize["pairing"] = o.Pairing
+	if !IsNil(o.PhoneExtensions) {
+		toSerialize["phoneExtensions"] = o.PhoneExtensions
+	}
 	// skip: updatedAt is readOnly
 	return toSerialize, nil
 }

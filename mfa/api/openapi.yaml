@@ -3155,6 +3155,8 @@ components:
       example:
         environment:
           id: id
+        phoneExtensions:
+          enabled: true
         lockout:
           durationSeconds: 6
           failureCount: 0
@@ -3173,6 +3175,8 @@ components:
           $ref: '#/components/schemas/MFASettings_lockout'
         pairing:
           $ref: '#/components/schemas/MFASettings_pairing'
+        phoneExtensions:
+          $ref: '#/components/schemas/MFASettings_phoneExtensions'
         updatedAt:
           description: The time the resource was last updated.
           format: date-time
@@ -4078,6 +4082,18 @@ components:
       required:
       - maxAllowedDevices
       - pairingKeyFormat
+      type: object
+    MFASettings_phoneExtensions:
+      description: Contains settings for phone extension support.
+      example:
+        enabled: true
+      properties:
+        enabled:
+          description: "Set to `true` to allow one-time passwords to be delivered\
+            \ via voice to phone numbers that include extensions. Set to `false` to\
+            \ disable support for phone numbers with extensions. By default, support\
+            \ for extensions is disabled."
+          type: boolean
       type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
