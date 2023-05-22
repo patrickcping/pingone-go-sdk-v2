@@ -179,6 +179,11 @@ Class | Method | HTTP request | Description
 *EnvironmentsApi* | [**UpdateEnvironmentType**](docs/EnvironmentsApi.md#updateenvironmenttype) | **Put** /v1/environments/{environmentID}/type | UPDATE Environment Type
 *FlowPoliciesApi* | [**ReadAllFlowPolicies**](docs/FlowPoliciesApi.md#readallflowpolicies) | **Get** /v1/environments/{environmentID}/flowPolicies | READ All Flow Policies
 *FlowPoliciesApi* | [**ReadOneFlowPolicy**](docs/FlowPoliciesApi.md#readoneflowpolicy) | **Get** /v1/environments/{environmentID}/flowPolicies/{flowPolicyID} | READ ONE Flow Policy
+*FormManagementApi* | [**CreateForm**](docs/FormManagementApi.md#createform) | **Post** /v1/environments/{environmentID}/forms | CREATE Form
+*FormManagementApi* | [**DeleteForm**](docs/FormManagementApi.md#deleteform) | **Delete** /v1/environments/{environmentID}/forms/{formID} | DELETE Form
+*FormManagementApi* | [**ReadAllForms**](docs/FormManagementApi.md#readallforms) | **Get** /v1/environments/{environmentID}/forms | READ All Forms
+*FormManagementApi* | [**ReadForm**](docs/FormManagementApi.md#readform) | **Get** /v1/environments/{environmentID}/forms/{formID} | READ One Form
+*FormManagementApi* | [**UpdateForm**](docs/FormManagementApi.md#updateform) | **Put** /v1/environments/{environmentID}/forms/{formID} | UPDATE Form
 *GatewayCredentialsApi* | [**CreateGatewayCredential**](docs/GatewayCredentialsApi.md#creategatewaycredential) | **Post** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials | CREATE Gateway Credentials
 *GatewayCredentialsApi* | [**DeleteGatewayCredential**](docs/GatewayCredentialsApi.md#deletegatewaycredential) | **Delete** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID} | DELETE Gateway Credentials
 *GatewayCredentialsApi* | [**ReadAllGatewayCredentials**](docs/GatewayCredentialsApi.md#readallgatewaycredentials) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials | READ All Gateway Credentials
