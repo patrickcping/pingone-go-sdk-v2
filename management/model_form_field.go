@@ -158,255 +158,108 @@ func FormFieldTextAsFormField(v *FormFieldText) FormField {
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *FormField) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into FormFieldCheckbox
-	err = newStrictDecoder(data).Decode(&dst.FormFieldCheckbox)
-	if err == nil {
-		jsonFormFieldCheckbox, _ := json.Marshal(dst.FormFieldCheckbox)
-		if string(jsonFormFieldCheckbox) == "{}" { // empty struct
-			dst.FormFieldCheckbox = nil
-		} else {
-			match++
+
+	var common FormFieldCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.FormFieldCheckbox = nil
+	dst.FormFieldCombobox = nil
+	dst.FormFieldDivider = nil
+	dst.FormFieldDropdown = nil
+	dst.FormFieldEmptyField = nil
+	dst.FormFieldErrorDisplay = nil
+	dst.FormFieldFlowButton = nil
+	dst.FormFieldFlowLink = nil
+	dst.FormFieldPassword = nil
+	dst.FormFieldPasswordVerify = nil
+	dst.FormFieldQrCode = nil
+	dst.FormFieldRadio = nil
+	dst.FormFieldRecaptchaV2 = nil
+	dst.FormFieldSlateTextblob = nil
+	dst.FormFieldSocialLoginButton = nil
+	dst.FormFieldSubmitButton = nil
+	dst.FormFieldText = nil
+
+	switch common.GetType() {
+	case ENUMFORMFIELDTYPE_TEXT:
+		if err := json.Unmarshal(data, &dst.FormFieldText); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldCheckbox = nil
-	}
-
-	// try to unmarshal data into FormFieldCombobox
-	err = newStrictDecoder(data).Decode(&dst.FormFieldCombobox)
-	if err == nil {
-		jsonFormFieldCombobox, _ := json.Marshal(dst.FormFieldCombobox)
-		if string(jsonFormFieldCombobox) == "{}" { // empty struct
-			dst.FormFieldCombobox = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_PASSWORD:
+		if err := json.Unmarshal(data, &dst.FormFieldPassword); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldCombobox = nil
-	}
-
-	// try to unmarshal data into FormFieldDivider
-	err = newStrictDecoder(data).Decode(&dst.FormFieldDivider)
-	if err == nil {
-		jsonFormFieldDivider, _ := json.Marshal(dst.FormFieldDivider)
-		if string(jsonFormFieldDivider) == "{}" { // empty struct
-			dst.FormFieldDivider = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_PASSWORD_VERIFY:
+		if err := json.Unmarshal(data, &dst.FormFieldPasswordVerify); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldDivider = nil
-	}
-
-	// try to unmarshal data into FormFieldDropdown
-	err = newStrictDecoder(data).Decode(&dst.FormFieldDropdown)
-	if err == nil {
-		jsonFormFieldDropdown, _ := json.Marshal(dst.FormFieldDropdown)
-		if string(jsonFormFieldDropdown) == "{}" { // empty struct
-			dst.FormFieldDropdown = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_RADIO:
+		if err := json.Unmarshal(data, &dst.FormFieldRadio); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldDropdown = nil
-	}
-
-	// try to unmarshal data into FormFieldEmptyField
-	err = newStrictDecoder(data).Decode(&dst.FormFieldEmptyField)
-	if err == nil {
-		jsonFormFieldEmptyField, _ := json.Marshal(dst.FormFieldEmptyField)
-		if string(jsonFormFieldEmptyField) == "{}" { // empty struct
-			dst.FormFieldEmptyField = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_CHECKBOX:
+		if err := json.Unmarshal(data, &dst.FormFieldCheckbox); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldEmptyField = nil
-	}
-
-	// try to unmarshal data into FormFieldErrorDisplay
-	err = newStrictDecoder(data).Decode(&dst.FormFieldErrorDisplay)
-	if err == nil {
-		jsonFormFieldErrorDisplay, _ := json.Marshal(dst.FormFieldErrorDisplay)
-		if string(jsonFormFieldErrorDisplay) == "{}" { // empty struct
-			dst.FormFieldErrorDisplay = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_DROPDOWN:
+		if err := json.Unmarshal(data, &dst.FormFieldDropdown); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldErrorDisplay = nil
-	}
-
-	// try to unmarshal data into FormFieldFlowButton
-	err = newStrictDecoder(data).Decode(&dst.FormFieldFlowButton)
-	if err == nil {
-		jsonFormFieldFlowButton, _ := json.Marshal(dst.FormFieldFlowButton)
-		if string(jsonFormFieldFlowButton) == "{}" { // empty struct
-			dst.FormFieldFlowButton = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_COMBOBOX:
+		if err := json.Unmarshal(data, &dst.FormFieldCombobox); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldFlowButton = nil
-	}
-
-	// try to unmarshal data into FormFieldFlowLink
-	err = newStrictDecoder(data).Decode(&dst.FormFieldFlowLink)
-	if err == nil {
-		jsonFormFieldFlowLink, _ := json.Marshal(dst.FormFieldFlowLink)
-		if string(jsonFormFieldFlowLink) == "{}" { // empty struct
-			dst.FormFieldFlowLink = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_DIVIDER:
+		if err := json.Unmarshal(data, &dst.FormFieldDivider); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldFlowLink = nil
-	}
-
-	// try to unmarshal data into FormFieldPassword
-	err = newStrictDecoder(data).Decode(&dst.FormFieldPassword)
-	if err == nil {
-		jsonFormFieldPassword, _ := json.Marshal(dst.FormFieldPassword)
-		if string(jsonFormFieldPassword) == "{}" { // empty struct
-			dst.FormFieldPassword = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_EMPTY_FIELD:
+		if err := json.Unmarshal(data, &dst.FormFieldEmptyField); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldPassword = nil
-	}
-
-	// try to unmarshal data into FormFieldPasswordVerify
-	err = newStrictDecoder(data).Decode(&dst.FormFieldPasswordVerify)
-	if err == nil {
-		jsonFormFieldPasswordVerify, _ := json.Marshal(dst.FormFieldPasswordVerify)
-		if string(jsonFormFieldPasswordVerify) == "{}" { // empty struct
-			dst.FormFieldPasswordVerify = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_TEXTBLOB:
+		if err := json.Unmarshal(data, &dst.FormFieldSlateTextblob); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldPasswordVerify = nil
-	}
-
-	// try to unmarshal data into FormFieldQrCode
-	err = newStrictDecoder(data).Decode(&dst.FormFieldQrCode)
-	if err == nil {
-		jsonFormFieldQrCode, _ := json.Marshal(dst.FormFieldQrCode)
-		if string(jsonFormFieldQrCode) == "{}" { // empty struct
-			dst.FormFieldQrCode = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_SLATE_TEXTBLOB:
+		if err := json.Unmarshal(data, &dst.FormFieldSlateTextblob); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldQrCode = nil
-	}
-
-	// try to unmarshal data into FormFieldRadio
-	err = newStrictDecoder(data).Decode(&dst.FormFieldRadio)
-	if err == nil {
-		jsonFormFieldRadio, _ := json.Marshal(dst.FormFieldRadio)
-		if string(jsonFormFieldRadio) == "{}" { // empty struct
-			dst.FormFieldRadio = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_SUBMIT_BUTTON:
+		if err := json.Unmarshal(data, &dst.FormFieldSubmitButton); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldRadio = nil
-	}
-
-	// try to unmarshal data into FormFieldRecaptchaV2
-	err = newStrictDecoder(data).Decode(&dst.FormFieldRecaptchaV2)
-	if err == nil {
-		jsonFormFieldRecaptchaV2, _ := json.Marshal(dst.FormFieldRecaptchaV2)
-		if string(jsonFormFieldRecaptchaV2) == "{}" { // empty struct
-			dst.FormFieldRecaptchaV2 = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_ERROR_DISPLAY:
+		if err := json.Unmarshal(data, &dst.FormFieldErrorDisplay); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldRecaptchaV2 = nil
-	}
-
-	// try to unmarshal data into FormFieldSlateTextblob
-	err = newStrictDecoder(data).Decode(&dst.FormFieldSlateTextblob)
-	if err == nil {
-		jsonFormFieldSlateTextblob, _ := json.Marshal(dst.FormFieldSlateTextblob)
-		if string(jsonFormFieldSlateTextblob) == "{}" { // empty struct
-			dst.FormFieldSlateTextblob = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_FLOW_LINK:
+		if err := json.Unmarshal(data, &dst.FormFieldFlowLink); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldSlateTextblob = nil
-	}
-
-	// try to unmarshal data into FormFieldSocialLoginButton
-	err = newStrictDecoder(data).Decode(&dst.FormFieldSocialLoginButton)
-	if err == nil {
-		jsonFormFieldSocialLoginButton, _ := json.Marshal(dst.FormFieldSocialLoginButton)
-		if string(jsonFormFieldSocialLoginButton) == "{}" { // empty struct
-			dst.FormFieldSocialLoginButton = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_FLOW_BUTTON:
+		if err := json.Unmarshal(data, &dst.FormFieldFlowButton); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldSocialLoginButton = nil
-	}
-
-	// try to unmarshal data into FormFieldSubmitButton
-	err = newStrictDecoder(data).Decode(&dst.FormFieldSubmitButton)
-	if err == nil {
-		jsonFormFieldSubmitButton, _ := json.Marshal(dst.FormFieldSubmitButton)
-		if string(jsonFormFieldSubmitButton) == "{}" { // empty struct
-			dst.FormFieldSubmitButton = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_RECAPTCHA_V2:
+		if err := json.Unmarshal(data, &dst.FormFieldRecaptchaV2); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldSubmitButton = nil
-	}
-
-	// try to unmarshal data into FormFieldText
-	err = newStrictDecoder(data).Decode(&dst.FormFieldText)
-	if err == nil {
-		jsonFormFieldText, _ := json.Marshal(dst.FormFieldText)
-		if string(jsonFormFieldText) == "{}" { // empty struct
-			dst.FormFieldText = nil
-		} else {
-			match++
+	case ENUMFORMFIELDTYPE_QR_CODE:
+		if err := json.Unmarshal(data, &dst.FormFieldQrCode); err != nil {
+			return err
 		}
-	} else {
-		dst.FormFieldText = nil
+	case ENUMFORMFIELDTYPE_SOCIAL_LOGIN_BUTTON:
+		if err := json.Unmarshal(data, &dst.FormFieldSocialLoginButton); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(FormField)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.FormFieldCheckbox = nil
-		dst.FormFieldCombobox = nil
-		dst.FormFieldDivider = nil
-		dst.FormFieldDropdown = nil
-		dst.FormFieldEmptyField = nil
-		dst.FormFieldErrorDisplay = nil
-		dst.FormFieldFlowButton = nil
-		dst.FormFieldFlowLink = nil
-		dst.FormFieldPassword = nil
-		dst.FormFieldPasswordVerify = nil
-		dst.FormFieldQrCode = nil
-		dst.FormFieldRadio = nil
-		dst.FormFieldRecaptchaV2 = nil
-		dst.FormFieldSlateTextblob = nil
-		dst.FormFieldSocialLoginButton = nil
-		dst.FormFieldSubmitButton = nil
-		dst.FormFieldText = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(FormField)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(FormField)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
