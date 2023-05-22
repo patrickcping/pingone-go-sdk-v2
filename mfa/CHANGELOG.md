@@ -1,6 +1,6 @@
 # v0.11.0 (Unreleased)
 
-* **Enhancement** Support for `PhoneExtensions` in the `MFASettings` model.
+* **Enhancement** Support for `PhoneExtensions` in the `MFASettings` model. [#175](https://github.com/patrickcping/pingone-go-sdk-v2/pull/175)
 
 # v0.10.0 (2023-05-19)
 
