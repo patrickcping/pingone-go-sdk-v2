@@ -1,7 +1,8 @@
 # Release (Unreleased)
 
-* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.20.1](./management/CHANGELOG.md)
-    * **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward.
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.21.0](./management/CHANGELOG.md)
+    * **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward. [#172](https://github.com/patrickcping/pingone-go-sdk-v2/pull/172)
+    * **Enhancement** Added `filterOptions.ipAddressExposed` and `filterOptions.userAgentExposed` to the `Subscription` (webhook) data model.
 
 # Release (2023-05-19)
 
