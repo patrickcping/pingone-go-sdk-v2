@@ -300,10 +300,11 @@ docs/FormFieldPasswordVerify.md
 docs/FormFieldQrCode.md
 docs/FormFieldRadio.md
 docs/FormFieldRecaptchaV2.md
+docs/FormFieldSlateTextblob.md
 docs/FormFieldSocialLoginButton.md
 docs/FormFieldSubmitButton.md
 docs/FormFieldText.md
-docs/FormFieldTextblobslateTextblob.md
+docs/FormItem.md
 docs/FormManagementApi.md
 docs/Gateway.md
 docs/GatewayCredential.md
@@ -767,10 +768,11 @@ model_form_field_password_verify.go
 model_form_field_qr_code.go
 model_form_field_radio.go
 model_form_field_recaptcha_v2.go
+model_form_field_slate_textblob.go
 model_form_field_social_login_button.go
 model_form_field_submit_button.go
 model_form_field_text.go
-model_form_field_textblobslate_textblob.go
+model_form_item.go
 model_gateway.go
 model_gateway_credential.go
 model_gateway_instance.go

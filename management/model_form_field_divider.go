@@ -21,6 +21,8 @@ var _ MappedNullable = &FormFieldDivider{}
 type FormFieldDivider struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
+	// A string that specifies the field content.
+	Content *string `json:"content,omitempty"`
 }
 
 // NewFormFieldDivider instantiates a new FormFieldDivider object
@@ -90,6 +92,38 @@ func (o *FormFieldDivider) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetContent returns the Content field value if set, zero value otherwise.
+func (o *FormFieldDivider) GetContent() string {
+	if o == nil || IsNil(o.Content) {
+		var ret string
+		return ret
+	}
+	return *o.Content
+}
+
+// GetContentOk returns a tuple with the Content field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldDivider) GetContentOk() (*string, bool) {
+	if o == nil || IsNil(o.Content) {
+		return nil, false
+	}
+	return o.Content, true
+}
+
+// HasContent returns a boolean if a field has been set.
+func (o *FormFieldDivider) HasContent() bool {
+	if o != nil && !IsNil(o.Content) {
+		return true
+	}
+
+	return false
+}
+
+// SetContent gets a reference to the given string and assigns it to the Content field.
+func (o *FormFieldDivider) SetContent(v string) {
+	o.Content = &v
+}
+
 func (o FormFieldDivider) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -102,6 +136,9 @@ func (o FormFieldDivider) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	if !IsNil(o.Content) {
+		toSerialize["content"] = o.Content
+	}
 	return toSerialize, nil
 }
 

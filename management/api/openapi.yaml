@@ -26102,6 +26102,10 @@ components:
       required:
       - fields
       type: object
+    FormElement:
+      type: object
+    FormElementPasswordVerify:
+      type: object
     FormField:
       discriminator:
         mapping:
@@ -26114,7 +26118,7 @@ components:
           COMBOBOX: '#/components/schemas/FormFieldCombobox'
           DIVIDER: '#/components/schemas/FormFieldDivider'
           EMPTY_FIELD: '#/components/schemas/FormFieldEmptyField'
-          TEXTBLOBSLATE_TEXTBLOB: '#/components/schemas/FormFieldTextblobslateTextblob'
+          SLATE_TEXTBLOB: '#/components/schemas/FormFieldSlateTextblob'
           SUBMIT_BUTTON: '#/components/schemas/FormFieldSubmitButton'
           ERROR_DISPLAY: '#/components/schemas/FormFieldErrorDisplay'
           FLOW_LINK: '#/components/schemas/FormFieldFlowLink'
@@ -26133,7 +26137,7 @@ components:
       - $ref: '#/components/schemas/FormFieldCombobox'
       - $ref: '#/components/schemas/FormFieldDivider'
       - $ref: '#/components/schemas/FormFieldEmptyField'
-      - $ref: '#/components/schemas/FormFieldTextblobslateTextblob'
+      - $ref: '#/components/schemas/FormFieldSlateTextblob'
       - $ref: '#/components/schemas/FormFieldSubmitButton'
       - $ref: '#/components/schemas/FormFieldErrorDisplay'
       - $ref: '#/components/schemas/FormFieldFlowLink'
@@ -26154,27 +26158,27 @@ components:
     FormFieldText:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormElement'
     FormFieldPassword:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormElement'
     FormFieldPasswordVerify:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormElementPasswordVerify'
     FormFieldRadio:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormElement'
     FormFieldCheckbox:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormElement'
     FormFieldDropdown:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormElement'
     FormFieldCombobox:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -26182,43 +26186,59 @@ components:
     FormFieldDivider:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormItem'
     FormFieldEmptyField:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
-    FormFieldTextblobslateTextblob:
+      - $ref: '#/components/schemas/FormItem'
+    FormFieldSlateTextblob:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormItem'
     FormFieldSubmitButton:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormSubmit'
     FormFieldErrorDisplay:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormItem'
     FormFieldFlowLink:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormFlowLink'
     FormFieldFlowButton:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormFlowButton'
     FormFieldRecaptchaV2:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormRecaptchaV2'
     FormFieldQrCode:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
-      - type: object
+      - $ref: '#/components/schemas/FormQrCode'
     FormFieldSocialLoginButton:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - type: object
+    FormFlowButton:
+      type: object
+    FormFlowLink:
+      type: object
+    FormItem:
+      properties:
+        content:
+          description: A string that specifies the field content.
+          type: string
+      type: object
+    FormRecaptchaV2:
+      type: object
+    FormSubmit:
+      type: object
+    FormQrCode:
+      type: object
     Gateway:
       properties:
         _links:

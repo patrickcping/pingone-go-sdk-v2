@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
+**Content** | Pointer to **string** | A string that specifies the field content. | [optional] 
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetPosition sets Position field to given value.
 
+
+### GetContent
+
+`func (o *FormFieldErrorDisplay) GetContent() string`
+
+GetContent returns the Content field if non-nil, zero value otherwise.
+
+### GetContentOk
+
+`func (o *FormFieldErrorDisplay) GetContentOk() (*string, bool)`
+
+GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContent
+
+`func (o *FormFieldErrorDisplay) SetContent(v string)`
+
+SetContent sets Content field to given value.
+
+### HasContent
+
+`func (o *FormFieldErrorDisplay) HasContent() bool`
+
+HasContent returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

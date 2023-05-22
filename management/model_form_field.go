@@ -30,10 +30,10 @@ type FormField struct {
 	FormFieldQrCode *FormFieldQrCode
 	FormFieldRadio *FormFieldRadio
 	FormFieldRecaptchaV2 *FormFieldRecaptchaV2
+	FormFieldSlateTextblob *FormFieldSlateTextblob
 	FormFieldSocialLoginButton *FormFieldSocialLoginButton
 	FormFieldSubmitButton *FormFieldSubmitButton
 	FormFieldText *FormFieldText
-	FormFieldTextblobslateTextblob *FormFieldTextblobslateTextblob
 }
 
 // FormFieldCheckboxAsFormField is a convenience function that returns FormFieldCheckbox wrapped in FormField
@@ -127,6 +127,13 @@ func FormFieldRecaptchaV2AsFormField(v *FormFieldRecaptchaV2) FormField {
 	}
 }
 
+// FormFieldSlateTextblobAsFormField is a convenience function that returns FormFieldSlateTextblob wrapped in FormField
+func FormFieldSlateTextblobAsFormField(v *FormFieldSlateTextblob) FormField {
+	return FormField{
+		FormFieldSlateTextblob: v,
+	}
+}
+
 // FormFieldSocialLoginButtonAsFormField is a convenience function that returns FormFieldSocialLoginButton wrapped in FormField
 func FormFieldSocialLoginButtonAsFormField(v *FormFieldSocialLoginButton) FormField {
 	return FormField{
@@ -145,13 +152,6 @@ func FormFieldSubmitButtonAsFormField(v *FormFieldSubmitButton) FormField {
 func FormFieldTextAsFormField(v *FormFieldText) FormField {
 	return FormField{
 		FormFieldText: v,
-	}
-}
-
-// FormFieldTextblobslateTextblobAsFormField is a convenience function that returns FormFieldTextblobslateTextblob wrapped in FormField
-func FormFieldTextblobslateTextblobAsFormField(v *FormFieldTextblobslateTextblob) FormField {
-	return FormField{
-		FormFieldTextblobslateTextblob: v,
 	}
 }
 
@@ -329,6 +329,19 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 		dst.FormFieldRecaptchaV2 = nil
 	}
 
+	// try to unmarshal data into FormFieldSlateTextblob
+	err = newStrictDecoder(data).Decode(&dst.FormFieldSlateTextblob)
+	if err == nil {
+		jsonFormFieldSlateTextblob, _ := json.Marshal(dst.FormFieldSlateTextblob)
+		if string(jsonFormFieldSlateTextblob) == "{}" { // empty struct
+			dst.FormFieldSlateTextblob = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.FormFieldSlateTextblob = nil
+	}
+
 	// try to unmarshal data into FormFieldSocialLoginButton
 	err = newStrictDecoder(data).Decode(&dst.FormFieldSocialLoginButton)
 	if err == nil {
@@ -368,19 +381,6 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 		dst.FormFieldText = nil
 	}
 
-	// try to unmarshal data into FormFieldTextblobslateTextblob
-	err = newStrictDecoder(data).Decode(&dst.FormFieldTextblobslateTextblob)
-	if err == nil {
-		jsonFormFieldTextblobslateTextblob, _ := json.Marshal(dst.FormFieldTextblobslateTextblob)
-		if string(jsonFormFieldTextblobslateTextblob) == "{}" { // empty struct
-			dst.FormFieldTextblobslateTextblob = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.FormFieldTextblobslateTextblob = nil
-	}
-
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.FormFieldCheckbox = nil
@@ -396,10 +396,10 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 		dst.FormFieldQrCode = nil
 		dst.FormFieldRadio = nil
 		dst.FormFieldRecaptchaV2 = nil
+		dst.FormFieldSlateTextblob = nil
 		dst.FormFieldSocialLoginButton = nil
 		dst.FormFieldSubmitButton = nil
 		dst.FormFieldText = nil
-		dst.FormFieldTextblobslateTextblob = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(FormField)")
 	} else if match == 1 {
@@ -463,6 +463,10 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.FormFieldRecaptchaV2)
 	}
 
+	if src.FormFieldSlateTextblob != nil {
+		return json.Marshal(&src.FormFieldSlateTextblob)
+	}
+
 	if src.FormFieldSocialLoginButton != nil {
 		return json.Marshal(&src.FormFieldSocialLoginButton)
 	}
@@ -473,10 +477,6 @@ func (src FormField) MarshalJSON() ([]byte, error) {
 
 	if src.FormFieldText != nil {
 		return json.Marshal(&src.FormFieldText)
-	}
-
-	if src.FormFieldTextblobslateTextblob != nil {
-		return json.Marshal(&src.FormFieldTextblobslateTextblob)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -539,6 +539,10 @@ func (obj *FormField) GetActualInstance() (interface{}) {
 		return obj.FormFieldRecaptchaV2
 	}
 
+	if obj.FormFieldSlateTextblob != nil {
+		return obj.FormFieldSlateTextblob
+	}
+
 	if obj.FormFieldSocialLoginButton != nil {
 		return obj.FormFieldSocialLoginButton
 	}
@@ -549,10 +553,6 @@ func (obj *FormField) GetActualInstance() (interface{}) {
 
 	if obj.FormFieldText != nil {
 		return obj.FormFieldText
-	}
-
-	if obj.FormFieldTextblobslateTextblob != nil {
-		return obj.FormFieldTextblobslateTextblob
 	}
 
 	// all schemas are nil
