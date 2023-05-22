@@ -20,7 +20,7 @@ var _ MappedNullable = &FormQrCode{}
 // FormQrCode struct for FormQrCode
 type FormQrCode struct {
 	QrCodeType EnumFormQrCodeType `json:"QrCodeType"`
-	Alignment EnumFormQrCodeAlignment `json:"alignment"`
+	Alignment EnumFormItemAlignment `json:"alignment"`
 	// A boolean that specifies the border visibility.
 	ShowBorder bool `json:"showBorder"`
 }
@@ -29,7 +29,7 @@ type FormQrCode struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormQrCode(qrCodeType EnumFormQrCodeType, alignment EnumFormQrCodeAlignment, showBorder bool) *FormQrCode {
+func NewFormQrCode(qrCodeType EnumFormQrCodeType, alignment EnumFormItemAlignment, showBorder bool) *FormQrCode {
 	this := FormQrCode{}
 	this.QrCodeType = qrCodeType
 	this.Alignment = alignment
@@ -70,9 +70,9 @@ func (o *FormQrCode) SetQrCodeType(v EnumFormQrCodeType) {
 }
 
 // GetAlignment returns the Alignment field value
-func (o *FormQrCode) GetAlignment() EnumFormQrCodeAlignment {
+func (o *FormQrCode) GetAlignment() EnumFormItemAlignment {
 	if o == nil {
-		var ret EnumFormQrCodeAlignment
+		var ret EnumFormItemAlignment
 		return ret
 	}
 
@@ -81,7 +81,7 @@ func (o *FormQrCode) GetAlignment() EnumFormQrCodeAlignment {
 
 // GetAlignmentOk returns a tuple with the Alignment field value
 // and a boolean to check if the value has been set.
-func (o *FormQrCode) GetAlignmentOk() (*EnumFormQrCodeAlignment, bool) {
+func (o *FormQrCode) GetAlignmentOk() (*EnumFormItemAlignment, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *FormQrCode) GetAlignmentOk() (*EnumFormQrCodeAlignment, bool) {
 }
 
 // SetAlignment sets field value
-func (o *FormQrCode) SetAlignment(v EnumFormQrCodeAlignment) {
+func (o *FormQrCode) SetAlignment(v EnumFormItemAlignment) {
 	o.Alignment = v
 }
 

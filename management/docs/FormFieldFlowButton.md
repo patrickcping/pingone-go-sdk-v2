@@ -6,12 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
+**Key** | **string** | A string that specifies an identifier for the field component. | 
+**Label** | **string** | A string that specifies the button label. | 
+**Styles** | Pointer to [**FormFlowButtonStyles**](FormFlowButtonStyles.md) |  | [optional] 
 
 ## Methods
 
 ### NewFormFieldFlowButton
 
-`func NewFormFieldFlowButton(type_ EnumFormFieldType, position FormFieldCommonPosition, ) *FormFieldFlowButton`
+`func NewFormFieldFlowButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, ) *FormFieldFlowButton`
 
 NewFormFieldFlowButton instantiates a new FormFieldFlowButton object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +68,71 @@ and a boolean to check if the value has been set.
 
 SetPosition sets Position field to given value.
 
+
+### GetKey
+
+`func (o *FormFieldFlowButton) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFieldFlowButton) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFieldFlowButton) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+
+### GetLabel
+
+`func (o *FormFieldFlowButton) GetLabel() string`
+
+GetLabel returns the Label field if non-nil, zero value otherwise.
+
+### GetLabelOk
+
+`func (o *FormFieldFlowButton) GetLabelOk() (*string, bool)`
+
+GetLabelOk returns a tuple with the Label field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabel
+
+`func (o *FormFieldFlowButton) SetLabel(v string)`
+
+SetLabel sets Label field to given value.
+
+
+### GetStyles
+
+`func (o *FormFieldFlowButton) GetStyles() FormFlowButtonStyles`
+
+GetStyles returns the Styles field if non-nil, zero value otherwise.
+
+### GetStylesOk
+
+`func (o *FormFieldFlowButton) GetStylesOk() (*FormFlowButtonStyles, bool)`
+
+GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStyles
+
+`func (o *FormFieldFlowButton) SetStyles(v FormFlowButtonStyles)`
+
+SetStyles sets Styles field to given value.
+
+### HasStyles
+
+`func (o *FormFieldFlowButton) HasStyles() bool`
+
+HasStyles returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

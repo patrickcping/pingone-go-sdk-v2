@@ -22,7 +22,7 @@ type FormFieldQrCode struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
 	QrCodeType EnumFormQrCodeType `json:"QrCodeType"`
-	Alignment EnumFormQrCodeAlignment `json:"alignment"`
+	Alignment EnumFormItemAlignment `json:"alignment"`
 	// A boolean that specifies the border visibility.
 	ShowBorder bool `json:"showBorder"`
 }
@@ -31,7 +31,7 @@ type FormFieldQrCode struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, qrCodeType EnumFormQrCodeType, alignment EnumFormQrCodeAlignment, showBorder bool) *FormFieldQrCode {
+func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, qrCodeType EnumFormQrCodeType, alignment EnumFormItemAlignment, showBorder bool) *FormFieldQrCode {
 	this := FormFieldQrCode{}
 	this.Type = type_
 	this.Position = position
@@ -122,9 +122,9 @@ func (o *FormFieldQrCode) SetQrCodeType(v EnumFormQrCodeType) {
 }
 
 // GetAlignment returns the Alignment field value
-func (o *FormFieldQrCode) GetAlignment() EnumFormQrCodeAlignment {
+func (o *FormFieldQrCode) GetAlignment() EnumFormItemAlignment {
 	if o == nil {
-		var ret EnumFormQrCodeAlignment
+		var ret EnumFormItemAlignment
 		return ret
 	}
 
@@ -133,7 +133,7 @@ func (o *FormFieldQrCode) GetAlignment() EnumFormQrCodeAlignment {
 
 // GetAlignmentOk returns a tuple with the Alignment field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldQrCode) GetAlignmentOk() (*EnumFormQrCodeAlignment, bool) {
+func (o *FormFieldQrCode) GetAlignmentOk() (*EnumFormItemAlignment, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,7 +141,7 @@ func (o *FormFieldQrCode) GetAlignmentOk() (*EnumFormQrCodeAlignment, bool) {
 }
 
 // SetAlignment sets field value
-func (o *FormFieldQrCode) SetAlignment(v EnumFormQrCodeAlignment) {
+func (o *FormFieldQrCode) SetAlignment(v EnumFormItemAlignment) {
 	o.Alignment = v
 }
 

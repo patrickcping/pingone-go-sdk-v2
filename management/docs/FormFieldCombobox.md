@@ -6,12 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
+**Label** | **string** | A string that specifies the label shown to the end user for this option. | 
+**Value** | **string** | A string that specifies the value of the field if this option is selected. | 
 
 ## Methods
 
 ### NewFormFieldCombobox
 
-`func NewFormFieldCombobox(type_ EnumFormFieldType, position FormFieldCommonPosition, ) *FormFieldCombobox`
+`func NewFormFieldCombobox(type_ EnumFormFieldType, position FormFieldCommonPosition, label string, value string, ) *FormFieldCombobox`
 
 NewFormFieldCombobox instantiates a new FormFieldCombobox object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +66,46 @@ and a boolean to check if the value has been set.
 `func (o *FormFieldCombobox) SetPosition(v FormFieldCommonPosition)`
 
 SetPosition sets Position field to given value.
+
+
+### GetLabel
+
+`func (o *FormFieldCombobox) GetLabel() string`
+
+GetLabel returns the Label field if non-nil, zero value otherwise.
+
+### GetLabelOk
+
+`func (o *FormFieldCombobox) GetLabelOk() (*string, bool)`
+
+GetLabelOk returns a tuple with the Label field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabel
+
+`func (o *FormFieldCombobox) SetLabel(v string)`
+
+SetLabel sets Label field to given value.
+
+
+### GetValue
+
+`func (o *FormFieldCombobox) GetValue() string`
+
+GetValue returns the Value field if non-nil, zero value otherwise.
+
+### GetValueOk
+
+`func (o *FormFieldCombobox) GetValueOk() (*string, bool)`
+
+GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValue
+
+`func (o *FormFieldCombobox) SetValue(v string)`
+
+SetValue sets Value field to given value.
 
 
 

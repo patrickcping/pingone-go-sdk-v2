@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **QrCodeType** | [**EnumFormQrCodeType**](EnumFormQrCodeType.md) |  | 
-**Alignment** | [**EnumFormQrCodeAlignment**](EnumFormQrCodeAlignment.md) |  | 
+**Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
 **ShowBorder** | **bool** | A boolean that specifies the border visibility. | 
 
 ## Methods
 
 ### NewFormQrCode
 
-`func NewFormQrCode(qrCodeType EnumFormQrCodeType, alignment EnumFormQrCodeAlignment, showBorder bool, ) *FormQrCode`
+`func NewFormQrCode(qrCodeType EnumFormQrCodeType, alignment EnumFormItemAlignment, showBorder bool, ) *FormQrCode`
 
 NewFormQrCode instantiates a new FormQrCode object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetQrCodeType sets QrCodeType field to given value.
 
 ### GetAlignment
 
-`func (o *FormQrCode) GetAlignment() EnumFormQrCodeAlignment`
+`func (o *FormQrCode) GetAlignment() EnumFormItemAlignment`
 
 GetAlignment returns the Alignment field if non-nil, zero value otherwise.
 
 ### GetAlignmentOk
 
-`func (o *FormQrCode) GetAlignmentOk() (*EnumFormQrCodeAlignment, bool)`
+`func (o *FormQrCode) GetAlignmentOk() (*EnumFormItemAlignment, bool)`
 
 GetAlignmentOk returns a tuple with the Alignment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlignment
 
-`func (o *FormQrCode) SetAlignment(v EnumFormQrCodeAlignment)`
+`func (o *FormQrCode) SetAlignment(v EnumFormItemAlignment)`
 
 SetAlignment sets Alignment field to given value.
 

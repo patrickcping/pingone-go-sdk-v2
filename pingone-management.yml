@@ -142,6 +142,10 @@ components:
       type: string
       enum: [PRODUCTION, SANDBOX]
       description: A string that specifies the type of environment to use.
+    EnumFormItemAlignment:
+      type: string
+      enum: [LEFT, CENTER, RIGHT]
+      description: A string that specifies the alignment of the item.
     EnumFormCategory:
       type: string
       enum: [CUSTOM]
@@ -162,14 +166,22 @@ components:
       type: string
       enum: [TEXT, PASSWORD, PASSWORD_VERIFY, RADIO, CHECKBOX, DROPDOWN, COMBOBOX, DIVIDER, EMPTY_FIELD, TEXTBLOB, SLATE_TEXTBLOB, SUBMIT_BUTTON, ERROR_DISPLAY, FLOW_LINK, FLOW_BUTTON, RECAPTCHA_V2, QR_CODE, SOCIAL_LOGIN_BUTTON]
       description: A string that specifies the type of the field.
+    EnumFormRecaptchaV2Size:
+      type: string
+      enum: [NORMAL, COMPACT]
+      description: A string that specifies the size of the reCAPTCHA widget.
+    EnumFormRecaptchaV2Theme:
+      type: string
+      enum: [LIGHT, DARK]
+      description: A string that specifies the theme of the reCAPTCHA widget.
+    EnumFormSocialLoginIdpType:
+      type: string
+      enum: [FACEBOOK, APPLE, GOOGLE, AMAZON, LINKEDIN, MICROSOFT, TWITTER, YAHOO, PAYPAL, GITHUB, OPENID_CONNECT, SAML, LDAP]
+      description: A string that specifies the external identity provider type.
     EnumFormTranslationMethod:
       type: string
       enum: [TRANSLATE, DEFAULT_VALUE, KEY]
       description: A string that specifies how to translate the text strings in the form.
-    EnumFormQrCodeAlignment:
-      type: string
-      enum: [LEFT, RIGHT, CENTER]
-      description: A string that specifies the QR Code alignment. Options are LEFT, RIGHT, and CENTER.
     EnumFormQrCodeType:
       type: string
       enum: [MFA_AUTH]
@@ -2004,6 +2016,18 @@ components:
       required:
         - key
         - required
+    FormElementOption:
+      type: object
+      properties:
+        label:
+          type: string
+          description: A string that specifies the label shown to the end user for this option.
+        value:
+          type: string
+          description: A string that specifies the value of the field if this option is selected.
+      required:
+        - label
+        - value
     FormElementValidation:
       type: object
       description: An object containing validation data for the field. This is a required property when the type is `TEXT`.
@@ -2018,6 +2042,10 @@ components:
           description: A string that specifies the error message to be displayed when the field validation fails.
     FormElementPasswordVerify:
       type: object
+      properties:
+        labelPasswordVerify:
+          type: string
+          description: A string that when a second field for verifies password is used, this poperty specifies the field label for that verify field.
     FormField:
       oneOf:
         - $ref: '#/components/schemas/FormFieldText'
@@ -2175,7 +2203,7 @@ components:
     FormFieldCombobox:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
-        - type: object
+        - $ref: '#/components/schemas/FormElementOption'
     FormFieldDivider:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -2215,11 +2243,62 @@ components:
     FormFieldSocialLoginButton:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
-        - type: object
+        - $ref: '#/components/schemas/FormSocialLoginButton'
     FormFlowButton:
       type: object
+      properties:
+        key:
+          type: string
+          description: A string that specifies an identifier for the field component.
+        label:
+          type: string
+          description: A string that specifies the button label.
+        styles:
+          type: object
+          properties:
+            width:
+              type: integer
+              description: An integer that specifies the button width. Set as a percentage.
+            alignment:
+              $ref: '#/components/schemas/EnumFormItemAlignment'
+            backgroundColor:
+              type: string
+              description: A string that specifies the button background color. The value must be a valid hexadecimal color.
+            textColor:
+              type: string
+              description: A string that specifies the button text color. The value must be a valid hexadecimal color.
+            borderColor:
+              type: string
+              description: A string that specifies the button border color. The value must be a valid hexadecimal color.
+            enabled:
+              type: boolean
+              description: A boolean that specifies whether the button is enabled.
+      required:
+        - key
+        - label
     FormFlowLink:
       type: object
+      properties:
+        key:
+          type: string
+          description: A string that specifies an identifier for the field component.
+        label:
+          type: string
+          description: A string that specifies the link label.
+        styles:
+          type: object
+          properties:
+            horizontalAlignment:
+              $ref: '#/components/schemas/EnumFormItemAlignment'
+            textColor:
+              type: string
+              description: A string that specifies the link text color. The value must be a valid hexadecimal color.
+            enabled:
+              type: boolean
+              description: A boolean that specifies whether the link is enabled.
+      required:
+        - key
+        - label
     FormItem:
       type: object
       properties:
@@ -2228,15 +2307,101 @@ components:
           description: A string that specifies the field content.
     FormRecaptchaV2:
       type: object
+      properties:
+        key:
+          type: string
+          description: A string that specifies an identifier for the field component.
+        size:
+          $ref: '#/components/schemas/EnumFormRecaptchaV2Size'
+        theme:
+          $ref: '#/components/schemas/EnumFormRecaptchaV2Theme'
+        alignment:
+          $ref: '#/components/schemas/EnumFormItemAlignment'
+      required:
+        - key
+        - size
+        - theme
+        - alignment
+    FormSocialLoginButton:
+      type: object
+      properties:
+        label:
+          type: string
+          description: A string that specifies the social login button label.
+        styles:
+          type: object
+          properties:
+            horizontalAlignment:
+              $ref: '#/components/schemas/EnumFormItemAlignment'
+            textColor:
+              type: string
+              description: A string that specifies the social login button text color.
+            enabled:
+              type: boolean
+              description: A boolean that specifies whether the social login button is enabled.
+        idpType:
+          $ref: '#/components/schemas/EnumFormSocialLoginIdpType'
+        idpName:
+          type: string
+          description: A string that specifies the external identity provider name.
+        idpId:
+          type: string
+          description: A string that specifies the external identity provider's ID.
+        idpEnabled:
+          type: boolean
+          description: A boolean that specifies whether the external identity provider is enabled.
+        iconSrc:
+          type: string
+          description: A string that specifies the HTTP link (URL format) for the external identity provider's icon.
+        width:
+          type: integer
+          description: An integer that specifies the button width. Set as a percentage.
+      required:
+        - label
+        - idpType
+        - idpName
+        - idpId
+        - idpEnabled
+        - iconSrc
     FormSubmit:
       type: object
+      properties:
+        key:
+          type: string
+          description: A string that specifies an identifier for the field component.
+        label:
+          type: string
+          description: A string that specifies the button label.
+        styles:
+          type: object
+          properties:
+            width:
+              type: integer
+              description: An integer that specifies the button width. Set as a percentage.
+            alignment:
+              $ref: '#/components/schemas/EnumFormItemAlignment'
+            backgroundColor:
+              type: string
+              description: A string that specifies the button background color. The value must be a valid hexadecimal color.
+            textColor:
+              type: string
+              description: A string that specifies the button text color. The value must be a valid hexadecimal color.
+            borderColor:
+              type: string
+              description: A string that specifies the button border color. The value must be a valid hexadecimal color.
+            enabled:
+              type: boolean
+              description: A boolean that specifies whether the button is enabled.
+      required:
+        - key
+        - label
     FormQrCode:
       type: object
       properties:
         QrCodeType:
           $ref: '#/components/schemas/EnumFormQrCodeType'
         alignment:
-          $ref: '#/components/schemas/EnumFormQrCodeAlignment'
+          $ref: '#/components/schemas/EnumFormItemAlignment'
         showBorder:
           type: boolean
           description: A boolean that specifies the border visibility.

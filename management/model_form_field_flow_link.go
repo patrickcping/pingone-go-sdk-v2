@@ -21,16 +21,23 @@ var _ MappedNullable = &FormFieldFlowLink{}
 type FormFieldFlowLink struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
+	// A string that specifies an identifier for the field component.
+	Key string `json:"key"`
+	// A string that specifies the link label.
+	Label string `json:"label"`
+	Styles *FormFlowLinkStyles `json:"styles,omitempty"`
 }
 
 // NewFormFieldFlowLink instantiates a new FormFieldFlowLink object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldFlowLink(type_ EnumFormFieldType, position FormFieldCommonPosition) *FormFieldFlowLink {
+func NewFormFieldFlowLink(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string) *FormFieldFlowLink {
 	this := FormFieldFlowLink{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
+	this.Label = label
 	return &this
 }
 
@@ -90,6 +97,86 @@ func (o *FormFieldFlowLink) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetKey returns the Key field value
+func (o *FormFieldFlowLink) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldFlowLink) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldFlowLink) SetKey(v string) {
+	o.Key = v
+}
+
+// GetLabel returns the Label field value
+func (o *FormFieldFlowLink) GetLabel() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldFlowLink) GetLabelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Label, true
+}
+
+// SetLabel sets field value
+func (o *FormFieldFlowLink) SetLabel(v string) {
+	o.Label = v
+}
+
+// GetStyles returns the Styles field value if set, zero value otherwise.
+func (o *FormFieldFlowLink) GetStyles() FormFlowLinkStyles {
+	if o == nil || IsNil(o.Styles) {
+		var ret FormFlowLinkStyles
+		return ret
+	}
+	return *o.Styles
+}
+
+// GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldFlowLink) GetStylesOk() (*FormFlowLinkStyles, bool) {
+	if o == nil || IsNil(o.Styles) {
+		return nil, false
+	}
+	return o.Styles, true
+}
+
+// HasStyles returns a boolean if a field has been set.
+func (o *FormFieldFlowLink) HasStyles() bool {
+	if o != nil && !IsNil(o.Styles) {
+		return true
+	}
+
+	return false
+}
+
+// SetStyles gets a reference to the given FormFlowLinkStyles and assigns it to the Styles field.
+func (o *FormFieldFlowLink) SetStyles(v FormFlowLinkStyles) {
+	o.Styles = &v
+}
+
 func (o FormFieldFlowLink) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -102,6 +189,11 @@ func (o FormFieldFlowLink) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	toSerialize["key"] = o.Key
+	toSerialize["label"] = o.Label
+	if !IsNil(o.Styles) {
+		toSerialize["styles"] = o.Styles
+	}
 	return toSerialize, nil
 }
 

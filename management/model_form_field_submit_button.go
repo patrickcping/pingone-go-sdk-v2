@@ -21,16 +21,23 @@ var _ MappedNullable = &FormFieldSubmitButton{}
 type FormFieldSubmitButton struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
+	// A string that specifies an identifier for the field component.
+	Key string `json:"key"`
+	// A string that specifies the button label.
+	Label string `json:"label"`
+	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
 }
 
 // NewFormFieldSubmitButton instantiates a new FormFieldSubmitButton object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldSubmitButton(type_ EnumFormFieldType, position FormFieldCommonPosition) *FormFieldSubmitButton {
+func NewFormFieldSubmitButton(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string) *FormFieldSubmitButton {
 	this := FormFieldSubmitButton{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
+	this.Label = label
 	return &this
 }
 
@@ -90,6 +97,86 @@ func (o *FormFieldSubmitButton) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetKey returns the Key field value
+func (o *FormFieldSubmitButton) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldSubmitButton) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldSubmitButton) SetKey(v string) {
+	o.Key = v
+}
+
+// GetLabel returns the Label field value
+func (o *FormFieldSubmitButton) GetLabel() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldSubmitButton) GetLabelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Label, true
+}
+
+// SetLabel sets field value
+func (o *FormFieldSubmitButton) SetLabel(v string) {
+	o.Label = v
+}
+
+// GetStyles returns the Styles field value if set, zero value otherwise.
+func (o *FormFieldSubmitButton) GetStyles() FormFlowButtonStyles {
+	if o == nil || IsNil(o.Styles) {
+		var ret FormFlowButtonStyles
+		return ret
+	}
+	return *o.Styles
+}
+
+// GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldSubmitButton) GetStylesOk() (*FormFlowButtonStyles, bool) {
+	if o == nil || IsNil(o.Styles) {
+		return nil, false
+	}
+	return o.Styles, true
+}
+
+// HasStyles returns a boolean if a field has been set.
+func (o *FormFieldSubmitButton) HasStyles() bool {
+	if o != nil && !IsNil(o.Styles) {
+		return true
+	}
+
+	return false
+}
+
+// SetStyles gets a reference to the given FormFlowButtonStyles and assigns it to the Styles field.
+func (o *FormFieldSubmitButton) SetStyles(v FormFlowButtonStyles) {
+	o.Styles = &v
+}
+
 func (o FormFieldSubmitButton) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -102,6 +189,11 @@ func (o FormFieldSubmitButton) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	toSerialize["key"] = o.Key
+	toSerialize["label"] = o.Label
+	if !IsNil(o.Styles) {
+		toSerialize["styles"] = o.Styles
+	}
 	return toSerialize, nil
 }
 

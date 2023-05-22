@@ -21,6 +21,8 @@ var _ MappedNullable = &FormFieldPasswordVerify{}
 type FormFieldPasswordVerify struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
+	// A string that when a second field for verifies password is used, this poperty specifies the field label for that verify field.
+	LabelPasswordVerify *string `json:"labelPasswordVerify,omitempty"`
 }
 
 // NewFormFieldPasswordVerify instantiates a new FormFieldPasswordVerify object
@@ -90,6 +92,38 @@ func (o *FormFieldPasswordVerify) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetLabelPasswordVerify returns the LabelPasswordVerify field value if set, zero value otherwise.
+func (o *FormFieldPasswordVerify) GetLabelPasswordVerify() string {
+	if o == nil || IsNil(o.LabelPasswordVerify) {
+		var ret string
+		return ret
+	}
+	return *o.LabelPasswordVerify
+}
+
+// GetLabelPasswordVerifyOk returns a tuple with the LabelPasswordVerify field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldPasswordVerify) GetLabelPasswordVerifyOk() (*string, bool) {
+	if o == nil || IsNil(o.LabelPasswordVerify) {
+		return nil, false
+	}
+	return o.LabelPasswordVerify, true
+}
+
+// HasLabelPasswordVerify returns a boolean if a field has been set.
+func (o *FormFieldPasswordVerify) HasLabelPasswordVerify() bool {
+	if o != nil && !IsNil(o.LabelPasswordVerify) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelPasswordVerify gets a reference to the given string and assigns it to the LabelPasswordVerify field.
+func (o *FormFieldPasswordVerify) SetLabelPasswordVerify(v string) {
+	o.LabelPasswordVerify = &v
+}
+
 func (o FormFieldPasswordVerify) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -102,6 +136,9 @@ func (o FormFieldPasswordVerify) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	if !IsNil(o.LabelPasswordVerify) {
+		toSerialize["labelPasswordVerify"] = o.LabelPasswordVerify
+	}
 	return toSerialize, nil
 }
 

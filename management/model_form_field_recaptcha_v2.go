@@ -21,16 +21,25 @@ var _ MappedNullable = &FormFieldRecaptchaV2{}
 type FormFieldRecaptchaV2 struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
+	// A string that specifies an identifier for the field component.
+	Key string `json:"key"`
+	Size EnumFormRecaptchaV2Size `json:"size"`
+	Theme EnumFormRecaptchaV2Theme `json:"theme"`
+	Alignment EnumFormItemAlignment `json:"alignment"`
 }
 
 // NewFormFieldRecaptchaV2 instantiates a new FormFieldRecaptchaV2 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldRecaptchaV2(type_ EnumFormFieldType, position FormFieldCommonPosition) *FormFieldRecaptchaV2 {
+func NewFormFieldRecaptchaV2(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment) *FormFieldRecaptchaV2 {
 	this := FormFieldRecaptchaV2{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
+	this.Size = size
+	this.Theme = theme
+	this.Alignment = alignment
 	return &this
 }
 
@@ -90,6 +99,102 @@ func (o *FormFieldRecaptchaV2) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetKey returns the Key field value
+func (o *FormFieldRecaptchaV2) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldRecaptchaV2) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldRecaptchaV2) SetKey(v string) {
+	o.Key = v
+}
+
+// GetSize returns the Size field value
+func (o *FormFieldRecaptchaV2) GetSize() EnumFormRecaptchaV2Size {
+	if o == nil {
+		var ret EnumFormRecaptchaV2Size
+		return ret
+	}
+
+	return o.Size
+}
+
+// GetSizeOk returns a tuple with the Size field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldRecaptchaV2) GetSizeOk() (*EnumFormRecaptchaV2Size, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Size, true
+}
+
+// SetSize sets field value
+func (o *FormFieldRecaptchaV2) SetSize(v EnumFormRecaptchaV2Size) {
+	o.Size = v
+}
+
+// GetTheme returns the Theme field value
+func (o *FormFieldRecaptchaV2) GetTheme() EnumFormRecaptchaV2Theme {
+	if o == nil {
+		var ret EnumFormRecaptchaV2Theme
+		return ret
+	}
+
+	return o.Theme
+}
+
+// GetThemeOk returns a tuple with the Theme field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldRecaptchaV2) GetThemeOk() (*EnumFormRecaptchaV2Theme, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Theme, true
+}
+
+// SetTheme sets field value
+func (o *FormFieldRecaptchaV2) SetTheme(v EnumFormRecaptchaV2Theme) {
+	o.Theme = v
+}
+
+// GetAlignment returns the Alignment field value
+func (o *FormFieldRecaptchaV2) GetAlignment() EnumFormItemAlignment {
+	if o == nil {
+		var ret EnumFormItemAlignment
+		return ret
+	}
+
+	return o.Alignment
+}
+
+// GetAlignmentOk returns a tuple with the Alignment field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldRecaptchaV2) GetAlignmentOk() (*EnumFormItemAlignment, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Alignment, true
+}
+
+// SetAlignment sets field value
+func (o *FormFieldRecaptchaV2) SetAlignment(v EnumFormItemAlignment) {
+	o.Alignment = v
+}
+
 func (o FormFieldRecaptchaV2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -102,6 +207,10 @@ func (o FormFieldRecaptchaV2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	toSerialize["key"] = o.Key
+	toSerialize["size"] = o.Size
+	toSerialize["theme"] = o.Theme
+	toSerialize["alignment"] = o.Alignment
 	return toSerialize, nil
 }
 

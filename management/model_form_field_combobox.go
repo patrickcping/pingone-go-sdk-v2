@@ -21,16 +21,22 @@ var _ MappedNullable = &FormFieldCombobox{}
 type FormFieldCombobox struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
+	// A string that specifies the label shown to the end user for this option.
+	Label string `json:"label"`
+	// A string that specifies the value of the field if this option is selected.
+	Value string `json:"value"`
 }
 
 // NewFormFieldCombobox instantiates a new FormFieldCombobox object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldCombobox(type_ EnumFormFieldType, position FormFieldCommonPosition) *FormFieldCombobox {
+func NewFormFieldCombobox(type_ EnumFormFieldType, position FormFieldCommonPosition, label string, value string) *FormFieldCombobox {
 	this := FormFieldCombobox{}
 	this.Type = type_
 	this.Position = position
+	this.Label = label
+	this.Value = value
 	return &this
 }
 
@@ -90,6 +96,54 @@ func (o *FormFieldCombobox) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetLabel returns the Label field value
+func (o *FormFieldCombobox) GetLabel() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetLabelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Label, true
+}
+
+// SetLabel sets field value
+func (o *FormFieldCombobox) SetLabel(v string) {
+	o.Label = v
+}
+
+// GetValue returns the Value field value
+func (o *FormFieldCombobox) GetValue() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetValueOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Value, true
+}
+
+// SetValue sets field value
+func (o *FormFieldCombobox) SetValue(v string) {
+	o.Value = v
+}
+
 func (o FormFieldCombobox) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -102,6 +156,8 @@ func (o FormFieldCombobox) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	toSerialize["label"] = o.Label
+	toSerialize["value"] = o.Value
 	return toSerialize, nil
 }
 
