@@ -145,7 +145,19 @@ components:
     EnumFormCategory:
       type: string
       enum: [CUSTOM]
-      description: A string that specifies the type of form. Options are `CUSTOM`. The `CUSTOM` form type allows the form to be built with fields that do not map specifically to the PingOne directory attributes.
+      description: A string that specifies the type of form. The `CUSTOM` form type allows the form to be built with fields that do not map specifically to the PingOne directory attributes.
+    EnumFormElementLabelMode:
+      type: string
+      enum: [DEFAULT, FLOAT]
+      description: A string that specifies how the field is rendered.
+    EnumFormElementLayout:
+      type: string
+      enum: [HORIZONTAL, VERTICAL]
+      description: A string that specifies layout attributes for radio button and checkbox fields. This is a required property when the type is `RADIO` or `CHECKBOX`.
+    EnumFormElementValidationType:
+      type: string
+      enum: [NONE, CUSTOM]
+      description: A string that specifies the validation type. This is a required property when the field type is `TEXT`.
     EnumFormFieldType:
       type: string
       enum: [TEXT, PASSWORD, PASSWORD_VERIFY, RADIO, CHECKBOX, DROPDOWN, COMBOBOX, DIVIDER, EMPTY_FIELD, TEXTBLOB, SLATE_TEXTBLOB, SUBMIT_BUTTON, ERROR_DISPLAY, FLOW_LINK, FLOW_BUTTON, RECAPTCHA_V2, QR_CODE, SOCIAL_LOGIN_BUTTON]
@@ -154,6 +166,14 @@ components:
       type: string
       enum: [TRANSLATE, DEFAULT_VALUE, KEY]
       description: A string that specifies how to translate the text strings in the form.
+    EnumFormQrCodeAlignment:
+      type: string
+      enum: [LEFT, RIGHT, CENTER]
+      description: A string that specifies the QR Code alignment. Options are LEFT, RIGHT, and CENTER.
+    EnumFormQrCodeType:
+      type: string
+      enum: [MFA_AUTH]
+      description: A string that specifies the QR Code type.
     EnumFlowPolicyTriggerType:
       type: string
       description: An enum string that specifies the trigger type associated with the flow policy trigger.
@@ -1950,6 +1970,52 @@ components:
         - fields
     FormElement:
       type: object
+      properties:
+        attributeDisabled:
+          type: boolean
+          readOnly: true
+          description: A boolean that specifies whether the linked directory attribute is disabled.
+        key:
+          type: string
+          description: A string that specifies an identifier for the field component.
+        label:
+          type: string
+          description: A string of escaped JSON that is designed to store a series of text and translatable keys.
+        labelMode:
+          $ref: '#/components/schemas/EnumFormElementLabelMode'
+        required:
+          type: boolean
+          description: A boolean that specifies whether the field is required.
+        otherOptionEnabled:
+          type: boolean
+          description: A boolean that specifies whether the end user can type an entry that is not in a predefined list.
+        otherOptionKey:
+          type: string
+          description: A string that specifies whether the form identifies that the choice is a custom choice not from a predefined list.
+        otherOptionlabel:
+          type: string
+          description: A string that specifies the label for a custom or "other" choice in a list.
+        otherOptionInputlabel:
+          type: string
+          description: A string that specifies the label for the other option in drop-down controls.
+        otherOptionAttributeDisabled:
+          type: boolean
+          description: A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute.
+      required:
+        - key
+        - required
+    FormElementValidation:
+      type: object
+      description: An object containing validation data for the field. This is a required property when the type is `TEXT`.
+      properties:
+        regex:
+          type: string
+          description: A string that specifies a validation regular expression. The expression must be a valid regular expression string. This is a required property when the validation type is `CUSTOM`.
+        type:
+          $ref: '#/components/schemas/EnumFormElementValidationType'
+        errorMessage:
+          type: string
+          description: A string that specifies the error message to be displayed when the field validation fails.
     FormElementPasswordVerify:
       type: object
     FormField:
@@ -2021,10 +2087,34 @@ components:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormElement'
+        - type: object
+          properties:
+            layout:
+              $ref: '#/components/schemas/EnumFormElementLayout'
+            options:
+              type: array
+              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              items:
+                type: string
+            validation:
+              $ref: '#/components/schemas/FormElementValidation'
+          required:
+            - validation
     FormFieldPassword:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormElement'
+        - type: object
+          properties:
+            layout:
+              $ref: '#/components/schemas/EnumFormElementLayout'
+            options:
+              type: array
+              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              items:
+                type: string
+            validation:
+              $ref: '#/components/schemas/FormElementValidation'
     FormFieldPasswordVerify:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -2033,14 +2123,55 @@ components:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormElement'
+        - type: object
+          properties:
+            layout:
+              $ref: '#/components/schemas/EnumFormElementLayout'
+            options:
+              type: array
+              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              items:
+                type: string
+            validation:
+              $ref: '#/components/schemas/FormElementValidation'
+          required:
+            - layout
+            - options
     FormFieldCheckbox:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormElement'
+        - type: object
+          properties:
+            layout:
+              $ref: '#/components/schemas/EnumFormElementLayout'
+            options:
+              type: array
+              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              items:
+                type: string
+            validation:
+              $ref: '#/components/schemas/FormElementValidation'
+          required:
+            - layout
+            - options
     FormFieldDropdown:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormElement'
+        - type: object
+          properties:
+            layout:
+              $ref: '#/components/schemas/EnumFormElementLayout'
+            options:
+              type: array
+              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              items:
+                type: string
+            validation:
+              $ref: '#/components/schemas/FormElementValidation'
+          required:
+            - options
     FormFieldCombobox:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
@@ -2101,6 +2232,18 @@ components:
       type: object
     FormQrCode:
       type: object
+      properties:
+        QrCodeType:
+          $ref: '#/components/schemas/EnumFormQrCodeType'
+        alignment:
+          $ref: '#/components/schemas/EnumFormQrCodeAlignment'
+        showBorder:
+          type: boolean
+          description: A boolean that specifies the border visibility.
+      required:
+        - QrCodeType
+        - alignment
+        - showBorder
     Gateway:
       type: object
       properties:

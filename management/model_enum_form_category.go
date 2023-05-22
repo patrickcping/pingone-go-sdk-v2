@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumFormCategory A string that specifies the type of form. Options are `CUSTOM`. The `CUSTOM` form type allows the form to be built with fields that do not map specifically to the PingOne directory attributes.
+// EnumFormCategory A string that specifies the type of form. The `CUSTOM` form type allows the form to be built with fields that do not map specifically to the PingOne directory attributes.
 type EnumFormCategory string
 
 // List of EnumFormCategory

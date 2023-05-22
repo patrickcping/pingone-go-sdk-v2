@@ -21,16 +21,23 @@ var _ MappedNullable = &FormFieldQrCode{}
 type FormFieldQrCode struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
+	QrCodeType EnumFormQrCodeType `json:"QrCodeType"`
+	Alignment EnumFormQrCodeAlignment `json:"alignment"`
+	// A boolean that specifies the border visibility.
+	ShowBorder bool `json:"showBorder"`
 }
 
 // NewFormFieldQrCode instantiates a new FormFieldQrCode object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition) *FormFieldQrCode {
+func NewFormFieldQrCode(type_ EnumFormFieldType, position FormFieldCommonPosition, qrCodeType EnumFormQrCodeType, alignment EnumFormQrCodeAlignment, showBorder bool) *FormFieldQrCode {
 	this := FormFieldQrCode{}
 	this.Type = type_
 	this.Position = position
+	this.QrCodeType = qrCodeType
+	this.Alignment = alignment
+	this.ShowBorder = showBorder
 	return &this
 }
 
@@ -90,6 +97,78 @@ func (o *FormFieldQrCode) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetQrCodeType returns the QrCodeType field value
+func (o *FormFieldQrCode) GetQrCodeType() EnumFormQrCodeType {
+	if o == nil {
+		var ret EnumFormQrCodeType
+		return ret
+	}
+
+	return o.QrCodeType
+}
+
+// GetQrCodeTypeOk returns a tuple with the QrCodeType field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldQrCode) GetQrCodeTypeOk() (*EnumFormQrCodeType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.QrCodeType, true
+}
+
+// SetQrCodeType sets field value
+func (o *FormFieldQrCode) SetQrCodeType(v EnumFormQrCodeType) {
+	o.QrCodeType = v
+}
+
+// GetAlignment returns the Alignment field value
+func (o *FormFieldQrCode) GetAlignment() EnumFormQrCodeAlignment {
+	if o == nil {
+		var ret EnumFormQrCodeAlignment
+		return ret
+	}
+
+	return o.Alignment
+}
+
+// GetAlignmentOk returns a tuple with the Alignment field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldQrCode) GetAlignmentOk() (*EnumFormQrCodeAlignment, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Alignment, true
+}
+
+// SetAlignment sets field value
+func (o *FormFieldQrCode) SetAlignment(v EnumFormQrCodeAlignment) {
+	o.Alignment = v
+}
+
+// GetShowBorder returns the ShowBorder field value
+func (o *FormFieldQrCode) GetShowBorder() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.ShowBorder
+}
+
+// GetShowBorderOk returns a tuple with the ShowBorder field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldQrCode) GetShowBorderOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ShowBorder, true
+}
+
+// SetShowBorder sets field value
+func (o *FormFieldQrCode) SetShowBorder(v bool) {
+	o.ShowBorder = v
+}
+
 func (o FormFieldQrCode) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -102,6 +181,9 @@ func (o FormFieldQrCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	toSerialize["QrCodeType"] = o.QrCodeType
+	toSerialize["alignment"] = o.Alignment
+	toSerialize["showBorder"] = o.ShowBorder
 	return toSerialize, nil
 }
 

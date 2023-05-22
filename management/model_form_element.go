@@ -14,13 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the FormFieldPassword type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FormFieldPassword{}
+// checks if the FormElement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FormElement{}
 
-// FormFieldPassword struct for FormFieldPassword
-type FormFieldPassword struct {
-	Type EnumFormFieldType `json:"type"`
-	Position FormFieldCommonPosition `json:"position"`
+// FormElement struct for FormElement
+type FormElement struct {
 	// A boolean that specifies whether the linked directory attribute is disabled.
 	AttributeDisabled *bool `json:"attributeDisabled,omitempty"`
 	// A string that specifies an identifier for the field component.
@@ -40,83 +38,29 @@ type FormFieldPassword struct {
 	OtherOptionInputlabel *string `json:"otherOptionInputlabel,omitempty"`
 	// A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute.
 	OtherOptionAttributeDisabled *bool `json:"otherOptionAttributeDisabled,omitempty"`
-	Layout *EnumFormElementLayout `json:"layout,omitempty"`
-	// An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
-	Options []string `json:"options,omitempty"`
-	Validation *FormElementValidation `json:"validation,omitempty"`
 }
 
-// NewFormFieldPassword instantiates a new FormFieldPassword object
+// NewFormElement instantiates a new FormElement object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldPassword(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, required bool) *FormFieldPassword {
-	this := FormFieldPassword{}
-	this.Type = type_
-	this.Position = position
+func NewFormElement(key string, required bool) *FormElement {
+	this := FormElement{}
 	this.Key = key
 	this.Required = required
 	return &this
 }
 
-// NewFormFieldPasswordWithDefaults instantiates a new FormFieldPassword object
+// NewFormElementWithDefaults instantiates a new FormElement object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewFormFieldPasswordWithDefaults() *FormFieldPassword {
-	this := FormFieldPassword{}
+func NewFormElementWithDefaults() *FormElement {
+	this := FormElement{}
 	return &this
 }
 
-// GetType returns the Type field value
-func (o *FormFieldPassword) GetType() EnumFormFieldType {
-	if o == nil {
-		var ret EnumFormFieldType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetTypeOk() (*EnumFormFieldType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *FormFieldPassword) SetType(v EnumFormFieldType) {
-	o.Type = v
-}
-
-// GetPosition returns the Position field value
-func (o *FormFieldPassword) GetPosition() FormFieldCommonPosition {
-	if o == nil {
-		var ret FormFieldCommonPosition
-		return ret
-	}
-
-	return o.Position
-}
-
-// GetPositionOk returns a tuple with the Position field value
-// and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetPositionOk() (*FormFieldCommonPosition, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Position, true
-}
-
-// SetPosition sets field value
-func (o *FormFieldPassword) SetPosition(v FormFieldCommonPosition) {
-	o.Position = v
-}
-
 // GetAttributeDisabled returns the AttributeDisabled field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetAttributeDisabled() bool {
+func (o *FormElement) GetAttributeDisabled() bool {
 	if o == nil || IsNil(o.AttributeDisabled) {
 		var ret bool
 		return ret
@@ -126,7 +70,7 @@ func (o *FormFieldPassword) GetAttributeDisabled() bool {
 
 // GetAttributeDisabledOk returns a tuple with the AttributeDisabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetAttributeDisabledOk() (*bool, bool) {
+func (o *FormElement) GetAttributeDisabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.AttributeDisabled) {
 		return nil, false
 	}
@@ -134,7 +78,7 @@ func (o *FormFieldPassword) GetAttributeDisabledOk() (*bool, bool) {
 }
 
 // HasAttributeDisabled returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasAttributeDisabled() bool {
+func (o *FormElement) HasAttributeDisabled() bool {
 	if o != nil && !IsNil(o.AttributeDisabled) {
 		return true
 	}
@@ -143,12 +87,12 @@ func (o *FormFieldPassword) HasAttributeDisabled() bool {
 }
 
 // SetAttributeDisabled gets a reference to the given bool and assigns it to the AttributeDisabled field.
-func (o *FormFieldPassword) SetAttributeDisabled(v bool) {
+func (o *FormElement) SetAttributeDisabled(v bool) {
 	o.AttributeDisabled = &v
 }
 
 // GetKey returns the Key field value
-func (o *FormFieldPassword) GetKey() string {
+func (o *FormElement) GetKey() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -159,7 +103,7 @@ func (o *FormFieldPassword) GetKey() string {
 
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetKeyOk() (*string, bool) {
+func (o *FormElement) GetKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -167,12 +111,12 @@ func (o *FormFieldPassword) GetKeyOk() (*string, bool) {
 }
 
 // SetKey sets field value
-func (o *FormFieldPassword) SetKey(v string) {
+func (o *FormElement) SetKey(v string) {
 	o.Key = v
 }
 
 // GetLabel returns the Label field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetLabel() string {
+func (o *FormElement) GetLabel() string {
 	if o == nil || IsNil(o.Label) {
 		var ret string
 		return ret
@@ -182,7 +126,7 @@ func (o *FormFieldPassword) GetLabel() string {
 
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetLabelOk() (*string, bool) {
+func (o *FormElement) GetLabelOk() (*string, bool) {
 	if o == nil || IsNil(o.Label) {
 		return nil, false
 	}
@@ -190,7 +134,7 @@ func (o *FormFieldPassword) GetLabelOk() (*string, bool) {
 }
 
 // HasLabel returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasLabel() bool {
+func (o *FormElement) HasLabel() bool {
 	if o != nil && !IsNil(o.Label) {
 		return true
 	}
@@ -199,12 +143,12 @@ func (o *FormFieldPassword) HasLabel() bool {
 }
 
 // SetLabel gets a reference to the given string and assigns it to the Label field.
-func (o *FormFieldPassword) SetLabel(v string) {
+func (o *FormElement) SetLabel(v string) {
 	o.Label = &v
 }
 
 // GetLabelMode returns the LabelMode field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetLabelMode() EnumFormElementLabelMode {
+func (o *FormElement) GetLabelMode() EnumFormElementLabelMode {
 	if o == nil || IsNil(o.LabelMode) {
 		var ret EnumFormElementLabelMode
 		return ret
@@ -214,7 +158,7 @@ func (o *FormFieldPassword) GetLabelMode() EnumFormElementLabelMode {
 
 // GetLabelModeOk returns a tuple with the LabelMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetLabelModeOk() (*EnumFormElementLabelMode, bool) {
+func (o *FormElement) GetLabelModeOk() (*EnumFormElementLabelMode, bool) {
 	if o == nil || IsNil(o.LabelMode) {
 		return nil, false
 	}
@@ -222,7 +166,7 @@ func (o *FormFieldPassword) GetLabelModeOk() (*EnumFormElementLabelMode, bool) {
 }
 
 // HasLabelMode returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasLabelMode() bool {
+func (o *FormElement) HasLabelMode() bool {
 	if o != nil && !IsNil(o.LabelMode) {
 		return true
 	}
@@ -231,12 +175,12 @@ func (o *FormFieldPassword) HasLabelMode() bool {
 }
 
 // SetLabelMode gets a reference to the given EnumFormElementLabelMode and assigns it to the LabelMode field.
-func (o *FormFieldPassword) SetLabelMode(v EnumFormElementLabelMode) {
+func (o *FormElement) SetLabelMode(v EnumFormElementLabelMode) {
 	o.LabelMode = &v
 }
 
 // GetRequired returns the Required field value
-func (o *FormFieldPassword) GetRequired() bool {
+func (o *FormElement) GetRequired() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -247,7 +191,7 @@ func (o *FormFieldPassword) GetRequired() bool {
 
 // GetRequiredOk returns a tuple with the Required field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetRequiredOk() (*bool, bool) {
+func (o *FormElement) GetRequiredOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -255,12 +199,12 @@ func (o *FormFieldPassword) GetRequiredOk() (*bool, bool) {
 }
 
 // SetRequired sets field value
-func (o *FormFieldPassword) SetRequired(v bool) {
+func (o *FormElement) SetRequired(v bool) {
 	o.Required = v
 }
 
 // GetOtherOptionEnabled returns the OtherOptionEnabled field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetOtherOptionEnabled() bool {
+func (o *FormElement) GetOtherOptionEnabled() bool {
 	if o == nil || IsNil(o.OtherOptionEnabled) {
 		var ret bool
 		return ret
@@ -270,7 +214,7 @@ func (o *FormFieldPassword) GetOtherOptionEnabled() bool {
 
 // GetOtherOptionEnabledOk returns a tuple with the OtherOptionEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetOtherOptionEnabledOk() (*bool, bool) {
+func (o *FormElement) GetOtherOptionEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.OtherOptionEnabled) {
 		return nil, false
 	}
@@ -278,7 +222,7 @@ func (o *FormFieldPassword) GetOtherOptionEnabledOk() (*bool, bool) {
 }
 
 // HasOtherOptionEnabled returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasOtherOptionEnabled() bool {
+func (o *FormElement) HasOtherOptionEnabled() bool {
 	if o != nil && !IsNil(o.OtherOptionEnabled) {
 		return true
 	}
@@ -287,12 +231,12 @@ func (o *FormFieldPassword) HasOtherOptionEnabled() bool {
 }
 
 // SetOtherOptionEnabled gets a reference to the given bool and assigns it to the OtherOptionEnabled field.
-func (o *FormFieldPassword) SetOtherOptionEnabled(v bool) {
+func (o *FormElement) SetOtherOptionEnabled(v bool) {
 	o.OtherOptionEnabled = &v
 }
 
 // GetOtherOptionKey returns the OtherOptionKey field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetOtherOptionKey() string {
+func (o *FormElement) GetOtherOptionKey() string {
 	if o == nil || IsNil(o.OtherOptionKey) {
 		var ret string
 		return ret
@@ -302,7 +246,7 @@ func (o *FormFieldPassword) GetOtherOptionKey() string {
 
 // GetOtherOptionKeyOk returns a tuple with the OtherOptionKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetOtherOptionKeyOk() (*string, bool) {
+func (o *FormElement) GetOtherOptionKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.OtherOptionKey) {
 		return nil, false
 	}
@@ -310,7 +254,7 @@ func (o *FormFieldPassword) GetOtherOptionKeyOk() (*string, bool) {
 }
 
 // HasOtherOptionKey returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasOtherOptionKey() bool {
+func (o *FormElement) HasOtherOptionKey() bool {
 	if o != nil && !IsNil(o.OtherOptionKey) {
 		return true
 	}
@@ -319,12 +263,12 @@ func (o *FormFieldPassword) HasOtherOptionKey() bool {
 }
 
 // SetOtherOptionKey gets a reference to the given string and assigns it to the OtherOptionKey field.
-func (o *FormFieldPassword) SetOtherOptionKey(v string) {
+func (o *FormElement) SetOtherOptionKey(v string) {
 	o.OtherOptionKey = &v
 }
 
 // GetOtherOptionlabel returns the OtherOptionlabel field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetOtherOptionlabel() string {
+func (o *FormElement) GetOtherOptionlabel() string {
 	if o == nil || IsNil(o.OtherOptionlabel) {
 		var ret string
 		return ret
@@ -334,7 +278,7 @@ func (o *FormFieldPassword) GetOtherOptionlabel() string {
 
 // GetOtherOptionlabelOk returns a tuple with the OtherOptionlabel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetOtherOptionlabelOk() (*string, bool) {
+func (o *FormElement) GetOtherOptionlabelOk() (*string, bool) {
 	if o == nil || IsNil(o.OtherOptionlabel) {
 		return nil, false
 	}
@@ -342,7 +286,7 @@ func (o *FormFieldPassword) GetOtherOptionlabelOk() (*string, bool) {
 }
 
 // HasOtherOptionlabel returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasOtherOptionlabel() bool {
+func (o *FormElement) HasOtherOptionlabel() bool {
 	if o != nil && !IsNil(o.OtherOptionlabel) {
 		return true
 	}
@@ -351,12 +295,12 @@ func (o *FormFieldPassword) HasOtherOptionlabel() bool {
 }
 
 // SetOtherOptionlabel gets a reference to the given string and assigns it to the OtherOptionlabel field.
-func (o *FormFieldPassword) SetOtherOptionlabel(v string) {
+func (o *FormElement) SetOtherOptionlabel(v string) {
 	o.OtherOptionlabel = &v
 }
 
 // GetOtherOptionInputlabel returns the OtherOptionInputlabel field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetOtherOptionInputlabel() string {
+func (o *FormElement) GetOtherOptionInputlabel() string {
 	if o == nil || IsNil(o.OtherOptionInputlabel) {
 		var ret string
 		return ret
@@ -366,7 +310,7 @@ func (o *FormFieldPassword) GetOtherOptionInputlabel() string {
 
 // GetOtherOptionInputlabelOk returns a tuple with the OtherOptionInputlabel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetOtherOptionInputlabelOk() (*string, bool) {
+func (o *FormElement) GetOtherOptionInputlabelOk() (*string, bool) {
 	if o == nil || IsNil(o.OtherOptionInputlabel) {
 		return nil, false
 	}
@@ -374,7 +318,7 @@ func (o *FormFieldPassword) GetOtherOptionInputlabelOk() (*string, bool) {
 }
 
 // HasOtherOptionInputlabel returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasOtherOptionInputlabel() bool {
+func (o *FormElement) HasOtherOptionInputlabel() bool {
 	if o != nil && !IsNil(o.OtherOptionInputlabel) {
 		return true
 	}
@@ -383,12 +327,12 @@ func (o *FormFieldPassword) HasOtherOptionInputlabel() bool {
 }
 
 // SetOtherOptionInputlabel gets a reference to the given string and assigns it to the OtherOptionInputlabel field.
-func (o *FormFieldPassword) SetOtherOptionInputlabel(v string) {
+func (o *FormElement) SetOtherOptionInputlabel(v string) {
 	o.OtherOptionInputlabel = &v
 }
 
 // GetOtherOptionAttributeDisabled returns the OtherOptionAttributeDisabled field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetOtherOptionAttributeDisabled() bool {
+func (o *FormElement) GetOtherOptionAttributeDisabled() bool {
 	if o == nil || IsNil(o.OtherOptionAttributeDisabled) {
 		var ret bool
 		return ret
@@ -398,7 +342,7 @@ func (o *FormFieldPassword) GetOtherOptionAttributeDisabled() bool {
 
 // GetOtherOptionAttributeDisabledOk returns a tuple with the OtherOptionAttributeDisabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetOtherOptionAttributeDisabledOk() (*bool, bool) {
+func (o *FormElement) GetOtherOptionAttributeDisabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.OtherOptionAttributeDisabled) {
 		return nil, false
 	}
@@ -406,7 +350,7 @@ func (o *FormFieldPassword) GetOtherOptionAttributeDisabledOk() (*bool, bool) {
 }
 
 // HasOtherOptionAttributeDisabled returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasOtherOptionAttributeDisabled() bool {
+func (o *FormElement) HasOtherOptionAttributeDisabled() bool {
 	if o != nil && !IsNil(o.OtherOptionAttributeDisabled) {
 		return true
 	}
@@ -415,107 +359,11 @@ func (o *FormFieldPassword) HasOtherOptionAttributeDisabled() bool {
 }
 
 // SetOtherOptionAttributeDisabled gets a reference to the given bool and assigns it to the OtherOptionAttributeDisabled field.
-func (o *FormFieldPassword) SetOtherOptionAttributeDisabled(v bool) {
+func (o *FormElement) SetOtherOptionAttributeDisabled(v bool) {
 	o.OtherOptionAttributeDisabled = &v
 }
 
-// GetLayout returns the Layout field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetLayout() EnumFormElementLayout {
-	if o == nil || IsNil(o.Layout) {
-		var ret EnumFormElementLayout
-		return ret
-	}
-	return *o.Layout
-}
-
-// GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetLayoutOk() (*EnumFormElementLayout, bool) {
-	if o == nil || IsNil(o.Layout) {
-		return nil, false
-	}
-	return o.Layout, true
-}
-
-// HasLayout returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasLayout() bool {
-	if o != nil && !IsNil(o.Layout) {
-		return true
-	}
-
-	return false
-}
-
-// SetLayout gets a reference to the given EnumFormElementLayout and assigns it to the Layout field.
-func (o *FormFieldPassword) SetLayout(v EnumFormElementLayout) {
-	o.Layout = &v
-}
-
-// GetOptions returns the Options field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetOptions() []string {
-	if o == nil || IsNil(o.Options) {
-		var ret []string
-		return ret
-	}
-	return o.Options
-}
-
-// GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetOptionsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Options) {
-		return nil, false
-	}
-	return o.Options, true
-}
-
-// HasOptions returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasOptions() bool {
-	if o != nil && !IsNil(o.Options) {
-		return true
-	}
-
-	return false
-}
-
-// SetOptions gets a reference to the given []string and assigns it to the Options field.
-func (o *FormFieldPassword) SetOptions(v []string) {
-	o.Options = v
-}
-
-// GetValidation returns the Validation field value if set, zero value otherwise.
-func (o *FormFieldPassword) GetValidation() FormElementValidation {
-	if o == nil || IsNil(o.Validation) {
-		var ret FormElementValidation
-		return ret
-	}
-	return *o.Validation
-}
-
-// GetValidationOk returns a tuple with the Validation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormFieldPassword) GetValidationOk() (*FormElementValidation, bool) {
-	if o == nil || IsNil(o.Validation) {
-		return nil, false
-	}
-	return o.Validation, true
-}
-
-// HasValidation returns a boolean if a field has been set.
-func (o *FormFieldPassword) HasValidation() bool {
-	if o != nil && !IsNil(o.Validation) {
-		return true
-	}
-
-	return false
-}
-
-// SetValidation gets a reference to the given FormElementValidation and assigns it to the Validation field.
-func (o *FormFieldPassword) SetValidation(v FormElementValidation) {
-	o.Validation = &v
-}
-
-func (o FormFieldPassword) MarshalJSON() ([]byte, error) {
+func (o FormElement) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -523,10 +371,8 @@ func (o FormFieldPassword) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o FormFieldPassword) ToMap() (map[string]interface{}, error) {
+func (o FormElement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
-	toSerialize["position"] = o.Position
 	// skip: attributeDisabled is readOnly
 	toSerialize["key"] = o.Key
 	if !IsNil(o.Label) {
@@ -551,50 +397,41 @@ func (o FormFieldPassword) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OtherOptionAttributeDisabled) {
 		toSerialize["otherOptionAttributeDisabled"] = o.OtherOptionAttributeDisabled
 	}
-	if !IsNil(o.Layout) {
-		toSerialize["layout"] = o.Layout
-	}
-	if !IsNil(o.Options) {
-		toSerialize["options"] = o.Options
-	}
-	if !IsNil(o.Validation) {
-		toSerialize["validation"] = o.Validation
-	}
 	return toSerialize, nil
 }
 
-type NullableFormFieldPassword struct {
-	value *FormFieldPassword
+type NullableFormElement struct {
+	value *FormElement
 	isSet bool
 }
 
-func (v NullableFormFieldPassword) Get() *FormFieldPassword {
+func (v NullableFormElement) Get() *FormElement {
 	return v.value
 }
 
-func (v *NullableFormFieldPassword) Set(val *FormFieldPassword) {
+func (v *NullableFormElement) Set(val *FormElement) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableFormFieldPassword) IsSet() bool {
+func (v NullableFormElement) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableFormFieldPassword) Unset() {
+func (v *NullableFormElement) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableFormFieldPassword(val *FormFieldPassword) *NullableFormFieldPassword {
-	return &NullableFormFieldPassword{value: val, isSet: true}
+func NewNullableFormElement(val *FormElement) *NullableFormElement {
+	return &NullableFormElement{value: val, isSet: true}
 }
 
-func (v NullableFormFieldPassword) MarshalJSON() ([]byte, error) {
+func (v NullableFormElement) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableFormFieldPassword) UnmarshalJSON(src []byte) error {
+func (v *NullableFormElement) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
