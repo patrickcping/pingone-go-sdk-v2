@@ -142,6 +142,18 @@ components:
       type: string
       enum: [PRODUCTION, SANDBOX]
       description: A string that specifies the type of environment to use.
+    EnumFormCategory:
+      type: string
+      enum: [CUSTOM]
+      description: A string that specifies the type of form. Options are `CUSTOM`. The `CUSTOM` form type allows the form to be built with fields that do not map specifically to the PingOne directory attributes.
+    EnumFormFieldType:
+      type: string
+      enum: [TEXT, PASSWORD, PASSWORD_VERIFY, RADIO, CHECKBOX, DROPDOWN, COMBOBOX, DIVIDER, EMPTY_FIELD, TEXTBLOB, SLATE_TEXTBLOB, SUBMIT_BUTTON, ERROR_DISPLAY, FLOW_LINK, FLOW_BUTTON, RECAPTCHA_V2, QR_CODE, SOCIAL_LOGIN_BUTTON]
+      description: A string that specifies the type of the field.
+    EnumFormTranslationMethod:
+      type: string
+      enum: [TRANSLATE, DEFAULT_VALUE, KEY]
+      description: A string that specifies how to translate the text strings in the form.
     EnumFlowPolicyTriggerType:
       type: string
       description: An enum string that specifies the trigger type associated with the flow policy trigger.
@@ -1869,6 +1881,74 @@ components:
         - flowPolicy
         - priority
     Form:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: A string that specifies the resource’s unique identifier.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+          description: A string that specifies the form name, which must be provided and must be unique within an environment.
+        description:
+          type: string
+          description: A string that specifies the description of the form.
+        category:
+          $ref: '#/components/schemas/EnumFormCategory'
+        components:
+          $ref: '#/components/schemas/FormComponents'
+        cols:
+          type: integer
+          description: An integer that specifies the number of columns in the form (min = 1; max = 4).
+          minimum: 1
+          maximum: 4
+        markOptional:
+          type: boolean
+          description: A boolean that specifies whether optional fields are highlighted in the rendered form.
+        markRequired:
+          type: boolean
+          description: A boolean that specifies whether required fields are highlighted in the rendered form.
+        translationMethod:
+          $ref: '#/components/schemas/EnumFormTranslationMethod'
+        fieldTypes:
+          type: array
+          readOnly: true
+          description: A read-only object that specifies the list of the FormField types in the form.
+          items:
+            $ref: '#/components/schemas/EnumFormFieldType'
+        languageBundle:
+          type: object
+          description: An object that provides a map of i18n keys to their translations. This object includes both the keys and their default translations. The PingOne language management service finds this object, and creates the new keys for translation for this form.
+          additionalProperties:
+            type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date the resouce was created (ISO-8061 format).
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The date the resouce was modified (ISO-8061 format).
+      required:
+        - category
+        - components
+        - markOptional
+        - markRequired
+        - name
+    FormComponents:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormField'
+      required:
+        - fields
+    FormField:
       type: object
     Gateway:
       type: object

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateForm
 
-> map[string]interface{} CreateForm(ctx, environmentID).Body(body).Execute()
+> Form CreateForm(ctx, environmentID).Form(form).Execute()
 
 CREATE Form
 
@@ -32,16 +32,16 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    form := *openapiclient.NewForm("Name_example", openapiclient.EnumFormCategory("CUSTOM"), *openapiclient.NewFormComponents([]map[string]interface{}{map[string]interface{}(123)}), false, false) // Form |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FormManagementApi.CreateForm(context.Background(), environmentID).Body(body).Execute()
+    resp, r, err := apiClient.FormManagementApi.CreateForm(context.Background(), environmentID).Form(form).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FormManagementApi.CreateForm``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateForm`: map[string]interface{}
+    // response from `CreateForm`: Form
     fmt.Fprintf(os.Stdout, "Response from `FormManagementApi.CreateForm`: %v\n", resp)
 }
 ```
@@ -62,11 +62,11 @@ Other parameters are passed through a pointer to a apiCreateFormRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **map[string]interface{}** |  | 
+ **form** | [**Form**](Form.md) |  | 
 
 ### Return type
 
-**map[string]interface{}**
+[**Form**](Form.md)
 
 ### Authorization
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ReadForm
 
-> map[string]interface{} ReadForm(ctx, environmentID, formID).Execute()
+> Form ReadForm(ctx, environmentID, formID).Execute()
 
 READ One Form
 
@@ -248,7 +248,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `FormManagementApi.ReadForm``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadForm`: map[string]interface{}
+    // response from `ReadForm`: Form
     fmt.Fprintf(os.Stdout, "Response from `FormManagementApi.ReadForm`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**Form**](Form.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdateForm
 
-> map[string]interface{} UpdateForm(ctx, environmentID, formID).Body(body).Execute()
+> Form UpdateForm(ctx, environmentID, formID).Form(form).Execute()
 
 UPDATE Form
 
@@ -311,16 +311,16 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     formID := "formID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    form := *openapiclient.NewForm("Name_example", openapiclient.EnumFormCategory("CUSTOM"), *openapiclient.NewFormComponents([]map[string]interface{}{map[string]interface{}(123)}), false, false) // Form |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FormManagementApi.UpdateForm(context.Background(), environmentID, formID).Body(body).Execute()
+    resp, r, err := apiClient.FormManagementApi.UpdateForm(context.Background(), environmentID, formID).Form(form).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FormManagementApi.UpdateForm``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateForm`: map[string]interface{}
+    // response from `UpdateForm`: Form
     fmt.Fprintf(os.Stdout, "Response from `FormManagementApi.UpdateForm`: %v\n", resp)
 }
 ```
@@ -343,11 +343,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **form** | [**Form**](Form.md) |  | 
 
 ### Return type
 
-**map[string]interface{}**
+[**Form**](Form.md)
 
 ### Authorization
 

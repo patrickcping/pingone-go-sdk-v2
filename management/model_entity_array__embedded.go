@@ -32,7 +32,7 @@ type EntityArrayEmbedded struct {
 	Environments []Environment `json:"environments,omitempty"`
 	FlowPolicies []FlowPolicy `json:"flowPolicies,omitempty"`
 	FlowPolicyAssignments []FlowPolicyAssignment `json:"flowPolicyAssignments,omitempty"`
-	Forms []map[string]interface{} `json:"forms,omitempty"`
+	Forms []Form `json:"forms,omitempty"`
 	GatewayInstances []GatewayInstance `json:"gatewayInstances,omitempty"`
 	Gateways []EntityArrayEmbeddedGatewaysInner `json:"gateways,omitempty"`
 	Grants []ApplicationResourceGrant `json:"grants,omitempty"`
@@ -496,9 +496,9 @@ func (o *EntityArrayEmbedded) SetFlowPolicyAssignments(v []FlowPolicyAssignment)
 }
 
 // GetForms returns the Forms field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetForms() []map[string]interface{} {
+func (o *EntityArrayEmbedded) GetForms() []Form {
 	if o == nil || IsNil(o.Forms) {
-		var ret []map[string]interface{}
+		var ret []Form
 		return ret
 	}
 	return o.Forms
@@ -506,7 +506,7 @@ func (o *EntityArrayEmbedded) GetForms() []map[string]interface{} {
 
 // GetFormsOk returns a tuple with the Forms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetFormsOk() ([]map[string]interface{}, bool) {
+func (o *EntityArrayEmbedded) GetFormsOk() ([]Form, bool) {
 	if o == nil || IsNil(o.Forms) {
 		return nil, false
 	}
@@ -522,8 +522,8 @@ func (o *EntityArrayEmbedded) HasForms() bool {
 	return false
 }
 
-// SetForms gets a reference to the given []map[string]interface{} and assigns it to the Forms field.
-func (o *EntityArrayEmbedded) SetForms(v []map[string]interface{}) {
+// SetForms gets a reference to the given []Form and assigns it to the Forms field.
+func (o *EntityArrayEmbedded) SetForms(v []Form) {
 	o.Forms = v
 }
 

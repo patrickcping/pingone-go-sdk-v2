@@ -27,15 +27,15 @@ type ApiCreateFormRequest struct {
 	ctx context.Context
 	ApiService *FormManagementApiService
 	environmentID string
-	body *map[string]interface{}
+	form *Form
 }
 
-func (r ApiCreateFormRequest) Body(body map[string]interface{}) ApiCreateFormRequest {
-	r.body = &body
+func (r ApiCreateFormRequest) Form(form Form) ApiCreateFormRequest {
+	r.form = &form
 	return r
 }
 
-func (r ApiCreateFormRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiCreateFormRequest) Execute() (*Form, *http.Response, error) {
 	return r.ApiService.CreateFormExecute(r)
 }
 
@@ -55,13 +55,22 @@ func (a *FormManagementApiService) CreateForm(ctx context.Context, environmentID
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FormManagementApiService) CreateFormExecute(r ApiCreateFormRequest) (map[string]interface{}, *http.Response, error) {
+//  @return Form
+func (a *FormManagementApiService) CreateFormExecute(r ApiCreateFormRequest) (*Form, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalCreateFormExecute(r)
+		},
+	)
+	return obj.(*Form), response, error
+}
+			
+func (a *FormManagementApiService) internalCreateFormExecute(r ApiCreateFormRequest) (*Form, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *Form
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FormManagementApiService.CreateForm")
@@ -94,7 +103,7 @@ func (a *FormManagementApiService) CreateFormExecute(r ApiCreateFormRequest) (ma
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.form
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -562,7 +571,7 @@ type ApiReadFormRequest struct {
 	formID string
 }
 
-func (r ApiReadFormRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiReadFormRequest) Execute() (*Form, *http.Response, error) {
 	return r.ApiService.ReadFormExecute(r)
 }
 
@@ -584,13 +593,22 @@ func (a *FormManagementApiService) ReadForm(ctx context.Context, environmentID s
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FormManagementApiService) ReadFormExecute(r ApiReadFormRequest) (map[string]interface{}, *http.Response, error) {
+//  @return Form
+func (a *FormManagementApiService) ReadFormExecute(r ApiReadFormRequest) (*Form, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalReadFormExecute(r)
+		},
+	)
+	return obj.(*Form), response, error
+}
+			
+func (a *FormManagementApiService) internalReadFormExecute(r ApiReadFormRequest) (*Form, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *Form
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FormManagementApiService.ReadForm")
@@ -731,15 +749,15 @@ type ApiUpdateFormRequest struct {
 	ApiService *FormManagementApiService
 	environmentID string
 	formID string
-	body *map[string]interface{}
+	form *Form
 }
 
-func (r ApiUpdateFormRequest) Body(body map[string]interface{}) ApiUpdateFormRequest {
-	r.body = &body
+func (r ApiUpdateFormRequest) Form(form Form) ApiUpdateFormRequest {
+	r.form = &form
 	return r
 }
 
-func (r ApiUpdateFormRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiUpdateFormRequest) Execute() (*Form, *http.Response, error) {
 	return r.ApiService.UpdateFormExecute(r)
 }
 
@@ -761,13 +779,22 @@ func (a *FormManagementApiService) UpdateForm(ctx context.Context, environmentID
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FormManagementApiService) UpdateFormExecute(r ApiUpdateFormRequest) (map[string]interface{}, *http.Response, error) {
+//  @return Form
+func (a *FormManagementApiService) UpdateFormExecute(r ApiUpdateFormRequest) (*Form, *http.Response, error) {
+	obj, response, error := processResponse(
+		func() (interface{}, *http.Response, error) {
+			return r.ApiService.internalUpdateFormExecute(r)
+		},
+	)
+	return obj.(*Form), response, error
+}
+			
+func (a *FormManagementApiService) internalUpdateFormExecute(r ApiUpdateFormRequest) (*Form, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *Form
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FormManagementApiService.UpdateForm")
@@ -801,7 +828,7 @@ func (a *FormManagementApiService) UpdateFormExecute(r ApiUpdateFormRequest) (ma
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.form
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

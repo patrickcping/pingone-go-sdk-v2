@@ -214,6 +214,9 @@ docs/EnumEmailDomainStatus.md
 docs/EnumEnabledStatus.md
 docs/EnumEnvironmentType.md
 docs/EnumFlowPolicyTriggerType.md
+docs/EnumFormCategory.md
+docs/EnumFormFieldType.md
+docs/EnumFormTranslationMethod.md
 docs/EnumGatewayPasswordAuthority.md
 docs/EnumGatewayType.md
 docs/EnumGatewayTypeLDAPSecurity.md
@@ -279,6 +282,8 @@ docs/FlowPolicyApplication.md
 docs/FlowPolicyAssignment.md
 docs/FlowPolicyAssignmentFlowPolicy.md
 docs/FlowPolicyTrigger.md
+docs/Form.md
+docs/FormComponents.md
 docs/FormManagementApi.md
 docs/Gateway.md
 docs/GatewayCredential.md
@@ -658,6 +663,9 @@ model_enum_email_domain_status.go
 model_enum_enabled_status.go
 model_enum_environment_type.go
 model_enum_flow_policy_trigger_type.go
+model_enum_form_category.go
+model_enum_form_field_type.go
+model_enum_form_translation_method.go
 model_enum_gateway_password_authority.go
 model_enum_gateway_type.go
 model_enum_gateway_type_ldap_security.go
@@ -721,6 +729,8 @@ model_flow_policy_application.go
 model_flow_policy_assignment.go
 model_flow_policy_assignment_flow_policy.go
 model_flow_policy_trigger.go
+model_form.go
+model_form_components.go
 model_gateway.go
 model_gateway_credential.go
 model_gateway_instance.go

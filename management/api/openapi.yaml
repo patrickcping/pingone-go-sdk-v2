@@ -23044,6 +23044,43 @@ components:
       - PRODUCTION
       - SANDBOX
       type: string
+    EnumFormCategory:
+      description: A string that specifies the type of form. Options are `CUSTOM`.
+        The `CUSTOM` form type allows the form to be built with fields that do not
+        map specifically to the PingOne directory attributes.
+      enum:
+      - CUSTOM
+      type: string
+    EnumFormFieldType:
+      description: A string that specifies the type of the field.
+      enum:
+      - TEXT
+      - PASSWORD
+      - PASSWORD_VERIFY
+      - RADIO
+      - CHECKBOX
+      - DROPDOWN
+      - COMBOBOX
+      - DIVIDER
+      - EMPTY_FIELD
+      - TEXTBLOB
+      - SLATE_TEXTBLOB
+      - SUBMIT_BUTTON
+      - ERROR_DISPLAY
+      - FLOW_LINK
+      - FLOW_BUTTON
+      - RECAPTCHA_V2
+      - QR_CODE
+      - SOCIAL_LOGIN_BUTTON
+      type: string
+    EnumFormTranslationMethod:
+      description: A string that specifies how to translate the text strings in the
+        form.
+      enum:
+      - TRANSLATE
+      - DEFAULT_VALUE
+      - KEY
+      type: string
     EnumFlowPolicyTriggerType:
       description: An enum string that specifies the trigger type associated with
         the flow policy trigger.
@@ -24507,7 +24544,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 3.0576100241049344
+        size: 7.04836565559697
         _embedded:
           flowPolicies:
           - environment:
@@ -24801,14 +24838,14 @@ components:
             status: null
           passwordPolicies:
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
-              "0123456789": 3
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "0123456789": 7
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
               abcdefghijklmnopqrstuvwxyz: 3
-            populationCount: 6
+            populationCount: 0
             length:
-              min: 24
-              max: 3
+              min: 11
+              max: 6
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -24816,7 +24853,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 0
+            minComplexity: 7
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -24827,22 +24864,22 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 7
+            minUniqueCharacters: 6
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 6
+            maxRepeatedCharacters: 5
             minAgeDays: 1
             updatedAt: updatedAt
           - minCharacters:
-              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
-              "0123456789": 3
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+              "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+              "0123456789": 7
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
               abcdefghijklmnopqrstuvwxyz: 3
-            populationCount: 6
+            populationCount: 0
             length:
-              min: 24
-              max: 3
+              min: 11
+              max: 6
             notSimilarToCurrent: true
             description: description
             newPassword: newPassword
@@ -24850,7 +24887,7 @@ components:
             history:
               retentionDays: 1
               count: 1
-            minComplexity: 0
+            minComplexity: 7
             excludesProfileData: true
             currentPassword: currentPassword
             createdAt: createdAt
@@ -24861,11 +24898,11 @@ components:
               durationSeconds: 1
               failureCount: 1
             bypassPolicy: false
-            minUniqueCharacters: 7
+            minUniqueCharacters: 6
             name: name
             maxAgeDays: 1
             id: id
-            maxRepeatedCharacters: 6
+            maxRepeatedCharacters: 5
             minAgeDays: 1
             updatedAt: updatedAt
           revisions:
@@ -24961,7 +24998,7 @@ components:
             nextKeyId: nextKeyId
             currentKeyId: currentKeyId
             signatureAlgorithm: null
-            validityPeriod: 1
+            validityPeriod: 6
             environment:
               id: id
             keyLength: 1
@@ -24975,7 +25012,7 @@ components:
             nextKeyId: nextKeyId
             currentKeyId: currentKeyId
             signatureAlgorithm: null
-            validityPeriod: 1
+            validityPeriod: 6
             environment:
               id: id
             keyLength: 1
@@ -24989,16 +25026,16 @@ components:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
             quotas:
-            - total: 9
-              unclaimed: 8
-              claimed: 6
+            - total: 6
+              unclaimed: 9
+              claimed: 8
               type: null
               deliveryMethods:
               - null
               - null
-            - total: 9
-              unclaimed: 8
-              claimed: 6
+            - total: 6
+              unclaimed: 9
+              claimed: 8
               type: null
               deliveryMethods:
               - null
@@ -25017,16 +25054,16 @@ components:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             default: false
             quotas:
-            - total: 9
-              unclaimed: 8
-              claimed: 6
+            - total: 6
+              unclaimed: 9
+              claimed: 8
               type: null
               deliveryMethods:
               - null
               - null
-            - total: 9
-              unclaimed: 8
-              claimed: 6
+            - total: 6
+              unclaimed: 9
+              claimed: 8
               type: null
               deliveryMethods:
               - null
@@ -25098,7 +25135,7 @@ components:
             id: id
           groups:
           - directMemberCounts:
-              users: 4
+              users: 7
             environment:
               id: id
             name: name
@@ -25108,11 +25145,11 @@ components:
             customData: "{}"
             id: id
             totalMemberCounts:
-              users: 7
+              users: 1
             population:
               id: id
           - directMemberCounts:
-              users: 4
+              users: 7
             environment:
               id: id
             name: name
@@ -25122,7 +25159,7 @@ components:
             customData: "{}"
             id: id
             totalMemberCounts:
-              users: 7
+              users: 1
             population:
               id: id
           resources:
@@ -25132,7 +25169,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 4
+            accessTokenValiditySeconds: 8
             name: name
             description: description
             id: id
@@ -25145,7 +25182,7 @@ components:
               id: id
             resource:
               id: id
-            accessTokenValiditySeconds: 4
+            accessTokenValiditySeconds: 8
             name: name
             description: description
             id: id
@@ -25215,7 +25252,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 7
+              secondsUntilUnlock: 3
               unlockAt: unlockAt
               status: null
             username: username
@@ -25281,7 +25318,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: lockedAt
-              secondsUntilUnlock: 7
+              secondsUntilUnlock: 3
               unlockAt: unlockAt
               status: null
             username: username
@@ -25337,7 +25374,7 @@ components:
               - null
               - null
               allowAddResources: true
-              max: 7
+              max: 1
               allowCustomSchema: true
               allowProduction: true
               allowCustomDomain: true
@@ -25355,19 +25392,19 @@ components:
             users:
               allowUpdateSelf: true
               allowPasswordPolicy: true
-              max: 1
+              max: 4
               allowMyAccount: true
               allowPasswordOnlyAuthentication: true
               allowRoleAssignment: true
               entitledToSupport: true
-              annualActiveIncluded: 5
+              annualActiveIncluded: 9
               allowPasswordManagement: true
               allowIdentityProviders: true
               allowInboundProvisioning: true
               allowVerificationFlow: true
               monthlyActiveIncluded: 9
               allowProvisioning: true
-              hardLimitMax: 4
+              hardLimitMax: 5
               allowPasswordManagementNotifications: true
             intelligence:
               allowReputation: true
@@ -25388,7 +25425,7 @@ components:
               allowManualIdInspection: true
               allowFaceMatch: true
               allowPushNotifications: true
-            assignedEnvironmentsCount: 6
+            assignedEnvironmentsCount: 7
             beginsAt: 2000-01-23T04:56:07.000+00:00
             replacedByLicense:
               id: id
@@ -25416,7 +25453,7 @@ components:
               - null
               - null
               allowAddResources: true
-              max: 7
+              max: 1
               allowCustomSchema: true
               allowProduction: true
               allowCustomDomain: true
@@ -25434,19 +25471,19 @@ components:
             users:
               allowUpdateSelf: true
               allowPasswordPolicy: true
-              max: 1
+              max: 4
               allowMyAccount: true
               allowPasswordOnlyAuthentication: true
               allowRoleAssignment: true
               entitledToSupport: true
-              annualActiveIncluded: 5
+              annualActiveIncluded: 9
               allowPasswordManagement: true
               allowIdentityProviders: true
               allowInboundProvisioning: true
               allowVerificationFlow: true
               monthlyActiveIncluded: 9
               allowProvisioning: true
-              hardLimitMax: 4
+              hardLimitMax: 5
               allowPasswordManagementNotifications: true
             intelligence:
               allowReputation: true
@@ -25467,7 +25504,7 @@ components:
               allowManualIdInspection: true
               allowFaceMatch: true
               allowPushNotifications: true
-            assignedEnvironmentsCount: 6
+            assignedEnvironmentsCount: 7
             beginsAt: 2000-01-23T04:56:07.000+00:00
             replacedByLicense:
               id: id
@@ -25735,7 +25772,7 @@ components:
               id: id
             passwordPolicy:
               id: id
-            userCount: 0
+            userCount: 4
             name: name
             description: description
             id: id
@@ -25746,17 +25783,57 @@ components:
               id: id
             passwordPolicy:
               id: id
-            userCount: 0
+            userCount: 4
             name: name
             description: description
             id: id
             updatedAt: updatedAt
           forms:
-          - null
-          - null
+          - components:
+              fields:
+              - null
+              - null
+            created: 2000-01-23T04:56:07.000+00:00
+            description: description
+            markRequired: true
+            environment:
+              id: id
+            markOptional: true
+            translationMethod: null
+            fieldTypes:
+            - null
+            - null
+            name: name
+            modified: 2000-01-23T04:56:07.000+00:00
+            languageBundle:
+              key: languageBundle
+            id: id
+            category: null
+            cols: 3
+          - components:
+              fields:
+              - null
+              - null
+            created: 2000-01-23T04:56:07.000+00:00
+            description: description
+            markRequired: true
+            environment:
+              id: id
+            markOptional: true
+            translationMethod: null
+            fieldTypes:
+            - null
+            - null
+            name: name
+            modified: 2000-01-23T04:56:07.000+00:00
+            languageBundle:
+              key: languageBundle
+            id: id
+            category: null
+            cols: 3
           gatewayInstances:
           - lastReportedAt: lastReportedAt
-            responseTimeMillis: 2.027123023002322
+            responseTimeMillis: 4.145608029883936
             version:
               updateStatus: null
               versionNumber: versionNumber
@@ -25767,17 +25844,17 @@ components:
             - currentErrors
             - currentErrors
             hostname: hostname
-            operationsPerSecond: 3.616076749251911
+            operationsPerSecond: 2.027123023002322
             credential:
               id: id
             healthStatus: null
             initializedAt: initializedAt
             id: id
-            busyPercentage: 9
+            busyPercentage: 3
             gateway:
               id: id
           - lastReportedAt: lastReportedAt
-            responseTimeMillis: 2.027123023002322
+            responseTimeMillis: 4.145608029883936
             version:
               updateStatus: null
               versionNumber: versionNumber
@@ -25788,19 +25865,19 @@ components:
             - currentErrors
             - currentErrors
             hostname: hostname
-            operationsPerSecond: 3.616076749251911
+            operationsPerSecond: 2.027123023002322
             credential:
               id: id
             healthStatus: null
             initializedAt: initializedAt
             id: id
-            busyPercentage: 9
+            busyPercentage: 3
             gateway:
               id: id
           applications:
           - null
           - null
-        count: 3.0205796992916243
+        count: 3.0576100241049344
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -25924,6 +26001,108 @@ components:
       - priority
       type: object
     Form:
+      example:
+        components:
+          fields:
+          - null
+          - null
+        created: 2000-01-23T04:56:07.000+00:00
+        description: description
+        markRequired: true
+        environment:
+          id: id
+        markOptional: true
+        translationMethod: null
+        fieldTypes:
+        - null
+        - null
+        name: name
+        modified: 2000-01-23T04:56:07.000+00:00
+        languageBundle:
+          key: languageBundle
+        id: id
+        category: null
+        cols: 3
+      properties:
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          description: "A string that specifies the form name, which must be provided\
+            \ and must be unique within an environment."
+          type: string
+        description:
+          description: A string that specifies the description of the form.
+          type: string
+        category:
+          $ref: '#/components/schemas/EnumFormCategory'
+        components:
+          $ref: '#/components/schemas/FormComponents'
+        cols:
+          description: An integer that specifies the number of columns in the form
+            (min = 1; max = 4).
+          maximum: 4
+          minimum: 1
+          type: integer
+        markOptional:
+          description: A boolean that specifies whether optional fields are highlighted
+            in the rendered form.
+          type: boolean
+        markRequired:
+          description: A boolean that specifies whether required fields are highlighted
+            in the rendered form.
+          type: boolean
+        translationMethod:
+          $ref: '#/components/schemas/EnumFormTranslationMethod'
+        fieldTypes:
+          description: A read-only object that specifies the list of the FormField
+            types in the form.
+          items:
+            $ref: '#/components/schemas/EnumFormFieldType'
+          readOnly: true
+          type: array
+        languageBundle:
+          additionalProperties:
+            type: string
+          description: "An object that provides a map of i18n keys to their translations.\
+            \ This object includes both the keys and their default translations. The\
+            \ PingOne language management service finds this object, and creates the\
+            \ new keys for translation for this form."
+          type: object
+        created:
+          description: The date the resouce was created (ISO-8061 format).
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: The date the resouce was modified (ISO-8061 format).
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - category
+      - components
+      - markOptional
+      - markRequired
+      - name
+      type: object
+    FormComponents:
+      example:
+        fields:
+        - null
+        - null
+      properties:
+        fields:
+          items:
+            $ref: '#/components/schemas/FormField'
+          type: array
+      required:
+      - fields
+      type: object
+    FormField:
       type: object
     Gateway:
       properties:
@@ -26017,7 +26196,7 @@ components:
     GatewayInstance:
       example:
         lastReportedAt: lastReportedAt
-        responseTimeMillis: 2.027123023002322
+        responseTimeMillis: 4.145608029883936
         version:
           updateStatus: null
           versionNumber: versionNumber
@@ -26028,13 +26207,13 @@ components:
         - currentErrors
         - currentErrors
         hostname: hostname
-        operationsPerSecond: 3.616076749251911
+        operationsPerSecond: 2.027123023002322
         credential:
           id: id
         healthStatus: null
         initializedAt: initializedAt
         id: id
-        busyPercentage: 9
+        busyPercentage: 3
         gateway:
           id: id
       properties:
@@ -26091,7 +26270,7 @@ components:
     Group:
       example:
         directMemberCounts:
-          users: 4
+          users: 7
         environment:
           id: id
         name: name
@@ -26101,7 +26280,7 @@ components:
         customData: "{}"
         id: id
         totalMemberCounts:
-          users: 7
+          users: 1
         population:
           id: id
       properties:
@@ -26335,7 +26514,7 @@ components:
         nextKeyId: nextKeyId
         currentKeyId: currentKeyId
         signatureAlgorithm: null
-        validityPeriod: 1
+        validityPeriod: 6
         environment:
           id: id
         keyLength: 1
@@ -26517,7 +26696,7 @@ components:
           - null
           - null
           allowAddResources: true
-          max: 7
+          max: 1
           allowCustomSchema: true
           allowProduction: true
           allowCustomDomain: true
@@ -26535,19 +26714,19 @@ components:
         users:
           allowUpdateSelf: true
           allowPasswordPolicy: true
-          max: 1
+          max: 4
           allowMyAccount: true
           allowPasswordOnlyAuthentication: true
           allowRoleAssignment: true
           entitledToSupport: true
-          annualActiveIncluded: 5
+          annualActiveIncluded: 9
           allowPasswordManagement: true
           allowIdentityProviders: true
           allowInboundProvisioning: true
           allowVerificationFlow: true
           monthlyActiveIncluded: 9
           allowProvisioning: true
-          hardLimitMax: 4
+          hardLimitMax: 5
           allowPasswordManagementNotifications: true
         intelligence:
           allowReputation: true
@@ -26568,7 +26747,7 @@ components:
           allowManualIdInspection: true
           allowFaceMatch: true
           allowPushNotifications: true
-        assignedEnvironmentsCount: 6
+        assignedEnvironmentsCount: 7
         beginsAt: 2000-01-23T04:56:07.000+00:00
         replacedByLicense:
           id: id
@@ -26668,16 +26847,16 @@ components:
         createdAt: 2000-01-23T04:56:07.000+00:00
         default: false
         quotas:
-        - total: 9
-          unclaimed: 8
-          claimed: 6
+        - total: 6
+          unclaimed: 9
+          claimed: 8
           type: null
           deliveryMethods:
           - null
           - null
-        - total: 9
-          unclaimed: 8
-          claimed: 6
+        - total: 6
+          unclaimed: 9
+          claimed: 8
           type: null
           deliveryMethods:
           - null
@@ -26975,14 +27154,14 @@ components:
     PasswordPolicy:
       example:
         minCharacters:
-          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
-          "0123456789": 3
-          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+          "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+          "0123456789": 7
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
           abcdefghijklmnopqrstuvwxyz: 3
-        populationCount: 6
+        populationCount: 0
         length:
-          min: 24
-          max: 3
+          min: 11
+          max: 6
         notSimilarToCurrent: true
         description: description
         newPassword: newPassword
@@ -26990,7 +27169,7 @@ components:
         history:
           retentionDays: 1
           count: 1
-        minComplexity: 0
+        minComplexity: 7
         excludesProfileData: true
         currentPassword: currentPassword
         createdAt: createdAt
@@ -27001,11 +27180,11 @@ components:
           durationSeconds: 1
           failureCount: 1
         bypassPolicy: false
-        minUniqueCharacters: 7
+        minUniqueCharacters: 6
         name: name
         maxAgeDays: 1
         id: id
-        maxRepeatedCharacters: 6
+        maxRepeatedCharacters: 5
         minAgeDays: 1
         updatedAt: updatedAt
       properties:
@@ -27141,7 +27320,7 @@ components:
           id: id
         passwordPolicy:
           id: id
-        userCount: 0
+        userCount: 4
         name: name
         description: description
         id: id
@@ -27192,7 +27371,7 @@ components:
           id: id
         resource:
           id: id
-        accessTokenValiditySeconds: 4
+        accessTokenValiditySeconds: 8
         name: name
         description: description
         id: id
@@ -28198,7 +28377,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: lockedAt
-          secondsUntilUnlock: 7
+          secondsUntilUnlock: 3
           unlockAt: unlockAt
           status: null
         username: username
@@ -29701,14 +29880,14 @@ components:
           status: null
         passwordPolicies:
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
-            "0123456789": 3
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "0123456789": 7
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
             abcdefghijklmnopqrstuvwxyz: 3
-          populationCount: 6
+          populationCount: 0
           length:
-            min: 24
-            max: 3
+            min: 11
+            max: 6
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -29716,7 +29895,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 0
+          minComplexity: 7
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -29727,22 +29906,22 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 7
+          minUniqueCharacters: 6
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 6
+          maxRepeatedCharacters: 5
           minAgeDays: 1
           updatedAt: updatedAt
         - minCharacters:
-            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
-            "0123456789": 3
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+            "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+            "0123456789": 7
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
             abcdefghijklmnopqrstuvwxyz: 3
-          populationCount: 6
+          populationCount: 0
           length:
-            min: 24
-            max: 3
+            min: 11
+            max: 6
           notSimilarToCurrent: true
           description: description
           newPassword: newPassword
@@ -29750,7 +29929,7 @@ components:
           history:
             retentionDays: 1
             count: 1
-          minComplexity: 0
+          minComplexity: 7
           excludesProfileData: true
           currentPassword: currentPassword
           createdAt: createdAt
@@ -29761,11 +29940,11 @@ components:
             durationSeconds: 1
             failureCount: 1
           bypassPolicy: false
-          minUniqueCharacters: 7
+          minUniqueCharacters: 6
           name: name
           maxAgeDays: 1
           id: id
-          maxRepeatedCharacters: 6
+          maxRepeatedCharacters: 5
           minAgeDays: 1
           updatedAt: updatedAt
         revisions:
@@ -29861,7 +30040,7 @@ components:
           nextKeyId: nextKeyId
           currentKeyId: currentKeyId
           signatureAlgorithm: null
-          validityPeriod: 1
+          validityPeriod: 6
           environment:
             id: id
           keyLength: 1
@@ -29875,7 +30054,7 @@ components:
           nextKeyId: nextKeyId
           currentKeyId: currentKeyId
           signatureAlgorithm: null
-          validityPeriod: 1
+          validityPeriod: 6
           environment:
             id: id
           keyLength: 1
@@ -29889,16 +30068,16 @@ components:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
           quotas:
-          - total: 9
-            unclaimed: 8
-            claimed: 6
+          - total: 6
+            unclaimed: 9
+            claimed: 8
             type: null
             deliveryMethods:
             - null
             - null
-          - total: 9
-            unclaimed: 8
-            claimed: 6
+          - total: 6
+            unclaimed: 9
+            claimed: 8
             type: null
             deliveryMethods:
             - null
@@ -29917,16 +30096,16 @@ components:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           default: false
           quotas:
-          - total: 9
-            unclaimed: 8
-            claimed: 6
+          - total: 6
+            unclaimed: 9
+            claimed: 8
             type: null
             deliveryMethods:
             - null
             - null
-          - total: 9
-            unclaimed: 8
-            claimed: 6
+          - total: 6
+            unclaimed: 9
+            claimed: 8
             type: null
             deliveryMethods:
             - null
@@ -29998,7 +30177,7 @@ components:
           id: id
         groups:
         - directMemberCounts:
-            users: 4
+            users: 7
           environment:
             id: id
           name: name
@@ -30008,11 +30187,11 @@ components:
           customData: "{}"
           id: id
           totalMemberCounts:
-            users: 7
+            users: 1
           population:
             id: id
         - directMemberCounts:
-            users: 4
+            users: 7
           environment:
             id: id
           name: name
@@ -30022,7 +30201,7 @@ components:
           customData: "{}"
           id: id
           totalMemberCounts:
-            users: 7
+            users: 1
           population:
             id: id
         resources:
@@ -30032,7 +30211,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 4
+          accessTokenValiditySeconds: 8
           name: name
           description: description
           id: id
@@ -30045,7 +30224,7 @@ components:
             id: id
           resource:
             id: id
-          accessTokenValiditySeconds: 4
+          accessTokenValiditySeconds: 8
           name: name
           description: description
           id: id
@@ -30115,7 +30294,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 7
+            secondsUntilUnlock: 3
             unlockAt: unlockAt
             status: null
           username: username
@@ -30181,7 +30360,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: lockedAt
-            secondsUntilUnlock: 7
+            secondsUntilUnlock: 3
             unlockAt: unlockAt
             status: null
           username: username
@@ -30237,7 +30416,7 @@ components:
             - null
             - null
             allowAddResources: true
-            max: 7
+            max: 1
             allowCustomSchema: true
             allowProduction: true
             allowCustomDomain: true
@@ -30255,19 +30434,19 @@ components:
           users:
             allowUpdateSelf: true
             allowPasswordPolicy: true
-            max: 1
+            max: 4
             allowMyAccount: true
             allowPasswordOnlyAuthentication: true
             allowRoleAssignment: true
             entitledToSupport: true
-            annualActiveIncluded: 5
+            annualActiveIncluded: 9
             allowPasswordManagement: true
             allowIdentityProviders: true
             allowInboundProvisioning: true
             allowVerificationFlow: true
             monthlyActiveIncluded: 9
             allowProvisioning: true
-            hardLimitMax: 4
+            hardLimitMax: 5
             allowPasswordManagementNotifications: true
           intelligence:
             allowReputation: true
@@ -30288,7 +30467,7 @@ components:
             allowManualIdInspection: true
             allowFaceMatch: true
             allowPushNotifications: true
-          assignedEnvironmentsCount: 6
+          assignedEnvironmentsCount: 7
           beginsAt: 2000-01-23T04:56:07.000+00:00
           replacedByLicense:
             id: id
@@ -30316,7 +30495,7 @@ components:
             - null
             - null
             allowAddResources: true
-            max: 7
+            max: 1
             allowCustomSchema: true
             allowProduction: true
             allowCustomDomain: true
@@ -30334,19 +30513,19 @@ components:
           users:
             allowUpdateSelf: true
             allowPasswordPolicy: true
-            max: 1
+            max: 4
             allowMyAccount: true
             allowPasswordOnlyAuthentication: true
             allowRoleAssignment: true
             entitledToSupport: true
-            annualActiveIncluded: 5
+            annualActiveIncluded: 9
             allowPasswordManagement: true
             allowIdentityProviders: true
             allowInboundProvisioning: true
             allowVerificationFlow: true
             monthlyActiveIncluded: 9
             allowProvisioning: true
-            hardLimitMax: 4
+            hardLimitMax: 5
             allowPasswordManagementNotifications: true
           intelligence:
             allowReputation: true
@@ -30367,7 +30546,7 @@ components:
             allowManualIdInspection: true
             allowFaceMatch: true
             allowPushNotifications: true
-          assignedEnvironmentsCount: 6
+          assignedEnvironmentsCount: 7
           beginsAt: 2000-01-23T04:56:07.000+00:00
           replacedByLicense:
             id: id
@@ -30635,7 +30814,7 @@ components:
             id: id
           passwordPolicy:
             id: id
-          userCount: 0
+          userCount: 4
           name: name
           description: description
           id: id
@@ -30646,17 +30825,57 @@ components:
             id: id
           passwordPolicy:
             id: id
-          userCount: 0
+          userCount: 4
           name: name
           description: description
           id: id
           updatedAt: updatedAt
         forms:
-        - null
-        - null
+        - components:
+            fields:
+            - null
+            - null
+          created: 2000-01-23T04:56:07.000+00:00
+          description: description
+          markRequired: true
+          environment:
+            id: id
+          markOptional: true
+          translationMethod: null
+          fieldTypes:
+          - null
+          - null
+          name: name
+          modified: 2000-01-23T04:56:07.000+00:00
+          languageBundle:
+            key: languageBundle
+          id: id
+          category: null
+          cols: 3
+        - components:
+            fields:
+            - null
+            - null
+          created: 2000-01-23T04:56:07.000+00:00
+          description: description
+          markRequired: true
+          environment:
+            id: id
+          markOptional: true
+          translationMethod: null
+          fieldTypes:
+          - null
+          - null
+          name: name
+          modified: 2000-01-23T04:56:07.000+00:00
+          languageBundle:
+            key: languageBundle
+          id: id
+          category: null
+          cols: 3
         gatewayInstances:
         - lastReportedAt: lastReportedAt
-          responseTimeMillis: 2.027123023002322
+          responseTimeMillis: 4.145608029883936
           version:
             updateStatus: null
             versionNumber: versionNumber
@@ -30667,17 +30886,17 @@ components:
           - currentErrors
           - currentErrors
           hostname: hostname
-          operationsPerSecond: 3.616076749251911
+          operationsPerSecond: 2.027123023002322
           credential:
             id: id
           healthStatus: null
           initializedAt: initializedAt
           id: id
-          busyPercentage: 9
+          busyPercentage: 3
           gateway:
             id: id
         - lastReportedAt: lastReportedAt
-          responseTimeMillis: 2.027123023002322
+          responseTimeMillis: 4.145608029883936
           version:
             updateStatus: null
             versionNumber: versionNumber
@@ -30688,13 +30907,13 @@ components:
           - currentErrors
           - currentErrors
           hostname: hostname
-          operationsPerSecond: 3.616076749251911
+          operationsPerSecond: 2.027123023002322
           credential:
             id: id
           healthStatus: null
           initializedAt: initializedAt
           id: id
-          busyPercentage: 9
+          busyPercentage: 3
           gateway:
             id: id
         applications:
@@ -31196,7 +31415,7 @@ components:
         \ Since these members were explicitly added to the group, they can be removed\
         \ from the group with DELETE /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}."
       example:
-        users: 4
+        users: 7
       properties:
         users:
           description: Number of users with direct membership
@@ -31209,7 +31428,7 @@ components:
         \ with the include=totalMemberCounts query parameter to retrieve this property.\
         \ This property is not returned with a list of groups."
       example:
-        users: 7
+        users: 1
       properties:
         users:
           description: Number of users with direct membership
@@ -31567,7 +31786,7 @@ components:
         - null
         - null
         allowAddResources: true
-        max: 7
+        max: 1
         allowCustomSchema: true
         allowProduction: true
         allowCustomDomain: true
@@ -31742,19 +31961,19 @@ components:
       example:
         allowUpdateSelf: true
         allowPasswordPolicy: true
-        max: 1
+        max: 4
         allowMyAccount: true
         allowPasswordOnlyAuthentication: true
         allowRoleAssignment: true
         entitledToSupport: true
-        annualActiveIncluded: 5
+        annualActiveIncluded: 9
         allowPasswordManagement: true
         allowIdentityProviders: true
         allowInboundProvisioning: true
         allowVerificationFlow: true
         monthlyActiveIncluded: 9
         allowProvisioning: true
-        hardLimitMax: 4
+        hardLimitMax: 5
         allowPasswordManagementNotifications: true
       properties:
         allowPasswordManagementNotifications:
@@ -31882,9 +32101,9 @@ components:
       type: object
     NotificationsPolicy_quotas_inner:
       example:
-        total: 9
-        unclaimed: 8
-        claimed: 6
+        total: 6
+        unclaimed: 9
+        claimed: 8
         type: null
         deliveryMethods:
         - null
@@ -32233,8 +32452,8 @@ components:
     PasswordPolicy_length:
       description: Settings to control the user's password length
       example:
-        min: 24
-        max: 3
+        min: 11
+        max: 6
       properties:
         max:
           default: 255
@@ -32276,9 +32495,9 @@ components:
         \ and `~!@#$%^&*()-_=+[]{}\\|;:,.<>/?`. This property is not enforced when\
         \ not present."
       example:
-        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 7
-        "0123456789": 3
-        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 6
+        "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
+        "0123456789": 7
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ: 3
         abcdefghijklmnopqrstuvwxyz: 3
       properties:
         ABCDEFGHIJKLMNOPQRSTUVWXYZ:
@@ -33187,7 +33406,7 @@ components:
       example:
         canAuthenticate: true
         lockedAt: lockedAt
-        secondsUntilUnlock: 7
+        secondsUntilUnlock: 3
         unlockAt: unlockAt
         status: null
       properties:
