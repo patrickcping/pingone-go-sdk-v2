@@ -1,8 +1,8 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.1
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.20.0 => v0.21.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.10.0 => v0.11.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.20.0 => v0.21.0 [#177](https://github.com/patrickcping/pingone-go-sdk-v2/pull/177)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.10.0 => v0.11.0 [#177](https://github.com/patrickcping/pingone-go-sdk-v2/pull/177)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.21.0](./management/CHANGELOG.md)
     * **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward. [#172](https://github.com/patrickcping/pingone-go-sdk-v2/pull/172)
     * **Feature** Support for Forms. [#176](https://github.com/patrickcping/pingone-go-sdk-v2/pull/176)
