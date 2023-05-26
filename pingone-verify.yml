@@ -218,7 +218,19 @@ components:
     TransactionConfiguration:    
       type: object
       properties:
-        transaction:
+        timeout:
+          type: object
+          properties:
+            duration:
+              type: integer
+              description: Length of time before transaction timeout expires; range is 0-30 minutes or 0-1800 seconds.                  
+            timeUnit:
+              $ref: '#/components/schemas/EnumShortTimeUnit'
+              description: Time unit of transaction timeout; can be SECONDS, MINUTES.
+          required:
+            - duration
+            - timeUnit
+        dataCollection:
           type: object
           properties:
             timeout:
@@ -226,32 +238,17 @@ components:
               properties:
                 duration:
                   type: integer
-                  description: Length of time before transaction timeout expires; range is 0-30 minutes or 0-1800 seconds.                  
+                  description: Length of time before data collection timeout expires; range is 0-30 minutes or 0-1800 seconds.
                 timeUnit:
                   $ref: '#/components/schemas/EnumShortTimeUnit'
                   description: Time unit of transaction timeout; can be SECONDS, MINUTES.
               required:
                 - duration
                 - timeUnit
-            dataCollection:
-              type: object
-              properties:
-                timeout:
-                  type: object
-                  properties:
-                    duration:
-                      type: integer
-                      description: Length of time before data collection timeout expires; range is 0-30 minutes or 0-1800 seconds.
-                    timeUnit:
-                      $ref: '#/components/schemas/EnumShortTimeUnit'
-                      description: Time unit of transaction timeout; can be SECONDS, MINUTES.
-                  required:
-                    - duration
-                    - timeUnit
-              required:
-                - timeout
-            dataCollectionOnly:
-              type: boolean
+          required:
+            - timeout
+        dataCollectionOnly:
+          type: boolean
     VerifyPolicy:
       type: object
       properties:

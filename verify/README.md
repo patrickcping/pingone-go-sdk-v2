@@ -107,10 +107,9 @@ Class | Method | HTTP request | Description
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
  - [TransactionConfiguration](docs/TransactionConfiguration.md)
- - [TransactionConfigurationTransaction](docs/TransactionConfigurationTransaction.md)
- - [TransactionConfigurationTransactionDataCollection](docs/TransactionConfigurationTransactionDataCollection.md)
- - [TransactionConfigurationTransactionDataCollectionTimeout](docs/TransactionConfigurationTransactionDataCollectionTimeout.md)
- - [TransactionConfigurationTransactionTimeout](docs/TransactionConfigurationTransactionTimeout.md)
+ - [TransactionConfigurationDataCollection](docs/TransactionConfigurationDataCollection.md)
+ - [TransactionConfigurationDataCollectionTimeout](docs/TransactionConfigurationDataCollectionTimeout.md)
+ - [TransactionConfigurationTimeout](docs/TransactionConfigurationTimeout.md)
  - [VerifyPolicy](docs/VerifyPolicy.md)
 
 

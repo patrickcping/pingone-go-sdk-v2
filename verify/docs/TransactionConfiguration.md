@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Transaction** | Pointer to [**TransactionConfigurationTransaction**](TransactionConfigurationTransaction.md) |  | [optional] 
+**Timeout** | Pointer to [**TransactionConfigurationTimeout**](TransactionConfigurationTimeout.md) |  | [optional] 
+**DataCollection** | Pointer to [**TransactionConfigurationDataCollection**](TransactionConfigurationDataCollection.md) |  | [optional] 
+**DataCollectionOnly** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -25,30 +27,80 @@ NewTransactionConfigurationWithDefaults instantiates a new TransactionConfigurat
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetTransaction
+### GetTimeout
 
-`func (o *TransactionConfiguration) GetTransaction() TransactionConfigurationTransaction`
+`func (o *TransactionConfiguration) GetTimeout() TransactionConfigurationTimeout`
 
-GetTransaction returns the Transaction field if non-nil, zero value otherwise.
+GetTimeout returns the Timeout field if non-nil, zero value otherwise.
 
-### GetTransactionOk
+### GetTimeoutOk
 
-`func (o *TransactionConfiguration) GetTransactionOk() (*TransactionConfigurationTransaction, bool)`
+`func (o *TransactionConfiguration) GetTimeoutOk() (*TransactionConfigurationTimeout, bool)`
 
-GetTransactionOk returns a tuple with the Transaction field if it's non-nil, zero value otherwise
+GetTimeoutOk returns a tuple with the Timeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTransaction
+### SetTimeout
 
-`func (o *TransactionConfiguration) SetTransaction(v TransactionConfigurationTransaction)`
+`func (o *TransactionConfiguration) SetTimeout(v TransactionConfigurationTimeout)`
 
-SetTransaction sets Transaction field to given value.
+SetTimeout sets Timeout field to given value.
 
-### HasTransaction
+### HasTimeout
 
-`func (o *TransactionConfiguration) HasTransaction() bool`
+`func (o *TransactionConfiguration) HasTimeout() bool`
 
-HasTransaction returns a boolean if a field has been set.
+HasTimeout returns a boolean if a field has been set.
+
+### GetDataCollection
+
+`func (o *TransactionConfiguration) GetDataCollection() TransactionConfigurationDataCollection`
+
+GetDataCollection returns the DataCollection field if non-nil, zero value otherwise.
+
+### GetDataCollectionOk
+
+`func (o *TransactionConfiguration) GetDataCollectionOk() (*TransactionConfigurationDataCollection, bool)`
+
+GetDataCollectionOk returns a tuple with the DataCollection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataCollection
+
+`func (o *TransactionConfiguration) SetDataCollection(v TransactionConfigurationDataCollection)`
+
+SetDataCollection sets DataCollection field to given value.
+
+### HasDataCollection
+
+`func (o *TransactionConfiguration) HasDataCollection() bool`
+
+HasDataCollection returns a boolean if a field has been set.
+
+### GetDataCollectionOnly
+
+`func (o *TransactionConfiguration) GetDataCollectionOnly() bool`
+
+GetDataCollectionOnly returns the DataCollectionOnly field if non-nil, zero value otherwise.
+
+### GetDataCollectionOnlyOk
+
+`func (o *TransactionConfiguration) GetDataCollectionOnlyOk() (*bool, bool)`
+
+GetDataCollectionOnlyOk returns a tuple with the DataCollectionOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataCollectionOnly
+
+`func (o *TransactionConfiguration) SetDataCollectionOnly(v bool)`
+
+SetDataCollectionOnly sets DataCollectionOnly field to given value.
+
+### HasDataCollectionOnly
+
+`func (o *TransactionConfiguration) HasDataCollectionOnly() bool`
+
+HasDataCollectionOnly returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,4 +1,4 @@
-# TransactionConfigurationTransactionDataCollectionTimeout
+# TransactionConfigurationDataCollectionTimeout
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewTransactionConfigurationTransactionDataCollectionTimeout
+### NewTransactionConfigurationDataCollectionTimeout
 
-`func NewTransactionConfigurationTransactionDataCollectionTimeout(duration int32, timeUnit EnumShortTimeUnit, ) *TransactionConfigurationTransactionDataCollectionTimeout`
+`func NewTransactionConfigurationDataCollectionTimeout(duration int32, timeUnit EnumShortTimeUnit, ) *TransactionConfigurationDataCollectionTimeout`
 
-NewTransactionConfigurationTransactionDataCollectionTimeout instantiates a new TransactionConfigurationTransactionDataCollectionTimeout object
+NewTransactionConfigurationDataCollectionTimeout instantiates a new TransactionConfigurationDataCollectionTimeout object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewTransactionConfigurationTransactionDataCollectionTimeoutWithDefaults
+### NewTransactionConfigurationDataCollectionTimeoutWithDefaults
 
-`func NewTransactionConfigurationTransactionDataCollectionTimeoutWithDefaults() *TransactionConfigurationTransactionDataCollectionTimeout`
+`func NewTransactionConfigurationDataCollectionTimeoutWithDefaults() *TransactionConfigurationDataCollectionTimeout`
 
-NewTransactionConfigurationTransactionDataCollectionTimeoutWithDefaults instantiates a new TransactionConfigurationTransactionDataCollectionTimeout object
+NewTransactionConfigurationDataCollectionTimeoutWithDefaults instantiates a new TransactionConfigurationDataCollectionTimeout object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDuration
 
-`func (o *TransactionConfigurationTransactionDataCollectionTimeout) GetDuration() int32`
+`func (o *TransactionConfigurationDataCollectionTimeout) GetDuration() int32`
 
 GetDuration returns the Duration field if non-nil, zero value otherwise.
 
 ### GetDurationOk
 
-`func (o *TransactionConfigurationTransactionDataCollectionTimeout) GetDurationOk() (*int32, bool)`
+`func (o *TransactionConfigurationDataCollectionTimeout) GetDurationOk() (*int32, bool)`
 
 GetDurationOk returns a tuple with the Duration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDuration
 
-`func (o *TransactionConfigurationTransactionDataCollectionTimeout) SetDuration(v int32)`
+`func (o *TransactionConfigurationDataCollectionTimeout) SetDuration(v int32)`
 
 SetDuration sets Duration field to given value.
 
 
 ### GetTimeUnit
 
-`func (o *TransactionConfigurationTransactionDataCollectionTimeout) GetTimeUnit() EnumShortTimeUnit`
+`func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnit() EnumShortTimeUnit`
 
 GetTimeUnit returns the TimeUnit field if non-nil, zero value otherwise.
 
 ### GetTimeUnitOk
 
-`func (o *TransactionConfigurationTransactionDataCollectionTimeout) GetTimeUnitOk() (*EnumShortTimeUnit, bool)`
+`func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnitOk() (*EnumShortTimeUnit, bool)`
 
 GetTimeUnitOk returns a tuple with the TimeUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeUnit
 
-`func (o *TransactionConfigurationTransactionDataCollectionTimeout) SetTimeUnit(v EnumShortTimeUnit)`
+`func (o *TransactionConfigurationDataCollectionTimeout) SetTimeUnit(v EnumShortTimeUnit)`
 
 SetTimeUnit sets TimeUnit field to given value.
 

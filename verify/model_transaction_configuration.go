@@ -19,7 +19,9 @@ var _ MappedNullable = &TransactionConfiguration{}
 
 // TransactionConfiguration struct for TransactionConfiguration
 type TransactionConfiguration struct {
-	Transaction *TransactionConfigurationTransaction `json:"transaction,omitempty"`
+	Timeout *TransactionConfigurationTimeout `json:"timeout,omitempty"`
+	DataCollection *TransactionConfigurationDataCollection `json:"dataCollection,omitempty"`
+	DataCollectionOnly *bool `json:"dataCollectionOnly,omitempty"`
 }
 
 // NewTransactionConfiguration instantiates a new TransactionConfiguration object
@@ -39,36 +41,100 @@ func NewTransactionConfigurationWithDefaults() *TransactionConfiguration {
 	return &this
 }
 
-// GetTransaction returns the Transaction field value if set, zero value otherwise.
-func (o *TransactionConfiguration) GetTransaction() TransactionConfigurationTransaction {
-	if o == nil || IsNil(o.Transaction) {
-		var ret TransactionConfigurationTransaction
+// GetTimeout returns the Timeout field value if set, zero value otherwise.
+func (o *TransactionConfiguration) GetTimeout() TransactionConfigurationTimeout {
+	if o == nil || IsNil(o.Timeout) {
+		var ret TransactionConfigurationTimeout
 		return ret
 	}
-	return *o.Transaction
+	return *o.Timeout
 }
 
-// GetTransactionOk returns a tuple with the Transaction field value if set, nil otherwise
+// GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransactionConfiguration) GetTransactionOk() (*TransactionConfigurationTransaction, bool) {
-	if o == nil || IsNil(o.Transaction) {
+func (o *TransactionConfiguration) GetTimeoutOk() (*TransactionConfigurationTimeout, bool) {
+	if o == nil || IsNil(o.Timeout) {
 		return nil, false
 	}
-	return o.Transaction, true
+	return o.Timeout, true
 }
 
-// HasTransaction returns a boolean if a field has been set.
-func (o *TransactionConfiguration) HasTransaction() bool {
-	if o != nil && !IsNil(o.Transaction) {
+// HasTimeout returns a boolean if a field has been set.
+func (o *TransactionConfiguration) HasTimeout() bool {
+	if o != nil && !IsNil(o.Timeout) {
 		return true
 	}
 
 	return false
 }
 
-// SetTransaction gets a reference to the given TransactionConfigurationTransaction and assigns it to the Transaction field.
-func (o *TransactionConfiguration) SetTransaction(v TransactionConfigurationTransaction) {
-	o.Transaction = &v
+// SetTimeout gets a reference to the given TransactionConfigurationTimeout and assigns it to the Timeout field.
+func (o *TransactionConfiguration) SetTimeout(v TransactionConfigurationTimeout) {
+	o.Timeout = &v
+}
+
+// GetDataCollection returns the DataCollection field value if set, zero value otherwise.
+func (o *TransactionConfiguration) GetDataCollection() TransactionConfigurationDataCollection {
+	if o == nil || IsNil(o.DataCollection) {
+		var ret TransactionConfigurationDataCollection
+		return ret
+	}
+	return *o.DataCollection
+}
+
+// GetDataCollectionOk returns a tuple with the DataCollection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionConfiguration) GetDataCollectionOk() (*TransactionConfigurationDataCollection, bool) {
+	if o == nil || IsNil(o.DataCollection) {
+		return nil, false
+	}
+	return o.DataCollection, true
+}
+
+// HasDataCollection returns a boolean if a field has been set.
+func (o *TransactionConfiguration) HasDataCollection() bool {
+	if o != nil && !IsNil(o.DataCollection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataCollection gets a reference to the given TransactionConfigurationDataCollection and assigns it to the DataCollection field.
+func (o *TransactionConfiguration) SetDataCollection(v TransactionConfigurationDataCollection) {
+	o.DataCollection = &v
+}
+
+// GetDataCollectionOnly returns the DataCollectionOnly field value if set, zero value otherwise.
+func (o *TransactionConfiguration) GetDataCollectionOnly() bool {
+	if o == nil || IsNil(o.DataCollectionOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.DataCollectionOnly
+}
+
+// GetDataCollectionOnlyOk returns a tuple with the DataCollectionOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransactionConfiguration) GetDataCollectionOnlyOk() (*bool, bool) {
+	if o == nil || IsNil(o.DataCollectionOnly) {
+		return nil, false
+	}
+	return o.DataCollectionOnly, true
+}
+
+// HasDataCollectionOnly returns a boolean if a field has been set.
+func (o *TransactionConfiguration) HasDataCollectionOnly() bool {
+	if o != nil && !IsNil(o.DataCollectionOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataCollectionOnly gets a reference to the given bool and assigns it to the DataCollectionOnly field.
+func (o *TransactionConfiguration) SetDataCollectionOnly(v bool) {
+	o.DataCollectionOnly = &v
 }
 
 func (o TransactionConfiguration) MarshalJSON() ([]byte, error) {
@@ -81,8 +147,14 @@ func (o TransactionConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o TransactionConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Transaction) {
-		toSerialize["transaction"] = o.Transaction
+	if !IsNil(o.Timeout) {
+		toSerialize["timeout"] = o.Timeout
+	}
+	if !IsNil(o.DataCollection) {
+		toSerialize["dataCollection"] = o.DataCollection
+	}
+	if !IsNil(o.DataCollectionOnly) {
+		toSerialize["dataCollectionOnly"] = o.DataCollectionOnly
 	}
 	return toSerialize, nil
 }

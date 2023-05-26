@@ -536,15 +536,14 @@ components:
                     duration: 1
                     timeUnit: null
             transaction:
-              transaction:
-                dataCollectionOnly: true
+              dataCollectionOnly: true
+              timeout:
+                duration: 5
+                timeUnit: null
+              dataCollection:
                 timeout:
-                  duration: 5
+                  duration: 2
                   timeUnit: null
-                dataCollection:
-                  timeout:
-                    duration: 2
-                    timeUnit: null
             governmentId:
               verify: null
             updatedAt: updatedAt
@@ -596,15 +595,14 @@ components:
                     duration: 1
                     timeUnit: null
             transaction:
-              transaction:
-                dataCollectionOnly: true
+              dataCollectionOnly: true
+              timeout:
+                duration: 5
+                timeUnit: null
+              dataCollection:
                 timeout:
-                  duration: 5
+                  duration: 2
                   timeUnit: null
-                dataCollection:
-                  timeout:
-                    duration: 2
-                    timeUnit: null
             governmentId:
               verify: null
             updatedAt: updatedAt
@@ -718,18 +716,21 @@ components:
       type: object
     TransactionConfiguration:
       example:
-        transaction:
-          dataCollectionOnly: true
+        dataCollectionOnly: true
+        timeout:
+          duration: 5
+          timeUnit: null
+        dataCollection:
           timeout:
-            duration: 5
+            duration: 2
             timeUnit: null
-          dataCollection:
-            timeout:
-              duration: 2
-              timeUnit: null
       properties:
-        transaction:
-          $ref: '#/components/schemas/TransactionConfiguration_transaction'
+        timeout:
+          $ref: '#/components/schemas/TransactionConfiguration_timeout'
+        dataCollection:
+          $ref: '#/components/schemas/TransactionConfiguration_dataCollection'
+        dataCollectionOnly:
+          type: boolean
       type: object
     VerifyPolicy:
       example:
@@ -781,15 +782,14 @@ components:
                 duration: 1
                 timeUnit: null
         transaction:
-          transaction:
-            dataCollectionOnly: true
+          dataCollectionOnly: true
+          timeout:
+            duration: 5
+            timeUnit: null
+          dataCollection:
             timeout:
-              duration: 5
+              duration: 2
               timeUnit: null
-            dataCollection:
-              timeout:
-                duration: 2
-                timeUnit: null
         governmentId:
           verify: null
         updatedAt: updatedAt
@@ -980,15 +980,14 @@ components:
                   duration: 1
                   timeUnit: null
           transaction:
-            transaction:
-              dataCollectionOnly: true
+            dataCollectionOnly: true
+            timeout:
+              duration: 5
+              timeUnit: null
+            dataCollection:
               timeout:
-                duration: 5
+                duration: 2
                 timeUnit: null
-              dataCollection:
-                timeout:
-                  duration: 2
-                  timeUnit: null
           governmentId:
             verify: null
           updatedAt: updatedAt
@@ -1040,15 +1039,14 @@ components:
                   duration: 1
                   timeUnit: null
           transaction:
-            transaction:
-              dataCollectionOnly: true
+            dataCollectionOnly: true
+            timeout:
+              duration: 5
+              timeUnit: null
+            dataCollection:
               timeout:
-                duration: 5
+                duration: 2
                 timeUnit: null
-              dataCollection:
-                timeout:
-                  duration: 2
-                  timeUnit: null
           governmentId:
             verify: null
           updatedAt: updatedAt
@@ -1100,7 +1098,7 @@ components:
         innerError:
           $ref: '#/components/schemas/P1Error_details_inner_innerError'
       type: object
-    TransactionConfiguration_transaction_timeout:
+    TransactionConfiguration_timeout:
       example:
         duration: 5
         timeUnit: null
@@ -1115,7 +1113,7 @@ components:
       - duration
       - timeUnit
       type: object
-    TransactionConfiguration_transaction_dataCollection_timeout:
+    TransactionConfiguration_dataCollection_timeout:
       example:
         duration: 2
         timeUnit: null
@@ -1130,34 +1128,16 @@ components:
       - duration
       - timeUnit
       type: object
-    TransactionConfiguration_transaction_dataCollection:
+    TransactionConfiguration_dataCollection:
       example:
         timeout:
           duration: 2
           timeUnit: null
       properties:
         timeout:
-          $ref: '#/components/schemas/TransactionConfiguration_transaction_dataCollection_timeout'
+          $ref: '#/components/schemas/TransactionConfiguration_dataCollection_timeout'
       required:
       - timeout
-      type: object
-    TransactionConfiguration_transaction:
-      example:
-        dataCollectionOnly: true
-        timeout:
-          duration: 5
-          timeUnit: null
-        dataCollection:
-          timeout:
-            duration: 2
-            timeUnit: null
-      properties:
-        timeout:
-          $ref: '#/components/schemas/TransactionConfiguration_transaction_timeout'
-        dataCollection:
-          $ref: '#/components/schemas/TransactionConfiguration_transaction_dataCollection'
-        dataCollectionOnly:
-          type: boolean
       type: object
   securitySchemes:
     bearer:
