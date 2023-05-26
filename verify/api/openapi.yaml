@@ -1,0 +1,1167 @@
+openapi: 3.0.0
+info:
+  description: The PingOne Platform API covering the PingOne Verify service
+  title: PingOne Platform API - PingOne Verify
+  version: 2023-05-26
+externalDocs:
+  description: PingOne Platform API Reference - PingOne Verify APIs
+  url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-verify
+servers:
+- description: PingOne Platform API Endpoint
+  url: "https://api.pingone.{suffix}"
+  variables:
+    suffix:
+      default: com
+      enum:
+      - eu
+      - com
+      - asia
+      - ca
+security:
+- bearer: []
+tags:
+- name: Verify Policies
+paths:
+  /v1/environments/{environmentID}/verifyPolicies:
+    get:
+      operationId: readAllVerifyPolicies
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Verify Policies
+      tags:
+      - Verify Policies
+    post:
+      operationId: createVerifyPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Example Verify Policy
+              default: false
+              description: All types required
+              email:
+                createMfaDevice: true
+                otp:
+                  attempts:
+                    count: 5
+                  deliveries:
+                    cooldown:
+                      duration: 30
+                      timeUnit: SECONDS
+                    count: 3
+                  lifeTime:
+                    duration: 10
+                    timeUnit: MINUTES
+                  notification:
+                    templateName: email_phone_verification
+                verify: REQUIRED
+              facialComparison:
+                threshold: HIGH
+                verify: REQUIRED
+              governmentId:
+                verify: REQUIRED
+              liveness:
+                threshold: HIGH
+                verify: REQUIRED
+              phone:
+                createMfaDevice: true
+                otp:
+                  attempts:
+                    count: 5
+                  deliveries:
+                    cooldown:
+                      duration: 30
+                      timeUnit: SECONDS
+                    count: 3
+                  lifeTime:
+                    duration: 10
+                    timeUnit: MINUTES
+                  notification:
+                    templateName: email_phone_verification
+                verify: REQUIRED
+              transaction:
+                dataCollection:
+                  timeout:
+                    duration: 15
+                    timeUnit: MINUTES
+                dataCollectionOnly: false
+                timeout:
+                  duration: 30
+                  timeUnit: MINUTES
+            schema:
+              $ref: '#/components/schemas/VerifyPolicy'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyPolicy'
+          description: Successful response
+      summary: CREATE Verify Policy
+      tags:
+      - Verify Policies
+  /environments/{environmentID}/verifyPolicies/{verifyPolicyID}:
+    delete:
+      operationId: deleteVerifyPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: verifyPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: Delete Verify Policy
+      tags:
+      - Verify Policies
+    get:
+      operationId: readOneVerifyPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: verifyPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyPolicy'
+          description: Successful response
+      summary: READ One Verify Policy
+      tags:
+      - Verify Policies
+    put:
+      operationId: updateVerifyPolicy
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: verifyPolicyID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              default: false
+              description: Verify Government ID and compare Selfie
+              facialComparison:
+                threshold: HIGH
+                verify: REQUIRED
+              governmentId:
+                verify: REQUIRED
+              liveness:
+                threshold: HIGH
+                verify: REQUIRED
+              name: Identity Verification
+            schema:
+              $ref: '#/components/schemas/VerifyPolicy'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyPolicy'
+          description: Successful response
+      summary: UPDATE Verify Policy
+      tags:
+      - Verify Policies
+components:
+  responses:
+    "400":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: "Invalid request received.  Malformed JSON, malformed HTTP request."
+    "401":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Request failed due to authorization issue.
+    "403":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Request failed due to authorization issue.
+    "404":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Not found.
+    "405":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: "Invalid request received.  Malformed JSON, malformed HTTP request."
+    "429":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Request was rate limited
+    "500":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Uncaught error occurred.  Platform outage
+  schemas:
+    EmailPhoneConfiguration:
+      example:
+        createMfaDevice: true
+        verify: null
+        otp:
+          notification:
+            templateName: templateName
+            variantName: variantName
+          lifeTime:
+            duration: 5
+            timeUnit: null
+          attempts:
+            count: 0
+          deliveries:
+            count: 6
+            cooldown:
+              duration: 1
+              timeUnit: null
+      properties:
+        verify:
+          $ref: '#/components/schemas/EnumVerify'
+        createMfaDevice:
+          description: "When enabled, PingOne Verify registers the email address or\
+            \ phone number with PingOne MFA as a verified MFA device."
+          type: boolean
+        otp:
+          $ref: '#/components/schemas/EmailPhoneConfiguration_otp'
+      required:
+      - verify
+      type: object
+    EntityArray:
+      example:
+        size: 7.061401241503109
+        _embedded:
+          verifyPolicies:
+          - liveness:
+              verify: null
+              threshold: null
+            description: description
+            createdAt: createdAt
+            environment:
+              id: id
+            default: true
+            phone:
+              createMfaDevice: true
+              verify: null
+              otp:
+                notification:
+                  templateName: templateName
+                  variantName: variantName
+                lifeTime:
+                  duration: 5
+                  timeUnit: null
+                attempts:
+                  count: 0
+                deliveries:
+                  count: 6
+                  cooldown:
+                    duration: 1
+                    timeUnit: null
+            name: name
+            facialComparison:
+              verify: null
+              threshold: null
+            id: id
+            email:
+              createMfaDevice: true
+              verify: null
+              otp:
+                notification:
+                  templateName: templateName
+                  variantName: variantName
+                lifeTime:
+                  duration: 5
+                  timeUnit: null
+                attempts:
+                  count: 0
+                deliveries:
+                  count: 6
+                  cooldown:
+                    duration: 1
+                    timeUnit: null
+            transaction:
+              transaction:
+                dataCollectionOnly: true
+                timeout:
+                  duration: 5
+                  timeUnit: null
+                dataCollection:
+                  timeout:
+                    duration: 2
+                    timeUnit: null
+            governmentId:
+              verify: null
+            updatedAt: updatedAt
+          - liveness:
+              verify: null
+              threshold: null
+            description: description
+            createdAt: createdAt
+            environment:
+              id: id
+            default: true
+            phone:
+              createMfaDevice: true
+              verify: null
+              otp:
+                notification:
+                  templateName: templateName
+                  variantName: variantName
+                lifeTime:
+                  duration: 5
+                  timeUnit: null
+                attempts:
+                  count: 0
+                deliveries:
+                  count: 6
+                  cooldown:
+                    duration: 1
+                    timeUnit: null
+            name: name
+            facialComparison:
+              verify: null
+              threshold: null
+            id: id
+            email:
+              createMfaDevice: true
+              verify: null
+              otp:
+                notification:
+                  templateName: templateName
+                  variantName: variantName
+                lifeTime:
+                  duration: 5
+                  timeUnit: null
+                attempts:
+                  count: 0
+                deliveries:
+                  count: 6
+                  cooldown:
+                    duration: 1
+                    timeUnit: null
+            transaction:
+              transaction:
+                dataCollectionOnly: true
+                timeout:
+                  duration: 5
+                  timeUnit: null
+                dataCollection:
+                  timeout:
+                    duration: 2
+                    timeUnit: null
+            governmentId:
+              verify: null
+            updatedAt: updatedAt
+      properties:
+        _embedded:
+          $ref: '#/components/schemas/EntityArray__embedded'
+        size:
+          type: number
+      type: object
+    EnumLongTimeUnit:
+      description: "A string that defines the time unit of a specified duration. Options\
+        \ are `SECONDS`, `MINUTES` and `HOURS`."
+      enum:
+      - SECONDS
+      - MINUTES
+      - HOURS
+      type: string
+    EnumShortTimeUnit:
+      description: A string that defines the time unit of a specified duration in
+        `SECONDS` or `MINUTES`.
+      enum:
+      - SECONDS
+      - MINUTES
+      type: string
+    EnumThreshold:
+      description: "A string that defines the verification comparison threshold. Options\
+        \ are `LOW`, `MEDIUM` and `HIGH`."
+      enum:
+      - LOW
+      - MEDIUM
+      - HIGH
+      type: string
+    EnumVerify:
+      description: "A string that defines the verification check requirements. Options\
+        \ are `REQUIRED`, `OPTIONAL` and `DISABLED`."
+      enum:
+      - REQUIRED
+      - OPTIONAL
+      - DISABLED
+      type: string
+    FacialComparisonConfiguration:
+      example:
+        verify: null
+        threshold: null
+      properties:
+        verify:
+          $ref: '#/components/schemas/EnumVerify'
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - threshold
+      - verify
+      type: object
+    GovernmentIdConfiguration:
+      example:
+        verify: null
+      properties:
+        verify:
+          $ref: '#/components/schemas/EnumVerify'
+      required:
+      - verify
+      type: object
+    LivenessConfiguration:
+      example:
+        verify: null
+        threshold: null
+      properties:
+        verify:
+          $ref: '#/components/schemas/EnumVerify'
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - threshold
+      - verify
+      type: object
+    ObjectEnvironment:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the environment associated with the
+            object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
+    P1Error:
+      properties:
+        id:
+          description: "A unique identifier that is stored in log files and always\
+            \ included in an error response. This value can be used to track the error\
+            \ received by the client, with server-side activity included for troubleshooting\
+            \ purposes."
+          type: string
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        details:
+          description: Additional details about the error. Optional information to
+            help resolve the error and to display to users.
+          items:
+            $ref: '#/components/schemas/P1Error_details_inner'
+          type: array
+      type: object
+    TransactionConfiguration:
+      example:
+        transaction:
+          dataCollectionOnly: true
+          timeout:
+            duration: 5
+            timeUnit: null
+          dataCollection:
+            timeout:
+              duration: 2
+              timeUnit: null
+      properties:
+        transaction:
+          $ref: '#/components/schemas/TransactionConfiguration_transaction'
+      type: object
+    VerifyPolicy:
+      example:
+        liveness:
+          verify: null
+          threshold: null
+        description: description
+        createdAt: createdAt
+        environment:
+          id: id
+        default: true
+        phone:
+          createMfaDevice: true
+          verify: null
+          otp:
+            notification:
+              templateName: templateName
+              variantName: variantName
+            lifeTime:
+              duration: 5
+              timeUnit: null
+            attempts:
+              count: 0
+            deliveries:
+              count: 6
+              cooldown:
+                duration: 1
+                timeUnit: null
+        name: name
+        facialComparison:
+          verify: null
+          threshold: null
+        id: id
+        email:
+          createMfaDevice: true
+          verify: null
+          otp:
+            notification:
+              templateName: templateName
+              variantName: variantName
+            lifeTime:
+              duration: 5
+              timeUnit: null
+            attempts:
+              count: 0
+            deliveries:
+              count: 6
+              cooldown:
+                duration: 1
+                timeUnit: null
+        transaction:
+          transaction:
+            dataCollectionOnly: true
+            timeout:
+              duration: 5
+              timeUnit: null
+            dataCollection:
+              timeout:
+                duration: 2
+                timeUnit: null
+        governmentId:
+          verify: null
+        updatedAt: updatedAt
+      properties:
+        id:
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          description: Name displayed in PingOne Admin UI.
+          type: string
+        description:
+          description: "Description displayed in PingOne Admin UI, 1-1024 characters."
+          type: string
+        default:
+          description: Required as true to set this verify policy as the default policy
+            for the environment; otherwise optional and defaults to false.
+          type: boolean
+        governmentId:
+          $ref: '#/components/schemas/GovernmentIdConfiguration'
+        facialComparison:
+          $ref: '#/components/schemas/FacialComparisonConfiguration'
+        liveness:
+          $ref: '#/components/schemas/LivenessConfiguration'
+        email:
+          $ref: '#/components/schemas/EmailPhoneConfiguration'
+        phone:
+          $ref: '#/components/schemas/EmailPhoneConfiguration'
+        transaction:
+          $ref: '#/components/schemas/TransactionConfiguration'
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - name
+      type: object
+    EmailPhoneConfiguration_otp_attempts:
+      description: OTP attempts configuration.
+      example:
+        count: 0
+      properties:
+        count:
+          description: Count of OTP failures.
+          type: integer
+      required:
+      - count
+      type: object
+    EmailPhoneConfiguration_otp_deliveries_cooldown:
+      description: Cooldown (waiting period between OTP attempts) configuration.
+      example:
+        duration: 1
+        timeUnit: null
+      properties:
+        duration:
+          description: Cooldown duration configuration.
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumLongTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    EmailPhoneConfiguration_otp_deliveries:
+      description: OTP delivery configuration.
+      example:
+        count: 6
+        cooldown:
+          duration: 1
+          timeUnit: null
+      properties:
+        count:
+          description: Count of OTP deliveries.
+          type: integer
+        cooldown:
+          $ref: '#/components/schemas/EmailPhoneConfiguration_otp_deliveries_cooldown'
+      required:
+      - cooldown
+      - count
+      type: object
+    EmailPhoneConfiguration_otp_lifeTime:
+      description: The length of time for which the OTP is valid.
+      example:
+        duration: 5
+        timeUnit: null
+      properties:
+        duration:
+          description: OTP duration configuration.
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumLongTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    EmailPhoneConfiguration_otp_notification:
+      description: OTP notification template configuration.
+      example:
+        templateName: templateName
+        variantName: variantName
+      properties:
+        templateName:
+          type: string
+        variantName:
+          type: string
+      required:
+      - templateName
+      type: object
+    EmailPhoneConfiguration_otp:
+      example:
+        notification:
+          templateName: templateName
+          variantName: variantName
+        lifeTime:
+          duration: 5
+          timeUnit: null
+        attempts:
+          count: 0
+        deliveries:
+          count: 6
+          cooldown:
+            duration: 1
+            timeUnit: null
+      properties:
+        attempts:
+          $ref: '#/components/schemas/EmailPhoneConfiguration_otp_attempts'
+        deliveries:
+          $ref: '#/components/schemas/EmailPhoneConfiguration_otp_deliveries'
+        lifeTime:
+          $ref: '#/components/schemas/EmailPhoneConfiguration_otp_lifeTime'
+        notification:
+          $ref: '#/components/schemas/EmailPhoneConfiguration_otp_notification'
+      required:
+      - attempts
+      - deliveries
+      - lifeTime
+      - notification
+      type: object
+    EntityArray__embedded:
+      example:
+        verifyPolicies:
+        - liveness:
+            verify: null
+            threshold: null
+          description: description
+          createdAt: createdAt
+          environment:
+            id: id
+          default: true
+          phone:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 5
+                timeUnit: null
+              attempts:
+                count: 0
+              deliveries:
+                count: 6
+                cooldown:
+                  duration: 1
+                  timeUnit: null
+          name: name
+          facialComparison:
+            verify: null
+            threshold: null
+          id: id
+          email:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 5
+                timeUnit: null
+              attempts:
+                count: 0
+              deliveries:
+                count: 6
+                cooldown:
+                  duration: 1
+                  timeUnit: null
+          transaction:
+            transaction:
+              dataCollectionOnly: true
+              timeout:
+                duration: 5
+                timeUnit: null
+              dataCollection:
+                timeout:
+                  duration: 2
+                  timeUnit: null
+          governmentId:
+            verify: null
+          updatedAt: updatedAt
+        - liveness:
+            verify: null
+            threshold: null
+          description: description
+          createdAt: createdAt
+          environment:
+            id: id
+          default: true
+          phone:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 5
+                timeUnit: null
+              attempts:
+                count: 0
+              deliveries:
+                count: 6
+                cooldown:
+                  duration: 1
+                  timeUnit: null
+          name: name
+          facialComparison:
+            verify: null
+            threshold: null
+          id: id
+          email:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 5
+                timeUnit: null
+              attempts:
+                count: 0
+              deliveries:
+                count: 6
+                cooldown:
+                  duration: 1
+                  timeUnit: null
+          transaction:
+            transaction:
+              dataCollectionOnly: true
+              timeout:
+                duration: 5
+                timeUnit: null
+              dataCollection:
+                timeout:
+                  duration: 2
+                  timeUnit: null
+          governmentId:
+            verify: null
+          updatedAt: updatedAt
+      properties:
+        verifyPolicies:
+          items:
+            $ref: '#/components/schemas/VerifyPolicy'
+          type: array
+      type: object
+    P1Error_details_inner_innerError:
+      description: Additional details to help the client developer resolve the fault
+        (primarily for UI validation reasons).
+      properties:
+        rangeMinimumValue:
+          description: Errors that failed due to range violation. This attribute represents
+            the minimum value of the range.
+          type: integer
+        rangeMaximumValue:
+          description: The maximum range or value of an attribute.
+          type: integer
+        allowedPattern:
+          description: A regex pattern describing an acceptable input pattern.
+          type: string
+        allowedValues:
+          description: A list describing acceptable values.
+          items:
+            type: string
+          type: array
+        maximumValue:
+          description: The maximum value allowed for the request.
+          type: integer
+      type: object
+    P1Error_details_inner:
+      properties:
+        code:
+          description: A general fault code which the client must handle to provide
+            all exception handling routines and to localize messages for users. This
+            code is common across all PingOne services and is human readable (such
+            as a defined constant rather than a number).
+          type: string
+        target:
+          description: The item that caused the error (such as a form field ID or
+            an attribute inside a JSON object).
+          type: string
+        message:
+          description: A short description of the error. This message is intended
+            to assist with debugging and is returned in English only.
+          type: string
+        innerError:
+          $ref: '#/components/schemas/P1Error_details_inner_innerError'
+      type: object
+    TransactionConfiguration_transaction_timeout:
+      example:
+        duration: 5
+        timeUnit: null
+      properties:
+        duration:
+          description: Length of time before transaction timeout expires; range is
+            0-30 minutes or 0-1800 seconds.
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumShortTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    TransactionConfiguration_transaction_dataCollection_timeout:
+      example:
+        duration: 2
+        timeUnit: null
+      properties:
+        duration:
+          description: Length of time before data collection timeout expires; range
+            is 0-30 minutes or 0-1800 seconds.
+          type: integer
+        timeUnit:
+          $ref: '#/components/schemas/EnumShortTimeUnit'
+      required:
+      - duration
+      - timeUnit
+      type: object
+    TransactionConfiguration_transaction_dataCollection:
+      example:
+        timeout:
+          duration: 2
+          timeUnit: null
+      properties:
+        timeout:
+          $ref: '#/components/schemas/TransactionConfiguration_transaction_dataCollection_timeout'
+      required:
+      - timeout
+      type: object
+    TransactionConfiguration_transaction:
+      example:
+        dataCollectionOnly: true
+        timeout:
+          duration: 5
+          timeUnit: null
+        dataCollection:
+          timeout:
+            duration: 2
+            timeUnit: null
+      properties:
+        timeout:
+          $ref: '#/components/schemas/TransactionConfiguration_transaction_timeout'
+        dataCollection:
+          $ref: '#/components/schemas/TransactionConfiguration_transaction_dataCollection'
+        dataCollectionOnly:
+          type: boolean
+      type: object
+  securitySchemes:
+    bearer:
+      bearerFormat: JWT
+      description: OAuth bearer token (see documentation)
+      scheme: bearer
+      type: http

@@ -335,7 +335,7 @@ security:
 tags:
 - name: Verify Policies
 paths:
-  /v1/environments/{envID}/verifyPolicies:
+  /v1/environments/{environmentID}/verifyPolicies:
     post:
       tags:
       - Verify Policies
@@ -456,7 +456,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EntityArray'  
-  /environments/{envID}/verifyPolicies/{verifyPolicyID}:
+  /environments/{environmentID}/verifyPolicies/{verifyPolicyID}:
     get:
       tags:
       - Verify Policies
