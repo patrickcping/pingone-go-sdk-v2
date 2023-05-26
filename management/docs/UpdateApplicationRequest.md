@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
 **SloEndpoint** | Pointer to **string** | The single logout endpoint URL. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
+**SloWindow** | Pointer to **int32** | Defines how long PingOne can exchange logout messages with the application, specifically a &#x60;LogoutRequest&#x60; from the application, since the initial request. PingOne can also send a &#x60;LogoutRequest&#x60; to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens. | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
@@ -633,6 +634,31 @@ SetSloResponseEndpoint sets SloResponseEndpoint field to given value.
 `func (o *UpdateApplicationRequest) HasSloResponseEndpoint() bool`
 
 HasSloResponseEndpoint returns a boolean if a field has been set.
+
+### GetSloWindow
+
+`func (o *UpdateApplicationRequest) GetSloWindow() int32`
+
+GetSloWindow returns the SloWindow field if non-nil, zero value otherwise.
+
+### GetSloWindowOk
+
+`func (o *UpdateApplicationRequest) GetSloWindowOk() (*int32, bool)`
+
+GetSloWindowOk returns a tuple with the SloWindow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSloWindow
+
+`func (o *UpdateApplicationRequest) SetSloWindow(v int32)`
+
+SetSloWindow sets SloWindow field to given value.
+
+### HasSloWindow
+
+`func (o *UpdateApplicationRequest) HasSloWindow() bool`
+
+HasSloWindow returns a boolean if a field has been set.
 
 ### GetSpEntityId
 
