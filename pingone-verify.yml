@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: PingOne Platform API - PingOne Verify
-  description: The PingOne Platform API covering the PingOne Risk service
+  description: The PingOne Platform API covering the PingOne Verify service
   version: '2023-05-26'
 externalDocs:
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-verify
@@ -24,23 +24,91 @@ components:
       scheme: bearer
       bearerFormat: JWT
       description: OAuth bearer token (see documentation)
-  schemas:        
+  schemas:
+    EmailPhoneConfiguration:
+      type: object
+      properties:
+        verify:
+          $ref: '#/components/schemas/EnumVerify'           
+          description: Controls if email or phone verification is REQUIRED, OPTIONAL, or DISABLED.
+        createMfaDevice:
+          type: boolean
+          description: When enabled, PingOne Verify registers the email address or phone number with PingOne MFA as a verified MFA device.
+        otp:
+          type: object
+          properties:
+            attempts:
+              type: object
+              description: OTP attempts configuration.
+              properties:
+                count:
+                  type: integer
+                  description: Count of OTP failures.
+              required:
+                - count
+            deliveries:
+              type: object
+              description: OTP delivery configuration.
+              properties:
+                count:
+                  type: integer
+                  description: Count of OTP deliveries.
+                cooldown:
+                  type: object
+                  description: Cooldown (waiting period between OTP attempts) configuration.
+                  properties:
+                    duration:
+                      type: integer
+                      description: Cooldown duration configuration.
+                    timeUnit:
+                      $ref: '#/components/schemas/EnumLongTimeUnit'  
+                      description: Time unit of cooldown duration. Options are SECONDS, MINUTES or HOURS.
+                  required:
+                    - duration
+                    - timeUnit
+              required:
+                - count
+                - cooldown
+            lifeTime:
+              type: object
+              description: The length of time for which the OTP is valid.
+              properties:
+                duration:
+                  type: integer
+                  description: OTP duration configuration.
+                timeUnit:
+                  $ref: '#/components/schemas/EnumLongTimeUnit'  
+                  description: Time unit of OTP duration configuration. Options are SECONDS, MINUTES, HOURS.
+              required:
+                - duration
+                - timeUnit
+            notification:
+              type: object
+              description: OTP notification template configuration.
+              properties:
+                templateName:
+                  type: string
+                variantName:
+                  type: string
+              required:
+                - templateName
+          required:
+            - attempts
+            - lifeTime
+            - deliveries
+            - notification
+      required:
+        - verify
     EntityArray:
       type: object
       properties:
         '_embedded':
           type: object
           properties:
-            riskPolicySets:
+            verifyPolicies:
               type: array
               items:
-                $ref: '#/components/schemas/RiskPolicySet'
-            riskPredictors:
-              type: array
-              items:
-                $ref: '#/components/schemas/RiskPredictor'
-        count:
-          type: number
+                $ref: '#/components/schemas/VerifyPolicy'
         size:
           type: number
     EnumLongTimeUnit:
@@ -63,11 +131,11 @@ components:
       type: object
       properties:
         verify:
+          $ref: '#/components/schemas/EnumVerify'        
           description: Controls if facial comparison is REQUIRED, OPTIONAL, or DISABLED.
-          type: string
         threshold:
+          $ref: '#/components/schemas/EnumThreshold'                
           description: Threshold for successful facial comparison; can be LOW, MEDIUM, or HIGH (for which PingOne Verify uses industry and vendor recommended definitions).
-          type: string        
       required:
         - threshold
         - verify      
@@ -75,59 +143,22 @@ components:
       type: object
       properties:
         verify:
+          $ref: '#/components/schemas/EnumVerify'     
           description: Controls if Government ID verification is REQUIRED, OPTIONAL, or DISABLED.
-          type: string
       required:
         - verify
     LivenessConfiguration:    
       type: object
       properties:
         verify:
+          $ref: '#/components/schemas/EnumVerify'             
           description: Controls if liveness check is REQUIRED, OPTIONAL, or DISABLED.
-          type: string
         threshold:
+          $ref: '#/components/schemas/EnumThreshold'                
           description: Threshold for successful facial comparison; can be LOW, MEDIUM, or HIGH (for which PingOne Verify uses industry and vendor recommended definitions).
-          type: string        
       required:
         - threshold
         - verify       
-    TransactionConfiguration:    
-      type: object
-      properties:
-        transaction:
-          type: object
-          properties:
-            timeout:
-              type: object
-              properties:
-                duration:
-                  type: integer
-                  description: Length of time before transaction timeout expires; range is 0-30 minutes or 0-1800 seconds.                  
-                timeUnit:
-                  $ref: '#/components/schemas/EnumShortTimeUnit'
-                  description: Time unit of transaction timeout; can be SECONDS, MINUTES.
-              required:
-                - duration
-                - timeUnit
-            dataCollection:
-              type: object
-              properties:
-                timeout:
-                  type: object
-                  properties:
-                    duration:
-                      type: integer
-                      description: Length of time before data collection timeout expires; range is 0-30 minutes or 0-1800 seconds.
-                    timeUnit:
-                      $ref: '#/components/schemas/EnumShortTimeUnit'
-                      description: Time unit of transaction timeout; can be SECONDS, MINUTES.
-                  required:
-                    - duration
-                    - timeUnit
-              required:
-                - timeout
-            dataCollectionOnly:
-              type: boolean
     ObjectEnvironment:
       type: object
       readOnly: true
@@ -184,187 +215,139 @@ components:
                   maximumValue:
                     description: The maximum value allowed for the request.
                     type: integer
-
+    TransactionConfiguration:    
+      type: object
+      properties:
+        transaction:
+          type: object
+          properties:
+            timeout:
+              type: object
+              properties:
+                duration:
+                  type: integer
+                  description: Length of time before transaction timeout expires; range is 0-30 minutes or 0-1800 seconds.                  
+                timeUnit:
+                  $ref: '#/components/schemas/EnumShortTimeUnit'
+                  description: Time unit of transaction timeout; can be SECONDS, MINUTES.
+              required:
+                - duration
+                - timeUnit
+            dataCollection:
+              type: object
+              properties:
+                timeout:
+                  type: object
+                  properties:
+                    duration:
+                      type: integer
+                      description: Length of time before data collection timeout expires; range is 0-30 minutes or 0-1800 seconds.
+                    timeUnit:
+                      $ref: '#/components/schemas/EnumShortTimeUnit'
+                      description: Time unit of transaction timeout; can be SECONDS, MINUTES.
+                  required:
+                    - duration
+                    - timeUnit
+              required:
+                - timeout
+            dataCollectionOnly:
+              type: boolean
+    VerifyPolicy:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+          description: Name displayed in PingOne Admin UI.
+        description:
+          type: string
+          description: Description displayed in PingOne Admin UI, 1-1024 characters.
+        default:
+          type: boolean
+          description: Required as true to set this verify policy as the default policy for the environment; otherwise optional and defaults to false.
+        governmentId:
+          $ref: '#/components/schemas/GovernmentIdConfiguration'
+        facialComparison:
+          $ref: '#/components/schemas/FacialComparisonConfiguration'
+        liveness:
+          $ref: '#/components/schemas/LivenessConfiguration'
+        email:
+          $ref: '#/components/schemas/EmailPhoneConfiguration'
+        phone:
+          $ref: '#/components/schemas/EmailPhoneConfiguration'
+        transaction:
+          $ref: '#/components/schemas/TransactionConfiguration'
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - name
+  responses:
+    '400':
+      description: Invalid request received.  Malformed JSON, malformed HTTP request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+    '401':
+      description: Request failed due to authorization issue.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+    '403':
+      description: Request failed due to authorization issue.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+    '404':
+      description: Not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+    '405':
+      description: Invalid request received.  Malformed JSON, malformed HTTP request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+    '429':
+      description: Request was rate limited
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+    '500':
+      description: Uncaught error occurred.  Platform outage
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+security:
+  - bearer: []
+tags:
+- name: Verify Policies
 paths:
-  /environments/{envID}/verifyPolicies:
-    get:
-      tags:
-      - Verify Policies
-      summary: Read All Verify Policies
-      description: This PingOne collection contains only the REST API request examples without documentation. For complete documentation, go to <a href="https://apidocs.pingidentity.com/pingone/platform/v1/api/">apidocs.pingidentity.com</a>.
-      operationId: readAllVerifyPolicies
-      responses:
-        '200':
-          description: ''
+  /v1/environments/{envID}/verifyPolicies:
     post:
       tags:
       - Verify Policies
-      summary: Create Verify Policy
-      description: This PingOne collection contains only the REST API request examples without documentation. For complete documentation, go to <a href="https://apidocs.pingidentity.com/pingone/platform/v1/api/">apidocs.pingidentity.com</a>.
+      summary: CREATE Verify Policy
       operationId: createVerifyPolicy
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                default:
-                  type: boolean
-                  example: false
-                description:
-                  type: string
-                  example: All types required
-                email:
-                  type: object
-                  properties:
-                    createMfaDevice:
-                      type: boolean
-                      example: true
-                    otp:
-                      type: object
-                      properties:
-                        attempts:
-                          type: object
-                          properties:
-                            count:
-                              type: number
-                              example: 5
-                        deliveries:
-                          type: object
-                          properties:
-                            cooldown:
-                              type: object
-                              properties:
-                                duration:
-                                  type: number
-                                  example: 30
-                                timeUnit:
-                                  type: string
-                                  example: SECONDS
-                            count:
-                              type: number
-                              example: 3
-                        lifeTime:
-                          type: object
-                          properties:
-                            duration:
-                              type: number
-                              example: 10
-                            timeUnit:
-                              type: string
-                              example: MINUTES
-                        notification:
-                          type: object
-                          properties:
-                            templateName:
-                              type: string
-                              example: email_phone_verification
-                    verify:
-                      type: string
-                      example: REQUIRED
-                facialComparison:
-                  type: object
-                  properties:
-                    threshold:
-                      type: string
-                      example: HIGH
-                    verify:
-                      type: string
-                      example: REQUIRED
-                governmentId:
-                  type: object
-                  properties:
-                    verify:
-                      type: string
-                      example: REQUIRED
-                liveness:
-                  type: object
-                  properties:
-                    threshold:
-                      type: string
-                      example: HIGH
-                    verify:
-                      type: string
-                      example: REQUIRED
-                name:
-                  type: string
-                  example: Verify everything
-                phone:
-                  type: object
-                  properties:
-                    createMfaDevice:
-                      type: boolean
-                      example: true
-                    otp:
-                      type: object
-                      properties:
-                        attempts:
-                          type: object
-                          properties:
-                            count:
-                              type: number
-                              example: 5
-                        deliveries:
-                          type: object
-                          properties:
-                            cooldown:
-                              type: object
-                              properties:
-                                duration:
-                                  type: number
-                                  example: 30
-                                timeUnit:
-                                  type: string
-                                  example: SECONDS
-                            count:
-                              type: number
-                              example: 3
-                        lifeTime:
-                          type: object
-                          properties:
-                            duration:
-                              type: number
-                              example: 10
-                            timeUnit:
-                              type: string
-                              example: MINUTES
-                        notification:
-                          type: object
-                          properties:
-                            templateName:
-                              type: string
-                              example: email_phone_verification
-                    verify:
-                      type: string
-                      example: REQUIRED
-                transaction:
-                  type: object
-                  properties:
-                    dataCollection:
-                      type: object
-                      properties:
-                        timeout:
-                          type: object
-                          properties:
-                            duration:
-                              type: number
-                              example: 15
-                            timeUnit:
-                              type: string
-                              example: MINUTES
-                    dataCollectionOnly:
-                      type: boolean
-                      example: false
-                    timeout:
-                      type: object
-                      properties:
-                        duration:
-                          type: number
-                          example: 30
-                        timeUnit:
-                          type: string
-                          example: MINUTES
+              $ref: '#/components/schemas/VerifyPolicy'
             example:
+              name: Example Verify Policy
               default: false
               description: All types required
               email:
@@ -391,7 +374,6 @@ paths:
               liveness:
                 threshold: HIGH
                 verify: REQUIRED
-              name: Verify everything
               phone:
                 createMfaDevice: true
                 otp:
@@ -417,70 +399,109 @@ paths:
                 timeout:
                   duration: 30
                   timeUnit: MINUTES
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyPolicy'
+    get:
+      tags:
+      - Verify Policies
+      summary: READ All Verify Policies
+      operationId: readAllVerifyPolicies
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
         '200':
-          description: ''
-    parameters:
-    - name: envID
-      in: path
-      required: true
-      schema:
-        type: string
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'  
   /environments/{envID}/verifyPolicies/{verifyPolicyID}:
     get:
       tags:
       - Verify Policies
-      summary: Read One Verify Policy
-      description: This PingOne collection contains only the REST API request examples without documentation. For complete documentation, go to <a href="https://apidocs.pingidentity.com/pingone/platform/v1/api/">apidocs.pingidentity.com</a>.
+      summary: READ One Verify Policy
       operationId: readOneVerifyPolicy
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: verifyPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
         '200':
-          description: ''
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyPolicy'
     put:
       tags:
       - Verify Policies
-      summary: Update Verify Policy
-      description: This PingOne collection contains only the REST API request examples without documentation. For complete documentation, go to <a href="https://apidocs.pingidentity.com/pingone/platform/v1/api/">apidocs.pingidentity.com</a>.
+      summary: UPDATE Verify Policy
       operationId: updateVerifyPolicy
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                default:
-                  type: boolean
-                  example: false
-                description:
-                  type: string
-                  example: Verify Government ID and compare Selfie
-                facialComparison:
-                  type: object
-                  properties:
-                    threshold:
-                      type: string
-                      example: HIGH
-                    verify:
-                      type: string
-                      example: REQUIRED
-                governmentId:
-                  type: object
-                  properties:
-                    verify:
-                      type: string
-                      example: REQUIRED
-                liveness:
-                  type: object
-                  properties:
-                    threshold:
-                      type: string
-                      example: HIGH
-                    verify:
-                      type: string
-                      example: REQUIRED
-                name:
-                  type: string
-                  example: Identity Verification
+              $ref: '#/components/schemas/VerifyPolicy'
             example:
               default: false
               description: Verify Government ID and compare Selfie
@@ -493,30 +514,66 @@ paths:
                 threshold: HIGH
                 verify: REQUIRED
               name: Identity Verification
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: verifyPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
         '200':
-          description: ''
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyPolicy'
     delete:
       tags:
       - Verify Policies
       summary: Delete Verify Policy
-      description: This PingOne collection contains only the REST API request examples without documentation. For complete documentation, go to <a href="https://apidocs.pingidentity.com/pingone/platform/v1/api/">apidocs.pingidentity.com</a>.
       operationId: deleteVerifyPolicy
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: verifyPolicyID
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
-        '200':
-          description: ''
-    parameters:
-    - name: envID
-      in: path
-      required: true
-      schema:
-        type: string
-    - name: verifyPolicyID
-      in: path
-      required: true
-      schema:
-        type: string
-tags:
-- name: Verify Policies
-  description: This PingOne collection contains only the REST API request examples without documentation. For complete documentation, go to <a href="https://apidocs.pingidentity.com/pingone/platform/v1/api/">apidocs.pingidentity.com</a>.
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '204':
+          description: Successful response
+
 
