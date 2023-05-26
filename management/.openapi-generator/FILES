@@ -237,6 +237,7 @@ docs/EnumIdentityProviderAttributeMappingType.md
 docs/EnumIdentityProviderAttributeMappingUpdate.md
 docs/EnumIdentityProviderExt.md
 docs/EnumIdentityProviderOIDCTokenAuthMethod.md
+docs/EnumIdentityProviderSAMLSLOBinding.md
 docs/EnumIdentityProviderSAMLSSOBinding.md
 docs/EnumImageFormat.md
 docs/EnumKeyRotationPolicyAlgorithm.md
@@ -734,6 +735,7 @@ model_enum_identity_provider_attribute_mapping_type.go
 model_enum_identity_provider_attribute_mapping_update.go
 model_enum_identity_provider_ext.go
 model_enum_identity_provider_oidc_token_auth_method.go
+model_enum_identity_provider_samlslo_binding.go
 model_enum_identity_provider_samlsso_binding.go
 model_enum_image_format.go
 model_enum_key_rotation_policy_algorithm.go

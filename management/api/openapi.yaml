@@ -23456,6 +23456,15 @@ components:
       - HTTP_POST
       - HTTP_REDIRECT
       type: string
+    EnumIdentityProviderSAMLSLOBinding:
+      default: HTTP_POST
+      description: The binding protocol to be used for the logout response. Options
+        are `HTTP_REDIRECT` or `HTTP_POST`. The default is `HTTP_POST`; existing configurations
+        with no data default to `HTTP_POST`. This is an optional property.
+      enum:
+      - HTTP_POST
+      - HTTP_REDIRECT
+      type: string
     EnumImageFormat:
       description: "A string that specifies the type of format used for the image.\
         \ Options are jpg, png, and gif."
@@ -29458,6 +29467,15 @@ components:
             \ response. If a value is not provided, the sloEndpoint property value\
             \ is used to submit SLO response."
           type: string
+        sloWindow:
+          description: "Defines how long PingOne can exchange logout messages with\
+            \ the application, specifically a `LogoutRequest` from the application,\
+            \ since the initial request. PingOne can also send a `LogoutRequest` to\
+            \ the application when a single logout is initiated by the user from other\
+            \ session participants, such as an application or identity provider. This\
+            \ setting is per application. The SLO logout is separate from the user\
+            \ session logout that revokes all tokens."
+          type: integer
         spEntityId:
           description: A string that specifies the service provider entity ID used
             to lookup the application. This is a required property and is unique within
@@ -32398,6 +32416,27 @@ components:
           description: A string that specifies the SSO endpoint for the authentication
             request.
           type: string
+        sloBinding:
+          $ref: '#/components/schemas/EnumIdentityProviderSAMLSLOBinding'
+        sloEndpoint:
+          description: "The logout endpoint URL. This is an optional property. However,\
+            \ if a `sloEndpoint` logout endpoint URL is not defined, logout actions\
+            \ result in an error."
+          type: string
+        sloResponseEndpoint:
+          description: "The endpoint URL to submit the logout response. If a value\
+            \ is not provided, the `sloEndpoint` property value is used to submit\
+            \ SLO response."
+          type: string
+        sloWindow:
+          description: "Defines how long PingOne can exchange logout messages with\
+            \ the application, specifically a `LogoutRequest` from the application,\
+            \ since the initial request. PingOne can also send a `LogoutRequest` to\
+            \ the application when a single logout is initiated by the user from other\
+            \ session participants, such as an application or identity provider. This\
+            \ setting is per application. The SLO logout is separate from the user\
+            \ session logout that revokes all tokens."
+          type: integer
       required:
       - idpEntityId
       - idpVerification

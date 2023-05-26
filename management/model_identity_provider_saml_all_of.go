@@ -30,6 +30,13 @@ type IdentityProviderSAMLAllOf struct {
 	SsoBinding EnumIdentityProviderSAMLSSOBinding `json:"ssoBinding"`
 	// A string that specifies the SSO endpoint for the authentication request.
 	SsoEndpoint string `json:"ssoEndpoint"`
+	SloBinding *EnumIdentityProviderSAMLSLOBinding `json:"sloBinding,omitempty"`
+	// The logout endpoint URL. This is an optional property. However, if a `sloEndpoint` logout endpoint URL is not defined, logout actions result in an error.
+	SloEndpoint *string `json:"sloEndpoint,omitempty"`
+	// The endpoint URL to submit the logout response. If a value is not provided, the `sloEndpoint` property value is used to submit SLO response.
+	SloResponseEndpoint *string `json:"sloResponseEndpoint,omitempty"`
+	// Defines how long PingOne can exchange logout messages with the application, specifically a `LogoutRequest` from the application, since the initial request. PingOne can also send a `LogoutRequest` to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens.
+	SloWindow *int32 `json:"sloWindow,omitempty"`
 }
 
 // NewIdentityProviderSAMLAllOf instantiates a new IdentityProviderSAMLAllOf object
@@ -43,6 +50,8 @@ func NewIdentityProviderSAMLAllOf(idpEntityId string, idpVerification IdentityPr
 	this.SpEntityId = spEntityId
 	this.SsoBinding = ssoBinding
 	this.SsoEndpoint = ssoEndpoint
+	var sloBinding EnumIdentityProviderSAMLSLOBinding = ENUMIDENTITYPROVIDERSAMLSLOBINDING_POST
+	this.SloBinding = &sloBinding
 	return &this
 }
 
@@ -51,6 +60,8 @@ func NewIdentityProviderSAMLAllOf(idpEntityId string, idpVerification IdentityPr
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityProviderSAMLAllOfWithDefaults() *IdentityProviderSAMLAllOf {
 	this := IdentityProviderSAMLAllOf{}
+	var sloBinding EnumIdentityProviderSAMLSLOBinding = ENUMIDENTITYPROVIDERSAMLSLOBINDING_POST
+	this.SloBinding = &sloBinding
 	return &this
 }
 
@@ -238,6 +249,134 @@ func (o *IdentityProviderSAMLAllOf) SetSsoEndpoint(v string) {
 	o.SsoEndpoint = v
 }
 
+// GetSloBinding returns the SloBinding field value if set, zero value otherwise.
+func (o *IdentityProviderSAMLAllOf) GetSloBinding() EnumIdentityProviderSAMLSLOBinding {
+	if o == nil || IsNil(o.SloBinding) {
+		var ret EnumIdentityProviderSAMLSLOBinding
+		return ret
+	}
+	return *o.SloBinding
+}
+
+// GetSloBindingOk returns a tuple with the SloBinding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderSAMLAllOf) GetSloBindingOk() (*EnumIdentityProviderSAMLSLOBinding, bool) {
+	if o == nil || IsNil(o.SloBinding) {
+		return nil, false
+	}
+	return o.SloBinding, true
+}
+
+// HasSloBinding returns a boolean if a field has been set.
+func (o *IdentityProviderSAMLAllOf) HasSloBinding() bool {
+	if o != nil && !IsNil(o.SloBinding) {
+		return true
+	}
+
+	return false
+}
+
+// SetSloBinding gets a reference to the given EnumIdentityProviderSAMLSLOBinding and assigns it to the SloBinding field.
+func (o *IdentityProviderSAMLAllOf) SetSloBinding(v EnumIdentityProviderSAMLSLOBinding) {
+	o.SloBinding = &v
+}
+
+// GetSloEndpoint returns the SloEndpoint field value if set, zero value otherwise.
+func (o *IdentityProviderSAMLAllOf) GetSloEndpoint() string {
+	if o == nil || IsNil(o.SloEndpoint) {
+		var ret string
+		return ret
+	}
+	return *o.SloEndpoint
+}
+
+// GetSloEndpointOk returns a tuple with the SloEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderSAMLAllOf) GetSloEndpointOk() (*string, bool) {
+	if o == nil || IsNil(o.SloEndpoint) {
+		return nil, false
+	}
+	return o.SloEndpoint, true
+}
+
+// HasSloEndpoint returns a boolean if a field has been set.
+func (o *IdentityProviderSAMLAllOf) HasSloEndpoint() bool {
+	if o != nil && !IsNil(o.SloEndpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetSloEndpoint gets a reference to the given string and assigns it to the SloEndpoint field.
+func (o *IdentityProviderSAMLAllOf) SetSloEndpoint(v string) {
+	o.SloEndpoint = &v
+}
+
+// GetSloResponseEndpoint returns the SloResponseEndpoint field value if set, zero value otherwise.
+func (o *IdentityProviderSAMLAllOf) GetSloResponseEndpoint() string {
+	if o == nil || IsNil(o.SloResponseEndpoint) {
+		var ret string
+		return ret
+	}
+	return *o.SloResponseEndpoint
+}
+
+// GetSloResponseEndpointOk returns a tuple with the SloResponseEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderSAMLAllOf) GetSloResponseEndpointOk() (*string, bool) {
+	if o == nil || IsNil(o.SloResponseEndpoint) {
+		return nil, false
+	}
+	return o.SloResponseEndpoint, true
+}
+
+// HasSloResponseEndpoint returns a boolean if a field has been set.
+func (o *IdentityProviderSAMLAllOf) HasSloResponseEndpoint() bool {
+	if o != nil && !IsNil(o.SloResponseEndpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetSloResponseEndpoint gets a reference to the given string and assigns it to the SloResponseEndpoint field.
+func (o *IdentityProviderSAMLAllOf) SetSloResponseEndpoint(v string) {
+	o.SloResponseEndpoint = &v
+}
+
+// GetSloWindow returns the SloWindow field value if set, zero value otherwise.
+func (o *IdentityProviderSAMLAllOf) GetSloWindow() int32 {
+	if o == nil || IsNil(o.SloWindow) {
+		var ret int32
+		return ret
+	}
+	return *o.SloWindow
+}
+
+// GetSloWindowOk returns a tuple with the SloWindow field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderSAMLAllOf) GetSloWindowOk() (*int32, bool) {
+	if o == nil || IsNil(o.SloWindow) {
+		return nil, false
+	}
+	return o.SloWindow, true
+}
+
+// HasSloWindow returns a boolean if a field has been set.
+func (o *IdentityProviderSAMLAllOf) HasSloWindow() bool {
+	if o != nil && !IsNil(o.SloWindow) {
+		return true
+	}
+
+	return false
+}
+
+// SetSloWindow gets a reference to the given int32 and assigns it to the SloWindow field.
+func (o *IdentityProviderSAMLAllOf) SetSloWindow(v int32) {
+	o.SloWindow = &v
+}
+
 func (o IdentityProviderSAMLAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -259,6 +398,18 @@ func (o IdentityProviderSAMLAllOf) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["ssoBinding"] = o.SsoBinding
 	toSerialize["ssoEndpoint"] = o.SsoEndpoint
+	if !IsNil(o.SloBinding) {
+		toSerialize["sloBinding"] = o.SloBinding
+	}
+	if !IsNil(o.SloEndpoint) {
+		toSerialize["sloEndpoint"] = o.SloEndpoint
+	}
+	if !IsNil(o.SloResponseEndpoint) {
+		toSerialize["sloResponseEndpoint"] = o.SloResponseEndpoint
+	}
+	if !IsNil(o.SloWindow) {
+		toSerialize["sloWindow"] = o.SloWindow
+	}
 	return toSerialize, nil
 }
 
