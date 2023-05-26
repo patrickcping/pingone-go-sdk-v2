@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.6.1](./risk/CHANGELOG.md)
-    * **Bug** Fix the `RiskPolicyResult` object, where the `Level` should only be `LOW`.
+    * **Bug** Fix the `RiskPolicyResult` object, where the `Level` should only be `LOW`. [#178](https://github.com/patrickcping/pingone-go-sdk-v2/pull/178)
 
 # Release (2023-05-22)
 
