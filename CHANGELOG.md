@@ -1,6 +1,6 @@
 # Release (Unreleased)
 
-* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.21.1](./management/CHANGELOG.md)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.22.0](./management/CHANGELOG.md)
     * **Enhancement** Added `SloWindow` optional attribute to the Application SAML objects. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
     * **Enhancement** Added SLO optional attributes to the SAML External Identity Provider object. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.6.1](./risk/CHANGELOG.md)
