@@ -1,3 +1,7 @@
+# v0.6.1 (Unreleased)
+
+* **Bug** Fix the `RiskPolicyResult` object, where the `Level` should only be `LOW`.
+
 # v0.6.0 (2023-05-19)
 
 * **Breaking change** `RiskPolicySetRiskPoliciesInner` model changed to `RiskPolicy`. [#170](https://github.com/patrickcping/pingone-go-sdk-v2/pull/170)

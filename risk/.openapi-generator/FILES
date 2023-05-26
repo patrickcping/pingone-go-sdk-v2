@@ -20,6 +20,7 @@ docs/EnumPredictorVelocityUseType.md
 docs/EnumResultType.md
 docs/EnumRiskLevel.md
 docs/EnumRiskPolicyConditionType.md
+docs/EnumRiskPolicyResultLevel.md
 docs/EnumThresholdSource.md
 docs/EnumUserRiskBehaviorRiskModel.md
 docs/EnumUserType.md
@@ -124,6 +125,7 @@ model_enum_predictor_velocity_use_type.go
 model_enum_result_type.go
 model_enum_risk_level.go
 model_enum_risk_policy_condition_type.go
+model_enum_risk_policy_result_level.go
 model_enum_threshold_source.go
 model_enum_user_risk_behavior_risk_model.go
 model_enum_user_type.go
