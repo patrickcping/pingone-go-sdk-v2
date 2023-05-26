@@ -17,18 +17,17 @@ import (
 // checks if the RiskPolicyResult type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RiskPolicyResult{}
 
-// RiskPolicyResult struct for RiskPolicyResult
+// RiskPolicyResult A result object that specifies the result returned if the policy is evaluated as true. If several policies are evaluated as true, the result related to the highest priority policy is returned. for more information, see the Result attribute data model in the Risk Evaluations topic.
 type RiskPolicyResult struct {
-	Level EnumRiskLevel `json:"level"`
+	Level EnumRiskPolicyResultLevel `json:"level"`
 	Type *EnumResultType `json:"type,omitempty"`
-	Value *string `json:"value,omitempty"`
 }
 
 // NewRiskPolicyResult instantiates a new RiskPolicyResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPolicyResult(level EnumRiskLevel) *RiskPolicyResult {
+func NewRiskPolicyResult(level EnumRiskPolicyResultLevel) *RiskPolicyResult {
 	this := RiskPolicyResult{}
 	this.Level = level
 	return &this
@@ -43,9 +42,9 @@ func NewRiskPolicyResultWithDefaults() *RiskPolicyResult {
 }
 
 // GetLevel returns the Level field value
-func (o *RiskPolicyResult) GetLevel() EnumRiskLevel {
+func (o *RiskPolicyResult) GetLevel() EnumRiskPolicyResultLevel {
 	if o == nil {
-		var ret EnumRiskLevel
+		var ret EnumRiskPolicyResultLevel
 		return ret
 	}
 
@@ -54,7 +53,7 @@ func (o *RiskPolicyResult) GetLevel() EnumRiskLevel {
 
 // GetLevelOk returns a tuple with the Level field value
 // and a boolean to check if the value has been set.
-func (o *RiskPolicyResult) GetLevelOk() (*EnumRiskLevel, bool) {
+func (o *RiskPolicyResult) GetLevelOk() (*EnumRiskPolicyResultLevel, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +61,7 @@ func (o *RiskPolicyResult) GetLevelOk() (*EnumRiskLevel, bool) {
 }
 
 // SetLevel sets field value
-func (o *RiskPolicyResult) SetLevel(v EnumRiskLevel) {
+func (o *RiskPolicyResult) SetLevel(v EnumRiskPolicyResultLevel) {
 	o.Level = v
 }
 
@@ -98,38 +97,6 @@ func (o *RiskPolicyResult) SetType(v EnumResultType) {
 	o.Type = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
-func (o *RiskPolicyResult) GetValue() string {
-	if o == nil || IsNil(o.Value) {
-		var ret string
-		return ret
-	}
-	return *o.Value
-}
-
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RiskPolicyResult) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
-		return nil, false
-	}
-	return o.Value, true
-}
-
-// HasValue returns a boolean if a field has been set.
-func (o *RiskPolicyResult) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
-func (o *RiskPolicyResult) SetValue(v string) {
-	o.Value = &v
-}
-
 func (o RiskPolicyResult) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -143,9 +110,6 @@ func (o RiskPolicyResult) ToMap() (map[string]interface{}, error) {
 	toSerialize["level"] = o.Level
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
 }

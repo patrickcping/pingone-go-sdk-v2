@@ -936,7 +936,6 @@ components:
             - result:
                 level: null
                 type: null
-                value: value
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -969,7 +968,6 @@ components:
             - result:
                 level: null
                 type: null
-                value: value
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1018,7 +1016,6 @@ components:
             - result:
                 level: null
                 type: null
-                value: value
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1051,7 +1048,6 @@ components:
             - result:
                 level: null
                 type: null
-                value: value
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1137,6 +1133,12 @@ components:
       - AGGREGATED_SCORES
       - VALUE_COMPARISON
       - IP_RANGE
+      type: string
+    EnumRiskPolicyResultLevel:
+      description: "Contains the default result level returned if none of the conditions\
+        \ in the policy are evaluated to true. At this time, the value must be `LOW`."
+      enum:
+      - LOW
       type: string
     EnumPredictorCompositeConditionType:
       enum:
@@ -1638,7 +1640,6 @@ components:
         result:
           level: null
           type: null
-          value: value
         createdAt: 2000-01-23T04:56:07.000+00:00
         condition:
           aggregatedWeights:
@@ -1703,7 +1704,7 @@ components:
             \ list is assigned priority 2 and so on."
           type: integer
         result:
-          $ref: '#/components/schemas/RiskPolicyResult'
+          $ref: '#/components/schemas/RiskPolicy_result'
         updatedAt:
           description: The time the resource was last updated (format ISO-8061).
           format: date-time
@@ -1730,7 +1731,6 @@ components:
         - result:
             level: null
             type: null
-            value: value
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
@@ -1763,7 +1763,6 @@ components:
         - result:
             level: null
             type: null
-            value: value
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
@@ -2089,7 +2088,6 @@ components:
           - result:
               level: null
               type: null
-              value: value
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -2122,7 +2120,6 @@ components:
           - result:
               level: null
               type: null
-              value: value
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -2171,7 +2168,6 @@ components:
           - result:
               level: null
               type: null
-              value: value
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -2204,7 +2200,6 @@ components:
           - result:
               level: null
               type: null
-              value: value
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -2852,6 +2847,22 @@ components:
           type: array
         between:
           $ref: '#/components/schemas/RiskPolicy_condition_between'
+      type: object
+    RiskPolicy_result:
+      description: "A result object that specifies the result returned if the policy\
+        \ is evaluated as true. If several policies are evaluated as true, the result\
+        \ related to the highest priority policy is returned. for more information,\
+        \ see the Result attribute data model in the Risk Evaluations topic."
+      example:
+        level: null
+        type: null
+      properties:
+        level:
+          $ref: '#/components/schemas/EnumRiskPolicyResultLevel'
+        type:
+          $ref: '#/components/schemas/EnumResultType'
+      required:
+      - level
       type: object
     RiskPolicySet_evaluatedPredictors_inner:
       example:
