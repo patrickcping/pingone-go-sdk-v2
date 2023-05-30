@@ -23779,6 +23779,12 @@ components:
       - PINGID_WINLOGIN_PASSWORDLESS_AUTHENTICATION
       - PINGID_AUTHENTICATION
       type: string
+    EnumSignOnPolicyActionLoginNewUserProvisioningGatewayType:
+      description: "A string identifying the type of gateway. Currently, only `LDAP`\
+        \ is supported."
+      enum:
+      - LDAP
+      type: string
     EnumSolutionType:
       description: The solution set of the environment
       enum:
@@ -33446,6 +33452,49 @@ components:
       required:
       - id
       type: object
+    SignOnPolicyActionLogin_allOf_newUserProvisioning_userType:
+      description: A reference to the ID of the `userTypes` configuration set on the
+        gateway for user account migration.
+      properties:
+        id:
+          description: A string referencing the UUID of `userType`.
+          type: string
+      required:
+      - id
+      type: object
+      example: null
+    SignOnPolicyActionLogin_allOf_newUserProvisioning_gateways:
+      properties:
+        id:
+          description: A string referencing the UUID for the gateway.
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumSignOnPolicyActionLoginNewUserProvisioningGatewayType'
+        userType:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_newUserProvisioning_userType'
+      required:
+      - id
+      - type
+      - userType
+      type: object
+      example: null
+    SignOnPolicyActionLogin_allOf_newUserProvisioning:
+      description: "Enables user entries existing outside of PingOne to be provisioned\
+        \ in PingDirectory during login, using an external integration solution (such\
+        \ as a Gateway)."
+      properties:
+        gateways:
+          description: "Allows a set of preconfigured gateways or `userType` pairs\
+            \ that are specified in the [Gateway Management](https://apidocs.pingidentity.com/pingone/platform/v1/api/#gateway-management)\
+            \ schema to determine how to find and migrate user entries existing in\
+            \ an external directory."
+          items:
+            $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_newUserProvisioning_gateways'
+          type: array
+      required:
+      - gateways
+      type: object
+      example: null
     SignOnPolicyActionLogin_allOf_recovery:
       description: Specifies the account recovery options.
       properties:
@@ -33523,6 +33572,8 @@ components:
             \ locked (the account.canAuthenticate attribute is set to false), then\
             \ social sign on with an external identity provider is prevented."
           type: boolean
+        newUserProvisioning:
+          $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_newUserProvisioning'
         recovery:
           $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_recovery'
         registration:

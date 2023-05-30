@@ -21,6 +21,7 @@ var _ MappedNullable = &SignOnPolicyActionLoginAllOf{}
 type SignOnPolicyActionLoginAllOf struct {
 	// A boolean that if set to true and if the user's account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented.
 	EnforceLockoutForIdentityProviders *bool `json:"enforceLockoutForIdentityProviders,omitempty"`
+	NewUserProvisioning *SignOnPolicyActionLoginAllOfNewUserProvisioning `json:"newUserProvisioning,omitempty"`
 	Recovery *SignOnPolicyActionLoginAllOfRecovery `json:"recovery,omitempty"`
 	Registration *SignOnPolicyActionLoginAllOfRegistration `json:"registration,omitempty"`
 	// An array of strings that specifies the IDs of the identity providers that can be used for the social login sign-on flow.
@@ -74,6 +75,38 @@ func (o *SignOnPolicyActionLoginAllOf) HasEnforceLockoutForIdentityProviders() b
 // SetEnforceLockoutForIdentityProviders gets a reference to the given bool and assigns it to the EnforceLockoutForIdentityProviders field.
 func (o *SignOnPolicyActionLoginAllOf) SetEnforceLockoutForIdentityProviders(v bool) {
 	o.EnforceLockoutForIdentityProviders = &v
+}
+
+// GetNewUserProvisioning returns the NewUserProvisioning field value if set, zero value otherwise.
+func (o *SignOnPolicyActionLoginAllOf) GetNewUserProvisioning() SignOnPolicyActionLoginAllOfNewUserProvisioning {
+	if o == nil || IsNil(o.NewUserProvisioning) {
+		var ret SignOnPolicyActionLoginAllOfNewUserProvisioning
+		return ret
+	}
+	return *o.NewUserProvisioning
+}
+
+// GetNewUserProvisioningOk returns a tuple with the NewUserProvisioning field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SignOnPolicyActionLoginAllOf) GetNewUserProvisioningOk() (*SignOnPolicyActionLoginAllOfNewUserProvisioning, bool) {
+	if o == nil || IsNil(o.NewUserProvisioning) {
+		return nil, false
+	}
+	return o.NewUserProvisioning, true
+}
+
+// HasNewUserProvisioning returns a boolean if a field has been set.
+func (o *SignOnPolicyActionLoginAllOf) HasNewUserProvisioning() bool {
+	if o != nil && !IsNil(o.NewUserProvisioning) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewUserProvisioning gets a reference to the given SignOnPolicyActionLoginAllOfNewUserProvisioning and assigns it to the NewUserProvisioning field.
+func (o *SignOnPolicyActionLoginAllOf) SetNewUserProvisioning(v SignOnPolicyActionLoginAllOfNewUserProvisioning) {
+	o.NewUserProvisioning = &v
 }
 
 // GetRecovery returns the Recovery field value if set, zero value otherwise.
@@ -184,6 +217,9 @@ func (o SignOnPolicyActionLoginAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.EnforceLockoutForIdentityProviders) {
 		toSerialize["enforceLockoutForIdentityProviders"] = o.EnforceLockoutForIdentityProviders
+	}
+	if !IsNil(o.NewUserProvisioning) {
+		toSerialize["newUserProvisioning"] = o.NewUserProvisioning
 	}
 	if !IsNil(o.Recovery) {
 		toSerialize["recovery"] = o.Recovery

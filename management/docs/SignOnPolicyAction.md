@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **SignOnPolicy** | Pointer to [**SignOnPolicyActionCommonSignOnPolicy**](SignOnPolicyActionCommonSignOnPolicy.md) |  | [optional] 
 **Type** | [**EnumSignOnPolicyType**](EnumSignOnPolicyType.md) |  | 
 **EnforceLockoutForIdentityProviders** | Pointer to **bool** | A boolean that if set to true and if the user&#39;s account is locked (the account.canAuthenticate attribute is set to false), then social sign on with an external identity provider is prevented. | [optional] 
+**NewUserProvisioning** | Pointer to [**SignOnPolicyActionLoginAllOfNewUserProvisioning**](SignOnPolicyActionLoginAllOfNewUserProvisioning.md) |  | [optional] 
 **Recovery** | Pointer to [**SignOnPolicyActionLoginAllOfRecovery**](SignOnPolicyActionLoginAllOfRecovery.md) |  | [optional] 
 **Registration** | Pointer to [**SignOnPolicyActionIDPAllOfRegistration**](SignOnPolicyActionIDPAllOfRegistration.md) |  | [optional] 
 **SocialProviders** | Pointer to [**[]SignOnPolicyActionLoginAllOfSocialProviders**](SignOnPolicyActionLoginAllOfSocialProviders.md) | An array of strings that specifies the IDs of the identity providers that can be used for the social login sign-on flow. | [optional] 
@@ -245,6 +246,31 @@ SetEnforceLockoutForIdentityProviders sets EnforceLockoutForIdentityProviders fi
 `func (o *SignOnPolicyAction) HasEnforceLockoutForIdentityProviders() bool`
 
 HasEnforceLockoutForIdentityProviders returns a boolean if a field has been set.
+
+### GetNewUserProvisioning
+
+`func (o *SignOnPolicyAction) GetNewUserProvisioning() SignOnPolicyActionLoginAllOfNewUserProvisioning`
+
+GetNewUserProvisioning returns the NewUserProvisioning field if non-nil, zero value otherwise.
+
+### GetNewUserProvisioningOk
+
+`func (o *SignOnPolicyAction) GetNewUserProvisioningOk() (*SignOnPolicyActionLoginAllOfNewUserProvisioning, bool)`
+
+GetNewUserProvisioningOk returns a tuple with the NewUserProvisioning field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewUserProvisioning
+
+`func (o *SignOnPolicyAction) SetNewUserProvisioning(v SignOnPolicyActionLoginAllOfNewUserProvisioning)`
+
+SetNewUserProvisioning sets NewUserProvisioning field to given value.
+
+### HasNewUserProvisioning
+
+`func (o *SignOnPolicyAction) HasNewUserProvisioning() bool`
+
+HasNewUserProvisioning returns a boolean if a field has been set.
 
 ### GetRecovery
 
