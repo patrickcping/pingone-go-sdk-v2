@@ -4,7 +4,7 @@
     * **Enhancement** Added `SloWindow` optional attribute to the Application SAML objects. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
     * **Enhancement** Added SLO optional attributes to the SAML External Identity Provider object. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.7.0](./risk/CHANGELOG.md)
-    * **Enhancement** Add `Triggers` to the `RiskPolicySet` model to support "staging" risk policies.
+    * **Enhancement** Add `Triggers` to the `RiskPolicySet` model to support "staging" risk policies. [#180](https://github.com/patrickcping/pingone-go-sdk-v2/pull/180)
     * **Bug** Fix the `RiskPolicyResult` object, where the `Level` should only be `LOW`. [#178](https://github.com/patrickcping/pingone-go-sdk-v2/pull/178)
 
 # Release (2023-05-22)
