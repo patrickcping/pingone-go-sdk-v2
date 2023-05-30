@@ -38,6 +38,8 @@ type RiskPolicySet struct {
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// The IDs for the predictors to evaluate in this policy set. In POST and PUT requests, if this property is null, all of the licensed predictors are used.
 	EvaluatedPredictors []RiskPolicySetEvaluatedPredictorsInner `json:"evaluatedPredictors,omitempty"`
+	// An array of triggers related to this policy set.
+	Triggers []RiskPolicySetTriggersInner `json:"triggers,omitempty"`
 }
 
 // NewRiskPolicySet instantiates a new RiskPolicySet object
@@ -370,6 +372,38 @@ func (o *RiskPolicySet) SetEvaluatedPredictors(v []RiskPolicySetEvaluatedPredict
 	o.EvaluatedPredictors = v
 }
 
+// GetTriggers returns the Triggers field value if set, zero value otherwise.
+func (o *RiskPolicySet) GetTriggers() []RiskPolicySetTriggersInner {
+	if o == nil || IsNil(o.Triggers) {
+		var ret []RiskPolicySetTriggersInner
+		return ret
+	}
+	return o.Triggers
+}
+
+// GetTriggersOk returns a tuple with the Triggers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicySet) GetTriggersOk() ([]RiskPolicySetTriggersInner, bool) {
+	if o == nil || IsNil(o.Triggers) {
+		return nil, false
+	}
+	return o.Triggers, true
+}
+
+// HasTriggers returns a boolean if a field has been set.
+func (o *RiskPolicySet) HasTriggers() bool {
+	if o != nil && !IsNil(o.Triggers) {
+		return true
+	}
+
+	return false
+}
+
+// SetTriggers gets a reference to the given []RiskPolicySetTriggersInner and assigns it to the Triggers field.
+func (o *RiskPolicySet) SetTriggers(v []RiskPolicySetTriggersInner) {
+	o.Triggers = v
+}
+
 func (o RiskPolicySet) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -401,6 +435,9 @@ func (o RiskPolicySet) ToMap() (map[string]interface{}, error) {
 	// skip: updatedAt is readOnly
 	if !IsNil(o.EvaluatedPredictors) {
 		toSerialize["evaluatedPredictors"] = o.EvaluatedPredictors
+	}
+	if !IsNil(o.Triggers) {
+		toSerialize["triggers"] = o.Triggers
 	}
 	return toSerialize, nil
 }

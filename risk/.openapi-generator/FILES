@@ -21,6 +21,7 @@ docs/EnumResultType.md
 docs/EnumRiskLevel.md
 docs/EnumRiskPolicyConditionType.md
 docs/EnumRiskPolicyResultLevel.md
+docs/EnumRiskPolicySetTriggerType.md
 docs/EnumThresholdSource.md
 docs/EnumUserRiskBehaviorRiskModel.md
 docs/EnumUserType.md
@@ -62,6 +63,7 @@ docs/RiskPolicyConditionEquals.md
 docs/RiskPolicyResult.md
 docs/RiskPolicySet.md
 docs/RiskPolicySetEvaluatedPredictorsInner.md
+docs/RiskPolicySetTriggersInner.md
 docs/RiskPredictor.md
 docs/RiskPredictorAnonymousNetwork.md
 docs/RiskPredictorAnonymousNetworkAllOf.md
@@ -126,6 +128,7 @@ model_enum_result_type.go
 model_enum_risk_level.go
 model_enum_risk_policy_condition_type.go
 model_enum_risk_policy_result_level.go
+model_enum_risk_policy_set_trigger_type.go
 model_enum_threshold_source.go
 model_enum_user_risk_behavior_risk_model.go
 model_enum_user_type.go
@@ -164,6 +167,7 @@ model_risk_policy_condition_equals.go
 model_risk_policy_result.go
 model_risk_policy_set.go
 model_risk_policy_set_evaluated_predictors_inner.go
+model_risk_policy_set_triggers_inner.go
 model_risk_predictor.go
 model_risk_predictor_anonymous_network.go
 model_risk_predictor_anonymous_network_all_of.go

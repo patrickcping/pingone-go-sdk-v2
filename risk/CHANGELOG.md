@@ -1,5 +1,6 @@
-# v0.6.1 (Unreleased)
+# v0.7.0 (Unreleased)
 
+* **Enhancement** Add `Triggers` to the `RiskPolicySet` model to support "staging" risk policies. [#180](https://github.com/patrickcping/pingone-go-sdk-v2/pull/180)
 * **Bug** Fix the `RiskPolicyResult` object, where the `Level` should only be `LOW`. [#178](https://github.com/patrickcping/pingone-go-sdk-v2/pull/178)
 
 # v0.6.0 (2023-05-19)
