@@ -2,6 +2,7 @@
 
 * **Enhancement** Added `SloWindow` optional attribute to the Application SAML objects. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
 * **Enhancement** Added SLO optional attributes to the SAML External Identity Provider object. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
+* **Enhancement** Added `NewUserProvisioning` to the `SignOnPolicyActionLogin` model.
 
 # v0.21.0 (2023-05-22)
 
