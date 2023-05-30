@@ -202,7 +202,7 @@ paths:
       summary: CREATE Verify Policy
       tags:
       - Verify Policies
-  /environments/{environmentID}/verifyPolicies/{verifyPolicyID}:
+  /v1/environments/{environmentID}/verifyPolicies/{verifyPolicyID}:
     delete:
       operationId: deleteVerifyPolicy
       parameters:

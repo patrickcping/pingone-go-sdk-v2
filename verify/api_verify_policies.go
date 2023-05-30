@@ -269,7 +269,7 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
 
@@ -616,7 +616,7 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
 
@@ -802,7 +802,7 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
 

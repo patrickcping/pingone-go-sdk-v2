@@ -457,7 +457,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EntityArray'  
-  /environments/{environmentID}/verifyPolicies/{verifyPolicyID}:
+  /v1/environments/{environmentID}/verifyPolicies/{verifyPolicyID}:
     get:
       tags:
       - Verify Policies
