@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **Email** | Pointer to [**EmailPhoneConfiguration**](EmailPhoneConfiguration.md) |  | [optional] 
 **Phone** | Pointer to [**EmailPhoneConfiguration**](EmailPhoneConfiguration.md) |  | [optional] 
 **Transaction** | Pointer to [**TransactionConfiguration**](TransactionConfiguration.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** |  | [optional] 
-**UpdatedAt** | Pointer to **string** |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -309,20 +309,20 @@ HasTransaction returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *VerifyPolicy) GetCreatedAt() string`
+`func (o *VerifyPolicy) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *VerifyPolicy) GetCreatedAtOk() (*string, bool)`
+`func (o *VerifyPolicy) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *VerifyPolicy) SetCreatedAt(v string)`
+`func (o *VerifyPolicy) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -334,20 +334,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *VerifyPolicy) GetUpdatedAt() string`
+`func (o *VerifyPolicy) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *VerifyPolicy) GetUpdatedAtOk() (*string, bool)`
+`func (o *VerifyPolicy) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *VerifyPolicy) SetUpdatedAt(v string)`
+`func (o *VerifyPolicy) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

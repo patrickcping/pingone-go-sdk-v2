@@ -12,6 +12,7 @@ package verify
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the VerifyPolicy type satisfies the MappedNullable interface at compile time
@@ -33,8 +34,8 @@ type VerifyPolicy struct {
 	Email *EmailPhoneConfiguration `json:"email,omitempty"`
 	Phone *EmailPhoneConfiguration `json:"phone,omitempty"`
 	Transaction *TransactionConfiguration `json:"transaction,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
 
 // NewVerifyPolicy instantiates a new VerifyPolicy object
@@ -400,9 +401,9 @@ func (o *VerifyPolicy) SetTransaction(v TransactionConfiguration) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *VerifyPolicy) GetCreatedAt() string {
+func (o *VerifyPolicy) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -410,7 +411,7 @@ func (o *VerifyPolicy) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyPolicy) GetCreatedAtOk() (*string, bool) {
+func (o *VerifyPolicy) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -426,15 +427,15 @@ func (o *VerifyPolicy) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *VerifyPolicy) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *VerifyPolicy) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *VerifyPolicy) GetUpdatedAt() string {
+func (o *VerifyPolicy) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -442,7 +443,7 @@ func (o *VerifyPolicy) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyPolicy) GetUpdatedAtOk() (*string, bool) {
+func (o *VerifyPolicy) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -458,8 +459,8 @@ func (o *VerifyPolicy) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *VerifyPolicy) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *VerifyPolicy) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
@@ -502,12 +503,8 @@ func (o VerifyPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Transaction) {
 		toSerialize["transaction"] = o.Transaction
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: createdAt is readOnly
+	// skip: updatedAt is readOnly
 	return toSerialize, nil
 }
 

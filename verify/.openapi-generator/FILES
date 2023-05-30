@@ -60,5 +60,4 @@ model_transaction_configuration_data_collection_timeout.go
 model_transaction_configuration_timeout.go
 model_verify_policy.go
 response.go
-test/api_verify_policies_test.go
 utils.go

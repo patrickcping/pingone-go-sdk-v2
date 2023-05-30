@@ -492,7 +492,7 @@ components:
               verify: null
               threshold: null
             description: description
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
             default: true
@@ -546,12 +546,12 @@ components:
                   timeUnit: null
             governmentId:
               verify: null
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           - liveness:
               verify: null
               threshold: null
             description: description
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
             default: true
@@ -605,7 +605,7 @@ components:
                   timeUnit: null
             governmentId:
               verify: null
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
@@ -738,7 +738,7 @@ components:
           verify: null
           threshold: null
         description: description
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
         default: true
@@ -792,7 +792,7 @@ components:
               timeUnit: null
         governmentId:
           verify: null
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           readOnly: true
@@ -822,8 +822,12 @@ components:
         transaction:
           $ref: '#/components/schemas/TransactionConfiguration'
         createdAt:
+          format: date-time
+          readOnly: true
           type: string
         updatedAt:
+          format: date-time
+          readOnly: true
           type: string
       required:
       - name
@@ -936,7 +940,7 @@ components:
             verify: null
             threshold: null
           description: description
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
           default: true
@@ -990,12 +994,12 @@ components:
                 timeUnit: null
           governmentId:
             verify: null
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         - liveness:
             verify: null
             threshold: null
           description: description
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
           default: true
@@ -1049,7 +1053,7 @@ components:
                 timeUnit: null
           governmentId:
             verify: null
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         verifyPolicies:
           items:
