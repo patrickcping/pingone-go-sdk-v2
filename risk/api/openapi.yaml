@@ -997,6 +997,15 @@ components:
               id: id
               priority: 5
               updatedAt: 2000-01-23T04:56:07.000+00:00
+            triggers:
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
             defaultResult:
               level: null
               type: null
@@ -1077,6 +1086,15 @@ components:
               id: id
               priority: 5
               updatedAt: 2000-01-23T04:56:07.000+00:00
+            triggers:
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
             defaultResult:
               level: null
               type: null
@@ -1139,6 +1157,12 @@ components:
         \ in the policy are evaluated to true. At this time, the value must be `LOW`."
       enum:
       - LOW
+      type: string
+    EnumRiskPolicySetTriggerType:
+      description: A string that specifies the trigger type for the policy set. The
+        only option is `POLICY_SET_STAGING`.
+      enum:
+      - POLICY_SET_STAGING
       type: string
     EnumPredictorCompositeConditionType:
       enum:
@@ -1792,6 +1816,15 @@ components:
           id: id
           priority: 5
           updatedAt: 2000-01-23T04:56:07.000+00:00
+        triggers:
+        - type: null
+          policySet:
+            id: id
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+        - type: null
+          policySet:
+            id: id
+          expiresAt: 2000-01-23T04:56:07.000+00:00
         defaultResult:
           level: null
           type: null
@@ -1849,6 +1882,11 @@ components:
             \ predictors are used."
           items:
             $ref: '#/components/schemas/RiskPolicySet_evaluatedPredictors_inner'
+          type: array
+        triggers:
+          description: An array of triggers related to this policy set.
+          items:
+            $ref: '#/components/schemas/RiskPolicySet_triggers_inner'
           type: array
       required:
       - name
@@ -2149,6 +2187,15 @@ components:
             id: id
             priority: 5
             updatedAt: 2000-01-23T04:56:07.000+00:00
+          triggers:
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
           defaultResult:
             level: null
             type: null
@@ -2229,6 +2276,15 @@ components:
             id: id
             priority: 5
             updatedAt: 2000-01-23T04:56:07.000+00:00
+          triggers:
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
           defaultResult:
             level: null
             type: null
@@ -2873,6 +2929,26 @@ components:
           type: string
       required:
       - id
+      type: object
+    RiskPolicySet_triggers_inner:
+      example:
+        type: null
+        policySet:
+          id: id
+        expiresAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumRiskPolicySetTriggerType'
+        policySet:
+          $ref: '#/components/schemas/RiskPolicySet_evaluatedPredictors_inner'
+        expiresAt:
+          description: The time the trigger expires (format ISO-8061).
+          format: date-time
+          type: string
+      required:
+      - expiresAt
+      - policySet
+      - type
       type: object
     RiskPredictorCommon_default_result:
       description: "This specifies the result assigned to the predictor if the predictor\
