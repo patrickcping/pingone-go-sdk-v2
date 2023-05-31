@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | [**EnumRiskPolicyResultLevel**](EnumRiskPolicyResultLevel.md) |  | 
+**Level** | [**EnumRiskLevel**](EnumRiskLevel.md) |  | 
 **Type** | Pointer to [**EnumResultType**](EnumResultType.md) |  | [optional] 
+**Value** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewRiskPolicyResult
 
-`func NewRiskPolicyResult(level EnumRiskPolicyResultLevel, ) *RiskPolicyResult`
+`func NewRiskPolicyResult(level EnumRiskLevel, ) *RiskPolicyResult`
 
 NewRiskPolicyResult instantiates a new RiskPolicyResult object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLevel
 
-`func (o *RiskPolicyResult) GetLevel() EnumRiskPolicyResultLevel`
+`func (o *RiskPolicyResult) GetLevel() EnumRiskLevel`
 
 GetLevel returns the Level field if non-nil, zero value otherwise.
 
 ### GetLevelOk
 
-`func (o *RiskPolicyResult) GetLevelOk() (*EnumRiskPolicyResultLevel, bool)`
+`func (o *RiskPolicyResult) GetLevelOk() (*EnumRiskLevel, bool)`
 
 GetLevelOk returns a tuple with the Level field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLevel
 
-`func (o *RiskPolicyResult) SetLevel(v EnumRiskPolicyResultLevel)`
+`func (o *RiskPolicyResult) SetLevel(v EnumRiskLevel)`
 
 SetLevel sets Level field to given value.
 
@@ -70,6 +71,31 @@ SetType sets Type field to given value.
 `func (o *RiskPolicyResult) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetValue
+
+`func (o *RiskPolicyResult) GetValue() string`
+
+GetValue returns the Value field if non-nil, zero value otherwise.
+
+### GetValueOk
+
+`func (o *RiskPolicyResult) GetValueOk() (*string, bool)`
+
+GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetValue
+
+`func (o *RiskPolicyResult) SetValue(v string)`
+
+SetValue sets Value field to given value.
+
+### HasValue
+
+`func (o *RiskPolicyResult) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

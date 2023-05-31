@@ -62,6 +62,7 @@ docs/RiskPolicyConditionBetween.md
 docs/RiskPolicyConditionEquals.md
 docs/RiskPolicyResult.md
 docs/RiskPolicySet.md
+docs/RiskPolicySetDefaultResult.md
 docs/RiskPolicySetEvaluatedPredictorsInner.md
 docs/RiskPolicySetTriggersInner.md
 docs/RiskPredictor.md
@@ -166,6 +167,7 @@ model_risk_policy_condition_between.go
 model_risk_policy_condition_equals.go
 model_risk_policy_result.go
 model_risk_policy_set.go
+model_risk_policy_set_default_result.go
 model_risk_policy_set_evaluated_predictors_inner.go
 model_risk_policy_set_triggers_inner.go
 model_risk_predictor.go

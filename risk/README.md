@@ -149,6 +149,7 @@ Class | Method | HTTP request | Description
  - [RiskPolicyConditionEquals](docs/RiskPolicyConditionEquals.md)
  - [RiskPolicyResult](docs/RiskPolicyResult.md)
  - [RiskPolicySet](docs/RiskPolicySet.md)
+ - [RiskPolicySetDefaultResult](docs/RiskPolicySetDefaultResult.md)
  - [RiskPolicySetEvaluatedPredictorsInner](docs/RiskPolicySetEvaluatedPredictorsInner.md)
  - [RiskPolicySetTriggersInner](docs/RiskPolicySetTriggersInner.md)
  - [RiskPredictor](docs/RiskPredictor.md)
