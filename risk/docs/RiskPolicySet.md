@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created (format ISO-8061). | [optional] [readonly] 
 **Default** | Pointer to **bool** | A boolean that specifies whether this risk policy set is the environment&#39;s default risk policy set, which is used whenever an explicit policySet ID is not specified in the risk policy evaluation request. If this property is not specified, the value defaults to false, and this risk policy set is not regarded as the default risk policy set for the environment. When this property is set to true (in PUT or POST requests), the default property of all other risk policy sets in the environment is set to false. | [optional] 
-**DefaultResult** | Pointer to [**RiskPolicyResult**](RiskPolicyResult.md) |  | [optional] 
+**DefaultResult** | Pointer to [**RiskPolicySetDefaultResult**](RiskPolicySetDefaultResult.md) |  | [optional] 
 **Description** | Pointer to **string** | A string that specifies a description for this policy set. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
@@ -87,20 +87,20 @@ HasDefault returns a boolean if a field has been set.
 
 ### GetDefaultResult
 
-`func (o *RiskPolicySet) GetDefaultResult() RiskPolicyResult`
+`func (o *RiskPolicySet) GetDefaultResult() RiskPolicySetDefaultResult`
 
 GetDefaultResult returns the DefaultResult field if non-nil, zero value otherwise.
 
 ### GetDefaultResultOk
 
-`func (o *RiskPolicySet) GetDefaultResultOk() (*RiskPolicyResult, bool)`
+`func (o *RiskPolicySet) GetDefaultResultOk() (*RiskPolicySetDefaultResult, bool)`
 
 GetDefaultResultOk returns a tuple with the DefaultResult field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultResult
 
-`func (o *RiskPolicySet) SetDefaultResult(v RiskPolicyResult)`
+`func (o *RiskPolicySet) SetDefaultResult(v RiskPolicySetDefaultResult)`
 
 SetDefaultResult sets DefaultResult field to given value.
 

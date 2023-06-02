@@ -936,6 +936,7 @@ components:
             - result:
                 level: null
                 type: null
+                value: value
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -968,6 +969,7 @@ components:
             - result:
                 level: null
                 type: null
+                value: value
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1009,7 +1011,6 @@ components:
             defaultResult:
               level: null
               type: null
-              value: value
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - evaluatedPredictors:
             - id: id
@@ -1025,6 +1026,7 @@ components:
             - result:
                 level: null
                 type: null
+                value: value
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1057,6 +1059,7 @@ components:
             - result:
                 level: null
                 type: null
+                value: value
               createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
@@ -1098,7 +1101,6 @@ components:
             defaultResult:
               level: null
               type: null
-              value: value
             updatedAt: 2000-01-23T04:56:07.000+00:00
           riskPredictors:
           - null
@@ -1664,6 +1666,7 @@ components:
         result:
           level: null
           type: null
+          value: value
         createdAt: 2000-01-23T04:56:07.000+00:00
         condition:
           aggregatedWeights:
@@ -1728,7 +1731,7 @@ components:
             \ list is assigned priority 2 and so on."
           type: integer
         result:
-          $ref: '#/components/schemas/RiskPolicy_result'
+          $ref: '#/components/schemas/RiskPolicyResult'
         updatedAt:
           description: The time the resource was last updated (format ISO-8061).
           format: date-time
@@ -1755,6 +1758,7 @@ components:
         - result:
             level: null
             type: null
+            value: value
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
@@ -1787,6 +1791,7 @@ components:
         - result:
             level: null
             type: null
+            value: value
           createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
@@ -1828,7 +1833,6 @@ components:
         defaultResult:
           level: null
           type: null
-          value: value
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         createdAt:
@@ -1847,7 +1851,7 @@ components:
             \ environment is set to false."
           type: boolean
         defaultResult:
-          $ref: '#/components/schemas/RiskPolicyResult'
+          $ref: '#/components/schemas/RiskPolicySet_defaultResult'
         description:
           description: "A string that specifies a description for this policy set.\
             \ This is an optional property. Valid characters consist of any Unicode\
@@ -1892,6 +1896,10 @@ components:
       - name
       type: object
     RiskPolicyResult:
+      description: "A result object that specifies the result returned if the policy\
+        \ is evaluated as true. If several policies are evaluated as true, the result\
+        \ related to the highest priority policy is returned. for more information,\
+        \ see the Result attribute data model in the Risk Evaluations topic."
       example:
         level: null
         type: null
@@ -2126,6 +2134,7 @@ components:
           - result:
               level: null
               type: null
+              value: value
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -2158,6 +2167,7 @@ components:
           - result:
               level: null
               type: null
+              value: value
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -2199,7 +2209,6 @@ components:
           defaultResult:
             level: null
             type: null
-            value: value
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - evaluatedPredictors:
           - id: id
@@ -2215,6 +2224,7 @@ components:
           - result:
               level: null
               type: null
+              value: value
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -2247,6 +2257,7 @@ components:
           - result:
               level: null
               type: null
+              value: value
             createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
@@ -2288,7 +2299,6 @@ components:
           defaultResult:
             level: null
             type: null
-            value: value
           updatedAt: 2000-01-23T04:56:07.000+00:00
         riskPredictors:
         - null
@@ -2904,11 +2914,10 @@ components:
         between:
           $ref: '#/components/schemas/RiskPolicy_condition_between'
       type: object
-    RiskPolicy_result:
-      description: "A result object that specifies the result returned if the policy\
-        \ is evaluated as true. If several policies are evaluated as true, the result\
-        \ related to the highest priority policy is returned. for more information,\
-        \ see the Result attribute data model in the Risk Evaluations topic."
+    RiskPolicySet_defaultResult:
+      description: "A result object that specifies the default result returned if\
+        \ none of the conditions in the policy set are evaluated to true. At this\
+        \ time, the defaultResultLevel value must be LOW."
       example:
         level: null
         type: null
