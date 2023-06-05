@@ -1,5 +1,7 @@
-# Release (Unreleased)
+# Release (2023-06-05)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.3
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.7.0 => v0.7.1
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.7.1](./risk/CHANGELOG.md)
     * **Bug** Fix the risk policy result for the `RiskPolicySet.DefaultResult` and the `RiskPolicyResult.Level` attribute. [#183](https://github.com/patrickcping/pingone-go-sdk-v2/pull/183)
 
