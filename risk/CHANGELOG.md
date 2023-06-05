@@ -1,4 +1,4 @@
-# v0.7.1 (Unreleased)
+# v0.7.1 (2023-06-05)
 
 * **Bug** Fix the risk policy result for the `RiskPolicySet.DefaultResult` and the `RiskPolicyResult.Level` attribute. [#183](https://github.com/patrickcping/pingone-go-sdk-v2/pull/183)
 
