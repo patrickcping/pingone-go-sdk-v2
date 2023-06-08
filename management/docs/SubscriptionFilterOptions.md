@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **IncludedApplications** | Pointer to [**[]SubscriptionFilterOptionsIncludedApplicationsInner**](SubscriptionFilterOptionsIncludedApplicationsInner.md) | An array that specifies the list of applications (by ID) whose events are monitored by the subscription (maximum of 10 IDs in the array). This is an optional property. If a list of applications is not provided, events are monitored for all applications in the environment. | [optional] 
 **IncludedPopulations** | Pointer to [**[]SubscriptionFilterOptionsIncludedApplicationsInner**](SubscriptionFilterOptionsIncludedApplicationsInner.md) | An array that specifies the list of populations (by ID) whose events are monitored by the subscription (maximum of 10 IDs in the array). This property matches events for users in the specified populations, as opposed to events generated in which the user in one of the populations is the actor. This is an optional property. | [optional] 
 **IncludedTags** | Pointer to [**[]EnumSubscriptionFilterIncludedTags**](EnumSubscriptionFilterIncludedTags.md) | An array of tags that events must have to be monitored by the subscription. If tags are not specified, all events are monitored. Currently, the available tags are &#x60;adminIdentityEvent&#x60;. Identifies the event as the action of an administrator on other administrators. | [optional] 
+**IpAddressExposed** | Pointer to **bool** | Whether the IP address of an actor should be present in the &#x60;source&#x60; section of the event. | [optional] [default to false]
+**UserAgentExposed** | Pointer to **bool** | Whether the User-Agent HTTP header of an event should be present in the &#x60;source&#x60; section of the event. | [optional] [default to false]
 
 ## Methods
 
@@ -122,6 +124,56 @@ SetIncludedTags sets IncludedTags field to given value.
 `func (o *SubscriptionFilterOptions) HasIncludedTags() bool`
 
 HasIncludedTags returns a boolean if a field has been set.
+
+### GetIpAddressExposed
+
+`func (o *SubscriptionFilterOptions) GetIpAddressExposed() bool`
+
+GetIpAddressExposed returns the IpAddressExposed field if non-nil, zero value otherwise.
+
+### GetIpAddressExposedOk
+
+`func (o *SubscriptionFilterOptions) GetIpAddressExposedOk() (*bool, bool)`
+
+GetIpAddressExposedOk returns a tuple with the IpAddressExposed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpAddressExposed
+
+`func (o *SubscriptionFilterOptions) SetIpAddressExposed(v bool)`
+
+SetIpAddressExposed sets IpAddressExposed field to given value.
+
+### HasIpAddressExposed
+
+`func (o *SubscriptionFilterOptions) HasIpAddressExposed() bool`
+
+HasIpAddressExposed returns a boolean if a field has been set.
+
+### GetUserAgentExposed
+
+`func (o *SubscriptionFilterOptions) GetUserAgentExposed() bool`
+
+GetUserAgentExposed returns the UserAgentExposed field if non-nil, zero value otherwise.
+
+### GetUserAgentExposedOk
+
+`func (o *SubscriptionFilterOptions) GetUserAgentExposedOk() (*bool, bool)`
+
+GetUserAgentExposedOk returns a tuple with the UserAgentExposed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserAgentExposed
+
+`func (o *SubscriptionFilterOptions) SetUserAgentExposed(v bool)`
+
+SetUserAgentExposed sets UserAgentExposed field to given value.
+
+### HasUserAgentExposed
+
+`func (o *SubscriptionFilterOptions) HasUserAgentExposed() bool`
+
+HasUserAgentExposed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

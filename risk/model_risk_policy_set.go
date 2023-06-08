@@ -24,7 +24,7 @@ type RiskPolicySet struct {
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether this risk policy set is the environment's default risk policy set, which is used whenever an explicit policySet ID is not specified in the risk policy evaluation request. If this property is not specified, the value defaults to false, and this risk policy set is not regarded as the default risk policy set for the environment. When this property is set to true (in PUT or POST requests), the default property of all other risk policy sets in the environment is set to false.
 	Default *bool `json:"default,omitempty"`
-	DefaultResult *RiskPolicyResult `json:"defaultResult,omitempty"`
+	DefaultResult *RiskPolicySetDefaultResult `json:"defaultResult,omitempty"`
 	// A string that specifies a description for this policy set. This is an optional property. Valid characters consist of any Unicode letter, mark (for example, accent, umlaut), numeric character, punctuation character, or space. Maximum size is 1024 characters.
 	Description *string `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -38,6 +38,8 @@ type RiskPolicySet struct {
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// The IDs for the predictors to evaluate in this policy set. In POST and PUT requests, if this property is null, all of the licensed predictors are used.
 	EvaluatedPredictors []RiskPolicySetEvaluatedPredictorsInner `json:"evaluatedPredictors,omitempty"`
+	// An array of triggers related to this policy set.
+	Triggers []RiskPolicySetTriggersInner `json:"triggers,omitempty"`
 }
 
 // NewRiskPolicySet instantiates a new RiskPolicySet object
@@ -123,9 +125,9 @@ func (o *RiskPolicySet) SetDefault(v bool) {
 }
 
 // GetDefaultResult returns the DefaultResult field value if set, zero value otherwise.
-func (o *RiskPolicySet) GetDefaultResult() RiskPolicyResult {
+func (o *RiskPolicySet) GetDefaultResult() RiskPolicySetDefaultResult {
 	if o == nil || IsNil(o.DefaultResult) {
-		var ret RiskPolicyResult
+		var ret RiskPolicySetDefaultResult
 		return ret
 	}
 	return *o.DefaultResult
@@ -133,7 +135,7 @@ func (o *RiskPolicySet) GetDefaultResult() RiskPolicyResult {
 
 // GetDefaultResultOk returns a tuple with the DefaultResult field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RiskPolicySet) GetDefaultResultOk() (*RiskPolicyResult, bool) {
+func (o *RiskPolicySet) GetDefaultResultOk() (*RiskPolicySetDefaultResult, bool) {
 	if o == nil || IsNil(o.DefaultResult) {
 		return nil, false
 	}
@@ -149,8 +151,8 @@ func (o *RiskPolicySet) HasDefaultResult() bool {
 	return false
 }
 
-// SetDefaultResult gets a reference to the given RiskPolicyResult and assigns it to the DefaultResult field.
-func (o *RiskPolicySet) SetDefaultResult(v RiskPolicyResult) {
+// SetDefaultResult gets a reference to the given RiskPolicySetDefaultResult and assigns it to the DefaultResult field.
+func (o *RiskPolicySet) SetDefaultResult(v RiskPolicySetDefaultResult) {
 	o.DefaultResult = &v
 }
 
@@ -370,6 +372,38 @@ func (o *RiskPolicySet) SetEvaluatedPredictors(v []RiskPolicySetEvaluatedPredict
 	o.EvaluatedPredictors = v
 }
 
+// GetTriggers returns the Triggers field value if set, zero value otherwise.
+func (o *RiskPolicySet) GetTriggers() []RiskPolicySetTriggersInner {
+	if o == nil || IsNil(o.Triggers) {
+		var ret []RiskPolicySetTriggersInner
+		return ret
+	}
+	return o.Triggers
+}
+
+// GetTriggersOk returns a tuple with the Triggers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicySet) GetTriggersOk() ([]RiskPolicySetTriggersInner, bool) {
+	if o == nil || IsNil(o.Triggers) {
+		return nil, false
+	}
+	return o.Triggers, true
+}
+
+// HasTriggers returns a boolean if a field has been set.
+func (o *RiskPolicySet) HasTriggers() bool {
+	if o != nil && !IsNil(o.Triggers) {
+		return true
+	}
+
+	return false
+}
+
+// SetTriggers gets a reference to the given []RiskPolicySetTriggersInner and assigns it to the Triggers field.
+func (o *RiskPolicySet) SetTriggers(v []RiskPolicySetTriggersInner) {
+	o.Triggers = v
+}
+
 func (o RiskPolicySet) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -401,6 +435,9 @@ func (o RiskPolicySet) ToMap() (map[string]interface{}, error) {
 	// skip: updatedAt is readOnly
 	if !IsNil(o.EvaluatedPredictors) {
 		toSerialize["evaluatedPredictors"] = o.EvaluatedPredictors
+	}
+	if !IsNil(o.Triggers) {
+		toSerialize["triggers"] = o.Triggers
 	}
 	return toSerialize, nil
 }

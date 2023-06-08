@@ -17,7 +17,7 @@ import (
 // checks if the RiskPolicyResult type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RiskPolicyResult{}
 
-// RiskPolicyResult struct for RiskPolicyResult
+// RiskPolicyResult A result object that specifies the result returned if the policy is evaluated as true. If several policies are evaluated as true, the result related to the highest priority policy is returned. for more information, see the Result attribute data model in the Risk Evaluations topic.
 type RiskPolicyResult struct {
 	Level EnumRiskLevel `json:"level"`
 	Type *EnumResultType `json:"type,omitempty"`

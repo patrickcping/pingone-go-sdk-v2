@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
 **SloEndpoint** | Pointer to **string** | A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
+**SloWindow** | Pointer to **int32** | Defines how long PingOne can exchange logout messages with the application, specifically a &#x60;LogoutRequest&#x60; from the application, since the initial request. PingOne can also send a &#x60;LogoutRequest&#x60; to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens. | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 
@@ -275,6 +276,31 @@ SetSloResponseEndpoint sets SloResponseEndpoint field to given value.
 `func (o *ApplicationSAMLAllOf) HasSloResponseEndpoint() bool`
 
 HasSloResponseEndpoint returns a boolean if a field has been set.
+
+### GetSloWindow
+
+`func (o *ApplicationSAMLAllOf) GetSloWindow() int32`
+
+GetSloWindow returns the SloWindow field if non-nil, zero value otherwise.
+
+### GetSloWindowOk
+
+`func (o *ApplicationSAMLAllOf) GetSloWindowOk() (*int32, bool)`
+
+GetSloWindowOk returns a tuple with the SloWindow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSloWindow
+
+`func (o *ApplicationSAMLAllOf) SetSloWindow(v int32)`
+
+SetSloWindow sets SloWindow field to given value.
+
+### HasSloWindow
+
+`func (o *ApplicationSAMLAllOf) HasSloWindow() bool`
+
+HasSloWindow returns a boolean if a field has been set.
 
 ### GetSpEntityId
 

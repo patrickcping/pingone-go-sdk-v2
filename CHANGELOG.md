@@ -1,7 +1,35 @@
-# Release (Unreleased)
+# Release (2023-06-05)
 
-* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.20.1](./management/CHANGELOG.md)
-    * **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward.
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.3
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.7.0 => v0.7.1 [#185](https://github.com/patrickcping/pingone-go-sdk-v2/pull/185)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.7.1](./risk/CHANGELOG.md)
+    * **Bug** Fix the risk policy result for the `RiskPolicySet.DefaultResult` and the `RiskPolicyResult.Level` attribute. [#183](https://github.com/patrickcping/pingone-go-sdk-v2/pull/183)
+
+# Release (2023-05-30)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.2
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.21.0 => v0.22.0 [#182](https://github.com/patrickcping/pingone-go-sdk-v2/pull/182)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.6.0 => v0.7.0 [#182](https://github.com/patrickcping/pingone-go-sdk-v2/pull/182)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.22.0](./management/CHANGELOG.md)
+    * **Enhancement** Added `SloWindow` optional attribute to the Application SAML objects. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
+    * **Enhancement** Added SLO optional attributes to the SAML External Identity Provider object. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
+    * **Enhancement** Added `NewUserProvisioning` to the `SignOnPolicyActionLogin` model. [#181](https://github.com/patrickcping/pingone-go-sdk-v2/pull/181)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.7.0](./risk/CHANGELOG.md)
+    * **Enhancement** Add `Triggers` to the `RiskPolicySet` model to support "staging" risk policies. [#180](https://github.com/patrickcping/pingone-go-sdk-v2/pull/180)
+    * **Bug** Fix the `RiskPolicyResult` object, where the `Level` should only be `LOW`. [#178](https://github.com/patrickcping/pingone-go-sdk-v2/pull/178)
+
+# Release (2023-05-22)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.20.0 => v0.21.0 [#177](https://github.com/patrickcping/pingone-go-sdk-v2/pull/177)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.10.0 => v0.11.0 [#177](https://github.com/patrickcping/pingone-go-sdk-v2/pull/177)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.21.0](./management/CHANGELOG.md)
+    * **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward. [#172](https://github.com/patrickcping/pingone-go-sdk-v2/pull/172)
+    * **Feature** Support for Forms. [#176](https://github.com/patrickcping/pingone-go-sdk-v2/pull/176)
+    * **Feature** Support for Forms Recaptcha configuration. [#176](https://github.com/patrickcping/pingone-go-sdk-v2/pull/176)
+    * **Enhancement** Added `filterOptions.ipAddressExposed` and `filterOptions.userAgentExposed` to the `Subscription` (webhook) data model. [#173](https://github.com/patrickcping/pingone-go-sdk-v2/pull/173)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.11.0](./mfa/CHANGELOG.md)
+    * **Enhancement** Support for `PhoneExtensions` in the `MFASettings` model. [#175](https://github.com/patrickcping/pingone-go-sdk-v2/pull/175)
 
 # Release (2023-05-19)
 

@@ -1,6 +1,15 @@
-# v0.20.1 (Unreleased)
+# v0.22.0 (2023-05-30)
 
-* **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward.
+* **Enhancement** Added `SloWindow` optional attribute to the Application SAML objects. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
+* **Enhancement** Added SLO optional attributes to the SAML External Identity Provider object. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
+* **Enhancement** Added `NewUserProvisioning` to the `SignOnPolicyActionLogin` model. [#181](https://github.com/patrickcping/pingone-go-sdk-v2/pull/181)
+
+# v0.21.0 (2023-05-22)
+
+* **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward. [#172](https://github.com/patrickcping/pingone-go-sdk-v2/pull/172)
+* **Feature** Support for Forms. [#176](https://github.com/patrickcping/pingone-go-sdk-v2/pull/176)
+* **Feature** Support for Forms Recaptcha configuration. [#176](https://github.com/patrickcping/pingone-go-sdk-v2/pull/176)
+* **Enhancement** Added `filterOptions.ipAddressExposed` and `filterOptions.userAgentExposed` to the `Subscription` (webhook) data model. [#173](https://github.com/patrickcping/pingone-go-sdk-v2/pull/173)
 
 # v0.20.0 (2023-05-19)
 

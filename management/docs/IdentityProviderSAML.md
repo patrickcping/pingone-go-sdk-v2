@@ -23,6 +23,10 @@ Name | Type | Description | Notes
 **SpSigning** | Pointer to [**IdentityProviderSAMLAllOfSpSigning**](IdentityProviderSAMLAllOfSpSigning.md) |  | [optional] 
 **SsoBinding** | [**EnumIdentityProviderSAMLSSOBinding**](EnumIdentityProviderSAMLSSOBinding.md) |  | 
 **SsoEndpoint** | **string** | A string that specifies the SSO endpoint for the authentication request. | 
+**SloBinding** | Pointer to [**EnumIdentityProviderSAMLSLOBinding**](EnumIdentityProviderSAMLSLOBinding.md) |  | [optional] [default to ENUMIDENTITYPROVIDERSAMLSLOBINDING_POST]
+**SloEndpoint** | Pointer to **string** | The logout endpoint URL. This is an optional property. However, if a &#x60;sloEndpoint&#x60; logout endpoint URL is not defined, logout actions result in an error. | [optional] 
+**SloResponseEndpoint** | Pointer to **string** | The endpoint URL to submit the logout response. If a value is not provided, the &#x60;sloEndpoint&#x60; property value is used to submit SLO response. | [optional] 
+**SloWindow** | Pointer to **int32** | Defines how long PingOne can exchange logout messages with the application, specifically a &#x60;LogoutRequest&#x60; from the application, since the initial request. PingOne can also send a &#x60;LogoutRequest&#x60; to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens. | [optional] 
 
 ## Methods
 
@@ -477,6 +481,106 @@ and a boolean to check if the value has been set.
 
 SetSsoEndpoint sets SsoEndpoint field to given value.
 
+
+### GetSloBinding
+
+`func (o *IdentityProviderSAML) GetSloBinding() EnumIdentityProviderSAMLSLOBinding`
+
+GetSloBinding returns the SloBinding field if non-nil, zero value otherwise.
+
+### GetSloBindingOk
+
+`func (o *IdentityProviderSAML) GetSloBindingOk() (*EnumIdentityProviderSAMLSLOBinding, bool)`
+
+GetSloBindingOk returns a tuple with the SloBinding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSloBinding
+
+`func (o *IdentityProviderSAML) SetSloBinding(v EnumIdentityProviderSAMLSLOBinding)`
+
+SetSloBinding sets SloBinding field to given value.
+
+### HasSloBinding
+
+`func (o *IdentityProviderSAML) HasSloBinding() bool`
+
+HasSloBinding returns a boolean if a field has been set.
+
+### GetSloEndpoint
+
+`func (o *IdentityProviderSAML) GetSloEndpoint() string`
+
+GetSloEndpoint returns the SloEndpoint field if non-nil, zero value otherwise.
+
+### GetSloEndpointOk
+
+`func (o *IdentityProviderSAML) GetSloEndpointOk() (*string, bool)`
+
+GetSloEndpointOk returns a tuple with the SloEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSloEndpoint
+
+`func (o *IdentityProviderSAML) SetSloEndpoint(v string)`
+
+SetSloEndpoint sets SloEndpoint field to given value.
+
+### HasSloEndpoint
+
+`func (o *IdentityProviderSAML) HasSloEndpoint() bool`
+
+HasSloEndpoint returns a boolean if a field has been set.
+
+### GetSloResponseEndpoint
+
+`func (o *IdentityProviderSAML) GetSloResponseEndpoint() string`
+
+GetSloResponseEndpoint returns the SloResponseEndpoint field if non-nil, zero value otherwise.
+
+### GetSloResponseEndpointOk
+
+`func (o *IdentityProviderSAML) GetSloResponseEndpointOk() (*string, bool)`
+
+GetSloResponseEndpointOk returns a tuple with the SloResponseEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSloResponseEndpoint
+
+`func (o *IdentityProviderSAML) SetSloResponseEndpoint(v string)`
+
+SetSloResponseEndpoint sets SloResponseEndpoint field to given value.
+
+### HasSloResponseEndpoint
+
+`func (o *IdentityProviderSAML) HasSloResponseEndpoint() bool`
+
+HasSloResponseEndpoint returns a boolean if a field has been set.
+
+### GetSloWindow
+
+`func (o *IdentityProviderSAML) GetSloWindow() int32`
+
+GetSloWindow returns the SloWindow field if non-nil, zero value otherwise.
+
+### GetSloWindowOk
+
+`func (o *IdentityProviderSAML) GetSloWindowOk() (*int32, bool)`
+
+GetSloWindowOk returns a tuple with the SloWindow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSloWindow
+
+`func (o *IdentityProviderSAML) SetSloWindow(v int32)`
+
+SetSloWindow sets SloWindow field to given value.
+
+### HasSloWindow
+
+`func (o *IdentityProviderSAML) HasSloWindow() bool`
+
+HasSloWindow returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

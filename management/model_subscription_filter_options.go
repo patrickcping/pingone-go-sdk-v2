@@ -27,6 +27,10 @@ type SubscriptionFilterOptions struct {
 	IncludedPopulations []SubscriptionFilterOptionsIncludedApplicationsInner `json:"includedPopulations,omitempty"`
 	// An array of tags that events must have to be monitored by the subscription. If tags are not specified, all events are monitored. Currently, the available tags are `adminIdentityEvent`. Identifies the event as the action of an administrator on other administrators.
 	IncludedTags []EnumSubscriptionFilterIncludedTags `json:"includedTags,omitempty"`
+	// Whether the IP address of an actor should be present in the `source` section of the event.
+	IpAddressExposed *bool `json:"ipAddressExposed,omitempty"`
+	// Whether the User-Agent HTTP header of an event should be present in the `source` section of the event.
+	UserAgentExposed *bool `json:"userAgentExposed,omitempty"`
 }
 
 // NewSubscriptionFilterOptions instantiates a new SubscriptionFilterOptions object
@@ -36,6 +40,10 @@ type SubscriptionFilterOptions struct {
 func NewSubscriptionFilterOptions(includedActionTypes []string) *SubscriptionFilterOptions {
 	this := SubscriptionFilterOptions{}
 	this.IncludedActionTypes = includedActionTypes
+	var ipAddressExposed bool = false
+	this.IpAddressExposed = &ipAddressExposed
+	var userAgentExposed bool = false
+	this.UserAgentExposed = &userAgentExposed
 	return &this
 }
 
@@ -44,6 +52,10 @@ func NewSubscriptionFilterOptions(includedActionTypes []string) *SubscriptionFil
 // but it doesn't guarantee that properties required by API are set
 func NewSubscriptionFilterOptionsWithDefaults() *SubscriptionFilterOptions {
 	this := SubscriptionFilterOptions{}
+	var ipAddressExposed bool = false
+	this.IpAddressExposed = &ipAddressExposed
+	var userAgentExposed bool = false
+	this.UserAgentExposed = &userAgentExposed
 	return &this
 }
 
@@ -167,6 +179,70 @@ func (o *SubscriptionFilterOptions) SetIncludedTags(v []EnumSubscriptionFilterIn
 	o.IncludedTags = v
 }
 
+// GetIpAddressExposed returns the IpAddressExposed field value if set, zero value otherwise.
+func (o *SubscriptionFilterOptions) GetIpAddressExposed() bool {
+	if o == nil || IsNil(o.IpAddressExposed) {
+		var ret bool
+		return ret
+	}
+	return *o.IpAddressExposed
+}
+
+// GetIpAddressExposedOk returns a tuple with the IpAddressExposed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFilterOptions) GetIpAddressExposedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IpAddressExposed) {
+		return nil, false
+	}
+	return o.IpAddressExposed, true
+}
+
+// HasIpAddressExposed returns a boolean if a field has been set.
+func (o *SubscriptionFilterOptions) HasIpAddressExposed() bool {
+	if o != nil && !IsNil(o.IpAddressExposed) {
+		return true
+	}
+
+	return false
+}
+
+// SetIpAddressExposed gets a reference to the given bool and assigns it to the IpAddressExposed field.
+func (o *SubscriptionFilterOptions) SetIpAddressExposed(v bool) {
+	o.IpAddressExposed = &v
+}
+
+// GetUserAgentExposed returns the UserAgentExposed field value if set, zero value otherwise.
+func (o *SubscriptionFilterOptions) GetUserAgentExposed() bool {
+	if o == nil || IsNil(o.UserAgentExposed) {
+		var ret bool
+		return ret
+	}
+	return *o.UserAgentExposed
+}
+
+// GetUserAgentExposedOk returns a tuple with the UserAgentExposed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionFilterOptions) GetUserAgentExposedOk() (*bool, bool) {
+	if o == nil || IsNil(o.UserAgentExposed) {
+		return nil, false
+	}
+	return o.UserAgentExposed, true
+}
+
+// HasUserAgentExposed returns a boolean if a field has been set.
+func (o *SubscriptionFilterOptions) HasUserAgentExposed() bool {
+	if o != nil && !IsNil(o.UserAgentExposed) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAgentExposed gets a reference to the given bool and assigns it to the UserAgentExposed field.
+func (o *SubscriptionFilterOptions) SetUserAgentExposed(v bool) {
+	o.UserAgentExposed = &v
+}
+
 func (o SubscriptionFilterOptions) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -186,6 +262,12 @@ func (o SubscriptionFilterOptions) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IncludedTags) {
 		toSerialize["includedTags"] = o.IncludedTags
+	}
+	if !IsNil(o.IpAddressExposed) {
+		toSerialize["ipAddressExposed"] = o.IpAddressExposed
+	}
+	if !IsNil(o.UserAgentExposed) {
+		toSerialize["userAgentExposed"] = o.UserAgentExposed
 	}
 	return toSerialize, nil
 }

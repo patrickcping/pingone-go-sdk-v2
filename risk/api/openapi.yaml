@@ -999,10 +999,18 @@ components:
               id: id
               priority: 5
               updatedAt: 2000-01-23T04:56:07.000+00:00
+            triggers:
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
             defaultResult:
               level: null
               type: null
-              value: value
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - evaluatedPredictors:
             - id: id
@@ -1081,10 +1089,18 @@ components:
               id: id
               priority: 5
               updatedAt: 2000-01-23T04:56:07.000+00:00
+            triggers:
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
             defaultResult:
               level: null
               type: null
-              value: value
             updatedAt: 2000-01-23T04:56:07.000+00:00
           riskPredictors:
           - null
@@ -1137,6 +1153,18 @@ components:
       - AGGREGATED_SCORES
       - VALUE_COMPARISON
       - IP_RANGE
+      type: string
+    EnumRiskPolicyResultLevel:
+      description: "Contains the default result level returned if none of the conditions\
+        \ in the policy are evaluated to true. At this time, the value must be `LOW`."
+      enum:
+      - LOW
+      type: string
+    EnumRiskPolicySetTriggerType:
+      description: A string that specifies the trigger type for the policy set. The
+        only option is `POLICY_SET_STAGING`.
+      enum:
+      - POLICY_SET_STAGING
       type: string
     EnumPredictorCompositeConditionType:
       enum:
@@ -1793,10 +1821,18 @@ components:
           id: id
           priority: 5
           updatedAt: 2000-01-23T04:56:07.000+00:00
+        triggers:
+        - type: null
+          policySet:
+            id: id
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+        - type: null
+          policySet:
+            id: id
+          expiresAt: 2000-01-23T04:56:07.000+00:00
         defaultResult:
           level: null
           type: null
-          value: value
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         createdAt:
@@ -1815,7 +1851,7 @@ components:
             \ environment is set to false."
           type: boolean
         defaultResult:
-          $ref: '#/components/schemas/RiskPolicyResult'
+          $ref: '#/components/schemas/RiskPolicySet_defaultResult'
         description:
           description: "A string that specifies a description for this policy set.\
             \ This is an optional property. Valid characters consist of any Unicode\
@@ -1851,10 +1887,19 @@ components:
           items:
             $ref: '#/components/schemas/RiskPolicySet_evaluatedPredictors_inner'
           type: array
+        triggers:
+          description: An array of triggers related to this policy set.
+          items:
+            $ref: '#/components/schemas/RiskPolicySet_triggers_inner'
+          type: array
       required:
       - name
       type: object
     RiskPolicyResult:
+      description: "A result object that specifies the result returned if the policy\
+        \ is evaluated as true. If several policies are evaluated as true, the result\
+        \ related to the highest priority policy is returned. for more information,\
+        \ see the Result attribute data model in the Risk Evaluations topic."
       example:
         level: null
         type: null
@@ -2152,10 +2197,18 @@ components:
             id: id
             priority: 5
             updatedAt: 2000-01-23T04:56:07.000+00:00
+          triggers:
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
           defaultResult:
             level: null
             type: null
-            value: value
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - evaluatedPredictors:
           - id: id
@@ -2234,10 +2287,18 @@ components:
             id: id
             priority: 5
             updatedAt: 2000-01-23T04:56:07.000+00:00
+          triggers:
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
           defaultResult:
             level: null
             type: null
-            value: value
           updatedAt: 2000-01-23T04:56:07.000+00:00
         riskPredictors:
         - null
@@ -2853,6 +2914,21 @@ components:
         between:
           $ref: '#/components/schemas/RiskPolicy_condition_between'
       type: object
+    RiskPolicySet_defaultResult:
+      description: "A result object that specifies the default result returned if\
+        \ none of the conditions in the policy set are evaluated to true. At this\
+        \ time, the defaultResultLevel value must be LOW."
+      example:
+        level: null
+        type: null
+      properties:
+        level:
+          $ref: '#/components/schemas/EnumRiskPolicyResultLevel'
+        type:
+          $ref: '#/components/schemas/EnumResultType'
+      required:
+      - level
+      type: object
     RiskPolicySet_evaluatedPredictors_inner:
       example:
         id: id
@@ -2862,6 +2938,26 @@ components:
           type: string
       required:
       - id
+      type: object
+    RiskPolicySet_triggers_inner:
+      example:
+        type: null
+        policySet:
+          id: id
+        expiresAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumRiskPolicySetTriggerType'
+        policySet:
+          $ref: '#/components/schemas/RiskPolicySet_evaluatedPredictors_inner'
+        expiresAt:
+          description: The time the trigger expires (format ISO-8061).
+          format: date-time
+          type: string
+      required:
+      - expiresAt
+      - policySet
+      - type
       type: object
     RiskPredictorCommon_default_result:
       description: "This specifies the result assigned to the predictor if the predictor\
