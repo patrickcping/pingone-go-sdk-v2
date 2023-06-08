@@ -2,8 +2,6 @@ module github.com/patrickcping/pingone-go-sdk-v2
 
 go 1.20
 
-replace github.com/patrickcping/pingone-go-sdk-v2/verify => /Users/mikesimon/dev/src/github.com/pingone-go-sdk-v2/verify
-
 require (
 	github.com/golangci/golangci-lint v1.52.2
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.4
