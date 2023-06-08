@@ -2,6 +2,8 @@ module github.com/patrickcping/pingone-go-sdk-v2
 
 go 1.20
 
+replace github.com/patrickcping/pingone-go-sdk-v2/verify => /Users/mikesimon/dev/src/github.com/pingone-go-sdk-v2/verify
+
 require (
 	github.com/golangci/golangci-lint v1.52.2
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.4
@@ -10,6 +12,7 @@ require (
 	github.com/patrickcping/pingone-go-sdk-v2/management v0.22.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.11.0
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.7.1
+	github.com/patrickcping/pingone-go-sdk-v2/verify v0.0.0-00010101000000-000000000000
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.15.0
 	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
@@ -154,7 +157,7 @@ require (
 	github.com/ssgreg/nlreturn/v2 v2.2.1 // indirect
 	github.com/stbenjam/no-sprintf-host-port v0.1.1 // indirect
 	github.com/stretchr/objx v0.5.0 // indirect
-	github.com/stretchr/testify v1.8.2 // indirect
+	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/t-yuki/gocover-cobertura v0.0.0-20180217150009-aaee18c8195c // indirect
 	github.com/tdakkota/asciicheck v0.2.0 // indirect
