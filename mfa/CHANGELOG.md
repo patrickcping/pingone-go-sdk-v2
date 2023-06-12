@@ -1,3 +1,7 @@
+# v0.11.1 (Unreleased)
+
+* **Enhancement** Fix `TimeUnit` enum in the `DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime` model. [#190](https://github.com/patrickcping/pingone-go-sdk-v2/pull/190)
+
 # v0.11.0 (2023-05-23)
 
 * **Enhancement** Support for `PhoneExtensions` in the `MFASettings` model. [#175](https://github.com/patrickcping/pingone-go-sdk-v2/pull/175)
