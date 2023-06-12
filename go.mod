@@ -9,7 +9,7 @@ require (
 	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.1.0
 	github.com/patrickcping/pingone-go-sdk-v2/management v0.22.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.11.0
-	github.com/patrickcping/pingone-go-sdk-v2/risk v0.7.0
+	github.com/patrickcping/pingone-go-sdk-v2/risk v0.7.1
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.16.0
 	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1

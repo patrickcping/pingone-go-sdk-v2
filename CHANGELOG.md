@@ -1,5 +1,14 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.11.1](./mfa/CHANGELOG.md)
+    * **Enhancement** Fix `TimeUnit` enum in the `DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime` model. [#190](https://github.com/patrickcping/pingone-go-sdk-v2/pull/190)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.1.0](./verify/CHANGELOG.md)
+    * **Initial release** [#186](https://github.com/patrickcping/pingone-go-sdk-v2/pull/186)
+
+# Release (2023-06-05)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.3
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.7.0 => v0.7.1 [#185](https://github.com/patrickcping/pingone-go-sdk-v2/pull/185)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.7.1](./risk/CHANGELOG.md)
     * **Bug** Fix the risk policy result for the `RiskPolicySet.DefaultResult` and the `RiskPolicyResult.Level` attribute. [#183](https://github.com/patrickcping/pingone-go-sdk-v2/pull/183)
 

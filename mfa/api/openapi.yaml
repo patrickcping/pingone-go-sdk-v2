@@ -3030,6 +3030,12 @@ components:
       - MINUTES
       - SECONDS
       type: string
+    EnumTimeUnitPairingKeyLifetime:
+      description: The time unit for the `pairingKeyLifetime.duration` parameter.
+      enum:
+      - MINUTES
+      - HOURS
+      type: string
     EnumTimeUnitPushTimeout:
       description: "The time unit for the `pushTimeout.duration` parameter. Currently,\
         \ the only permitted value is `SECONDS`."
@@ -3415,7 +3421,7 @@ components:
             \ is not provided, the duration is set to 10 minutes."
           type: integer
         timeUnit:
-          $ref: '#/components/schemas/EnumTimeUnit'
+          $ref: '#/components/schemas/EnumTimeUnitPairingKeyLifetime'
       required:
       - duration
       - timeUnit
