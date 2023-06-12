@@ -8,7 +8,6 @@ import (
 	"github.com/patrickcping/pingone-go-sdk-v2/mfa"
 	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
 	"github.com/patrickcping/pingone-go-sdk-v2/risk"
-	"github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 type Config struct {
@@ -26,6 +25,5 @@ type Client struct {
 	ManagementAPIClient          *management.APIClient
 	MFAAPIClient                 *mfa.APIClient
 	RiskAPIClient                *risk.APIClient
-	VerifyAPIClient              *verify.APIClient
 	Region                       model.RegionMapping
 }

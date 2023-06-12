@@ -14,7 +14,6 @@ import (
 	"github.com/patrickcping/pingone-go-sdk-v2/mfa"
 	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
 	"github.com/patrickcping/pingone-go-sdk-v2/risk"
-	"github.com/patrickcping/pingone-go-sdk-v2/verify"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/clientcredentials"
 )
@@ -56,11 +55,6 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 		return nil, err
 	}
 
-	verifyClient, err := VerifyAPIClient(token)
-	if err != nil {
-		return nil, err
-	}
-
 	apiClient := &Client{
 		AgreementManagementAPIClient: agreementManagementClient,
 		AuthorizeAPIClient:           authorizeClient,
@@ -68,7 +62,6 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 		ManagementAPIClient:          managementClient,
 		MFAAPIClient:                 mfaClient,
 		RiskAPIClient:                riskClient,
-		VerifyAPIClient:              verifyClient,
 		Region:                       model.FindRegionByName(c.Region),
 	}
 
@@ -166,22 +159,6 @@ func RiskAPIClient(token *oauth2.Token) (*risk.APIClient, error) {
 
 	if client == nil {
 		return nil, fmt.Errorf("Cannot initialise PingOne Risk client")
-	}
-
-	return client, nil
-
-}
-
-func VerifyAPIClient(token *oauth2.Token) (*verify.APIClient, error) {
-
-	var client *verify.APIClient
-
-	clientcfg := verify.NewConfiguration()
-	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", token.AccessToken))
-	client = verify.NewAPIClient(clientcfg)
-
-	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Verify client")
 	}
 
 	return client, nil
