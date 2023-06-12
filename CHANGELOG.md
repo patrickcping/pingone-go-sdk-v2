@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.1.0](./verify/CHANGELOG.md)
+    * **Initial release** [#186](https://github.com/patrickcping/pingone-go-sdk-v2/pull/186)
+
 # Release (2023-06-05)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.3
