@@ -1,9 +1,6 @@
-.gitignore
-.travis.yml
 README.md
 api/openapi.yaml
 api_verify_policies.go
-client.go
 configuration.go
 docs/EmailPhoneConfiguration.md
 docs/EmailPhoneConfigurationOtp.md
@@ -31,7 +28,6 @@ docs/TransactionConfigurationDataCollectionTimeout.md
 docs/TransactionConfigurationTimeout.md
 docs/VerifyPoliciesApi.md
 docs/VerifyPolicy.md
-git_push.sh
 go.mod
 go.sum
 model_email_phone_configuration.go
