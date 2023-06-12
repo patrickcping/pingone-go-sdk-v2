@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.11.1](./mfa/CHANGELOG.md)
+    * **Enhancement** Fix `TimeUnit` enum in the `DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime` model. [#190](https://github.com/patrickcping/pingone-go-sdk-v2/pull/190)
 * `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.1.0](./verify/CHANGELOG.md)
     * **Initial release** [#186](https://github.com/patrickcping/pingone-go-sdk-v2/pull/186)
 
