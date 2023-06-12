@@ -29,7 +29,7 @@ func TestAccAPIClient_Success(t *testing.T) {
 	if client.AuthorizeAPIClient == nil {
 		t.Fatalf("Authorize Client not successfully retrieved")
 	}
-
+	
 	if client.CredentialsAPIClient == nil {
 		t.Fatalf("Credentials Client not successfully retrieved")
 	}
@@ -44,10 +44,6 @@ func TestAccAPIClient_Success(t *testing.T) {
 
 	if client.RiskAPIClient == nil {
 		t.Fatalf("Risk Client not successfully retrieved")
-	}
-
-	if client.VerifyAPIClient == nil {
-		t.Fatalf("Verify Client not successfully retrieved")
 	}
 
 	if client.Region != model.FindRegionByName(os.Getenv("PINGONE_REGION")) {

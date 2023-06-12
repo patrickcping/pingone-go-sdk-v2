@@ -8,5 +8,4 @@ use (
 	./mfa
 	./risk
 	./authorize
-	./verify
 )
