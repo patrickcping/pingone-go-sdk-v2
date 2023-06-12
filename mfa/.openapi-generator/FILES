@@ -49,6 +49,7 @@ docs/EnumMFAPushCredentialAttrType.md
 docs/EnumMFASettingsDeviceSelection.md
 docs/EnumMFASettingsPairingKeyFormat.md
 docs/EnumTimeUnit.md
+docs/EnumTimeUnitPairingKeyLifetime.md
 docs/EnumTimeUnitPushTimeout.md
 docs/FIDODeviceApi.md
 docs/FIDOPolicy.md
@@ -113,6 +114,7 @@ model_enum_mfa_push_credential_attr_type.go
 model_enum_mfa_settings_device_selection.go
 model_enum_mfa_settings_pairing_key_format.go
 model_enum_time_unit.go
+model_enum_time_unit_pairing_key_lifetime.go
 model_enum_time_unit_push_timeout.go
 model_fido_policy.go
 model_fido_policy_allowed_authenticators_inner.go

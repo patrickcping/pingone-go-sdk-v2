@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
  - [EnumMFASettingsDeviceSelection](docs/EnumMFASettingsDeviceSelection.md)
  - [EnumMFASettingsPairingKeyFormat](docs/EnumMFASettingsPairingKeyFormat.md)
  - [EnumTimeUnit](docs/EnumTimeUnit.md)
+ - [EnumTimeUnitPairingKeyLifetime](docs/EnumTimeUnitPairingKeyLifetime.md)
  - [EnumTimeUnitPushTimeout](docs/EnumTimeUnitPushTimeout.md)
  - [FIDOPolicy](docs/FIDOPolicy.md)
  - [FIDOPolicyAllowedAuthenticatorsInner](docs/FIDOPolicyAllowedAuthenticatorsInner.md)

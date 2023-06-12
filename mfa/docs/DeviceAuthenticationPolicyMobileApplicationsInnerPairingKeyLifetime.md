@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Duration** | **int32** | The amount of time an issued pairing key can be used until it expires. Minimum is 1 minute and maximum is 48 hours. If this parameter is not provided, the duration is set to 10 minutes. | [default to 10]
-**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) |  | 
+**TimeUnit** | [**EnumTimeUnitPairingKeyLifetime**](EnumTimeUnitPairingKeyLifetime.md) |  | 
 
 ## Methods
 
 ### NewDeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime
 
-`func NewDeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime(duration int32, timeUnit EnumTimeUnit, ) *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime`
+`func NewDeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime(duration int32, timeUnit EnumTimeUnitPairingKeyLifetime, ) *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime`
 
 NewDeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime instantiates a new DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetDuration sets Duration field to given value.
 
 ### GetTimeUnit
 
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) GetTimeUnit() EnumTimeUnit`
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) GetTimeUnit() EnumTimeUnitPairingKeyLifetime`
 
 GetTimeUnit returns the TimeUnit field if non-nil, zero value otherwise.
 
 ### GetTimeUnitOk
 
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) GetTimeUnitOk() (*EnumTimeUnit, bool)`
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) GetTimeUnitOk() (*EnumTimeUnitPairingKeyLifetime, bool)`
 
 GetTimeUnitOk returns a tuple with the TimeUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeUnit
 
-`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) SetTimeUnit(v EnumTimeUnit)`
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime) SetTimeUnit(v EnumTimeUnitPairingKeyLifetime)`
 
 SetTimeUnit sets TimeUnit field to given value.
 
