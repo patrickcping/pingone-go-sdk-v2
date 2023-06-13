@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **GovernmentId** | Pointer to [**GovernmentIdConfiguration**](GovernmentIdConfiguration.md) |  | [optional] 
 **FacialComparison** | Pointer to [**FacialComparisonConfiguration**](FacialComparisonConfiguration.md) |  | [optional] 
 **Liveness** | Pointer to [**LivenessConfiguration**](LivenessConfiguration.md) |  | [optional] 
-**Email** | Pointer to [**EmailPhoneConfiguration**](EmailPhoneConfiguration.md) |  | [optional] 
-**Phone** | Pointer to [**EmailPhoneConfiguration**](EmailPhoneConfiguration.md) |  | [optional] 
+**Email** | Pointer to [**OTPDeviceConfiguration**](OTPDeviceConfiguration.md) |  | [optional] 
+**Phone** | Pointer to [**OTPDeviceConfiguration**](OTPDeviceConfiguration.md) |  | [optional] 
 **Transaction** | Pointer to [**TransactionConfiguration**](TransactionConfiguration.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -234,20 +234,20 @@ HasLiveness returns a boolean if a field has been set.
 
 ### GetEmail
 
-`func (o *VerifyPolicy) GetEmail() EmailPhoneConfiguration`
+`func (o *VerifyPolicy) GetEmail() OTPDeviceConfiguration`
 
 GetEmail returns the Email field if non-nil, zero value otherwise.
 
 ### GetEmailOk
 
-`func (o *VerifyPolicy) GetEmailOk() (*EmailPhoneConfiguration, bool)`
+`func (o *VerifyPolicy) GetEmailOk() (*OTPDeviceConfiguration, bool)`
 
 GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEmail
 
-`func (o *VerifyPolicy) SetEmail(v EmailPhoneConfiguration)`
+`func (o *VerifyPolicy) SetEmail(v OTPDeviceConfiguration)`
 
 SetEmail sets Email field to given value.
 
@@ -259,20 +259,20 @@ HasEmail returns a boolean if a field has been set.
 
 ### GetPhone
 
-`func (o *VerifyPolicy) GetPhone() EmailPhoneConfiguration`
+`func (o *VerifyPolicy) GetPhone() OTPDeviceConfiguration`
 
 GetPhone returns the Phone field if non-nil, zero value otherwise.
 
 ### GetPhoneOk
 
-`func (o *VerifyPolicy) GetPhoneOk() (*EmailPhoneConfiguration, bool)`
+`func (o *VerifyPolicy) GetPhoneOk() (*OTPDeviceConfiguration, bool)`
 
 GetPhoneOk returns a tuple with the Phone field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPhone
 
-`func (o *VerifyPolicy) SetPhone(v EmailPhoneConfiguration)`
+`func (o *VerifyPolicy) SetPhone(v OTPDeviceConfiguration)`
 
 SetPhone sets Phone field to given value.
 

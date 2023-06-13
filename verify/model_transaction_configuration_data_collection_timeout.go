@@ -21,14 +21,14 @@ var _ MappedNullable = &TransactionConfigurationDataCollectionTimeout{}
 type TransactionConfigurationDataCollectionTimeout struct {
 	// Length of time before data collection timeout expires; range is 0-30 minutes or 0-1800 seconds.
 	Duration int32 `json:"duration"`
-	TimeUnit EnumShortTimeUnit `json:"timeUnit"`
+	TimeUnit EnumTimeUnit `json:"timeUnit"`
 }
 
 // NewTransactionConfigurationDataCollectionTimeout instantiates a new TransactionConfigurationDataCollectionTimeout object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionConfigurationDataCollectionTimeout(duration int32, timeUnit EnumShortTimeUnit) *TransactionConfigurationDataCollectionTimeout {
+func NewTransactionConfigurationDataCollectionTimeout(duration int32, timeUnit EnumTimeUnit) *TransactionConfigurationDataCollectionTimeout {
 	this := TransactionConfigurationDataCollectionTimeout{}
 	this.Duration = duration
 	this.TimeUnit = timeUnit
@@ -68,9 +68,9 @@ func (o *TransactionConfigurationDataCollectionTimeout) SetDuration(v int32) {
 }
 
 // GetTimeUnit returns the TimeUnit field value
-func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnit() EnumShortTimeUnit {
+func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnit() EnumTimeUnit {
 	if o == nil {
-		var ret EnumShortTimeUnit
+		var ret EnumTimeUnit
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnit() EnumShortT
 
 // GetTimeUnitOk returns a tuple with the TimeUnit field value
 // and a boolean to check if the value has been set.
-func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnitOk() (*EnumShortTimeUnit, bool) {
+func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnitOk() (*EnumTimeUnit, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnitOk() (*EnumSh
 }
 
 // SetTimeUnit sets field value
-func (o *TransactionConfigurationDataCollectionTimeout) SetTimeUnit(v EnumShortTimeUnit) {
+func (o *TransactionConfigurationDataCollectionTimeout) SetTimeUnit(v EnumTimeUnit) {
 	o.TimeUnit = v
 }
 

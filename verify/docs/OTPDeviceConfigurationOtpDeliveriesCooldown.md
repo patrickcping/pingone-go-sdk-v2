@@ -1,67 +1,67 @@
-# EmailPhoneConfigurationOtpLifeTime
+# OTPDeviceConfigurationOtpDeliveriesCooldown
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Duration** | **int32** | OTP duration configuration. | 
+**Duration** | **int32** | Cooldown duration configuration. | 
 **TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) |  | 
 
 ## Methods
 
-### NewEmailPhoneConfigurationOtpLifeTime
+### NewOTPDeviceConfigurationOtpDeliveriesCooldown
 
-`func NewEmailPhoneConfigurationOtpLifeTime(duration int32, timeUnit EnumTimeUnit, ) *EmailPhoneConfigurationOtpLifeTime`
+`func NewOTPDeviceConfigurationOtpDeliveriesCooldown(duration int32, timeUnit EnumTimeUnit, ) *OTPDeviceConfigurationOtpDeliveriesCooldown`
 
-NewEmailPhoneConfigurationOtpLifeTime instantiates a new EmailPhoneConfigurationOtpLifeTime object
+NewOTPDeviceConfigurationOtpDeliveriesCooldown instantiates a new OTPDeviceConfigurationOtpDeliveriesCooldown object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewEmailPhoneConfigurationOtpLifeTimeWithDefaults
+### NewOTPDeviceConfigurationOtpDeliveriesCooldownWithDefaults
 
-`func NewEmailPhoneConfigurationOtpLifeTimeWithDefaults() *EmailPhoneConfigurationOtpLifeTime`
+`func NewOTPDeviceConfigurationOtpDeliveriesCooldownWithDefaults() *OTPDeviceConfigurationOtpDeliveriesCooldown`
 
-NewEmailPhoneConfigurationOtpLifeTimeWithDefaults instantiates a new EmailPhoneConfigurationOtpLifeTime object
+NewOTPDeviceConfigurationOtpDeliveriesCooldownWithDefaults instantiates a new OTPDeviceConfigurationOtpDeliveriesCooldown object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDuration
 
-`func (o *EmailPhoneConfigurationOtpLifeTime) GetDuration() int32`
+`func (o *OTPDeviceConfigurationOtpDeliveriesCooldown) GetDuration() int32`
 
 GetDuration returns the Duration field if non-nil, zero value otherwise.
 
 ### GetDurationOk
 
-`func (o *EmailPhoneConfigurationOtpLifeTime) GetDurationOk() (*int32, bool)`
+`func (o *OTPDeviceConfigurationOtpDeliveriesCooldown) GetDurationOk() (*int32, bool)`
 
 GetDurationOk returns a tuple with the Duration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDuration
 
-`func (o *EmailPhoneConfigurationOtpLifeTime) SetDuration(v int32)`
+`func (o *OTPDeviceConfigurationOtpDeliveriesCooldown) SetDuration(v int32)`
 
 SetDuration sets Duration field to given value.
 
 
 ### GetTimeUnit
 
-`func (o *EmailPhoneConfigurationOtpLifeTime) GetTimeUnit() EnumTimeUnit`
+`func (o *OTPDeviceConfigurationOtpDeliveriesCooldown) GetTimeUnit() EnumTimeUnit`
 
 GetTimeUnit returns the TimeUnit field if non-nil, zero value otherwise.
 
 ### GetTimeUnitOk
 
-`func (o *EmailPhoneConfigurationOtpLifeTime) GetTimeUnitOk() (*EnumTimeUnit, bool)`
+`func (o *OTPDeviceConfigurationOtpDeliveriesCooldown) GetTimeUnitOk() (*EnumTimeUnit, bool)`
 
 GetTimeUnitOk returns a tuple with the TimeUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeUnit
 
-`func (o *EmailPhoneConfigurationOtpLifeTime) SetTimeUnit(v EnumTimeUnit)`
+`func (o *OTPDeviceConfigurationOtpDeliveriesCooldown) SetTimeUnit(v EnumTimeUnit)`
 
 SetTimeUnit sets TimeUnit field to given value.
 

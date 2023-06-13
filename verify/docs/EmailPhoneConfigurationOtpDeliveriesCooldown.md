@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Duration** | **int32** | Cooldown duration configuration. | 
-**TimeUnit** | [**EnumLongTimeUnit**](EnumLongTimeUnit.md) |  | 
+**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) |  | 
 
 ## Methods
 
 ### NewEmailPhoneConfigurationOtpDeliveriesCooldown
 
-`func NewEmailPhoneConfigurationOtpDeliveriesCooldown(duration int32, timeUnit EnumLongTimeUnit, ) *EmailPhoneConfigurationOtpDeliveriesCooldown`
+`func NewEmailPhoneConfigurationOtpDeliveriesCooldown(duration int32, timeUnit EnumTimeUnit, ) *EmailPhoneConfigurationOtpDeliveriesCooldown`
 
 NewEmailPhoneConfigurationOtpDeliveriesCooldown instantiates a new EmailPhoneConfigurationOtpDeliveriesCooldown object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetDuration sets Duration field to given value.
 
 ### GetTimeUnit
 
-`func (o *EmailPhoneConfigurationOtpDeliveriesCooldown) GetTimeUnit() EnumLongTimeUnit`
+`func (o *EmailPhoneConfigurationOtpDeliveriesCooldown) GetTimeUnit() EnumTimeUnit`
 
 GetTimeUnit returns the TimeUnit field if non-nil, zero value otherwise.
 
 ### GetTimeUnitOk
 
-`func (o *EmailPhoneConfigurationOtpDeliveriesCooldown) GetTimeUnitOk() (*EnumLongTimeUnit, bool)`
+`func (o *EmailPhoneConfigurationOtpDeliveriesCooldown) GetTimeUnitOk() (*EnumTimeUnit, bool)`
 
 GetTimeUnitOk returns a tuple with the TimeUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeUnit
 
-`func (o *EmailPhoneConfigurationOtpDeliveriesCooldown) SetTimeUnit(v EnumLongTimeUnit)`
+`func (o *EmailPhoneConfigurationOtpDeliveriesCooldown) SetTimeUnit(v EnumTimeUnit)`
 
 SetTimeUnit sets TimeUnit field to given value.
 
