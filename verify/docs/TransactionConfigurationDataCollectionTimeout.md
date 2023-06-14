@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Duration** | **int32** | Length of time before data collection timeout expires; range is 0-30 minutes or 0-1800 seconds. | 
-**TimeUnit** | [**EnumTimeUnit**](EnumTimeUnit.md) |  | 
+**TimeUnit** | [**EnumShortTimeUnit**](EnumShortTimeUnit.md) |  | 
 
 ## Methods
 
 ### NewTransactionConfigurationDataCollectionTimeout
 
-`func NewTransactionConfigurationDataCollectionTimeout(duration int32, timeUnit EnumTimeUnit, ) *TransactionConfigurationDataCollectionTimeout`
+`func NewTransactionConfigurationDataCollectionTimeout(duration int32, timeUnit EnumShortTimeUnit, ) *TransactionConfigurationDataCollectionTimeout`
 
 NewTransactionConfigurationDataCollectionTimeout instantiates a new TransactionConfigurationDataCollectionTimeout object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetDuration sets Duration field to given value.
 
 ### GetTimeUnit
 
-`func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnit() EnumTimeUnit`
+`func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnit() EnumShortTimeUnit`
 
 GetTimeUnit returns the TimeUnit field if non-nil, zero value otherwise.
 
 ### GetTimeUnitOk
 
-`func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnitOk() (*EnumTimeUnit, bool)`
+`func (o *TransactionConfigurationDataCollectionTimeout) GetTimeUnitOk() (*EnumShortTimeUnit, bool)`
 
 GetTimeUnitOk returns a tuple with the TimeUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeUnit
 
-`func (o *TransactionConfigurationDataCollectionTimeout) SetTimeUnit(v EnumTimeUnit)`
+`func (o *TransactionConfigurationDataCollectionTimeout) SetTimeUnit(v EnumShortTimeUnit)`
 
 SetTimeUnit sets TimeUnit field to given value.
 

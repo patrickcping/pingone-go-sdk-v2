@@ -21,14 +21,14 @@ var _ MappedNullable = &TransactionConfigurationTimeout{}
 type TransactionConfigurationTimeout struct {
 	// Length of time before transaction timeout expires; range is 0-30 minutes or 0-1800 seconds.
 	Duration int32 `json:"duration"`
-	TimeUnit EnumTimeUnit `json:"timeUnit"`
+	TimeUnit EnumShortTimeUnit `json:"timeUnit"`
 }
 
 // NewTransactionConfigurationTimeout instantiates a new TransactionConfigurationTimeout object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransactionConfigurationTimeout(duration int32, timeUnit EnumTimeUnit) *TransactionConfigurationTimeout {
+func NewTransactionConfigurationTimeout(duration int32, timeUnit EnumShortTimeUnit) *TransactionConfigurationTimeout {
 	this := TransactionConfigurationTimeout{}
 	this.Duration = duration
 	this.TimeUnit = timeUnit
@@ -68,9 +68,9 @@ func (o *TransactionConfigurationTimeout) SetDuration(v int32) {
 }
 
 // GetTimeUnit returns the TimeUnit field value
-func (o *TransactionConfigurationTimeout) GetTimeUnit() EnumTimeUnit {
+func (o *TransactionConfigurationTimeout) GetTimeUnit() EnumShortTimeUnit {
 	if o == nil {
-		var ret EnumTimeUnit
+		var ret EnumShortTimeUnit
 		return ret
 	}
 
@@ -79,7 +79,7 @@ func (o *TransactionConfigurationTimeout) GetTimeUnit() EnumTimeUnit {
 
 // GetTimeUnitOk returns a tuple with the TimeUnit field value
 // and a boolean to check if the value has been set.
-func (o *TransactionConfigurationTimeout) GetTimeUnitOk() (*EnumTimeUnit, bool) {
+func (o *TransactionConfigurationTimeout) GetTimeUnitOk() (*EnumShortTimeUnit, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *TransactionConfigurationTimeout) GetTimeUnitOk() (*EnumTimeUnit, bool) 
 }
 
 // SetTimeUnit sets field value
-func (o *TransactionConfigurationTimeout) SetTimeUnit(v EnumTimeUnit) {
+func (o *TransactionConfigurationTimeout) SetTimeUnit(v EnumShortTimeUnit) {
 	o.TimeUnit = v
 }
 

@@ -31,8 +31,8 @@ type VerifyPolicy struct {
 	GovernmentId *GovernmentIdConfiguration `json:"governmentId,omitempty"`
 	FacialComparison *FacialComparisonConfiguration `json:"facialComparison,omitempty"`
 	Liveness *LivenessConfiguration `json:"liveness,omitempty"`
-	Email *OTPDeviceConfiguration `json:"email,omitempty"`
-	Phone *OTPDeviceConfiguration `json:"phone,omitempty"`
+	Email *EmailPhoneConfiguration `json:"email,omitempty"`
+	Phone *EmailPhoneConfiguration `json:"phone,omitempty"`
 	Transaction *TransactionConfiguration `json:"transaction,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
@@ -305,9 +305,9 @@ func (o *VerifyPolicy) SetLiveness(v LivenessConfiguration) {
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise.
-func (o *VerifyPolicy) GetEmail() OTPDeviceConfiguration {
+func (o *VerifyPolicy) GetEmail() EmailPhoneConfiguration {
 	if o == nil || IsNil(o.Email) {
-		var ret OTPDeviceConfiguration
+		var ret EmailPhoneConfiguration
 		return ret
 	}
 	return *o.Email
@@ -315,7 +315,7 @@ func (o *VerifyPolicy) GetEmail() OTPDeviceConfiguration {
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyPolicy) GetEmailOk() (*OTPDeviceConfiguration, bool) {
+func (o *VerifyPolicy) GetEmailOk() (*EmailPhoneConfiguration, bool) {
 	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
@@ -331,15 +331,15 @@ func (o *VerifyPolicy) HasEmail() bool {
 	return false
 }
 
-// SetEmail gets a reference to the given OTPDeviceConfiguration and assigns it to the Email field.
-func (o *VerifyPolicy) SetEmail(v OTPDeviceConfiguration) {
+// SetEmail gets a reference to the given EmailPhoneConfiguration and assigns it to the Email field.
+func (o *VerifyPolicy) SetEmail(v EmailPhoneConfiguration) {
 	o.Email = &v
 }
 
 // GetPhone returns the Phone field value if set, zero value otherwise.
-func (o *VerifyPolicy) GetPhone() OTPDeviceConfiguration {
+func (o *VerifyPolicy) GetPhone() EmailPhoneConfiguration {
 	if o == nil || IsNil(o.Phone) {
-		var ret OTPDeviceConfiguration
+		var ret EmailPhoneConfiguration
 		return ret
 	}
 	return *o.Phone
@@ -347,7 +347,7 @@ func (o *VerifyPolicy) GetPhone() OTPDeviceConfiguration {
 
 // GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyPolicy) GetPhoneOk() (*OTPDeviceConfiguration, bool) {
+func (o *VerifyPolicy) GetPhoneOk() (*EmailPhoneConfiguration, bool) {
 	if o == nil || IsNil(o.Phone) {
 		return nil, false
 	}
@@ -363,8 +363,8 @@ func (o *VerifyPolicy) HasPhone() bool {
 	return false
 }
 
-// SetPhone gets a reference to the given OTPDeviceConfiguration and assigns it to the Phone field.
-func (o *VerifyPolicy) SetPhone(v OTPDeviceConfiguration) {
+// SetPhone gets a reference to the given EmailPhoneConfiguration and assigns it to the Phone field.
+func (o *VerifyPolicy) SetPhone(v EmailPhoneConfiguration) {
 	o.Phone = &v
 }
 
