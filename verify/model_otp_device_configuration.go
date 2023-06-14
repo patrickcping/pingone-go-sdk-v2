@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the EmailPhoneConfiguration type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EmailPhoneConfiguration{}
+// checks if the OTPDeviceConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OTPDeviceConfiguration{}
 
-// EmailPhoneConfiguration struct for EmailPhoneConfiguration
-type EmailPhoneConfiguration struct {
+// OTPDeviceConfiguration struct for OTPDeviceConfiguration
+type OTPDeviceConfiguration struct {
 	Verify EnumVerify `json:"verify"`
 	// When enabled, PingOne Verify registers the email address or phone number with PingOne MFA as a verified MFA device.
 	CreateMfaDevice *bool `json:"createMfaDevice,omitempty"`
-	Otp *EmailPhoneConfigurationOtp `json:"otp,omitempty"`
+	Otp *OTPDeviceConfigurationOtp `json:"otp,omitempty"`
 }
 
-// NewEmailPhoneConfiguration instantiates a new EmailPhoneConfiguration object
+// NewOTPDeviceConfiguration instantiates a new OTPDeviceConfiguration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEmailPhoneConfiguration(verify EnumVerify) *EmailPhoneConfiguration {
-	this := EmailPhoneConfiguration{}
+func NewOTPDeviceConfiguration(verify EnumVerify) *OTPDeviceConfiguration {
+	this := OTPDeviceConfiguration{}
 	this.Verify = verify
 	return &this
 }
 
-// NewEmailPhoneConfigurationWithDefaults instantiates a new EmailPhoneConfiguration object
+// NewOTPDeviceConfigurationWithDefaults instantiates a new OTPDeviceConfiguration object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEmailPhoneConfigurationWithDefaults() *EmailPhoneConfiguration {
-	this := EmailPhoneConfiguration{}
+func NewOTPDeviceConfigurationWithDefaults() *OTPDeviceConfiguration {
+	this := OTPDeviceConfiguration{}
 	return &this
 }
 
 // GetVerify returns the Verify field value
-func (o *EmailPhoneConfiguration) GetVerify() EnumVerify {
+func (o *OTPDeviceConfiguration) GetVerify() EnumVerify {
 	if o == nil {
 		var ret EnumVerify
 		return ret
@@ -55,7 +55,7 @@ func (o *EmailPhoneConfiguration) GetVerify() EnumVerify {
 
 // GetVerifyOk returns a tuple with the Verify field value
 // and a boolean to check if the value has been set.
-func (o *EmailPhoneConfiguration) GetVerifyOk() (*EnumVerify, bool) {
+func (o *OTPDeviceConfiguration) GetVerifyOk() (*EnumVerify, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,12 +63,12 @@ func (o *EmailPhoneConfiguration) GetVerifyOk() (*EnumVerify, bool) {
 }
 
 // SetVerify sets field value
-func (o *EmailPhoneConfiguration) SetVerify(v EnumVerify) {
+func (o *OTPDeviceConfiguration) SetVerify(v EnumVerify) {
 	o.Verify = v
 }
 
 // GetCreateMfaDevice returns the CreateMfaDevice field value if set, zero value otherwise.
-func (o *EmailPhoneConfiguration) GetCreateMfaDevice() bool {
+func (o *OTPDeviceConfiguration) GetCreateMfaDevice() bool {
 	if o == nil || IsNil(o.CreateMfaDevice) {
 		var ret bool
 		return ret
@@ -78,7 +78,7 @@ func (o *EmailPhoneConfiguration) GetCreateMfaDevice() bool {
 
 // GetCreateMfaDeviceOk returns a tuple with the CreateMfaDevice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EmailPhoneConfiguration) GetCreateMfaDeviceOk() (*bool, bool) {
+func (o *OTPDeviceConfiguration) GetCreateMfaDeviceOk() (*bool, bool) {
 	if o == nil || IsNil(o.CreateMfaDevice) {
 		return nil, false
 	}
@@ -86,7 +86,7 @@ func (o *EmailPhoneConfiguration) GetCreateMfaDeviceOk() (*bool, bool) {
 }
 
 // HasCreateMfaDevice returns a boolean if a field has been set.
-func (o *EmailPhoneConfiguration) HasCreateMfaDevice() bool {
+func (o *OTPDeviceConfiguration) HasCreateMfaDevice() bool {
 	if o != nil && !IsNil(o.CreateMfaDevice) {
 		return true
 	}
@@ -95,14 +95,14 @@ func (o *EmailPhoneConfiguration) HasCreateMfaDevice() bool {
 }
 
 // SetCreateMfaDevice gets a reference to the given bool and assigns it to the CreateMfaDevice field.
-func (o *EmailPhoneConfiguration) SetCreateMfaDevice(v bool) {
+func (o *OTPDeviceConfiguration) SetCreateMfaDevice(v bool) {
 	o.CreateMfaDevice = &v
 }
 
 // GetOtp returns the Otp field value if set, zero value otherwise.
-func (o *EmailPhoneConfiguration) GetOtp() EmailPhoneConfigurationOtp {
+func (o *OTPDeviceConfiguration) GetOtp() OTPDeviceConfigurationOtp {
 	if o == nil || IsNil(o.Otp) {
-		var ret EmailPhoneConfigurationOtp
+		var ret OTPDeviceConfigurationOtp
 		return ret
 	}
 	return *o.Otp
@@ -110,7 +110,7 @@ func (o *EmailPhoneConfiguration) GetOtp() EmailPhoneConfigurationOtp {
 
 // GetOtpOk returns a tuple with the Otp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EmailPhoneConfiguration) GetOtpOk() (*EmailPhoneConfigurationOtp, bool) {
+func (o *OTPDeviceConfiguration) GetOtpOk() (*OTPDeviceConfigurationOtp, bool) {
 	if o == nil || IsNil(o.Otp) {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *EmailPhoneConfiguration) GetOtpOk() (*EmailPhoneConfigurationOtp, bool)
 }
 
 // HasOtp returns a boolean if a field has been set.
-func (o *EmailPhoneConfiguration) HasOtp() bool {
+func (o *OTPDeviceConfiguration) HasOtp() bool {
 	if o != nil && !IsNil(o.Otp) {
 		return true
 	}
@@ -126,12 +126,12 @@ func (o *EmailPhoneConfiguration) HasOtp() bool {
 	return false
 }
 
-// SetOtp gets a reference to the given EmailPhoneConfigurationOtp and assigns it to the Otp field.
-func (o *EmailPhoneConfiguration) SetOtp(v EmailPhoneConfigurationOtp) {
+// SetOtp gets a reference to the given OTPDeviceConfigurationOtp and assigns it to the Otp field.
+func (o *OTPDeviceConfiguration) SetOtp(v OTPDeviceConfigurationOtp) {
 	o.Otp = &v
 }
 
-func (o EmailPhoneConfiguration) MarshalJSON() ([]byte, error) {
+func (o OTPDeviceConfiguration) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -139,7 +139,7 @@ func (o EmailPhoneConfiguration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o EmailPhoneConfiguration) ToMap() (map[string]interface{}, error) {
+func (o OTPDeviceConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["verify"] = o.Verify
 	if !IsNil(o.CreateMfaDevice) {
@@ -151,38 +151,38 @@ func (o EmailPhoneConfiguration) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableEmailPhoneConfiguration struct {
-	value *EmailPhoneConfiguration
+type NullableOTPDeviceConfiguration struct {
+	value *OTPDeviceConfiguration
 	isSet bool
 }
 
-func (v NullableEmailPhoneConfiguration) Get() *EmailPhoneConfiguration {
+func (v NullableOTPDeviceConfiguration) Get() *OTPDeviceConfiguration {
 	return v.value
 }
 
-func (v *NullableEmailPhoneConfiguration) Set(val *EmailPhoneConfiguration) {
+func (v *NullableOTPDeviceConfiguration) Set(val *OTPDeviceConfiguration) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEmailPhoneConfiguration) IsSet() bool {
+func (v NullableOTPDeviceConfiguration) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEmailPhoneConfiguration) Unset() {
+func (v *NullableOTPDeviceConfiguration) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEmailPhoneConfiguration(val *EmailPhoneConfiguration) *NullableEmailPhoneConfiguration {
-	return &NullableEmailPhoneConfiguration{value: val, isSet: true}
+func NewNullableOTPDeviceConfiguration(val *OTPDeviceConfiguration) *NullableOTPDeviceConfiguration {
+	return &NullableOTPDeviceConfiguration{value: val, isSet: true}
 }
 
-func (v NullableEmailPhoneConfiguration) MarshalJSON() ([]byte, error) {
+func (v NullableOTPDeviceConfiguration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEmailPhoneConfiguration) UnmarshalJSON(src []byte) error {
+func (v *NullableOTPDeviceConfiguration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
