@@ -3001,12 +3001,14 @@ components:
         Specifies the push credential type.
         Valid values:
         * APNS (for Apple)
-        * FCM (for Google)
+        * FCM_HTTP_V1 (for Google)
+        * FCM (deprecated, used previously for Google)
         * HMS (for Huawei)
       enum:
       - APNS
       - FCM
       - HMS
+      - FCM_HTTP_V1
       type: string
     EnumMFASettingsDeviceSelection:
       deprecated: true
@@ -3129,6 +3131,11 @@ components:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
       - $ref: '#/components/schemas/MFAPushCredentialFCM_allOf'
+      deprecated: true
+    MFAPushCredentialFCMHTTPV1:
+      allOf:
+      - $ref: '#/components/schemas/MFAPushCredential'
+      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1_allOf'
     MFAPushCredentialHMS:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
@@ -3245,6 +3252,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'
+      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
       - $ref: '#/components/schemas/MFAPushCredentialHMS'
     updateMFAPushCredential_request:
       example:
@@ -3258,6 +3266,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'
+      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
       - $ref: '#/components/schemas/MFAPushCredentialHMS'
     DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime:
       example:
@@ -3691,6 +3700,7 @@ components:
       anyOf:
       - $ref: '#/components/schemas/MFAPushCredentialAPNS'
       - $ref: '#/components/schemas/MFAPushCredentialFCM'
+      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
       - $ref: '#/components/schemas/MFAPushCredentialHMS'
     EntityArray__embedded:
       example:
@@ -4019,13 +4029,26 @@ components:
       type: object
       example: null
     MFAPushCredentialFCM_allOf:
+      deprecated: true
       properties:
         key:
+          deprecated: true
           description: A string that Apple uses as an identifier to identify an authentication
             key.  Mandatory.
           type: string
       required:
       - key
+      type: object
+      example: null
+    MFAPushCredentialFCMHTTPV1_allOf:
+      properties:
+        googleServiceAccountCredentials:
+          description: Used when `type` is set to `FCM_HTTP_V1`. The value should
+            be the contents of the JSON file that represents your Service Account
+            Credentials.
+          type: string
+      required:
+      - googleServiceAccountCredentials
       type: object
       example: null
     MFAPushCredentialHMS_allOf:

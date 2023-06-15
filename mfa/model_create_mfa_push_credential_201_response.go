@@ -49,6 +49,10 @@ func (dst *CreateMFAPushCredential201Response) UnmarshalJSON(data []byte) error 
 		if err := json.Unmarshal(data, &dst.MFAPushCredential); err != nil { // simple model
 			return err
 		}
+	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM_HTTP_V1:
+		if err := json.Unmarshal(data, &dst.MFAPushCredential); err != nil { // simple model
+			return err
+		}
 	case ENUMMFAPUSHCREDENTIALATTRTYPE_APNS:
 		if err := json.Unmarshal(data, &dst.MFAPushCredentialAPNS); err != nil { // simple model
 			return err

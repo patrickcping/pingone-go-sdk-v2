@@ -21,6 +21,7 @@ var _ MappedNullable = &MFAPushCredentialFCM{}
 type MFAPushCredentialFCM struct {
 	Type EnumMFAPushCredentialAttrType `json:"type"`
 	// A string that Apple uses as an identifier to identify an authentication key.  Mandatory.
+	// Deprecated
 	Key string `json:"key"`
 }
 
@@ -68,6 +69,7 @@ func (o *MFAPushCredentialFCM) SetType(v EnumMFAPushCredentialAttrType) {
 }
 
 // GetKey returns the Key field value
+// Deprecated
 func (o *MFAPushCredentialFCM) GetKey() string {
 	if o == nil {
 		var ret string
@@ -79,6 +81,7 @@ func (o *MFAPushCredentialFCM) GetKey() string {
 
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *MFAPushCredentialFCM) GetKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -87,6 +90,7 @@ func (o *MFAPushCredentialFCM) GetKeyOk() (*string, bool) {
 }
 
 // SetKey sets field value
+// Deprecated
 func (o *MFAPushCredentialFCM) SetKey(v string) {
 	o.Key = v
 }
