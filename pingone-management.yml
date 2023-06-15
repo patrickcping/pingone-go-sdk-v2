@@ -308,6 +308,14 @@ components:
         `NUMBER_ONLY`
         The phone number format without a leading `+` sign, in the E.164 standard format.
         For example: `14155552671`
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType:
+      type: string
+      enum: [SHORT_CODE, TOLL_FREE, PHONE_NUMBER]
+      description: The type of phone number.
+    EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability:
+      type: string
+      enum: [SMS, VOICE]
+      description: The type of phone delivery service capability.
     EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod:
       type: string
       enum: [BASIC, BEARER]
@@ -3642,6 +3650,10 @@ components:
               type: string
               description: A string that specifies the email's "reply to" address.
     NotificationsSettingsPhoneDeliverySettings:
+      oneOf:
+        - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom'
+        - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse'
+    NotificationsSettingsPhoneDeliverySettingsCommon:
       type: object
       properties:
         id:
@@ -3666,68 +3678,16 @@ components:
         - provider
     NotificationsSettingsPhoneDeliverySettingsCustom:
       allOf:
-        - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+        - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCommon'
         - type: object
           properties:
             name:
               type: string
               description: The customer provider's name.
             requests:
-              type: object
-              properties:
-                deliveryMethod:
-                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod'
-                url:
-                  type: string
-                  description: |
-                    The provider's remote gateway or customer gateway URL.
-                    For requests using the POST method, use the provider's remote gateway URL.
-                    For requests using the GET method, use the provider's remote gateway URL, including the `${to}` and `${message}` mandatory variables, and the optional `${from}` variable, for example:
-                    `https://api.transmitsms.com/send-sms.json?to=${to}&from=${from}&message=${message}`
-                body:
-                  type: string
-                  description: |
-                    The notification's request body. The body should include the ${to} and ${message} mandatory variables. For some vendors, the optional ${from} variable may also be required. For example:
-                    `messageType=ARN&message=${message}&phoneNumber=${to}&sender=${from}`
-                    In addition, you can use the following optional variables:
-                    `${voice}` - the type of voice configured for notifications
-                    `${locale}` - locale
-                    `${otp}` - OTP
-                    `${user.user.name}` - user's username
-                    `${user.name.given}` - user's given name
-                    `${user.name.family}` - user's family name
-                    You can also use dynamic variables in the body. For more information, see [Dynamic variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-dynamic-variables).
-                headers:
-                  type: string
-                  description: |
-                    The notification's request header, matching the format of the request body. The header can be one of:
-                    Form
-                    `(content-type=application/x-www-form-urlencoded)`
-                    JSON
-                    `(content-type=application/json)`
-                method:
-                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod'
-                phoneNumberFormat:
-                  $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat'
-                beforeTag:
-                  type: string
-                  description: |
-                    For voice OTP notifications only.
-                    An opening tag which is commonly used by custom providers for defining a pause between each number in the OTP number string.
-                    Possible value: `<Say>`
-                afterTag:
-                  type: string
-                  description: |
-                    For voice OTP notifications only.
-                    A closing tag which is commonly used by custom providers for defining a pause between each number in the OTP number string.
-                    Possible value: `</Say> <Pause length="1"/>`
-              required:
-                - deliveryMethod
-                - url
-                - body
-                - headers
-                - method
-                - phoneNumberFormat
+              type: array
+              items:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomRequest'
             authentication:
               type: object
               properties:
@@ -3744,12 +3704,109 @@ components:
                   description: The authentication token for the custom provider account.  Required when `authentication.method=BEARER`
               required:
                 - method
+            numbers:
+              type: array
+              items:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomNumbers'
           required:
+            - name
             - requests
             - authentication
+    NotificationsSettingsPhoneDeliverySettingsCustomNumbers:
+      type: object
+      properties:
+        number:
+          type: string
+          description: The phone number, toll-free number or short code.
+        type:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType'
+        selected:
+          type: boolean
+          description: Specifies whether the number is selected by the admin for sending messages.
+        available:
+          type: boolean
+          description: Specifies whether the number is currently available in the provider account.
+        capabilities:
+          type: array
+          description: A collection of the phone delivery service capabilities.
+          items:
+            $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability'
+        supportedCountries:
+          type: array
+          description: |
+            Specifies the `number`'s supported countries for notification recipients, depending on the phone number type:
+            `SHORT_CODE`: A collection containing a single 2-character ISO country code, for example, `US`, `GB`, `CA`.
+            If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null.
+            For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified short code number can only be used to dispatch notifications to United States recipient numbers.
+            `TOLL_FREE`: A collection of valid 2-character country ISO codes, for example, `US`, `GB`, `CA`.
+            If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null.
+            For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified toll-free number can only be used to dispatch notifications to United States recipient numbers.
+            `PHONE_NUMBER`: `supportedCountries` can not be specified.
+            If an SMS template has an alphanumeric `sender` ID and also has short code, the `sender` ID will be used for destination countries that support both alphanumeric senders and short codes. For Unites States and Canada that don't support alphanumeric sender IDs, a short code will be used if both an alphanumeric sender and a short code are specified.
+          items:
+            type: string
+      required:
+        - number
+        - type
+        - capabilities
+        - supportedCountries
+    NotificationsSettingsPhoneDeliverySettingsCustomRequest:
+      type: object
+      properties:
+        deliveryMethod:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod'
+        url:
+          type: string
+          description: |
+            The provider's remote gateway or customer gateway URL.
+            For requests using the POST method, use the provider's remote gateway URL.
+            For requests using the GET method, use the provider's remote gateway URL, including the `${to}` and `${message}` mandatory variables, and the optional `${from}` variable, for example:
+            `https://api.transmitsms.com/send-sms.json?to=${to}&from=${from}&message=${message}`
+        body:
+          type: string
+          description: |
+            The notification's request body. The body should include the ${to} and ${message} mandatory variables. For some vendors, the optional ${from} variable may also be required. For example:
+            `messageType=ARN&message=${message}&phoneNumber=${to}&sender=${from}`
+            In addition, you can use the following optional variables:
+            `${voice}` - the type of voice configured for notifications
+            `${locale}` - locale
+            `${otp}` - OTP
+            `${user.user.name}` - user's username
+            `${user.name.given}` - user's given name
+            `${user.name.family}` - user's family name
+            You can also use dynamic variables in the body. For more information, see [Dynamic variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-dynamic-variables).
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: |
+            A map of the notification's request headers
+        method:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod'
+        phoneNumberFormat:
+          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat'
+        beforeTag:
+          type: string
+          description: |
+            For voice OTP notifications only.
+            An opening tag which is commonly used by custom providers for defining a pause between each number in the OTP number string.
+            Possible value: `<Say>`
+        afterTag:
+          type: string
+          description: |
+            For voice OTP notifications only.
+            A closing tag which is commonly used by custom providers for defining a pause between each number in the OTP number string.
+            Possible value: `</Say> <Pause length="1"/>`
+      required:
+        - deliveryMethod
+        - url
+        - body
+        - headers
+        - method
+        - phoneNumberFormat
     NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse:
       allOf:
-        - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+        - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCommon'
         - type: object
           properties:
             sid:
@@ -14088,10 +14145,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                authToken: exampleAuthToken
-                provider: CUSTOM_SYNIVERSE
+              $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
       parameters:
         - name: environmentID
           in: path
@@ -14164,50 +14218,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                id: someTwiliophoneDeliverySettingsID
-                sid: someSid
-                provider: CUSTOM_TWILIO
-                numbers:
-                  - type: SHORT_CODE
-                    capabilities:
-                      - SMS
-                    selected: true
-                    available: true
-                    number: '894546'
-                  - type: SHORT_CODE
-                    capabilities:
-                      - SMS
-                    selected: false
-                    available: true
-                    number: '894545'
-                  - type: TOLL_FREE
-                    capabilities:
-                      - SMS
-                    selected: true
-                    available: true
-                    number: '+18544440099'
-                  - type: TOLL_FREE
-                    capabilities:
-                      - SMS
-                    selected: false
-                    available: true
-                    number: '+18544440098'
-                  - type: PHONE_NUMBER
-                    capabilities:
-                      - SMS
-                      - VOICE
-                    selected: true
-                    available: true
-                    number: '+172544440091'
-                  - type: PHONE_NUMBER
-                    capabilities:
-                      - SMS
-                      - VOICE
-                    selected: true
-                    available: true
-                    number: '+972544440099'
+              $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
       parameters:
         - name: environmentID
           in: path

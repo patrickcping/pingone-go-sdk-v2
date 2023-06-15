@@ -9,15 +9,16 @@ Name | Type | Description | Notes
 **Provider** | [**EnumNotificationsSettingsPhoneDeliverySettingsProvider**](EnumNotificationsSettingsPhoneDeliverySettingsProvider.md) |  | 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
-**Name** | Pointer to **string** | The customer provider&#39;s name. | [optional] 
-**Requests** | [**NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests**](NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests.md) |  | 
+**Name** | **string** | The customer provider&#39;s name. | 
+**Requests** | [**[]NotificationsSettingsPhoneDeliverySettingsCustomRequest**](NotificationsSettingsPhoneDeliverySettingsCustomRequest.md) |  | 
 **Authentication** | [**NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication**](NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication.md) |  | 
+**Numbers** | Pointer to [**[]NotificationsSettingsPhoneDeliverySettingsCustomNumbers**](NotificationsSettingsPhoneDeliverySettingsCustomNumbers.md) |  | [optional] 
 
 ## Methods
 
 ### NewNotificationsSettingsPhoneDeliverySettingsCustom
 
-`func NewNotificationsSettingsPhoneDeliverySettingsCustom(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, requests NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests, authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication, ) *NotificationsSettingsPhoneDeliverySettingsCustom`
+`func NewNotificationsSettingsPhoneDeliverySettingsCustom(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, name string, requests []NotificationsSettingsPhoneDeliverySettingsCustomRequest, authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication, ) *NotificationsSettingsPhoneDeliverySettingsCustom`
 
 NewNotificationsSettingsPhoneDeliverySettingsCustom instantiates a new NotificationsSettingsPhoneDeliverySettingsCustom object
 This constructor will assign default values to properties that have it defined,
@@ -171,28 +172,23 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetRequests
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetRequests() NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetRequests() []NotificationsSettingsPhoneDeliverySettingsCustomRequest`
 
 GetRequests returns the Requests field if non-nil, zero value otherwise.
 
 ### GetRequestsOk
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetRequestsOk() (*NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests, bool)`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetRequestsOk() (*[]NotificationsSettingsPhoneDeliverySettingsCustomRequest, bool)`
 
 GetRequestsOk returns a tuple with the Requests field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequests
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetRequests(v NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests)`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetRequests(v []NotificationsSettingsPhoneDeliverySettingsCustomRequest)`
 
 SetRequests sets Requests field to given value.
 
@@ -216,6 +212,31 @@ and a boolean to check if the value has been set.
 
 SetAuthentication sets Authentication field to given value.
 
+
+### GetNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsCustomNumbers`
+
+GetNumbers returns the Numbers field if non-nil, zero value otherwise.
+
+### GetNumbersOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) GetNumbersOk() (*[]NotificationsSettingsPhoneDeliverySettingsCustomNumbers, bool)`
+
+GetNumbersOk returns a tuple with the Numbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsCustomNumbers)`
+
+SetNumbers sets Numbers field to given value.
+
+### HasNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustom) HasNumbers() bool`
+
+HasNumbers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -9,12 +9,18 @@ Name | Type | Description | Notes
 **Provider** | [**EnumNotificationsSettingsPhoneDeliverySettingsProvider**](EnumNotificationsSettingsPhoneDeliverySettingsProvider.md) |  | 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
+**Name** | **string** | The customer provider&#39;s name. | 
+**Requests** | [**[]NotificationsSettingsPhoneDeliverySettingsCustomRequest**](NotificationsSettingsPhoneDeliverySettingsCustomRequest.md) |  | 
+**Authentication** | [**NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication**](NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication.md) |  | 
+**Numbers** | [**[]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers**](NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers.md) | A collection of Twilio or Syniverse numbers to use when sending a notification. | 
+**Sid** | **string** | The public ID of the Twilio account. Relevant to Twilio only.  | 
+**AuthToken** | **string** | The secret key of the Twilio or Syniverse account. | 
 
 ## Methods
 
 ### NewNotificationsSettingsPhoneDeliverySettings
 
-`func NewNotificationsSettingsPhoneDeliverySettings(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, ) *NotificationsSettingsPhoneDeliverySettings`
+`func NewNotificationsSettingsPhoneDeliverySettings(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, name string, requests []NotificationsSettingsPhoneDeliverySettingsCustomRequest, authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication, numbers []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, sid string, authToken string, ) *NotificationsSettingsPhoneDeliverySettings`
 
 NewNotificationsSettingsPhoneDeliverySettings instantiates a new NotificationsSettingsPhoneDeliverySettings object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +154,126 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *NotificationsSettingsPhoneDeliverySettings) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetRequests
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetRequests() []NotificationsSettingsPhoneDeliverySettingsCustomRequest`
+
+GetRequests returns the Requests field if non-nil, zero value otherwise.
+
+### GetRequestsOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetRequestsOk() (*[]NotificationsSettingsPhoneDeliverySettingsCustomRequest, bool)`
+
+GetRequestsOk returns a tuple with the Requests field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequests
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) SetRequests(v []NotificationsSettingsPhoneDeliverySettingsCustomRequest)`
+
+SetRequests sets Requests field to given value.
+
+
+### GetAuthentication
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetAuthentication() NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication`
+
+GetAuthentication returns the Authentication field if non-nil, zero value otherwise.
+
+### GetAuthenticationOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetAuthenticationOk() (*NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication, bool)`
+
+GetAuthenticationOk returns a tuple with the Authentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthentication
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) SetAuthentication(v NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication)`
+
+SetAuthentication sets Authentication field to given value.
+
+
+### GetNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers`
+
+GetNumbers returns the Numbers field if non-nil, zero value otherwise.
+
+### GetNumbersOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetNumbersOk() (*[]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, bool)`
+
+GetNumbersOk returns a tuple with the Numbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers)`
+
+SetNumbers sets Numbers field to given value.
+
+
+### GetSid
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetSid() string`
+
+GetSid returns the Sid field if non-nil, zero value otherwise.
+
+### GetSidOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetSidOk() (*string, bool)`
+
+GetSidOk returns a tuple with the Sid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSid
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) SetSid(v string)`
+
+SetSid sets Sid field to given value.
+
+
+### GetAuthToken
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetAuthToken() string`
+
+GetAuthToken returns the AuthToken field if non-nil, zero value otherwise.
+
+### GetAuthTokenOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetAuthTokenOk() (*string, bool)`
+
+GetAuthTokenOk returns a tuple with the AuthToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthToken
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) SetAuthToken(v string)`
+
+SetAuthToken sets AuthToken field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
