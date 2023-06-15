@@ -162,6 +162,8 @@ Class | Method | HTTP request | Description
  - [MFAPushCredentialAPNSAllOf](docs/MFAPushCredentialAPNSAllOf.md)
  - [MFAPushCredentialFCM](docs/MFAPushCredentialFCM.md)
  - [MFAPushCredentialFCMAllOf](docs/MFAPushCredentialFCMAllOf.md)
+ - [MFAPushCredentialFCMHTTPV1](docs/MFAPushCredentialFCMHTTPV1.md)
+ - [MFAPushCredentialFCMHTTPV1AllOf](docs/MFAPushCredentialFCMHTTPV1AllOf.md)
  - [MFAPushCredentialHMS](docs/MFAPushCredentialHMS.md)
  - [MFAPushCredentialHMSAllOf](docs/MFAPushCredentialHMSAllOf.md)
  - [MFAPushCredentialResponse](docs/MFAPushCredentialResponse.md)

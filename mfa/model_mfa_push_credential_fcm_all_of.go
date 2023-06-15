@@ -20,6 +20,7 @@ var _ MappedNullable = &MFAPushCredentialFCMAllOf{}
 // MFAPushCredentialFCMAllOf struct for MFAPushCredentialFCMAllOf
 type MFAPushCredentialFCMAllOf struct {
 	// A string that Apple uses as an identifier to identify an authentication key.  Mandatory.
+	// Deprecated
 	Key string `json:"key"`
 }
 
@@ -42,6 +43,7 @@ func NewMFAPushCredentialFCMAllOfWithDefaults() *MFAPushCredentialFCMAllOf {
 }
 
 // GetKey returns the Key field value
+// Deprecated
 func (o *MFAPushCredentialFCMAllOf) GetKey() string {
 	if o == nil {
 		var ret string
@@ -53,6 +55,7 @@ func (o *MFAPushCredentialFCMAllOf) GetKey() string {
 
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *MFAPushCredentialFCMAllOf) GetKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -61,6 +64,7 @@ func (o *MFAPushCredentialFCMAllOf) GetKeyOk() (*string, bool) {
 }
 
 // SetKey sets field value
+// Deprecated
 func (o *MFAPushCredentialFCMAllOf) SetKey(v string) {
 	o.Key = v
 }

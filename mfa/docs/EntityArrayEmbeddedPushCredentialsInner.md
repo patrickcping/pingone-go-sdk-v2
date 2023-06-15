@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Key** | **string** | A string that Apple uses as an identifier to identify an authentication key.  Mandatory. | 
 **TeamId** | **string** | A string that Apple uses as an identifier to identify teams. | 
 **Token** | **string** | A string that Apple uses as the authentication token signing key to securely connect to APNS. This is a p8 file with a private key format. | 
+**GoogleServiceAccountCredentials** | **string** | Used when &#x60;type&#x60; is set to &#x60;FCM_HTTP_V1&#x60;. The value should be the contents of the JSON file that represents your Service Account Credentials. | 
 **ClientId** | **string** | Used only if type is set to HMS. OAuth 2.0 Client ID from the Huawei Developers API console. | 
 **ClientSecret** | **string** | Used only if type is set to HMS. The client secret associated with the OAuth 2.0 Client ID. | 
 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEntityArrayEmbeddedPushCredentialsInner
 
-`func NewEntityArrayEmbeddedPushCredentialsInner(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, clientId string, clientSecret string, ) *EntityArrayEmbeddedPushCredentialsInner`
+`func NewEntityArrayEmbeddedPushCredentialsInner(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, googleServiceAccountCredentials string, clientId string, clientSecret string, ) *EntityArrayEmbeddedPushCredentialsInner`
 
 NewEntityArrayEmbeddedPushCredentialsInner instantiates a new EntityArrayEmbeddedPushCredentialsInner object
 This constructor will assign default values to properties that have it defined,
@@ -108,6 +109,26 @@ and a boolean to check if the value has been set.
 `func (o *EntityArrayEmbeddedPushCredentialsInner) SetToken(v string)`
 
 SetToken sets Token field to given value.
+
+
+### GetGoogleServiceAccountCredentials
+
+`func (o *EntityArrayEmbeddedPushCredentialsInner) GetGoogleServiceAccountCredentials() string`
+
+GetGoogleServiceAccountCredentials returns the GoogleServiceAccountCredentials field if non-nil, zero value otherwise.
+
+### GetGoogleServiceAccountCredentialsOk
+
+`func (o *EntityArrayEmbeddedPushCredentialsInner) GetGoogleServiceAccountCredentialsOk() (*string, bool)`
+
+GetGoogleServiceAccountCredentialsOk returns a tuple with the GoogleServiceAccountCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogleServiceAccountCredentials
+
+`func (o *EntityArrayEmbeddedPushCredentialsInner) SetGoogleServiceAccountCredentials(v string)`
+
+SetGoogleServiceAccountCredentials sets GoogleServiceAccountCredentials field to given value.
 
 
 ### GetClientId

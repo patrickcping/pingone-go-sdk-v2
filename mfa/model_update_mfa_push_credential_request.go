@@ -15,9 +15,10 @@ import (
 
 // UpdateMFAPushCredentialRequest - struct for UpdateMFAPushCredentialRequest
 type UpdateMFAPushCredentialRequest struct {
-	MFAPushCredentialAPNS *MFAPushCredentialAPNS
-	MFAPushCredentialFCM  *MFAPushCredentialFCM
-	MFAPushCredentialHMS  *MFAPushCredentialHMS
+	MFAPushCredentialAPNS      *MFAPushCredentialAPNS
+	MFAPushCredentialFCM       *MFAPushCredentialFCM
+	MFAPushCredentialFCMHTTPV1 *MFAPushCredentialFCMHTTPV1
+	MFAPushCredentialHMS       *MFAPushCredentialHMS
 }
 
 // MFAPushCredentialAPNSAsUpdateMFAPushCredentialRequest is a convenience function that returns MFAPushCredentialAPNS wrapped in UpdateMFAPushCredentialRequest
@@ -31,6 +32,13 @@ func MFAPushCredentialAPNSAsUpdateMFAPushCredentialRequest(v *MFAPushCredentialA
 func MFAPushCredentialFCMAsUpdateMFAPushCredentialRequest(v *MFAPushCredentialFCM) UpdateMFAPushCredentialRequest {
 	return UpdateMFAPushCredentialRequest{
 		MFAPushCredentialFCM: v,
+	}
+}
+
+// MFAPushCredentialFCMHTTPV1AsUpdateMFAPushCredentialRequest is a convenience function that returns MFAPushCredentialFCMHTTPV1 wrapped in UpdateMFAPushCredentialRequest
+func MFAPushCredentialFCMHTTPV1AsUpdateMFAPushCredentialRequest(v *MFAPushCredentialFCMHTTPV1) UpdateMFAPushCredentialRequest {
+	return UpdateMFAPushCredentialRequest{
+		MFAPushCredentialFCMHTTPV1: v,
 	}
 }
 
@@ -51,12 +59,17 @@ func (dst *UpdateMFAPushCredentialRequest) UnmarshalJSON(data []byte) error {
 	}
 
 	dst.MFAPushCredentialFCM = nil
+	dst.MFAPushCredentialFCMHTTPV1 = nil
 	dst.MFAPushCredentialAPNS = nil
 	dst.MFAPushCredentialHMS = nil
 
 	switch common.GetType() {
 	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM:
 		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCM); err != nil { // simple model
+			return err
+		}
+	case ENUMMFAPUSHCREDENTIALATTRTYPE_FCM_HTTP_V1:
+		if err := json.Unmarshal(data, &dst.MFAPushCredentialFCMHTTPV1); err != nil { // simple model
 			return err
 		}
 	case ENUMMFAPUSHCREDENTIALATTRTYPE_APNS:
@@ -83,6 +96,10 @@ func (src UpdateMFAPushCredentialRequest) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.MFAPushCredentialFCM)
 	}
 
+	if src.MFAPushCredentialFCMHTTPV1 != nil {
+		return json.Marshal(&src.MFAPushCredentialFCMHTTPV1)
+	}
+
 	if src.MFAPushCredentialHMS != nil {
 		return json.Marshal(&src.MFAPushCredentialHMS)
 	}
@@ -101,6 +118,10 @@ func (obj *UpdateMFAPushCredentialRequest) GetActualInstance() interface{} {
 
 	if obj.MFAPushCredentialFCM != nil {
 		return obj.MFAPushCredentialFCM
+	}
+
+	if obj.MFAPushCredentialFCMHTTPV1 != nil {
+		return obj.MFAPushCredentialFCMHTTPV1
 	}
 
 	if obj.MFAPushCredentialHMS != nil {
