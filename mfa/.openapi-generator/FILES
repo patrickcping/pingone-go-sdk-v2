@@ -60,6 +60,8 @@ docs/MFAPushCredentialAPNS.md
 docs/MFAPushCredentialAPNSAllOf.md
 docs/MFAPushCredentialFCM.md
 docs/MFAPushCredentialFCMAllOf.md
+docs/MFAPushCredentialFCMHTTPV1.md
+docs/MFAPushCredentialFCMHTTPV1AllOf.md
 docs/MFAPushCredentialHMS.md
 docs/MFAPushCredentialHMSAllOf.md
 docs/MFAPushCredentialResponse.md
@@ -123,6 +125,8 @@ model_mfa_push_credential_apns.go
 model_mfa_push_credential_apns_all_of.go
 model_mfa_push_credential_fcm.go
 model_mfa_push_credential_fcm_all_of.go
+model_mfa_push_credential_fcmhttpv1.go
+model_mfa_push_credential_fcmhttpv1_all_of.go
 model_mfa_push_credential_hms.go
 model_mfa_push_credential_hms_all_of.go
 model_mfa_push_credential_response.go
