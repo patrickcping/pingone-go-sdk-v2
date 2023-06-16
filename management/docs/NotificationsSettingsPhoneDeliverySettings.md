@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The customer provider&#39;s name. | 
 **Requests** | [**[]NotificationsSettingsPhoneDeliverySettingsCustomRequest**](NotificationsSettingsPhoneDeliverySettingsCustomRequest.md) |  | 
 **Authentication** | [**NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication**](NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication.md) |  | 
-**Numbers** | [**[]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers**](NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers.md) | A collection of Twilio or Syniverse numbers to use when sending a notification. | 
+**Numbers** | Pointer to [**[]NotificationsSettingsPhoneDeliverySettingsCustomNumbers**](NotificationsSettingsPhoneDeliverySettingsCustomNumbers.md) |  | [optional] 
 **Sid** | **string** | The public ID of the Twilio account. Relevant to Twilio only.  | 
 **AuthToken** | **string** | The secret key of the Twilio or Syniverse account. | 
 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewNotificationsSettingsPhoneDeliverySettings
 
-`func NewNotificationsSettingsPhoneDeliverySettings(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, name string, requests []NotificationsSettingsPhoneDeliverySettingsCustomRequest, authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication, numbers []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, sid string, authToken string, ) *NotificationsSettingsPhoneDeliverySettings`
+`func NewNotificationsSettingsPhoneDeliverySettings(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, name string, requests []NotificationsSettingsPhoneDeliverySettingsCustomRequest, authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication, sid string, authToken string, ) *NotificationsSettingsPhoneDeliverySettings`
 
 NewNotificationsSettingsPhoneDeliverySettings instantiates a new NotificationsSettingsPhoneDeliverySettings object
 This constructor will assign default values to properties that have it defined,
@@ -217,23 +217,28 @@ SetAuthentication sets Authentication field to given value.
 
 ### GetNumbers
 
-`func (o *NotificationsSettingsPhoneDeliverySettings) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers`
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsCustomNumbers`
 
 GetNumbers returns the Numbers field if non-nil, zero value otherwise.
 
 ### GetNumbersOk
 
-`func (o *NotificationsSettingsPhoneDeliverySettings) GetNumbersOk() (*[]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, bool)`
+`func (o *NotificationsSettingsPhoneDeliverySettings) GetNumbersOk() (*[]NotificationsSettingsPhoneDeliverySettingsCustomNumbers, bool)`
 
 GetNumbersOk returns a tuple with the Numbers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNumbers
 
-`func (o *NotificationsSettingsPhoneDeliverySettings) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers)`
+`func (o *NotificationsSettingsPhoneDeliverySettings) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsCustomNumbers)`
 
 SetNumbers sets Numbers field to given value.
 
+### HasNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettings) HasNumbers() bool`
+
+HasNumbers returns a boolean if a field has been set.
 
 ### GetSid
 

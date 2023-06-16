@@ -744,7 +744,6 @@ Class | Method | HTTP request | Description
  - [NotificationsSettingsPhoneDeliverySettingsCustomRequest](docs/NotificationsSettingsPhoneDeliverySettingsCustomRequest.md)
  - [NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse](docs/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse.md)
  - [NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf](docs/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf.md)
- - [NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers](docs/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers.md)
  - [NotificationsSettingsReplyTo](docs/NotificationsSettingsReplyTo.md)
  - [NotificationsSettingsRestrictions](docs/NotificationsSettingsRestrictions.md)
  - [NotificationsSettingsRestrictionsSmsVoiceQuota](docs/NotificationsSettingsRestrictionsSmsVoiceQuota.md)

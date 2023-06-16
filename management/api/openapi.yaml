@@ -33084,54 +33084,6 @@ components:
       - requests
       type: object
       example: null
-    NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf_numbers:
-      properties:
-        type:
-          $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType'
-        selected:
-          description: Specifies whether the number is selected by the admin for sending
-            messages.
-          type: boolean
-        createdAt:
-          description: The time the resource was created.
-          format: date-time
-          readOnly: true
-          type: string
-        number:
-          description: "The phone number, toll-free number or short code."
-          type: string
-        available:
-          description: Specifies whether the number is currently available in the
-            provider account.
-          type: boolean
-        capabilities:
-          description: A collection of the phone delivery service capabilities.
-          items:
-            $ref: '#/components/schemas/EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersCapability'
-          type: array
-        supportedCountries:
-          description: |
-            Specifies the number's supported countries for notification recipients, depending on the phone number `type`:
-            - `SHORT_CODE`: A collection containing a single 2-character ISO country code, for example, `US`, `GB`, `CA`.
-            If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null.
-            For other custom provider types, if supportedCountries is null (empty is not supported), the specified short code number can only be used to dispatch notifications to United States recipient numbers.
-            - `TOLL_FREE`: A collection of valid 2-character country ISO codes, for example, `US`, `GB`, `CA`.
-            If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null.
-            For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified toll-free number can only be used to dispatch notifications to United States recipient numbers.
-            - `PHONE_NUMBER`: `supportedCountries` can not be specified.
-            If an SMS template has an alphanumeric sender ID and also has short code, the sender ID will be used for destination countries that support both alphanumeric senders and short codes. For Unites States and Canada that don't support alphanumeric sender IDs, a short code will be used if both an alphanumeric sender and a short code are specified.
-          items:
-            type: string
-          type: array
-      required:
-      - available
-      - capabilities
-      - number
-      - selected
-      - supportedCountries
-      - type
-      type: object
-      example: null
     NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf:
       properties:
         sid:
@@ -33142,15 +33094,8 @@ components:
         authToken:
           description: The secret key of the Twilio or Syniverse account.
           type: string
-        numbers:
-          description: A collection of Twilio or Syniverse numbers to use when sending
-            a notification.
-          items:
-            $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf_numbers'
-          type: array
       required:
       - authToken
-      - numbers
       - sid
       type: object
       example: null

@@ -11,13 +11,12 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **Sid** | **string** | The public ID of the Twilio account. Relevant to Twilio only.  | 
 **AuthToken** | **string** | The secret key of the Twilio or Syniverse account. | 
-**Numbers** | [**[]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers**](NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers.md) | A collection of Twilio or Syniverse numbers to use when sending a notification. | 
 
 ## Methods
 
 ### NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse
 
-`func NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, sid string, authToken string, numbers []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, ) *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse`
+`func NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, sid string, authToken string, ) *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse`
 
 NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse instantiates a new NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse object
 This constructor will assign default values to properties that have it defined,
@@ -190,26 +189,6 @@ and a boolean to check if the value has been set.
 `func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetAuthToken(v string)`
 
 SetAuthToken sets AuthToken field to given value.
-
-
-### GetNumbers
-
-`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers`
-
-GetNumbers returns the Numbers field if non-nil, zero value otherwise.
-
-### GetNumbersOk
-
-`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbersOk() (*[]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, bool)`
-
-GetNumbersOk returns a tuple with the Numbers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNumbers
-
-`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers)`
-
-SetNumbers sets Numbers field to given value.
 
 
 
