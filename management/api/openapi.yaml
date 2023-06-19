@@ -23563,7 +23563,6 @@ components:
         `CUSTOM_SYNIVERSE`: Specifies that your Syniverse account is the SMS/voice provider.
         `CUSTOM_PROVIDER`: Specifies a custom-defined SMS provider (excluding Twilio and Syniverse).
       enum:
-      - PINGONE_TWILIO
       - CUSTOM_TWILIO
       - CUSTOM_SYNIVERSE
       - CUSTOM_PROVIDER
@@ -27609,7 +27608,6 @@ components:
       required:
       - capabilities
       - number
-      - supportedCountries
       - type
       type: object
     NotificationsSettingsPhoneDeliverySettingsCustomRequest:
@@ -27659,9 +27657,7 @@ components:
             Possible value: `</Say> <Pause length="1"/>`
           type: string
       required:
-      - body
       - deliveryMethod
-      - headers
       - method
       - phoneNumberFormat
       - url
@@ -33055,7 +33051,7 @@ components:
           description: The password for the custom provider account. Required when
             `authentication.method=BASIC`
           type: string
-        token:
+        authToken:
           description: The authentication token for the custom provider account.  Required
             when `authentication.method=BEARER`
           type: string
@@ -33094,6 +33090,10 @@ components:
         authToken:
           description: The secret key of the Twilio or Syniverse account.
           type: string
+        numbers:
+          items:
+            $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomNumbers'
+          type: array
       required:
       - authToken
       - sid

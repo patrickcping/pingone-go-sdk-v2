@@ -23,6 +23,7 @@ type NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf struct {
 	Sid string `json:"sid"`
 	// The secret key of the Twilio or Syniverse account.
 	AuthToken string `json:"authToken"`
+	Numbers []NotificationsSettingsPhoneDeliverySettingsCustomNumbers `json:"numbers,omitempty"`
 }
 
 // NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf instantiates a new NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf object
@@ -92,6 +93,38 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) SetAuth
 	o.AuthToken = v
 }
 
+// GetNumbers returns the Numbers field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsCustomNumbers {
+	if o == nil || IsNil(o.Numbers) {
+		var ret []NotificationsSettingsPhoneDeliverySettingsCustomNumbers
+		return ret
+	}
+	return o.Numbers
+}
+
+// GetNumbersOk returns a tuple with the Numbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetNumbersOk() ([]NotificationsSettingsPhoneDeliverySettingsCustomNumbers, bool) {
+	if o == nil || IsNil(o.Numbers) {
+		return nil, false
+	}
+	return o.Numbers, true
+}
+
+// HasNumbers returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) HasNumbers() bool {
+	if o != nil && !IsNil(o.Numbers) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumbers gets a reference to the given []NotificationsSettingsPhoneDeliverySettingsCustomNumbers and assigns it to the Numbers field.
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsCustomNumbers) {
+	o.Numbers = v
+}
+
 func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -104,6 +137,9 @@ func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) ToMap() 
 	toSerialize := map[string]interface{}{}
 	toSerialize["sid"] = o.Sid
 	toSerialize["authToken"] = o.AuthToken
+	if !IsNil(o.Numbers) {
+		toSerialize["numbers"] = o.Numbers
+	}
 	return toSerialize, nil
 }
 

@@ -29,19 +29,18 @@ type NotificationsSettingsPhoneDeliverySettingsCustomNumbers struct {
 	// A collection of the phone delivery service capabilities.
 	Capabilities []EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability `json:"capabilities"`
 	// Specifies the `number`'s supported countries for notification recipients, depending on the phone number type: `SHORT_CODE`: A collection containing a single 2-character ISO country code, for example, `US`, `GB`, `CA`. If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null. For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified short code number can only be used to dispatch notifications to United States recipient numbers. `TOLL_FREE`: A collection of valid 2-character country ISO codes, for example, `US`, `GB`, `CA`. If the custom provider is of `type=CUSTOM_PROVIDER`, `supportedCountries` must not be empty or null. For other custom provider types, if `supportedCountries` is null (empty is not supported), the specified toll-free number can only be used to dispatch notifications to United States recipient numbers. `PHONE_NUMBER`: `supportedCountries` can not be specified. If an SMS template has an alphanumeric `sender` ID and also has short code, the `sender` ID will be used for destination countries that support both alphanumeric senders and short codes. For Unites States and Canada that don't support alphanumeric sender IDs, a short code will be used if both an alphanumeric sender and a short code are specified. 
-	SupportedCountries []string `json:"supportedCountries"`
+	SupportedCountries []string `json:"supportedCountries,omitempty"`
 }
 
 // NewNotificationsSettingsPhoneDeliverySettingsCustomNumbers instantiates a new NotificationsSettingsPhoneDeliverySettingsCustomNumbers object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationsSettingsPhoneDeliverySettingsCustomNumbers(number string, type_ EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType, capabilities []EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability, supportedCountries []string) *NotificationsSettingsPhoneDeliverySettingsCustomNumbers {
+func NewNotificationsSettingsPhoneDeliverySettingsCustomNumbers(number string, type_ EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersType, capabilities []EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability) *NotificationsSettingsPhoneDeliverySettingsCustomNumbers {
 	this := NotificationsSettingsPhoneDeliverySettingsCustomNumbers{}
 	this.Number = number
 	this.Type = type_
 	this.Capabilities = capabilities
-	this.SupportedCountries = supportedCountries
 	return &this
 }
 
@@ -189,26 +188,34 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomNumbers) SetCapabilitie
 	o.Capabilities = v
 }
 
-// GetSupportedCountries returns the SupportedCountries field value
+// GetSupportedCountries returns the SupportedCountries field value if set, zero value otherwise.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomNumbers) GetSupportedCountries() []string {
-	if o == nil {
+	if o == nil || IsNil(o.SupportedCountries) {
 		var ret []string
 		return ret
 	}
-
 	return o.SupportedCountries
 }
 
-// GetSupportedCountriesOk returns a tuple with the SupportedCountries field value
+// GetSupportedCountriesOk returns a tuple with the SupportedCountries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomNumbers) GetSupportedCountriesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SupportedCountries) {
 		return nil, false
 	}
 	return o.SupportedCountries, true
 }
 
-// SetSupportedCountries sets field value
+// HasSupportedCountries returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomNumbers) HasSupportedCountries() bool {
+	if o != nil && !IsNil(o.SupportedCountries) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportedCountries gets a reference to the given []string and assigns it to the SupportedCountries field.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomNumbers) SetSupportedCountries(v []string) {
 	o.SupportedCountries = v
 }
@@ -232,7 +239,9 @@ func (o NotificationsSettingsPhoneDeliverySettingsCustomNumbers) ToMap() (map[st
 		toSerialize["available"] = o.Available
 	}
 	toSerialize["capabilities"] = o.Capabilities
-	toSerialize["supportedCountries"] = o.SupportedCountries
+	if !IsNil(o.SupportedCountries) {
+		toSerialize["supportedCountries"] = o.SupportedCountries
+	}
 	return toSerialize, nil
 }
 

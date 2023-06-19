@@ -333,7 +333,7 @@ components:
         The type of phone delivery service capability. Possible values: `VOICE`, `SMS`
     EnumNotificationsSettingsPhoneDeliverySettingsProvider:
       type: string
-      enum: [PINGONE_TWILIO, CUSTOM_TWILIO, CUSTOM_SYNIVERSE, CUSTOM_PROVIDER]
+      enum: [CUSTOM_TWILIO, CUSTOM_SYNIVERSE, CUSTOM_PROVIDER]
       description: |
         The ID of the provider of phone delivery service. Possible values:
         `PINGONE_TWILIO`: Specifies that Ping Identity's Twilio account is the SMS/voice provider.
@@ -3699,7 +3699,7 @@ components:
                 password:
                   type: string
                   description: The password for the custom provider account. Required when `authentication.method=BASIC`
-                token:
+                authToken:
                   type: string
                   description: The authentication token for the custom provider account.  Required when `authentication.method=BEARER`
               required:
@@ -3749,7 +3749,6 @@ components:
         - number
         - type
         - capabilities
-        - supportedCountries
     NotificationsSettingsPhoneDeliverySettingsCustomRequest:
       type: object
       properties:
@@ -3800,8 +3799,6 @@ components:
       required:
         - deliveryMethod
         - url
-        - body
-        - headers
         - method
         - phoneNumberFormat
     NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse:
@@ -3817,6 +3814,10 @@ components:
             authToken:
               type: string
               description: The secret key of the Twilio or Syniverse account.
+            numbers:
+              type: array
+              items:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomNumbers'
           required:
             - sid
             - authToken

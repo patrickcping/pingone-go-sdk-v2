@@ -38,45 +38,33 @@ func NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAsNotificationsSet
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *NotificationsSettingsPhoneDeliverySettings) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into NotificationsSettingsPhoneDeliverySettingsCustom
-	err = newStrictDecoder(data).Decode(&dst.NotificationsSettingsPhoneDeliverySettingsCustom)
-	if err == nil {
-		jsonNotificationsSettingsPhoneDeliverySettingsCustom, _ := json.Marshal(dst.NotificationsSettingsPhoneDeliverySettingsCustom)
-		if string(jsonNotificationsSettingsPhoneDeliverySettingsCustom) == "{}" { // empty struct
-			dst.NotificationsSettingsPhoneDeliverySettingsCustom = nil
-		} else {
-			match++
+
+	var common NotificationsSettingsPhoneDeliverySettingsCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.NotificationsSettingsPhoneDeliverySettingsCustom = nil
+	dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse = nil
+
+	switch common.GetProvider() {
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_TWILIO:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse); err != nil {
+			return err
 		}
-	} else {
-		dst.NotificationsSettingsPhoneDeliverySettingsCustom = nil
-	}
-
-	// try to unmarshal data into NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse
-	err = newStrictDecoder(data).Decode(&dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse)
-	if err == nil {
-		jsonNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse, _ := json.Marshal(dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse)
-		if string(jsonNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) == "{}" { // empty struct
-			dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse = nil
-		} else {
-			match++
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_SYNIVERSE:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse); err != nil {
+			return err
 		}
-	} else {
-		dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse = nil
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_PROVIDER:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsCustom); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsPhoneDeliverySettings)")
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.NotificationsSettingsPhoneDeliverySettingsCustom = nil
-		dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(NotificationsSettingsPhoneDeliverySettings)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(NotificationsSettingsPhoneDeliverySettings)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

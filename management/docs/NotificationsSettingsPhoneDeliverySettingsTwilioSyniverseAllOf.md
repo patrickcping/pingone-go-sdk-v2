@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Sid** | **string** | The public ID of the Twilio account. Relevant to Twilio only.  | 
 **AuthToken** | **string** | The secret key of the Twilio or Syniverse account. | 
+**Numbers** | Pointer to [**[]NotificationsSettingsPhoneDeliverySettingsCustomNumbers**](NotificationsSettingsPhoneDeliverySettingsCustomNumbers.md) |  | [optional] 
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetAuthToken sets AuthToken field to given value.
 
+
+### GetNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsCustomNumbers`
+
+GetNumbers returns the Numbers field if non-nil, zero value otherwise.
+
+### GetNumbersOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) GetNumbersOk() (*[]NotificationsSettingsPhoneDeliverySettingsCustomNumbers, bool)`
+
+GetNumbersOk returns a tuple with the Numbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsCustomNumbers)`
+
+SetNumbers sets Numbers field to given value.
+
+### HasNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOf) HasNumbers() bool`
+
+HasNumbers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
