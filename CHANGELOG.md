@@ -1,9 +1,10 @@
 # Release (2023-06-19)
 
-* `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.4
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.8.0
     * **Note** bump `github.com/golangci/golangci-lint` from v1.52.2 to v1.53.3 [#184](https://github.com/patrickcping/pingone-go-sdk-v2/pull/184) [#199](https://github.com/patrickcping/pingone-go-sdk-v2/pull/199)
     * **Note** bump `golang.org/x/oauth2` v0.8.0 => v0.9.0 [#199](https://github.com/patrickcping/pingone-go-sdk-v2/pull/199)
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.11.0 => v0.12.0 [#199](https://github.com/patrickcping/pingone-go-sdk-v2/pull/199)
+    * **Enhancement** Common client support for the new PingOne Verify module. [#191](https://github.com/patrickcping/pingone-go-sdk-v2/pull/191)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.12.0](./mfa/CHANGELOG.md)
     * **Note** Deprecated FCM key authentication for Google Play based mobile devices. [#196](https://github.com/patrickcping/pingone-go-sdk-v2/pull/196)
     * **Enhancement** Add support for Firebase Cloud Messaging for sending push messages for Google Play based mobile devices. [#196](https://github.com/patrickcping/pingone-go-sdk-v2/pull/196)
