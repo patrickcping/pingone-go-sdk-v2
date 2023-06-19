@@ -1,12 +1,10 @@
-# Release (Unreleased)
+# Release (2023-06-19)
 
-* `github.com/patrickcping/pingone-go-sdk-v2` : v0.7.4
-    * **Note** bump `github.com/golangci/golangci-lint` from v1.52.2 to v1.53.2 [#184](https://github.com/patrickcping/pingone-go-sdk-v2/pull/184)
-* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.23.0](./management/CHANGELOG.md)
-    * **Bug** Fixed Phone Notification Settings `POST` and `PUT` request payload data model. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
-    * **Bug** Corrected `Requests` from object to array in the `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
-    * **Bug** Corrected `Name` as required property of `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
-    * **Enhancement** Added `Numbers` array to the `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.8.0
+    * **Note** bump `github.com/golangci/golangci-lint` from v1.52.2 to v1.53.3 [#184](https://github.com/patrickcping/pingone-go-sdk-v2/pull/184) [#199](https://github.com/patrickcping/pingone-go-sdk-v2/pull/199)
+    * **Note** bump `golang.org/x/oauth2` v0.8.0 => v0.9.0 [#199](https://github.com/patrickcping/pingone-go-sdk-v2/pull/199)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.11.0 => v0.12.0 [#199](https://github.com/patrickcping/pingone-go-sdk-v2/pull/199)
+    * **Enhancement** Common client support for the new PingOne Verify module. [#191](https://github.com/patrickcping/pingone-go-sdk-v2/pull/191)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.12.0](./mfa/CHANGELOG.md)
     * **Note** Deprecated FCM key authentication for Google Play based mobile devices. [#196](https://github.com/patrickcping/pingone-go-sdk-v2/pull/196)
     * **Enhancement** Add support for Firebase Cloud Messaging for sending push messages for Google Play based mobile devices. [#196](https://github.com/patrickcping/pingone-go-sdk-v2/pull/196)

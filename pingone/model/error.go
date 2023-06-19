@@ -9,6 +9,7 @@ import (
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
 	"github.com/patrickcping/pingone-go-sdk-v2/mfa"
 	"github.com/patrickcping/pingone-go-sdk-v2/risk"
+	"github.com/patrickcping/pingone-go-sdk-v2/verify"
 )
 
 // GenericOpenAPIError Provides access to the body, error and model on returned errors.
@@ -66,6 +67,12 @@ func RemarshalGenericOpenAPIErrorObj(errorInf interface{}) (*GenericOpenAPIError
 		}
 		errorJSON, err = json.Marshal(t.Model())
 	case *credentials.GenericOpenAPIError:
+		errorObj = &GenericOpenAPIError{
+			body:  t.Body(),
+			error: t.Error(),
+		}
+		errorJSON, err = json.Marshal(t.Model())
+	case *verify.GenericOpenAPIError:
 		errorObj = &GenericOpenAPIError{
 			body:  t.Body(),
 			error: t.Error(),
