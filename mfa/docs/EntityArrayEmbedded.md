@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PushCredentials** | Pointer to [**[]EntityArrayEmbeddedPushCredentialsInner**](EntityArrayEmbeddedPushCredentialsInner.md) |  | [optional] 
+**PushCredentials** | Pointer to [**[]MFAPushCredentialResponse**](MFAPushCredentialResponse.md) |  | [optional] 
 **DeviceAuthenticationPolicies** | Pointer to [**[]DeviceAuthenticationPolicy**](DeviceAuthenticationPolicy.md) |  | [optional] 
 **FidoDevicesMetadata** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **FidoPolicies** | Pointer to [**[]FIDOPolicy**](FIDOPolicy.md) |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPushCredentials
 
-`func (o *EntityArrayEmbedded) GetPushCredentials() []EntityArrayEmbeddedPushCredentialsInner`
+`func (o *EntityArrayEmbedded) GetPushCredentials() []MFAPushCredentialResponse`
 
 GetPushCredentials returns the PushCredentials field if non-nil, zero value otherwise.
 
 ### GetPushCredentialsOk
 
-`func (o *EntityArrayEmbedded) GetPushCredentialsOk() (*[]EntityArrayEmbeddedPushCredentialsInner, bool)`
+`func (o *EntityArrayEmbedded) GetPushCredentialsOk() (*[]MFAPushCredentialResponse, bool)`
 
 GetPushCredentialsOk returns a tuple with the PushCredentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPushCredentials
 
-`func (o *EntityArrayEmbedded) SetPushCredentials(v []EntityArrayEmbeddedPushCredentialsInner)`
+`func (o *EntityArrayEmbedded) SetPushCredentials(v []MFAPushCredentialResponse)`
 
 SetPushCredentials sets PushCredentials field to given value.
 

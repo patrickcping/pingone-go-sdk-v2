@@ -2664,8 +2664,14 @@ components:
           - null
           - null
           pushCredentials:
-          - null
-          - null
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            type: null
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            type: null
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           fidoPolicies:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -3679,20 +3685,20 @@ components:
       - enabled
       - otp
       type: object
-    EntityArray__embedded_pushCredentials_inner:
-      anyOf:
-      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-      - $ref: '#/components/schemas/MFAPushCredentialFCM'
-      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
-      - $ref: '#/components/schemas/MFAPushCredentialHMS'
     EntityArray__embedded:
       example:
         fidoDevicesMetadata:
         - null
         - null
         pushCredentials:
-        - null
-        - null
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         fidoPolicies:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -3966,7 +3972,7 @@ components:
       properties:
         pushCredentials:
           items:
-            $ref: '#/components/schemas/EntityArray__embedded_pushCredentials_inner'
+            $ref: '#/components/schemas/MFAPushCredentialResponse'
           type: array
         deviceAuthenticationPolicies:
           items:
