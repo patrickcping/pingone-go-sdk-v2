@@ -1,4 +1,4 @@
-# UpdateMFAPushCredentialRequest
+# MFAPushCredentialRequest
 
 ## Properties
 
@@ -14,159 +14,159 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewUpdateMFAPushCredentialRequest
+### NewMFAPushCredentialRequest
 
-`func NewUpdateMFAPushCredentialRequest(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, googleServiceAccountCredentials string, clientId string, clientSecret string, ) *UpdateMFAPushCredentialRequest`
+`func NewMFAPushCredentialRequest(type_ EnumMFAPushCredentialAttrType, key string, teamId string, token string, googleServiceAccountCredentials string, clientId string, clientSecret string, ) *MFAPushCredentialRequest`
 
-NewUpdateMFAPushCredentialRequest instantiates a new UpdateMFAPushCredentialRequest object
+NewMFAPushCredentialRequest instantiates a new MFAPushCredentialRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewUpdateMFAPushCredentialRequestWithDefaults
+### NewMFAPushCredentialRequestWithDefaults
 
-`func NewUpdateMFAPushCredentialRequestWithDefaults() *UpdateMFAPushCredentialRequest`
+`func NewMFAPushCredentialRequestWithDefaults() *MFAPushCredentialRequest`
 
-NewUpdateMFAPushCredentialRequestWithDefaults instantiates a new UpdateMFAPushCredentialRequest object
+NewMFAPushCredentialRequestWithDefaults instantiates a new MFAPushCredentialRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *UpdateMFAPushCredentialRequest) GetType() EnumMFAPushCredentialAttrType`
+`func (o *MFAPushCredentialRequest) GetType() EnumMFAPushCredentialAttrType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *UpdateMFAPushCredentialRequest) GetTypeOk() (*EnumMFAPushCredentialAttrType, bool)`
+`func (o *MFAPushCredentialRequest) GetTypeOk() (*EnumMFAPushCredentialAttrType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *UpdateMFAPushCredentialRequest) SetType(v EnumMFAPushCredentialAttrType)`
+`func (o *MFAPushCredentialRequest) SetType(v EnumMFAPushCredentialAttrType)`
 
 SetType sets Type field to given value.
 
 
 ### GetKey
 
-`func (o *UpdateMFAPushCredentialRequest) GetKey() string`
+`func (o *MFAPushCredentialRequest) GetKey() string`
 
 GetKey returns the Key field if non-nil, zero value otherwise.
 
 ### GetKeyOk
 
-`func (o *UpdateMFAPushCredentialRequest) GetKeyOk() (*string, bool)`
+`func (o *MFAPushCredentialRequest) GetKeyOk() (*string, bool)`
 
 GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKey
 
-`func (o *UpdateMFAPushCredentialRequest) SetKey(v string)`
+`func (o *MFAPushCredentialRequest) SetKey(v string)`
 
 SetKey sets Key field to given value.
 
 
 ### GetTeamId
 
-`func (o *UpdateMFAPushCredentialRequest) GetTeamId() string`
+`func (o *MFAPushCredentialRequest) GetTeamId() string`
 
 GetTeamId returns the TeamId field if non-nil, zero value otherwise.
 
 ### GetTeamIdOk
 
-`func (o *UpdateMFAPushCredentialRequest) GetTeamIdOk() (*string, bool)`
+`func (o *MFAPushCredentialRequest) GetTeamIdOk() (*string, bool)`
 
 GetTeamIdOk returns a tuple with the TeamId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTeamId
 
-`func (o *UpdateMFAPushCredentialRequest) SetTeamId(v string)`
+`func (o *MFAPushCredentialRequest) SetTeamId(v string)`
 
 SetTeamId sets TeamId field to given value.
 
 
 ### GetToken
 
-`func (o *UpdateMFAPushCredentialRequest) GetToken() string`
+`func (o *MFAPushCredentialRequest) GetToken() string`
 
 GetToken returns the Token field if non-nil, zero value otherwise.
 
 ### GetTokenOk
 
-`func (o *UpdateMFAPushCredentialRequest) GetTokenOk() (*string, bool)`
+`func (o *MFAPushCredentialRequest) GetTokenOk() (*string, bool)`
 
 GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetToken
 
-`func (o *UpdateMFAPushCredentialRequest) SetToken(v string)`
+`func (o *MFAPushCredentialRequest) SetToken(v string)`
 
 SetToken sets Token field to given value.
 
 
 ### GetGoogleServiceAccountCredentials
 
-`func (o *UpdateMFAPushCredentialRequest) GetGoogleServiceAccountCredentials() string`
+`func (o *MFAPushCredentialRequest) GetGoogleServiceAccountCredentials() string`
 
 GetGoogleServiceAccountCredentials returns the GoogleServiceAccountCredentials field if non-nil, zero value otherwise.
 
 ### GetGoogleServiceAccountCredentialsOk
 
-`func (o *UpdateMFAPushCredentialRequest) GetGoogleServiceAccountCredentialsOk() (*string, bool)`
+`func (o *MFAPushCredentialRequest) GetGoogleServiceAccountCredentialsOk() (*string, bool)`
 
 GetGoogleServiceAccountCredentialsOk returns a tuple with the GoogleServiceAccountCredentials field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGoogleServiceAccountCredentials
 
-`func (o *UpdateMFAPushCredentialRequest) SetGoogleServiceAccountCredentials(v string)`
+`func (o *MFAPushCredentialRequest) SetGoogleServiceAccountCredentials(v string)`
 
 SetGoogleServiceAccountCredentials sets GoogleServiceAccountCredentials field to given value.
 
 
 ### GetClientId
 
-`func (o *UpdateMFAPushCredentialRequest) GetClientId() string`
+`func (o *MFAPushCredentialRequest) GetClientId() string`
 
 GetClientId returns the ClientId field if non-nil, zero value otherwise.
 
 ### GetClientIdOk
 
-`func (o *UpdateMFAPushCredentialRequest) GetClientIdOk() (*string, bool)`
+`func (o *MFAPushCredentialRequest) GetClientIdOk() (*string, bool)`
 
 GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientId
 
-`func (o *UpdateMFAPushCredentialRequest) SetClientId(v string)`
+`func (o *MFAPushCredentialRequest) SetClientId(v string)`
 
 SetClientId sets ClientId field to given value.
 
 
 ### GetClientSecret
 
-`func (o *UpdateMFAPushCredentialRequest) GetClientSecret() string`
+`func (o *MFAPushCredentialRequest) GetClientSecret() string`
 
 GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
 
 ### GetClientSecretOk
 
-`func (o *UpdateMFAPushCredentialRequest) GetClientSecretOk() (*string, bool)`
+`func (o *MFAPushCredentialRequest) GetClientSecretOk() (*string, bool)`
 
 GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientSecret
 
-`func (o *UpdateMFAPushCredentialRequest) SetClientSecret(v string)`
+`func (o *MFAPushCredentialRequest) SetClientSecret(v string)`
 
 SetClientSecret sets ClientSecret field to given value.
 

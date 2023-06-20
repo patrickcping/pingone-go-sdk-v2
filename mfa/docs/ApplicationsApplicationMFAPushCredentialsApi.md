@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateMFAPushCredential
 
-> MFAPushCredentialResponse CreateMFAPushCredential(ctx, environmentID, applicationID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
+> MFAPushCredentialResponse CreateMFAPushCredential(ctx, environmentID, applicationID).MFAPushCredentialRequest(mFAPushCredentialRequest).Execute()
 
 CREATE MFA Push Credential
 
@@ -33,11 +33,11 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     applicationID := "applicationID_example" // string | 
-    createMFAPushCredentialRequest := openapiclient.createMFAPushCredential_request{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // CreateMFAPushCredentialRequest |  (optional)
+    mFAPushCredentialRequest := openapiclient.MFAPushCredentialRequest{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // MFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential(context.Background(), environmentID, applicationID).CreateMFAPushCredentialRequest(createMFAPushCredentialRequest).Execute()
+    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential(context.Background(), environmentID, applicationID).MFAPushCredentialRequest(mFAPushCredentialRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.CreateMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createMFAPushCredentialRequest** | [**CreateMFAPushCredentialRequest**](CreateMFAPushCredentialRequest.md) |  | 
+ **mFAPushCredentialRequest** | [**MFAPushCredentialRequest**](MFAPushCredentialRequest.md) |  | 
 
 ### Return type
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMFAPushCredential
 
-> MFAPushCredentialResponse UpdateMFAPushCredential(ctx, environmentID, applicationID, pushCredentialID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
+> MFAPushCredentialResponse UpdateMFAPushCredential(ctx, environmentID, applicationID, pushCredentialID).MFAPushCredentialRequest(mFAPushCredentialRequest).Execute()
 
 UPDATE MFA Push Credential
 
@@ -326,11 +326,11 @@ func main() {
     environmentID := "environmentID_example" // string | 
     applicationID := "applicationID_example" // string | 
     pushCredentialID := "pushCredentialID_example" // string | 
-    updateMFAPushCredentialRequest := openapiclient.updateMFAPushCredential_request{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // UpdateMFAPushCredentialRequest |  (optional)
+    mFAPushCredentialRequest := openapiclient.MFAPushCredentialRequest{MFAPushCredentialAPNS: openapiclient.NewMFAPushCredentialAPNS(openapiclient.EnumMFAPushCredentialAttrType("APNS"), "Key_example", "TeamId_example", "Token_example")} // MFAPushCredentialRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential(context.Background(), environmentID, applicationID, pushCredentialID).UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest).Execute()
+    resp, r, err := apiClient.ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential(context.Background(), environmentID, applicationID, pushCredentialID).MFAPushCredentialRequest(mFAPushCredentialRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApplicationMFAPushCredentialsApi.UpdateMFAPushCredential``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 
 
- **updateMFAPushCredentialRequest** | [**UpdateMFAPushCredentialRequest**](UpdateMFAPushCredentialRequest.md) |  | 
+ **mFAPushCredentialRequest** | [**MFAPushCredentialRequest**](MFAPushCredentialRequest.md) |  | 
 
 ### Return type
 
