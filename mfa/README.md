@@ -116,7 +116,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [CreateMFAPushCredentialRequest](docs/CreateMFAPushCredentialRequest.md)
  - [DeviceAuthenticationPolicy](docs/DeviceAuthenticationPolicy.md)
  - [DeviceAuthenticationPolicyAuthentication](docs/DeviceAuthenticationPolicyAuthentication.md)
  - [DeviceAuthenticationPolicyFIDODevice](docs/DeviceAuthenticationPolicyFIDODevice.md)
@@ -166,6 +165,7 @@ Class | Method | HTTP request | Description
  - [MFAPushCredentialFCMHTTPV1AllOf](docs/MFAPushCredentialFCMHTTPV1AllOf.md)
  - [MFAPushCredentialHMS](docs/MFAPushCredentialHMS.md)
  - [MFAPushCredentialHMSAllOf](docs/MFAPushCredentialHMSAllOf.md)
+ - [MFAPushCredentialRequest](docs/MFAPushCredentialRequest.md)
  - [MFAPushCredentialResponse](docs/MFAPushCredentialResponse.md)
  - [MFASettings](docs/MFASettings.md)
  - [MFASettingsAuthentication](docs/MFASettingsAuthentication.md)
@@ -176,7 +176,6 @@ Class | Method | HTTP request | Description
  - [P1Error](docs/P1Error.md)
  - [P1ErrorDetailsInner](docs/P1ErrorDetailsInner.md)
  - [P1ErrorDetailsInnerInnerError](docs/P1ErrorDetailsInnerInnerError.md)
- - [UpdateMFAPushCredentialRequest](docs/UpdateMFAPushCredentialRequest.md)
  - [UserMFAEnabled](docs/UserMFAEnabled.md)
 
 

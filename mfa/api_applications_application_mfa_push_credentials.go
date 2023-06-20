@@ -28,11 +28,11 @@ type ApiCreateMFAPushCredentialRequest struct {
 	ApiService *ApplicationsApplicationMFAPushCredentialsApiService
 	environmentID string
 	applicationID string
-	createMFAPushCredentialRequest *CreateMFAPushCredentialRequest
+	mFAPushCredentialRequest *MFAPushCredentialRequest
 }
 
-func (r ApiCreateMFAPushCredentialRequest) CreateMFAPushCredentialRequest(createMFAPushCredentialRequest CreateMFAPushCredentialRequest) ApiCreateMFAPushCredentialRequest {
-	r.createMFAPushCredentialRequest = &createMFAPushCredentialRequest
+func (r ApiCreateMFAPushCredentialRequest) MFAPushCredentialRequest(mFAPushCredentialRequest MFAPushCredentialRequest) ApiCreateMFAPushCredentialRequest {
+	r.mFAPushCredentialRequest = &mFAPushCredentialRequest
 	return r
 }
 
@@ -107,7 +107,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalCreateMFAP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createMFAPushCredentialRequest
+	localVarPostBody = r.mFAPushCredentialRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -775,11 +775,11 @@ type ApiUpdateMFAPushCredentialRequest struct {
 	environmentID string
 	applicationID string
 	pushCredentialID string
-	updateMFAPushCredentialRequest *UpdateMFAPushCredentialRequest
+	mFAPushCredentialRequest *MFAPushCredentialRequest
 }
 
-func (r ApiUpdateMFAPushCredentialRequest) UpdateMFAPushCredentialRequest(updateMFAPushCredentialRequest UpdateMFAPushCredentialRequest) ApiUpdateMFAPushCredentialRequest {
-	r.updateMFAPushCredentialRequest = &updateMFAPushCredentialRequest
+func (r ApiUpdateMFAPushCredentialRequest) MFAPushCredentialRequest(mFAPushCredentialRequest MFAPushCredentialRequest) ApiUpdateMFAPushCredentialRequest {
+	r.mFAPushCredentialRequest = &mFAPushCredentialRequest
 	return r
 }
 
@@ -857,7 +857,7 @@ func (a *ApplicationsApplicationMFAPushCredentialsApiService) internalUpdateMFAP
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateMFAPushCredentialRequest
+	localVarPostBody = r.mFAPushCredentialRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

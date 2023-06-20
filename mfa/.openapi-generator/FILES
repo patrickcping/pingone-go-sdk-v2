@@ -10,7 +10,6 @@ api_user_mfa_devices.go
 api_user_mfa_pairing_keys.go
 configuration.go
 docs/ApplicationsApplicationMFAPushCredentialsApi.md
-docs/CreateMFAPushCredentialRequest.md
 docs/DeviceAuthenticationPolicy.md
 docs/DeviceAuthenticationPolicyApi.md
 docs/DeviceAuthenticationPolicyAuthentication.md
@@ -64,6 +63,7 @@ docs/MFAPushCredentialFCMHTTPV1.md
 docs/MFAPushCredentialFCMHTTPV1AllOf.md
 docs/MFAPushCredentialHMS.md
 docs/MFAPushCredentialHMSAllOf.md
+docs/MFAPushCredentialRequest.md
 docs/MFAPushCredentialResponse.md
 docs/MFASettings.md
 docs/MFASettingsApi.md
@@ -75,7 +75,6 @@ docs/ObjectEnvironment.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
 docs/P1ErrorDetailsInnerInnerError.md
-docs/UpdateMFAPushCredentialRequest.md
 docs/UserMFADevicesApi.md
 docs/UserMFAEnabled.md
 docs/UserMFAPairingKeysApi.md
@@ -129,6 +128,7 @@ model_mfa_push_credential_fcmhttpv1.go
 model_mfa_push_credential_fcmhttpv1_all_of.go
 model_mfa_push_credential_hms.go
 model_mfa_push_credential_hms_all_of.go
+model_mfa_push_credential_request.go
 model_mfa_push_credential_response.go
 model_mfa_settings.go
 model_mfa_settings_authentication.go
