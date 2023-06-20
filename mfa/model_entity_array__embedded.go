@@ -19,7 +19,7 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	PushCredentials []EntityArrayEmbeddedPushCredentialsInner `json:"pushCredentials,omitempty"`
+	PushCredentials []MFAPushCredentialResponse `json:"pushCredentials,omitempty"`
 	DeviceAuthenticationPolicies []DeviceAuthenticationPolicy `json:"deviceAuthenticationPolicies,omitempty"`
 	FidoDevicesMetadata []map[string]interface{} `json:"fidoDevicesMetadata,omitempty"`
 	FidoPolicies []FIDOPolicy `json:"fidoPolicies,omitempty"`
@@ -43,9 +43,9 @@ func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 }
 
 // GetPushCredentials returns the PushCredentials field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetPushCredentials() []EntityArrayEmbeddedPushCredentialsInner {
+func (o *EntityArrayEmbedded) GetPushCredentials() []MFAPushCredentialResponse {
 	if o == nil || IsNil(o.PushCredentials) {
-		var ret []EntityArrayEmbeddedPushCredentialsInner
+		var ret []MFAPushCredentialResponse
 		return ret
 	}
 	return o.PushCredentials
@@ -53,7 +53,7 @@ func (o *EntityArrayEmbedded) GetPushCredentials() []EntityArrayEmbeddedPushCred
 
 // GetPushCredentialsOk returns a tuple with the PushCredentials field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetPushCredentialsOk() ([]EntityArrayEmbeddedPushCredentialsInner, bool) {
+func (o *EntityArrayEmbedded) GetPushCredentialsOk() ([]MFAPushCredentialResponse, bool) {
 	if o == nil || IsNil(o.PushCredentials) {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *EntityArrayEmbedded) HasPushCredentials() bool {
 	return false
 }
 
-// SetPushCredentials gets a reference to the given []EntityArrayEmbeddedPushCredentialsInner and assigns it to the PushCredentials field.
-func (o *EntityArrayEmbedded) SetPushCredentials(v []EntityArrayEmbeddedPushCredentialsInner) {
+// SetPushCredentials gets a reference to the given []MFAPushCredentialResponse and assigns it to the PushCredentials field.
+func (o *EntityArrayEmbedded) SetPushCredentials(v []MFAPushCredentialResponse) {
 	o.PushCredentials = v
 }
 

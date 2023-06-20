@@ -334,11 +334,7 @@ components:
             pushCredentials:
               type: array
               items:
-                anyOf:
-                  - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-                  - $ref: '#/components/schemas/MFAPushCredentialFCM'
-                  - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
-                  - $ref: '#/components/schemas/MFAPushCredentialHMS'
+                $ref: '#/components/schemas/MFAPushCredentialResponse'
             deviceAuthenticationPolicies:
               type: array
               items:
@@ -536,6 +532,12 @@ components:
           required:
             - clientId
             - clientSecret
+    MFAPushCredentialRequest:
+      oneOf:
+        - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+        - $ref: '#/components/schemas/MFAPushCredentialFCM'
+        - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
+        - $ref: '#/components/schemas/MFAPushCredentialHMS'
     MFAPushCredentialResponse:
       type: object
       properties:
@@ -773,11 +775,7 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-                - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-                - $ref: '#/components/schemas/MFAPushCredentialFCM'
-                - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
-                - $ref: '#/components/schemas/MFAPushCredentialHMS'
+              $ref: '#/components/schemas/MFAPushCredentialRequest'
               example:
                 type: FCM
                 key: key.value
@@ -863,11 +861,7 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-                - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-                - $ref: '#/components/schemas/MFAPushCredentialFCM'
-                - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
-                - $ref: '#/components/schemas/MFAPushCredentialHMS'
+              $ref: '#/components/schemas/MFAPushCredentialRequest'
               example:
                 type: APNS
                 key: key.value.updated

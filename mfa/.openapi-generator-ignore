@@ -31,8 +31,3 @@ GNUmakefile
 test/*
 
 client.go
-
-model_create_mfa_push_credential_201_response.go
-model_create_mfa_push_credential_request.go
-model_entity_array__embedded_push_credentials_inner.go
-model_update_mfa_push_credential_request.go

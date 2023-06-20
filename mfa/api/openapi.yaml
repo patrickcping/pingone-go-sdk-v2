@@ -115,7 +115,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/createMFAPushCredential_request'
+              $ref: '#/components/schemas/MFAPushCredentialRequest'
       responses:
         "400":
           content:
@@ -345,7 +345,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/updateMFAPushCredential_request'
+              $ref: '#/components/schemas/MFAPushCredentialRequest'
       responses:
         "400":
           content:
@@ -2664,8 +2664,14 @@ components:
           - null
           - null
           pushCredentials:
-          - null
-          - null
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            type: null
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            type: null
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           fidoPolicies:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
@@ -3140,6 +3146,12 @@ components:
       allOf:
       - $ref: '#/components/schemas/MFAPushCredential'
       - $ref: '#/components/schemas/MFAPushCredentialHMS_allOf'
+    MFAPushCredentialRequest:
+      oneOf:
+      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
+      - $ref: '#/components/schemas/MFAPushCredentialFCM'
+      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
+      - $ref: '#/components/schemas/MFAPushCredentialHMS'
     MFAPushCredentialResponse:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -3245,29 +3257,6 @@ components:
       required:
       - mfaEnabled
       type: object
-    createMFAPushCredential_request:
-      example:
-        type: FCM
-        key: key.value
-      oneOf:
-      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-      - $ref: '#/components/schemas/MFAPushCredentialFCM'
-      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
-      - $ref: '#/components/schemas/MFAPushCredentialHMS'
-    updateMFAPushCredential_request:
-      example:
-        type: APNS
-        key: key.value.updated
-        teamId: team.id.updated
-        token: |-
-          -----BEGIN PRIVATE KEY-----
-          MIGTAgEA****7HUikGZU
-          -----END PRIVATE KEY-----
-      oneOf:
-      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-      - $ref: '#/components/schemas/MFAPushCredentialFCM'
-      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
-      - $ref: '#/components/schemas/MFAPushCredentialHMS'
     DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime:
       example:
         duration: 0
@@ -3696,20 +3685,20 @@ components:
       - enabled
       - otp
       type: object
-    EntityArray__embedded_pushCredentials_inner:
-      anyOf:
-      - $ref: '#/components/schemas/MFAPushCredentialAPNS'
-      - $ref: '#/components/schemas/MFAPushCredentialFCM'
-      - $ref: '#/components/schemas/MFAPushCredentialFCMHTTPV1'
-      - $ref: '#/components/schemas/MFAPushCredentialHMS'
     EntityArray__embedded:
       example:
         fidoDevicesMetadata:
         - null
         - null
         pushCredentials:
-        - null
-        - null
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          type: null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         fidoPolicies:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
@@ -3983,7 +3972,7 @@ components:
       properties:
         pushCredentials:
           items:
-            $ref: '#/components/schemas/EntityArray__embedded_pushCredentials_inner'
+            $ref: '#/components/schemas/MFAPushCredentialResponse'
           type: array
         deviceAuthenticationPolicies:
           items:
