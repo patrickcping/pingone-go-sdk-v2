@@ -1,3 +1,9 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.13.0](./mfa/CHANGELOG.md)
+    * **Breaking change** Migrated `CreateMFAPushCredentialRequest` and `UpdateMFAPushCredentialRequest` to `MFAPushCredentialRequest`. [#201](https://github.com/patrickcping/pingone-go-sdk-v2/pull/201)
+    * **Breaking change** Migrated `EntityArrayEmbeddedPushCredentialsInner` to `MFAPushCredentialResponse`. [#201](https://github.com/patrickcping/pingone-go-sdk-v2/pull/201)
+
 # Release (2023-06-19)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.8.0
