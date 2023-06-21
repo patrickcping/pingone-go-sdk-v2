@@ -20,36 +20,34 @@ import (
 )
 
 
-// FIDOPolicyApiService FIDOPolicyApi service
-type FIDOPolicyApiService service
+// FIDO2PolicyApiService FIDO2PolicyApi service
+type FIDO2PolicyApiService service
 
-type ApiCreateFidoPolicyRequest struct {
+type ApiCreateFido2PolicyRequest struct {
 	ctx context.Context
-	ApiService *FIDOPolicyApiService
+	ApiService *FIDO2PolicyApiService
 	environmentID string
-	fIDOPolicy *FIDOPolicy
+	fIDO2Policy *FIDO2Policy
 }
 
-func (r ApiCreateFidoPolicyRequest) FIDOPolicy(fIDOPolicy FIDOPolicy) ApiCreateFidoPolicyRequest {
-	r.fIDOPolicy = &fIDOPolicy
+func (r ApiCreateFido2PolicyRequest) FIDO2Policy(fIDO2Policy FIDO2Policy) ApiCreateFido2PolicyRequest {
+	r.fIDO2Policy = &fIDO2Policy
 	return r
 }
 
-func (r ApiCreateFidoPolicyRequest) Execute() (*FIDOPolicy, *http.Response, error) {
-	return r.ApiService.CreateFidoPolicyExecute(r)
+func (r ApiCreateFido2PolicyRequest) Execute() (*FIDO2Policy, *http.Response, error) {
+	return r.ApiService.CreateFido2PolicyExecute(r)
 }
 
 /*
-CreateFidoPolicy CREATE FIDO Policy
+CreateFido2Policy CREATE FIDO2 Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiCreateFidoPolicyRequest
-
-Deprecated
+ @return ApiCreateFido2PolicyRequest
 */
-func (a *FIDOPolicyApiService) CreateFidoPolicy(ctx context.Context, environmentID string) ApiCreateFidoPolicyRequest {
-	return ApiCreateFidoPolicyRequest{
+func (a *FIDO2PolicyApiService) CreateFido2Policy(ctx context.Context, environmentID string) ApiCreateFido2PolicyRequest {
+	return ApiCreateFido2PolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -57,31 +55,30 @@ func (a *FIDOPolicyApiService) CreateFidoPolicy(ctx context.Context, environment
 }
 
 // Execute executes the request
-//  @return FIDOPolicy
-// Deprecated
-func (a *FIDOPolicyApiService) CreateFidoPolicyExecute(r ApiCreateFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+//  @return FIDO2Policy
+func (a *FIDO2PolicyApiService) CreateFido2PolicyExecute(r ApiCreateFido2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	obj, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalCreateFidoPolicyExecute(r)
+			return r.ApiService.internalCreateFido2PolicyExecute(r)
 		},
 	)
-	return obj.(*FIDOPolicy), response, error
+	return obj.(*FIDO2Policy), response, error
 }
 			
-func (a *FIDOPolicyApiService) internalCreateFidoPolicyExecute(r ApiCreateFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+func (a *FIDO2PolicyApiService) internalCreateFido2PolicyExecute(r ApiCreateFido2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *FIDOPolicy
+		localVarReturnValue  *FIDO2Policy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDOPolicyApiService.CreateFidoPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.CreateFido2Policy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/fidoPolicies"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/fido2Policies"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -106,7 +103,7 @@ func (a *FIDOPolicyApiService) internalCreateFidoPolicyExecute(r ApiCreateFidoPo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.fIDOPolicy
+	localVarPostBody = r.fIDO2Policy
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -221,63 +218,60 @@ func (a *FIDOPolicyApiService) internalCreateFidoPolicyExecute(r ApiCreateFidoPo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteFidoPolicyRequest struct {
+type ApiDeleteFido2PolicyRequest struct {
 	ctx context.Context
-	ApiService *FIDOPolicyApiService
+	ApiService *FIDO2PolicyApiService
 	environmentID string
-	fidoPolicyID string
+	fido2PolicyID string
 }
 
-func (r ApiDeleteFidoPolicyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteFidoPolicyExecute(r)
+func (r ApiDeleteFido2PolicyRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteFido2PolicyExecute(r)
 }
 
 /*
-DeleteFidoPolicy DELETE FIDO Policy
+DeleteFido2Policy DELETE FIDO2 Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param fidoPolicyID
- @return ApiDeleteFidoPolicyRequest
-
-Deprecated
+ @param fido2PolicyID
+ @return ApiDeleteFido2PolicyRequest
 */
-func (a *FIDOPolicyApiService) DeleteFidoPolicy(ctx context.Context, environmentID string, fidoPolicyID string) ApiDeleteFidoPolicyRequest {
-	return ApiDeleteFidoPolicyRequest{
+func (a *FIDO2PolicyApiService) DeleteFido2Policy(ctx context.Context, environmentID string, fido2PolicyID string) ApiDeleteFido2PolicyRequest {
+	return ApiDeleteFido2PolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		fidoPolicyID: fidoPolicyID,
+		fido2PolicyID: fido2PolicyID,
 	}
 }
 
 // Execute executes the request
-// Deprecated
-func (a *FIDOPolicyApiService) DeleteFidoPolicyExecute(r ApiDeleteFidoPolicyRequest) (*http.Response, error) {
+func (a *FIDO2PolicyApiService) DeleteFido2PolicyExecute(r ApiDeleteFido2PolicyRequest) (*http.Response, error) {
 	_, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalDeleteFidoPolicyExecute(r)
+			resp, err := r.ApiService.internalDeleteFido2PolicyExecute(r)
 			return nil, resp, err
 		},
 	)
 	return response, error
 }
 			
-func (a *FIDOPolicyApiService) internalDeleteFidoPolicyExecute(r ApiDeleteFidoPolicyRequest) (*http.Response, error) {
+func (a *FIDO2PolicyApiService) internalDeleteFido2PolicyExecute(r ApiDeleteFido2PolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDOPolicyApiService.DeleteFidoPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.DeleteFido2Policy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/fido2Policies/{fido2PolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fidoPolicyID"+"}", url.PathEscape(parameterValueToString(r.fidoPolicyID, "fidoPolicyID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -394,27 +388,25 @@ func (a *FIDOPolicyApiService) internalDeleteFidoPolicyExecute(r ApiDeleteFidoPo
 	return localVarHTTPResponse, nil
 }
 
-type ApiReadFidoPoliciesRequest struct {
+type ApiReadFido2PoliciesRequest struct {
 	ctx context.Context
-	ApiService *FIDOPolicyApiService
+	ApiService *FIDO2PolicyApiService
 	environmentID string
 }
 
-func (r ApiReadFidoPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
-	return r.ApiService.ReadFidoPoliciesExecute(r)
+func (r ApiReadFido2PoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadFido2PoliciesExecute(r)
 }
 
 /*
-ReadFidoPolicies READ FIDO Policies
+ReadFido2Policies READ FIDO2 Policies
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiReadFidoPoliciesRequest
-
-Deprecated
+ @return ApiReadFido2PoliciesRequest
 */
-func (a *FIDOPolicyApiService) ReadFidoPolicies(ctx context.Context, environmentID string) ApiReadFidoPoliciesRequest {
-	return ApiReadFidoPoliciesRequest{
+func (a *FIDO2PolicyApiService) ReadFido2Policies(ctx context.Context, environmentID string) ApiReadFido2PoliciesRequest {
+	return ApiReadFido2PoliciesRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -423,17 +415,16 @@ func (a *FIDOPolicyApiService) ReadFidoPolicies(ctx context.Context, environment
 
 // Execute executes the request
 //  @return EntityArray
-// Deprecated
-func (a *FIDOPolicyApiService) ReadFidoPoliciesExecute(r ApiReadFidoPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *FIDO2PolicyApiService) ReadFido2PoliciesExecute(r ApiReadFido2PoliciesRequest) (*EntityArray, *http.Response, error) {
 	obj, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalReadFidoPoliciesExecute(r)
+			return r.ApiService.internalReadFido2PoliciesExecute(r)
 		},
 	)
 	return obj.(*EntityArray), response, error
 }
 			
-func (a *FIDOPolicyApiService) internalReadFidoPoliciesExecute(r ApiReadFidoPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *FIDO2PolicyApiService) internalReadFido2PoliciesExecute(r ApiReadFido2PoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -441,12 +432,12 @@ func (a *FIDOPolicyApiService) internalReadFidoPoliciesExecute(r ApiReadFidoPoli
 		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDOPolicyApiService.ReadFidoPolicies")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.ReadFido2Policies")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/fidoPolicies"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/fido2Policies"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -573,69 +564,75 @@ func (a *FIDOPolicyApiService) internalReadFidoPoliciesExecute(r ApiReadFidoPoli
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiReadOneFidoPolicyRequest struct {
+type ApiReadOneFido2PolicyRequest struct {
 	ctx context.Context
-	ApiService *FIDOPolicyApiService
+	ApiService *FIDO2PolicyApiService
 	environmentID string
-	fidoPolicyID string
+	fido2PolicyID string
+	expand *string
 }
 
-func (r ApiReadOneFidoPolicyRequest) Execute() (*FIDOPolicy, *http.Response, error) {
-	return r.ApiService.ReadOneFidoPolicyExecute(r)
+func (r ApiReadOneFido2PolicyRequest) Expand(expand string) ApiReadOneFido2PolicyRequest {
+	r.expand = &expand
+	return r
+}
+
+func (r ApiReadOneFido2PolicyRequest) Execute() (*FIDO2Policy, *http.Response, error) {
+	return r.ApiService.ReadOneFido2PolicyExecute(r)
 }
 
 /*
-ReadOneFidoPolicy READ One FIDO Policy
+ReadOneFido2Policy READ One FIDO2 Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param fidoPolicyID
- @return ApiReadOneFidoPolicyRequest
-
-Deprecated
+ @param fido2PolicyID
+ @return ApiReadOneFido2PolicyRequest
 */
-func (a *FIDOPolicyApiService) ReadOneFidoPolicy(ctx context.Context, environmentID string, fidoPolicyID string) ApiReadOneFidoPolicyRequest {
-	return ApiReadOneFidoPolicyRequest{
+func (a *FIDO2PolicyApiService) ReadOneFido2Policy(ctx context.Context, environmentID string, fido2PolicyID string) ApiReadOneFido2PolicyRequest {
+	return ApiReadOneFido2PolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		fidoPolicyID: fidoPolicyID,
+		fido2PolicyID: fido2PolicyID,
 	}
 }
 
 // Execute executes the request
-//  @return FIDOPolicy
-// Deprecated
-func (a *FIDOPolicyApiService) ReadOneFidoPolicyExecute(r ApiReadOneFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+//  @return FIDO2Policy
+func (a *FIDO2PolicyApiService) ReadOneFido2PolicyExecute(r ApiReadOneFido2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	obj, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalReadOneFidoPolicyExecute(r)
+			return r.ApiService.internalReadOneFido2PolicyExecute(r)
 		},
 	)
-	return obj.(*FIDOPolicy), response, error
+	return obj.(*FIDO2Policy), response, error
 }
 			
-func (a *FIDOPolicyApiService) internalReadOneFidoPolicyExecute(r ApiReadOneFidoPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+func (a *FIDO2PolicyApiService) internalReadOneFido2PolicyExecute(r ApiReadOneFido2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *FIDOPolicy
+		localVarReturnValue  *FIDO2Policy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDOPolicyApiService.ReadOneFidoPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.ReadOneFido2Policy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/fido2Policies/{fido2PolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fidoPolicyID"+"}", url.PathEscape(parameterValueToString(r.fidoPolicyID, "fidoPolicyID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.expand != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "expand", r.expand, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -756,70 +753,67 @@ func (a *FIDOPolicyApiService) internalReadOneFidoPolicyExecute(r ApiReadOneFido
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateFIDOPolicyRequest struct {
+type ApiUpdateFIDO2PolicyRequest struct {
 	ctx context.Context
-	ApiService *FIDOPolicyApiService
+	ApiService *FIDO2PolicyApiService
 	environmentID string
-	fidoPolicyID string
-	fIDOPolicy *FIDOPolicy
+	fido2PolicyID string
+	fIDO2Policy *FIDO2Policy
 }
 
-func (r ApiUpdateFIDOPolicyRequest) FIDOPolicy(fIDOPolicy FIDOPolicy) ApiUpdateFIDOPolicyRequest {
-	r.fIDOPolicy = &fIDOPolicy
+func (r ApiUpdateFIDO2PolicyRequest) FIDO2Policy(fIDO2Policy FIDO2Policy) ApiUpdateFIDO2PolicyRequest {
+	r.fIDO2Policy = &fIDO2Policy
 	return r
 }
 
-func (r ApiUpdateFIDOPolicyRequest) Execute() (*FIDOPolicy, *http.Response, error) {
-	return r.ApiService.UpdateFIDOPolicyExecute(r)
+func (r ApiUpdateFIDO2PolicyRequest) Execute() (*FIDO2Policy, *http.Response, error) {
+	return r.ApiService.UpdateFIDO2PolicyExecute(r)
 }
 
 /*
-UpdateFIDOPolicy UPDATE FIDO Policy
+UpdateFIDO2Policy UPDATE FIDO2 Policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param fidoPolicyID
- @return ApiUpdateFIDOPolicyRequest
-
-Deprecated
+ @param fido2PolicyID
+ @return ApiUpdateFIDO2PolicyRequest
 */
-func (a *FIDOPolicyApiService) UpdateFIDOPolicy(ctx context.Context, environmentID string, fidoPolicyID string) ApiUpdateFIDOPolicyRequest {
-	return ApiUpdateFIDOPolicyRequest{
+func (a *FIDO2PolicyApiService) UpdateFIDO2Policy(ctx context.Context, environmentID string, fido2PolicyID string) ApiUpdateFIDO2PolicyRequest {
+	return ApiUpdateFIDO2PolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		fidoPolicyID: fidoPolicyID,
+		fido2PolicyID: fido2PolicyID,
 	}
 }
 
 // Execute executes the request
-//  @return FIDOPolicy
-// Deprecated
-func (a *FIDOPolicyApiService) UpdateFIDOPolicyExecute(r ApiUpdateFIDOPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+//  @return FIDO2Policy
+func (a *FIDO2PolicyApiService) UpdateFIDO2PolicyExecute(r ApiUpdateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	obj, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
-			return r.ApiService.internalUpdateFIDOPolicyExecute(r)
+			return r.ApiService.internalUpdateFIDO2PolicyExecute(r)
 		},
 	)
-	return obj.(*FIDOPolicy), response, error
+	return obj.(*FIDO2Policy), response, error
 }
 			
-func (a *FIDOPolicyApiService) internalUpdateFIDOPolicyExecute(r ApiUpdateFIDOPolicyRequest) (*FIDOPolicy, *http.Response, error) {
+func (a *FIDO2PolicyApiService) internalUpdateFIDO2PolicyExecute(r ApiUpdateFIDO2PolicyRequest) (*FIDO2Policy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *FIDOPolicy
+		localVarReturnValue  *FIDO2Policy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDOPolicyApiService.UpdateFIDOPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FIDO2PolicyApiService.UpdateFIDO2Policy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID}"
+	localVarPath := localBasePath + "/v1/environments/{environmentID}/fido2Policies/{fido2PolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"fidoPolicyID"+"}", url.PathEscape(parameterValueToString(r.fidoPolicyID, "fidoPolicyID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"fido2PolicyID"+"}", url.PathEscape(parameterValueToString(r.fido2PolicyID, "fido2PolicyID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -843,7 +837,7 @@ func (a *FIDOPolicyApiService) internalUpdateFIDOPolicyExecute(r ApiUpdateFIDOPo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.fIDOPolicy
+	localVarPostBody = r.fIDO2Policy
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

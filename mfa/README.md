@@ -89,6 +89,11 @@ Class | Method | HTTP request | Description
 *DeviceAuthenticationPolicyApi* | [**UpdateDeviceAuthenticationPolicy**](docs/DeviceAuthenticationPolicyApi.md#updatedeviceauthenticationpolicy) | **Put** /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | UPDATE Device Authentication Policy
 *EnableUsersMFAApi* | [**ReadUserMFAEnabled**](docs/EnableUsersMFAApi.md#readusermfaenabled) | **Get** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
 *EnableUsersMFAApi* | [**UpdateUserMFAEnabled**](docs/EnableUsersMFAApi.md#updateusermfaenabled) | **Put** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
+*FIDO2PolicyApi* | [**CreateFido2Policy**](docs/FIDO2PolicyApi.md#createfido2policy) | **Post** /v1/environments/{environmentID}/fido2Policies | CREATE FIDO2 Policy
+*FIDO2PolicyApi* | [**DeleteFido2Policy**](docs/FIDO2PolicyApi.md#deletefido2policy) | **Delete** /v1/environments/{environmentID}/fido2Policies/{fido2PolicyID} | DELETE FIDO2 Policy
+*FIDO2PolicyApi* | [**ReadFido2Policies**](docs/FIDO2PolicyApi.md#readfido2policies) | **Get** /v1/environments/{environmentID}/fido2Policies | READ FIDO2 Policies
+*FIDO2PolicyApi* | [**ReadOneFido2Policy**](docs/FIDO2PolicyApi.md#readonefido2policy) | **Get** /v1/environments/{environmentID}/fido2Policies/{fido2PolicyID} | READ One FIDO2 Policy
+*FIDO2PolicyApi* | [**UpdateFIDO2Policy**](docs/FIDO2PolicyApi.md#updatefido2policy) | **Put** /v1/environments/{environmentID}/fido2Policies/{fido2PolicyID} | UPDATE FIDO2 Policy
 *FIDODeviceApi* | [**CreateFidoDevice**](docs/FIDODeviceApi.md#createfidodevice) | **Post** /v1/environments/{environmentID}/fidoDevicesMetadata | CREATE FIDO Device
 *FIDODeviceApi* | [**DeleteFidoDevice**](docs/FIDODeviceApi.md#deletefidodevice) | **Delete** /v1/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID} | DELETE FIDO Device
 *FIDODeviceApi* | [**ReadFidoDevices**](docs/FIDODeviceApi.md#readfidodevices) | **Get** /v1/environments/{environmentID}/fidoDevicesMetadata | READ All FIDO Devices
@@ -119,6 +124,7 @@ Class | Method | HTTP request | Description
  - [DeviceAuthenticationPolicy](docs/DeviceAuthenticationPolicy.md)
  - [DeviceAuthenticationPolicyAuthentication](docs/DeviceAuthenticationPolicyAuthentication.md)
  - [DeviceAuthenticationPolicyFIDODevice](docs/DeviceAuthenticationPolicyFIDODevice.md)
+ - [DeviceAuthenticationPolicyFido2](docs/DeviceAuthenticationPolicyFido2.md)
  - [DeviceAuthenticationPolicyMobile](docs/DeviceAuthenticationPolicyMobile.md)
  - [DeviceAuthenticationPolicyMobileApplicationsInner](docs/DeviceAuthenticationPolicyMobileApplicationsInner.md)
  - [DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment](docs/DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment.md)
@@ -142,6 +148,11 @@ Class | Method | HTTP request | Description
  - [DeviceAuthenticationPolicyTotpOtp](docs/DeviceAuthenticationPolicyTotpOtp.md)
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
+ - [EnumFIDO2PolicyAttestationRequirements](docs/EnumFIDO2PolicyAttestationRequirements.md)
+ - [EnumFIDO2PolicyAuthenticatorAttachment](docs/EnumFIDO2PolicyAuthenticatorAttachment.md)
+ - [EnumFIDO2PolicyDiscoverableCredentials](docs/EnumFIDO2PolicyDiscoverableCredentials.md)
+ - [EnumFIDO2PolicyMDSAuthenticatorOption](docs/EnumFIDO2PolicyMDSAuthenticatorOption.md)
+ - [EnumFIDO2PolicyUserVerificationOption](docs/EnumFIDO2PolicyUserVerificationOption.md)
  - [EnumFIDOAttestationRequirements](docs/EnumFIDOAttestationRequirements.md)
  - [EnumFIDOResidentKeyRequirement](docs/EnumFIDOResidentKeyRequirement.md)
  - [EnumMFADevicePolicyMobileExtraVerification](docs/EnumMFADevicePolicyMobileExtraVerification.md)
@@ -153,6 +164,14 @@ Class | Method | HTTP request | Description
  - [EnumTimeUnit](docs/EnumTimeUnit.md)
  - [EnumTimeUnitPairingKeyLifetime](docs/EnumTimeUnitPairingKeyLifetime.md)
  - [EnumTimeUnitPushTimeout](docs/EnumTimeUnitPushTimeout.md)
+ - [FIDO2Policy](docs/FIDO2Policy.md)
+ - [FIDO2PolicyBackupEligibility](docs/FIDO2PolicyBackupEligibility.md)
+ - [FIDO2PolicyMdsAuthenticatorsRequirements](docs/FIDO2PolicyMdsAuthenticatorsRequirements.md)
+ - [FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner](docs/FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner.md)
+ - [FIDO2PolicyUserDisplayNameAttributes](docs/FIDO2PolicyUserDisplayNameAttributes.md)
+ - [FIDO2PolicyUserDisplayNameAttributesAttributesInner](docs/FIDO2PolicyUserDisplayNameAttributesAttributesInner.md)
+ - [FIDO2PolicyUserDisplayNameAttributesAttributesInnerSubAttributesInner](docs/FIDO2PolicyUserDisplayNameAttributesAttributesInnerSubAttributesInner.md)
+ - [FIDO2PolicyUserVerification](docs/FIDO2PolicyUserVerification.md)
  - [FIDOPolicy](docs/FIDOPolicy.md)
  - [FIDOPolicyAllowedAuthenticatorsInner](docs/FIDOPolicyAllowedAuthenticatorsInner.md)
  - [MFAPushCredential](docs/MFAPushCredential.md)

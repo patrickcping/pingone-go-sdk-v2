@@ -3,6 +3,10 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.13.0](./mfa/CHANGELOG.md)
     * **Breaking change** Migrated `CreateMFAPushCredentialRequest` and `UpdateMFAPushCredentialRequest` to `MFAPushCredentialRequest`. [#201](https://github.com/patrickcping/pingone-go-sdk-v2/pull/201)
     * **Breaking change** Migrated `EntityArrayEmbeddedPushCredentialsInner` to `MFAPushCredentialResponse`. [#201](https://github.com/patrickcping/pingone-go-sdk-v2/pull/201)
+    * **Note** Deprecated old FIDO policy API. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202)
+    * **Feature** Support for upgraded FIDO2 policies API. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202)
+    * **Enhancement** Add support for FIDO2 policies API in MFA Device Policies. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202)
+    * **Enhancement** Add optional attributes for `pairingDisabled` methods in MFA Device Policies. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202)
 
 # Release (2023-06-19)
 

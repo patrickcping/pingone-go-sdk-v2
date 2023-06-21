@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DeviceAuthenticationPolicies** | Pointer to [**[]DeviceAuthenticationPolicy**](DeviceAuthenticationPolicy.md) |  | [optional] 
 **FidoDevicesMetadata** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **FidoPolicies** | Pointer to [**[]FIDOPolicy**](FIDOPolicy.md) |  | [optional] 
+**Fido2Policies** | Pointer to [**[]FIDO2Policy**](FIDO2Policy.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetFidoPolicies sets FidoPolicies field to given value.
 `func (o *EntityArrayEmbedded) HasFidoPolicies() bool`
 
 HasFidoPolicies returns a boolean if a field has been set.
+
+### GetFido2Policies
+
+`func (o *EntityArrayEmbedded) GetFido2Policies() []FIDO2Policy`
+
+GetFido2Policies returns the Fido2Policies field if non-nil, zero value otherwise.
+
+### GetFido2PoliciesOk
+
+`func (o *EntityArrayEmbedded) GetFido2PoliciesOk() (*[]FIDO2Policy, bool)`
+
+GetFido2PoliciesOk returns a tuple with the Fido2Policies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFido2Policies
+
+`func (o *EntityArrayEmbedded) SetFido2Policies(v []FIDO2Policy)`
+
+SetFido2Policies sets Fido2Policies field to given value.
+
+### HasFido2Policies
+
+`func (o *EntityArrayEmbedded) HasFido2Policies() bool`
+
+HasFido2Policies returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

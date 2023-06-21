@@ -11,11 +11,12 @@ Name | Type | Description | Notes
 **Sms** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Voice** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Email** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
+**Fido2** | Pointer to [**DeviceAuthenticationPolicyFido2**](DeviceAuthenticationPolicyFido2.md) |  | [optional] 
 **Mobile** | [**DeviceAuthenticationPolicyMobile**](DeviceAuthenticationPolicyMobile.md) |  | 
 **Totp** | [**DeviceAuthenticationPolicyTotp**](DeviceAuthenticationPolicyTotp.md) |  | 
-**SecurityKey** | [**DeviceAuthenticationPolicyFIDODevice**](DeviceAuthenticationPolicyFIDODevice.md) |  | 
-**Platform** | [**DeviceAuthenticationPolicyFIDODevice**](DeviceAuthenticationPolicyFIDODevice.md) |  | 
-**Default** | **bool** | The default policy for Flow Manager. | 
+**SecurityKey** | Pointer to [**DeviceAuthenticationPolicyFIDODevice**](DeviceAuthenticationPolicyFIDODevice.md) |  | [optional] 
+**Platform** | Pointer to [**DeviceAuthenticationPolicyFIDODevice**](DeviceAuthenticationPolicyFIDODevice.md) |  | [optional] 
+**Default** | **bool** | A boolean that specifies whether the policy is the default for the environment. | 
 **ForSignOnPolicy** | **bool** |  | 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 
@@ -23,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewDeviceAuthenticationPolicy
 
-`func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyMobile, totp DeviceAuthenticationPolicyTotp, securityKey DeviceAuthenticationPolicyFIDODevice, platform DeviceAuthenticationPolicyFIDODevice, default_ bool, forSignOnPolicy bool, ) *DeviceAuthenticationPolicy`
+`func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyMobile, totp DeviceAuthenticationPolicyTotp, default_ bool, forSignOnPolicy bool, ) *DeviceAuthenticationPolicy`
 
 NewDeviceAuthenticationPolicy instantiates a new DeviceAuthenticationPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -193,6 +194,31 @@ and a boolean to check if the value has been set.
 SetEmail sets Email field to given value.
 
 
+### GetFido2
+
+`func (o *DeviceAuthenticationPolicy) GetFido2() DeviceAuthenticationPolicyFido2`
+
+GetFido2 returns the Fido2 field if non-nil, zero value otherwise.
+
+### GetFido2Ok
+
+`func (o *DeviceAuthenticationPolicy) GetFido2Ok() (*DeviceAuthenticationPolicyFido2, bool)`
+
+GetFido2Ok returns a tuple with the Fido2 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFido2
+
+`func (o *DeviceAuthenticationPolicy) SetFido2(v DeviceAuthenticationPolicyFido2)`
+
+SetFido2 sets Fido2 field to given value.
+
+### HasFido2
+
+`func (o *DeviceAuthenticationPolicy) HasFido2() bool`
+
+HasFido2 returns a boolean if a field has been set.
+
 ### GetMobile
 
 `func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyMobile`
@@ -252,6 +278,11 @@ and a boolean to check if the value has been set.
 
 SetSecurityKey sets SecurityKey field to given value.
 
+### HasSecurityKey
+
+`func (o *DeviceAuthenticationPolicy) HasSecurityKey() bool`
+
+HasSecurityKey returns a boolean if a field has been set.
 
 ### GetPlatform
 
@@ -272,6 +303,11 @@ and a boolean to check if the value has been set.
 
 SetPlatform sets Platform field to given value.
 
+### HasPlatform
+
+`func (o *DeviceAuthenticationPolicy) HasPlatform() bool`
+
+HasPlatform returns a boolean if a field has been set.
 
 ### GetDefault
 

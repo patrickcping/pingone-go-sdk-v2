@@ -28,6 +28,8 @@ type DeviceAuthenticationPolicyMobileApplicationsInner struct {
 	Otp *DeviceAuthenticationPolicyMobileApplicationsInnerOtp `json:"otp,omitempty"`
 	DeviceAuthorization *DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization `json:"deviceAuthorization,omitempty"`
 	AutoEnrollment *DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment `json:"autoEnrollment,omitempty"`
+	// A boolean to specify whether pairing is disabled for the method.
+	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
 	IntegrityDetection *EnumMFADevicePolicyMobileIntegrityDetection `json:"integrityDetection,omitempty"`
 }
 
@@ -297,6 +299,38 @@ func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetAutoEnrollment(v 
 	o.AutoEnrollment = &v
 }
 
+// GetPairingDisabled returns the PairingDisabled field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPairingDisabled() bool {
+	if o == nil || IsNil(o.PairingDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PairingDisabled
+}
+
+// GetPairingDisabledOk returns a tuple with the PairingDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPairingDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PairingDisabled) {
+		return nil, false
+	}
+	return o.PairingDisabled, true
+}
+
+// HasPairingDisabled returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPairingDisabled() bool {
+	if o != nil && !IsNil(o.PairingDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPairingDisabled gets a reference to the given bool and assigns it to the PairingDisabled field.
+func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPairingDisabled(v bool) {
+	o.PairingDisabled = &v
+}
+
 // GetIntegrityDetection returns the IntegrityDetection field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetIntegrityDetection() EnumMFADevicePolicyMobileIntegrityDetection {
 	if o == nil || IsNil(o.IntegrityDetection) {
@@ -360,6 +394,9 @@ func (o DeviceAuthenticationPolicyMobileApplicationsInner) ToMap() (map[string]i
 	}
 	if !IsNil(o.AutoEnrollment) {
 		toSerialize["autoEnrollment"] = o.AutoEnrollment
+	}
+	if !IsNil(o.PairingDisabled) {
+		toSerialize["pairingDisabled"] = o.PairingDisabled
 	}
 	if !IsNil(o.IntegrityDetection) {
 		toSerialize["integrityDetection"] = o.IntegrityDetection
