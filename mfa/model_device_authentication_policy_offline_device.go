@@ -21,6 +21,8 @@ var _ MappedNullable = &DeviceAuthenticationPolicyOfflineDevice{}
 type DeviceAuthenticationPolicyOfflineDevice struct {
 	// Enabled or disabled in the policy.
 	Enabled bool `json:"enabled"`
+	// A boolean to specify whether pairing is disabled for the method.
+	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
 	Otp DeviceAuthenticationPolicyOfflineDeviceOtp `json:"otp"`
 }
 
@@ -67,6 +69,38 @@ func (o *DeviceAuthenticationPolicyOfflineDevice) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
+// GetPairingDisabled returns the PairingDisabled field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyOfflineDevice) GetPairingDisabled() bool {
+	if o == nil || IsNil(o.PairingDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PairingDisabled
+}
+
+// GetPairingDisabledOk returns a tuple with the PairingDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyOfflineDevice) GetPairingDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PairingDisabled) {
+		return nil, false
+	}
+	return o.PairingDisabled, true
+}
+
+// HasPairingDisabled returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyOfflineDevice) HasPairingDisabled() bool {
+	if o != nil && !IsNil(o.PairingDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPairingDisabled gets a reference to the given bool and assigns it to the PairingDisabled field.
+func (o *DeviceAuthenticationPolicyOfflineDevice) SetPairingDisabled(v bool) {
+	o.PairingDisabled = &v
+}
+
 // GetOtp returns the Otp field value
 func (o *DeviceAuthenticationPolicyOfflineDevice) GetOtp() DeviceAuthenticationPolicyOfflineDeviceOtp {
 	if o == nil {
@@ -102,6 +136,9 @@ func (o DeviceAuthenticationPolicyOfflineDevice) MarshalJSON() ([]byte, error) {
 func (o DeviceAuthenticationPolicyOfflineDevice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.PairingDisabled) {
+		toSerialize["pairingDisabled"] = o.PairingDisabled
+	}
 	toSerialize["otp"] = o.Otp
 	return toSerialize, nil
 }

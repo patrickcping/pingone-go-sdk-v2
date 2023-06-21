@@ -19,7 +19,7 @@ var _ MappedNullable = &DeviceAuthenticationPolicyMobile{}
 
 // DeviceAuthenticationPolicyMobile Mobile device authentication policy settings.
 type DeviceAuthenticationPolicyMobile struct {
-	// Enabled or disabled in the policy.
+	// A boolean that specifies whether the method is enabled or disabled in the policy.
 	Enabled bool `json:"enabled"`
 	Otp DeviceAuthenticationPolicyMobileOtp `json:"otp"`
 	Applications []DeviceAuthenticationPolicyMobileApplicationsInner `json:"applications,omitempty"`

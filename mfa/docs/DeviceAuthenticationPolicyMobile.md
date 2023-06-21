@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | **bool** | Enabled or disabled in the policy. | 
+**Enabled** | **bool** | A boolean that specifies whether the method is enabled or disabled in the policy. | 
 **Otp** | [**DeviceAuthenticationPolicyMobileOtp**](DeviceAuthenticationPolicyMobileOtp.md) |  | 
 **Applications** | Pointer to [**[]DeviceAuthenticationPolicyMobileApplicationsInner**](DeviceAuthenticationPolicyMobileApplicationsInner.md) |  | [optional] 
 

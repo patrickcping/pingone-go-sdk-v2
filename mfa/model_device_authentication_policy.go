@@ -29,11 +29,14 @@ type DeviceAuthenticationPolicy struct {
 	Sms DeviceAuthenticationPolicyOfflineDevice `json:"sms"`
 	Voice DeviceAuthenticationPolicyOfflineDevice `json:"voice"`
 	Email DeviceAuthenticationPolicyOfflineDevice `json:"email"`
+	Fido2 *DeviceAuthenticationPolicyFido2 `json:"fido2,omitempty"`
 	Mobile DeviceAuthenticationPolicyMobile `json:"mobile"`
 	Totp DeviceAuthenticationPolicyTotp `json:"totp"`
-	SecurityKey DeviceAuthenticationPolicyFIDODevice `json:"securityKey"`
-	Platform DeviceAuthenticationPolicyFIDODevice `json:"platform"`
-	// The default policy for Flow Manager.
+	// Deprecated
+	SecurityKey *DeviceAuthenticationPolicyFIDODevice `json:"securityKey,omitempty"`
+	// Deprecated
+	Platform *DeviceAuthenticationPolicyFIDODevice `json:"platform,omitempty"`
+	// A boolean that specifies whether the policy is the default for the environment.
 	Default bool `json:"default"`
 	// Deprecated
 	ForSignOnPolicy bool `json:"forSignOnPolicy"`
@@ -45,7 +48,7 @@ type DeviceAuthenticationPolicy struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyMobile, totp DeviceAuthenticationPolicyTotp, securityKey DeviceAuthenticationPolicyFIDODevice, platform DeviceAuthenticationPolicyFIDODevice, default_ bool, forSignOnPolicy bool) *DeviceAuthenticationPolicy {
+func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOfflineDevice, voice DeviceAuthenticationPolicyOfflineDevice, email DeviceAuthenticationPolicyOfflineDevice, mobile DeviceAuthenticationPolicyMobile, totp DeviceAuthenticationPolicyTotp, default_ bool, forSignOnPolicy bool) *DeviceAuthenticationPolicy {
 	this := DeviceAuthenticationPolicy{}
 	this.Name = name
 	this.Sms = sms
@@ -53,8 +56,6 @@ func NewDeviceAuthenticationPolicy(name string, sms DeviceAuthenticationPolicyOf
 	this.Email = email
 	this.Mobile = mobile
 	this.Totp = totp
-	this.SecurityKey = securityKey
-	this.Platform = platform
 	this.Default = default_
 	this.ForSignOnPolicy = forSignOnPolicy
 	return &this
@@ -260,6 +261,38 @@ func (o *DeviceAuthenticationPolicy) SetEmail(v DeviceAuthenticationPolicyOfflin
 	o.Email = v
 }
 
+// GetFido2 returns the Fido2 field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetFido2() DeviceAuthenticationPolicyFido2 {
+	if o == nil || IsNil(o.Fido2) {
+		var ret DeviceAuthenticationPolicyFido2
+		return ret
+	}
+	return *o.Fido2
+}
+
+// GetFido2Ok returns a tuple with the Fido2 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetFido2Ok() (*DeviceAuthenticationPolicyFido2, bool) {
+	if o == nil || IsNil(o.Fido2) {
+		return nil, false
+	}
+	return o.Fido2, true
+}
+
+// HasFido2 returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasFido2() bool {
+	if o != nil && !IsNil(o.Fido2) {
+		return true
+	}
+
+	return false
+}
+
+// SetFido2 gets a reference to the given DeviceAuthenticationPolicyFido2 and assigns it to the Fido2 field.
+func (o *DeviceAuthenticationPolicy) SetFido2(v DeviceAuthenticationPolicyFido2) {
+	o.Fido2 = &v
+}
+
 // GetMobile returns the Mobile field value
 func (o *DeviceAuthenticationPolicy) GetMobile() DeviceAuthenticationPolicyMobile {
 	if o == nil {
@@ -308,52 +341,74 @@ func (o *DeviceAuthenticationPolicy) SetTotp(v DeviceAuthenticationPolicyTotp) {
 	o.Totp = v
 }
 
-// GetSecurityKey returns the SecurityKey field value
+// GetSecurityKey returns the SecurityKey field value if set, zero value otherwise.
+// Deprecated
 func (o *DeviceAuthenticationPolicy) GetSecurityKey() DeviceAuthenticationPolicyFIDODevice {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityKey) {
 		var ret DeviceAuthenticationPolicyFIDODevice
 		return ret
 	}
-
-	return o.SecurityKey
+	return *o.SecurityKey
 }
 
-// GetSecurityKeyOk returns a tuple with the SecurityKey field value
+// GetSecurityKeyOk returns a tuple with the SecurityKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *DeviceAuthenticationPolicy) GetSecurityKeyOk() (*DeviceAuthenticationPolicyFIDODevice, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityKey) {
 		return nil, false
 	}
-	return &o.SecurityKey, true
+	return o.SecurityKey, true
 }
 
-// SetSecurityKey sets field value
+// HasSecurityKey returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasSecurityKey() bool {
+	if o != nil && !IsNil(o.SecurityKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityKey gets a reference to the given DeviceAuthenticationPolicyFIDODevice and assigns it to the SecurityKey field.
+// Deprecated
 func (o *DeviceAuthenticationPolicy) SetSecurityKey(v DeviceAuthenticationPolicyFIDODevice) {
-	o.SecurityKey = v
+	o.SecurityKey = &v
 }
 
-// GetPlatform returns the Platform field value
+// GetPlatform returns the Platform field value if set, zero value otherwise.
+// Deprecated
 func (o *DeviceAuthenticationPolicy) GetPlatform() DeviceAuthenticationPolicyFIDODevice {
-	if o == nil {
+	if o == nil || IsNil(o.Platform) {
 		var ret DeviceAuthenticationPolicyFIDODevice
 		return ret
 	}
-
-	return o.Platform
+	return *o.Platform
 }
 
-// GetPlatformOk returns a tuple with the Platform field value
+// GetPlatformOk returns a tuple with the Platform field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *DeviceAuthenticationPolicy) GetPlatformOk() (*DeviceAuthenticationPolicyFIDODevice, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Platform) {
 		return nil, false
 	}
-	return &o.Platform, true
+	return o.Platform, true
 }
 
-// SetPlatform sets field value
+// HasPlatform returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasPlatform() bool {
+	if o != nil && !IsNil(o.Platform) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlatform gets a reference to the given DeviceAuthenticationPolicyFIDODevice and assigns it to the Platform field.
+// Deprecated
 func (o *DeviceAuthenticationPolicy) SetPlatform(v DeviceAuthenticationPolicyFIDODevice) {
-	o.Platform = v
+	o.Platform = &v
 }
 
 // GetDefault returns the Default field value
@@ -460,10 +515,17 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize["sms"] = o.Sms
 	toSerialize["voice"] = o.Voice
 	toSerialize["email"] = o.Email
+	if !IsNil(o.Fido2) {
+		toSerialize["fido2"] = o.Fido2
+	}
 	toSerialize["mobile"] = o.Mobile
 	toSerialize["totp"] = o.Totp
-	toSerialize["securityKey"] = o.SecurityKey
-	toSerialize["platform"] = o.Platform
+	if !IsNil(o.SecurityKey) {
+		toSerialize["securityKey"] = o.SecurityKey
+	}
+	if !IsNil(o.Platform) {
+		toSerialize["platform"] = o.Platform
+	}
 	toSerialize["default"] = o.Default
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy
 	// skip: updatedAt is readOnly
