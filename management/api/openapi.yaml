@@ -25304,6 +25304,9 @@ components:
           languages:
           - null
           - null
+          phoneDeliverySettings:
+          - null
+          - null
           templates:
           - createdAt: createdAt
             variables: "{}"
@@ -30788,6 +30791,9 @@ components:
         languages:
         - null
         - null
+        phoneDeliverySettings:
+        - null
+        - null
         templates:
         - createdAt: createdAt
           variables: "{}"
@@ -31691,6 +31697,10 @@ components:
         passwordPolicies:
           items:
             $ref: '#/components/schemas/PasswordPolicy'
+          type: array
+        phoneDeliverySettings:
+          items:
+            $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
           type: array
         populations:
           items:

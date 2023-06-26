@@ -1751,6 +1751,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/PasswordPolicy'
+            phoneDeliverySettings:
+              type: array
+              items:
+                $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
             populations:
               type: array
               items:
