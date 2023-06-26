@@ -27,11 +27,11 @@ type ApiCreatePhoneDeliverySettingsRequest struct {
 	ctx context.Context
 	ApiService *PhoneDeliverySettingsApiService
 	environmentID string
-	body *map[string]interface{}
+	notificationsSettingsPhoneDeliverySettings *NotificationsSettingsPhoneDeliverySettings
 }
 
-func (r ApiCreatePhoneDeliverySettingsRequest) Body(body map[string]interface{}) ApiCreatePhoneDeliverySettingsRequest {
-	r.body = &body
+func (r ApiCreatePhoneDeliverySettingsRequest) NotificationsSettingsPhoneDeliverySettings(notificationsSettingsPhoneDeliverySettings NotificationsSettingsPhoneDeliverySettings) ApiCreatePhoneDeliverySettingsRequest {
+	r.notificationsSettingsPhoneDeliverySettings = &notificationsSettingsPhoneDeliverySettings
 	return r
 }
 
@@ -103,7 +103,7 @@ func (a *PhoneDeliverySettingsApiService) internalCreatePhoneDeliverySettingsExe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.notificationsSettingsPhoneDeliverySettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -749,11 +749,11 @@ type ApiUpdatePhoneDeliverySettingsRequest struct {
 	ApiService *PhoneDeliverySettingsApiService
 	environmentID string
 	phoneDeliverySettingsID string
-	body *map[string]interface{}
+	notificationsSettingsPhoneDeliverySettings *NotificationsSettingsPhoneDeliverySettings
 }
 
-func (r ApiUpdatePhoneDeliverySettingsRequest) Body(body map[string]interface{}) ApiUpdatePhoneDeliverySettingsRequest {
-	r.body = &body
+func (r ApiUpdatePhoneDeliverySettingsRequest) NotificationsSettingsPhoneDeliverySettings(notificationsSettingsPhoneDeliverySettings NotificationsSettingsPhoneDeliverySettings) ApiUpdatePhoneDeliverySettingsRequest {
+	r.notificationsSettingsPhoneDeliverySettings = &notificationsSettingsPhoneDeliverySettings
 	return r
 }
 
@@ -828,7 +828,7 @@ func (a *PhoneDeliverySettingsApiService) internalUpdatePhoneDeliverySettingsExe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.notificationsSettingsPhoneDeliverySettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

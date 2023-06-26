@@ -46,6 +46,7 @@ type EntityArrayEmbedded struct {
 	NotificationsPolicies []NotificationsPolicy `json:"notificationsPolicies,omitempty"`
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
+	PhoneDeliverySettings []NotificationsSettingsPhoneDeliverySettings `json:"phoneDeliverySettings,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
 	Resources []Resource `json:"resources,omitempty"`
 	Revisions []AgreementLanguageRevision `json:"revisions,omitempty"`
@@ -943,6 +944,38 @@ func (o *EntityArrayEmbedded) SetPasswordPolicies(v []PasswordPolicy) {
 	o.PasswordPolicies = v
 }
 
+// GetPhoneDeliverySettings returns the PhoneDeliverySettings field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetPhoneDeliverySettings() []NotificationsSettingsPhoneDeliverySettings {
+	if o == nil || IsNil(o.PhoneDeliverySettings) {
+		var ret []NotificationsSettingsPhoneDeliverySettings
+		return ret
+	}
+	return o.PhoneDeliverySettings
+}
+
+// GetPhoneDeliverySettingsOk returns a tuple with the PhoneDeliverySettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetPhoneDeliverySettingsOk() ([]NotificationsSettingsPhoneDeliverySettings, bool) {
+	if o == nil || IsNil(o.PhoneDeliverySettings) {
+		return nil, false
+	}
+	return o.PhoneDeliverySettings, true
+}
+
+// HasPhoneDeliverySettings returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasPhoneDeliverySettings() bool {
+	if o != nil && !IsNil(o.PhoneDeliverySettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetPhoneDeliverySettings gets a reference to the given []NotificationsSettingsPhoneDeliverySettings and assigns it to the PhoneDeliverySettings field.
+func (o *EntityArrayEmbedded) SetPhoneDeliverySettings(v []NotificationsSettingsPhoneDeliverySettings) {
+	o.PhoneDeliverySettings = v
+}
+
 // GetPopulations returns the Populations field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetPopulations() []Population {
 	if o == nil || IsNil(o.Populations) {
@@ -1481,6 +1514,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PasswordPolicies) {
 		toSerialize["passwordPolicies"] = o.PasswordPolicies
+	}
+	if !IsNil(o.PhoneDeliverySettings) {
+		toSerialize["phoneDeliverySettings"] = o.PhoneDeliverySettings
 	}
 	if !IsNil(o.Populations) {
 		toSerialize["populations"] = o.Populations

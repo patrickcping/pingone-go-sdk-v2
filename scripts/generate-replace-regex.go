@@ -507,6 +507,43 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
 
+		// Management: NotificationsSettingsPhoneDeliverySettings model
+		{
+			fileSelectPattern: "model_notifications_settings_phone_delivery_settings.go",
+			pattern:           `(func \(dst \*NotificationsSettingsPhoneDeliverySettings\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *NotificationsSettingsPhoneDeliverySettings) UnmarshalJSON(data []byte) error {
+
+	var common NotificationsSettingsPhoneDeliverySettingsCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
+	}
+
+	dst.NotificationsSettingsPhoneDeliverySettingsCustom = nil
+	dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse = nil
+
+	switch common.GetProvider() {
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_TWILIO:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse); err != nil {
+			return err
+		}
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_SYNIVERSE:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse); err != nil {
+			return err
+		}
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_PROVIDER:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsCustom); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsPhoneDeliverySettings)")
+	}
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
 		/////////////////////////
 		// MFA: Push Notification Request
 		/////////////////////////

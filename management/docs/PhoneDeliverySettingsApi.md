@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreatePhoneDeliverySettings
 
-> NotificationsSettingsPhoneDeliverySettings CreatePhoneDeliverySettings(ctx, environmentID).Body(body).Execute()
+> NotificationsSettingsPhoneDeliverySettings CreatePhoneDeliverySettings(ctx, environmentID).NotificationsSettingsPhoneDeliverySettings(notificationsSettingsPhoneDeliverySettings).Execute()
 
 CREATE Phone Delivery Settings
 
@@ -32,11 +32,11 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    notificationsSettingsPhoneDeliverySettings := openapiclient.NotificationsSettingsPhoneDeliverySettings{NotificationsSettingsPhoneDeliverySettingsCustom: openapiclient.NewNotificationsSettingsPhoneDeliverySettingsCustom(openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsProvider("CUSTOM_TWILIO"), "Name_example", []openapiclient.NotificationsSettingsPhoneDeliverySettingsCustomRequest{*openapiclient.NewNotificationsSettingsPhoneDeliverySettingsCustomRequest(openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod("SMS"), "Url_example", openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod("GET"), openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat("FULL"))}, *openapiclient.NewNotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication(openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod("BASIC")))} // NotificationsSettingsPhoneDeliverySettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PhoneDeliverySettingsApi.CreatePhoneDeliverySettings(context.Background(), environmentID).Body(body).Execute()
+    resp, r, err := apiClient.PhoneDeliverySettingsApi.CreatePhoneDeliverySettings(context.Background(), environmentID).NotificationsSettingsPhoneDeliverySettings(notificationsSettingsPhoneDeliverySettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.CreatePhoneDeliverySettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,7 +62,7 @@ Other parameters are passed through a pointer to a apiCreatePhoneDeliverySetting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **map[string]interface{}** |  | 
+ **notificationsSettingsPhoneDeliverySettings** | [**NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md) |  | 
 
 ### Return type
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePhoneDeliverySettings
 
-> NotificationsSettingsPhoneDeliverySettings UpdatePhoneDeliverySettings(ctx, environmentID, phoneDeliverySettingsID).Body(body).Execute()
+> NotificationsSettingsPhoneDeliverySettings UpdatePhoneDeliverySettings(ctx, environmentID, phoneDeliverySettingsID).NotificationsSettingsPhoneDeliverySettings(notificationsSettingsPhoneDeliverySettings).Execute()
 
 UPDATE Phone Delivery Settings
 
@@ -311,11 +311,11 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     phoneDeliverySettingsID := "phoneDeliverySettingsID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    notificationsSettingsPhoneDeliverySettings := openapiclient.NotificationsSettingsPhoneDeliverySettings{NotificationsSettingsPhoneDeliverySettingsCustom: openapiclient.NewNotificationsSettingsPhoneDeliverySettingsCustom(openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsProvider("CUSTOM_TWILIO"), "Name_example", []openapiclient.NotificationsSettingsPhoneDeliverySettingsCustomRequest{*openapiclient.NewNotificationsSettingsPhoneDeliverySettingsCustomRequest(openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod("SMS"), "Url_example", openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsCustomRequestMethod("GET"), openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat("FULL"))}, *openapiclient.NewNotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication(openapiclient.EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod("BASIC")))} // NotificationsSettingsPhoneDeliverySettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PhoneDeliverySettingsApi.UpdatePhoneDeliverySettings(context.Background(), environmentID, phoneDeliverySettingsID).Body(body).Execute()
+    resp, r, err := apiClient.PhoneDeliverySettingsApi.UpdatePhoneDeliverySettings(context.Background(), environmentID, phoneDeliverySettingsID).NotificationsSettingsPhoneDeliverySettings(notificationsSettingsPhoneDeliverySettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PhoneDeliverySettingsApi.UpdatePhoneDeliverySettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -343,7 +343,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **notificationsSettingsPhoneDeliverySettings** | [**NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md) |  | 
 
 ### Return type
 

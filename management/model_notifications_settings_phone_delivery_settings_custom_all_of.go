@@ -20,17 +20,19 @@ var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettingsCustomAllOf{}
 // NotificationsSettingsPhoneDeliverySettingsCustomAllOf struct for NotificationsSettingsPhoneDeliverySettingsCustomAllOf
 type NotificationsSettingsPhoneDeliverySettingsCustomAllOf struct {
 	// The customer provider's name.
-	Name *string `json:"name,omitempty"`
-	Requests NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests `json:"requests"`
+	Name string `json:"name"`
+	Requests []NotificationsSettingsPhoneDeliverySettingsCustomRequest `json:"requests"`
 	Authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication `json:"authentication"`
+	Numbers []NotificationsSettingsPhoneDeliverySettingsCustomNumbers `json:"numbers,omitempty"`
 }
 
 // NewNotificationsSettingsPhoneDeliverySettingsCustomAllOf instantiates a new NotificationsSettingsPhoneDeliverySettingsCustomAllOf object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationsSettingsPhoneDeliverySettingsCustomAllOf(requests NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests, authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) *NotificationsSettingsPhoneDeliverySettingsCustomAllOf {
+func NewNotificationsSettingsPhoneDeliverySettingsCustomAllOf(name string, requests []NotificationsSettingsPhoneDeliverySettingsCustomRequest, authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) *NotificationsSettingsPhoneDeliverySettingsCustomAllOf {
 	this := NotificationsSettingsPhoneDeliverySettingsCustomAllOf{}
+	this.Name = name
 	this.Requests = requests
 	this.Authentication = authentication
 	return &this
@@ -44,42 +46,34 @@ func NewNotificationsSettingsPhoneDeliverySettingsCustomAllOfWithDefaults() *Not
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetRequests returns the Requests field value
-func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetRequests() NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests {
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetRequests() []NotificationsSettingsPhoneDeliverySettingsCustomRequest {
 	if o == nil {
-		var ret NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests
+		var ret []NotificationsSettingsPhoneDeliverySettingsCustomRequest
 		return ret
 	}
 
@@ -88,15 +82,15 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetRequests() No
 
 // GetRequestsOk returns a tuple with the Requests field value
 // and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetRequestsOk() (*NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests, bool) {
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetRequestsOk() ([]NotificationsSettingsPhoneDeliverySettingsCustomRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Requests, true
+	return o.Requests, true
 }
 
 // SetRequests sets field value
-func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) SetRequests(v NotificationsSettingsPhoneDeliverySettingsCustomAllOfRequests) {
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) SetRequests(v []NotificationsSettingsPhoneDeliverySettingsCustomRequest) {
 	o.Requests = v
 }
 
@@ -124,6 +118,38 @@ func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) SetAuthenticatio
 	o.Authentication = v
 }
 
+// GetNumbers returns the Numbers field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsCustomNumbers {
+	if o == nil || IsNil(o.Numbers) {
+		var ret []NotificationsSettingsPhoneDeliverySettingsCustomNumbers
+		return ret
+	}
+	return o.Numbers
+}
+
+// GetNumbersOk returns a tuple with the Numbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) GetNumbersOk() ([]NotificationsSettingsPhoneDeliverySettingsCustomNumbers, bool) {
+	if o == nil || IsNil(o.Numbers) {
+		return nil, false
+	}
+	return o.Numbers, true
+}
+
+// HasNumbers returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) HasNumbers() bool {
+	if o != nil && !IsNil(o.Numbers) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumbers gets a reference to the given []NotificationsSettingsPhoneDeliverySettingsCustomNumbers and assigns it to the Numbers field.
+func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOf) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsCustomNumbers) {
+	o.Numbers = v
+}
+
 func (o NotificationsSettingsPhoneDeliverySettingsCustomAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -134,11 +160,12 @@ func (o NotificationsSettingsPhoneDeliverySettingsCustomAllOf) MarshalJSON() ([]
 
 func (o NotificationsSettingsPhoneDeliverySettingsCustomAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	toSerialize["requests"] = o.Requests
 	toSerialize["authentication"] = o.Authentication
+	if !IsNil(o.Numbers) {
+		toSerialize["numbers"] = o.Numbers
+	}
 	return toSerialize, nil
 }
 

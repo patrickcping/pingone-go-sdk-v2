@@ -12,212 +12,89 @@ package management
 
 import (
 	"encoding/json"
-	"time"
+	"fmt"
 )
 
-// checks if the NotificationsSettingsPhoneDeliverySettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NotificationsSettingsPhoneDeliverySettings{}
-
-// NotificationsSettingsPhoneDeliverySettings struct for NotificationsSettingsPhoneDeliverySettings
+// NotificationsSettingsPhoneDeliverySettings - struct for NotificationsSettingsPhoneDeliverySettings
 type NotificationsSettingsPhoneDeliverySettings struct {
-	// A string that specifies the resource’s unique identifier.
-	Id *string `json:"id,omitempty"`
-	Environment *ObjectEnvironment `json:"environment,omitempty"`
-	Provider EnumNotificationsSettingsPhoneDeliverySettingsProvider `json:"provider"`
-	// The time the resource was created.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// The time the resource was last updated.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	NotificationsSettingsPhoneDeliverySettingsCustom *NotificationsSettingsPhoneDeliverySettingsCustom
+	NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse
 }
 
-// NewNotificationsSettingsPhoneDeliverySettings instantiates a new NotificationsSettingsPhoneDeliverySettings object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewNotificationsSettingsPhoneDeliverySettings(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider) *NotificationsSettingsPhoneDeliverySettings {
-	this := NotificationsSettingsPhoneDeliverySettings{}
-	this.Provider = provider
-	return &this
-}
-
-// NewNotificationsSettingsPhoneDeliverySettingsWithDefaults instantiates a new NotificationsSettingsPhoneDeliverySettings object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewNotificationsSettingsPhoneDeliverySettingsWithDefaults() *NotificationsSettingsPhoneDeliverySettings {
-	this := NotificationsSettingsPhoneDeliverySettings{}
-	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetId() string {
-	if o == nil || IsNil(o.Id) {
-		var ret string
-		return ret
+// NotificationsSettingsPhoneDeliverySettingsCustomAsNotificationsSettingsPhoneDeliverySettings is a convenience function that returns NotificationsSettingsPhoneDeliverySettingsCustom wrapped in NotificationsSettingsPhoneDeliverySettings
+func NotificationsSettingsPhoneDeliverySettingsCustomAsNotificationsSettingsPhoneDeliverySettings(v *NotificationsSettingsPhoneDeliverySettingsCustom) NotificationsSettingsPhoneDeliverySettings {
+	return NotificationsSettingsPhoneDeliverySettings{
+		NotificationsSettingsPhoneDeliverySettingsCustom: v,
 	}
-	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
+// NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAsNotificationsSettingsPhoneDeliverySettings is a convenience function that returns NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse wrapped in NotificationsSettingsPhoneDeliverySettings
+func NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAsNotificationsSettingsPhoneDeliverySettings(v *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) NotificationsSettingsPhoneDeliverySettings {
+	return NotificationsSettingsPhoneDeliverySettings{
+		NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse: v,
 	}
-	return o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
+
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *NotificationsSettingsPhoneDeliverySettings) UnmarshalJSON(data []byte) error {
+
+	var common NotificationsSettingsPhoneDeliverySettingsCommon
+
+	if err := json.Unmarshal(data, &common); err != nil {
+		return err
 	}
 
-	return false
-}
+	dst.NotificationsSettingsPhoneDeliverySettingsCustom = nil
+	dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse = nil
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *NotificationsSettingsPhoneDeliverySettings) SetId(v string) {
-	o.Id = &v
-}
-
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetEnvironment() ObjectEnvironment {
-	if o == nil || IsNil(o.Environment) {
-		var ret ObjectEnvironment
-		return ret
+	switch common.GetProvider() {
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_TWILIO:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse); err != nil {
+			return err
+		}
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_SYNIVERSE:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse); err != nil {
+			return err
+		}
+	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_PROVIDER:
+		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsCustom); err != nil {
+			return err
+		}
+	default:
+		return fmt.Errorf("Data failed to match schemas in oneOf(NotificationsSettingsPhoneDeliverySettings)")
 	}
-	return *o.Environment
+	return nil
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetEnvironmentOk() (*ObjectEnvironment, bool) {
-	if o == nil || IsNil(o.Environment) {
-		return nil, false
-	}
-	return o.Environment, true
-}
-
-// HasEnvironment returns a boolean if a field has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
-		return true
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src NotificationsSettingsPhoneDeliverySettings) MarshalJSON() ([]byte, error) {
+	if src.NotificationsSettingsPhoneDeliverySettingsCustom != nil {
+		return json.Marshal(&src.NotificationsSettingsPhoneDeliverySettingsCustom)
 	}
 
-	return false
-}
-
-// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
-func (o *NotificationsSettingsPhoneDeliverySettings) SetEnvironment(v ObjectEnvironment) {
-	o.Environment = &v
-}
-
-// GetProvider returns the Provider field value
-func (o *NotificationsSettingsPhoneDeliverySettings) GetProvider() EnumNotificationsSettingsPhoneDeliverySettingsProvider {
-	if o == nil {
-		var ret EnumNotificationsSettingsPhoneDeliverySettingsProvider
-		return ret
+	if src.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse != nil {
+		return json.Marshal(&src.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse)
 	}
 
-	return o.Provider
+	return nil, nil // no data in oneOf schemas
 }
 
-// GetProviderOk returns a tuple with the Provider field value
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetProviderOk() (*EnumNotificationsSettingsPhoneDeliverySettingsProvider, bool) {
-	if o == nil {
-		return nil, false
+// Get the actual instance
+func (obj *NotificationsSettingsPhoneDeliverySettings) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
 	}
-	return &o.Provider, true
-}
-
-// SetProvider sets field value
-func (o *NotificationsSettingsPhoneDeliverySettings) SetProvider(v EnumNotificationsSettingsPhoneDeliverySettingsProvider) {
-	o.Provider = v
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
-	}
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
+	if obj.NotificationsSettingsPhoneDeliverySettingsCustom != nil {
+		return obj.NotificationsSettingsPhoneDeliverySettingsCustom
 	}
 
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *NotificationsSettingsPhoneDeliverySettings) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *NotificationsSettingsPhoneDeliverySettings) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
+	if obj.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse != nil {
+		return obj.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse
 	}
 
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *NotificationsSettingsPhoneDeliverySettings) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
-func (o NotificationsSettingsPhoneDeliverySettings) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o NotificationsSettingsPhoneDeliverySettings) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	if !IsNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	toSerialize["provider"] = o.Provider
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
-	return toSerialize, nil
+	// all schemas are nil
+	return nil
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettings struct {

@@ -1,13 +1,11 @@
-# EnumFormQrCodeAlignment
+# EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability
 
 ## Enum
 
 
-* `LEFT` (value: `"LEFT"`)
+* `SMS` (value: `"SMS"`)
 
-* `RIGHT` (value: `"RIGHT"`)
-
-* `CENTER` (value: `"CENTER"`)
+* `VOICE` (value: `"VOICE"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -1,3 +1,11 @@
+# v0.23.0 (Unreleased)
+
+* **Bug** Fixed Phone Notification Settings `POST` and `PUT` request payload data model. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Bug** Corrected `Requests` from object to array in the `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Bug** Corrected `Name` as required property of `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Enhancement** Added `Numbers` array to the `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Enhancement** Added `PhoneDeliverySettings` array to the `EntityArray` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+
 # v0.22.0 (2023-05-30)
 
 * **Enhancement** Added `SloWindow` optional attribute to the Application SAML objects. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)

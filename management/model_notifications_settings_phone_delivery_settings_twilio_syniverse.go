@@ -32,20 +32,18 @@ type NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse struct {
 	Sid string `json:"sid"`
 	// The secret key of the Twilio or Syniverse account.
 	AuthToken string `json:"authToken"`
-	// A collection of Twilio or Syniverse numbers to use when sending a notification.
-	Numbers []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers `json:"numbers"`
+	Numbers []NotificationsSettingsPhoneDeliverySettingsCustomNumbers `json:"numbers,omitempty"`
 }
 
 // NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse instantiates a new NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, sid string, authToken string, numbers []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse {
+func NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, sid string, authToken string) *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse {
 	this := NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse{}
 	this.Provider = provider
 	this.Sid = sid
 	this.AuthToken = authToken
-	this.Numbers = numbers
 	return &this
 }
 
@@ -257,27 +255,35 @@ func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetAuthToken
 	o.AuthToken = v
 }
 
-// GetNumbers returns the Numbers field value
-func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers {
-	if o == nil {
-		var ret []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers
+// GetNumbers returns the Numbers field value if set, zero value otherwise.
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsCustomNumbers {
+	if o == nil || IsNil(o.Numbers) {
+		var ret []NotificationsSettingsPhoneDeliverySettingsCustomNumbers
 		return ret
 	}
-
 	return o.Numbers
 }
 
-// GetNumbersOk returns a tuple with the Numbers field value
+// GetNumbersOk returns a tuple with the Numbers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbersOk() ([]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, bool) {
-	if o == nil {
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbersOk() ([]NotificationsSettingsPhoneDeliverySettingsCustomNumbers, bool) {
+	if o == nil || IsNil(o.Numbers) {
 		return nil, false
 	}
 	return o.Numbers, true
 }
 
-// SetNumbers sets field value
-func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers) {
+// HasNumbers returns a boolean if a field has been set.
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) HasNumbers() bool {
+	if o != nil && !IsNil(o.Numbers) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumbers gets a reference to the given []NotificationsSettingsPhoneDeliverySettingsCustomNumbers and assigns it to the Numbers field.
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsCustomNumbers) {
 	o.Numbers = v
 }
 
@@ -300,7 +306,9 @@ func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) ToMap() (map[
 	// skip: updatedAt is readOnly
 	toSerialize["sid"] = o.Sid
 	toSerialize["authToken"] = o.AuthToken
-	toSerialize["numbers"] = o.Numbers
+	if !IsNil(o.Numbers) {
+		toSerialize["numbers"] = o.Numbers
+	}
 	return toSerialize, nil
 }
 
