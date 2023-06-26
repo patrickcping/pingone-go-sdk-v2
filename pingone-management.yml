@@ -285,6 +285,9 @@ components:
       type: string
       enum: [USER, ENVIRONMENT]
       description: Specifies whether the limit defined is per-user or per environment. Value must be either `USER` or `ENVIRONMENT`.
+    EnumNotificationsSettingsDeliveryMode:
+      type: string
+      enum: [ALL]
     EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod:
       type: string
       enum: [SMS, VOICE]
@@ -3567,6 +3570,10 @@ components:
           format: date-time
           readOnly: true
           description: The time the resource was last updated.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        deliveryMode:
+          $ref: '#/components/schemas/EnumNotificationsSettingsDeliveryMode'
         restrictions:
           type: object
           properties:
@@ -3611,6 +3618,18 @@ components:
             address:
               type: string
               description: A string that specifies the email's "reply to" address (relevant when `deliveryMethod` is `Email`). This value must be a trusted email address.  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note) for details.
+        whitelist:
+          type: array
+          items:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
     NotificationsSettingsEmailDeliverySettings:
       type: object
       properties:
@@ -13906,6 +13925,11 @@ paths:
         - Notifications Settings
       summary: UPDATE Notifications Settings
       operationId: updateNotificationsSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationsSettings'
       parameters:
         - name: environmentID
           in: path

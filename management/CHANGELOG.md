@@ -5,6 +5,7 @@
 * **Bug** Corrected `Name` as required property of `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
 * **Enhancement** Added `Numbers` array to the `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
 * **Enhancement** Added `PhoneDeliverySettings` array to the `EntityArray` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Enhancement** Added `Environment`, `DeliveryMode` and `Whitelist` attributes to the `NotificationsSettings` object. [#196](https://github.com/patrickcping/pingone-go-sdk-v2/pull/196)
 
 # v0.22.0 (2023-05-30)
 

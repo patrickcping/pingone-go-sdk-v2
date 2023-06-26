@@ -369,6 +369,12 @@ type ApiUpdateNotificationsSettingsRequest struct {
 	ctx context.Context
 	ApiService *NotificationsSettingsApiService
 	environmentID string
+	notificationsSettings *NotificationsSettings
+}
+
+func (r ApiUpdateNotificationsSettingsRequest) NotificationsSettings(notificationsSettings NotificationsSettings) ApiUpdateNotificationsSettingsRequest {
+	r.notificationsSettings = &notificationsSettings
+	return r
 }
 
 func (r ApiUpdateNotificationsSettingsRequest) Execute() (*NotificationsSettings, *http.Response, error) {
@@ -422,7 +428,7 @@ func (a *NotificationsSettingsApiService) internalUpdateNotificationsSettingsExe
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -438,6 +444,8 @@ func (a *NotificationsSettingsApiService) internalUpdateNotificationsSettingsExe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.notificationsSettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

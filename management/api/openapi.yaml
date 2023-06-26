@@ -14238,6 +14238,11 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationsSettings'
       responses:
         "400":
           content:
@@ -23490,6 +23495,10 @@ components:
       - USER
       - ENVIRONMENT
       type: string
+    EnumNotificationsSettingsDeliveryMode:
+      enum:
+      - ALL
+      type: string
     EnumNotificationsSettingsPhoneDeliverySettingsCustomDeliveryMethod:
       description: |
         The notification's delivery method. Possible values:
@@ -27451,9 +27460,12 @@ components:
       type: object
     NotificationsSettings:
       example:
+        environment:
+          id: id
         smsProvidersFallbackChain:
         - smsProvidersFallbackChain
         - smsProvidersFallbackChain
+        deliveryMode: null
         replyTo:
           address: address
           name: name
@@ -27464,6 +27476,11 @@ components:
           address: address
           name: name
         id: id
+        whitelist:
+        - user:
+            id: id
+        - user:
+            id: id
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         updatedAt:
@@ -27471,6 +27488,10 @@ components:
           format: date-time
           readOnly: true
           type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        deliveryMode:
+          $ref: '#/components/schemas/EnumNotificationsSettingsDeliveryMode'
         restrictions:
           $ref: '#/components/schemas/NotificationsSettings_restrictions'
         id:
@@ -27499,6 +27520,10 @@ components:
           $ref: '#/components/schemas/NotificationsSettings_from'
         replyTo:
           $ref: '#/components/schemas/NotificationsSettings_replyTo'
+        whitelist:
+          items:
+            $ref: '#/components/schemas/NotificationsSettings_whitelist_inner'
+          type: array
       type: object
     NotificationsSettingsEmailDeliverySettings:
       example:
@@ -29394,6 +29419,8 @@ components:
       - type
       type: object
     Application_accessControl_group_groups_inner:
+      example:
+        id: id
       properties:
         id:
           type: string
@@ -33021,6 +33048,14 @@ components:
             \ address.  See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-settings-from-replyTo-note)\
             \ for details."
           type: string
+      type: object
+    NotificationsSettings_whitelist_inner:
+      example:
+        user:
+          id: id
+      properties:
+        user:
+          $ref: '#/components/schemas/Application_accessControl_group_groups_inner'
       type: object
     NotificationsSettingsEmailDeliverySettings_from:
       example:
