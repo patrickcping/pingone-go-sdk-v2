@@ -3748,7 +3748,6 @@ components:
       required:
         - number
         - type
-        - capabilities
     NotificationsSettingsPhoneDeliverySettingsCustomRequest:
       type: object
       properties:

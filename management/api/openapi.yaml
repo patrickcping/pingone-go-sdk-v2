@@ -27606,7 +27606,6 @@ components:
             type: string
           type: array
       required:
-      - capabilities
       - number
       - type
       type: object
