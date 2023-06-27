@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## DeleteNotificationsSettings
 
-> DeleteNotificationsSettings(ctx, environmentID).Execute()
+> NotificationsSettings DeleteNotificationsSettings(ctx, environmentID).Execute()
 
 DELETE Notifications Settings
 
@@ -33,11 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NotificationsSettingsApi.DeleteNotificationsSettings(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.NotificationsSettingsApi.DeleteNotificationsSettings(context.Background(), environmentID).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsApi.DeleteNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `DeleteNotificationsSettings`: NotificationsSettings
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsSettingsApi.DeleteNotificationsSettings`: %v\n", resp)
 }
 ```
 
@@ -60,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**NotificationsSettings**](NotificationsSettings.md)
 
 ### Authorization
 
@@ -146,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## UpdateNotificationsSettings
 
-> NotificationsSettings UpdateNotificationsSettings(ctx, environmentID).Execute()
+> NotificationsSettings UpdateNotificationsSettings(ctx, environmentID).NotificationsSettings(notificationsSettings).Execute()
 
 UPDATE Notifications Settings
 
@@ -164,10 +166,11 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    notificationsSettings := *openapiclient.NewNotificationsSettings() // NotificationsSettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsSettingsApi.UpdateNotificationsSettings(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.NotificationsSettingsApi.UpdateNotificationsSettings(context.Background(), environmentID).NotificationsSettings(notificationsSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsSettingsApi.UpdateNotificationsSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -193,6 +196,7 @@ Other parameters are passed through a pointer to a apiUpdateNotificationsSetting
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **notificationsSettings** | [**NotificationsSettings**](NotificationsSettings.md) |  | 
 
 ### Return type
 
@@ -204,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

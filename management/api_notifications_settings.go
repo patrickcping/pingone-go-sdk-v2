@@ -29,7 +29,7 @@ type ApiDeleteNotificationsSettingsRequest struct {
 	environmentID string
 }
 
-func (r ApiDeleteNotificationsSettingsRequest) Execute() (*http.Response, error) {
+func (r ApiDeleteNotificationsSettingsRequest) Execute() (*NotificationsSettings, *http.Response, error) {
 	return r.ApiService.DeleteNotificationsSettingsExecute(r)
 }
 
@@ -49,26 +49,27 @@ func (a *NotificationsSettingsApiService) DeleteNotificationsSettings(ctx contex
 }
 
 // Execute executes the request
-func (a *NotificationsSettingsApiService) DeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*http.Response, error) {
-	_, response, error := processResponse(
+//  @return NotificationsSettings
+func (a *NotificationsSettingsApiService) DeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
+	obj, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
-			resp, err := r.ApiService.internalDeleteNotificationsSettingsExecute(r)
-			return nil, resp, err
+			return r.ApiService.internalDeleteNotificationsSettingsExecute(r)
 		},
 	)
-	return response, error
+	return obj.(*NotificationsSettings), response, error
 }
 			
-func (a *NotificationsSettingsApiService) internalDeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*http.Response, error) {
+func (a *NotificationsSettingsApiService) internalDeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *NotificationsSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsSettingsApiService.DeleteNotificationsSettings")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/environments/{environmentID}/notificationsSettings"
@@ -97,19 +98,19 @@ func (a *NotificationsSettingsApiService) internalDeleteNotificationsSettingsExe
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	_ = localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -122,71 +123,80 @@ func (a *NotificationsSettingsApiService) internalDeleteNotificationsSettingsExe
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiReadNotificationsSettingsRequest struct {
@@ -369,6 +379,12 @@ type ApiUpdateNotificationsSettingsRequest struct {
 	ctx context.Context
 	ApiService *NotificationsSettingsApiService
 	environmentID string
+	notificationsSettings *NotificationsSettings
+}
+
+func (r ApiUpdateNotificationsSettingsRequest) NotificationsSettings(notificationsSettings NotificationsSettings) ApiUpdateNotificationsSettingsRequest {
+	r.notificationsSettings = &notificationsSettings
+	return r
 }
 
 func (r ApiUpdateNotificationsSettingsRequest) Execute() (*NotificationsSettings, *http.Response, error) {
@@ -422,7 +438,7 @@ func (a *NotificationsSettingsApiService) internalUpdateNotificationsSettingsExe
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -438,6 +454,8 @@ func (a *NotificationsSettingsApiService) internalUpdateNotificationsSettingsExe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.notificationsSettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

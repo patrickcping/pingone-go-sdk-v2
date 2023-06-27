@@ -22,6 +22,8 @@ var _ MappedNullable = &NotificationsSettings{}
 type NotificationsSettings struct {
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	DeliveryMode *EnumNotificationsSettingsDeliveryMode `json:"deliveryMode,omitempty"`
 	Restrictions *NotificationsSettingsRestrictions `json:"restrictions,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -29,6 +31,7 @@ type NotificationsSettings struct {
 	SmsProvidersFallbackChain []string `json:"smsProvidersFallbackChain,omitempty"`
 	From *NotificationsSettingsFrom `json:"from,omitempty"`
 	ReplyTo *NotificationsSettingsReplyTo `json:"replyTo,omitempty"`
+	Whitelist []NotificationsSettingsWhitelistInner `json:"whitelist,omitempty"`
 }
 
 // NewNotificationsSettings instantiates a new NotificationsSettings object
@@ -78,6 +81,70 @@ func (o *NotificationsSettings) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *NotificationsSettings) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *NotificationsSettings) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettings) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *NotificationsSettings) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *NotificationsSettings) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetDeliveryMode returns the DeliveryMode field value if set, zero value otherwise.
+func (o *NotificationsSettings) GetDeliveryMode() EnumNotificationsSettingsDeliveryMode {
+	if o == nil || IsNil(o.DeliveryMode) {
+		var ret EnumNotificationsSettingsDeliveryMode
+		return ret
+	}
+	return *o.DeliveryMode
+}
+
+// GetDeliveryModeOk returns a tuple with the DeliveryMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettings) GetDeliveryModeOk() (*EnumNotificationsSettingsDeliveryMode, bool) {
+	if o == nil || IsNil(o.DeliveryMode) {
+		return nil, false
+	}
+	return o.DeliveryMode, true
+}
+
+// HasDeliveryMode returns a boolean if a field has been set.
+func (o *NotificationsSettings) HasDeliveryMode() bool {
+	if o != nil && !IsNil(o.DeliveryMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeliveryMode gets a reference to the given EnumNotificationsSettingsDeliveryMode and assigns it to the DeliveryMode field.
+func (o *NotificationsSettings) SetDeliveryMode(v EnumNotificationsSettingsDeliveryMode) {
+	o.DeliveryMode = &v
 }
 
 // GetRestrictions returns the Restrictions field value if set, zero value otherwise.
@@ -240,6 +307,38 @@ func (o *NotificationsSettings) SetReplyTo(v NotificationsSettingsReplyTo) {
 	o.ReplyTo = &v
 }
 
+// GetWhitelist returns the Whitelist field value if set, zero value otherwise.
+func (o *NotificationsSettings) GetWhitelist() []NotificationsSettingsWhitelistInner {
+	if o == nil || IsNil(o.Whitelist) {
+		var ret []NotificationsSettingsWhitelistInner
+		return ret
+	}
+	return o.Whitelist
+}
+
+// GetWhitelistOk returns a tuple with the Whitelist field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettings) GetWhitelistOk() ([]NotificationsSettingsWhitelistInner, bool) {
+	if o == nil || IsNil(o.Whitelist) {
+		return nil, false
+	}
+	return o.Whitelist, true
+}
+
+// HasWhitelist returns a boolean if a field has been set.
+func (o *NotificationsSettings) HasWhitelist() bool {
+	if o != nil && !IsNil(o.Whitelist) {
+		return true
+	}
+
+	return false
+}
+
+// SetWhitelist gets a reference to the given []NotificationsSettingsWhitelistInner and assigns it to the Whitelist field.
+func (o *NotificationsSettings) SetWhitelist(v []NotificationsSettingsWhitelistInner) {
+	o.Whitelist = v
+}
+
 func (o NotificationsSettings) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -251,6 +350,12 @@ func (o NotificationsSettings) MarshalJSON() ([]byte, error) {
 func (o NotificationsSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	// skip: updatedAt is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.DeliveryMode) {
+		toSerialize["deliveryMode"] = o.DeliveryMode
+	}
 	if !IsNil(o.Restrictions) {
 		toSerialize["restrictions"] = o.Restrictions
 	}
@@ -263,6 +368,9 @@ func (o NotificationsSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ReplyTo) {
 		toSerialize["replyTo"] = o.ReplyTo
+	}
+	if !IsNil(o.Whitelist) {
+		toSerialize["whitelist"] = o.Whitelist
 	}
 	return toSerialize, nil
 }
