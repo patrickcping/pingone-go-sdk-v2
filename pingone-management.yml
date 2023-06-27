@@ -13979,8 +13979,12 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
-        '204':
+        '200':
           description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettings'
   /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings:
     get:
       tags:

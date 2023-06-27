@@ -14166,7 +14166,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Uncaught error occurred.  Platform outage
-        "204":
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsSettings'
           description: Successful response
       summary: DELETE Notifications Settings
       tags:
