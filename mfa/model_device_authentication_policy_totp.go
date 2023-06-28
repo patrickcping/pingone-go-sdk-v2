@@ -21,6 +21,8 @@ var _ MappedNullable = &DeviceAuthenticationPolicyTotp{}
 type DeviceAuthenticationPolicyTotp struct {
 	// Enabled or disabled in the policy.
 	Enabled bool `json:"enabled"`
+	// You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
+	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
 	Otp DeviceAuthenticationPolicyTotpOtp `json:"otp"`
 }
 
@@ -67,6 +69,38 @@ func (o *DeviceAuthenticationPolicyTotp) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
+// GetPairingDisabled returns the PairingDisabled field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyTotp) GetPairingDisabled() bool {
+	if o == nil || IsNil(o.PairingDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PairingDisabled
+}
+
+// GetPairingDisabledOk returns a tuple with the PairingDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyTotp) GetPairingDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PairingDisabled) {
+		return nil, false
+	}
+	return o.PairingDisabled, true
+}
+
+// HasPairingDisabled returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyTotp) HasPairingDisabled() bool {
+	if o != nil && !IsNil(o.PairingDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPairingDisabled gets a reference to the given bool and assigns it to the PairingDisabled field.
+func (o *DeviceAuthenticationPolicyTotp) SetPairingDisabled(v bool) {
+	o.PairingDisabled = &v
+}
+
 // GetOtp returns the Otp field value
 func (o *DeviceAuthenticationPolicyTotp) GetOtp() DeviceAuthenticationPolicyTotpOtp {
 	if o == nil {
@@ -102,6 +136,9 @@ func (o DeviceAuthenticationPolicyTotp) MarshalJSON() ([]byte, error) {
 func (o DeviceAuthenticationPolicyTotp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.PairingDisabled) {
+		toSerialize["pairingDisabled"] = o.PairingDisabled
+	}
 	toSerialize["otp"] = o.Otp
 	return toSerialize, nil
 }

@@ -2787,11 +2787,19 @@ components:
     DeviceAuthenticationPolicyFIDODevice:
       deprecated: true
       example:
+        pairingDisabled: true
         enabled: true
         fidoPolicyId: fidoPolicyId
       properties:
         enabled:
           description: Enabled or disabled in the policy.
+          type: boolean
+        pairingDisabled:
+          description: You can set `pairingDisabled` to true to prevent users from
+            pairing new devices with the relevant method. You can use this option
+            if you want to phase out an existing authentication method but want to
+            allow users to continue using the method for authentication for existing
+            devices.
           type: boolean
         fidoPolicyId:
           description: "Specifies the FIDO policy UUID. This property can be null.\
@@ -2818,7 +2826,11 @@ components:
           description: Enabled or disabled in the policy.
           type: boolean
         pairingDisabled:
-          description: A boolean to specify whether pairing is disabled for the method.
+          description: You can set `pairingDisabled` to true to prevent users from
+            pairing new devices with the relevant method. You can use this option
+            if you want to phase out an existing authentication method but want to
+            allow users to continue using the method for authentication for existing
+            devices.
           type: boolean
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp'
@@ -2841,6 +2853,7 @@ components:
               timeUnit: null
           enabled: true
         totp:
+          pairingDisabled: true
           otp:
             failure:
               count: 6
@@ -2918,6 +2931,7 @@ components:
           pairingDisabled: true
           enabled: true
         platform:
+          pairingDisabled: true
           enabled: true
           fidoPolicyId: fidoPolicyId
         forSignOnPolicy: true
@@ -2939,6 +2953,7 @@ components:
           enabled: true
         id: id
         securityKey:
+          pairingDisabled: true
           enabled: true
           fidoPolicyId: fidoPolicyId
         email:
@@ -3140,6 +3155,7 @@ components:
                   timeUnit: null
               enabled: true
             totp:
+              pairingDisabled: true
               otp:
                 failure:
                   count: 6
@@ -3217,6 +3233,7 @@ components:
               pairingDisabled: true
               enabled: true
             platform:
+              pairingDisabled: true
               enabled: true
               fidoPolicyId: fidoPolicyId
             forSignOnPolicy: true
@@ -3238,6 +3255,7 @@ components:
               enabled: true
             id: id
             securityKey:
+              pairingDisabled: true
               enabled: true
               fidoPolicyId: fidoPolicyId
             email:
@@ -3268,6 +3286,7 @@ components:
                   timeUnit: null
               enabled: true
             totp:
+              pairingDisabled: true
               otp:
                 failure:
                   count: 6
@@ -3345,6 +3364,7 @@ components:
               pairingDisabled: true
               enabled: true
             platform:
+              pairingDisabled: true
               enabled: true
               fidoPolicyId: fidoPolicyId
             forSignOnPolicy: true
@@ -3366,6 +3386,7 @@ components:
               enabled: true
             id: id
             securityKey:
+              pairingDisabled: true
               enabled: true
               fidoPolicyId: fidoPolicyId
             email:
@@ -3960,7 +3981,11 @@ components:
             in the policy.
           type: boolean
         pairingDisabled:
-          description: A boolean to specify whether pairing is disabled for the method.
+          description: You can set `pairingDisabled` to true to prevent users from
+            pairing new devices with the relevant method. You can use this option
+            if you want to phase out an existing authentication method but want to
+            allow users to continue using the method for authentication for existing
+            devices.
           type: boolean
         fido2PolicyId:
           description: "Specifies the UUID that represents the FIDO2 policy in PingOne.\
@@ -4207,7 +4232,11 @@ components:
         autoEnrollment:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner_autoEnrollment'
         pairingDisabled:
-          description: A boolean to specify whether pairing is disabled for the method.
+          description: You can set `pairingDisabled` to true to prevent users from
+            pairing new devices with the relevant method. You can use this option
+            if you want to phase out an existing authentication method but want to
+            allow users to continue using the method for authentication for existing
+            devices.
           type: boolean
         integrityDetection:
           $ref: '#/components/schemas/EnumMFADevicePolicyMobileIntegrityDetection'
@@ -4312,6 +4341,7 @@ components:
     DeviceAuthenticationPolicy_totp:
       description: TOTP device authentication policy settings.
       example:
+        pairingDisabled: true
         otp:
           failure:
             count: 6
@@ -4322,6 +4352,13 @@ components:
       properties:
         enabled:
           description: Enabled or disabled in the policy.
+          type: boolean
+        pairingDisabled:
+          description: You can set `pairingDisabled` to true to prevent users from
+            pairing new devices with the relevant method. You can use this option
+            if you want to phase out an existing authentication method but want to
+            allow users to continue using the method for authentication for existing
+            devices.
           type: boolean
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_totp_otp'
@@ -4461,6 +4498,7 @@ components:
                 timeUnit: null
             enabled: true
           totp:
+            pairingDisabled: true
             otp:
               failure:
                 count: 6
@@ -4538,6 +4576,7 @@ components:
             pairingDisabled: true
             enabled: true
           platform:
+            pairingDisabled: true
             enabled: true
             fidoPolicyId: fidoPolicyId
           forSignOnPolicy: true
@@ -4559,6 +4598,7 @@ components:
             enabled: true
           id: id
           securityKey:
+            pairingDisabled: true
             enabled: true
             fidoPolicyId: fidoPolicyId
           email:
@@ -4589,6 +4629,7 @@ components:
                 timeUnit: null
             enabled: true
           totp:
+            pairingDisabled: true
             otp:
               failure:
                 count: 6
@@ -4666,6 +4707,7 @@ components:
             pairingDisabled: true
             enabled: true
           platform:
+            pairingDisabled: true
             enabled: true
             fidoPolicyId: fidoPolicyId
           forSignOnPolicy: true
@@ -4687,6 +4729,7 @@ components:
             enabled: true
           id: id
           securityKey:
+            pairingDisabled: true
             enabled: true
             fidoPolicyId: fidoPolicyId
           email:

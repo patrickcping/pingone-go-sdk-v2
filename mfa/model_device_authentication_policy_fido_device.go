@@ -21,6 +21,8 @@ var _ MappedNullable = &DeviceAuthenticationPolicyFIDODevice{}
 type DeviceAuthenticationPolicyFIDODevice struct {
 	// Enabled or disabled in the policy.
 	Enabled bool `json:"enabled"`
+	// You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
+	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
 	// Specifies the FIDO policy UUID. This property can be null. When null, the environment's default FIDO Policy is used.
 	FidoPolicyId *string `json:"fidoPolicyId,omitempty"`
 }
@@ -67,6 +69,38 @@ func (o *DeviceAuthenticationPolicyFIDODevice) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
+// GetPairingDisabled returns the PairingDisabled field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyFIDODevice) GetPairingDisabled() bool {
+	if o == nil || IsNil(o.PairingDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PairingDisabled
+}
+
+// GetPairingDisabledOk returns a tuple with the PairingDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyFIDODevice) GetPairingDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PairingDisabled) {
+		return nil, false
+	}
+	return o.PairingDisabled, true
+}
+
+// HasPairingDisabled returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyFIDODevice) HasPairingDisabled() bool {
+	if o != nil && !IsNil(o.PairingDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPairingDisabled gets a reference to the given bool and assigns it to the PairingDisabled field.
+func (o *DeviceAuthenticationPolicyFIDODevice) SetPairingDisabled(v bool) {
+	o.PairingDisabled = &v
+}
+
 // GetFidoPolicyId returns the FidoPolicyId field value if set, zero value otherwise.
 func (o *DeviceAuthenticationPolicyFIDODevice) GetFidoPolicyId() string {
 	if o == nil || IsNil(o.FidoPolicyId) {
@@ -110,6 +144,9 @@ func (o DeviceAuthenticationPolicyFIDODevice) MarshalJSON() ([]byte, error) {
 func (o DeviceAuthenticationPolicyFIDODevice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.PairingDisabled) {
+		toSerialize["pairingDisabled"] = o.PairingDisabled
+	}
 	if !IsNil(o.FidoPolicyId) {
 		toSerialize["fidoPolicyId"] = o.FidoPolicyId
 	}
