@@ -1,14 +1,14 @@
 # \ApplicationsApplicationMFAPushCredentialsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#CreateMFAPushCredential) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials | CREATE MFA Push Credential
-[**DeleteMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#DeleteMFAPushCredential) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID} | DELETE MFA Push Credential
-[**ReadAllMFAPushCredentials**](ApplicationsApplicationMFAPushCredentialsApi.md#ReadAllMFAPushCredentials) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials | READ All MFA Push Credentials
-[**ReadOneMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#ReadOneMFAPushCredential) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID} | READ One MFA Push Credential
-[**UpdateMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#UpdateMFAPushCredential) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID} | UPDATE MFA Push Credential
+[**CreateMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#CreateMFAPushCredential) | **Post** /environments/{environmentID}/applications/{applicationID}/pushCredentials | CREATE MFA Push Credential
+[**DeleteMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#DeleteMFAPushCredential) | **Delete** /environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID} | DELETE MFA Push Credential
+[**ReadAllMFAPushCredentials**](ApplicationsApplicationMFAPushCredentialsApi.md#ReadAllMFAPushCredentials) | **Get** /environments/{environmentID}/applications/{applicationID}/pushCredentials | READ All MFA Push Credentials
+[**ReadOneMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#ReadOneMFAPushCredential) | **Get** /environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID} | READ One MFA Push Credential
+[**UpdateMFAPushCredential**](ApplicationsApplicationMFAPushCredentialsApi.md#UpdateMFAPushCredential) | **Put** /environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID} | UPDATE MFA Push Credential
 
 
 

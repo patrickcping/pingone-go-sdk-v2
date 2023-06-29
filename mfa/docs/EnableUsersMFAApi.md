@@ -1,11 +1,11 @@
 # \EnableUsersMFAApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadUserMFAEnabled**](EnableUsersMFAApi.md#ReadUserMFAEnabled) | **Get** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
-[**UpdateUserMFAEnabled**](EnableUsersMFAApi.md#UpdateUserMFAEnabled) | **Put** /v1/environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
+[**ReadUserMFAEnabled**](EnableUsersMFAApi.md#ReadUserMFAEnabled) | **Get** /environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
+[**UpdateUserMFAEnabled**](EnableUsersMFAApi.md#UpdateUserMFAEnabled) | **Put** /environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
 
 
 

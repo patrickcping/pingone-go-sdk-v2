@@ -1,13 +1,13 @@
 # \FIDODeviceApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFidoDevice**](FIDODeviceApi.md#CreateFidoDevice) | **Post** /v1/environments/{environmentID}/fidoDevicesMetadata | CREATE FIDO Device
-[**DeleteFidoDevice**](FIDODeviceApi.md#DeleteFidoDevice) | **Delete** /v1/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID} | DELETE FIDO Device
-[**ReadFidoDevices**](FIDODeviceApi.md#ReadFidoDevices) | **Get** /v1/environments/{environmentID}/fidoDevicesMetadata | READ All FIDO Devices
-[**ReadOneFidoDevice**](FIDODeviceApi.md#ReadOneFidoDevice) | **Get** /v1/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID} | READ One FIDO Device
+[**CreateFidoDevice**](FIDODeviceApi.md#CreateFidoDevice) | **Post** /environments/{environmentID}/fidoDevicesMetadata | CREATE FIDO Device
+[**DeleteFidoDevice**](FIDODeviceApi.md#DeleteFidoDevice) | **Delete** /environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID} | DELETE FIDO Device
+[**ReadFidoDevices**](FIDODeviceApi.md#ReadFidoDevices) | **Get** /environments/{environmentID}/fidoDevicesMetadata | READ All FIDO Devices
+[**ReadOneFidoDevice**](FIDODeviceApi.md#ReadOneFidoDevice) | **Get** /environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID} | READ One FIDO Device
 
 
 

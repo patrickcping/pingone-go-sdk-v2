@@ -1,18 +1,18 @@
 # \UserMFAPairingKeysApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete**](UserMFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | DELETE MFA Pairing Key
-[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet**](UserMFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | READ One MFA Pairing Key
-[**V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost**](UserMFAPairingKeysApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost) | **Post** /v1/environments/{environmentID}/users/{userID}/pairingKeys | CREATE MFA Pairing Key
+[**EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete**](UserMFAPairingKeysApi.md#EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete) | **Delete** /environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | DELETE MFA Pairing Key
+[**EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet**](UserMFAPairingKeysApi.md#EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet) | **Get** /environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID} | READ One MFA Pairing Key
+[**EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost**](UserMFAPairingKeysApi.md#EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost) | **Post** /environments/{environmentID}/users/{userID}/pairingKeys | CREATE MFA Pairing Key
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete
+## EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete
 
-> V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx, environmentID, userID, pairingKeyID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(ctx, environmentID, userID, pairingKeyID).Execute()
 
 DELETE MFA Pairing Key
 
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), environmentID, userID, pairingKeyID).Execute()
+    r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete(context.Background(), environmentID, userID, pairingKeyID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet
+## EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet
 
-> V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(ctx, environmentID, userID, pairingKeyID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(ctx, environmentID, userID, pairingKeyID).Execute()
 
 READ One MFA Pairing Key
 
@@ -107,9 +107,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), environmentID, userID, pairingKeyID).Execute()
+    r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet(context.Background(), environmentID, userID, pairingKeyID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPairingKeyIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost
+## EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost
 
-> V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(ctx, environmentID, userID).Body(body).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(ctx, environmentID, userID).Body(body).Execute()
 
 CREATE MFA Pairing Key
 
@@ -179,9 +179,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(context.Background(), environmentID, userID).Body(body).Execute()
+    r, err := apiClient.UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost(context.Background(), environmentID, userID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.V1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserMFAPairingKeysApi.EnvironmentsEnvironmentIDUsersUserIDPairingKeysPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDPairingKeysPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
