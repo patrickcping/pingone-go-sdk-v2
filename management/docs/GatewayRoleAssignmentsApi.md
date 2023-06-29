@@ -1,14 +1,14 @@
 # \GatewayRoleAssignmentsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGatewayRoleAssignment**](GatewayRoleAssignmentsApi.md#CreateGatewayRoleAssignment) | **Post** /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments | CREATE Gateway Role Assignments
-[**DeleteGatewayRoleAssignment**](GatewayRoleAssignmentsApi.md#DeleteGatewayRoleAssignment) | **Delete** /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID} | DELETE Gateway Role Assignment
-[**ReadGatewayRoleAssignments**](GatewayRoleAssignmentsApi.md#ReadGatewayRoleAssignments) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments | READ Gateway Role Assignments
-[**ReadOneGatewayRoleAssignment**](GatewayRoleAssignmentsApi.md#ReadOneGatewayRoleAssignment) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID} | READ One Gateway Role Assignment
-[**UpdateGatewayRoleAssignment**](GatewayRoleAssignmentsApi.md#UpdateGatewayRoleAssignment) | **Put** /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID} | UPDATE Gateway Role Assignments
+[**CreateGatewayRoleAssignment**](GatewayRoleAssignmentsApi.md#CreateGatewayRoleAssignment) | **Post** /environments/{environmentID}/gateways/{gatewayID}/roleAssignments | CREATE Gateway Role Assignments
+[**DeleteGatewayRoleAssignment**](GatewayRoleAssignmentsApi.md#DeleteGatewayRoleAssignment) | **Delete** /environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID} | DELETE Gateway Role Assignment
+[**ReadGatewayRoleAssignments**](GatewayRoleAssignmentsApi.md#ReadGatewayRoleAssignments) | **Get** /environments/{environmentID}/gateways/{gatewayID}/roleAssignments | READ Gateway Role Assignments
+[**ReadOneGatewayRoleAssignment**](GatewayRoleAssignmentsApi.md#ReadOneGatewayRoleAssignment) | **Get** /environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID} | READ One Gateway Role Assignment
+[**UpdateGatewayRoleAssignment**](GatewayRoleAssignmentsApi.md#UpdateGatewayRoleAssignment) | **Put** /environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID} | UPDATE Gateway Role Assignments
 
 
 

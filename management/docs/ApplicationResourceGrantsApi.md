@@ -1,14 +1,14 @@
 # \ApplicationResourceGrantsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateApplicationGrant**](ApplicationResourceGrantsApi.md#CreateApplicationGrant) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/grants | CREATE Grant
-[**DeleteApplicationGrant**](ApplicationResourceGrantsApi.md#DeleteApplicationGrant) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/grants/{grantID} | DELETE Grant
-[**ReadAllApplicationGrants**](ApplicationResourceGrantsApi.md#ReadAllApplicationGrants) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/grants | READ All Grants for an Application
-[**ReadOneApplicationGrant**](ApplicationResourceGrantsApi.md#ReadOneApplicationGrant) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/grants/{grantID} | READ One Grant for an Application
-[**UpdateApplicationGrant**](ApplicationResourceGrantsApi.md#UpdateApplicationGrant) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/grants/{grantID} | UPDATE Grant
+[**CreateApplicationGrant**](ApplicationResourceGrantsApi.md#CreateApplicationGrant) | **Post** /environments/{environmentID}/applications/{applicationID}/grants | CREATE Grant
+[**DeleteApplicationGrant**](ApplicationResourceGrantsApi.md#DeleteApplicationGrant) | **Delete** /environments/{environmentID}/applications/{applicationID}/grants/{grantID} | DELETE Grant
+[**ReadAllApplicationGrants**](ApplicationResourceGrantsApi.md#ReadAllApplicationGrants) | **Get** /environments/{environmentID}/applications/{applicationID}/grants | READ All Grants for an Application
+[**ReadOneApplicationGrant**](ApplicationResourceGrantsApi.md#ReadOneApplicationGrant) | **Get** /environments/{environmentID}/applications/{applicationID}/grants/{grantID} | READ One Grant for an Application
+[**UpdateApplicationGrant**](ApplicationResourceGrantsApi.md#UpdateApplicationGrant) | **Put** /environments/{environmentID}/applications/{applicationID}/grants/{grantID} | UPDATE Grant
 
 
 

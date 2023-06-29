@@ -1,11 +1,11 @@
 # \BrandingSettingsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadBrandingSettings**](BrandingSettingsApi.md#ReadBrandingSettings) | **Get** /v1/environments/{environmentID}/brandingSettings | READ Branding Settings
-[**UpdateBrandingSettings**](BrandingSettingsApi.md#UpdateBrandingSettings) | **Put** /v1/environments/{environmentID}/brandingSettings | UPDATE Branding Settings
+[**ReadBrandingSettings**](BrandingSettingsApi.md#ReadBrandingSettings) | **Get** /environments/{environmentID}/brandingSettings | READ Branding Settings
+[**UpdateBrandingSettings**](BrandingSettingsApi.md#UpdateBrandingSettings) | **Put** /environments/{environmentID}/brandingSettings | UPDATE Branding Settings
 
 
 

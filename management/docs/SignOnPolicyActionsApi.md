@@ -1,14 +1,14 @@
 # \SignOnPolicyActionsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSignOnPolicyAction**](SignOnPolicyActionsApi.md#CreateSignOnPolicyAction) | **Post** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions | CREATE Sign-On Policy Action
-[**DeleteSignOnPolicyAction**](SignOnPolicyActionsApi.md#DeleteSignOnPolicyAction) | **Delete** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | DELETE Sign-On Policy Action
-[**ReadAllSignOnPolicyActions**](SignOnPolicyActionsApi.md#ReadAllSignOnPolicyActions) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions | READ All Sign-On Policy Actions
-[**ReadOneSignOnPolicyAction**](SignOnPolicyActionsApi.md#ReadOneSignOnPolicyAction) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | READ One Sign-On Policy Action
-[**UpdateSignOnPolicyAction**](SignOnPolicyActionsApi.md#UpdateSignOnPolicyAction) | **Put** /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | UPDATE Sign-On Policy Action
+[**CreateSignOnPolicyAction**](SignOnPolicyActionsApi.md#CreateSignOnPolicyAction) | **Post** /environments/{environmentID}/signOnPolicies/{policyID}/actions | CREATE Sign-On Policy Action
+[**DeleteSignOnPolicyAction**](SignOnPolicyActionsApi.md#DeleteSignOnPolicyAction) | **Delete** /environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | DELETE Sign-On Policy Action
+[**ReadAllSignOnPolicyActions**](SignOnPolicyActionsApi.md#ReadAllSignOnPolicyActions) | **Get** /environments/{environmentID}/signOnPolicies/{policyID}/actions | READ All Sign-On Policy Actions
+[**ReadOneSignOnPolicyAction**](SignOnPolicyActionsApi.md#ReadOneSignOnPolicyAction) | **Get** /environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | READ One Sign-On Policy Action
+[**UpdateSignOnPolicyAction**](SignOnPolicyActionsApi.md#UpdateSignOnPolicyAction) | **Put** /environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID} | UPDATE Sign-On Policy Action
 
 
 

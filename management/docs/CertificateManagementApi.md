@@ -1,26 +1,26 @@
 # \CertificateManagementApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCertificateFromFile**](CertificateManagementApi.md#CreateCertificateFromFile) | **Post** /v1/environments/{environmentID}/certificates | CREATE Certificate with PKCS7 or PEM File
-[**CreateKey**](CertificateManagementApi.md#CreateKey) | **Post** /v1/environments/{environmentID}/keys | CREATE Key
-[**DeleteCertificate**](CertificateManagementApi.md#DeleteCertificate) | **Delete** /v1/environments/{environmentID}/certificates/{certID} | DELETE Certificate
-[**DeleteKey**](CertificateManagementApi.md#DeleteKey) | **Delete** /v1/environments/{environmentID}/keys/{keyID} | DELETE Key
-[**ExportCSR**](CertificateManagementApi.md#ExportCSR) | **Get** /v1/environments/{environmentID}/keys/{keyID}/csr | Export a certificate signing request (CSR)
-[**GetCertificate**](CertificateManagementApi.md#GetCertificate) | **Get** /v1/environments/{environmentID}/certificates/{certID} | GET Certificate
-[**GetCertificateApplications**](CertificateManagementApi.md#GetCertificateApplications) | **Get** /v1/environments/{environmentID}/certificates/{certID}/applications | GET Certificate Applications
-[**GetCertificates**](CertificateManagementApi.md#GetCertificates) | **Get** /v1/environments/{environmentID}/certificates | GET Certificates
-[**GetKey**](CertificateManagementApi.md#GetKey) | **Get** /v1/environments/{environmentID}/keys/{keyID} | GET Key
-[**GetKeyApplications**](CertificateManagementApi.md#GetKeyApplications) | **Get** /v1/environments/{environmentID}/keys/{keyID}/applications | GET Key Applications
-[**GetKeys**](CertificateManagementApi.md#GetKeys) | **Get** /v1/environments/{environmentID}/keys | GET Keys
-[**ImportCSRResponse**](CertificateManagementApi.md#ImportCSRResponse) | **Post** /v1/environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
-[**UpdateKey**](CertificateManagementApi.md#UpdateKey) | **Put** /v1/environments/{environmentID}/keys/{keyID} | UPDATE Key
-[**V1EnvironmentsEnvironmentIDDecryptionsPost**](CertificateManagementApi.md#V1EnvironmentsEnvironmentIDDecryptionsPost) | **Post** /v1/environments/{environmentID}/decryptions | DECRYPT Data
-[**V1EnvironmentsEnvironmentIDEncryptionsPost**](CertificateManagementApi.md#V1EnvironmentsEnvironmentIDEncryptionsPost) | **Post** /v1/environments/{environmentID}/encryptions | ENCRYPT Data
-[**V1EnvironmentsEnvironmentIDSigningsPost**](CertificateManagementApi.md#V1EnvironmentsEnvironmentIDSigningsPost) | **Post** /v1/environments/{environmentID}/signings | SIGN Data
-[**V1EnvironmentsEnvironmentIDVerificationsPost**](CertificateManagementApi.md#V1EnvironmentsEnvironmentIDVerificationsPost) | **Post** /v1/environments/{environmentID}/verifications | VERIFY Signed Data
+[**CreateCertificateFromFile**](CertificateManagementApi.md#CreateCertificateFromFile) | **Post** /environments/{environmentID}/certificates | CREATE Certificate with PKCS7 or PEM File
+[**CreateKey**](CertificateManagementApi.md#CreateKey) | **Post** /environments/{environmentID}/keys | CREATE Key
+[**DeleteCertificate**](CertificateManagementApi.md#DeleteCertificate) | **Delete** /environments/{environmentID}/certificates/{certID} | DELETE Certificate
+[**DeleteKey**](CertificateManagementApi.md#DeleteKey) | **Delete** /environments/{environmentID}/keys/{keyID} | DELETE Key
+[**EnvironmentsEnvironmentIDDecryptionsPost**](CertificateManagementApi.md#EnvironmentsEnvironmentIDDecryptionsPost) | **Post** /environments/{environmentID}/decryptions | DECRYPT Data
+[**EnvironmentsEnvironmentIDEncryptionsPost**](CertificateManagementApi.md#EnvironmentsEnvironmentIDEncryptionsPost) | **Post** /environments/{environmentID}/encryptions | ENCRYPT Data
+[**EnvironmentsEnvironmentIDSigningsPost**](CertificateManagementApi.md#EnvironmentsEnvironmentIDSigningsPost) | **Post** /environments/{environmentID}/signings | SIGN Data
+[**EnvironmentsEnvironmentIDVerificationsPost**](CertificateManagementApi.md#EnvironmentsEnvironmentIDVerificationsPost) | **Post** /environments/{environmentID}/verifications | VERIFY Signed Data
+[**ExportCSR**](CertificateManagementApi.md#ExportCSR) | **Get** /environments/{environmentID}/keys/{keyID}/csr | Export a certificate signing request (CSR)
+[**GetCertificate**](CertificateManagementApi.md#GetCertificate) | **Get** /environments/{environmentID}/certificates/{certID} | GET Certificate
+[**GetCertificateApplications**](CertificateManagementApi.md#GetCertificateApplications) | **Get** /environments/{environmentID}/certificates/{certID}/applications | GET Certificate Applications
+[**GetCertificates**](CertificateManagementApi.md#GetCertificates) | **Get** /environments/{environmentID}/certificates | GET Certificates
+[**GetKey**](CertificateManagementApi.md#GetKey) | **Get** /environments/{environmentID}/keys/{keyID} | GET Key
+[**GetKeyApplications**](CertificateManagementApi.md#GetKeyApplications) | **Get** /environments/{environmentID}/keys/{keyID}/applications | GET Key Applications
+[**GetKeys**](CertificateManagementApi.md#GetKeys) | **Get** /environments/{environmentID}/keys | GET Keys
+[**ImportCSRResponse**](CertificateManagementApi.md#ImportCSRResponse) | **Post** /environments/{environmentID}/keys/{keyID}/csr | Import Certificate Authority (CA) Response to a CSR
+[**UpdateKey**](CertificateManagementApi.md#UpdateKey) | **Put** /environments/{environmentID}/keys/{keyID} | UPDATE Key
 
 
 
@@ -301,6 +301,278 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnvironmentsEnvironmentIDDecryptionsPost
+
+> EnvironmentsEnvironmentIDDecryptionsPost(ctx, environmentID).Body(body).Execute()
+
+DECRYPT Data
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.CertificateManagementApi.EnvironmentsEnvironmentIDDecryptionsPost(context.Background(), environmentID).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.EnvironmentsEnvironmentIDDecryptionsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDDecryptionsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnvironmentsEnvironmentIDEncryptionsPost
+
+> EnvironmentsEnvironmentIDEncryptionsPost(ctx, environmentID).Body(body).Execute()
+
+ENCRYPT Data
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.CertificateManagementApi.EnvironmentsEnvironmentIDEncryptionsPost(context.Background(), environmentID).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.EnvironmentsEnvironmentIDEncryptionsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDEncryptionsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnvironmentsEnvironmentIDSigningsPost
+
+> EnvironmentsEnvironmentIDSigningsPost(ctx, environmentID).Body(body).Execute()
+
+SIGN Data
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.CertificateManagementApi.EnvironmentsEnvironmentIDSigningsPost(context.Background(), environmentID).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.EnvironmentsEnvironmentIDSigningsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDSigningsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnvironmentsEnvironmentIDVerificationsPost
+
+> EnvironmentsEnvironmentIDVerificationsPost(ctx, environmentID).Body(body).Execute()
+
+VERIFY Signed Data
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.CertificateManagementApi.EnvironmentsEnvironmentIDVerificationsPost(context.Background(), environmentID).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.EnvironmentsEnvironmentIDVerificationsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDVerificationsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -934,278 +1206,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Certificate**](Certificate.md)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDDecryptionsPost
-
-> V1EnvironmentsEnvironmentIDDecryptionsPost(ctx, environmentID).Body(body).Execute()
-
-DECRYPT Data
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CertificateManagementApi.V1EnvironmentsEnvironmentIDDecryptionsPost(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.V1EnvironmentsEnvironmentIDDecryptionsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDDecryptionsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDEncryptionsPost
-
-> V1EnvironmentsEnvironmentIDEncryptionsPost(ctx, environmentID).Body(body).Execute()
-
-ENCRYPT Data
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CertificateManagementApi.V1EnvironmentsEnvironmentIDEncryptionsPost(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.V1EnvironmentsEnvironmentIDEncryptionsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDEncryptionsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDSigningsPost
-
-> V1EnvironmentsEnvironmentIDSigningsPost(ctx, environmentID).Body(body).Execute()
-
-SIGN Data
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CertificateManagementApi.V1EnvironmentsEnvironmentIDSigningsPost(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.V1EnvironmentsEnvironmentIDSigningsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDSigningsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDVerificationsPost
-
-> V1EnvironmentsEnvironmentIDVerificationsPost(ctx, environmentID).Body(body).Execute()
-
-VERIFY Signed Data
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CertificateManagementApi.V1EnvironmentsEnvironmentIDVerificationsPost(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateManagementApi.V1EnvironmentsEnvironmentIDVerificationsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDVerificationsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
 
 ### Authorization
 

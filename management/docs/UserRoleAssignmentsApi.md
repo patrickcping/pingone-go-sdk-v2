@@ -1,13 +1,13 @@
 # \UserRoleAssignmentsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateUserRoleAssignment**](UserRoleAssignmentsApi.md#CreateUserRoleAssignment) | **Post** /v1/environments/{environmentID}/users/{userID}/roleAssignments | CREATE User Role Assignment
-[**DeleteUserRoleAssignment**](UserRoleAssignmentsApi.md#DeleteUserRoleAssignment) | **Delete** /v1/environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID} | DELETE User&#39;s Role Assignment
-[**ReadOneUserRoleAssignment**](UserRoleAssignmentsApi.md#ReadOneUserRoleAssignment) | **Get** /v1/environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID} | READ One Role Assignment
-[**ReadUserRoleAssignments**](UserRoleAssignmentsApi.md#ReadUserRoleAssignments) | **Get** /v1/environments/{environmentID}/users/{userID}/roleAssignments | READ Role Assignments
+[**CreateUserRoleAssignment**](UserRoleAssignmentsApi.md#CreateUserRoleAssignment) | **Post** /environments/{environmentID}/users/{userID}/roleAssignments | CREATE User Role Assignment
+[**DeleteUserRoleAssignment**](UserRoleAssignmentsApi.md#DeleteUserRoleAssignment) | **Delete** /environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID} | DELETE User&#39;s Role Assignment
+[**ReadOneUserRoleAssignment**](UserRoleAssignmentsApi.md#ReadOneUserRoleAssignment) | **Get** /environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID} | READ One Role Assignment
+[**ReadUserRoleAssignments**](UserRoleAssignmentsApi.md#ReadUserRoleAssignments) | **Get** /environments/{environmentID}/users/{userID}/roleAssignments | READ Role Assignments
 
 
 

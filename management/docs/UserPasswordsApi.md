@@ -1,18 +1,18 @@
 # \UserPasswordsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet**](UserPasswordsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet) | **Get** /v1/environments/{environmentID}/users/{userID}/password | READ Password State
-[**V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost**](UserPasswordsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost) | **Post** /v1/environments/{environmentID}/users/{userID}/password | Password Locked Out
-[**V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut**](UserPasswordsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut) | **Put** /v1/environments/{environmentID}/users/{userID}/password | UPDATE Password (Set)
+[**EnvironmentsEnvironmentIDUsersUserIDPasswordGet**](UserPasswordsApi.md#EnvironmentsEnvironmentIDUsersUserIDPasswordGet) | **Get** /environments/{environmentID}/users/{userID}/password | READ Password State
+[**EnvironmentsEnvironmentIDUsersUserIDPasswordPost**](UserPasswordsApi.md#EnvironmentsEnvironmentIDUsersUserIDPasswordPost) | **Post** /environments/{environmentID}/users/{userID}/password | Password Locked Out
+[**EnvironmentsEnvironmentIDUsersUserIDPasswordPut**](UserPasswordsApi.md#EnvironmentsEnvironmentIDUsersUserIDPasswordPut) | **Put** /environments/{environmentID}/users/{userID}/password | UPDATE Password (Set)
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet
+## EnvironmentsEnvironmentIDUsersUserIDPasswordGet
 
-> V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet(ctx, environmentID, userID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDPasswordGet(ctx, environmentID, userID).Execute()
 
 READ Password State
 
@@ -34,9 +34,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UserPasswordsApi.EnvironmentsEnvironmentIDUsersUserIDPasswordGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.EnvironmentsEnvironmentIDUsersUserIDPasswordGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPasswordGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDPasswordGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost
+## EnvironmentsEnvironmentIDUsersUserIDPasswordPost
 
-> V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost(ctx, environmentID, userID).ContentType(contentType).Body(body).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDPasswordPost(ctx, environmentID, userID).ContentType(contentType).Body(body).Execute()
 
 Password Locked Out
 
@@ -105,9 +105,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
+    r, err := apiClient.UserPasswordsApi.EnvironmentsEnvironmentIDUsersUserIDPasswordPost(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.EnvironmentsEnvironmentIDUsersUserIDPasswordPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPasswordPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDPasswordPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -152,9 +152,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut
+## EnvironmentsEnvironmentIDUsersUserIDPasswordPut
 
-> V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut(ctx, environmentID, userID).ContentType(contentType).Body(body).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDPasswordPut(ctx, environmentID, userID).ContentType(contentType).Body(body).Execute()
 
 UPDATE Password (Set)
 
@@ -178,9 +178,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
+    r, err := apiClient.UserPasswordsApi.EnvironmentsEnvironmentIDUsersUserIDPasswordPut(context.Background(), environmentID, userID).ContentType(contentType).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.V1EnvironmentsEnvironmentIDUsersUserIDPasswordPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserPasswordsApi.EnvironmentsEnvironmentIDUsersUserIDPasswordPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPasswordPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDPasswordPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

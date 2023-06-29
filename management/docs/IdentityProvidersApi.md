@@ -1,14 +1,14 @@
 # \IdentityProvidersApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateIdentityProvider**](IdentityProvidersApi.md#CreateIdentityProvider) | **Post** /v1/environments/{environmentID}/identityProviders | CREATE Identity Provider
-[**DeleteIdentityProvider**](IdentityProvidersApi.md#DeleteIdentityProvider) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID} | DELETE Identity Provider
-[**ReadAllIdentityProviders**](IdentityProvidersApi.md#ReadAllIdentityProviders) | **Get** /v1/environments/{environmentID}/identityProviders | READ All Identity Providers
-[**ReadOneIdentityProvider**](IdentityProvidersApi.md#ReadOneIdentityProvider) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID} | READ One Identity Provider
-[**UpdateIdentityProvider**](IdentityProvidersApi.md#UpdateIdentityProvider) | **Put** /v1/environments/{environmentID}/identityProviders/{providerID} | UPDATE Identity Provider
+[**CreateIdentityProvider**](IdentityProvidersApi.md#CreateIdentityProvider) | **Post** /environments/{environmentID}/identityProviders | CREATE Identity Provider
+[**DeleteIdentityProvider**](IdentityProvidersApi.md#DeleteIdentityProvider) | **Delete** /environments/{environmentID}/identityProviders/{providerID} | DELETE Identity Provider
+[**ReadAllIdentityProviders**](IdentityProvidersApi.md#ReadAllIdentityProviders) | **Get** /environments/{environmentID}/identityProviders | READ All Identity Providers
+[**ReadOneIdentityProvider**](IdentityProvidersApi.md#ReadOneIdentityProvider) | **Get** /environments/{environmentID}/identityProviders/{providerID} | READ One Identity Provider
+[**UpdateIdentityProvider**](IdentityProvidersApi.md#UpdateIdentityProvider) | **Put** /environments/{environmentID}/identityProviders/{providerID} | UPDATE Identity Provider
 
 
 

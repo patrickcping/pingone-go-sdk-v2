@@ -1,11 +1,11 @@
 # \EnableUsersApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadUserEnabled**](EnableUsersApi.md#ReadUserEnabled) | **Get** /v1/environments/{environmentID}/users/{userID}/enabled | READ User Enabled
-[**UpdateUserEnabled**](EnableUsersApi.md#UpdateUserEnabled) | **Put** /v1/environments/{environmentID}/users/{userID}/enabled | UPDATE User Enabled
+[**ReadUserEnabled**](EnableUsersApi.md#ReadUserEnabled) | **Get** /environments/{environmentID}/users/{userID}/enabled | READ User Enabled
+[**UpdateUserEnabled**](EnableUsersApi.md#UpdateUserEnabled) | **Put** /environments/{environmentID}/users/{userID}/enabled | UPDATE User Enabled
 
 
 

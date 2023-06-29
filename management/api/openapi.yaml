@@ -3,21 +3,32 @@ info:
   description: The PingOne Platform API covering the base and SSO services (otherwise
     known as the Management APIs)
   title: PingOne Platform API - SSO and Base
-  version: 2022-08-02
+  version: 2023-06-29
 externalDocs:
   description: PingOne Platform API Reference - Management APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#management-apis
 servers:
 - description: PingOne Platform API Endpoint
-  url: "https://api.pingone.{suffix}"
+  url: "{protocol}://{baseDomain}.{suffix}/v1"
   variables:
     suffix:
-      default: eu
+      default: com
       enum:
       - eu
       - com
       - asia
       - ca
+    baseDomain:
+      default: api.pingone
+    protocol:
+      default: https
+- description: PingOne Platform API Endpoint
+  url: "{protocol}://{baseHostname}/v1"
+  variables:
+    baseHostname:
+      default: api.pingone.com
+    protocol:
+      default: https
 security:
 - bearer: []
 tags:
@@ -103,7 +114,7 @@ tags:
 - name: User Accounts
 - name: Sessions
 paths:
-  /v1/environments:
+  /environments:
     get:
       operationId: readAllEnvironments
       parameters:
@@ -235,7 +246,7 @@ paths:
       summary: CREATE Environment (Active License)
       tags:
       - Environments
-  /v1/environments/{environmentID}:
+  /environments/{environmentID}:
     delete:
       operationId: deleteEnvironment
       parameters:
@@ -408,7 +419,7 @@ paths:
       summary: UPDATE Environment
       tags:
       - Environments
-  /v1/environments/{environmentID}/activeIdentityCounts:
+  /environments/{environmentID}/activeIdentityCounts:
     get:
       parameters:
       - example: startDate ge "2019-05-01T19:00:00Z" and samplingPeriod eq "10"
@@ -487,7 +498,7 @@ paths:
       summary: READ Active Identity Counts (Deprecated)
       tags:
       - Active Identity Counts
-  /v1/environments/{environmentID}/metrics/activeIdentityCounts:
+  /environments/{environmentID}/metrics/activeIdentityCounts:
     get:
       parameters:
       - example: startDate ge "2020-05-01T19:00:00Z"
@@ -574,7 +585,7 @@ paths:
       summary: READ Active Identity Counts by Date Range
       tags:
       - Active Identity Counts
-  /v1/environments/{environmentID}/agreements:
+  /environments/{environmentID}/agreements:
     get:
       operationId: readAllAgreements
       parameters:
@@ -701,7 +712,7 @@ paths:
       summary: CREATE Agreement
       tags:
       - Agreements Resources
-  /v1/environments/{environmentID}/agreements/{agreementID}:
+  /environments/{environmentID}/agreements/{agreementID}:
     delete:
       operationId: deleteAgreement
       parameters:
@@ -895,7 +906,7 @@ paths:
       summary: UPDATE Agreement
       tags:
       - Agreements Resources
-  /v1/environments/{environmentID}/agreements/{agreementID}/languages:
+  /environments/{environmentID}/agreements/{agreementID}/languages:
     get:
       operationId: readAllAgreementLanguages
       parameters:
@@ -1036,7 +1047,7 @@ paths:
       summary: CREATE Language
       tags:
       - Agreement Languages Resources
-  /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}:
+  /environments/{environmentID}/agreements/{agreementID}/languages/{languageID}:
     delete:
       operationId: deleteAgreementLanguage
       parameters:
@@ -1251,7 +1262,7 @@ paths:
       summary: UPDATE Language
       tags:
       - Agreement Languages Resources
-  /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions:
+  /environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions:
     get:
       operationId: readAllAgreementLanguageRevisions
       parameters:
@@ -1406,7 +1417,7 @@ paths:
       summary: CREATE Revision
       tags:
       - Agreement Revisions Resources
-  /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID}:
+  /environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID}:
     delete:
       operationId: deleteAgreementLanguageRevision
       parameters:
@@ -1559,7 +1570,7 @@ paths:
       summary: READ One Revision
       tags:
       - Agreement Revisions Resources
-  /v1/environments/{environmentID}/alertChannels:
+  /environments/{environmentID}/alertChannels:
     get:
       operationId: readAllAlertChannels
       parameters:
@@ -1686,7 +1697,7 @@ paths:
       summary: CREATE Alert Channel
       tags:
       - Alerting
-  /v1/environments/{environmentID}/alertChannels/{alertChannelID}:
+  /environments/{environmentID}/alertChannels/{alertChannelID}:
     delete:
       operationId: deleteAlertChannel
       parameters:
@@ -1880,7 +1891,7 @@ paths:
       summary: UPDATE Alert Channel
       tags:
       - Alerting
-  /v1/environments/{environmentID}/applications:
+  /environments/{environmentID}/applications:
     get:
       operationId: readAllApplications
       parameters:
@@ -2007,7 +2018,7 @@ paths:
       summary: CREATE Application
       tags:
       - Applications
-  /v1/environments/{environmentID}/applications/{applicationID}:
+  /environments/{environmentID}/applications/{applicationID}:
     delete:
       operationId: deleteApplication
       parameters:
@@ -2201,7 +2212,7 @@ paths:
       summary: UPDATE Application
       tags:
       - Applications
-  /v1/environments/{environmentID}/applications/{applicationID}/secret:
+  /environments/{environmentID}/applications/{applicationID}/secret:
     get:
       operationId: readApplicationSecret
       parameters:
@@ -2335,7 +2346,7 @@ paths:
       summary: UPDATE Application Secret
       tags:
       - Application Secret
-  /v1/environments/{environmentID}/applications/{applicationID}/grants:
+  /environments/{environmentID}/applications/{applicationID}/grants:
     get:
       operationId: readAllApplicationGrants
       parameters:
@@ -2476,7 +2487,7 @@ paths:
       summary: CREATE Grant
       tags:
       - Application Resource Grants
-  /v1/environments/{environmentID}/applications/{applicationID}/grants/{grantID}:
+  /environments/{environmentID}/applications/{applicationID}/grants/{grantID}:
     delete:
       operationId: deleteApplicationGrant
       parameters:
@@ -2691,7 +2702,7 @@ paths:
       summary: UPDATE Grant
       tags:
       - Application Resource Grants
-  /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments:
+  /environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments:
     get:
       operationId: readAllSignOnPolicyAssignments
       parameters:
@@ -2832,7 +2843,7 @@ paths:
       summary: CREATE SOP Assignment
       tags:
       - Application Sign-On Policy Assignments
-  /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}:
+  /environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID}:
     delete:
       operationId: deleteSignOnPolicyAssignment
       parameters:
@@ -3047,7 +3058,7 @@ paths:
       summary: UPDATE SOP Assignment
       tags:
       - Application Sign-On Policy Assignments
-  /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments:
+  /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments:
     get:
       operationId: readAllFlowPolicyAssignments
       parameters:
@@ -3188,7 +3199,7 @@ paths:
       summary: CREATE Flow Assignment
       tags:
       - Application Flow Policy Assignments
-  /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID}:
+  /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID}:
     delete:
       operationId: deleteFlowPolicyAssignment
       parameters:
@@ -3403,7 +3414,7 @@ paths:
       summary: UPDATE Flow Policy Assignment
       tags:
       - Application Flow Policy Assignments
-  /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments:
+  /environments/{environmentID}/applications/{applicationID}/roleAssignments:
     get:
       operationId: readApplicationRoleAssignments
       parameters:
@@ -3544,7 +3555,7 @@ paths:
       summary: CREATE Application Role Assignments
       tags:
       - Application Role Assignments
-  /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID}:
+  /environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID}:
     delete:
       operationId: deleteApplicationRoleAssignment
       parameters:
@@ -3683,7 +3694,7 @@ paths:
       summary: READ One Application Role Assignment
       tags:
       - Application Role Assignments
-  /v1/environments/{environmentID}/applications/{applicationID}/attributes:
+  /environments/{environmentID}/applications/{applicationID}/attributes:
     get:
       operationId: readAllApplicationAttributeMappings
       parameters:
@@ -3824,7 +3835,7 @@ paths:
       summary: CREATE Application Attribute Mapping
       tags:
       - Application Attribute Mapping
-  /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID}:
+  /environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID}:
     delete:
       operationId: deleteApplicationAttributeMapping
       parameters:
@@ -4039,7 +4050,7 @@ paths:
       summary: UPDATE Application Attribute Mapping
       tags:
       - Application Attribute Mapping
-  /v1/environments/{environmentID}/activities:
+  /environments/{environmentID}/activities:
     get:
       parameters:
       - example: recordedat gt "2018-08-20T00:00:00Z" AND recordedat lt "2018-08-22T23:59:00Z"
@@ -4171,7 +4182,7 @@ paths:
       summary: GET User Activities
       tags:
       - Audit Activities
-  /v1/environments/{environmentID}/activities/{activityID}:
+  /environments/{environmentID}/activities/{activityID}:
     get:
       parameters:
       - explode: false
@@ -4233,7 +4244,7 @@ paths:
       summary: GET One User Activity
       tags:
       - Audit Activities
-  /v1/environments/{environmentID}/applicationSignons:
+  /environments/{environmentID}/applicationSignons:
     get:
       parameters:
       - example: "1"
@@ -4320,7 +4331,7 @@ paths:
       summary: READ Authentications Per Application (Partial)
       tags:
       - Authentications per Application
-  /v1/environments/{environmentID}/billOfMaterials:
+  /environments/{environmentID}/billOfMaterials:
     get:
       operationId: readOneBillOfMaterials
       parameters:
@@ -4440,7 +4451,7 @@ paths:
       summary: UPDATE Bill of Materials
       tags:
       - Bill of Materials (BOM)
-  /v1/environments/{environmentID}/brandingSettings:
+  /environments/{environmentID}/brandingSettings:
     get:
       operationId: readBrandingSettings
       parameters:
@@ -4560,7 +4571,7 @@ paths:
       summary: UPDATE Branding Settings
       tags:
       - Branding Settings
-  /v1/environments/{environmentID}/capabilities:
+  /environments/{environmentID}/capabilities:
     get:
       parameters:
       - explode: false
@@ -4615,7 +4626,7 @@ paths:
       summary: READ Environment Capabilities
       tags:
       - Capabilities
-  /v1/environments/{environmentID}/flowPolicies:
+  /environments/{environmentID}/flowPolicies:
     get:
       operationId: readAllFlowPolicies
       parameters:
@@ -4681,7 +4692,7 @@ paths:
       summary: READ All Flow Policies
       tags:
       - Flow Policies
-  /v1/environments/{environmentID}/flowPolicies/{flowPolicyID}:
+  /environments/{environmentID}/flowPolicies/{flowPolicyID}:
     get:
       operationId: readOneFlowPolicy
       parameters:
@@ -4746,7 +4757,7 @@ paths:
       summary: READ ONE Flow Policy
       tags:
       - Flow Policies
-  /v1/environments/{environmentID}/forms:
+  /environments/{environmentID}/forms:
     get:
       operationId: readAllForms
       parameters:
@@ -4873,7 +4884,7 @@ paths:
       summary: CREATE Form
       tags:
       - Form Management
-  /v1/environments/{environmentID}/forms/{formID}:
+  /environments/{environmentID}/forms/{formID}:
     delete:
       operationId: deleteForm
       parameters:
@@ -5067,7 +5078,7 @@ paths:
       summary: UPDATE Form
       tags:
       - Form Management
-  /v1/environments/{environmentID}/keys:
+  /environments/{environmentID}/keys:
     get:
       operationId: getKeys
       parameters:
@@ -5205,7 +5216,7 @@ paths:
       summary: CREATE Key
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/keys/{keyID}:
+  /environments/{environmentID}/keys/{keyID}:
     delete:
       operationId: deleteKey
       parameters:
@@ -5414,7 +5425,7 @@ paths:
       summary: UPDATE Key
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/keys/{keyID}/applications:
+  /environments/{environmentID}/keys/{keyID}/applications:
     get:
       operationId: getKeyApplications
       parameters:
@@ -5479,7 +5490,7 @@ paths:
       summary: GET Key Applications
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/keys/{keyID}/csr:
+  /environments/{environmentID}/keys/{keyID}/csr:
     get:
       operationId: exportCSR
       parameters:
@@ -5626,7 +5637,7 @@ paths:
       summary: Import Certificate Authority (CA) Response to a CSR
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/keyRotationPolicies:
+  /environments/{environmentID}/keyRotationPolicies:
     get:
       operationId: getKeyRotationPolicies
       parameters:
@@ -5753,7 +5764,7 @@ paths:
       summary: CREATE Key Rotation Policy
       tags:
       - Key Rotation Policies
-  /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID}:
+  /environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID}:
     delete:
       operationId: deleteKeyRotationPolicy
       parameters:
@@ -5947,7 +5958,7 @@ paths:
       summary: UPDATE Key Rotation Policy
       tags:
       - Key Rotation Policies
-  /v1/environments/{environmentID}/certificates:
+  /environments/{environmentID}/certificates:
     get:
       operationId: getCertificates
       parameters:
@@ -6082,7 +6093,7 @@ paths:
       summary: CREATE Certificate with PKCS7 or PEM File
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/certificates/{certID}:
+  /environments/{environmentID}/certificates/{certID}:
     delete:
       operationId: deleteCertificate
       parameters:
@@ -6207,7 +6218,7 @@ paths:
       summary: GET Certificate
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/certificates/{certID}/applications:
+  /environments/{environmentID}/certificates/{certID}/applications:
     get:
       operationId: getCertificateApplications
       parameters:
@@ -6272,7 +6283,7 @@ paths:
       summary: GET Certificate Applications
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/encryptions:
+  /environments/{environmentID}/encryptions:
     post:
       parameters:
       - explode: false
@@ -6345,7 +6356,7 @@ paths:
       summary: ENCRYPT Data
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/decryptions:
+  /environments/{environmentID}/decryptions:
     post:
       parameters:
       - explode: false
@@ -6416,7 +6427,7 @@ paths:
       summary: DECRYPT Data
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/signings:
+  /environments/{environmentID}/signings:
     post:
       parameters:
       - explode: false
@@ -6488,7 +6499,7 @@ paths:
       summary: SIGN Data
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/verifications:
+  /environments/{environmentID}/verifications:
     post:
       parameters:
       - explode: false
@@ -6562,7 +6573,7 @@ paths:
       summary: VERIFY Signed Data
       tags:
       - Certificate Management
-  /v1/environments/{environmentID}/customDomains:
+  /environments/{environmentID}/customDomains:
     get:
       operationId: readAllDomains
       parameters:
@@ -6689,7 +6700,7 @@ paths:
       summary: CREATE Domain
       tags:
       - Custom Domains
-  /v1/environments/{environmentID}/customDomains/{customDomainID}:
+  /environments/{environmentID}/customDomains/{customDomainID}:
     delete:
       operationId: deleteDomain
       parameters:
@@ -6898,7 +6909,7 @@ paths:
       summary: Update Domain
       tags:
       - Custom Domains
-  /v1/environments/{environmentID}/emailDomains:
+  /environments/{environmentID}/emailDomains:
     get:
       operationId: readAllTrustedEmailDomains
       parameters:
@@ -7025,7 +7036,7 @@ paths:
       summary: CREATE Trusted Email Domain
       tags:
       - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}:
+  /environments/{environmentID}/emailDomains/{emailDomainID}:
     delete:
       operationId: deleteTrustedEmailDomain
       parameters:
@@ -7150,7 +7161,7 @@ paths:
       summary: READ One Trusted Email Domain
       tags:
       - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/ownership:
+  /environments/{environmentID}/emailDomains/{emailDomainID}/ownership:
     get:
       operationId: readTrustedEmailDomainOwnershipStatus
       parameters:
@@ -7215,7 +7226,7 @@ paths:
       summary: READ Trusted Email Domain Ownership Status
       tags:
       - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/dkim:
+  /environments/{environmentID}/emailDomains/{emailDomainID}/dkim:
     get:
       operationId: readTrustedEmailDomainDKIMStatus
       parameters:
@@ -7280,7 +7291,7 @@ paths:
       summary: READ Trusted Email Domain DKIM Status
       tags:
       - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/spf:
+  /environments/{environmentID}/emailDomains/{emailDomainID}/spf:
     get:
       operationId: readTrustedEmailDomainSPFStatus
       parameters:
@@ -7345,7 +7356,7 @@ paths:
       summary: READ Trusted Email Domain SPF Status
       tags:
       - Trusted Email Domains
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}:
+  /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId}:
     delete:
       operationId: deleteTrustedEmailAddress
       parameters:
@@ -7570,7 +7581,7 @@ paths:
       summary: Resend Verification Code To Email
       tags:
       - Trusted Email Addresses
-  /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails:
+  /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails:
     get:
       operationId: readAllTrustedEmailAddresses
       parameters:
@@ -7711,7 +7722,7 @@ paths:
       summary: CREATE Trusted Email Address
       tags:
       - Trusted Email Addresses
-  /v1/environments/{environmentID}/type:
+  /environments/{environmentID}/type:
     put:
       operationId: updateEnvironmentType
       parameters:
@@ -7774,7 +7785,7 @@ paths:
       summary: UPDATE Environment Type
       tags:
       - Environments
-  /v1/environments/{environmentID}/gateways:
+  /environments/{environmentID}/gateways:
     get:
       operationId: readAllGateways
       parameters:
@@ -7901,7 +7912,7 @@ paths:
       summary: CREATE Gateway
       tags:
       - Gateways
-  /v1/environments/{environmentID}/gateways/{gatewayID}:
+  /environments/{environmentID}/gateways/{gatewayID}:
     delete:
       operationId: deleteGateway
       parameters:
@@ -8095,7 +8106,7 @@ paths:
       summary: UPDATE Gateway
       tags:
       - Gateways
-  /v1/environments/{environmentID}/gateways/{gatewayID}/credentials:
+  /environments/{environmentID}/gateways/{gatewayID}/credentials:
     get:
       operationId: readAllGatewayCredentials
       parameters:
@@ -8231,7 +8242,7 @@ paths:
       summary: CREATE Gateway Credentials
       tags:
       - Gateway Credentials
-  /v1/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID}:
+  /environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID}:
     delete:
       operationId: deleteGatewayCredential
       parameters:
@@ -8370,7 +8381,7 @@ paths:
       summary: READ One Gateway Credential
       tags:
       - Gateway Credentials
-  /v1/environments/{environmentID}/gateways/{gatewayID}/instances:
+  /environments/{environmentID}/gateways/{gatewayID}/instances:
     get:
       operationId: readAllGatewayInstances
       parameters:
@@ -8435,7 +8446,7 @@ paths:
       summary: READ All Gateway Instances
       tags:
       - Gateway Instances
-  /v1/environments/{environmentID}/gateways/{gatewayID}/instances/{instanceID}:
+  /environments/{environmentID}/gateways/{gatewayID}/instances/{instanceID}:
     get:
       operationId: readOneGatewayInstance
       parameters:
@@ -8507,7 +8518,7 @@ paths:
       summary: READ One Gateway Instance
       tags:
       - Gateway Instances
-  /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments:
+  /environments/{environmentID}/gateways/{gatewayID}/roleAssignments:
     get:
       operationId: readGatewayRoleAssignments
       parameters:
@@ -8648,7 +8659,7 @@ paths:
       summary: CREATE Gateway Role Assignments
       tags:
       - Gateway Role Assignments
-  /v1/environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}:
+  /environments/{environmentID}/gateways/{gatewayID}/roleAssignments/{gatewayRoleAssignmentID}:
     delete:
       operationId: deleteGatewayRoleAssignment
       parameters:
@@ -8869,7 +8880,7 @@ paths:
       summary: UPDATE Gateway Role Assignments
       tags:
       - Gateway Role Assignments
-  /v1/environments/{environmentID}/groups:
+  /environments/{environmentID}/groups:
     get:
       operationId: readAllGroups
       parameters:
@@ -9012,7 +9023,7 @@ paths:
       summary: CREATE Group
       tags:
       - Groups
-  /v1/environments/{environmentID}/groups/{groupID}:
+  /environments/{environmentID}/groups/{groupID}:
     delete:
       operationId: deleteGroup
       parameters:
@@ -9214,7 +9225,7 @@ paths:
       summary: UPDATE Group
       tags:
       - Groups
-  /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups:
+  /environments/{environmentID}/groups/{groupID}/memberOfGroups:
     get:
       operationId: readGroupNesting
       parameters:
@@ -9355,7 +9366,7 @@ paths:
       summary: CREATE Group Nesting
       tags:
       - Groups
-  /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID}:
+  /environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID}:
     delete:
       operationId: deleteGroupNesting
       parameters:
@@ -9494,7 +9505,7 @@ paths:
       summary: READ One Group Nesting
       tags:
       - Groups
-  /v1/environments/{environmentID}/propagation/revisions:
+  /environments/{environmentID}/propagation/revisions:
     post:
       parameters:
       - explode: false
@@ -9556,7 +9567,7 @@ paths:
       summary: CREATE Revision
       tags:
       - Propagation Revisions
-  /v1/environments/{environmentID}/propagation/revisions/id:latest:
+  /environments/{environmentID}/propagation/revisions/id:latest:
     get:
       parameters:
       - example: application/json
@@ -9619,7 +9630,7 @@ paths:
       summary: READ Latest Revision
       tags:
       - Propagation Revisions
-  /v1/environments/{environmentID}/propagation/revisions/{previousRevisionID}:
+  /environments/{environmentID}/propagation/revisions/{previousRevisionID}:
     get:
       parameters:
       - example: application/json
@@ -9689,7 +9700,7 @@ paths:
       summary: READ Previous Revision
       tags:
       - Propagation Revisions
-  /v1/environments/{environmentID}/propagation/plans:
+  /environments/{environmentID}/propagation/plans:
     get:
       parameters:
       - example: application/json
@@ -9820,7 +9831,7 @@ paths:
       summary: CREATE Plan
       tags:
       - Propagation Plans
-  /v1/environments/{environmentID}/propagation/plans/{planID}:
+  /environments/{environmentID}/propagation/plans/{planID}:
     delete:
       parameters:
       - example: application/json
@@ -10025,7 +10036,7 @@ paths:
       summary: UPDATE Plan
       tags:
       - Propagation Plans
-  /v1/environments/{environmentID}/propagation/stores:
+  /environments/{environmentID}/propagation/stores:
     get:
       parameters:
       - example: application/json
@@ -10173,7 +10184,7 @@ paths:
       summary: CREATE Store (Aquera)
       tags:
       - Propagation Stores
-  /v1/environments/{environmentID}/propagation/stores/{storeID}:
+  /environments/{environmentID}/propagation/stores/{storeID}:
     delete:
       parameters:
       - example: application/json
@@ -10390,7 +10401,7 @@ paths:
       summary: UPDATE Store
       tags:
       - Propagation Stores
-  /v1/environments/{environmentID}/propagation/stores/connection/status:
+  /environments/{environmentID}/propagation/stores/connection/status:
     post:
       parameters:
       - example: application/vnd.pingidentity.connection.check+json
@@ -10478,7 +10489,7 @@ paths:
       summary: TEST Connection Configuration
       tags:
       - Propagation Stores
-  /v1/environments/{environmentID}/propagation/storeMetadata/scim:
+  /environments/{environmentID}/propagation/storeMetadata/scim:
     post:
       parameters:
       - explode: false
@@ -10558,7 +10569,7 @@ paths:
       summary: Identity Propagation Store Metadata (SCIM)
       tags:
       - Propagation Store Metadata
-  /v1/environments/{environmentID}/propagation/storeMetadata/Salesforce:
+  /environments/{environmentID}/propagation/storeMetadata/Salesforce:
     post:
       parameters:
       - explode: false
@@ -10633,7 +10644,7 @@ paths:
       summary: Identity Propagation Store Metadata (Salesforce)
       tags:
       - Propagation Store Metadata
-  /v1/environments/{environmentID}/propagation/storeMetadata/SalesforceContacts:
+  /environments/{environmentID}/propagation/storeMetadata/SalesforceContacts:
     post:
       parameters:
       - explode: false
@@ -10708,7 +10719,7 @@ paths:
       summary: Identity Propagation Store Metadata (SalesforceContacts)
       tags:
       - Propagation Store Metadata
-  /v1/environments/{environmentID}/propagation/storeMetadata/Aquera:
+  /environments/{environmentID}/propagation/storeMetadata/Aquera:
     post:
       parameters:
       - explode: false
@@ -10788,7 +10799,7 @@ paths:
       summary: Identity Propagation Store Metadata (Aquera)
       tags:
       - Propagation Store Metadata
-  /v1/environments/{environmentID}/propagation/rules:
+  /environments/{environmentID}/propagation/rules:
     get:
       parameters:
       - example: application/json
@@ -10936,7 +10947,7 @@ paths:
       summary: CREATE Rule
       tags:
       - Propagation Rules
-  /v1/environments/{environmentID}/propagation/rules/{ruleID}:
+  /environments/{environmentID}/propagation/rules/{ruleID}:
     delete:
       parameters:
       - example: application/json
@@ -11073,7 +11084,7 @@ paths:
       summary: READ One Rule
       tags:
       - Propagation Rules
-  /v1/environments/{environmentID}/propagation/plans/{planID}/rules:
+  /environments/{environmentID}/propagation/plans/{planID}/rules:
     get:
       parameters:
       - example: application/json
@@ -11151,7 +11162,7 @@ paths:
       summary: READ One Plan's Rules
       tags:
       - Propagation Rules
-  /v1/environments/{environmentID}/propagation/rules/{storeID}:
+  /environments/{environmentID}/propagation/rules/{storeID}:
     put:
       parameters:
       - explode: false
@@ -11231,7 +11242,7 @@ paths:
       summary: UPDATE Rule
       tags:
       - Propagation Rules
-  /v1/environments/{environmentID}/propagation/mappings/{mappingID}:
+  /environments/{environmentID}/propagation/mappings/{mappingID}:
     get:
       parameters:
       - example: application/json
@@ -11372,7 +11383,7 @@ paths:
       summary: UPDATE Mapping
       tags:
       - Propagation Mappings
-  /v1/environments/{environmentID}/propagation/rules/{ruleID}/mappings:
+  /environments/{environmentID}/propagation/rules/{ruleID}/mappings:
     get:
       parameters:
       - example: application/json
@@ -11526,7 +11537,7 @@ paths:
       summary: CREATE Rule Mapping
       tags:
       - Propagation Mappings
-  /v1/environments/{environmentID}/propagation/mapping/{mappingID}:
+  /environments/{environmentID}/propagation/mapping/{mappingID}:
     delete:
       parameters:
       - example: application/json
@@ -11594,7 +11605,7 @@ paths:
       summary: DELETE Mapping
       tags:
       - Propagation Mappings
-  /v1/environments/{environmentID}/identityProviders:
+  /environments/{environmentID}/identityProviders:
     get:
       operationId: readAllIdentityProviders
       parameters:
@@ -11721,7 +11732,7 @@ paths:
       summary: CREATE Identity Provider
       tags:
       - Identity Providers
-  /v1/environments/{environmentID}/identityProviders/{providerID}:
+  /environments/{environmentID}/identityProviders/{providerID}:
     delete:
       operationId: deleteIdentityProvider
       parameters:
@@ -11915,7 +11926,7 @@ paths:
       summary: UPDATE Identity Provider
       tags:
       - Identity Providers
-  /v1/environments/{environmentID}/identityProviders/{providerID}/attributes:
+  /environments/{environmentID}/identityProviders/{providerID}/attributes:
     get:
       operationId: readAllIdentityProviderAttributes
       parameters:
@@ -12056,7 +12067,7 @@ paths:
       summary: CREATE Identity Provider Attribute
       tags:
       - Identity Provider Attributes
-  /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID}:
+  /environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID}:
     delete:
       operationId: deleteIdentityProviderAttribute
       parameters:
@@ -12271,7 +12282,7 @@ paths:
       summary: UPDATE Identity Provider Attribute
       tags:
       - Identity Provider Attributes
-  /v1/environments/{environmentID}/images:
+  /environments/{environmentID}/images:
     post:
       operationId: createImage
       parameters:
@@ -12358,7 +12369,7 @@ paths:
       summary: CREATE Image
       tags:
       - Images
-  /v1/environments/{environmentID}/images/{imgID}:
+  /environments/{environmentID}/images/{imgID}:
     delete:
       operationId: deleteImage
       parameters:
@@ -12483,7 +12494,7 @@ paths:
       summary: READ Image
       tags:
       - Images
-  /v1/environments/{environmentID}/integrations:
+  /environments/{environmentID}/integrations:
     get:
       parameters:
       - explode: false
@@ -12538,7 +12549,7 @@ paths:
       summary: READ Integration Metadata
       tags:
       - Integration Catalog
-  /v1/environments/{environmentID}/integrations/{integrationID}:
+  /environments/{environmentID}/integrations/{integrationID}:
     get:
       parameters:
       - explode: false
@@ -12600,7 +12611,7 @@ paths:
       summary: READ One Integration Metadata
       tags:
       - Integration Catalog
-  /v1/environments/{environmentID}/integrations/{integrationID}/versions:
+  /environments/{environmentID}/integrations/{integrationID}/versions:
     get:
       parameters:
       - explode: false
@@ -12662,7 +12673,7 @@ paths:
       summary: READ Integration Version Metadata
       tags:
       - Integration Catalog
-  /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}:
+  /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}:
     get:
       parameters:
       - explode: false
@@ -12731,7 +12742,7 @@ paths:
       summary: READ One Integration Version Metadata
       tags:
       - Integration Catalog
-  /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset:
+  /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset:
     get:
       parameters:
       - explode: false
@@ -12800,7 +12811,7 @@ paths:
       summary: READ Integration Version Asset Download
       tags:
       - Integration Catalog
-  /v1/environments/{environmentID}/languages:
+  /environments/{environmentID}/languages:
     get:
       operationId: readLanguages
       parameters:
@@ -12927,7 +12938,7 @@ paths:
       summary: CREATE Language
       tags:
       - Languages
-  /v1/environments/{environmentID}/languages/{languageID}:
+  /environments/{environmentID}/languages/{languageID}:
     delete:
       operationId: deleteLanguage
       parameters:
@@ -13121,7 +13132,7 @@ paths:
       summary: UPDATE Language
       tags:
       - Languages
-  /v1/environments/{environmentID}/languages/{languageID}/status:
+  /environments/{environmentID}/languages/{languageID}/status:
     get:
       operationId: readLanguageLocalizationStatus
       parameters:
@@ -13262,7 +13273,7 @@ paths:
       summary: CREATE Language Localization Status
       tags:
       - Language Localization Status
-  /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID}:
+  /environments/{environmentID}/languages/{languageID}/status/{l10nStatusID}:
     delete:
       operationId: deleteLanguageLocalizationStatus
       parameters:
@@ -13477,7 +13488,7 @@ paths:
       summary: UPDATE Language Localization Status
       tags:
       - Language Localization Status
-  /v1/environments/{environmentID}/templates:
+  /environments/{environmentID}/templates:
     get:
       operationId: readAllTemplates
       parameters:
@@ -13551,7 +13562,7 @@ paths:
       summary: READ All Templates
       tags:
       - Notifications Templates
-  /v1/environments/{environmentID}/templates/{templateName}:
+  /environments/{environmentID}/templates/{templateName}:
     get:
       operationId: readOneTemplate
       parameters:
@@ -13616,7 +13627,7 @@ paths:
       summary: READ One Template
       tags:
       - Notifications Templates
-  /v1/environments/{environmentID}/templates/{templateName}/contents:
+  /environments/{environmentID}/templates/{templateName}/contents:
     delete:
       operationId: deleteBulkVariantContents
       parameters:
@@ -13902,7 +13913,7 @@ paths:
       summary: CREATE Content
       tags:
       - Notifications Templates
-  /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID}:
+  /environments/{environmentID}/templates/{templateName}/contents/{contentID}:
     delete:
       operationId: deleteContent
       parameters:
@@ -14117,7 +14128,7 @@ paths:
       summary: UPDATE Content
       tags:
       - Notifications Templates
-  /v1/environments/{environmentID}/notificationsSettings:
+  /environments/{environmentID}/notificationsSettings:
     delete:
       operationId: deleteNotificationsSettings
       parameters:
@@ -14294,7 +14305,7 @@ paths:
       summary: UPDATE Notifications Settings
       tags:
       - Notifications Settings
-  /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings:
+  /environments/{environmentID}/notificationsSettings/emailDeliverySettings:
     delete:
       operationId: deleteEmailDeliverySettings
       parameters:
@@ -14467,7 +14478,7 @@ paths:
       summary: UPDATE Email Notifications Settings
       tags:
       - Notifications Settings (SMTP)
-  /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings:
+  /environments/{environmentID}/notificationsSettings/phoneDeliverySettings:
     get:
       operationId: readAllPhoneDeliverySettings
       parameters:
@@ -14594,7 +14605,7 @@ paths:
       summary: CREATE Phone Delivery Settings
       tags:
       - Phone Delivery Settings
-  /v1/environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID}:
+  /environments/{environmentID}/notificationsSettings/phoneDeliverySettings/{phoneDeliverySettingsID}:
     delete:
       operationId: deletePhoneDeliverySettings
       parameters:
@@ -14788,7 +14799,7 @@ paths:
       summary: UPDATE Phone Delivery Settings
       tags:
       - Phone Delivery Settings
-  /v1/environments/{environmentID}/notificationsPolicies:
+  /environments/{environmentID}/notificationsPolicies:
     get:
       operationId: readAllNotificationsPolicies
       parameters:
@@ -14908,7 +14919,7 @@ paths:
       summary: CREATE Notifications Policy
       tags:
       - Notifications Policies
-  /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID}:
+  /environments/{environmentID}/notificationsPolicies/{notificationsPolicyID}:
     delete:
       operationId: deleteNotificationsPolicy
       parameters:
@@ -15102,7 +15113,7 @@ paths:
       summary: UPDATE Notifications Policy
       tags:
       - Notifications Policies
-  /v1/environments/{environmentID}/passwordPolicies:
+  /environments/{environmentID}/passwordPolicies:
     get:
       operationId: readAllPasswordPolicies
       parameters:
@@ -15230,7 +15241,7 @@ paths:
       summary: CREATE Password Policy
       tags:
       - Password Policies
-  /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}:
+  /environments/{environmentID}/passwordPolicies/{passwordPolicyID}:
     delete:
       operationId: deletePasswordPolicy
       parameters:
@@ -15424,7 +15435,7 @@ paths:
       summary: UPDATE Password Policy
       tags:
       - Password Policies
-  /v1/environments/{environmentID}/populations:
+  /environments/{environmentID}/populations:
     get:
       operationId: readAllPopulations
       parameters:
@@ -15572,7 +15583,7 @@ paths:
       summary: CREATE Population
       tags:
       - Populations
-  /v1/environments/{environmentID}/populations/{populationID}:
+  /environments/{environmentID}/populations/{populationID}:
     delete:
       operationId: deletePopulation
       parameters:
@@ -15766,7 +15777,7 @@ paths:
       summary: UPDATE Population
       tags:
       - Populations
-  /v1/environments/{environmentID}/recaptchaV2Config:
+  /environments/{environmentID}/recaptchaV2Config:
     delete:
       operationId: deleteRecaptchaConfiguration
       parameters:
@@ -15946,7 +15957,7 @@ paths:
       summary: UPDATE Recaptcha Configuration
       tags:
       - Recaptcha Configuration
-  /v1/environments/{environmentID}/resources:
+  /environments/{environmentID}/resources:
     get:
       operationId: readAllResources
       parameters:
@@ -16073,7 +16084,7 @@ paths:
       summary: CREATE Resource
       tags:
       - Resources
-  /v1/environments/{environmentID}/resources/{resourceID}:
+  /environments/{environmentID}/resources/{resourceID}:
     delete:
       operationId: deleteResource
       parameters:
@@ -16267,7 +16278,7 @@ paths:
       summary: UPDATE Resource
       tags:
       - Resources
-  /v1/environments/{environmentID}/resources/{resourceID}/attributes:
+  /environments/{environmentID}/resources/{resourceID}/attributes:
     get:
       operationId: readAllResourceAttributes
       parameters:
@@ -16408,7 +16419,7 @@ paths:
       summary: CREATE Resource Attribute
       tags:
       - Resource Attributes
-  /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID}:
+  /environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID}:
     delete:
       operationId: deleteResourceAttribute
       parameters:
@@ -16623,7 +16634,7 @@ paths:
       summary: UPDATE Resource Attribute
       tags:
       - Resource Attributes
-  /v1/environments/{environmentID}/resources/{resourceID}/secret:
+  /environments/{environmentID}/resources/{resourceID}/secret:
     get:
       operationId: readResourceSecret
       parameters:
@@ -16759,7 +16770,7 @@ paths:
       summary: CREATE Resource Client Secret
       tags:
       - Resource Client Secret
-  /v1/environments/{environmentID}/resources/{resourceID}/scopes:
+  /environments/{environmentID}/resources/{resourceID}/scopes:
     get:
       operationId: readAllResourceScopes
       parameters:
@@ -16900,7 +16911,7 @@ paths:
       summary: CREATE PingOne access control scope
       tags:
       - Resource Scopes
-  /v1/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID}:
+  /environments/{environmentID}/resources/{resourceID}/scopes/{scopeID}:
     delete:
       operationId: deleteResourceScope
       parameters:
@@ -17115,7 +17126,7 @@ paths:
       summary: UPDATE PingOne access control scope
       tags:
       - Resource Scopes
-  /v1/environments/{environmentID}/schemas:
+  /environments/{environmentID}/schemas:
     get:
       operationId: readAllSchemas
       parameters:
@@ -17173,7 +17184,7 @@ paths:
       summary: READ All Schemas
       tags:
       - Schemas
-  /v1/environments/{environmentID}/schemas/{schemaID}:
+  /environments/{environmentID}/schemas/{schemaID}:
     get:
       operationId: readOneSchema
       parameters:
@@ -17238,7 +17249,7 @@ paths:
       summary: READ One Schema
       tags:
       - Schemas
-  /v1/environments/{environmentID}/schemas/{schemaID}/attributes:
+  /environments/{environmentID}/schemas/{schemaID}/attributes:
     get:
       operationId: readAllSchemaAttributes
       parameters:
@@ -17379,7 +17390,7 @@ paths:
       summary: CREATE Attribute
       tags:
       - Schemas
-  /v1/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID}:
+  /environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID}:
     delete:
       operationId: deleteAttribute
       parameters:
@@ -17670,7 +17681,7 @@ paths:
       summary: UPDATE Attribute (Put)
       tags:
       - Schemas
-  /v1/environments/{environmentID}/signOnPolicies:
+  /environments/{environmentID}/signOnPolicies:
     get:
       operationId: readAllSignOnPolicies
       parameters:
@@ -17797,7 +17808,7 @@ paths:
       summary: CREATE Sign On Policy
       tags:
       - Sign-On Policies
-  /v1/environments/{environmentID}/signOnPolicies/{policyID}:
+  /environments/{environmentID}/signOnPolicies/{policyID}:
     delete:
       operationId: deleteSignOnPolicy
       parameters:
@@ -17991,7 +18002,7 @@ paths:
       summary: UPDATE Sign On Policy
       tags:
       - Sign-On Policies
-  /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions:
+  /environments/{environmentID}/signOnPolicies/{policyID}/actions:
     get:
       operationId: readAllSignOnPolicyActions
       parameters:
@@ -18132,7 +18143,7 @@ paths:
       summary: CREATE Sign-On Policy Action
       tags:
       - Sign-On Policy Actions
-  /v1/environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID}:
+  /environments/{environmentID}/signOnPolicies/{policyID}/actions/{actionID}:
     delete:
       operationId: deleteSignOnPolicyAction
       parameters:
@@ -18347,7 +18358,7 @@ paths:
       summary: UPDATE Sign-On Policy Action
       tags:
       - Sign-On Policy Actions
-  /v1/environments/{environmentID}/subscriptions:
+  /environments/{environmentID}/subscriptions:
     get:
       operationId: readAllSubscriptions
       parameters:
@@ -18474,7 +18485,7 @@ paths:
       summary: CREATE Subscription
       tags:
       - Subscriptions (webhooks)
-  /v1/environments/{environmentID}/subscriptions/{subscriptionID}:
+  /environments/{environmentID}/subscriptions/{subscriptionID}:
     delete:
       operationId: deleteSubscription
       parameters:
@@ -18668,7 +18679,7 @@ paths:
       summary: UPDATE Subscription
       tags:
       - Subscriptions (webhooks)
-  /v1/environments/{environmentID}/themes:
+  /environments/{environmentID}/themes:
     get:
       operationId: readBrandingThemes
       parameters:
@@ -18795,7 +18806,7 @@ paths:
       summary: CREATE Branding Theme
       tags:
       - Branding Themes
-  /v1/environments/{environmentID}/themes/{themeID}:
+  /environments/{environmentID}/themes/{themeID}:
     delete:
       operationId: deleteBrandingTheme
       parameters:
@@ -18989,7 +19000,7 @@ paths:
       summary: UPDATE Branding Theme
       tags:
       - Branding Themes
-  /v1/environments/{environmentID}/themes/{themeID}/default:
+  /environments/{environmentID}/themes/{themeID}/default:
     get:
       operationId: readBrandingThemeDefault
       parameters:
@@ -19123,7 +19134,7 @@ paths:
       summary: UPDATE Branding Theme Default
       tags:
       - Branding Themes
-  /v1/environments/{environmentID}/totalIdentities:
+  /environments/{environmentID}/totalIdentities:
     get:
       parameters:
       - example: startDate eq "2019-05-01T19:00:00Z" and endDate eq "2019-05-31T19:00:00Z"
@@ -19186,7 +19197,7 @@ paths:
       summary: READ Total Identity Counts
       tags:
       - Total Identities
-  /v1/environments/{environmentID}/userActivities:
+  /environments/{environmentID}/userActivities:
     get:
       parameters:
       - example: startDate eq "2018-02-17T09:10:12-04:00" and endDate eq "2018-02-23T09:10:12-04:00"
@@ -19249,7 +19260,7 @@ paths:
       summary: READ User Activities
       tags:
       - User Activities
-  /v1/environments/{environmentID}/users:
+  /environments/{environmentID}/users:
     get:
       operationId: readAllUsers
       parameters:
@@ -19400,7 +19411,7 @@ paths:
       summary: CREATE User
       tags:
       - Users
-  /v1/environments/{environmentID}/users/{userID}:
+  /environments/{environmentID}/users/{userID}:
     delete:
       operationId: deleteUser
       parameters:
@@ -19749,7 +19760,7 @@ paths:
       summary: UPDATE User (Put)
       tags:
       - Users
-  /v1/environments/{environmentID}/users/{userID}/identityProvider:
+  /environments/{environmentID}/users/{userID}/identityProvider:
     get:
       parameters:
       - explode: false
@@ -19880,7 +19891,7 @@ paths:
       summary: UPDATE User Identity Provider
       tags:
       - Users
-  /v1/environments/{environmentID}/users/{userID}/verifyStatus:
+  /environments/{environmentID}/users/{userID}/verifyStatus:
     get:
       parameters:
       - explode: false
@@ -20010,7 +20021,7 @@ paths:
       summary: UPDATE user verification status
       tags:
       - Users
-  /v1/environments/{environmentID}/users/{userID}/memberOfGroups:
+  /environments/{environmentID}/users/{userID}/memberOfGroups:
     get:
       operationId: readAllGroupMembershipsForUser
       parameters:
@@ -20175,7 +20186,7 @@ paths:
       summary: ADD User to Group
       tags:
       - Group Membership
-  /v1/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}:
+  /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID}:
     delete:
       operationId: removeUserFromGroup
       parameters:
@@ -20322,7 +20333,7 @@ paths:
       summary: READ One Group Membership for User
       tags:
       - Group Membership
-  /v1/environments/{environmentID}/users/{userID}/enabled:
+  /environments/{environmentID}/users/{userID}/enabled:
     get:
       operationId: readUserEnabled
       parameters:
@@ -20456,7 +20467,7 @@ paths:
       summary: UPDATE User Enabled
       tags:
       - Enable Users
-  /v1/environments/{environmentID}/users/{userID}/linkedAccounts:
+  /environments/{environmentID}/users/{userID}/linkedAccounts:
     get:
       parameters:
       - explode: false
@@ -20518,7 +20529,7 @@ paths:
       summary: READ Linked Accounts
       tags:
       - Linked Accounts
-  /v1/environments/{environmentID}/users/{userID}/linkedAccounts/{linkedAccountID}:
+  /environments/{environmentID}/users/{userID}/linkedAccounts/{linkedAccountID}:
     delete:
       parameters:
       - explode: false
@@ -20653,7 +20664,7 @@ paths:
       summary: READ One Linked Account
       tags:
       - Linked Accounts
-  /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID}:
+  /environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID}:
     delete:
       parameters:
       - explode: false
@@ -20788,7 +20799,7 @@ paths:
       summary: READ One MFA Pairing Key
       tags:
       - MFA Pairing Keys
-  /v1/environments/{environmentID}/users/{userID}/pairingKeys:
+  /environments/{environmentID}/users/{userID}/pairingKeys:
     post:
       parameters:
       - explode: false
@@ -20865,7 +20876,7 @@ paths:
       summary: CREATE MFA Pairing Key
       tags:
       - MFA Pairing Keys
-  /v1/environments/{environmentID}/users/{userID}/population:
+  /environments/{environmentID}/users/{userID}/population:
     get:
       operationId: readUserPopulation
       parameters:
@@ -20999,7 +21010,7 @@ paths:
       summary: UPDATE User Population
       tags:
       - User Populations
-  /v1/environments/{environmentID}/users/{userID}/password:
+  /environments/{environmentID}/users/{userID}/password:
     get:
       parameters:
       - explode: false
@@ -21222,7 +21233,7 @@ paths:
       summary: UPDATE Password (Set)
       tags:
       - User Passwords
-  /v1/environments/{environmentID}/users/{userID}/roleAssignments:
+  /environments/{environmentID}/users/{userID}/roleAssignments:
     get:
       operationId: readUserRoleAssignments
       parameters:
@@ -21363,7 +21374,7 @@ paths:
       summary: CREATE User Role Assignment
       tags:
       - User Role Assignments
-  /v1/environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID}:
+  /environments/{environmentID}/users/{userID}/roleAssignments/{roleAssignmentID}:
     delete:
       operationId: deleteUserRoleAssignment
       parameters:
@@ -21502,7 +21513,7 @@ paths:
       summary: READ One Role Assignment
       tags:
       - User Role Assignments
-  /v1/environments/{environmentID}/users/{userID}/verifyTransactions:
+  /environments/{environmentID}/users/{userID}/verifyTransactions:
     get:
       parameters:
       - explode: false
@@ -21632,7 +21643,7 @@ paths:
       summary: CREATE ID Verification Transaction Record for a User
       tags:
       - User ID Verification
-  /v1/environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID}:
+  /environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID}:
     delete:
       parameters:
       - explode: false
@@ -21843,7 +21854,7 @@ paths:
       summary: UPDATE ID Verification Transaction Record for a User
       tags:
       - User ID Verification
-  /v1/environments/{environmentID}/users/{userID}/agreementConsents:
+  /environments/{environmentID}/users/{userID}/agreementConsents:
     get:
       parameters:
       - explode: false
@@ -21905,7 +21916,7 @@ paths:
       summary: READ All User Agreement Consents
       tags:
       - User Agreement Consents
-  /v1/environments/{environmentID}/users/{userID}/agreementConsents/{agreementID}:
+  /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID}:
     get:
       parameters:
       - explode: false
@@ -22057,7 +22068,7 @@ paths:
       summary: Revoke Agreement
       tags:
       - User Agreement Consents
-  /v1/environments/{environmentID}/users/{userID}/sessions:
+  /environments/{environmentID}/users/{userID}/sessions:
     get:
       parameters:
       - explode: false
@@ -22119,7 +22130,7 @@ paths:
       summary: READ All Sessions
       tags:
       - Sessions
-  /v1/environments/{environmentID}/users/{userID}/sessions/{sessionID}:
+  /environments/{environmentID}/users/{userID}/sessions/{sessionID}:
     delete:
       parameters:
       - explode: false
@@ -22254,7 +22265,7 @@ paths:
       summary: READ One Session
       tags:
       - Sessions
-  /v1/organizations:
+  /organizations:
     get:
       operationId: readAllOrganizations
       parameters:
@@ -22313,7 +22324,7 @@ paths:
       summary: READ All Organizations
       tags:
       - Organizations
-  /v1/organizations/{organizationID}:
+  /organizations/{organizationID}:
     get:
       operationId: readOneOrganization
       parameters:
@@ -22371,7 +22382,7 @@ paths:
       summary: READ One Organization
       tags:
       - Organizations
-  /v1/organizations/{organizationID}/capabilities:
+  /organizations/{organizationID}/capabilities:
     get:
       parameters:
       - explode: false
@@ -22426,7 +22437,7 @@ paths:
       summary: READ Organization Capabilities
       tags:
       - Capabilities
-  /v1/organizations/{organizationID}/licenses:
+  /organizations/{organizationID}/licenses:
     get:
       operationId: readAllLicenses
       parameters:
@@ -22502,7 +22513,7 @@ paths:
       summary: READ All Licenses
       tags:
       - Licenses
-  /v1/organizations/{organizationID}/licenses/{licenseID}:
+  /organizations/{organizationID}/licenses/{licenseID}:
     get:
       operationId: readOneLicense
       parameters:
@@ -22567,7 +22578,7 @@ paths:
       summary: READ One License
       tags:
       - Licenses
-  /v1/organizations/{organizationID}/licenses/{licenseID}/name:
+  /organizations/{organizationID}/licenses/{licenseID}/name:
     get:
       operationId: readOneLicenseName
       parameters:
@@ -22701,7 +22712,7 @@ paths:
       summary: Update One License Name
       tags:
       - Licenses
-  /v1/organizations/{organizationID}/licenses/{licenseID}/metrics/activeIdentityCounts:
+  /organizations/{organizationID}/licenses/{licenseID}/metrics/activeIdentityCounts:
     get:
       operationId: readActiveIdentityCount
       parameters:
@@ -22788,7 +22799,7 @@ paths:
       summary: READ Active Identity Counts by License
       tags:
       - Active Identity Counts
-  /v1/roles:
+  /roles:
     get:
       operationId: readAllRoles
       responses:
@@ -22838,7 +22849,7 @@ paths:
       summary: READ All Roles
       tags:
       - Roles
-  /v1/roles/{roleID}:
+  /roles/{roleID}:
     get:
       operationId: readOneRole
       parameters:

@@ -1,14 +1,14 @@
 # \TrustedEmailAddressesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTrustedEmailAddress**](TrustedEmailAddressesApi.md#CreateTrustedEmailAddress) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | CREATE Trusted Email Address
-[**DeleteTrustedEmailAddress**](TrustedEmailAddressesApi.md#DeleteTrustedEmailAddress) | **Delete** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | DELETE Trusted Email Address
-[**ReadAllTrustedEmailAddresses**](TrustedEmailAddressesApi.md#ReadAllTrustedEmailAddresses) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | READ All Trusted Email Addresses
-[**ReadOneTrustedEmailAddress**](TrustedEmailAddressesApi.md#ReadOneTrustedEmailAddress) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | READ One Trusted Email Address
-[**ResendVerificationCodeToEmail**](TrustedEmailAddressesApi.md#ResendVerificationCodeToEmail) | **Post** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | Resend Verification Code To Email
+[**CreateTrustedEmailAddress**](TrustedEmailAddressesApi.md#CreateTrustedEmailAddress) | **Post** /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | CREATE Trusted Email Address
+[**DeleteTrustedEmailAddress**](TrustedEmailAddressesApi.md#DeleteTrustedEmailAddress) | **Delete** /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | DELETE Trusted Email Address
+[**ReadAllTrustedEmailAddresses**](TrustedEmailAddressesApi.md#ReadAllTrustedEmailAddresses) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails | READ All Trusted Email Addresses
+[**ReadOneTrustedEmailAddress**](TrustedEmailAddressesApi.md#ReadOneTrustedEmailAddress) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | READ One Trusted Email Address
+[**ResendVerificationCodeToEmail**](TrustedEmailAddressesApi.md#ResendVerificationCodeToEmail) | **Post** /environments/{environmentID}/emailDomains/{emailDomainID}/trustedEmails/{trustedEmailId} | Resend Verification Code To Email
 
 
 

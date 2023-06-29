@@ -1,14 +1,14 @@
 # \PopulationsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePopulation**](PopulationsApi.md#CreatePopulation) | **Post** /v1/environments/{environmentID}/populations | CREATE Population
-[**DeletePopulation**](PopulationsApi.md#DeletePopulation) | **Delete** /v1/environments/{environmentID}/populations/{populationID} | DELETE Population
-[**ReadAllPopulations**](PopulationsApi.md#ReadAllPopulations) | **Get** /v1/environments/{environmentID}/populations | READ All Populations
-[**ReadOnePopulation**](PopulationsApi.md#ReadOnePopulation) | **Get** /v1/environments/{environmentID}/populations/{populationID} | READ One Population
-[**UpdatePopulation**](PopulationsApi.md#UpdatePopulation) | **Put** /v1/environments/{environmentID}/populations/{populationID} | UPDATE Population
+[**CreatePopulation**](PopulationsApi.md#CreatePopulation) | **Post** /environments/{environmentID}/populations | CREATE Population
+[**DeletePopulation**](PopulationsApi.md#DeletePopulation) | **Delete** /environments/{environmentID}/populations/{populationID} | DELETE Population
+[**ReadAllPopulations**](PopulationsApi.md#ReadAllPopulations) | **Get** /environments/{environmentID}/populations | READ All Populations
+[**ReadOnePopulation**](PopulationsApi.md#ReadOnePopulation) | **Get** /environments/{environmentID}/populations/{populationID} | READ One Population
+[**UpdatePopulation**](PopulationsApi.md#UpdatePopulation) | **Put** /environments/{environmentID}/populations/{populationID} | UPDATE Population
 
 
 

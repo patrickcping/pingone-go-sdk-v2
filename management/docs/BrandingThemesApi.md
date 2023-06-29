@@ -1,16 +1,16 @@
 # \BrandingThemesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateBrandingTheme**](BrandingThemesApi.md#CreateBrandingTheme) | **Post** /v1/environments/{environmentID}/themes | CREATE Branding Theme
-[**DeleteBrandingTheme**](BrandingThemesApi.md#DeleteBrandingTheme) | **Delete** /v1/environments/{environmentID}/themes/{themeID} | DELETE Branding Theme
-[**ReadBrandingThemeDefault**](BrandingThemesApi.md#ReadBrandingThemeDefault) | **Get** /v1/environments/{environmentID}/themes/{themeID}/default | READ Branding Theme Default
-[**ReadBrandingThemes**](BrandingThemesApi.md#ReadBrandingThemes) | **Get** /v1/environments/{environmentID}/themes | READ Branding Themes
-[**ReadOneBrandingTheme**](BrandingThemesApi.md#ReadOneBrandingTheme) | **Get** /v1/environments/{environmentID}/themes/{themeID} | READ One Branding Theme
-[**UpdateBrandingTheme**](BrandingThemesApi.md#UpdateBrandingTheme) | **Put** /v1/environments/{environmentID}/themes/{themeID} | UPDATE Branding Theme
-[**UpdateBrandingThemeDefault**](BrandingThemesApi.md#UpdateBrandingThemeDefault) | **Put** /v1/environments/{environmentID}/themes/{themeID}/default | UPDATE Branding Theme Default
+[**CreateBrandingTheme**](BrandingThemesApi.md#CreateBrandingTheme) | **Post** /environments/{environmentID}/themes | CREATE Branding Theme
+[**DeleteBrandingTheme**](BrandingThemesApi.md#DeleteBrandingTheme) | **Delete** /environments/{environmentID}/themes/{themeID} | DELETE Branding Theme
+[**ReadBrandingThemeDefault**](BrandingThemesApi.md#ReadBrandingThemeDefault) | **Get** /environments/{environmentID}/themes/{themeID}/default | READ Branding Theme Default
+[**ReadBrandingThemes**](BrandingThemesApi.md#ReadBrandingThemes) | **Get** /environments/{environmentID}/themes | READ Branding Themes
+[**ReadOneBrandingTheme**](BrandingThemesApi.md#ReadOneBrandingTheme) | **Get** /environments/{environmentID}/themes/{themeID} | READ One Branding Theme
+[**UpdateBrandingTheme**](BrandingThemesApi.md#UpdateBrandingTheme) | **Put** /environments/{environmentID}/themes/{themeID} | UPDATE Branding Theme
+[**UpdateBrandingThemeDefault**](BrandingThemesApi.md#UpdateBrandingThemeDefault) | **Put** /environments/{environmentID}/themes/{themeID}/default | UPDATE Branding Theme Default
 
 
 

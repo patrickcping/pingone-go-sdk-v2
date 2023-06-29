@@ -1,18 +1,18 @@
 # \GroupsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroup**](GroupsApi.md#CreateGroup) | **Post** /v1/environments/{environmentID}/groups | CREATE Group
-[**CreateGroupNesting**](GroupsApi.md#CreateGroupNesting) | **Post** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups | CREATE Group Nesting
-[**DeleteGroup**](GroupsApi.md#DeleteGroup) | **Delete** /v1/environments/{environmentID}/groups/{groupID} | DELETE Group
-[**DeleteGroupNesting**](GroupsApi.md#DeleteGroupNesting) | **Delete** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | DELETE Group Nesting
-[**ReadAllGroups**](GroupsApi.md#ReadAllGroups) | **Get** /v1/environments/{environmentID}/groups | READ All Groups
-[**ReadGroupNesting**](GroupsApi.md#ReadGroupNesting) | **Get** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups | READ Group Nesting
-[**ReadOneGroup**](GroupsApi.md#ReadOneGroup) | **Get** /v1/environments/{environmentID}/groups/{groupID} | READ One Group
-[**ReadOneGroupNesting**](GroupsApi.md#ReadOneGroupNesting) | **Get** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | READ One Group Nesting
-[**UpdateGroup**](GroupsApi.md#UpdateGroup) | **Put** /v1/environments/{environmentID}/groups/{groupID} | UPDATE Group
+[**CreateGroup**](GroupsApi.md#CreateGroup) | **Post** /environments/{environmentID}/groups | CREATE Group
+[**CreateGroupNesting**](GroupsApi.md#CreateGroupNesting) | **Post** /environments/{environmentID}/groups/{groupID}/memberOfGroups | CREATE Group Nesting
+[**DeleteGroup**](GroupsApi.md#DeleteGroup) | **Delete** /environments/{environmentID}/groups/{groupID} | DELETE Group
+[**DeleteGroupNesting**](GroupsApi.md#DeleteGroupNesting) | **Delete** /environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | DELETE Group Nesting
+[**ReadAllGroups**](GroupsApi.md#ReadAllGroups) | **Get** /environments/{environmentID}/groups | READ All Groups
+[**ReadGroupNesting**](GroupsApi.md#ReadGroupNesting) | **Get** /environments/{environmentID}/groups/{groupID}/memberOfGroups | READ Group Nesting
+[**ReadOneGroup**](GroupsApi.md#ReadOneGroup) | **Get** /environments/{environmentID}/groups/{groupID} | READ One Group
+[**ReadOneGroupNesting**](GroupsApi.md#ReadOneGroupNesting) | **Get** /environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | READ One Group Nesting
+[**UpdateGroup**](GroupsApi.md#UpdateGroup) | **Put** /environments/{environmentID}/groups/{groupID} | UPDATE Group
 
 
 

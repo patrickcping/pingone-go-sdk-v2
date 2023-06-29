@@ -1,11 +1,11 @@
 # \FlowPoliciesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadAllFlowPolicies**](FlowPoliciesApi.md#ReadAllFlowPolicies) | **Get** /v1/environments/{environmentID}/flowPolicies | READ All Flow Policies
-[**ReadOneFlowPolicy**](FlowPoliciesApi.md#ReadOneFlowPolicy) | **Get** /v1/environments/{environmentID}/flowPolicies/{flowPolicyID} | READ ONE Flow Policy
+[**ReadAllFlowPolicies**](FlowPoliciesApi.md#ReadAllFlowPolicies) | **Get** /environments/{environmentID}/flowPolicies | READ All Flow Policies
+[**ReadOneFlowPolicy**](FlowPoliciesApi.md#ReadOneFlowPolicy) | **Get** /environments/{environmentID}/flowPolicies/{flowPolicyID} | READ ONE Flow Policy
 
 
 

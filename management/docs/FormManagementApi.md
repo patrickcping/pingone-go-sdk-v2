@@ -1,14 +1,14 @@
 # \FormManagementApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateForm**](FormManagementApi.md#CreateForm) | **Post** /v1/environments/{environmentID}/forms | CREATE Form
-[**DeleteForm**](FormManagementApi.md#DeleteForm) | **Delete** /v1/environments/{environmentID}/forms/{formID} | DELETE Form
-[**ReadAllForms**](FormManagementApi.md#ReadAllForms) | **Get** /v1/environments/{environmentID}/forms | READ All Forms
-[**ReadForm**](FormManagementApi.md#ReadForm) | **Get** /v1/environments/{environmentID}/forms/{formID} | READ One Form
-[**UpdateForm**](FormManagementApi.md#UpdateForm) | **Put** /v1/environments/{environmentID}/forms/{formID} | UPDATE Form
+[**CreateForm**](FormManagementApi.md#CreateForm) | **Post** /environments/{environmentID}/forms | CREATE Form
+[**DeleteForm**](FormManagementApi.md#DeleteForm) | **Delete** /environments/{environmentID}/forms/{formID} | DELETE Form
+[**ReadAllForms**](FormManagementApi.md#ReadAllForms) | **Get** /environments/{environmentID}/forms | READ All Forms
+[**ReadForm**](FormManagementApi.md#ReadForm) | **Get** /environments/{environmentID}/forms/{formID} | READ One Form
+[**UpdateForm**](FormManagementApi.md#UpdateForm) | **Put** /environments/{environmentID}/forms/{formID} | UPDATE Form
 
 
 

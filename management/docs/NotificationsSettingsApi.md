@@ -1,12 +1,12 @@
 # \NotificationsSettingsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteNotificationsSettings**](NotificationsSettingsApi.md#DeleteNotificationsSettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings | DELETE Notifications Settings
-[**ReadNotificationsSettings**](NotificationsSettingsApi.md#ReadNotificationsSettings) | **Get** /v1/environments/{environmentID}/notificationsSettings | READ Notifications Settings
-[**UpdateNotificationsSettings**](NotificationsSettingsApi.md#UpdateNotificationsSettings) | **Put** /v1/environments/{environmentID}/notificationsSettings | UPDATE Notifications Settings
+[**DeleteNotificationsSettings**](NotificationsSettingsApi.md#DeleteNotificationsSettings) | **Delete** /environments/{environmentID}/notificationsSettings | DELETE Notifications Settings
+[**ReadNotificationsSettings**](NotificationsSettingsApi.md#ReadNotificationsSettings) | **Get** /environments/{environmentID}/notificationsSettings | READ Notifications Settings
+[**UpdateNotificationsSettings**](NotificationsSettingsApi.md#UpdateNotificationsSettings) | **Put** /environments/{environmentID}/notificationsSettings | UPDATE Notifications Settings
 
 
 

@@ -1,14 +1,14 @@
 # \AgreementLanguagesResourcesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAgreementLanguage**](AgreementLanguagesResourcesApi.md#CreateAgreementLanguage) | **Post** /v1/environments/{environmentID}/agreements/{agreementID}/languages | CREATE Language
-[**DeleteAgreementLanguage**](AgreementLanguagesResourcesApi.md#DeleteAgreementLanguage) | **Delete** /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID} | DELETE Language
-[**ReadAllAgreementLanguages**](AgreementLanguagesResourcesApi.md#ReadAllAgreementLanguages) | **Get** /v1/environments/{environmentID}/agreements/{agreementID}/languages | READ All Languages
-[**ReadOneAgreementLanguage**](AgreementLanguagesResourcesApi.md#ReadOneAgreementLanguage) | **Get** /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID} | READ One Language
-[**UpdateAgreementLanguage**](AgreementLanguagesResourcesApi.md#UpdateAgreementLanguage) | **Put** /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID} | UPDATE Language
+[**CreateAgreementLanguage**](AgreementLanguagesResourcesApi.md#CreateAgreementLanguage) | **Post** /environments/{environmentID}/agreements/{agreementID}/languages | CREATE Language
+[**DeleteAgreementLanguage**](AgreementLanguagesResourcesApi.md#DeleteAgreementLanguage) | **Delete** /environments/{environmentID}/agreements/{agreementID}/languages/{languageID} | DELETE Language
+[**ReadAllAgreementLanguages**](AgreementLanguagesResourcesApi.md#ReadAllAgreementLanguages) | **Get** /environments/{environmentID}/agreements/{agreementID}/languages | READ All Languages
+[**ReadOneAgreementLanguage**](AgreementLanguagesResourcesApi.md#ReadOneAgreementLanguage) | **Get** /environments/{environmentID}/agreements/{agreementID}/languages/{languageID} | READ One Language
+[**UpdateAgreementLanguage**](AgreementLanguagesResourcesApi.md#UpdateAgreementLanguage) | **Put** /environments/{environmentID}/agreements/{agreementID}/languages/{languageID} | UPDATE Language
 
 
 

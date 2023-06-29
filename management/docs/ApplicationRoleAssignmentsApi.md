@@ -1,13 +1,13 @@
 # \ApplicationRoleAssignmentsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateApplicationRoleAssignment**](ApplicationRoleAssignmentsApi.md#CreateApplicationRoleAssignment) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments | CREATE Application Role Assignments
-[**DeleteApplicationRoleAssignment**](ApplicationRoleAssignmentsApi.md#DeleteApplicationRoleAssignment) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID} | DELETE Application Role Assignment
-[**ReadApplicationRoleAssignments**](ApplicationRoleAssignmentsApi.md#ReadApplicationRoleAssignments) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments | READ Application Role Assignments
-[**ReadOneApplicationRoleAssignment**](ApplicationRoleAssignmentsApi.md#ReadOneApplicationRoleAssignment) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID} | READ One Application Role Assignment
+[**CreateApplicationRoleAssignment**](ApplicationRoleAssignmentsApi.md#CreateApplicationRoleAssignment) | **Post** /environments/{environmentID}/applications/{applicationID}/roleAssignments | CREATE Application Role Assignments
+[**DeleteApplicationRoleAssignment**](ApplicationRoleAssignmentsApi.md#DeleteApplicationRoleAssignment) | **Delete** /environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID} | DELETE Application Role Assignment
+[**ReadApplicationRoleAssignments**](ApplicationRoleAssignmentsApi.md#ReadApplicationRoleAssignments) | **Get** /environments/{environmentID}/applications/{applicationID}/roleAssignments | READ Application Role Assignments
+[**ReadOneApplicationRoleAssignment**](ApplicationRoleAssignmentsApi.md#ReadOneApplicationRoleAssignment) | **Get** /environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID} | READ One Application Role Assignment
 
 
 

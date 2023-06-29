@@ -1,14 +1,14 @@
 # \LanguagesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateLanguage**](LanguagesApi.md#CreateLanguage) | **Post** /v1/environments/{environmentID}/languages | CREATE Language
-[**DeleteLanguage**](LanguagesApi.md#DeleteLanguage) | **Delete** /v1/environments/{environmentID}/languages/{languageID} | DELETE Language
-[**ReadLanguages**](LanguagesApi.md#ReadLanguages) | **Get** /v1/environments/{environmentID}/languages | READ Languages
-[**ReadOneLanguage**](LanguagesApi.md#ReadOneLanguage) | **Get** /v1/environments/{environmentID}/languages/{languageID} | READ One Language
-[**UpdateLanguage**](LanguagesApi.md#UpdateLanguage) | **Put** /v1/environments/{environmentID}/languages/{languageID} | UPDATE Language
+[**CreateLanguage**](LanguagesApi.md#CreateLanguage) | **Post** /environments/{environmentID}/languages | CREATE Language
+[**DeleteLanguage**](LanguagesApi.md#DeleteLanguage) | **Delete** /environments/{environmentID}/languages/{languageID} | DELETE Language
+[**ReadLanguages**](LanguagesApi.md#ReadLanguages) | **Get** /environments/{environmentID}/languages | READ Languages
+[**ReadOneLanguage**](LanguagesApi.md#ReadOneLanguage) | **Get** /environments/{environmentID}/languages/{languageID} | READ One Language
+[**UpdateLanguage**](LanguagesApi.md#UpdateLanguage) | **Put** /environments/{environmentID}/languages/{languageID} | UPDATE Language
 
 
 

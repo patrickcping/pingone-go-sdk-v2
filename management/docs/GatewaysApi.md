@@ -1,14 +1,14 @@
 # \GatewaysApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGateway**](GatewaysApi.md#CreateGateway) | **Post** /v1/environments/{environmentID}/gateways | CREATE Gateway
-[**DeleteGateway**](GatewaysApi.md#DeleteGateway) | **Delete** /v1/environments/{environmentID}/gateways/{gatewayID} | DELETE Gateway
-[**ReadAllGateways**](GatewaysApi.md#ReadAllGateways) | **Get** /v1/environments/{environmentID}/gateways | READ All Gateways
-[**ReadOneGateway**](GatewaysApi.md#ReadOneGateway) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID} | READ One Gateway
-[**UpdateGateway**](GatewaysApi.md#UpdateGateway) | **Put** /v1/environments/{environmentID}/gateways/{gatewayID} | UPDATE Gateway
+[**CreateGateway**](GatewaysApi.md#CreateGateway) | **Post** /environments/{environmentID}/gateways | CREATE Gateway
+[**DeleteGateway**](GatewaysApi.md#DeleteGateway) | **Delete** /environments/{environmentID}/gateways/{gatewayID} | DELETE Gateway
+[**ReadAllGateways**](GatewaysApi.md#ReadAllGateways) | **Get** /environments/{environmentID}/gateways | READ All Gateways
+[**ReadOneGateway**](GatewaysApi.md#ReadOneGateway) | **Get** /environments/{environmentID}/gateways/{gatewayID} | READ One Gateway
+[**UpdateGateway**](GatewaysApi.md#UpdateGateway) | **Put** /environments/{environmentID}/gateways/{gatewayID} | UPDATE Gateway
 
 
 

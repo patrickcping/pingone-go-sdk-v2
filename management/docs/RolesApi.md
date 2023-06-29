@@ -1,11 +1,11 @@
 # \RolesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadAllRoles**](RolesApi.md#ReadAllRoles) | **Get** /v1/roles | READ All Roles
-[**ReadOneRole**](RolesApi.md#ReadOneRole) | **Get** /v1/roles/{roleID} | READ One Role
+[**ReadAllRoles**](RolesApi.md#ReadAllRoles) | **Get** /roles | READ All Roles
+[**ReadOneRole**](RolesApi.md#ReadOneRole) | **Get** /roles/{roleID} | READ One Role
 
 
 

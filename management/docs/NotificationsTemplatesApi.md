@@ -1,18 +1,18 @@
 # \NotificationsTemplatesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateContent**](NotificationsTemplatesApi.md#CreateContent) | **Post** /v1/environments/{environmentID}/templates/{templateName}/contents | CREATE Content
-[**DeleteBulkVariantContents**](NotificationsTemplatesApi.md#DeleteBulkVariantContents) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents | DELETE Bulk Variant Contents
-[**DeleteContent**](NotificationsTemplatesApi.md#DeleteContent) | **Delete** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | DELETE Content
-[**PatchBulkVariantContents**](NotificationsTemplatesApi.md#PatchBulkVariantContents) | **Patch** /v1/environments/{environmentID}/templates/{templateName}/contents | PATCH Bulk Variant Contents
-[**ReadAllTemplateContents**](NotificationsTemplatesApi.md#ReadAllTemplateContents) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents | READ All Contents
-[**ReadAllTemplates**](NotificationsTemplatesApi.md#ReadAllTemplates) | **Get** /v1/environments/{environmentID}/templates | READ All Templates
-[**ReadOneContent**](NotificationsTemplatesApi.md#ReadOneContent) | **Get** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | READ One Content
-[**ReadOneTemplate**](NotificationsTemplatesApi.md#ReadOneTemplate) | **Get** /v1/environments/{environmentID}/templates/{templateName} | READ One Template
-[**UpdateContent**](NotificationsTemplatesApi.md#UpdateContent) | **Put** /v1/environments/{environmentID}/templates/{templateName}/contents/{contentID} | UPDATE Content
+[**CreateContent**](NotificationsTemplatesApi.md#CreateContent) | **Post** /environments/{environmentID}/templates/{templateName}/contents | CREATE Content
+[**DeleteBulkVariantContents**](NotificationsTemplatesApi.md#DeleteBulkVariantContents) | **Delete** /environments/{environmentID}/templates/{templateName}/contents | DELETE Bulk Variant Contents
+[**DeleteContent**](NotificationsTemplatesApi.md#DeleteContent) | **Delete** /environments/{environmentID}/templates/{templateName}/contents/{contentID} | DELETE Content
+[**PatchBulkVariantContents**](NotificationsTemplatesApi.md#PatchBulkVariantContents) | **Patch** /environments/{environmentID}/templates/{templateName}/contents | PATCH Bulk Variant Contents
+[**ReadAllTemplateContents**](NotificationsTemplatesApi.md#ReadAllTemplateContents) | **Get** /environments/{environmentID}/templates/{templateName}/contents | READ All Contents
+[**ReadAllTemplates**](NotificationsTemplatesApi.md#ReadAllTemplates) | **Get** /environments/{environmentID}/templates | READ All Templates
+[**ReadOneContent**](NotificationsTemplatesApi.md#ReadOneContent) | **Get** /environments/{environmentID}/templates/{templateName}/contents/{contentID} | READ One Content
+[**ReadOneTemplate**](NotificationsTemplatesApi.md#ReadOneTemplate) | **Get** /environments/{environmentID}/templates/{templateName} | READ One Template
+[**UpdateContent**](NotificationsTemplatesApi.md#UpdateContent) | **Put** /environments/{environmentID}/templates/{templateName}/contents/{contentID} | UPDATE Content
 
 
 

@@ -1,14 +1,14 @@
 # \ApplicationFlowPolicyAssignmentsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFlowPolicyAssignment**](ApplicationFlowPolicyAssignmentsApi.md#CreateFlowPolicyAssignment) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | CREATE Flow Assignment
-[**DeleteFlowPolicyAssignment**](ApplicationFlowPolicyAssignmentsApi.md#DeleteFlowPolicyAssignment) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | DELETE Flow Policy Assignment
-[**ReadAllFlowPolicyAssignments**](ApplicationFlowPolicyAssignmentsApi.md#ReadAllFlowPolicyAssignments) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | READ All Flow Policy Assignments
-[**ReadOneFlowPolicyAssignment**](ApplicationFlowPolicyAssignmentsApi.md#ReadOneFlowPolicyAssignment) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | READ One Flow Policy Assignment
-[**UpdateFlowPolicyAssignment**](ApplicationFlowPolicyAssignmentsApi.md#UpdateFlowPolicyAssignment) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | UPDATE Flow Policy Assignment
+[**CreateFlowPolicyAssignment**](ApplicationFlowPolicyAssignmentsApi.md#CreateFlowPolicyAssignment) | **Post** /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | CREATE Flow Assignment
+[**DeleteFlowPolicyAssignment**](ApplicationFlowPolicyAssignmentsApi.md#DeleteFlowPolicyAssignment) | **Delete** /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | DELETE Flow Policy Assignment
+[**ReadAllFlowPolicyAssignments**](ApplicationFlowPolicyAssignmentsApi.md#ReadAllFlowPolicyAssignments) | **Get** /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | READ All Flow Policy Assignments
+[**ReadOneFlowPolicyAssignment**](ApplicationFlowPolicyAssignmentsApi.md#ReadOneFlowPolicyAssignment) | **Get** /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | READ One Flow Policy Assignment
+[**UpdateFlowPolicyAssignment**](ApplicationFlowPolicyAssignmentsApi.md#UpdateFlowPolicyAssignment) | **Put** /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | UPDATE Flow Policy Assignment
 
 
 

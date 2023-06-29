@@ -1,18 +1,18 @@
 # \UserAgreementConsentsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet**](UserAgreementConsentsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | READ One User Agreement Consent
-[**V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost**](UserAgreementConsentsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost) | **Post** /v1/environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | Revoke Agreement
-[**V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet**](UserAgreementConsentsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet) | **Get** /v1/environments/{environmentID}/users/{userID}/agreementConsents | READ All User Agreement Consents
+[**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet**](UserAgreementConsentsApi.md#EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet) | **Get** /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | READ One User Agreement Consent
+[**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost**](UserAgreementConsentsApi.md#EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost) | **Post** /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | Revoke Agreement
+[**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet**](UserAgreementConsentsApi.md#EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet) | **Get** /environments/{environmentID}/users/{userID}/agreementConsents | READ All User Agreement Consents
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet
+## EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet
 
-> V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet(ctx, environmentID, userID, agreementID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet(ctx, environmentID, userID, agreementID).Execute()
 
 READ One User Agreement Consent
 
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet(context.Background(), environmentID, userID, agreementID).Execute()
+    r, err := apiClient.UserAgreementConsentsApi.EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet(context.Background(), environmentID, userID, agreementID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost
+## EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost
 
-> V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost(ctx, environmentID, userID, agreementID).ContentType(contentType).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost(ctx, environmentID, userID, agreementID).ContentType(contentType).Execute()
 
 Revoke Agreement
 
@@ -108,9 +108,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost(context.Background(), environmentID, userID, agreementID).ContentType(contentType).Execute()
+    r, err := apiClient.UserAgreementConsentsApi.EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost(context.Background(), environmentID, userID, agreementID).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -156,9 +156,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet
+## EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet
 
-> V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet(ctx, environmentID, userID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet(ctx, environmentID, userID).Execute()
 
 READ All User Agreement Consents
 
@@ -180,9 +180,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UserAgreementConsentsApi.EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.V1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserAgreementConsentsApi.EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

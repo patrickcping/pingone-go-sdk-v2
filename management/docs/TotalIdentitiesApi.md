@@ -1,16 +1,16 @@
 # \TotalIdentitiesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDTotalIdentitiesGet**](TotalIdentitiesApi.md#V1EnvironmentsEnvironmentIDTotalIdentitiesGet) | **Get** /v1/environments/{environmentID}/totalIdentities | READ Total Identity Counts
+[**EnvironmentsEnvironmentIDTotalIdentitiesGet**](TotalIdentitiesApi.md#EnvironmentsEnvironmentIDTotalIdentitiesGet) | **Get** /environments/{environmentID}/totalIdentities | READ Total Identity Counts
 
 
 
-## V1EnvironmentsEnvironmentIDTotalIdentitiesGet
+## EnvironmentsEnvironmentIDTotalIdentitiesGet
 
-> V1EnvironmentsEnvironmentIDTotalIdentitiesGet(ctx, environmentID).Filter(filter).Execute()
+> EnvironmentsEnvironmentIDTotalIdentitiesGet(ctx, environmentID).Filter(filter).Execute()
 
 READ Total Identity Counts
 
@@ -32,9 +32,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TotalIdentitiesApi.V1EnvironmentsEnvironmentIDTotalIdentitiesGet(context.Background(), environmentID).Filter(filter).Execute()
+    r, err := apiClient.TotalIdentitiesApi.EnvironmentsEnvironmentIDTotalIdentitiesGet(context.Background(), environmentID).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TotalIdentitiesApi.V1EnvironmentsEnvironmentIDTotalIdentitiesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TotalIdentitiesApi.EnvironmentsEnvironmentIDTotalIdentitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDTotalIdentitiesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDTotalIdentitiesGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

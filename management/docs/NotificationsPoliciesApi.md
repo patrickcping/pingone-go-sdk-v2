@@ -1,14 +1,14 @@
 # \NotificationsPoliciesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateNotificationsPolicy**](NotificationsPoliciesApi.md#CreateNotificationsPolicy) | **Post** /v1/environments/{environmentID}/notificationsPolicies | CREATE Notifications Policy
-[**DeleteNotificationsPolicy**](NotificationsPoliciesApi.md#DeleteNotificationsPolicy) | **Delete** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | DELETE Notifications Policy
-[**ReadAllNotificationsPolicies**](NotificationsPoliciesApi.md#ReadAllNotificationsPolicies) | **Get** /v1/environments/{environmentID}/notificationsPolicies | READ All Notifications Policies
-[**ReadOneNotificationsPolicy**](NotificationsPoliciesApi.md#ReadOneNotificationsPolicy) | **Get** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | READ One Notifications Policy
-[**UpdateNotificationsPolicy**](NotificationsPoliciesApi.md#UpdateNotificationsPolicy) | **Put** /v1/environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | UPDATE Notifications Policy
+[**CreateNotificationsPolicy**](NotificationsPoliciesApi.md#CreateNotificationsPolicy) | **Post** /environments/{environmentID}/notificationsPolicies | CREATE Notifications Policy
+[**DeleteNotificationsPolicy**](NotificationsPoliciesApi.md#DeleteNotificationsPolicy) | **Delete** /environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | DELETE Notifications Policy
+[**ReadAllNotificationsPolicies**](NotificationsPoliciesApi.md#ReadAllNotificationsPolicies) | **Get** /environments/{environmentID}/notificationsPolicies | READ All Notifications Policies
+[**ReadOneNotificationsPolicy**](NotificationsPoliciesApi.md#ReadOneNotificationsPolicy) | **Get** /environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | READ One Notifications Policy
+[**UpdateNotificationsPolicy**](NotificationsPoliciesApi.md#UpdateNotificationsPolicy) | **Put** /environments/{environmentID}/notificationsPolicies/{notificationsPolicyID} | UPDATE Notifications Policy
 
 
 
