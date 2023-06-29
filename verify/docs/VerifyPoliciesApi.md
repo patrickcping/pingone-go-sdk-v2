@@ -1,14 +1,14 @@
 # \VerifyPoliciesApi
 
-All URIs are relative to *https://api.pingone.com*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateVerifyPolicy**](VerifyPoliciesApi.md#CreateVerifyPolicy) | **Post** /v1/environments/{environmentID}/verifyPolicies | CREATE Verify Policy
-[**DeleteVerifyPolicy**](VerifyPoliciesApi.md#DeleteVerifyPolicy) | **Delete** /v1/environments/{environmentID}/verifyPolicies/{verifyPolicyID} | Delete Verify Policy
-[**ReadAllVerifyPolicies**](VerifyPoliciesApi.md#ReadAllVerifyPolicies) | **Get** /v1/environments/{environmentID}/verifyPolicies | READ All Verify Policies
-[**ReadOneVerifyPolicy**](VerifyPoliciesApi.md#ReadOneVerifyPolicy) | **Get** /v1/environments/{environmentID}/verifyPolicies/{verifyPolicyID} | READ One Verify Policy
-[**UpdateVerifyPolicy**](VerifyPoliciesApi.md#UpdateVerifyPolicy) | **Put** /v1/environments/{environmentID}/verifyPolicies/{verifyPolicyID} | UPDATE Verify Policy
+[**CreateVerifyPolicy**](VerifyPoliciesApi.md#CreateVerifyPolicy) | **Post** /environments/{environmentID}/verifyPolicies | CREATE Verify Policy
+[**DeleteVerifyPolicy**](VerifyPoliciesApi.md#DeleteVerifyPolicy) | **Delete** /environments/{environmentID}/verifyPolicies/{verifyPolicyID} | Delete Verify Policy
+[**ReadAllVerifyPolicies**](VerifyPoliciesApi.md#ReadAllVerifyPolicies) | **Get** /environments/{environmentID}/verifyPolicies | READ All Verify Policies
+[**ReadOneVerifyPolicy**](VerifyPoliciesApi.md#ReadOneVerifyPolicy) | **Get** /environments/{environmentID}/verifyPolicies/{verifyPolicyID} | READ One Verify Policy
+[**UpdateVerifyPolicy**](VerifyPoliciesApi.md#UpdateVerifyPolicy) | **Put** /environments/{environmentID}/verifyPolicies/{verifyPolicyID} | UPDATE Verify Policy
 
 
 
