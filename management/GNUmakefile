@@ -6,7 +6,9 @@ MODULE=management
 default: build
 
 build: fmtcheck
-	go build
+	@go mod tidy
+	@go mod vendor
+	@go build ./...
 
 test: fmtcheck
 	go test $(TEST) $(TESTARGS) -timeout=5m
@@ -35,10 +37,13 @@ golangci-lint:
 	@echo "==> Checking source code with golangci-lint..."
 	@golangci-lint run ./...
 
+gosec:
+	@gosec -exclude-generated ./...
+
 generate:
 	@echo "==> Running generate for $(MODULE)..."
 	@./../scripts/generate.sh $(OWNER) $(REPO) $(MODULE)
 
 devcheck: build vet lint gosec test testacc
 
-.PHONY: build test testacc vet fmtcheck depscheck lint golangci-lint generate
+.PHONY: build test testacc vet fmtcheck depscheck lint gosec golangci-lint generate
