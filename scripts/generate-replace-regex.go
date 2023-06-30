@@ -60,6 +60,92 @@ var (
 			repl:              `"PingOne-GOLANG-SDK/$1/go",`,
 		},
 
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `\/\/ AddDefaultHeader adds a new HTTP header to the default header in the request`,
+			repl: `func (c *Configuration) SetDebug(debug bool) {
+	c.Debug = debug
+}
+			
+func (c *Configuration) SetDefaultServerIndex(defaultServerIndex int) {
+	c.DefaultServerIndex = defaultServerIndex
+}
+
+func (c *Configuration) SetDefaultServerVariableDefaultValue(variable string, value string) error {
+	return c.SetServerVariableDefaultValue(c.DefaultServerIndex, variable, value)
+}
+
+func (c *Configuration) SetServerVariableDefaultValue(serverIndex int, variable string, value string) error {
+	if serverIndex >= 0 && serverIndex < len(c.Servers) {
+		if entry, ok := c.Servers[serverIndex].Variables[variable]; ok {
+			entry.DefaultValue = value
+			c.Servers[serverIndex].Variables[variable] = entry
+			return nil
+		} else {
+			return fmt.Errorf("variable %v not defined in server %v", variable, serverIndex)
+		}
+	} else {
+		return fmt.Errorf("server index %v out of range %v", serverIndex, len(c.Servers)-1)
+	}
+}
+
+// AddDefaultHeader adds a new HTTP header to the default header in the request`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `Debug            bool              ` + "`" + `json:"debug,omitempty"` + "`" + `\n	Servers          ServerConfigurations\n`,
+			repl: `Debug            bool              ` + "`" + `json:"debug,omitempty"` + "`" + `
+	DefaultServerIndex int             ` + "`" + `json:"defaultServerIndex,omitempty"` + "`" + `
+	Servers          ServerConfigurations
+`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `Debug:            false,\n		Servers:          ServerConfigurations{\n`,
+			repl: `Debug:            false,
+		DefaultServerIndex: 0,
+		Servers:          ServerConfigurations{
+`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `return 0`,
+			repl:              `return defaultServerIndex`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `func getServerIndex\(ctx context.Context\) \(int, error\)`,
+			repl:              `func getServerIndex(ctx context.Context, defaultServerIndex int) (int, error)`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `func getServerOperationIndex\(ctx context.Context, endpoint string\) \(int, error\)`,
+			repl:              `func getServerOperationIndex(ctx context.Context, endpoint string, defaultServerIndex int) (int, error)`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `return getServerIndex\(ctx\)`,
+			repl:              `return getServerIndex(ctx, defaultServerIndex)`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `return sc.URL\(0,`,
+			repl:              `return sc.URL(c.DefaultServerIndex,`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `getServerOperationIndex\(ctx, endpoint\)`,
+			repl:              `getServerOperationIndex(ctx, endpoint, c.DefaultServerIndex)`,
+		},
+
 		/////////////////////////
 		// ALL API
 		/////////////////////////
