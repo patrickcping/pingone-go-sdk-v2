@@ -44,4 +44,9 @@
       "verify": true,
     },
   },
+  "extensions": {
+    "recommendations": [
+      "golang.go",
+    ]
+  }
 }
