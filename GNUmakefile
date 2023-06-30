@@ -45,7 +45,7 @@ lint: golangci-lint
 gosec:
 	@gosec -exclude-generated ./...
 
-generate:
+generate-modules:
 	@./scripts/generate-all.sh $(OWNER) $(REPO)
 
 devcheck: build vet lint gosec test testacc
