@@ -1,4 +1,4 @@
-# PingOne GO SDK
+# PingOne Administration GO SDK
 
 The PingOne GO SDK provides a set of functions and stucts that help with interacting with the PingOne public cloud API.
 
