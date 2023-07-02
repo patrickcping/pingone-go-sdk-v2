@@ -103,10 +103,16 @@ func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementma
 
 	if c.AgreementMgmtHostnameOverride != nil && *c.AgreementMgmtHostnameOverride != "" {
 		clientcfg.SetDefaultServerIndex(1)
-		clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.AgreementMgmtHostnameOverride)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.AgreementMgmtHostnameOverride)
+		if err != nil {
+			return nil, err
+		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		if err != nil {
+			return nil, err
+		}
 	}
 	client = agreementmanagement.NewAPIClient(clientcfg)
 
@@ -150,10 +156,16 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 
 	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
 		clientcfg.SetDefaultServerIndex(1)
-		clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		if err != nil {
+			return nil, err
+		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		if err != nil {
+			return nil, err
+		}
 	}
 	client = authorize.NewAPIClient(clientcfg)
 
@@ -198,10 +210,16 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 
 	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
 		clientcfg.SetDefaultServerIndex(1)
-		clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		if err != nil {
+			return nil, err
+		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		if err != nil {
+			return nil, err
+		}
 	}
 	client = credentials.NewAPIClient(clientcfg)
 
@@ -245,7 +263,10 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 
 	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
 		clientcfg.SetDefaultServerIndex(1)
-		clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		if err != nil {
+			return nil, err
+		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
 		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
@@ -295,10 +316,16 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 
 	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
 		clientcfg.SetDefaultServerIndex(1)
-		clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		if err != nil {
+			return nil, err
+		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		if err != nil {
+			return nil, err
+		}
 	}
 	client = mfa.NewAPIClient(clientcfg)
 
@@ -342,10 +369,16 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 
 	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
 		clientcfg.SetDefaultServerIndex(1)
-		clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		if err != nil {
+			return nil, err
+		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		if err != nil {
+			return nil, err
+		}
 	}
 	client = risk.NewAPIClient(clientcfg)
 
@@ -389,10 +422,16 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 
 	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
 		clientcfg.SetDefaultServerIndex(1)
-		clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
+		if err != nil {
+			return nil, err
+		}
 	} else {
 		clientcfg.SetDefaultServerIndex(0)
-		clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
+		if err != nil {
+			return nil, err
+		}
 	}
 	client = verify.NewAPIClient(clientcfg)
 
