@@ -44,7 +44,8 @@ func (v *EnumTrustedEmailStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumTrustedEmailStatus", value)
+	*v = EnumTrustedEmailStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumTrustedEmailStatusFromValue returns a pointer to a valid EnumTrustedEmailStatus

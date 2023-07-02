@@ -44,7 +44,8 @@ func (v *EnumEnvironmentType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumEnvironmentType", value)
+	*v = EnumEnvironmentType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumEnvironmentTypeFromValue returns a pointer to a valid EnumEnvironmentType

@@ -56,7 +56,8 @@ func (v *EnumSignOnPolicyType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumSignOnPolicyType", value)
+	*v = EnumSignOnPolicyType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumSignOnPolicyTypeFromValue returns a pointer to a valid EnumSignOnPolicyType

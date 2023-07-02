@@ -44,7 +44,8 @@ func (v *EnumUserRequestInclude) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumUserRequestInclude", value)
+	*v = EnumUserRequestInclude(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumUserRequestIncludeFromValue returns a pointer to a valid EnumUserRequestInclude

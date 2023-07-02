@@ -44,7 +44,8 @@ func (v *EnumApplicationSAMLSloBinding) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationSAMLSloBinding", value)
+	*v = EnumApplicationSAMLSloBinding(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationSAMLSloBindingFromValue returns a pointer to a valid EnumApplicationSAMLSloBinding

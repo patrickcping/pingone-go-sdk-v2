@@ -44,7 +44,8 @@ func (v *EnumAPIServerPatternType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumAPIServerPatternType", value)
+	*v = EnumAPIServerPatternType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumAPIServerPatternTypeFromValue returns a pointer to a valid EnumAPIServerPatternType

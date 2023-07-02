@@ -44,7 +44,8 @@ func (v *EnumEmailDomainStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumEmailDomainStatus", value)
+	*v = EnumEmailDomainStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumEmailDomainStatusFromValue returns a pointer to a valid EnumEmailDomainStatus

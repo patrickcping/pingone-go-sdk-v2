@@ -76,7 +76,8 @@ func (v *EnumFormFieldType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFormFieldType", value)
+	*v = EnumFormFieldType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFormFieldTypeFromValue returns a pointer to a valid EnumFormFieldType

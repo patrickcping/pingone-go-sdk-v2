@@ -46,7 +46,8 @@ func (v *EnumNotificationsSettingsPhoneDeliverySettingsProvider) UnmarshalJSON(s
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsSettingsPhoneDeliverySettingsProvider", value)
+	*v = EnumNotificationsSettingsPhoneDeliverySettingsProvider(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsSettingsPhoneDeliverySettingsProviderFromValue returns a pointer to a valid EnumNotificationsSettingsPhoneDeliverySettingsProvider

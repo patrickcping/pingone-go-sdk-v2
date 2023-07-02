@@ -44,7 +44,8 @@ func (v *EnumIdentityProviderAttributeMappingUpdate) UnmarshalJSON(src []byte) e
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumIdentityProviderAttributeMappingUpdate", value)
+	*v = EnumIdentityProviderAttributeMappingUpdate(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumIdentityProviderAttributeMappingUpdateFromValue returns a pointer to a valid EnumIdentityProviderAttributeMappingUpdate

@@ -50,7 +50,8 @@ func (v *EnumCertificateKeyStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCertificateKeyStatus", value)
+	*v = EnumCertificateKeyStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCertificateKeyStatusFromValue returns a pointer to a valid EnumCertificateKeyStatus

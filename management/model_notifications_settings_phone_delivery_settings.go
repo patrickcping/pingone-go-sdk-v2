@@ -48,7 +48,13 @@ func (dst *NotificationsSettingsPhoneDeliverySettings) UnmarshalJSON(data []byte
 	dst.NotificationsSettingsPhoneDeliverySettingsCustom = nil
 	dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse = nil
 
-	switch common.GetProvider() {
+	objProvider := common.GetProvider()
+
+	if !objProvider.IsValid() {
+		return nil
+	}
+
+	switch objProvider {
 	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_TWILIO:
 		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse); err != nil {
 			return err

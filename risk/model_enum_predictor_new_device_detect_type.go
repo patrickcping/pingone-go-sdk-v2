@@ -42,7 +42,8 @@ func (v *EnumPredictorNewDeviceDetectType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumPredictorNewDeviceDetectType", value)
+	*v = EnumPredictorNewDeviceDetectType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumPredictorNewDeviceDetectTypeFromValue returns a pointer to a valid EnumPredictorNewDeviceDetectType

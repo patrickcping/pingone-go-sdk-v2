@@ -46,7 +46,8 @@ func (v *EnumSubscriptionFormat) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumSubscriptionFormat", value)
+	*v = EnumSubscriptionFormat(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumSubscriptionFormatFromValue returns a pointer to a valid EnumSubscriptionFormat

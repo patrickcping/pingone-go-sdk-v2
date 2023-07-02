@@ -44,7 +44,8 @@ func (v *EnumTimeUnitPairingKeyLifetime) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumTimeUnitPairingKeyLifetime", value)
+	*v = EnumTimeUnitPairingKeyLifetime(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumTimeUnitPairingKeyLifetimeFromValue returns a pointer to a valid EnumTimeUnitPairingKeyLifetime

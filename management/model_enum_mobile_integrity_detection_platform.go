@@ -44,7 +44,8 @@ func (v *EnumMobileIntegrityDetectionPlatform) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumMobileIntegrityDetectionPlatform", value)
+	*v = EnumMobileIntegrityDetectionPlatform(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumMobileIntegrityDetectionPlatformFromValue returns a pointer to a valid EnumMobileIntegrityDetectionPlatform

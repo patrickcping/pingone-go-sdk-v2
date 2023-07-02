@@ -189,5 +189,16 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 			pattern:           `	localVarHTTPResponse\.Body\.Close\(\)`,
 			repl:              `	_ = localVarHTTPResponse.Body.Close()`,
 		},
+
+		/////////////////////////
+		// ALL ENUM Models
+		/////////////////////////
+		// Suppress enum unmarshalling errors
+		{
+			fileSelectPattern: "model_enum_*.go",
+			pattern:           `return fmt\.Errorf\("%\+v is not a valid (Enum[a-zA-Z]+)", value\)`,
+			repl: `*v = $1(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil`,
+		},
 	}
 )

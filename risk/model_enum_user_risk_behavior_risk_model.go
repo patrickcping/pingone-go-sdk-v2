@@ -44,7 +44,8 @@ func (v *EnumUserRiskBehaviorRiskModel) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumUserRiskBehaviorRiskModel", value)
+	*v = EnumUserRiskBehaviorRiskModel(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumUserRiskBehaviorRiskModelFromValue returns a pointer to a valid EnumUserRiskBehaviorRiskModel

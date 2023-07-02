@@ -46,7 +46,8 @@ func (v *EnumRoleAssignmentScopeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumRoleAssignmentScopeType", value)
+	*v = EnumRoleAssignmentScopeType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumRoleAssignmentScopeTypeFromValue returns a pointer to a valid EnumRoleAssignmentScopeType

@@ -42,7 +42,8 @@ func (v *EnumTimeUnitPushTimeout) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumTimeUnitPushTimeout", value)
+	*v = EnumTimeUnitPushTimeout(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumTimeUnitPushTimeoutFromValue returns a pointer to a valid EnumTimeUnitPushTimeout

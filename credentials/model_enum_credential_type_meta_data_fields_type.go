@@ -46,7 +46,8 @@ func (v *EnumCredentialTypeMetaDataFieldsType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCredentialTypeMetaDataFieldsType", value)
+	*v = EnumCredentialTypeMetaDataFieldsType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCredentialTypeMetaDataFieldsTypeFromValue returns a pointer to a valid EnumCredentialTypeMetaDataFieldsType

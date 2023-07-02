@@ -46,7 +46,8 @@ func (v *EnumCustomDomainStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCustomDomainStatus", value)
+	*v = EnumCustomDomainStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCustomDomainStatusFromValue returns a pointer to a valid EnumCustomDomainStatus

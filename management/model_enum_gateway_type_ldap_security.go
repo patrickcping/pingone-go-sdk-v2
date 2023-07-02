@@ -46,7 +46,8 @@ func (v *EnumGatewayTypeLDAPSecurity) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumGatewayTypeLDAPSecurity", value)
+	*v = EnumGatewayTypeLDAPSecurity(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumGatewayTypeLDAPSecurityFromValue returns a pointer to a valid EnumGatewayTypeLDAPSecurity

@@ -67,7 +67,13 @@ var (
 	dst.MFAPushCredentialFCMHTTPV1 = nil
 	dst.MFAPushCredentialHMS = nil
 
-	switch common.GetType() {
+	objType := common.GetType()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
 	case ENUMMFAPUSHCREDENTIALATTRTYPE_APNS:
 		if err := json.Unmarshal(data, &dst.MFAPushCredentialAPNS); err != nil {
 			return err

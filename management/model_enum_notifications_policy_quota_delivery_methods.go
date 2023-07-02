@@ -46,7 +46,8 @@ func (v *EnumNotificationsPolicyQuotaDeliveryMethods) UnmarshalJSON(src []byte) 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsPolicyQuotaDeliveryMethods", value)
+	*v = EnumNotificationsPolicyQuotaDeliveryMethods(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsPolicyQuotaDeliveryMethodsFromValue returns a pointer to a valid EnumNotificationsPolicyQuotaDeliveryMethods

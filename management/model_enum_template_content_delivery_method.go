@@ -48,7 +48,8 @@ func (v *EnumTemplateContentDeliveryMethod) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumTemplateContentDeliveryMethod", value)
+	*v = EnumTemplateContentDeliveryMethod(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumTemplateContentDeliveryMethodFromValue returns a pointer to a valid EnumTemplateContentDeliveryMethod

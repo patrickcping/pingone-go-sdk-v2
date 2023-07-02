@@ -46,7 +46,8 @@ func (v *EnumImageFormat) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumImageFormat", value)
+	*v = EnumImageFormat(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumImageFormatFromValue returns a pointer to a valid EnumImageFormat

@@ -44,7 +44,8 @@ func (v *EnumBrandingLogoType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumBrandingLogoType", value)
+	*v = EnumBrandingLogoType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumBrandingLogoTypeFromValue returns a pointer to a valid EnumBrandingLogoType

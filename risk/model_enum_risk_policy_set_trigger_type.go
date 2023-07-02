@@ -42,7 +42,8 @@ func (v *EnumRiskPolicySetTriggerType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumRiskPolicySetTriggerType", value)
+	*v = EnumRiskPolicySetTriggerType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumRiskPolicySetTriggerTypeFromValue returns a pointer to a valid EnumRiskPolicySetTriggerType

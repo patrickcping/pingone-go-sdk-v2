@@ -42,7 +42,8 @@ func (v *EnumPredictorVelocityFallbackStrategy) UnmarshalJSON(src []byte) error 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumPredictorVelocityFallbackStrategy", value)
+	*v = EnumPredictorVelocityFallbackStrategy(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumPredictorVelocityFallbackStrategyFromValue returns a pointer to a valid EnumPredictorVelocityFallbackStrategy

@@ -42,7 +42,8 @@ func (v *EnumResultType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumResultType", value)
+	*v = EnumResultType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumResultTypeFromValue returns a pointer to a valid EnumResultType

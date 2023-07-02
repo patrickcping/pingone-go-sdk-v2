@@ -42,7 +42,8 @@ func (v *EnumFormCategory) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFormCategory", value)
+	*v = EnumFormCategory(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFormCategoryFromValue returns a pointer to a valid EnumFormCategory

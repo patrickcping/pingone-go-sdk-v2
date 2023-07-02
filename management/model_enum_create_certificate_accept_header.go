@@ -42,7 +42,8 @@ func (v *EnumCreateCertificateAcceptHeader) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCreateCertificateAcceptHeader", value)
+	*v = EnumCreateCertificateAcceptHeader(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCreateCertificateAcceptHeaderFromValue returns a pointer to a valid EnumCreateCertificateAcceptHeader

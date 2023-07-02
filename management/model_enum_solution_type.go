@@ -44,7 +44,8 @@ func (v *EnumSolutionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumSolutionType", value)
+	*v = EnumSolutionType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumSolutionTypeFromValue returns a pointer to a valid EnumSolutionType

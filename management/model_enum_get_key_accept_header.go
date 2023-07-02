@@ -46,7 +46,8 @@ func (v *EnumGetKeyAcceptHeader) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumGetKeyAcceptHeader", value)
+	*v = EnumGetKeyAcceptHeader(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumGetKeyAcceptHeaderFromValue returns a pointer to a valid EnumGetKeyAcceptHeader

@@ -44,7 +44,8 @@ func (v *EnumMFASettingsPairingKeyFormat) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumMFASettingsPairingKeyFormat", value)
+	*v = EnumMFASettingsPairingKeyFormat(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumMFASettingsPairingKeyFormatFromValue returns a pointer to a valid EnumMFASettingsPairingKeyFormat

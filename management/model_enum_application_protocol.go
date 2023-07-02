@@ -48,7 +48,8 @@ func (v *EnumApplicationProtocol) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationProtocol", value)
+	*v = EnumApplicationProtocol(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationProtocolFromValue returns a pointer to a valid EnumApplicationProtocol

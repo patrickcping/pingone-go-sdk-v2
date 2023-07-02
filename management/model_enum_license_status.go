@@ -48,7 +48,8 @@ func (v *EnumLicenseStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumLicenseStatus", value)
+	*v = EnumLicenseStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumLicenseStatusFromValue returns a pointer to a valid EnumLicenseStatus

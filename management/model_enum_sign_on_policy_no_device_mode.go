@@ -44,7 +44,8 @@ func (v *EnumSignOnPolicyNoDeviceMode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumSignOnPolicyNoDeviceMode", value)
+	*v = EnumSignOnPolicyNoDeviceMode(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumSignOnPolicyNoDeviceModeFromValue returns a pointer to a valid EnumSignOnPolicyNoDeviceMode

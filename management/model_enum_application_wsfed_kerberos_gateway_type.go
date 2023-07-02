@@ -42,7 +42,8 @@ func (v *EnumApplicationWSFEDKerberosGatewayType) UnmarshalJSON(src []byte) erro
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationWSFEDKerberosGatewayType", value)
+	*v = EnumApplicationWSFEDKerberosGatewayType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationWSFEDKerberosGatewayTypeFromValue returns a pointer to a valid EnumApplicationWSFEDKerberosGatewayType

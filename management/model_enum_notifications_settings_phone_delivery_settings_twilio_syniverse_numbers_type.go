@@ -46,7 +46,8 @@ func (v *EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersTyp
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType", value)
+	*v = EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersTypeFromValue returns a pointer to a valid EnumNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseNumbersType

@@ -44,7 +44,8 @@ func (v *EnumMFADevicePolicyMobileExtraVerification) UnmarshalJSON(src []byte) e
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumMFADevicePolicyMobileExtraVerification", value)
+	*v = EnumMFADevicePolicyMobileExtraVerification(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumMFADevicePolicyMobileExtraVerificationFromValue returns a pointer to a valid EnumMFADevicePolicyMobileExtraVerification

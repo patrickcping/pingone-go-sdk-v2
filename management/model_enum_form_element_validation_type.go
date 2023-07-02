@@ -44,7 +44,8 @@ func (v *EnumFormElementValidationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFormElementValidationType", value)
+	*v = EnumFormElementValidationType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFormElementValidationTypeFromValue returns a pointer to a valid EnumFormElementValidationType

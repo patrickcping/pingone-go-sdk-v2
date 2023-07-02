@@ -44,7 +44,8 @@ func (v *EnumGatewayPasswordAuthority) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumGatewayPasswordAuthority", value)
+	*v = EnumGatewayPasswordAuthority(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumGatewayPasswordAuthorityFromValue returns a pointer to a valid EnumGatewayPasswordAuthority

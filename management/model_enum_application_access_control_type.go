@@ -42,7 +42,8 @@ func (v *EnumApplicationAccessControlType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationAccessControlType", value)
+	*v = EnumApplicationAccessControlType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationAccessControlTypeFromValue returns a pointer to a valid EnumApplicationAccessControlType

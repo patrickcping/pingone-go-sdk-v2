@@ -42,7 +42,8 @@ func (v *EnumUserType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumUserType", value)
+	*v = EnumUserType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumUserTypeFromValue returns a pointer to a valid EnumUserType

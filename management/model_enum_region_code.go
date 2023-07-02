@@ -48,7 +48,8 @@ func (v *EnumRegionCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumRegionCode", value)
+	*v = EnumRegionCode(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumRegionCodeFromValue returns a pointer to a valid EnumRegionCode

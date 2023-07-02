@@ -44,7 +44,8 @@ func (v *EnumDistanceUnit) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumDistanceUnit", value)
+	*v = EnumDistanceUnit(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumDistanceUnitFromValue returns a pointer to a valid EnumDistanceUnit

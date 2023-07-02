@@ -46,7 +46,8 @@ func (v *EnumFormItemAlignment) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFormItemAlignment", value)
+	*v = EnumFormItemAlignment(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFormItemAlignmentFromValue returns a pointer to a valid EnumFormItemAlignment

@@ -46,7 +46,8 @@ func (v *EnumSchemaAttributeSchemaType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumSchemaAttributeSchemaType", value)
+	*v = EnumSchemaAttributeSchemaType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumSchemaAttributeSchemaTypeFromValue returns a pointer to a valid EnumSchemaAttributeSchemaType

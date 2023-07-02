@@ -112,7 +112,13 @@ var (
 	dst.FormFieldSubmitButton = nil
 	dst.FormFieldText = nil
 
-	switch common.GetType() {
+	objType := common.GetType()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
 	case ENUMFORMFIELDTYPE_TEXT:
 		if err := json.Unmarshal(data, &dst.FormFieldText); err != nil {
 			return err
@@ -209,7 +215,13 @@ var (
 	dst.NotificationsSettingsPhoneDeliverySettingsCustom = nil
 	dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse = nil
 
-	switch common.GetProvider() {
+	objProvider := common.GetProvider()
+
+	if !objProvider.IsValid() {
+		return nil
+	}
+
+	switch objProvider {
 	case ENUMNOTIFICATIONSSETTINGSPHONEDELIVERYSETTINGSPROVIDER_TWILIO:
 		if err := json.Unmarshal(data, &dst.NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse); err != nil {
 			return err

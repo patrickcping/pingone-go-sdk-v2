@@ -46,7 +46,8 @@ func (v *EnumIdentityProviderOIDCTokenAuthMethod) UnmarshalJSON(src []byte) erro
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumIdentityProviderOIDCTokenAuthMethod", value)
+	*v = EnumIdentityProviderOIDCTokenAuthMethod(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumIdentityProviderOIDCTokenAuthMethodFromValue returns a pointer to a valid EnumIdentityProviderOIDCTokenAuthMethod

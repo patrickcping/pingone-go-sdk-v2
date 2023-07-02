@@ -44,7 +44,8 @@ func (v *EnumCredentialIssuanceRuleAutomationMethod) UnmarshalJSON(src []byte) e
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCredentialIssuanceRuleAutomationMethod", value)
+	*v = EnumCredentialIssuanceRuleAutomationMethod(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCredentialIssuanceRuleAutomationMethodFromValue returns a pointer to a valid EnumCredentialIssuanceRuleAutomationMethod

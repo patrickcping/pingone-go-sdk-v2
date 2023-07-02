@@ -46,7 +46,8 @@ func (v *EnumApplicationOIDCPKCEOption) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationOIDCPKCEOption", value)
+	*v = EnumApplicationOIDCPKCEOption(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationOIDCPKCEOptionFromValue returns a pointer to a valid EnumApplicationOIDCPKCEOption

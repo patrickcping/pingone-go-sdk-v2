@@ -42,7 +42,8 @@ func (v *EnumFlowType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFlowType", value)
+	*v = EnumFlowType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFlowTypeFromValue returns a pointer to a valid EnumFlowType

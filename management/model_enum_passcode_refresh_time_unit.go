@@ -42,7 +42,8 @@ func (v *EnumPasscodeRefreshTimeUnit) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumPasscodeRefreshTimeUnit", value)
+	*v = EnumPasscodeRefreshTimeUnit(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumPasscodeRefreshTimeUnitFromValue returns a pointer to a valid EnumPasscodeRefreshTimeUnit

@@ -46,7 +46,8 @@ func (v *EnumAlertChannelSeverity) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumAlertChannelSeverity", value)
+	*v = EnumAlertChannelSeverity(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumAlertChannelSeverityFromValue returns a pointer to a valid EnumAlertChannelSeverity

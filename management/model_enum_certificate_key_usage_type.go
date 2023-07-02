@@ -48,7 +48,8 @@ func (v *EnumCertificateKeyUsageType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCertificateKeyUsageType", value)
+	*v = EnumCertificateKeyUsageType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCertificateKeyUsageTypeFromValue returns a pointer to a valid EnumCertificateKeyUsageType

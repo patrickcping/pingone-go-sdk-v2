@@ -66,7 +66,8 @@ func (v *EnumIdentityProvider) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumIdentityProvider", value)
+	*v = EnumIdentityProvider(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumIdentityProviderFromValue returns a pointer to a valid EnumIdentityProvider

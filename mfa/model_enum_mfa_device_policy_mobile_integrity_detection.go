@@ -44,7 +44,8 @@ func (v *EnumMFADevicePolicyMobileIntegrityDetection) UnmarshalJSON(src []byte) 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumMFADevicePolicyMobileIntegrityDetection", value)
+	*v = EnumMFADevicePolicyMobileIntegrityDetection(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumMFADevicePolicyMobileIntegrityDetectionFromValue returns a pointer to a valid EnumMFADevicePolicyMobileIntegrityDetection

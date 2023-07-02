@@ -48,7 +48,8 @@ func (v *EnumRegionCodeLicense) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumRegionCodeLicense", value)
+	*v = EnumRegionCodeLicense(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumRegionCodeLicenseFromValue returns a pointer to a valid EnumRegionCodeLicense

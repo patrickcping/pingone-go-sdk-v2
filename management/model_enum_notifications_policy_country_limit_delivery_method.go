@@ -44,7 +44,8 @@ func (v *EnumNotificationsPolicyCountryLimitDeliveryMethod) UnmarshalJSON(src []
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsPolicyCountryLimitDeliveryMethod", value)
+	*v = EnumNotificationsPolicyCountryLimitDeliveryMethod(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsPolicyCountryLimitDeliveryMethodFromValue returns a pointer to a valid EnumNotificationsPolicyCountryLimitDeliveryMethod

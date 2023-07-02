@@ -48,7 +48,8 @@ func (v *EnumApplicationOIDCGrantType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationOIDCGrantType", value)
+	*v = EnumApplicationOIDCGrantType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationOIDCGrantTypeFromValue returns a pointer to a valid EnumApplicationOIDCGrantType

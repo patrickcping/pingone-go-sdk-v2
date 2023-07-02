@@ -48,7 +48,8 @@ func (v *EnumMFAPushCredentialAttrType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumMFAPushCredentialAttrType", value)
+	*v = EnumMFAPushCredentialAttrType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumMFAPushCredentialAttrTypeFromValue returns a pointer to a valid EnumMFAPushCredentialAttrType

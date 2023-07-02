@@ -46,7 +46,8 @@ func (v *EnumHealthStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumHealthStatus", value)
+	*v = EnumHealthStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumHealthStatusFromValue returns a pointer to a valid EnumHealthStatus
