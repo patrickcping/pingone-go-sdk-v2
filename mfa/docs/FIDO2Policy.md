@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | FIDO policy&#39;s UUID. | [optional] [readonly] 
+**Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **AttestationRequirements** | [**EnumFIDO2PolicyAttestationRequirements**](EnumFIDO2PolicyAttestationRequirements.md) |  | 
@@ -64,6 +65,31 @@ SetId sets Id field to given value.
 `func (o *FIDO2Policy) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetEnvironment
+
+`func (o *FIDO2Policy) GetEnvironment() ObjectEnvironment`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *FIDO2Policy) GetEnvironmentOk() (*ObjectEnvironment, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *FIDO2Policy) SetEnvironment(v ObjectEnvironment)`
+
+SetEnvironment sets Environment field to given value.
+
+### HasEnvironment
+
+`func (o *FIDO2Policy) HasEnvironment() bool`
+
+HasEnvironment returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
