@@ -9,14 +9,19 @@ import (
 	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
 	"github.com/patrickcping/pingone-go-sdk-v2/risk"
 	"github.com/patrickcping/pingone-go-sdk-v2/verify"
+	"golang.org/x/oauth2"
 )
 
 type Config struct {
-	ClientID      string
-	ClientSecret  string
-	EnvironmentID string
-	AccessToken   string
-	Region        string
+	ClientID                      string
+	ClientSecret                  string
+	EnvironmentID                 string
+	AccessToken                   string
+	Region                        string
+	APIHostnameOverride           *string
+	AgreementMgmtHostnameOverride *string
+	AuthHostnameOverride          *string
+	accessTokenObject             *oauth2.Token
 }
 
 type Client struct {
