@@ -42,7 +42,8 @@ func (v *EnumApplicationTags) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationTags", value)
+	*v = EnumApplicationTags(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationTagsFromValue returns a pointer to a valid EnumApplicationTags

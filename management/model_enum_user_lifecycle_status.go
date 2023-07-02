@@ -44,7 +44,8 @@ func (v *EnumUserLifecycleStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumUserLifecycleStatus", value)
+	*v = EnumUserLifecycleStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumUserLifecycleStatusFromValue returns a pointer to a valid EnumUserLifecycleStatus

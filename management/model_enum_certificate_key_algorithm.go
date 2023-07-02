@@ -46,7 +46,8 @@ func (v *EnumCertificateKeyAlgorithm) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCertificateKeyAlgorithm", value)
+	*v = EnumCertificateKeyAlgorithm(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCertificateKeyAlgorithmFromValue returns a pointer to a valid EnumCertificateKeyAlgorithm

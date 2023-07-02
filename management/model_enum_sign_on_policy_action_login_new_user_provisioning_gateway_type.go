@@ -42,7 +42,8 @@ func (v *EnumSignOnPolicyActionLoginNewUserProvisioningGatewayType) UnmarshalJSO
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumSignOnPolicyActionLoginNewUserProvisioningGatewayType", value)
+	*v = EnumSignOnPolicyActionLoginNewUserProvisioningGatewayType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumSignOnPolicyActionLoginNewUserProvisioningGatewayTypeFromValue returns a pointer to a valid EnumSignOnPolicyActionLoginNewUserProvisioningGatewayType

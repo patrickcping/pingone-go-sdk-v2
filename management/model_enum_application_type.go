@@ -62,7 +62,8 @@ func (v *EnumApplicationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationType", value)
+	*v = EnumApplicationType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationTypeFromValue returns a pointer to a valid EnumApplicationType

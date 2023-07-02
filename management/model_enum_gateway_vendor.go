@@ -56,7 +56,8 @@ func (v *EnumGatewayVendor) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumGatewayVendor", value)
+	*v = EnumGatewayVendor(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumGatewayVendorFromValue returns a pointer to a valid EnumGatewayVendor

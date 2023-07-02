@@ -46,7 +46,8 @@ func (v *EnumMFADevicePolicySelection) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumMFADevicePolicySelection", value)
+	*v = EnumMFADevicePolicySelection(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumMFADevicePolicySelectionFromValue returns a pointer to a valid EnumMFADevicePolicySelection

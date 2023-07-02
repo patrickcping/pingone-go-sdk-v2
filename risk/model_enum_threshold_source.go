@@ -48,7 +48,8 @@ func (v *EnumThresholdSource) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumThresholdSource", value)
+	*v = EnumThresholdSource(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumThresholdSourceFromValue returns a pointer to a valid EnumThresholdSource

@@ -44,7 +44,8 @@ func (v *EnumCSRExportHeader) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCSRExportHeader", value)
+	*v = EnumCSRExportHeader(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCSRExportHeaderFromValue returns a pointer to a valid EnumCSRExportHeader

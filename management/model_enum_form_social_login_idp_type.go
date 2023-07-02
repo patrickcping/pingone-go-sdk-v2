@@ -66,7 +66,8 @@ func (v *EnumFormSocialLoginIdpType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFormSocialLoginIdpType", value)
+	*v = EnumFormSocialLoginIdpType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFormSocialLoginIdpTypeFromValue returns a pointer to a valid EnumFormSocialLoginIdpType

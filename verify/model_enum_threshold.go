@@ -46,7 +46,8 @@ func (v *EnumThreshold) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumThreshold", value)
+	*v = EnumThreshold(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumThresholdFromValue returns a pointer to a valid EnumThreshold

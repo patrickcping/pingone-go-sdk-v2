@@ -44,7 +44,8 @@ func (v *EnumCustomDomainPostHeader) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCustomDomainPostHeader", value)
+	*v = EnumCustomDomainPostHeader(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCustomDomainPostHeaderFromValue returns a pointer to a valid EnumCustomDomainPostHeader

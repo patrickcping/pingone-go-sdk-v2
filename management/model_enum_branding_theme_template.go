@@ -50,7 +50,8 @@ func (v *EnumBrandingThemeTemplate) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumBrandingThemeTemplate", value)
+	*v = EnumBrandingThemeTemplate(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumBrandingThemeTemplateFromValue returns a pointer to a valid EnumBrandingThemeTemplate

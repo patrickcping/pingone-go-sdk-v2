@@ -44,7 +44,8 @@ func (v *EnumNotificationsPolicyQuotaItemType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsPolicyQuotaItemType", value)
+	*v = EnumNotificationsPolicyQuotaItemType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsPolicyQuotaItemTypeFromValue returns a pointer to a valid EnumNotificationsPolicyQuotaItemType

@@ -44,7 +44,8 @@ func (v *EnumCredentialIssuanceRuleStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCredentialIssuanceRuleStatus", value)
+	*v = EnumCredentialIssuanceRuleStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCredentialIssuanceRuleStatusFromValue returns a pointer to a valid EnumCredentialIssuanceRuleStatus

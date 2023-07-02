@@ -44,7 +44,8 @@ func (v *EnumFormElementLabelMode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFormElementLabelMode", value)
+	*v = EnumFormElementLabelMode(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFormElementLabelModeFromValue returns a pointer to a valid EnumFormElementLabelMode

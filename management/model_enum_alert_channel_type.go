@@ -42,7 +42,8 @@ func (v *EnumAlertChannelType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumAlertChannelType", value)
+	*v = EnumAlertChannelType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumAlertChannelTypeFromValue returns a pointer to a valid EnumAlertChannelType

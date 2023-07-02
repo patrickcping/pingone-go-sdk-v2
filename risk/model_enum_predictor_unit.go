@@ -44,7 +44,8 @@ func (v *EnumPredictorUnit) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumPredictorUnit", value)
+	*v = EnumPredictorUnit(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumPredictorUnitFromValue returns a pointer to a valid EnumPredictorUnit

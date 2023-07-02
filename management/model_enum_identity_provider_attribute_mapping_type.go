@@ -44,7 +44,8 @@ func (v *EnumIdentityProviderAttributeMappingType) UnmarshalJSON(src []byte) err
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumIdentityProviderAttributeMappingType", value)
+	*v = EnumIdentityProviderAttributeMappingType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumIdentityProviderAttributeMappingTypeFromValue returns a pointer to a valid EnumIdentityProviderAttributeMappingType

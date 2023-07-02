@@ -50,7 +50,8 @@ func (v *EnumGatewayType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumGatewayType", value)
+	*v = EnumGatewayType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumGatewayTypeFromValue returns a pointer to a valid EnumGatewayType

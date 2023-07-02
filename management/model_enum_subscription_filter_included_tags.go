@@ -42,7 +42,8 @@ func (v *EnumSubscriptionFilterIncludedTags) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumSubscriptionFilterIncludedTags", value)
+	*v = EnumSubscriptionFilterIncludedTags(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumSubscriptionFilterIncludedTagsFromValue returns a pointer to a valid EnumSubscriptionFilterIncludedTags

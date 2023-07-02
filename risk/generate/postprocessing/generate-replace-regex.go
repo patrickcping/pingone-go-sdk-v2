@@ -72,7 +72,13 @@ var (
 	dst.RiskPredictorUserLocationAnomaly = nil
 	dst.RiskPredictorVelocity = nil
 
-	switch common.GetType() {
+	objType := common.GetType()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
 	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
 		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil {
 			return err

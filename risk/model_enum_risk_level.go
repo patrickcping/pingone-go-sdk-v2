@@ -46,7 +46,8 @@ func (v *EnumRiskLevel) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumRiskLevel", value)
+	*v = EnumRiskLevel(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumRiskLevelFromValue returns a pointer to a valid EnumRiskLevel

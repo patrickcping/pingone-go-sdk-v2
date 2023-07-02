@@ -46,7 +46,8 @@ func (v *EnumTemplateContentPushCategory) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumTemplateContentPushCategory", value)
+	*v = EnumTemplateContentPushCategory(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumTemplateContentPushCategoryFromValue returns a pointer to a valid EnumTemplateContentPushCategory

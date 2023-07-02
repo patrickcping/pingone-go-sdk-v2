@@ -42,7 +42,8 @@ func (v *EnumFlowPolicyTriggerType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFlowPolicyTriggerType", value)
+	*v = EnumFlowPolicyTriggerType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFlowPolicyTriggerTypeFromValue returns a pointer to a valid EnumFlowPolicyTriggerType

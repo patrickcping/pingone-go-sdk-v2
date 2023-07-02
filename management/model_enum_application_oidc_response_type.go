@@ -46,7 +46,8 @@ func (v *EnumApplicationOIDCResponseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationOIDCResponseType", value)
+	*v = EnumApplicationOIDCResponseType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationOIDCResponseTypeFromValue returns a pointer to a valid EnumApplicationOIDCResponseType

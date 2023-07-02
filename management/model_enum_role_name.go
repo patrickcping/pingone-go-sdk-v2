@@ -62,7 +62,8 @@ func (v *EnumRoleName) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumRoleName", value)
+	*v = EnumRoleName(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumRoleNameFromValue returns a pointer to a valid EnumRoleName

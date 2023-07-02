@@ -44,7 +44,8 @@ func (v *EnumApplicationNativeGooglePlayVerificationType) UnmarshalJSON(src []by
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumApplicationNativeGooglePlayVerificationType", value)
+	*v = EnumApplicationNativeGooglePlayVerificationType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumApplicationNativeGooglePlayVerificationTypeFromValue returns a pointer to a valid EnumApplicationNativeGooglePlayVerificationType

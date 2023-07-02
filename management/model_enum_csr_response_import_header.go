@@ -42,7 +42,8 @@ func (v *EnumCSRResponseImportHeader) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCSRResponseImportHeader", value)
+	*v = EnumCSRResponseImportHeader(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCSRResponseImportHeaderFromValue returns a pointer to a valid EnumCSRResponseImportHeader

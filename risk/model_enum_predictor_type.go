@@ -58,7 +58,8 @@ func (v *EnumPredictorType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumPredictorType", value)
+	*v = EnumPredictorType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumPredictorTypeFromValue returns a pointer to a valid EnumPredictorType

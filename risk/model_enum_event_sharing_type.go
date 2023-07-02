@@ -46,7 +46,8 @@ func (v *EnumEventSharingType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumEventSharingType", value)
+	*v = EnumEventSharingType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumEventSharingTypeFromValue returns a pointer to a valid EnumEventSharingType

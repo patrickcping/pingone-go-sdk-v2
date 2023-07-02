@@ -44,7 +44,8 @@ func (v *EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability) 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability", value)
+	*v = EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapabilityFromValue returns a pointer to a valid EnumNotificationsSettingsPhoneDeliverySettingsCustomNumbersCapability

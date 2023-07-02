@@ -42,7 +42,8 @@ func (v *EnumNotificationsSettingsDeliveryMode) UnmarshalJSON(src []byte) error 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsSettingsDeliveryMode", value)
+	*v = EnumNotificationsSettingsDeliveryMode(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsSettingsDeliveryModeFromValue returns a pointer to a valid EnumNotificationsSettingsDeliveryMode

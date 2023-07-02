@@ -42,7 +42,8 @@ func (v *EnumPredictorVelocityUseType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumPredictorVelocityUseType", value)
+	*v = EnumPredictorVelocityUseType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumPredictorVelocityUseTypeFromValue returns a pointer to a valid EnumPredictorVelocityUseType

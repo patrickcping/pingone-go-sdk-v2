@@ -46,7 +46,8 @@ func (v *EnumResourceAttributeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumResourceAttributeType", value)
+	*v = EnumResourceAttributeType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumResourceAttributeTypeFromValue returns a pointer to a valid EnumResourceAttributeType

@@ -44,7 +44,8 @@ func (v *EnumIdentityProviderSAMLSSOBinding) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumIdentityProviderSAMLSSOBinding", value)
+	*v = EnumIdentityProviderSAMLSSOBinding(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumIdentityProviderSAMLSSOBindingFromValue returns a pointer to a valid EnumIdentityProviderSAMLSSOBinding

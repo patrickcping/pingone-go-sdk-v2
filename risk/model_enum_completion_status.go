@@ -46,7 +46,8 @@ func (v *EnumCompletionStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCompletionStatus", value)
+	*v = EnumCompletionStatus(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCompletionStatusFromValue returns a pointer to a valid EnumCompletionStatus

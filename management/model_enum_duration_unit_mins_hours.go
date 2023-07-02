@@ -44,7 +44,8 @@ func (v *EnumDurationUnitMinsHours) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumDurationUnitMinsHours", value)
+	*v = EnumDurationUnitMinsHours(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumDurationUnitMinsHoursFromValue returns a pointer to a valid EnumDurationUnitMinsHours

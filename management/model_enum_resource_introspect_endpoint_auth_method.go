@@ -46,7 +46,8 @@ func (v *EnumResourceIntrospectEndpointAuthMethod) UnmarshalJSON(src []byte) err
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumResourceIntrospectEndpointAuthMethod", value)
+	*v = EnumResourceIntrospectEndpointAuthMethod(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumResourceIntrospectEndpointAuthMethodFromValue returns a pointer to a valid EnumResourceIntrospectEndpointAuthMethod

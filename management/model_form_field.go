@@ -183,7 +183,13 @@ func (dst *FormField) UnmarshalJSON(data []byte) error {
 	dst.FormFieldSubmitButton = nil
 	dst.FormFieldText = nil
 
-	switch common.GetType() {
+	objType := common.GetType()
+
+	if !objType.IsValid() {
+		return nil
+	}
+
+	switch objType {
 	case ENUMFORMFIELDTYPE_TEXT:
 		if err := json.Unmarshal(data, &dst.FormFieldText); err != nil {
 			return err

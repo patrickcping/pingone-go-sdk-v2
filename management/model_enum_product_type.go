@@ -84,7 +84,8 @@ func (v *EnumProductType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumProductType", value)
+	*v = EnumProductType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumProductTypeFromValue returns a pointer to a valid EnumProductType

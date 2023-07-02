@@ -44,7 +44,8 @@ func (v *EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod) Unmarsh
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod", value)
+	*v = EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethodFromValue returns a pointer to a valid EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod

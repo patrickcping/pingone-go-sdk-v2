@@ -46,7 +46,8 @@ func (v *EnumSignOnPolicyExtraVerification) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumSignOnPolicyExtraVerification", value)
+	*v = EnumSignOnPolicyExtraVerification(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumSignOnPolicyExtraVerificationFromValue returns a pointer to a valid EnumSignOnPolicyExtraVerification

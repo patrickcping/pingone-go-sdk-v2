@@ -48,7 +48,8 @@ func (v *EnumCDigitalWalletProvisionedCredentialWalletAction) UnmarshalJSON(src 
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCDigitalWalletProvisionedCredentialWalletAction", value)
+	*v = EnumCDigitalWalletProvisionedCredentialWalletAction(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCDigitalWalletProvisionedCredentialWalletActionFromValue returns a pointer to a valid EnumCDigitalWalletProvisionedCredentialWalletAction

@@ -46,7 +46,8 @@ func (v *EnumOrganizationType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumOrganizationType", value)
+	*v = EnumOrganizationType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumOrganizationTypeFromValue returns a pointer to a valid EnumOrganizationType

@@ -48,7 +48,8 @@ func (v *EnumRiskPolicyConditionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumRiskPolicyConditionType", value)
+	*v = EnumRiskPolicyConditionType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumRiskPolicyConditionTypeFromValue returns a pointer to a valid EnumRiskPolicyConditionType

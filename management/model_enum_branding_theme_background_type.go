@@ -48,7 +48,8 @@ func (v *EnumBrandingThemeBackgroundType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumBrandingThemeBackgroundType", value)
+	*v = EnumBrandingThemeBackgroundType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumBrandingThemeBackgroundTypeFromValue returns a pointer to a valid EnumBrandingThemeBackgroundType

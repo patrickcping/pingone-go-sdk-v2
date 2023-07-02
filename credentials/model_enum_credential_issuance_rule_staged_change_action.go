@@ -46,7 +46,8 @@ func (v *EnumCredentialIssuanceRuleStagedChangeAction) UnmarshalJSON(src []byte)
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumCredentialIssuanceRuleStagedChangeAction", value)
+	*v = EnumCredentialIssuanceRuleStagedChangeAction(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumCredentialIssuanceRuleStagedChangeActionFromValue returns a pointer to a valid EnumCredentialIssuanceRuleStagedChangeAction

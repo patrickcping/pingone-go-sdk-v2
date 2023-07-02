@@ -44,7 +44,8 @@ func (v *EnumFormElementLayout) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFormElementLayout", value)
+	*v = EnumFormElementLayout(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFormElementLayoutFromValue returns a pointer to a valid EnumFormElementLayout

@@ -44,7 +44,8 @@ func (v *EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat) Unmar
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat", value)
+	*v = EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormatFromValue returns a pointer to a valid EnumNotificationsSettingsPhoneDeliverySettingsCustomNumberFormat

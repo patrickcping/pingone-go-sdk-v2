@@ -50,7 +50,8 @@ func (v *EnumPredictorCompositeConditionType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumPredictorCompositeConditionType", value)
+	*v = EnumPredictorCompositeConditionType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumPredictorCompositeConditionTypeFromValue returns a pointer to a valid EnumPredictorCompositeConditionType

@@ -46,7 +46,8 @@ func (v *EnumNotificationsPolicyCountryLimitType) UnmarshalJSON(src []byte) erro
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumNotificationsPolicyCountryLimitType", value)
+	*v = EnumNotificationsPolicyCountryLimitType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumNotificationsPolicyCountryLimitTypeFromValue returns a pointer to a valid EnumNotificationsPolicyCountryLimitType

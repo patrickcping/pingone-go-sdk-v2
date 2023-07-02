@@ -44,7 +44,8 @@ func (v *EnumFIDOResidentKeyRequirement) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFIDOResidentKeyRequirement", value)
+	*v = EnumFIDOResidentKeyRequirement(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFIDOResidentKeyRequirementFromValue returns a pointer to a valid EnumFIDOResidentKeyRequirement

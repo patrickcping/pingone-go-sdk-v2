@@ -42,7 +42,8 @@ func (v *EnumKeyRotationPolicyAlgorithm) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumKeyRotationPolicyAlgorithm", value)
+	*v = EnumKeyRotationPolicyAlgorithm(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumKeyRotationPolicyAlgorithmFromValue returns a pointer to a valid EnumKeyRotationPolicyAlgorithm

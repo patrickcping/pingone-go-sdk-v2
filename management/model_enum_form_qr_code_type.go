@@ -42,7 +42,8 @@ func (v *EnumFormQrCodeType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid EnumFormQrCodeType", value)
+	*v = EnumFormQrCodeType(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil
 }
 
 // NewEnumFormQrCodeTypeFromValue returns a pointer to a valid EnumFormQrCodeType
