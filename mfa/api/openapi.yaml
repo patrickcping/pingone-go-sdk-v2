@@ -1305,7 +1305,7 @@ paths:
       - FIDO Policy
   /environments/{environmentID}/fido2Policies:
     get:
-      operationId: readFido2Policies
+      operationId: readFIDO2Policies
       parameters:
       - explode: false
         in: path
@@ -1362,7 +1362,7 @@ paths:
       tags:
       - FIDO2 Policy
     post:
-      operationId: createFido2Policy
+      operationId: createFIDO2Policy
       parameters:
       - explode: false
         in: path
@@ -1432,7 +1432,7 @@ paths:
       - FIDO2 Policy
   /environments/{environmentID}/fido2Policies/{fido2PolicyID}:
     delete:
-      operationId: deleteFido2Policy
+      operationId: deleteFIDO2Policy
       parameters:
       - explode: false
         in: path
@@ -1492,7 +1492,7 @@ paths:
       tags:
       - FIDO2 Policy
     get:
-      operationId: readOneFido2Policy
+      operationId: readOneFIDO2Policy
       parameters:
       - explode: false
         in: path

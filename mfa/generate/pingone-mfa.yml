@@ -1664,7 +1664,7 @@ paths:
       tags:
         - FIDO2 Policy
       summary: READ FIDO2 Policies
-      operationId: readFido2Policies
+      operationId: readFIDO2Policies
       parameters:
         - name: environmentID
           in: path
@@ -1694,7 +1694,7 @@ paths:
       tags:
         - FIDO2 Policy
       summary: CREATE FIDO2 Policy
-      operationId: createFido2Policy
+      operationId: createFIDO2Policy
       requestBody:
         content:
           application/json:
@@ -1732,7 +1732,7 @@ paths:
       tags:
         - FIDO2 Policy
       summary: READ One FIDO2 Policy
-      operationId: readOneFido2Policy
+      operationId: readOneFIDO2Policy
       parameters:
         - name: environmentID
           in: path
@@ -1812,7 +1812,7 @@ paths:
       tags:
         - FIDO2 Policy
       summary: DELETE FIDO2 Policy
-      operationId: deleteFido2Policy
+      operationId: deleteFIDO2Policy
       parameters:
         - name: environmentID
           in: path

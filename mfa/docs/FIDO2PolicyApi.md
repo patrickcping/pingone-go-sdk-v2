@@ -4,17 +4,17 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFido2Policy**](FIDO2PolicyApi.md#CreateFido2Policy) | **Post** /environments/{environmentID}/fido2Policies | CREATE FIDO2 Policy
-[**DeleteFido2Policy**](FIDO2PolicyApi.md#DeleteFido2Policy) | **Delete** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | DELETE FIDO2 Policy
-[**ReadFido2Policies**](FIDO2PolicyApi.md#ReadFido2Policies) | **Get** /environments/{environmentID}/fido2Policies | READ FIDO2 Policies
-[**ReadOneFido2Policy**](FIDO2PolicyApi.md#ReadOneFido2Policy) | **Get** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | READ One FIDO2 Policy
+[**CreateFIDO2Policy**](FIDO2PolicyApi.md#CreateFIDO2Policy) | **Post** /environments/{environmentID}/fido2Policies | CREATE FIDO2 Policy
+[**DeleteFIDO2Policy**](FIDO2PolicyApi.md#DeleteFIDO2Policy) | **Delete** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | DELETE FIDO2 Policy
+[**ReadFIDO2Policies**](FIDO2PolicyApi.md#ReadFIDO2Policies) | **Get** /environments/{environmentID}/fido2Policies | READ FIDO2 Policies
+[**ReadOneFIDO2Policy**](FIDO2PolicyApi.md#ReadOneFIDO2Policy) | **Get** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | READ One FIDO2 Policy
 [**UpdateFIDO2Policy**](FIDO2PolicyApi.md#UpdateFIDO2Policy) | **Put** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | UPDATE FIDO2 Policy
 
 
 
-## CreateFido2Policy
+## CreateFIDO2Policy
 
-> FIDO2Policy CreateFido2Policy(ctx, environmentID).FIDO2Policy(fIDO2Policy).Execute()
+> FIDO2Policy CreateFIDO2Policy(ctx, environmentID).FIDO2Policy(fIDO2Policy).Execute()
 
 CREATE FIDO2 Policy
 
@@ -36,13 +36,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDO2PolicyApi.CreateFido2Policy(context.Background(), environmentID).FIDO2Policy(fIDO2Policy).Execute()
+    resp, r, err := apiClient.FIDO2PolicyApi.CreateFIDO2Policy(context.Background(), environmentID).FIDO2Policy(fIDO2Policy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDO2PolicyApi.CreateFido2Policy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FIDO2PolicyApi.CreateFIDO2Policy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateFido2Policy`: FIDO2Policy
-    fmt.Fprintf(os.Stdout, "Response from `FIDO2PolicyApi.CreateFido2Policy`: %v\n", resp)
+    // response from `CreateFIDO2Policy`: FIDO2Policy
+    fmt.Fprintf(os.Stdout, "Response from `FIDO2PolicyApi.CreateFIDO2Policy`: %v\n", resp)
 }
 ```
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateFido2PolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateFIDO2PolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteFido2Policy
+## DeleteFIDO2Policy
 
-> DeleteFido2Policy(ctx, environmentID, fido2PolicyID).Execute()
+> DeleteFIDO2Policy(ctx, environmentID, fido2PolicyID).Execute()
 
 DELETE FIDO2 Policy
 
@@ -106,9 +106,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.FIDO2PolicyApi.DeleteFido2Policy(context.Background(), environmentID, fido2PolicyID).Execute()
+    r, err := apiClient.FIDO2PolicyApi.DeleteFIDO2Policy(context.Background(), environmentID, fido2PolicyID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDO2PolicyApi.DeleteFido2Policy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FIDO2PolicyApi.DeleteFIDO2Policy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteFido2PolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteFIDO2PolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -151,9 +151,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReadFido2Policies
+## ReadFIDO2Policies
 
-> EntityArray ReadFido2Policies(ctx, environmentID).Execute()
+> EntityArray ReadFIDO2Policies(ctx, environmentID).Execute()
 
 READ FIDO2 Policies
 
@@ -174,13 +174,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDO2PolicyApi.ReadFido2Policies(context.Background(), environmentID).Execute()
+    resp, r, err := apiClient.FIDO2PolicyApi.ReadFIDO2Policies(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDO2PolicyApi.ReadFido2Policies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FIDO2PolicyApi.ReadFIDO2Policies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadFido2Policies`: EntityArray
-    fmt.Fprintf(os.Stdout, "Response from `FIDO2PolicyApi.ReadFido2Policies`: %v\n", resp)
+    // response from `ReadFIDO2Policies`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `FIDO2PolicyApi.ReadFIDO2Policies`: %v\n", resp)
 }
 ```
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadFido2PoliciesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadFIDO2PoliciesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -219,9 +219,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReadOneFido2Policy
+## ReadOneFIDO2Policy
 
-> FIDO2Policy ReadOneFido2Policy(ctx, environmentID, fido2PolicyID).Expand(expand).Execute()
+> FIDO2Policy ReadOneFIDO2Policy(ctx, environmentID, fido2PolicyID).Expand(expand).Execute()
 
 READ One FIDO2 Policy
 
@@ -244,13 +244,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FIDO2PolicyApi.ReadOneFido2Policy(context.Background(), environmentID, fido2PolicyID).Expand(expand).Execute()
+    resp, r, err := apiClient.FIDO2PolicyApi.ReadOneFIDO2Policy(context.Background(), environmentID, fido2PolicyID).Expand(expand).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `FIDO2PolicyApi.ReadOneFido2Policy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `FIDO2PolicyApi.ReadOneFIDO2Policy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneFido2Policy`: FIDO2Policy
-    fmt.Fprintf(os.Stdout, "Response from `FIDO2PolicyApi.ReadOneFido2Policy`: %v\n", resp)
+    // response from `ReadOneFIDO2Policy`: FIDO2Policy
+    fmt.Fprintf(os.Stdout, "Response from `FIDO2PolicyApi.ReadOneFIDO2Policy`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReadOneFido2PolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOneFIDO2PolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
