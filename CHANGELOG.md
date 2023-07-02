@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.9.0
+    * **Enhancement** Added ability to override the default server and server variables at the point of client init. [#206](https://github.com/patrickcping/pingone-go-sdk-v2/pull/206)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.2.0](./agreementmanagement/CHANGELOG.md)
     * **Enhancement** Add parameters `protocol`, `baseDomain` and `baseHostname` to server configuration. [#205](https://github.com/patrickcping/pingone-go-sdk-v2/pull/205)
     * **Enhancement** Add ability to set default server index and a server variable default value on the client configuration as an alternative option to setting them in the context. [#205](https://github.com/patrickcping/pingone-go-sdk-v2/pull/205)
