@@ -1,17 +1,17 @@
 # \CapabilitiesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDCapabilitiesGet**](CapabilitiesApi.md#V1EnvironmentsEnvironmentIDCapabilitiesGet) | **Get** /v1/environments/{environmentID}/capabilities | READ Environment Capabilities
-[**V1OrganizationsOrganizationIDCapabilitiesGet**](CapabilitiesApi.md#V1OrganizationsOrganizationIDCapabilitiesGet) | **Get** /v1/organizations/{organizationID}/capabilities | READ Organization Capabilities
+[**EnvironmentsEnvironmentIDCapabilitiesGet**](CapabilitiesApi.md#EnvironmentsEnvironmentIDCapabilitiesGet) | **Get** /environments/{environmentID}/capabilities | READ Environment Capabilities
+[**OrganizationsOrganizationIDCapabilitiesGet**](CapabilitiesApi.md#OrganizationsOrganizationIDCapabilitiesGet) | **Get** /organizations/{organizationID}/capabilities | READ Organization Capabilities
 
 
 
-## V1EnvironmentsEnvironmentIDCapabilitiesGet
+## EnvironmentsEnvironmentIDCapabilitiesGet
 
-> V1EnvironmentsEnvironmentIDCapabilitiesGet(ctx, environmentID).Execute()
+> EnvironmentsEnvironmentIDCapabilitiesGet(ctx, environmentID).Execute()
 
 READ Environment Capabilities
 
@@ -32,9 +32,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CapabilitiesApi.V1EnvironmentsEnvironmentIDCapabilitiesGet(context.Background(), environmentID).Execute()
+    r, err := apiClient.CapabilitiesApi.EnvironmentsEnvironmentIDCapabilitiesGet(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CapabilitiesApi.V1EnvironmentsEnvironmentIDCapabilitiesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CapabilitiesApi.EnvironmentsEnvironmentIDCapabilitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDCapabilitiesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDCapabilitiesGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -75,9 +75,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1OrganizationsOrganizationIDCapabilitiesGet
+## OrganizationsOrganizationIDCapabilitiesGet
 
-> V1OrganizationsOrganizationIDCapabilitiesGet(ctx, organizationID).Execute()
+> OrganizationsOrganizationIDCapabilitiesGet(ctx, organizationID).Execute()
 
 READ Organization Capabilities
 
@@ -98,9 +98,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CapabilitiesApi.V1OrganizationsOrganizationIDCapabilitiesGet(context.Background(), organizationID).Execute()
+    r, err := apiClient.CapabilitiesApi.OrganizationsOrganizationIDCapabilitiesGet(context.Background(), organizationID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CapabilitiesApi.V1OrganizationsOrganizationIDCapabilitiesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CapabilitiesApi.OrganizationsOrganizationIDCapabilitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1OrganizationsOrganizationIDCapabilitiesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiOrganizationsOrganizationIDCapabilitiesGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

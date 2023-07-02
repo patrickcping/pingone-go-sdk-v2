@@ -1,12 +1,12 @@
 # \RecaptchaConfigurationApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteRecaptchaConfiguration**](RecaptchaConfigurationApi.md#DeleteRecaptchaConfiguration) | **Delete** /v1/environments/{environmentID}/recaptchaV2Config | DELETE Recaptcha Configuration
-[**ReadRecaptchaConfiguration**](RecaptchaConfigurationApi.md#ReadRecaptchaConfiguration) | **Get** /v1/environments/{environmentID}/recaptchaV2Config | READ Recaptcha Configuration
-[**UpdateRecaptchaConfiguration**](RecaptchaConfigurationApi.md#UpdateRecaptchaConfiguration) | **Put** /v1/environments/{environmentID}/recaptchaV2Config | UPDATE Recaptcha Configuration
+[**DeleteRecaptchaConfiguration**](RecaptchaConfigurationApi.md#DeleteRecaptchaConfiguration) | **Delete** /environments/{environmentID}/recaptchaV2Config | DELETE Recaptcha Configuration
+[**ReadRecaptchaConfiguration**](RecaptchaConfigurationApi.md#ReadRecaptchaConfiguration) | **Get** /environments/{environmentID}/recaptchaV2Config | READ Recaptcha Configuration
+[**UpdateRecaptchaConfiguration**](RecaptchaConfigurationApi.md#UpdateRecaptchaConfiguration) | **Put** /environments/{environmentID}/recaptchaV2Config | UPDATE Recaptcha Configuration
 
 
 

@@ -1,14 +1,14 @@
 # \AlertingApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAlertChannel**](AlertingApi.md#CreateAlertChannel) | **Post** /v1/environments/{environmentID}/alertChannels | CREATE Alert Channel
-[**DeleteAlertChannel**](AlertingApi.md#DeleteAlertChannel) | **Delete** /v1/environments/{environmentID}/alertChannels/{alertChannelID} | DELETE Alert Channel
-[**ReadAllAlertChannels**](AlertingApi.md#ReadAllAlertChannels) | **Get** /v1/environments/{environmentID}/alertChannels | READ All Alert Channels
-[**ReadOneAlertChannel**](AlertingApi.md#ReadOneAlertChannel) | **Get** /v1/environments/{environmentID}/alertChannels/{alertChannelID} | READ One Alert Channel
-[**UpdateAlertChannel**](AlertingApi.md#UpdateAlertChannel) | **Put** /v1/environments/{environmentID}/alertChannels/{alertChannelID} | UPDATE Alert Channel
+[**CreateAlertChannel**](AlertingApi.md#CreateAlertChannel) | **Post** /environments/{environmentID}/alertChannels | CREATE Alert Channel
+[**DeleteAlertChannel**](AlertingApi.md#DeleteAlertChannel) | **Delete** /environments/{environmentID}/alertChannels/{alertChannelID} | DELETE Alert Channel
+[**ReadAllAlertChannels**](AlertingApi.md#ReadAllAlertChannels) | **Get** /environments/{environmentID}/alertChannels | READ All Alert Channels
+[**ReadOneAlertChannel**](AlertingApi.md#ReadOneAlertChannel) | **Get** /environments/{environmentID}/alertChannels/{alertChannelID} | READ One Alert Channel
+[**UpdateAlertChannel**](AlertingApi.md#UpdateAlertChannel) | **Put** /environments/{environmentID}/alertChannels/{alertChannelID} | UPDATE Alert Channel
 
 
 

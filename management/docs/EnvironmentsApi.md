@@ -1,15 +1,15 @@
 # \EnvironmentsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEnvironmentActiveLicense**](EnvironmentsApi.md#CreateEnvironmentActiveLicense) | **Post** /v1/environments | CREATE Environment (Active License)
-[**DeleteEnvironment**](EnvironmentsApi.md#DeleteEnvironment) | **Delete** /v1/environments/{environmentID} | DELETE Environment
-[**ReadAllEnvironments**](EnvironmentsApi.md#ReadAllEnvironments) | **Get** /v1/environments | READ All Environments
-[**ReadOneEnvironment**](EnvironmentsApi.md#ReadOneEnvironment) | **Get** /v1/environments/{environmentID} | READ One Environment
-[**UpdateEnvironment**](EnvironmentsApi.md#UpdateEnvironment) | **Put** /v1/environments/{environmentID} | UPDATE Environment
-[**UpdateEnvironmentType**](EnvironmentsApi.md#UpdateEnvironmentType) | **Put** /v1/environments/{environmentID}/type | UPDATE Environment Type
+[**CreateEnvironmentActiveLicense**](EnvironmentsApi.md#CreateEnvironmentActiveLicense) | **Post** /environments | CREATE Environment (Active License)
+[**DeleteEnvironment**](EnvironmentsApi.md#DeleteEnvironment) | **Delete** /environments/{environmentID} | DELETE Environment
+[**ReadAllEnvironments**](EnvironmentsApi.md#ReadAllEnvironments) | **Get** /environments | READ All Environments
+[**ReadOneEnvironment**](EnvironmentsApi.md#ReadOneEnvironment) | **Get** /environments/{environmentID} | READ One Environment
+[**UpdateEnvironment**](EnvironmentsApi.md#UpdateEnvironment) | **Put** /environments/{environmentID} | UPDATE Environment
+[**UpdateEnvironmentType**](EnvironmentsApi.md#UpdateEnvironmentType) | **Put** /environments/{environmentID}/type | UPDATE Environment Type
 
 
 

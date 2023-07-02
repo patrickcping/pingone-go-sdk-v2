@@ -1,11 +1,11 @@
 # \ResourceClientSecretApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateResourceSecret**](ResourceClientSecretApi.md#CreateResourceSecret) | **Post** /v1/environments/{environmentID}/resources/{resourceID}/secret | CREATE Resource Client Secret
-[**ReadResourceSecret**](ResourceClientSecretApi.md#ReadResourceSecret) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/secret | READ Resource Client Secret
+[**CreateResourceSecret**](ResourceClientSecretApi.md#CreateResourceSecret) | **Post** /environments/{environmentID}/resources/{resourceID}/secret | CREATE Resource Client Secret
+[**ReadResourceSecret**](ResourceClientSecretApi.md#ReadResourceSecret) | **Get** /environments/{environmentID}/resources/{resourceID}/secret | READ Resource Client Secret
 
 
 

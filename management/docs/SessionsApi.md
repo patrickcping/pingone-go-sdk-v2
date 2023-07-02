@@ -1,18 +1,18 @@
 # \SessionsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDSessionsGet**](SessionsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDSessionsGet) | **Get** /v1/environments/{environmentID}/users/{userID}/sessions | READ All Sessions
-[**V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete**](SessionsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/sessions/{sessionID} | DELETE Session
-[**V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet**](SessionsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/sessions/{sessionID} | READ One Session
+[**EnvironmentsEnvironmentIDUsersUserIDSessionsGet**](SessionsApi.md#EnvironmentsEnvironmentIDUsersUserIDSessionsGet) | **Get** /environments/{environmentID}/users/{userID}/sessions | READ All Sessions
+[**EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete**](SessionsApi.md#EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete) | **Delete** /environments/{environmentID}/users/{userID}/sessions/{sessionID} | DELETE Session
+[**EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet**](SessionsApi.md#EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet) | **Get** /environments/{environmentID}/users/{userID}/sessions/{sessionID} | READ One Session
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDSessionsGet
+## EnvironmentsEnvironmentIDUsersUserIDSessionsGet
 
-> V1EnvironmentsEnvironmentIDUsersUserIDSessionsGet(ctx, environmentID, userID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDSessionsGet(ctx, environmentID, userID).Execute()
 
 READ All Sessions
 
@@ -34,9 +34,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SessionsApi.V1EnvironmentsEnvironmentIDUsersUserIDSessionsGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.SessionsApi.EnvironmentsEnvironmentIDUsersUserIDSessionsGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SessionsApi.V1EnvironmentsEnvironmentIDUsersUserIDSessionsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SessionsApi.EnvironmentsEnvironmentIDUsersUserIDSessionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDSessionsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDSessionsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete
+## EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete
 
-> V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete(ctx, environmentID, userID, sessionID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete(ctx, environmentID, userID, sessionID).Execute()
 
 DELETE Session
 
@@ -104,9 +104,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SessionsApi.V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete(context.Background(), environmentID, userID, sessionID).Execute()
+    r, err := apiClient.SessionsApi.EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete(context.Background(), environmentID, userID, sessionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SessionsApi.V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SessionsApi.EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -151,9 +151,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet
+## EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet
 
-> V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet(ctx, environmentID, userID, sessionID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet(ctx, environmentID, userID, sessionID).Execute()
 
 READ One Session
 
@@ -176,9 +176,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SessionsApi.V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet(context.Background(), environmentID, userID, sessionID).Execute()
+    r, err := apiClient.SessionsApi.EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet(context.Background(), environmentID, userID, sessionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SessionsApi.V1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SessionsApi.EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

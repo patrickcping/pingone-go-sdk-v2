@@ -1,16 +1,16 @@
 # \AuthenticationsPerApplicationApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDApplicationSignonsGet**](AuthenticationsPerApplicationApi.md#V1EnvironmentsEnvironmentIDApplicationSignonsGet) | **Get** /v1/environments/{environmentID}/applicationSignons | READ Authentications Per Application (Partial)
+[**EnvironmentsEnvironmentIDApplicationSignonsGet**](AuthenticationsPerApplicationApi.md#EnvironmentsEnvironmentIDApplicationSignonsGet) | **Get** /environments/{environmentID}/applicationSignons | READ Authentications Per Application (Partial)
 
 
 
-## V1EnvironmentsEnvironmentIDApplicationSignonsGet
+## EnvironmentsEnvironmentIDApplicationSignonsGet
 
-> V1EnvironmentsEnvironmentIDApplicationSignonsGet(ctx, environmentID).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
+> EnvironmentsEnvironmentIDApplicationSignonsGet(ctx, environmentID).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
 
 READ Authentications Per Application (Partial)
 
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuthenticationsPerApplicationApi.V1EnvironmentsEnvironmentIDApplicationSignonsGet(context.Background(), environmentID).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
+    r, err := apiClient.AuthenticationsPerApplicationApi.EnvironmentsEnvironmentIDApplicationSignonsGet(context.Background(), environmentID).Limit(limit).SamplePeriod(samplePeriod).SamplePeriodCount(samplePeriodCount).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationsPerApplicationApi.V1EnvironmentsEnvironmentIDApplicationSignonsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuthenticationsPerApplicationApi.EnvironmentsEnvironmentIDApplicationSignonsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDApplicationSignonsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDApplicationSignonsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

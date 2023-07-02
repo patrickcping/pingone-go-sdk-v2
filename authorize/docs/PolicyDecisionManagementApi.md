@@ -1,14 +1,14 @@
 # \PolicyDecisionManagementApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDecisionEndpoint**](PolicyDecisionManagementApi.md#CreateDecisionEndpoint) | **Post** /v1/environments/{environmentID}/decisionEndpoints | CREATE Decision Endpoint
-[**DeleteDecisionEndpoint**](PolicyDecisionManagementApi.md#DeleteDecisionEndpoint) | **Delete** /v1/environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | DELETE Decision Endpoint
-[**ReadAllDecisionEndpoints**](PolicyDecisionManagementApi.md#ReadAllDecisionEndpoints) | **Get** /v1/environments/{environmentID}/decisionEndpoints | READ All Decision Endpoints
-[**ReadOneDecisionEndpoint**](PolicyDecisionManagementApi.md#ReadOneDecisionEndpoint) | **Get** /v1/environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | READ One Decision Endpoint
-[**UpdateDecisionEndpoint**](PolicyDecisionManagementApi.md#UpdateDecisionEndpoint) | **Put** /v1/environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | UPDATE Decision Endpoint
+[**CreateDecisionEndpoint**](PolicyDecisionManagementApi.md#CreateDecisionEndpoint) | **Post** /environments/{environmentID}/decisionEndpoints | CREATE Decision Endpoint
+[**DeleteDecisionEndpoint**](PolicyDecisionManagementApi.md#DeleteDecisionEndpoint) | **Delete** /environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | DELETE Decision Endpoint
+[**ReadAllDecisionEndpoints**](PolicyDecisionManagementApi.md#ReadAllDecisionEndpoints) | **Get** /environments/{environmentID}/decisionEndpoints | READ All Decision Endpoints
+[**ReadOneDecisionEndpoint**](PolicyDecisionManagementApi.md#ReadOneDecisionEndpoint) | **Get** /environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | READ One Decision Endpoint
+[**UpdateDecisionEndpoint**](PolicyDecisionManagementApi.md#UpdateDecisionEndpoint) | **Put** /environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | UPDATE Decision Endpoint
 
 
 

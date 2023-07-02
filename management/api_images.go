@@ -3,7 +3,7 @@ PingOne Platform API - SSO and Base
 
 The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
 
-API version: 2022-08-02
+API version: 2023-06-29
 */
 
 package management
@@ -88,7 +88,7 @@ func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/images"
+	localVarPath := localBasePath + "/environments/{environmentID}/images"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -286,7 +286,7 @@ func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/images/{imgID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/images/{imgID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")), -1)
 
@@ -458,7 +458,7 @@ func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Ima
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/images/{imgID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/images/{imgID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")), -1)
 

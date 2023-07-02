@@ -2,21 +2,32 @@ openapi: 3.0.0
 info:
   description: The PingOne Platform API covering the PingOne MFA service
   title: PingOne Platform API - PingOne MFA
-  version: 2021-10-17
+  version: 2023-06-29
 externalDocs:
   description: PingOne Platform API Reference - PingOne MFA APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-mfa
 servers:
 - description: PingOne Platform API Endpoint
-  url: "https://api.pingone.{suffix}"
+  url: "{protocol}://{baseDomain}.{suffix}/v1"
   variables:
     suffix:
-      default: eu
+      default: com
       enum:
       - eu
       - com
       - asia
       - ca
+    baseDomain:
+      default: api.pingone
+    protocol:
+      default: https
+- description: PingOne Platform API Endpoint
+  url: "{protocol}://{baseHostname}/v1"
+  variables:
+    baseHostname:
+      default: api.pingone.com
+    protocol:
+      default: https
 security:
 - bearer: []
 tags:
@@ -29,7 +40,7 @@ tags:
 - name: Enable Users MFA
 - name: User MFA Pairing Keys
 paths:
-  /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials:
+  /environments/{environmentID}/applications/{applicationID}/pushCredentials:
     get:
       operationId: readAllMFAPushCredentials
       parameters:
@@ -170,7 +181,7 @@ paths:
       summary: CREATE MFA Push Credential
       tags:
       - Applications > Application MFA Push Credentials
-  /v1/environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID}:
+  /environments/{environmentID}/applications/{applicationID}/pushCredentials/{pushCredentialID}:
     delete:
       operationId: deleteMFAPushCredential
       parameters:
@@ -393,7 +404,7 @@ paths:
       summary: UPDATE MFA Push Credential
       tags:
       - Applications > Application MFA Push Credentials
-  /v1/environments/{environmentID}/deviceAuthenticationPolicies:
+  /environments/{environmentID}/deviceAuthenticationPolicies:
     get:
       operationId: readDeviceAuthenticationPolicies
       parameters:
@@ -520,7 +531,7 @@ paths:
       summary: CREATE Device Authentication Policy
       tags:
       - Device Authentication Policy
-  /v1/environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}:
+  /environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}:
     delete:
       operationId: deleteDeviceAuthenticationPolicy
       parameters:
@@ -714,7 +725,7 @@ paths:
       summary: UPDATE Device Authentication Policy
       tags:
       - Device Authentication Policy
-  /v1/environments/{environmentID}/fidoDevicesMetadata:
+  /environments/{environmentID}/fidoDevicesMetadata:
     get:
       operationId: readFidoDevices
       parameters:
@@ -841,7 +852,7 @@ paths:
       summary: CREATE FIDO Device
       tags:
       - FIDO Device
-  /v1/environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID}:
+  /environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID}:
     delete:
       operationId: deleteFidoDevice
       parameters:
@@ -966,7 +977,7 @@ paths:
       summary: READ One FIDO Device
       tags:
       - FIDO Device
-  /v1/environments/{environmentID}/fidoPolicies:
+  /environments/{environmentID}/fidoPolicies:
     get:
       deprecated: true
       operationId: readFidoPolicies
@@ -1095,7 +1106,7 @@ paths:
       summary: CREATE FIDO Policy
       tags:
       - FIDO Policy
-  /v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID}:
+  /environments/{environmentID}/fidoPolicies/{fidoPolicyID}:
     delete:
       deprecated: true
       operationId: deleteFidoPolicy
@@ -1292,7 +1303,7 @@ paths:
       summary: UPDATE FIDO Policy
       tags:
       - FIDO Policy
-  /v1/environments/{environmentID}/fido2Policies:
+  /environments/{environmentID}/fido2Policies:
     get:
       operationId: readFido2Policies
       parameters:
@@ -1419,7 +1430,7 @@ paths:
       summary: CREATE FIDO2 Policy
       tags:
       - FIDO2 Policy
-  /v1/environments/{environmentID}/fido2Policies/{fido2PolicyID}:
+  /environments/{environmentID}/fido2Policies/{fido2PolicyID}:
     delete:
       operationId: deleteFido2Policy
       parameters:
@@ -1622,7 +1633,7 @@ paths:
       summary: UPDATE FIDO2 Policy
       tags:
       - FIDO2 Policy
-  /v1/environments/{environmentID}/mfaSettings:
+  /environments/{environmentID}/mfaSettings:
     delete:
       operationId: resetMFASettings
       parameters:
@@ -1799,7 +1810,7 @@ paths:
       summary: UPDATE MFA Settings
       tags:
       - MFA Settings
-  /v1/environments/{environmentID}/users/{userID}/devices:
+  /environments/{environmentID}/users/{userID}/devices:
     delete:
       parameters:
       - example: application/vnd.pingidentity.devices.order.remove+json
@@ -2016,7 +2027,7 @@ paths:
       summary: SET Device Order
       tags:
       - User MFA Devices
-  /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}:
+  /environments/{environmentID}/users/{userID}/devices/{deviceID}:
     delete:
       parameters:
       - explode: false
@@ -2241,7 +2252,7 @@ paths:
       summary: ACTIVATE MFA User Device
       tags:
       - User MFA Devices
-  /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname:
+  /environments/{environmentID}/users/{userID}/devices/{deviceID}/nickname:
     put:
       parameters:
       - explode: false
@@ -2317,7 +2328,7 @@ paths:
       summary: UPDATE Device Nickname
       tags:
       - User MFA Devices
-  /v1/environments/{environmentID}/users/{userID}/devices/{deviceID}/logs:
+  /environments/{environmentID}/users/{userID}/devices/{deviceID}/logs:
     put:
       parameters:
       - explode: false
@@ -2393,7 +2404,7 @@ paths:
       summary: SEND MFA Device Logs
       tags:
       - User MFA Devices
-  /v1/environments/{environmentID}/users/{userID}/mfaEnabled:
+  /environments/{environmentID}/users/{userID}/mfaEnabled:
     get:
       operationId: readUserMFAEnabled
       parameters:
@@ -2527,7 +2538,7 @@ paths:
       summary: UPDATE User MFA Enabled
       tags:
       - Enable Users MFA
-  /v1/environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID}:
+  /environments/{environmentID}/users/{userID}/pairingKeys/{pairingKeyID}:
     delete:
       parameters:
       - explode: false
@@ -2662,7 +2673,7 @@ paths:
       summary: READ One MFA Pairing Key
       tags:
       - User MFA Pairing Keys
-  /v1/environments/{environmentID}/users/{userID}/pairingKeys:
+  /environments/{environmentID}/users/{userID}/pairingKeys:
     post:
       parameters:
       - explode: false

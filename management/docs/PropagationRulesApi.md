@@ -1,21 +1,21 @@
 # \PropagationRulesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet**](PropagationRulesApi.md#V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet) | **Get** /v1/environments/{environmentID}/propagation/plans/{planID}/rules | READ One Plan&#39;s Rules
-[**V1EnvironmentsEnvironmentIDPropagationRulesGet**](PropagationRulesApi.md#V1EnvironmentsEnvironmentIDPropagationRulesGet) | **Get** /v1/environments/{environmentID}/propagation/rules | READ All Rules
-[**V1EnvironmentsEnvironmentIDPropagationRulesPost**](PropagationRulesApi.md#V1EnvironmentsEnvironmentIDPropagationRulesPost) | **Post** /v1/environments/{environmentID}/propagation/rules | CREATE Rule
-[**V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete**](PropagationRulesApi.md#V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete) | **Delete** /v1/environments/{environmentID}/propagation/rules/{ruleID} | DELETE Rule
-[**V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet**](PropagationRulesApi.md#V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet) | **Get** /v1/environments/{environmentID}/propagation/rules/{ruleID} | READ One Rule
-[**V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut**](PropagationRulesApi.md#V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut) | **Put** /v1/environments/{environmentID}/propagation/rules/{storeID} | UPDATE Rule
+[**EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet**](PropagationRulesApi.md#EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet) | **Get** /environments/{environmentID}/propagation/plans/{planID}/rules | READ One Plan&#39;s Rules
+[**EnvironmentsEnvironmentIDPropagationRulesGet**](PropagationRulesApi.md#EnvironmentsEnvironmentIDPropagationRulesGet) | **Get** /environments/{environmentID}/propagation/rules | READ All Rules
+[**EnvironmentsEnvironmentIDPropagationRulesPost**](PropagationRulesApi.md#EnvironmentsEnvironmentIDPropagationRulesPost) | **Post** /environments/{environmentID}/propagation/rules | CREATE Rule
+[**EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete**](PropagationRulesApi.md#EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete) | **Delete** /environments/{environmentID}/propagation/rules/{ruleID} | DELETE Rule
+[**EnvironmentsEnvironmentIDPropagationRulesRuleIDGet**](PropagationRulesApi.md#EnvironmentsEnvironmentIDPropagationRulesRuleIDGet) | **Get** /environments/{environmentID}/propagation/rules/{ruleID} | READ One Rule
+[**EnvironmentsEnvironmentIDPropagationRulesStoreIDPut**](PropagationRulesApi.md#EnvironmentsEnvironmentIDPropagationRulesStoreIDPut) | **Put** /environments/{environmentID}/propagation/rules/{storeID} | UPDATE Rule
 
 
 
-## V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet
+## EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet
 
-> V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet(ctx, environmentID, planID).Accept(accept).ContentType(contentType).Execute()
+> EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet(ctx, environmentID, planID).Accept(accept).ContentType(contentType).Execute()
 
 READ One Plan's Rules
 
@@ -39,9 +39,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet(context.Background(), environmentID, planID).Accept(accept).ContentType(contentType).Execute()
+    r, err := apiClient.PropagationRulesApi.EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet(context.Background(), environmentID, planID).Accept(accept).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -86,9 +86,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRulesGet
+## EnvironmentsEnvironmentIDPropagationRulesGet
 
-> V1EnvironmentsEnvironmentIDPropagationRulesGet(ctx, environmentID).Accept(accept).Authorization(authorization).Execute()
+> EnvironmentsEnvironmentIDPropagationRulesGet(ctx, environmentID).Accept(accept).Authorization(authorization).Execute()
 
 READ All Rules
 
@@ -111,9 +111,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesGet(context.Background(), environmentID).Accept(accept).Authorization(authorization).Execute()
+    r, err := apiClient.PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesGet(context.Background(), environmentID).Accept(accept).Authorization(authorization).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRulesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRulesGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -156,9 +156,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRulesPost
+## EnvironmentsEnvironmentIDPropagationRulesPost
 
-> V1EnvironmentsEnvironmentIDPropagationRulesPost(ctx, environmentID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationRulesPost(ctx, environmentID).Body(body).Execute()
 
 CREATE Rule
 
@@ -180,9 +180,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRulesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRulesPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -224,9 +224,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete
+## EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete
 
-> V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete(ctx, environmentID, ruleID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete(ctx, environmentID, ruleID).Accept(accept).Execute()
 
 DELETE Rule
 
@@ -249,9 +249,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete(context.Background(), environmentID, ruleID).Accept(accept).Execute()
+    r, err := apiClient.PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete(context.Background(), environmentID, ruleID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesRuleIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -295,9 +295,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet
+## EnvironmentsEnvironmentIDPropagationRulesRuleIDGet
 
-> V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet(ctx, environmentID, ruleID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationRulesRuleIDGet(ctx, environmentID, ruleID).Accept(accept).Execute()
 
 READ One Rule
 
@@ -320,9 +320,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet(context.Background(), environmentID, ruleID).Accept(accept).Execute()
+    r, err := apiClient.PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesRuleIDGet(context.Background(), environmentID, ruleID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesRuleIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRulesRuleIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRulesRuleIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -366,9 +366,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut
+## EnvironmentsEnvironmentIDPropagationRulesStoreIDPut
 
-> V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut(ctx, environmentID, storeID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationRulesStoreIDPut(ctx, environmentID, storeID).Body(body).Execute()
 
 UPDATE Rule
 
@@ -391,9 +391,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut(context.Background(), environmentID, storeID).Body(body).Execute()
+    r, err := apiClient.PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesStoreIDPut(context.Background(), environmentID, storeID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.V1EnvironmentsEnvironmentIDPropagationRulesStoreIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRulesApi.EnvironmentsEnvironmentIDPropagationRulesStoreIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRulesStoreIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRulesStoreIDPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

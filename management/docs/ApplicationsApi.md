@@ -1,14 +1,14 @@
 # \ApplicationsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateApplication**](ApplicationsApi.md#CreateApplication) | **Post** /v1/environments/{environmentID}/applications | CREATE Application
-[**DeleteApplication**](ApplicationsApi.md#DeleteApplication) | **Delete** /v1/environments/{environmentID}/applications/{applicationID} | DELETE Application
-[**ReadAllApplications**](ApplicationsApi.md#ReadAllApplications) | **Get** /v1/environments/{environmentID}/applications | READ All Applications
-[**ReadOneApplication**](ApplicationsApi.md#ReadOneApplication) | **Get** /v1/environments/{environmentID}/applications/{applicationID} | READ One Application
-[**UpdateApplication**](ApplicationsApi.md#UpdateApplication) | **Put** /v1/environments/{environmentID}/applications/{applicationID} | UPDATE Application
+[**CreateApplication**](ApplicationsApi.md#CreateApplication) | **Post** /environments/{environmentID}/applications | CREATE Application
+[**DeleteApplication**](ApplicationsApi.md#DeleteApplication) | **Delete** /environments/{environmentID}/applications/{applicationID} | DELETE Application
+[**ReadAllApplications**](ApplicationsApi.md#ReadAllApplications) | **Get** /environments/{environmentID}/applications | READ All Applications
+[**ReadOneApplication**](ApplicationsApi.md#ReadOneApplication) | **Get** /environments/{environmentID}/applications/{applicationID} | READ One Application
+[**UpdateApplication**](ApplicationsApi.md#UpdateApplication) | **Put** /environments/{environmentID}/applications/{applicationID} | UPDATE Application
 
 
 

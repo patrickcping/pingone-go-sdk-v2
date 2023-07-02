@@ -1,14 +1,14 @@
 # \ResourcesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateResource**](ResourcesApi.md#CreateResource) | **Post** /v1/environments/{environmentID}/resources | CREATE Resource
-[**DeleteResource**](ResourcesApi.md#DeleteResource) | **Delete** /v1/environments/{environmentID}/resources/{resourceID} | DELETE Resource
-[**ReadAllResources**](ResourcesApi.md#ReadAllResources) | **Get** /v1/environments/{environmentID}/resources | READ All Resources
-[**ReadOneResource**](ResourcesApi.md#ReadOneResource) | **Get** /v1/environments/{environmentID}/resources/{resourceID} | READ One Resource
-[**UpdateResource**](ResourcesApi.md#UpdateResource) | **Put** /v1/environments/{environmentID}/resources/{resourceID} | UPDATE Resource
+[**CreateResource**](ResourcesApi.md#CreateResource) | **Post** /environments/{environmentID}/resources | CREATE Resource
+[**DeleteResource**](ResourcesApi.md#DeleteResource) | **Delete** /environments/{environmentID}/resources/{resourceID} | DELETE Resource
+[**ReadAllResources**](ResourcesApi.md#ReadAllResources) | **Get** /environments/{environmentID}/resources | READ All Resources
+[**ReadOneResource**](ResourcesApi.md#ReadOneResource) | **Get** /environments/{environmentID}/resources/{resourceID} | READ One Resource
+[**UpdateResource**](ResourcesApi.md#UpdateResource) | **Put** /environments/{environmentID}/resources/{resourceID} | UPDATE Resource
 
 
 

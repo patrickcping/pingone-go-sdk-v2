@@ -1,14 +1,14 @@
 # \SignOnPoliciesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSignOnPolicy**](SignOnPoliciesApi.md#CreateSignOnPolicy) | **Post** /v1/environments/{environmentID}/signOnPolicies | CREATE Sign On Policy
-[**DeleteSignOnPolicy**](SignOnPoliciesApi.md#DeleteSignOnPolicy) | **Delete** /v1/environments/{environmentID}/signOnPolicies/{policyID} | DELETE Sign On Policy
-[**ReadAllSignOnPolicies**](SignOnPoliciesApi.md#ReadAllSignOnPolicies) | **Get** /v1/environments/{environmentID}/signOnPolicies | READ All Sign On Policies
-[**ReadOneSignOnPolicy**](SignOnPoliciesApi.md#ReadOneSignOnPolicy) | **Get** /v1/environments/{environmentID}/signOnPolicies/{policyID} | READ One Sign On Policy
-[**UpdateSignOnPolicy**](SignOnPoliciesApi.md#UpdateSignOnPolicy) | **Put** /v1/environments/{environmentID}/signOnPolicies/{policyID} | UPDATE Sign On Policy
+[**CreateSignOnPolicy**](SignOnPoliciesApi.md#CreateSignOnPolicy) | **Post** /environments/{environmentID}/signOnPolicies | CREATE Sign On Policy
+[**DeleteSignOnPolicy**](SignOnPoliciesApi.md#DeleteSignOnPolicy) | **Delete** /environments/{environmentID}/signOnPolicies/{policyID} | DELETE Sign On Policy
+[**ReadAllSignOnPolicies**](SignOnPoliciesApi.md#ReadAllSignOnPolicies) | **Get** /environments/{environmentID}/signOnPolicies | READ All Sign On Policies
+[**ReadOneSignOnPolicy**](SignOnPoliciesApi.md#ReadOneSignOnPolicy) | **Get** /environments/{environmentID}/signOnPolicies/{policyID} | READ One Sign On Policy
+[**UpdateSignOnPolicy**](SignOnPoliciesApi.md#UpdateSignOnPolicy) | **Put** /environments/{environmentID}/signOnPolicies/{policyID} | UPDATE Sign On Policy
 
 
 

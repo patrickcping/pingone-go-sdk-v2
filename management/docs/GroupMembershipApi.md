@@ -1,13 +1,13 @@
 # \GroupMembershipApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddUserToGroup**](GroupMembershipApi.md#AddUserToGroup) | **Post** /v1/environments/{environmentID}/users/{userID}/memberOfGroups | ADD User to Group
-[**ReadAllGroupMembershipsForUser**](GroupMembershipApi.md#ReadAllGroupMembershipsForUser) | **Get** /v1/environments/{environmentID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
-[**ReadOneGroupMembershipForUser**](GroupMembershipApi.md#ReadOneGroupMembershipForUser) | **Get** /v1/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
-[**RemoveUserFromGroup**](GroupMembershipApi.md#RemoveUserFromGroup) | **Delete** /v1/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
+[**AddUserToGroup**](GroupMembershipApi.md#AddUserToGroup) | **Post** /environments/{environmentID}/users/{userID}/memberOfGroups | ADD User to Group
+[**ReadAllGroupMembershipsForUser**](GroupMembershipApi.md#ReadAllGroupMembershipsForUser) | **Get** /environments/{environmentID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
+[**ReadOneGroupMembershipForUser**](GroupMembershipApi.md#ReadOneGroupMembershipForUser) | **Get** /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
+[**RemoveUserFromGroup**](GroupMembershipApi.md#RemoveUserFromGroup) | **Delete** /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
 
 
 

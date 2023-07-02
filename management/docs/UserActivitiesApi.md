@@ -1,16 +1,16 @@
 # \UserActivitiesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUserActivitiesGet**](UserActivitiesApi.md#V1EnvironmentsEnvironmentIDUserActivitiesGet) | **Get** /v1/environments/{environmentID}/userActivities | READ User Activities
+[**EnvironmentsEnvironmentIDUserActivitiesGet**](UserActivitiesApi.md#EnvironmentsEnvironmentIDUserActivitiesGet) | **Get** /environments/{environmentID}/userActivities | READ User Activities
 
 
 
-## V1EnvironmentsEnvironmentIDUserActivitiesGet
+## EnvironmentsEnvironmentIDUserActivitiesGet
 
-> V1EnvironmentsEnvironmentIDUserActivitiesGet(ctx, environmentID).Filter(filter).Execute()
+> EnvironmentsEnvironmentIDUserActivitiesGet(ctx, environmentID).Filter(filter).Execute()
 
 READ User Activities
 
@@ -32,9 +32,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserActivitiesApi.V1EnvironmentsEnvironmentIDUserActivitiesGet(context.Background(), environmentID).Filter(filter).Execute()
+    r, err := apiClient.UserActivitiesApi.EnvironmentsEnvironmentIDUserActivitiesGet(context.Background(), environmentID).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserActivitiesApi.V1EnvironmentsEnvironmentIDUserActivitiesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserActivitiesApi.EnvironmentsEnvironmentIDUserActivitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUserActivitiesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUserActivitiesGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

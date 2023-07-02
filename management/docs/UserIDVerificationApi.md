@@ -1,20 +1,20 @@
 # \UserIDVerificationApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet**](UserIDVerificationApi.md#V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet) | **Get** /v1/environments/{environmentID}/users/{userID}/verifyTransactions | READ All ID Verification Transaction Records for a User
-[**V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost**](UserIDVerificationApi.md#V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost) | **Post** /v1/environments/{environmentID}/users/{userID}/verifyTransactions | CREATE ID Verification Transaction Record for a User
-[**V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete**](UserIDVerificationApi.md#V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete) | **Delete** /v1/environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID} | DELETE ID Verification Transaction Record for a User
-[**V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet**](UserIDVerificationApi.md#V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet) | **Get** /v1/environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID} | READ ID Verification Transaction Record for a User
-[**V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut**](UserIDVerificationApi.md#V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut) | **Put** /v1/environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID} | UPDATE ID Verification Transaction Record for a User
+[**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet**](UserIDVerificationApi.md#EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet) | **Get** /environments/{environmentID}/users/{userID}/verifyTransactions | READ All ID Verification Transaction Records for a User
+[**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost**](UserIDVerificationApi.md#EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost) | **Post** /environments/{environmentID}/users/{userID}/verifyTransactions | CREATE ID Verification Transaction Record for a User
+[**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete**](UserIDVerificationApi.md#EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete) | **Delete** /environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID} | DELETE ID Verification Transaction Record for a User
+[**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet**](UserIDVerificationApi.md#EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet) | **Get** /environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID} | READ ID Verification Transaction Record for a User
+[**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut**](UserIDVerificationApi.md#EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut) | **Put** /environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID} | UPDATE ID Verification Transaction Record for a User
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet
+## EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet
 
-> V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet(ctx, environmentID, userID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet(ctx, environmentID, userID).Execute()
 
 READ All ID Verification Transaction Records for a User
 
@@ -36,9 +36,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost
+## EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost
 
-> V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost(ctx, environmentID, userID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost(ctx, environmentID, userID).Execute()
 
 CREATE ID Verification Transaction Record for a User
 
@@ -105,9 +105,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost(context.Background(), environmentID, userID).Execute()
+    r, err := apiClient.UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost(context.Background(), environmentID, userID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -150,9 +150,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete
+## EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete
 
-> V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete(ctx, environmentID, userID, transactionID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete(ctx, environmentID, userID, transactionID).Execute()
 
 DELETE ID Verification Transaction Record for a User
 
@@ -175,9 +175,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete(context.Background(), environmentID, userID, transactionID).Execute()
+    r, err := apiClient.UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete(context.Background(), environmentID, userID, transactionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -222,9 +222,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet
+## EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet
 
-> V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet(ctx, environmentID, userID, transactionID).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet(ctx, environmentID, userID, transactionID).Execute()
 
 READ ID Verification Transaction Record for a User
 
@@ -247,9 +247,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet(context.Background(), environmentID, userID, transactionID).Execute()
+    r, err := apiClient.UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet(context.Background(), environmentID, userID, transactionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -294,9 +294,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut
+## EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut
 
-> V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut(ctx, environmentID, userID, transactionID).Body(body).Execute()
+> EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut(ctx, environmentID, userID, transactionID).Body(body).Execute()
 
 UPDATE ID Verification Transaction Record for a User
 
@@ -320,9 +320,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut(context.Background(), environmentID, userID, transactionID).Body(body).Execute()
+    r, err := apiClient.UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut(context.Background(), environmentID, userID, transactionID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserIDVerificationApi.EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

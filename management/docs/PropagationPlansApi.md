@@ -1,20 +1,20 @@
 # \PropagationPlansApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDPropagationPlansGet**](PropagationPlansApi.md#V1EnvironmentsEnvironmentIDPropagationPlansGet) | **Get** /v1/environments/{environmentID}/propagation/plans | READ All Plans
-[**V1EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete**](PropagationPlansApi.md#V1EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete) | **Delete** /v1/environments/{environmentID}/propagation/plans/{planID} | DELETE Plan
-[**V1EnvironmentsEnvironmentIDPropagationPlansPlanIDGet**](PropagationPlansApi.md#V1EnvironmentsEnvironmentIDPropagationPlansPlanIDGet) | **Get** /v1/environments/{environmentID}/propagation/plans/{planID} | READ One Plan
-[**V1EnvironmentsEnvironmentIDPropagationPlansPlanIDPut**](PropagationPlansApi.md#V1EnvironmentsEnvironmentIDPropagationPlansPlanIDPut) | **Put** /v1/environments/{environmentID}/propagation/plans/{planID} | UPDATE Plan
-[**V1EnvironmentsEnvironmentIDPropagationPlansPost**](PropagationPlansApi.md#V1EnvironmentsEnvironmentIDPropagationPlansPost) | **Post** /v1/environments/{environmentID}/propagation/plans | CREATE Plan
+[**EnvironmentsEnvironmentIDPropagationPlansGet**](PropagationPlansApi.md#EnvironmentsEnvironmentIDPropagationPlansGet) | **Get** /environments/{environmentID}/propagation/plans | READ All Plans
+[**EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete**](PropagationPlansApi.md#EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete) | **Delete** /environments/{environmentID}/propagation/plans/{planID} | DELETE Plan
+[**EnvironmentsEnvironmentIDPropagationPlansPlanIDGet**](PropagationPlansApi.md#EnvironmentsEnvironmentIDPropagationPlansPlanIDGet) | **Get** /environments/{environmentID}/propagation/plans/{planID} | READ One Plan
+[**EnvironmentsEnvironmentIDPropagationPlansPlanIDPut**](PropagationPlansApi.md#EnvironmentsEnvironmentIDPropagationPlansPlanIDPut) | **Put** /environments/{environmentID}/propagation/plans/{planID} | UPDATE Plan
+[**EnvironmentsEnvironmentIDPropagationPlansPost**](PropagationPlansApi.md#EnvironmentsEnvironmentIDPropagationPlansPost) | **Post** /environments/{environmentID}/propagation/plans | CREATE Plan
 
 
 
-## V1EnvironmentsEnvironmentIDPropagationPlansGet
+## EnvironmentsEnvironmentIDPropagationPlansGet
 
-> V1EnvironmentsEnvironmentIDPropagationPlansGet(ctx, environmentID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationPlansGet(ctx, environmentID).Accept(accept).Execute()
 
 READ All Plans
 
@@ -36,9 +36,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansGet(context.Background(), environmentID).Accept(accept).Execute()
+    r, err := apiClient.PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansGet(context.Background(), environmentID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationPlansGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationPlansGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -80,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete
+## EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete
 
-> V1EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete(ctx, environmentID, planID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete(ctx, environmentID, planID).Accept(accept).Execute()
 
 DELETE Plan
 
@@ -105,9 +105,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete(context.Background(), environmentID, planID).Accept(accept).Execute()
+    r, err := apiClient.PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete(context.Background(), environmentID, planID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -151,9 +151,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationPlansPlanIDGet
+## EnvironmentsEnvironmentIDPropagationPlansPlanIDGet
 
-> V1EnvironmentsEnvironmentIDPropagationPlansPlanIDGet(ctx, environmentID, planID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationPlansPlanIDGet(ctx, environmentID, planID).Accept(accept).Execute()
 
 READ One Plan
 
@@ -176,9 +176,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDGet(context.Background(), environmentID, planID).Accept(accept).Execute()
+    r, err := apiClient.PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansPlanIDGet(context.Background(), environmentID, planID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansPlanIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationPlansPlanIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -222,9 +222,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationPlansPlanIDPut
+## EnvironmentsEnvironmentIDPropagationPlansPlanIDPut
 
-> V1EnvironmentsEnvironmentIDPropagationPlansPlanIDPut(ctx, environmentID, planID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationPlansPlanIDPut(ctx, environmentID, planID).Body(body).Execute()
 
 UPDATE Plan
 
@@ -247,9 +247,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDPut(context.Background(), environmentID, planID).Body(body).Execute()
+    r, err := apiClient.PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansPlanIDPut(context.Background(), environmentID, planID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansPlanIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansPlanIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationPlansPlanIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationPlansPlanIDPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -293,9 +293,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationPlansPost
+## EnvironmentsEnvironmentIDPropagationPlansPost
 
-> V1EnvironmentsEnvironmentIDPropagationPlansPost(ctx, environmentID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationPlansPost(ctx, environmentID).Body(body).Execute()
 
 CREATE Plan
 
@@ -317,9 +317,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.V1EnvironmentsEnvironmentIDPropagationPlansPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationPlansApi.EnvironmentsEnvironmentIDPropagationPlansPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationPlansPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationPlansPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

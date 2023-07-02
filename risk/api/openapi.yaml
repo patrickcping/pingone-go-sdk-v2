@@ -2,21 +2,32 @@ openapi: 3.0.0
 info:
   description: The PingOne Platform API covering the PingOne Risk service
   title: PingOne Platform API - PingOne Risk
-  version: 2021-10-17
+  version: 2023-06-29
 externalDocs:
   description: PingOne Platform API Reference - PingOne Risk APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-risk
 servers:
 - description: PingOne Platform API Endpoint
-  url: "https://api.pingone.{suffix}"
+  url: "{protocol}://{baseDomain}.{suffix}/v1"
   variables:
     suffix:
-      default: eu
+      default: com
       enum:
       - eu
       - com
       - asia
       - ca
+    baseDomain:
+      default: api.pingone
+    protocol:
+      default: https
+- description: PingOne Platform API Endpoint
+  url: "{protocol}://{baseHostname}/v1"
+  variables:
+    baseHostname:
+      default: api.pingone.com
+    protocol:
+      default: https
 security:
 - bearer: []
 tags:
@@ -25,7 +36,7 @@ tags:
 - name: Risk Evaluations
 - name: Risk Advanced Predictors
 paths:
-  /v1/environments/{environmentID}/riskPolicySets:
+  /environments/{environmentID}/riskPolicySets:
     get:
       operationId: readRiskPolicySets
       parameters:
@@ -152,7 +163,7 @@ paths:
       summary: CREATE Risk Policy Set
       tags:
       - Risk Policies
-  /v1/environments/{environmentID}/riskPolicySets/{riskPolicySetID}:
+  /environments/{environmentID}/riskPolicySets/{riskPolicySetID}:
     delete:
       operationId: deleteRiskPolicySet
       parameters:
@@ -346,7 +357,7 @@ paths:
       summary: UPDATE Risk Policy Set
       tags:
       - Risk Policies
-  /v1/environments/{environmentID}/riskEvaluations:
+  /environments/{environmentID}/riskEvaluations:
     post:
       operationId: createRiskEvaluation
       parameters:
@@ -416,7 +427,7 @@ paths:
       summary: CREATE Risk Evaluation
       tags:
       - Risk Evaluations
-  /v1/environments/{environmentID}/riskEvaluations/{riskEvaluationID}:
+  /environments/{environmentID}/riskEvaluations/{riskEvaluationID}:
     get:
       operationId: readOneRiskEvaluation
       parameters:
@@ -481,7 +492,7 @@ paths:
       summary: READ One Risk Evaluation
       tags:
       - Risk Evaluations
-  /v1/environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event:
+  /environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event:
     put:
       operationId: updateRiskEvaluation
       parameters:
@@ -551,7 +562,7 @@ paths:
       summary: UPDATE Risk Evaluation
       tags:
       - Risk Evaluations
-  /v1/environments/{environmentID}/riskPredictors:
+  /environments/{environmentID}/riskPredictors:
     get:
       operationId: readAllRiskPredictors
       parameters:
@@ -678,7 +689,7 @@ paths:
       summary: CREATE Risk Predictor
       tags:
       - Risk Advanced Predictors
-  /v1/environments/{environmentID}/riskPredictors/{riskPredictorID}:
+  /environments/{environmentID}/riskPredictors/{riskPredictorID}:
     delete:
       operationId: deleteRiskAdvancedPredictor
       parameters:

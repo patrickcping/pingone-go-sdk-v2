@@ -1,14 +1,14 @@
 # \IdentityProviderAttributesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateIdentityProviderAttribute**](IdentityProviderAttributesApi.md#CreateIdentityProviderAttribute) | **Post** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes | CREATE Identity Provider Attribute
-[**DeleteIdentityProviderAttribute**](IdentityProviderAttributesApi.md#DeleteIdentityProviderAttribute) | **Delete** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | DELETE Identity Provider Attribute
-[**ReadAllIdentityProviderAttributes**](IdentityProviderAttributesApi.md#ReadAllIdentityProviderAttributes) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes | READ All Identity Provider Attributes
-[**ReadOneIdentityProviderAttribute**](IdentityProviderAttributesApi.md#ReadOneIdentityProviderAttribute) | **Get** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | READ One Identity Provider Attribute
-[**UpdateIdentityProviderAttribute**](IdentityProviderAttributesApi.md#UpdateIdentityProviderAttribute) | **Put** /v1/environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | UPDATE Identity Provider Attribute
+[**CreateIdentityProviderAttribute**](IdentityProviderAttributesApi.md#CreateIdentityProviderAttribute) | **Post** /environments/{environmentID}/identityProviders/{providerID}/attributes | CREATE Identity Provider Attribute
+[**DeleteIdentityProviderAttribute**](IdentityProviderAttributesApi.md#DeleteIdentityProviderAttribute) | **Delete** /environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | DELETE Identity Provider Attribute
+[**ReadAllIdentityProviderAttributes**](IdentityProviderAttributesApi.md#ReadAllIdentityProviderAttributes) | **Get** /environments/{environmentID}/identityProviders/{providerID}/attributes | READ All Identity Provider Attributes
+[**ReadOneIdentityProviderAttribute**](IdentityProviderAttributesApi.md#ReadOneIdentityProviderAttribute) | **Get** /environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | READ One Identity Provider Attribute
+[**UpdateIdentityProviderAttribute**](IdentityProviderAttributesApi.md#UpdateIdentityProviderAttribute) | **Put** /environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | UPDATE Identity Provider Attribute
 
 
 

@@ -1,12 +1,12 @@
 # \RiskEvaluationsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRiskEvaluation**](RiskEvaluationsApi.md#CreateRiskEvaluation) | **Post** /v1/environments/{environmentID}/riskEvaluations | CREATE Risk Evaluation
-[**ReadOneRiskEvaluation**](RiskEvaluationsApi.md#ReadOneRiskEvaluation) | **Get** /v1/environments/{environmentID}/riskEvaluations/{riskEvaluationID} | READ One Risk Evaluation
-[**UpdateRiskEvaluation**](RiskEvaluationsApi.md#UpdateRiskEvaluation) | **Put** /v1/environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event | UPDATE Risk Evaluation
+[**CreateRiskEvaluation**](RiskEvaluationsApi.md#CreateRiskEvaluation) | **Post** /environments/{environmentID}/riskEvaluations | CREATE Risk Evaluation
+[**ReadOneRiskEvaluation**](RiskEvaluationsApi.md#ReadOneRiskEvaluation) | **Get** /environments/{environmentID}/riskEvaluations/{riskEvaluationID} | READ One Risk Evaluation
+[**UpdateRiskEvaluation**](RiskEvaluationsApi.md#UpdateRiskEvaluation) | **Put** /environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event | UPDATE Risk Evaluation
 
 
 

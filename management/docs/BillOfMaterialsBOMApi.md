@@ -1,11 +1,11 @@
 # \BillOfMaterialsBOMApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadOneBillOfMaterials**](BillOfMaterialsBOMApi.md#ReadOneBillOfMaterials) | **Get** /v1/environments/{environmentID}/billOfMaterials | READ One Bill of Materials
-[**UpdateBillOfMaterials**](BillOfMaterialsBOMApi.md#UpdateBillOfMaterials) | **Put** /v1/environments/{environmentID}/billOfMaterials | UPDATE Bill of Materials
+[**ReadOneBillOfMaterials**](BillOfMaterialsBOMApi.md#ReadOneBillOfMaterials) | **Get** /environments/{environmentID}/billOfMaterials | READ One Bill of Materials
+[**UpdateBillOfMaterials**](BillOfMaterialsBOMApi.md#UpdateBillOfMaterials) | **Put** /environments/{environmentID}/billOfMaterials | UPDATE Bill of Materials
 
 
 

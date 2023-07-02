@@ -1,12 +1,12 @@
 # \MFASettingsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadMFASettings**](MFASettingsApi.md#ReadMFASettings) | **Get** /v1/environments/{environmentID}/mfaSettings | READ MFA Settings
-[**ResetMFASettings**](MFASettingsApi.md#ResetMFASettings) | **Delete** /v1/environments/{environmentID}/mfaSettings | RESET MFA Settings
-[**UpdateMFASettings**](MFASettingsApi.md#UpdateMFASettings) | **Put** /v1/environments/{environmentID}/mfaSettings | UPDATE MFA Settings
+[**ReadMFASettings**](MFASettingsApi.md#ReadMFASettings) | **Get** /environments/{environmentID}/mfaSettings | READ MFA Settings
+[**ResetMFASettings**](MFASettingsApi.md#ResetMFASettings) | **Delete** /environments/{environmentID}/mfaSettings | RESET MFA Settings
+[**UpdateMFASettings**](MFASettingsApi.md#UpdateMFASettings) | **Put** /environments/{environmentID}/mfaSettings | UPDATE MFA Settings
 
 
 

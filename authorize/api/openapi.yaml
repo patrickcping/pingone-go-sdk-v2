@@ -2,21 +2,32 @@ openapi: 3.0.0
 info:
   description: The PingOne Platform API covering the PingOne Authorize service
   title: PingOne Platform API - Authorize
-  version: 2022-09-23
+  version: 2023-06-29
 externalDocs:
   description: PingOne Platform API Reference - Authorize APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-authorize
 servers:
 - description: PingOne Platform API Endpoint
-  url: "https://api.pingone.{suffix}"
+  url: "{protocol}://{baseDomain}.{suffix}/v1"
   variables:
     suffix:
-      default: eu
+      default: com
       enum:
       - eu
       - com
       - asia
       - ca
+    baseDomain:
+      default: api.pingone
+    protocol:
+      default: https
+- description: PingOne Platform API Endpoint
+  url: "{protocol}://{baseHostname}/v1"
+  variables:
+    baseHostname:
+      default: api.pingone.com
+    protocol:
+      default: https
 security:
 - bearer: []
 tags:
@@ -24,7 +35,7 @@ tags:
 - name: Policy Decision Authorization
 - name: API Servers
 paths:
-  /v1/environments/{environmentID}/decisionEndpoints:
+  /environments/{environmentID}/decisionEndpoints:
     get:
       operationId: readAllDecisionEndpoints
       parameters:
@@ -151,7 +162,7 @@ paths:
       summary: CREATE Decision Endpoint
       tags:
       - Policy Decision Management
-  /v1/environments/{environmentID}/decisionEndpoints/{decisionEndpointID}:
+  /environments/{environmentID}/decisionEndpoints/{decisionEndpointID}:
     delete:
       operationId: deleteDecisionEndpoint
       parameters:
@@ -345,7 +356,7 @@ paths:
       summary: UPDATE Decision Endpoint
       tags:
       - Policy Decision Management
-  /v1/environments/{environmentID}/apiServers:
+  /environments/{environmentID}/apiServers:
     get:
       operationId: readAllAPIServers
       parameters:
@@ -472,7 +483,7 @@ paths:
       summary: CREATE API Server
       tags:
       - API Servers
-  /v1/environments/{environmentID}/apiServers/{apiServerID}:
+  /environments/{environmentID}/apiServers/{apiServerID}:
     delete:
       operationId: deleteAPIServer
       parameters:

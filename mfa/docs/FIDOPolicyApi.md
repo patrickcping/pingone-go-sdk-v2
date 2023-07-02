@@ -1,14 +1,14 @@
 # \FIDOPolicyApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFidoPolicy**](FIDOPolicyApi.md#CreateFidoPolicy) | **Post** /v1/environments/{environmentID}/fidoPolicies | CREATE FIDO Policy
-[**DeleteFidoPolicy**](FIDOPolicyApi.md#DeleteFidoPolicy) | **Delete** /v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID} | DELETE FIDO Policy
-[**ReadFidoPolicies**](FIDOPolicyApi.md#ReadFidoPolicies) | **Get** /v1/environments/{environmentID}/fidoPolicies | READ FIDO Policies
-[**ReadOneFidoPolicy**](FIDOPolicyApi.md#ReadOneFidoPolicy) | **Get** /v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID} | READ One FIDO Policy
-[**UpdateFIDOPolicy**](FIDOPolicyApi.md#UpdateFIDOPolicy) | **Put** /v1/environments/{environmentID}/fidoPolicies/{fidoPolicyID} | UPDATE FIDO Policy
+[**CreateFidoPolicy**](FIDOPolicyApi.md#CreateFidoPolicy) | **Post** /environments/{environmentID}/fidoPolicies | CREATE FIDO Policy
+[**DeleteFidoPolicy**](FIDOPolicyApi.md#DeleteFidoPolicy) | **Delete** /environments/{environmentID}/fidoPolicies/{fidoPolicyID} | DELETE FIDO Policy
+[**ReadFidoPolicies**](FIDOPolicyApi.md#ReadFidoPolicies) | **Get** /environments/{environmentID}/fidoPolicies | READ FIDO Policies
+[**ReadOneFidoPolicy**](FIDOPolicyApi.md#ReadOneFidoPolicy) | **Get** /environments/{environmentID}/fidoPolicies/{fidoPolicyID} | READ One FIDO Policy
+[**UpdateFIDOPolicy**](FIDOPolicyApi.md#UpdateFIDOPolicy) | **Put** /environments/{environmentID}/fidoPolicies/{fidoPolicyID} | UPDATE FIDO Policy
 
 
 

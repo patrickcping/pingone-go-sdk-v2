@@ -1,14 +1,14 @@
 # \SubscriptionsWebhooksApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSubscription**](SubscriptionsWebhooksApi.md#CreateSubscription) | **Post** /v1/environments/{environmentID}/subscriptions | CREATE Subscription
-[**DeleteSubscription**](SubscriptionsWebhooksApi.md#DeleteSubscription) | **Delete** /v1/environments/{environmentID}/subscriptions/{subscriptionID} | DELETE Subscription
-[**ReadAllSubscriptions**](SubscriptionsWebhooksApi.md#ReadAllSubscriptions) | **Get** /v1/environments/{environmentID}/subscriptions | READ All Subscriptions
-[**ReadOneSubscription**](SubscriptionsWebhooksApi.md#ReadOneSubscription) | **Get** /v1/environments/{environmentID}/subscriptions/{subscriptionID} | READ One Subscription
-[**UpdateSubscription**](SubscriptionsWebhooksApi.md#UpdateSubscription) | **Put** /v1/environments/{environmentID}/subscriptions/{subscriptionID} | UPDATE Subscription
+[**CreateSubscription**](SubscriptionsWebhooksApi.md#CreateSubscription) | **Post** /environments/{environmentID}/subscriptions | CREATE Subscription
+[**DeleteSubscription**](SubscriptionsWebhooksApi.md#DeleteSubscription) | **Delete** /environments/{environmentID}/subscriptions/{subscriptionID} | DELETE Subscription
+[**ReadAllSubscriptions**](SubscriptionsWebhooksApi.md#ReadAllSubscriptions) | **Get** /environments/{environmentID}/subscriptions | READ All Subscriptions
+[**ReadOneSubscription**](SubscriptionsWebhooksApi.md#ReadOneSubscription) | **Get** /environments/{environmentID}/subscriptions/{subscriptionID} | READ One Subscription
+[**UpdateSubscription**](SubscriptionsWebhooksApi.md#UpdateSubscription) | **Put** /environments/{environmentID}/subscriptions/{subscriptionID} | UPDATE Subscription
 
 
 

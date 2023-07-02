@@ -3,7 +3,7 @@ PingOne Platform API - SSO and Base
 
 The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
 
-API version: 2022-08-02
+API version: 2023-06-29
 */
 
 package management
@@ -78,7 +78,7 @@ func (a *PasswordPoliciesApiService) internalCreatePasswordPolicyExecute(r ApiCr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies"
+	localVarPath := localBasePath + "/environments/{environmentID}/passwordPolicies"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -287,7 +287,7 @@ func (a *PasswordPoliciesApiService) internalDeletePasswordPolicyExecute(r ApiDe
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterValueToString(r.passwordPolicyID, "passwordPolicyID")), -1)
 
@@ -456,7 +456,7 @@ func (a *PasswordPoliciesApiService) internalReadAllPasswordPoliciesExecute(r Ap
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies"
+	localVarPath := localBasePath + "/environments/{environmentID}/passwordPolicies"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -636,7 +636,7 @@ func (a *PasswordPoliciesApiService) internalReadOnePasswordPolicyExecute(r ApiR
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterValueToString(r.passwordPolicyID, "passwordPolicyID")), -1)
 
@@ -823,7 +823,7 @@ func (a *PasswordPoliciesApiService) internalUpdatePasswordPolicyExecute(r ApiUp
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/passwordPolicies/{passwordPolicyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"passwordPolicyID"+"}", url.PathEscape(parameterValueToString(r.passwordPolicyID, "passwordPolicyID")), -1)
 

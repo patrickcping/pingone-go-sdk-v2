@@ -1,13 +1,13 @@
 # \GatewayCredentialsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGatewayCredential**](GatewayCredentialsApi.md#CreateGatewayCredential) | **Post** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials | CREATE Gateway Credentials
-[**DeleteGatewayCredential**](GatewayCredentialsApi.md#DeleteGatewayCredential) | **Delete** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID} | DELETE Gateway Credentials
-[**ReadAllGatewayCredentials**](GatewayCredentialsApi.md#ReadAllGatewayCredentials) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials | READ All Gateway Credentials
-[**ReadOneGatewayCredential**](GatewayCredentialsApi.md#ReadOneGatewayCredential) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID} | READ One Gateway Credential
+[**CreateGatewayCredential**](GatewayCredentialsApi.md#CreateGatewayCredential) | **Post** /environments/{environmentID}/gateways/{gatewayID}/credentials | CREATE Gateway Credentials
+[**DeleteGatewayCredential**](GatewayCredentialsApi.md#DeleteGatewayCredential) | **Delete** /environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID} | DELETE Gateway Credentials
+[**ReadAllGatewayCredentials**](GatewayCredentialsApi.md#ReadAllGatewayCredentials) | **Get** /environments/{environmentID}/gateways/{gatewayID}/credentials | READ All Gateway Credentials
+[**ReadOneGatewayCredential**](GatewayCredentialsApi.md#ReadOneGatewayCredential) | **Get** /environments/{environmentID}/gateways/{gatewayID}/credentials/{credentialID} | READ One Gateway Credential
 
 
 

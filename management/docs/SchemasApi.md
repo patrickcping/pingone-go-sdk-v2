@@ -1,17 +1,17 @@
 # \SchemasApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAttribute**](SchemasApi.md#CreateAttribute) | **Post** /v1/environments/{environmentID}/schemas/{schemaID}/attributes | CREATE Attribute
-[**DeleteAttribute**](SchemasApi.md#DeleteAttribute) | **Delete** /v1/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | DELETE Attribute
-[**ReadAllSchemaAttributes**](SchemasApi.md#ReadAllSchemaAttributes) | **Get** /v1/environments/{environmentID}/schemas/{schemaID}/attributes | READ All (Schema) Attributes
-[**ReadAllSchemas**](SchemasApi.md#ReadAllSchemas) | **Get** /v1/environments/{environmentID}/schemas | READ All Schemas
-[**ReadOneAttribute**](SchemasApi.md#ReadOneAttribute) | **Get** /v1/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | READ One Attribute
-[**ReadOneSchema**](SchemasApi.md#ReadOneSchema) | **Get** /v1/environments/{environmentID}/schemas/{schemaID} | READ One Schema
-[**UpdateAttributePatch**](SchemasApi.md#UpdateAttributePatch) | **Patch** /v1/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | UPDATE Attribute (Patch)
-[**UpdateAttributePut**](SchemasApi.md#UpdateAttributePut) | **Put** /v1/environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | UPDATE Attribute (Put)
+[**CreateAttribute**](SchemasApi.md#CreateAttribute) | **Post** /environments/{environmentID}/schemas/{schemaID}/attributes | CREATE Attribute
+[**DeleteAttribute**](SchemasApi.md#DeleteAttribute) | **Delete** /environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | DELETE Attribute
+[**ReadAllSchemaAttributes**](SchemasApi.md#ReadAllSchemaAttributes) | **Get** /environments/{environmentID}/schemas/{schemaID}/attributes | READ All (Schema) Attributes
+[**ReadAllSchemas**](SchemasApi.md#ReadAllSchemas) | **Get** /environments/{environmentID}/schemas | READ All Schemas
+[**ReadOneAttribute**](SchemasApi.md#ReadOneAttribute) | **Get** /environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | READ One Attribute
+[**ReadOneSchema**](SchemasApi.md#ReadOneSchema) | **Get** /environments/{environmentID}/schemas/{schemaID} | READ One Schema
+[**UpdateAttributePatch**](SchemasApi.md#UpdateAttributePatch) | **Patch** /environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | UPDATE Attribute (Patch)
+[**UpdateAttributePut**](SchemasApi.md#UpdateAttributePut) | **Put** /environments/{environmentID}/schemas/{schemaID}/attributes/{attributeID} | UPDATE Attribute (Put)
 
 
 
