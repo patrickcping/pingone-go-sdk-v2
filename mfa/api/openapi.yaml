@@ -4860,7 +4860,6 @@ components:
         option:
           $ref: '#/components/schemas/EnumFIDO2PolicyMDSAuthenticatorOption'
       required:
-      - allowedAuthenticators
       - enforceDuringAuthentication
       - option
       type: object

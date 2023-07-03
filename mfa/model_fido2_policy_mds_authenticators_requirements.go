@@ -20,7 +20,7 @@ var _ MappedNullable = &FIDO2PolicyMdsAuthenticatorsRequirements{}
 // FIDO2PolicyMdsAuthenticatorsRequirements Used to specify whether attestation is requested from the authenticator, and whether this information is used to restrict authenticator usage.
 type FIDO2PolicyMdsAuthenticatorsRequirements struct {
 	// If you set `mdsAuthenticatorsRequirements.option` to `SPECIFIC`, use this array to specify the authenticators that you want to allow.
-	AllowedAuthenticators []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner `json:"allowedAuthenticators"`
+	AllowedAuthenticators []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner `json:"allowedAuthenticators,omitempty"`
 	// Set to true if you want the device characteristics related to attestation to be checked again at each authentication attempt and not just once during registration. Set to false to have them checked only at registration.
 	EnforceDuringAuthentication bool `json:"enforceDuringAuthentication"`
 	Option EnumFIDO2PolicyMDSAuthenticatorOption `json:"option"`
@@ -30,9 +30,8 @@ type FIDO2PolicyMdsAuthenticatorsRequirements struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFIDO2PolicyMdsAuthenticatorsRequirements(allowedAuthenticators []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner, enforceDuringAuthentication bool, option EnumFIDO2PolicyMDSAuthenticatorOption) *FIDO2PolicyMdsAuthenticatorsRequirements {
+func NewFIDO2PolicyMdsAuthenticatorsRequirements(enforceDuringAuthentication bool, option EnumFIDO2PolicyMDSAuthenticatorOption) *FIDO2PolicyMdsAuthenticatorsRequirements {
 	this := FIDO2PolicyMdsAuthenticatorsRequirements{}
-	this.AllowedAuthenticators = allowedAuthenticators
 	this.EnforceDuringAuthentication = enforceDuringAuthentication
 	this.Option = option
 	return &this
@@ -46,26 +45,34 @@ func NewFIDO2PolicyMdsAuthenticatorsRequirementsWithDefaults() *FIDO2PolicyMdsAu
 	return &this
 }
 
-// GetAllowedAuthenticators returns the AllowedAuthenticators field value
+// GetAllowedAuthenticators returns the AllowedAuthenticators field value if set, zero value otherwise.
 func (o *FIDO2PolicyMdsAuthenticatorsRequirements) GetAllowedAuthenticators() []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner {
-	if o == nil {
+	if o == nil || IsNil(o.AllowedAuthenticators) {
 		var ret []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner
 		return ret
 	}
-
 	return o.AllowedAuthenticators
 }
 
-// GetAllowedAuthenticatorsOk returns a tuple with the AllowedAuthenticators field value
+// GetAllowedAuthenticatorsOk returns a tuple with the AllowedAuthenticators field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FIDO2PolicyMdsAuthenticatorsRequirements) GetAllowedAuthenticatorsOk() ([]FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AllowedAuthenticators) {
 		return nil, false
 	}
 	return o.AllowedAuthenticators, true
 }
 
-// SetAllowedAuthenticators sets field value
+// HasAllowedAuthenticators returns a boolean if a field has been set.
+func (o *FIDO2PolicyMdsAuthenticatorsRequirements) HasAllowedAuthenticators() bool {
+	if o != nil && !IsNil(o.AllowedAuthenticators) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedAuthenticators gets a reference to the given []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner and assigns it to the AllowedAuthenticators field.
 func (o *FIDO2PolicyMdsAuthenticatorsRequirements) SetAllowedAuthenticators(v []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner) {
 	o.AllowedAuthenticators = v
 }
@@ -128,7 +135,9 @@ func (o FIDO2PolicyMdsAuthenticatorsRequirements) MarshalJSON() ([]byte, error) 
 
 func (o FIDO2PolicyMdsAuthenticatorsRequirements) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["allowedAuthenticators"] = o.AllowedAuthenticators
+	if !IsNil(o.AllowedAuthenticators) {
+		toSerialize["allowedAuthenticators"] = o.AllowedAuthenticators
+	}
 	toSerialize["enforceDuringAuthentication"] = o.EnforceDuringAuthentication
 	toSerialize["option"] = o.Option
 	return toSerialize, nil

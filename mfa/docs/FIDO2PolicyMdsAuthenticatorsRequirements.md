@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllowedAuthenticators** | [**[]FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner**](FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner.md) | If you set &#x60;mdsAuthenticatorsRequirements.option&#x60; to &#x60;SPECIFIC&#x60;, use this array to specify the authenticators that you want to allow. | 
+**AllowedAuthenticators** | Pointer to [**[]FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner**](FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner.md) | If you set &#x60;mdsAuthenticatorsRequirements.option&#x60; to &#x60;SPECIFIC&#x60;, use this array to specify the authenticators that you want to allow. | [optional] 
 **EnforceDuringAuthentication** | **bool** | Set to true if you want the device characteristics related to attestation to be checked again at each authentication attempt and not just once during registration. Set to false to have them checked only at registration. | 
 **Option** | [**EnumFIDO2PolicyMDSAuthenticatorOption**](EnumFIDO2PolicyMDSAuthenticatorOption.md) |  | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewFIDO2PolicyMdsAuthenticatorsRequirements
 
-`func NewFIDO2PolicyMdsAuthenticatorsRequirements(allowedAuthenticators []FIDO2PolicyMdsAuthenticatorsRequirementsAllowedAuthenticatorsInner, enforceDuringAuthentication bool, option EnumFIDO2PolicyMDSAuthenticatorOption, ) *FIDO2PolicyMdsAuthenticatorsRequirements`
+`func NewFIDO2PolicyMdsAuthenticatorsRequirements(enforceDuringAuthentication bool, option EnumFIDO2PolicyMDSAuthenticatorOption, ) *FIDO2PolicyMdsAuthenticatorsRequirements`
 
 NewFIDO2PolicyMdsAuthenticatorsRequirements instantiates a new FIDO2PolicyMdsAuthenticatorsRequirements object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,11 @@ and a boolean to check if the value has been set.
 
 SetAllowedAuthenticators sets AllowedAuthenticators field to given value.
 
+### HasAllowedAuthenticators
+
+`func (o *FIDO2PolicyMdsAuthenticatorsRequirements) HasAllowedAuthenticators() bool`
+
+HasAllowedAuthenticators returns a boolean if a field has been set.
 
 ### GetEnforceDuringAuthentication
 
