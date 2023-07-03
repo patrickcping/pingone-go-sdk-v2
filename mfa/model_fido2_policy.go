@@ -22,6 +22,7 @@ var _ MappedNullable = &FIDO2Policy{}
 type FIDO2Policy struct {
 	// FIDO policy's UUID.
 	Id *string `json:"id,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -104,6 +105,38 @@ func (o *FIDO2Policy) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *FIDO2Policy) SetId(v string) {
 	o.Id = &v
+}
+
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *FIDO2Policy) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
+		return ret
+	}
+	return *o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FIDO2Policy) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
+		return nil, false
+	}
+	return o.Environment, true
+}
+
+// HasEnvironment returns a boolean if a field has been set.
+func (o *FIDO2Policy) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *FIDO2Policy) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -517,6 +550,9 @@ func (o FIDO2Policy) MarshalJSON() ([]byte, error) {
 func (o FIDO2Policy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	// skip: id is readOnly
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
 	// skip: createdAt is readOnly
 	// skip: updatedAt is readOnly
 	toSerialize["attestationRequirements"] = o.AttestationRequirements

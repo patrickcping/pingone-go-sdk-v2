@@ -89,10 +89,10 @@ Class | Method | HTTP request | Description
 *DeviceAuthenticationPolicyApi* | [**UpdateDeviceAuthenticationPolicy**](docs/DeviceAuthenticationPolicyApi.md#updatedeviceauthenticationpolicy) | **Put** /environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID} | UPDATE Device Authentication Policy
 *EnableUsersMFAApi* | [**ReadUserMFAEnabled**](docs/EnableUsersMFAApi.md#readusermfaenabled) | **Get** /environments/{environmentID}/users/{userID}/mfaEnabled | READ User MFA Enabled
 *EnableUsersMFAApi* | [**UpdateUserMFAEnabled**](docs/EnableUsersMFAApi.md#updateusermfaenabled) | **Put** /environments/{environmentID}/users/{userID}/mfaEnabled | UPDATE User MFA Enabled
-*FIDO2PolicyApi* | [**CreateFido2Policy**](docs/FIDO2PolicyApi.md#createfido2policy) | **Post** /environments/{environmentID}/fido2Policies | CREATE FIDO2 Policy
-*FIDO2PolicyApi* | [**DeleteFido2Policy**](docs/FIDO2PolicyApi.md#deletefido2policy) | **Delete** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | DELETE FIDO2 Policy
-*FIDO2PolicyApi* | [**ReadFido2Policies**](docs/FIDO2PolicyApi.md#readfido2policies) | **Get** /environments/{environmentID}/fido2Policies | READ FIDO2 Policies
-*FIDO2PolicyApi* | [**ReadOneFido2Policy**](docs/FIDO2PolicyApi.md#readonefido2policy) | **Get** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | READ One FIDO2 Policy
+*FIDO2PolicyApi* | [**CreateFIDO2Policy**](docs/FIDO2PolicyApi.md#createfido2policy) | **Post** /environments/{environmentID}/fido2Policies | CREATE FIDO2 Policy
+*FIDO2PolicyApi* | [**DeleteFIDO2Policy**](docs/FIDO2PolicyApi.md#deletefido2policy) | **Delete** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | DELETE FIDO2 Policy
+*FIDO2PolicyApi* | [**ReadFIDO2Policies**](docs/FIDO2PolicyApi.md#readfido2policies) | **Get** /environments/{environmentID}/fido2Policies | READ FIDO2 Policies
+*FIDO2PolicyApi* | [**ReadOneFIDO2Policy**](docs/FIDO2PolicyApi.md#readonefido2policy) | **Get** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | READ One FIDO2 Policy
 *FIDO2PolicyApi* | [**UpdateFIDO2Policy**](docs/FIDO2PolicyApi.md#updatefido2policy) | **Put** /environments/{environmentID}/fido2Policies/{fido2PolicyID} | UPDATE FIDO2 Policy
 *FIDODeviceApi* | [**CreateFidoDevice**](docs/FIDODeviceApi.md#createfidodevice) | **Post** /environments/{environmentID}/fidoDevicesMetadata | CREATE FIDO Device
 *FIDODeviceApi* | [**DeleteFidoDevice**](docs/FIDODeviceApi.md#deletefidodevice) | **Delete** /environments/{environmentID}/fidoDevicesMetadata/{fidoDeviceID} | DELETE FIDO Device

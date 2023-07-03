@@ -1305,7 +1305,7 @@ paths:
       - FIDO Policy
   /environments/{environmentID}/fido2Policies:
     get:
-      operationId: readFido2Policies
+      operationId: readFIDO2Policies
       parameters:
       - explode: false
         in: path
@@ -1362,7 +1362,7 @@ paths:
       tags:
       - FIDO2 Policy
     post:
-      operationId: createFido2Policy
+      operationId: createFIDO2Policy
       parameters:
       - explode: false
         in: path
@@ -1432,7 +1432,7 @@ paths:
       - FIDO2 Policy
   /environments/{environmentID}/fido2Policies/{fido2PolicyID}:
     delete:
-      operationId: deleteFido2Policy
+      operationId: deleteFIDO2Policy
       parameters:
       - explode: false
         in: path
@@ -1492,7 +1492,7 @@ paths:
       tags:
       - FIDO2 Policy
     get:
-      operationId: readOneFido2Policy
+      operationId: readOneFIDO2Policy
       parameters:
       - explode: false
         in: path
@@ -3067,6 +3067,8 @@ components:
             relyingPartyId: relyingPartyId
             deviceDisplayName: deviceDisplayName
             createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
             default: true
             name: name
             attestationRequirements: null
@@ -3103,6 +3105,8 @@ components:
             relyingPartyId: relyingPartyId
             deviceDisplayName: deviceDisplayName
             createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
             default: true
             name: name
             attestationRequirements: null
@@ -3683,6 +3687,8 @@ components:
         relyingPartyId: relyingPartyId
         deviceDisplayName: deviceDisplayName
         createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
         default: true
         name: name
         attestationRequirements: null
@@ -3697,6 +3703,8 @@ components:
           description: FIDO policy's UUID.
           readOnly: true
           type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
         createdAt:
           description: The time the resource was created.
           format: date-time
@@ -4410,6 +4418,8 @@ components:
           relyingPartyId: relyingPartyId
           deviceDisplayName: deviceDisplayName
           createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
           default: true
           name: name
           attestationRequirements: null
@@ -4446,6 +4456,8 @@ components:
           relyingPartyId: relyingPartyId
           deviceDisplayName: deviceDisplayName
           createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
           default: true
           name: name
           attestationRequirements: null
@@ -4848,7 +4860,6 @@ components:
         option:
           $ref: '#/components/schemas/EnumFIDO2PolicyMDSAuthenticatorOption'
       required:
-      - allowedAuthenticators
       - enforceDuringAuthentication
       - option
       type: object
