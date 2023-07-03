@@ -1,10 +1,12 @@
 # v0.13.0 (Unreleased)
 
 * **Note** Now suppresses errors when attempting to unmarshal an ENUM value from JSON that isn't yet supported in the SDK.  The value is now returned as `UNKNOWN`. [#208](https://github.com/patrickcping/pingone-go-sdk-v2/pull/208)
+* **Breaking change** Changed the request and response payload of the `DeviceAuthenticationPolicyApi.CreateDeviceAuthenticationPolicies` API to account for the ability to migrate device authentication policies from legacy FIDO to upgraded FIDO2 policies. [#211](https://github.com/patrickcping/pingone-go-sdk-v2/pull/211)
 * **Breaking change** Migrated `CreateMFAPushCredentialRequest` and `UpdateMFAPushCredentialRequest` to `MFAPushCredentialRequest`. [#201](https://github.com/patrickcping/pingone-go-sdk-v2/pull/201)
 * **Breaking change** Migrated `EntityArrayEmbeddedPushCredentialsInner` to `MFAPushCredentialResponse`. [#201](https://github.com/patrickcping/pingone-go-sdk-v2/pull/201)
 * **Note** Deprecated old FIDO policy API. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202)
 * **Feature** Support for upgraded FIDO2 policies API. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202), [#209](https://github.com/patrickcping/pingone-go-sdk-v2/pull/209), [#210](https://github.com/patrickcping/pingone-go-sdk-v2/pull/210)
+* **Enhancement** Add support for migrating device authentication policies from legacy FIDO to upgraded FIDO2 policies. [#211](https://github.com/patrickcping/pingone-go-sdk-v2/pull/211)
 * **Enhancement** Add support for FIDO2 policies API in MFA Device Policies. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202)
 * **Enhancement** Add optional attribute `PairingDisabled` to each MFA Device Policy device type. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202), [#204](https://github.com/patrickcping/pingone-go-sdk-v2/pull/204)
 * **Enhancement** Add parameters `protocol`, `baseDomain` and `baseHostname` to server configuration. [#205](https://github.com/patrickcping/pingone-go-sdk-v2/pull/205)

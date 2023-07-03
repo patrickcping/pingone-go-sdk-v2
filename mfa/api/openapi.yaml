@@ -476,7 +476,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+              $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
+          application/vnd.pingidentity.deviceAuthenticationPolicy.fido2.migrate+json:
+            schema:
+              $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
       responses:
         "400":
           content:
@@ -526,8 +529,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+                $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
           description: Successful response
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
+          description: Successful response (migration)
       summary: CREATE Device Authentication Policy
       tags:
       - Device Authentication Policy
@@ -3031,6 +3040,30 @@ components:
       - sms
       - totp
       - voice
+      type: object
+    DeviceAuthenticationPolicyPost:
+      oneOf:
+      - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+      - $ref: '#/components/schemas/DeviceAuthenticationPolicyMigrate'
+    DeviceAuthenticationPolicyMigrate:
+      properties:
+        migrationData:
+          items:
+            $ref: '#/components/schemas/DeviceAuthenticationPolicyMigrateData'
+          type: array
+      required:
+      - migrationData
+      type: object
+    DeviceAuthenticationPolicyMigrateData:
+      properties:
+        deviceAuthenticationPolicyId:
+          description: The ID of the device authentication policy.
+          type: string
+        fido2PolicyId:
+          description: The ID of the FIDO2 policy.
+          type: string
+      required:
+      - deviceAuthenticationPolicyId
       type: object
     EntityArray:
       example:
