@@ -98,5 +98,52 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// DeviceAuthenticationPolicyPost model
+		{
+			fileSelectPattern: "model_device_authentication_policy_post.go",
+			pattern:           `(func \(dst \*DeviceAuthenticationPolicyPost\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *DeviceAuthenticationPolicyPost) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into DeviceAuthenticationPolicy
+	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicy)
+	if err == nil {
+		if _, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok {
+			match++
+		} else {
+			dst.DeviceAuthenticationPolicy = nil
+		}
+	} else {
+		dst.DeviceAuthenticationPolicy = nil
+	}
+
+	// try to unmarshal data into DeviceAuthenticationPolicyMigrate
+	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicyMigrate)
+	if err == nil {
+		if v, ok := dst.DeviceAuthenticationPolicyMigrate.GetMigrationDataOk(); ok && len(v) > 0 {
+			match++
+		} else {
+			dst.DeviceAuthenticationPolicyMigrate = nil
+		}
+	} else {
+		dst.DeviceAuthenticationPolicyMigrate = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.DeviceAuthenticationPolicy = nil
+		dst.DeviceAuthenticationPolicyMigrate = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(DeviceAuthenticationPolicyPost)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(DeviceAuthenticationPolicyPost)")
+	}
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )

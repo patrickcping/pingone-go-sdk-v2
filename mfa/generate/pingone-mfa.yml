@@ -363,6 +363,30 @@ components:
         - totp
         - default
         - forSignOnPolicy
+    DeviceAuthenticationPolicyPost:
+      oneOf:
+        - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+        - $ref: '#/components/schemas/DeviceAuthenticationPolicyMigrate'
+    DeviceAuthenticationPolicyMigrate:
+      type: object
+      properties:
+        migrationData:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceAuthenticationPolicyMigrateData'
+      required:
+        - migrationData
+    DeviceAuthenticationPolicyMigrateData:
+      type: object
+      properties:
+        deviceAuthenticationPolicyId:
+          type: string
+          description: The ID of the device authentication policy.
+        fido2PolicyId:
+          type: string
+          description: The ID of the FIDO2 policy.
+      required:
+        - deviceAuthenticationPolicyId
     EntityArray:
       type: object
       properties:
@@ -1210,7 +1234,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+              $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
+          application/vnd.pingidentity.deviceAuthenticationPolicy.fido2.migrate+json:
+            schema:
+              $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
       parameters:
         - name: environmentID
           in: path
@@ -1237,7 +1264,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+                $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
+        '200':
+          description: Successful response (migration)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
   /environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}:
     get:
       tags:
