@@ -8,7 +8,7 @@ require (
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.2.0
 	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.2.0
 	github.com/patrickcping/pingone-go-sdk-v2/management v0.23.0
-	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.13.0
+	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.14.0
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.8.0
 	github.com/patrickcping/pingone-go-sdk-v2/verify v0.2.0
 	github.com/pavius/impi v0.0.3
