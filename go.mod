@@ -4,16 +4,16 @@ go 1.20
 
 require (
 	github.com/golangci/golangci-lint v1.53.3
-	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.1.4
-	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.1.7
-	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.1.0
-	github.com/patrickcping/pingone-go-sdk-v2/management v0.22.0
-	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.12.0
-	github.com/patrickcping/pingone-go-sdk-v2/risk v0.7.1
-	github.com/patrickcping/pingone-go-sdk-v2/verify v0.1.0
+	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.2.0
+	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.2.0
+	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.2.0
+	github.com/patrickcping/pingone-go-sdk-v2/management v0.23.0
+	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.13.0
+	github.com/patrickcping/pingone-go-sdk-v2/risk v0.8.0
+	github.com/patrickcping/pingone-go-sdk-v2/verify v0.2.0
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.16.0
-	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
+	golang.org/x/exp v0.0.0-20230626212559-97b1e661b5df
 	golang.org/x/oauth2 v0.9.0
 )
 
@@ -180,7 +180,7 @@ require (
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20230224173230-c95f2b4c22f2 // indirect
-	golang.org/x/mod v0.10.0 // indirect
+	golang.org/x/mod v0.11.0 // indirect
 	golang.org/x/net v0.11.0 // indirect
 	golang.org/x/sync v0.2.0 // indirect
 	golang.org/x/sys v0.9.0 // indirect
