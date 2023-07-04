@@ -1,6 +1,13 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.9.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.1.4 => v0.2.0 [#212](https://github.com/patrickcping/pingone-go-sdk-v2/pull/212)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.1.7 => v0.2.0 [#212](https://github.com/patrickcping/pingone-go-sdk-v2/pull/212)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.1.0 => v0.2.0 [#212](https://github.com/patrickcping/pingone-go-sdk-v2/pull/212)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.22.0 => v0.23.0 [#212](https://github.com/patrickcping/pingone-go-sdk-v2/pull/212)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.12.0 => v0.13.0 [#212](https://github.com/patrickcping/pingone-go-sdk-v2/pull/212)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.7.1 => v0.8.0 [#212](https://github.com/patrickcping/pingone-go-sdk-v2/pull/212)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.1.0 => v0.2.0 [#212](https://github.com/patrickcping/pingone-go-sdk-v2/pull/212)
     * **Enhancement** Added ability to override the default server and server variables at the point of client init. [#206](https://github.com/patrickcping/pingone-go-sdk-v2/pull/206)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.2.0](./agreementmanagement/CHANGELOG.md)
     * **Note** Now suppresses errors when attempting to unmarshal an ENUM value from JSON that isn't yet supported in the SDK.  The value is now returned as `UNKNOWN`. [#208](https://github.com/patrickcping/pingone-go-sdk-v2/pull/208)
