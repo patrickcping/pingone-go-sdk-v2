@@ -109,7 +109,7 @@ var (
 	// try to unmarshal data into DeviceAuthenticationPolicy
 	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicy)
 	if err == nil {
-		if _, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok {
+		if v, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok && v != nil && *v != "" {
 			match++
 		} else {
 			dst.DeviceAuthenticationPolicy = nil
@@ -140,6 +140,53 @@ var (
 		return nil // exactly one match
 	} else { // no match
 		return fmt.Errorf("data failed to match schemas in oneOf(DeviceAuthenticationPolicyPost)")
+	}
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// DeviceAuthenticationPolicyPostResponse model
+		{
+			fileSelectPattern: "model_device_authentication_policy_post_response.go",
+			pattern:           `(func \(dst \*DeviceAuthenticationPolicyPostResponse\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *DeviceAuthenticationPolicyPostResponse) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into DeviceAuthenticationPolicy
+	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicy)
+	if err == nil {
+		if v, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok && v != nil && *v != "" {
+			match++
+		} else {
+			dst.DeviceAuthenticationPolicy = nil
+		}
+	} else {
+		dst.DeviceAuthenticationPolicy = nil
+	}
+
+	// try to unmarshal data into EntityArray
+	err = json.Unmarshal(data, &dst.EntityArray)
+	if err == nil {
+		if v, ok := dst.EntityArray.GetEmbeddedOk(); ok && v != nil {
+			match++
+		} else {
+			dst.EntityArray = nil
+		}
+	} else {
+		dst.EntityArray = nil
+	}
+
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.DeviceAuthenticationPolicy = nil
+		dst.EntityArray = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(DeviceAuthenticationPolicyPostResponse)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(DeviceAuthenticationPolicyPostResponse)")
 	}
 }
 

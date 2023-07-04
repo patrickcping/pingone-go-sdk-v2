@@ -466,6 +466,13 @@ paths:
       operationId: createDeviceAuthenticationPolicies
       parameters:
       - explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          $ref: '#/components/schemas/EnumDeviceAuthenticationPolicyPostContentType'
+        style: simple
+      - explode: false
         in: path
         name: environmentID
         required: true
@@ -525,18 +532,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Uncaught error occurred.  Platform outage
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
-          description: Successful response
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
+                $ref: '#/components/schemas/DeviceAuthenticationPolicyPostResponse'
           description: Successful response (migration)
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthenticationPolicyPostResponse'
+          description: Successful response
       summary: CREATE Device Authentication Policy
       tags:
       - Device Authentication Policy
@@ -3045,6 +3052,10 @@ components:
       oneOf:
       - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
       - $ref: '#/components/schemas/DeviceAuthenticationPolicyMigrate'
+    DeviceAuthenticationPolicyPostResponse:
+      oneOf:
+      - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+      - $ref: '#/components/schemas/EntityArray'
     DeviceAuthenticationPolicyMigrate:
       properties:
         migrationData:
@@ -3461,6 +3472,11 @@ components:
         size:
           type: number
       type: object
+    EnumDeviceAuthenticationPolicyPostContentType:
+      enum:
+      - application/json
+      - application/vnd.pingidentity.deviceAuthenticationPolicy.fido2.migrate+json
+      type: string
     EnumFIDOAttestationRequirements:
       description: |
         Determines whether attestation is requested from the authenticator, and whether this information is used to restrict authenticator usage. Can take one of these values:

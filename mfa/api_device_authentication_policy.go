@@ -27,7 +27,13 @@ type ApiCreateDeviceAuthenticationPoliciesRequest struct {
 	ctx context.Context
 	ApiService *DeviceAuthenticationPolicyApiService
 	environmentID string
+	contentType *EnumDeviceAuthenticationPolicyPostContentType
 	deviceAuthenticationPolicyPost *DeviceAuthenticationPolicyPost
+}
+
+func (r ApiCreateDeviceAuthenticationPoliciesRequest) ContentType(contentType EnumDeviceAuthenticationPolicyPostContentType) ApiCreateDeviceAuthenticationPoliciesRequest {
+	r.contentType = &contentType
+	return r
 }
 
 func (r ApiCreateDeviceAuthenticationPoliciesRequest) DeviceAuthenticationPolicyPost(deviceAuthenticationPolicyPost DeviceAuthenticationPolicyPost) ApiCreateDeviceAuthenticationPoliciesRequest {
@@ -35,7 +41,7 @@ func (r ApiCreateDeviceAuthenticationPoliciesRequest) DeviceAuthenticationPolicy
 	return r
 }
 
-func (r ApiCreateDeviceAuthenticationPoliciesRequest) Execute() (*DeviceAuthenticationPolicyPost, *http.Response, error) {
+func (r ApiCreateDeviceAuthenticationPoliciesRequest) Execute() (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
 	return r.ApiService.CreateDeviceAuthenticationPoliciesExecute(r)
 }
 
@@ -55,22 +61,22 @@ func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPolicie
 }
 
 // Execute executes the request
-//  @return DeviceAuthenticationPolicyPost
-func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPost, *http.Response, error) {
+//  @return DeviceAuthenticationPolicyPostResponse
+func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
 	obj, response, error := processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalCreateDeviceAuthenticationPoliciesExecute(r)
 		},
 	)
-	return obj.(*DeviceAuthenticationPolicyPost), response, error
+	return obj.(*DeviceAuthenticationPolicyPostResponse), response, error
 }
 			
-func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPost, *http.Response, error) {
+func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DeviceAuthenticationPolicyPost
+		localVarReturnValue  *DeviceAuthenticationPolicyPostResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceAuthenticationPolicyApiService.CreateDeviceAuthenticationPolicies")
@@ -101,6 +107,9 @@ func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticatio
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.contentType != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.deviceAuthenticationPolicyPost
