@@ -1,3 +1,9 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.14.0](./mfa/CHANGELOG.md)
+    * **Breaking change** Corrected the `CreateDeviceAuthenticationPolicies` return data model object to return a new object `DeviceAuthenticationPolicyPostResponse` that reflects an `EntityArray` object returned on migration.
+    * **Bug** Fixed the inability to select the content type header of the `CreateDeviceAuthenticationPolicies` API.
+
 # Release (2023-07-04)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.9.0

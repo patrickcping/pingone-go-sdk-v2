@@ -43,7 +43,7 @@ func (dst *DeviceAuthenticationPolicyPost) UnmarshalJSON(data []byte) error {
 	// try to unmarshal data into DeviceAuthenticationPolicy
 	err = json.Unmarshal(data, &dst.DeviceAuthenticationPolicy)
 	if err == nil {
-		if _, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok {
+		if v, ok := dst.DeviceAuthenticationPolicy.GetNameOk(); ok && v != nil && *v != "" {
 			match++
 		} else {
 			dst.DeviceAuthenticationPolicy = nil

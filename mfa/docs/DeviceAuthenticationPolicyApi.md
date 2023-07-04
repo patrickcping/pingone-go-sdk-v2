@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateDeviceAuthenticationPolicies
 
-> DeviceAuthenticationPolicyPost CreateDeviceAuthenticationPolicies(ctx, environmentID).DeviceAuthenticationPolicyPost(deviceAuthenticationPolicyPost).Execute()
+> DeviceAuthenticationPolicyPostResponse CreateDeviceAuthenticationPolicies(ctx, environmentID).ContentType(contentType).DeviceAuthenticationPolicyPost(deviceAuthenticationPolicyPost).Execute()
 
 CREATE Device Authentication Policy
 
@@ -32,16 +32,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
+    contentType := openapiclient.EnumDeviceAuthenticationPolicyPostContentType("application/json") // EnumDeviceAuthenticationPolicyPostContentType |  (optional)
     deviceAuthenticationPolicyPost := openapiclient.DeviceAuthenticationPolicyPost{DeviceAuthenticationPolicy: openapiclient.NewDeviceAuthenticationPolicy("Name_example", *openapiclient.NewDeviceAuthenticationPolicyOfflineDevice(false, *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtp(*openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpLifeTime(int32(123), openapiclient.EnumTimeUnit("MINUTES")), *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure(int32(123), *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown(int32(123), openapiclient.EnumTimeUnit("MINUTES"))))), *openapiclient.NewDeviceAuthenticationPolicyOfflineDevice(false, *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtp(*openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpLifeTime(int32(123), openapiclient.EnumTimeUnit("MINUTES")), *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure(int32(123), *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown(int32(123), openapiclient.EnumTimeUnit("MINUTES"))))), *openapiclient.NewDeviceAuthenticationPolicyOfflineDevice(false, *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtp(*openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpLifeTime(int32(123), openapiclient.EnumTimeUnit("MINUTES")), *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure(int32(123), *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown(int32(123), openapiclient.EnumTimeUnit("MINUTES"))))), *openapiclient.NewDeviceAuthenticationPolicyMobile(false, *openapiclient.NewDeviceAuthenticationPolicyMobileOtp(*openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure(int32(123), *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown(int32(123), openapiclient.EnumTimeUnit("MINUTES"))), *openapiclient.NewDeviceAuthenticationPolicyMobileOtpWindow(*openapiclient.NewDeviceAuthenticationPolicyMobileOtpWindowStepSize(int32(123), openapiclient.EnumTimeUnit("MINUTES"))))), *openapiclient.NewDeviceAuthenticationPolicyTotp(false, *openapiclient.NewDeviceAuthenticationPolicyTotpOtp(*openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailure(int32(123), *openapiclient.NewDeviceAuthenticationPolicyOfflineDeviceOtpFailureCoolDown(int32(123), openapiclient.EnumTimeUnit("MINUTES"))))), false, false)} // DeviceAuthenticationPolicyPost |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.CreateDeviceAuthenticationPolicies(context.Background(), environmentID).DeviceAuthenticationPolicyPost(deviceAuthenticationPolicyPost).Execute()
+    resp, r, err := apiClient.DeviceAuthenticationPolicyApi.CreateDeviceAuthenticationPolicies(context.Background(), environmentID).ContentType(contentType).DeviceAuthenticationPolicyPost(deviceAuthenticationPolicyPost).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DeviceAuthenticationPolicyApi.CreateDeviceAuthenticationPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateDeviceAuthenticationPolicies`: DeviceAuthenticationPolicyPost
+    // response from `CreateDeviceAuthenticationPolicies`: DeviceAuthenticationPolicyPostResponse
     fmt.Fprintf(os.Stdout, "Response from `DeviceAuthenticationPolicyApi.CreateDeviceAuthenticationPolicies`: %v\n", resp)
 }
 ```
@@ -62,11 +63,12 @@ Other parameters are passed through a pointer to a apiCreateDeviceAuthentication
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **contentType** | [**EnumDeviceAuthenticationPolicyPostContentType**](EnumDeviceAuthenticationPolicyPostContentType.md) |  | 
  **deviceAuthenticationPolicyPost** | [**DeviceAuthenticationPolicyPost**](DeviceAuthenticationPolicyPost.md) |  | 
 
 ### Return type
 
-[**DeviceAuthenticationPolicyPost**](DeviceAuthenticationPolicyPost.md)
+[**DeviceAuthenticationPolicyPostResponse**](DeviceAuthenticationPolicyPostResponse.md)
 
 ### Authorization
 

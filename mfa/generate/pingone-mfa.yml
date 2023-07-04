@@ -367,6 +367,10 @@ components:
       oneOf:
         - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
         - $ref: '#/components/schemas/DeviceAuthenticationPolicyMigrate'
+    DeviceAuthenticationPolicyPostResponse:
+      oneOf:
+        - $ref: '#/components/schemas/DeviceAuthenticationPolicy'
+        - $ref: '#/components/schemas/EntityArray'
     DeviceAuthenticationPolicyMigrate:
       type: object
       properties:
@@ -418,6 +422,9 @@ components:
           type: number
         size:
           type: number
+    EnumDeviceAuthenticationPolicyPostContentType:
+      type: string
+      enum: [application/json, application/vnd.pingidentity.deviceAuthenticationPolicy.fido2.migrate+json]
     EnumFIDOAttestationRequirements:
       type: string
       enum: [NONE, AUDIT_ONLY, GLOBAL, CERTIFIED, SPECIFIC]
@@ -1239,6 +1246,10 @@ paths:
             schema:
               $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
       parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            $ref: '#/components/schemas/EnumDeviceAuthenticationPolicyPostContentType'
         - name: environmentID
           in: path
           schema:
@@ -1259,18 +1270,18 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
-        '201':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
         '200':
           description: Successful response (migration)
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeviceAuthenticationPolicyPost'
+                $ref: '#/components/schemas/DeviceAuthenticationPolicyPostResponse'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthenticationPolicyPostResponse'
   /environments/{environmentID}/deviceAuthenticationPolicies/{deviceAuthenticationPolicyID}:
     get:
       tags:
