@@ -1,3 +1,7 @@
+# v0.15.0 (Unreleased)
+
+* **Enhancement** Add optional ENUM attribute `NewDeviceNotification` to the `DeviceAuthenticationPolicy` model.
+
 # v0.14.0 (2023-07-04)
 
 * **Breaking change** Corrected the `CreateDeviceAuthenticationPolicies` return data model object to return a new object `DeviceAuthenticationPolicyPostResponse` that reflects an `EntityArray` object returned on migration. [#213](https://github.com/patrickcping/pingone-go-sdk-v2/pull/213)

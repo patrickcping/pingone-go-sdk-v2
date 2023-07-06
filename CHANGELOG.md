@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.15.0](./mfa/CHANGELOG.md)
+    * **Enhancement** Add optional ENUM attribute `NewDeviceNotification` to the `DeviceAuthenticationPolicy` model.
+
 # Release (2023-07-04)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.9.1
