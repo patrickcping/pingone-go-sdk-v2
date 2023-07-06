@@ -57,12 +57,19 @@ func (a *NotificationsPoliciesApiService) CreateNotificationsPolicy(ctx context.
 // Execute executes the request
 //  @return NotificationsPolicy
 func (a *NotificationsPoliciesApiService) CreateNotificationsPolicyExecute(r ApiCreateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateNotificationsPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *NotificationsPoliciesApiService) internalCreateNotificationsPolicyExecute(r ApiCreateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
@@ -237,13 +244,19 @@ func (a *NotificationsPoliciesApiService) DeleteNotificationsPolicy(ctx context.
 
 // Execute executes the request
 func (a *NotificationsPoliciesApiService) DeleteNotificationsPolicyExecute(r ApiDeleteNotificationsPolicyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteNotificationsPolicyExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *NotificationsPoliciesApiService) internalDeleteNotificationsPolicyExecute(r ApiDeleteNotificationsPolicyRequest) (*http.Response, error) {
@@ -405,12 +418,19 @@ func (a *NotificationsPoliciesApiService) ReadAllNotificationsPolicies(ctx conte
 // Execute executes the request
 //  @return EntityArray
 func (a *NotificationsPoliciesApiService) ReadAllNotificationsPoliciesExecute(r ApiReadAllNotificationsPoliciesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllNotificationsPoliciesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *NotificationsPoliciesApiService) internalReadAllNotificationsPoliciesExecute(r ApiReadAllNotificationsPoliciesRequest) (*EntityArray, *http.Response, error) {
@@ -584,12 +604,19 @@ func (a *NotificationsPoliciesApiService) ReadOneNotificationsPolicy(ctx context
 // Execute executes the request
 //  @return NotificationsPolicy
 func (a *NotificationsPoliciesApiService) ReadOneNotificationsPolicyExecute(r ApiReadOneNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneNotificationsPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *NotificationsPoliciesApiService) internalReadOneNotificationsPolicyExecute(r ApiReadOneNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
@@ -770,12 +797,19 @@ func (a *NotificationsPoliciesApiService) UpdateNotificationsPolicy(ctx context.
 // Execute executes the request
 //  @return NotificationsPolicy
 func (a *NotificationsPoliciesApiService) UpdateNotificationsPolicyExecute(r ApiUpdateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateNotificationsPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *NotificationsPoliciesApiService) internalUpdateNotificationsPolicyExecute(r ApiUpdateNotificationsPolicyRequest) (*NotificationsPolicy, *http.Response, error) {

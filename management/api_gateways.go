@@ -57,12 +57,19 @@ func (a *GatewaysApiService) CreateGateway(ctx context.Context, environmentID st
 // Execute executes the request
 //  @return CreateGateway201Response
 func (a *GatewaysApiService) CreateGatewayExecute(r ApiCreateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CreateGateway201Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateGatewayExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CreateGateway201Response), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewaysApiService) internalCreateGatewayExecute(r ApiCreateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *GatewaysApiService) DeleteGateway(ctx context.Context, environmentID st
 
 // Execute executes the request
 func (a *GatewaysApiService) DeleteGatewayExecute(r ApiDeleteGatewayRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteGatewayExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *GatewaysApiService) internalDeleteGatewayExecute(r ApiDeleteGatewayRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *GatewaysApiService) ReadAllGateways(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return EntityArray
 func (a *GatewaysApiService) ReadAllGatewaysExecute(r ApiReadAllGatewaysRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllGatewaysExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewaysApiService) internalReadAllGatewaysExecute(r ApiReadAllGatewaysRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *GatewaysApiService) ReadOneGateway(ctx context.Context, environmentID s
 // Execute executes the request
 //  @return CreateGateway201Response
 func (a *GatewaysApiService) ReadOneGatewayExecute(r ApiReadOneGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CreateGateway201Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneGatewayExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CreateGateway201Response), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewaysApiService) internalReadOneGatewayExecute(r ApiReadOneGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *GatewaysApiService) UpdateGateway(ctx context.Context, environmentID st
 // Execute executes the request
 //  @return CreateGateway201Response
 func (a *GatewaysApiService) UpdateGatewayExecute(r ApiUpdateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CreateGateway201Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateGatewayExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CreateGateway201Response), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewaysApiService) internalUpdateGatewayExecute(r ApiUpdateGatewayRequest) (*CreateGateway201Response, *http.Response, error) {

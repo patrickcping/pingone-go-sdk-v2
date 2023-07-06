@@ -57,12 +57,19 @@ func (a *RiskPoliciesApiService) CreateRiskPolicySet(ctx context.Context, enviro
 // Execute executes the request
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) CreateRiskPolicySetExecute(r ApiCreateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RiskPolicySet
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateRiskPolicySetExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*RiskPolicySet), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *RiskPoliciesApiService) internalCreateRiskPolicySetExecute(r ApiCreateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *RiskPoliciesApiService) DeleteRiskPolicySet(ctx context.Context, enviro
 
 // Execute executes the request
 func (a *RiskPoliciesApiService) DeleteRiskPolicySetExecute(r ApiDeleteRiskPolicySetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteRiskPolicySetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *RiskPoliciesApiService) internalDeleteRiskPolicySetExecute(r ApiDeleteRiskPolicySetRequest) (*http.Response, error) {
@@ -419,12 +432,19 @@ func (a *RiskPoliciesApiService) ReadOneRiskPolicySet(ctx context.Context, envir
 // Execute executes the request
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) ReadOneRiskPolicySetExecute(r ApiReadOneRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RiskPolicySet
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneRiskPolicySetExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*RiskPolicySet), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *RiskPoliciesApiService) internalReadOneRiskPolicySetExecute(r ApiReadOneRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
@@ -596,12 +616,19 @@ func (a *RiskPoliciesApiService) ReadRiskPolicySets(ctx context.Context, environ
 // Execute executes the request
 //  @return EntityArray
 func (a *RiskPoliciesApiService) ReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadRiskPolicySetsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *RiskPoliciesApiService) internalReadRiskPolicySetsExecute(r ApiReadRiskPolicySetsRequest) (*EntityArray, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *RiskPoliciesApiService) UpdateRiskPolicySet(ctx context.Context, enviro
 // Execute executes the request
 //  @return RiskPolicySet
 func (a *RiskPoliciesApiService) UpdateRiskPolicySetExecute(r ApiUpdateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RiskPolicySet
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateRiskPolicySetExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*RiskPolicySet), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *RiskPoliciesApiService) internalUpdateRiskPolicySetExecute(r ApiUpdateRiskPolicySetRequest) (*RiskPolicySet, *http.Response, error) {

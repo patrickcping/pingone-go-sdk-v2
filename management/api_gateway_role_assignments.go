@@ -60,12 +60,19 @@ func (a *GatewayRoleAssignmentsApiService) CreateGatewayRoleAssignment(ctx conte
 // Execute executes the request
 //  @return RoleAssignment
 func (a *GatewayRoleAssignmentsApiService) CreateGatewayRoleAssignmentExecute(r ApiCreateGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RoleAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateGatewayRoleAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*RoleAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewayRoleAssignmentsApiService) internalCreateGatewayRoleAssignmentExecute(r ApiCreateGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
@@ -255,13 +262,19 @@ func (a *GatewayRoleAssignmentsApiService) DeleteGatewayRoleAssignment(ctx conte
 
 // Execute executes the request
 func (a *GatewayRoleAssignmentsApiService) DeleteGatewayRoleAssignmentExecute(r ApiDeleteGatewayRoleAssignmentRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteGatewayRoleAssignmentExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *GatewayRoleAssignmentsApiService) internalDeleteGatewayRoleAssignmentExecute(r ApiDeleteGatewayRoleAssignmentRequest) (*http.Response, error) {
@@ -427,12 +440,19 @@ func (a *GatewayRoleAssignmentsApiService) ReadGatewayRoleAssignments(ctx contex
 // Execute executes the request
 //  @return EntityArray
 func (a *GatewayRoleAssignmentsApiService) ReadGatewayRoleAssignmentsExecute(r ApiReadGatewayRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadGatewayRoleAssignmentsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewayRoleAssignmentsApiService) internalReadGatewayRoleAssignmentsExecute(r ApiReadGatewayRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
@@ -610,12 +630,19 @@ func (a *GatewayRoleAssignmentsApiService) ReadOneGatewayRoleAssignment(ctx cont
 // Execute executes the request
 //  @return RoleAssignment
 func (a *GatewayRoleAssignmentsApiService) ReadOneGatewayRoleAssignmentExecute(r ApiReadOneGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RoleAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneGatewayRoleAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*RoleAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewayRoleAssignmentsApiService) internalReadOneGatewayRoleAssignmentExecute(r ApiReadOneGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
@@ -800,12 +827,19 @@ func (a *GatewayRoleAssignmentsApiService) UpdateGatewayRoleAssignment(ctx conte
 // Execute executes the request
 //  @return RoleAssignment
 func (a *GatewayRoleAssignmentsApiService) UpdateGatewayRoleAssignmentExecute(r ApiUpdateGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RoleAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateGatewayRoleAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*RoleAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewayRoleAssignmentsApiService) internalUpdateGatewayRoleAssignmentExecute(r ApiUpdateGatewayRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {

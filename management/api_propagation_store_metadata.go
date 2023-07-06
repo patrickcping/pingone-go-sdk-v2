@@ -56,13 +56,19 @@ func (a *PropagationStoreMetadataApiService) EnvironmentsEnvironmentIDPropagatio
 
 // Execute executes the request
 func (a *PropagationStoreMetadataApiService) EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoreMetadataApiService) internalEnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostRequest) (*http.Response, error) {
@@ -241,13 +247,19 @@ func (a *PropagationStoreMetadataApiService) EnvironmentsEnvironmentIDPropagatio
 
 // Execute executes the request
 func (a *PropagationStoreMetadataApiService) EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoreMetadataApiService) internalEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostRequest) (*http.Response, error) {
@@ -426,13 +438,19 @@ func (a *PropagationStoreMetadataApiService) EnvironmentsEnvironmentIDPropagatio
 
 // Execute executes the request
 func (a *PropagationStoreMetadataApiService) EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoreMetadataApiService) internalEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostRequest) (*http.Response, error) {
@@ -611,13 +629,19 @@ func (a *PropagationStoreMetadataApiService) EnvironmentsEnvironmentIDPropagatio
 
 // Execute executes the request
 func (a *PropagationStoreMetadataApiService) EnvironmentsEnvironmentIDPropagationStoreMetadataScimPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoreMetadataScimPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoreMetadataScimPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoreMetadataApiService) internalEnvironmentsEnvironmentIDPropagationStoreMetadataScimPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoreMetadataScimPostRequest) (*http.Response, error) {

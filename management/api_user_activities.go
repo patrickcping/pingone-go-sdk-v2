@@ -56,13 +56,19 @@ func (a *UserActivitiesApiService) EnvironmentsEnvironmentIDUserActivitiesGet(ct
 
 // Execute executes the request
 func (a *UserActivitiesApiService) EnvironmentsEnvironmentIDUserActivitiesGetExecute(r ApiEnvironmentsEnvironmentIDUserActivitiesGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUserActivitiesGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserActivitiesApiService) internalEnvironmentsEnvironmentIDUserActivitiesGetExecute(r ApiEnvironmentsEnvironmentIDUserActivitiesGetRequest) (*http.Response, error) {

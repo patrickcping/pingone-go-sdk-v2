@@ -57,12 +57,19 @@ func (a *LanguagesApiService) CreateLanguage(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return Language
 func (a *LanguagesApiService) CreateLanguageExecute(r ApiCreateLanguageRequest) (*Language, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Language
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateLanguageExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Language), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *LanguagesApiService) internalCreateLanguageExecute(r ApiCreateLanguageRequest) (*Language, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *LanguagesApiService) DeleteLanguage(ctx context.Context, environmentID 
 
 // Execute executes the request
 func (a *LanguagesApiService) DeleteLanguageExecute(r ApiDeleteLanguageRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteLanguageExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *LanguagesApiService) internalDeleteLanguageExecute(r ApiDeleteLanguageRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *LanguagesApiService) ReadLanguages(ctx context.Context, environmentID s
 // Execute executes the request
 //  @return EntityArray
 func (a *LanguagesApiService) ReadLanguagesExecute(r ApiReadLanguagesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadLanguagesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *LanguagesApiService) internalReadLanguagesExecute(r ApiReadLanguagesRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *LanguagesApiService) ReadOneLanguage(ctx context.Context, environmentID
 // Execute executes the request
 //  @return Language
 func (a *LanguagesApiService) ReadOneLanguageExecute(r ApiReadOneLanguageRequest) (*Language, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Language
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneLanguageExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Language), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *LanguagesApiService) internalReadOneLanguageExecute(r ApiReadOneLanguageRequest) (*Language, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *LanguagesApiService) UpdateLanguage(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return Language
 func (a *LanguagesApiService) UpdateLanguageExecute(r ApiUpdateLanguageRequest) (*Language, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Language
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateLanguageExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Language), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *LanguagesApiService) internalUpdateLanguageExecute(r ApiUpdateLanguageRequest) (*Language, *http.Response, error) {

@@ -63,12 +63,19 @@ func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPolicie
 // Execute executes the request
 //  @return DeviceAuthenticationPolicyPostResponse
 func (a *DeviceAuthenticationPolicyApiService) CreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DeviceAuthenticationPolicyPostResponse
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateDeviceAuthenticationPoliciesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DeviceAuthenticationPolicyPostResponse), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *DeviceAuthenticationPolicyApiService) internalCreateDeviceAuthenticationPoliciesExecute(r ApiCreateDeviceAuthenticationPoliciesRequest) (*DeviceAuthenticationPolicyPostResponse, *http.Response, error) {
@@ -257,13 +264,19 @@ func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicy(
 
 // Execute executes the request
 func (a *DeviceAuthenticationPolicyApiService) DeleteDeviceAuthenticationPolicyExecute(r ApiDeleteDeviceAuthenticationPolicyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteDeviceAuthenticationPolicyExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *DeviceAuthenticationPolicyApiService) internalDeleteDeviceAuthenticationPolicyExecute(r ApiDeleteDeviceAuthenticationPolicyRequest) (*http.Response, error) {
@@ -425,12 +438,19 @@ func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPolicies(
 // Execute executes the request
 //  @return EntityArray
 func (a *DeviceAuthenticationPolicyApiService) ReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadDeviceAuthenticationPoliciesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *DeviceAuthenticationPolicyApiService) internalReadDeviceAuthenticationPoliciesExecute(r ApiReadDeviceAuthenticationPoliciesRequest) (*EntityArray, *http.Response, error) {
@@ -604,12 +624,19 @@ func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicy
 // Execute executes the request
 //  @return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) ReadOneDeviceAuthenticationPolicyExecute(r ApiReadOneDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DeviceAuthenticationPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneDeviceAuthenticationPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DeviceAuthenticationPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *DeviceAuthenticationPolicyApiService) internalReadOneDeviceAuthenticationPolicyExecute(r ApiReadOneDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
@@ -790,12 +817,19 @@ func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicy(
 // Execute executes the request
 //  @return DeviceAuthenticationPolicy
 func (a *DeviceAuthenticationPolicyApiService) UpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DeviceAuthenticationPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateDeviceAuthenticationPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DeviceAuthenticationPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *DeviceAuthenticationPolicyApiService) internalUpdateDeviceAuthenticationPolicyExecute(r ApiUpdateDeviceAuthenticationPolicyRequest) (*DeviceAuthenticationPolicy, *http.Response, error) {

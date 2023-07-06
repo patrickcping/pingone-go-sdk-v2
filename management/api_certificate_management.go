@@ -67,12 +67,19 @@ func (a *CertificateManagementApiService) CreateCertificateFromFile(ctx context.
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r ApiCreateCertificateFromFileRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalCreateCertificateFromFileExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalCreateCertificateFromFileExecute(r ApiCreateCertificateFromFileRequest) (*Certificate, *http.Response, error) {
@@ -298,12 +305,19 @@ func (a *CertificateManagementApiService) CreateKey(ctx context.Context, environ
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalCreateKeyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalCreateKeyExecute(r ApiCreateKeyRequest) (*Certificate, *http.Response, error) {
@@ -525,13 +539,19 @@ func (a *CertificateManagementApiService) DeleteCertificate(ctx context.Context,
 
 // Execute executes the request
 func (a *CertificateManagementApiService) DeleteCertificateExecute(r ApiDeleteCertificateRequest) (*http.Response, error) {
-	_, response, error := processResponse(
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteCertificateExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 
 func (a *CertificateManagementApiService) internalDeleteCertificateExecute(r ApiDeleteCertificateRequest) (*http.Response, error) {
@@ -695,13 +715,19 @@ func (a *CertificateManagementApiService) DeleteKey(ctx context.Context, environ
 
 // Execute executes the request
 func (a *CertificateManagementApiService) DeleteKeyExecute(r ApiDeleteKeyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteKeyExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 
 func (a *CertificateManagementApiService) internalDeleteKeyExecute(r ApiDeleteKeyRequest) (*http.Response, error) {
@@ -873,12 +899,19 @@ func (a *CertificateManagementApiService) ExportCSR(ctx context.Context, environ
 //
 //	@return string
 func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest) (string, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue string
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalExportCSRExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(string), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalExportCSRExecute(r ApiExportCSRRequest) (string, *http.Response, error) {
@@ -1057,12 +1090,19 @@ func (a *CertificateManagementApiService) GetCertificate(ctx context.Context, en
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) GetCertificateExecute(r ApiGetCertificateRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetCertificateExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalGetCertificateExecute(r ApiGetCertificateRequest) (*Certificate, *http.Response, error) {
@@ -1238,12 +1278,19 @@ func (a *CertificateManagementApiService) GetCertificateApplications(ctx context
 //
 //	@return EntityArray
 func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetCertificateApplicationsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalGetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
@@ -1416,12 +1463,19 @@ func (a *CertificateManagementApiService) GetCertificates(ctx context.Context, e
 //
 //	@return EntityArray
 func (a *CertificateManagementApiService) GetCertificatesExecute(r ApiGetCertificatesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetCertificatesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalGetCertificatesExecute(r ApiGetCertificatesRequest) (*EntityArray, *http.Response, error) {
@@ -1785,12 +1839,19 @@ func (a *CertificateManagementApiService) GetKeyApplications(ctx context.Context
 //
 //	@return EntityArray
 func (a *CertificateManagementApiService) GetKeyApplicationsExecute(r ApiGetKeyApplicationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetKeyApplicationsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalGetKeyApplicationsExecute(r ApiGetKeyApplicationsRequest) (*EntityArray, *http.Response, error) {
@@ -1963,12 +2024,19 @@ func (a *CertificateManagementApiService) GetKeys(ctx context.Context, environme
 //
 //	@return EntityArray
 func (a *CertificateManagementApiService) GetKeysExecute(r ApiGetKeysRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetKeysExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalGetKeysExecute(r ApiGetKeysRequest) (*EntityArray, *http.Response, error) {
@@ -2149,12 +2217,19 @@ func (a *CertificateManagementApiService) ImportCSRResponse(ctx context.Context,
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalImportCSRResponseExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
@@ -2347,12 +2422,19 @@ func (a *CertificateManagementApiService) UpdateKey(ctx context.Context, environ
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) UpdateKeyExecute(r ApiUpdateKeyRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalUpdateKeyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
 
 func (a *CertificateManagementApiService) internalUpdateKeyExecute(r ApiUpdateKeyRequest) (*Certificate, *http.Response, error) {

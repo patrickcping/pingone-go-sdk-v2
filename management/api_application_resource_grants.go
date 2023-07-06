@@ -60,12 +60,19 @@ func (a *ApplicationResourceGrantsApiService) CreateApplicationGrant(ctx context
 // Execute executes the request
 //  @return ApplicationResourceGrant
 func (a *ApplicationResourceGrantsApiService) CreateApplicationGrantExecute(r ApiCreateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ApplicationResourceGrant
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateApplicationGrantExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ApplicationResourceGrant), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationResourceGrantsApiService) internalCreateApplicationGrantExecute(r ApiCreateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
@@ -255,13 +262,19 @@ func (a *ApplicationResourceGrantsApiService) DeleteApplicationGrant(ctx context
 
 // Execute executes the request
 func (a *ApplicationResourceGrantsApiService) DeleteApplicationGrantExecute(r ApiDeleteApplicationGrantRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteApplicationGrantExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *ApplicationResourceGrantsApiService) internalDeleteApplicationGrantExecute(r ApiDeleteApplicationGrantRequest) (*http.Response, error) {
@@ -427,12 +440,19 @@ func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrants(ctx conte
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationResourceGrantsApiService) ReadAllApplicationGrantsExecute(r ApiReadAllApplicationGrantsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllApplicationGrantsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationResourceGrantsApiService) internalReadAllApplicationGrantsExecute(r ApiReadAllApplicationGrantsRequest) (*EntityArray, *http.Response, error) {
@@ -610,12 +630,19 @@ func (a *ApplicationResourceGrantsApiService) ReadOneApplicationGrant(ctx contex
 // Execute executes the request
 //  @return ApplicationResourceGrant
 func (a *ApplicationResourceGrantsApiService) ReadOneApplicationGrantExecute(r ApiReadOneApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ApplicationResourceGrant
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneApplicationGrantExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ApplicationResourceGrant), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationResourceGrantsApiService) internalReadOneApplicationGrantExecute(r ApiReadOneApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
@@ -800,12 +827,19 @@ func (a *ApplicationResourceGrantsApiService) UpdateApplicationGrant(ctx context
 // Execute executes the request
 //  @return ApplicationResourceGrant
 func (a *ApplicationResourceGrantsApiService) UpdateApplicationGrantExecute(r ApiUpdateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ApplicationResourceGrant
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateApplicationGrantExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ApplicationResourceGrant), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationResourceGrantsApiService) internalUpdateApplicationGrantExecute(r ApiUpdateApplicationGrantRequest) (*ApplicationResourceGrant, *http.Response, error) {

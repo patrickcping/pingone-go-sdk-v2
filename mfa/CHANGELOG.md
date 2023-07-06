@@ -1,5 +1,6 @@
 # v0.15.0 (Unreleased)
 
+* **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
 * **Enhancement** Add optional ENUM attribute `NewDeviceNotification` to the `DeviceAuthenticationPolicy` model. [#215](https://github.com/patrickcping/pingone-go-sdk-v2/pull/215)
 
 # v0.14.0 (2023-07-04)

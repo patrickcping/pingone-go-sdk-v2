@@ -57,12 +57,19 @@ func (a *VerifyPoliciesApiService) CreateVerifyPolicy(ctx context.Context, envir
 // Execute executes the request
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) CreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *VerifyPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateVerifyPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*VerifyPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *VerifyPoliciesApiService) DeleteVerifyPolicy(ctx context.Context, envir
 
 // Execute executes the request
 func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteVerifyPolicyExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *VerifyPoliciesApiService) ReadAllVerifyPolicies(ctx context.Context, en
 // Execute executes the request
 //  @return EntityArray
 func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllVerifyPoliciesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *VerifyPoliciesApiService) ReadOneVerifyPolicy(ctx context.Context, envi
 // Execute executes the request
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) ReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *VerifyPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneVerifyPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*VerifyPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *VerifyPoliciesApiService) UpdateVerifyPolicy(ctx context.Context, envir
 // Execute executes the request
 //  @return VerifyPolicy
 func (a *VerifyPoliciesApiService) UpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *VerifyPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateVerifyPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*VerifyPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {

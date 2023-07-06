@@ -57,12 +57,19 @@ func (a *KeyRotationPoliciesApiService) CreateKeyRotationPolicy(ctx context.Cont
 // Execute executes the request
 //  @return KeyRotationPolicy
 func (a *KeyRotationPoliciesApiService) CreateKeyRotationPolicyExecute(r ApiCreateKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *KeyRotationPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateKeyRotationPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*KeyRotationPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *KeyRotationPoliciesApiService) internalCreateKeyRotationPolicyExecute(r ApiCreateKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *KeyRotationPoliciesApiService) DeleteKeyRotationPolicy(ctx context.Cont
 
 // Execute executes the request
 func (a *KeyRotationPoliciesApiService) DeleteKeyRotationPolicyExecute(r ApiDeleteKeyRotationPolicyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteKeyRotationPolicyExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *KeyRotationPoliciesApiService) internalDeleteKeyRotationPolicyExecute(r ApiDeleteKeyRotationPolicyRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *KeyRotationPoliciesApiService) GetKeyRotationPolicies(ctx context.Conte
 // Execute executes the request
 //  @return EntityArray
 func (a *KeyRotationPoliciesApiService) GetKeyRotationPoliciesExecute(r ApiGetKeyRotationPoliciesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalGetKeyRotationPoliciesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *KeyRotationPoliciesApiService) internalGetKeyRotationPoliciesExecute(r ApiGetKeyRotationPoliciesRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *KeyRotationPoliciesApiService) GetKeyRotationPolicy(ctx context.Context
 // Execute executes the request
 //  @return KeyRotationPolicy
 func (a *KeyRotationPoliciesApiService) GetKeyRotationPolicyExecute(r ApiGetKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *KeyRotationPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalGetKeyRotationPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*KeyRotationPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *KeyRotationPoliciesApiService) internalGetKeyRotationPolicyExecute(r ApiGetKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *KeyRotationPoliciesApiService) UpdateKeyRotationPolicy(ctx context.Cont
 // Execute executes the request
 //  @return KeyRotationPolicy
 func (a *KeyRotationPoliciesApiService) UpdateKeyRotationPolicyExecute(r ApiUpdateKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *KeyRotationPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateKeyRotationPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*KeyRotationPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *KeyRotationPoliciesApiService) internalUpdateKeyRotationPolicyExecute(r ApiUpdateKeyRotationPolicyRequest) (*KeyRotationPolicy, *http.Response, error) {

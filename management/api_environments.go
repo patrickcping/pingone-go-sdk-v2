@@ -54,12 +54,19 @@ func (a *EnvironmentsApiService) CreateEnvironmentActiveLicense(ctx context.Cont
 // Execute executes the request
 //  @return Environment
 func (a *EnvironmentsApiService) CreateEnvironmentActiveLicenseExecute(r ApiCreateEnvironmentActiveLicenseRequest) (*Environment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Environment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateEnvironmentActiveLicenseExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Environment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *EnvironmentsApiService) internalCreateEnvironmentActiveLicenseExecute(r ApiCreateEnvironmentActiveLicenseRequest) (*Environment, *http.Response, error) {
@@ -241,13 +248,19 @@ func (a *EnvironmentsApiService) DeleteEnvironment(ctx context.Context, environm
 
 // Execute executes the request
 func (a *EnvironmentsApiService) DeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteEnvironmentExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *EnvironmentsApiService) internalDeleteEnvironmentExecute(r ApiDeleteEnvironmentRequest) (*http.Response, error) {
@@ -419,12 +432,19 @@ func (a *EnvironmentsApiService) ReadAllEnvironments(ctx context.Context) ApiRea
 // Execute executes the request
 //  @return EntityArray
 func (a *EnvironmentsApiService) ReadAllEnvironmentsExecute(r ApiReadAllEnvironmentsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllEnvironmentsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *EnvironmentsApiService) internalReadAllEnvironmentsExecute(r ApiReadAllEnvironmentsRequest) (*EntityArray, *http.Response, error) {
@@ -600,12 +620,19 @@ func (a *EnvironmentsApiService) ReadOneEnvironment(ctx context.Context, environ
 // Execute executes the request
 //  @return Environment
 func (a *EnvironmentsApiService) ReadOneEnvironmentExecute(r ApiReadOneEnvironmentRequest) (*Environment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Environment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneEnvironmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Environment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *EnvironmentsApiService) internalReadOneEnvironmentExecute(r ApiReadOneEnvironmentRequest) (*Environment, *http.Response, error) {
@@ -782,12 +809,19 @@ func (a *EnvironmentsApiService) UpdateEnvironment(ctx context.Context, environm
 // Execute executes the request
 //  @return Environment
 func (a *EnvironmentsApiService) UpdateEnvironmentExecute(r ApiUpdateEnvironmentRequest) (*Environment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Environment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateEnvironmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Environment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *EnvironmentsApiService) internalUpdateEnvironmentExecute(r ApiUpdateEnvironmentRequest) (*Environment, *http.Response, error) {
@@ -966,12 +1000,19 @@ func (a *EnvironmentsApiService) UpdateEnvironmentType(ctx context.Context, envi
 // Execute executes the request
 //  @return Environment
 func (a *EnvironmentsApiService) UpdateEnvironmentTypeExecute(r ApiUpdateEnvironmentTypeRequest) (*Environment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Environment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateEnvironmentTypeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Environment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *EnvironmentsApiService) internalUpdateEnvironmentTypeExecute(r ApiUpdateEnvironmentTypeRequest) (*Environment, *http.Response, error) {

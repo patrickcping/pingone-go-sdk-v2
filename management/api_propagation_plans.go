@@ -56,13 +56,19 @@ func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansGe
 
 // Execute executes the request
 func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansGetExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationPlansGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationPlansApiService) internalEnvironmentsEnvironmentIDPropagationPlansGetExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansGetRequest) (*http.Response, error) {
@@ -234,13 +240,19 @@ func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansPl
 
 // Execute executes the request
 func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationPlansApiService) internalEnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDDeleteRequest) (*http.Response, error) {
@@ -413,13 +425,19 @@ func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansPl
 
 // Execute executes the request
 func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansPlanIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationPlansPlanIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationPlansApiService) internalEnvironmentsEnvironmentIDPropagationPlansPlanIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDGetRequest) (*http.Response, error) {
@@ -592,13 +610,19 @@ func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansPl
 
 // Execute executes the request
 func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansPlanIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDPutRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationPlansPlanIDPutExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationPlansApiService) internalEnvironmentsEnvironmentIDPropagationPlansPlanIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDPutRequest) (*http.Response, error) {
@@ -767,13 +791,19 @@ func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansPo
 
 // Execute executes the request
 func (a *PropagationPlansApiService) EnvironmentsEnvironmentIDPropagationPlansPostExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationPlansPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationPlansApiService) internalEnvironmentsEnvironmentIDPropagationPlansPostExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPostRequest) (*http.Response, error) {

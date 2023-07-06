@@ -53,13 +53,19 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesActivityI
 
 // Execute executes the request
 func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesActivityIDGetExecute(r ApiEnvironmentsEnvironmentIDActivitiesActivityIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDActivitiesActivityIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesActivityIDGetExecute(r ApiEnvironmentsEnvironmentIDActivitiesActivityIDGetRequest) (*http.Response, error) {
@@ -226,13 +232,19 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesGet(ctx c
 
 // Execute executes the request
 func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesGetExecute(r ApiEnvironmentsEnvironmentIDActivitiesGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDActivitiesGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesGetExecute(r ApiEnvironmentsEnvironmentIDActivitiesGetRequest) (*http.Response, error) {
@@ -401,13 +413,19 @@ func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesPost(ctx 
 
 // Execute executes the request
 func (a *AuditActivitiesApiService) EnvironmentsEnvironmentIDActivitiesPostExecute(r ApiEnvironmentsEnvironmentIDActivitiesPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDActivitiesPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *AuditActivitiesApiService) internalEnvironmentsEnvironmentIDActivitiesPostExecute(r ApiEnvironmentsEnvironmentIDActivitiesPostRequest) (*http.Response, error) {

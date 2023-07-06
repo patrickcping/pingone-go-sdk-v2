@@ -239,13 +239,19 @@ func (a *FIDODeviceApiService) DeleteFidoDevice(ctx context.Context, environment
 
 // Execute executes the request
 func (a *FIDODeviceApiService) DeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteFidoDeviceExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *FIDODeviceApiService) internalDeleteFidoDeviceExecute(r ApiDeleteFidoDeviceRequest) (*http.Response, error) {
@@ -407,12 +413,19 @@ func (a *FIDODeviceApiService) ReadFidoDevices(ctx context.Context, environmentI
 // Execute executes the request
 //  @return EntityArray
 func (a *FIDODeviceApiService) ReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadFidoDevicesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *FIDODeviceApiService) internalReadFidoDevicesExecute(r ApiReadFidoDevicesRequest) (*EntityArray, *http.Response, error) {

@@ -62,13 +62,19 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 
 // Execute executes the request
 func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest) (*http.Response, error) {
@@ -250,13 +256,19 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 
 // Execute executes the request
 func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresGetExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresGetExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresGetRequest) (*http.Response, error) {
@@ -425,13 +437,19 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 
 // Execute executes the request
 func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresPostExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresPostRequest) (*http.Response, error) {
@@ -613,13 +631,19 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 
 // Execute executes the request
 func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest) (*http.Response, error) {
@@ -792,13 +816,19 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 
 // Execute executes the request
 func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresStoreIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest) (*http.Response, error) {
@@ -971,13 +1001,19 @@ func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStores
 
 // Execute executes the request
 func (a *PropagationStoresApiService) EnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationStoresApiService) internalEnvironmentsEnvironmentIDPropagationStoresStoreIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest) (*http.Response, error) {

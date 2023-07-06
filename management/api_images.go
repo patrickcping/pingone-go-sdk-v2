@@ -67,14 +67,21 @@ func (a *ImagesApiService) CreateImage(ctx context.Context, environmentID string
 //
 //	@return Image
 func (a *ImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Image
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalCreateImageExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Image), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -265,15 +272,21 @@ func (a *ImagesApiService) DeleteImage(ctx context.Context, environmentID string
 
 // Execute executes the request
 func (a *ImagesApiService) DeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
-	_, response, error := processResponse(
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteImageExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
-			
+
 func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -437,14 +450,21 @@ func (a *ImagesApiService) ReadImage(ctx context.Context, environmentID string, 
 //
 //	@return Image
 func (a *ImagesApiService) ReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Image
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalReadImageExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Image), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

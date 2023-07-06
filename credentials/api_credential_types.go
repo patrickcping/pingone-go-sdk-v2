@@ -57,12 +57,19 @@ func (a *CredentialTypesApiService) CreateCredentialType(ctx context.Context, en
 // Execute executes the request
 //  @return CredentialType
 func (a *CredentialTypesApiService) CreateCredentialTypeExecute(r ApiCreateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialType
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateCredentialTypeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialType), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialTypesApiService) internalCreateCredentialTypeExecute(r ApiCreateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
@@ -237,13 +244,19 @@ func (a *CredentialTypesApiService) DeleteCredentialType(ctx context.Context, en
 
 // Execute executes the request
 func (a *CredentialTypesApiService) DeleteCredentialTypeExecute(r ApiDeleteCredentialTypeRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteCredentialTypeExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *CredentialTypesApiService) internalDeleteCredentialTypeExecute(r ApiDeleteCredentialTypeRequest) (*http.Response, error) {
@@ -405,12 +418,19 @@ func (a *CredentialTypesApiService) ReadAllCredentialTypes(ctx context.Context, 
 // Execute executes the request
 //  @return EntityArray
 func (a *CredentialTypesApiService) ReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllCredentialTypesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialTypesApiService) internalReadAllCredentialTypesExecute(r ApiReadAllCredentialTypesRequest) (*EntityArray, *http.Response, error) {
@@ -584,12 +604,19 @@ func (a *CredentialTypesApiService) ReadOneCredentialType(ctx context.Context, e
 // Execute executes the request
 //  @return CredentialType
 func (a *CredentialTypesApiService) ReadOneCredentialTypeExecute(r ApiReadOneCredentialTypeRequest) (*CredentialType, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialType
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneCredentialTypeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialType), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialTypesApiService) internalReadOneCredentialTypeExecute(r ApiReadOneCredentialTypeRequest) (*CredentialType, *http.Response, error) {
@@ -770,12 +797,19 @@ func (a *CredentialTypesApiService) UpdateCredentialType(ctx context.Context, en
 // Execute executes the request
 //  @return CredentialType
 func (a *CredentialTypesApiService) UpdateCredentialTypeExecute(r ApiUpdateCredentialTypeRequest) (*CredentialType, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialType
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateCredentialTypeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialType), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialTypesApiService) internalUpdateCredentialTypeExecute(r ApiUpdateCredentialTypeRequest) (*CredentialType, *http.Response, error) {

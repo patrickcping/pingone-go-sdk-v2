@@ -68,13 +68,19 @@ func (a *ActiveIdentityCountsApiService) EnvironmentsEnvironmentIDActiveIdentity
 
 // Execute executes the request
 func (a *ActiveIdentityCountsApiService) EnvironmentsEnvironmentIDActiveIdentityCountsGetExecute(r ApiEnvironmentsEnvironmentIDActiveIdentityCountsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDActiveIdentityCountsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *ActiveIdentityCountsApiService) internalEnvironmentsEnvironmentIDActiveIdentityCountsGetExecute(r ApiEnvironmentsEnvironmentIDActiveIdentityCountsGetRequest) (*http.Response, error) {
@@ -267,13 +273,19 @@ func (a *ActiveIdentityCountsApiService) EnvironmentsEnvironmentIDMetricsActiveI
 
 // Execute executes the request
 func (a *ActiveIdentityCountsApiService) EnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetExecute(r ApiEnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *ActiveIdentityCountsApiService) internalEnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetExecute(r ApiEnvironmentsEnvironmentIDMetricsActiveIdentityCountsGetRequest) (*http.Response, error) {
@@ -466,13 +478,19 @@ func (a *ActiveIdentityCountsApiService) ReadActiveIdentityCount(ctx context.Con
 
 // Execute executes the request
 func (a *ActiveIdentityCountsApiService) ReadActiveIdentityCountExecute(r ApiReadActiveIdentityCountRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalReadActiveIdentityCountExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *ActiveIdentityCountsApiService) internalReadActiveIdentityCountExecute(r ApiReadActiveIdentityCountRequest) (*http.Response, error) {

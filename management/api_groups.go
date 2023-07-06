@@ -57,12 +57,19 @@ func (a *GroupsApiService) CreateGroup(ctx context.Context, environmentID string
 // Execute executes the request
 //  @return Group
 func (a *GroupsApiService) CreateGroupExecute(r ApiCreateGroupRequest) (*Group, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Group
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateGroupExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Group), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GroupsApiService) internalCreateGroupExecute(r ApiCreateGroupRequest) (*Group, *http.Response, error) {
@@ -255,12 +262,19 @@ func (a *GroupsApiService) CreateGroupNesting(ctx context.Context, environmentID
 // Execute executes the request
 //  @return GroupNesting
 func (a *GroupsApiService) CreateGroupNestingExecute(r ApiCreateGroupNestingRequest) (*GroupNesting, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *GroupNesting
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateGroupNestingExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*GroupNesting), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GroupsApiService) internalCreateGroupNestingExecute(r ApiCreateGroupNestingRequest) (*GroupNesting, *http.Response, error) {
@@ -447,13 +461,19 @@ func (a *GroupsApiService) DeleteGroup(ctx context.Context, environmentID string
 
 // Execute executes the request
 func (a *GroupsApiService) DeleteGroupExecute(r ApiDeleteGroupRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteGroupExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *GroupsApiService) internalDeleteGroupExecute(r ApiDeleteGroupRequest) (*http.Response, error) {
@@ -620,13 +640,19 @@ func (a *GroupsApiService) DeleteGroupNesting(ctx context.Context, environmentID
 
 // Execute executes the request
 func (a *GroupsApiService) DeleteGroupNestingExecute(r ApiDeleteGroupNestingRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteGroupNestingExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *GroupsApiService) internalDeleteGroupNestingExecute(r ApiDeleteGroupNestingRequest) (*http.Response, error) {
@@ -801,12 +827,19 @@ func (a *GroupsApiService) ReadAllGroups(ctx context.Context, environmentID stri
 // Execute executes the request
 //  @return EntityArray
 func (a *GroupsApiService) ReadAllGroupsExecute(r ApiReadAllGroupsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllGroupsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GroupsApiService) internalReadAllGroupsExecute(r ApiReadAllGroupsRequest) (*EntityArray, *http.Response, error) {
@@ -986,12 +1019,19 @@ func (a *GroupsApiService) ReadGroupNesting(ctx context.Context, environmentID s
 // Execute executes the request
 //  @return EntityArray
 func (a *GroupsApiService) ReadGroupNestingExecute(r ApiReadGroupNestingRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadGroupNestingExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GroupsApiService) internalReadGroupNestingExecute(r ApiReadGroupNestingRequest) (*EntityArray, *http.Response, error) {
@@ -1172,12 +1212,19 @@ func (a *GroupsApiService) ReadOneGroup(ctx context.Context, environmentID strin
 // Execute executes the request
 //  @return Group
 func (a *GroupsApiService) ReadOneGroupExecute(r ApiReadOneGroupRequest) (*Group, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Group
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneGroupExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Group), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GroupsApiService) internalReadOneGroupExecute(r ApiReadOneGroupRequest) (*Group, *http.Response, error) {
@@ -1358,12 +1405,19 @@ func (a *GroupsApiService) ReadOneGroupNesting(ctx context.Context, environmentI
 // Execute executes the request
 //  @return GroupNesting
 func (a *GroupsApiService) ReadOneGroupNestingExecute(r ApiReadOneGroupNestingRequest) (*GroupNesting, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *GroupNesting
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneGroupNestingExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*GroupNesting), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GroupsApiService) internalReadOneGroupNestingExecute(r ApiReadOneGroupNestingRequest) (*GroupNesting, *http.Response, error) {
@@ -1545,12 +1599,19 @@ func (a *GroupsApiService) UpdateGroup(ctx context.Context, environmentID string
 // Execute executes the request
 //  @return Group
 func (a *GroupsApiService) UpdateGroupExecute(r ApiUpdateGroupRequest) (*Group, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Group
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateGroupExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Group), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GroupsApiService) internalUpdateGroupExecute(r ApiUpdateGroupRequest) (*Group, *http.Response, error) {

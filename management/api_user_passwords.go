@@ -53,13 +53,19 @@ func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordGe
 
 // Execute executes the request
 func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDPasswordGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserPasswordsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPasswordGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordGetRequest) (*http.Response, error) {
@@ -235,13 +241,19 @@ func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordPo
 
 // Execute executes the request
 func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDPasswordPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserPasswordsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPasswordPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordPostRequest) (*http.Response, error) {
@@ -433,13 +445,19 @@ func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordPu
 
 // Execute executes the request
 func (a *UserPasswordsApiService) EnvironmentsEnvironmentIDUsersUserIDPasswordPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordPutRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDPasswordPutExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserPasswordsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPasswordPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPasswordPutRequest) (*http.Response, error) {

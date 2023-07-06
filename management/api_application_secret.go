@@ -54,12 +54,19 @@ func (a *ApplicationSecretApiService) ReadApplicationSecret(ctx context.Context,
 // Execute executes the request
 //  @return ApplicationSecret
 func (a *ApplicationSecretApiService) ReadApplicationSecretExecute(r ApiReadApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ApplicationSecret
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadApplicationSecretExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ApplicationSecret), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationSecretApiService) internalReadApplicationSecretExecute(r ApiReadApplicationSecretRequest) (*ApplicationSecret, *http.Response, error) {
@@ -233,13 +240,19 @@ func (a *ApplicationSecretApiService) UpdateApplicationSecret(ctx context.Contex
 
 // Execute executes the request
 func (a *ApplicationSecretApiService) UpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalUpdateApplicationSecretExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *ApplicationSecretApiService) internalUpdateApplicationSecretExecute(r ApiUpdateApplicationSecretRequest) (*http.Response, error) {

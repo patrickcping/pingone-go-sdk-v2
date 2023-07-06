@@ -54,12 +54,19 @@ func (a *GatewayInstancesApiService) ReadAllGatewayInstances(ctx context.Context
 // Execute executes the request
 //  @return EntityArray
 func (a *GatewayInstancesApiService) ReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllGatewayInstancesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewayInstancesApiService) internalReadAllGatewayInstancesExecute(r ApiReadAllGatewayInstancesRequest) (*EntityArray, *http.Response, error) {
@@ -237,12 +244,19 @@ func (a *GatewayInstancesApiService) ReadOneGatewayInstance(ctx context.Context,
 // Execute executes the request
 //  @return GatewayInstance
 func (a *GatewayInstancesApiService) ReadOneGatewayInstanceExecute(r ApiReadOneGatewayInstanceRequest) (*GatewayInstance, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *GatewayInstance
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneGatewayInstanceExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*GatewayInstance), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *GatewayInstancesApiService) internalReadOneGatewayInstanceExecute(r ApiReadOneGatewayInstanceRequest) (*GatewayInstance, *http.Response, error) {

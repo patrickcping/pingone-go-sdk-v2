@@ -60,12 +60,19 @@ func (a *ResourceScopesApiService) CreateResourceScope(ctx context.Context, envi
 // Execute executes the request
 //  @return ResourceScope
 func (a *ResourceScopesApiService) CreateResourceScopeExecute(r ApiCreateResourceScopeRequest) (*ResourceScope, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ResourceScope
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateResourceScopeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ResourceScope), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ResourceScopesApiService) internalCreateResourceScopeExecute(r ApiCreateResourceScopeRequest) (*ResourceScope, *http.Response, error) {
@@ -255,13 +262,19 @@ func (a *ResourceScopesApiService) DeleteResourceScope(ctx context.Context, envi
 
 // Execute executes the request
 func (a *ResourceScopesApiService) DeleteResourceScopeExecute(r ApiDeleteResourceScopeRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteResourceScopeExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *ResourceScopesApiService) internalDeleteResourceScopeExecute(r ApiDeleteResourceScopeRequest) (*http.Response, error) {
@@ -427,12 +440,19 @@ func (a *ResourceScopesApiService) ReadAllResourceScopes(ctx context.Context, en
 // Execute executes the request
 //  @return EntityArray
 func (a *ResourceScopesApiService) ReadAllResourceScopesExecute(r ApiReadAllResourceScopesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllResourceScopesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ResourceScopesApiService) internalReadAllResourceScopesExecute(r ApiReadAllResourceScopesRequest) (*EntityArray, *http.Response, error) {
@@ -610,12 +630,19 @@ func (a *ResourceScopesApiService) ReadOneResourceScope(ctx context.Context, env
 // Execute executes the request
 //  @return ResourceScope
 func (a *ResourceScopesApiService) ReadOneResourceScopeExecute(r ApiReadOneResourceScopeRequest) (*ResourceScope, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ResourceScope
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneResourceScopeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ResourceScope), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ResourceScopesApiService) internalReadOneResourceScopeExecute(r ApiReadOneResourceScopeRequest) (*ResourceScope, *http.Response, error) {
@@ -800,12 +827,19 @@ func (a *ResourceScopesApiService) UpdateResourceScope(ctx context.Context, envi
 // Execute executes the request
 //  @return ResourceScope
 func (a *ResourceScopesApiService) UpdateResourceScopeExecute(r ApiUpdateResourceScopeRequest) (*ResourceScope, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ResourceScope
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateResourceScopeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ResourceScope), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ResourceScopesApiService) internalUpdateResourceScopeExecute(r ApiUpdateResourceScopeRequest) (*ResourceScope, *http.Response, error) {

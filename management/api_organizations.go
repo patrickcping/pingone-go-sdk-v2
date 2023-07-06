@@ -54,12 +54,19 @@ func (a *OrganizationsApiService) ReadAllOrganizations(ctx context.Context) ApiR
 // Execute executes the request
 //  @return EntityArray
 func (a *OrganizationsApiService) ReadAllOrganizationsExecute(r ApiReadAllOrganizationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllOrganizationsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *OrganizationsApiService) internalReadAllOrganizationsExecute(r ApiReadAllOrganizationsRequest) (*EntityArray, *http.Response, error) {
@@ -232,12 +239,19 @@ func (a *OrganizationsApiService) ReadOneOrganization(ctx context.Context, organ
 // Execute executes the request
 //  @return Organization
 func (a *OrganizationsApiService) ReadOneOrganizationExecute(r ApiReadOneOrganizationRequest) (*Organization, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Organization
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneOrganizationExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Organization), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *OrganizationsApiService) internalReadOneOrganizationExecute(r ApiReadOneOrganizationRequest) (*Organization, *http.Response, error) {

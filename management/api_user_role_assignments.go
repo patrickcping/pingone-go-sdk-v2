@@ -60,12 +60,19 @@ func (a *UserRoleAssignmentsApiService) CreateUserRoleAssignment(ctx context.Con
 // Execute executes the request
 //  @return RoleAssignment
 func (a *UserRoleAssignmentsApiService) CreateUserRoleAssignmentExecute(r ApiCreateUserRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RoleAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateUserRoleAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*RoleAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserRoleAssignmentsApiService) internalCreateUserRoleAssignmentExecute(r ApiCreateUserRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
@@ -255,13 +262,19 @@ func (a *UserRoleAssignmentsApiService) DeleteUserRoleAssignment(ctx context.Con
 
 // Execute executes the request
 func (a *UserRoleAssignmentsApiService) DeleteUserRoleAssignmentExecute(r ApiDeleteUserRoleAssignmentRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteUserRoleAssignmentExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserRoleAssignmentsApiService) internalDeleteUserRoleAssignmentExecute(r ApiDeleteUserRoleAssignmentRequest) (*http.Response, error) {
@@ -430,12 +443,19 @@ func (a *UserRoleAssignmentsApiService) ReadOneUserRoleAssignment(ctx context.Co
 // Execute executes the request
 //  @return RoleAssignment
 func (a *UserRoleAssignmentsApiService) ReadOneUserRoleAssignmentExecute(r ApiReadOneUserRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *RoleAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneUserRoleAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*RoleAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserRoleAssignmentsApiService) internalReadOneUserRoleAssignmentExecute(r ApiReadOneUserRoleAssignmentRequest) (*RoleAssignment, *http.Response, error) {
@@ -611,12 +631,19 @@ func (a *UserRoleAssignmentsApiService) ReadUserRoleAssignments(ctx context.Cont
 // Execute executes the request
 //  @return EntityArray
 func (a *UserRoleAssignmentsApiService) ReadUserRoleAssignmentsExecute(r ApiReadUserRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadUserRoleAssignmentsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserRoleAssignmentsApiService) internalReadUserRoleAssignmentsExecute(r ApiReadUserRoleAssignmentsRequest) (*EntityArray, *http.Response, error) {

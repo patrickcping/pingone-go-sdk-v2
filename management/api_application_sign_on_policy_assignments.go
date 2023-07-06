@@ -60,12 +60,19 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) CreateSignOnPolicyAssignm
 // Execute executes the request
 //  @return SignOnPolicyAssignment
 func (a *ApplicationSignOnPolicyAssignmentsApiService) CreateSignOnPolicyAssignmentExecute(r ApiCreateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *SignOnPolicyAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateSignOnPolicyAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*SignOnPolicyAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalCreateSignOnPolicyAssignmentExecute(r ApiCreateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
@@ -255,13 +262,19 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) DeleteSignOnPolicyAssignm
 
 // Execute executes the request
 func (a *ApplicationSignOnPolicyAssignmentsApiService) DeleteSignOnPolicyAssignmentExecute(r ApiDeleteSignOnPolicyAssignmentRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteSignOnPolicyAssignmentExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalDeleteSignOnPolicyAssignmentExecute(r ApiDeleteSignOnPolicyAssignmentRequest) (*http.Response, error) {
@@ -427,12 +440,19 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssign
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadAllSignOnPolicyAssignmentsExecute(r ApiReadAllSignOnPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllSignOnPolicyAssignmentsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalReadAllSignOnPolicyAssignmentsExecute(r ApiReadAllSignOnPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
@@ -610,12 +630,19 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadOneSignOnPolicyAssign
 // Execute executes the request
 //  @return SignOnPolicyAssignment
 func (a *ApplicationSignOnPolicyAssignmentsApiService) ReadOneSignOnPolicyAssignmentExecute(r ApiReadOneSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *SignOnPolicyAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneSignOnPolicyAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*SignOnPolicyAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalReadOneSignOnPolicyAssignmentExecute(r ApiReadOneSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
@@ -800,12 +827,19 @@ func (a *ApplicationSignOnPolicyAssignmentsApiService) UpdateSignOnPolicyAssignm
 // Execute executes the request
 //  @return SignOnPolicyAssignment
 func (a *ApplicationSignOnPolicyAssignmentsApiService) UpdateSignOnPolicyAssignmentExecute(r ApiUpdateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *SignOnPolicyAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateSignOnPolicyAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*SignOnPolicyAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationSignOnPolicyAssignmentsApiService) internalUpdateSignOnPolicyAssignmentExecute(r ApiUpdateSignOnPolicyAssignmentRequest) (*SignOnPolicyAssignment, *http.Response, error) {

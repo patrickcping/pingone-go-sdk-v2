@@ -64,12 +64,19 @@ func (a *LicensesApiService) ReadAllLicenses(ctx context.Context, organizationID
 // Execute executes the request
 //  @return EntityArray
 func (a *LicensesApiService) ReadAllLicensesExecute(r ApiReadAllLicensesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllLicensesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *LicensesApiService) internalReadAllLicensesExecute(r ApiReadAllLicensesRequest) (*EntityArray, *http.Response, error) {
@@ -249,12 +256,19 @@ func (a *LicensesApiService) ReadOneLicense(ctx context.Context, organizationID 
 // Execute executes the request
 //  @return License
 func (a *LicensesApiService) ReadOneLicenseExecute(r ApiReadOneLicenseRequest) (*License, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *License
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneLicenseExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*License), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *LicensesApiService) internalReadOneLicenseExecute(r ApiReadOneLicenseRequest) (*License, *http.Response, error) {
@@ -429,12 +443,19 @@ func (a *LicensesApiService) ReadOneLicenseName(ctx context.Context, organizatio
 // Execute executes the request
 //  @return LicenseName
 func (a *LicensesApiService) ReadOneLicenseNameExecute(r ApiReadOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *LicenseName
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneLicenseNameExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*LicenseName), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *LicensesApiService) internalReadOneLicenseNameExecute(r ApiReadOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
@@ -615,12 +636,19 @@ func (a *LicensesApiService) UpdateOneLicenseName(ctx context.Context, organizat
 // Execute executes the request
 //  @return LicenseName
 func (a *LicensesApiService) UpdateOneLicenseNameExecute(r ApiUpdateOneLicenseNameRequest) (*LicenseName, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *LicenseName
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateOneLicenseNameExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*LicenseName), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *LicensesApiService) internalUpdateOneLicenseNameExecute(r ApiUpdateOneLicenseNameRequest) (*LicenseName, *http.Response, error) {

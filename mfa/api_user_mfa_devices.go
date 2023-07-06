@@ -59,13 +59,19 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeleteRequest) (*http.Response, error) {
@@ -235,13 +241,19 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDDeleteRequest) (*http.Response, error) {
@@ -409,13 +421,19 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDGetRequest) (*http.Response, error) {
@@ -589,13 +607,19 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDLogsPutRequest) (*http.Response, error) {
@@ -771,13 +795,19 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDNicknamePutRequest) (*http.Response, error) {
@@ -959,13 +989,19 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDe
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesDeviceIDPostRequest) (*http.Response, error) {
@@ -1146,13 +1182,19 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesGe
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesGetRequest) (*http.Response, error) {
@@ -1328,13 +1370,19 @@ func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesPo
 
 // Execute executes the request
 func (a *UserMFADevicesApiService) EnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserMFADevicesApiService) internalEnvironmentsEnvironmentIDUsersUserIDDevicesPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDDevicesPostRequest) (*http.Response, error) {

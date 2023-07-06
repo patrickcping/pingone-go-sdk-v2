@@ -56,13 +56,19 @@ func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRev
 
 // Execute executes the request
 func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetRequest) (*http.Response, error) {
@@ -225,13 +231,19 @@ func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRev
 
 // Execute executes the request
 func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRevisionsPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRevisionsPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropagationRevisionsPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsPostRequest) (*http.Response, error) {
@@ -411,13 +423,19 @@ func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRev
 
 // Execute executes the request
 func (a *PropagationRevisionsApiService) EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRevisionsApiService) internalEnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetRequest) (*http.Response, error) {

@@ -56,13 +56,19 @@ func (a *TotalIdentitiesApiService) EnvironmentsEnvironmentIDTotalIdentitiesGet(
 
 // Execute executes the request
 func (a *TotalIdentitiesApiService) EnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r ApiEnvironmentsEnvironmentIDTotalIdentitiesGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *TotalIdentitiesApiService) internalEnvironmentsEnvironmentIDTotalIdentitiesGetExecute(r ApiEnvironmentsEnvironmentIDTotalIdentitiesGetRequest) (*http.Response, error) {

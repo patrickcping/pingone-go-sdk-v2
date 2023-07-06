@@ -53,13 +53,19 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGetRequest) (*http.Response, error) {
@@ -223,13 +229,19 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPostRequest) (*http.Response, error) {
@@ -407,13 +419,19 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDeleteRequest) (*http.Response, error) {
@@ -581,13 +599,19 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDGetRequest) (*http.Response, error) {
@@ -761,13 +785,19 @@ func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerif
 
 // Execute executes the request
 func (a *UserIDVerificationApiService) EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserIDVerificationApiService) internalEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDPutRequest) (*http.Response, error) {

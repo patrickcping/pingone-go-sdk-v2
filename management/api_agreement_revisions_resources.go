@@ -63,12 +63,19 @@ func (a *AgreementRevisionsResourcesApiService) CreateAgreementLanguageRevision(
 // Execute executes the request
 //  @return AgreementLanguageRevision
 func (a *AgreementRevisionsResourcesApiService) CreateAgreementLanguageRevisionExecute(r ApiCreateAgreementLanguageRevisionRequest) (*AgreementLanguageRevision, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *AgreementLanguageRevision
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateAgreementLanguageRevisionExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*AgreementLanguageRevision), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AgreementRevisionsResourcesApiService) internalCreateAgreementLanguageRevisionExecute(r ApiCreateAgreementLanguageRevisionRequest) (*AgreementLanguageRevision, *http.Response, error) {
@@ -262,13 +269,19 @@ func (a *AgreementRevisionsResourcesApiService) DeleteAgreementLanguageRevision(
 
 // Execute executes the request
 func (a *AgreementRevisionsResourcesApiService) DeleteAgreementLanguageRevisionExecute(r ApiDeleteAgreementLanguageRevisionRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteAgreementLanguageRevisionExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *AgreementRevisionsResourcesApiService) internalDeleteAgreementLanguageRevisionExecute(r ApiDeleteAgreementLanguageRevisionRequest) (*http.Response, error) {
@@ -438,12 +451,19 @@ func (a *AgreementRevisionsResourcesApiService) ReadAllAgreementLanguageRevision
 // Execute executes the request
 //  @return EntityArray
 func (a *AgreementRevisionsResourcesApiService) ReadAllAgreementLanguageRevisionsExecute(r ApiReadAllAgreementLanguageRevisionsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllAgreementLanguageRevisionsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AgreementRevisionsResourcesApiService) internalReadAllAgreementLanguageRevisionsExecute(r ApiReadAllAgreementLanguageRevisionsRequest) (*EntityArray, *http.Response, error) {
@@ -625,12 +645,19 @@ func (a *AgreementRevisionsResourcesApiService) ReadOneAgreementLanguageRevision
 // Execute executes the request
 //  @return AgreementLanguageRevision
 func (a *AgreementRevisionsResourcesApiService) ReadOneAgreementLanguageRevisionExecute(r ApiReadOneAgreementLanguageRevisionRequest) (*AgreementLanguageRevision, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *AgreementLanguageRevision
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneAgreementLanguageRevisionExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*AgreementLanguageRevision), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AgreementRevisionsResourcesApiService) internalReadOneAgreementLanguageRevisionExecute(r ApiReadOneAgreementLanguageRevisionRequest) (*AgreementLanguageRevision, *http.Response, error) {

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
@@ -12,16 +13,32 @@ import (
 	"golang.org/x/exp/slices"
 )
 
-type SDKInterfaceFunc func() (interface{}, *http.Response, error)
+type SDKInterfaceFunc func() (any, *http.Response, error)
 
 var (
 	maxRetries               = 5
 	maximumRetryAfterBackoff = 30
 )
 
-func processResponse(f SDKInterfaceFunc) (interface{}, *http.Response, error) {
+func processResponse(f SDKInterfaceFunc, targetObject any) (*http.Response, error) {
+
 	obj, response, error := exponentialBackOffRetry(f)
-	return obj, response, reformError(error)
+
+	if targetObject != nil {
+		v := reflect.ValueOf(targetObject)
+		if v.Kind() != reflect.Ptr {
+			return nil, fmt.Errorf("Target object must be a pointer.  This is always a problem with the provider, please raise an issue with the provider maintainers.")
+		}
+		if !v.Elem().IsValid() {
+			return nil, fmt.Errorf("Target object is not valid.  This is always a problem with the provider, please raise an issue with the provider maintainers.")
+		}
+
+		if obj != nil {
+			v.Elem().Set(reflect.ValueOf(obj))
+		}
+	}
+
+	return response, reformError(error)
 }
 
 func reformError(err error) error {

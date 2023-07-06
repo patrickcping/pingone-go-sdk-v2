@@ -60,12 +60,19 @@ func (a *IdentityProviderAttributesApiService) CreateIdentityProviderAttribute(c
 // Execute executes the request
 //  @return IdentityProviderAttribute
 func (a *IdentityProviderAttributesApiService) CreateIdentityProviderAttributeExecute(r ApiCreateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *IdentityProviderAttribute
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateIdentityProviderAttributeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*IdentityProviderAttribute), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *IdentityProviderAttributesApiService) internalCreateIdentityProviderAttributeExecute(r ApiCreateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
@@ -255,13 +262,19 @@ func (a *IdentityProviderAttributesApiService) DeleteIdentityProviderAttribute(c
 
 // Execute executes the request
 func (a *IdentityProviderAttributesApiService) DeleteIdentityProviderAttributeExecute(r ApiDeleteIdentityProviderAttributeRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteIdentityProviderAttributeExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *IdentityProviderAttributesApiService) internalDeleteIdentityProviderAttributeExecute(r ApiDeleteIdentityProviderAttributeRequest) (*http.Response, error) {
@@ -427,12 +440,19 @@ func (a *IdentityProviderAttributesApiService) ReadAllIdentityProviderAttributes
 // Execute executes the request
 //  @return EntityArray
 func (a *IdentityProviderAttributesApiService) ReadAllIdentityProviderAttributesExecute(r ApiReadAllIdentityProviderAttributesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllIdentityProviderAttributesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *IdentityProviderAttributesApiService) internalReadAllIdentityProviderAttributesExecute(r ApiReadAllIdentityProviderAttributesRequest) (*EntityArray, *http.Response, error) {
@@ -610,12 +630,19 @@ func (a *IdentityProviderAttributesApiService) ReadOneIdentityProviderAttribute(
 // Execute executes the request
 //  @return IdentityProviderAttribute
 func (a *IdentityProviderAttributesApiService) ReadOneIdentityProviderAttributeExecute(r ApiReadOneIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *IdentityProviderAttribute
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneIdentityProviderAttributeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*IdentityProviderAttribute), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *IdentityProviderAttributesApiService) internalReadOneIdentityProviderAttributeExecute(r ApiReadOneIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
@@ -800,12 +827,19 @@ func (a *IdentityProviderAttributesApiService) UpdateIdentityProviderAttribute(c
 // Execute executes the request
 //  @return IdentityProviderAttribute
 func (a *IdentityProviderAttributesApiService) UpdateIdentityProviderAttributeExecute(r ApiUpdateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *IdentityProviderAttribute
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateIdentityProviderAttributeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*IdentityProviderAttribute), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *IdentityProviderAttributesApiService) internalUpdateIdentityProviderAttributeExecute(r ApiUpdateIdentityProviderAttributeRequest) (*IdentityProviderAttribute, *http.Response, error) {

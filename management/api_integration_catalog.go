@@ -50,13 +50,19 @@ func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsGet(
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsGetRequest) (*http.Response, error) {
@@ -219,13 +225,19 @@ func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsInte
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest) (*http.Response, error) {
@@ -389,13 +401,19 @@ func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsInte
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest) (*http.Response, error) {
@@ -562,13 +580,19 @@ func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsInte
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest) (*http.Response, error) {
@@ -736,13 +760,19 @@ func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsInte
 
 // Execute executes the request
 func (a *IntegrationCatalogApiService) EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *IntegrationCatalogApiService) internalEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetExecute(r ApiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest) (*http.Response, error) {

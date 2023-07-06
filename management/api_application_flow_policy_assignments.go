@@ -60,12 +60,19 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) CreateFlowPolicyAssignment(
 // Execute executes the request
 //  @return FlowPolicyAssignment
 func (a *ApplicationFlowPolicyAssignmentsApiService) CreateFlowPolicyAssignmentExecute(r ApiCreateFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *FlowPolicyAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateFlowPolicyAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*FlowPolicyAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalCreateFlowPolicyAssignmentExecute(r ApiCreateFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {
@@ -255,13 +262,19 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) DeleteFlowPolicyAssignment(
 
 // Execute executes the request
 func (a *ApplicationFlowPolicyAssignmentsApiService) DeleteFlowPolicyAssignmentExecute(r ApiDeleteFlowPolicyAssignmentRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteFlowPolicyAssignmentExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalDeleteFlowPolicyAssignmentExecute(r ApiDeleteFlowPolicyAssignmentRequest) (*http.Response, error) {
@@ -427,12 +440,19 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) ReadAllFlowPolicyAssignment
 // Execute executes the request
 //  @return EntityArray
 func (a *ApplicationFlowPolicyAssignmentsApiService) ReadAllFlowPolicyAssignmentsExecute(r ApiReadAllFlowPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllFlowPolicyAssignmentsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalReadAllFlowPolicyAssignmentsExecute(r ApiReadAllFlowPolicyAssignmentsRequest) (*EntityArray, *http.Response, error) {
@@ -610,12 +630,19 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) ReadOneFlowPolicyAssignment
 // Execute executes the request
 //  @return FlowPolicyAssignment
 func (a *ApplicationFlowPolicyAssignmentsApiService) ReadOneFlowPolicyAssignmentExecute(r ApiReadOneFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *FlowPolicyAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneFlowPolicyAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*FlowPolicyAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalReadOneFlowPolicyAssignmentExecute(r ApiReadOneFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {
@@ -800,12 +827,19 @@ func (a *ApplicationFlowPolicyAssignmentsApiService) UpdateFlowPolicyAssignment(
 // Execute executes the request
 //  @return FlowPolicyAssignment
 func (a *ApplicationFlowPolicyAssignmentsApiService) UpdateFlowPolicyAssignmentExecute(r ApiUpdateFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *FlowPolicyAssignment
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateFlowPolicyAssignmentExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*FlowPolicyAssignment), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ApplicationFlowPolicyAssignmentsApiService) internalUpdateFlowPolicyAssignmentExecute(r ApiUpdateFlowPolicyAssignmentRequest) (*FlowPolicyAssignment, *http.Response, error) {

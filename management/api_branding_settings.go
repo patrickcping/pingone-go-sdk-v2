@@ -51,12 +51,19 @@ func (a *BrandingSettingsApiService) ReadBrandingSettings(ctx context.Context, e
 // Execute executes the request
 //  @return BrandingSettings
 func (a *BrandingSettingsApiService) ReadBrandingSettingsExecute(r ApiReadBrandingSettingsRequest) (*BrandingSettings, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *BrandingSettings
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadBrandingSettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*BrandingSettings), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *BrandingSettingsApiService) internalReadBrandingSettingsExecute(r ApiReadBrandingSettingsRequest) (*BrandingSettings, *http.Response, error) {
@@ -233,12 +240,19 @@ func (a *BrandingSettingsApiService) UpdateBrandingSettings(ctx context.Context,
 // Execute executes the request
 //  @return BrandingSettings
 func (a *BrandingSettingsApiService) UpdateBrandingSettingsExecute(r ApiUpdateBrandingSettingsRequest) (*BrandingSettings, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *BrandingSettings
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateBrandingSettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*BrandingSettings), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *BrandingSettingsApiService) internalUpdateBrandingSettingsExecute(r ApiUpdateBrandingSettingsRequest) (*BrandingSettings, *http.Response, error) {
