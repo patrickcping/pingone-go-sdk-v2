@@ -1,7 +1,20 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.2.1](./agreementmanagement/CHANGELOG.md)
+    * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.2.1](./authorize/CHANGELOG.md)
+    * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.2.1](./credentials/CHANGELOG.md)
+    * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.23.1](./management/CHANGELOG.md)
+    * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.15.0](./mfa/CHANGELOG.md)
+    * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
     * **Enhancement** Add optional ENUM attribute `NewDeviceNotification` to the `DeviceAuthenticationPolicy` model. [#215](https://github.com/patrickcping/pingone-go-sdk-v2/pull/215)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.8.1](./risk/CHANGELOG.md)
+    * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.2.1](./verify/CHANGELOG.md)
+    * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
 
 # Release (2023-07-04)
 

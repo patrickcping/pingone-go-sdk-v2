@@ -1,6 +1,6 @@
 # v0.2.1 (Unreleased)
 
-* **Note** Code optimisation for API response processing.
+* **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
 
 # v0.2.0 (2023-07-04)
 
