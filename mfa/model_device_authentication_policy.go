@@ -25,6 +25,7 @@ type DeviceAuthenticationPolicy struct {
 	Id *string `json:"id,omitempty"`
 	// Device authentication policy's name.
 	Name string `json:"name"`
+	NewDeviceNotification *EnumMFADevicePolicyNewDeviceNotification `json:"newDeviceNotification,omitempty"`
 	Authentication *DeviceAuthenticationPolicyAuthentication `json:"authentication,omitempty"`
 	Sms DeviceAuthenticationPolicyOfflineDevice `json:"sms"`
 	Voice DeviceAuthenticationPolicyOfflineDevice `json:"voice"`
@@ -155,6 +156,38 @@ func (o *DeviceAuthenticationPolicy) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DeviceAuthenticationPolicy) SetName(v string) {
 	o.Name = v
+}
+
+// GetNewDeviceNotification returns the NewDeviceNotification field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicy) GetNewDeviceNotification() EnumMFADevicePolicyNewDeviceNotification {
+	if o == nil || IsNil(o.NewDeviceNotification) {
+		var ret EnumMFADevicePolicyNewDeviceNotification
+		return ret
+	}
+	return *o.NewDeviceNotification
+}
+
+// GetNewDeviceNotificationOk returns a tuple with the NewDeviceNotification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicy) GetNewDeviceNotificationOk() (*EnumMFADevicePolicyNewDeviceNotification, bool) {
+	if o == nil || IsNil(o.NewDeviceNotification) {
+		return nil, false
+	}
+	return o.NewDeviceNotification, true
+}
+
+// HasNewDeviceNotification returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicy) HasNewDeviceNotification() bool {
+	if o != nil && !IsNil(o.NewDeviceNotification) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewDeviceNotification gets a reference to the given EnumMFADevicePolicyNewDeviceNotification and assigns it to the NewDeviceNotification field.
+func (o *DeviceAuthenticationPolicy) SetNewDeviceNotification(v EnumMFADevicePolicyNewDeviceNotification) {
+	o.NewDeviceNotification = &v
 }
 
 // GetAuthentication returns the Authentication field value if set, zero value otherwise.
@@ -509,6 +542,9 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	}
 	// skip: id is readOnly
 	toSerialize["name"] = o.Name
+	if !IsNil(o.NewDeviceNotification) {
+		toSerialize["newDeviceNotification"] = o.NewDeviceNotification
+	}
 	if !IsNil(o.Authentication) {
 		toSerialize["authentication"] = o.Authentication
 	}

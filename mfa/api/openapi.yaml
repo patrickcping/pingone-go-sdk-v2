@@ -2888,6 +2888,7 @@ components:
                 duration: 1
                 timeUnit: null
           enabled: true
+        newDeviceNotification: null
         mobile:
           otp:
             failure:
@@ -3008,6 +3009,8 @@ components:
         name:
           description: Device authentication policy's name.
           type: string
+        newDeviceNotification:
+          $ref: '#/components/schemas/EnumMFADevicePolicyNewDeviceNotification'
         authentication:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_authentication'
         sms:
@@ -3222,6 +3225,7 @@ components:
                     duration: 1
                     timeUnit: null
               enabled: true
+            newDeviceNotification: null
             mobile:
               otp:
                 failure:
@@ -3353,6 +3357,7 @@ components:
                     duration: 1
                     timeUnit: null
               enabled: true
+            newDeviceNotification: null
             mobile:
               otp:
                 failure:
@@ -3573,6 +3578,18 @@ components:
       enum:
       - permissive
       - restrictive
+      type: string
+    EnumMFADevicePolicyNewDeviceNotification:
+      description: |
+        Use `newDeviceNotification` to control whether a user should be notified if a new authentication method has been added to their account. Can take one of the following values:
+        - `NONE` - don't notify the user when a new authentication method is added.
+        - `EMAIL_THEN_SMS` - notify the user by email. If there is no email address in the user profile, notify the user by SMS. If there is no phone number either, don't notify the user.
+        - `SMS_THEN_EMAIL` - notify the user by SMS. If there is no phone number in the user profile, notify the user by email. If there is no email address either, don't notify the user.
+        If the parameter is not provided, the default value is `EMAIL_THEN_SMS`.
+      enum:
+      - NONE
+      - EMAIL_THEN_SMS
+      - SMS_THEN_EMAIL
       type: string
     EnumMFADevicePolicySelection:
       description: |
@@ -4578,6 +4595,7 @@ components:
                   duration: 1
                   timeUnit: null
             enabled: true
+          newDeviceNotification: null
           mobile:
             otp:
               failure:
@@ -4709,6 +4727,7 @@ components:
                   duration: 1
                   timeUnit: null
             enabled: true
+          newDeviceNotification: null
           mobile:
             otp:
               failure:

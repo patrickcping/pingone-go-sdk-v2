@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | Device authentication policy&#39;s UUID. | [optional] [readonly] 
 **Name** | **string** | Device authentication policy&#39;s name. | 
+**NewDeviceNotification** | Pointer to [**EnumMFADevicePolicyNewDeviceNotification**](EnumMFADevicePolicyNewDeviceNotification.md) |  | [optional] 
 **Authentication** | Pointer to [**DeviceAuthenticationPolicyAuthentication**](DeviceAuthenticationPolicyAuthentication.md) |  | [optional] 
 **Sms** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
 **Voice** | [**DeviceAuthenticationPolicyOfflineDevice**](DeviceAuthenticationPolicyOfflineDevice.md) |  | 
@@ -111,6 +112,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetNewDeviceNotification
+
+`func (o *DeviceAuthenticationPolicyPostResponse) GetNewDeviceNotification() EnumMFADevicePolicyNewDeviceNotification`
+
+GetNewDeviceNotification returns the NewDeviceNotification field if non-nil, zero value otherwise.
+
+### GetNewDeviceNotificationOk
+
+`func (o *DeviceAuthenticationPolicyPostResponse) GetNewDeviceNotificationOk() (*EnumMFADevicePolicyNewDeviceNotification, bool)`
+
+GetNewDeviceNotificationOk returns a tuple with the NewDeviceNotification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewDeviceNotification
+
+`func (o *DeviceAuthenticationPolicyPostResponse) SetNewDeviceNotification(v EnumMFADevicePolicyNewDeviceNotification)`
+
+SetNewDeviceNotification sets NewDeviceNotification field to given value.
+
+### HasNewDeviceNotification
+
+`func (o *DeviceAuthenticationPolicyPostResponse) HasNewDeviceNotification() bool`
+
+HasNewDeviceNotification returns a boolean if a field has been set.
 
 ### GetAuthentication
 
