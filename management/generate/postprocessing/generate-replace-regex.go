@@ -50,6 +50,12 @@ var (
 		repl              string
 	}{
 
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
+			repl:              `"PingOne-GOLANG-SDK/management/$1/go",`,
+		},
+
 		// Password policy model
 		{
 			fileSelectPattern: "model_password_policy_min_characters.go",

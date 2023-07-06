@@ -50,6 +50,12 @@ var (
 		repl              string
 	}{
 
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
+			repl:              `"PingOne-GOLANG-SDK/credentials/$1/go",`,
+		},
+
 		// EntityArrayEmbeddedItemsInner model
 		{
 			fileSelectPattern: "model_entity_array__embedded_items_inner.go",

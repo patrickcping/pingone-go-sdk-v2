@@ -48,5 +48,11 @@ var (
 		fileSelectPattern string
 		pattern           string
 		repl              string
-	}{}
+	}{
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
+			repl:              `"PingOne-GOLANG-SDK/agreementmanagement/$1/go",`,
+		},
+	}
 )

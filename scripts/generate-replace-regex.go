@@ -56,15 +56,13 @@ var (
 
 		{
 			fileSelectPattern: "configuration.go",
-			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
-			repl:              `"PingOne-GOLANG-SDK/$1/go",`,
-		},
-
-		{
-			fileSelectPattern: "configuration.go",
 			pattern:           `\/\/ AddDefaultHeader adds a new HTTP header to the default header in the request`,
 			repl: `func (c *Configuration) SetDebug(debug bool) {
 	c.Debug = debug
+}
+
+func (c *Configuration) SetUserAgent(userAgent string) {
+	c.UserAgent = userAgent
 }
 			
 func (c *Configuration) SetDefaultServerIndex(defaultServerIndex int) {

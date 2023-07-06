@@ -90,7 +90,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "PingOne-GOLANG-SDK/0.23.1/go",
+		UserAgent:        "PingOne-GOLANG-SDK/management/0.23.1/go",
 		Debug:            false,
 		DefaultServerIndex: 0,
 		Servers:          ServerConfigurations{
@@ -141,6 +141,10 @@ func NewConfiguration() *Configuration {
 
 func (c *Configuration) SetDebug(debug bool) {
 	c.Debug = debug
+}
+
+func (c *Configuration) SetUserAgent(userAgent string) {
+	c.UserAgent = userAgent
 }
 			
 func (c *Configuration) SetDefaultServerIndex(defaultServerIndex int) {
