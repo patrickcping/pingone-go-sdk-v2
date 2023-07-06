@@ -114,6 +114,11 @@ func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementma
 			return nil, err
 		}
 	}
+
+	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
 	client = agreementmanagement.NewAPIClient(clientcfg)
 
 	if client == nil {
@@ -167,6 +172,11 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 			return nil, err
 		}
 	}
+
+	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
 	client = authorize.NewAPIClient(clientcfg)
 
 	if client == nil {
@@ -221,6 +231,11 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 			return nil, err
 		}
 	}
+
+	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
 	client = credentials.NewAPIClient(clientcfg)
 
 	if client == nil {
@@ -274,6 +289,11 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 			return nil, err
 		}
 	}
+
+	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
 	client = management.NewAPIClient(clientcfg)
 
 	if client == nil {
@@ -327,6 +347,11 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 			return nil, err
 		}
 	}
+
+	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
 	client = mfa.NewAPIClient(clientcfg)
 
 	if client == nil {
@@ -380,6 +405,11 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 			return nil, err
 		}
 	}
+
+	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
 	client = risk.NewAPIClient(clientcfg)
 
 	if client == nil {
@@ -433,6 +463,11 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 			return nil, err
 		}
 	}
+
+	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
 	client = verify.NewAPIClient(clientcfg)
 
 	if client == nil {

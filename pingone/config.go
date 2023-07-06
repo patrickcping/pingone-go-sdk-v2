@@ -21,6 +21,7 @@ type Config struct {
 	APIHostnameOverride           *string
 	AgreementMgmtHostnameOverride *string
 	AuthHostnameOverride          *string
+	UserAgentOverride             *string
 	accessTokenObject             *oauth2.Token
 }
 
