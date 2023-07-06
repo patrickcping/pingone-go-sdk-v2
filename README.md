@@ -10,13 +10,13 @@ Code for each service is generated with the help of the [OpenAPI Generator](http
 
 The SDK provides a core package, and a package per PingOne service, each with their own directory off the root of the project:
 
-* **agreementmanagement** for the PingOne end-user agreements managements service
-* **authorize** for the PingOne Authorize service
-* **credentials** for the PingOne Credentials service, part of PingOne Neo
-* **management** for the PingOne platform common and SSO services
-* **mfa** for the PingOne MFA service
-* **risk** for the PingOne Protect service
-* **verify** for the PingOne Verify service, part of PingOne Neo
+* **agreementmanagement** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement) - for the PingOne end-user agreements managements service
+* **authorize** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/authorize) - for the PingOne Authorize service
+* **credentials** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/credentials) - for the PingOne Credentials service, part of PingOne Neo
+* **management** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/management) - for the PingOne platform common and SSO services
+* **mfa** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/mfa) - for the PingOne MFA service
+* **risk** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/risk) - for the PingOne Protect service
+* **verify** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/verify) - for the PingOne Verify service, part of PingOne Neo
 
 ## Getting Started
 
