@@ -65,13 +65,19 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationPlansPl
 
 // Execute executes the request
 func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetExecute(r ApiEnvironmentsEnvironmentIDPropagationPlansPlanIDRulesGetRequest) (*http.Response, error) {
@@ -250,13 +256,19 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesGe
 
 // Execute executes the request
 func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRulesGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesGetRequest) (*http.Response, error) {
@@ -428,13 +440,19 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesPo
 
 // Execute executes the request
 func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRulesPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesPostRequest) (*http.Response, error) {
@@ -616,13 +634,19 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesRu
 
 // Execute executes the request
 func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDDeleteRequest) (*http.Response, error) {
@@ -795,13 +819,19 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesRu
 
 // Execute executes the request
 func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesRuleIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRulesRuleIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesRuleIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDGetRequest) (*http.Response, error) {
@@ -974,13 +1004,19 @@ func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesSt
 
 // Execute executes the request
 func (a *PropagationRulesApiService) EnvironmentsEnvironmentIDPropagationRulesStoreIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesStoreIDPutRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRulesStoreIDPutExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationRulesApiService) internalEnvironmentsEnvironmentIDPropagationRulesStoreIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesStoreIDPutRequest) (*http.Response, error) {

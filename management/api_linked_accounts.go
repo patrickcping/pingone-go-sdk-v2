@@ -53,13 +53,19 @@ func (a *LinkedAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDLinkedAcc
 
 // Execute executes the request
 func (a *LinkedAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *LinkedAccountsApiService) internalEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsGetRequest) (*http.Response, error) {
@@ -226,13 +232,19 @@ func (a *LinkedAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDLinkedAcc
 
 // Execute executes the request
 func (a *LinkedAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *LinkedAccountsApiService) internalEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDDeleteRequest) (*http.Response, error) {
@@ -400,13 +412,19 @@ func (a *LinkedAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDLinkedAcc
 
 // Execute executes the request
 func (a *LinkedAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *LinkedAccountsApiService) internalEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDLinkedAccountsLinkedAccountIDGetRequest) (*http.Response, error) {

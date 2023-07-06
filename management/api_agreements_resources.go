@@ -57,12 +57,19 @@ func (a *AgreementsResourcesApiService) CreateAgreement(ctx context.Context, env
 // Execute executes the request
 //  @return Agreement
 func (a *AgreementsResourcesApiService) CreateAgreementExecute(r ApiCreateAgreementRequest) (*Agreement, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Agreement
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateAgreementExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Agreement), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AgreementsResourcesApiService) internalCreateAgreementExecute(r ApiCreateAgreementRequest) (*Agreement, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *AgreementsResourcesApiService) DeleteAgreement(ctx context.Context, env
 
 // Execute executes the request
 func (a *AgreementsResourcesApiService) DeleteAgreementExecute(r ApiDeleteAgreementRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteAgreementExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *AgreementsResourcesApiService) internalDeleteAgreementExecute(r ApiDeleteAgreementRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *AgreementsResourcesApiService) ReadAllAgreements(ctx context.Context, e
 // Execute executes the request
 //  @return EntityArray
 func (a *AgreementsResourcesApiService) ReadAllAgreementsExecute(r ApiReadAllAgreementsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllAgreementsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AgreementsResourcesApiService) internalReadAllAgreementsExecute(r ApiReadAllAgreementsRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *AgreementsResourcesApiService) ReadOneAgreement(ctx context.Context, en
 // Execute executes the request
 //  @return Agreement
 func (a *AgreementsResourcesApiService) ReadOneAgreementExecute(r ApiReadOneAgreementRequest) (*Agreement, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Agreement
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneAgreementExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Agreement), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AgreementsResourcesApiService) internalReadOneAgreementExecute(r ApiReadOneAgreementRequest) (*Agreement, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *AgreementsResourcesApiService) UpdateAgreement(ctx context.Context, env
 // Execute executes the request
 //  @return Agreement
 func (a *AgreementsResourcesApiService) UpdateAgreementExecute(r ApiUpdateAgreementRequest) (*Agreement, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Agreement
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateAgreementExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Agreement), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AgreementsResourcesApiService) internalUpdateAgreementExecute(r ApiUpdateAgreementRequest) (*Agreement, *http.Response, error) {

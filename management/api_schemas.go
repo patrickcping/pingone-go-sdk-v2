@@ -60,12 +60,19 @@ func (a *SchemasApiService) CreateAttribute(ctx context.Context, environmentID s
 // Execute executes the request
 //  @return SchemaAttribute
 func (a *SchemasApiService) CreateAttributeExecute(r ApiCreateAttributeRequest) (*SchemaAttribute, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *SchemaAttribute
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateAttributeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*SchemaAttribute), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SchemasApiService) internalCreateAttributeExecute(r ApiCreateAttributeRequest) (*SchemaAttribute, *http.Response, error) {
@@ -255,13 +262,19 @@ func (a *SchemasApiService) DeleteAttribute(ctx context.Context, environmentID s
 
 // Execute executes the request
 func (a *SchemasApiService) DeleteAttributeExecute(r ApiDeleteAttributeRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteAttributeExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *SchemasApiService) internalDeleteAttributeExecute(r ApiDeleteAttributeRequest) (*http.Response, error) {
@@ -427,12 +440,19 @@ func (a *SchemasApiService) ReadAllSchemaAttributes(ctx context.Context, environ
 // Execute executes the request
 //  @return EntityArray
 func (a *SchemasApiService) ReadAllSchemaAttributesExecute(r ApiReadAllSchemaAttributesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllSchemaAttributesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SchemasApiService) internalReadAllSchemaAttributesExecute(r ApiReadAllSchemaAttributesRequest) (*EntityArray, *http.Response, error) {
@@ -604,12 +624,19 @@ func (a *SchemasApiService) ReadAllSchemas(ctx context.Context, environmentID st
 // Execute executes the request
 //  @return EntityArray
 func (a *SchemasApiService) ReadAllSchemasExecute(r ApiReadAllSchemasRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllSchemasExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SchemasApiService) internalReadAllSchemasExecute(r ApiReadAllSchemasRequest) (*EntityArray, *http.Response, error) {
@@ -786,12 +813,19 @@ func (a *SchemasApiService) ReadOneAttribute(ctx context.Context, environmentID 
 // Execute executes the request
 //  @return SchemaAttribute
 func (a *SchemasApiService) ReadOneAttributeExecute(r ApiReadOneAttributeRequest) (*SchemaAttribute, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *SchemaAttribute
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneAttributeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*SchemaAttribute), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SchemasApiService) internalReadOneAttributeExecute(r ApiReadOneAttributeRequest) (*SchemaAttribute, *http.Response, error) {
@@ -967,12 +1001,19 @@ func (a *SchemasApiService) ReadOneSchema(ctx context.Context, environmentID str
 // Execute executes the request
 //  @return Schema
 func (a *SchemasApiService) ReadOneSchemaExecute(r ApiReadOneSchemaRequest) (*Schema, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Schema
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneSchemaExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Schema), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SchemasApiService) internalReadOneSchemaExecute(r ApiReadOneSchemaRequest) (*Schema, *http.Response, error) {
@@ -1156,12 +1197,19 @@ func (a *SchemasApiService) UpdateAttributePatch(ctx context.Context, environmen
 // Execute executes the request
 //  @return SchemaAttribute
 func (a *SchemasApiService) UpdateAttributePatchExecute(r ApiUpdateAttributePatchRequest) (*SchemaAttribute, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *SchemaAttribute
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateAttributePatchExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*SchemaAttribute), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SchemasApiService) internalUpdateAttributePatchExecute(r ApiUpdateAttributePatchRequest) (*SchemaAttribute, *http.Response, error) {
@@ -1348,12 +1396,19 @@ func (a *SchemasApiService) UpdateAttributePut(ctx context.Context, environmentI
 // Execute executes the request
 //  @return SchemaAttribute
 func (a *SchemasApiService) UpdateAttributePutExecute(r ApiUpdateAttributePutRequest) (*SchemaAttribute, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *SchemaAttribute
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateAttributePutExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*SchemaAttribute), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SchemasApiService) internalUpdateAttributePutExecute(r ApiUpdateAttributePutRequest) (*SchemaAttribute, *http.Response, error) {

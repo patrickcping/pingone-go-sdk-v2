@@ -60,12 +60,19 @@ func (a *UserCredentialsApiService) CreateAUserCredential(ctx context.Context, e
 // Execute executes the request
 //  @return UserCredential
 func (a *UserCredentialsApiService) CreateAUserCredentialExecute(r ApiCreateAUserCredentialRequest) (*UserCredential, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *UserCredential
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateAUserCredentialExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*UserCredential), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserCredentialsApiService) internalCreateAUserCredentialExecute(r ApiCreateAUserCredentialRequest) (*UserCredential, *http.Response, error) {
@@ -242,12 +249,19 @@ func (a *UserCredentialsApiService) ReadAllUserCredentials(ctx context.Context, 
 // Execute executes the request
 //  @return EntityArray
 func (a *UserCredentialsApiService) ReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllUserCredentialsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserCredentialsApiService) internalReadAllUserCredentialsExecute(r ApiReadAllUserCredentialsRequest) (*EntityArray, *http.Response, error) {
@@ -425,12 +439,19 @@ func (a *UserCredentialsApiService) ReadOneUserCredential(ctx context.Context, e
 // Execute executes the request
 //  @return UserCredential
 func (a *UserCredentialsApiService) ReadOneUserCredentialExecute(r ApiReadOneUserCredentialRequest) (*UserCredential, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *UserCredential
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneUserCredentialExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*UserCredential), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserCredentialsApiService) internalReadOneUserCredentialExecute(r ApiReadOneUserCredentialRequest) (*UserCredential, *http.Response, error) {
@@ -609,12 +630,19 @@ func (a *UserCredentialsApiService) ReadOneUserCredentialWallet(ctx context.Cont
 // Execute executes the request
 //  @return EntityArray
 func (a *UserCredentialsApiService) ReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneUserCredentialWalletExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserCredentialsApiService) internalReadOneUserCredentialWalletExecute(r ApiReadOneUserCredentialWalletRequest) (*EntityArray, *http.Response, error) {
@@ -799,12 +827,19 @@ func (a *UserCredentialsApiService) UpdateUserCredential(ctx context.Context, en
 // Execute executes the request
 //  @return UserCredential
 func (a *UserCredentialsApiService) UpdateUserCredentialExecute(r ApiUpdateUserCredentialRequest) (*UserCredential, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *UserCredential
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateUserCredentialExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*UserCredential), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserCredentialsApiService) internalUpdateUserCredentialExecute(r ApiUpdateUserCredentialRequest) (*UserCredential, *http.Response, error) {

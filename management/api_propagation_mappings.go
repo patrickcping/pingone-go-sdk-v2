@@ -59,13 +59,19 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMapp
 
 // Execute executes the request
 func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteRequest) (*http.Response, error) {
@@ -238,13 +244,19 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMapp
 
 // Execute executes the request
 func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMappingsMappingIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingsMappingIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationMappingsMappingIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationMappingsMappingIDGetExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingsMappingIDGetRequest) (*http.Response, error) {
@@ -417,13 +429,19 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMapp
 
 // Execute executes the request
 func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationMappingsMappingIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingsMappingIDPutRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationMappingsMappingIDPutExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationMappingsMappingIDPutExecute(r ApiEnvironmentsEnvironmentIDPropagationMappingsMappingIDPutRequest) (*http.Response, error) {
@@ -601,13 +619,19 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationRule
 
 // Execute executes the request
 func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetRequest) (*http.Response, error) {
@@ -783,13 +807,19 @@ func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationRule
 
 // Execute executes the request
 func (a *PropagationMappingsApiService) EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PropagationMappingsApiService) internalEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostExecute(r ApiEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostRequest) (*http.Response, error) {

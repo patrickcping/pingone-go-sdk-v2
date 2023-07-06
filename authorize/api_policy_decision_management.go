@@ -57,12 +57,19 @@ func (a *PolicyDecisionManagementApiService) CreateDecisionEndpoint(ctx context.
 // Execute executes the request
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) CreateDecisionEndpointExecute(r ApiCreateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DecisionEndpoint
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateDecisionEndpointExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DecisionEndpoint), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PolicyDecisionManagementApiService) internalCreateDecisionEndpointExecute(r ApiCreateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpoint(ctx context.
 
 // Execute executes the request
 func (a *PolicyDecisionManagementApiService) DeleteDecisionEndpointExecute(r ApiDeleteDecisionEndpointRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteDecisionEndpointExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PolicyDecisionManagementApiService) internalDeleteDecisionEndpointExecute(r ApiDeleteDecisionEndpointRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpoints(ctx contex
 // Execute executes the request
 //  @return EntityArray
 func (a *PolicyDecisionManagementApiService) ReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllDecisionEndpointsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PolicyDecisionManagementApiService) internalReadAllDecisionEndpointsExecute(r ApiReadAllDecisionEndpointsRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpoint(ctx context
 // Execute executes the request
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) ReadOneDecisionEndpointExecute(r ApiReadOneDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DecisionEndpoint
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneDecisionEndpointExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DecisionEndpoint), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PolicyDecisionManagementApiService) internalReadOneDecisionEndpointExecute(r ApiReadOneDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpoint(ctx context.
 // Execute executes the request
 //  @return DecisionEndpoint
 func (a *PolicyDecisionManagementApiService) UpdateDecisionEndpointExecute(r ApiUpdateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DecisionEndpoint
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateDecisionEndpointExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DecisionEndpoint), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PolicyDecisionManagementApiService) internalUpdateDecisionEndpointExecute(r ApiUpdateDecisionEndpointRequest) (*DecisionEndpoint, *http.Response, error) {

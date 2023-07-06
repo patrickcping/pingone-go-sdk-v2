@@ -57,12 +57,19 @@ func (a *SubscriptionsWebhooksApiService) CreateSubscription(ctx context.Context
 // Execute executes the request
 //  @return Subscription
 func (a *SubscriptionsWebhooksApiService) CreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*Subscription, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Subscription
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateSubscriptionExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Subscription), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SubscriptionsWebhooksApiService) internalCreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*Subscription, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *SubscriptionsWebhooksApiService) DeleteSubscription(ctx context.Context
 
 // Execute executes the request
 func (a *SubscriptionsWebhooksApiService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteSubscriptionExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *SubscriptionsWebhooksApiService) internalDeleteSubscriptionExecute(r ApiDeleteSubscriptionRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptions(ctx context.Conte
 // Execute executes the request
 //  @return EntityArray
 func (a *SubscriptionsWebhooksApiService) ReadAllSubscriptionsExecute(r ApiReadAllSubscriptionsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllSubscriptionsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SubscriptionsWebhooksApiService) internalReadAllSubscriptionsExecute(r ApiReadAllSubscriptionsRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *SubscriptionsWebhooksApiService) ReadOneSubscription(ctx context.Contex
 // Execute executes the request
 //  @return Subscription
 func (a *SubscriptionsWebhooksApiService) ReadOneSubscriptionExecute(r ApiReadOneSubscriptionRequest) (*Subscription, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Subscription
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneSubscriptionExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Subscription), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SubscriptionsWebhooksApiService) internalReadOneSubscriptionExecute(r ApiReadOneSubscriptionRequest) (*Subscription, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *SubscriptionsWebhooksApiService) UpdateSubscription(ctx context.Context
 // Execute executes the request
 //  @return Subscription
 func (a *SubscriptionsWebhooksApiService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRequest) (*Subscription, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Subscription
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateSubscriptionExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Subscription), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *SubscriptionsWebhooksApiService) internalUpdateSubscriptionExecute(r ApiUpdateSubscriptionRequest) (*Subscription, *http.Response, error) {

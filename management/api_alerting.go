@@ -57,12 +57,19 @@ func (a *AlertingApiService) CreateAlertChannel(ctx context.Context, environment
 // Execute executes the request
 //  @return AlertChannel
 func (a *AlertingApiService) CreateAlertChannelExecute(r ApiCreateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *AlertChannel
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateAlertChannelExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*AlertChannel), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AlertingApiService) internalCreateAlertChannelExecute(r ApiCreateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *AlertingApiService) DeleteAlertChannel(ctx context.Context, environment
 
 // Execute executes the request
 func (a *AlertingApiService) DeleteAlertChannelExecute(r ApiDeleteAlertChannelRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteAlertChannelExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *AlertingApiService) internalDeleteAlertChannelExecute(r ApiDeleteAlertChannelRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *AlertingApiService) ReadAllAlertChannels(ctx context.Context, environme
 // Execute executes the request
 //  @return EntityArray
 func (a *AlertingApiService) ReadAllAlertChannelsExecute(r ApiReadAllAlertChannelsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllAlertChannelsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AlertingApiService) internalReadAllAlertChannelsExecute(r ApiReadAllAlertChannelsRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *AlertingApiService) ReadOneAlertChannel(ctx context.Context, environmen
 // Execute executes the request
 //  @return AlertChannel
 func (a *AlertingApiService) ReadOneAlertChannelExecute(r ApiReadOneAlertChannelRequest) (*AlertChannel, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *AlertChannel
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneAlertChannelExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*AlertChannel), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AlertingApiService) internalReadOneAlertChannelExecute(r ApiReadOneAlertChannelRequest) (*AlertChannel, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *AlertingApiService) UpdateAlertChannel(ctx context.Context, environment
 // Execute executes the request
 //  @return AlertChannel
 func (a *AlertingApiService) UpdateAlertChannelExecute(r ApiUpdateAlertChannelRequest) (*AlertChannel, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *AlertChannel
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateAlertChannelExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*AlertChannel), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *AlertingApiService) internalUpdateAlertChannelExecute(r ApiUpdateAlertChannelRequest) (*AlertChannel, *http.Response, error) {

@@ -57,12 +57,19 @@ func (a *PhoneDeliverySettingsApiService) CreatePhoneDeliverySettings(ctx contex
 // Execute executes the request
 //  @return NotificationsSettingsPhoneDeliverySettings
 func (a *PhoneDeliverySettingsApiService) CreatePhoneDeliverySettingsExecute(r ApiCreatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsSettingsPhoneDeliverySettings
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreatePhoneDeliverySettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsSettingsPhoneDeliverySettings), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PhoneDeliverySettingsApiService) internalCreatePhoneDeliverySettingsExecute(r ApiCreatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *PhoneDeliverySettingsApiService) DeletePhoneDeliverySettings(ctx contex
 
 // Execute executes the request
 func (a *PhoneDeliverySettingsApiService) DeletePhoneDeliverySettingsExecute(r ApiDeletePhoneDeliverySettingsRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeletePhoneDeliverySettingsExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PhoneDeliverySettingsApiService) internalDeletePhoneDeliverySettingsExecute(r ApiDeletePhoneDeliverySettingsRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettings(ctx conte
 // Execute executes the request
 //  @return EntityArray
 func (a *PhoneDeliverySettingsApiService) ReadAllPhoneDeliverySettingsExecute(r ApiReadAllPhoneDeliverySettingsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllPhoneDeliverySettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PhoneDeliverySettingsApiService) internalReadAllPhoneDeliverySettingsExecute(r ApiReadAllPhoneDeliverySettingsRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *PhoneDeliverySettingsApiService) ReadOnePhoneDeliverySettings(ctx conte
 // Execute executes the request
 //  @return NotificationsSettingsPhoneDeliverySettings
 func (a *PhoneDeliverySettingsApiService) ReadOnePhoneDeliverySettingsExecute(r ApiReadOnePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsSettingsPhoneDeliverySettings
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOnePhoneDeliverySettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsSettingsPhoneDeliverySettings), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PhoneDeliverySettingsApiService) internalReadOnePhoneDeliverySettingsExecute(r ApiReadOnePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *PhoneDeliverySettingsApiService) UpdatePhoneDeliverySettings(ctx contex
 // Execute executes the request
 //  @return NotificationsSettingsPhoneDeliverySettings
 func (a *PhoneDeliverySettingsApiService) UpdatePhoneDeliverySettingsExecute(r ApiUpdatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsSettingsPhoneDeliverySettings
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdatePhoneDeliverySettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsSettingsPhoneDeliverySettings), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PhoneDeliverySettingsApiService) internalUpdatePhoneDeliverySettingsExecute(r ApiUpdatePhoneDeliverySettingsRequest) (*NotificationsSettingsPhoneDeliverySettings, *http.Response, error) {

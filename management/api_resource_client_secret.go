@@ -54,12 +54,19 @@ func (a *ResourceClientSecretApiService) CreateResourceSecret(ctx context.Contex
 // Execute executes the request
 //  @return ResourceSecret
 func (a *ResourceClientSecretApiService) CreateResourceSecretExecute(r ApiCreateResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ResourceSecret
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateResourceSecretExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ResourceSecret), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ResourceClientSecretApiService) internalCreateResourceSecretExecute(r ApiCreateResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
@@ -245,12 +252,19 @@ func (a *ResourceClientSecretApiService) ReadResourceSecret(ctx context.Context,
 // Execute executes the request
 //  @return ResourceSecret
 func (a *ResourceClientSecretApiService) ReadResourceSecretExecute(r ApiReadResourceSecretRequest) (*ResourceSecret, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *ResourceSecret
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadResourceSecretExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*ResourceSecret), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *ResourceClientSecretApiService) internalReadResourceSecretExecute(r ApiReadResourceSecretRequest) (*ResourceSecret, *http.Response, error) {

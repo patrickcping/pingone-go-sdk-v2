@@ -57,12 +57,19 @@ func (a *FormManagementApiService) CreateForm(ctx context.Context, environmentID
 // Execute executes the request
 //  @return Form
 func (a *FormManagementApiService) CreateFormExecute(r ApiCreateFormRequest) (*Form, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Form
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateFormExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Form), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *FormManagementApiService) internalCreateFormExecute(r ApiCreateFormRequest) (*Form, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *FormManagementApiService) DeleteForm(ctx context.Context, environmentID
 
 // Execute executes the request
 func (a *FormManagementApiService) DeleteFormExecute(r ApiDeleteFormRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteFormExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *FormManagementApiService) internalDeleteFormExecute(r ApiDeleteFormRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *FormManagementApiService) ReadAllForms(ctx context.Context, environment
 // Execute executes the request
 //  @return EntityArray
 func (a *FormManagementApiService) ReadAllFormsExecute(r ApiReadAllFormsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllFormsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *FormManagementApiService) internalReadAllFormsExecute(r ApiReadAllFormsRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *FormManagementApiService) ReadForm(ctx context.Context, environmentID s
 // Execute executes the request
 //  @return Form
 func (a *FormManagementApiService) ReadFormExecute(r ApiReadFormRequest) (*Form, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Form
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadFormExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Form), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *FormManagementApiService) internalReadFormExecute(r ApiReadFormRequest) (*Form, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *FormManagementApiService) UpdateForm(ctx context.Context, environmentID
 // Execute executes the request
 //  @return Form
 func (a *FormManagementApiService) UpdateFormExecute(r ApiUpdateFormRequest) (*Form, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Form
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateFormExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Form), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *FormManagementApiService) internalUpdateFormExecute(r ApiUpdateFormRequest) (*Form, *http.Response, error) {

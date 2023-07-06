@@ -57,12 +57,19 @@ func (a *BrandingThemesApiService) CreateBrandingTheme(ctx context.Context, envi
 // Execute executes the request
 //  @return BrandingTheme
 func (a *BrandingThemesApiService) CreateBrandingThemeExecute(r ApiCreateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *BrandingTheme
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateBrandingThemeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*BrandingTheme), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *BrandingThemesApiService) internalCreateBrandingThemeExecute(r ApiCreateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *BrandingThemesApiService) DeleteBrandingTheme(ctx context.Context, envi
 
 // Execute executes the request
 func (a *BrandingThemesApiService) DeleteBrandingThemeExecute(r ApiDeleteBrandingThemeRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteBrandingThemeExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *BrandingThemesApiService) internalDeleteBrandingThemeExecute(r ApiDeleteBrandingThemeRequest) (*http.Response, error) {
@@ -419,12 +432,19 @@ func (a *BrandingThemesApiService) ReadBrandingThemeDefault(ctx context.Context,
 // Execute executes the request
 //  @return BrandingThemeDefault
 func (a *BrandingThemesApiService) ReadBrandingThemeDefaultExecute(r ApiReadBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *BrandingThemeDefault
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadBrandingThemeDefaultExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*BrandingThemeDefault), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *BrandingThemesApiService) internalReadBrandingThemeDefaultExecute(r ApiReadBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
@@ -596,12 +616,19 @@ func (a *BrandingThemesApiService) ReadBrandingThemes(ctx context.Context, envir
 // Execute executes the request
 //  @return EntityArray
 func (a *BrandingThemesApiService) ReadBrandingThemesExecute(r ApiReadBrandingThemesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadBrandingThemesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *BrandingThemesApiService) internalReadBrandingThemesExecute(r ApiReadBrandingThemesRequest) (*EntityArray, *http.Response, error) {
@@ -775,12 +802,19 @@ func (a *BrandingThemesApiService) ReadOneBrandingTheme(ctx context.Context, env
 // Execute executes the request
 //  @return BrandingTheme
 func (a *BrandingThemesApiService) ReadOneBrandingThemeExecute(r ApiReadOneBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *BrandingTheme
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneBrandingThemeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*BrandingTheme), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *BrandingThemesApiService) internalReadOneBrandingThemeExecute(r ApiReadOneBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
@@ -961,12 +995,19 @@ func (a *BrandingThemesApiService) UpdateBrandingTheme(ctx context.Context, envi
 // Execute executes the request
 //  @return BrandingTheme
 func (a *BrandingThemesApiService) UpdateBrandingThemeExecute(r ApiUpdateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *BrandingTheme
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateBrandingThemeExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*BrandingTheme), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *BrandingThemesApiService) internalUpdateBrandingThemeExecute(r ApiUpdateBrandingThemeRequest) (*BrandingTheme, *http.Response, error) {
@@ -1149,12 +1190,19 @@ func (a *BrandingThemesApiService) UpdateBrandingThemeDefault(ctx context.Contex
 // Execute executes the request
 //  @return BrandingThemeDefault
 func (a *BrandingThemesApiService) UpdateBrandingThemeDefaultExecute(r ApiUpdateBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *BrandingThemeDefault
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateBrandingThemeDefaultExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*BrandingThemeDefault), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *BrandingThemesApiService) internalUpdateBrandingThemeDefaultExecute(r ApiUpdateBrandingThemeDefaultRequest) (*BrandingThemeDefault, *http.Response, error) {

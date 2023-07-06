@@ -57,12 +57,19 @@ func (a *TrustedEmailDomainsApiService) CreateTrustedEmailDomain(ctx context.Con
 // Execute executes the request
 //  @return EmailDomain
 func (a *TrustedEmailDomainsApiService) CreateTrustedEmailDomainExecute(r ApiCreateTrustedEmailDomainRequest) (*EmailDomain, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EmailDomain
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateTrustedEmailDomainExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EmailDomain), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *TrustedEmailDomainsApiService) internalCreateTrustedEmailDomainExecute(r ApiCreateTrustedEmailDomainRequest) (*EmailDomain, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *TrustedEmailDomainsApiService) DeleteTrustedEmailDomain(ctx context.Con
 
 // Execute executes the request
 func (a *TrustedEmailDomainsApiService) DeleteTrustedEmailDomainExecute(r ApiDeleteTrustedEmailDomainRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteTrustedEmailDomainExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *TrustedEmailDomainsApiService) internalDeleteTrustedEmailDomainExecute(r ApiDeleteTrustedEmailDomainRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *TrustedEmailDomainsApiService) ReadAllTrustedEmailDomains(ctx context.C
 // Execute executes the request
 //  @return EntityArray
 func (a *TrustedEmailDomainsApiService) ReadAllTrustedEmailDomainsExecute(r ApiReadAllTrustedEmailDomainsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllTrustedEmailDomainsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *TrustedEmailDomainsApiService) internalReadAllTrustedEmailDomainsExecute(r ApiReadAllTrustedEmailDomainsRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *TrustedEmailDomainsApiService) ReadOneTrustedEmailDomain(ctx context.Co
 // Execute executes the request
 //  @return EmailDomain
 func (a *TrustedEmailDomainsApiService) ReadOneTrustedEmailDomainExecute(r ApiReadOneTrustedEmailDomainRequest) (*EmailDomain, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EmailDomain
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneTrustedEmailDomainExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EmailDomain), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *TrustedEmailDomainsApiService) internalReadOneTrustedEmailDomainExecute(r ApiReadOneTrustedEmailDomainRequest) (*EmailDomain, *http.Response, error) {
@@ -775,12 +802,19 @@ func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainDKIMStatus(ctx con
 // Execute executes the request
 //  @return EmailDomainDKIMStatus
 func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainDKIMStatusExecute(r ApiReadTrustedEmailDomainDKIMStatusRequest) (*EmailDomainDKIMStatus, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EmailDomainDKIMStatus
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadTrustedEmailDomainDKIMStatusExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EmailDomainDKIMStatus), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *TrustedEmailDomainsApiService) internalReadTrustedEmailDomainDKIMStatusExecute(r ApiReadTrustedEmailDomainDKIMStatusRequest) (*EmailDomainDKIMStatus, *http.Response, error) {
@@ -955,12 +989,19 @@ func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainOwnershipStatus(ct
 // Execute executes the request
 //  @return EmailDomainOwnershipStatus
 func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainOwnershipStatusExecute(r ApiReadTrustedEmailDomainOwnershipStatusRequest) (*EmailDomainOwnershipStatus, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EmailDomainOwnershipStatus
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadTrustedEmailDomainOwnershipStatusExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EmailDomainOwnershipStatus), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *TrustedEmailDomainsApiService) internalReadTrustedEmailDomainOwnershipStatusExecute(r ApiReadTrustedEmailDomainOwnershipStatusRequest) (*EmailDomainOwnershipStatus, *http.Response, error) {
@@ -1135,12 +1176,19 @@ func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainSPFStatus(ctx cont
 // Execute executes the request
 //  @return EmailDomainSPFStatus
 func (a *TrustedEmailDomainsApiService) ReadTrustedEmailDomainSPFStatusExecute(r ApiReadTrustedEmailDomainSPFStatusRequest) (*EmailDomainSPFStatus, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EmailDomainSPFStatus
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadTrustedEmailDomainSPFStatusExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EmailDomainSPFStatus), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *TrustedEmailDomainsApiService) internalReadTrustedEmailDomainSPFStatusExecute(r ApiReadTrustedEmailDomainSPFStatusRequest) (*EmailDomainSPFStatus, *http.Response, error) {

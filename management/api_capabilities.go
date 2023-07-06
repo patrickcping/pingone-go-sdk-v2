@@ -50,13 +50,19 @@ func (a *CapabilitiesApiService) EnvironmentsEnvironmentIDCapabilitiesGet(ctx co
 
 // Execute executes the request
 func (a *CapabilitiesApiService) EnvironmentsEnvironmentIDCapabilitiesGetExecute(r ApiEnvironmentsEnvironmentIDCapabilitiesGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDCapabilitiesGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *CapabilitiesApiService) internalEnvironmentsEnvironmentIDCapabilitiesGetExecute(r ApiEnvironmentsEnvironmentIDCapabilitiesGetRequest) (*http.Response, error) {
@@ -216,13 +222,19 @@ func (a *CapabilitiesApiService) OrganizationsOrganizationIDCapabilitiesGet(ctx 
 
 // Execute executes the request
 func (a *CapabilitiesApiService) OrganizationsOrganizationIDCapabilitiesGetExecute(r ApiOrganizationsOrganizationIDCapabilitiesGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalOrganizationsOrganizationIDCapabilitiesGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *CapabilitiesApiService) internalOrganizationsOrganizationIDCapabilitiesGetExecute(r ApiOrganizationsOrganizationIDCapabilitiesGetRequest) (*http.Response, error) {

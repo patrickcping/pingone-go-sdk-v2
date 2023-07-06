@@ -56,13 +56,19 @@ func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAg
 
 // Execute executes the request
 func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserAgreementConsentsApiService) internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGetRequest) (*http.Response, error) {
@@ -236,13 +242,19 @@ func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAg
 
 // Execute executes the request
 func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserAgreementConsentsApiService) internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPostRequest) (*http.Response, error) {
@@ -421,13 +433,19 @@ func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAg
 
 // Execute executes the request
 func (a *UserAgreementConsentsApiService) EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *UserAgreementConsentsApiService) internalEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGetRequest) (*http.Response, error) {

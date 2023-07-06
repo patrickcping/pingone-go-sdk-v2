@@ -57,12 +57,19 @@ func (a *DigitalWalletAppsApiService) CreateDigitalWalletApp(ctx context.Context
 // Execute executes the request
 //  @return DigitalWalletApplication
 func (a *DigitalWalletAppsApiService) CreateDigitalWalletAppExecute(r ApiCreateDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DigitalWalletApplication
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateDigitalWalletAppExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DigitalWalletApplication), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *DigitalWalletAppsApiService) internalCreateDigitalWalletAppExecute(r ApiCreateDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
@@ -237,13 +244,19 @@ func (a *DigitalWalletAppsApiService) DeleteDigitalWalletApp(ctx context.Context
 
 // Execute executes the request
 func (a *DigitalWalletAppsApiService) DeleteDigitalWalletAppExecute(r ApiDeleteDigitalWalletAppRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteDigitalWalletAppExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *DigitalWalletAppsApiService) internalDeleteDigitalWalletAppExecute(r ApiDeleteDigitalWalletAppRequest) (*http.Response, error) {
@@ -405,12 +418,19 @@ func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletApps(ctx context.Conte
 // Execute executes the request
 //  @return EntityArray
 func (a *DigitalWalletAppsApiService) ReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllDigitalWalletAppsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *DigitalWalletAppsApiService) internalReadAllDigitalWalletAppsExecute(r ApiReadAllDigitalWalletAppsRequest) (*EntityArray, *http.Response, error) {
@@ -584,12 +604,19 @@ func (a *DigitalWalletAppsApiService) ReadOneDigitalWalletApp(ctx context.Contex
 // Execute executes the request
 //  @return DigitalWalletApplication
 func (a *DigitalWalletAppsApiService) ReadOneDigitalWalletAppExecute(r ApiReadOneDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DigitalWalletApplication
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneDigitalWalletAppExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DigitalWalletApplication), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *DigitalWalletAppsApiService) internalReadOneDigitalWalletAppExecute(r ApiReadOneDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
@@ -770,12 +797,19 @@ func (a *DigitalWalletAppsApiService) UpdateDigitalWalletApp(ctx context.Context
 // Execute executes the request
 //  @return DigitalWalletApplication
 func (a *DigitalWalletAppsApiService) UpdateDigitalWalletAppExecute(r ApiUpdateDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *DigitalWalletApplication
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateDigitalWalletAppExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*DigitalWalletApplication), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *DigitalWalletAppsApiService) internalUpdateDigitalWalletAppExecute(r ApiUpdateDigitalWalletAppRequest) (*DigitalWalletApplication, *http.Response, error) {

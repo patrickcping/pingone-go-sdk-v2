@@ -69,12 +69,19 @@ func (a *CredentialIssuanceRulesApiService) ApplyCredentialIssuanceRuleStagedCha
 // Execute executes the request
 //  @return CredentialIssuanceRuleStagedChange
 func (a *CredentialIssuanceRulesApiService) ApplyCredentialIssuanceRuleStagedChangesExecute(r ApiApplyCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuanceRuleStagedChange
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalApplyCredentialIssuanceRuleStagedChangesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuanceRuleStagedChange), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalApplyCredentialIssuanceRuleStagedChangesExecute(r ApiApplyCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
@@ -261,12 +268,19 @@ func (a *CredentialIssuanceRulesApiService) CreateCredentialIssuanceRule(ctx con
 // Execute executes the request
 //  @return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) CreateCredentialIssuanceRuleExecute(r ApiCreateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuanceRule
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateCredentialIssuanceRuleExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuanceRule), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalCreateCredentialIssuanceRuleExecute(r ApiCreateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
@@ -445,13 +459,19 @@ func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRule(ctx con
 
 // Execute executes the request
 func (a *CredentialIssuanceRulesApiService) DeleteCredentialIssuanceRuleExecute(r ApiDeleteCredentialIssuanceRuleRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteCredentialIssuanceRuleExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalDeleteCredentialIssuanceRuleExecute(r ApiDeleteCredentialIssuanceRuleRequest) (*http.Response, error) {
@@ -617,12 +637,19 @@ func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRules(ctx c
 // Execute executes the request
 //  @return EntityArray
 func (a *CredentialIssuanceRulesApiService) ReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllCredentialIssuanceRulesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalReadAllCredentialIssuanceRulesExecute(r ApiReadAllCredentialIssuanceRulesRequest) (*EntityArray, *http.Response, error) {
@@ -800,12 +827,19 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleStagedChan
 // Execute executes the request
 //  @return CredentialIssuanceRuleStagedChange
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleStagedChangesExecute(r ApiReadCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuanceRuleStagedChange
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadCredentialIssuanceRuleStagedChangesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuanceRuleStagedChange), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleStagedChangesExecute(r ApiReadCredentialIssuanceRuleStagedChangesRequest) (*CredentialIssuanceRuleStagedChange, *http.Response, error) {
@@ -984,12 +1018,19 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageCount
 // Execute executes the request
 //  @return CredentialIssuanceRuleUsageCounts
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageCountsExecute(r ApiReadCredentialIssuanceRuleUsageCountsRequest) (*CredentialIssuanceRuleUsageCounts, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuanceRuleUsageCounts
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadCredentialIssuanceRuleUsageCountsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuanceRuleUsageCounts), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUsageCountsExecute(r ApiReadCredentialIssuanceRuleUsageCountsRequest) (*CredentialIssuanceRuleUsageCounts, *http.Response, error) {
@@ -1168,12 +1209,19 @@ func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageDetai
 // Execute executes the request
 //  @return CredentialIssuanceRuleUsageDetails
 func (a *CredentialIssuanceRulesApiService) ReadCredentialIssuanceRuleUsageDetailsExecute(r ApiReadCredentialIssuanceRuleUsageDetailsRequest) (*CredentialIssuanceRuleUsageDetails, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuanceRuleUsageDetails
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadCredentialIssuanceRuleUsageDetailsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuanceRuleUsageDetails), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalReadCredentialIssuanceRuleUsageDetailsExecute(r ApiReadCredentialIssuanceRuleUsageDetailsRequest) (*CredentialIssuanceRuleUsageDetails, *http.Response, error) {
@@ -1352,12 +1400,19 @@ func (a *CredentialIssuanceRulesApiService) ReadOneCredentialIssuanceRule(ctx co
 // Execute executes the request
 //  @return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) ReadOneCredentialIssuanceRuleExecute(r ApiReadOneCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuanceRule
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneCredentialIssuanceRuleExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuanceRule), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalReadOneCredentialIssuanceRuleExecute(r ApiReadOneCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
@@ -1542,12 +1597,19 @@ func (a *CredentialIssuanceRulesApiService) UpdateCredentialIssuanceRule(ctx con
 // Execute executes the request
 //  @return CredentialIssuanceRule
 func (a *CredentialIssuanceRulesApiService) UpdateCredentialIssuanceRuleExecute(r ApiUpdateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuanceRule
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateCredentialIssuanceRuleExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuanceRule), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuanceRulesApiService) internalUpdateCredentialIssuanceRuleExecute(r ApiUpdateCredentialIssuanceRuleRequest) (*CredentialIssuanceRule, *http.Response, error) {

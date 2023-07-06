@@ -57,14 +57,21 @@ func (a *PasswordPoliciesApiService) CreatePasswordPolicy(ctx context.Context, e
 //
 //	@return PasswordPolicy
 func (a *PasswordPoliciesApiService) CreatePasswordPolicyExecute(r ApiCreatePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PasswordPolicy
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalCreatePasswordPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*PasswordPolicy), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *PasswordPoliciesApiService) internalCreatePasswordPolicyExecute(r ApiCreatePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -266,15 +273,21 @@ func (a *PasswordPoliciesApiService) DeletePasswordPolicy(ctx context.Context, e
 
 // Execute executes the request
 func (a *PasswordPoliciesApiService) DeletePasswordPolicyExecute(r ApiDeletePasswordPolicyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			resp, err := r.ApiService.internalDeletePasswordPolicyExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
-			
+
 func (a *PasswordPoliciesApiService) internalDeletePasswordPolicyExecute(r ApiDeletePasswordPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -435,14 +448,21 @@ func (a *PasswordPoliciesApiService) ReadAllPasswordPolicies(ctx context.Context
 //
 //	@return EntityArray
 func (a *PasswordPoliciesApiService) ReadAllPasswordPoliciesExecute(r ApiReadAllPasswordPoliciesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalReadAllPasswordPoliciesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *PasswordPoliciesApiService) internalReadAllPasswordPoliciesExecute(r ApiReadAllPasswordPoliciesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -615,14 +635,21 @@ func (a *PasswordPoliciesApiService) ReadOnePasswordPolicy(ctx context.Context, 
 //
 //	@return PasswordPolicy
 func (a *PasswordPoliciesApiService) ReadOnePasswordPolicyExecute(r ApiReadOnePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PasswordPolicy
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalReadOnePasswordPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*PasswordPolicy), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *PasswordPoliciesApiService) internalReadOnePasswordPolicyExecute(r ApiReadOnePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -802,14 +829,21 @@ func (a *PasswordPoliciesApiService) UpdatePasswordPolicy(ctx context.Context, e
 //
 //	@return PasswordPolicy
 func (a *PasswordPoliciesApiService) UpdatePasswordPolicyExecute(r ApiUpdatePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *PasswordPolicy
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalUpdatePasswordPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*PasswordPolicy), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *PasswordPoliciesApiService) internalUpdatePasswordPolicyExecute(r ApiUpdatePasswordPolicyRequest) (*PasswordPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

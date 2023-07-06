@@ -48,12 +48,19 @@ func (a *RolesApiService) ReadAllRoles(ctx context.Context) ApiReadAllRolesReque
 // Execute executes the request
 //  @return EntityArray
 func (a *RolesApiService) ReadAllRolesExecute(r ApiReadAllRolesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllRolesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *RolesApiService) internalReadAllRolesExecute(r ApiReadAllRolesRequest) (*EntityArray, *http.Response, error) {
@@ -223,12 +230,19 @@ func (a *RolesApiService) ReadOneRole(ctx context.Context, roleID string) ApiRea
 // Execute executes the request
 //  @return Role
 func (a *RolesApiService) ReadOneRoleExecute(r ApiReadOneRoleRequest) (*Role, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Role
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneRoleExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Role), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *RolesApiService) internalReadOneRoleExecute(r ApiReadOneRoleRequest) (*Role, *http.Response, error) {

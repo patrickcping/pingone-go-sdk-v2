@@ -57,12 +57,19 @@ func (a *CredentialIssuersApiService) CreateCredentialIssuerProfile(ctx context.
 // Execute executes the request
 //  @return CredentialIssuerProfile
 func (a *CredentialIssuersApiService) CreateCredentialIssuerProfileExecute(r ApiCreateCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuerProfile
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateCredentialIssuerProfileExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuerProfile), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuersApiService) internalCreateCredentialIssuerProfileExecute(r ApiCreateCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
@@ -235,12 +242,19 @@ func (a *CredentialIssuersApiService) ReadCredentialIssuerProfile(ctx context.Co
 // Execute executes the request
 //  @return CredentialIssuerProfile
 func (a *CredentialIssuersApiService) ReadCredentialIssuerProfileExecute(r ApiReadCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuerProfile
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadCredentialIssuerProfileExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuerProfile), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuersApiService) internalReadCredentialIssuerProfileExecute(r ApiReadCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
@@ -417,12 +431,19 @@ func (a *CredentialIssuersApiService) UpdateCredentialIssuerProfile(ctx context.
 // Execute executes the request
 //  @return CredentialIssuerProfile
 func (a *CredentialIssuersApiService) UpdateCredentialIssuerProfileExecute(r ApiUpdateCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *CredentialIssuerProfile
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateCredentialIssuerProfileExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*CredentialIssuerProfile), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *CredentialIssuersApiService) internalUpdateCredentialIssuerProfileExecute(r ApiUpdateCredentialIssuerProfileRequest) (*CredentialIssuerProfile, *http.Response, error) {

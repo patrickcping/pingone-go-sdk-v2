@@ -57,12 +57,19 @@ func (a *APIServersApiService) CreateAPIServer(ctx context.Context, environmentI
 // Execute executes the request
 //  @return APIServer
 func (a *APIServersApiService) CreateAPIServerExecute(r ApiCreateAPIServerRequest) (*APIServer, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *APIServer
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateAPIServerExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*APIServer), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *APIServersApiService) internalCreateAPIServerExecute(r ApiCreateAPIServerRequest) (*APIServer, *http.Response, error) {
@@ -248,13 +255,19 @@ func (a *APIServersApiService) DeleteAPIServer(ctx context.Context, environmentI
 
 // Execute executes the request
 func (a *APIServersApiService) DeleteAPIServerExecute(r ApiDeleteAPIServerRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteAPIServerExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *APIServersApiService) internalDeleteAPIServerExecute(r ApiDeleteAPIServerRequest) (*http.Response, error) {
@@ -416,12 +429,19 @@ func (a *APIServersApiService) ReadAllAPIServers(ctx context.Context, environmen
 // Execute executes the request
 //  @return EntityArray
 func (a *APIServersApiService) ReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllAPIServersExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *APIServersApiService) internalReadAllAPIServersExecute(r ApiReadAllAPIServersRequest) (*EntityArray, *http.Response, error) {
@@ -595,12 +615,19 @@ func (a *APIServersApiService) ReadOneAPIServer(ctx context.Context, environment
 // Execute executes the request
 //  @return APIServer
 func (a *APIServersApiService) ReadOneAPIServerExecute(r ApiReadOneAPIServerRequest) (*APIServer, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *APIServer
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneAPIServerExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*APIServer), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *APIServersApiService) internalReadOneAPIServerExecute(r ApiReadOneAPIServerRequest) (*APIServer, *http.Response, error) {
@@ -781,12 +808,19 @@ func (a *APIServersApiService) UpdateAPIServer(ctx context.Context, environmentI
 // Execute executes the request
 //  @return APIServer
 func (a *APIServersApiService) UpdateAPIServerExecute(r ApiUpdateAPIServerRequest) (*APIServer, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *APIServer
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateAPIServerExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*APIServer), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *APIServersApiService) internalUpdateAPIServerExecute(r ApiUpdateAPIServerRequest) (*APIServer, *http.Response, error) {

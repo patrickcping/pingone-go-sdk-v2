@@ -51,12 +51,19 @@ func (a *NotificationsSettingsApiService) DeleteNotificationsSettings(ctx contex
 // Execute executes the request
 //  @return NotificationsSettings
 func (a *NotificationsSettingsApiService) DeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsSettings
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalDeleteNotificationsSettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsSettings), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *NotificationsSettingsApiService) internalDeleteNotificationsSettingsExecute(r ApiDeleteNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
@@ -227,12 +234,19 @@ func (a *NotificationsSettingsApiService) ReadNotificationsSettings(ctx context.
 // Execute executes the request
 //  @return NotificationsSettings
 func (a *NotificationsSettingsApiService) ReadNotificationsSettingsExecute(r ApiReadNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsSettings
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadNotificationsSettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsSettings), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *NotificationsSettingsApiService) internalReadNotificationsSettingsExecute(r ApiReadNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
@@ -409,12 +423,19 @@ func (a *NotificationsSettingsApiService) UpdateNotificationsSettings(ctx contex
 // Execute executes the request
 //  @return NotificationsSettings
 func (a *NotificationsSettingsApiService) UpdateNotificationsSettingsExecute(r ApiUpdateNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *NotificationsSettings
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateNotificationsSettingsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*NotificationsSettings), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *NotificationsSettingsApiService) internalUpdateNotificationsSettingsExecute(r ApiUpdateNotificationsSettingsRequest) (*NotificationsSettings, *http.Response, error) {

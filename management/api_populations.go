@@ -57,12 +57,19 @@ func (a *PopulationsApiService) CreatePopulation(ctx context.Context, environmen
 // Execute executes the request
 //  @return Population
 func (a *PopulationsApiService) CreatePopulationExecute(r ApiCreatePopulationRequest) (*Population, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Population
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreatePopulationExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Population), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PopulationsApiService) internalCreatePopulationExecute(r ApiCreatePopulationRequest) (*Population, *http.Response, error) {
@@ -251,13 +258,19 @@ func (a *PopulationsApiService) DeletePopulation(ctx context.Context, environmen
 
 // Execute executes the request
 func (a *PopulationsApiService) DeletePopulationExecute(r ApiDeletePopulationRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeletePopulationExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *PopulationsApiService) internalDeletePopulationExecute(r ApiDeletePopulationRequest) (*http.Response, error) {
@@ -433,12 +446,19 @@ func (a *PopulationsApiService) ReadAllPopulations(ctx context.Context, environm
 // Execute executes the request
 //  @return EntityArray
 func (a *PopulationsApiService) ReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllPopulationsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PopulationsApiService) internalReadAllPopulationsExecute(r ApiReadAllPopulationsRequest) (*EntityArray, *http.Response, error) {
@@ -618,12 +638,19 @@ func (a *PopulationsApiService) ReadOnePopulation(ctx context.Context, environme
 // Execute executes the request
 //  @return Population
 func (a *PopulationsApiService) ReadOnePopulationExecute(r ApiReadOnePopulationRequest) (*Population, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Population
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOnePopulationExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Population), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PopulationsApiService) internalReadOnePopulationExecute(r ApiReadOnePopulationRequest) (*Population, *http.Response, error) {
@@ -804,12 +831,19 @@ func (a *PopulationsApiService) UpdatePopulation(ctx context.Context, environmen
 // Execute executes the request
 //  @return Population
 func (a *PopulationsApiService) UpdatePopulationExecute(r ApiUpdatePopulationRequest) (*Population, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *Population
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdatePopulationExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Population), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *PopulationsApiService) internalUpdatePopulationExecute(r ApiUpdatePopulationRequest) (*Population, *http.Response, error) {

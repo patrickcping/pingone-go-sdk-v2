@@ -60,12 +60,19 @@ func (a *UserAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDPost(ctx co
 // Execute executes the request
 //  @return EntityArray
 func (a *UserAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDPostExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *UserAccountsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest) (*EntityArray, *http.Response, error) {

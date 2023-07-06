@@ -57,12 +57,19 @@ func (a *FlowPoliciesApiService) ReadAllFlowPolicies(ctx context.Context, enviro
 // Execute executes the request
 //  @return EntityArray
 func (a *FlowPoliciesApiService) ReadAllFlowPoliciesExecute(r ApiReadAllFlowPoliciesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *EntityArray
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadAllFlowPoliciesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *FlowPoliciesApiService) internalReadAllFlowPoliciesExecute(r ApiReadAllFlowPoliciesRequest) (*EntityArray, *http.Response, error) {
@@ -239,12 +246,19 @@ func (a *FlowPoliciesApiService) ReadOneFlowPolicy(ctx context.Context, environm
 // Execute executes the request
 //  @return FlowPolicy
 func (a *FlowPoliciesApiService) ReadOneFlowPolicyExecute(r ApiReadOneFlowPolicyRequest) (*FlowPolicy, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  *FlowPolicy
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadOneFlowPolicyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*FlowPolicy), response, error
+	return localVarReturnValue, response, err
 }
 			
 func (a *FlowPoliciesApiService) internalReadOneFlowPolicyExecute(r ApiReadOneFlowPolicyRequest) (*FlowPolicy, *http.Response, error) {

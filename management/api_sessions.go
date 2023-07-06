@@ -53,13 +53,19 @@ func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsGet(ctx
 
 // Execute executes the request
 func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDSessionsGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSessionsGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsGetRequest) (*http.Response, error) {
@@ -226,13 +232,19 @@ func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsSession
 
 // Execute executes the request
 func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDDeleteRequest) (*http.Response, error) {
@@ -400,13 +412,19 @@ func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsSession
 
 // Execute executes the request
 func (a *SessionsApiService) EnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetRequest) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func (a *SessionsApiService) internalEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDSessionsSessionIDGetRequest) (*http.Response, error) {
