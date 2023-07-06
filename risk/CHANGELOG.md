@@ -1,3 +1,7 @@
+# v0.8.1 (Unreleased)
+
+* **Note** Code optimisation for API response processing.
+
 # v0.8.0 (2023-07-04)
 
 * **Note** Now suppresses errors when attempting to unmarshal an ENUM value from JSON that isn't yet supported in the SDK.  The value is now returned as `UNKNOWN`. [#208](https://github.com/patrickcping/pingone-go-sdk-v2/pull/208)
