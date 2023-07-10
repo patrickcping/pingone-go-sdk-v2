@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING"), int32(123)) // KeyRotationPolicy |  (optional)
+    keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING")) // KeyRotationPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -311,7 +311,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyRotationPolicyID := "keyRotationPolicyID_example" // string | 
-    keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING"), int32(123)) // KeyRotationPolicy |  (optional)
+    keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING")) // KeyRotationPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

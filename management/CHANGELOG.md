@@ -1,7 +1,8 @@
-# v0.23.1 (Unreleased)
+# v0.24.0 (Unreleased)
 
 * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
 * **Note** Allow user-defined values for the `UserAgent` configuration parameter. [#217](https://github.com/patrickcping/pingone-go-sdk-v2/pull/217)
+* **Enhancement** Updated the `KeyRotationPolicy` model such that `ValidityPeriod` is now optional and has a default value, and `RotationPeriod` has a default value. [#220](https://github.com/patrickcping/pingone-go-sdk-v2/pull/220)
 
 # v0.23.0 (2023-07-04)
 

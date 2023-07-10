@@ -25248,7 +25248,7 @@ components:
             environment:
               id: id
             keyLength: 1
-            rotationPeriod: 1
+            rotationPeriod: 30
             name: name
             rotatedAt: 2000-01-23T04:56:07.000+00:00
             id: id
@@ -25262,7 +25262,7 @@ components:
             environment:
               id: id
             keyLength: 1
-            rotationPeriod: 1
+            rotationPeriod: 30
             name: name
             rotatedAt: 2000-01-23T04:56:07.000+00:00
             id: id
@@ -27080,7 +27080,7 @@ components:
         environment:
           id: id
         keyLength: 1
-        rotationPeriod: 1
+        rotationPeriod: 30
         name: name
         rotatedAt: 2000-01-23T04:56:07.000+00:00
         id: id
@@ -27120,15 +27120,18 @@ components:
           readOnly: true
           type: string
         rotationPeriod:
+          default: 90
           description: The number of days to elapse before this KRP rotates `KrpKeys`.
             The default value is `90` days. The minimum value is `30` days. The maximum
             value is 1 day less than the `validityPeriod` value.
+          minimum: 30
           type: integer
         signatureAlgorithm:
           $ref: '#/components/schemas/EnumKeyRotationPolicySigAlgorithm'
         usageType:
           $ref: '#/components/schemas/EnumKeyRotationPolicyUsageType'
         validityPeriod:
+          default: 365
           description: Controls the `startsAt` and `expiresAt` fields this KRP will
             apply to generated `KrpKeys`. The default value is `365` days.
           type: integer
@@ -27139,7 +27142,6 @@ components:
       - name
       - signatureAlgorithm
       - usageType
-      - validityPeriod
       type: object
     Language:
       example:
@@ -30753,7 +30755,7 @@ components:
           environment:
             id: id
           keyLength: 1
-          rotationPeriod: 1
+          rotationPeriod: 30
           name: name
           rotatedAt: 2000-01-23T04:56:07.000+00:00
           id: id
@@ -30767,7 +30769,7 @@ components:
           environment:
             id: id
           keyLength: 1
-          rotationPeriod: 1
+          rotationPeriod: 30
           name: name
           rotatedAt: 2000-01-23T04:56:07.000+00:00
           id: id

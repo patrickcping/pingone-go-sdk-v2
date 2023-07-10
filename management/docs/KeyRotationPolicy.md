@@ -13,16 +13,16 @@ Name | Type | Description | Notes
 **Name** | **string** | Human-readable name displayed in the admin console. | 
 **NextKeyId** | Pointer to **string** | The &#x60;kid&#x60; (key identifier) of the &#x60;KrpKey&#x60; designated as &#x60;NEXT&#x60;. | [optional] [readonly] 
 **RotatedAt** | Pointer to **time.Time** | The last time this KRP was rotated. | [optional] [readonly] 
-**RotationPeriod** | Pointer to **int32** | The number of days to elapse before this KRP rotates &#x60;KrpKeys&#x60;. The default value is &#x60;90&#x60; days. The minimum value is &#x60;30&#x60; days. The maximum value is 1 day less than the &#x60;validityPeriod&#x60; value. | [optional] 
+**RotationPeriod** | Pointer to **int32** | The number of days to elapse before this KRP rotates &#x60;KrpKeys&#x60;. The default value is &#x60;90&#x60; days. The minimum value is &#x60;30&#x60; days. The maximum value is 1 day less than the &#x60;validityPeriod&#x60; value. | [optional] [default to 90]
 **SignatureAlgorithm** | [**EnumKeyRotationPolicySigAlgorithm**](EnumKeyRotationPolicySigAlgorithm.md) |  | 
 **UsageType** | [**EnumKeyRotationPolicyUsageType**](EnumKeyRotationPolicyUsageType.md) |  | 
-**ValidityPeriod** | **int32** | Controls the &#x60;startsAt&#x60; and &#x60;expiresAt&#x60; fields this KRP will apply to generated &#x60;KrpKeys&#x60;. The default value is &#x60;365&#x60; days. | 
+**ValidityPeriod** | Pointer to **int32** | Controls the &#x60;startsAt&#x60; and &#x60;expiresAt&#x60; fields this KRP will apply to generated &#x60;KrpKeys&#x60;. The default value is &#x60;365&#x60; days. | [optional] [default to 365]
 
 ## Methods
 
 ### NewKeyRotationPolicy
 
-`func NewKeyRotationPolicy(algorithm EnumKeyRotationPolicyAlgorithm, dn string, keyLength int32, name string, signatureAlgorithm EnumKeyRotationPolicySigAlgorithm, usageType EnumKeyRotationPolicyUsageType, validityPeriod int32, ) *KeyRotationPolicy`
+`func NewKeyRotationPolicy(algorithm EnumKeyRotationPolicyAlgorithm, dn string, keyLength int32, name string, signatureAlgorithm EnumKeyRotationPolicySigAlgorithm, usageType EnumKeyRotationPolicyUsageType, ) *KeyRotationPolicy`
 
 NewKeyRotationPolicy instantiates a new KeyRotationPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -326,6 +326,11 @@ and a boolean to check if the value has been set.
 
 SetValidityPeriod sets ValidityPeriod field to given value.
 
+### HasValidityPeriod
+
+`func (o *KeyRotationPolicy) HasValidityPeriod() bool`
+
+HasValidityPeriod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
