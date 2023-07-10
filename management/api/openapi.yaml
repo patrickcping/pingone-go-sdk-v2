@@ -25442,7 +25442,7 @@ components:
           - preferredLanguage: preferredLanguage
             timezone: timezone
             lastSignOn:
-              at: at
+              at: 2000-01-23T04:56:07.000+00:00
               remoteIp: remoteIp
             locale: locale
             title: title
@@ -25452,8 +25452,9 @@ components:
               id: id
               type: null
             lifecycle:
+              suppressVerificationCode: true
               status: null
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             password:
               external:
                 gateway:
@@ -25469,7 +25470,7 @@ components:
             mfaEnabled: true
             id: id
             email: email
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
             memberOfGroupIDs:
             - memberOfGroupIDs
             - memberOfGroupIDs
@@ -25487,6 +25488,7 @@ components:
             - memberOfGroupNames
             population:
               id: id
+            emailVerified: true
             primaryPhone: primaryPhone
             environment:
               id: id
@@ -25500,15 +25502,15 @@ components:
               family: family
             account:
               canAuthenticate: true
-              lockedAt: lockedAt
+              lockedAt: 2000-01-23T04:56:07.000+00:00
               secondsUntilUnlock: 3
-              unlockAt: unlockAt
+              unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
           - preferredLanguage: preferredLanguage
             timezone: timezone
             lastSignOn:
-              at: at
+              at: 2000-01-23T04:56:07.000+00:00
               remoteIp: remoteIp
             locale: locale
             title: title
@@ -25518,8 +25520,9 @@ components:
               id: id
               type: null
             lifecycle:
+              suppressVerificationCode: true
               status: null
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             password:
               external:
                 gateway:
@@ -25535,7 +25538,7 @@ components:
             mfaEnabled: true
             id: id
             email: email
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
             memberOfGroupIDs:
             - memberOfGroupIDs
             - memberOfGroupIDs
@@ -25553,6 +25556,7 @@ components:
             - memberOfGroupNames
             population:
               id: id
+            emailVerified: true
             primaryPhone: primaryPhone
             environment:
               id: id
@@ -25566,9 +25570,9 @@ components:
               family: family
             account:
               canAuthenticate: true
-              lockedAt: lockedAt
+              lockedAt: 2000-01-23T04:56:07.000+00:00
               secondsUntilUnlock: 3
-              unlockAt: unlockAt
+              unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
           signOnPolicyAssignments:
@@ -29018,7 +29022,7 @@ components:
         preferredLanguage: preferredLanguage
         timezone: timezone
         lastSignOn:
-          at: at
+          at: 2000-01-23T04:56:07.000+00:00
           remoteIp: remoteIp
         locale: locale
         title: title
@@ -29028,8 +29032,9 @@ components:
           id: id
           type: null
         lifecycle:
+          suppressVerificationCode: true
           status: null
-        createdAt: createdAt
+        createdAt: 2000-01-23T04:56:07.000+00:00
         password:
           external:
             gateway:
@@ -29045,7 +29050,7 @@ components:
         mfaEnabled: true
         id: id
         email: email
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
         memberOfGroupIDs:
         - memberOfGroupIDs
         - memberOfGroupIDs
@@ -29063,6 +29068,7 @@ components:
         - memberOfGroupNames
         population:
           id: id
+        emailVerified: true
         primaryPhone: primaryPhone
         environment:
           id: id
@@ -29076,9 +29082,9 @@ components:
           family: family
         account:
           canAuthenticate: true
-          lockedAt: lockedAt
+          lockedAt: 2000-01-23T04:56:07.000+00:00
           secondsUntilUnlock: 3
-          unlockAt: unlockAt
+          unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
       properties:
@@ -29088,12 +29094,22 @@ components:
           $ref: '#/components/schemas/User_address'
         createdAt:
           description: The time the resource was created.
+          format: date-time
+          readOnly: true
           type: string
         email:
           description: "A string that specifies the user’s email address, which must\
             \ be provided and valid. For more information about email address formatting,\
             \ see section 3.4 of RFC 2822, Internet Message Format."
           type: string
+        emailVerified:
+          description: "Whether the user’s email is verified. An email address can\
+            \ be verified during account verification. If the email address used to\
+            \ request the verification code is the same as the user’s email at verification\
+            \ time (and the verification code is valid), then the email is verified.\
+            \ The value of this property can be set on user import."
+          readOnly: true
+          type: boolean
         enabled:
           description: A read-only boolean attribute that specifies whether the user
             is enabled. This attribute is set to ‘true’ by default when the user is
@@ -29244,6 +29260,8 @@ components:
           type: string
         updatedAt:
           description: The time the resource was last updated.
+          format: date-time
+          readOnly: true
           type: string
         username:
           description: "A string that specifies the user name, which must be provided\
@@ -30949,7 +30967,7 @@ components:
         - preferredLanguage: preferredLanguage
           timezone: timezone
           lastSignOn:
-            at: at
+            at: 2000-01-23T04:56:07.000+00:00
             remoteIp: remoteIp
           locale: locale
           title: title
@@ -30959,8 +30977,9 @@ components:
             id: id
             type: null
           lifecycle:
+            suppressVerificationCode: true
             status: null
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           password:
             external:
               gateway:
@@ -30976,7 +30995,7 @@ components:
           mfaEnabled: true
           id: id
           email: email
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
           memberOfGroupIDs:
           - memberOfGroupIDs
           - memberOfGroupIDs
@@ -30994,6 +31013,7 @@ components:
           - memberOfGroupNames
           population:
             id: id
+          emailVerified: true
           primaryPhone: primaryPhone
           environment:
             id: id
@@ -31007,15 +31027,15 @@ components:
             family: family
           account:
             canAuthenticate: true
-            lockedAt: lockedAt
+            lockedAt: 2000-01-23T04:56:07.000+00:00
             secondsUntilUnlock: 3
-            unlockAt: unlockAt
+            unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
         - preferredLanguage: preferredLanguage
           timezone: timezone
           lastSignOn:
-            at: at
+            at: 2000-01-23T04:56:07.000+00:00
             remoteIp: remoteIp
           locale: locale
           title: title
@@ -31025,8 +31045,9 @@ components:
             id: id
             type: null
           lifecycle:
+            suppressVerificationCode: true
             status: null
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           password:
             external:
               gateway:
@@ -31042,7 +31063,7 @@ components:
           mfaEnabled: true
           id: id
           email: email
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
           memberOfGroupIDs:
           - memberOfGroupIDs
           - memberOfGroupIDs
@@ -31060,6 +31081,7 @@ components:
           - memberOfGroupNames
           population:
             id: id
+          emailVerified: true
           primaryPhone: primaryPhone
           environment:
             id: id
@@ -31073,9 +31095,9 @@ components:
             family: family
           account:
             canAuthenticate: true
-            lockedAt: lockedAt
+            lockedAt: 2000-01-23T04:56:07.000+00:00
             secondsUntilUnlock: 3
-            unlockAt: unlockAt
+            unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
         signOnPolicyAssignments:
@@ -34230,9 +34252,9 @@ components:
     User_account:
       example:
         canAuthenticate: true
-        lockedAt: lockedAt
+        lockedAt: 2000-01-23T04:56:07.000+00:00
         secondsUntilUnlock: 3
-        unlockAt: unlockAt
+        unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
         canAuthenticate:
@@ -34245,12 +34267,15 @@ components:
           description: The time the specified user account was locked. This property
             might be absent if the account is unlocked or if the account was locked
             out automatically by failed password attempts.
+          format: date-time
+          readOnly: true
           type: string
         secondsUntilUnlock:
           description: "An integer that specifies the number of seconds until the\
             \ user's account is unlocked. This property is absent if the account is\
             \ unlocked, or if it will not automatically unlock (and must be unlocked\
             \ by an administrator)."
+          readOnly: true
           type: integer
         status:
           $ref: '#/components/schemas/EnumUserStatus'
@@ -34258,7 +34283,12 @@ components:
           description: "The time the specified user account will be unlocked. This\
             \ property is absent if the account is unlocked, or if it will not automatically\
             \ unlock (and must be unlocked by an administrator)."
+          format: date-time
+          readOnly: true
           type: string
+      required:
+      - canAuthenticate
+      - status
       type: object
     User_address:
       example:
@@ -34333,24 +34363,33 @@ components:
       type: object
     User_lastSignOn:
       example:
-        at: at
+        at: 2000-01-23T04:56:07.000+00:00
         remoteIp: remoteIp
       properties:
         at:
           description: The time of the last successful login of the user through the
             PingOne flow API.
+          format: date-time
           type: string
         remoteIp:
           description: The IP address of the last successful login of the user through
             the PingOne flow API.
           type: string
+      readOnly: true
       type: object
     User_lifecycle:
       example:
+        suppressVerificationCode: true
         status: null
       properties:
         status:
           $ref: '#/components/schemas/EnumUserLifecycleStatus'
+        suppressVerificationCode:
+          description: "Used when importing a user and the lifecycle.status is set\
+            \ to VERIFICATION_REQUIRED. If this property is set to true, no verification\
+            \ email is sent to the user. If this property is omitted or set to false,\
+            \ a verification email is sent automatically to the user."
+          type: boolean
       type: object
     User_name:
       example:
@@ -34514,6 +34553,8 @@ components:
             \ a web page containing an image. It must be a valid URL that starts with\
             \ the HTTP or HTTPS scheme."
           type: string
+      required:
+      - href
       type: object
     User_population:
       example:

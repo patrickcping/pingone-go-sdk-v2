@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the User type satisfies the MappedNullable interface at compile time
@@ -22,9 +23,11 @@ type User struct {
 	Account *UserAccount `json:"account,omitempty"`
 	Address *UserAddress `json:"address,omitempty"`
 	// The time the resource was created.
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A string that specifies the user’s email address, which must be provided and valid. For more information about email address formatting, see section 3.4 of RFC 2822, Internet Message Format.
 	Email string `json:"email"`
+	// Whether the user’s email is verified. An email address can be verified during account verification. If the email address used to request the verification code is the same as the user’s email at verification time (and the verification code is valid), then the email is verified. The value of this property can be set on user import.
+	EmailVerified *bool `json:"emailVerified,omitempty"`
 	// A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created.
 	Enabled *bool `json:"enabled,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -62,7 +65,7 @@ type User struct {
 	// A string that specifies the user’s type, which is optional. This can be explicitly set to null when updating a user to unset it. This attribute is organization-specific and has no special meaning within the PingOne platform. It could have values of \"Contractor\", \"Employee\", \"Intern\", \"Temp\", \"External\", and `Unknown`. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 256 characters (min/max=1/256).
 	Type *string `json:"type,omitempty"`
 	// The time the resource was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex `^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$`). It can have a length of no more than 128 characters (min/max=1/128).
 	Username string `json:"username"`
 	VerifyStatus *EnumUserVerifyStatus `json:"verifyStatus,omitempty"`
@@ -152,9 +155,9 @@ func (o *User) SetAddress(v UserAddress) {
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *User) GetCreatedAt() string {
+func (o *User) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.CreatedAt
@@ -162,7 +165,7 @@ func (o *User) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetCreatedAtOk() (*string, bool) {
+func (o *User) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -178,8 +181,8 @@ func (o *User) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
-func (o *User) SetCreatedAt(v string) {
+// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
+func (o *User) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
@@ -205,6 +208,38 @@ func (o *User) GetEmailOk() (*string, bool) {
 // SetEmail sets field value
 func (o *User) SetEmail(v string) {
 	o.Email = v
+}
+
+// GetEmailVerified returns the EmailVerified field value if set, zero value otherwise.
+func (o *User) GetEmailVerified() bool {
+	if o == nil || IsNil(o.EmailVerified) {
+		var ret bool
+		return ret
+	}
+	return *o.EmailVerified
+}
+
+// GetEmailVerifiedOk returns a tuple with the EmailVerified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetEmailVerifiedOk() (*bool, bool) {
+	if o == nil || IsNil(o.EmailVerified) {
+		return nil, false
+	}
+	return o.EmailVerified, true
+}
+
+// HasEmailVerified returns a boolean if a field has been set.
+func (o *User) HasEmailVerified() bool {
+	if o != nil && !IsNil(o.EmailVerified) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmailVerified gets a reference to the given bool and assigns it to the EmailVerified field.
+func (o *User) SetEmailVerified(v bool) {
+	o.EmailVerified = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
@@ -912,9 +947,9 @@ func (o *User) SetType(v string) {
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *User) GetUpdatedAt() string {
+func (o *User) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.UpdatedAt
@@ -922,7 +957,7 @@ func (o *User) GetUpdatedAt() string {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *User) GetUpdatedAtOk() (*string, bool) {
+func (o *User) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -938,8 +973,8 @@ func (o *User) HasUpdatedAt() bool {
 	return false
 }
 
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
-func (o *User) SetUpdatedAt(v string) {
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *User) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
@@ -1015,10 +1050,9 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
+	// skip: createdAt is readOnly
 	toSerialize["email"] = o.Email
+	// skip: emailVerified is readOnly
 	// skip: enabled is readOnly
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
@@ -1077,9 +1111,7 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	// skip: updatedAt is readOnly
 	toSerialize["username"] = o.Username
 	if !IsNil(o.VerifyStatus) {
 		toSerialize["verifyStatus"] = o.VerifyStatus

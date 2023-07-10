@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the UserLastSignOn type satisfies the MappedNullable interface at compile time
@@ -20,7 +21,7 @@ var _ MappedNullable = &UserLastSignOn{}
 // UserLastSignOn struct for UserLastSignOn
 type UserLastSignOn struct {
 	// The time of the last successful login of the user through the PingOne flow API.
-	At *string `json:"at,omitempty"`
+	At *time.Time `json:"at,omitempty"`
 	// The IP address of the last successful login of the user through the PingOne flow API.
 	RemoteIp *string `json:"remoteIp,omitempty"`
 }
@@ -43,9 +44,9 @@ func NewUserLastSignOnWithDefaults() *UserLastSignOn {
 }
 
 // GetAt returns the At field value if set, zero value otherwise.
-func (o *UserLastSignOn) GetAt() string {
+func (o *UserLastSignOn) GetAt() time.Time {
 	if o == nil || IsNil(o.At) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.At
@@ -53,7 +54,7 @@ func (o *UserLastSignOn) GetAt() string {
 
 // GetAtOk returns a tuple with the At field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserLastSignOn) GetAtOk() (*string, bool) {
+func (o *UserLastSignOn) GetAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.At) {
 		return nil, false
 	}
@@ -69,8 +70,8 @@ func (o *UserLastSignOn) HasAt() bool {
 	return false
 }
 
-// SetAt gets a reference to the given string and assigns it to the At field.
-func (o *UserLastSignOn) SetAt(v string) {
+// SetAt gets a reference to the given time.Time and assigns it to the At field.
+func (o *UserLastSignOn) SetAt(v time.Time) {
 	o.At = &v
 }
 
