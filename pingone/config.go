@@ -20,6 +20,7 @@ type Config struct {
 	ClientID                      *string
 	ClientSecret                  *string
 	EnvironmentID                 *string
+	ProxyURL                      *string
 	Region                        string
 	UserAgentOverride             *string
 	validated                     bool
@@ -145,6 +146,11 @@ func (c *Config) validateRegion() error {
 	return nil
 }
 
+func (c *Config) validateProxyURL() error {
+	// Defer validation to the net/http library
+	return nil
+}
+
 func (c *Config) Validate() error {
 
 	if c.validated {
@@ -180,6 +186,10 @@ func (c *Config) Validate() error {
 	}
 
 	if err := c.validateRegion(); err != nil {
+		return err
+	}
+
+	if err := c.validateProxyURL(); err != nil {
 		return err
 	}
 

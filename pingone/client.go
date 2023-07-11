@@ -130,8 +130,12 @@ func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementma
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = agreementmanagement.NewAPIClient(clientcfg)
@@ -192,8 +196,12 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = authorize.NewAPIClient(clientcfg)
@@ -255,8 +263,12 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = credentials.NewAPIClient(clientcfg)
@@ -317,8 +329,12 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = management.NewAPIClient(clientcfg)
@@ -379,8 +395,12 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = mfa.NewAPIClient(clientcfg)
@@ -441,8 +461,12 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = risk.NewAPIClient(clientcfg)
@@ -503,8 +527,12 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = verify.NewAPIClient(clientcfg)
