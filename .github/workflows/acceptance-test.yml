@@ -58,10 +58,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PINGONE_CLIENT_ID: ${{ secrets.EU_PINGONE_CLIENT_ID }}
-      PINGONE_CLIENT_SECRET: ${{ secrets.EU_PINGONE_CLIENT_SECRET }}
-      PINGONE_ENVIRONMENT_ID: ${{ secrets.EU_PINGONE_ENVIRONMENT_ID }}
-      PINGONE_REGION: Europe
+      PINGONE_CLIENT_ID_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_ID }}
+      PINGONE_CLIENT_SECRET_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_SECRET }}
+      PINGONE_ENVIRONMENT_ID_TESTACC: ${{ secrets.EU_PINGONE_ENVIRONMENT_ID }}
+      PINGONE_REGION_TESTACC: Europe
 
     timeout-minutes: 15
     strategy:
