@@ -5650,8 +5650,7 @@ components:
                       type: string
                       description: The UUID of the linked gateway that references the remote directory.
                     type:
-                      type: string
-                      description: An enum indicating one of the supported gateway types. For the supported types, see type in the Gateway base data model.
+                      $ref: '#/components/schemas/EnumGatewayType'
                     userType:
                       type: object
                       description: A reference to a userType in the list of userTypes values for an LDAP gateway.

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The UUID of the linked gateway that references the remote directory. | [optional] 
-**Type** | Pointer to **string** | An enum indicating one of the supported gateway types. For the supported types, see type in the Gateway base data model. | [optional] 
+**Type** | Pointer to [**EnumGatewayType**](EnumGatewayType.md) |  | [optional] 
 **UserType** | Pointer to [**UserPasswordExternalGatewayUserType**](UserPasswordExternalGatewayUserType.md) |  | [optional] 
 **CorrelationAttributes** | Pointer to **map[string]interface{}** | An object that maps the external LDAP directory attributes to PingOne attributes. We use the correlationAttributes values to read the attributes from the external LDAP directory and map them to the corresponding PingOne attributes. | [optional] 
 
@@ -55,20 +55,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *UserPasswordExternalGateway) GetType() string`
+`func (o *UserPasswordExternalGateway) GetType() EnumGatewayType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *UserPasswordExternalGateway) GetTypeOk() (*string, bool)`
+`func (o *UserPasswordExternalGateway) GetTypeOk() (*EnumGatewayType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *UserPasswordExternalGateway) SetType(v string)`
+`func (o *UserPasswordExternalGateway) SetType(v EnumGatewayType)`
 
 SetType sets Type field to given value.
 

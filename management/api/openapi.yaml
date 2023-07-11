@@ -25462,7 +25462,7 @@ components:
                   userType:
                     id: id
                   correlationAttributes: "{}"
-                  type: type
+                  type: null
               forceChange: true
               value: value
             verifyStatus: null
@@ -25530,7 +25530,7 @@ components:
                   userType:
                     id: id
                   correlationAttributes: "{}"
-                  type: type
+                  type: null
               forceChange: true
               value: value
             verifyStatus: null
@@ -29042,7 +29042,7 @@ components:
               userType:
                 id: id
               correlationAttributes: "{}"
-              type: type
+              type: null
           forceChange: true
           value: value
         verifyStatus: null
@@ -30987,7 +30987,7 @@ components:
                 userType:
                   id: id
                 correlationAttributes: "{}"
-                type: type
+                type: null
             forceChange: true
             value: value
           verifyStatus: null
@@ -31055,7 +31055,7 @@ components:
                 userType:
                   id: id
                 correlationAttributes: "{}"
-                type: type
+                type: null
             forceChange: true
             value: value
           verifyStatus: null
@@ -34482,15 +34482,13 @@ components:
         userType:
           id: id
         correlationAttributes: "{}"
-        type: type
+        type: null
       properties:
         id:
           description: The UUID of the linked gateway that references the remote directory.
           type: string
         type:
-          description: "An enum indicating one of the supported gateway types. For\
-            \ the supported types, see type in the Gateway base data model."
-          type: string
+          $ref: '#/components/schemas/EnumGatewayType'
         userType:
           $ref: '#/components/schemas/User_password_external_gateway_userType'
         correlationAttributes:
@@ -34509,7 +34507,7 @@ components:
           userType:
             id: id
           correlationAttributes: "{}"
-          type: type
+          type: null
       properties:
         gateway:
           $ref: '#/components/schemas/User_password_external_gateway'
@@ -34524,7 +34522,7 @@ components:
             userType:
               id: id
             correlationAttributes: "{}"
-            type: type
+            type: null
         forceChange: true
         value: value
       properties:
