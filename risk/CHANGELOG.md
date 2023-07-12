@@ -1,4 +1,4 @@
-# v0.8.1 (Unreleased)
+# v0.8.1 (2023-07-12)
 
 * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
 * **Note** Allow user-defined values for the `UserAgent` configuration parameter. [#217](https://github.com/patrickcping/pingone-go-sdk-v2/pull/217)
