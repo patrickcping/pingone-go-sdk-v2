@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
+	"net/url"
 	"regexp"
 	"time"
 
@@ -569,6 +571,27 @@ func (c *Config) getToken(ctx context.Context) error {
 		}
 
 		token, err := processResponse(func() (*oauth2.Token, error) {
+
+			if v := c.ProxyURL; v != nil && *v != "" {
+
+				// Parse the proxy URL
+				proxyURLParsed, err := url.Parse(*v)
+				if err != nil {
+					return nil, fmt.Errorf("Failed to parse proxy URL: %s", err)
+				}
+
+				// Create a new Transport object with the proxy settings
+				transport := &http.Transport{
+					Proxy: http.ProxyURL(proxyURLParsed),
+				}
+
+				// Create a new HTTP client using the custom Transport
+				httpClient := &http.Client{
+					Transport: transport,
+				}
+				ctx = context.WithValue(ctx, oauth2.HTTPClient, httpClient)
+			}
+
 			return config.Token(ctx)
 		})
 		if err != nil {
