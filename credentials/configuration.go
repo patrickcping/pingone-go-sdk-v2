@@ -81,6 +81,7 @@ type Configuration struct {
 	UserAgent        string            `json:"userAgent,omitempty"`
 	Debug            bool              `json:"debug,omitempty"`
 	DefaultServerIndex int             `json:"defaultServerIndex,omitempty"`
+	ProxyURL         *string           `json:"proxyURL,omitempty"`
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client

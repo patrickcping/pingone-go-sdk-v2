@@ -95,6 +95,7 @@ func (c *Configuration) SetServerVariableDefaultValue(serverIndex int, variable 
 			pattern:           `Debug            bool              ` + "`" + `json:"debug,omitempty"` + "`" + `\n	Servers          ServerConfigurations\n`,
 			repl: `Debug            bool              ` + "`" + `json:"debug,omitempty"` + "`" + `
 	DefaultServerIndex int             ` + "`" + `json:"defaultServerIndex,omitempty"` + "`" + `
+	ProxyURL         *string           ` + "`" + `json:"proxyURL,omitempty"` + "`" + `
 	Servers          ServerConfigurations
 `,
 		},

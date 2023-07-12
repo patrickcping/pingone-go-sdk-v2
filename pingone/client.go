@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
+	"net/url"
 	"regexp"
 	"time"
 
@@ -18,6 +20,17 @@ import (
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/clientcredentials"
 )
+
+type Client struct {
+	AgreementManagementAPIClient *agreementmanagement.APIClient
+	AuthorizeAPIClient           *authorize.APIClient
+	CredentialsAPIClient         *credentials.APIClient
+	ManagementAPIClient          *management.APIClient
+	MFAAPIClient                 *mfa.APIClient
+	RiskAPIClient                *risk.APIClient
+	VerifyAPIClient              *verify.APIClient
+	Region                       model.RegionMapping
+}
 
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
@@ -89,6 +102,10 @@ func AgreementManagementAPIClient(token *oauth2.Token) (*agreementmanagement.API
 
 func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementmanagement.APIClient, error) {
 
+	if err := c.Validate(); err != nil {
+		return nil, fmt.Errorf("Client validation error: %s", err)
+	}
+
 	if !c.accessTokenObject.Valid() {
 		err := c.getToken(ctx)
 		if err != nil {
@@ -101,7 +118,7 @@ func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementma
 	clientcfg := agreementmanagement.NewConfiguration()
 	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
 
-	if c.AgreementMgmtHostnameOverride != nil && *c.AgreementMgmtHostnameOverride != "" {
+	if checkForValue(c.AgreementMgmtHostnameOverride) {
 		clientcfg.SetDefaultServerIndex(1)
 		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.AgreementMgmtHostnameOverride)
 		if err != nil {
@@ -115,8 +132,12 @@ func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementma
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = agreementmanagement.NewAPIClient(clientcfg)
@@ -147,6 +168,10 @@ func AuthorizeAPIClient(token *oauth2.Token) (*authorize.APIClient, error) {
 
 func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, error) {
 
+	if err := c.Validate(); err != nil {
+		return nil, fmt.Errorf("Client validation error: %s", err)
+	}
+
 	if !c.accessTokenObject.Valid() {
 		err := c.getToken(ctx)
 		if err != nil {
@@ -159,7 +184,7 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 	clientcfg := authorize.NewConfiguration()
 	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
 
-	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
+	if checkForValue(c.APIHostnameOverride) {
 		clientcfg.SetDefaultServerIndex(1)
 		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
 		if err != nil {
@@ -173,8 +198,12 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = authorize.NewAPIClient(clientcfg)
@@ -206,6 +235,10 @@ func CredentialsAPIClient(token *oauth2.Token) (*credentials.APIClient, error) {
 
 func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClient, error) {
 
+	if err := c.Validate(); err != nil {
+		return nil, fmt.Errorf("Client validation error: %s", err)
+	}
+
 	if !c.accessTokenObject.Valid() {
 		err := c.getToken(ctx)
 		if err != nil {
@@ -218,7 +251,7 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 	clientcfg := credentials.NewConfiguration()
 	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
 
-	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
+	if checkForValue(c.APIHostnameOverride) {
 		clientcfg.SetDefaultServerIndex(1)
 		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
 		if err != nil {
@@ -232,8 +265,12 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = credentials.NewAPIClient(clientcfg)
@@ -264,6 +301,10 @@ func ManagementAPIClient(token *oauth2.Token) (*management.APIClient, error) {
 
 func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient, error) {
 
+	if err := c.Validate(); err != nil {
+		return nil, fmt.Errorf("Client validation error: %s", err)
+	}
+
 	if !c.accessTokenObject.Valid() {
 		err := c.getToken(ctx)
 		if err != nil {
@@ -276,7 +317,7 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 	clientcfg := management.NewConfiguration()
 	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
 
-	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
+	if checkForValue(c.APIHostnameOverride) {
 		clientcfg.SetDefaultServerIndex(1)
 		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
 		if err != nil {
@@ -290,8 +331,12 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = management.NewAPIClient(clientcfg)
@@ -322,6 +367,10 @@ func MFAAPIClient(token *oauth2.Token) (*mfa.APIClient, error) {
 
 func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 
+	if err := c.Validate(); err != nil {
+		return nil, fmt.Errorf("Client validation error: %s", err)
+	}
+
 	if !c.accessTokenObject.Valid() {
 		err := c.getToken(ctx)
 		if err != nil {
@@ -334,7 +383,7 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 	clientcfg := mfa.NewConfiguration()
 	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
 
-	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
+	if checkForValue(c.APIHostnameOverride) {
 		clientcfg.SetDefaultServerIndex(1)
 		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
 		if err != nil {
@@ -348,8 +397,12 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = mfa.NewAPIClient(clientcfg)
@@ -380,6 +433,10 @@ func RiskAPIClient(token *oauth2.Token) (*risk.APIClient, error) {
 
 func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 
+	if err := c.Validate(); err != nil {
+		return nil, fmt.Errorf("Client validation error: %s", err)
+	}
+
 	if !c.accessTokenObject.Valid() {
 		err := c.getToken(ctx)
 		if err != nil {
@@ -392,7 +449,7 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 	clientcfg := risk.NewConfiguration()
 	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
 
-	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
+	if checkForValue(c.APIHostnameOverride) {
 		clientcfg.SetDefaultServerIndex(1)
 		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
 		if err != nil {
@@ -406,8 +463,12 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = risk.NewAPIClient(clientcfg)
@@ -438,6 +499,10 @@ func VerifyAPIClient(token *oauth2.Token) (*verify.APIClient, error) {
 
 func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error) {
 
+	if err := c.Validate(); err != nil {
+		return nil, fmt.Errorf("Client validation error: %s", err)
+	}
+
 	if !c.accessTokenObject.Valid() {
 		err := c.getToken(ctx)
 		if err != nil {
@@ -450,7 +515,7 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 	clientcfg := verify.NewConfiguration()
 	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
 
-	if c.APIHostnameOverride != nil && *c.APIHostnameOverride != "" {
+	if checkForValue(c.APIHostnameOverride) {
 		clientcfg.SetDefaultServerIndex(1)
 		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.APIHostnameOverride)
 		if err != nil {
@@ -464,8 +529,12 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = verify.NewAPIClient(clientcfg)
@@ -479,9 +548,9 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 
 func (c *Config) getToken(ctx context.Context) error {
 
-	if c.AccessToken == "" {
+	if !checkForValue(c.AccessToken) {
 
-		if c.ClientID == "" || c.ClientSecret == "" || c.EnvironmentID == "" || c.Region == "" {
+		if !checkForValue(c.ClientID) || !checkForValue(c.ClientSecret) || !checkForValue(c.EnvironmentID) || !checkForValue(c.Region) {
 			return fmt.Errorf("Required parameter missing.  Must provide ClientID, ClientSecret, EnvironmentID and Region.")
 		}
 
@@ -489,19 +558,40 @@ func (c *Config) getToken(ctx context.Context) error {
 
 		//Get URL from SDK
 		authURL := fmt.Sprintf("https://auth.pingone.%s", regionSuffix)
-		if c.AuthHostnameOverride != nil && *c.AuthHostnameOverride != "" {
+		if checkForValue(c.AuthHostnameOverride) {
 			authURL = fmt.Sprintf("https://%s", *c.AuthHostnameOverride)
 		}
 
 		//OAuth 2.0 config for client creds
 		config := clientcredentials.Config{
-			ClientID:     c.ClientID,
-			ClientSecret: c.ClientSecret,
-			TokenURL:     fmt.Sprintf("%s/%s/as/token", authURL, c.EnvironmentID),
+			ClientID:     *c.ClientID,
+			ClientSecret: *c.ClientSecret,
+			TokenURL:     fmt.Sprintf("%s/%s/as/token", authURL, *c.EnvironmentID),
 			AuthStyle:    oauth2.AuthStyleAutoDetect,
 		}
 
 		token, err := processResponse(func() (*oauth2.Token, error) {
+
+			if v := c.ProxyURL; v != nil && *v != "" {
+
+				// Parse the proxy URL
+				proxyURLParsed, err := url.Parse(*v)
+				if err != nil {
+					return nil, fmt.Errorf("Failed to parse proxy URL: %s", err)
+				}
+
+				// Create a new Transport object with the proxy settings
+				transport := &http.Transport{
+					Proxy: http.ProxyURL(proxyURLParsed),
+				}
+
+				// Create a new HTTP client using the custom Transport
+				httpClient := &http.Client{
+					Transport: transport,
+				}
+				ctx = context.WithValue(ctx, oauth2.HTTPClient, httpClient)
+			}
+
 			return config.Token(ctx)
 		})
 		if err != nil {
@@ -514,7 +604,7 @@ func (c *Config) getToken(ctx context.Context) error {
 
 	} else {
 		c.accessTokenObject = &oauth2.Token{
-			AccessToken: c.AccessToken,
+			AccessToken: *c.AccessToken,
 			TokenType:   "Bearer",
 		}
 		return nil
