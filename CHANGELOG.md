@@ -1,6 +1,14 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.2.0 => v0.2.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.2.0 => v0.2.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.2.0 => v0.2.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.23.0 => v0.24.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.14.0 => v0.15.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.8.0 => v0.8.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.2.0 => v0.2.1
+    * **Note** bump `golang.org/x/oauth2` v0.9.0 => v0.10.0
     * **Enhancement** Added ability to override the useragent at the point of client init. [#218](https://github.com/patrickcping/pingone-go-sdk-v2/pull/218)
     * **Enhancement** Add environment parameter defaults to client init. [#222](https://github.com/patrickcping/pingone-go-sdk-v2/pull/222)
     * **Enhancement** Add parameter to explicitly define http proxy support without the standard environment variables. [#223](https://github.com/patrickcping/pingone-go-sdk-v2/pull/223)
