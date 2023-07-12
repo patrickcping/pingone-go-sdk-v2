@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
+	"net/url"
 	"regexp"
 	"time"
 
@@ -130,8 +132,12 @@ func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementma
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = agreementmanagement.NewAPIClient(clientcfg)
@@ -192,8 +198,12 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = authorize.NewAPIClient(clientcfg)
@@ -255,8 +265,12 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = credentials.NewAPIClient(clientcfg)
@@ -317,8 +331,12 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = management.NewAPIClient(clientcfg)
@@ -379,8 +397,12 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = mfa.NewAPIClient(clientcfg)
@@ -441,8 +463,12 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = risk.NewAPIClient(clientcfg)
@@ -503,8 +529,12 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 		}
 	}
 
-	if c.UserAgentOverride != nil && *c.UserAgentOverride != "" {
+	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if checkForValue(c.ProxyURL) {
+		clientcfg.ProxyURL = c.ProxyURL
 	}
 
 	client = verify.NewAPIClient(clientcfg)
@@ -541,6 +571,27 @@ func (c *Config) getToken(ctx context.Context) error {
 		}
 
 		token, err := processResponse(func() (*oauth2.Token, error) {
+
+			if v := c.ProxyURL; v != nil && *v != "" {
+
+				// Parse the proxy URL
+				proxyURLParsed, err := url.Parse(*v)
+				if err != nil {
+					return nil, fmt.Errorf("Failed to parse proxy URL: %s", err)
+				}
+
+				// Create a new Transport object with the proxy settings
+				transport := &http.Transport{
+					Proxy: http.ProxyURL(proxyURLParsed),
+				}
+
+				// Create a new HTTP client using the custom Transport
+				httpClient := &http.Client{
+					Transport: transport,
+				}
+				ctx = context.WithValue(ctx, oauth2.HTTPClient, httpClient)
+			}
+
 			return config.Token(ctx)
 		})
 		if err != nil {

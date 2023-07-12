@@ -53,7 +53,27 @@ type service struct {
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
 	if cfg.HTTPClient == nil {
-		cfg.HTTPClient = http.DefaultClient
+
+		if v := cfg.ProxyURL; v != nil && *v != "" {
+			// Parse the proxy URL
+			proxyURLParsed, err := url.Parse(*v)
+			if err != nil {
+				fmt.Println("Failed to parse proxy URL:", err)
+				return nil
+			}
+
+			// Create a new Transport object with the proxy settings
+			transport := &http.Transport{
+				Proxy: http.ProxyURL(proxyURLParsed),
+			}
+
+			// Create a new HTTP client using the custom Transport
+			cfg.HTTPClient = &http.Client{
+				Transport: transport,
+			}
+		} else {
+			cfg.HTTPClient = http.DefaultClient
+		}
 	}
 
 	c := &APIClient{}
