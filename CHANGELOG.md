@@ -1,8 +1,9 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.0
+    * **Enhancement** Added ability to override the useragent at the point of client init. [#218](https://github.com/patrickcping/pingone-go-sdk-v2/pull/218)
+    * **Enhancement** Add environment parameter defaults to client init. [#222](https://github.com/patrickcping/pingone-go-sdk-v2/pull/222)
     * **Enhancement** Add parameter to explicitly define http proxy support without the standard environment variables. [#223](https://github.com/patrickcping/pingone-go-sdk-v2/pull/223)
-    * **Enhancement** Added ability to override the useragent at the point of client init.
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.2.1](./agreementmanagement/CHANGELOG.md)
     * **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
     * **Note** Allow user-defined values for the `UserAgent` configuration parameter. [#217](https://github.com/patrickcping/pingone-go-sdk-v2/pull/217)
