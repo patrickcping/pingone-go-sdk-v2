@@ -20,6 +20,8 @@ var _ MappedNullable = &UserLifecycle{}
 // UserLifecycle struct for UserLifecycle
 type UserLifecycle struct {
 	Status *EnumUserLifecycleStatus `json:"status,omitempty"`
+	// Used when importing a user and the lifecycle.status is set to VERIFICATION_REQUIRED. If this property is set to true, no verification email is sent to the user. If this property is omitted or set to false, a verification email is sent automatically to the user.
+	SuppressVerificationCode *bool `json:"suppressVerificationCode,omitempty"`
 }
 
 // NewUserLifecycle instantiates a new UserLifecycle object
@@ -71,6 +73,38 @@ func (o *UserLifecycle) SetStatus(v EnumUserLifecycleStatus) {
 	o.Status = &v
 }
 
+// GetSuppressVerificationCode returns the SuppressVerificationCode field value if set, zero value otherwise.
+func (o *UserLifecycle) GetSuppressVerificationCode() bool {
+	if o == nil || IsNil(o.SuppressVerificationCode) {
+		var ret bool
+		return ret
+	}
+	return *o.SuppressVerificationCode
+}
+
+// GetSuppressVerificationCodeOk returns a tuple with the SuppressVerificationCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserLifecycle) GetSuppressVerificationCodeOk() (*bool, bool) {
+	if o == nil || IsNil(o.SuppressVerificationCode) {
+		return nil, false
+	}
+	return o.SuppressVerificationCode, true
+}
+
+// HasSuppressVerificationCode returns a boolean if a field has been set.
+func (o *UserLifecycle) HasSuppressVerificationCode() bool {
+	if o != nil && !IsNil(o.SuppressVerificationCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetSuppressVerificationCode gets a reference to the given bool and assigns it to the SuppressVerificationCode field.
+func (o *UserLifecycle) SetSuppressVerificationCode(v bool) {
+	o.SuppressVerificationCode = &v
+}
+
 func (o UserLifecycle) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -83,6 +117,9 @@ func (o UserLifecycle) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.SuppressVerificationCode) {
+		toSerialize["suppressVerificationCode"] = o.SuppressVerificationCode
 	}
 	return toSerialize, nil
 }
