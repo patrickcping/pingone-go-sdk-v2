@@ -18,6 +18,22 @@ func TestAccAPIClient_Success(t *testing.T) {
 	environmentID := os.Getenv("PINGONE_ENVIRONMENT_ID_TESTACC")
 	region := os.Getenv("PINGONE_REGION_TESTACC")
 
+	if err := os.Setenv("PINGONE_API_ACCESS_TOKEN", ""); err != nil {
+		t.Fatalf("Client not successfully retrieved: %s", err)
+	}
+
+	if err := os.Setenv("PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME", ""); err != nil {
+		t.Fatalf("Client not successfully retrieved: %s", err)
+	}
+
+	if err := os.Setenv("PINGONE_API_SERVICE_HOSTNAME", ""); err != nil {
+		t.Fatalf("Client not successfully retrieved: %s", err)
+	}
+
+	if err := os.Setenv("PINGONE_AUTH_SERVICE_HOSTNAME", ""); err != nil {
+		t.Fatalf("Client not successfully retrieved: %s", err)
+	}
+
 	config := &Config{
 		ClientID:      &clientID,
 		ClientSecret:  &clientSecret,
@@ -28,7 +44,7 @@ func TestAccAPIClient_Success(t *testing.T) {
 	client, err := config.APIClient(ctx)
 
 	if err != nil {
-		t.Fatalf("Client not successfully retrieved")
+		t.Fatalf("Client not successfully retrieved: %s", err)
 	}
 
 	if client.AuthorizeAPIClient == nil {
