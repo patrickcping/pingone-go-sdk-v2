@@ -27,7 +27,7 @@ type Config struct {
 }
 
 var p1ResourceIDRegexp = regexp.MustCompile(`^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$`)
-var isURLWithHTTPS = regexp.MustCompile(`^https:\/\/(?:[\w-]+\.)+[a-z]{2,}(?:\/[\w-]+)*(?:\/[\w.-]+)?\/?(?:\?.*)?$`)
+var isHostname = regexp.MustCompile(`^(?:[\w-]+\.)+[a-z]{2,}(?:\/[\w-]+)*(?:\/[\w.-]+)?\/?(?:\?.*)?$`)
 
 func (c *Config) validateAccessToken() error {
 	if !checkForValue(c.AccessToken) {
@@ -38,6 +38,7 @@ func (c *Config) validateAccessToken() error {
 
 	return nil
 }
+
 func (c *Config) validateAgreementMgmtHostnameOverride() error {
 	if !checkForValue(c.AgreementMgmtHostnameOverride) {
 		if v := envVar("PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME"); v != "" {
@@ -46,8 +47,8 @@ func (c *Config) validateAgreementMgmtHostnameOverride() error {
 	}
 
 	if checkForValue(c.AgreementMgmtHostnameOverride) {
-		if !isURLWithHTTPS.MatchString(*c.AgreementMgmtHostnameOverride) {
-			return fmt.Errorf("Invalid parameter format.  Expected URL with https scheme, got: %s", *c.AgreementMgmtHostnameOverride)
+		if !isHostname.MatchString(*c.AgreementMgmtHostnameOverride) {
+			return fmt.Errorf("Invalid parameter format.  Expected hostname format, got: %s", *c.AgreementMgmtHostnameOverride)
 		}
 	}
 
@@ -62,8 +63,8 @@ func (c *Config) validateAPIHostnameOverride() error {
 	}
 
 	if checkForValue(c.APIHostnameOverride) {
-		if !isURLWithHTTPS.MatchString(*c.APIHostnameOverride) {
-			return fmt.Errorf("Invalid parameter format.  Expected URL with https scheme, got: %s", *c.APIHostnameOverride)
+		if !isHostname.MatchString(*c.APIHostnameOverride) {
+			return fmt.Errorf("Invalid parameter format.  Expected hostname format, got: %s", *c.APIHostnameOverride)
 		}
 	}
 
@@ -78,8 +79,8 @@ func (c *Config) validateAuthHostnameOverride() error {
 	}
 
 	if checkForValue(c.AuthHostnameOverride) {
-		if !isURLWithHTTPS.MatchString(*c.AuthHostnameOverride) {
-			return fmt.Errorf("Invalid parameter format.  Expected URL with https scheme, got: %s", *c.AuthHostnameOverride)
+		if !isHostname.MatchString(*c.AuthHostnameOverride) {
+			return fmt.Errorf("Invalid parameter format.  Expected hostname format, got: %s", *c.AuthHostnameOverride)
 		}
 	}
 

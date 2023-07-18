@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.1
+    * **Bug** Fixed service hostname override client parameter validation that reported an invalid https address.
+
 # Release (2023-07-12)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.0
