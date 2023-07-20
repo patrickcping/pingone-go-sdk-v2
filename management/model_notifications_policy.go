@@ -20,6 +20,7 @@ var _ MappedNullable = &NotificationsPolicy{}
 
 // NotificationsPolicy struct for NotificationsPolicy
 type NotificationsPolicy struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The time the resource was last updated.
@@ -56,6 +57,38 @@ func NewNotificationsPolicyWithDefaults() *NotificationsPolicy {
 	var default_ bool = false
 	this.Default = &default_
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *NotificationsPolicy) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *NotificationsPolicy) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *NotificationsPolicy) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -276,6 +309,9 @@ func (o NotificationsPolicy) MarshalJSON() ([]byte, error) {
 
 func (o NotificationsPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: createdAt is readOnly
 	// skip: updatedAt is readOnly
 	// skip: id is readOnly

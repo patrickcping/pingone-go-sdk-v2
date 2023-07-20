@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Host** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server. | [optional] 
 **Port** | Pointer to **int32** | An integer that specifies the port used by the organization&#39;s SMTP server to send emails (default &#x60;465&#x60;). Note that the protocol used depends upon the port specified. If you specify port &#x60;25&#x60;, &#x60;587&#x60;, or &#x60;2525&#x60;, SMTP with &#x60;STARTTLS&#x60; is used. Otherwise, &#x60;SMTPS&#x60; is used. | [optional] [default to 465]
 **Protocol** | Pointer to **string** | A string that specifies the organization&#39;s SMTP server&#39;s protocol. | [optional] [readonly] 
@@ -31,6 +32,31 @@ will change when the set of required properties is changed
 NewNotificationsSettingsEmailDeliverySettingsWithDefaults instantiates a new NotificationsSettingsEmailDeliverySettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *NotificationsSettingsEmailDeliverySettings) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *NotificationsSettingsEmailDeliverySettings) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *NotificationsSettingsEmailDeliverySettings) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *NotificationsSettingsEmailDeliverySettings) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetHost
 

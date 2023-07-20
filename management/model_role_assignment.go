@@ -19,6 +19,7 @@ var _ MappedNullable = &RoleAssignment{}
 
 // RoleAssignment struct for RoleAssignment
 type RoleAssignment struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Gateway *GatewayInstanceGateway `json:"gateway,omitempty"`
 	// A string that specifies the user role assignment ID.
@@ -46,6 +47,38 @@ func NewRoleAssignment(role RoleAssignmentRole, scope RoleAssignmentScope) *Role
 func NewRoleAssignmentWithDefaults() *RoleAssignment {
 	this := RoleAssignment{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *RoleAssignment) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleAssignment) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *RoleAssignment) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *RoleAssignment) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -234,6 +267,9 @@ func (o RoleAssignment) MarshalJSON() ([]byte, error) {
 
 func (o RoleAssignment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}

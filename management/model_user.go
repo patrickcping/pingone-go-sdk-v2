@@ -20,6 +20,7 @@ var _ MappedNullable = &User{}
 
 // User struct for User
 type User struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Account *UserAccount `json:"account,omitempty"`
 	Address *UserAddress `json:"address,omitempty"`
 	// The time the resource was created.
@@ -88,6 +89,38 @@ func NewUser(email string, username string) *User {
 func NewUserWithDefaults() *User {
 	this := User{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *User) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *User) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *User) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *User) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAccount returns the Account field value if set, zero value otherwise.
@@ -1044,6 +1077,9 @@ func (o User) MarshalJSON() ([]byte, error) {
 
 func (o User) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Account) {
 		toSerialize["account"] = o.Account
 	}

@@ -19,6 +19,7 @@ var _ MappedNullable = &SchemaAttribute{}
 
 // SchemaAttribute struct for SchemaAttribute
 type SchemaAttribute struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies an optional property that specifies the description of the attribute. If provided, it must not be an empty string. Valid characters consists of any Unicode letter, mark (for example, accent or umlaut), numeric character, punctuation character, or space.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies an optional property that specifies the display name of the attribute such as 'T-shirt size’. If provided, it must not be an empty string. Valid characters consist of any Unicode letter, mark (for example, accent or umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
@@ -65,6 +66,38 @@ func NewSchemaAttribute(enabled bool, name string, type_ EnumSchemaAttributeType
 func NewSchemaAttributeWithDefaults() *SchemaAttribute {
 	this := SchemaAttribute{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *SchemaAttribute) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SchemaAttribute) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *SchemaAttribute) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *SchemaAttribute) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -565,6 +598,9 @@ func (o SchemaAttribute) MarshalJSON() ([]byte, error) {
 
 func (o SchemaAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

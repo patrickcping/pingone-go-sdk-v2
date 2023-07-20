@@ -20,6 +20,7 @@ var _ MappedNullable = &KeyRotationPolicy{}
 
 // KeyRotationPolicy struct for KeyRotationPolicy
 type KeyRotationPolicy struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Algorithm EnumKeyRotationPolicyAlgorithm `json:"algorithm"`
 	// The `kid` (key identifier) of the `KrpKey` designated as `CURRENT`.
 	CurrentKeyId *string `json:"currentKeyId,omitempty"`
@@ -73,6 +74,38 @@ func NewKeyRotationPolicyWithDefaults() *KeyRotationPolicy {
 	var validityPeriod int32 = 365
 	this.ValidityPeriod = &validityPeriod
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *KeyRotationPolicy) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KeyRotationPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *KeyRotationPolicy) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *KeyRotationPolicy) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAlgorithm returns the Algorithm field value
@@ -453,6 +486,9 @@ func (o KeyRotationPolicy) MarshalJSON() ([]byte, error) {
 
 func (o KeyRotationPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["algorithm"] = o.Algorithm
 	// skip: currentKeyId is readOnly
 	toSerialize["dn"] = o.Dn

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **ConsentsAggregatedAt** | Pointer to **time.Time** | The time the consent count metric was last updated. This value is typically updated once every 24 hours. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the agreement. | [optional] 
 **Enabled** | **bool** | A boolean that specifies the current enabled state of the agreement. This is a required property. The agreement must support the default language to be enabled. It cannot be disabled if it is referenced by a sign-on action. When an agreement is disabled, it is not used anywhere it is configured across PingOne. | 
@@ -32,6 +33,31 @@ will change when the set of required properties is changed
 NewAgreementWithDefaults instantiates a new Agreement object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *Agreement) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *Agreement) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *Agreement) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *Agreement) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetConsentsAggregatedAt
 

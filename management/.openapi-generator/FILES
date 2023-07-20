@@ -424,6 +424,9 @@ docs/LicenseUsers.md
 docs/LicenseVerify.md
 docs/LicensesApi.md
 docs/LinkedAccountsApi.md
+docs/LinksHATEOAS.md
+docs/LinksHATEOASNext.md
+docs/LinksHATEOASSelf.md
 docs/MFAPairingKeysApi.md
 docs/NotificationsPoliciesApi.md
 docs/NotificationsPolicy.md
@@ -912,6 +915,9 @@ model_license_replaced_by_license.go
 model_license_replaces_license.go
 model_license_users.go
 model_license_verify.go
+model_links_hateoas.go
+model_links_hateoas_next.go
+model_links_hateoas_self.go
 model_notifications_policy.go
 model_notifications_policy_country_limit.go
 model_notifications_policy_quotas_inner.go

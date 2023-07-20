@@ -20,6 +20,7 @@ var _ MappedNullable = &LanguageLocalizationStatus{}
 
 // LanguageLocalizationStatus struct for LanguageLocalizationStatus
 type LanguageLocalizationStatus struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The time the language localization status resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -50,6 +51,38 @@ func NewLanguageLocalizationStatus(service string) *LanguageLocalizationStatus {
 func NewLanguageLocalizationStatusWithDefaults() *LanguageLocalizationStatus {
 	this := LanguageLocalizationStatus{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *LanguageLocalizationStatus) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LanguageLocalizationStatus) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *LanguageLocalizationStatus) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *LanguageLocalizationStatus) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -310,6 +343,9 @@ func (o LanguageLocalizationStatus) MarshalJSON() ([]byte, error) {
 
 func (o LanguageLocalizationStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: createdAt is readOnly
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment

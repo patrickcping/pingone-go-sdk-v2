@@ -19,6 +19,7 @@ var _ MappedNullable = &NotificationsSettingsEmailDeliverySettings{}
 
 // NotificationsSettingsEmailDeliverySettings struct for NotificationsSettingsEmailDeliverySettings
 type NotificationsSettingsEmailDeliverySettings struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies the organization's SMTP server.
 	Host *string `json:"host,omitempty"`
 	// An integer that specifies the port used by the organization's SMTP server to send emails (default `465`). Note that the protocol used depends upon the port specified. If you specify port `25`, `587`, or `2525`, SMTP with `STARTTLS` is used. Otherwise, `SMTPS` is used.
@@ -53,6 +54,38 @@ func NewNotificationsSettingsEmailDeliverySettingsWithDefaults() *NotificationsS
 	var port int32 = 465
 	this.Port = &port
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *NotificationsSettingsEmailDeliverySettings) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettingsEmailDeliverySettings) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *NotificationsSettingsEmailDeliverySettings) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *NotificationsSettingsEmailDeliverySettings) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -321,6 +354,9 @@ func (o NotificationsSettingsEmailDeliverySettings) MarshalJSON() ([]byte, error
 
 func (o NotificationsSettingsEmailDeliverySettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
 	}

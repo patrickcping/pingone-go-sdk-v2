@@ -19,7 +19,7 @@ var _ MappedNullable = &Gateway{}
 
 // Gateway struct for Gateway
 type Gateway struct {
-	Links map[string]interface{} `json:"_links,omitempty"`
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies the instance ID of the gateway. The gateway instance ID is created by the gateway when it starts up.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -57,19 +57,19 @@ func NewGatewayWithDefaults() *Gateway {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Gateway) GetLinks() map[string]interface{} {
+func (o *Gateway) GetLinks() LinksHATEOAS {
 	if o == nil || IsNil(o.Links) {
-		var ret map[string]interface{}
+		var ret LinksHATEOAS
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Gateway) GetLinksOk() (map[string]interface{}, bool) {
+func (o *Gateway) GetLinksOk() (*LinksHATEOAS, bool) {
 	if o == nil || IsNil(o.Links) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Links, true
 }
@@ -83,9 +83,9 @@ func (o *Gateway) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
-func (o *Gateway) SetLinks(v map[string]interface{}) {
-	o.Links = v
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *Gateway) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
