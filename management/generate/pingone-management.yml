@@ -5880,6 +5880,11 @@ paths:
           schema:
             type: integer
           description: Adding a paging value to limit the number of resources displayed per page
+        - name: cursor
+          in: query
+          schema:
+            type: string
+          description: Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload.
         - name: filter
           in: query
           schema:
@@ -10911,6 +10916,11 @@ paths:
           schema:
             type: integer
           example: '10'
+        - name: cursor
+          in: query
+          schema:
+            type: string
+          description: Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload.
         - name: environmentID
           in: path
           schema:
@@ -14670,6 +14680,11 @@ paths:
             type: string
           description: Adding a SCIM filter for a population ID or population name to display only those resources associated with the specified population. Only the id and name parameters are supported
           example: id eq "60971d3b-cc5a-4601-9c44-2be541f91bf1"
+        - name: cursor
+          in: query
+          schema:
+            type: string
+          description: Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload.
       responses:
         '400':
           $ref: '#/components/responses/400'
@@ -16829,6 +16844,11 @@ paths:
           schema:
             type: integer
           example: '100'
+        - name: cursor
+          in: query
+          schema:
+            type: string
+          description: Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload.
         - name: environmentID
           in: path
           schema:
@@ -17338,6 +17358,11 @@ paths:
           schema:
             type: integer
           example: '100'
+        - name: cursor
+          in: query
+          schema:
+            type: string
+          description: Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload.
         - name: filter
           in: query
           schema:

@@ -397,12 +397,19 @@ type ApiReadAllEnvironmentsRequest struct {
 	ctx context.Context
 	ApiService *EnvironmentsApiService
 	limit *int32
+	cursor *string
 	filter *string
 }
 
 // Adding a paging value to limit the number of resources displayed per page
 func (r ApiReadAllEnvironmentsRequest) Limit(limit int32) ApiReadAllEnvironmentsRequest {
 	r.limit = &limit
+	return r
+}
+
+// Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload.
+func (r ApiReadAllEnvironmentsRequest) Cursor(cursor string) ApiReadAllEnvironmentsRequest {
+	r.cursor = &cursor
 	return r
 }
 
@@ -468,6 +475,9 @@ func (a *EnvironmentsApiService) internalReadAllEnvironmentsExecute(r ApiReadAll
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	}
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")

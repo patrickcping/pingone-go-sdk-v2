@@ -236,6 +236,7 @@ type ApiReadAllGroupMembershipsForUserRequest struct {
 	userID string
 	expand *string
 	limit *int32
+	cursor *string
 	filter *string
 }
 
@@ -246,6 +247,12 @@ func (r ApiReadAllGroupMembershipsForUserRequest) Expand(expand string) ApiReadA
 
 func (r ApiReadAllGroupMembershipsForUserRequest) Limit(limit int32) ApiReadAllGroupMembershipsForUserRequest {
 	r.limit = &limit
+	return r
+}
+
+// Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload.
+func (r ApiReadAllGroupMembershipsForUserRequest) Cursor(cursor string) ApiReadAllGroupMembershipsForUserRequest {
+	r.cursor = &cursor
 	return r
 }
 
@@ -319,6 +326,9 @@ func (a *GroupMembershipApiService) internalReadAllGroupMembershipsForUserExecut
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	}
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")

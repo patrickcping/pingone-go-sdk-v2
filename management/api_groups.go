@@ -793,6 +793,7 @@ type ApiReadAllGroupsRequest struct {
 	environmentID string
 	filter *string
 	limit *int32
+	cursor *string
 }
 
 func (r ApiReadAllGroupsRequest) Filter(filter string) ApiReadAllGroupsRequest {
@@ -802,6 +803,12 @@ func (r ApiReadAllGroupsRequest) Filter(filter string) ApiReadAllGroupsRequest {
 
 func (r ApiReadAllGroupsRequest) Limit(limit int32) ApiReadAllGroupsRequest {
 	r.limit = &limit
+	return r
+}
+
+// Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload.
+func (r ApiReadAllGroupsRequest) Cursor(cursor string) ApiReadAllGroupsRequest {
+	r.cursor = &cursor
 	return r
 }
 
@@ -867,6 +874,9 @@ func (a *GroupsApiService) internalReadAllGroupsExecute(r ApiReadAllGroupsReques
 	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
+	}
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
