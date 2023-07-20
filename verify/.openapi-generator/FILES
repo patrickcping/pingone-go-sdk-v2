@@ -27,6 +27,11 @@ docs/TransactionConfigurationDataCollectionTimeout.md
 docs/TransactionConfigurationTimeout.md
 docs/VerifyPoliciesApi.md
 docs/VerifyPolicy.md
+docs/VoiceConfiguration.md
+docs/VoiceConfigurationReferenceData.md
+docs/VoiceConfigurationTextDependent.md
+docs/VoiceConfigurationTextDependentPhrase.md
+docs/VoiceConfigurationThreshold.md
 go.mod
 go.sum
 model_entity_array.go
@@ -53,5 +58,10 @@ model_transaction_configuration_data_collection.go
 model_transaction_configuration_data_collection_timeout.go
 model_transaction_configuration_timeout.go
 model_verify_policy.go
+model_voice_configuration.go
+model_voice_configuration_reference_data.go
+model_voice_configuration_text_dependent.go
+model_voice_configuration_text_dependent_phrase.go
+model_voice_configuration_threshold.go
 response.go
 utils.go

@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: The PingOne Platform API covering the PingOne Verify service
   title: PingOne Platform API - PingOne Verify
-  version: 2023-06-29
+  version: 2023-07-20
 externalDocs:
   description: PingOne Platform API Reference - PingOne Verify APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-verify
@@ -499,7 +499,22 @@ components:
         size: 7.061401241503109
         _embedded:
           verifyPolicies:
-          - liveness:
+          - voice:
+              verify: null
+              enrollment: true
+              textDependent:
+                samples: null
+                phrase:
+                  id: id
+              comparison:
+                threshold: null
+              liveness:
+                threshold: null
+              referenceData:
+                retainOriginalRecordings: true
+                updateOnReenrollment: true
+                updateOnVerification: true
+            liveness:
               verify: null
               threshold: null
             description: description
@@ -558,7 +573,22 @@ components:
             governmentId:
               verify: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - liveness:
+          - voice:
+              verify: null
+              enrollment: true
+              textDependent:
+                samples: null
+                phrase:
+                  id: id
+              comparison:
+                threshold: null
+              liveness:
+                threshold: null
+              referenceData:
+                retainOriginalRecordings: true
+                updateOnReenrollment: true
+                updateOnVerification: true
+            liveness:
               verify: null
               threshold: null
             description: description
@@ -735,8 +765,103 @@ components:
         dataCollectionOnly:
           type: boolean
       type: object
+    VoiceConfiguration:
+      example:
+        verify: null
+        enrollment: true
+        textDependent:
+          samples: null
+          phrase:
+            id: id
+        comparison:
+          threshold: null
+        liveness:
+          threshold: null
+        referenceData:
+          retainOriginalRecordings: true
+          updateOnReenrollment: true
+          updateOnVerification: true
+      properties:
+        verify:
+          $ref: '#/components/schemas/EnumVerify'
+        enrollment:
+          type: boolean
+        textDependent:
+          $ref: '#/components/schemas/VoiceConfiguration_textDependent'
+        comparison:
+          $ref: '#/components/schemas/VoiceConfiguration_threshold'
+        liveness:
+          $ref: '#/components/schemas/VoiceConfiguration_threshold'
+        referenceData:
+          $ref: '#/components/schemas/VoiceConfiguration_referenceData'
+      required:
+      - comparison
+      - enrollment
+      - liveness
+      - verify
+      type: object
+    VoiceConfiguration_referenceData:
+      example:
+        retainOriginalRecordings: true
+        updateOnReenrollment: true
+        updateOnVerification: true
+      properties:
+        retainOriginalRecordings:
+          type: boolean
+        updateOnReenrollment:
+          type: boolean
+        updateOnVerification:
+          type: boolean
+      type: object
+    VoiceConfiguration_threshold:
+      example:
+        threshold: null
+      properties:
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - threshold
+      type: object
+    VoiceConfiguration_textDependent_phrase:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      required:
+      - id
+      type: object
+    VoiceConfiguration_textDependent:
+      example:
+        samples: null
+        phrase:
+          id: id
+      properties:
+        samples:
+          type: integer
+        phrase:
+          $ref: '#/components/schemas/VoiceConfiguration_textDependent_phrase'
+      required:
+      - phrase
+      - samples
+      type: object
     VerifyPolicy:
       example:
+        voice:
+          verify: null
+          enrollment: true
+          textDependent:
+            samples: null
+            phrase:
+              id: id
+          comparison:
+            threshold: null
+          liveness:
+            threshold: null
+          referenceData:
+            retainOriginalRecordings: true
+            updateOnReenrollment: true
+            updateOnVerification: true
         liveness:
           verify: null
           threshold: null
@@ -824,6 +949,8 @@ components:
           $ref: '#/components/schemas/OTPDeviceConfiguration'
         transaction:
           $ref: '#/components/schemas/TransactionConfiguration'
+        voice:
+          $ref: '#/components/schemas/VoiceConfiguration'
         createdAt:
           format: date-time
           readOnly: true
@@ -939,7 +1066,22 @@ components:
     EntityArray__embedded:
       example:
         verifyPolicies:
-        - liveness:
+        - voice:
+            verify: null
+            enrollment: true
+            textDependent:
+              samples: null
+              phrase:
+                id: id
+            comparison:
+              threshold: null
+            liveness:
+              threshold: null
+            referenceData:
+              retainOriginalRecordings: true
+              updateOnReenrollment: true
+              updateOnVerification: true
+          liveness:
             verify: null
             threshold: null
           description: description
@@ -998,7 +1140,22 @@ components:
           governmentId:
             verify: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - liveness:
+        - voice:
+            verify: null
+            enrollment: true
+            textDependent:
+              samples: null
+              phrase:
+                id: id
+            comparison:
+              threshold: null
+            liveness:
+              threshold: null
+            referenceData:
+              retainOriginalRecordings: true
+              updateOnReenrollment: true
+              updateOnVerification: true
+          liveness:
             verify: null
             threshold: null
           description: description
