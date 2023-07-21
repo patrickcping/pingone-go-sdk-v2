@@ -1,6 +1,8 @@
 README.md
 api/openapi.yaml
 api_verify_policies.go
+api_voice_phrase_contents.go
+api_voice_phrases.go
 configuration.go
 docs/EntityArray.md
 docs/EntityArrayEmbedded.md
@@ -32,6 +34,11 @@ docs/VoiceConfigurationReferenceData.md
 docs/VoiceConfigurationTextDependent.md
 docs/VoiceConfigurationTextDependentPhrase.md
 docs/VoiceConfigurationThreshold.md
+docs/VoicePhrase.md
+docs/VoicePhraseContents.md
+docs/VoicePhraseContentsApi.md
+docs/VoicePhraseContentsVoicePhrase.md
+docs/VoicePhrasesApi.md
 go.mod
 go.sum
 model_entity_array.go
@@ -63,5 +70,8 @@ model_voice_configuration_reference_data.go
 model_voice_configuration_text_dependent.go
 model_voice_configuration_text_dependent_phrase.go
 model_voice_configuration_threshold.go
+model_voice_phrase.go
+model_voice_phrase_contents.go
+model_voice_phrase_contents_voice_phrase.go
 response.go
 utils.go

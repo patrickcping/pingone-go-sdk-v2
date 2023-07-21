@@ -952,8 +952,8 @@ paths:
     get:
       tags:
       - Voice Phrases
-      summary: READ All Voice Phrases
-      operationId: readAllVoicePhrases
+      summary: READ All Voice Phrase Contents
+      operationId: readAllVoicePhraseContents
       parameters:
         - name: environmentID
           in: path
@@ -984,8 +984,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EntityArray'  
-
-
   /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}:
     get:
       tags:
