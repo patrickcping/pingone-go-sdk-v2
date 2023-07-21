@@ -42,7 +42,9 @@ type APIClient struct {
 
 	// API Services
 
-	VerifyPoliciesApi *VerifyPoliciesApiService
+	VerifyPoliciesApi      *VerifyPoliciesApiService
+	VoicePhrasesApi        *VoicePhrasesApiService
+	VoicePhraseContentsApi *VoicePhraseContentsApiService
 }
 
 type service struct {
@@ -82,6 +84,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.VerifyPoliciesApi = (*VerifyPoliciesApiService)(&c.common)
+	c.VoicePhrasesApi = (*VoicePhrasesApiService)(&c.common)
+	c.VoicePhraseContentsApi = (*VoicePhraseContentsApiService)(&c.common)
 
 	return c
 }
