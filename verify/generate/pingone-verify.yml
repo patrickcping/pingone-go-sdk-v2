@@ -49,7 +49,11 @@ components:
             voicePhrases:
               type: array
               items:
-                $ref: '#/components/schemas/VoicePhrases'
+                $ref: '#/components/schemas/VoicePhrase'
+            contents:
+              type: array
+              items:
+                $ref: '#/components/schemas/VoicePhraseContents'                
         size:
           type: number
     EnumTimeUnit:
@@ -341,7 +345,7 @@ components:
       - samples
       - phrase
       type: object 
-    VoicePhrases:
+    VoicePhrase:
       properties:
         id:
           type: string
@@ -730,9 +734,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VoicePhrases'
+              $ref: '#/components/schemas/VoicePhrase'
             example:
-              displayName: Example Voice Phrase
+              displayName: 'Example Voice Phrase'
       parameters:
         - name: environmentID
           in: path
@@ -759,7 +763,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VoicePhrases'
+                $ref: '#/components/schemas/VoicePhrase'
     get:
       tags:
       - Voice Phrases
@@ -825,7 +829,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VoicePhrases'
+                $ref: '#/components/schemas/VoicePhrase'
     put:
       tags:
       - Voice Phrases
@@ -835,7 +839,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VoicePhrases'
+              $ref: '#/components/schemas/VoicePhrase'
             example:
               displayName: Voice Phrase Name
       parameters:
@@ -867,7 +871,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VoicePhrases'
+                $ref: '#/components/schemas/VoicePhrase'
     delete:
       tags:
       - Voice Phrases
@@ -899,4 +903,211 @@ paths:
           $ref: '#/components/responses/500'
         '204':
           description: Successful response
+  /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents:
+    post:
+      tags:
+      - Voice Phrase Contents
+      summary: CREATE Voice Phrase Content
+      operationId: createVoicePhraseContent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoicePhraseContents'
+            example:
+              locale: en
+              content: 'Design brilliant journeys to any digital desintation.'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: voicePhraseID
+          in: path
+          schema:
+            type: string
+          required: true          
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhraseContents'
+    get:
+      tags:
+      - Voice Phrases
+      summary: READ All Voice Phrases
+      operationId: readAllVoicePhrases
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: voicePhraseID
+          in: path
+          schema:
+            type: string
+          required: true             
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'  
 
+
+  /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}:
+    get:
+      tags:
+      - Voice Phrase Contents
+      summary: READ One Voice Phrase Content
+      operationId: readOneVoicePhraseContent
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: voicePhraseID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: voiceContentsID
+          in: path
+          schema:
+            type: string
+          required: true          
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhraseContents'
+    put:
+      tags:
+      - Voice Phrase Contents
+      summary: UPDATE Voice Phrase Content
+      operationId: updateVoicePhraseContent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoicePhraseContents'
+            example:
+              locale: en
+              content: 'Brilliant journeys to any digital destination.'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: voicePhraseID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: voiceContentsID
+          in: path
+          schema:
+            type: string
+          required: true               
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhraseContents'
+    delete:
+      tags:
+      - Voice Phrase Contents
+      summary: Delete Voice Phrase Content
+      operationId: deleteVoicePhraseContent
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: voicePhraseID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: voiceContentsID
+          in: path
+          schema:
+            type: string
+          required: true          
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '204':
+          description: Successful response
