@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Application** | Pointer to [**CredentialDigitalWalletApplication**](CredentialDigitalWalletApplication.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential digital wallet was created. | [optional] [readonly] 
 **DigitalWalletApplication** | Pointer to [**CredentialDigitalWalletDigitalWalletApplication**](CredentialDigitalWalletDigitalWalletApplication.md) |  | [optional] 
@@ -33,6 +34,31 @@ will change when the set of required properties is changed
 NewCredentialDigitalWalletWithDefaults instantiates a new CredentialDigitalWallet object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *CredentialDigitalWallet) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *CredentialDigitalWallet) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *CredentialDigitalWallet) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *CredentialDigitalWallet) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetApplication
 

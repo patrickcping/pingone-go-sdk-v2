@@ -19,6 +19,7 @@ var _ MappedNullable = &TemplateContentVoice{}
 
 // TemplateContentVoice struct for TemplateContentVoice
 type TemplateContentVoice struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The template id.
 	Id *string `json:"id,omitempty"`
 	// The time the resource was created.
@@ -56,6 +57,38 @@ func NewTemplateContentVoice(locale string, deliveryMethod EnumTemplateContentDe
 func NewTemplateContentVoiceWithDefaults() *TemplateContentVoice {
 	this := TemplateContentVoice{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *TemplateContentVoice) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateContentVoice) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *TemplateContentVoice) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *TemplateContentVoice) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -332,6 +365,9 @@ func (o TemplateContentVoice) MarshalJSON() ([]byte, error) {
 
 func (o TemplateContentVoice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: id is readOnly
 	// skip: createdAt is readOnly
 	// skip: updatedAt is readOnly

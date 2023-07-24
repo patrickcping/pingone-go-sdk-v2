@@ -19,6 +19,7 @@ var _ MappedNullable = &APIServer{}
 
 // APIServer struct for APIServer
 type APIServer struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	AuthorizationServer APIServerAuthorizationServer `json:"authorizationServer"`
 	// An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer's API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters.
 	BaseURLs []string `json:"baseURLs"`
@@ -48,6 +49,38 @@ func NewAPIServer(authorizationServer APIServerAuthorizationServer, baseURLs []s
 func NewAPIServerWithDefaults() *APIServer {
 	this := APIServer{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *APIServer) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *APIServer) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *APIServer) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *APIServer) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAuthorizationServer returns the AuthorizationServer field value
@@ -196,6 +229,9 @@ func (o APIServer) MarshalJSON() ([]byte, error) {
 
 func (o APIServer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["authorizationServer"] = o.AuthorizationServer
 	toSerialize["baseURLs"] = o.BaseURLs
 	// skip: id is readOnly

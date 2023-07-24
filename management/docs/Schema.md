@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **AllowsContainsOperator** | Pointer to **bool** | Indicates whether or not the &#x60;contains&#x60; operator can be used. You can use the &#x60;contains&#x60; operator in a maximum of 5 custom attributes. | [optional] [readonly] 
 **Attributes** | Pointer to [**[]SchemaAttribute**](SchemaAttribute.md) |  | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the schema. | [optional] [readonly] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewSchemaWithDefaults instantiates a new Schema object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *Schema) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *Schema) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *Schema) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *Schema) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetAllowsContainsOperator
 

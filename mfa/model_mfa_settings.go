@@ -20,6 +20,7 @@ var _ MappedNullable = &MFASettings{}
 
 // MFASettings struct for MFASettings
 type MFASettings struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Deprecated
 	Authentication *MFASettingsAuthentication `json:"authentication,omitempty"`
@@ -46,6 +47,38 @@ func NewMFASettings(pairing MFASettingsPairing) *MFASettings {
 func NewMFASettingsWithDefaults() *MFASettings {
 	this := MFASettings{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *MFASettings) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MFASettings) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *MFASettings) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *MFASettings) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -245,6 +278,9 @@ func (o MFASettings) MarshalJSON() ([]byte, error) {
 
 func (o MFASettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **BypassPolicy** | Pointer to **bool** | Determines whether the password policy for a user will be ignored. If this property is omitted from a CREATE Password Policy request, its value is set to false. | [optional] [default to false]
 **CreatedAt** | Pointer to **string** | The date and time the resource was created (format ISO-8061). | [optional] [readonly] 
 **CurrentPassword** | Pointer to **string** | The current password to be verified before the new password is set. Required for self-change when the user already has a password (the user whose password is being changed is the same as the actor in the access token). | [optional] 
@@ -46,6 +47,31 @@ will change when the set of required properties is changed
 NewPasswordPolicyWithDefaults instantiates a new PasswordPolicy object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *PasswordPolicy) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *PasswordPolicy) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *PasswordPolicy) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *PasswordPolicy) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetBypassPolicy
 

@@ -19,6 +19,7 @@ var _ MappedNullable = &UserMFAEnabled{}
 
 // UserMFAEnabled struct for UserMFAEnabled
 type UserMFAEnabled struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// Whether multi-factor authentication is enabled. This attribute is set to `false` by default when the user is created.
 	MfaEnabled bool `json:"mfaEnabled"`
 }
@@ -39,6 +40,38 @@ func NewUserMFAEnabled(mfaEnabled bool) *UserMFAEnabled {
 func NewUserMFAEnabledWithDefaults() *UserMFAEnabled {
 	this := UserMFAEnabled{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *UserMFAEnabled) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserMFAEnabled) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *UserMFAEnabled) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *UserMFAEnabled) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetMfaEnabled returns the MfaEnabled field value
@@ -75,6 +108,9 @@ func (o UserMFAEnabled) MarshalJSON() ([]byte, error) {
 
 func (o UserMFAEnabled) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["mfaEnabled"] = o.MfaEnabled
 	return toSerialize, nil
 }

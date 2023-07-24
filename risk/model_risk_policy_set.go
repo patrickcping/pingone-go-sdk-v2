@@ -20,6 +20,7 @@ var _ MappedNullable = &RiskPolicySet{}
 
 // RiskPolicySet struct for RiskPolicySet
 type RiskPolicySet struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The time the resource was created (format ISO-8061).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// A boolean that specifies whether this risk policy set is the environment's default risk policy set, which is used whenever an explicit policySet ID is not specified in the risk policy evaluation request. If this property is not specified, the value defaults to false, and this risk policy set is not regarded as the default risk policy set for the environment. When this property is set to true (in PUT or POST requests), the default property of all other risk policy sets in the environment is set to false.
@@ -58,6 +59,38 @@ func NewRiskPolicySet(name string) *RiskPolicySet {
 func NewRiskPolicySetWithDefaults() *RiskPolicySet {
 	this := RiskPolicySet{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *RiskPolicySet) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicySet) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *RiskPolicySet) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *RiskPolicySet) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -414,6 +447,9 @@ func (o RiskPolicySet) MarshalJSON() ([]byte, error) {
 
 func (o RiskPolicySet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: createdAt is readOnly
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default

@@ -19,6 +19,7 @@ var _ MappedNullable = &FlowPolicyAssignment{}
 
 // FlowPolicyAssignment struct for FlowPolicyAssignment
 type FlowPolicyAssignment struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies the flow policy assignment resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	Application *ObjectApplication `json:"application,omitempty"`
@@ -45,6 +46,38 @@ func NewFlowPolicyAssignment(flowPolicy FlowPolicyAssignmentFlowPolicy, priority
 func NewFlowPolicyAssignmentWithDefaults() *FlowPolicyAssignment {
 	this := FlowPolicyAssignment{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *FlowPolicyAssignment) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FlowPolicyAssignment) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *FlowPolicyAssignment) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *FlowPolicyAssignment) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -201,6 +234,9 @@ func (o FlowPolicyAssignment) MarshalJSON() ([]byte, error) {
 
 func (o FlowPolicyAssignment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: id is readOnly
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application

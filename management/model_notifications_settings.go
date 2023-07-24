@@ -20,6 +20,7 @@ var _ MappedNullable = &NotificationsSettings{}
 
 // NotificationsSettings struct for NotificationsSettings
 type NotificationsSettings struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -49,6 +50,38 @@ func NewNotificationsSettings() *NotificationsSettings {
 func NewNotificationsSettingsWithDefaults() *NotificationsSettings {
 	this := NotificationsSettings{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *NotificationsSettings) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationsSettings) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *NotificationsSettings) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *NotificationsSettings) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -349,6 +382,9 @@ func (o NotificationsSettings) MarshalJSON() ([]byte, error) {
 
 func (o NotificationsSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: updatedAt is readOnly
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment

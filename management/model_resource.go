@@ -20,6 +20,7 @@ var _ MappedNullable = &Resource{}
 
 // Resource struct for Resource
 type Resource struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days).
 	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
 	// A string that specifies a URL without a fragment or `@ObjectName` and must not contain `pingone` or `pingidentity` (for example, `https://api.bxretail.org`). If a URL is not specified, the resource name is used.
@@ -56,6 +57,38 @@ func NewResource(name string) *Resource {
 func NewResourceWithDefaults() *Resource {
 	this := Resource{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *Resource) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Resource) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *Resource) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *Resource) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAccessTokenValiditySeconds returns the AccessTokenValiditySeconds field value if set, zero value otherwise.
@@ -412,6 +445,9 @@ func (o Resource) MarshalJSON() ([]byte, error) {
 
 func (o Resource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.AccessTokenValiditySeconds) {
 		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
 	}

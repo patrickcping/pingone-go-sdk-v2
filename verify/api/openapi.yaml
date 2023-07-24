@@ -1151,9 +1151,32 @@ components:
             $ref: '#/components/schemas/P1Error'
       description: Uncaught error occurred.  Platform outage
   schemas:
+    LinksHATEOAS:
+      additionalProperties: true
+      example:
+        next:
+          href: https://openapi-generator.tech
+        self:
+          href: https://openapi-generator.tech
+      properties:
+        self:
+          $ref: '#/components/schemas/LinksHATEOAS_self'
+        next:
+          $ref: '#/components/schemas/LinksHATEOAS_next'
+      readOnly: true
+      type: object
+    LinksHATEOASHref:
+      description: The URI of the resource.
+      format: uri
+      type: string
     EntityArray:
       example:
         size: 7.061401241503109
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         _embedded:
           contents:
           - createdAt: 2000-01-23T04:56:07.000+00:00
@@ -1175,7 +1198,12 @@ components:
             content: content
             updatedAt: 2000-01-23T04:56:07.000+00:00
           verifyPolicies:
-          - voice:
+          - _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            voice:
               verify: null
               enrollment: true
               textDependent:
@@ -1249,7 +1277,12 @@ components:
             governmentId:
               verify: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - voice:
+          - _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            voice:
               verify: null
               enrollment: true
               textDependent:
@@ -1337,6 +1370,8 @@ components:
             id: id
             updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
         size:
@@ -1629,6 +1664,11 @@ components:
       type: object
     VerifyPolicy:
       example:
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         voice:
           verify: null
           enrollment: true
@@ -1704,6 +1744,8 @@ components:
           verify: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           readOnly: true
           type: string
@@ -1744,6 +1786,28 @@ components:
       required:
       - name
       type: object
+    LinksHATEOAS_self:
+      description: An object that describes the current resource.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
+    LinksHATEOAS_next:
+      description: An object that describes the next page of results. This property
+        is present only if there is a next page of results and the `limit` parameter
+        is used.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
     EntityArray__embedded:
       example:
         contents:
@@ -1766,7 +1830,12 @@ components:
           content: content
           updatedAt: 2000-01-23T04:56:07.000+00:00
         verifyPolicies:
-        - voice:
+        - _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          voice:
             verify: null
             enrollment: true
             textDependent:
@@ -1840,7 +1909,12 @@ components:
           governmentId:
             verify: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - voice:
+        - _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          voice:
             verify: null
             enrollment: true
             textDependent:

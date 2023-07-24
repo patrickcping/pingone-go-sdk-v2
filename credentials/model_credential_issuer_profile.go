@@ -20,6 +20,7 @@ var _ MappedNullable = &CredentialIssuerProfile{}
 
 // CredentialIssuerProfile struct for CredentialIssuerProfile
 type CredentialIssuerProfile struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	ApplicationInstance *CredentialIssuerProfileApplicationInstance `json:"applicationInstance,omitempty"`
 	// A string that specifies the date and time the issuer profile was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -52,6 +53,38 @@ func NewCredentialIssuerProfile(name string) *CredentialIssuerProfile {
 func NewCredentialIssuerProfileWithDefaults() *CredentialIssuerProfile {
 	this := CredentialIssuerProfile{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *CredentialIssuerProfile) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialIssuerProfile) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *CredentialIssuerProfile) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *CredentialIssuerProfile) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetApplicationInstance returns the ApplicationInstance field value if set, zero value otherwise.
@@ -312,6 +345,9 @@ func (o CredentialIssuerProfile) MarshalJSON() ([]byte, error) {
 
 func (o CredentialIssuerProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.ApplicationInstance) {
 		toSerialize["applicationInstance"] = o.ApplicationInstance
 	}

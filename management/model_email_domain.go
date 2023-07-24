@@ -19,6 +19,7 @@ var _ MappedNullable = &EmailDomain{}
 
 // EmailDomain struct for EmailDomain
 type EmailDomain struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies the auto-generated ID of the email domain.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the resource name, which must be provided and must be unique within an environment (for example, auth.shopco.com). This is a required property. Wildcards are NOT supported.
@@ -42,6 +43,38 @@ func NewEmailDomain(domainName string) *EmailDomain {
 func NewEmailDomainWithDefaults() *EmailDomain {
 	this := EmailDomain{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *EmailDomain) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmailDomain) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *EmailDomain) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *EmailDomain) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -142,6 +175,9 @@ func (o EmailDomain) MarshalJSON() ([]byte, error) {
 
 func (o EmailDomain) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: id is readOnly
 	toSerialize["domainName"] = o.DomainName
 	if !IsNil(o.Environment) {

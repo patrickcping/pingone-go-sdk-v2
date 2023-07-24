@@ -36,9 +36,32 @@ components:
       bearerFormat: JWT
       description: OAuth bearer token (see documentation)
   schemas:
+    LinksHATEOAS:
+      type: object
+      readOnly: true
+      additionalProperties: true
+      properties:
+        self:
+          type: object
+          description: An object that describes the current resource.
+          properties:
+            href:
+              $ref: '#/components/schemas/LinksHATEOASHref'
+        next:
+          type: object
+          description: An object that describes the next page of results. This property is present only if there is a next page of results and the `limit` parameter is used.
+          properties:
+            href:
+              $ref: '#/components/schemas/LinksHATEOASHref'
+    LinksHATEOASHref:
+      type: string
+      format: uri
+      description: The URI of the resource.
     EntityArray:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         '_embedded':
           type: object
           properties:
@@ -53,7 +76,7 @@ components:
             contents:
               type: array
               items:
-                $ref: '#/components/schemas/VoicePhraseContents'                
+                $ref: '#/components/schemas/VoicePhraseContents'
         size:
           type: number
     EnumTimeUnit:
@@ -68,34 +91,34 @@ components:
       type: string
       enum: [REQUIRED, OPTIONAL, DISABLED]
       description: A string that defines the verification check requirements. Options are `REQUIRED`, `OPTIONAL` and `DISABLED`.
-    FacialComparisonConfiguration:    
+    FacialComparisonConfiguration:
       type: object
       properties:
         verify:
-          $ref: '#/components/schemas/EnumVerify'        
+          $ref: '#/components/schemas/EnumVerify'
           description: Controls if facial comparison is REQUIRED, OPTIONAL, or DISABLED.
         threshold:
-          $ref: '#/components/schemas/EnumThreshold'                
+          $ref: '#/components/schemas/EnumThreshold'
           description: Threshold for successful facial comparison; can be LOW, MEDIUM, or HIGH (for which PingOne Verify uses industry and vendor recommended definitions).
       required:
         - threshold
         - verify      
-    GovernmentIdConfiguration:    
+    GovernmentIdConfiguration:
       type: object
       properties:
         verify:
-          $ref: '#/components/schemas/EnumVerify'     
+          $ref: '#/components/schemas/EnumVerify'
           description: Controls if Government ID verification is REQUIRED, OPTIONAL, or DISABLED.
       required:
         - verify
-    LivenessConfiguration:    
+    LivenessConfiguration:
       type: object
       properties:
         verify:
-          $ref: '#/components/schemas/EnumVerify'             
+          $ref: '#/components/schemas/EnumVerify'
           description: Controls if liveness check is REQUIRED, OPTIONAL, or DISABLED.
         threshold:
-          $ref: '#/components/schemas/EnumThreshold'                
+          $ref: '#/components/schemas/EnumThreshold'
           description: Threshold for successful facial comparison; can be LOW, MEDIUM, or HIGH (for which PingOne Verify uses industry and vendor recommended definitions).
       required:
         - threshold
@@ -230,7 +253,7 @@ components:
                   maximumValue:
                     description: The maximum value allowed for the request.
                     type: integer
-    TransactionConfiguration:    
+    TransactionConfiguration:
       type: object
       properties:
         timeout:
@@ -398,6 +421,8 @@ components:
     VerifyPolicy:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           type: string
           readOnly: true
@@ -482,7 +507,7 @@ components:
 security:
   - bearer: []
 tags:
-- name: Verify Policies
+  - name: Verify Policies
 paths:
   /environments/{environmentID}/verifyPolicies:
     post:

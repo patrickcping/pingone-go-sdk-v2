@@ -410,6 +410,7 @@ type ApiReadAllPopulationsRequest struct {
 	environmentID string
 	limit *int32
 	filter *string
+	cursor *string
 }
 
 // Adding a paging value to limit the number of resources displayed per page
@@ -421,6 +422,12 @@ func (r ApiReadAllPopulationsRequest) Limit(limit int32) ApiReadAllPopulationsRe
 // Adding a SCIM filter for a population ID or population name to display only those resources associated with the specified population. Only the id and name parameters are supported
 func (r ApiReadAllPopulationsRequest) Filter(filter string) ApiReadAllPopulationsRequest {
 	r.filter = &filter
+	return r
+}
+
+// Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload.
+func (r ApiReadAllPopulationsRequest) Cursor(cursor string) ApiReadAllPopulationsRequest {
+	r.cursor = &cursor
 	return r
 }
 
@@ -486,6 +493,9 @@ func (a *PopulationsApiService) internalReadAllPopulationsExecute(r ApiReadAllPo
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	}
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -19,6 +19,7 @@ var _ MappedNullable = &Schema{}
 
 // Schema struct for Schema
 type Schema struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// Indicates whether or not the `contains` operator can be used. You can use the `contains` operator in a maximum of 5 custom attributes.
 	AllowsContainsOperator *bool `json:"allowsContainsOperator,omitempty"`
 	Attributes []SchemaAttribute `json:"attributes,omitempty"`
@@ -46,6 +47,38 @@ func NewSchema() *Schema {
 func NewSchemaWithDefaults() *Schema {
 	this := Schema{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *Schema) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Schema) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *Schema) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *Schema) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAllowsContainsOperator returns the AllowsContainsOperator field value if set, zero value otherwise.
@@ -250,6 +283,9 @@ func (o Schema) MarshalJSON() ([]byte, error) {
 
 func (o Schema) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: allowsContainsOperator is readOnly
 	// skip: attributes is readOnly
 	// skip: description is readOnly

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **AuthorizationServer** | [**APIServerAuthorizationServer**](APIServerAuthorizationServer.md) |  | 
 **BaseURLs** | **[]string** | An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer&#39;s API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters. | 
 **Id** | Pointer to **string** | A string that specifies the resource&#39;s unique identifier. | [optional] [readonly] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewAPIServerWithDefaults instantiates a new APIServer object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *APIServer) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *APIServer) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *APIServer) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *APIServer) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetAuthorizationServer
 

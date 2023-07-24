@@ -20,6 +20,7 @@ var _ MappedNullable = &CredentialDigitalWallet{}
 
 // CredentialDigitalWallet struct for CredentialDigitalWallet
 type CredentialDigitalWallet struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Application *CredentialDigitalWalletApplication `json:"application,omitempty"`
 	// A string that specifies the date and time the credential digital wallet was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -51,6 +52,38 @@ func NewCredentialDigitalWallet() *CredentialDigitalWallet {
 func NewCredentialDigitalWalletWithDefaults() *CredentialDigitalWallet {
 	this := CredentialDigitalWallet{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *CredentialDigitalWallet) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialDigitalWallet) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *CredentialDigitalWallet) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *CredentialDigitalWallet) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetApplication returns the Application field value if set, zero value otherwise.
@@ -383,6 +416,9 @@ func (o CredentialDigitalWallet) MarshalJSON() ([]byte, error) {
 
 func (o CredentialDigitalWallet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}

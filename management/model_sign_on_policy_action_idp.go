@@ -19,7 +19,7 @@ var _ MappedNullable = &SignOnPolicyActionIDP{}
 
 // SignOnPolicyActionIDP struct for SignOnPolicyActionIDP
 type SignOnPolicyActionIDP struct {
-	Links map[string]interface{} `json:"_links,omitempty"`
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Condition *SignOnPolicyActionCommonConditionOrOrInner `json:"condition,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the sign-on policy assignment resource’s unique identifier.
@@ -57,19 +57,19 @@ func NewSignOnPolicyActionIDPWithDefaults() *SignOnPolicyActionIDP {
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *SignOnPolicyActionIDP) GetLinks() map[string]interface{} {
+func (o *SignOnPolicyActionIDP) GetLinks() LinksHATEOAS {
 	if o == nil || IsNil(o.Links) {
-		var ret map[string]interface{}
+		var ret LinksHATEOAS
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SignOnPolicyActionIDP) GetLinksOk() (map[string]interface{}, bool) {
+func (o *SignOnPolicyActionIDP) GetLinksOk() (*LinksHATEOAS, bool) {
 	if o == nil || IsNil(o.Links) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Links, true
 }
@@ -83,9 +83,9 @@ func (o *SignOnPolicyActionIDP) HasLinks() bool {
 	return false
 }
 
-// SetLinks gets a reference to the given map[string]interface{} and assigns it to the Links field.
-func (o *SignOnPolicyActionIDP) SetLinks(v map[string]interface{}) {
-	o.Links = v
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *SignOnPolicyActionIDP) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetCondition returns the Condition field value if set, zero value otherwise.
@@ -394,7 +394,9 @@ func (o SignOnPolicyActionIDP) MarshalJSON() ([]byte, error) {
 
 func (o SignOnPolicyActionIDP) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: _links is readOnly
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}

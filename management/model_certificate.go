@@ -21,6 +21,7 @@ var _ MappedNullable = &Certificate{}
 
 // Certificate struct for Certificate
 type Certificate struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Algorithm EnumCertificateKeyAlgorithm `json:"algorithm"`
 	// The time the resource was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -75,6 +76,38 @@ func NewCertificate(algorithm EnumCertificateKeyAlgorithm, keyLength int32, name
 func NewCertificateWithDefaults() *Certificate {
 	this := Certificate{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *Certificate) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Certificate) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *Certificate) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *Certificate) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAlgorithm returns the Algorithm field value
@@ -607,6 +640,9 @@ func (o Certificate) MarshalJSON() ([]byte, error) {
 
 func (o Certificate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["algorithm"] = o.Algorithm
 	// skip: createdAt is readOnly
 	if !IsNil(o.Default) {

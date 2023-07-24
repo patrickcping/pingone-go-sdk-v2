@@ -2811,6 +2811,24 @@ components:
             $ref: '#/components/schemas/P1Error'
       description: Uncaught error occurred.  Platform outage
   schemas:
+    LinksHATEOAS:
+      additionalProperties: true
+      example:
+        next:
+          href: https://openapi-generator.tech
+        self:
+          href: https://openapi-generator.tech
+      properties:
+        self:
+          $ref: '#/components/schemas/LinksHATEOAS_self'
+        next:
+          $ref: '#/components/schemas/LinksHATEOAS_next'
+      readOnly: true
+      type: object
+    LinksHATEOASHref:
+      description: The URI of the resource.
+      format: uri
+      type: string
     DeviceAuthenticationPolicyFIDODevice:
       deprecated: true
       example:
@@ -2889,6 +2907,11 @@ components:
                 timeUnit: null
           enabled: true
         newDeviceNotification: null
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         mobile:
           otp:
             failure:
@@ -3000,6 +3023,8 @@ components:
           deviceSelection: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         id:
@@ -3082,6 +3107,11 @@ components:
     EntityArray:
       example:
         size: 4.145608029883936
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         _embedded:
           fidoDevicesMetadata:
           - null
@@ -3091,6 +3121,11 @@ components:
             userVerification:
               enforceDuringAuthentication: true
               option: null
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             userDisplayNameAttributes:
               attributes:
               - name: name
@@ -3129,6 +3164,11 @@ components:
             userVerification:
               enforceDuringAuthentication: true
               option: null
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             userDisplayNameAttributes:
               attributes:
               - name: name
@@ -3165,42 +3205,62 @@ components:
             updatedAt: 2000-01-23T04:56:07.000+00:00
           pushCredentials:
           - createdAt: 2000-01-23T04:56:07.000+00:00
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             id: id
             type: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - createdAt: 2000-01-23T04:56:07.000+00:00
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             id: id
             type: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           fidoPolicies:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
+          - _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            description: description
+            enforceDuringAuthentication: false
+            allowedAuthenticators:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
             default: true
             _embedded: "{}"
             name: name
-            description: description
             attestationRequirements: null
-            enforceDuringAuthentication: false
             id: id
-            allowedAuthenticators:
-            - id: id
-            - id: id
             updatedAt: 2000-01-23T04:56:07.000+00:00
             residentKeyRequirement: null
-          - createdAt: 2000-01-23T04:56:07.000+00:00
+          - _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            description: description
+            enforceDuringAuthentication: false
+            allowedAuthenticators:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
             environment:
               id: id
             default: true
             _embedded: "{}"
             name: name
-            description: description
             attestationRequirements: null
-            enforceDuringAuthentication: false
             id: id
-            allowedAuthenticators:
-            - id: id
-            - id: id
             updatedAt: 2000-01-23T04:56:07.000+00:00
             residentKeyRequirement: null
           deviceAuthenticationPolicies:
@@ -3226,6 +3286,11 @@ components:
                     timeUnit: null
               enabled: true
             newDeviceNotification: null
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             mobile:
               otp:
                 failure:
@@ -3358,6 +3423,11 @@ components:
                     timeUnit: null
               enabled: true
             newDeviceNotification: null
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             mobile:
               otp:
                 failure:
@@ -3470,6 +3540,8 @@ components:
             updatedAt: 2000-01-23T04:56:07.000+00:00
         count: 2.027123023002322
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
         count:
@@ -3658,22 +3730,29 @@ components:
     FIDOPolicy:
       deprecated: true
       example:
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
+        description: description
+        enforceDuringAuthentication: false
+        allowedAuthenticators:
+        - id: id
+        - id: id
         createdAt: 2000-01-23T04:56:07.000+00:00
         environment:
           id: id
         default: true
         _embedded: "{}"
         name: name
-        description: description
         attestationRequirements: null
-        enforceDuringAuthentication: false
         id: id
-        allowedAuthenticators:
-        - id: id
-        - id: id
         updatedAt: 2000-01-23T04:56:07.000+00:00
         residentKeyRequirement: null
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           description: FIDO policy's UUID.
           readOnly: true
@@ -3730,6 +3809,11 @@ components:
         userVerification:
           enforceDuringAuthentication: true
           option: null
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         userDisplayNameAttributes:
           attributes:
           - name: name
@@ -3765,6 +3849,8 @@ components:
         discoverableCredentials: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           description: FIDO policy's UUID.
           readOnly: true
@@ -3877,10 +3963,17 @@ components:
     MFAPushCredentialResponse:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         id: id
         type: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           description: A string that specifies the push credential ID.
           readOnly: true
@@ -3907,6 +4000,11 @@ components:
         lockout:
           durationSeconds: 6
           failureCount: 0
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         pairing:
           pairingKeyFormat: null
           maxAllowedDevices: 2
@@ -3914,6 +4012,8 @@ components:
           deviceSelection: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         authentication:
@@ -3970,14 +4070,43 @@ components:
       type: object
     UserMFAEnabled:
       example:
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         mfaEnabled: true
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         mfaEnabled:
           description: Whether multi-factor authentication is enabled. This attribute
             is set to `false` by default when the user is created.
           type: boolean
       required:
       - mfaEnabled
+      type: object
+    LinksHATEOAS_self:
+      description: An object that describes the current resource.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
+    LinksHATEOAS_next:
+      description: An object that describes the next page of results. This property
+        is present only if there is a next page of results and the `limit` parameter
+        is used.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
       type: object
     DeviceAuthenticationPolicyOfflineDevice_otp_lifeTime:
       example:
@@ -4461,6 +4590,11 @@ components:
           userVerification:
             enforceDuringAuthentication: true
             option: null
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           userDisplayNameAttributes:
             attributes:
             - name: name
@@ -4499,6 +4633,11 @@ components:
           userVerification:
             enforceDuringAuthentication: true
             option: null
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           userDisplayNameAttributes:
             attributes:
             - name: name
@@ -4535,42 +4674,62 @@ components:
           updatedAt: 2000-01-23T04:56:07.000+00:00
         pushCredentials:
         - createdAt: 2000-01-23T04:56:07.000+00:00
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           id: id
           type: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - createdAt: 2000-01-23T04:56:07.000+00:00
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           id: id
           type: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         fidoPolicies:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
+        - _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          description: description
+          enforceDuringAuthentication: false
+          allowedAuthenticators:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
           default: true
           _embedded: "{}"
           name: name
-          description: description
           attestationRequirements: null
-          enforceDuringAuthentication: false
           id: id
-          allowedAuthenticators:
-          - id: id
-          - id: id
           updatedAt: 2000-01-23T04:56:07.000+00:00
           residentKeyRequirement: null
-        - createdAt: 2000-01-23T04:56:07.000+00:00
+        - _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          description: description
+          enforceDuringAuthentication: false
+          allowedAuthenticators:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
           environment:
             id: id
           default: true
           _embedded: "{}"
           name: name
-          description: description
           attestationRequirements: null
-          enforceDuringAuthentication: false
           id: id
-          allowedAuthenticators:
-          - id: id
-          - id: id
           updatedAt: 2000-01-23T04:56:07.000+00:00
           residentKeyRequirement: null
         deviceAuthenticationPolicies:
@@ -4596,6 +4755,11 @@ components:
                   timeUnit: null
             enabled: true
           newDeviceNotification: null
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           mobile:
             otp:
               failure:
@@ -4728,6 +4892,11 @@ components:
                   timeUnit: null
             enabled: true
           newDeviceNotification: null
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           mobile:
             otp:
               failure:

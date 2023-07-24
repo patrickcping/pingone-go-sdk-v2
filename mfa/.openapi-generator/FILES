@@ -75,6 +75,9 @@ docs/FIDODeviceApi.md
 docs/FIDOPolicy.md
 docs/FIDOPolicyAllowedAuthenticatorsInner.md
 docs/FIDOPolicyApi.md
+docs/LinksHATEOAS.md
+docs/LinksHATEOASNext.md
+docs/LinksHATEOASSelf.md
 docs/MFAPushCredential.md
 docs/MFAPushCredentialAPNS.md
 docs/MFAPushCredentialAPNSAllOf.md
@@ -160,6 +163,9 @@ model_fido2_policy_user_display_name_attributes_attributes_inner_sub_attributes_
 model_fido2_policy_user_verification.go
 model_fido_policy.go
 model_fido_policy_allowed_authenticators_inner.go
+model_links_hateoas.go
+model_links_hateoas_next.go
+model_links_hateoas_self.go
 model_mfa_push_credential.go
 model_mfa_push_credential_apns.go
 model_mfa_push_credential_apns_all_of.go

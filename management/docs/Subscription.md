@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the key resource expires.The date and time at which the subscription resource was created (ISO 8601 format). | [optional] [readonly] 
 **Enabled** | **bool** | A boolean that specifies whether a created or updated subscription should be active or suspended. A suspended state (&#x60;\&quot;enabled\&quot;:false&#x60;) accumulates all matched events, but these events are not delivered until the subscription becomes active again (&#x60;\&quot;enabled\&quot;:true&#x60;). For suspended subscriptions, events accumulate for a maximum of two weeks. Events older than two weeks are deleted. Restarted subscriptions receive the saved events (up to two weeks from the restart date). This is a required property. | 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -33,6 +34,31 @@ will change when the set of required properties is changed
 NewSubscriptionWithDefaults instantiates a new Subscription object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *Subscription) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *Subscription) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *Subscription) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *Subscription) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
