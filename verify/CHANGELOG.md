@@ -1,6 +1,9 @@
 # v0.3.0 (Unreleased)
 
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+* **Enhancement** New voice configuration object option on the verify policy API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
+* **Enhancement** New voice phrase API, which is a prerequisite to support the management of the voice configuration object via the verify policy API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
+* **Enhancement** New voice phrase contents API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
 
 # v0.2.1 (2023-07-12)
 

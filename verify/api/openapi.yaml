@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   description: The PingOne Platform API covering the PingOne Verify service
   title: PingOne Platform API - PingOne Verify
-  version: 2023-06-29
+  version: 2023-07-20
 externalDocs:
   description: PingOne Platform API Reference - PingOne Verify APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-verify
@@ -419,6 +419,693 @@ paths:
       summary: UPDATE Verify Policy
       tags:
       - Verify Policies
+  /environments/{environmentID}/voicePhrases:
+    get:
+      operationId: readAllVoicePhrases
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Voice Phrases
+      tags:
+      - Voice Phrases
+    post:
+      operationId: createVoicePhrase
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              displayName: Example Voice Phrase
+            schema:
+              $ref: '#/components/schemas/VoicePhrase'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhrase'
+          description: Successful response
+      summary: CREATE Voice Phrase
+      tags:
+      - Voice Phrases
+  /environments/{environmentID}/voicePhrases/{voicePhraseID}:
+    delete:
+      operationId: deleteVoicePhrase
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voicePhraseID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: Delete Voice Phrase
+      tags:
+      - Voice Phrases
+    get:
+      operationId: readOneVoicePhrase
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voicePhraseID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhrase'
+          description: Successful response
+      summary: READ One Voice Phrase
+      tags:
+      - Voice Phrases
+    put:
+      operationId: updateVoicePhrase
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voicePhraseID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              displayName: Voice Phrase Name
+            schema:
+              $ref: '#/components/schemas/VoicePhrase'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhrase'
+          description: Successful response
+      summary: UPDATE Voice Phrase
+      tags:
+      - Voice Phrases
+  /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents:
+    get:
+      operationId: readAllVoicePhraseContents
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voicePhraseID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Voice Phrase Contents
+      tags:
+      - Voice Phrase Contents
+    post:
+      operationId: createVoicePhraseContent
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voicePhraseID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              locale: en
+              content: Design brilliant journeys to any digital desintation.
+            schema:
+              $ref: '#/components/schemas/VoicePhraseContents'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhraseContents'
+          description: Successful response
+      summary: CREATE Voice Phrase Content
+      tags:
+      - Voice Phrase Contents
+  /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}:
+    delete:
+      operationId: deleteVoicePhraseContent
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voicePhraseID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voiceContentsID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: Delete Voice Phrase Content
+      tags:
+      - Voice Phrase Contents
+    get:
+      operationId: readOneVoicePhraseContent
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voicePhraseID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voiceContentsID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhraseContents'
+          description: Successful response
+      summary: READ One Voice Phrase Content
+      tags:
+      - Voice Phrase Contents
+    put:
+      operationId: updateVoicePhraseContent
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voicePhraseID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: voiceContentsID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              locale: en
+              content: Brilliant journeys to any digital destination.
+            schema:
+              $ref: '#/components/schemas/VoicePhraseContents'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicePhraseContents'
+          description: Successful response
+      summary: UPDATE Voice Phrase Content
+      tags:
+      - Voice Phrase Contents
 components:
   responses:
     "400":
@@ -482,36 +1169,6 @@ components:
       description: The URI of the resource.
       format: uri
       type: string
-    OTPDeviceConfiguration:
-      example:
-        createMfaDevice: true
-        verify: null
-        otp:
-          notification:
-            templateName: templateName
-            variantName: variantName
-          lifeTime:
-            duration: 5
-            timeUnit: null
-          attempts:
-            count: 0
-          deliveries:
-            count: 6
-            cooldown:
-              duration: 1
-              timeUnit: null
-      properties:
-        verify:
-          $ref: '#/components/schemas/EnumVerify'
-        createMfaDevice:
-          description: "When enabled, PingOne Verify registers the email address or\
-            \ phone number with PingOne MFA as a verified MFA device."
-          type: boolean
-        otp:
-          $ref: '#/components/schemas/OTPDeviceConfiguration_otp'
-      required:
-      - verify
-      type: object
     EntityArray:
       example:
         size: 7.061401241503109
@@ -521,8 +1178,42 @@ components:
           self:
             href: https://openapi-generator.tech
         _embedded:
+          contents:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            id: id
+            voicePhrase:
+              id: id
+            locale: locale
+            content: content
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            id: id
+            voicePhrase:
+              id: id
+            locale: locale
+            content: content
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           verifyPolicies:
-          - _links:
+          - voice:
+              verify: null
+              enrollment: true
+              textDependent:
+                samples: null
+                phrase:
+                  id: id
+              comparison:
+                threshold: null
+              liveness:
+                threshold: null
+              referenceData:
+                retainOriginalRecordings: true
+                updateOnReenrollment: true
+                updateOnVerification: true
+            _links:
               next:
                 href: https://openapi-generator.tech
               self:
@@ -586,7 +1277,22 @@ components:
             governmentId:
               verify: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - _links:
+          - voice:
+              verify: null
+              enrollment: true
+              textDependent:
+                samples: null
+                phrase:
+                  id: id
+              comparison:
+                threshold: null
+              liveness:
+                threshold: null
+              referenceData:
+                retainOriginalRecordings: true
+                updateOnReenrollment: true
+                updateOnVerification: true
+            _links:
               next:
                 href: https://openapi-generator.tech
               self:
@@ -649,6 +1355,19 @@ components:
                   timeUnit: null
             governmentId:
               verify: null
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          voicePhrases:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            displayName: displayName
+            id: id
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            environment:
+              id: id
+            displayName: displayName
+            id: id
             updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         _links:
@@ -727,6 +1446,36 @@ components:
           type: string
       readOnly: true
       type: object
+    OTPDeviceConfiguration:
+      example:
+        createMfaDevice: true
+        verify: null
+        otp:
+          notification:
+            templateName: templateName
+            variantName: variantName
+          lifeTime:
+            duration: 5
+            timeUnit: null
+          attempts:
+            count: 0
+          deliveries:
+            count: 6
+            cooldown:
+              duration: 1
+              timeUnit: null
+      properties:
+        verify:
+          $ref: '#/components/schemas/EnumVerify'
+        createMfaDevice:
+          description: "When enabled, PingOne Verify registers the email address or\
+            \ phone number with PingOne MFA as a verified MFA device."
+          type: boolean
+        otp:
+          $ref: '#/components/schemas/OTPDeviceConfiguration_otp'
+      required:
+      - verify
+      type: object
     P1Error:
       properties:
         id:
@@ -770,8 +1519,166 @@ components:
         dataCollectionOnly:
           type: boolean
       type: object
+    VoiceConfiguration:
+      example:
+        verify: null
+        enrollment: true
+        textDependent:
+          samples: null
+          phrase:
+            id: id
+        comparison:
+          threshold: null
+        liveness:
+          threshold: null
+        referenceData:
+          retainOriginalRecordings: true
+          updateOnReenrollment: true
+          updateOnVerification: true
+      properties:
+        verify:
+          $ref: '#/components/schemas/EnumVerify'
+        enrollment:
+          type: boolean
+        textDependent:
+          $ref: '#/components/schemas/VoiceConfiguration_textDependent'
+        comparison:
+          $ref: '#/components/schemas/VoiceConfiguration_threshold'
+        liveness:
+          $ref: '#/components/schemas/VoiceConfiguration_threshold'
+        referenceData:
+          $ref: '#/components/schemas/VoiceConfiguration_referenceData'
+      required:
+      - comparison
+      - enrollment
+      - liveness
+      - verify
+      type: object
+    VoiceConfiguration_referenceData:
+      example:
+        retainOriginalRecordings: true
+        updateOnReenrollment: true
+        updateOnVerification: true
+      properties:
+        retainOriginalRecordings:
+          type: boolean
+        updateOnReenrollment:
+          type: boolean
+        updateOnVerification:
+          type: boolean
+      type: object
+    VoiceConfiguration_threshold:
+      example:
+        threshold: null
+      properties:
+        threshold:
+          $ref: '#/components/schemas/EnumThreshold'
+      required:
+      - threshold
+      type: object
+    VoiceConfiguration_textDependent_phrase:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      required:
+      - id
+      type: object
+    VoiceConfiguration_textDependent:
+      example:
+        samples: null
+        phrase:
+          id: id
+      properties:
+        samples:
+          type: integer
+        phrase:
+          $ref: '#/components/schemas/VoiceConfiguration_textDependent_phrase'
+      required:
+      - phrase
+      - samples
+      type: object
+    VoicePhrase:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
+        displayName: displayName
+        id: id
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        displayName:
+          type: string
+        createdAt:
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - displayName
+      type: object
+    VoicePhraseContents:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
+        id: id
+        voicePhrase:
+          id: id
+        locale: locale
+        content: content
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        voicePhrase:
+          $ref: '#/components/schemas/VoicePhraseContents_voicePhrase'
+        locale:
+          type: string
+        content:
+          type: string
+        createdAt:
+          format: date-time
+          readOnly: true
+          type: string
+        updatedAt:
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - content
+      - locale
+      - voicePhrase
+      type: object
     VerifyPolicy:
       example:
+        voice:
+          verify: null
+          enrollment: true
+          textDependent:
+            samples: null
+            phrase:
+              id: id
+          comparison:
+            threshold: null
+          liveness:
+            threshold: null
+          referenceData:
+            retainOriginalRecordings: true
+            updateOnReenrollment: true
+            updateOnVerification: true
         _links:
           next:
             href: https://openapi-generator.tech
@@ -866,6 +1773,8 @@ components:
           $ref: '#/components/schemas/OTPDeviceConfiguration'
         transaction:
           $ref: '#/components/schemas/TransactionConfiguration'
+        voice:
+          $ref: '#/components/schemas/VoiceConfiguration'
         createdAt:
           format: date-time
           readOnly: true
@@ -898,6 +1807,213 @@ components:
           description: The URI of the resource.
           format: uri
           type: string
+      type: object
+    EntityArray__embedded:
+      example:
+        contents:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          id: id
+          voicePhrase:
+            id: id
+          locale: locale
+          content: content
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          id: id
+          voicePhrase:
+            id: id
+          locale: locale
+          content: content
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        verifyPolicies:
+        - voice:
+            verify: null
+            enrollment: true
+            textDependent:
+              samples: null
+              phrase:
+                id: id
+            comparison:
+              threshold: null
+            liveness:
+              threshold: null
+            referenceData:
+              retainOriginalRecordings: true
+              updateOnReenrollment: true
+              updateOnVerification: true
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          liveness:
+            verify: null
+            threshold: null
+          description: description
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          default: true
+          phone:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 5
+                timeUnit: null
+              attempts:
+                count: 0
+              deliveries:
+                count: 6
+                cooldown:
+                  duration: 1
+                  timeUnit: null
+          name: name
+          facialComparison:
+            verify: null
+            threshold: null
+          id: id
+          email:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 5
+                timeUnit: null
+              attempts:
+                count: 0
+              deliveries:
+                count: 6
+                cooldown:
+                  duration: 1
+                  timeUnit: null
+          transaction:
+            dataCollectionOnly: true
+            timeout:
+              duration: 5
+              timeUnit: null
+            dataCollection:
+              timeout:
+                duration: 2
+                timeUnit: null
+          governmentId:
+            verify: null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - voice:
+            verify: null
+            enrollment: true
+            textDependent:
+              samples: null
+              phrase:
+                id: id
+            comparison:
+              threshold: null
+            liveness:
+              threshold: null
+            referenceData:
+              retainOriginalRecordings: true
+              updateOnReenrollment: true
+              updateOnVerification: true
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          liveness:
+            verify: null
+            threshold: null
+          description: description
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          default: true
+          phone:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 5
+                timeUnit: null
+              attempts:
+                count: 0
+              deliveries:
+                count: 6
+                cooldown:
+                  duration: 1
+                  timeUnit: null
+          name: name
+          facialComparison:
+            verify: null
+            threshold: null
+          id: id
+          email:
+            createMfaDevice: true
+            verify: null
+            otp:
+              notification:
+                templateName: templateName
+                variantName: variantName
+              lifeTime:
+                duration: 5
+                timeUnit: null
+              attempts:
+                count: 0
+              deliveries:
+                count: 6
+                cooldown:
+                  duration: 1
+                  timeUnit: null
+          transaction:
+            dataCollectionOnly: true
+            timeout:
+              duration: 5
+              timeUnit: null
+            dataCollection:
+              timeout:
+                duration: 2
+                timeUnit: null
+          governmentId:
+            verify: null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        voicePhrases:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          displayName: displayName
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          environment:
+            id: id
+          displayName: displayName
+          id: id
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        verifyPolicies:
+          items:
+            $ref: '#/components/schemas/VerifyPolicy'
+          type: array
+        voicePhrases:
+          items:
+            $ref: '#/components/schemas/VoicePhrase'
+          type: array
+        contents:
+          items:
+            $ref: '#/components/schemas/VoicePhraseContents'
+          type: array
       type: object
     OTPDeviceConfiguration_otp_attempts:
       description: OTP attempts configuration.
@@ -1000,143 +2116,6 @@ components:
       - lifeTime
       - notification
       type: object
-    EntityArray__embedded:
-      example:
-        verifyPolicies:
-        - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          liveness:
-            verify: null
-            threshold: null
-          description: description
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          default: true
-          phone:
-            createMfaDevice: true
-            verify: null
-            otp:
-              notification:
-                templateName: templateName
-                variantName: variantName
-              lifeTime:
-                duration: 5
-                timeUnit: null
-              attempts:
-                count: 0
-              deliveries:
-                count: 6
-                cooldown:
-                  duration: 1
-                  timeUnit: null
-          name: name
-          facialComparison:
-            verify: null
-            threshold: null
-          id: id
-          email:
-            createMfaDevice: true
-            verify: null
-            otp:
-              notification:
-                templateName: templateName
-                variantName: variantName
-              lifeTime:
-                duration: 5
-                timeUnit: null
-              attempts:
-                count: 0
-              deliveries:
-                count: 6
-                cooldown:
-                  duration: 1
-                  timeUnit: null
-          transaction:
-            dataCollectionOnly: true
-            timeout:
-              duration: 5
-              timeUnit: null
-            dataCollection:
-              timeout:
-                duration: 2
-                timeUnit: null
-          governmentId:
-            verify: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          liveness:
-            verify: null
-            threshold: null
-          description: description
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          environment:
-            id: id
-          default: true
-          phone:
-            createMfaDevice: true
-            verify: null
-            otp:
-              notification:
-                templateName: templateName
-                variantName: variantName
-              lifeTime:
-                duration: 5
-                timeUnit: null
-              attempts:
-                count: 0
-              deliveries:
-                count: 6
-                cooldown:
-                  duration: 1
-                  timeUnit: null
-          name: name
-          facialComparison:
-            verify: null
-            threshold: null
-          id: id
-          email:
-            createMfaDevice: true
-            verify: null
-            otp:
-              notification:
-                templateName: templateName
-                variantName: variantName
-              lifeTime:
-                duration: 5
-                timeUnit: null
-              attempts:
-                count: 0
-              deliveries:
-                count: 6
-                cooldown:
-                  duration: 1
-                  timeUnit: null
-          transaction:
-            dataCollectionOnly: true
-            timeout:
-              duration: 5
-              timeUnit: null
-            dataCollection:
-              timeout:
-                duration: 2
-                timeUnit: null
-          governmentId:
-            verify: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-      properties:
-        verifyPolicies:
-          items:
-            $ref: '#/components/schemas/VerifyPolicy'
-          type: array
-      type: object
     P1Error_details_inner_innerError:
       description: Additional details to help the client developer resolve the fault
         (primarily for UI validation reasons).
@@ -1220,6 +2199,14 @@ components:
       required:
       - timeout
       type: object
+    VoicePhraseContents_voicePhrase:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+      required:
+      - id
   securitySchemes:
     bearer:
       bearerFormat: JWT

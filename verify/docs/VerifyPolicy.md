@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to [**OTPDeviceConfiguration**](OTPDeviceConfiguration.md) |  | [optional] 
 **Phone** | Pointer to [**OTPDeviceConfiguration**](OTPDeviceConfiguration.md) |  | [optional] 
 **Transaction** | Pointer to [**TransactionConfiguration**](TransactionConfiguration.md) |  | [optional] 
+**Voice** | Pointer to [**VoiceConfiguration**](VoiceConfiguration.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 
@@ -332,6 +333,31 @@ SetTransaction sets Transaction field to given value.
 `func (o *VerifyPolicy) HasTransaction() bool`
 
 HasTransaction returns a boolean if a field has been set.
+
+### GetVoice
+
+`func (o *VerifyPolicy) GetVoice() VoiceConfiguration`
+
+GetVoice returns the Voice field if non-nil, zero value otherwise.
+
+### GetVoiceOk
+
+`func (o *VerifyPolicy) GetVoiceOk() (*VoiceConfiguration, bool)`
+
+GetVoiceOk returns a tuple with the Voice field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVoice
+
+`func (o *VerifyPolicy) SetVoice(v VoiceConfiguration)`
+
+SetVoice sets Voice field to given value.
+
+### HasVoice
+
+`func (o *VerifyPolicy) HasVoice() bool`
+
+HasVoice returns a boolean if a field has been set.
 
 ### GetCreatedAt
 

@@ -20,73 +20,77 @@ import (
 )
 
 
-// VerifyPoliciesApiService VerifyPoliciesApi service
-type VerifyPoliciesApiService service
+// VoicePhraseContentsApiService VoicePhraseContentsApi service
+type VoicePhraseContentsApiService service
 
-type ApiCreateVerifyPolicyRequest struct {
+type ApiCreateVoicePhraseContentRequest struct {
 	ctx context.Context
-	ApiService *VerifyPoliciesApiService
+	ApiService *VoicePhraseContentsApiService
 	environmentID string
-	verifyPolicy *VerifyPolicy
+	voicePhraseID string
+	voicePhraseContents *VoicePhraseContents
 }
 
-func (r ApiCreateVerifyPolicyRequest) VerifyPolicy(verifyPolicy VerifyPolicy) ApiCreateVerifyPolicyRequest {
-	r.verifyPolicy = &verifyPolicy
+func (r ApiCreateVoicePhraseContentRequest) VoicePhraseContents(voicePhraseContents VoicePhraseContents) ApiCreateVoicePhraseContentRequest {
+	r.voicePhraseContents = &voicePhraseContents
 	return r
 }
 
-func (r ApiCreateVerifyPolicyRequest) Execute() (*VerifyPolicy, *http.Response, error) {
-	return r.ApiService.CreateVerifyPolicyExecute(r)
+func (r ApiCreateVoicePhraseContentRequest) Execute() (*VoicePhraseContents, *http.Response, error) {
+	return r.ApiService.CreateVoicePhraseContentExecute(r)
 }
 
 /*
-CreateVerifyPolicy CREATE Verify Policy
+CreateVoicePhraseContent CREATE Voice Phrase Content
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiCreateVerifyPolicyRequest
+ @param voicePhraseID
+ @return ApiCreateVoicePhraseContentRequest
 */
-func (a *VerifyPoliciesApiService) CreateVerifyPolicy(ctx context.Context, environmentID string) ApiCreateVerifyPolicyRequest {
-	return ApiCreateVerifyPolicyRequest{
+func (a *VoicePhraseContentsApiService) CreateVoicePhraseContent(ctx context.Context, environmentID string, voicePhraseID string) ApiCreateVoicePhraseContentRequest {
+	return ApiCreateVoicePhraseContentRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
+		voicePhraseID: voicePhraseID,
 	}
 }
 
 // Execute executes the request
-//  @return VerifyPolicy
-func (a *VerifyPoliciesApiService) CreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
+//  @return VoicePhraseContents
+func (a *VoicePhraseContentsApiService) CreateVoicePhraseContentExecute(r ApiCreateVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
+		localVarReturnValue  *VoicePhraseContents
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			return r.ApiService.internalCreateVerifyPolicyExecute(r)
+			return r.ApiService.internalCreateVoicePhraseContentExecute(r)
 		},
 		&localVarReturnValue,
 	)
 	return localVarReturnValue, response, err
 }
 			
-func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
+func (a *VoicePhraseContentsApiService) internalCreateVoicePhraseContentExecute(r ApiCreateVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *VerifyPolicy
+		localVarReturnValue  *VoicePhraseContents
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.CreateVerifyPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhraseContentsApiService.CreateVoicePhraseContent")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies"
+	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -110,7 +114,7 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.verifyPolicy
+	localVarPostBody = r.voicePhraseContents
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -225,36 +229,39 @@ func (a *VerifyPoliciesApiService) internalCreateVerifyPolicyExecute(r ApiCreate
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteVerifyPolicyRequest struct {
+type ApiDeleteVoicePhraseContentRequest struct {
 	ctx context.Context
-	ApiService *VerifyPoliciesApiService
+	ApiService *VoicePhraseContentsApiService
 	environmentID string
-	verifyPolicyID string
+	voicePhraseID string
+	voiceContentsID string
 }
 
-func (r ApiDeleteVerifyPolicyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteVerifyPolicyExecute(r)
+func (r ApiDeleteVoicePhraseContentRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteVoicePhraseContentExecute(r)
 }
 
 /*
-DeleteVerifyPolicy Delete Verify Policy
+DeleteVoicePhraseContent Delete Voice Phrase Content
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param verifyPolicyID
- @return ApiDeleteVerifyPolicyRequest
+ @param voicePhraseID
+ @param voiceContentsID
+ @return ApiDeleteVoicePhraseContentRequest
 */
-func (a *VerifyPoliciesApiService) DeleteVerifyPolicy(ctx context.Context, environmentID string, verifyPolicyID string) ApiDeleteVerifyPolicyRequest {
-	return ApiDeleteVerifyPolicyRequest{
+func (a *VoicePhraseContentsApiService) DeleteVoicePhraseContent(ctx context.Context, environmentID string, voicePhraseID string, voiceContentsID string) ApiDeleteVoicePhraseContentRequest {
+	return ApiDeleteVoicePhraseContentRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		verifyPolicyID: verifyPolicyID,
+		voicePhraseID: voicePhraseID,
+		voiceContentsID: voiceContentsID,
 	}
 }
 
 // Execute executes the request
-func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
+func (a *VoicePhraseContentsApiService) DeleteVoicePhraseContentExecute(r ApiDeleteVoicePhraseContentRequest) (*http.Response, error) {
 	var (
 		err      error
 		response *http.Response
@@ -262,7 +269,7 @@ func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPo
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			resp, err := r.ApiService.internalDeleteVerifyPolicyExecute(r)
+			resp, err := r.ApiService.internalDeleteVoicePhraseContentExecute(r)
 			return nil, resp, err
 		},
 		nil,
@@ -270,21 +277,22 @@ func (a *VerifyPoliciesApiService) DeleteVerifyPolicyExecute(r ApiDeleteVerifyPo
 	return response, err
 }
 			
-func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDeleteVerifyPolicyRequest) (*http.Response, error) {
+func (a *VoicePhraseContentsApiService) internalDeleteVoicePhraseContentExecute(r ApiDeleteVoicePhraseContentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.DeleteVerifyPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhraseContentsApiService.DeleteVoicePhraseContent")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -401,34 +409,37 @@ func (a *VerifyPoliciesApiService) internalDeleteVerifyPolicyExecute(r ApiDelete
 	return localVarHTTPResponse, nil
 }
 
-type ApiReadAllVerifyPoliciesRequest struct {
+type ApiReadAllVoicePhraseContentsRequest struct {
 	ctx context.Context
-	ApiService *VerifyPoliciesApiService
+	ApiService *VoicePhraseContentsApiService
 	environmentID string
+	voicePhraseID string
 }
 
-func (r ApiReadAllVerifyPoliciesRequest) Execute() (*EntityArray, *http.Response, error) {
-	return r.ApiService.ReadAllVerifyPoliciesExecute(r)
+func (r ApiReadAllVoicePhraseContentsRequest) Execute() (*EntityArray, *http.Response, error) {
+	return r.ApiService.ReadAllVoicePhraseContentsExecute(r)
 }
 
 /*
-ReadAllVerifyPolicies READ All Verify Policies
+ReadAllVoicePhraseContents READ All Voice Phrase Contents
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @return ApiReadAllVerifyPoliciesRequest
+ @param voicePhraseID
+ @return ApiReadAllVoicePhraseContentsRequest
 */
-func (a *VerifyPoliciesApiService) ReadAllVerifyPolicies(ctx context.Context, environmentID string) ApiReadAllVerifyPoliciesRequest {
-	return ApiReadAllVerifyPoliciesRequest{
+func (a *VoicePhraseContentsApiService) ReadAllVoicePhraseContents(ctx context.Context, environmentID string, voicePhraseID string) ApiReadAllVoicePhraseContentsRequest {
+	return ApiReadAllVoicePhraseContentsRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
+		voicePhraseID: voicePhraseID,
 	}
 }
 
 // Execute executes the request
 //  @return EntityArray
-func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *VoicePhraseContentsApiService) ReadAllVoicePhraseContentsExecute(r ApiReadAllVoicePhraseContentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -437,14 +448,14 @@ func (a *VerifyPoliciesApiService) ReadAllVerifyPoliciesExecute(r ApiReadAllVeri
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			return r.ApiService.internalReadAllVerifyPoliciesExecute(r)
+			return r.ApiService.internalReadAllVoicePhraseContentsExecute(r)
 		},
 		&localVarReturnValue,
 	)
 	return localVarReturnValue, response, err
 }
 			
-func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiReadAllVerifyPoliciesRequest) (*EntityArray, *http.Response, error) {
+func (a *VoicePhraseContentsApiService) internalReadAllVoicePhraseContentsExecute(r ApiReadAllVoicePhraseContentsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -452,13 +463,14 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 		localVarReturnValue  *EntityArray
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.ReadAllVerifyPolicies")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhraseContentsApiService.ReadAllVoicePhraseContents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies"
+	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -584,68 +596,72 @@ func (a *VerifyPoliciesApiService) internalReadAllVerifyPoliciesExecute(r ApiRea
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiReadOneVerifyPolicyRequest struct {
+type ApiReadOneVoicePhraseContentRequest struct {
 	ctx context.Context
-	ApiService *VerifyPoliciesApiService
+	ApiService *VoicePhraseContentsApiService
 	environmentID string
-	verifyPolicyID string
+	voicePhraseID string
+	voiceContentsID string
 }
 
-func (r ApiReadOneVerifyPolicyRequest) Execute() (*VerifyPolicy, *http.Response, error) {
-	return r.ApiService.ReadOneVerifyPolicyExecute(r)
+func (r ApiReadOneVoicePhraseContentRequest) Execute() (*VoicePhraseContents, *http.Response, error) {
+	return r.ApiService.ReadOneVoicePhraseContentExecute(r)
 }
 
 /*
-ReadOneVerifyPolicy READ One Verify Policy
+ReadOneVoicePhraseContent READ One Voice Phrase Content
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param verifyPolicyID
- @return ApiReadOneVerifyPolicyRequest
+ @param voicePhraseID
+ @param voiceContentsID
+ @return ApiReadOneVoicePhraseContentRequest
 */
-func (a *VerifyPoliciesApiService) ReadOneVerifyPolicy(ctx context.Context, environmentID string, verifyPolicyID string) ApiReadOneVerifyPolicyRequest {
-	return ApiReadOneVerifyPolicyRequest{
+func (a *VoicePhraseContentsApiService) ReadOneVoicePhraseContent(ctx context.Context, environmentID string, voicePhraseID string, voiceContentsID string) ApiReadOneVoicePhraseContentRequest {
+	return ApiReadOneVoicePhraseContentRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		verifyPolicyID: verifyPolicyID,
+		voicePhraseID: voicePhraseID,
+		voiceContentsID: voiceContentsID,
 	}
 }
 
 // Execute executes the request
-//  @return VerifyPolicy
-func (a *VerifyPoliciesApiService) ReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
+//  @return VoicePhraseContents
+func (a *VoicePhraseContentsApiService) ReadOneVoicePhraseContentExecute(r ApiReadOneVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
+		localVarReturnValue  *VoicePhraseContents
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			return r.ApiService.internalReadOneVerifyPolicyExecute(r)
+			return r.ApiService.internalReadOneVoicePhraseContentExecute(r)
 		},
 		&localVarReturnValue,
 	)
 	return localVarReturnValue, response, err
 }
 			
-func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadOneVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
+func (a *VoicePhraseContentsApiService) internalReadOneVoicePhraseContentExecute(r ApiReadOneVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *VerifyPolicy
+		localVarReturnValue  *VoicePhraseContents
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.ReadOneVerifyPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhraseContentsApiService.ReadOneVoicePhraseContent")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -771,74 +787,78 @@ func (a *VerifyPoliciesApiService) internalReadOneVerifyPolicyExecute(r ApiReadO
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateVerifyPolicyRequest struct {
+type ApiUpdateVoicePhraseContentRequest struct {
 	ctx context.Context
-	ApiService *VerifyPoliciesApiService
+	ApiService *VoicePhraseContentsApiService
 	environmentID string
-	verifyPolicyID string
-	verifyPolicy *VerifyPolicy
+	voicePhraseID string
+	voiceContentsID string
+	voicePhraseContents *VoicePhraseContents
 }
 
-func (r ApiUpdateVerifyPolicyRequest) VerifyPolicy(verifyPolicy VerifyPolicy) ApiUpdateVerifyPolicyRequest {
-	r.verifyPolicy = &verifyPolicy
+func (r ApiUpdateVoicePhraseContentRequest) VoicePhraseContents(voicePhraseContents VoicePhraseContents) ApiUpdateVoicePhraseContentRequest {
+	r.voicePhraseContents = &voicePhraseContents
 	return r
 }
 
-func (r ApiUpdateVerifyPolicyRequest) Execute() (*VerifyPolicy, *http.Response, error) {
-	return r.ApiService.UpdateVerifyPolicyExecute(r)
+func (r ApiUpdateVoicePhraseContentRequest) Execute() (*VoicePhraseContents, *http.Response, error) {
+	return r.ApiService.UpdateVoicePhraseContentExecute(r)
 }
 
 /*
-UpdateVerifyPolicy UPDATE Verify Policy
+UpdateVoicePhraseContent UPDATE Voice Phrase Content
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
- @param verifyPolicyID
- @return ApiUpdateVerifyPolicyRequest
+ @param voicePhraseID
+ @param voiceContentsID
+ @return ApiUpdateVoicePhraseContentRequest
 */
-func (a *VerifyPoliciesApiService) UpdateVerifyPolicy(ctx context.Context, environmentID string, verifyPolicyID string) ApiUpdateVerifyPolicyRequest {
-	return ApiUpdateVerifyPolicyRequest{
+func (a *VoicePhraseContentsApiService) UpdateVoicePhraseContent(ctx context.Context, environmentID string, voicePhraseID string, voiceContentsID string) ApiUpdateVoicePhraseContentRequest {
+	return ApiUpdateVoicePhraseContentRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
-		verifyPolicyID: verifyPolicyID,
+		voicePhraseID: voicePhraseID,
+		voiceContentsID: voiceContentsID,
 	}
 }
 
 // Execute executes the request
-//  @return VerifyPolicy
-func (a *VerifyPoliciesApiService) UpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
+//  @return VoicePhraseContents
+func (a *VoicePhraseContentsApiService) UpdateVoicePhraseContentExecute(r ApiUpdateVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *VerifyPolicy
+		localVarReturnValue  *VoicePhraseContents
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			return r.ApiService.internalUpdateVerifyPolicyExecute(r)
+			return r.ApiService.internalUpdateVoicePhraseContentExecute(r)
 		},
 		&localVarReturnValue,
 	)
 	return localVarReturnValue, response, err
 }
 			
-func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdateVerifyPolicyRequest) (*VerifyPolicy, *http.Response, error) {
+func (a *VoicePhraseContentsApiService) internalUpdateVoicePhraseContentExecute(r ApiUpdateVoicePhraseContentRequest) (*VoicePhraseContents, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *VerifyPolicy
+		localVarReturnValue  *VoicePhraseContents
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VerifyPoliciesApiService.UpdateVerifyPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VoicePhraseContentsApiService.UpdateVoicePhraseContent")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environments/{environmentID}/verifyPolicies/{verifyPolicyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"verifyPolicyID"+"}", url.PathEscape(parameterValueToString(r.verifyPolicyID, "verifyPolicyID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"voicePhraseID"+"}", url.PathEscape(parameterValueToString(r.voicePhraseID, "voicePhraseID")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"voiceContentsID"+"}", url.PathEscape(parameterValueToString(r.voiceContentsID, "voiceContentsID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -862,7 +882,7 @@ func (a *VerifyPoliciesApiService) internalUpdateVerifyPolicyExecute(r ApiUpdate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.verifyPolicy
+	localVarPostBody = r.voicePhraseContents
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
