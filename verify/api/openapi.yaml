@@ -464,6 +464,24 @@ components:
             $ref: '#/components/schemas/P1Error'
       description: Uncaught error occurred.  Platform outage
   schemas:
+    LinksHATEOAS:
+      additionalProperties: true
+      example:
+        next:
+          href: https://openapi-generator.tech
+        self:
+          href: https://openapi-generator.tech
+      properties:
+        self:
+          $ref: '#/components/schemas/LinksHATEOAS_self'
+        next:
+          $ref: '#/components/schemas/LinksHATEOAS_next'
+      readOnly: true
+      type: object
+    LinksHATEOASHref:
+      description: The URI of the resource.
+      format: uri
+      type: string
     OTPDeviceConfiguration:
       example:
         createMfaDevice: true
@@ -497,9 +515,19 @@ components:
     EntityArray:
       example:
         size: 7.061401241503109
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         _embedded:
           verifyPolicies:
-          - liveness:
+          - _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            liveness:
               verify: null
               threshold: null
             description: description
@@ -558,7 +586,12 @@ components:
             governmentId:
               verify: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - liveness:
+          - _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            liveness:
               verify: null
               threshold: null
             description: description
@@ -618,6 +651,8 @@ components:
               verify: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
         size:
@@ -737,6 +772,11 @@ components:
       type: object
     VerifyPolicy:
       example:
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         liveness:
           verify: null
           threshold: null
@@ -797,6 +837,8 @@ components:
           verify: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           readOnly: true
           type: string
@@ -834,6 +876,28 @@ components:
           type: string
       required:
       - name
+      type: object
+    LinksHATEOAS_self:
+      description: An object that describes the current resource.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
+    LinksHATEOAS_next:
+      description: An object that describes the next page of results. This property
+        is present only if there is a next page of results and the `limit` parameter
+        is used.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
       type: object
     OTPDeviceConfiguration_otp_attempts:
       description: OTP attempts configuration.
@@ -939,7 +1003,12 @@ components:
     EntityArray__embedded:
       example:
         verifyPolicies:
-        - liveness:
+        - _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          liveness:
             verify: null
             threshold: null
           description: description
@@ -998,7 +1067,12 @@ components:
           governmentId:
             verify: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - liveness:
+        - _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          liveness:
             verify: null
             threshold: null
           description: description
