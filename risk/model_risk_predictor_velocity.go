@@ -20,6 +20,7 @@ var _ MappedNullable = &RiskPredictorVelocity{}
 
 // RiskPredictorVelocity struct for RiskPredictorVelocity
 type RiskPredictorVelocity struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights.
@@ -67,6 +68,38 @@ func NewRiskPredictorVelocity(name string, compactName string, type_ EnumPredict
 func NewRiskPredictorVelocityWithDefaults() *RiskPredictorVelocity {
 	this := RiskPredictorVelocity{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *RiskPredictorVelocity) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorVelocity) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *RiskPredictorVelocity) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *RiskPredictorVelocity) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -663,6 +696,9 @@ func (o RiskPredictorVelocity) MarshalJSON() ([]byte, error) {
 
 func (o RiskPredictorVelocity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: id is readOnly
 	toSerialize["name"] = o.Name
 	toSerialize["compactName"] = o.CompactName

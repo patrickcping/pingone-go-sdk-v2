@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Provider** | [**EnumNotificationsSettingsPhoneDeliverySettingsProvider**](EnumNotificationsSettingsPhoneDeliverySettingsProvider.md) |  | 
@@ -31,6 +32,31 @@ will change when the set of required properties is changed
 NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseWithDefaults instantiates a new NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetId
 

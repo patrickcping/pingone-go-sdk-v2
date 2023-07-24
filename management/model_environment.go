@@ -19,6 +19,7 @@ var _ MappedNullable = &Environment{}
 
 // Environment struct for Environment
 type Environment struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	BillOfMaterials *BillOfMaterials `json:"billOfMaterials,omitempty"`
 	// The time the resource was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
@@ -55,6 +56,38 @@ func NewEnvironment(license EnvironmentLicense, name string, region EnumRegionCo
 func NewEnvironmentWithDefaults() *Environment {
 	this := Environment{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *Environment) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Environment) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *Environment) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *Environment) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetBillOfMaterials returns the BillOfMaterials field value if set, zero value otherwise.
@@ -355,6 +388,9 @@ func (o Environment) MarshalJSON() ([]byte, error) {
 
 func (o Environment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.BillOfMaterials) {
 		toSerialize["billOfMaterials"] = o.BillOfMaterials
 	}

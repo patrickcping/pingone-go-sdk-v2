@@ -20,6 +20,7 @@ var _ MappedNullable = &CredentialType{}
 
 // CredentialType struct for CredentialType
 type CredentialType struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image.
 	CardDesignTemplate string `json:"cardDesignTemplate"`
 	// A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance.
@@ -61,6 +62,38 @@ func NewCredentialType(cardDesignTemplate string, metadata CredentialTypeMetaDat
 func NewCredentialTypeWithDefaults() *CredentialType {
 	this := CredentialType{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *CredentialType) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *CredentialType) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *CredentialType) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetCardDesignTemplate returns the CardDesignTemplate field value
@@ -433,6 +466,9 @@ func (o CredentialType) MarshalJSON() ([]byte, error) {
 
 func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["cardDesignTemplate"] = o.CardDesignTemplate
 	if !IsNil(o.CardType) {
 		toSerialize["cardType"] = o.CardType

@@ -19,6 +19,7 @@ var _ MappedNullable = &AgreementLanguage{}
 
 // AgreementLanguage struct for AgreementLanguage
 type AgreementLanguage struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Agreement *AgreementLanguageAgreement `json:"agreement,omitempty"`
 	CurrentRevision *AgreementLanguageCurrentRevision `json:"currentRevision,omitempty"`
 	// A string that is used as the title of the agreement for the language presented to the user. This is a required property.
@@ -50,6 +51,38 @@ func NewAgreementLanguage(displayName string, enabled bool, locale string) *Agre
 func NewAgreementLanguageWithDefaults() *AgreementLanguage {
 	this := AgreementLanguage{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *AgreementLanguage) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgreementLanguage) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *AgreementLanguage) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *AgreementLanguage) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAgreement returns the Agreement field value if set, zero value otherwise.
@@ -262,6 +295,9 @@ func (o AgreementLanguage) MarshalJSON() ([]byte, error) {
 
 func (o AgreementLanguage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Agreement) {
 		toSerialize["agreement"] = o.Agreement
 	}

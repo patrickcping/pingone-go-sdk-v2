@@ -19,6 +19,7 @@ var _ MappedNullable = &BrandingThemeDefault{}
 
 // BrandingThemeDefault struct for BrandingThemeDefault
 type BrandingThemeDefault struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A boolean to specify whether the theme is the default in the environment
 	Default bool `json:"default"`
 }
@@ -39,6 +40,38 @@ func NewBrandingThemeDefault(default_ bool) *BrandingThemeDefault {
 func NewBrandingThemeDefaultWithDefaults() *BrandingThemeDefault {
 	this := BrandingThemeDefault{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *BrandingThemeDefault) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BrandingThemeDefault) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *BrandingThemeDefault) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *BrandingThemeDefault) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetDefault returns the Default field value
@@ -75,6 +108,9 @@ func (o BrandingThemeDefault) MarshalJSON() ([]byte, error) {
 
 func (o BrandingThemeDefault) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["default"] = o.Default
 	return toSerialize, nil
 }

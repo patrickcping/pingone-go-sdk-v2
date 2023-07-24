@@ -9,6 +9,9 @@ docs/EnumTimeUnit.md
 docs/EnumVerify.md
 docs/FacialComparisonConfiguration.md
 docs/GovernmentIdConfiguration.md
+docs/LinksHATEOAS.md
+docs/LinksHATEOASNext.md
+docs/LinksHATEOASSelf.md
 docs/LivenessConfiguration.md
 docs/OTPDeviceConfiguration.md
 docs/OTPDeviceConfigurationOtp.md
@@ -36,6 +39,9 @@ model_enum_time_unit.go
 model_enum_verify.go
 model_facial_comparison_configuration.go
 model_government_id_configuration.go
+model_links_hateoas.go
+model_links_hateoas_next.go
+model_links_hateoas_self.go
 model_liveness_configuration.go
 model_object_environment.go
 model_otp_device_configuration.go

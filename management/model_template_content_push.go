@@ -19,6 +19,7 @@ var _ MappedNullable = &TemplateContentPush{}
 
 // TemplateContentPush struct for TemplateContentPush
 type TemplateContentPush struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The template id.
 	Id *string `json:"id,omitempty"`
 	// The time the resource was created.
@@ -58,6 +59,38 @@ func NewTemplateContentPush(locale string, deliveryMethod EnumTemplateContentDel
 func NewTemplateContentPushWithDefaults() *TemplateContentPush {
 	this := TemplateContentPush{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *TemplateContentPush) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TemplateContentPush) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *TemplateContentPush) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *TemplateContentPush) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -358,6 +391,9 @@ func (o TemplateContentPush) MarshalJSON() ([]byte, error) {
 
 func (o TemplateContentPush) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: id is readOnly
 	// skip: createdAt is readOnly
 	// skip: updatedAt is readOnly

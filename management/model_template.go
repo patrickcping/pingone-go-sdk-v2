@@ -19,6 +19,7 @@ var _ MappedNullable = &Template{}
 
 // Template struct for Template
 type Template struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The template id
 	Id *string `json:"id,omitempty"`
 	// The template’s display name.
@@ -55,6 +56,38 @@ func NewTemplate(displayName string, deliveryMethods []string, variables map[str
 func NewTemplateWithDefaults() *Template {
 	this := Template{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *Template) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Template) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *Template) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *Template) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -299,6 +332,9 @@ func (o Template) MarshalJSON() ([]byte, error) {
 
 func (o Template) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: id is readOnly
 	toSerialize["displayName"] = o.DisplayName
 	toSerialize["deliveryMethods"] = o.DeliveryMethods

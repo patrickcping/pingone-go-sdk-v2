@@ -20,6 +20,7 @@ var _ MappedNullable = &License{}
 
 // License struct for License
 type License struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	AdvancedServices *LicenseAdvancedServices `json:"advancedServices,omitempty"`
 	// A read-only integer that specifies the total number of environments associated with this license.
 	AssignedEnvironmentsCount *int32 `json:"assignedEnvironmentsCount,omitempty"`
@@ -67,6 +68,38 @@ func NewLicense(name string) *License {
 func NewLicenseWithDefaults() *License {
 	this := License{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *License) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *License) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *License) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *License) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAdvancedServices returns the AdvancedServices field value if set, zero value otherwise.
@@ -775,6 +808,9 @@ func (o License) MarshalJSON() ([]byte, error) {
 
 func (o License) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.AdvancedServices) {
 		toSerialize["advancedServices"] = o.AdvancedServices
 	}

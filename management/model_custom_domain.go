@@ -19,6 +19,7 @@ var _ MappedNullable = &CustomDomain{}
 
 // CustomDomain struct for CustomDomain
 type CustomDomain struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Certificate *CustomDomainCertificate `json:"certificate,omitempty"`
 	// A string that specifies the domain name that should be used as the value of the CNAME record in the customer’s DNS.
 	CanonicalName *string `json:"canonicalName,omitempty"`
@@ -46,6 +47,38 @@ func NewCustomDomain(domainName string) *CustomDomain {
 func NewCustomDomainWithDefaults() *CustomDomain {
 	this := CustomDomain{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *CustomDomain) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomDomain) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *CustomDomain) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *CustomDomain) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise.
@@ -242,6 +275,9 @@ func (o CustomDomain) MarshalJSON() ([]byte, error) {
 
 func (o CustomDomain) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate
 	}

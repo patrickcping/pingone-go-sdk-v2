@@ -19,6 +19,7 @@ var _ MappedNullable = &IdentityProviderAttribute{}
 
 // IdentityProviderAttribute struct for IdentityProviderAttribute
 type IdentityProviderAttribute struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	MappingType *EnumIdentityProviderAttributeMappingType `json:"mappingType,omitempty"`
 	// The user attribute, which is unique per provider. The attribute must not be defined as read only from the user schema or of type COMPLEX based on the user schema. Valid examples username, and name.first. The following attributes may not be used account, id, created, updated, lifecycle, mfaEnabled, and enabled.
 	Name string `json:"name"`
@@ -53,6 +54,38 @@ func NewIdentityProviderAttribute(name string, value string, update EnumIdentity
 func NewIdentityProviderAttributeWithDefaults() *IdentityProviderAttribute {
 	this := IdentityProviderAttribute{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *IdentityProviderAttribute) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderAttribute) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *IdentityProviderAttribute) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *IdentityProviderAttribute) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetMappingType returns the MappingType field value if set, zero value otherwise.
@@ -329,6 +362,9 @@ func (o IdentityProviderAttribute) MarshalJSON() ([]byte, error) {
 
 func (o IdentityProviderAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.MappingType) {
 		toSerialize["mappingType"] = o.MappingType
 	}

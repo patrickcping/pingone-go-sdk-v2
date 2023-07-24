@@ -20,6 +20,7 @@ var _ MappedNullable = &AgreementLanguageRevision{}
 
 // AgreementLanguageRevision struct for AgreementLanguageRevision
 type AgreementLanguageRevision struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Agreement *AgreementLanguageAgreement `json:"agreement,omitempty"`
 	ContentType EnumAgreementRevisionContentType `json:"contentType"`
 	// A date that specifies the start date that the revision is presented to users. This property value can be modified only if the current value is a date that has not already passed. The effective date must be unique for each language agreement, and the property value can be the present date or a future date only.
@@ -54,6 +55,38 @@ func NewAgreementLanguageRevision(contentType EnumAgreementRevisionContentType, 
 func NewAgreementLanguageRevisionWithDefaults() *AgreementLanguageRevision {
 	this := AgreementLanguageRevision{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *AgreementLanguageRevision) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgreementLanguageRevision) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *AgreementLanguageRevision) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *AgreementLanguageRevision) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAgreement returns the Agreement field value if set, zero value otherwise.
@@ -290,6 +323,9 @@ func (o AgreementLanguageRevision) MarshalJSON() ([]byte, error) {
 
 func (o AgreementLanguageRevision) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Agreement) {
 		toSerialize["agreement"] = o.Agreement
 	}

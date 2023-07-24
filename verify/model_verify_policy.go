@@ -20,6 +20,7 @@ var _ MappedNullable = &VerifyPolicy{}
 
 // VerifyPolicy struct for VerifyPolicy
 type VerifyPolicy struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// Name displayed in PingOne Admin UI.
@@ -54,6 +55,38 @@ func NewVerifyPolicy(name string) *VerifyPolicy {
 func NewVerifyPolicyWithDefaults() *VerifyPolicy {
 	this := VerifyPolicy{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *VerifyPolicy) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VerifyPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *VerifyPolicy) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *VerifyPolicy) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -474,6 +507,9 @@ func (o VerifyPolicy) MarshalJSON() ([]byte, error) {
 
 func (o VerifyPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: id is readOnly
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment

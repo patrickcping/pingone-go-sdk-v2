@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllPopulations
 
-> EntityArray ReadAllPopulations(ctx, environmentID).Limit(limit).Filter(filter).Execute()
+> EntityArray ReadAllPopulations(ctx, environmentID).Limit(limit).Filter(filter).Cursor(cursor).Execute()
 
 READ All Populations
 
@@ -173,10 +173,11 @@ func main() {
     environmentID := "environmentID_example" // string | 
     limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
     filter := "id eq "60971d3b-cc5a-4601-9c44-2be541f91bf1"" // string | Adding a SCIM filter for a population ID or population name to display only those resources associated with the specified population. Only the id and name parameters are supported (optional)
+    cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PopulationsApi.ReadAllPopulations(context.Background(), environmentID).Limit(limit).Filter(filter).Execute()
+    resp, r, err := apiClient.PopulationsApi.ReadAllPopulations(context.Background(), environmentID).Limit(limit).Filter(filter).Cursor(cursor).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PopulationsApi.ReadAllPopulations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,6 +205,7 @@ Name | Type | Description  | Notes
 
  **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
  **filter** | **string** | Adding a SCIM filter for a population ID or population name to display only those resources associated with the specified population. Only the id and name parameters are supported | 
+ **cursor** | **string** | Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload. | 
 
 ### Return type
 

@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllUsers
 
-> EntityArray ReadAllUsers(ctx, environmentID).Filter(filter).Limit(limit).Execute()
+> EntityArray ReadAllUsers(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 READ All Users
 
@@ -460,10 +460,11 @@ func main() {
     environmentID := "environmentID_example" // string | 
     filter := "memberOfGroups[id eq "{{groupID}}"] and name.family eq "demo"" // string |  (optional)
     limit := int32(100) // int32 |  (optional)
+    cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.ReadAllUsers(context.Background(), environmentID).Filter(filter).Limit(limit).Execute()
+    resp, r, err := apiClient.UsersApi.ReadAllUsers(context.Background(), environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.ReadAllUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -491,6 +492,7 @@ Name | Type | Description  | Notes
 
  **filter** | **string** |  | 
  **limit** | **int32** |  | 
+ **cursor** | **string** | Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload. | 
 
 ### Return type
 

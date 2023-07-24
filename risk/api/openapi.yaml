@@ -928,9 +928,32 @@ components:
             $ref: '#/components/schemas/P1Error'
       description: Uncaught error occurred.  Platform outage
   schemas:
+    LinksHATEOAS:
+      additionalProperties: true
+      example:
+        next:
+          href: https://openapi-generator.tech
+        self:
+          href: https://openapi-generator.tech
+      properties:
+        self:
+          $ref: '#/components/schemas/LinksHATEOAS_self'
+        next:
+          $ref: '#/components/schemas/LinksHATEOAS_next'
+      readOnly: true
+      type: object
+    LinksHATEOASHref:
+      description: The URI of the resource.
+      format: uri
+      type: string
     EntityArray:
       example:
         size: 7.061401241503109
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         _embedded:
           riskPolicySets:
           - evaluatedPredictors:
@@ -940,6 +963,11 @@ components:
             default: true
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
@@ -972,6 +1000,11 @@ components:
                   maxScore: 596
               environment:
                 id: id
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
               name: name
               description: description
               id: id
@@ -1005,6 +1038,11 @@ components:
                   maxScore: 596
               environment:
                 id: id
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
               name: name
               description: description
               id: id
@@ -1030,6 +1068,11 @@ components:
             default: true
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
@@ -1062,6 +1105,11 @@ components:
                   maxScore: 596
               environment:
                 id: id
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
               name: name
               description: description
               id: id
@@ -1095,6 +1143,11 @@ components:
                   maxScore: 596
               environment:
                 id: id
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
               name: name
               description: description
               id: id
@@ -1118,6 +1171,8 @@ components:
           - null
         count: 2.3021358869347655
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
         count:
@@ -1317,6 +1372,11 @@ components:
         riskPolicySet:
           name: name
           id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         details:
           ipAddressReputation:
             score: 0
@@ -1432,6 +1492,8 @@ components:
             type: null
         updatedAt: updatedAt
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         createdAt:
           description: The time the resource was created (format ISO-8061).
           readOnly: true
@@ -1702,12 +1764,19 @@ components:
             maxScore: 596
         environment:
           id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         name: name
         description: description
         id: id
         priority: 5
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         condition:
           $ref: '#/components/schemas/RiskPolicy_condition'
         createdAt:
@@ -1762,6 +1831,11 @@ components:
         default: true
         environment:
           id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         name: name
         description: description
         id: id
@@ -1794,6 +1868,11 @@ components:
               maxScore: 596
           environment:
             id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
@@ -1827,6 +1906,11 @@ components:
               maxScore: 596
           environment:
             id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
@@ -1846,6 +1930,8 @@ components:
           type: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         createdAt:
           description: The time the resource was created (format ISO-8061).
           format: date-time
@@ -1938,6 +2024,8 @@ components:
       - $ref: '#/components/schemas/RiskPredictorVelocity'
     RiskPredictorCommon:
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -2128,6 +2216,28 @@ components:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorVelocity_allOf'
+    LinksHATEOAS_self:
+      description: An object that describes the current resource.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
+    LinksHATEOAS_next:
+      description: An object that describes the next page of results. This property
+        is present only if there is a next page of results and the `limit` parameter
+        is used.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
     EntityArray__embedded:
       example:
         riskPolicySets:
@@ -2138,6 +2248,11 @@ components:
           default: true
           environment:
             id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
@@ -2170,6 +2285,11 @@ components:
                 maxScore: 596
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
@@ -2203,6 +2323,11 @@ components:
                 maxScore: 596
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
@@ -2228,6 +2353,11 @@ components:
           default: true
           environment:
             id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
@@ -2260,6 +2390,11 @@ components:
                 maxScore: 596
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
@@ -2293,6 +2428,11 @@ components:
                 maxScore: 596
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id

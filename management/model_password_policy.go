@@ -19,6 +19,7 @@ var _ MappedNullable = &PasswordPolicy{}
 
 // PasswordPolicy struct for PasswordPolicy
 type PasswordPolicy struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// Determines whether the password policy for a user will be ignored. If this property is omitted from a CREATE Password Policy request, its value is set to false.
 	BypassPolicy *bool `json:"bypassPolicy,omitempty"`
 	// The date and time the resource was created (format ISO-8061).
@@ -85,6 +86,38 @@ func NewPasswordPolicyWithDefaults() *PasswordPolicy {
 	var bypassPolicy bool = false
 	this.BypassPolicy = &bypassPolicy
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *PasswordPolicy) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PasswordPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *PasswordPolicy) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *PasswordPolicy) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetBypassPolicy returns the BypassPolicy field value if set, zero value otherwise.
@@ -801,6 +834,9 @@ func (o PasswordPolicy) MarshalJSON() ([]byte, error) {
 
 func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.BypassPolicy) {
 		toSerialize["bypassPolicy"] = o.BypassPolicy
 	}

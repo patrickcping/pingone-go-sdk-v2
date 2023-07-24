@@ -20,6 +20,7 @@ var _ MappedNullable = &ProvisionedCredential{}
 
 // ProvisionedCredential struct for ProvisionedCredential
 type ProvisionedCredential struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	ClaimReference *ProvisionedCredentialClaimReference `json:"claimReference,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	Credential *ProvisionedCredentialCredential `json:"credential,omitempty"`
@@ -49,6 +50,38 @@ func NewProvisionedCredential() *ProvisionedCredential {
 func NewProvisionedCredentialWithDefaults() *ProvisionedCredential {
 	this := ProvisionedCredential{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *ProvisionedCredential) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProvisionedCredential) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *ProvisionedCredential) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *ProvisionedCredential) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetClaimReference returns the ClaimReference field value if set, zero value otherwise.
@@ -381,6 +414,9 @@ func (o ProvisionedCredential) MarshalJSON() ([]byte, error) {
 
 func (o ProvisionedCredential) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.ClaimReference) {
 		toSerialize["claimReference"] = o.ClaimReference
 	}

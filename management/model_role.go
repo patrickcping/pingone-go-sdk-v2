@@ -19,6 +19,7 @@ var _ MappedNullable = &Role{}
 
 // Role struct for Role
 type Role struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies the scope to which the role applies.
 	ApplicableTo []string `json:"applicableTo,omitempty"`
 	// A string that specifies the description of the role.
@@ -45,6 +46,38 @@ func NewRole() *Role {
 func NewRoleWithDefaults() *Role {
 	this := Role{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *Role) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *Role) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *Role) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetApplicableTo returns the ApplicableTo field value if set, zero value otherwise.
@@ -217,6 +250,9 @@ func (o Role) MarshalJSON() ([]byte, error) {
 
 func (o Role) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: applicableTo is readOnly
 	// skip: description is readOnly
 	// skip: id is readOnly

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Agreement** | Pointer to [**AgreementLanguageAgreement**](AgreementLanguageAgreement.md) |  | [optional] 
 **CurrentRevision** | Pointer to [**AgreementLanguageCurrentRevision**](AgreementLanguageCurrentRevision.md) |  | [optional] 
 **DisplayName** | **string** | A string that is used as the title of the agreement for the language presented to the user. This is a required property. | 
@@ -36,6 +37,31 @@ will change when the set of required properties is changed
 NewEntityArrayEmbeddedLanguagesInnerWithDefaults instantiates a new EntityArrayEmbeddedLanguagesInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *EntityArrayEmbeddedLanguagesInner) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *EntityArrayEmbeddedLanguagesInner) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *EntityArrayEmbeddedLanguagesInner) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *EntityArrayEmbeddedLanguagesInner) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetAgreement
 
