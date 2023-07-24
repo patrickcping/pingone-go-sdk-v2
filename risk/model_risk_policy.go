@@ -20,6 +20,7 @@ var _ MappedNullable = &RiskPolicy{}
 
 // RiskPolicy struct for RiskPolicy
 type RiskPolicy struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Condition RiskPolicyCondition `json:"condition"`
 	// The time the resource was first created (format ISO-8061).
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
@@ -55,6 +56,38 @@ func NewRiskPolicy(condition RiskPolicyCondition, name string, result RiskPolicy
 func NewRiskPolicyWithDefaults() *RiskPolicy {
 	this := RiskPolicy{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *RiskPolicy) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskPolicy) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *RiskPolicy) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *RiskPolicy) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetCondition returns the Condition field value
@@ -331,6 +364,9 @@ func (o RiskPolicy) MarshalJSON() ([]byte, error) {
 
 func (o RiskPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["condition"] = o.Condition
 	// skip: createdAt is readOnly
 	if !IsNil(o.Description) {

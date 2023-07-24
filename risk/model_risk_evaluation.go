@@ -19,6 +19,7 @@ var _ MappedNullable = &RiskEvaluation{}
 
 // RiskEvaluation struct for RiskEvaluation
 type RiskEvaluation struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The time the resource was created (format ISO-8061).
 	CreatedAt *string `json:"createdAt,omitempty"`
 	Details *RiskEvaluationDetails `json:"details,omitempty"`
@@ -48,6 +49,38 @@ func NewRiskEvaluation(event RiskEvaluationEvent) *RiskEvaluation {
 func NewRiskEvaluationWithDefaults() *RiskEvaluation {
 	this := RiskEvaluation{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *RiskEvaluation) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RiskEvaluation) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *RiskEvaluation) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *RiskEvaluation) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -308,6 +341,9 @@ func (o RiskEvaluation) MarshalJSON() ([]byte, error) {
 
 func (o RiskEvaluation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: createdAt is readOnly
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
