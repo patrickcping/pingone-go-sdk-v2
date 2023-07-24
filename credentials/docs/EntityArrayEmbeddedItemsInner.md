@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **CardDesignTemplate** | **string** | A string that specifies an SVG formatted image containing placeholders for the credential fields that need to be displayed in the image. | 
 **CardType** | Pointer to **string** | A string that specifies the descriptor of the credential type. Can be non-identity types such as proof of employment or proof of insurance. | [optional] 
 **CreatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -41,6 +42,31 @@ will change when the set of required properties is changed
 NewEntityArrayEmbeddedItemsInnerWithDefaults instantiates a new EntityArrayEmbeddedItemsInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *EntityArrayEmbeddedItemsInner) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *EntityArrayEmbeddedItemsInner) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *EntityArrayEmbeddedItemsInner) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *EntityArrayEmbeddedItemsInner) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetCardDesignTemplate
 
