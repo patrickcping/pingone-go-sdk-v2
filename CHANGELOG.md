@@ -2,6 +2,10 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.1
     * **Bug** Fixed service hostname override client parameter validation that reported an invalid https address. [#225](https://github.com/patrickcping/pingone-go-sdk-v2/pull/225)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.3.0](./verify/CHANGELOG.md)
+    * **Enhancement** New voice configuration object option on the verify policy API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
+    * **Enhancement** New voice phrase API, which is a prerequisite to support the management of the voice configuration object via the verify policy API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
+    * **Enhancement** New voice phrase contents API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
 
 # Release (2023-07-12)
 
