@@ -19,6 +19,7 @@ var _ MappedNullable = &EntityArray{}
 
 // EntityArray struct for EntityArray
 type EntityArray struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Embedded *EntityArrayEmbedded `json:"_embedded,omitempty"`
 	Count *float32 `json:"count,omitempty"`
 	Size *float32 `json:"size,omitempty"`
@@ -39,6 +40,38 @@ func NewEntityArray() *EntityArray {
 func NewEntityArrayWithDefaults() *EntityArray {
 	this := EntityArray{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *EntityArray) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArray) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *EntityArray) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *EntityArray) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetEmbedded returns the Embedded field value if set, zero value otherwise.
@@ -147,6 +180,9 @@ func (o EntityArray) MarshalJSON() ([]byte, error) {
 
 func (o EntityArray) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Embedded) {
 		toSerialize["_embedded"] = o.Embedded
 	}
