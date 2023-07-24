@@ -1,11 +1,25 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.3.0](./authorize/CHANGELOG.md)
+    * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.3.0](./credentials/CHANGELOG.md)
+    * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.25.0](./management/CHANGELOG.md)
+    * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.16.0](./mfa/CHANGELOG.md)
+    * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.9.0](./risk/CHANGELOG.md)
+    * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.3.0](./verify/CHANGELOG.md)
+    * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+    * **Enhancement** New voice configuration object option on the verify policy API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
+    * **Enhancement** New voice phrase API, which is a prerequisite to support the management of the voice configuration object via the verify policy API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
+    * **Enhancement** New voice phrase contents API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
+
 # Release (2023-07-18)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.1
     * **Bug** Fixed service hostname override client parameter validation that reported an invalid https address. [#225](https://github.com/patrickcping/pingone-go-sdk-v2/pull/225)
-* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.3.0](./verify/CHANGELOG.md)
-    * **Enhancement** New voice configuration object option on the verify policy API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
-    * **Enhancement** New voice phrase API, which is a prerequisite to support the management of the voice configuration object via the verify policy API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
-    * **Enhancement** New voice phrase contents API. [#228](https://github.com/patrickcping/pingone-go-sdk-v2/pull/228)
 
 # Release (2023-07-12)
 
