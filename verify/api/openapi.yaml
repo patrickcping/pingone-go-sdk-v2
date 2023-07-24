@@ -808,7 +808,7 @@ paths:
           description: Successful response
       summary: READ All Voice Phrase Contents
       tags:
-      - Voice Phrases
+      - Voice Phrase Contents
     post:
       operationId: createVoicePhraseContent
       parameters:

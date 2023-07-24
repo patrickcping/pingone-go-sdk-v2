@@ -84,11 +84,11 @@ Class | Method | HTTP request | Description
 *VerifyPoliciesApi* | [**UpdateVerifyPolicy**](docs/VerifyPoliciesApi.md#updateverifypolicy) | **Put** /environments/{environmentID}/verifyPolicies/{verifyPolicyID} | UPDATE Verify Policy
 *VoicePhraseContentsApi* | [**CreateVoicePhraseContent**](docs/VoicePhraseContentsApi.md#createvoicephrasecontent) | **Post** /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents | CREATE Voice Phrase Content
 *VoicePhraseContentsApi* | [**DeleteVoicePhraseContent**](docs/VoicePhraseContentsApi.md#deletevoicephrasecontent) | **Delete** /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID} | Delete Voice Phrase Content
+*VoicePhraseContentsApi* | [**ReadAllVoicePhraseContents**](docs/VoicePhraseContentsApi.md#readallvoicephrasecontents) | **Get** /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents | READ All Voice Phrase Contents
 *VoicePhraseContentsApi* | [**ReadOneVoicePhraseContent**](docs/VoicePhraseContentsApi.md#readonevoicephrasecontent) | **Get** /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID} | READ One Voice Phrase Content
 *VoicePhraseContentsApi* | [**UpdateVoicePhraseContent**](docs/VoicePhraseContentsApi.md#updatevoicephrasecontent) | **Put** /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents/{voiceContentsID} | UPDATE Voice Phrase Content
 *VoicePhrasesApi* | [**CreateVoicePhrase**](docs/VoicePhrasesApi.md#createvoicephrase) | **Post** /environments/{environmentID}/voicePhrases | CREATE Voice Phrase
 *VoicePhrasesApi* | [**DeleteVoicePhrase**](docs/VoicePhrasesApi.md#deletevoicephrase) | **Delete** /environments/{environmentID}/voicePhrases/{voicePhraseID} | Delete Voice Phrase
-*VoicePhrasesApi* | [**ReadAllVoicePhraseContents**](docs/VoicePhrasesApi.md#readallvoicephrasecontents) | **Get** /environments/{environmentID}/voicePhrases/{voicePhraseID}/contents | READ All Voice Phrase Contents
 *VoicePhrasesApi* | [**ReadAllVoicePhrases**](docs/VoicePhrasesApi.md#readallvoicephrases) | **Get** /environments/{environmentID}/voicePhrases | READ All Voice Phrases
 *VoicePhrasesApi* | [**ReadOneVoicePhrase**](docs/VoicePhrasesApi.md#readonevoicephrase) | **Get** /environments/{environmentID}/voicePhrases/{voicePhraseID} | READ One Voice Phrase
 *VoicePhrasesApi* | [**UpdateVoicePhrase**](docs/VoicePhrasesApi.md#updatevoicephrase) | **Put** /environments/{environmentID}/voicePhrases/{voicePhraseID} | UPDATE Voice Phrase

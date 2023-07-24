@@ -951,7 +951,7 @@ paths:
                 $ref: '#/components/schemas/VoicePhraseContents'
     get:
       tags:
-      - Voice Phrases
+      - Voice Phrase Contents
       summary: READ All Voice Phrase Contents
       operationId: readAllVoicePhraseContents
       parameters:
