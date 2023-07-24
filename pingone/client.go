@@ -9,6 +9,7 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/golang-jwt/jwt"
 	"github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement"
 	"github.com/patrickcping/pingone-go-sdk-v2/authorize"
 	"github.com/patrickcping/pingone-go-sdk-v2/credentials"
@@ -30,6 +31,7 @@ type Client struct {
 	RiskAPIClient                *risk.APIClient
 	VerifyAPIClient              *verify.APIClient
 	Region                       model.RegionMapping
+	TokenClaims                  *TokenClaims
 }
 
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
@@ -78,6 +80,11 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 		RiskAPIClient:                riskClient,
 		VerifyAPIClient:              verifyClient,
 		Region:                       model.FindRegionByName(c.Region),
+	}
+
+	err = apiClient.populateTokenClaims(c.accessTokenObject.AccessToken)
+	if err != nil {
+		fmt.Printf("Error populating token claims: %s", err)
 	}
 
 	return apiClient, nil
@@ -600,15 +607,29 @@ func (c *Config) getToken(ctx context.Context) error {
 
 		c.accessTokenObject = token
 
-		return nil
-
 	} else {
 		c.accessTokenObject = &oauth2.Token{
 			AccessToken: *c.AccessToken,
 			TokenType:   "Bearer",
 		}
-		return nil
+
 	}
+
+	return nil
+}
+
+func (c *Client) populateTokenClaims(accesstoken string) error {
+
+	token, err := jwt.ParseWithClaims(accesstoken, &TokenClaims{}, tokenKeyFunction())
+	if err != nil {
+		return fmt.Errorf("Cannot extract claims from token.  Token is invalid: %s", err)
+	}
+
+	if claims, ok := token.Claims.(*TokenClaims); ok && token.Valid {
+		c.TokenClaims = claims
+	}
+
+	return nil
 }
 
 var (
