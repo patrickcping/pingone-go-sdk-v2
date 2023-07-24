@@ -1198,12 +1198,7 @@ components:
             content: content
             updatedAt: 2000-01-23T04:56:07.000+00:00
           verifyPolicies:
-          - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            voice:
+          - voice:
               verify: null
               enrollment: true
               textDependent:
@@ -1218,6 +1213,11 @@ components:
                 retainOriginalRecordings: true
                 updateOnReenrollment: true
                 updateOnVerification: true
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             liveness:
               verify: null
               threshold: null
@@ -1277,12 +1277,7 @@ components:
             governmentId:
               verify: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            voice:
+          - voice:
               verify: null
               enrollment: true
               textDependent:
@@ -1297,6 +1292,11 @@ components:
                 retainOriginalRecordings: true
                 updateOnReenrollment: true
                 updateOnVerification: true
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             liveness:
               verify: null
               threshold: null
@@ -1664,11 +1664,6 @@ components:
       type: object
     VerifyPolicy:
       example:
-        _links:
-          next:
-            href: https://openapi-generator.tech
-          self:
-            href: https://openapi-generator.tech
         voice:
           verify: null
           enrollment: true
@@ -1684,6 +1679,11 @@ components:
             retainOriginalRecordings: true
             updateOnReenrollment: true
             updateOnVerification: true
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         liveness:
           verify: null
           threshold: null
@@ -1830,12 +1830,7 @@ components:
           content: content
           updatedAt: 2000-01-23T04:56:07.000+00:00
         verifyPolicies:
-        - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          voice:
+        - voice:
             verify: null
             enrollment: true
             textDependent:
@@ -1850,6 +1845,11 @@ components:
               retainOriginalRecordings: true
               updateOnReenrollment: true
               updateOnVerification: true
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           liveness:
             verify: null
             threshold: null
@@ -1909,12 +1909,7 @@ components:
           governmentId:
             verify: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          voice:
+        - voice:
             verify: null
             enrollment: true
             textDependent:
@@ -1929,6 +1924,11 @@ components:
               retainOriginalRecordings: true
               updateOnReenrollment: true
               updateOnVerification: true
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           liveness:
             verify: null
             threshold: null
