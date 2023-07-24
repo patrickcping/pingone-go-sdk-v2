@@ -20,6 +20,7 @@ var _ MappedNullable = &FIDO2Policy{}
 
 // FIDO2Policy struct for FIDO2Policy
 type FIDO2Policy struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// FIDO policy's UUID.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -73,6 +74,38 @@ func NewFIDO2Policy(attestationRequirements EnumFIDO2PolicyAttestationRequiremen
 func NewFIDO2PolicyWithDefaults() *FIDO2Policy {
 	this := FIDO2Policy{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *FIDO2Policy) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FIDO2Policy) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *FIDO2Policy) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *FIDO2Policy) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -549,6 +582,9 @@ func (o FIDO2Policy) MarshalJSON() ([]byte, error) {
 
 func (o FIDO2Policy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	// skip: id is readOnly
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
