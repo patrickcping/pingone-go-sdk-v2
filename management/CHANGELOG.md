@@ -2,7 +2,7 @@
 
 * **Enhancement** Implement basic cursor for paging results (`ApiReadAllEnvironmentsRequest`, `ApiReadAllGroupMembershipsForUserRequest`, `ApiReadAllGroupsRequest`, `ApiReadAllPopulationsRequest`, `ApiReadAllUsersRequest`). [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
-* **Enhancement** Add new DaVinci admin roles to `EnumRoleName` model.
+* **Enhancement** Add new DaVinci admin roles to `EnumRoleName` model. [#230](https://github.com/patrickcping/pingone-go-sdk-v2/pull/230)
 
 # v0.24.0 (2023-07-12)
 
