@@ -5,6 +5,8 @@
 
 * `ANONYMOUS_NETWORK` (value: `"ANONYMOUS_NETWORK"`)
 
+* `BOT` (value: `"BOT"`)
+
 * `COMPOSITE` (value: `"COMPOSITE"`)
 
 * `GEO_VELOCITY` (value: `"GEO_VELOCITY"`)

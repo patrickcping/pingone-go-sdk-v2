@@ -15,17 +15,19 @@ import (
 	"fmt"
 )
 
-// EnumPredictorNewDeviceDetectType the model 'EnumPredictorNewDeviceDetectType'
+// EnumPredictorNewDeviceDetectType Used only for New Device predictors and Suspicious Device predictors. Both of these predictor types use the value `DEVICE` for `type`. The `detect` field is used to specify the kind of devices you are trying to detect.
 type EnumPredictorNewDeviceDetectType string
 
 // List of EnumPredictorNewDeviceDetectType
 const (
 	ENUMPREDICTORNEWDEVICEDETECTTYPE_NEW_DEVICE EnumPredictorNewDeviceDetectType = "NEW_DEVICE"
+	ENUMPREDICTORNEWDEVICEDETECTTYPE_SUSPICIOUS_DEVICE EnumPredictorNewDeviceDetectType = "SUSPICIOUS_DEVICE"
 )
 
 // All allowed values of EnumPredictorNewDeviceDetectType enum
 var AllowedEnumPredictorNewDeviceDetectTypeEnumValues = []EnumPredictorNewDeviceDetectType{
 	"NEW_DEVICE",
+	"SUSPICIOUS_DEVICE",
 }
 
 func (v *EnumPredictorNewDeviceDetectType) UnmarshalJSON(src []byte) error {
