@@ -1740,7 +1740,7 @@ type ApiUpdateUserPutRequest struct {
 	user *User
 }
 
-func (r ApiUpdateUserPutRequest) RequestBody(user User) ApiUpdateUserPutRequest {
+func (r ApiUpdateUserPutRequest) User(user User) ApiUpdateUserPutRequest {
 	r.user = &user
 	return r
 }
