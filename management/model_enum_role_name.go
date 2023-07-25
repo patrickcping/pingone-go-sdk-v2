@@ -20,32 +20,36 @@ type EnumRoleName string
 
 // List of EnumRoleName
 const (
-	ENUMROLENAME_ORGANIZATION_ADMIN EnumRoleName = "Organization Admin"
+	ENUMROLENAME_CLIENT_APPLICATION_DEVELOPER EnumRoleName = "Client Application Developer"
+	ENUMROLENAME_CONFIGURATION_READ_ONLY EnumRoleName = "Configuration Read Only"
+	ENUMROLENAME_DA_VINCI_ADMIN_READ_ONLY EnumRoleName = "DaVinci Admin Read Only"
+	ENUMROLENAME_DA_VINCI_ADMIN EnumRoleName = "DaVinci Admin"
 	ENUMROLENAME_ENVIRONMENT_ADMIN EnumRoleName = "Environment Admin"
 	ENUMROLENAME_IDENTITY_DATA_ADMIN EnumRoleName = "Identity Data Admin"
-	ENUMROLENAME_CLIENT_APPLICATION_DEVELOPER EnumRoleName = "Client Application Developer"
 	ENUMROLENAME_IDENTITY_DATA_READ_ONLY EnumRoleName = "Identity Data Read Only"
-	ENUMROLENAME_CONFIGURATION_READ_ONLY EnumRoleName = "Configuration Read Only"
+	ENUMROLENAME_ORGANIZATION_ADMIN EnumRoleName = "Organization Admin"
 	ENUMROLENAME_PING_FEDERATE_ADMINISTRATOR EnumRoleName = "PingFederate Administrator"
-	ENUMROLENAME_PING_FEDERATE_EXPRESSION_ADMINISTRATOR EnumRoleName = "PingFederate Expression Administrator"
-	ENUMROLENAME_PING_FEDERATE_CRYPTO_ADMINISTRATOR EnumRoleName = "PingFederate Crypto Administrator"
-	ENUMROLENAME_PING_FEDERATE_USER_ADMINISTRATOR EnumRoleName = "PingFederate User Administrator"
 	ENUMROLENAME_PING_FEDERATE_AUDITOR EnumRoleName = "PingFederate Auditor"
+	ENUMROLENAME_PING_FEDERATE_CRYPTO_ADMINISTRATOR EnumRoleName = "PingFederate Crypto Administrator"
+	ENUMROLENAME_PING_FEDERATE_EXPRESSION_ADMINISTRATOR EnumRoleName = "PingFederate Expression Administrator"
+	ENUMROLENAME_PING_FEDERATE_USER_ADMINISTRATOR EnumRoleName = "PingFederate User Administrator"
 )
 
 // All allowed values of EnumRoleName enum
 var AllowedEnumRoleNameEnumValues = []EnumRoleName{
-	"Organization Admin",
+	"Client Application Developer",
+	"Configuration Read Only",
+	"DaVinci Admin Read Only",
+	"DaVinci Admin",
 	"Environment Admin",
 	"Identity Data Admin",
-	"Client Application Developer",
 	"Identity Data Read Only",
-	"Configuration Read Only",
+	"Organization Admin",
 	"PingFederate Administrator",
-	"PingFederate Expression Administrator",
-	"PingFederate Crypto Administrator",
-	"PingFederate User Administrator",
 	"PingFederate Auditor",
+	"PingFederate Crypto Administrator",
+	"PingFederate Expression Administrator",
+	"PingFederate User Administrator",
 }
 
 func (v *EnumRoleName) UnmarshalJSON(src []byte) error {

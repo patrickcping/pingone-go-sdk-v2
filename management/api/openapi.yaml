@@ -23756,17 +23756,19 @@ components:
     EnumRoleName:
       description: The name of the role
       enum:
-      - Organization Admin
+      - Client Application Developer
+      - Configuration Read Only
+      - DaVinci Admin Read Only
+      - DaVinci Admin
       - Environment Admin
       - Identity Data Admin
-      - Client Application Developer
       - Identity Data Read Only
-      - Configuration Read Only
+      - Organization Admin
       - PingFederate Administrator
-      - PingFederate Expression Administrator
-      - PingFederate Crypto Administrator
-      - PingFederate User Administrator
       - PingFederate Auditor
+      - PingFederate Crypto Administrator
+      - PingFederate Expression Administrator
+      - PingFederate User Administrator
       type: string
     EnumRoleAssignmentScopeType:
       description: A string that specifies the type of resource defining the scope
