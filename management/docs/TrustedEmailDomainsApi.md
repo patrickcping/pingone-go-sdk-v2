@@ -1,16 +1,16 @@
 # \TrustedEmailDomainsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTrustedEmailDomain**](TrustedEmailDomainsApi.md#CreateTrustedEmailDomain) | **Post** /v1/environments/{environmentID}/emailDomains | CREATE Trusted Email Domain
-[**DeleteTrustedEmailDomain**](TrustedEmailDomainsApi.md#DeleteTrustedEmailDomain) | **Delete** /v1/environments/{environmentID}/emailDomains/{emailDomainID} | DELETE Trusted Email Domain
-[**ReadAllTrustedEmailDomains**](TrustedEmailDomainsApi.md#ReadAllTrustedEmailDomains) | **Get** /v1/environments/{environmentID}/emailDomains | READ All Trusted Email Domains
-[**ReadOneTrustedEmailDomain**](TrustedEmailDomainsApi.md#ReadOneTrustedEmailDomain) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID} | READ One Trusted Email Domain
-[**ReadTrustedEmailDomainDKIMStatus**](TrustedEmailDomainsApi.md#ReadTrustedEmailDomainDKIMStatus) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/dkim | READ Trusted Email Domain DKIM Status
-[**ReadTrustedEmailDomainOwnershipStatus**](TrustedEmailDomainsApi.md#ReadTrustedEmailDomainOwnershipStatus) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/ownership | READ Trusted Email Domain Ownership Status
-[**ReadTrustedEmailDomainSPFStatus**](TrustedEmailDomainsApi.md#ReadTrustedEmailDomainSPFStatus) | **Get** /v1/environments/{environmentID}/emailDomains/{emailDomainID}/spf | READ Trusted Email Domain SPF Status
+[**CreateTrustedEmailDomain**](TrustedEmailDomainsApi.md#CreateTrustedEmailDomain) | **Post** /environments/{environmentID}/emailDomains | CREATE Trusted Email Domain
+[**DeleteTrustedEmailDomain**](TrustedEmailDomainsApi.md#DeleteTrustedEmailDomain) | **Delete** /environments/{environmentID}/emailDomains/{emailDomainID} | DELETE Trusted Email Domain
+[**ReadAllTrustedEmailDomains**](TrustedEmailDomainsApi.md#ReadAllTrustedEmailDomains) | **Get** /environments/{environmentID}/emailDomains | READ All Trusted Email Domains
+[**ReadOneTrustedEmailDomain**](TrustedEmailDomainsApi.md#ReadOneTrustedEmailDomain) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID} | READ One Trusted Email Domain
+[**ReadTrustedEmailDomainDKIMStatus**](TrustedEmailDomainsApi.md#ReadTrustedEmailDomainDKIMStatus) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/dkim | READ Trusted Email Domain DKIM Status
+[**ReadTrustedEmailDomainOwnershipStatus**](TrustedEmailDomainsApi.md#ReadTrustedEmailDomainOwnershipStatus) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/ownership | READ Trusted Email Domain Ownership Status
+[**ReadTrustedEmailDomainSPFStatus**](TrustedEmailDomainsApi.md#ReadTrustedEmailDomainSPFStatus) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/spf | READ Trusted Email Domain SPF Status
 
 
 

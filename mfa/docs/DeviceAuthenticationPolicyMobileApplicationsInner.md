@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Otp** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerOtp**](DeviceAuthenticationPolicyMobileApplicationsInnerOtp.md) |  | [optional] 
 **DeviceAuthorization** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization**](DeviceAuthenticationPolicyMobileApplicationsInnerDeviceAuthorization.md) |  | [optional] 
 **AutoEnrollment** | Pointer to [**DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment**](DeviceAuthenticationPolicyMobileApplicationsInnerAutoEnrollment.md) |  | [optional] 
+**PairingDisabled** | Pointer to **bool** | You can set &#x60;pairingDisabled&#x60; to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices. | [optional] 
 **IntegrityDetection** | Pointer to [**EnumMFADevicePolicyMobileIntegrityDetection**](EnumMFADevicePolicyMobileIntegrityDetection.md) |  | [optional] 
 
 ## Methods
@@ -227,6 +228,31 @@ SetAutoEnrollment sets AutoEnrollment field to given value.
 `func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasAutoEnrollment() bool`
 
 HasAutoEnrollment returns a boolean if a field has been set.
+
+### GetPairingDisabled
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPairingDisabled() bool`
+
+GetPairingDisabled returns the PairingDisabled field if non-nil, zero value otherwise.
+
+### GetPairingDisabledOk
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) GetPairingDisabledOk() (*bool, bool)`
+
+GetPairingDisabledOk returns a tuple with the PairingDisabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPairingDisabled
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) SetPairingDisabled(v bool)`
+
+SetPairingDisabled sets PairingDisabled field to given value.
+
+### HasPairingDisabled
+
+`func (o *DeviceAuthenticationPolicyMobileApplicationsInner) HasPairingDisabled() bool`
+
+HasPairingDisabled returns a boolean if a field has been set.
 
 ### GetIntegrityDetection
 

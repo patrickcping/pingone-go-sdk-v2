@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**At** | Pointer to **string** | The time of the last successful login of the user through the PingOne flow API. | [optional] 
+**At** | Pointer to **time.Time** | The time of the last successful login of the user through the PingOne flow API. | [optional] 
 **RemoteIp** | Pointer to **string** | The IP address of the last successful login of the user through the PingOne flow API. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAt
 
-`func (o *UserLastSignOn) GetAt() string`
+`func (o *UserLastSignOn) GetAt() time.Time`
 
 GetAt returns the At field if non-nil, zero value otherwise.
 
 ### GetAtOk
 
-`func (o *UserLastSignOn) GetAtOk() (*string, bool)`
+`func (o *UserLastSignOn) GetAtOk() (*time.Time, bool)`
 
 GetAtOk returns a tuple with the At field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAt
 
-`func (o *UserLastSignOn) SetAt(v string)`
+`func (o *UserLastSignOn) SetAt(v time.Time)`
 
 SetAt sets At field to given value.
 

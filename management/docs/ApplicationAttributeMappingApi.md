@@ -1,14 +1,14 @@
 # \ApplicationAttributeMappingApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateApplicationAttributeMapping**](ApplicationAttributeMappingApi.md#CreateApplicationAttributeMapping) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/attributes | CREATE Application Attribute Mapping
-[**DeleteApplicationAttributeMapping**](ApplicationAttributeMappingApi.md#DeleteApplicationAttributeMapping) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | DELETE Application Attribute Mapping
-[**ReadAllApplicationAttributeMappings**](ApplicationAttributeMappingApi.md#ReadAllApplicationAttributeMappings) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/attributes | READ All Application Attribute Mappings
-[**ReadOneApplicationAttributeMapping**](ApplicationAttributeMappingApi.md#ReadOneApplicationAttributeMapping) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | READ One Application Attribute Mapping
-[**UpdateApplicationAttributeMapping**](ApplicationAttributeMappingApi.md#UpdateApplicationAttributeMapping) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | UPDATE Application Attribute Mapping
+[**CreateApplicationAttributeMapping**](ApplicationAttributeMappingApi.md#CreateApplicationAttributeMapping) | **Post** /environments/{environmentID}/applications/{applicationID}/attributes | CREATE Application Attribute Mapping
+[**DeleteApplicationAttributeMapping**](ApplicationAttributeMappingApi.md#DeleteApplicationAttributeMapping) | **Delete** /environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | DELETE Application Attribute Mapping
+[**ReadAllApplicationAttributeMappings**](ApplicationAttributeMappingApi.md#ReadAllApplicationAttributeMappings) | **Get** /environments/{environmentID}/applications/{applicationID}/attributes | READ All Application Attribute Mappings
+[**ReadOneApplicationAttributeMapping**](ApplicationAttributeMappingApi.md#ReadOneApplicationAttributeMapping) | **Get** /environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | READ One Application Attribute Mapping
+[**UpdateApplicationAttributeMapping**](ApplicationAttributeMappingApi.md#UpdateApplicationAttributeMapping) | **Put** /environments/{environmentID}/applications/{applicationID}/attributes/{attrMappingID} | UPDATE Application Attribute Mapping
 
 
 

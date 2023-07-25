@@ -1,14 +1,14 @@
 # \PasswordPoliciesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePasswordPolicy**](PasswordPoliciesApi.md#CreatePasswordPolicy) | **Post** /v1/environments/{environmentID}/passwordPolicies | CREATE Password Policy
-[**DeletePasswordPolicy**](PasswordPoliciesApi.md#DeletePasswordPolicy) | **Delete** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | DELETE Password Policy
-[**ReadAllPasswordPolicies**](PasswordPoliciesApi.md#ReadAllPasswordPolicies) | **Get** /v1/environments/{environmentID}/passwordPolicies | READ All Password Policies
-[**ReadOnePasswordPolicy**](PasswordPoliciesApi.md#ReadOnePasswordPolicy) | **Get** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
-[**UpdatePasswordPolicy**](PasswordPoliciesApi.md#UpdatePasswordPolicy) | **Put** /v1/environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
+[**CreatePasswordPolicy**](PasswordPoliciesApi.md#CreatePasswordPolicy) | **Post** /environments/{environmentID}/passwordPolicies | CREATE Password Policy
+[**DeletePasswordPolicy**](PasswordPoliciesApi.md#DeletePasswordPolicy) | **Delete** /environments/{environmentID}/passwordPolicies/{passwordPolicyID} | DELETE Password Policy
+[**ReadAllPasswordPolicies**](PasswordPoliciesApi.md#ReadAllPasswordPolicies) | **Get** /environments/{environmentID}/passwordPolicies | READ All Password Policies
+[**ReadOnePasswordPolicy**](PasswordPoliciesApi.md#ReadOnePasswordPolicy) | **Get** /environments/{environmentID}/passwordPolicies/{passwordPolicyID} | READ One Password Policy
+[**UpdatePasswordPolicy**](PasswordPoliciesApi.md#UpdatePasswordPolicy) | **Put** /environments/{environmentID}/passwordPolicies/{passwordPolicyID} | UPDATE Password Policy
 
 
 

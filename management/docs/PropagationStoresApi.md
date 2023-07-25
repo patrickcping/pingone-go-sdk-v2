@@ -1,21 +1,21 @@
 # \PropagationStoresApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost**](PropagationStoresApi.md#V1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost) | **Post** /v1/environments/{environmentID}/propagation/stores/connection/status | TEST Connection Configuration
-[**V1EnvironmentsEnvironmentIDPropagationStoresGet**](PropagationStoresApi.md#V1EnvironmentsEnvironmentIDPropagationStoresGet) | **Get** /v1/environments/{environmentID}/propagation/stores | READ All Stores
-[**V1EnvironmentsEnvironmentIDPropagationStoresPost**](PropagationStoresApi.md#V1EnvironmentsEnvironmentIDPropagationStoresPost) | **Post** /v1/environments/{environmentID}/propagation/stores | CREATE Store (Aquera)
-[**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete**](PropagationStoresApi.md#V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete) | **Delete** /v1/environments/{environmentID}/propagation/stores/{storeID} | DELETE Store
-[**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGet**](PropagationStoresApi.md#V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGet) | **Get** /v1/environments/{environmentID}/propagation/stores/{storeID} | READ One Store
-[**V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPut**](PropagationStoresApi.md#V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPut) | **Put** /v1/environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
+[**EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost) | **Post** /environments/{environmentID}/propagation/stores/connection/status | TEST Connection Configuration
+[**EnvironmentsEnvironmentIDPropagationStoresGet**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresGet) | **Get** /environments/{environmentID}/propagation/stores | READ All Stores
+[**EnvironmentsEnvironmentIDPropagationStoresPost**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresPost) | **Post** /environments/{environmentID}/propagation/stores | CREATE Store (Aquera)
+[**EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete) | **Delete** /environments/{environmentID}/propagation/stores/{storeID} | DELETE Store
+[**EnvironmentsEnvironmentIDPropagationStoresStoreIDGet**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresStoreIDGet) | **Get** /environments/{environmentID}/propagation/stores/{storeID} | READ One Store
+[**EnvironmentsEnvironmentIDPropagationStoresStoreIDPut**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresStoreIDPut) | **Put** /environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
 
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost
+## EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost
 
-> V1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost(ctx, environmentID).ContentType(contentType).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost(ctx, environmentID).ContentType(contentType).Body(body).Execute()
 
 TEST Connection Configuration
 
@@ -38,9 +38,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost(context.Background(), environmentID).ContentType(contentType).Body(body).Execute()
+    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost(context.Background(), environmentID).ContentType(contentType).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -83,9 +83,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoresGet
+## EnvironmentsEnvironmentIDPropagationStoresGet
 
-> V1EnvironmentsEnvironmentIDPropagationStoresGet(ctx, environmentID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationStoresGet(ctx, environmentID).Accept(accept).Execute()
 
 READ All Stores
 
@@ -107,9 +107,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresGet(context.Background(), environmentID).Accept(accept).Execute()
+    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresGet(context.Background(), environmentID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoresGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -151,9 +151,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoresPost
+## EnvironmentsEnvironmentIDPropagationStoresPost
 
-> V1EnvironmentsEnvironmentIDPropagationStoresPost(ctx, environmentID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationStoresPost(ctx, environmentID).Body(body).Execute()
 
 CREATE Store (Aquera)
 
@@ -175,9 +175,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoresPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -219,9 +219,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete
+## EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete
 
-> V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete(ctx, environmentID, storeID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete(ctx, environmentID, storeID).Accept(accept).Execute()
 
 DELETE Store
 
@@ -244,9 +244,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete(context.Background(), environmentID, storeID).Accept(accept).Execute()
+    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete(context.Background(), environmentID, storeID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -290,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGet
+## EnvironmentsEnvironmentIDPropagationStoresStoreIDGet
 
-> V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGet(ctx, environmentID, storeID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationStoresStoreIDGet(ctx, environmentID, storeID).Accept(accept).Execute()
 
 READ One Store
 
@@ -315,9 +315,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGet(context.Background(), environmentID, storeID).Accept(accept).Execute()
+    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDGet(context.Background(), environmentID, storeID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresStoreIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -361,9 +361,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPut
+## EnvironmentsEnvironmentIDPropagationStoresStoreIDPut
 
-> V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPut(ctx, environmentID, storeID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationStoresStoreIDPut(ctx, environmentID, storeID).Body(body).Execute()
 
 UPDATE Store
 
@@ -386,9 +386,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPut(context.Background(), environmentID, storeID).Body(body).Execute()
+    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDPut(context.Background(), environmentID, storeID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.V1EnvironmentsEnvironmentIDPropagationStoresStoreIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

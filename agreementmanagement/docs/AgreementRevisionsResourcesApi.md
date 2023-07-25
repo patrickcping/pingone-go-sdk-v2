@@ -1,6 +1,6 @@
 # \AgreementRevisionsResourcesApi
 
-All URIs are relative to *https://agreement-mgmt.pingone.eu*
+All URIs are relative to *https://agreement-mgmt.pingone.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

@@ -1,19 +1,19 @@
 # \PropagationStoreMetadataApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost**](PropagationStoreMetadataApi.md#V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost) | **Post** /v1/environments/{environmentID}/propagation/storeMetadata/Aquera | Identity Propagation Store Metadata (Aquera)
-[**V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost**](PropagationStoreMetadataApi.md#V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost) | **Post** /v1/environments/{environmentID}/propagation/storeMetadata/SalesforceContacts | Identity Propagation Store Metadata (SalesforceContacts)
-[**V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost**](PropagationStoreMetadataApi.md#V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost) | **Post** /v1/environments/{environmentID}/propagation/storeMetadata/Salesforce | Identity Propagation Store Metadata (Salesforce)
-[**V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost**](PropagationStoreMetadataApi.md#V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost) | **Post** /v1/environments/{environmentID}/propagation/storeMetadata/scim | Identity Propagation Store Metadata (SCIM)
+[**EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost**](PropagationStoreMetadataApi.md#EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost) | **Post** /environments/{environmentID}/propagation/storeMetadata/Aquera | Identity Propagation Store Metadata (Aquera)
+[**EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost**](PropagationStoreMetadataApi.md#EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost) | **Post** /environments/{environmentID}/propagation/storeMetadata/SalesforceContacts | Identity Propagation Store Metadata (SalesforceContacts)
+[**EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost**](PropagationStoreMetadataApi.md#EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost) | **Post** /environments/{environmentID}/propagation/storeMetadata/Salesforce | Identity Propagation Store Metadata (Salesforce)
+[**EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost**](PropagationStoreMetadataApi.md#EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost) | **Post** /environments/{environmentID}/propagation/storeMetadata/scim | Identity Propagation Store Metadata (SCIM)
 
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost
+## EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost
 
-> V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost(ctx, environmentID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost(ctx, environmentID).Body(body).Execute()
 
 Identity Propagation Store Metadata (Aquera)
 
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoreMetadataApi.EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoreMetadataAqueraPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost
+## EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost
 
-> V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost(ctx, environmentID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost(ctx, environmentID).Body(body).Execute()
 
 Identity Propagation Store Metadata (SalesforceContacts)
 
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoreMetadataApi.EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -147,9 +147,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost
+## EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost
 
-> V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost(ctx, environmentID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost(ctx, environmentID).Body(body).Execute()
 
 Identity Propagation Store Metadata (Salesforce)
 
@@ -171,9 +171,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoreMetadataApi.EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -215,9 +215,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost
+## EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost
 
-> V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost(ctx, environmentID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost(ctx, environmentID).Body(body).Execute()
 
 Identity Propagation Store Metadata (SCIM)
 
@@ -239,9 +239,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.PropagationStoreMetadataApi.EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.V1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoreMetadataApi.EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationStoreMetadataScimPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoreMetadataScimPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

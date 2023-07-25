@@ -13,21 +13,46 @@ func TestAccAPIClient_Success(t *testing.T) {
 
 	var ctx = context.Background()
 
+	clientID := os.Getenv("PINGONE_CLIENT_ID_TESTACC")
+	clientSecret := os.Getenv("PINGONE_CLIENT_SECRET_TESTACC")
+	environmentID := os.Getenv("PINGONE_ENVIRONMENT_ID_TESTACC")
+	region := os.Getenv("PINGONE_REGION_TESTACC")
+
+	if err := os.Setenv("PINGONE_API_ACCESS_TOKEN", ""); err != nil {
+		t.Fatalf("Client not successfully retrieved: %s", err)
+	}
+
+	if err := os.Setenv("PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME", ""); err != nil {
+		t.Fatalf("Client not successfully retrieved: %s", err)
+	}
+
+	if err := os.Setenv("PINGONE_API_SERVICE_HOSTNAME", ""); err != nil {
+		t.Fatalf("Client not successfully retrieved: %s", err)
+	}
+
+	if err := os.Setenv("PINGONE_AUTH_SERVICE_HOSTNAME", ""); err != nil {
+		t.Fatalf("Client not successfully retrieved: %s", err)
+	}
+
 	config := &Config{
-		ClientID:      os.Getenv("PINGONE_CLIENT_ID"),
-		ClientSecret:  os.Getenv("PINGONE_CLIENT_SECRET"),
-		EnvironmentID: os.Getenv("PINGONE_ENVIRONMENT_ID"),
-		Region:        os.Getenv("PINGONE_REGION"),
+		ClientID:      &clientID,
+		ClientSecret:  &clientSecret,
+		EnvironmentID: &environmentID,
+		Region:        region,
 	}
 
 	client, err := config.APIClient(ctx)
 
 	if err != nil {
-		t.Fatalf("Client not successfully retrieved")
+		t.Fatalf("Client not successfully retrieved: %s", err)
 	}
 
 	if client.AuthorizeAPIClient == nil {
 		t.Fatalf("Authorize Client not successfully retrieved")
+	}
+
+	if client.CredentialsAPIClient == nil {
+		t.Fatalf("Credentials Client not successfully retrieved")
 	}
 
 	if client.ManagementAPIClient == nil {
@@ -42,8 +67,12 @@ func TestAccAPIClient_Success(t *testing.T) {
 		t.Fatalf("Risk Client not successfully retrieved")
 	}
 
-	if client.Region != model.FindRegionByName(os.Getenv("PINGONE_REGION")) {
-		t.Fatalf("Unexpected region.  Expected %s, got %v", os.Getenv("PINGONE_REGION"), client.Region)
+	if client.VerifyAPIClient == nil {
+		t.Fatalf("Verify Client not successfully retrieved")
+	}
+
+	if client.Region != model.FindRegionByName(region) {
+		t.Fatalf("Unexpected region.  Expected %s, got %v", region, client.Region)
 	}
 }
 
@@ -52,11 +81,16 @@ func TestAccAPIClient_MissingClientID(t *testing.T) {
 
 	var ctx = context.Background()
 
+	clientID := ""
+	clientSecret := os.Getenv("PINGONE_CLIENT_SECRET_TESTACC")
+	environmentID := os.Getenv("PINGONE_ENVIRONMENT_ID_TESTACC")
+	region := os.Getenv("PINGONE_REGION_TESTACC")
+
 	config := &Config{
-		ClientID:      "",
-		ClientSecret:  os.Getenv("PINGONE_CLIENT_SECRET"),
-		EnvironmentID: os.Getenv("PINGONE_ENVIRONMENT_ID"),
-		Region:        os.Getenv("PINGONE_REGION"),
+		ClientID:      &clientID,
+		ClientSecret:  &clientSecret,
+		EnvironmentID: &environmentID,
+		Region:        region,
 	}
 
 	client, err := config.APIClient(ctx)
@@ -71,11 +105,16 @@ func TestAccAPIClient_MissingClientSecret(t *testing.T) {
 
 	var ctx = context.Background()
 
+	clientID := os.Getenv("PINGONE_CLIENT_ID_TESTACC")
+	clientSecret := ""
+	environmentID := os.Getenv("PINGONE_ENVIRONMENT_ID_TESTACC")
+	region := os.Getenv("PINGONE_REGION_TESTACC")
+
 	config := &Config{
-		ClientID:      os.Getenv("PINGONE_CLIENT_ID"),
-		ClientSecret:  "",
-		EnvironmentID: os.Getenv("PINGONE_ENVIRONMENT_ID"),
-		Region:        os.Getenv("PINGONE_REGION"),
+		ClientID:      &clientID,
+		ClientSecret:  &clientSecret,
+		EnvironmentID: &environmentID,
+		Region:        region,
 	}
 
 	client, err := config.APIClient(ctx)
@@ -90,11 +129,16 @@ func TestAccAPIClient_MissingClientEnvironment(t *testing.T) {
 
 	var ctx = context.Background()
 
+	clientID := os.Getenv("PINGONE_CLIENT_ID_TESTACC")
+	clientSecret := os.Getenv("PINGONE_CLIENT_SECRET_TESTACC")
+	environmentID := ""
+	region := os.Getenv("PINGONE_REGION_TESTACC")
+
 	config := &Config{
-		ClientID:      os.Getenv("PINGONE_CLIENT_ID"),
-		ClientSecret:  os.Getenv("PINGONE_CLIENT_SECRET"),
-		EnvironmentID: "",
-		Region:        os.Getenv("PINGONE_REGION"),
+		ClientID:      &clientID,
+		ClientSecret:  &clientSecret,
+		EnvironmentID: &environmentID,
+		Region:        region,
 	}
 
 	client, err := config.APIClient(ctx)
@@ -109,11 +153,16 @@ func TestAccAPIClient_MissingClientRegion(t *testing.T) {
 
 	var ctx = context.Background()
 
+	clientID := os.Getenv("PINGONE_CLIENT_ID_TESTACC")
+	clientSecret := os.Getenv("PINGONE_CLIENT_SECRET_TESTACC")
+	environmentID := os.Getenv("PINGONE_ENVIRONMENT_ID_TESTACC")
+	region := ""
+
 	config := &Config{
-		ClientID:      os.Getenv("PINGONE_CLIENT_ID"),
-		ClientSecret:  os.Getenv("PINGONE_CLIENT_SECRET"),
-		EnvironmentID: os.Getenv("PINGONE_ENVIRONMENT_ID"),
-		Region:        "",
+		ClientID:      &clientID,
+		ClientSecret:  &clientSecret,
+		EnvironmentID: &environmentID,
+		Region:        region,
 	}
 
 	client, err := config.APIClient(ctx)
@@ -128,11 +177,16 @@ func TestAccAPIClient_FailedAuth(t *testing.T) {
 
 	var ctx = context.Background()
 
+	clientID := os.Getenv("PINGONE_CLIENT_ID_TESTACC")
+	clientSecret := os.Getenv("PINGONE_CLIENT_ID_TESTACC")
+	environmentID := os.Getenv("PINGONE_ENVIRONMENT_ID_TESTACC")
+	region := os.Getenv("PINGONE_REGION_TESTACC")
+
 	config := &Config{
-		ClientID:      os.Getenv("PINGONE_CLIENT_ID"),
-		ClientSecret:  os.Getenv("PINGONE_CLIENT_ID"),
-		EnvironmentID: os.Getenv("PINGONE_ENVIRONMENT_ID"),
-		Region:        os.Getenv("PINGONE_REGION"),
+		ClientID:      &clientID,
+		ClientSecret:  &clientSecret,
+		EnvironmentID: &environmentID,
+		Region:        region,
 	}
 
 	client, err := config.APIClient(ctx)
@@ -147,11 +201,16 @@ func TestAccAPIClient_BadRegion(t *testing.T) {
 
 	var ctx = context.Background()
 
+	clientID := os.Getenv("PINGONE_CLIENT_ID_TESTACC")
+	clientSecret := os.Getenv("PINGONE_CLIENT_SECRET_TESTACC")
+	environmentID := os.Getenv("PINGONE_ENVIRONMENT_ID_TESTACC")
+	region := "NZ"
+
 	config := &Config{
-		ClientID:      os.Getenv("PINGONE_CLIENT_ID"),
-		ClientSecret:  os.Getenv("PINGONE_CLIENT_ID"),
-		EnvironmentID: os.Getenv("PINGONE_ENVIRONMENT_ID"),
-		Region:        "NZ",
+		ClientID:      &clientID,
+		ClientSecret:  &clientSecret,
+		EnvironmentID: &environmentID,
+		Region:        region,
 	}
 
 	client, err := config.APIClient(ctx)

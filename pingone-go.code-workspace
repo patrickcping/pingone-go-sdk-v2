@@ -1,0 +1,52 @@
+{
+  "folders": [
+    {
+      "name": "core-module",
+      "path": "."
+    },
+    {
+      "name": "module-agreementmanagement",
+      "path": "agreementmanagement"
+    },
+    {
+      "name": "module-authorize",
+      "path": "authorize"
+    },
+    {
+      "name": "module-credentials",
+      "path": "credentials"
+    },
+    {
+      "name": "module-management",
+      "path": "management"
+    },
+    {
+      "name": "module-mfa",
+      "path": "mfa"
+    },
+    {
+      "name": "module-risk",
+      "path": "risk"
+    },
+    {
+      "name": "module-verify",
+      "path": "verify"
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "agreementmanagement": true,
+      "authorize": true,
+      "credentials": true,
+      "management": true,
+      "mfa": true,
+      "risk": true,
+      "verify": true,
+    },
+  },
+  "extensions": {
+    "recommendations": [
+      "golang.go",
+    ]
+  }
+}

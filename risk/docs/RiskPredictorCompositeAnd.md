@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **And** | [**[]RiskPredictorCompositeCondition**](RiskPredictorCompositeCondition.md) |  | 
+**Type** | Pointer to [**EnumPredictorCompositeConditionType**](EnumPredictorCompositeConditionType.md) |  | [optional] 
 
 ## Methods
 
@@ -44,6 +45,31 @@ and a boolean to check if the value has been set.
 
 SetAnd sets And field to given value.
 
+
+### GetType
+
+`func (o *RiskPredictorCompositeAnd) GetType() EnumPredictorCompositeConditionType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *RiskPredictorCompositeAnd) GetTypeOk() (*EnumPredictorCompositeConditionType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *RiskPredictorCompositeAnd) SetType(v EnumPredictorCompositeConditionType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *RiskPredictorCompositeAnd) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,6 +5,8 @@
 
 * `ANONYMOUS_NETWORK` (value: `"ANONYMOUS_NETWORK"`)
 
+* `BOT` (value: `"BOT"`)
+
 * `COMPOSITE` (value: `"COMPOSITE"`)
 
 * `GEO_VELOCITY` (value: `"GEO_VELOCITY"`)
@@ -13,7 +15,7 @@
 
 * `MAP` (value: `"MAP"`)
 
-* `NEW_DEVICE` (value: `"NEW_DEVICE"`)
+* `DEVICE` (value: `"DEVICE"`)
 
 * `USER_LOCATION_ANOMALY` (value: `"USER_LOCATION_ANOMALY"`)
 

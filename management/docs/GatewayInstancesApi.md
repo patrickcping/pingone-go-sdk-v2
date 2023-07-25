@@ -1,11 +1,11 @@
 # \GatewayInstancesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadAllGatewayInstances**](GatewayInstancesApi.md#ReadAllGatewayInstances) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/instances | READ All Gateway Instances
-[**ReadOneGatewayInstance**](GatewayInstancesApi.md#ReadOneGatewayInstance) | **Get** /v1/environments/{environmentID}/gateways/{gatewayID}/instances/{instanceID} | READ One Gateway Instance
+[**ReadAllGatewayInstances**](GatewayInstancesApi.md#ReadAllGatewayInstances) | **Get** /environments/{environmentID}/gateways/{gatewayID}/instances | READ All Gateway Instances
+[**ReadOneGatewayInstance**](GatewayInstancesApi.md#ReadOneGatewayInstance) | **Get** /environments/{environmentID}/gateways/{gatewayID}/instances/{instanceID} | READ One Gateway Instance
 
 
 

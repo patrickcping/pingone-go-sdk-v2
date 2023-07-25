@@ -1,20 +1,20 @@
 # \IntegrationCatalogApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDIntegrationsGet**](IntegrationCatalogApi.md#V1EnvironmentsEnvironmentIDIntegrationsGet) | **Get** /v1/environments/{environmentID}/integrations | READ Integration Metadata
-[**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet**](IntegrationCatalogApi.md#V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet) | **Get** /v1/environments/{environmentID}/integrations/{integrationID} | READ One Integration Metadata
-[**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet**](IntegrationCatalogApi.md#V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions | READ Integration Version Metadata
-[**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet**](IntegrationCatalogApi.md#V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | READ Integration Version Asset Download
-[**V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet**](IntegrationCatalogApi.md#V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet) | **Get** /v1/environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
+[**EnvironmentsEnvironmentIDIntegrationsGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsGet) | **Get** /environments/{environmentID}/integrations | READ Integration Metadata
+[**EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet) | **Get** /environments/{environmentID}/integrations/{integrationID} | READ One Integration Metadata
+[**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions | READ Integration Version Metadata
+[**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID}/asset | READ Integration Version Asset Download
+[**EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet**](IntegrationCatalogApi.md#EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet) | **Get** /environments/{environmentID}/integrations/{integrationID}/versions/{integrationVersionID} | READ One Integration Version Metadata
 
 
 
-## V1EnvironmentsEnvironmentIDIntegrationsGet
+## EnvironmentsEnvironmentIDIntegrationsGet
 
-> V1EnvironmentsEnvironmentIDIntegrationsGet(ctx, environmentID).Execute()
+> EnvironmentsEnvironmentIDIntegrationsGet(ctx, environmentID).Execute()
 
 READ Integration Metadata
 
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsGet(context.Background(), environmentID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsGet(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIntegrationsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet
+## EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet
 
-> V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(ctx, environmentID, integrationID).Execute()
+> EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(ctx, environmentID, integrationID).Execute()
 
 READ One Integration Metadata
 
@@ -102,9 +102,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(context.Background(), environmentID, integrationID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet(context.Background(), environmentID, integrationID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsIntegrationIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -147,9 +147,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet
+## EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet
 
-> V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(ctx, environmentID, integrationID).Execute()
+> EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(ctx, environmentID, integrationID).Execute()
 
 READ Integration Version Metadata
 
@@ -171,9 +171,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(context.Background(), environmentID, integrationID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet(context.Background(), environmentID, integrationID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -216,9 +216,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet
+## EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet
 
-> V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(ctx, environmentID, integrationID, integrationVersionID).Execute()
+> EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(ctx, environmentID, integrationID, integrationVersionID).Execute()
 
 READ Integration Version Asset Download
 
@@ -241,9 +241,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDAssetGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -288,9 +288,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet
+## EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet
 
-> V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(ctx, environmentID, integrationID, integrationVersionID).Execute()
+> EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(ctx, environmentID, integrationID, integrationVersionID).Execute()
 
 READ One Integration Version Metadata
 
@@ -313,9 +313,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
+    r, err := apiClient.IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet(context.Background(), environmentID, integrationID, integrationVersionID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.V1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IntegrationCatalogApi.EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDIntegrationsIntegrationIDVersionsIntegrationVersionIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

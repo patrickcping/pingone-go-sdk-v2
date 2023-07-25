@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Account** | Pointer to [**UserAccount**](UserAccount.md) |  | [optional] 
 **Address** | Pointer to [**UserAddress**](UserAddress.md) |  | [optional] 
-**CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] 
+**CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Email** | **string** | A string that specifies the user’s email address, which must be provided and valid. For more information about email address formatting, see section 3.4 of RFC 2822, Internet Message Format. | 
+**EmailVerified** | Pointer to **bool** | Whether the user’s email is verified. An email address can be verified during account verification. If the email address used to request the verification code is the same as the user’s email at verification time (and the verification code is valid), then the email is verified. The value of this property can be set on user import. | [optional] [readonly] 
 **Enabled** | Pointer to **bool** | A read-only boolean attribute that specifies whether the user is enabled. This attribute is set to ‘true’ by default when the user is created. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **ExternalId** | Pointer to **string** | A string that specifies an identifier for the user resource as defined by the provisioning client. This is optional. This may be explicitly set to null when updating a user to unset it. The externalId attribute simplifies the correlation of the user in PingOne with the user’s account in another system of record. The platform does not use this attribute directly in any way, but it is used by Ping Identity’s Data Sync product. It can have a length of no more than 1024 characters (min/max&#x3D;1/1024). | [optional] 
@@ -30,7 +32,7 @@ Name | Type | Description | Notes
 **Timezone** | Pointer to **string** | A string that specifies the user’s time zone, which is optional. This can be explicitly set to null when updating a user to unset it. If provided, it must conform with the IANA Time Zone database format [RFC6557], also known as the &#x60;Olson&#x60; time zone database format [Olson-TZ] for example, &#x60;America/Los_Angeles&#x60; (regex &#x60;^\\w+/\\w+$&#x60;). | [optional] 
 **Title** | Pointer to **string** | A string that specifies the user’s title, which is optional, such as \&quot;Vice President\&quot;. This can be explicitly set to null when updating a user to unset it. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex &#x60;^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$&#x60;). It can have a length of no more than 256 characters (min/max&#x3D;1/256). | [optional] 
 **Type** | Pointer to **string** | A string that specifies the user’s type, which is optional. This can be explicitly set to null when updating a user to unset it. This attribute is organization-specific and has no special meaning within the PingOne platform. It could have values of \&quot;Contractor\&quot;, \&quot;Employee\&quot;, \&quot;Intern\&quot;, \&quot;Temp\&quot;, \&quot;External\&quot;, and &#x60;Unknown&#x60;. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex &#x60;^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$&#x60;). It can have a length of no more than 256 characters (min/max&#x3D;1/256). | [optional] 
-**UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **Username** | **string** | A string that specifies the user name, which must be provided and must be unique within an environment. The username must either be a well-formed email address or a string. The string can contain any letters, numbers, combining characters, math and currency symbols, dingbats and drawing characters, and invisible whitespace (regex &#x60;^[\\p{L}\\p{M}\\p{Zs}\\p{S}\\p{N}\\p{P}]*$&#x60;). It can have a length of no more than 128 characters (min/max&#x3D;1/128). | 
 **VerifyStatus** | Pointer to [**EnumUserVerifyStatus**](EnumUserVerifyStatus.md) |  | [optional] 
 
@@ -52,6 +54,31 @@ will change when the set of required properties is changed
 NewUserWithDefaults instantiates a new User object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *User) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *User) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *User) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *User) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetAccount
 
@@ -105,20 +132,20 @@ HasAddress returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
-`func (o *User) GetCreatedAt() string`
+`func (o *User) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *User) GetCreatedAtOk() (*string, bool)`
+`func (o *User) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *User) SetCreatedAt(v string)`
+`func (o *User) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
@@ -147,6 +174,31 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
+
+### GetEmailVerified
+
+`func (o *User) GetEmailVerified() bool`
+
+GetEmailVerified returns the EmailVerified field if non-nil, zero value otherwise.
+
+### GetEmailVerifiedOk
+
+`func (o *User) GetEmailVerifiedOk() (*bool, bool)`
+
+GetEmailVerifiedOk returns a tuple with the EmailVerified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmailVerified
+
+`func (o *User) SetEmailVerified(v bool)`
+
+SetEmailVerified sets EmailVerified field to given value.
+
+### HasEmailVerified
+
+`func (o *User) HasEmailVerified() bool`
+
+HasEmailVerified returns a boolean if a field has been set.
 
 ### GetEnabled
 
@@ -700,20 +752,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
-`func (o *User) GetUpdatedAt() string`
+`func (o *User) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *User) GetUpdatedAtOk() (*string, bool)`
+`func (o *User) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *User) SetUpdatedAt(v string)`
+`func (o *User) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 

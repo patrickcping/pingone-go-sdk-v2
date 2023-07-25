@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Environments** | Pointer to [**[]Environment**](Environment.md) |  | [optional] 
 **FlowPolicies** | Pointer to [**[]FlowPolicy**](FlowPolicy.md) |  | [optional] 
 **FlowPolicyAssignments** | Pointer to [**[]FlowPolicyAssignment**](FlowPolicyAssignment.md) |  | [optional] 
+**Forms** | Pointer to [**[]Form**](Form.md) |  | [optional] 
 **GatewayInstances** | Pointer to [**[]GatewayInstance**](GatewayInstance.md) |  | [optional] 
 **Gateways** | Pointer to [**[]EntityArrayEmbeddedGatewaysInner**](EntityArrayEmbeddedGatewaysInner.md) |  | [optional] 
 **Grants** | Pointer to [**[]ApplicationResourceGrant**](ApplicationResourceGrant.md) |  | [optional] 
@@ -30,6 +31,7 @@ Name | Type | Description | Notes
 **NotificationsPolicies** | Pointer to [**[]NotificationsPolicy**](NotificationsPolicy.md) |  | [optional] 
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
+**PhoneDeliverySettings** | Pointer to [**[]NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **Revisions** | Pointer to [**[]AgreementLanguageRevision**](AgreementLanguageRevision.md) |  | [optional] 
@@ -389,6 +391,31 @@ SetFlowPolicyAssignments sets FlowPolicyAssignments field to given value.
 
 HasFlowPolicyAssignments returns a boolean if a field has been set.
 
+### GetForms
+
+`func (o *EntityArrayEmbedded) GetForms() []Form`
+
+GetForms returns the Forms field if non-nil, zero value otherwise.
+
+### GetFormsOk
+
+`func (o *EntityArrayEmbedded) GetFormsOk() (*[]Form, bool)`
+
+GetFormsOk returns a tuple with the Forms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForms
+
+`func (o *EntityArrayEmbedded) SetForms(v []Form)`
+
+SetForms sets Forms field to given value.
+
+### HasForms
+
+`func (o *EntityArrayEmbedded) HasForms() bool`
+
+HasForms returns a boolean if a field has been set.
+
 ### GetGatewayInstances
 
 `func (o *EntityArrayEmbedded) GetGatewayInstances() []GatewayInstance`
@@ -713,6 +740,31 @@ SetPasswordPolicies sets PasswordPolicies field to given value.
 `func (o *EntityArrayEmbedded) HasPasswordPolicies() bool`
 
 HasPasswordPolicies returns a boolean if a field has been set.
+
+### GetPhoneDeliverySettings
+
+`func (o *EntityArrayEmbedded) GetPhoneDeliverySettings() []NotificationsSettingsPhoneDeliverySettings`
+
+GetPhoneDeliverySettings returns the PhoneDeliverySettings field if non-nil, zero value otherwise.
+
+### GetPhoneDeliverySettingsOk
+
+`func (o *EntityArrayEmbedded) GetPhoneDeliverySettingsOk() (*[]NotificationsSettingsPhoneDeliverySettings, bool)`
+
+GetPhoneDeliverySettingsOk returns a tuple with the PhoneDeliverySettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPhoneDeliverySettings
+
+`func (o *EntityArrayEmbedded) SetPhoneDeliverySettings(v []NotificationsSettingsPhoneDeliverySettings)`
+
+SetPhoneDeliverySettings sets PhoneDeliverySettings field to given value.
+
+### HasPhoneDeliverySettings
+
+`func (o *EntityArrayEmbedded) HasPhoneDeliverySettings() bool`
+
+HasPhoneDeliverySettings returns a boolean if a field has been set.
 
 ### GetPopulations
 

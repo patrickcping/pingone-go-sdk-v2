@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Provider** | [**EnumNotificationsSettingsPhoneDeliverySettingsProvider**](EnumNotificationsSettingsPhoneDeliverySettingsProvider.md) |  | 
@@ -11,13 +12,13 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **Sid** | **string** | The public ID of the Twilio account. Relevant to Twilio only.  | 
 **AuthToken** | **string** | The secret key of the Twilio or Syniverse account. | 
-**Numbers** | [**[]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers**](NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers.md) | A collection of Twilio or Syniverse numbers to use when sending a notification. | 
+**Numbers** | Pointer to [**[]NotificationsSettingsPhoneDeliverySettingsCustomNumbers**](NotificationsSettingsPhoneDeliverySettingsCustomNumbers.md) |  | [optional] 
 
 ## Methods
 
 ### NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse
 
-`func NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, sid string, authToken string, numbers []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, ) *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse`
+`func NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse(provider EnumNotificationsSettingsPhoneDeliverySettingsProvider, sid string, authToken string, ) *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse`
 
 NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse instantiates a new NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +32,31 @@ will change when the set of required properties is changed
 NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverseWithDefaults instantiates a new NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetId
 
@@ -194,23 +220,28 @@ SetAuthToken sets AuthToken field to given value.
 
 ### GetNumbers
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers`
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbers() []NotificationsSettingsPhoneDeliverySettingsCustomNumbers`
 
 GetNumbers returns the Numbers field if non-nil, zero value otherwise.
 
 ### GetNumbersOk
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbersOk() (*[]NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers, bool)`
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) GetNumbersOk() (*[]NotificationsSettingsPhoneDeliverySettingsCustomNumbers, bool)`
 
 GetNumbersOk returns a tuple with the Numbers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNumbers
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsTwilioSyniverseAllOfNumbers)`
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) SetNumbers(v []NotificationsSettingsPhoneDeliverySettingsCustomNumbers)`
 
 SetNumbers sets Numbers field to given value.
 
+### HasNumbers
+
+`func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) HasNumbers() bool`
+
+HasNumbers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

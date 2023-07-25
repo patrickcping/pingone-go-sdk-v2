@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to **map[string]interface{}** |  | [optional] 
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **AccessControl** | Pointer to [**ApplicationAccessControl**](ApplicationAccessControl.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
@@ -28,13 +28,14 @@ Name | Type | Description | Notes
 **SloBinding** | Pointer to [**EnumApplicationSAMLSloBinding**](EnumApplicationSAMLSloBinding.md) |  | [optional] 
 **SloEndpoint** | Pointer to **string** | The single logout endpoint URL. | [optional] 
 **SloResponseEndpoint** | Pointer to **string** | A string that specifies the endpoint URL to submit the logout response. If a value is not provided, the sloEndpoint property value is used to submit SLO response. | [optional] 
+**SloWindow** | Pointer to **int32** | Defines how long PingOne can exchange logout messages with the application, specifically a &#x60;LogoutRequest&#x60; from the application, since the initial request. PingOne can also send a &#x60;LogoutRequest&#x60; to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens. | [optional] 
 **SpEntityId** | **string** | A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment. | 
 **SpVerification** | Pointer to [**ApplicationSAMLAllOfSpVerification**](ApplicationSAMLAllOfSpVerification.md) |  | [optional] 
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
-**BundleId** | Pointer to **string** | A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. | [optional] 
-**PackageName** | Pointer to **string** | A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable. | [optional] 
+**BundleId** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.bundleId&#x60; instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  | [optional] 
+**PackageName** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.packageName&#x60; instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  | [optional] 
 **Kerberos** | Pointer to [**ApplicationWSFEDAllOfKerberos**](ApplicationWSFEDAllOfKerberos.md) |  | [optional] 
 **GrantTypes** | [**[]EnumApplicationOIDCGrantType**](EnumApplicationOIDCGrantType.md) | A string that specifies the grant type for the authorization request. This is a required property. Options are AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS. | 
 **InitiateLoginUri** | Pointer to **string** | A string that specifies the URI to use for third-parties to begin the sign-on process for the application. If specified, PingOne redirects users to this URI to initiate SSO to PingOne. The application is responsible for implementing the relevant OIDC flow when the initiate login URI is requested. This property is required if you want the application to appear in the PingOne Application Portal. See the OIDC specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin) for more information. | [optional] 
@@ -76,20 +77,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *UpdateApplicationRequest) GetLinks() map[string]interface{}`
+`func (o *UpdateApplicationRequest) GetLinks() LinksHATEOAS`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *UpdateApplicationRequest) GetLinksOk() (*map[string]interface{}, bool)`
+`func (o *UpdateApplicationRequest) GetLinksOk() (*LinksHATEOAS, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *UpdateApplicationRequest) SetLinks(v map[string]interface{})`
+`func (o *UpdateApplicationRequest) SetLinks(v LinksHATEOAS)`
 
 SetLinks sets Links field to given value.
 
@@ -633,6 +634,31 @@ SetSloResponseEndpoint sets SloResponseEndpoint field to given value.
 `func (o *UpdateApplicationRequest) HasSloResponseEndpoint() bool`
 
 HasSloResponseEndpoint returns a boolean if a field has been set.
+
+### GetSloWindow
+
+`func (o *UpdateApplicationRequest) GetSloWindow() int32`
+
+GetSloWindow returns the SloWindow field if non-nil, zero value otherwise.
+
+### GetSloWindowOk
+
+`func (o *UpdateApplicationRequest) GetSloWindowOk() (*int32, bool)`
+
+GetSloWindowOk returns a tuple with the SloWindow field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSloWindow
+
+`func (o *UpdateApplicationRequest) SetSloWindow(v int32)`
+
+SetSloWindow sets SloWindow field to given value.
+
+### HasSloWindow
+
+`func (o *UpdateApplicationRequest) HasSloWindow() bool`
+
+HasSloWindow returns a boolean if a field has been set.
 
 ### GetSpEntityId
 

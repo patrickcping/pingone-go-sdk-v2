@@ -3,7 +3,7 @@ PingOne Platform API - SSO and Base
 
 The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
 
-API version: 2022-08-02
+API version: 2023-06-29
 */
 
 package management
@@ -67,14 +67,21 @@ func (a *ImagesApiService) CreateImage(ctx context.Context, environmentID string
 //
 //	@return Image
 func (a *ImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Image
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalCreateImageExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Image), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (*Image, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -88,7 +95,7 @@ func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/images"
+	localVarPath := localBasePath + "/environments/{environmentID}/images"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -265,15 +272,21 @@ func (a *ImagesApiService) DeleteImage(ctx context.Context, environmentID string
 
 // Execute executes the request
 func (a *ImagesApiService) DeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
-	_, response, error := processResponse(
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteImageExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
-			
+
 func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -286,7 +299,7 @@ func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/images/{imgID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/images/{imgID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")), -1)
 
@@ -437,14 +450,21 @@ func (a *ImagesApiService) ReadImage(ctx context.Context, environmentID string, 
 //
 //	@return Image
 func (a *ImagesApiService) ReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Image
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalReadImageExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Image), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Image, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -458,7 +478,7 @@ func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Ima
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/images/{imgID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/images/{imgID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"imgID"+"}", url.PathEscape(parameterValueToString(r.imgID, "imgID")), -1)
 

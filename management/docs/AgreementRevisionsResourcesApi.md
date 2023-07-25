@@ -1,13 +1,13 @@
 # \AgreementRevisionsResourcesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAgreementLanguageRevision**](AgreementRevisionsResourcesApi.md#CreateAgreementLanguageRevision) | **Post** /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions | CREATE Revision
-[**DeleteAgreementLanguageRevision**](AgreementRevisionsResourcesApi.md#DeleteAgreementLanguageRevision) | **Delete** /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID} | DELETE Revision
-[**ReadAllAgreementLanguageRevisions**](AgreementRevisionsResourcesApi.md#ReadAllAgreementLanguageRevisions) | **Get** /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions | READ All Revisions
-[**ReadOneAgreementLanguageRevision**](AgreementRevisionsResourcesApi.md#ReadOneAgreementLanguageRevision) | **Get** /v1/environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID} | READ One Revision
+[**CreateAgreementLanguageRevision**](AgreementRevisionsResourcesApi.md#CreateAgreementLanguageRevision) | **Post** /environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions | CREATE Revision
+[**DeleteAgreementLanguageRevision**](AgreementRevisionsResourcesApi.md#DeleteAgreementLanguageRevision) | **Delete** /environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID} | DELETE Revision
+[**ReadAllAgreementLanguageRevisions**](AgreementRevisionsResourcesApi.md#ReadAllAgreementLanguageRevisions) | **Get** /environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions | READ All Revisions
+[**ReadOneAgreementLanguageRevision**](AgreementRevisionsResourcesApi.md#ReadOneAgreementLanguageRevision) | **Get** /environments/{environmentID}/agreements/{agreementID}/languages/{languageID}/revisions/{revisionID} | READ One Revision
 
 
 

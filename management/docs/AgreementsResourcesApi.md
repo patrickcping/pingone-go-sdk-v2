@@ -1,14 +1,14 @@
 # \AgreementsResourcesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAgreement**](AgreementsResourcesApi.md#CreateAgreement) | **Post** /v1/environments/{environmentID}/agreements | CREATE Agreement
-[**DeleteAgreement**](AgreementsResourcesApi.md#DeleteAgreement) | **Delete** /v1/environments/{environmentID}/agreements/{agreementID} | DELETE Agreement
-[**ReadAllAgreements**](AgreementsResourcesApi.md#ReadAllAgreements) | **Get** /v1/environments/{environmentID}/agreements | READ All Agreements
-[**ReadOneAgreement**](AgreementsResourcesApi.md#ReadOneAgreement) | **Get** /v1/environments/{environmentID}/agreements/{agreementID} | READ One Agreement
-[**UpdateAgreement**](AgreementsResourcesApi.md#UpdateAgreement) | **Put** /v1/environments/{environmentID}/agreements/{agreementID} | UPDATE Agreement
+[**CreateAgreement**](AgreementsResourcesApi.md#CreateAgreement) | **Post** /environments/{environmentID}/agreements | CREATE Agreement
+[**DeleteAgreement**](AgreementsResourcesApi.md#DeleteAgreement) | **Delete** /environments/{environmentID}/agreements/{agreementID} | DELETE Agreement
+[**ReadAllAgreements**](AgreementsResourcesApi.md#ReadAllAgreements) | **Get** /environments/{environmentID}/agreements | READ All Agreements
+[**ReadOneAgreement**](AgreementsResourcesApi.md#ReadOneAgreement) | **Get** /environments/{environmentID}/agreements/{agreementID} | READ One Agreement
+[**UpdateAgreement**](AgreementsResourcesApi.md#UpdateAgreement) | **Put** /environments/{environmentID}/agreements/{agreementID} | UPDATE Agreement
 
 
 

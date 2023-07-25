@@ -56,8 +56,93 @@ var (
 
 		{
 			fileSelectPattern: "configuration.go",
-			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
-			repl:              `"PingOne-GOLANG-SDK/$1/go",`,
+			pattern:           `\/\/ AddDefaultHeader adds a new HTTP header to the default header in the request`,
+			repl: `func (c *Configuration) SetDebug(debug bool) {
+	c.Debug = debug
+}
+
+func (c *Configuration) SetUserAgent(userAgent string) {
+	c.UserAgent = userAgent
+}
+			
+func (c *Configuration) SetDefaultServerIndex(defaultServerIndex int) {
+	c.DefaultServerIndex = defaultServerIndex
+}
+
+func (c *Configuration) SetDefaultServerVariableDefaultValue(variable string, value string) error {
+	return c.SetServerVariableDefaultValue(c.DefaultServerIndex, variable, value)
+}
+
+func (c *Configuration) SetServerVariableDefaultValue(serverIndex int, variable string, value string) error {
+	if serverIndex >= 0 && serverIndex < len(c.Servers) {
+		if entry, ok := c.Servers[serverIndex].Variables[variable]; ok {
+			entry.DefaultValue = value
+			c.Servers[serverIndex].Variables[variable] = entry
+			return nil
+		} else {
+			return fmt.Errorf("variable %v not defined in server %v", variable, serverIndex)
+		}
+	} else {
+		return fmt.Errorf("server index %v out of range %v", serverIndex, len(c.Servers)-1)
+	}
+}
+
+// AddDefaultHeader adds a new HTTP header to the default header in the request`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `Debug            bool              ` + "`" + `json:"debug,omitempty"` + "`" + `\n	Servers          ServerConfigurations\n`,
+			repl: `Debug            bool              ` + "`" + `json:"debug,omitempty"` + "`" + `
+	DefaultServerIndex int             ` + "`" + `json:"defaultServerIndex,omitempty"` + "`" + `
+	ProxyURL         *string           ` + "`" + `json:"proxyURL,omitempty"` + "`" + `
+	Servers          ServerConfigurations
+`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `Debug:            false,\n		Servers:          ServerConfigurations{\n`,
+			repl: `Debug:            false,
+		DefaultServerIndex: 0,
+		Servers:          ServerConfigurations{
+`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `return 0`,
+			repl:              `return defaultServerIndex`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `func getServerIndex\(ctx context.Context\) \(int, error\)`,
+			repl:              `func getServerIndex(ctx context.Context, defaultServerIndex int) (int, error)`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `func getServerOperationIndex\(ctx context.Context, endpoint string\) \(int, error\)`,
+			repl:              `func getServerOperationIndex(ctx context.Context, endpoint string, defaultServerIndex int) (int, error)`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `return getServerIndex\(ctx\)`,
+			repl:              `return getServerIndex(ctx, defaultServerIndex)`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `return sc.URL\(0,`,
+			repl:              `return sc.URL(c.DefaultServerIndex,`,
+		},
+
+		{
+			fileSelectPattern: "configuration.go",
+			pattern:           `getServerOperationIndex\(ctx, endpoint\)`,
+			repl:              `getServerOperationIndex(ctx, endpoint, c.DefaultServerIndex)`,
 		},
 
 		/////////////////////////
@@ -69,12 +154,19 @@ var (
 			fileSelectPattern: "api_*.go",
 			pattern:           `func \(([a-zA-Z0-9\* ]+)\) ([a-zA-Z])([a-zA-Z0-9]+Execute)\(([a-zA-Z0-9 ]*)\) \(([\*a-zA-Z0-9]*), \*http\.Response, error\) {`,
 			repl: `func ($1) $2$3($4) ($5, *http.Response, error) {
-	obj, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err                  error
+		response             *http.Response
+		localVarReturnValue  $5
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			return r.ApiService.internal$2$3(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.($5), response, error
+	return localVarReturnValue, response, err
 }
 			
 func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
@@ -85,13 +177,19 @@ func ($1) internal$2$3($4) ($5, *http.Response, error) {`,
 			fileSelectPattern: "api_*.go",
 			pattern:           `func \(([a-zA-Z0-9\* ]+)\) ([a-zA-Z])([a-zA-Z0-9]+Execute)\(([a-zA-Z0-9 ]*)\) \(\*http\.Response, error\) {`,
 			repl: `func ($1) $2$3($4) (*http.Response, error) {
-	_, response, error := processResponse(
-		func() (interface{}, *http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+	
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internal$2$3(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
 			
 func ($1) internal$2$3($4) (*http.Response, error) {`,
@@ -105,115 +203,14 @@ func ($1) internal$2$3($4) (*http.Response, error) {`,
 		},
 
 		/////////////////////////
-		// Management: Password policy
+		// ALL ENUM Models
 		/////////////////////////
-
-		// Password policy model
+		// Suppress enum unmarshalling errors
 		{
-			fileSelectPattern: "model_password_policy_min_characters.go",
-			pattern:           `______`,
-			repl:              `SpecialChar`,
-		},
-
-		{
-			fileSelectPattern: "model_password_policy_min_characters.go",
-			pattern:           `json:"~!@\#\$%\^&amp;\*\(\)-_&\#x3D;\+\[]\{}\|;:,\.&lt;&gt;/\?,omitempty"`,
-			repl:              `json:"specialchar,omitempty"`,
-		},
-
-		{
-			fileSelectPattern: "model_password_policy_min_characters.go",
-			pattern:           `toSerialize\["~!@\#\$%\^&amp;\*\(\)-_&\#x3D;\+\[]\{}\|;:,\.&lt;&gt;/\?"]\ =\ o\.SpecialChar`,
-			repl:              `toSerialize["~!@#$%^&*()-_=+[]{}|;:,.<>/?"] = o.SpecialChar`,
-		},
-
-		/////////////////////////
-		// Management: Certificate
-		/////////////////////////
-
-		// Certificate model
-		{
-			fileSelectPattern: "model_certificate.go",
-			pattern:           `int64`,
-			repl:              `big.Int`,
-		},
-		{
-			fileSelectPattern: "model_certificate.go",
-			pattern:           `import \(`,
-			repl: `import (
-	"math/big"`,
-		},
-
-		/////////////////////////
-		// Risk: Risk Predictor
-		/////////////////////////
-
-		// RiskPredictor model
-		{
-			fileSelectPattern: "model_risk_predictor.go",
-			pattern:           `(func \(dst \*RiskPredictor\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
-			repl: `func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
-
-	var common RiskPredictorCommon
-
-	if err := json.Unmarshal(data, &common); err != nil { // simple model
-		return err
-	}
-
-	dst.RiskPredictorAnonymousNetwork = nil
-	dst.RiskPredictorComposite = nil
-	dst.RiskPredictorCustom = nil
-	dst.RiskPredictorGeovelocity = nil
-	dst.RiskPredictorIPReputation = nil
-	dst.RiskPredictorNewDevice = nil
-	dst.RiskPredictorUEBA = nil
-	dst.RiskPredictorUserLocationAnomaly = nil
-	dst.RiskPredictorVelocity = nil
-
-	switch common.GetType() {
-	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
-		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil { // simple model
-			return err
-		}
-	case ENUMPREDICTORTYPE_COMPOSITE:
-		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil { // simple model
-			return err
-		}
-	case ENUMPREDICTORTYPE_MAP:
-		if err := json.Unmarshal(data, &dst.RiskPredictorCustom); err != nil { // simple model
-			return err
-		}
-	case ENUMPREDICTORTYPE_GEO_VELOCITY:
-		if err := json.Unmarshal(data, &dst.RiskPredictorGeovelocity); err != nil { // simple model
-			return err
-		}
-	case ENUMPREDICTORTYPE_IP_REPUTATION:
-		if err := json.Unmarshal(data, &dst.RiskPredictorIPReputation); err != nil { // simple model
-			return err
-		}
-	case ENUMPREDICTORTYPE_NEW_DEVICE:
-		if err := json.Unmarshal(data, &dst.RiskPredictorNewDevice); err != nil { // simple model
-			return err
-		}
-	case ENUMPREDICTORTYPE_USER_RISK_BEHAVIOR:
-		if err := json.Unmarshal(data, &dst.RiskPredictorUEBA); err != nil { // simple model
-			return err
-		}
-	case ENUMPREDICTORTYPE_USER_LOCATION_ANOMALY:
-		if err := json.Unmarshal(data, &dst.RiskPredictorUserLocationAnomaly); err != nil { // simple model
-			return err
-		}
-	case ENUMPREDICTORTYPE_VELOCITY:
-		if err := json.Unmarshal(data, &dst.RiskPredictorVelocity); err != nil { // simple model
-			return err
-		}
-	default:
-		return fmt.Errorf("Data failed to match schemas in oneOf(RiskPredictor)")
-	}
-	return nil
-}
-
-// Marshal data from the first non-nil pointers in the struct to JSON`,
+			fileSelectPattern: "model_enum_*.go",
+			pattern:           `return fmt\.Errorf\("%\+v is not a valid (Enum[a-zA-Z]+)", value\)`,
+			repl: `*v = $1(fmt.Sprintf("%s", "UNKNOWN"))
+	return nil`,
 		},
 	}
 )

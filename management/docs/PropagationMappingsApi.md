@@ -1,20 +1,20 @@
 # \PropagationMappingsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete**](PropagationMappingsApi.md#V1EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete) | **Delete** /v1/environments/{environmentID}/propagation/mapping/{mappingID} | DELETE Mapping
-[**V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet**](PropagationMappingsApi.md#V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet) | **Get** /v1/environments/{environmentID}/propagation/mappings/{mappingID} | READ One Mapping
-[**V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut**](PropagationMappingsApi.md#V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut) | **Put** /v1/environments/{environmentID}/propagation/mappings/{mappingID} | UPDATE Mapping
-[**V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet**](PropagationMappingsApi.md#V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet) | **Get** /v1/environments/{environmentID}/propagation/rules/{ruleID}/mappings | READ One Rule  Mapping
-[**V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost**](PropagationMappingsApi.md#V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost) | **Post** /v1/environments/{environmentID}/propagation/rules/{ruleID}/mappings | CREATE Rule Mapping
+[**EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete**](PropagationMappingsApi.md#EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete) | **Delete** /environments/{environmentID}/propagation/mapping/{mappingID} | DELETE Mapping
+[**EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet**](PropagationMappingsApi.md#EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet) | **Get** /environments/{environmentID}/propagation/mappings/{mappingID} | READ One Mapping
+[**EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut**](PropagationMappingsApi.md#EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut) | **Put** /environments/{environmentID}/propagation/mappings/{mappingID} | UPDATE Mapping
+[**EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet**](PropagationMappingsApi.md#EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet) | **Get** /environments/{environmentID}/propagation/rules/{ruleID}/mappings | READ One Rule  Mapping
+[**EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost**](PropagationMappingsApi.md#EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost) | **Post** /environments/{environmentID}/propagation/rules/{ruleID}/mappings | CREATE Rule Mapping
 
 
 
-## V1EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete
+## EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete
 
-> V1EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete(ctx, environmentID, mappingID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete(ctx, environmentID, mappingID).Accept(accept).Execute()
 
 DELETE Mapping
 
@@ -37,9 +37,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete(context.Background(), environmentID, mappingID).Accept(accept).Execute()
+    r, err := apiClient.PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete(context.Background(), environmentID, mappingID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationMappingMappingIDDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationMappingMappingIDDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -83,9 +83,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet
+## EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet
 
-> V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet(ctx, environmentID, mappingID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet(ctx, environmentID, mappingID).Accept(accept).Execute()
 
 READ One Mapping
 
@@ -108,9 +108,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet(context.Background(), environmentID, mappingID).Accept(accept).Execute()
+    r, err := apiClient.PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet(context.Background(), environmentID, mappingID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationMappingsMappingIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationMappingsMappingIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationMappingsMappingIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -154,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut
+## EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut
 
-> V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut(ctx, environmentID, mappingID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut(ctx, environmentID, mappingID).Body(body).Execute()
 
 UPDATE Mapping
 
@@ -179,9 +179,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut(context.Background(), environmentID, mappingID).Body(body).Execute()
+    r, err := apiClient.PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut(context.Background(), environmentID, mappingID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationMappingsMappingIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationMappingsMappingIDPutRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -225,9 +225,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet
+## EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet
 
-> V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet(ctx, environmentID, ruleID).Accept(accept).ContentType(contentType).Execute()
+> EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet(ctx, environmentID, ruleID).Accept(accept).ContentType(contentType).Execute()
 
 READ One Rule  Mapping
 
@@ -251,9 +251,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet(context.Background(), environmentID, ruleID).Accept(accept).ContentType(contentType).Execute()
+    r, err := apiClient.PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet(context.Background(), environmentID, ruleID).Accept(accept).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -298,9 +298,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost
+## EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost
 
-> V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost(ctx, environmentID, ruleID).Body(body).Execute()
+> EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost(ctx, environmentID, ruleID).Body(body).Execute()
 
 CREATE Rule Mapping
 
@@ -323,9 +323,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost(context.Background(), environmentID, ruleID).Body(body).Execute()
+    r, err := apiClient.PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost(context.Background(), environmentID, ruleID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.V1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationMappingsApi.EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

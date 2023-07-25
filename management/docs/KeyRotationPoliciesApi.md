@@ -1,14 +1,14 @@
 # \KeyRotationPoliciesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateKeyRotationPolicy**](KeyRotationPoliciesApi.md#CreateKeyRotationPolicy) | **Post** /v1/environments/{environmentID}/keyRotationPolicies | CREATE Key Rotation Policy
-[**DeleteKeyRotationPolicy**](KeyRotationPoliciesApi.md#DeleteKeyRotationPolicy) | **Delete** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | DELETE Key Rotation Policy
-[**GetKeyRotationPolicies**](KeyRotationPoliciesApi.md#GetKeyRotationPolicies) | **Get** /v1/environments/{environmentID}/keyRotationPolicies | GET Key Rotation Policies
-[**GetKeyRotationPolicy**](KeyRotationPoliciesApi.md#GetKeyRotationPolicy) | **Get** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | GET Key Rotation Policy
-[**UpdateKeyRotationPolicy**](KeyRotationPoliciesApi.md#UpdateKeyRotationPolicy) | **Put** /v1/environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | UPDATE Key Rotation Policy
+[**CreateKeyRotationPolicy**](KeyRotationPoliciesApi.md#CreateKeyRotationPolicy) | **Post** /environments/{environmentID}/keyRotationPolicies | CREATE Key Rotation Policy
+[**DeleteKeyRotationPolicy**](KeyRotationPoliciesApi.md#DeleteKeyRotationPolicy) | **Delete** /environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | DELETE Key Rotation Policy
+[**GetKeyRotationPolicies**](KeyRotationPoliciesApi.md#GetKeyRotationPolicies) | **Get** /environments/{environmentID}/keyRotationPolicies | GET Key Rotation Policies
+[**GetKeyRotationPolicy**](KeyRotationPoliciesApi.md#GetKeyRotationPolicy) | **Get** /environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | GET Key Rotation Policy
+[**UpdateKeyRotationPolicy**](KeyRotationPoliciesApi.md#UpdateKeyRotationPolicy) | **Put** /environments/{environmentID}/keyRotationPolicies/{keyRotationPolicyID} | UPDATE Key Rotation Policy
 
 
 
@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING"), int32(123)) // KeyRotationPolicy |  (optional)
+    keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING")) // KeyRotationPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -311,7 +311,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     keyRotationPolicyID := "keyRotationPolicyID_example" // string | 
-    keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING"), int32(123)) // KeyRotationPolicy |  (optional)
+    keyRotationPolicy := *openapiclient.NewKeyRotationPolicy(openapiclient.EnumKeyRotationPolicyAlgorithm("RSA"), "Dn_example", int32(123), "Name_example", openapiclient.EnumKeyRotationPolicySigAlgorithm("SHA256withRSA"), openapiclient.EnumKeyRotationPolicyUsageType("SIGNING")) // KeyRotationPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

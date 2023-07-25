@@ -1,14 +1,14 @@
 # \ResourceAttributesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateResourceAttribute**](ResourceAttributesApi.md#CreateResourceAttribute) | **Post** /v1/environments/{environmentID}/resources/{resourceID}/attributes | CREATE Resource Attribute
-[**DeleteResourceAttribute**](ResourceAttributesApi.md#DeleteResourceAttribute) | **Delete** /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | DELETE Resource Attribute
-[**ReadAllResourceAttributes**](ResourceAttributesApi.md#ReadAllResourceAttributes) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/attributes | READ All Resource Attributes
-[**ReadOneResourceAttribute**](ResourceAttributesApi.md#ReadOneResourceAttribute) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | READ One Resource Attribute
-[**UpdateResourceAttribute**](ResourceAttributesApi.md#UpdateResourceAttribute) | **Put** /v1/environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | UPDATE Resource Attribute
+[**CreateResourceAttribute**](ResourceAttributesApi.md#CreateResourceAttribute) | **Post** /environments/{environmentID}/resources/{resourceID}/attributes | CREATE Resource Attribute
+[**DeleteResourceAttribute**](ResourceAttributesApi.md#DeleteResourceAttribute) | **Delete** /environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | DELETE Resource Attribute
+[**ReadAllResourceAttributes**](ResourceAttributesApi.md#ReadAllResourceAttributes) | **Get** /environments/{environmentID}/resources/{resourceID}/attributes | READ All Resource Attributes
+[**ReadOneResourceAttribute**](ResourceAttributesApi.md#ReadOneResourceAttribute) | **Get** /environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | READ One Resource Attribute
+[**UpdateResourceAttribute**](ResourceAttributesApi.md#UpdateResourceAttribute) | **Put** /environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | UPDATE Resource Attribute
 
 
 

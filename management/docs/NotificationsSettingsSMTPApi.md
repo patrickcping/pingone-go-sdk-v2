@@ -1,12 +1,12 @@
 # \NotificationsSettingsSMTPApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteEmailDeliverySettings**](NotificationsSettingsSMTPApi.md#DeleteEmailDeliverySettings) | **Delete** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | DELETE Email Delivery Settings
-[**ReadEmailNotificationsSettings**](NotificationsSettingsSMTPApi.md#ReadEmailNotificationsSettings) | **Get** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | READ Email Notifications Settings
-[**UpdateEmailNotificationsSettings**](NotificationsSettingsSMTPApi.md#UpdateEmailNotificationsSettings) | **Put** /v1/environments/{environmentID}/notificationsSettings/emailDeliverySettings | UPDATE Email Notifications Settings
+[**DeleteEmailDeliverySettings**](NotificationsSettingsSMTPApi.md#DeleteEmailDeliverySettings) | **Delete** /environments/{environmentID}/notificationsSettings/emailDeliverySettings | DELETE Email Delivery Settings
+[**ReadEmailNotificationsSettings**](NotificationsSettingsSMTPApi.md#ReadEmailNotificationsSettings) | **Get** /environments/{environmentID}/notificationsSettings/emailDeliverySettings | READ Email Notifications Settings
+[**UpdateEmailNotificationsSettings**](NotificationsSettingsSMTPApi.md#UpdateEmailNotificationsSettings) | **Put** /environments/{environmentID}/notificationsSettings/emailDeliverySettings | UPDATE Email Notifications Settings
 
 
 

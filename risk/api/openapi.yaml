@@ -2,21 +2,32 @@ openapi: 3.0.0
 info:
   description: The PingOne Platform API covering the PingOne Risk service
   title: PingOne Platform API - PingOne Risk
-  version: 2021-10-17
+  version: 2023-06-29
 externalDocs:
   description: PingOne Platform API Reference - PingOne Risk APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-risk
 servers:
 - description: PingOne Platform API Endpoint
-  url: "https://api.pingone.{suffix}"
+  url: "{protocol}://{baseDomain}.{suffix}/v1"
   variables:
     suffix:
-      default: eu
+      default: com
       enum:
       - eu
       - com
       - asia
       - ca
+    baseDomain:
+      default: api.pingone
+    protocol:
+      default: https
+- description: PingOne Platform API Endpoint
+  url: "{protocol}://{baseHostname}/v1"
+  variables:
+    baseHostname:
+      default: api.pingone.com
+    protocol:
+      default: https
 security:
 - bearer: []
 tags:
@@ -25,7 +36,7 @@ tags:
 - name: Risk Evaluations
 - name: Risk Advanced Predictors
 paths:
-  /v1/environments/{environmentID}/riskPolicySets:
+  /environments/{environmentID}/riskPolicySets:
     get:
       operationId: readRiskPolicySets
       parameters:
@@ -152,7 +163,7 @@ paths:
       summary: CREATE Risk Policy Set
       tags:
       - Risk Policies
-  /v1/environments/{environmentID}/riskPolicySets/{riskPolicySetID}:
+  /environments/{environmentID}/riskPolicySets/{riskPolicySetID}:
     delete:
       operationId: deleteRiskPolicySet
       parameters:
@@ -346,7 +357,7 @@ paths:
       summary: UPDATE Risk Policy Set
       tags:
       - Risk Policies
-  /v1/environments/{environmentID}/riskEvaluations:
+  /environments/{environmentID}/riskEvaluations:
     post:
       operationId: createRiskEvaluation
       parameters:
@@ -416,7 +427,7 @@ paths:
       summary: CREATE Risk Evaluation
       tags:
       - Risk Evaluations
-  /v1/environments/{environmentID}/riskEvaluations/{riskEvaluationID}:
+  /environments/{environmentID}/riskEvaluations/{riskEvaluationID}:
     get:
       operationId: readOneRiskEvaluation
       parameters:
@@ -481,7 +492,7 @@ paths:
       summary: READ One Risk Evaluation
       tags:
       - Risk Evaluations
-  /v1/environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event:
+  /environments/{environmentID}/riskEvaluations/{riskEvaluationID}/event:
     put:
       operationId: updateRiskEvaluation
       parameters:
@@ -551,7 +562,7 @@ paths:
       summary: UPDATE Risk Evaluation
       tags:
       - Risk Evaluations
-  /v1/environments/{environmentID}/riskPredictors:
+  /environments/{environmentID}/riskPredictors:
     get:
       operationId: readAllRiskPredictors
       parameters:
@@ -678,7 +689,7 @@ paths:
       summary: CREATE Risk Predictor
       tags:
       - Risk Advanced Predictors
-  /v1/environments/{environmentID}/riskPredictors/{riskPredictorID}:
+  /environments/{environmentID}/riskPredictors/{riskPredictorID}:
     delete:
       operationId: deleteRiskAdvancedPredictor
       parameters:
@@ -917,15 +928,46 @@ components:
             $ref: '#/components/schemas/P1Error'
       description: Uncaught error occurred.  Platform outage
   schemas:
+    LinksHATEOAS:
+      additionalProperties: true
+      example:
+        next:
+          href: https://openapi-generator.tech
+        self:
+          href: https://openapi-generator.tech
+      properties:
+        self:
+          $ref: '#/components/schemas/LinksHATEOAS_self'
+        next:
+          $ref: '#/components/schemas/LinksHATEOAS_next'
+      readOnly: true
+      type: object
+    LinksHATEOASHref:
+      description: The URI of the resource.
+      format: uri
+      type: string
     EntityArray:
       example:
-        size: 9.301444243932576
+        size: 7.061401241503109
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         _embedded:
           riskPolicySets:
-          - createdAt: createdAt
+          - evaluatedPredictors:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
             default: true
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
@@ -934,7 +976,7 @@ components:
                 level: null
                 type: null
                 value: value
-              createdAt: createdAt
+              createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
                 - weight: 0
@@ -943,25 +985,36 @@ components:
                   value: value
                 contains: contains
                 equals: null
+                aggregatedScores:
+                - score: 6
+                  value: value
+                - score: 6
+                  value: value
                 ipRange:
                 - ipRange
                 - ipRange
+                type: null
                 value: value
                 between:
-                  minScore: 6
-                  maxScore: 1
+                  minScore: 146
+                  maxScore: 596
               environment:
                 id: id
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
               name: name
               description: description
               id: id
               priority: 5
-              updatedAt: updatedAt
+              updatedAt: 2000-01-23T04:56:07.000+00:00
             - result:
                 level: null
                 type: null
                 value: value
-              createdAt: createdAt
+              createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
                 - weight: 0
@@ -970,29 +1023,56 @@ components:
                   value: value
                 contains: contains
                 equals: null
+                aggregatedScores:
+                - score: 6
+                  value: value
+                - score: 6
+                  value: value
                 ipRange:
                 - ipRange
                 - ipRange
+                type: null
                 value: value
                 between:
-                  minScore: 6
-                  maxScore: 1
+                  minScore: 146
+                  maxScore: 596
               environment:
                 id: id
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
               name: name
               description: description
               id: id
               priority: 5
-              updatedAt: updatedAt
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            triggers:
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
             defaultResult:
               level: null
               type: null
-              value: value
-            updatedAt: updatedAt
-          - createdAt: createdAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - evaluatedPredictors:
+            - id: id
+            - id: id
+            createdAt: 2000-01-23T04:56:07.000+00:00
             default: true
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
@@ -1001,7 +1081,7 @@ components:
                 level: null
                 type: null
                 value: value
-              createdAt: createdAt
+              createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
                 - weight: 0
@@ -1010,25 +1090,36 @@ components:
                   value: value
                 contains: contains
                 equals: null
+                aggregatedScores:
+                - score: 6
+                  value: value
+                - score: 6
+                  value: value
                 ipRange:
                 - ipRange
                 - ipRange
+                type: null
                 value: value
                 between:
-                  minScore: 6
-                  maxScore: 1
+                  minScore: 146
+                  maxScore: 596
               environment:
                 id: id
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
               name: name
               description: description
               id: id
               priority: 5
-              updatedAt: updatedAt
+              updatedAt: 2000-01-23T04:56:07.000+00:00
             - result:
                 level: null
                 type: null
                 value: value
-              createdAt: createdAt
+              createdAt: 2000-01-23T04:56:07.000+00:00
               condition:
                 aggregatedWeights:
                 - weight: 0
@@ -1037,72 +1128,51 @@ components:
                   value: value
                 contains: contains
                 equals: null
+                aggregatedScores:
+                - score: 6
+                  value: value
+                - score: 6
+                  value: value
                 ipRange:
                 - ipRange
                 - ipRange
+                type: null
                 value: value
                 between:
-                  minScore: 6
-                  maxScore: 1
+                  minScore: 146
+                  maxScore: 596
               environment:
                 id: id
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
               name: name
               description: description
               id: id
               priority: 5
-              updatedAt: updatedAt
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            triggers:
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
+            - type: null
+              policySet:
+                id: id
+              expiresAt: 2000-01-23T04:56:07.000+00:00
             defaultResult:
               level: null
               type: null
-              value: value
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           riskPredictors:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            default:
-              result:
-                level: null
-                type: null
-              score: 2
-              weight: 5
-              evaluated: true
-            condition:
-              scores:
-              - name: name
-                value: value
-              - name: name
-                value: value
-            licensed: true
-            name: name
-            deletable: true
-            description: description
-            id: id
-            type: null
-            compactName: compactName
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            default:
-              result:
-                level: null
-                type: null
-              score: 2
-              weight: 5
-              evaluated: true
-            condition:
-              scores:
-              - name: name
-                value: value
-              - name: name
-                value: value
-            licensed: true
-            name: name
-            deletable: true
-            description: description
-            id: id
-            type: null
-            compactName: compactName
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-        count: 7.061401241503109
+          - null
+          - null
+        count: 2.3021358869347655
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
         count:
@@ -1141,22 +1211,55 @@ components:
       enum:
       - AUTHENTICATION
       type: string
+    EnumRiskPolicyConditionType:
+      description: |
+        Indicates the type of policy you are defining. Can be one of the following values: `AGGREGATED_SCORES`, `AGGREGATED_WEIGHTS`, `VALUE_COMPARISON`, and `IP_RANGE` (for override policies or custom predictors).
+      enum:
+      - AGGREGATED_WEIGHTS
+      - AGGREGATED_SCORES
+      - VALUE_COMPARISON
+      - IP_RANGE
+      type: string
+    EnumRiskPolicyResultLevel:
+      description: "Contains the default result level returned if none of the conditions\
+        \ in the policy are evaluated to true. At this time, the value must be `LOW`."
+      enum:
+      - LOW
+      type: string
+    EnumRiskPolicySetTriggerType:
+      description: A string that specifies the trigger type for the policy set. The
+        only option is `POLICY_SET_STAGING`.
+      enum:
+      - POLICY_SET_STAGING
+      type: string
     EnumPredictorCompositeConditionType:
       enum:
       - VALUE_COMPARISON
       - STRING_LIST
+      - AND
+      - NOT
+      - OR
+      type: string
+    EnumPredictorNewDeviceDetectType:
+      description: Used only for New Device predictors and Suspicious Device predictors.
+        Both of these predictor types use the value `DEVICE` for `type`. The `detect`
+        field is used to specify the kind of devices you are trying to detect.
+      enum:
+      - NEW_DEVICE
+      - SUSPICIOUS_DEVICE
       type: string
     EnumPredictorType:
-      description: "An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`,\
-        \ `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `NEW_DEVICE`, `USER_LOCATION_ANOMALY`,\
-        \ `USER_RISK_BEHAVIOR` or `VELOCITY`."
+      description: "An enum type that specifies the type of the predictor. Note that\
+        \ both the New Device and Suspicious Device predictors use the type DEVICE.\
+        \ To differentiate between them, you use the `detect` field."
       enum:
       - ANONYMOUS_NETWORK
+      - BOT
       - COMPOSITE
       - GEO_VELOCITY
       - IP_REPUTATION
       - MAP
-      - NEW_DEVICE
+      - DEVICE
       - USER_LOCATION_ANOMALY
       - USER_RISK_BEHAVIOR
       - VELOCITY
@@ -1192,7 +1295,7 @@ components:
       - MEDIUM
       - HIGH
       type: string
-    EnumRiskModel:
+    EnumUserRiskBehaviorRiskModel:
       description: Enum string that specifies the risk model.  Options are `points`
         (individual user model) and `login_anomaly_statistic` (organization wide model).
       enum:
@@ -1274,6 +1377,11 @@ components:
         riskPolicySet:
           name: name
           id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         details:
           ipAddressReputation:
             score: 0
@@ -1389,6 +1497,8 @@ components:
             type: null
         updatedAt: updatedAt
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         createdAt:
           description: The time the resource was created (format ISO-8061).
           readOnly: true
@@ -1629,12 +1739,108 @@ components:
           readOnly: true
           type: string
       type: object
+    RiskPolicy:
+      example:
+        result:
+          level: null
+          type: null
+          value: value
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        condition:
+          aggregatedWeights:
+          - weight: 0
+            value: value
+          - weight: 0
+            value: value
+          contains: contains
+          equals: null
+          aggregatedScores:
+          - score: 6
+            value: value
+          - score: 6
+            value: value
+          ipRange:
+          - ipRange
+          - ipRange
+          type: null
+          value: value
+          between:
+            minScore: 146
+            maxScore: 596
+        environment:
+          id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
+        name: name
+        description: description
+        id: id
+        priority: 5
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
+        condition:
+          $ref: '#/components/schemas/RiskPolicy_condition'
+        createdAt:
+          description: The time the resource was first created (format ISO-8061).
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: "A string that specifies a description for this risk policy.\
+            \ This is an optional property. Valid characters consist of any Unicode\
+            \ letter, mark (for example, accent, umlaut), numeric character, punctuation\
+            \ character, or space. Maximum size is 1024 characters."
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: A string that specifies the resource’s unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: "A string that specifies a name for this risk policy. Valid\
+            \ characters consist of any Unicode letter, mark (for example, accent,\
+            \ umlaut), numeric character, forward slash, dot, apostrophe, underscore,\
+            \ space, or hyphen. Maximum size is 256 characters."
+          type: string
+        priority:
+          description: "An integer that specifies priority of the policy inside a\
+            \ risk policy set, designating which policy should run first. This is\
+            \ a read-only value. The priority is determined by the order in which\
+            \ policies are listed in the policy set. The first policy in the list\
+            \ is assigned priority 1 and is evaluated first. The next policy in the\
+            \ list is assigned priority 2 and so on."
+          type: integer
+        result:
+          $ref: '#/components/schemas/RiskPolicyResult'
+        updatedAt:
+          description: The time the resource was last updated (format ISO-8061).
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - condition
+      - name
+      - result
+      type: object
     RiskPolicySet:
       example:
-        createdAt: createdAt
+        evaluatedPredictors:
+        - id: id
+        - id: id
+        createdAt: 2000-01-23T04:56:07.000+00:00
         default: true
         environment:
           id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         name: name
         description: description
         id: id
@@ -1643,7 +1849,7 @@ components:
             level: null
             type: null
             value: value
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
             - weight: 0
@@ -1652,25 +1858,36 @@ components:
               value: value
             contains: contains
             equals: null
+            aggregatedScores:
+            - score: 6
+              value: value
+            - score: 6
+              value: value
             ipRange:
             - ipRange
             - ipRange
+            type: null
             value: value
             between:
-              minScore: 6
-              maxScore: 1
+              minScore: 146
+              maxScore: 596
           environment:
             id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
           priority: 5
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         - result:
             level: null
             type: null
             value: value
-          createdAt: createdAt
+          createdAt: 2000-01-23T04:56:07.000+00:00
           condition:
             aggregatedWeights:
             - weight: 0
@@ -1679,28 +1896,50 @@ components:
               value: value
             contains: contains
             equals: null
+            aggregatedScores:
+            - score: 6
+              value: value
+            - score: 6
+              value: value
             ipRange:
             - ipRange
             - ipRange
+            type: null
             value: value
             between:
-              minScore: 6
-              maxScore: 1
+              minScore: 146
+              maxScore: 596
           environment:
             id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
           priority: 5
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        triggers:
+        - type: null
+          policySet:
+            id: id
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+        - type: null
+          policySet:
+            id: id
+          expiresAt: 2000-01-23T04:56:07.000+00:00
         defaultResult:
           level: null
           type: null
-          value: value
-        updatedAt: updatedAt
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         createdAt:
           description: The time the resource was created (format ISO-8061).
+          format: date-time
           readOnly: true
           type: string
         default:
@@ -1714,7 +1953,7 @@ components:
             \ environment is set to false."
           type: boolean
         defaultResult:
-          $ref: '#/components/schemas/RiskPolicyResult'
+          $ref: '#/components/schemas/RiskPolicySet_defaultResult'
         description:
           description: "A string that specifies a description for this policy set.\
             \ This is an optional property. Valid characters consist of any Unicode\
@@ -1736,16 +1975,33 @@ components:
         riskPolicies:
           description: An array of policies related to this policy set.
           items:
-            $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner'
+            $ref: '#/components/schemas/RiskPolicy'
           type: array
         updatedAt:
           description: The time the resource was last updated (format ISO-8061).
+          format: date-time
           readOnly: true
           type: string
+        evaluatedPredictors:
+          description: "The IDs for the predictors to evaluate in this policy set.\
+            \ In POST and PUT requests, if this property is null, all of the licensed\
+            \ predictors are used."
+          items:
+            $ref: '#/components/schemas/RiskPolicySet_evaluatedPredictors_inner'
+          type: array
+        triggers:
+          description: An array of triggers related to this policy set.
+          items:
+            $ref: '#/components/schemas/RiskPolicySet_triggers_inner'
+          type: array
       required:
       - name
       type: object
     RiskPolicyResult:
+      description: "A result object that specifies the result returned if the policy\
+        \ is evaluated as true. If several policies are evaluated as true, the result\
+        \ related to the highest priority policy is returned. for more information,\
+        \ see the Result attribute data model in the Risk Evaluations topic."
       example:
         level: null
         type: null
@@ -1767,35 +2023,14 @@ components:
       - $ref: '#/components/schemas/RiskPredictorCustom'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity'
       - $ref: '#/components/schemas/RiskPredictorIPReputation'
-      - $ref: '#/components/schemas/RiskPredictorNewDevice'
+      - $ref: '#/components/schemas/RiskPredictorDevice'
       - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly'
-      - $ref: '#/components/schemas/RiskPredictorUEBA'
+      - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior'
       - $ref: '#/components/schemas/RiskPredictorVelocity'
     RiskPredictorCommon:
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        default:
-          result:
-            level: null
-            type: null
-          score: 2
-          weight: 5
-          evaluated: true
-        condition:
-          scores:
-          - name: name
-            value: value
-          - name: name
-            value: value
-        licensed: true
-        name: name
-        deletable: true
-        description: description
-        id: id
-        type: null
-        compactName: compactName
-        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
@@ -1862,6 +2097,8 @@ components:
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
           type: array
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - and
       type: object
@@ -1881,6 +2118,8 @@ components:
       properties:
         not:
           $ref: '#/components/schemas/RiskPredictorCompositeOr'
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - not
       type: object
@@ -1890,6 +2129,8 @@ components:
           items:
             $ref: '#/components/schemas/RiskPredictorCompositeCondition'
           type: array
+        type:
+          $ref: '#/components/schemas/EnumPredictorCompositeConditionType'
       required:
       - or
       type: object
@@ -1908,6 +2149,9 @@ components:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
           type: string
+        type:
+          readOnly: true
+          type: string
         ipRange:
           description: List of CIDRs to include
           items:
@@ -1925,6 +2169,9 @@ components:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
           type: string
+        type:
+          readOnly: true
+          type: string
         between:
           $ref: '#/components/schemas/RiskPredictorCustomItemBetween_between'
       required:
@@ -1936,6 +2183,9 @@ components:
       properties:
         contains:
           format: "^\\${(event|details)[a-z\\.]+}$"
+          type: string
+        type:
+          readOnly: true
           type: string
         list:
           description: An array that specifies the list of entities that represent
@@ -1955,29 +2205,59 @@ components:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
-    RiskPredictorNewDevice:
+    RiskPredictorDevice:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorNewDevice_allOf'
+      - $ref: '#/components/schemas/RiskPredictorDevice_allOf'
     RiskPredictorUserLocationAnomaly:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf'
-    RiskPredictorUEBA:
+    RiskPredictorUserRiskBehavior:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorUEBA_allOf'
+      - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior_allOf'
     RiskPredictorVelocity:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorVelocity_allOf'
+    LinksHATEOAS_self:
+      description: An object that describes the current resource.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
+    LinksHATEOAS_next:
+      description: An object that describes the next page of results. This property
+        is present only if there is a next page of results and the `limit` parameter
+        is used.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
     EntityArray__embedded:
       example:
         riskPolicySets:
-        - createdAt: createdAt
+        - evaluatedPredictors:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
           default: true
           environment:
             id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
@@ -1986,7 +2266,7 @@ components:
               level: null
               type: null
               value: value
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
               - weight: 0
@@ -1995,25 +2275,36 @@ components:
                 value: value
               contains: contains
               equals: null
+              aggregatedScores:
+              - score: 6
+                value: value
+              - score: 6
+                value: value
               ipRange:
               - ipRange
               - ipRange
+              type: null
               value: value
               between:
-                minScore: 6
-                maxScore: 1
+                minScore: 146
+                maxScore: 596
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
             priority: 5
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           - result:
               level: null
               type: null
               value: value
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
               - weight: 0
@@ -2022,29 +2313,56 @@ components:
                 value: value
               contains: contains
               equals: null
+              aggregatedScores:
+              - score: 6
+                value: value
+              - score: 6
+                value: value
               ipRange:
               - ipRange
               - ipRange
+              type: null
               value: value
               between:
-                minScore: 6
-                maxScore: 1
+                minScore: 146
+                maxScore: 596
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
             priority: 5
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          triggers:
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
           defaultResult:
             level: null
             type: null
-            value: value
-          updatedAt: updatedAt
-        - createdAt: createdAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - evaluatedPredictors:
+          - id: id
+          - id: id
+          createdAt: 2000-01-23T04:56:07.000+00:00
           default: true
           environment:
             id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
@@ -2053,7 +2371,7 @@ components:
               level: null
               type: null
               value: value
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
               - weight: 0
@@ -2062,25 +2380,36 @@ components:
                 value: value
               contains: contains
               equals: null
+              aggregatedScores:
+              - score: 6
+                value: value
+              - score: 6
+                value: value
               ipRange:
               - ipRange
               - ipRange
+              type: null
               value: value
               between:
-                minScore: 6
-                maxScore: 1
+                minScore: 146
+                maxScore: 596
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
             priority: 5
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
           - result:
               level: null
               type: null
               value: value
-            createdAt: createdAt
+            createdAt: 2000-01-23T04:56:07.000+00:00
             condition:
               aggregatedWeights:
               - weight: 0
@@ -2089,70 +2418,47 @@ components:
                 value: value
               contains: contains
               equals: null
+              aggregatedScores:
+              - score: 6
+                value: value
+              - score: 6
+                value: value
               ipRange:
               - ipRange
               - ipRange
+              type: null
               value: value
               between:
-                minScore: 6
-                maxScore: 1
+                minScore: 146
+                maxScore: 596
             environment:
               id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
             priority: 5
-            updatedAt: updatedAt
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          triggers:
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
+          - type: null
+            policySet:
+              id: id
+            expiresAt: 2000-01-23T04:56:07.000+00:00
           defaultResult:
             level: null
             type: null
-            value: value
-          updatedAt: updatedAt
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         riskPredictors:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          default:
-            result:
-              level: null
-              type: null
-            score: 2
-            weight: 5
-            evaluated: true
-          condition:
-            scores:
-            - name: name
-              value: value
-            - name: name
-              value: value
-          licensed: true
-          name: name
-          deletable: true
-          description: description
-          id: id
-          type: null
-          compactName: compactName
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          default:
-            result:
-              level: null
-              type: null
-            score: 2
-            weight: 5
-            evaluated: true
-          condition:
-            scores:
-            - name: name
-              value: value
-            - name: name
-              value: value
-          licensed: true
-          name: name
-          deletable: true
-          description: description
-          id: id
-          type: null
-          compactName: compactName
-          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - null
+        - null
       properties:
         riskPolicySets:
           items:
@@ -2160,7 +2466,7 @@ components:
           type: array
         riskPredictors:
           items:
-            $ref: '#/components/schemas/RiskPredictorCommon'
+            $ref: '#/components/schemas/RiskPredictor'
           type: array
       type: object
     P1Error_details_inner_innerError:
@@ -2639,38 +2945,77 @@ components:
       - id
       - type
       type: object
-    RiskPolicySet_riskPolicies_inner_condition_equals:
+    RiskPolicy_condition_equals:
       oneOf:
       - type: string
       - type: boolean
-    RiskPolicySet_riskPolicies_inner_condition_aggregatedWeights_inner:
+    RiskPolicy_condition_aggregatedWeights_inner:
       example:
         weight: 0
         value: value
       properties:
         value:
+          description: "Text that identifies a specific risk predictor in the environment.\
+            \ It uses the form `${details.xxxxxxx.level}`, where the string between\
+            \ `details` and `level` is the compact name of the relevant predictor."
           type: string
         weight:
+          description: "The score you want to assign to the predictor when it is determined\
+            \ that there is a high risk for the predictor. Value should be between\
+            \ 0 and 100. If it is determined that there is medium risk, the predictor\
+            \ will automatically be assigned a score equal to half of the value you\
+            \ specified for high risk."
           type: integer
       required:
       - value
       - weight
       type: object
-    RiskPolicySet_riskPolicies_inner_condition_between:
+    RiskPolicy_condition_aggregatedScores_inner:
       example:
-        minScore: 6
-        maxScore: 1
+        score: 6
+        value: value
+      properties:
+        value:
+          description: "Text that identifies a specific risk predictor in the environment.\
+            \ It uses the form `${details.xxxxxxx.level}`, where the string between\
+            \ `details` and `level` is the compact name of the relevant predictor."
+          type: string
+        score:
+          description: "The score you want to assign to the predictor when it is determined\
+            \ that there is a high risk for the predictor. Value should be between\
+            \ 0 and 100. If it is determined that there is medium risk, the predictor\
+            \ will automatically be assigned a score equal to half of the value you\
+            \ specified for high risk."
+          type: integer
+      required:
+      - score
+      - value
+      type: object
+    RiskPolicy_condition_between:
+      example:
+        minScore: 146
+        maxScore: 596
       properties:
         minScore:
+          description: Required for policies of type `AGGREGATED_SCORES` or `AGGREGATED_WEIGHTS`.
+            The beginning of the risk score range that will be translated into the
+            specified risk level (`MEDIUM` or `HIGH`). Must be between `0` and `1000`.
+          maximum: 1000
+          minimum: 0
           type: integer
         maxScore:
+          description: Required for policies of type `AGGREGATED_SCORES` or `AGGREGATED_WEIGHTS`.
+            The end of the risk score range that will be translated into the specified
+            risk level (`MEDIUM` or `HIGH`). Must be between `0` and `1000`.
+          maximum: 1000
+          minimum: 0
           type: integer
       required:
       - maxScore
       - minScore
       type: object
-    RiskPolicySet_riskPolicies_inner_condition:
-      description: The condition logic that determines when a policy is evaluated
+    RiskPolicy_condition:
+      description: Contains the condition logic that determines when a policy is evaluated
         to true and when it is evaluated to false.
       example:
         aggregatedWeights:
@@ -2680,14 +3025,22 @@ components:
           value: value
         contains: contains
         equals: null
+        aggregatedScores:
+        - score: 6
+          value: value
+        - score: 6
+          value: value
         ipRange:
         - ipRange
         - ipRange
+        type: null
         value: value
         between:
-          minScore: 6
-          maxScore: 1
+          minScore: 146
+          maxScore: 596
       properties:
+        type:
+          $ref: '#/components/schemas/EnumRiskPolicyConditionType'
         contains:
           type: string
         ipRange:
@@ -2697,86 +3050,70 @@ components:
         value:
           type: string
         equals:
-          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_equals'
+          $ref: '#/components/schemas/RiskPolicy_condition_equals'
         aggregatedWeights:
+          description: "Required for weights-based policies. The elements in the array\
+            \ are `value`-`weight` pairs, representing a weighting for the weighted\
+            \ average calculation that should be assigned to a specific predictor\
+            \ when it is determined that there is a high risk for the predictor."
           items:
-            $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_aggregatedWeights_inner'
+            $ref: '#/components/schemas/RiskPolicy_condition_aggregatedWeights_inner'
+          type: array
+        aggregatedScores:
+          description: "Required for score-based policies. The elements in the array\
+            \ are `value`-`score` pairs, representing the score that should be assigned\
+            \ to a specific predictor when it is determined that there is a high risk\
+            \ for the predictor."
+          items:
+            $ref: '#/components/schemas/RiskPolicy_condition_aggregatedScores_inner'
           type: array
         between:
-          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition_between'
+          $ref: '#/components/schemas/RiskPolicy_condition_between'
       type: object
-    RiskPolicySet_riskPolicies_inner:
+    RiskPolicySet_defaultResult:
+      description: "A result object that specifies the default result returned if\
+        \ none of the conditions in the policy set are evaluated to true. At this\
+        \ time, the defaultResultLevel value must be LOW."
       example:
-        result:
-          level: null
-          type: null
-          value: value
-        createdAt: createdAt
-        condition:
-          aggregatedWeights:
-          - weight: 0
-            value: value
-          - weight: 0
-            value: value
-          contains: contains
-          equals: null
-          ipRange:
-          - ipRange
-          - ipRange
-          value: value
-          between:
-            minScore: 6
-            maxScore: 1
-        environment:
-          id: id
-        name: name
-        description: description
-        id: id
-        priority: 5
-        updatedAt: updatedAt
+        level: null
+        type: null
       properties:
-        condition:
-          $ref: '#/components/schemas/RiskPolicySet_riskPolicies_inner_condition'
-        createdAt:
-          description: The time the resource was first created (format ISO-8061).
-          readOnly: true
-          type: string
-        description:
-          description: "A string that specifies a description for this risk policy.\
-            \ This is an optional property. Valid characters consist of any Unicode\
-            \ letter, mark (for example, accent, umlaut), numeric character, punctuation\
-            \ character, or space. Maximum size is 1024 characters."
-          type: string
-        environment:
-          $ref: '#/components/schemas/ObjectEnvironment'
+        level:
+          $ref: '#/components/schemas/EnumRiskPolicyResultLevel'
+        type:
+          $ref: '#/components/schemas/EnumResultType'
+      required:
+      - level
+      type: object
+    RiskPolicySet_evaluatedPredictors_inner:
+      example:
+        id: id
+      properties:
         id:
           description: A string that specifies the resource’s unique identifier.
-          readOnly: true
-          type: string
-        name:
-          description: "A string that specifies a name for this risk policy. Valid\
-            \ characters consist of any Unicode letter, mark (for example, accent,\
-            \ umlaut), numeric character, forward slash, dot, apostrophe, underscore,\
-            \ space, or hyphen. Maximum size is 256 characters."
-          type: string
-        priority:
-          description: "An integer that specifies priority of the policy inside a\
-            \ risk policy set, designating which policy should run first. This is\
-            \ a read-only value. The priority is determined by the order in which\
-            \ policies are listed in the policy set. The first policy in the list\
-            \ is assigned priority 1 and is evaluated first. The next policy in the\
-            \ list is assigned priority 2 and so on."
-          type: integer
-        result:
-          $ref: '#/components/schemas/RiskPolicyResult'
-        updatedAt:
-          description: The time the resource was last updated (format ISO-8061).
-          readOnly: true
           type: string
       required:
-      - condition
-      - name
-      - result
+      - id
+      type: object
+    RiskPolicySet_triggers_inner:
+      example:
+        type: null
+        policySet:
+          id: id
+        expiresAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumRiskPolicySetTriggerType'
+        policySet:
+          $ref: '#/components/schemas/RiskPolicySet_evaluatedPredictors_inner'
+        expiresAt:
+          description: The time the trigger expires (format ISO-8061).
+          format: date-time
+          type: string
+      required:
+      - expiresAt
+      - policySet
+      - type
       type: object
     RiskPredictorCommon_default_result:
       description: "This specifies the result assigned to the predictor if the predictor\
@@ -2785,26 +3122,16 @@ components:
         \ the following options are: If the predictor is used in an override, the\
         \ override is skipped. In the weighted policy, the predictor will have a weight\
         \ of 0."
-      example:
-        level: null
-        type: null
       properties:
         level:
           $ref: '#/components/schemas/EnumRiskLevel'
         type:
           $ref: '#/components/schemas/EnumResultType'
       required:
-      - level
+      - type
       type: object
     RiskPredictorCommon_default:
       description: Contains the default values used for a new risk predictor.
-      example:
-        result:
-          level: null
-          type: null
-        score: 2
-        weight: 5
-        evaluated: true
       properties:
         weight:
           description: An integer type. This specifies the weight assigned to the
@@ -2817,13 +3144,9 @@ components:
         result:
           $ref: '#/components/schemas/RiskPredictorCommon_default_result'
       required:
-      - result
       - weight
       type: object
     RiskPredictorCommon_condition_scores_inner:
-      example:
-        name: name
-        value: value
       properties:
         name:
           type: string
@@ -2831,12 +3154,6 @@ components:
           type: string
       type: object
     RiskPredictorCommon_condition:
-      example:
-        scores:
-        - name: name
-          value: value
-        - name: name
-          value: value
       properties:
         scores:
           items:
@@ -2890,12 +3207,16 @@ components:
       - list
       - type
       type: object
+    RiskPredictorCompositeCondition_oneOf_1_equals:
+      oneOf:
+      - type: string
+      - type: integer
     RiskPredictorCompositeCondition_oneOf_1:
       properties:
         equals:
-          type: object
+          $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1_equals'
         notEquals:
-          type: object
+          $ref: '#/components/schemas/RiskPredictorCompositeCondition_oneOf_1_equals'
         greater:
           type: integer
         greaterEquals:
@@ -2956,8 +3277,10 @@ components:
           type: array
       type: object
       example: null
-    RiskPredictorNewDevice_allOf:
+    RiskPredictorDevice_allOf:
       properties:
+        detect:
+          $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
         activationAt:
           description: You can use the `activationAt` parameter to specify a date
             on which the learning process for the predictor should be restarted. This
@@ -2967,6 +3290,8 @@ components:
             UTC time.
           format: date-time
           type: string
+      required:
+      - detect
       type: object
       example: null
     RiskPredictorUserLocationAnomaly_allOf_radius:
@@ -2991,21 +3316,22 @@ components:
         radius:
           $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf_radius'
       required:
+      - days
       - radius
       type: object
       example: null
-    RiskPredictorUEBA_allOf_predictionModel:
+    RiskPredictorUserRiskBehavior_allOf_predictionModel:
       properties:
         name:
-          $ref: '#/components/schemas/EnumRiskModel'
+          $ref: '#/components/schemas/EnumUserRiskBehaviorRiskModel'
       required:
       - name
       type: object
       example: null
-    RiskPredictorUEBA_allOf:
+    RiskPredictorUserRiskBehavior_allOf:
       properties:
         predictionModel:
-          $ref: '#/components/schemas/RiskPredictorUEBA_allOf_predictionModel'
+          $ref: '#/components/schemas/RiskPredictorUserRiskBehavior_allOf_predictionModel'
       required:
       - predictionModel
       type: object
@@ -3025,9 +3351,11 @@ components:
         strategy:
           $ref: '#/components/schemas/EnumPredictorVelocityFallbackStrategy'
         high:
-          type: integer
+          format: float
+          type: number
         medium:
-          type: integer
+          format: float
+          type: number
       type: object
       example: null
     RiskPredictorVelocity_allOf_maxDelay:
@@ -3051,9 +3379,11 @@ components:
     RiskPredictorVelocity_allOf_use:
       properties:
         high:
-          type: integer
+          format: float
+          type: number
         medium:
-          type: integer
+          format: float
+          type: number
         type:
           $ref: '#/components/schemas/EnumPredictorVelocityUseType'
       type: object

@@ -1,13 +1,13 @@
 # \LicensesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadAllLicenses**](LicensesApi.md#ReadAllLicenses) | **Get** /v1/organizations/{organizationID}/licenses | READ All Licenses
-[**ReadOneLicense**](LicensesApi.md#ReadOneLicense) | **Get** /v1/organizations/{organizationID}/licenses/{licenseID} | READ One License
-[**ReadOneLicenseName**](LicensesApi.md#ReadOneLicenseName) | **Get** /v1/organizations/{organizationID}/licenses/{licenseID}/name | READ One License Name
-[**UpdateOneLicenseName**](LicensesApi.md#UpdateOneLicenseName) | **Put** /v1/organizations/{organizationID}/licenses/{licenseID}/name | Update One License Name
+[**ReadAllLicenses**](LicensesApi.md#ReadAllLicenses) | **Get** /organizations/{organizationID}/licenses | READ All Licenses
+[**ReadOneLicense**](LicensesApi.md#ReadOneLicense) | **Get** /organizations/{organizationID}/licenses/{licenseID} | READ One License
+[**ReadOneLicenseName**](LicensesApi.md#ReadOneLicenseName) | **Get** /organizations/{organizationID}/licenses/{licenseID}/name | READ One License Name
+[**UpdateOneLicenseName**](LicensesApi.md#UpdateOneLicenseName) | **Put** /organizations/{organizationID}/licenses/{licenseID}/name | Update One License Name
 
 
 

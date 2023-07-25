@@ -1,11 +1,11 @@
 # \UserPopulationsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadUserPopulation**](UserPopulationsApi.md#ReadUserPopulation) | **Get** /v1/environments/{environmentID}/users/{userID}/population | READ User Population
-[**UpdateUserPopulation**](UserPopulationsApi.md#UpdateUserPopulation) | **Put** /v1/environments/{environmentID}/users/{userID}/population | UPDATE User Population
+[**ReadUserPopulation**](UserPopulationsApi.md#ReadUserPopulation) | **Get** /environments/{environmentID}/users/{userID}/population | READ User Population
+[**UpdateUserPopulation**](UserPopulationsApi.md#UpdateUserPopulation) | **Put** /environments/{environmentID}/users/{userID}/population | UPDATE User Population
 
 
 

@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CanAuthenticate** | Pointer to **bool** | A boolean that specifies the whether the user can authenticate. If the value is set to false, the account is locked or the user is disabled, and unless specified otherwise in administrative configuration, the user will be unable to authenticate. | [optional] 
-**LockedAt** | Pointer to **string** | The time the specified user account was locked. This property might be absent if the account is unlocked or if the account was locked out automatically by failed password attempts. | [optional] 
-**SecondsUntilUnlock** | Pointer to **int32** | An integer that specifies the number of seconds until the user&#39;s account is unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator). | [optional] 
-**Status** | Pointer to [**EnumUserStatus**](EnumUserStatus.md) |  | [optional] 
-**UnlockAt** | Pointer to **string** | The time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator). | [optional] 
+**CanAuthenticate** | **bool** | A boolean that specifies the whether the user can authenticate. If the value is set to false, the account is locked or the user is disabled, and unless specified otherwise in administrative configuration, the user will be unable to authenticate. | 
+**LockedAt** | Pointer to **time.Time** | The time the specified user account was locked. This property might be absent if the account is unlocked or if the account was locked out automatically by failed password attempts. | [optional] [readonly] 
+**SecondsUntilUnlock** | Pointer to **int32** | An integer that specifies the number of seconds until the user&#39;s account is unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator). | [optional] [readonly] 
+**Status** | [**EnumUserStatus**](EnumUserStatus.md) |  | 
+**UnlockAt** | Pointer to **time.Time** | The time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator). | [optional] [readonly] 
 
 ## Methods
 
 ### NewUserAccount
 
-`func NewUserAccount() *UserAccount`
+`func NewUserAccount(canAuthenticate bool, status EnumUserStatus, ) *UserAccount`
 
 NewUserAccount instantiates a new UserAccount object
 This constructor will assign default values to properties that have it defined,
@@ -48,28 +48,23 @@ and a boolean to check if the value has been set.
 
 SetCanAuthenticate sets CanAuthenticate field to given value.
 
-### HasCanAuthenticate
-
-`func (o *UserAccount) HasCanAuthenticate() bool`
-
-HasCanAuthenticate returns a boolean if a field has been set.
 
 ### GetLockedAt
 
-`func (o *UserAccount) GetLockedAt() string`
+`func (o *UserAccount) GetLockedAt() time.Time`
 
 GetLockedAt returns the LockedAt field if non-nil, zero value otherwise.
 
 ### GetLockedAtOk
 
-`func (o *UserAccount) GetLockedAtOk() (*string, bool)`
+`func (o *UserAccount) GetLockedAtOk() (*time.Time, bool)`
 
 GetLockedAtOk returns a tuple with the LockedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLockedAt
 
-`func (o *UserAccount) SetLockedAt(v string)`
+`func (o *UserAccount) SetLockedAt(v time.Time)`
 
 SetLockedAt sets LockedAt field to given value.
 
@@ -123,28 +118,23 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *UserAccount) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetUnlockAt
 
-`func (o *UserAccount) GetUnlockAt() string`
+`func (o *UserAccount) GetUnlockAt() time.Time`
 
 GetUnlockAt returns the UnlockAt field if non-nil, zero value otherwise.
 
 ### GetUnlockAtOk
 
-`func (o *UserAccount) GetUnlockAtOk() (*string, bool)`
+`func (o *UserAccount) GetUnlockAtOk() (*time.Time, bool)`
 
 GetUnlockAtOk returns a tuple with the UnlockAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnlockAt
 
-`func (o *UserAccount) SetUnlockAt(v string)`
+`func (o *UserAccount) SetUnlockAt(v time.Time)`
 
 SetUnlockAt sets UnlockAt field to given value.
 

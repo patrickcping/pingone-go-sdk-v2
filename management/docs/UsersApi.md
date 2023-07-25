@@ -1,19 +1,19 @@
 # \UsersApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateUser**](UsersApi.md#CreateUser) | **Post** /v1/environments/{environmentID}/users | CREATE User
-[**DeleteUser**](UsersApi.md#DeleteUser) | **Delete** /v1/environments/{environmentID}/users/{userID} | DELETE User
-[**ReadAllUsers**](UsersApi.md#ReadAllUsers) | **Get** /v1/environments/{environmentID}/users | READ All Users
-[**ReadUser**](UsersApi.md#ReadUser) | **Get** /v1/environments/{environmentID}/users/{userID} | READ User
-[**UpdateUserPatch**](UsersApi.md#UpdateUserPatch) | **Patch** /v1/environments/{environmentID}/users/{userID} | UPDATE User (Patch)
-[**UpdateUserPut**](UsersApi.md#UpdateUserPut) | **Put** /v1/environments/{environmentID}/users/{userID} | UPDATE User (Put)
-[**V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet**](UsersApi.md#V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet) | **Get** /v1/environments/{environmentID}/users/{userID}/identityProvider | READ User Identity Provider
-[**V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut**](UsersApi.md#V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut) | **Put** /v1/environments/{environmentID}/users/{userID}/identityProvider | UPDATE User Identity Provider
-[**V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet**](UsersApi.md#V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet) | **Get** /v1/environments/{environmentID}/users/{userID}/verifyStatus | READ user verification status
-[**V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut**](UsersApi.md#V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut) | **Put** /v1/environments/{environmentID}/users/{userID}/verifyStatus | UPDATE user verification status
+[**CreateUser**](UsersApi.md#CreateUser) | **Post** /environments/{environmentID}/users | CREATE User
+[**DeleteUser**](UsersApi.md#DeleteUser) | **Delete** /environments/{environmentID}/users/{userID} | DELETE User
+[**EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet**](UsersApi.md#EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet) | **Get** /environments/{environmentID}/users/{userID}/identityProvider | READ User Identity Provider
+[**EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut**](UsersApi.md#EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut) | **Put** /environments/{environmentID}/users/{userID}/identityProvider | UPDATE User Identity Provider
+[**EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet**](UsersApi.md#EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet) | **Get** /environments/{environmentID}/users/{userID}/verifyStatus | READ user verification status
+[**EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut**](UsersApi.md#EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut) | **Put** /environments/{environmentID}/users/{userID}/verifyStatus | UPDATE user verification status
+[**ReadAllUsers**](UsersApi.md#ReadAllUsers) | **Get** /environments/{environmentID}/users | READ All Users
+[**ReadUser**](UsersApi.md#ReadUser) | **Get** /environments/{environmentID}/users/{userID} | READ User
+[**UpdateUserPatch**](UsersApi.md#UpdateUserPatch) | **Patch** /environments/{environmentID}/users/{userID} | UPDATE User (Patch)
+[**UpdateUserPut**](UsersApi.md#UpdateUserPut) | **Put** /environments/{environmentID}/users/{userID} | UPDATE User (Put)
 
 
 
@@ -158,9 +158,289 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet
+
+> EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet(ctx, environmentID, userID).Execute()
+
+READ User Identity Provider
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    userID := "userID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UsersApi.EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet(context.Background(), environmentID, userID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**userID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut
+
+> EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut(ctx, environmentID, userID).Body(body).Execute()
+
+UPDATE User Identity Provider
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    userID := "userID_example" // string | 
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UsersApi.EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut(context.Background(), environmentID, userID).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**userID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet
+
+> EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet(ctx, environmentID, userID).Execute()
+
+READ user verification status
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    userID := "userID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UsersApi.EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet(context.Background(), environmentID, userID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**userID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut
+
+> EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut(ctx, environmentID, userID).Body(body).Execute()
+
+UPDATE user verification status
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    userID := "userID_example" // string | 
+    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.UsersApi.EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut(context.Background(), environmentID, userID).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**userID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ReadAllUsers
 
-> EntityArray ReadAllUsers(ctx, environmentID).Filter(filter).Limit(limit).Execute()
+> EntityArray ReadAllUsers(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 READ All Users
 
@@ -180,10 +460,11 @@ func main() {
     environmentID := "environmentID_example" // string | 
     filter := "memberOfGroups[id eq "{{groupID}}"] and name.family eq "demo"" // string |  (optional)
     limit := int32(100) // int32 |  (optional)
+    cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.ReadAllUsers(context.Background(), environmentID).Filter(filter).Limit(limit).Execute()
+    resp, r, err := apiClient.UsersApi.ReadAllUsers(context.Background(), environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.ReadAllUsers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -211,6 +492,7 @@ Name | Type | Description  | Notes
 
  **filter** | **string** |  | 
  **limit** | **int32** |  | 
+ **cursor** | **string** | Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload. | 
 
 ### Return type
 
@@ -434,286 +716,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**User**](User.md)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet
-
-> V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet(ctx, environmentID, userID).Execute()
-
-READ User Identity Provider
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet(context.Background(), environmentID, userID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**userID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut
-
-> V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut(ctx, environmentID, userID).Body(body).Execute()
-
-UPDATE User Identity Provider
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut(context.Background(), environmentID, userID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**userID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDIdentityProviderPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet
-
-> V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet(ctx, environmentID, userID).Execute()
-
-READ user verification status
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet(context.Background(), environmentID, userID).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**userID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut
-
-> V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut(ctx, environmentID, userID).Body(body).Execute()
-
-UPDATE user verification status
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    userID := "userID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut(context.Background(), environmentID, userID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.V1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-**userID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDVerifyStatusPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
 
 ### Authorization
 

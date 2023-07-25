@@ -1,18 +1,18 @@
 # \AuditActivitiesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDActivitiesActivityIDGet**](AuditActivitiesApi.md#V1EnvironmentsEnvironmentIDActivitiesActivityIDGet) | **Get** /v1/environments/{environmentID}/activities/{activityID} | GET One User Activity
-[**V1EnvironmentsEnvironmentIDActivitiesGet**](AuditActivitiesApi.md#V1EnvironmentsEnvironmentIDActivitiesGet) | **Get** /v1/environments/{environmentID}/activities | GET User Activities
-[**V1EnvironmentsEnvironmentIDActivitiesPost**](AuditActivitiesApi.md#V1EnvironmentsEnvironmentIDActivitiesPost) | **Post** /v1/environments/{environmentID}/activities | GET User Activities
+[**EnvironmentsEnvironmentIDActivitiesActivityIDGet**](AuditActivitiesApi.md#EnvironmentsEnvironmentIDActivitiesActivityIDGet) | **Get** /environments/{environmentID}/activities/{activityID} | GET One User Activity
+[**EnvironmentsEnvironmentIDActivitiesGet**](AuditActivitiesApi.md#EnvironmentsEnvironmentIDActivitiesGet) | **Get** /environments/{environmentID}/activities | GET User Activities
+[**EnvironmentsEnvironmentIDActivitiesPost**](AuditActivitiesApi.md#EnvironmentsEnvironmentIDActivitiesPost) | **Post** /environments/{environmentID}/activities | GET User Activities
 
 
 
-## V1EnvironmentsEnvironmentIDActivitiesActivityIDGet
+## EnvironmentsEnvironmentIDActivitiesActivityIDGet
 
-> V1EnvironmentsEnvironmentIDActivitiesActivityIDGet(ctx, environmentID, activityID).Execute()
+> EnvironmentsEnvironmentIDActivitiesActivityIDGet(ctx, environmentID, activityID).Execute()
 
 GET One User Activity
 
@@ -34,9 +34,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesActivityIDGet(context.Background(), environmentID, activityID).Execute()
+    r, err := apiClient.AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesActivityIDGet(context.Background(), environmentID, activityID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesActivityIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesActivityIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDActivitiesActivityIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDActivitiesActivityIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDActivitiesGet
+## EnvironmentsEnvironmentIDActivitiesGet
 
-> V1EnvironmentsEnvironmentIDActivitiesGet(ctx, environmentID).Filter(filter).Execute()
+> EnvironmentsEnvironmentIDActivitiesGet(ctx, environmentID).Filter(filter).Execute()
 
 GET User Activities
 
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesGet(context.Background(), environmentID).Filter(filter).Execute()
+    r, err := apiClient.AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesGet(context.Background(), environmentID).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDActivitiesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDActivitiesGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -147,9 +147,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDActivitiesPost
+## EnvironmentsEnvironmentIDActivitiesPost
 
-> V1EnvironmentsEnvironmentIDActivitiesPost(ctx, environmentID).Body(body).Execute()
+> EnvironmentsEnvironmentIDActivitiesPost(ctx, environmentID).Body(body).Execute()
 
 GET User Activities
 
@@ -171,9 +171,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesPost(context.Background(), environmentID).Body(body).Execute()
+    r, err := apiClient.AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesPost(context.Background(), environmentID).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.V1EnvironmentsEnvironmentIDActivitiesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditActivitiesApi.EnvironmentsEnvironmentIDActivitiesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDActivitiesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDActivitiesPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

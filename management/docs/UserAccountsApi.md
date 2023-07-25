@@ -1,16 +1,16 @@
 # \UserAccountsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDUsersUserIDPost**](UserAccountsApi.md#V1EnvironmentsEnvironmentIDUsersUserIDPost) | **Post** /v1/environments/{environmentID}/users/{userID} | User Account Unlock
+[**EnvironmentsEnvironmentIDUsersUserIDPost**](UserAccountsApi.md#EnvironmentsEnvironmentIDUsersUserIDPost) | **Post** /environments/{environmentID}/users/{userID} | User Account Unlock
 
 
 
-## V1EnvironmentsEnvironmentIDUsersUserIDPost
+## EnvironmentsEnvironmentIDUsersUserIDPost
 
-> EntityArray V1EnvironmentsEnvironmentIDUsersUserIDPost(ctx, environmentID, userID).ContentType(contentType).Execute()
+> EntityArray EnvironmentsEnvironmentIDUsersUserIDPost(ctx, environmentID, userID).ContentType(contentType).Execute()
 
 User Account Unlock
 
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserAccountsApi.V1EnvironmentsEnvironmentIDUsersUserIDPost(context.Background(), environmentID, userID).ContentType(contentType).Execute()
+    resp, r, err := apiClient.UserAccountsApi.EnvironmentsEnvironmentIDUsersUserIDPost(context.Background(), environmentID, userID).ContentType(contentType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserAccountsApi.V1EnvironmentsEnvironmentIDUsersUserIDPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserAccountsApi.EnvironmentsEnvironmentIDUsersUserIDPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `V1EnvironmentsEnvironmentIDUsersUserIDPost`: EntityArray
-    fmt.Fprintf(os.Stdout, "Response from `UserAccountsApi.V1EnvironmentsEnvironmentIDUsersUserIDPost`: %v\n", resp)
+    // response from `EnvironmentsEnvironmentIDUsersUserIDPost`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `UserAccountsApi.EnvironmentsEnvironmentIDUsersUserIDPost`: %v\n", resp)
 }
 ```
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDUsersUserIDPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -2,21 +2,32 @@ openapi: 3.0.0
 info:
   description: The PingOne Platform API covering the PingOne Authorize service
   title: PingOne Platform API - Authorize
-  version: 2022-09-23
+  version: 2023-06-29
 externalDocs:
   description: PingOne Platform API Reference - Authorize APIs
   url: https://apidocs.pingidentity.com/pingone/platform/v1/api/#pingone-authorize
 servers:
 - description: PingOne Platform API Endpoint
-  url: "https://api.pingone.{suffix}"
+  url: "{protocol}://{baseDomain}.{suffix}/v1"
   variables:
     suffix:
-      default: eu
+      default: com
       enum:
       - eu
       - com
       - asia
       - ca
+    baseDomain:
+      default: api.pingone
+    protocol:
+      default: https
+- description: PingOne Platform API Endpoint
+  url: "{protocol}://{baseHostname}/v1"
+  variables:
+    baseHostname:
+      default: api.pingone.com
+    protocol:
+      default: https
 security:
 - bearer: []
 tags:
@@ -24,7 +35,7 @@ tags:
 - name: Policy Decision Authorization
 - name: API Servers
 paths:
-  /v1/environments/{environmentID}/decisionEndpoints:
+  /environments/{environmentID}/decisionEndpoints:
     get:
       operationId: readAllDecisionEndpoints
       parameters:
@@ -151,7 +162,7 @@ paths:
       summary: CREATE Decision Endpoint
       tags:
       - Policy Decision Management
-  /v1/environments/{environmentID}/decisionEndpoints/{decisionEndpointID}:
+  /environments/{environmentID}/decisionEndpoints/{decisionEndpointID}:
     delete:
       operationId: deleteDecisionEndpoint
       parameters:
@@ -345,7 +356,7 @@ paths:
       summary: UPDATE Decision Endpoint
       tags:
       - Policy Decision Management
-  /v1/environments/{environmentID}/apiServers:
+  /environments/{environmentID}/apiServers:
     get:
       operationId: readAllAPIServers
       parameters:
@@ -472,7 +483,7 @@ paths:
       summary: CREATE API Server
       tags:
       - API Servers
-  /v1/environments/{environmentID}/apiServers/{apiServerID}:
+  /environments/{environmentID}/apiServers/{apiServerID}:
     delete:
       operationId: deleteAPIServer
       parameters:
@@ -711,18 +722,43 @@ components:
             $ref: '#/components/schemas/P1Error'
       description: Uncaught error occurred.  Platform outage
   schemas:
+    LinksHATEOAS:
+      additionalProperties: true
+      example:
+        next:
+          href: https://openapi-generator.tech
+        self:
+          href: https://openapi-generator.tech
+      properties:
+        self:
+          $ref: '#/components/schemas/LinksHATEOAS_self'
+        next:
+          $ref: '#/components/schemas/LinksHATEOAS_next'
+      readOnly: true
+      type: object
+    LinksHATEOASHref:
+      description: The URI of the resource.
+      format: uri
+      type: string
     APIServer:
       example:
         baseURLs:
         - baseURLs
         - baseURLs
         operations: "{}"
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         authorizationServer:
           resource:
             id: id
         name: name
         id: id
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         authorizationServer:
           $ref: '#/components/schemas/APIServer_authorizationServer'
         baseURLs:
@@ -778,6 +814,11 @@ components:
         alternateId: alternateId
         provenance: provenance
         policyId: policyId
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         owned: true
         name: name
         authorizationVersion:
@@ -794,6 +835,8 @@ components:
           title: title
           type: type
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         alternateId:
           description: "A string that specifies alternative unique identifier for\
             \ the endpoint, which provides a method for locating the resource by a\
@@ -845,11 +888,21 @@ components:
     EntityArray:
       example:
         size: 6.027456183070403
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         _embedded:
           decisionEndpoints:
           - alternateId: alternateId
             provenance: provenance
             policyId: policyId
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             owned: true
             name: name
             authorizationVersion:
@@ -868,6 +921,11 @@ components:
           - alternateId: alternateId
             provenance: provenance
             policyId: policyId
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             owned: true
             name: name
             authorizationVersion:
@@ -888,6 +946,11 @@ components:
             - baseURLs
             - baseURLs
             operations: "{}"
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             authorizationServer:
               resource:
                 id: id
@@ -897,6 +960,11 @@ components:
             - baseURLs
             - baseURLs
             operations: "{}"
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             authorizationServer:
               resource:
                 id: id
@@ -904,6 +972,8 @@ components:
             id: id
         count: 0.8008281904610115
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         _embedded:
           $ref: '#/components/schemas/EntityArray__embedded'
         count:
@@ -971,6 +1041,28 @@ components:
           items:
             $ref: '#/components/schemas/P1Error_details_inner'
           type: array
+      type: object
+    LinksHATEOAS_self:
+      description: An object that describes the current resource.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
+      type: object
+    LinksHATEOAS_next:
+      description: An object that describes the next page of results. This property
+        is present only if there is a next page of results and the `limit` parameter
+        is used.
+      example:
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The URI of the resource.
+          format: uri
+          type: string
       type: object
     APIServer_authorizationServer_resource:
       description: The resource defines the characteristics of the OAuth 2.0 access
@@ -1050,6 +1142,11 @@ components:
         - alternateId: alternateId
           provenance: provenance
           policyId: policyId
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           owned: true
           name: name
           authorizationVersion:
@@ -1068,6 +1165,11 @@ components:
         - alternateId: alternateId
           provenance: provenance
           policyId: policyId
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           owned: true
           name: name
           authorizationVersion:
@@ -1088,6 +1190,11 @@ components:
           - baseURLs
           - baseURLs
           operations: "{}"
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           authorizationServer:
             resource:
               id: id
@@ -1097,6 +1204,11 @@ components:
           - baseURLs
           - baseURLs
           operations: "{}"
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           authorizationServer:
             resource:
               id: id

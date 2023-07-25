@@ -1,4 +1,44 @@
-# v0.10.0 (Unreleased)
+# v0.16.0 (Unreleased)
+
+* **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+
+# v0.15.0 (2023-07-12)
+
+* **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
+* **Note** Allow user-defined values for the `UserAgent` configuration parameter. [#217](https://github.com/patrickcping/pingone-go-sdk-v2/pull/217)
+* **Note** Add parameter to explicitly define http proxy support without the standard environment variables. [#223](https://github.com/patrickcping/pingone-go-sdk-v2/pull/223)
+* **Enhancement** Add optional ENUM attribute `NewDeviceNotification` to the `DeviceAuthenticationPolicy` model. [#215](https://github.com/patrickcping/pingone-go-sdk-v2/pull/215)
+
+# v0.14.0 (2023-07-04)
+
+* **Breaking change** Corrected the `CreateDeviceAuthenticationPolicies` return data model object to return a new object `DeviceAuthenticationPolicyPostResponse` that reflects an `EntityArray` object returned on migration. [#213](https://github.com/patrickcping/pingone-go-sdk-v2/pull/213)
+* **Bug** Fixed the inability to select the content type header of the `CreateDeviceAuthenticationPolicies` API. [#213](https://github.com/patrickcping/pingone-go-sdk-v2/pull/213)
+
+# v0.13.0 (2023-07-04)
+
+* **Note** Now suppresses errors when attempting to unmarshal an ENUM value from JSON that isn't yet supported in the SDK.  The value is now returned as `UNKNOWN`. [#208](https://github.com/patrickcping/pingone-go-sdk-v2/pull/208)
+* **Breaking change** Changed the request and response payload of the `DeviceAuthenticationPolicyApi.CreateDeviceAuthenticationPolicies` API to account for the ability to migrate device authentication policies from legacy FIDO to upgraded FIDO2 policies. [#211](https://github.com/patrickcping/pingone-go-sdk-v2/pull/211)
+* **Breaking change** Migrated `CreateMFAPushCredentialRequest` and `UpdateMFAPushCredentialRequest` to `MFAPushCredentialRequest`. [#201](https://github.com/patrickcping/pingone-go-sdk-v2/pull/201)
+* **Breaking change** Migrated `EntityArrayEmbeddedPushCredentialsInner` to `MFAPushCredentialResponse`. [#201](https://github.com/patrickcping/pingone-go-sdk-v2/pull/201)
+* **Note** Deprecated old FIDO policy API. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202)
+* **Feature** Support for upgraded FIDO2 policies API. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202), [#209](https://github.com/patrickcping/pingone-go-sdk-v2/pull/209), [#210](https://github.com/patrickcping/pingone-go-sdk-v2/pull/210)
+* **Enhancement** Add support for migrating device authentication policies from legacy FIDO to upgraded FIDO2 policies. [#211](https://github.com/patrickcping/pingone-go-sdk-v2/pull/211)
+* **Enhancement** Add support for FIDO2 policies API in MFA Device Policies. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202)
+* **Enhancement** Add optional attribute `PairingDisabled` to each MFA Device Policy device type. [#202](https://github.com/patrickcping/pingone-go-sdk-v2/pull/202), [#204](https://github.com/patrickcping/pingone-go-sdk-v2/pull/204)
+* **Enhancement** Add parameters `protocol`, `baseDomain` and `baseHostname` to server configuration. [#205](https://github.com/patrickcping/pingone-go-sdk-v2/pull/205)
+* **Enhancement** Add ability to set default server index and a server variable default value on the client configuration as an alternative option to setting them in the context. [#205](https://github.com/patrickcping/pingone-go-sdk-v2/pull/205)
+
+# v0.12.0 (2023-06-19)
+
+* **Note** Deprecated FCM key authentication for Google Play based mobile devices. [#196](https://github.com/patrickcping/pingone-go-sdk-v2/pull/196)
+* **Enhancement** Add support for Firebase Cloud Messaging for sending push messages for Google Play based mobile devices. [#196](https://github.com/patrickcping/pingone-go-sdk-v2/pull/196)
+* **Enhancement** Fix `TimeUnit` enum in the `DeviceAuthenticationPolicyMobileApplicationsInnerPairingKeyLifetime` model. [#190](https://github.com/patrickcping/pingone-go-sdk-v2/pull/190)
+
+# v0.11.0 (2023-05-23)
+
+* **Enhancement** Support for `PhoneExtensions` in the `MFASettings` model. [#175](https://github.com/patrickcping/pingone-go-sdk-v2/pull/175)
+
+# v0.10.0 (2023-05-19)
 
 * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * **Enhancement** Support for `PairingKeyLifetime` and `PushLimit` in the `DeviceAuthenticationPolicyMobileApplicationsInner` model. [#159](https://github.com/patrickcping/pingone-go-sdk-v2/pull/159)

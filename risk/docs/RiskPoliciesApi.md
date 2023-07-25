@@ -1,14 +1,14 @@
 # \RiskPoliciesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRiskPolicySet**](RiskPoliciesApi.md#CreateRiskPolicySet) | **Post** /v1/environments/{environmentID}/riskPolicySets | CREATE Risk Policy Set
-[**DeleteRiskPolicySet**](RiskPoliciesApi.md#DeleteRiskPolicySet) | **Delete** /v1/environments/{environmentID}/riskPolicySets/{riskPolicySetID} | DELETE Risk Policy Set 
-[**ReadOneRiskPolicySet**](RiskPoliciesApi.md#ReadOneRiskPolicySet) | **Get** /v1/environments/{environmentID}/riskPolicySets/{riskPolicySetID} | READ One Risk Policy Set
-[**ReadRiskPolicySets**](RiskPoliciesApi.md#ReadRiskPolicySets) | **Get** /v1/environments/{environmentID}/riskPolicySets | READ Risk Policy Sets
-[**UpdateRiskPolicySet**](RiskPoliciesApi.md#UpdateRiskPolicySet) | **Put** /v1/environments/{environmentID}/riskPolicySets/{riskPolicySetID} | UPDATE Risk Policy Set
+[**CreateRiskPolicySet**](RiskPoliciesApi.md#CreateRiskPolicySet) | **Post** /environments/{environmentID}/riskPolicySets | CREATE Risk Policy Set
+[**DeleteRiskPolicySet**](RiskPoliciesApi.md#DeleteRiskPolicySet) | **Delete** /environments/{environmentID}/riskPolicySets/{riskPolicySetID} | DELETE Risk Policy Set 
+[**ReadOneRiskPolicySet**](RiskPoliciesApi.md#ReadOneRiskPolicySet) | **Get** /environments/{environmentID}/riskPolicySets/{riskPolicySetID} | READ One Risk Policy Set
+[**ReadRiskPolicySets**](RiskPoliciesApi.md#ReadRiskPolicySets) | **Get** /environments/{environmentID}/riskPolicySets | READ Risk Policy Sets
+[**UpdateRiskPolicySet**](RiskPoliciesApi.md#UpdateRiskPolicySet) | **Put** /environments/{environmentID}/riskPolicySets/{riskPolicySetID} | UPDATE Risk Policy Set
 
 
 

@@ -1,4 +1,52 @@
-# v0.20.0 (Unreleased)
+# v0.25.0 (Unreleased)
+
+* **Enhancement** Implement basic cursor for paging results (`ApiReadAllEnvironmentsRequest`, `ApiReadAllGroupMembershipsForUserRequest`, `ApiReadAllGroupsRequest`, `ApiReadAllPopulationsRequest`, `ApiReadAllUsersRequest`). [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+* **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
+
+# v0.24.0 (2023-07-12)
+
+* **Note** Code optimisation for API response processing. [#216](https://github.com/patrickcping/pingone-go-sdk-v2/pull/216)
+* **Note** Allow user-defined values for the `UserAgent` configuration parameter. [#217](https://github.com/patrickcping/pingone-go-sdk-v2/pull/217)
+* **Note** Add parameter to explicitly define http proxy support without the standard environment variables. [#223](https://github.com/patrickcping/pingone-go-sdk-v2/pull/223)
+* **Bug** Corrected data type for `CreatedAt`, `UpdatedAt` on the `User` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Bug** Corrected data type for `LockedAt`, `UnlockAt` on the `UserAccount` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Bug** Corrected read-only status for `LockedAt`, `SecondsUntilUnlock` and `UnlockAt` on the `UserAccount` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Bug** Corrected required status for `CanAuthenticate` and `Status` on the `UserAccount` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Bug** Corrected data type for `At` on the `UserLastSignOn` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Bug** Corrected data type for `Type` on the `UserPasswordExternalGateway` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Bug** Corrected required status for `Href` on the `UserPhoto` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Enhancement** Added read-only `EmailVerified` to the `User` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Enhancement** Added optional `SuppressVerificationCode` to the `UserLifecycle` object. [#221](https://github.com/patrickcping/pingone-go-sdk-v2/pull/221)
+* **Enhancement** Updated the `KeyRotationPolicy` model such that `ValidityPeriod` is now optional and has a default value, and `RotationPeriod` has a default value. [#220](https://github.com/patrickcping/pingone-go-sdk-v2/pull/220)
+
+# v0.23.0 (2023-07-04)
+
+* **Note** Now suppresses errors when attempting to unmarshal an ENUM value from JSON that isn't yet supported in the SDK.  The value is now returned as `UNKNOWN`. [#208](https://github.com/patrickcping/pingone-go-sdk-v2/pull/208)
+* **Bug** Fixed Phone Notification Settings `POST` and `PUT` request payload data model. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Bug** Corrected `Requests` from object to array in the `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Bug** Corrected `Name` as required property of `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Bug** Corrected `DeleteNotificationsSettings` response code and payload. [#203](https://github.com/patrickcping/pingone-go-sdk-v2/pull/203)
+* **Bug** Corrected `UpdateNotificationsSettings` request payload. [#203](https://github.com/patrickcping/pingone-go-sdk-v2/pull/203)
+* **Enhancement** Added `Numbers` array to the `NotificationsSettingsPhoneDeliverySettingsCustom` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Enhancement** Added `PhoneDeliverySettings` array to the `EntityArray` object. [#195](https://github.com/patrickcping/pingone-go-sdk-v2/pull/195)
+* **Enhancement** Added `Environment`, `DeliveryMode` and `Whitelist` attributes to the `NotificationsSettings` object. [#203](https://github.com/patrickcping/pingone-go-sdk-v2/pull/203)
+* **Enhancement** Add parameters `protocol`, `baseDomain` and `baseHostname` to server configuration. [#205](https://github.com/patrickcping/pingone-go-sdk-v2/pull/205)
+* **Enhancement** Add ability to set default server index and a server variable default value on the client configuration as an alternative option to setting them in the context. [#205](https://github.com/patrickcping/pingone-go-sdk-v2/pull/205)
+
+# v0.22.0 (2023-05-30)
+
+* **Enhancement** Added `SloWindow` optional attribute to the Application SAML objects. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
+* **Enhancement** Added SLO optional attributes to the SAML External Identity Provider object. [#179](https://github.com/patrickcping/pingone-go-sdk-v2/pull/179)
+* **Enhancement** Added `NewUserProvisioning` to the `SignOnPolicyActionLogin` model. [#181](https://github.com/patrickcping/pingone-go-sdk-v2/pull/181)
+
+# v0.21.0 (2023-05-22)
+
+* **Note** Deprecated `bundleId` and `packageName` at the root level of the `ApplicationOIDC` model. Customers should use `mobile.bundleId` and `mobile.packageName` going forward. [#172](https://github.com/patrickcping/pingone-go-sdk-v2/pull/172)
+* **Feature** Support for Forms. [#176](https://github.com/patrickcping/pingone-go-sdk-v2/pull/176)
+* **Feature** Support for Forms Recaptcha configuration. [#176](https://github.com/patrickcping/pingone-go-sdk-v2/pull/176)
+* **Enhancement** Added `filterOptions.ipAddressExposed` and `filterOptions.userAgentExposed` to the `Subscription` (webhook) data model. [#173](https://github.com/patrickcping/pingone-go-sdk-v2/pull/173)
+
+# v0.20.0 (2023-05-19)
 
 * **Note** Change default useragent for HTTP requests. [#160](https://github.com/patrickcping/pingone-go-sdk-v2/pull/160)
 * **Enhancement** Add support for enumerated values and regex validation to the schema attribute model. [#161](https://github.com/patrickcping/pingone-go-sdk-v2/pull/161)

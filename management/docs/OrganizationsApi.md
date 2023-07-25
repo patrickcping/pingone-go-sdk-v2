@@ -1,11 +1,11 @@
 # \OrganizationsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadAllOrganizations**](OrganizationsApi.md#ReadAllOrganizations) | **Get** /v1/organizations | READ All Organizations
-[**ReadOneOrganization**](OrganizationsApi.md#ReadOneOrganization) | **Get** /v1/organizations/{organizationID} | READ One Organization
+[**ReadAllOrganizations**](OrganizationsApi.md#ReadAllOrganizations) | **Get** /organizations | READ All Organizations
+[**ReadOneOrganization**](OrganizationsApi.md#ReadOneOrganization) | **Get** /organizations/{organizationID} | READ One Organization
 
 
 

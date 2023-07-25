@@ -1,14 +1,14 @@
 # \ResourceScopesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateResourceScope**](ResourceScopesApi.md#CreateResourceScope) | **Post** /v1/environments/{environmentID}/resources/{resourceID}/scopes | CREATE PingOne access control scope
-[**DeleteResourceScope**](ResourceScopesApi.md#DeleteResourceScope) | **Delete** /v1/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID} | DELETE Scope
-[**ReadAllResourceScopes**](ResourceScopesApi.md#ReadAllResourceScopes) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/scopes | READ All Scopes (Resource)
-[**ReadOneResourceScope**](ResourceScopesApi.md#ReadOneResourceScope) | **Get** /v1/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID} | READ One Scope
-[**UpdateResourceScope**](ResourceScopesApi.md#UpdateResourceScope) | **Put** /v1/environments/{environmentID}/resources/{resourceID}/scopes/{scopeID} | UPDATE PingOne access control scope
+[**CreateResourceScope**](ResourceScopesApi.md#CreateResourceScope) | **Post** /environments/{environmentID}/resources/{resourceID}/scopes | CREATE PingOne access control scope
+[**DeleteResourceScope**](ResourceScopesApi.md#DeleteResourceScope) | **Delete** /environments/{environmentID}/resources/{resourceID}/scopes/{scopeID} | DELETE Scope
+[**ReadAllResourceScopes**](ResourceScopesApi.md#ReadAllResourceScopes) | **Get** /environments/{environmentID}/resources/{resourceID}/scopes | READ All Scopes (Resource)
+[**ReadOneResourceScope**](ResourceScopesApi.md#ReadOneResourceScope) | **Get** /environments/{environmentID}/resources/{resourceID}/scopes/{scopeID} | READ One Scope
+[**UpdateResourceScope**](ResourceScopesApi.md#UpdateResourceScope) | **Put** /environments/{environmentID}/resources/{resourceID}/scopes/{scopeID} | UPDATE PingOne access control scope
 
 
 

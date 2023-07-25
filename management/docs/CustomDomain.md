@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Certificate** | Pointer to [**CustomDomainCertificate**](CustomDomainCertificate.md) |  | [optional] 
 **CanonicalName** | Pointer to **string** | A string that specifies the domain name that should be used as the value of the CNAME record in the customer’s DNS. | [optional] [readonly] 
 **DomainName** | **string** | A string that specifies the resource name, which must be provided and must be unique within an environment (for example, auth.shopco.com). This is a required property. | 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewCustomDomainWithDefaults instantiates a new CustomDomain object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *CustomDomain) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *CustomDomain) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *CustomDomain) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *CustomDomain) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetCertificate
 

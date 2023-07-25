@@ -3,7 +3,7 @@ PingOne Platform API - SSO and Base
 
 The PingOne Platform API covering the base and SSO services (otherwise known as the Management APIs)
 
-API version: 2022-08-02
+API version: 2023-06-29
 */
 
 package management
@@ -67,14 +67,21 @@ func (a *CertificateManagementApiService) CreateCertificateFromFile(ctx context.
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r ApiCreateCertificateFromFileRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalCreateCertificateFromFileExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalCreateCertificateFromFileExecute(r ApiCreateCertificateFromFileRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -88,7 +95,7 @@ func (a *CertificateManagementApiService) internalCreateCertificateFromFileExecu
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates"
+	localVarPath := localBasePath + "/environments/{environmentID}/certificates"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -298,14 +305,21 @@ func (a *CertificateManagementApiService) CreateKey(ctx context.Context, environ
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalCreateKeyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalCreateKeyExecute(r ApiCreateKeyRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -319,7 +333,7 @@ func (a *CertificateManagementApiService) internalCreateKeyExecute(r ApiCreateKe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys"
+	localVarPath := localBasePath + "/environments/{environmentID}/keys"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -525,15 +539,21 @@ func (a *CertificateManagementApiService) DeleteCertificate(ctx context.Context,
 
 // Execute executes the request
 func (a *CertificateManagementApiService) DeleteCertificateExecute(r ApiDeleteCertificateRequest) (*http.Response, error) {
-	_, response, error := processResponse(
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteCertificateExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalDeleteCertificateExecute(r ApiDeleteCertificateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -546,7 +566,7 @@ func (a *CertificateManagementApiService) internalDeleteCertificateExecute(r Api
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates/{certID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/certificates/{certID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterValueToString(r.certID, "certID")), -1)
 
@@ -695,15 +715,21 @@ func (a *CertificateManagementApiService) DeleteKey(ctx context.Context, environ
 
 // Execute executes the request
 func (a *CertificateManagementApiService) DeleteKeyExecute(r ApiDeleteKeyRequest) (*http.Response, error) {
-	_, response, error := processResponse(
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteKeyExecute(r)
 			return nil, resp, err
 		},
+		nil,
 	)
-	return response, error
+	return response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalDeleteKeyExecute(r ApiDeleteKeyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -716,7 +742,7 @@ func (a *CertificateManagementApiService) internalDeleteKeyExecute(r ApiDeleteKe
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/keys/{keyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
@@ -873,14 +899,21 @@ func (a *CertificateManagementApiService) ExportCSR(ctx context.Context, environ
 //
 //	@return string
 func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest) (string, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue string
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalExportCSRExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(string), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalExportCSRExecute(r ApiExportCSRRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -894,7 +927,7 @@ func (a *CertificateManagementApiService) internalExportCSRExecute(r ApiExportCS
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}/csr"
+	localVarPath := localBasePath + "/environments/{environmentID}/keys/{keyID}/csr"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
@@ -1057,14 +1090,21 @@ func (a *CertificateManagementApiService) GetCertificate(ctx context.Context, en
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) GetCertificateExecute(r ApiGetCertificateRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetCertificateExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalGetCertificateExecute(r ApiGetCertificateRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1078,7 +1118,7 @@ func (a *CertificateManagementApiService) internalGetCertificateExecute(r ApiGet
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates/{certID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/certificates/{certID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterValueToString(r.certID, "certID")), -1)
 
@@ -1238,14 +1278,21 @@ func (a *CertificateManagementApiService) GetCertificateApplications(ctx context
 //
 //	@return EntityArray
 func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetCertificateApplicationsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalGetCertificateApplicationsExecute(r ApiGetCertificateApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1259,7 +1306,7 @@ func (a *CertificateManagementApiService) internalGetCertificateApplicationsExec
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates/{certID}/applications"
+	localVarPath := localBasePath + "/environments/{environmentID}/certificates/{certID}/applications"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"certID"+"}", url.PathEscape(parameterValueToString(r.certID, "certID")), -1)
 
@@ -1416,14 +1463,21 @@ func (a *CertificateManagementApiService) GetCertificates(ctx context.Context, e
 //
 //	@return EntityArray
 func (a *CertificateManagementApiService) GetCertificatesExecute(r ApiGetCertificatesRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetCertificatesExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalGetCertificatesExecute(r ApiGetCertificatesRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1437,7 +1491,7 @@ func (a *CertificateManagementApiService) internalGetCertificatesExecute(r ApiGe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/certificates"
+	localVarPath := localBasePath + "/environments/{environmentID}/certificates"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1614,7 +1668,7 @@ func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (int
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/keys/{keyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
@@ -1785,14 +1839,21 @@ func (a *CertificateManagementApiService) GetKeyApplications(ctx context.Context
 //
 //	@return EntityArray
 func (a *CertificateManagementApiService) GetKeyApplicationsExecute(r ApiGetKeyApplicationsRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetKeyApplicationsExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalGetKeyApplicationsExecute(r ApiGetKeyApplicationsRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1806,7 +1867,7 @@ func (a *CertificateManagementApiService) internalGetKeyApplicationsExecute(r Ap
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}/applications"
+	localVarPath := localBasePath + "/environments/{environmentID}/keys/{keyID}/applications"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
@@ -1963,14 +2024,21 @@ func (a *CertificateManagementApiService) GetKeys(ctx context.Context, environme
 //
 //	@return EntityArray
 func (a *CertificateManagementApiService) GetKeysExecute(r ApiGetKeysRequest) (*EntityArray, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *EntityArray
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalGetKeysExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*EntityArray), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalGetKeysExecute(r ApiGetKeysRequest) (*EntityArray, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1984,7 +2052,7 @@ func (a *CertificateManagementApiService) internalGetKeysExecute(r ApiGetKeysReq
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys"
+	localVarPath := localBasePath + "/environments/{environmentID}/keys"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2149,14 +2217,21 @@ func (a *CertificateManagementApiService) ImportCSRResponse(ctx context.Context,
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalImportCSRResponseExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalImportCSRResponseExecute(r ApiImportCSRResponseRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2170,7 +2245,7 @@ func (a *CertificateManagementApiService) internalImportCSRResponseExecute(r Api
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}/csr"
+	localVarPath := localBasePath + "/environments/{environmentID}/keys/{keyID}/csr"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
@@ -2347,14 +2422,21 @@ func (a *CertificateManagementApiService) UpdateKey(ctx context.Context, environ
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) UpdateKeyExecute(r ApiUpdateKeyRequest) (*Certificate, *http.Response, error) {
-	obj, response, error := processResponse(
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue *Certificate
+	)
+
+	response, err = processResponse(
 		func() (interface{}, *http.Response, error) {
 			return r.ApiService.internalUpdateKeyExecute(r)
 		},
+		&localVarReturnValue,
 	)
-	return obj.(*Certificate), response, error
+	return localVarReturnValue, response, err
 }
-			
+
 func (a *CertificateManagementApiService) internalUpdateKeyExecute(r ApiUpdateKeyRequest) (*Certificate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2368,7 +2450,7 @@ func (a *CertificateManagementApiService) internalUpdateKeyExecute(r ApiUpdateKe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/keys/{keyID}"
+	localVarPath := localBasePath + "/environments/{environmentID}/keys/{keyID}"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"keyID"+"}", url.PathEscape(parameterValueToString(r.keyID, "keyID")), -1)
 
@@ -2498,31 +2580,31 @@ func (a *CertificateManagementApiService) internalUpdateKeyExecute(r ApiUpdateKe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest struct {
+type ApiEnvironmentsEnvironmentIDDecryptionsPostRequest struct {
 	ctx           context.Context
 	ApiService    *CertificateManagementApiService
 	environmentID string
 	body          *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest {
+func (r ApiEnvironmentsEnvironmentIDDecryptionsPostRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDDecryptionsPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDDecryptionsPostExecute(r)
+func (r ApiEnvironmentsEnvironmentIDDecryptionsPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EnvironmentsEnvironmentIDDecryptionsPostExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDDecryptionsPost DECRYPT Data
+EnvironmentsEnvironmentIDDecryptionsPost DECRYPT Data
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentID
-	@return ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest
+	@return ApiEnvironmentsEnvironmentIDDecryptionsPostRequest
 */
-func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptionsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest{
+func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDDecryptionsPost(ctx context.Context, environmentID string) ApiEnvironmentsEnvironmentIDDecryptionsPostRequest {
+	return ApiEnvironmentsEnvironmentIDDecryptionsPostRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentID: environmentID,
@@ -2530,19 +2612,19 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptions
 }
 
 // Execute executes the request
-func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptionsPostExecute(r ApiV1EnvironmentsEnvironmentIDDecryptionsPostRequest) (*http.Response, error) {
+func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDDecryptionsPostExecute(r ApiEnvironmentsEnvironmentIDDecryptionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.V1EnvironmentsEnvironmentIDDecryptionsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.EnvironmentsEnvironmentIDDecryptionsPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/decryptions"
+	localVarPath := localBasePath + "/environments/{environmentID}/decryptions"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2673,31 +2755,31 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDDecryptions
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest struct {
+type ApiEnvironmentsEnvironmentIDEncryptionsPostRequest struct {
 	ctx           context.Context
 	ApiService    *CertificateManagementApiService
 	environmentID string
 	body          *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest {
+func (r ApiEnvironmentsEnvironmentIDEncryptionsPostRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDEncryptionsPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDEncryptionsPostExecute(r)
+func (r ApiEnvironmentsEnvironmentIDEncryptionsPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EnvironmentsEnvironmentIDEncryptionsPostExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDEncryptionsPost ENCRYPT Data
+EnvironmentsEnvironmentIDEncryptionsPost ENCRYPT Data
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentID
-	@return ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest
+	@return ApiEnvironmentsEnvironmentIDEncryptionsPostRequest
 */
-func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptionsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest{
+func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDEncryptionsPost(ctx context.Context, environmentID string) ApiEnvironmentsEnvironmentIDEncryptionsPostRequest {
+	return ApiEnvironmentsEnvironmentIDEncryptionsPostRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentID: environmentID,
@@ -2705,19 +2787,19 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptions
 }
 
 // Execute executes the request
-func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptionsPostExecute(r ApiV1EnvironmentsEnvironmentIDEncryptionsPostRequest) (*http.Response, error) {
+func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDEncryptionsPostExecute(r ApiEnvironmentsEnvironmentIDEncryptionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.V1EnvironmentsEnvironmentIDEncryptionsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.EnvironmentsEnvironmentIDEncryptionsPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/encryptions"
+	localVarPath := localBasePath + "/environments/{environmentID}/encryptions"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2848,31 +2930,31 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDEncryptions
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDSigningsPostRequest struct {
+type ApiEnvironmentsEnvironmentIDSigningsPostRequest struct {
 	ctx           context.Context
 	ApiService    *CertificateManagementApiService
 	environmentID string
 	body          *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDSigningsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDSigningsPostRequest {
+func (r ApiEnvironmentsEnvironmentIDSigningsPostRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDSigningsPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDSigningsPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDSigningsPostExecute(r)
+func (r ApiEnvironmentsEnvironmentIDSigningsPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EnvironmentsEnvironmentIDSigningsPostExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDSigningsPost SIGN Data
+EnvironmentsEnvironmentIDSigningsPost SIGN Data
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentID
-	@return ApiV1EnvironmentsEnvironmentIDSigningsPostRequest
+	@return ApiEnvironmentsEnvironmentIDSigningsPostRequest
 */
-func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDSigningsPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDSigningsPostRequest{
+func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDSigningsPost(ctx context.Context, environmentID string) ApiEnvironmentsEnvironmentIDSigningsPostRequest {
+	return ApiEnvironmentsEnvironmentIDSigningsPostRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentID: environmentID,
@@ -2880,19 +2962,19 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPos
 }
 
 // Execute executes the request
-func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPostExecute(r ApiV1EnvironmentsEnvironmentIDSigningsPostRequest) (*http.Response, error) {
+func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDSigningsPostExecute(r ApiEnvironmentsEnvironmentIDSigningsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.V1EnvironmentsEnvironmentIDSigningsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.EnvironmentsEnvironmentIDSigningsPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/signings"
+	localVarPath := localBasePath + "/environments/{environmentID}/signings"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3023,31 +3105,31 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDSigningsPos
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest struct {
+type ApiEnvironmentsEnvironmentIDVerificationsPostRequest struct {
 	ctx           context.Context
 	ApiService    *CertificateManagementApiService
 	environmentID string
 	body          *map[string]interface{}
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest) Body(body map[string]interface{}) ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest {
+func (r ApiEnvironmentsEnvironmentIDVerificationsPostRequest) Body(body map[string]interface{}) ApiEnvironmentsEnvironmentIDVerificationsPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1EnvironmentsEnvironmentIDVerificationsPostExecute(r)
+func (r ApiEnvironmentsEnvironmentIDVerificationsPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.EnvironmentsEnvironmentIDVerificationsPostExecute(r)
 }
 
 /*
-V1EnvironmentsEnvironmentIDVerificationsPost VERIFY Signed Data
+EnvironmentsEnvironmentIDVerificationsPost VERIFY Signed Data
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentID
-	@return ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest
+	@return ApiEnvironmentsEnvironmentIDVerificationsPostRequest
 */
-func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDVerificationsPost(ctx context.Context, environmentID string) ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest {
-	return ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest{
+func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDVerificationsPost(ctx context.Context, environmentID string) ApiEnvironmentsEnvironmentIDVerificationsPostRequest {
+	return ApiEnvironmentsEnvironmentIDVerificationsPostRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentID: environmentID,
@@ -3055,19 +3137,19 @@ func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDVerificatio
 }
 
 // Execute executes the request
-func (a *CertificateManagementApiService) V1EnvironmentsEnvironmentIDVerificationsPostExecute(r ApiV1EnvironmentsEnvironmentIDVerificationsPostRequest) (*http.Response, error) {
+func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDVerificationsPostExecute(r ApiEnvironmentsEnvironmentIDVerificationsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.V1EnvironmentsEnvironmentIDVerificationsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateManagementApiService.EnvironmentsEnvironmentIDVerificationsPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v1/environments/{environmentID}/verifications"
+	localVarPath := localBasePath + "/environments/{environmentID}/verifications"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentID"+"}", url.PathEscape(parameterValueToString(r.environmentID, "environmentID")), -1)
 
 	localVarHeaderParams := make(map[string]string)

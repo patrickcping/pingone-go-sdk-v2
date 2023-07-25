@@ -1,18 +1,18 @@
 # \GroupsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroup**](GroupsApi.md#CreateGroup) | **Post** /v1/environments/{environmentID}/groups | CREATE Group
-[**CreateGroupNesting**](GroupsApi.md#CreateGroupNesting) | **Post** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups | CREATE Group Nesting
-[**DeleteGroup**](GroupsApi.md#DeleteGroup) | **Delete** /v1/environments/{environmentID}/groups/{groupID} | DELETE Group
-[**DeleteGroupNesting**](GroupsApi.md#DeleteGroupNesting) | **Delete** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | DELETE Group Nesting
-[**ReadAllGroups**](GroupsApi.md#ReadAllGroups) | **Get** /v1/environments/{environmentID}/groups | READ All Groups
-[**ReadGroupNesting**](GroupsApi.md#ReadGroupNesting) | **Get** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups | READ Group Nesting
-[**ReadOneGroup**](GroupsApi.md#ReadOneGroup) | **Get** /v1/environments/{environmentID}/groups/{groupID} | READ One Group
-[**ReadOneGroupNesting**](GroupsApi.md#ReadOneGroupNesting) | **Get** /v1/environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | READ One Group Nesting
-[**UpdateGroup**](GroupsApi.md#UpdateGroup) | **Put** /v1/environments/{environmentID}/groups/{groupID} | UPDATE Group
+[**CreateGroup**](GroupsApi.md#CreateGroup) | **Post** /environments/{environmentID}/groups | CREATE Group
+[**CreateGroupNesting**](GroupsApi.md#CreateGroupNesting) | **Post** /environments/{environmentID}/groups/{groupID}/memberOfGroups | CREATE Group Nesting
+[**DeleteGroup**](GroupsApi.md#DeleteGroup) | **Delete** /environments/{environmentID}/groups/{groupID} | DELETE Group
+[**DeleteGroupNesting**](GroupsApi.md#DeleteGroupNesting) | **Delete** /environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | DELETE Group Nesting
+[**ReadAllGroups**](GroupsApi.md#ReadAllGroups) | **Get** /environments/{environmentID}/groups | READ All Groups
+[**ReadGroupNesting**](GroupsApi.md#ReadGroupNesting) | **Get** /environments/{environmentID}/groups/{groupID}/memberOfGroups | READ Group Nesting
+[**ReadOneGroup**](GroupsApi.md#ReadOneGroup) | **Get** /environments/{environmentID}/groups/{groupID} | READ One Group
+[**ReadOneGroupNesting**](GroupsApi.md#ReadOneGroupNesting) | **Get** /environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | READ One Group Nesting
+[**UpdateGroup**](GroupsApi.md#UpdateGroup) | **Put** /environments/{environmentID}/groups/{groupID} | UPDATE Group
 
 
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllGroups
 
-> EntityArray ReadAllGroups(ctx, environmentID).Filter(filter).Limit(limit).Execute()
+> EntityArray ReadAllGroups(ctx, environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
 
 READ All Groups
 
@@ -322,10 +322,11 @@ func main() {
     environmentID := "environmentID_example" // string | 
     filter := "name eq "Training"" // string |  (optional)
     limit := int32(10) // int32 |  (optional)
+    cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GroupsApi.ReadAllGroups(context.Background(), environmentID).Filter(filter).Limit(limit).Execute()
+    resp, r, err := apiClient.GroupsApi.ReadAllGroups(context.Background(), environmentID).Filter(filter).Limit(limit).Cursor(cursor).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupsApi.ReadAllGroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -353,6 +354,7 @@ Name | Type | Description  | Notes
 
  **filter** | **string** |  | 
  **limit** | **int32** |  | 
+ **cursor** | **string** | Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload. | 
 
 ### Return type
 

@@ -1,11 +1,11 @@
 # \ApplicationSecretApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ReadApplicationSecret**](ApplicationSecretApi.md#ReadApplicationSecret) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/secret | READ Application Secret
-[**UpdateApplicationSecret**](ApplicationSecretApi.md#UpdateApplicationSecret) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/secret | UPDATE Application Secret
+[**ReadApplicationSecret**](ApplicationSecretApi.md#ReadApplicationSecret) | **Get** /environments/{environmentID}/applications/{applicationID}/secret | READ Application Secret
+[**UpdateApplicationSecret**](ApplicationSecretApi.md#UpdateApplicationSecret) | **Post** /environments/{environmentID}/applications/{applicationID}/secret | UPDATE Application Secret
 
 
 

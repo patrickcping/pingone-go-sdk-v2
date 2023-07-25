@@ -1,14 +1,14 @@
 # \CustomDomainsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDomain**](CustomDomainsApi.md#CreateDomain) | **Post** /v1/environments/{environmentID}/customDomains | CREATE Domain
-[**DeleteDomain**](CustomDomainsApi.md#DeleteDomain) | **Delete** /v1/environments/{environmentID}/customDomains/{customDomainID} | DELETE Domain
-[**ReadAllDomains**](CustomDomainsApi.md#ReadAllDomains) | **Get** /v1/environments/{environmentID}/customDomains | READ All Domains
-[**ReadOneDomain**](CustomDomainsApi.md#ReadOneDomain) | **Get** /v1/environments/{environmentID}/customDomains/{customDomainID} | READ One Domain
-[**UpdateDomain**](CustomDomainsApi.md#UpdateDomain) | **Post** /v1/environments/{environmentID}/customDomains/{customDomainID} | Update Domain
+[**CreateDomain**](CustomDomainsApi.md#CreateDomain) | **Post** /environments/{environmentID}/customDomains | CREATE Domain
+[**DeleteDomain**](CustomDomainsApi.md#DeleteDomain) | **Delete** /environments/{environmentID}/customDomains/{customDomainID} | DELETE Domain
+[**ReadAllDomains**](CustomDomainsApi.md#ReadAllDomains) | **Get** /environments/{environmentID}/customDomains | READ All Domains
+[**ReadOneDomain**](CustomDomainsApi.md#ReadOneDomain) | **Get** /environments/{environmentID}/customDomains/{customDomainID} | READ One Domain
+[**UpdateDomain**](CustomDomainsApi.md#UpdateDomain) | **Post** /environments/{environmentID}/customDomains/{customDomainID} | Update Domain
 
 
 

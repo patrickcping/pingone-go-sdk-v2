@@ -1,13 +1,13 @@
 # \GroupMembershipApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddUserToGroup**](GroupMembershipApi.md#AddUserToGroup) | **Post** /v1/environments/{environmentID}/users/{userID}/memberOfGroups | ADD User to Group
-[**ReadAllGroupMembershipsForUser**](GroupMembershipApi.md#ReadAllGroupMembershipsForUser) | **Get** /v1/environments/{environmentID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
-[**ReadOneGroupMembershipForUser**](GroupMembershipApi.md#ReadOneGroupMembershipForUser) | **Get** /v1/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
-[**RemoveUserFromGroup**](GroupMembershipApi.md#RemoveUserFromGroup) | **Delete** /v1/environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
+[**AddUserToGroup**](GroupMembershipApi.md#AddUserToGroup) | **Post** /environments/{environmentID}/users/{userID}/memberOfGroups | ADD User to Group
+[**ReadAllGroupMembershipsForUser**](GroupMembershipApi.md#ReadAllGroupMembershipsForUser) | **Get** /environments/{environmentID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
+[**ReadOneGroupMembershipForUser**](GroupMembershipApi.md#ReadOneGroupMembershipForUser) | **Get** /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
+[**RemoveUserFromGroup**](GroupMembershipApi.md#RemoveUserFromGroup) | **Delete** /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
 
 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllGroupMembershipsForUser
 
-> EntityArray ReadAllGroupMembershipsForUser(ctx, environmentID, userID).Expand(expand).Limit(limit).Filter(filter).Execute()
+> EntityArray ReadAllGroupMembershipsForUser(ctx, environmentID, userID).Expand(expand).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 
 READ All Group Memberships for User
 
@@ -107,11 +107,12 @@ func main() {
     userID := "userID_example" // string | 
     expand := "group" // string |  (optional)
     limit := int32(100) // int32 |  (optional)
+    cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
     filter := "type eq "DIRECT"" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GroupMembershipApi.ReadAllGroupMembershipsForUser(context.Background(), environmentID, userID).Expand(expand).Limit(limit).Filter(filter).Execute()
+    resp, r, err := apiClient.GroupMembershipApi.ReadAllGroupMembershipsForUser(context.Background(), environmentID, userID).Expand(expand).Limit(limit).Cursor(cursor).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupMembershipApi.ReadAllGroupMembershipsForUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -141,6 +142,7 @@ Name | Type | Description  | Notes
 
  **expand** | **string** |  | 
  **limit** | **int32** |  | 
+ **cursor** | **string** | Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload. | 
  **filter** | **string** |  | 
 
 ### Return type

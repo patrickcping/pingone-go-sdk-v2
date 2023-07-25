@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string type. A unique, friendly name for the predictor. This name is displayed in the Risk Policies UI, when the admin is asked to define the overrides and weights. | 
 **CompactName** | **string** | A string type. A unique name for the predictor. This property is immutable; it cannot be modified after initial creation. The value must be alpha-numeric, with no special characters or spaces. This name is used in the API both for policy configuration, and in the Risk Evaluation response (under details). | 
@@ -18,10 +19,11 @@ Name | Type | Description | Notes
 **WhiteList** | Pointer to **[]string** | A list of IP addresses (CDIRs) that are ignored for the predictor results. | [optional] 
 **Composition** | [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | 
 **Map** | [**RiskPredictorCustomAllOfMap**](RiskPredictorCustomAllOfMap.md) |  | 
+**Detect** | [**EnumPredictorNewDeviceDetectType**](EnumPredictorNewDeviceDetectType.md) |  | 
 **ActivationAt** | Pointer to **time.Time** | You can use the &#x60;activationAt&#x60; parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (&#x60;default.result.level&#x60;) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time. | [optional] 
-**Days** | Pointer to **int32** |  | [optional] 
+**Days** | **int32** |  | 
 **Radius** | [**RiskPredictorUserLocationAnomalyAllOfRadius**](RiskPredictorUserLocationAnomalyAllOfRadius.md) |  | 
-**PredictionModel** | [**RiskPredictorUEBAAllOfPredictionModel**](RiskPredictorUEBAAllOfPredictionModel.md) |  | 
+**PredictionModel** | [**RiskPredictorUserRiskBehaviorAllOfPredictionModel**](RiskPredictorUserRiskBehaviorAllOfPredictionModel.md) |  | 
 **By** | Pointer to **[]string** |  | [optional] 
 **Every** | Pointer to [**RiskPredictorVelocityAllOfEvery**](RiskPredictorVelocityAllOfEvery.md) |  | [optional] 
 **Fallback** | Pointer to [**RiskPredictorVelocityAllOfFallback**](RiskPredictorVelocityAllOfFallback.md) |  | [optional] 
@@ -35,7 +37,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictor
 
-`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, map_ RiskPredictorCustomAllOfMap, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUEBAAllOfPredictionModel, ) *RiskPredictor`
+`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel, ) *RiskPredictor`
 
 NewRiskPredictor instantiates a new RiskPredictor object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +51,31 @@ will change when the set of required properties is changed
 NewRiskPredictorWithDefaults instantiates a new RiskPredictor object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *RiskPredictor) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *RiskPredictor) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *RiskPredictor) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *RiskPredictor) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetId
 
@@ -375,6 +402,26 @@ and a boolean to check if the value has been set.
 SetMap sets Map field to given value.
 
 
+### GetDetect
+
+`func (o *RiskPredictor) GetDetect() EnumPredictorNewDeviceDetectType`
+
+GetDetect returns the Detect field if non-nil, zero value otherwise.
+
+### GetDetectOk
+
+`func (o *RiskPredictor) GetDetectOk() (*EnumPredictorNewDeviceDetectType, bool)`
+
+GetDetectOk returns a tuple with the Detect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetect
+
+`func (o *RiskPredictor) SetDetect(v EnumPredictorNewDeviceDetectType)`
+
+SetDetect sets Detect field to given value.
+
+
 ### GetActivationAt
 
 `func (o *RiskPredictor) GetActivationAt() time.Time`
@@ -419,11 +466,6 @@ and a boolean to check if the value has been set.
 
 SetDays sets Days field to given value.
 
-### HasDays
-
-`func (o *RiskPredictor) HasDays() bool`
-
-HasDays returns a boolean if a field has been set.
 
 ### GetRadius
 
@@ -447,20 +489,20 @@ SetRadius sets Radius field to given value.
 
 ### GetPredictionModel
 
-`func (o *RiskPredictor) GetPredictionModel() RiskPredictorUEBAAllOfPredictionModel`
+`func (o *RiskPredictor) GetPredictionModel() RiskPredictorUserRiskBehaviorAllOfPredictionModel`
 
 GetPredictionModel returns the PredictionModel field if non-nil, zero value otherwise.
 
 ### GetPredictionModelOk
 
-`func (o *RiskPredictor) GetPredictionModelOk() (*RiskPredictorUEBAAllOfPredictionModel, bool)`
+`func (o *RiskPredictor) GetPredictionModelOk() (*RiskPredictorUserRiskBehaviorAllOfPredictionModel, bool)`
 
 GetPredictionModelOk returns a tuple with the PredictionModel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPredictionModel
 
-`func (o *RiskPredictor) SetPredictionModel(v RiskPredictorUEBAAllOfPredictionModel)`
+`func (o *RiskPredictor) SetPredictionModel(v RiskPredictorUserRiskBehaviorAllOfPredictionModel)`
 
 SetPredictionModel sets PredictionModel field to given value.
 

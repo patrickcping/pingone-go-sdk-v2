@@ -1,12 +1,12 @@
 # \ImagesApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateImage**](ImagesApi.md#CreateImage) | **Post** /v1/environments/{environmentID}/images | CREATE Image
-[**DeleteImage**](ImagesApi.md#DeleteImage) | **Delete** /v1/environments/{environmentID}/images/{imgID} | DELETE Image
-[**ReadImage**](ImagesApi.md#ReadImage) | **Get** /v1/environments/{environmentID}/images/{imgID} | READ Image
+[**CreateImage**](ImagesApi.md#CreateImage) | **Post** /environments/{environmentID}/images | CREATE Image
+[**DeleteImage**](ImagesApi.md#DeleteImage) | **Delete** /environments/{environmentID}/images/{imgID} | DELETE Image
+[**ReadImage**](ImagesApi.md#ReadImage) | **Get** /environments/{environmentID}/images/{imgID} | READ Image
 
 
 

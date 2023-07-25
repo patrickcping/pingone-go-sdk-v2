@@ -1,14 +1,14 @@
 # \RiskAdvancedPredictorsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRiskPredictor**](RiskAdvancedPredictorsApi.md#CreateRiskPredictor) | **Post** /v1/environments/{environmentID}/riskPredictors | CREATE Risk Predictor
-[**DeleteRiskAdvancedPredictor**](RiskAdvancedPredictorsApi.md#DeleteRiskAdvancedPredictor) | **Delete** /v1/environments/{environmentID}/riskPredictors/{riskPredictorID} | DELETE Risk Advanced Predictor
-[**ReadAllRiskPredictors**](RiskAdvancedPredictorsApi.md#ReadAllRiskPredictors) | **Get** /v1/environments/{environmentID}/riskPredictors | READ All Risk Predictors
-[**ReadOneRiskPredictor**](RiskAdvancedPredictorsApi.md#ReadOneRiskPredictor) | **Get** /v1/environments/{environmentID}/riskPredictors/{riskPredictorID} | READ One Risk Predictor
-[**UpdateRiskPredictor**](RiskAdvancedPredictorsApi.md#UpdateRiskPredictor) | **Put** /v1/environments/{environmentID}/riskPredictors/{riskPredictorID} | UPDATE Risk Predictor
+[**CreateRiskPredictor**](RiskAdvancedPredictorsApi.md#CreateRiskPredictor) | **Post** /environments/{environmentID}/riskPredictors | CREATE Risk Predictor
+[**DeleteRiskAdvancedPredictor**](RiskAdvancedPredictorsApi.md#DeleteRiskAdvancedPredictor) | **Delete** /environments/{environmentID}/riskPredictors/{riskPredictorID} | DELETE Risk Advanced Predictor
+[**ReadAllRiskPredictors**](RiskAdvancedPredictorsApi.md#ReadAllRiskPredictors) | **Get** /environments/{environmentID}/riskPredictors | READ All Risk Predictors
+[**ReadOneRiskPredictor**](RiskAdvancedPredictorsApi.md#ReadOneRiskPredictor) | **Get** /environments/{environmentID}/riskPredictors/{riskPredictorID} | READ One Risk Predictor
+[**UpdateRiskPredictor**](RiskAdvancedPredictorsApi.md#UpdateRiskPredictor) | **Put** /environments/{environmentID}/riskPredictors/{riskPredictorID} | UPDATE Risk Predictor
 
 
 

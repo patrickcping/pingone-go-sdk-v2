@@ -1,14 +1,14 @@
 # \LanguageLocalizationStatusApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#CreateLanguageLocalizationStatus) | **Post** /v1/environments/{environmentID}/languages/{languageID}/status | CREATE Language Localization Status
-[**DeleteLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#DeleteLanguageLocalizationStatus) | **Delete** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | DELETE Language Localization Status
-[**ReadLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#ReadLanguageLocalizationStatus) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status | READ Language Localization Status
-[**ReadOneLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#ReadOneLanguageLocalizationStatus) | **Get** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | READ One Language Localization Status
-[**UpdateLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#UpdateLanguageLocalizationStatus) | **Put** /v1/environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | UPDATE Language Localization Status
+[**CreateLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#CreateLanguageLocalizationStatus) | **Post** /environments/{environmentID}/languages/{languageID}/status | CREATE Language Localization Status
+[**DeleteLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#DeleteLanguageLocalizationStatus) | **Delete** /environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | DELETE Language Localization Status
+[**ReadLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#ReadLanguageLocalizationStatus) | **Get** /environments/{environmentID}/languages/{languageID}/status | READ Language Localization Status
+[**ReadOneLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#ReadOneLanguageLocalizationStatus) | **Get** /environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | READ One Language Localization Status
+[**UpdateLanguageLocalizationStatus**](LanguageLocalizationStatusApi.md#UpdateLanguageLocalizationStatus) | **Put** /environments/{environmentID}/languages/{languageID}/status/{l10nStatusID} | UPDATE Language Localization Status
 
 
 

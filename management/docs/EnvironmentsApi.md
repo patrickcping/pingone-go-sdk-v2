@@ -1,15 +1,15 @@
 # \EnvironmentsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEnvironmentActiveLicense**](EnvironmentsApi.md#CreateEnvironmentActiveLicense) | **Post** /v1/environments | CREATE Environment (Active License)
-[**DeleteEnvironment**](EnvironmentsApi.md#DeleteEnvironment) | **Delete** /v1/environments/{environmentID} | DELETE Environment
-[**ReadAllEnvironments**](EnvironmentsApi.md#ReadAllEnvironments) | **Get** /v1/environments | READ All Environments
-[**ReadOneEnvironment**](EnvironmentsApi.md#ReadOneEnvironment) | **Get** /v1/environments/{environmentID} | READ One Environment
-[**UpdateEnvironment**](EnvironmentsApi.md#UpdateEnvironment) | **Put** /v1/environments/{environmentID} | UPDATE Environment
-[**UpdateEnvironmentType**](EnvironmentsApi.md#UpdateEnvironmentType) | **Put** /v1/environments/{environmentID}/type | UPDATE Environment Type
+[**CreateEnvironmentActiveLicense**](EnvironmentsApi.md#CreateEnvironmentActiveLicense) | **Post** /environments | CREATE Environment (Active License)
+[**DeleteEnvironment**](EnvironmentsApi.md#DeleteEnvironment) | **Delete** /environments/{environmentID} | DELETE Environment
+[**ReadAllEnvironments**](EnvironmentsApi.md#ReadAllEnvironments) | **Get** /environments | READ All Environments
+[**ReadOneEnvironment**](EnvironmentsApi.md#ReadOneEnvironment) | **Get** /environments/{environmentID} | READ One Environment
+[**UpdateEnvironment**](EnvironmentsApi.md#UpdateEnvironment) | **Put** /environments/{environmentID} | UPDATE Environment
+[**UpdateEnvironmentType**](EnvironmentsApi.md#UpdateEnvironmentType) | **Put** /environments/{environmentID}/type | UPDATE Environment Type
 
 
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ## ReadAllEnvironments
 
-> EntityArray ReadAllEnvironments(ctx).Limit(limit).Filter(filter).Execute()
+> EntityArray ReadAllEnvironments(ctx).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 
 READ All Environments
 
@@ -163,11 +163,12 @@ import (
 
 func main() {
     limit := int32(56) // int32 | Adding a paging value to limit the number of resources displayed per page (optional)
+    cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
     filter := "name sw "S" and license.id eq "34f0efac-21d9-4a17-8a35-196bb3362983"" // string | Adding a SCIM filter for an environment to display only those resources associated with the specified environment. 'sw', 'eq' and 'and' are supported (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentsApi.ReadAllEnvironments(context.Background()).Limit(limit).Filter(filter).Execute()
+    resp, r, err := apiClient.EnvironmentsApi.ReadAllEnvironments(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsApi.ReadAllEnvironments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -189,6 +190,7 @@ Other parameters are passed through a pointer to a apiReadAllEnvironmentsRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int32** | Adding a paging value to limit the number of resources displayed per page | 
+ **cursor** | **string** | Adding a cursor value to retrieve the next page of results, used with the &#x60;limit&#x60; parameter. The cursor value is returned in the &#x60;_links.next.href&#x60; link in the response payload. | 
  **filter** | **string** | Adding a SCIM filter for an environment to display only those resources associated with the specified environment. &#39;sw&#39;, &#39;eq&#39; and &#39;and&#39; are supported | 
 
 ### Return type

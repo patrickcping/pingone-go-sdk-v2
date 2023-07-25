@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Links** | Pointer to **map[string]interface{}** |  | [optional] 
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **AccessControl** | Pointer to [**ApplicationAccessControl**](ApplicationAccessControl.md) |  | [optional] 
 **CreatedAt** | Pointer to **time.Time** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the application. | [optional] 
@@ -44,20 +44,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *ApplicationPingOneSelfService) GetLinks() map[string]interface{}`
+`func (o *ApplicationPingOneSelfService) GetLinks() LinksHATEOAS`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ApplicationPingOneSelfService) GetLinksOk() (*map[string]interface{}, bool)`
+`func (o *ApplicationPingOneSelfService) GetLinksOk() (*LinksHATEOAS, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ApplicationPingOneSelfService) SetLinks(v map[string]interface{})`
+`func (o *ApplicationPingOneSelfService) SetLinks(v LinksHATEOAS)`
 
 SetLinks sets Links field to given value.
 

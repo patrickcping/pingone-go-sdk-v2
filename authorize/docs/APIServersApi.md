@@ -1,14 +1,14 @@
 # \APIServersApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAPIServer**](APIServersApi.md#CreateAPIServer) | **Post** /v1/environments/{environmentID}/apiServers | CREATE API Server
-[**DeleteAPIServer**](APIServersApi.md#DeleteAPIServer) | **Delete** /v1/environments/{environmentID}/apiServers/{apiServerID} | DELETE API Server
-[**ReadAllAPIServers**](APIServersApi.md#ReadAllAPIServers) | **Get** /v1/environments/{environmentID}/apiServers | READ All API Servers
-[**ReadOneAPIServer**](APIServersApi.md#ReadOneAPIServer) | **Get** /v1/environments/{environmentID}/apiServers/{apiServerID} | READ One API Server
-[**UpdateAPIServer**](APIServersApi.md#UpdateAPIServer) | **Put** /v1/environments/{environmentID}/apiServers/{apiServerID} | UPDATE API Server
+[**CreateAPIServer**](APIServersApi.md#CreateAPIServer) | **Post** /environments/{environmentID}/apiServers | CREATE API Server
+[**DeleteAPIServer**](APIServersApi.md#DeleteAPIServer) | **Delete** /environments/{environmentID}/apiServers/{apiServerID} | DELETE API Server
+[**ReadAllAPIServers**](APIServersApi.md#ReadAllAPIServers) | **Get** /environments/{environmentID}/apiServers | READ All API Servers
+[**ReadOneAPIServer**](APIServersApi.md#ReadOneAPIServer) | **Get** /environments/{environmentID}/apiServers/{apiServerID} | READ One API Server
+[**UpdateAPIServer**](APIServersApi.md#UpdateAPIServer) | **Put** /environments/{environmentID}/apiServers/{apiServerID} | UPDATE API Server
 
 
 

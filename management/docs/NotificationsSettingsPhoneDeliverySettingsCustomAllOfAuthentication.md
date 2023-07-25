@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Method** | [**EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod**](EnumNotificationsSettingsPhoneDeliverySettingsCustomAuthMethod.md) |  | 
 **Username** | Pointer to **string** | The username for the custom provider account. Required when &#x60;authentication.method&#x3D;BASIC&#x60; | [optional] 
 **Password** | Pointer to **string** | The password for the custom provider account. Required when &#x60;authentication.method&#x3D;BASIC&#x60; | [optional] 
-**Token** | Pointer to **string** | The authentication token for the custom provider account.  Required when &#x60;authentication.method&#x3D;BEARER&#x60; | [optional] 
+**AuthToken** | Pointer to **string** | The authentication token for the custom provider account.  Required when &#x60;authentication.method&#x3D;BEARER&#x60; | [optional] 
 
 ## Methods
 
@@ -98,30 +98,30 @@ SetPassword sets Password field to given value.
 
 HasPassword returns a boolean if a field has been set.
 
-### GetToken
+### GetAuthToken
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetToken() string`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetAuthToken() string`
 
-GetToken returns the Token field if non-nil, zero value otherwise.
+GetAuthToken returns the AuthToken field if non-nil, zero value otherwise.
 
-### GetTokenOk
+### GetAuthTokenOk
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetTokenOk() (*string, bool)`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) GetAuthTokenOk() (*string, bool)`
 
-GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+GetAuthTokenOk returns a tuple with the AuthToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetToken
+### SetAuthToken
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetToken(v string)`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) SetAuthToken(v string)`
 
-SetToken sets Token field to given value.
+SetAuthToken sets AuthToken field to given value.
 
-### HasToken
+### HasAuthToken
 
-`func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasToken() bool`
+`func (o *NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication) HasAuthToken() bool`
 
-HasToken returns a boolean if a field has been set.
+HasAuthToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

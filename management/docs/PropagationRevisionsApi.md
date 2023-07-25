@@ -1,18 +1,18 @@
 # \PropagationRevisionsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet**](PropagationRevisionsApi.md#V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet) | **Get** /v1/environments/{environmentID}/propagation/revisions/id:latest | READ Latest Revision
-[**V1EnvironmentsEnvironmentIDPropagationRevisionsPost**](PropagationRevisionsApi.md#V1EnvironmentsEnvironmentIDPropagationRevisionsPost) | **Post** /v1/environments/{environmentID}/propagation/revisions | CREATE Revision
-[**V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet**](PropagationRevisionsApi.md#V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet) | **Get** /v1/environments/{environmentID}/propagation/revisions/{previousRevisionID} | READ Previous Revision
+[**EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet**](PropagationRevisionsApi.md#EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet) | **Get** /environments/{environmentID}/propagation/revisions/id:latest | READ Latest Revision
+[**EnvironmentsEnvironmentIDPropagationRevisionsPost**](PropagationRevisionsApi.md#EnvironmentsEnvironmentIDPropagationRevisionsPost) | **Post** /environments/{environmentID}/propagation/revisions | CREATE Revision
+[**EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet**](PropagationRevisionsApi.md#EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet) | **Get** /environments/{environmentID}/propagation/revisions/{previousRevisionID} | READ Previous Revision
 
 
 
-## V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet
+## EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet
 
-> V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet(ctx, environmentID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet(ctx, environmentID).Accept(accept).Execute()
 
 READ Latest Revision
 
@@ -34,9 +34,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet(context.Background(), environmentID).Accept(accept).Execute()
+    r, err := apiClient.PropagationRevisionsApi.EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet(context.Background(), environmentID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRevisionsIdlatestGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRevisionsPost
+## EnvironmentsEnvironmentIDPropagationRevisionsPost
 
-> V1EnvironmentsEnvironmentIDPropagationRevisionsPost(ctx, environmentID).Execute()
+> EnvironmentsEnvironmentIDPropagationRevisionsPost(ctx, environmentID).Execute()
 
 CREATE Revision
 
@@ -101,9 +101,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPost(context.Background(), environmentID).Execute()
+    r, err := apiClient.PropagationRevisionsApi.EnvironmentsEnvironmentIDPropagationRevisionsPost(context.Background(), environmentID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.EnvironmentsEnvironmentIDPropagationRevisionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRevisionsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRevisionsPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -144,9 +144,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet
+## EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet
 
-> V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet(ctx, environmentID, previousRevisionID).Accept(accept).Execute()
+> EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet(ctx, environmentID, previousRevisionID).Accept(accept).Execute()
 
 READ Previous Revision
 
@@ -169,9 +169,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet(context.Background(), environmentID, previousRevisionID).Accept(accept).Execute()
+    r, err := apiClient.PropagationRevisionsApi.EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet(context.Background(), environmentID, previousRevisionID).Accept(accept).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.V1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationRevisionsApi.EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

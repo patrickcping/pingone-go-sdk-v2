@@ -1,14 +1,14 @@
 # \ApplicationSignOnPolicyAssignmentsApi
 
-All URIs are relative to *https://api.pingone.eu*
+All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSignOnPolicyAssignment**](ApplicationSignOnPolicyAssignmentsApi.md#CreateSignOnPolicyAssignment) | **Post** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments | CREATE SOP Assignment
-[**DeleteSignOnPolicyAssignment**](ApplicationSignOnPolicyAssignmentsApi.md#DeleteSignOnPolicyAssignment) | **Delete** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | DELETE SOP Assignment
-[**ReadAllSignOnPolicyAssignments**](ApplicationSignOnPolicyAssignmentsApi.md#ReadAllSignOnPolicyAssignments) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments | READ All SOP Assignments
-[**ReadOneSignOnPolicyAssignment**](ApplicationSignOnPolicyAssignmentsApi.md#ReadOneSignOnPolicyAssignment) | **Get** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | READ One SOP Assignment
-[**UpdateSignOnPolicyAssignment**](ApplicationSignOnPolicyAssignmentsApi.md#UpdateSignOnPolicyAssignment) | **Put** /v1/environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | UPDATE SOP Assignment
+[**CreateSignOnPolicyAssignment**](ApplicationSignOnPolicyAssignmentsApi.md#CreateSignOnPolicyAssignment) | **Post** /environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments | CREATE SOP Assignment
+[**DeleteSignOnPolicyAssignment**](ApplicationSignOnPolicyAssignmentsApi.md#DeleteSignOnPolicyAssignment) | **Delete** /environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | DELETE SOP Assignment
+[**ReadAllSignOnPolicyAssignments**](ApplicationSignOnPolicyAssignmentsApi.md#ReadAllSignOnPolicyAssignments) | **Get** /environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments | READ All SOP Assignments
+[**ReadOneSignOnPolicyAssignment**](ApplicationSignOnPolicyAssignmentsApi.md#ReadOneSignOnPolicyAssignment) | **Get** /environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | READ One SOP Assignment
+[**UpdateSignOnPolicyAssignment**](ApplicationSignOnPolicyAssignmentsApi.md#UpdateSignOnPolicyAssignment) | **Put** /environments/{environmentID}/applications/{applicationID}/signOnPolicyAssignments/{SOPAssignmentID} | UPDATE SOP Assignment
 
 
 
