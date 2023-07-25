@@ -15,12 +15,13 @@ import (
 	"fmt"
 )
 
-// EnumPredictorType An enum type. This can be either `ANONYMOUS_NETWORK`, `COMPOSITE`, `GEO_VELOCITY`, `IP_REPUTATION`, `MAP`, `DEVICE`, `USER_LOCATION_ANOMALY`, `USER_RISK_BEHAVIOR` or `VELOCITY`.
+// EnumPredictorType An enum type that specifies the type of the predictor. Note that both the New Device and Suspicious Device predictors use the type DEVICE. To differentiate between them, you use the `detect` field.
 type EnumPredictorType string
 
 // List of EnumPredictorType
 const (
 	ENUMPREDICTORTYPE_ANONYMOUS_NETWORK EnumPredictorType = "ANONYMOUS_NETWORK"
+	ENUMPREDICTORTYPE_BOT EnumPredictorType = "BOT"
 	ENUMPREDICTORTYPE_COMPOSITE EnumPredictorType = "COMPOSITE"
 	ENUMPREDICTORTYPE_GEO_VELOCITY EnumPredictorType = "GEO_VELOCITY"
 	ENUMPREDICTORTYPE_IP_REPUTATION EnumPredictorType = "IP_REPUTATION"
@@ -34,6 +35,7 @@ const (
 // All allowed values of EnumPredictorType enum
 var AllowedEnumPredictorTypeEnumValues = []EnumPredictorType{
 	"ANONYMOUS_NETWORK",
+	"BOT",
 	"COMPOSITE",
 	"GEO_VELOCITY",
 	"IP_REPUTATION",
