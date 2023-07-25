@@ -28,7 +28,7 @@ type ApiCreateUserRequest struct {
 	ApiService *UsersApiService
 	environmentID string
 	contentType *string
-	requestBody *map[string]interface{}
+	user *User
 }
 
 func (r ApiCreateUserRequest) ContentType(contentType string) ApiCreateUserRequest {
@@ -36,8 +36,8 @@ func (r ApiCreateUserRequest) ContentType(contentType string) ApiCreateUserReque
 	return r
 }
 
-func (r ApiCreateUserRequest) RequestBody(requestBody map[string]interface{}) ApiCreateUserRequest {
-	r.requestBody = &requestBody
+func (r ApiCreateUserRequest) User(user User) ApiCreateUserRequest {
+	r.user = &user
 	return r
 }
 
@@ -119,7 +119,7 @@ func (a *UsersApiService) internalCreateUserExecute(r ApiCreateUserRequest) (*Us
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "content-type", r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.requestBody
+	localVarPostBody = r.user
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1542,11 +1542,11 @@ type ApiUpdateUserPatchRequest struct {
 	ApiService *UsersApiService
 	environmentID string
 	userID string
-	requestBody *map[string]interface{}
+	user *User
 }
 
-func (r ApiUpdateUserPatchRequest) RequestBody(requestBody map[string]interface{}) ApiUpdateUserPatchRequest {
-	r.requestBody = &requestBody
+func (r ApiUpdateUserPatchRequest) User(user User) ApiUpdateUserPatchRequest {
+	r.user = &user
 	return r
 }
 
@@ -1628,7 +1628,7 @@ func (a *UsersApiService) internalUpdateUserPatchExecute(r ApiUpdateUserPatchReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.requestBody
+	localVarPostBody = r.user
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1737,11 +1737,11 @@ type ApiUpdateUserPutRequest struct {
 	ApiService *UsersApiService
 	environmentID string
 	userID string
-	requestBody *map[string]interface{}
+	user *User
 }
 
-func (r ApiUpdateUserPutRequest) RequestBody(requestBody map[string]interface{}) ApiUpdateUserPutRequest {
-	r.requestBody = &requestBody
+func (r ApiUpdateUserPutRequest) RequestBody(user User) ApiUpdateUserPutRequest {
+	r.user = &user
 	return r
 }
 
@@ -1823,7 +1823,7 @@ func (a *UsersApiService) internalUpdateUserPutExecute(r ApiUpdateUserPutRequest
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.requestBody
+	localVarPostBody = r.user
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

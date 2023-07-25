@@ -1173,10 +1173,12 @@ func (o *User) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "_links")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "createdAt")
 		delete(additionalProperties, "email")
+		delete(additionalProperties, "emailVerified")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "externalId")
