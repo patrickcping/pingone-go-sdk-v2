@@ -2018,6 +2018,7 @@ components:
       type: object
     RiskPredictor:
       oneOf:
+      - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
       - $ref: '#/components/schemas/RiskPredictorComposite'
       - $ref: '#/components/schemas/RiskPredictorCustom'
