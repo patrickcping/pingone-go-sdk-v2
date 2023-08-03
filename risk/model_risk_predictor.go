@@ -18,6 +18,7 @@ import (
 // RiskPredictor - struct for RiskPredictor
 type RiskPredictor struct {
 	RiskPredictorAnonymousNetwork *RiskPredictorAnonymousNetwork
+	RiskPredictorCommon *RiskPredictorCommon
 	RiskPredictorComposite *RiskPredictorComposite
 	RiskPredictorCustom *RiskPredictorCustom
 	RiskPredictorDevice *RiskPredictorDevice
@@ -32,6 +33,13 @@ type RiskPredictor struct {
 func RiskPredictorAnonymousNetworkAsRiskPredictor(v *RiskPredictorAnonymousNetwork) RiskPredictor {
 	return RiskPredictor{
 		RiskPredictorAnonymousNetwork: v,
+	}
+}
+
+// RiskPredictorCommonAsRiskPredictor is a convenience function that returns RiskPredictorCommon wrapped in RiskPredictor
+func RiskPredictorCommonAsRiskPredictor(v *RiskPredictorCommon) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorCommon: v,
 	}
 }
 
@@ -102,6 +110,7 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 	}
 
 	dst.RiskPredictorAnonymousNetwork = nil
+	dst.RiskPredictorCommon = nil
 	dst.RiskPredictorComposite = nil
 	dst.RiskPredictorCustom = nil
 	dst.RiskPredictorGeovelocity = nil
@@ -120,6 +129,10 @@ func (dst *RiskPredictor) UnmarshalJSON(data []byte) error {
 	switch objType {
 	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
 		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil {
+			return err
+		}
+	case ENUMPREDICTORTYPE_BOT:
+		if err := json.Unmarshal(data, &dst.RiskPredictorCommon); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_COMPOSITE:
@@ -166,6 +179,10 @@ func (src RiskPredictor) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RiskPredictorAnonymousNetwork)
 	}
 
+	if src.RiskPredictorCommon != nil {
+		return json.Marshal(&src.RiskPredictorCommon)
+	}
+
 	if src.RiskPredictorComposite != nil {
 		return json.Marshal(&src.RiskPredictorComposite)
 	}
@@ -208,6 +225,10 @@ func (obj *RiskPredictor) GetActualInstance() (interface{}) {
 	}
 	if obj.RiskPredictorAnonymousNetwork != nil {
 		return obj.RiskPredictorAnonymousNetwork
+	}
+
+	if obj.RiskPredictorCommon != nil {
+		return obj.RiskPredictorCommon
 	}
 
 	if obj.RiskPredictorComposite != nil {
