@@ -1,5 +1,13 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.2
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.2.1 => v0.3.0 [#233](https://github.com/patrickcping/pingone-go-sdk-v2/pull/233)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.2.1 => v0.3.0 [#233](https://github.com/patrickcping/pingone-go-sdk-v2/pull/233)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.24.0 => v0.25.0 [#233](https://github.com/patrickcping/pingone-go-sdk-v2/pull/233)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.15.0 => v0.16.0 [#233](https://github.com/patrickcping/pingone-go-sdk-v2/pull/233)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.8.1 => v0.9.0 [#233](https://github.com/patrickcping/pingone-go-sdk-v2/pull/233)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.2.1 => v0.3.0 [#233](https://github.com/patrickcping/pingone-go-sdk-v2/pull/233)
+    * **Note** bump `golang.org/x/oauth2` v0.10.0 => v0.11.0 [#233](https://github.com/patrickcping/pingone-go-sdk-v2/pull/233)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.3.0](./authorize/CHANGELOG.md)
     * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.3.0](./credentials/CHANGELOG.md)
