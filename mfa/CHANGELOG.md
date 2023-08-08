@@ -1,4 +1,4 @@
-# v0.16.0 (Unreleased)
+# v0.16.0 (2023-08-08)
 
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
 

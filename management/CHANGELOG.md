@@ -1,4 +1,4 @@
-# v0.25.0 (Unreleased)
+# v0.25.0 (2023-08-08)
 
 * **Enhancement** Implement basic cursor for paging results (`ApiReadAllEnvironmentsRequest`, `ApiReadAllGroupMembershipsForUserRequest`, `ApiReadAllGroupsRequest`, `ApiReadAllPopulationsRequest`, `ApiReadAllUsersRequest`). [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)

@@ -1,4 +1,4 @@
-# v0.9.0 (Unreleased)
+# v0.9.0 (2023-08-08)
 
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)
 * **Enhancement** Add support for Suspicious device and Bot detection predictor types. [#229](https://github.com/patrickcping/pingone-go-sdk-v2/pull/229), [#231](https://github.com/patrickcping/pingone-go-sdk-v2/pull/231)
