@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** | A string that specifies a valid HTTPS URL to which event messages are sent. This is a required property. | 
-**Headers** | Pointer to **map[string]interface{}** | An object map that specifies the headers applied to the outbound request (for example, &#x60;Authorization&#x60; &#x60;Basic usernamepassword&#x60;. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source. | [optional] 
+**Headers** | Pointer to **map[string]string** | An object map of strings that specifies the headers applied to the outbound request (for example, &#x60;Authorization&#x60; &#x60;Basic usernamepassword&#x60;. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source. | [optional] 
 
 ## Methods
 
@@ -48,20 +48,20 @@ SetUrl sets Url field to given value.
 
 ### GetHeaders
 
-`func (o *SubscriptionHttpEndpoint) GetHeaders() map[string]interface{}`
+`func (o *SubscriptionHttpEndpoint) GetHeaders() map[string]string`
 
 GetHeaders returns the Headers field if non-nil, zero value otherwise.
 
 ### GetHeadersOk
 
-`func (o *SubscriptionHttpEndpoint) GetHeadersOk() (*map[string]interface{}, bool)`
+`func (o *SubscriptionHttpEndpoint) GetHeadersOk() (*map[string]string, bool)`
 
 GetHeadersOk returns a tuple with the Headers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHeaders
 
-`func (o *SubscriptionHttpEndpoint) SetHeaders(v map[string]interface{})`
+`func (o *SubscriptionHttpEndpoint) SetHeaders(v map[string]string)`
 
 SetHeaders sets Headers field to given value.
 

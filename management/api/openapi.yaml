@@ -25001,7 +25001,7 @@ components:
             format: null
             httpEndpoint:
               headers:
-                key: ""
+                key: headers
               url: url
             name: name
             id: id
@@ -25034,7 +25034,7 @@ components:
             format: null
             httpEndpoint:
               headers:
-                key: ""
+                key: headers
               url: url
             name: name
             id: id
@@ -29517,7 +29517,7 @@ components:
         format: null
         httpEndpoint:
           headers:
-            key: ""
+            key: headers
           url: url
         name: name
         id: id
@@ -31109,7 +31109,7 @@ components:
           format: null
           httpEndpoint:
             headers:
-              key: ""
+              key: headers
             url: url
           name: name
           id: id
@@ -31142,7 +31142,7 @@ components:
           format: null
           httpEndpoint:
             headers:
-              key: ""
+              key: headers
             url: url
           name: name
           id: id
@@ -35144,7 +35144,7 @@ components:
     Subscription_httpEndpoint:
       example:
         headers:
-          key: ""
+          key: headers
         url: url
       properties:
         url:
@@ -35152,11 +35152,12 @@ components:
             are sent. This is a required property.
           type: string
         headers:
-          additionalProperties: true
-          description: "An object map that specifies the headers applied to the outbound\
-            \ request (for example, `Authorization` `Basic usernamepassword`. The\
-            \ purpose of these headers is for the HTTPS endpoint to authenticate the\
-            \ PingOne service, ensuring that the information from PingOne is from\
+          additionalProperties:
+            type: string
+          description: "An object map of strings that specifies the headers applied\
+            \ to the outbound request (for example, `Authorization` `Basic usernamepassword`.\
+            \ The purpose of these headers is for the HTTPS endpoint to authenticate\
+            \ the PingOne service, ensuring that the information from PingOne is from\
             \ a trusted source."
           type: object
       required:
