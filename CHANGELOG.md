@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.26.0](./management/CHANGELOG.md)
+    * **Enhancement** Clarified the `headers` parameter in the `SubscriptionHttpEndpoint` model of the subscriptions API endpoint to be a map of strings rather than a map of any data type.
+
 # Release (2023-08-08)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.2
