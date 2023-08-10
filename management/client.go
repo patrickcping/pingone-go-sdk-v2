@@ -89,6 +89,8 @@ type APIClient struct {
 
 	FlowPoliciesApi *FlowPoliciesApiService
 
+	FormManagementApi *FormManagementApiService
+
 	GatewayCredentialsApi *GatewayCredentialsApiService
 
 	GatewayInstancesApi *GatewayInstancesApiService
@@ -148,6 +150,8 @@ type APIClient struct {
 	PropagationStoreMetadataApi *PropagationStoreMetadataApiService
 
 	PropagationStoresApi *PropagationStoresApiService
+
+	RecaptchaConfigurationApi *RecaptchaConfigurationApiService
 
 	ResourceAttributesApi *ResourceAttributesApiService
 
@@ -251,6 +255,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EnableUsersApi = (*EnableUsersApiService)(&c.common)
 	c.EnvironmentsApi = (*EnvironmentsApiService)(&c.common)
 	c.FlowPoliciesApi = (*FlowPoliciesApiService)(&c.common)
+	c.FormManagementApi = (*FormManagementApiService)(&c.common)
 	c.GatewayCredentialsApi = (*GatewayCredentialsApiService)(&c.common)
 	c.GatewayInstancesApi = (*GatewayInstancesApiService)(&c.common)
 	c.GatewayRoleAssignmentsApi = (*GatewayRoleAssignmentsApiService)(&c.common)
@@ -281,6 +286,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PropagationRulesApi = (*PropagationRulesApiService)(&c.common)
 	c.PropagationStoreMetadataApi = (*PropagationStoreMetadataApiService)(&c.common)
 	c.PropagationStoresApi = (*PropagationStoresApiService)(&c.common)
+	c.RecaptchaConfigurationApi = (*RecaptchaConfigurationApiService)(&c.common)
 	c.ResourceAttributesApi = (*ResourceAttributesApiService)(&c.common)
 	c.ResourceClientSecretApi = (*ResourceClientSecretApiService)(&c.common)
 	c.ResourceScopesApi = (*ResourceScopesApiService)(&c.common)
