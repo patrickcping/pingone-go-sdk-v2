@@ -1,4 +1,4 @@
-# v0.3.0 (Unreleased)
+# v0.3.1 (Unreleased)
 
 * **Bug** Corrected situations where `EntityArrayEmbeddedItemsInner` object dereferencing led to panic error. [#237](https://github.com/patrickcping/pingone-go-sdk-v2/pull/237)
 
