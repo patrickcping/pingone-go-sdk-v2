@@ -70,7 +70,7 @@ var (
 		if string(jsonCredentialType) == "{}" { // empty struct
 			dst.CredentialType = nil
 		} else {
-			if dst.CredentialType.CardDesignTemplate != "" {
+			if *dst.CredentialType.CardType != "" {
 				return nil // data stored in dst.CredentialType, return on the first match
 			} else {
 				dst.CredentialType = nil
@@ -87,7 +87,7 @@ var (
 		if string(jsonUserCredential) == "{}" { // empty struct
 			dst.UserCredential = nil
 		} else {
-			if dst.UserCredential.User.Id != "" {
+			if dst.UserCredential.User != nil && dst.UserCredential.User.Id != "" {
 				return nil // data stored in dst.UserCredential, return on the first match
 			} else {
 				dst.UserCredential = nil
