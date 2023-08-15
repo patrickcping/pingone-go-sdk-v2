@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2023-08-15)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.3
     * **Note** bump `github.com/golangci/golangci-lint` v1.53.3 => v1.54.1 [#238](https://github.com/patrickcping/pingone-go-sdk-v2/pull/238)
