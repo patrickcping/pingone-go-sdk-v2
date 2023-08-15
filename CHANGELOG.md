@@ -1,9 +1,9 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.3
-    * **Note** bump `github.com/golangci/golangci-lint` v1.53.3 => v1.54.1
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.3.0 => v0.3.1
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.25.0 => v0.26.0
+    * **Note** bump `github.com/golangci/golangci-lint` v1.53.3 => v1.54.1 [#238](https://github.com/patrickcping/pingone-go-sdk-v2/pull/238)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.3.0 => v0.3.1 [#238](https://github.com/patrickcping/pingone-go-sdk-v2/pull/238)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.25.0 => v0.26.0 [#238](https://github.com/patrickcping/pingone-go-sdk-v2/pull/238)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.26.0](./management/CHANGELOG.md)
     * **Bug** Fixed inclusion of `FormManagementApi` and `RecaptchaConfigurationApi` API to the client. [#235](https://github.com/patrickcping/pingone-go-sdk-v2/pull/235)
     * **Enhancement** Clarified the `headers` parameter in the `SubscriptionHttpEndpoint` model of the subscriptions API endpoint to be a map of strings rather than a map of any data type. [#234](https://github.com/patrickcping/pingone-go-sdk-v2/pull/234)
