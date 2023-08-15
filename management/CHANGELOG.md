@@ -1,4 +1,4 @@
-# v0.26.0 (Unreleased)
+# v0.26.0 (2023-08-15)
 
 * **Bug** Fixed inclusion of `FormManagementApi` and `RecaptchaConfigurationApi` API to the client. [#235](https://github.com/patrickcping/pingone-go-sdk-v2/pull/235)
 * **Enhancement** Clarified the `headers` parameter in the `SubscriptionHttpEndpoint` model of the subscriptions API endpoint to be a map of strings rather than a map of any data type. [#234](https://github.com/patrickcping/pingone-go-sdk-v2/pull/234)
