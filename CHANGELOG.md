@@ -3,7 +3,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.26.0](./management/CHANGELOG.md)
     * **Enhancement** Clarified the `headers` parameter in the `SubscriptionHttpEndpoint` model of the subscriptions API endpoint to be a map of strings rather than a map of any data type. [#234](https://github.com/patrickcping/pingone-go-sdk-v2/pull/234)
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.3.1](./credentials/CHANGELOG.md)
-    * **Bug** Corrected situations where `EntityArrayEmbeddedItemsInner` object dereferencing led to panic error.
+    * **Bug** Corrected situations where `EntityArrayEmbeddedItemsInner` object dereferencing led to panic error. [#237](https://github.com/patrickcping/pingone-go-sdk-v2/pull/237)
 
 # Release (2023-08-08)
 
