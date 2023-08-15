@@ -1,3 +1,7 @@
+# v0.3.w (2023-08-15)
+
+* **Enhancement** Add parameters `onDelete.revokeIssuedCredentials` and `metadata.Fields.FileSupport` to `CredentialType` schema. [#240](https://github.com/patrickcping/pingone-go-sdk-v2/pull/240)
+
 # v0.3.1 (2023-08-15)
 
 * **Bug** Corrected situations where `EntityArrayEmbeddedItemsInner` object dereferencing led to panic error. [#237](https://github.com/patrickcping/pingone-go-sdk-v2/pull/237)
