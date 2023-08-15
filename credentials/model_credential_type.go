@@ -34,10 +34,11 @@ type CredentialType struct {
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential type.
 	Id *string `json:"id,omitempty"`
-	Issuer *CredentialTypeIssuer `json:"issuer,omitempty"`
+	Issuer *ObjectIssuer `json:"issuer,omitempty"`
 	// v issuer name associated with the card, can differ from title.
 	IssuerName *string `json:"issuerName,omitempty"`
 	Metadata CredentialTypeMetaData `json:"metadata"`
+	OnDelete *CredentialTypeOnDelete `json:"onDelete,omitempty"`
 	// A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title.
 	Title string `json:"title"`
 	// A string that specifies the date and time the credential type was last updated; can be null.
@@ -313,9 +314,9 @@ func (o *CredentialType) SetId(v string) {
 }
 
 // GetIssuer returns the Issuer field value if set, zero value otherwise.
-func (o *CredentialType) GetIssuer() CredentialTypeIssuer {
+func (o *CredentialType) GetIssuer() ObjectIssuer {
 	if o == nil || IsNil(o.Issuer) {
-		var ret CredentialTypeIssuer
+		var ret ObjectIssuer
 		return ret
 	}
 	return *o.Issuer
@@ -323,7 +324,7 @@ func (o *CredentialType) GetIssuer() CredentialTypeIssuer {
 
 // GetIssuerOk returns a tuple with the Issuer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetIssuerOk() (*CredentialTypeIssuer, bool) {
+func (o *CredentialType) GetIssuerOk() (*ObjectIssuer, bool) {
 	if o == nil || IsNil(o.Issuer) {
 		return nil, false
 	}
@@ -339,8 +340,8 @@ func (o *CredentialType) HasIssuer() bool {
 	return false
 }
 
-// SetIssuer gets a reference to the given CredentialTypeIssuer and assigns it to the Issuer field.
-func (o *CredentialType) SetIssuer(v CredentialTypeIssuer) {
+// SetIssuer gets a reference to the given ObjectIssuer and assigns it to the Issuer field.
+func (o *CredentialType) SetIssuer(v ObjectIssuer) {
 	o.Issuer = &v
 }
 
@@ -398,6 +399,38 @@ func (o *CredentialType) GetMetadataOk() (*CredentialTypeMetaData, bool) {
 // SetMetadata sets field value
 func (o *CredentialType) SetMetadata(v CredentialTypeMetaData) {
 	o.Metadata = v
+}
+
+// GetOnDelete returns the OnDelete field value if set, zero value otherwise.
+func (o *CredentialType) GetOnDelete() CredentialTypeOnDelete {
+	if o == nil || IsNil(o.OnDelete) {
+		var ret CredentialTypeOnDelete
+		return ret
+	}
+	return *o.OnDelete
+}
+
+// GetOnDeleteOk returns a tuple with the OnDelete field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetOnDeleteOk() (*CredentialTypeOnDelete, bool) {
+	if o == nil || IsNil(o.OnDelete) {
+		return nil, false
+	}
+	return o.OnDelete, true
+}
+
+// HasOnDelete returns a boolean if a field has been set.
+func (o *CredentialType) HasOnDelete() bool {
+	if o != nil && !IsNil(o.OnDelete) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnDelete gets a reference to the given CredentialTypeOnDelete and assigns it to the OnDelete field.
+func (o *CredentialType) SetOnDelete(v CredentialTypeOnDelete) {
+	o.OnDelete = &v
 }
 
 // GetTitle returns the Title field value
@@ -491,6 +524,9 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 		toSerialize["issuerName"] = o.IssuerName
 	}
 	toSerialize["metadata"] = o.Metadata
+	if !IsNil(o.OnDelete) {
+		toSerialize["onDelete"] = o.OnDelete
+	}
 	toSerialize["title"] = o.Title
 	// skip: updatedAt is readOnly
 	return toSerialize, nil
