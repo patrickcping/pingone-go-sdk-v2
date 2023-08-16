@@ -1,3 +1,9 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.4.0](./credentials/CHANGELOG.md)
+    * **Enhancement** Add parameters `OnDelete` to the `CredentialType` model. [#240](https://github.com/patrickcping/pingone-go-sdk-v2/pull/240)
+    * **Enhancement** Add parameters `FileSupport` to the `CredentialTypeMetaDataFieldsInner` model. [#240](https://github.com/patrickcping/pingone-go-sdk-v2/pull/240)
+
 # Release (2023-08-15)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.3
