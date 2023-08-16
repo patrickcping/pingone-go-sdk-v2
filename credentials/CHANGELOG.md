@@ -1,3 +1,8 @@
+# v0.4.0 (Unreleased)
+
+* **Enhancement** Add parameters `OnDelete` to the `CredentialType` model. [#240](https://github.com/patrickcping/pingone-go-sdk-v2/pull/240)
+* **Enhancement** Add parameters `FileSupport` to the `CredentialTypeMetaDataFieldsInner` model. [#240](https://github.com/patrickcping/pingone-go-sdk-v2/pull/240)
+
 # v0.3.1 (2023-08-15)
 
 * **Bug** Corrected situations where `EntityArrayEmbeddedItemsInner` object dereferencing led to panic error. [#237](https://github.com/patrickcping/pingone-go-sdk-v2/pull/237)

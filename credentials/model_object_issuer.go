@@ -14,34 +14,34 @@ import (
 	"encoding/json"
 )
 
-// checks if the CredentialTypeIssuer type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CredentialTypeIssuer{}
+// checks if the ObjectIssuer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ObjectIssuer{}
 
-// CredentialTypeIssuer struct for CredentialTypeIssuer
-type CredentialTypeIssuer struct {
-	// A string that specifies the identifier (UUID) of the issuer.
+// ObjectIssuer struct for ObjectIssuer
+type ObjectIssuer struct {
+	// A string that specifies the identifier (UUID) of the credential issuer.
 	Id *string `json:"id,omitempty"`
 }
 
-// NewCredentialTypeIssuer instantiates a new CredentialTypeIssuer object
+// NewObjectIssuer instantiates a new ObjectIssuer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCredentialTypeIssuer() *CredentialTypeIssuer {
-	this := CredentialTypeIssuer{}
+func NewObjectIssuer() *ObjectIssuer {
+	this := ObjectIssuer{}
 	return &this
 }
 
-// NewCredentialTypeIssuerWithDefaults instantiates a new CredentialTypeIssuer object
+// NewObjectIssuerWithDefaults instantiates a new ObjectIssuer object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCredentialTypeIssuerWithDefaults() *CredentialTypeIssuer {
-	this := CredentialTypeIssuer{}
+func NewObjectIssuerWithDefaults() *ObjectIssuer {
+	this := ObjectIssuer{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *CredentialTypeIssuer) GetId() string {
+func (o *ObjectIssuer) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -51,7 +51,7 @@ func (o *CredentialTypeIssuer) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialTypeIssuer) GetIdOk() (*string, bool) {
+func (o *ObjectIssuer) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *CredentialTypeIssuer) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *CredentialTypeIssuer) HasId() bool {
+func (o *ObjectIssuer) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -68,11 +68,11 @@ func (o *CredentialTypeIssuer) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *CredentialTypeIssuer) SetId(v string) {
+func (o *ObjectIssuer) SetId(v string) {
 	o.Id = &v
 }
 
-func (o CredentialTypeIssuer) MarshalJSON() ([]byte, error) {
+func (o ObjectIssuer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -80,44 +80,44 @@ func (o CredentialTypeIssuer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CredentialTypeIssuer) ToMap() (map[string]interface{}, error) {
+func (o ObjectIssuer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	// skip: id is readOnly
 	return toSerialize, nil
 }
 
-type NullableCredentialTypeIssuer struct {
-	value *CredentialTypeIssuer
+type NullableObjectIssuer struct {
+	value *ObjectIssuer
 	isSet bool
 }
 
-func (v NullableCredentialTypeIssuer) Get() *CredentialTypeIssuer {
+func (v NullableObjectIssuer) Get() *ObjectIssuer {
 	return v.value
 }
 
-func (v *NullableCredentialTypeIssuer) Set(val *CredentialTypeIssuer) {
+func (v *NullableObjectIssuer) Set(val *ObjectIssuer) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCredentialTypeIssuer) IsSet() bool {
+func (v NullableObjectIssuer) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCredentialTypeIssuer) Unset() {
+func (v *NullableObjectIssuer) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCredentialTypeIssuer(val *CredentialTypeIssuer) *NullableCredentialTypeIssuer {
-	return &NullableCredentialTypeIssuer{value: val, isSet: true}
+func NewNullableObjectIssuer(val *ObjectIssuer) *NullableObjectIssuer {
+	return &NullableObjectIssuer{value: val, isSet: true}
 }
 
-func (v NullableCredentialTypeIssuer) MarshalJSON() ([]byte, error) {
+func (v NullableObjectIssuer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCredentialTypeIssuer) UnmarshalJSON(src []byte) error {
+func (v *NullableObjectIssuer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

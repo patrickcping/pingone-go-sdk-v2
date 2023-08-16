@@ -12,9 +12,10 @@ Name | Type | Description | Notes
 **DeletedAt** | Pointer to **string** | A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \&quot;soft delete\&quot;. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the identifier (UUID) associated with the credential type. | [optional] [readonly] 
-**Issuer** | Pointer to [**CredentialTypeIssuer**](CredentialTypeIssuer.md) |  | [optional] 
+**Issuer** | Pointer to [**ObjectIssuer**](ObjectIssuer.md) |  | [optional] 
 **IssuerName** | Pointer to **string** | v issuer name associated with the card, can differ from title. | [optional] 
 **Metadata** | [**CredentialTypeMetaData**](CredentialTypeMetaData.md) |  | 
+**OnDelete** | Pointer to [**CredentialTypeOnDelete**](CredentialTypeOnDelete.md) |  | [optional] 
 **Title** | **string** | A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title. | 
 **UpdatedAt** | Pointer to **time.Time** | A string that specifies the date and time the credential type was last updated; can be null. | [optional] [readonly] 
 
@@ -234,20 +235,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetIssuer
 
-`func (o *CredentialType) GetIssuer() CredentialTypeIssuer`
+`func (o *CredentialType) GetIssuer() ObjectIssuer`
 
 GetIssuer returns the Issuer field if non-nil, zero value otherwise.
 
 ### GetIssuerOk
 
-`func (o *CredentialType) GetIssuerOk() (*CredentialTypeIssuer, bool)`
+`func (o *CredentialType) GetIssuerOk() (*ObjectIssuer, bool)`
 
 GetIssuerOk returns a tuple with the Issuer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIssuer
 
-`func (o *CredentialType) SetIssuer(v CredentialTypeIssuer)`
+`func (o *CredentialType) SetIssuer(v ObjectIssuer)`
 
 SetIssuer sets Issuer field to given value.
 
@@ -301,6 +302,31 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
+
+### GetOnDelete
+
+`func (o *CredentialType) GetOnDelete() CredentialTypeOnDelete`
+
+GetOnDelete returns the OnDelete field if non-nil, zero value otherwise.
+
+### GetOnDeleteOk
+
+`func (o *CredentialType) GetOnDeleteOk() (*CredentialTypeOnDelete, bool)`
+
+GetOnDeleteOk returns a tuple with the OnDelete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnDelete
+
+`func (o *CredentialType) SetOnDelete(v CredentialTypeOnDelete)`
+
+SetOnDelete sets OnDelete field to given value.
+
+### HasOnDelete
+
+`func (o *CredentialType) HasOnDelete() bool`
+
+HasOnDelete returns a boolean if a field has been set.
 
 ### GetTitle
 
