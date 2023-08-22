@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2023-08-22)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.4
     * **Note** bump `github.com/securego/gosec/v2` v2.16.0 => v2.17.0 [#242](https://github.com/patrickcping/pingone-go-sdk-v2/pull/242)
