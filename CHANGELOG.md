@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.4
+    * **Note** bump `github.com/securego/gosec/v2` v2.16.0 => v2.17.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.3.1 => v0.4.0
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.4.0](./credentials/CHANGELOG.md)
     * **Enhancement** Add parameters `OnDelete` to the `CredentialType` model. [#240](https://github.com/patrickcping/pingone-go-sdk-v2/pull/240)
     * **Enhancement** Add parameters `FileSupport` to the `CredentialTypeMetaDataFieldsInner` model. [#240](https://github.com/patrickcping/pingone-go-sdk-v2/pull/240)
