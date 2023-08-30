@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **AcsUrls** | **[]string** | A string that specifies the Assertion Consumer Service URLs. The first URL in the list is used as default (there must be at least one URL). This is a required property. | 
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
 **AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is true. | [optional] 
+**EnableRequestedAuthnContext** | Pointer to **bool** | Indicates whether &#x60;requestedAuthnContext&#x60; is taken into account in policy decision-making during authentication. | [optional] 
 **IdpSigning** | [**ApplicationWSFEDAllOfIdpSigning**](ApplicationWSFEDAllOfIdpSigning.md) |  | 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
 **ResponseSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False. | [optional] 
@@ -489,6 +490,31 @@ SetAssertionSigned sets AssertionSigned field to given value.
 `func (o *UpdateApplicationRequest) HasAssertionSigned() bool`
 
 HasAssertionSigned returns a boolean if a field has been set.
+
+### GetEnableRequestedAuthnContext
+
+`func (o *UpdateApplicationRequest) GetEnableRequestedAuthnContext() bool`
+
+GetEnableRequestedAuthnContext returns the EnableRequestedAuthnContext field if non-nil, zero value otherwise.
+
+### GetEnableRequestedAuthnContextOk
+
+`func (o *UpdateApplicationRequest) GetEnableRequestedAuthnContextOk() (*bool, bool)`
+
+GetEnableRequestedAuthnContextOk returns a tuple with the EnableRequestedAuthnContext field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableRequestedAuthnContext
+
+`func (o *UpdateApplicationRequest) SetEnableRequestedAuthnContext(v bool)`
+
+SetEnableRequestedAuthnContext sets EnableRequestedAuthnContext field to given value.
+
+### HasEnableRequestedAuthnContext
+
+`func (o *UpdateApplicationRequest) HasEnableRequestedAuthnContext() bool`
+
+HasEnableRequestedAuthnContext returns a boolean if a field has been set.
 
 ### GetIdpSigning
 

@@ -27,6 +27,8 @@ type ApplicationSAMLAllOf struct {
 	AssertionDuration int32 `json:"assertionDuration"`
 	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
 	AssertionSigned *bool `json:"assertionSigned,omitempty"`
+	// Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
+	EnableRequestedAuthnContext *bool `json:"enableRequestedAuthnContext,omitempty"`
 	IdpSigning *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
 	// A string that specifies the format of the Subject NameID attibute in the SAML assertion
 	NameIdFormat *string `json:"nameIdFormat,omitempty"`
@@ -174,6 +176,38 @@ func (o *ApplicationSAMLAllOf) HasAssertionSigned() bool {
 // SetAssertionSigned gets a reference to the given bool and assigns it to the AssertionSigned field.
 func (o *ApplicationSAMLAllOf) SetAssertionSigned(v bool) {
 	o.AssertionSigned = &v
+}
+
+// GetEnableRequestedAuthnContext returns the EnableRequestedAuthnContext field value if set, zero value otherwise.
+func (o *ApplicationSAMLAllOf) GetEnableRequestedAuthnContext() bool {
+	if o == nil || IsNil(o.EnableRequestedAuthnContext) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableRequestedAuthnContext
+}
+
+// GetEnableRequestedAuthnContextOk returns a tuple with the EnableRequestedAuthnContext field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAMLAllOf) GetEnableRequestedAuthnContextOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableRequestedAuthnContext) {
+		return nil, false
+	}
+	return o.EnableRequestedAuthnContext, true
+}
+
+// HasEnableRequestedAuthnContext returns a boolean if a field has been set.
+func (o *ApplicationSAMLAllOf) HasEnableRequestedAuthnContext() bool {
+	if o != nil && !IsNil(o.EnableRequestedAuthnContext) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableRequestedAuthnContext gets a reference to the given bool and assigns it to the EnableRequestedAuthnContext field.
+func (o *ApplicationSAMLAllOf) SetEnableRequestedAuthnContext(v bool) {
+	o.EnableRequestedAuthnContext = &v
 }
 
 // GetIdpSigning returns the IdpSigning field value if set, zero value otherwise.
@@ -473,6 +507,9 @@ func (o ApplicationSAMLAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize["assertionDuration"] = o.AssertionDuration
 	if !IsNil(o.AssertionSigned) {
 		toSerialize["assertionSigned"] = o.AssertionSigned
+	}
+	if !IsNil(o.EnableRequestedAuthnContext) {
+		toSerialize["enableRequestedAuthnContext"] = o.EnableRequestedAuthnContext
 	}
 	if !IsNil(o.IdpSigning) {
 		toSerialize["idpSigning"] = o.IdpSigning

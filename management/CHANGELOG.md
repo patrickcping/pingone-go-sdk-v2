@@ -1,3 +1,7 @@
+# v0.27.0 (Unreleased)
+
+* **Enhancement** Added `EnableRequestedAuthnContext` to the `ApplicationSAML` and `ApplicationSAMLAllOf` data models. [#245](https://github.com/patrickcping/pingone-go-sdk-v2/pull/245)
+
 # v0.26.0 (2023-08-15)
 
 * **Bug** Fixed inclusion of `FormManagementApi` and `RecaptchaConfigurationApi` API to the client. [#235](https://github.com/patrickcping/pingone-go-sdk-v2/pull/235)

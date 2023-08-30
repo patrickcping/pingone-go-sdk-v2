@@ -812,6 +812,9 @@ components:
             assertionSigned:
               type: boolean
               description: A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
+            enableRequestedAuthnContext:
+              type: boolean
+              description: Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
             idpSigning:
               type: object
               properties:
