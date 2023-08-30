@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.27.0](./management/CHANGELOG.md)
+    * **Enhancement** Added `EnableRequestedAuthnContext` to the `ApplicationSAML` and `ApplicationSAMLAllOf` data models.
+
 # Release (2023-08-22)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.4

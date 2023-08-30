@@ -30318,6 +30318,10 @@ components:
           description: A boolean that specifies whether the SAML assertion itself
             should be signed. The default value is true.
           type: boolean
+        enableRequestedAuthnContext:
+          description: Indicates whether `requestedAuthnContext` is taken into account
+            in policy decision-making during authentication.
+          type: boolean
         idpSigning:
           $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigning'
         nameIdFormat:
