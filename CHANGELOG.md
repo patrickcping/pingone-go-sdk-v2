@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.5
+    * **Note** bump `github.com/golangci/golangci-lint` v1.54.1 => v1.54.2
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.26.0 => v0.27.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.27.0](./management/CHANGELOG.md)
     * **Enhancement** Added `EnableRequestedAuthnContext` to the `ApplicationSAML` and `ApplicationSAMLAllOf` data models. [#245](https://github.com/patrickcping/pingone-go-sdk-v2/pull/245)
 
