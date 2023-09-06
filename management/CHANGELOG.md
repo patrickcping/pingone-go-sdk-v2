@@ -11,7 +11,7 @@
 * **Enhancement** Added default value to the `ResponseSigned` attributes on the `ApplicationSAML` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
 * **Enhancement** Added support for the `AuthnRequestSigned` attribute on the `ApplicationSAMLAllOfSpVerification` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
 * **Enhancement** Added support for the `Algorithm` attribute on the `IdentityProviderSAMLAllOfSpSigning` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
-* **Enhancement** Added support for new attributes `AdditionalRefreshTokenReplayProtectionEnabled`, `RequireSignedRequestObject`, `ParRequirement`, `ParTimeout` to the `ApplicationOIDC` data model.
+* **Enhancement** Added support for new attributes `AdditionalRefreshTokenReplayProtectionEnabled`, `RequireSignedRequestObject`, `ParRequirement`, `ParTimeout` to the `ApplicationOIDC` data model. [#248](https://github.com/patrickcping/pingone-go-sdk-v2/pull/248)
 
 # v0.27.0 (2023-09-05)
 
