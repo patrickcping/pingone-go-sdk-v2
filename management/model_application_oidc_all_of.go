@@ -19,6 +19,8 @@ var _ MappedNullable = &ApplicationOIDCAllOf{}
 
 // ApplicationOIDCAllOf struct for ApplicationOIDCAllOf
 type ApplicationOIDCAllOf struct {
+	// When set to `true` (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a `false` setting.
+	AdditionalRefreshTokenReplayProtectionEnabled *bool `json:"additionalRefreshTokenReplayProtectionEnabled,omitempty"`
 	// A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri).
 	AllowWildcardInRedirectUris *bool `json:"allowWildcardInRedirectUris,omitempty"`
 	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
@@ -50,6 +52,8 @@ type ApplicationOIDCAllOf struct {
 	RefreshTokenRollingGracePeriodDuration *int32 `json:"refreshTokenRollingGracePeriodDuration,omitempty"`
 	// A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
 	ResponseTypes []EnumApplicationOIDCResponseType `json:"responseTypes,omitempty"`
+	// Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If `false` or null (default), a signed request object is not required. Both `supportUnsignedRequestObject` and this property cannot be set to `true`.
+	RequireSignedRequestObject *bool `json:"requireSignedRequestObject,omitempty"`
 	// A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
 	SupportUnsignedRequestObject *bool `json:"supportUnsignedRequestObject,omitempty"`
 	// An array that specifies the list of labels associated with the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only applicable for creating worker applications.
@@ -57,6 +61,9 @@ type ApplicationOIDCAllOf struct {
 	// The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
 	TargetLinkUri *string `json:"targetLinkUri,omitempty"`
 	TokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
+	ParRequirement *EnumApplicationOIDCPARRequirement `json:"parRequirement,omitempty"`
+	// PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
+	ParTimeout *int32 `json:"parTimeout,omitempty"`
 }
 
 // NewApplicationOIDCAllOf instantiates a new ApplicationOIDCAllOf object
@@ -65,10 +72,16 @@ type ApplicationOIDCAllOf struct {
 // will change when the set of required properties is changed
 func NewApplicationOIDCAllOf(grantTypes []EnumApplicationOIDCGrantType, tokenEndpointAuthMethod EnumApplicationOIDCTokenAuthMethod) *ApplicationOIDCAllOf {
 	this := ApplicationOIDCAllOf{}
+	var additionalRefreshTokenReplayProtectionEnabled bool = true
+	this.AdditionalRefreshTokenReplayProtectionEnabled = &additionalRefreshTokenReplayProtectionEnabled
 	this.GrantTypes = grantTypes
 	var refreshTokenDuration int32 = 2592000
 	this.RefreshTokenDuration = &refreshTokenDuration
 	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
+	var parRequirement EnumApplicationOIDCPARRequirement = ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL
+	this.ParRequirement = &parRequirement
+	var parTimeout int32 = 60
+	this.ParTimeout = &parTimeout
 	return &this
 }
 
@@ -77,9 +90,47 @@ func NewApplicationOIDCAllOf(grantTypes []EnumApplicationOIDCGrantType, tokenEnd
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationOIDCAllOfWithDefaults() *ApplicationOIDCAllOf {
 	this := ApplicationOIDCAllOf{}
+	var additionalRefreshTokenReplayProtectionEnabled bool = true
+	this.AdditionalRefreshTokenReplayProtectionEnabled = &additionalRefreshTokenReplayProtectionEnabled
 	var refreshTokenDuration int32 = 2592000
 	this.RefreshTokenDuration = &refreshTokenDuration
+	var parRequirement EnumApplicationOIDCPARRequirement = ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL
+	this.ParRequirement = &parRequirement
+	var parTimeout int32 = 60
+	this.ParTimeout = &parTimeout
 	return &this
+}
+
+// GetAdditionalRefreshTokenReplayProtectionEnabled returns the AdditionalRefreshTokenReplayProtectionEnabled field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOf) GetAdditionalRefreshTokenReplayProtectionEnabled() bool {
+	if o == nil || IsNil(o.AdditionalRefreshTokenReplayProtectionEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AdditionalRefreshTokenReplayProtectionEnabled
+}
+
+// GetAdditionalRefreshTokenReplayProtectionEnabledOk returns a tuple with the AdditionalRefreshTokenReplayProtectionEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOf) GetAdditionalRefreshTokenReplayProtectionEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AdditionalRefreshTokenReplayProtectionEnabled) {
+		return nil, false
+	}
+	return o.AdditionalRefreshTokenReplayProtectionEnabled, true
+}
+
+// HasAdditionalRefreshTokenReplayProtectionEnabled returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOf) HasAdditionalRefreshTokenReplayProtectionEnabled() bool {
+	if o != nil && !IsNil(o.AdditionalRefreshTokenReplayProtectionEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdditionalRefreshTokenReplayProtectionEnabled gets a reference to the given bool and assigns it to the AdditionalRefreshTokenReplayProtectionEnabled field.
+func (o *ApplicationOIDCAllOf) SetAdditionalRefreshTokenReplayProtectionEnabled(v bool) {
+	o.AdditionalRefreshTokenReplayProtectionEnabled = &v
 }
 
 // GetAllowWildcardInRedirectUris returns the AllowWildcardInRedirectUris field value if set, zero value otherwise.
@@ -592,6 +643,38 @@ func (o *ApplicationOIDCAllOf) SetResponseTypes(v []EnumApplicationOIDCResponseT
 	o.ResponseTypes = v
 }
 
+// GetRequireSignedRequestObject returns the RequireSignedRequestObject field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOf) GetRequireSignedRequestObject() bool {
+	if o == nil || IsNil(o.RequireSignedRequestObject) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireSignedRequestObject
+}
+
+// GetRequireSignedRequestObjectOk returns a tuple with the RequireSignedRequestObject field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOf) GetRequireSignedRequestObjectOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequireSignedRequestObject) {
+		return nil, false
+	}
+	return o.RequireSignedRequestObject, true
+}
+
+// HasRequireSignedRequestObject returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOf) HasRequireSignedRequestObject() bool {
+	if o != nil && !IsNil(o.RequireSignedRequestObject) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireSignedRequestObject gets a reference to the given bool and assigns it to the RequireSignedRequestObject field.
+func (o *ApplicationOIDCAllOf) SetRequireSignedRequestObject(v bool) {
+	o.RequireSignedRequestObject = &v
+}
+
 // GetSupportUnsignedRequestObject returns the SupportUnsignedRequestObject field value if set, zero value otherwise.
 func (o *ApplicationOIDCAllOf) GetSupportUnsignedRequestObject() bool {
 	if o == nil || IsNil(o.SupportUnsignedRequestObject) {
@@ -712,6 +795,70 @@ func (o *ApplicationOIDCAllOf) SetTokenEndpointAuthMethod(v EnumApplicationOIDCT
 	o.TokenEndpointAuthMethod = v
 }
 
+// GetParRequirement returns the ParRequirement field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOf) GetParRequirement() EnumApplicationOIDCPARRequirement {
+	if o == nil || IsNil(o.ParRequirement) {
+		var ret EnumApplicationOIDCPARRequirement
+		return ret
+	}
+	return *o.ParRequirement
+}
+
+// GetParRequirementOk returns a tuple with the ParRequirement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOf) GetParRequirementOk() (*EnumApplicationOIDCPARRequirement, bool) {
+	if o == nil || IsNil(o.ParRequirement) {
+		return nil, false
+	}
+	return o.ParRequirement, true
+}
+
+// HasParRequirement returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOf) HasParRequirement() bool {
+	if o != nil && !IsNil(o.ParRequirement) {
+		return true
+	}
+
+	return false
+}
+
+// SetParRequirement gets a reference to the given EnumApplicationOIDCPARRequirement and assigns it to the ParRequirement field.
+func (o *ApplicationOIDCAllOf) SetParRequirement(v EnumApplicationOIDCPARRequirement) {
+	o.ParRequirement = &v
+}
+
+// GetParTimeout returns the ParTimeout field value if set, zero value otherwise.
+func (o *ApplicationOIDCAllOf) GetParTimeout() int32 {
+	if o == nil || IsNil(o.ParTimeout) {
+		var ret int32
+		return ret
+	}
+	return *o.ParTimeout
+}
+
+// GetParTimeoutOk returns a tuple with the ParTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDCAllOf) GetParTimeoutOk() (*int32, bool) {
+	if o == nil || IsNil(o.ParTimeout) {
+		return nil, false
+	}
+	return o.ParTimeout, true
+}
+
+// HasParTimeout returns a boolean if a field has been set.
+func (o *ApplicationOIDCAllOf) HasParTimeout() bool {
+	if o != nil && !IsNil(o.ParTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetParTimeout gets a reference to the given int32 and assigns it to the ParTimeout field.
+func (o *ApplicationOIDCAllOf) SetParTimeout(v int32) {
+	o.ParTimeout = &v
+}
+
 func (o ApplicationOIDCAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -722,6 +869,9 @@ func (o ApplicationOIDCAllOf) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationOIDCAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AdditionalRefreshTokenReplayProtectionEnabled) {
+		toSerialize["additionalRefreshTokenReplayProtectionEnabled"] = o.AdditionalRefreshTokenReplayProtectionEnabled
+	}
 	if !IsNil(o.AllowWildcardInRedirectUris) {
 		toSerialize["allowWildcardInRedirectUris"] = o.AllowWildcardInRedirectUris
 	}
@@ -768,6 +918,9 @@ func (o ApplicationOIDCAllOf) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResponseTypes) {
 		toSerialize["responseTypes"] = o.ResponseTypes
 	}
+	if !IsNil(o.RequireSignedRequestObject) {
+		toSerialize["requireSignedRequestObject"] = o.RequireSignedRequestObject
+	}
 	if !IsNil(o.SupportUnsignedRequestObject) {
 		toSerialize["supportUnsignedRequestObject"] = o.SupportUnsignedRequestObject
 	}
@@ -778,6 +931,12 @@ func (o ApplicationOIDCAllOf) ToMap() (map[string]interface{}, error) {
 		toSerialize["targetLinkUri"] = o.TargetLinkUri
 	}
 	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
+	if !IsNil(o.ParRequirement) {
+		toSerialize["parRequirement"] = o.ParRequirement
+	}
+	if !IsNil(o.ParTimeout) {
+		toSerialize["parTimeout"] = o.ParTimeout
+	}
 	return toSerialize, nil
 }
 

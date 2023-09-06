@@ -23080,6 +23080,14 @@ components:
       - REFRESH_TOKEN
       - CLIENT_CREDENTIALS
       type: string
+    EnumApplicationOIDCPARRequirement:
+      default: OPTIONAL
+      description: Whether pushed authorization requests (PAR) are required. Options
+        are `REQUIRED` and `OPTIONAL`. The default value is `OPTIONAL`.
+      enum:
+      - REQUIRED
+      - OPTIONAL
+      type: string
     EnumApplicationOIDCPKCEOption:
       description: A string that specifies how PKCE request parameters are handled
         on the authorize request. Options are OPTIONAL PKCE code_challenge is optional
@@ -30533,6 +30541,13 @@ components:
       example: null
     ApplicationOIDC_allOf:
       properties:
+        additionalRefreshTokenReplayProtectionEnabled:
+          default: true
+          description: "When set to `true` (the default), if you attempt to reuse\
+            \ the refresh token, the authorization server immediately revokes the\
+            \ reused refresh token, as well as all descendant tokens. Setting this\
+            \ to null equates to a `false` setting."
+          type: boolean
         allowWildcardInRedirectUris:
           description: "A boolean to specify whether wildcards are allowed in redirect\
             \ URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri)."
@@ -30626,6 +30641,12 @@ components:
           items:
             $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
           type: array
+        requireSignedRequestObject:
+          description: "Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
+            \ parameter is required to be signed. If `false` or null (default), a\
+            \ signed request object is not required. Both `supportUnsignedRequestObject`\
+            \ and this property cannot be set to `true`."
+          type: boolean
         supportUnsignedRequestObject:
           description: "A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
             \ parameter JWT is allowed to be unsigned. If false or null (default),\
@@ -30646,6 +30667,15 @@ components:
           type: string
         tokenEndpointAuthMethod:
           $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
+        parRequirement:
+          $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
+        parTimeout:
+          default: 60
+          description: PAR timeout in seconds. Must be between `1` and `600`. The
+            default value is `60`.
+          maximum: 600
+          minimum: 1
+          type: integer
       required:
       - grantTypes
       - tokenEndpointAuthMethod

@@ -511,6 +511,7 @@ Class | Method | HTTP request | Description
  - [EnumApplicationAccessControlType](docs/EnumApplicationAccessControlType.md)
  - [EnumApplicationNativeGooglePlayVerificationType](docs/EnumApplicationNativeGooglePlayVerificationType.md)
  - [EnumApplicationOIDCGrantType](docs/EnumApplicationOIDCGrantType.md)
+ - [EnumApplicationOIDCPARRequirement](docs/EnumApplicationOIDCPARRequirement.md)
  - [EnumApplicationOIDCPKCEOption](docs/EnumApplicationOIDCPKCEOption.md)
  - [EnumApplicationOIDCResponseType](docs/EnumApplicationOIDCResponseType.md)
  - [EnumApplicationOIDCTokenAuthMethod](docs/EnumApplicationOIDCTokenAuthMethod.md)

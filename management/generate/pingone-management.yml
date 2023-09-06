@@ -84,6 +84,11 @@ components:
     EnumApplicationOIDCGrantType:
       type: string
       enum: [AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS]
+    EnumApplicationOIDCPARRequirement:
+      type: string
+      description: Whether pushed authorization requests (PAR) are required. Options are `REQUIRED` and `OPTIONAL`. The default value is `OPTIONAL`.
+      default: OPTIONAL
+      enum: [REQUIRED, OPTIONAL]
     EnumApplicationOIDCPKCEOption:
       type: string
       enum: [OPTIONAL, REQUIRED, S256_REQUIRED]
@@ -890,6 +895,10 @@ components:
         - $ref: '#/components/schemas/Application'
         - type: object
           properties:
+            additionalRefreshTokenReplayProtectionEnabled:
+              type: boolean
+              description: When set to `true` (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a `false` setting.
+              default: true
             allowWildcardInRedirectUris:
               type: boolean
               description: A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri).
@@ -1031,6 +1040,9 @@ components:
               description: A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
               items:
                 $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
+            requireSignedRequestObject:
+              type: boolean
+              description: Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If `false` or null (default), a signed request object is not required. Both `supportUnsignedRequestObject` and this property cannot be set to `true`.
             supportUnsignedRequestObject:
               type: boolean
               description: A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed.
@@ -1044,6 +1056,14 @@ components:
               description: The URI for the application. If specified, PingOne will redirect application users to this URI after a user is authenticated. In the PingOne admin console, this becomes the value of the `target_link_uri` parameter used for the Initiate Single Sign-On URL field.
             tokenEndpointAuthMethod:
               $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
+            parRequirement:
+              $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
+            parTimeout:
+              type: integer
+              description: PAR timeout in seconds. Must be between `1` and `600`. The default value is `60`.
+              minimum: 1
+              maximum: 600
+              default: 60
           required:
             - grantTypes
             - tokenEndpointAuthMethod
