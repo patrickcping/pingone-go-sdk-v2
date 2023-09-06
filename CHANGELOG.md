@@ -1,3 +1,18 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.28.0](./management/CHANGELOG.md)
+    * **Breaking Change** Removed deprecated enum values `SHA224withRSA` and `SHA224withECDSA` from the `EnumCertificateKeySignagureAlgorithm` model.
+    * **Enhancement** Added enum values to `EnumApplicationWSFEDIDPSigningAlgorithm` model.
+    * **Enhancement** Added default value to model attributes that use the `EnumApplicationSAMLSloBinding` model.
+    * **Enhancement** Added default value to model attributes that use the `EnumGatewayTypeLDAPSecurity` model.
+    * **Enhancement** Added default value to model attributes that use the `EnumIdentityProvider` model.
+    * **Enhancement** Added default value to model attributes that use the `EnumSchemaAttributeType` model.
+    * **Enhancement** Added default value to model attributes that use the `EnumTemplateContentPushCategory` model.
+    * **Enhancement** Added default value to the `AssertionSigned` attributes on the `ApplicationSAML` model.
+    * **Enhancement** Added default value to the `ResponseSigned` attributes on the `ApplicationSAML` model.
+    * **Enhancement** Added support for the `AuthnRequestSigned` attribute on the `ApplicationSAMLAllOfSpVerification` model.
+    * **Enhancement** Added support for the `Algorithm` attribute on the `IdentityProviderSAMLAllOfSpSigning` model.
+
 # Release (2023-09-05)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.5

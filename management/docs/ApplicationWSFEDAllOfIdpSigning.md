@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Algorithm** | **string** | The signature algorithm to be used for signing. Algorithms upported RSA_SHA 256, 384, 512, and ECDSA_SHA 1, 224, 256, 384, 512. | 
+**Algorithm** | [**EnumApplicationWSFEDIDPSigningAlgorithm**](EnumApplicationWSFEDIDPSigningAlgorithm.md) |  | 
 **Key** | [**ApplicationWSFEDAllOfIdpSigningKey**](ApplicationWSFEDAllOfIdpSigningKey.md) |  | 
 
 ## Methods
 
 ### NewApplicationWSFEDAllOfIdpSigning
 
-`func NewApplicationWSFEDAllOfIdpSigning(algorithm string, key ApplicationWSFEDAllOfIdpSigningKey, ) *ApplicationWSFEDAllOfIdpSigning`
+`func NewApplicationWSFEDAllOfIdpSigning(algorithm EnumApplicationWSFEDIDPSigningAlgorithm, key ApplicationWSFEDAllOfIdpSigningKey, ) *ApplicationWSFEDAllOfIdpSigning`
 
 NewApplicationWSFEDAllOfIdpSigning instantiates a new ApplicationWSFEDAllOfIdpSigning object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAlgorithm
 
-`func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithm() string`
+`func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithm() EnumApplicationWSFEDIDPSigningAlgorithm`
 
 GetAlgorithm returns the Algorithm field if non-nil, zero value otherwise.
 
 ### GetAlgorithmOk
 
-`func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithmOk() (*string, bool)`
+`func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithmOk() (*EnumApplicationWSFEDIDPSigningAlgorithm, bool)`
 
 GetAlgorithmOk returns a tuple with the Algorithm field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlgorithm
 
-`func (o *ApplicationWSFEDAllOfIdpSigning) SetAlgorithm(v string)`
+`func (o *ApplicationWSFEDAllOfIdpSigning) SetAlgorithm(v EnumApplicationWSFEDIDPSigningAlgorithm)`
 
 SetAlgorithm sets Algorithm field to given value.
 

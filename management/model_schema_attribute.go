@@ -65,6 +65,8 @@ func NewSchemaAttribute(enabled bool, name string, type_ EnumSchemaAttributeType
 // but it doesn't guarantee that properties required by API are set
 func NewSchemaAttributeWithDefaults() *SchemaAttribute {
 	this := SchemaAttribute{}
+	var type_ EnumSchemaAttributeType = ENUMSCHEMAATTRIBUTETYPE_STRING
+	this.Type = type_
 	return &this
 }
 

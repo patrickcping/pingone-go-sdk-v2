@@ -19,6 +19,7 @@ var _ MappedNullable = &IdentityProviderSAMLAllOfSpSigning{}
 
 // IdentityProviderSAMLAllOfSpSigning struct for IdentityProviderSAMLAllOfSpSigning
 type IdentityProviderSAMLAllOfSpSigning struct {
+	Algorithm *EnumIdentityProviderSAMLSigningAlgorithm `json:"algorithm,omitempty"`
 	Key IdentityProviderSAMLAllOfSpSigningKey `json:"key"`
 }
 
@@ -38,6 +39,38 @@ func NewIdentityProviderSAMLAllOfSpSigning(key IdentityProviderSAMLAllOfSpSignin
 func NewIdentityProviderSAMLAllOfSpSigningWithDefaults() *IdentityProviderSAMLAllOfSpSigning {
 	this := IdentityProviderSAMLAllOfSpSigning{}
 	return &this
+}
+
+// GetAlgorithm returns the Algorithm field value if set, zero value otherwise.
+func (o *IdentityProviderSAMLAllOfSpSigning) GetAlgorithm() EnumIdentityProviderSAMLSigningAlgorithm {
+	if o == nil || IsNil(o.Algorithm) {
+		var ret EnumIdentityProviderSAMLSigningAlgorithm
+		return ret
+	}
+	return *o.Algorithm
+}
+
+// GetAlgorithmOk returns a tuple with the Algorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderSAMLAllOfSpSigning) GetAlgorithmOk() (*EnumIdentityProviderSAMLSigningAlgorithm, bool) {
+	if o == nil || IsNil(o.Algorithm) {
+		return nil, false
+	}
+	return o.Algorithm, true
+}
+
+// HasAlgorithm returns a boolean if a field has been set.
+func (o *IdentityProviderSAMLAllOfSpSigning) HasAlgorithm() bool {
+	if o != nil && !IsNil(o.Algorithm) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlgorithm gets a reference to the given EnumIdentityProviderSAMLSigningAlgorithm and assigns it to the Algorithm field.
+func (o *IdentityProviderSAMLAllOfSpSigning) SetAlgorithm(v EnumIdentityProviderSAMLSigningAlgorithm) {
+	o.Algorithm = &v
 }
 
 // GetKey returns the Key field value
@@ -74,6 +107,9 @@ func (o IdentityProviderSAMLAllOfSpSigning) MarshalJSON() ([]byte, error) {
 
 func (o IdentityProviderSAMLAllOfSpSigning) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Algorithm) {
+		toSerialize["algorithm"] = o.Algorithm
+	}
 	toSerialize["key"] = o.Key
 	return toSerialize, nil
 }

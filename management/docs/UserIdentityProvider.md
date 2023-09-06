@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | A mutable string that identifies the external identity provider used to authenticate the user. If not provided, PingOne is the identity provider. This attribute is required if the identity provider is authoritative for just-in-time user provisioning. | [optional] 
-**Type** | Pointer to [**EnumIdentityProvider**](EnumIdentityProvider.md) |  | [optional] 
+**Type** | Pointer to [**EnumIdentityProvider**](EnumIdentityProvider.md) |  | [optional] [default to ENUMIDENTITYPROVIDER_PING_ONE]
 
 ## Methods
 

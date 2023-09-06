@@ -1,4 +1,4 @@
-# EnumCertificateKeySignagureAlgorithm
+# EnumIdentityProviderSAMLSigningAlgorithm
 
 ## Enum
 
@@ -13,7 +13,7 @@
 
 * `SHA384WITH_ECDSA` (value: `"SHA384withECDSA"`)
 
-* `SHA512WITH_ECDSA` (value: `"SHA512withECDSA"`)
+* `SHA512EITH_EDCSA` (value: `"SHA512eithEDCSA"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

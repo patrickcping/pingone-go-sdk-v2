@@ -50,6 +50,8 @@ func NewTemplateContentPush(locale string, deliveryMethod EnumTemplateContentDel
 	this.DeliveryMethod = deliveryMethod
 	this.Title = title
 	this.Body = body
+	var pushCategory EnumTemplateContentPushCategory = ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS
+	this.PushCategory = &pushCategory
 	return &this
 }
 
@@ -58,6 +60,8 @@ func NewTemplateContentPush(locale string, deliveryMethod EnumTemplateContentDel
 // but it doesn't guarantee that properties required by API are set
 func NewTemplateContentPushWithDefaults() *TemplateContentPush {
 	this := TemplateContentPush{}
+	var pushCategory EnumTemplateContentPushCategory = ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS
+	this.PushCategory = &pushCategory
 	return &this
 }
 

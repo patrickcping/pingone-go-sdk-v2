@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Title** | **string** | The push title (maximum 200 characters). If supported, this can include variables. | 
 **Body** | **string** | The push text (maximum 400 characters for push text). If supported, this can include variables. | 
-**PushCategory** | Pointer to [**EnumTemplateContentPushCategory**](EnumTemplateContentPushCategory.md) |  | [optional] 
+**PushCategory** | Pointer to [**EnumTemplateContentPushCategory**](EnumTemplateContentPushCategory.md) |  | [optional] [default to ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS]
 
 ## Methods
 
