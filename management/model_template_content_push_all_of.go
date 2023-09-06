@@ -34,6 +34,8 @@ func NewTemplateContentPushAllOf(title string, body string) *TemplateContentPush
 	this := TemplateContentPushAllOf{}
 	this.Title = title
 	this.Body = body
+	var pushCategory EnumTemplateContentPushCategory = ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS
+	this.PushCategory = &pushCategory
 	return &this
 }
 
@@ -42,6 +44,8 @@ func NewTemplateContentPushAllOf(title string, body string) *TemplateContentPush
 // but it doesn't guarantee that properties required by API are set
 func NewTemplateContentPushAllOfWithDefaults() *TemplateContentPushAllOf {
 	this := TemplateContentPushAllOf{}
+	var pushCategory EnumTemplateContentPushCategory = ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS
+	this.PushCategory = &pushCategory
 	return &this
 }
 

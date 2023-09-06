@@ -1,4 +1,4 @@
-# EnumCertificateKeySignagureAlgorithm
+# EnumApplicationWSFEDIDPSigningAlgorithm
 
 ## Enum
 

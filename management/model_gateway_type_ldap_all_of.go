@@ -43,6 +43,8 @@ func NewGatewayTypeLDAPAllOf(bindDN string, bindPassword string, serversHostAndP
 	this := GatewayTypeLDAPAllOf{}
 	this.BindDN = bindDN
 	this.BindPassword = bindPassword
+	var connectionSecurity EnumGatewayTypeLDAPSecurity = ENUMGATEWAYTYPELDAPSECURITY_NONE
+	this.ConnectionSecurity = &connectionSecurity
 	this.ServersHostAndPort = serversHostAndPort
 	this.Vendor = vendor
 	return &this
@@ -53,6 +55,8 @@ func NewGatewayTypeLDAPAllOf(bindDN string, bindPassword string, serversHostAndP
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayTypeLDAPAllOfWithDefaults() *GatewayTypeLDAPAllOf {
 	this := GatewayTypeLDAPAllOf{}
+	var connectionSecurity EnumGatewayTypeLDAPSecurity = ENUMGATEWAYTYPELDAPSECURITY_NONE
+	this.ConnectionSecurity = &connectionSecurity
 	return &this
 }
 

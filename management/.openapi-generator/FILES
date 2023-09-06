@@ -196,6 +196,7 @@ docs/EnumApplicationProtocol.md
 docs/EnumApplicationSAMLSloBinding.md
 docs/EnumApplicationTags.md
 docs/EnumApplicationType.md
+docs/EnumApplicationWSFEDIDPSigningAlgorithm.md
 docs/EnumApplicationWSFEDKerberosGatewayType.md
 docs/EnumAttributeMappingType.md
 docs/EnumBrandingLogoType.md
@@ -239,6 +240,7 @@ docs/EnumIdentityProviderExt.md
 docs/EnumIdentityProviderOIDCTokenAuthMethod.md
 docs/EnumIdentityProviderSAMLSLOBinding.md
 docs/EnumIdentityProviderSAMLSSOBinding.md
+docs/EnumIdentityProviderSAMLSigningAlgorithm.md
 docs/EnumImageFormat.md
 docs/EnumKeyRotationPolicyAlgorithm.md
 docs/EnumKeyRotationPolicySigAlgorithm.md
@@ -707,6 +709,7 @@ model_enum_application_saml_slo_binding.go
 model_enum_application_tags.go
 model_enum_application_type.go
 model_enum_application_wsfed_kerberos_gateway_type.go
+model_enum_application_wsfedidp_signing_algorithm.go
 model_enum_attribute_mapping_type.go
 model_enum_branding_logo_type.go
 model_enum_branding_theme_background_type.go
@@ -747,6 +750,7 @@ model_enum_identity_provider_attribute_mapping_type.go
 model_enum_identity_provider_attribute_mapping_update.go
 model_enum_identity_provider_ext.go
 model_enum_identity_provider_oidc_token_auth_method.go
+model_enum_identity_provider_saml_signing_algorithm.go
 model_enum_identity_provider_samlslo_binding.go
 model_enum_identity_provider_samlsso_binding.go
 model_enum_image_format.go

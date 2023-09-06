@@ -61,6 +61,8 @@ func NewGatewayTypeLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN
 	this.Enabled = enabled
 	this.BindDN = bindDN
 	this.BindPassword = bindPassword
+	var connectionSecurity EnumGatewayTypeLDAPSecurity = ENUMGATEWAYTYPELDAPSECURITY_NONE
+	this.ConnectionSecurity = &connectionSecurity
 	this.ServersHostAndPort = serversHostAndPort
 	this.Vendor = vendor
 	return &this
@@ -71,6 +73,8 @@ func NewGatewayTypeLDAP(name string, type_ EnumGatewayType, enabled bool, bindDN
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayTypeLDAPWithDefaults() *GatewayTypeLDAP {
 	this := GatewayTypeLDAP{}
+	var connectionSecurity EnumGatewayTypeLDAPSecurity = ENUMGATEWAYTYPELDAPSECURITY_NONE
+	this.ConnectionSecurity = &connectionSecurity
 	return &this
 }
 

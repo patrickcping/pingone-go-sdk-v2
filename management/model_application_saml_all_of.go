@@ -25,14 +25,14 @@ type ApplicationSAMLAllOf struct {
 	AcsUrls []string `json:"acsUrls"`
 	// An integer that specifies the assertion validity duration in seconds. This is a required property.
 	AssertionDuration int32 `json:"assertionDuration"`
-	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is true.
+	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is `true`.
 	AssertionSigned *bool `json:"assertionSigned,omitempty"`
 	// Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
 	EnableRequestedAuthnContext *bool `json:"enableRequestedAuthnContext,omitempty"`
 	IdpSigning *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
 	// A string that specifies the format of the Subject NameID attibute in the SAML assertion
 	NameIdFormat *string `json:"nameIdFormat,omitempty"`
-	// A boolean that specifies whether the SAML assertion response itself should be signed. The default value is False.
+	// A boolean that specifies whether the SAML assertion response itself should be signed. The default value is `false`.
 	ResponseSigned *bool `json:"responseSigned,omitempty"`
 	SloBinding *EnumApplicationSAMLSloBinding `json:"sloBinding,omitempty"`
 	// A string that specifies the logout endpoint URL. This is an optional property. However, if a sloEndpoint logout endpoint URL is not defined, logout actions result in an error.
@@ -54,6 +54,12 @@ func NewApplicationSAMLAllOf(acsUrls []string, assertionDuration int32, spEntity
 	this := ApplicationSAMLAllOf{}
 	this.AcsUrls = acsUrls
 	this.AssertionDuration = assertionDuration
+	var assertionSigned bool = true
+	this.AssertionSigned = &assertionSigned
+	var responseSigned bool = false
+	this.ResponseSigned = &responseSigned
+	var sloBinding EnumApplicationSAMLSloBinding = ENUMAPPLICATIONSAMLSLOBINDING_POST
+	this.SloBinding = &sloBinding
 	this.SpEntityId = spEntityId
 	return &this
 }
@@ -63,6 +69,12 @@ func NewApplicationSAMLAllOf(acsUrls []string, assertionDuration int32, spEntity
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationSAMLAllOfWithDefaults() *ApplicationSAMLAllOf {
 	this := ApplicationSAMLAllOf{}
+	var assertionSigned bool = true
+	this.AssertionSigned = &assertionSigned
+	var responseSigned bool = false
+	this.ResponseSigned = &responseSigned
+	var sloBinding EnumApplicationSAMLSloBinding = ENUMAPPLICATIONSAMLSLOBINDING_POST
+	this.SloBinding = &sloBinding
 	return &this
 }
 

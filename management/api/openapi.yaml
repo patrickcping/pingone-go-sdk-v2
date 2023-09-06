@@ -23114,6 +23114,7 @@ components:
       - EXTERNAL_LINK
       type: string
     EnumApplicationSAMLSloBinding:
+      default: HTTP_POST
       description: A string that specifies the binding protocol to be used for the
         logout response. Options are HTTP_REDIRECT or HTTP_POST. The default is HTTP_POST;
         existing configurations with no data default to HTTP_POST.
@@ -23142,8 +23143,16 @@ components:
       - PORTAL_LINK_APP
       type: string
     EnumApplicationWSFEDIDPSigningAlgorithm:
-      description: "The signature algorithm to be used for signing. Algorithms upported\
-        \ RSA_SHA 256, 384, 512, and ECDSA_SHA 1, 224, 256, 384, 512."
+      description: "The signature algorithm to be used for signing. Algorithms supported\
+        \ `SHA256withRSA`, `SHA384withRSA`, `SHA512withRSA`, `SHA256withECDSA`, `SHA384withECDSA`,\
+        \ and `SHA512withECDSA`."
+      enum:
+      - SHA256withRSA
+      - SHA384withRSA
+      - SHA512withRSA
+      - SHA256withECDSA
+      - SHA384withECDSA
+      - SHA512withECDSA
       type: string
     EnumApplicationWSFEDKerberosGatewayType:
       description: The gateway type. This must be "LDAP".
@@ -23195,15 +23204,12 @@ components:
       type: string
     EnumCertificateKeySignagureAlgorithm:
       description: "Specifies the signature algorithm of the key. For RSA keys, options\
-        \ are `SHA224withRSA`, `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`.\
-        \ For elliptical curve (EC) keys, options are `SHA224withECDSA`, `SHA256withECDSA`,\
-        \ `SHA384withECDSA`, and `SHA512withECDSA`"
+        \ are `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`. For elliptical\
+        \ curve (EC) keys, options are `SHA256withECDSA`, `SHA384withECDSA`, and `SHA512withECDSA`"
       enum:
-      - SHA224withRSA
       - SHA256withRSA
       - SHA384withRSA
       - SHA512withRSA
-      - SHA224withECDSA
       - SHA256withECDSA
       - SHA384withECDSA
       - SHA512withECDSA
@@ -23371,6 +23377,7 @@ components:
       - AUTHENTICATION
       type: string
     EnumGatewayTypeLDAPSecurity:
+      default: None
       description: "A string that specifies the connection security type. Options\
         \ are None, TLS, and StartTLS. The default value is None."
       enum:
@@ -23427,6 +23434,7 @@ components:
       - UNHEALTHY
       type: string
     EnumIdentityProvider:
+      default: PING_ONE
       description: A string that identifies the type of identity provider used to
         authenticate the user. The default value of `PING_ONE` is set when a value
         for identityProvider.id is not provided. The `PING_ONE` value is the default
@@ -23490,6 +23498,19 @@ components:
       - CLIENT_SECRET_BASIC
       - CLIENT_SECRET_POST
       - NONE
+      type: string
+    EnumIdentityProviderSAMLSigningAlgorithm:
+      description: "The signing key algorithm used by PingOne. Value will depend on\
+        \ which key algorithm and signature algorithm you chose when creating your\
+        \ signing key. Possible values are `SHA256withRSA`, `SHA384withRSA`, `SHA512withRSA`,\
+        \ `SHA256withECDSA`, `SHA384withECDSA`, `SHA512eithEDCSA`."
+      enum:
+      - SHA256withRSA
+      - SHA384withRSA
+      - SHA512withRSA
+      - SHA256withECDSA
+      - SHA384withECDSA
+      - SHA512eithEDCSA
       type: string
     EnumIdentityProviderSAMLSSOBinding:
       description: A string that specifies the binding for the authentication request.
@@ -23791,6 +23812,7 @@ components:
       - CUSTOM
       type: string
     EnumSchemaAttributeType:
+      default: STRING
       description: "A string that specifies the the type of the attribute. It may\
         \ be one of STRING, JSON, BOOLEAN, or COMPLEX. If the type is not provided\
         \ during creation, then it defaults to STRING. Complex and boolean attributes\
@@ -23877,6 +23899,7 @@ components:
       - Push
       type: string
     EnumTemplateContentPushCategory:
+      default: BANNER_BUTTONS
       description: |
         For Push content, you can specify what type of banner should be displayed to the user. The available options are:
         * `BANNER_BUTTONS` - the banner contains both Approve and Deny buttons
@@ -24674,9 +24697,9 @@ components:
           description: Specifies the distinguished name of the certificate issuer.
           type: string
         keyLength:
-          description: "Specifies the key length. For RSA keys, options are 2048,\
-            \ 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256,\
-            \ and 384."
+          description: "The key length. For RSA keys, options are `2048`, `3072`,\
+            \ `4096`, and `7680`. For elliptical curve (EC) keys, options are `224`,\
+            \ `256`, `384`, and `521`."
           type: integer
         name:
           description: Specifies the resource name.
@@ -30290,6 +30313,11 @@ components:
       example: null
     ApplicationSAML_allOf_spVerification:
       properties:
+        authnRequestSigned:
+          default: false
+          description: Whether the Authn Request signing should be enforced. Default
+            is `false`.
+          type: boolean
         certificates:
           items:
             $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification_certificates'
@@ -30315,8 +30343,9 @@ components:
             seconds. This is a required property.
           type: integer
         assertionSigned:
+          default: true
           description: A boolean that specifies whether the SAML assertion itself
-            should be signed. The default value is true.
+            should be signed. The default value is `true`.
           type: boolean
         enableRequestedAuthnContext:
           description: Indicates whether `requestedAuthnContext` is taken into account
@@ -30329,8 +30358,9 @@ components:
             in the SAML assertion
           type: string
         responseSigned:
+          default: false
           description: A boolean that specifies whether the SAML assertion response
-            itself should be signed. The default value is False.
+            itself should be signed. The default value is `false`.
           type: boolean
         sloBinding:
           $ref: '#/components/schemas/EnumApplicationSAMLSloBinding'
@@ -30711,9 +30741,7 @@ components:
         provider (IdP).
       properties:
         algorithm:
-          description: "The signature algorithm to be used for signing. Algorithms\
-            \ upported RSA_SHA 256, 384, 512, and ECDSA_SHA 1, 224, 256, 384, 512."
-          type: string
+          $ref: '#/components/schemas/EnumApplicationWSFEDIDPSigningAlgorithm'
         key:
           $ref: '#/components/schemas/ApplicationWSFED_allOf_idpSigning_key'
       required:
@@ -33591,6 +33619,8 @@ components:
       example: null
     IdentityProviderSAML_allOf_spSigning:
       properties:
+        algorithm:
+          $ref: '#/components/schemas/EnumIdentityProviderSAMLSigningAlgorithm'
         key:
           $ref: '#/components/schemas/IdentityProviderSAML_allOf_spSigning_key'
       required:

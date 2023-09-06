@@ -19,8 +19,7 @@ var _ MappedNullable = &ApplicationWSFEDAllOfIdpSigning{}
 
 // ApplicationWSFEDAllOfIdpSigning Contains the information about the signing of requests by the identity provider (IdP).
 type ApplicationWSFEDAllOfIdpSigning struct {
-	// The signature algorithm to be used for signing. Algorithms upported RSA_SHA 256, 384, 512, and ECDSA_SHA 1, 224, 256, 384, 512.
-	Algorithm string `json:"algorithm"`
+	Algorithm EnumApplicationWSFEDIDPSigningAlgorithm `json:"algorithm"`
 	Key ApplicationWSFEDAllOfIdpSigningKey `json:"key"`
 }
 
@@ -28,7 +27,7 @@ type ApplicationWSFEDAllOfIdpSigning struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationWSFEDAllOfIdpSigning(algorithm string, key ApplicationWSFEDAllOfIdpSigningKey) *ApplicationWSFEDAllOfIdpSigning {
+func NewApplicationWSFEDAllOfIdpSigning(algorithm EnumApplicationWSFEDIDPSigningAlgorithm, key ApplicationWSFEDAllOfIdpSigningKey) *ApplicationWSFEDAllOfIdpSigning {
 	this := ApplicationWSFEDAllOfIdpSigning{}
 	this.Algorithm = algorithm
 	this.Key = key
@@ -44,9 +43,9 @@ func NewApplicationWSFEDAllOfIdpSigningWithDefaults() *ApplicationWSFEDAllOfIdpS
 }
 
 // GetAlgorithm returns the Algorithm field value
-func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithm() string {
+func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithm() EnumApplicationWSFEDIDPSigningAlgorithm {
 	if o == nil {
-		var ret string
+		var ret EnumApplicationWSFEDIDPSigningAlgorithm
 		return ret
 	}
 
@@ -55,7 +54,7 @@ func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithm() string {
 
 // GetAlgorithmOk returns a tuple with the Algorithm field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithmOk() (*string, bool) {
+func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithmOk() (*EnumApplicationWSFEDIDPSigningAlgorithm, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +62,7 @@ func (o *ApplicationWSFEDAllOfIdpSigning) GetAlgorithmOk() (*string, bool) {
 }
 
 // SetAlgorithm sets field value
-func (o *ApplicationWSFEDAllOfIdpSigning) SetAlgorithm(v string) {
+func (o *ApplicationWSFEDAllOfIdpSigning) SetAlgorithm(v EnumApplicationWSFEDIDPSigningAlgorithm) {
 	o.Algorithm = v
 }
 

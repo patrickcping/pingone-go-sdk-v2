@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AuthnRequestSigned** | Pointer to **bool** | Whether the Authn Request signing should be enforced. Default is &#x60;false&#x60;. | [optional] [default to false]
 **Certificates** | [**[]ApplicationSAMLAllOfSpVerificationCertificates**](ApplicationSAMLAllOfSpVerificationCertificates.md) |  | 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewApplicationSAMLAllOfSpVerificationWithDefaults instantiates a new ApplicationSAMLAllOfSpVerification object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAuthnRequestSigned
+
+`func (o *ApplicationSAMLAllOfSpVerification) GetAuthnRequestSigned() bool`
+
+GetAuthnRequestSigned returns the AuthnRequestSigned field if non-nil, zero value otherwise.
+
+### GetAuthnRequestSignedOk
+
+`func (o *ApplicationSAMLAllOfSpVerification) GetAuthnRequestSignedOk() (*bool, bool)`
+
+GetAuthnRequestSignedOk returns a tuple with the AuthnRequestSigned field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthnRequestSigned
+
+`func (o *ApplicationSAMLAllOfSpVerification) SetAuthnRequestSigned(v bool)`
+
+SetAuthnRequestSigned sets AuthnRequestSigned field to given value.
+
+### HasAuthnRequestSigned
+
+`func (o *ApplicationSAMLAllOfSpVerification) HasAuthnRequestSigned() bool`
+
+HasAuthnRequestSigned returns a boolean if a field has been set.
 
 ### GetCertificates
 

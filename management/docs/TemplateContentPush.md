@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Variant** | Pointer to **string** | Holds the unique user-defined name for each content variant that uses the same template + &#x60;deliveryMethod&#x60; + &#x60;locale&#x60; combination. This property is case insensitive and has a limit of 100 characters. For more information, see [Creating custom contents](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-creating-custom-contents). | [optional] 
 **Title** | **string** | The push title (maximum 200 characters). If supported, this can include variables. | 
 **Body** | **string** | The push text (maximum 400 characters for push text). If supported, this can include variables. | 
-**PushCategory** | Pointer to [**EnumTemplateContentPushCategory**](EnumTemplateContentPushCategory.md) |  | [optional] 
+**PushCategory** | Pointer to [**EnumTemplateContentPushCategory**](EnumTemplateContentPushCategory.md) |  | [optional] [default to ENUMTEMPLATECONTENTPUSHCATEGORY_BANNER_BUTTONS]
 
 ## Methods
 

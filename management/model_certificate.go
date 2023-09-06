@@ -34,7 +34,7 @@ type Certificate struct {
 	Id *string `json:"id,omitempty"`
 	// Specifies the distinguished name of the certificate issuer.
 	IssuerDN *string `json:"issuerDN,omitempty"`
-	// Specifies the key length. For RSA keys, options are 2048, 3072, and 7680. For elliptical curve (EC) keys, options are 224, 256, and 384.
+	// The key length. For RSA keys, options are `2048`, `3072`, `4096`, and `7680`. For elliptical curve (EC) keys, options are `224`, `256`, `384`, and `521`.
 	KeyLength int32 `json:"keyLength"`
 	// Specifies the resource name.
 	Name string `json:"name"`

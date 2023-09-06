@@ -119,7 +119,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     contentType := "application/x-pkcs12-certificates" // string |  (optional)
-    certificate := *openapiclient.NewCertificate(openapiclient.EnumCertificateKeyAlgorithm("RSA"), int32(123), "Name_example", openapiclient.EnumCertificateKeySignagureAlgorithm("SHA224withRSA"), "SubjectDN_example", openapiclient.EnumCertificateKeyUsageType("ENCRYPTION"), int32(123)) // Certificate |  (optional)
+    certificate := *openapiclient.NewCertificate(openapiclient.EnumCertificateKeyAlgorithm("RSA"), int32(123), "Name_example", openapiclient.EnumCertificateKeySignagureAlgorithm("SHA256withRSA"), "SubjectDN_example", openapiclient.EnumCertificateKeyUsageType("ENCRYPTION"), int32(123)) // Certificate |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

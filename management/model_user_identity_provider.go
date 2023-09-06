@@ -30,6 +30,8 @@ type UserIdentityProvider struct {
 // will change when the set of required properties is changed
 func NewUserIdentityProvider() *UserIdentityProvider {
 	this := UserIdentityProvider{}
+	var type_ EnumIdentityProvider = ENUMIDENTITYPROVIDER_PING_ONE
+	this.Type = &type_
 	return &this
 }
 
@@ -38,6 +40,8 @@ func NewUserIdentityProvider() *UserIdentityProvider {
 // but it doesn't guarantee that properties required by API are set
 func NewUserIdentityProviderWithDefaults() *UserIdentityProvider {
 	this := UserIdentityProvider{}
+	var type_ EnumIdentityProvider = ENUMIDENTITYPROVIDER_PING_ONE
+	this.Type = &type_
 	return &this
 }
 
