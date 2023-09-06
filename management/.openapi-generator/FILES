@@ -189,6 +189,7 @@ docs/EnumAlertChannelType.md
 docs/EnumApplicationAccessControlType.md
 docs/EnumApplicationNativeGooglePlayVerificationType.md
 docs/EnumApplicationOIDCGrantType.md
+docs/EnumApplicationOIDCPARRequirement.md
 docs/EnumApplicationOIDCPKCEOption.md
 docs/EnumApplicationOIDCResponseType.md
 docs/EnumApplicationOIDCTokenAuthMethod.md
@@ -703,6 +704,7 @@ model_enum_application_native_google_play_verification_type.go
 model_enum_application_oidc_grant_type.go
 model_enum_application_oidc_response_type.go
 model_enum_application_oidc_token_auth_method.go
+model_enum_application_oidcpar_requirement.go
 model_enum_application_oidcpkce_option.go
 model_enum_application_protocol.go
 model_enum_application_saml_slo_binding.go
