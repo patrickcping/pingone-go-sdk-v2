@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2023-09-11)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.6
     * **Note** bump `golang.org/x/oauth2` v0.11.0 => v0.12.0 [#251](https://github.com/patrickcping/pingone-go-sdk-v2/pull/251)
