@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.6
+    * **Note** bump `golang.org/x/oauth2` v0.11.0 => v0.12.0 [#251](https://github.com/patrickcping/pingone-go-sdk-v2/pull/251)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.27.0 => v0.28.0 [#251](https://github.com/patrickcping/pingone-go-sdk-v2/pull/251)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.28.0](./management/CHANGELOG.md)
     * **Breaking Change** Removed deprecated enum values `SHA224withRSA` and `SHA224withECDSA` from the `EnumCertificateKeySignagureAlgorithm` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
     * **Enhancement** Added enum values to `EnumApplicationWSFEDIDPSigningAlgorithm` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
