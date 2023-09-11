@@ -1,4 +1,4 @@
-# v0.28.0 (Unreleased)
+# v0.28.0 (2023-09-11)
 
 * **Breaking Change** Removed deprecated enum values `SHA224withRSA` and `SHA224withECDSA` from the `EnumCertificateKeySignagureAlgorithm` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
 * **Enhancement** Added enum values to `EnumApplicationWSFEDIDPSigningAlgorithm` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
