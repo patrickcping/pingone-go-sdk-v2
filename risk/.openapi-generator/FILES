@@ -71,6 +71,7 @@ docs/RiskPolicySetTriggersInner.md
 docs/RiskPredictor.md
 docs/RiskPredictorAnonymousNetwork.md
 docs/RiskPredictorAnonymousNetworkAllOf.md
+docs/RiskPredictorBotDetection.md
 docs/RiskPredictorCommon.md
 docs/RiskPredictorCommonCondition.md
 docs/RiskPredictorCommonConditionScoresInner.md
@@ -179,6 +180,7 @@ model_risk_policy_set_triggers_inner.go
 model_risk_predictor.go
 model_risk_predictor_anonymous_network.go
 model_risk_predictor_anonymous_network_all_of.go
+model_risk_predictor_bot_detection.go
 model_risk_predictor_common.go
 model_risk_predictor_common_condition.go
 model_risk_predictor_common_condition_scores_inner.go
