@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.10.0](./management/CHANGELOG.md)
+    * **Enhancement** Add support for a Bot detection specific data model. [#252](https://github.com/patrickcping/pingone-go-sdk-v2/pull/252)
+
 # Release (2023-09-11)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.6

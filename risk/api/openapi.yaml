@@ -2019,6 +2019,7 @@ components:
     RiskPredictor:
       oneOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
+      - $ref: '#/components/schemas/RiskPredictorBotDetection'
       - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
       - $ref: '#/components/schemas/RiskPredictorComposite'
       - $ref: '#/components/schemas/RiskPredictorCustom'
@@ -2088,6 +2089,9 @@ components:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
       - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork_allOf'
+    RiskPredictorBotDetection:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictorCommon'
     RiskPredictorComposite:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'

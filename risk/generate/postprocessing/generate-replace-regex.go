@@ -69,6 +69,7 @@ var (
 	}
 
 	dst.RiskPredictorAnonymousNetwork = nil
+	dst.RiskPredictorBotDetection = nil
 	dst.RiskPredictorCommon = nil
 	dst.RiskPredictorComposite = nil
 	dst.RiskPredictorCustom = nil
@@ -91,7 +92,7 @@ var (
 			return err
 		}
 	case ENUMPREDICTORTYPE_BOT:
-		if err := json.Unmarshal(data, &dst.RiskPredictorCommon); err != nil {
+		if err := json.Unmarshal(data, &dst.RiskPredictorBotDetection); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_COMPOSITE:

@@ -759,6 +759,7 @@ components:
     RiskPredictor:
       oneOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
+        - $ref: '#/components/schemas/RiskPredictorBotDetection'
         - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
         - $ref: '#/components/schemas/RiskPredictorComposite'
         - $ref: '#/components/schemas/RiskPredictorCustom'
@@ -862,6 +863,9 @@ components:
               items:
                 type: string
                 format: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$
+    RiskPredictorBotDetection:
+      allOf:
+        - $ref: '#/components/schemas/RiskPredictorCommon'
     RiskPredictorComposite:
       allOf:
         - $ref: '#/components/schemas/RiskPredictorCommon'
