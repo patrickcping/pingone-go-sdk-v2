@@ -99,7 +99,7 @@ func (a *UsersApiService) internalCreateUserExecute(r ApiCreateUserRequest) (*Us
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{"application/json", "application/vnd.pingidentity.user.import+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -116,7 +116,7 @@ func (a *UsersApiService) internalCreateUserExecute(r ApiCreateUserRequest) (*Us
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "content-type", r.contentType, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.user

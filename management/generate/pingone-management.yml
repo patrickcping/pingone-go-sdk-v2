@@ -17058,8 +17058,11 @@ paths:
                 password:
                   value: <This can be plain text or an acceptable hashed value.>
                   forceChange: false
+          application/vnd.pingidentity.user.import+json:
+            schema:
+              $ref: '#/components/schemas/User'
       parameters:
-        - name: content-type
+        - name: Content-Type
           in: header
           schema:
             type: string

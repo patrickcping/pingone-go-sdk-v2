@@ -19380,7 +19380,7 @@ paths:
       - example: application/vnd.pingidentity.user.import+json
         explode: false
         in: header
-        name: content-type
+        name: Content-Type
         required: false
         schema:
           type: string
@@ -19395,6 +19395,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/vnd.pingidentity.user.import+json:
             schema:
               $ref: '#/components/schemas/User'
       responses:

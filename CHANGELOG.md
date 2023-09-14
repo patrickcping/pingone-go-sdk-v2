@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.29.0](./management/CHANGELOG.md)
+    * **Enhancement** Added the `application/vnd.pingidentity.user.import+json` content-type header to the UsersAPI, to be able to import passwords.
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.10.0](./management/CHANGELOG.md)
     * **Enhancement** Add support for a Bot detection specific data model. [#252](https://github.com/patrickcping/pingone-go-sdk-v2/pull/252)
 
