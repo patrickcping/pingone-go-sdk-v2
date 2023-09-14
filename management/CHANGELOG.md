@@ -1,3 +1,7 @@
+# v0.29.0 (Unreleased)
+
+* **Enhancement** Added the `application/vnd.pingidentity.user.import+json` content-type header to the UsersAPI, to be able to import passwords. [#253](https://github.com/patrickcping/pingone-go-sdk-v2/pull/253)
+
 # v0.28.0 (2023-09-11)
 
 * **Breaking Change** Removed deprecated enum values `SHA224withRSA` and `SHA224withECDSA` from the `EnumCertificateKeySignagureAlgorithm` model. [#247](https://github.com/patrickcping/pingone-go-sdk-v2/pull/247)
