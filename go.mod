@@ -7,9 +7,9 @@ require (
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.2.1
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.3.0
 	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.4.0
-	github.com/patrickcping/pingone-go-sdk-v2/management v0.28.0
+	github.com/patrickcping/pingone-go-sdk-v2/management v0.29.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.16.0
-	github.com/patrickcping/pingone-go-sdk-v2/risk v0.9.0
+	github.com/patrickcping/pingone-go-sdk-v2/risk v0.10.0
 	github.com/patrickcping/pingone-go-sdk-v2/verify v0.3.0
 	github.com/pavius/impi v0.0.3
 	github.com/securego/gosec/v2 v2.17.0
