@@ -1,8 +1,8 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.7
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.28.0 => v0.29.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.9.0 => v0.10.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.28.0 => v0.29.0 [#254](https://github.com/patrickcping/pingone-go-sdk-v2/pull/254)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.9.0 => v0.10.0 [#254](https://github.com/patrickcping/pingone-go-sdk-v2/pull/254)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.29.0](./management/CHANGELOG.md)
     * **Enhancement** Added the `application/vnd.pingidentity.user.import+json` content-type header to the UsersAPI, to be able to import passwords. [#253](https://github.com/patrickcping/pingone-go-sdk-v2/pull/253)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.10.0](./management/CHANGELOG.md)
