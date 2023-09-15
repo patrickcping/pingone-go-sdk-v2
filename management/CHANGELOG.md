@@ -1,4 +1,4 @@
-# v0.29.0 (Unreleased)
+# v0.29.0 (2023-09-15)
 
 * **Enhancement** Added the `application/vnd.pingidentity.user.import+json` content-type header to the UsersAPI, to be able to import passwords. [#253](https://github.com/patrickcping/pingone-go-sdk-v2/pull/253)
 

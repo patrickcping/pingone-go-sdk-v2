@@ -1,4 +1,4 @@
-# v0.10.0 (Unreleased)
+# v0.10.0 (2023-09-15)
 
 * **Enhancement** Add support for a Bot detection specific data model. [#252](https://github.com/patrickcping/pingone-go-sdk-v2/pull/252)
 
