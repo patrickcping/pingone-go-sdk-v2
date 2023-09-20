@@ -11,7 +11,7 @@ else
 
     if [[ -f "generate/pingone-$3.yml" ]]; then \
         echo "==> Running codegen-$3..."
-        openapi-generator generate -i generate/pingone-$3.yml -g go --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true -o . --git-repo-id $2 --git-user-id $1; \
+        openapi-generator generate -i generate/pingone-$3.yml -g go --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true,apiNameSuffix=Api -o . --git-repo-id $2 --git-user-id $1; \
         go get -u ./...
         go mod tidy
         go mod vendor
