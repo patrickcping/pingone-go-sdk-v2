@@ -50,12 +50,6 @@ var (
 		repl              string
 	}{
 
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
-			repl:              `"PingOne-GOLANG-SDK/risk/$1/go",`,
-		},
-
 		// RiskPredictor model
 		{
 			fileSelectPattern: "model_risk_predictor.go",

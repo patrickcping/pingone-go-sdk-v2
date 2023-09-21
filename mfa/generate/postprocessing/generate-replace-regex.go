@@ -50,12 +50,6 @@ var (
 		repl              string
 	}{
 
-		{
-			fileSelectPattern: "configuration.go",
-			pattern:           `"OpenAPI-Generator/([0-9]+\.[0-9]+\.[0-9]+)/go",`,
-			repl:              `"PingOne-GOLANG-SDK/mfa/$1/go",`,
-		},
-
 		// MFAPushCredentialRequest model
 		{
 			fileSelectPattern: "model_mfa_push_credential_request.go",
