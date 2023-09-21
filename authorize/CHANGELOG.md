@@ -1,3 +1,8 @@
+# v0.3.1 (Unreleased)
+
+* **Note** Unskip read only attributes when converting API models to maps.
+* **Note** Updated the default UserAgent string format.
+
 # v0.3.0 (2023-08-08)
 
 * **Enhancement** Implement HATEOAS links for API response objects. [#227](https://github.com/patrickcping/pingone-go-sdk-v2/pull/227)

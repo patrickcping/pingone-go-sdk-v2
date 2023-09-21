@@ -234,7 +234,9 @@ func (o APIServer) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["authorizationServer"] = o.AuthorizationServer
 	toSerialize["baseURLs"] = o.BaseURLs
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Operations) {
 		toSerialize["operations"] = o.Operations
