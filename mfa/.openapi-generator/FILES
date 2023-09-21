@@ -91,6 +91,7 @@ docs/MFASettingsAuthentication.md
 docs/MFASettingsLockout.md
 docs/MFASettingsPairing.md
 docs/MFASettingsPhoneExtensions.md
+docs/MFASettingsUsers.md
 docs/ObjectEnvironment.md
 docs/P1Error.md
 docs/P1ErrorDetailsInner.md
@@ -174,6 +175,7 @@ model_mfa_settings_authentication.go
 model_mfa_settings_lockout.go
 model_mfa_settings_pairing.go
 model_mfa_settings_phone_extensions.go
+model_mfa_settings_users.go
 model_object_environment.go
 model_p1_error.go
 model_p1_error_details_inner.go

@@ -4054,6 +4054,8 @@ components:
         pairing:
           pairingKeyFormat: null
           maxAllowedDevices: 2
+        users:
+          mfaEnabled: true
         authentication:
           deviceSelection: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -4075,6 +4077,8 @@ components:
           format: date-time
           readOnly: true
           type: string
+        users:
+          $ref: '#/components/schemas/MFASettings_users'
       required:
       - pairing
       type: object
@@ -5278,6 +5282,16 @@ components:
             \ via voice to phone numbers that include extensions. Set to `false` to\
             \ disable support for phone numbers with extensions. By default, support\
             \ for extensions is disabled."
+          type: boolean
+      type: object
+    MFASettings_users:
+      description: Contains information about the default settings for new users.
+      example:
+        mfaEnabled: true
+      properties:
+        mfaEnabled:
+          description: Set `mfaEnabled` to `true` if you want MFA to be enabled by
+            default for new users.
           type: boolean
       type: object
     P1Error_details_inner_innerError:

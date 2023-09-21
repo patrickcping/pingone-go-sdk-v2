@@ -91,8 +91,16 @@ components:
       description: A string that specifies the device sharing type. Options are `UNSPECIFIED`, `SHARED`, and `PRIVATE`.
     EnumFlowType:
       type: string
-      enum: [AUTHENTICATION]
-      description: A string that specifies the flow type for the event. The only option (and default) is `AUTHENTICATION`.
+      enum: [AUTHENTICATION, REGISTRATION, ACCESS, AUTHORIZATION, TRANSACTION]
+      default: AUTHENTICATION
+      description: |
+        	The type of flow for which the risk evaluation is being carried out. Can take any of the following values:
+          `REGISTRATION` - initial registration of an account
+          `AUTHENTICATION` - standard authentication for login or actions such as password change
+          `ACCESS` - verification of whether user can access the relevant application, using tools such as PingAccess
+          `AUTHORIZATION` - verification of whether user is authorized to perform a specific action such as a profile change, using tools such as PingOne Authorize
+          `TRANSACTION` - authentication carried out in the context of a purchase or other monetary transaction
+          The default value is `AUTHENTICATION`.
     EnumRiskPolicyConditionType:
       type: string
       description: |
@@ -873,6 +881,7 @@ components:
           properties:
             composition:
               type: object
+              deprecated: true
               properties:
                 condition:
                   $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
@@ -881,8 +890,20 @@ components:
               required:
                 - condition
                 - level
+            compositions:
+              type: array
+              description: Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements.
+              items:
+                properties:
+                  condition:
+                    $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
+                  level:
+                    $ref: '#/components/schemas/EnumRiskLevel'
+                required:
+                  - condition
+                  - level
           required:
-            - composition
+            - compositions
     RiskPredictorCompositeAnd:
       type: object
       properties:

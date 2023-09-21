@@ -908,6 +908,13 @@ components:
           format: date-time
           readOnly: true
           description: The time the resource was last updated.
+        users:
+          type: object
+          description: Contains information about the default settings for new users.
+          properties:
+            mfaEnabled:
+              type: boolean
+              description: Set `mfaEnabled` to `true` if you want MFA to be enabled by default for new users.
       required:
         - pairing
     ObjectEnvironment:

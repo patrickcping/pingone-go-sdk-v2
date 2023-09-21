@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**EnumFlowType**](EnumFlowType.md) |  | [optional] 
+**Type** | Pointer to [**EnumFlowType**](EnumFlowType.md) |  | [optional] [default to ENUMFLOWTYPE_AUTHENTICATION]
 
 ## Methods
 

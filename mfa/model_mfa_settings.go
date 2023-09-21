@@ -29,6 +29,7 @@ type MFASettings struct {
 	PhoneExtensions *MFASettingsPhoneExtensions `json:"phoneExtensions,omitempty"`
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Users *MFASettingsUsers `json:"users,omitempty"`
 }
 
 // NewMFASettings instantiates a new MFASettings object
@@ -268,6 +269,38 @@ func (o *MFASettings) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetUsers returns the Users field value if set, zero value otherwise.
+func (o *MFASettings) GetUsers() MFASettingsUsers {
+	if o == nil || IsNil(o.Users) {
+		var ret MFASettingsUsers
+		return ret
+	}
+	return *o.Users
+}
+
+// GetUsersOk returns a tuple with the Users field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MFASettings) GetUsersOk() (*MFASettingsUsers, bool) {
+	if o == nil || IsNil(o.Users) {
+		return nil, false
+	}
+	return o.Users, true
+}
+
+// HasUsers returns a boolean if a field has been set.
+func (o *MFASettings) HasUsers() bool {
+	if o != nil && !IsNil(o.Users) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsers gets a reference to the given MFASettingsUsers and assigns it to the Users field.
+func (o *MFASettings) SetUsers(v MFASettingsUsers) {
+	o.Users = &v
+}
+
 func (o MFASettings) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -296,6 +329,9 @@ func (o MFASettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
 	}
 	return toSerialize, nil
 }

@@ -78,6 +78,7 @@ docs/RiskPredictorCommonDefault.md
 docs/RiskPredictorCommonDefaultResult.md
 docs/RiskPredictorComposite.md
 docs/RiskPredictorCompositeAllOfComposition.md
+docs/RiskPredictorCompositeAllOfCompositionsInner.md
 docs/RiskPredictorCompositeAnd.md
 docs/RiskPredictorCompositeCondition.md
 docs/RiskPredictorCompositeConditionBase.md
@@ -179,6 +180,7 @@ model_risk_predictor_common_default.go
 model_risk_predictor_common_default_result.go
 model_risk_predictor_composite.go
 model_risk_predictor_composite_all_of_composition.go
+model_risk_predictor_composite_all_of_compositions_inner.go
 model_risk_predictor_composite_and.go
 model_risk_predictor_composite_condition.go
 model_risk_predictor_composite_condition_base.go
