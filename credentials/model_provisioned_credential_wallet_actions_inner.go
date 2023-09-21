@@ -116,8 +116,12 @@ func (o ProvisionedCredentialWalletActionsInner) MarshalJSON() ([]byte, error) {
 
 func (o ProvisionedCredentialWalletActionsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: type is readOnly
-	// skip: occurredAt is readOnly
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.OccurredAt) {
+		toSerialize["occurredAt"] = o.OccurredAt
+	}
 	return toSerialize, nil
 }
 

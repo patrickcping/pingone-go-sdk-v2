@@ -394,7 +394,9 @@ func (o ProvisionedCredentialClaimReference) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Holder) {
 		toSerialize["holder"] = o.Holder
 	}
-	// skip: createDate is readOnly
+	if !IsNil(o.CreateDate) {
+		toSerialize["createDate"] = o.CreateDate
+	}
 	if !IsNil(o.DataJson) {
 		toSerialize["dataJson"] = o.DataJson
 	}

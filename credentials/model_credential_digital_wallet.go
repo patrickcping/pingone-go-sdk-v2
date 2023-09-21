@@ -422,7 +422,9 @@ func (o CredentialDigitalWallet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.DigitalWalletApplication) {
 		toSerialize["digitalWalletApplication"] = o.DigitalWalletApplication
 	}
@@ -435,7 +437,9 @@ func (o CredentialDigitalWallet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Notification) {
 		toSerialize["notification"] = o.Notification
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}

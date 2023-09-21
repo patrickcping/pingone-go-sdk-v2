@@ -285,7 +285,9 @@ func (o CredentialIssuanceRuleStagedChangeStagedChanges) ToMap() (map[string]int
 	if !IsNil(o.Action) {
 		toSerialize["action"] = o.Action
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.CredentialType) {
 		toSerialize["credentialType"] = o.CredentialType
 	}

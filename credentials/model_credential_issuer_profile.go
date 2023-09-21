@@ -351,13 +351,19 @@ func (o CredentialIssuerProfile) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplicationInstance) {
 		toSerialize["applicationInstance"] = o.ApplicationInstance
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	if !IsNil(o.SiteUrl) {
 		toSerialize["siteUrl"] = o.SiteUrl
 	}
