@@ -1206,10 +1206,22 @@ components:
       - PRIVATE
       type: string
     EnumFlowType:
-      description: A string that specifies the flow type for the event. The only option
-        (and default) is `AUTHENTICATION`.
+      default: AUTHENTICATION
+      description: "\tThe type of flow for which the risk evaluation is being carried\
+        \ out. Can take any of the following values:\n  `REGISTRATION` - initial registration\
+        \ of an account\n  `AUTHENTICATION` - standard authentication for login or\
+        \ actions such as password change\n  `ACCESS` - verification of whether user\
+        \ can access the relevant application, using tools such as PingAccess\n  `AUTHORIZATION`\
+        \ - verification of whether user is authorized to perform a specific action\
+        \ such as a profile change, using tools such as PingOne Authorize\n  `TRANSACTION`\
+        \ - authentication carried out in the context of a purchase or other monetary\
+        \ transaction\n  The default value is `AUTHENTICATION`.\n"
       enum:
       - AUTHENTICATION
+      - REGISTRATION
+      - ACCESS
+      - AUTHORIZATION
+      - TRANSACTION
       type: string
     EnumRiskPolicyConditionType:
       description: |
@@ -2106,8 +2118,15 @@ components:
       - properties:
           composition:
             $ref: '#/components/schemas/RiskPredictorComposite_allOf_composition'
+          compositions:
+            description: Contains the objects that specify the conditions to test
+              and the risk level that should be assigned if the conditions are met.
+              The array can contain a maximum of three elements.
+            items:
+              $ref: '#/components/schemas/RiskPredictorComposite_allOf_compositions_inner'
+            type: array
         required:
-        - composition
+        - compositions
         type: object
     RiskPredictorCompositeAnd:
       properties:
@@ -3249,6 +3268,7 @@ components:
       readOnly: true
       type: object
     RiskPredictorComposite_allOf_composition:
+      deprecated: true
       properties:
         condition:
           $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
@@ -3259,6 +3279,15 @@ components:
       - level
       type: object
       example: null
+    RiskPredictorComposite_allOf_compositions_inner:
+      properties:
+        condition:
+          $ref: '#/components/schemas/RiskPredictorCompositeConditionBase'
+        level:
+          $ref: '#/components/schemas/EnumRiskLevel'
+      required:
+      - condition
+      - level
     RiskPredictorCompositeCondition_oneOf:
       properties:
         contains:

@@ -40,19 +40,22 @@ type RiskPredictorComposite struct {
 	Deletable *bool `json:"deletable,omitempty"`
 	Default *RiskPredictorCommonDefault `json:"default,omitempty"`
 	Condition *RiskPredictorCommonCondition `json:"condition,omitempty"`
-	Composition RiskPredictorCompositeAllOfComposition `json:"composition"`
+	// Deprecated
+	Composition *RiskPredictorCompositeAllOfComposition `json:"composition,omitempty"`
+	// Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements.
+	Compositions []RiskPredictorCompositeAllOfCompositionsInner `json:"compositions"`
 }
 
 // NewRiskPredictorComposite instantiates a new RiskPredictorComposite object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition) *RiskPredictorComposite {
+func NewRiskPredictorComposite(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositionsInner) *RiskPredictorComposite {
 	this := RiskPredictorComposite{}
 	this.Name = name
 	this.CompactName = compactName
 	this.Type = type_
-	this.Composition = composition
+	this.Compositions = compositions
 	return &this
 }
 
@@ -424,28 +427,63 @@ func (o *RiskPredictorComposite) SetCondition(v RiskPredictorCommonCondition) {
 	o.Condition = &v
 }
 
-// GetComposition returns the Composition field value
+// GetComposition returns the Composition field value if set, zero value otherwise.
+// Deprecated
 func (o *RiskPredictorComposite) GetComposition() RiskPredictorCompositeAllOfComposition {
-	if o == nil {
+	if o == nil || IsNil(o.Composition) {
 		var ret RiskPredictorCompositeAllOfComposition
 		return ret
 	}
-
-	return o.Composition
+	return *o.Composition
 }
 
-// GetCompositionOk returns a tuple with the Composition field value
+// GetCompositionOk returns a tuple with the Composition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *RiskPredictorComposite) GetCompositionOk() (*RiskPredictorCompositeAllOfComposition, bool) {
+	if o == nil || IsNil(o.Composition) {
+		return nil, false
+	}
+	return o.Composition, true
+}
+
+// HasComposition returns a boolean if a field has been set.
+func (o *RiskPredictorComposite) HasComposition() bool {
+	if o != nil && !IsNil(o.Composition) {
+		return true
+	}
+
+	return false
+}
+
+// SetComposition gets a reference to the given RiskPredictorCompositeAllOfComposition and assigns it to the Composition field.
+// Deprecated
+func (o *RiskPredictorComposite) SetComposition(v RiskPredictorCompositeAllOfComposition) {
+	o.Composition = &v
+}
+
+// GetCompositions returns the Compositions field value
+func (o *RiskPredictorComposite) GetCompositions() []RiskPredictorCompositeAllOfCompositionsInner {
+	if o == nil {
+		var ret []RiskPredictorCompositeAllOfCompositionsInner
+		return ret
+	}
+
+	return o.Compositions
+}
+
+// GetCompositionsOk returns a tuple with the Compositions field value
+// and a boolean to check if the value has been set.
+func (o *RiskPredictorComposite) GetCompositionsOk() ([]RiskPredictorCompositeAllOfCompositionsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Composition, true
+	return o.Compositions, true
 }
 
-// SetComposition sets field value
-func (o *RiskPredictorComposite) SetComposition(v RiskPredictorCompositeAllOfComposition) {
-	o.Composition = v
+// SetCompositions sets field value
+func (o *RiskPredictorComposite) SetCompositions(v []RiskPredictorCompositeAllOfCompositionsInner) {
+	o.Compositions = v
 }
 
 func (o RiskPredictorComposite) MarshalJSON() ([]byte, error) {
@@ -488,7 +526,10 @@ func (o RiskPredictorComposite) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Condition) {
 		toSerialize["condition"] = o.Condition
 	}
-	toSerialize["composition"] = o.Composition
+	if !IsNil(o.Composition) {
+		toSerialize["composition"] = o.Composition
+	}
+	toSerialize["compositions"] = o.Compositions
 	return toSerialize, nil
 }
 

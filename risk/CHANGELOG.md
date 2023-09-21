@@ -1,7 +1,9 @@
-# v0.10.1 (Unreleased)
+# v0.11.0 (Unreleased)
 
 * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
 * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Enhancement** Enhance the `EnumFlowType` with new supported values.
+* **Enhancement** Added the `Compositions` array to the `RiskPredictorComposite` model, to replace the `Composition` attribute that has now been deprecated.
 
 # v0.10.0 (2023-09-15)
 

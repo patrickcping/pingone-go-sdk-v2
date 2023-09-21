@@ -17,7 +17,8 @@ Name | Type | Description | Notes
 **Default** | Pointer to [**RiskPredictorCommonDefault**](RiskPredictorCommonDefault.md) |  | [optional] 
 **Condition** | Pointer to [**RiskPredictorCommonCondition**](RiskPredictorCommonCondition.md) |  | [optional] 
 **WhiteList** | Pointer to **[]string** | A list of IP addresses (CDIRs) that are ignored for the predictor results. | [optional] 
-**Composition** | [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | 
+**Composition** | Pointer to [**RiskPredictorCompositeAllOfComposition**](RiskPredictorCompositeAllOfComposition.md) |  | [optional] 
+**Compositions** | [**[]RiskPredictorCompositeAllOfCompositionsInner**](RiskPredictorCompositeAllOfCompositionsInner.md) | Contains the objects that specify the conditions to test and the risk level that should be assigned if the conditions are met. The array can contain a maximum of three elements. | 
 **Map** | [**RiskPredictorCustomAllOfMap**](RiskPredictorCustomAllOfMap.md) |  | 
 **Detect** | [**EnumPredictorNewDeviceDetectType**](EnumPredictorNewDeviceDetectType.md) |  | 
 **ActivationAt** | Pointer to **time.Time** | You can use the &#x60;activationAt&#x60; parameter to specify a date on which the learning process for the predictor should be restarted. This can be used in conjunction with the fallback setting (&#x60;default.result.level&#x60;) to force strong authentication when moving the predictor to production. The date should be in an RFC3339 format. Note that activation date uses UTC time. | [optional] 
@@ -37,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewRiskPredictor
 
-`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, composition RiskPredictorCompositeAllOfComposition, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel, ) *RiskPredictor`
+`func NewRiskPredictor(name string, compactName string, type_ EnumPredictorType, compositions []RiskPredictorCompositeAllOfCompositionsInner, map_ RiskPredictorCustomAllOfMap, detect EnumPredictorNewDeviceDetectType, days int32, radius RiskPredictorUserLocationAnomalyAllOfRadius, predictionModel RiskPredictorUserRiskBehaviorAllOfPredictionModel, ) *RiskPredictor`
 
 NewRiskPredictor instantiates a new RiskPredictor object
 This constructor will assign default values to properties that have it defined,
@@ -380,6 +381,31 @@ and a boolean to check if the value has been set.
 `func (o *RiskPredictor) SetComposition(v RiskPredictorCompositeAllOfComposition)`
 
 SetComposition sets Composition field to given value.
+
+### HasComposition
+
+`func (o *RiskPredictor) HasComposition() bool`
+
+HasComposition returns a boolean if a field has been set.
+
+### GetCompositions
+
+`func (o *RiskPredictor) GetCompositions() []RiskPredictorCompositeAllOfCompositionsInner`
+
+GetCompositions returns the Compositions field if non-nil, zero value otherwise.
+
+### GetCompositionsOk
+
+`func (o *RiskPredictor) GetCompositionsOk() (*[]RiskPredictorCompositeAllOfCompositionsInner, bool)`
+
+GetCompositionsOk returns a tuple with the Compositions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompositions
+
+`func (o *RiskPredictor) SetCompositions(v []RiskPredictorCompositeAllOfCompositionsInner)`
+
+SetCompositions sets Compositions field to given value.
 
 
 ### GetMap
