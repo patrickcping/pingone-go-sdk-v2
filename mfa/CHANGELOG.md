@@ -2,7 +2,7 @@
 
 * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
 * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
-* **Enhancement** Add `Users` object to the `MFASettings` model to support setting default MFA settings for registering users.
+* **Enhancement** Add `Users` object to the `MFASettings` model to support setting default MFA settings for registering users. [#256](https://github.com/patrickcping/pingone-go-sdk-v2/pull/256)
 
 # v0.16.0 (2023-08-08)
 
