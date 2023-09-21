@@ -70,7 +70,6 @@ docs/RiskPolicySetEvaluatedPredictorsInner.md
 docs/RiskPolicySetTriggersInner.md
 docs/RiskPredictor.md
 docs/RiskPredictorAnonymousNetwork.md
-docs/RiskPredictorAnonymousNetworkAllOf.md
 docs/RiskPredictorBotDetection.md
 docs/RiskPredictorCommon.md
 docs/RiskPredictorCommonCondition.md
@@ -78,7 +77,6 @@ docs/RiskPredictorCommonConditionScoresInner.md
 docs/RiskPredictorCommonDefault.md
 docs/RiskPredictorCommonDefaultResult.md
 docs/RiskPredictorComposite.md
-docs/RiskPredictorCompositeAllOf.md
 docs/RiskPredictorCompositeAllOfComposition.md
 docs/RiskPredictorCompositeAnd.md
 docs/RiskPredictorCompositeCondition.md
@@ -89,7 +87,6 @@ docs/RiskPredictorCompositeConditionOneOf1Equals.md
 docs/RiskPredictorCompositeNot.md
 docs/RiskPredictorCompositeOr.md
 docs/RiskPredictorCustom.md
-docs/RiskPredictorCustomAllOf.md
 docs/RiskPredictorCustomAllOfMap.md
 docs/RiskPredictorCustomItem.md
 docs/RiskPredictorCustomItemBetween.md
@@ -97,18 +94,13 @@ docs/RiskPredictorCustomItemBetweenBetween.md
 docs/RiskPredictorCustomItemIPRange.md
 docs/RiskPredictorCustomItemList.md
 docs/RiskPredictorDevice.md
-docs/RiskPredictorDeviceAllOf.md
 docs/RiskPredictorGeovelocity.md
-docs/RiskPredictorGeovelocityAllOf.md
 docs/RiskPredictorIPReputation.md
 docs/RiskPredictorUserLocationAnomaly.md
-docs/RiskPredictorUserLocationAnomalyAllOf.md
 docs/RiskPredictorUserLocationAnomalyAllOfRadius.md
 docs/RiskPredictorUserRiskBehavior.md
-docs/RiskPredictorUserRiskBehaviorAllOf.md
 docs/RiskPredictorUserRiskBehaviorAllOfPredictionModel.md
 docs/RiskPredictorVelocity.md
-docs/RiskPredictorVelocityAllOf.md
 docs/RiskPredictorVelocityAllOfEvery.md
 docs/RiskPredictorVelocityAllOfFallback.md
 docs/RiskPredictorVelocityAllOfMaxDelay.md
@@ -179,7 +171,6 @@ model_risk_policy_set_evaluated_predictors_inner.go
 model_risk_policy_set_triggers_inner.go
 model_risk_predictor.go
 model_risk_predictor_anonymous_network.go
-model_risk_predictor_anonymous_network_all_of.go
 model_risk_predictor_bot_detection.go
 model_risk_predictor_common.go
 model_risk_predictor_common_condition.go
@@ -187,7 +178,6 @@ model_risk_predictor_common_condition_scores_inner.go
 model_risk_predictor_common_default.go
 model_risk_predictor_common_default_result.go
 model_risk_predictor_composite.go
-model_risk_predictor_composite_all_of.go
 model_risk_predictor_composite_all_of_composition.go
 model_risk_predictor_composite_and.go
 model_risk_predictor_composite_condition.go
@@ -198,7 +188,6 @@ model_risk_predictor_composite_condition_one_of_1_equals.go
 model_risk_predictor_composite_not.go
 model_risk_predictor_composite_or.go
 model_risk_predictor_custom.go
-model_risk_predictor_custom_all_of.go
 model_risk_predictor_custom_all_of_map.go
 model_risk_predictor_custom_item.go
 model_risk_predictor_custom_item_between.go
@@ -206,18 +195,13 @@ model_risk_predictor_custom_item_between_between.go
 model_risk_predictor_custom_item_ip_range.go
 model_risk_predictor_custom_item_list.go
 model_risk_predictor_device.go
-model_risk_predictor_device_all_of.go
 model_risk_predictor_geovelocity.go
-model_risk_predictor_geovelocity_all_of.go
 model_risk_predictor_ip_reputation.go
 model_risk_predictor_user_location_anomaly.go
-model_risk_predictor_user_location_anomaly_all_of.go
 model_risk_predictor_user_location_anomaly_all_of_radius.go
 model_risk_predictor_user_risk_behavior.go
-model_risk_predictor_user_risk_behavior_all_of.go
 model_risk_predictor_user_risk_behavior_all_of_prediction_model.go
 model_risk_predictor_velocity.go
-model_risk_predictor_velocity_all_of.go
 model_risk_predictor_velocity_all_of_every.go
 model_risk_predictor_velocity_all_of_fallback.go
 model_risk_predictor_velocity_all_of_max_delay.go

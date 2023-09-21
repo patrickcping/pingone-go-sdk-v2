@@ -134,7 +134,9 @@ func (o RiskPredictorCustomItemBetween) MarshalJSON() ([]byte, error) {
 func (o RiskPredictorCustomItemBetween) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["contains"] = o.Contains
-	// skip: type is readOnly
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	toSerialize["between"] = o.Between
 	return toSerialize, nil
 }

@@ -154,7 +154,9 @@ func (o RiskEvaluationResult) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Level) {
 		toSerialize["level"] = o.Level
 	}
-	// skip: value is readOnly
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
 	return toSerialize, nil
 }
 

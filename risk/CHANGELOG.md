@@ -1,3 +1,8 @@
+# v0.10.1 (Unreleased)
+
+* **Note** Unskip read only attributes when converting API models to maps.
+* **Note** Updated the default UserAgent string format.
+
 # v0.10.0 (2023-09-15)
 
 * **Enhancement** Add support for a Bot detection specific data model. [#252](https://github.com/patrickcping/pingone-go-sdk-v2/pull/252)

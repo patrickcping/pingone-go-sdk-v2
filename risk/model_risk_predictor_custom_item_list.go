@@ -135,7 +135,9 @@ func (o RiskPredictorCustomItemList) MarshalJSON() ([]byte, error) {
 func (o RiskPredictorCustomItemList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["contains"] = o.Contains
-	// skip: type is readOnly
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	toSerialize["list"] = o.List
 	return toSerialize, nil
 }

@@ -344,7 +344,9 @@ func (o RiskEvaluation) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
 	}
@@ -352,14 +354,18 @@ func (o RiskEvaluation) ToMap() (map[string]interface{}, error) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["event"] = o.Event
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.RiskPolicySet) {
 		toSerialize["riskPolicySet"] = o.RiskPolicySet
 	}
 	if !IsNil(o.Result) {
 		toSerialize["result"] = o.Result
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 
