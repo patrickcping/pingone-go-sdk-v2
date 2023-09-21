@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Pairing** | [**MFASettingsPairing**](MFASettingsPairing.md) |  | 
 **PhoneExtensions** | Pointer to [**MFASettingsPhoneExtensions**](MFASettingsPhoneExtensions.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
+**Users** | Pointer to [**MFASettingsUsers**](MFASettingsUsers.md) |  | [optional] 
 
 ## Methods
 
@@ -200,6 +201,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *MFASettings) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetUsers
+
+`func (o *MFASettings) GetUsers() MFASettingsUsers`
+
+GetUsers returns the Users field if non-nil, zero value otherwise.
+
+### GetUsersOk
+
+`func (o *MFASettings) GetUsersOk() (*MFASettingsUsers, bool)`
+
+GetUsersOk returns a tuple with the Users field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsers
+
+`func (o *MFASettings) SetUsers(v MFASettingsUsers)`
+
+SetUsers sets Users field to given value.
+
+### HasUsers
+
+`func (o *MFASettings) HasUsers() bool`
+
+HasUsers returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
