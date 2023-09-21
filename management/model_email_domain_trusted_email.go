@@ -242,7 +242,9 @@ func (o EmailDomainTrustedEmail) MarshalJSON() ([]byte, error) {
 
 func (o EmailDomainTrustedEmail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
@@ -253,7 +255,9 @@ func (o EmailDomainTrustedEmail) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	// skip: domainId is readOnly
+	if !IsNil(o.DomainId) {
+		toSerialize["domainId"] = o.DomainId
+	}
 	return toSerialize, nil
 }
 

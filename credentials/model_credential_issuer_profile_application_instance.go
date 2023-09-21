@@ -82,7 +82,9 @@ func (o CredentialIssuerProfileApplicationInstance) MarshalJSON() ([]byte, error
 
 func (o CredentialIssuerProfileApplicationInstance) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	return toSerialize, nil
 }
 

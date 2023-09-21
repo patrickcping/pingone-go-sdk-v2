@@ -373,7 +373,9 @@ func (o FormElement) MarshalJSON() ([]byte, error) {
 
 func (o FormElement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: attributeDisabled is readOnly
+	if !IsNil(o.AttributeDisabled) {
+		toSerialize["attributeDisabled"] = o.AttributeDisabled
+	}
 	toSerialize["key"] = o.Key
 	if !IsNil(o.Label) {
 		toSerialize["label"] = o.Label

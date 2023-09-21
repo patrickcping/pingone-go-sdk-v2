@@ -294,7 +294,9 @@ func (o MFASettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PhoneExtensions) {
 		toSerialize["phoneExtensions"] = o.PhoneExtensions
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

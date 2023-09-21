@@ -644,15 +644,21 @@ func (o Certificate) ToMap() (map[string]interface{}, error) {
 		toSerialize["_links"] = o.Links
 	}
 	toSerialize["algorithm"] = o.Algorithm
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Default) {
 		toSerialize["default"] = o.Default
 	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: expiresAt is readOnly
-	// skip: id is readOnly
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expiresAt"] = o.ExpiresAt
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.IssuerDN) {
 		toSerialize["issuerDN"] = o.IssuerDN
 	}
@@ -665,7 +671,9 @@ func (o Certificate) ToMap() (map[string]interface{}, error) {
 		toSerialize["serialNumber"] = o.SerialNumber
 	}
 	toSerialize["signatureAlgorithm"] = o.SignatureAlgorithm
-	// skip: startsAt is readOnly
+	if !IsNil(o.StartsAt) {
+		toSerialize["startsAt"] = o.StartsAt
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}

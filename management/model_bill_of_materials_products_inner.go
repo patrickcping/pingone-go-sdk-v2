@@ -242,9 +242,13 @@ func (o BillOfMaterialsProductsInner) MarshalJSON() ([]byte, error) {
 
 func (o BillOfMaterialsProductsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["type"] = o.Type
-	// skip: description is readOnly
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.Console) {
 		toSerialize["console"] = o.Console
 	}

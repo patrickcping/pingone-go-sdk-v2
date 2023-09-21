@@ -358,13 +358,19 @@ func (o NotificationsSettingsPhoneDeliverySettingsCustom) ToMap() (map[string]in
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["provider"] = o.Provider
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["name"] = o.Name
 	toSerialize["requests"] = o.Requests
 	toSerialize["authentication"] = o.Authentication

@@ -286,14 +286,24 @@ func (o Schema) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: allowsContainsOperator is readOnly
-	// skip: attributes is readOnly
-	// skip: description is readOnly
+	if !IsNil(o.AllowsContainsOperator) {
+		toSerialize["allowsContainsOperator"] = o.AllowsContainsOperator
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
-	// skip: name is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	return toSerialize, nil
 }
 

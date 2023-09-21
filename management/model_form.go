@@ -522,7 +522,9 @@ func (o Form) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
@@ -540,12 +542,18 @@ func (o Form) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TranslationMethod) {
 		toSerialize["translationMethod"] = o.TranslationMethod
 	}
-	// skip: fieldTypes is readOnly
+	if !IsNil(o.FieldTypes) {
+		toSerialize["fieldTypes"] = o.FieldTypes
+	}
 	if !IsNil(o.LanguageBundle) {
 		toSerialize["languageBundle"] = o.LanguageBundle
 	}
-	// skip: created is readOnly
-	// skip: modified is readOnly
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 	return toSerialize, nil
 }
 

@@ -306,7 +306,9 @@ func (o AgreementLanguage) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["displayName"] = o.DisplayName
 	toSerialize["enabled"] = o.Enabled
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["locale"] = o.Locale
 	if !IsNil(o.UserExperience) {
 		toSerialize["userExperience"] = o.UserExperience

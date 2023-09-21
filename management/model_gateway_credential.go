@@ -185,10 +185,18 @@ func (o GatewayCredential) MarshalJSON() ([]byte, error) {
 
 func (o GatewayCredential) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	// skip: createdAt is readOnly
-	// skip: lastUsedAt is readOnly
-	// skip: credential is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.LastUsedAt) {
+		toSerialize["lastUsedAt"] = o.LastUsedAt
+	}
+	if !IsNil(o.Credential) {
+		toSerialize["credential"] = o.Credential
+	}
 	return toSerialize, nil
 }
 

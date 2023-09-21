@@ -420,7 +420,9 @@ func (o ProvisionedCredential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClaimReference) {
 		toSerialize["claimReference"] = o.ClaimReference
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Credential) {
 		toSerialize["credential"] = o.Credential
 	}
@@ -430,9 +432,15 @@ func (o ProvisionedCredential) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: expiredAt is readOnly
-	// skip: id is readOnly
-	// skip: status is readOnly
+	if !IsNil(o.ExpiredAt) {
+		toSerialize["expiredAt"] = o.ExpiredAt
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}

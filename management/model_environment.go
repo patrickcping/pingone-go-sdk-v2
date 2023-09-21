@@ -394,11 +394,15 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillOfMaterials) {
 		toSerialize["billOfMaterials"] = o.BillOfMaterials
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["license"] = o.License
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Organization) {
@@ -406,7 +410,9 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["region"] = o.Region
 	toSerialize["type"] = o.Type
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

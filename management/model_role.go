@@ -253,13 +253,21 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: applicableTo is readOnly
-	// skip: description is readOnly
-	// skip: id is readOnly
+	if !IsNil(o.ApplicableTo) {
+		toSerialize["applicableTo"] = o.ApplicableTo
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	// skip: permissions is readOnly
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
 	return toSerialize, nil
 }
 

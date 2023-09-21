@@ -613,8 +613,12 @@ func (o SchemaAttribute) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
-	// skip: ldapAttribute is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.LdapAttribute) {
+		toSerialize["ldapAttribute"] = o.LdapAttribute
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Required) {
 		toSerialize["required"] = o.Required

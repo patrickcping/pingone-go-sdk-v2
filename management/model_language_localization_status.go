@@ -346,11 +346,15 @@ func (o LanguageLocalizationStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
@@ -361,7 +365,9 @@ func (o LanguageLocalizationStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StatusDetails) {
 		toSerialize["statusDetails"] = o.StatusDetails
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

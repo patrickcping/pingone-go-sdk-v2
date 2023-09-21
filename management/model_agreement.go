@@ -376,7 +376,9 @@ func (o Agreement) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: consentsAggregatedAt is readOnly
+	if !IsNil(o.ConsentsAggregatedAt) {
+		toSerialize["consentsAggregatedAt"] = o.ConsentsAggregatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -384,13 +386,19 @@ func (o Agreement) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: totalExpiredConsents is readOnly
-	// skip: id is readOnly
+	if !IsNil(o.TotalExpiredConsents) {
+		toSerialize["totalExpiredConsents"] = o.TotalExpiredConsents
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.ReconsentPeriodDays) {
 		toSerialize["reconsentPeriodDays"] = o.ReconsentPeriodDays
 	}
-	// skip: totalConsents is readOnly
+	if !IsNil(o.TotalConsents) {
+		toSerialize["totalConsents"] = o.TotalConsents
+	}
 	return toSerialize, nil
 }
 

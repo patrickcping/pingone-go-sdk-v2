@@ -2088,14 +2088,27 @@ components:
     RiskPredictorAnonymousNetwork:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork_allOf'
+      - properties:
+          whiteList:
+            description: A list of IP addresses (CIDRs) that are ignored for the predictor
+              results.
+            items:
+              format: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+              type: string
+            type: array
+        type: object
     RiskPredictorBotDetection:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
     RiskPredictorComposite:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorComposite_allOf'
+      - properties:
+          composition:
+            $ref: '#/components/schemas/RiskPredictorComposite_allOf_composition'
+        required:
+        - composition
+        type: object
     RiskPredictorCompositeAnd:
       properties:
         and:
@@ -2142,7 +2155,12 @@ components:
     RiskPredictorCustom:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorCustom_allOf'
+      - properties:
+          map:
+            $ref: '#/components/schemas/RiskPredictorCustom_allOf_map'
+        required:
+        - map
+        type: object
     RiskPredictorCustomItem:
       oneOf:
       - $ref: '#/components/schemas/RiskPredictorCustomItemIPRange'
@@ -2205,27 +2223,91 @@ components:
     RiskPredictorGeovelocity:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
+      - properties:
+          whiteList:
+            description: A list of IP addresses (CDIRs) that are ignored for the predictor
+              results.
+            items:
+              pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+              type: string
+            type: array
+        type: object
     RiskPredictorIPReputation:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorGeovelocity_allOf'
+      - properties:
+          whiteList:
+            description: A list of IP addresses (CDIRs) that are ignored for the predictor
+              results.
+            items:
+              pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+              type: string
+            type: array
+        type: object
     RiskPredictorDevice:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorDevice_allOf'
+      - properties:
+          detect:
+            $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
+          activationAt:
+            description: You can use the `activationAt` parameter to specify a date
+              on which the learning process for the predictor should be restarted.
+              This can be used in conjunction with the fallback setting (`default.result.level`)
+              to force strong authentication when moving the predictor to production.
+              The date should be in an RFC3339 format. Note that activation date uses
+              UTC time.
+            format: date-time
+            type: string
+        required:
+        - detect
+        type: object
     RiskPredictorUserLocationAnomaly:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf'
+      - properties:
+          days:
+            type: integer
+          radius:
+            $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf_radius'
+        required:
+        - days
+        - radius
+        type: object
     RiskPredictorUserRiskBehavior:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorUserRiskBehavior_allOf'
+      - properties:
+          predictionModel:
+            $ref: '#/components/schemas/RiskPredictorUserRiskBehavior_allOf_predictionModel'
+        required:
+        - predictionModel
+        type: object
     RiskPredictorVelocity:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorVelocity_allOf'
+      - properties:
+          by:
+            items:
+              format: "^\\${event\\.user\\.id}$|^\\${event\\.ip}$"
+              type: string
+            type: array
+          every:
+            $ref: '#/components/schemas/RiskPredictorVelocity_allOf_every'
+          fallback:
+            $ref: '#/components/schemas/RiskPredictorVelocity_allOf_fallback'
+          maxDelay:
+            $ref: '#/components/schemas/RiskPredictorVelocity_allOf_maxDelay'
+          measure:
+            $ref: '#/components/schemas/EnumPredictorVelocityMeasure'
+          of:
+            format: "^\\${event\\.user\\.id}$|^\\${event\\.ip}$"
+            type: string
+          slidingWindow:
+            $ref: '#/components/schemas/RiskPredictorVelocity_allOf_slidingWindow'
+          use:
+            $ref: '#/components/schemas/RiskPredictorVelocity_allOf_use'
+        type: object
     LinksHATEOAS_self:
       description: An object that describes the current resource.
       example:
@@ -3166,17 +3248,6 @@ components:
           type: array
       readOnly: true
       type: object
-    RiskPredictorAnonymousNetwork_allOf:
-      properties:
-        whiteList:
-          description: A list of IP addresses (CIDRs) that are ignored for the predictor
-            results.
-          items:
-            format: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
-            type: string
-          type: array
-      type: object
-      example: null
     RiskPredictorComposite_allOf_composition:
       properties:
         condition:
@@ -3186,14 +3257,6 @@ components:
       required:
       - condition
       - level
-      type: object
-      example: null
-    RiskPredictorComposite_allOf:
-      properties:
-        composition:
-          $ref: '#/components/schemas/RiskPredictorComposite_allOf_composition'
-      required:
-      - composition
       type: object
       example: null
     RiskPredictorCompositeCondition_oneOf:
@@ -3250,14 +3313,6 @@ components:
           $ref: '#/components/schemas/RiskPredictorCustomItem'
       type: object
       example: null
-    RiskPredictorCustom_allOf:
-      properties:
-        map:
-          $ref: '#/components/schemas/RiskPredictorCustom_allOf_map'
-      required:
-      - map
-      type: object
-      example: null
     RiskPredictorCustomItemBetween_between:
       description: Minimum and maximum boundaries
       properties:
@@ -3271,34 +3326,6 @@ components:
       - maxScore
       - minScore
       type: object
-    RiskPredictorGeovelocity_allOf:
-      properties:
-        whiteList:
-          description: A list of IP addresses (CDIRs) that are ignored for the predictor
-            results.
-          items:
-            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
-            type: string
-          type: array
-      type: object
-      example: null
-    RiskPredictorDevice_allOf:
-      properties:
-        detect:
-          $ref: '#/components/schemas/EnumPredictorNewDeviceDetectType'
-        activationAt:
-          description: You can use the `activationAt` parameter to specify a date
-            on which the learning process for the predictor should be restarted. This
-            can be used in conjunction with the fallback setting (`default.result.level`)
-            to force strong authentication when moving the predictor to production.
-            The date should be in an RFC3339 format. Note that activation date uses
-            UTC time.
-          format: date-time
-          type: string
-      required:
-      - detect
-      type: object
-      example: null
     RiskPredictorUserLocationAnomaly_allOf_radius:
       properties:
         distance:
@@ -3314,31 +3341,12 @@ components:
       - unit
       type: object
       example: null
-    RiskPredictorUserLocationAnomaly_allOf:
-      properties:
-        days:
-          type: integer
-        radius:
-          $ref: '#/components/schemas/RiskPredictorUserLocationAnomaly_allOf_radius'
-      required:
-      - days
-      - radius
-      type: object
-      example: null
     RiskPredictorUserRiskBehavior_allOf_predictionModel:
       properties:
         name:
           $ref: '#/components/schemas/EnumUserRiskBehaviorRiskModel'
       required:
       - name
-      type: object
-      example: null
-    RiskPredictorUserRiskBehavior_allOf:
-      properties:
-        predictionModel:
-          $ref: '#/components/schemas/RiskPredictorUserRiskBehavior_allOf_predictionModel'
-      required:
-      - predictionModel
       type: object
       example: null
     RiskPredictorVelocity_allOf_every:
@@ -3391,30 +3399,6 @@ components:
           type: number
         type:
           $ref: '#/components/schemas/EnumPredictorVelocityUseType'
-      type: object
-      example: null
-    RiskPredictorVelocity_allOf:
-      properties:
-        by:
-          items:
-            format: "^\\${event\\.user\\.id}$|^\\${event\\.ip}$"
-            type: string
-          type: array
-        every:
-          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_every'
-        fallback:
-          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_fallback'
-        maxDelay:
-          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_maxDelay'
-        measure:
-          $ref: '#/components/schemas/EnumPredictorVelocityMeasure'
-        of:
-          format: "^\\${event\\.user\\.id}$|^\\${event\\.ip}$"
-          type: string
-        slidingWindow:
-          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_slidingWindow'
-        use:
-          $ref: '#/components/schemas/RiskPredictorVelocity_allOf_use'
       type: object
       example: null
   securitySchemes:

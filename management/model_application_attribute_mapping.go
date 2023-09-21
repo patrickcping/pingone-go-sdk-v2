@@ -478,17 +478,23 @@ func (o ApplicationAttributeMapping) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.MappingType) {
 		toSerialize["mappingType"] = o.MappingType
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["required"] = o.Required
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["value"] = o.Value
 	if !IsNil(o.NameFormat) {
 		toSerialize["nameFormat"] = o.NameFormat

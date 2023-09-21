@@ -118,7 +118,9 @@ func (o ApplicationSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: secret is readOnly
+	if !IsNil(o.Secret) {
+		toSerialize["secret"] = o.Secret
+	}
 	return toSerialize, nil
 }
 

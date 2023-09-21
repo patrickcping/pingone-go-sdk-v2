@@ -81,7 +81,9 @@ func (o ProvisionedCredentialCredential) MarshalJSON() ([]byte, error) {
 
 func (o ProvisionedCredentialCredential) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	return toSerialize, nil
 }
 

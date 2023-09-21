@@ -527,7 +527,9 @@ func (o FormFieldPassword) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
-	// skip: attributeDisabled is readOnly
+	if !IsNil(o.AttributeDisabled) {
+		toSerialize["attributeDisabled"] = o.AttributeDisabled
+	}
 	toSerialize["key"] = o.Key
 	if !IsNil(o.Label) {
 		toSerialize["label"] = o.Label

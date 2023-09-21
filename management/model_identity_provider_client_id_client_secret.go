@@ -496,7 +496,9 @@ func (o IdentityProviderClientIDClientSecret) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Icon) {
 		toSerialize["icon"] = o.Icon
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.LoginButtonIcon) {
 		toSerialize["loginButtonIcon"] = o.LoginButtonIcon
 	}
@@ -505,8 +507,12 @@ func (o IdentityProviderClientIDClientSecret) ToMap() (map[string]interface{}, e
 		toSerialize["registration"] = o.Registration
 	}
 	toSerialize["type"] = o.Type
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["clientId"] = o.ClientId
 	toSerialize["clientSecret"] = o.ClientSecret
 	return toSerialize, nil

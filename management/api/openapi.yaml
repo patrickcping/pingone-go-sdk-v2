@@ -24304,19 +24304,245 @@ components:
     ApplicationExternalLink:
       allOf:
       - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationExternalLink_allOf'
+      - properties:
+          homePageUrl:
+            description: A string that specifies the custom home page URL for the
+              application.
+            type: string
+        required:
+        - homePageUrl
+        type: object
     ApplicationSAML:
       allOf:
       - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationSAML_allOf'
+      - properties:
+          homePageUrl:
+            description: A string that specifies the custom home page URL for the
+              application.
+            type: string
+          acsUrls:
+            description: A string that specifies the Assertion Consumer Service URLs.
+              The first URL in the list is used as default (there must be at least
+              one URL). This is a required property.
+            items:
+              type: string
+            type: array
+          assertionDuration:
+            description: An integer that specifies the assertion validity duration
+              in seconds. This is a required property.
+            type: integer
+          assertionSigned:
+            default: true
+            description: A boolean that specifies whether the SAML assertion itself
+              should be signed. The default value is `true`.
+            type: boolean
+          enableRequestedAuthnContext:
+            description: Indicates whether `requestedAuthnContext` is taken into account
+              in policy decision-making during authentication.
+            type: boolean
+          idpSigning:
+            $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigning'
+          nameIdFormat:
+            description: A string that specifies the format of the Subject NameID
+              attibute in the SAML assertion
+            type: string
+          responseSigned:
+            default: false
+            description: A boolean that specifies whether the SAML assertion response
+              itself should be signed. The default value is `false`.
+            type: boolean
+          sloBinding:
+            $ref: '#/components/schemas/EnumApplicationSAMLSloBinding'
+          sloEndpoint:
+            description: "A string that specifies the logout endpoint URL. This is\
+              \ an optional property. However, if a sloEndpoint logout endpoint URL\
+              \ is not defined, logout actions result in an error."
+            type: string
+          sloResponseEndpoint:
+            description: "A string that specifies the endpoint URL to submit the logout\
+              \ response. If a value is not provided, the sloEndpoint property value\
+              \ is used to submit SLO response."
+            type: string
+          sloWindow:
+            description: "Defines how long PingOne can exchange logout messages with\
+              \ the application, specifically a `LogoutRequest` from the application,\
+              \ since the initial request. PingOne can also send a `LogoutRequest`\
+              \ to the application when a single logout is initiated by the user from\
+              \ other session participants, such as an application or identity provider.\
+              \ This setting is per application. The SLO logout is separate from the\
+              \ user session logout that revokes all tokens."
+            type: integer
+          spEntityId:
+            description: A string that specifies the service provider entity ID used
+              to lookup the application. This is a required property and is unique
+              within the environment.
+            type: string
+          spVerification:
+            $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification'
+        required:
+        - acsUrls
+        - assertionDuration
+        - spEntityId
+        type: object
     ApplicationOIDC:
       allOf:
       - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationOIDC_allOf'
+      - properties:
+          additionalRefreshTokenReplayProtectionEnabled:
+            default: true
+            description: "When set to `true` (the default), if you attempt to reuse\
+              \ the refresh token, the authorization server immediately revokes the\
+              \ reused refresh token, as well as all descendant tokens. Setting this\
+              \ to null equates to a `false` setting."
+            type: boolean
+          allowWildcardInRedirectUris:
+            description: "A boolean to specify whether wildcards are allowed in redirect\
+              \ URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri)."
+            type: boolean
+          assignActorRoles:
+            description: A boolean that specifies whether the permissions service
+              should assign default roles to the application. This property is set
+              only on the POST request. The property is ignored when included in a
+              PUT request.
+            type: boolean
+          mobile:
+            $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile'
+          bundleId:
+            deprecated: true
+            description: |
+              **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
+            type: string
+          packageName:
+            deprecated: true
+            description: |
+              **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
+            type: string
+          kerberos:
+            $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos'
+          grantTypes:
+            description: "A string that specifies the grant type for the authorization\
+              \ request. This is a required property. Options are AUTHORIZATION_CODE,\
+              \ IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS."
+            items:
+              $ref: '#/components/schemas/EnumApplicationOIDCGrantType'
+            type: array
+          homePageUrl:
+            description: A string that specifies the custom home page URL for the
+              application.
+            type: string
+          initiateLoginUri:
+            description: "A string that specifies the URI to use for third-parties\
+              \ to begin the sign-on process for the application. If specified, PingOne\
+              \ redirects users to this URI to initiate SSO to PingOne. The application\
+              \ is responsible for implementing the relevant OIDC flow when the initiate\
+              \ login URI is requested. This property is required if you want the\
+              \ application to appear in the PingOne Application Portal. See the OIDC\
+              \ specification section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin)\
+              \ for more information."
+            type: string
+          pkceEnforcement:
+            $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
+          postLogoutRedirectUris:
+            description: A string that specifies the URLs that the browser can be
+              redirected to after logout.
+            items:
+              type: string
+            type: array
+          redirectUris:
+            description: A string that specifies the callback URI for the authentication
+              response.
+            items:
+              type: string
+            type: array
+          refreshTokenDuration:
+            default: 2592000
+            description: "An integer that specifies the lifetime in seconds of the\
+              \ refresh token. If a value is not provided, the default value is 2592000,\
+              \ or 30 days. Valid values are between 60 and 2147483647. If the `refreshTokenRollingDuration`\
+              \ property is specified for the application, then this property must\
+              \ be less than or equal to the value of `refreshTokenRollingDuration`.\
+              \ After this property is set, the value cannot be nullified. This value\
+              \ is used to generate the value for the exp claim when minting a new\
+              \ refresh token."
+            maximum: 2147483647
+            minimum: 60
+            type: integer
+          refreshTokenRollingDuration:
+            description: "An integer that specifies the number of seconds a refresh\
+              \ token can be exchanged before re-authentication is required. If a\
+              \ value is not provided, the refresh token is valid forever. Valid values\
+              \ are between 60 and 2147483647. After this property is set, the value\
+              \ cannot be nullified. This value is used to generate the value for\
+              \ the exp claim when minting a new refresh token."
+            maximum: 2147483647
+            type: integer
+          refreshTokenRollingGracePeriodDuration:
+            description: The number of seconds that a refresh token may be reused
+              after having been exchanged for a new set of tokens. This is useful
+              in the case of network errors on the client. Valid values are between
+              0 and 86400 seconds. Null is treated the same as 0.
+            maximum: 86400
+            type: integer
+          responseTypes:
+            description: "A string that specifies the code or token type returned\
+              \ by an authorization request. Options are TOKEN, ID_TOKEN, and CODE.\
+              \ Note that CODE cannot be used in an authorization request with TOKEN\
+              \ or ID_TOKEN because PingOne does not currently support OIDC hybrid\
+              \ flows."
+            items:
+              $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
+            type: array
+          requireSignedRequestObject:
+            description: "Indicates that the Java Web Token (JWT) for the [request\
+              \ query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
+              \ parameter is required to be signed. If `false` or null (default),\
+              \ a signed request object is not required. Both `supportUnsignedRequestObject`\
+              \ and this property cannot be set to `true`."
+            type: boolean
+          supportUnsignedRequestObject:
+            description: "A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
+              \ parameter JWT is allowed to be unsigned. If false or null (default),\
+              \ an unsigned request object is not allowed."
+            type: boolean
+          tags:
+            description: An array that specifies the list of labels associated with
+              the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only
+              applicable for creating worker applications.
+            items:
+              $ref: '#/components/schemas/EnumApplicationTags'
+            type: array
+          targetLinkUri:
+            description: "The URI for the application. If specified, PingOne will\
+              \ redirect application users to this URI after a user is authenticated.\
+              \ In the PingOne admin console, this becomes the value of the `target_link_uri`\
+              \ parameter used for the Initiate Single Sign-On URL field."
+            type: string
+          tokenEndpointAuthMethod:
+            $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
+          parRequirement:
+            $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
+          parTimeout:
+            default: 60
+            description: PAR timeout in seconds. Must be between `1` and `600`. The
+              default value is `60`.
+            maximum: 600
+            minimum: 1
+            type: integer
+        required:
+        - grantTypes
+        - tokenEndpointAuthMethod
+        type: object
     ApplicationOIDCInternal:
       allOf:
       - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationOIDCInternal_allOf'
+      - properties:
+          pkceEnforcement:
+            $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
+          tokenEndpointAuthMethod:
+            $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
+        required:
+        - tokenEndpointAuthMethod
+        type: object
     ApplicationPingOneAdminConsole:
       properties:
         pkceEnforcement:
@@ -24327,11 +24553,28 @@ components:
     ApplicationPingOnePortal:
       allOf:
       - $ref: '#/components/schemas/ApplicationOIDCInternal'
-      - $ref: '#/components/schemas/ApplicationPingOnePortal_allOf'
+      - properties:
+          applyDefaultTheme:
+            description: "If `true`, applies the default theme to the app portal application."
+            type: boolean
+        required:
+        - applyDefaultTheme
+        type: object
     ApplicationPingOneSelfService:
       allOf:
       - $ref: '#/components/schemas/ApplicationOIDCInternal'
-      - $ref: '#/components/schemas/ApplicationPingOneSelfService_allOf'
+      - properties:
+          enableDefaultThemeFooter:
+            description: "If `true`, shows the default theme footer on the self service\
+              \ application. Applies only if `applyDefaultTheme` is also `true`."
+            type: boolean
+          applyDefaultTheme:
+            description: "If `true`, applies the default theme to the self service\
+              \ application."
+            type: boolean
+        required:
+        - applyDefaultTheme
+        type: object
     ApplicationAttributeMapping:
       example:
         userInfo: true
@@ -24495,7 +24738,32 @@ components:
     ApplicationWSFED:
       allOf:
       - $ref: '#/components/schemas/Application'
-      - $ref: '#/components/schemas/ApplicationWSFED_allOf'
+      - properties:
+          audienceRestriction:
+            default: urn:federation:MicrosoftOnline
+            description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
+            type: string
+          domainName:
+            description: "The federated domain name (for example, the Azure custom\
+              \ domain)."
+            type: string
+          idpSigning:
+            $ref: '#/components/schemas/ApplicationWSFED_allOf_idpSigning'
+          kerberos:
+            $ref: '#/components/schemas/ApplicationWSFED_allOf_kerberos'
+          replyUrl:
+            description: "The URL that the replying party (such as, Office365) uses\
+              \ to accept submissions of RequestSecurityTokenResponse messages that\
+              \ are a result of SSO requests."
+            type: string
+          sloEndpoint:
+            description: The single logout endpoint URL.
+            type: string
+        required:
+        - domainName
+        - idpSigning
+        - replyUrl
+        type: object
     BillOfMaterials:
       example:
         createdAt: createdAt
@@ -27033,12 +27301,38 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormElement'
-      - $ref: '#/components/schemas/FormFieldText_allOf'
+      - properties:
+          layout:
+            $ref: '#/components/schemas/EnumFormElementLayout'
+          options:
+            description: "An array of strings that specifies the unique list of options.\
+              \ This is a required property when the type is `RADIO`, `CHECKBOX`,\
+              \ or `DROPDOWN`."
+            items:
+              type: string
+            type: array
+          validation:
+            $ref: '#/components/schemas/FormElementValidation'
+        required:
+        - validation
+        type: object
     FormFieldPassword:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormElement'
-      - $ref: '#/components/schemas/FormFieldPassword_allOf'
+      - properties:
+          layout:
+            $ref: '#/components/schemas/EnumFormElementLayout'
+          options:
+            description: "An array of strings that specifies the unique list of options.\
+              \ This is a required property when the type is `RADIO`, `CHECKBOX`,\
+              \ or `DROPDOWN`."
+            items:
+              type: string
+            type: array
+          validation:
+            $ref: '#/components/schemas/FormElementValidation'
+        type: object
     FormFieldPasswordVerify:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -27047,17 +27341,61 @@ components:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormElement'
-      - $ref: '#/components/schemas/FormFieldRadio_allOf'
+      - properties:
+          layout:
+            $ref: '#/components/schemas/EnumFormElementLayout'
+          options:
+            description: "An array of strings that specifies the unique list of options.\
+              \ This is a required property when the type is `RADIO`, `CHECKBOX`,\
+              \ or `DROPDOWN`."
+            items:
+              type: string
+            type: array
+          validation:
+            $ref: '#/components/schemas/FormElementValidation'
+        required:
+        - layout
+        - options
+        type: object
     FormFieldCheckbox:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormElement'
-      - $ref: '#/components/schemas/FormFieldRadio_allOf'
+      - properties:
+          layout:
+            $ref: '#/components/schemas/EnumFormElementLayout'
+          options:
+            description: "An array of strings that specifies the unique list of options.\
+              \ This is a required property when the type is `RADIO`, `CHECKBOX`,\
+              \ or `DROPDOWN`."
+            items:
+              type: string
+            type: array
+          validation:
+            $ref: '#/components/schemas/FormElementValidation'
+        required:
+        - layout
+        - options
+        type: object
     FormFieldDropdown:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormElement'
-      - $ref: '#/components/schemas/FormFieldDropdown_allOf'
+      - properties:
+          layout:
+            $ref: '#/components/schemas/EnumFormElementLayout'
+          options:
+            description: "An array of strings that specifies the unique list of options.\
+              \ This is a required property when the type is `RADIO`, `CHECKBOX`,\
+              \ or `DROPDOWN`."
+            items:
+              type: string
+            type: array
+          validation:
+            $ref: '#/components/schemas/FormElementValidation'
+        required:
+        - options
+        type: object
     FormFieldCombobox:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
@@ -27269,11 +27607,71 @@ components:
     GatewayTypeLDAP:
       allOf:
       - $ref: '#/components/schemas/Gateway'
-      - $ref: '#/components/schemas/GatewayTypeLDAP_allOf'
+      - properties:
+          bindDN:
+            description: "A string that specifies the distinguished name information\
+              \ to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com)."
+            type: string
+          bindPassword:
+            description: A string that specifies the bind password for the LDAP database.
+              This is a required property.
+            type: string
+          connectionSecurity:
+            $ref: '#/components/schemas/EnumGatewayTypeLDAPSecurity'
+          kerberos:
+            $ref: '#/components/schemas/GatewayTypeLDAP_allOf_kerberos'
+          serversHostAndPort:
+            description: "An array of strings that specifies the LDAP server host\
+              \ name and port number (for example, [`ds1.example.com:389`, `ds2.example.com:389`])."
+            items:
+              type: string
+            type: array
+          userTypes:
+            description: An array of the userTypes properties for the users to be
+              provisioned in PingOne. userTypes specifies which user properties in
+              PingOne correspond to the user properties in an external LDAP directory.
+              You can use an LDAP browser to view the user properties in the external
+              LDAP directory.
+            items:
+              $ref: '#/components/schemas/GatewayTypeLDAP_allOf_userTypes'
+            type: array
+          validateTlsCertificates:
+            description: "A boolean that specifies whether or not to trust all SSL\
+              \ certificates (defaults to true). If this value is false, TLS certificates\
+              \ are not validated. When the value is set to true, only certificates\
+              \ that are signed by the default JVM CAs, or the CA certs that the customer\
+              \ has uploaded to the certificate service are trusted."
+            type: boolean
+          vendor:
+            $ref: '#/components/schemas/EnumGatewayVendor'
+          followReferrals:
+            readOnly: true
+            type: boolean
+        required:
+        - bindDN
+        - bindPassword
+        - serversHostAndPort
+        - vendor
+        type: object
     GatewayTypeRADIUS:
       allOf:
       - $ref: '#/components/schemas/Gateway'
-      - $ref: '#/components/schemas/GatewayTypeRADIUS_allOf'
+      - properties:
+          davinci:
+            $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_davinci'
+          defaultSharedSecret:
+            description: Value to use for the shared secret if the shared secret is
+              not provided for one or more of the RADIUS clients specified.
+            type: string
+          radiusClients:
+            description: Collection of RADIUS clients.
+            items:
+              $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_radiusClients'
+            type: array
+        required:
+        - davinci
+        - radiusClients
+        type: object
     GatewayCredential:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -27598,27 +27996,197 @@ components:
     IdentityProviderFacebook:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderFacebook_allOf'
+      - properties:
+          appId:
+            description: A string that specifies the application ID from Facebook.
+              This is a required property.
+            type: string
+          appSecret:
+            description: A string that specifies the application secret from Facebook.
+              This is a required property.
+            type: string
+        required:
+        - appId
+        - appSecret
+        type: object
     IdentityProviderClientIDClientSecret:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderClientIDClientSecret_allOf'
+      - properties:
+          clientId:
+            description: A string that specifies the application ID from the provider.
+              This is a required property.
+            type: string
+          clientSecret:
+            description: A string that specifies the application secret from the provider.
+              This is a required property.
+            type: string
+        required:
+        - clientId
+        - clientSecret
+        type: object
     IdentityProviderOIDC:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderOIDC_allOf'
+      - properties:
+          authorizationEndpoint:
+            description: A string that specifies the the OIDC identity provider's
+              authorization endpoint. This value must be a URL that uses https. This
+              is a required property.
+            type: string
+          clientId:
+            description: A string that specifies the application ID from the OIDC
+              identity provider. This is a required property.
+            type: string
+          clientSecret:
+            description: A string that specifies the application secret from the OIDC
+              identity provider. This is a required property.
+            type: string
+          discoveryEndpoint:
+            description: A string that specifies the OIDC identity provider's discovery
+              endpoint. This value must be a URL that uses https.
+            type: string
+          issuer:
+            description: A string that specifies the issuer to which the authentication
+              is sent for the OIDC identity provider. This value must be a URL that
+              uses https. This is a required property.
+            type: string
+          jwksEndpoint:
+            description: A string that specifies the OIDC identity provider's jwks
+              endpoint. This value must be a URL that uses https. This is a required
+              property.
+            type: string
+          scopes:
+            description: An array that specifies the scopes to include in the authentication
+              request to the OIDC identity provider. This is a required property.
+            items:
+              type: string
+            type: array
+          tokenEndpoint:
+            description: A string that specifies the OIDC identity provider's token
+              endpoint. This is a required property.
+            type: string
+          tokenEndpointAuthMethod:
+            $ref: '#/components/schemas/EnumIdentityProviderOIDCTokenAuthMethod'
+          userInfoEndpoint:
+            description: A string that specifies the OIDC identity provider's userInfo
+              endpoint.
+            type: string
+        required:
+        - authorizationEndpoint
+        - clientId
+        - clientSecret
+        - issuer
+        - jwksEndpoint
+        - scopes
+        - tokenEndpoint
+        - tokenEndpointAuthMethod
+        type: object
     IdentityProviderApple:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderApple_allOf'
+      - properties:
+          clientId:
+            description: A string that specifies the application ID from Apple. This
+              is the identifier obtained after registering a services ID in the Apple
+              developer portal. This is a required property.
+            type: string
+          clientSecretSigningKey:
+            description: A string that specifies the private key that is used to generate
+              a client secret. This is a required property.
+            type: string
+          keyId:
+            description: A 10-character string that Apple uses to identify an authentication
+              key. This is a required property.
+            type: string
+          teamId:
+            description: A 10-character string that Apple uses to identify teams.
+              This is a required property.
+            type: string
+        required:
+        - clientId
+        - clientSecretSigningKey
+        - keyId
+        - teamId
+        type: object
     IdentityProviderPaypal:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderPaypal_allOf'
+      - properties:
+          clientId:
+            description: A string that specifies the application ID from PayPal. This
+              is a required property.
+            type: string
+          clientSecret:
+            description: A string that specifies the application secret from PayPal.
+              This is a required property.
+            type: string
+          clientEnvironment:
+            description: "A string that specifies the PayPal environment. Options\
+              \ are sandbox, and live. This is a required property."
+            type: string
+        required:
+        - clientEnvironment
+        - clientId
+        - clientSecret
+        type: object
     IdentityProviderSAML:
       allOf:
       - $ref: '#/components/schemas/IdentityProviderCommon'
-      - $ref: '#/components/schemas/IdentityProviderSAML_allOf'
+      - properties:
+          authnRequestSigned:
+            description: A boolean that specifies whether the SAML authentication
+              request will be signed when sending to the identity provider. Set this
+              to true if the external IDP is included in an authentication policy
+              to be used by applications that are accessed using a mix of default
+              URLS and custom Domains URLs.
+            type: boolean
+          idpEntityId:
+            description: A string that specifies the entity ID URI that is checked
+              against the issuerId tag in the incoming response.
+            type: string
+          idpVerification:
+            $ref: '#/components/schemas/IdentityProviderSAML_allOf_idpVerification'
+          spEntityId:
+            description: "A string that specifies the service provider's entity ID,\
+              \ used to look up the application."
+            type: string
+          spSigning:
+            $ref: '#/components/schemas/IdentityProviderSAML_allOf_spSigning'
+          ssoBinding:
+            $ref: '#/components/schemas/EnumIdentityProviderSAMLSSOBinding'
+          ssoEndpoint:
+            description: A string that specifies the SSO endpoint for the authentication
+              request.
+            type: string
+          sloBinding:
+            $ref: '#/components/schemas/EnumIdentityProviderSAMLSLOBinding'
+          sloEndpoint:
+            description: "The logout endpoint URL. This is an optional property. However,\
+              \ if a `sloEndpoint` logout endpoint URL is not defined, logout actions\
+              \ result in an error."
+            type: string
+          sloResponseEndpoint:
+            description: "The endpoint URL to submit the logout response. If a value\
+              \ is not provided, the `sloEndpoint` property value is used to submit\
+              \ SLO response."
+            type: string
+          sloWindow:
+            description: "Defines how long PingOne can exchange logout messages with\
+              \ the application, specifically a `LogoutRequest` from the application,\
+              \ since the initial request. PingOne can also send a `LogoutRequest`\
+              \ to the application when a single logout is initiated by the user from\
+              \ other session participants, such as an application or identity provider.\
+              \ This setting is per application. The SLO logout is separate from the\
+              \ user session logout that revokes all tokens."
+            type: integer
+        required:
+        - idpEntityId
+        - idpVerification
+        - spEntityId
+        - ssoBinding
+        - ssoEndpoint
+        type: object
     Image:
       example:
         createdAt: 2000-01-23T04:56:07.000+00:00
@@ -28250,7 +28818,25 @@ components:
     NotificationsSettingsPhoneDeliverySettingsCustom:
       allOf:
       - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCommon'
-      - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom_allOf'
+      - properties:
+          name:
+            description: The customer provider's name.
+            type: string
+          requests:
+            items:
+              $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomRequest'
+            type: array
+          authentication:
+            $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom_allOf_authentication'
+          numbers:
+            items:
+              $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomNumbers'
+            type: array
+        required:
+        - authentication
+        - name
+        - requests
+        type: object
     NotificationsSettingsPhoneDeliverySettingsCustomNumbers:
       properties:
         number:
@@ -28344,7 +28930,23 @@ components:
     NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse:
       allOf:
       - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCommon'
-      - $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf'
+      - properties:
+          sid:
+            description: |
+              The public ID of the Twilio account.
+              Relevant to Twilio only.
+            type: string
+          authToken:
+            description: The secret key of the Twilio or Syniverse account.
+            type: string
+          numbers:
+            items:
+              $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomNumbers'
+            type: array
+        required:
+        - authToken
+        - sid
+        type: object
     ObjectApplication:
       example:
         id: id
@@ -29472,33 +30074,174 @@ components:
     SignOnPolicyActionLogin:
       allOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf'
+      - properties:
+          enforceLockoutForIdentityProviders:
+            description: "A boolean that if set to true and if the user's account\
+              \ is locked (the account.canAuthenticate attribute is set to false),\
+              \ then social sign on with an external identity provider is prevented."
+            type: boolean
+          newUserProvisioning:
+            $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_newUserProvisioning'
+          recovery:
+            $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_recovery'
+          registration:
+            $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_registration'
+          socialProviders:
+            description: An array of strings that specifies the IDs of the identity
+              providers that can be used for the social login sign-on flow.
+            items:
+              $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_socialProviders'
+            type: array
+        type: object
     SignOnPolicyActionMFA:
       allOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf'
+      - properties:
+          authenticator:
+            $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_authenticator'
+          boundBiometrics:
+            $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_boundBiometrics'
+          email:
+            $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_email'
+          securityKey:
+            $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_securityKey'
+          sms:
+            $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_sms'
+          voice:
+            $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_voice'
+          applications:
+            deprecated: true
+            description: "The applications collection specifies all the native native\
+              \ applications that are allowed in the sign-on policy action.  If the\
+              \ applications collection is empty, a push notification is not allowed\
+              \ for the action."
+            items:
+              $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_applications'
+            type: array
+          deviceAuthenticationPolicy:
+            $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_deviceAuthenticationPolicy'
+          noDevicesMode:
+            $ref: '#/components/schemas/EnumSignOnPolicyNoDeviceMode'
+        type: object
     SignOnPolicyActionIDFirst:
       allOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionIDFirst_allOf'
+      - properties:
+          discoveryRules:
+            description: The list of IDP discovery rules that are evaluated in order
+              when no user is associated with the user identifier. The maximum number
+              of rules is 100. The condition on which this identity provider is used
+              to authenticate the user is expressed using the PingOne policy condition
+              language
+            items:
+              $ref: '#/components/schemas/SignOnPolicyActionIDFirst_allOf_discoveryRules'
+            type: array
+          enforceLockoutForIdentityProviders:
+            description: "A boolean that if set to true and if the user's account\
+              \ is locked (the account.canAuthenticate attribute is set to false),\
+              \ then social sign on with an external identity provider is prevented."
+            type: boolean
+          recovery:
+            $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_recovery'
+          registration:
+            $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_registration'
+          socialProviders:
+            description: An array of strings that specifies the IDs of the identity
+              providers that can be used for the social login sign-on flow.
+            items:
+              $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_socialProviders'
+            type: array
+        type: object
     SignOnPolicyActionIDP:
       allOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionIDP_allOf'
+      - properties:
+          acrValues:
+            description: "A string that designates the sign-on policies included in\
+              \ the authorization flow request. Options can include the PingOne predefined\
+              \ sign-on policies, Single_Factor and Multi_Factor, or any custom defined\
+              \ sign-on policy names. Sign-on policy names should be listed in order\
+              \ of preference, and they must be assigned to the application. This\
+              \ property can be configured on the identity provider action and is\
+              \ passed to the identity provider if the identity provider is of type\
+              \ `SAML` or `OPENID_CONNECT`."
+            type: string
+          identityProvider:
+            $ref: '#/components/schemas/SignOnPolicyActionIDP_allOf_identityProvider'
+          passUserContext:
+            description: "A boolean that specifies whether to pass in a login hint\
+              \ to the identity provider on the authentication request. Based on user\
+              \ context, the login hint is set if (1) the user is set on the flow,\
+              \ and (2) the user already has an account link for the identity provider.\
+              \ If both of these conditions are true, then the user is sent to the\
+              \ identity provider with a login hint equal to their externalId for\
+              \ the identity provider (saved on the account link). If these conditions\
+              \ are not true, then the API checks see if there is an OIDC login hint\
+              \ on the flow. If so, that login hint is used. If none of these conditions\
+              \ are true, the login hint parameter is not included on the authorization\
+              \ request to the identity provider."
+            type: boolean
+          registration:
+            $ref: '#/components/schemas/SignOnPolicyActionIDP_allOf_registration'
+        required:
+        - identityProvider
+        type: object
     SignOnPolicyActionAgreement:
       allOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionAgreement_allOf'
+      - properties:
+          agreement:
+            $ref: '#/components/schemas/SignOnPolicyActionAgreement_allOf_agreement'
+          disableDeclineOption:
+            description: "When enabled, the `Do Not Accept` button will terminate\
+              \ the Flow and display an error message to the user."
+            type: boolean
+        required:
+        - agreement
+        type: object
     SignOnPolicyActionProgressiveProfiling:
       allOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionProgressiveProfiling_allOf'
+      - properties:
+          attributes:
+            items:
+              $ref: '#/components/schemas/SignOnPolicyActionProgressiveProfiling_allOf_attributes'
+            type: array
+          preventMultiplePromptsPerFlow:
+            description: A boolean that specifies whether the progressive profiling
+              action will not be executed if another progressive profiling action
+              has already been executed during the flow. This property is required.
+            type: boolean
+          promptIntervalSeconds:
+            description: An integer that specifies how often to prompt the user to
+              provide profile data for the configured attributes for which they do
+              not have values. This property is required.
+            minimum: 1
+            type: integer
+          promptText:
+            description: A string that specifies text to display to the user when
+              prompting for attribute values. This property is required.
+            type: string
+        required:
+        - attributes
+        - preventMultiplePromptsPerFlow
+        - promptIntervalSeconds
+        - promptText
+        type: object
     SignOnPolicyActionPingID:
       $ref: '#/components/schemas/SignOnPolicyActionCommon'
     SignOnPolicyActionPingIDWinLoginPasswordless:
       allOf:
       - $ref: '#/components/schemas/SignOnPolicyActionCommon'
-      - $ref: '#/components/schemas/SignOnPolicyActionPingIDWinLoginPasswordless_allOf'
+      - properties:
+          uniqueUserAttribute:
+            $ref: '#/components/schemas/SignOnPolicyActionPingIDWinLoginPasswordless_allOf_uniqueUserAttribute'
+          offlineMode:
+            $ref: '#/components/schemas/SignOnPolicyActionPingIDWinLoginPasswordless_allOf_offlineMode'
+        required:
+        - offlineMode
+        - uniqueUserAttribute
+        type: object
     SignOnPolicyAssignment:
       example:
         environment:
@@ -29742,19 +30485,124 @@ components:
     TemplateContentEmail:
       allOf:
       - $ref: '#/components/schemas/TemplateContentCommon'
-      - $ref: '#/components/schemas/TemplateContentEmail_allOf'
+      - properties:
+          body:
+            description: "The email text. Email text cannot be larger than 100 kB.\
+              \ Email text can contain HTML. If supported, this can include variables."
+            type: string
+          from:
+            $ref: '#/components/schemas/TemplateContentEmail_allOf_from'
+          subject:
+            description: "The email's subject line. Cannot exceed 256 characters.\
+              \ If supported, can include variables."
+            maxLength: 256
+            type: string
+          replyTo:
+            $ref: '#/components/schemas/TemplateContentEmail_allOf_replyTo'
+          charset:
+            default: UTF-8
+            description: "If not specified, `UTF-8` is the default value."
+            type: string
+          emailContentType:
+            default: text/html
+            description: "If not specified, `text/html` is the default value."
+            type: string
+        required:
+        - body
+        type: object
     TemplateContentSMS:
       allOf:
       - $ref: '#/components/schemas/TemplateContentCommon'
-      - $ref: '#/components/schemas/TemplateContentSMS_allOf'
+      - properties:
+          content:
+            description: |
+              The SMS text.
+              UC-2 encoding is used for text that contains non GSM-7 characters. UC-2 encoded text cannot exceed 67 characters. GSM-7 encoded text cannot exceed 153 characters. If supported, it can include variables.
+            maxLength: 153
+            type: string
+          sender:
+            description: "The SMS sender ID. This property can contain only alphanumeric\
+              \ characters and spaces, and its length cannot exceed 11 characters.\
+              \ In some countries, it is impossible to send an SMS with an alphanumeric\
+              \ sender ID. For those countries, the sender ID must be empty. For SMS\
+              \ recipients in specific countries, refer to Twilio's documentation\
+              \ on [International support for Alphanumeric Sender ID](https://support.twilio.com/hc/en-us/articles/223133767-International-support-for-Alphanumeric-Sender-ID)."
+            maxLength: 11
+            type: string
+        required:
+        - content
+        type: object
     TemplateContentPush:
       allOf:
       - $ref: '#/components/schemas/TemplateContentCommon'
-      - $ref: '#/components/schemas/TemplateContentPush_allOf'
+      - properties:
+          title:
+            description: "The push title (maximum 200 characters). If supported, this\
+              \ can include variables."
+            maxLength: 200
+            type: string
+          body:
+            description: "The push text (maximum 400 characters for push text). If\
+              \ supported, this can include variables."
+            maxLength: 400
+            type: string
+          pushCategory:
+            $ref: '#/components/schemas/EnumTemplateContentPushCategory'
+        required:
+        - body
+        - title
+        type: object
     TemplateContentVoice:
       allOf:
       - $ref: '#/components/schemas/TemplateContentCommon'
-      - $ref: '#/components/schemas/TemplateContentVoice_allOf'
+      - properties:
+          content:
+            description: "The voice text.  Limited to 1Kb characters.\n  The following\
+              \ substitution place holders can be embedded in the message:\n  * `<pause1sec>`:\
+              \ Pauses the message narration for 1 second.\n    The pause interval\
+              \ <pause1sec> cannot be modified. To pause the message narration for\
+              \ more than one second, repeat multiple `<pause1sec>` occurrences in\
+              \ succession, according to the desired pause interval duration. For\
+              \ example, `<pause1sec><pause1sec><pause1sec>` pauses the message narration\
+              \ for three seconds.\n  * `<sayCharValue> .. </sayCharValue>`: Reads\
+              \ the character name of each character of the enclosed string separately.\n\
+              \  * `<repeatMessage val=x> .. </repeatMessage>`: Narrates the enclosed\
+              \ text `<val>` number of times.\n  \n  In the following message example,\
+              \ `${otp}` is assigned the value `\"123456\"`, and `${email}` is assigned\
+              \ the value `\"joe@bxz.com\"`:\n  ```\n  Hello <pause1sec> your authentication\
+              \ code is \n  <sayCharValue>${otp}</​sayCharValue> \n  <repeatMessage\
+              \ val=2> I repeat your code is \n  <sayCharValue>${otp}</​sayCharValue>\n\
+              \  </​repeatMessage> <pause1sec> \n  Mail <sayCharValue>${email}</​\
+              sayCharValue> for help\n  ```\n  The narrated message on the voice call\
+              \ sounds like:\n  ```\n  HELLO <1 second silence> YOUR AUTHENTICATION\
+              \ CODE IS \n  ONE TWO THREE FOUR FIVE SIX \n  I REPEAT YOUR CODE IS\
+              \ ONE TWO THREE FOUR FIVE SIX \n  I REPEAT YOUR CODE IS ONE TWO THREE\
+              \ FOUR FIVE SIX <1 second silence> \n  MAIL JAY OH EE AT BEE EX ZEE\
+              \ DOT SEE OH EM FOR HELP\n  ```\n"
+            type: string
+          voice:
+            description: |
+              Voice OTP supports vendor-specific voices.
+                * Supported Twilio voices:
+                  * Man, Woman
+                    Supported locales (default: en):
+                    en, en_GB, es, fr, de
+                  * Alice (Twilio only)
+                    Supported locales (default: en US):
+                    da_DK, de_DE, en_AU, en_CA, en_GB, en_US, ca_ES, es_ES, es_MX, fi_FI, fr_CA, fr_FR, it_IT, ja_JP, ko_KR, nb_NO, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, sv_SE, zh_CN, zh_HK, zh_TW
+                  * Amazon Polly
+                    cy_GB, ro_RO, is_IS, hi_IN tr_TR
+                * Supported Syniverse voices:
+                  * Man, Woman
+                    Supported locales:
+                    en_US, en_GB, es_ES, es_US, fr_FR, de_DE, it_IT, en_AU, da_DK, is_IS, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, ja_JP
+                  * Woman only
+                    Supported locales:
+                    cmn_CN, cy_GB, en_IN, fr_CA, hi_IN, nb_NO, ro_RO, sv_SE, tr_TR, ko_KR, ar
+            type: string
+        required:
+        - content
+        type: object
     TemplateContentBulkVariant:
       type: object
     User:
@@ -30282,15 +31130,6 @@ components:
       - href
       - id
       type: object
-    ApplicationExternalLink_allOf:
-      properties:
-        homePageUrl:
-          description: A string that specifies the custom home page URL for the application.
-          type: string
-      required:
-      - homePageUrl
-      type: object
-      example: null
     ApplicationSAML_allOf_idpSigning_key:
       properties:
         id:
@@ -30335,76 +31174,6 @@ components:
           type: array
       required:
       - certificates
-      type: object
-      example: null
-    ApplicationSAML_allOf:
-      properties:
-        homePageUrl:
-          description: A string that specifies the custom home page URL for the application.
-          type: string
-        acsUrls:
-          description: A string that specifies the Assertion Consumer Service URLs.
-            The first URL in the list is used as default (there must be at least one
-            URL). This is a required property.
-          items:
-            type: string
-          type: array
-        assertionDuration:
-          description: An integer that specifies the assertion validity duration in
-            seconds. This is a required property.
-          type: integer
-        assertionSigned:
-          default: true
-          description: A boolean that specifies whether the SAML assertion itself
-            should be signed. The default value is `true`.
-          type: boolean
-        enableRequestedAuthnContext:
-          description: Indicates whether `requestedAuthnContext` is taken into account
-            in policy decision-making during authentication.
-          type: boolean
-        idpSigning:
-          $ref: '#/components/schemas/ApplicationSAML_allOf_idpSigning'
-        nameIdFormat:
-          description: A string that specifies the format of the Subject NameID attibute
-            in the SAML assertion
-          type: string
-        responseSigned:
-          default: false
-          description: A boolean that specifies whether the SAML assertion response
-            itself should be signed. The default value is `false`.
-          type: boolean
-        sloBinding:
-          $ref: '#/components/schemas/EnumApplicationSAMLSloBinding'
-        sloEndpoint:
-          description: "A string that specifies the logout endpoint URL. This is an\
-            \ optional property. However, if a sloEndpoint logout endpoint URL is\
-            \ not defined, logout actions result in an error."
-          type: string
-        sloResponseEndpoint:
-          description: "A string that specifies the endpoint URL to submit the logout\
-            \ response. If a value is not provided, the sloEndpoint property value\
-            \ is used to submit SLO response."
-          type: string
-        sloWindow:
-          description: "Defines how long PingOne can exchange logout messages with\
-            \ the application, specifically a `LogoutRequest` from the application,\
-            \ since the initial request. PingOne can also send a `LogoutRequest` to\
-            \ the application when a single logout is initiated by the user from other\
-            \ session participants, such as an application or identity provider. This\
-            \ setting is per application. The SLO logout is separate from the user\
-            \ session logout that revokes all tokens."
-          type: integer
-        spEntityId:
-          description: A string that specifies the service provider entity ID used
-            to lookup the application. This is a required property and is unique within
-            the environment.
-          type: string
-        spVerification:
-          $ref: '#/components/schemas/ApplicationSAML_allOf_spVerification'
-      required:
-      - acsUrls
-      - assertionDuration
-      - spEntityId
       type: object
       example: null
     ApplicationOIDC_allOf_mobile_passcodeRefreshDuration:
@@ -30542,180 +31311,6 @@ components:
       - key
       type: object
       example: null
-    ApplicationOIDC_allOf:
-      properties:
-        additionalRefreshTokenReplayProtectionEnabled:
-          default: true
-          description: "When set to `true` (the default), if you attempt to reuse\
-            \ the refresh token, the authorization server immediately revokes the\
-            \ reused refresh token, as well as all descendant tokens. Setting this\
-            \ to null equates to a `false` setting."
-          type: boolean
-        allowWildcardInRedirectUris:
-          description: "A boolean to specify whether wildcards are allowed in redirect\
-            \ URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context=p1_c_wildcard_redirect_uri)."
-          type: boolean
-        assignActorRoles:
-          description: A boolean that specifies whether the permissions service should
-            assign default roles to the application. This property is set only on
-            the POST request. The property is ignored when included in a PUT request.
-          type: boolean
-        mobile:
-          $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile'
-        bundleId:
-          deprecated: true
-          description: |
-            **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.
-          type: string
-        packageName:
-          deprecated: true
-          description: |
-            **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.packageName` instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.
-          type: string
-        kerberos:
-          $ref: '#/components/schemas/ApplicationOIDC_allOf_kerberos'
-        grantTypes:
-          description: "A string that specifies the grant type for the authorization\
-            \ request. This is a required property. Options are AUTHORIZATION_CODE,\
-            \ IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS."
-          items:
-            $ref: '#/components/schemas/EnumApplicationOIDCGrantType'
-          type: array
-        homePageUrl:
-          description: A string that specifies the custom home page URL for the application.
-          type: string
-        initiateLoginUri:
-          description: "A string that specifies the URI to use for third-parties to\
-            \ begin the sign-on process for the application. If specified, PingOne\
-            \ redirects users to this URI to initiate SSO to PingOne. The application\
-            \ is responsible for implementing the relevant OIDC flow when the initiate\
-            \ login URI is requested. This property is required if you want the application\
-            \ to appear in the PingOne Application Portal. See the OIDC specification\
-            \ section of [Initiating Login from a Third Party](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin)\
-            \ for more information."
-          type: string
-        pkceEnforcement:
-          $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
-        postLogoutRedirectUris:
-          description: A string that specifies the URLs that the browser can be redirected
-            to after logout.
-          items:
-            type: string
-          type: array
-        redirectUris:
-          description: A string that specifies the callback URI for the authentication
-            response.
-          items:
-            type: string
-          type: array
-        refreshTokenDuration:
-          default: 2592000
-          description: "An integer that specifies the lifetime in seconds of the refresh\
-            \ token. If a value is not provided, the default value is 2592000, or\
-            \ 30 days. Valid values are between 60 and 2147483647. If the `refreshTokenRollingDuration`\
-            \ property is specified for the application, then this property must be\
-            \ less than or equal to the value of `refreshTokenRollingDuration`. After\
-            \ this property is set, the value cannot be nullified. This value is used\
-            \ to generate the value for the exp claim when minting a new refresh token."
-          maximum: 2147483647
-          minimum: 60
-          type: integer
-        refreshTokenRollingDuration:
-          description: "An integer that specifies the number of seconds a refresh\
-            \ token can be exchanged before re-authentication is required. If a value\
-            \ is not provided, the refresh token is valid forever. Valid values are\
-            \ between 60 and 2147483647. After this property is set, the value cannot\
-            \ be nullified. This value is used to generate the value for the exp claim\
-            \ when minting a new refresh token."
-          maximum: 2147483647
-          type: integer
-        refreshTokenRollingGracePeriodDuration:
-          description: The number of seconds that a refresh token may be reused after
-            having been exchanged for a new set of tokens. This is useful in the case
-            of network errors on the client. Valid values are between 0 and 86400
-            seconds. Null is treated the same as 0.
-          maximum: 86400
-          type: integer
-        responseTypes:
-          description: "A string that specifies the code or token type returned by\
-            \ an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note\
-            \ that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN\
-            \ because PingOne does not currently support OIDC hybrid flows."
-          items:
-            $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
-          type: array
-        requireSignedRequestObject:
-          description: "Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
-            \ parameter is required to be signed. If `false` or null (default), a\
-            \ signed request object is not required. Both `supportUnsignedRequestObject`\
-            \ and this property cannot be set to `true`."
-          type: boolean
-        supportUnsignedRequestObject:
-          description: "A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject)\
-            \ parameter JWT is allowed to be unsigned. If false or null (default),\
-            \ an unsigned request object is not allowed."
-          type: boolean
-        tags:
-          description: An array that specifies the list of labels associated with
-            the application. Options are `PING_FED_CONNECTION_INTEGRATION`.  Only
-            applicable for creating worker applications.
-          items:
-            $ref: '#/components/schemas/EnumApplicationTags'
-          type: array
-        targetLinkUri:
-          description: "The URI for the application. If specified, PingOne will redirect\
-            \ application users to this URI after a user is authenticated. In the\
-            \ PingOne admin console, this becomes the value of the `target_link_uri`\
-            \ parameter used for the Initiate Single Sign-On URL field."
-          type: string
-        tokenEndpointAuthMethod:
-          $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
-        parRequirement:
-          $ref: '#/components/schemas/EnumApplicationOIDCPARRequirement'
-        parTimeout:
-          default: 60
-          description: PAR timeout in seconds. Must be between `1` and `600`. The
-            default value is `60`.
-          maximum: 600
-          minimum: 1
-          type: integer
-      required:
-      - grantTypes
-      - tokenEndpointAuthMethod
-      type: object
-      example: null
-    ApplicationOIDCInternal_allOf:
-      properties:
-        pkceEnforcement:
-          $ref: '#/components/schemas/EnumApplicationOIDCPKCEOption'
-        tokenEndpointAuthMethod:
-          $ref: '#/components/schemas/EnumApplicationOIDCTokenAuthMethod'
-      required:
-      - tokenEndpointAuthMethod
-      type: object
-      example: null
-    ApplicationPingOnePortal_allOf:
-      properties:
-        applyDefaultTheme:
-          description: "If `true`, applies the default theme to the app portal application."
-          type: boolean
-      required:
-      - applyDefaultTheme
-      type: object
-      example: null
-    ApplicationPingOneSelfService_allOf:
-      properties:
-        enableDefaultThemeFooter:
-          description: "If `true`, shows the default theme footer on the self service\
-            \ application. Applies only if `applyDefaultTheme` is also `true`."
-          type: boolean
-        applyDefaultTheme:
-          description: "If `true`, applies the default theme to the self service application."
-          type: boolean
-      required:
-      - applyDefaultTheme
-      type: object
-      example: null
     ApplicationAttributeMapping_application:
       example:
         id: id
@@ -30814,33 +31409,6 @@ components:
           items:
             $ref: '#/components/schemas/ApplicationWSFED_allOf_kerberos_gateways'
           type: array
-      type: object
-      example: null
-    ApplicationWSFED_allOf:
-      properties:
-        audienceRestriction:
-          default: urn:federation:MicrosoftOnline
-          description: The service provider ID. Defaults to `urn:federation:MicrosoftOnline`.
-          type: string
-        domainName:
-          description: "The federated domain name (for example, the Azure custom domain)."
-          type: string
-        idpSigning:
-          $ref: '#/components/schemas/ApplicationWSFED_allOf_idpSigning'
-        kerberos:
-          $ref: '#/components/schemas/ApplicationWSFED_allOf_kerberos'
-        replyUrl:
-          description: "The URL that the replying party (such as, Office365) uses\
-            \ to accept submissions of RequestSecurityTokenResponse messages that\
-            \ are a result of SSO requests."
-          type: string
-        sloEndpoint:
-          description: The single logout endpoint URL.
-          type: string
-      required:
-      - domainName
-      - idpSigning
-      - replyUrl
       type: object
       example: null
     BillOfMaterials_products_inner_console:
@@ -33035,73 +33603,6 @@ components:
       - col
       - row
       type: object
-    FormFieldText_allOf:
-      properties:
-        layout:
-          $ref: '#/components/schemas/EnumFormElementLayout'
-        options:
-          description: "An array of strings that specifies the unique list of options.\
-            \ This is a required property when the type is `RADIO`, `CHECKBOX`, or\
-            \ `DROPDOWN`."
-          items:
-            type: string
-          type: array
-        validation:
-          $ref: '#/components/schemas/FormElementValidation'
-      required:
-      - validation
-      type: object
-      example: null
-    FormFieldPassword_allOf:
-      properties:
-        layout:
-          $ref: '#/components/schemas/EnumFormElementLayout'
-        options:
-          description: "An array of strings that specifies the unique list of options.\
-            \ This is a required property when the type is `RADIO`, `CHECKBOX`, or\
-            \ `DROPDOWN`."
-          items:
-            type: string
-          type: array
-        validation:
-          $ref: '#/components/schemas/FormElementValidation'
-      type: object
-      example: null
-    FormFieldRadio_allOf:
-      properties:
-        layout:
-          $ref: '#/components/schemas/EnumFormElementLayout'
-        options:
-          description: "An array of strings that specifies the unique list of options.\
-            \ This is a required property when the type is `RADIO`, `CHECKBOX`, or\
-            \ `DROPDOWN`."
-          items:
-            type: string
-          type: array
-        validation:
-          $ref: '#/components/schemas/FormElementValidation'
-      required:
-      - layout
-      - options
-      type: object
-      example: null
-    FormFieldDropdown_allOf:
-      properties:
-        layout:
-          $ref: '#/components/schemas/EnumFormElementLayout'
-        options:
-          description: "An array of strings that specifies the unique list of options.\
-            \ This is a required property when the type is `RADIO`, `CHECKBOX`, or\
-            \ `DROPDOWN`."
-          items:
-            type: string
-          type: array
-        validation:
-          $ref: '#/components/schemas/FormElementValidation'
-      required:
-      - options
-      type: object
-      example: null
     FormFlowButton_styles:
       properties:
         width:
@@ -33277,53 +33778,6 @@ components:
       - searchBaseDn
       type: object
       example: null
-    GatewayTypeLDAP_allOf:
-      properties:
-        bindDN:
-          description: "A string that specifies the distinguished name information\
-            \ to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com)."
-          type: string
-        bindPassword:
-          description: A string that specifies the bind password for the LDAP database.
-            This is a required property.
-          type: string
-        connectionSecurity:
-          $ref: '#/components/schemas/EnumGatewayTypeLDAPSecurity'
-        kerberos:
-          $ref: '#/components/schemas/GatewayTypeLDAP_allOf_kerberos'
-        serversHostAndPort:
-          description: "An array of strings that specifies the LDAP server host name\
-            \ and port number (for example, [`ds1.example.com:389`, `ds2.example.com:389`])."
-          items:
-            type: string
-          type: array
-        userTypes:
-          description: An array of the userTypes properties for the users to be provisioned
-            in PingOne. userTypes specifies which user properties in PingOne correspond
-            to the user properties in an external LDAP directory. You can use an LDAP
-            browser to view the user properties in the external LDAP directory.
-          items:
-            $ref: '#/components/schemas/GatewayTypeLDAP_allOf_userTypes'
-          type: array
-        validateTlsCertificates:
-          description: "A boolean that specifies whether or not to trust all SSL certificates\
-            \ (defaults to true). If this value is false, TLS certificates are not\
-            \ validated. When the value is set to true, only certificates that are\
-            \ signed by the default JVM CAs, or the CA certs that the customer has\
-            \ uploaded to the certificate service are trusted."
-          type: boolean
-        vendor:
-          $ref: '#/components/schemas/EnumGatewayVendor'
-        followReferrals:
-          readOnly: true
-          type: boolean
-      required:
-      - bindDN
-      - bindPassword
-      - serversHostAndPort
-      - vendor
-      type: object
-      example: null
     GatewayTypeRADIUS_allOf_davinci_policy:
       properties:
         id:
@@ -33354,24 +33808,6 @@ components:
           type: string
       required:
       - ip
-      type: object
-      example: null
-    GatewayTypeRADIUS_allOf:
-      properties:
-        davinci:
-          $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_davinci'
-        defaultSharedSecret:
-          description: Value to use for the shared secret if the shared secret is
-            not provided for one or more of the RADIUS clients specified.
-          type: string
-        radiusClients:
-          description: Collection of RADIUS clients.
-          items:
-            $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_radiusClients'
-          type: array
-      required:
-      - davinci
-      - radiusClients
       type: object
       example: null
     GatewayInstance_gateway:
@@ -33487,137 +33923,6 @@ components:
         population:
           $ref: '#/components/schemas/IdentityProviderCommon_registration_population'
       type: object
-    IdentityProviderFacebook_allOf:
-      properties:
-        appId:
-          description: A string that specifies the application ID from Facebook. This
-            is a required property.
-          type: string
-        appSecret:
-          description: A string that specifies the application secret from Facebook.
-            This is a required property.
-          type: string
-      required:
-      - appId
-      - appSecret
-      type: object
-      example: null
-    IdentityProviderClientIDClientSecret_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from the provider.
-            This is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from the provider.
-            This is a required property.
-          type: string
-      required:
-      - clientId
-      - clientSecret
-      type: object
-      example: null
-    IdentityProviderOIDC_allOf:
-      properties:
-        authorizationEndpoint:
-          description: A string that specifies the the OIDC identity provider's authorization
-            endpoint. This value must be a URL that uses https. This is a required
-            property.
-          type: string
-        clientId:
-          description: A string that specifies the application ID from the OIDC identity
-            provider. This is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from the OIDC
-            identity provider. This is a required property.
-          type: string
-        discoveryEndpoint:
-          description: A string that specifies the OIDC identity provider's discovery
-            endpoint. This value must be a URL that uses https.
-          type: string
-        issuer:
-          description: A string that specifies the issuer to which the authentication
-            is sent for the OIDC identity provider. This value must be a URL that
-            uses https. This is a required property.
-          type: string
-        jwksEndpoint:
-          description: A string that specifies the OIDC identity provider's jwks endpoint.
-            This value must be a URL that uses https. This is a required property.
-          type: string
-        scopes:
-          description: An array that specifies the scopes to include in the authentication
-            request to the OIDC identity provider. This is a required property.
-          items:
-            type: string
-          type: array
-        tokenEndpoint:
-          description: A string that specifies the OIDC identity provider's token
-            endpoint. This is a required property.
-          type: string
-        tokenEndpointAuthMethod:
-          $ref: '#/components/schemas/EnumIdentityProviderOIDCTokenAuthMethod'
-        userInfoEndpoint:
-          description: A string that specifies the OIDC identity provider's userInfo
-            endpoint.
-          type: string
-      required:
-      - authorizationEndpoint
-      - clientId
-      - clientSecret
-      - issuer
-      - jwksEndpoint
-      - scopes
-      - tokenEndpoint
-      - tokenEndpointAuthMethod
-      type: object
-      example: null
-    IdentityProviderApple_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from Apple. This
-            is the identifier obtained after registering a services ID in the Apple
-            developer portal. This is a required property.
-          type: string
-        clientSecretSigningKey:
-          description: A string that specifies the private key that is used to generate
-            a client secret. This is a required property.
-          type: string
-        keyId:
-          description: A 10-character string that Apple uses to identify an authentication
-            key. This is a required property.
-          type: string
-        teamId:
-          description: A 10-character string that Apple uses to identify teams. This
-            is a required property.
-          type: string
-      required:
-      - clientId
-      - clientSecretSigningKey
-      - keyId
-      - teamId
-      type: object
-      example: null
-    IdentityProviderPaypal_allOf:
-      properties:
-        clientId:
-          description: A string that specifies the application ID from PayPal. This
-            is a required property.
-          type: string
-        clientSecret:
-          description: A string that specifies the application secret from PayPal.
-            This is a required property.
-          type: string
-        clientEnvironment:
-          description: "A string that specifies the PayPal environment. Options are\
-            \ sandbox, and live. This is a required property."
-          type: string
-      required:
-      - clientEnvironment
-      - clientId
-      - clientSecret
-      type: object
-      example: null
     IdentityProviderSAML_allOf_idpVerification_certificates:
       properties:
         id:
@@ -33658,62 +33963,6 @@ components:
           $ref: '#/components/schemas/IdentityProviderSAML_allOf_spSigning_key'
       required:
       - key
-      type: object
-      example: null
-    IdentityProviderSAML_allOf:
-      properties:
-        authnRequestSigned:
-          description: A boolean that specifies whether the SAML authentication request
-            will be signed when sending to the identity provider. Set this to true
-            if the external IDP is included in an authentication policy to be used
-            by applications that are accessed using a mix of default URLS and custom
-            Domains URLs.
-          type: boolean
-        idpEntityId:
-          description: A string that specifies the entity ID URI that is checked against
-            the issuerId tag in the incoming response.
-          type: string
-        idpVerification:
-          $ref: '#/components/schemas/IdentityProviderSAML_allOf_idpVerification'
-        spEntityId:
-          description: "A string that specifies the service provider's entity ID,\
-            \ used to look up the application."
-          type: string
-        spSigning:
-          $ref: '#/components/schemas/IdentityProviderSAML_allOf_spSigning'
-        ssoBinding:
-          $ref: '#/components/schemas/EnumIdentityProviderSAMLSSOBinding'
-        ssoEndpoint:
-          description: A string that specifies the SSO endpoint for the authentication
-            request.
-          type: string
-        sloBinding:
-          $ref: '#/components/schemas/EnumIdentityProviderSAMLSLOBinding'
-        sloEndpoint:
-          description: "The logout endpoint URL. This is an optional property. However,\
-            \ if a `sloEndpoint` logout endpoint URL is not defined, logout actions\
-            \ result in an error."
-          type: string
-        sloResponseEndpoint:
-          description: "The endpoint URL to submit the logout response. If a value\
-            \ is not provided, the `sloEndpoint` property value is used to submit\
-            \ SLO response."
-          type: string
-        sloWindow:
-          description: "Defines how long PingOne can exchange logout messages with\
-            \ the application, specifically a `LogoutRequest` from the application,\
-            \ since the initial request. PingOne can also send a `LogoutRequest` to\
-            \ the application when a single logout is initiated by the user from other\
-            \ session participants, such as an application or identity provider. This\
-            \ setting is per application. The SLO logout is separate from the user\
-            \ session logout that revokes all tokens."
-          type: integer
-      required:
-      - idpEntityId
-      - idpVerification
-      - spEntityId
-      - ssoBinding
-      - ssoEndpoint
       type: object
       example: null
     Image_targets_original:
@@ -34278,46 +34527,6 @@ components:
       - method
       type: object
       example: null
-    NotificationsSettingsPhoneDeliverySettingsCustom_allOf:
-      properties:
-        name:
-          description: The customer provider's name.
-          type: string
-        requests:
-          items:
-            $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomRequest'
-          type: array
-        authentication:
-          $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustom_allOf_authentication'
-        numbers:
-          items:
-            $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomNumbers'
-          type: array
-      required:
-      - authentication
-      - name
-      - requests
-      type: object
-      example: null
-    NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse_allOf:
-      properties:
-        sid:
-          description: |
-            The public ID of the Twilio account.
-            Relevant to Twilio only.
-          type: string
-        authToken:
-          description: The secret key of the Twilio or Syniverse account.
-          type: string
-        numbers:
-          items:
-            $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettingsCustomNumbers'
-          type: array
-      required:
-      - authToken
-      - sid
-      type: object
-      example: null
     Organization_billingConnections_inner:
       example:
         id: id
@@ -34737,27 +34946,6 @@ components:
       - id
       type: object
       example: null
-    SignOnPolicyActionLogin_allOf:
-      properties:
-        enforceLockoutForIdentityProviders:
-          description: "A boolean that if set to true and if the user's account is\
-            \ locked (the account.canAuthenticate attribute is set to false), then\
-            \ social sign on with an external identity provider is prevented."
-          type: boolean
-        newUserProvisioning:
-          $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_newUserProvisioning'
-        recovery:
-          $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_recovery'
-        registration:
-          $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_registration'
-        socialProviders:
-          description: An array of strings that specifies the IDs of the identity
-            providers that can be used for the social login sign-on flow.
-          items:
-            $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_socialProviders'
-          type: array
-      type: object
-      example: null
     SignOnPolicyActionMFA_allOf_authenticator:
       deprecated: true
       description: Specifies MFA through a Time-based One-time Password (TOTP) option
@@ -34878,35 +35066,6 @@ components:
       - id
       type: object
       example: null
-    SignOnPolicyActionMFA_allOf:
-      properties:
-        authenticator:
-          $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_authenticator'
-        boundBiometrics:
-          $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_boundBiometrics'
-        email:
-          $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_email'
-        securityKey:
-          $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_securityKey'
-        sms:
-          $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_sms'
-        voice:
-          $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_voice'
-        applications:
-          deprecated: true
-          description: "The applications collection specifies all the native native\
-            \ applications that are allowed in the sign-on policy action.  If the\
-            \ applications collection is empty, a push notification is not allowed\
-            \ for the action."
-          items:
-            $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_applications'
-          type: array
-        deviceAuthenticationPolicy:
-          $ref: '#/components/schemas/SignOnPolicyActionMFA_allOf_deviceAuthenticationPolicy'
-        noDevicesMode:
-          $ref: '#/components/schemas/EnumSignOnPolicyNoDeviceMode'
-      type: object
-      example: null
     SignOnPolicyActionIDFirst_allOf_condition:
       properties:
         contains:
@@ -34937,34 +35096,6 @@ components:
       required:
       - condition
       - identityProvider
-      type: object
-      example: null
-    SignOnPolicyActionIDFirst_allOf:
-      properties:
-        discoveryRules:
-          description: The list of IDP discovery rules that are evaluated in order
-            when no user is associated with the user identifier. The maximum number
-            of rules is 100. The condition on which this identity provider is used
-            to authenticate the user is expressed using the PingOne policy condition
-            language
-          items:
-            $ref: '#/components/schemas/SignOnPolicyActionIDFirst_allOf_discoveryRules'
-          type: array
-        enforceLockoutForIdentityProviders:
-          description: "A boolean that if set to true and if the user's account is\
-            \ locked (the account.canAuthenticate attribute is set to false), then\
-            \ social sign on with an external identity provider is prevented."
-          type: boolean
-        recovery:
-          $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_recovery'
-        registration:
-          $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_registration'
-        socialProviders:
-          description: An array of strings that specifies the IDs of the identity
-            providers that can be used for the social login sign-on flow.
-          items:
-            $ref: '#/components/schemas/SignOnPolicyActionLogin_allOf_socialProviders'
-          type: array
       type: object
       example: null
     SignOnPolicyActionIDP_allOf_identityProvider:
@@ -35003,38 +35134,6 @@ components:
       - enabled
       type: object
       example: null
-    SignOnPolicyActionIDP_allOf:
-      properties:
-        acrValues:
-          description: "A string that designates the sign-on policies included in\
-            \ the authorization flow request. Options can include the PingOne predefined\
-            \ sign-on policies, Single_Factor and Multi_Factor, or any custom defined\
-            \ sign-on policy names. Sign-on policy names should be listed in order\
-            \ of preference, and they must be assigned to the application. This property\
-            \ can be configured on the identity provider action and is passed to the\
-            \ identity provider if the identity provider is of type `SAML` or `OPENID_CONNECT`."
-          type: string
-        identityProvider:
-          $ref: '#/components/schemas/SignOnPolicyActionIDP_allOf_identityProvider'
-        passUserContext:
-          description: "A boolean that specifies whether to pass in a login hint to\
-            \ the identity provider on the authentication request. Based on user context,\
-            \ the login hint is set if (1) the user is set on the flow, and (2) the\
-            \ user already has an account link for the identity provider. If both\
-            \ of these conditions are true, then the user is sent to the identity\
-            \ provider with a login hint equal to their externalId for the identity\
-            \ provider (saved on the account link). If these conditions are not true,\
-            \ then the API checks see if there is an OIDC login hint on the flow.\
-            \ If so, that login hint is used. If none of these conditions are true,\
-            \ the login hint parameter is not included on the authorization request\
-            \ to the identity provider."
-          type: boolean
-        registration:
-          $ref: '#/components/schemas/SignOnPolicyActionIDP_allOf_registration'
-      required:
-      - identityProvider
-      type: object
-      example: null
     SignOnPolicyActionAgreement_allOf_agreement:
       description: The relationship to the agreement to which the user must consent.
         The agreement must exist and be enabled. An agreement cannot be disabed if
@@ -35047,18 +35146,6 @@ components:
           type: string
       required:
       - id
-      type: object
-      example: null
-    SignOnPolicyActionAgreement_allOf:
-      properties:
-        agreement:
-          $ref: '#/components/schemas/SignOnPolicyActionAgreement_allOf_agreement'
-        disableDeclineOption:
-          description: "When enabled, the `Do Not Accept` button will terminate the\
-            \ Flow and display an error message to the user."
-          type: boolean
-      required:
-      - agreement
       type: object
       example: null
     SignOnPolicyActionProgressiveProfiling_allOf_attributes:
@@ -35075,34 +35162,6 @@ components:
       required:
       - name
       - required
-      type: object
-      example: null
-    SignOnPolicyActionProgressiveProfiling_allOf:
-      properties:
-        attributes:
-          items:
-            $ref: '#/components/schemas/SignOnPolicyActionProgressiveProfiling_allOf_attributes'
-          type: array
-        preventMultiplePromptsPerFlow:
-          description: A boolean that specifies whether the progressive profiling
-            action will not be executed if another progressive profiling action has
-            already been executed during the flow. This property is required.
-          type: boolean
-        promptIntervalSeconds:
-          description: An integer that specifies how often to prompt the user to provide
-            profile data for the configured attributes for which they do not have
-            values. This property is required.
-          minimum: 1
-          type: integer
-        promptText:
-          description: A string that specifies text to display to the user when prompting
-            for attribute values. This property is required.
-          type: string
-      required:
-      - attributes
-      - preventMultiplePromptsPerFlow
-      - promptIntervalSeconds
-      - promptText
       type: object
       example: null
     SignOnPolicyActionPingIDWinLoginPasswordless_allOf_uniqueUserAttribute:
@@ -35124,17 +35183,6 @@ components:
           type: boolean
       required:
       - enabled
-      type: object
-      example: null
-    SignOnPolicyActionPingIDWinLoginPasswordless_allOf:
-      properties:
-        uniqueUserAttribute:
-          $ref: '#/components/schemas/SignOnPolicyActionPingIDWinLoginPasswordless_allOf_uniqueUserAttribute'
-        offlineMode:
-          $ref: '#/components/schemas/SignOnPolicyActionPingIDWinLoginPasswordless_allOf_offlineMode'
-      required:
-      - offlineMode
-      - uniqueUserAttribute
       type: object
       example: null
     Subscription_filterOptions_includedApplications_inner:
@@ -35268,122 +35316,6 @@ components:
             You can configure other email "reply to" addresses per environment.
             See [Note](https://apidocs.pingidentity.com/pingone/platform/v1/api/#from-replyTo-note) for details.
           type: string
-      type: object
-      example: null
-    TemplateContentEmail_allOf:
-      properties:
-        body:
-          description: "The email text. Email text cannot be larger than 100 kB. Email\
-            \ text can contain HTML. If supported, this can include variables."
-          type: string
-        from:
-          $ref: '#/components/schemas/TemplateContentEmail_allOf_from'
-        subject:
-          description: "The email's subject line. Cannot exceed 256 characters. If\
-            \ supported, can include variables."
-          maxLength: 256
-          type: string
-        replyTo:
-          $ref: '#/components/schemas/TemplateContentEmail_allOf_replyTo'
-        charset:
-          default: UTF-8
-          description: "If not specified, `UTF-8` is the default value."
-          type: string
-        emailContentType:
-          default: text/html
-          description: "If not specified, `text/html` is the default value."
-          type: string
-      required:
-      - body
-      type: object
-      example: null
-    TemplateContentSMS_allOf:
-      properties:
-        content:
-          description: |
-            The SMS text.
-            UC-2 encoding is used for text that contains non GSM-7 characters. UC-2 encoded text cannot exceed 67 characters. GSM-7 encoded text cannot exceed 153 characters. If supported, it can include variables.
-          maxLength: 153
-          type: string
-        sender:
-          description: "The SMS sender ID. This property can contain only alphanumeric\
-            \ characters and spaces, and its length cannot exceed 11 characters. In\
-            \ some countries, it is impossible to send an SMS with an alphanumeric\
-            \ sender ID. For those countries, the sender ID must be empty. For SMS\
-            \ recipients in specific countries, refer to Twilio's documentation on\
-            \ [International support for Alphanumeric Sender ID](https://support.twilio.com/hc/en-us/articles/223133767-International-support-for-Alphanumeric-Sender-ID)."
-          maxLength: 11
-          type: string
-      required:
-      - content
-      type: object
-      example: null
-    TemplateContentPush_allOf:
-      properties:
-        title:
-          description: "The push title (maximum 200 characters). If supported, this\
-            \ can include variables."
-          maxLength: 200
-          type: string
-        body:
-          description: "The push text (maximum 400 characters for push text). If supported,\
-            \ this can include variables."
-          maxLength: 400
-          type: string
-        pushCategory:
-          $ref: '#/components/schemas/EnumTemplateContentPushCategory'
-      required:
-      - body
-      - title
-      type: object
-      example: null
-    TemplateContentVoice_allOf:
-      properties:
-        content:
-          description: "The voice text.  Limited to 1Kb characters.\n  The following\
-            \ substitution place holders can be embedded in the message:\n  * `<pause1sec>`:\
-            \ Pauses the message narration for 1 second.\n    The pause interval <pause1sec>\
-            \ cannot be modified. To pause the message narration for more than one\
-            \ second, repeat multiple `<pause1sec>` occurrences in succession, according\
-            \ to the desired pause interval duration. For example, `<pause1sec><pause1sec><pause1sec>`\
-            \ pauses the message narration for three seconds.\n  * `<sayCharValue>\
-            \ .. </sayCharValue>`: Reads the character name of each character of the\
-            \ enclosed string separately.\n  * `<repeatMessage val=x> .. </repeatMessage>`:\
-            \ Narrates the enclosed text `<val>` number of times.\n  \n  In the following\
-            \ message example, `${otp}` is assigned the value `\"123456\"`, and `${email}`\
-            \ is assigned the value `\"joe@bxz.com\"`:\n  ```\n  Hello <pause1sec>\
-            \ your authentication code is \n  <sayCharValue>${otp}</​sayCharValue>\
-            \ \n  <repeatMessage val=2> I repeat your code is \n  <sayCharValue>${otp}</​\
-            sayCharValue>\n  </​repeatMessage> <pause1sec> \n  Mail <sayCharValue>${email}</​\
-            sayCharValue> for help\n  ```\n  The narrated message on the voice call\
-            \ sounds like:\n  ```\n  HELLO <1 second silence> YOUR AUTHENTICATION\
-            \ CODE IS \n  ONE TWO THREE FOUR FIVE SIX \n  I REPEAT YOUR CODE IS ONE\
-            \ TWO THREE FOUR FIVE SIX \n  I REPEAT YOUR CODE IS ONE TWO THREE FOUR\
-            \ FIVE SIX <1 second silence> \n  MAIL JAY OH EE AT BEE EX ZEE DOT SEE\
-            \ OH EM FOR HELP\n  ```\n"
-          type: string
-        voice:
-          description: |
-            Voice OTP supports vendor-specific voices.
-              * Supported Twilio voices:
-                * Man, Woman
-                  Supported locales (default: en):
-                  en, en_GB, es, fr, de
-                * Alice (Twilio only)
-                  Supported locales (default: en US):
-                  da_DK, de_DE, en_AU, en_CA, en_GB, en_US, ca_ES, es_ES, es_MX, fi_FI, fr_CA, fr_FR, it_IT, ja_JP, ko_KR, nb_NO, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, sv_SE, zh_CN, zh_HK, zh_TW
-                * Amazon Polly
-                  cy_GB, ro_RO, is_IS, hi_IN tr_TR
-              * Supported Syniverse voices:
-                * Man, Woman
-                  Supported locales:
-                  en_US, en_GB, es_ES, es_US, fr_FR, de_DE, it_IT, en_AU, da_DK, is_IS, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, ja_JP
-                * Woman only
-                  Supported locales:
-                  cmn_CN, cy_GB, en_IN, fr_CA, hi_IN, nb_NO, ro_RO, sv_SE, tr_TR, ko_KR, ar
-          type: string
-      required:
-      - content
       type: object
       example: null
     User_account:

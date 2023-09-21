@@ -243,7 +243,9 @@ func (o SignOnPolicyAssignment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["priority"] = o.Priority
 	toSerialize["signOnPolicy"] = o.SignOnPolicy
 	return toSerialize, nil

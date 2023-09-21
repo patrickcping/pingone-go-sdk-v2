@@ -522,7 +522,9 @@ func (o GatewayInstance) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Connected) {
 		toSerialize["connected"] = o.Connected
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}

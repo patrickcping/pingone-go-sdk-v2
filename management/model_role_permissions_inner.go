@@ -116,8 +116,12 @@ func (o RolePermissionsInner) MarshalJSON() ([]byte, error) {
 
 func (o RolePermissionsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: classifier is readOnly
-	// skip: description is readOnly
+	if !IsNil(o.Classifier) {
+		toSerialize["classifier"] = o.Classifier
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	return toSerialize, nil
 }
 

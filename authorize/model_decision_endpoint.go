@@ -442,7 +442,9 @@ func (o DecisionEndpoint) ToMap() (map[string]interface{}, error) {
 		toSerialize["authorizationVersion"] = o.AuthorizationVersion
 	}
 	toSerialize["description"] = o.Description
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Owned) {
 		toSerialize["owned"] = o.Owned

@@ -281,12 +281,16 @@ func (o CustomDomain) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate
 	}
-	// skip: canonicalName is readOnly
+	if !IsNil(o.CanonicalName) {
+		toSerialize["canonicalName"] = o.CanonicalName
+	}
 	toSerialize["domainName"] = o.DomainName
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}

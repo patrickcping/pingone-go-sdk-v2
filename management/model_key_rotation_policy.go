@@ -490,16 +490,24 @@ func (o KeyRotationPolicy) ToMap() (map[string]interface{}, error) {
 		toSerialize["_links"] = o.Links
 	}
 	toSerialize["algorithm"] = o.Algorithm
-	// skip: currentKeyId is readOnly
+	if !IsNil(o.CurrentKeyId) {
+		toSerialize["currentKeyId"] = o.CurrentKeyId
+	}
 	toSerialize["dn"] = o.Dn
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["keyLength"] = o.KeyLength
 	toSerialize["name"] = o.Name
-	// skip: nextKeyId is readOnly
-	// skip: rotatedAt is readOnly
+	if !IsNil(o.NextKeyId) {
+		toSerialize["nextKeyId"] = o.NextKeyId
+	}
+	if !IsNil(o.RotatedAt) {
+		toSerialize["rotatedAt"] = o.RotatedAt
+	}
 	if !IsNil(o.RotationPeriod) {
 		toSerialize["rotationPeriod"] = o.RotationPeriod
 	}

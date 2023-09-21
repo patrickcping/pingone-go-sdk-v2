@@ -1,3 +1,8 @@
+# v0.29.1 (Unreleased)
+
+* **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+
 # v0.29.0 (2023-09-15)
 
 * **Enhancement** Added the `application/vnd.pingidentity.user.import+json` content-type header to the UsersAPI, to be able to import passwords. [#253](https://github.com/patrickcping/pingone-go-sdk-v2/pull/253)

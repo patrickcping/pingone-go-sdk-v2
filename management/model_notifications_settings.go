@@ -385,7 +385,9 @@ func (o NotificationsSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
@@ -395,7 +397,9 @@ func (o NotificationsSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Restrictions) {
 		toSerialize["restrictions"] = o.Restrictions
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.SmsProvidersFallbackChain) {
 		toSerialize["smsProvidersFallbackChain"] = o.SmsProvidersFallbackChain
 	}

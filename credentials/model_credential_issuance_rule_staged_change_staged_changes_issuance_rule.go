@@ -82,7 +82,9 @@ func (o CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule) MarshalJSON
 
 func (o CredentialIssuanceRuleStagedChangeStagedChangesIssuanceRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	return toSerialize, nil
 }
 

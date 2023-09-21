@@ -275,11 +275,17 @@ func (o ApplicationResourceGrant) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	// skip: createdAt is readOnly
-	// skip: id is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["resource"] = o.Resource
 	toSerialize["scopes"] = o.Scopes
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

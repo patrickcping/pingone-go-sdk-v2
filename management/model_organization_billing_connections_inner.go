@@ -82,7 +82,9 @@ func (o OrganizationBillingConnectionsInner) MarshalJSON() ([]byte, error) {
 
 func (o OrganizationBillingConnectionsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	return toSerialize, nil
 }
 

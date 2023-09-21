@@ -1,3 +1,26 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.2.2](./agreementmanagement/CHANGELOG.md)
+    * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.3.1](./authorize/CHANGELOG.md)
+    * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+    * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.4.1](./credentials/CHANGELOG.md)
+    * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+    * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.29.1](./management/CHANGELOG.md)
+    * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+    * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.16.1](./mfa/CHANGELOG.md)
+    * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+    * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.10.1](./risk/CHANGELOG.md)
+    * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+    * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.3.1](./verify/CHANGELOG.md)
+    * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+    * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+
 # Release (2023-09-15)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.7
