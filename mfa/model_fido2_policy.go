@@ -585,12 +585,18 @@ func (o FIDO2Policy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["attestationRequirements"] = o.AttestationRequirements
 	toSerialize["authenticatorAttachment"] = o.AuthenticatorAttachment
 	toSerialize["backupEligibility"] = o.BackupEligibility
@@ -600,7 +606,9 @@ func (o FIDO2Policy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	// skip: deviceAuthenticationPolicies is readOnly
+	if !IsNil(o.DeviceAuthenticationPolicies) {
+		toSerialize["deviceAuthenticationPolicies"] = o.DeviceAuthenticationPolicies
+	}
 	toSerialize["deviceDisplayName"] = o.DeviceDisplayName
 	toSerialize["discoverableCredentials"] = o.DiscoverableCredentials
 	toSerialize["mdsAuthenticatorsRequirements"] = o.MdsAuthenticatorsRequirements

@@ -576,7 +576,9 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewDeviceNotification) {
 		toSerialize["newDeviceNotification"] = o.NewDeviceNotification
@@ -600,7 +602,9 @@ func (o DeviceAuthenticationPolicy) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["default"] = o.Default
 	toSerialize["forSignOnPolicy"] = o.ForSignOnPolicy
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 
