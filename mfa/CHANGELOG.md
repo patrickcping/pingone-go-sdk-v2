@@ -1,7 +1,7 @@
 # v0.16.1 (Unreleased)
 
-* **Note** Unskip read only attributes when converting API models to maps.
-* **Note** Updated the default UserAgent string format.
+* **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
+* **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
 
 # v0.16.0 (2023-08-08)
 

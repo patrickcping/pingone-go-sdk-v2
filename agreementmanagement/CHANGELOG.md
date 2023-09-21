@@ -1,6 +1,6 @@
 # v0.2.2 (Unreleased)
 
-* **Note** Updated the default UserAgent string format.
+* **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
 
 # v0.2.1 (2023-07-12)
 
