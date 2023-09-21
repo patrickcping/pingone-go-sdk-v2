@@ -285,15 +285,21 @@ func (o FlowPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	// skip: enabled is readOnly
-	// skip: name is readOnly
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
 	if !IsNil(o.Trigger) {
 		toSerialize["trigger"] = o.Trigger
 	}

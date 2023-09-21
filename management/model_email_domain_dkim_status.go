@@ -116,8 +116,12 @@ func (o EmailDomainDKIMStatus) MarshalJSON() ([]byte, error) {
 
 func (o EmailDomainDKIMStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: type is readOnly
-	// skip: regions is readOnly
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Regions) {
+		toSerialize["regions"] = o.Regions
+	}
 	return toSerialize, nil
 }
 

@@ -365,19 +365,27 @@ func (o Gateway) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: credentials is readOnly
+	if !IsNil(o.Credentials) {
+		toSerialize["credentials"] = o.Credentials
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["enabled"] = o.Enabled
-	// skip: supportedVersions is readOnly
-	// skip: currentAlerts is readOnly
+	if !IsNil(o.SupportedVersions) {
+		toSerialize["supportedVersions"] = o.SupportedVersions
+	}
+	if !IsNil(o.CurrentAlerts) {
+		toSerialize["currentAlerts"] = o.CurrentAlerts
+	}
 	return toSerialize, nil
 }
 

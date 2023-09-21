@@ -235,7 +235,9 @@ func (o BrandingTheme) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["template"] = o.Template
 	return toSerialize, nil
 }

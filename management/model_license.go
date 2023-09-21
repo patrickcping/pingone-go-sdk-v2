@@ -814,25 +814,33 @@ func (o License) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdvancedServices) {
 		toSerialize["advancedServices"] = o.AdvancedServices
 	}
-	// skip: assignedEnvironmentsCount is readOnly
+	if !IsNil(o.AssignedEnvironmentsCount) {
+		toSerialize["assignedEnvironmentsCount"] = o.AssignedEnvironmentsCount
+	}
 	if !IsNil(o.Authorize) {
 		toSerialize["authorize"] = o.Authorize
 	}
-	// skip: beginsAt is readOnly
+	if !IsNil(o.BeginsAt) {
+		toSerialize["beginsAt"] = o.BeginsAt
+	}
 	if !IsNil(o.Credentials) {
 		toSerialize["credentials"] = o.Credentials
 	}
 	if !IsNil(o.Environments) {
 		toSerialize["environments"] = o.Environments
 	}
-	// skip: expiresAt is readOnly
+	if !IsNil(o.ExpiresAt) {
+		toSerialize["expiresAt"] = o.ExpiresAt
+	}
 	if !IsNil(o.Fraud) {
 		toSerialize["fraud"] = o.Fraud
 	}
 	if !IsNil(o.Gateways) {
 		toSerialize["gateways"] = o.Gateways
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Intelligence) {
 		toSerialize["intelligence"] = o.Intelligence
 	}

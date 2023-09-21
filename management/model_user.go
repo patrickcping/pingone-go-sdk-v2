@@ -1086,17 +1086,25 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	toSerialize["email"] = o.Email
-	// skip: emailVerified is readOnly
-	// skip: enabled is readOnly
+	if !IsNil(o.EmailVerified) {
+		toSerialize["emailVerified"] = o.EmailVerified
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	if !IsNil(o.ExternalId) {
 		toSerialize["externalId"] = o.ExternalId
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.IdentityProvider) {
 		toSerialize["identityProvider"] = o.IdentityProvider
 	}
@@ -1109,8 +1117,12 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
-	// skip: memberOfGroupIDs is readOnly
-	// skip: memberOfGroupNames is readOnly
+	if !IsNil(o.MemberOfGroupIDs) {
+		toSerialize["memberOfGroupIDs"] = o.MemberOfGroupIDs
+	}
+	if !IsNil(o.MemberOfGroupNames) {
+		toSerialize["memberOfGroupNames"] = o.MemberOfGroupNames
+	}
 	if !IsNil(o.MfaEnabled) {
 		toSerialize["mfaEnabled"] = o.MfaEnabled
 	}
@@ -1147,7 +1159,9 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["username"] = o.Username
 	if !IsNil(o.VerifyStatus) {
 		toSerialize["verifyStatus"] = o.VerifyStatus

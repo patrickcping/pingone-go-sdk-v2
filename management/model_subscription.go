@@ -379,17 +379,23 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	toSerialize["enabled"] = o.Enabled
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	toSerialize["filterOptions"] = o.FilterOptions
 	toSerialize["format"] = o.Format
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["httpEndpoint"] = o.HttpEndpoint
 	toSerialize["name"] = o.Name
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["verifyTlsCertificates"] = o.VerifyTlsCertificates
 	return toSerialize, nil
 }

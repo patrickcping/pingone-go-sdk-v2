@@ -374,14 +374,22 @@ func (o Language) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["locale"] = o.Locale
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	// skip: createdAt is readOnly
-	// skip: customerAdded is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.CustomerAdded) {
+		toSerialize["customerAdded"] = o.CustomerAdded
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

@@ -363,7 +363,9 @@ func (o NotificationsSettingsEmailDeliverySettings) ToMap() (map[string]interfac
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	// skip: protocol is readOnly
+	if !IsNil(o.Protocol) {
+		toSerialize["protocol"] = o.Protocol
+	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}

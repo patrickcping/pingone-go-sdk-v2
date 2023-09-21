@@ -205,10 +205,16 @@ func (o UserAccount) MarshalJSON() ([]byte, error) {
 func (o UserAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["canAuthenticate"] = o.CanAuthenticate
-	// skip: lockedAt is readOnly
-	// skip: secondsUntilUnlock is readOnly
+	if !IsNil(o.LockedAt) {
+		toSerialize["lockedAt"] = o.LockedAt
+	}
+	if !IsNil(o.SecondsUntilUnlock) {
+		toSerialize["secondsUntilUnlock"] = o.SecondsUntilUnlock
+	}
 	toSerialize["status"] = o.Status
-	// skip: unlockAt is readOnly
+	if !IsNil(o.UnlockAt) {
+		toSerialize["unlockAt"] = o.UnlockAt
+	}
 	return toSerialize, nil
 }
 

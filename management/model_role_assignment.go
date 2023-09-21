@@ -276,8 +276,12 @@ func (o RoleAssignment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Gateway) {
 		toSerialize["gateway"] = o.Gateway
 	}
-	// skip: id is readOnly
-	// skip: readOnly is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ReadOnly) {
+		toSerialize["readOnly"] = o.ReadOnly
+	}
 	toSerialize["role"] = o.Role
 	toSerialize["scope"] = o.Scope
 	return toSerialize, nil

@@ -215,8 +215,12 @@ func (o BillOfMaterials) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SolutionType) {
 		toSerialize["solutionType"] = o.SolutionType
 	}
-	// skip: createdAt is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	toSerialize["products"] = o.Products
 	return toSerialize, nil
 }

@@ -331,11 +331,15 @@ func (o AgreementLanguageRevision) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["contentType"] = o.ContentType
 	toSerialize["effectiveAt"] = o.EffectiveAt
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Language) {
 		toSerialize["language"] = o.Language
 	}
-	// skip: notValidAfter is readOnly
+	if !IsNil(o.NotValidAfter) {
+		toSerialize["notValidAfter"] = o.NotValidAfter
+	}
 	toSerialize["requireReconsent"] = o.RequireReconsent
 	toSerialize["text"] = o.Text
 	return toSerialize, nil

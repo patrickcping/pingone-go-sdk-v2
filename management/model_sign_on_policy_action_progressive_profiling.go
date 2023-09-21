@@ -383,7 +383,9 @@ func (o SignOnPolicyActionProgressiveProfiling) ToMap() (map[string]interface{},
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["priority"] = o.Priority
 	if !IsNil(o.SignOnPolicy) {
 		toSerialize["signOnPolicy"] = o.SignOnPolicy

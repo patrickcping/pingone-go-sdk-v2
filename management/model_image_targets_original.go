@@ -217,13 +217,21 @@ func (o ImageTargetsOriginal) MarshalJSON() ([]byte, error) {
 
 func (o ImageTargetsOriginal) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: href is readOnly
-	// skip: id is readOnly
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	// skip: width is readOnly
-	// skip: height is readOnly
+	if !IsNil(o.Width) {
+		toSerialize["width"] = o.Width
+	}
+	if !IsNil(o.Height) {
+		toSerialize["height"] = o.Height
+	}
 	return toSerialize, nil
 }
 

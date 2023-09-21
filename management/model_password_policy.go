@@ -840,7 +840,9 @@ func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BypassPolicy) {
 		toSerialize["bypassPolicy"] = o.BypassPolicy
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.CurrentPassword) {
 		toSerialize["currentPassword"] = o.CurrentPassword
 	}
@@ -858,7 +860,9 @@ func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.History) {
 		toSerialize["history"] = o.History
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.Length) {
 		toSerialize["length"] = o.Length
 	}
@@ -888,8 +892,12 @@ func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
 		toSerialize["newPassword"] = o.NewPassword
 	}
 	toSerialize["notSimilarToCurrent"] = o.NotSimilarToCurrent
-	// skip: populationCount is readOnly
-	// skip: updatedAt is readOnly
+	if !IsNil(o.PopulationCount) {
+		toSerialize["populationCount"] = o.PopulationCount
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 

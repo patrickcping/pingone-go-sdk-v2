@@ -454,7 +454,9 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Audience) {
 		toSerialize["audience"] = o.Audience
 	}
-	// skip: createdAt is readOnly
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -464,7 +466,9 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Resource) {
 		toSerialize["resource"] = o.Resource
 	}
-	// skip: id is readOnly
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.IntrospectEndpointAuthMethod) {
 		toSerialize["introspectEndpointAuthMethod"] = o.IntrospectEndpointAuthMethod
@@ -472,7 +476,9 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	// skip: updatedAt is readOnly
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
 	return toSerialize, nil
 }
 
