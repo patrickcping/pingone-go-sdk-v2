@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
+**Resource** | Pointer to [**ObjectResource**](ObjectResource.md) |  | [optional] 
 **Name** | **string** | A string that specifies the resource scope name. | 
 **Description** | Pointer to **string** | A string that specifies the description of the scope. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -82,6 +83,31 @@ SetId sets Id field to given value.
 `func (o *ResourceScope) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetResource
+
+`func (o *ResourceScope) GetResource() ObjectResource`
+
+GetResource returns the Resource field if non-nil, zero value otherwise.
+
+### GetResourceOk
+
+`func (o *ResourceScope) GetResourceOk() (*ObjectResource, bool)`
+
+GetResourceOk returns a tuple with the Resource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResource
+
+`func (o *ResourceScope) SetResource(v ObjectResource)`
+
+SetResource sets Resource field to given value.
+
+### HasResource
+
+`func (o *ResourceScope) HasResource() bool`
+
+HasResource returns a boolean if a field has been set.
 
 ### GetName
 

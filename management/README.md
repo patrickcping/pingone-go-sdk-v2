@@ -738,6 +738,7 @@ Class | Method | HTTP request | Description
  - [ObjectEnvironment](docs/ObjectEnvironment.md)
  - [ObjectOrganization](docs/ObjectOrganization.md)
  - [ObjectPopulation](docs/ObjectPopulation.md)
+ - [ObjectResource](docs/ObjectResource.md)
  - [Organization](docs/Organization.md)
  - [OrganizationBillingConnectionsInner](docs/OrganizationBillingConnectionsInner.md)
  - [P1Error](docs/P1Error.md)

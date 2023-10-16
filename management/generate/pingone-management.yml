@@ -4016,6 +4016,14 @@ components:
           type: string
           readOnly: true
           description: A string that specifies the population associated with the object.
+    ObjectResource:
+      type: object
+      readOnly: true
+      properties:
+        id:
+          type: string
+          readOnly: true
+          description: A string that specifies the resource associated with the object.
     Organization:
       type: object
       properties:
@@ -4429,6 +4437,8 @@ components:
           type: string
           readOnly: true
           description: A string that specifies the resource’s unique identifier.
+        resource:
+          $ref: '#/components/schemas/ObjectResource'
         name:
           type: string
           description: A string that specifies the resource scope name.

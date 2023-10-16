@@ -23,6 +23,7 @@ type ResourceScope struct {
 	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
+	Resource *ObjectResource `json:"resource,omitempty"`
 	// A string that specifies the resource scope name.
 	Name string `json:"name"`
 	// A string that specifies the description of the scope.
@@ -118,6 +119,38 @@ func (o *ResourceScope) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ResourceScope) SetId(v string) {
 	o.Id = &v
+}
+
+// GetResource returns the Resource field value if set, zero value otherwise.
+func (o *ResourceScope) GetResource() ObjectResource {
+	if o == nil || IsNil(o.Resource) {
+		var ret ObjectResource
+		return ret
+	}
+	return *o.Resource
+}
+
+// GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceScope) GetResourceOk() (*ObjectResource, bool) {
+	if o == nil || IsNil(o.Resource) {
+		return nil, false
+	}
+	return o.Resource, true
+}
+
+// HasResource returns a boolean if a field has been set.
+func (o *ResourceScope) HasResource() bool {
+	if o != nil && !IsNil(o.Resource) {
+		return true
+	}
+
+	return false
+}
+
+// SetResource gets a reference to the given ObjectResource and assigns it to the Resource field.
+func (o *ResourceScope) SetResource(v ObjectResource) {
+	o.Resource = &v
 }
 
 // GetName returns the Name field value
@@ -351,6 +384,9 @@ func (o ResourceScope) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Resource) {
+		toSerialize["resource"] = o.Resource
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
