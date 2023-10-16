@@ -1,5 +1,7 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.8
+    * **Note** bump `github.com/securego/gosec/v2` v2.17.0 => v2.18.1 [#261](https://github.com/patrickcping/pingone-go-sdk-v2/pull/261)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.2.2](./agreementmanagement/CHANGELOG.md)
     * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.3.1](./authorize/CHANGELOG.md)
