@@ -439,6 +439,7 @@ docs/ObjectApplication.md
 docs/ObjectEnvironment.md
 docs/ObjectOrganization.md
 docs/ObjectPopulation.md
+docs/ObjectResource.md
 docs/Organization.md
 docs/OrganizationBillingConnectionsInner.md
 docs/OrganizationsApi.md
@@ -895,6 +896,7 @@ model_notifications_settings_whitelist_inner.go
 model_object_application.go
 model_object_organization.go
 model_object_population.go
+model_object_resource.go
 model_organization.go
 model_organization_billing_connections_inner.go
 model_p1_error.go

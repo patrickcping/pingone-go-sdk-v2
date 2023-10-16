@@ -26755,6 +26755,8 @@ components:
                 href: https://openapi-generator.tech
               self:
                 href: https://openapi-generator.tech
+            resource:
+              id: id
             name: name
             description: description
             id: id
@@ -26773,6 +26775,8 @@ components:
                 href: https://openapi-generator.tech
               self:
                 href: https://openapi-generator.tech
+            resource:
+              id: id
             name: name
             description: description
             id: id
@@ -28989,6 +28993,16 @@ components:
           type: string
       readOnly: true
       type: object
+    ObjectResource:
+      example:
+        id: id
+      properties:
+        id:
+          description: A string that specifies the resource associated with the object.
+          readOnly: true
+          type: string
+      readOnly: true
+      type: object
     Organization:
       example:
         createdAt: createdAt
@@ -29490,6 +29504,8 @@ components:
             href: https://openapi-generator.tech
           self:
             href: https://openapi-generator.tech
+        resource:
+          id: id
         name: name
         description: description
         id: id
@@ -29507,6 +29523,8 @@ components:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
           type: string
+        resource:
+          $ref: '#/components/schemas/ObjectResource'
         name:
           description: A string that specifies the resource scope name.
           type: string
@@ -33194,6 +33212,8 @@ components:
               href: https://openapi-generator.tech
             self:
               href: https://openapi-generator.tech
+          resource:
+            id: id
           name: name
           description: description
           id: id
@@ -33212,6 +33232,8 @@ components:
               href: https://openapi-generator.tech
             self:
               href: https://openapi-generator.tech
+          resource:
+            id: id
           name: name
           description: description
           id: id
