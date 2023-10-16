@@ -3,6 +3,13 @@
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.8
     * **Note** bump `github.com/securego/gosec/v2` v2.17.0 => v2.18.1 [#261](https://github.com/patrickcping/pingone-go-sdk-v2/pull/261)
     * **Note** bump `golang.org/x/oauth2` v0.12.0 => v0.13.0 [#259](https://github.com/patrickcping/pingone-go-sdk-v2/pull/259)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.2.1 => v0.2.2
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.3.0 => v0.3.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.4.0 => v0.4.1
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.29.0 => v0.30.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.16.0 => v0.17.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.10.0 => v0.11.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.3.0 => v0.3.1
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.2.2](./agreementmanagement/CHANGELOG.md)
     * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.3.1](./authorize/CHANGELOG.md)
