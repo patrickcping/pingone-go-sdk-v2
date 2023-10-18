@@ -23436,6 +23436,14 @@ components:
       - application/x-pkcs7-certificates
       - application/x-x509-ca-cert
       type: string
+    EnumGroupSourceType:
+      description: "External groups only. Set during user creation/update. Supported\
+        \ values are `GATEWAY`, `IDP`"
+      enum:
+      - GATEWAY
+      - IDP
+      readOnly: true
+      type: string
     EnumHealthStatus:
       description: An enumeration that specifies whether or not the gateway is in
         a healthy state.
@@ -26021,44 +26029,50 @@ components:
             domainName: domainName
             id: id
           groups:
-          - directMemberCounts:
-              users: 7
-            environment:
-              id: id
+          - sourceId: sourceId
             _links:
               next:
                 href: https://openapi-generator.tech
               self:
                 href: https://openapi-generator.tech
-            name: name
+            displayName: displayName
             description: description
             externalId: externalId
-            userFilter: userFilter
             customData: "{}"
-            id: id
-            totalMemberCounts:
-              users: 1
             population:
               id: id
-          - directMemberCounts:
+            directMemberCounts:
               users: 7
             environment:
               id: id
+            sourceType: null
+            name: name
+            userFilter: userFilter
+            id: id
+            totalMemberCounts:
+              users: 1
+          - sourceId: sourceId
             _links:
               next:
                 href: https://openapi-generator.tech
               self:
                 href: https://openapi-generator.tech
-            name: name
+            displayName: displayName
             description: description
             externalId: externalId
-            userFilter: userFilter
             customData: "{}"
+            population:
+              id: id
+            directMemberCounts:
+              users: 7
+            environment:
+              id: id
+            sourceType: null
+            name: name
+            userFilter: userFilter
             id: id
             totalMemberCounts:
               users: 1
-            population:
-              id: id
           resources:
           - createdAt: 2000-01-23T04:56:07.000+00:00
             audience: audience
@@ -27782,25 +27796,28 @@ components:
       type: object
     Group:
       example:
-        directMemberCounts:
-          users: 7
-        environment:
-          id: id
+        sourceId: sourceId
         _links:
           next:
             href: https://openapi-generator.tech
           self:
             href: https://openapi-generator.tech
-        name: name
+        displayName: displayName
         description: description
         externalId: externalId
-        userFilter: userFilter
         customData: "{}"
+        population:
+          id: id
+        directMemberCounts:
+          users: 7
+        environment:
+          id: id
+        sourceType: null
+        name: name
+        userFilter: userFilter
         id: id
         totalMemberCounts:
           users: 1
-        population:
-          id: id
       properties:
         _links:
           $ref: '#/components/schemas/LinksHATEOAS'
@@ -27812,6 +27829,11 @@ components:
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        displayName:
+          description: "For external groups, set during user creation/update. For\
+            \ groups created on PingOne, this parameter is identical to `name`."
+          readOnly: true
+          type: string
         population:
           $ref: '#/components/schemas/Group_population'
         name:
@@ -27841,6 +27863,12 @@ components:
         customData:
           description: Optional User-defined custom data.
           type: object
+        sourceId:
+          description: External groups only. Set during user creation/update.
+          readOnly: true
+          type: string
+        sourceType:
+          $ref: '#/components/schemas/EnumGroupSourceType'
         directMemberCounts:
           $ref: '#/components/schemas/Group_directMemberCounts'
         totalMemberCounts:
@@ -32478,44 +32506,50 @@ components:
           domainName: domainName
           id: id
         groups:
-        - directMemberCounts:
-            users: 7
-          environment:
-            id: id
+        - sourceId: sourceId
           _links:
             next:
               href: https://openapi-generator.tech
             self:
               href: https://openapi-generator.tech
-          name: name
+          displayName: displayName
           description: description
           externalId: externalId
-          userFilter: userFilter
           customData: "{}"
-          id: id
-          totalMemberCounts:
-            users: 1
           population:
             id: id
-        - directMemberCounts:
+          directMemberCounts:
             users: 7
           environment:
             id: id
+          sourceType: null
+          name: name
+          userFilter: userFilter
+          id: id
+          totalMemberCounts:
+            users: 1
+        - sourceId: sourceId
           _links:
             next:
               href: https://openapi-generator.tech
             self:
               href: https://openapi-generator.tech
-          name: name
+          displayName: displayName
           description: description
           externalId: externalId
-          userFilter: userFilter
           customData: "{}"
+          population:
+            id: id
+          directMemberCounts:
+            users: 7
+          environment:
+            id: id
+          sourceType: null
+          name: name
+          userFilter: userFilter
           id: id
           totalMemberCounts:
             users: 1
-          population:
-            id: id
         resources:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           audience: audience
