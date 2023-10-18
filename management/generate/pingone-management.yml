@@ -4272,6 +4272,20 @@ components:
       required:
         - file
         - usageType
+    PKIKeyFileUpload:
+      type: object
+      properties:
+        usageType:
+          type: string
+          example: ENCRYPTION
+        file:
+          type: string
+          format: binary
+        password:
+          type: string
+      required:
+        - file
+        - usageType
     Population:
       type: object
       properties:
@@ -8997,7 +9011,7 @@ paths:
               $ref: '#/components/schemas/Certificate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PKIFileUpload'
+              $ref: '#/components/schemas/PKIKeyFileUpload'
       parameters:
         - name: Content-Type
           in: header

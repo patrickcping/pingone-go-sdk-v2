@@ -259,6 +259,7 @@ type ApiCreateKeyRequest struct {
 	contentType   *string
 	certificate   *Certificate
 	file          **[]byte
+	password      *string
 	usageType     *string
 }
 
@@ -274,6 +275,11 @@ func (r ApiCreateKeyRequest) Certificate(certificate Certificate) ApiCreateKeyRe
 
 func (r ApiCreateKeyRequest) UsageType(usageType string) ApiCreateKeyRequest {
 	r.usageType = &usageType
+	return r
+}
+
+func (r ApiCreateKeyRequest) Password(password string) ApiCreateKeyRequest {
+	r.password = &password
 	return r
 }
 
@@ -381,6 +387,9 @@ func (a *CertificateManagementApiService) internalCreateKeyExecute(r ApiCreateKe
 	if localVarHeaderParams["Content-Type"] == "multipart/form-data" {
 
 		localVarFormParams.Add("usageType", parameterValueToString(*r.usageType, ""))
+		if r.password != nil {
+			localVarFormParams.Add("password", parameterValueToString(*r.password, ""))
+		}
 		var fileLocalVarFormFileName string
 		var fileLocalVarFileBytes *[]byte
 
