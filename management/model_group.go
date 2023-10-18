@@ -23,6 +23,8 @@ type Group struct {
 	// The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupIDs.
 	Id *string `json:"id,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	// For external groups, set during user creation/update. For groups created on PingOne, this parameter is identical to `name`.
+	DisplayName *string `json:"displayName,omitempty"`
 	Population *GroupPopulation `json:"population,omitempty"`
 	// The group name. A group name can be reused across populations, but the same user cannot belong to multiple groups with the same group name. Population groups cannot share a group name with an environment group. Search all groups for a specific group name with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group names associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupNames. Use this operation to determine group membership in attribute mappings for claims and assertions.
 	Name string `json:"name"`
@@ -34,6 +36,9 @@ type Group struct {
 	ExternalId *string `json:"externalId,omitempty"`
 	// Optional User-defined custom data.
 	CustomData map[string]interface{} `json:"customData,omitempty"`
+	// External groups only. Set during user creation/update.
+	SourceId *string `json:"sourceId,omitempty"`
+	SourceType *EnumGroupSourceType `json:"sourceType,omitempty"`
 	DirectMemberCounts *GroupDirectMemberCounts `json:"directMemberCounts,omitempty"`
 	TotalMemberCounts *GroupTotalMemberCounts `json:"totalMemberCounts,omitempty"`
 }
@@ -150,6 +155,38 @@ func (o *Group) HasEnvironment() bool {
 // SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
 func (o *Group) SetEnvironment(v ObjectEnvironment) {
 	o.Environment = &v
+}
+
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+func (o *Group) GetDisplayName() string {
+	if o == nil || IsNil(o.DisplayName) {
+		var ret string
+		return ret
+	}
+	return *o.DisplayName
+}
+
+// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetDisplayNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DisplayName) {
+		return nil, false
+	}
+	return o.DisplayName, true
+}
+
+// HasDisplayName returns a boolean if a field has been set.
+func (o *Group) HasDisplayName() bool {
+	if o != nil && !IsNil(o.DisplayName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
+func (o *Group) SetDisplayName(v string) {
+	o.DisplayName = &v
 }
 
 // GetPopulation returns the Population field value if set, zero value otherwise.
@@ -336,6 +373,70 @@ func (o *Group) SetCustomData(v map[string]interface{}) {
 	o.CustomData = v
 }
 
+// GetSourceId returns the SourceId field value if set, zero value otherwise.
+func (o *Group) GetSourceId() string {
+	if o == nil || IsNil(o.SourceId) {
+		var ret string
+		return ret
+	}
+	return *o.SourceId
+}
+
+// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetSourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SourceId) {
+		return nil, false
+	}
+	return o.SourceId, true
+}
+
+// HasSourceId returns a boolean if a field has been set.
+func (o *Group) HasSourceId() bool {
+	if o != nil && !IsNil(o.SourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
+func (o *Group) SetSourceId(v string) {
+	o.SourceId = &v
+}
+
+// GetSourceType returns the SourceType field value if set, zero value otherwise.
+func (o *Group) GetSourceType() EnumGroupSourceType {
+	if o == nil || IsNil(o.SourceType) {
+		var ret EnumGroupSourceType
+		return ret
+	}
+	return *o.SourceType
+}
+
+// GetSourceTypeOk returns a tuple with the SourceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetSourceTypeOk() (*EnumGroupSourceType, bool) {
+	if o == nil || IsNil(o.SourceType) {
+		return nil, false
+	}
+	return o.SourceType, true
+}
+
+// HasSourceType returns a boolean if a field has been set.
+func (o *Group) HasSourceType() bool {
+	if o != nil && !IsNil(o.SourceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceType gets a reference to the given EnumGroupSourceType and assigns it to the SourceType field.
+func (o *Group) SetSourceType(v EnumGroupSourceType) {
+	o.SourceType = &v
+}
+
 // GetDirectMemberCounts returns the DirectMemberCounts field value if set, zero value otherwise.
 func (o *Group) GetDirectMemberCounts() GroupDirectMemberCounts {
 	if o == nil || IsNil(o.DirectMemberCounts) {
@@ -419,6 +520,9 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
 	if !IsNil(o.Population) {
 		toSerialize["population"] = o.Population
 	}
@@ -434,6 +538,12 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CustomData) {
 		toSerialize["customData"] = o.CustomData
+	}
+	if !IsNil(o.SourceId) {
+		toSerialize["sourceId"] = o.SourceId
+	}
+	if !IsNil(o.SourceType) {
+		toSerialize["sourceType"] = o.SourceType
 	}
 	if !IsNil(o.DirectMemberCounts) {
 		toSerialize["directMemberCounts"] = o.DirectMemberCounts

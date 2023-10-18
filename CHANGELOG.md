@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.31.0](./management/CHANGELOG.md)
+    * **Enhancement** Added `DisplayName`, `SourceId` and `SourceType` object attributes to the `Group` object model.
+
 # Release (2023-10-16)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.8
