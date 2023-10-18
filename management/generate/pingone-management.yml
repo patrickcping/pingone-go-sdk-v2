@@ -5372,6 +5372,13 @@ components:
         name:
           type: string
           description: A string that specifies the subscription name. This is a required property.
+        tlsClientAuthKeyPair:
+          type: object
+          description: An onject that describes the TLS client authentication key pair to use for mTLS.
+          properties:
+            id:
+              type: string
+              description: The ID of a key to be used for outbound mutual TLS (mTLS) authentication. This key is used as a client credential to authenticate the webhook. The key must have a `usageType` of `OUTBOUND_MTLS`. See [Certificate management](https://apidocs.pingidentity.com/pingone/platform/v1/api/#certificate-management) for information on creating a key. If this property is set, `verifyTlsCertificates` must be set to `true`.
         updatedAt:
           type: string
           format: date-time
