@@ -155,8 +155,8 @@ components:
       readOnly: true
     EnumCertificateKeyUsageType:
       type: string
-      description: Specifies how the certificate is used. Options are `ENCRYPTION`, `SIGNING`, `SSL/TLS`, `ISSUANCE`.
-      enum: [ENCRYPTION, SIGNING, SSL/TLS, ISSUANCE]
+      description: Specifies how the certificate is used. Options are `ENCRYPTION`, `SIGNING`, `SSL/TLS`, `ISSUANCE`, `OUTBOUND_MTLS`.  `ISSUANCE` keys are used as part of another key's trust chain, and are used to sign other keys. Certificate Revocation Lists (CRL) are published against these keys. `SSL/TLS` keys are used to protect internet protocol domains (such as, a [Custom Domain](https://apidocs.pingidentity.com/pingone/platform/v1/api/#custom-domains) you've configured in PingOne). `OUTBOUND_MTLS` keys are used to enable mutual TLS (mTLS) authentication with a subscription service.
+      enum: [ENCRYPTION, SIGNING, SSL/TLS, ISSUANCE, OUTBOUND_MTLS]
     EnumCreateCertificateAcceptHeader:
       type: string
       enum: [application/x-pkcs7-certificates]
