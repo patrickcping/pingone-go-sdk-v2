@@ -23238,12 +23238,18 @@ components:
       type: string
     EnumCertificateKeyUsageType:
       description: "Specifies how the certificate is used. Options are `ENCRYPTION`,\
-        \ `SIGNING`, `SSL/TLS`, `ISSUANCE`."
+        \ `SIGNING`, `SSL/TLS`, `ISSUANCE`, `OUTBOUND_MTLS`.  `ISSUANCE` keys are\
+        \ used as part of another key's trust chain, and are used to sign other keys.\
+        \ Certificate Revocation Lists (CRL) are published against these keys. `SSL/TLS`\
+        \ keys are used to protect internet protocol domains (such as, a [Custom Domain](https://apidocs.pingidentity.com/pingone/platform/v1/api/#custom-domains)\
+        \ you've configured in PingOne). `OUTBOUND_MTLS` keys are used to enable mutual\
+        \ TLS (mTLS) authentication with a subscription service."
       enum:
       - ENCRYPTION
       - SIGNING
       - SSL/TLS
       - ISSUANCE
+      - OUTBOUND_MTLS
       type: string
     EnumCreateCertificateAcceptHeader:
       enum:
@@ -25314,6 +25320,8 @@ components:
                 key: headers
               url: url
             name: name
+            tlsClientAuthKeyPair:
+              id: id
             id: id
             enabled: true
             filterOptions:
@@ -25347,6 +25355,8 @@ components:
                 key: headers
               url: url
             name: name
+            tlsClientAuthKeyPair:
+              id: id
             id: id
             enabled: true
             filterOptions:
@@ -30343,6 +30353,8 @@ components:
             key: headers
           url: url
         name: name
+        tlsClientAuthKeyPair:
+          id: id
         id: id
         enabled: true
         filterOptions:
@@ -30397,6 +30409,8 @@ components:
           description: A string that specifies the subscription name. This is a required
             property.
           type: string
+        tlsClientAuthKeyPair:
+          $ref: '#/components/schemas/Subscription_tlsClientAuthKeyPair'
         updatedAt:
           description: The date and time at which the subscription resource was last
             updated (ISO 8601 format).
@@ -31791,6 +31805,8 @@ components:
               key: headers
             url: url
           name: name
+          tlsClientAuthKeyPair:
+            id: id
           id: id
           enabled: true
           filterOptions:
@@ -31824,6 +31840,8 @@ components:
               key: headers
             url: url
           name: name
+          tlsClientAuthKeyPair:
+            id: id
           id: id
           enabled: true
           filterOptions:
@@ -35333,6 +35351,21 @@ components:
           type: object
       required:
       - url
+      type: object
+    Subscription_tlsClientAuthKeyPair:
+      description: An onject that describes the TLS client authentication key pair
+        to use for mTLS.
+      example:
+        id: id
+      properties:
+        id:
+          description: "The ID of a key to be used for outbound mutual TLS (mTLS)\
+            \ authentication. This key is used as a client credential to authenticate\
+            \ the webhook. The key must have a `usageType` of `OUTBOUND_MTLS`. See\
+            \ [Certificate management](https://apidocs.pingidentity.com/pingone/platform/v1/api/#certificate-management)\
+            \ for information on creating a key. If this property is set, `verifyTlsCertificates`\
+            \ must be set to `true`."
+          type: string
       type: object
     TemplateContentEmail_allOf_from:
       properties:
