@@ -1,6 +1,8 @@
 # v0.31.0 (Unreleased)
 
-* **Enhancement** Added `DisplayName`, `SourceId` and `SourceType` object attributes to the `Group` object model.
+* **Enhancement** Added `DisplayName`, `SourceId` and `SourceType` object attributes to the `Group` object model. [#264](https://github.com/patrickcping/pingone-go-sdk-v2/pull/264)
+* **Enhancement** Added `TlsClientAuthKeyPair` object attributes to the `Subscription` object model. [#265](https://github.com/patrickcping/pingone-go-sdk-v2/pull/265)
+* **Enhancement** Added `OUTBOUND_MTLS` to the `EnumCertificateKeyUsageType` enum. [#265](https://github.com/patrickcping/pingone-go-sdk-v2/pull/265)
 
 # v0.30.0 (2023-10-16)
 
