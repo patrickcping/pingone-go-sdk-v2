@@ -150,6 +150,7 @@ docs/BrandingThemeConfigurationLogo.md
 docs/BrandingThemeDefault.md
 docs/BrandingThemesApi.md
 docs/CapabilitiesApi.md
+docs/Certificate.md
 docs/CertificateKeyUpdate.md
 docs/CertificateManagementApi.md
 docs/CreateApplication201Response.md
