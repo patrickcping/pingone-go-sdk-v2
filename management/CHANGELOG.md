@@ -1,3 +1,7 @@
+# v0.31.0 (Unreleased)
+
+* **Enhancement** Added `DisplayName`, `SourceId` and `SourceType` object attributes to the `Group` object model.
+
 # v0.30.0 (2023-10-16)
 
 * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)

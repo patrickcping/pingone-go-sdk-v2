@@ -226,6 +226,7 @@ docs/EnumGatewayType.md
 docs/EnumGatewayTypeLDAPSecurity.md
 docs/EnumGatewayVendor.md
 docs/EnumGetKeyAcceptHeader.md
+docs/EnumGroupSourceType.md
 docs/EnumHealthStatus.md
 docs/EnumIdentityProvider.md
 docs/EnumIdentityProviderAttributeMappingType.md
@@ -709,6 +710,7 @@ model_enum_gateway_type.go
 model_enum_gateway_type_ldap_security.go
 model_enum_gateway_vendor.go
 model_enum_get_key_accept_header.go
+model_enum_group_source_type.go
 model_enum_health_status.go
 model_enum_identity_provider.go
 model_enum_identity_provider_attribute_mapping_type.go

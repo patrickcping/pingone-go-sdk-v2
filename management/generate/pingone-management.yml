@@ -249,6 +249,11 @@ components:
     EnumGetKeyAcceptHeader:
       type: string
       enum: [application/json, application/x-pkcs7-certificates, application/x-x509-ca-cert]
+    EnumGroupSourceType:
+      type: string
+      enum: [GATEWAY, IDP]
+      readOnly: true
+      description: External groups only. Set during user creation/update. Supported values are `GATEWAY`, `IDP`
     EnumHealthStatus:
       type: string
       enum: [HEALTHY, DEGRADED, UNHEALTHY]
@@ -2848,6 +2853,10 @@ components:
           description: The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupIDs.
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
+        displayName:
+          type: string
+          readOnly: true
+          description: For external groups, set during user creation/update. For groups created on PingOne, this parameter is identical to `name`.
         population:
           type: object
           description: The population to assign the group to
@@ -2872,6 +2881,12 @@ components:
         customData:
           type: object
           description: Optional User-defined custom data.
+        sourceId:
+          type: string
+          readOnly: true
+          description: External groups only. Set during user creation/update.
+        sourceType:
+          $ref: '#/components/schemas/EnumGroupSourceType'
         directMemberCounts:
           type: object
           readOnly: true
