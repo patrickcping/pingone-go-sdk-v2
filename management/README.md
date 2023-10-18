@@ -825,6 +825,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionFilterOptions](docs/SubscriptionFilterOptions.md)
  - [SubscriptionFilterOptionsIncludedApplicationsInner](docs/SubscriptionFilterOptionsIncludedApplicationsInner.md)
  - [SubscriptionHttpEndpoint](docs/SubscriptionHttpEndpoint.md)
+ - [SubscriptionTlsClientAuthKeyPair](docs/SubscriptionTlsClientAuthKeyPair.md)
  - [Template](docs/Template.md)
  - [TemplateContent](docs/TemplateContent.md)
  - [TemplateContentCommon](docs/TemplateContentCommon.md)

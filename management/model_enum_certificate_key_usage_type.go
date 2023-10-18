@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumCertificateKeyUsageType Specifies how the certificate is used. Options are `ENCRYPTION`, `SIGNING`, `SSL/TLS`, `ISSUANCE`.
+// EnumCertificateKeyUsageType Specifies how the certificate is used. Options are `ENCRYPTION`, `SIGNING`, `SSL/TLS`, `ISSUANCE`, `OUTBOUND_MTLS`.  `ISSUANCE` keys are used as part of another key's trust chain, and are used to sign other keys. Certificate Revocation Lists (CRL) are published against these keys. `SSL/TLS` keys are used to protect internet protocol domains (such as, a [Custom Domain](https://apidocs.pingidentity.com/pingone/platform/v1/api/#custom-domains) you've configured in PingOne). `OUTBOUND_MTLS` keys are used to enable mutual TLS (mTLS) authentication with a subscription service.
 type EnumCertificateKeyUsageType string
 
 // List of EnumCertificateKeyUsageType
@@ -24,6 +24,7 @@ const (
 	ENUMCERTIFICATEKEYUSAGETYPE_SIGNING EnumCertificateKeyUsageType = "SIGNING"
 	ENUMCERTIFICATEKEYUSAGETYPE_SSL_TLS EnumCertificateKeyUsageType = "SSL/TLS"
 	ENUMCERTIFICATEKEYUSAGETYPE_ISSUANCE EnumCertificateKeyUsageType = "ISSUANCE"
+	ENUMCERTIFICATEKEYUSAGETYPE_OUTBOUND_MTLS EnumCertificateKeyUsageType = "OUTBOUND_MTLS"
 )
 
 // All allowed values of EnumCertificateKeyUsageType enum
@@ -32,6 +33,7 @@ var AllowedEnumCertificateKeyUsageTypeEnumValues = []EnumCertificateKeyUsageType
 	"SIGNING",
 	"SSL/TLS",
 	"ISSUANCE",
+	"OUTBOUND_MTLS",
 }
 
 func (v *EnumCertificateKeyUsageType) UnmarshalJSON(src []byte) error {

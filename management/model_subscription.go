@@ -33,6 +33,7 @@ type Subscription struct {
 	HttpEndpoint SubscriptionHttpEndpoint `json:"httpEndpoint"`
 	// A string that specifies the subscription name. This is a required property.
 	Name string `json:"name"`
+	TlsClientAuthKeyPair *SubscriptionTlsClientAuthKeyPair `json:"tlsClientAuthKeyPair,omitempty"`
 	// The date and time at which the subscription resource was last updated (ISO 8601 format).
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 	// A boolean that specifies whether a certificates should be verified. If this property's value is set to false, then all certificates are trusted. (Setting this property's value to false introduces a security risk.) This is a required property.
@@ -310,6 +311,38 @@ func (o *Subscription) SetName(v string) {
 	o.Name = v
 }
 
+// GetTlsClientAuthKeyPair returns the TlsClientAuthKeyPair field value if set, zero value otherwise.
+func (o *Subscription) GetTlsClientAuthKeyPair() SubscriptionTlsClientAuthKeyPair {
+	if o == nil || IsNil(o.TlsClientAuthKeyPair) {
+		var ret SubscriptionTlsClientAuthKeyPair
+		return ret
+	}
+	return *o.TlsClientAuthKeyPair
+}
+
+// GetTlsClientAuthKeyPairOk returns a tuple with the TlsClientAuthKeyPair field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Subscription) GetTlsClientAuthKeyPairOk() (*SubscriptionTlsClientAuthKeyPair, bool) {
+	if o == nil || IsNil(o.TlsClientAuthKeyPair) {
+		return nil, false
+	}
+	return o.TlsClientAuthKeyPair, true
+}
+
+// HasTlsClientAuthKeyPair returns a boolean if a field has been set.
+func (o *Subscription) HasTlsClientAuthKeyPair() bool {
+	if o != nil && !IsNil(o.TlsClientAuthKeyPair) {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsClientAuthKeyPair gets a reference to the given SubscriptionTlsClientAuthKeyPair and assigns it to the TlsClientAuthKeyPair field.
+func (o *Subscription) SetTlsClientAuthKeyPair(v SubscriptionTlsClientAuthKeyPair) {
+	o.TlsClientAuthKeyPair = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Subscription) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -393,6 +426,9 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["httpEndpoint"] = o.HttpEndpoint
 	toSerialize["name"] = o.Name
+	if !IsNil(o.TlsClientAuthKeyPair) {
+		toSerialize["tlsClientAuthKeyPair"] = o.TlsClientAuthKeyPair
+	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}

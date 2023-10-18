@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | A string that specifies the user resource’s unique identifier. | [optional] [readonly] 
 **HttpEndpoint** | [**SubscriptionHttpEndpoint**](SubscriptionHttpEndpoint.md) |  | 
 **Name** | **string** | A string that specifies the subscription name. This is a required property. | 
+**TlsClientAuthKeyPair** | Pointer to [**SubscriptionTlsClientAuthKeyPair**](SubscriptionTlsClientAuthKeyPair.md) |  | [optional] 
 **UpdatedAt** | Pointer to **time.Time** | The date and time at which the subscription resource was last updated (ISO 8601 format). | [optional] [readonly] 
 **VerifyTlsCertificates** | **bool** | A boolean that specifies whether a certificates should be verified. If this property&#39;s value is set to false, then all certificates are trusted. (Setting this property&#39;s value to false introduces a security risk.) This is a required property. | 
 
@@ -234,6 +235,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetTlsClientAuthKeyPair
+
+`func (o *Subscription) GetTlsClientAuthKeyPair() SubscriptionTlsClientAuthKeyPair`
+
+GetTlsClientAuthKeyPair returns the TlsClientAuthKeyPair field if non-nil, zero value otherwise.
+
+### GetTlsClientAuthKeyPairOk
+
+`func (o *Subscription) GetTlsClientAuthKeyPairOk() (*SubscriptionTlsClientAuthKeyPair, bool)`
+
+GetTlsClientAuthKeyPairOk returns a tuple with the TlsClientAuthKeyPair field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTlsClientAuthKeyPair
+
+`func (o *Subscription) SetTlsClientAuthKeyPair(v SubscriptionTlsClientAuthKeyPair)`
+
+SetTlsClientAuthKeyPair sets TlsClientAuthKeyPair field to given value.
+
+### HasTlsClientAuthKeyPair
+
+`func (o *Subscription) HasTlsClientAuthKeyPair() bool`
+
+HasTlsClientAuthKeyPair returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

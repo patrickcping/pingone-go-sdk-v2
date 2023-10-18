@@ -545,6 +545,7 @@ docs/Subscription.md
 docs/SubscriptionFilterOptions.md
 docs/SubscriptionFilterOptionsIncludedApplicationsInner.md
 docs/SubscriptionHttpEndpoint.md
+docs/SubscriptionTlsClientAuthKeyPair.md
 docs/SubscriptionsWebhooksApi.md
 docs/Template.md
 docs/TemplateContent.md
@@ -981,6 +982,7 @@ model_subscription.go
 model_subscription_filter_options.go
 model_subscription_filter_options_included_applications_inner.go
 model_subscription_http_endpoint.go
+model_subscription_tls_client_auth_key_pair.go
 model_template.go
 model_template_content_common.go
 model_template_content_email.go
