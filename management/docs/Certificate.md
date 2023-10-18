@@ -305,20 +305,20 @@ HasOrganization returns a boolean if a field has been set.
 
 ### GetSerialNumber
 
-`func (o *Certificate) GetSerialNumber() int64`
+`func (o *Certificate) GetSerialNumber() big.Int`
 
 GetSerialNumber returns the SerialNumber field if non-nil, zero value otherwise.
 
 ### GetSerialNumberOk
 
-`func (o *Certificate) GetSerialNumberOk() (*int64, bool)`
+`func (o *Certificate) GetSerialNumberOk() (*big.Int, bool)`
 
 GetSerialNumberOk returns a tuple with the SerialNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSerialNumber
 
-`func (o *Certificate) SetSerialNumber(v int64)`
+`func (o *Certificate) SetSerialNumber(v big.Int)`
 
 SetSerialNumber sets SerialNumber field to given value.
 
