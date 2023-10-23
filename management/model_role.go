@@ -20,14 +20,14 @@ var _ MappedNullable = &Role{}
 // Role struct for Role
 type Role struct {
 	Links *LinksHATEOAS `json:"_links,omitempty"`
-	// A string that specifies the scope to which the role applies.
-	ApplicableTo []string `json:"applicableTo,omitempty"`
+	// A set of strings that specifies the scopes to which the role applies.
+	ApplicableTo []EnumRoleAssignmentScopeType `json:"applicableTo,omitempty"`
 	// A string that specifies the description of the role.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the ID of the role.
 	Id *string `json:"id,omitempty"`
 	Name *EnumRoleName `json:"name,omitempty"`
-	// A string that specifies the set of permissions assigned to the role.
+	// A set of permissions assigned to the role.
 	Permissions []RolePermissionsInner `json:"permissions,omitempty"`
 }
 
@@ -81,9 +81,9 @@ func (o *Role) SetLinks(v LinksHATEOAS) {
 }
 
 // GetApplicableTo returns the ApplicableTo field value if set, zero value otherwise.
-func (o *Role) GetApplicableTo() []string {
+func (o *Role) GetApplicableTo() []EnumRoleAssignmentScopeType {
 	if o == nil || IsNil(o.ApplicableTo) {
-		var ret []string
+		var ret []EnumRoleAssignmentScopeType
 		return ret
 	}
 	return o.ApplicableTo
@@ -91,7 +91,7 @@ func (o *Role) GetApplicableTo() []string {
 
 // GetApplicableToOk returns a tuple with the ApplicableTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetApplicableToOk() ([]string, bool) {
+func (o *Role) GetApplicableToOk() ([]EnumRoleAssignmentScopeType, bool) {
 	if o == nil || IsNil(o.ApplicableTo) {
 		return nil, false
 	}
@@ -107,8 +107,8 @@ func (o *Role) HasApplicableTo() bool {
 	return false
 }
 
-// SetApplicableTo gets a reference to the given []string and assigns it to the ApplicableTo field.
-func (o *Role) SetApplicableTo(v []string) {
+// SetApplicableTo gets a reference to the given []EnumRoleAssignmentScopeType and assigns it to the ApplicableTo field.
+func (o *Role) SetApplicableTo(v []EnumRoleAssignmentScopeType) {
 	o.ApplicableTo = v
 }
 
