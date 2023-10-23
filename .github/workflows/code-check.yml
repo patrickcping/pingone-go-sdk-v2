@@ -34,7 +34,7 @@ jobs:
     steps:
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4.1.0
+      uses: actions/checkout@v4.1.1
 
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -57,7 +57,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: actions/checkout@v4.1.1
       - uses: actions/setup-go@v4
         with:
           go-version: '^1.18.0' # The Go version to download (if necessary) and use.
@@ -79,7 +79,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: actions/checkout@v4.1.1
       - uses: actions/setup-go@v4
         with:
           go-version: '^1.18.0' # The Go version to download (if necessary) and use.
