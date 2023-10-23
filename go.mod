@@ -12,7 +12,7 @@ require (
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.11.0
 	github.com/patrickcping/pingone-go-sdk-v2/verify v0.3.1
 	github.com/pavius/impi v0.0.3
-	github.com/securego/gosec/v2 v2.18.1
+	github.com/securego/gosec/v2 v2.18.2
 	golang.org/x/exp v0.0.0-20231006140011-7918f672742d
 	golang.org/x/oauth2 v0.13.0
 )
@@ -78,7 +78,7 @@ require (
 	github.com/golangci/misspell v0.4.1 // indirect
 	github.com/golangci/revgrep v0.0.0-20220804021717-745bb2f7c2e6 // indirect
 	github.com/golangci/unconvert v0.0.0-20180507085042-28b1c447d1f4 // indirect
-	github.com/google/go-cmp v0.5.9 // indirect
+	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/gookit/color v1.5.4 // indirect
 	github.com/gordonklaus/ineffassign v0.0.0-20230610083614-0e73809eb601 // indirect
