@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Classifier** | Pointer to **string** | A string that specifies the resource for which the permission is applicable. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of what the permission enables for the role. | [optional] [readonly] 
+**Id** | Pointer to **string** | The ID of a permission associated with this role. | [optional] [readonly] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetDescription sets Description field to given value.
 `func (o *RolePermissionsInner) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *RolePermissionsInner) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *RolePermissionsInner) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *RolePermissionsInner) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *RolePermissionsInner) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

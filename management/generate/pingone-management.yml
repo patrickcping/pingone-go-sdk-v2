@@ -4506,9 +4506,9 @@ components:
         applicableTo:
           type: array
           readOnly: true
-          description: A string that specifies the scope to which the role applies.
+          description: A set of strings that specifies the scopes to which the role applies.
           items:
-            type: string  
+            $ref: '#/components/schemas/EnumRoleAssignmentScopeType'
         description:
           type: string
           readOnly: true
@@ -4522,7 +4522,7 @@ components:
         permissions:
           type: array
           readOnly: true
-          description: A string that specifies the set of permissions assigned to the role.
+          description: A set of permissions assigned to the role.
           items:
             type: object
             properties:
@@ -4534,6 +4534,10 @@ components:
                 type: string
                 readOnly: true
                 description: A string that specifies the description of what the permission enables for the role.
+              id:
+                type: string
+                readOnly: true
+                description: The ID of a permission associated with this role.
     RoleAssignment:
       type: object
       properties:

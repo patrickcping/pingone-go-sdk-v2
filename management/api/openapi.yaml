@@ -25470,13 +25470,15 @@ components:
             permissions:
             - classifier: classifier
               description: description
+              id: id
             - classifier: classifier
               description: description
+              id: id
             name: null
             description: description
             applicableTo:
-            - applicableTo
-            - applicableTo
+            - null
+            - null
             id: id
           - _links:
               next:
@@ -25486,13 +25488,15 @@ components:
             permissions:
             - classifier: classifier
               description: description
+              id: id
             - classifier: classifier
               description: description
+              id: id
             name: null
             description: description
             applicableTo:
-            - applicableTo
-            - applicableTo
+            - null
+            - null
             id: id
           alertChannels:
           - environment:
@@ -29633,21 +29637,24 @@ components:
         permissions:
         - classifier: classifier
           description: description
+          id: id
         - classifier: classifier
           description: description
+          id: id
         name: null
         description: description
         applicableTo:
-        - applicableTo
-        - applicableTo
+        - null
+        - null
         id: id
       properties:
         _links:
           $ref: '#/components/schemas/LinksHATEOAS'
         applicableTo:
-          description: A string that specifies the scope to which the role applies.
+          description: A set of strings that specifies the scopes to which the role
+            applies.
           items:
-            type: string
+            $ref: '#/components/schemas/EnumRoleAssignmentScopeType'
           readOnly: true
           type: array
         description:
@@ -29661,8 +29668,7 @@ components:
         name:
           $ref: '#/components/schemas/EnumRoleName'
         permissions:
-          description: A string that specifies the set of permissions assigned to
-            the role.
+          description: A set of permissions assigned to the role.
           items:
             $ref: '#/components/schemas/Role_permissions_inner'
           readOnly: true
@@ -31969,13 +31975,15 @@ components:
           permissions:
           - classifier: classifier
             description: description
+            id: id
           - classifier: classifier
             description: description
+            id: id
           name: null
           description: description
           applicableTo:
-          - applicableTo
-          - applicableTo
+          - null
+          - null
           id: id
         - _links:
             next:
@@ -31985,13 +31993,15 @@ components:
           permissions:
           - classifier: classifier
             description: description
+            id: id
           - classifier: classifier
             description: description
+            id: id
           name: null
           description: description
           applicableTo:
-          - applicableTo
-          - applicableTo
+          - null
+          - null
           id: id
         alertChannels:
         - environment:
@@ -34770,6 +34780,7 @@ components:
       example:
         classifier: classifier
         description: description
+        id: id
       properties:
         classifier:
           description: A string that specifies the resource for which the permission
@@ -34779,6 +34790,10 @@ components:
         description:
           description: A string that specifies the description of what the permission
             enables for the role.
+          readOnly: true
+          type: string
+        id:
+          description: The ID of a permission associated with this role.
           readOnly: true
           type: string
       type: object

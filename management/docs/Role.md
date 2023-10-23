@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
-**ApplicableTo** | Pointer to **[]string** | A string that specifies the scope to which the role applies. | [optional] [readonly] 
+**ApplicableTo** | Pointer to [**[]EnumRoleAssignmentScopeType**](EnumRoleAssignmentScopeType.md) | A set of strings that specifies the scopes to which the role applies. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the role. | [optional] [readonly] 
 **Id** | Pointer to **string** | A string that specifies the ID of the role. | [optional] [readonly] 
 **Name** | Pointer to [**EnumRoleName**](EnumRoleName.md) |  | [optional] 
-**Permissions** | Pointer to [**[]RolePermissionsInner**](RolePermissionsInner.md) | A string that specifies the set of permissions assigned to the role. | [optional] [readonly] 
+**Permissions** | Pointer to [**[]RolePermissionsInner**](RolePermissionsInner.md) | A set of permissions assigned to the role. | [optional] [readonly] 
 
 ## Methods
 
@@ -57,20 +57,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetApplicableTo
 
-`func (o *Role) GetApplicableTo() []string`
+`func (o *Role) GetApplicableTo() []EnumRoleAssignmentScopeType`
 
 GetApplicableTo returns the ApplicableTo field if non-nil, zero value otherwise.
 
 ### GetApplicableToOk
 
-`func (o *Role) GetApplicableToOk() (*[]string, bool)`
+`func (o *Role) GetApplicableToOk() (*[]EnumRoleAssignmentScopeType, bool)`
 
 GetApplicableToOk returns a tuple with the ApplicableTo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplicableTo
 
-`func (o *Role) SetApplicableTo(v []string)`
+`func (o *Role) SetApplicableTo(v []EnumRoleAssignmentScopeType)`
 
 SetApplicableTo sets ApplicableTo field to given value.
 
