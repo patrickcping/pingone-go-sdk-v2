@@ -28,6 +28,7 @@ api_gateway_instances.go
 api_gateway_role_assignments.go
 api_gateways.go
 api_group_membership.go
+api_group_role_assignments.go
 api_groups.go
 api_identity_provider_attributes.go
 api_identity_providers.go
@@ -357,6 +358,7 @@ docs/GroupMembership.md
 docs/GroupMembershipApi.md
 docs/GroupNesting.md
 docs/GroupPopulation.md
+docs/GroupRoleAssignmentsApi.md
 docs/GroupTotalMemberCounts.md
 docs/GroupsApi.md
 docs/IdentityProvider.md

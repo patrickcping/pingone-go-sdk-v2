@@ -4552,6 +4552,13 @@ components:
             id:
               type: string
               description: A string that specifies the gateway ID.
+        group:
+          type: object
+          readOnly: true
+          properties:
+            id:
+              type: string
+              description: A string that specifies the group ID.
         id:
           type: string
           readOnly: true
@@ -11460,6 +11467,161 @@ paths:
             type: string
           required: true
         - name: nestedGroupID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '204':
+          description: Successful response
+  /environments/{environmentID}/groups/{groupID}/roleAssignments:
+    get:
+      tags:
+        - Group Role Assignments
+      summary: READ Role Assignments
+      operationId: readGroupRoleAssignments
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: groupID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+    post:
+      tags:
+        - Group Role Assignments
+      summary: CREATE Group Role Assignment
+      operationId: createGroupRoleAssignment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleAssignment'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: groupID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleAssignment'
+  /environments/{environmentID}/groups/{groupID}/roleAssignments/{roleAssignmentID}:
+    get:
+      tags:
+        - Group Role Assignments
+      summary: READ One Group Assignment
+      operationId: readOneGroupRoleAssignment
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: groupID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: roleAssignmentID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleAssignment'
+    delete:
+      tags:
+        - Group Role Assignments
+      summary: DELETE Group's Role Assignment
+      operationId: deleteGroupRoleAssignment
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: groupID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: roleAssignmentID
           in: path
           schema:
             type: string
