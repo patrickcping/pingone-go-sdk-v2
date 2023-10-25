@@ -194,6 +194,7 @@ docs/EnumApplicationType.md
 docs/EnumApplicationWSFEDIDPSigningAlgorithm.md
 docs/EnumApplicationWSFEDKerberosGatewayType.md
 docs/EnumAttributeMappingType.md
+docs/EnumBillOfMaterialsProductTags.md
 docs/EnumBrandingLogoType.md
 docs/EnumBrandingThemeBackgroundType.md
 docs/EnumBrandingThemeTemplate.md
@@ -680,6 +681,7 @@ model_enum_application_type.go
 model_enum_application_wsfed_kerberos_gateway_type.go
 model_enum_application_wsfedidp_signing_algorithm.go
 model_enum_attribute_mapping_type.go
+model_enum_bill_of_materials_product_tags.go
 model_enum_branding_logo_type.go
 model_enum_branding_theme_background_type.go
 model_enum_branding_theme_template.go

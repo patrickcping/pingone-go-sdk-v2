@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Type** | [**EnumProductType**](EnumProductType.md) |  | 
 **Description** | Pointer to **string** | A string that specifies the description of the product or standalone service | [optional] [readonly] 
 **Console** | Pointer to [**BillOfMaterialsProductsInnerConsole**](BillOfMaterialsProductsInnerConsole.md) |  | [optional] 
+**Tags** | Pointer to [**[]EnumBillOfMaterialsProductTags**](EnumBillOfMaterialsProductTags.md) |  | [optional] 
 **Deployment** | Pointer to [**BillOfMaterialsProductsInnerDeployment**](BillOfMaterialsProductsInnerDeployment.md) |  | [optional] 
 **Bookmarks** | Pointer to [**[]BillOfMaterialsProductsInnerBookmarksInner**](BillOfMaterialsProductsInnerBookmarksInner.md) | Optional array of custom bookmarks. Maximum of five bookmarks per product. | [optional] 
 
@@ -124,6 +125,31 @@ SetConsole sets Console field to given value.
 `func (o *BillOfMaterialsProductsInner) HasConsole() bool`
 
 HasConsole returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *BillOfMaterialsProductsInner) GetTags() []EnumBillOfMaterialsProductTags`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *BillOfMaterialsProductsInner) GetTagsOk() (*[]EnumBillOfMaterialsProductTags, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *BillOfMaterialsProductsInner) SetTags(v []EnumBillOfMaterialsProductTags)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *BillOfMaterialsProductsInner) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetDeployment
 
