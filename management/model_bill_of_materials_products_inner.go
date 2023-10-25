@@ -25,6 +25,7 @@ type BillOfMaterialsProductsInner struct {
 	// A string that specifies the description of the product or standalone service
 	Description *string `json:"description,omitempty"`
 	Console *BillOfMaterialsProductsInnerConsole `json:"console,omitempty"`
+	Tags []EnumBillOfMaterialsProductTags `json:"tags,omitempty"`
 	Deployment *BillOfMaterialsProductsInnerDeployment `json:"deployment,omitempty"`
 	// Optional array of custom bookmarks. Maximum of five bookmarks per product.
 	Bookmarks []BillOfMaterialsProductsInnerBookmarksInner `json:"bookmarks,omitempty"`
@@ -168,6 +169,38 @@ func (o *BillOfMaterialsProductsInner) SetConsole(v BillOfMaterialsProductsInner
 	o.Console = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *BillOfMaterialsProductsInner) GetTags() []EnumBillOfMaterialsProductTags {
+	if o == nil || IsNil(o.Tags) {
+		var ret []EnumBillOfMaterialsProductTags
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BillOfMaterialsProductsInner) GetTagsOk() ([]EnumBillOfMaterialsProductTags, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *BillOfMaterialsProductsInner) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []EnumBillOfMaterialsProductTags and assigns it to the Tags field.
+func (o *BillOfMaterialsProductsInner) SetTags(v []EnumBillOfMaterialsProductTags) {
+	o.Tags = v
+}
+
 // GetDeployment returns the Deployment field value if set, zero value otherwise.
 func (o *BillOfMaterialsProductsInner) GetDeployment() BillOfMaterialsProductsInnerDeployment {
 	if o == nil || IsNil(o.Deployment) {
@@ -251,6 +284,9 @@ func (o BillOfMaterialsProductsInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Console) {
 		toSerialize["console"] = o.Console
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
 	if !IsNil(o.Deployment) {
 		toSerialize["deployment"] = o.Deployment

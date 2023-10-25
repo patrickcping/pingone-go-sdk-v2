@@ -23461,6 +23461,10 @@ components:
       - SCOPE
       - CUSTOM
       type: string
+    EnumBillOfMaterialsProductTags:
+      enum:
+      - DAVINCI_MINIMAL
+      type: string
     EnumBrandingLogoType:
       description: The type of format used for the image. Options are IMAGE and NONE.
       enum:
@@ -25079,6 +25083,9 @@ components:
           description: description
           id: id
           type: null
+          tags:
+          - null
+          - null
           deployment:
             id: id
         - bookmarks:
@@ -25091,6 +25098,9 @@ components:
           description: description
           id: id
           type: null
+          tags:
+          - null
+          - null
           deployment:
             id: id
       properties:
@@ -31826,6 +31836,9 @@ components:
         description: description
         id: id
         type: null
+        tags:
+        - null
+        - null
         deployment:
           id: id
       properties:
@@ -31842,6 +31855,10 @@ components:
           type: string
         console:
           $ref: '#/components/schemas/BillOfMaterials_products_inner_console'
+        tags:
+          items:
+            $ref: '#/components/schemas/EnumBillOfMaterialsProductTags'
+          type: array
         deployment:
           $ref: '#/components/schemas/BillOfMaterials_products_inner_deployment'
         bookmarks:

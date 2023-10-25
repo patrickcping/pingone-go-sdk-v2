@@ -128,6 +128,9 @@ components:
       type: string
       enum: [CORE, SCOPE, CUSTOM]
       description: A string that specifies the mapping type of the attribute. Options are CORE, SCOPE, and CUSTOM. The CORE and SCOPE mapping types are for reserved attributes managed by the API and cannot be removed. Attribute values for these mapping types can be updated. The CUSTOM mapping type is for user-defined attributes. Attributes of this type can be updated and deleted.
+    EnumBillOfMaterialsProductTags:
+      type: string
+      enum: [DAVINCI_MINIMAL]
     EnumBrandingLogoType:
       type: string
       enum: [IMAGE, NONE]
@@ -1331,6 +1334,10 @@ components:
                     description: Primary console link for certain products
                 required:
                   - href
+              tags:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EnumBillOfMaterialsProductTags'
               deployment:
                 type: object
                 properties:
