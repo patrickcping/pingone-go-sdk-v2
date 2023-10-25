@@ -922,6 +922,7 @@ model_resource_scope.go
 model_resource_secret.go
 model_role.go
 model_role_assignment.go
+model_role_assignment_group.go
 model_role_assignment_role.go
 model_role_assignment_scope.go
 model_role_permissions_inner.go
