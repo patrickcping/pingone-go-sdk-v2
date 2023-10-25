@@ -28,6 +28,7 @@ api_gateway_instances.go
 api_gateway_role_assignments.go
 api_gateways.go
 api_group_membership.go
+api_group_role_assignments.go
 api_groups.go
 api_identity_provider_attributes.go
 api_identity_providers.go
@@ -357,6 +358,7 @@ docs/GroupMembership.md
 docs/GroupMembershipApi.md
 docs/GroupNesting.md
 docs/GroupPopulation.md
+docs/GroupRoleAssignmentsApi.md
 docs/GroupTotalMemberCounts.md
 docs/GroupsApi.md
 docs/IdentityProvider.md
@@ -475,6 +477,7 @@ docs/ResourceSecret.md
 docs/ResourcesApi.md
 docs/Role.md
 docs/RoleAssignment.md
+docs/RoleAssignmentGroup.md
 docs/RoleAssignmentRole.md
 docs/RoleAssignmentScope.md
 docs/RolePermissionsInner.md
@@ -919,6 +922,7 @@ model_resource_scope.go
 model_resource_secret.go
 model_role.go
 model_role_assignment.go
+model_role_assignment_group.go
 model_role_assignment_role.go
 model_role_assignment_scope.go
 model_role_permissions_inner.go

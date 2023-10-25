@@ -204,6 +204,10 @@ Class | Method | HTTP request | Description
 *GroupMembershipApi* | [**ReadAllGroupMembershipsForUser**](docs/GroupMembershipApi.md#readallgroupmembershipsforuser) | **Get** /environments/{environmentID}/users/{userID}/memberOfGroups | READ All Group Memberships for User
 *GroupMembershipApi* | [**ReadOneGroupMembershipForUser**](docs/GroupMembershipApi.md#readonegroupmembershipforuser) | **Get** /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | READ One Group Membership for User
 *GroupMembershipApi* | [**RemoveUserFromGroup**](docs/GroupMembershipApi.md#removeuserfromgroup) | **Delete** /environments/{environmentID}/users/{userID}/memberOfGroups/{groupID} | REMOVE User from Group
+*GroupRoleAssignmentsApi* | [**CreateGroupRoleAssignment**](docs/GroupRoleAssignmentsApi.md#creategrouproleassignment) | **Post** /environments/{environmentID}/groups/{groupID}/roleAssignments | CREATE Group Role Assignment
+*GroupRoleAssignmentsApi* | [**DeleteGroupRoleAssignment**](docs/GroupRoleAssignmentsApi.md#deletegrouproleassignment) | **Delete** /environments/{environmentID}/groups/{groupID}/roleAssignments/{roleAssignmentID} | DELETE Group&#39;s Role Assignment
+*GroupRoleAssignmentsApi* | [**ReadGroupRoleAssignments**](docs/GroupRoleAssignmentsApi.md#readgrouproleassignments) | **Get** /environments/{environmentID}/groups/{groupID}/roleAssignments | READ Role Assignments
+*GroupRoleAssignmentsApi* | [**ReadOneGroupRoleAssignment**](docs/GroupRoleAssignmentsApi.md#readonegrouproleassignment) | **Get** /environments/{environmentID}/groups/{groupID}/roleAssignments/{roleAssignmentID} | READ One Group Assignment
 *GroupsApi* | [**CreateGroup**](docs/GroupsApi.md#creategroup) | **Post** /environments/{environmentID}/groups | CREATE Group
 *GroupsApi* | [**CreateGroupNesting**](docs/GroupsApi.md#creategroupnesting) | **Post** /environments/{environmentID}/groups/{groupID}/memberOfGroups | CREATE Group Nesting
 *GroupsApi* | [**DeleteGroup**](docs/GroupsApi.md#deletegroup) | **Delete** /environments/{environmentID}/groups/{groupID} | DELETE Group
@@ -760,6 +764,7 @@ Class | Method | HTTP request | Description
  - [ResourceSecret](docs/ResourceSecret.md)
  - [Role](docs/Role.md)
  - [RoleAssignment](docs/RoleAssignment.md)
+ - [RoleAssignmentGroup](docs/RoleAssignmentGroup.md)
  - [RoleAssignmentRole](docs/RoleAssignmentRole.md)
  - [RoleAssignmentScope](docs/RoleAssignmentScope.md)
  - [RolePermissionsInner](docs/RolePermissionsInner.md)
