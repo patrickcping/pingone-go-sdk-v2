@@ -6,7 +6,7 @@
 * **Enhancement** Added ability to set a PKCS12 keystore password when building a `CreateKeyRequest`. [#266](https://github.com/patrickcping/pingone-go-sdk-v2/pull/266)
 * **Enhancement** Better define the `Role` and `RolePermissionsInner` data models. [#270](https://github.com/patrickcping/pingone-go-sdk-v2/pull/270)
 * **Enhancement** Support group role assignments. [#271](https://github.com/patrickcping/pingone-go-sdk-v2/pull/271)
-* **Enhancement** Added `Tags` object attribute to the `BillOfMaterialsProductsInner` model, to facilitate creation of DaVinci enabled environments without example configuration.
+* **Enhancement** Added `Tags` object attribute to the `BillOfMaterialsProductsInner` model, to facilitate creation of DaVinci enabled environments without example configuration. [#272](https://github.com/patrickcping/pingone-go-sdk-v2/pull/272)
 
 # v0.30.0 (2023-10-16)
 
