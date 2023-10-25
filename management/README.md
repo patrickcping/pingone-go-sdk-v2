@@ -764,6 +764,7 @@ Class | Method | HTTP request | Description
  - [ResourceSecret](docs/ResourceSecret.md)
  - [Role](docs/Role.md)
  - [RoleAssignment](docs/RoleAssignment.md)
+ - [RoleAssignmentGroup](docs/RoleAssignmentGroup.md)
  - [RoleAssignmentRole](docs/RoleAssignmentRole.md)
  - [RoleAssignmentScope](docs/RoleAssignmentScope.md)
  - [RolePermissionsInner](docs/RolePermissionsInner.md)

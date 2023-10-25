@@ -22,6 +22,7 @@ type RoleAssignment struct {
 	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	Gateway *GatewayInstanceGateway `json:"gateway,omitempty"`
+	Group *RoleAssignmentGroup `json:"group,omitempty"`
 	// A string that specifies the user role assignment ID.
 	Id *string `json:"id,omitempty"`
 	// A boolean that specifies whether this role assignment can be deleted by the current actor.
@@ -143,6 +144,38 @@ func (o *RoleAssignment) HasGateway() bool {
 // SetGateway gets a reference to the given GatewayInstanceGateway and assigns it to the Gateway field.
 func (o *RoleAssignment) SetGateway(v GatewayInstanceGateway) {
 	o.Gateway = &v
+}
+
+// GetGroup returns the Group field value if set, zero value otherwise.
+func (o *RoleAssignment) GetGroup() RoleAssignmentGroup {
+	if o == nil || IsNil(o.Group) {
+		var ret RoleAssignmentGroup
+		return ret
+	}
+	return *o.Group
+}
+
+// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleAssignment) GetGroupOk() (*RoleAssignmentGroup, bool) {
+	if o == nil || IsNil(o.Group) {
+		return nil, false
+	}
+	return o.Group, true
+}
+
+// HasGroup returns a boolean if a field has been set.
+func (o *RoleAssignment) HasGroup() bool {
+	if o != nil && !IsNil(o.Group) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroup gets a reference to the given RoleAssignmentGroup and assigns it to the Group field.
+func (o *RoleAssignment) SetGroup(v RoleAssignmentGroup) {
+	o.Group = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -275,6 +308,9 @@ func (o RoleAssignment) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Gateway) {
 		toSerialize["gateway"] = o.Gateway
+	}
+	if !IsNil(o.Group) {
+		toSerialize["group"] = o.Group
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

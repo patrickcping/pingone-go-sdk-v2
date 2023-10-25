@@ -477,6 +477,7 @@ docs/ResourceSecret.md
 docs/ResourcesApi.md
 docs/Role.md
 docs/RoleAssignment.md
+docs/RoleAssignmentGroup.md
 docs/RoleAssignmentRole.md
 docs/RoleAssignmentScope.md
 docs/RolePermissionsInner.md
