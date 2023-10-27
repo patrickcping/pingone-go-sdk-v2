@@ -7,7 +7,7 @@
 * **Enhancement** Better define the `Role` and `RolePermissionsInner` data models. [#270](https://github.com/patrickcping/pingone-go-sdk-v2/pull/270)
 * **Enhancement** Support group role assignments. [#271](https://github.com/patrickcping/pingone-go-sdk-v2/pull/271)
 * **Enhancement** Added `Tags` object attribute to the `BillOfMaterialsProductsInner` model, to facilitate creation of DaVinci enabled environments without example configuration. [#272](https://github.com/patrickcping/pingone-go-sdk-v2/pull/272)
-* **Bug** Corrected situations where `EntityArrayEmbeddedGatewaysInner` unmarshal did not return ENUMGATEWAYTYPE_RADIUS objects properly. [#237](https://github.com/patrickcping/pingone-go-sdk-v2/pull/237)
+* **Bug** Corrected situations where `EntityArrayEmbeddedGatewaysInner` unmarshal did not return ENUMGATEWAYTYPE_RADIUS objects properly. [#273](https://github.com/patrickcping/pingone-go-sdk-v2/pull/273)
 
 # v0.30.0 (2023-10-16)
 
