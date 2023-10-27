@@ -31,10 +31,11 @@ func (dst *EntityArrayEmbeddedGatewaysInner) UnmarshalJSON(data []byte) error {
 		if string(jsonGateway) == "{}" { // empty struct
 			dst.Gateway = nil
 		} else {
-			if dst.Gateway.Type != ENUMGATEWAYTYPE_LDAP {
-				return nil // data stored in dst.Gateway, return on the first match
-			} else {
+			switch dst.Gateway.Type {
+			case ENUMGATEWAYTYPE_LDAP, ENUMGATEWAYTYPE_RADIUS:
 				dst.Gateway = nil
+			default:
+				return nil // data stored in dst.Gateway, return on the first match
 			}
 		}
 	} else {
