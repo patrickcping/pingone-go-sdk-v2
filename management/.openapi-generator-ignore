@@ -46,7 +46,6 @@ model_create_gateway_201_response.go
 model_create_gateway_request.go
 model_entity_array__embedded_applications_inner.go
 model_entity_array__embedded_attributes_inner.go
-model_entity_array__embedded_gateways_inner.go
 model_entity_array__embedded_languages_inner.go
 model_identity_provider.go
 model_object_environment.go
