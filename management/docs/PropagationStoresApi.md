@@ -4,20 +4,20 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost) | **Post** /environments/{environmentID}/propagation/stores/connection/status | TEST Connection Configuration
-[**EnvironmentsEnvironmentIDPropagationStoresGet**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresGet) | **Get** /environments/{environmentID}/propagation/stores | READ All Stores
-[**EnvironmentsEnvironmentIDPropagationStoresPost**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresPost) | **Post** /environments/{environmentID}/propagation/stores | CREATE Store (Aquera)
-[**EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete) | **Delete** /environments/{environmentID}/propagation/stores/{storeID} | DELETE Store
-[**EnvironmentsEnvironmentIDPropagationStoresStoreIDGet**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresStoreIDGet) | **Get** /environments/{environmentID}/propagation/stores/{storeID} | READ One Store
-[**EnvironmentsEnvironmentIDPropagationStoresStoreIDPut**](PropagationStoresApi.md#EnvironmentsEnvironmentIDPropagationStoresStoreIDPut) | **Put** /environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
+[**CreatePropagationStore**](PropagationStoresApi.md#CreatePropagationStore) | **Post** /environments/{environmentID}/propagation/stores | CREATE Propagation Store
+[**DeletePropagationStore**](PropagationStoresApi.md#DeletePropagationStore) | **Delete** /environments/{environmentID}/propagation/stores/{storeID} | DELETE Store
+[**ReadAllStores**](PropagationStoresApi.md#ReadAllStores) | **Get** /environments/{environmentID}/propagation/stores | READ All Stores
+[**ReadOnePropagationStore**](PropagationStoresApi.md#ReadOnePropagationStore) | **Get** /environments/{environmentID}/propagation/stores/{storeID} | READ One Store
+[**TestConnectionConfiguration**](PropagationStoresApi.md#TestConnectionConfiguration) | **Post** /environments/{environmentID}/propagation/stores/connection/status | TEST Connection Configuration
+[**UpdatePropagationStore**](PropagationStoresApi.md#UpdatePropagationStore) | **Put** /environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
 
 
 
-## EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost
+## CreatePropagationStore
 
-> EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost(ctx, environmentID).ContentType(contentType).Body(body).Execute()
+> PropagationStore CreatePropagationStore(ctx, environmentID).PropagationStore(propagationStore).Execute()
 
-TEST Connection Configuration
+CREATE Propagation Store
 
 ### Example
 
@@ -33,16 +33,17 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    contentType := "application/vnd.pingidentity.connection.check+json" // string |  (optional)
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    propagationStore := *openapiclient.NewPropagationStore(openapiclient.PropagationStore_configuration{PropagationStoreConfigurationAquera: openapiclient.NewPropagationStoreConfigurationAquera(openapiclient.EnumPropagationStoreTypeAqueraAuthenticationMethod("OAuth Bearer Token"), "BASIC_AUTH_PASSWORD_example", "BASIC_AUTH_USER_example", "SCIM_URL_example")}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost(context.Background(), environmentID).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.PropagationStoresApi.CreatePropagationStore(context.Background(), environmentID).PropagationStore(propagationStore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.CreatePropagationStore``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreatePropagationStore`: PropagationStore
+    fmt.Fprintf(os.Stdout, "Response from `PropagationStoresApi.CreatePropagationStore`: %v\n", resp)
 }
 ```
 
@@ -56,18 +57,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresConnectionStatusPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreatePropagationStoreRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **contentType** | **string** |  | 
- **body** | **map[string]interface{}** |  | 
+ **propagationStore** | [**PropagationStore**](PropagationStore.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**PropagationStore**](PropagationStore.md)
 
 ### Authorization
 
@@ -83,145 +83,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## EnvironmentsEnvironmentIDPropagationStoresGet
+## DeletePropagationStore
 
-> EnvironmentsEnvironmentIDPropagationStoresGet(ctx, environmentID).Accept(accept).Execute()
-
-READ All Stores
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    accept := "application/json" // string |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresGet(context.Background(), environmentID).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **accept** | **string** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EnvironmentsEnvironmentIDPropagationStoresPost
-
-> EnvironmentsEnvironmentIDPropagationStoresPost(ctx, environmentID).Body(body).Execute()
-
-CREATE Store (Aquera)
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
-)
-
-func main() {
-    environmentID := "environmentID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresPost(context.Background(), environmentID).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentID** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | **map[string]interface{}** |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearer](../README.md#bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete
-
-> EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete(ctx, environmentID, storeID).Accept(accept).Execute()
+> DeletePropagationStore(ctx, environmentID, storeID).Execute()
 
 DELETE Store
 
@@ -240,13 +104,12 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     storeID := "storeID_example" // string | 
-    accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete(context.Background(), environmentID, storeID).Accept(accept).Execute()
+    r, err := apiClient.PropagationStoresApi.DeletePropagationStore(context.Background(), environmentID, storeID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.DeletePropagationStore``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -263,14 +126,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresStoreIDDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeletePropagationStoreRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **accept** | **string** |  | 
 
 ### Return type
 
@@ -290,9 +152,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## EnvironmentsEnvironmentIDPropagationStoresStoreIDGet
+## ReadAllStores
 
-> EnvironmentsEnvironmentIDPropagationStoresStoreIDGet(ctx, environmentID, storeID).Accept(accept).Execute()
+> EntityArray ReadAllStores(ctx, environmentID).Execute()
+
+READ All Stores
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PropagationStoresApi.ReadAllStores(context.Background(), environmentID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.ReadAllStores``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReadAllStores`: EntityArray
+    fmt.Fprintf(os.Stdout, "Response from `PropagationStoresApi.ReadAllStores`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReadAllStoresRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntityArray**](EntityArray.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReadOnePropagationStore
+
+> PropagationStore ReadOnePropagationStore(ctx, environmentID, storeID).Execute()
 
 READ One Store
 
@@ -311,15 +241,16 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     storeID := "storeID_example" // string | 
-    accept := "application/json" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDGet(context.Background(), environmentID, storeID).Accept(accept).Execute()
+    resp, r, err := apiClient.PropagationStoresApi.ReadOnePropagationStore(context.Background(), environmentID, storeID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.ReadOnePropagationStore``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ReadOnePropagationStore`: PropagationStore
+    fmt.Fprintf(os.Stdout, "Response from `PropagationStoresApi.ReadOnePropagationStore`: %v\n", resp)
 }
 ```
 
@@ -334,18 +265,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresStoreIDGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReadOnePropagationStoreRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **accept** | **string** |  | 
 
 ### Return type
 
- (empty response body)
+[**PropagationStore**](PropagationStore.md)
 
 ### Authorization
 
@@ -361,9 +291,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## EnvironmentsEnvironmentIDPropagationStoresStoreIDPut
+## TestConnectionConfiguration
 
-> EnvironmentsEnvironmentIDPropagationStoresStoreIDPut(ctx, environmentID, storeID).Body(body).Execute()
+> TestConnectionConfiguration(ctx, environmentID).ContentType(contentType).PropagationStore(propagationStore).Execute()
+
+TEST Connection Configuration
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    contentType := openapiclient.EnumPropagationStoreConnectionStatusContentType("application/vnd.pingidentity.connection.check+json") // EnumPropagationStoreConnectionStatusContentType |  (optional)
+    propagationStore := *openapiclient.NewPropagationStore(openapiclient.PropagationStore_configuration{PropagationStoreConfigurationAquera: openapiclient.NewPropagationStoreConfigurationAquera(openapiclient.EnumPropagationStoreTypeAqueraAuthenticationMethod("OAuth Bearer Token"), "BASIC_AUTH_PASSWORD_example", "BASIC_AUTH_USER_example", "SCIM_URL_example")}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.PropagationStoresApi.TestConnectionConfiguration(context.Background(), environmentID).ContentType(contentType).PropagationStore(propagationStore).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.TestConnectionConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTestConnectionConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **contentType** | [**EnumPropagationStoreConnectionStatusContentType**](EnumPropagationStoreConnectionStatusContentType.md) |  | 
+ **propagationStore** | [**PropagationStore**](PropagationStore.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePropagationStore
+
+> PropagationStore UpdatePropagationStore(ctx, environmentID, storeID).PropagationStore(propagationStore).Execute()
 
 UPDATE Store
 
@@ -382,15 +382,17 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     storeID := "storeID_example" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    propagationStore := *openapiclient.NewPropagationStore(openapiclient.PropagationStore_configuration{PropagationStoreConfigurationAquera: openapiclient.NewPropagationStoreConfigurationAquera(openapiclient.EnumPropagationStoreTypeAqueraAuthenticationMethod("OAuth Bearer Token"), "BASIC_AUTH_PASSWORD_example", "BASIC_AUTH_USER_example", "SCIM_URL_example")}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDPut(context.Background(), environmentID, storeID).Body(body).Execute()
+    resp, r, err := apiClient.PropagationStoresApi.UpdatePropagationStore(context.Background(), environmentID, storeID).PropagationStore(propagationStore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.EnvironmentsEnvironmentIDPropagationStoresStoreIDPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PropagationStoresApi.UpdatePropagationStore``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdatePropagationStore`: PropagationStore
+    fmt.Fprintf(os.Stdout, "Response from `PropagationStoresApi.UpdatePropagationStore`: %v\n", resp)
 }
 ```
 
@@ -405,18 +407,18 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDPropagationStoresStoreIDPutRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdatePropagationStoreRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | **map[string]interface{}** |  | 
+ **propagationStore** | [**PropagationStore**](PropagationStore.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**PropagationStore**](PropagationStore.md)
 
 ### Authorization
 
