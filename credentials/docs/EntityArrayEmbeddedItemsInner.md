@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Issuer** | Pointer to [**ObjectIssuer**](ObjectIssuer.md) |  | [optional] 
 **IssuerName** | Pointer to **string** | v issuer name associated with the card, can differ from title. | [optional] 
 **Metadata** | [**CredentialTypeMetaData**](CredentialTypeMetaData.md) |  | 
+**Multiple** | Pointer to [**CredentialTypeMultiple**](CredentialTypeMultiple.md) |  | [optional] 
 **OnDelete** | Pointer to [**CredentialTypeOnDelete**](CredentialTypeOnDelete.md) |  | [optional] 
 **Title** | **string** | A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title. | 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
@@ -308,6 +309,31 @@ and a boolean to check if the value has been set.
 
 SetMetadata sets Metadata field to given value.
 
+
+### GetMultiple
+
+`func (o *EntityArrayEmbeddedItemsInner) GetMultiple() CredentialTypeMultiple`
+
+GetMultiple returns the Multiple field if non-nil, zero value otherwise.
+
+### GetMultipleOk
+
+`func (o *EntityArrayEmbeddedItemsInner) GetMultipleOk() (*CredentialTypeMultiple, bool)`
+
+GetMultipleOk returns a tuple with the Multiple field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMultiple
+
+`func (o *EntityArrayEmbeddedItemsInner) SetMultiple(v CredentialTypeMultiple)`
+
+SetMultiple sets Multiple field to given value.
+
+### HasMultiple
+
+`func (o *EntityArrayEmbeddedItemsInner) HasMultiple() bool`
+
+HasMultiple returns a boolean if a field has been set.
 
 ### GetOnDelete
 

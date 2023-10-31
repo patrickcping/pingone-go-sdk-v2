@@ -38,6 +38,7 @@ type CredentialType struct {
 	// v issuer name associated with the card, can differ from title.
 	IssuerName *string `json:"issuerName,omitempty"`
 	Metadata CredentialTypeMetaData `json:"metadata"`
+	Multiple *CredentialTypeMultiple `json:"multiple,omitempty"`
 	OnDelete *CredentialTypeOnDelete `json:"onDelete,omitempty"`
 	// A string that specifies the title of the credential. Verification sites are expected to be able to request the issued credential from the compatible wallet app using the title.
 	Title string `json:"title"`
@@ -401,6 +402,38 @@ func (o *CredentialType) SetMetadata(v CredentialTypeMetaData) {
 	o.Metadata = v
 }
 
+// GetMultiple returns the Multiple field value if set, zero value otherwise.
+func (o *CredentialType) GetMultiple() CredentialTypeMultiple {
+	if o == nil || IsNil(o.Multiple) {
+		var ret CredentialTypeMultiple
+		return ret
+	}
+	return *o.Multiple
+}
+
+// GetMultipleOk returns a tuple with the Multiple field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetMultipleOk() (*CredentialTypeMultiple, bool) {
+	if o == nil || IsNil(o.Multiple) {
+		return nil, false
+	}
+	return o.Multiple, true
+}
+
+// HasMultiple returns a boolean if a field has been set.
+func (o *CredentialType) HasMultiple() bool {
+	if o != nil && !IsNil(o.Multiple) {
+		return true
+	}
+
+	return false
+}
+
+// SetMultiple gets a reference to the given CredentialTypeMultiple and assigns it to the Multiple field.
+func (o *CredentialType) SetMultiple(v CredentialTypeMultiple) {
+	o.Multiple = &v
+}
+
 // GetOnDelete returns the OnDelete field value if set, zero value otherwise.
 func (o *CredentialType) GetOnDelete() CredentialTypeOnDelete {
 	if o == nil || IsNil(o.OnDelete) {
@@ -528,6 +561,9 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 		toSerialize["issuerName"] = o.IssuerName
 	}
 	toSerialize["metadata"] = o.Metadata
+	if !IsNil(o.Multiple) {
+		toSerialize["multiple"] = o.Multiple
+	}
 	if !IsNil(o.OnDelete) {
 		toSerialize["onDelete"] = o.OnDelete
 	}

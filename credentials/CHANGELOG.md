@@ -1,3 +1,8 @@
+# v0.4.2 (Unreleased)
+
+* **Enhancement** Added the `default` property to the `fields` array definition in the `CredentialTypeMetaData` object model. [#264](https://github.com/patrickcping/pingone-go-sdk-v2/pull/264)
+* **Enhancement** Added `multiple` object to the `CredentialType` object model. [#264](https://github.com/patrickcping/pingone-go-sdk-v2/pull/264)
+
 # v0.4.1 (2023-10-16)
 
 * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)

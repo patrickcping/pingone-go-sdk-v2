@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
  - [CredentialType](docs/CredentialType.md)
  - [CredentialTypeMetaData](docs/CredentialTypeMetaData.md)
  - [CredentialTypeMetaDataFieldsInner](docs/CredentialTypeMetaDataFieldsInner.md)
+ - [CredentialTypeMultiple](docs/CredentialTypeMultiple.md)
  - [CredentialTypeOnDelete](docs/CredentialTypeOnDelete.md)
  - [DigitalWalletApplication](docs/DigitalWalletApplication.md)
  - [EntityArray](docs/EntityArray.md)
