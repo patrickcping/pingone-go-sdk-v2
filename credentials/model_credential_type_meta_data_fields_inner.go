@@ -21,6 +21,8 @@ var _ MappedNullable = &CredentialTypeMetaDataFieldsInner{}
 type CredentialTypeMetaDataFieldsInner struct {
 	// A string that specifies the name of the PingOne Directory attribute if field.type is Directory Attribute.
 	Attribute *string `json:"attribute,omitempty"`
+	// Assigns a default field value if a PingOne Expression Language (PEL) expression in the fields.attribute evaluates to no value.
+	Default *string `json:"default,omitempty"`
 	// A string that specifies the identifier of the field.
 	Id string `json:"id"`
 	FileSupport *EnumCredentialTypeMetaDataFieldsFileSupport `json:"fileSupport,omitempty"`
@@ -84,6 +86,38 @@ func (o *CredentialTypeMetaDataFieldsInner) HasAttribute() bool {
 // SetAttribute gets a reference to the given string and assigns it to the Attribute field.
 func (o *CredentialTypeMetaDataFieldsInner) SetAttribute(v string) {
 	o.Attribute = &v
+}
+
+// GetDefault returns the Default field value if set, zero value otherwise.
+func (o *CredentialTypeMetaDataFieldsInner) GetDefault() string {
+	if o == nil || IsNil(o.Default) {
+		var ret string
+		return ret
+	}
+	return *o.Default
+}
+
+// GetDefaultOk returns a tuple with the Default field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaDataFieldsInner) GetDefaultOk() (*string, bool) {
+	if o == nil || IsNil(o.Default) {
+		return nil, false
+	}
+	return o.Default, true
+}
+
+// HasDefault returns a boolean if a field has been set.
+func (o *CredentialTypeMetaDataFieldsInner) HasDefault() bool {
+	if o != nil && !IsNil(o.Default) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefault gets a reference to the given string and assigns it to the Default field.
+func (o *CredentialTypeMetaDataFieldsInner) SetDefault(v string) {
+	o.Default = &v
 }
 
 // GetId returns the Id field value
@@ -258,6 +292,9 @@ func (o CredentialTypeMetaDataFieldsInner) ToMap() (map[string]interface{}, erro
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
+	}
+	if !IsNil(o.Default) {
+		toSerialize["default"] = o.Default
 	}
 	toSerialize["id"] = o.Id
 	if !IsNil(o.FileSupport) {

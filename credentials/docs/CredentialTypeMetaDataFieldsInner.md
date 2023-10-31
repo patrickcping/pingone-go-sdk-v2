@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Attribute** | Pointer to **string** | A string that specifies the name of the PingOne Directory attribute if field.type is Directory Attribute. | [optional] 
+**Default** | Pointer to **string** | Assigns a default field value if a PingOne Expression Language (PEL) expression in the fields.attribute evaluates to no value. | [optional] 
 **Id** | **string** | A string that specifies the identifier of the field. | 
 **FileSupport** | Pointer to [**EnumCredentialTypeMetaDataFieldsFileSupport**](EnumCredentialTypeMetaDataFieldsFileSupport.md) |  | [optional] 
 **IsVisible** | **bool** | A boolean value that specifies whether the field should be visible to viewers of the credential. | 
@@ -55,6 +56,31 @@ SetAttribute sets Attribute field to given value.
 `func (o *CredentialTypeMetaDataFieldsInner) HasAttribute() bool`
 
 HasAttribute returns a boolean if a field has been set.
+
+### GetDefault
+
+`func (o *CredentialTypeMetaDataFieldsInner) GetDefault() string`
+
+GetDefault returns the Default field if non-nil, zero value otherwise.
+
+### GetDefaultOk
+
+`func (o *CredentialTypeMetaDataFieldsInner) GetDefaultOk() (*string, bool)`
+
+GetDefaultOk returns a tuple with the Default field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefault
+
+`func (o *CredentialTypeMetaDataFieldsInner) SetDefault(v string)`
+
+SetDefault sets Default field to given value.
+
+### HasDefault
+
+`func (o *CredentialTypeMetaDataFieldsInner) HasDefault() bool`
+
+HasDefault returns a boolean if a field has been set.
 
 ### GetId
 
