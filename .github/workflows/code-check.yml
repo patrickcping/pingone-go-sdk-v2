@@ -56,6 +56,16 @@ jobs:
   lint:
     needs: [build]
     runs-on: ubuntu-latest
+    matrix:
+      module:
+        - '.'
+        - 'agreementmanagement'
+        - 'authorize'
+        - 'credentials'
+        - 'management'
+        - 'mfa'
+        - 'risk'
+        - 'verify'
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: actions/setup-go@v4
@@ -76,7 +86,4 @@ jobs:
         uses: golangci/golangci-lint-action@v3
         with:
           version: "${{ steps.golangci-lint-version.outputs.version }}"
-        run: |
-          make lint
-
-  
+          working-directory: ${{ matrix.module }}
