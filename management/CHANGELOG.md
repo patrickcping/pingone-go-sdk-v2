@@ -1,4 +1,4 @@
-# v0.31.0 (Unreleased)
+# v0.31.0 (2023-11-01)
 
 * **Enhancement** Added `DisplayName`, `SourceId` and `SourceType` object attributes to the `Group` object model. [#264](https://github.com/patrickcping/pingone-go-sdk-v2/pull/264)
 * **Enhancement** Added `TlsClientAuthKeyPair` object attributes to the `Subscription` object model. [#265](https://github.com/patrickcping/pingone-go-sdk-v2/pull/265)

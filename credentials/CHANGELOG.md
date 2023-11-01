@@ -1,4 +1,4 @@
-# v0.5.0 (Unreleased)
+# v0.5.0 (2023-11-01)
 
 * **Enhancement** Added the `Default` property to the `CredentialTypeMetaDataFieldsInner` object model. [#275](https://github.com/patrickcping/pingone-go-sdk-v2/pull/275)
 * **Enhancement** Added `Multiple` object attribute to the `CredentialType` object model. [#275](https://github.com/patrickcping/pingone-go-sdk-v2/pull/275)
