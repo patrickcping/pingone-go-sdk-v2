@@ -481,7 +481,6 @@ docs/PropagationPlansApi.md
 docs/PropagationRevisionsApi.md
 docs/PropagationRulesApi.md
 docs/PropagationStore.md
-docs/PropagationStoreConfiguration.md
 docs/PropagationStoreConfigurationAquera.md
 docs/PropagationStoreConfigurationAzureADSAMLV2.md
 docs/PropagationStoreConfigurationGithubEMU.md
@@ -970,7 +969,6 @@ model_password_policy_min_characters.go
 model_population.go
 model_population_password_policy.go
 model_propagation_store.go
-model_propagation_store_configuration.go
 model_propagation_store_configuration_aquera.go
 model_propagation_store_configuration_azure_adsamlv2.go
 model_propagation_store_configuration_github_emu.go

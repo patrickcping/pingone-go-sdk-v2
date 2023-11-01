@@ -775,7 +775,6 @@ Class | Method | HTTP request | Description
  - [Population](docs/Population.md)
  - [PopulationPasswordPolicy](docs/PopulationPasswordPolicy.md)
  - [PropagationStore](docs/PropagationStore.md)
- - [PropagationStoreConfiguration](docs/PropagationStoreConfiguration.md)
  - [PropagationStoreConfigurationAquera](docs/PropagationStoreConfigurationAquera.md)
  - [PropagationStoreConfigurationAzureADSAMLV2](docs/PropagationStoreConfigurationAzureADSAMLV2.md)
  - [PropagationStoreConfigurationGithubEMU](docs/PropagationStoreConfigurationGithubEMU.md)

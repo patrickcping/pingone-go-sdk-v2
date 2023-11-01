@@ -33,7 +33,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    propagationStore := *openapiclient.NewPropagationStore(openapiclient.PropagationStore_configuration{PropagationStoreConfigurationAquera: openapiclient.NewPropagationStoreConfigurationAquera(openapiclient.EnumPropagationStoreTypeAqueraAuthenticationMethod("OAuth Bearer Token"), "BASIC_AUTH_PASSWORD_example", "BASIC_AUTH_USER_example", "SCIM_URL_example")}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
+    propagationStore := *openapiclient.NewPropagationStore(map[string]interface{}{"key": interface{}(123)}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -312,7 +312,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     contentType := openapiclient.EnumPropagationStoreConnectionStatusContentType("application/vnd.pingidentity.connection.check+json") // EnumPropagationStoreConnectionStatusContentType |  (optional)
-    propagationStore := *openapiclient.NewPropagationStore(openapiclient.PropagationStore_configuration{PropagationStoreConfigurationAquera: openapiclient.NewPropagationStoreConfigurationAquera(openapiclient.EnumPropagationStoreTypeAqueraAuthenticationMethod("OAuth Bearer Token"), "BASIC_AUTH_PASSWORD_example", "BASIC_AUTH_USER_example", "SCIM_URL_example")}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
+    propagationStore := *openapiclient.NewPropagationStore(map[string]interface{}{"key": interface{}(123)}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -382,7 +382,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     storeID := "storeID_example" // string | 
-    propagationStore := *openapiclient.NewPropagationStore(openapiclient.PropagationStore_configuration{PropagationStoreConfigurationAquera: openapiclient.NewPropagationStoreConfigurationAquera(openapiclient.EnumPropagationStoreTypeAqueraAuthenticationMethod("OAuth Bearer Token"), "BASIC_AUTH_PASSWORD_example", "BASIC_AUTH_USER_example", "SCIM_URL_example")}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
+    propagationStore := *openapiclient.NewPropagationStore(map[string]interface{}{"key": interface{}(123)}, "Name_example", openapiclient.EnumPropagationStoreType("Aquera")) // PropagationStore |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

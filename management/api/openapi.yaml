@@ -29734,7 +29734,8 @@ components:
             href: https://openapi-generator.tech
           self:
             href: https://openapi-generator.tech
-        configuration: null
+        configuration:
+          key: ""
         managed: true
         name: name
         description: description
@@ -29753,7 +29754,10 @@ components:
         _links:
           $ref: '#/components/schemas/LinksHATEOAS'
         configuration:
-          $ref: '#/components/schemas/PropagationStore_configuration'
+          additionalProperties: true
+          description: Configuration properties specific to each identity propagation
+            store.
+          type: object
         description:
           description: A description for the identity propagation store.
           type: string
@@ -35762,21 +35766,6 @@ components:
       required:
       - id
       type: object
-    PropagationStore_configuration:
-      oneOf:
-      - $ref: '#/components/schemas/PropagationStoreConfigurationAquera'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationAzureADSAMLV2'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationGithubEMU'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationGoogleApps'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationLDAPGateway'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationPingOne'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationSalesforce'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationSalesforceContacts'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationSCIM'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationServiceNow'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationSlack'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationWorkday'
-      - $ref: '#/components/schemas/PropagationStoreConfigurationZoom'
     PropagationStore_image:
       example:
         href: href

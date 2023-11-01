@@ -4411,20 +4411,9 @@ components:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
         configuration:
-          oneOf:
-            - $ref: '#/components/schemas/PropagationStoreConfigurationAquera'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationAzureADSAMLV2'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationGithubEMU'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationGoogleApps'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationLDAPGateway'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationPingOne'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationSalesforce'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationSalesforceContacts'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationSCIM'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationServiceNow'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationSlack'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationWorkday'
-            - $ref: '#/components/schemas/PropagationStoreConfigurationZoom'
+          type: object
+          description: Configuration properties specific to each identity propagation store.
+          additionalProperties: true
         description:
           type: string
           description: A description for the identity propagation store.

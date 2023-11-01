@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
-**Configuration** | [**PropagationStoreConfiguration**](PropagationStoreConfiguration.md) |  | 
+**Configuration** | **map[string]interface{}** | Configuration properties specific to each identity propagation store. | 
 **Description** | Pointer to **string** | A description for the identity propagation store. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewPropagationStore
 
-`func NewPropagationStore(configuration PropagationStoreConfiguration, name string, type_ EnumPropagationStoreType, ) *PropagationStore`
+`func NewPropagationStore(configuration map[string]interface{}, name string, type_ EnumPropagationStoreType, ) *PropagationStore`
 
 NewPropagationStore instantiates a new PropagationStore object
 This constructor will assign default values to properties that have it defined,
@@ -62,20 +62,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetConfiguration
 
-`func (o *PropagationStore) GetConfiguration() PropagationStoreConfiguration`
+`func (o *PropagationStore) GetConfiguration() map[string]interface{}`
 
 GetConfiguration returns the Configuration field if non-nil, zero value otherwise.
 
 ### GetConfigurationOk
 
-`func (o *PropagationStore) GetConfigurationOk() (*PropagationStoreConfiguration, bool)`
+`func (o *PropagationStore) GetConfigurationOk() (*map[string]interface{}, bool)`
 
 GetConfigurationOk returns a tuple with the Configuration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfiguration
 
-`func (o *PropagationStore) SetConfiguration(v PropagationStoreConfiguration)`
+`func (o *PropagationStore) SetConfiguration(v map[string]interface{})`
 
 SetConfiguration sets Configuration field to given value.
 

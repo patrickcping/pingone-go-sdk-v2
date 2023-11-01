@@ -20,7 +20,8 @@ var _ MappedNullable = &PropagationStore{}
 // PropagationStore struct for PropagationStore
 type PropagationStore struct {
 	Links *LinksHATEOAS `json:"_links,omitempty"`
-	Configuration PropagationStoreConfiguration `json:"configuration"`
+	// Configuration properties specific to each identity propagation store.
+	Configuration map[string]interface{} `json:"configuration"`
 	// A description for the identity propagation store.
 	Description *string `json:"description,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -40,7 +41,7 @@ type PropagationStore struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPropagationStore(configuration PropagationStoreConfiguration, name string, type_ EnumPropagationStoreType) *PropagationStore {
+func NewPropagationStore(configuration map[string]interface{}, name string, type_ EnumPropagationStoreType) *PropagationStore {
 	this := PropagationStore{}
 	this.Configuration = configuration
 	this.Name = name
@@ -89,9 +90,9 @@ func (o *PropagationStore) SetLinks(v LinksHATEOAS) {
 }
 
 // GetConfiguration returns the Configuration field value
-func (o *PropagationStore) GetConfiguration() PropagationStoreConfiguration {
+func (o *PropagationStore) GetConfiguration() map[string]interface{} {
 	if o == nil {
-		var ret PropagationStoreConfiguration
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -100,15 +101,15 @@ func (o *PropagationStore) GetConfiguration() PropagationStoreConfiguration {
 
 // GetConfigurationOk returns a tuple with the Configuration field value
 // and a boolean to check if the value has been set.
-func (o *PropagationStore) GetConfigurationOk() (*PropagationStoreConfiguration, bool) {
+func (o *PropagationStore) GetConfigurationOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Configuration, true
+	return o.Configuration, true
 }
 
 // SetConfiguration sets field value
-func (o *PropagationStore) SetConfiguration(v PropagationStoreConfiguration) {
+func (o *PropagationStore) SetConfiguration(v map[string]interface{}) {
 	o.Configuration = v
 }
 
