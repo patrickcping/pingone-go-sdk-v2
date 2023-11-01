@@ -320,12 +320,12 @@ Class | Method | HTTP request | Description
 *PropagationStoreMetadataApi* | [**EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforceContactsPost**](docs/PropagationStoreMetadataApi.md#environmentsenvironmentidpropagationstoremetadatasalesforcecontactspost) | **Post** /environments/{environmentID}/propagation/storeMetadata/SalesforceContacts | Identity Propagation Store Metadata (SalesforceContacts)
 *PropagationStoreMetadataApi* | [**EnvironmentsEnvironmentIDPropagationStoreMetadataSalesforcePost**](docs/PropagationStoreMetadataApi.md#environmentsenvironmentidpropagationstoremetadatasalesforcepost) | **Post** /environments/{environmentID}/propagation/storeMetadata/Salesforce | Identity Propagation Store Metadata (Salesforce)
 *PropagationStoreMetadataApi* | [**EnvironmentsEnvironmentIDPropagationStoreMetadataScimPost**](docs/PropagationStoreMetadataApi.md#environmentsenvironmentidpropagationstoremetadatascimpost) | **Post** /environments/{environmentID}/propagation/storeMetadata/scim | Identity Propagation Store Metadata (SCIM)
-*PropagationStoresApi* | [**EnvironmentsEnvironmentIDPropagationStoresConnectionStatusPost**](docs/PropagationStoresApi.md#environmentsenvironmentidpropagationstoresconnectionstatuspost) | **Post** /environments/{environmentID}/propagation/stores/connection/status | TEST Connection Configuration
-*PropagationStoresApi* | [**EnvironmentsEnvironmentIDPropagationStoresGet**](docs/PropagationStoresApi.md#environmentsenvironmentidpropagationstoresget) | **Get** /environments/{environmentID}/propagation/stores | READ All Stores
-*PropagationStoresApi* | [**EnvironmentsEnvironmentIDPropagationStoresPost**](docs/PropagationStoresApi.md#environmentsenvironmentidpropagationstorespost) | **Post** /environments/{environmentID}/propagation/stores | CREATE Store (Aquera)
-*PropagationStoresApi* | [**EnvironmentsEnvironmentIDPropagationStoresStoreIDDelete**](docs/PropagationStoresApi.md#environmentsenvironmentidpropagationstoresstoreiddelete) | **Delete** /environments/{environmentID}/propagation/stores/{storeID} | DELETE Store
-*PropagationStoresApi* | [**EnvironmentsEnvironmentIDPropagationStoresStoreIDGet**](docs/PropagationStoresApi.md#environmentsenvironmentidpropagationstoresstoreidget) | **Get** /environments/{environmentID}/propagation/stores/{storeID} | READ One Store
-*PropagationStoresApi* | [**EnvironmentsEnvironmentIDPropagationStoresStoreIDPut**](docs/PropagationStoresApi.md#environmentsenvironmentidpropagationstoresstoreidput) | **Put** /environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
+*PropagationStoresApi* | [**CreatePropagationStore**](docs/PropagationStoresApi.md#createpropagationstore) | **Post** /environments/{environmentID}/propagation/stores | CREATE Propagation Store
+*PropagationStoresApi* | [**DeletePropagationStore**](docs/PropagationStoresApi.md#deletepropagationstore) | **Delete** /environments/{environmentID}/propagation/stores/{storeID} | DELETE Store
+*PropagationStoresApi* | [**ReadAllStores**](docs/PropagationStoresApi.md#readallstores) | **Get** /environments/{environmentID}/propagation/stores | READ All Stores
+*PropagationStoresApi* | [**ReadOnePropagationStore**](docs/PropagationStoresApi.md#readonepropagationstore) | **Get** /environments/{environmentID}/propagation/stores/{storeID} | READ One Store
+*PropagationStoresApi* | [**TestConnectionConfiguration**](docs/PropagationStoresApi.md#testconnectionconfiguration) | **Post** /environments/{environmentID}/propagation/stores/connection/status | TEST Connection Configuration
+*PropagationStoresApi* | [**UpdatePropagationStore**](docs/PropagationStoresApi.md#updatepropagationstore) | **Put** /environments/{environmentID}/propagation/stores/{storeID} | UPDATE Store
 *RecaptchaConfigurationApi* | [**DeleteRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#deleterecaptchaconfiguration) | **Delete** /environments/{environmentID}/recaptchaV2Config | DELETE Recaptcha Configuration
 *RecaptchaConfigurationApi* | [**ReadRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#readrecaptchaconfiguration) | **Get** /environments/{environmentID}/recaptchaV2Config | READ Recaptcha Configuration
 *RecaptchaConfigurationApi* | [**UpdateRecaptchaConfiguration**](docs/RecaptchaConfigurationApi.md#updaterecaptchaconfiguration) | **Put** /environments/{environmentID}/recaptchaV2Config | UPDATE Recaptcha Configuration
@@ -586,6 +586,23 @@ Class | Method | HTTP request | Description
  - [EnumOrganizationType](docs/EnumOrganizationType.md)
  - [EnumPasscodeRefreshTimeUnit](docs/EnumPasscodeRefreshTimeUnit.md)
  - [EnumProductType](docs/EnumProductType.md)
+ - [EnumPropagationStoreConnectionStatusContentType](docs/EnumPropagationStoreConnectionStatusContentType.md)
+ - [EnumPropagationStoreStatus](docs/EnumPropagationStoreStatus.md)
+ - [EnumPropagationStoreSyncState](docs/EnumPropagationStoreSyncState.md)
+ - [EnumPropagationStoreType](docs/EnumPropagationStoreType.md)
+ - [EnumPropagationStoreTypeAqueraAuthenticationMethod](docs/EnumPropagationStoreTypeAqueraAuthenticationMethod.md)
+ - [EnumPropagationStoreTypeAqueraGroupSourceName](docs/EnumPropagationStoreTypeAqueraGroupSourceName.md)
+ - [EnumPropagationStoreTypeLDAPGatewayLDAPType](docs/EnumPropagationStoreTypeLDAPGatewayLDAPType.md)
+ - [EnumPropagationStoreTypePingOneDefaultAuthMethod](docs/EnumPropagationStoreTypePingOneDefaultAuthMethod.md)
+ - [EnumPropagationStoreTypePingOneRegion](docs/EnumPropagationStoreTypePingOneRegion.md)
+ - [EnumPropagationStoreTypeRemoveActionDisable](docs/EnumPropagationStoreTypeRemoveActionDisable.md)
+ - [EnumPropagationStoreTypeRemoveActionDisableDelete](docs/EnumPropagationStoreTypeRemoveActionDisableDelete.md)
+ - [EnumPropagationStoreTypeSCIMAuthenticationMethod](docs/EnumPropagationStoreTypeSCIMAuthenticationMethod.md)
+ - [EnumPropagationStoreTypeSCIMGroupNameSource](docs/EnumPropagationStoreTypeSCIMGroupNameSource.md)
+ - [EnumPropagationStoreTypeSCIMUniqueUserIdentifier](docs/EnumPropagationStoreTypeSCIMUniqueUserIdentifier.md)
+ - [EnumPropagationStoreTypeSalesforceContactsRecordType](docs/EnumPropagationStoreTypeSalesforceContactsRecordType.md)
+ - [EnumPropagationStoreTypeSlackUniqueUserIdentifier](docs/EnumPropagationStoreTypeSlackUniqueUserIdentifier.md)
+ - [EnumPropagationStoreTypeZoomAuthenticationMethod](docs/EnumPropagationStoreTypeZoomAuthenticationMethod.md)
  - [EnumRegionCode](docs/EnumRegionCode.md)
  - [EnumRegionCodeLicense](docs/EnumRegionCodeLicense.md)
  - [EnumResourceAttributeType](docs/EnumResourceAttributeType.md)
@@ -757,6 +774,22 @@ Class | Method | HTTP request | Description
  - [PasswordPolicyMinCharacters](docs/PasswordPolicyMinCharacters.md)
  - [Population](docs/Population.md)
  - [PopulationPasswordPolicy](docs/PopulationPasswordPolicy.md)
+ - [PropagationStore](docs/PropagationStore.md)
+ - [PropagationStoreConfigurationAquera](docs/PropagationStoreConfigurationAquera.md)
+ - [PropagationStoreConfigurationAzureADSAMLV2](docs/PropagationStoreConfigurationAzureADSAMLV2.md)
+ - [PropagationStoreConfigurationGithubEMU](docs/PropagationStoreConfigurationGithubEMU.md)
+ - [PropagationStoreConfigurationGoogleApps](docs/PropagationStoreConfigurationGoogleApps.md)
+ - [PropagationStoreConfigurationLDAPGateway](docs/PropagationStoreConfigurationLDAPGateway.md)
+ - [PropagationStoreConfigurationPingOne](docs/PropagationStoreConfigurationPingOne.md)
+ - [PropagationStoreConfigurationSCIM](docs/PropagationStoreConfigurationSCIM.md)
+ - [PropagationStoreConfigurationSalesforce](docs/PropagationStoreConfigurationSalesforce.md)
+ - [PropagationStoreConfigurationSalesforceContacts](docs/PropagationStoreConfigurationSalesforceContacts.md)
+ - [PropagationStoreConfigurationServiceNow](docs/PropagationStoreConfigurationServiceNow.md)
+ - [PropagationStoreConfigurationSlack](docs/PropagationStoreConfigurationSlack.md)
+ - [PropagationStoreConfigurationWorkday](docs/PropagationStoreConfigurationWorkday.md)
+ - [PropagationStoreConfigurationZoom](docs/PropagationStoreConfigurationZoom.md)
+ - [PropagationStoreImage](docs/PropagationStoreImage.md)
+ - [PropagationStoreSyncStatus](docs/PropagationStoreSyncStatus.md)
  - [ReadOneApplication200Response](docs/ReadOneApplication200Response.md)
  - [RecaptchaConfiguration](docs/RecaptchaConfiguration.md)
  - [Resource](docs/Resource.md)

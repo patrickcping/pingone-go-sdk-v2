@@ -409,6 +409,75 @@ components:
       type: string
       enum: [PING_ONE_MFA, PING_ONE_DAVINCI, PING_ONE_ORCHESTRATE, PING_ONE_RISK, PING_ONE_FRAUD, PING_ONE_PROVISIONING, PING_DATA_SYNC, PING_DATA_GOVERNANCE, PING_ONE_FOR_ENTERPRISE, PING_ID_SDK, PING_ONE_FOR_SAAS, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE, PING_ONE_BASE, PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, PING_CENTRAL]
       description: A string that specifies the Ping Identity product type. Options for PingOne platform products are PING_ONE_DAVINCI, PING_ONE_MFA, PING_ONE_RISK, PING_ONE_VERIFY, PING_ONE_CREDENTIALS, PING_ONE_AUTHORIZE and PING_ONE_BASE. The PING_ONE_BASE product represents the default set of services that an environment can use on the PingOne platform. Options for other Ping Identity products are PING_FEDERATE, PING_ACCESS, PING_DIRECTORY, PING_AUTHORIZE, PING_ID, PING_INTELLIGENCE, and PING_CENTRAL
+    EnumPropagationStoreConnectionStatusContentType:
+      type: string
+      enum: [application/vnd.pingidentity.connection.check+json]
+    EnumPropagationStoreStatus:
+      type: string
+      enum: [INACTIVE]
+      description: The status of the identity store. The default value is INACTIVE.
+    EnumPropagationStoreSyncState:
+      type: string
+      readOnly: true
+      enum: [SYNCING, FAILED]
+      description: The current state of synchronization with a propagation store or stores. Options are either SYNCING or FAILED.
+    EnumPropagationStoreType:
+      type: string
+      enum: [Aquera, AzureActiveDirectorySAML2, directory, LdapGateway, PingOne, Salesforce, SalesforceContacts, scim, Slack, Workday, Zoom]
+      description: The type of the identity store and determines the required and acceptable configuration properties. It also determines the acceptable target attribute mappings. Options are Aquera, AzureActiveDirectorySAML2, directory, LdapGateway, PingOne, Salesforce, SalesforceContacts, scim, Slack, Workday, or Zoom.
+    EnumPropagationStoreTypeRemoveActionDisable:
+      type: string
+      enum: [Disable]
+      description: The action to take when deprovisioning (removing) a user. Must be set to Disable.
+    EnumPropagationStoreTypeRemoveActionDisableDelete:
+      type: string
+      enum: [Disable, Delete]
+      description: The action to take when deprovisioning (removing) a user. Options are either `Disable` or `Delete`.
+    EnumPropagationStoreTypeAqueraAuthenticationMethod:
+      type: string
+      enum: [OAuth Bearer Token, Basic Auth]
+      description: The account authentication method. For example, `OAuth Bearer Token` or `Basic Auth`.
+    EnumPropagationStoreTypeAqueraGroupSourceName:
+      type: string
+      enum: [Common Name, Distinguished Name]
+      description: The source to use for the group name. Options are either `Common Name` or `Distinguished Name`.
+    EnumPropagationStoreTypeLDAPGatewayLDAPType:
+      type: string
+      enum: [PingDirectory, Microsoft Active Directory]
+      description: Type of LDAP gateway; can be `PingDirectory` or `Microsoft Active Directory`.
+    EnumPropagationStoreTypePingOneDefaultAuthMethod:
+      type: string
+      enum: [Email 1, SMS 1, Voice 1]
+      description: The default authentication method. Options are `Email 1`, `SMS 1`, or `Voice 1`.
+    EnumPropagationStoreTypePingOneRegion:
+      type: string
+      enum: [NA, CA, EU, AP]
+      description: A supported region. Options are `NA`, `CA`, `EU`, or `AP`.
+    EnumPropagationStoreTypeSalesforceContactsRecordType:
+      type: string
+      enum: [Lead, Contact]
+      description: The type of Salesforce record. Options are either Lead or Contact.
+    EnumPropagationStoreTypeSCIMAuthenticationMethod:
+      type: string
+      enum: [OAuth 2 Client Credentials, OAuth 2 Bearer Token, Basic Authentication]
+      description: The account authentication method. Can be `OAuth 2 Client Credentials`, `OAuth 2 Bearer Token`, or `Basic Authentication`.
+    EnumPropagationStoreTypeSCIMGroupNameSource:
+      type: string
+      enum: [Common Name, Distinguished Name]
+      description: The source to use for the group name. Options are either `Common Name` or `Distinguished Name`.
+    EnumPropagationStoreTypeSCIMUniqueUserIdentifier:
+      type: string
+      enum: [userName, workEmail]
+      description: Specifies the unique user identifier to use. Options are either `userName` or `workEmail`.
+    EnumPropagationStoreTypeSlackUniqueUserIdentifier:
+      type: string
+      enum: [primaryEmail, userName]
+      description: The unique user identifier, must be either `primaryEmail` or `userName`.
+    EnumPropagationStoreTypeZoomAuthenticationMethod:
+      type: string
+      enum: [JWT Bearer Token, OAuth Bearer Token]
+      description: Account authentication method. Case sensitive. Can be JWT Bearer Token or OAuth Bearer Token. Defaults to JWT Bearer Token.
+      default: JWT Bearer Token
     EnumRegionCode:
       type: string
       enum: [AP, CA, EU, NA]
@@ -4336,6 +4405,596 @@ components:
           readOnly: true
       required:
         - name
+    PropagationStore:
+      type: object
+      properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
+        configuration:
+          type: object
+          description: Configuration properties specific to each identity propagation store.
+          additionalProperties: true
+        description:
+          type: string
+          description: A description for the identity propagation store.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          type: string
+          readOnly: true
+          description: A string that specifies the resource’s unique identifier.
+        image:
+          type: object
+          properties:
+            href:
+              type: string
+              description: The URL for the identity store resource image file.
+            id:
+              type: string
+              description: The image ID for the identity store resource.
+        managed:
+          type: boolean
+          description: Indicates whether or not to enable deprovisioning of users for a store when it is deleted. The deprovisioning occurs when a new revision is created (`POST {{apiPath}}/environments/{{envID}}/propagation/revisions`).
+        name:
+          type: string
+          description: The name of the identity store.
+        status:
+          $ref: '#/components/schemas/EnumPropagationStoreStatus'
+        syncStatus:
+          type: object
+          readOnly: true
+          properties:
+            details:
+              type: string
+              readOnly: true
+              description: Details of any synchronization errors.
+            failedCount:
+              type: integer
+              readOnly: true
+              description: A count of failed synchronization events since the last revision.
+            failedDeprovisionCount:
+              type: integer
+              readOnly: true
+              description: A count of failed deprovisioning synchronization events since the last revision.
+            lastSyncAt:
+              type: string
+              format: date-time
+              readOnly: true
+              description: The last synchronization in yyyy-MM-dd'T'HH:mm:ss.SSS'Z' format.
+            successCount:
+              type: integer
+              readOnly: true
+              description: A count of successful synchronization events since the last revision.
+            syncState:
+              $ref: '#/components/schemas/EnumPropagationStoreSyncState'
+            userTotal:
+              type: integer
+              readOnly: true
+              description: A count of users that will synchronize to the target store based on the Rule’s filter.
+        type:
+          $ref: '#/components/schemas/EnumPropagationStoreType'
+      required:
+        - configuration
+        - name
+        - type
+    PropagationStoreConfigurationAquera:
+      type: object
+      properties:
+        ACCESS_TOKEN:
+          type: string
+          description: A string specifying the access token for account authentication.
+        AUTHENTICATION_METHOD:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeAqueraAuthenticationMethod'
+        BASIC_AUTH_PASSWORD:
+          type: string
+          description: The password for account authentication.
+        BASIC_AUTH_USER:
+          type: string
+          description: The user name for account authentication.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled.
+        GROUP_NAME_SOURCE:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeAqueraGroupSourceName'
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisableDelete'
+        SCIM_URL:
+          type: string
+          description: The SCIM URL.
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - AUTHENTICATION_METHOD
+        - BASIC_AUTH_PASSWORD
+        - BASIC_AUTH_USER
+        - SCIM_URL
+    PropagationStoreConfigurationAzureADSAMLV2:
+      type: object
+      properties:
+        ClientId:
+          type: string
+          description: The Azure Active Directory client ID.
+        ClientSecret:
+          type: string
+          description: The Azure Active Directory client secret.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DEPROVISION_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be deprovisioned (removed) following action specified in `REMOVE_ACTION`.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled.
+        PROVISION_DISABLED_USERS_PROV_OPT:
+          type: boolean
+          description: Whether or not disabled users can be provisioned. Defaults to `true` and, if used, must be set to `true`.
+          default: true
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisableDelete'
+        RemoveLicensesWhenSkuIdEmpty:
+          type: boolean
+          description: Whether or not remove licenses from user when `skuId` is empty.
+        TenantDomain:
+          type: string
+          description: The account's Azure Active Directory domain.
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - ClientId
+        - ClientSecret
+        - RemoveLicensesWhenSkuIdEmpty
+        - TenantDomain
+    PropagationStoreConfigurationGithubEMU:
+      type: object
+      properties:
+        BASE_URL:
+          type: string
+          description: Base URL of the target propagation store.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DEPROVISION_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be deprovisioned (removed) following action specified in `REMOVE_ACTION`.
+        OAUTH_ACCESS_TOKEN:
+          type: string
+          description: OAuth 2 access token.
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisableDelete'
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - BASE_URL
+        - OAUTH_ACCESS_TOKEN
+    PropagationStoreConfigurationGoogleApps:
+      type: object
+      properties:
+        APPLICATION_NAME:
+          type: string
+          description: Name of the application using the store.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DEPROVISION_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be deprovisioned (removed) following action specified in `REMOVE_ACTION`.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled.
+        DOMAIN:
+          type: string
+          description: The account's domain name.
+        OAUTH_ACCESS_TOKEN:
+          type: string
+          description: OAuth 2 access token.
+        OAUTH_CLIENT_ID:
+          type: string
+          description: GoogleApps identifier of the client associated with the propagation store.
+        OAUTH_CLIENT_SECRET:
+          type: string
+          description: GoogleApps secret of the client associated with the propagation store.
+        OAUTH_REFRESH_TOKEN:
+          type: string
+          description: OAuth 2 refresh token.
+        PROVISION_DISABLED_USERS_PROV_OPT:
+          type: boolean
+          description: Whether or not disabled users can be provisioned. Defaults to `true` and, if used, must be set to `true`.
+          default: true
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisableDelete'
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - APPLICATION_NAME
+        - DOMAIN
+        - OAUTH_ACCESS_TOKEN
+        - OAUTH_CLIENT_ID
+        - OAUTH_CLIENT_SECRET
+        - OAUTH_REFRESH_TOKEN
+    PropagationStoreConfigurationLDAPGateway:
+      type: object
+      properties:
+        ATTRIBUTE_METADATA:
+          type: string
+          description: User-defined attribute metadata.
+        CLIENT_ID:
+          type: string
+          description: Identifier of the client for authentication.
+        CLIENT_SECRET:
+          type: string
+          description: Secret of the client for authentication.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DELETE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be deleted.
+        ENVIRONMENT_ID:
+          type: string
+          description: Identifier, a UUID, of the environment the connector services.
+        GATEWAY_BASE_URL:
+          type: string
+          description: Base URL of the gateway.
+        GATEWAY_ID:
+          type: string
+          description: Identifier of the gateway to which the connector connects.
+        LDAP_TYPE:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeLDAPGatewayLDAPType'
+        OAUTH_URL:
+          type: string
+          description: OAuth token request endpoint.
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - CLIENT_ID
+        - CLIENT_SECRET
+        - ENVIRONMENT_ID
+        - GATEWAY_BASE_URL
+        - GATEWAY_ID
+        - LDAP_TYPE
+        - OAUTH_URL
+    PropagationStoreConfigurationPingOne:
+      type: object
+      properties:
+        CLIENT_ID:
+          type: string
+          description: Unique identifier (UUID) of the PingOne client associated with the propagation store.
+        CLIENT_SECRET:
+          type: string
+          description: The PingOne client secret.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DEFAULT_AUTH_METHOD:
+          $ref: '#/components/schemas/EnumPropagationStoreTypePingOneDefaultAuthMethod'
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled.
+        ENVIRONMENT_ID:
+          type: string
+          description: Unique identifier (UUID) of the PingOne environment associated with the propagation store.
+        MFA_USER_DEVICE_MANAGEMENT:
+          type: string
+          description: How to manage MFA user devices when synchronizing. Options are either Merge with devices in PingOne or Overwrite devices in PingOne.
+        PROVISION_DISABLED_USERS_PROV_OPT:
+          type: boolean
+          description: Whether or not disabled users can be provisioned.
+        REGION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypePingOneRegion'
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisableDelete'
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - ENVIRONMENT_ID
+        - REGION
+    PropagationStoreConfigurationSalesforce:
+      type: object
+      properties:
+        ACCOUNT_ID:
+          type: string
+          description: The Salesforce account ID.
+        CLIENT_ID:
+          type: string
+          description: The Salesforce client ID.
+        CLIENT_SECRET:
+          type: string
+          description: The Salesforce client secret.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled.
+        ENABLE_COMMUNITIES:
+          type: boolean
+          description: Whether or not to enable Salesforce communities.
+        FREEZE_USER_FLAG:
+          type: boolean
+          description: Whether the user account is frozen.
+        OAUTH_ACCESS_TOKEN:
+          type: string
+          description: OAuth access token for account authentication.
+        OAUTH_REFRESH_TOKEN:
+          type: string
+          description: OAuth refresh token for account authentication.
+        PERMISSION_SET_MANAGEMENT:
+          type: string
+          description: The permission sets to be merged with Salesforce.
+        PROFILE_ID:
+          type: string
+          description: The Salesforce profile ID.
+        PROVISION_DISABLED_USERS:
+          type: boolean
+          description: Whether or not disabled users can be provisioned.
+        SALESFORCE_DOMAIN:
+          type: string
+          description: The account's salesforce.com domain.
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - CLIENT_ID
+        - CLIENT_SECRET
+        - ENABLE_COMMUNITIES
+        - FREEZE_USER_FLAG
+        - OAUTH_ACCESS_TOKEN
+        - OAUTH_REFRESH_TOKEN
+        - PERMISSION_SET_MANAGEMENT
+        - SALESFORCE_DOMAIN
+    PropagationStoreConfigurationSalesforceContacts:
+      type: object
+      properties:
+        ACCOUNT_ID:
+          type: string
+          description: The Salesforce account ID.
+        CLIENT_ID:
+          type: string
+          description: Unique identifier (UUID) of the Salesforce client associated with the propagation store.
+        CLIENT_SECRET:
+          type: string
+          description: The Salesforce client secret.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled.
+        ENABLE_COMMUNITIES:
+          type: boolean
+          description: Whether or not to enable Salesforce communities.
+        FREEZE_USER_FLAG:
+          type: boolean
+          description: Whether the user account is frozen.
+        OAUTH_ACCESS_TOKEN:
+          type: string
+          description: OAuth access token for account authentication.
+        OAUTH_REFRESH_TOKEN:
+          type: string
+          description: OAuth refresh token for account authentication.
+        PERMISSION_SET_MANAGEMENT:
+          type: string
+          description: The permission sets to be merged with Salesforce.
+        PROFILE_ID:
+          type: string
+          description: The Salesforce profile ID.
+        PROVISION_DISABLED_USERS:
+          type: boolean
+          description: Whether or not disabled users can be provisioned.
+        RECORD_TYPE:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeSalesforceContactsRecordType'
+        SALESFORCE_DOMAIN:
+          type: string
+          description: The account's salesforce.com domain.
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - CLIENT_ID
+        - CLIENT_SECRET
+        - OAUTH_ACCESS_TOKEN
+        - OAUTH_REFRESH_TOKEN
+        - RECORD_TYPE
+        - SALESFORCE_DOMAIN
+    PropagationStoreConfigurationSCIM:
+      type: object
+      properties:
+        AUTHENTICATION_METHOD:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeSCIMAuthenticationMethod'
+        AUTHORIZATION_TYPE:
+          type: string
+          description: The authorization header type.
+        BASIC_AUTH_PASSWORD:
+          type: string
+          description: The password for account authentication. Required when `AUTHENTICATION_METHOD` is `Basic Authentication`, otherwise optional.
+        BASIC_AUTH_USER:
+          type: string
+          description: The user name for account authentication. Required when `AUTHENTICATION_METHOD` is `Basic Authentication`, otherwise optional.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled.
+        GROUP_NAME_SOURCE:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeSCIMGroupNameSource'
+        GROUPS_RESOURCE:
+          type: string
+          description: API endpoint path to the group entity.
+        OAUTH_ACCESS_TOKEN:
+          type: string
+          description: OAuth access token for account authentication. Required when `AUTHENTICATION_METHOD` is `OAuth 2 Bearer Token`, otherwise optional.
+        OAUTH_CLIENT_ID:
+          type: string
+          description: OAuth client ID. Required when `AUTHENTICATION_METHOD` is `OAuth 2 Client Credentials`, otherwise optional.
+        OAUTH_CLIENT_SECRET:
+          type: string
+          description: OAuth client secret. Required when `AUTHENTICATION_METHOD` is `OAuth 2 Client Credentials`, otherwise optional.
+        OAUTH_TOKEN_REQUEST:
+          type: string
+          description: OAuth token request endpoint. Required when `AUTHENTICATION_METHOD` is `OAuth 2 Bearer Token`, otherwise optional.
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisableDelete'
+        SCIM_URL:
+          type: string
+          description: The SCIM URL.
+        SCIM_VERSION:
+          type: string
+          description: The SCIM version.
+        UNIQUE_USER_IDENTIFIER:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeSCIMUniqueUserIdentifier'
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+        USER_FILTER:
+          type: string
+          description: A string that specifies a SCIM filter expression.
+        USERS_RESOURCE:
+          type: string
+          description: API endpoint path to the user entity.
+      required:
+        - AUTHENTICATION_METHOD
+        - AUTHORIZATION_TYPE
+        - SCIM_URL
+        - SCIM_VERSION
+        - UNIQUE_USER_IDENTIFIER
+        - USER_FILTER
+        - USERS_RESOURCE
+    PropagationStoreConfigurationServiceNow:
+      type: object
+      properties:
+        Administrator_Password:
+          type: string
+          description: Password for the administrator.
+        Administrator_Username:
+          type: string
+          description: Username for the administrator.
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DEPROVISION_USERS:
+          type: string
+          description: Whether or not users are allowed to be deprovisioned (removed) following action specified in `REMOVE_ACTION`.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not new users are allowed to be disabled.
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisable'
+        ServiceNow_Url:
+          type: string
+          description: The URL for the ServiceNow account.
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - Administrator_Password
+        - Administrator_Username
+        - ServiceNow_Url
+    PropagationStoreConfigurationSlack:
+      type: object
+      properties:
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DEPROVISION_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be deprovisioned (removed) following action specified in `REMOVE_ACTION`.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled. Must be set to `true`.
+        OAUTH_ACCESS_TOKEN:
+          type: string
+          description: OAuth 2 access token.
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisable'
+        UNIQUE_USER_IDENTIFIER:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeSlackUniqueUserIdentifier'
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - OAUTH_ACCESS_TOKEN
+        - UNIQUE_USER_IDENTIFIER
+    PropagationStoreConfigurationWorkday:
+      type: object
+      properties:
+        excludeContingentWorkers:
+          type: boolean
+          description: Whether or not contingent workers are excluded.
+        excludeEmployees:
+          type: boolean
+          description: Whether or not employees are excluded.
+        excludeInactiveWorkers:
+          type: boolean
+          description: Whether or not inactive workers are excluded.
+        host:
+          type: string
+          description: The Workday API host.
+        password:
+          type: string
+          description: The password for account authentication.
+        tenantId:
+          type: string
+          description: The Workday tenant ID.
+        username:
+          type: string
+          description: The user name for account authentication.
+      required:
+        - password
+        - tenantId
+        - username
+    PropagationStoreConfigurationZoom:
+      type: object
+      properties:
+        API_KEY:
+          type: string
+          description: The client API key. Required when `AUTHENTICATION_METHOD` is `JWT Bearer Token`, otherwise optional.
+        API_SECRET:
+          type: string
+          description: The client API secret. Required when `AUTHENTICATION_METHOD` is `JWT Bearer Token`, otherwise optional.
+        AUTHENTICATION_METHOD:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeZoomAuthenticationMethod'
+        CREATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be created.
+        DEPROVISION_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be removed (deprovisioned) following the action configured in `REMOVE_ACTION`.
+        DISABLE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be disabled.
+        OAUTH_ACCOUNT_ID:
+          type: string
+          description: OAuth account identifier. Required when `AUTHENTICATION_METHOD` is `OAuth Bearer Token`, otherwise optional.
+        OAUTH_CLIENT_ID:
+          type: string
+          description: OAuth client identifier. Required when `AUTHENTICATION_METHOD` is `OAuth Bearer Token`, otherwise optional.
+        OAUTH_CLIENT_SECRET:
+          type: string
+          description: OAuth client secret. Required when `AUTHENTICATION_METHOD` is `OAuth Bearer Token`, otherwise optional.
+        OAUTH_TOKEN_URL:
+          type: string
+          description: OAuth token request endpoint. Required when `AUTHENTICATION_METHOD` is `OAuth Bearer Token`, otherwise optional.
+        REMOVE_ACTION:
+          $ref: '#/components/schemas/EnumPropagationStoreTypeRemoveActionDisableDelete'
+        SCIM_URL:
+          type: string
+          description: The SCIM URL.
+        UPDATE_USERS:
+          type: boolean
+          description: Whether or not users are allowed to be updated.
+      required:
+        - SCIM_URL
     RecaptchaConfiguration:
       type: object
       properties:
@@ -11949,16 +12608,10 @@ paths:
   /environments/{environmentID}/propagation/stores:
     get:
       tags:
-        - >-
-          Propagation
-          Stores
+        - Propagation Stores
       summary: READ All Stores
+      operationId: readAllStores
       parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: environmentID
           in: path
           schema:
@@ -11980,38 +12633,19 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
     post:
       tags:
-        - >-
-          Propagation
-          Stores
-      summary: CREATE Store (Aquera)
+        - Propagation Stores
+      summary: CREATE Propagation Store
+      operationId: createPropagationStore
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                type: Aquera
-                name: AqueraTest
-                configuration:
-                  AUTHENTICATION_METHOD: None
-                  USER_FILTER: username Eq "%s"
-                  UNIQUE_USER_IDENTIFIER: userName
-                  REMOVE_ACTION: Disable
-                  CREATE_NEW_USERS: true
-                  UPDATE_NEW_USERS: true
-                  DISABLE_NEW_USERS: true
-                  USERS_RESOURCE: /Users
-                  SCIM_VERSION: '2.0'
-                  SCIM_URL: https://example.com
-                  AUTHORIZATION_TYPE: Basic
-                  BASIC_AUTH_USER: basicUserName
-                  BASIC_AUTH_PASSWORD: BasicPassword
-                image:
-                  href: >-
-                    https://d1oekt4jpdthse.cloudfront.net/branding/market/cb933bfe-8282-405a-a780-0a19b97edc02.png
+              $ref: '#/components/schemas/PropagationStore'
       parameters:
         - name: environmentID
           in: path
@@ -12036,20 +12670,16 @@ paths:
         '201':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropagationStore'
   /environments/{environmentID}/propagation/stores/{storeID}:
     get:
       tags:
-        - >-
-          Propagation
-          Stores
+        - Propagation Stores
       summary: READ One Store
+      operationId: readOnePropagationStore
       parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: environmentID
           in: path
           schema:
@@ -12076,33 +12706,19 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropagationStore'
     put:
       tags:
-        - >-
-          Propagation
-          Stores
+        - Propagation Stores
       summary: UPDATE Store
+      operationId: updatePropagationStore
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                type: scim
-                name: scim
-                description: Update a scim connection
-                configuration:
-                  AUTHENTICATION_METHOD: Basic Authentication
-                  SCIM_URL: https://scim.url
-                  USERS_RESOURCE: /users
-                  SCIM_VERSION: '1.1'
-                  AUTHORIZATION_TYPE: Basic
-                  BASIC_AUTH_USER: basicUserName
-                  BASIC_AUTH_PASSWORD: BasicPassword
-                image:
-                  href: >-
-                    https://d1oekt4jpdthse.cloudfront.net/branding/market/cb933bfe-8282-405a-a780-0a19b97edc02.png
+              $ref: '#/components/schemas/PropagationStore'
       parameters:
         - name: environmentID
           in: path
@@ -12130,19 +12746,15 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropagationStore'
     delete:
       tags:
-        - >-
-          Propagation
-          Stores
+        - Propagation Stores
       summary: DELETE Store
+      operationId: deletePropagationStore
       parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
         - name: environmentID
           in: path
           schema:
@@ -12171,34 +12783,19 @@ paths:
   /environments/{environmentID}/propagation/stores/connection/status:
     post:
       tags:
-        - >-
-          Propagation
-          Stores
+        - Propagation Stores
       summary: TEST Connection Configuration
+      operationId: testConnectionConfiguration
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                type: scim
-                name: scim
-                configuration:
-                  AUTHENTICATION_METHOD: Basic Authentication
-                  SCIM_URL: https://scim.url
-                  USERS_RESOURCE: /users
-                  SCIM_VERSION: '1.1'
-                  AUTHORIZATION_TYPE: Basic
-                  BASIC_AUTH_USER: basicUserName
-                  BASIC_AUTH_PASSWORD: BasicPassword
-                image:
-                  href: >-
-                    https://d1oekt4jpdthse.cloudfront.net/branding/market/cb933bfe-8282-405a-a780-0a19b97edc02.png
+              $ref: '#/components/schemas/PropagationStore'
       parameters:
         - name: Content-Type
           in: header
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumPropagationStoreConnectionStatusContentType'
           example: application/vnd.pingidentity.connection.check+json
         - name: environmentID
           in: path
@@ -12222,8 +12819,6 @@ paths:
           $ref: '#/components/responses/500'
         '200':
           description: Successful response
-          content:
-            application/json: {}
   /environments/{environmentID}/propagation/storeMetadata/scim:
     post:
       tags:
