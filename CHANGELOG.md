@@ -1,5 +1,8 @@
-# Release (Unreleased)
+# Release (2023-11-01)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.10.9
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.4.1 => v0.5.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.30.0 => v0.31.0
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.5.0](./credentials/CHANGELOG.md)
     * **Enhancement** Added the `Default` property to the `CredentialTypeMetaDataFieldsInner` object model. [#275](https://github.com/patrickcping/pingone-go-sdk-v2/pull/275)
     * **Enhancement** Added `Multiple` object attribute to the `CredentialType` object model. [#275](https://github.com/patrickcping/pingone-go-sdk-v2/pull/275)
