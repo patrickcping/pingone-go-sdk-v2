@@ -56,16 +56,17 @@ jobs:
   lint:
     needs: [build]
     runs-on: ubuntu-latest
-    matrix:
-      module:
-        - '.'
-        - 'agreementmanagement'
-        - 'authorize'
-        - 'credentials'
-        - 'management'
-        - 'mfa'
-        - 'risk'
-        - 'verify'
+    strategy:
+      matrix:
+        module:
+          - '.'
+          - 'agreementmanagement'
+          - 'authorize'
+          - 'credentials'
+          - 'management'
+          - 'mfa'
+          - 'risk'
+          - 'verify'
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: actions/setup-go@v4
