@@ -1,7 +1,7 @@
 //go:build tools
 // +build tools
 
-package tools
+package main
 
 //go:generate go install github.com/golangci/golangci-lint/cmd/golangci-lint
 //go:generate go install github.com/pavius/impi/cmd/impi
