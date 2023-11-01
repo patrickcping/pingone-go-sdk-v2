@@ -5,8 +5,8 @@ go 1.20
 require (
 	github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.2.2
 	github.com/patrickcping/pingone-go-sdk-v2/authorize v0.3.1
-	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.4.1
-	github.com/patrickcping/pingone-go-sdk-v2/management v0.30.0
+	github.com/patrickcping/pingone-go-sdk-v2/credentials v0.5.0
+	github.com/patrickcping/pingone-go-sdk-v2/management v0.31.0
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.17.0
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.11.0
 	github.com/patrickcping/pingone-go-sdk-v2/verify v0.3.1
