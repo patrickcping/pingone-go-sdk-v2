@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 
  - [EntityArray](docs/EntityArray.md)
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
+ - [EnumInspectionType](docs/EnumInspectionType.md)
  - [EnumThreshold](docs/EnumThreshold.md)
  - [EnumTimeUnit](docs/EnumTimeUnit.md)
  - [EnumVerify](docs/EnumVerify.md)

@@ -1,3 +1,7 @@
+# v0.4.0 (2023-11-06)
+
+* **Enhancement** Added the `InspectionType` property to the `GovernmentIdConfiguration` object model. [#275](https://github.com/patrickcping/pingone-go-sdk-v2/pull/275)
+
 # v0.3.1 (2023-10-16)
 
 * **Note** Unskip read only attributes when converting API models to maps. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)

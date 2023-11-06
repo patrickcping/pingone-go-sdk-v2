@@ -1275,6 +1275,7 @@ components:
                   duration: 2
                   timeUnit: null
             governmentId:
+              inspectionType: null
               verify: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           - voice:
@@ -1354,6 +1355,7 @@ components:
                   duration: 2
                   timeUnit: null
             governmentId:
+              inspectionType: null
               verify: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
           voicePhrases:
@@ -1377,6 +1379,14 @@ components:
         size:
           type: number
       type: object
+    EnumInspectionType:
+      description: "A string that defines the mechanism used to authenticate a `governmentId`\
+        \ document.  Options are `AUTOMATIC`, `MANUAL`, or `STEP_UP`."
+      enum:
+      - AUTOMATIC
+      - MANUAL
+      - STEP_UP
+      type: string
     EnumTimeUnit:
       description: A string that defines the time unit of a specified duration in
         `SECONDS` or `MINUTES`.
@@ -1415,8 +1425,11 @@ components:
       type: object
     GovernmentIdConfiguration:
       example:
+        inspectionType: null
         verify: null
       properties:
+        inspectionType:
+          $ref: '#/components/schemas/EnumInspectionType'
         verify:
           $ref: '#/components/schemas/EnumVerify'
       required:
@@ -1741,6 +1754,7 @@ components:
               duration: 2
               timeUnit: null
         governmentId:
+          inspectionType: null
           verify: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -1907,6 +1921,7 @@ components:
                 duration: 2
                 timeUnit: null
           governmentId:
+            inspectionType: null
             verify: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         - voice:
@@ -1986,6 +2001,7 @@ components:
                 duration: 2
                 timeUnit: null
           governmentId:
+            inspectionType: null
             verify: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
         voicePhrases:

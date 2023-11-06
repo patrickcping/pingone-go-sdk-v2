@@ -79,6 +79,10 @@ components:
                 $ref: '#/components/schemas/VoicePhraseContents'
         size:
           type: number
+    EnumInspectionType:
+      type: string
+      enum: [AUTOMATIC, MANUAL, STEP_UP]
+      description: A string that defines the mechanism used to authenticate a `governmentId` document.  Options are `AUTOMATIC`, `MANUAL`, or `STEP_UP`.
     EnumTimeUnit:
       type: string
       enum: [SECONDS, MINUTES]
@@ -106,6 +110,9 @@ components:
     GovernmentIdConfiguration:
       type: object
       properties:
+        inspectionType:
+          $ref: '#/components/schemas/EnumInspectionType'
+          description: Determines whether document authentication is automated, manual, or a combination of both where manual authentication is performed if automated inspection fails. Can be AUTOMATIC, MANUAL, or STEP_UP. 
         verify:
           $ref: '#/components/schemas/EnumVerify'
           description: Controls if Government ID verification is REQUIRED, OPTIONAL, or DISABLED.
