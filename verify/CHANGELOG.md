@@ -1,4 +1,4 @@
-# v0.4.0 (2023-11-06)
+# v0.4.0 (Unreleased)
 
 * **Enhancement** Added the `InspectionType` property to the `GovernmentIdConfiguration` object model. [#278](https://github.com/patrickcping/pingone-go-sdk-v2/pull/278)
 
