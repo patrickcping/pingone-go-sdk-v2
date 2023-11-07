@@ -6,6 +6,7 @@ api_voice_phrases.go
 configuration.go
 docs/EntityArray.md
 docs/EntityArrayEmbedded.md
+docs/EnumInspectionType.md
 docs/EnumThreshold.md
 docs/EnumTimeUnit.md
 docs/EnumVerify.md
@@ -46,6 +47,7 @@ go.mod
 go.sum
 model_entity_array.go
 model_entity_array__embedded.go
+model_enum_inspection_type.go
 model_enum_threshold.go
 model_enum_time_unit.go
 model_enum_verify.go
