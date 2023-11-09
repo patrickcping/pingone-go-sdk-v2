@@ -1,3 +1,8 @@
+# v0.3.0 (Unreleased)
+
+* **Enhancement** Add API error handling for `409` errors.
+* **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
+
 # v0.2.2 (2023-10-16)
 
 * **Note** Updated the default UserAgent string format. [#255](https://github.com/patrickcping/pingone-go-sdk-v2/pull/255)
