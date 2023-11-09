@@ -1,7 +1,29 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.0
+    * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
+* `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.3.0](./agreementmanagement/CHANGELOG.md)
+    * **Enhancement** Add API error handling for `409` errors.
+    * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.4.0](./authorize/CHANGELOG.md)
+    * **Enhancement** Add API error handling for `409` errors.
+    * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.6.0](./credentials/CHANGELOG.md)
+    * **Enhancement** Add API error handling for `409` errors.
+    * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.32.0](./management/CHANGELOG.md)
+    * **Enhancement** Add API error handling for `409` errors.
+    * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.18.0](./mfa/CHANGELOG.md)
+    * **Enhancement** Add API error handling for `409` errors.
+    * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.12.0](./risk/CHANGELOG.md)
+    * **Enhancement** Add API error handling for `409` errors.
+    * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
 * `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.4.0](./verify/CHANGELOG.md)
     * **Enhancement** Added the `InspectionType` property to the `GovernmentIdConfiguration` object model. [#278](https://github.com/patrickcping/pingone-go-sdk-v2/pull/278)
+    * **Enhancement** Add API error handling for `409` errors.
+    * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
 
 # Release (2023-11-01)
 
