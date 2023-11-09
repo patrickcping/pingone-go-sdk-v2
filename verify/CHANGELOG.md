@@ -1,8 +1,8 @@
 # v0.4.0 (Unreleased)
 
 * **Enhancement** Added the `InspectionType` property to the `GovernmentIdConfiguration` object model. [#278](https://github.com/patrickcping/pingone-go-sdk-v2/pull/278)
-* **Enhancement** Add API error handling for `409` errors.
-* **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model.
+* **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
+* **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
 
 # v0.3.1 (2023-10-16)
 
