@@ -74,7 +74,7 @@ func (a *CertificateManagementApiService) CreateCertificateFromFileExecute(r Api
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateCertificateFromFileExecute(r)
 		},
 		&localVarReturnValue,
@@ -215,6 +215,17 @@ func (a *CertificateManagementApiService) internalCreateCertificateFromFileExecu
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -318,7 +329,7 @@ func (a *CertificateManagementApiService) CreateKeyExecute(r ApiCreateKeyRequest
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateKeyExecute(r)
 		},
 		&localVarReturnValue,
@@ -481,6 +492,17 @@ func (a *CertificateManagementApiService) internalCreateKeyExecute(r ApiCreateKe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -554,7 +576,7 @@ func (a *CertificateManagementApiService) DeleteCertificateExecute(r ApiDeleteCe
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteCertificateExecute(r)
 			return nil, resp, err
 		},
@@ -666,6 +688,17 @@ func (a *CertificateManagementApiService) internalDeleteCertificateExecute(r Api
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -730,7 +763,7 @@ func (a *CertificateManagementApiService) DeleteKeyExecute(r ApiDeleteKeyRequest
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteKeyExecute(r)
 			return nil, resp, err
 		},
@@ -842,6 +875,17 @@ func (a *CertificateManagementApiService) internalDeleteKeyExecute(r ApiDeleteKe
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -915,7 +959,7 @@ func (a *CertificateManagementApiService) ExportCSRExecute(r ApiExportCSRRequest
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalExportCSRExecute(r)
 		},
 		&localVarReturnValue,
@@ -1030,6 +1074,17 @@ func (a *CertificateManagementApiService) internalExportCSRExecute(r ApiExportCS
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1106,7 +1161,7 @@ func (a *CertificateManagementApiService) GetCertificateExecute(r ApiGetCertific
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalGetCertificateExecute(r)
 		},
 		&localVarReturnValue,
@@ -1218,6 +1273,17 @@ func (a *CertificateManagementApiService) internalGetCertificateExecute(r ApiGet
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1294,7 +1360,7 @@ func (a *CertificateManagementApiService) GetCertificateApplicationsExecute(r Ap
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalGetCertificateApplicationsExecute(r)
 		},
 		&localVarReturnValue,
@@ -1406,6 +1472,17 @@ func (a *CertificateManagementApiService) internalGetCertificateApplicationsExec
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1479,7 +1556,7 @@ func (a *CertificateManagementApiService) GetCertificatesExecute(r ApiGetCertifi
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalGetCertificatesExecute(r)
 		},
 		&localVarReturnValue,
@@ -1590,6 +1667,17 @@ func (a *CertificateManagementApiService) internalGetCertificatesExecute(r ApiGe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1665,6 +1753,22 @@ func (a *CertificateManagementApiService) GetKey(ctx context.Context, environmen
 //
 //	@return Certificate
 func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (interface{}, *http.Response, error) {
+	var (
+		err                 error
+		response            *http.Response
+		localVarReturnValue interface{}
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			return r.ApiService.internalGetKeyExecute(r)
+		},
+		&localVarReturnValue,
+	)
+	return localVarReturnValue, response, err
+}
+
+func (a *CertificateManagementApiService) internalGetKeyExecute(r ApiGetKeyRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1771,6 +1875,17 @@ func (a *CertificateManagementApiService) GetKeyExecute(r ApiGetKeyRequest) (int
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1855,7 +1970,7 @@ func (a *CertificateManagementApiService) GetKeyApplicationsExecute(r ApiGetKeyA
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalGetKeyApplicationsExecute(r)
 		},
 		&localVarReturnValue,
@@ -1967,6 +2082,17 @@ func (a *CertificateManagementApiService) internalGetKeyApplicationsExecute(r Ap
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2040,7 +2166,7 @@ func (a *CertificateManagementApiService) GetKeysExecute(r ApiGetKeysRequest) (*
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalGetKeysExecute(r)
 		},
 		&localVarReturnValue,
@@ -2151,6 +2277,17 @@ func (a *CertificateManagementApiService) internalGetKeysExecute(r ApiGetKeysReq
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2233,7 +2370,7 @@ func (a *CertificateManagementApiService) ImportCSRResponseExecute(r ApiImportCS
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalImportCSRResponseExecute(r)
 		},
 		&localVarReturnValue,
@@ -2356,6 +2493,17 @@ func (a *CertificateManagementApiService) internalImportCSRResponseExecute(r Api
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2438,7 +2586,7 @@ func (a *CertificateManagementApiService) UpdateKeyExecute(r ApiUpdateKeyRequest
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalUpdateKeyExecute(r)
 		},
 		&localVarReturnValue,
@@ -2552,6 +2700,17 @@ func (a *CertificateManagementApiService) internalUpdateKeyExecute(r ApiUpdateKe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2622,6 +2781,22 @@ func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDDecryptionsPo
 
 // Execute executes the request
 func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDDecryptionsPostExecute(r ApiEnvironmentsEnvironmentIDDecryptionsPostRequest) (*http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDDecryptionsPostExecute(r)
+			return nil, resp, err
+		},
+		nil,
+	)
+	return response, err
+}
+
+func (a *CertificateManagementApiService) internalEnvironmentsEnvironmentIDDecryptionsPostExecute(r ApiEnvironmentsEnvironmentIDDecryptionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -2736,6 +2911,17 @@ func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDDecryptionsPo
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2797,6 +2983,22 @@ func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDEncryptionsPo
 
 // Execute executes the request
 func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDEncryptionsPostExecute(r ApiEnvironmentsEnvironmentIDEncryptionsPostRequest) (*http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDEncryptionsPostExecute(r)
+			return nil, resp, err
+		},
+		nil,
+	)
+	return response, err
+}
+
+func (a *CertificateManagementApiService) internalEnvironmentsEnvironmentIDEncryptionsPostExecute(r ApiEnvironmentsEnvironmentIDEncryptionsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -2911,6 +3113,17 @@ func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDEncryptionsPo
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2972,6 +3185,22 @@ func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDSigningsPost(
 
 // Execute executes the request
 func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDSigningsPostExecute(r ApiEnvironmentsEnvironmentIDSigningsPostRequest) (*http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDSigningsPostExecute(r)
+			return nil, resp, err
+		},
+		nil,
+	)
+	return response, err
+}
+
+func (a *CertificateManagementApiService) internalEnvironmentsEnvironmentIDSigningsPostExecute(r ApiEnvironmentsEnvironmentIDSigningsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -3086,6 +3315,17 @@ func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDSigningsPostE
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -3147,6 +3387,22 @@ func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDVerifications
 
 // Execute executes the request
 func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDVerificationsPostExecute(r ApiEnvironmentsEnvironmentIDVerificationsPostRequest) (*http.Response, error) {
+	var (
+		err      error
+		response *http.Response
+	)
+
+	response, err = processResponse(
+		func() (any, *http.Response, error) {
+			resp, err := r.ApiService.internalEnvironmentsEnvironmentIDVerificationsPostExecute(r)
+			return nil, resp, err
+		},
+		nil,
+	)
+	return response, err
+}
+
+func (a *CertificateManagementApiService) internalEnvironmentsEnvironmentIDVerificationsPostExecute(r ApiEnvironmentsEnvironmentIDVerificationsPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -3251,6 +3507,17 @@ func (a *CertificateManagementApiService) EnvironmentsEnvironmentIDVerifications
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 405 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

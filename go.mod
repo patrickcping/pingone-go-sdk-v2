@@ -10,7 +10,7 @@ require (
 	github.com/patrickcping/pingone-go-sdk-v2/mfa v0.17.0
 	github.com/patrickcping/pingone-go-sdk-v2/risk v0.11.0
 	github.com/patrickcping/pingone-go-sdk-v2/verify v0.3.1
-	golang.org/x/exp v0.0.0-20231006140011-7918f672742d
+	golang.org/x/exp v0.0.0-20231108232855-2478ac86f678
 	golang.org/x/oauth2 v0.13.0
 )
 

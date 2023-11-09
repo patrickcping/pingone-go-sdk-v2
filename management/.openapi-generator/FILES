@@ -18,6 +18,7 @@ api_bill_of_materials_bom.go
 api_branding_settings.go
 api_branding_themes.go
 api_capabilities.go
+api_certificate_management.go
 api_custom_domains.go
 api_enable_users.go
 api_environments.go
@@ -32,6 +33,7 @@ api_group_role_assignments.go
 api_groups.go
 api_identity_provider_attributes.go
 api_identity_providers.go
+api_images.go
 api_integration_catalog.go
 api_key_rotation_policies.go
 api_language_localization_status.go
@@ -44,6 +46,7 @@ api_notifications_settings.go
 api_notifications_settings_smtp.go
 api_notifications_templates.go
 api_organizations.go
+api_password_policies.go
 api_phone_delivery_settings.go
 api_populations.go
 api_propagation_mappings.go

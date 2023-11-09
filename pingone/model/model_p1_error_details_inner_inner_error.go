@@ -23,7 +23,8 @@ type P1ErrorDetailsInnerInnerError struct {
 	// A list describing acceptable values.
 	AllowedValues []string `json:"allowedValues,omitempty"`
 	// The maximum value allowed for the request.
-	MaximumValue *int32 `json:"maximumValue,omitempty"`
+	MaximumValue     *int32   `json:"maximumValue,omitempty"`
+	ReferencedValues []string `json:"referencedValues,omitempty"`
 }
 
 // NewP1ErrorDetailsInnerInnerError instantiates a new P1ErrorDetailsInnerInnerError object
@@ -203,6 +204,38 @@ func (o *P1ErrorDetailsInnerInnerError) SetMaximumValue(v int32) {
 	o.MaximumValue = &v
 }
 
+// GetReferencedValues returns the ReferencedValues field value if set, zero value otherwise.
+func (o *P1ErrorDetailsInnerInnerError) GetReferencedValues() []string {
+	if o == nil || o.ReferencedValues == nil {
+		var ret []string
+		return ret
+	}
+	return o.ReferencedValues
+}
+
+// GetReferencedValuesOk returns a tuple with the ReferencedValues field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *P1ErrorDetailsInnerInnerError) GetReferencedValuesOk() ([]string, bool) {
+	if o == nil || o.ReferencedValues == nil {
+		return nil, false
+	}
+	return o.ReferencedValues, true
+}
+
+// HasReferencedValues returns a boolean if a field has been set.
+func (o *P1ErrorDetailsInnerInnerError) HasReferencedValues() bool {
+	if o != nil && o.ReferencedValues != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReferencedValues gets a reference to the given []string and assigns it to the ReferencedValues field.
+func (o *P1ErrorDetailsInnerInnerError) SetReferencedValues(v []string) {
+	o.ReferencedValues = v
+}
+
 func (o P1ErrorDetailsInnerInnerError) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.RangeMinimumValue != nil {
@@ -219,6 +252,9 @@ func (o P1ErrorDetailsInnerInnerError) MarshalJSON() ([]byte, error) {
 	}
 	if o.MaximumValue != nil {
 		toSerialize["maximumValue"] = o.MaximumValue
+	}
+	if o.ReferencedValues != nil {
+		toSerialize["referencedValues"] = o.ReferencedValues
 	}
 	return json.Marshal(toSerialize)
 }

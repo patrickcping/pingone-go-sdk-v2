@@ -74,7 +74,7 @@ func (a *ImagesApiService) CreateImageExecute(r ApiCreateImageRequest) (*Image, 
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalCreateImageExecute(r)
 		},
 		&localVarReturnValue,
@@ -205,6 +205,17 @@ func (a *ImagesApiService) internalCreateImageExecute(r ApiCreateImageRequest) (
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -278,7 +289,7 @@ func (a *ImagesApiService) DeleteImageExecute(r ApiDeleteImageRequest) (*http.Re
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			resp, err := r.ApiService.internalDeleteImageExecute(r)
 			return nil, resp, err
 		},
@@ -390,6 +401,17 @@ func (a *ImagesApiService) internalDeleteImageExecute(r ApiDeleteImageRequest) (
 			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -457,7 +479,7 @@ func (a *ImagesApiService) ReadImageExecute(r ApiReadImageRequest) (*Image, *htt
 	)
 
 	response, err = processResponse(
-		func() (interface{}, *http.Response, error) {
+		func() (any, *http.Response, error) {
 			return r.ApiService.internalReadImageExecute(r)
 		},
 		&localVarReturnValue,
@@ -559,6 +581,17 @@ func (a *ImagesApiService) internalReadImageExecute(r ApiReadImageRequest) (*Ima
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v P1Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
 			var v P1Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

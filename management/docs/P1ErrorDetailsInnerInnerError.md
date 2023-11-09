@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AllowedPattern** | Pointer to **string** | A regex pattern describing an acceptable input pattern. | [optional] 
 **AllowedValues** | Pointer to **[]string** | A list describing acceptable values. | [optional] 
 **MaximumValue** | Pointer to **int32** | The maximum value allowed for the request. | [optional] 
+**ReferencedValues** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetMaximumValue sets MaximumValue field to given value.
 `func (o *P1ErrorDetailsInnerInnerError) HasMaximumValue() bool`
 
 HasMaximumValue returns a boolean if a field has been set.
+
+### GetReferencedValues
+
+`func (o *P1ErrorDetailsInnerInnerError) GetReferencedValues() []string`
+
+GetReferencedValues returns the ReferencedValues field if non-nil, zero value otherwise.
+
+### GetReferencedValuesOk
+
+`func (o *P1ErrorDetailsInnerInnerError) GetReferencedValuesOk() (*[]string, bool)`
+
+GetReferencedValuesOk returns a tuple with the ReferencedValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReferencedValues
+
+`func (o *P1ErrorDetailsInnerInnerError) SetReferencedValues(v []string)`
+
+SetReferencedValues sets ReferencedValues field to given value.
+
+### HasReferencedValues
+
+`func (o *P1ErrorDetailsInnerInnerError) HasReferencedValues() bool`
+
+HasReferencedValues returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
