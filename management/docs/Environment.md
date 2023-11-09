@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **License** | [**EnvironmentLicense**](EnvironmentLicense.md) |  | 
 **Name** | **string** | A string that specifies the environment name, which must be provided and must be unique within an organization. | 
 **Organization** | Pointer to [**EnvironmentOrganization**](EnvironmentOrganization.md) |  | [optional] 
-**Region** | [**EnumRegionCode**](EnumRegionCode.md) |  | 
+**Region** | **string** |  | 
 **Type** | [**EnumEnvironmentType**](EnumEnvironmentType.md) |  | 
 **UpdatedAt** | Pointer to **string** | The time the resource was last updated. | [optional] [readonly] 
 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironment
 
-`func NewEnvironment(license EnvironmentLicense, name string, region EnumRegionCode, type_ EnumEnvironmentType, ) *Environment`
+`func NewEnvironment(license EnvironmentLicense, name string, region string, type_ EnumEnvironmentType, ) *Environment`
 
 NewEnvironment instantiates a new Environment object
 This constructor will assign default values to properties that have it defined,
@@ -227,20 +227,20 @@ HasOrganization returns a boolean if a field has been set.
 
 ### GetRegion
 
-`func (o *Environment) GetRegion() EnumRegionCode`
+`func (o *Environment) GetRegion() string`
 
 GetRegion returns the Region field if non-nil, zero value otherwise.
 
 ### GetRegionOk
 
-`func (o *Environment) GetRegionOk() (*EnumRegionCode, bool)`
+`func (o *Environment) GetRegionOk() (*string, bool)`
 
 GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegion
 
-`func (o *Environment) SetRegion(v EnumRegionCode)`
+`func (o *Environment) SetRegion(v string)`
 
 SetRegion sets Region field to given value.
 

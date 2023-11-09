@@ -31,7 +31,7 @@ type Environment struct {
 	// A string that specifies the environment name, which must be provided and must be unique within an organization.
 	Name string `json:"name"`
 	Organization *EnvironmentOrganization `json:"organization,omitempty"`
-	Region EnumRegionCode `json:"region"`
+	Region string `json:"region"`
 	Type EnumEnvironmentType `json:"type"`
 	// The time the resource was last updated.
 	UpdatedAt *string `json:"updatedAt,omitempty"`
@@ -41,7 +41,7 @@ type Environment struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironment(license EnvironmentLicense, name string, region EnumRegionCode, type_ EnumEnvironmentType) *Environment {
+func NewEnvironment(license EnvironmentLicense, name string, region string, type_ EnumEnvironmentType) *Environment {
 	this := Environment{}
 	this.License = license
 	this.Name = name
@@ -299,9 +299,9 @@ func (o *Environment) SetOrganization(v EnvironmentOrganization) {
 }
 
 // GetRegion returns the Region field value
-func (o *Environment) GetRegion() EnumRegionCode {
+func (o *Environment) GetRegion() string {
 	if o == nil {
-		var ret EnumRegionCode
+		var ret string
 		return ret
 	}
 
@@ -310,7 +310,7 @@ func (o *Environment) GetRegion() EnumRegionCode {
 
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
-func (o *Environment) GetRegionOk() (*EnumRegionCode, bool) {
+func (o *Environment) GetRegionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -318,7 +318,7 @@ func (o *Environment) GetRegionOk() (*EnumRegionCode, bool) {
 }
 
 // SetRegion sets field value
-func (o *Environment) SetRegion(v EnumRegionCode) {
+func (o *Environment) SetRegion(v string) {
 	o.Region = v
 }
 

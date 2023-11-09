@@ -29404,7 +29404,7 @@ components:
         organization:
           $ref: '#/components/schemas/Environment_organization'
         region:
-          $ref: '#/components/schemas/EnumRegionCode'
+          type: string
         type:
           $ref: '#/components/schemas/EnumEnvironmentType'
         updatedAt:

@@ -2038,7 +2038,7 @@ components:
               type: string
               description: A string that specifies the organization resource’s unique identifier associated with the environment.
         region:
-          $ref: '#/components/schemas/EnumRegionCode'
+          type: string
         type:
           $ref: '#/components/schemas/EnumEnvironmentType'
         updatedAt:

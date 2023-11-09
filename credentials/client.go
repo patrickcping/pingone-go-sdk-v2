@@ -16,8 +16,10 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"mime/multipart"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -240,11 +242,22 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
+	dump, err := httputil.DumpRequestOut(request, true)
+	if err != nil {
+		return nil, err
+	}
+	log.Printf("\n%s\n", string(dump))
+
 	resp, err := c.cfg.HTTPClient.Do(request)
 	if err != nil {
 		return resp, err
 	}
 
+	dump, err = httputil.DumpResponse(resp, true)
+	if err != nil {
+		return resp, err
+	}
+	log.Printf("\n%s\n", string(dump))
 	return resp, err
 }
 
