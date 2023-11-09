@@ -70,6 +70,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -192,6 +198,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -257,6 +269,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -317,6 +335,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -398,6 +422,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -456,6 +486,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -527,6 +563,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -592,6 +634,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -652,6 +700,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -723,6 +777,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -788,6 +848,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -867,6 +933,12 @@ paths:
                 $ref: '#/components/schemas/P1Error'
           description: "Invalid request received.  Malformed JSON, malformed HTTP\
             \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -939,6 +1011,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1006,6 +1084,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1085,6 +1169,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
         "429":
           content:
             application/json:
@@ -1138,6 +1228,12 @@ components:
           schema:
             $ref: '#/components/schemas/P1Error'
       description: "Invalid request received.  Malformed JSON, malformed HTTP request."
+    "409":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/P1Error'
+      description: Conflict.
     "429":
       content:
         application/json:
@@ -2154,6 +2250,10 @@ components:
         maximumValue:
           description: The maximum value allowed for the request.
           type: integer
+        referencedValues:
+          items:
+            type: string
+          type: array
       type: object
     P1Error_details_inner:
       properties:
