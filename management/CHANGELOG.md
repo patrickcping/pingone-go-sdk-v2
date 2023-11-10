@@ -1,4 +1,4 @@
-# v0.32.0 (Unreleased)
+# v0.32.0 (2023-11-10)
 
 * **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
 * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)

@@ -1,4 +1,4 @@
-# v0.4.0 (Unreleased)
+# v0.4.0 (2023-11-10)
 
 * **Enhancement** Added the `InspectionType` property to the `GovernmentIdConfiguration` object model. [#278](https://github.com/patrickcping/pingone-go-sdk-v2/pull/278)
 * **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
