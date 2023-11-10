@@ -1,13 +1,13 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.2.2 => v0.3.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.3.1 => v0.4.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.5.0 => v0.6.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.31.0 => v0.32.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.17.0 => v0.18.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.11.0 => v0.12.0
-    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.3.1 => v0.4.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.2.2 => v0.3.0 [#280](https://github.com/patrickcping/pingone-go-sdk-v2/pull/280)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.3.1 => v0.4.0 [#280](https://github.com/patrickcping/pingone-go-sdk-v2/pull/280)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.5.0 => v0.6.0 [#280](https://github.com/patrickcping/pingone-go-sdk-v2/pull/280)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.31.0 => v0.32.0 [#280](https://github.com/patrickcping/pingone-go-sdk-v2/pull/280)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.17.0 => v0.18.0 [#280](https://github.com/patrickcping/pingone-go-sdk-v2/pull/280)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.11.0 => v0.12.0 [#280](https://github.com/patrickcping/pingone-go-sdk-v2/pull/280)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.3.1 => v0.4.0 [#280](https://github.com/patrickcping/pingone-go-sdk-v2/pull/280)
     * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.3.0](./agreementmanagement/CHANGELOG.md)
     * **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
