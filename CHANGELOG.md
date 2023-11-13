@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.33.0](./management/CHANGELOG.md)
-    * **Feature** Add support for User Account API (allowing lock and unlock).
+    * **Feature** Add support for User Account API (allowing lock and unlock). [#282](https://github.com/patrickcping/pingone-go-sdk-v2/pull/282)
 
 # Release (2023-11-10)
 
