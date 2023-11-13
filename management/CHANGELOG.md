@@ -1,3 +1,7 @@
+# v0.33.0 (Unreleased)
+
+* **Feature** Add support for User Account API (allowing lock and unlock).
+
 # v0.32.0 (2023-11-10)
 
 * **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
