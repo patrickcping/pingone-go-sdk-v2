@@ -4,15 +4,15 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EnvironmentsEnvironmentIDUsersUserIDPost**](UserAccountsApi.md#EnvironmentsEnvironmentIDUsersUserIDPost) | **Post** /environments/{environmentID}/users/{userID} | User Account Unlock
+[**UserAccount**](UserAccountsApi.md#UserAccount) | **Post** /environments/{environmentID}/users/{userID} | User Account
 
 
 
-## EnvironmentsEnvironmentIDUsersUserIDPost
+## UserAccount
 
-> EntityArray EnvironmentsEnvironmentIDUsersUserIDPost(ctx, environmentID, userID).ContentType(contentType).Execute()
+> User UserAccount(ctx, environmentID, userID).ContentType(contentType).UserAccount(userAccount).Execute()
 
-User Account Unlock
+User Account
 
 ### Example
 
@@ -29,17 +29,18 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
-    contentType := "application/vnd.pingidentity.account.unlock+json" // string |  (optional)
+    contentType := openapiclient.EnumUserAccountContentTypeHeader("application/vnd.pingidentity.account.unlock+json") // EnumUserAccountContentTypeHeader |  (optional)
+    userAccount := *openapiclient.NewUserAccount(false, openapiclient.EnumUserStatus("LOCKED")) // UserAccount |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserAccountsApi.EnvironmentsEnvironmentIDUsersUserIDPost(context.Background(), environmentID, userID).ContentType(contentType).Execute()
+    resp, r, err := apiClient.UserAccountsApi.UserAccount(context.Background(), environmentID, userID).ContentType(contentType).UserAccount(userAccount).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserAccountsApi.EnvironmentsEnvironmentIDUsersUserIDPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserAccountsApi.UserAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EnvironmentsEnvironmentIDUsersUserIDPost`: EntityArray
-    fmt.Fprintf(os.Stdout, "Response from `UserAccountsApi.EnvironmentsEnvironmentIDUsersUserIDPost`: %v\n", resp)
+    // response from `UserAccount`: User
+    fmt.Fprintf(os.Stdout, "Response from `UserAccountsApi.UserAccount`: %v\n", resp)
 }
 ```
 
@@ -54,18 +55,19 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiEnvironmentsEnvironmentIDUsersUserIDPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUserAccountRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **contentType** | **string** |  | 
+ **contentType** | [**EnumUserAccountContentTypeHeader**](EnumUserAccountContentTypeHeader.md) |  | 
+ **userAccount** | [**UserAccount**](UserAccount.md) |  | 
 
 ### Return type
 
-[**EntityArray**](EntityArray.md)
+[**User**](User.md)
 
 ### Authorization
 
@@ -73,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

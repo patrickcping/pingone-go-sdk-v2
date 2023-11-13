@@ -387,7 +387,7 @@ Class | Method | HTTP request | Description
 *TrustedEmailDomainsApi* | [**ReadTrustedEmailDomainDKIMStatus**](docs/TrustedEmailDomainsApi.md#readtrustedemaildomaindkimstatus) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/dkim | READ Trusted Email Domain DKIM Status
 *TrustedEmailDomainsApi* | [**ReadTrustedEmailDomainOwnershipStatus**](docs/TrustedEmailDomainsApi.md#readtrustedemaildomainownershipstatus) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/ownership | READ Trusted Email Domain Ownership Status
 *TrustedEmailDomainsApi* | [**ReadTrustedEmailDomainSPFStatus**](docs/TrustedEmailDomainsApi.md#readtrustedemaildomainspfstatus) | **Get** /environments/{environmentID}/emailDomains/{emailDomainID}/spf | READ Trusted Email Domain SPF Status
-*UserAccountsApi* | [**EnvironmentsEnvironmentIDUsersUserIDPost**](docs/UserAccountsApi.md#environmentsenvironmentidusersuseridpost) | **Post** /environments/{environmentID}/users/{userID} | User Account Unlock
+*UserAccountsApi* | [**UserAccount**](docs/UserAccountsApi.md#useraccount) | **Post** /environments/{environmentID}/users/{userID} | User Account
 *UserActivitiesApi* | [**EnvironmentsEnvironmentIDUserActivitiesGet**](docs/UserActivitiesApi.md#environmentsenvironmentiduseractivitiesget) | **Get** /environments/{environmentID}/userActivities | READ User Activities
 *UserAgreementConsentsApi* | [**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet**](docs/UserAgreementConsentsApi.md#environmentsenvironmentidusersuseridagreementconsentsagreementidget) | **Get** /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | READ One User Agreement Consent
 *UserAgreementConsentsApi* | [**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost**](docs/UserAgreementConsentsApi.md#environmentsenvironmentidusersuseridagreementconsentsagreementidpost) | **Post** /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | Revoke Agreement
@@ -623,6 +623,7 @@ Class | Method | HTTP request | Description
  - [EnumTemplateContentPushCategory](docs/EnumTemplateContentPushCategory.md)
  - [EnumTrustedEmailStatus](docs/EnumTrustedEmailStatus.md)
  - [EnumUpdateStatus](docs/EnumUpdateStatus.md)
+ - [EnumUserAccountContentTypeHeader](docs/EnumUserAccountContentTypeHeader.md)
  - [EnumUserLifecycleStatus](docs/EnumUserLifecycleStatus.md)
  - [EnumUserRequestInclude](docs/EnumUserRequestInclude.md)
  - [EnumUserStatus](docs/EnumUserStatus.md)
