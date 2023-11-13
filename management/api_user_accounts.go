@@ -23,33 +23,39 @@ import (
 // UserAccountsApiService UserAccountsApi service
 type UserAccountsApiService service
 
-type ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest struct {
+type ApiUserAccountRequest struct {
 	ctx context.Context
 	ApiService *UserAccountsApiService
 	environmentID string
 	userID string
-	contentType *string
+	contentType *EnumUserAccountContentTypeHeader
+	userAccount *UserAccount
 }
 
-func (r ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest) ContentType(contentType string) ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest {
+func (r ApiUserAccountRequest) ContentType(contentType EnumUserAccountContentTypeHeader) ApiUserAccountRequest {
 	r.contentType = &contentType
 	return r
 }
 
-func (r ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest) Execute() (*EntityArray, *http.Response, error) {
-	return r.ApiService.EnvironmentsEnvironmentIDUsersUserIDPostExecute(r)
+func (r ApiUserAccountRequest) UserAccount(userAccount UserAccount) ApiUserAccountRequest {
+	r.userAccount = &userAccount
+	return r
+}
+
+func (r ApiUserAccountRequest) Execute() (*User, *http.Response, error) {
+	return r.ApiService.UserAccountExecute(r)
 }
 
 /*
-EnvironmentsEnvironmentIDUsersUserIDPost User Account Unlock
+UserAccount User Account
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param userID
- @return ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest
+ @return ApiUserAccountRequest
 */
-func (a *UserAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDPost(ctx context.Context, environmentID string, userID string) ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest {
-	return ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest{
+func (a *UserAccountsApiService) UserAccount(ctx context.Context, environmentID string, userID string) ApiUserAccountRequest {
+	return ApiUserAccountRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -58,32 +64,32 @@ func (a *UserAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDPost(ctx co
 }
 
 // Execute executes the request
-//  @return EntityArray
-func (a *UserAccountsApiService) EnvironmentsEnvironmentIDUsersUserIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest) (*EntityArray, *http.Response, error) {
+//  @return User
+func (a *UserAccountsApiService) UserAccountExecute(r ApiUserAccountRequest) (*User, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *User
 	)
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			return r.ApiService.internalEnvironmentsEnvironmentIDUsersUserIDPostExecute(r)
+			return r.ApiService.internalUserAccountExecute(r)
 		},
 		&localVarReturnValue,
 	)
 	return localVarReturnValue, response, err
 }
 			
-func (a *UserAccountsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPostExecute(r ApiEnvironmentsEnvironmentIDUsersUserIDPostRequest) (*EntityArray, *http.Response, error) {
+func (a *UserAccountsApiService) internalUserAccountExecute(r ApiUserAccountRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EntityArray
+		localVarReturnValue  *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAccountsApiService.EnvironmentsEnvironmentIDUsersUserIDPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAccountsApiService.UserAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -97,7 +103,7 @@ func (a *UserAccountsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPos
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -116,6 +122,8 @@ func (a *UserAccountsApiService) internalEnvironmentsEnvironmentIDUsersUserIDPos
 	if r.contentType != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "content-type", r.contentType, "")
 	}
+	// body params
+	localVarPostBody = r.userAccount
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
