@@ -27150,6 +27150,7 @@ components:
         secret:
           description: A string that specifies the application secret ID used to authenticate
             to the authorization server.
+          format: password
           readOnly: true
           type: string
       type: object
@@ -27524,6 +27525,7 @@ components:
         privateKey:
           description: "A string that specifies the PEM-encoded, unencrypted private\
             \ key that matches the certificate's public key. This is a required property."
+          format: password
           type: string
       required:
       - certificate
@@ -30061,6 +30063,7 @@ components:
           bindPassword:
             description: A string that specifies the bind password for the LDAP database.
               This is a required property.
+            format: password
             type: string
           connectionSecurity:
             $ref: '#/components/schemas/EnumGatewayTypeLDAPSecurity'
@@ -30108,6 +30111,7 @@ components:
           defaultSharedSecret:
             description: Value to use for the shared secret if the shared secret is
               not provided for one or more of the RADIUS clients specified.
+            format: password
             type: string
           radiusClients:
             description: Collection of RADIUS clients.
@@ -30145,6 +30149,7 @@ components:
         credential:
           description: A string that specifies the signed JWT for the gateway credential.
             This property is present only when the gateway credential is created.
+          format: password
           readOnly: true
           type: string
       type: object
@@ -30464,6 +30469,7 @@ components:
           appSecret:
             description: A string that specifies the application secret from Facebook.
               This is a required property.
+            format: password
             type: string
         required:
         - appId
@@ -30480,6 +30486,7 @@ components:
           clientSecret:
             description: A string that specifies the application secret from the provider.
               This is a required property.
+            format: password
             type: string
         required:
         - clientId
@@ -30501,6 +30508,7 @@ components:
           clientSecret:
             description: A string that specifies the application secret from the OIDC
               identity provider. This is a required property.
+            format: password
             type: string
           discoveryEndpoint:
             description: A string that specifies the OIDC identity provider's discovery
@@ -30554,6 +30562,7 @@ components:
           clientSecretSigningKey:
             description: A string that specifies the private key that is used to generate
               a client secret. This is a required property.
+            format: password
             type: string
           keyId:
             description: A 10-character string that Apple uses to identify an authentication
@@ -30580,6 +30589,7 @@ components:
           clientSecret:
             description: A string that specifies the application secret from PayPal.
               This is a required property.
+            format: password
             type: string
           clientEnvironment:
             description: "A string that specifies the PayPal environment. Options\
@@ -31238,6 +31248,7 @@ components:
           type: string
         password:
           description: A string that specifies the organization's SMTP server's password.
+          format: password
           type: string
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
@@ -31398,6 +31409,7 @@ components:
             type: string
           authToken:
             description: The secret key of the Twilio or Syniverse account.
+            format: password
             type: string
           numbers:
             items:
@@ -32572,6 +32584,7 @@ components:
             \ are a-z, A-Z, 0-9, -, ., _, ~. The secret has a minimum length of 64\
             \ characters per SHA-512 requirements when using the HS512 algorithm to\
             \ sign ID tokens using the secret as the key."
+          format: password
           readOnly: true
           type: string
       type: object
@@ -34364,16 +34377,19 @@ components:
           description: Play Integrity verdict decryption key from your Google Play
             Services account. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType`
             to `INTERNAL`.
+          format: password
           type: string
         serviceAccountCredentials:
           description: Contents of the JSON file that represents your Service Account
             Credentials. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType`
             to `GOOGLE`.
+          format: password
           type: string
         verificationKey:
           description: Play Integrity verdict signature verification key from your
             Google Play Services account. This parameter must be provided if you have
             set `mobile.integrityDetection.googlePlay.verificationType` to `INTERNAL`.
+          format: password
           type: string
         verificationType:
           $ref: '#/components/schemas/EnumApplicationNativeGooglePlayVerificationType'
@@ -36856,6 +36872,7 @@ components:
       properties:
         serviceAccountPassword:
           description: The password for the Kerberos service account.
+          format: password
           type: string
         serviceAccountUserPrincipalName:
           description: "The Kerberos service account user principal name (for example,\
@@ -36983,6 +37000,7 @@ components:
             \ not provided, the shared secret specified with `defaultSharedSecret`\
             \ is used. If you are not providing a shared secret for the client, leave\
             \ out `sharedSecret` or set it to null."
+          format: password
           type: string
       required:
       - ip
@@ -37696,10 +37714,12 @@ components:
         password:
           description: The password for the custom provider account. Required when
             `authentication.method=BASIC`
+          format: password
           type: string
         authToken:
           description: The authentication token for the custom provider account.  Required
             when `authentication.method=BEARER`
+          format: password
           type: string
       required:
       - method
@@ -38827,6 +38847,7 @@ components:
         value:
           description: A string that specifies the user's password value. The string
             is either in cleartext or pre-encoded format.
+          format: password
           type: string
         external:
           $ref: '#/components/schemas/User_password_external'
