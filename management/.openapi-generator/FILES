@@ -223,6 +223,7 @@ docs/EnumFormRecaptchaV2Size.md
 docs/EnumFormRecaptchaV2Theme.md
 docs/EnumFormSocialLoginIdpType.md
 docs/EnumFormTranslationMethod.md
+docs/EnumFormsIncludeParameter.md
 docs/EnumGatewayPasswordAuthority.md
 docs/EnumGatewayType.md
 docs/EnumGatewayTypeLDAPSecurity.md
@@ -339,6 +340,7 @@ docs/FormFieldSlateTextblob.md
 docs/FormFieldSocialLoginButton.md
 docs/FormFieldSubmitButton.md
 docs/FormFieldText.md
+docs/FormFieldTextblob.md
 docs/FormFlowButton.md
 docs/FormFlowButtonStyles.md
 docs/FormFlowLink.md
@@ -745,6 +747,7 @@ model_enum_form_recaptcha_v2_size.go
 model_enum_form_recaptcha_v2_theme.go
 model_enum_form_social_login_idp_type.go
 model_enum_form_translation_method.go
+model_enum_forms_include_parameter.go
 model_enum_gateway_password_authority.go
 model_enum_gateway_type.go
 model_enum_gateway_type_ldap_security.go
@@ -859,6 +862,7 @@ model_form_field_slate_textblob.go
 model_form_field_social_login_button.go
 model_form_field_submit_button.go
 model_form_field_text.go
+model_form_field_textblob.go
 model_form_flow_button.go
 model_form_flow_button_styles.go
 model_form_flow_link.go

@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the FormFieldQrCode type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type FormFieldQrCode struct {
 	// A boolean that specifies the border visibility.
 	ShowBorder bool `json:"showBorder"`
 }
+
+type _FormFieldQrCode FormFieldQrCode
 
 // NewFormFieldQrCode instantiates a new FormFieldQrCode object
 // This constructor will assign default values to properties that have it defined,
@@ -185,6 +188,45 @@ func (o FormFieldQrCode) ToMap() (map[string]interface{}, error) {
 	toSerialize["alignment"] = o.Alignment
 	toSerialize["showBorder"] = o.ShowBorder
 	return toSerialize, nil
+}
+
+func (o *FormFieldQrCode) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"position",
+		"QrCodeType",
+		"alignment",
+		"showBorder",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFormFieldQrCode := _FormFieldQrCode{}
+
+	err = json.Unmarshal(bytes, &varFormFieldQrCode)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FormFieldQrCode(varFormFieldQrCode)
+
+	return err
 }
 
 type NullableFormFieldQrCode struct {

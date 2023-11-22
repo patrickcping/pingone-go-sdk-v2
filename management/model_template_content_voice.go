@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the TemplateContentVoice type satisfies the MappedNullable interface at compile time
@@ -38,6 +39,8 @@ type TemplateContentVoice struct {
 	// Voice OTP supports vendor-specific voices.   * Supported Twilio voices:     * Man, Woman       Supported locales (default: en):       en, en_GB, es, fr, de     * Alice (Twilio only)       Supported locales (default: en US):       da_DK, de_DE, en_AU, en_CA, en_GB, en_US, ca_ES, es_ES, es_MX, fi_FI, fr_CA, fr_FR, it_IT, ja_JP, ko_KR, nb_NO, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, sv_SE, zh_CN, zh_HK, zh_TW     * Amazon Polly       cy_GB, ro_RO, is_IS, hi_IN tr_TR   * Supported Syniverse voices:     * Man, Woman       Supported locales:       en_US, en_GB, es_ES, es_US, fr_FR, de_DE, it_IT, en_AU, da_DK, is_IS, nl_NL, pl_PL, pt_BR, pt_PT, ru_RU, ja_JP     * Woman only       Supported locales:       cmn_CN, cy_GB, en_IN, fr_CA, hi_IN, nb_NO, ro_RO, sv_SE, tr_TR, ko_KR, ar 
 	Voice *string `json:"voice,omitempty"`
 }
+
+type _TemplateContentVoice TemplateContentVoice
 
 // NewTemplateContentVoice instantiates a new TemplateContentVoice object
 // This constructor will assign default values to properties that have it defined,
@@ -390,6 +393,43 @@ func (o TemplateContentVoice) ToMap() (map[string]interface{}, error) {
 		toSerialize["voice"] = o.Voice
 	}
 	return toSerialize, nil
+}
+
+func (o *TemplateContentVoice) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"locale",
+		"deliveryMethod",
+		"content",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTemplateContentVoice := _TemplateContentVoice{}
+
+	err = json.Unmarshal(bytes, &varTemplateContentVoice)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TemplateContentVoice(varTemplateContentVoice)
+
+	return err
 }
 
 type NullableTemplateContentVoice struct {

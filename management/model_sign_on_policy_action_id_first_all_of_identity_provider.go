@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyActionIDFirstAllOfIdentityProvider type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type SignOnPolicyActionIDFirstAllOfIdentityProvider struct {
 	// A string that specifies the identity provider that will be used to authenticate the user if the condition is matched.
 	Id string `json:"id"`
 }
+
+type _SignOnPolicyActionIDFirstAllOfIdentityProvider SignOnPolicyActionIDFirstAllOfIdentityProvider
 
 // NewSignOnPolicyActionIDFirstAllOfIdentityProvider instantiates a new SignOnPolicyActionIDFirstAllOfIdentityProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,41 @@ func (o SignOnPolicyActionIDFirstAllOfIdentityProvider) ToMap() (map[string]inte
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyActionIDFirstAllOfIdentityProvider) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyActionIDFirstAllOfIdentityProvider := _SignOnPolicyActionIDFirstAllOfIdentityProvider{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyActionIDFirstAllOfIdentityProvider)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyActionIDFirstAllOfIdentityProvider(varSignOnPolicyActionIDFirstAllOfIdentityProvider)
+
+	return err
 }
 
 type NullableSignOnPolicyActionIDFirstAllOfIdentityProvider struct {

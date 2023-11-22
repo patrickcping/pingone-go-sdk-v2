@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the UserPopulation type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type UserPopulation struct {
 	// A string that specifies the identifier of the population resource associated with the user. This property cannot be updated using PUT {{apiPath}}/environments/{{environmentID}}/users/{{userID}}. However, it can be updated using PUT /environments/{{environmentID}}/users/{{userID}}/population.
 	Id string `json:"id"`
 }
+
+type _UserPopulation UserPopulation
 
 // NewUserPopulation instantiates a new UserPopulation object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,41 @@ func (o UserPopulation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *UserPopulation) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserPopulation := _UserPopulation{}
+
+	err = json.Unmarshal(bytes, &varUserPopulation)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserPopulation(varUserPopulation)
+
+	return err
 }
 
 type NullableUserPopulation struct {

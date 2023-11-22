@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IdentityProviderOIDC type satisfies the MappedNullable interface at compile time
@@ -57,6 +58,8 @@ type IdentityProviderOIDC struct {
 	// A string that specifies the OIDC identity provider's userInfo endpoint.
 	UserInfoEndpoint *string `json:"userInfoEndpoint,omitempty"`
 }
+
+type _IdentityProviderOIDC IdentityProviderOIDC
 
 // NewIdentityProviderOIDC instantiates a new IdentityProviderOIDC object
 // This constructor will assign default values to properties that have it defined,
@@ -759,6 +762,51 @@ func (o IdentityProviderOIDC) ToMap() (map[string]interface{}, error) {
 		toSerialize["userInfoEndpoint"] = o.UserInfoEndpoint
 	}
 	return toSerialize, nil
+}
+
+func (o *IdentityProviderOIDC) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enabled",
+		"name",
+		"type",
+		"authorizationEndpoint",
+		"clientId",
+		"clientSecret",
+		"issuer",
+		"jwksEndpoint",
+		"scopes",
+		"tokenEndpoint",
+		"tokenEndpointAuthMethod",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIdentityProviderOIDC := _IdentityProviderOIDC{}
+
+	err = json.Unmarshal(bytes, &varIdentityProviderOIDC)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IdentityProviderOIDC(varIdentityProviderOIDC)
+
+	return err
 }
 
 type NullableIdentityProviderOIDC struct {

@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the UserPhoto type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type UserPhoto struct {
 	// A string that specifies the URI that is a uniform resource locator (as defined in Section 1.1.3 of RFC 3986) that points to a resource location representing the user’s image. This can be removed from a user by setting the photo attribute to null. If provided, the resource must be a file (for example, a GIF, JPEG, or PNG image file) rather than a web page containing an image. It must be a valid URL that starts with the HTTP or HTTPS scheme.
 	Href string `json:"href"`
 }
+
+type _UserPhoto UserPhoto
 
 // NewUserPhoto instantiates a new UserPhoto object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,41 @@ func (o UserPhoto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["href"] = o.Href
 	return toSerialize, nil
+}
+
+func (o *UserPhoto) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"href",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserPhoto := _UserPhoto{}
+
+	err = json.Unmarshal(bytes, &varUserPhoto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserPhoto(varUserPhoto)
+
+	return err
 }
 
 type NullableUserPhoto struct {

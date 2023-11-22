@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode struct {
 	// Select this option to allow users to log in when PingOne and or PingID are not available.
 	Enabled bool `json:"enabled"`
 }
+
+type _SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode
 
 // NewSignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode instantiates a new SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,41 @@ func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode) ToMap() (m
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enabled",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode := _SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode(varSignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode)
+
+	return err
 }
 
 type NullableSignOnPolicyActionPingIDWinLoginPasswordlessAllOfOfflineMode struct {

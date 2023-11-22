@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the PasswordPolicy type satisfies the MappedNullable interface at compile time
@@ -62,6 +63,8 @@ type PasswordPolicy struct {
 	// The date and time the resource was last updated (format ISO-8061).
 	UpdatedAt *string `json:"updatedAt,omitempty"`
 }
+
+type _PasswordPolicy PasswordPolicy
 
 // NewPasswordPolicy instantiates a new PasswordPolicy object
 // This constructor will assign default values to properties that have it defined,
@@ -899,6 +902,44 @@ func (o PasswordPolicy) ToMap() (map[string]interface{}, error) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	return toSerialize, nil
+}
+
+func (o *PasswordPolicy) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"excludesCommonlyUsed",
+		"excludesProfileData",
+		"name",
+		"notSimilarToCurrent",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPasswordPolicy := _PasswordPolicy{}
+
+	err = json.Unmarshal(bytes, &varPasswordPolicy)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PasswordPolicy(varPasswordPolicy)
+
+	return err
 }
 
 type NullablePasswordPolicy struct {

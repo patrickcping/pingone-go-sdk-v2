@@ -15,40 +15,40 @@ import (
 	"fmt"
 )
 
-// checks if the FormFieldSlateTextblob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FormFieldSlateTextblob{}
+// checks if the FormFieldTextblob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FormFieldTextblob{}
 
-// FormFieldSlateTextblob struct for FormFieldSlateTextblob
-type FormFieldSlateTextblob struct {
+// FormFieldTextblob struct for FormFieldTextblob
+type FormFieldTextblob struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
 	// A string that specifies the field content.
 	Content *string `json:"content,omitempty"`
 }
 
-type _FormFieldSlateTextblob FormFieldSlateTextblob
+type _FormFieldTextblob FormFieldTextblob
 
-// NewFormFieldSlateTextblob instantiates a new FormFieldSlateTextblob object
+// NewFormFieldTextblob instantiates a new FormFieldTextblob object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldSlateTextblob(type_ EnumFormFieldType, position FormFieldCommonPosition) *FormFieldSlateTextblob {
-	this := FormFieldSlateTextblob{}
+func NewFormFieldTextblob(type_ EnumFormFieldType, position FormFieldCommonPosition) *FormFieldTextblob {
+	this := FormFieldTextblob{}
 	this.Type = type_
 	this.Position = position
 	return &this
 }
 
-// NewFormFieldSlateTextblobWithDefaults instantiates a new FormFieldSlateTextblob object
+// NewFormFieldTextblobWithDefaults instantiates a new FormFieldTextblob object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewFormFieldSlateTextblobWithDefaults() *FormFieldSlateTextblob {
-	this := FormFieldSlateTextblob{}
+func NewFormFieldTextblobWithDefaults() *FormFieldTextblob {
+	this := FormFieldTextblob{}
 	return &this
 }
 
 // GetType returns the Type field value
-func (o *FormFieldSlateTextblob) GetType() EnumFormFieldType {
+func (o *FormFieldTextblob) GetType() EnumFormFieldType {
 	if o == nil {
 		var ret EnumFormFieldType
 		return ret
@@ -59,7 +59,7 @@ func (o *FormFieldSlateTextblob) GetType() EnumFormFieldType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldSlateTextblob) GetTypeOk() (*EnumFormFieldType, bool) {
+func (o *FormFieldTextblob) GetTypeOk() (*EnumFormFieldType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,12 +67,12 @@ func (o *FormFieldSlateTextblob) GetTypeOk() (*EnumFormFieldType, bool) {
 }
 
 // SetType sets field value
-func (o *FormFieldSlateTextblob) SetType(v EnumFormFieldType) {
+func (o *FormFieldTextblob) SetType(v EnumFormFieldType) {
 	o.Type = v
 }
 
 // GetPosition returns the Position field value
-func (o *FormFieldSlateTextblob) GetPosition() FormFieldCommonPosition {
+func (o *FormFieldTextblob) GetPosition() FormFieldCommonPosition {
 	if o == nil {
 		var ret FormFieldCommonPosition
 		return ret
@@ -83,7 +83,7 @@ func (o *FormFieldSlateTextblob) GetPosition() FormFieldCommonPosition {
 
 // GetPositionOk returns a tuple with the Position field value
 // and a boolean to check if the value has been set.
-func (o *FormFieldSlateTextblob) GetPositionOk() (*FormFieldCommonPosition, bool) {
+func (o *FormFieldTextblob) GetPositionOk() (*FormFieldCommonPosition, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,12 +91,12 @@ func (o *FormFieldSlateTextblob) GetPositionOk() (*FormFieldCommonPosition, bool
 }
 
 // SetPosition sets field value
-func (o *FormFieldSlateTextblob) SetPosition(v FormFieldCommonPosition) {
+func (o *FormFieldTextblob) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
 // GetContent returns the Content field value if set, zero value otherwise.
-func (o *FormFieldSlateTextblob) GetContent() string {
+func (o *FormFieldTextblob) GetContent() string {
 	if o == nil || IsNil(o.Content) {
 		var ret string
 		return ret
@@ -106,7 +106,7 @@ func (o *FormFieldSlateTextblob) GetContent() string {
 
 // GetContentOk returns a tuple with the Content field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldSlateTextblob) GetContentOk() (*string, bool) {
+func (o *FormFieldTextblob) GetContentOk() (*string, bool) {
 	if o == nil || IsNil(o.Content) {
 		return nil, false
 	}
@@ -114,7 +114,7 @@ func (o *FormFieldSlateTextblob) GetContentOk() (*string, bool) {
 }
 
 // HasContent returns a boolean if a field has been set.
-func (o *FormFieldSlateTextblob) HasContent() bool {
+func (o *FormFieldTextblob) HasContent() bool {
 	if o != nil && !IsNil(o.Content) {
 		return true
 	}
@@ -123,11 +123,11 @@ func (o *FormFieldSlateTextblob) HasContent() bool {
 }
 
 // SetContent gets a reference to the given string and assigns it to the Content field.
-func (o *FormFieldSlateTextblob) SetContent(v string) {
+func (o *FormFieldTextblob) SetContent(v string) {
 	o.Content = &v
 }
 
-func (o FormFieldSlateTextblob) MarshalJSON() ([]byte, error) {
+func (o FormFieldTextblob) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -135,7 +135,7 @@ func (o FormFieldSlateTextblob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o FormFieldSlateTextblob) ToMap() (map[string]interface{}, error) {
+func (o FormFieldTextblob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
@@ -145,7 +145,7 @@ func (o FormFieldSlateTextblob) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *FormFieldSlateTextblob) UnmarshalJSON(bytes []byte) (err error) {
+func (o *FormFieldTextblob) UnmarshalJSON(bytes []byte) (err error) {
     // This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -168,51 +168,51 @@ func (o *FormFieldSlateTextblob) UnmarshalJSON(bytes []byte) (err error) {
 		}
 	}
 
-	varFormFieldSlateTextblob := _FormFieldSlateTextblob{}
+	varFormFieldTextblob := _FormFieldTextblob{}
 
-	err = json.Unmarshal(bytes, &varFormFieldSlateTextblob)
+	err = json.Unmarshal(bytes, &varFormFieldTextblob)
 
 	if err != nil {
 		return err
 	}
 
-	*o = FormFieldSlateTextblob(varFormFieldSlateTextblob)
+	*o = FormFieldTextblob(varFormFieldTextblob)
 
 	return err
 }
 
-type NullableFormFieldSlateTextblob struct {
-	value *FormFieldSlateTextblob
+type NullableFormFieldTextblob struct {
+	value *FormFieldTextblob
 	isSet bool
 }
 
-func (v NullableFormFieldSlateTextblob) Get() *FormFieldSlateTextblob {
+func (v NullableFormFieldTextblob) Get() *FormFieldTextblob {
 	return v.value
 }
 
-func (v *NullableFormFieldSlateTextblob) Set(val *FormFieldSlateTextblob) {
+func (v *NullableFormFieldTextblob) Set(val *FormFieldTextblob) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableFormFieldSlateTextblob) IsSet() bool {
+func (v NullableFormFieldTextblob) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableFormFieldSlateTextblob) Unset() {
+func (v *NullableFormFieldTextblob) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableFormFieldSlateTextblob(val *FormFieldSlateTextblob) *NullableFormFieldSlateTextblob {
-	return &NullableFormFieldSlateTextblob{value: val, isSet: true}
+func NewNullableFormFieldTextblob(val *FormFieldTextblob) *NullableFormFieldTextblob {
+	return &NullableFormFieldTextblob{value: val, isSet: true}
 }
 
-func (v NullableFormFieldSlateTextblob) MarshalJSON() ([]byte, error) {
+func (v NullableFormFieldTextblob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableFormFieldSlateTextblob) UnmarshalJSON(src []byte) error {
+func (v *NullableFormFieldTextblob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

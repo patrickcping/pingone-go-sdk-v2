@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ## ReadForm
 
-> Form ReadForm(ctx, environmentID, formID).Execute()
+> Form ReadForm(ctx, environmentID, formID).Include(include).Execute()
 
 READ One Form
 
@@ -240,10 +240,11 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     formID := "formID_example" // string | 
+    include := openapiclient.EnumFormsIncludeParameter("components") // EnumFormsIncludeParameter |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.FormManagementApi.ReadForm(context.Background(), environmentID, formID).Execute()
+    resp, r, err := apiClient.FormManagementApi.ReadForm(context.Background(), environmentID, formID).Include(include).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FormManagementApi.ReadForm``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -271,6 +272,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **include** | [**EnumFormsIncludeParameter**](EnumFormsIncludeParameter.md) |  | 
 
 ### Return type
 

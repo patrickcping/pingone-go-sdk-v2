@@ -232,6 +232,9 @@ components:
       type: string
       description: An enum string that specifies the trigger type associated with the flow policy trigger.
       enum: [AUTHENTICATION]
+    EnumFormsIncludeParameter:
+      type: string
+      enum: [components]
     EnumGatewayTypeLDAPSecurity:
       type: string
       enum: [None, TLS, StartTLS]
@@ -2284,6 +2287,7 @@ components:
         - $ref: '#/components/schemas/FormFieldCombobox'
         - $ref: '#/components/schemas/FormFieldDivider'
         - $ref: '#/components/schemas/FormFieldEmptyField'
+        - $ref: '#/components/schemas/FormFieldTextblob'
         - $ref: '#/components/schemas/FormFieldSlateTextblob'
         - $ref: '#/components/schemas/FormFieldSubmitButton'
         - $ref: '#/components/schemas/FormFieldErrorDisplay'
@@ -2436,6 +2440,10 @@ components:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormItem'
     FormFieldEmptyField:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormItem'
+    FormFieldTextblob:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormItem'
@@ -9730,6 +9738,10 @@ paths:
           schema:
             type: string
           required: true
+        - name: include
+          in: query
+          schema:
+            $ref: '#/components/schemas/EnumFormsIncludeParameter'
       responses:
         '400':
           $ref: '#/components/responses/400'

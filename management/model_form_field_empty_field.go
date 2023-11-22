@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the FormFieldEmptyField type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,8 @@ type FormFieldEmptyField struct {
 	// A string that specifies the field content.
 	Content *string `json:"content,omitempty"`
 }
+
+type _FormFieldEmptyField FormFieldEmptyField
 
 // NewFormFieldEmptyField instantiates a new FormFieldEmptyField object
 // This constructor will assign default values to properties that have it defined,
@@ -140,6 +143,42 @@ func (o FormFieldEmptyField) ToMap() (map[string]interface{}, error) {
 		toSerialize["content"] = o.Content
 	}
 	return toSerialize, nil
+}
+
+func (o *FormFieldEmptyField) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"position",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFormFieldEmptyField := _FormFieldEmptyField{}
+
+	err = json.Unmarshal(bytes, &varFormFieldEmptyField)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FormFieldEmptyField(varFormFieldEmptyField)
+
+	return err
 }
 
 type NullableFormFieldEmptyField struct {

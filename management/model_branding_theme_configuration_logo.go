@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the BrandingThemeConfigurationLogo type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,8 @@ type BrandingThemeConfigurationLogo struct {
 	// The ID of the logo image.
 	Id string `json:"id"`
 }
+
+type _BrandingThemeConfigurationLogo BrandingThemeConfigurationLogo
 
 // NewBrandingThemeConfigurationLogo instantiates a new BrandingThemeConfigurationLogo object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,42 @@ func (o BrandingThemeConfigurationLogo) ToMap() (map[string]interface{}, error) 
 	toSerialize["href"] = o.Href
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *BrandingThemeConfigurationLogo) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"href",
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBrandingThemeConfigurationLogo := _BrandingThemeConfigurationLogo{}
+
+	err = json.Unmarshal(bytes, &varBrandingThemeConfigurationLogo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BrandingThemeConfigurationLogo(varBrandingThemeConfigurationLogo)
+
+	return err
 }
 
 type NullableBrandingThemeConfigurationLogo struct {

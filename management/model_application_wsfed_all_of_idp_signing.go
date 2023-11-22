@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationWSFEDAllOfIdpSigning type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type ApplicationWSFEDAllOfIdpSigning struct {
 	Algorithm EnumApplicationWSFEDIDPSigningAlgorithm `json:"algorithm"`
 	Key ApplicationWSFEDAllOfIdpSigningKey `json:"key"`
 }
+
+type _ApplicationWSFEDAllOfIdpSigning ApplicationWSFEDAllOfIdpSigning
 
 // NewApplicationWSFEDAllOfIdpSigning instantiates a new ApplicationWSFEDAllOfIdpSigning object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +106,42 @@ func (o ApplicationWSFEDAllOfIdpSigning) ToMap() (map[string]interface{}, error)
 	toSerialize["algorithm"] = o.Algorithm
 	toSerialize["key"] = o.Key
 	return toSerialize, nil
+}
+
+func (o *ApplicationWSFEDAllOfIdpSigning) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"algorithm",
+		"key",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationWSFEDAllOfIdpSigning := _ApplicationWSFEDAllOfIdpSigning{}
+
+	err = json.Unmarshal(bytes, &varApplicationWSFEDAllOfIdpSigning)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationWSFEDAllOfIdpSigning(varApplicationWSFEDAllOfIdpSigning)
+
+	return err
 }
 
 type NullableApplicationWSFEDAllOfIdpSigning struct {

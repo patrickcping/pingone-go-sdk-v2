@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the FormElement type satisfies the MappedNullable interface at compile time
@@ -39,6 +40,8 @@ type FormElement struct {
 	// A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute.
 	OtherOptionAttributeDisabled *bool `json:"otherOptionAttributeDisabled,omitempty"`
 }
+
+type _FormElement FormElement
 
 // NewFormElement instantiates a new FormElement object
 // This constructor will assign default values to properties that have it defined,
@@ -400,6 +403,42 @@ func (o FormElement) ToMap() (map[string]interface{}, error) {
 		toSerialize["otherOptionAttributeDisabled"] = o.OtherOptionAttributeDisabled
 	}
 	return toSerialize, nil
+}
+
+func (o *FormElement) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"key",
+		"required",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFormElement := _FormElement{}
+
+	err = json.Unmarshal(bytes, &varFormElement)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FormElement(varFormElement)
+
+	return err
 }
 
 type NullableFormElement struct {

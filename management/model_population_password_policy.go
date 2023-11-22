@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the PopulationPasswordPolicy type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type PopulationPasswordPolicy struct {
 	// The ID of the password policy that is used for this population. If absent, the environment's default is used. Requried if `passwordPolicy` is used.
 	Id string `json:"id"`
 }
+
+type _PopulationPasswordPolicy PopulationPasswordPolicy
 
 // NewPopulationPasswordPolicy instantiates a new PopulationPasswordPolicy object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +80,41 @@ func (o PopulationPasswordPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *PopulationPasswordPolicy) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPopulationPasswordPolicy := _PopulationPasswordPolicy{}
+
+	err = json.Unmarshal(bytes, &varPopulationPasswordPolicy)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PopulationPasswordPolicy(varPopulationPasswordPolicy)
+
+	return err
 }
 
 type NullablePopulationPasswordPolicy struct {

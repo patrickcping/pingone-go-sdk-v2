@@ -13,6 +13,7 @@ package management
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the License type satisfies the MappedNullable interface at compile time
@@ -51,6 +52,8 @@ type License struct {
 	Users *LicenseUsers `json:"users,omitempty"`
 	Verify *LicenseVerify `json:"verify,omitempty"`
 }
+
+type _License License
 
 // NewLicense instantiates a new License object
 // This constructor will assign default values to properties that have it defined,
@@ -876,6 +879,41 @@ func (o License) ToMap() (map[string]interface{}, error) {
 		toSerialize["verify"] = o.Verify
 	}
 	return toSerialize, nil
+}
+
+func (o *License) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLicense := _License{}
+
+	err = json.Unmarshal(bytes, &varLicense)
+
+	if err != nil {
+		return err
+	}
+
+	*o = License(varLicense)
+
+	return err
 }
 
 type NullableLicense struct {

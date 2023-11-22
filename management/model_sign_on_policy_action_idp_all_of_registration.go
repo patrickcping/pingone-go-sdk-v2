@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyActionIDPAllOfRegistration type satisfies the MappedNullable interface at compile time
@@ -25,6 +26,8 @@ type SignOnPolicyActionIDPAllOfRegistration struct {
 	Enabled bool `json:"enabled"`
 	Population *SignOnPolicyActionLoginAllOfRegistrationPopulation `json:"population,omitempty"`
 }
+
+type _SignOnPolicyActionIDPAllOfRegistration SignOnPolicyActionIDPAllOfRegistration
 
 // NewSignOnPolicyActionIDPAllOfRegistration instantiates a new SignOnPolicyActionIDPAllOfRegistration object
 // This constructor will assign default values to properties that have it defined,
@@ -154,6 +157,41 @@ func (o SignOnPolicyActionIDPAllOfRegistration) ToMap() (map[string]interface{},
 		toSerialize["population"] = o.Population
 	}
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyActionIDPAllOfRegistration) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enabled",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyActionIDPAllOfRegistration := _SignOnPolicyActionIDPAllOfRegistration{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyActionIDPAllOfRegistration)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyActionIDPAllOfRegistration(varSignOnPolicyActionIDPAllOfRegistration)
+
+	return err
 }
 
 type NullableSignOnPolicyActionIDPAllOfRegistration struct {

@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyActionMFAAllOfApplications type satisfies the MappedNullable interface at compile time
@@ -23,6 +24,8 @@ type SignOnPolicyActionMFAAllOfApplications struct {
 	AutoEnrollment *SignOnPolicyActionMFAAllOfAutoEnrollment `json:"autoEnrollment,omitempty"`
 	DeviceAuthorization *SignOnPolicyActionMFAAllOfDeviceAuthorization `json:"deviceAuthorization,omitempty"`
 }
+
+type _SignOnPolicyActionMFAAllOfApplications SignOnPolicyActionMFAAllOfApplications
 
 // NewSignOnPolicyActionMFAAllOfApplications instantiates a new SignOnPolicyActionMFAAllOfApplications object
 // This constructor will assign default values to properties that have it defined,
@@ -148,6 +151,41 @@ func (o SignOnPolicyActionMFAAllOfApplications) ToMap() (map[string]interface{},
 		toSerialize["deviceAuthorization"] = o.DeviceAuthorization
 	}
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyActionMFAAllOfApplications) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyActionMFAAllOfApplications := _SignOnPolicyActionMFAAllOfApplications{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyActionMFAAllOfApplications)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyActionMFAAllOfApplications(varSignOnPolicyActionMFAAllOfApplications)
+
+	return err
 }
 
 type NullableSignOnPolicyActionMFAAllOfApplications struct {

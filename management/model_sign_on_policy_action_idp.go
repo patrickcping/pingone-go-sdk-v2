@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyActionIDP type satisfies the MappedNullable interface at compile time
@@ -35,6 +36,8 @@ type SignOnPolicyActionIDP struct {
 	PassUserContext *bool `json:"passUserContext,omitempty"`
 	Registration *SignOnPolicyActionIDPAllOfRegistration `json:"registration,omitempty"`
 }
+
+type _SignOnPolicyActionIDP SignOnPolicyActionIDP
 
 // NewSignOnPolicyActionIDP instantiates a new SignOnPolicyActionIDP object
 // This constructor will assign default values to properties that have it defined,
@@ -422,6 +425,43 @@ func (o SignOnPolicyActionIDP) ToMap() (map[string]interface{}, error) {
 		toSerialize["registration"] = o.Registration
 	}
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyActionIDP) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"priority",
+		"type",
+		"identityProvider",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyActionIDP := _SignOnPolicyActionIDP{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyActionIDP)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyActionIDP(varSignOnPolicyActionIDP)
+
+	return err
 }
 
 type NullableSignOnPolicyActionIDP struct {

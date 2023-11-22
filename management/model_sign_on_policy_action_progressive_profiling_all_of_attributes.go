@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyActionProgressiveProfilingAllOfAttributes type satisfies the MappedNullable interface at compile time
@@ -24,6 +25,8 @@ type SignOnPolicyActionProgressiveProfilingAllOfAttributes struct {
 	// A boolean that specifies whether the user is required to provide a value for the attribute. This property is required.
 	Required bool `json:"required"`
 }
+
+type _SignOnPolicyActionProgressiveProfilingAllOfAttributes SignOnPolicyActionProgressiveProfilingAllOfAttributes
 
 // NewSignOnPolicyActionProgressiveProfilingAllOfAttributes instantiates a new SignOnPolicyActionProgressiveProfilingAllOfAttributes object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +108,42 @@ func (o SignOnPolicyActionProgressiveProfilingAllOfAttributes) ToMap() (map[stri
 	toSerialize["name"] = o.Name
 	toSerialize["required"] = o.Required
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyActionProgressiveProfilingAllOfAttributes) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"required",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyActionProgressiveProfilingAllOfAttributes := _SignOnPolicyActionProgressiveProfilingAllOfAttributes{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyActionProgressiveProfilingAllOfAttributes)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyActionProgressiveProfilingAllOfAttributes(varSignOnPolicyActionProgressiveProfilingAllOfAttributes)
+
+	return err
 }
 
 type NullableSignOnPolicyActionProgressiveProfilingAllOfAttributes struct {

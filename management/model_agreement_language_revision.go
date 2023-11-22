@@ -13,6 +13,7 @@ package management
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the AgreementLanguageRevision type satisfies the MappedNullable interface at compile time
@@ -35,6 +36,8 @@ type AgreementLanguageRevision struct {
 	// An immutable string that specifies text or HTML for the revision. This attribute is supported in POST requests only. For more information, see contentType.
 	Text string `json:"text"`
 }
+
+type _AgreementLanguageRevision AgreementLanguageRevision
 
 // NewAgreementLanguageRevision instantiates a new AgreementLanguageRevision object
 // This constructor will assign default values to properties that have it defined,
@@ -343,6 +346,44 @@ func (o AgreementLanguageRevision) ToMap() (map[string]interface{}, error) {
 	toSerialize["requireReconsent"] = o.RequireReconsent
 	toSerialize["text"] = o.Text
 	return toSerialize, nil
+}
+
+func (o *AgreementLanguageRevision) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"contentType",
+		"effectiveAt",
+		"requireReconsent",
+		"text",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAgreementLanguageRevision := _AgreementLanguageRevision{}
+
+	err = json.Unmarshal(bytes, &varAgreementLanguageRevision)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AgreementLanguageRevision(varAgreementLanguageRevision)
+
+	return err
 }
 
 type NullableAgreementLanguageRevision struct {

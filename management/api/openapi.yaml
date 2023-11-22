@@ -5398,6 +5398,13 @@ paths:
         schema:
           type: string
         style: simple
+      - explode: true
+        in: query
+        name: include
+        required: false
+        schema:
+          $ref: '#/components/schemas/EnumFormsIncludeParameter'
+        style: form
       responses:
         "400":
           content:
@@ -25664,6 +25671,10 @@ components:
       enum:
       - AUTHENTICATION
       type: string
+    EnumFormsIncludeParameter:
+      enum:
+      - components
+      type: string
     EnumGatewayTypeLDAPSecurity:
       default: None
       description: "A string that specifies the connection security type. Options\
@@ -29727,6 +29738,7 @@ components:
       - $ref: '#/components/schemas/FormFieldCombobox'
       - $ref: '#/components/schemas/FormFieldDivider'
       - $ref: '#/components/schemas/FormFieldEmptyField'
+      - $ref: '#/components/schemas/FormFieldTextblob'
       - $ref: '#/components/schemas/FormFieldSlateTextblob'
       - $ref: '#/components/schemas/FormFieldSubmitButton'
       - $ref: '#/components/schemas/FormFieldErrorDisplay'
@@ -29853,6 +29865,10 @@ components:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormItem'
     FormFieldEmptyField:
+      allOf:
+      - $ref: '#/components/schemas/FormFieldCommon'
+      - $ref: '#/components/schemas/FormItem'
+    FormFieldTextblob:
       allOf:
       - $ref: '#/components/schemas/FormFieldCommon'
       - $ref: '#/components/schemas/FormItem'

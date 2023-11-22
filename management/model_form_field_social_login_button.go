@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the FormFieldSocialLoginButton type satisfies the MappedNullable interface at compile time
@@ -36,6 +37,8 @@ type FormFieldSocialLoginButton struct {
 	// An integer that specifies the button width. Set as a percentage.
 	Width *int32 `json:"width,omitempty"`
 }
+
+type _FormFieldSocialLoginButton FormFieldSocialLoginButton
 
 // NewFormFieldSocialLoginButton instantiates a new FormFieldSocialLoginButton object
 // This constructor will assign default values to properties that have it defined,
@@ -343,6 +346,48 @@ func (o FormFieldSocialLoginButton) ToMap() (map[string]interface{}, error) {
 		toSerialize["width"] = o.Width
 	}
 	return toSerialize, nil
+}
+
+func (o *FormFieldSocialLoginButton) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"position",
+		"label",
+		"idpType",
+		"idpName",
+		"idpId",
+		"idpEnabled",
+		"iconSrc",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFormFieldSocialLoginButton := _FormFieldSocialLoginButton{}
+
+	err = json.Unmarshal(bytes, &varFormFieldSocialLoginButton)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FormFieldSocialLoginButton(varFormFieldSocialLoginButton)
+
+	return err
 }
 
 type NullableFormFieldSocialLoginButton struct {

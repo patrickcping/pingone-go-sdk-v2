@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyActionCommonConditionGeovelocityValid type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type SignOnPolicyActionCommonConditionGeovelocityValid struct {
 	PreviousSuccessfulAuthenticationIp string `json:"previousSuccessfulAuthenticationIp"`
 	PreviousSuccessfulAuthenticationTime string `json:"previousSuccessfulAuthenticationTime"`
 }
+
+type _SignOnPolicyActionCommonConditionGeovelocityValid SignOnPolicyActionCommonConditionGeovelocityValid
 
 // NewSignOnPolicyActionCommonConditionGeovelocityValid instantiates a new SignOnPolicyActionCommonConditionGeovelocityValid object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +106,42 @@ func (o SignOnPolicyActionCommonConditionGeovelocityValid) ToMap() (map[string]i
 	toSerialize["previousSuccessfulAuthenticationIp"] = o.PreviousSuccessfulAuthenticationIp
 	toSerialize["previousSuccessfulAuthenticationTime"] = o.PreviousSuccessfulAuthenticationTime
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyActionCommonConditionGeovelocityValid) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"previousSuccessfulAuthenticationIp",
+		"previousSuccessfulAuthenticationTime",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyActionCommonConditionGeovelocityValid := _SignOnPolicyActionCommonConditionGeovelocityValid{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyActionCommonConditionGeovelocityValid)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyActionCommonConditionGeovelocityValid(varSignOnPolicyActionCommonConditionGeovelocityValid)
+
+	return err
 }
 
 type NullableSignOnPolicyActionCommonConditionGeovelocityValid struct {
