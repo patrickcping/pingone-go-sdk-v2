@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the Template type satisfies the MappedNullable interface at compile time
@@ -38,8 +37,6 @@ type Template struct {
 	// Specifies whether dynamic variables can be used in the template's contents. For more information, see [Dynamic variables](https://apidocs.pingidentity.com/pingone/platform/v1/api/#notifications-templates-dynamic-variables).
 	AllowDynamicVariables *bool `json:"allowDynamicVariables,omitempty"`
 }
-
-type _Template Template
 
 // NewTemplate instantiates a new Template object
 // This constructor will assign default values to properties that have it defined,
@@ -357,43 +354,6 @@ func (o Template) ToMap() (map[string]interface{}, error) {
 		toSerialize["allowDynamicVariables"] = o.AllowDynamicVariables
 	}
 	return toSerialize, nil
-}
-
-func (o *Template) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"displayName",
-		"deliveryMethods",
-		"variables",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTemplate := _Template{}
-
-	err = json.Unmarshal(bytes, &varTemplate)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Template(varTemplate)
-
-	return err
 }
 
 type NullableTemplate struct {

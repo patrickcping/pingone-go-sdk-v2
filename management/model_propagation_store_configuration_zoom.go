@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the PropagationStoreConfigurationZoom type satisfies the MappedNullable interface at compile time
@@ -45,8 +44,6 @@ type PropagationStoreConfigurationZoom struct {
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
 }
-
-type _PropagationStoreConfigurationZoom PropagationStoreConfigurationZoom
 
 // NewPropagationStoreConfigurationZoom instantiates a new PropagationStoreConfigurationZoom object
 // This constructor will assign default values to properties that have it defined,
@@ -526,41 +523,6 @@ func (o PropagationStoreConfigurationZoom) ToMap() (map[string]interface{}, erro
 		toSerialize["UPDATE_USERS"] = o.UPDATE_USERS
 	}
 	return toSerialize, nil
-}
-
-func (o *PropagationStoreConfigurationZoom) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"SCIM_URL",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPropagationStoreConfigurationZoom := _PropagationStoreConfigurationZoom{}
-
-	err = json.Unmarshal(bytes, &varPropagationStoreConfigurationZoom)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PropagationStoreConfigurationZoom(varPropagationStoreConfigurationZoom)
-
-	return err
 }
 
 type NullablePropagationStoreConfigurationZoom struct {

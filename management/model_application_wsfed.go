@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the ApplicationWSFED type satisfies the MappedNullable interface at compile time
@@ -54,8 +53,6 @@ type ApplicationWSFED struct {
 	// The single logout endpoint URL.
 	SloEndpoint *string `json:"sloEndpoint,omitempty"`
 }
-
-type _ApplicationWSFED ApplicationWSFED
 
 // NewApplicationWSFED instantiates a new ApplicationWSFED object
 // This constructor will assign default values to properties that have it defined,
@@ -726,47 +723,6 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 		toSerialize["sloEndpoint"] = o.SloEndpoint
 	}
 	return toSerialize, nil
-}
-
-func (o *ApplicationWSFED) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"name",
-		"protocol",
-		"type",
-		"domainName",
-		"idpSigning",
-		"replyUrl",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationWSFED := _ApplicationWSFED{}
-
-	err = json.Unmarshal(bytes, &varApplicationWSFED)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationWSFED(varApplicationWSFED)
-
-	return err
 }
 
 type NullableApplicationWSFED struct {

@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the BrandingTheme type satisfies the MappedNullable interface at compile time
@@ -29,8 +28,6 @@ type BrandingTheme struct {
 	Id *string `json:"id,omitempty"`
 	Template EnumBrandingThemeTemplate `json:"template"`
 }
-
-type _BrandingTheme BrandingTheme
 
 // NewBrandingTheme instantiates a new BrandingTheme object
 // This constructor will assign default values to properties that have it defined,
@@ -243,43 +240,6 @@ func (o BrandingTheme) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["template"] = o.Template
 	return toSerialize, nil
-}
-
-func (o *BrandingTheme) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"configuration",
-		"default",
-		"template",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varBrandingTheme := _BrandingTheme{}
-
-	err = json.Unmarshal(bytes, &varBrandingTheme)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BrandingTheme(varBrandingTheme)
-
-	return err
 }
 
 type NullableBrandingTheme struct {

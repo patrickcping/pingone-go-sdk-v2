@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the GatewayTypeLDAPAllOfUserTypes type satisfies the MappedNullable interface at compile time
@@ -33,8 +32,6 @@ type GatewayTypeLDAPAllOfUserTypes struct {
 	// The LDAP base domain name (DN) for this user type.
 	SearchBaseDn string `json:"searchBaseDn"`
 }
-
-type _GatewayTypeLDAPAllOfUserTypes GatewayTypeLDAPAllOfUserTypes
 
 // NewGatewayTypeLDAPAllOfUserTypes instantiates a new GatewayTypeLDAPAllOfUserTypes object
 // This constructor will assign default values to properties that have it defined,
@@ -273,44 +270,6 @@ func (o GatewayTypeLDAPAllOfUserTypes) ToMap() (map[string]interface{}, error) {
 	toSerialize["passwordAuthority"] = o.PasswordAuthority
 	toSerialize["searchBaseDn"] = o.SearchBaseDn
 	return toSerialize, nil
-}
-
-func (o *GatewayTypeLDAPAllOfUserTypes) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"orderedCorrelationAttributes",
-		"passwordAuthority",
-		"searchBaseDn",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGatewayTypeLDAPAllOfUserTypes := _GatewayTypeLDAPAllOfUserTypes{}
-
-	err = json.Unmarshal(bytes, &varGatewayTypeLDAPAllOfUserTypes)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GatewayTypeLDAPAllOfUserTypes(varGatewayTypeLDAPAllOfUserTypes)
-
-	return err
 }
 
 type NullableGatewayTypeLDAPAllOfUserTypes struct {

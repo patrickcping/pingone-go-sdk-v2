@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the IdentityProviderSAMLAllOfIdpVerification type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type IdentityProviderSAMLAllOfIdpVerification struct {
 	// A array that specifies the identity provider's certificate IDs used to verify the signature on the signed assertion from the identity provider. Signing is done with a private key and verified with a public key.
 	Certificates []IdentityProviderSAMLAllOfIdpVerificationCertificates `json:"certificates"`
 }
-
-type _IdentityProviderSAMLAllOfIdpVerification IdentityProviderSAMLAllOfIdpVerification
 
 // NewIdentityProviderSAMLAllOfIdpVerification instantiates a new IdentityProviderSAMLAllOfIdpVerification object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o IdentityProviderSAMLAllOfIdpVerification) ToMap() (map[string]interface{
 	toSerialize := map[string]interface{}{}
 	toSerialize["certificates"] = o.Certificates
 	return toSerialize, nil
-}
-
-func (o *IdentityProviderSAMLAllOfIdpVerification) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"certificates",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIdentityProviderSAMLAllOfIdpVerification := _IdentityProviderSAMLAllOfIdpVerification{}
-
-	err = json.Unmarshal(bytes, &varIdentityProviderSAMLAllOfIdpVerification)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IdentityProviderSAMLAllOfIdpVerification(varIdentityProviderSAMLAllOfIdpVerification)
-
-	return err
 }
 
 type NullableIdentityProviderSAMLAllOfIdpVerification struct {

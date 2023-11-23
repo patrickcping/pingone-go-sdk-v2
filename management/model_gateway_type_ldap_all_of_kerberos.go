@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the GatewayTypeLDAPAllOfKerberos type satisfies the MappedNullable interface at compile time
@@ -27,8 +26,6 @@ type GatewayTypeLDAPAllOfKerberos struct {
 	// The number of minutes for which the previous credentials are persisted.
 	MinutesToRetainPreviousCredentials *int32 `json:"minutesToRetainPreviousCredentials,omitempty"`
 }
-
-type _GatewayTypeLDAPAllOfKerberos GatewayTypeLDAPAllOfKerberos
 
 // NewGatewayTypeLDAPAllOfKerberos instantiates a new GatewayTypeLDAPAllOfKerberos object
 // This constructor will assign default values to properties that have it defined,
@@ -154,41 +151,6 @@ func (o GatewayTypeLDAPAllOfKerberos) ToMap() (map[string]interface{}, error) {
 		toSerialize["minutesToRetainPreviousCredentials"] = o.MinutesToRetainPreviousCredentials
 	}
 	return toSerialize, nil
-}
-
-func (o *GatewayTypeLDAPAllOfKerberos) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"serviceAccountUserPrincipalName",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGatewayTypeLDAPAllOfKerberos := _GatewayTypeLDAPAllOfKerberos{}
-
-	err = json.Unmarshal(bytes, &varGatewayTypeLDAPAllOfKerberos)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GatewayTypeLDAPAllOfKerberos(varGatewayTypeLDAPAllOfKerberos)
-
-	return err
 }
 
 type NullableGatewayTypeLDAPAllOfKerberos struct {

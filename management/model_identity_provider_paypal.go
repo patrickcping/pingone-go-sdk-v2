@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the IdentityProviderPaypal type satisfies the MappedNullable interface at compile time
@@ -45,8 +44,6 @@ type IdentityProviderPaypal struct {
 	// A string that specifies the PayPal environment. Options are sandbox, and live. This is a required property.
 	ClientEnvironment string `json:"clientEnvironment"`
 }
-
-type _IdentityProviderPaypal IdentityProviderPaypal
 
 // NewIdentityProviderPaypal instantiates a new IdentityProviderPaypal object
 // This constructor will assign default values to properties that have it defined,
@@ -547,46 +544,6 @@ func (o IdentityProviderPaypal) ToMap() (map[string]interface{}, error) {
 	toSerialize["clientSecret"] = o.ClientSecret
 	toSerialize["clientEnvironment"] = o.ClientEnvironment
 	return toSerialize, nil
-}
-
-func (o *IdentityProviderPaypal) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"name",
-		"type",
-		"clientId",
-		"clientSecret",
-		"clientEnvironment",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIdentityProviderPaypal := _IdentityProviderPaypal{}
-
-	err = json.Unmarshal(bytes, &varIdentityProviderPaypal)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IdentityProviderPaypal(varIdentityProviderPaypal)
-
-	return err
 }
 
 type NullableIdentityProviderPaypal struct {

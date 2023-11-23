@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the Agreement type satisfies the MappedNullable interface at compile time
@@ -40,8 +39,6 @@ type Agreement struct {
 	// An integer that identifies the total number of users who have consented to the agreement. This value is last calculated at the consentCountsUpdatedAt time.
 	TotalConsents *int32 `json:"totalConsents,omitempty"`
 }
-
-type _Agreement Agreement
 
 // NewAgreement instantiates a new Agreement object
 // This constructor will assign default values to properties that have it defined,
@@ -403,42 +400,6 @@ func (o Agreement) ToMap() (map[string]interface{}, error) {
 		toSerialize["totalConsents"] = o.TotalConsents
 	}
 	return toSerialize, nil
-}
-
-func (o *Agreement) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAgreement := _Agreement{}
-
-	err = json.Unmarshal(bytes, &varAgreement)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Agreement(varAgreement)
-
-	return err
 }
 
 type NullableAgreement struct {

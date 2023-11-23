@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SubscriptionFilterOptions type satisfies the MappedNullable interface at compile time
@@ -33,8 +32,6 @@ type SubscriptionFilterOptions struct {
 	// Whether the User-Agent HTTP header of an event should be present in the `source` section of the event.
 	UserAgentExposed *bool `json:"userAgentExposed,omitempty"`
 }
-
-type _SubscriptionFilterOptions SubscriptionFilterOptions
 
 // NewSubscriptionFilterOptions instantiates a new SubscriptionFilterOptions object
 // This constructor will assign default values to properties that have it defined,
@@ -273,41 +270,6 @@ func (o SubscriptionFilterOptions) ToMap() (map[string]interface{}, error) {
 		toSerialize["userAgentExposed"] = o.UserAgentExposed
 	}
 	return toSerialize, nil
-}
-
-func (o *SubscriptionFilterOptions) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"includedActionTypes",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSubscriptionFilterOptions := _SubscriptionFilterOptions{}
-
-	err = json.Unmarshal(bytes, &varSubscriptionFilterOptions)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SubscriptionFilterOptions(varSubscriptionFilterOptions)
-
-	return err
 }
 
 type NullableSubscriptionFilterOptions struct {

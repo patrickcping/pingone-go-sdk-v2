@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionLoginAllOfRegistrationPopulation type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionLoginAllOfRegistrationPopulation struct {
 	// A string that specifies the population ID associated with the newly registered user.
 	Id string `json:"id"`
 }
-
-type _SignOnPolicyActionLoginAllOfRegistrationPopulation SignOnPolicyActionLoginAllOfRegistrationPopulation
 
 // NewSignOnPolicyActionLoginAllOfRegistrationPopulation instantiates a new SignOnPolicyActionLoginAllOfRegistrationPopulation object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o SignOnPolicyActionLoginAllOfRegistrationPopulation) ToMap() (map[string]
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionLoginAllOfRegistrationPopulation) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionLoginAllOfRegistrationPopulation := _SignOnPolicyActionLoginAllOfRegistrationPopulation{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionLoginAllOfRegistrationPopulation)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionLoginAllOfRegistrationPopulation(varSignOnPolicyActionLoginAllOfRegistrationPopulation)
-
-	return err
 }
 
 type NullableSignOnPolicyActionLoginAllOfRegistrationPopulation struct {

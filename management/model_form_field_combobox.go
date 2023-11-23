@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the FormFieldCombobox type satisfies the MappedNullable interface at compile time
@@ -27,8 +26,6 @@ type FormFieldCombobox struct {
 	// A string that specifies the value of the field if this option is selected.
 	Value string `json:"value"`
 }
-
-type _FormFieldCombobox FormFieldCombobox
 
 // NewFormFieldCombobox instantiates a new FormFieldCombobox object
 // This constructor will assign default values to properties that have it defined,
@@ -162,44 +159,6 @@ func (o FormFieldCombobox) ToMap() (map[string]interface{}, error) {
 	toSerialize["label"] = o.Label
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
-}
-
-func (o *FormFieldCombobox) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"position",
-		"label",
-		"value",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFormFieldCombobox := _FormFieldCombobox{}
-
-	err = json.Unmarshal(bytes, &varFormFieldCombobox)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FormFieldCombobox(varFormFieldCombobox)
-
-	return err
 }
 
 type NullableFormFieldCombobox struct {

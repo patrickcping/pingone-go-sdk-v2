@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SubscriptionHttpEndpoint type satisfies the MappedNullable interface at compile time
@@ -25,8 +24,6 @@ type SubscriptionHttpEndpoint struct {
 	// An object map of strings that specifies the headers applied to the outbound request (for example, `Authorization` `Basic usernamepassword`. The purpose of these headers is for the HTTPS endpoint to authenticate the PingOne service, ensuring that the information from PingOne is from a trusted source.
 	Headers *map[string]string `json:"headers,omitempty"`
 }
-
-type _SubscriptionHttpEndpoint SubscriptionHttpEndpoint
 
 // NewSubscriptionHttpEndpoint instantiates a new SubscriptionHttpEndpoint object
 // This constructor will assign default values to properties that have it defined,
@@ -117,41 +114,6 @@ func (o SubscriptionHttpEndpoint) ToMap() (map[string]interface{}, error) {
 		toSerialize["headers"] = o.Headers
 	}
 	return toSerialize, nil
-}
-
-func (o *SubscriptionHttpEndpoint) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"url",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSubscriptionHttpEndpoint := _SubscriptionHttpEndpoint{}
-
-	err = json.Unmarshal(bytes, &varSubscriptionHttpEndpoint)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SubscriptionHttpEndpoint(varSubscriptionHttpEndpoint)
-
-	return err
 }
 
 type NullableSubscriptionHttpEndpoint struct {

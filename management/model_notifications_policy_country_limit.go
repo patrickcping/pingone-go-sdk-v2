@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the NotificationsPolicyCountryLimit type satisfies the MappedNullable interface at compile time
@@ -26,8 +25,6 @@ type NotificationsPolicyCountryLimit struct {
 	// The countries where the specified methods should be allowed or denied. Use the two-letter country codes from ISO 3166-1.
 	Countries []string `json:"countries"`
 }
-
-type _NotificationsPolicyCountryLimit NotificationsPolicyCountryLimit
 
 // NewNotificationsPolicyCountryLimit instantiates a new NotificationsPolicyCountryLimit object
 // This constructor will assign default values to properties that have it defined,
@@ -144,42 +141,6 @@ func (o NotificationsPolicyCountryLimit) ToMap() (map[string]interface{}, error)
 	}
 	toSerialize["countries"] = o.Countries
 	return toSerialize, nil
-}
-
-func (o *NotificationsPolicyCountryLimit) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"countries",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varNotificationsPolicyCountryLimit := _NotificationsPolicyCountryLimit{}
-
-	err = json.Unmarshal(bytes, &varNotificationsPolicyCountryLimit)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NotificationsPolicyCountryLimit(varNotificationsPolicyCountryLimit)
-
-	return err
 }
 
 type NullableNotificationsPolicyCountryLimit struct {

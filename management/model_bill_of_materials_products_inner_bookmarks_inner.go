@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the BillOfMaterialsProductsInnerBookmarksInner type satisfies the MappedNullable interface at compile time
@@ -25,8 +24,6 @@ type BillOfMaterialsProductsInnerBookmarksInner struct {
 	// A valid URL for the bookmark.
 	Href string `json:"href"`
 }
-
-type _BillOfMaterialsProductsInnerBookmarksInner BillOfMaterialsProductsInnerBookmarksInner
 
 // NewBillOfMaterialsProductsInnerBookmarksInner instantiates a new BillOfMaterialsProductsInnerBookmarksInner object
 // This constructor will assign default values to properties that have it defined,
@@ -108,42 +105,6 @@ func (o BillOfMaterialsProductsInnerBookmarksInner) ToMap() (map[string]interfac
 	toSerialize["name"] = o.Name
 	toSerialize["href"] = o.Href
 	return toSerialize, nil
-}
-
-func (o *BillOfMaterialsProductsInnerBookmarksInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"href",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varBillOfMaterialsProductsInnerBookmarksInner := _BillOfMaterialsProductsInnerBookmarksInner{}
-
-	err = json.Unmarshal(bytes, &varBillOfMaterialsProductsInnerBookmarksInner)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BillOfMaterialsProductsInnerBookmarksInner(varBillOfMaterialsProductsInnerBookmarksInner)
-
-	return err
 }
 
 type NullableBillOfMaterialsProductsInnerBookmarksInner struct {

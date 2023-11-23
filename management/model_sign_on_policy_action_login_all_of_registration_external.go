@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionLoginAllOfRegistrationExternal type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionLoginAllOfRegistrationExternal struct {
 	// A string that specifies the link to the external identity provider's identity store. This property is set when the administrator chooses to have users register in an external identity store. This attribute can be set only when the registration.enabled property is set to false.
 	Href string `json:"href"`
 }
-
-type _SignOnPolicyActionLoginAllOfRegistrationExternal SignOnPolicyActionLoginAllOfRegistrationExternal
 
 // NewSignOnPolicyActionLoginAllOfRegistrationExternal instantiates a new SignOnPolicyActionLoginAllOfRegistrationExternal object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o SignOnPolicyActionLoginAllOfRegistrationExternal) ToMap() (map[string]in
 	toSerialize := map[string]interface{}{}
 	toSerialize["href"] = o.Href
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionLoginAllOfRegistrationExternal) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"href",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionLoginAllOfRegistrationExternal := _SignOnPolicyActionLoginAllOfRegistrationExternal{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionLoginAllOfRegistrationExternal)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionLoginAllOfRegistrationExternal(varSignOnPolicyActionLoginAllOfRegistrationExternal)
-
-	return err
 }
 
 type NullableSignOnPolicyActionLoginAllOfRegistrationExternal struct {

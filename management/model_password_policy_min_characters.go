@@ -26,7 +26,7 @@ type PasswordPolicyMinCharacters struct {
 	// Count of numeric characters (`0123456789`) that should feature in the user's password.
 	Var0123456789 *int32 `json:"0123456789,omitempty"`
 	// Count of special characters (`~!@#$%^&*()-_=+[]{}\\\\|;:,.<>/?`) that should feature in the user's password.
-	SpecialChar *int32 `json:"~!@#$%^&*()-_=+[]{}|;:,.<>/?,omitempty"`
+	SpecialChar *int32 `json:"specialchar,omitempty"`
 }
 
 // NewPasswordPolicyMinCharacters instantiates a new PasswordPolicyMinCharacters object

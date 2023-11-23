@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the NotificationsSettingsRestrictionsSmsVoiceQuota type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type NotificationsSettingsRestrictionsSmsVoiceQuota struct {
 	// The maximum number of SMS and voice notifications that can be sent per user per day. - `restrictions.smsVoiceQuota.daily` can be set to any value between 0 and 50. - Trial accounts have a default value of 30. - The daily counters are reset every night at midnight UTC. 
 	Daily int32 `json:"daily"`
 }
-
-type _NotificationsSettingsRestrictionsSmsVoiceQuota NotificationsSettingsRestrictionsSmsVoiceQuota
 
 // NewNotificationsSettingsRestrictionsSmsVoiceQuota instantiates a new NotificationsSettingsRestrictionsSmsVoiceQuota object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o NotificationsSettingsRestrictionsSmsVoiceQuota) ToMap() (map[string]inte
 	toSerialize := map[string]interface{}{}
 	toSerialize["daily"] = o.Daily
 	return toSerialize, nil
-}
-
-func (o *NotificationsSettingsRestrictionsSmsVoiceQuota) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"daily",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varNotificationsSettingsRestrictionsSmsVoiceQuota := _NotificationsSettingsRestrictionsSmsVoiceQuota{}
-
-	err = json.Unmarshal(bytes, &varNotificationsSettingsRestrictionsSmsVoiceQuota)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NotificationsSettingsRestrictionsSmsVoiceQuota(varNotificationsSettingsRestrictionsSmsVoiceQuota)
-
-	return err
 }
 
 type NullableNotificationsSettingsRestrictionsSmsVoiceQuota struct {

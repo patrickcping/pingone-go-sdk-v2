@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the IdentityProviderClientIDClientSecret type satisfies the MappedNullable interface at compile time
@@ -43,8 +42,6 @@ type IdentityProviderClientIDClientSecret struct {
 	// A string that specifies the application secret from the provider. This is a required property.
 	ClientSecret string `json:"clientSecret"`
 }
-
-type _IdentityProviderClientIDClientSecret IdentityProviderClientIDClientSecret
 
 // NewIdentityProviderClientIDClientSecret instantiates a new IdentityProviderClientIDClientSecret object
 // This constructor will assign default values to properties that have it defined,
@@ -519,45 +516,6 @@ func (o IdentityProviderClientIDClientSecret) ToMap() (map[string]interface{}, e
 	toSerialize["clientId"] = o.ClientId
 	toSerialize["clientSecret"] = o.ClientSecret
 	return toSerialize, nil
-}
-
-func (o *IdentityProviderClientIDClientSecret) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"name",
-		"type",
-		"clientId",
-		"clientSecret",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIdentityProviderClientIDClientSecret := _IdentityProviderClientIDClientSecret{}
-
-	err = json.Unmarshal(bytes, &varIdentityProviderClientIDClientSecret)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IdentityProviderClientIDClientSecret(varIdentityProviderClientIDClientSecret)
-
-	return err
 }
 
 type NullableIdentityProviderClientIDClientSecret struct {

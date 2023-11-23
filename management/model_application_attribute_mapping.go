@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the ApplicationAttributeMapping type satisfies the MappedNullable interface at compile time
@@ -45,8 +44,6 @@ type ApplicationAttributeMapping struct {
 	// OIDC resource scope IDs that this attribute mapping is available for exclusively. This setting overrides any global OIDC resource scopes that contain an attribute mapping with the same name. The list can contain only scope IDs that have been granted for the application through the `/grants` endpoint. A null value is accepted for backwards compatibility. However, an empty set is invalid, and one scope ID is expected. If null, the response includes this mapping in the `openid` scope.
 	OidcScopes []string `json:"oidcScopes,omitempty"`
 }
-
-type _ApplicationAttributeMapping ApplicationAttributeMapping
 
 // NewApplicationAttributeMapping instantiates a new ApplicationAttributeMapping object
 // This constructor will assign default values to properties that have it defined,
@@ -512,43 +509,6 @@ func (o ApplicationAttributeMapping) ToMap() (map[string]interface{}, error) {
 		toSerialize["oidcScopes"] = o.OidcScopes
 	}
 	return toSerialize, nil
-}
-
-func (o *ApplicationAttributeMapping) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"required",
-		"value",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationAttributeMapping := _ApplicationAttributeMapping{}
-
-	err = json.Unmarshal(bytes, &varApplicationAttributeMapping)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationAttributeMapping(varApplicationAttributeMapping)
-
-	return err
 }
 
 type NullableApplicationAttributeMapping struct {

@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the ApplicationResourceGrant type satisfies the MappedNullable interface at compile time
@@ -32,8 +31,6 @@ type ApplicationResourceGrant struct {
 	// The time the resource was last updated.
 	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
 }
-
-type _ApplicationResourceGrant ApplicationResourceGrant
 
 // NewApplicationResourceGrant instantiates a new ApplicationResourceGrant object
 // This constructor will assign default values to properties that have it defined,
@@ -290,42 +287,6 @@ func (o ApplicationResourceGrant) ToMap() (map[string]interface{}, error) {
 		toSerialize["updatedAt"] = o.UpdatedAt
 	}
 	return toSerialize, nil
-}
-
-func (o *ApplicationResourceGrant) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"resource",
-		"scopes",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationResourceGrant := _ApplicationResourceGrant{}
-
-	err = json.Unmarshal(bytes, &varApplicationResourceGrant)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationResourceGrant(varApplicationResourceGrant)
-
-	return err
 }
 
 type NullableApplicationResourceGrant struct {

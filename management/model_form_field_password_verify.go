@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the FormFieldPasswordVerify type satisfies the MappedNullable interface at compile time
@@ -25,8 +24,6 @@ type FormFieldPasswordVerify struct {
 	// A string that when a second field for verifies password is used, this poperty specifies the field label for that verify field.
 	LabelPasswordVerify *string `json:"labelPasswordVerify,omitempty"`
 }
-
-type _FormFieldPasswordVerify FormFieldPasswordVerify
 
 // NewFormFieldPasswordVerify instantiates a new FormFieldPasswordVerify object
 // This constructor will assign default values to properties that have it defined,
@@ -143,42 +140,6 @@ func (o FormFieldPasswordVerify) ToMap() (map[string]interface{}, error) {
 		toSerialize["labelPasswordVerify"] = o.LabelPasswordVerify
 	}
 	return toSerialize, nil
-}
-
-func (o *FormFieldPasswordVerify) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"position",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFormFieldPasswordVerify := _FormFieldPasswordVerify{}
-
-	err = json.Unmarshal(bytes, &varFormFieldPasswordVerify)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FormFieldPasswordVerify(varFormFieldPasswordVerify)
-
-	return err
 }
 
 type NullableFormFieldPasswordVerify struct {

@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the ApplicationPingOneSelfService type satisfies the MappedNullable interface at compile time
@@ -50,8 +49,6 @@ type ApplicationPingOneSelfService struct {
 	// If `true`, applies the default theme to the self service application.
 	ApplyDefaultTheme bool `json:"applyDefaultTheme"`
 }
-
-type _ApplicationPingOneSelfService ApplicationPingOneSelfService
 
 // NewApplicationPingOneSelfService instantiates a new ApplicationPingOneSelfService object
 // This constructor will assign default values to properties that have it defined,
@@ -657,46 +654,6 @@ func (o ApplicationPingOneSelfService) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["applyDefaultTheme"] = o.ApplyDefaultTheme
 	return toSerialize, nil
-}
-
-func (o *ApplicationPingOneSelfService) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"name",
-		"protocol",
-		"type",
-		"tokenEndpointAuthMethod",
-		"applyDefaultTheme",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationPingOneSelfService := _ApplicationPingOneSelfService{}
-
-	err = json.Unmarshal(bytes, &varApplicationPingOneSelfService)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationPingOneSelfService(varApplicationPingOneSelfService)
-
-	return err
 }
 
 type NullableApplicationPingOneSelfService struct {

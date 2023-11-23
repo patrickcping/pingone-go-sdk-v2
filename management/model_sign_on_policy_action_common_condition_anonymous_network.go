@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionCommonConditionAnonymousNetwork type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionCommonConditionAnonymousNetwork struct {
 	AnonymousNetwork []string `json:"anonymousNetwork"`
 	Valid string `json:"valid"`
 }
-
-type _SignOnPolicyActionCommonConditionAnonymousNetwork SignOnPolicyActionCommonConditionAnonymousNetwork
 
 // NewSignOnPolicyActionCommonConditionAnonymousNetwork instantiates a new SignOnPolicyActionCommonConditionAnonymousNetwork object
 // This constructor will assign default values to properties that have it defined,
@@ -106,42 +103,6 @@ func (o SignOnPolicyActionCommonConditionAnonymousNetwork) ToMap() (map[string]i
 	toSerialize["anonymousNetwork"] = o.AnonymousNetwork
 	toSerialize["valid"] = o.Valid
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionCommonConditionAnonymousNetwork) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"anonymousNetwork",
-		"valid",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionCommonConditionAnonymousNetwork := _SignOnPolicyActionCommonConditionAnonymousNetwork{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionCommonConditionAnonymousNetwork)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionCommonConditionAnonymousNetwork(varSignOnPolicyActionCommonConditionAnonymousNetwork)
-
-	return err
 }
 
 type NullableSignOnPolicyActionCommonConditionAnonymousNetwork struct {

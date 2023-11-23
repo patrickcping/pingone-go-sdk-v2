@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the IdentityProviderApple type satisfies the MappedNullable interface at compile time
@@ -47,8 +46,6 @@ type IdentityProviderApple struct {
 	// A 10-character string that Apple uses to identify teams. This is a required property.
 	TeamId string `json:"teamId"`
 }
-
-type _IdentityProviderApple IdentityProviderApple
 
 // NewIdentityProviderApple instantiates a new IdentityProviderApple object
 // This constructor will assign default values to properties that have it defined,
@@ -575,47 +572,6 @@ func (o IdentityProviderApple) ToMap() (map[string]interface{}, error) {
 	toSerialize["keyId"] = o.KeyId
 	toSerialize["teamId"] = o.TeamId
 	return toSerialize, nil
-}
-
-func (o *IdentityProviderApple) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"name",
-		"type",
-		"clientId",
-		"clientSecretSigningKey",
-		"keyId",
-		"teamId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIdentityProviderApple := _IdentityProviderApple{}
-
-	err = json.Unmarshal(bytes, &varIdentityProviderApple)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IdentityProviderApple(varIdentityProviderApple)
-
-	return err
 }
 
 type NullableIdentityProviderApple struct {
