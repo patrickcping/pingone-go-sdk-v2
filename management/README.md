@@ -420,7 +420,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AddUserToGroupRequest](docs/AddUserToGroupRequest.md)
  - [Agreement](docs/Agreement.md)
  - [AgreementLanguage](docs/AgreementLanguage.md)
  - [AgreementLanguageAgreement](docs/AgreementLanguageAgreement.md)
@@ -553,6 +552,7 @@ Class | Method | HTTP request | Description
  - [EnumGatewayTypeLDAPSecurity](docs/EnumGatewayTypeLDAPSecurity.md)
  - [EnumGatewayVendor](docs/EnumGatewayVendor.md)
  - [EnumGetKeyAcceptHeader](docs/EnumGetKeyAcceptHeader.md)
+ - [EnumGroupMembershipType](docs/EnumGroupMembershipType.md)
  - [EnumGroupSourceType](docs/EnumGroupSourceType.md)
  - [EnumHealthStatus](docs/EnumHealthStatus.md)
  - [EnumIdentityProvider](docs/EnumIdentityProvider.md)
@@ -624,6 +624,7 @@ Class | Method | HTTP request | Description
  - [EnumTrustedEmailStatus](docs/EnumTrustedEmailStatus.md)
  - [EnumUpdateStatus](docs/EnumUpdateStatus.md)
  - [EnumUserAccountContentTypeHeader](docs/EnumUserAccountContentTypeHeader.md)
+ - [EnumUserGroupAssignmentExpandParameter](docs/EnumUserGroupAssignmentExpandParameter.md)
  - [EnumUserLifecycleStatus](docs/EnumUserLifecycleStatus.md)
  - [EnumUserRequestInclude](docs/EnumUserRequestInclude.md)
  - [EnumUserStatus](docs/EnumUserStatus.md)
@@ -692,6 +693,7 @@ Class | Method | HTTP request | Description
  - [Group](docs/Group.md)
  - [GroupDirectMemberCounts](docs/GroupDirectMemberCounts.md)
  - [GroupMembership](docs/GroupMembership.md)
+ - [GroupMembershipEmbedded](docs/GroupMembershipEmbedded.md)
  - [GroupNesting](docs/GroupNesting.md)
  - [GroupPopulation](docs/GroupPopulation.md)
  - [GroupTotalMemberCounts](docs/GroupTotalMemberCounts.md)

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## AddUserToGroup
 
-> Group AddUserToGroup(ctx, environmentID, userID).AddUserToGroupRequest(addUserToGroupRequest).Execute()
+> GroupMembership AddUserToGroup(ctx, environmentID, userID).GroupMembership(groupMembership).Execute()
 
 ADD User to Group
 
@@ -32,16 +32,16 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
-    addUserToGroupRequest := *openapiclient.NewAddUserToGroupRequest() // AddUserToGroupRequest |  (optional)
+    groupMembership := *openapiclient.NewGroupMembership("Id_example") // GroupMembership |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GroupMembershipApi.AddUserToGroup(context.Background(), environmentID, userID).AddUserToGroupRequest(addUserToGroupRequest).Execute()
+    resp, r, err := apiClient.GroupMembershipApi.AddUserToGroup(context.Background(), environmentID, userID).GroupMembership(groupMembership).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupMembershipApi.AddUserToGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AddUserToGroup`: Group
+    // response from `AddUserToGroup`: GroupMembership
     fmt.Fprintf(os.Stdout, "Response from `GroupMembershipApi.AddUserToGroup`: %v\n", resp)
 }
 ```
@@ -64,11 +64,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **addUserToGroupRequest** | [**AddUserToGroupRequest**](AddUserToGroupRequest.md) |  | 
+ **groupMembership** | [**GroupMembership**](GroupMembership.md) |  | 
 
 ### Return type
 
-[**Group**](Group.md)
+[**GroupMembership**](GroupMembership.md)
 
 ### Authorization
 
@@ -108,7 +108,7 @@ func main() {
     expand := "group" // string |  (optional)
     limit := int32(100) // int32 |  (optional)
     cursor := "cursor_example" // string | Adding a cursor value to retrieve the next page of results, used with the `limit` parameter. The cursor value is returned in the `_links.next.href` link in the response payload. (optional)
-    filter := "type eq "DIRECT"" // string |  (optional)
+    filter := "filter_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## ReadOneGroupMembershipForUser
 
-> Group ReadOneGroupMembershipForUser(ctx, environmentID, userID, groupID).Expand(expand).Execute()
+> GroupMembership ReadOneGroupMembershipForUser(ctx, environmentID, userID, groupID).Expand(expand).Execute()
 
 READ One Group Membership for User
 
@@ -185,7 +185,7 @@ func main() {
     environmentID := "environmentID_example" // string | 
     userID := "userID_example" // string | 
     groupID := "groupID_example" // string | 
-    expand := "group" // string |  (optional)
+    expand := openapiclient.EnumUserGroupAssignmentExpandParameter("group") // EnumUserGroupAssignmentExpandParameter |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -194,7 +194,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GroupMembershipApi.ReadOneGroupMembershipForUser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReadOneGroupMembershipForUser`: Group
+    // response from `ReadOneGroupMembershipForUser`: GroupMembership
     fmt.Fprintf(os.Stdout, "Response from `GroupMembershipApi.ReadOneGroupMembershipForUser`: %v\n", resp)
 }
 ```
@@ -219,11 +219,11 @@ Name | Type | Description  | Notes
 
 
 
- **expand** | **string** |  | 
+ **expand** | [**EnumUserGroupAssignmentExpandParameter**](EnumUserGroupAssignmentExpandParameter.md) |  | 
 
 ### Return type
 
-[**Group**](Group.md)
+[**GroupMembership**](GroupMembership.md)
 
 ### Authorization
 

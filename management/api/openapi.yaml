@@ -22103,8 +22103,7 @@ paths:
         schema:
           type: string
         style: form
-      - example: type eq "DIRECT"
-        explode: true
+      - explode: true
         in: query
         name: filter
         required: false
@@ -22199,7 +22198,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addUserToGroup_request'
+              $ref: '#/components/schemas/GroupMembership'
       responses:
         "400":
           content:
@@ -22255,7 +22254,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
           description: Successful response
       summary: ADD User to Group
       tags:
@@ -22343,7 +22342,7 @@ paths:
         name: expand
         required: false
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumUserGroupAssignmentExpandParameter'
         style: form
       - explode: false
         in: path
@@ -22414,7 +22413,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
           description: Successful response
       summary: READ One Group Membership for User
       tags:
@@ -26389,6 +26388,18 @@ components:
       - application/vnd.pingidentity.account.unlock+json
       - application/vnd.pingidentity.account.lock+json
       type: string
+    EnumGroupMembershipType:
+      description: A string that defines the relationship of group membership
+      enum:
+      - DIRECT
+      - INDIRECT
+      type: string
+    EnumUserGroupAssignmentExpandParameter:
+      description: "When this parameter is appended to the request, the results are\
+        \ expanded to include additional information about each group."
+      enum:
+      - group
+      type: string
     EnumUserRequestInclude:
       enum:
       - memberOfGroupIDs
@@ -29175,18 +29186,74 @@ components:
             type: null
             updatedAt: updatedAt
           groupMemberships:
-          - _links:
+          - environment:
+              id: id
+            _links:
               next:
                 href: https://openapi-generator.tech
               self:
                 href: https://openapi-generator.tech
+            _embedded:
+              group:
+                sourceId: sourceId
+                _links:
+                  next:
+                    href: https://openapi-generator.tech
+                  self:
+                    href: https://openapi-generator.tech
+                displayName: displayName
+                description: description
+                externalId: externalId
+                customData: "{}"
+                population:
+                  id: id
+                directMemberCounts:
+                  users: 7
+                environment:
+                  id: id
+                sourceType: null
+                name: name
+                userFilter: userFilter
+                id: id
+                totalMemberCounts:
+                  users: 1
+            name: name
             id: id
-          - _links:
+            type: null
+          - environment:
+              id: id
+            _links:
               next:
                 href: https://openapi-generator.tech
               self:
                 href: https://openapi-generator.tech
+            _embedded:
+              group:
+                sourceId: sourceId
+                _links:
+                  next:
+                    href: https://openapi-generator.tech
+                  self:
+                    href: https://openapi-generator.tech
+                displayName: displayName
+                description: description
+                externalId: externalId
+                customData: "{}"
+                population:
+                  id: id
+                directMemberCounts:
+                  users: 7
+                environment:
+                  id: id
+                sourceType: null
+                name: name
+                userFilter: userFilter
+                id: id
+                totalMemberCounts:
+                  users: 1
+            name: name
             id: id
+            type: null
           attributes:
           - null
           - null
@@ -30311,18 +30378,56 @@ components:
       type: object
     GroupMembership:
       example:
+        environment:
+          id: id
         _links:
           next:
             href: https://openapi-generator.tech
           self:
             href: https://openapi-generator.tech
+        _embedded:
+          group:
+            sourceId: sourceId
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            displayName: displayName
+            description: description
+            externalId: externalId
+            customData: "{}"
+            population:
+              id: id
+            directMemberCounts:
+              users: 7
+            environment:
+              id: id
+            sourceType: null
+            name: name
+            userFilter: userFilter
+            id: id
+            totalMemberCounts:
+              users: 1
+        name: name
         id: id
+        type: null
       properties:
         _links:
           $ref: '#/components/schemas/LinksHATEOAS'
+        _embedded:
+          $ref: '#/components/schemas/GroupMembership__embedded'
         id:
           description: ID of the group to assign
           type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          description: A string that specifies the group name assigned to the user.
+          readOnly: true
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumGroupMembershipType'
       required:
       - id
       type: object
@@ -34150,14 +34255,6 @@ components:
       - $ref: '#/components/schemas/Gateway'
       - $ref: '#/components/schemas/GatewayTypeLDAP'
       - $ref: '#/components/schemas/GatewayTypeRADIUS'
-    addUserToGroup_request:
-      example:
-        id: e947cec5-62c5-4d80-af16-497b29e8a685
-      properties:
-        id:
-          description: The group ID to add the user to
-          type: string
-      type: object
     LinksHATEOAS_self:
       description: An object that describes the current resource.
       example:
@@ -36360,18 +36457,74 @@ components:
           type: null
           updatedAt: updatedAt
         groupMemberships:
-        - _links:
+        - environment:
+            id: id
+          _links:
             next:
               href: https://openapi-generator.tech
             self:
               href: https://openapi-generator.tech
+          _embedded:
+            group:
+              sourceId: sourceId
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
+              displayName: displayName
+              description: description
+              externalId: externalId
+              customData: "{}"
+              population:
+                id: id
+              directMemberCounts:
+                users: 7
+              environment:
+                id: id
+              sourceType: null
+              name: name
+              userFilter: userFilter
+              id: id
+              totalMemberCounts:
+                users: 1
+          name: name
           id: id
-        - _links:
+          type: null
+        - environment:
+            id: id
+          _links:
             next:
               href: https://openapi-generator.tech
             self:
               href: https://openapi-generator.tech
+          _embedded:
+            group:
+              sourceId: sourceId
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
+              displayName: displayName
+              description: description
+              externalId: externalId
+              customData: "{}"
+              population:
+                id: id
+              directMemberCounts:
+                users: 7
+              environment:
+                id: id
+              sourceType: null
+              name: name
+              userFilter: userFilter
+              id: id
+              totalMemberCounts:
+                users: 1
+          name: name
           id: id
+          type: null
         attributes:
         - null
         - null
@@ -37074,6 +37227,35 @@ components:
           description: Number of users with direct membership
           type: integer
       readOnly: true
+      type: object
+    GroupMembership__embedded:
+      example:
+        group:
+          sourceId: sourceId
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          displayName: displayName
+          description: description
+          externalId: externalId
+          customData: "{}"
+          population:
+            id: id
+          directMemberCounts:
+            users: 7
+          environment:
+            id: id
+          sourceType: null
+          name: name
+          userFilter: userFilter
+          id: id
+          totalMemberCounts:
+            users: 1
+      properties:
+        group:
+          $ref: '#/components/schemas/Group'
       type: object
     IdentityProviderAttribute_identityProvider:
       example:

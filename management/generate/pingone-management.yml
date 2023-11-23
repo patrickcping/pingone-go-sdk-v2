@@ -609,6 +609,14 @@ components:
     EnumUserAccountContentTypeHeader:
       type: string
       enum: [application/vnd.pingidentity.account.unlock+json, application/vnd.pingidentity.account.lock+json]
+    EnumGroupMembershipType:
+      type: string
+      enum: [DIRECT, INDIRECT]
+      description: A string that defines the relationship of group membership
+    EnumUserGroupAssignmentExpandParameter:
+      type: string
+      enum: [group]
+      description: When this parameter is appended to the request, the results are expanded to include additional information about each group.
     EnumUserRequestInclude:
       type: string
       enum: [memberOfGroupIDs, memberOfGroupNames]
@@ -2999,11 +3007,24 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
+        '_embedded':
+          type: object
+          properties:
+            group:
+              $ref: '#/components/schemas/Group'
         id:
           type: string
           description: ID of the group to assign
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+          description: A string that specifies the group name assigned to the user.
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/EnumGroupMembershipType'
       required:
-       - id
+        - id
     GroupNesting:
       type: object
       properties:
@@ -18918,13 +18939,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                id:
-                  type: string
-                  description: The group ID to add the user to
-              example:
-                id: e947cec5-62c5-4d80-af16-497b29e8a685
+              $ref: '#/components/schemas/GroupMembership'
       parameters:
         - name: environmentID
           in: path
@@ -18958,7 +18973,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
     get:
       tags:
         - Group Membership
@@ -18984,7 +18999,6 @@ paths:
           in: query
           schema:
             type: string
-          example: type eq "DIRECT"
         - name: environmentID
           in: path
           schema:
@@ -19064,7 +19078,7 @@ paths:
         - name: expand
           in: query
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumUserGroupAssignmentExpandParameter'
           example: group
         - name: environmentID
           in: path
@@ -19101,7 +19115,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
   /environments/{environmentID}/users/{userID}/enabled:
     get:
       tags:
