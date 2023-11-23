@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ResourceAttribute type satisfies the MappedNullable interface at compile time
@@ -34,6 +35,8 @@ type ResourceAttribute struct {
 	// A boolean that specifies whether the attribute mapping should be available through the `/as/userinfo` endpoint. This property is applicable only when the application's protocol property is `OPENID_CONNECT`. If omitted, the default is `true`. Note that the `idToken` and `userInfo` properties cannot both be set to `false`. At least one of these properties must have a value of `true`.
 	UserInfo *bool `json:"userInfo,omitempty"`
 }
+
+type _ResourceAttribute ResourceAttribute
 
 // NewResourceAttribute instantiates a new ResourceAttribute object
 // This constructor will assign default values to properties that have it defined,
@@ -360,6 +363,42 @@ func (o ResourceAttribute) ToMap() (map[string]interface{}, error) {
 		toSerialize["userInfo"] = o.UserInfo
 	}
 	return toSerialize, nil
+}
+
+func (o *ResourceAttribute) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varResourceAttribute := _ResourceAttribute{}
+
+	err = json.Unmarshal(bytes, &varResourceAttribute)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ResourceAttribute(varResourceAttribute)
+
+	return err
 }
 
 type NullableResourceAttribute struct {

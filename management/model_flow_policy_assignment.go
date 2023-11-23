@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the FlowPolicyAssignment type satisfies the MappedNullable interface at compile time
@@ -28,6 +29,8 @@ type FlowPolicyAssignment struct {
 	// The order in which the policy referenced by this assignment is evaluated during an authentication flow relative to other policies. An assignment with a lower priority will be evaluated first.
 	Priority int32 `json:"priority"`
 }
+
+type _FlowPolicyAssignment FlowPolicyAssignment
 
 // NewFlowPolicyAssignment instantiates a new FlowPolicyAssignment object
 // This constructor will assign default values to properties that have it defined,
@@ -249,6 +252,42 @@ func (o FlowPolicyAssignment) ToMap() (map[string]interface{}, error) {
 	toSerialize["flowPolicy"] = o.FlowPolicy
 	toSerialize["priority"] = o.Priority
 	return toSerialize, nil
+}
+
+func (o *FlowPolicyAssignment) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"flowPolicy",
+		"priority",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFlowPolicyAssignment := _FlowPolicyAssignment{}
+
+	err = json.Unmarshal(bytes, &varFlowPolicyAssignment)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FlowPolicyAssignment(varFlowPolicyAssignment)
+
+	return err
 }
 
 type NullableFlowPolicyAssignment struct {

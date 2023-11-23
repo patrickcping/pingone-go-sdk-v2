@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the FormFieldCommonPosition type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type FormFieldCommonPosition struct {
 	// An integer that specifies the width of the field (in percentage).
 	Width *int32 `json:"width,omitempty"`
 }
+
+type _FormFieldCommonPosition FormFieldCommonPosition
 
 // NewFormFieldCommonPosition instantiates a new FormFieldCommonPosition object
 // This constructor will assign default values to properties that have it defined,
@@ -142,6 +145,42 @@ func (o FormFieldCommonPosition) ToMap() (map[string]interface{}, error) {
 		toSerialize["width"] = o.Width
 	}
 	return toSerialize, nil
+}
+
+func (o *FormFieldCommonPosition) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"row",
+		"col",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFormFieldCommonPosition := _FormFieldCommonPosition{}
+
+	err = json.Unmarshal(bytes, &varFormFieldCommonPosition)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FormFieldCommonPosition(varFormFieldCommonPosition)
+
+	return err
 }
 
 type NullableFormFieldCommonPosition struct {

@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IdentityProviderSAML type satisfies the MappedNullable interface at compile time
@@ -56,6 +57,8 @@ type IdentityProviderSAML struct {
 	// Defines how long PingOne can exchange logout messages with the application, specifically a `LogoutRequest` from the application, since the initial request. PingOne can also send a `LogoutRequest` to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens.
 	SloWindow *int32 `json:"sloWindow,omitempty"`
 }
+
+type _IdentityProviderSAML IdentityProviderSAML
 
 // NewIdentityProviderSAML instantiates a new IdentityProviderSAML object
 // This constructor will assign default values to properties that have it defined,
@@ -822,6 +825,48 @@ func (o IdentityProviderSAML) ToMap() (map[string]interface{}, error) {
 		toSerialize["sloWindow"] = o.SloWindow
 	}
 	return toSerialize, nil
+}
+
+func (o *IdentityProviderSAML) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enabled",
+		"name",
+		"type",
+		"idpEntityId",
+		"idpVerification",
+		"spEntityId",
+		"ssoBinding",
+		"ssoEndpoint",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIdentityProviderSAML := _IdentityProviderSAML{}
+
+	err = json.Unmarshal(bytes, &varIdentityProviderSAML)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IdentityProviderSAML(varIdentityProviderSAML)
+
+	return err
 }
 
 type NullableIdentityProviderSAML struct {

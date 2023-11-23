@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the EmailDomainTrustedEmail type satisfies the MappedNullable interface at compile time
@@ -29,6 +30,8 @@ type EmailDomainTrustedEmail struct {
 	// A string that specifies the trusted email domain resource’s unique identifier associated with the resource.
 	DomainId *string `json:"domainId,omitempty"`
 }
+
+type _EmailDomainTrustedEmail EmailDomainTrustedEmail
 
 // NewEmailDomainTrustedEmail instantiates a new EmailDomainTrustedEmail object
 // This constructor will assign default values to properties that have it defined,
@@ -259,6 +262,41 @@ func (o EmailDomainTrustedEmail) ToMap() (map[string]interface{}, error) {
 		toSerialize["domainId"] = o.DomainId
 	}
 	return toSerialize, nil
+}
+
+func (o *EmailDomainTrustedEmail) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"emailAddress",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEmailDomainTrustedEmail := _EmailDomainTrustedEmail{}
+
+	err = json.Unmarshal(bytes, &varEmailDomainTrustedEmail)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EmailDomainTrustedEmail(varEmailDomainTrustedEmail)
+
+	return err
 }
 
 type NullableEmailDomainTrustedEmail struct {

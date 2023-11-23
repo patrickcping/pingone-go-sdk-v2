@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyActionIDFirstAllOfDiscoveryRules type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type SignOnPolicyActionIDFirstAllOfDiscoveryRules struct {
 	Condition SignOnPolicyActionIDFirstAllOfCondition `json:"condition"`
 	IdentityProvider SignOnPolicyActionIDFirstAllOfIdentityProvider `json:"identityProvider"`
 }
+
+type _SignOnPolicyActionIDFirstAllOfDiscoveryRules SignOnPolicyActionIDFirstAllOfDiscoveryRules
 
 // NewSignOnPolicyActionIDFirstAllOfDiscoveryRules instantiates a new SignOnPolicyActionIDFirstAllOfDiscoveryRules object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +106,42 @@ func (o SignOnPolicyActionIDFirstAllOfDiscoveryRules) ToMap() (map[string]interf
 	toSerialize["condition"] = o.Condition
 	toSerialize["identityProvider"] = o.IdentityProvider
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyActionIDFirstAllOfDiscoveryRules) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"condition",
+		"identityProvider",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyActionIDFirstAllOfDiscoveryRules := _SignOnPolicyActionIDFirstAllOfDiscoveryRules{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyActionIDFirstAllOfDiscoveryRules)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyActionIDFirstAllOfDiscoveryRules(varSignOnPolicyActionIDFirstAllOfDiscoveryRules)
+
+	return err
 }
 
 type NullableSignOnPolicyActionIDFirstAllOfDiscoveryRules struct {

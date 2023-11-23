@@ -13,6 +13,7 @@ package management
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the NotificationsPolicy type satisfies the MappedNullable interface at compile time
@@ -35,6 +36,8 @@ type NotificationsPolicy struct {
 	// Collection of objects that define the SMS/Voice limits. Each object contain the following elements- `type`, `deliveryMethods`, `total`. Currently, a policy can contain ony one such object. Note that instead of `total`, you can use the pair of fields- `claimed` and `unclaimed`.
 	Quotas []NotificationsPolicyQuotasInner `json:"quotas"`
 }
+
+type _NotificationsPolicy NotificationsPolicy
 
 // NewNotificationsPolicy instantiates a new NotificationsPolicy object
 // This constructor will assign default values to properties that have it defined,
@@ -330,6 +333,42 @@ func (o NotificationsPolicy) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["quotas"] = o.Quotas
 	return toSerialize, nil
+}
+
+func (o *NotificationsPolicy) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"quotas",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNotificationsPolicy := _NotificationsPolicy{}
+
+	err = json.Unmarshal(bytes, &varNotificationsPolicy)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NotificationsPolicy(varNotificationsPolicy)
+
+	return err
 }
 
 type NullableNotificationsPolicy struct {

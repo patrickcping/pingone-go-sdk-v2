@@ -13,6 +13,7 @@ package management
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the NotificationsSettingsPhoneDeliverySettingsCustom type satisfies the MappedNullable interface at compile time
@@ -35,6 +36,8 @@ type NotificationsSettingsPhoneDeliverySettingsCustom struct {
 	Authentication NotificationsSettingsPhoneDeliverySettingsCustomAllOfAuthentication `json:"authentication"`
 	Numbers []NotificationsSettingsPhoneDeliverySettingsCustomNumbers `json:"numbers,omitempty"`
 }
+
+type _NotificationsSettingsPhoneDeliverySettingsCustom NotificationsSettingsPhoneDeliverySettingsCustom
 
 // NewNotificationsSettingsPhoneDeliverySettingsCustom instantiates a new NotificationsSettingsPhoneDeliverySettingsCustom object
 // This constructor will assign default values to properties that have it defined,
@@ -378,6 +381,44 @@ func (o NotificationsSettingsPhoneDeliverySettingsCustom) ToMap() (map[string]in
 		toSerialize["numbers"] = o.Numbers
 	}
 	return toSerialize, nil
+}
+
+func (o *NotificationsSettingsPhoneDeliverySettingsCustom) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"provider",
+		"name",
+		"requests",
+		"authentication",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNotificationsSettingsPhoneDeliverySettingsCustom := _NotificationsSettingsPhoneDeliverySettingsCustom{}
+
+	err = json.Unmarshal(bytes, &varNotificationsSettingsPhoneDeliverySettingsCustom)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NotificationsSettingsPhoneDeliverySettingsCustom(varNotificationsSettingsPhoneDeliverySettingsCustom)
+
+	return err
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettingsCustom struct {

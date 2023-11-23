@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SignOnPolicyAssignment type satisfies the MappedNullable interface at compile time
@@ -28,6 +29,8 @@ type SignOnPolicyAssignment struct {
 	Priority int32 `json:"priority"`
 	SignOnPolicy SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy"`
 }
+
+type _SignOnPolicyAssignment SignOnPolicyAssignment
 
 // NewSignOnPolicyAssignment instantiates a new SignOnPolicyAssignment object
 // This constructor will assign default values to properties that have it defined,
@@ -249,6 +252,42 @@ func (o SignOnPolicyAssignment) ToMap() (map[string]interface{}, error) {
 	toSerialize["priority"] = o.Priority
 	toSerialize["signOnPolicy"] = o.SignOnPolicy
 	return toSerialize, nil
+}
+
+func (o *SignOnPolicyAssignment) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"priority",
+		"signOnPolicy",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSignOnPolicyAssignment := _SignOnPolicyAssignment{}
+
+	err = json.Unmarshal(bytes, &varSignOnPolicyAssignment)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SignOnPolicyAssignment(varSignOnPolicyAssignment)
+
+	return err
 }
 
 type NullableSignOnPolicyAssignment struct {

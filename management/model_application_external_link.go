@@ -13,6 +13,7 @@ package management
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the ApplicationExternalLink type satisfies the MappedNullable interface at compile time
@@ -45,6 +46,8 @@ type ApplicationExternalLink struct {
 	// A string that specifies the custom home page URL for the application.
 	HomePageUrl string `json:"homePageUrl"`
 }
+
+type _ApplicationExternalLink ApplicationExternalLink
 
 // NewApplicationExternalLink instantiates a new ApplicationExternalLink object
 // This constructor will assign default values to properties that have it defined,
@@ -554,6 +557,45 @@ func (o ApplicationExternalLink) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["homePageUrl"] = o.HomePageUrl
 	return toSerialize, nil
+}
+
+func (o *ApplicationExternalLink) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"enabled",
+		"name",
+		"protocol",
+		"type",
+		"homePageUrl",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationExternalLink := _ApplicationExternalLink{}
+
+	err = json.Unmarshal(bytes, &varApplicationExternalLink)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationExternalLink(varApplicationExternalLink)
+
+	return err
 }
 
 type NullableApplicationExternalLink struct {

@@ -13,6 +13,7 @@ package management
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse type satisfies the MappedNullable interface at compile time
@@ -35,6 +36,8 @@ type NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse struct {
 	AuthToken string `json:"authToken"`
 	Numbers []NotificationsSettingsPhoneDeliverySettingsCustomNumbers `json:"numbers,omitempty"`
 }
+
+type _NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse
 
 // NewNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse instantiates a new NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse object
 // This constructor will assign default values to properties that have it defined,
@@ -352,6 +355,43 @@ func (o NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) ToMap() (map[
 		toSerialize["numbers"] = o.Numbers
 	}
 	return toSerialize, nil
+}
+
+func (o *NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"provider",
+		"sid",
+		"authToken",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse := _NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse{}
+
+	err = json.Unmarshal(bytes, &varNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NotificationsSettingsPhoneDeliverySettingsTwilioSyniverse(varNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse)
+
+	return err
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettingsTwilioSyniverse struct {

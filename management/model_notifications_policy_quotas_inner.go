@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the NotificationsPolicyQuotasInner type satisfies the MappedNullable interface at compile time
@@ -29,6 +30,8 @@ type NotificationsPolicyQuotasInner struct {
 	// The maximum number of notifications that can be received and not responded to each day. Used in conjunction with claimed in place of the single field total.
 	Unclaimed *int32 `json:"unclaimed,omitempty"`
 }
+
+type _NotificationsPolicyQuotasInner NotificationsPolicyQuotasInner
 
 // NewNotificationsPolicyQuotasInner instantiates a new NotificationsPolicyQuotasInner object
 // This constructor will assign default values to properties that have it defined,
@@ -215,6 +218,42 @@ func (o NotificationsPolicyQuotasInner) ToMap() (map[string]interface{}, error) 
 		toSerialize["unclaimed"] = o.Unclaimed
 	}
 	return toSerialize, nil
+}
+
+func (o *NotificationsPolicyQuotasInner) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"deliveryMethods",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNotificationsPolicyQuotasInner := _NotificationsPolicyQuotasInner{}
+
+	err = json.Unmarshal(bytes, &varNotificationsPolicyQuotasInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NotificationsPolicyQuotasInner(varNotificationsPolicyQuotasInner)
+
+	return err
 }
 
 type NullableNotificationsPolicyQuotasInner struct {

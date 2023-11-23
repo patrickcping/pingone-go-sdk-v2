@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the PropagationStoreConfigurationSlack type satisfies the MappedNullable interface at compile time
@@ -32,6 +33,8 @@ type PropagationStoreConfigurationSlack struct {
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
 }
+
+type _PropagationStoreConfigurationSlack PropagationStoreConfigurationSlack
 
 // NewPropagationStoreConfigurationSlack instantiates a new PropagationStoreConfigurationSlack object
 // This constructor will assign default values to properties that have it defined,
@@ -288,6 +291,42 @@ func (o PropagationStoreConfigurationSlack) ToMap() (map[string]interface{}, err
 		toSerialize["UPDATE_USERS"] = o.UPDATE_USERS
 	}
 	return toSerialize, nil
+}
+
+func (o *PropagationStoreConfigurationSlack) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"OAUTH_ACCESS_TOKEN",
+		"UNIQUE_USER_IDENTIFIER",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPropagationStoreConfigurationSlack := _PropagationStoreConfigurationSlack{}
+
+	err = json.Unmarshal(bytes, &varPropagationStoreConfigurationSlack)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PropagationStoreConfigurationSlack(varPropagationStoreConfigurationSlack)
+
+	return err
 }
 
 type NullablePropagationStoreConfigurationSlack struct {

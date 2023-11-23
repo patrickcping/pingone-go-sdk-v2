@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the PropagationStoreConfigurationPingOne type satisfies the MappedNullable interface at compile time
@@ -39,6 +40,8 @@ type PropagationStoreConfigurationPingOne struct {
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
 }
+
+type _PropagationStoreConfigurationPingOne PropagationStoreConfigurationPingOne
 
 // NewPropagationStoreConfigurationPingOne instantiates a new PropagationStoreConfigurationPingOne object
 // This constructor will assign default values to properties that have it defined,
@@ -435,6 +438,42 @@ func (o PropagationStoreConfigurationPingOne) ToMap() (map[string]interface{}, e
 		toSerialize["UPDATE_USERS"] = o.UPDATE_USERS
 	}
 	return toSerialize, nil
+}
+
+func (o *PropagationStoreConfigurationPingOne) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"ENVIRONMENT_ID",
+		"REGION",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPropagationStoreConfigurationPingOne := _PropagationStoreConfigurationPingOne{}
+
+	err = json.Unmarshal(bytes, &varPropagationStoreConfigurationPingOne)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PropagationStoreConfigurationPingOne(varPropagationStoreConfigurationPingOne)
+
+	return err
 }
 
 type NullablePropagationStoreConfigurationPingOne struct {

@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ApplicationSAMLAllOfIdpSigning type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ type ApplicationSAMLAllOfIdpSigning struct {
 	Key ApplicationSAMLAllOfIdpSigningKey `json:"key"`
 	Algorithm *EnumCertificateKeySignagureAlgorithm `json:"algorithm,omitempty"`
 }
+
+type _ApplicationSAMLAllOfIdpSigning ApplicationSAMLAllOfIdpSigning
 
 // NewApplicationSAMLAllOfIdpSigning instantiates a new ApplicationSAMLAllOfIdpSigning object
 // This constructor will assign default values to properties that have it defined,
@@ -112,6 +115,41 @@ func (o ApplicationSAMLAllOfIdpSigning) ToMap() (map[string]interface{}, error) 
 		toSerialize["algorithm"] = o.Algorithm
 	}
 	return toSerialize, nil
+}
+
+func (o *ApplicationSAMLAllOfIdpSigning) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"key",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApplicationSAMLAllOfIdpSigning := _ApplicationSAMLAllOfIdpSigning{}
+
+	err = json.Unmarshal(bytes, &varApplicationSAMLAllOfIdpSigning)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationSAMLAllOfIdpSigning(varApplicationSAMLAllOfIdpSigning)
+
+	return err
 }
 
 type NullableApplicationSAMLAllOfIdpSigning struct {

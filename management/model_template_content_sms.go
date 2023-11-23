@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the TemplateContentSMS type satisfies the MappedNullable interface at compile time
@@ -38,6 +39,8 @@ type TemplateContentSMS struct {
 	// The SMS sender ID. This property can contain only alphanumeric characters and spaces, and its length cannot exceed 11 characters. In some countries, it is impossible to send an SMS with an alphanumeric sender ID. For those countries, the sender ID must be empty. For SMS recipients in specific countries, refer to Twilio's documentation on [International support for Alphanumeric Sender ID](https://support.twilio.com/hc/en-us/articles/223133767-International-support-for-Alphanumeric-Sender-ID).
 	Sender *string `json:"sender,omitempty"`
 }
+
+type _TemplateContentSMS TemplateContentSMS
 
 // NewTemplateContentSMS instantiates a new TemplateContentSMS object
 // This constructor will assign default values to properties that have it defined,
@@ -390,6 +393,43 @@ func (o TemplateContentSMS) ToMap() (map[string]interface{}, error) {
 		toSerialize["sender"] = o.Sender
 	}
 	return toSerialize, nil
+}
+
+func (o *TemplateContentSMS) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"locale",
+		"deliveryMethod",
+		"content",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTemplateContentSMS := _TemplateContentSMS{}
+
+	err = json.Unmarshal(bytes, &varTemplateContentSMS)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TemplateContentSMS(varTemplateContentSMS)
+
+	return err
 }
 
 type NullableTemplateContentSMS struct {

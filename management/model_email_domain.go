@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the EmailDomain type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,8 @@ type EmailDomain struct {
 	DomainName string `json:"domainName"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 }
+
+type _EmailDomain EmailDomain
 
 // NewEmailDomain instantiates a new EmailDomain object
 // This constructor will assign default values to properties that have it defined,
@@ -186,6 +189,41 @@ func (o EmailDomain) ToMap() (map[string]interface{}, error) {
 		toSerialize["environment"] = o.Environment
 	}
 	return toSerialize, nil
+}
+
+func (o *EmailDomain) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"domainName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEmailDomain := _EmailDomain{}
+
+	err = json.Unmarshal(bytes, &varEmailDomain)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EmailDomain(varEmailDomain)
+
+	return err
 }
 
 type NullableEmailDomain struct {

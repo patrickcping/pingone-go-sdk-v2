@@ -12,6 +12,7 @@ package management
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the PropagationStoreConfigurationGoogleApps type satisfies the MappedNullable interface at compile time
@@ -43,6 +44,8 @@ type PropagationStoreConfigurationGoogleApps struct {
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
 }
+
+type _PropagationStoreConfigurationGoogleApps PropagationStoreConfigurationGoogleApps
 
 // NewPropagationStoreConfigurationGoogleApps instantiates a new PropagationStoreConfigurationGoogleApps object
 // This constructor will assign default values to properties that have it defined,
@@ -442,6 +445,46 @@ func (o PropagationStoreConfigurationGoogleApps) ToMap() (map[string]interface{}
 		toSerialize["UPDATE_USERS"] = o.UPDATE_USERS
 	}
 	return toSerialize, nil
+}
+
+func (o *PropagationStoreConfigurationGoogleApps) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"APPLICATION_NAME",
+		"DOMAIN",
+		"OAUTH_ACCESS_TOKEN",
+		"OAUTH_CLIENT_ID",
+		"OAUTH_CLIENT_SECRET",
+		"OAUTH_REFRESH_TOKEN",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPropagationStoreConfigurationGoogleApps := _PropagationStoreConfigurationGoogleApps{}
+
+	err = json.Unmarshal(bytes, &varPropagationStoreConfigurationGoogleApps)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PropagationStoreConfigurationGoogleApps(varPropagationStoreConfigurationGoogleApps)
+
+	return err
 }
 
 type NullablePropagationStoreConfigurationGoogleApps struct {
