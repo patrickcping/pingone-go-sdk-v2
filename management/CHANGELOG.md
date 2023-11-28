@@ -3,6 +3,7 @@
 * **Feature** Add support for User Account API (allowing lock and unlock). [#282](https://github.com/patrickcping/pingone-go-sdk-v2/pull/282)
 * **Enhancement** Expand the `GroupMembership` data model. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
 * **Enhancement** Simplified the `GroupMembershipApi` request and response payload models. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
+* **Enhancement** Corrected and expanded the `SchemaAttributePatch` request and response payload.
 
 # v0.32.0 (2023-11-10)
 
