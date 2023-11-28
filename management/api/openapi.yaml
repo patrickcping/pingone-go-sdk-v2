@@ -19369,7 +19369,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SchemaAttribute'
+              $ref: '#/components/schemas/SchemaAttributePatch'
       responses:
         "400":
           content:
@@ -33105,6 +33105,176 @@ components:
       - enabled
       - name
       - type
+      type: object
+    SchemaAttributePatch:
+      example:
+        regexValidation:
+          valuesPatternShouldNotMatch:
+          - valuesPatternShouldNotMatch
+          - valuesPatternShouldNotMatch
+          requirements: requirements
+          valuesPatternShouldMatch:
+          - valuesPatternShouldMatch
+          - valuesPatternShouldMatch
+          pattern: pattern
+        displayName: displayName
+        unique: true
+        name: name
+        schemaType: null
+        description: description
+        type: null
+        multiValued: true
+        enumeratedValues:
+        - archived: true
+          description: description
+          value: value
+        - archived: true
+          description: description
+          value: value
+        enabled: true
+        required: true
+        subAttributes:
+        - schema:
+            id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          displayName: displayName
+          description: description
+          type: null
+          enumeratedValues:
+          - archived: true
+            description: description
+            value: value
+          - archived: true
+            description: description
+            value: value
+          enabled: true
+          required: true
+          subAttributes:
+          - null
+          - null
+          regexValidation:
+            valuesPatternShouldNotMatch:
+            - valuesPatternShouldNotMatch
+            - valuesPatternShouldNotMatch
+            requirements: requirements
+            valuesPatternShouldMatch:
+            - valuesPatternShouldMatch
+            - valuesPatternShouldMatch
+            pattern: pattern
+          environment:
+            id: id
+          unique: true
+          name: name
+          schemaType: null
+          id: id
+          ldapAttribute: ldapAttribute
+          multiValued: true
+        - schema:
+            id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          displayName: displayName
+          description: description
+          type: null
+          enumeratedValues:
+          - archived: true
+            description: description
+            value: value
+          - archived: true
+            description: description
+            value: value
+          enabled: true
+          required: true
+          subAttributes:
+          - null
+          - null
+          regexValidation:
+            valuesPatternShouldNotMatch:
+            - valuesPatternShouldNotMatch
+            - valuesPatternShouldNotMatch
+            requirements: requirements
+            valuesPatternShouldMatch:
+            - valuesPatternShouldMatch
+            - valuesPatternShouldMatch
+            pattern: pattern
+          environment:
+            id: id
+          unique: true
+          name: name
+          schemaType: null
+          id: id
+          ldapAttribute: ldapAttribute
+          multiValued: true
+      properties:
+        description:
+          description: "A string that specifies an optional property that specifies\
+            \ the description of the attribute. If provided, it must not be an empty\
+            \ string. Valid characters consists of any Unicode letter, mark (for example,\
+            \ accent or umlaut), numeric character, punctuation character, or space."
+          type: string
+        displayName:
+          description: "A string that specifies an optional property that specifies\
+            \ the display name of the attribute such as 'T-shirt size’. If provided,\
+            \ it must not be an empty string. Valid characters consist of any Unicode\
+            \ letter, mark (for example, accent or umlaut), numeric character, forward\
+            \ slash, dot, apostrophe, underscore, space, or hyphen."
+          type: string
+        enabled:
+          description: A boolean that specifies whether or not the attribute is enabled.
+            This is a required property for POST and PUT operations; it cannot be
+            omitted or explicitly set to null. Disabled attributes are ignored on
+            create/update and not returned on read.
+          type: boolean
+        name:
+          description: "A string that specifies the name of the attribute. The attribute\
+            \ name must be provided during creation, must not be empty and must not\
+            \ exceed 256 characters. It must also be unique within the schema for\
+            \ an environment. It must start with a letter and may be followed by letters,\
+            \ numbers or hyphens."
+          type: string
+        required:
+          description: A boolean that specifies whether or not the attribute is required.
+            Required attributes must be provided a value during create/update. Defaults
+            to false if not provided.
+          type: boolean
+        schemaType:
+          $ref: '#/components/schemas/EnumSchemaAttributeSchemaType'
+        subAttributes:
+          description: "The list of sub-attributes of this attribute. Only `COMPLEX`\
+            \ attribute types can have sub-attributes, and only one-level of nesting\
+            \ is allowed. The leaf attribute definition must have a type of `STRING`\
+            \ or `JSON`. A `COMPLEX` attribute definition must have at least one child\
+            \ attribute definition."
+          items:
+            $ref: '#/components/schemas/SchemaAttribute'
+          type: array
+        type:
+          $ref: '#/components/schemas/EnumSchemaAttributeType'
+        unique:
+          description: A boolean that specifies whether or not the attribute must
+            have a unique value within the environment. This is a required property
+            for POST and PUT operations; it cannot be omitted or explicitly set to
+            null.
+          type: boolean
+        multiValued:
+          description: "A boolean that specifies whether the attribute has multiple\
+            \ values or a single one. This value can only change from false to true,\
+            \ as changing from true to false is not allowed. Maximum number of values\
+            \ stored is 1,000."
+          type: boolean
+        enumeratedValues:
+          items:
+            $ref: '#/components/schemas/SchemaAttribute_enumeratedValues_inner'
+          type: array
+        regexValidation:
+          $ref: '#/components/schemas/SchemaAttribute_regexValidation'
       type: object
     SignOnPolicy:
       example:

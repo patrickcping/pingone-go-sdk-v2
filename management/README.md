@@ -808,6 +808,7 @@ Class | Method | HTTP request | Description
  - [Schema](docs/Schema.md)
  - [SchemaAttribute](docs/SchemaAttribute.md)
  - [SchemaAttributeEnumeratedValuesInner](docs/SchemaAttributeEnumeratedValuesInner.md)
+ - [SchemaAttributePatch](docs/SchemaAttributePatch.md)
  - [SchemaAttributeRegexValidation](docs/SchemaAttributeRegexValidation.md)
  - [SchemaAttributeSchema](docs/SchemaAttributeSchema.md)
  - [SignOnPolicy](docs/SignOnPolicy.md)
