@@ -48,6 +48,7 @@ type ApplicationOIDC struct {
 	AllowWildcardInRedirectUris *bool `json:"allowWildcardInRedirectUris,omitempty"`
 	// A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
 	AssignActorRoles *bool `json:"assignActorRoles,omitempty"`
+	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
 	Mobile *ApplicationOIDCAllOfMobile `json:"mobile,omitempty"`
 	// **Deprecation Notice** This field is deprecated and will be removed in a future release. Use `mobile.bundleId` instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable. 
 	// Deprecated
@@ -638,6 +639,38 @@ func (o *ApplicationOIDC) HasAssignActorRoles() bool {
 // SetAssignActorRoles gets a reference to the given bool and assigns it to the AssignActorRoles field.
 func (o *ApplicationOIDC) SetAssignActorRoles(v bool) {
 	o.AssignActorRoles = &v
+}
+
+// GetCorsSettings returns the CorsSettings field value if set, zero value otherwise.
+func (o *ApplicationOIDC) GetCorsSettings() ApplicationCorsSettings {
+	if o == nil || IsNil(o.CorsSettings) {
+		var ret ApplicationCorsSettings
+		return ret
+	}
+	return *o.CorsSettings
+}
+
+// GetCorsSettingsOk returns a tuple with the CorsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationOIDC) GetCorsSettingsOk() (*ApplicationCorsSettings, bool) {
+	if o == nil || IsNil(o.CorsSettings) {
+		return nil, false
+	}
+	return o.CorsSettings, true
+}
+
+// HasCorsSettings returns a boolean if a field has been set.
+func (o *ApplicationOIDC) HasCorsSettings() bool {
+	if o != nil && !IsNil(o.CorsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetCorsSettings gets a reference to the given ApplicationCorsSettings and assigns it to the CorsSettings field.
+func (o *ApplicationOIDC) SetCorsSettings(v ApplicationCorsSettings) {
+	o.CorsSettings = &v
 }
 
 // GetMobile returns the Mobile field value if set, zero value otherwise.
@@ -1354,6 +1387,9 @@ func (o ApplicationOIDC) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AssignActorRoles) {
 		toSerialize["assignActorRoles"] = o.AssignActorRoles
+	}
+	if !IsNil(o.CorsSettings) {
+		toSerialize["corsSettings"] = o.CorsSettings
 	}
 	if !IsNil(o.Mobile) {
 		toSerialize["mobile"] = o.Mobile
