@@ -1,8 +1,8 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.1
-     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.32.0 => v0.33.0
-     * **Note** bump `golang.org/x/oauth2` v0.13.0 => v0.14.0
+     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.32.0 => v0.33.0 [#287](https://github.com/patrickcping/pingone-go-sdk-v2/pull/287)
+     * **Note** bump `golang.org/x/oauth2` v0.13.0 => v0.14.0 [#287](https://github.com/patrickcping/pingone-go-sdk-v2/pull/287)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.33.0](./management/CHANGELOG.md)
     * **Feature** Add support for User Account API (allowing lock and unlock). [#282](https://github.com/patrickcping/pingone-go-sdk-v2/pull/282)
     * **Enhancement** Expand the `GroupMembership` data model. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
