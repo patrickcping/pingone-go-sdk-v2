@@ -5,7 +5,7 @@
     * **Enhancement** Expand the `GroupMembership` data model. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
     * **Enhancement** Simplified the `GroupMembershipApi` request and response payload models. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
     * **Enhancement** Corrected and expanded the `SchemaAttributePatch` request and response payload. [#285](https://github.com/patrickcping/pingone-go-sdk-v2/pull/285)
-    * **Enhancement** Added `CorsSettings` object attribute to the `ApplicationOIDC`, `ApplicationSAML` and `ApplicationWSFED` object models.
+    * **Enhancement** Added `CorsSettings` object attribute to the `ApplicationOIDC`, `ApplicationSAML` and `ApplicationWSFED` object models. [#286](https://github.com/patrickcping/pingone-go-sdk-v2/pull/286)
 
 # Release (2023-11-10)
 
