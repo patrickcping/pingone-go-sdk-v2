@@ -50,6 +50,7 @@ type ApplicationSAML struct {
 	AssertionDuration int32 `json:"assertionDuration"`
 	// A boolean that specifies whether the SAML assertion itself should be signed. The default value is `true`.
 	AssertionSigned *bool `json:"assertionSigned,omitempty"`
+	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
 	// Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
 	EnableRequestedAuthnContext *bool `json:"enableRequestedAuthnContext,omitempty"`
 	IdpSigning *ApplicationSAMLAllOfIdpSigning `json:"idpSigning,omitempty"`
@@ -633,6 +634,38 @@ func (o *ApplicationSAML) SetAssertionSigned(v bool) {
 	o.AssertionSigned = &v
 }
 
+// GetCorsSettings returns the CorsSettings field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetCorsSettings() ApplicationCorsSettings {
+	if o == nil || IsNil(o.CorsSettings) {
+		var ret ApplicationCorsSettings
+		return ret
+	}
+	return *o.CorsSettings
+}
+
+// GetCorsSettingsOk returns a tuple with the CorsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetCorsSettingsOk() (*ApplicationCorsSettings, bool) {
+	if o == nil || IsNil(o.CorsSettings) {
+		return nil, false
+	}
+	return o.CorsSettings, true
+}
+
+// HasCorsSettings returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasCorsSettings() bool {
+	if o != nil && !IsNil(o.CorsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetCorsSettings gets a reference to the given ApplicationCorsSettings and assigns it to the CorsSettings field.
+func (o *ApplicationSAML) SetCorsSettings(v ApplicationCorsSettings) {
+	o.CorsSettings = &v
+}
+
 // GetEnableRequestedAuthnContext returns the EnableRequestedAuthnContext field value if set, zero value otherwise.
 func (o *ApplicationSAML) GetEnableRequestedAuthnContext() bool {
 	if o == nil || IsNil(o.EnableRequestedAuthnContext) {
@@ -996,6 +1029,9 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	toSerialize["assertionDuration"] = o.AssertionDuration
 	if !IsNil(o.AssertionSigned) {
 		toSerialize["assertionSigned"] = o.AssertionSigned
+	}
+	if !IsNil(o.CorsSettings) {
+		toSerialize["corsSettings"] = o.CorsSettings
 	}
 	if !IsNil(o.EnableRequestedAuthnContext) {
 		toSerialize["enableRequestedAuthnContext"] = o.EnableRequestedAuthnContext

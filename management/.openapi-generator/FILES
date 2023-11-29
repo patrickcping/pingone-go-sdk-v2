@@ -96,6 +96,7 @@ docs/ApplicationAccessControlRole.md
 docs/ApplicationAttributeMapping.md
 docs/ApplicationAttributeMappingApi.md
 docs/ApplicationAttributeMappingApplication.md
+docs/ApplicationCorsSettings.md
 docs/ApplicationExternalLink.md
 docs/ApplicationFlowPolicyAssignmentsApi.md
 docs/ApplicationIcon.md
@@ -180,6 +181,7 @@ docs/EnumAlertChannelAlertType.md
 docs/EnumAlertChannelSeverity.md
 docs/EnumAlertChannelType.md
 docs/EnumApplicationAccessControlType.md
+docs/EnumApplicationCorsSettingsBehavior.md
 docs/EnumApplicationNativeGooglePlayVerificationType.md
 docs/EnumApplicationOIDCGrantType.md
 docs/EnumApplicationOIDCPARRequirement.md
@@ -641,6 +643,7 @@ model_application_access_control_group_groups_inner.go
 model_application_access_control_role.go
 model_application_attribute_mapping.go
 model_application_attribute_mapping_application.go
+model_application_cors_settings.go
 model_application_external_link.go
 model_application_icon.go
 model_application_oidc.go
@@ -705,6 +708,7 @@ model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
 model_enum_alert_channel_type.go
 model_enum_application_access_control_type.go
+model_enum_application_cors_settings_behavior.go
 model_enum_application_native_google_play_verification_type.go
 model_enum_application_oidc_grant_type.go
 model_enum_application_oidc_response_type.go
