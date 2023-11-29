@@ -1,8 +1,8 @@
 # Release (2023-11-29) (2)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.2
-     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.18.0 => v0.18.1
-     * **Note** bump `golang.org/x/oauth2` v0.14.0 => v0.15.0
+     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.18.0 => v0.18.1 [#290](https://github.com/patrickcping/pingone-go-sdk-v2/pull/290)
+     * **Note** bump `golang.org/x/oauth2` v0.14.0 => v0.15.0 [#290](https://github.com/patrickcping/pingone-go-sdk-v2/pull/290)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.18.1](./mfa/CHANGELOG.md)
     * **Bug** Fixed invalid value for `EnumMFADevicePolicySelection` model.  `ALWAYS_PROMPT_TO_SELECT` corrected to `ALWAYS_DISPLAY_DEVICES`. [#289](https://github.com/patrickcping/pingone-go-sdk-v2/pull/289)
 
