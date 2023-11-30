@@ -1,6 +1,6 @@
 # v0.33.1 (Unreleased)
 
-* **Note** Adjust CORS origins documentation.
+* **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
 
 # v0.33.0 (2023-11-29)
 

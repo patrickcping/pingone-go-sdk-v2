@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.33.1](./management/CHANGELOG.md)
-    * **Note** Adjust CORS origins documentation.
+    * **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
 
 # Release (2023-11-29) (2)
 
