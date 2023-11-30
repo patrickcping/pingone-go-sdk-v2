@@ -1,3 +1,7 @@
+# v0.33.1 (Unreleased)
+
+* **Note** Adjust CORS origins documentation.
+
 # v0.33.0 (2023-11-29)
 
 * **Feature** Add support for User Account API (allowing lock and unlock). [#282](https://github.com/patrickcping/pingone-go-sdk-v2/pull/282)

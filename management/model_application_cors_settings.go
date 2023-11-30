@@ -20,7 +20,7 @@ var _ MappedNullable = &ApplicationCorsSettings{}
 // ApplicationCorsSettings Allows customization of how the Authorization and Authentication APIs interact with CORS requests that reference the application.  If omitted, the application allows CORS requests from any origin except for operations that expose sensitive information (e.g. `/as/authorize` and `/as/token`).  This is legacy behavior, and it is recommended that applications migrate to include specific `corsSettings`.
 type ApplicationCorsSettings struct {
 	Behavior EnumApplicationCorsSettingsBehavior `json:"behavior"`
-	// Must be non-empty when `corsSettings.behavior` is `ALLOW_SPECIFIC_ORIGINS` and must be omitted or empty when `corsSettings.behavior` is `ALLOW_NO_ORIGINS`.  Limited to 20 values.  Values are the origins from which CORS requests to the Authorization and Authentication APIs are allowed.  Each value is an `http` or `https` URL without a path.  The host may be a domain name (including `localhost`), or an IPv4 or IPv6 address.  Subdomains may use the wildcard (*) to match any string.
+	// Must be non-empty when `corsSettings.behavior` is `ALLOW_SPECIFIC_ORIGINS` and must be omitted or empty when `corsSettings.behavior` is `ALLOW_NO_ORIGINS`.  Limited to 20 values.  Values are the origins from which CORS requests to the Authorization and Authentication APIs are allowed.  Each value is an `http` or `https` URL without a path.  The host may be a domain name (including `localhost`), or an IPv4 address.  Subdomains may use the wildcard (*) to match any string.
 	Origins []string `json:"origins,omitempty"`
 }
 

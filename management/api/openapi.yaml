@@ -26754,8 +26754,8 @@ components:
             \  Limited to 20 values.  Values are the origins from which CORS requests\
             \ to the Authorization and Authentication APIs are allowed.  Each value\
             \ is an `http` or `https` URL without a path.  The host may be a domain\
-            \ name (including `localhost`), or an IPv4 or IPv6 address.  Subdomains\
-            \ may use the wildcard (*) to match any string."
+            \ name (including `localhost`), or an IPv4 address.  Subdomains may use\
+            \ the wildcard (*) to match any string."
           items:
             type: string
           maxItems: 20
