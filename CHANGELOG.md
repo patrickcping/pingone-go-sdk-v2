@@ -2,7 +2,7 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.34.0](./management/CHANGELOG.md)
     * **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
-    * **Enhancement** Change `Type` property in the `ApplicationAccessControlGroup` object model to be an ENUM.
+    * **Enhancement** Change `Type` property in the `ApplicationAccessControlGroup` object model to be an ENUM. [#295](https://github.com/patrickcping/pingone-go-sdk-v2/pull/295)
 
 # Release (2023-11-29) (2)
 
