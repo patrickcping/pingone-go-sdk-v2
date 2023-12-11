@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property). | 
+**Type** | [**EnumApplicationAccessControlGroupType**](EnumApplicationAccessControlGroupType.md) |  | 
 **Groups** | [**[]ApplicationAccessControlGroupGroupsInner**](ApplicationAccessControlGroupGroupsInner.md) | A set that specifies the group IDs for the groups the actor must belong to for access to the application. | 
 
 ## Methods
 
 ### NewApplicationAccessControlGroup
 
-`func NewApplicationAccessControlGroup(type_ string, groups []ApplicationAccessControlGroupGroupsInner, ) *ApplicationAccessControlGroup`
+`func NewApplicationAccessControlGroup(type_ EnumApplicationAccessControlGroupType, groups []ApplicationAccessControlGroupGroupsInner, ) *ApplicationAccessControlGroup`
 
 NewApplicationAccessControlGroup instantiates a new ApplicationAccessControlGroup object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ApplicationAccessControlGroup) GetType() string`
+`func (o *ApplicationAccessControlGroup) GetType() EnumApplicationAccessControlGroupType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ApplicationAccessControlGroup) GetTypeOk() (*string, bool)`
+`func (o *ApplicationAccessControlGroup) GetTypeOk() (*EnumApplicationAccessControlGroupType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ApplicationAccessControlGroup) SetType(v string)`
+`func (o *ApplicationAccessControlGroup) SetType(v EnumApplicationAccessControlGroupType)`
 
 SetType sets Type field to given value.
 

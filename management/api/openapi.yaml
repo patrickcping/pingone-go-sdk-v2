@@ -25331,6 +25331,15 @@ components:
       enum:
       - ADMIN_USERS_ONLY
       type: string
+    EnumApplicationAccessControlGroupType:
+      description: A string that specifies the group type required to access the application.
+        Options are ANY_GROUP (the actor must belong to at least one group listed
+        in the accessControl.group.groups property) and ALL_GROUPS (the actor must
+        belong to all groups listed in the accessControl.group.groups property).
+      enum:
+      - ANY_GROUP
+      - ALL_GROUPS
+      type: string
     EnumApplicationCorsSettingsBehavior:
       description: The behavior of CORS for the application. `ALLOWS_NO_ORIGINS` rejects
         all CORS requests.  `ALLOW_SPECIFIC_ORIGINS` rejects all CORS requests except
@@ -34564,12 +34573,7 @@ components:
     Application_accessControl_group:
       properties:
         type:
-          description: A string that specifies the group type required to access the
-            application. Options are ANY_GROUP (the actor must belong to at least
-            one group listed in the accessControl.group.groups property) and ALL_GROUPS
-            (the actor must belong to all groups listed in the accessControl.group.groups
-            property).
-          type: string
+          $ref: '#/components/schemas/EnumApplicationAccessControlGroupType'
         groups:
           description: A set that specifies the group IDs for the groups the actor
             must belong to for access to the application.
