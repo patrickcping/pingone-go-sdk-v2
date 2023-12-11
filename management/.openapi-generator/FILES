@@ -180,6 +180,7 @@ docs/EnumAgreementRevisionContentType.md
 docs/EnumAlertChannelAlertType.md
 docs/EnumAlertChannelSeverity.md
 docs/EnumAlertChannelType.md
+docs/EnumApplicationAccessControlGroupType.md
 docs/EnumApplicationAccessControlType.md
 docs/EnumApplicationCorsSettingsBehavior.md
 docs/EnumApplicationNativeGooglePlayVerificationType.md
@@ -707,6 +708,7 @@ model_enum_agreement_revision_content_type.go
 model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
 model_enum_alert_channel_type.go
+model_enum_application_access_control_group_type.go
 model_enum_application_access_control_type.go
 model_enum_application_cors_settings_behavior.go
 model_enum_application_native_google_play_verification_type.go

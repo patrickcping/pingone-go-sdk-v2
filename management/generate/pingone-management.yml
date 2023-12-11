@@ -77,6 +77,10 @@ components:
       type: string
       description: A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer.
       enum: [ADMIN_USERS_ONLY]
+    EnumApplicationAccessControlGroupType:
+      type: string
+      enum: [ANY_GROUP, ALL_GROUPS]
+      description: A string that specifies the group type required to access the application. Options are `ANY_GROUP` (the actor must belong to at least one group listed in the `groups` property) and `ALL_GROUPS` (the actor must belong to all groups listed in the `groups` property).
     EnumApplicationCorsSettingsBehavior:
       type: string
       enum: [ALLOW_NO_ORIGINS, ALLOW_SPECIFIC_ORIGINS]
@@ -824,8 +828,7 @@ components:
               type: object
               properties:
                 type:
-                  type: string
-                  description: A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
+                  $ref: '#/components/schemas/EnumApplicationAccessControlGroupType'
                 groups:
                   type: array
                   description: A set that specifies the group IDs for the groups the actor must belong to for access to the application.
