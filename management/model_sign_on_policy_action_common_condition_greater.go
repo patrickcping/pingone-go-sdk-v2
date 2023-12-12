@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionCommonConditionGreater type satisfies the MappedNullable interface at compile time
@@ -25,8 +24,6 @@ type SignOnPolicyActionCommonConditionGreater struct {
 	// A string representing a condition variable.  For more information, see documenation at https://apidocs.pingidentity.com/pingone/platform/v1/api/#sign-on-policy-actions .
 	SecondsSince string `json:"secondsSince"`
 }
-
-type _SignOnPolicyActionCommonConditionGreater SignOnPolicyActionCommonConditionGreater
 
 // NewSignOnPolicyActionCommonConditionGreater instantiates a new SignOnPolicyActionCommonConditionGreater object
 // This constructor will assign default values to properties that have it defined,
@@ -108,42 +105,6 @@ func (o SignOnPolicyActionCommonConditionGreater) ToMap() (map[string]interface{
 	toSerialize["greater"] = o.Greater
 	toSerialize["secondsSince"] = o.SecondsSince
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionCommonConditionGreater) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"greater",
-		"secondsSince",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionCommonConditionGreater := _SignOnPolicyActionCommonConditionGreater{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionCommonConditionGreater)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionCommonConditionGreater(varSignOnPolicyActionCommonConditionGreater)
-
-	return err
 }
 
 type NullableSignOnPolicyActionCommonConditionGreater struct {

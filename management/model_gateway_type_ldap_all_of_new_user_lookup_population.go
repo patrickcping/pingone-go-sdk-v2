@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the GatewayTypeLDAPAllOfNewUserLookupPopulation type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type GatewayTypeLDAPAllOfNewUserLookupPopulation struct {
 	// The ID of the population to use to create user entries during lookup.
 	Id string `json:"id"`
 }
-
-type _GatewayTypeLDAPAllOfNewUserLookupPopulation GatewayTypeLDAPAllOfNewUserLookupPopulation
 
 // NewGatewayTypeLDAPAllOfNewUserLookupPopulation instantiates a new GatewayTypeLDAPAllOfNewUserLookupPopulation object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o GatewayTypeLDAPAllOfNewUserLookupPopulation) ToMap() (map[string]interfa
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
-}
-
-func (o *GatewayTypeLDAPAllOfNewUserLookupPopulation) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGatewayTypeLDAPAllOfNewUserLookupPopulation := _GatewayTypeLDAPAllOfNewUserLookupPopulation{}
-
-	err = json.Unmarshal(bytes, &varGatewayTypeLDAPAllOfNewUserLookupPopulation)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GatewayTypeLDAPAllOfNewUserLookupPopulation(varGatewayTypeLDAPAllOfNewUserLookupPopulation)
-
-	return err
 }
 
 type NullableGatewayTypeLDAPAllOfNewUserLookupPopulation struct {

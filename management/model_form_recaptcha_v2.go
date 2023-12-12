@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the FormRecaptchaV2 type satisfies the MappedNullable interface at compile time
@@ -26,8 +25,6 @@ type FormRecaptchaV2 struct {
 	Theme EnumFormRecaptchaV2Theme `json:"theme"`
 	Alignment EnumFormItemAlignment `json:"alignment"`
 }
-
-type _FormRecaptchaV2 FormRecaptchaV2
 
 // NewFormRecaptchaV2 instantiates a new FormRecaptchaV2 object
 // This constructor will assign default values to properties that have it defined,
@@ -161,44 +158,6 @@ func (o FormRecaptchaV2) ToMap() (map[string]interface{}, error) {
 	toSerialize["theme"] = o.Theme
 	toSerialize["alignment"] = o.Alignment
 	return toSerialize, nil
-}
-
-func (o *FormRecaptchaV2) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-		"size",
-		"theme",
-		"alignment",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFormRecaptchaV2 := _FormRecaptchaV2{}
-
-	err = json.Unmarshal(bytes, &varFormRecaptchaV2)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FormRecaptchaV2(varFormRecaptchaV2)
-
-	return err
 }
 
 type NullableFormRecaptchaV2 struct {

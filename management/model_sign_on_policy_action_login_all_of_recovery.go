@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionLoginAllOfRecovery type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionLoginAllOfRecovery struct {
 	// A boolean that specifies the enabled/disabled state of the account recovery action. The default is disabled when creating a new policy. When enabled, it allows the use of the forgot password flow.
 	Enabled bool `json:"enabled"`
 }
-
-type _SignOnPolicyActionLoginAllOfRecovery SignOnPolicyActionLoginAllOfRecovery
 
 // NewSignOnPolicyActionLoginAllOfRecovery instantiates a new SignOnPolicyActionLoginAllOfRecovery object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o SignOnPolicyActionLoginAllOfRecovery) ToMap() (map[string]interface{}, e
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionLoginAllOfRecovery) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionLoginAllOfRecovery := _SignOnPolicyActionLoginAllOfRecovery{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionLoginAllOfRecovery)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionLoginAllOfRecovery(varSignOnPolicyActionLoginAllOfRecovery)
-
-	return err
 }
 
 type NullableSignOnPolicyActionLoginAllOfRecovery struct {

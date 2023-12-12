@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionCommon type satisfies the MappedNullable interface at compile time
@@ -30,8 +29,6 @@ type SignOnPolicyActionCommon struct {
 	SignOnPolicy *SignOnPolicyActionCommonSignOnPolicy `json:"signOnPolicy,omitempty"`
 	Type EnumSignOnPolicyType `json:"type"`
 }
-
-type _SignOnPolicyActionCommon SignOnPolicyActionCommon
 
 // NewSignOnPolicyActionCommon instantiates a new SignOnPolicyActionCommon object
 // This constructor will assign default values to properties that have it defined,
@@ -288,42 +285,6 @@ func (o SignOnPolicyActionCommon) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionCommon) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"priority",
-		"type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionCommon := _SignOnPolicyActionCommon{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionCommon)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionCommon(varSignOnPolicyActionCommon)
-
-	return err
 }
 
 type NullableSignOnPolicyActionCommon struct {

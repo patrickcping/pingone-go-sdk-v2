@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ApplicationResourceGrantScopesInner type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type ApplicationResourceGrantScopesInner struct {
 	// id A array that specifies the IDs of the scopes associated with this grant. This is a required property.
 	Id string `json:"id"`
 }
-
-type _ApplicationResourceGrantScopesInner ApplicationResourceGrantScopesInner
 
 // NewApplicationResourceGrantScopesInner instantiates a new ApplicationResourceGrantScopesInner object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o ApplicationResourceGrantScopesInner) ToMap() (map[string]interface{}, er
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
-}
-
-func (o *ApplicationResourceGrantScopesInner) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationResourceGrantScopesInner := _ApplicationResourceGrantScopesInner{}
-
-	err = json.Unmarshal(bytes, &varApplicationResourceGrantScopesInner)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationResourceGrantScopesInner(varApplicationResourceGrantScopesInner)
-
-	return err
 }
 
 type NullableApplicationResourceGrantScopesInner struct {

@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute struct
 	// Schema attributes to match against the provided identifier when searching for a user in the directory. Only unique attributes may be included.
 	Name string `json:"name"`
 }
-
-type _SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute
 
 // NewSignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute instantiates a new SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) To
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute := _SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute(varSignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute)
-
-	return err
 }
 
 type NullableSignOnPolicyActionPingIDWinLoginPasswordlessAllOfUniqueUserAttribute struct {

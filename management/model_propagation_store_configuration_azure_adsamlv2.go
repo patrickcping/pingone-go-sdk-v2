@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the PropagationStoreConfigurationAzureADSAMLV2 type satisfies the MappedNullable interface at compile time
@@ -40,8 +39,6 @@ type PropagationStoreConfigurationAzureADSAMLV2 struct {
 	// Whether or not users are allowed to be updated.
 	UPDATE_USERS *bool `json:"UPDATE_USERS,omitempty"`
 }
-
-type _PropagationStoreConfigurationAzureADSAMLV2 PropagationStoreConfigurationAzureADSAMLV2
 
 // NewPropagationStoreConfigurationAzureADSAMLV2 instantiates a new PropagationStoreConfigurationAzureADSAMLV2 object
 // This constructor will assign default values to properties that have it defined,
@@ -389,44 +386,6 @@ func (o PropagationStoreConfigurationAzureADSAMLV2) ToMap() (map[string]interfac
 		toSerialize["UPDATE_USERS"] = o.UPDATE_USERS
 	}
 	return toSerialize, nil
-}
-
-func (o *PropagationStoreConfigurationAzureADSAMLV2) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"ClientId",
-		"ClientSecret",
-		"RemoveLicensesWhenSkuIdEmpty",
-		"TenantDomain",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPropagationStoreConfigurationAzureADSAMLV2 := _PropagationStoreConfigurationAzureADSAMLV2{}
-
-	err = json.Unmarshal(bytes, &varPropagationStoreConfigurationAzureADSAMLV2)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PropagationStoreConfigurationAzureADSAMLV2(varPropagationStoreConfigurationAzureADSAMLV2)
-
-	return err
 }
 
 type NullablePropagationStoreConfigurationAzureADSAMLV2 struct {

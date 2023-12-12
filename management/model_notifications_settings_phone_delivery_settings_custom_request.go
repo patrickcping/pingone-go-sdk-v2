@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the NotificationsSettingsPhoneDeliverySettingsCustomRequest type satisfies the MappedNullable interface at compile time
@@ -34,8 +33,6 @@ type NotificationsSettingsPhoneDeliverySettingsCustomRequest struct {
 	// For voice OTP notifications only. A closing tag which is commonly used by custom providers for defining a pause between each number in the OTP number string. Possible value: `</Say> <Pause length=\"1\"/>` 
 	AfterTag *string `json:"afterTag,omitempty"`
 }
-
-type _NotificationsSettingsPhoneDeliverySettingsCustomRequest NotificationsSettingsPhoneDeliverySettingsCustomRequest
 
 // NewNotificationsSettingsPhoneDeliverySettingsCustomRequest instantiates a new NotificationsSettingsPhoneDeliverySettingsCustomRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -311,44 +308,6 @@ func (o NotificationsSettingsPhoneDeliverySettingsCustomRequest) ToMap() (map[st
 		toSerialize["afterTag"] = o.AfterTag
 	}
 	return toSerialize, nil
-}
-
-func (o *NotificationsSettingsPhoneDeliverySettingsCustomRequest) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"deliveryMethod",
-		"url",
-		"method",
-		"phoneNumberFormat",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varNotificationsSettingsPhoneDeliverySettingsCustomRequest := _NotificationsSettingsPhoneDeliverySettingsCustomRequest{}
-
-	err = json.Unmarshal(bytes, &varNotificationsSettingsPhoneDeliverySettingsCustomRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = NotificationsSettingsPhoneDeliverySettingsCustomRequest(varNotificationsSettingsPhoneDeliverySettingsCustomRequest)
-
-	return err
 }
 
 type NullableNotificationsSettingsPhoneDeliverySettingsCustomRequest struct {

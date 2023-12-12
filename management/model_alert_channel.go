@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the AlertChannel type satisfies the MappedNullable interface at compile time
@@ -34,8 +33,6 @@ type AlertChannel struct {
 	// Administrators will not be emailed alerts of these types. If empty, no alert types are excluded. Possible values are CERTIFICATE_EXPIRED, CERTIFICATE_EXPIRING, KEY_PAIR_EXPIRED, GATEWAY_VERSION_DEPRECATED, KEY_PAIR_EXPIRING, and GATEWAY_VERSION_DEPRECATING.
 	ExcludeAlertTypes []EnumAlertChannelAlertType `json:"excludeAlertTypes,omitempty"`
 }
-
-type _AlertChannel AlertChannel
 
 // NewAlertChannel instantiates a new AlertChannel object
 // This constructor will assign default values to properties that have it defined,
@@ -327,42 +324,6 @@ func (o AlertChannel) ToMap() (map[string]interface{}, error) {
 		toSerialize["excludeAlertTypes"] = o.ExcludeAlertTypes
 	}
 	return toSerialize, nil
-}
-
-func (o *AlertChannel) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"channelType",
-		"addresses",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAlertChannel := _AlertChannel{}
-
-	err = json.Unmarshal(bytes, &varAlertChannel)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AlertChannel(varAlertChannel)
-
-	return err
 }
 
 type NullableAlertChannel struct {

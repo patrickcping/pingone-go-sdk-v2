@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the IdentityProviderFacebook type satisfies the MappedNullable interface at compile time
@@ -43,8 +42,6 @@ type IdentityProviderFacebook struct {
 	// A string that specifies the application secret from Facebook. This is a required property.
 	AppSecret string `json:"appSecret"`
 }
-
-type _IdentityProviderFacebook IdentityProviderFacebook
 
 // NewIdentityProviderFacebook instantiates a new IdentityProviderFacebook object
 // This constructor will assign default values to properties that have it defined,
@@ -519,45 +516,6 @@ func (o IdentityProviderFacebook) ToMap() (map[string]interface{}, error) {
 	toSerialize["appId"] = o.AppId
 	toSerialize["appSecret"] = o.AppSecret
 	return toSerialize, nil
-}
-
-func (o *IdentityProviderFacebook) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"name",
-		"type",
-		"appId",
-		"appSecret",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varIdentityProviderFacebook := _IdentityProviderFacebook{}
-
-	err = json.Unmarshal(bytes, &varIdentityProviderFacebook)
-
-	if err != nil {
-		return err
-	}
-
-	*o = IdentityProviderFacebook(varIdentityProviderFacebook)
-
-	return err
 }
 
 type NullableIdentityProviderFacebook struct {

@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionCommonConditionIPRisk type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionCommonConditionIPRisk struct {
 	IpRisk SignOnPolicyActionCommonConditionIPRiskIpRisk `json:"ipRisk"`
 	Valid string `json:"valid"`
 }
-
-type _SignOnPolicyActionCommonConditionIPRisk SignOnPolicyActionCommonConditionIPRisk
 
 // NewSignOnPolicyActionCommonConditionIPRisk instantiates a new SignOnPolicyActionCommonConditionIPRisk object
 // This constructor will assign default values to properties that have it defined,
@@ -106,42 +103,6 @@ func (o SignOnPolicyActionCommonConditionIPRisk) ToMap() (map[string]interface{}
 	toSerialize["ipRisk"] = o.IpRisk
 	toSerialize["valid"] = o.Valid
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionCommonConditionIPRisk) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"ipRisk",
-		"valid",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionCommonConditionIPRisk := _SignOnPolicyActionCommonConditionIPRisk{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionCommonConditionIPRisk)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionCommonConditionIPRisk(varSignOnPolicyActionCommonConditionIPRisk)
-
-	return err
 }
 
 type NullableSignOnPolicyActionCommonConditionIPRisk struct {

@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the ApplicationPingOnePortal type satisfies the MappedNullable interface at compile time
@@ -48,8 +47,6 @@ type ApplicationPingOnePortal struct {
 	// If `true`, applies the default theme to the app portal application.
 	ApplyDefaultTheme bool `json:"applyDefaultTheme"`
 }
-
-type _ApplicationPingOnePortal ApplicationPingOnePortal
 
 // NewApplicationPingOnePortal instantiates a new ApplicationPingOnePortal object
 // This constructor will assign default values to properties that have it defined,
@@ -620,46 +617,6 @@ func (o ApplicationPingOnePortal) ToMap() (map[string]interface{}, error) {
 	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
 	toSerialize["applyDefaultTheme"] = o.ApplyDefaultTheme
 	return toSerialize, nil
-}
-
-func (o *ApplicationPingOnePortal) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"name",
-		"protocol",
-		"type",
-		"tokenEndpointAuthMethod",
-		"applyDefaultTheme",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationPingOnePortal := _ApplicationPingOnePortal{}
-
-	err = json.Unmarshal(bytes, &varApplicationPingOnePortal)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationPingOnePortal(varApplicationPingOnePortal)
-
-	return err
 }
 
 type NullableApplicationPingOnePortal struct {

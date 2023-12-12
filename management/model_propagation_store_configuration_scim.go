@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the PropagationStoreConfigurationSCIM type satisfies the MappedNullable interface at compile time
@@ -55,8 +54,6 @@ type PropagationStoreConfigurationSCIM struct {
 	// API endpoint path to the user entity.
 	USERS_RESOURCE string `json:"USERS_RESOURCE"`
 }
-
-type _PropagationStoreConfigurationSCIM PropagationStoreConfigurationSCIM
 
 // NewPropagationStoreConfigurationSCIM instantiates a new PropagationStoreConfigurationSCIM object
 // This constructor will assign default values to properties that have it defined,
@@ -688,47 +685,6 @@ func (o PropagationStoreConfigurationSCIM) ToMap() (map[string]interface{}, erro
 	toSerialize["USER_FILTER"] = o.USER_FILTER
 	toSerialize["USERS_RESOURCE"] = o.USERS_RESOURCE
 	return toSerialize, nil
-}
-
-func (o *PropagationStoreConfigurationSCIM) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"AUTHENTICATION_METHOD",
-		"AUTHORIZATION_TYPE",
-		"SCIM_URL",
-		"SCIM_VERSION",
-		"UNIQUE_USER_IDENTIFIER",
-		"USER_FILTER",
-		"USERS_RESOURCE",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPropagationStoreConfigurationSCIM := _PropagationStoreConfigurationSCIM{}
-
-	err = json.Unmarshal(bytes, &varPropagationStoreConfigurationSCIM)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PropagationStoreConfigurationSCIM(varPropagationStoreConfigurationSCIM)
-
-	return err
 }
 
 type NullablePropagationStoreConfigurationSCIM struct {

@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the TemplateContentEmail type satisfies the MappedNullable interface at compile time
@@ -45,8 +44,6 @@ type TemplateContentEmail struct {
 	// If not specified, `text/html` is the default value.
 	EmailContentType *string `json:"emailContentType,omitempty"`
 }
-
-type _TemplateContentEmail TemplateContentEmail
 
 // NewTemplateContentEmail instantiates a new TemplateContentEmail object
 // This constructor will assign default values to properties that have it defined,
@@ -547,43 +544,6 @@ func (o TemplateContentEmail) ToMap() (map[string]interface{}, error) {
 		toSerialize["emailContentType"] = o.EmailContentType
 	}
 	return toSerialize, nil
-}
-
-func (o *TemplateContentEmail) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"locale",
-		"deliveryMethod",
-		"body",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varTemplateContentEmail := _TemplateContentEmail{}
-
-	err = json.Unmarshal(bytes, &varTemplateContentEmail)
-
-	if err != nil {
-		return err
-	}
-
-	*o = TemplateContentEmail(varTemplateContentEmail)
-
-	return err
 }
 
 type NullableTemplateContentEmail struct {

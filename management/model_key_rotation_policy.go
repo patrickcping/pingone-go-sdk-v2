@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the KeyRotationPolicy type satisfies the MappedNullable interface at compile time
@@ -45,8 +44,6 @@ type KeyRotationPolicy struct {
 	// Controls the `startsAt` and `expiresAt` fields this KRP will apply to generated `KrpKeys`. The default value is `365` days.
 	ValidityPeriod *int32 `json:"validityPeriod,omitempty"`
 }
-
-type _KeyRotationPolicy KeyRotationPolicy
 
 // NewKeyRotationPolicy instantiates a new KeyRotationPolicy object
 // This constructor will assign default values to properties that have it defined,
@@ -520,46 +517,6 @@ func (o KeyRotationPolicy) ToMap() (map[string]interface{}, error) {
 		toSerialize["validityPeriod"] = o.ValidityPeriod
 	}
 	return toSerialize, nil
-}
-
-func (o *KeyRotationPolicy) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"algorithm",
-		"dn",
-		"keyLength",
-		"name",
-		"signatureAlgorithm",
-		"usageType",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varKeyRotationPolicy := _KeyRotationPolicy{}
-
-	err = json.Unmarshal(bytes, &varKeyRotationPolicy)
-
-	if err != nil {
-		return err
-	}
-
-	*o = KeyRotationPolicy(varKeyRotationPolicy)
-
-	return err
 }
 
 type NullableKeyRotationPolicy struct {

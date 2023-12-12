@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionCommonConditionEquals type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionCommonConditionEquals struct {
 	Value string `json:"value"`
 	Equals SignOnPolicyActionCommonConditionEqualsEquals `json:"equals"`
 }
-
-type _SignOnPolicyActionCommonConditionEquals SignOnPolicyActionCommonConditionEquals
 
 // NewSignOnPolicyActionCommonConditionEquals instantiates a new SignOnPolicyActionCommonConditionEquals object
 // This constructor will assign default values to properties that have it defined,
@@ -106,42 +103,6 @@ func (o SignOnPolicyActionCommonConditionEquals) ToMap() (map[string]interface{}
 	toSerialize["value"] = o.Value
 	toSerialize["equals"] = o.Equals
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionCommonConditionEquals) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"value",
-		"equals",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionCommonConditionEquals := _SignOnPolicyActionCommonConditionEquals{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionCommonConditionEquals)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionCommonConditionEquals(varSignOnPolicyActionCommonConditionEquals)
-
-	return err
 }
 
 type NullableSignOnPolicyActionCommonConditionEquals struct {

@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ApplicationSAMLAllOfSpVerification type satisfies the MappedNullable interface at compile time
@@ -24,8 +23,6 @@ type ApplicationSAMLAllOfSpVerification struct {
 	AuthnRequestSigned *bool `json:"authnRequestSigned,omitempty"`
 	Certificates []ApplicationSAMLAllOfSpVerificationCertificates `json:"certificates"`
 }
-
-type _ApplicationSAMLAllOfSpVerification ApplicationSAMLAllOfSpVerification
 
 // NewApplicationSAMLAllOfSpVerification instantiates a new ApplicationSAMLAllOfSpVerification object
 // This constructor will assign default values to properties that have it defined,
@@ -120,41 +117,6 @@ func (o ApplicationSAMLAllOfSpVerification) ToMap() (map[string]interface{}, err
 	}
 	toSerialize["certificates"] = o.Certificates
 	return toSerialize, nil
-}
-
-func (o *ApplicationSAMLAllOfSpVerification) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"certificates",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationSAMLAllOfSpVerification := _ApplicationSAMLAllOfSpVerification{}
-
-	err = json.Unmarshal(bytes, &varApplicationSAMLAllOfSpVerification)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationSAMLAllOfSpVerification(varApplicationSAMLAllOfSpVerification)
-
-	return err
 }
 
 type NullableApplicationSAMLAllOfSpVerification struct {

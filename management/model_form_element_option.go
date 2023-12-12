@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the FormElementOption type satisfies the MappedNullable interface at compile time
@@ -25,8 +24,6 @@ type FormElementOption struct {
 	// A string that specifies the value of the field if this option is selected.
 	Value string `json:"value"`
 }
-
-type _FormElementOption FormElementOption
 
 // NewFormElementOption instantiates a new FormElementOption object
 // This constructor will assign default values to properties that have it defined,
@@ -108,42 +105,6 @@ func (o FormElementOption) ToMap() (map[string]interface{}, error) {
 	toSerialize["label"] = o.Label
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
-}
-
-func (o *FormElementOption) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"label",
-		"value",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFormElementOption := _FormElementOption{}
-
-	err = json.Unmarshal(bytes, &varFormElementOption)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FormElementOption(varFormElementOption)
-
-	return err
 }
 
 type NullableFormElementOption struct {

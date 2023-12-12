@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionMFA type satisfies the MappedNullable interface at compile time
@@ -47,8 +46,6 @@ type SignOnPolicyActionMFA struct {
 	DeviceAuthenticationPolicy *SignOnPolicyActionMFAAllOfDeviceAuthenticationPolicy `json:"deviceAuthenticationPolicy,omitempty"`
 	NoDevicesMode *EnumSignOnPolicyNoDeviceMode `json:"noDevicesMode,omitempty"`
 }
-
-type _SignOnPolicyActionMFA SignOnPolicyActionMFA
 
 // NewSignOnPolicyActionMFA instantiates a new SignOnPolicyActionMFA object
 // This constructor will assign default values to properties that have it defined,
@@ -641,42 +638,6 @@ func (o SignOnPolicyActionMFA) ToMap() (map[string]interface{}, error) {
 		toSerialize["noDevicesMode"] = o.NoDevicesMode
 	}
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionMFA) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"priority",
-		"type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionMFA := _SignOnPolicyActionMFA{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionMFA)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionMFA(varSignOnPolicyActionMFA)
-
-	return err
 }
 
 type NullableSignOnPolicyActionMFA struct {

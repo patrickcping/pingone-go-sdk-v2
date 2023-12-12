@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the Population type satisfies the MappedNullable interface at compile time
@@ -38,8 +37,6 @@ type Population struct {
 	// The number of users that belong to the population
 	UserCount *int32 `json:"userCount,omitempty"`
 }
-
-type _Population Population
 
 // NewPopulation instantiates a new Population object
 // This constructor will assign default values to properties that have it defined,
@@ -410,41 +407,6 @@ func (o Population) ToMap() (map[string]interface{}, error) {
 		toSerialize["userCount"] = o.UserCount
 	}
 	return toSerialize, nil
-}
-
-func (o *Population) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varPopulation := _Population{}
-
-	err = json.Unmarshal(bytes, &varPopulation)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Population(varPopulation)
-
-	return err
 }
 
 type NullablePopulation struct {

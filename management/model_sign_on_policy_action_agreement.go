@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionAgreement type satisfies the MappedNullable interface at compile time
@@ -33,8 +32,6 @@ type SignOnPolicyActionAgreement struct {
 	// When enabled, the `Do Not Accept` button will terminate the Flow and display an error message to the user.
 	DisableDeclineOption *bool `json:"disableDeclineOption,omitempty"`
 }
-
-type _SignOnPolicyActionAgreement SignOnPolicyActionAgreement
 
 // NewSignOnPolicyActionAgreement instantiates a new SignOnPolicyActionAgreement object
 // This constructor will assign default values to properties that have it defined,
@@ -352,43 +349,6 @@ func (o SignOnPolicyActionAgreement) ToMap() (map[string]interface{}, error) {
 		toSerialize["disableDeclineOption"] = o.DisableDeclineOption
 	}
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionAgreement) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"priority",
-		"type",
-		"agreement",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionAgreement := _SignOnPolicyActionAgreement{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionAgreement)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionAgreement(varSignOnPolicyActionAgreement)
-
-	return err
 }
 
 type NullableSignOnPolicyActionAgreement struct {

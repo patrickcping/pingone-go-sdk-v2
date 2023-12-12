@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionIDPAllOfIdentityProvider type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionIDPAllOfIdentityProvider struct {
 	// A string that specifies the ID of the external identity provider to which the user is redirected for sign-on. This property is required.
 	Id string `json:"id"`
 }
-
-type _SignOnPolicyActionIDPAllOfIdentityProvider SignOnPolicyActionIDPAllOfIdentityProvider
 
 // NewSignOnPolicyActionIDPAllOfIdentityProvider instantiates a new SignOnPolicyActionIDPAllOfIdentityProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o SignOnPolicyActionIDPAllOfIdentityProvider) ToMap() (map[string]interfac
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionIDPAllOfIdentityProvider) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionIDPAllOfIdentityProvider := _SignOnPolicyActionIDPAllOfIdentityProvider{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionIDPAllOfIdentityProvider)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionIDPAllOfIdentityProvider(varSignOnPolicyActionIDPAllOfIdentityProvider)
-
-	return err
 }
 
 type NullableSignOnPolicyActionIDPAllOfIdentityProvider struct {

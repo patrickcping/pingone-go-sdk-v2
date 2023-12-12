@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the Subscription type satisfies the MappedNullable interface at compile time
@@ -40,8 +39,6 @@ type Subscription struct {
 	// A boolean that specifies whether a certificates should be verified. If this property's value is set to false, then all certificates are trusted. (Setting this property's value to false introduces a security risk.) This is a required property.
 	VerifyTlsCertificates bool `json:"verifyTlsCertificates"`
 }
-
-type _Subscription Subscription
 
 // NewSubscription instantiates a new Subscription object
 // This constructor will assign default values to properties that have it defined,
@@ -437,46 +434,6 @@ func (o Subscription) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["verifyTlsCertificates"] = o.VerifyTlsCertificates
 	return toSerialize, nil
-}
-
-func (o *Subscription) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"enabled",
-		"filterOptions",
-		"format",
-		"httpEndpoint",
-		"name",
-		"verifyTlsCertificates",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSubscription := _Subscription{}
-
-	err = json.Unmarshal(bytes, &varSubscription)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Subscription(varSubscription)
-
-	return err
 }
 
 type NullableSubscription struct {

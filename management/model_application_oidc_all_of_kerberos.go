@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ApplicationOIDCAllOfKerberos type satisfies the MappedNullable interface at compile time
@@ -22,8 +21,6 @@ var _ MappedNullable = &ApplicationOIDCAllOfKerberos{}
 type ApplicationOIDCAllOfKerberos struct {
 	Key ApplicationOIDCAllOfKerberosKey `json:"key"`
 }
-
-type _ApplicationOIDCAllOfKerberos ApplicationOIDCAllOfKerberos
 
 // NewApplicationOIDCAllOfKerberos instantiates a new ApplicationOIDCAllOfKerberos object
 // This constructor will assign default values to properties that have it defined,
@@ -79,41 +76,6 @@ func (o ApplicationOIDCAllOfKerberos) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
 	return toSerialize, nil
-}
-
-func (o *ApplicationOIDCAllOfKerberos) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationOIDCAllOfKerberos := _ApplicationOIDCAllOfKerberos{}
-
-	err = json.Unmarshal(bytes, &varApplicationOIDCAllOfKerberos)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationOIDCAllOfKerberos(varApplicationOIDCAllOfKerberos)
-
-	return err
 }
 
 type NullableApplicationOIDCAllOfKerberos struct {

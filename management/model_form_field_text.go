@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the FormFieldText type satisfies the MappedNullable interface at compile time
@@ -46,8 +45,6 @@ type FormFieldText struct {
 	Options []string `json:"options,omitempty"`
 	Validation FormElementValidation `json:"validation"`
 }
-
-type _FormFieldText FormFieldText
 
 // NewFormFieldText instantiates a new FormFieldText object
 // This constructor will assign default values to properties that have it defined,
@@ -557,45 +554,6 @@ func (o FormFieldText) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["validation"] = o.Validation
 	return toSerialize, nil
-}
-
-func (o *FormFieldText) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"position",
-		"key",
-		"required",
-		"validation",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFormFieldText := _FormFieldText{}
-
-	err = json.Unmarshal(bytes, &varFormFieldText)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FormFieldText(varFormFieldText)
-
-	return err
 }
 
 type NullableFormFieldText struct {

@@ -13,7 +13,6 @@ package management
 import (
 	"encoding/json"
 	"time"
-	"fmt"
 )
 
 // checks if the Form type satisfies the MappedNullable interface at compile time
@@ -47,8 +46,6 @@ type Form struct {
 	// The date the resouce was modified (ISO-8061 format).
 	Modified *time.Time `json:"modified,omitempty"`
 }
-
-type _Form Form
 
 // NewForm instantiates a new Form object
 // This constructor will assign default values to properties that have it defined,
@@ -558,45 +555,6 @@ func (o Form) ToMap() (map[string]interface{}, error) {
 		toSerialize["modified"] = o.Modified
 	}
 	return toSerialize, nil
-}
-
-func (o *Form) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"category",
-		"components",
-		"markOptional",
-		"markRequired",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varForm := _Form{}
-
-	err = json.Unmarshal(bytes, &varForm)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Form(varForm)
-
-	return err
 }
 
 type NullableForm struct {

@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignOnPolicyActionAgreementAllOfAgreement type satisfies the MappedNullable interface at compile time
@@ -23,8 +22,6 @@ type SignOnPolicyActionAgreementAllOfAgreement struct {
 	// A string that specifies the ID of the agreement to which the user must consent. This property is required.
 	Id string `json:"id"`
 }
-
-type _SignOnPolicyActionAgreementAllOfAgreement SignOnPolicyActionAgreementAllOfAgreement
 
 // NewSignOnPolicyActionAgreementAllOfAgreement instantiates a new SignOnPolicyActionAgreementAllOfAgreement object
 // This constructor will assign default values to properties that have it defined,
@@ -80,41 +77,6 @@ func (o SignOnPolicyActionAgreementAllOfAgreement) ToMap() (map[string]interface
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
-}
-
-func (o *SignOnPolicyActionAgreementAllOfAgreement) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignOnPolicyActionAgreementAllOfAgreement := _SignOnPolicyActionAgreementAllOfAgreement{}
-
-	err = json.Unmarshal(bytes, &varSignOnPolicyActionAgreementAllOfAgreement)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignOnPolicyActionAgreementAllOfAgreement(varSignOnPolicyActionAgreementAllOfAgreement)
-
-	return err
 }
 
 type NullableSignOnPolicyActionAgreementAllOfAgreement struct {

@@ -12,7 +12,6 @@ package management
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the FormFlowButton type satisfies the MappedNullable interface at compile time
@@ -26,8 +25,6 @@ type FormFlowButton struct {
 	Label string `json:"label"`
 	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
 }
-
-type _FormFlowButton FormFlowButton
 
 // NewFormFlowButton instantiates a new FormFlowButton object
 // This constructor will assign default values to properties that have it defined,
@@ -144,42 +141,6 @@ func (o FormFlowButton) ToMap() (map[string]interface{}, error) {
 		toSerialize["styles"] = o.Styles
 	}
 	return toSerialize, nil
-}
-
-func (o *FormFlowButton) UnmarshalJSON(bytes []byte) (err error) {
-    // This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-		"label",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(bytes, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varFormFlowButton := _FormFlowButton{}
-
-	err = json.Unmarshal(bytes, &varFormFlowButton)
-
-	if err != nil {
-		return err
-	}
-
-	*o = FormFlowButton(varFormFlowButton)
-
-	return err
 }
 
 type NullableFormFlowButton struct {
