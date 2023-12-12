@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumApplicationAccessControlGroupType A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
+// EnumApplicationAccessControlGroupType A string that specifies the group type required to access the application. Options are `ANY_GROUP` (the actor must belong to at least one group listed in the `groups` property) and `ALL_GROUPS` (the actor must belong to all groups listed in the `groups` property).
 type EnumApplicationAccessControlGroupType string
 
 // List of EnumApplicationAccessControlGroupType
