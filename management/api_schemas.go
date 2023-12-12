@@ -1229,11 +1229,11 @@ type ApiUpdateAttributePatchRequest struct {
 	environmentID string
 	schemaID string
 	attributeID string
-	schemaAttribute *SchemaAttribute
+	schemaAttributePatch *SchemaAttributePatch
 }
 
-func (r ApiUpdateAttributePatchRequest) SchemaAttribute(schemaAttribute SchemaAttribute) ApiUpdateAttributePatchRequest {
-	r.schemaAttribute = &schemaAttribute
+func (r ApiUpdateAttributePatchRequest) SchemaAttributePatch(schemaAttributePatch SchemaAttributePatch) ApiUpdateAttributePatchRequest {
+	r.schemaAttributePatch = &schemaAttributePatch
 	return r
 }
 
@@ -1318,7 +1318,7 @@ func (a *SchemasApiService) internalUpdateAttributePatchExecute(r ApiUpdateAttri
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.schemaAttribute
+	localVarPostBody = r.schemaAttributePatch
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

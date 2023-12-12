@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **AdditionalRefreshTokenReplayProtectionEnabled** | Pointer to **bool** | When set to &#x60;true&#x60; (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a &#x60;false&#x60; setting. | [optional] [default to true]
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
+**CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.bundleId&#x60; instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  | [optional] 
 **PackageName** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.packageName&#x60; instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  | [optional] 
@@ -466,6 +467,31 @@ SetAssignActorRoles sets AssignActorRoles field to given value.
 `func (o *ApplicationOIDC) HasAssignActorRoles() bool`
 
 HasAssignActorRoles returns a boolean if a field has been set.
+
+### GetCorsSettings
+
+`func (o *ApplicationOIDC) GetCorsSettings() ApplicationCorsSettings`
+
+GetCorsSettings returns the CorsSettings field if non-nil, zero value otherwise.
+
+### GetCorsSettingsOk
+
+`func (o *ApplicationOIDC) GetCorsSettingsOk() (*ApplicationCorsSettings, bool)`
+
+GetCorsSettingsOk returns a tuple with the CorsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCorsSettings
+
+`func (o *ApplicationOIDC) SetCorsSettings(v ApplicationCorsSettings)`
+
+SetCorsSettings sets CorsSettings field to given value.
+
+### HasCorsSettings
+
+`func (o *ApplicationOIDC) HasCorsSettings() bool`
+
+HasCorsSettings returns a boolean if a field has been set.
 
 ### GetMobile
 

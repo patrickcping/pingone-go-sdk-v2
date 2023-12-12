@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** | The time the resource was last updated. | [optional] [readonly] 
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
+**CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
 **IdpSigning** | [**ApplicationWSFEDAllOfIdpSigning**](ApplicationWSFEDAllOfIdpSigning.md) |  | 
 **Kerberos** | Pointer to [**ApplicationWSFEDAllOfKerberos**](ApplicationWSFEDAllOfKerberos.md) |  | [optional] 
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
@@ -418,6 +419,31 @@ and a boolean to check if the value has been set.
 
 SetDomainName sets DomainName field to given value.
 
+
+### GetCorsSettings
+
+`func (o *ApplicationWSFED) GetCorsSettings() ApplicationCorsSettings`
+
+GetCorsSettings returns the CorsSettings field if non-nil, zero value otherwise.
+
+### GetCorsSettingsOk
+
+`func (o *ApplicationWSFED) GetCorsSettingsOk() (*ApplicationCorsSettings, bool)`
+
+GetCorsSettingsOk returns a tuple with the CorsSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCorsSettings
+
+`func (o *ApplicationWSFED) SetCorsSettings(v ApplicationCorsSettings)`
+
+SetCorsSettings sets CorsSettings field to given value.
+
+### HasCorsSettings
+
+`func (o *ApplicationWSFED) HasCorsSettings() bool`
+
+HasCorsSettings returns a boolean if a field has been set.
 
 ### GetIdpSigning
 

@@ -76,7 +76,6 @@ api_user_role_assignments.go
 api_users.go
 configuration.go
 docs/ActiveIdentityCountsApi.md
-docs/AddUserToGroupRequest.md
 docs/Agreement.md
 docs/AgreementLanguage.md
 docs/AgreementLanguageAgreement.md
@@ -97,6 +96,7 @@ docs/ApplicationAccessControlRole.md
 docs/ApplicationAttributeMapping.md
 docs/ApplicationAttributeMappingApi.md
 docs/ApplicationAttributeMappingApplication.md
+docs/ApplicationCorsSettings.md
 docs/ApplicationExternalLink.md
 docs/ApplicationFlowPolicyAssignmentsApi.md
 docs/ApplicationIcon.md
@@ -180,7 +180,9 @@ docs/EnumAgreementRevisionContentType.md
 docs/EnumAlertChannelAlertType.md
 docs/EnumAlertChannelSeverity.md
 docs/EnumAlertChannelType.md
+docs/EnumApplicationAccessControlGroupType.md
 docs/EnumApplicationAccessControlType.md
+docs/EnumApplicationCorsSettingsBehavior.md
 docs/EnumApplicationNativeGooglePlayVerificationType.md
 docs/EnumApplicationOIDCGrantType.md
 docs/EnumApplicationOIDCPARRequirement.md
@@ -229,6 +231,7 @@ docs/EnumGatewayType.md
 docs/EnumGatewayTypeLDAPSecurity.md
 docs/EnumGatewayVendor.md
 docs/EnumGetKeyAcceptHeader.md
+docs/EnumGroupMembershipType.md
 docs/EnumGroupSourceType.md
 docs/EnumHealthStatus.md
 docs/EnumIdentityProvider.md
@@ -300,6 +303,7 @@ docs/EnumTemplateContentPushCategory.md
 docs/EnumTrustedEmailStatus.md
 docs/EnumUpdateStatus.md
 docs/EnumUserAccountContentTypeHeader.md
+docs/EnumUserGroupAssignmentExpandParameter.md
 docs/EnumUserLifecycleStatus.md
 docs/EnumUserRequestInclude.md
 docs/EnumUserStatus.md
@@ -377,6 +381,7 @@ docs/Group.md
 docs/GroupDirectMemberCounts.md
 docs/GroupMembership.md
 docs/GroupMembershipApi.md
+docs/GroupMembershipEmbedded.md
 docs/GroupNesting.md
 docs/GroupPopulation.md
 docs/GroupRoleAssignmentsApi.md
@@ -522,6 +527,7 @@ docs/RolesApi.md
 docs/Schema.md
 docs/SchemaAttribute.md
 docs/SchemaAttributeEnumeratedValuesInner.md
+docs/SchemaAttributePatch.md
 docs/SchemaAttributeRegexValidation.md
 docs/SchemaAttributeSchema.md
 docs/SchemasApi.md
@@ -625,7 +631,6 @@ docs/UserRoleAssignmentsApi.md
 docs/UsersApi.md
 go.mod
 go.sum
-model_add_user_to_group_request.go
 model_agreement.go
 model_agreement_language.go
 model_agreement_language_agreement.go
@@ -641,6 +646,7 @@ model_application_access_control_group_groups_inner.go
 model_application_access_control_role.go
 model_application_attribute_mapping.go
 model_application_attribute_mapping_application.go
+model_application_cors_settings.go
 model_application_external_link.go
 model_application_icon.go
 model_application_oidc.go
@@ -704,7 +710,9 @@ model_enum_agreement_revision_content_type.go
 model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
 model_enum_alert_channel_type.go
+model_enum_application_access_control_group_type.go
 model_enum_application_access_control_type.go
+model_enum_application_cors_settings_behavior.go
 model_enum_application_native_google_play_verification_type.go
 model_enum_application_oidc_grant_type.go
 model_enum_application_oidc_response_type.go
@@ -753,6 +761,7 @@ model_enum_gateway_type.go
 model_enum_gateway_type_ldap_security.go
 model_enum_gateway_vendor.go
 model_enum_get_key_accept_header.go
+model_enum_group_membership_type.go
 model_enum_group_source_type.go
 model_enum_health_status.go
 model_enum_identity_provider.go
@@ -824,6 +833,7 @@ model_enum_template_content_push_category.go
 model_enum_trusted_email_status.go
 model_enum_update_status.go
 model_enum_user_account_content_type_header.go
+model_enum_user_group_assignment_expand_parameter.go
 model_enum_user_lifecycle_status.go
 model_enum_user_request_include.go
 model_enum_user_status.go
@@ -893,6 +903,7 @@ model_gateway_type_radius_all_of_radius_clients.go
 model_group.go
 model_group_direct_member_counts.go
 model_group_membership.go
+model_group_membership__embedded.go
 model_group_nesting.go
 model_group_population.go
 model_group_total_member_counts.go
@@ -1004,6 +1015,7 @@ model_role_permissions_inner.go
 model_schema.go
 model_schema_attribute.go
 model_schema_attribute_enumerated_values_inner.go
+model_schema_attribute_patch.go
 model_schema_attribute_regex_validation.go
 model_schema_attribute_schema.go
 model_sign_on_policy.go

@@ -19376,7 +19376,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SchemaAttribute'
+              $ref: '#/components/schemas/SchemaAttributePatch'
       responses:
         "400":
           content:
@@ -22110,8 +22110,7 @@ paths:
         schema:
           type: string
         style: form
-      - example: type eq "DIRECT"
-        explode: true
+      - explode: true
         in: query
         name: filter
         required: false
@@ -22206,7 +22205,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addUserToGroup_request'
+              $ref: '#/components/schemas/GroupMembership'
       responses:
         "400":
           content:
@@ -22262,7 +22261,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
           description: Successful response
       summary: ADD User to Group
       tags:
@@ -22350,7 +22349,7 @@ paths:
         name: expand
         required: false
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumUserGroupAssignmentExpandParameter'
         style: form
       - explode: false
         in: path
@@ -22421,7 +22420,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
           description: Successful response
       summary: READ One Group Membership for User
       tags:
@@ -25339,6 +25338,23 @@ components:
       enum:
       - ADMIN_USERS_ONLY
       type: string
+    EnumApplicationAccessControlGroupType:
+      description: A string that specifies the group type required to access the application.
+        Options are `ANY_GROUP` (the actor must belong to at least one group listed
+        in the `groups` property) and `ALL_GROUPS` (the actor must belong to all groups
+        listed in the `groups` property).
+      enum:
+      - ANY_GROUP
+      - ALL_GROUPS
+      type: string
+    EnumApplicationCorsSettingsBehavior:
+      description: The behavior of CORS for the application. `ALLOWS_NO_ORIGINS` rejects
+        all CORS requests.  `ALLOW_SPECIFIC_ORIGINS` rejects all CORS requests except
+        those listed in `corsSettings.origins`.
+      enum:
+      - ALLOW_NO_ORIGINS
+      - ALLOW_SPECIFIC_ORIGINS
+      type: string
     EnumApplicationNativeGooglePlayVerificationType:
       description: "The type of verification that should be used. The possible values\
         \ are `GOOGLE` and `INTERNAL`. Using internal verification will not count\
@@ -26400,6 +26416,18 @@ components:
       - application/vnd.pingidentity.account.unlock+json
       - application/vnd.pingidentity.account.lock+json
       type: string
+    EnumGroupMembershipType:
+      description: A string that defines the relationship of group membership
+      enum:
+      - DIRECT
+      - INDIRECT
+      type: string
+    EnumUserGroupAssignmentExpandParameter:
+      description: "When this parameter is appended to the request, the results are\
+        \ expanded to include additional information about each group."
+      enum:
+      - group
+      type: string
     EnumUserRequestInclude:
       enum:
       - memberOfGroupIDs
@@ -26730,6 +26758,31 @@ components:
       - protocol
       - type
       type: object
+    ApplicationCorsSettings:
+      description: "Allows customization of how the Authorization and Authentication\
+        \ APIs interact with CORS requests that reference the application.  If omitted,\
+        \ the application allows CORS requests from any origin except for operations\
+        \ that expose sensitive information (e.g. `/as/authorize` and `/as/token`).\
+        \  This is legacy behavior, and it is recommended that applications migrate\
+        \ to include specific `corsSettings`."
+      properties:
+        behavior:
+          $ref: '#/components/schemas/EnumApplicationCorsSettingsBehavior'
+        origins:
+          description: "Must be non-empty when `corsSettings.behavior` is `ALLOW_SPECIFIC_ORIGINS`\
+            \ and must be omitted or empty when `corsSettings.behavior` is `ALLOW_NO_ORIGINS`.\
+            \  Limited to 20 values.  Values are the origins from which CORS requests\
+            \ to the Authorization and Authentication APIs are allowed.  Each value\
+            \ is an `http` or `https` URL without a path.  The host may be a domain\
+            \ name (including `localhost`), or an IPv4 address.  Subdomains may use\
+            \ the wildcard (*) to match any string."
+          items:
+            type: string
+          maxItems: 20
+          type: array
+      required:
+      - behavior
+      type: object
     ApplicationExternalLink:
       allOf:
       - $ref: '#/components/schemas/Application'
@@ -26765,6 +26818,8 @@ components:
             description: A boolean that specifies whether the SAML assertion itself
               should be signed. The default value is `true`.
             type: boolean
+          corsSettings:
+            $ref: '#/components/schemas/ApplicationCorsSettings'
           enableRequestedAuthnContext:
             description: Indicates whether `requestedAuthnContext` is taken into account
               in policy decision-making during authentication.
@@ -26834,6 +26889,8 @@ components:
               only on the POST request. The property is ignored when included in a
               PUT request.
             type: boolean
+          corsSettings:
+            $ref: '#/components/schemas/ApplicationCorsSettings'
           mobile:
             $ref: '#/components/schemas/ApplicationOIDC_allOf_mobile'
           bundleId:
@@ -27177,6 +27234,8 @@ components:
             description: "The federated domain name (for example, the Azure custom\
               \ domain)."
             type: string
+          corsSettings:
+            $ref: '#/components/schemas/ApplicationCorsSettings'
           idpSigning:
             $ref: '#/components/schemas/ApplicationWSFED_allOf_idpSigning'
           kerberos:
@@ -29186,18 +29245,74 @@ components:
             type: null
             updatedAt: updatedAt
           groupMemberships:
-          - _links:
+          - environment:
+              id: id
+            _links:
               next:
                 href: https://openapi-generator.tech
               self:
                 href: https://openapi-generator.tech
+            _embedded:
+              group:
+                sourceId: sourceId
+                _links:
+                  next:
+                    href: https://openapi-generator.tech
+                  self:
+                    href: https://openapi-generator.tech
+                displayName: displayName
+                description: description
+                externalId: externalId
+                customData: "{}"
+                population:
+                  id: id
+                directMemberCounts:
+                  users: 7
+                environment:
+                  id: id
+                sourceType: null
+                name: name
+                userFilter: userFilter
+                id: id
+                totalMemberCounts:
+                  users: 1
+            name: name
             id: id
-          - _links:
+            type: null
+          - environment:
+              id: id
+            _links:
               next:
                 href: https://openapi-generator.tech
               self:
                 href: https://openapi-generator.tech
+            _embedded:
+              group:
+                sourceId: sourceId
+                _links:
+                  next:
+                    href: https://openapi-generator.tech
+                  self:
+                    href: https://openapi-generator.tech
+                displayName: displayName
+                description: description
+                externalId: externalId
+                customData: "{}"
+                population:
+                  id: id
+                directMemberCounts:
+                  users: 7
+                environment:
+                  id: id
+                sourceType: null
+                name: name
+                userFilter: userFilter
+                id: id
+                totalMemberCounts:
+                  users: 1
+            name: name
             id: id
+            type: null
           attributes:
           - null
           - null
@@ -30327,18 +30442,56 @@ components:
       type: object
     GroupMembership:
       example:
+        environment:
+          id: id
         _links:
           next:
             href: https://openapi-generator.tech
           self:
             href: https://openapi-generator.tech
+        _embedded:
+          group:
+            sourceId: sourceId
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            displayName: displayName
+            description: description
+            externalId: externalId
+            customData: "{}"
+            population:
+              id: id
+            directMemberCounts:
+              users: 7
+            environment:
+              id: id
+            sourceType: null
+            name: name
+            userFilter: userFilter
+            id: id
+            totalMemberCounts:
+              users: 1
+        name: name
         id: id
+        type: null
       properties:
         _links:
           $ref: '#/components/schemas/LinksHATEOAS'
+        _embedded:
+          $ref: '#/components/schemas/GroupMembership__embedded'
         id:
           description: ID of the group to assign
           type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          description: A string that specifies the group name assigned to the user.
+          readOnly: true
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumGroupMembershipType'
       required:
       - id
       type: object
@@ -33017,6 +33170,176 @@ components:
       - name
       - type
       type: object
+    SchemaAttributePatch:
+      example:
+        regexValidation:
+          valuesPatternShouldNotMatch:
+          - valuesPatternShouldNotMatch
+          - valuesPatternShouldNotMatch
+          requirements: requirements
+          valuesPatternShouldMatch:
+          - valuesPatternShouldMatch
+          - valuesPatternShouldMatch
+          pattern: pattern
+        displayName: displayName
+        unique: true
+        name: name
+        schemaType: null
+        description: description
+        type: null
+        multiValued: true
+        enumeratedValues:
+        - archived: true
+          description: description
+          value: value
+        - archived: true
+          description: description
+          value: value
+        enabled: true
+        required: true
+        subAttributes:
+        - schema:
+            id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          displayName: displayName
+          description: description
+          type: null
+          enumeratedValues:
+          - archived: true
+            description: description
+            value: value
+          - archived: true
+            description: description
+            value: value
+          enabled: true
+          required: true
+          subAttributes:
+          - null
+          - null
+          regexValidation:
+            valuesPatternShouldNotMatch:
+            - valuesPatternShouldNotMatch
+            - valuesPatternShouldNotMatch
+            requirements: requirements
+            valuesPatternShouldMatch:
+            - valuesPatternShouldMatch
+            - valuesPatternShouldMatch
+            pattern: pattern
+          environment:
+            id: id
+          unique: true
+          name: name
+          schemaType: null
+          id: id
+          ldapAttribute: ldapAttribute
+          multiValued: true
+        - schema:
+            id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          displayName: displayName
+          description: description
+          type: null
+          enumeratedValues:
+          - archived: true
+            description: description
+            value: value
+          - archived: true
+            description: description
+            value: value
+          enabled: true
+          required: true
+          subAttributes:
+          - null
+          - null
+          regexValidation:
+            valuesPatternShouldNotMatch:
+            - valuesPatternShouldNotMatch
+            - valuesPatternShouldNotMatch
+            requirements: requirements
+            valuesPatternShouldMatch:
+            - valuesPatternShouldMatch
+            - valuesPatternShouldMatch
+            pattern: pattern
+          environment:
+            id: id
+          unique: true
+          name: name
+          schemaType: null
+          id: id
+          ldapAttribute: ldapAttribute
+          multiValued: true
+      properties:
+        description:
+          description: "A string that specifies an optional property that specifies\
+            \ the description of the attribute. If provided, it must not be an empty\
+            \ string. Valid characters consists of any Unicode letter, mark (for example,\
+            \ accent or umlaut), numeric character, punctuation character, or space."
+          type: string
+        displayName:
+          description: "A string that specifies an optional property that specifies\
+            \ the display name of the attribute such as 'T-shirt size’. If provided,\
+            \ it must not be an empty string. Valid characters consist of any Unicode\
+            \ letter, mark (for example, accent or umlaut), numeric character, forward\
+            \ slash, dot, apostrophe, underscore, space, or hyphen."
+          type: string
+        enabled:
+          description: A boolean that specifies whether or not the attribute is enabled.
+            This is a required property for POST and PUT operations; it cannot be
+            omitted or explicitly set to null. Disabled attributes are ignored on
+            create/update and not returned on read.
+          type: boolean
+        name:
+          description: "A string that specifies the name of the attribute. The attribute\
+            \ name must be provided during creation, must not be empty and must not\
+            \ exceed 256 characters. It must also be unique within the schema for\
+            \ an environment. It must start with a letter and may be followed by letters,\
+            \ numbers or hyphens."
+          type: string
+        required:
+          description: A boolean that specifies whether or not the attribute is required.
+            Required attributes must be provided a value during create/update. Defaults
+            to false if not provided.
+          type: boolean
+        schemaType:
+          $ref: '#/components/schemas/EnumSchemaAttributeSchemaType'
+        subAttributes:
+          description: "The list of sub-attributes of this attribute. Only `COMPLEX`\
+            \ attribute types can have sub-attributes, and only one-level of nesting\
+            \ is allowed. The leaf attribute definition must have a type of `STRING`\
+            \ or `JSON`. A `COMPLEX` attribute definition must have at least one child\
+            \ attribute definition."
+          items:
+            $ref: '#/components/schemas/SchemaAttribute'
+          type: array
+        type:
+          $ref: '#/components/schemas/EnumSchemaAttributeType'
+        unique:
+          description: A boolean that specifies whether or not the attribute must
+            have a unique value within the environment. This is a required property
+            for POST and PUT operations; it cannot be omitted or explicitly set to
+            null.
+          type: boolean
+        multiValued:
+          description: "A boolean that specifies whether the attribute has multiple\
+            \ values or a single one. This value can only change from false to true,\
+            \ as changing from true to false is not allowed. Maximum number of values\
+            \ stored is 1,000."
+          type: boolean
+        enumeratedValues:
+          items:
+            $ref: '#/components/schemas/SchemaAttribute_enumeratedValues_inner'
+          type: array
+        regexValidation:
+          $ref: '#/components/schemas/SchemaAttribute_regexValidation'
+      type: object
     SignOnPolicy:
       example:
         createdAt: createdAt
@@ -34166,14 +34489,6 @@ components:
       - $ref: '#/components/schemas/Gateway'
       - $ref: '#/components/schemas/GatewayTypeLDAP'
       - $ref: '#/components/schemas/GatewayTypeRADIUS'
-    addUserToGroup_request:
-      example:
-        id: e947cec5-62c5-4d80-af16-497b29e8a685
-      properties:
-        id:
-          description: The group ID to add the user to
-          type: string
-      type: object
     LinksHATEOAS_self:
       description: An object that describes the current resource.
       example:
@@ -34274,12 +34589,7 @@ components:
     Application_accessControl_group:
       properties:
         type:
-          description: A string that specifies the group type required to access the
-            application. Options are ANY_GROUP (the actor must belong to at least
-            one group listed in the accessControl.group.groups property) and ALL_GROUPS
-            (the actor must belong to all groups listed in the accessControl.group.groups
-            property).
-          type: string
+          $ref: '#/components/schemas/EnumApplicationAccessControlGroupType'
         groups:
           description: A set that specifies the group IDs for the groups the actor
             must belong to for access to the application.
@@ -36376,18 +36686,74 @@ components:
           type: null
           updatedAt: updatedAt
         groupMemberships:
-        - _links:
+        - environment:
+            id: id
+          _links:
             next:
               href: https://openapi-generator.tech
             self:
               href: https://openapi-generator.tech
+          _embedded:
+            group:
+              sourceId: sourceId
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
+              displayName: displayName
+              description: description
+              externalId: externalId
+              customData: "{}"
+              population:
+                id: id
+              directMemberCounts:
+                users: 7
+              environment:
+                id: id
+              sourceType: null
+              name: name
+              userFilter: userFilter
+              id: id
+              totalMemberCounts:
+                users: 1
+          name: name
           id: id
-        - _links:
+          type: null
+        - environment:
+            id: id
+          _links:
             next:
               href: https://openapi-generator.tech
             self:
               href: https://openapi-generator.tech
+          _embedded:
+            group:
+              sourceId: sourceId
+              _links:
+                next:
+                  href: https://openapi-generator.tech
+                self:
+                  href: https://openapi-generator.tech
+              displayName: displayName
+              description: description
+              externalId: externalId
+              customData: "{}"
+              population:
+                id: id
+              directMemberCounts:
+                users: 7
+              environment:
+                id: id
+              sourceType: null
+              name: name
+              userFilter: userFilter
+              id: id
+              totalMemberCounts:
+                users: 1
+          name: name
           id: id
+          type: null
         attributes:
         - null
         - null
@@ -37090,6 +37456,35 @@ components:
           description: Number of users with direct membership
           type: integer
       readOnly: true
+      type: object
+    GroupMembership__embedded:
+      example:
+        group:
+          sourceId: sourceId
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          displayName: displayName
+          description: description
+          externalId: externalId
+          customData: "{}"
+          population:
+            id: id
+          directMemberCounts:
+            users: 7
+          environment:
+            id: id
+          sourceType: null
+          name: name
+          userFilter: userFilter
+          id: id
+          totalMemberCounts:
+            users: 1
+      properties:
+        group:
+          $ref: '#/components/schemas/Group'
       type: object
     IdentityProviderAttribute_identityProvider:
       example:

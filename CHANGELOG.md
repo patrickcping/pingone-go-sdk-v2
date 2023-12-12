@@ -1,7 +1,28 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.34.0](./management/CHANGELOG.md)
+    * **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
+    * **Enhancement** Change `Type` property in the `ApplicationAccessControlGroup` object model to be an ENUM. [#295](https://github.com/patrickcping/pingone-go-sdk-v2/pull/295)
+
+# Release (2023-11-29) (2)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.2
+     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.18.0 => v0.18.1 [#290](https://github.com/patrickcping/pingone-go-sdk-v2/pull/290)
+     * **Note** bump `golang.org/x/oauth2` v0.14.0 => v0.15.0 [#290](https://github.com/patrickcping/pingone-go-sdk-v2/pull/290)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.18.1](./mfa/CHANGELOG.md)
+    * **Bug** Fixed invalid value for `EnumMFADevicePolicySelection` model.  `ALWAYS_PROMPT_TO_SELECT` corrected to `ALWAYS_DISPLAY_DEVICES`. [#289](https://github.com/patrickcping/pingone-go-sdk-v2/pull/289)
+
+# Release (2023-11-29)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.1
+     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.32.0 => v0.33.0 [#287](https://github.com/patrickcping/pingone-go-sdk-v2/pull/287)
+     * **Note** bump `golang.org/x/oauth2` v0.13.0 => v0.14.0 [#287](https://github.com/patrickcping/pingone-go-sdk-v2/pull/287)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.33.0](./management/CHANGELOG.md)
     * **Feature** Add support for User Account API (allowing lock and unlock). [#282](https://github.com/patrickcping/pingone-go-sdk-v2/pull/282)
+    * **Enhancement** Expand the `GroupMembership` data model. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
+    * **Enhancement** Simplified the `GroupMembershipApi` request and response payload models. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
+    * **Enhancement** Corrected and expanded the `SchemaAttributePatch` request and response payload. [#285](https://github.com/patrickcping/pingone-go-sdk-v2/pull/285)
+    * **Enhancement** Added `CorsSettings` object attribute to the `ApplicationOIDC`, `ApplicationSAML` and `ApplicationWSFED` object models. [#286](https://github.com/patrickcping/pingone-go-sdk-v2/pull/286)
 
 # Release (2023-11-10)
 

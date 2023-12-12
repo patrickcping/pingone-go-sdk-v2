@@ -77,6 +77,14 @@ components:
       type: string
       description: A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer.
       enum: [ADMIN_USERS_ONLY]
+    EnumApplicationAccessControlGroupType:
+      type: string
+      enum: [ANY_GROUP, ALL_GROUPS]
+      description: A string that specifies the group type required to access the application. Options are `ANY_GROUP` (the actor must belong to at least one group listed in the `groups` property) and `ALL_GROUPS` (the actor must belong to all groups listed in the `groups` property).
+    EnumApplicationCorsSettingsBehavior:
+      type: string
+      enum: [ALLOW_NO_ORIGINS, ALLOW_SPECIFIC_ORIGINS]
+      description: The behavior of CORS for the application. `ALLOWS_NO_ORIGINS` rejects all CORS requests.  `ALLOW_SPECIFIC_ORIGINS` rejects all CORS requests except those listed in `corsSettings.origins`.
     EnumApplicationNativeGooglePlayVerificationType:
       type: string
       enum: [GOOGLE, INTERNAL]
@@ -612,6 +620,14 @@ components:
     EnumUserAccountContentTypeHeader:
       type: string
       enum: [application/vnd.pingidentity.account.unlock+json, application/vnd.pingidentity.account.lock+json]
+    EnumGroupMembershipType:
+      type: string
+      enum: [DIRECT, INDIRECT]
+      description: A string that defines the relationship of group membership
+    EnumUserGroupAssignmentExpandParameter:
+      type: string
+      enum: [group]
+      description: When this parameter is appended to the request, the results are expanded to include additional information about each group.
     EnumUserRequestInclude:
       type: string
       enum: [memberOfGroupIDs, memberOfGroupNames]
@@ -815,8 +831,7 @@ components:
               type: object
               properties:
                 type:
-                  type: string
-                  description: A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
+                  $ref: '#/components/schemas/EnumApplicationAccessControlGroupType'
                 groups:
                   type: array
                   description: A set that specifies the group IDs for the groups the actor must belong to for access to the application.
@@ -881,6 +896,20 @@ components:
         - name
         - type
         - protocol
+    ApplicationCorsSettings:
+      type: object
+      description: Allows customization of how the Authorization and Authentication APIs interact with CORS requests that reference the application.  If omitted, the application allows CORS requests from any origin except for operations that expose sensitive information (e.g. `/as/authorize` and `/as/token`).  This is legacy behavior, and it is recommended that applications migrate to include specific `corsSettings`.
+      properties:
+        behavior:
+          $ref: '#/components/schemas/EnumApplicationCorsSettingsBehavior'
+        origins:
+          type: array
+          description: Must be non-empty when `corsSettings.behavior` is `ALLOW_SPECIFIC_ORIGINS` and must be omitted or empty when `corsSettings.behavior` is `ALLOW_NO_ORIGINS`.  Limited to 20 values.  Values are the origins from which CORS requests to the Authorization and Authentication APIs are allowed.  Each value is an `http` or `https` URL without a path.  The host may be a domain name (including `localhost`), or an IPv4 address.  Subdomains may use the wildcard (*) to match any string.
+          maxItems: 20
+          items:
+            type: string
+      required:
+        - behavior
     ApplicationExternalLink:
       allOf:
         - $ref: '#/components/schemas/Application'
@@ -911,6 +940,8 @@ components:
               type: boolean
               description: A boolean that specifies whether the SAML assertion itself should be signed. The default value is `true`.
               default: true
+            corsSettings:
+              $ref: '#/components/schemas/ApplicationCorsSettings'
             enableRequestedAuthnContext:
               type: boolean
               description: Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
@@ -988,6 +1019,8 @@ components:
             assignActorRoles:
               type: boolean
               description: A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
+            corsSettings:
+              $ref: '#/components/schemas/ApplicationCorsSettings'
             mobile:
               type: object
               properties:
@@ -1321,6 +1354,8 @@ components:
             domainName:
               type: string
               description: The federated domain name (for example, the Azure custom domain).
+            corsSettings:
+              $ref: '#/components/schemas/ApplicationCorsSettings'
             idpSigning:
               type: object
               description: Contains the information about the signing of requests by the identity provider (IdP).
@@ -3007,11 +3042,24 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
+        '_embedded':
+          type: object
+          properties:
+            group:
+              $ref: '#/components/schemas/Group'
         id:
           type: string
           description: ID of the group to assign
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+          description: A string that specifies the group name assigned to the user.
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/EnumGroupMembershipType'
       required:
-       - id
+        - id
     GroupNesting:
       type: object
       properties:
@@ -5414,6 +5462,79 @@ components:
         - name
         - enabled
         - type
+    SchemaAttributePatch:
+      type: object
+      properties:
+        description:
+          type: string
+          description: A string that specifies an optional property that specifies the description of the attribute. If provided, it must not be an empty string. Valid characters consists of any Unicode letter, mark (for example, accent or umlaut), numeric character, punctuation character, or space.
+        displayName:
+          type: string
+          description: A string that specifies an optional property that specifies the display name of the attribute such as 'T-shirt size’. If provided, it must not be an empty string. Valid characters consist of any Unicode letter, mark (for example, accent or umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
+        enabled:
+          type: boolean
+          description: A boolean that specifies whether or not the attribute is enabled. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. Disabled attributes are ignored on create/update and not returned on read.
+        name:
+          type: string
+          description: A string that specifies the name of the attribute. The attribute name must be provided during creation, must not be empty and must not exceed 256 characters. It must also be unique within the schema for an environment. It must start with a letter and may be followed by letters, numbers or hyphens.
+        required:
+          type: boolean
+          description: A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided.
+        schemaType:
+          $ref: '#/components/schemas/EnumSchemaAttributeSchemaType'
+        subAttributes:
+          type: array
+          description: The list of sub-attributes of this attribute. Only `COMPLEX` attribute types can have sub-attributes, and only one-level of nesting is allowed. The leaf attribute definition must have a type of `STRING` or `JSON`. A `COMPLEX` attribute definition must have at least one child attribute definition.
+          items:
+            $ref: '#/components/schemas/SchemaAttribute'
+        type:
+          $ref: '#/components/schemas/EnumSchemaAttributeType'
+        unique:
+          type: boolean
+          description: A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null.
+        multiValued:
+          type: boolean
+          description: A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000.
+        enumeratedValues:
+          type: array
+          items:
+            type: object
+            description: An object representation of an enumerated value. Maximum number of enumerations is 100.
+            properties:
+              value:
+                type: string
+                description: A string that specifies the immutable value. Values are case sensitive; two values that differ only by case are not allowed.
+              archived:
+                type: boolean
+                description: A boolean that specifies whether the enumerated value is archived. Archived values cannot be added to a user, but existing archived values are preserved. This allows clients that read the schema to know all possible values of an attribute.
+              description:
+                type: string
+                description: A string that specifies the description of the enumerated value.
+            required:
+              - value
+        regexValidation:
+          type: object
+          description: Object representation of the optional regular expression representation of this attribute.
+          properties:
+            pattern:
+              type: string
+              description: A string that specifies the regular expression to which the attribute must conform.
+            requirements:
+              type: string
+              description: A string that specifies a developer friendly description of the regular expression requirements.
+            valuesPatternShouldMatch:
+              type: array
+              description: An array that specifies the list of strings matching the regular expression.
+              items:
+                type: string
+            valuesPatternShouldNotMatch:
+              type: array
+              description: An array that specifies the list of strings not matching the regular expression.
+              items:
+                type: string
+          required:
+            - pattern
+            - requirements
     SignOnPolicy:
       type: object
       properties:
@@ -17371,7 +17492,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SchemaAttribute'
+              $ref: '#/components/schemas/SchemaAttributePatch'
               example:
                 name: NewName
                 schemaType: CORE
@@ -18930,13 +19051,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                id:
-                  type: string
-                  description: The group ID to add the user to
-              example:
-                id: e947cec5-62c5-4d80-af16-497b29e8a685
+              $ref: '#/components/schemas/GroupMembership'
       parameters:
         - name: environmentID
           in: path
@@ -18970,7 +19085,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
     get:
       tags:
         - Group Membership
@@ -18996,7 +19111,6 @@ paths:
           in: query
           schema:
             type: string
-          example: type eq "DIRECT"
         - name: environmentID
           in: path
           schema:
@@ -19076,7 +19190,7 @@ paths:
         - name: expand
           in: query
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumUserGroupAssignmentExpandParameter'
           example: group
         - name: environmentID
           in: path
@@ -19113,7 +19227,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
   /environments/{environmentID}/users/{userID}/enabled:
     get:
       tags:

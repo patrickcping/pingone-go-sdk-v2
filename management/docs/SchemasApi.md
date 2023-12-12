@@ -446,7 +446,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAttributePatch
 
-> SchemaAttribute UpdateAttributePatch(ctx, environmentID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
+> SchemaAttribute UpdateAttributePatch(ctx, environmentID, schemaID, attributeID).SchemaAttributePatch(schemaAttributePatch).Execute()
 
 UPDATE Attribute (Patch)
 
@@ -466,11 +466,11 @@ func main() {
     environmentID := "environmentID_example" // string | 
     schemaID := "schemaID_example" // string | 
     attributeID := "attributeID_example" // string | 
-    schemaAttribute := *openapiclient.NewSchemaAttribute(false, "Name_example", openapiclient.EnumSchemaAttributeType("STRING")) // SchemaAttribute |  (optional)
+    schemaAttributePatch := *openapiclient.NewSchemaAttributePatch() // SchemaAttributePatch |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SchemasApi.UpdateAttributePatch(context.Background(), environmentID, schemaID, attributeID).SchemaAttribute(schemaAttribute).Execute()
+    resp, r, err := apiClient.SchemasApi.UpdateAttributePatch(context.Background(), environmentID, schemaID, attributeID).SchemaAttributePatch(schemaAttributePatch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.UpdateAttributePatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 
 
 
- **schemaAttribute** | [**SchemaAttribute**](SchemaAttribute.md) |  | 
+ **schemaAttributePatch** | [**SchemaAttributePatch**](SchemaAttributePatch.md) |  | 
 
 ### Return type
 
