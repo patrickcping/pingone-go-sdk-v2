@@ -10,17 +10,17 @@ Name | Type | Description | Notes
 **Key** | **string** | A string that specifies an identifier for the field component. | 
 **Label** | **string** | A string that specifies the social login button label. | 
 **LabelMode** | Pointer to [**EnumFormElementLabelMode**](EnumFormElementLabelMode.md) |  | [optional] 
-**Required** | **bool** | A boolean that specifies whether the field is required. | 
+**Required** | Pointer to **bool** | A boolean that specifies whether the field is required. | [optional] 
 **OtherOptionEnabled** | Pointer to **bool** | A boolean that specifies whether the end user can type an entry that is not in a predefined list. | [optional] 
 **OtherOptionKey** | Pointer to **string** | A string that specifies whether the form identifies that the choice is a custom choice not from a predefined list. | [optional] 
-**OtherOptionlabel** | Pointer to **string** | A string that specifies the label for a custom or \&quot;other\&quot; choice in a list. | [optional] 
-**OtherOptionInputlabel** | Pointer to **string** | A string that specifies the label for the other option in drop-down controls. | [optional] 
+**OtherOptionLabel** | Pointer to **string** | A string that specifies the label for a custom or \&quot;other\&quot; choice in a list. | [optional] 
+**OtherOptionInputLabel** | Pointer to **string** | A string that specifies the label for the other option in drop-down controls. | [optional] 
 **OtherOptionAttributeDisabled** | Pointer to **bool** | A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute. | [optional] 
 **Layout** | [**EnumFormElementLayout**](EnumFormElementLayout.md) |  | 
-**Options** | **[]string** | An array of strings that specifies the unique list of options. This is a required property when the type is &#x60;RADIO&#x60;, &#x60;CHECKBOX&#x60;, or &#x60;DROPDOWN&#x60;. | 
+**Options** | [**[]FormElementOption**](FormElementOption.md) | An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is &#x60;RADIO&#x60;, &#x60;CHECKBOX&#x60;, or &#x60;DROPDOWN&#x60;. | 
 **Validation** | [**FormElementValidation**](FormElementValidation.md) |  | 
+**ShowPasswordRequirements** | Pointer to **bool** | A boolean that specifies whether the password requirements are displayed. | [optional] 
 **LabelPasswordVerify** | Pointer to **string** | A string that when a second field for verifies password is used, this poperty specifies the field label for that verify field. | [optional] 
-**Value** | **string** | A string that specifies the value of the field if this option is selected. | 
 **Content** | Pointer to **string** | A string that specifies the field content. | [optional] 
 **Styles** | Pointer to [**FormSocialLoginButtonStyles**](FormSocialLoginButtonStyles.md) |  | [optional] 
 **Size** | [**EnumFormRecaptchaV2Size**](EnumFormRecaptchaV2Size.md) |  | 
@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 
 ### NewFormField
 
-`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, required bool, layout EnumFormElementLayout, options []string, validation FormElementValidation, value string, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, qrCodeType EnumFormQrCodeType, showBorder bool, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, iconSrc string, ) *FormField`
+`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, qrCodeType EnumFormQrCodeType, showBorder bool, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, iconSrc string, ) *FormField`
 
 NewFormField instantiates a new FormField object
 This constructor will assign default values to properties that have it defined,
@@ -203,6 +203,11 @@ and a boolean to check if the value has been set.
 
 SetRequired sets Required field to given value.
 
+### HasRequired
+
+`func (o *FormField) HasRequired() bool`
+
+HasRequired returns a boolean if a field has been set.
 
 ### GetOtherOptionEnabled
 
@@ -254,55 +259,55 @@ SetOtherOptionKey sets OtherOptionKey field to given value.
 
 HasOtherOptionKey returns a boolean if a field has been set.
 
-### GetOtherOptionlabel
+### GetOtherOptionLabel
 
-`func (o *FormField) GetOtherOptionlabel() string`
+`func (o *FormField) GetOtherOptionLabel() string`
 
-GetOtherOptionlabel returns the OtherOptionlabel field if non-nil, zero value otherwise.
+GetOtherOptionLabel returns the OtherOptionLabel field if non-nil, zero value otherwise.
 
-### GetOtherOptionlabelOk
+### GetOtherOptionLabelOk
 
-`func (o *FormField) GetOtherOptionlabelOk() (*string, bool)`
+`func (o *FormField) GetOtherOptionLabelOk() (*string, bool)`
 
-GetOtherOptionlabelOk returns a tuple with the OtherOptionlabel field if it's non-nil, zero value otherwise
+GetOtherOptionLabelOk returns a tuple with the OtherOptionLabel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOtherOptionlabel
+### SetOtherOptionLabel
 
-`func (o *FormField) SetOtherOptionlabel(v string)`
+`func (o *FormField) SetOtherOptionLabel(v string)`
 
-SetOtherOptionlabel sets OtherOptionlabel field to given value.
+SetOtherOptionLabel sets OtherOptionLabel field to given value.
 
-### HasOtherOptionlabel
+### HasOtherOptionLabel
 
-`func (o *FormField) HasOtherOptionlabel() bool`
+`func (o *FormField) HasOtherOptionLabel() bool`
 
-HasOtherOptionlabel returns a boolean if a field has been set.
+HasOtherOptionLabel returns a boolean if a field has been set.
 
-### GetOtherOptionInputlabel
+### GetOtherOptionInputLabel
 
-`func (o *FormField) GetOtherOptionInputlabel() string`
+`func (o *FormField) GetOtherOptionInputLabel() string`
 
-GetOtherOptionInputlabel returns the OtherOptionInputlabel field if non-nil, zero value otherwise.
+GetOtherOptionInputLabel returns the OtherOptionInputLabel field if non-nil, zero value otherwise.
 
-### GetOtherOptionInputlabelOk
+### GetOtherOptionInputLabelOk
 
-`func (o *FormField) GetOtherOptionInputlabelOk() (*string, bool)`
+`func (o *FormField) GetOtherOptionInputLabelOk() (*string, bool)`
 
-GetOtherOptionInputlabelOk returns a tuple with the OtherOptionInputlabel field if it's non-nil, zero value otherwise
+GetOtherOptionInputLabelOk returns a tuple with the OtherOptionInputLabel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOtherOptionInputlabel
+### SetOtherOptionInputLabel
 
-`func (o *FormField) SetOtherOptionInputlabel(v string)`
+`func (o *FormField) SetOtherOptionInputLabel(v string)`
 
-SetOtherOptionInputlabel sets OtherOptionInputlabel field to given value.
+SetOtherOptionInputLabel sets OtherOptionInputLabel field to given value.
 
-### HasOtherOptionInputlabel
+### HasOtherOptionInputLabel
 
-`func (o *FormField) HasOtherOptionInputlabel() bool`
+`func (o *FormField) HasOtherOptionInputLabel() bool`
 
-HasOtherOptionInputlabel returns a boolean if a field has been set.
+HasOtherOptionInputLabel returns a boolean if a field has been set.
 
 ### GetOtherOptionAttributeDisabled
 
@@ -351,20 +356,20 @@ SetLayout sets Layout field to given value.
 
 ### GetOptions
 
-`func (o *FormField) GetOptions() []string`
+`func (o *FormField) GetOptions() []FormElementOption`
 
 GetOptions returns the Options field if non-nil, zero value otherwise.
 
 ### GetOptionsOk
 
-`func (o *FormField) GetOptionsOk() (*[]string, bool)`
+`func (o *FormField) GetOptionsOk() (*[]FormElementOption, bool)`
 
 GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOptions
 
-`func (o *FormField) SetOptions(v []string)`
+`func (o *FormField) SetOptions(v []FormElementOption)`
 
 SetOptions sets Options field to given value.
 
@@ -388,6 +393,31 @@ and a boolean to check if the value has been set.
 
 SetValidation sets Validation field to given value.
 
+
+### GetShowPasswordRequirements
+
+`func (o *FormField) GetShowPasswordRequirements() bool`
+
+GetShowPasswordRequirements returns the ShowPasswordRequirements field if non-nil, zero value otherwise.
+
+### GetShowPasswordRequirementsOk
+
+`func (o *FormField) GetShowPasswordRequirementsOk() (*bool, bool)`
+
+GetShowPasswordRequirementsOk returns a tuple with the ShowPasswordRequirements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShowPasswordRequirements
+
+`func (o *FormField) SetShowPasswordRequirements(v bool)`
+
+SetShowPasswordRequirements sets ShowPasswordRequirements field to given value.
+
+### HasShowPasswordRequirements
+
+`func (o *FormField) HasShowPasswordRequirements() bool`
+
+HasShowPasswordRequirements returns a boolean if a field has been set.
 
 ### GetLabelPasswordVerify
 
@@ -413,26 +443,6 @@ SetLabelPasswordVerify sets LabelPasswordVerify field to given value.
 `func (o *FormField) HasLabelPasswordVerify() bool`
 
 HasLabelPasswordVerify returns a boolean if a field has been set.
-
-### GetValue
-
-`func (o *FormField) GetValue() string`
-
-GetValue returns the Value field if non-nil, zero value otherwise.
-
-### GetValueOk
-
-`func (o *FormField) GetValueOk() (*string, bool)`
-
-GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValue
-
-`func (o *FormField) SetValue(v string)`
-
-SetValue sets Value field to given value.
-
 
 ### GetContent
 

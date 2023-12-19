@@ -25,7 +25,7 @@ type FormFieldFlowButton struct {
 	Key string `json:"key"`
 	// A string that specifies the button label.
 	Label string `json:"label"`
-	Styles *FormFlowButtonStyles `json:"styles,omitempty"`
+	Styles *FormStyles `json:"styles,omitempty"`
 }
 
 // NewFormFieldFlowButton instantiates a new FormFieldFlowButton object
@@ -146,9 +146,9 @@ func (o *FormFieldFlowButton) SetLabel(v string) {
 }
 
 // GetStyles returns the Styles field value if set, zero value otherwise.
-func (o *FormFieldFlowButton) GetStyles() FormFlowButtonStyles {
+func (o *FormFieldFlowButton) GetStyles() FormStyles {
 	if o == nil || IsNil(o.Styles) {
-		var ret FormFlowButtonStyles
+		var ret FormStyles
 		return ret
 	}
 	return *o.Styles
@@ -156,7 +156,7 @@ func (o *FormFieldFlowButton) GetStyles() FormFlowButtonStyles {
 
 // GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldFlowButton) GetStylesOk() (*FormFlowButtonStyles, bool) {
+func (o *FormFieldFlowButton) GetStylesOk() (*FormStyles, bool) {
 	if o == nil || IsNil(o.Styles) {
 		return nil, false
 	}
@@ -172,8 +172,8 @@ func (o *FormFieldFlowButton) HasStyles() bool {
 	return false
 }
 
-// SetStyles gets a reference to the given FormFlowButtonStyles and assigns it to the Styles field.
-func (o *FormFieldFlowButton) SetStyles(v FormFlowButtonStyles) {
+// SetStyles gets a reference to the given FormStyles and assigns it to the Styles field.
+func (o *FormFieldFlowButton) SetStyles(v FormStyles) {
 	o.Styles = &v
 }
 

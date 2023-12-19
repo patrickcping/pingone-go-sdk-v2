@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Row** | **int32** | An integer that specifies the number of rows (maximum number is 50). | 
-**Col** | **int32** | An integer that specifies the number of columns (min &#x3D; 1; max &#x3D; 4). | 
+**Col** | **int32** | An integer that specifies the number of columns (min &#x3D; 0; max &#x3D; 4). | 
 **Width** | Pointer to **int32** | An integer that specifies the width of the field (in percentage). | [optional] 
 
 ## Methods

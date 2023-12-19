@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    form := *openapiclient.NewForm("Name_example", openapiclient.EnumFormCategory("CUSTOM"), *openapiclient.NewFormComponents([]openapiclient.FormField{openapiclient.FormField{FormFieldCheckbox: openapiclient.NewFormFieldCheckbox(openapiclient.EnumFormFieldType("TEXT"), *openapiclient.NewFormFieldCommonPosition(int32(123), int32(123)), "Key_example", false, openapiclient.EnumFormElementLayout("HORIZONTAL"), []string{"Options_example"})}}), false, false) // Form |  (optional)
+    form := *openapiclient.NewForm("Name_example", openapiclient.EnumFormCategory("CUSTOM"), *openapiclient.NewFormComponents([]openapiclient.FormField{openapiclient.FormField{FormFieldCheckbox: openapiclient.NewFormFieldCheckbox(openapiclient.EnumFormFieldType("TEXT"), *openapiclient.NewFormFieldCommonPosition(int32(123), int32(123)), "Key_example", "Label_example", openapiclient.EnumFormElementLayout("HORIZONTAL"), []openapiclient.FormElementOption{*openapiclient.NewFormElementOption("Label_example", "Value_example")})}}), false, false) // Form |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -313,7 +313,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     formID := "formID_example" // string | 
-    form := *openapiclient.NewForm("Name_example", openapiclient.EnumFormCategory("CUSTOM"), *openapiclient.NewFormComponents([]openapiclient.FormField{openapiclient.FormField{FormFieldCheckbox: openapiclient.NewFormFieldCheckbox(openapiclient.EnumFormFieldType("TEXT"), *openapiclient.NewFormFieldCommonPosition(int32(123), int32(123)), "Key_example", false, openapiclient.EnumFormElementLayout("HORIZONTAL"), []string{"Options_example"})}}), false, false) // Form |  (optional)
+    form := *openapiclient.NewForm("Name_example", openapiclient.EnumFormCategory("CUSTOM"), *openapiclient.NewFormComponents([]openapiclient.FormField{openapiclient.FormField{FormFieldCheckbox: openapiclient.NewFormFieldCheckbox(openapiclient.EnumFormFieldType("TEXT"), *openapiclient.NewFormFieldCommonPosition(int32(123), int32(123)), "Key_example", "Label_example", openapiclient.EnumFormElementLayout("HORIZONTAL"), []openapiclient.FormElementOption{*openapiclient.NewFormElementOption("Label_example", "Value_example")})}}), false, false) // Form |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
