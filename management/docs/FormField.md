@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **Theme** | [**EnumFormRecaptchaV2Theme**](EnumFormRecaptchaV2Theme.md) |  | 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
 **QrCodeType** | [**EnumFormQrCodeType**](EnumFormQrCodeType.md) |  | 
-**ShowBorder** | **bool** | A boolean that specifies the border visibility. | 
+**ShowBorder** | Pointer to **bool** | A boolean that specifies the border visibility. | [optional] 
 **IdpType** | [**EnumFormSocialLoginIdpType**](EnumFormSocialLoginIdpType.md) |  | 
 **IdpName** | **string** | A string that specifies the external identity provider name. | 
 **IdpId** | **string** | A string that specifies the external identity provider&#39;s ID. | 
@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 
 ### NewFormField
 
-`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, qrCodeType EnumFormQrCodeType, showBorder bool, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, iconSrc string, ) *FormField`
+`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, qrCodeType EnumFormQrCodeType, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, iconSrc string, ) *FormField`
 
 NewFormField instantiates a new FormField object
 This constructor will assign default values to properties that have it defined,
@@ -593,6 +593,11 @@ and a boolean to check if the value has been set.
 
 SetShowBorder sets ShowBorder field to given value.
 
+### HasShowBorder
+
+`func (o *FormField) HasShowBorder() bool`
+
+HasShowBorder returns a boolean if a field has been set.
 
 ### GetIdpType
 

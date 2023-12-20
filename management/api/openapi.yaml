@@ -30079,9 +30079,6 @@ components:
       type: object
     FormRecaptchaV2:
       properties:
-        key:
-          description: A string that specifies an identifier for the field component.
-          type: string
         size:
           $ref: '#/components/schemas/EnumFormRecaptchaV2Size'
         theme:
@@ -30090,7 +30087,6 @@ components:
           $ref: '#/components/schemas/EnumFormItemAlignment'
       required:
       - alignment
-      - key
       - size
       - theme
       type: object
@@ -30116,12 +30112,23 @@ components:
         height:
           type: integer
         padding:
-          $ref: '#/components/schemas/FormStyles_padding'
+          $ref: '#/components/schemas/FormStylesPadding'
         width:
           description: An integer that specifies the button width. Set as a percentage.
           type: integer
         widthUnit:
           $ref: '#/components/schemas/EnumFormStylesWidthUnit'
+      type: object
+    FormStylesPadding:
+      properties:
+        top:
+          type: integer
+        bottom:
+          type: integer
+        left:
+          type: integer
+        right:
+          type: integer
       type: object
     FormSocialLoginButton:
       properties:
@@ -30172,7 +30179,10 @@ components:
       type: object
     FormQrCode:
       properties:
-        QrCodeType:
+        key:
+          description: A string that specifies an identifier for the field component.
+          type: string
+        qrCodeType:
           $ref: '#/components/schemas/EnumFormQrCodeType'
         alignment:
           $ref: '#/components/schemas/EnumFormItemAlignment'
@@ -30180,9 +30190,9 @@ components:
           description: A boolean that specifies the border visibility.
           type: boolean
       required:
-      - QrCodeType
       - alignment
-      - showBorder
+      - key
+      - qrCodeType
       type: object
     Gateway:
       properties:
@@ -37233,7 +37243,7 @@ components:
       type: object
     FormFlowLink_styles:
       properties:
-        horizontalAlignment:
+        alignment:
           $ref: '#/components/schemas/EnumFormItemAlignment'
         textColor:
           description: A string that specifies the link text color. The value must
@@ -37242,17 +37252,8 @@ components:
         enabled:
           description: A boolean that specifies whether the link is enabled.
           type: boolean
-      type: object
-    FormStyles_padding:
-      properties:
-        top:
-          type: integer
-        bottom:
-          type: integer
-        left:
-          type: integer
-        right:
-          type: integer
+        padding:
+          $ref: '#/components/schemas/FormStylesPadding'
       type: object
     FormSocialLoginButton_styles:
       properties:

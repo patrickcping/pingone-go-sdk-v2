@@ -2559,7 +2559,7 @@ components:
         styles:
           type: object
           properties:
-            horizontalAlignment:
+            alignment:
               $ref: '#/components/schemas/EnumFormItemAlignment'
             textColor:
               type: string
@@ -2567,6 +2567,8 @@ components:
             enabled:
               type: boolean
               description: A boolean that specifies whether the link is enabled.
+            padding:
+              $ref: '#/components/schemas/FormStylesPadding'
       required:
         - key
         - label
@@ -2579,9 +2581,6 @@ components:
     FormRecaptchaV2:
       type: object
       properties:
-        key:
-          type: string
-          description: A string that specifies an identifier for the field component.
         size:
           $ref: '#/components/schemas/EnumFormRecaptchaV2Size'
         theme:
@@ -2589,7 +2588,6 @@ components:
         alignment:
           $ref: '#/components/schemas/EnumFormItemAlignment'
       required:
-        - key
         - size
         - theme
         - alignment
@@ -2613,21 +2611,23 @@ components:
         height:
           type: integer
         padding:
-          type: object
-          properties:
-            top:
-              type: integer
-            bottom:
-              type: integer
-            left:
-              type: integer
-            right:
-              type: integer
+          $ref: '#/components/schemas/FormStylesPadding'
         width:
           type: integer
           description: An integer that specifies the button width. Set as a percentage.
         widthUnit:
           $ref: '#/components/schemas/EnumFormStylesWidthUnit'
+    FormStylesPadding:
+      type: object
+      properties:
+        top:
+          type: integer
+        bottom:
+          type: integer
+        left:
+          type: integer
+        right:
+          type: integer
     FormSocialLoginButton:
       type: object
       properties:
@@ -2685,7 +2685,10 @@ components:
     FormQrCode:
       type: object
       properties:
-        QrCodeType:
+        key:
+          type: string
+          description: A string that specifies an identifier for the field component.
+        qrCodeType:
           $ref: '#/components/schemas/EnumFormQrCodeType'
         alignment:
           $ref: '#/components/schemas/EnumFormItemAlignment'
@@ -2693,9 +2696,9 @@ components:
           type: boolean
           description: A boolean that specifies the border visibility.
       required:
-        - QrCodeType
+        - key
+        - qrCodeType
         - alignment
-        - showBorder
     Gateway:
       type: object
       properties:
