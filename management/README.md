@@ -217,6 +217,11 @@ Class | Method | HTTP request | Description
 *GroupsApi* | [**ReadOneGroup**](docs/GroupsApi.md#readonegroup) | **Get** /environments/{environmentID}/groups/{groupID} | READ One Group
 *GroupsApi* | [**ReadOneGroupNesting**](docs/GroupsApi.md#readonegroupnesting) | **Get** /environments/{environmentID}/groups/{groupID}/memberOfGroups/{nestedGroupID} | READ One Group Nesting
 *GroupsApi* | [**UpdateGroup**](docs/GroupsApi.md#updategroup) | **Put** /environments/{environmentID}/groups/{groupID} | UPDATE Group
+*IdentityPropagationPlansApi* | [**CreatePlan**](docs/IdentityPropagationPlansApi.md#createplan) | **Post** /environments/{environmentID}/propagation/plans | CREATE Plan
+*IdentityPropagationPlansApi* | [**DeletePlan**](docs/IdentityPropagationPlansApi.md#deleteplan) | **Delete** /environments/{environmentID}/propagation/plans/{planID} | DELETE Plan
+*IdentityPropagationPlansApi* | [**ReadAllPlans**](docs/IdentityPropagationPlansApi.md#readallplans) | **Get** /environments/{environmentID}/propagation/plans | READ All Plans
+*IdentityPropagationPlansApi* | [**ReadOnePlan**](docs/IdentityPropagationPlansApi.md#readoneplan) | **Get** /environments/{environmentID}/propagation/plans/{planID} | READ One Plan
+*IdentityPropagationPlansApi* | [**UpdatePlan**](docs/IdentityPropagationPlansApi.md#updateplan) | **Put** /environments/{environmentID}/propagation/plans/{planID} | UPDATE Plan
 *IdentityProviderAttributesApi* | [**CreateIdentityProviderAttribute**](docs/IdentityProviderAttributesApi.md#createidentityproviderattribute) | **Post** /environments/{environmentID}/identityProviders/{providerID}/attributes | CREATE Identity Provider Attribute
 *IdentityProviderAttributesApi* | [**DeleteIdentityProviderAttribute**](docs/IdentityProviderAttributesApi.md#deleteidentityproviderattribute) | **Delete** /environments/{environmentID}/identityProviders/{providerID}/attributes/{providerAttributeID} | DELETE Identity Provider Attribute
 *IdentityProviderAttributesApi* | [**ReadAllIdentityProviderAttributes**](docs/IdentityProviderAttributesApi.md#readallidentityproviderattributes) | **Get** /environments/{environmentID}/identityProviders/{providerID}/attributes | READ All Identity Provider Attributes
@@ -302,11 +307,6 @@ Class | Method | HTTP request | Description
 *PropagationMappingsApi* | [**EnvironmentsEnvironmentIDPropagationMappingsMappingIDPut**](docs/PropagationMappingsApi.md#environmentsenvironmentidpropagationmappingsmappingidput) | **Put** /environments/{environmentID}/propagation/mappings/{mappingID} | UPDATE Mapping
 *PropagationMappingsApi* | [**EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsGet**](docs/PropagationMappingsApi.md#environmentsenvironmentidpropagationrulesruleidmappingsget) | **Get** /environments/{environmentID}/propagation/rules/{ruleID}/mappings | READ One Rule  Mapping
 *PropagationMappingsApi* | [**EnvironmentsEnvironmentIDPropagationRulesRuleIDMappingsPost**](docs/PropagationMappingsApi.md#environmentsenvironmentidpropagationrulesruleidmappingspost) | **Post** /environments/{environmentID}/propagation/rules/{ruleID}/mappings | CREATE Rule Mapping
-*PropagationPlansApi* | [**EnvironmentsEnvironmentIDPropagationPlansGet**](docs/PropagationPlansApi.md#environmentsenvironmentidpropagationplansget) | **Get** /environments/{environmentID}/propagation/plans | READ All Plans
-*PropagationPlansApi* | [**EnvironmentsEnvironmentIDPropagationPlansPlanIDDelete**](docs/PropagationPlansApi.md#environmentsenvironmentidpropagationplansplaniddelete) | **Delete** /environments/{environmentID}/propagation/plans/{planID} | DELETE Plan
-*PropagationPlansApi* | [**EnvironmentsEnvironmentIDPropagationPlansPlanIDGet**](docs/PropagationPlansApi.md#environmentsenvironmentidpropagationplansplanidget) | **Get** /environments/{environmentID}/propagation/plans/{planID} | READ One Plan
-*PropagationPlansApi* | [**EnvironmentsEnvironmentIDPropagationPlansPlanIDPut**](docs/PropagationPlansApi.md#environmentsenvironmentidpropagationplansplanidput) | **Put** /environments/{environmentID}/propagation/plans/{planID} | UPDATE Plan
-*PropagationPlansApi* | [**EnvironmentsEnvironmentIDPropagationPlansPost**](docs/PropagationPlansApi.md#environmentsenvironmentidpropagationplanspost) | **Post** /environments/{environmentID}/propagation/plans | CREATE Plan
 *PropagationRevisionsApi* | [**EnvironmentsEnvironmentIDPropagationRevisionsIdlatestGet**](docs/PropagationRevisionsApi.md#environmentsenvironmentidpropagationrevisionsidlatestget) | **Get** /environments/{environmentID}/propagation/revisions/id:latest | READ Latest Revision
 *PropagationRevisionsApi* | [**EnvironmentsEnvironmentIDPropagationRevisionsPost**](docs/PropagationRevisionsApi.md#environmentsenvironmentidpropagationrevisionspost) | **Post** /environments/{environmentID}/propagation/revisions | CREATE Revision
 *PropagationRevisionsApi* | [**EnvironmentsEnvironmentIDPropagationRevisionsPreviousRevisionIDGet**](docs/PropagationRevisionsApi.md#environmentsenvironmentidpropagationrevisionspreviousrevisionidget) | **Get** /environments/{environmentID}/propagation/revisions/{previousRevisionID} | READ Previous Revision
@@ -558,6 +558,7 @@ Class | Method | HTTP request | Description
  - [EnumGroupMembershipType](docs/EnumGroupMembershipType.md)
  - [EnumGroupSourceType](docs/EnumGroupSourceType.md)
  - [EnumHealthStatus](docs/EnumHealthStatus.md)
+ - [EnumIdentityPropagationPlanStatus](docs/EnumIdentityPropagationPlanStatus.md)
  - [EnumIdentityProvider](docs/EnumIdentityProvider.md)
  - [EnumIdentityProviderAttributeMappingType](docs/EnumIdentityProviderAttributeMappingType.md)
  - [EnumIdentityProviderAttributeMappingUpdate](docs/EnumIdentityProviderAttributeMappingUpdate.md)
@@ -700,6 +701,7 @@ Class | Method | HTTP request | Description
  - [GroupNesting](docs/GroupNesting.md)
  - [GroupPopulation](docs/GroupPopulation.md)
  - [GroupTotalMemberCounts](docs/GroupTotalMemberCounts.md)
+ - [IdentityPropagationPlan](docs/IdentityPropagationPlan.md)
  - [IdentityProvider](docs/IdentityProvider.md)
  - [IdentityProviderApple](docs/IdentityProviderApple.md)
  - [IdentityProviderAttribute](docs/IdentityProviderAttribute.md)
