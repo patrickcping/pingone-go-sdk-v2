@@ -1,4 +1,4 @@
-# v0.34.0 (Unreleased)
+# v0.34.0 (2023-12-27)
 
 * **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
 * **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)

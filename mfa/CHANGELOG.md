@@ -1,4 +1,4 @@
-# v0.18.2 (Unreleased)
+# v0.18.2 (2023-12-27)
 
 * **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
 
