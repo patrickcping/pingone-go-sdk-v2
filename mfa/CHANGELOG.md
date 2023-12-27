@@ -1,3 +1,7 @@
+# v0.18.2 (Unreleased)
+
+* **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
+
 # v0.18.1 (2023-11-29)
 
 * **Bug** Fixed invalid value for `EnumMFADevicePolicySelection` model.  `ALWAYS_PROMPT_TO_SELECT` corrected to `ALWAYS_DISPLAY_DEVICES`. [#289](https://github.com/patrickcping/pingone-go-sdk-v2/pull/289)

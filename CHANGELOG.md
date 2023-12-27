@@ -1,7 +1,10 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.6.1](./credentials/CHANGELOG.md)
+    * **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.34.0](./management/CHANGELOG.md)
     * **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
+    * **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
     * **Feature** Add support for Identity Propagation Plans API. [#299](https://github.com/patrickcping/pingone-go-sdk-v2/pull/299)
     * **Enhancement** Change `Type` property in the `ApplicationAccessControlGroup` object model to be an ENUM. [#295](https://github.com/patrickcping/pingone-go-sdk-v2/pull/295)
     * **Enhancement** Added the `Include` query string parameter to the `ApiReadFormRequest` API. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
@@ -17,6 +20,10 @@
     * **Bug** Fixed the `FormFieldCombobox` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
     * **Bug** Removal of unnecessary `Key` property from the `FormRecaptchaV2` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
     * **Bug** Added required `Key` property to the `FormQrCode` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.18.2](./mfa/CHANGELOG.md)
+    * **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.12.1](./risk/CHANGELOG.md)
+    * **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
 
 # Release (2023-11-29) (2)
 

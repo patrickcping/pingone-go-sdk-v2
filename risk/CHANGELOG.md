@@ -1,3 +1,7 @@
+# v0.12.1 (Unreleased)
+
+* **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
+
 # v0.12.0 (2023-11-10)
 
 * **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
