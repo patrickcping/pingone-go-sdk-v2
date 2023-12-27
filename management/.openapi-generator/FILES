@@ -30,6 +30,7 @@ api_gateways.go
 api_group_membership.go
 api_group_role_assignments.go
 api_groups.go
+api_identity_propagation_plans.go
 api_identity_provider_attributes.go
 api_identity_providers.go
 api_integration_catalog.go
@@ -47,7 +48,6 @@ api_organizations.go
 api_phone_delivery_settings.go
 api_populations.go
 api_propagation_mappings.go
-api_propagation_plans.go
 api_propagation_revisions.go
 api_propagation_rules.go
 api_propagation_store_metadata.go
@@ -235,6 +235,7 @@ docs/EnumGetKeyAcceptHeader.md
 docs/EnumGroupMembershipType.md
 docs/EnumGroupSourceType.md
 docs/EnumHealthStatus.md
+docs/EnumIdentityPropagationPlanStatus.md
 docs/EnumIdentityProvider.md
 docs/EnumIdentityProviderAttributeMappingType.md
 docs/EnumIdentityProviderAttributeMappingUpdate.md
@@ -389,6 +390,8 @@ docs/GroupPopulation.md
 docs/GroupRoleAssignmentsApi.md
 docs/GroupTotalMemberCounts.md
 docs/GroupsApi.md
+docs/IdentityPropagationPlan.md
+docs/IdentityPropagationPlansApi.md
 docs/IdentityProvider.md
 docs/IdentityProviderApple.md
 docs/IdentityProviderAttribute.md
@@ -487,7 +490,6 @@ docs/Population.md
 docs/PopulationPasswordPolicy.md
 docs/PopulationsApi.md
 docs/PropagationMappingsApi.md
-docs/PropagationPlansApi.md
 docs/PropagationRevisionsApi.md
 docs/PropagationRulesApi.md
 docs/PropagationStore.md
@@ -767,6 +769,7 @@ model_enum_get_key_accept_header.go
 model_enum_group_membership_type.go
 model_enum_group_source_type.go
 model_enum_health_status.go
+model_enum_identity_propagation_plan_status.go
 model_enum_identity_provider.go
 model_enum_identity_provider_attribute_mapping_type.go
 model_enum_identity_provider_attribute_mapping_update.go
@@ -911,6 +914,7 @@ model_group_membership__embedded.go
 model_group_nesting.go
 model_group_population.go
 model_group_total_member_counts.go
+model_identity_propagation_plan.go
 model_identity_provider_apple.go
 model_identity_provider_attribute.go
 model_identity_provider_attribute_identity_provider.go

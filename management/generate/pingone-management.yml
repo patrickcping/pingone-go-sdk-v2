@@ -275,6 +275,10 @@ components:
       type: string
       enum: [HEALTHY, DEGRADED, UNHEALTHY]
       description: An enumeration that specifies whether or not the gateway is in a healthy state.
+    EnumIdentityPropagationPlanStatus:
+      type: string
+      enum: [INACTIVE]
+      description: Status of the propagation plan; defaults to `INACTIVE`
     EnumIdentityProvider:
       type: string
       enum: [FACEBOOK, GOOGLE, LINKEDIN, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB, OPENID_CONNECT, SAML, PING_ONE]
@@ -1991,6 +1995,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+            plans:
+              type: array
+              items:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
             populations:
               type: array
               items:
@@ -3094,6 +3102,24 @@ components:
           readOnly: true
       required:
        - id
+    IdentityPropagationPlan:
+      type: object
+      properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
+        id:
+          type: string
+          readOnly: true
+          description: The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupIDs.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+          description: Unique name of the propagation plan
+        status:
+          $ref: '#/components/schemas/EnumIdentityPropagationPlanStatus'
+      required:
+        - name
     IdentityProvider:
       oneOf:
         - $ref: '#/components/schemas/IdentityProviderFacebook'
@@ -12895,10 +12921,9 @@ paths:
   /environments/{environmentID}/propagation/plans:
     get:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: READ All Plans
+      operationId: readAllPlans
       parameters:
         - name: Accept
           in: header
@@ -12928,20 +12953,19 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
     post:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: CREATE Plan
+      operationId: createPlan
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                name: Default Plan
+              $ref: '#/components/schemas/IdentityPropagationPlan'
       parameters:
         - name: environmentID
           in: path
@@ -12968,14 +12992,15 @@ paths:
         '201':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
   /environments/{environmentID}/propagation/plans/{planID}:
     get:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: READ One Plan
+      operationId: readOnePlan
       parameters:
         - name: Accept
           in: header
@@ -13010,20 +13035,19 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
     put:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: UPDATE Plan
+      operationId: updatePlan
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                name: Test-Propagation-Plan
+              $ref: '#/components/schemas/IdentityPropagationPlan'
       parameters:
         - name: environmentID
           in: path
@@ -13053,13 +13077,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
     delete:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: DELETE Plan
+      operationId: deletePlan
       parameters:
         - name: Accept
           in: header

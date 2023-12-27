@@ -47,6 +47,7 @@ type EntityArrayEmbedded struct {
 	Organizations []Organization `json:"organizations,omitempty"`
 	PasswordPolicies []PasswordPolicy `json:"passwordPolicies,omitempty"`
 	PhoneDeliverySettings []NotificationsSettingsPhoneDeliverySettings `json:"phoneDeliverySettings,omitempty"`
+	Plans []IdentityPropagationPlan `json:"plans,omitempty"`
 	Populations []Population `json:"populations,omitempty"`
 	Resources []Resource `json:"resources,omitempty"`
 	Revisions []AgreementLanguageRevision `json:"revisions,omitempty"`
@@ -976,6 +977,38 @@ func (o *EntityArrayEmbedded) SetPhoneDeliverySettings(v []NotificationsSettings
 	o.PhoneDeliverySettings = v
 }
 
+// GetPlans returns the Plans field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetPlans() []IdentityPropagationPlan {
+	if o == nil || IsNil(o.Plans) {
+		var ret []IdentityPropagationPlan
+		return ret
+	}
+	return o.Plans
+}
+
+// GetPlansOk returns a tuple with the Plans field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetPlansOk() ([]IdentityPropagationPlan, bool) {
+	if o == nil || IsNil(o.Plans) {
+		return nil, false
+	}
+	return o.Plans, true
+}
+
+// HasPlans returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasPlans() bool {
+	if o != nil && !IsNil(o.Plans) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlans gets a reference to the given []IdentityPropagationPlan and assigns it to the Plans field.
+func (o *EntityArrayEmbedded) SetPlans(v []IdentityPropagationPlan) {
+	o.Plans = v
+}
+
 // GetPopulations returns the Populations field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetPopulations() []Population {
 	if o == nil || IsNil(o.Populations) {
@@ -1517,6 +1550,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PhoneDeliverySettings) {
 		toSerialize["phoneDeliverySettings"] = o.PhoneDeliverySettings
+	}
+	if !IsNil(o.Plans) {
+		toSerialize["plans"] = o.Plans
 	}
 	if !IsNil(o.Populations) {
 		toSerialize["populations"] = o.Populations

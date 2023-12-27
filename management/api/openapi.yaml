@@ -10879,6 +10879,7 @@ paths:
       - Propagation Revisions
   /environments/{environmentID}/propagation/plans:
     get:
+      operationId: readAllPlans
       parameters:
       - example: application/json
         explode: false
@@ -10941,12 +10942,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
           description: Successful response
       summary: READ All Plans
       tags:
-      - Propagation Plans
+      - Identity Propagation Plans
     post:
+      operationId: createPlan
       parameters:
       - explode: false
         in: path
@@ -10959,9 +10963,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: Default Plan
-              type: object
+              $ref: '#/components/schemas/IdentityPropagationPlan'
       responses:
         "400":
           content:
@@ -11015,13 +11017,16 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "201":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
           description: Successful response
       summary: CREATE Plan
       tags:
-      - Propagation Plans
+      - Identity Propagation Plans
   /environments/{environmentID}/propagation/plans/{planID}:
     delete:
+      operationId: deletePlan
       parameters:
       - example: application/json
         explode: false
@@ -11093,8 +11098,9 @@ paths:
           description: Successful response
       summary: DELETE Plan
       tags:
-      - Propagation Plans
+      - Identity Propagation Plans
     get:
+      operationId: readOnePlan
       parameters:
       - example: application/json
         explode: false
@@ -11164,12 +11170,15 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
           description: Successful response
       summary: READ One Plan
       tags:
-      - Propagation Plans
+      - Identity Propagation Plans
     put:
+      operationId: updatePlan
       parameters:
       - explode: false
         in: path
@@ -11189,9 +11198,7 @@ paths:
         content:
           application/json:
             schema:
-              example:
-                name: Test-Propagation-Plan
-              type: object
+              $ref: '#/components/schemas/IdentityPropagationPlan'
       responses:
         "400":
           content:
@@ -11238,11 +11245,13 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
           description: Successful response
       summary: UPDATE Plan
       tags:
-      - Propagation Plans
+      - Identity Propagation Plans
   /environments/{environmentID}/propagation/stores:
     get:
       operationId: readAllStores
@@ -25761,6 +25770,11 @@ components:
       - DEGRADED
       - UNHEALTHY
       type: string
+    EnumIdentityPropagationPlanStatus:
+      description: Status of the propagation plan; defaults to `INACTIVE`
+      enum:
+      - INACTIVE
+      type: string
     EnumIdentityProvider:
       default: PING_ONE
       description: A string that identifies the type of identity provider used to
@@ -29039,6 +29053,27 @@ components:
           contents:
           - null
           - null
+          plans:
+          - environment:
+              id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            name: name
+            id: id
+            status: null
+          - environment:
+              id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            name: name
+            id: id
+            status: null
           schemas:
           - environment:
               id: id
@@ -30578,6 +30613,37 @@ components:
           type: string
       required:
       - id
+      type: object
+    IdentityPropagationPlan:
+      example:
+        environment:
+          id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
+        name: name
+        id: id
+        status: null
+      properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
+        id:
+          description: "The unique identifier for the group. Search all groups for\
+            \ a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups.\
+            \ Retrieve all the group IDs associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupIDs."
+          readOnly: true
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          description: Unique name of the propagation plan
+          type: string
+        status:
+          $ref: '#/components/schemas/EnumIdentityPropagationPlanStatus'
+      required:
+      - name
       type: object
     IdentityProvider:
       oneOf:
@@ -36537,6 +36603,27 @@ components:
         contents:
         - null
         - null
+        plans:
+        - environment:
+            id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          name: name
+          id: id
+          status: null
+        - environment:
+            id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          name: name
+          id: id
+          status: null
         schemas:
         - environment:
             id: id
@@ -37107,6 +37194,10 @@ components:
         phoneDeliverySettings:
           items:
             $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+          type: array
+        plans:
+          items:
+            $ref: '#/components/schemas/IdentityPropagationPlan'
           type: array
         populations:
           items:

@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **Organizations** | Pointer to [**[]Organization**](Organization.md) |  | [optional] 
 **PasswordPolicies** | Pointer to [**[]PasswordPolicy**](PasswordPolicy.md) |  | [optional] 
 **PhoneDeliverySettings** | Pointer to [**[]NotificationsSettingsPhoneDeliverySettings**](NotificationsSettingsPhoneDeliverySettings.md) |  | [optional] 
+**Plans** | Pointer to [**[]IdentityPropagationPlan**](IdentityPropagationPlan.md) |  | [optional] 
 **Populations** | Pointer to [**[]Population**](Population.md) |  | [optional] 
 **Resources** | Pointer to [**[]Resource**](Resource.md) |  | [optional] 
 **Revisions** | Pointer to [**[]AgreementLanguageRevision**](AgreementLanguageRevision.md) |  | [optional] 
@@ -765,6 +766,31 @@ SetPhoneDeliverySettings sets PhoneDeliverySettings field to given value.
 `func (o *EntityArrayEmbedded) HasPhoneDeliverySettings() bool`
 
 HasPhoneDeliverySettings returns a boolean if a field has been set.
+
+### GetPlans
+
+`func (o *EntityArrayEmbedded) GetPlans() []IdentityPropagationPlan`
+
+GetPlans returns the Plans field if non-nil, zero value otherwise.
+
+### GetPlansOk
+
+`func (o *EntityArrayEmbedded) GetPlansOk() (*[]IdentityPropagationPlan, bool)`
+
+GetPlansOk returns a tuple with the Plans field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlans
+
+`func (o *EntityArrayEmbedded) SetPlans(v []IdentityPropagationPlan)`
+
+SetPlans sets Plans field to given value.
+
+### HasPlans
+
+`func (o *EntityArrayEmbedded) HasPlans() bool`
+
+HasPlans returns a boolean if a field has been set.
 
 ### GetPopulations
 
