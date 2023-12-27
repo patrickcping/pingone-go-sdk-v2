@@ -19,11 +19,12 @@ var _ MappedNullable = &FormFlowLinkStyles{}
 
 // FormFlowLinkStyles struct for FormFlowLinkStyles
 type FormFlowLinkStyles struct {
-	HorizontalAlignment *EnumFormItemAlignment `json:"horizontalAlignment,omitempty"`
+	Alignment *EnumFormItemAlignment `json:"alignment,omitempty"`
 	// A string that specifies the link text color. The value must be a valid hexadecimal color.
 	TextColor *string `json:"textColor,omitempty"`
 	// A boolean that specifies whether the link is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
+	Padding *FormStylesPadding `json:"padding,omitempty"`
 }
 
 // NewFormFlowLinkStyles instantiates a new FormFlowLinkStyles object
@@ -43,36 +44,36 @@ func NewFormFlowLinkStylesWithDefaults() *FormFlowLinkStyles {
 	return &this
 }
 
-// GetHorizontalAlignment returns the HorizontalAlignment field value if set, zero value otherwise.
-func (o *FormFlowLinkStyles) GetHorizontalAlignment() EnumFormItemAlignment {
-	if o == nil || IsNil(o.HorizontalAlignment) {
+// GetAlignment returns the Alignment field value if set, zero value otherwise.
+func (o *FormFlowLinkStyles) GetAlignment() EnumFormItemAlignment {
+	if o == nil || IsNil(o.Alignment) {
 		var ret EnumFormItemAlignment
 		return ret
 	}
-	return *o.HorizontalAlignment
+	return *o.Alignment
 }
 
-// GetHorizontalAlignmentOk returns a tuple with the HorizontalAlignment field value if set, nil otherwise
+// GetAlignmentOk returns a tuple with the Alignment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFlowLinkStyles) GetHorizontalAlignmentOk() (*EnumFormItemAlignment, bool) {
-	if o == nil || IsNil(o.HorizontalAlignment) {
+func (o *FormFlowLinkStyles) GetAlignmentOk() (*EnumFormItemAlignment, bool) {
+	if o == nil || IsNil(o.Alignment) {
 		return nil, false
 	}
-	return o.HorizontalAlignment, true
+	return o.Alignment, true
 }
 
-// HasHorizontalAlignment returns a boolean if a field has been set.
-func (o *FormFlowLinkStyles) HasHorizontalAlignment() bool {
-	if o != nil && !IsNil(o.HorizontalAlignment) {
+// HasAlignment returns a boolean if a field has been set.
+func (o *FormFlowLinkStyles) HasAlignment() bool {
+	if o != nil && !IsNil(o.Alignment) {
 		return true
 	}
 
 	return false
 }
 
-// SetHorizontalAlignment gets a reference to the given EnumFormItemAlignment and assigns it to the HorizontalAlignment field.
-func (o *FormFlowLinkStyles) SetHorizontalAlignment(v EnumFormItemAlignment) {
-	o.HorizontalAlignment = &v
+// SetAlignment gets a reference to the given EnumFormItemAlignment and assigns it to the Alignment field.
+func (o *FormFlowLinkStyles) SetAlignment(v EnumFormItemAlignment) {
+	o.Alignment = &v
 }
 
 // GetTextColor returns the TextColor field value if set, zero value otherwise.
@@ -139,6 +140,38 @@ func (o *FormFlowLinkStyles) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
+// GetPadding returns the Padding field value if set, zero value otherwise.
+func (o *FormFlowLinkStyles) GetPadding() FormStylesPadding {
+	if o == nil || IsNil(o.Padding) {
+		var ret FormStylesPadding
+		return ret
+	}
+	return *o.Padding
+}
+
+// GetPaddingOk returns a tuple with the Padding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFlowLinkStyles) GetPaddingOk() (*FormStylesPadding, bool) {
+	if o == nil || IsNil(o.Padding) {
+		return nil, false
+	}
+	return o.Padding, true
+}
+
+// HasPadding returns a boolean if a field has been set.
+func (o *FormFlowLinkStyles) HasPadding() bool {
+	if o != nil && !IsNil(o.Padding) {
+		return true
+	}
+
+	return false
+}
+
+// SetPadding gets a reference to the given FormStylesPadding and assigns it to the Padding field.
+func (o *FormFlowLinkStyles) SetPadding(v FormStylesPadding) {
+	o.Padding = &v
+}
+
 func (o FormFlowLinkStyles) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -149,14 +182,17 @@ func (o FormFlowLinkStyles) MarshalJSON() ([]byte, error) {
 
 func (o FormFlowLinkStyles) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.HorizontalAlignment) {
-		toSerialize["horizontalAlignment"] = o.HorizontalAlignment
+	if !IsNil(o.Alignment) {
+		toSerialize["alignment"] = o.Alignment
 	}
 	if !IsNil(o.TextColor) {
 		toSerialize["textColor"] = o.TextColor
 	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Padding) {
+		toSerialize["padding"] = o.Padding
 	}
 	return toSerialize, nil
 }

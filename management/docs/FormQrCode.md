@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Key** | **string** | A string that specifies an identifier for the field component. | 
 **QrCodeType** | [**EnumFormQrCodeType**](EnumFormQrCodeType.md) |  | 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
-**ShowBorder** | **bool** | A boolean that specifies the border visibility. | 
+**ShowBorder** | Pointer to **bool** | A boolean that specifies the border visibility. | [optional] 
 
 ## Methods
 
 ### NewFormQrCode
 
-`func NewFormQrCode(qrCodeType EnumFormQrCodeType, alignment EnumFormItemAlignment, showBorder bool, ) *FormQrCode`
+`func NewFormQrCode(key string, qrCodeType EnumFormQrCodeType, alignment EnumFormItemAlignment, ) *FormQrCode`
 
 NewFormQrCode instantiates a new FormQrCode object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewFormQrCodeWithDefaults instantiates a new FormQrCode object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetKey
+
+`func (o *FormQrCode) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormQrCode) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormQrCode) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
 
 ### GetQrCodeType
 
@@ -86,6 +107,11 @@ and a boolean to check if the value has been set.
 
 SetShowBorder sets ShowBorder field to given value.
 
+### HasShowBorder
+
+`func (o *FormQrCode) HasShowBorder() bool`
+
+HasShowBorder returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

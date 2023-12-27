@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HorizontalAlignment** | Pointer to [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | [optional] 
+**Alignment** | Pointer to [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | [optional] 
 **TextColor** | Pointer to **string** | A string that specifies the link text color. The value must be a valid hexadecimal color. | [optional] 
 **Enabled** | Pointer to **bool** | A boolean that specifies whether the link is enabled. | [optional] 
+**Padding** | Pointer to [**FormStylesPadding**](FormStylesPadding.md) |  | [optional] 
 
 ## Methods
 
@@ -27,30 +28,30 @@ NewFormFlowLinkStylesWithDefaults instantiates a new FormFlowLinkStyles object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetHorizontalAlignment
+### GetAlignment
 
-`func (o *FormFlowLinkStyles) GetHorizontalAlignment() EnumFormItemAlignment`
+`func (o *FormFlowLinkStyles) GetAlignment() EnumFormItemAlignment`
 
-GetHorizontalAlignment returns the HorizontalAlignment field if non-nil, zero value otherwise.
+GetAlignment returns the Alignment field if non-nil, zero value otherwise.
 
-### GetHorizontalAlignmentOk
+### GetAlignmentOk
 
-`func (o *FormFlowLinkStyles) GetHorizontalAlignmentOk() (*EnumFormItemAlignment, bool)`
+`func (o *FormFlowLinkStyles) GetAlignmentOk() (*EnumFormItemAlignment, bool)`
 
-GetHorizontalAlignmentOk returns a tuple with the HorizontalAlignment field if it's non-nil, zero value otherwise
+GetAlignmentOk returns a tuple with the Alignment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHorizontalAlignment
+### SetAlignment
 
-`func (o *FormFlowLinkStyles) SetHorizontalAlignment(v EnumFormItemAlignment)`
+`func (o *FormFlowLinkStyles) SetAlignment(v EnumFormItemAlignment)`
 
-SetHorizontalAlignment sets HorizontalAlignment field to given value.
+SetAlignment sets Alignment field to given value.
 
-### HasHorizontalAlignment
+### HasAlignment
 
-`func (o *FormFlowLinkStyles) HasHorizontalAlignment() bool`
+`func (o *FormFlowLinkStyles) HasAlignment() bool`
 
-HasHorizontalAlignment returns a boolean if a field has been set.
+HasAlignment returns a boolean if a field has been set.
 
 ### GetTextColor
 
@@ -101,6 +102,31 @@ SetEnabled sets Enabled field to given value.
 `func (o *FormFlowLinkStyles) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### GetPadding
+
+`func (o *FormFlowLinkStyles) GetPadding() FormStylesPadding`
+
+GetPadding returns the Padding field if non-nil, zero value otherwise.
+
+### GetPaddingOk
+
+`func (o *FormFlowLinkStyles) GetPaddingOk() (*FormStylesPadding, bool)`
+
+GetPaddingOk returns a tuple with the Padding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPadding
+
+`func (o *FormFlowLinkStyles) SetPadding(v FormStylesPadding)`
+
+SetPadding sets Padding field to given value.
+
+### HasPadding
+
+`func (o *FormFlowLinkStyles) HasPadding() bool`
+
+HasPadding returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
