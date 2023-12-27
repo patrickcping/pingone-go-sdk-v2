@@ -2,6 +2,7 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.34.0](./management/CHANGELOG.md)
     * **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
+    * **Feature** Add support for Identity Propagation Plans API. [#299](https://github.com/patrickcping/pingone-go-sdk-v2/pull/299)
     * **Enhancement** Change `Type` property in the `ApplicationAccessControlGroup` object model to be an ENUM. [#295](https://github.com/patrickcping/pingone-go-sdk-v2/pull/295)
     * **Enhancement** Added the `Include` query string parameter to the `ApiReadFormRequest` API. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
     * **Enhancement** Added ability to configure `FormFieldTextblob` form controls. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
