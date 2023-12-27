@@ -1,5 +1,10 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.3
+     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.6.0 => v0.6.1
+     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.33.0 => v0.34.0
+     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.18.1 => v0.18.2
+     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.12.0 => v0.12.1
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.6.1](./credentials/CHANGELOG.md)
     * **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.34.0](./management/CHANGELOG.md)
