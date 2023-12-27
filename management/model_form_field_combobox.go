@@ -21,22 +21,42 @@ var _ MappedNullable = &FormFieldCombobox{}
 type FormFieldCombobox struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
-	// A string that specifies the label shown to the end user for this option.
+	// A boolean that specifies whether the linked directory attribute is disabled.
+	AttributeDisabled *bool `json:"attributeDisabled,omitempty"`
+	// A string that specifies an identifier for the field component.
+	Key string `json:"key"`
+	// A string of escaped JSON that is designed to store a series of text and translatable keys.
 	Label string `json:"label"`
-	// A string that specifies the value of the field if this option is selected.
-	Value string `json:"value"`
+	LabelMode *EnumFormElementLabelMode `json:"labelMode,omitempty"`
+	// A boolean that specifies whether the field is required.
+	Required *bool `json:"required,omitempty"`
+	// A boolean that specifies whether the end user can type an entry that is not in a predefined list.
+	OtherOptionEnabled *bool `json:"otherOptionEnabled,omitempty"`
+	// A string that specifies whether the form identifies that the choice is a custom choice not from a predefined list.
+	OtherOptionKey *string `json:"otherOptionKey,omitempty"`
+	// A string that specifies the label for a custom or \"other\" choice in a list.
+	OtherOptionLabel *string `json:"otherOptionLabel,omitempty"`
+	// A string that specifies the label for the other option in drop-down controls.
+	OtherOptionInputLabel *string `json:"otherOptionInputLabel,omitempty"`
+	// A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute.
+	OtherOptionAttributeDisabled *bool `json:"otherOptionAttributeDisabled,omitempty"`
+	Layout *EnumFormElementLayout `json:"layout,omitempty"`
+	// An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+	Options []FormElementOption `json:"options"`
+	Validation *FormElementValidation `json:"validation,omitempty"`
 }
 
 // NewFormFieldCombobox instantiates a new FormFieldCombobox object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldCombobox(type_ EnumFormFieldType, position FormFieldCommonPosition, label string, value string) *FormFieldCombobox {
+func NewFormFieldCombobox(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, options []FormElementOption) *FormFieldCombobox {
 	this := FormFieldCombobox{}
 	this.Type = type_
 	this.Position = position
+	this.Key = key
 	this.Label = label
-	this.Value = value
+	this.Options = options
 	return &this
 }
 
@@ -96,6 +116,62 @@ func (o *FormFieldCombobox) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
 }
 
+// GetAttributeDisabled returns the AttributeDisabled field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetAttributeDisabled() bool {
+	if o == nil || IsNil(o.AttributeDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AttributeDisabled
+}
+
+// GetAttributeDisabledOk returns a tuple with the AttributeDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetAttributeDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AttributeDisabled) {
+		return nil, false
+	}
+	return o.AttributeDisabled, true
+}
+
+// HasAttributeDisabled returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasAttributeDisabled() bool {
+	if o != nil && !IsNil(o.AttributeDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributeDisabled gets a reference to the given bool and assigns it to the AttributeDisabled field.
+func (o *FormFieldCombobox) SetAttributeDisabled(v bool) {
+	o.AttributeDisabled = &v
+}
+
+// GetKey returns the Key field value
+func (o *FormFieldCombobox) GetKey() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Key, true
+}
+
+// SetKey sets field value
+func (o *FormFieldCombobox) SetKey(v string) {
+	o.Key = v
+}
+
 // GetLabel returns the Label field value
 func (o *FormFieldCombobox) GetLabel() string {
 	if o == nil {
@@ -120,28 +196,316 @@ func (o *FormFieldCombobox) SetLabel(v string) {
 	o.Label = v
 }
 
-// GetValue returns the Value field value
-func (o *FormFieldCombobox) GetValue() string {
-	if o == nil {
+// GetLabelMode returns the LabelMode field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetLabelMode() EnumFormElementLabelMode {
+	if o == nil || IsNil(o.LabelMode) {
+		var ret EnumFormElementLabelMode
+		return ret
+	}
+	return *o.LabelMode
+}
+
+// GetLabelModeOk returns a tuple with the LabelMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetLabelModeOk() (*EnumFormElementLabelMode, bool) {
+	if o == nil || IsNil(o.LabelMode) {
+		return nil, false
+	}
+	return o.LabelMode, true
+}
+
+// HasLabelMode returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasLabelMode() bool {
+	if o != nil && !IsNil(o.LabelMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelMode gets a reference to the given EnumFormElementLabelMode and assigns it to the LabelMode field.
+func (o *FormFieldCombobox) SetLabelMode(v EnumFormElementLabelMode) {
+	o.LabelMode = &v
+}
+
+// GetRequired returns the Required field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetRequired() bool {
+	if o == nil || IsNil(o.Required) {
+		var ret bool
+		return ret
+	}
+	return *o.Required
+}
+
+// GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetRequiredOk() (*bool, bool) {
+	if o == nil || IsNil(o.Required) {
+		return nil, false
+	}
+	return o.Required, true
+}
+
+// HasRequired returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasRequired() bool {
+	if o != nil && !IsNil(o.Required) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequired gets a reference to the given bool and assigns it to the Required field.
+func (o *FormFieldCombobox) SetRequired(v bool) {
+	o.Required = &v
+}
+
+// GetOtherOptionEnabled returns the OtherOptionEnabled field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetOtherOptionEnabled() bool {
+	if o == nil || IsNil(o.OtherOptionEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.OtherOptionEnabled
+}
+
+// GetOtherOptionEnabledOk returns a tuple with the OtherOptionEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetOtherOptionEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.OtherOptionEnabled) {
+		return nil, false
+	}
+	return o.OtherOptionEnabled, true
+}
+
+// HasOtherOptionEnabled returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasOtherOptionEnabled() bool {
+	if o != nil && !IsNil(o.OtherOptionEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionEnabled gets a reference to the given bool and assigns it to the OtherOptionEnabled field.
+func (o *FormFieldCombobox) SetOtherOptionEnabled(v bool) {
+	o.OtherOptionEnabled = &v
+}
+
+// GetOtherOptionKey returns the OtherOptionKey field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetOtherOptionKey() string {
+	if o == nil || IsNil(o.OtherOptionKey) {
 		var ret string
 		return ret
 	}
-
-	return o.Value
+	return *o.OtherOptionKey
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetOtherOptionKeyOk returns a tuple with the OtherOptionKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormFieldCombobox) GetValueOk() (*string, bool) {
+func (o *FormFieldCombobox) GetOtherOptionKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.OtherOptionKey) {
+		return nil, false
+	}
+	return o.OtherOptionKey, true
+}
+
+// HasOtherOptionKey returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasOtherOptionKey() bool {
+	if o != nil && !IsNil(o.OtherOptionKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionKey gets a reference to the given string and assigns it to the OtherOptionKey field.
+func (o *FormFieldCombobox) SetOtherOptionKey(v string) {
+	o.OtherOptionKey = &v
+}
+
+// GetOtherOptionLabel returns the OtherOptionLabel field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetOtherOptionLabel() string {
+	if o == nil || IsNil(o.OtherOptionLabel) {
+		var ret string
+		return ret
+	}
+	return *o.OtherOptionLabel
+}
+
+// GetOtherOptionLabelOk returns a tuple with the OtherOptionLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetOtherOptionLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.OtherOptionLabel) {
+		return nil, false
+	}
+	return o.OtherOptionLabel, true
+}
+
+// HasOtherOptionLabel returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasOtherOptionLabel() bool {
+	if o != nil && !IsNil(o.OtherOptionLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionLabel gets a reference to the given string and assigns it to the OtherOptionLabel field.
+func (o *FormFieldCombobox) SetOtherOptionLabel(v string) {
+	o.OtherOptionLabel = &v
+}
+
+// GetOtherOptionInputLabel returns the OtherOptionInputLabel field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetOtherOptionInputLabel() string {
+	if o == nil || IsNil(o.OtherOptionInputLabel) {
+		var ret string
+		return ret
+	}
+	return *o.OtherOptionInputLabel
+}
+
+// GetOtherOptionInputLabelOk returns a tuple with the OtherOptionInputLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetOtherOptionInputLabelOk() (*string, bool) {
+	if o == nil || IsNil(o.OtherOptionInputLabel) {
+		return nil, false
+	}
+	return o.OtherOptionInputLabel, true
+}
+
+// HasOtherOptionInputLabel returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasOtherOptionInputLabel() bool {
+	if o != nil && !IsNil(o.OtherOptionInputLabel) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionInputLabel gets a reference to the given string and assigns it to the OtherOptionInputLabel field.
+func (o *FormFieldCombobox) SetOtherOptionInputLabel(v string) {
+	o.OtherOptionInputLabel = &v
+}
+
+// GetOtherOptionAttributeDisabled returns the OtherOptionAttributeDisabled field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetOtherOptionAttributeDisabled() bool {
+	if o == nil || IsNil(o.OtherOptionAttributeDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.OtherOptionAttributeDisabled
+}
+
+// GetOtherOptionAttributeDisabledOk returns a tuple with the OtherOptionAttributeDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetOtherOptionAttributeDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.OtherOptionAttributeDisabled) {
+		return nil, false
+	}
+	return o.OtherOptionAttributeDisabled, true
+}
+
+// HasOtherOptionAttributeDisabled returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasOtherOptionAttributeDisabled() bool {
+	if o != nil && !IsNil(o.OtherOptionAttributeDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetOtherOptionAttributeDisabled gets a reference to the given bool and assigns it to the OtherOptionAttributeDisabled field.
+func (o *FormFieldCombobox) SetOtherOptionAttributeDisabled(v bool) {
+	o.OtherOptionAttributeDisabled = &v
+}
+
+// GetLayout returns the Layout field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetLayout() EnumFormElementLayout {
+	if o == nil || IsNil(o.Layout) {
+		var ret EnumFormElementLayout
+		return ret
+	}
+	return *o.Layout
+}
+
+// GetLayoutOk returns a tuple with the Layout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetLayoutOk() (*EnumFormElementLayout, bool) {
+	if o == nil || IsNil(o.Layout) {
+		return nil, false
+	}
+	return o.Layout, true
+}
+
+// HasLayout returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasLayout() bool {
+	if o != nil && !IsNil(o.Layout) {
+		return true
+	}
+
+	return false
+}
+
+// SetLayout gets a reference to the given EnumFormElementLayout and assigns it to the Layout field.
+func (o *FormFieldCombobox) SetLayout(v EnumFormElementLayout) {
+	o.Layout = &v
+}
+
+// GetOptions returns the Options field value
+func (o *FormFieldCombobox) GetOptions() []FormElementOption {
+	if o == nil {
+		var ret []FormElementOption
+		return ret
+	}
+
+	return o.Options
+}
+
+// GetOptionsOk returns a tuple with the Options field value
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetOptionsOk() ([]FormElementOption, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Value, true
+	return o.Options, true
 }
 
-// SetValue sets field value
-func (o *FormFieldCombobox) SetValue(v string) {
-	o.Value = v
+// SetOptions sets field value
+func (o *FormFieldCombobox) SetOptions(v []FormElementOption) {
+	o.Options = v
+}
+
+// GetValidation returns the Validation field value if set, zero value otherwise.
+func (o *FormFieldCombobox) GetValidation() FormElementValidation {
+	if o == nil || IsNil(o.Validation) {
+		var ret FormElementValidation
+		return ret
+	}
+	return *o.Validation
+}
+
+// GetValidationOk returns a tuple with the Validation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormFieldCombobox) GetValidationOk() (*FormElementValidation, bool) {
+	if o == nil || IsNil(o.Validation) {
+		return nil, false
+	}
+	return o.Validation, true
+}
+
+// HasValidation returns a boolean if a field has been set.
+func (o *FormFieldCombobox) HasValidation() bool {
+	if o != nil && !IsNil(o.Validation) {
+		return true
+	}
+
+	return false
+}
+
+// SetValidation gets a reference to the given FormElementValidation and assigns it to the Validation field.
+func (o *FormFieldCombobox) SetValidation(v FormElementValidation) {
+	o.Validation = &v
 }
 
 func (o FormFieldCombobox) MarshalJSON() ([]byte, error) {
@@ -156,8 +520,39 @@ func (o FormFieldCombobox) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
+	if !IsNil(o.AttributeDisabled) {
+		toSerialize["attributeDisabled"] = o.AttributeDisabled
+	}
+	toSerialize["key"] = o.Key
 	toSerialize["label"] = o.Label
-	toSerialize["value"] = o.Value
+	if !IsNil(o.LabelMode) {
+		toSerialize["labelMode"] = o.LabelMode
+	}
+	if !IsNil(o.Required) {
+		toSerialize["required"] = o.Required
+	}
+	if !IsNil(o.OtherOptionEnabled) {
+		toSerialize["otherOptionEnabled"] = o.OtherOptionEnabled
+	}
+	if !IsNil(o.OtherOptionKey) {
+		toSerialize["otherOptionKey"] = o.OtherOptionKey
+	}
+	if !IsNil(o.OtherOptionLabel) {
+		toSerialize["otherOptionLabel"] = o.OtherOptionLabel
+	}
+	if !IsNil(o.OtherOptionInputLabel) {
+		toSerialize["otherOptionInputLabel"] = o.OtherOptionInputLabel
+	}
+	if !IsNil(o.OtherOptionAttributeDisabled) {
+		toSerialize["otherOptionAttributeDisabled"] = o.OtherOptionAttributeDisabled
+	}
+	if !IsNil(o.Layout) {
+		toSerialize["layout"] = o.Layout
+	}
+	toSerialize["options"] = o.Options
+	if !IsNil(o.Validation) {
+		toSerialize["validation"] = o.Validation
+	}
 	return toSerialize, nil
 }
 

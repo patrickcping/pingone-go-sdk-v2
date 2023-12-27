@@ -21,8 +21,6 @@ var _ MappedNullable = &FormFieldRecaptchaV2{}
 type FormFieldRecaptchaV2 struct {
 	Type EnumFormFieldType `json:"type"`
 	Position FormFieldCommonPosition `json:"position"`
-	// A string that specifies an identifier for the field component.
-	Key string `json:"key"`
 	Size EnumFormRecaptchaV2Size `json:"size"`
 	Theme EnumFormRecaptchaV2Theme `json:"theme"`
 	Alignment EnumFormItemAlignment `json:"alignment"`
@@ -32,11 +30,10 @@ type FormFieldRecaptchaV2 struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormFieldRecaptchaV2(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment) *FormFieldRecaptchaV2 {
+func NewFormFieldRecaptchaV2(type_ EnumFormFieldType, position FormFieldCommonPosition, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment) *FormFieldRecaptchaV2 {
 	this := FormFieldRecaptchaV2{}
 	this.Type = type_
 	this.Position = position
-	this.Key = key
 	this.Size = size
 	this.Theme = theme
 	this.Alignment = alignment
@@ -97,30 +94,6 @@ func (o *FormFieldRecaptchaV2) GetPositionOk() (*FormFieldCommonPosition, bool) 
 // SetPosition sets field value
 func (o *FormFieldRecaptchaV2) SetPosition(v FormFieldCommonPosition) {
 	o.Position = v
-}
-
-// GetKey returns the Key field value
-func (o *FormFieldRecaptchaV2) GetKey() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value
-// and a boolean to check if the value has been set.
-func (o *FormFieldRecaptchaV2) GetKeyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Key, true
-}
-
-// SetKey sets field value
-func (o *FormFieldRecaptchaV2) SetKey(v string) {
-	o.Key = v
 }
 
 // GetSize returns the Size field value
@@ -207,7 +180,6 @@ func (o FormFieldRecaptchaV2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["position"] = o.Position
-	toSerialize["key"] = o.Key
 	toSerialize["size"] = o.Size
 	toSerialize["theme"] = o.Theme
 	toSerialize["alignment"] = o.Alignment

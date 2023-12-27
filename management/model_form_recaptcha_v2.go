@@ -19,8 +19,6 @@ var _ MappedNullable = &FormRecaptchaV2{}
 
 // FormRecaptchaV2 struct for FormRecaptchaV2
 type FormRecaptchaV2 struct {
-	// A string that specifies an identifier for the field component.
-	Key string `json:"key"`
 	Size EnumFormRecaptchaV2Size `json:"size"`
 	Theme EnumFormRecaptchaV2Theme `json:"theme"`
 	Alignment EnumFormItemAlignment `json:"alignment"`
@@ -30,9 +28,8 @@ type FormRecaptchaV2 struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormRecaptchaV2(key string, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment) *FormRecaptchaV2 {
+func NewFormRecaptchaV2(size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment) *FormRecaptchaV2 {
 	this := FormRecaptchaV2{}
-	this.Key = key
 	this.Size = size
 	this.Theme = theme
 	this.Alignment = alignment
@@ -45,30 +42,6 @@ func NewFormRecaptchaV2(key string, size EnumFormRecaptchaV2Size, theme EnumForm
 func NewFormRecaptchaV2WithDefaults() *FormRecaptchaV2 {
 	this := FormRecaptchaV2{}
 	return &this
-}
-
-// GetKey returns the Key field value
-func (o *FormRecaptchaV2) GetKey() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value
-// and a boolean to check if the value has been set.
-func (o *FormRecaptchaV2) GetKeyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Key, true
-}
-
-// SetKey sets field value
-func (o *FormRecaptchaV2) SetKey(v string) {
-	o.Key = v
 }
 
 // GetSize returns the Size field value
@@ -153,7 +126,6 @@ func (o FormRecaptchaV2) MarshalJSON() ([]byte, error) {
 
 func (o FormRecaptchaV2) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
 	toSerialize["size"] = o.Size
 	toSerialize["theme"] = o.Theme
 	toSerialize["alignment"] = o.Alignment

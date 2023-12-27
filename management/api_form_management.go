@@ -622,6 +622,12 @@ type ApiReadFormRequest struct {
 	ApiService *FormManagementApiService
 	environmentID string
 	formID string
+	include *EnumFormsIncludeParameter
+}
+
+func (r ApiReadFormRequest) Include(include EnumFormsIncludeParameter) ApiReadFormRequest {
+	r.include = &include
+	return r
 }
 
 func (r ApiReadFormRequest) Execute() (*Form, *http.Response, error) {
@@ -684,6 +690,9 @@ func (a *FormManagementApiService) internalReadFormExecute(r ApiReadFormRequest)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.include != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "include", r.include, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** | A string that specifies an identifier for the field component. | 
 **Size** | [**EnumFormRecaptchaV2Size**](EnumFormRecaptchaV2Size.md) |  | 
 **Theme** | [**EnumFormRecaptchaV2Theme**](EnumFormRecaptchaV2Theme.md) |  | 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
@@ -13,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewFormRecaptchaV2
 
-`func NewFormRecaptchaV2(key string, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, ) *FormRecaptchaV2`
+`func NewFormRecaptchaV2(size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, ) *FormRecaptchaV2`
 
 NewFormRecaptchaV2 instantiates a new FormRecaptchaV2 object
 This constructor will assign default values to properties that have it defined,
@@ -27,26 +26,6 @@ will change when the set of required properties is changed
 NewFormRecaptchaV2WithDefaults instantiates a new FormRecaptchaV2 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetKey
-
-`func (o *FormRecaptchaV2) GetKey() string`
-
-GetKey returns the Key field if non-nil, zero value otherwise.
-
-### GetKeyOk
-
-`func (o *FormRecaptchaV2) GetKeyOk() (*string, bool)`
-
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKey
-
-`func (o *FormRecaptchaV2) SetKey(v string)`
-
-SetKey sets Key field to given value.
-
 
 ### GetSize
 
