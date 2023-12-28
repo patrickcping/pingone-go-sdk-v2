@@ -136,6 +136,10 @@ func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementma
 		clientcfg.UserAgent = *c.UserAgentOverride
 	}
 
+	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
+		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	}
+
 	if checkForValue(c.ProxyURL) {
 		clientcfg.ProxyURL = c.ProxyURL
 	}
@@ -200,6 +204,10 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 
 	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
+		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -269,6 +277,10 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 		clientcfg.UserAgent = *c.UserAgentOverride
 	}
 
+	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
+		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	}
+
 	if checkForValue(c.ProxyURL) {
 		clientcfg.ProxyURL = c.ProxyURL
 	}
@@ -333,6 +345,10 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 
 	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
+		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -401,6 +417,10 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 		clientcfg.UserAgent = *c.UserAgentOverride
 	}
 
+	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
+		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	}
+
 	if checkForValue(c.ProxyURL) {
 		clientcfg.ProxyURL = c.ProxyURL
 	}
@@ -467,6 +487,10 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 		clientcfg.UserAgent = *c.UserAgentOverride
 	}
 
+	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
+		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	}
+
 	if checkForValue(c.ProxyURL) {
 		clientcfg.ProxyURL = c.ProxyURL
 	}
@@ -531,6 +555,10 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 
 	if checkForValue(c.UserAgentOverride) {
 		clientcfg.UserAgent = *c.UserAgentOverride
+	}
+
+	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
+		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
 	}
 
 	if checkForValue(c.ProxyURL) {
