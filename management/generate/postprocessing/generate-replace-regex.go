@@ -82,6 +82,52 @@ var (
 	"math/big"`,
 		},
 
+		// Management: EnvironmentRegion model
+		{
+			fileSelectPattern: "model_environment_region.go",
+			pattern:           `(func \(dst \*EnvironmentRegion\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *EnvironmentRegion) UnmarshalJSON(data []byte) error {
+
+	var err error
+	match := false
+	// try to unmarshal data into EnumRegionCode
+	err = newStrictDecoder(data).Decode(&dst.EnumRegionCode)
+	if err == nil {
+		jsonEnumRegionCode, _ := json.Marshal(dst.EnumRegionCode)
+		if string(jsonEnumRegionCode) == "{}" { // empty struct
+			dst.EnumRegionCode = nil
+		} else {
+			match = true
+		}
+	} else {
+		dst.EnumRegionCode = nil
+	}
+	
+	if !match {
+		// try to unmarshal data into String
+		err = newStrictDecoder(data).Decode(&dst.String)
+		if err == nil {
+			jsonString, _ := json.Marshal(dst.String)
+			if string(jsonString) == "{}" { // empty struct
+				dst.String = nil
+			} else {
+				match = true
+			}
+		} else {
+			dst.String = nil
+		}
+	}
+			
+	if !match { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(EnvironmentRegion)")
+	}
+			
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
 		// Management: FormField model
 		{
 			fileSelectPattern: "model_form_field.go",

@@ -638,6 +638,7 @@ Class | Method | HTTP request | Description
  - [Environment](docs/Environment.md)
  - [EnvironmentLicense](docs/EnvironmentLicense.md)
  - [EnvironmentOrganization](docs/EnvironmentOrganization.md)
+ - [EnvironmentRegion](docs/EnvironmentRegion.md)
  - [FlowPolicy](docs/FlowPolicy.md)
  - [FlowPolicyApplication](docs/FlowPolicyApplication.md)
  - [FlowPolicyAssignment](docs/FlowPolicyAssignment.md)
