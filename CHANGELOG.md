@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.0
+    * **Enhancement** Add ability to append custom user-agent information to HTTP requests with the `PINGONE_APPEND_USER_AGENT` environment variable. [#302](https://github.com/patrickcping/pingone-go-sdk-v2/pull/302)
+
 # Release (2023-12-27)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.3
