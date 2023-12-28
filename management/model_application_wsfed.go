@@ -46,6 +46,7 @@ type ApplicationWSFED struct {
 	AudienceRestriction *string `json:"audienceRestriction,omitempty"`
 	// The federated domain name (for example, the Azure custom domain).
 	DomainName string `json:"domainName"`
+	CorsSettings *ApplicationCorsSettings `json:"corsSettings,omitempty"`
 	IdpSigning ApplicationWSFEDAllOfIdpSigning `json:"idpSigning"`
 	Kerberos *ApplicationWSFEDAllOfKerberos `json:"kerberos,omitempty"`
 	// The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests.
@@ -554,6 +555,38 @@ func (o *ApplicationWSFED) SetDomainName(v string) {
 	o.DomainName = v
 }
 
+// GetCorsSettings returns the CorsSettings field value if set, zero value otherwise.
+func (o *ApplicationWSFED) GetCorsSettings() ApplicationCorsSettings {
+	if o == nil || IsNil(o.CorsSettings) {
+		var ret ApplicationCorsSettings
+		return ret
+	}
+	return *o.CorsSettings
+}
+
+// GetCorsSettingsOk returns a tuple with the CorsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationWSFED) GetCorsSettingsOk() (*ApplicationCorsSettings, bool) {
+	if o == nil || IsNil(o.CorsSettings) {
+		return nil, false
+	}
+	return o.CorsSettings, true
+}
+
+// HasCorsSettings returns a boolean if a field has been set.
+func (o *ApplicationWSFED) HasCorsSettings() bool {
+	if o != nil && !IsNil(o.CorsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetCorsSettings gets a reference to the given ApplicationCorsSettings and assigns it to the CorsSettings field.
+func (o *ApplicationWSFED) SetCorsSettings(v ApplicationCorsSettings) {
+	o.CorsSettings = &v
+}
+
 // GetIdpSigning returns the IdpSigning field value
 func (o *ApplicationWSFED) GetIdpSigning() ApplicationWSFEDAllOfIdpSigning {
 	if o == nil {
@@ -714,6 +747,9 @@ func (o ApplicationWSFED) ToMap() (map[string]interface{}, error) {
 		toSerialize["audienceRestriction"] = o.AudienceRestriction
 	}
 	toSerialize["domainName"] = o.DomainName
+	if !IsNil(o.CorsSettings) {
+		toSerialize["corsSettings"] = o.CorsSettings
+	}
 	toSerialize["idpSigning"] = o.IdpSigning
 	if !IsNil(o.Kerberos) {
 		toSerialize["kerberos"] = o.Kerberos

@@ -1,4 +1,32 @@
-# v0.32.0 (Unreleased)
+# v0.34.0 (2023-12-27)
+
+* **Note** Adjust CORS origins documentation. [#291](https://github.com/patrickcping/pingone-go-sdk-v2/pull/291)
+* **Note** Remove redundant data models and documentation. [#300](https://github.com/patrickcping/pingone-go-sdk-v2/pull/300)
+* **Feature** Add support for Identity Propagation Plans API. [#299](https://github.com/patrickcping/pingone-go-sdk-v2/pull/299)
+* **Enhancement** Change `Type` property in the `ApplicationAccessControlGroup` object model to be an ENUM. [#295](https://github.com/patrickcping/pingone-go-sdk-v2/pull/295)
+* **Enhancement** Added the `Include` query string parameter to the `ApiReadFormRequest` API. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Enhancement** Added ability to configure `FormFieldTextblob` form controls. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Enhancement** Added the `ShowPasswordRequirements` property to password based form controls. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Enhancement** Created `FormStyles` object model to make usage simpler. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Enhancement** Added `FormStylesPadding` object model to support custom style override of form controls. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `OtherOptionLabel` property for form field models. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `OtherOptionInputLabel` property for form field models. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `Alignment` property for form field style models. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed required propertys for form field models. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `Options` form field property object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Fixed the `FormFieldCombobox` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Removal of unnecessary `Key` property from the `FormRecaptchaV2` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+* **Bug** Added required `Key` property to the `FormQrCode` form object. [#297](https://github.com/patrickcping/pingone-go-sdk-v2/pull/297)
+
+# v0.33.0 (2023-11-29)
+
+* **Feature** Add support for User Account API (allowing lock and unlock). [#282](https://github.com/patrickcping/pingone-go-sdk-v2/pull/282)
+* **Enhancement** Expand the `GroupMembership` data model. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
+* **Enhancement** Simplified the `GroupMembershipApi` request and response payload models. [#284](https://github.com/patrickcping/pingone-go-sdk-v2/pull/284)
+* **Enhancement** Corrected and expanded the `SchemaAttributePatch` request and response payload. [#285](https://github.com/patrickcping/pingone-go-sdk-v2/pull/285)
+* **Enhancement** Added `CorsSettings` object attribute to the `ApplicationOIDC`, `ApplicationSAML` and `ApplicationWSFED` object models. [#286](https://github.com/patrickcping/pingone-go-sdk-v2/pull/286)
+
+# v0.32.0 (2023-11-10)
 
 * **Enhancement** Add API error handling for `409` errors. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)
 * **Enhancement** Added the `ReferencedValues` property to the `P1ErrorDetailsInnerInnerError` object model. [#279](https://github.com/patrickcping/pingone-go-sdk-v2/pull/279)

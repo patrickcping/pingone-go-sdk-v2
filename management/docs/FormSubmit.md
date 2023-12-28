@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** | A string that specifies an identifier for the field component. | 
+**Key** | Pointer to **string** | A string that specifies an identifier for the field component. | [optional] 
 **Label** | **string** | A string that specifies the button label. | 
-**Styles** | Pointer to [**FormFlowButtonStyles**](FormFlowButtonStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
 
 ## Methods
 
 ### NewFormSubmit
 
-`func NewFormSubmit(key string, label string, ) *FormSubmit`
+`func NewFormSubmit(label string, ) *FormSubmit`
 
 NewFormSubmit instantiates a new FormSubmit object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,11 @@ and a boolean to check if the value has been set.
 
 SetKey sets Key field to given value.
 
+### HasKey
+
+`func (o *FormSubmit) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
 
 ### GetLabel
 
@@ -69,20 +74,20 @@ SetLabel sets Label field to given value.
 
 ### GetStyles
 
-`func (o *FormSubmit) GetStyles() FormFlowButtonStyles`
+`func (o *FormSubmit) GetStyles() FormStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormSubmit) GetStylesOk() (*FormFlowButtonStyles, bool)`
+`func (o *FormSubmit) GetStylesOk() (*FormStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormSubmit) SetStyles(v FormFlowButtonStyles)`
+`func (o *FormSubmit) SetStyles(v FormStyles)`
 
 SetStyles sets Styles field to given value.
 

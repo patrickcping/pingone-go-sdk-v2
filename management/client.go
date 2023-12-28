@@ -145,7 +145,7 @@ type APIClient struct {
 
 	PropagationMappingsApi *PropagationMappingsApiService
 
-	PropagationPlansApi *PropagationPlansApiService
+	IdentityPropagationPlansApi *IdentityPropagationPlansApiService
 
 	PropagationRevisionsApi *PropagationRevisionsApiService
 
@@ -286,7 +286,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PhoneDeliverySettingsApi = (*PhoneDeliverySettingsApiService)(&c.common)
 	c.PopulationsApi = (*PopulationsApiService)(&c.common)
 	c.PropagationMappingsApi = (*PropagationMappingsApiService)(&c.common)
-	c.PropagationPlansApi = (*PropagationPlansApiService)(&c.common)
+	c.IdentityPropagationPlansApi = (*IdentityPropagationPlansApiService)(&c.common)
 	c.PropagationRevisionsApi = (*PropagationRevisionsApiService)(&c.common)
 	c.PropagationRulesApi = (*PropagationRulesApiService)(&c.common)
 	c.PropagationStoreMetadataApi = (*PropagationStoreMetadataApiService)(&c.common)

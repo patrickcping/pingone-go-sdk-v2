@@ -21,7 +21,7 @@ var _ MappedNullable = &FormFieldCommonPosition{}
 type FormFieldCommonPosition struct {
 	// An integer that specifies the number of rows (maximum number is 50).
 	Row int32 `json:"row"`
-	// An integer that specifies the number of columns (min = 1; max = 4).
+	// An integer that specifies the number of columns (min = 0; max = 4).
 	Col int32 `json:"col"`
 	// An integer that specifies the width of the field (in percentage).
 	Width *int32 `json:"width,omitempty"`

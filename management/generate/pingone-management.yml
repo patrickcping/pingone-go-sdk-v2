@@ -77,6 +77,14 @@ components:
       type: string
       description: A string that specifies the user role required to access the application. Options are ADMIN_USERS_ONLY. A user is an admin user if the user has one or more of the following roles Organization Admin, Environment Admin, Identity Data Admin, or Client Application Developer.
       enum: [ADMIN_USERS_ONLY]
+    EnumApplicationAccessControlGroupType:
+      type: string
+      enum: [ANY_GROUP, ALL_GROUPS]
+      description: A string that specifies the group type required to access the application. Options are `ANY_GROUP` (the actor must belong to at least one group listed in the `groups` property) and `ALL_GROUPS` (the actor must belong to all groups listed in the `groups` property).
+    EnumApplicationCorsSettingsBehavior:
+      type: string
+      enum: [ALLOW_NO_ORIGINS, ALLOW_SPECIFIC_ORIGINS]
+      description: The behavior of CORS for the application. `ALLOWS_NO_ORIGINS` rejects all CORS requests.  `ALLOW_SPECIFIC_ORIGINS` rejects all CORS requests except those listed in `corsSettings.origins`.
     EnumApplicationNativeGooglePlayVerificationType:
       type: string
       enum: [GOOGLE, INTERNAL]
@@ -220,6 +228,9 @@ components:
       type: string
       enum: [FACEBOOK, APPLE, GOOGLE, AMAZON, LINKEDIN, MICROSOFT, TWITTER, YAHOO, PAYPAL, GITHUB, OPENID_CONNECT, SAML, LDAP]
       description: A string that specifies the external identity provider type.
+    EnumFormStylesWidthUnit:
+      type: string
+      enum: [PERCENT, PIXELS]
     EnumFormTranslationMethod:
       type: string
       enum: [TRANSLATE, DEFAULT_VALUE, KEY]
@@ -232,6 +243,9 @@ components:
       type: string
       description: An enum string that specifies the trigger type associated with the flow policy trigger.
       enum: [AUTHENTICATION]
+    EnumFormsIncludeParameter:
+      type: string
+      enum: [components]
     EnumGatewayTypeLDAPSecurity:
       type: string
       enum: [None, TLS, StartTLS]
@@ -261,6 +275,10 @@ components:
       type: string
       enum: [HEALTHY, DEGRADED, UNHEALTHY]
       description: An enumeration that specifies whether or not the gateway is in a healthy state.
+    EnumIdentityPropagationPlanStatus:
+      type: string
+      enum: [INACTIVE]
+      description: Status of the propagation plan; defaults to `INACTIVE`
     EnumIdentityProvider:
       type: string
       enum: [FACEBOOK, GOOGLE, LINKEDIN, APPLE, TWITTER, AMAZON, YAHOO, MICROSOFT, PAYPAL, GITHUB, OPENID_CONNECT, SAML, PING_ONE]
@@ -606,6 +624,17 @@ components:
       type: string
       enum: [ACCOUNT_OK, VERIFICATION_REQUIRED]
       description: A string that specifies information about the account lifecycle. Options for status are `ACCOUNT_OK` and `VERIFICATION_REQUIRED`. This property value is only allowed to be set when importing a user to set the initial account status. If the initial status is set to `VERIFICATION_REQUIRED` and an email address is provided, a verification email is sent.
+    EnumUserAccountContentTypeHeader:
+      type: string
+      enum: [application/vnd.pingidentity.account.unlock+json, application/vnd.pingidentity.account.lock+json]
+    EnumGroupMembershipType:
+      type: string
+      enum: [DIRECT, INDIRECT]
+      description: A string that defines the relationship of group membership
+    EnumUserGroupAssignmentExpandParameter:
+      type: string
+      enum: [group]
+      description: When this parameter is appended to the request, the results are expanded to include additional information about each group.
     EnumUserRequestInclude:
       type: string
       enum: [memberOfGroupIDs, memberOfGroupNames]
@@ -809,8 +838,7 @@ components:
               type: object
               properties:
                 type:
-                  type: string
-                  description: A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
+                  $ref: '#/components/schemas/EnumApplicationAccessControlGroupType'
                 groups:
                   type: array
                   description: A set that specifies the group IDs for the groups the actor must belong to for access to the application.
@@ -875,6 +903,20 @@ components:
         - name
         - type
         - protocol
+    ApplicationCorsSettings:
+      type: object
+      description: Allows customization of how the Authorization and Authentication APIs interact with CORS requests that reference the application.  If omitted, the application allows CORS requests from any origin except for operations that expose sensitive information (e.g. `/as/authorize` and `/as/token`).  This is legacy behavior, and it is recommended that applications migrate to include specific `corsSettings`.
+      properties:
+        behavior:
+          $ref: '#/components/schemas/EnumApplicationCorsSettingsBehavior'
+        origins:
+          type: array
+          description: Must be non-empty when `corsSettings.behavior` is `ALLOW_SPECIFIC_ORIGINS` and must be omitted or empty when `corsSettings.behavior` is `ALLOW_NO_ORIGINS`.  Limited to 20 values.  Values are the origins from which CORS requests to the Authorization and Authentication APIs are allowed.  Each value is an `http` or `https` URL without a path.  The host may be a domain name (including `localhost`), or an IPv4 address.  Subdomains may use the wildcard (*) to match any string.
+          maxItems: 20
+          items:
+            type: string
+      required:
+        - behavior
     ApplicationExternalLink:
       allOf:
         - $ref: '#/components/schemas/Application'
@@ -905,6 +947,8 @@ components:
               type: boolean
               description: A boolean that specifies whether the SAML assertion itself should be signed. The default value is `true`.
               default: true
+            corsSettings:
+              $ref: '#/components/schemas/ApplicationCorsSettings'
             enableRequestedAuthnContext:
               type: boolean
               description: Indicates whether `requestedAuthnContext` is taken into account in policy decision-making during authentication.
@@ -982,6 +1026,8 @@ components:
             assignActorRoles:
               type: boolean
               description: A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
+            corsSettings:
+              $ref: '#/components/schemas/ApplicationCorsSettings'
             mobile:
               type: object
               properties:
@@ -1038,12 +1084,15 @@ components:
                       properties:
                         decryptionKey:
                           type: string
+                          format: password
                           description: Play Integrity verdict decryption key from your Google Play Services account. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType` to `INTERNAL`.
                         serviceAccountCredentials:
                           type: string
+                          format: password
                           description: Contents of the JSON file that represents your Service Account Credentials. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType` to `GOOGLE`.
                         verificationKey:
                           type: string
+                          format: password
                           description: Play Integrity verdict signature verification key from your Google Play Services account. This parameter must be provided if you have set `mobile.integrityDetection.googlePlay.verificationType` to `INTERNAL`.
                         verificationType:
                           $ref: '#/components/schemas/EnumApplicationNativeGooglePlayVerificationType'
@@ -1297,6 +1346,7 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         secret:
           type: string
+          format: password
           readOnly: true
           description: A string that specifies the application secret ID used to authenticate to the authorization server.
     ApplicationWSFED:
@@ -1311,6 +1361,8 @@ components:
             domainName:
               type: string
               description: The federated domain name (for example, the Azure custom domain).
+            corsSettings:
+              $ref: '#/components/schemas/ApplicationCorsSettings'
             idpSigning:
               type: object
               description: Contains the information about the signing of requests by the identity provider (IdP).
@@ -1688,6 +1740,7 @@ components:
           description: A string that specifies the PEM-encoded certificate chain.
         privateKey:
           type: string
+          format: password
           description: A string that specifies the PEM-encoded, unencrypted private key that matches the certificate's public key. This is a required property.
       required:
         - certificate
@@ -1942,6 +1995,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
+            plans:
+              type: array
+              items:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
             populations:
               type: array
               items:
@@ -2223,10 +2280,10 @@ components:
         otherOptionKey:
           type: string
           description: A string that specifies whether the form identifies that the choice is a custom choice not from a predefined list.
-        otherOptionlabel:
+        otherOptionLabel:
           type: string
           description: A string that specifies the label for a custom or "other" choice in a list.
-        otherOptionInputlabel:
+        otherOptionInputLabel:
           type: string
           description: A string that specifies the label for the other option in drop-down controls.
         otherOptionAttributeDisabled:
@@ -2234,7 +2291,7 @@ components:
           description: A boolean that specifies whether the directory attribute option is disabled. Set to true if it references a PingOne directory attribute.
       required:
         - key
-        - required
+        - label
     FormElementOption:
       type: object
       properties:
@@ -2276,6 +2333,7 @@ components:
         - $ref: '#/components/schemas/FormFieldCombobox'
         - $ref: '#/components/schemas/FormFieldDivider'
         - $ref: '#/components/schemas/FormFieldEmptyField'
+        - $ref: '#/components/schemas/FormFieldTextblob'
         - $ref: '#/components/schemas/FormFieldSlateTextblob'
         - $ref: '#/components/schemas/FormFieldSubmitButton'
         - $ref: '#/components/schemas/FormFieldErrorDisplay'
@@ -2318,8 +2376,8 @@ components:
               maximum: 50
             col:
               type: integer
-              description: An integer that specifies the number of columns (min = 1; max = 4).
-              minimum: 1
+              description: An integer that specifies the number of columns (min = 0; max = 4).
+              minimum: 0
               maximum: 4
             width:
               type: integer
@@ -2340,9 +2398,9 @@ components:
               $ref: '#/components/schemas/EnumFormElementLayout'
             options:
               type: array
-              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              description: An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
               items:
-                type: string
+                $ref: '#/components/schemas/FormElementOption'
             validation:
               $ref: '#/components/schemas/FormElementValidation'
           required:
@@ -2357,14 +2415,17 @@ components:
               $ref: '#/components/schemas/EnumFormElementLayout'
             options:
               type: array
-              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              description: An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
               items:
-                type: string
+                $ref: '#/components/schemas/FormElementOption'
+            showPasswordRequirements:
+              type: boolean
+              description: A boolean that specifies whether the password requirements are displayed.
             validation:
               $ref: '#/components/schemas/FormElementValidation'
     FormFieldPasswordVerify:
       allOf:
-        - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormFieldPassword'
         - $ref: '#/components/schemas/FormElementPasswordVerify'
     FormFieldRadio:
       allOf:
@@ -2376,9 +2437,9 @@ components:
               $ref: '#/components/schemas/EnumFormElementLayout'
             options:
               type: array
-              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              description: An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
               items:
-                type: string
+                $ref: '#/components/schemas/FormElementOption'
             validation:
               $ref: '#/components/schemas/FormElementValidation'
           required:
@@ -2394,9 +2455,9 @@ components:
               $ref: '#/components/schemas/EnumFormElementLayout'
             options:
               type: array
-              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              description: An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
               items:
-                type: string
+                $ref: '#/components/schemas/FormElementOption'
             validation:
               $ref: '#/components/schemas/FormElementValidation'
           required:
@@ -2412,9 +2473,9 @@ components:
               $ref: '#/components/schemas/EnumFormElementLayout'
             options:
               type: array
-              description: An array of strings that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              description: An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
               items:
-                type: string
+                $ref: '#/components/schemas/FormElementOption'
             validation:
               $ref: '#/components/schemas/FormElementValidation'
           required:
@@ -2422,12 +2483,29 @@ components:
     FormFieldCombobox:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
-        - $ref: '#/components/schemas/FormElementOption'
+        - $ref: '#/components/schemas/FormElement'
+        - type: object
+          properties:
+            layout:
+              $ref: '#/components/schemas/EnumFormElementLayout'
+            options:
+              type: array
+              description: An array of objects (label/value pairs) that specifies the unique list of options. This is a required property when the type is `RADIO`, `CHECKBOX`, or `DROPDOWN`.
+              items:
+                $ref: '#/components/schemas/FormElementOption'
+            validation:
+              $ref: '#/components/schemas/FormElementValidation'
+          required:
+            - options
     FormFieldDivider:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormItem'
     FormFieldEmptyField:
+      allOf:
+        - $ref: '#/components/schemas/FormFieldCommon'
+        - $ref: '#/components/schemas/FormItem'
+    FormFieldTextblob:
       allOf:
         - $ref: '#/components/schemas/FormFieldCommon'
         - $ref: '#/components/schemas/FormItem'
@@ -2473,25 +2551,7 @@ components:
           type: string
           description: A string that specifies the button label.
         styles:
-          type: object
-          properties:
-            width:
-              type: integer
-              description: An integer that specifies the button width. Set as a percentage.
-            alignment:
-              $ref: '#/components/schemas/EnumFormItemAlignment'
-            backgroundColor:
-              type: string
-              description: A string that specifies the button background color. The value must be a valid hexadecimal color.
-            textColor:
-              type: string
-              description: A string that specifies the button text color. The value must be a valid hexadecimal color.
-            borderColor:
-              type: string
-              description: A string that specifies the button border color. The value must be a valid hexadecimal color.
-            enabled:
-              type: boolean
-              description: A boolean that specifies whether the button is enabled.
+          $ref: '#/components/schemas/FormStyles'
       required:
         - key
         - label
@@ -2507,7 +2567,7 @@ components:
         styles:
           type: object
           properties:
-            horizontalAlignment:
+            alignment:
               $ref: '#/components/schemas/EnumFormItemAlignment'
             textColor:
               type: string
@@ -2515,6 +2575,8 @@ components:
             enabled:
               type: boolean
               description: A boolean that specifies whether the link is enabled.
+            padding:
+              $ref: '#/components/schemas/FormStylesPadding'
       required:
         - key
         - label
@@ -2527,9 +2589,6 @@ components:
     FormRecaptchaV2:
       type: object
       properties:
-        key:
-          type: string
-          description: A string that specifies an identifier for the field component.
         size:
           $ref: '#/components/schemas/EnumFormRecaptchaV2Size'
         theme:
@@ -2537,10 +2596,46 @@ components:
         alignment:
           $ref: '#/components/schemas/EnumFormItemAlignment'
       required:
-        - key
         - size
         - theme
         - alignment
+    FormStyles:
+      type: object
+      properties:
+        alignment:
+          $ref: '#/components/schemas/EnumFormItemAlignment'
+        backgroundColor:
+          type: string
+          description: A string that specifies the button background color. The value must be a valid hexadecimal color.
+        textColor:
+          type: string
+          description: A string that specifies the button text color. The value must be a valid hexadecimal color.
+        borderColor:
+          type: string
+          description: A string that specifies the button border color. The value must be a valid hexadecimal color.
+        enabled:
+          type: boolean
+          description: A boolean that specifies whether the button is enabled.
+        height:
+          type: integer
+        padding:
+          $ref: '#/components/schemas/FormStylesPadding'
+        width:
+          type: integer
+          description: An integer that specifies the button width. Set as a percentage.
+        widthUnit:
+          $ref: '#/components/schemas/EnumFormStylesWidthUnit'
+    FormStylesPadding:
+      type: object
+      properties:
+        top:
+          type: integer
+        bottom:
+          type: integer
+        left:
+          type: integer
+        right:
+          type: integer
     FormSocialLoginButton:
       type: object
       properties:
@@ -2592,32 +2687,16 @@ components:
           type: string
           description: A string that specifies the button label.
         styles:
-          type: object
-          properties:
-            width:
-              type: integer
-              description: An integer that specifies the button width. Set as a percentage.
-            alignment:
-              $ref: '#/components/schemas/EnumFormItemAlignment'
-            backgroundColor:
-              type: string
-              description: A string that specifies the button background color. The value must be a valid hexadecimal color.
-            textColor:
-              type: string
-              description: A string that specifies the button text color. The value must be a valid hexadecimal color.
-            borderColor:
-              type: string
-              description: A string that specifies the button border color. The value must be a valid hexadecimal color.
-            enabled:
-              type: boolean
-              description: A boolean that specifies whether the button is enabled.
+          $ref: '#/components/schemas/FormStyles'
       required:
-        - key
         - label
     FormQrCode:
       type: object
       properties:
-        QrCodeType:
+        key:
+          type: string
+          description: A string that specifies an identifier for the field component.
+        qrCodeType:
           $ref: '#/components/schemas/EnumFormQrCodeType'
         alignment:
           $ref: '#/components/schemas/EnumFormItemAlignment'
@@ -2625,9 +2704,9 @@ components:
           type: boolean
           description: A boolean that specifies the border visibility.
       required:
-        - QrCodeType
+        - key
+        - qrCodeType
         - alignment
-        - showBorder
     Gateway:
       type: object
       properties:
@@ -2698,6 +2777,7 @@ components:
               description: A string that specifies the distinguished name information to bind to the LDAP database (for example, uid=pingone,dc=example,dc=com).
             bindPassword:
               type: string
+              format: password
               description: A string that specifies the bind password for the LDAP database. This is a required property.
             connectionSecurity:
               $ref: '#/components/schemas/EnumGatewayTypeLDAPSecurity'
@@ -2707,6 +2787,7 @@ components:
               properties:
                 serviceAccountPassword:
                   type: string
+                  format: password
                   description: The password for the Kerberos service account.
                 serviceAccountUserPrincipalName:
                   type: string
@@ -2819,6 +2900,7 @@ components:
                 - policy
             defaultSharedSecret:
               type: string
+              format: password
               description: Value to use for the shared secret if the shared secret is not provided for one or more of the RADIUS clients specified.
             radiusClients:
               type: array
@@ -2831,6 +2913,7 @@ components:
                     description: The IP of the RADIUS client.
                   sharedSecret:
                     type: string
+                    format: password
                     description: The shared secret for the RADIUS client. If this value is not provided, the shared secret specified with `defaultSharedSecret` is used. If you are not providing a shared secret for the client, leave out `sharedSecret` or set it to null.
                 required:
                   - ip
@@ -2856,6 +2939,7 @@ components:
           description: A date that specifies the date the credential was last used in UTC. This is a required property.
         credential:
           type: string
+          format: password
           readOnly: true
           description: A string that specifies the signed JWT for the gateway credential. This property is present only when the gateway credential is created.
     GatewayInstance:
@@ -2986,11 +3070,24 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
+        '_embedded':
+          type: object
+          properties:
+            group:
+              $ref: '#/components/schemas/Group'
         id:
           type: string
           description: ID of the group to assign
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+          description: A string that specifies the group name assigned to the user.
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/EnumGroupMembershipType'
       required:
-       - id
+        - id
     GroupNesting:
       type: object
       properties:
@@ -3005,6 +3102,24 @@ components:
           readOnly: true
       required:
        - id
+    IdentityPropagationPlan:
+      type: object
+      properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
+        id:
+          type: string
+          readOnly: true
+          description: The unique identifier for the group. Search all groups for a specific group ID with a SCIM filter on GET /environments/{environmentID}/groups. Retrieve all the group IDs associated with a user with GET /environments/{environmentID}/users/{userID}?include=memberOfGroupIDs.
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        name:
+          type: string
+          description: Unique name of the propagation plan
+        status:
+          $ref: '#/components/schemas/EnumIdentityPropagationPlanStatus'
+      required:
+        - name
     IdentityProvider:
       oneOf:
         - $ref: '#/components/schemas/IdentityProviderFacebook'
@@ -3123,6 +3238,7 @@ components:
               description: A string that specifies the application ID from Facebook. This is a required property.
             appSecret:
               type: string
+              format: password
               description: A string that specifies the application secret from Facebook. This is a required property.
           required:
             - appId
@@ -3137,6 +3253,7 @@ components:
               description: A string that specifies the application ID from the provider. This is a required property.
             clientSecret:
               type: string
+              format: password
               description: A string that specifies the application secret from the provider. This is a required property.
           required:
             - clientId
@@ -3154,6 +3271,7 @@ components:
               description: A string that specifies the application ID from the OIDC identity provider. This is a required property.
             clientSecret:
               type: string
+              format: password
               description: A string that specifies the application secret from the OIDC identity provider. This is a required property.
             discoveryEndpoint:
               type: string
@@ -3196,6 +3314,7 @@ components:
               description: A string that specifies the application ID from Apple. This is the identifier obtained after registering a services ID in the Apple developer portal. This is a required property.
             clientSecretSigningKey:
               type: string
+              format: password
               description: A string that specifies the private key that is used to generate a client secret. This is a required property.
             keyId:
               type: string
@@ -3218,6 +3337,7 @@ components:
               description: A string that specifies the application ID from PayPal. This is a required property.
             clientSecret:
               type: string
+              format: password
               description: A string that specifies the application secret from PayPal. This is a required property.
             clientEnvironment:
               type: string
@@ -3879,6 +3999,7 @@ components:
           description: A string that specifies the organization's SMTP server's username.
         password:
           type: string
+          format: password
           description: A string that specifies the organization's SMTP server's password.
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
@@ -3953,9 +4074,11 @@ components:
                   description: The username for the custom provider account. Required when `authentication.method=BASIC`
                 password:
                   type: string
+                  format: password
                   description: The password for the custom provider account. Required when `authentication.method=BASIC`
                 authToken:
                   type: string
+                  format: password
                   description: The authentication token for the custom provider account.  Required when `authentication.method=BEARER`
               required:
                 - method
@@ -4067,6 +4190,7 @@ components:
                 Relevant to Twilio only.
             authToken:
               type: string
+              format: password
               description: The secret key of the Twilio or Syniverse account.
             numbers:
               type: array
@@ -5125,6 +5249,7 @@ components:
           $ref: '#/components/schemas/ObjectEnvironment'
         secret:
           type: string
+          format: password
           readOnly: true
           description: An auto-generated resource client secret. Possible characters are a-z, A-Z, 0-9, -, ., _, ~. The secret has a minimum length of 64 characters per SHA-512 requirements when using the HS512 algorithm to sign ID tokens using the secret as the key.
     ResourceScope:
@@ -5383,6 +5508,79 @@ components:
         - name
         - enabled
         - type
+    SchemaAttributePatch:
+      type: object
+      properties:
+        description:
+          type: string
+          description: A string that specifies an optional property that specifies the description of the attribute. If provided, it must not be an empty string. Valid characters consists of any Unicode letter, mark (for example, accent or umlaut), numeric character, punctuation character, or space.
+        displayName:
+          type: string
+          description: A string that specifies an optional property that specifies the display name of the attribute such as 'T-shirt size’. If provided, it must not be an empty string. Valid characters consist of any Unicode letter, mark (for example, accent or umlaut), numeric character, forward slash, dot, apostrophe, underscore, space, or hyphen.
+        enabled:
+          type: boolean
+          description: A boolean that specifies whether or not the attribute is enabled. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null. Disabled attributes are ignored on create/update and not returned on read.
+        name:
+          type: string
+          description: A string that specifies the name of the attribute. The attribute name must be provided during creation, must not be empty and must not exceed 256 characters. It must also be unique within the schema for an environment. It must start with a letter and may be followed by letters, numbers or hyphens.
+        required:
+          type: boolean
+          description: A boolean that specifies whether or not the attribute is required. Required attributes must be provided a value during create/update. Defaults to false if not provided.
+        schemaType:
+          $ref: '#/components/schemas/EnumSchemaAttributeSchemaType'
+        subAttributes:
+          type: array
+          description: The list of sub-attributes of this attribute. Only `COMPLEX` attribute types can have sub-attributes, and only one-level of nesting is allowed. The leaf attribute definition must have a type of `STRING` or `JSON`. A `COMPLEX` attribute definition must have at least one child attribute definition.
+          items:
+            $ref: '#/components/schemas/SchemaAttribute'
+        type:
+          $ref: '#/components/schemas/EnumSchemaAttributeType'
+        unique:
+          type: boolean
+          description: A boolean that specifies whether or not the attribute must have a unique value within the environment. This is a required property for POST and PUT operations; it cannot be omitted or explicitly set to null.
+        multiValued:
+          type: boolean
+          description: A boolean that specifies whether the attribute has multiple values or a single one. This value can only change from false to true, as changing from true to false is not allowed. Maximum number of values stored is 1,000.
+        enumeratedValues:
+          type: array
+          items:
+            type: object
+            description: An object representation of an enumerated value. Maximum number of enumerations is 100.
+            properties:
+              value:
+                type: string
+                description: A string that specifies the immutable value. Values are case sensitive; two values that differ only by case are not allowed.
+              archived:
+                type: boolean
+                description: A boolean that specifies whether the enumerated value is archived. Archived values cannot be added to a user, but existing archived values are preserved. This allows clients that read the schema to know all possible values of an attribute.
+              description:
+                type: string
+                description: A string that specifies the description of the enumerated value.
+            required:
+              - value
+        regexValidation:
+          type: object
+          description: Object representation of the optional regular expression representation of this attribute.
+          properties:
+            pattern:
+              type: string
+              description: A string that specifies the regular expression to which the attribute must conform.
+            requirements:
+              type: string
+              description: A string that specifies a developer friendly description of the regular expression requirements.
+            valuesPatternShouldMatch:
+              type: array
+              description: An array that specifies the list of strings matching the regular expression.
+              items:
+                type: string
+            valuesPatternShouldNotMatch:
+              type: array
+              description: An array that specifies the list of strings not matching the regular expression.
+              items:
+                type: string
+          required:
+            - pattern
+            - requirements
     SignOnPolicy:
       type: object
       properties:
@@ -6341,30 +6539,7 @@ components:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
         account:
-          type: object
-          properties:
-            canAuthenticate:
-              type: boolean
-              description: A boolean that specifies the whether the user can authenticate. If the value is set to false, the account is locked or the user is disabled, and unless specified otherwise in administrative configuration, the user will be unable to authenticate.
-            lockedAt:
-              type: string
-              format: date-time
-              readOnly: true
-              description: The time the specified user account was locked. This property might be absent if the account is unlocked or if the account was locked out automatically by failed password attempts.
-            secondsUntilUnlock:
-              type: integer
-              readOnly: true
-              description: An integer that specifies the number of seconds until the user's account is unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
-            status:
-              $ref: '#/components/schemas/EnumUserStatus'
-            unlockAt:
-              type: string
-              format: date-time
-              readOnly: true
-              description: The time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
-          required:
-            - canAuthenticate
-            - status
+          $ref: '#/components/schemas/UserAccount'
         address:
           type: object
           properties:
@@ -6524,6 +6699,7 @@ components:
               description: A boolean that specifies whether the user is forced to change the password on the next log in. If not provided, the property is set to false.
             value:
               type: string
+              format: password
               description: A string that specifies the user's password value. The string is either in cleartext or pre-encoded format.
             external:
               type: object
@@ -6604,6 +6780,30 @@ components:
       required:
         - email
         - username
+    UserAccount:
+      type: object
+      properties:
+        canAuthenticate:
+          type: boolean
+          description: A boolean that specifies whether the user can authenticate. If the value is set to `false`, the account is locked or the user is disabled, and unless specified otherwise by the administrative configuration, the user will be unable to authenticate.
+        lockedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: A string that specifies the date-time the specified user account was locked. This property might be absent if the account is unlocked or if the account was locked out automatically by failed password attempts.
+        secondsUntilUnlock:
+          type: integer
+          readOnly: true
+          description: An integer that specifies the number of seconds until the user's account is unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
+        status:
+          $ref: '#/components/schemas/EnumUserStatus'
+        unlockAt:
+          type: string
+          format: date-time
+          description: A string that specifies the time the specified user account will be unlocked. This property is absent if the account is unlocked, or if it will not automatically unlock (and must be unlocked by an administrator).
+      required:
+        - canAuthenticate
+        - status
     UserEnabled:
       type: object
       properties:
@@ -9705,6 +9905,10 @@ paths:
           schema:
             type: string
           required: true
+        - name: include
+          in: query
+          schema:
+            $ref: '#/components/schemas/EnumFormsIncludeParameter'
       responses:
         '400':
           $ref: '#/components/responses/400'
@@ -12717,10 +12921,9 @@ paths:
   /environments/{environmentID}/propagation/plans:
     get:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: READ All Plans
+      operationId: readAllPlans
       parameters:
         - name: Accept
           in: header
@@ -12750,20 +12953,19 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
     post:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: CREATE Plan
+      operationId: createPlan
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                name: Default Plan
+              $ref: '#/components/schemas/IdentityPropagationPlan'
       parameters:
         - name: environmentID
           in: path
@@ -12790,14 +12992,15 @@ paths:
         '201':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
   /environments/{environmentID}/propagation/plans/{planID}:
     get:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: READ One Plan
+      operationId: readOnePlan
       parameters:
         - name: Accept
           in: header
@@ -12832,20 +13035,19 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
     put:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: UPDATE Plan
+      operationId: updatePlan
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              example:
-                name: Test-Propagation-Plan
+              $ref: '#/components/schemas/IdentityPropagationPlan'
       parameters:
         - name: environmentID
           in: path
@@ -12875,13 +13077,14 @@ paths:
         '200':
           description: Successful response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityPropagationPlan'
     delete:
       tags:
-        - >-
-          Propagation
-          Plans
+        - Identity Propagation Plans
       summary: DELETE Plan
+      operationId: deletePlan
       parameters:
         - name: Accept
           in: header
@@ -17334,7 +17537,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SchemaAttribute'
+              $ref: '#/components/schemas/SchemaAttributePatch'
               example:
                 name: NewName
                 schemaType: CORE
@@ -18539,13 +18742,18 @@ paths:
     post:
       tags:
         - User Accounts
-      summary: User Account Unlock
+      summary: User Account
+      operationId: userAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAccount'
       parameters:
         - name: content-type
           in: header
           schema:
-            type: string
-          example: application/vnd.pingidentity.account.unlock+json
+            $ref: '#/components/schemas/EnumUserAccountContentTypeHeader'
         - name: environmentID
           in: path
           schema:
@@ -18578,7 +18786,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EntityArray'
+                $ref: '#/components/schemas/User'
     put:
       tags:
         - Users
@@ -18888,13 +19096,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                id:
-                  type: string
-                  description: The group ID to add the user to
-              example:
-                id: e947cec5-62c5-4d80-af16-497b29e8a685
+              $ref: '#/components/schemas/GroupMembership'
       parameters:
         - name: environmentID
           in: path
@@ -18928,7 +19130,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
     get:
       tags:
         - Group Membership
@@ -18954,7 +19156,6 @@ paths:
           in: query
           schema:
             type: string
-          example: type eq "DIRECT"
         - name: environmentID
           in: path
           schema:
@@ -19034,7 +19235,7 @@ paths:
         - name: expand
           in: query
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumUserGroupAssignmentExpandParameter'
           example: group
         - name: environmentID
           in: path
@@ -19071,7 +19272,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Group'
+                $ref: '#/components/schemas/GroupMembership'
   /environments/{environmentID}/users/{userID}/enabled:
     get:
       tags:

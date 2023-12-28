@@ -19,8 +19,7 @@ var _ MappedNullable = &ApplicationAccessControlGroup{}
 
 // ApplicationAccessControlGroup struct for ApplicationAccessControlGroup
 type ApplicationAccessControlGroup struct {
-	// A string that specifies the group type required to access the application. Options are ANY_GROUP (the actor must belong to at least one group listed in the accessControl.group.groups property) and ALL_GROUPS (the actor must belong to all groups listed in the accessControl.group.groups property).
-	Type string `json:"type"`
+	Type EnumApplicationAccessControlGroupType `json:"type"`
 	// A set that specifies the group IDs for the groups the actor must belong to for access to the application.
 	Groups []ApplicationAccessControlGroupGroupsInner `json:"groups"`
 }
@@ -29,7 +28,7 @@ type ApplicationAccessControlGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationAccessControlGroup(type_ string, groups []ApplicationAccessControlGroupGroupsInner) *ApplicationAccessControlGroup {
+func NewApplicationAccessControlGroup(type_ EnumApplicationAccessControlGroupType, groups []ApplicationAccessControlGroupGroupsInner) *ApplicationAccessControlGroup {
 	this := ApplicationAccessControlGroup{}
 	this.Type = type_
 	this.Groups = groups
@@ -45,9 +44,9 @@ func NewApplicationAccessControlGroupWithDefaults() *ApplicationAccessControlGro
 }
 
 // GetType returns the Type field value
-func (o *ApplicationAccessControlGroup) GetType() string {
+func (o *ApplicationAccessControlGroup) GetType() EnumApplicationAccessControlGroupType {
 	if o == nil {
-		var ret string
+		var ret EnumApplicationAccessControlGroupType
 		return ret
 	}
 
@@ -56,7 +55,7 @@ func (o *ApplicationAccessControlGroup) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ApplicationAccessControlGroup) GetTypeOk() (*string, bool) {
+func (o *ApplicationAccessControlGroup) GetTypeOk() (*EnumApplicationAccessControlGroupType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,7 +63,7 @@ func (o *ApplicationAccessControlGroup) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *ApplicationAccessControlGroup) SetType(v string) {
+func (o *ApplicationAccessControlGroup) SetType(v EnumApplicationAccessControlGroupType) {
 	o.Type = v
 }
 
