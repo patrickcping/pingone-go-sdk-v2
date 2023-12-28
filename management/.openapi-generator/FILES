@@ -74,7 +74,6 @@ api_user_passwords.go
 api_user_populations.go
 api_user_role_assignments.go
 api_users.go
-client.go
 configuration.go
 docs/ActiveIdentityCountsApi.md
 docs/Agreement.md
