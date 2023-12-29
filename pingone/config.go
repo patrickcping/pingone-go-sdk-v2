@@ -23,6 +23,7 @@ type Config struct {
 	ProxyURL                      *string
 	Region                        string
 	UserAgentOverride             *string
+	UserAgentSuffix               *string
 	validated                     bool
 }
 

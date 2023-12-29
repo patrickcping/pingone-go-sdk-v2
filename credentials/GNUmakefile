@@ -42,7 +42,7 @@ gosec:
 
 generate:
 	@echo "==> Running generate for $(MODULE)..."
-	@./../scripts/generate.sh $(OWNER) $(REPO) $(MODULE)
+	@./../scripts/generate-module.sh $(OWNER) $(REPO) $(MODULE)
 
 devcheck: build vet lint gosec test testacc
 
