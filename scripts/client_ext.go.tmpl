@@ -6,11 +6,10 @@ import (
 	"net/http"
 	"reflect"
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
-
-	"golang.org/x/exp/slices"
 )
 
 type SDKInterfaceFunc func() (any, *http.Response, error)

@@ -13,9 +13,6 @@ else
         echo "==> Running codegen-$3..."
         openapi-generator-cli version-manager set 7.0.1
         openapi-generator-cli generate -i generate/pingone-$3.yml -g go --additional-properties=packageName=$3,packageVersion=$version,isGoSubmodule=true,enumClassPrefix=true,apiNameSuffix=Api -o . --git-repo-id $2 --git-user-id $1 --http-user-agent \"pingtools PingOne-GOLANG-SDK-$3/$version\"; \
-        go get -u ./...
-        go mod tidy
-        go mod vendor
 
         echo "==> Copying custom templated files..."
         template=$(cat ../scripts/client_ext.go.tmpl)
@@ -27,6 +24,10 @@ else
 
         echo "==> Applying module specific postprocessing..."
         go run generate/postprocessing/generate-replace-regex.go .
+
+        go get -u ./...
+        go mod tidy
+        go mod vendor
 
     else \
         echo "pingone-$3.yml missing.  Skipping"; \
