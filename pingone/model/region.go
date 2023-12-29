@@ -2,9 +2,8 @@ package model
 
 import (
 	"log"
+	"slices"
 	"sort"
-
-	"golang.org/x/exp/slices"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
 )

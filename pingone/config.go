@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"slices"
 	"strings"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
-	"golang.org/x/exp/slices"
 	"golang.org/x/oauth2"
 )
 
