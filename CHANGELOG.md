@@ -1,7 +1,7 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.4
-    * **Enhancement** Add ability to append custom user-agent information to HTTP requests.
+    * **Enhancement** Add ability to append custom user-agent information to HTTP requests. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
 
 # Release (2023-12-27)
 
