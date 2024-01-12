@@ -29582,7 +29582,7 @@ components:
         organization:
           $ref: '#/components/schemas/Environment_organization'
         region:
-          $ref: '#/components/schemas/EnumRegionCode'
+          $ref: '#/components/schemas/Environment_region'
         type:
           $ref: '#/components/schemas/EnumEnvironmentType'
         updatedAt:
@@ -37273,6 +37273,10 @@ components:
             identifier associated with the environment.
           type: string
       type: object
+    Environment_region:
+      oneOf:
+      - $ref: '#/components/schemas/EnumRegionCode'
+      - type: string
     FlowPolicy_application:
       description: An object that specifies the application information associated
         with the flow policy resource.
