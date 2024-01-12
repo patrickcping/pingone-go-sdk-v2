@@ -1,4 +1,4 @@
-# v0.4.1 (Unreleased)
+# v0.4.1 (2024-01-12)
 
 * **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
 * **Note** Updated the default UserAgent string format. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)

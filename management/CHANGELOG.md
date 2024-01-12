@@ -1,4 +1,4 @@
-# v0.35.0 (Unreleased)
+# v0.35.0 (2024-01-12)
 
 * **Breaking Change** Add ability to use a freetext region code on environment creation for non-production environments.  The `Region` parameter on the `Environment` object model now takes a `EnvironmentRegion` object, where one of `EnumRegionCode` or `string`. [#304](https://github.com/patrickcping/pingone-go-sdk-v2/pull/304)
 * **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
