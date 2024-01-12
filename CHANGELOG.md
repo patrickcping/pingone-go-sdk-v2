@@ -2,6 +2,13 @@
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.0
     * **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.3.0 => v0.3.1 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.4.0 => v0.4.1 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.6.1 => v0.6.2 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.34.0 => v0.35.0 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/mfa` v0.18.2 => v0.18.3 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.12.1 => v0.12.2 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/verify` v0.4.0 => v0.4.1 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
     * **Enhancement** Add ability to append custom user-agent information to HTTP requests. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.3.1](./agreementmanagement/CHANGELOG.md)
     * **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
