@@ -1,6 +1,6 @@
-# Release (Unreleased)
+# Release (2024-01-12)
 
-* `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.0
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.4
     * **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` v0.3.0 => v0.3.1 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/authorize` v0.4.0 => v0.4.1 [#308](https://github.com/patrickcping/pingone-go-sdk-v2/pull/308)
