@@ -1,6 +1,9 @@
 # v0.35.0 (Unreleased)
 
 * **Breaking Change** Add ability to use a freetext region code on environment creation for non-production environments.  The `Region` parameter on the `Environment` object model now takes a `EnvironmentRegion` object, where one of `EnumRegionCode` or `string`. [#304](https://github.com/patrickcping/pingone-go-sdk-v2/pull/304)
+* **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
+* **Note** Updated the default UserAgent string format. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
+* **Enhancement** Add ability to append custom user-agent information to HTTP requests. [#305](https://github.com/patrickcping/pingone-go-sdk-v2/pull/305)
 
 # v0.34.0 (2023-12-27)
 

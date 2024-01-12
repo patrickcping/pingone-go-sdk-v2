@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"slices"
 	"strings"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
-	"golang.org/x/exp/slices"
 	"golang.org/x/oauth2"
 )
 
@@ -23,6 +23,7 @@ type Config struct {
 	ProxyURL                      *string
 	Region                        string
 	UserAgentOverride             *string
+	UserAgentSuffix               *string
 	validated                     bool
 }
 

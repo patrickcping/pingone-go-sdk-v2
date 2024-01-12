@@ -32,6 +32,8 @@ type Client struct {
 	Region                       model.RegionMapping
 }
 
+var version = "0.11.4"
+
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
 	agreementManagementClient, err := c.AgreementManagementAPIClient(ctx)
@@ -133,11 +135,13 @@ func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementma
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
 	}
 
-	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
-		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -203,11 +207,13 @@ func (c *Config) AuthorizeAPIClient(ctx context.Context) (*authorize.APIClient, 
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
 	}
 
-	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
-		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -274,11 +280,13 @@ func (c *Config) CredentialsAPIClient(ctx context.Context) (*credentials.APIClie
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
 	}
 
-	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
-		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -344,11 +352,13 @@ func (c *Config) ManagementAPIClient(ctx context.Context) (*management.APIClient
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
 	}
 
-	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
-		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -414,11 +424,13 @@ func (c *Config) MFAAPIClient(ctx context.Context) (*mfa.APIClient, error) {
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
 	}
 
-	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
-		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -484,11 +496,13 @@ func (c *Config) RiskAPIClient(ctx context.Context) (*risk.APIClient, error) {
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
 	}
 
-	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
-		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {
@@ -554,11 +568,13 @@ func (c *Config) VerifyAPIClient(ctx context.Context) (*verify.APIClient, error)
 	}
 
 	if checkForValue(c.UserAgentOverride) {
-		clientcfg.UserAgent = *c.UserAgentOverride
+		clientcfg.SetUserAgent(*c.UserAgentOverride)
+	} else {
+		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
 	}
 
-	if v := envVar("PINGONE_APPEND_USER_AGENT"); v != "" {
-		clientcfg.UserAgent += fmt.Sprintf(" %s", v)
+	if checkForValue(c.UserAgentSuffix) {
+		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
 	}
 
 	if checkForValue(c.ProxyURL) {

@@ -2,6 +2,7 @@
 TEST?=$$(go list ./...)
 OWNER=patrickcping
 REPO=pingone-go-sdk-v2
+VERSION=0.11.4
 
 default: build
 
@@ -45,9 +46,14 @@ lint: golangci-lint
 gosec:
 	@gosec -exclude-generated ./...
 
+generate: generate-core generate-modules
+
+generate-core:
+	@./scripts/generate.sh $(VERSION)
+
 generate-modules:
 	@./scripts/generate-all.sh $(OWNER) $(REPO)
 
 devcheck: build vet lint gosec test testacc
 	
-.PHONY: tools build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck generate securitycheck devcheck
+.PHONY: tools build test testacc depscheck codecheck lint golangci-lint codegen fmtcheck generate generate-core generate-modules securitycheck devcheck

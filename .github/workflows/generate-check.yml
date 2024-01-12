@@ -1,7 +1,7 @@
 # This GitHub action runs your tests for each commit push and/or PR. Optionally
 # you can turn it on using a cron schedule for regular testing.
 #
-name: Code Check
+name: Code Generate Check
 on:
   pull_request:
     paths-ignore:
@@ -35,57 +35,59 @@ jobs:
     steps:
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4.1.1
+      uses: actions/checkout@v4
 
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
         go-version-file: 'go.mod'
-        cache: false
+        cache: true
       id: go
-    - uses: actions/cache@v3
-      continue-on-error: true
-      timeout-minutes: 2
-      with:
-        path: ~/go/pkg/mod
-        key: ${{ runner.os }}-go-pkg-mod-${{ hashFiles('go.sum') }}
+
+    - name: Get dependencies
+      run: |
+        go mod download
+
+    - name: Check dependencies
+      run: |
+        make depscheck
+
+    - name: Vet
+      run: |
+        make vet
 
     - name: Build
       run: |
         make build
 
-  lint:
+#   generate:
+#     name: generate
+#     needs: [build]
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-go@v5
+#         with:
+#           go-version-file: 'go.mod'
+#           cache: true
+      
+#       - run: make generate
+
+#       - name: git diff
+#         run: |
+#           git diff --compact-summary --exit-code || \
+#             (echo; echo "Unexpected difference in directories after code generation. Run 'make generate' command and commit."; exit 1)
+
+  version:
+    name: version check
     needs: [build]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        module:
-          - '.'
-          - 'agreementmanagement'
-          - 'authorize'
-          - 'credentials'
-          - 'management'
-          - 'mfa'
-          - 'risk'
-          - 'verify'
     steps:
-      - uses: actions/checkout@v4.1.1
-      - uses: actions/setup-go@v5
-        with:
-          go-version: '^1.20.0' # The Go version to download (if necessary) and use.
-          cache: true
+      - uses: actions/checkout@v4
+      
+      - run: make generate-core
 
-      - id: golangci-lint-version
-        working-directory: tools
-        run: >-
-          echo "version=$(
-            go list -m all |
-            grep github.com/golangci/golangci-lint |
-            awk '{print $2}'
-          )" >> $GITHUB_OUTPUT
-
-      - name: lint
-        uses: golangci/golangci-lint-action@v3
-        with:
-          version: "${{ steps.golangci-lint-version.outputs.version }}"
-          working-directory: ${{ matrix.module }}
+      - name: git diff
+        run: |
+          git diff --compact-summary --exit-code || \
+            (echo; echo "Unexpected difference in directories after code generation. Run 'make generate' command and commit."; exit 1)

@@ -147,7 +147,11 @@ func (c *Configuration) SetDebug(debug bool) {
 func (c *Configuration) SetUserAgent(userAgent string) {
 	c.UserAgent = userAgent
 }
-			
+
+func (c *Configuration) AppendUserAgent(userAgent string) {
+	c.UserAgent += fmt.Sprintf(" %s", userAgent)
+}
+
 func (c *Configuration) SetDefaultServerIndex(defaultServerIndex int) {
 	c.DefaultServerIndex = defaultServerIndex
 }

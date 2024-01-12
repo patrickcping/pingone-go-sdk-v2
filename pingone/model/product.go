@@ -2,10 +2,10 @@ package model
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
-	"golang.org/x/exp/slices"
 )
 
 type ProductMapping struct {
