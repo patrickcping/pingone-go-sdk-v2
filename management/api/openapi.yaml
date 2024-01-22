@@ -26001,10 +26001,13 @@ components:
       - ALLOWED
       - DENIED
       type: string
-    EnumNotificationsPolicyQuotaDeliveryMethods:
+    EnumNotificationsPolicyQuotaDeliveryMethodsSMSVoice:
       enum:
       - SMS
       - Voice
+      type: string
+    EnumNotificationsPolicyQuotaDeliveryMethodsEmail:
+      enum:
       - Email
       type: string
     EnumNotificationsPolicyQuotaItemType:
@@ -38235,6 +38238,10 @@ components:
       - countries
       - type
       type: object
+    NotificationsPolicy_quotas_inner_deliveryMethods_inner:
+      oneOf:
+      - $ref: '#/components/schemas/EnumNotificationsPolicyQuotaDeliveryMethodsSMSVoice'
+      - $ref: '#/components/schemas/EnumNotificationsPolicyQuotaDeliveryMethodsEmail'
     NotificationsPolicy_quotas_inner:
       example:
         total: 6
@@ -38252,7 +38259,7 @@ components:
             The delivery methods for which the limit is being defined. The value can be `Email` or `SMS,Voice`. When you use the `SMS`, `Voice` option, it means that the combined total of SMS and voice notifications must be below the limit defined. If you are limiting both email and SMS/voice, each limit should be represented by a different object in the `quotas` array, for example:
             `"quotas": [{"type": "USER","deliveryMethods": ["SMS","Voice"],"total": 30},{"type": "USER","deliveryMethods": ["Email"],"total": 30}]`
           items:
-            $ref: '#/components/schemas/EnumNotificationsPolicyQuotaDeliveryMethods'
+            $ref: '#/components/schemas/NotificationsPolicy_quotas_inner_deliveryMethods_inner'
           type: array
         total:
           description: The maximum number of notifications allowed per day.
