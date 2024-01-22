@@ -19,9 +19,11 @@ var _ MappedNullable = &ApplicationSecret{}
 
 // ApplicationSecret struct for ApplicationSecret
 type ApplicationSecret struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the application secret ID used to authenticate to the authorization server.
 	Secret *string `json:"secret,omitempty"`
+	Previous *ApplicationSecretPrevious `json:"previous,omitempty"`
 }
 
 // NewApplicationSecret instantiates a new ApplicationSecret object
@@ -39,6 +41,38 @@ func NewApplicationSecret() *ApplicationSecret {
 func NewApplicationSecretWithDefaults() *ApplicationSecret {
 	this := ApplicationSecret{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *ApplicationSecret) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSecret) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *ApplicationSecret) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *ApplicationSecret) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
@@ -105,6 +139,38 @@ func (o *ApplicationSecret) SetSecret(v string) {
 	o.Secret = &v
 }
 
+// GetPrevious returns the Previous field value if set, zero value otherwise.
+func (o *ApplicationSecret) GetPrevious() ApplicationSecretPrevious {
+	if o == nil || IsNil(o.Previous) {
+		var ret ApplicationSecretPrevious
+		return ret
+	}
+	return *o.Previous
+}
+
+// GetPreviousOk returns a tuple with the Previous field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSecret) GetPreviousOk() (*ApplicationSecretPrevious, bool) {
+	if o == nil || IsNil(o.Previous) {
+		return nil, false
+	}
+	return o.Previous, true
+}
+
+// HasPrevious returns a boolean if a field has been set.
+func (o *ApplicationSecret) HasPrevious() bool {
+	if o != nil && !IsNil(o.Previous) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrevious gets a reference to the given ApplicationSecretPrevious and assigns it to the Previous field.
+func (o *ApplicationSecret) SetPrevious(v ApplicationSecretPrevious) {
+	o.Previous = &v
+}
+
 func (o ApplicationSecret) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -115,11 +181,17 @@ func (o ApplicationSecret) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationSecret) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment
 	}
 	if !IsNil(o.Secret) {
 		toSerialize["secret"] = o.Secret
+	}
+	if !IsNil(o.Previous) {
+		toSerialize["previous"] = o.Previous
 	}
 	return toSerialize, nil
 }

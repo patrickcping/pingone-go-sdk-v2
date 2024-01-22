@@ -2409,6 +2409,72 @@ paths:
       tags:
       - Applications
   /environments/{environmentID}/applications/{applicationID}/secret:
+    delete:
+      operationId: deletePreviousApplicationSecret
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Previous Application Secret
+      tags:
+      - Application Secret
     get:
       operationId: readApplicationSecret
       parameters:
@@ -2496,6 +2562,11 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationSecret'
       responses:
         "400":
           content:
@@ -2549,7 +2620,9 @@ paths:
           description: Uncaught error occurred.  Platform outage
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationSecret'
           description: Successful response
       summary: UPDATE Application Secret
       tags:
@@ -27230,8 +27303,19 @@ components:
       example:
         environment:
           id: id
+        previous:
+          lastUsed: 2000-01-23T04:56:07.000+00:00
+          secret: secret
+          expiresAt: 2000-01-23T04:56:07.000+00:00
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         secret: secret
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         environment:
           $ref: '#/components/schemas/ObjectEnvironment'
         secret:
@@ -27240,6 +27324,8 @@ components:
           format: password
           readOnly: true
           type: string
+        previous:
+          $ref: '#/components/schemas/ApplicationSecret_previous'
       type: object
     ApplicationWSFED:
       allOf:
@@ -34971,6 +35057,33 @@ components:
           type: string
       required:
       - id
+      type: object
+    ApplicationSecret_previous:
+      example:
+        lastUsed: 2000-01-23T04:56:07.000+00:00
+        secret: secret
+        expiresAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        secret:
+          description: A string that specifies the previous application secret. This
+            property is returned in the response if the previous secret is not expired.
+          format: password
+          readOnly: true
+          type: string
+        expiresAt:
+          description: A timestamp that specifies how long this secret is saved (and
+            can be used) before it expires. Supported time range is 1 minute to 30
+            days.
+          format: date-time
+          type: string
+        lastUsed:
+          description: A timestamp that specifies when the previous secret was last
+            used.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - expiresAt
       type: object
     ApplicationWSFED_allOf_idpSigning_key:
       description: "The keypair to be used by the IdP to sign requests. If this isn't\
