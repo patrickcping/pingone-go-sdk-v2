@@ -29658,6 +29658,10 @@ components:
         description:
           description: A string that specifies the description of the population.
           type: string
+        icon:
+          description: "The URL referencing the image to use for the environment icon.\
+            \ The supported image types are JPEG/JPG, PNG, and GIF."
+          type: string
         id:
           description: A string that specifies the resource’s unique identifier.
           readOnly: true
