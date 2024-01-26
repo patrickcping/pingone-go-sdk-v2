@@ -601,6 +601,10 @@ components:
 
         If this parameter is not provided, the default is `BANNER_BUTTONS`. Note that to use the non-default push banners, you must implement them in your application code, using the PingOne SDK. For details, see the [README for iOS](https://github.com/pingidentity/pingone-mobile-sdk-ios/#171-push-notifications-categories) and the [README for Android](https://github.com/pingidentity/pingone-mobile-sdk-android).
       default: BANNER_BUTTONS
+    EnumTemplateName:
+      type: string
+      enum: [credential_issued,credential_revoked,credential_updated,credential_verification, device_pairing,digital_wallet_pairing,email_verification_admin,email_verification_user,email_phone_verification,general,id_verification,new_device_paired,recovery_code_template, strong_authentication, transaction, verification_code_template]
+      description: The name of the template
     EnumTrustedEmailStatus:
       type: string
       enum: [ACTIVE, VERIFICATION_REQUIRED]
@@ -15294,7 +15298,7 @@ paths:
         - name: templateName
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumTemplateName'
           required: true
       responses:
         '400':
@@ -15332,7 +15336,7 @@ paths:
         - name: templateName
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumTemplateName'
           required: true
       responses:
         '400':
@@ -15374,7 +15378,7 @@ paths:
         - name: templateName
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumTemplateName'
           required: true
       responses:
         '400':
@@ -15423,7 +15427,7 @@ paths:
         - name: templateName
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumTemplateName'
           required: true
       responses:
         '400':
@@ -15465,7 +15469,7 @@ paths:
         - name: templateName
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumTemplateName'
           required: true
       responses:
         '400':
@@ -15499,7 +15503,7 @@ paths:
         - name: templateName
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumTemplateName'
           required: true
         - name: contentID
           in: path
@@ -15546,7 +15550,7 @@ paths:
         - name: templateName
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumTemplateName'
           required: true
         - name: contentID
           in: path
@@ -15588,7 +15592,7 @@ paths:
         - name: templateName
           in: path
           schema:
-            type: string
+            $ref: '#/components/schemas/EnumTemplateName'
           required: true
         - name: contentID
           in: path

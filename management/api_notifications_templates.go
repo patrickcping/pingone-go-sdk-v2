@@ -27,7 +27,7 @@ type ApiCreateContentRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
-	templateName string
+	templateName EnumTemplateName
 	templateContent *TemplateContent
 }
 
@@ -48,7 +48,7 @@ CreateContent CREATE Content
  @param templateName
  @return ApiCreateContentRequest
 */
-func (a *NotificationsTemplatesApiService) CreateContent(ctx context.Context, environmentID string, templateName string) ApiCreateContentRequest {
+func (a *NotificationsTemplatesApiService) CreateContent(ctx context.Context, environmentID string, templateName EnumTemplateName) ApiCreateContentRequest {
 	return ApiCreateContentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -244,7 +244,7 @@ type ApiDeleteBulkVariantContentsRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
-	templateName string
+	templateName EnumTemplateName
 	filter *string
 }
 
@@ -265,7 +265,7 @@ DeleteBulkVariantContents DELETE Bulk Variant Contents
  @param templateName
  @return ApiDeleteBulkVariantContentsRequest
 */
-func (a *NotificationsTemplatesApiService) DeleteBulkVariantContents(ctx context.Context, environmentID string, templateName string) ApiDeleteBulkVariantContentsRequest {
+func (a *NotificationsTemplatesApiService) DeleteBulkVariantContents(ctx context.Context, environmentID string, templateName EnumTemplateName) ApiDeleteBulkVariantContentsRequest {
 	return ApiDeleteBulkVariantContentsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -440,7 +440,7 @@ type ApiDeleteContentRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
-	templateName string
+	templateName EnumTemplateName
 	contentID string
 }
 
@@ -457,7 +457,7 @@ DeleteContent DELETE Content
  @param contentID
  @return ApiDeleteContentRequest
 */
-func (a *NotificationsTemplatesApiService) DeleteContent(ctx context.Context, environmentID string, templateName string, contentID string) ApiDeleteContentRequest {
+func (a *NotificationsTemplatesApiService) DeleteContent(ctx context.Context, environmentID string, templateName EnumTemplateName, contentID string) ApiDeleteContentRequest {
 	return ApiDeleteContentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -631,7 +631,7 @@ type ApiPatchBulkVariantContentsRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
-	templateName string
+	templateName EnumTemplateName
 	filter *string
 	body *map[string]interface{}
 }
@@ -658,7 +658,7 @@ PatchBulkVariantContents PATCH Bulk Variant Contents
  @param templateName
  @return ApiPatchBulkVariantContentsRequest
 */
-func (a *NotificationsTemplatesApiService) PatchBulkVariantContents(ctx context.Context, environmentID string, templateName string) ApiPatchBulkVariantContentsRequest {
+func (a *NotificationsTemplatesApiService) PatchBulkVariantContents(ctx context.Context, environmentID string, templateName EnumTemplateName) ApiPatchBulkVariantContentsRequest {
 	return ApiPatchBulkVariantContentsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -846,7 +846,7 @@ type ApiReadAllTemplateContentsRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
-	templateName string
+	templateName EnumTemplateName
 }
 
 func (r ApiReadAllTemplateContentsRequest) Execute() (*EntityArray, *http.Response, error) {
@@ -861,7 +861,7 @@ ReadAllTemplateContents READ All Contents
  @param templateName
  @return ApiReadAllTemplateContentsRequest
 */
-func (a *NotificationsTemplatesApiService) ReadAllTemplateContents(ctx context.Context, environmentID string, templateName string) ApiReadAllTemplateContentsRequest {
+func (a *NotificationsTemplatesApiService) ReadAllTemplateContents(ctx context.Context, environmentID string, templateName EnumTemplateName) ApiReadAllTemplateContentsRequest {
 	return ApiReadAllTemplateContentsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1256,7 +1256,7 @@ type ApiReadOneContentRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
-	templateName string
+	templateName EnumTemplateName
 	contentID string
 }
 
@@ -1273,7 +1273,7 @@ ReadOneContent READ One Content
  @param contentID
  @return ApiReadOneContentRequest
 */
-func (a *NotificationsTemplatesApiService) ReadOneContent(ctx context.Context, environmentID string, templateName string, contentID string) ApiReadOneContentRequest {
+func (a *NotificationsTemplatesApiService) ReadOneContent(ctx context.Context, environmentID string, templateName EnumTemplateName, contentID string) ApiReadOneContentRequest {
 	return ApiReadOneContentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1458,7 +1458,7 @@ type ApiReadOneTemplateRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
-	templateName string
+	templateName EnumTemplateName
 }
 
 func (r ApiReadOneTemplateRequest) Execute() (*Template, *http.Response, error) {
@@ -1473,7 +1473,7 @@ ReadOneTemplate READ One Template
  @param templateName
  @return ApiReadOneTemplateRequest
 */
-func (a *NotificationsTemplatesApiService) ReadOneTemplate(ctx context.Context, environmentID string, templateName string) ApiReadOneTemplateRequest {
+func (a *NotificationsTemplatesApiService) ReadOneTemplate(ctx context.Context, environmentID string, templateName EnumTemplateName) ApiReadOneTemplateRequest {
 	return ApiReadOneTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1656,7 +1656,7 @@ type ApiUpdateContentRequest struct {
 	ctx context.Context
 	ApiService *NotificationsTemplatesApiService
 	environmentID string
-	templateName string
+	templateName EnumTemplateName
 	contentID string
 	templateContent *TemplateContent
 }
@@ -1679,7 +1679,7 @@ UpdateContent UPDATE Content
  @param contentID
  @return ApiUpdateContentRequest
 */
-func (a *NotificationsTemplatesApiService) UpdateContent(ctx context.Context, environmentID string, templateName string, contentID string) ApiUpdateContentRequest {
+func (a *NotificationsTemplatesApiService) UpdateContent(ctx context.Context, environmentID string, templateName EnumTemplateName, contentID string) ApiUpdateContentRequest {
 	return ApiUpdateContentRequest{
 		ApiService: a,
 		ctx: ctx,

@@ -304,6 +304,7 @@ docs/EnumSubscriptionFilterIncludedTags.md
 docs/EnumSubscriptionFormat.md
 docs/EnumTemplateContentDeliveryMethod.md
 docs/EnumTemplateContentPushCategory.md
+docs/EnumTemplateName.md
 docs/EnumTrustedEmailStatus.md
 docs/EnumUpdateStatus.md
 docs/EnumUserAccountContentTypeHeader.md
@@ -842,6 +843,7 @@ model_enum_subscription_filter_included_tags.go
 model_enum_subscription_format.go
 model_enum_template_content_delivery_method.go
 model_enum_template_content_push_category.go
+model_enum_template_name.go
 model_enum_trusted_email_status.go
 model_enum_update_status.go
 model_enum_user_account_content_type_header.go
