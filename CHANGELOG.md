@@ -1,7 +1,9 @@
 # Release (Unreleased)
 
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.36.0](./management/CHANGELOG.md)
+    * **Breaking Change** Due to validation on the API, `EnumNotificationsPolicyQuotaDeliveryMethods` now becomes `NotificationsPolicyQuotasInnerDeliveryMethodsInner` [#312](https://github.com/patrickcping/pingone-go-sdk-v2/pull/312)
     * **Enhancement** Add ability to designate an application's client secret as a previous secret with an expiry date up to 30 days, for rotation purposes. [#311](https://github.com/patrickcping/pingone-go-sdk-v2/pull/311)
+    * **Enhancement** Add ability to set an icon on the `Environment` object model. [#313](https://github.com/patrickcping/pingone-go-sdk-v2/pull/313)
 
 # Release (2024-01-12)
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **BillOfMaterials** | Pointer to [**BillOfMaterials**](BillOfMaterials.md) |  | [optional] 
 **CreatedAt** | Pointer to **string** | The time the resource was created. | [optional] [readonly] 
 **Description** | Pointer to **string** | A string that specifies the description of the population. | [optional] 
+**Icon** | Pointer to **string** | The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF. | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource’s unique identifier. | [optional] [readonly] 
 **License** | [**EnvironmentLicense**](EnvironmentLicense.md) |  | 
 **Name** | **string** | A string that specifies the environment name, which must be provided and must be unique within an organization. | 
@@ -134,6 +135,31 @@ SetDescription sets Description field to given value.
 `func (o *Environment) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetIcon
+
+`func (o *Environment) GetIcon() string`
+
+GetIcon returns the Icon field if non-nil, zero value otherwise.
+
+### GetIconOk
+
+`func (o *Environment) GetIconOk() (*string, bool)`
+
+GetIconOk returns a tuple with the Icon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIcon
+
+`func (o *Environment) SetIcon(v string)`
+
+SetIcon sets Icon field to given value.
+
+### HasIcon
+
+`func (o *Environment) HasIcon() bool`
+
+HasIcon returns a boolean if a field has been set.
 
 ### GetId
 

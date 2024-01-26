@@ -25,6 +25,8 @@ type Environment struct {
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// A string that specifies the description of the population.
 	Description *string `json:"description,omitempty"`
+	// The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF.
+	Icon *string `json:"icon,omitempty"`
 	// A string that specifies the resource’s unique identifier.
 	Id *string `json:"id,omitempty"`
 	License EnvironmentLicense `json:"license"`
@@ -184,6 +186,38 @@ func (o *Environment) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Environment) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetIcon returns the Icon field value if set, zero value otherwise.
+func (o *Environment) GetIcon() string {
+	if o == nil || IsNil(o.Icon) {
+		var ret string
+		return ret
+	}
+	return *o.Icon
+}
+
+// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Environment) GetIconOk() (*string, bool) {
+	if o == nil || IsNil(o.Icon) {
+		return nil, false
+	}
+	return o.Icon, true
+}
+
+// HasIcon returns a boolean if a field has been set.
+func (o *Environment) HasIcon() bool {
+	if o != nil && !IsNil(o.Icon) {
+		return true
+	}
+
+	return false
+}
+
+// SetIcon gets a reference to the given string and assigns it to the Icon field.
+func (o *Environment) SetIcon(v string) {
+	o.Icon = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -399,6 +433,9 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Icon) {
+		toSerialize["icon"] = o.Icon
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
