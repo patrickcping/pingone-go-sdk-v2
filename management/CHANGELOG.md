@@ -1,6 +1,7 @@
 # v0.36.0 (Unreleased)
 
 * **Enhancement** Add ability to designate an application's client secret as a previous secret with an expiry date up to 30 days, for rotation purposes. [#311](https://github.com/patrickcping/pingone-go-sdk-v2/pull/311)
+* **Enhancement** Add ability to set an icon on the `Environment` object model.
 
 # v0.35.0 (2024-01-12)
 

@@ -2094,6 +2094,9 @@ components:
         description:
           type: string
           description: A string that specifies the description of the population.
+        icon:
+          type: string
+          description: The URL referencing the image to use for the environment icon. The supported image types are JPEG/JPG, PNG, and GIF.
         id:
           type: string
           description: A string that specifies the resource’s unique identifier.
