@@ -15109,7 +15109,7 @@ paths:
         name: templateName
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumTemplateName'
         style: simple
       responses:
         "400":
@@ -15188,7 +15188,7 @@ paths:
         name: templateName
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumTemplateName'
         style: simple
       responses:
         "400":
@@ -15254,7 +15254,7 @@ paths:
         name: templateName
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumTemplateName'
         style: simple
       responses:
         "400":
@@ -15332,7 +15332,7 @@ paths:
         name: templateName
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumTemplateName'
         style: simple
       requestBody:
         content:
@@ -15407,7 +15407,7 @@ paths:
         name: templateName
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumTemplateName'
         style: simple
       requestBody:
         content:
@@ -15490,7 +15490,7 @@ paths:
         name: templateName
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumTemplateName'
         style: simple
       - explode: false
         in: path
@@ -15563,7 +15563,7 @@ paths:
         name: templateName
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumTemplateName'
         style: simple
       - explode: false
         in: path
@@ -15640,7 +15640,7 @@ paths:
         name: templateName
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/EnumTemplateName'
         style: simple
       - explode: false
         in: path
@@ -26454,6 +26454,26 @@ components:
       - BANNER_BUTTONS
       - WITHOUT_BANNER_BUTTONS
       - APPROVE_AND_OPEN_APP
+      type: string
+    EnumTemplateName:
+      description: The name of the template
+      enum:
+      - credential_issued
+      - credential_revoked
+      - credential_updated
+      - credential_verification
+      - device_pairing
+      - digital_wallet_pairing
+      - email_verification_admin
+      - email_verification_user
+      - email_phone_verification
+      - general
+      - id_verification
+      - new_device_paired
+      - recovery_code_template
+      - strong_authentication
+      - transaction
+      - verification_code_template
       type: string
     EnumTrustedEmailStatus:
       description: A string that specifies the status of the trusted email address.

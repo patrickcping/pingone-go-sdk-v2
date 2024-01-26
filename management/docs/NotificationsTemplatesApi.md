@@ -36,7 +36,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
+    templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
     templateContent := openapiclient.TemplateContent{TemplateContentEmail: openapiclient.NewTemplateContentEmail("Locale_example", openapiclient.EnumTemplateContentDeliveryMethod("Email"), "Body_example")} // TemplateContent |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**templateName** | **string** |  | 
+**templateName** | [**EnumTemplateName**](.md) |  | 
 
 ### Other Parameters
 
@@ -109,7 +109,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
+    templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
     filter := "variant eq {{variantName}}" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**templateName** | **string** |  | 
+**templateName** | [**EnumTemplateName**](.md) |  | 
 
 ### Other Parameters
 
@@ -180,7 +180,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
+    templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
     contentID := "contentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**templateName** | **string** |  | 
+**templateName** | [**EnumTemplateName**](.md) |  | 
 **contentID** | **string** |  | 
 
 ### Other Parameters
@@ -252,7 +252,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
+    templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
     filter := "variant eq {{variantName}}" // string |  (optional)
     body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**templateName** | **string** |  | 
+**templateName** | [**EnumTemplateName**](.md) |  | 
 
 ### Other Parameters
 
@@ -327,7 +327,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
+    templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**templateName** | **string** |  | 
+**templateName** | [**EnumTemplateName**](.md) |  | 
 
 ### Other Parameters
 
@@ -470,7 +470,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
+    templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
     contentID := "contentID_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
@@ -492,7 +492,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**templateName** | **string** |  | 
+**templateName** | [**EnumTemplateName**](.md) |  | 
 **contentID** | **string** |  | 
 
 ### Other Parameters
@@ -544,7 +544,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
+    templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -565,7 +565,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**templateName** | **string** |  | 
+**templateName** | [**EnumTemplateName**](.md) |  | 
 
 ### Other Parameters
 
@@ -615,7 +615,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    templateName := "templateName_example" // string | 
+    templateName := openapiclient.EnumTemplateName("credential_issued") // EnumTemplateName | 
     contentID := "contentID_example" // string | 
     templateContent := openapiclient.TemplateContent{TemplateContentEmail: openapiclient.NewTemplateContentEmail("Locale_example", openapiclient.EnumTemplateContentDeliveryMethod("Email"), "Body_example")} // TemplateContent |  (optional)
 
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **environmentID** | **string** |  | 
-**templateName** | **string** |  | 
+**templateName** | [**EnumTemplateName**](.md) |  | 
 **contentID** | **string** |  | 
 
 ### Other Parameters

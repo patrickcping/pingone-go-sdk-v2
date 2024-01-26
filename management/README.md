@@ -629,6 +629,7 @@ Class | Method | HTTP request | Description
  - [EnumSubscriptionFormat](docs/EnumSubscriptionFormat.md)
  - [EnumTemplateContentDeliveryMethod](docs/EnumTemplateContentDeliveryMethod.md)
  - [EnumTemplateContentPushCategory](docs/EnumTemplateContentPushCategory.md)
+ - [EnumTemplateName](docs/EnumTemplateName.md)
  - [EnumTrustedEmailStatus](docs/EnumTrustedEmailStatus.md)
  - [EnumUpdateStatus](docs/EnumUpdateStatus.md)
  - [EnumUserAccountContentTypeHeader](docs/EnumUserAccountContentTypeHeader.md)
