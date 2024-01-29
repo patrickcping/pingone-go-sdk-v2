@@ -21,7 +21,7 @@ var _ MappedNullable = &NotificationsPolicyQuotasInner{}
 type NotificationsPolicyQuotasInner struct {
 	Type EnumNotificationsPolicyQuotaItemType `json:"type"`
 	// The delivery methods for which the limit is being defined. The value can be `Email` or `SMS,Voice`. When you use the `SMS`, `Voice` option, it means that the combined total of SMS and voice notifications must be below the limit defined. If you are limiting both email and SMS/voice, each limit should be represented by a different object in the `quotas` array, for example: `\"quotas\": [{\"type\": \"USER\",\"deliveryMethods\": [\"SMS\",\"Voice\"],\"total\": 30},{\"type\": \"USER\",\"deliveryMethods\": [\"Email\"],\"total\": 30}]` 
-	DeliveryMethods []NotificationsPolicyQuotasInnerDeliveryMethodsInner `json:"deliveryMethods"`
+	DeliveryMethods []EnumNotificationsPolicyQuotaDeliveryMethods `json:"deliveryMethods"`
 	// The maximum number of notifications allowed per day.
 	Total *int32 `json:"total,omitempty"`
 	// The maximum number of notifications that can be received and responded to each day. Used in conjunction with unclaimed in place of the single field total.
@@ -34,7 +34,7 @@ type NotificationsPolicyQuotasInner struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNotificationsPolicyQuotasInner(type_ EnumNotificationsPolicyQuotaItemType, deliveryMethods []NotificationsPolicyQuotasInnerDeliveryMethodsInner) *NotificationsPolicyQuotasInner {
+func NewNotificationsPolicyQuotasInner(type_ EnumNotificationsPolicyQuotaItemType, deliveryMethods []EnumNotificationsPolicyQuotaDeliveryMethods) *NotificationsPolicyQuotasInner {
 	this := NotificationsPolicyQuotasInner{}
 	this.Type = type_
 	this.DeliveryMethods = deliveryMethods
@@ -74,9 +74,9 @@ func (o *NotificationsPolicyQuotasInner) SetType(v EnumNotificationsPolicyQuotaI
 }
 
 // GetDeliveryMethods returns the DeliveryMethods field value
-func (o *NotificationsPolicyQuotasInner) GetDeliveryMethods() []NotificationsPolicyQuotasInnerDeliveryMethodsInner {
+func (o *NotificationsPolicyQuotasInner) GetDeliveryMethods() []EnumNotificationsPolicyQuotaDeliveryMethods {
 	if o == nil {
-		var ret []NotificationsPolicyQuotasInnerDeliveryMethodsInner
+		var ret []EnumNotificationsPolicyQuotaDeliveryMethods
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *NotificationsPolicyQuotasInner) GetDeliveryMethods() []NotificationsPol
 
 // GetDeliveryMethodsOk returns a tuple with the DeliveryMethods field value
 // and a boolean to check if the value has been set.
-func (o *NotificationsPolicyQuotasInner) GetDeliveryMethodsOk() ([]NotificationsPolicyQuotasInnerDeliveryMethodsInner, bool) {
+func (o *NotificationsPolicyQuotasInner) GetDeliveryMethodsOk() ([]EnumNotificationsPolicyQuotaDeliveryMethods, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *NotificationsPolicyQuotasInner) GetDeliveryMethodsOk() ([]Notifications
 }
 
 // SetDeliveryMethods sets field value
-func (o *NotificationsPolicyQuotasInner) SetDeliveryMethods(v []NotificationsPolicyQuotasInnerDeliveryMethodsInner) {
+func (o *NotificationsPolicyQuotasInner) SetDeliveryMethods(v []EnumNotificationsPolicyQuotaDeliveryMethods) {
 	o.DeliveryMethods = v
 }
 
