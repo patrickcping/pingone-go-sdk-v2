@@ -1,6 +1,5 @@
 # v0.36.0 (Unreleased)
 
-* **Breaking Change** Due to validation on the API, `EnumNotificationsPolicyQuotaDeliveryMethods` now becomes `NotificationsPolicyQuotasInnerDeliveryMethodsInner` [#312](https://github.com/patrickcping/pingone-go-sdk-v2/pull/312)
 * **Breaking Change** Notification template names, used on the `NotificationsTemplatesApiService` service now uses an enum which defines the templates supported in the API path. [#314](https://github.com/patrickcping/pingone-go-sdk-v2/pull/314)
 * **Enhancement** Add ability to designate an application's client secret as a previous secret with an expiry date up to 30 days, for rotation purposes. [#311](https://github.com/patrickcping/pingone-go-sdk-v2/pull/311)
 * **Enhancement** Add ability to set an icon on the `Environment` object model. [#313](https://github.com/patrickcping/pingone-go-sdk-v2/pull/313)

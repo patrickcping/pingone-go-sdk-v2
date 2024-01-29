@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    notificationsPolicy := *openapiclient.NewNotificationsPolicy("Name_example", []openapiclient.NotificationsPolicyQuotasInner{*openapiclient.NewNotificationsPolicyQuotasInner(openapiclient.EnumNotificationsPolicyQuotaItemType("USER"), []openapiclient.NotificationsPolicyQuotasInnerDeliveryMethodsInner{openapiclient.NotificationsPolicy_quotas_inner_deliveryMethods_inner{EnumNotificationsPolicyQuotaDeliveryMethodsEmail: openapiclient.EnumNotificationsPolicyQuotaDeliveryMethodsEmail("Email")}})}) // NotificationsPolicy |  (optional)
+    notificationsPolicy := *openapiclient.NewNotificationsPolicy("Name_example", []openapiclient.NotificationsPolicyQuotasInner{*openapiclient.NewNotificationsPolicyQuotasInner(openapiclient.EnumNotificationsPolicyQuotaItemType("USER"), []openapiclient.EnumNotificationsPolicyQuotaDeliveryMethods{openapiclient.EnumNotificationsPolicyQuotaDeliveryMethods("SMS")})}) // NotificationsPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -311,7 +311,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     notificationsPolicyID := "notificationsPolicyID_example" // string | 
-    notificationsPolicy := *openapiclient.NewNotificationsPolicy("Name_example", []openapiclient.NotificationsPolicyQuotasInner{*openapiclient.NewNotificationsPolicyQuotasInner(openapiclient.EnumNotificationsPolicyQuotaItemType("USER"), []openapiclient.NotificationsPolicyQuotasInnerDeliveryMethodsInner{openapiclient.NotificationsPolicy_quotas_inner_deliveryMethods_inner{EnumNotificationsPolicyQuotaDeliveryMethodsEmail: openapiclient.EnumNotificationsPolicyQuotaDeliveryMethodsEmail("Email")}})}) // NotificationsPolicy |  (optional)
+    notificationsPolicy := *openapiclient.NewNotificationsPolicy("Name_example", []openapiclient.NotificationsPolicyQuotasInner{*openapiclient.NewNotificationsPolicyQuotasInner(openapiclient.EnumNotificationsPolicyQuotaItemType("USER"), []openapiclient.EnumNotificationsPolicyQuotaDeliveryMethods{openapiclient.EnumNotificationsPolicyQuotaDeliveryMethods("SMS")})}) // NotificationsPolicy |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
