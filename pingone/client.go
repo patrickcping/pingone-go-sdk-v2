@@ -32,7 +32,7 @@ type Client struct {
 	Region                       model.RegionMapping
 }
 
-var version = "0.11.4"
+var version = "0.11.5"
 
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 
