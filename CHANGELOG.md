@@ -1,5 +1,8 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.5
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.35.0 => v0.36.0 [#316](https://github.com/patrickcping/pingone-go-sdk-v2/pull/316)
+    * **Note** bump `golang.org/x/oauth2` v0.15.0 => v0.16.0 [#316](https://github.com/patrickcping/pingone-go-sdk-v2/pull/316)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.36.0](./management/CHANGELOG.md)
     * **Breaking Change** Notification template names, used on the `NotificationsTemplatesApiService` service now uses an enum which defines the templates supported in the API path. [#314](https://github.com/patrickcping/pingone-go-sdk-v2/pull/314)
     * **Enhancement** Add ability to designate an application's client secret as a previous secret with an expiry date up to 30 days, for rotation purposes. [#311](https://github.com/patrickcping/pingone-go-sdk-v2/pull/311)
