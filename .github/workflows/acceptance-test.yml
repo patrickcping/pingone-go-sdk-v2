@@ -51,9 +51,9 @@ jobs:
       run: |
         go build -v ./...
 
-  # run acceptance tests in a matrix with Terraform core versions
+  # run acceptance tests
   test:
-    name: Matrix Test
+    name: Acceptance Tests
     needs: [build]
     runs-on: ubuntu-latest
 
@@ -61,6 +61,7 @@ jobs:
       PINGONE_CLIENT_ID_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_ID }}
       PINGONE_CLIENT_SECRET_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_SECRET }}
       PINGONE_ENVIRONMENT_ID_TESTACC: ${{ secrets.EU_PINGONE_ENVIRONMENT_ID }}
+      # Dummy values follow to test the env var defaulting behaviours
       PINGONE_REGION_TESTACC: Europe
       PINGONE_API_ACCESS_TOKEN: DummyAccessToken
       PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME: agreement-mgmt.ping-eng.com
