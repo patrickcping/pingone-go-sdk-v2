@@ -1,3 +1,7 @@
+# v0.37.0 (Unreleased)
+
+* **Enhancement** Add new API operations `ReadOnePopulationDefaultIdp` and `UpdatePopulationDefaultIdp` to support setting default identity providers to populations. [#319](https://github.com/patrickcping/pingone-go-sdk-v2/pull/319)
+
 # v0.36.0 (2024-01-30)
 
 * **Breaking Change** Notification template names, used on the `NotificationsTemplatesApiService` service now uses an enum which defines the templates supported in the API path. [#314](https://github.com/patrickcping/pingone-go-sdk-v2/pull/314)

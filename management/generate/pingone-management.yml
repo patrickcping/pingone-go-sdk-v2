@@ -4563,6 +4563,16 @@ components:
           readOnly: true
       required:
         - name
+    PopulationDefaultIdp:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the default IdP for the population.
+        type:
+          type: string
+          description: The type of the default IdP for the population.
+          readOnly: true
     PropagationStore:
       type: object
       properties:
@@ -16578,6 +16588,86 @@ paths:
           $ref: '#/components/responses/500'
         '204':
           description: Successful response
+  /environments/{environmentID}/populations/{populationID}/defaultIdentityProvider:
+    get:
+      tags:
+        - Populations
+      summary: READ One Population Default Identity Provider
+      operationId: readOnePopulationDefaultIdp
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: populationID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PopulationDefaultIdp'
+    put:
+      tags:
+        - Populations
+      summary: UPDATE Population Default Identity Provider
+      operationId: updatePopulationDefaultIdp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PopulationDefaultIdp'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: populationID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PopulationDefaultIdp'
   /environments/{environmentID}/recaptchaV2Config:
     get:
       tags:

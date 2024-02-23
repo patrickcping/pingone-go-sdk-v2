@@ -490,6 +490,7 @@ docs/PasswordPolicyLength.md
 docs/PasswordPolicyLockout.md
 docs/PhoneDeliverySettingsApi.md
 docs/Population.md
+docs/PopulationDefaultIdp.md
 docs/PopulationPasswordPolicy.md
 docs/PopulationsApi.md
 docs/PropagationMappingsApi.md
@@ -998,6 +999,7 @@ model_password_policy_length.go
 model_password_policy_lockout.go
 model_password_policy_min_characters.go
 model_population.go
+model_population_default_idp.go
 model_population_password_policy.go
 model_propagation_store.go
 model_propagation_store_configuration_aquera.go
