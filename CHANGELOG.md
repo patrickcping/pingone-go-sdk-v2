@@ -4,6 +4,9 @@
     * **Note** bump `golang.org/x/oauth2` v0.16.0 => v0.17.0 [#318](https://github.com/patrickcping/pingone-go-sdk-v2/pull/318)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.37.0](./management/CHANGELOG.md)
     * **Enhancement** Add new API operations `ReadOnePopulationDefaultIdp` and `UpdatePopulationDefaultIdp` to support setting default identity providers to populations. [#319](https://github.com/patrickcping/pingone-go-sdk-v2/pull/319)
+    * **Enhancement** Added the `Signing` property to the `ApplicationOIDC` data model, to support assigning custom defined KRPs to a supported application.
+    * **Enhancement** Added the `DevicePathId`, `DeviceCustomVerificationUri`, `DeviceTimeout`, `DevicePollingInterval` properties to the `ApplicationOIDC` data model and extended the `EnumApplicationOIDCGrantType` ENUM, to support the `DEVICE_CODE` application grant type.
+    * **Enhancement** Added the `Jwks`, `JwksUrl` properties to the `ApplicationOIDC` data model and extended the `EnumApplicationOIDCTokenAuthMethod` ENUM, to support the `PRIVATE_KEY_JWT` and `CLIENT_SECRET_JWT` token endpoint auth methods.
 
 # Release (2024-01-30)
 
