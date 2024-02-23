@@ -1,4 +1,4 @@
-# v0.13.0 (Unreleased)
+# v0.13.0 (2024-02-23)
 
 * **Enhancement** Added the `RiskPredictorAdversaryInTheMiddle` property to the `RiskPredictor` object model and extended the `EnumPredictorType` enum with `ADVERSARY_IN_THE_MIDDLE` to support the adversary in the middle predictor. [#321](https://github.com/patrickcping/pingone-go-sdk-v2/pull/321)
 
