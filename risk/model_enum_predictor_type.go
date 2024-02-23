@@ -20,6 +20,7 @@ type EnumPredictorType string
 
 // List of EnumPredictorType
 const (
+	ENUMPREDICTORTYPE_ADVERSARY_IN_THE_MIDDLE EnumPredictorType = "ADVERSARY_IN_THE_MIDDLE"
 	ENUMPREDICTORTYPE_ANONYMOUS_NETWORK EnumPredictorType = "ANONYMOUS_NETWORK"
 	ENUMPREDICTORTYPE_BOT EnumPredictorType = "BOT"
 	ENUMPREDICTORTYPE_COMPOSITE EnumPredictorType = "COMPOSITE"
@@ -34,6 +35,7 @@ const (
 
 // All allowed values of EnumPredictorType enum
 var AllowedEnumPredictorTypeEnumValues = []EnumPredictorType{
+	"ADVERSARY_IN_THE_MIDDLE",
 	"ANONYMOUS_NETWORK",
 	"BOT",
 	"COMPOSITE",

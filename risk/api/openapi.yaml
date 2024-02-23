@@ -1349,6 +1349,7 @@ components:
         \ both the New Device and Suspicious Device predictors use the type DEVICE.\
         \ To differentiate between them, you use the `detect` field."
       enum:
+      - ADVERSARY_IN_THE_MIDDLE
       - ANONYMOUS_NETWORK
       - BOT
       - COMPOSITE
@@ -2115,8 +2116,9 @@ components:
     RiskPredictor:
       oneOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'
-      - $ref: '#/components/schemas/RiskPredictorBotDetection'
+      - $ref: '#/components/schemas/RiskPredictorAdversaryInTheMiddle'
       - $ref: '#/components/schemas/RiskPredictorAnonymousNetwork'
+      - $ref: '#/components/schemas/RiskPredictorBotDetection'
       - $ref: '#/components/schemas/RiskPredictorComposite'
       - $ref: '#/components/schemas/RiskPredictorCustom'
       - $ref: '#/components/schemas/RiskPredictorGeovelocity'
@@ -2181,6 +2183,17 @@ components:
       - name
       - type
       type: object
+    RiskPredictorAdversaryInTheMiddle:
+      allOf:
+      - $ref: '#/components/schemas/RiskPredictorCommon'
+      - properties:
+          whiteList:
+            description: A list of strings that specify legitimate domains that users
+              will access for restricted resources.
+            items:
+              type: string
+            type: array
+        type: object
     RiskPredictorAnonymousNetwork:
       allOf:
       - $ref: '#/components/schemas/RiskPredictorCommon'

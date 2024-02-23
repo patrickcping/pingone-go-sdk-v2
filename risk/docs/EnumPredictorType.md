@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `ADVERSARY_IN_THE_MIDDLE` (value: `"ADVERSARY_IN_THE_MIDDLE"`)
+
 * `ANONYMOUS_NETWORK` (value: `"ANONYMOUS_NETWORK"`)
 
 * `BOT` (value: `"BOT"`)

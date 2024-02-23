@@ -69,6 +69,7 @@ docs/RiskPolicySetDefaultResult.md
 docs/RiskPolicySetEvaluatedPredictorsInner.md
 docs/RiskPolicySetTriggersInner.md
 docs/RiskPredictor.md
+docs/RiskPredictorAdversaryInTheMiddle.md
 docs/RiskPredictorAnonymousNetwork.md
 docs/RiskPredictorBotDetection.md
 docs/RiskPredictorCommon.md
@@ -171,6 +172,7 @@ model_risk_policy_set_default_result.go
 model_risk_policy_set_evaluated_predictors_inner.go
 model_risk_policy_set_triggers_inner.go
 model_risk_predictor.go
+model_risk_predictor_adversary_in_the_middle.go
 model_risk_predictor_anonymous_network.go
 model_risk_predictor_bot_detection.go
 model_risk_predictor_common.go
