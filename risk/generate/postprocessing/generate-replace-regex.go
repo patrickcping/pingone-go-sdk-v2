@@ -62,6 +62,7 @@ var (
 		return err
 	}
 
+	dst.RiskPredictorAdversaryInTheMiddle = nil
 	dst.RiskPredictorAnonymousNetwork = nil
 	dst.RiskPredictorBotDetection = nil
 	dst.RiskPredictorCommon = nil
@@ -81,6 +82,10 @@ var (
 	}
 
 	switch objType {
+	case ENUMPREDICTORTYPE_ADVERSARY_IN_THE_MIDDLE:
+		if err := json.Unmarshal(data, &dst.RiskPredictorAdversaryInTheMiddle); err != nil {
+			return err
+		}
 	case ENUMPREDICTORTYPE_ANONYMOUS_NETWORK:
 		if err := json.Unmarshal(data, &dst.RiskPredictorAnonymousNetwork); err != nil {
 			return err

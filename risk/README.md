@@ -156,6 +156,7 @@ Class | Method | HTTP request | Description
  - [RiskPolicySetEvaluatedPredictorsInner](docs/RiskPolicySetEvaluatedPredictorsInner.md)
  - [RiskPolicySetTriggersInner](docs/RiskPolicySetTriggersInner.md)
  - [RiskPredictor](docs/RiskPredictor.md)
+ - [RiskPredictorAdversaryInTheMiddle](docs/RiskPredictorAdversaryInTheMiddle.md)
  - [RiskPredictorAnonymousNetwork](docs/RiskPredictorAnonymousNetwork.md)
  - [RiskPredictorBotDetection](docs/RiskPredictorBotDetection.md)
  - [RiskPredictorCommon](docs/RiskPredictorCommon.md)
