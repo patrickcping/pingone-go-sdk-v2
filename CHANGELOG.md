@@ -8,7 +8,7 @@
     * **Enhancement** Added the `DevicePathId`, `DeviceCustomVerificationUri`, `DeviceTimeout`, `DevicePollingInterval` properties to the `ApplicationOIDC` data model and extended the `EnumApplicationOIDCGrantType` ENUM, to support the `DEVICE_CODE` application grant type. [#320](https://github.com/patrickcping/pingone-go-sdk-v2/pull/320)
     * **Enhancement** Added the `Jwks`, `JwksUrl` properties to the `ApplicationOIDC` data model and extended the `EnumApplicationOIDCTokenAuthMethod` ENUM, to support the `PRIVATE_KEY_JWT` and `CLIENT_SECRET_JWT` token endpoint auth methods. [#320](https://github.com/patrickcping/pingone-go-sdk-v2/pull/320)
 * `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.13.0](./risk/CHANGELOG.md)
-    * **Enhancement** Added the `RiskPredictorAdversaryInTheMiddle` property to the `RiskPredictor` object model and extended the `EnumPredictorType` enum with `ADVERSARY_IN_THE_MIDDLE` to support the adversary in the middle predictor.
+    * **Enhancement** Added the `RiskPredictorAdversaryInTheMiddle` property to the `RiskPredictor` object model and extended the `EnumPredictorType` enum with `ADVERSARY_IN_THE_MIDDLE` to support the adversary in the middle predictor. [#321](https://github.com/patrickcping/pingone-go-sdk-v2/pull/321)
 
 # Release (2024-01-30)
 
