@@ -91,7 +91,7 @@ components:
       description: The type of verification that should be used. The possible values are `GOOGLE` and `INTERNAL`. Using internal verification will not count against your Google API call quota. The value you select for `verificationType` determines what other parameters you must provide. When set to `GOOGLE`, you must provide `serviceAccountCredentials`. When set to `INTERNAL`, you must provide `decryptionKey` and `verificationKey`.
     EnumApplicationOIDCGrantType:
       type: string
-      enum: [AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS]
+      enum: [AUTHORIZATION_CODE, IMPLICIT, REFRESH_TOKEN, CLIENT_CREDENTIALS, DEVICE_CODE]
     EnumApplicationOIDCPARRequirement:
       type: string
       description: Whether pushed authorization requests (PAR) are required. Options are `REQUIRED` and `OPTIONAL`. The default value is `OPTIONAL`.
@@ -103,10 +103,11 @@ components:
       description: A string that specifies how PKCE request parameters are handled on the authorize request. Options are OPTIONAL PKCE code_challenge is optional and any code challenge method is acceptable. REQUIRED PKCE code_challenge is required and any code challenge method is acceptable. S256_REQUIRED PKCE code_challege is required and the code_challenge_method must be S256.
     EnumApplicationOIDCResponseType:
       type: string
+      description: The code or token type returned by an authorization request. Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type).
       enum: [TOKEN, ID_TOKEN, CODE]
     EnumApplicationOIDCTokenAuthMethod:
       type: string
-      enum: [NONE, CLIENT_SECRET_BASIC, CLIENT_SECRET_POST]
+      enum: [NONE, CLIENT_SECRET_BASIC, CLIENT_SECRET_POST, PRIVATE_KEY_JWT, CLIENT_SECRET_JWT]
       description: A string that specifies the client authentication methods supported by the token endpoint.
     EnumApplicationProtocol:
       type: string
@@ -1032,6 +1033,31 @@ components:
               description: A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request.
             corsSettings:
               $ref: '#/components/schemas/ApplicationCorsSettings'
+            devicePathId:
+              type: string
+              description: A string that specifies a unique identifier within an environment for a device authorization grant flow to provide a short identifier to the application. This property is ignored when the `deviceCustomVerificationUri` property is configured. The string can contain any letters, numbers, and some special characters (regex `a-zA-Z0-9_-`). It can have a length of no more than 50 characters (`min`/`max`=`1`/`50`).
+              pattern: '^[a-zA-Z0-9_-]{1,50}$'
+            deviceCustomVerificationUri:
+              type: string
+              description: A string that specifies an optional custom verification URI that is returned for the `/device_authorization` endpoint.
+            deviceTimeout:
+              type: integer
+              description: An integer that specifies the length of time (in seconds) that the `userCode` and `deviceCode` returned by the `/device_authorization` endpoint are valid. This property is required only for applications in which the `grantTypes` property is set to `device_code`. The default value is `600` seconds. It can have a value of no more than `3600` seconds (`min`/`max`=`1`/`3600`).
+              default: 600
+              minimum: 1
+              maximum: 3600
+            devicePollingInterval:
+              type: integer
+              description: An integer that specifies the frequency (in seconds) for the client to poll the `/as/token` endpoint. This property is required only for applications in which the `grantTypes` property is set to `device_code`. The default value is `5` seconds. It can have a value of no more than `60` seconds (`min`/`max`=`1`/`60`).
+              default: 5
+              minimum: 1
+              maximum: 60
+            jwks:
+              type: string
+              description: A JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwksUrl` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwksUrl` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
+            jwksUrl:
+              type: string
+              description: A URL (supports `https://` only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the `PRIVATE_KEY_JWT` option for the `tokenEndpointAuthMethod`. This property is required when `tokenEndpointAuthMethod` is `PRIVATE_KEY_JWT` and the `jwks` property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional `request` property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the `jwks` property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt).
             mobile:
               type: object
               properties:
@@ -1167,7 +1193,7 @@ components:
               maximum: 86400
             responseTypes:
               type: array
-              description: A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows.
+              description: The code or token type returned by an authorization request. Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type).
               items:
                 $ref: '#/components/schemas/EnumApplicationOIDCResponseType'
             requireSignedRequestObject:
@@ -1194,6 +1220,21 @@ components:
               minimum: 1
               maximum: 600
               default: 60
+            signing:
+              type: object
+              description: Configuration for the signing key. If absent, application tokens will be signed and verified by the PingOne default key at runtime. This property only applies to OIDC applications of type `WEB_APP`, `NATIVE_APP`, `SINGLE_PAGE_APP`, and `CUSTOM_APP`.
+              properties:
+                keyRotationPolicy:
+                  type: object
+                  description: Contains the Key Rotation Policy (KRP) ID. This property is required if `signing` is set.
+                  properties:
+                    id:
+                      type: string
+                      description: Reference to a KRP ID from certificate management. This property is required if `signing` is set.
+                  required:
+                    - id
+              required:
+                - keyRotationPolicy
           required:
             - grantTypes
             - tokenEndpointAuthMethod

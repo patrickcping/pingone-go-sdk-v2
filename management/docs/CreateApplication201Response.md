@@ -36,6 +36,12 @@ Name | Type | Description | Notes
 **AdditionalRefreshTokenReplayProtectionEnabled** | Pointer to **bool** | When set to &#x60;true&#x60; (the default), if you attempt to reuse the refresh token, the authorization server immediately revokes the reused refresh token, as well as all descendant tokens. Setting this to null equates to a &#x60;false&#x60; setting. | [optional] [default to true]
 **AllowWildcardInRedirectUris** | Pointer to **bool** | A boolean to specify whether wildcards are allowed in redirect URIs. For more information, see [Wildcards in Redirect URIs](https://docs.pingidentity.com/csh?context&#x3D;p1_c_wildcard_redirect_uri). | [optional] 
 **AssignActorRoles** | Pointer to **bool** | A boolean that specifies whether the permissions service should assign default roles to the application. This property is set only on the POST request. The property is ignored when included in a PUT request. | [optional] 
+**DevicePathId** | Pointer to **string** | A string that specifies a unique identifier within an environment for a device authorization grant flow to provide a short identifier to the application. This property is ignored when the &#x60;deviceCustomVerificationUri&#x60; property is configured. The string can contain any letters, numbers, and some special characters (regex &#x60;a-zA-Z0-9_-&#x60;). It can have a length of no more than 50 characters (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;50&#x60;). | [optional] 
+**DeviceCustomVerificationUri** | Pointer to **string** | A string that specifies an optional custom verification URI that is returned for the &#x60;/device_authorization&#x60; endpoint. | [optional] 
+**DeviceTimeout** | Pointer to **int32** | An integer that specifies the length of time (in seconds) that the &#x60;userCode&#x60; and &#x60;deviceCode&#x60; returned by the &#x60;/device_authorization&#x60; endpoint are valid. This property is required only for applications in which the &#x60;grantTypes&#x60; property is set to &#x60;device_code&#x60;. The default value is &#x60;600&#x60; seconds. It can have a value of no more than &#x60;3600&#x60; seconds (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;3600&#x60;). | [optional] [default to 600]
+**DevicePollingInterval** | Pointer to **int32** | An integer that specifies the frequency (in seconds) for the client to poll the &#x60;/as/token&#x60; endpoint. This property is required only for applications in which the &#x60;grantTypes&#x60; property is set to &#x60;device_code&#x60;. The default value is &#x60;5&#x60; seconds. It can have a value of no more than &#x60;60&#x60; seconds (&#x60;min&#x60;/&#x60;max&#x60;&#x3D;&#x60;1&#x60;/&#x60;60&#x60;). | [optional] [default to 5]
+**Jwks** | Pointer to **string** | A JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwksUrl&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwksUrl&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
+**JwksUrl** | Pointer to **string** | A URL (supports &#x60;https://&#x60; only) that provides access to a JWKS string that validates the signature of signed JWTs for applications that use the &#x60;PRIVATE_KEY_JWT&#x60; option for the &#x60;tokenEndpointAuthMethod&#x60;. This property is required when &#x60;tokenEndpointAuthMethod&#x60; is &#x60;PRIVATE_KEY_JWT&#x60; and the &#x60;jwks&#x60; property is empty. For more information, see [Create a private_key_jwt JWKS string](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-private_key_jwt-jwks-string). This property is also required if the optional &#x60;request&#x60; property JWT on the authorize endpoint is signed using the RS256 (or RS384, RS512) signing algorithm and the &#x60;jwks&#x60; property is empty. For more infornmation about signing the request property JWT, see [Create a request property JWT](https://apidocs.pingidentity.com/pingone/platform/v1/api/#create-a-request-property-jwt). | [optional] 
 **Mobile** | Pointer to [**ApplicationOIDCAllOfMobile**](ApplicationOIDCAllOfMobile.md) |  | [optional] 
 **BundleId** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.bundleId&#x60; instead.  A string that specifies the bundle associated with the application, for push notifications in native apps. The value of the bundleId property is unique per environment, and once defined, is immutable.  | [optional] 
 **PackageName** | Pointer to **string** | **Deprecation Notice** This field is deprecated and will be removed in a future release. Use &#x60;mobile.packageName&#x60; instead.  A string that specifies the package name associated with the application, for push notifications in native apps. The value of the mobile.packageName property is unique per environment, and once defined, is immutable.  | [optional] 
@@ -48,7 +54,7 @@ Name | Type | Description | Notes
 **RefreshTokenDuration** | Pointer to **int32** | An integer that specifies the lifetime in seconds of the refresh token. If a value is not provided, the default value is 2592000, or 30 days. Valid values are between 60 and 2147483647. If the &#x60;refreshTokenRollingDuration&#x60; property is specified for the application, then this property must be less than or equal to the value of &#x60;refreshTokenRollingDuration&#x60;. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] [default to 2592000]
 **RefreshTokenRollingDuration** | Pointer to **int32** | An integer that specifies the number of seconds a refresh token can be exchanged before re-authentication is required. If a value is not provided, the refresh token is valid forever. Valid values are between 60 and 2147483647. After this property is set, the value cannot be nullified. This value is used to generate the value for the exp claim when minting a new refresh token. | [optional] 
 **RefreshTokenRollingGracePeriodDuration** | Pointer to **int32** | The number of seconds that a refresh token may be reused after having been exchanged for a new set of tokens. This is useful in the case of network errors on the client. Valid values are between 0 and 86400 seconds. Null is treated the same as 0. | [optional] 
-**ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | A string that specifies the code or token type returned by an authorization request. Options are TOKEN, ID_TOKEN, and CODE. Note that CODE cannot be used in an authorization request with TOKEN or ID_TOKEN because PingOne does not currently support OIDC hybrid flows. | [optional] 
+**ResponseTypes** | Pointer to [**[]EnumApplicationOIDCResponseType**](EnumApplicationOIDCResponseType.md) | The code or token type returned by an authorization request. Options are &#x60;TOKEN&#x60;, &#x60;ID_TOKEN&#x60;, and &#x60;CODE&#x60;. For hybrid flows that specify &#x60;CODE&#x60; with &#x60;TOKEN&#x60; or &#x60;ID_TOKEN&#x60;, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type). | [optional] 
 **RequireSignedRequestObject** | Pointer to **bool** | Indicates that the Java Web Token (JWT) for the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter is required to be signed. If &#x60;false&#x60; or null (default), a signed request object is not required. Both &#x60;supportUnsignedRequestObject&#x60; and this property cannot be set to &#x60;true&#x60;. | [optional] 
 **SupportUnsignedRequestObject** | Pointer to **bool** | A boolean that specifies whether the [request query](https://openid.net/specs/openid-connect-core-1_0.html#RequestObject) parameter JWT is allowed to be unsigned. If false or null (default), an unsigned request object is not allowed. | [optional] 
 **Tags** | Pointer to [**[]EnumApplicationTags**](EnumApplicationTags.md) | An array that specifies the list of labels associated with the application. Options are &#x60;PING_FED_CONNECTION_INTEGRATION&#x60;.  Only applicable for creating worker applications. | [optional] 
@@ -56,6 +62,7 @@ Name | Type | Description | Notes
 **TokenEndpointAuthMethod** | [**EnumApplicationOIDCTokenAuthMethod**](EnumApplicationOIDCTokenAuthMethod.md) |  | 
 **ParRequirement** | Pointer to [**EnumApplicationOIDCPARRequirement**](EnumApplicationOIDCPARRequirement.md) |  | [optional] [default to ENUMAPPLICATIONOIDCPARREQUIREMENT_OPTIONAL]
 **ParTimeout** | Pointer to **int32** | PAR timeout in seconds. Must be between &#x60;1&#x60; and &#x60;600&#x60;. The default value is &#x60;60&#x60;. | [optional] [default to 60]
+**Signing** | Pointer to [**ApplicationOIDCAllOfSigning**](ApplicationOIDCAllOfSigning.md) |  | [optional] 
 **AudienceRestriction** | Pointer to **string** | The service provider ID. Defaults to &#x60;urn:federation:MicrosoftOnline&#x60;. | [optional] [default to "urn:federation:MicrosoftOnline"]
 **DomainName** | **string** | The federated domain name (for example, the Azure custom domain). | 
 **ReplyUrl** | **string** | The URL that the replying party (such as, Office365) uses to accept submissions of RequestSecurityTokenResponse messages that are a result of SSO requests. | 
@@ -834,6 +841,156 @@ SetAssignActorRoles sets AssignActorRoles field to given value.
 
 HasAssignActorRoles returns a boolean if a field has been set.
 
+### GetDevicePathId
+
+`func (o *CreateApplication201Response) GetDevicePathId() string`
+
+GetDevicePathId returns the DevicePathId field if non-nil, zero value otherwise.
+
+### GetDevicePathIdOk
+
+`func (o *CreateApplication201Response) GetDevicePathIdOk() (*string, bool)`
+
+GetDevicePathIdOk returns a tuple with the DevicePathId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDevicePathId
+
+`func (o *CreateApplication201Response) SetDevicePathId(v string)`
+
+SetDevicePathId sets DevicePathId field to given value.
+
+### HasDevicePathId
+
+`func (o *CreateApplication201Response) HasDevicePathId() bool`
+
+HasDevicePathId returns a boolean if a field has been set.
+
+### GetDeviceCustomVerificationUri
+
+`func (o *CreateApplication201Response) GetDeviceCustomVerificationUri() string`
+
+GetDeviceCustomVerificationUri returns the DeviceCustomVerificationUri field if non-nil, zero value otherwise.
+
+### GetDeviceCustomVerificationUriOk
+
+`func (o *CreateApplication201Response) GetDeviceCustomVerificationUriOk() (*string, bool)`
+
+GetDeviceCustomVerificationUriOk returns a tuple with the DeviceCustomVerificationUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceCustomVerificationUri
+
+`func (o *CreateApplication201Response) SetDeviceCustomVerificationUri(v string)`
+
+SetDeviceCustomVerificationUri sets DeviceCustomVerificationUri field to given value.
+
+### HasDeviceCustomVerificationUri
+
+`func (o *CreateApplication201Response) HasDeviceCustomVerificationUri() bool`
+
+HasDeviceCustomVerificationUri returns a boolean if a field has been set.
+
+### GetDeviceTimeout
+
+`func (o *CreateApplication201Response) GetDeviceTimeout() int32`
+
+GetDeviceTimeout returns the DeviceTimeout field if non-nil, zero value otherwise.
+
+### GetDeviceTimeoutOk
+
+`func (o *CreateApplication201Response) GetDeviceTimeoutOk() (*int32, bool)`
+
+GetDeviceTimeoutOk returns a tuple with the DeviceTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeviceTimeout
+
+`func (o *CreateApplication201Response) SetDeviceTimeout(v int32)`
+
+SetDeviceTimeout sets DeviceTimeout field to given value.
+
+### HasDeviceTimeout
+
+`func (o *CreateApplication201Response) HasDeviceTimeout() bool`
+
+HasDeviceTimeout returns a boolean if a field has been set.
+
+### GetDevicePollingInterval
+
+`func (o *CreateApplication201Response) GetDevicePollingInterval() int32`
+
+GetDevicePollingInterval returns the DevicePollingInterval field if non-nil, zero value otherwise.
+
+### GetDevicePollingIntervalOk
+
+`func (o *CreateApplication201Response) GetDevicePollingIntervalOk() (*int32, bool)`
+
+GetDevicePollingIntervalOk returns a tuple with the DevicePollingInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDevicePollingInterval
+
+`func (o *CreateApplication201Response) SetDevicePollingInterval(v int32)`
+
+SetDevicePollingInterval sets DevicePollingInterval field to given value.
+
+### HasDevicePollingInterval
+
+`func (o *CreateApplication201Response) HasDevicePollingInterval() bool`
+
+HasDevicePollingInterval returns a boolean if a field has been set.
+
+### GetJwks
+
+`func (o *CreateApplication201Response) GetJwks() string`
+
+GetJwks returns the Jwks field if non-nil, zero value otherwise.
+
+### GetJwksOk
+
+`func (o *CreateApplication201Response) GetJwksOk() (*string, bool)`
+
+GetJwksOk returns a tuple with the Jwks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwks
+
+`func (o *CreateApplication201Response) SetJwks(v string)`
+
+SetJwks sets Jwks field to given value.
+
+### HasJwks
+
+`func (o *CreateApplication201Response) HasJwks() bool`
+
+HasJwks returns a boolean if a field has been set.
+
+### GetJwksUrl
+
+`func (o *CreateApplication201Response) GetJwksUrl() string`
+
+GetJwksUrl returns the JwksUrl field if non-nil, zero value otherwise.
+
+### GetJwksUrlOk
+
+`func (o *CreateApplication201Response) GetJwksUrlOk() (*string, bool)`
+
+GetJwksUrlOk returns a tuple with the JwksUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJwksUrl
+
+`func (o *CreateApplication201Response) SetJwksUrl(v string)`
+
+SetJwksUrl sets JwksUrl field to given value.
+
+### HasJwksUrl
+
+`func (o *CreateApplication201Response) HasJwksUrl() bool`
+
+HasJwksUrl returns a boolean if a field has been set.
+
 ### GetMobile
 
 `func (o *CreateApplication201Response) GetMobile() ApplicationOIDCAllOfMobile`
@@ -1323,6 +1480,31 @@ SetParTimeout sets ParTimeout field to given value.
 `func (o *CreateApplication201Response) HasParTimeout() bool`
 
 HasParTimeout returns a boolean if a field has been set.
+
+### GetSigning
+
+`func (o *CreateApplication201Response) GetSigning() ApplicationOIDCAllOfSigning`
+
+GetSigning returns the Signing field if non-nil, zero value otherwise.
+
+### GetSigningOk
+
+`func (o *CreateApplication201Response) GetSigningOk() (*ApplicationOIDCAllOfSigning, bool)`
+
+GetSigningOk returns a tuple with the Signing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSigning
+
+`func (o *CreateApplication201Response) SetSigning(v ApplicationOIDCAllOfSigning)`
+
+SetSigning sets Signing field to given value.
+
+### HasSigning
+
+`func (o *CreateApplication201Response) HasSigning() bool`
+
+HasSigning returns a boolean if a field has been set.
 
 ### GetAudienceRestriction
 

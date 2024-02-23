@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// EnumApplicationOIDCResponseType the model 'EnumApplicationOIDCResponseType'
+// EnumApplicationOIDCResponseType The code or token type returned by an authorization request. Options are `TOKEN`, `ID_TOKEN`, and `CODE`. For hybrid flows that specify `CODE` with `TOKEN` or `ID_TOKEN`, see [Hybrid grant type](https://apidocs.pingidentity.com/pingone/main/v1/api/#hybrid-grant-type).
 type EnumApplicationOIDCResponseType string
 
 // List of EnumApplicationOIDCResponseType

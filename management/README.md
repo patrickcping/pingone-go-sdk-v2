@@ -449,6 +449,8 @@ Class | Method | HTTP request | Description
  - [ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration](docs/ApplicationOIDCAllOfMobileIntegrityDetectionCacheDuration.md)
  - [ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay](docs/ApplicationOIDCAllOfMobileIntegrityDetectionGooglePlay.md)
  - [ApplicationOIDCAllOfMobilePasscodeRefreshDuration](docs/ApplicationOIDCAllOfMobilePasscodeRefreshDuration.md)
+ - [ApplicationOIDCAllOfSigning](docs/ApplicationOIDCAllOfSigning.md)
+ - [ApplicationOIDCAllOfSigningKeyRotationPolicy](docs/ApplicationOIDCAllOfSigningKeyRotationPolicy.md)
  - [ApplicationOIDCInternal](docs/ApplicationOIDCInternal.md)
  - [ApplicationPingOneAdminConsole](docs/ApplicationPingOneAdminConsole.md)
  - [ApplicationPingOnePortal](docs/ApplicationPingOnePortal.md)

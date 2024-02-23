@@ -24,6 +24,7 @@ const (
 	ENUMAPPLICATIONOIDCGRANTTYPE_IMPLICIT EnumApplicationOIDCGrantType = "IMPLICIT"
 	ENUMAPPLICATIONOIDCGRANTTYPE_REFRESH_TOKEN EnumApplicationOIDCGrantType = "REFRESH_TOKEN"
 	ENUMAPPLICATIONOIDCGRANTTYPE_CLIENT_CREDENTIALS EnumApplicationOIDCGrantType = "CLIENT_CREDENTIALS"
+	ENUMAPPLICATIONOIDCGRANTTYPE_DEVICE_CODE EnumApplicationOIDCGrantType = "DEVICE_CODE"
 )
 
 // All allowed values of EnumApplicationOIDCGrantType enum
@@ -32,6 +33,7 @@ var AllowedEnumApplicationOIDCGrantTypeEnumValues = []EnumApplicationOIDCGrantTy
 	"IMPLICIT",
 	"REFRESH_TOKEN",
 	"CLIENT_CREDENTIALS",
+	"DEVICE_CODE",
 }
 
 func (v *EnumApplicationOIDCGrantType) UnmarshalJSON(src []byte) error {
