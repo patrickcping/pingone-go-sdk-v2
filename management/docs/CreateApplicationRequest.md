@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **AssertionDuration** | **int32** | An integer that specifies the assertion validity duration in seconds. This is a required property. | 
 **AssertionSigned** | Pointer to **bool** | A boolean that specifies whether the SAML assertion itself should be signed. The default value is &#x60;true&#x60;. | [optional] [default to true]
 **CorsSettings** | Pointer to [**ApplicationCorsSettings**](ApplicationCorsSettings.md) |  | [optional] 
+**DefaultTargetUrl** | Pointer to **string** | This is used as the RelayState parameter by the IdP to deep link into the application after authentication. This value can be overridden by the applicationUrl query parameter for GET Identity Provider Initiated SSO. Although both of these parameters are generally URLs, because they are used as deep links, this is not enforced. If neither defaultTargetUrl nor applicationUrl is specified during a SAML authentication flow, no RelayState value is supplied to the application. The defaultTargetUrl (or the applicationUrl) value is passed to the SAML application&#39;s ACS URL as a separate RelayState key value (not within the SAMLResponse key value). | [optional] 
 **EnableRequestedAuthnContext** | Pointer to **bool** | Indicates whether &#x60;requestedAuthnContext&#x60; is taken into account in policy decision-making during authentication. | [optional] 
 **IdpSigning** | [**ApplicationWSFEDAllOfIdpSigning**](ApplicationWSFEDAllOfIdpSigning.md) |  | 
 **NameIdFormat** | Pointer to **string** | A string that specifies the format of the Subject NameID attibute in the SAML assertion | [optional] 
@@ -525,6 +526,31 @@ SetCorsSettings sets CorsSettings field to given value.
 `func (o *CreateApplicationRequest) HasCorsSettings() bool`
 
 HasCorsSettings returns a boolean if a field has been set.
+
+### GetDefaultTargetUrl
+
+`func (o *CreateApplicationRequest) GetDefaultTargetUrl() string`
+
+GetDefaultTargetUrl returns the DefaultTargetUrl field if non-nil, zero value otherwise.
+
+### GetDefaultTargetUrlOk
+
+`func (o *CreateApplicationRequest) GetDefaultTargetUrlOk() (*string, bool)`
+
+GetDefaultTargetUrlOk returns a tuple with the DefaultTargetUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultTargetUrl
+
+`func (o *CreateApplicationRequest) SetDefaultTargetUrl(v string)`
+
+SetDefaultTargetUrl sets DefaultTargetUrl field to given value.
+
+### HasDefaultTargetUrl
+
+`func (o *CreateApplicationRequest) HasDefaultTargetUrl() bool`
+
+HasDefaultTargetUrl returns a boolean if a field has been set.
 
 ### GetEnableRequestedAuthnContext
 
