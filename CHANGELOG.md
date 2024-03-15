@@ -1,5 +1,10 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.7
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.37.0 => v0.38.0
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.13.0 => v0.14.0
+    * **Note** bump `golang.org/x/oauth2` v0.17.0 => v0.18.0
+    * **Note** bump `google.golang.org/protobuf` v1.31.0 => v1.33.0
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.38.0](./management/CHANGELOG.md)
     * **Enhancement** Added the `DefaultTargetUrl` property to the `ApplicationSAML` data model. [#325](https://github.com/patrickcping/pingone-go-sdk-v2/pull/325)
     * **Enhancement** Added the `UpdateUserOnSuccessfulAuthentication` property to the `GatewayTypeLDAPAllOfUserTypes` data model. [#328](https://github.com/patrickcping/pingone-go-sdk-v2/pull/328)
