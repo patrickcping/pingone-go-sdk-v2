@@ -11,6 +11,8 @@
 
 * `COMPOSITE` (value: `"COMPOSITE"`)
 
+* `EMAIL_REPUTATION` (value: `"EMAIL_REPUTATION"`)
+
 * `GEO_VELOCITY` (value: `"GEO_VELOCITY"`)
 
 * `IP_REPUTATION` (value: `"IP_REPUTATION"`)

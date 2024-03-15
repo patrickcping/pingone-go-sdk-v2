@@ -24,6 +24,7 @@ type RiskPredictor struct {
 	RiskPredictorComposite *RiskPredictorComposite
 	RiskPredictorCustom *RiskPredictorCustom
 	RiskPredictorDevice *RiskPredictorDevice
+	RiskPredictorEmailReputation *RiskPredictorEmailReputation
 	RiskPredictorGeovelocity *RiskPredictorGeovelocity
 	RiskPredictorIPReputation *RiskPredictorIPReputation
 	RiskPredictorUserLocationAnomaly *RiskPredictorUserLocationAnomaly
@@ -77,6 +78,13 @@ func RiskPredictorCustomAsRiskPredictor(v *RiskPredictorCustom) RiskPredictor {
 func RiskPredictorDeviceAsRiskPredictor(v *RiskPredictorDevice) RiskPredictor {
 	return RiskPredictor{
 		RiskPredictorDevice: v,
+	}
+}
+
+// RiskPredictorEmailReputationAsRiskPredictor is a convenience function that returns RiskPredictorEmailReputation wrapped in RiskPredictor
+func RiskPredictorEmailReputationAsRiskPredictor(v *RiskPredictorEmailReputation) RiskPredictor {
+	return RiskPredictor{
+		RiskPredictorEmailReputation: v,
 	}
 }
 
@@ -225,6 +233,10 @@ func (src RiskPredictor) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.RiskPredictorDevice)
 	}
 
+	if src.RiskPredictorEmailReputation != nil {
+		return json.Marshal(&src.RiskPredictorEmailReputation)
+	}
+
 	if src.RiskPredictorGeovelocity != nil {
 		return json.Marshal(&src.RiskPredictorGeovelocity)
 	}
@@ -279,6 +291,10 @@ func (obj *RiskPredictor) GetActualInstance() (interface{}) {
 
 	if obj.RiskPredictorDevice != nil {
 		return obj.RiskPredictorDevice
+	}
+
+	if obj.RiskPredictorEmailReputation != nil {
+		return obj.RiskPredictorEmailReputation
 	}
 
 	if obj.RiskPredictorGeovelocity != nil {

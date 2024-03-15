@@ -96,6 +96,7 @@ docs/RiskPredictorCustomItemBetweenBetween.md
 docs/RiskPredictorCustomItemIPRange.md
 docs/RiskPredictorCustomItemList.md
 docs/RiskPredictorDevice.md
+docs/RiskPredictorEmailReputation.md
 docs/RiskPredictorGeovelocity.md
 docs/RiskPredictorIPReputation.md
 docs/RiskPredictorUserLocationAnomaly.md
@@ -199,6 +200,7 @@ model_risk_predictor_custom_item_between_between.go
 model_risk_predictor_custom_item_ip_range.go
 model_risk_predictor_custom_item_list.go
 model_risk_predictor_device.go
+model_risk_predictor_email_reputation.go
 model_risk_predictor_geovelocity.go
 model_risk_predictor_ip_reputation.go
 model_risk_predictor_user_location_anomaly.go
