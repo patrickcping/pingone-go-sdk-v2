@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowPasswordChanges** | Pointer to **bool** | Defaults to false if this property isn&#39;t specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway. | [optional] 
+**UpdateUserOnSuccessfulAuthentication** | Pointer to **bool** | If set to true, when users sign on through an LDAP Gateway client, user attributes are updated based on responses from the LDAP server. Defaults to false if this property isn&#39;t specified in the request. | [optional] 
 **Id** | Pointer to **string** | The UUID of the user type. This correlates to the password.external.gateway.userType.id User property. | [optional] 
 **Name** | **string** | The name of the user type. | 
 **NewUserLookup** | Pointer to [**GatewayTypeLDAPAllOfNewUserLookup**](GatewayTypeLDAPAllOfNewUserLookup.md) |  | [optional] 
@@ -55,6 +56,31 @@ SetAllowPasswordChanges sets AllowPasswordChanges field to given value.
 `func (o *GatewayTypeLDAPAllOfUserTypes) HasAllowPasswordChanges() bool`
 
 HasAllowPasswordChanges returns a boolean if a field has been set.
+
+### GetUpdateUserOnSuccessfulAuthentication
+
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetUpdateUserOnSuccessfulAuthentication() bool`
+
+GetUpdateUserOnSuccessfulAuthentication returns the UpdateUserOnSuccessfulAuthentication field if non-nil, zero value otherwise.
+
+### GetUpdateUserOnSuccessfulAuthenticationOk
+
+`func (o *GatewayTypeLDAPAllOfUserTypes) GetUpdateUserOnSuccessfulAuthenticationOk() (*bool, bool)`
+
+GetUpdateUserOnSuccessfulAuthenticationOk returns a tuple with the UpdateUserOnSuccessfulAuthentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdateUserOnSuccessfulAuthentication
+
+`func (o *GatewayTypeLDAPAllOfUserTypes) SetUpdateUserOnSuccessfulAuthentication(v bool)`
+
+SetUpdateUserOnSuccessfulAuthentication sets UpdateUserOnSuccessfulAuthentication field to given value.
+
+### HasUpdateUserOnSuccessfulAuthentication
+
+`func (o *GatewayTypeLDAPAllOfUserTypes) HasUpdateUserOnSuccessfulAuthentication() bool`
+
+HasUpdateUserOnSuccessfulAuthentication returns a boolean if a field has been set.
 
 ### GetId
 
