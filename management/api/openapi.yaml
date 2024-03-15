@@ -26066,6 +26066,16 @@ components:
       - CLIENT_SECRET_POST
       - NONE
       type: string
+    EnumIdentityProviderPKCEMethod:
+      default: NONE
+      description: The method for PKCE. Options are `NONE` or `S256`. The default
+        is `NONE`. This value auto-populates from a discovery endpoint if the OpenID
+        Provider includes `S256` in its `code_challenge_methods_supported` claim.
+        The plain method is not currently supported.
+      enum:
+      - S256
+      - NONE
+      type: string
     EnumIdentityProviderSAMLSigningAlgorithm:
       description: "The signing key algorithm used by PingOne. Value will depend on\
         \ which key algorithm and signature algorithm you chose when creating your\
@@ -31170,6 +31180,8 @@ components:
             description: A string that specifies the OIDC identity provider's userInfo
               endpoint.
             type: string
+          pkceMethod:
+            $ref: '#/components/schemas/EnumIdentityProviderPKCEMethod'
         required:
         - authorizationEndpoint
         - clientId

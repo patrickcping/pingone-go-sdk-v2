@@ -56,6 +56,7 @@ type IdentityProviderOIDC struct {
 	TokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod `json:"tokenEndpointAuthMethod"`
 	// A string that specifies the OIDC identity provider's userInfo endpoint.
 	UserInfoEndpoint *string `json:"userInfoEndpoint,omitempty"`
+	PkceMethod *EnumIdentityProviderPKCEMethod `json:"pkceMethod,omitempty"`
 }
 
 // NewIdentityProviderOIDC instantiates a new IdentityProviderOIDC object
@@ -75,6 +76,8 @@ func NewIdentityProviderOIDC(enabled bool, name string, type_ EnumIdentityProvid
 	this.Scopes = scopes
 	this.TokenEndpoint = tokenEndpoint
 	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
+	var pkceMethod EnumIdentityProviderPKCEMethod = ENUMIDENTITYPROVIDERPKCEMETHOD_NONE
+	this.PkceMethod = &pkceMethod
 	return &this
 }
 
@@ -85,6 +88,8 @@ func NewIdentityProviderOIDCWithDefaults() *IdentityProviderOIDC {
 	this := IdentityProviderOIDC{}
 	var tokenEndpointAuthMethod EnumIdentityProviderOIDCTokenAuthMethod = ENUMIDENTITYPROVIDEROIDCTOKENAUTHMETHOD_CLIENT_SECRET_BASIC
 	this.TokenEndpointAuthMethod = tokenEndpointAuthMethod
+	var pkceMethod EnumIdentityProviderPKCEMethod = ENUMIDENTITYPROVIDERPKCEMETHOD_NONE
+	this.PkceMethod = &pkceMethod
 	return &this
 }
 
@@ -704,6 +709,38 @@ func (o *IdentityProviderOIDC) SetUserInfoEndpoint(v string) {
 	o.UserInfoEndpoint = &v
 }
 
+// GetPkceMethod returns the PkceMethod field value if set, zero value otherwise.
+func (o *IdentityProviderOIDC) GetPkceMethod() EnumIdentityProviderPKCEMethod {
+	if o == nil || IsNil(o.PkceMethod) {
+		var ret EnumIdentityProviderPKCEMethod
+		return ret
+	}
+	return *o.PkceMethod
+}
+
+// GetPkceMethodOk returns a tuple with the PkceMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityProviderOIDC) GetPkceMethodOk() (*EnumIdentityProviderPKCEMethod, bool) {
+	if o == nil || IsNil(o.PkceMethod) {
+		return nil, false
+	}
+	return o.PkceMethod, true
+}
+
+// HasPkceMethod returns a boolean if a field has been set.
+func (o *IdentityProviderOIDC) HasPkceMethod() bool {
+	if o != nil && !IsNil(o.PkceMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetPkceMethod gets a reference to the given EnumIdentityProviderPKCEMethod and assigns it to the PkceMethod field.
+func (o *IdentityProviderOIDC) SetPkceMethod(v EnumIdentityProviderPKCEMethod) {
+	o.PkceMethod = &v
+}
+
 func (o IdentityProviderOIDC) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -757,6 +794,9 @@ func (o IdentityProviderOIDC) ToMap() (map[string]interface{}, error) {
 	toSerialize["tokenEndpointAuthMethod"] = o.TokenEndpointAuthMethod
 	if !IsNil(o.UserInfoEndpoint) {
 		toSerialize["userInfoEndpoint"] = o.UserInfoEndpoint
+	}
+	if !IsNil(o.PkceMethod) {
+		toSerialize["pkceMethod"] = o.PkceMethod
 	}
 	return toSerialize, nil
 }
