@@ -2,7 +2,7 @@
 
 * **Enhancement** Added the `DefaultTargetUrl` property to the `ApplicationSAML` data model. [#325](https://github.com/patrickcping/pingone-go-sdk-v2/pull/325)
 * **Enhancement** Added the `UpdateUserOnSuccessfulAuthentication` property to the `GatewayTypeLDAPAllOfUserTypes` data model. [#328](https://github.com/patrickcping/pingone-go-sdk-v2/pull/328)
-* **Enhancement** Added the `PkceMethod` ENUM property to the `IdentityProviderOIDC` data model.
+* **Enhancement** Added the `PkceMethod` ENUM property to the `IdentityProviderOIDC` data model. [#329](https://github.com/patrickcping/pingone-go-sdk-v2/pull/329)
 
 # v0.37.0 (2024-02-23)
 
