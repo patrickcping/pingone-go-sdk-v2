@@ -572,6 +572,7 @@ Class | Method | HTTP request | Description
  - [EnumIdentityProviderAttributeMappingUpdate](docs/EnumIdentityProviderAttributeMappingUpdate.md)
  - [EnumIdentityProviderExt](docs/EnumIdentityProviderExt.md)
  - [EnumIdentityProviderOIDCTokenAuthMethod](docs/EnumIdentityProviderOIDCTokenAuthMethod.md)
+ - [EnumIdentityProviderPKCEMethod](docs/EnumIdentityProviderPKCEMethod.md)
  - [EnumIdentityProviderSAMLSLOBinding](docs/EnumIdentityProviderSAMLSLOBinding.md)
  - [EnumIdentityProviderSAMLSSOBinding](docs/EnumIdentityProviderSAMLSSOBinding.md)
  - [EnumIdentityProviderSAMLSigningAlgorithm](docs/EnumIdentityProviderSAMLSigningAlgorithm.md)
