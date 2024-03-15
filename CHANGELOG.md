@@ -4,6 +4,8 @@
     * **Enhancement** Added the `DefaultTargetUrl` property to the `ApplicationSAML` data model. [#325](https://github.com/patrickcping/pingone-go-sdk-v2/pull/325)
     * **Enhancement** Added the `UpdateUserOnSuccessfulAuthentication` property to the `GatewayTypeLDAPAllOfUserTypes` data model. [#328](https://github.com/patrickcping/pingone-go-sdk-v2/pull/328)
     * **Enhancement** Added the `PkceMethod` ENUM property to the `IdentityProviderOIDC` data model. [#329](https://github.com/patrickcping/pingone-go-sdk-v2/pull/329)
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.14.0](./risk/CHANGELOG.md)
+    * **Enhancement** Added the `EMAIL_REPUTATION` predictor type. [#330](https://github.com/patrickcping/pingone-go-sdk-v2/pull/330)
 
 # Release (2024-02-23)
 
