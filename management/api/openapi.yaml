@@ -37861,6 +37861,11 @@ components:
             \ resetting of passwords are not available to a user referencing this\
             \ gateway."
           type: boolean
+        updateUserOnSuccessfulAuthentication:
+          description: "If set to true, when users sign on through an LDAP Gateway\
+            \ client, user attributes are updated based on responses from the LDAP\
+            \ server. Defaults to false if this property isn't specified in the request."
+          type: boolean
         id:
           description: The UUID of the user type. This correlates to the password.external.gateway.userType.id
             User property.

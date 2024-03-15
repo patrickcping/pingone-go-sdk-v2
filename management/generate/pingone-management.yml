@@ -2885,6 +2885,9 @@ components:
                   allowPasswordChanges:
                     type: boolean
                     description: Defaults to false if this property isn't specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway.
+                  updateUserOnSuccessfulAuthentication:
+                    type: boolean
+                    description: If set to true, when users sign on through an LDAP Gateway client, user attributes are updated based on responses from the LDAP server. Defaults to false if this property isn't specified in the request.
                   id:
                     type: string
                     description: The UUID of the user type. This correlates to the password.external.gateway.userType.id User property.

@@ -21,6 +21,8 @@ var _ MappedNullable = &GatewayTypeLDAPAllOfUserTypes{}
 type GatewayTypeLDAPAllOfUserTypes struct {
 	// Defaults to false if this property isn't specified in the request. If false, the user cannot change the password in the remote LDAP directory. In this case, operations for forgotten passwords or resetting of passwords are not available to a user referencing this gateway.
 	AllowPasswordChanges *bool `json:"allowPasswordChanges,omitempty"`
+	// If set to true, when users sign on through an LDAP Gateway client, user attributes are updated based on responses from the LDAP server. Defaults to false if this property isn't specified in the request.
+	UpdateUserOnSuccessfulAuthentication *bool `json:"updateUserOnSuccessfulAuthentication,omitempty"`
 	// The UUID of the user type. This correlates to the password.external.gateway.userType.id User property.
 	Id *string `json:"id,omitempty"`
 	// The name of the user type.
@@ -84,6 +86,38 @@ func (o *GatewayTypeLDAPAllOfUserTypes) HasAllowPasswordChanges() bool {
 // SetAllowPasswordChanges gets a reference to the given bool and assigns it to the AllowPasswordChanges field.
 func (o *GatewayTypeLDAPAllOfUserTypes) SetAllowPasswordChanges(v bool) {
 	o.AllowPasswordChanges = &v
+}
+
+// GetUpdateUserOnSuccessfulAuthentication returns the UpdateUserOnSuccessfulAuthentication field value if set, zero value otherwise.
+func (o *GatewayTypeLDAPAllOfUserTypes) GetUpdateUserOnSuccessfulAuthentication() bool {
+	if o == nil || IsNil(o.UpdateUserOnSuccessfulAuthentication) {
+		var ret bool
+		return ret
+	}
+	return *o.UpdateUserOnSuccessfulAuthentication
+}
+
+// GetUpdateUserOnSuccessfulAuthenticationOk returns a tuple with the UpdateUserOnSuccessfulAuthentication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayTypeLDAPAllOfUserTypes) GetUpdateUserOnSuccessfulAuthenticationOk() (*bool, bool) {
+	if o == nil || IsNil(o.UpdateUserOnSuccessfulAuthentication) {
+		return nil, false
+	}
+	return o.UpdateUserOnSuccessfulAuthentication, true
+}
+
+// HasUpdateUserOnSuccessfulAuthentication returns a boolean if a field has been set.
+func (o *GatewayTypeLDAPAllOfUserTypes) HasUpdateUserOnSuccessfulAuthentication() bool {
+	if o != nil && !IsNil(o.UpdateUserOnSuccessfulAuthentication) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdateUserOnSuccessfulAuthentication gets a reference to the given bool and assigns it to the UpdateUserOnSuccessfulAuthentication field.
+func (o *GatewayTypeLDAPAllOfUserTypes) SetUpdateUserOnSuccessfulAuthentication(v bool) {
+	o.UpdateUserOnSuccessfulAuthentication = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -258,6 +292,9 @@ func (o GatewayTypeLDAPAllOfUserTypes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AllowPasswordChanges) {
 		toSerialize["allowPasswordChanges"] = o.AllowPasswordChanges
+	}
+	if !IsNil(o.UpdateUserOnSuccessfulAuthentication) {
+		toSerialize["updateUserOnSuccessfulAuthentication"] = o.UpdateUserOnSuccessfulAuthentication
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
