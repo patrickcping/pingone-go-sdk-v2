@@ -1,4 +1,4 @@
-# v0.14.0 (Unreleased)
+# v0.14.0 (2024-03-15)
 
 * **Enhancement** Added the `EMAIL_REPUTATION` predictor type. [#330](https://github.com/patrickcping/pingone-go-sdk-v2/pull/330)
 

@@ -1,4 +1,4 @@
-# v0.38.0 (Unreleased)
+# v0.38.0 (2024-03-15)
 
 * **Enhancement** Added the `DefaultTargetUrl` property to the `ApplicationSAML` data model. [#325](https://github.com/patrickcping/pingone-go-sdk-v2/pull/325)
 * **Enhancement** Added the `UpdateUserOnSuccessfulAuthentication` property to the `GatewayTypeLDAPAllOfUserTypes` data model. [#328](https://github.com/patrickcping/pingone-go-sdk-v2/pull/328)
