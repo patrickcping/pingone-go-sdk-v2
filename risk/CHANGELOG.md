@@ -1,6 +1,6 @@
 # v0.14.1 (Unreleased)
 
-* **Bug** Fixed error "Error when calling `ReadAllRiskPredictors`: Data failed to match schemas in oneOf(RiskPredictor)" when the `EMAIL_REPUTATION` predictor type is in the API's response payload.
+* **Bug** Fixed error "Error when calling `ReadAllRiskPredictors`: Data failed to match schemas in oneOf(RiskPredictor)" when the `EMAIL_REPUTATION` predictor type is in the API's response payload. [#332](https://github.com/patrickcping/pingone-go-sdk-v2/pull/332)
 
 # v0.14.0 (2024-03-15)
 
