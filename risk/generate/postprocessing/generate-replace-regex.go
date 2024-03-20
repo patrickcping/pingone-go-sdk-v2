@@ -67,6 +67,7 @@ var (
 	dst.RiskPredictorBotDetection = nil
 	dst.RiskPredictorCommon = nil
 	dst.RiskPredictorComposite = nil
+	dst.RiskPredictorEmailReputation = nil
 	dst.RiskPredictorCustom = nil
 	dst.RiskPredictorGeovelocity = nil
 	dst.RiskPredictorIPReputation = nil
@@ -96,6 +97,10 @@ var (
 		}
 	case ENUMPREDICTORTYPE_COMPOSITE:
 		if err := json.Unmarshal(data, &dst.RiskPredictorComposite); err != nil {
+			return err
+		}
+	case ENUMPREDICTORTYPE_EMAIL_REPUTATION:
+		if err := json.Unmarshal(data, &dst.RiskPredictorEmailReputation); err != nil {
 			return err
 		}
 	case ENUMPREDICTORTYPE_MAP:
