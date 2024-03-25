@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2024-03-25)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.8
     * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/risk` v0.14.0 => v0.14.1 [#333](https://github.com/patrickcping/pingone-go-sdk-v2/pull/333)
