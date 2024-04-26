@@ -384,6 +384,7 @@ docs/GatewayTypeLDAPAllOfUserTypes.md
 docs/GatewayTypeRADIUS.md
 docs/GatewayTypeRADIUSAllOfDavinci.md
 docs/GatewayTypeRADIUSAllOfDavinciPolicy.md
+docs/GatewayTypeRADIUSAllOfNetworkPolicyServer.md
 docs/GatewayTypeRADIUSAllOfRadiusClients.md
 docs/GatewaysApi.md
 docs/Group.md
@@ -919,6 +920,7 @@ model_gateway_type_ldap_all_of_user_types.go
 model_gateway_type_radius.go
 model_gateway_type_radius_all_of_davinci.go
 model_gateway_type_radius_all_of_davinci_policy.go
+model_gateway_type_radius_all_of_network_policy_server.go
 model_gateway_type_radius_all_of_radius_clients.go
 model_group.go
 model_group_direct_member_counts.go

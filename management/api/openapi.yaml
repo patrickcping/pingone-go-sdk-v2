@@ -30684,6 +30684,8 @@ components:
               not provided for one or more of the RADIUS clients specified.
             format: password
             type: string
+          networkPolicyServer:
+            $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_networkPolicyServer'
           radiusClients:
             description: Collection of RADIUS clients.
             items:
@@ -37920,6 +37922,21 @@ components:
           $ref: '#/components/schemas/GatewayTypeRADIUS_allOf_davinci_policy'
       required:
       - policy
+      type: object
+      example: null
+    GatewayTypeRADIUS_allOf_networkPolicyServer:
+      description: "If specified, the RADIUS gateway authenticates using the MS-CHAP\
+        \ v2 protocol."
+      properties:
+        ip:
+          description: The IP address of the Network Policy Server (NPS).
+          type: string
+        port:
+          description: The port number of the NPS.
+          type: integer
+      required:
+      - ip
+      - port
       type: object
       example: null
     GatewayTypeRADIUS_allOf_radiusClients:

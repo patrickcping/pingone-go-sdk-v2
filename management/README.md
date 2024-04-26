@@ -706,6 +706,7 @@ Class | Method | HTTP request | Description
  - [GatewayTypeRADIUS](docs/GatewayTypeRADIUS.md)
  - [GatewayTypeRADIUSAllOfDavinci](docs/GatewayTypeRADIUSAllOfDavinci.md)
  - [GatewayTypeRADIUSAllOfDavinciPolicy](docs/GatewayTypeRADIUSAllOfDavinciPolicy.md)
+ - [GatewayTypeRADIUSAllOfNetworkPolicyServer](docs/GatewayTypeRADIUSAllOfNetworkPolicyServer.md)
  - [GatewayTypeRADIUSAllOfRadiusClients](docs/GatewayTypeRADIUSAllOfRadiusClients.md)
  - [Group](docs/Group.md)
  - [GroupDirectMemberCounts](docs/GroupDirectMemberCounts.md)
