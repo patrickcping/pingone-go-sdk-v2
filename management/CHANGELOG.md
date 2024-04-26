@@ -1,6 +1,6 @@
 # v0.39.0 (Unreleased)
 
-* **Enhancement** Added the `NetworkPolicyServer` property to the `GatewayTypeRADIUS` data model.
+* **Enhancement** Added the `NetworkPolicyServer` property to the `GatewayTypeRADIUS` data model. [#336](https://github.com/patrickcping/pingone-go-sdk-v2/pull/336)
 
 # v0.38.0 (2024-03-15)
 
