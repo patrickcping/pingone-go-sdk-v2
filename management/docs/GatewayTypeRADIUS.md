@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **CurrentAlerts** | Pointer to **[]map[string]interface{}** |  | [optional] [readonly] 
 **Davinci** | [**GatewayTypeRADIUSAllOfDavinci**](GatewayTypeRADIUSAllOfDavinci.md) |  | 
 **DefaultSharedSecret** | Pointer to **string** | Value to use for the shared secret if the shared secret is not provided for one or more of the RADIUS clients specified. | [optional] 
+**NetworkPolicyServer** | Pointer to [**GatewayTypeRADIUSAllOfNetworkPolicyServer**](GatewayTypeRADIUSAllOfNetworkPolicyServer.md) |  | [optional] 
 **RadiusClients** | [**[]GatewayTypeRADIUSAllOfRadiusClients**](GatewayTypeRADIUSAllOfRadiusClients.md) | Collection of RADIUS clients. | 
 
 ## Methods
@@ -316,6 +317,31 @@ SetDefaultSharedSecret sets DefaultSharedSecret field to given value.
 `func (o *GatewayTypeRADIUS) HasDefaultSharedSecret() bool`
 
 HasDefaultSharedSecret returns a boolean if a field has been set.
+
+### GetNetworkPolicyServer
+
+`func (o *GatewayTypeRADIUS) GetNetworkPolicyServer() GatewayTypeRADIUSAllOfNetworkPolicyServer`
+
+GetNetworkPolicyServer returns the NetworkPolicyServer field if non-nil, zero value otherwise.
+
+### GetNetworkPolicyServerOk
+
+`func (o *GatewayTypeRADIUS) GetNetworkPolicyServerOk() (*GatewayTypeRADIUSAllOfNetworkPolicyServer, bool)`
+
+GetNetworkPolicyServerOk returns a tuple with the NetworkPolicyServer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkPolicyServer
+
+`func (o *GatewayTypeRADIUS) SetNetworkPolicyServer(v GatewayTypeRADIUSAllOfNetworkPolicyServer)`
+
+SetNetworkPolicyServer sets NetworkPolicyServer field to given value.
+
+### HasNetworkPolicyServer
+
+`func (o *GatewayTypeRADIUS) HasNetworkPolicyServer() bool`
+
+HasNetworkPolicyServer returns a boolean if a field has been set.
 
 ### GetRadiusClients
 

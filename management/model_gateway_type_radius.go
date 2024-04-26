@@ -37,6 +37,7 @@ type GatewayTypeRADIUS struct {
 	Davinci GatewayTypeRADIUSAllOfDavinci `json:"davinci"`
 	// Value to use for the shared secret if the shared secret is not provided for one or more of the RADIUS clients specified.
 	DefaultSharedSecret *string `json:"defaultSharedSecret,omitempty"`
+	NetworkPolicyServer *GatewayTypeRADIUSAllOfNetworkPolicyServer `json:"networkPolicyServer,omitempty"`
 	// Collection of RADIUS clients.
 	RadiusClients []GatewayTypeRADIUSAllOfRadiusClients `json:"radiusClients"`
 }
@@ -415,6 +416,38 @@ func (o *GatewayTypeRADIUS) SetDefaultSharedSecret(v string) {
 	o.DefaultSharedSecret = &v
 }
 
+// GetNetworkPolicyServer returns the NetworkPolicyServer field value if set, zero value otherwise.
+func (o *GatewayTypeRADIUS) GetNetworkPolicyServer() GatewayTypeRADIUSAllOfNetworkPolicyServer {
+	if o == nil || IsNil(o.NetworkPolicyServer) {
+		var ret GatewayTypeRADIUSAllOfNetworkPolicyServer
+		return ret
+	}
+	return *o.NetworkPolicyServer
+}
+
+// GetNetworkPolicyServerOk returns a tuple with the NetworkPolicyServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayTypeRADIUS) GetNetworkPolicyServerOk() (*GatewayTypeRADIUSAllOfNetworkPolicyServer, bool) {
+	if o == nil || IsNil(o.NetworkPolicyServer) {
+		return nil, false
+	}
+	return o.NetworkPolicyServer, true
+}
+
+// HasNetworkPolicyServer returns a boolean if a field has been set.
+func (o *GatewayTypeRADIUS) HasNetworkPolicyServer() bool {
+	if o != nil && !IsNil(o.NetworkPolicyServer) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkPolicyServer gets a reference to the given GatewayTypeRADIUSAllOfNetworkPolicyServer and assigns it to the NetworkPolicyServer field.
+func (o *GatewayTypeRADIUS) SetNetworkPolicyServer(v GatewayTypeRADIUSAllOfNetworkPolicyServer) {
+	o.NetworkPolicyServer = &v
+}
+
 // GetRadiusClients returns the RadiusClients field value
 func (o *GatewayTypeRADIUS) GetRadiusClients() []GatewayTypeRADIUSAllOfRadiusClients {
 	if o == nil {
@@ -476,6 +509,9 @@ func (o GatewayTypeRADIUS) ToMap() (map[string]interface{}, error) {
 	toSerialize["davinci"] = o.Davinci
 	if !IsNil(o.DefaultSharedSecret) {
 		toSerialize["defaultSharedSecret"] = o.DefaultSharedSecret
+	}
+	if !IsNil(o.NetworkPolicyServer) {
+		toSerialize["networkPolicyServer"] = o.NetworkPolicyServer
 	}
 	toSerialize["radiusClients"] = o.RadiusClients
 	return toSerialize, nil

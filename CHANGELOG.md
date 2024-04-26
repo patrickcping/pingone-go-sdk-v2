@@ -1,3 +1,8 @@
+# Release (Unreleased)
+
+* `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.39.0](./management/CHANGELOG.md)
+    * **Enhancement** Added the `NetworkPolicyServer` property to the `GatewayTypeRADIUS` data model. [#336](https://github.com/patrickcping/pingone-go-sdk-v2/pull/336)
+
 # Release (2024-03-25)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.8

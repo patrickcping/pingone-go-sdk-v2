@@ -2984,6 +2984,19 @@ components:
               type: string
               format: password
               description: Value to use for the shared secret if the shared secret is not provided for one or more of the RADIUS clients specified.
+            networkPolicyServer:
+              type: object
+              description: If specified, the RADIUS gateway authenticates using the MS-CHAP v2 protocol.
+              properties:
+                ip:
+                  type: string
+                  description: The IP address of the Network Policy Server (NPS).
+                port:
+                  type: integer
+                  description: The port number of the NPS.
+              required:
+                - ip
+                - port
             radiusClients:
               type: array
               description: Collection of RADIUS clients.
