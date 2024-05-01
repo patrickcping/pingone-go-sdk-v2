@@ -1,5 +1,10 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2` : v0.11.9
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/credentials` v0.6.2 => v0.7.0 [#340](https://github.com/patrickcping/pingone-go-sdk-v2/pull/340)
+    * **Note** bump `github.com/patrickcping/pingone-go-sdk-v2/management` v0.38.0 => v0.39.0 [#340](https://github.com/patrickcping/pingone-go-sdk-v2/pull/340)
+    * **Note** bump `golang.org/x/net` v0.22.0 => v0.23.0 [#340](https://github.com/patrickcping/pingone-go-sdk-v2/pull/340)
+    * **Note** bump `golang.org/x/oauth2` v0.18.0 => v0.19.0 [#340](https://github.com/patrickcping/pingone-go-sdk-v2/pull/340)
 * `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.7.0](./credentials/CHANGELOG.md)
     * **Enhancement** Add `Management` to the `CredentialType` data model. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
     * **Enhancement** Add `Required` to the `CredentialTypeMetaDataFieldsInner` data model. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
