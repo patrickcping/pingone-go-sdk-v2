@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Id** | **string** | A string that specifies the identifier of the field. | 
 **FileSupport** | Pointer to [**EnumCredentialTypeMetaDataFieldsFileSupport**](EnumCredentialTypeMetaDataFieldsFileSupport.md) |  | [optional] 
 **IsVisible** | **bool** | A boolean value that specifies whether the field should be visible to viewers of the credential. | 
+**Required** | Pointer to **bool** | A boolean value that specifies whether the field is required for the credential. | [optional] 
 **Title** | **string** | A string that specifies the descriptive text when showing the field. | 
 **Type** | [**EnumCredentialTypeMetaDataFieldsType**](EnumCredentialTypeMetaDataFieldsType.md) |  | 
 **Value** | Pointer to **string** | A string that specifies the text to appear on the credential for a type of Alphanumeric Text. | [optional] 
@@ -146,6 +147,31 @@ and a boolean to check if the value has been set.
 
 SetIsVisible sets IsVisible field to given value.
 
+
+### GetRequired
+
+`func (o *CredentialTypeMetaDataFieldsInner) GetRequired() bool`
+
+GetRequired returns the Required field if non-nil, zero value otherwise.
+
+### GetRequiredOk
+
+`func (o *CredentialTypeMetaDataFieldsInner) GetRequiredOk() (*bool, bool)`
+
+GetRequiredOk returns a tuple with the Required field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequired
+
+`func (o *CredentialTypeMetaDataFieldsInner) SetRequired(v bool)`
+
+SetRequired sets Required field to given value.
+
+### HasRequired
+
+`func (o *CredentialTypeMetaDataFieldsInner) HasRequired() bool`
+
+HasRequired returns a boolean if a field has been set.
 
 ### GetTitle
 

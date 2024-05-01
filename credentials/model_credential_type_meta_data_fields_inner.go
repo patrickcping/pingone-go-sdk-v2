@@ -28,6 +28,8 @@ type CredentialTypeMetaDataFieldsInner struct {
 	FileSupport *EnumCredentialTypeMetaDataFieldsFileSupport `json:"fileSupport,omitempty"`
 	// A boolean value that specifies whether the field should be visible to viewers of the credential.
 	IsVisible bool `json:"isVisible"`
+	// A boolean value that specifies whether the field is required for the credential.
+	Required *bool `json:"required,omitempty"`
 	// A string that specifies the descriptive text when showing the field.
 	Title string `json:"title"`
 	Type EnumCredentialTypeMetaDataFieldsType `json:"type"`
@@ -200,6 +202,38 @@ func (o *CredentialTypeMetaDataFieldsInner) SetIsVisible(v bool) {
 	o.IsVisible = v
 }
 
+// GetRequired returns the Required field value if set, zero value otherwise.
+func (o *CredentialTypeMetaDataFieldsInner) GetRequired() bool {
+	if o == nil || IsNil(o.Required) {
+		var ret bool
+		return ret
+	}
+	return *o.Required
+}
+
+// GetRequiredOk returns a tuple with the Required field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialTypeMetaDataFieldsInner) GetRequiredOk() (*bool, bool) {
+	if o == nil || IsNil(o.Required) {
+		return nil, false
+	}
+	return o.Required, true
+}
+
+// HasRequired returns a boolean if a field has been set.
+func (o *CredentialTypeMetaDataFieldsInner) HasRequired() bool {
+	if o != nil && !IsNil(o.Required) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequired gets a reference to the given bool and assigns it to the Required field.
+func (o *CredentialTypeMetaDataFieldsInner) SetRequired(v bool) {
+	o.Required = &v
+}
+
 // GetTitle returns the Title field value
 func (o *CredentialTypeMetaDataFieldsInner) GetTitle() string {
 	if o == nil {
@@ -301,6 +335,9 @@ func (o CredentialTypeMetaDataFieldsInner) ToMap() (map[string]interface{}, erro
 		toSerialize["fileSupport"] = o.FileSupport
 	}
 	toSerialize["isVisible"] = o.IsVisible
+	if !IsNil(o.Required) {
+		toSerialize["required"] = o.Required
+	}
 	toSerialize["title"] = o.Title
 	toSerialize["type"] = o.Type
 	if !IsNil(o.Value) {
