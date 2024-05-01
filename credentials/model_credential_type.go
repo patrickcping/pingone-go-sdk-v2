@@ -30,13 +30,14 @@ type CredentialType struct {
 	// A string that specifies the description of the credential type.
 	Description *string `json:"description,omitempty"`
 	// A string that specifies the date and time the credential type was deleted. Note - a deletion of a credential type is a \"soft delete\".
-	DeletedAt *string `json:"deletedAt,omitempty"`
+	DeletedAt *time.Time `json:"deletedAt,omitempty"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
 	// A string that specifies the identifier (UUID) associated with the credential type.
 	Id *string `json:"id,omitempty"`
 	Issuer *ObjectIssuer `json:"issuer,omitempty"`
-	// v issuer name associated with the card, can differ from title.
+	// A string that specifies the issuer name associated with the card, can differ from title.
 	IssuerName *string `json:"issuerName,omitempty"`
+	Management *CredentialTypeManagement `json:"management,omitempty"`
 	Metadata CredentialTypeMetaData `json:"metadata"`
 	Multiple *CredentialTypeMultiple `json:"multiple,omitempty"`
 	OnDelete *CredentialTypeOnDelete `json:"onDelete,omitempty"`
@@ -219,9 +220,9 @@ func (o *CredentialType) SetDescription(v string) {
 }
 
 // GetDeletedAt returns the DeletedAt field value if set, zero value otherwise.
-func (o *CredentialType) GetDeletedAt() string {
+func (o *CredentialType) GetDeletedAt() time.Time {
 	if o == nil || IsNil(o.DeletedAt) {
-		var ret string
+		var ret time.Time
 		return ret
 	}
 	return *o.DeletedAt
@@ -229,7 +230,7 @@ func (o *CredentialType) GetDeletedAt() string {
 
 // GetDeletedAtOk returns a tuple with the DeletedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialType) GetDeletedAtOk() (*string, bool) {
+func (o *CredentialType) GetDeletedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.DeletedAt) {
 		return nil, false
 	}
@@ -245,8 +246,8 @@ func (o *CredentialType) HasDeletedAt() bool {
 	return false
 }
 
-// SetDeletedAt gets a reference to the given string and assigns it to the DeletedAt field.
-func (o *CredentialType) SetDeletedAt(v string) {
+// SetDeletedAt gets a reference to the given time.Time and assigns it to the DeletedAt field.
+func (o *CredentialType) SetDeletedAt(v time.Time) {
 	o.DeletedAt = &v
 }
 
@@ -376,6 +377,38 @@ func (o *CredentialType) HasIssuerName() bool {
 // SetIssuerName gets a reference to the given string and assigns it to the IssuerName field.
 func (o *CredentialType) SetIssuerName(v string) {
 	o.IssuerName = &v
+}
+
+// GetManagement returns the Management field value if set, zero value otherwise.
+func (o *CredentialType) GetManagement() CredentialTypeManagement {
+	if o == nil || IsNil(o.Management) {
+		var ret CredentialTypeManagement
+		return ret
+	}
+	return *o.Management
+}
+
+// GetManagementOk returns a tuple with the Management field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialType) GetManagementOk() (*CredentialTypeManagement, bool) {
+	if o == nil || IsNil(o.Management) {
+		return nil, false
+	}
+	return o.Management, true
+}
+
+// HasManagement returns a boolean if a field has been set.
+func (o *CredentialType) HasManagement() bool {
+	if o != nil && !IsNil(o.Management) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagement gets a reference to the given CredentialTypeManagement and assigns it to the Management field.
+func (o *CredentialType) SetManagement(v CredentialTypeManagement) {
+	o.Management = &v
 }
 
 // GetMetadata returns the Metadata field value
@@ -559,6 +592,9 @@ func (o CredentialType) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IssuerName) {
 		toSerialize["issuerName"] = o.IssuerName
+	}
+	if !IsNil(o.Management) {
+		toSerialize["management"] = o.Management
 	}
 	toSerialize["metadata"] = o.Metadata
 	if !IsNil(o.Multiple) {
