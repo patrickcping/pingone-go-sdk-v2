@@ -1,3 +1,9 @@
+# v0.7.0 (Unreleased)
+
+* **Enhancement** Add `Management` to the `CredentialType` data model. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
+* **Enhancement** Add `Required` to the `CredentialTypeMetaDataFieldsInner` data model. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
+* **Bug** Fixed `DeletedAt` property (made read-only) in the `CredentialType` data model and update the data type. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
+
 # v0.6.2 (2024-01-12)
 
 * **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)

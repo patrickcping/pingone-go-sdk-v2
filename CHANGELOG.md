@@ -1,5 +1,9 @@
 # Release (Unreleased)
 
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.7.0](./credentials/CHANGELOG.md)
+    * **Enhancement** Add `Management` to the `CredentialType` data model. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
+    * **Enhancement** Add `Required` to the `CredentialTypeMetaDataFieldsInner` data model. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
+    * **Bug** Fixed `DeletedAt` property (made read-only) in the `CredentialType` data model and update the data type. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.39.0](./management/CHANGELOG.md)
     * **Enhancement** Added the `NetworkPolicyServer` property to the `GatewayTypeRADIUS` data model. [#336](https://github.com/patrickcping/pingone-go-sdk-v2/pull/336)
 
