@@ -44,6 +44,18 @@ type APIClient struct {
 
 	APIServersApi *APIServersApiService
 
+	ApplicationResourcePermissionsApi *ApplicationResourcePermissionsApiService
+
+	ApplicationResourcesApi *ApplicationResourcesApiService
+
+	ApplicationRoleApi *ApplicationRoleApiService
+
+	ApplicationRoleAssignmentsApi *ApplicationRoleAssignmentsApiService
+
+	ApplicationRolePermissionsApi *ApplicationRolePermissionsApiService
+
+	ApplicationRolesApi *ApplicationRolesApiService
+
 	PolicyDecisionManagementApi *PolicyDecisionManagementApiService
 }
 
