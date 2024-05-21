@@ -1,6 +1,6 @@
 # Release (Unreleased)
 
-* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.5.0](./mfa/CHANGELOG.md)
+* `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.5.0](./authorize/CHANGELOG.md)
     * **Feature** Add support for Application Resource Permissions API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
     * **Feature** Add support for Application Resources API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
     * **Feature** Add support for Application Roles API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
