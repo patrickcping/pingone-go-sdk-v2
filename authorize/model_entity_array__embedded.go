@@ -19,8 +19,12 @@ var _ MappedNullable = &EntityArrayEmbedded{}
 
 // EntityArrayEmbedded struct for EntityArrayEmbedded
 type EntityArrayEmbedded struct {
-	DecisionEndpoints []DecisionEndpoint `json:"decisionEndpoints,omitempty"`
 	ApiServers []APIServer `json:"apiServers,omitempty"`
+	Assignments []ApplicationRoleAssignment `json:"assignments,omitempty"`
+	DecisionEndpoints []DecisionEndpoint `json:"decisionEndpoints,omitempty"`
+	Permissions []EntityArrayEmbeddedPermissionsInner `json:"permissions,omitempty"`
+	Resources []ApplicationResource `json:"resources,omitempty"`
+	Roles []ApplicationRole `json:"roles,omitempty"`
 }
 
 // NewEntityArrayEmbedded instantiates a new EntityArrayEmbedded object
@@ -38,38 +42,6 @@ func NewEntityArrayEmbedded() *EntityArrayEmbedded {
 func NewEntityArrayEmbeddedWithDefaults() *EntityArrayEmbedded {
 	this := EntityArrayEmbedded{}
 	return &this
-}
-
-// GetDecisionEndpoints returns the DecisionEndpoints field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetDecisionEndpoints() []DecisionEndpoint {
-	if o == nil || IsNil(o.DecisionEndpoints) {
-		var ret []DecisionEndpoint
-		return ret
-	}
-	return o.DecisionEndpoints
-}
-
-// GetDecisionEndpointsOk returns a tuple with the DecisionEndpoints field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetDecisionEndpointsOk() ([]DecisionEndpoint, bool) {
-	if o == nil || IsNil(o.DecisionEndpoints) {
-		return nil, false
-	}
-	return o.DecisionEndpoints, true
-}
-
-// HasDecisionEndpoints returns a boolean if a field has been set.
-func (o *EntityArrayEmbedded) HasDecisionEndpoints() bool {
-	if o != nil && !IsNil(o.DecisionEndpoints) {
-		return true
-	}
-
-	return false
-}
-
-// SetDecisionEndpoints gets a reference to the given []DecisionEndpoint and assigns it to the DecisionEndpoints field.
-func (o *EntityArrayEmbedded) SetDecisionEndpoints(v []DecisionEndpoint) {
-	o.DecisionEndpoints = v
 }
 
 // GetApiServers returns the ApiServers field value if set, zero value otherwise.
@@ -104,6 +76,166 @@ func (o *EntityArrayEmbedded) SetApiServers(v []APIServer) {
 	o.ApiServers = v
 }
 
+// GetAssignments returns the Assignments field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetAssignments() []ApplicationRoleAssignment {
+	if o == nil || IsNil(o.Assignments) {
+		var ret []ApplicationRoleAssignment
+		return ret
+	}
+	return o.Assignments
+}
+
+// GetAssignmentsOk returns a tuple with the Assignments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetAssignmentsOk() ([]ApplicationRoleAssignment, bool) {
+	if o == nil || IsNil(o.Assignments) {
+		return nil, false
+	}
+	return o.Assignments, true
+}
+
+// HasAssignments returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasAssignments() bool {
+	if o != nil && !IsNil(o.Assignments) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssignments gets a reference to the given []ApplicationRoleAssignment and assigns it to the Assignments field.
+func (o *EntityArrayEmbedded) SetAssignments(v []ApplicationRoleAssignment) {
+	o.Assignments = v
+}
+
+// GetDecisionEndpoints returns the DecisionEndpoints field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetDecisionEndpoints() []DecisionEndpoint {
+	if o == nil || IsNil(o.DecisionEndpoints) {
+		var ret []DecisionEndpoint
+		return ret
+	}
+	return o.DecisionEndpoints
+}
+
+// GetDecisionEndpointsOk returns a tuple with the DecisionEndpoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetDecisionEndpointsOk() ([]DecisionEndpoint, bool) {
+	if o == nil || IsNil(o.DecisionEndpoints) {
+		return nil, false
+	}
+	return o.DecisionEndpoints, true
+}
+
+// HasDecisionEndpoints returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasDecisionEndpoints() bool {
+	if o != nil && !IsNil(o.DecisionEndpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetDecisionEndpoints gets a reference to the given []DecisionEndpoint and assigns it to the DecisionEndpoints field.
+func (o *EntityArrayEmbedded) SetDecisionEndpoints(v []DecisionEndpoint) {
+	o.DecisionEndpoints = v
+}
+
+// GetPermissions returns the Permissions field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetPermissions() []EntityArrayEmbeddedPermissionsInner {
+	if o == nil || IsNil(o.Permissions) {
+		var ret []EntityArrayEmbeddedPermissionsInner
+		return ret
+	}
+	return o.Permissions
+}
+
+// GetPermissionsOk returns a tuple with the Permissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetPermissionsOk() ([]EntityArrayEmbeddedPermissionsInner, bool) {
+	if o == nil || IsNil(o.Permissions) {
+		return nil, false
+	}
+	return o.Permissions, true
+}
+
+// HasPermissions returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasPermissions() bool {
+	if o != nil && !IsNil(o.Permissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetPermissions gets a reference to the given []EntityArrayEmbeddedPermissionsInner and assigns it to the Permissions field.
+func (o *EntityArrayEmbedded) SetPermissions(v []EntityArrayEmbeddedPermissionsInner) {
+	o.Permissions = v
+}
+
+// GetResources returns the Resources field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetResources() []ApplicationResource {
+	if o == nil || IsNil(o.Resources) {
+		var ret []ApplicationResource
+		return ret
+	}
+	return o.Resources
+}
+
+// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetResourcesOk() ([]ApplicationResource, bool) {
+	if o == nil || IsNil(o.Resources) {
+		return nil, false
+	}
+	return o.Resources, true
+}
+
+// HasResources returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasResources() bool {
+	if o != nil && !IsNil(o.Resources) {
+		return true
+	}
+
+	return false
+}
+
+// SetResources gets a reference to the given []ApplicationResource and assigns it to the Resources field.
+func (o *EntityArrayEmbedded) SetResources(v []ApplicationResource) {
+	o.Resources = v
+}
+
+// GetRoles returns the Roles field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetRoles() []ApplicationRole {
+	if o == nil || IsNil(o.Roles) {
+		var ret []ApplicationRole
+		return ret
+	}
+	return o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetRolesOk() ([]ApplicationRole, bool) {
+	if o == nil || IsNil(o.Roles) {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasRoles() bool {
+	if o != nil && !IsNil(o.Roles) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given []ApplicationRole and assigns it to the Roles field.
+func (o *EntityArrayEmbedded) SetRoles(v []ApplicationRole) {
+	o.Roles = v
+}
+
 func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -114,11 +246,23 @@ func (o EntityArrayEmbedded) MarshalJSON() ([]byte, error) {
 
 func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ApiServers) {
+		toSerialize["apiServers"] = o.ApiServers
+	}
+	if !IsNil(o.Assignments) {
+		toSerialize["assignments"] = o.Assignments
+	}
 	if !IsNil(o.DecisionEndpoints) {
 		toSerialize["decisionEndpoints"] = o.DecisionEndpoints
 	}
-	if !IsNil(o.ApiServers) {
-		toSerialize["apiServers"] = o.ApiServers
+	if !IsNil(o.Permissions) {
+		toSerialize["permissions"] = o.Permissions
+	}
+	if !IsNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
+	}
+	if !IsNil(o.Roles) {
+		toSerialize["roles"] = o.Roles
 	}
 	return toSerialize, nil
 }

@@ -737,6 +737,1176 @@ paths:
       summary: UPDATE API Server
       tags:
       - API Servers
+  /environments/{environmentID}/applicationResources:
+    get:
+      operationId: readApplicationResources
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ Application Resources
+      tags:
+      - Application Resources
+  /environments/{environmentID}/applicationResources/{applicationResourceID}:
+    get:
+      operationId: readOneApplicationResource
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResource'
+          description: Successful response
+      summary: READ One Application Resource
+      tags:
+      - Application Resources
+  /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions:
+    get:
+      operationId: readApplicationPermissions
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ Application Permissions
+      tags:
+      - Application Resource Permissions
+    post:
+      operationId: createApplicationPermissions
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationResourcePermission'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResourcePermission'
+          description: Successful response
+      summary: CREATE Application Permissions
+      tags:
+      - Application Resource Permissions
+  /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID}:
+    delete:
+      operationId: deleteApplicationPermission
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourcePermissionID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Application Permission
+      tags:
+      - Application Resource Permissions
+    get:
+      operationId: readOneApplicationPermission
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourcePermissionID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResourcePermission'
+          description: Successful response
+      summary: READ One Application Permission
+      tags:
+      - Application Resource Permissions
+    put:
+      operationId: updateApplicationPermission
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourcePermissionID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationResourcePermission'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResourcePermission'
+          description: Successful response
+      summary: UPDATE Application Permission
+      tags:
+      - Application Resource Permissions
+  /environments/{environmentID}/applicationRoles:
+    get:
+      operationId: readApplicationRoles
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ Application Roles
+      tags:
+      - Application Roles
+    post:
+      operationId: createApplicationRoles
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRole'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationRole'
+          description: Successful response
+      summary: CREATE Application Roles
+      tags:
+      - Application Roles
+  /environments/{environmentID}/applicationRoles/{applicationRoleID}:
+    delete:
+      operationId: deleteApplicationRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Application Role
+      tags:
+      - Application Role
+    get:
+      operationId: readOneApplicationRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationRole'
+          description: Successful response
+      summary: READ One Application Role
+      tags:
+      - Application Roles
+    put:
+      operationId: updateApplicationRole
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRole'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationRole'
+          description: Successful response
+      summary: UPDATE Application Role
+      tags:
+      - Application Role
+  /environments/{environmentID}/applicationRoles/{applicationRoleID}/permissions:
+    get:
+      operationId: readApplicationRolePermissions
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ Application Role Permissions
+      tags:
+      - Application Role Permissions
+    post:
+      operationId: createApplicationRolePermission
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRolePermission'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationRolePermission'
+          description: Successful response
+      summary: CREATE Application Role Permission
+      tags:
+      - Application Role Permissions
+  /environments/{environmentID}/applicationRoles/{applicationRoleID}/permissions/{applicationRolePermissionID}:
+    delete:
+      operationId: deleteApplicationRolePermission
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRolePermissionID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Application Role Permission
+      tags:
+      - Application Role Permissions
+  /environments/{environmentID}/applicationRoles/{applicationRoleID}/assignments:
+    get:
+      operationId: readApplicationRoleAssignments
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ Application Role Assignments
+      tags:
+      - Application Role Assignments
 components:
   responses:
     "400":
@@ -865,6 +2035,113 @@ components:
       - baseURLs
       - name
       type: object
+    ApplicationResource:
+      example:
+        parent:
+          id: id
+          type: null
+        name: name
+        description: description
+        id: id
+      properties:
+        description:
+          description: The application resource's description.
+          type: string
+        id:
+          description: The resource's unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The application resource name. The name value must be unique.
+          type: string
+        parent:
+          $ref: '#/components/schemas/ApplicationResource_parent'
+      required:
+      - name
+      type: object
+    ApplicationResourcePermission:
+      example:
+        environment:
+          id: id
+        resource:
+          name: name
+          id: id
+        action: action
+        description: description
+        id: id
+      properties:
+        action:
+          description: The action associated with this permission.
+          type: string
+        description:
+          description: The resource's description.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: The resource's unique identifier.
+          readOnly: true
+          type: string
+        resource:
+          $ref: '#/components/schemas/ApplicationResourcePermission_resource'
+      required:
+      - action
+      type: object
+    ApplicationRole:
+      example:
+        name: name
+        description: description
+        id: id
+      properties:
+        description:
+          description: The description of the application role.
+          type: string
+        id:
+          description: The ID of the application role.
+          readOnly: true
+          type: string
+        name:
+          description: The name of the application role.
+          type: string
+      required:
+      - name
+      type: object
+    ApplicationRolePermission:
+      example:
+        permission:
+          resource:
+            name: name
+            id: id
+          action: action
+          id: id
+        id: id
+      properties:
+        id:
+          description: The ID of the application resource permission to associate
+            with this role.
+          type: string
+        permission:
+          $ref: '#/components/schemas/ApplicationRolePermission_permission'
+      required:
+      - id
+      type: object
+    ApplicationRoleAssignment:
+      example:
+        role: "{}"
+        subject: "{}"
+        id: id
+      properties:
+        id:
+          description: The ID of the API server operation. This is randomly generated
+            when the operation is created.
+          type: string
+        role:
+          description: The role associated with the role assignment.
+          type: object
+        subject:
+          description: The user associated with the role assignment.
+          type: object
+      type: object
     EnumAPIServerPatternType:
       description: "A string that specifies the type of the pattern. Options are `EXACT`\
         \ ( the verbatim pattern is compared against the path from the request using\
@@ -874,6 +2151,11 @@ components:
       enum:
       - EXACT
       - PARAMETER
+      type: string
+    EnumApplicationResourceParentType:
+      description: The application resource's parent type. Options are PING_ONE_RESOURCE.
+      enum:
+      - PING_ONE_RESOURCE
       type: string
     DecisionEndpoint:
       example:
@@ -960,6 +2242,65 @@ components:
           self:
             href: https://openapi-generator.tech
         _embedded:
+          assignments:
+          - role: "{}"
+            subject: "{}"
+            id: id
+          - role: "{}"
+            subject: "{}"
+            id: id
+          permissions:
+          - null
+          - null
+          roles:
+          - name: name
+            description: description
+            id: id
+          - name: name
+            description: description
+            id: id
+          resources:
+          - parent:
+              id: id
+              type: null
+            name: name
+            description: description
+            id: id
+          - parent:
+              id: id
+              type: null
+            name: name
+            description: description
+            id: id
+          apiServers:
+          - baseURLs:
+            - baseURLs
+            - baseURLs
+            operations: "{}"
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            authorizationServer:
+              resource:
+                id: id
+            name: name
+            id: id
+          - baseURLs:
+            - baseURLs
+            - baseURLs
+            operations: "{}"
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            authorizationServer:
+              resource:
+                id: id
+            name: name
+            id: id
           decisionEndpoints:
           - alternateId: alternateId
             provenance: provenance
@@ -1007,35 +2348,6 @@ components:
               href: href
               title: title
               type: type
-          apiServers:
-          - baseURLs:
-            - baseURLs
-            - baseURLs
-            operations: "{}"
-            _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            authorizationServer:
-              resource:
-                id: id
-            name: name
-            id: id
-          - baseURLs:
-            - baseURLs
-            - baseURLs
-            operations: "{}"
-            _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            authorizationServer:
-              resource:
-                id: id
-            name: name
-            id: id
         count: 0.8008281904610115
       properties:
         _links:
@@ -1057,6 +2369,8 @@ components:
       readOnly: true
       type: object
     ObjectEnvironment:
+      example:
+        id: id
       properties:
         id:
           description: A string that specifies the environment associated with the
@@ -1157,6 +2471,68 @@ components:
       required:
       - resource
       type: object
+    ApplicationResource_parent:
+      description: The application resource's parent.
+      example:
+        id: id
+        type: null
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumApplicationResourceParentType'
+        id:
+          description: The application resource's parent ID.
+          type: string
+      readOnly: true
+      required:
+      - id
+      - type
+      type: object
+    ApplicationResourcePermission_resource:
+      description: An object that identifies the associated application resource.
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          description: The ID for the associated application resource.
+          type: string
+        name:
+          description: The name of the associated application resource.
+          type: string
+      readOnly: true
+      type: object
+    ApplicationRolePermission_permission_resource:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          description: The ID of the application resource associated with this permission.
+          type: string
+        name:
+          description: The name of the applicawtion resource associated with this
+            permission.
+          type: string
+      type: object
+    ApplicationRolePermission_permission:
+      example:
+        resource:
+          name: name
+          id: id
+        action: action
+        id: id
+      properties:
+        id:
+          description: The ID of the permission resource associated with a specified
+            role.
+          type: string
+        action:
+          description: The action associated with this permission.
+          type: string
+        resource:
+          $ref: '#/components/schemas/ApplicationRolePermission_permission_resource'
+      readOnly: true
+      type: object
     DecisionEndpoint_authorizationVersion:
       example:
         id: id
@@ -1202,8 +2578,71 @@ components:
             response.
           type: string
       type: object
+    EntityArray__embedded_permissions_inner:
+      oneOf:
+      - $ref: '#/components/schemas/ApplicationResourcePermission'
+      - $ref: '#/components/schemas/ApplicationRolePermission'
     EntityArray__embedded:
       example:
+        assignments:
+        - role: "{}"
+          subject: "{}"
+          id: id
+        - role: "{}"
+          subject: "{}"
+          id: id
+        permissions:
+        - null
+        - null
+        roles:
+        - name: name
+          description: description
+          id: id
+        - name: name
+          description: description
+          id: id
+        resources:
+        - parent:
+            id: id
+            type: null
+          name: name
+          description: description
+          id: id
+        - parent:
+            id: id
+            type: null
+          name: name
+          description: description
+          id: id
+        apiServers:
+        - baseURLs:
+          - baseURLs
+          - baseURLs
+          operations: "{}"
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          authorizationServer:
+            resource:
+              id: id
+          name: name
+          id: id
+        - baseURLs:
+          - baseURLs
+          - baseURLs
+          operations: "{}"
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          authorizationServer:
+            resource:
+              id: id
+          name: name
+          id: id
         decisionEndpoints:
         - alternateId: alternateId
           provenance: provenance
@@ -1251,43 +2690,30 @@ components:
             href: href
             title: title
             type: type
-        apiServers:
-        - baseURLs:
-          - baseURLs
-          - baseURLs
-          operations: "{}"
-          _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          authorizationServer:
-            resource:
-              id: id
-          name: name
-          id: id
-        - baseURLs:
-          - baseURLs
-          - baseURLs
-          operations: "{}"
-          _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          authorizationServer:
-            resource:
-              id: id
-          name: name
-          id: id
       properties:
+        apiServers:
+          items:
+            $ref: '#/components/schemas/APIServer'
+          type: array
+        assignments:
+          items:
+            $ref: '#/components/schemas/ApplicationRoleAssignment'
+          type: array
         decisionEndpoints:
           items:
             $ref: '#/components/schemas/DecisionEndpoint'
           type: array
-        apiServers:
+        permissions:
           items:
-            $ref: '#/components/schemas/APIServer'
+            $ref: '#/components/schemas/EntityArray__embedded_permissions_inner'
+          type: array
+        resources:
+          items:
+            $ref: '#/components/schemas/ApplicationResource'
+          type: array
+        roles:
+          items:
+            $ref: '#/components/schemas/ApplicationRole'
           type: array
       type: object
     P1Error_details_inner_innerError:
