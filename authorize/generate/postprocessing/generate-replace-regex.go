@@ -56,59 +56,41 @@ var (
 			repl: `func (dst *EntityArrayEmbeddedPermissionsInner) UnmarshalJSON(data []byte) error {
 
 	var err error
-	// try to unmarshal JSON data into Gateway
-	err = json.Unmarshal(data, &dst.Gateway)
+	// try to unmarshal JSON data into ApplicationResourcePermission
+	err = json.Unmarshal(data, &dst.ApplicationResourcePermission)
 	if err == nil {
-		jsonGateway, _ := json.Marshal(dst.Gateway)
-		if string(jsonGateway) == "{}" { // empty struct
-			dst.Gateway = nil
+		jsonApplicationResourcePermission, _ := json.Marshal(dst.ApplicationResourcePermission)
+		if string(jsonApplicationResourcePermission) == "{}" { // empty struct
+			dst.ApplicationResourcePermission = nil
 		} else {
-			switch dst.Gateway.Type {
-			case ENUMGATEWAYTYPE_LDAP, ENUMGATEWAYTYPE_RADIUS:
-				dst.Gateway = nil
-			default:
-				return nil // data stored in dst.Gateway, return on the first match
-			}
-		}
-	} else {
-		dst.Gateway = nil
-	}
-
-	// try to unmarshal JSON data into GatewayTypeLDAP
-	err = json.Unmarshal(data, &dst.GatewayTypeLDAP)
-	if err == nil {
-		jsonGatewayLDAP, _ := json.Marshal(dst.GatewayTypeLDAP)
-		if string(jsonGatewayLDAP) == "{}" { // empty struct
-			dst.GatewayTypeLDAP = nil
-		} else {
-			if dst.GatewayTypeLDAP.Type == ENUMGATEWAYTYPE_LDAP {
-				return nil // data stored in dst.GatewayLDAP, return on the first match
+			if dst.ApplicationResourcePermission.Action == "" { // we expect an action for this data type
+				dst.ApplicationResourcePermission = nil
 			} else {
-				dst.GatewayTypeLDAP = nil
+				return nil // data stored in dst.ApplicationResourcePermission, return on the first match
 			}
 		}
 	} else {
-		dst.GatewayTypeLDAP = nil
+		dst.ApplicationResourcePermission = nil
 	}
 
-	// try to unmarshal JSON data into GatewayTypeRADIUS
-	err = json.Unmarshal(data, &dst.GatewayTypeRADIUS)
+	// try to unmarshal JSON data into ApplicationRolePermission
+	err = json.Unmarshal(data, &dst.ApplicationRolePermission)
 	if err == nil {
-		jsonGatewayRADIUS, _ := json.Marshal(dst.GatewayTypeRADIUS)
-		if string(jsonGatewayRADIUS) == "{}" { // empty struct
-			dst.GatewayTypeRADIUS = nil
+		jsonApplicationRolePermission, _ := json.Marshal(dst.ApplicationRolePermission)
+		if string(jsonApplicationRolePermission) == "{}" { // empty struct
+			dst.ApplicationRolePermission = nil
 		} else {
-			if dst.GatewayTypeRADIUS.Type == ENUMGATEWAYTYPE_RADIUS {
-				return nil // data stored in dst.GatewayTypeRADIUS, return on the first match
+			if dst.ApplicationRolePermission.Permission != nil {
+				return nil // data stored in dst.ApplicationRolePermission, return on the first match
 			} else {
-				dst.GatewayTypeRADIUS = nil
+				dst.ApplicationRolePermission = nil
 			}
 		}
 	} else {
-		dst.GatewayTypeRADIUS = nil
+		dst.ApplicationRolePermission = nil
 	}
 
-	return fmt.Errorf("Data failed to match schemas in anyOf(EntityArrayEmbeddedGatewaysInner)")
+	return fmt.Errorf("Data failed to match schemas in anyOf(EntityArrayEmbeddedPermissionsInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,

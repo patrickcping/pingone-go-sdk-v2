@@ -38,45 +38,43 @@ func ApplicationRolePermissionAsEntityArrayEmbeddedPermissionsInner(v *Applicati
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *EntityArrayEmbeddedPermissionsInner) UnmarshalJSON(data []byte) error {
+
 	var err error
-	match := 0
-	// try to unmarshal data into ApplicationResourcePermission
-	err = newStrictDecoder(data).Decode(&dst.ApplicationResourcePermission)
+	// try to unmarshal JSON data into ApplicationResourcePermission
+	err = json.Unmarshal(data, &dst.ApplicationResourcePermission)
 	if err == nil {
 		jsonApplicationResourcePermission, _ := json.Marshal(dst.ApplicationResourcePermission)
 		if string(jsonApplicationResourcePermission) == "{}" { // empty struct
 			dst.ApplicationResourcePermission = nil
 		} else {
-			match++
+			if dst.ApplicationResourcePermission.Action == "" { // we expect an action for this data type
+				dst.ApplicationResourcePermission = nil
+			} else {
+				return nil // data stored in dst.ApplicationResourcePermission, return on the first match
+			}
 		}
 	} else {
 		dst.ApplicationResourcePermission = nil
 	}
 
-	// try to unmarshal data into ApplicationRolePermission
-	err = newStrictDecoder(data).Decode(&dst.ApplicationRolePermission)
+	// try to unmarshal JSON data into ApplicationRolePermission
+	err = json.Unmarshal(data, &dst.ApplicationRolePermission)
 	if err == nil {
 		jsonApplicationRolePermission, _ := json.Marshal(dst.ApplicationRolePermission)
 		if string(jsonApplicationRolePermission) == "{}" { // empty struct
 			dst.ApplicationRolePermission = nil
 		} else {
-			match++
+			if dst.ApplicationRolePermission.Permission != nil {
+				return nil // data stored in dst.ApplicationRolePermission, return on the first match
+			} else {
+				dst.ApplicationRolePermission = nil
+			}
 		}
 	} else {
 		dst.ApplicationRolePermission = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.ApplicationResourcePermission = nil
-		dst.ApplicationRolePermission = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(EntityArrayEmbeddedPermissionsInner)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(EntityArrayEmbeddedPermissionsInner)")
-	}
+	return fmt.Errorf("Data failed to match schemas in anyOf(EntityArrayEmbeddedPermissionsInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
