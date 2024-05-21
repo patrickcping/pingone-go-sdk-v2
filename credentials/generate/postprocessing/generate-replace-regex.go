@@ -34,7 +34,7 @@ func main() {
 			content = re.ReplaceAll(content, []byte(rule.repl))
 
 			// Write the updated file contents
-			err = os.WriteFile(file, content, os.ModePerm)
+			err = os.WriteFile(file, content, os.ModeAppend)
 			if err != nil {
 				panic(err)
 			}
