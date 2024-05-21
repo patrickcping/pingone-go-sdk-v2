@@ -4552,7 +4552,6 @@ components:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_otp_window'
       required:
       - failure
-      - window
       type: object
     DeviceAuthenticationPolicy_mobile_applications_inner_push:
       example:
