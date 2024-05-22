@@ -517,6 +517,10 @@ components:
         CORE: The claim is required and cannot not be removed.
         CUSTOM: The claim is not a CORE attribute. All created attributes are of this type.
         PREDEFINED: A designation for predefined OIDC resource attributes such as given_name. These attributes cannot be removed; however, they can be modified.
+    EnumResourceApplicationResourceType:
+      type: string
+      enum: [PING_ONE_RESOURCE]
+      description: The application resource's parent type. Options are `PING_ONE_RESOURCE`.
     EnumResourceIntrospectEndpointAuthMethod:
       type: string
       enum: [NONE, CLIENT_SECRET_BASIC, CLIENT_SECRET_POST]
@@ -2065,6 +2069,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/PasswordPolicy'
+            permissions:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceApplicationPermission'
             phoneDeliverySettings:
               type: array
               items:
@@ -2080,7 +2088,9 @@ components:
             resources:
               type: array
               items:
-                $ref: '#/components/schemas/Resource'
+                oneOf:
+                  - $ref: '#/components/schemas/Resource'
+                  - $ref: '#/components/schemas/ResourceApplicationResource'
             revisions:
               type: array
               items:
@@ -5299,6 +5309,74 @@ components:
           description: The time the resource was last updated.
       required:
         - name
+    ResourceApplicationResource:
+      type: object
+      properties:
+        description:
+          type: string
+          description: The application resource's description.
+        id:
+          type: string
+          readOnly: true
+          description: The resource's unique identifier.
+        name:
+          type: string
+          description: The application resource name. The name value must be unique.
+        parent:
+          type: object
+          readOnly: true
+          description: The application resource's parent.
+          properties:
+            type:
+              $ref: '#/components/schemas/EnumResourceApplicationResourceType'
+            id:
+              type: string
+              description: The application resource's parent ID.
+      required:
+        - name
+    ResourceApplicationPermission:
+      type: object
+      properties:
+        action:
+          type: string
+          description: The action associated with this permission.
+        description:
+          type: string
+          description: The resource's description.
+        id:
+          type: string
+          description: The resource's unique identifier.
+        key:
+          type: string
+          readOnly: true
+          description: The resource.name:action pair of the permission.
+        resource:
+          type: object
+          readOnly: true
+          description: An object that identifies the associated application resource.
+          properties:
+            id:
+              type: string
+              description: The ID for the associated application resource.
+            name:
+              type: string
+              description: The name of the associated application resource.
+        resourceServer:
+          type: object
+          readOnly: true
+          description: An object that identifies the associated application resource server.
+          properties:
+            id:
+              type: string
+              description: The ID for the associated application resource server.
+            environment:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The ID for the environment associated with the application resource server.
+      required:
+        - action
     ResourceAttribute:
       type: object
       properties:
@@ -17028,6 +17106,254 @@ paths:
           $ref: '#/components/responses/500'
         '204':
           description: Successful response
+  /environments/{environmentID}/resources/{resourceID}/applicationResources:
+    get:
+      tags:
+        - Application Resources
+      summary: READ All Application Resources
+      operationId: readAllApplicationResources
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: resourceID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+    post:
+      tags:
+        - Application Resources
+      summary: CREATE Application Resource
+      operationId: createApplicationResource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceApplicationResource'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: resourceID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceApplicationResource'
+  /environments/{environmentID}/resources/{resourceID}/applicationResources/{applicationResourceID}:
+    get:
+      tags:
+        - Application Resources
+      summary: READ One Application Resource
+      operationId: readOneApplicationResource
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: resourceID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: applicationResourceID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceApplicationResource'
+    put:
+      tags:
+        - Application Resources
+      summary: UPDATE Application Resource
+      operationId: updateApplicationResource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceApplicationResource'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: resourceID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: applicationResourceID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceApplicationResource'
+    delete:
+      tags:
+        - Application Resources
+      summary: DELETE Application Resource
+      operationId: deleteApplicationResource
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: resourceID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: applicationResourceID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '204':
+          description: Successful response
+  /environments/{environmentID}/resources/{resourceID}/applicationPermissions:
+    get:
+      tags:
+        - Application Permissions
+      summary: READ All Application Permissions
+      operationId: readAllApplicationPermissions
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: resourceID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
   /environments/{environmentID}/resources/{resourceID}/attributes:
     get:
       tags:

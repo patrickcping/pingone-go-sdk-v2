@@ -7,7 +7,9 @@ api_agreements_resources.go
 api_alerting.go
 api_application_attribute_mapping.go
 api_application_flow_policy_assignments.go
+api_application_permissions.go
 api_application_resource_grants.go
+api_application_resources.go
 api_application_role_assignments.go
 api_application_secret.go
 api_application_sign_on_policy_assignments.go
@@ -111,6 +113,7 @@ docs/ApplicationOIDCAllOfMobilePasscodeRefreshDuration.md
 docs/ApplicationOIDCAllOfSigning.md
 docs/ApplicationOIDCAllOfSigningKeyRotationPolicy.md
 docs/ApplicationOIDCInternal.md
+docs/ApplicationPermissionsApi.md
 docs/ApplicationPingOneAdminConsole.md
 docs/ApplicationPingOnePortal.md
 docs/ApplicationPingOneSelfService.md
@@ -119,6 +122,7 @@ docs/ApplicationResourceGrantApplication.md
 docs/ApplicationResourceGrantResource.md
 docs/ApplicationResourceGrantScopesInner.md
 docs/ApplicationResourceGrantsApi.md
+docs/ApplicationResourcesApi.md
 docs/ApplicationRoleAssignmentsApi.md
 docs/ApplicationSAML.md
 docs/ApplicationSAMLAllOfIdpSigning.md
@@ -179,6 +183,7 @@ docs/EntityArrayEmbedded.md
 docs/EntityArrayEmbeddedAttributesInner.md
 docs/EntityArrayEmbeddedGatewaysInner.md
 docs/EntityArrayEmbeddedLanguagesInner.md
+docs/EntityArrayEmbeddedResourcesInner.md
 docs/EnumAgreementRevisionContentType.md
 docs/EnumAlertChannelAlertType.md
 docs/EnumAlertChannelSeverity.md
@@ -522,6 +527,12 @@ docs/ReadOneApplication200Response.md
 docs/RecaptchaConfiguration.md
 docs/RecaptchaConfigurationApi.md
 docs/Resource.md
+docs/ResourceApplicationPermission.md
+docs/ResourceApplicationPermissionResource.md
+docs/ResourceApplicationPermissionResourceServer.md
+docs/ResourceApplicationPermissionResourceServerEnvironment.md
+docs/ResourceApplicationResource.md
+docs/ResourceApplicationResourceParent.md
 docs/ResourceAttribute.md
 docs/ResourceAttributesApi.md
 docs/ResourceClientSecretApi.md
@@ -721,6 +732,7 @@ model_email_domain_trusted_email_domain.go
 model_entity_array.go
 model_entity_array__embedded.go
 model_entity_array__embedded_gateways_inner.go
+model_entity_array__embedded_resources_inner.go
 model_enum_agreement_revision_content_type.go
 model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
@@ -1027,6 +1039,12 @@ model_propagation_store_image.go
 model_propagation_store_sync_status.go
 model_recaptcha_configuration.go
 model_resource.go
+model_resource_application_permission.go
+model_resource_application_permission_resource.go
+model_resource_application_permission_resource_server.go
+model_resource_application_permission_resource_server_environment.go
+model_resource_application_resource.go
+model_resource_application_resource_parent.go
 model_resource_attribute.go
 model_resource_scope.go
 model_resource_secret.go
