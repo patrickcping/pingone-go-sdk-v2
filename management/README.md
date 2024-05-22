@@ -337,8 +337,9 @@ Class | Method | HTTP request | Description
 *ResourceAttributesApi* | [**ReadAllResourceAttributes**](docs/ResourceAttributesApi.md#readallresourceattributes) | **Get** /environments/{environmentID}/resources/{resourceID}/attributes | READ All Resource Attributes
 *ResourceAttributesApi* | [**ReadOneResourceAttribute**](docs/ResourceAttributesApi.md#readoneresourceattribute) | **Get** /environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | READ One Resource Attribute
 *ResourceAttributesApi* | [**UpdateResourceAttribute**](docs/ResourceAttributesApi.md#updateresourceattribute) | **Put** /environments/{environmentID}/resources/{resourceID}/attributes/{resourceAttrID} | UPDATE Resource Attribute
-*ResourceClientSecretApi* | [**CreateResourceSecret**](docs/ResourceClientSecretApi.md#createresourcesecret) | **Post** /environments/{environmentID}/resources/{resourceID}/secret | CREATE Resource Client Secret
-*ResourceClientSecretApi* | [**ReadResourceSecret**](docs/ResourceClientSecretApi.md#readresourcesecret) | **Get** /environments/{environmentID}/resources/{resourceID}/secret | READ Resource Client Secret
+*ResourceClientSecretApi* | [**DeletePreviousResourceSecret**](docs/ResourceClientSecretApi.md#deletepreviousresourcesecret) | **Delete** /environments/{environmentID}/resources/{resourceID}/secret | DELETE Previous Resource Secret
+*ResourceClientSecretApi* | [**ReadResourceSecret**](docs/ResourceClientSecretApi.md#readresourcesecret) | **Get** /environments/{environmentID}/resources/{resourceID}/secret | READ Resource Secret
+*ResourceClientSecretApi* | [**UpdateResourceSecret**](docs/ResourceClientSecretApi.md#updateresourcesecret) | **Post** /environments/{environmentID}/resources/{resourceID}/secret | UPDATE Resource Secret
 *ResourceScopesApi* | [**CreateResourceScope**](docs/ResourceScopesApi.md#createresourcescope) | **Post** /environments/{environmentID}/resources/{resourceID}/scopes | CREATE PingOne access control scope
 *ResourceScopesApi* | [**DeleteResourceScope**](docs/ResourceScopesApi.md#deleteresourcescope) | **Delete** /environments/{environmentID}/resources/{resourceID}/scopes/{scopeID} | DELETE Scope
 *ResourceScopesApi* | [**ReadAllResourceScopes**](docs/ResourceScopesApi.md#readallresourcescopes) | **Get** /environments/{environmentID}/resources/{resourceID}/scopes | READ All Scopes (Resource)
@@ -819,6 +820,7 @@ Class | Method | HTTP request | Description
  - [ResourceAttribute](docs/ResourceAttribute.md)
  - [ResourceScope](docs/ResourceScope.md)
  - [ResourceSecret](docs/ResourceSecret.md)
+ - [ResourceSecretPrevious](docs/ResourceSecretPrevious.md)
  - [Role](docs/Role.md)
  - [RoleAssignment](docs/RoleAssignment.md)
  - [RoleAssignmentGroup](docs/RoleAssignmentGroup.md)

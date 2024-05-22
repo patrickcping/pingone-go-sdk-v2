@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Secret** | Pointer to **string** | An auto-generated resource client secret. Possible characters are a-z, A-Z, 0-9, -, ., _, ~. The secret has a minimum length of 64 characters per SHA-512 requirements when using the HS512 algorithm to sign ID tokens using the secret as the key. | [optional] [readonly] 
+**Previous** | Pointer to [**ResourceSecretPrevious**](ResourceSecretPrevious.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetSecret sets Secret field to given value.
 `func (o *ResourceSecret) HasSecret() bool`
 
 HasSecret returns a boolean if a field has been set.
+
+### GetPrevious
+
+`func (o *ResourceSecret) GetPrevious() ResourceSecretPrevious`
+
+GetPrevious returns the Previous field if non-nil, zero value otherwise.
+
+### GetPreviousOk
+
+`func (o *ResourceSecret) GetPreviousOk() (*ResourceSecretPrevious, bool)`
+
+GetPreviousOk returns a tuple with the Previous field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrevious
+
+`func (o *ResourceSecret) SetPrevious(v ResourceSecretPrevious)`
+
+SetPrevious sets Previous field to given value.
+
+### HasPrevious
+
+`func (o *ResourceSecret) HasPrevious() bool`
+
+HasPrevious returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
