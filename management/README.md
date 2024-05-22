@@ -625,6 +625,7 @@ Class | Method | HTTP request | Description
  - [EnumPropagationStoreTypeZoomAuthenticationMethod](docs/EnumPropagationStoreTypeZoomAuthenticationMethod.md)
  - [EnumRegionCode](docs/EnumRegionCode.md)
  - [EnumRegionCodeLicense](docs/EnumRegionCodeLicense.md)
+ - [EnumResourceApplicationResourceType](docs/EnumResourceApplicationResourceType.md)
  - [EnumResourceAttributeType](docs/EnumResourceAttributeType.md)
  - [EnumResourceIntrospectEndpointAuthMethod](docs/EnumResourceIntrospectEndpointAuthMethod.md)
  - [EnumResourceType](docs/EnumResourceType.md)

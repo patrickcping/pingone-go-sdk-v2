@@ -19,8 +19,7 @@ var _ MappedNullable = &ResourceApplicationResourceParent{}
 
 // ResourceApplicationResourceParent The application resource's parent.
 type ResourceApplicationResourceParent struct {
-	// The application resource's parent type. Options are PING_ONE_RESOURCE.
-	Type *string `json:"type,omitempty"`
+	Type *EnumResourceApplicationResourceType `json:"type,omitempty"`
 	// The application resource's parent ID.
 	Id *string `json:"id,omitempty"`
 }
@@ -43,9 +42,9 @@ func NewResourceApplicationResourceParentWithDefaults() *ResourceApplicationReso
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ResourceApplicationResourceParent) GetType() string {
+func (o *ResourceApplicationResourceParent) GetType() EnumResourceApplicationResourceType {
 	if o == nil || IsNil(o.Type) {
-		var ret string
+		var ret EnumResourceApplicationResourceType
 		return ret
 	}
 	return *o.Type
@@ -53,7 +52,7 @@ func (o *ResourceApplicationResourceParent) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ResourceApplicationResourceParent) GetTypeOk() (*string, bool) {
+func (o *ResourceApplicationResourceParent) GetTypeOk() (*EnumResourceApplicationResourceType, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -69,8 +68,8 @@ func (o *ResourceApplicationResourceParent) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ResourceApplicationResourceParent) SetType(v string) {
+// SetType gets a reference to the given EnumResourceApplicationResourceType and assigns it to the Type field.
+func (o *ResourceApplicationResourceParent) SetType(v EnumResourceApplicationResourceType) {
 	o.Type = &v
 }
 

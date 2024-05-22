@@ -295,6 +295,7 @@ docs/EnumPropagationStoreTypeSlackUniqueUserIdentifier.md
 docs/EnumPropagationStoreTypeZoomAuthenticationMethod.md
 docs/EnumRegionCode.md
 docs/EnumRegionCodeLicense.md
+docs/EnumResourceApplicationResourceType.md
 docs/EnumResourceAttributeType.md
 docs/EnumResourceIntrospectEndpointAuthMethod.md
 docs/EnumResourceType.md
@@ -844,6 +845,7 @@ model_enum_propagation_store_type_slack_unique_user_identifier.go
 model_enum_propagation_store_type_zoom_authentication_method.go
 model_enum_region_code.go
 model_enum_region_code_license.go
+model_enum_resource_application_resource_type.go
 model_enum_resource_attribute_type.go
 model_enum_resource_introspect_endpoint_auth_method.go
 model_enum_resource_type.go

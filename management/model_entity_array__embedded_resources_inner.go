@@ -38,7 +38,7 @@ func ResourceApplicationResourceAsEntityArrayEmbeddedResourcesInner(v *ResourceA
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *EntityArrayEmbeddedResourcesInner) UnmarshalJSON(data []byte) error {
-	
+
 	var err error
 	// try to unmarshal JSON data into Resource
 	err = json.Unmarshal(data, &dst.Resource)
