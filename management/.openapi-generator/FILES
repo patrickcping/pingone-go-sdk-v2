@@ -541,6 +541,7 @@ docs/ResourceClientSecretApi.md
 docs/ResourceScope.md
 docs/ResourceScopesApi.md
 docs/ResourceSecret.md
+docs/ResourceSecretPrevious.md
 docs/ResourcesApi.md
 docs/Role.md
 docs/RoleAssignment.md
@@ -1052,6 +1053,7 @@ model_resource_application_resource_parent.go
 model_resource_attribute.go
 model_resource_scope.go
 model_resource_secret.go
+model_resource_secret_previous.go
 model_role.go
 model_role_assignment.go
 model_role_assignment_group.go

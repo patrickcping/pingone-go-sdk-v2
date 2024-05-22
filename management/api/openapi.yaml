@@ -19061,6 +19061,72 @@ paths:
       tags:
       - Resource Attributes
   /environments/{environmentID}/resources/{resourceID}/secret:
+    delete:
+      operationId: deletePreviousResourceSecret
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Previous Resource Secret
+      tags:
+      - Resource Client Secret
     get:
       operationId: readResourceSecret
       parameters:
@@ -19128,11 +19194,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResourceSecret'
           description: Successful response
-      summary: READ Resource Client Secret
+      summary: READ Resource Secret
       tags:
       - Resource Client Secret
     post:
-      operationId: createResourceSecret
+      operationId: updateResourceSecret
       parameters:
       - explode: false
         in: path
@@ -19148,6 +19214,11 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceSecret'
       responses:
         "400":
           content:
@@ -19199,13 +19270,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/P1Error'
           description: Uncaught error occurred.  Platform outage
-        "201":
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceSecret'
           description: Successful response
-      summary: CREATE Resource Client Secret
+      summary: UPDATE Resource Secret
       tags:
       - Resource Client Secret
   /environments/{environmentID}/resources/{resourceID}/scopes:
@@ -33745,6 +33816,10 @@ components:
       example:
         environment:
           id: id
+        previous:
+          lastUsed: 2000-01-23T04:56:07.000+00:00
+          secret: secret
+          expiresAt: 2000-01-23T04:56:07.000+00:00
         secret: secret
       properties:
         environment:
@@ -33757,6 +33832,8 @@ components:
           format: password
           readOnly: true
           type: string
+        previous:
+          $ref: '#/components/schemas/ResourceSecret_previous'
       type: object
     ResourceScope:
       example:
@@ -39482,6 +39559,35 @@ components:
         environment:
           $ref: '#/components/schemas/ResourceApplicationPermission_resourceServer_environment'
       readOnly: true
+      type: object
+    ResourceSecret_previous:
+      description: "An object that specifies the resource's previous secret, when\
+        \ it expires, and when it was last used."
+      example:
+        lastUsed: 2000-01-23T04:56:07.000+00:00
+        secret: secret
+        expiresAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        secret:
+          description: A string that specifies the resource's previous secret. This
+            property is returned in the response if the previous secret is not expired.
+          format: password
+          readOnly: true
+          type: string
+        expiresAt:
+          description: A timestamp that specifies how long this secret is saved (and
+            can be used) before it expires. Supported time range is 1 minute to 30
+            days.
+          format: date-time
+          type: string
+        lastUsed:
+          description: A timestamp that specifies when the previous secret was last
+            used.
+          format: date-time
+          readOnly: true
+          type: string
+      required:
+      - expiresAt
       type: object
     Role_permissions_inner:
       example:

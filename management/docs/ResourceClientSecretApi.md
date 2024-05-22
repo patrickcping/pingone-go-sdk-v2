@@ -4,16 +4,17 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateResourceSecret**](ResourceClientSecretApi.md#CreateResourceSecret) | **Post** /environments/{environmentID}/resources/{resourceID}/secret | CREATE Resource Client Secret
-[**ReadResourceSecret**](ResourceClientSecretApi.md#ReadResourceSecret) | **Get** /environments/{environmentID}/resources/{resourceID}/secret | READ Resource Client Secret
+[**DeletePreviousResourceSecret**](ResourceClientSecretApi.md#DeletePreviousResourceSecret) | **Delete** /environments/{environmentID}/resources/{resourceID}/secret | DELETE Previous Resource Secret
+[**ReadResourceSecret**](ResourceClientSecretApi.md#ReadResourceSecret) | **Get** /environments/{environmentID}/resources/{resourceID}/secret | READ Resource Secret
+[**UpdateResourceSecret**](ResourceClientSecretApi.md#UpdateResourceSecret) | **Post** /environments/{environmentID}/resources/{resourceID}/secret | UPDATE Resource Secret
 
 
 
-## CreateResourceSecret
+## DeletePreviousResourceSecret
 
-> ResourceSecret CreateResourceSecret(ctx, environmentID, resourceID).Execute()
+> DeletePreviousResourceSecret(ctx, environmentID, resourceID).Execute()
 
-CREATE Resource Client Secret
+DELETE Previous Resource Secret
 
 ### Example
 
@@ -33,13 +34,11 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ResourceClientSecretApi.CreateResourceSecret(context.Background(), environmentID, resourceID).Execute()
+    r, err := apiClient.ResourceClientSecretApi.DeletePreviousResourceSecret(context.Background(), environmentID, resourceID).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ResourceClientSecretApi.CreateResourceSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourceClientSecretApi.DeletePreviousResourceSecret``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateResourceSecret`: ResourceSecret
-    fmt.Fprintf(os.Stdout, "Response from `ResourceClientSecretApi.CreateResourceSecret`: %v\n", resp)
 }
 ```
 
@@ -54,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateResourceSecretRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeletePreviousResourceSecretRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -64,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceSecret**](ResourceSecret.md)
+ (empty response body)
 
 ### Authorization
 
@@ -84,7 +83,7 @@ Name | Type | Description  | Notes
 
 > ResourceSecret ReadResourceSecret(ctx, environmentID, resourceID).Execute()
 
-READ Resource Client Secret
+READ Resource Secret
 
 ### Example
 
@@ -144,6 +143,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateResourceSecret
+
+> ResourceSecret UpdateResourceSecret(ctx, environmentID, resourceID).ResourceSecret(resourceSecret).Execute()
+
+UPDATE Resource Secret
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/patrickcping/pingone-go-sdk-v2/management"
+)
+
+func main() {
+    environmentID := "environmentID_example" // string | 
+    resourceID := "resourceID_example" // string | 
+    resourceSecret := *openapiclient.NewResourceSecret() // ResourceSecret |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ResourceClientSecretApi.UpdateResourceSecret(context.Background(), environmentID, resourceID).ResourceSecret(resourceSecret).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourceClientSecretApi.UpdateResourceSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateResourceSecret`: ResourceSecret
+    fmt.Fprintf(os.Stdout, "Response from `ResourceClientSecretApi.UpdateResourceSecret`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentID** | **string** |  | 
+**resourceID** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateResourceSecretRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **resourceSecret** | [**ResourceSecret**](ResourceSecret.md) |  | 
+
+### Return type
+
+[**ResourceSecret**](ResourceSecret.md)
+
+### Authorization
+
+[bearer](../README.md#bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
