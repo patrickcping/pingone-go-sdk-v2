@@ -828,6 +828,7 @@ Class | Method | HTTP request | Description
  - [ResourceApplicationPermissionResource](docs/ResourceApplicationPermissionResource.md)
  - [ResourceApplicationPermissionResourceServer](docs/ResourceApplicationPermissionResourceServer.md)
  - [ResourceApplicationPermissionResourceServerEnvironment](docs/ResourceApplicationPermissionResourceServerEnvironment.md)
+ - [ResourceApplicationPermissionsSettings](docs/ResourceApplicationPermissionsSettings.md)
  - [ResourceApplicationResource](docs/ResourceApplicationResource.md)
  - [ResourceApplicationResourceParent](docs/ResourceApplicationResourceParent.md)
  - [ResourceAttribute](docs/ResourceAttribute.md)
