@@ -48,8 +48,6 @@ type APIClient struct {
 
 	ApplicationResourcesApi *ApplicationResourcesApiService
 
-	ApplicationRoleApi *ApplicationRoleApiService
-
 	ApplicationRoleAssignmentsApi *ApplicationRoleAssignmentsApiService
 
 	ApplicationRolePermissionsApi *ApplicationRolePermissionsApiService
@@ -95,7 +93,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+
 	c.APIServersApi = (*APIServersApiService)(&c.common)
+	c.ApplicationResourcePermissionsApi = (*ApplicationResourcePermissionsApiService)(&c.common)
+	c.ApplicationResourcesApi = (*ApplicationResourcesApiService)(&c.common)
+	c.ApplicationRoleAssignmentsApi = (*ApplicationRoleAssignmentsApiService)(&c.common)
+	c.ApplicationRolePermissionsApi = (*ApplicationRolePermissionsApiService)(&c.common)
+	c.ApplicationRolesApi = (*ApplicationRolesApiService)(&c.common)
 	c.PolicyDecisionManagementApi = (*PolicyDecisionManagementApiService)(&c.common)
 
 	return c

@@ -3,7 +3,6 @@ api/openapi.yaml
 api_api_servers.go
 api_application_resource_permissions.go
 api_application_resources.go
-api_application_role.go
 api_application_role_assignments.go
 api_application_role_permissions.go
 api_application_roles.go
@@ -20,7 +19,6 @@ docs/ApplicationResourcePermissionResource.md
 docs/ApplicationResourcePermissionsApi.md
 docs/ApplicationResourcesApi.md
 docs/ApplicationRole.md
-docs/ApplicationRoleApi.md
 docs/ApplicationRoleAssignment.md
 docs/ApplicationRoleAssignmentsApi.md
 docs/ApplicationRolePermission.md

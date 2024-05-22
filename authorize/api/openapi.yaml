@@ -1463,7 +1463,7 @@ paths:
           description: Successful response
       summary: DELETE Application Role
       tags:
-      - Application Role
+      - Application Roles
     get:
       operationId: readOneApplicationRole
       parameters:
@@ -1608,7 +1608,7 @@ paths:
           description: Successful response
       summary: UPDATE Application Role
       tags:
-      - Application Role
+      - Application Roles
   /environments/{environmentID}/applicationRoles/{applicationRoleID}/permissions:
     get:
       operationId: readApplicationRolePermissions

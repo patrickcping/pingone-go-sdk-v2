@@ -1219,7 +1219,7 @@ paths:
                 $ref: '#/components/schemas/ApplicationRole'
     put:
       tags:
-        - Application Role
+        - Application Roles
       summary: UPDATE Application Role
       operationId: updateApplicationRole
       requestBody:
@@ -1261,7 +1261,7 @@ paths:
                 $ref: '#/components/schemas/ApplicationRole'
     delete:
       tags:
-        - Application Role
+        - Application Roles
       summary: DELETE Application Role
       operationId: deleteApplicationRole
       parameters:
