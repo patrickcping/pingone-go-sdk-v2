@@ -944,7 +944,7 @@ paths:
       tags:
       - Application Resource Permissions
     post:
-      operationId: createApplicationPermissions
+      operationId: createApplicationPermission
       parameters:
       - explode: false
         in: path
@@ -1022,7 +1022,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApplicationResourcePermission'
           description: Successful response
-      summary: CREATE Application Permissions
+      summary: CREATE Application Permission
       tags:
       - Application Resource Permissions
   /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID}:

@@ -938,8 +938,8 @@ paths:
     post:
       tags:
         - Application Resource Permissions
-      summary: CREATE Application Permissions
-      operationId: createApplicationPermissions
+      summary: CREATE Application Permission
+      operationId: createApplicationPermission
       requestBody:
         content:
           application/json:
