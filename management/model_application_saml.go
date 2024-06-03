@@ -67,6 +67,7 @@ type ApplicationSAML struct {
 	SloResponseEndpoint *string `json:"sloResponseEndpoint,omitempty"`
 	// Defines how long PingOne can exchange logout messages with the application, specifically a `LogoutRequest` from the application, since the initial request. PingOne can also send a `LogoutRequest` to the application when a single logout is initiated by the user from other session participants, such as an application or identity provider. This setting is per application. The SLO logout is separate from the user session logout that revokes all tokens.
 	SloWindow *int32 `json:"sloWindow,omitempty"`
+	SpEncryption *ApplicationSAMLAllOfSpEncryption `json:"spEncryption,omitempty"`
 	// A string that specifies the service provider entity ID used to lookup the application. This is a required property and is unique within the environment.
 	SpEntityId string `json:"spEntityId"`
 	SpVerification *ApplicationSAMLAllOfSpVerification `json:"spVerification,omitempty"`
@@ -956,6 +957,38 @@ func (o *ApplicationSAML) SetSloWindow(v int32) {
 	o.SloWindow = &v
 }
 
+// GetSpEncryption returns the SpEncryption field value if set, zero value otherwise.
+func (o *ApplicationSAML) GetSpEncryption() ApplicationSAMLAllOfSpEncryption {
+	if o == nil || IsNil(o.SpEncryption) {
+		var ret ApplicationSAMLAllOfSpEncryption
+		return ret
+	}
+	return *o.SpEncryption
+}
+
+// GetSpEncryptionOk returns a tuple with the SpEncryption field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationSAML) GetSpEncryptionOk() (*ApplicationSAMLAllOfSpEncryption, bool) {
+	if o == nil || IsNil(o.SpEncryption) {
+		return nil, false
+	}
+	return o.SpEncryption, true
+}
+
+// HasSpEncryption returns a boolean if a field has been set.
+func (o *ApplicationSAML) HasSpEncryption() bool {
+	if o != nil && !IsNil(o.SpEncryption) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpEncryption gets a reference to the given ApplicationSAMLAllOfSpEncryption and assigns it to the SpEncryption field.
+func (o *ApplicationSAML) SetSpEncryption(v ApplicationSAMLAllOfSpEncryption) {
+	o.SpEncryption = &v
+}
+
 // GetSpEntityId returns the SpEntityId field value
 func (o *ApplicationSAML) GetSpEntityId() string {
 	if o == nil {
@@ -1093,6 +1126,9 @@ func (o ApplicationSAML) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SloWindow) {
 		toSerialize["sloWindow"] = o.SloWindow
+	}
+	if !IsNil(o.SpEncryption) {
+		toSerialize["spEncryption"] = o.SpEncryption
 	}
 	toSerialize["spEntityId"] = o.SpEntityId
 	if !IsNil(o.SpVerification) {

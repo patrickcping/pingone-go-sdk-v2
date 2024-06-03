@@ -25812,6 +25812,11 @@ components:
       - EC
       - UNKNOWN
       type: string
+    EnumCertificateKeyEncryptionAlgorithm:
+      description: To replace
+      enum:
+      - AES_256
+      type: string
     EnumCertificateKeySignagureAlgorithm:
       description: "Specifies the signature algorithm of the key. For RSA keys, options\
         \ are `SHA256withRSA`, `SHA384withRSA` and `SHA512withRSA`. For elliptical\
@@ -27213,6 +27218,8 @@ components:
               \ This setting is per application. The SLO logout is separate from the\
               \ user session logout that revokes all tokens."
             type: integer
+          spEncryption:
+            $ref: '#/components/schemas/ApplicationSAML_allOf_spEncryption'
           spEntityId:
             description: A string that specifies the service provider entity ID used
               to lookup the application. This is a required property and is unique
@@ -35202,6 +35209,28 @@ components:
           $ref: '#/components/schemas/EnumCertificateKeySignagureAlgorithm'
       required:
       - key
+      type: object
+      example: null
+    ApplicationSAML_allOf_spEncryption_certificate:
+      description: To replace
+      properties:
+        id:
+          description: To replace
+          type: string
+      required:
+      - id
+      type: object
+      example: null
+    ApplicationSAML_allOf_spEncryption:
+      description: To replace
+      properties:
+        algorithm:
+          $ref: '#/components/schemas/EnumCertificateKeyEncryptionAlgorithm'
+        certificate:
+          $ref: '#/components/schemas/ApplicationSAML_allOf_spEncryption_certificate'
+      required:
+      - algorithm
+      - certificate
       type: object
       example: null
     ApplicationSAML_allOf_spVerification_certificates:

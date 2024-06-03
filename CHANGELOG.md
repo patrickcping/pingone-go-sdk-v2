@@ -10,6 +10,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.40.0](./management/CHANGELOG.md)
     * **Enhancement** Added the `DeletePreviousResourceSecret` function to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
     * **Enhancement** Added `Previous` to the `ResourceSecret` model to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
+    * **Enhancement** Added `SpEncryption` to the `ApplicationSAML` and associated models to control encryption of SAML application assertions.
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.19.0](./mfa/CHANGELOG.md)
     * **Breaking change** Remove optional `DeviceAuthenticationPolicyMobileOtpWindow` from `DeviceAuthenticationPolicyMobileOtp` constructor. [#343](https://github.com/patrickcping/pingone-go-sdk-v2/pull/343)
 
