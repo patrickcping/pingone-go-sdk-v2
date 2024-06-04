@@ -1,6 +1,6 @@
 # v0.15.0 (Unreleased)
 
-* **Enhancement** Add the `com.au` top level domain to the connection configuration.
+* **Enhancement** Add the `com.au` top level domain to the connection configuration. [#351](https://github.com/patrickcping/pingone-go-sdk-v2/pull/351)
 
 # v0.14.1 (2024-03-25)
 
