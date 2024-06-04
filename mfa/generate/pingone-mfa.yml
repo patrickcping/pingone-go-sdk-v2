@@ -120,7 +120,7 @@ components:
             - failure
         promptForNicknameOnPairing:
           type: boolean
-          description: Set to true if you want to allow users to provide nicknames for devices during pairing.
+          description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
       required:
         - enabled
         - otp
@@ -168,7 +168,7 @@ components:
               description: Specifies the UUID that represents the FIDO2 policy in PingOne. This property can be null. When null, the environment's default FIDO2 Policy is used.
             promptForNicknameOnPairing:
               type: boolean
-              description: Set to true if you want to allow users to provide nicknames for devices during pairing.
+              description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
           required:
             - enabled
         mobile:
@@ -328,7 +328,7 @@ components:
                   - id
             promptForNicknameOnPairing:
               type: boolean
-              description: Set to true if you want to allow users to provide nicknames for devices during pairing.
+              description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
           required:
             - enabled
             - otp
@@ -369,7 +369,7 @@ components:
                 - failure
             promptForNicknameOnPairing:
               type: boolean
-              description: Set to true if you want to allow users to provide nicknames for devices during pairing.
+              description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
           required:
             - enabled
             - otp

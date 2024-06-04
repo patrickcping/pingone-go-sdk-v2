@@ -23,7 +23,7 @@ type DeviceAuthenticationPolicyMobile struct {
 	Enabled bool `json:"enabled"`
 	Otp DeviceAuthenticationPolicyMobileOtp `json:"otp"`
 	Applications []DeviceAuthenticationPolicyMobileApplicationsInner `json:"applications,omitempty"`
-	// Set to true if you want to allow users to provide nicknames for devices during pairing.
+	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
 	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 }
 

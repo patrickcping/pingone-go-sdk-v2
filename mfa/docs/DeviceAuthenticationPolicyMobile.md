@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | A boolean that specifies whether the method is enabled or disabled in the policy. | 
 **Otp** | [**DeviceAuthenticationPolicyMobileOtp**](DeviceAuthenticationPolicyMobileOtp.md) |  | 
 **Applications** | Pointer to [**[]DeviceAuthenticationPolicyMobileApplicationsInner**](DeviceAuthenticationPolicyMobileApplicationsInner.md) |  | [optional] 
-**PromptForNicknameOnPairing** | Pointer to **bool** | Set to true if you want to allow users to provide nicknames for devices during pairing. | [optional] 
+**PromptForNicknameOnPairing** | Pointer to **bool** | Set to &#x60;true&#x60; if you want to allow users to provide nicknames for devices during pairing. | [optional] 
 
 ## Methods
 

@@ -3127,7 +3127,7 @@ components:
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp'
         promptForNicknameOnPairing:
-          description: Set to true if you want to allow users to provide nicknames
+          description: Set to `true` if you want to allow users to provide nicknames
             for devices during pairing.
           type: boolean
       required:
@@ -4532,7 +4532,7 @@ components:
             \ Policy is used."
           type: string
         promptForNicknameOnPairing:
-          description: Set to true if you want to allow users to provide nicknames
+          description: Set to `true` if you want to allow users to provide nicknames
             for devices during pairing.
           type: boolean
       required:
@@ -4865,7 +4865,7 @@ components:
             $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner'
           type: array
         promptForNicknameOnPairing:
-          description: Set to true if you want to allow users to provide nicknames
+          description: Set to `true` if you want to allow users to provide nicknames
             for devices during pairing.
           type: boolean
       required:
@@ -4911,7 +4911,7 @@ components:
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_totp_otp'
         promptForNicknameOnPairing:
-          description: Set to true if you want to allow users to provide nicknames
+          description: Set to `true` if you want to allow users to provide nicknames
             for devices during pairing.
           type: boolean
       required:

@@ -25,7 +25,7 @@ type DeviceAuthenticationPolicyFido2 struct {
 	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
 	// Specifies the UUID that represents the FIDO2 policy in PingOne. This property can be null. When null, the environment's default FIDO2 Policy is used.
 	Fido2PolicyId *string `json:"fido2PolicyId,omitempty"`
-	// Set to true if you want to allow users to provide nicknames for devices during pairing.
+	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
 	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 }
 
