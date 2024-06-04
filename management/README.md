@@ -687,7 +687,6 @@ Class | Method | HTTP request | Description
  - [FormQrCode](docs/FormQrCode.md)
  - [FormRecaptchaV2](docs/FormRecaptchaV2.md)
  - [FormSocialLoginButton](docs/FormSocialLoginButton.md)
- - [FormSocialLoginButtonStyles](docs/FormSocialLoginButtonStyles.md)
  - [FormStyles](docs/FormStyles.md)
  - [FormStylesPadding](docs/FormStylesPadding.md)
  - [FormSubmit](docs/FormSubmit.md)
