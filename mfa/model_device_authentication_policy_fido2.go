@@ -25,6 +25,8 @@ type DeviceAuthenticationPolicyFido2 struct {
 	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
 	// Specifies the UUID that represents the FIDO2 policy in PingOne. This property can be null. When null, the environment's default FIDO2 Policy is used.
 	Fido2PolicyId *string `json:"fido2PolicyId,omitempty"`
+	// Set to true if you want to allow users to provide nicknames for devices during pairing.
+	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyFido2 instantiates a new DeviceAuthenticationPolicyFido2 object
@@ -133,6 +135,38 @@ func (o *DeviceAuthenticationPolicyFido2) SetFido2PolicyId(v string) {
 	o.Fido2PolicyId = &v
 }
 
+// GetPromptForNicknameOnPairing returns the PromptForNicknameOnPairing field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyFido2) GetPromptForNicknameOnPairing() bool {
+	if o == nil || IsNil(o.PromptForNicknameOnPairing) {
+		var ret bool
+		return ret
+	}
+	return *o.PromptForNicknameOnPairing
+}
+
+// GetPromptForNicknameOnPairingOk returns a tuple with the PromptForNicknameOnPairing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyFido2) GetPromptForNicknameOnPairingOk() (*bool, bool) {
+	if o == nil || IsNil(o.PromptForNicknameOnPairing) {
+		return nil, false
+	}
+	return o.PromptForNicknameOnPairing, true
+}
+
+// HasPromptForNicknameOnPairing returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyFido2) HasPromptForNicknameOnPairing() bool {
+	if o != nil && !IsNil(o.PromptForNicknameOnPairing) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromptForNicknameOnPairing gets a reference to the given bool and assigns it to the PromptForNicknameOnPairing field.
+func (o *DeviceAuthenticationPolicyFido2) SetPromptForNicknameOnPairing(v bool) {
+	o.PromptForNicknameOnPairing = &v
+}
+
 func (o DeviceAuthenticationPolicyFido2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -149,6 +183,9 @@ func (o DeviceAuthenticationPolicyFido2) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.Fido2PolicyId) {
 		toSerialize["fido2PolicyId"] = o.Fido2PolicyId
+	}
+	if !IsNil(o.PromptForNicknameOnPairing) {
+		toSerialize["promptForNicknameOnPairing"] = o.PromptForNicknameOnPairing
 	}
 	return toSerialize, nil
 }

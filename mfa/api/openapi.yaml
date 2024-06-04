@@ -3112,6 +3112,7 @@ components:
             duration: 0
             timeUnit: null
         enabled: true
+        promptForNicknameOnPairing: true
       properties:
         enabled:
           description: Enabled or disabled in the policy.
@@ -3125,6 +3126,10 @@ components:
           type: boolean
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicyOfflineDevice_otp'
+        promptForNicknameOnPairing:
+          description: Set to true if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
       required:
       - enabled
       - otp
@@ -3143,6 +3148,7 @@ components:
               duration: 0
               timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
         totp:
           pairingDisabled: true
           otp:
@@ -3152,6 +3158,7 @@ components:
                 duration: 1
                 timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
         newDeviceNotification: null
         _links:
           next:
@@ -3170,6 +3177,7 @@ components:
                 duration: 5
                 timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
           applications:
           - autoEnrollment:
               enabled: true
@@ -3227,6 +3235,7 @@ components:
           fido2PolicyId: fido2PolicyId
           pairingDisabled: true
           enabled: true
+          promptForNicknameOnPairing: true
         platform:
           pairingDisabled: true
           enabled: true
@@ -3248,6 +3257,7 @@ components:
               duration: 0
               timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
         id: id
         securityKey:
           pairingDisabled: true
@@ -3265,6 +3275,7 @@ components:
               duration: 0
               timeUnit: null
           enabled: true
+          promptForNicknameOnPairing: true
         authentication:
           deviceSelection: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -3522,6 +3533,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             totp:
               pairingDisabled: true
               otp:
@@ -3531,6 +3543,7 @@ components:
                     duration: 1
                     timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             newDeviceNotification: null
             _links:
               next:
@@ -3549,6 +3562,7 @@ components:
                     duration: 5
                     timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
               applications:
               - autoEnrollment:
                   enabled: true
@@ -3606,6 +3620,7 @@ components:
               fido2PolicyId: fido2PolicyId
               pairingDisabled: true
               enabled: true
+              promptForNicknameOnPairing: true
             platform:
               pairingDisabled: true
               enabled: true
@@ -3627,6 +3642,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             id: id
             securityKey:
               pairingDisabled: true
@@ -3644,6 +3660,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             authentication:
               deviceSelection: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -3659,6 +3676,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             totp:
               pairingDisabled: true
               otp:
@@ -3668,6 +3686,7 @@ components:
                     duration: 1
                     timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             newDeviceNotification: null
             _links:
               next:
@@ -3686,6 +3705,7 @@ components:
                     duration: 5
                     timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
               applications:
               - autoEnrollment:
                   enabled: true
@@ -3743,6 +3763,7 @@ components:
               fido2PolicyId: fido2PolicyId
               pairingDisabled: true
               enabled: true
+              promptForNicknameOnPairing: true
             platform:
               pairingDisabled: true
               enabled: true
@@ -3764,6 +3785,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             id: id
             securityKey:
               pairingDisabled: true
@@ -3781,6 +3803,7 @@ components:
                   duration: 0
                   timeUnit: null
               enabled: true
+              promptForNicknameOnPairing: true
             authentication:
               deviceSelection: null
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -4490,6 +4513,7 @@ components:
         fido2PolicyId: fido2PolicyId
         pairingDisabled: true
         enabled: true
+        promptForNicknameOnPairing: true
       properties:
         enabled:
           description: A boolean that specifies whether the method is enabled or disabled
@@ -4507,6 +4531,10 @@ components:
             \ This property can be null. When null, the environment's default FIDO2\
             \ Policy is used."
           type: string
+        promptForNicknameOnPairing:
+          description: Set to true if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
       required:
       - enabled
       type: object
@@ -4771,6 +4799,7 @@ components:
               duration: 5
               timeUnit: null
         enabled: true
+        promptForNicknameOnPairing: true
         applications:
         - autoEnrollment:
             enabled: true
@@ -4835,6 +4864,10 @@ components:
           items:
             $ref: '#/components/schemas/DeviceAuthenticationPolicy_mobile_applications_inner'
           type: array
+        promptForNicknameOnPairing:
+          description: Set to true if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
       required:
       - enabled
       - otp
@@ -4863,6 +4896,7 @@ components:
               duration: 1
               timeUnit: null
         enabled: true
+        promptForNicknameOnPairing: true
       properties:
         enabled:
           description: Enabled or disabled in the policy.
@@ -4876,6 +4910,10 @@ components:
           type: boolean
         otp:
           $ref: '#/components/schemas/DeviceAuthenticationPolicy_totp_otp'
+        promptForNicknameOnPairing:
+          description: Set to true if you want to allow users to provide nicknames
+            for devices during pairing.
+          type: boolean
       required:
       - enabled
       - otp
@@ -5045,6 +5083,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           totp:
             pairingDisabled: true
             otp:
@@ -5054,6 +5093,7 @@ components:
                   duration: 1
                   timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           newDeviceNotification: null
           _links:
             next:
@@ -5072,6 +5112,7 @@ components:
                   duration: 5
                   timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
             applications:
             - autoEnrollment:
                 enabled: true
@@ -5129,6 +5170,7 @@ components:
             fido2PolicyId: fido2PolicyId
             pairingDisabled: true
             enabled: true
+            promptForNicknameOnPairing: true
           platform:
             pairingDisabled: true
             enabled: true
@@ -5150,6 +5192,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           id: id
           securityKey:
             pairingDisabled: true
@@ -5167,6 +5210,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           authentication:
             deviceSelection: null
           updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -5182,6 +5226,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           totp:
             pairingDisabled: true
             otp:
@@ -5191,6 +5236,7 @@ components:
                   duration: 1
                   timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           newDeviceNotification: null
           _links:
             next:
@@ -5209,6 +5255,7 @@ components:
                   duration: 5
                   timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
             applications:
             - autoEnrollment:
                 enabled: true
@@ -5266,6 +5313,7 @@ components:
             fido2PolicyId: fido2PolicyId
             pairingDisabled: true
             enabled: true
+            promptForNicknameOnPairing: true
           platform:
             pairingDisabled: true
             enabled: true
@@ -5287,6 +5335,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           id: id
           securityKey:
             pairingDisabled: true
@@ -5304,6 +5353,7 @@ components:
                 duration: 0
                 timeUnit: null
             enabled: true
+            promptForNicknameOnPairing: true
           authentication:
             deviceSelection: null
           updatedAt: 2000-01-23T04:56:07.000+00:00

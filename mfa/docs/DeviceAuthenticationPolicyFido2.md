@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | A boolean that specifies whether the method is enabled or disabled in the policy. | 
 **PairingDisabled** | Pointer to **bool** | You can set &#x60;pairingDisabled&#x60; to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices. | [optional] 
 **Fido2PolicyId** | Pointer to **string** | Specifies the UUID that represents the FIDO2 policy in PingOne. This property can be null. When null, the environment&#39;s default FIDO2 Policy is used. | [optional] 
+**PromptForNicknameOnPairing** | Pointer to **bool** | Set to true if you want to allow users to provide nicknames for devices during pairing. | [optional] 
 
 ## Methods
 
@@ -96,6 +97,31 @@ SetFido2PolicyId sets Fido2PolicyId field to given value.
 `func (o *DeviceAuthenticationPolicyFido2) HasFido2PolicyId() bool`
 
 HasFido2PolicyId returns a boolean if a field has been set.
+
+### GetPromptForNicknameOnPairing
+
+`func (o *DeviceAuthenticationPolicyFido2) GetPromptForNicknameOnPairing() bool`
+
+GetPromptForNicknameOnPairing returns the PromptForNicknameOnPairing field if non-nil, zero value otherwise.
+
+### GetPromptForNicknameOnPairingOk
+
+`func (o *DeviceAuthenticationPolicyFido2) GetPromptForNicknameOnPairingOk() (*bool, bool)`
+
+GetPromptForNicknameOnPairingOk returns a tuple with the PromptForNicknameOnPairing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromptForNicknameOnPairing
+
+`func (o *DeviceAuthenticationPolicyFido2) SetPromptForNicknameOnPairing(v bool)`
+
+SetPromptForNicknameOnPairing sets PromptForNicknameOnPairing field to given value.
+
+### HasPromptForNicknameOnPairing
+
+`func (o *DeviceAuthenticationPolicyFido2) HasPromptForNicknameOnPairing() bool`
+
+HasPromptForNicknameOnPairing returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
