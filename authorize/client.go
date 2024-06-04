@@ -44,6 +44,8 @@ type APIClient struct {
 
 	APIServersApi *APIServersApiService
 
+	APIServerDeploymentApi *APIServerDeploymentApiService
+
 	APIServerOperationsApi *APIServerOperationsApiService
 
 	ApplicationResourcePermissionsApi *ApplicationResourcePermissionsApiService
@@ -97,6 +99,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 
 	c.APIServersApi = (*APIServersApiService)(&c.common)
+	c.APIServerDeploymentApi = (*APIServerDeploymentApiService)(&c.common)
 	c.APIServerOperationsApi = (*APIServerOperationsApiService)(&c.common)
 	c.ApplicationResourcePermissionsApi = (*ApplicationResourcePermissionsApiService)(&c.common)
 	c.ApplicationResourcesApi = (*ApplicationResourcesApiService)(&c.common)

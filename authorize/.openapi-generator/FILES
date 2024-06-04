@@ -1,5 +1,6 @@
 README.md
 api/openapi.yaml
+api_api_server_deployment.go
 api_api_server_operations.go
 api_api_servers.go
 api_application_resource_permissions.go
@@ -14,6 +15,15 @@ docs/APIServerAccessControl.md
 docs/APIServerAccessControlCustom.md
 docs/APIServerAuthorizationServer.md
 docs/APIServerAuthorizationServerResource.md
+docs/APIServerDeployment.md
+docs/APIServerDeploymentAccessControl.md
+docs/APIServerDeploymentAccessControlCustom.md
+docs/APIServerDeploymentApi.md
+docs/APIServerDeploymentAuthorizationVersion.md
+docs/APIServerDeploymentDecisionEndpoint.md
+docs/APIServerDeploymentPolicy.md
+docs/APIServerDeploymentStatus.md
+docs/APIServerDeploymentStatusError.md
 docs/APIServerDirectory.md
 docs/APIServerOperation.md
 docs/APIServerOperationAccessControl.md
@@ -70,6 +80,14 @@ model_api_server_access_control.go
 model_api_server_access_control_custom.go
 model_api_server_authorization_server.go
 model_api_server_authorization_server_resource.go
+model_api_server_deployment.go
+model_api_server_deployment_access_control.go
+model_api_server_deployment_access_control_custom.go
+model_api_server_deployment_authorization_version.go
+model_api_server_deployment_decision_endpoint.go
+model_api_server_deployment_policy.go
+model_api_server_deployment_status.go
+model_api_server_deployment_status_error.go
 model_api_server_directory.go
 model_api_server_operation.go
 model_api_server_operation_access_control.go
