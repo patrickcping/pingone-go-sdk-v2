@@ -57,7 +57,7 @@ The result is an object with clients initialised for each service:
 
 In the above, if an `AccessToken` is provided, this will be verified and used.  If the `AccessToken` is not provided, the SDK will retrieve an access token from the provided `ClientID`, `ClientSecret`, `EnvironmentID` and `Region` parameters.
 
-The client SDK defaults to production hostnames, and the `Region` is used to add the relevant suffix to the hostname.  For example, `Europe` as a `Region` value with suffix the service hostname with `.eu`.  Hostnames can be overridden with the optional `APIHostnameOverride`, `AgreementMgmtHostnameOverride`, and `AuthHostnameOverride` parameters.
+The client SDK defaults to production hostnames, and the `Region` is used to add the relevant suffix to the hostname.  For example, `Europe` as a `Region` value with suffix the service hostname with `.eu`.  Hostnames can be overridden with the optional `APIHostnameOverride`, and `AuthHostnameOverride` parameters.
 
 An API call can be made against the API objects, as in the following example to get all environments in a tenant:
 

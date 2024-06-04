@@ -12,19 +12,18 @@ import (
 )
 
 type Config struct {
-	AccessToken                   *string
-	accessTokenObject             *oauth2.Token
-	AgreementMgmtHostnameOverride *string
-	APIHostnameOverride           *string
-	AuthHostnameOverride          *string
-	ClientID                      *string
-	ClientSecret                  *string
-	EnvironmentID                 *string
-	ProxyURL                      *string
-	Region                        string
-	UserAgentOverride             *string
-	UserAgentSuffix               *string
-	validated                     bool
+	AccessToken          *string
+	accessTokenObject    *oauth2.Token
+	APIHostnameOverride  *string
+	AuthHostnameOverride *string
+	ClientID             *string
+	ClientSecret         *string
+	EnvironmentID        *string
+	ProxyURL             *string
+	Region               string
+	UserAgentOverride    *string
+	UserAgentSuffix      *string
+	validated            bool
 }
 
 var p1ResourceIDRegexp = regexp.MustCompile(`^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$`)
@@ -34,22 +33,6 @@ func (c *Config) validateAccessToken() error {
 	if !checkForValue(c.AccessToken) {
 		if v := envVar("PINGONE_API_ACCESS_TOKEN"); v != "" {
 			c.AccessToken = &v
-		}
-	}
-
-	return nil
-}
-
-func (c *Config) validateAgreementMgmtHostnameOverride() error {
-	if !checkForValue(c.AgreementMgmtHostnameOverride) {
-		if v := envVar("PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME"); v != "" {
-			c.AgreementMgmtHostnameOverride = &v
-		}
-	}
-
-	if checkForValue(c.AgreementMgmtHostnameOverride) {
-		if !isHostname.MatchString(*c.AgreementMgmtHostnameOverride) {
-			return fmt.Errorf("Invalid parameter format.  Expected hostname format, got: %s", *c.AgreementMgmtHostnameOverride)
 		}
 	}
 
@@ -163,10 +146,6 @@ func (c *Config) Validate() error {
 		return err
 	}
 
-	if err := c.validateAgreementMgmtHostnameOverride(); err != nil {
-		return err
-	}
-
 	if err := c.validateAPIHostnameOverride(); err != nil {
 		return err
 	}
@@ -210,7 +189,7 @@ func (c *Config) Validate() error {
 	}
 
 	// Service overrides
-	if servicesOverridden := checkForValue(c.APIHostnameOverride) || checkForValue(c.AuthHostnameOverride) || checkForValue(c.AgreementMgmtHostnameOverride); servicesOverridden {
+	if servicesOverridden := checkForValue(c.APIHostnameOverride) || checkForValue(c.AuthHostnameOverride); servicesOverridden {
 
 		if servicesOverridden && (!checkForValue(c.APIHostnameOverride) || !checkForValue(c.AuthHostnameOverride)) {
 			return fmt.Errorf("Required service endpoints not configured.  When overriding service endpoints, both auth (e.g. auth.pingone.com) and api service (e.g. api.pingone.com) endpoints must be set.")

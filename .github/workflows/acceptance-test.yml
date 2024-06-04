@@ -64,7 +64,6 @@ jobs:
       # Dummy values follow to test the env var defaulting behaviours
       PINGONE_REGION_TESTACC: Europe
       PINGONE_API_ACCESS_TOKEN: DummyAccessToken
-      PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME: agreement-mgmt.ping-eng.com
       PINGONE_API_SERVICE_HOSTNAME: api.ping-eng.com
       PINGONE_AUTH_SERVICE_HOSTNAME: auth.ping-eng.com
       PINGONE_CLIENT_ID: 7682a4d9-15d6-405a-9fd2-d9e08d3adfbe

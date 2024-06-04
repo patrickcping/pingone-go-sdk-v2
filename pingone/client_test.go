@@ -22,10 +22,6 @@ func TestAccAPIClient_Success(t *testing.T) {
 		t.Fatalf("Client not successfully retrieved: %s", err)
 	}
 
-	if err := os.Setenv("PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME", ""); err != nil {
-		t.Fatalf("Client not successfully retrieved: %s", err)
-	}
-
 	if err := os.Setenv("PINGONE_API_SERVICE_HOSTNAME", ""); err != nil {
 		t.Fatalf("Client not successfully retrieved: %s", err)
 	}
