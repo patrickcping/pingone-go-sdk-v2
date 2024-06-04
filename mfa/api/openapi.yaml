@@ -13,10 +13,11 @@ servers:
     suffix:
       default: com
       enum:
-      - eu
-      - com
       - asia
       - ca
+      - com
+      - com.au
+      - eu
     baseDomain:
       default: api.pingone
     protocol:
