@@ -369,7 +369,6 @@ docs/FormManagementApi.md
 docs/FormQrCode.md
 docs/FormRecaptchaV2.md
 docs/FormSocialLoginButton.md
-docs/FormSocialLoginButtonStyles.md
 docs/FormStyles.md
 docs/FormStylesPadding.md
 docs/FormSubmit.md
@@ -921,7 +920,6 @@ model_form_item.go
 model_form_qr_code.go
 model_form_recaptcha_v2.go
 model_form_social_login_button.go
-model_form_social_login_button_styles.go
 model_form_styles.go
 model_form_styles_padding.go
 model_form_submit.go

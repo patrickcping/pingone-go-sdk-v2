@@ -24,6 +24,8 @@ type DeviceAuthenticationPolicyTotp struct {
 	// You can set `pairingDisabled` to true to prevent users from pairing new devices with the relevant method. You can use this option if you want to phase out an existing authentication method but want to allow users to continue using the method for authentication for existing devices.
 	PairingDisabled *bool `json:"pairingDisabled,omitempty"`
 	Otp DeviceAuthenticationPolicyTotpOtp `json:"otp"`
+	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
+	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyTotp instantiates a new DeviceAuthenticationPolicyTotp object
@@ -125,6 +127,38 @@ func (o *DeviceAuthenticationPolicyTotp) SetOtp(v DeviceAuthenticationPolicyTotp
 	o.Otp = v
 }
 
+// GetPromptForNicknameOnPairing returns the PromptForNicknameOnPairing field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyTotp) GetPromptForNicknameOnPairing() bool {
+	if o == nil || IsNil(o.PromptForNicknameOnPairing) {
+		var ret bool
+		return ret
+	}
+	return *o.PromptForNicknameOnPairing
+}
+
+// GetPromptForNicknameOnPairingOk returns a tuple with the PromptForNicknameOnPairing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyTotp) GetPromptForNicknameOnPairingOk() (*bool, bool) {
+	if o == nil || IsNil(o.PromptForNicknameOnPairing) {
+		return nil, false
+	}
+	return o.PromptForNicknameOnPairing, true
+}
+
+// HasPromptForNicknameOnPairing returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyTotp) HasPromptForNicknameOnPairing() bool {
+	if o != nil && !IsNil(o.PromptForNicknameOnPairing) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromptForNicknameOnPairing gets a reference to the given bool and assigns it to the PromptForNicknameOnPairing field.
+func (o *DeviceAuthenticationPolicyTotp) SetPromptForNicknameOnPairing(v bool) {
+	o.PromptForNicknameOnPairing = &v
+}
+
 func (o DeviceAuthenticationPolicyTotp) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -140,6 +174,9 @@ func (o DeviceAuthenticationPolicyTotp) ToMap() (map[string]interface{}, error) 
 		toSerialize["pairingDisabled"] = o.PairingDisabled
 	}
 	toSerialize["otp"] = o.Otp
+	if !IsNil(o.PromptForNicknameOnPairing) {
+		toSerialize["promptForNicknameOnPairing"] = o.PromptForNicknameOnPairing
+	}
 	return toSerialize, nil
 }
 

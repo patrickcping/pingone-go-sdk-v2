@@ -31225,11 +31225,14 @@ components:
       type: object
     FormSocialLoginButton:
       properties:
+        key:
+          description: A string that specifies an identifier for the field component.
+          type: string
         label:
           description: A string that specifies the social login button label.
           type: string
         styles:
-          $ref: '#/components/schemas/FormSocialLoginButton_styles'
+          $ref: '#/components/schemas/FormStyles'
         idpType:
           $ref: '#/components/schemas/EnumFormSocialLoginIdpType'
         idpName:
@@ -31242,15 +31245,7 @@ components:
           description: A boolean that specifies whether the external identity provider
             is enabled.
           type: boolean
-        iconSrc:
-          description: A string that specifies the HTTP link (URL format) for the
-            external identity provider's icon.
-          type: string
-        width:
-          description: An integer that specifies the button width. Set as a percentage.
-          type: integer
       required:
-      - iconSrc
       - idpEnabled
       - idpId
       - idpName
@@ -38535,18 +38530,6 @@ components:
           type: boolean
         padding:
           $ref: '#/components/schemas/FormStylesPadding'
-      type: object
-    FormSocialLoginButton_styles:
-      properties:
-        horizontalAlignment:
-          $ref: '#/components/schemas/EnumFormItemAlignment'
-        textColor:
-          description: A string that specifies the social login button text color.
-          type: string
-        enabled:
-          description: A boolean that specifies whether the social login button is
-            enabled.
-          type: boolean
       type: object
     Gateway_supportedVersions_inner:
       properties:

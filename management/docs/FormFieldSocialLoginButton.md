@@ -6,20 +6,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**EnumFormFieldType**](EnumFormFieldType.md) |  | 
 **Position** | [**FormFieldCommonPosition**](FormFieldCommonPosition.md) |  | 
+**Key** | Pointer to **string** | A string that specifies an identifier for the field component. | [optional] 
 **Label** | **string** | A string that specifies the social login button label. | 
-**Styles** | Pointer to [**FormSocialLoginButtonStyles**](FormSocialLoginButtonStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
 **IdpType** | [**EnumFormSocialLoginIdpType**](EnumFormSocialLoginIdpType.md) |  | 
 **IdpName** | **string** | A string that specifies the external identity provider name. | 
 **IdpId** | **string** | A string that specifies the external identity provider&#39;s ID. | 
 **IdpEnabled** | **bool** | A boolean that specifies whether the external identity provider is enabled. | 
-**IconSrc** | **string** | A string that specifies the HTTP link (URL format) for the external identity provider&#39;s icon. | 
-**Width** | Pointer to **int32** | An integer that specifies the button width. Set as a percentage. | [optional] 
 
 ## Methods
 
 ### NewFormFieldSocialLoginButton
 
-`func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCommonPosition, label string, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, iconSrc string, ) *FormFieldSocialLoginButton`
+`func NewFormFieldSocialLoginButton(type_ EnumFormFieldType, position FormFieldCommonPosition, label string, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, ) *FormFieldSocialLoginButton`
 
 NewFormFieldSocialLoginButton instantiates a new FormFieldSocialLoginButton object
 This constructor will assign default values to properties that have it defined,
@@ -74,6 +73,31 @@ and a boolean to check if the value has been set.
 SetPosition sets Position field to given value.
 
 
+### GetKey
+
+`func (o *FormFieldSocialLoginButton) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *FormFieldSocialLoginButton) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *FormFieldSocialLoginButton) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+### HasKey
+
+`func (o *FormFieldSocialLoginButton) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
+
 ### GetLabel
 
 `func (o *FormFieldSocialLoginButton) GetLabel() string`
@@ -96,20 +120,20 @@ SetLabel sets Label field to given value.
 
 ### GetStyles
 
-`func (o *FormFieldSocialLoginButton) GetStyles() FormSocialLoginButtonStyles`
+`func (o *FormFieldSocialLoginButton) GetStyles() FormStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormFieldSocialLoginButton) GetStylesOk() (*FormSocialLoginButtonStyles, bool)`
+`func (o *FormFieldSocialLoginButton) GetStylesOk() (*FormStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormFieldSocialLoginButton) SetStyles(v FormSocialLoginButtonStyles)`
+`func (o *FormFieldSocialLoginButton) SetStyles(v FormStyles)`
 
 SetStyles sets Styles field to given value.
 
@@ -198,51 +222,6 @@ and a boolean to check if the value has been set.
 
 SetIdpEnabled sets IdpEnabled field to given value.
 
-
-### GetIconSrc
-
-`func (o *FormFieldSocialLoginButton) GetIconSrc() string`
-
-GetIconSrc returns the IconSrc field if non-nil, zero value otherwise.
-
-### GetIconSrcOk
-
-`func (o *FormFieldSocialLoginButton) GetIconSrcOk() (*string, bool)`
-
-GetIconSrcOk returns a tuple with the IconSrc field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIconSrc
-
-`func (o *FormFieldSocialLoginButton) SetIconSrc(v string)`
-
-SetIconSrc sets IconSrc field to given value.
-
-
-### GetWidth
-
-`func (o *FormFieldSocialLoginButton) GetWidth() int32`
-
-GetWidth returns the Width field if non-nil, zero value otherwise.
-
-### GetWidthOk
-
-`func (o *FormFieldSocialLoginButton) GetWidthOk() (*int32, bool)`
-
-GetWidthOk returns a tuple with the Width field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWidth
-
-`func (o *FormFieldSocialLoginButton) SetWidth(v int32)`
-
-SetWidth sets Width field to given value.
-
-### HasWidth
-
-`func (o *FormFieldSocialLoginButton) HasWidth() bool`
-
-HasWidth returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
