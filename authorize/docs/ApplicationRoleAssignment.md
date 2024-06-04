@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Id** | Pointer to **string** | The ID of the API server operation. This is randomly generated when the operation is created. | [optional] 
 **Role** | Pointer to **map[string]interface{}** | The role associated with the role assignment. | [optional] 
 **Subject** | Pointer to **map[string]interface{}** | The user associated with the role assignment. | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewApplicationRoleAssignmentWithDefaults instantiates a new ApplicationRoleAssignment object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *ApplicationRoleAssignment) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *ApplicationRoleAssignment) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *ApplicationRoleAssignment) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *ApplicationRoleAssignment) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetId
 

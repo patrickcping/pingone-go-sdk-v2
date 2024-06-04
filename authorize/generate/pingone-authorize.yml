@@ -228,6 +228,8 @@ components:
     ApplicationResource:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         description:
           type: string
           description: The application resource's description.
@@ -256,6 +258,8 @@ components:
     ApplicationResourcePermission:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         action:
           type: string
           description: The action associated with this permission.
@@ -284,6 +288,8 @@ components:
     ApplicationRole:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         description:
           type: string
           description: The description of the application role.
@@ -299,6 +305,8 @@ components:
     ApplicationRolePermission:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           type: string
           description: The ID of the application resource permission to associate with this role.
@@ -329,6 +337,8 @@ components:
     ApplicationRoleAssignment:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           type: string
           description: The ID of the API server operation. This is randomly generated when the operation is created.

@@ -19,6 +19,7 @@ var _ MappedNullable = &ApplicationResourcePermission{}
 
 // ApplicationResourcePermission struct for ApplicationResourcePermission
 type ApplicationResourcePermission struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The action associated with this permission.
 	Action string `json:"action"`
 	// The resource's description.
@@ -45,6 +46,38 @@ func NewApplicationResourcePermission(action string) *ApplicationResourcePermiss
 func NewApplicationResourcePermissionWithDefaults() *ApplicationResourcePermission {
 	this := ApplicationResourcePermission{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *ApplicationResourcePermission) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationResourcePermission) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *ApplicationResourcePermission) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *ApplicationResourcePermission) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetAction returns the Action field value
@@ -209,6 +242,9 @@ func (o ApplicationResourcePermission) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationResourcePermission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["action"] = o.Action
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
