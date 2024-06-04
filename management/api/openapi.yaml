@@ -18218,6 +18218,463 @@ paths:
       summary: UPDATE Resource
       tags:
       - Resources
+  /environments/{environmentID}/resources/{resourceID}/applicationResources:
+    get:
+      operationId: readAllApplicationResources
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Application Resources
+      tags:
+      - Application Resources
+    post:
+      operationId: createApplicationResource
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceApplicationResource'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceApplicationResource'
+          description: Successful response
+      summary: CREATE Application Resource
+      tags:
+      - Application Resources
+  /environments/{environmentID}/resources/{resourceID}/applicationResources/{applicationResourceID}:
+    delete:
+      operationId: deleteApplicationResource
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE Application Resource
+      tags:
+      - Application Resources
+    get:
+      operationId: readOneApplicationResource
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceApplicationResource'
+          description: Successful response
+      summary: READ One Application Resource
+      tags:
+      - Application Resources
+    put:
+      operationId: updateApplicationResource
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationResourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceApplicationResource'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceApplicationResource'
+          description: Successful response
+      summary: UPDATE Application Resource
+      tags:
+      - Application Resources
+  /environments/{environmentID}/resources/{resourceID}/applicationPermissions:
+    get:
+      operationId: readAllApplicationPermissions
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: resourceID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All Application Permissions
+      tags:
+      - Application Permissions
   /environments/{environmentID}/resources/{resourceID}/attributes:
     get:
       operationId: readAllResourceAttributes
@@ -22095,6 +22552,233 @@ paths:
       summary: UPDATE User (Put)
       tags:
       - Users
+  /environments/{environmentID}/users/{userID}/applicationRoles:
+    get:
+      operationId: readUserApplicationRoleAssignments
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ User Application Role Assignments
+      tags:
+      - User Application Role Assignments
+    post:
+      operationId: createUserApplicationRoleAssignment
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserApplicationRoleAssignment'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserApplicationRoleAssignment'
+          description: Successful response
+      summary: CREATE User Application Role Assignment
+      tags:
+      - User Application Role Assignments
+  /environments/{environmentID}/users/{userID}/applicationRoles/{applicationRoleID}:
+    delete:
+      operationId: deleteUserApplicationRoleAssignment
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE User Application Role Assignment
+      tags:
+      - User Application Role Assignments
   /environments/{environmentID}/users/{userID}/identityProvider:
     get:
       parameters:
@@ -26533,6 +27217,11 @@ components:
       - CUSTOM
       - PREDEFINED
       type: string
+    EnumResourceApplicationResourceType:
+      description: The application resource's parent type. Options are `PING_ONE_RESOURCE`.
+      enum:
+      - PING_ONE_RESOURCE
+      type: string
     EnumResourceIntrospectEndpointAuthMethod:
       description: "The client authentication methods supported by the token endpoint.\
         \ Options are `NONE`, `CLIENT_SECRET_BASIC`, and `CLIENT_SECRET_POST`."
@@ -28179,7 +28868,7 @@ components:
       type: object
     EntityArray:
       example:
-        size: 7.04836565559697
+        size: 3.0576100241049344
         _links:
           next:
             href: https://openapi-generator.tech
@@ -28374,42 +29063,8 @@ components:
             subjectDN: subjectDN
             usageType: null
           roles:
-          - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            permissions:
-            - classifier: classifier
-              description: description
-              id: id
-            - classifier: classifier
-              description: description
-              id: id
-            name: null
-            description: description
-            applicableTo:
-            - null
-            - null
-            id: id
-          - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            permissions:
-            - classifier: classifier
-              description: description
-              id: id
-            - classifier: classifier
-              description: description
-              id: id
-            name: null
-            description: description
-            applicableTo:
-            - null
-            - null
-            id: id
+          - null
+          - null
           alertChannels:
           - environment:
               id: id
@@ -28564,6 +29219,29 @@ components:
             id: id
             canonicalName: canonicalName
             status: null
+          permissions:
+          - resource:
+              name: name
+              id: id
+            resourceServer:
+              environment:
+                id: id
+              id: id
+            action: action
+            description: description
+            id: id
+            key: key
+          - resource:
+              name: name
+              id: id
+            resourceServer:
+              environment:
+                id: id
+              id: id
+            action: action
+            description: description
+            id: id
+            key: key
           passwordPolicies:
           - minCharacters:
               "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
@@ -29004,42 +29682,8 @@ components:
             totalMemberCounts:
               users: 1
           resources:
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            audience: audience
-            environment:
-              id: id
-            _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            resource:
-              id: id
-            accessTokenValiditySeconds: 8
-            name: name
-            description: description
-            id: id
-            type: null
-            introspectEndpointAuthMethod: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
-          - createdAt: 2000-01-23T04:56:07.000+00:00
-            audience: audience
-            environment:
-              id: id
-            _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            resource:
-              id: id
-            accessTokenValiditySeconds: 8
-            name: name
-            description: description
-            id: id
-            type: null
-            introspectEndpointAuthMethod: null
-            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - null
+          - null
           users:
           - preferredLanguage: preferredLanguage
             _links:
@@ -29110,7 +29754,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 3
+              secondsUntilUnlock: 7
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -29183,7 +29827,7 @@ components:
             account:
               canAuthenticate: true
               lockedAt: 2000-01-23T04:56:07.000+00:00
-              secondsUntilUnlock: 3
+              secondsUntilUnlock: 7
               unlockAt: 2000-01-23T04:56:07.000+00:00
               status: null
             username: username
@@ -29943,7 +30587,7 @@ components:
           applications:
           - null
           - null
-        count: 3.0576100241049344
+        count: 3.0205796992916243
       properties:
         _links:
           $ref: '#/components/schemas/LinksHATEOAS'
@@ -33154,10 +33798,9 @@ components:
       type: object
     Resource:
       example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
+        applicationPermissionsSettings:
+          claimEnabled: true
         audience: audience
-        environment:
-          id: id
         _links:
           next:
             href: https://openapi-generator.tech
@@ -33165,11 +33808,14 @@ components:
             href: https://openapi-generator.tech
         resource:
           id: id
-        accessTokenValiditySeconds: 8
-        name: name
         description: description
-        id: id
         type: null
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        environment:
+          id: id
+        accessTokenValiditySeconds: 0
+        name: name
+        id: id
         introspectEndpointAuthMethod: null
         updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -33181,6 +33827,8 @@ components:
             \ minimum value is 300 seconds (5 minutes); the maximum value is 2592000\
             \ seconds (30 days)."
           type: integer
+        applicationPermissionsSettings:
+          $ref: '#/components/schemas/Resource_applicationPermissionsSettings'
         audience:
           description: "A string that specifies a URL without a fragment or `@ObjectName`\
             \ and must not contain `pingone` or `pingidentity` (for example, `https://api.bxretail.org`).\
@@ -33217,6 +33865,64 @@ components:
           type: string
       required:
       - name
+      type: object
+    ResourceApplicationResource:
+      example:
+        parent:
+          id: id
+          type: null
+        name: name
+        description: description
+        id: id
+      properties:
+        description:
+          description: The application resource's description.
+          type: string
+        id:
+          description: The resource's unique identifier.
+          readOnly: true
+          type: string
+        name:
+          description: The application resource name. The name value must be unique.
+          type: string
+        parent:
+          $ref: '#/components/schemas/ResourceApplicationResource_parent'
+      required:
+      - name
+      type: object
+    ResourceApplicationPermission:
+      example:
+        resource:
+          name: name
+          id: id
+        resourceServer:
+          environment:
+            id: id
+          id: id
+        action: action
+        description: description
+        id: id
+        key: key
+      properties:
+        action:
+          description: The action associated with this permission.
+          type: string
+        description:
+          description: The resource's description.
+          type: string
+        id:
+          description: The resource's unique identifier.
+          type: string
+        key:
+          description: The resource.name:action pair of the permission.
+          readOnly: true
+          type: string
+        resource:
+          $ref: '#/components/schemas/ResourceApplicationPermission_resource'
+        resourceServer:
+          $ref: '#/components/schemas/ResourceApplicationPermission_resourceServer'
+      required:
+      - action
       type: object
     ResourceAttribute:
       example:
@@ -34698,7 +35404,7 @@ components:
         account:
           canAuthenticate: true
           lockedAt: 2000-01-23T04:56:07.000+00:00
-          secondsUntilUnlock: 3
+          secondsUntilUnlock: 7
           unlockAt: 2000-01-23T04:56:07.000+00:00
           status: null
         username: username
@@ -34898,11 +35604,36 @@ components:
       - email
       - username
       type: object
+    UserApplicationRoleAssignment:
+      example:
+        environment:
+          id: id
+        name: name
+        description: description
+        id: id
+      properties:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: Specifies the application role ID to assign to the specified
+            user.
+          type: string
+        name:
+          description: Specifies the name of the application role assigned to the
+            user.
+          type: string
+        description:
+          description: Specifies the description of the application role assigned
+            to the user.
+          type: string
+      required:
+      - id
+      type: object
     UserAccount:
       example:
         canAuthenticate: true
         lockedAt: 2000-01-23T04:56:07.000+00:00
-        secondsUntilUnlock: 3
+        secondsUntilUnlock: 7
         unlockAt: 2000-01-23T04:56:07.000+00:00
         status: null
       properties:
@@ -35807,6 +36538,14 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AgreementLanguage'
       - $ref: '#/components/schemas/Language'
+    EntityArray__embedded_resources_inner:
+      oneOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ResourceApplicationResource'
+    EntityArray__embedded_roles_inner:
+      oneOf:
+      - $ref: '#/components/schemas/Role'
+      - $ref: '#/components/schemas/UserApplicationRoleAssignment'
     EntityArray__embedded:
       example:
         flowPolicies:
@@ -35997,42 +36736,8 @@ components:
           subjectDN: subjectDN
           usageType: null
         roles:
-        - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          permissions:
-          - classifier: classifier
-            description: description
-            id: id
-          - classifier: classifier
-            description: description
-            id: id
-          name: null
-          description: description
-          applicableTo:
-          - null
-          - null
-          id: id
-        - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          permissions:
-          - classifier: classifier
-            description: description
-            id: id
-          - classifier: classifier
-            description: description
-            id: id
-          name: null
-          description: description
-          applicableTo:
-          - null
-          - null
-          id: id
+        - null
+        - null
         alertChannels:
         - environment:
             id: id
@@ -36187,6 +36892,29 @@ components:
           id: id
           canonicalName: canonicalName
           status: null
+        permissions:
+        - resource:
+            name: name
+            id: id
+          resourceServer:
+            environment:
+              id: id
+            id: id
+          action: action
+          description: description
+          id: id
+          key: key
+        - resource:
+            name: name
+            id: id
+          resourceServer:
+            environment:
+              id: id
+            id: id
+          action: action
+          description: description
+          id: id
+          key: key
         passwordPolicies:
         - minCharacters:
             "~!@#$%^&*()-_=+[]{}|;:,.<>/?": 0
@@ -36627,42 +37355,8 @@ components:
           totalMemberCounts:
             users: 1
         resources:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          audience: audience
-          environment:
-            id: id
-          _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          resource:
-            id: id
-          accessTokenValiditySeconds: 8
-          name: name
-          description: description
-          id: id
-          type: null
-          introspectEndpointAuthMethod: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          audience: audience
-          environment:
-            id: id
-          _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          resource:
-            id: id
-          accessTokenValiditySeconds: 8
-          name: name
-          description: description
-          id: id
-          type: null
-          introspectEndpointAuthMethod: null
-          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - null
+        - null
         users:
         - preferredLanguage: preferredLanguage
           _links:
@@ -36733,7 +37427,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 3
+            secondsUntilUnlock: 7
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -36806,7 +37500,7 @@ components:
           account:
             canAuthenticate: true
             lockedAt: 2000-01-23T04:56:07.000+00:00
-            secondsUntilUnlock: 3
+            secondsUntilUnlock: 7
             unlockAt: 2000-01-23T04:56:07.000+00:00
             status: null
           username: username
@@ -37675,6 +38369,10 @@ components:
           items:
             $ref: '#/components/schemas/PasswordPolicy'
           type: array
+        permissions:
+          items:
+            $ref: '#/components/schemas/ResourceApplicationPermission'
+          type: array
         phoneDeliverySettings:
           items:
             $ref: '#/components/schemas/NotificationsSettingsPhoneDeliverySettings'
@@ -37689,7 +38387,7 @@ components:
           type: array
         resources:
           items:
-            $ref: '#/components/schemas/Resource'
+            $ref: '#/components/schemas/EntityArray__embedded_resources_inner'
           type: array
         revisions:
           items:
@@ -37729,7 +38427,7 @@ components:
           type: array
         roles:
           items:
-            $ref: '#/components/schemas/Role'
+            $ref: '#/components/schemas/EntityArray__embedded_roles_inner'
           type: array
         schemas:
           items:
@@ -38971,6 +39669,67 @@ components:
             based on the Rule’s filter.
           readOnly: true
           type: integer
+      readOnly: true
+      type: object
+    Resource_applicationPermissionsSettings:
+      description: An object that specifies whether to add application permissions
+        to access tokens generated by PingOne.
+      example:
+        claimEnabled: true
+      properties:
+        claimEnabled:
+          description: "A setting to enable application permission claims in the access\
+            \ token. If this property is omitted, the value is set to `false`."
+          type: boolean
+      type: object
+    ResourceApplicationResource_parent:
+      description: The application resource's parent.
+      example:
+        id: id
+        type: null
+      properties:
+        type:
+          $ref: '#/components/schemas/EnumResourceApplicationResourceType'
+        id:
+          description: The application resource's parent ID.
+          type: string
+      readOnly: true
+      type: object
+    ResourceApplicationPermission_resource:
+      description: An object that identifies the associated application resource.
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          description: The ID for the associated application resource.
+          type: string
+        name:
+          description: The name of the associated application resource.
+          type: string
+      readOnly: true
+      type: object
+    ResourceApplicationPermission_resourceServer_environment:
+      example:
+        id: id
+      properties:
+        id:
+          description: The ID for the environment associated with the application
+            resource server.
+          type: string
+      type: object
+    ResourceApplicationPermission_resourceServer:
+      description: An object that identifies the associated application resource server.
+      example:
+        environment:
+          id: id
+        id: id
+      properties:
+        id:
+          description: The ID for the associated application resource server.
+          type: string
+        environment:
+          $ref: '#/components/schemas/ResourceApplicationPermission_resourceServer_environment'
       readOnly: true
       type: object
     ResourceSecret_previous:

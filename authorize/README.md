@@ -82,22 +82,22 @@ Class | Method | HTTP request | Description
 *APIServersApi* | [**ReadAllAPIServers**](docs/APIServersApi.md#readallapiservers) | **Get** /environments/{environmentID}/apiServers | READ All API Servers
 *APIServersApi* | [**ReadOneAPIServer**](docs/APIServersApi.md#readoneapiserver) | **Get** /environments/{environmentID}/apiServers/{apiServerID} | READ One API Server
 *APIServersApi* | [**UpdateAPIServer**](docs/APIServersApi.md#updateapiserver) | **Put** /environments/{environmentID}/apiServers/{apiServerID} | UPDATE API Server
-*ApplicationResourcePermissionsApi* | [**CreateApplicationPermissions**](docs/ApplicationResourcePermissionsApi.md#createapplicationpermissions) | **Post** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions | CREATE Application Permissions
+*ApplicationResourcePermissionsApi* | [**CreateApplicationPermission**](docs/ApplicationResourcePermissionsApi.md#createapplicationpermission) | **Post** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions | CREATE Application Permission
 *ApplicationResourcePermissionsApi* | [**DeleteApplicationPermission**](docs/ApplicationResourcePermissionsApi.md#deleteapplicationpermission) | **Delete** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID} | DELETE Application Permission
 *ApplicationResourcePermissionsApi* | [**ReadApplicationPermissions**](docs/ApplicationResourcePermissionsApi.md#readapplicationpermissions) | **Get** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions | READ Application Permissions
 *ApplicationResourcePermissionsApi* | [**ReadOneApplicationPermission**](docs/ApplicationResourcePermissionsApi.md#readoneapplicationpermission) | **Get** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID} | READ One Application Permission
 *ApplicationResourcePermissionsApi* | [**UpdateApplicationPermission**](docs/ApplicationResourcePermissionsApi.md#updateapplicationpermission) | **Put** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID} | UPDATE Application Permission
 *ApplicationResourcesApi* | [**ReadApplicationResources**](docs/ApplicationResourcesApi.md#readapplicationresources) | **Get** /environments/{environmentID}/applicationResources | READ Application Resources
 *ApplicationResourcesApi* | [**ReadOneApplicationResource**](docs/ApplicationResourcesApi.md#readoneapplicationresource) | **Get** /environments/{environmentID}/applicationResources/{applicationResourceID} | READ One Application Resource
-*ApplicationRoleApi* | [**DeleteApplicationRole**](docs/ApplicationRoleApi.md#deleteapplicationrole) | **Delete** /environments/{environmentID}/applicationRoles/{applicationRoleID} | DELETE Application Role
-*ApplicationRoleApi* | [**UpdateApplicationRole**](docs/ApplicationRoleApi.md#updateapplicationrole) | **Put** /environments/{environmentID}/applicationRoles/{applicationRoleID} | UPDATE Application Role
 *ApplicationRoleAssignmentsApi* | [**ReadApplicationRoleAssignments**](docs/ApplicationRoleAssignmentsApi.md#readapplicationroleassignments) | **Get** /environments/{environmentID}/applicationRoles/{applicationRoleID}/assignments | READ Application Role Assignments
 *ApplicationRolePermissionsApi* | [**CreateApplicationRolePermission**](docs/ApplicationRolePermissionsApi.md#createapplicationrolepermission) | **Post** /environments/{environmentID}/applicationRoles/{applicationRoleID}/permissions | CREATE Application Role Permission
 *ApplicationRolePermissionsApi* | [**DeleteApplicationRolePermission**](docs/ApplicationRolePermissionsApi.md#deleteapplicationrolepermission) | **Delete** /environments/{environmentID}/applicationRoles/{applicationRoleID}/permissions/{applicationRolePermissionID} | DELETE Application Role Permission
 *ApplicationRolePermissionsApi* | [**ReadApplicationRolePermissions**](docs/ApplicationRolePermissionsApi.md#readapplicationrolepermissions) | **Get** /environments/{environmentID}/applicationRoles/{applicationRoleID}/permissions | READ Application Role Permissions
 *ApplicationRolesApi* | [**CreateApplicationRoles**](docs/ApplicationRolesApi.md#createapplicationroles) | **Post** /environments/{environmentID}/applicationRoles | CREATE Application Roles
+*ApplicationRolesApi* | [**DeleteApplicationRole**](docs/ApplicationRolesApi.md#deleteapplicationrole) | **Delete** /environments/{environmentID}/applicationRoles/{applicationRoleID} | DELETE Application Role
 *ApplicationRolesApi* | [**ReadApplicationRoles**](docs/ApplicationRolesApi.md#readapplicationroles) | **Get** /environments/{environmentID}/applicationRoles | READ Application Roles
 *ApplicationRolesApi* | [**ReadOneApplicationRole**](docs/ApplicationRolesApi.md#readoneapplicationrole) | **Get** /environments/{environmentID}/applicationRoles/{applicationRoleID} | READ One Application Role
+*ApplicationRolesApi* | [**UpdateApplicationRole**](docs/ApplicationRolesApi.md#updateapplicationrole) | **Put** /environments/{environmentID}/applicationRoles/{applicationRoleID} | UPDATE Application Role
 *PolicyDecisionManagementApi* | [**CreateDecisionEndpoint**](docs/PolicyDecisionManagementApi.md#createdecisionendpoint) | **Post** /environments/{environmentID}/decisionEndpoints | CREATE Decision Endpoint
 *PolicyDecisionManagementApi* | [**DeleteDecisionEndpoint**](docs/PolicyDecisionManagementApi.md#deletedecisionendpoint) | **Delete** /environments/{environmentID}/decisionEndpoints/{decisionEndpointID} | DELETE Decision Endpoint
 *PolicyDecisionManagementApi* | [**ReadAllDecisionEndpoints**](docs/PolicyDecisionManagementApi.md#readalldecisionendpoints) | **Get** /environments/{environmentID}/decisionEndpoints | READ All Decision Endpoints
@@ -117,8 +117,7 @@ Class | Method | HTTP request | Description
  - [ApplicationRole](docs/ApplicationRole.md)
  - [ApplicationRoleAssignment](docs/ApplicationRoleAssignment.md)
  - [ApplicationRolePermission](docs/ApplicationRolePermission.md)
- - [ApplicationRolePermissionPermission](docs/ApplicationRolePermissionPermission.md)
- - [ApplicationRolePermissionPermissionResource](docs/ApplicationRolePermissionPermissionResource.md)
+ - [ApplicationRolePermissionResource](docs/ApplicationRolePermissionResource.md)
  - [DecisionEndpoint](docs/DecisionEndpoint.md)
  - [DecisionEndpointAuthorizationVersion](docs/DecisionEndpointAuthorizationVersion.md)
  - [DecisionEndpointRecentDecisions](docs/DecisionEndpointRecentDecisions.md)

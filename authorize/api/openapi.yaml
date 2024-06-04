@@ -945,7 +945,7 @@ paths:
       tags:
       - Application Resource Permissions
     post:
-      operationId: createApplicationPermissions
+      operationId: createApplicationPermission
       parameters:
       - explode: false
         in: path
@@ -1023,7 +1023,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApplicationResourcePermission'
           description: Successful response
-      summary: CREATE Application Permissions
+      summary: CREATE Application Permission
       tags:
       - Application Resource Permissions
   /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID}:
@@ -1464,7 +1464,7 @@ paths:
           description: Successful response
       summary: DELETE Application Role
       tags:
-      - Application Role
+      - Application Roles
     get:
       operationId: readOneApplicationRole
       parameters:
@@ -1609,7 +1609,7 @@ paths:
           description: Successful response
       summary: UPDATE Application Role
       tags:
-      - Application Role
+      - Application Roles
   /environments/{environmentID}/applicationRoles/{applicationRoleID}/permissions:
     get:
       operationId: readApplicationRolePermissions
@@ -2109,20 +2109,34 @@ components:
       type: object
     ApplicationRolePermission:
       example:
-        permission:
-          resource:
-            name: name
-            id: id
-          action: action
+        environment:
           id: id
+        resource:
+          name: name
+          id: id
+        description: description
+        action: action
         id: id
+        key: key
       properties:
         id:
           description: The ID of the application resource permission to associate
             with this role.
           type: string
-        permission:
-          $ref: '#/components/schemas/ApplicationRolePermission_permission'
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        key:
+          readOnly: true
+          type: string
+        description:
+          readOnly: true
+          type: string
+        action:
+          description: The action associated with this permission.
+          readOnly: true
+          type: string
+        resource:
+          $ref: '#/components/schemas/ApplicationRolePermission_resource'
       required:
       - id
       type: object
@@ -2502,7 +2516,7 @@ components:
           type: string
       readOnly: true
       type: object
-    ApplicationRolePermission_permission_resource:
+    ApplicationRolePermission_resource:
       example:
         name: name
         id: id
@@ -2514,24 +2528,6 @@ components:
           description: The name of the applicawtion resource associated with this
             permission.
           type: string
-      type: object
-    ApplicationRolePermission_permission:
-      example:
-        resource:
-          name: name
-          id: id
-        action: action
-        id: id
-      properties:
-        id:
-          description: The ID of the permission resource associated with a specified
-            role.
-          type: string
-        action:
-          description: The action associated with this permission.
-          type: string
-        resource:
-          $ref: '#/components/schemas/ApplicationRolePermission_permission_resource'
       readOnly: true
       type: object
     DecisionEndpoint_authorizationVersion:

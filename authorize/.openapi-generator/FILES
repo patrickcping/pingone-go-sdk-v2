@@ -3,7 +3,6 @@ api/openapi.yaml
 api_api_servers.go
 api_application_resource_permissions.go
 api_application_resources.go
-api_application_role.go
 api_application_role_assignments.go
 api_application_role_permissions.go
 api_application_roles.go
@@ -20,12 +19,10 @@ docs/ApplicationResourcePermissionResource.md
 docs/ApplicationResourcePermissionsApi.md
 docs/ApplicationResourcesApi.md
 docs/ApplicationRole.md
-docs/ApplicationRoleApi.md
 docs/ApplicationRoleAssignment.md
 docs/ApplicationRoleAssignmentsApi.md
 docs/ApplicationRolePermission.md
-docs/ApplicationRolePermissionPermission.md
-docs/ApplicationRolePermissionPermissionResource.md
+docs/ApplicationRolePermissionResource.md
 docs/ApplicationRolePermissionsApi.md
 docs/ApplicationRolesApi.md
 docs/DecisionEndpoint.md
@@ -59,8 +56,7 @@ model_application_resource_permission_resource.go
 model_application_role.go
 model_application_role_assignment.go
 model_application_role_permission.go
-model_application_role_permission_permission.go
-model_application_role_permission_permission_resource.go
+model_application_role_permission_resource.go
 model_decision_endpoint.go
 model_decision_endpoint_authorization_version.go
 model_decision_endpoint_recent_decisions.go

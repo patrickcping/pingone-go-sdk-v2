@@ -353,5 +353,88 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// EntityArrayEmbeddedResourcesInner model
+		{
+			fileSelectPattern: "model_entity_array__embedded_resources_inner.go",
+			pattern:           `(func \(dst \*EntityArrayEmbeddedResourcesInner\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *EntityArrayEmbeddedResourcesInner) UnmarshalJSON(data []byte) error {
+
+	var err error
+	// try to unmarshal JSON data into Resource
+	err = json.Unmarshal(data, &dst.Resource)
+	if err == nil {
+		jsonResource, _ := json.Marshal(dst.Resource)
+		if string(jsonResource) == "{}" { // empty struct
+			dst.Resource = nil
+		} else {
+			if dst.Resource.Type == nil { // we expect an action for this data type
+				dst.Resource = nil
+			} else {
+				return nil // data stored in dst.Resource, return on the first match
+			}
+		}
+	} else {
+		dst.Resource = nil
+	}
+
+	// try to unmarshal JSON data into ResourceApplicationResource
+	err = json.Unmarshal(data, &dst.ResourceApplicationResource)
+	if err == nil {
+		jsonResourceApplicationResource, _ := json.Marshal(dst.ResourceApplicationResource)
+		if string(jsonResourceApplicationResource) == "{}" { // empty struct
+			dst.ResourceApplicationResource = nil
+		} else {
+				return nil // data stored in dst.ResourceApplicationResource, return on the first match
+		}
+	} else {
+		dst.ResourceApplicationResource = nil
+	}
+
+	return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedResourcesInner)")
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
+
+		// EntityArrayEmbeddedRolesInner model
+		{
+			fileSelectPattern: "model_entity_array__embedded_roles_inner.go",
+			pattern:           `(func \(dst \*EntityArrayEmbeddedRolesInner\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *EntityArrayEmbeddedRolesInner) UnmarshalJSON(data []byte) error {
+	var err error
+	// try to unmarshal JSON data into Role
+	err = json.Unmarshal(data, &dst.Role)
+	if err == nil {
+		jsonRole, _ := json.Marshal(dst.Role)
+		if string(jsonRole) == "{}" { // empty struct
+			dst.Role = nil
+		} else {
+			if dst.Role.Permissions == nil { // we expect an action for this data type
+				dst.Role = nil
+			} else {
+				return nil // data stored in dst.Role, return on the first match
+			}
+		}
+	} else {
+		dst.Role = nil
+	}
+	// try to unmarshal JSON data into UserApplicationRoleAssignment
+	err = json.Unmarshal(data, &dst.UserApplicationRoleAssignment)
+	if err == nil {
+		jsonUserApplicationRoleAssignment, _ := json.Marshal(dst.UserApplicationRoleAssignment)
+		if string(jsonUserApplicationRoleAssignment) == "{}" { // empty struct
+			dst.UserApplicationRoleAssignment = nil
+		} else {
+				return nil // data stored in dst.UserApplicationRoleAssignment, return on the first match
+		}
+	} else {
+		dst.UserApplicationRoleAssignment = nil
+	}
+	return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedRolesInner)")
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )

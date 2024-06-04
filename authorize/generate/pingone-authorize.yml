@@ -174,25 +174,28 @@ components:
         id:
           type: string
           description: The ID of the application resource permission to associate with this role.
-        permission:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        key:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+        action:
+          type: string
+          readOnly: true
+          description: The action associated with this permission.
+        resource:
           type: object
           readOnly: true
           properties:
             id:
               type: string
-              description: The ID of the permission resource associated with a specified role.
-            action:
+              description: The ID of the application resource associated with this permission.
+            name:
               type: string
-              description: The action associated with this permission.
-            resource:
-              type: object
-              properties:
-                id:
-                  type: string
-                  description: The ID of the application resource associated with this permission.
-                name:
-                  type: string
-                  description: The name of the applicawtion resource associated with this permission.
+              description: The name of the applicawtion resource associated with this permission.
       required:
         - id
     ApplicationRoleAssignment:
@@ -939,8 +942,8 @@ paths:
     post:
       tags:
         - Application Resource Permissions
-      summary: CREATE Application Permissions
-      operationId: createApplicationPermissions
+      summary: CREATE Application Permission
+      operationId: createApplicationPermission
       requestBody:
         content:
           application/json:
@@ -1220,7 +1223,7 @@ paths:
                 $ref: '#/components/schemas/ApplicationRole'
     put:
       tags:
-        - Application Role
+        - Application Roles
       summary: UPDATE Application Role
       operationId: updateApplicationRole
       requestBody:
@@ -1262,7 +1265,7 @@ paths:
                 $ref: '#/components/schemas/ApplicationRole'
     delete:
       tags:
-        - Application Role
+        - Application Roles
       summary: DELETE Application Role
       operationId: deleteApplicationRole
       parameters:

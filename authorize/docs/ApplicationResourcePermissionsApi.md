@@ -4,7 +4,7 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateApplicationPermissions**](ApplicationResourcePermissionsApi.md#CreateApplicationPermissions) | **Post** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions | CREATE Application Permissions
+[**CreateApplicationPermission**](ApplicationResourcePermissionsApi.md#CreateApplicationPermission) | **Post** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions | CREATE Application Permission
 [**DeleteApplicationPermission**](ApplicationResourcePermissionsApi.md#DeleteApplicationPermission) | **Delete** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID} | DELETE Application Permission
 [**ReadApplicationPermissions**](ApplicationResourcePermissionsApi.md#ReadApplicationPermissions) | **Get** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions | READ Application Permissions
 [**ReadOneApplicationPermission**](ApplicationResourcePermissionsApi.md#ReadOneApplicationPermission) | **Get** /environments/{environmentID}/applicationResources/{applicationResourceID}/permissions/{applicationResourcePermissionID} | READ One Application Permission
@@ -12,11 +12,11 @@ Method | HTTP request | Description
 
 
 
-## CreateApplicationPermissions
+## CreateApplicationPermission
 
-> ApplicationResourcePermission CreateApplicationPermissions(ctx, environmentID, applicationResourceID).ApplicationResourcePermission(applicationResourcePermission).Execute()
+> ApplicationResourcePermission CreateApplicationPermission(ctx, environmentID, applicationResourceID).ApplicationResourcePermission(applicationResourcePermission).Execute()
 
-CREATE Application Permissions
+CREATE Application Permission
 
 ### Example
 
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationResourcePermissionsApi.CreateApplicationPermissions(context.Background(), environmentID, applicationResourceID).ApplicationResourcePermission(applicationResourcePermission).Execute()
+    resp, r, err := apiClient.ApplicationResourcePermissionsApi.CreateApplicationPermission(context.Background(), environmentID, applicationResourceID).ApplicationResourcePermission(applicationResourcePermission).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.CreateApplicationPermissions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationResourcePermissionsApi.CreateApplicationPermission``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateApplicationPermissions`: ApplicationResourcePermission
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.CreateApplicationPermissions`: %v\n", resp)
+    // response from `CreateApplicationPermission`: ApplicationResourcePermission
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationResourcePermissionsApi.CreateApplicationPermission`: %v\n", resp)
 }
 ```
 
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateApplicationPermissionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateApplicationPermissionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
