@@ -1,5 +1,6 @@
 # v0.5.0 (Unreleased)
 
+* **Note** Removed unused `Operations` field from the `APIServer` model.
 * **Feature** Add support for Application Resource Permissions API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
 * **Feature** Add support for Application Resources API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
 * **Feature** Add support for Application Roles API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
@@ -7,6 +8,8 @@
 * **Feature** Add support for Application Role Permissions API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
 * **Feature** Add support for Application Roles API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
 * **Enhancement** Add the `com.au` top level domain to the connection configuration. [#351](https://github.com/patrickcping/pingone-go-sdk-v2/pull/351)
+* **Enhancement** Added `AccessControl` and `Directory` fields to the `APIServer` model.
+* **Enhancement** Added `Type` field to the `APIServerAuthorizationServer` model.
 
 # v0.4.1 (2024-01-12)
 

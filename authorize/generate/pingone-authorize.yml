@@ -63,6 +63,16 @@ components:
       properties:
         '_links':
           $ref: '#/components/schemas/LinksHATEOAS'
+        accessControl:
+          type: object
+          properties:
+            custom:
+              type: object
+              description: Defines if the operation will use custom policy rather than the "Group" or "Scope" `accessControl` requirement.
+              properties:
+                enabled:
+                  type: boolean
+                  description: If `TRUE`, custom policy will be used for the endpoint. Defaults to `FALSE`.
         authorizationServer:
           type: object
           description: A container object for properties related to the authorization server that will issue access tokens used to access the APIs.
@@ -76,6 +86,8 @@ components:
                   description: A string that specifies the UUID of the custom PingOne resource. This property must identify a PingOne resource with a type property value of CUSTOM.
               required:
                 - id
+            type:
+              $ref: '#/components/schemas/EnumAPIServerAuthorizationServerType'
           required:
             - resource
         baseURLs:
@@ -83,6 +95,14 @@ components:
           description: An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer's API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters.
           items:
             type: string
+        directory:
+          type: object
+          description: A container object for fields related to the user directory used to issue access tokens for accessing the APIs. If not provided, the `directory.type` will default to `PINGONE_SSO`.
+          properties:
+            type:
+              $ref: '#/components/schemas/EnumAPIServerAuthorizationServerType'
+          required:
+            - type
         id:
           type: string
           description: A string that specifies the resource's unique identifier.
@@ -90,9 +110,15 @@ components:
         name:
           type: string
           description: A string that specifies the API server resource name. The name value must be unique among all API servers, and it must be a valid resource name.
-        operations:
+        policy:
           type: object
-          description: A map from the operation name to the operation object. Each key must be valid ObjectName, and each value must be a valid operation. Each key must be unique within the operations object, which means the operation key is unique within an API server. No duplicate operation values are allowed; operations with the same paths and methods members are not allowed. The operations object is limited to 25 keys (25 individual operations).
+          readOnly: true
+          properties:
+            id:
+              type: string
+              description: The ID of the root policy.
+          required:
+            - id
       required:
         - name
         - authorizationServer
@@ -214,6 +240,10 @@ components:
       type: string
       enum: [EXACT, PARAMETER]
       description: A string that specifies the type of the pattern. Options are `EXACT` ( the verbatim pattern is compared against the path from the request using a case-sensitive comparison) and `PARAMETER` (the pattern is compared against the path from the request using a case-sensitive comparison, using the syntax below to encode wildcards and path segment captures.)
+    EnumAPIServerAuthorizationServerType:
+      type: string
+      enum: [PINGONE_SSO,EXTERNAL]
+      description: The type of authorization server that will issue access tokens. Valid options are `PINGONE_SSO` or `EXTERNAL`. Defaults to `PINGONE_SSO`. Must be the same value as the directory.type. If `EXTERNAL`, the `authorizationServer.resource` field must not be provided.
     EnumApplicationResourceParentType:
       type: string
       enum: [PING_ONE_RESOURCE]

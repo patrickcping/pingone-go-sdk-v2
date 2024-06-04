@@ -5,11 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
+**AccessControl** | Pointer to [**APIServerAccessControl**](APIServerAccessControl.md) |  | [optional] 
 **AuthorizationServer** | [**APIServerAuthorizationServer**](APIServerAuthorizationServer.md) |  | 
 **BaseURLs** | **[]string** | An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer&#39;s API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters. | 
+**Directory** | Pointer to [**APIServerDirectory**](APIServerDirectory.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource&#39;s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the API server resource name. The name value must be unique among all API servers, and it must be a valid resource name. | 
-**Operations** | Pointer to **map[string]interface{}** | A map from the operation name to the operation object. Each key must be valid ObjectName, and each value must be a valid operation. Each key must be unique within the operations object, which means the operation key is unique within an API server. No duplicate operation values are allowed; operations with the same paths and methods members are not allowed. The operations object is limited to 25 keys (25 individual operations). | [optional] 
+**Policy** | Pointer to [**APIServerPolicy**](APIServerPolicy.md) |  | [optional] 
 
 ## Methods
 
@@ -55,6 +57,31 @@ SetLinks sets Links field to given value.
 
 HasLinks returns a boolean if a field has been set.
 
+### GetAccessControl
+
+`func (o *APIServer) GetAccessControl() APIServerAccessControl`
+
+GetAccessControl returns the AccessControl field if non-nil, zero value otherwise.
+
+### GetAccessControlOk
+
+`func (o *APIServer) GetAccessControlOk() (*APIServerAccessControl, bool)`
+
+GetAccessControlOk returns a tuple with the AccessControl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessControl
+
+`func (o *APIServer) SetAccessControl(v APIServerAccessControl)`
+
+SetAccessControl sets AccessControl field to given value.
+
+### HasAccessControl
+
+`func (o *APIServer) HasAccessControl() bool`
+
+HasAccessControl returns a boolean if a field has been set.
+
 ### GetAuthorizationServer
 
 `func (o *APIServer) GetAuthorizationServer() APIServerAuthorizationServer`
@@ -94,6 +121,31 @@ and a boolean to check if the value has been set.
 
 SetBaseURLs sets BaseURLs field to given value.
 
+
+### GetDirectory
+
+`func (o *APIServer) GetDirectory() APIServerDirectory`
+
+GetDirectory returns the Directory field if non-nil, zero value otherwise.
+
+### GetDirectoryOk
+
+`func (o *APIServer) GetDirectoryOk() (*APIServerDirectory, bool)`
+
+GetDirectoryOk returns a tuple with the Directory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDirectory
+
+`func (o *APIServer) SetDirectory(v APIServerDirectory)`
+
+SetDirectory sets Directory field to given value.
+
+### HasDirectory
+
+`func (o *APIServer) HasDirectory() bool`
+
+HasDirectory returns a boolean if a field has been set.
 
 ### GetId
 
@@ -140,30 +192,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetOperations
+### GetPolicy
 
-`func (o *APIServer) GetOperations() map[string]interface{}`
+`func (o *APIServer) GetPolicy() APIServerPolicy`
 
-GetOperations returns the Operations field if non-nil, zero value otherwise.
+GetPolicy returns the Policy field if non-nil, zero value otherwise.
 
-### GetOperationsOk
+### GetPolicyOk
 
-`func (o *APIServer) GetOperationsOk() (*map[string]interface{}, bool)`
+`func (o *APIServer) GetPolicyOk() (*APIServerPolicy, bool)`
 
-GetOperationsOk returns a tuple with the Operations field if it's non-nil, zero value otherwise
+GetPolicyOk returns a tuple with the Policy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOperations
+### SetPolicy
 
-`func (o *APIServer) SetOperations(v map[string]interface{})`
+`func (o *APIServer) SetPolicy(v APIServerPolicy)`
 
-SetOperations sets Operations field to given value.
+SetPolicy sets Policy field to given value.
 
-### HasOperations
+### HasPolicy
 
-`func (o *APIServer) HasOperations() bool`
+`func (o *APIServer) HasPolicy() bool`
 
-HasOperations returns a boolean if a field has been set.
+HasPolicy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
