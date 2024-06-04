@@ -12,6 +12,7 @@
     * **Enhancement** Added `Previous` to the `ResourceSecret` model to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.19.0](./mfa/CHANGELOG.md)
     * **Breaking change** Remove optional `DeviceAuthenticationPolicyMobileOtpWindow` from `DeviceAuthenticationPolicyMobileOtp` constructor. [#343](https://github.com/patrickcping/pingone-go-sdk-v2/pull/343)
+    * **Enhancement** Added `PromptForNicknameOnPairing` boolean field to the `DeviceAuthenticationPolicyFido2`, `DeviceAuthenticationPolicyMobile`, `DeviceAuthenticationPolicyOfflineDevice` and `DeviceAuthenticationPolicyTotp` models.
 
 # Release (2024-05-01)
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | A boolean that specifies whether the method is enabled or disabled in the policy. | 
 **Otp** | [**DeviceAuthenticationPolicyMobileOtp**](DeviceAuthenticationPolicyMobileOtp.md) |  | 
 **Applications** | Pointer to [**[]DeviceAuthenticationPolicyMobileApplicationsInner**](DeviceAuthenticationPolicyMobileApplicationsInner.md) |  | [optional] 
+**PromptForNicknameOnPairing** | Pointer to **bool** | Set to &#x60;true&#x60; if you want to allow users to provide nicknames for devices during pairing. | [optional] 
 
 ## Methods
 
@@ -91,6 +92,31 @@ SetApplications sets Applications field to given value.
 `func (o *DeviceAuthenticationPolicyMobile) HasApplications() bool`
 
 HasApplications returns a boolean if a field has been set.
+
+### GetPromptForNicknameOnPairing
+
+`func (o *DeviceAuthenticationPolicyMobile) GetPromptForNicknameOnPairing() bool`
+
+GetPromptForNicknameOnPairing returns the PromptForNicknameOnPairing field if non-nil, zero value otherwise.
+
+### GetPromptForNicknameOnPairingOk
+
+`func (o *DeviceAuthenticationPolicyMobile) GetPromptForNicknameOnPairingOk() (*bool, bool)`
+
+GetPromptForNicknameOnPairingOk returns a tuple with the PromptForNicknameOnPairing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromptForNicknameOnPairing
+
+`func (o *DeviceAuthenticationPolicyMobile) SetPromptForNicknameOnPairing(v bool)`
+
+SetPromptForNicknameOnPairing sets PromptForNicknameOnPairing field to given value.
+
+### HasPromptForNicknameOnPairing
+
+`func (o *DeviceAuthenticationPolicyMobile) HasPromptForNicknameOnPairing() bool`
+
+HasPromptForNicknameOnPairing returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
