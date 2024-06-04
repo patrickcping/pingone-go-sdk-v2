@@ -2718,20 +2718,14 @@ components:
     FormSocialLoginButton:
       type: object
       properties:
+        key:
+          type: string
+          description: A string that specifies an identifier for the field component.
         label:
           type: string
           description: A string that specifies the social login button label.
         styles:
-          type: object
-          properties:
-            horizontalAlignment:
-              $ref: '#/components/schemas/EnumFormItemAlignment'
-            textColor:
-              type: string
-              description: A string that specifies the social login button text color.
-            enabled:
-              type: boolean
-              description: A boolean that specifies whether the social login button is enabled.
+          $ref: '#/components/schemas/FormStyles'
         idpType:
           $ref: '#/components/schemas/EnumFormSocialLoginIdpType'
         idpName:
@@ -2743,19 +2737,12 @@ components:
         idpEnabled:
           type: boolean
           description: A boolean that specifies whether the external identity provider is enabled.
-        iconSrc:
-          type: string
-          description: A string that specifies the HTTP link (URL format) for the external identity provider's icon.
-        width:
-          type: integer
-          description: An integer that specifies the button width. Set as a percentage.
       required:
         - label
         - idpType
         - idpName
         - idpId
         - idpEnabled
-        - iconSrc
     FormSubmit:
       type: object
       properties:

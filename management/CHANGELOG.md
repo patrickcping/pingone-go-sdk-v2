@@ -1,5 +1,8 @@
 # v0.40.0 (Unreleased)
 
+* **Breaking Change** Removed the `FormSocialLoginButtonStyles` data model.  Use the `FormStyles` data model going forward. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
+* **Note** Removed unnecessary `Width` and `IconSrc` fields from `FormSocialLoginButton` and associated data models. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
+* **Enhancement** Added `Key` field to `FormSocialLoginButton` and associated data models. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
 * **Enhancement** Added the `DeletePreviousResourceSecret` function to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
 * **Enhancement** Added `Previous` to the `ResourceSecret` model to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
 
