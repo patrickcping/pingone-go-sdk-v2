@@ -9,8 +9,12 @@ api_application_roles.go
 api_policy_decision_management.go
 configuration.go
 docs/APIServer.md
+docs/APIServerAccessControl.md
+docs/APIServerAccessControlCustom.md
 docs/APIServerAuthorizationServer.md
 docs/APIServerAuthorizationServerResource.md
+docs/APIServerDirectory.md
+docs/APIServerPolicy.md
 docs/APIServersApi.md
 docs/ApplicationResource.md
 docs/ApplicationResourceParent.md
@@ -31,6 +35,7 @@ docs/DecisionEndpointRecentDecisions.md
 docs/EntityArray.md
 docs/EntityArrayEmbedded.md
 docs/EntityArrayEmbeddedPermissionsInner.md
+docs/EnumAPIServerAuthorizationServerType.md
 docs/EnumAPIServerPatternType.md
 docs/EnumApplicationResourceParentType.md
 docs/LinksHATEOAS.md
@@ -47,8 +52,12 @@ docs/PolicyDecisionManagementApi.md
 go.mod
 go.sum
 model_api_server.go
+model_api_server_access_control.go
+model_api_server_access_control_custom.go
 model_api_server_authorization_server.go
 model_api_server_authorization_server_resource.go
+model_api_server_directory.go
+model_api_server_policy.go
 model_application_resource.go
 model_application_resource_parent.go
 model_application_resource_permission.go
@@ -63,6 +72,7 @@ model_decision_endpoint_recent_decisions.go
 model_entity_array.go
 model_entity_array__embedded.go
 model_entity_array__embedded_permissions_inner.go
+model_enum_api_server_authorization_server_type.go
 model_enum_api_server_pattern_type.go
 model_enum_application_resource_parent_type.go
 model_links_hateoas.go
