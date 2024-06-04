@@ -396,5 +396,45 @@ var (
 
 // Marshal data from the first non-nil pointers in the struct to JSON`,
 		},
+
+		// EntityArrayEmbeddedRolesInner model
+		{
+			fileSelectPattern: "model_entity_array__embedded_roles_inner.go",
+			pattern:           `(func \(dst \*EntityArrayEmbeddedRolesInner\) UnmarshalJSON\(data \[\]byte\) error \{\n)((.*)\n)*\}\n\n\/\/ Marshal data from the first non-nil pointers in the struct to JSON`,
+			repl: `func (dst *EntityArrayEmbeddedRolesInner) UnmarshalJSON(data []byte) error {
+	var err error
+	// try to unmarshal JSON data into Role
+	err = json.Unmarshal(data, &dst.Role)
+	if err == nil {
+		jsonRole, _ := json.Marshal(dst.Role)
+		if string(jsonRole) == "{}" { // empty struct
+			dst.Role = nil
+		} else {
+			if dst.Role.Permissions == nil { // we expect an action for this data type
+				dst.Role = nil
+			} else {
+				return nil // data stored in dst.Role, return on the first match
+			}
+		}
+	} else {
+		dst.Role = nil
+	}
+	// try to unmarshal JSON data into UserApplicationRoleAssignment
+	err = json.Unmarshal(data, &dst.UserApplicationRoleAssignment)
+	if err == nil {
+		jsonUserApplicationRoleAssignment, _ := json.Marshal(dst.UserApplicationRoleAssignment)
+		if string(jsonUserApplicationRoleAssignment) == "{}" { // empty struct
+			dst.UserApplicationRoleAssignment = nil
+		} else {
+				return nil // data stored in dst.UserApplicationRoleAssignment, return on the first match
+		}
+	} else {
+		dst.UserApplicationRoleAssignment = nil
+	}
+	return fmt.Errorf("Data failed to match schemas in oneOf(EntityArrayEmbeddedRolesInner)")
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON`,
+		},
 	}
 )

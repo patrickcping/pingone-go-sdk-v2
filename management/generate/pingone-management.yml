@@ -2130,7 +2130,9 @@ components:
             roles:
               type: array
               items:
-                $ref: '#/components/schemas/Role'
+                oneOf:
+                  - $ref: '#/components/schemas/Role'
+                  - $ref: '#/components/schemas/UserApplicationRoleAssignment'
             schemas:
               type: array
               items:
@@ -6992,6 +6994,22 @@ components:
       required:
         - email
         - username
+    UserApplicationRoleAssignment:
+      type: object
+      properties:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          type: string
+          description: Specifies the application role ID to assign to the specified user.
+        name:
+          type: string
+          description: Specifies the name of the application role assigned to the user.
+        description:
+          type: string
+          description: Specifies the description of the application role assigned to the user.
+      required:
+        - id
     UserAccount:
       type: object
       properties:
@@ -19530,6 +19548,127 @@ paths:
             type: string
           required: true
         - name: userID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '204':
+          description: Successful response
+  /environments/{environmentID}/users/{userID}/applicationRoles:
+    get:
+      tags:
+        - User Application Role Assignments
+      summary: READ User Application Role Assignments
+      operationId: readUserApplicationRoleAssignments
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: userID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+    post:
+      tags:
+        - User Application Role Assignments
+      summary: CREATE User Application Role Assignment
+      operationId: createUserApplicationRoleAssignment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserApplicationRoleAssignment'
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: userID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserApplicationRoleAssignment'
+  /environments/{environmentID}/users/{userID}/applicationRoles/{applicationRoleID}:
+    delete:
+      tags:
+        - User Application Role Assignments
+      summary: DELETE User Application Role Assignment
+      operationId: deleteUserApplicationRoleAssignment
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: userID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: applicationRoleID
           in: path
           schema:
             type: string

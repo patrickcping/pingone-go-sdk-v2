@@ -9,6 +9,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.40.0](./management/CHANGELOG.md)
     * **Feature** Add support for Application Resource API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
     * **Feature** Add support for Application Resource Permissions API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
+    * **Feature** Add support for User Application Role Assignment API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
     * **Enhancement** Added `ApplicationPermissionsSettings` to the `Resource` model. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
     * **Enhancement** Added the `DeletePreviousResourceSecret` function to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
     * **Enhancement** Added `Previous` to the `ResourceSecret` model to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)

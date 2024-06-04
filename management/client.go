@@ -191,6 +191,8 @@ type APIClient struct {
 
 	UserAgreementConsentsApi *UserAgreementConsentsApiService
 
+	UserApplicationRoleAssignmentsApi *UserApplicationRoleAssignmentsApiService
+
 	UserIDVerificationApi *UserIDVerificationApiService
 
 	UserPasswordsApi *UserPasswordsApiService
@@ -312,6 +314,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserAccountsApi = (*UserAccountsApiService)(&c.common)
 	c.UserActivitiesApi = (*UserActivitiesApiService)(&c.common)
 	c.UserAgreementConsentsApi = (*UserAgreementConsentsApiService)(&c.common)
+	c.UserApplicationRoleAssignmentsApi = (*UserApplicationRoleAssignmentsApiService)(&c.common)
 	c.UserIDVerificationApi = (*UserIDVerificationApiService)(&c.common)
 	c.UserPasswordsApi = (*UserPasswordsApiService)(&c.common)
 	c.UserPopulationsApi = (*UserPopulationsApiService)(&c.common)

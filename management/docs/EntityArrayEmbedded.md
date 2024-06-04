@@ -45,7 +45,7 @@ Name | Type | Description | Notes
 **Themes** | Pointer to [**[]BrandingTheme**](BrandingTheme.md) |  | [optional] 
 **TrustedEmails** | Pointer to [**[]EmailDomainTrustedEmail**](EmailDomainTrustedEmail.md) |  | [optional] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) |  | [optional] 
-**Roles** | Pointer to [**[]Role**](Role.md) |  | [optional] 
+**Roles** | Pointer to [**[]EntityArrayEmbeddedRolesInner**](EntityArrayEmbeddedRolesInner.md) |  | [optional] 
 **Schemas** | Pointer to [**[]Schema**](Schema.md) |  | [optional] 
 **Users** | Pointer to [**[]User**](User.md) |  | [optional] 
 
@@ -1095,20 +1095,20 @@ HasRoleAssignments returns a boolean if a field has been set.
 
 ### GetRoles
 
-`func (o *EntityArrayEmbedded) GetRoles() []Role`
+`func (o *EntityArrayEmbedded) GetRoles() []EntityArrayEmbeddedRolesInner`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *EntityArrayEmbedded) GetRolesOk() (*[]Role, bool)`
+`func (o *EntityArrayEmbedded) GetRolesOk() (*[]EntityArrayEmbeddedRolesInner, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *EntityArrayEmbedded) SetRoles(v []Role)`
+`func (o *EntityArrayEmbedded) SetRoles(v []EntityArrayEmbeddedRolesInner)`
 
 SetRoles sets Roles field to given value.
 

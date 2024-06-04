@@ -60,7 +60,7 @@ type EntityArrayEmbedded struct {
 	Themes []BrandingTheme `json:"themes,omitempty"`
 	TrustedEmails []EmailDomainTrustedEmail `json:"trustedEmails,omitempty"`
 	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
-	Roles []Role `json:"roles,omitempty"`
+	Roles []EntityArrayEmbeddedRolesInner `json:"roles,omitempty"`
 	Schemas []Schema `json:"schemas,omitempty"`
 	Users []User `json:"users,omitempty"`
 }
@@ -1395,9 +1395,9 @@ func (o *EntityArrayEmbedded) SetRoleAssignments(v []RoleAssignment) {
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *EntityArrayEmbedded) GetRoles() []Role {
+func (o *EntityArrayEmbedded) GetRoles() []EntityArrayEmbeddedRolesInner {
 	if o == nil || IsNil(o.Roles) {
-		var ret []Role
+		var ret []EntityArrayEmbeddedRolesInner
 		return ret
 	}
 	return o.Roles
@@ -1405,7 +1405,7 @@ func (o *EntityArrayEmbedded) GetRoles() []Role {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntityArrayEmbedded) GetRolesOk() ([]Role, bool) {
+func (o *EntityArrayEmbedded) GetRolesOk() ([]EntityArrayEmbeddedRolesInner, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -1421,8 +1421,8 @@ func (o *EntityArrayEmbedded) HasRoles() bool {
 	return false
 }
 
-// SetRoles gets a reference to the given []Role and assigns it to the Roles field.
-func (o *EntityArrayEmbedded) SetRoles(v []Role) {
+// SetRoles gets a reference to the given []EntityArrayEmbeddedRolesInner and assigns it to the Roles field.
+func (o *EntityArrayEmbedded) SetRoles(v []EntityArrayEmbeddedRolesInner) {
 	o.Roles = v
 }
 

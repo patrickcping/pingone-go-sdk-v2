@@ -402,6 +402,9 @@ Class | Method | HTTP request | Description
 *UserAgreementConsentsApi* | [**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet**](docs/UserAgreementConsentsApi.md#environmentsenvironmentidusersuseridagreementconsentsagreementidget) | **Get** /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | READ One User Agreement Consent
 *UserAgreementConsentsApi* | [**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost**](docs/UserAgreementConsentsApi.md#environmentsenvironmentidusersuseridagreementconsentsagreementidpost) | **Post** /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | Revoke Agreement
 *UserAgreementConsentsApi* | [**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet**](docs/UserAgreementConsentsApi.md#environmentsenvironmentidusersuseridagreementconsentsget) | **Get** /environments/{environmentID}/users/{userID}/agreementConsents | READ All User Agreement Consents
+*UserApplicationRoleAssignmentsApi* | [**CreateUserApplicationRoleAssignment**](docs/UserApplicationRoleAssignmentsApi.md#createuserapplicationroleassignment) | **Post** /environments/{environmentID}/users/{userID}/applicationRoles | CREATE User Application Role Assignment
+*UserApplicationRoleAssignmentsApi* | [**DeleteUserApplicationRoleAssignment**](docs/UserApplicationRoleAssignmentsApi.md#deleteuserapplicationroleassignment) | **Delete** /environments/{environmentID}/users/{userID}/applicationRoles/{applicationRoleID} | DELETE User Application Role Assignment
+*UserApplicationRoleAssignmentsApi* | [**ReadUserApplicationRoleAssignments**](docs/UserApplicationRoleAssignmentsApi.md#readuserapplicationroleassignments) | **Get** /environments/{environmentID}/users/{userID}/applicationRoles | READ User Application Role Assignments
 *UserIDVerificationApi* | [**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet**](docs/UserIDVerificationApi.md#environmentsenvironmentidusersuseridverifytransactionsget) | **Get** /environments/{environmentID}/users/{userID}/verifyTransactions | READ All ID Verification Transaction Records for a User
 *UserIDVerificationApi* | [**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost**](docs/UserIDVerificationApi.md#environmentsenvironmentidusersuseridverifytransactionspost) | **Post** /environments/{environmentID}/users/{userID}/verifyTransactions | CREATE ID Verification Transaction Record for a User
 *UserIDVerificationApi* | [**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete**](docs/UserIDVerificationApi.md#environmentsenvironmentidusersuseridverifytransactionstransactioniddelete) | **Delete** /environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID} | DELETE ID Verification Transaction Record for a User
@@ -515,6 +518,7 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbeddedGatewaysInner](docs/EntityArrayEmbeddedGatewaysInner.md)
  - [EntityArrayEmbeddedLanguagesInner](docs/EntityArrayEmbeddedLanguagesInner.md)
  - [EntityArrayEmbeddedResourcesInner](docs/EntityArrayEmbeddedResourcesInner.md)
+ - [EntityArrayEmbeddedRolesInner](docs/EntityArrayEmbeddedRolesInner.md)
  - [EnumAgreementRevisionContentType](docs/EnumAgreementRevisionContentType.md)
  - [EnumAlertChannelAlertType](docs/EnumAlertChannelAlertType.md)
  - [EnumAlertChannelSeverity](docs/EnumAlertChannelSeverity.md)
@@ -920,6 +924,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserAccount](docs/UserAccount.md)
  - [UserAddress](docs/UserAddress.md)
+ - [UserApplicationRoleAssignment](docs/UserApplicationRoleAssignment.md)
  - [UserEnabled](docs/UserEnabled.md)
  - [UserIdentityProvider](docs/UserIdentityProvider.md)
  - [UserLastSignOn](docs/UserLastSignOn.md)

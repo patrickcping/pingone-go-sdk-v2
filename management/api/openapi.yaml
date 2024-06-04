@@ -22551,6 +22551,233 @@ paths:
       summary: UPDATE User (Put)
       tags:
       - Users
+  /environments/{environmentID}/users/{userID}/applicationRoles:
+    get:
+      operationId: readUserApplicationRoleAssignments
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ User Application Role Assignments
+      tags:
+      - User Application Role Assignments
+    post:
+      operationId: createUserApplicationRoleAssignment
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserApplicationRoleAssignment'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserApplicationRoleAssignment'
+          description: Successful response
+      summary: CREATE User Application Role Assignment
+      tags:
+      - User Application Role Assignments
+  /environments/{environmentID}/users/{userID}/applicationRoles/{applicationRoleID}:
+    delete:
+      operationId: deleteUserApplicationRoleAssignment
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: userID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: applicationRoleID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE User Application Role Assignment
+      tags:
+      - User Application Role Assignments
   /environments/{environmentID}/users/{userID}/identityProvider:
     get:
       parameters:
@@ -28835,42 +29062,8 @@ components:
             subjectDN: subjectDN
             usageType: null
           roles:
-          - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            permissions:
-            - classifier: classifier
-              description: description
-              id: id
-            - classifier: classifier
-              description: description
-              id: id
-            name: null
-            description: description
-            applicableTo:
-            - null
-            - null
-            id: id
-          - _links:
-              next:
-                href: https://openapi-generator.tech
-              self:
-                href: https://openapi-generator.tech
-            permissions:
-            - classifier: classifier
-              description: description
-              id: id
-            - classifier: classifier
-              description: description
-              id: id
-            name: null
-            description: description
-            applicableTo:
-            - null
-            - null
-            id: id
+          - null
+          - null
           alertChannels:
           - environment:
               id: id
@@ -35415,6 +35608,31 @@ components:
       - email
       - username
       type: object
+    UserApplicationRoleAssignment:
+      example:
+        environment:
+          id: id
+        name: name
+        description: description
+        id: id
+      properties:
+        environment:
+          $ref: '#/components/schemas/ObjectEnvironment'
+        id:
+          description: Specifies the application role ID to assign to the specified
+            user.
+          type: string
+        name:
+          description: Specifies the name of the application role assigned to the
+            user.
+          type: string
+        description:
+          description: Specifies the description of the application role assigned
+            to the user.
+          type: string
+      required:
+      - id
+      type: object
     UserAccount:
       example:
         canAuthenticate: true
@@ -36328,6 +36546,10 @@ components:
       oneOf:
       - $ref: '#/components/schemas/Resource'
       - $ref: '#/components/schemas/ResourceApplicationResource'
+    EntityArray__embedded_roles_inner:
+      oneOf:
+      - $ref: '#/components/schemas/Role'
+      - $ref: '#/components/schemas/UserApplicationRoleAssignment'
     EntityArray__embedded:
       example:
         flowPolicies:
@@ -36518,42 +36740,8 @@ components:
           subjectDN: subjectDN
           usageType: null
         roles:
-        - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          permissions:
-          - classifier: classifier
-            description: description
-            id: id
-          - classifier: classifier
-            description: description
-            id: id
-          name: null
-          description: description
-          applicableTo:
-          - null
-          - null
-          id: id
-        - _links:
-            next:
-              href: https://openapi-generator.tech
-            self:
-              href: https://openapi-generator.tech
-          permissions:
-          - classifier: classifier
-            description: description
-            id: id
-          - classifier: classifier
-            description: description
-            id: id
-          name: null
-          description: description
-          applicableTo:
-          - null
-          - null
-          id: id
+        - null
+        - null
         alertChannels:
         - environment:
             id: id
@@ -38243,7 +38431,7 @@ components:
           type: array
         roles:
           items:
-            $ref: '#/components/schemas/Role'
+            $ref: '#/components/schemas/EntityArray__embedded_roles_inner'
           type: array
         schemas:
           items:

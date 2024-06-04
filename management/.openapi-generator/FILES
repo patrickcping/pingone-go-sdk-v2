@@ -71,6 +71,7 @@ api_trusted_email_domains.go
 api_user_accounts.go
 api_user_activities.go
 api_user_agreement_consents.go
+api_user_application_role_assignments.go
 api_user_id_verification.go
 api_user_passwords.go
 api_user_populations.go
@@ -184,6 +185,7 @@ docs/EntityArrayEmbeddedAttributesInner.md
 docs/EntityArrayEmbeddedGatewaysInner.md
 docs/EntityArrayEmbeddedLanguagesInner.md
 docs/EntityArrayEmbeddedResourcesInner.md
+docs/EntityArrayEmbeddedRolesInner.md
 docs/EnumAgreementRevisionContentType.md
 docs/EnumAlertChannelAlertType.md
 docs/EnumAlertChannelSeverity.md
@@ -639,6 +641,8 @@ docs/UserAccountsApi.md
 docs/UserActivitiesApi.md
 docs/UserAddress.md
 docs/UserAgreementConsentsApi.md
+docs/UserApplicationRoleAssignment.md
+docs/UserApplicationRoleAssignmentsApi.md
 docs/UserEnabled.md
 docs/UserIDVerificationApi.md
 docs/UserIdentityProvider.md
@@ -736,6 +740,7 @@ model_entity_array.go
 model_entity_array__embedded.go
 model_entity_array__embedded_gateways_inner.go
 model_entity_array__embedded_resources_inner.go
+model_entity_array__embedded_roles_inner.go
 model_enum_agreement_revision_content_type.go
 model_enum_alert_channel_alert_type.go
 model_enum_alert_channel_severity.go
@@ -1134,6 +1139,7 @@ model_update_environment_type_request.go
 model_user.go
 model_user_account.go
 model_user_address.go
+model_user_application_role_assignment.go
 model_user_enabled.go
 model_user_identity_provider.go
 model_user_last_sign_on.go
