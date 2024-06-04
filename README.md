@@ -10,7 +10,6 @@ Code for each service is generated with the help of the [OpenAPI Generator](http
 
 The SDK provides a core package, and a package per PingOne service, each with their own directory off the root of the project:
 
-* **agreementmanagement** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement) - for the PingOne end-user agreements managements service
 * **authorize** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/authorize) - for the PingOne Authorize service
 * **credentials** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/credentials) - for the PingOne Credentials service, part of PingOne Neo
 * **management** - [Documentation](https://pkg.go.dev/github.com/patrickcping/pingone-go-sdk-v2/management) - for the PingOne platform common and SSO services
@@ -49,7 +48,6 @@ if err != nil {
 ```
 
 The result is an object with clients initialised for each service:
-* `client.AgreementManagementAPIClient`
 * `client.AuthorizeAPIClient`
 * `client.CredentialsAPIClient`
 * `client.ManagementAPIClient`
@@ -77,7 +75,6 @@ if err != nil {
 
 Each package is generated from an underlying OpenAPI 3 specification.  Currently the OpenAPI 3 specification is stored in the `./<<module>>/generate/pingone-<<module>>.yml` file, although this will be subject to change in the future.
 
-* [**agreementmanagement** OpenAPI 3 Specification file](./authorize/generate/pingone-authorize.yml)
 * [**authorize** OpenAPI 3 Specification file](./authorize/generate/pingone-authorize.yml)
 * [**credentials** OpenAPI 3 Specification file](./credentials/generate/pingone-credentials.yml)
 * [**management** OpenAPI 3 Specification file](./management/generate/pingone-management.yml)

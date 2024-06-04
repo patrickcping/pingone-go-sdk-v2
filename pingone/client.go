@@ -9,7 +9,6 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement"
 	"github.com/patrickcping/pingone-go-sdk-v2/authorize"
 	"github.com/patrickcping/pingone-go-sdk-v2/credentials"
 	"github.com/patrickcping/pingone-go-sdk-v2/management"
@@ -22,24 +21,18 @@ import (
 )
 
 type Client struct {
-	AgreementManagementAPIClient *agreementmanagement.APIClient
-	AuthorizeAPIClient           *authorize.APIClient
-	CredentialsAPIClient         *credentials.APIClient
-	ManagementAPIClient          *management.APIClient
-	MFAAPIClient                 *mfa.APIClient
-	RiskAPIClient                *risk.APIClient
-	VerifyAPIClient              *verify.APIClient
-	Region                       model.RegionMapping
+	AuthorizeAPIClient   *authorize.APIClient
+	CredentialsAPIClient *credentials.APIClient
+	ManagementAPIClient  *management.APIClient
+	MFAAPIClient         *mfa.APIClient
+	RiskAPIClient        *risk.APIClient
+	VerifyAPIClient      *verify.APIClient
+	Region               model.RegionMapping
 }
 
 var version = "0.11.9"
 
 func (c *Config) APIClient(ctx context.Context) (*Client, error) {
-
-	agreementManagementClient, err := c.AgreementManagementAPIClient(ctx)
-	if err != nil {
-		return nil, err
-	}
 
 	authorizeClient, err := c.AuthorizeAPIClient(ctx)
 	if err != nil {
@@ -72,89 +65,16 @@ func (c *Config) APIClient(ctx context.Context) (*Client, error) {
 	}
 
 	apiClient := &Client{
-		AgreementManagementAPIClient: agreementManagementClient,
-		AuthorizeAPIClient:           authorizeClient,
-		CredentialsAPIClient:         credentialsClient,
-		ManagementAPIClient:          managementClient,
-		MFAAPIClient:                 mfaClient,
-		RiskAPIClient:                riskClient,
-		VerifyAPIClient:              verifyClient,
-		Region:                       model.FindRegionByName(c.Region),
+		AuthorizeAPIClient:   authorizeClient,
+		CredentialsAPIClient: credentialsClient,
+		ManagementAPIClient:  managementClient,
+		MFAAPIClient:         mfaClient,
+		RiskAPIClient:        riskClient,
+		VerifyAPIClient:      verifyClient,
+		Region:               model.FindRegionByName(c.Region),
 	}
 
 	return apiClient, nil
-}
-
-// Deprecated: Use (c *Config).AgreementManagementAPIClient() instead
-func AgreementManagementAPIClient(token *oauth2.Token) (*agreementmanagement.APIClient, error) {
-
-	var client *agreementmanagement.APIClient
-
-	clientcfg := agreementmanagement.NewConfiguration()
-	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", token.AccessToken))
-	client = agreementmanagement.NewAPIClient(clientcfg)
-
-	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Agreement Management client")
-	}
-
-	return client, nil
-
-}
-
-func (c *Config) AgreementManagementAPIClient(ctx context.Context) (*agreementmanagement.APIClient, error) {
-
-	if err := c.Validate(); err != nil {
-		return nil, fmt.Errorf("Client validation error: %s", err)
-	}
-
-	if !c.accessTokenObject.Valid() {
-		err := c.getToken(ctx)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	var client *agreementmanagement.APIClient
-
-	clientcfg := agreementmanagement.NewConfiguration()
-	clientcfg.AddDefaultHeader("Authorization", fmt.Sprintf("Bearer %s", c.accessTokenObject.AccessToken))
-
-	if checkForValue(c.AgreementMgmtHostnameOverride) {
-		clientcfg.SetDefaultServerIndex(1)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("baseHostname", *c.AgreementMgmtHostnameOverride)
-		if err != nil {
-			return nil, err
-		}
-	} else {
-		clientcfg.SetDefaultServerIndex(0)
-		err := clientcfg.SetDefaultServerVariableDefaultValue("suffix", model.FindRegionByName(c.Region).URLSuffix)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	if checkForValue(c.UserAgentOverride) {
-		clientcfg.SetUserAgent(*c.UserAgentOverride)
-	} else {
-		clientcfg.AppendUserAgent(fmt.Sprintf("PingOne-GOLANG-SDK/%s", version))
-	}
-
-	if checkForValue(c.UserAgentSuffix) {
-		clientcfg.AppendUserAgent(*c.UserAgentSuffix)
-	}
-
-	if checkForValue(c.ProxyURL) {
-		clientcfg.ProxyURL = c.ProxyURL
-	}
-
-	client = agreementmanagement.NewAPIClient(clientcfg)
-
-	if client == nil {
-		return nil, fmt.Errorf("Cannot initialise PingOne Agreement Management client")
-	}
-
-	return client, nil
 }
 
 // Deprecated: Use (c *Config).AuthorizeAPIClient() instead

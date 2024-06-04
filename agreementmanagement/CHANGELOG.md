@@ -1,3 +1,7 @@
+# v0.3.2 (Unreleased)
+
+* **MODULE RETRACTION** The API endpoint in this module suffers major loss of function. The module has been retracted but is retained in the source repo for the purpose of retration.
+
 # v0.3.1 (2024-01-12)
 
 * **Note** Upgrade GO to `v1.21` [#306](https://github.com/patrickcping/pingone-go-sdk-v2/pull/306)
