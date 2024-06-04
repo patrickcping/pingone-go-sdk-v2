@@ -1,7 +1,5 @@
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
 github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
-github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.3.1 h1:ewKD35ooojS/RDKfmtW20GDhYIeD5x/RnlcI4v2BFZs=
-github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement v0.3.1/go.mod h1:x/gbus62MUvvd7nBJo3Aprm2LTirRak6ZHwZXe8IW9s=
 github.com/patrickcping/pingone-go-sdk-v2/authorize v0.4.1 h1:6IM378rHWbrgr57bh0voVaglFti2ijAsply0JxZ7M38=
 github.com/patrickcping/pingone-go-sdk-v2/authorize v0.4.1/go.mod h1:D+vbECm13P8SkyvcWN9hjw90Qw9sbqdJTUezb+CRt3o=
 github.com/patrickcping/pingone-go-sdk-v2/credentials v0.7.0 h1:27tlGFrs31pXlC2EgmreN+WtnconZh2lW7BO70V+dBc=
