@@ -7,15 +7,24 @@
     * **Feature** Add support for Application Role Assignments API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
     * **Feature** Add support for Application Role Permissions API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
     * **Feature** Add support for Application Roles API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
+    * **Enhancement** Add the `com.au` top level domain to the connection configuration.
+* `github.com/patrickcping/pingone-go-sdk-v2/credentials` : [v0.8.0](./credentials/CHANGELOG.md)
+    * **Enhancement** Add the `com.au` top level domain to the connection configuration.
 * `github.com/patrickcping/pingone-go-sdk-v2/management` : [v0.40.0](./management/CHANGELOG.md)
     * **Breaking Change** Removed the `FormSocialLoginButtonStyles` data model.  Use the `FormStyles` data model going forward. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
     * **Note** Removed unnecessary `Width` and `IconSrc` fields from `FormSocialLoginButton` and associated data models. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
     * **Enhancement** Added `Key` field to `FormSocialLoginButton` and associated data models. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
     * **Enhancement** Added the `DeletePreviousResourceSecret` function to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
     * **Enhancement** Added `Previous` to the `ResourceSecret` model to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
+    * **Enhancement** Add the `com.au` top level domain to the connection configuration.
 * `github.com/patrickcping/pingone-go-sdk-v2/mfa` : [v0.19.0](./mfa/CHANGELOG.md)
     * **Breaking change** Remove optional `DeviceAuthenticationPolicyMobileOtpWindow` from `DeviceAuthenticationPolicyMobileOtp` constructor. [#343](https://github.com/patrickcping/pingone-go-sdk-v2/pull/343)
     * **Enhancement** Added `PromptForNicknameOnPairing` boolean field to the `DeviceAuthenticationPolicyFido2`, `DeviceAuthenticationPolicyMobile`, `DeviceAuthenticationPolicyOfflineDevice` and `DeviceAuthenticationPolicyTotp` models. [#349](https://github.com/patrickcping/pingone-go-sdk-v2/pull/349)
+    * **Enhancement** Add the `com.au` top level domain to the connection configuration.
+* `github.com/patrickcping/pingone-go-sdk-v2/risk` : [v0.15.0](./risk/CHANGELOG.md)
+    * **Enhancement** Add the `com.au` top level domain to the connection configuration.
+* `github.com/patrickcping/pingone-go-sdk-v2/verify` : [v0.5.0](./verify/CHANGELOG.md)
+    * **Enhancement** Add the `com.au` top level domain to the connection configuration.
 
 # Release (2024-05-01)
 

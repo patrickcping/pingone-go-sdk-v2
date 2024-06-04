@@ -1,3 +1,7 @@
+# v0.8.0 (Unreleased)
+
+* **Enhancement** Add the `com.au` top level domain to the connection configuration.
+
 # v0.7.0 (2024-05-01)
 
 * **Enhancement** Add `Management` to the `CredentialType` data model. [#339](https://github.com/patrickcping/pingone-go-sdk-v2/pull/339)
