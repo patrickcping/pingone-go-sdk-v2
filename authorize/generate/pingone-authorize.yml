@@ -123,6 +123,75 @@ components:
         - name
         - authorizationServer
         - baseURLs
+    APIServerDeployment:
+      type: object
+      properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
+        accessControl:
+          type: object
+          properties:
+            custom:
+              type: object
+              description: Defines if the operation will use custom policy rather than the "Group" or "Scope" `accessControl` requirement.
+              properties:
+                enabled:
+                  type: boolean
+                  default: false
+                  description: If `TRUE`, custom policy will be used for the endpoint. Defaults to `FALSE`.
+        authorizationVersion:
+          type: object
+          readOnly: true
+          properties:
+            id:
+              type: string
+              description: The UUID of the last deployed policy authorization version. This is present only if custom polcies are enabled and the API service has been deployed at least once.
+        decisionEndpoint:
+          type: object
+          readOnly: true
+          properties:
+            id:
+              type: string
+              description: The UUID of the decision endpoint.
+        deployedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: The time of most recent successful deployment. Null if the API service has never been successfully deployed.
+        policy:
+          type: object
+          readOnly: true
+          properties:
+            id:
+              type: string
+              description: The ID of the root policy.
+        status:
+          type: object
+          properties:
+            code:
+              type: string
+              description: |
+                The deployment status code.
+                - `POLICIES_CREATE_IN_PROGRESS`	The policy bundle for the API service's managed policies is being created.
+                - `DECISION_ENDPOINT_CREATE_IN_PROGRESS`	A decision endpoint is being created for the API service.
+                - `DECISION_ENDPOINT_UPDATE_IN_PROGRESS`	The API service's decision endpoint is being updated.
+                - `DEPLOYMENT_SUCCESSFUL`	The API service's policies have been successfully deployed.
+                - `DEPLOYMENT_FAILED`	HAP-MGMT was unable to deploy the API service's policies.
+                - `DEPLOYMENT_UNINITIALIZED`	A deployment has not yet been attempted.
+              enum: [POLICIES_CREATE_IN_PROGRESS, DECISION_ENDPOINT_CREATE_IN_PROGRESS, DECISION_ENDPOINT_UPDATE_IN_PROGRESS, DEPLOYMENT_SUCCESSFUL, DEPLOYMENT_FAILED, DEPLOYMENT_UNINITIALIZED]
+            error:
+              type: object
+              description: Error details returned if the last deployment request failed.
+              properties:
+                id:
+                  type: string
+                  description: A unique identifier for the error.
+                code:
+                  type: string
+                  description: A general fault code that identifies the the type of error. See [Error codes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#error-codes).
+                message:
+                  type: string
+                  description: A short human-readable description of the error.
     APIServerOperation:
       type: object
       properties:
@@ -980,6 +1049,89 @@ paths:
           $ref: '#/components/responses/500'
         '204':
           description: Successful response
+  /environments/{environmentID}/apiServers/{apiServerID}/deployment:
+    get:
+      tags:
+        - API Server Deployment
+      summary: READ API Server Deployment Status
+      operationId: readDeploymentStatus
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: apiServerID
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServerDeployment'
+    post:
+      tags:
+        - API Server Deployment
+      summary: Deploy API Server
+      operationId: deployAPIServer
+      parameters:
+        - name: environmentID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: apiServerID
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+            enum: [application/vnd.pingidentity.apiserver.deploy+json]
+          required: true
+      responses:
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServerDeployment'
   /environments/{environmentID}/apiServers/{apiServerID}/operations:
     get:
       tags:

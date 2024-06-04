@@ -738,6 +738,163 @@ paths:
       summary: UPDATE API Server
       tags:
       - API Servers
+  /environments/{environmentID}/apiServers/{apiServerID}/deployment:
+    get:
+      operationId: readDeploymentStatus
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServerDeployment'
+          description: Successful response
+      summary: READ API Server Deployment Status
+      tags:
+      - API Server Deployment
+    post:
+      operationId: deployAPIServer
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/vnd.pingidentity.apiserver.deploy+json
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServerDeployment'
+          description: Successful response
+      summary: Deploy API Server
+      tags:
+      - API Server Deployment
   /environments/{environmentID}/apiServers/{apiServerID}/operations:
     get:
       operationId: readAllAPIServerOperations
@@ -2426,6 +2583,49 @@ components:
       - baseURLs
       - name
       type: object
+    APIServerDeployment:
+      example:
+        accessControl:
+          custom:
+            enabled: false
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
+        authorizationVersion:
+          id: id
+        decisionEndpoint:
+          id: id
+        deployedAt: 2000-01-23T04:56:07.000+00:00
+        policy:
+          id: id
+        status:
+          code: POLICIES_CREATE_IN_PROGRESS
+          error:
+            code: code
+            id: id
+            message: message
+      properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
+        accessControl:
+          $ref: '#/components/schemas/APIServerDeployment_accessControl'
+        authorizationVersion:
+          $ref: '#/components/schemas/APIServerDeployment_authorizationVersion'
+        decisionEndpoint:
+          $ref: '#/components/schemas/APIServerDeployment_decisionEndpoint'
+        deployedAt:
+          description: The time of most recent successful deployment. Null if the
+            API service has never been successfully deployed.
+          format: date-time
+          readOnly: true
+          type: string
+        policy:
+          $ref: '#/components/schemas/APIServerDeployment_policy'
+        status:
+          $ref: '#/components/schemas/APIServerDeployment_status'
+      type: object
     APIServerOperation:
       example:
         accessControl:
@@ -3153,6 +3353,101 @@ components:
       readOnly: true
       required:
       - id
+      type: object
+    APIServerDeployment_accessControl_custom:
+      description: Defines if the operation will use custom policy rather than the
+        "Group" or "Scope" `accessControl` requirement.
+      example:
+        enabled: false
+      properties:
+        enabled:
+          default: false
+          description: "If `TRUE`, custom policy will be used for the endpoint. Defaults\
+            \ to `FALSE`."
+          type: boolean
+      type: object
+    APIServerDeployment_accessControl:
+      example:
+        custom:
+          enabled: false
+      properties:
+        custom:
+          $ref: '#/components/schemas/APIServerDeployment_accessControl_custom'
+      type: object
+    APIServerDeployment_authorizationVersion:
+      example:
+        id: id
+      properties:
+        id:
+          description: The UUID of the last deployed policy authorization version.
+            This is present only if custom polcies are enabled and the API service
+            has been deployed at least once.
+          type: string
+      readOnly: true
+      type: object
+    APIServerDeployment_decisionEndpoint:
+      example:
+        id: id
+      properties:
+        id:
+          description: The UUID of the decision endpoint.
+          type: string
+      readOnly: true
+      type: object
+    APIServerDeployment_policy:
+      example:
+        id: id
+      properties:
+        id:
+          description: The ID of the root policy.
+          type: string
+      readOnly: true
+      type: object
+    APIServerDeployment_status_error:
+      description: Error details returned if the last deployment request failed.
+      example:
+        code: code
+        id: id
+        message: message
+      properties:
+        id:
+          description: A unique identifier for the error.
+          type: string
+        code:
+          description: "A general fault code that identifies the the type of error.\
+            \ See [Error codes](https://apidocs.pingidentity.com/pingone/platform/v1/api/#error-codes)."
+          type: string
+        message:
+          description: A short human-readable description of the error.
+          type: string
+      type: object
+    APIServerDeployment_status:
+      example:
+        code: POLICIES_CREATE_IN_PROGRESS
+        error:
+          code: code
+          id: id
+          message: message
+      properties:
+        code:
+          description: "The deployment status code.\n- `POLICIES_CREATE_IN_PROGRESS`\t\
+            The policy bundle for the API service's managed policies is being created.\n\
+            - `DECISION_ENDPOINT_CREATE_IN_PROGRESS`\tA decision endpoint is being\
+            \ created for the API service.\n- `DECISION_ENDPOINT_UPDATE_IN_PROGRESS`\t\
+            The API service's decision endpoint is being updated.\n- `DEPLOYMENT_SUCCESSFUL`\t\
+            The API service's policies have been successfully deployed.\n- `DEPLOYMENT_FAILED`\t\
+            HAP-MGMT was unable to deploy the API service's policies.\n- `DEPLOYMENT_UNINITIALIZED`\t\
+            A deployment has not yet been attempted.\n"
+          enum:
+          - POLICIES_CREATE_IN_PROGRESS
+          - DECISION_ENDPOINT_CREATE_IN_PROGRESS
+          - DECISION_ENDPOINT_UPDATE_IN_PROGRESS
+          - DEPLOYMENT_SUCCESSFUL
+          - DEPLOYMENT_FAILED
+          - DEPLOYMENT_UNINITIALIZED
+          type: string
+        error:
+          $ref: '#/components/schemas/APIServerDeployment_status_error'
       type: object
     APIServerOperation_accessControl_group_groups_inner_element:
       description: "The ID of the group, wrapped in an object, for future extensibility.\

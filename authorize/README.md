@@ -77,6 +77,8 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*APIServerDeploymentApi* | [**DeployAPIServer**](docs/APIServerDeploymentApi.md#deployapiserver) | **Post** /environments/{environmentID}/apiServers/{apiServerID}/deployment | Deploy API Server
+*APIServerDeploymentApi* | [**ReadDeploymentStatus**](docs/APIServerDeploymentApi.md#readdeploymentstatus) | **Get** /environments/{environmentID}/apiServers/{apiServerID}/deployment | READ API Server Deployment Status
 *APIServerOperationsApi* | [**CreateAPIServerOperation**](docs/APIServerOperationsApi.md#createapiserveroperation) | **Post** /environments/{environmentID}/apiServers/{apiServerID}/operations | CREATE API Server Operation
 *APIServerOperationsApi* | [**DeleteAPIServerOperation**](docs/APIServerOperationsApi.md#deleteapiserveroperation) | **Delete** /environments/{environmentID}/apiServers/{apiServerID}/operations/{apiServerOperationID} | DELETE API Server Operation
 *APIServerOperationsApi* | [**ReadAllAPIServerOperations**](docs/APIServerOperationsApi.md#readallapiserveroperations) | **Get** /environments/{environmentID}/apiServers/{apiServerID}/operations | READ All API Server Operations
@@ -117,6 +119,14 @@ Class | Method | HTTP request | Description
  - [APIServerAccessControlCustom](docs/APIServerAccessControlCustom.md)
  - [APIServerAuthorizationServer](docs/APIServerAuthorizationServer.md)
  - [APIServerAuthorizationServerResource](docs/APIServerAuthorizationServerResource.md)
+ - [APIServerDeployment](docs/APIServerDeployment.md)
+ - [APIServerDeploymentAccessControl](docs/APIServerDeploymentAccessControl.md)
+ - [APIServerDeploymentAccessControlCustom](docs/APIServerDeploymentAccessControlCustom.md)
+ - [APIServerDeploymentAuthorizationVersion](docs/APIServerDeploymentAuthorizationVersion.md)
+ - [APIServerDeploymentDecisionEndpoint](docs/APIServerDeploymentDecisionEndpoint.md)
+ - [APIServerDeploymentPolicy](docs/APIServerDeploymentPolicy.md)
+ - [APIServerDeploymentStatus](docs/APIServerDeploymentStatus.md)
+ - [APIServerDeploymentStatusError](docs/APIServerDeploymentStatusError.md)
  - [APIServerDirectory](docs/APIServerDirectory.md)
  - [APIServerOperation](docs/APIServerOperation.md)
  - [APIServerOperationAccessControl](docs/APIServerOperationAccessControl.md)
