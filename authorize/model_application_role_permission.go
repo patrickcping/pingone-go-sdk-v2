@@ -19,6 +19,7 @@ var _ MappedNullable = &ApplicationRolePermission{}
 
 // ApplicationRolePermission struct for ApplicationRolePermission
 type ApplicationRolePermission struct {
+	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// The ID of the application resource permission to associate with this role.
 	Id string `json:"id"`
 	Environment *ObjectEnvironment `json:"environment,omitempty"`
@@ -45,6 +46,38 @@ func NewApplicationRolePermission(id string) *ApplicationRolePermission {
 func NewApplicationRolePermissionWithDefaults() *ApplicationRolePermission {
 	this := ApplicationRolePermission{}
 	return &this
+}
+
+// GetLinks returns the Links field value if set, zero value otherwise.
+func (o *ApplicationRolePermission) GetLinks() LinksHATEOAS {
+	if o == nil || IsNil(o.Links) {
+		var ret LinksHATEOAS
+		return ret
+	}
+	return *o.Links
+}
+
+// GetLinksOk returns a tuple with the Links field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRolePermission) GetLinksOk() (*LinksHATEOAS, bool) {
+	if o == nil || IsNil(o.Links) {
+		return nil, false
+	}
+	return o.Links, true
+}
+
+// HasLinks returns a boolean if a field has been set.
+func (o *ApplicationRolePermission) HasLinks() bool {
+	if o != nil && !IsNil(o.Links) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinks gets a reference to the given LinksHATEOAS and assigns it to the Links field.
+func (o *ApplicationRolePermission) SetLinks(v LinksHATEOAS) {
+	o.Links = &v
 }
 
 // GetId returns the Id field value
@@ -241,6 +274,9 @@ func (o ApplicationRolePermission) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationRolePermission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Links) {
+		toSerialize["_links"] = o.Links
+	}
 	toSerialize["id"] = o.Id
 	if !IsNil(o.Environment) {
 		toSerialize["environment"] = o.Environment

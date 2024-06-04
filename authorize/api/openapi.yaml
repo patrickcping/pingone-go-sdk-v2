@@ -2719,10 +2719,17 @@ components:
         parent:
           id: id
           type: null
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         name: name
         description: description
         id: id
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         description:
           description: The application resource's description.
           type: string
@@ -2742,6 +2749,11 @@ components:
       example:
         environment:
           id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         resource:
           name: name
           id: id
@@ -2749,6 +2761,8 @@ components:
         description: description
         id: id
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         action:
           description: The action associated with this permission.
           type: string
@@ -2768,10 +2782,17 @@ components:
       type: object
     ApplicationRole:
       example:
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         name: name
         description: description
         id: id
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         description:
           description: The description of the application role.
           type: string
@@ -2789,6 +2810,11 @@ components:
       example:
         environment:
           id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         resource:
           name: name
           id: id
@@ -2797,6 +2823,8 @@ components:
         id: id
         key: key
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           description: The ID of the application resource permission to associate
             with this role.
@@ -2821,9 +2849,16 @@ components:
     ApplicationRoleAssignment:
       example:
         role: "{}"
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         subject: "{}"
         id: id
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           description: The ID of the API server operation. This is randomly generated
             when the operation is created.
@@ -2975,9 +3010,19 @@ components:
         _embedded:
           assignments:
           - role: "{}"
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             subject: "{}"
             id: id
           - role: "{}"
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             subject: "{}"
             id: id
           operations:
@@ -3077,22 +3122,42 @@ components:
           - null
           - null
           roles:
-          - name: name
+          - _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            name: name
             description: description
             id: id
-          - name: name
+          - _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            name: name
             description: description
             id: id
           resources:
           - parent:
               id: id
               type: null
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
           - parent:
               id: id
               type: null
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
             name: name
             description: description
             id: id
@@ -3693,9 +3758,19 @@ components:
       example:
         assignments:
         - role: "{}"
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           subject: "{}"
           id: id
         - role: "{}"
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           subject: "{}"
           id: id
         operations:
@@ -3795,22 +3870,42 @@ components:
         - null
         - null
         roles:
-        - name: name
+        - _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          name: name
           description: description
           id: id
-        - name: name
+        - _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          name: name
           description: description
           id: id
         resources:
         - parent:
             id: id
             type: null
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
         - parent:
             id: id
             type: null
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
           name: name
           description: description
           id: id
