@@ -2588,6 +2588,11 @@ components:
         accessControl:
           custom:
             enabled: false
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         authorizationVersion:
           id: id
         decisionEndpoint:
@@ -2602,6 +2607,8 @@ components:
             id: id
             message: message
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         accessControl:
           $ref: '#/components/schemas/APIServerDeployment_accessControl'
         authorizationVersion:

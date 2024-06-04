@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **AccessControl** | Pointer to [**APIServerDeploymentAccessControl**](APIServerDeploymentAccessControl.md) |  | [optional] 
 **AuthorizationVersion** | Pointer to [**APIServerDeploymentAuthorizationVersion**](APIServerDeploymentAuthorizationVersion.md) |  | [optional] 
 **DecisionEndpoint** | Pointer to [**APIServerDeploymentDecisionEndpoint**](APIServerDeploymentDecisionEndpoint.md) |  | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewAPIServerDeploymentWithDefaults instantiates a new APIServerDeployment object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *APIServerDeployment) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *APIServerDeployment) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *APIServerDeployment) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *APIServerDeployment) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetAccessControl
 

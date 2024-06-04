@@ -126,6 +126,8 @@ components:
     APIServerDeployment:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         accessControl:
           type: object
           properties:
