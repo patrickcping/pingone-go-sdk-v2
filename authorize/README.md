@@ -77,6 +77,11 @@ All URIs are relative to *https://api.pingone.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*APIServerOperationsApi* | [**CreateAPIServerOperation**](docs/APIServerOperationsApi.md#createapiserveroperation) | **Post** /environments/{environmentID}/apiServers/{apiServerID}/operations | CREATE API Server Operation
+*APIServerOperationsApi* | [**DeleteAPIServerOperation**](docs/APIServerOperationsApi.md#deleteapiserveroperation) | **Delete** /environments/{environmentID}/apiServers/{apiServerID}/operations/{apiServerOperationID} | DELETE API Server Operation
+*APIServerOperationsApi* | [**ReadAllAPIServerOperations**](docs/APIServerOperationsApi.md#readallapiserveroperations) | **Get** /environments/{environmentID}/apiServers/{apiServerID}/operations | READ All API Server Operations
+*APIServerOperationsApi* | [**ReadOneAPIServerOperation**](docs/APIServerOperationsApi.md#readoneapiserveroperation) | **Get** /environments/{environmentID}/apiServers/{apiServerID}/operations/{apiServerOperationID} | READ One API Server Operation
+*APIServerOperationsApi* | [**UpdateAPIServerOperation**](docs/APIServerOperationsApi.md#updateapiserveroperation) | **Put** /environments/{environmentID}/apiServers/{apiServerID}/operations/{apiServerOperationID} | UPDATE API Server Operation
 *APIServersApi* | [**CreateAPIServer**](docs/APIServersApi.md#createapiserver) | **Post** /environments/{environmentID}/apiServers | CREATE API Server
 *APIServersApi* | [**DeleteAPIServer**](docs/APIServersApi.md#deleteapiserver) | **Delete** /environments/{environmentID}/apiServers/{apiServerID} | DELETE API Server
 *APIServersApi* | [**ReadAllAPIServers**](docs/APIServersApi.md#readallapiservers) | **Get** /environments/{environmentID}/apiServers | READ All API Servers
@@ -113,6 +118,15 @@ Class | Method | HTTP request | Description
  - [APIServerAuthorizationServer](docs/APIServerAuthorizationServer.md)
  - [APIServerAuthorizationServerResource](docs/APIServerAuthorizationServerResource.md)
  - [APIServerDirectory](docs/APIServerDirectory.md)
+ - [APIServerOperation](docs/APIServerOperation.md)
+ - [APIServerOperationAccessControl](docs/APIServerOperationAccessControl.md)
+ - [APIServerOperationAccessControlGroup](docs/APIServerOperationAccessControlGroup.md)
+ - [APIServerOperationAccessControlGroupGroupsInner](docs/APIServerOperationAccessControlGroupGroupsInner.md)
+ - [APIServerOperationAccessControlGroupGroupsInnerElement](docs/APIServerOperationAccessControlGroupGroupsInnerElement.md)
+ - [APIServerOperationAccessControlPermission](docs/APIServerOperationAccessControlPermission.md)
+ - [APIServerOperationAccessControlScope](docs/APIServerOperationAccessControlScope.md)
+ - [APIServerOperationAccessControlScopeScopesInner](docs/APIServerOperationAccessControlScopeScopesInner.md)
+ - [APIServerOperationPathsInner](docs/APIServerOperationPathsInner.md)
  - [APIServerPolicy](docs/APIServerPolicy.md)
  - [ApplicationResource](docs/ApplicationResource.md)
  - [ApplicationResourceParent](docs/ApplicationResourceParent.md)
@@ -129,6 +143,9 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbedded](docs/EntityArrayEmbedded.md)
  - [EntityArrayEmbeddedPermissionsInner](docs/EntityArrayEmbeddedPermissionsInner.md)
  - [EnumAPIServerAuthorizationServerType](docs/EnumAPIServerAuthorizationServerType.md)
+ - [EnumAPIServerOperationMatchType](docs/EnumAPIServerOperationMatchType.md)
+ - [EnumAPIServerOperationMethod](docs/EnumAPIServerOperationMethod.md)
+ - [EnumAPIServerOperationPathPatternType](docs/EnumAPIServerOperationPathPatternType.md)
  - [EnumAPIServerPatternType](docs/EnumAPIServerPatternType.md)
  - [EnumApplicationResourceParentType](docs/EnumApplicationResourceParentType.md)
  - [LinksHATEOAS](docs/LinksHATEOAS.md)

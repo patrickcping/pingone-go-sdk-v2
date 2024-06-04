@@ -738,6 +738,392 @@ paths:
       summary: UPDATE API Server
       tags:
       - API Servers
+  /environments/{environmentID}/apiServers/{apiServerID}/operations:
+    get:
+      operationId: readAllAPIServerOperations
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityArray'
+          description: Successful response
+      summary: READ All API Server Operations
+      tags:
+      - API Server Operations
+    post:
+      operationId: createAPIServerOperation
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIServerOperation'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServerOperation'
+          description: Successful response
+      summary: CREATE API Server Operation
+      tags:
+      - API Server Operations
+  /environments/{environmentID}/apiServers/{apiServerID}/operations/{apiServerOperationID}:
+    delete:
+      operationId: deleteAPIServerOperation
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerOperationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "204":
+          description: Successful response
+      summary: DELETE API Server Operation
+      tags:
+      - API Server Operations
+    get:
+      operationId: readOneAPIServerOperation
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerOperationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServerOperation'
+          description: Successful response
+      summary: READ One API Server Operation
+      tags:
+      - API Server Operations
+    put:
+      operationId: updateAPIServerOperation
+      parameters:
+      - explode: false
+        in: path
+        name: environmentID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerID
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: apiServerOperationID
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIServerOperation'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: "Invalid request received.  Malformed JSON, malformed HTTP\
+            \ request."
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request failed due to authorization issue.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Not found.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Conflict.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Request was rate limited
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/P1Error'
+          description: Uncaught error occurred.  Platform outage
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIServerOperation'
+          description: Successful response
+      summary: UPDATE API Server Operation
+      tags:
+      - API Server Operations
   /environments/{environmentID}/applicationResources:
     get:
       operationId: readApplicationResources
@@ -2040,6 +2426,87 @@ components:
       - baseURLs
       - name
       type: object
+    APIServerOperation:
+      example:
+        accessControl:
+          scope:
+            matchType: null
+            scopes:
+            - id: id
+            - id: id
+          permission:
+            id: id
+          group:
+            groups:
+            - element:
+                id: id
+            - element:
+                id: id
+            - element:
+                id: id
+            - element:
+                id: id
+            - element:
+                id: id
+        methods:
+        - null
+        - null
+        - null
+        - null
+        - null
+        paths:
+        - pattern: pattern
+          type: null
+        - pattern: pattern
+          type: null
+        - pattern: pattern
+          type: null
+        - pattern: pattern
+          type: null
+        - pattern: pattern
+          type: null
+        name: name
+        id: id
+        policy:
+          id: id
+      properties:
+        id:
+          description: The ID of the API service operation. This is randomly generated
+            when the operation is created.
+          readOnly: true
+          type: string
+        name:
+          description: The name of the API service operation.
+          type: string
+        accessControl:
+          $ref: '#/components/schemas/APIServerOperation_accessControl'
+        methods:
+          description: "The methods that define the operation. No duplicates are allowed.\
+            \ Each element must be a valid HTTP token, according to [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230),\
+            \ and cannot exceed 64 characters. An empty array is not valid. To indicate\
+            \ that an operation is defined for every method, the `methods` array should\
+            \ be set to null. The `methods` array is limited to 10 entries."
+          items:
+            $ref: '#/components/schemas/EnumAPIServerOperationMethod'
+          maxItems: 10
+          type: array
+        paths:
+          description: "The paths that define the operation. The same literal pattern\
+            \ is not allowed within the same operation (the pattern of a `paths` element\
+            \ must be unique as compared to all other patterns in the same `paths`\
+            \ array). However, the same literal pattern is allowed in different operations\
+            \ (for example, OperationA, `/path1`, OperationB, `/path1` is valid).\
+            \ The `paths` array is limited to 10 entries."
+          items:
+            $ref: '#/components/schemas/APIServerOperation_paths_inner'
+          maxItems: 10
+          type: array
+        policy:
+          $ref: '#/components/schemas/APIServer_policy'
+      required:
+      - name
+      - paths
+      type: object
     ApplicationResource:
       example:
         parent:
@@ -2184,6 +2651,35 @@ components:
       description: The application resource's parent type. Options are PING_ONE_RESOURCE.
       enum:
       - PING_ONE_RESOURCE
+      type: string
+    EnumAPIServerOperationMatchType:
+      description: An enumeration defining the match type of the scope rule. `ALL`
+        means the client must be authorized with all scopes configured in the `scopes`
+        array to obtain access. `ANY` means the client must be authorized with one
+        or more of the scopes.
+      enum:
+      - ANY
+      - ALL
+      type: string
+    EnumAPIServerOperationMethod:
+      description: The name of the HTTP method. This value is case-sensitive.
+      enum:
+      - GET
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+      - OPTIONS
+      type: string
+    EnumAPIServerOperationPathPatternType:
+      description: "The type of the pattern. Options are `EXACT` (the verbatim pattern\
+        \ is compared against the path from the request using a case-sensitive comparison)\
+        \ and `PARAMETER` (the pattern is compared against the path from the request\
+        \ using a case-sensitive comparison, using the syntax below to encode wildcards\
+        \ and named parameters)."
+      enum:
+      - EXACT
+      - PARAMETER
       type: string
     DecisionEndpoint:
       example:
@@ -2557,6 +3053,153 @@ components:
       readOnly: true
       required:
       - id
+      type: object
+    APIServerOperation_accessControl_group_groups_inner_element:
+      description: "The ID of the group, wrapped in an object, for future extensibility.\
+        \ This is a required property if `operations.value.accessControl.group` is\
+        \ set."
+      example:
+        id: id
+      properties:
+        id:
+          description: A UUID that specifies the group ID. This is a required property
+            if `accessControl.group` is set.
+          type: string
+      required:
+      - id
+      type: object
+    APIServerOperation_accessControl_group_groups_inner:
+      example:
+        element:
+          id: id
+      properties:
+        element:
+          $ref: '#/components/schemas/APIServerOperation_accessControl_group_groups_inner_element'
+      required:
+      - element
+      type: object
+    APIServerOperation_accessControl_group:
+      description: The group membership requirements for the operation. The `groups`
+        array must be non-empty when the `group` object is included. The `groups`
+        array must not contain more than 25 elements.
+      example:
+        groups:
+        - element:
+            id: id
+        - element:
+            id: id
+        - element:
+            id: id
+        - element:
+            id: id
+        - element:
+            id: id
+      properties:
+        groups:
+          description: "The list of groups that define the access requirements for\
+            \ the operation. The end user must be a member of one or more of these\
+            \ groups to gain access to the operation. This is a required property\
+            \ if `accessControl.group` is set. The ID must reference a group that\
+            \ exists at the time the data is persisted. There is no referential integrity\
+            \ between a group and this configuration. If a group is subsequently deleted,\
+            \ the access control configuration will continue to reference that group."
+          items:
+            $ref: '#/components/schemas/APIServerOperation_accessControl_group_groups_inner'
+          maxItems: 25
+          minItems: 1
+          type: array
+      required:
+      - groups
+      type: object
+    APIServerOperation_accessControl_permission:
+      description: Defines the application permission requirements for the operation.
+      example:
+        id: id
+      properties:
+        id:
+          description: An application permission ID that defines the access requirements
+            for the operation. The end user must be entitled to the specified application
+            permission to gain access to the operation. This is a required property
+            if `accessControl.permission` is set.
+          type: string
+      required:
+      - id
+      type: object
+    APIServerOperation_accessControl_scope_scopes_inner:
+      example:
+        id: id
+      properties:
+        id:
+          description: The ID of the scope.
+          type: string
+      required:
+      - id
+      type: object
+    APIServerOperation_accessControl_scope:
+      description: Defines the scope membership requirements for the operation.
+      example:
+        matchType: null
+        scopes:
+        - id: id
+        - id: id
+      properties:
+        matchType:
+          $ref: '#/components/schemas/EnumAPIServerOperationMatchType'
+        scopes:
+          description: "A list of scopes that define the access requirements for the\
+            \ operation. The client must be authorized with `ANY` or `ALL` of the\
+            \ scopes to be granted access, depending on the `matchType` configuration."
+          items:
+            $ref: '#/components/schemas/APIServerOperation_accessControl_scope_scopes_inner'
+          type: array
+      required:
+      - scopes
+      type: object
+    APIServerOperation_accessControl:
+      description: The access control configuration for the operation.
+      example:
+        scope:
+          matchType: null
+          scopes:
+          - id: id
+          - id: id
+        permission:
+          id: id
+        group:
+          groups:
+          - element:
+              id: id
+          - element:
+              id: id
+          - element:
+              id: id
+          - element:
+              id: id
+          - element:
+              id: id
+      properties:
+        group:
+          $ref: '#/components/schemas/APIServerOperation_accessControl_group'
+        permission:
+          $ref: '#/components/schemas/APIServerOperation_accessControl_permission'
+        scope:
+          $ref: '#/components/schemas/APIServerOperation_accessControl_scope'
+      type: object
+    APIServerOperation_paths_inner:
+      example:
+        pattern: pattern
+        type: null
+      properties:
+        pattern:
+          description: |
+            The pattern used to identify the path or paths for the operation. The semantics of the pattern are determined by the type. For any type, the pattern can contain characters that are otherwise invalid in a URL path. Invalid characters are handled by performing matching against a percent-decoded HTTP request target path. This allows an administrator to configure patterns without worrying about percent encoding special characters.
+            When the `type` is `PARAMETER`, the syntax outlined in the table below is enforced. Additionally, the pattern must contain a wildcard, double wildcard or named parameter. When the `type` is `EXACT`, the pattern can be any byte sequence except for ASCII control characters such as line feeds or carriage returns. The length of the pattern cannot exceed 2048 characters. The path pattern must not contain empty path segments such as `/../`, `//`, and `/./`.
+          type: string
+        type:
+          $ref: '#/components/schemas/EnumAPIServerOperationPathPatternType'
+      required:
+      - pattern
+      - type
       type: object
     ApplicationResource_parent:
       description: The application resource's parent.
