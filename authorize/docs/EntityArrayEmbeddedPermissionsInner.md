@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Action** | **string** | The action associated with this permission. | 
-**Description** | Pointer to **string** | The resource&#39;s description. | [optional] 
+**Action** | **string** | The action associated with this permission. | [readonly] 
+**Description** | Pointer to **string** |  | [optional] [readonly] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
 **Id** | **string** | The ID of the application resource permission to associate with this role. | 
-**Resource** | Pointer to [**ApplicationResourcePermissionResource**](ApplicationResourcePermissionResource.md) |  | [optional] 
-**Permission** | Pointer to [**ApplicationRolePermissionPermission**](ApplicationRolePermissionPermission.md) |  | [optional] 
+**Resource** | Pointer to [**ApplicationRolePermissionResource**](ApplicationRolePermissionResource.md) |  | [optional] 
+**Key** | Pointer to **string** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -122,20 +122,20 @@ SetId sets Id field to given value.
 
 ### GetResource
 
-`func (o *EntityArrayEmbeddedPermissionsInner) GetResource() ApplicationResourcePermissionResource`
+`func (o *EntityArrayEmbeddedPermissionsInner) GetResource() ApplicationRolePermissionResource`
 
 GetResource returns the Resource field if non-nil, zero value otherwise.
 
 ### GetResourceOk
 
-`func (o *EntityArrayEmbeddedPermissionsInner) GetResourceOk() (*ApplicationResourcePermissionResource, bool)`
+`func (o *EntityArrayEmbeddedPermissionsInner) GetResourceOk() (*ApplicationRolePermissionResource, bool)`
 
 GetResourceOk returns a tuple with the Resource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResource
 
-`func (o *EntityArrayEmbeddedPermissionsInner) SetResource(v ApplicationResourcePermissionResource)`
+`func (o *EntityArrayEmbeddedPermissionsInner) SetResource(v ApplicationRolePermissionResource)`
 
 SetResource sets Resource field to given value.
 
@@ -145,30 +145,30 @@ SetResource sets Resource field to given value.
 
 HasResource returns a boolean if a field has been set.
 
-### GetPermission
+### GetKey
 
-`func (o *EntityArrayEmbeddedPermissionsInner) GetPermission() ApplicationRolePermissionPermission`
+`func (o *EntityArrayEmbeddedPermissionsInner) GetKey() string`
 
-GetPermission returns the Permission field if non-nil, zero value otherwise.
+GetKey returns the Key field if non-nil, zero value otherwise.
 
-### GetPermissionOk
+### GetKeyOk
 
-`func (o *EntityArrayEmbeddedPermissionsInner) GetPermissionOk() (*ApplicationRolePermissionPermission, bool)`
+`func (o *EntityArrayEmbeddedPermissionsInner) GetKeyOk() (*string, bool)`
 
-GetPermissionOk returns a tuple with the Permission field if it's non-nil, zero value otherwise
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPermission
+### SetKey
 
-`func (o *EntityArrayEmbeddedPermissionsInner) SetPermission(v ApplicationRolePermissionPermission)`
+`func (o *EntityArrayEmbeddedPermissionsInner) SetKey(v string)`
 
-SetPermission sets Permission field to given value.
+SetKey sets Key field to given value.
 
-### HasPermission
+### HasKey
 
-`func (o *EntityArrayEmbeddedPermissionsInner) HasPermission() bool`
+`func (o *EntityArrayEmbeddedPermissionsInner) HasKey() bool`
 
-HasPermission returns a boolean if a field has been set.
+HasKey returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

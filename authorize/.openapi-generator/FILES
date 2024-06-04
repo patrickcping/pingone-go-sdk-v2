@@ -22,8 +22,7 @@ docs/ApplicationRole.md
 docs/ApplicationRoleAssignment.md
 docs/ApplicationRoleAssignmentsApi.md
 docs/ApplicationRolePermission.md
-docs/ApplicationRolePermissionPermission.md
-docs/ApplicationRolePermissionPermissionResource.md
+docs/ApplicationRolePermissionResource.md
 docs/ApplicationRolePermissionsApi.md
 docs/ApplicationRolesApi.md
 docs/DecisionEndpoint.md
@@ -57,8 +56,7 @@ model_application_resource_permission_resource.go
 model_application_role.go
 model_application_role_assignment.go
 model_application_role_permission.go
-model_application_role_permission_permission.go
-model_application_role_permission_permission_resource.go
+model_application_role_permission_resource.go
 model_decision_endpoint.go
 model_decision_endpoint_authorization_version.go
 model_decision_endpoint_recent_decisions.go

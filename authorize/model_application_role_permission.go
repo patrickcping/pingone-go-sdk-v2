@@ -21,7 +21,12 @@ var _ MappedNullable = &ApplicationRolePermission{}
 type ApplicationRolePermission struct {
 	// The ID of the application resource permission to associate with this role.
 	Id string `json:"id"`
-	Permission *ApplicationRolePermissionPermission `json:"permission,omitempty"`
+	Environment *ObjectEnvironment `json:"environment,omitempty"`
+	Key *string `json:"key,omitempty"`
+	Description *string `json:"description,omitempty"`
+	// The action associated with this permission.
+	Action *string `json:"action,omitempty"`
+	Resource *ApplicationRolePermissionResource `json:"resource,omitempty"`
 }
 
 // NewApplicationRolePermission instantiates a new ApplicationRolePermission object
@@ -66,36 +71,164 @@ func (o *ApplicationRolePermission) SetId(v string) {
 	o.Id = v
 }
 
-// GetPermission returns the Permission field value if set, zero value otherwise.
-func (o *ApplicationRolePermission) GetPermission() ApplicationRolePermissionPermission {
-	if o == nil || IsNil(o.Permission) {
-		var ret ApplicationRolePermissionPermission
+// GetEnvironment returns the Environment field value if set, zero value otherwise.
+func (o *ApplicationRolePermission) GetEnvironment() ObjectEnvironment {
+	if o == nil || IsNil(o.Environment) {
+		var ret ObjectEnvironment
 		return ret
 	}
-	return *o.Permission
+	return *o.Environment
 }
 
-// GetPermissionOk returns a tuple with the Permission field value if set, nil otherwise
+// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationRolePermission) GetPermissionOk() (*ApplicationRolePermissionPermission, bool) {
-	if o == nil || IsNil(o.Permission) {
+func (o *ApplicationRolePermission) GetEnvironmentOk() (*ObjectEnvironment, bool) {
+	if o == nil || IsNil(o.Environment) {
 		return nil, false
 	}
-	return o.Permission, true
+	return o.Environment, true
 }
 
-// HasPermission returns a boolean if a field has been set.
-func (o *ApplicationRolePermission) HasPermission() bool {
-	if o != nil && !IsNil(o.Permission) {
+// HasEnvironment returns a boolean if a field has been set.
+func (o *ApplicationRolePermission) HasEnvironment() bool {
+	if o != nil && !IsNil(o.Environment) {
 		return true
 	}
 
 	return false
 }
 
-// SetPermission gets a reference to the given ApplicationRolePermissionPermission and assigns it to the Permission field.
-func (o *ApplicationRolePermission) SetPermission(v ApplicationRolePermissionPermission) {
-	o.Permission = &v
+// SetEnvironment gets a reference to the given ObjectEnvironment and assigns it to the Environment field.
+func (o *ApplicationRolePermission) SetEnvironment(v ObjectEnvironment) {
+	o.Environment = &v
+}
+
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *ApplicationRolePermission) GetKey() string {
+	if o == nil || IsNil(o.Key) {
+		var ret string
+		return ret
+	}
+	return *o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRolePermission) GetKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.Key) {
+		return nil, false
+	}
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *ApplicationRolePermission) HasKey() bool {
+	if o != nil && !IsNil(o.Key) {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *ApplicationRolePermission) SetKey(v string) {
+	o.Key = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *ApplicationRolePermission) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRolePermission) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ApplicationRolePermission) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ApplicationRolePermission) SetDescription(v string) {
+	o.Description = &v
+}
+
+// GetAction returns the Action field value if set, zero value otherwise.
+func (o *ApplicationRolePermission) GetAction() string {
+	if o == nil || IsNil(o.Action) {
+		var ret string
+		return ret
+	}
+	return *o.Action
+}
+
+// GetActionOk returns a tuple with the Action field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRolePermission) GetActionOk() (*string, bool) {
+	if o == nil || IsNil(o.Action) {
+		return nil, false
+	}
+	return o.Action, true
+}
+
+// HasAction returns a boolean if a field has been set.
+func (o *ApplicationRolePermission) HasAction() bool {
+	if o != nil && !IsNil(o.Action) {
+		return true
+	}
+
+	return false
+}
+
+// SetAction gets a reference to the given string and assigns it to the Action field.
+func (o *ApplicationRolePermission) SetAction(v string) {
+	o.Action = &v
+}
+
+// GetResource returns the Resource field value if set, zero value otherwise.
+func (o *ApplicationRolePermission) GetResource() ApplicationRolePermissionResource {
+	if o == nil || IsNil(o.Resource) {
+		var ret ApplicationRolePermissionResource
+		return ret
+	}
+	return *o.Resource
+}
+
+// GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRolePermission) GetResourceOk() (*ApplicationRolePermissionResource, bool) {
+	if o == nil || IsNil(o.Resource) {
+		return nil, false
+	}
+	return o.Resource, true
+}
+
+// HasResource returns a boolean if a field has been set.
+func (o *ApplicationRolePermission) HasResource() bool {
+	if o != nil && !IsNil(o.Resource) {
+		return true
+	}
+
+	return false
+}
+
+// SetResource gets a reference to the given ApplicationRolePermissionResource and assigns it to the Resource field.
+func (o *ApplicationRolePermission) SetResource(v ApplicationRolePermissionResource) {
+	o.Resource = &v
 }
 
 func (o ApplicationRolePermission) MarshalJSON() ([]byte, error) {
@@ -109,8 +242,20 @@ func (o ApplicationRolePermission) MarshalJSON() ([]byte, error) {
 func (o ApplicationRolePermission) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	if !IsNil(o.Permission) {
-		toSerialize["permission"] = o.Permission
+	if !IsNil(o.Environment) {
+		toSerialize["environment"] = o.Environment
+	}
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Action) {
+		toSerialize["action"] = o.Action
+	}
+	if !IsNil(o.Resource) {
+		toSerialize["resource"] = o.Resource
 	}
 	return toSerialize, nil
 }
