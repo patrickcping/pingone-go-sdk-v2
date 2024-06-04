@@ -126,6 +126,8 @@ components:
     APIServerOperation:
       type: object
       properties:
+        '_links':
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           type: string
           readOnly: true
@@ -446,6 +448,10 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/DecisionEndpoint'
+            operations:
+              type: array
+              items:
+                $ref: '#/components/schemas/APIServerOperation'
             permissions:
               type: array
               items:

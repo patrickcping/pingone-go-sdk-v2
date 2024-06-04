@@ -2448,6 +2448,11 @@ components:
                 id: id
             - element:
                 id: id
+        _links:
+          next:
+            href: https://openapi-generator.tech
+          self:
+            href: https://openapi-generator.tech
         methods:
         - null
         - null
@@ -2470,6 +2475,8 @@ components:
         policy:
           id: id
       properties:
+        _links:
+          $ref: '#/components/schemas/LinksHATEOAS'
         id:
           description: The ID of the API service operation. This is randomly generated
             when the operation is created.
@@ -2773,6 +2780,99 @@ components:
           - role: "{}"
             subject: "{}"
             id: id
+          operations:
+          - accessControl:
+              scope:
+                matchType: null
+                scopes:
+                - id: id
+                - id: id
+              permission:
+                id: id
+              group:
+                groups:
+                - element:
+                    id: id
+                - element:
+                    id: id
+                - element:
+                    id: id
+                - element:
+                    id: id
+                - element:
+                    id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            methods:
+            - null
+            - null
+            - null
+            - null
+            - null
+            paths:
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+            name: name
+            id: id
+            policy:
+              id: id
+          - accessControl:
+              scope:
+                matchType: null
+                scopes:
+                - id: id
+                - id: id
+              permission:
+                id: id
+              group:
+                groups:
+                - element:
+                    id: id
+                - element:
+                    id: id
+                - element:
+                    id: id
+                - element:
+                    id: id
+                - element:
+                    id: id
+            _links:
+              next:
+                href: https://openapi-generator.tech
+              self:
+                href: https://openapi-generator.tech
+            methods:
+            - null
+            - null
+            - null
+            - null
+            - null
+            paths:
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+            - pattern: pattern
+              type: null
+            name: name
+            id: id
+            policy:
+              id: id
           permissions:
           - null
           - null
@@ -3303,6 +3403,99 @@ components:
         - role: "{}"
           subject: "{}"
           id: id
+        operations:
+        - accessControl:
+            scope:
+              matchType: null
+              scopes:
+              - id: id
+              - id: id
+            permission:
+              id: id
+            group:
+              groups:
+              - element:
+                  id: id
+              - element:
+                  id: id
+              - element:
+                  id: id
+              - element:
+                  id: id
+              - element:
+                  id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          methods:
+          - null
+          - null
+          - null
+          - null
+          - null
+          paths:
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+          name: name
+          id: id
+          policy:
+            id: id
+        - accessControl:
+            scope:
+              matchType: null
+              scopes:
+              - id: id
+              - id: id
+            permission:
+              id: id
+            group:
+              groups:
+              - element:
+                  id: id
+              - element:
+                  id: id
+              - element:
+                  id: id
+              - element:
+                  id: id
+              - element:
+                  id: id
+          _links:
+            next:
+              href: https://openapi-generator.tech
+            self:
+              href: https://openapi-generator.tech
+          methods:
+          - null
+          - null
+          - null
+          - null
+          - null
+          paths:
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+          - pattern: pattern
+            type: null
+          name: name
+          id: id
+          policy:
+            id: id
         permissions:
         - null
         - null
@@ -3428,6 +3621,10 @@ components:
         decisionEndpoints:
           items:
             $ref: '#/components/schemas/DecisionEndpoint'
+          type: array
+        operations:
+          items:
+            $ref: '#/components/schemas/APIServerOperation'
           type: array
         permissions:
           items:
