@@ -7,7 +7,7 @@
 * **Feature** Add support for Application Role Assignments API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
 * **Feature** Add support for Application Role Permissions API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
 * **Feature** Add support for Application Roles API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
-* **Feature** Add support for API Server Operations.
+* **Feature** Add support for API Server Operations. [#354](https://github.com/patrickcping/pingone-go-sdk-v2/pull/354)
 * **Enhancement** Add the `com.au` top level domain to the connection configuration. [#351](https://github.com/patrickcping/pingone-go-sdk-v2/pull/351)
 * **Enhancement** Added `AccessControl` and `Directory` fields to the `APIServer` model. [#353](https://github.com/patrickcping/pingone-go-sdk-v2/pull/353)
 * **Enhancement** Added `Type` field to the `APIServerAuthorizationServer` model. [#353](https://github.com/patrickcping/pingone-go-sdk-v2/pull/353)
