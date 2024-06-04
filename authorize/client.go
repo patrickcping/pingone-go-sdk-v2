@@ -543,7 +543,7 @@ func formatErrorMessage(status string, v interface{}) string {
 // supporting deep object syntax
 func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {
 	var v = reflect.ValueOf(obj)
-	var value = ""
+	value := ""
 	if v == reflect.ValueOf(nil) {
 		value = "null"
 	} else {
@@ -619,9 +619,7 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 		} else {
 			valuesMap.Add(keyPrefix, value)
 		}
-		break
 	case map[string]string:
 		valuesMap[keyPrefix] = value
-		break
 	}
 }
