@@ -46,58 +46,6 @@ func TestValidateAccessToken_InvalidFormat(t *testing.T) {
 	t.Skip()
 }
 
-func TestValidateAgreementMgmtHostnameOverride_ConfigSuccess(t *testing.T) {
-
-	value := "agreement-mgmt.ping-devops.com"
-
-	config := &Config{
-		AgreementMgmtHostnameOverride: &value,
-	}
-
-	if err := config.validateAgreementMgmtHostnameOverride(); err != nil {
-		t.Fatalf("Parameter not successfully verified: %s", err)
-	}
-
-	if *config.AgreementMgmtHostnameOverride != value {
-		t.Fatalf("Parameter unexpectedly overwritten")
-	}
-}
-
-func TestValidateAgreementMgmtHostnameOverride_EnvSuccess(t *testing.T) {
-
-	value := os.Getenv("PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME")
-
-	if value == "" {
-		t.Fatalf("Required environment variable PINGONE_AGREEMENT_MGMT_SERVICE_HOSTNAME not set")
-	}
-
-	config := &Config{}
-
-	if err := config.validateAgreementMgmtHostnameOverride(); err != nil {
-		t.Fatalf("Parameter not successfully verified: %s", err)
-	}
-
-	if *config.AgreementMgmtHostnameOverride != value {
-		t.Fatalf("Parameter default not taken from environment")
-	}
-}
-
-func TestValidateAgreementMgmtHostnameOverride_InvalidFormat(t *testing.T) {
-	value := "https://dummyhostname"
-
-	config := &Config{
-		AgreementMgmtHostnameOverride: &value,
-	}
-
-	if err := config.validateAgreementMgmtHostnameOverride(); err == nil {
-		t.Fatalf("Invalid Parameter format not successfully verified")
-	}
-
-	if err := config.validateAgreementMgmtHostnameOverride(); !strings.HasPrefix(err.Error(), "Invalid parameter format") {
-		t.Fatalf("Invalid Parameter format not successfully verified: %s", err.Error())
-	}
-}
-
 func TestValidateAPIHostnameOverride_ConfigSuccess(t *testing.T) {
 
 	value := "api.ping-devops.com"

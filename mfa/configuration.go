@@ -103,10 +103,11 @@ func NewConfiguration() *Configuration {
 						Description: "No description provided",
 						DefaultValue: "com",
 						EnumValues: []string{
-							"eu",
-							"com",
 							"asia",
 							"ca",
+							"com",
+							"com.au",
+							"eu",
 						},
 					},
 					"baseDomain": ServerVariable{
