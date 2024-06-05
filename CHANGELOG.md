@@ -3,6 +3,7 @@
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.0
     * **Note** Removal of retracted module `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement`. [#352](https://github.com/patrickcping/pingone-go-sdk-v2/pull/352)
     * **Note** Deprecated the region name.  Region codes should be used instead. [#358](https://github.com/patrickcping/pingone-go-sdk-v2/pull/358)
+    * **Note** bump `golang.org/x/oauth2` v0.19.0 => v0.21.0 [#341](https://github.com/patrickcping/pingone-go-sdk-v2/pull/341)
 * `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement` : [v0.3.2](./agreementmanagement/CHANGELOG.md)
     * **MODULE RETRACTION** The API endpoint in this module suffers major loss of function. The module has been retracted but is retained in the source repo for the purpose of retration. [#352](https://github.com/patrickcping/pingone-go-sdk-v2/pull/352)
 * `github.com/patrickcping/pingone-go-sdk-v2/authorize` : [v0.5.0](./authorize/CHANGELOG.md)
