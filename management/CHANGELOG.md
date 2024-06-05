@@ -11,7 +11,7 @@
 * **Enhancement** Added `Previous` to the `ResourceSecret` model to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
 * **Enhancement** Add the `com.au` top level domain to the connection configuration. [#351](https://github.com/patrickcping/pingone-go-sdk-v2/pull/351)
 * **Enhancement** Add the `AU` region code to the `EnumRegionCode` model. [#358](https://github.com/patrickcping/pingone-go-sdk-v2/pull/358)
-* **Enhancement** Added `SpEncryption` to the `ApplicationSAML` and associated models to control encryption of SAML application assertions.
+* **Enhancement** Added `SpEncryption` to the `ApplicationSAML` and associated models to control encryption of SAML application assertions. [#348](https://github.com/patrickcping/pingone-go-sdk-v2/pull/348)
 
 # v0.39.0 (2024-05-01)
 
