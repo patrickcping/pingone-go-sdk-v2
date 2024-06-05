@@ -69,6 +69,7 @@ jobs:
       PINGONE_CLIENT_SECRET_TESTACC: ${{ secrets.EU_PINGONE_CLIENT_SECRET }}
       PINGONE_ENVIRONMENT_ID_TESTACC: ${{ secrets.EU_PINGONE_ENVIRONMENT_ID }}
       PINGONE_REGION_TESTACC: Europe
+      PINGONE_REGION_CODE_TESTACC: EU
       PINGONE_API_ACCESS_TOKEN: testtest
       PINGONE_API_SERVICE_HOSTNAME: api.ping-eng.com
       PINGONE_AUTH_SERVICE_HOSTNAME: auth.ping-eng.com
@@ -76,6 +77,7 @@ jobs:
       PINGONE_CLIENT_SECRET: testtesttest
       PINGONE_ENVIRONMENT_ID: 9c052a8a-14be-44e4-8f07-2662569994ce
       PINGONE_REGION: AsiaPacific
+      PINGONE_REGION_CODE: AP
         
     timeout-minutes: 15
     strategy:
