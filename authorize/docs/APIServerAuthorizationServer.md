@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Resource** | [**APIServerAuthorizationServerResource**](APIServerAuthorizationServerResource.md) |  | 
+**Resource** | Pointer to [**APIServerAuthorizationServerResource**](APIServerAuthorizationServerResource.md) |  | [optional] 
+**Type** | [**EnumAPIServerAuthorizationServerType**](EnumAPIServerAuthorizationServerType.md) |  | 
 
 ## Methods
 
 ### NewAPIServerAuthorizationServer
 
-`func NewAPIServerAuthorizationServer(resource APIServerAuthorizationServerResource, ) *APIServerAuthorizationServer`
+`func NewAPIServerAuthorizationServer(type_ EnumAPIServerAuthorizationServerType, ) *APIServerAuthorizationServer`
 
 NewAPIServerAuthorizationServer instantiates a new APIServerAuthorizationServer object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +44,31 @@ and a boolean to check if the value has been set.
 `func (o *APIServerAuthorizationServer) SetResource(v APIServerAuthorizationServerResource)`
 
 SetResource sets Resource field to given value.
+
+### HasResource
+
+`func (o *APIServerAuthorizationServer) HasResource() bool`
+
+HasResource returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *APIServerAuthorizationServer) GetType() EnumAPIServerAuthorizationServerType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *APIServerAuthorizationServer) GetTypeOk() (*EnumAPIServerAuthorizationServerType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *APIServerAuthorizationServer) SetType(v EnumAPIServerAuthorizationServerType)`
+
+SetType sets Type field to given value.
 
 
 

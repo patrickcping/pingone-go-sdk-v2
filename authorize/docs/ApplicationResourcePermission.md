@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **Action** | **string** | The action associated with this permission. | 
 **Description** | Pointer to **string** | The resource&#39;s description. | [optional] 
 **Environment** | Pointer to [**ObjectEnvironment**](ObjectEnvironment.md) |  | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewApplicationResourcePermissionWithDefaults instantiates a new ApplicationResourcePermission object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *ApplicationResourcePermission) GetLinks() LinksHATEOAS`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *ApplicationResourcePermission) GetLinksOk() (*LinksHATEOAS, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *ApplicationResourcePermission) SetLinks(v LinksHATEOAS)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *ApplicationResourcePermission) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
 
 ### GetAction
 

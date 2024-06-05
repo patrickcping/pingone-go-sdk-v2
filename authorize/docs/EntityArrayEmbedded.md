@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ApiServers** | Pointer to [**[]APIServer**](APIServer.md) |  | [optional] 
 **Assignments** | Pointer to [**[]ApplicationRoleAssignment**](ApplicationRoleAssignment.md) |  | [optional] 
 **DecisionEndpoints** | Pointer to [**[]DecisionEndpoint**](DecisionEndpoint.md) |  | [optional] 
+**Operations** | Pointer to [**[]APIServerOperation**](APIServerOperation.md) |  | [optional] 
 **Permissions** | Pointer to [**[]EntityArrayEmbeddedPermissionsInner**](EntityArrayEmbeddedPermissionsInner.md) |  | [optional] 
 **Resources** | Pointer to [**[]ApplicationResource**](ApplicationResource.md) |  | [optional] 
 **Roles** | Pointer to [**[]ApplicationRole**](ApplicationRole.md) |  | [optional] 
@@ -104,6 +105,31 @@ SetDecisionEndpoints sets DecisionEndpoints field to given value.
 `func (o *EntityArrayEmbedded) HasDecisionEndpoints() bool`
 
 HasDecisionEndpoints returns a boolean if a field has been set.
+
+### GetOperations
+
+`func (o *EntityArrayEmbedded) GetOperations() []APIServerOperation`
+
+GetOperations returns the Operations field if non-nil, zero value otherwise.
+
+### GetOperationsOk
+
+`func (o *EntityArrayEmbedded) GetOperationsOk() (*[]APIServerOperation, bool)`
+
+GetOperationsOk returns a tuple with the Operations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperations
+
+`func (o *EntityArrayEmbedded) SetOperations(v []APIServerOperation)`
+
+SetOperations sets Operations field to given value.
+
+### HasOperations
+
+`func (o *EntityArrayEmbedded) HasOperations() bool`
+
+HasOperations returns a boolean if a field has been set.
 
 ### GetPermissions
 

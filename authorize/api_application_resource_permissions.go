@@ -23,7 +23,7 @@ import (
 // ApplicationResourcePermissionsApiService ApplicationResourcePermissionsApi service
 type ApplicationResourcePermissionsApiService service
 
-type ApiCreateApplicationPermissionsRequest struct {
+type ApiCreateApplicationPermissionRequest struct {
 	ctx context.Context
 	ApiService *ApplicationResourcePermissionsApiService
 	environmentID string
@@ -31,25 +31,25 @@ type ApiCreateApplicationPermissionsRequest struct {
 	applicationResourcePermission *ApplicationResourcePermission
 }
 
-func (r ApiCreateApplicationPermissionsRequest) ApplicationResourcePermission(applicationResourcePermission ApplicationResourcePermission) ApiCreateApplicationPermissionsRequest {
+func (r ApiCreateApplicationPermissionRequest) ApplicationResourcePermission(applicationResourcePermission ApplicationResourcePermission) ApiCreateApplicationPermissionRequest {
 	r.applicationResourcePermission = &applicationResourcePermission
 	return r
 }
 
-func (r ApiCreateApplicationPermissionsRequest) Execute() (*ApplicationResourcePermission, *http.Response, error) {
-	return r.ApiService.CreateApplicationPermissionsExecute(r)
+func (r ApiCreateApplicationPermissionRequest) Execute() (*ApplicationResourcePermission, *http.Response, error) {
+	return r.ApiService.CreateApplicationPermissionExecute(r)
 }
 
 /*
-CreateApplicationPermissions CREATE Application Permissions
+CreateApplicationPermission CREATE Application Permission
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentID
  @param applicationResourceID
- @return ApiCreateApplicationPermissionsRequest
+ @return ApiCreateApplicationPermissionRequest
 */
-func (a *ApplicationResourcePermissionsApiService) CreateApplicationPermissions(ctx context.Context, environmentID string, applicationResourceID string) ApiCreateApplicationPermissionsRequest {
-	return ApiCreateApplicationPermissionsRequest{
+func (a *ApplicationResourcePermissionsApiService) CreateApplicationPermission(ctx context.Context, environmentID string, applicationResourceID string) ApiCreateApplicationPermissionRequest {
+	return ApiCreateApplicationPermissionRequest{
 		ApiService: a,
 		ctx: ctx,
 		environmentID: environmentID,
@@ -59,7 +59,7 @@ func (a *ApplicationResourcePermissionsApiService) CreateApplicationPermissions(
 
 // Execute executes the request
 //  @return ApplicationResourcePermission
-func (a *ApplicationResourcePermissionsApiService) CreateApplicationPermissionsExecute(r ApiCreateApplicationPermissionsRequest) (*ApplicationResourcePermission, *http.Response, error) {
+func (a *ApplicationResourcePermissionsApiService) CreateApplicationPermissionExecute(r ApiCreateApplicationPermissionRequest) (*ApplicationResourcePermission, *http.Response, error) {
 	var (
 		err                  error
 		response             *http.Response
@@ -68,14 +68,14 @@ func (a *ApplicationResourcePermissionsApiService) CreateApplicationPermissionsE
 	
 	response, err = processResponse(
 		func() (any, *http.Response, error) {
-			return r.ApiService.internalCreateApplicationPermissionsExecute(r)
+			return r.ApiService.internalCreateApplicationPermissionExecute(r)
 		},
 		&localVarReturnValue,
 	)
 	return localVarReturnValue, response, err
 }
 			
-func (a *ApplicationResourcePermissionsApiService) internalCreateApplicationPermissionsExecute(r ApiCreateApplicationPermissionsRequest) (*ApplicationResourcePermission, *http.Response, error) {
+func (a *ApplicationResourcePermissionsApiService) internalCreateApplicationPermissionExecute(r ApiCreateApplicationPermissionRequest) (*ApplicationResourcePermission, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -83,7 +83,7 @@ func (a *ApplicationResourcePermissionsApiService) internalCreateApplicationPerm
 		localVarReturnValue  *ApplicationResourcePermission
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationResourcePermissionsApiService.CreateApplicationPermissions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationResourcePermissionsApiService.CreateApplicationPermission")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

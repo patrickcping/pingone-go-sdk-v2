@@ -32,7 +32,7 @@ import (
 
 func main() {
     environmentID := "environmentID_example" // string | 
-    aPIServer := *openapiclient.NewAPIServer(*openapiclient.NewAPIServerAuthorizationServer(*openapiclient.NewAPIServerAuthorizationServerResource("Id_example")), []string{"BaseURLs_example"}, "Name_example") // APIServer |  (optional)
+    aPIServer := *openapiclient.NewAPIServer(*openapiclient.NewAPIServerAuthorizationServer(openapiclient.EnumAPIServerAuthorizationServerType("PINGONE_SSO")), []string{"BaseUrls_example"}, "Name_example") // APIServer |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -311,7 +311,7 @@ import (
 func main() {
     environmentID := "environmentID_example" // string | 
     apiServerID := "apiServerID_example" // string | 
-    aPIServer := *openapiclient.NewAPIServer(*openapiclient.NewAPIServerAuthorizationServer(*openapiclient.NewAPIServerAuthorizationServerResource("Id_example")), []string{"BaseURLs_example"}, "Name_example") // APIServer |  (optional)
+    aPIServer := *openapiclient.NewAPIServer(*openapiclient.NewAPIServerAuthorizationServer(openapiclient.EnumAPIServerAuthorizationServerType("PINGONE_SSO")), []string{"BaseUrls_example"}, "Name_example") // APIServer |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

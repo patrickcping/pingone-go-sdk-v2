@@ -109,11 +109,17 @@ Class | Method | HTTP request | Description
 *ApplicationFlowPolicyAssignmentsApi* | [**ReadAllFlowPolicyAssignments**](docs/ApplicationFlowPolicyAssignmentsApi.md#readallflowpolicyassignments) | **Get** /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments | READ All Flow Policy Assignments
 *ApplicationFlowPolicyAssignmentsApi* | [**ReadOneFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#readoneflowpolicyassignment) | **Get** /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | READ One Flow Policy Assignment
 *ApplicationFlowPolicyAssignmentsApi* | [**UpdateFlowPolicyAssignment**](docs/ApplicationFlowPolicyAssignmentsApi.md#updateflowpolicyassignment) | **Put** /environments/{environmentID}/applications/{applicationID}/flowPolicyAssignments/{flowPolicyAssignmentID} | UPDATE Flow Policy Assignment
+*ApplicationPermissionsApi* | [**ReadAllApplicationPermissions**](docs/ApplicationPermissionsApi.md#readallapplicationpermissions) | **Get** /environments/{environmentID}/resources/{resourceID}/applicationPermissions | READ All Application Permissions
 *ApplicationResourceGrantsApi* | [**CreateApplicationGrant**](docs/ApplicationResourceGrantsApi.md#createapplicationgrant) | **Post** /environments/{environmentID}/applications/{applicationID}/grants | CREATE Grant
 *ApplicationResourceGrantsApi* | [**DeleteApplicationGrant**](docs/ApplicationResourceGrantsApi.md#deleteapplicationgrant) | **Delete** /environments/{environmentID}/applications/{applicationID}/grants/{grantID} | DELETE Grant
 *ApplicationResourceGrantsApi* | [**ReadAllApplicationGrants**](docs/ApplicationResourceGrantsApi.md#readallapplicationgrants) | **Get** /environments/{environmentID}/applications/{applicationID}/grants | READ All Grants for an Application
 *ApplicationResourceGrantsApi* | [**ReadOneApplicationGrant**](docs/ApplicationResourceGrantsApi.md#readoneapplicationgrant) | **Get** /environments/{environmentID}/applications/{applicationID}/grants/{grantID} | READ One Grant for an Application
 *ApplicationResourceGrantsApi* | [**UpdateApplicationGrant**](docs/ApplicationResourceGrantsApi.md#updateapplicationgrant) | **Put** /environments/{environmentID}/applications/{applicationID}/grants/{grantID} | UPDATE Grant
+*ApplicationResourcesApi* | [**CreateApplicationResource**](docs/ApplicationResourcesApi.md#createapplicationresource) | **Post** /environments/{environmentID}/resources/{resourceID}/applicationResources | CREATE Application Resource
+*ApplicationResourcesApi* | [**DeleteApplicationResource**](docs/ApplicationResourcesApi.md#deleteapplicationresource) | **Delete** /environments/{environmentID}/resources/{resourceID}/applicationResources/{applicationResourceID} | DELETE Application Resource
+*ApplicationResourcesApi* | [**ReadAllApplicationResources**](docs/ApplicationResourcesApi.md#readallapplicationresources) | **Get** /environments/{environmentID}/resources/{resourceID}/applicationResources | READ All Application Resources
+*ApplicationResourcesApi* | [**ReadOneApplicationResource**](docs/ApplicationResourcesApi.md#readoneapplicationresource) | **Get** /environments/{environmentID}/resources/{resourceID}/applicationResources/{applicationResourceID} | READ One Application Resource
+*ApplicationResourcesApi* | [**UpdateApplicationResource**](docs/ApplicationResourcesApi.md#updateapplicationresource) | **Put** /environments/{environmentID}/resources/{resourceID}/applicationResources/{applicationResourceID} | UPDATE Application Resource
 *ApplicationRoleAssignmentsApi* | [**CreateApplicationRoleAssignment**](docs/ApplicationRoleAssignmentsApi.md#createapplicationroleassignment) | **Post** /environments/{environmentID}/applications/{applicationID}/roleAssignments | CREATE Application Role Assignments
 *ApplicationRoleAssignmentsApi* | [**DeleteApplicationRoleAssignment**](docs/ApplicationRoleAssignmentsApi.md#deleteapplicationroleassignment) | **Delete** /environments/{environmentID}/applications/{applicationID}/roleAssignments/{roleAssignmentID} | DELETE Application Role Assignment
 *ApplicationRoleAssignmentsApi* | [**ReadApplicationRoleAssignments**](docs/ApplicationRoleAssignmentsApi.md#readapplicationroleassignments) | **Get** /environments/{environmentID}/applications/{applicationID}/roleAssignments | READ Application Role Assignments
@@ -396,6 +402,9 @@ Class | Method | HTTP request | Description
 *UserAgreementConsentsApi* | [**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDGet**](docs/UserAgreementConsentsApi.md#environmentsenvironmentidusersuseridagreementconsentsagreementidget) | **Get** /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | READ One User Agreement Consent
 *UserAgreementConsentsApi* | [**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsAgreementIDPost**](docs/UserAgreementConsentsApi.md#environmentsenvironmentidusersuseridagreementconsentsagreementidpost) | **Post** /environments/{environmentID}/users/{userID}/agreementConsents/{agreementID} | Revoke Agreement
 *UserAgreementConsentsApi* | [**EnvironmentsEnvironmentIDUsersUserIDAgreementConsentsGet**](docs/UserAgreementConsentsApi.md#environmentsenvironmentidusersuseridagreementconsentsget) | **Get** /environments/{environmentID}/users/{userID}/agreementConsents | READ All User Agreement Consents
+*UserApplicationRoleAssignmentsApi* | [**CreateUserApplicationRoleAssignment**](docs/UserApplicationRoleAssignmentsApi.md#createuserapplicationroleassignment) | **Post** /environments/{environmentID}/users/{userID}/applicationRoles | CREATE User Application Role Assignment
+*UserApplicationRoleAssignmentsApi* | [**DeleteUserApplicationRoleAssignment**](docs/UserApplicationRoleAssignmentsApi.md#deleteuserapplicationroleassignment) | **Delete** /environments/{environmentID}/users/{userID}/applicationRoles/{applicationRoleID} | DELETE User Application Role Assignment
+*UserApplicationRoleAssignmentsApi* | [**ReadUserApplicationRoleAssignments**](docs/UserApplicationRoleAssignmentsApi.md#readuserapplicationroleassignments) | **Get** /environments/{environmentID}/users/{userID}/applicationRoles | READ User Application Role Assignments
 *UserIDVerificationApi* | [**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsGet**](docs/UserIDVerificationApi.md#environmentsenvironmentidusersuseridverifytransactionsget) | **Get** /environments/{environmentID}/users/{userID}/verifyTransactions | READ All ID Verification Transaction Records for a User
 *UserIDVerificationApi* | [**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsPost**](docs/UserIDVerificationApi.md#environmentsenvironmentidusersuseridverifytransactionspost) | **Post** /environments/{environmentID}/users/{userID}/verifyTransactions | CREATE ID Verification Transaction Record for a User
 *UserIDVerificationApi* | [**EnvironmentsEnvironmentIDUsersUserIDVerifyTransactionsTransactionIDDelete**](docs/UserIDVerificationApi.md#environmentsenvironmentidusersuseridverifytransactionstransactioniddelete) | **Delete** /environments/{environmentID}/users/{userID}/verifyTransactions/{transactionID} | DELETE ID Verification Transaction Record for a User
@@ -510,6 +519,8 @@ Class | Method | HTTP request | Description
  - [EntityArrayEmbeddedAttributesInner](docs/EntityArrayEmbeddedAttributesInner.md)
  - [EntityArrayEmbeddedGatewaysInner](docs/EntityArrayEmbeddedGatewaysInner.md)
  - [EntityArrayEmbeddedLanguagesInner](docs/EntityArrayEmbeddedLanguagesInner.md)
+ - [EntityArrayEmbeddedResourcesInner](docs/EntityArrayEmbeddedResourcesInner.md)
+ - [EntityArrayEmbeddedRolesInner](docs/EntityArrayEmbeddedRolesInner.md)
  - [EnumAgreementRevisionContentType](docs/EnumAgreementRevisionContentType.md)
  - [EnumAlertChannelAlertType](docs/EnumAlertChannelAlertType.md)
  - [EnumAlertChannelSeverity](docs/EnumAlertChannelSeverity.md)
@@ -622,6 +633,7 @@ Class | Method | HTTP request | Description
  - [EnumPropagationStoreTypeZoomAuthenticationMethod](docs/EnumPropagationStoreTypeZoomAuthenticationMethod.md)
  - [EnumRegionCode](docs/EnumRegionCode.md)
  - [EnumRegionCodeLicense](docs/EnumRegionCodeLicense.md)
+ - [EnumResourceApplicationResourceType](docs/EnumResourceApplicationResourceType.md)
  - [EnumResourceAttributeType](docs/EnumResourceAttributeType.md)
  - [EnumResourceIntrospectEndpointAuthMethod](docs/EnumResourceIntrospectEndpointAuthMethod.md)
  - [EnumResourceType](docs/EnumResourceType.md)
@@ -690,7 +702,6 @@ Class | Method | HTTP request | Description
  - [FormQrCode](docs/FormQrCode.md)
  - [FormRecaptchaV2](docs/FormRecaptchaV2.md)
  - [FormSocialLoginButton](docs/FormSocialLoginButton.md)
- - [FormSocialLoginButtonStyles](docs/FormSocialLoginButtonStyles.md)
  - [FormStyles](docs/FormStyles.md)
  - [FormStylesPadding](docs/FormStylesPadding.md)
  - [FormSubmit](docs/FormSubmit.md)
@@ -820,6 +831,13 @@ Class | Method | HTTP request | Description
  - [ReadOneApplication200Response](docs/ReadOneApplication200Response.md)
  - [RecaptchaConfiguration](docs/RecaptchaConfiguration.md)
  - [Resource](docs/Resource.md)
+ - [ResourceApplicationPermission](docs/ResourceApplicationPermission.md)
+ - [ResourceApplicationPermissionResource](docs/ResourceApplicationPermissionResource.md)
+ - [ResourceApplicationPermissionResourceServer](docs/ResourceApplicationPermissionResourceServer.md)
+ - [ResourceApplicationPermissionResourceServerEnvironment](docs/ResourceApplicationPermissionResourceServerEnvironment.md)
+ - [ResourceApplicationPermissionsSettings](docs/ResourceApplicationPermissionsSettings.md)
+ - [ResourceApplicationResource](docs/ResourceApplicationResource.md)
+ - [ResourceApplicationResourceParent](docs/ResourceApplicationResourceParent.md)
  - [ResourceAttribute](docs/ResourceAttribute.md)
  - [ResourceScope](docs/ResourceScope.md)
  - [ResourceSecret](docs/ResourceSecret.md)
@@ -908,6 +926,7 @@ Class | Method | HTTP request | Description
  - [User](docs/User.md)
  - [UserAccount](docs/UserAccount.md)
  - [UserAddress](docs/UserAddress.md)
+ - [UserApplicationRoleAssignment](docs/UserApplicationRoleAssignment.md)
  - [UserEnabled](docs/UserEnabled.md)
  - [UserIdentityProvider](docs/UserIdentityProvider.md)
  - [UserLastSignOn](docs/UserLastSignOn.md)

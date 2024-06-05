@@ -20,25 +20,26 @@ var _ MappedNullable = &APIServer{}
 // APIServer struct for APIServer
 type APIServer struct {
 	Links *LinksHATEOAS `json:"_links,omitempty"`
+	AccessControl *APIServerAccessControl `json:"accessControl,omitempty"`
 	AuthorizationServer APIServerAuthorizationServer `json:"authorizationServer"`
 	// An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer's API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters.
-	BaseURLs []string `json:"baseURLs"`
+	BaseUrls []string `json:"baseUrls"`
+	Directory *APIServerDirectory `json:"directory,omitempty"`
 	// A string that specifies the resource's unique identifier.
 	Id *string `json:"id,omitempty"`
 	// A string that specifies the API server resource name. The name value must be unique among all API servers, and it must be a valid resource name.
 	Name string `json:"name"`
-	// A map from the operation name to the operation object. Each key must be valid ObjectName, and each value must be a valid operation. Each key must be unique within the operations object, which means the operation key is unique within an API server. No duplicate operation values are allowed; operations with the same paths and methods members are not allowed. The operations object is limited to 25 keys (25 individual operations).
-	Operations map[string]interface{} `json:"operations,omitempty"`
+	Policy *APIServerPolicy `json:"policy,omitempty"`
 }
 
 // NewAPIServer instantiates a new APIServer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAPIServer(authorizationServer APIServerAuthorizationServer, baseURLs []string, name string) *APIServer {
+func NewAPIServer(authorizationServer APIServerAuthorizationServer, baseUrls []string, name string) *APIServer {
 	this := APIServer{}
 	this.AuthorizationServer = authorizationServer
-	this.BaseURLs = baseURLs
+	this.BaseUrls = baseUrls
 	this.Name = name
 	return &this
 }
@@ -83,6 +84,38 @@ func (o *APIServer) SetLinks(v LinksHATEOAS) {
 	o.Links = &v
 }
 
+// GetAccessControl returns the AccessControl field value if set, zero value otherwise.
+func (o *APIServer) GetAccessControl() APIServerAccessControl {
+	if o == nil || IsNil(o.AccessControl) {
+		var ret APIServerAccessControl
+		return ret
+	}
+	return *o.AccessControl
+}
+
+// GetAccessControlOk returns a tuple with the AccessControl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *APIServer) GetAccessControlOk() (*APIServerAccessControl, bool) {
+	if o == nil || IsNil(o.AccessControl) {
+		return nil, false
+	}
+	return o.AccessControl, true
+}
+
+// HasAccessControl returns a boolean if a field has been set.
+func (o *APIServer) HasAccessControl() bool {
+	if o != nil && !IsNil(o.AccessControl) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessControl gets a reference to the given APIServerAccessControl and assigns it to the AccessControl field.
+func (o *APIServer) SetAccessControl(v APIServerAccessControl) {
+	o.AccessControl = &v
+}
+
 // GetAuthorizationServer returns the AuthorizationServer field value
 func (o *APIServer) GetAuthorizationServer() APIServerAuthorizationServer {
 	if o == nil {
@@ -107,28 +140,60 @@ func (o *APIServer) SetAuthorizationServer(v APIServerAuthorizationServer) {
 	o.AuthorizationServer = v
 }
 
-// GetBaseURLs returns the BaseURLs field value
-func (o *APIServer) GetBaseURLs() []string {
+// GetBaseUrls returns the BaseUrls field value
+func (o *APIServer) GetBaseUrls() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.BaseURLs
+	return o.BaseUrls
 }
 
-// GetBaseURLsOk returns a tuple with the BaseURLs field value
+// GetBaseUrlsOk returns a tuple with the BaseUrls field value
 // and a boolean to check if the value has been set.
-func (o *APIServer) GetBaseURLsOk() ([]string, bool) {
+func (o *APIServer) GetBaseUrlsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BaseURLs, true
+	return o.BaseUrls, true
 }
 
-// SetBaseURLs sets field value
-func (o *APIServer) SetBaseURLs(v []string) {
-	o.BaseURLs = v
+// SetBaseUrls sets field value
+func (o *APIServer) SetBaseUrls(v []string) {
+	o.BaseUrls = v
+}
+
+// GetDirectory returns the Directory field value if set, zero value otherwise.
+func (o *APIServer) GetDirectory() APIServerDirectory {
+	if o == nil || IsNil(o.Directory) {
+		var ret APIServerDirectory
+		return ret
+	}
+	return *o.Directory
+}
+
+// GetDirectoryOk returns a tuple with the Directory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *APIServer) GetDirectoryOk() (*APIServerDirectory, bool) {
+	if o == nil || IsNil(o.Directory) {
+		return nil, false
+	}
+	return o.Directory, true
+}
+
+// HasDirectory returns a boolean if a field has been set.
+func (o *APIServer) HasDirectory() bool {
+	if o != nil && !IsNil(o.Directory) {
+		return true
+	}
+
+	return false
+}
+
+// SetDirectory gets a reference to the given APIServerDirectory and assigns it to the Directory field.
+func (o *APIServer) SetDirectory(v APIServerDirectory) {
+	o.Directory = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -187,36 +252,36 @@ func (o *APIServer) SetName(v string) {
 	o.Name = v
 }
 
-// GetOperations returns the Operations field value if set, zero value otherwise.
-func (o *APIServer) GetOperations() map[string]interface{} {
-	if o == nil || IsNil(o.Operations) {
-		var ret map[string]interface{}
+// GetPolicy returns the Policy field value if set, zero value otherwise.
+func (o *APIServer) GetPolicy() APIServerPolicy {
+	if o == nil || IsNil(o.Policy) {
+		var ret APIServerPolicy
 		return ret
 	}
-	return o.Operations
+	return *o.Policy
 }
 
-// GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
+// GetPolicyOk returns a tuple with the Policy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *APIServer) GetOperationsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Operations) {
-		return map[string]interface{}{}, false
+func (o *APIServer) GetPolicyOk() (*APIServerPolicy, bool) {
+	if o == nil || IsNil(o.Policy) {
+		return nil, false
 	}
-	return o.Operations, true
+	return o.Policy, true
 }
 
-// HasOperations returns a boolean if a field has been set.
-func (o *APIServer) HasOperations() bool {
-	if o != nil && !IsNil(o.Operations) {
+// HasPolicy returns a boolean if a field has been set.
+func (o *APIServer) HasPolicy() bool {
+	if o != nil && !IsNil(o.Policy) {
 		return true
 	}
 
 	return false
 }
 
-// SetOperations gets a reference to the given map[string]interface{} and assigns it to the Operations field.
-func (o *APIServer) SetOperations(v map[string]interface{}) {
-	o.Operations = v
+// SetPolicy gets a reference to the given APIServerPolicy and assigns it to the Policy field.
+func (o *APIServer) SetPolicy(v APIServerPolicy) {
+	o.Policy = &v
 }
 
 func (o APIServer) MarshalJSON() ([]byte, error) {
@@ -232,14 +297,20 @@ func (o APIServer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["_links"] = o.Links
 	}
+	if !IsNil(o.AccessControl) {
+		toSerialize["accessControl"] = o.AccessControl
+	}
 	toSerialize["authorizationServer"] = o.AuthorizationServer
-	toSerialize["baseURLs"] = o.BaseURLs
+	toSerialize["baseUrls"] = o.BaseUrls
+	if !IsNil(o.Directory) {
+		toSerialize["directory"] = o.Directory
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Operations) {
-		toSerialize["operations"] = o.Operations
+	if !IsNil(o.Policy) {
+		toSerialize["policy"] = o.Policy
 	}
 	return toSerialize, nil
 }

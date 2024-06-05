@@ -1,7 +1,16 @@
 # v0.40.0 (Unreleased)
 
+* **Breaking Change** Removed the `FormSocialLoginButtonStyles` data model.  Use the `FormStyles` data model going forward. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
+* **Note** Removed unnecessary `Width` and `IconSrc` fields from `FormSocialLoginButton` and associated data models. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
+* **Feature** Add support for Application Resource API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
+* **Feature** Add support for Application Resource Permissions API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
+* **Feature** Add support for User Application Role Assignment API. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
+* **Enhancement** Added `Key` field to `FormSocialLoginButton` and associated data models. [#350](https://github.com/patrickcping/pingone-go-sdk-v2/pull/350)
+* **Enhancement** Added `ApplicationPermissionsSettings` to the `Resource` model. [#346](https://github.com/patrickcping/pingone-go-sdk-v2/pull/346)
 * **Enhancement** Added the `DeletePreviousResourceSecret` function to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
 * **Enhancement** Added `Previous` to the `ResourceSecret` model to control resource secret rotation. [#347](https://github.com/patrickcping/pingone-go-sdk-v2/pull/347)
+* **Enhancement** Add the `com.au` top level domain to the connection configuration. [#351](https://github.com/patrickcping/pingone-go-sdk-v2/pull/351)
+* **Enhancement** Add the `AU` region code to the `EnumRegionCode` model. [#358](https://github.com/patrickcping/pingone-go-sdk-v2/pull/358)
 * **Enhancement** Added `SpEncryption` to the `ApplicationSAML` and associated models to control encryption of SAML application assertions.
 
 # v0.39.0 (2024-05-01)

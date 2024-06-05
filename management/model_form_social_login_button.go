@@ -19,9 +19,11 @@ var _ MappedNullable = &FormSocialLoginButton{}
 
 // FormSocialLoginButton struct for FormSocialLoginButton
 type FormSocialLoginButton struct {
+	// A string that specifies an identifier for the field component.
+	Key *string `json:"key,omitempty"`
 	// A string that specifies the social login button label.
 	Label string `json:"label"`
-	Styles *FormSocialLoginButtonStyles `json:"styles,omitempty"`
+	Styles *FormStyles `json:"styles,omitempty"`
 	IdpType EnumFormSocialLoginIdpType `json:"idpType"`
 	// A string that specifies the external identity provider name.
 	IdpName string `json:"idpName"`
@@ -29,24 +31,19 @@ type FormSocialLoginButton struct {
 	IdpId string `json:"idpId"`
 	// A boolean that specifies whether the external identity provider is enabled.
 	IdpEnabled bool `json:"idpEnabled"`
-	// A string that specifies the HTTP link (URL format) for the external identity provider's icon.
-	IconSrc string `json:"iconSrc"`
-	// An integer that specifies the button width. Set as a percentage.
-	Width *int32 `json:"width,omitempty"`
 }
 
 // NewFormSocialLoginButton instantiates a new FormSocialLoginButton object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFormSocialLoginButton(label string, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, iconSrc string) *FormSocialLoginButton {
+func NewFormSocialLoginButton(label string, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool) *FormSocialLoginButton {
 	this := FormSocialLoginButton{}
 	this.Label = label
 	this.IdpType = idpType
 	this.IdpName = idpName
 	this.IdpId = idpId
 	this.IdpEnabled = idpEnabled
-	this.IconSrc = iconSrc
 	return &this
 }
 
@@ -56,6 +53,38 @@ func NewFormSocialLoginButton(label string, idpType EnumFormSocialLoginIdpType, 
 func NewFormSocialLoginButtonWithDefaults() *FormSocialLoginButton {
 	this := FormSocialLoginButton{}
 	return &this
+}
+
+// GetKey returns the Key field value if set, zero value otherwise.
+func (o *FormSocialLoginButton) GetKey() string {
+	if o == nil || IsNil(o.Key) {
+		var ret string
+		return ret
+	}
+	return *o.Key
+}
+
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormSocialLoginButton) GetKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.Key) {
+		return nil, false
+	}
+	return o.Key, true
+}
+
+// HasKey returns a boolean if a field has been set.
+func (o *FormSocialLoginButton) HasKey() bool {
+	if o != nil && !IsNil(o.Key) {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given string and assigns it to the Key field.
+func (o *FormSocialLoginButton) SetKey(v string) {
+	o.Key = &v
 }
 
 // GetLabel returns the Label field value
@@ -83,9 +112,9 @@ func (o *FormSocialLoginButton) SetLabel(v string) {
 }
 
 // GetStyles returns the Styles field value if set, zero value otherwise.
-func (o *FormSocialLoginButton) GetStyles() FormSocialLoginButtonStyles {
+func (o *FormSocialLoginButton) GetStyles() FormStyles {
 	if o == nil || IsNil(o.Styles) {
-		var ret FormSocialLoginButtonStyles
+		var ret FormStyles
 		return ret
 	}
 	return *o.Styles
@@ -93,7 +122,7 @@ func (o *FormSocialLoginButton) GetStyles() FormSocialLoginButtonStyles {
 
 // GetStylesOk returns a tuple with the Styles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormSocialLoginButton) GetStylesOk() (*FormSocialLoginButtonStyles, bool) {
+func (o *FormSocialLoginButton) GetStylesOk() (*FormStyles, bool) {
 	if o == nil || IsNil(o.Styles) {
 		return nil, false
 	}
@@ -109,8 +138,8 @@ func (o *FormSocialLoginButton) HasStyles() bool {
 	return false
 }
 
-// SetStyles gets a reference to the given FormSocialLoginButtonStyles and assigns it to the Styles field.
-func (o *FormSocialLoginButton) SetStyles(v FormSocialLoginButtonStyles) {
+// SetStyles gets a reference to the given FormStyles and assigns it to the Styles field.
+func (o *FormSocialLoginButton) SetStyles(v FormStyles) {
 	o.Styles = &v
 }
 
@@ -210,62 +239,6 @@ func (o *FormSocialLoginButton) SetIdpEnabled(v bool) {
 	o.IdpEnabled = v
 }
 
-// GetIconSrc returns the IconSrc field value
-func (o *FormSocialLoginButton) GetIconSrc() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.IconSrc
-}
-
-// GetIconSrcOk returns a tuple with the IconSrc field value
-// and a boolean to check if the value has been set.
-func (o *FormSocialLoginButton) GetIconSrcOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IconSrc, true
-}
-
-// SetIconSrc sets field value
-func (o *FormSocialLoginButton) SetIconSrc(v string) {
-	o.IconSrc = v
-}
-
-// GetWidth returns the Width field value if set, zero value otherwise.
-func (o *FormSocialLoginButton) GetWidth() int32 {
-	if o == nil || IsNil(o.Width) {
-		var ret int32
-		return ret
-	}
-	return *o.Width
-}
-
-// GetWidthOk returns a tuple with the Width field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormSocialLoginButton) GetWidthOk() (*int32, bool) {
-	if o == nil || IsNil(o.Width) {
-		return nil, false
-	}
-	return o.Width, true
-}
-
-// HasWidth returns a boolean if a field has been set.
-func (o *FormSocialLoginButton) HasWidth() bool {
-	if o != nil && !IsNil(o.Width) {
-		return true
-	}
-
-	return false
-}
-
-// SetWidth gets a reference to the given int32 and assigns it to the Width field.
-func (o *FormSocialLoginButton) SetWidth(v int32) {
-	o.Width = &v
-}
-
 func (o FormSocialLoginButton) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -276,6 +249,9 @@ func (o FormSocialLoginButton) MarshalJSON() ([]byte, error) {
 
 func (o FormSocialLoginButton) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
 	toSerialize["label"] = o.Label
 	if !IsNil(o.Styles) {
 		toSerialize["styles"] = o.Styles
@@ -284,10 +260,6 @@ func (o FormSocialLoginButton) ToMap() (map[string]interface{}, error) {
 	toSerialize["idpName"] = o.IdpName
 	toSerialize["idpId"] = o.IdpId
 	toSerialize["idpEnabled"] = o.IdpEnabled
-	toSerialize["iconSrc"] = o.IconSrc
-	if !IsNil(o.Width) {
-		toSerialize["width"] = o.Width
-	}
 	return toSerialize, nil
 }
 

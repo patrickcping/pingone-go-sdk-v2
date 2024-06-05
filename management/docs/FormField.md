@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **ShowPasswordRequirements** | Pointer to **bool** | A boolean that specifies whether the password requirements are displayed. | [optional] 
 **LabelPasswordVerify** | Pointer to **string** | A string that when a second field for verifies password is used, this poperty specifies the field label for that verify field. | [optional] 
 **Content** | Pointer to **string** | A string that specifies the field content. | [optional] 
-**Styles** | Pointer to [**FormSocialLoginButtonStyles**](FormSocialLoginButtonStyles.md) |  | [optional] 
+**Styles** | Pointer to [**FormStyles**](FormStyles.md) |  | [optional] 
 **Size** | [**EnumFormRecaptchaV2Size**](EnumFormRecaptchaV2Size.md) |  | 
 **Theme** | [**EnumFormRecaptchaV2Theme**](EnumFormRecaptchaV2Theme.md) |  | 
 **Alignment** | [**EnumFormItemAlignment**](EnumFormItemAlignment.md) |  | 
@@ -32,14 +32,12 @@ Name | Type | Description | Notes
 **IdpName** | **string** | A string that specifies the external identity provider name. | 
 **IdpId** | **string** | A string that specifies the external identity provider&#39;s ID. | 
 **IdpEnabled** | **bool** | A boolean that specifies whether the external identity provider is enabled. | 
-**IconSrc** | **string** | A string that specifies the HTTP link (URL format) for the external identity provider&#39;s icon. | 
-**Width** | Pointer to **int32** | An integer that specifies the button width. Set as a percentage. | [optional] 
 
 ## Methods
 
 ### NewFormField
 
-`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, qrCodeType EnumFormQrCodeType, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, iconSrc string, ) *FormField`
+`func NewFormField(type_ EnumFormFieldType, position FormFieldCommonPosition, key string, label string, layout EnumFormElementLayout, options []FormElementOption, validation FormElementValidation, size EnumFormRecaptchaV2Size, theme EnumFormRecaptchaV2Theme, alignment EnumFormItemAlignment, qrCodeType EnumFormQrCodeType, idpType EnumFormSocialLoginIdpType, idpName string, idpId string, idpEnabled bool, ) *FormField`
 
 NewFormField instantiates a new FormField object
 This constructor will assign default values to properties that have it defined,
@@ -471,20 +469,20 @@ HasContent returns a boolean if a field has been set.
 
 ### GetStyles
 
-`func (o *FormField) GetStyles() FormSocialLoginButtonStyles`
+`func (o *FormField) GetStyles() FormStyles`
 
 GetStyles returns the Styles field if non-nil, zero value otherwise.
 
 ### GetStylesOk
 
-`func (o *FormField) GetStylesOk() (*FormSocialLoginButtonStyles, bool)`
+`func (o *FormField) GetStylesOk() (*FormStyles, bool)`
 
 GetStylesOk returns a tuple with the Styles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStyles
 
-`func (o *FormField) SetStyles(v FormSocialLoginButtonStyles)`
+`func (o *FormField) SetStyles(v FormStyles)`
 
 SetStyles sets Styles field to given value.
 
@@ -678,51 +676,6 @@ and a boolean to check if the value has been set.
 
 SetIdpEnabled sets IdpEnabled field to given value.
 
-
-### GetIconSrc
-
-`func (o *FormField) GetIconSrc() string`
-
-GetIconSrc returns the IconSrc field if non-nil, zero value otherwise.
-
-### GetIconSrcOk
-
-`func (o *FormField) GetIconSrcOk() (*string, bool)`
-
-GetIconSrcOk returns a tuple with the IconSrc field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIconSrc
-
-`func (o *FormField) SetIconSrc(v string)`
-
-SetIconSrc sets IconSrc field to given value.
-
-
-### GetWidth
-
-`func (o *FormField) GetWidth() int32`
-
-GetWidth returns the Width field if non-nil, zero value otherwise.
-
-### GetWidthOk
-
-`func (o *FormField) GetWidthOk() (*int32, bool)`
-
-GetWidthOk returns a tuple with the Width field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWidth
-
-`func (o *FormField) SetWidth(v int32)`
-
-SetWidth sets Width field to given value.
-
-### HasWidth
-
-`func (o *FormField) HasWidth() bool`
-
-HasWidth returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

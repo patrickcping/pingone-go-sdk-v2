@@ -22,6 +22,7 @@ type EntityArrayEmbedded struct {
 	ApiServers []APIServer `json:"apiServers,omitempty"`
 	Assignments []ApplicationRoleAssignment `json:"assignments,omitempty"`
 	DecisionEndpoints []DecisionEndpoint `json:"decisionEndpoints,omitempty"`
+	Operations []APIServerOperation `json:"operations,omitempty"`
 	Permissions []EntityArrayEmbeddedPermissionsInner `json:"permissions,omitempty"`
 	Resources []ApplicationResource `json:"resources,omitempty"`
 	Roles []ApplicationRole `json:"roles,omitempty"`
@@ -140,6 +141,38 @@ func (o *EntityArrayEmbedded) SetDecisionEndpoints(v []DecisionEndpoint) {
 	o.DecisionEndpoints = v
 }
 
+// GetOperations returns the Operations field value if set, zero value otherwise.
+func (o *EntityArrayEmbedded) GetOperations() []APIServerOperation {
+	if o == nil || IsNil(o.Operations) {
+		var ret []APIServerOperation
+		return ret
+	}
+	return o.Operations
+}
+
+// GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntityArrayEmbedded) GetOperationsOk() ([]APIServerOperation, bool) {
+	if o == nil || IsNil(o.Operations) {
+		return nil, false
+	}
+	return o.Operations, true
+}
+
+// HasOperations returns a boolean if a field has been set.
+func (o *EntityArrayEmbedded) HasOperations() bool {
+	if o != nil && !IsNil(o.Operations) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperations gets a reference to the given []APIServerOperation and assigns it to the Operations field.
+func (o *EntityArrayEmbedded) SetOperations(v []APIServerOperation) {
+	o.Operations = v
+}
+
 // GetPermissions returns the Permissions field value if set, zero value otherwise.
 func (o *EntityArrayEmbedded) GetPermissions() []EntityArrayEmbeddedPermissionsInner {
 	if o == nil || IsNil(o.Permissions) {
@@ -254,6 +287,9 @@ func (o EntityArrayEmbedded) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DecisionEndpoints) {
 		toSerialize["decisionEndpoints"] = o.DecisionEndpoints
+	}
+	if !IsNil(o.Operations) {
+		toSerialize["operations"] = o.Operations
 	}
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions

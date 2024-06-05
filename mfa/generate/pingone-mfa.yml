@@ -12,10 +12,11 @@ servers:
     variables:
       suffix:
         enum:
-          - 'eu'
-          - 'com'
           - 'asia'
           - 'ca'
+          - 'com'
+          - 'com.au'
+          - 'eu'
         default: 'com'
       baseDomain:
         default: 'api.pingone'
@@ -118,6 +119,9 @@ components:
           required:
             - lifeTime
             - failure
+        promptForNicknameOnPairing:
+          type: boolean
+          description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
       required:
         - enabled
         - otp
@@ -163,6 +167,9 @@ components:
             fido2PolicyId:
               type: string
               description: Specifies the UUID that represents the FIDO2 policy in PingOne. This property can be null. When null, the environment's default FIDO2 Policy is used.
+            promptForNicknameOnPairing:
+              type: boolean
+              description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
           required:
             - enabled
         mobile:
@@ -320,6 +327,9 @@ components:
                     $ref: '#/components/schemas/EnumMFADevicePolicyMobileIntegrityDetection'
                 required:
                   - id
+            promptForNicknameOnPairing:
+              type: boolean
+              description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
           required:
             - enabled
             - otp
@@ -358,6 +368,9 @@ components:
                     - coolDown
               required:
                 - failure
+            promptForNicknameOnPairing:
+              type: boolean
+              description: Set to `true` if you want to allow users to provide nicknames for devices during pairing.
           required:
             - enabled
             - otp
