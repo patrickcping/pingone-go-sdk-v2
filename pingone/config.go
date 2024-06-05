@@ -7,6 +7,7 @@ import (
 	"slices"
 	"strings"
 
+	"github.com/patrickcping/pingone-go-sdk-v2/management"
 	"github.com/patrickcping/pingone-go-sdk-v2/pingone/model"
 	"golang.org/x/oauth2"
 )
@@ -20,10 +21,12 @@ type Config struct {
 	ClientSecret         *string
 	EnvironmentID        *string
 	ProxyURL             *string
-	Region               string
-	UserAgentOverride    *string
-	UserAgentSuffix      *string
-	validated            bool
+	// Deprecated: Use RegionCode instead
+	Region            string
+	RegionCode        *management.EnumRegionCode
+	UserAgentOverride *string
+	UserAgentSuffix   *string
+	validated         bool
 }
 
 var p1ResourceIDRegexp = regexp.MustCompile(`^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$`)
@@ -114,18 +117,21 @@ func (c *Config) validateEnvironmentID() error {
 }
 
 func (c *Config) validateRegion() error {
-	if !checkForValue(c.Region) {
-		if v := envVar("PINGONE_REGION"); v != "" {
+
+	if !checkForValue(c.Region) && !checkForValue(c.RegionCode) {
+		if v := management.EnumRegionCode(envVar("PINGONE_REGION_CODE")); v != "" && string(v) != "UNKNOWN" {
+			c.RegionCode = &v
+		} else if v := envVar("PINGONE_REGION"); v != "" {
 			c.Region = v
 		}
 	}
 
-	if !checkForValue(c.Region) {
-		return fmt.Errorf("Must provide the region parameter.")
-	} else {
-		if !slices.Contains(model.RegionsAvailableList(), c.Region) {
-			return fmt.Errorf("Invalid region value.  The region parameter is case sensitive and must be one of the following values: %s", strings.Join(model.RegionsAvailableList(), ", "))
-		}
+	if !checkForValue(c.Region) && !checkForValue(c.RegionCode) {
+		return fmt.Errorf("Must provide the region code parameter.")
+	}
+
+	if checkForValue(c.Region) && !slices.Contains(model.RegionsAvailableList(), c.Region) {
+		return fmt.Errorf("Invalid region value %s.  The region parameter is case sensitive and must be one of the following values: %s", c.Region, strings.Join(model.RegionsAvailableList(), ", "))
 	}
 
 	return nil
@@ -215,6 +221,16 @@ func checkForValue(o any) bool {
 		return true
 	case string:
 		if v == "" {
+			return false
+		}
+		return true
+	case *management.EnumRegionCode:
+		if v == nil || string(*v) == "UNKNOWN" || string(*v) == "" {
+			return false
+		}
+		return true
+	case management.EnumRegionCode:
+		if string(v) == "UNKNOWN" {
 			return false
 		}
 		return true
