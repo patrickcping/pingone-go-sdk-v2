@@ -2,6 +2,7 @@ package pingone
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"regexp"
 	"slices"
@@ -122,6 +123,7 @@ func (c *Config) validateRegion() error {
 		if v := management.EnumRegionCode(envVar("PINGONE_REGION_CODE")); v != "" && string(v) != "UNKNOWN" {
 			c.RegionCode = &v
 		} else if v := envVar("PINGONE_REGION"); v != "" {
+			log.Printf("WARNING: Use of the PINGONE_REGION environment variable is deprecated. Use PINGONE_REGION_CODE instead.")
 			c.Region = v
 		}
 	}
