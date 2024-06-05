@@ -23,6 +23,8 @@ type DeviceAuthenticationPolicyMobile struct {
 	Enabled bool `json:"enabled"`
 	Otp DeviceAuthenticationPolicyMobileOtp `json:"otp"`
 	Applications []DeviceAuthenticationPolicyMobileApplicationsInner `json:"applications,omitempty"`
+	// Set to `true` if you want to allow users to provide nicknames for devices during pairing.
+	PromptForNicknameOnPairing *bool `json:"promptForNicknameOnPairing,omitempty"`
 }
 
 // NewDeviceAuthenticationPolicyMobile instantiates a new DeviceAuthenticationPolicyMobile object
@@ -124,6 +126,38 @@ func (o *DeviceAuthenticationPolicyMobile) SetApplications(v []DeviceAuthenticat
 	o.Applications = v
 }
 
+// GetPromptForNicknameOnPairing returns the PromptForNicknameOnPairing field value if set, zero value otherwise.
+func (o *DeviceAuthenticationPolicyMobile) GetPromptForNicknameOnPairing() bool {
+	if o == nil || IsNil(o.PromptForNicknameOnPairing) {
+		var ret bool
+		return ret
+	}
+	return *o.PromptForNicknameOnPairing
+}
+
+// GetPromptForNicknameOnPairingOk returns a tuple with the PromptForNicknameOnPairing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceAuthenticationPolicyMobile) GetPromptForNicknameOnPairingOk() (*bool, bool) {
+	if o == nil || IsNil(o.PromptForNicknameOnPairing) {
+		return nil, false
+	}
+	return o.PromptForNicknameOnPairing, true
+}
+
+// HasPromptForNicknameOnPairing returns a boolean if a field has been set.
+func (o *DeviceAuthenticationPolicyMobile) HasPromptForNicknameOnPairing() bool {
+	if o != nil && !IsNil(o.PromptForNicknameOnPairing) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromptForNicknameOnPairing gets a reference to the given bool and assigns it to the PromptForNicknameOnPairing field.
+func (o *DeviceAuthenticationPolicyMobile) SetPromptForNicknameOnPairing(v bool) {
+	o.PromptForNicknameOnPairing = &v
+}
+
 func (o DeviceAuthenticationPolicyMobile) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -138,6 +172,9 @@ func (o DeviceAuthenticationPolicyMobile) ToMap() (map[string]interface{}, error
 	toSerialize["otp"] = o.Otp
 	if !IsNil(o.Applications) {
 		toSerialize["applications"] = o.Applications
+	}
+	if !IsNil(o.PromptForNicknameOnPairing) {
+		toSerialize["promptForNicknameOnPairing"] = o.PromptForNicknameOnPairing
 	}
 	return toSerialize, nil
 }

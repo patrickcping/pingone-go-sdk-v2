@@ -91,7 +91,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "pingtools PingOne-GOLANG-SDK-management/0.39.0",
+		UserAgent:        "pingtools PingOne-GOLANG-SDK-management/0.40.0",
 		Debug:            false,
 		DefaultServerIndex: 0,
 		Servers:          ServerConfigurations{
@@ -103,10 +103,11 @@ func NewConfiguration() *Configuration {
 						Description: "No description provided",
 						DefaultValue: "com",
 						EnumValues: []string{
-							"eu",
-							"com",
 							"asia",
 							"ca",
+							"com",
+							"com.au",
+							"eu",
 						},
 					},
 					"baseDomain": ServerVariable{

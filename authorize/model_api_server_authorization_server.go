@@ -19,16 +19,17 @@ var _ MappedNullable = &APIServerAuthorizationServer{}
 
 // APIServerAuthorizationServer A container object for properties related to the authorization server that will issue access tokens used to access the APIs.
 type APIServerAuthorizationServer struct {
-	Resource APIServerAuthorizationServerResource `json:"resource"`
+	Resource *APIServerAuthorizationServerResource `json:"resource,omitempty"`
+	Type EnumAPIServerAuthorizationServerType `json:"type"`
 }
 
 // NewAPIServerAuthorizationServer instantiates a new APIServerAuthorizationServer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAPIServerAuthorizationServer(resource APIServerAuthorizationServerResource) *APIServerAuthorizationServer {
+func NewAPIServerAuthorizationServer(type_ EnumAPIServerAuthorizationServerType) *APIServerAuthorizationServer {
 	this := APIServerAuthorizationServer{}
-	this.Resource = resource
+	this.Type = type_
 	return &this
 }
 
@@ -40,28 +41,60 @@ func NewAPIServerAuthorizationServerWithDefaults() *APIServerAuthorizationServer
 	return &this
 }
 
-// GetResource returns the Resource field value
+// GetResource returns the Resource field value if set, zero value otherwise.
 func (o *APIServerAuthorizationServer) GetResource() APIServerAuthorizationServerResource {
-	if o == nil {
+	if o == nil || IsNil(o.Resource) {
 		var ret APIServerAuthorizationServerResource
 		return ret
 	}
-
-	return o.Resource
+	return *o.Resource
 }
 
-// GetResourceOk returns a tuple with the Resource field value
+// GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *APIServerAuthorizationServer) GetResourceOk() (*APIServerAuthorizationServerResource, bool) {
+	if o == nil || IsNil(o.Resource) {
+		return nil, false
+	}
+	return o.Resource, true
+}
+
+// HasResource returns a boolean if a field has been set.
+func (o *APIServerAuthorizationServer) HasResource() bool {
+	if o != nil && !IsNil(o.Resource) {
+		return true
+	}
+
+	return false
+}
+
+// SetResource gets a reference to the given APIServerAuthorizationServerResource and assigns it to the Resource field.
+func (o *APIServerAuthorizationServer) SetResource(v APIServerAuthorizationServerResource) {
+	o.Resource = &v
+}
+
+// GetType returns the Type field value
+func (o *APIServerAuthorizationServer) GetType() EnumAPIServerAuthorizationServerType {
+	if o == nil {
+		var ret EnumAPIServerAuthorizationServerType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *APIServerAuthorizationServer) GetTypeOk() (*EnumAPIServerAuthorizationServerType, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Resource, true
+	return &o.Type, true
 }
 
-// SetResource sets field value
-func (o *APIServerAuthorizationServer) SetResource(v APIServerAuthorizationServerResource) {
-	o.Resource = v
+// SetType sets field value
+func (o *APIServerAuthorizationServer) SetType(v EnumAPIServerAuthorizationServerType) {
+	o.Type = v
 }
 
 func (o APIServerAuthorizationServer) MarshalJSON() ([]byte, error) {
@@ -74,7 +107,10 @@ func (o APIServerAuthorizationServer) MarshalJSON() ([]byte, error) {
 
 func (o APIServerAuthorizationServer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["resource"] = o.Resource
+	if !IsNil(o.Resource) {
+		toSerialize["resource"] = o.Resource
+	}
+	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 

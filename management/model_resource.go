@@ -23,6 +23,7 @@ type Resource struct {
 	Links *LinksHATEOAS `json:"_links,omitempty"`
 	// An integer that specifies the number of seconds that the access token is valid. If a value is not specified, the default is 3600. The minimum value is 300 seconds (5 minutes); the maximum value is 2592000 seconds (30 days).
 	AccessTokenValiditySeconds *int32 `json:"accessTokenValiditySeconds,omitempty"`
+	ApplicationPermissionsSettings *ResourceApplicationPermissionsSettings `json:"applicationPermissionsSettings,omitempty"`
 	// A string that specifies a URL without a fragment or `@ObjectName` and must not contain `pingone` or `pingidentity` (for example, `https://api.bxretail.org`). If a URL is not specified, the resource name is used.
 	Audience *string `json:"audience,omitempty"`
 	// The time the resource was created.
@@ -121,6 +122,38 @@ func (o *Resource) HasAccessTokenValiditySeconds() bool {
 // SetAccessTokenValiditySeconds gets a reference to the given int32 and assigns it to the AccessTokenValiditySeconds field.
 func (o *Resource) SetAccessTokenValiditySeconds(v int32) {
 	o.AccessTokenValiditySeconds = &v
+}
+
+// GetApplicationPermissionsSettings returns the ApplicationPermissionsSettings field value if set, zero value otherwise.
+func (o *Resource) GetApplicationPermissionsSettings() ResourceApplicationPermissionsSettings {
+	if o == nil || IsNil(o.ApplicationPermissionsSettings) {
+		var ret ResourceApplicationPermissionsSettings
+		return ret
+	}
+	return *o.ApplicationPermissionsSettings
+}
+
+// GetApplicationPermissionsSettingsOk returns a tuple with the ApplicationPermissionsSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Resource) GetApplicationPermissionsSettingsOk() (*ResourceApplicationPermissionsSettings, bool) {
+	if o == nil || IsNil(o.ApplicationPermissionsSettings) {
+		return nil, false
+	}
+	return o.ApplicationPermissionsSettings, true
+}
+
+// HasApplicationPermissionsSettings returns a boolean if a field has been set.
+func (o *Resource) HasApplicationPermissionsSettings() bool {
+	if o != nil && !IsNil(o.ApplicationPermissionsSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplicationPermissionsSettings gets a reference to the given ResourceApplicationPermissionsSettings and assigns it to the ApplicationPermissionsSettings field.
+func (o *Resource) SetApplicationPermissionsSettings(v ResourceApplicationPermissionsSettings) {
+	o.ApplicationPermissionsSettings = &v
 }
 
 // GetAudience returns the Audience field value if set, zero value otherwise.
@@ -450,6 +483,9 @@ func (o Resource) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccessTokenValiditySeconds) {
 		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
+	}
+	if !IsNil(o.ApplicationPermissionsSettings) {
+		toSerialize["applicationPermissionsSettings"] = o.ApplicationPermissionsSettings
 	}
 	if !IsNil(o.Audience) {
 		toSerialize["audience"] = o.Audience
