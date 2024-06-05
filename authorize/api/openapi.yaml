@@ -2525,9 +2525,9 @@ components:
         accessControl:
           custom:
             enabled: true
-        baseURLs:
-        - baseURLs
-        - baseURLs
+        baseUrls:
+        - baseUrls
+        - baseUrls
         _links:
           next:
             href: https://openapi-generator.tech
@@ -2550,7 +2550,7 @@ components:
           $ref: '#/components/schemas/APIServer_accessControl'
         authorizationServer:
           $ref: '#/components/schemas/APIServer_authorizationServer'
-        baseURLs:
+        baseUrls:
           description: "An array of string that specifies the possible base URLs that\
             \ an end-user will use to access the APIs hosted on the customer's API\
             \ server. Multiple base URLs may be specified to support cases where the\
@@ -2580,7 +2580,7 @@ components:
           $ref: '#/components/schemas/APIServer_policy'
       required:
       - authorizationServer
-      - baseURLs
+      - baseUrls
       - name
       type: object
     APIServerDeployment:
@@ -3165,9 +3165,9 @@ components:
           - accessControl:
               custom:
                 enabled: true
-            baseURLs:
-            - baseURLs
-            - baseURLs
+            baseUrls:
+            - baseUrls
+            - baseUrls
             _links:
               next:
                 href: https://openapi-generator.tech
@@ -3186,9 +3186,9 @@ components:
           - accessControl:
               custom:
                 enabled: true
-            baseURLs:
-            - baseURLs
-            - baseURLs
+            baseUrls:
+            - baseUrls
+            - baseUrls
             _links:
               next:
                 href: https://openapi-generator.tech
@@ -3394,7 +3394,7 @@ components:
         type:
           $ref: '#/components/schemas/EnumAPIServerAuthorizationServerType'
       required:
-      - resource
+      - type
       type: object
     APIServer_directory:
       description: "A container object for fields related to the user directory used\
@@ -3913,9 +3913,9 @@ components:
         - accessControl:
             custom:
               enabled: true
-          baseURLs:
-          - baseURLs
-          - baseURLs
+          baseUrls:
+          - baseUrls
+          - baseUrls
           _links:
             next:
               href: https://openapi-generator.tech
@@ -3934,9 +3934,9 @@ components:
         - accessControl:
             custom:
               enabled: true
-          baseURLs:
-          - baseURLs
-          - baseURLs
+          baseUrls:
+          - baseUrls
+          - baseUrls
           _links:
             next:
               href: https://openapi-generator.tech
