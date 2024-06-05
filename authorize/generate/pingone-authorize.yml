@@ -220,17 +220,11 @@ components:
                   items:
                     type: object
                     properties:
-                      element:
-                        type: object
-                        description: The ID of the group, wrapped in an object, for future extensibility. This is a required property if `operations.value.accessControl.group` is set.
-                        properties:
-                          id:
-                            type: string
-                            description: A UUID that specifies the group ID. This is a required property if `accessControl.group` is set.
-                        required:
-                          - id
+                      id:
+                        type: string
+                        description: A UUID that specifies the group ID. This is a required property if `accessControl.group` is set.
                     required:
-                      - element
+                      - id
               required:
                 - groups
             permission:

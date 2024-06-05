@@ -19,16 +19,17 @@ var _ MappedNullable = &APIServerOperationAccessControlGroupGroupsInner{}
 
 // APIServerOperationAccessControlGroupGroupsInner struct for APIServerOperationAccessControlGroupGroupsInner
 type APIServerOperationAccessControlGroupGroupsInner struct {
-	Element APIServerOperationAccessControlGroupGroupsInnerElement `json:"element"`
+	// A UUID that specifies the group ID. This is a required property if `accessControl.group` is set.
+	Id string `json:"id"`
 }
 
 // NewAPIServerOperationAccessControlGroupGroupsInner instantiates a new APIServerOperationAccessControlGroupGroupsInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAPIServerOperationAccessControlGroupGroupsInner(element APIServerOperationAccessControlGroupGroupsInnerElement) *APIServerOperationAccessControlGroupGroupsInner {
+func NewAPIServerOperationAccessControlGroupGroupsInner(id string) *APIServerOperationAccessControlGroupGroupsInner {
 	this := APIServerOperationAccessControlGroupGroupsInner{}
-	this.Element = element
+	this.Id = id
 	return &this
 }
 
@@ -40,28 +41,28 @@ func NewAPIServerOperationAccessControlGroupGroupsInnerWithDefaults() *APIServer
 	return &this
 }
 
-// GetElement returns the Element field value
-func (o *APIServerOperationAccessControlGroupGroupsInner) GetElement() APIServerOperationAccessControlGroupGroupsInnerElement {
+// GetId returns the Id field value
+func (o *APIServerOperationAccessControlGroupGroupsInner) GetId() string {
 	if o == nil {
-		var ret APIServerOperationAccessControlGroupGroupsInnerElement
+		var ret string
 		return ret
 	}
 
-	return o.Element
+	return o.Id
 }
 
-// GetElementOk returns a tuple with the Element field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *APIServerOperationAccessControlGroupGroupsInner) GetElementOk() (*APIServerOperationAccessControlGroupGroupsInnerElement, bool) {
+func (o *APIServerOperationAccessControlGroupGroupsInner) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Element, true
+	return &o.Id, true
 }
 
-// SetElement sets field value
-func (o *APIServerOperationAccessControlGroupGroupsInner) SetElement(v APIServerOperationAccessControlGroupGroupsInnerElement) {
-	o.Element = v
+// SetId sets field value
+func (o *APIServerOperationAccessControlGroupGroupsInner) SetId(v string) {
+	o.Id = v
 }
 
 func (o APIServerOperationAccessControlGroupGroupsInner) MarshalJSON() ([]byte, error) {
@@ -74,7 +75,7 @@ func (o APIServerOperationAccessControlGroupGroupsInner) MarshalJSON() ([]byte, 
 
 func (o APIServerOperationAccessControlGroupGroupsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["element"] = o.Element
+	toSerialize["id"] = o.Id
 	return toSerialize, nil
 }
 

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Element** | [**APIServerOperationAccessControlGroupGroupsInnerElement**](APIServerOperationAccessControlGroupGroupsInnerElement.md) |  | 
+**Id** | **string** | A UUID that specifies the group ID. This is a required property if &#x60;accessControl.group&#x60; is set. | 
 
 ## Methods
 
 ### NewAPIServerOperationAccessControlGroupGroupsInner
 
-`func NewAPIServerOperationAccessControlGroupGroupsInner(element APIServerOperationAccessControlGroupGroupsInnerElement, ) *APIServerOperationAccessControlGroupGroupsInner`
+`func NewAPIServerOperationAccessControlGroupGroupsInner(id string, ) *APIServerOperationAccessControlGroupGroupsInner`
 
 NewAPIServerOperationAccessControlGroupGroupsInner instantiates a new APIServerOperationAccessControlGroupGroupsInner object
 This constructor will assign default values to properties that have it defined,
@@ -25,24 +25,24 @@ NewAPIServerOperationAccessControlGroupGroupsInnerWithDefaults instantiates a ne
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetElement
+### GetId
 
-`func (o *APIServerOperationAccessControlGroupGroupsInner) GetElement() APIServerOperationAccessControlGroupGroupsInnerElement`
+`func (o *APIServerOperationAccessControlGroupGroupsInner) GetId() string`
 
-GetElement returns the Element field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetElementOk
+### GetIdOk
 
-`func (o *APIServerOperationAccessControlGroupGroupsInner) GetElementOk() (*APIServerOperationAccessControlGroupGroupsInnerElement, bool)`
+`func (o *APIServerOperationAccessControlGroupGroupsInner) GetIdOk() (*string, bool)`
 
-GetElementOk returns a tuple with the Element field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetElement
+### SetId
 
-`func (o *APIServerOperationAccessControlGroupGroupsInner) SetElement(v APIServerOperationAccessControlGroupGroupsInnerElement)`
+`func (o *APIServerOperationAccessControlGroupGroupsInner) SetId(v string)`
 
-SetElement sets Element field to given value.
+SetId sets Id field to given value.
 
 
 

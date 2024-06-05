@@ -2638,16 +2638,11 @@ components:
             id: id
           group:
             groups:
-            - element:
-                id: id
-            - element:
-                id: id
-            - element:
-                id: id
-            - element:
-                id: id
-            - element:
-                id: id
+            - id: id
+            - id: id
+            - id: id
+            - id: id
+            - id: id
         _links:
           next:
             href: https://openapi-generator.tech
@@ -3036,16 +3031,11 @@ components:
                 id: id
               group:
                 groups:
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
             _links:
               next:
                 href: https://openapi-generator.tech
@@ -3082,16 +3072,11 @@ components:
                 id: id
               group:
                 groups:
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
             _links:
               next:
                 href: https://openapi-generator.tech
@@ -3514,10 +3499,7 @@ components:
         error:
           $ref: '#/components/schemas/APIServerDeployment_status_error'
       type: object
-    APIServerOperation_accessControl_group_groups_inner_element:
-      description: "The ID of the group, wrapped in an object, for future extensibility.\
-        \ This is a required property if `operations.value.accessControl.group` is\
-        \ set."
+    APIServerOperation_accessControl_group_groups_inner:
       example:
         id: id
       properties:
@@ -3528,32 +3510,17 @@ components:
       required:
       - id
       type: object
-    APIServerOperation_accessControl_group_groups_inner:
-      example:
-        element:
-          id: id
-      properties:
-        element:
-          $ref: '#/components/schemas/APIServerOperation_accessControl_group_groups_inner_element'
-      required:
-      - element
-      type: object
     APIServerOperation_accessControl_group:
       description: The group membership requirements for the operation. The `groups`
         array must be non-empty when the `group` object is included. The `groups`
         array must not contain more than 25 elements.
       example:
         groups:
-        - element:
-            id: id
-        - element:
-            id: id
-        - element:
-            id: id
-        - element:
-            id: id
-        - element:
-            id: id
+        - id: id
+        - id: id
+        - id: id
+        - id: id
+        - id: id
       properties:
         groups:
           description: "The list of groups that define the access requirements for\
@@ -3627,16 +3594,11 @@ components:
           id: id
         group:
           groups:
-          - element:
-              id: id
-          - element:
-              id: id
-          - element:
-              id: id
-          - element:
-              id: id
-          - element:
-              id: id
+          - id: id
+          - id: id
+          - id: id
+          - id: id
+          - id: id
       properties:
         group:
           $ref: '#/components/schemas/APIServerOperation_accessControl_group'
@@ -3784,16 +3746,11 @@ components:
               id: id
             group:
               groups:
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
           _links:
             next:
               href: https://openapi-generator.tech
@@ -3830,16 +3787,11 @@ components:
               id: id
             group:
               groups:
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
           _links:
             next:
               href: https://openapi-generator.tech
