@@ -26498,9 +26498,11 @@ components:
       - UNKNOWN
       type: string
     EnumCertificateKeyEncryptionAlgorithm:
-      description: To replace
+      description: The algorithm to use when encrypting assertions.
       enum:
+      - AES_128
       - AES_256
+      - TRIPLEDES
       type: string
     EnumCertificateKeySignagureAlgorithm:
       description: "Specifies the signature algorithm of the key. For RSA keys, options\
@@ -35940,17 +35942,18 @@ components:
       type: object
       example: null
     ApplicationSAML_allOf_spEncryption_certificate:
-      description: To replace
       properties:
         id:
-          description: To replace
+          description: The unique identifier for the encryption public certificate
+            that has been uploaded to PingOne.
           type: string
       required:
       - id
       type: object
       example: null
     ApplicationSAML_allOf_spEncryption:
-      description: To replace
+      description: Enables PingOne to encrypt SAML assertion to be sent to the application.
+        Assertions are not encrypted by default.
       properties:
         algorithm:
           $ref: '#/components/schemas/EnumCertificateKeyEncryptionAlgorithm'

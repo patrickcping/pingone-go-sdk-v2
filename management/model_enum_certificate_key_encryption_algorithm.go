@@ -15,17 +15,21 @@ import (
 	"fmt"
 )
 
-// EnumCertificateKeyEncryptionAlgorithm To replace
+// EnumCertificateKeyEncryptionAlgorithm The algorithm to use when encrypting assertions.
 type EnumCertificateKeyEncryptionAlgorithm string
 
 // List of EnumCertificateKeyEncryptionAlgorithm
 const (
+	ENUMCERTIFICATEKEYENCRYPTIONALGORITHM_AES_128 EnumCertificateKeyEncryptionAlgorithm = "AES_128"
 	ENUMCERTIFICATEKEYENCRYPTIONALGORITHM_AES_256 EnumCertificateKeyEncryptionAlgorithm = "AES_256"
+	ENUMCERTIFICATEKEYENCRYPTIONALGORITHM_TRIPLEDES EnumCertificateKeyEncryptionAlgorithm = "TRIPLEDES"
 )
 
 // All allowed values of EnumCertificateKeyEncryptionAlgorithm enum
 var AllowedEnumCertificateKeyEncryptionAlgorithmEnumValues = []EnumCertificateKeyEncryptionAlgorithm{
+	"AES_128",
 	"AES_256",
+	"TRIPLEDES",
 }
 
 func (v *EnumCertificateKeyEncryptionAlgorithm) UnmarshalJSON(src []byte) error {

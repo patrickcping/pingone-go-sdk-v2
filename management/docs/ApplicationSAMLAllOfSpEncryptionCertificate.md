@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | To replace | 
+**Id** | **string** | The unique identifier for the encryption public certificate that has been uploaded to PingOne. | 
 
 ## Methods
 
