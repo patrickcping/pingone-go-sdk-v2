@@ -23,7 +23,7 @@ type APIServer struct {
 	AccessControl *APIServerAccessControl `json:"accessControl,omitempty"`
 	AuthorizationServer APIServerAuthorizationServer `json:"authorizationServer"`
 	// An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer's API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters.
-	BaseURLs []string `json:"baseURLs"`
+	BaseUrls []string `json:"baseUrls"`
 	Directory *APIServerDirectory `json:"directory,omitempty"`
 	// A string that specifies the resource's unique identifier.
 	Id *string `json:"id,omitempty"`
@@ -36,10 +36,10 @@ type APIServer struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAPIServer(authorizationServer APIServerAuthorizationServer, baseURLs []string, name string) *APIServer {
+func NewAPIServer(authorizationServer APIServerAuthorizationServer, baseUrls []string, name string) *APIServer {
 	this := APIServer{}
 	this.AuthorizationServer = authorizationServer
-	this.BaseURLs = baseURLs
+	this.BaseUrls = baseUrls
 	this.Name = name
 	return &this
 }
@@ -140,28 +140,28 @@ func (o *APIServer) SetAuthorizationServer(v APIServerAuthorizationServer) {
 	o.AuthorizationServer = v
 }
 
-// GetBaseURLs returns the BaseURLs field value
-func (o *APIServer) GetBaseURLs() []string {
+// GetBaseUrls returns the BaseUrls field value
+func (o *APIServer) GetBaseUrls() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.BaseURLs
+	return o.BaseUrls
 }
 
-// GetBaseURLsOk returns a tuple with the BaseURLs field value
+// GetBaseUrlsOk returns a tuple with the BaseUrls field value
 // and a boolean to check if the value has been set.
-func (o *APIServer) GetBaseURLsOk() ([]string, bool) {
+func (o *APIServer) GetBaseUrlsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BaseURLs, true
+	return o.BaseUrls, true
 }
 
-// SetBaseURLs sets field value
-func (o *APIServer) SetBaseURLs(v []string) {
-	o.BaseURLs = v
+// SetBaseUrls sets field value
+func (o *APIServer) SetBaseUrls(v []string) {
+	o.BaseUrls = v
 }
 
 // GetDirectory returns the Directory field value if set, zero value otherwise.
@@ -301,7 +301,7 @@ func (o APIServer) ToMap() (map[string]interface{}, error) {
 		toSerialize["accessControl"] = o.AccessControl
 	}
 	toSerialize["authorizationServer"] = o.AuthorizationServer
-	toSerialize["baseURLs"] = o.BaseURLs
+	toSerialize["baseUrls"] = o.BaseUrls
 	if !IsNil(o.Directory) {
 		toSerialize["directory"] = o.Directory
 	}

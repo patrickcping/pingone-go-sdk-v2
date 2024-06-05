@@ -2525,9 +2525,9 @@ components:
         accessControl:
           custom:
             enabled: true
-        baseURLs:
-        - baseURLs
-        - baseURLs
+        baseUrls:
+        - baseUrls
+        - baseUrls
         _links:
           next:
             href: https://openapi-generator.tech
@@ -2550,7 +2550,7 @@ components:
           $ref: '#/components/schemas/APIServer_accessControl'
         authorizationServer:
           $ref: '#/components/schemas/APIServer_authorizationServer'
-        baseURLs:
+        baseUrls:
           description: "An array of string that specifies the possible base URLs that\
             \ an end-user will use to access the APIs hosted on the customer's API\
             \ server. Multiple base URLs may be specified to support cases where the\
@@ -2580,7 +2580,7 @@ components:
           $ref: '#/components/schemas/APIServer_policy'
       required:
       - authorizationServer
-      - baseURLs
+      - baseUrls
       - name
       type: object
     APIServerDeployment:
@@ -2638,16 +2638,11 @@ components:
             id: id
           group:
             groups:
-            - element:
-                id: id
-            - element:
-                id: id
-            - element:
-                id: id
-            - element:
-                id: id
-            - element:
-                id: id
+            - id: id
+            - id: id
+            - id: id
+            - id: id
+            - id: id
         _links:
           next:
             href: https://openapi-generator.tech
@@ -3036,16 +3031,11 @@ components:
                 id: id
               group:
                 groups:
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
             _links:
               next:
                 href: https://openapi-generator.tech
@@ -3082,16 +3072,11 @@ components:
                 id: id
               group:
                 groups:
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
-                - element:
-                    id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
+                - id: id
             _links:
               next:
                 href: https://openapi-generator.tech
@@ -3165,9 +3150,9 @@ components:
           - accessControl:
               custom:
                 enabled: true
-            baseURLs:
-            - baseURLs
-            - baseURLs
+            baseUrls:
+            - baseUrls
+            - baseUrls
             _links:
               next:
                 href: https://openapi-generator.tech
@@ -3186,9 +3171,9 @@ components:
           - accessControl:
               custom:
                 enabled: true
-            baseURLs:
-            - baseURLs
-            - baseURLs
+            baseUrls:
+            - baseUrls
+            - baseUrls
             _links:
               next:
                 href: https://openapi-generator.tech
@@ -3394,7 +3379,7 @@ components:
         type:
           $ref: '#/components/schemas/EnumAPIServerAuthorizationServerType'
       required:
-      - resource
+      - type
       type: object
     APIServer_directory:
       description: "A container object for fields related to the user directory used\
@@ -3514,10 +3499,7 @@ components:
         error:
           $ref: '#/components/schemas/APIServerDeployment_status_error'
       type: object
-    APIServerOperation_accessControl_group_groups_inner_element:
-      description: "The ID of the group, wrapped in an object, for future extensibility.\
-        \ This is a required property if `operations.value.accessControl.group` is\
-        \ set."
+    APIServerOperation_accessControl_group_groups_inner:
       example:
         id: id
       properties:
@@ -3528,32 +3510,17 @@ components:
       required:
       - id
       type: object
-    APIServerOperation_accessControl_group_groups_inner:
-      example:
-        element:
-          id: id
-      properties:
-        element:
-          $ref: '#/components/schemas/APIServerOperation_accessControl_group_groups_inner_element'
-      required:
-      - element
-      type: object
     APIServerOperation_accessControl_group:
       description: The group membership requirements for the operation. The `groups`
         array must be non-empty when the `group` object is included. The `groups`
         array must not contain more than 25 elements.
       example:
         groups:
-        - element:
-            id: id
-        - element:
-            id: id
-        - element:
-            id: id
-        - element:
-            id: id
-        - element:
-            id: id
+        - id: id
+        - id: id
+        - id: id
+        - id: id
+        - id: id
       properties:
         groups:
           description: "The list of groups that define the access requirements for\
@@ -3627,16 +3594,11 @@ components:
           id: id
         group:
           groups:
-          - element:
-              id: id
-          - element:
-              id: id
-          - element:
-              id: id
-          - element:
-              id: id
-          - element:
-              id: id
+          - id: id
+          - id: id
+          - id: id
+          - id: id
+          - id: id
       properties:
         group:
           $ref: '#/components/schemas/APIServerOperation_accessControl_group'
@@ -3784,16 +3746,11 @@ components:
               id: id
             group:
               groups:
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
           _links:
             next:
               href: https://openapi-generator.tech
@@ -3830,16 +3787,11 @@ components:
               id: id
             group:
               groups:
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
-              - element:
-                  id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
+              - id: id
           _links:
             next:
               href: https://openapi-generator.tech
@@ -3913,9 +3865,9 @@ components:
         - accessControl:
             custom:
               enabled: true
-          baseURLs:
-          - baseURLs
-          - baseURLs
+          baseUrls:
+          - baseUrls
+          - baseUrls
           _links:
             next:
               href: https://openapi-generator.tech
@@ -3934,9 +3886,9 @@ components:
         - accessControl:
             custom:
               enabled: true
-          baseURLs:
-          - baseURLs
-          - baseURLs
+          baseUrls:
+          - baseUrls
+          - baseUrls
           _links:
             next:
               href: https://openapi-generator.tech

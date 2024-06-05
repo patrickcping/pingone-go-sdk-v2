@@ -132,7 +132,6 @@ Class | Method | HTTP request | Description
  - [APIServerOperationAccessControl](docs/APIServerOperationAccessControl.md)
  - [APIServerOperationAccessControlGroup](docs/APIServerOperationAccessControlGroup.md)
  - [APIServerOperationAccessControlGroupGroupsInner](docs/APIServerOperationAccessControlGroupGroupsInner.md)
- - [APIServerOperationAccessControlGroupGroupsInnerElement](docs/APIServerOperationAccessControlGroupGroupsInnerElement.md)
  - [APIServerOperationAccessControlPermission](docs/APIServerOperationAccessControlPermission.md)
  - [APIServerOperationAccessControlScope](docs/APIServerOperationAccessControlScope.md)
  - [APIServerOperationAccessControlScopeScopesInner](docs/APIServerOperationAccessControlScopeScopesInner.md)

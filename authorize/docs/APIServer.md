@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**LinksHATEOAS**](LinksHATEOAS.md) |  | [optional] 
 **AccessControl** | Pointer to [**APIServerAccessControl**](APIServerAccessControl.md) |  | [optional] 
 **AuthorizationServer** | [**APIServerAuthorizationServer**](APIServerAuthorizationServer.md) |  | 
-**BaseURLs** | **[]string** | An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer&#39;s API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters. | 
+**BaseUrls** | **[]string** | An array of string that specifies the possible base URLs that an end-user will use to access the APIs hosted on the customer&#39;s API server. Multiple base URLs may be specified to support cases where the same API may be available from multiple URLs (for example, from a user-friendly domain URL and an internal domain URL). Base URLs must be valid absolute URLs with the https or http scheme. If the path component is non-empty, it must not end in a trailing slash. The path must not contain empty backslash, dot, or double-dot segments. It must not have a query or fragment present, and the host portion of the authority must be a DNS hostname or valid IP (IPv4 or IPv6). The length must be less than or equal to 256 characters. | 
 **Directory** | Pointer to [**APIServerDirectory**](APIServerDirectory.md) |  | [optional] 
 **Id** | Pointer to **string** | A string that specifies the resource&#39;s unique identifier. | [optional] [readonly] 
 **Name** | **string** | A string that specifies the API server resource name. The name value must be unique among all API servers, and it must be a valid resource name. | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewAPIServer
 
-`func NewAPIServer(authorizationServer APIServerAuthorizationServer, baseURLs []string, name string, ) *APIServer`
+`func NewAPIServer(authorizationServer APIServerAuthorizationServer, baseUrls []string, name string, ) *APIServer`
 
 NewAPIServer instantiates a new APIServer object
 This constructor will assign default values to properties that have it defined,
@@ -102,24 +102,24 @@ and a boolean to check if the value has been set.
 SetAuthorizationServer sets AuthorizationServer field to given value.
 
 
-### GetBaseURLs
+### GetBaseUrls
 
-`func (o *APIServer) GetBaseURLs() []string`
+`func (o *APIServer) GetBaseUrls() []string`
 
-GetBaseURLs returns the BaseURLs field if non-nil, zero value otherwise.
+GetBaseUrls returns the BaseUrls field if non-nil, zero value otherwise.
 
-### GetBaseURLsOk
+### GetBaseUrlsOk
 
-`func (o *APIServer) GetBaseURLsOk() (*[]string, bool)`
+`func (o *APIServer) GetBaseUrlsOk() (*[]string, bool)`
 
-GetBaseURLsOk returns a tuple with the BaseURLs field if it's non-nil, zero value otherwise
+GetBaseUrlsOk returns a tuple with the BaseUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBaseURLs
+### SetBaseUrls
 
-`func (o *APIServer) SetBaseURLs(v []string)`
+`func (o *APIServer) SetBaseUrls(v []string)`
 
-SetBaseURLs sets BaseURLs field to given value.
+SetBaseUrls sets BaseUrls field to given value.
 
 
 ### GetDirectory

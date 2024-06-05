@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Resource** | [**APIServerAuthorizationServerResource**](APIServerAuthorizationServerResource.md) |  | 
-**Type** | Pointer to [**EnumAPIServerAuthorizationServerType**](EnumAPIServerAuthorizationServerType.md) |  | [optional] 
+**Resource** | Pointer to [**APIServerAuthorizationServerResource**](APIServerAuthorizationServerResource.md) |  | [optional] 
+**Type** | [**EnumAPIServerAuthorizationServerType**](EnumAPIServerAuthorizationServerType.md) |  | 
 
 ## Methods
 
 ### NewAPIServerAuthorizationServer
 
-`func NewAPIServerAuthorizationServer(resource APIServerAuthorizationServerResource, ) *APIServerAuthorizationServer`
+`func NewAPIServerAuthorizationServer(type_ EnumAPIServerAuthorizationServerType, ) *APIServerAuthorizationServer`
 
 NewAPIServerAuthorizationServer instantiates a new APIServerAuthorizationServer object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetResource sets Resource field to given value.
 
+### HasResource
+
+`func (o *APIServerAuthorizationServer) HasResource() bool`
+
+HasResource returns a boolean if a field has been set.
 
 ### GetType
 
@@ -65,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *APIServerAuthorizationServer) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
