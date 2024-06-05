@@ -505,7 +505,7 @@ components:
       default: JWT Bearer Token
     EnumRegionCode:
       type: string
-      enum: [AP, CA, EU, NA]
+      enum: [AP, AU, CA, EU, NA]
       description: A string that specifies the environment region code. The value is set when the environment is created and cannot be updated.
     EnumRegionCodeLicense:
       type: string

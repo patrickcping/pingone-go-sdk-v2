@@ -5,6 +5,8 @@
 
 * `AP` (value: `"AP"`)
 
+* `AU` (value: `"AU"`)
+
 * `CA` (value: `"CA"`)
 
 * `EU` (value: `"EU"`)

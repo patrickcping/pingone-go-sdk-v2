@@ -80,6 +80,11 @@ func TestFindRegionByAPICode(t *testing.T) {
 			URLSuffix: "asia",
 			APICode:   management.ENUMREGIONCODE_AP,
 		},
+		management.ENUMREGIONCODE_AU: {
+			Region:    "Australia-AsiaPacific",
+			URLSuffix: "com.au",
+			APICode:   management.ENUMREGIONCODE_AU,
+		},
 		management.EnumRegionCode("DOES_NOT_EXIST"): {
 			Region:    "NorthAmerica",
 			URLSuffix: "com",
@@ -101,7 +106,7 @@ func TestFindRegionByAPICode(t *testing.T) {
 
 func TestAvailableRegionsList(t *testing.T) {
 
-	expectedList := []string{"AsiaPacific", "Canada", "Europe", "NorthAmerica"}
+	expectedList := []string{"AsiaPacific", "Australia-AsiaPacific", "Canada", "Europe", "NorthAmerica"}
 
 	v := RegionsAvailableList()
 	if !reflect.DeepEqual(v, expectedList) {

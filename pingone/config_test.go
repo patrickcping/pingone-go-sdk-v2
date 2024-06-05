@@ -4,6 +4,8 @@ import (
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/patrickcping/pingone-go-sdk-v2/management"
 )
 
 func TestValidateAccessToken_ConfigSuccess(t *testing.T) {
@@ -305,10 +307,11 @@ func TestValidateRegion_ConfigSuccess(t *testing.T) {
 
 func TestValidateRegion_EnvSuccess(t *testing.T) {
 
-	value := os.Getenv("PINGONE_REGION")
+	regionName := os.Getenv("PINGONE_REGION")
+	regionCode := management.EnumRegionCode(os.Getenv("PINGONE_REGION_CODE"))
 
-	if value == "" {
-		t.Fatalf("Required environment variable PINGONE_REGION not set")
+	if regionName == "" && (regionCode == "" || string(regionCode) == "UNKNOWN") {
+		t.Fatalf("Required environment variable PINGONE_REGION_CODE and deprecated environment variable PINGONE_REGION not set")
 	}
 
 	config := &Config{}
@@ -317,12 +320,12 @@ func TestValidateRegion_EnvSuccess(t *testing.T) {
 		t.Fatalf("Parameter not successfully verified: %s", err)
 	}
 
-	if config.Region != value {
-		t.Fatalf("Parameter default not taken from environment")
+	if (config.Region != regionName) && (string(*config.RegionCode) != string(regionCode)) {
+		t.Fatalf("Parameter default not taken from environment: %#v, %#v, %s, %s", config.Region, config.RegionCode, *config.RegionCode, string(regionCode))
 	}
 }
 
-func TestValidateRegion_InvalidValue(t *testing.T) {
+func TestValidateRegion_Deprecated_InvalidValue(t *testing.T) {
 	value := "Tatooine"
 
 	config := &Config{
