@@ -27195,6 +27195,7 @@ components:
         is set when the environment is created and cannot be updated.
       enum:
       - AP
+      - AU
       - CA
       - EU
       - NA
