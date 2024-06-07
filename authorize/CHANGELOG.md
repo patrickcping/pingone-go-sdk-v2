@@ -1,4 +1,4 @@
-# v0.5.0 (Unreleased)
+# v0.5.0 (2024-06-07)
 
 * **Note** Removed unused `Operations` field from the `APIServer` model. [#353](https://github.com/patrickcping/pingone-go-sdk-v2/pull/353)
 * **Feature** Add support for Application Resource Permissions API. [#344](https://github.com/patrickcping/pingone-go-sdk-v2/pull/344)
