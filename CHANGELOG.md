@@ -1,4 +1,4 @@
-# Release (Unreleased)
+# Release (2024-06-07)
 
 * `github.com/patrickcping/pingone-go-sdk-v2` : v0.12.0
     * **Note** Removal of retracted module `github.com/patrickcping/pingone-go-sdk-v2/agreementmanagement`. [#352](https://github.com/patrickcping/pingone-go-sdk-v2/pull/352)
